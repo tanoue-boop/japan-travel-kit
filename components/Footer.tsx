@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Footer.module.css";
 
@@ -39,7 +40,9 @@ export default function Footer() {
         <div className={styles.grid}>
           <div>
             <Link href="/" className={styles.logoRow}>
-              <span className={styles.logoIcon}>🗾</span>
+              <span className={styles.logoIcon}>
+                <Image src="/icons/logo.svg" width={40} height={40} alt="Japan Travel Kit logo" unoptimized />
+              </span>
               <span className={styles.logoText}>Japan Travel Kit</span>
             </Link>
             <p className={styles.desc}>
