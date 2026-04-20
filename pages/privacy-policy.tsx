@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
             Japan Travel Kit (<strong>japan-travel-kit.com</strong>) is an independent travel information website providing practical guides for foreign visitors to Japan. We are operated as an individual publisher based in Japan.
           </p>
           <p className={styles.text}>
-            For privacy-related inquiries, please contact us at: <strong>contact@japan-travel-kit.com</strong>
+            For privacy-related inquiries, please contact us at: <strong>info@japan-travel-kit.com</strong>
           </p>
         </section>
 
@@ -127,7 +127,7 @@ export default function PrivacyPolicyPage() {
             <li><strong>Portability:</strong> Request transfer of your data in a machine-readable format.</li>
           </ul>
           <p className={styles.text}>
-            To exercise any of these rights, please contact us at <strong>contact@japan-travel-kit.com</strong>. We will respond within 30 days.
+            To exercise any of these rights, please contact us at <strong>info@japan-travel-kit.com</strong>. We will respond within 30 days.
           </p>
         </section>
 
@@ -156,7 +156,7 @@ export default function PrivacyPolicyPage() {
           <h3>Questions about this policy?</h3>
           <p>
             If you have any questions or concerns about this Privacy Policy, please contact us at{" "}
-            <a href="mailto:contact@japan-travel-kit.com">contact@japan-travel-kit.com</a>.
+            <a href="mailto:info@japan-travel-kit.com">info@japan-travel-kit.com</a>.
             We are happy to help.
           </p>
         </div>

@@ -157,7 +157,7 @@ export default function DisclaimerPage() {
           <h3>Questions or concerns?</h3>
           <p>
             If you have any questions about our affiliate relationships or this disclaimer, please contact us at{" "}
-            <a href="mailto:contact@japan-travel-kit.com">contact@japan-travel-kit.com</a>.
+            <a href="mailto:info@japan-travel-kit.com">info@japan-travel-kit.com</a>.
             We are committed to transparency and will respond within 3 business days.
           </p>
         </div>
