@@ -45,7 +45,7 @@ const whoFor = [
   },
   {
     title: "Budget-conscious travellers",
-    desc: "At $4.50 for 1 GB / 7 days, Airalo is one of the most affordable entry points for Japan connectivity.",
+    desc: "At $4.50 for 1 GB / 7 days, Airalo is one of the most affordable options for staying connected in Japan.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -331,8 +331,8 @@ export default function AiraloJapanReviewPage() {
             pricing, and near-instant setup makes it hard to beat as a first-time eSIM experience.
           </p>
           <p className={styles.verdictText}>
-            The only real downsides are the data-only limitation (no calls or SMS) and occasional
-            slowness from customer support — neither of which will affect most tourists who rely on
+            The only real downsides are the data-only limitation (no calls or SMS) and occasionally
+            slow customer support responses — neither of which will affect most tourists who rely on
             WhatsApp or LINE for communication.
           </p>
           <p className={styles.verdictText}>

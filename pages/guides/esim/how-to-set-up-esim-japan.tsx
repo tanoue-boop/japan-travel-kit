@@ -66,7 +66,7 @@ const androidSteps = [
 const troubleshootItems = [
   {
     title: '"eSIM not working" after scanning',
-    desc: "Restart your phone. A full reboot clears provisioning errors and is the fix for the majority of eSIM setup problems.",
+    desc: "Restart your phone. A full reboot clears most provisioning errors and resolves the majority of eSIM setup problems.",
   },
   {
     title: '"No signal" after activating',
@@ -242,7 +242,7 @@ export default function HowToSetUpEsimJapanPage() {
           <h2 className={styles.sectionTitle}>When to Activate</h2>
           <p className={styles.bodyText}>
             The best time to activate your Japan eSIM is right after your plane lands — not before.
-            As soon as the pilot announces you can disable flight mode, switch off flight mode
+            As soon as the crew announces you can disable flight mode, switch it off
             and go to Settings → Cellular and enable your Japan eSIM profile.
           </p>
           <p className={styles.bodyText}>

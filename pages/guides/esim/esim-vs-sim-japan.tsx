@@ -33,8 +33,8 @@ const simPros = [
   "Available at major airports on arrival",
 ];
 const simCons = [
-  "Must queue at airport SIM vending machine",
-  "Lose your home phone number while in Japan",
+  "Must queue at an airport SIM vending machine",
+  "Can't use your home number while the Japan SIM is active",
   "More expensive than eSIM equivalents",
   "Shops may be closed on late-night arrivals",
 ];
@@ -166,7 +166,7 @@ export default function EsimVsSimJapanPage() {
             eSIM vs SIM Card for Japan:<br />Which Should You Get?
           </h1>
           <p className={styles.heroSubtitle}>
-            Both work great in Japan. But one is faster, cheaper, and easier to set up.
+            Both work well in Japan. But one is faster, cheaper, and easier to set up.
             Here&apos;s how to choose.
           </p>
           <div className={styles.heroBadges}>

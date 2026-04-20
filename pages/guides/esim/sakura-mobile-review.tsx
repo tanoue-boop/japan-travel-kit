@@ -239,9 +239,9 @@ export default function SakuraMobileReviewPage() {
             compatible devices.
           </p>
           <p className={styles.bodyText}>
-            The standout feature is voice calls and SMS support. Most tourist eSIM providers
+            The standout feature is support for voice calls and SMS. Most tourist eSIM providers
             (Airalo, Holafly, eSIM Go) are data-only. Sakura Mobile includes a Japanese phone
-            number, voice calls, and SMS — essential for booking restaurants, calling accommodation,
+            number, voice calls, and SMS — essential for booking restaurants, contacting your accommodation,
             or contacting local services during a longer stay.
           </p>
         </section>

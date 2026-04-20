@@ -9,7 +9,7 @@ const topPicks = [
     rank: 1,
     bestFor: "Best Overall",
     badgeCls: styles.pickBadgeBlue,
-    target: "Most travellers — reliable, affordable, dead easy to set up.",
+    target: "Most travellers — reliable, affordable, incredibly easy to set up.",
     ctaLabel: "Get Airalo eSIM →",
     ctaExternal: false,
   },
@@ -45,7 +45,7 @@ const topPicks = [
 const installSteps = [
   {
     title: "Purchase & receive your QR code",
-    desc: "Buy online before you travel. You'll receive a QR code by email within minutes — no waiting at the post box.",
+    desc: "Buy online before you travel. You'll receive a QR code by email within minutes — delivered straight to your inbox.",
   },
   {
     title: "Scan the QR code in Settings",

@@ -26,7 +26,7 @@ const cons = [
 const whoFor = [
   {
     title: "Heavy data users",
-    desc: "If you stream video, use Google Maps constantly, or work remotely, unlimited data removes the anxiety of watching your GB counter.",
+    desc: "If you stream video, use Google Maps constantly, or work remotely, unlimited data removes the stress of monitoring your data usage.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
@@ -85,7 +85,7 @@ const setupSteps = [
 const faqItems = [
   {
     q: "Is Holafly truly unlimited in Japan?",
-    a: "Holafly advertises unlimited data with no hard caps, and for the vast majority of users that holds true — browsing, maps, streaming, and video calls all work without hitting a limit. That said, like most mobile networks, SoftBank's fair-use policy may apply during severe network congestion in peak locations. In practice, this is rare and most travellers never notice any throttling.",
+    a: "Holafly advertises unlimited data with no hard caps, and for the vast majority of users that holds true — browsing, maps, streaming, and video calls all work without hitting a limit. That said, like most mobile networks, SoftBank's fair-use policy may apply during severe network congestion in busy areas. In practice, this is rare and most travellers never notice any throttling.",
   },
   {
     q: "Does Holafly work on iPhone?",
@@ -239,7 +239,7 @@ export default function HolaflyJapanReviewPage() {
           </p>
           <p className={styles.bodyText}>
             With 8,700+ customer reviews and a 4.3 average rating, Holafly has a strong track record
-            among American and European travellers who prioritise convenience over per-GB economy.
+            among American and European travellers who prioritize convenience over cost per gigabyte.
           </p>
         </section>
 
@@ -372,7 +372,7 @@ export default function HolaflyJapanReviewPage() {
           </p>
           <p className={styles.verdictText}>
             The main trade-off is price. At $19 for 5 days, Holafly costs more than four times
-            Airalo&apos;s entry plan. For light users — checking maps, WhatsApp, and email — that premium
+            Airalo&apos;s cheapest plan. For light users — checking maps, WhatsApp, and email — that premium
             is hard to justify. But for heavy users who&apos;d comfortably burn through 5+ GB in a week,
             Holafly is excellent value.
           </p>
