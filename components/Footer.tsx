@@ -17,11 +17,10 @@ const cols = [
     ],
   },
   {
-    title: "About",
+    title: "Legal",
     links: [
-      { href: "/about",                label: "About Us"             },
-      { href: "/affiliate-disclosure", label: "Affiliate Disclosure" },
-      { href: "/privacy-policy",       label: "Privacy Policy"       },
+      { href: "/disclaimer",     label: "Affiliate Disclaimer" },
+      { href: "/privacy-policy", label: "Privacy Policy"       },
     ],
   },
 ];
