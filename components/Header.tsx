@@ -1,19 +1,20 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import styles from "../styles/Header.module.css";
 
 const navLinks = [
-  { href: "/guides",         label: "Guides",      icon: "📖" },
-  { href: "/sim-cards",      label: "SIM Cards",   icon: "📱" },
-  { href: "/wifi-pocket",    label: "Pocket WiFi", icon: "📶" },
-  { href: "/transportation", label: "Transport",   icon: "🚅" },
-  { href: "/money",          label: "Money",       icon: "💴" },
+  { href: "/guides",         label: "Guides",      iconSrc: "/icons/icon-guide.svg" },
+  { href: "/sim-cards",      label: "SIM Cards",   iconSrc: "/icons/icon-sim.svg" },
+  { href: "/wifi-pocket",    label: "Pocket WiFi", iconSrc: "/icons/icon-wifi.svg" },
+  { href: "/transportation", label: "Transport",   iconSrc: "/icons/icon-transport.svg" },
+  { href: "/money",          label: "Money",       iconSrc: "/icons/icon-money.svg" },
 ];
 
 export default function Header() {
-  const [open, setOpen]       = useState(false);
+  const [open, setOpen]         = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,14 +27,17 @@ export default function Header() {
     <header className={`${styles.header}${scrolled ? ` ${styles.scrolled}` : ""}`}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoIcon}>🗾</span>
+          <span className={styles.logoIcon}>
+            <Image src="/icons/logo.svg" width={33} height={30} alt="Japan Travel Kit logo" unoptimized />
+          </span>
           <span className={styles.logoText}>Japan <em>Travel Kit</em></span>
         </Link>
 
         <nav className={styles.nav}>
           {navLinks.map((l) => (
             <Link key={l.href} href={l.href} className={styles.navLink}>
-              <span>{l.icon}</span>{l.label}
+              <Image src={l.iconSrc} width={20} height={20} alt="" unoptimized />
+              {l.label}
             </Link>
           ))}
         </nav>
@@ -56,7 +60,9 @@ export default function Header() {
       <nav className={`${styles.mobileNav}${open ? ` ${styles.open}` : ""}`}>
         {navLinks.map((l) => (
           <Link key={l.href} href={l.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
-            <span className={styles.mobileIcon}>{l.icon}</span>
+            <span className={styles.mobileIcon}>
+              <Image src={l.iconSrc} width={20} height={20} alt="" unoptimized />
+            </span>
             {l.label}
           </Link>
         ))}
