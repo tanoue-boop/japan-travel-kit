@@ -2,14 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --japan-red: #BC002D;
-}
-
-* {
-  box-sizing: border-box;
+  --crimson: #c62828;
+  --navy: #0d1b4b;
+  --gold: #c9a84c;
+  --cream: #fdf8f0;
 }
 
 html {
@@ -17,25 +16,100 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
 }
 
 @layer components {
+  /* ── Buttons ── */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-japan-red text-white font-semibold rounded-lg hover:bg-red-800 transition-colors duration-200 text-sm;
+    @apply inline-flex items-center justify-center gap-2
+           px-7 py-3.5 rounded-full font-semibold text-sm
+           bg-crimson-500 text-white
+           shadow-glow hover:bg-crimson-600
+           transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg
+           active:translate-y-0;
   }
 
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-japan-red font-semibold rounded-lg border-2 border-japan-red hover:bg-red-50 transition-colors duration-200 text-sm;
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           px-7 py-3.5 rounded-full font-semibold text-sm
+           bg-white/10 text-white border border-white/30
+           backdrop-blur-sm hover:bg-white/20
+           transition-all duration-200;
   }
 
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-full font-semibold text-sm
+           bg-transparent text-crimson-500 border-2 border-crimson-500
+           hover:bg-crimson-50 transition-all duration-200;
+  }
+
+  /* ── Cards ── */
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden;
+    @apply bg-white rounded-2xl shadow-card border border-gray-100 overflow-hidden
+           transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
   }
 
-  .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium text-white;
+  .card-flat {
+    @apply bg-white rounded-2xl border border-gray-100 overflow-hidden;
   }
+
+  /* ── Badge ── */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  /* ── Section title ── */
+  .section-label {
+    @apply text-xs font-bold uppercase tracking-widest text-crimson-500 mb-2;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold text-navy-800 leading-tight;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    @apply border-t border-gray-100 my-6;
+  }
+}
+
+/* Seigaiha (wave) pattern overlay for hero */
+.hero-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #ef5350, #c62828);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer on stat cards */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  to { left: 200%; }
 }

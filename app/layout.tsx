@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Japan Travel Kit",
   },
   description:
-    "Your complete guide to visiting Japan. Compare SIM cards, find the best travel deals, and get practical travel tips for your trip to Japan.",
+    "Your complete guide to visiting Japan. Compare SIM cards, find the best travel deals, and get practical travel tips for your trip to Japan. Updated 2025.",
   keywords: [
     "Japan travel",
     "Japan SIM card",

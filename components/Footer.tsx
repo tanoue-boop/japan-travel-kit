@@ -1,94 +1,79 @@
 import Link from "next/link";
 
+const columns = [
+  {
+    title: "Connectivity",
+    links: [
+      { href: "/sim-cards",   label: "SIM Cards & eSIM"  },
+      { href: "/wifi-pocket", label: "Pocket WiFi"        },
+    ],
+  },
+  {
+    title: "Getting Around",
+    links: [
+      { href: "/transportation", label: "Transportation"    },
+      { href: "/money",          label: "Money & Payment"  },
+    ],
+  },
+  {
+    title: "About",
+    links: [
+      { href: "/about",                label: "About Us"              },
+      { href: "/affiliate-disclosure", label: "Affiliate Disclosure"  },
+      { href: "/privacy-policy",       label: "Privacy Policy"        },
+    ],
+  },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-400 mt-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <h3 className="text-white font-semibold mb-3">
-              🇯🇵 Japan Travel Kit
-            </h3>
-            <p className="text-sm leading-relaxed">
-              Practical, unbiased travel information for foreign visitors to
-              Japan. We help you prepare before you arrive.
+    <footer className="bg-navy-900 text-white/60">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-8 h-8 bg-crimson-500 rounded-lg flex items-center justify-center text-sm">
+                🗾
+              </div>
+              <span className="font-display font-bold text-white text-lg">
+                Japan Travel Kit
+              </span>
+            </div>
+            <p className="text-sm leading-relaxed text-white/40 mb-5">
+              Practical, unbiased travel info for foreign visitors to Japan. Prepared before you land.
             </p>
+            <div className="inline-flex items-center gap-2 bg-white/5 rounded-full px-3 py-1.5 text-xs text-white/40">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              Updated April 2025
+            </div>
           </div>
-          <div>
-            <h4 className="text-white font-medium mb-3 text-sm">Categories</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/sim-cards"
-                  className="hover:text-white transition-colors"
-                >
-                  SIM Cards & eSIM
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/wifi-pocket"
-                  className="hover:text-white transition-colors"
-                >
-                  Pocket WiFi
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/transportation"
-                  className="hover:text-white transition-colors"
-                >
-                  Transportation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/money"
-                  className="hover:text-white transition-colors"
-                >
-                  Money & Payment
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-medium mb-3 text-sm">Legal</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-white transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/affiliate-disclosure"
-                  className="hover:text-white transition-colors"
-                >
-                  Affiliate Disclosure
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy-policy"
-                  className="hover:text-white transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
+
+          {/* Nav columns */}
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">{col.title}</h4>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm hover:text-white transition-colors duration-150"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div className="border-t border-slate-800 pt-6 text-sm text-center">
-          <p className="mb-1">
-            &copy; {new Date().getFullYear()} Japan Travel Kit. All rights
-            reserved.
-          </p>
-          <p className="text-xs text-slate-500">
-            This site contains affiliate links. We may earn a commission at no
-            extra cost to you.
+
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/30">
+          <p>&copy; {new Date().getFullYear()} Japan Travel Kit. All rights reserved.</p>
+          <p>
+            This site contains affiliate links. We may earn a commission at no extra cost to you.
           </p>
         </div>
       </div>

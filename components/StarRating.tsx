@@ -7,16 +7,16 @@ export default function StarRating({
 }) {
   return (
     <div className="flex items-center gap-1.5">
-      <div className="flex">
+      <div className="flex gap-0.5">
         {[1, 2, 3, 4, 5].map((star) => (
           <svg
             key={star}
-            className={`w-4 h-4 ${
+            className={`w-3.5 h-3.5 ${
               star <= Math.floor(rating)
                 ? "text-amber-400"
                 : star - 0.5 <= rating
                   ? "text-amber-300"
-                  : "text-slate-200"
+                  : "text-gray-200"
             }`}
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -25,8 +25,8 @@ export default function StarRating({
           </svg>
         ))}
       </div>
-      <span className="text-sm font-medium text-slate-700">{rating}</span>
-      <span className="text-xs text-slate-400">
+      <span className="text-xs font-bold text-gray-700">{rating}</span>
+      <span className="text-xs text-gray-400">
         ({reviewCount.toLocaleString()} reviews)
       </span>
     </div>
