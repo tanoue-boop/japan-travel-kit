@@ -11,6 +11,7 @@ export default function Document() {
           rel="stylesheet"
         />
         <meta name="theme-color" content="#0d1b4b" />
+        <meta name="google-site-verification" content="RzJ62Gbm4Ng2tGuEyIW1CV4-UjWKOpZRkskuAGP52Gc" />
       </Head>
       <body>
         <Main />
