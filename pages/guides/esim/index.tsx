@@ -38,6 +38,13 @@ const articles = [
     desc: "Install your Japan eSIM before you fly and have 4G the moment you land. Works for iPhone and Android. Takes under 5 minutes.",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/sakura-mobile-review",
+    badge: "Review",
+    title: "Sakura Mobile Review 2025: Best SIM for Long Stays?",
+    desc: "The only tourist SIM with real English support and voice calls. We review Sakura Mobile's plans, Docomo coverage, and whether the price is justified.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
