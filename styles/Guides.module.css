@@ -88,7 +88,7 @@
   margin-bottom: 1.5rem;
 }
 
-/* Category cards grid (for /guides index) */
+/* Category cards grid (for /guides index) — mirrors Home.module.css catCard */
 .catGrid {
   display: grid;
   gap: 1.25rem;
@@ -98,54 +98,109 @@
 @media (min-width: 900px) { .catGrid { grid-template-columns: repeat(3, 1fr); } }
 
 .catCard {
-  display: flex;
-  flex-direction: column;
+  display: block;
   background: #fff;
-  border: 1px solid #e5e7eb;
+  border: 1.5px solid #f3f4f6;
   border-radius: 20px;
-  padding: 1.75rem 1.5rem;
+  padding: 1.75rem;
   text-decoration: none;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-  transition: box-shadow 0.2s, transform 0.15s, border-color 0.15s;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.22s, border-color 0.2s;
 }
 .catCard:hover {
   box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
-  border-color: #fecaca;
+  transform: translateY(-3px);
+  border-color: #e5e7eb;
 }
+.catCardSoon {
+  display: block;
+  background: #fff;
+  border: 1.5px solid #f3f4f6;
+  border-radius: 20px;
+  padding: 1.75rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.6;
+  cursor: default;
+}
+
+.catTop { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.catLeft { flex: 1; }
+.catIconRow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.9rem; }
+
 .catIcon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  width: 3rem;
-  height: 3rem;
+  width: 46px; height: 46px;
+  border-radius: 10px;
+  background: #f8fafc;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff5f5;
-  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  color: #0d1b4b;
 }
+
+.catBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.badgeSoftRed   { background: #fee2e2; color: #c62828; }
+.badgeSoftAmber { background: #fef3c7; color: #92400e; }
+.badgeSoftGray  { background: #f3f4f6; color: #6b7280; }
+
 .catName {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #0d1b4b;
   margin-bottom: 0.4rem;
-  line-height: 1.2;
+  transition: color 0.15s;
+  line-height: 1.3;
 }
+.catCard:hover .catName { color: #c62828; }
+
 .catDesc {
   font-size: 0.85rem;
   color: #6b7280;
   line-height: 1.6;
-  flex: 1;
-  margin-bottom: 1rem;
 }
-.catCount {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #c62828;
+
+.catArrow {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #f3f4f6;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  justify-content: center;
+  color: #9ca3af;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 0.25rem;
+}
+.catArrow svg { width: 14px; height: 14px; stroke-width: 2.5; }
+.catCard:hover .catArrow { background: #c62828; color: #fff; }
+
+.catArrowSoon {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-align: center;
 }
 
 /* Article list (for /guides/esim category) */

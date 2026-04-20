@@ -2,28 +2,84 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Guides.module.css";
 
+function IconSim() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2" />
+      <path d="M15 2v4a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V2" />
+      <line x1="9" y1="14" x2="9" y2="14" />
+      <line x1="12" y1="14" x2="12" y2="14" />
+      <line x1="15" y1="14" x2="15" y2="14" />
+      <line x1="9" y1="17" x2="9" y2="17" />
+      <line x1="12" y1="17" x2="12" y2="17" />
+      <line x1="15" y1="17" x2="15" y2="17" />
+    </svg>
+  );
+}
+
+function IconTrain() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="3" width="16" height="14" rx="3" />
+      <line x1="4" y1="10" x2="20" y2="10" />
+      <line x1="9" y1="3" x2="9" y2="10" />
+      <line x1="15" y1="3" x2="15" y2="10" />
+      <circle cx="8.5" cy="14.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15.5" cy="14.5" r="1" fill="currentColor" stroke="none" />
+      <path d="M7 21l2-4" />
+      <path d="M17 21l-2-4" />
+      <line x1="7" y1="21" x2="17" y2="21" />
+    </svg>
+  );
+}
+
+function IconMoney() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="6" width="22" height="13" rx="2" />
+      <circle cx="12" cy="12.5" r="2.5" />
+      <path d="M6 10v5" />
+      <path d="M18 10v5" />
+      <line x1="1" y1="10" x2="5" y2="10" />
+      <line x1="19" y1="10" x2="23" y2="10" />
+    </svg>
+  );
+}
+
+function ChevronRight() {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  );
+}
+
 const categories = [
   {
     href: "/guides/esim",
-    icon: "📱",
+    Icon: IconSim,
     name: "eSIM & SIM Cards",
     desc: "Which SIM to buy, how to install an eSIM, network coverage, and data plan comparisons for Japan.",
-    count: 1,
+    badge: "1 Guide",
+    badgeCls: styles.badgeSoftRed,
+    soon: false,
   },
   {
     href: "/guides/transportation",
-    icon: "🚅",
+    Icon: IconTrain,
     name: "Getting Around",
     desc: "Shinkansen passes, IC cards, airport trains, and everything you need to navigate Japan's rail network.",
-    count: 0,
+    badge: "Coming Soon",
+    badgeCls: styles.badgeSoftGray,
     soon: true,
   },
   {
     href: "/guides/money",
-    icon: "💴",
+    Icon: IconMoney,
     name: "Money & Payment",
     desc: "Cash vs card, ATM access, currency exchange, and how to pay at convenience stores and restaurants.",
-    count: 0,
+    badge: "Coming Soon",
+    badgeCls: styles.badgeSoftGray,
     soon: true,
   },
 ];
@@ -71,27 +127,39 @@ export default function GuidesIndexPage() {
         <h2 className={styles.sectionTitle}>All Categories</h2>
 
         <div className={styles.catGrid}>
-          {categories.map((cat) => (
-            cat.soon ? (
-              <div
-                key={cat.href}
-                className={styles.catCard}
-                style={{ opacity: 0.55, cursor: "default", transform: "none", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}
-              >
-                <span className={styles.catIcon}>{cat.icon}</span>
-                <p className={styles.catName}>{cat.name}</p>
-                <p className={styles.catDesc}>{cat.desc}</p>
-                <span className={styles.catCount}>Coming soon</span>
+          {categories.map((cat) => {
+            const cardContent = (
+              <div className={styles.catTop}>
+                <div className={styles.catLeft}>
+                  <div className={styles.catIconRow}>
+                    <span className={styles.catIcon}>
+                      <cat.Icon />
+                    </span>
+                    <span className={`${styles.catBadge} ${cat.badgeCls}`}>{cat.badge}</span>
+                  </div>
+                  <p className={styles.catName}>{cat.name}</p>
+                  <p className={styles.catDesc}>{cat.desc}</p>
+                </div>
+                {cat.soon ? (
+                  <span className={styles.catArrowSoon}>Soon</span>
+                ) : (
+                  <span className={styles.catArrow}>
+                    <ChevronRight />
+                  </span>
+                )}
+              </div>
+            );
+
+            return cat.soon ? (
+              <div key={cat.href} className={styles.catCardSoon}>
+                {cardContent}
               </div>
             ) : (
               <Link key={cat.href} href={cat.href} className={styles.catCard}>
-                <span className={styles.catIcon}>{cat.icon}</span>
-                <p className={styles.catName}>{cat.name}</p>
-                <p className={styles.catDesc}>{cat.desc}</p>
-                <span className={styles.catCount}>→ {cat.count} {cat.count === 1 ? "guide" : "guides"}</span>
+                {cardContent}
               </Link>
-            )
-          ))}
+            );
+          })}
         </div>
       </div>
     </>
