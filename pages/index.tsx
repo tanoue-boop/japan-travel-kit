@@ -1,11 +1,12 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 const categories = [
   {
     href: "/sim-cards",
-    icon: "📱",
+    iconSrc: "/icons/card-sim.svg",
     title: "SIM Cards & eSIM",
     desc: "Stay connected from day one. Compare tourist SIM cards and eSIMs — data, coverage, and instant activation.",
     badge: "Most Popular",
@@ -13,7 +14,7 @@ const categories = [
   },
   {
     href: "/wifi-pocket",
-    icon: "📶",
+    iconSrc: "/icons/card-wifi.svg",
     title: "Pocket WiFi",
     desc: "Rent a portable WiFi router for unlimited data. Great for groups, families, or heavy data users.",
     badge: "Great for Groups",
@@ -21,7 +22,7 @@ const categories = [
   },
   {
     href: "/transportation",
-    icon: "🚅",
+    iconSrc: "/icons/card-transport.svg",
     title: "Transportation",
     desc: "JR Pass, IC cards, Shinkansen tickets. Everything you need to travel Japan quickly and affordably.",
     badge: "Save Money",
@@ -29,7 +30,7 @@ const categories = [
   },
   {
     href: "/money",
-    icon: "💴",
+    iconSrc: "/icons/card-money.svg",
     title: "Money & Payment",
     desc: "Best travel cards, ATM tips, and how to handle cash in Japan's largely cash-based economy.",
     badge: "Must Read",
@@ -38,10 +39,10 @@ const categories = [
 ];
 
 const tips = [
-  { icon: "📱", title: "Get a SIM before you land", body: "Order an eSIM online and activate it the moment your plane touches down — no airport queues." },
-  { icon: "💴", title: "Always carry cash",           body: "Japan is still cash-heavy. 7-Eleven and Japan Post ATMs accept foreign Visa/Mastercard." },
-  { icon: "🚉", title: "Load an IC card",             body: "Suica or Pasmo works on almost every train, bus, and at convenience stores nationwide." },
-  { icon: "🔌", title: "Type A plugs (100V)",         body: "Same shape as the US. Most devices work without an adapter — just check your voltage." },
+  { iconSrc: "/icons/tip-sim.svg",  title: "Get a SIM before you land", body: "Order an eSIM online and activate it the moment your plane touches down — no airport queues." },
+  { iconSrc: "/icons/tip-cash.svg", title: "Always carry cash",          body: "Japan is still cash-heavy. 7-Eleven and Japan Post ATMs accept foreign Visa/Mastercard." },
+  { iconSrc: "/icons/tip-ic.svg",   title: "Load an IC card",            body: "Suica or Pasmo works on almost every train, bus, and at convenience stores nationwide." },
+  { iconSrc: "/icons/tip-plug.svg", title: "Type A plugs (100V)",        body: "Same shape as the US. Most devices work without an adapter — just check your voltage." },
 ];
 
 const stats = [
@@ -143,7 +144,9 @@ export default function HomePage() {
               <div className={styles.catTop}>
                 <div className={styles.catLeft}>
                   <div className={styles.catIconRow}>
-                    <span className={styles.catIcon}>{cat.icon}</span>
+                    <span className={styles.catIcon}>
+                      <Image src={cat.iconSrc} width={46} height={46} alt="" unoptimized />
+                    </span>
                     <span className={`${styles.catBadge} ${cat.badgeCls}`}>{cat.badge}</span>
                   </div>
                   <h3 className={styles.catTitle}>{cat.title}</h3>
@@ -172,7 +175,9 @@ export default function HomePage() {
           <div className={styles.tipsGrid}>
             {tips.map((t) => (
               <div key={t.title} className={styles.tipCard}>
-                <div className={styles.tipIcon}>{t.icon}</div>
+                <div className={styles.tipIcon}>
+                  <Image src={t.iconSrc} width={48} height={48} alt="" unoptimized />
+                </div>
                 <h3 className={styles.tipTitle}>{t.title}</h3>
                 <p className={styles.tipBody}>{t.body}</p>
               </div>
