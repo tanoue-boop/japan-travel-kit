@@ -29,7 +29,7 @@
   display: block;
 }
 .title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: clamp(1.9rem, 5vw, 3rem);
   font-weight: 700;
   color: #fff;
@@ -68,7 +68,7 @@
   margin-bottom: 2.5rem;
 }
 .sectionTitle {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
   color: #0d1b4b;
@@ -127,7 +127,7 @@
   margin-top: 2rem;
 }
 .contactBox h3 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   color: #0d1b4b;
