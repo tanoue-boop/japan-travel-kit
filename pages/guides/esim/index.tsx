@@ -45,6 +45,13 @@ const articles = [
     desc: "The only tourist SIM with real English support and voice calls. We review Sakura Mobile's plans, Docomo coverage, and whether the price is justified.",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/esim-go-japan-review",
+    badge: "Review",
+    title: "eSIM Go Japan Review 2025: Best Budget eSIM?",
+    desc: "The cheapest Japan eSIM we tested. eSIM Go offers Docomo coverage from $3.50 — but how does it hold up on speed, setup, and support?",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
