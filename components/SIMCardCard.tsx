@@ -1,126 +1,103 @@
 import type { SIMCard } from "@/lib/sim-cards";
 import StarRating from "./StarRating";
 
+const badgeClass: Record<string, string> = {
+  "bg-blue-500":   "badge--blue",
+  "bg-green-500":  "badge--green",
+  "bg-orange-500": "badge--orange",
+};
+
 function FeaturePill({ ok, label }: { ok: boolean; label: string }) {
   return (
-    <span
-      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium ${
-        ok
-          ? "bg-emerald-50 text-emerald-700"
-          : "bg-gray-50 text-gray-400 line-through"
-      }`}
-    >
+    <span className={`feature-pill ${ok ? "feature-pill--yes" : "feature-pill--no"}`}>
       {ok ? "✓" : "✗"} {label}
     </span>
   );
 }
 
 export default function SIMCardCard({ sim }: { sim: SIMCard }) {
-  const cheapestPlan = sim.plans.reduce((a, b) => (a.price < b.price ? a : b));
+  const cheapest = sim.plans.reduce((a, b) => (a.price < b.price ? a : b));
+  const badgeCls = sim.badgeColor ? (badgeClass[sim.badgeColor] ?? "badge--blue") : "";
 
   return (
-    <article className="bg-white rounded-2xl border border-gray-100 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-      {/* ── Header ── */}
-      <div className="p-7 pb-5">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1 min-w-0">
-            <div className="flex flex-wrap items-center gap-2 mb-2">
-              {sim.badge && (
-                <span className={`badge ${sim.badgeColor} font-semibold text-white text-xs`}>
-                  {sim.badge}
-                </span>
-              )}
+    <article className="sim-card">
+      {/* Header */}
+      <div className="sim-card__header">
+        <div className="sim-card__name-block">
+          {sim.badge && (
+            <div className="sim-card__badge-row">
+              <span className={`badge ${badgeCls}`}>{sim.badge}</span>
             </div>
-            <h3 className="font-bold text-xl text-navy-800 mb-1 leading-snug">
-              {sim.name}
-            </h3>
-            <StarRating rating={sim.rating} reviewCount={sim.reviewCount} />
-            <p className="text-gray-500 text-sm mt-3 leading-relaxed">
-              {sim.summary}
-            </p>
-          </div>
+          )}
+          <h3 className="sim-card__name">{sim.name}</h3>
+          <StarRating rating={sim.rating} reviewCount={sim.reviewCount} />
+          <p className="sim-card__summary">{sim.summary}</p>
+        </div>
 
-          {/* Price */}
-          <div className="shrink-0 text-right bg-gray-50 rounded-xl px-4 py-3">
-            <p className="text-[11px] text-gray-400 font-medium uppercase tracking-wide mb-0.5">From</p>
-            <p className="font-display text-3xl font-bold text-navy-800 leading-none">
-              ${cheapestPlan.price.toFixed(0)}
-            </p>
-            <p className="text-[11px] text-gray-400 mt-0.5">USD</p>
-          </div>
+        <div className="sim-card__price-block">
+          <p className="sim-card__price-from">From</p>
+          <p className="sim-card__price">${cheapest.price.toFixed(0)}</p>
+          <p className="sim-card__price-currency">USD</p>
         </div>
       </div>
 
-      {/* ── Feature pills ── */}
-      <div className="px-7 pb-5 flex flex-wrap gap-2">
-        <FeaturePill ok={sim.voiceCall}    label="Voice calls"  />
-        <FeaturePill ok={sim.smsIncluded}  label="SMS"          />
-        <FeaturePill ok={sim.esim}         label="eSIM"         />
-        <FeaturePill ok={sim.physicalSim}  label="Physical SIM" />
+      {/* Feature pills */}
+      <div className="sim-card__pills">
+        <FeaturePill ok={sim.voiceCall}   label="Voice calls"  />
+        <FeaturePill ok={sim.smsIncluded} label="SMS"          />
+        <FeaturePill ok={sim.esim}        label="eSIM"         />
+        <FeaturePill ok={sim.physicalSim} label="Physical SIM" />
       </div>
 
-      {/* ── Specs ── */}
-      <div className="mx-7 mb-5 bg-gray-50 rounded-xl p-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-        <div>
-          <p className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-1">Network</p>
-          <p className="text-gray-700 font-medium text-xs leading-snug">{sim.coverage}</p>
+      {/* Specs */}
+      <div className="sim-card__specs">
+        <div className="spec-item">
+          <p className="spec-item__label">Network</p>
+          <p className="spec-item__value">{sim.coverage}</p>
         </div>
-        <div>
-          <p className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-1">Speed</p>
-          <p className="text-gray-700 font-medium text-xs">{sim.speed}</p>
+        <div className="spec-item">
+          <p className="spec-item__label">Speed</p>
+          <p className="spec-item__value">{sim.speed}</p>
         </div>
-        <div>
-          <p className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-1">Support</p>
-          <p className="text-gray-700 font-medium text-xs leading-snug">{sim.support}</p>
+        <div className="spec-item">
+          <p className="spec-item__label">Support</p>
+          <p className="spec-item__value">{sim.support}</p>
         </div>
       </div>
 
-      {/* ── Plans ── */}
-      <div className="px-7 mb-5">
-        <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-          Available Plans
-        </p>
-        <div className="space-y-2">
-          {sim.plans.map((plan, idx) => (
-            <div
-              key={idx}
-              className="flex items-center justify-between bg-gray-50 hover:bg-crimson-50 rounded-xl px-4 py-3 transition-colors duration-150"
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-base font-bold text-navy-800">{plan.data}</span>
-                <span className="text-xs text-gray-400">/ {plan.duration}</span>
-              </div>
-              <span className="font-bold text-crimson-500 text-sm">
-                ${plan.price.toFixed(2)}
-              </span>
+      {/* Plans */}
+      <div className="sim-card__plans">
+        <p className="plans-label">Available Plans</p>
+        {sim.plans.map((plan, i) => (
+          <div key={i} className="plan-row">
+            <div className="plan-row__left">
+              <span className="plan-row__data">{plan.data}</span>
+              <span className="plan-row__duration">/ {plan.duration}</span>
             </div>
-          ))}
-        </div>
+            <span className="plan-row__price">${plan.price.toFixed(2)}</span>
+          </div>
+        ))}
       </div>
 
-      {/* ── Pros / Cons ── */}
-      <div className="px-7 mb-6 grid sm:grid-cols-2 gap-5">
+      {/* Pros / Cons */}
+      <div className="sim-card__pros-cons">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-widest text-emerald-600 mb-2.5">
-            ✓ Pros
-          </p>
-          <ul className="space-y-1.5">
+          <p className="pros-cons__label pros-cons__label--pros">✓ Pros</p>
+          <ul className="pros-cons__list">
             {sim.pros.map((p) => (
-              <li key={p} className="flex items-start gap-2 text-sm text-gray-600">
-                <span className="text-emerald-400 mt-0.5 shrink-0 font-bold">+</span>
+              <li key={p} className="pros-cons__item">
+                <span className="pros-cons__item-icon pros-cons__item-icon--pro">+</span>
                 {p}
               </li>
             ))}
           </ul>
         </div>
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-widest text-crimson-500 mb-2.5">
-            ✗ Cons
-          </p>
-          <ul className="space-y-1.5">
+          <p className="pros-cons__label pros-cons__label--cons">✗ Cons</p>
+          <ul className="pros-cons__list">
             {sim.cons.map((c) => (
-              <li key={c} className="flex items-start gap-2 text-sm text-gray-600">
-                <span className="text-crimson-400 mt-0.5 shrink-0 font-bold">−</span>
+              <li key={c} className="pros-cons__item">
+                <span className="pros-cons__item-icon pros-cons__item-icon--con">−</span>
                 {c}
               </li>
             ))}
@@ -128,16 +105,16 @@ export default function SIMCardCard({ sim }: { sim: SIMCard }) {
         </div>
       </div>
 
-      {/* ── CTA ── */}
-      <div className="px-7 pb-7">
+      {/* CTA */}
+      <div className="sim-card__cta">
         <a
           href={sim.affiliateUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
-          className="btn-primary w-full justify-center py-4 text-base rounded-xl"
+          className="sim-card__cta-btn"
         >
           Get {sim.provider}
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
         </a>
