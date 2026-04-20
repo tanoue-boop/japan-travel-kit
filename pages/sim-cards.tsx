@@ -177,6 +177,46 @@ export default function SIMCardsPage() {
           </div>
         </section>
 
+        {/* Article link */}
+        <div style={{
+          background: "linear-gradient(135deg, #0d1b4b, #1a237e)",
+          borderRadius: "20px",
+          padding: "2rem 1.75rem",
+          marginTop: "3rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "1rem",
+        }}>
+          <div>
+            <p style={{ fontSize: "0.72rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#f87171", marginBottom: "0.3rem" }}>
+              In-depth guide
+            </p>
+            <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>
+              Best eSIM for Japan 2025: Tested &amp; Compared
+            </p>
+            <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.55)", marginTop: "0.3rem" }}>
+              Which eSIM is actually right for your trip? We break it down.
+            </p>
+          </div>
+          <Link href="/best-esim-japan" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.4rem",
+            background: "#c62828",
+            color: "#fff",
+            padding: "0.7rem 1.4rem",
+            borderRadius: "10px",
+            fontSize: "0.88rem",
+            fontWeight: 700,
+            textDecoration: "none",
+            whiteSpace: "nowrap",
+          }}>
+            Read the guide →
+          </Link>
+        </div>
+
         {/* FAQ */}
         <section className={styles.faq}>
           <div className={styles.faqHead}>
