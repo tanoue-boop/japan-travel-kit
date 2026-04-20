@@ -209,7 +209,7 @@ export default function AiraloJapanReviewPage() {
                 <p className={styles.verdictStatValue}>Docomo &amp; SoftBank</p>
               </div>
             </div>
-            <a href="#" className={styles.verdictBtn}>
+            <a href="https://airalo.pxf.io/c/7213504/1268485/15608" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
               Get Airalo Japan eSIM →
             </a>
           </div>
@@ -340,7 +340,7 @@ export default function AiraloJapanReviewPage() {
             Airalo Japan is our top pick. For unlimited data or longer stays with voice requirements,
             consider Holafly or Sakura Mobile instead.
           </p>
-          <a href="#" className={styles.pickCta}>
+          <a href="https://airalo.pxf.io/c/7213504/1268485/15608" className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
             Get Airalo Japan eSIM →
           </a>
         </section>

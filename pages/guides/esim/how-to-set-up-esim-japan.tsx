@@ -83,10 +83,10 @@ const troubleshootItems = [
 ];
 
 const esimRecommend = [
-  { label: "Best overall",   name: "Airalo",        detail: "From $4.50 / 7 days",   href: "#" },
+  { label: "Best overall",   name: "Airalo",        detail: "From $4.50 / 7 days",   href: "https://airalo.pxf.io/c/7213504/1268485/15608" },
   { label: "Unlimited data", name: "Holafly",       detail: "From $19 / 5 days",     href: "#" },
   { label: "Best value",     name: "eSIM Go",       detail: "From $3.00 / 7 days",   href: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN" },
-  { label: "Long stay",      name: "Sakura Mobile", detail: "Voice + data plans",     href: "#" },
+  { label: "Long stay",      name: "Sakura Mobile", detail: "Voice + data plans",     href: "https://p.sakuramobile.jp/idevaffiliate.php?id=486" },
 ];
 
 const faqItems = [

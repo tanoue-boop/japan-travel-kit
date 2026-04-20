@@ -216,7 +216,7 @@ export default function SakuraMobileReviewPage() {
                 <p className={styles.verdictStatValue}>Docomo</p>
               </div>
             </div>
-            <a href="#" className={styles.verdictBtn}>
+            <a href="https://p.sakuramobile.jp/idevaffiliate.php?id=486" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
               Get Sakura Mobile →
             </a>
           </div>
@@ -398,7 +398,7 @@ export default function SakuraMobileReviewPage() {
             better value. But for anyone spending a month in Japan — whether studying, working
             remotely, or taking an extended holiday — Sakura Mobile is the most complete solution available.
           </p>
-          <a href="#" className={styles.pickCta}>
+          <a href="https://p.sakuramobile.jp/idevaffiliate.php?id=486" className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
             Get Sakura Mobile →
           </a>
         </section>
