@@ -31,6 +31,13 @@ const articles = [
     desc: "Holafly offers unlimited data for Japan — but is the price right? We tested speeds, coverage, and setup to give you an honest verdict.",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/how-to-set-up-esim-japan",
+    badge: "Guide",
+    title: "How to Set Up an eSIM in Japan (Step-by-Step)",
+    desc: "Install your Japan eSIM before you fly and have 4G the moment you land. Works for iPhone and Android. Takes under 5 minutes.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
