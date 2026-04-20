@@ -9,7 +9,6 @@ export type SIMCard = {
   id: string;
   name: string;
   provider: string;
-  logo: string;
   badge?: string;
   badgeColor?: string;
   summary: string;
@@ -19,13 +18,13 @@ export type SIMCard = {
   smsIncluded: boolean;
   esim: boolean;
   physicalSim: boolean;
-  setupEase: number; // 1-5
+  setupEase: number;
   support: string;
   pros: string[];
   cons: string[];
   plans: DataPlan[];
   affiliateUrl: string;
-  rating: number; // out of 5
+  rating: number;
   reviewCount: number;
 };
 
@@ -34,12 +33,11 @@ export const simCards: SIMCard[] = [
     id: "airalo-japan",
     name: "Airalo Japan eSIM",
     provider: "Airalo",
-    logo: "/logos/airalo.svg",
     badge: "Best for eSIM",
     badgeColor: "bg-blue-500",
     summary:
-      "The most popular eSIM marketplace with instant activation. Install before you land in Japan.",
-    coverage: "Docomo & SoftBank networks (wide coverage)",
+      "The world's largest eSIM marketplace with 10M+ users. Install before you land and activate instantly on arrival — no queues, no physical SIM.",
+    coverage: "Docomo & SoftBank (nationwide)",
     speed: "Up to 150 Mbps (LTE/4G)",
     voiceCall: false,
     smsIncluded: false,
@@ -48,137 +46,68 @@ export const simCards: SIMCard[] = [
     setupEase: 5,
     support: "24/7 live chat",
     pros: [
-      "Install instantly before arrival",
-      "No physical SIM needed",
-      "Competitive pricing",
-      "Covers major cities & rural areas",
+      "World's largest eSIM marketplace",
+      "Instant activation before you land",
+      "Competitive pricing from $4.50",
+      "Trusted by 10M+ travellers",
     ],
-    cons: ["Data-only (no calls/SMS)", "Requires eSIM-compatible phone"],
+    cons: [
+      "Data-only (no voice calls or SMS)",
+      "Requires eSIM-compatible phone",
+    ],
     plans: [
-      {
-        duration: "7 days",
-        data: "1 GB",
-        price: 4.5,
-        affiliateUrl: "https://www.airalo.com/japan-esim",
-      },
-      {
-        duration: "30 days",
-        data: "3 GB",
-        price: 9.5,
-        affiliateUrl: "https://www.airalo.com/japan-esim",
-      },
-      {
-        duration: "30 days",
-        data: "10 GB",
-        price: 18.0,
-        affiliateUrl: "https://www.airalo.com/japan-esim",
-      },
+      { duration: "7 days",  data: "1 GB",  price: 4.50,  affiliateUrl: "#" },
+      { duration: "30 days", data: "3 GB",  price: 9.50,  affiliateUrl: "#" },
+      { duration: "30 days", data: "10 GB", price: 18.00, affiliateUrl: "#" },
     ],
-    affiliateUrl: "https://www.airalo.com/japan-esim",
+    affiliateUrl: "#",
     rating: 4.5,
     reviewCount: 12400,
   },
   {
-    id: "iijmio-tourist",
-    name: "IIJmio Tourist SIM",
-    provider: "IIJ",
-    logo: "/logos/iijmio.svg",
-    badge: "Best Value",
-    badgeColor: "bg-green-500",
-    summary:
-      "Reliable Japanese carrier SIM with wide Docomo network coverage. Great balance of price and performance.",
-    coverage: "Docomo network (nationwide)",
-    speed: "Up to 150 Mbps (LTE/4G)",
-    voiceCall: true,
-    smsIncluded: true,
-    esim: true,
-    physicalSim: true,
-    setupEase: 4,
-    support: "Email support (English available)",
-    pros: [
-      "Docomo's nationwide network",
-      "Voice calls included",
-      "Both eSIM & physical SIM",
-      "Affordable pricing",
-    ],
-    cons: ["Slower setup than app-based eSIMs", "Limited English support"],
-    plans: [
-      {
-        duration: "15 days",
-        data: "5 GB",
-        price: 16.0,
-        affiliateUrl: "https://www.iijmio.jp/hdd/",
-      },
-      {
-        duration: "30 days",
-        data: "10 GB",
-        price: 24.0,
-        affiliateUrl: "https://www.iijmio.jp/hdd/",
-      },
-    ],
-    affiliateUrl: "https://www.iijmio.jp/hdd/",
-    rating: 4.3,
-    reviewCount: 5800,
-  },
-  {
-    id: "klook-sim",
-    name: "Klook Japan SIM Card",
-    provider: "Klook",
-    logo: "/logos/klook.svg",
-    badge: "Best for Pickup",
+    id: "holafly-japan",
+    name: "Holafly Japan eSIM",
+    provider: "Holafly",
+    badge: "Unlimited Data",
     badgeColor: "bg-orange-500",
     summary:
-      "Pick up at the airport on arrival. Unlimited data option available. Perfect if you forgot to pre-order.",
-    coverage: "Softbank network",
-    speed: "Up to 75 Mbps (LTE/4G)",
+      "Unlimited data eSIM — no caps, no throttling worries. Hugely popular with European and American travellers who need constant connectivity.",
+    coverage: "Softbank network (nationwide)",
+    speed: "Up to 150 Mbps (LTE/4G)",
     voiceCall: false,
     smsIncluded: false,
-    esim: false,
-    physicalSim: true,
+    esim: true,
+    physicalSim: false,
     setupEase: 5,
-    support: "Klook customer support (multilingual)",
+    support: "24/7 live chat (English)",
     pros: [
-      "Available at major airports",
-      "No pre-setup needed",
-      "Unlimited data option",
-      "Easy to use",
+      "Truly unlimited data",
+      "No speed caps or fair-use throttling",
+      "Popular with US & European travellers",
+      "Easy QR-code setup",
     ],
     cons: [
-      "Data-only",
-      "SoftBank coverage (slightly less rural coverage)",
-      "More expensive than eSIM options",
+      "Data-only (no calls or SMS)",
+      "Pricier than data-capped alternatives",
+      "eSIM-only device required",
     ],
     plans: [
-      {
-        duration: "8 days",
-        data: "Unlimited",
-        price: 29.0,
-        affiliateUrl: "https://www.klook.com/",
-      },
-      {
-        duration: "15 days",
-        data: "Unlimited",
-        price: 39.0,
-        affiliateUrl: "https://www.klook.com/",
-      },
-      {
-        duration: "30 days",
-        data: "Unlimited",
-        price: 55.0,
-        affiliateUrl: "https://www.klook.com/",
-      },
+      { duration: "5 days",  data: "Unlimited", price: 19.00, affiliateUrl: "#" },
+      { duration: "10 days", data: "Unlimited", price: 27.00, affiliateUrl: "#" },
+      { duration: "30 days", data: "Unlimited", price: 49.00, affiliateUrl: "#" },
     ],
-    affiliateUrl: "https://www.klook.com/",
-    rating: 4.1,
-    reviewCount: 8200,
+    affiliateUrl: "#",
+    rating: 4.3,
+    reviewCount: 8700,
   },
   {
     id: "sakura-mobile",
     name: "Sakura Mobile SIM",
     provider: "Sakura Mobile",
-    logo: "/logos/sakura.svg",
+    badge: "Best for Long Stay",
+    badgeColor: "bg-green-500",
     summary:
-      "Specialist in foreigner-friendly SIMs with English support. Monthly plans available for longer stays.",
+      "The go-to choice for longer stays and travellers who want English-speaking support. Offers both physical SIM and eSIM with optional voice calling.",
     coverage: "Docomo network (nationwide)",
     speed: "Up to 150 Mbps (LTE/4G)",
     voiceCall: true,
@@ -188,28 +117,58 @@ export const simCards: SIMCard[] = [
     setupEase: 4,
     support: "English phone & email support",
     pros: [
-      "Excellent English support",
-      "Monthly plans for long stays",
-      "Voice calls & SMS",
-      "Docomo network",
+      "Full English customer support",
+      "Voice calls & SMS included",
+      "Physical SIM or eSIM available",
+      "Best for stays of 1 month+",
     ],
-    cons: ["Higher price than budget options", "Slower delivery"],
+    cons: [
+      "Higher price than data-only options",
+      "Slightly slower initial setup",
+    ],
     plans: [
-      {
-        duration: "30 days",
-        data: "7 GB",
-        price: 28.0,
-        affiliateUrl: "https://www.sakuramobile.jp/",
-      },
-      {
-        duration: "30 days",
-        data: "15 GB",
-        price: 38.0,
-        affiliateUrl: "https://www.sakuramobile.jp/",
-      },
+      { duration: "30 days", data: "7 GB",  price: 28.00, affiliateUrl: "#" },
+      { duration: "30 days", data: "15 GB", price: 38.00, affiliateUrl: "#" },
+      { duration: "30 days", data: "30 GB", price: 52.00, affiliateUrl: "#" },
     ],
-    affiliateUrl: "https://www.sakuramobile.jp/",
+    affiliateUrl: "#",
     rating: 4.4,
     reviewCount: 3100,
+  },
+  {
+    id: "esim-go-japan",
+    name: "eSIM Go Japan",
+    provider: "eSIM Go",
+    badge: "Best Value",
+    badgeColor: "bg-blue-500",
+    summary:
+      "Outstanding value eSIM covering 190+ countries. Ideal for budget-conscious travellers or those visiting multiple countries in one trip.",
+    coverage: "Docomo network (nationwide)",
+    speed: "Up to 150 Mbps (LTE/4G)",
+    voiceCall: false,
+    smsIncluded: false,
+    esim: true,
+    physicalSim: false,
+    setupEase: 5,
+    support: "Email support (English)",
+    pros: [
+      "Best price-per-GB on the market",
+      "Works in 190+ countries",
+      "Instant activation via QR code",
+      "Great for multi-country trips",
+    ],
+    cons: [
+      "Data-only (no voice or SMS)",
+      "Smaller brand than Airalo or Holafly",
+      "eSIM-compatible phone required",
+    ],
+    plans: [
+      { duration: "7 days",  data: "1 GB",  price: 3.50,  affiliateUrl: "#" },
+      { duration: "15 days", data: "5 GB",  price: 8.00,  affiliateUrl: "#" },
+      { duration: "30 days", data: "10 GB", price: 14.00, affiliateUrl: "#" },
+    ],
+    affiliateUrl: "#",
+    rating: 4.2,
+    reviewCount: 2900,
   },
 ];
