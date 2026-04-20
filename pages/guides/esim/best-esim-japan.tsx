@@ -1,9 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import { simCards } from "../lib/sim-cards";
-import styles from "../styles/BestEsimJapan.module.css";
-
-const esimCards = simCards.filter((s) => s.esim);
+import { simCards } from "../../../lib/sim-cards";
+import styles from "../../../styles/BestEsimJapan.module.css";
 
 const topPicks = [
   {
@@ -91,9 +89,9 @@ export default function BestEsimJapanPage() {
           name="description"
           content="The best eSIMs for Japan in 2025: Airalo, Holafly, eSIM Go, and Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/best-esim-japan" />
+        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/best-esim-japan" />
         <meta property="og:title" content="Best eSIM for Japan 2025: Top 4 Picks Tested & Compared" />
-        <meta property="og:url" content="https://japan-travel-kit.com/best-esim-japan" />
+        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/best-esim-japan" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -117,7 +115,11 @@ export default function BestEsimJapanPage() {
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <Link href="/sim-cards" className={styles.breadLink}>SIM Cards</Link>
+          <Link href="/guides" className={styles.breadLink}>Guides</Link>
+          <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+          <Link href="/guides/esim" className={styles.breadLink}>eSIM</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
@@ -175,7 +177,7 @@ export default function BestEsimJapanPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {topPicks.map(({ id, bestFor, ctaLabel, ctaExternal }) => {
+                  {topPicks.map(({ id, bestFor, ctaLabel }) => {
                     const sim = simCards.find((s) => s.id === id)!;
                     const cheapest = sim.plans.reduce((a, b) => (a.price < b.price ? a : b));
                     const url = sim.affiliateUrl === "#" ? "/sim-cards" : sim.affiliateUrl;
@@ -223,7 +225,7 @@ export default function BestEsimJapanPage() {
           <span className={styles.sectionLabel}>Our picks</span>
           <h2 className={styles.sectionTitle}>Top 4 Japan eSIMs</h2>
           <div className={styles.picksList}>
-            {topPicks.map(({ id, rank, bestFor, badgeCls, target, ctaLabel, ctaExternal }) => {
+            {topPicks.map(({ id, rank, bestFor, badgeCls, target, ctaLabel }) => {
               const sim = simCards.find((s) => s.id === id)!;
               const url = sim.affiliateUrl === "#" ? "/sim-cards" : sim.affiliateUrl;
               const isExternal = sim.affiliateUrl !== "#";

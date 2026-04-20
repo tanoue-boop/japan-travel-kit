@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Header.module.css";
 
 const navLinks = [
+  { href: "/guides",         label: "Guides",      icon: "📖" },
   { href: "/sim-cards",      label: "SIM Cards",   icon: "📱" },
   { href: "/wifi-pocket",    label: "Pocket WiFi", icon: "📶" },
   { href: "/transportation", label: "Transport",   icon: "🚅" },

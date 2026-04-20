@@ -1,0 +1,85 @@
+import Head from "next/head";
+import Link from "next/link";
+import styles from "../../../styles/Guides.module.css";
+
+const articles = [
+  {
+    href: "/guides/esim/best-esim-japan",
+    badge: "Comparison",
+    title: "Best eSIM for Japan 2025: Top 4 Picks Tested & Compared",
+    desc: "Airalo, Holafly, eSIM Go, and Sakura Mobile — compared on price, speed, coverage, and ease of setup. Which one is right for your trip?",
+    date: "April 2025",
+  },
+];
+
+export default function GuidesEsimPage() {
+  return (
+    <>
+      <Head>
+        <title>Japan eSIM Guides 2025 | Japan Travel Kit</title>
+        <meta
+          name="description"
+          content="eSIM and SIM card guides for Japan: which eSIM to buy, how to install it, network coverage, and data plan comparisons."
+        />
+        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim" />
+        <meta property="og:title" content="Japan eSIM Guides 2025 | Japan Travel Kit" />
+        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim" />
+      </Head>
+
+      {/* Breadcrumb */}
+      <div className={styles.breadcrumb}>
+        <div className={styles.breadcrumbInner}>
+          <Link href="/" className={styles.breadLink}>Home</Link>
+          <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+          <Link href="/guides" className={styles.breadLink}>Guides</Link>
+          <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+          <span className={styles.breadCurrent}>eSIM & SIM Cards</span>
+        </div>
+      </div>
+
+      {/* Hero */}
+      <section className={styles.hero}>
+        <div className={styles.heroDots} />
+        <div className={styles.heroInner}>
+          <span className={styles.eyebrow}>📱 eSIM & SIM Cards</span>
+          <h1 className={styles.heroTitle}>Japan eSIM Guides</h1>
+          <p className={styles.heroDesc}>
+            Which SIM to buy, how to install a Japan eSIM, network coverage breakdowns,
+            and honest comparisons — so you can stay connected from the moment you land.
+          </p>
+        </div>
+      </section>
+
+      <div className={styles.content}>
+        <Link href="/guides" className={styles.backLink}>
+          ← All guides
+        </Link>
+
+        <span className={styles.sectionLabel}>eSIM & SIM Cards</span>
+        <h2 className={styles.sectionTitle}>
+          {articles.length} {articles.length === 1 ? "Guide" : "Guides"}
+        </h2>
+
+        <div className={styles.articleList}>
+          {articles.map((article) => (
+            <Link key={article.href} href={article.href} className={styles.articleCard}>
+              <div className={styles.articleMeta}>
+                <span className={styles.articleBadge}>{article.badge}</span>
+                <p className={styles.articleTitle}>{article.title}</p>
+                <p className={styles.articleDesc}>{article.desc}</p>
+                <div className={styles.articleFooter}>
+                  <span className={styles.articleDate}>Updated {article.date}</span>
+                  <span className={styles.articleReadMore}>Read guide →</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}

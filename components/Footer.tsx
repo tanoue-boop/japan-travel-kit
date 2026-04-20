@@ -3,6 +3,13 @@ import styles from "../styles/Footer.module.css";
 
 const cols = [
   {
+    title: "Guides",
+    links: [
+      { href: "/guides",                          label: "All Guides"        },
+      { href: "/guides/esim/best-esim-japan",     label: "Best eSIM Japan"   },
+    ],
+  },
+  {
     title: "Connectivity",
     links: [
       { href: "/sim-cards",   label: "SIM Cards & eSIM" },

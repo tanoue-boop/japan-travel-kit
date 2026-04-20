@@ -200,7 +200,7 @@ export default function SIMCardsPage() {
               Which eSIM is actually right for your trip? We break it down.
             </p>
           </div>
-          <Link href="/best-esim-japan" style={{
+          <Link href="/guides/esim/best-esim-japan" style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "0.4rem",
