@@ -17,6 +17,13 @@ const articles = [
     desc: "We tested Airalo's Japan eSIM plans, speeds, and setup process. An honest verdict on pricing, coverage, and who it's best for.",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/esim-vs-sim-japan",
+    badge: "Guide",
+    title: "eSIM vs SIM Card for Japan: Which Should You Get?",
+    desc: "Both work in Japan — but one is faster, cheaper, and easier to set up. We compare price, compatibility, and convenience to help you choose.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {

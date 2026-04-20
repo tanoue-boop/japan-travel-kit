@@ -665,3 +665,96 @@
   transition: background 0.15s, transform 0.1s;
 }
 .ctaBannerBtn:hover { background: #b71c1c; transform: translateY(-1px); }
+
+/* Quick Answer / Choice Box */
+.choiceSection { margin-bottom: 3.5rem; }
+.choiceGrid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 600px) { .choiceGrid { grid-template-columns: repeat(2, 1fr); } }
+
+.choiceCard {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid #e5e7eb;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+.choiceCardHeader {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.choiceCardHeaderEsim { background: #0d1b4b; }
+.choiceCardHeaderSim  { background: #374151; }
+.choiceCardIcon {
+  width: 2rem; height: 2rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.choiceCardTitle {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+.choiceCardSubtitle {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+.choiceCardBody {
+  background: #fff;
+  padding: 1.25rem;
+}
+.choiceList { list-style: none; padding: 0; margin: 0; }
+.choiceList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.84rem;
+  color: #374151;
+  line-height: 1.5;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.choiceList li:last-child { border-bottom: none; }
+.choiceCheck { color: #22c55e; font-weight: 800; flex-shrink: 0; margin-top: 0.05rem; }
+
+/* Comparison feature table */
+.comparisonFeature { margin-bottom: 3.5rem; }
+.featureTable { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.featureTable thead tr { background: #0d1b4b; }
+.featureTable th {
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.78);
+  white-space: nowrap;
+}
+.featureTable tbody tr { border-top: 1px solid #f3f4f6; transition: background 0.15s; }
+.featureTable tbody tr:hover { background: #f8fafc; }
+.featureTable td { padding: 0.85rem 1.25rem; color: #374151; vertical-align: middle; }
+.ftFeature { font-weight: 700; color: #0d1b4b; font-size: 0.85rem; }
+.ftEsim  { color: #1a56db; font-weight: 600; font-size: 0.83rem; }
+.ftSim   { color: #374151; font-size: 0.83rem; }
+.ftWinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+}
+.ftWinnerEsim { background: #e8f0fe; color: #1a56db; }
+.ftWinnerSim  { background: #f3f4f6; color: #6b7280; }
+.ftWinnerTie  { background: #fef3c7; color: #92400e; }

@@ -60,7 +60,7 @@ const categories = [
     Icon: IconSim,
     name: "eSIM & SIM Cards",
     desc: "Which SIM to buy, how to install an eSIM, network coverage, and data plan comparisons for Japan.",
-    badge: "2 Guides",
+    badge: "3 Guides",
     badgeCls: styles.badgeSoftRed,
     soon: false,
   },
