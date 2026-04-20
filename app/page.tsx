@@ -119,7 +119,7 @@ export default function HomePage() {
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] mb-6 tracking-tight">
               Everything you need
               <br />
-              <span className="text-gradient bg-gradient-to-r from-red-300 to-rose-400 [background-clip:text] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
+              <span className="text-red-300">
                 before Japan
               </span>
             </h1>

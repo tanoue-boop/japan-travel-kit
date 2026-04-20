@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
   --crimson: #c62828;
@@ -23,7 +23,6 @@ body {
 }
 
 @layer components {
-  /* ── Buttons ── */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
            px-7 py-3.5 rounded-full font-semibold text-sm
@@ -48,7 +47,6 @@ body {
            hover:bg-crimson-50 transition-all duration-200;
   }
 
-  /* ── Cards ── */
   .card {
     @apply bg-white rounded-2xl shadow-card border border-gray-100 overflow-hidden
            transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
@@ -58,12 +56,10 @@ body {
     @apply bg-white rounded-2xl border border-gray-100 overflow-hidden;
   }
 
-  /* ── Badge ── */
   .badge {
     @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
   }
 
-  /* ── Section title ── */
   .section-label {
     @apply text-xs font-bold uppercase tracking-widest text-crimson-500 mb-2;
   }
@@ -72,13 +68,11 @@ body {
     @apply font-display text-3xl md:text-4xl font-bold text-navy-800 leading-tight;
   }
 
-  /* ── Divider ── */
   .divider {
     @apply border-t border-gray-100 my-6;
   }
 }
 
-/* Seigaiha (wave) pattern overlay for hero */
 .hero-pattern::before {
   content: '';
   position: absolute;
@@ -88,15 +82,6 @@ body {
   pointer-events: none;
 }
 
-/* Gradient text */
-.text-gradient {
-  background: linear-gradient(135deg, #ef5350, #c62828);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Shimmer on stat cards */
 .shimmer {
   position: relative;
   overflow: hidden;

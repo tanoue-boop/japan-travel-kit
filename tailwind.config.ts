@@ -28,8 +28,8 @@ const config: Config = {
         "cream": "#fdf8f0",
       },
       fontFamily: {
-        display: ["'Playfair Display'", "Georgia", "serif"],
-        sans: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
+        display: ["Playfair Display", "Georgia", "serif"],
+        sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "seigaiha": "url('/patterns/seigaiha.svg')",
