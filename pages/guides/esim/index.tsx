@@ -24,6 +24,13 @@ const articles = [
     desc: "Both work in Japan — but one is faster, cheaper, and easier to set up. We compare price, compatibility, and convenience to help you choose.",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/holafly-japan-review",
+    badge: "Review",
+    title: "Holafly Japan eSIM Review 2025: Unlimited Data Worth It?",
+    desc: "Holafly offers unlimited data for Japan — but is the price right? We tested speeds, coverage, and setup to give you an honest verdict.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
