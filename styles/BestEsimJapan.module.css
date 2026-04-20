@@ -410,6 +410,214 @@
   border-top: 1px solid #f3f4f6;
 }
 
+/* Quick Verdict Box */
+.verdictBox {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+}
+.verdictHeader {
+  background: #0d1b4b;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.verdictLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.verdictStarRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.verdictStars { display: flex; gap: 0.15rem; }
+.starFull  { color: #fbbf24; font-size: 1.1rem; line-height: 1; }
+.starHalf  { color: #fbbf24; font-size: 1.1rem; line-height: 1; opacity: 0.55; }
+.verdictScore {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+}
+.verdictBody { padding: 1.5rem; }
+.verdictGrid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 480px) { .verdictGrid { grid-template-columns: repeat(3, 1fr); } }
+.verdictStat {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+.verdictStatLabel {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  margin-bottom: 0.3rem;
+}
+.verdictStatValue {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0d1b4b;
+  line-height: 1.3;
+}
+.verdictBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #c62828;
+  color: #fff;
+  padding: 0.8rem 1.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.1s;
+}
+.verdictBtn:hover { background: #b71c1c; transform: translateY(-1px); }
+
+/* Generic body section */
+.bodySection { margin-bottom: 3.5rem; }
+.bodyText {
+  font-size: 0.925rem;
+  color: #374151;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.bodyText:last-child { margin-bottom: 0; }
+
+/* Pros / Cons standalone */
+.prosConsSection { margin-bottom: 3.5rem; }
+
+/* Who For */
+.whoForSection { margin-bottom: 3.5rem; }
+.whoForGrid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 560px) { .whoForGrid { grid-template-columns: repeat(3, 1fr); } }
+.whoForCard {
+  background: #fff;
+  border: 1px solid #f3f4f6;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.whoForIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #fff5f5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  color: #c62828;
+}
+.whoForTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0d1b4b;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+.whoForDesc {
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.55;
+}
+
+/* Verdict text section */
+.verdictSection { margin-bottom: 3.5rem; }
+.verdictText {
+  font-size: 0.925rem;
+  color: #374151;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.verdictText:last-of-type { margin-bottom: 1.5rem; }
+
+/* Related articles */
+.relatedSection { margin-bottom: 3.5rem; }
+.relatedGrid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 560px) { .relatedGrid { grid-template-columns: repeat(2, 1fr); } }
+.relatedCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border: 1.5px solid #f3f4f6;
+  border-radius: 16px;
+  padding: 1.25rem;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s, transform 0.15s, border-color 0.15s;
+}
+.relatedCard:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  border-color: #fecaca;
+}
+.relatedCardSoon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border: 1.5px solid #f3f4f6;
+  border-radius: 16px;
+  padding: 1.25rem;
+  opacity: 0.5;
+  cursor: default;
+}
+.relatedIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #0d1b4b;
+}
+.relatedMeta { flex: 1; min-width: 0; }
+.relatedTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0d1b4b;
+  line-height: 1.35;
+  margin-bottom: 0.2rem;
+}
+.relatedCard:hover .relatedTitle { color: #c62828; }
+.relatedArrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #c62828;
+}
+.relatedSoon {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 /* CTA Banner */
 .ctaBanner {
   background: linear-gradient(135deg, #0d1b4b 0%, #1a237e 100%);

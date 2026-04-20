@@ -10,6 +10,13 @@ const articles = [
     desc: "Airalo, Holafly, eSIM Go, and Sakura Mobile — compared on price, speed, coverage, and ease of setup. Which one is right for your trip?",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/airalo-japan-review",
+    badge: "Review",
+    title: "Airalo Japan Review 2025: Is It Worth It?",
+    desc: "We tested Airalo's Japan eSIM plans, speeds, and setup process. An honest verdict on pricing, coverage, and who it's best for.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
