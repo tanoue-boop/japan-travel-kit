@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import styles from "../styles/Header.module.css";
 
 const navLinks = [
   { href: "/sim-cards",      label: "SIM Cards",   icon: "📱" },
@@ -15,66 +16,50 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handler = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
   }, []);
 
   return (
-    <header className={`header${scrolled ? " scrolled" : ""}`}>
-      <div className="header__inner">
-        {/* Logo */}
-        <Link href="/" className="logo">
-          <span className="logo__icon">🗾</span>
-          <span className="logo__text">
-            Japan <em>Travel Kit</em>
-          </span>
+    <header className={`${styles.header}${scrolled ? ` ${styles.scrolled}` : ""}`}>
+      <div className={styles.inner}>
+        <Link href="/" className={styles.logo}>
+          <span className={styles.logoIcon}>🗾</span>
+          <span className={styles.logoText}>Japan <em>Travel Kit</em></span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="header-nav">
+        <nav className={styles.nav}>
           {navLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="header-nav__link">
+            <Link key={l.href} href={l.href} className={styles.navLink}>
               <span>{l.icon}</span>{l.label}
             </Link>
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <Link href="/sim-cards" className="btn-nav header-cta">
-          Get Connected →
-        </Link>
+        <div className={styles.cta}>
+          <Link href="/sim-cards" className={styles.ctaBtn}>Get Connected →</Link>
+        </div>
 
-        {/* Hamburger */}
         <button
-          className={`hamburger${open ? " open" : ""}`}
+          className={`${styles.hamburger}${open ? ` ${styles.open}` : ""}`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
-          <span className="hamburger__bar" />
-          <span className="hamburger__bar" />
-          <span className="hamburger__bar" />
+          <span className={styles.bar} />
+          <span className={styles.bar} />
+          <span className={styles.bar} />
         </button>
       </div>
 
-      {/* Mobile nav */}
-      <nav className={`mobile-nav${open ? " open" : ""}`}>
+      <nav className={`${styles.mobileNav}${open ? ` ${styles.open}` : ""}`}>
         {navLinks.map((l) => (
-          <Link
-            key={l.href}
-            href={l.href}
-            className="mobile-nav__link"
-            onClick={() => setOpen(false)}
-          >
-            <span className="mobile-nav__icon">{l.icon}</span>
+          <Link key={l.href} href={l.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
+            <span className={styles.mobileIcon}>{l.icon}</span>
             {l.label}
           </Link>
         ))}
-        <Link
-          href="/sim-cards"
-          className="btn-primary mobile-nav__cta"
-          onClick={() => setOpen(false)}
-        >
+        <Link href="/sim-cards" className={styles.mobileCta} onClick={() => setOpen(false)}>
           Get Connected →
         </Link>
       </nav>

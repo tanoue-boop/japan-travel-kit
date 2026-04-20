@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "../styles/Footer.module.css";
 
 const cols = [
   {
@@ -27,32 +28,30 @@ const cols = [
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer__inner">
-        <div className="footer__grid">
-          {/* Brand */}
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+        <div className={styles.grid}>
           <div>
-            <Link href="/" className="footer__logo">
-              <span className="footer__logo-icon">🗾</span>
-              <span className="footer__logo-text">Japan Travel Kit</span>
+            <Link href="/" className={styles.logoRow}>
+              <span className={styles.logoIcon}>🗾</span>
+              <span className={styles.logoText}>Japan Travel Kit</span>
             </Link>
-            <p className="footer__brand-desc">
+            <p className={styles.desc}>
               Practical, unbiased travel info for foreign visitors to Japan.
               Prepared before you land.
             </p>
-            <span className="footer__brand-status">
-              <span className="footer__status-dot" />
+            <span className={styles.status}>
+              <span className={styles.dot} />
               Updated April 2025
             </span>
           </div>
 
-          {/* Nav cols */}
           {cols.map((col) => (
             <div key={col.title}>
-              <p className="footer__col-title">{col.title}</p>
-              <div className="footer__links">
+              <p className={styles.colTitle}>{col.title}</p>
+              <div className={styles.links}>
                 {col.links.map((l) => (
-                  <Link key={l.href} href={l.href} className="footer__link">
+                  <Link key={l.href} href={l.href} className={styles.link}>
                     {l.label}
                   </Link>
                 ))}
@@ -61,11 +60,11 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="footer__bottom">
-          <p className="footer__copy">
+        <div className={styles.bottom}>
+          <p className={styles.copy}>
             &copy; {new Date().getFullYear()} Japan Travel Kit. All rights reserved.
           </p>
-          <p className="footer__aff">
+          <p className={styles.aff}>
             This site contains affiliate links. We may earn a commission at no extra cost to you.
           </p>
         </div>

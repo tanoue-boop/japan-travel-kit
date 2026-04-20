@@ -1,15 +1,16 @@
-import type { SIMCard } from "@/lib/sim-cards";
+import type { SIMCard } from "../lib/sim-cards";
 import StarRating from "./StarRating";
+import styles from "../styles/SIMCardCard.module.css";
 
-const badgeClass: Record<string, string> = {
-  "bg-blue-500":   "badge--blue",
-  "bg-green-500":  "badge--green",
-  "bg-orange-500": "badge--orange",
+const badgeColorMap: Record<string, string> = {
+  "bg-blue-500":   styles.badgeBlue,
+  "bg-green-500":  styles.badgeGreen,
+  "bg-orange-500": styles.badgeOrange,
 };
 
-function FeaturePill({ ok, label }: { ok: boolean; label: string }) {
+function Pill({ ok, label }: { ok: boolean; label: string }) {
   return (
-    <span className={`feature-pill ${ok ? "feature-pill--yes" : "feature-pill--no"}`}>
+    <span className={ok ? styles.pillYes : styles.pillNo}>
       {ok ? "✓" : "✗"} {label}
     </span>
   );
@@ -17,88 +18,85 @@ function FeaturePill({ ok, label }: { ok: boolean; label: string }) {
 
 export default function SIMCardCard({ sim }: { sim: SIMCard }) {
   const cheapest = sim.plans.reduce((a, b) => (a.price < b.price ? a : b));
-  const badgeCls = sim.badgeColor ? (badgeClass[sim.badgeColor] ?? "badge--blue") : "";
+  const badgeCls = sim.badgeColor ? (badgeColorMap[sim.badgeColor] ?? styles.badgeBlue) : "";
 
   return (
-    <article className="sim-card">
+    <article className={styles.card}>
       {/* Header */}
-      <div className="sim-card__header">
-        <div className="sim-card__name-block">
+      <div className={styles.header}>
+        <div className={styles.nameBlock}>
           {sim.badge && (
-            <div className="sim-card__badge-row">
-              <span className={`badge ${badgeCls}`}>{sim.badge}</span>
+            <div className={styles.badgeRow}>
+              <span className={`${styles.badge} ${badgeCls}`}>{sim.badge}</span>
             </div>
           )}
-          <h3 className="sim-card__name">{sim.name}</h3>
+          <h3 className={styles.name}>{sim.name}</h3>
           <StarRating rating={sim.rating} reviewCount={sim.reviewCount} />
-          <p className="sim-card__summary">{sim.summary}</p>
+          <p className={styles.summary}>{sim.summary}</p>
         </div>
-
-        <div className="sim-card__price-block">
-          <p className="sim-card__price-from">From</p>
-          <p className="sim-card__price">${cheapest.price.toFixed(0)}</p>
-          <p className="sim-card__price-currency">USD</p>
+        <div className={styles.priceBlock}>
+          <p className={styles.priceFrom}>From</p>
+          <p className={styles.price}>${cheapest.price.toFixed(0)}</p>
+          <p className={styles.priceCurrency}>USD</p>
         </div>
       </div>
 
       {/* Feature pills */}
-      <div className="sim-card__pills">
-        <FeaturePill ok={sim.voiceCall}   label="Voice calls"  />
-        <FeaturePill ok={sim.smsIncluded} label="SMS"          />
-        <FeaturePill ok={sim.esim}        label="eSIM"         />
-        <FeaturePill ok={sim.physicalSim} label="Physical SIM" />
+      <div className={styles.pills}>
+        <Pill ok={sim.voiceCall}   label="Voice calls"  />
+        <Pill ok={sim.smsIncluded} label="SMS"          />
+        <Pill ok={sim.esim}        label="eSIM"         />
+        <Pill ok={sim.physicalSim} label="Physical SIM" />
       </div>
 
       {/* Specs */}
-      <div className="sim-card__specs">
-        <div className="spec-item">
-          <p className="spec-item__label">Network</p>
-          <p className="spec-item__value">{sim.coverage}</p>
+      <div className={styles.specs}>
+        <div>
+          <p className={styles.specLabel}>Network</p>
+          <p className={styles.specValue}>{sim.coverage}</p>
         </div>
-        <div className="spec-item">
-          <p className="spec-item__label">Speed</p>
-          <p className="spec-item__value">{sim.speed}</p>
+        <div>
+          <p className={styles.specLabel}>Speed</p>
+          <p className={styles.specValue}>{sim.speed}</p>
         </div>
-        <div className="spec-item">
-          <p className="spec-item__label">Support</p>
-          <p className="spec-item__value">{sim.support}</p>
+        <div>
+          <p className={styles.specLabel}>Support</p>
+          <p className={styles.specValue}>{sim.support}</p>
         </div>
       </div>
 
       {/* Plans */}
-      <div className="sim-card__plans">
-        <p className="plans-label">Available Plans</p>
+      <div className={styles.plans}>
+        <p className={styles.plansLabel}>Available Plans</p>
         {sim.plans.map((plan, i) => (
-          <div key={i} className="plan-row">
-            <div className="plan-row__left">
-              <span className="plan-row__data">{plan.data}</span>
-              <span className="plan-row__duration">/ {plan.duration}</span>
+          <div key={i} className={styles.planRow}>
+            <div className={styles.planLeft}>
+              <span className={styles.planData}>{plan.data}</span>
+              <span className={styles.planDur}>/ {plan.duration}</span>
             </div>
-            <span className="plan-row__price">${plan.price.toFixed(2)}</span>
+            <span className={styles.planPrice}>${plan.price.toFixed(2)}</span>
           </div>
         ))}
       </div>
 
       {/* Pros / Cons */}
-      <div className="sim-card__pros-cons">
+      <div className={styles.proscons}>
         <div>
-          <p className="pros-cons__label pros-cons__label--pros">✓ Pros</p>
-          <ul className="pros-cons__list">
+          <p className={`${styles.pcLabel} ${styles.prosLabel}`}>✓ Pros</p>
+          <ul className={styles.pcList}>
             {sim.pros.map((p) => (
-              <li key={p} className="pros-cons__item">
-                <span className="pros-cons__item-icon pros-cons__item-icon--pro">+</span>
-                {p}
+              <li key={p} className={styles.pcItem}>
+                <span className={styles.iconPro}>+</span>{p}
               </li>
             ))}
           </ul>
         </div>
         <div>
-          <p className="pros-cons__label pros-cons__label--cons">✗ Cons</p>
-          <ul className="pros-cons__list">
+          <p className={`${styles.pcLabel} ${styles.consLabel}`}>✗ Cons</p>
+          <ul className={styles.pcList}>
             {sim.cons.map((c) => (
-              <li key={c} className="pros-cons__item">
-                <span className="pros-cons__item-icon pros-cons__item-icon--con">−</span>
-                {c}
+              <li key={c} className={styles.pcItem}>
+                <span className={styles.iconCon}>−</span>{c}
               </li>
             ))}
           </ul>
@@ -106,12 +104,12 @@ export default function SIMCardCard({ sim }: { sim: SIMCard }) {
       </div>
 
       {/* CTA */}
-      <div className="sim-card__cta">
+      <div className={styles.cta}>
         <a
           href={sim.affiliateUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
-          className="sim-card__cta-btn"
+          className={styles.ctaBtn}
         >
           Get {sim.provider}
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

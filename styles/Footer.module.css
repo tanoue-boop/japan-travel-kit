@@ -1,0 +1,105 @@
+.footer {
+  background: #080e2d;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 5rem;
+}
+
+.inner {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 3.5rem 1rem 2rem;
+}
+@media (min-width: 640px) { .inner { padding: 3.5rem 1.5rem 2rem; } }
+
+.grid {
+  display: grid;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  .grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2rem; }
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+  text-decoration: none;
+}
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  background: #c62828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.logoText {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.desc {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 1rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+.colTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.link {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.link:hover { color: #fff; }
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .bottom { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+.copy { font-size: 0.78rem; }
+.aff  { font-size: 0.72rem; color: rgba(255, 255, 255, 0.25); }
