@@ -66,6 +66,13 @@ const articles = [
     desc: "1 week or 1 month? The right SIM depends on how long you're staying. We match the best option to every trip length from 1 day to 1 month+.",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/japan-esim-iphone",
+    badge: "Guide",
+    title: "Best eSIM for Japan on iPhone (2025): Top Picks & Setup Guide",
+    desc: "Which eSIM works best for Japan on iPhone XS to iPhone 16? We compare Airalo, Holafly, and eSIM Go — plus a full step-by-step setup guide.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
