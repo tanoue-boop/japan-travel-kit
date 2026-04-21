@@ -38,7 +38,7 @@ const picks = [
       "Requires eSIM-compatible iPhone (XS or later)",
     ],
     summary:
-      "Airalo is the smoothest eSIM experience on iPhone. Their app lets you scan, install, and manage your Japan eSIM without ever leaving the app — no hunting through Settings. Plans start at $4.50 for 1 GB / 7 days on Docomo and SoftBank.",
+      "Airalo is the smoothest eSIM experience on iPhone. Their app lets you scan, install, and manage your Japan eSIM without ever leaving the app — no need to dig through Settings. Plans start at $4.50 for 1 GB / 7 days on Docomo and SoftBank.",
   },
   {
     num: 2,
@@ -61,7 +61,7 @@ const picks = [
       "eSIM-compatible iPhone required",
     ],
     summary:
-      "If you stream Apple TV+, use FaceTime Video frequently, or simply hate tracking data, Holafly's unlimited plan removes all anxiety. At $19 for 5 days or $49 for 30 days, it's the best unlimited eSIM for iPhone users visiting Japan.",
+      "If you stream Apple TV+, use FaceTime Video frequently, or simply hate tracking data, Holafly's unlimited plan takes all the worry out of staying connected. At $19 for 5 days or $49 for 30 days, it's the best unlimited eSIM for iPhone users visiting Japan.",
   },
   {
     num: 3,
@@ -107,7 +107,7 @@ const picks = [
       "Not ideal for short trips",
     ],
     summary:
-      "For longer stays where you need to make calls — booking restaurants, contacting accommodation, or handling admin — Sakura Mobile is the only tourist option with voice calls and real English support. Works as eSIM on iPhone XS and later.",
+      "For longer stays where you need to make calls — booking restaurants, contacting accommodation, or handling admin tasks — Sakura Mobile is the only tourist option with voice calls and real English support. Works as an eSIM on iPhone XS and later.",
   },
 ];
 

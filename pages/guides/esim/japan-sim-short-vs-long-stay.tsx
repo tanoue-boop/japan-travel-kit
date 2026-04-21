@@ -29,7 +29,7 @@ const faqItems = [
   },
   {
     q: "Is 1 GB enough for a week in Japan?",
-    a: "Yes, for light use. 1 GB covers roughly 5 hours of navigation, around 600 social media posts loaded, and plenty of messaging over seven days. If you avoid streaming video and use Wi-Fi at your accommodation, 1 GB is plenty. eSIM Go's 1 GB / 7-day plan at $3.50 is a solid choice for light users.",
+    a: "Yes, for light use. 1 GB covers roughly 5 hours of navigation, around 600 social media posts scrolled, and plenty of messaging over seven days. If you avoid streaming video and use Wi-Fi at your accommodation, 1 GB is plenty. eSIM Go's 1 GB / 7-day plan at $3.50 is a solid choice for light users.",
   },
   {
     q: "Can I extend my eSIM plan in Japan?",
@@ -208,7 +208,7 @@ export default function JapanSimShortVsLongStayPage() {
           </p>
           <p className={styles.bodyText}>
             Heavy users (frequent video calls, hotspot sharing, or streaming) should consider
-            Holafly&apos;s unlimited plan from $27 / 10 days — no data anxiety for the whole trip.
+            Holafly&apos;s unlimited plan from $27 / 10 days — no data worries for the entire trip.
           </p>
 
           <div className={styles.pickGrid}>
@@ -244,7 +244,7 @@ export default function JapanSimShortVsLongStayPage() {
             Trips of two to four weeks cover a huge range of data needs. If you&apos;re a light user,
             eSIM Go&apos;s 10 GB / 30-day plan at $14 is the most cost-effective option. But if you
             stream, hotspot your laptop, or simply don&apos;t want to track your data — unlimited is
-            worth the price of mind.
+            worth the peace of mind.
           </p>
           <p className={styles.bodyText}>
             <strong>Our pick: Holafly Unlimited.</strong> At $27 for 10 days or $49 for 30 days,
@@ -290,8 +290,8 @@ export default function JapanSimShortVsLongStayPage() {
           <h2 className={styles.sectionTitle}>1 Month+: Best SIM for Long-Term Stays</h2>
           <p className={styles.bodyText}>
             Staying a month or more changes what you need from a SIM. Data alone isn&apos;t enough —
-            you may need to make calls to book restaurants, contact accommodation, or deal with
-            admin. English-language support becomes genuinely important when something goes wrong
+            you may need to make calls to book restaurants, contact your accommodation, or handle
+            admin tasks. English-language support becomes genuinely important when something goes wrong
             three weeks in.
           </p>
           <p className={styles.bodyText}>

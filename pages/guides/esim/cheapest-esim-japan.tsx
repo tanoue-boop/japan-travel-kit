@@ -59,7 +59,7 @@ const picks = [
       "eSIM-compatible phone required",
     ],
     summary:
-      "Airalo costs a little more than eSIM Go ($4.50 vs $3.50 for 1 GB), but you get 24/7 live chat support and the backing of the world's largest eSIM marketplace. A great choice if you want budget pricing with better support coverage.",
+      "Airalo costs a little more than eSIM Go ($4.50 vs $3.50 for 1 GB), but you get 24/7 live chat support and the backing of the world's largest eSIM marketplace. A great choice if you want budget pricing with stronger customer support.",
   },
   {
     num: 3,
@@ -82,7 +82,7 @@ const picks = [
       "eSIM-only device required",
     ],
     summary:
-      "If you stream constantly, use Google Maps all day, or just want zero data anxiety, Holafly's unlimited plan at $19 for 5 days is the cheapest unlimited eSIM for Japan. More expensive per GB than eSIM Go, but unlimited means unlimited.",
+      "If you stream constantly, use Google Maps all day, or simply want peace of mind about your data, Holafly's unlimited plan at $19 for 5 days is the most affordable unlimited eSIM for Japan. It costs more per GB than eSIM Go, but on an unlimited plan, per-GB cost is irrelevant.",
   },
   {
     num: 4,
@@ -131,7 +131,7 @@ const dealTips = [
   {
     trip: "Heavy data user",
     pick: "Holafly Unlimited — from $19",
-    why: "Stream video, hotspot your laptop, or skip tracking data altogether.",
+    why: "Stream video, use your phone as a hotspot, or simply stop worrying about data altogether.",
     url: HOLAFLY_URL,
   },
 ];
@@ -417,7 +417,7 @@ export default function CheapestEsimJapanPage() {
           <p className={styles.bodyText}>
             Yes — and here&apos;s why. Japan&apos;s mobile infrastructure is among the best in the world.
             Docomo and SoftBank, the two networks used by budget eSIMs like eSIM Go and Airalo,
-            consistently rank in global top-10 lists for 4G coverage and download speeds.
+            consistently rank among the world&apos;s top 10 for 4G coverage and download speeds.
           </p>
           <p className={styles.bodyText}>
             When you buy a cheap eSIM for Japan, you&apos;re not buying a worse network — you&apos;re buying
