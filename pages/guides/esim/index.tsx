@@ -59,6 +59,13 @@ const articles = [
     desc: "Don't overpay for data in Japan. We compared eSIM Go, Airalo, Holafly, and Sakura Mobile on price per GB. Starts from $3.50.",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/japan-sim-short-vs-long-stay",
+    badge: "Guide",
+    title: "Best Japan SIM Card for Your Trip Length (2025)",
+    desc: "1 week or 1 month? The right SIM depends on how long you're staying. We match the best option to every trip length from 1 day to 1 month+.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
