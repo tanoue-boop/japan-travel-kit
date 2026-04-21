@@ -49,13 +49,13 @@ export default function JapanSimShortVsLongStayPage() {
   return (
     <>
       <Head>
-        <title>Best Japan SIM Card by Trip Length 2025: 1 Week, 2 Weeks, 1 Month+ | Japan Travel Kit</title>
+        <title>Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+ | Japan Travel Kit</title>
         <meta
           name="description"
           content="Not sure how much data you need for Japan? We match the best SIM card to your trip length — from 1 day to 1 month+."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
-        <meta property="og:title" content="Best Japan SIM Card by Trip Length 2025: 1 Week, 2 Weeks, 1 Month+" />
+        <meta property="og:title" content="Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
         <script
           type="application/ld+json"
@@ -97,17 +97,17 @@ export default function JapanSimShortVsLongStayPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🗓️</span> Updated April 2025
+            <span>🗓️</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Best Japan SIM Card for<br />Your Trip Length (2025)
+            Best Japan SIM Card for<br />Your Trip Length (2026)
           </h1>
           <p className={styles.heroSubtitle}>
             1 week or 1 month? The right SIM depends on how long you&apos;re staying.
             Here&apos;s exactly what to get.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "All Trip Lengths", "Independently Reviewed"].map((t) => (
+            {["Updated April 2026", "All Trip Lengths", "Independently Reviewed"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -393,7 +393,7 @@ export default function JapanSimShortVsLongStayPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -405,7 +405,7 @@ export default function JapanSimShortVsLongStayPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Cheapest eSIM for Japan 2025: Best Budget Picks</p>
+                <p className={styles.relatedTitle}>Cheapest eSIM for Japan 2026: Best Budget Picks</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -417,7 +417,7 @@ export default function JapanSimShortVsLongStayPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sakura Mobile Review 2025: Best SIM for Long Stays?</p>
+                <p className={styles.relatedTitle}>Sakura Mobile Review 2026: Best SIM for Long Stays?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

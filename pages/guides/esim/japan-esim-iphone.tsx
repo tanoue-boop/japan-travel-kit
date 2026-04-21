@@ -176,13 +176,13 @@ export default function JapanEsimIphonePage() {
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan on iPhone 2025: Top Picks &amp; Setup Guide | Japan Travel Kit</title>
+        <title>Best eSIM for Japan on iPhone 2026: Top Picks &amp; Setup Guide | Japan Travel Kit</title>
         <meta
           name="description"
           content="Which eSIM works best for Japan on iPhone? We tested Airalo, Holafly and eSIM Go on iPhone XS to iPhone 16. Full setup guide."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-iphone" />
-        <meta property="og:title" content="Best eSIM for Japan on iPhone 2025: Top Picks & Setup Guide" />
+        <meta property="og:title" content="Best eSIM for Japan on iPhone 2026: Top Picks & Setup Guide" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-iphone" />
         <script
           type="application/ld+json"
@@ -224,16 +224,16 @@ export default function JapanEsimIphonePage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan<br />on iPhone (2025)
+            Best eSIM for Japan<br />on iPhone (2026)
           </h1>
           <p className={styles.heroSubtitle}>
             iPhone makes eSIM setup incredibly easy. Here&apos;s the best Japan eSIM for every iPhone model.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "iPhone XS to iPhone 16", "Step-by-Step Guide"].map((t) => (
+            {["Updated April 2026", "iPhone XS to iPhone 16", "Step-by-Step Guide"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -481,7 +481,7 @@ export default function JapanEsimIphonePage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -505,7 +505,7 @@ export default function JapanEsimIphonePage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airalo Japan Review 2025: Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Airalo Japan Review 2026: Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

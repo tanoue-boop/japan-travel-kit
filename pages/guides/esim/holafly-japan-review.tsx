@@ -109,13 +109,13 @@ export default function HolaflyJapanReviewPage() {
   return (
     <>
       <Head>
-        <title>Holafly Japan Review 2025: Is Unlimited Data Worth the Price? | Japan Travel Kit</title>
+        <title>Holafly Japan Review 2026: Is Unlimited Data Worth the Price? | Japan Travel Kit</title>
         <meta
           name="description"
           content="Is Holafly worth it for Japan? We review their unlimited data eSIM plans, SoftBank coverage, and value for money."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/holafly-japan-review" />
-        <meta property="og:title" content="Holafly Japan Review 2025: Is Unlimited Data Worth the Price?" />
+        <meta property="og:title" content="Holafly Japan Review 2026: Is Unlimited Data Worth the Price?" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/holafly-japan-review" />
         <script
           type="application/ld+json"
@@ -157,16 +157,16 @@ export default function HolaflyJapanReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Holafly Japan Review 2025:<br />Is Unlimited Data Worth It?
+            Holafly Japan Review 2026:<br />Is Unlimited Data Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             Unlimited data sounds great. But is Holafly actually worth the premium price for Japan?
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "Independently Reviewed", "Unlimited Data eSIM"].map((t) => (
+            {["Updated April 2026", "Independently Reviewed", "Unlimited Data eSIM"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -420,7 +420,7 @@ export default function HolaflyJapanReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -432,7 +432,7 @@ export default function HolaflyJapanReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airalo Japan Review 2025: Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Airalo Japan Review 2026: Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read review →</span>
               </div>
             </Link>

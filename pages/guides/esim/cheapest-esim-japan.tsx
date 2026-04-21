@@ -163,13 +163,13 @@ export default function CheapestEsimJapanPage() {
   return (
     <>
       <Head>
-        <title>Cheapest eSIM for Japan 2025: Best Budget Picks Tested &amp; Compared | Japan Travel Kit</title>
+        <title>Cheapest eSIM for Japan 2026: Best Budget Picks Tested &amp; Compared | Japan Travel Kit</title>
         <meta
           name="description"
           content="Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile. From $3.50."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
-        <meta property="og:title" content="Cheapest eSIM for Japan 2025: Best Budget Picks Tested & Compared" />
+        <meta property="og:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
         <script
           type="application/ld+json"
@@ -211,16 +211,16 @@ export default function CheapestEsimJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💰</span> Updated April 2025
+            <span>💰</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Cheapest eSIM for Japan 2025:<br />Best Budget Picks
+            Cheapest eSIM for Japan 2026:<br />Best Budget Picks
           </h1>
           <p className={styles.heroSubtitle}>
             You don&apos;t need to overpay to stay connected in Japan. Here are the best value eSIMs we tested.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "4 eSIMs Compared", "Prices Verified"].map((t) => (
+            {["Updated April 2026", "4 eSIMs Compared", "Prices Verified"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -296,7 +296,7 @@ export default function CheapestEsimJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
-            Prices shown are for Japan-specific plans as of April 2025. All plans are eSIM-only unless noted.
+            Prices are approximate and subject to change. Please verify the latest pricing on each provider&apos;s official website. All plans are eSIM-only unless noted.
           </p>
         </section>
 
@@ -467,7 +467,7 @@ export default function CheapestEsimJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -479,7 +479,7 @@ export default function CheapestEsimJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>eSIM Go Japan Review 2025: Best Budget eSIM?</p>
+                <p className={styles.relatedTitle}>eSIM Go Japan Review 2026: Best Budget eSIM?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -112,7 +112,7 @@ export default function EsimVsSimJapanPage() {
   return (
     <>
       <Head>
-        <title>eSIM vs SIM Card for Japan 2025: Which Should You Get? | Japan Travel Kit</title>
+        <title>eSIM vs SIM Card for Japan 2026: Which Should You Get? | Japan Travel Kit</title>
         <meta
           name="description"
           content="eSIM or physical SIM card for Japan? We compare price, convenience, phone compatibility, and coverage to help you choose the right option for your trip."
@@ -160,7 +160,7 @@ export default function EsimVsSimJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
             eSIM vs SIM Card for Japan:<br />Which Should You Get?
@@ -170,7 +170,7 @@ export default function EsimVsSimJapanPage() {
             Here&apos;s how to choose.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "Practical Guide", "All Phone Types"].map((t) => (
+            {["Updated April 2026", "Practical Guide", "All Phone Types"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -413,7 +413,7 @@ export default function EsimVsSimJapanPage() {
           <span className={styles.sectionLabel}>Bottom line</span>
           <h2 className={styles.sectionTitle}>Our Verdict</h2>
           <p className={styles.verdictText}>
-            For most travellers visiting Japan in 2025, <strong>eSIM is the better choice</strong>.
+            For most travellers visiting Japan in 2026, <strong>eSIM is the better choice</strong>.
             It&apos;s cheaper than airport SIM options, faster to set up, and lets you arrive in Japan
             already connected. If you have a phone from 2018 or later, there&apos;s a good chance it
             supports eSIM — check Settings before dismissing the option.
@@ -466,7 +466,7 @@ export default function EsimVsSimJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -478,7 +478,7 @@ export default function EsimVsSimJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airalo Japan Review 2025: Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Airalo Japan Review 2026: Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read review →</span>
               </div>
             </Link>

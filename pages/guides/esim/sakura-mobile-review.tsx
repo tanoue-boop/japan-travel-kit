@@ -107,13 +107,13 @@ export default function SakuraMobileReviewPage() {
   return (
     <>
       <Head>
-        <title>Sakura Mobile Review 2025: Best SIM Card for Long Stays in Japan? | Japan Travel Kit</title>
+        <title>Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan? | Japan Travel Kit</title>
         <meta
           name="description"
           content="Sakura Mobile offers voice calls, English support and Docomo coverage. But is it worth the price? Our honest review."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/sakura-mobile-review" />
-        <meta property="og:title" content="Sakura Mobile Review 2025: Best SIM Card for Long Stays in Japan?" />
+        <meta property="og:title" content="Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/sakura-mobile-review" />
         <script
           type="application/ld+json"
@@ -155,17 +155,17 @@ export default function SakuraMobileReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Sakura Mobile Review 2025:<br />Best SIM for Long Stays in Japan?
+            Sakura Mobile Review 2026:<br />Best SIM for Long Stays in Japan?
           </h1>
           <p className={styles.heroSubtitle}>
             The only tourist SIM with real English support and voice calls.
             But is it worth the higher price?
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "Independently Reviewed", "Physical SIM & eSIM"].map((t) => (
+            {["Updated April 2026", "Independently Reviewed", "Physical SIM & eSIM"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -437,7 +437,7 @@ export default function SakuraMobileReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -449,7 +449,7 @@ export default function SakuraMobileReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airalo Japan Review 2025: Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Airalo Japan Review 2026: Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

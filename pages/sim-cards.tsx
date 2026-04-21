@@ -37,13 +37,13 @@ export default function SIMCardsPage() {
   return (
     <>
       <Head>
-        <title>Best Japan SIM Cards 2025 — Compare Tourist SIM & eSIM | Japan Travel Kit</title>
+        <title>Best Japan SIM Cards 2026 — Compare Tourist SIM & eSIM | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Compare the best Japan tourist SIM cards and eSIMs for 2025. Airalo, IIJmio, Klook, Sakura Mobile — prices, coverage, and honest reviews."
+          content="Compare the best Japan tourist SIM cards and eSIMs for 2026. Airalo, IIJmio, Klook, Sakura Mobile — prices, coverage, and honest reviews."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/sim-cards" />
-        <meta property="og:title" content="Best Japan SIM Cards 2025 — Compare Tourist SIM & eSIM" />
+        <meta property="og:title" content="Best Japan SIM Cards 2026 — Compare Tourist SIM & eSIM" />
         <meta property="og:url" content="https://japan-travel-kit.com/sim-cards" />
         <script
           type="application/ld+json"
@@ -77,7 +77,7 @@ export default function SIMCardsPage() {
         <div className={styles.pageHeaderDots} />
         <div className={styles.pageHeaderInner}>
           <p className={styles.updated}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.pageTitle}>
             Best Japan SIM Cards<br />&amp; eSIMs for Tourists
@@ -194,7 +194,7 @@ export default function SIMCardsPage() {
               In-depth guide
             </p>
             <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>
-              Best eSIM for Japan 2025: Tested &amp; Compared
+              Best eSIM for Japan 2026: Tested &amp; Compared
             </p>
             <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.55)", marginTop: "0.3rem" }}>
               Which eSIM is actually right for your trip? We break it down.

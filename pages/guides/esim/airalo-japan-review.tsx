@@ -101,13 +101,13 @@ export default function AiraloJapanReviewPage() {
   return (
     <>
       <Head>
-        <title>Airalo Japan Review 2025: Honest Test &amp; Verdict | Japan Travel Kit</title>
+        <title>Airalo Japan Review 2026: Honest Test &amp; Verdict | Japan Travel Kit</title>
         <meta
           name="description"
           content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/airalo-japan-review" />
-        <meta property="og:title" content="Airalo Japan Review 2025: Honest Test & Verdict" />
+        <meta property="og:title" content="Airalo Japan Review 2026: Honest Test & Verdict" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/airalo-japan-review" />
         <script
           type="application/ld+json"
@@ -149,16 +149,16 @@ export default function AiraloJapanReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Airalo Japan Review 2025:<br />Is It Worth It?
+            Airalo Japan Review 2026:<br />Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             We tested Airalo&apos;s Japan eSIM. Here&apos;s everything you need to know.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "Independently Reviewed", "Data-Only eSIM"].map((t) => (
+            {["Updated April 2026", "Independently Reviewed", "Data-Only eSIM"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -379,7 +379,7 @@ export default function AiraloJapanReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

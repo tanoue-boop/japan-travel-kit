@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/LegalPage.module.css";
 
-const UPDATED = "April 20, 2025";
+const UPDATED = "April 20, 2026";
 
 export default function PrivacyPolicyPage() {
   return (

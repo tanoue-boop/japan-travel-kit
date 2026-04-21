@@ -6,72 +6,72 @@ const articles = [
   {
     href: "/guides/esim/best-esim-japan",
     badge: "Comparison",
-    title: "Best eSIM for Japan 2025: Top 4 Picks Tested & Compared",
+    title: "Best eSIM for Japan 2026: Top 4 Picks Tested & Compared",
     desc: "Airalo, Holafly, eSIM Go, and Sakura Mobile — compared on price, speed, coverage, and ease of setup. Which one is right for your trip?",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/airalo-japan-review",
     badge: "Review",
-    title: "Airalo Japan Review 2025: Is It Worth It?",
+    title: "Airalo Japan Review 2026: Is It Worth It?",
     desc: "We tested Airalo's Japan eSIM plans, speeds, and setup process. An honest verdict on pricing, coverage, and who it's best for.",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/esim-vs-sim-japan",
     badge: "Guide",
     title: "eSIM vs SIM Card for Japan: Which Should You Get?",
     desc: "Both work in Japan — but one is faster, cheaper, and easier to set up. We compare price, compatibility, and convenience to help you choose.",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/holafly-japan-review",
     badge: "Review",
-    title: "Holafly Japan eSIM Review 2025: Unlimited Data Worth It?",
+    title: "Holafly Japan eSIM Review 2026: Unlimited Data Worth It?",
     desc: "Holafly offers unlimited data for Japan — but is the price right? We tested speeds, coverage, and setup to give you an honest verdict.",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/how-to-set-up-esim-japan",
     badge: "Guide",
     title: "How to Set Up an eSIM in Japan (Step-by-Step)",
     desc: "Install your Japan eSIM before you fly and have 4G the moment you land. Works for iPhone and Android. Takes under 5 minutes.",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/sakura-mobile-review",
     badge: "Review",
-    title: "Sakura Mobile Review 2025: Best SIM for Long Stays?",
+    title: "Sakura Mobile Review 2026: Best SIM for Long Stays?",
     desc: "The only tourist SIM with real English support and voice calls. We review Sakura Mobile's plans, Docomo coverage, and whether the price is justified.",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/esim-go-japan-review",
     badge: "Review",
-    title: "eSIM Go Japan Review 2025: Best Budget eSIM?",
+    title: "eSIM Go Japan Review 2026: Best Budget eSIM?",
     desc: "The cheapest Japan eSIM we tested. eSIM Go offers Docomo coverage from $3.50 — but how does it hold up on speed, setup, and support?",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/cheapest-esim-japan",
     badge: "Comparison",
-    title: "Cheapest eSIM for Japan 2025: Best Budget Picks",
+    title: "Cheapest eSIM for Japan 2026: Best Budget Picks",
     desc: "Don't overpay for data in Japan. We compared eSIM Go, Airalo, Holafly, and Sakura Mobile on price per GB. Starts from $3.50.",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/japan-sim-short-vs-long-stay",
     badge: "Guide",
-    title: "Best Japan SIM Card for Your Trip Length (2025)",
+    title: "Best Japan SIM Card for Your Trip Length (2026)",
     desc: "1 week or 1 month? The right SIM depends on how long you're staying. We match the best option to every trip length from 1 day to 1 month+.",
-    date: "April 2025",
+    date: "April 2026",
   },
   {
     href: "/guides/esim/japan-esim-iphone",
     badge: "Guide",
-    title: "Best eSIM for Japan on iPhone (2025): Top Picks & Setup Guide",
+    title: "Best eSIM for Japan on iPhone (2026): Top Picks & Setup Guide",
     desc: "Which eSIM works best for Japan on iPhone XS to iPhone 16? We compare Airalo, Holafly, and eSIM Go — plus a full step-by-step setup guide.",
-    date: "April 2025",
+    date: "April 2026",
   },
 ];
 
@@ -79,13 +79,13 @@ export default function GuidesEsimPage() {
   return (
     <>
       <Head>
-        <title>Japan eSIM Guides 2025 | Japan Travel Kit</title>
+        <title>Japan eSIM Guides 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="eSIM and SIM card guides for Japan: which eSIM to buy, how to install it, network coverage, and data plan comparisons."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim" />
-        <meta property="og:title" content="Japan eSIM Guides 2025 | Japan Travel Kit" />
+        <meta property="og:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim" />
       </Head>
 

@@ -113,13 +113,13 @@ export default function EsimGoJapanReviewPage() {
   return (
     <>
       <Head>
-        <title>eSIM Go Japan Review 2025: Cheapest eSIM for Japan? Honest Test | Japan Travel Kit</title>
+        <title>eSIM Go Japan Review 2026: Cheapest eSIM for Japan? Honest Test | Japan Travel Kit</title>
         <meta
           name="description"
           content="Is eSIM Go the best budget eSIM for Japan? We tested their plans, Docomo coverage, and setup. Read our honest review."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/esim-go-japan-review" />
-        <meta property="og:title" content="eSIM Go Japan Review 2025: Cheapest eSIM for Japan? Honest Test" />
+        <meta property="og:title" content="eSIM Go Japan Review 2026: Cheapest eSIM for Japan? Honest Test" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/esim-go-japan-review" />
         <script
           type="application/ld+json"
@@ -161,16 +161,16 @@ export default function EsimGoJapanReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            eSIM Go Japan Review 2025:<br />Best Budget eSIM for Japan?
+            eSIM Go Japan Review 2026:<br />Best Budget eSIM for Japan?
           </h1>
           <p className={styles.heroSubtitle}>
             The cheapest Japan eSIM we tested. But does it actually deliver on speed and coverage?
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "Independently Reviewed", "Best Value Pick"].map((t) => (
+            {["Updated April 2026", "Independently Reviewed", "Best Value Pick"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -438,7 +438,7 @@ export default function EsimGoJapanReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -450,7 +450,7 @@ export default function EsimGoJapanReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airalo Japan Review 2025: Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Airalo Japan Review 2026: Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

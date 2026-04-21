@@ -84,13 +84,13 @@ export default function BestEsimJapanPage() {
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared | Japan Travel Kit</title>
+        <title>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared | Japan Travel Kit</title>
         <meta
           name="description"
-          content="The best eSIMs for Japan in 2025: Airalo, Holafly, eSIM Go, and Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements."
+          content="The best eSIMs for Japan in 2026: Airalo, Holafly, eSIM Go, and Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/best-esim-japan" />
-        <meta property="og:title" content="Best eSIM for Japan 2025: Top 4 Picks Tested & Compared" />
+        <meta property="og:title" content="Best eSIM for Japan 2026: Top 4 Picks Tested & Compared" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/best-esim-japan" />
         <script
           type="application/ld+json"
@@ -132,16 +132,16 @@ export default function BestEsimJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan 2025:<br />Tested &amp; Compared
+            Best eSIM for Japan 2026:<br />Tested &amp; Compared
           </h1>
           <p className={styles.heroSubtitle}>
             We tested every major Japan eSIM so you don&apos;t have to.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "4 eSIMs Tested", "Independent Review"].map((t) => (
+            {["Updated April 2026", "4 eSIMs Tested", "Independent Review"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

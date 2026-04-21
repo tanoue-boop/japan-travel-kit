@@ -48,7 +48,7 @@ const tips = [
 const stats = [
   { value: "4+",   label: "SIM options compared" },
   { value: "100%", label: "Independent reviews"   },
-  { value: "2025", label: "Prices verified"        },
+  { value: "2026", label: "Prices verified"        },
   { value: "Free", label: "No sign-up required"    },
 ];
 
@@ -57,9 +57,9 @@ export default function HomePage() {
     <>
       <Head>
         <title>Japan Travel Kit — Practical Travel Info for Foreign Visitors</title>
-        <meta name="description" content="Compare Japan SIM cards, pocket WiFi, IC cards, and get practical travel tips for your trip to Japan. Updated 2025." />
+        <meta name="description" content="Compare Japan SIM cards, pocket WiFi, IC cards, and get practical travel tips for your trip to Japan. Updated 2026." />
         <meta property="og:title" content="Japan Travel Kit — Practical Travel Info for Foreign Visitors" />
-        <meta property="og:description" content="Compare Japan SIM cards, pocket WiFi, and get practical travel tips for Japan. Updated 2025." />
+        <meta property="og:description" content="Compare Japan SIM cards, pocket WiFi, and get practical travel tips for Japan. Updated 2026." />
         <meta property="og:url" content="https://japan-travel-kit.com" />
         <meta property="og:type" content="website" />
         <script
@@ -85,7 +85,7 @@ export default function HomePage() {
         <div className={styles.heroInner}>
           <div className={styles.pill}>
             <span className={styles.pillDot} />
-            Updated for the 2025 travel season
+            Updated for the 2026 travel season
           </div>
 
           <h1 className={styles.title}>

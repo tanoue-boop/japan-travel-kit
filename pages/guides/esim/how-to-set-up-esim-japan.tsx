@@ -116,13 +116,13 @@ export default function HowToSetUpEsimJapanPage() {
   return (
     <>
       <Head>
-        <title>How to Set Up an eSIM in Japan (iPhone &amp; Android Guide 2025) | Japan Travel Kit</title>
+        <title>How to Set Up an eSIM in Japan (iPhone &amp; Android Guide 2026) | Japan Travel Kit</title>
         <meta
           name="description"
           content="Step-by-step guide to setting up your Japan eSIM before you fly. Works for iPhone and Android. Takes under 5 minutes."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
-        <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2025)" />
+        <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
         <script
           type="application/ld+json"
@@ -164,7 +164,7 @@ export default function HowToSetUpEsimJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
             How to Set Up an eSIM in Japan<br />(Step-by-Step)
@@ -173,7 +173,7 @@ export default function HowToSetUpEsimJapanPage() {
             Takes under 5 minutes. Do it before you fly and you&apos;ll have 4G the moment your plane lands.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "iPhone & Android", "Takes 5 Minutes"].map((t) => (
+            {["Updated April 2026", "iPhone & Android", "Takes 5 Minutes"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -356,7 +356,7 @@ export default function HowToSetUpEsimJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2025: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -368,7 +368,7 @@ export default function HowToSetUpEsimJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airalo Japan Review 2025: Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Airalo Japan Review 2026: Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

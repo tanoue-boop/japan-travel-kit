@@ -13,6 +13,10 @@ export default function Document() {
         />
         <meta name="theme-color" content="#0d1b4b" />
         <meta name="google-site-verification" content="RzJ62Gbm4Ng2tGuEyIW1CV4-UjWKOpZRkskuAGP52Gc" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         {GA_MEASUREMENT_ID && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />

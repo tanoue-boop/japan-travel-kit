@@ -51,7 +51,7 @@ export default function Footer() {
             </p>
             <span className={styles.status}>
               <span className={styles.dot} />
-              Updated April 2025
+              Updated April 2026
             </span>
           </div>
 

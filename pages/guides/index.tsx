@@ -88,13 +88,13 @@ export default function GuidesIndexPage() {
   return (
     <>
       <Head>
-        <title>Japan Travel Guides 2025 | Japan Travel Kit</title>
+        <title>Japan Travel Guides 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides" />
-        <meta property="og:title" content="Japan Travel Guides 2025 | Japan Travel Kit" />
+        <meta property="og:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides" />
       </Head>
 
