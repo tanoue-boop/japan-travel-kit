@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { GA_MEASUREMENT_ID } from "../lib/gtag";
 
 export default function Document() {
   return (
@@ -12,6 +13,16 @@ export default function Document() {
         />
         <meta name="theme-color" content="#0d1b4b" />
         <meta name="google-site-verification" content="RzJ62Gbm4Ng2tGuEyIW1CV4-UjWKOpZRkskuAGP52Gc" />
+        {GA_MEASUREMENT_ID && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}',{page_path:window.location.pathname});`,
+              }}
+            />
+          </>
+        )}
       </Head>
       <body>
         <Main />
