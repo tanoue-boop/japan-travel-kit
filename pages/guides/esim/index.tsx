@@ -52,6 +52,13 @@ const articles = [
     desc: "The cheapest Japan eSIM we tested. eSIM Go offers Docomo coverage from $3.50 — but how does it hold up on speed, setup, and support?",
     date: "April 2025",
   },
+  {
+    href: "/guides/esim/cheapest-esim-japan",
+    badge: "Comparison",
+    title: "Cheapest eSIM for Japan 2025: Best Budget Picks",
+    desc: "Don't overpay for data in Japan. We compared eSIM Go, Airalo, Holafly, and Sakura Mobile on price per GB. Starts from $3.50.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
