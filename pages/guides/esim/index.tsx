@@ -73,6 +73,27 @@ const articles = [
     desc: "Which eSIM works best for Japan on iPhone XS to iPhone 16? We compare Airalo, Holafly, and eSIM Go — plus a full step-by-step setup guide.",
     date: "April 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-android",
+    badge: "Guide",
+    title: "Best eSIM for Japan on Android (2026): Top Picks & Setup Guide",
+    desc: "Which eSIM works best for Japan on Android? We compare Airalo, Holafly, eSIM Go, and Sakura Mobile — with Samsung and Pixel install steps.",
+    date: "April 2026",
+  },
+  {
+    href: "/guides/esim/does-airalo-work-in-japan",
+    badge: "Guide",
+    title: "Does Airalo Work in Japan? (2026 Honest Answer)",
+    desc: "Yes — Airalo works well in Japan. Here's the network it runs on, which plans to pick, where coverage is strong, and a few known limitations.",
+    date: "April 2026",
+  },
+  {
+    href: "/guides/esim/japan-esim-with-phone-number",
+    badge: "Guide",
+    title: "Japan eSIM with Phone Number (2026): Your Options",
+    desc: "Need a real Japanese phone number? Here are your three options: Sakura Mobile eSIM, dual SIM setup, and VoIP apps — with honest trade-offs for each.",
+    date: "April 2026",
+  },
 ];
 
 export default function GuidesEsimPage() {
