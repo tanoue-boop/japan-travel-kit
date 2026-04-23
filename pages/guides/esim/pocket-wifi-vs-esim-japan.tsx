@@ -29,13 +29,13 @@ export default function PocketWifiVsEsimPage() {
   return (
     <>
       <Head>
-        <title>Pocket WiFi vs eSIM for Japan 2025: Which Is Better? | Japan Travel Kit</title>
+        <title>Pocket WiFi vs eSIM for Japan 2026: Which Is Better? | Japan Travel Kit</title>
         <meta
           name="description"
           content="Pocket WiFi or eSIM for Japan? We compare price, convenience, and coverage to help you choose the best option for your trip."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/pocket-wifi-vs-esim-japan" />
-        <meta property="og:title" content="Pocket WiFi vs eSIM for Japan 2025: Which Is Better?" />
+        <meta property="og:title" content="Pocket WiFi vs eSIM for Japan 2026: Which Is Better?" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/pocket-wifi-vs-esim-japan" />
         <script
           type="application/ld+json"
@@ -77,18 +77,18 @@ export default function PocketWifiVsEsimPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📶</span> Updated April 2025
+            <span>📶</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Pocket WiFi vs eSIM for Japan (2025):<br />Which Is Better?
+            Pocket WiFi vs eSIM for Japan (2026):<br />Which Is Better?
           </h1>
           <p className={styles.heroSubtitle}>
             Both keep you connected in Japan.<br />
-            But one is cheaper, simpler, and fits in your pocket.<br />
+            But one is cheaper, simpler, and requires no extra hardware to carry.<br />
             Here&apos;s how to choose.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "Honest Comparison", "All Device Types"].map((t) => (
+            {["Updated April 2026", "Honest Comparison", "All Device Types"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

@@ -35,13 +35,13 @@ export default function DoesHolaflyWorkInJapanPage() {
   return (
     <>
       <Head>
-        <title>Does Holafly Work in Japan? 2025 Coverage &amp; Speed Test | Japan Travel Kit</title>
+        <title>Does Holafly Work in Japan? 2026 Coverage &amp; Speed Test | Japan Travel Kit</title>
         <meta
           name="description"
           content="Does Holafly work in Japan? Yes — we tested unlimited data on SoftBank network. Full coverage, speed and activation guide."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/does-holafly-work-in-japan" />
-        <meta property="og:title" content="Does Holafly Work in Japan? 2025 Coverage &amp; Speed Test" />
+        <meta property="og:title" content="Does Holafly Work in Japan? 2026 Coverage &amp; Speed Test" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/does-holafly-work-in-japan" />
         <script
           type="application/ld+json"
@@ -83,10 +83,10 @@ export default function DoesHolaflyWorkInJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2025
+            <span>📱</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Does Holafly Work in Japan?<br />(2025 Honest Answer)
+            Does Holafly Work in Japan?<br />(2026 Honest Answer)
           </h1>
           <p className={styles.heroSubtitle}>
             Holafly promises unlimited data in Japan.<br />
@@ -94,7 +94,7 @@ export default function DoesHolaflyWorkInJapanPage() {
             Here&apos;s what you need to know.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "Tested in Japan", "Unlimited Data"].map((t) => (
+            {["Updated April 2026", "Tested in Japan", "Unlimited Data"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -156,7 +156,7 @@ export default function DoesHolaflyWorkInJapanPage() {
             Holafly is an eSIM provider that operates on Japan&apos;s SoftBank network — the country&apos;s second-largest carrier. When you purchase a Holafly Japan plan, you receive a QR code that installs a virtual SIM directly onto your phone. No physical card, no airport queue.
           </p>
           <p className={styles.bodyText}>
-            Unlike most Japan eSIMs which offer capped data plans, Holafly sells genuinely unlimited data. This makes it particularly suited to heavy users: travellers streaming maps, uploading photos, or using mobile data as their primary connection throughout a trip.
+            Unlike most Japan eSIMs, which offer capped data plans, Holafly sells genuinely unlimited data. This makes it particularly suited to heavy users: travellers streaming maps, uploading photos, or using mobile data as their primary connection throughout a trip.
           </p>
           <p className={styles.bodyText}>
             Setup takes under 5 minutes before you fly. Activate the eSIM profile when your plane touches down in Japan and data starts immediately — no roaming fees, no SIM swapping.

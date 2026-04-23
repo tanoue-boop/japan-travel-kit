@@ -29,13 +29,13 @@ export default function JapanEsimFamilyGroupPage() {
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan: Family &amp; Group Travel 2025 | Japan Travel Kit</title>
+        <title>Best eSIM for Japan: Family &amp; Group Travel 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Travelling to Japan with family or a group? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-family-group" />
-        <meta property="og:title" content="Best eSIM for Japan: Family &amp; Group Travel 2025" />
+        <meta property="og:title" content="Best eSIM for Japan: Family &amp; Group Travel 2026" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-family-group" />
         <script
           type="application/ld+json"
@@ -77,17 +77,17 @@ export default function JapanEsimFamilyGroupPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>👨‍👩‍👧‍👦</span> Updated April 2025
+            <span>👨‍👩‍👧‍👦</span> Updated April 2026
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan:<br />Family &amp; Group Travel (2025)
+            Best eSIM for Japan:<br />Family &amp; Group Travel (2026)
           </h1>
           <p className={styles.heroSubtitle}>
             Travelling to Japan with family or friends?<br />
             Here&apos;s the most cost-effective way to keep everyone connected.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2025", "Groups & Families", "Cost Comparison"].map((t) => (
+            {["Updated April 2026", "Groups & Families", "Cost Comparison"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -394,7 +394,7 @@ export default function JapanEsimFamilyGroupPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Pocket WiFi vs eSIM for Japan (2025): Which Is Better?</p>
+                <p className={styles.relatedTitle}>Pocket WiFi vs eSIM for Japan (2026): Which Is Better?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

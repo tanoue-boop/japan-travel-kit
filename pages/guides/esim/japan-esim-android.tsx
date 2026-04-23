@@ -102,11 +102,11 @@ const pixelSteps = [
 const faqItems = [
   {
     q: "Does Airalo work on Samsung Galaxy phones?",
-    a: "Yes. Airalo works on all eSIM-compatible Samsung Galaxy phones, including Galaxy S20 and later models. Make sure your handset is carrier-unlocked before traveling.",
+    a: "Yes. Airalo works on all eSIM-compatible Samsung Galaxy phones, including Galaxy S20 and later models. Make sure your handset is carrier-unlocked before travelling.",
   },
   {
     q: "Can I use an eSIM on an Android phone bought in Japan?",
-    a: "Phones purchased in Japan (especially carrier-locked units) may have eSIM restricted to domestic networks. If you bought your Android phone outside Japan and it's unlocked, it will almost certainly support international eSIMs.",
+    a: "Phones purchased in Japan (especially carrier-locked units) may have eSIM functionality restricted to domestic networks. If you bought your Android phone outside Japan and it's unlocked, it will almost certainly support international eSIMs.",
   },
   {
     q: "Do I need to turn off my home SIM when using a Japan eSIM?",
@@ -259,7 +259,7 @@ export default function JapanEsimAndroidPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.875rem", color: "#6b7280" }}>
-            Note: Carrier-locked phones may not accept international eSIMs. Check with your home carrier before traveling.
+            Note: Carrier-locked phones may not accept international eSIMs. Check with your home carrier before travelling.
           </p>
         </section>
 

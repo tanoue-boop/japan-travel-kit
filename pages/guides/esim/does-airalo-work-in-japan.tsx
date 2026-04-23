@@ -30,7 +30,7 @@ const issues = [
 const faqItems = [
   {
     q: "Does Airalo actually work in Japan?",
-    a: "Yes — Airalo Japan eSIM works nationwide via Docomo and SoftBank networks. We tested it in Tokyo, Kyoto, Osaka, and on rural routes including the Tohoku shinkansen. Coverage was consistent throughout. The only gaps were deep mountain trails and small remote islands, which have limited coverage regardless of carrier.",
+    a: "Yes — Airalo Japan eSIM works nationwide via Docomo and SoftBank networks. We tested it in Tokyo, Kyoto, Osaka, and on intercity routes, including the Tohoku Shinkansen. Coverage was consistent throughout. The only gaps were deep mountain trails and small remote islands, which have limited coverage regardless of carrier.",
   },
   {
     q: "Which network does Airalo use in Japan?",
@@ -166,7 +166,7 @@ export default function DoesAiraloWorkInJapanPage() {
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>How Does Airalo Work in Japan?</h2>
           <p className={styles.bodyText}>
-            Airalo is an eSIM marketplace — it doesn&apos;t own a network, but partners with local carriers to sell data plans that install directly onto your phone&apos;s eSIM chip. For Japan, Airalo runs on <strong>Docomo and SoftBank</strong>, two of Japan&apos;s three main carriers.
+            Airalo is an eSIM marketplace — it doesn&apos;t own a network, but it partners with local carriers to sell data plans that install directly onto your phone&apos;s eSIM chip. For Japan, Airalo runs on <strong>Docomo and SoftBank</strong>, two of Japan&apos;s three main carriers.
           </p>
           <p className={styles.bodyText}>
             The process is straightforward: you buy a plan in the Airalo app or website, receive a QR code instantly, scan it in your phone settings, and your phone downloads the carrier profile. When you arrive in Japan, your phone connects to the Docomo or SoftBank network automatically — no SIM swap, no airport queuing.

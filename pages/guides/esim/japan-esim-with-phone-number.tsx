@@ -11,7 +11,7 @@ const sakuraPlans = [
 const voipApps = [
   {
     name: "WhatsApp",
-    desc: "Free voice and video calls over Wi-Fi or data. Works to any country. The default choice for most international travellers.",
+    desc: "Free voice and video calls over Wi-Fi or data. Works in any country. The default choice for most international travellers.",
     best: "International calls to family and friends",
   },
   {
