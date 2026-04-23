@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Guides.module.css";
 import { esimArticles } from "../../lib/guides-esim";
+import { transportArticles } from "../../lib/guides-transport";
 
 function IconSim() {
   return (
@@ -66,13 +67,13 @@ const categories = [
     soon: false,
   },
   {
-    href: "/guides/transportation",
+    href: "/guides/transport",
     Icon: IconTrain,
     name: "Getting Around",
     desc: "Shinkansen passes, IC cards, airport trains, and everything you need to navigate Japan's rail network.",
-    badge: "Coming Soon",
-    badgeCls: styles.badgeSoftGray,
-    soon: true,
+    badge: `${transportArticles.length} Guides`,
+    badgeCls: styles.badgeSoftRed,
+    soon: false,
   },
   {
     href: "/guides/money",

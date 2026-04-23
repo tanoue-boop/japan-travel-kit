@@ -119,4 +119,11 @@ export const esimArticles: EsimArticle[] = [
     desc: "Travelling to Japan with family or friends? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option for every group size.",
     date: "April 2026",
   },
+  {
+    href: "/guides/esim/free-wifi-japan",
+    badge: "Guide",
+    title: "Free WiFi in Japan (2026): Where to Find It & Why You Still Need a SIM",
+    desc: "Japan has free WiFi — but it's patchy, slow, and often requires registration. We explain where to find it and why most travellers still use a SIM.",
+    date: "April 2026",
+  },
 ];

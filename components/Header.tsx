@@ -9,7 +9,7 @@ const navLinks = [
   { href: "/guides",         label: "Guides",      iconSrc: "/icons/icon-guide.svg",     iconAlt: "Guides icon" },
   { href: "/sim-cards",      label: "SIM Cards",   iconSrc: "/icons/icon-sim.svg",        iconAlt: "SIM Cards icon" },
   { href: "/wifi-pocket",    label: "Pocket WiFi", iconSrc: "/icons/icon-wifi.svg",       iconAlt: "Pocket WiFi icon" },
-  { href: "/transportation", label: "Transport",   iconSrc: "/icons/icon-transport.svg",  iconAlt: "Transport icon" },
+  { href: "/guides/transport", label: "Transport",   iconSrc: "/icons/icon-transport.svg",  iconAlt: "Transport icon" },
   { href: "/money",          label: "Money",       iconSrc: "/icons/icon-money.svg",      iconAlt: "Money icon" },
 ];
 
