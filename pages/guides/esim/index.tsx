@@ -94,6 +94,27 @@ const articles = [
     desc: "Need a real Japanese phone number? Here are your three options: Sakura Mobile eSIM, dual SIM setup, and VoIP apps — with honest trade-offs for each.",
     date: "April 2026",
   },
+  {
+    href: "/guides/esim/pocket-wifi-vs-esim-japan",
+    badge: "Comparison",
+    title: "Pocket WiFi vs eSIM for Japan (2025): Which Is Better?",
+    desc: "Both keep you connected in Japan — but one is cheaper, simpler, and needs no hardware. We compare price, convenience, and coverage so you can choose.",
+    date: "April 2025",
+  },
+  {
+    href: "/guides/esim/does-holafly-work-in-japan",
+    badge: "Guide",
+    title: "Does Holafly Work in Japan? (2025 Honest Answer)",
+    desc: "Holafly promises unlimited data in Japan on SoftBank. We tested coverage, speed, and activation to give you an honest answer before you buy.",
+    date: "April 2025",
+  },
+  {
+    href: "/guides/esim/japan-esim-family-group",
+    badge: "Guide",
+    title: "Best eSIM for Japan: Family & Group Travel (2025)",
+    desc: "Travelling to Japan with family or friends? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option for every group size.",
+    date: "April 2025",
+  },
 ];
 
 export default function GuidesEsimPage() {
