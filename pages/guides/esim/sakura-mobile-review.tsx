@@ -115,6 +115,12 @@ export default function SakuraMobileReviewPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/sakura-mobile-review" />
         <meta property="og:title" content="Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/sakura-mobile-review" />
+        <meta property="og:description" content="Sakura Mobile offers voice calls, English support and Docomo coverage. But is it worth the price? Our honest review." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?" />
+        <meta name="twitter:description" content="Sakura Mobile offers voice calls, English support and Docomo coverage. But is it worth the price? Our honest review." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -126,6 +132,22 @@ export default function SakuraMobileReviewPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

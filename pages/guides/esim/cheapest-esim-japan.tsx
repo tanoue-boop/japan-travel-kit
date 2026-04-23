@@ -171,6 +171,12 @@ export default function CheapestEsimJapanPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
         <meta property="og:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
+        <meta property="og:description" content="Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile. From $3.50." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared" />
+        <meta name="twitter:description" content="Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile. From $3.50." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -182,6 +188,22 @@ export default function CheapestEsimJapanPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

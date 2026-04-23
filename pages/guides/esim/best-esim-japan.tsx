@@ -92,6 +92,12 @@ export default function BestEsimJapanPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/best-esim-japan" />
         <meta property="og:title" content="Best eSIM for Japan 2026: Top 4 Picks Tested & Compared" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/best-esim-japan" />
+        <meta property="og:description" content="The best eSIMs for Japan in 2026: Airalo, Holafly, eSIM Go, and Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best eSIM for Japan 2026: Top 4 Picks Tested & Compared" />
+        <meta name="twitter:description" content="The best eSIMs for Japan in 2026: Airalo, Holafly, eSIM Go, and Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -103,6 +109,22 @@ export default function BestEsimJapanPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Best eSIM for Japan 2026: Top 4 Picks Tested & Compared",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

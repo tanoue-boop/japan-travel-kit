@@ -15,6 +15,12 @@ export default function GuidesEsimPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim" />
         <meta property="og:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim" />
+        <meta property="og:description" content="eSIM and SIM card guides for Japan: which eSIM to buy, how to install it, network coverage, and data plan comparisons." />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
+        <meta name="twitter:description" content="eSIM and SIM card guides for Japan: which eSIM to buy, how to install it, network coverage, and data plan comparisons." />
       </Head>
 
       {/* Breadcrumb */}

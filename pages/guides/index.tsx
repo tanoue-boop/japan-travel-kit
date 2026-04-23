@@ -97,6 +97,12 @@ export default function GuidesIndexPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides" />
         <meta property="og:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides" />
+        <meta property="og:description" content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors." />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
+        <meta name="twitter:description" content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors." />
       </Head>
 
       {/* Breadcrumb */}

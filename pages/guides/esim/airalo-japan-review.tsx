@@ -109,6 +109,12 @@ export default function AiraloJapanReviewPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/airalo-japan-review" />
         <meta property="og:title" content="Airalo Japan Review 2026: Honest Test & Verdict" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/airalo-japan-review" />
+        <meta property="og:description" content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Airalo Japan Review 2026: Honest Test & Verdict" />
+        <meta name="twitter:description" content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -120,6 +126,22 @@ export default function AiraloJapanReviewPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Airalo Japan Review 2026: Honest Test & Verdict",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

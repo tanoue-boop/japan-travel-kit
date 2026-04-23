@@ -6,11 +6,11 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Header.module.css";
 
 const navLinks = [
-  { href: "/guides",         label: "Guides",      iconSrc: "/icons/icon-guide.svg" },
-  { href: "/sim-cards",      label: "SIM Cards",   iconSrc: "/icons/icon-sim.svg" },
-  { href: "/wifi-pocket",    label: "Pocket WiFi", iconSrc: "/icons/icon-wifi.svg" },
-  { href: "/transportation", label: "Transport",   iconSrc: "/icons/icon-transport.svg" },
-  { href: "/money",          label: "Money",       iconSrc: "/icons/icon-money.svg" },
+  { href: "/guides",         label: "Guides",      iconSrc: "/icons/icon-guide.svg",     iconAlt: "Guides icon" },
+  { href: "/sim-cards",      label: "SIM Cards",   iconSrc: "/icons/icon-sim.svg",        iconAlt: "SIM Cards icon" },
+  { href: "/wifi-pocket",    label: "Pocket WiFi", iconSrc: "/icons/icon-wifi.svg",       iconAlt: "Pocket WiFi icon" },
+  { href: "/transportation", label: "Transport",   iconSrc: "/icons/icon-transport.svg",  iconAlt: "Transport icon" },
+  { href: "/money",          label: "Money",       iconSrc: "/icons/icon-money.svg",      iconAlt: "Money icon" },
 ];
 
 export default function Header() {
@@ -36,7 +36,7 @@ export default function Header() {
         <nav className={styles.nav}>
           {navLinks.map((l) => (
             <Link key={l.href} href={l.href} className={styles.navLink}>
-              <Image src={l.iconSrc} width={20} height={20} alt="" unoptimized />
+              <Image src={l.iconSrc} width={20} height={20} alt={l.iconAlt} unoptimized />
               {l.label}
             </Link>
           ))}
@@ -61,7 +61,7 @@ export default function Header() {
         {navLinks.map((l) => (
           <Link key={l.href} href={l.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
             <span className={styles.mobileIcon}>
-              <Image src={l.iconSrc} width={20} height={20} alt="" unoptimized />
+              <Image src={l.iconSrc} width={20} height={20} alt={l.iconAlt} unoptimized />
             </span>
             {l.label}
           </Link>

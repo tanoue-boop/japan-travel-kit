@@ -66,6 +66,12 @@ export default function JapanEsimWithPhoneNumberPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-with-phone-number" />
         <meta property="og:title" content="Japan eSIM with Phone Number 2026: Best Options for Voice & Data" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-with-phone-number" />
+        <meta property="og:description" content="Need a Japan eSIM with a phone number? Most eSIMs are data-only. We explain your options for voice calls in Japan." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Japan eSIM with Phone Number 2026: Best Options for Voice & Data" />
+        <meta name="twitter:description" content="Need a Japan eSIM with a phone number? Most eSIMs are data-only. We explain your options for voice calls in Japan." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -77,6 +83,22 @@ export default function JapanEsimWithPhoneNumberPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Japan eSIM with Phone Number 2026: Best Options for Voice & Data",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

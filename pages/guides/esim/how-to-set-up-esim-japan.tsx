@@ -124,6 +124,12 @@ export default function HowToSetUpEsimJapanPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
         <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
+        <meta property="og:description" content="Step-by-step guide to setting up your Japan eSIM before you fly. Works for iPhone and Android. Takes under 5 minutes." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)" />
+        <meta name="twitter:description" content="Step-by-step guide to setting up your Japan eSIM before you fly. Works for iPhone and Android. Takes under 5 minutes." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -135,6 +141,22 @@ export default function HowToSetUpEsimJapanPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

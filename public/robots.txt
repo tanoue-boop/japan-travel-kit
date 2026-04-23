@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://japan-travel-kit.com/sitemap.xml
+Sitemap: https://www.japan-travel-kit.com/sitemap.xml

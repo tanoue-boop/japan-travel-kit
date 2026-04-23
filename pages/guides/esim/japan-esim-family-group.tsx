@@ -37,6 +37,12 @@ export default function JapanEsimFamilyGroupPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-family-group" />
         <meta property="og:title" content="Best eSIM for Japan: Family &amp; Group Travel 2026" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-family-group" />
+        <meta property="og:description" content="Travelling to Japan with family or a group? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best eSIM for Japan: Family &amp; Group Travel 2026" />
+        <meta name="twitter:description" content="Travelling to Japan with family or a group? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -48,6 +54,22 @@ export default function JapanEsimFamilyGroupPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Best eSIM for Japan: Family & Group Travel 2026",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

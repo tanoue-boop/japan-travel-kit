@@ -120,6 +120,12 @@ export default function EsimVsSimJapanPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/esim-vs-sim-japan" />
         <meta property="og:title" content="eSIM vs SIM Card for Japan: Which Should You Get?" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/esim-vs-sim-japan" />
+        <meta property="og:description" content="eSIM or physical SIM card for Japan? We compare price, convenience, phone compatibility, and coverage to help you choose the right option for your trip." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="eSIM vs SIM Card for Japan: Which Should You Get?" />
+        <meta name="twitter:description" content="eSIM or physical SIM card for Japan? We compare price, convenience, phone compatibility, and coverage to help you choose the right option for your trip." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -131,6 +137,22 @@ export default function EsimVsSimJapanPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "eSIM vs SIM Card for Japan: Which Should You Get?",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

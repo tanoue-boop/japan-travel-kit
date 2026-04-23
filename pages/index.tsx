@@ -7,6 +7,7 @@ const categories = [
   {
     href: "/sim-cards",
     iconSrc: "/icons/card-sim.svg",
+    iconAlt: "SIM Cards & eSIM icon",
     title: "SIM Cards & eSIM",
     desc: "Stay connected from day one. Compare tourist SIM cards and eSIMs — data, coverage, and instant activation.",
     badge: "Most Popular",
@@ -15,6 +16,7 @@ const categories = [
   {
     href: "/wifi-pocket",
     iconSrc: "/icons/card-wifi.svg",
+    iconAlt: "Pocket WiFi icon",
     title: "Pocket WiFi",
     desc: "Rent a portable WiFi router for unlimited data. Great for groups, families, or heavy data users.",
     badge: "Great for Groups",
@@ -23,6 +25,7 @@ const categories = [
   {
     href: "/transportation",
     iconSrc: "/icons/card-transport.svg",
+    iconAlt: "Transportation icon",
     title: "Transportation",
     desc: "JR Pass, IC cards, Shinkansen tickets. Everything you need to travel Japan quickly and affordably.",
     badge: "Save Money",
@@ -31,6 +34,7 @@ const categories = [
   {
     href: "/money",
     iconSrc: "/icons/card-money.svg",
+    iconAlt: "Money & Payment icon",
     title: "Money & Payment",
     desc: "Best travel cards, ATM tips, and how to handle cash in Japan's largely cash-based economy.",
     badge: "Must Read",
@@ -39,10 +43,10 @@ const categories = [
 ];
 
 const tips = [
-  { iconSrc: "/icons/tip-sim.svg",  title: "Get a SIM before you land", body: "Order an eSIM online and activate it the moment your plane touches down — no airport queues." },
-  { iconSrc: "/icons/tip-cash.svg", title: "Always carry cash",          body: "Japan is still cash-heavy. 7-Eleven and Japan Post ATMs accept foreign Visa/Mastercard." },
-  { iconSrc: "/icons/tip-ic.svg",   title: "Load an IC card",            body: "Suica or Pasmo works on almost every train, bus, and at convenience stores nationwide." },
-  { iconSrc: "/icons/tip-plug.svg", title: "Type A plugs (100V)",        body: "Same shape as the US. Most devices work without an adapter — just check your voltage." },
+  { iconSrc: "/icons/tip-sim.svg",  iconAlt: "Get a SIM before you land", title: "Get a SIM before you land", body: "Order an eSIM online and activate it the moment your plane touches down — no airport queues." },
+  { iconSrc: "/icons/tip-cash.svg", iconAlt: "Always carry cash",          title: "Always carry cash",          body: "Japan is still cash-heavy. 7-Eleven and Japan Post ATMs accept foreign Visa/Mastercard." },
+  { iconSrc: "/icons/tip-ic.svg",   iconAlt: "Load an IC card",            title: "Load an IC card",            body: "Suica or Pasmo works on almost every train, bus, and at convenience stores nationwide." },
+  { iconSrc: "/icons/tip-plug.svg", iconAlt: "Type A plugs",               title: "Type A plugs (100V)",        body: "Same shape as the US. Most devices work without an adapter — just check your voltage." },
 ];
 
 const stats = [
@@ -62,6 +66,10 @@ export default function HomePage() {
         <meta property="og:description" content="Compare Japan SIM cards, pocket WiFi, and get practical travel tips for Japan. Updated 2026." />
         <meta property="og:url" content="https://japan-travel-kit.com" />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Japan Travel Kit — Practical Travel Info for Foreign Visitors" />
+        <meta name="twitter:description" content="Compare Japan SIM cards, pocket WiFi, and get practical travel tips for Japan. Updated 2026." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -145,7 +153,7 @@ export default function HomePage() {
                 <div className={styles.catLeft}>
                   <div className={styles.catIconRow}>
                     <span className={styles.catIcon}>
-                      <Image src={cat.iconSrc} width={46} height={46} alt="" unoptimized />
+                      <Image src={cat.iconSrc} width={46} height={46} alt={cat.iconAlt} unoptimized />
                     </span>
                     <span className={`${styles.catBadge} ${cat.badgeCls}`}>{cat.badge}</span>
                   </div>
@@ -176,7 +184,7 @@ export default function HomePage() {
             {tips.map((t) => (
               <div key={t.title} className={styles.tipCard}>
                 <div className={styles.tipIcon}>
-                  <Image src={t.iconSrc} width={48} height={48} alt="" unoptimized />
+                  <Image src={t.iconSrc} width={48} height={48} alt={t.iconAlt} unoptimized />
                 </div>
                 <h3 className={styles.tipTitle}>{t.title}</h3>
                 <p className={styles.tipBody}>{t.body}</p>

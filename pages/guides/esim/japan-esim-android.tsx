@@ -134,6 +134,12 @@ export default function JapanEsimAndroidPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-android" />
         <meta property="og:title" content="Best eSIM for Japan on Android 2026: Top Picks & Setup Guide" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-android" />
+        <meta property="og:description" content="Which eSIM works best for Japan on Android? We tested Airalo, Holafly and eSIM Go on Samsung, Pixel and more. Full setup guide." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best eSIM for Japan on Android 2026: Top Picks & Setup Guide" />
+        <meta name="twitter:description" content="Which eSIM works best for Japan on Android? We tested Airalo, Holafly and eSIM Go on Samsung, Pixel and more. Full setup guide." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -145,6 +151,22 @@ export default function JapanEsimAndroidPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Best eSIM for Japan on Android 2026: Top Picks & Setup Guide",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

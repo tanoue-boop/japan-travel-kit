@@ -121,6 +121,28 @@ export default function EsimGoJapanReviewPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/esim-go-japan-review" />
         <meta property="og:title" content="eSIM Go Japan Review 2026: Cheapest eSIM for Japan? Honest Test" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/esim-go-japan-review" />
+        <meta property="og:description" content="Is eSIM Go the best budget eSIM for Japan? We tested their plans, Docomo coverage, and setup. Read our honest review." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="eSIM Go Japan Review 2026: Cheapest eSIM for Japan? Honest Test" />
+        <meta name="twitter:description" content="Is eSIM Go the best budget eSIM for Japan? We tested their plans, Docomo coverage, and setup. Read our honest review." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "eSIM Go Japan Review 2026: Cheapest eSIM for Japan? Honest Test",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
+            }),
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

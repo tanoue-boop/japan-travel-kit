@@ -45,6 +45,12 @@ export default function SIMCardsPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/sim-cards" />
         <meta property="og:title" content="Best Japan SIM Cards 2026 — Compare Tourist SIM & eSIM" />
         <meta property="og:url" content="https://japan-travel-kit.com/sim-cards" />
+        <meta property="og:description" content="Compare the best Japan tourist SIM cards and eSIMs for 2026. Airalo, IIJmio, Klook, Sakura Mobile — prices, coverage, and honest reviews." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best Japan SIM Cards 2026 — Compare Tourist SIM & eSIM" />
+        <meta name="twitter:description" content="Compare the best Japan tourist SIM cards and eSIMs for 2026. Airalo, IIJmio, Klook, Sakura Mobile — prices, coverage, and honest reviews." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -56,6 +62,22 @@ export default function SIMCardsPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Best Japan SIM Cards 2026 — Compare Tourist SIM & eSIM",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />

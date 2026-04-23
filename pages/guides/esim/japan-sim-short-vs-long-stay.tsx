@@ -57,6 +57,12 @@ export default function JapanSimShortVsLongStayPage() {
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
         <meta property="og:title" content="Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
+        <meta property="og:description" content="Not sure how much data you need for Japan? We match the best SIM card to your trip length — from 1 day to 1 month+." />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Japan Travel Kit" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+" />
+        <meta name="twitter:description" content="Not sure how much data you need for Japan? We match the best SIM card to your trip length — from 1 day to 1 month+." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -68,6 +74,22 @@ export default function JapanSimShortVsLongStayPage() {
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: "Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+",
+              dateModified: "2026-04-01",
+              publisher: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://japan-travel-kit.com",
+              },
             }),
           }}
         />
