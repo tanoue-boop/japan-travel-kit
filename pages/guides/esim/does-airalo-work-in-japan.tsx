@@ -54,20 +54,20 @@ export default function DoesAiraloWorkInJapanPage() {
   return (
     <>
       <Head>
-        <title>Does Airalo Work in Japan? 2026 Coverage &amp; Speed Test | Japan Travel Kit</title>
+        <title>Does Airalo Work in Japan? 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Does Airalo work in Japan? Yes — we tested it on Docomo and SoftBank networks. Full coverage, speed and setup guide."
+          content="Does Airalo work in Japan? Yes — we tested it on Docomo and SoftBank networks. Full coverage map, speed test results, and eSIM setup guide included."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/does-airalo-work-in-japan" />
         <meta property="og:title" content="Does Airalo Work in Japan? 2026 Coverage & Speed Test" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/does-airalo-work-in-japan" />
-        <meta property="og:description" content="Does Airalo work in Japan? Yes — we tested it on Docomo and SoftBank networks. Full coverage, speed and setup guide." />
+        <meta property="og:description" content="Does Airalo work in Japan? Yes — we tested it on Docomo and SoftBank networks. Full coverage map, speed test results, and eSIM setup guide included." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Does Airalo Work in Japan? 2026 Coverage & Speed Test" />
-        <meta name="twitter:description" content="Does Airalo work in Japan? Yes — we tested it on Docomo and SoftBank networks. Full coverage, speed and setup guide." />
+        <meta name="twitter:description" content="Does Airalo work in Japan? Yes — we tested it on Docomo and SoftBank networks. Full coverage map, speed test results, and eSIM setup guide included." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

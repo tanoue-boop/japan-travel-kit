@@ -29,7 +29,7 @@ export default function PocketWifiVsEsimPage() {
   return (
     <>
       <Head>
-        <title>Pocket WiFi vs eSIM for Japan 2026: Which Is Better? | Japan Travel Kit</title>
+        <title>Pocket WiFi vs eSIM for Japan 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Pocket WiFi or eSIM for Japan? We compare price, convenience, and coverage to help you choose the best option for your trip."

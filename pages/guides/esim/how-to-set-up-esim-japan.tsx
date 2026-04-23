@@ -116,20 +116,20 @@ export default function HowToSetUpEsimJapanPage() {
   return (
     <>
       <Head>
-        <title>How to Set Up an eSIM in Japan (iPhone &amp; Android Guide 2026) | Japan Travel Kit</title>
+        <title>How to Set Up a Japan eSIM 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Step-by-step guide to setting up your Japan eSIM before you fly. Works for iPhone and Android. Takes under 5 minutes."
+          content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
         <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
-        <meta property="og:description" content="Step-by-step guide to setting up your Japan eSIM before you fly. Works for iPhone and Android. Takes under 5 minutes." />
+        <meta property="og:description" content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)" />
-        <meta name="twitter:description" content="Step-by-step guide to setting up your Japan eSIM before you fly. Works for iPhone and Android. Takes under 5 minutes." />
+        <meta name="twitter:description" content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

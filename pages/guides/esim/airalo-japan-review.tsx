@@ -101,7 +101,7 @@ export default function AiraloJapanReviewPage() {
   return (
     <>
       <Head>
-        <title>Airalo Japan Review 2026: Honest Test &amp; Verdict | Japan Travel Kit</title>
+        <title>Airalo Japan Review 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy."

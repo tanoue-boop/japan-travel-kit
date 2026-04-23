@@ -109,20 +109,20 @@ export default function HolaflyJapanReviewPage() {
   return (
     <>
       <Head>
-        <title>Holafly Japan Review 2026: Is Unlimited Data Worth the Price? | Japan Travel Kit</title>
+        <title>Holafly Japan Review 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Is Holafly worth it for Japan? We review their unlimited data eSIM plans, SoftBank coverage, and value for money."
+          content="Is Holafly worth it for Japan? We tested their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/holafly-japan-review" />
         <meta property="og:title" content="Holafly Japan Review 2026: Is Unlimited Data Worth the Price?" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/holafly-japan-review" />
-        <meta property="og:description" content="Is Holafly worth it for Japan? We review their unlimited data eSIM plans, SoftBank coverage, and value for money." />
+        <meta property="og:description" content="Is Holafly worth it for Japan? We tested their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Holafly Japan Review 2026: Is Unlimited Data Worth the Price?" />
-        <meta name="twitter:description" content="Is Holafly worth it for Japan? We review their unlimited data eSIM plans, SoftBank coverage, and value for money." />
+        <meta name="twitter:description" content="Is Holafly worth it for Japan? We tested their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

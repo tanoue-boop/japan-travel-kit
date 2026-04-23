@@ -176,7 +176,7 @@ export default function JapanEsimIphonePage() {
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan on iPhone 2026: Top Picks &amp; Setup Guide | Japan Travel Kit</title>
+        <title>Best eSIM for Japan on iPhone 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Which eSIM works best for Japan on iPhone? We tested Airalo, Holafly and eSIM Go on iPhone XS to iPhone 16. Full setup guide."

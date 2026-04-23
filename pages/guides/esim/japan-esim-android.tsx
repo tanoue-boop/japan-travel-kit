@@ -126,7 +126,7 @@ export default function JapanEsimAndroidPage() {
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan on Android 2026: Top Picks &amp; Setup Guide | Japan Travel Kit</title>
+        <title>Best eSIM for Japan on Android 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Which eSIM works best for Japan on Android? We tested Airalo, Holafly and eSIM Go on Samsung, Pixel and more. Full setup guide."

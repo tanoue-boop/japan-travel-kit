@@ -163,7 +163,7 @@ export default function CheapestEsimJapanPage() {
   return (
     <>
       <Head>
-        <title>Cheapest eSIM for Japan 2026: Best Budget Picks Tested &amp; Compared | Japan Travel Kit</title>
+        <title>Cheapest eSIM for Japan 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile. From $3.50."

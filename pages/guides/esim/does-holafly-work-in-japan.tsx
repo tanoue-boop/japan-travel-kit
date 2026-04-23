@@ -35,7 +35,7 @@ export default function DoesHolaflyWorkInJapanPage() {
   return (
     <>
       <Head>
-        <title>Does Holafly Work in Japan? 2026 Coverage &amp; Speed Test | Japan Travel Kit</title>
+        <title>Does Holafly Work in Japan? 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Does Holafly work in Japan? Yes — we tested unlimited data on SoftBank network. Full coverage, speed and activation guide."
@@ -355,7 +355,7 @@ export default function DoesHolaflyWorkInJapanPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/esim/best-esim-japan" className={styles.relatedCard}>
+            <Link href="/guides/esim/how-to-set-up-esim-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -363,7 +363,7 @@ export default function DoesHolaflyWorkInJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airalo vs Holafly for Japan: Which eSIM Is Better?</p>
+                <p className={styles.relatedTitle}>How to Set Up a Japan eSIM: iPhone &amp; Android Guide</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

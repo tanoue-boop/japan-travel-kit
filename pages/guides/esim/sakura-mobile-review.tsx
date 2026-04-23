@@ -107,20 +107,20 @@ export default function SakuraMobileReviewPage() {
   return (
     <>
       <Head>
-        <title>Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan? | Japan Travel Kit</title>
+        <title>Sakura Mobile Japan Review 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Sakura Mobile offers voice calls, English support and Docomo coverage. But is it worth the price? Our honest review."
+          content="Sakura Mobile offers voice calls, English support, and Docomo coverage — ideal for long stays in Japan. But is it worth the price? Our honest review."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/sakura-mobile-review" />
         <meta property="og:title" content="Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/sakura-mobile-review" />
-        <meta property="og:description" content="Sakura Mobile offers voice calls, English support and Docomo coverage. But is it worth the price? Our honest review." />
+        <meta property="og:description" content="Sakura Mobile offers voice calls, English support, and Docomo coverage — ideal for long stays in Japan. But is it worth the price? Our honest review." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?" />
-        <meta name="twitter:description" content="Sakura Mobile offers voice calls, English support and Docomo coverage. But is it worth the price? Our honest review." />
+        <meta name="twitter:description" content="Sakura Mobile offers voice calls, English support, and Docomo coverage — ideal for long stays in Japan. But is it worth the price? Our honest review." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

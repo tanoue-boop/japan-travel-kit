@@ -29,19 +29,19 @@ export default function JapanEsimFamilyGroupPage() {
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan: Family &amp; Group Travel 2026 | Japan Travel Kit</title>
+        <title>Japan eSIM for Family &amp; Group Travel 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="Travelling to Japan with family or a group? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-family-group" />
-        <meta property="og:title" content="Best eSIM for Japan: Family &amp; Group Travel 2026" />
+        <meta property="og:title" content="Japan eSIM for Family &amp; Group Travel 2026" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-family-group" />
         <meta property="og:description" content="Travelling to Japan with family or a group? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best eSIM for Japan: Family &amp; Group Travel 2026" />
+        <meta name="twitter:title" content="Japan eSIM for Family &amp; Group Travel 2026" />
         <meta name="twitter:description" content="Travelling to Japan with family or a group? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option." />
         <script
           type="application/ld+json"

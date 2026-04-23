@@ -84,20 +84,20 @@ export default function BestEsimJapanPage() {
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared | Japan Travel Kit</title>
+        <title>Best eSIM for Japan 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="The best eSIMs for Japan in 2026: Airalo, Holafly, eSIM Go, and Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements."
+          content="The best eSIMs for Japan 2026: Airalo, Holafly, eSIM Go & Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/best-esim-japan" />
         <meta property="og:title" content="Best eSIM for Japan 2026: Top 4 Picks Tested & Compared" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/best-esim-japan" />
-        <meta property="og:description" content="The best eSIMs for Japan in 2026: Airalo, Holafly, eSIM Go, and Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />
+        <meta property="og:description" content="The best eSIMs for Japan 2026: Airalo, Holafly, eSIM Go & Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best eSIM for Japan 2026: Top 4 Picks Tested & Compared" />
-        <meta name="twitter:description" content="The best eSIMs for Japan in 2026: Airalo, Holafly, eSIM Go, and Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />
+        <meta name="twitter:description" content="The best eSIMs for Japan 2026: Airalo, Holafly, eSIM Go & Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

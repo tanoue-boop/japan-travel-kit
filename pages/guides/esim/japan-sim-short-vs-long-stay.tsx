@@ -49,20 +49,20 @@ export default function JapanSimShortVsLongStayPage() {
   return (
     <>
       <Head>
-        <title>Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+ | Japan Travel Kit</title>
+        <title>Best Japan SIM by Trip Length 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Not sure how much data you need for Japan? We match the best SIM card to your trip length — from 1 day to 1 month+."
+          content="Not sure how much data you need for Japan? We match the best SIM card or eSIM to your trip length — from 1 day to 1 month+. Find the right plan."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
         <meta property="og:title" content="Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
-        <meta property="og:description" content="Not sure how much data you need for Japan? We match the best SIM card to your trip length — from 1 day to 1 month+." />
+        <meta property="og:description" content="Not sure how much data you need for Japan? We match the best SIM card or eSIM to your trip length — from 1 day to 1 month+. Find the right plan." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+" />
-        <meta name="twitter:description" content="Not sure how much data you need for Japan? We match the best SIM card to your trip length — from 1 day to 1 month+." />
+        <meta name="twitter:description" content="Not sure how much data you need for Japan? We match the best SIM card or eSIM to your trip length — from 1 day to 1 month+. Find the right plan." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

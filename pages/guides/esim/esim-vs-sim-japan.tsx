@@ -112,7 +112,7 @@ export default function EsimVsSimJapanPage() {
   return (
     <>
       <Head>
-        <title>eSIM vs SIM Card for Japan 2026: Which Should You Get? | Japan Travel Kit</title>
+        <title>eSIM vs SIM Card for Japan 2026 | Japan Travel Kit</title>
         <meta
           name="description"
           content="eSIM or physical SIM card for Japan? We compare price, convenience, phone compatibility, and coverage to help you choose the right option for your trip."
