@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Guides.module.css";
+import { esimArticles } from "../../lib/guides-esim";
 
 function IconSim() {
   return (
@@ -60,7 +61,7 @@ const categories = [
     Icon: IconSim,
     name: "eSIM & SIM Cards",
     desc: "Which SIM to buy, how to install an eSIM, network coverage, and data plan comparisons for Japan.",
-    badge: "10 Guides",
+    badge: `${esimArticles.length} Guides`,
     badgeCls: styles.badgeSoftRed,
     soon: false,
   },
