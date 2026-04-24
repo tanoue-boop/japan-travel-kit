@@ -28,15 +28,15 @@ const doesNotWork = [
 const steps = [
   {
     title: "Find a ticket vending machine at any JR station",
-    desc: "Look for machines marked with a Suica or IC card sticker. Available at all major airports (Narita, Haneda, Kansai) and urban stations. Machines have English language support.",
+    desc: "Look for machines marked with a Suica or IC card sticker. Available at all major airports (Narita, Haneda, Kansai) and urban stations. Machines have English-language support.",
   },
   {
     title: "Select 'Suica' or 'New card'",
     desc: "Choose the new card option from the main menu. The process is straightforward — the machine walks you through each step.",
   },
   {
-    title: "Pay ¥500 deposit + your initial charge",
-    desc: "Insert ¥2,000 to get a ¥500 deposit and ¥1,500 starting balance. Machines accept cash; some newer machines also accept foreign credit cards.",
+    title: "Pay the ¥500 deposit and choose your starting balance",
+    desc: "Insert ¥2,000: ¥500 covers the deposit and ¥1,500 becomes your starting balance. Machines accept cash; some newer machines also accept foreign credit cards.",
   },
   {
     title: "Start using immediately",
@@ -69,7 +69,7 @@ const mobileSections = [
   },
   {
     title: "No card needed",
-    desc: "Mobile Suica means you can leave your physical card at home. Just hold your phone or watch near the card reader — it works even if your phone battery is low (on iPhone).",
+    desc: "With Mobile Suica, you don't need a physical card. Just hold your phone or watch near the card reader — it works even if your phone battery is low (on iPhone).",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 12 19.79 19.79 0 0 1 1.07 3.4 2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z" />
@@ -81,15 +81,15 @@ const mobileSections = [
 const faqItems = [
   {
     q: "What is the best IC card for tourists in Japan?",
-    a: "Suica is the best IC card for most tourists. It's accepted nationwide on trains, subways, buses, and at convenience stores. Pasmo works equally well in practice — both use the same interoperable network. The main practical difference is where you get them: Suica from JR station machines, Pasmo from Tokyo Metro machines.",
+    a: "Suica is the best IC card for most tourists. It's accepted nationwide on trains, subways, and buses, and at convenience stores. Pasmo works equally well in practice — both use the same interoperable network. The main practical difference is where you get one: Suica from JR station machines, Pasmo from Tokyo Metro machines.",
   },
   {
     q: "Can I use Suica outside Tokyo?",
-    a: "Yes. Suica is accepted nationwide across Japan on most public transport — including Osaka, Kyoto, Nagoya, Hiroshima, Sapporo, and Fukuoka. All major IC cards use a shared interoperable network, so you can use Suica on virtually any IC-compatible transport anywhere in Japan.",
+    a: "Yes. Suica is accepted across Japan on most public transport — including Osaka, Kyoto, Nagoya, Hiroshima, Sapporo, and Fukuoka. All major IC cards use a shared interoperable network, so you can use Suica on virtually any IC-compatible transport anywhere in Japan.",
   },
   {
     q: "How do I charge my IC card in Japan?",
-    a: "Charge (top up) at any ticket vending machine in train stations — look for a machine labeled チャージ (charge) or with an IC card logo. Insert your card and cash, select the amount, and the balance updates instantly. You can also top up via Mobile Suica if set up on your phone.",
+    a: "Charge (top up) at any ticket vending machine at train stations — look for a machine labeled チャージ (charge) or with an IC card logo. Insert your card and cash, select the amount, and the balance updates instantly. You can also top up via Mobile Suica if set up on your phone.",
   },
   {
     q: "Can I use a foreign credit card to charge my IC card?",
@@ -97,7 +97,7 @@ const faqItems = [
   },
   {
     q: "What happens if my IC card runs out of money at the gate?",
-    a: "If your card balance is insufficient, you'll hear an error tone and the gate won't open. Don't panic — find the nearest fare adjustment machine (精算機) inside the station, insert your card, pay the difference in cash, and exit normally. Most stations have these machines near the gates.",
+    a: "If your card balance is insufficient, you'll hear an error tone and the gate won't open. Don't panic — find the nearest fare adjustment machine (精算機) inside the station, insert your card, pay the difference in cash, and exit as normal. Most stations have these machines near the gates.",
   },
 ];
 
@@ -273,7 +273,7 @@ export default function IcCardsJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <strong>Verdict:</strong> Get whichever is available first. Both work equally well across Japan. Suica is slightly more versatile for Mobile wallet use on iPhone — if you want Apple Pay, go with Suica.
+            <strong>Verdict:</strong> Get whichever is available first. Both work equally well across Japan. Suica is slightly more versatile for mobile wallet use on iPhone — if you want Apple Pay, go with Suica.
           </p>
         </section>
 
@@ -323,7 +323,7 @@ export default function IcCardsJapanPage() {
           <span className={styles.sectionLabel}>Digital option</span>
           <h2 className={styles.sectionTitle}>Mobile Suica</h2>
           <p className={styles.bodyText}>
-            Mobile Suica lets you add a Suica card to your smartphone via Apple Pay or Google Pay — no physical card needed. You can load money from a foreign credit or debit card and tap your phone at any IC card reader across Japan.
+            Mobile Suica lets you add Suica to your smartphone via Apple Pay or Google Pay — no physical card needed. You can top up using a foreign credit or debit card and tap your phone at any IC card reader across Japan.
           </p>
           <div className={styles.whoForGrid}>
             {mobileSections.map((item) => (
@@ -341,7 +341,7 @@ export default function IcCardsJapanPage() {
           <span className={styles.sectionLabel}>Before you leave</span>
           <h2 className={styles.sectionTitle}>Returning Your IC Card</h2>
           <p className={styles.bodyText}>
-            If you want your ¥500 deposit back before leaving Japan, return your card to any JR ticket office (Midori-no-madoguchi) or an IC card return machine at major stations.
+            If you want your ¥500 deposit back before leaving Japan, return your card to any JR ticket office (Midori no Madoguchi) or an IC card return machine at major stations.
           </p>
           <p className={styles.bodyText}>
             You&apos;ll receive your ¥500 deposit plus any remaining balance, minus a ¥220 handling fee. If the remaining balance is less than ¥220, only the deposit is returned.

@@ -17,7 +17,7 @@ const simOptions = [
     name: "eSIM Go",
     tag: "Best Budget",
     price: "From $3.50 / 7 days",
-    highlight: "The cheapest Japan eSIM we tested. Runs on Docomo network. No registration hassle — buy, install, and go.",
+    highlight: "The cheapest Japan eSIM we tested. Runs on the Docomo network. No registration hassle — buy, install, and go.",
     href: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN",
     reviewHref: "/guides/esim/esim-go-japan-review",
   },
@@ -26,7 +26,7 @@ const simOptions = [
     name: "Airalo Japan",
     tag: "Best Overall",
     price: "From $4.50 / 7 days",
-    highlight: "World's largest eSIM marketplace. Easy app, instant setup, reliable Docomo/SoftBank coverage nationwide.",
+    highlight: "The world's largest eSIM marketplace. Easy app, instant setup, reliable Docomo/SoftBank coverage nationwide.",
     href: "https://airalo.pxf.io/c/7213504/1268485/15608",
     reviewHref: "/guides/esim/airalo-japan-review",
   },
@@ -48,10 +48,10 @@ const relyOnWifiPros = [
 ];
 
 const relyOnWifiCons = [
-  "Any travel outside major cities becomes very difficult",
+  "Getting around outside major cities becomes very difficult",
   "Constant registration forms slow you down",
   "Speed is often too slow for video calls or streaming",
-  "No connection between WiFi spots — blank zones on the go",
+  "No connection between WiFi spots — dead zones when you're between hotspots",
   "Rural areas, mountain routes, and day trips often have no coverage",
 ];
 
@@ -62,11 +62,11 @@ const faqItems = [
   },
   {
     q: "Does Japan have free WiFi on trains?",
-    a: "Shinkansen bullet trains have free WiFi on board, but it's often slow and intermittent — especially during long tunnel sections. Urban subway networks like Tokyo Metro have station WiFi, but signal drops when the train is moving between stations. For reliable connectivity on the go, a SIM card or eSIM is more practical.",
+    a: "Shinkansen trains have free WiFi on board, but it's often slow and intermittent — especially during long tunnel sections. Urban subway networks like Tokyo Metro have station WiFi, but the signal drops when the train is moving between stations. For reliable connectivity on the go, a SIM card or eSIM is more practical.",
   },
   {
     q: "Can I use Google Maps without a SIM in Japan?",
-    a: "You can download Google Maps offline for specific areas before you travel — this covers basic walking navigation without mobile data. However, real-time transit directions (bus times, subway delays, Shinkansen schedules) require an active internet connection. You'll also need data for translation apps, ride-hailing, and booking on the go.",
+    a: "You can download Google Maps offline for specific areas before you travel — this covers basic walking navigation without mobile data. However, real-time transit directions (bus times, subway delays, Shinkansen schedules) require an active internet connection. You'll also need data for translation apps, ride-hailing, and on-the-go bookings.",
   },
   {
     q: "Is Japan WiFi fast enough for streaming?",
@@ -255,10 +255,10 @@ export default function FreeWifiJapanPage() {
             The short answer: not really. Japan&apos;s reputation for technology can give visitors the wrong impression about free WiFi. The reality on the ground is mixed at best.
           </p>
           <p className={styles.bodyText}>
-            <strong>Speed is inconsistent.</strong> Convenience store WiFi (7SPOT, FamilyMart Wi2) is often slow — fine for checking a map, but not for video calls or navigation in real time. Station WiFi is better, but only available at specific spots.
+            <strong>Speed is inconsistent.</strong> Convenience store WiFi (7SPOT, FamilyMart Wi2) is often slow — fine for checking a map, but not for video calls or real-time navigation. Station WiFi is better, but only available at specific spots.
           </p>
           <p className={styles.bodyText}>
-            <strong>Registration is required every time.</strong> Almost every free WiFi spot in Japan requires an email address, phone number, or social media login for each new session. This adds friction that makes it impractical as a primary connectivity solution.
+            <strong>Registration is required every time.</strong> Almost every free WiFi spot in Japan requires an email address, phone number, or social media login for each new session. This extra step makes it impractical as a primary connectivity solution.
           </p>
           <p className={styles.bodyText}>
             <strong>Rural and suburban areas are mostly uncovered.</strong> Free WiFi is concentrated in urban centres and tourist corridors. Once you leave central Tokyo, Osaka, or Kyoto, free WiFi effectively disappears — including on many local trains and buses.
@@ -270,13 +270,13 @@ export default function FreeWifiJapanPage() {
           <span className={styles.sectionLabel}>Why most travellers choose differently</span>
           <h2 className={styles.sectionTitle}>Why Most Travellers Use a SIM Instead</h2>
           <p className={styles.bodyText}>
-            The main advantage of a SIM or eSIM is that it works everywhere, all the time — no registration forms, no session limits, no WiFi dead zones between spots.
+            The main advantage of a SIM or eSIM is that it works everywhere, all the time — no registration forms, no session limits, no dead zones between hotspots.
           </p>
           <p className={styles.bodyText}>
-            Practically, this matters for Google Maps navigation while walking, translation apps in restaurants and shops, real-time train schedules, and calling or messaging family on the go. These are the moments when free WiFi simply isn&apos;t available.
+            In practice, this is essential for Google Maps navigation while walking, translation apps in restaurants and shops, real-time train schedules, and calling or messaging family on the go. These are the moments when free WiFi simply isn&apos;t available.
           </p>
           <p className={styles.bodyText}>
-            A 5–10 GB Japan eSIM costs less than a single Starbucks order per day. For most travellers, the convenience far outweighs the cost.
+            A 5–10 GB Japan eSIM costs less per day than a single coffee. For most travellers, the convenience far outweighs the cost.
           </p>
         </section>
 
@@ -341,7 +341,7 @@ export default function FreeWifiJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.5rem" }}>
-            Technically possible for a very city-focused short trip — but the experience will be frustrating. The moment you leave a WiFi spot, you lose maps, translation, and real-time transport info. For most travellers visiting Japan, a SIM card is a practical necessity, not a luxury.
+            Technically possible for a purely city-based short trip — but the experience will be frustrating. The moment you leave a WiFi spot, you lose maps, translation, and real-time transport info. For most travellers visiting Japan, a SIM card is a practical necessity, not a luxury.
           </p>
         </section>
 

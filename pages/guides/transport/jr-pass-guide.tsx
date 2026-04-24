@@ -53,7 +53,7 @@ const steps = [
 const tips = [
   {
     title: "Reserve seats — they're free",
-    desc: "Seat reservations on Shinkansen are included with the JR Pass. Reserve at any JR ticket counter or via JR Smart EX to guarantee your spot on busy routes.",
+    desc: "Seat reservations on Shinkansen are included with the JR Pass. Reserve at any JR ticket counter or via JR Smart EX to guarantee your seat on busy routes.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -65,7 +65,7 @@ const tips = [
   },
   {
     title: "Take Hikari, not Nozomi",
-    desc: "The Nozomi and Mizuho Shinkansen are not covered. Hikari and Sakura services are covered and arrive only 10–15 minutes later on most routes.",
+    desc: "The Nozomi and Mizuho are not covered. Hikari and Sakura services are covered and arrive only 10–15 minutes later on most routes.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M5 12h14" />
@@ -75,7 +75,7 @@ const tips = [
   },
   {
     title: "Pair with an IC card for city travel",
-    desc: "The JR Pass only covers JR lines. Load a Suica or Pasmo with ¥3,000–5,000 for Tokyo Metro, Osaka subway, buses, and convenience stores.",
+    desc: "The JR Pass only covers JR lines. Load a Suica or Pasmo with ¥3,000–5,000 for Tokyo Metro, the Osaka Metro, buses, and convenience stores.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="5" width="20" height="14" rx="2" />
@@ -92,11 +92,11 @@ const faqItems = [
   },
   {
     q: "Can I use the JR Pass on the Shinkansen?",
-    a: "Yes — but not on the Nozomi or Mizuho (the fastest services on the Tokaido and Sanyo lines). The next-fastest options — Hikari and Sakura — are fully covered and add only 10–15 minutes on most journeys. On Tohoku, Hokuriku, and Kyushu Shinkansen lines, almost all services are covered.",
+    a: "Yes — but not on the Nozomi or Mizuho (the fastest services on the Tokaido and Sanyo lines). The next-fastest options — Hikari and Sakura — are fully covered and add only 10–15 minutes on most journeys. On the Tohoku, Hokuriku, and Kyushu Shinkansen lines, almost all services are covered.",
   },
   {
     q: "Where can I buy the JR Pass?",
-    a: "You must purchase the JR Pass outside Japan through an authorised reseller. Prices are set by JR and are the same across all sellers. After purchase you receive an Exchange Order which you redeem at a JR Travel Service Center in Japan, available at major airports and stations.",
+    a: "You must purchase the JR Pass outside Japan through an authorised reseller. Prices are set by JR and are the same across all sellers. After purchase, you receive an Exchange Order, which you redeem at a JR Travel Service Center in Japan, available at major airports and stations.",
   },
   {
     q: "Can I use the JR Pass on the Tokyo subway?",
@@ -104,7 +104,7 @@ const faqItems = [
   },
   {
     q: "What's the difference between Ordinary and Green (1st class)?",
-    a: "Green class offers wider, more reclinable seats and quieter carriages — equivalent to business class. Ordinary class is already comfortable by international standards and is the right choice for most tourists. Green is worth considering for very long journeys or if you plan many long-distance Shinkansen trips.",
+    a: "Green class offers wider seats with a deeper recline and quieter carriages — equivalent to business class. Ordinary class is already comfortable by international standards and is the right choice for most tourists. Green is worth considering for very long journeys or if you plan many long-distance Shinkansen trips.",
   },
 ];
 
@@ -246,13 +246,13 @@ export default function JrPassGuidePage() {
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>What Is the JR Pass?</h2>
           <p className={styles.bodyText}>
-            The JR Pass (Japan Rail Pass) is a flat-fee rail pass available exclusively to foreign tourists visiting Japan on a temporary visitor visa. It covers unlimited travel on trains, buses, and some ferries operated by Japan Railways Group — the national rail operator.
+            The JR Pass (Japan Rail Pass) is a fixed-price rail pass available exclusively to foreign tourists visiting Japan on a temporary visitor visa. It covers unlimited travel on trains, buses, and some ferries operated by Japan Railways Group — the national rail operator.
           </p>
           <p className={styles.bodyText}>
             The pass covers most Shinkansen (bullet trains), all JR local and express trains, JR bus routes, and even the Miyajima Ferry in Hiroshima. One critical rule: <strong>the JR Pass cannot be purchased inside Japan</strong>. You must buy it before arrival and exchange your voucher at a JR Travel Service Center on arrival.
           </p>
           <p className={styles.bodyText}>
-            The JR Pass was introduced in 1981 to attract foreign tourists. Today it remains one of the most popular travel products for visitors — but with rising prices, it&apos;s worth calculating whether it suits your specific itinerary before buying.
+            The JR Pass was introduced in 1981 to attract foreign tourists. Today it remains one of the most popular travel products for visitors — but with rising prices, it&apos;s worth checking whether it suits your itinerary before you buy.
           </p>
         </section>
 
@@ -292,7 +292,7 @@ export default function JrPassGuidePage() {
           <span className={styles.sectionLabel}>Cost calculator</span>
           <h2 className={styles.sectionTitle}>Is the JR Pass Worth It?</h2>
           <p className={styles.bodyText}>
-            Add up the individual Shinkansen fares for your planned route and compare to the 7-day pass price ($275). The real-route examples below are a reliable guide:
+            Add up the individual Shinkansen fares for your planned route and compare to the 7-day pass price ($275). The real-itinerary examples below are a useful guide:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -322,7 +322,7 @@ export default function JrPassGuidePage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
-            Individual fares are approximate unreserved one-way prices. A 14-day pass ($441) makes sense for longer trips including Sapporo, Kanazawa, or Kyushu.
+            Individual fares are approximate unreserved one-way prices. A 14-day pass ($441) makes sense for longer trips including trips to Sapporo, Kanazawa, or Kyushu.
           </p>
         </section>
 
@@ -450,7 +450,7 @@ export default function JrPassGuidePage() {
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Stay connected on every journey</h2>
             <p className={styles.ctaBannerDesc}>
-              Pair your JR Pass with the right eSIM — have 4G data from the moment you land at Narita or Haneda.
+              Pair your JR Pass with the right eSIM — get 4G coverage from the moment you land at Narita or Haneda.
             </p>
             <Link href="/guides/esim/best-esim-japan" className={styles.ctaBannerBtn}>
               Find the Best eSIM for Japan →
