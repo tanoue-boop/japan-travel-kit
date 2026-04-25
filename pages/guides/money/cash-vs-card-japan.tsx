@@ -31,7 +31,7 @@ const atmGuide = [
   {
     rank: 3,
     name: "AEON Bank ATM",
-    desc: "Found inside AEON supermarkets and malls. Accept international cards and are often open late (many 24/7). A reliable option in suburban and rural areas where 7-Elevens are less common.",
+    desc: "These ATMs are found inside AEON supermarkets and malls across Japan. They accept international cards and are often open late — many run 24/7. A reliable option in suburban and rural areas where 7-Elevens are less common.",
   },
 ];
 
@@ -258,11 +258,11 @@ export default function CashVsCardJapanPage() {
           <p className={styles.bodyText}>
             Japan ranks among the most cash-reliant developed countries in the world.
             Surveys consistently show that a large share of Japanese transactions — especially outside major cities — are settled in cash.
-            This isn&apos;t just inertia: many small business owners prefer cash to avoid card terminal fees (which in Japan can run 3–5% per transaction for merchants).
+            This isn&apos;t just inertia: many small business owners prefer cash to avoid card processing fees (which in Japan can run 3–5% per transaction for merchants).
           </p>
           <p className={styles.bodyText}>
             The COVID era and the 2020 Olympics accelerated contactless adoption, and you&apos;ll now find card terminals at nearly all convenience stores, department stores, and chain restaurants.
-            But step off the tourist trail — into a neighbourhood izakaya, a roadside ramen shop, a rural onsen, or a rural temple — and cash remains king.
+            But step off the tourist trail — into a neighbourhood izakaya, a roadside ramen shop, a rural onsen, or a remote temple — and cash remains king.
           </p>
           <p className={styles.bodyText}>
             <strong>The safe rule:</strong> always keep at least ¥10,000–¥20,000 on your person.
@@ -357,7 +357,7 @@ export default function CashVsCardJapanPage() {
             For ATM withdrawals (you&apos;ll need them), Wise offers up to 2 free ATM withdrawals per month; Revolut offers free withdrawals up to a monthly limit on its free tier.
           </p>
           <p className={styles.bodyText}>
-            US travellers: Charles Schwab&apos;s High-Yield Investor Checking account reimburses all ATM fees worldwide — making it the gold standard for international travel cash access.
+            US travellers: Charles Schwab&apos;s High-Yield Investor Checking account reimburses all ATM fees worldwide — making it the gold standard for fee-free cash withdrawals abroad.
           </p>
         </section>
 

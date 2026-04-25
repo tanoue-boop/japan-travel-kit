@@ -19,7 +19,7 @@ const comparisonRows = [
 const redditQAs = [
   {
     q: '"Is Airalo reliable in Japan?"',
-    a: "Consistently yes. Most upvoted responses cite Airalo's Docomo/SoftBank network access as rock solid, with setup that works smoothly on both iPhone and Android. The most common criticism is that it's data-only — no Japanese phone number.",
+    a: "Consistently yes. Most upvoted responses cite Airalo's Docomo/SoftBank network access as rock-solid, with setup that works smoothly on both iPhone and Android. The most common criticism is that it's data-only — no Japanese phone number.",
   },
   {
     q: '"Is Holafly really unlimited?"',
@@ -27,7 +27,7 @@ const redditQAs = [
   },
   {
     q: '"What\'s the cheapest Japan eSIM?"',
-    a: "eSIM Go comes up most often for budget travellers, with plans starting from $3.50 on Docomo. Airalo is close behind. The general advice is to avoid the cheapest no-name options and stick with known providers.",
+    a: "eSIM Go comes up most often for budget travellers, with plans starting from $3.50 on Docomo. Airalo is close behind. The general advice is to avoid the cheapest no-name options and stick with established providers.",
   },
   {
     q: '"Does eSIM work in rural Japan?"',
@@ -38,7 +38,7 @@ const redditQAs = [
 const faqItems = [
   {
     q: "What eSIM do most travellers use for Japan?",
-    a: "Based on analysis of threads on r/JapanTravel, r/eSIM, and r/travel, Airalo is consistently the most recommended eSIM for Japan. It's cited for reliability, competitive pricing, and ease of setup through its app.",
+    a: "Based on our analysis of threads on r/JapanTravel, r/eSIM, and r/travel, Airalo is consistently the most recommended eSIM for Japan. It's cited for reliability, competitive pricing, and ease of setup through its app.",
   },
   {
     q: "Is Airalo recommended on Reddit for Japan?",
@@ -46,7 +46,7 @@ const faqItems = [
   },
   {
     q: "What do Reddit users say about Holafly Japan?",
-    a: "Holafly gets positive reviews for its unlimited data plan, which appeals to heavy users who don't want to track usage. Some users note that speeds can be throttled during peak hours, but the overall sentiment is positive for Japan coverage.",
+    a: "Holafly gets positive reviews for its unlimited data plan, which appeals to heavy users who don't want to track usage. Some users note that speeds can be throttled during peak hours, but overall sentiment on Japan coverage remains positive.",
   },
   {
     q: "Is eSIM Go popular on Reddit?",
@@ -222,20 +222,20 @@ export default function BestEsimJapanRedditPage() {
           <h2 className={styles.sectionTitle}>Most Recommended: Airalo</h2>
           <p className={styles.bodyText}>
             On r/JapanTravel, Airalo is the single most recommended eSIM for Japan. Threads asking
-            &ldquo;which eSIM should I use?&rdquo; regularly surface top-voted comments recommending Airalo
+            &ldquo;which eSIM should I use?&rdquo; regularly attract top-voted comments recommending Airalo
             specifically for its reliable Docomo and SoftBank network access, competitive pricing,
             and the ease of its app-based setup.
           </p>
           <p className={styles.bodyText}>
-            Common Reddit praise: &ldquo;Just buy Airalo before you go&rdquo; is close to a standard reply
+            Common Reddit praise: &ldquo;Just buy Airalo before you go&rdquo; has become almost the default reply
             on r/JapanTravel. Users cite the hassle-free setup (QR code scan before departure,
-            activate on landing) as the key differentiator over airport SIMs. Plans starting at
+            activate on landing) as the key advantage over airport SIMs. Plans starting at
             $4.50 for 7 days make it accessible for almost any budget.
           </p>
           <p className={styles.bodyText}>
             Reddit criticisms: The most frequent complaint is that Airalo is data-only — no voice
-            calls or Japanese phone number. Users who need a local number are directed to Sakura
-            Mobile instead. A small number of users report slower customer support response times,
+            calls and no Japanese phone number. Users who need a local number are usually pointed
+            toward Sakura Mobile instead. A small number of users report slower customer support response times,
             though most say the service worked without needing support.
           </p>
           <a
@@ -267,7 +267,7 @@ export default function BestEsimJapanRedditPage() {
             Reddit criticisms: Some users report speed throttling after extended heavy use.
             A few note that SoftBank (Holafly&apos;s network in Japan) has slightly less rural
             coverage than Docomo. The price is also higher than Airalo or eSIM Go, which some
-            threads flag as not worth it for lighter users.
+            threads flag as not worth it for light users.
           </p>
           <a
             href="#"
@@ -284,7 +284,7 @@ export default function BestEsimJapanRedditPage() {
           <span className={styles.sectionLabel}>Best budget option</span>
           <h2 className={styles.sectionTitle}>Best Budget Option: eSIM Go</h2>
           <p className={styles.bodyText}>
-            eSIM Go has grown in Reddit visibility over the past year, particularly among budget
+            eSIM Go has gained visibility on Reddit over the past year, particularly among budget
             travellers and those on short trips. At $3.50 for an entry-level plan — the cheapest
             among reputable providers — it&apos;s regularly mentioned as the best value for money on
             r/JapanTravel.
@@ -337,10 +337,10 @@ export default function BestEsimJapanRedditPage() {
             easy to set up — which is exactly what most travellers need.
           </p>
           <p className={styles.verdictText}>
-            The nuance is in the edge cases. Heavy data users who refuse to track usage will be
-            happier with Holafly. Travellers on tight budgets or short trips will find eSIM Go
-            hard to beat at $3.50. Those staying longer than a month or needing a real Japanese
-            phone number should look at Sakura Mobile.
+            The nuance is in the edge cases. Heavy data users who&apos;d rather not monitor their usage
+            will be happier with Holafly. Travellers on tight budgets or short trips will find
+            eSIM Go hard to beat at $3.50. Those staying longer than a month or needing a real
+            Japanese phone number should consider Sakura Mobile.
           </p>
           <p className={styles.verdictText}>
             The one thing Reddit unanimously agrees on: <strong>buy before you fly</strong>.

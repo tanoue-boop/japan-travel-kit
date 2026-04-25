@@ -65,12 +65,12 @@ const esimPicks = [
 
 const lateNightSteps = [
   {
-    title: "Use airport free WiFi",
-    desc: "Most major Japanese airports offer free WiFi in the arrivals area. Use it to contact your accommodation and arrange onward transport.",
+    title: "Use the airport's free Wi-Fi",
+    desc: "Most major Japanese airports offer free Wi-Fi in the arrivals area. Use it to contact your accommodation and arrange onward transport.",
   },
   {
     title: "Find a convenience store",
-    desc: "7-Eleven, FamilyMart, and Lawson near most airports offer free WiFi without registration — useful for maps and messaging apps until morning.",
+    desc: "7-Eleven, FamilyMart, and Lawson locations near most airports offer free Wi-Fi without registration — useful for maps and messaging apps until morning.",
   },
   {
     title: "Visit a SIM counter in the morning",
@@ -85,7 +85,7 @@ const faqItems = [
   },
   {
     q: "Are airport SIM cards expensive in Japan?",
-    a: "Compared to pre-ordered eSIMs, yes. Airport SIM cards typically start from around $28–$35 for a 7-day plan. Airalo and eSIM Go offer comparable coverage from $3.50–$4.50 — a significant saving, especially for longer trips.",
+    a: "Compared to pre-ordered eSIMs, yes. Airport SIM cards typically start from around $28–$35 for a 7-day plan. Airalo and eSIM Go offer comparable plans from $3.50–$4.50 — a significant saving, especially for longer trips.",
   },
   {
     q: "What if I arrive at night and the SIM counter is closed?",
