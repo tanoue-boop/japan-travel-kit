@@ -60,16 +60,18 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>Japan Travel Kit — Practical Travel Info for Foreign Visitors</title>
-        <meta name="description" content="Compare Japan SIM cards, pocket WiFi, IC cards, and get practical travel tips for your trip to Japan. Updated 2026." />
-        <meta property="og:title" content="Japan Travel Kit — Practical Travel Info for Foreign Visitors" />
-        <meta property="og:description" content="Compare Japan SIM cards, pocket WiFi, and get practical travel tips for Japan. Updated 2026." />
+        <title>Japan Travel Kit — Practical Travel Tips for Japan</title>
+        <meta name="description" content="Compare Japan SIM cards, pocket WiFi, and eSIMs for 2026. Practical advice on transport, money, and connectivity — all in plain English, before you land." />
+        <link rel="canonical" href="https://japan-travel-kit.com" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Japan Travel Kit — Practical Travel Tips for Japan" />
+        <meta property="og:description" content="Compare Japan SIM cards, pocket WiFi, and eSIMs for 2026. Practical advice on transport, money, and connectivity — all in plain English, before you land." />
         <meta property="og:url" content="https://japan-travel-kit.com" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan Travel Kit — Practical Travel Info for Foreign Visitors" />
-        <meta name="twitter:description" content="Compare Japan SIM cards, pocket WiFi, and get practical travel tips for Japan. Updated 2026." />
+        <meta name="twitter:title" content="Japan Travel Kit — Practical Travel Tips for Japan" />
+        <meta name="twitter:description" content="Compare Japan SIM cards, pocket WiFi, and eSIMs for 2026. Practical advice on transport, money, and connectivity — all in plain English, before you land." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

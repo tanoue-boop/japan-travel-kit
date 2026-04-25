@@ -21,6 +21,21 @@ export default function GuidesTransportPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Japan Transport Guides 2026 | Japan Travel Kit" />
         <meta name="twitter:description" content="Japan transport guides: JR Pass, IC cards (Suica & Pasmo), airport trains, and everything you need to navigate Japan's rail network." />
+        <meta name="robots" content="index, follow" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport & Getting Around", item: "https://japan-travel-kit.com/guides/transport" },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}

@@ -21,6 +21,21 @@ export default function GuidesMoneyPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Japan Money & Payment Guides 2026 | Japan Travel Kit" />
         <meta name="twitter:description" content="Japan money and payment guides: cash vs card, ATM access, currency exchange, and how to pay at convenience stores and restaurants in Japan." />
+        <meta name="robots" content="index, follow" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://japan-travel-kit.com/guides/money" },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}

@@ -10,17 +10,32 @@ export default function GuidesEsimPage() {
         <title>Japan eSIM Guides 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="eSIM and SIM card guides for Japan: which eSIM to buy, how to install it, network coverage, and data plan comparisons."
+          content="Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated April 2026."
         />
         <link rel="canonical" href="https://japan-travel-kit.com/guides/esim" />
+        <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim" />
-        <meta property="og:description" content="eSIM and SIM card guides for Japan: which eSIM to buy, how to install it, network coverage, and data plan comparisons." />
+        <meta property="og:description" content="Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated April 2026." />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
-        <meta name="twitter:description" content="eSIM and SIM card guides for Japan: which eSIM to buy, how to install it, network coverage, and data plan comparisons." />
+        <meta name="twitter:description" content="Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated April 2026." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://japan-travel-kit.com/guides/esim" },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}

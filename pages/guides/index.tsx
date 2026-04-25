@@ -105,6 +105,20 @@ export default function GuidesIndexPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
         <meta name="twitter:description" content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors." />
+        <meta name="robots" content="index, follow" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}
