@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../styles/Guides.module.css";
 import { esimArticles } from "../../lib/guides-esim";
 import { transportArticles } from "../../lib/guides-transport";
+import { moneyArticles } from "../../lib/guides-money";
 
 function IconSim() {
   return (
@@ -80,9 +81,9 @@ const categories = [
     Icon: IconMoney,
     name: "Money & Payment",
     desc: "Cash vs card, ATM access, currency exchange, and how to pay at convenience stores and restaurants.",
-    badge: "Coming Soon",
-    badgeCls: styles.badgeSoftGray,
-    soon: true,
+    badge: `${moneyArticles.length} Guides`,
+    badgeCls: styles.badgeSoftRed,
+    soon: false,
   },
 ];
 

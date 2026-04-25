@@ -145,6 +145,34 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- New eSIM guides -->
+  <url>
+    <loc>https://japan-travel-kit.com/guides/esim/japan-airport-sim-cards</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/esim/best-esim-japan-reddit</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Money guides -->
+  <url>
+    <loc>https://japan-travel-kit.com/guides/money</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/money/cash-vs-card-japan</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Transport guides -->
   <url>
     <loc>https://japan-travel-kit.com/guides/transport</loc>

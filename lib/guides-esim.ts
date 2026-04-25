@@ -126,4 +126,18 @@ export const esimArticles: EsimArticle[] = [
     desc: "Japan has free WiFi — but it's patchy, slow, and often requires registration. We explain where to find it and why most travellers still use a SIM.",
     date: "April 2026",
   },
+  {
+    href: "/guides/esim/japan-airport-sim-cards",
+    badge: "Guide",
+    title: "Japan Airport SIM Cards & eSIMs (2026): What to Know Before You Land",
+    desc: "Can you buy a SIM card at Japanese airports? Yes — but pre-ordered eSIMs are cheaper and faster. A complete guide to airport SIMs vs eSIMs for every major airport.",
+    date: "April 2026",
+  },
+  {
+    href: "/guides/esim/best-esim-japan-reddit",
+    badge: "Comparison",
+    title: "Best eSIM for Japan: What Reddit Actually Says (2026)",
+    desc: "We read hundreds of Reddit threads so you don't have to. Here's what real travellers on r/JapanTravel recommend for Japan eSIMs.",
+    date: "April 2026",
+  },
 ];
