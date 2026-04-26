@@ -8,7 +8,7 @@ const atmComparison = [
     availability: "Nationwide, 24 hours",
     foreign: "Yes",
     languages: "English, Chinese, Korean, others",
-    networks: "Visa, Mastercard, Maestro, UnionPay, Amex",
+    networks: "Visa, Mastercard, Maestro, UnionPay, American Express",
     limit: "~¥50,000 per transaction",
     notes: "Most reliable option for tourists",
   },
@@ -52,12 +52,12 @@ const atmComparison = [
 
 const howToUseSteps = [
   {
-    title: "Look for the English language option immediately",
+    title: "Look for the English-language option immediately",
     desc: "On 7-Eleven and Japan Post ATMs, an English option appears on the first screen. Select it before doing anything else — menus are much easier to navigate in English, and you'll avoid accidentally selecting the wrong service.",
   },
   {
     title: "Choose 'Withdrawal' from the main menu",
-    desc: "Select 'Withdrawal' (or 'Cash advance' on some machines). You'll be prompted to insert your card — or on some machines, insert first before selecting a language. Follow the on-screen prompts.",
+    desc: "Select 'Withdrawal' (or 'Cash advance' on some machines). You'll be prompted to insert your card — or on some machines, insert your card first and then select a language. Follow the on-screen prompts.",
   },
   {
     title: "Enter your PIN",
@@ -93,7 +93,7 @@ const faqItems = [
   },
   {
     q: "How much does it cost to withdraw cash from a Japanese ATM?",
-    a: "7-Eleven ATMs charge ¥110–¥220 per transaction. Japan Post Bank charges nothing during business hours and ¥110 at other times. On top of the ATM fee, your home bank may charge a foreign ATM fee (typically 1.5–3%). Cards like Wise and Charles Schwab reimburse ATM fees — a meaningful saving over a two-week trip.",
+    a: "7-Eleven ATMs charge ¥110–¥220 per transaction. Japan Post Bank charges nothing during business hours and ¥110 at other times. On top of the ATM fee, your home bank may charge a foreign ATM fee (typically 1.5–3%). Cards like Wise and Charles Schwab reimburse ATM fees — a significant saving over a two-week trip.",
   },
   {
     q: "Is there a withdrawal limit at Japanese ATMs?",
@@ -110,8 +110,8 @@ const faqItems = [
 ];
 
 const tips = [
-  "Withdraw cash at the airport on arrival — 7-Eleven ATMs operate in most major airports, and you'll want cash immediately for transport and tips.",
-  "Avoid withdrawing in very small amounts — the ¥110–¥220 ATM fee is the same regardless of the amount withdrawn. Withdraw ¥20,000–¥30,000 at a time to minimise the per-note fee cost.",
+  "Withdraw cash at the airport on arrival — 7-Eleven ATMs operate in most major airports, and you'll want cash immediately for transport and other immediate expenses.",
+  "Avoid withdrawing in very small amounts — the ¥110–¥220 ATM fee is the same regardless of the amount withdrawn. Withdraw ¥20,000–¥30,000 at a time to keep the per-transaction fee low.",
   "Save the ATM receipt — it shows the exact exchange rate applied, useful for expense tracking and confirming your bank's conversion rate.",
   "Rural Japan has fewer ATMs — stock up on cash in cities before heading to rural areas, mountain towns, or smaller islands. Convenience store coverage drops significantly outside urban centres.",
 ];
@@ -319,8 +319,8 @@ export default function AtmsInJapanPage() {
           <h2 className={styles.sectionTitle}>Japan Post Bank ATMs</h2>
           <p className={styles.bodyText}>
             Japan Post Bank ATMs are available at all post offices and some train stations.
-            They accept a wide range of international cards via the Visa, Mastercard, Maestro,
-            Cirrus, and Plus networks. The maximum withdrawal is typically ¥100,000 per transaction —
+            They accept a wide range of international cards via Visa, Mastercard, Maestro,
+            Cirrus, and Plus. The maximum withdrawal is typically ¥100,000 per transaction —
             higher than 7-Eleven&apos;s ¥50,000 limit.
           </p>
           <p className={styles.bodyText}>
@@ -331,7 +331,7 @@ export default function AtmsInJapanPage() {
           </p>
           <p className={styles.bodyText}>
             There is no ATM fee during regular business hours. A ¥110 fee applies for evening and
-            weekend access where extended hours are available.
+            weekend access at locations with extended hours.
           </p>
         </section>
 

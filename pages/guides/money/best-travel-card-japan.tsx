@@ -105,7 +105,7 @@ const cardsToAvoid = [
 const howToUseSteps = [
   {
     title: "Set up and fund your card before you fly",
-    desc: "Don't wait until the airport — app-based cards can take 3–7 business days to arrive by post. Load some yen-equivalent balance before departing; Wise lets you hold and convert at the mid-market rate before you travel.",
+    desc: "Don't wait until the airport — app-based cards can take 3–7 business days to arrive by post. Top up your card before departing; Wise lets you hold and convert at the mid-market rate before you travel.",
   },
   {
     title: "Always pay in Japanese yen (JPY)",
@@ -113,7 +113,7 @@ const howToUseSteps = [
   },
   {
     title: "Use 7-Eleven or Japan Post ATMs for cash",
-    desc: "These are the most reliable ATM networks for foreign cards in Japan. 7-Eleven ATMs are available 24 hours. Japan Post Bank ATMs work during post office hours and some have extended evening access. Both accept Visa, Mastercard, and Maestro.",
+    desc: "These are the most reliable ATM networks for foreign cards in Japan. 7-Eleven ATMs are available 24 hours a day. Japan Post Bank ATMs work during post office hours and some have extended evening access. Both accept Visa, Mastercard, and Maestro.",
   },
   {
     title: "Keep a backup card and some emergency cash",
@@ -140,7 +140,7 @@ const faqItems = [
   },
   {
     q: "How much yen should I withdraw at a Japanese ATM?",
-    a: "A useful rule of thumb: budget ¥5,000–¥10,000 per day in cash for meals, transport, and small purchases, then top up as needed. Withdrawing in larger amounts reduces the relative impact of any per-transaction fees. Most Japanese ATMs have a single withdrawal limit of around ¥50,000–¥100,000.",
+    a: "A useful rule of thumb: budget ¥5,000–¥10,000 per day in cash for meals, transport, and small purchases, then top up as needed. Withdrawing larger amounts reduces the impact of per-transaction fees. Most Japanese ATMs have a single withdrawal limit of around ¥50,000–¥100,000.",
   },
 ];
 
@@ -396,7 +396,7 @@ export default function BestTravelCardJapanPage() {
             <li>Most small restaurants, ramen shops, and izakayas are cash only</li>
             <li>Temple entrance fees, shrine offerings, and vending machines require coins and notes</li>
             <li>Many rural areas and smaller towns have limited card acceptance</li>
-            <li>Some budget accommodation and guesthouses still prefer cash payment</li>
+            <li>Some budget accommodation and guesthouses still prefer cash</li>
           </ul>
           <p className={styles.bodyText}>
             A practical approach: withdraw ¥20,000–¥30,000 at a 7-Eleven or Japan Post ATM on arrival

@@ -58,7 +58,7 @@ const jrPassCons = [
 const buyingSteps = [
   {
     title: "Book online before you fly",
-    desc: "Klook and the official JR website both allow advance reservation of reserved seats. Online booking opens months ahead — useful for Golden Week, summer holidays, and New Year.",
+    desc: "Klook and the official JR website both allow advance seat reservation. Online booking opens months ahead — useful for Golden Week, summer holidays, and New Year.",
   },
   {
     title: "Buy at a Midori no Madoguchi (ticket office)",
@@ -77,15 +77,15 @@ const buyingSteps = [
 const firstTimerTips = [
   {
     title: "Book reserved seats early for peak dates",
-    desc: "Shinkansen services fill quickly on weekends, public holidays, and during peak seasons (Golden Week in late April–May, Obon in mid-August, New Year). Book as soon as your dates are confirmed.",
+    desc: "Shinkansen services fill up quickly on weekends, public holidays, and during peak seasons (Golden Week in late April–May, Obon in mid-August, New Year). Book as soon as your dates are confirmed.",
   },
   {
     title: "Sit in seat D or E for Mount Fuji views",
-    desc: "Travelling from Tokyo toward Osaka or Kyoto on the Tokaido Shinkansen? Mount Fuji appears on the right side of the train (seats D and E, window side). Best seen around Shin-Fuji station, roughly 40 minutes from Tokyo.",
+    desc: "Travelling from Tokyo toward Osaka or Kyoto on the Tokaido Shinkansen? Mount Fuji appears on the right side of the train (seats D and E, window side). It's best seen around Shin-Fuji station, roughly 40 minutes from Tokyo.",
   },
   {
     title: "Buy ekiben and drinks before boarding",
-    desc: "Station bento boxes (ekiben) are one of Japan's great food traditions. Buy them in the station building or on the platform — selection is better and less rushed than inside the train. Budget ¥800–¥1,500.",
+    desc: "Station bento boxes (ekiben) are one of Japan's great food traditions. Buy them in the station building or on the platform — the selection is better and you have more time to browse than on the train. Budget ¥800–¥1,500.",
   },
   {
     title: "Oversized luggage requires advance booking",
@@ -108,7 +108,7 @@ const faqItems = [
   },
   {
     q: "Is the Shinkansen faster than flying within Japan?",
-    a: "For most city pairs up to 4 hours, yes — once you factor in airport check-in, security, and city-centre transit time. Tokyo to Osaka takes about 2h 15min on Nozomi vs 3–4 hours door-to-door by plane. For routes over 5 hours (e.g. Tokyo–Sapporo), flying is faster in the air, but total journey times can still be comparable.",
+    a: "For most routes under 4 hours, yes — once you factor in airport check-in, security, and city-centre transit time. Tokyo to Osaka takes about 2h 15min on Nozomi vs 3–4 hours door-to-door by plane. For routes over 5 hours (e.g. Tokyo–Sapporo), flying is faster in the air, but total journey times can still be comparable.",
   },
   {
     q: "Can I eat on the Shinkansen?",
@@ -322,7 +322,7 @@ export default function ShinkansenGuidePage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            The Tokaido Shinkansen (Tokyo–Osaka) is the world&apos;s busiest high-speed rail corridor and the most relevant for most tourist itineraries.
+            The Tokaido Shinkansen (Tokyo–Osaka) is the world&apos;s busiest high-speed rail corridor and the most useful line for most tourist itineraries.
             The Tohoku Shinkansen connects Tokyo to Sendai, Aomori, and — via the Hokkaido Shinkansen — Sapporo.
           </p>
         </section>
@@ -371,7 +371,7 @@ export default function ShinkansenGuidePage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Prices are for the Nozomi / fastest Tokaido Shinkansen service (standard ordinary class).
+            Prices are for Nozomi services on the Tokaido Shinkansen (ordinary class).
             Fares include the base fare and express surcharge. Green Car and Gran Class cost significantly more.
             JR Pass holders travel at no additional charge on most services except Nozomi and Mizuho.
           </p>
