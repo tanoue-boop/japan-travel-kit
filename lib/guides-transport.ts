@@ -21,4 +21,11 @@ export const transportArticles: TransportArticle[] = [
     desc: "An IC card is the single most useful thing you can have in Japan. Here's everything you need to know about Suica, Pasmo, where to get them, and where they work.",
     date: "April 2026",
   },
+  {
+    href: "/guides/transport/shinkansen-guide",
+    badge: "Guide",
+    title: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers",
+    desc: "Japan's bullet train is fast, punctual, and easy to use — once you know how. We cover ticket types, prices, JR Pass tips, and how to book before you board.",
+    date: "April 2026",
+  },
 ];

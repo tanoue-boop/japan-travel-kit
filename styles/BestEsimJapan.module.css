@@ -758,3 +758,45 @@
 .ftWinnerEsim { background: #e8f0fe; color: #1a56db; }
 .ftWinnerSim  { background: #f3f4f6; color: #6b7280; }
 .ftWinnerTie  { background: #fef3c7; color: #92400e; }
+
+/* provider card (best-travel-card-japan, atms-in-japan) */
+.providerBlock {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #fff;
+}
+.providerHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.providerName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+}
+.providerBadge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+}
+.bodyList {
+  margin: 0.75rem 0 1rem 0;
+  padding-left: 1.5rem;
+}
+.bodyList li {
+  margin-bottom: 0.4rem;
+  color: var(--text);
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
