@@ -235,7 +235,7 @@ export default function JrPassGuidePage() {
                 <p className={styles.verdictStatValue}>Buy online before you fly</p>
               </div>
             </div>
-            <a href="#" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
+            <a href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
               View JR Pass Options →
             </a>
           </div>

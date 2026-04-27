@@ -262,7 +262,7 @@ export default function ShinkansenGuidePage() {
               Book reserved seats in advance for peak dates — services fill quickly on weekends and holidays.
             </p>
             <a
-              href="#"
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.verdictBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
@@ -426,7 +426,7 @@ export default function ShinkansenGuidePage() {
             ))}
           </div>
           <a
-            href="#"
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
             className={styles.pickCta}
             target="_blank"
             rel="noopener noreferrer nofollow"
@@ -535,7 +535,7 @@ export default function ShinkansenGuidePage() {
               Reserve your seats before you fly — popular services fill up fast on weekends and public holidays.
             </p>
             <a
-              href="#"
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.ctaBannerBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"

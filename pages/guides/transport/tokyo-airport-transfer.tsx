@@ -323,6 +323,15 @@ export default function TokyoAirportTransferPage() {
               </div>
             ))}
           </div>
+          <a
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F173165-narita-express-n-ex-round-trip-train-ticket-narita-airport-tokyo%2F"
+            className={styles.pickCta}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            style={{ marginTop: "1.5rem", display: "inline-block" }}
+          >
+            Book N&apos;EX Tickets on Klook →
+          </a>
         </section>
 
         {/* Skyliner Guide */}
@@ -340,6 +349,15 @@ export default function TokyoAirportTransferPage() {
               </div>
             ))}
           </div>
+          <a
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F1410-skyliner-tokyo%2F"
+            className={styles.pickCta}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            style={{ marginTop: "1.5rem", display: "inline-block" }}
+          >
+            Book Keisei Skyliner on Klook →
+          </a>
         </section>
 
         {/* Limousine Bus */}
@@ -356,6 +374,24 @@ export default function TokyoAirportTransferPage() {
                 </div>
               </div>
             ))}
+          </div>
+          <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <a
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F2274-narita-airport-limousine-bus-tokyo%2F"
+              className={styles.pickCta}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Narita Limousine Bus on Klook →
+            </a>
+            <a
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F150434-haneda-airport-limousine-bus-tokyo%2F"
+              className={styles.pickCta}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Haneda Limousine Bus on Klook →
+            </a>
           </div>
         </section>
 

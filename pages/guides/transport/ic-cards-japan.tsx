@@ -228,6 +228,9 @@ export default function IcCardsJapanPage() {
                 <p className={styles.verdictStatValue}>¥500 (refundable)</p>
               </div>
             </div>
+            <a href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
+              Get Suica on Klook →
+            </a>
           </div>
         </div>
 
