@@ -324,7 +324,7 @@ export default function TokyoAirportTransferPage() {
             ))}
           </div>
           <a
-            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F173165-narita-express-n-ex-round-trip-train-ticket-narita-airport-tokyo%2F"
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264853&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F173165-narita-express-n-ex-round-trip-train-ticket-narita-airport-tokyo%2F"
             className={styles.pickCta}
             target="_blank"
             rel="noopener noreferrer nofollow"
@@ -350,7 +350,7 @@ export default function TokyoAirportTransferPage() {
             ))}
           </div>
           <a
-            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F1410-skyliner-tokyo%2F"
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264854&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F1410-skyliner-tokyo%2F"
             className={styles.pickCta}
             target="_blank"
             rel="noopener noreferrer nofollow"
@@ -377,7 +377,7 @@ export default function TokyoAirportTransferPage() {
           </div>
           <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <a
-              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F2274-narita-airport-limousine-bus-tokyo%2F"
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264852&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F2274-narita-airport-limousine-bus-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
               rel="noopener noreferrer nofollow"
@@ -385,7 +385,7 @@ export default function TokyoAirportTransferPage() {
               Narita Limousine Bus on Klook →
             </a>
             <a
-              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F150434-haneda-airport-limousine-bus-tokyo%2F"
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264856&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F150434-haneda-airport-limousine-bus-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
               rel="noopener noreferrer nofollow"
