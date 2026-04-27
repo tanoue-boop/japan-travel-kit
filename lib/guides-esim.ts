@@ -141,6 +141,13 @@ export const esimArticles: EsimArticle[] = [
     date: "April 2026",
   },
   {
+    href: "/guides/esim/japan-esim-vs-roaming",
+    badge: "Comparison",
+    title: "Japan eSIM vs Roaming (2026): Which Is Cheaper?",
+    desc: "Your carrier's roaming option sounds convenient — but it costs $10–$15 per day. We compare eSIM and roaming costs across AT&T, Verizon, T-Mobile, EE, and more.",
+    date: "April 2026",
+  },
+  {
     href: "/guides/esim/japan-esim-data-plans",
     badge: "Comparison",
     title: "Japan eSIM Data Plans Compared (2026): Which Is Right for You?",

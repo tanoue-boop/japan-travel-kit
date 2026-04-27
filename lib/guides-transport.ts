@@ -35,4 +35,11 @@ export const transportArticles: TransportArticle[] = [
     desc: "N'EX, Skyliner, limousine bus, or taxi? We compare every way to get from Narita or Haneda airport to central Tokyo — on price, speed, and convenience.",
     date: "April 2026",
   },
+  {
+    href: "/guides/transport/osaka-airport-transfer",
+    badge: "Guide",
+    title: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",
+    desc: "Osaka has two airports — Kansai International and Itami. We compare every way to get into the city from each, including the Haruka, Nankai Rapi:t, and Limousine Bus.",
+    date: "April 2026",
+  },
 ];

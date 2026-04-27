@@ -35,4 +35,11 @@ export const moneyArticles: MoneyArticle[] = [
     desc: "Japan is not as expensive as you think. We break down realistic daily budgets for backpackers, mid-range, and comfortable travellers — with 2026 prices for food, transport, and accommodation.",
     date: "April 2026",
   },
+  {
+    href: "/guides/money/currency-exchange-japan",
+    badge: "Guide",
+    title: "Currency Exchange in Japan (2026): Best Ways to Get Yen",
+    desc: "Where you exchange your money makes a big difference. We rank the best options from 7-Eleven ATMs to airport counters — and explain which to avoid to get the best yen rate.",
+    date: "April 2026",
+  },
 ];
