@@ -308,15 +308,24 @@ export default function OsakaAirportTransferPage() {
               </div>
             ))}
           </div>
-          <a
-            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
-            className={styles.pickCta}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            style={{ marginTop: "1.5rem", display: "inline-block" }}
-          >
-            Book JR Pass (includes Haruka) on Klook →
-          </a>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1.5rem" }}>
+            <a
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265372&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F18400-jr-haruka-airport-express-train-tickets-osaka%2F"
+              className={styles.pickCta}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Book Haruka Express Tickets on Klook →
+            </a>
+            <a
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
+              className={styles.pickCta}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Book JR Pass (includes Haruka) on Klook →
+            </a>
+          </div>
         </section>
 
         {/* Rapi:t Guide */}
@@ -334,6 +343,33 @@ export default function OsakaAirportTransferPage() {
               </div>
             ))}
           </div>
+          <a
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265374&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F599-kansai-airport-namba-train-ticket-osaka%2F"
+            className={styles.pickCta}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            style={{ marginTop: "1.5rem", display: "inline-block" }}
+          >
+            Book Nankai Rapi:t Tickets on Klook →
+          </a>
+        </section>
+
+        {/* Limousine Bus */}
+        <section className={styles.installSection}>
+          <span className={styles.sectionLabel}>Airport Limousine Bus</span>
+          <h2 className={styles.sectionTitle}>Kansai Airport Limousine Bus</h2>
+          <p className={styles.bodyText}>
+            The Airport Limousine Bus serves both KIX and ITM, with direct routes to major Osaka hotels, Osaka Station, Namba, and Kyoto. No reserved seating — first come, first served. Ideal if you have heavy luggage or are staying near a bus stop.
+          </p>
+          <a
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265375&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F18203-kansai-airport-one-way-transfer-osaka%2F"
+            className={styles.pickCta}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            style={{ marginTop: "1.5rem", display: "inline-block" }}
+          >
+            Book Kansai Airport Limousine Bus on Klook →
+          </a>
         </section>
 
         {/* Tips */}
