@@ -28,4 +28,11 @@ export const moneyArticles: MoneyArticle[] = [
     desc: "Most Japanese ATMs don't accept foreign cards. We explain which ones do — 7-Eleven, Japan Post, AEON — and how to avoid fees and withdrawal limits.",
     date: "April 2026",
   },
+  {
+    href: "/guides/money/japan-travel-budget",
+    badge: "Guide",
+    title: "Japan Travel Budget Guide (2026): How Much Does Japan Cost?",
+    desc: "Japan is not as expensive as you think. We break down realistic daily budgets for backpackers, mid-range, and comfortable travellers — with 2026 prices for food, transport, and accommodation.",
+    date: "April 2026",
+  },
 ];

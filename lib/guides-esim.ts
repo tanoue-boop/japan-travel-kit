@@ -140,4 +140,11 @@ export const esimArticles: EsimArticle[] = [
     desc: "We read hundreds of Reddit threads so you don't have to. Here's what real travellers on r/JapanTravel recommend for Japan eSIMs.",
     date: "April 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-data-plans",
+    badge: "Comparison",
+    title: "Japan eSIM Data Plans Compared (2026): Which Is Right for You?",
+    desc: "Every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile — compared on price, data, duration, and value per GB.",
+    date: "April 2026",
+  },
 ];

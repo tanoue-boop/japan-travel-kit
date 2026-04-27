@@ -212,5 +212,27 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/money/japan-travel-budget</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- New transport guide -->
+  <url>
+    <loc>https://japan-travel-kit.com/guides/transport/tokyo-airport-transfer</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- New eSIM guide -->
+  <url>
+    <loc>https://japan-travel-kit.com/guides/esim/japan-esim-data-plans</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>

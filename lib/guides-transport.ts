@@ -28,4 +28,11 @@ export const transportArticles: TransportArticle[] = [
     desc: "Japan's bullet train is fast, punctual, and easy to use — once you know how. We cover ticket types, prices, JR Pass tips, and how to book before you board.",
     date: "April 2026",
   },
+  {
+    href: "/guides/transport/tokyo-airport-transfer",
+    badge: "Guide",
+    title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",
+    desc: "N'EX, Skyliner, limousine bus, or taxi? We compare every way to get from Narita or Haneda airport to central Tokyo — on price, speed, and convenience.",
+    date: "April 2026",
+  },
 ];
