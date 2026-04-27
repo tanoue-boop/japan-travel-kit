@@ -38,7 +38,7 @@ const harukaPoints = [
 const rapiTPoints = [
   {
     title: "Fastest connection to Namba",
-    desc: "The Nankai Rapi:t covers the 50 km from Kansai Airport to Namba (south Osaka's main hub) in around 40 minutes — making it the fastest way to reach the Dotonbori and Shinsaibashi areas. Namba is one of Osaka's two major hubs alongside Umeda/Osaka Station.",
+    desc: "The Nankai Rapi:t covers the 50 km from Kansai Airport to Namba (southern Osaka's main hub) in around 40 minutes — making it the fastest way to reach the Dotonbori and Shinsaibashi areas. Namba is one of Osaka's two major hubs alongside Umeda/Osaka Station.",
   },
   {
     title: "Not covered by the JR Pass",
@@ -46,18 +46,18 @@ const rapiTPoints = [
   },
   {
     title: "Iconic design",
-    desc: "The Rapi:t is one of the most recognisable trains in Japan — a futuristic steel design nicknamed 'Iron Man' or 'Robocop'. It runs in two classes: Super Seat (reserved, premium seats) and Regular (unreserved standard). Both classes arrive at the same time.",
+    desc: "The Rapi:t is one of the most recognisable trains in Japan — a striking futuristic design nicknamed 'Iron Man' or 'Robocop'. It runs in two classes: Super Seat (reserved premium) and Regular (unreserved standard). Both arrive at the same time — upgrading buys you a better seat, not a faster journey.",
   },
 ];
 
 const tips = [
   {
     title: "KIX is on an artificial island — factor in extra time",
-    desc: "Kansai International Airport is built on a reclaimed island 5 km off the Osaka coast. The connection bridge adds a few minutes to every journey and means there are no last-minute taxi options from the mainland if you miss a train. Arrive at the airport with plenty of time to spare.",
+    desc: "Kansai International Airport is built on a reclaimed island 5 km off the Osaka coast. The connecting bridge adds a few minutes to every journey and rules out any last-minute mainland taxi if you miss a train. Arrive at the airport with plenty of time to spare.",
   },
   {
     title: "Set up your IC card before you land",
-    desc: "An IC card (Suica or ICOCA) loaded in advance works on the Nankai local train and Osaka Metro from arrival. ICOCA is the local Kansai IC card and works on every train and bus in the region. JR Pass holders can pick up ICOCA separately at the airport JR ticket office.",
+    desc: "An IC card (Suica or ICOCA) loaded in advance works on the Nankai local train and Osaka Metro from the moment you arrive. ICOCA is the local Kansai IC card and works on every train and bus in the region. JR Pass holders can pick up ICOCA separately at the airport JR ticket office.",
   },
   {
     title: "JR Pass users: always choose the Haruka",
@@ -65,14 +65,14 @@ const tips = [
   },
   {
     title: "ITM is much closer to the city than KIX",
-    desc: "Itami Airport (ITM) handles domestic flights only and sits just 10 km north of Osaka city centre. The Limousine Bus runs directly to Osaka and Umeda (around 25 minutes) and is the most practical option — no train transfer needed. Monorail and subway works for budget travel.",
+    desc: "Itami Airport (ITM) handles domestic flights only and sits just 10 km north of Osaka city centre. The Limousine Bus runs directly to Osaka and Umeda (around 25 minutes) and is the most practical option — no train transfer needed. The Monorail and subway combination works well for budget travellers.",
   },
 ];
 
 const faqItems = [
   {
     q: "What is the cheapest way from KIX to Osaka city?",
-    a: "The cheapest option is the Nankai Local Train (non-express service) from Kansai Airport to Namba at around ¥1,500. The journey takes approximately 70 minutes. If you have a JR Pass, the Haruka Limited Express is free and faster — making it effectively the best-value option for pass holders.",
+    a: "The cheapest option is the Nankai Local Train (non-express service) from Kansai Airport to Namba at around ¥1,500. The journey takes approximately 70 minutes. If you have a JR Pass, the Haruka Limited Express is free and faster — making it the clear best-value option for pass holders.",
   },
   {
     q: "Can I use the JR Pass from Kansai Airport?",

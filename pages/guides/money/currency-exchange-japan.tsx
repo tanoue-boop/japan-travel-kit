@@ -6,7 +6,7 @@ const bestWays = [
   {
     rank: 1,
     title: "ATM Withdrawal (Best Rate)",
-    body: "Withdrawing yen directly from a Japanese ATM gives you the closest rate to the interbank exchange rate — far better than any counter. The two best networks for foreign cards are 7-Eleven ATMs (found inside every 7-Eleven convenience store) and Japan Post ATMs (at post offices nationwide). Both accept Visa, Mastercard, Maestro, Cirrus, and most international cards. Combine them with a travel card that charges no foreign transaction fees (Wise, Revolut, Charles Schwab) and your total cost is often under 0.5% — the closest thing to a perfect rate available to travellers.",
+    body: "Withdrawing yen directly from a Japanese ATM gives you the closest rate to the interbank exchange rate — far better than any counter. The two best networks for foreign cards are 7-Eleven ATMs (found inside every 7-Eleven convenience store) and Japan Post ATMs (at post offices nationwide). Both accept Visa, Mastercard, Maestro, Cirrus, and most international cards. Use them with a travel card that charges no foreign transaction fees (Wise, Revolut, Charles Schwab) and your total cost is often under 0.5% — the closest thing to a perfect rate available to travellers.",
   },
   {
     rank: 2,
@@ -16,7 +16,7 @@ const bestWays = [
   {
     rank: 3,
     title: "Currency Exchange Counters (Last Resort)",
-    body: "Banks, post offices, and authorised exchange bureaux (both in your home country and in Japan) can exchange cash, but the spread between the buy and sell rate typically costs you 3–8%. Airport counters in Japan (Narita, Haneda) are the most convenient but the most expensive. If you must use a counter, Travelex and airport bank branches in Japan generally offer better rates than hotel desks or standalone booths claiming 'no commission'. Bring yen from home only if you genuinely have no other option.",
+    body: "Banks, post offices, and authorised exchange bureaux (both in your home country and in Japan) can exchange cash, but the spread between the buy and sell rate is typically 3–8%. Airport counters in Japan (Narita, Haneda) are the most convenient but the most expensive. If you must use a counter, Travelex and airport bank branches in Japan generally offer better rates than hotel desks or standalone booths claiming 'no commission'. Exchange currency at home only as a last resort.",
   },
 ];
 
@@ -37,7 +37,7 @@ const budgetRows = [
 const cards = [
   {
     name: "Wise – Best Overall",
-    desc: "Wise converts at the mid-market rate and charges a small transparent fee (around 0.4–0.6% for JPY). You can hold yen in your Wise account and spend directly, or convert on the fly. Available in most countries. The Wise card works at ATMs worldwide; note that Wise charges a small ATM fee after the first two free withdrawals per month.",
+    desc: "Wise converts at the mid-market rate and charges a small transparent fee (around 0.4–0.6% for JPY). You can hold yen in your Wise account and spend directly, or convert on the fly. Available in most countries. The Wise card works at ATMs worldwide; Note that Wise charges a small ATM fee after the first two free withdrawals per month.",
   },
   {
     name: "Charles Schwab – Best for US Travellers",
@@ -52,7 +52,7 @@ const cards = [
 const faqItems = [
   {
     q: "Where is the best place to exchange money in Japan?",
-    a: "The best place to get yen in Japan is a 7-Eleven ATM or Japan Post ATM using a travel card with no foreign fees (Wise, Revolut, or Charles Schwab). These give you the mid-market exchange rate with minimal charges. Currency exchange counters — including those at airports — offer significantly worse rates and should be avoided if possible.",
+    a: "The best place to get yen in Japan is a 7-Eleven ATM or Japan Post ATM, used with a travel card that charges no foreign transaction fees (Wise, Revolut, or Charles Schwab). These give you the mid-market exchange rate with minimal charges. Currency exchange counters — including those at airports — offer significantly worse rates and should be avoided if possible.",
   },
   {
     q: "Should I get yen before going to Japan?",
@@ -261,7 +261,7 @@ export default function CurrencyExchangeJapanPage() {
           <span className={styles.sectionLabel}>Planning</span>
           <h2 className={styles.sectionTitle}>How Much Yen Should I Bring?</h2>
           <p className={styles.bodyText}>
-            Japan is still a heavily cash-based country — especially outside major cities. Budget travellers can manage on ¥7,000–¥8,000 per day; mid-range trips typically cost ¥20,000–¥25,000; comfortable travel runs to ¥50,000+. The table below gives rough totals per trip length.
+            Japan is still a heavily cash-reliant country — especially outside major cities. Budget travellers can manage on ¥7,000–¥8,000 per day; mid-range trips typically cost ¥20,000–¥25,000; comfortable travel runs to ¥50,000+. The table below gives rough totals per trip length.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

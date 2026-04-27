@@ -12,7 +12,7 @@ const roamingCarriers = [
   { carrier: "T-Mobile (US)",   daily: "Free*",      limit: "~5 GB at full speed", notes: "*Then throttled to 256 kbps" },
   { carrier: "EE (UK)",         daily: "£2/day",     limit: "20 GB/month",         notes: "Europe Zone included; Japan extra" },
   { carrier: "Vodafone (UK)",   daily: "£1–£3/day",  limit: "Varies by plan",      notes: "Japan is in 'World' roaming zone" },
-  { carrier: "Softbank (JP)",   daily: "¥3,000/day", limit: "20 MB (!)",           notes: "Data-only — not for regular use" },
+  { carrier: "SoftBank (JP)",   daily: "¥3,000/day", limit: "20 MB (!)",           notes: "Data-only — not for regular use" },
 ];
 
 const esimCosts = [
@@ -35,22 +35,22 @@ const comparisonRows = [
 const whenRoamingMakesSense = [
   {
     title: "Stays of one day or less",
-    desc: "If you're transiting through Japan for a single day, a roaming day pass at $10 costs less than buying, setting up, and discarding a Japan eSIM. The break-even point is roughly two days — after that, even the cheapest eSIM is cheaper.",
+    desc: "If you're transiting through Japan for a single day, a roaming day pass at $10 costs less than buying and setting up a Japan eSIM for a single day's use. The break-even point is roughly two days — after that, even the cheapest eSIM is cheaper.",
   },
   {
     title: "T-Mobile or similar free-roaming plans",
-    desc: "T-Mobile's Magenta and Go5G plans include free international data roaming (throttled to 256 kbps after around 5 GB at speed). If you have T-Mobile and mostly use messaging and maps, this built-in plan may be sufficient — though the speed limit makes video streaming impossible.",
+    desc: "T-Mobile's Magenta and Go5G plans include free international data roaming (throttled to 256 kbps once you exceed around 5 GB at full speed). If you have T-Mobile and mostly use messaging and maps, this built-in plan may be sufficient — though the speed limit makes video streaming impossible.",
   },
   {
     title: "Emergency backup on arrival",
-    desc: "Roaming on arrival lets you use your phone while you find an ATM, get through customs, and sort your eSIM. Keep roaming enabled as a fallback for the first few minutes in Japan, then switch to your Japan eSIM profile once activated.",
+    desc: "Roaming on arrival lets you use your phone while you find an ATM, get through customs, and get your eSIM set up. Keep roaming enabled as a fallback for the first few minutes in Japan, then switch to your Japan eSIM profile once activated.",
   },
 ];
 
 const setupSteps = [
   {
     title: "Choose your eSIM provider",
-    desc: "For most travellers, Airalo (from $4.50) or eSIM Go (from $3.50) offer the best combination of price and reliability. Both run on Docomo or SoftBank networks in Japan.",
+    desc: "For most travellers, Airalo (from $4.50) or eSIM Go (from $3.50) offers the best combination of price and reliability. Both run on Docomo and SoftBank networks in Japan.",
   },
   {
     title: "Purchase before you fly",
