@@ -15,7 +15,7 @@ const accommodationOptions = [
   { type: "Capsule hotel",           range: "¥3,000–¥5,000/night",   desc: "Clean, compact, and practical. Most include shared showers and lockers. Great for solo travellers." },
   { type: "Guesthouse / hostel",     range: "¥4,000–¥8,000/night",   desc: "Dormitories or private rooms with shared facilities. Social atmosphere; common in tourist areas." },
   { type: "Business hotel",          range: "¥8,000–¥15,000/night",  desc: "The Japanese standard — small but efficient rooms, good location, reliable Wi-Fi. Best value for solo travellers." },
-  { type: "Mid-range hotel",         range: "¥15,000–¥30,000/night", desc: "Larger rooms, better amenities. Tokyo Eastern hotels (Shibuya, Shinjuku) often at the lower end of this range." },
+  { type: "Mid-range hotel",         range: "¥15,000–¥30,000/night", desc: "Larger rooms, better amenities. Central Tokyo hotels (Shibuya, Shinjuku area) often at the lower end of this range." },
   { type: "Luxury / ryokan",         range: "¥30,000+/night",        desc: "High-end hotels or traditional inns (ryokan). Often includes dinner and breakfast, seasonal kaiseki meals." },
 ];
 
@@ -24,7 +24,7 @@ const foodOptions = [
   { type: "Ramen / teishoku set",    price: "¥800–¥1,200",  desc: "The backbone of Japanese everyday dining. Most ramen shops and set-meal restaurants (teishoku-ya) fall in this range." },
   { type: "Conveyor belt sushi",     price: "¥1,500–¥3,000", desc: "Kaiten-zushi chains like Sushiro and Kurazushi offer excellent value. Budget ¥100–¥150 per plate." },
   { type: "Izakaya dinner",          price: "¥2,000–¥4,000", desc: "Japanese pub-style dining with food and drinks. A fun evening out; most have picture menus for easy ordering." },
-  { type: "High-end restaurant",     price: "¥10,000+",      desc: "Japan has more Michelin-starred restaurants than any city in the world. High-end dining is a legitimate travel activity." },
+  { type: "High-end restaurant",     price: "¥10,000+",      desc: "Tokyo has more Michelin-starred restaurants than any other city in the world. High-end dining is a legitimate travel activity." },
 ];
 
 const transportOptions = [
@@ -32,7 +32,7 @@ const transportOptions = [
   { item: "Narita Express to central Tokyo",  cost: "¥3,070",     note: "Reserved seating; takes ~60 minutes to Shinjuku." },
   { item: "Shinkansen: Tokyo → Kyoto",        cost: "¥13,320",    note: "One-way on Hikari (non-reserved). Fastest city-to-city link for most itineraries." },
   { item: "JR Pass (7-day)",                  cost: "¥50,000",    note: "Covers unlimited JR trains including Shinkansen (except Nozomi/Mizuho). Worth it for multi-city trips." },
-  { item: "IC card (Suica/Pasmo)",            cost: "Top up as needed", note: "Covers subway, buses, and convenience store purchases." },
+  { item: "IC card (Suica/Pasmo)",            cost: "Top up as needed", note: "Covers trains, buses, and convenience store purchases." },
 ];
 
 const savingTips = [
@@ -46,21 +46,21 @@ const savingTips = [
   },
   {
     title: "Use overnight buses for long distances",
-    desc: "Night buses (yakou bus) between cities cost ¥3,000–¥8,000 — a fraction of the equivalent Shinkansen fare. You also save on a night's accommodation. Popular routes: Tokyo–Osaka, Tokyo–Kyoto.",
+    desc: "Night buses (highway buses) between cities cost ¥3,000–¥8,000 — a fraction of the equivalent Shinkansen fare. You also save on a night's accommodation. Popular routes: Tokyo–Osaka, Tokyo–Kyoto.",
   },
   {
     title: "Book accommodation early",
-    desc: "Popular business hotels in Tokyo and Kyoto sell out weeks in advance during peak seasons (Golden Week, Obon, Cherry Blossom). Booking 3–6 months ahead unlocks the lowest rates.",
+    desc: "Popular business hotels in Tokyo and Kyoto sell out weeks in advance during peak seasons (Golden Week, Obon, Cherry Blossom). Booking 3–6 months ahead secures the lowest rates.",
   },
   {
     title: "Mix free and paid attractions",
-    desc: "Many of Japan's best experiences are free: temple grounds, shrine visits, city parks, neighbourhood walks, and most shrines. Paid attractions (museums, observation decks) are typically ¥500–¥1,000.",
+    desc: "Many of Japan's best experiences are free: temple grounds, shrine visits, city parks, and neighbourhood walks. Paid attractions (museums, observation decks) are typically ¥500–¥1,000.",
   },
 ];
 
 const hiddenCosts = [
   { cost: "Coin lockers (luggage storage)",  detail: "¥400–¥800 per day at major stations. Useful if checking out before an evening flight. Budget ¥1,000–¥2,000 for a 2-week trip." },
-  { cost: "Onsen / public bath entry fee",   detail: "¥500–¥1,500 per visit. Not always mentioned in accommodation costs. Ryokan stays usually include access." },
+  { cost: "Onsen / public bath entry fee",   detail: "¥500–¥1,500 per visit. Not always mentioned in accommodation costs. Ryokan stays usually include onsen access." },
   { cost: "City tourist taxes",              detail: "Tokyo, Kyoto, and Osaka charge a per-night lodging tax (¥200–¥1,000 depending on room rate). Usually added at checkout." },
   { cost: "Currency exchange fees",          detail: "Airport desks and hotel exchanges charge 5–10% above mid-market. Use a Wise card or 7-Eleven ATM instead — saves ¥2,000–¥5,000 on a typical trip." },
   { cost: "Tipping",                         detail: "Tipping is not customary in Japan and is sometimes considered rude. You do not tip at restaurants, taxis, or hotels. Budget ¥0." },

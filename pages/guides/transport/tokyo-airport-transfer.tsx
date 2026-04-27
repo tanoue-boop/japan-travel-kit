@@ -20,11 +20,11 @@ const hanedaOptions = [
 const nexGuidePoints = [
   {
     title: "Covered by the JR Pass",
-    desc: "The N'EX is a JR service, so JR Pass holders travel free. If you have a 7-day or 14-day pass, this is the obvious first-day option from Narita. Reserve a seat at the airport's JR ticket counter or Midori no Madoguchi window.",
+    desc: "The N'EX is a JR service, so JR Pass holders travel free. If you have a 7-day or 14-day pass, this is the obvious first-day option from Narita. Reserve a seat at the airport's JR ticket counter (Midori no Madoguchi).",
   },
   {
     title: "Direct connections to major stations",
-    desc: "The N'EX runs directly to Shinjuku (90 min), Shibuya (75 min), Ikebukuro (80 min), and Yokohama (90 min) without changing trains. For travellers staying in west Tokyo, this is hard to beat for convenience.",
+    desc: "The N'EX runs directly to Shinjuku (90 min), Shibuya (75 min), and Yokohama (90 min) without changing trains. For travellers staying in west Tokyo, this is hard to beat for convenience.",
   },
   {
     title: "Foreign visitor discount ticket available",
@@ -39,7 +39,7 @@ const nexGuidePoints = [
 const skylinerPoints = [
   {
     title: "Fastest train between Narita and central Tokyo",
-    desc: "The Keisei Skyliner covers the 66 km between Narita Airport and Nippori (east Tokyo) in just 41 minutes. From Nippori it's a short JR or subway connection to most Tokyo neighbourhoods.",
+    desc: "The Keisei Skyliner covers the 66 km between Narita Airport and Nippori (east Tokyo) in just 41 minutes. From Nippori, it's a short JR or subway ride to most Tokyo neighbourhoods.",
   },
   {
     title: "Not covered by the JR Pass",
@@ -73,7 +73,7 @@ const transferTips = [
   },
   {
     title: "Late-night arrivals have limited options",
-    desc: "Trains from Narita stop running around 11pm–midnight. If your flight lands late, your options are the Friendly Airport Limousine bus (runs until around 11:30pm) or a taxi. Budget ¥20,000–¥25,000 for a Narita taxi; Haneda is closer and cheaper at ¥6,000–¥8,000.",
+    desc: "Trains from Narita stop running around 11pm–midnight. If your flight lands late, your options are the Airport Limousine bus (runs until around 11:30pm) or a taxi. Budget ¥20,000–¥25,000 for a Narita taxi; Haneda is closer and cheaper at ¥6,000–¥8,000.",
   },
   {
     title: "JR Pass users: validate the pass before boarding",
@@ -100,7 +100,7 @@ const faqItems = [
   },
   {
     q: "Is the Narita Express worth it?",
-    a: "If you have a JR Pass, absolutely — it's free and the most comfortable option. Without a pass, the N'EX at ¥3,070 (one-way) is worth it for the direct connection to Shinjuku, Shibuya, and Yokohama without changing trains. The foreign visitor round-trip discount (¥4,000 for both directions) makes it particularly good value if you're flying home from Narita too.",
+    a: "If you have a JR Pass, absolutely — it's free and the most comfortable option. Without a pass, the N'EX at ¥3,070 (one-way) is worth it for the direct connection to Shinjuku, Shibuya, and Yokohama without changing trains. The foreign visitor round-trip ticket (¥4,000) makes it particularly good value if you're flying home from Narita too.",
   },
   {
     q: "How do I get from Narita to Shinjuku?",

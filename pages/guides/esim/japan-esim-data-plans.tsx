@@ -41,7 +41,7 @@ const byUsage = [
   },
   {
     type: "Average user",
-    desc: "Maps, social media, occasional photos to cloud. Standard tourist behaviour over 1–2 weeks.",
+    desc: "Maps, social media, occasional photo uploads to the cloud. Standard tourist behaviour over 1–2 weeks.",
     pick: "Airalo Moshi M (3 GB, $9.50)",
     affiliateUrl: "https://airalo.pxf.io/c/7213504/1268485/15608",
   },
@@ -83,7 +83,7 @@ const faqItems = [
   },
   {
     q: "Can I buy more data if I run out in Japan?",
-    a: "Yes, for most providers. Airalo lets you top up by purchasing an additional plan in the app — no new QR code required. eSIM Go allows top-ups through its website. Holafly's unlimited plan means you never run out. Sakura Mobile allows data add-ons via their customer portal. Plan ahead if you're in a rural area with limited internet access for the top-up process.",
+    a: "Yes, for most providers. Airalo lets you top up by purchasing an additional plan in the app — no new QR code required. eSIM Go allows top-ups through its website. Holafly's unlimited plan means you never run out. Sakura Mobile allows data add-ons via their customer portal. Plan ahead if you're heading to rural areas — you'll need an internet connection to complete the top-up.",
   },
   {
     q: "Which Japan eSIM has the fastest speeds?",
@@ -297,7 +297,7 @@ export default function JapanEsimDataPlansPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Most Japan tourists fall into the &ldquo;light use&rdquo; category — maps, messaging, and occasional Instagram posts. At ~200 MB/day, a 3 GB plan covers 15 days comfortably. If you stream video on trains or make regular FaceTime calls, budget for 500 MB–1 GB per day.
+            Most travellers to Japan fall into the &ldquo;light use&rdquo; category — maps, messaging, and occasional Instagram posts. At ~200 MB/day, a 3 GB plan covers 15 days comfortably. If you stream video on trains or make regular FaceTime calls, budget for 500 MB–1 GB per day.
           </p>
         </section>
 
