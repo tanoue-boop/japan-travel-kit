@@ -235,4 +235,24 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- 2026-04-29 additions -->
+  <url>
+    <loc>https://japan-travel-kit.com/guides/transport/kyoto-transportation</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/esim/japan-esim-seniors</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/esim/japan-esim-unlimited</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

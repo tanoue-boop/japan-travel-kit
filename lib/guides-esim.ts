@@ -154,4 +154,18 @@ export const esimArticles: EsimArticle[] = [
     desc: "Every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile — compared on price, data, duration, and value per GB.",
     date: "April 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-seniors",
+    badge: "Guide",
+    title: "Best eSIM for Japan for Seniors (2026): Easy Setup, No Contracts",
+    desc: "The easiest Japan eSIM options for older travellers — simple QR code setup, English-speaking support, and no contracts. Airalo, Sakura Mobile, and eSIM Go compared.",
+    date: "April 2026",
+  },
+  {
+    href: "/guides/esim/japan-esim-unlimited",
+    badge: "Comparison",
+    title: "Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users",
+    desc: "Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large data plans — with honest speed test findings.",
+    date: "April 2026",
+  },
 ];

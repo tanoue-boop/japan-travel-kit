@@ -42,4 +42,11 @@ export const transportArticles: TransportArticle[] = [
     desc: "Osaka has two airports — Kansai International and Itami. We compare every way to get into the city from each, including the Haruka, Nankai Rapi:t, and Limousine Bus.",
     date: "April 2026",
   },
+  {
+    href: "/guides/transport/kyoto-transportation",
+    badge: "Guide",
+    title: "Getting Around Kyoto (2026): Buses, Trains & Taxis Explained",
+    desc: "Kyoto's city bus and subway cover nearly every major sight. We explain how each option works, which IC card to use, day pass value, and how to arrive from Tokyo or Kansai Airport.",
+    date: "April 2026",
+  },
 ];
