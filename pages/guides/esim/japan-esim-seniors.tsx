@@ -8,7 +8,7 @@ const topPicks = [
     name: "Airalo",
     badge: "Easiest Setup",
     badgeClass: "pickBadgeBlue" as const,
-    summary: "The largest eSIM marketplace in the world, with a clear app and a dedicated help section. Airalo's Japan plans run on Docomo and SoftBank — two of the most reliable networks in the country. Plans start at $4.50 for 1 GB / 7 days.",
+    summary: "Airalo is the world's largest eSIM marketplace, with an intuitive app and a dedicated help section. Airalo's Japan plans run on Docomo and SoftBank — two of the most reliable networks in the country. Plans start at $4.50 for 1 GB / 7 days.",
     bestFor: "Seniors who want a simple app and proven reliability",
     pros: ["Simple, English-friendly app", "Instant QR code delivery", "Trusted by 10M+ travellers", "Competitive pricing from $4.50"],
     cons: ["Data-only (no calls or SMS)", "Customer support can be slow"],
@@ -20,7 +20,7 @@ const topPicks = [
     name: "Sakura Mobile",
     badge: "Best Support",
     badgeClass: "pickBadgeOrange" as const,
-    summary: "Sakura Mobile is the only major Japan SIM provider with a dedicated English-speaking support team based in Japan. Their eSIM includes voice calls and SMS — making it the safest choice for anyone who needs to call for help while travelling.",
+    summary: "Sakura Mobile is the only major Japan SIM provider with a dedicated English-speaking support team based in Japan. Their eSIM includes voice calls and SMS — making it the safest choice for anyone who needs to make calls while travelling.",
     bestFor: "Seniors who want English phone support and the option to make calls",
     pros: ["English-speaking Japan-based support", "Includes voice calls + SMS", "Docomo network (widest rural coverage)", "Easy online activation"],
     cons: ["More expensive than data-only options", "Plans are longer-term (30 days minimum)"],
@@ -43,7 +43,7 @@ const topPicks = [
 
 const setupSteps = [
   {
-    title: "Check your phone is eSIM compatible",
+    title: "Check that your phone is eSIM compatible",
     desc: "Go to Settings → General → About. If you see 'EID' (a long number), your phone supports eSIM. Most iPhones from XS (2018) onward and many modern Android phones are compatible. See the compatibility check section below.",
   },
   {
@@ -56,7 +56,7 @@ const setupSteps = [
   },
   {
     title: "Follow the on-screen prompts",
-    desc: "Give the plan a label (e.g., 'Japan eSIM'), then choose whether to use it for data when abroad. No PIN or physical handling needed — the whole process takes under 5 minutes.",
+    desc: "Give the plan a label (e.g., 'Japan eSIM'), then choose whether to enable it for data while in Japan. No PIN or physical handling needed — the whole process takes under 5 minutes.",
   },
   {
     title: "Switch to the eSIM when you land in Japan",
@@ -86,7 +86,7 @@ const helpOptions = [
   },
   {
     title: "Visit a tourist information centre",
-    desc: "Major tourist information centres in Tokyo, Kyoto, and Osaka have multilingual staff. Bring your phone and the eSIM QR code email — staff can often help you scan and activate on the spot.",
+    desc: "Major tourist information centres in Tokyo, Kyoto, and Osaka have multilingual staff. Bring your phone and the QR code you received by email — staff can often help you scan and activate on the spot.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -119,11 +119,11 @@ const faqItems = [
   },
   {
     q: "Can I keep my home phone number while using a Japan eSIM?",
-    a: "Yes. A Japan eSIM adds a second data line to your phone without replacing your existing SIM. Your home SIM card stays in the phone and your home number remains active — you just switch the data connection to the Japan eSIM while travelling. You can still receive calls on your home number (roaming charges may apply for calls).",
+    a: "Yes. A Japan eSIM adds a second data line to your phone without replacing your existing SIM. Your home SIM card stays in the phone and your home number remains active — you just switch the data connection to the Japan eSIM while travelling. You can still receive calls on your home number (roaming charges may apply).",
   },
   {
     q: "What if my phone doesn't support eSIM?",
-    a: "If your phone isn't eSIM compatible (common with phones purchased before 2019), a physical SIM card is your alternative. Sakura Mobile offers a physical SIM that ships internationally. At the airport, Japan has SIM vending machines at Narita, Haneda, and Kansai Airport. Pre-ordering online is cheaper and faster.",
+    a: "If your phone isn't eSIM compatible (common with phones purchased before 2019), a physical SIM card is your alternative. Sakura Mobile offers a physical SIM that ships internationally. SIM vending machines are also available at Narita, Haneda, and Kansai Airport. Pre-ordering online is cheaper and faster.",
   },
   {
     q: "Does an eSIM work in rural Japan and on day trips?",

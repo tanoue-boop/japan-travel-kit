@@ -17,7 +17,7 @@ const topPicks = [
     name: "Holafly",
     badge: "True Unlimited",
     badgeClass: "pickBadgeBlue" as const,
-    summary: "Holafly is the only major provider offering genuinely unlimited data for Japan — no hard cap, no throttle after a fixed allowance. Runs on SoftBank. Plans start at around $27 for 5 days up to $89 for 30 days. The higher price is the trade-off for truly unlimited usage.",
+    summary: "Holafly is the only major provider offering genuinely unlimited data for Japan — no hard cap, no throttle after a fixed allowance. Runs on SoftBank. Plans range from around $27 for 5 days to $89 for 30 days. The higher price is the trade-off for truly unlimited usage.",
     bestFor: "Heavy streamers, remote workers, and anyone unwilling to track their data usage",
     pros: ["No data cap at all", "No throttling after a limit", "Buy before you fly — instant QR delivery", "24/7 chat support"],
     cons: ["Most expensive option", "SoftBank only (slightly less rural coverage than Docomo)", "Data-only — no voice calls"],
@@ -41,7 +41,7 @@ const topPicks = [
     name: "Airalo (10 GB plan)",
     badge: "Best Value",
     badgeClass: "pickBadgeGreen" as const,
-    summary: "If your data usage is high but not extreme, Airalo's 10 GB / 30 day plan at $18 is the smartest option. For most travellers — even those doing daily video calls and social media — 10 GB for a month is more than enough. A fraction of the Holafly price.",
+    summary: "If your data usage is high but not extreme, Airalo's 10 GB / 30-day plan at $18 is the smartest option. For most travellers — even those making daily video calls and browsing social media — 10 GB for a month is more than enough. A fraction of the Holafly price.",
     bestFor: "Travellers who think they need unlimited but actually use under 10 GB per month",
     pros: ["$18 for 10 GB / 30 days — outstanding value", "Docomo and SoftBank networks", "Instant activation", "Most travellers won't hit the cap"],
     cons: ["Hard cap at 10 GB (then data stops)", "No calls or SMS", "Not truly unlimited"],
@@ -67,11 +67,11 @@ const faqItems = [
   },
   {
     q: "Do most travellers actually need unlimited data in Japan?",
-    a: "Probably not. A typical tourist using Google Maps, WhatsApp, social media, and occasional Google searches uses around 1–3 GB per week. Even with daily video calls, 10 GB for a month is enough for most people. The main cases where unlimited genuinely matters: daily video streaming, live content creation, or working remotely with video calls for several hours a day.",
+    a: "Probably not. A typical tourist using Google Maps, WhatsApp, social media, and occasional Google searches uses around 1–3 GB per week. Even with daily video calls, 10 GB for a month is enough for most people. The main cases where unlimited genuinely matters: daily video streaming, live content creation, or remote work involving several hours of video calls per day.",
   },
   {
     q: "What happens when an Airalo Japan eSIM hits its data cap?",
-    a: "When you use all your data on Airalo, your connection stops entirely — you won't be throttled to a slower speed, you'll simply lose data access. You can purchase an additional plan from the Airalo app and it tops up your eSIM without needing to scan a new QR code. If you're worried about running out, the 10 GB plan ($18 for 30 days) is sufficient for almost all non-streaming use.",
+    a: "When you use all your data on Airalo, your connection stops entirely — you won't be throttled to a slower speed, you'll simply lose data access. You can purchase an additional plan from the Airalo app and it will top up your eSIM without requiring a new QR code scan. If you're worried about running out, the 10 GB plan ($18 for 30 days) is sufficient for almost all non-streaming use.",
   },
   {
     q: "Can I use a Japan unlimited eSIM for working remotely?",
@@ -79,7 +79,7 @@ const faqItems = [
   },
   {
     q: "Is there a cheaper alternative to Holafly for unlimited data?",
-    a: "The closest affordable alternative is Airalo's 10 GB / 30 day plan at $18. For most travellers, this is functionally unlimited. If you genuinely need no cap — for streaming, live gaming, or heavy video uploads — Holafly is the right tool. There is no cheaper provider offering genuinely unlimited data in Japan at the time of writing.",
+    a: "The closest affordable alternative is Airalo's 10 GB / 30-day plan at $18. For most travellers, this is functionally unlimited. If you genuinely need no cap — for streaming, live gaming, or heavy video uploads — Holafly is the right tool. There is no cheaper provider offering genuinely unlimited data in Japan at the time of writing.",
   },
 ];
 

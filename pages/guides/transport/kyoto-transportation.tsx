@@ -24,7 +24,7 @@ const busTips = [
   },
   {
     title: "Routes 100 and 101 cover the main sights",
-    desc: "The 100 Bus (Higashiyama Route) links Kyoto Station to Gion, Kiyomizudera, Heian Shrine, and the Silver Pavilion. The 101 goes from Kyoto Station to the Gold Pavilion via Nijo Castle. Both run frequently on weekdays and weekends.",
+    desc: "The 100 Bus (Higashiyama Route) links Kyoto Station to Gion, Kiyomizudera, Heian Shrine, and the Silver Pavilion. The 101 goes from Kyoto Station to the Golden Pavilion via Nijo Castle. Both run frequently on weekdays and weekends.",
   },
   {
     title: "Buses can be very crowded in peak season",
@@ -78,18 +78,18 @@ const kyotoAccess = [
   },
   {
     title: "From Osaka (Shin-Osaka): Shinkansen (15 min)",
-    desc: "The shortest Shinkansen hop in Japan. Alternatively, the Hankyu Kyoto Line from Umeda takes 45 minutes at ¥400 — not JR Pass valid but excellent value for budget travellers heading directly between Osaka and Kyoto.",
+    desc: "The shortest Shinkansen hop in Japan. Alternatively, the Hankyu Kyoto Line from Umeda takes 45 minutes at ¥400 — not JR Pass valid but excellent value for budget travellers travelling directly between Osaka and Kyoto.",
   },
   {
     title: "From Kansai Airport (KIX): Haruka Express (75 min)",
-    desc: "The JR Haruka runs directly from KIX to Kyoto Station in 75 minutes, stopping at Shin-Osaka. From ¥3,640 non-reserved. Foreign visitors can buy a discounted IC CP ticket. JR Pass holders ride free — validate your pass at the airport JR counter before boarding.",
+    desc: "The JR Haruka runs directly from KIX to Kyoto Station in 75 minutes, stopping at Shin-Osaka. From ¥3,640 non-reserved. Foreign visitors can purchase a discounted Haruka ticket by showing a foreign passport at the JR counter. JR Pass holders ride free — validate your pass at the airport JR counter before boarding.",
   },
 ];
 
 const tips = [
   {
     title: "Load your IC card before you arrive",
-    desc: "Suica or Pasmo via Apple Pay or Google Pay means no queueing at Kyoto Station machines. Queues during cherry blossom and autumn season can be 30+ minutes.",
+    desc: "Loading your IC card onto Apple Pay or Google Pay before you arrive means no queuing at Kyoto Station machines. Queues during cherry blossom and autumn season can exceed 30 minutes.",
   },
   {
     title: "Walk between nearby sights — Kyoto rewards it",
@@ -97,7 +97,7 @@ const tips = [
   },
   {
     title: "Avoid taxis in narrow tourist areas",
-    desc: "Central Kyoto streets are tight. Taxis can be stuck 20+ minutes in Gion or Nishiki Market on routes that take 5 minutes on foot. Walk or take the bus in these areas.",
+    desc: "Central Kyoto streets are tight. Taxis can be stuck for 20+ minutes in Gion or Nishiki Market on routes that take 5 minutes on foot. Walk or take the bus in these areas.",
   },
   {
     title: "Google Maps is reliable for Kyoto buses",
@@ -112,7 +112,7 @@ const faqItems = [
   },
   {
     q: "Can I use my Suica IC card in Kyoto?",
-    a: "Yes. Suica, Pasmo, and all other IC cards work on Kyoto City Bus, both subway lines, and JR local trains (Sagano Line to Arashiyama, Nara Line to Uji). IC cards do not cover Shinkansen fares — those need a separate ticket or JR Pass.",
+    a: "Yes. Suica, Pasmo, and all other IC cards work on Kyoto City Bus, both subway lines, and JR local trains (Sagano Line to Arashiyama, Nara Line to Uji). IC cards do not cover Shinkansen fares — these require a separate ticket or JR Pass.",
   },
   {
     q: "What is the best way to get from Kyoto Station to Kinkakuji?",
@@ -120,7 +120,7 @@ const faqItems = [
   },
   {
     q: "How do I get to Arashiyama from central Kyoto?",
-    a: "Three options: (1) JR Sagano Line from Kyoto Station to Saga-Arashiyama — 15 minutes, ¥240, IC card valid. This is the fastest and most convenient. (2) Keifuku Randen tram from Shijo-Omiya — 20 minutes, ¥220, cash or contactless only (IC card not accepted). (3) City Bus routes 28 or 11 from Kyoto Station — around 50 minutes, ¥230, IC card valid. Choose JR for speed.",
+    a: "Three options: (1) JR Sagano Line from Kyoto Station to Saga-Arashiyama — 15 minutes, ¥240, IC card valid. This is the fastest and most convenient. (2) Keifuku Randen tram from Shijo-Omiya — 20 minutes, ¥220, cash or contactless only (IC card not accepted). (3) City Bus routes 28 or 11 from Kyoto Station — around 50 minutes, ¥230, IC card valid. Take the JR for speed.",
   },
   {
     q: "Is the Kyoto subway English-friendly?",
@@ -350,7 +350,7 @@ export default function KyotoTransportationPage() {
           <span className={styles.sectionLabel}>Essential tool</span>
           <h2 className={styles.sectionTitle}>IC Card: Your Most Important Travel Item in Kyoto</h2>
           <p className={styles.bodyText}>
-            An IC card (Suica or Pasmo) is the single most useful thing you can carry in Kyoto. It works on all city buses, both subway lines, JR local trains (Arashiyama Sagano Line, Uji Nara Line), and most taxis. Tap to board, tap to exit — no tickets, no change, no queueing.
+            An IC card (Suica or Pasmo) is the single most useful thing you can carry in Kyoto. It works on all city buses, both subway lines, JR local trains (the Sagano Line to Arashiyama, the Nara Line to Uji), and most taxis. Tap to board, tap to exit — no tickets, no change, no queuing.
           </p>
           <p className={styles.bodyText}>
             You can load an IC card onto your phone via Apple Pay (iPhone XR and later) or Google Pay (most NFC Android phones), or pick up a physical Suica card at any JR station machine in Japan.
@@ -398,6 +398,16 @@ export default function KyotoTransportationPage() {
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Day passes are sold at Kyoto Station Bus Information Center, subway ticket machines, and major hotels. They are not loaded to an IC card — you receive a separate paper ticket.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <a
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1266287&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F118071-kyoto-city-subway-and-bus-ticket%2F"
+              className={styles.pickCta}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Book Kyoto Bus &amp; Subway Day Pass on Klook →
+            </a>
+          </div>
         </section>
 
         {/* Getting to/from Kyoto */}
