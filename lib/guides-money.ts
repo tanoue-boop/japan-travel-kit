@@ -42,4 +42,11 @@ export const moneyArticles: MoneyArticle[] = [
     desc: "Where you exchange your money makes a big difference. We rank the best options from 7-Eleven ATMs to airport counters — and explain which to avoid to get the best yen rate.",
     date: "April 2026",
   },
+  {
+    href: "/guides/money/japan-travel-insurance",
+    badge: "Guide",
+    title: "Japan Travel Insurance (2026): Do You Actually Need It?",
+    desc: "Japan has excellent healthcare — but without insurance, a hospital visit can cost thousands. We explain what to cover, the best policies for every budget, and Japan-specific risks to consider.",
+    date: "April 2026",
+  },
 ];

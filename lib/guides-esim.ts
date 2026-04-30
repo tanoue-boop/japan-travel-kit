@@ -168,4 +168,11 @@ export const esimArticles: EsimArticle[] = [
     desc: "Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large data plans — with honest speed test findings.",
     date: "April 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-students",
+    badge: "Guide",
+    title: "Best eSIM for Japan for Students (2026): Budget Picks",
+    desc: "Studying or travelling in Japan on a budget? We compare eSIM Go, Airalo, Sakura Mobile, and Holafly for short exchanges and long-term study stays — with data usage estimates.",
+    date: "April 2026",
+  },
 ];

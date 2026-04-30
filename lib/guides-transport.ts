@@ -49,4 +49,11 @@ export const transportArticles: TransportArticle[] = [
     desc: "Kyoto's city bus and subway cover nearly every major sight. We explain how each option works, which IC card to use, day pass value, and how to arrive from Tokyo or Kansai Airport.",
     date: "April 2026",
   },
+  {
+    href: "/guides/transport/tokyo-transportation",
+    badge: "Guide",
+    title: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained",
+    desc: "Tokyo has the world's most complex train network — but once you know the basics, it's easy. We cover the Yamanote Line, Tokyo Metro, IC cards, and key routes for every tourist destination.",
+    date: "April 2026",
+  },
 ];
