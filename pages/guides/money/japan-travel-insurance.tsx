@@ -228,7 +228,7 @@ export default function JapanTravelInsurancePage() {
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>Do You Need Travel Insurance for Japan?</h2>
           <p className={styles.bodyText}>
-            Japan is not legally required to have travel insurance for entry — there is no visa condition that mandates it.
+            Travel insurance is not legally required to enter Japan — there is no visa condition that mandates it.
             But Japan&apos;s national health insurance system is designed for residents, not visitors. As a tourist, you are
             billed at the full uninsured rate for any medical treatment, which is significantly higher than what Japanese
             residents pay.
