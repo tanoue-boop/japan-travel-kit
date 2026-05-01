@@ -175,4 +175,18 @@ export const esimArticles: EsimArticle[] = [
     desc: "Studying or travelling in Japan on a budget? We compare eSIM Go, Airalo, Sakura Mobile, and Holafly for short exchanges and long-term study stays — with data usage estimates.",
     date: "April 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-business",
+    badge: "Guide",
+    title: "Best eSIM for Japan Business Travel (2026): Reliable & Fast",
+    desc: "Reliability matters more than price when you're travelling for work. We compare Airalo, Sakura Mobile, Holafly, and eSIM Go on reliability, data speed, and expense-friendliness.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/esim/japan-esim-ipad",
+    badge: "Guide",
+    title: "Best eSIM for Japan on iPad (2026): Stay Connected on Your Tablet",
+    desc: "Travelling to Japan with an iPad? We compare Airalo, Holafly, and eSIM Go for iPad Pro, Air, and mini — with a step-by-step setup guide for all eSIM-compatible models.",
+    date: "May 2026",
+  },
 ];

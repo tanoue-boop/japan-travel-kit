@@ -56,4 +56,11 @@ export const transportArticles: TransportArticle[] = [
     desc: "Tokyo has the world's most complex train network — but once you know the basics, it's easy. We cover the Yamanote Line, Tokyo Metro, IC cards, and key routes for every tourist destination.",
     date: "April 2026",
   },
+  {
+    href: "/guides/transport/osaka-transportation",
+    badge: "Guide",
+    title: "Getting Around Osaka (2026): Subway, Trains & IC Cards Explained",
+    desc: "Osaka's subway system is one of the easiest in Japan to navigate. We cover the Midosuji Line, day passes, IC cards, and key routes to top attractions — with 2026 fares.",
+    date: "May 2026",
+  },
 ];
