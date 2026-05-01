@@ -85,7 +85,7 @@ const faqItems = [
   },
   {
     q: "How do I get from Osaka to Kyoto?",
-    a: "The fastest and most affordable way is the JR Shinkaisoku (Special Rapid) from Osaka or Shin-Osaka station to Kyoto — takes about 15 minutes and costs around ¥580 with an IC card. Hankyu and Kintetsu trains also connect the cities for a similar price if you're departing from Umeda or Namba respectively. The shinkansen is overkill for this short distance.",
+    a: "The fastest and most affordable way is the JR Shinkaisoku (Special Rapid) from Osaka Station to Kyoto — takes about 15 minutes and costs around ¥580 with an IC card. Hankyu trains from Umeda and Kintetsu trains from Namba also connect the cities at a similar price. The shinkansen is overkill for this short distance.",
   },
   {
     q: "Is Osaka easy to navigate without Japanese?",
@@ -307,6 +307,16 @@ export default function OsakaTransportationPage() {
             point is just four journeys for the 1-day pass (¥820), which most visitors hit before lunch.
             The Enjoy Eco Card (weekends only, ¥620) is the best value pass in any major Japanese city.
           </p>
+          <div style={{ margin: "1.5rem 0" }}>
+            <a
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1267428&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F11515-osaka-metro-1-2-day-pass-osaka%2F"
+              className={styles.pickCta}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Buy Osaka Metro Day Pass on Klook →
+            </a>
+          </div>
         </section>
 
         {/* IC Card section */}
@@ -373,8 +383,8 @@ export default function OsakaTransportationPage() {
           <h2 className={styles.sectionTitle}>Getting To &amp; From Osaka</h2>
           <p className={styles.bodyText}>
             <strong>From Tokyo:</strong> The Tokaido Shinkansen connects Tokyo Station to Shin-Osaka in approximately
-            2 hours 30 minutes. Nozomi trains are fastest (non-stop sections) and cost around ¥14,000 one-way.
-            JR Pass holders must use Hikari trains on this route, adding 20–30 minutes.
+            2 hours 30 minutes. Nozomi trains are the fastest and cost around ¥14,000 one-way.
+            JR Pass holders must use Hikari trains on this route, adding around 20–30 minutes.
           </p>
           <p className={styles.bodyText}>
             <strong>From Kyoto:</strong> Osaka is only 15 minutes from Kyoto on the JR Shinkaisoku (Special Rapid)
@@ -384,7 +394,7 @@ export default function OsakaTransportationPage() {
           <p className={styles.bodyText}>
             <strong>From Kansai Airport (KIX):</strong> The JR Haruka express reaches Shin-Osaka in 50 minutes (¥3,640)
             or Tennoji in 33 minutes. The Nankai Rapi:t reaches Namba in 38 minutes for ¥1,450 — better value if
-            you&apos;re heading to the south of the city. Pre-book the Rapi:t on Klook for guaranteed seating and
+            your accommodation is in or around Namba. Pre-book the Rapi:t on Klook for guaranteed seating and
             convenience.
           </p>
           <div style={{ margin: "1.5rem 0" }}>

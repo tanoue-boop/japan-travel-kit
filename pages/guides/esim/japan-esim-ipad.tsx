@@ -390,7 +390,7 @@ export default function JapanEsimIpadPage() {
           <p className={styles.bodyText}>
             The main practical difference is that most people travel with both devices. If you carry
             both an iPhone and an iPad, you have two options: buy a separate eSIM for each device,
-            or use iPhone Personal Hotspot to share data with your iPad. The hotspot approach saves
+            or use your iPhone&apos;s Personal Hotspot to share data with your iPad. The hotspot approach saves
             money but drains your iPhone&apos;s battery faster.
           </p>
           <p className={styles.bodyText}>

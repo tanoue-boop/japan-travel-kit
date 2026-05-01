@@ -87,7 +87,7 @@ const businessTips = [
     desc: "Set up the eSIM at home while on Wi-Fi — do not leave it until you land. The QR code scan and profile download takes under 5 minutes. You'll have 4G data before you reach baggage claim.",
   },
   {
-    title: "Bring a portable battery",
+    title: "Bring a portable power bank",
     desc: "Heavy data use (video calls, cloud sync, navigation) drains battery quickly. A 10,000 mAh power bank will cover a full business day without needing to find a power outlet.",
   },
   {
@@ -280,7 +280,7 @@ export default function JapanEsimBusinessPage() {
           <h2 className={styles.sectionTitle}>What Business Travellers Need from a Japan eSIM</h2>
           <p className={styles.bodyText}>
             Business travel has different connectivity demands from leisure tourism. Reliability is the
-            first priority — a dropped video call mid-meeting or a laggy connection during a client
+            first priority — a dropped video call mid-meeting or an unstable connection during a client
             presentation costs far more than the difference between eSIM plans.
           </p>
           <p className={styles.bodyText}>

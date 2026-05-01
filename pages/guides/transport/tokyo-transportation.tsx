@@ -384,6 +384,16 @@ export default function TokyoTransportationPage() {
             For most tourists, pay-as-you-go with an IC card is cheaper and more flexible. Day passes only make
             financial sense on unusually busy days of sightseeing with many short journeys.
           </p>
+          <div style={{ margin: "1.5rem 0" }}>
+            <a
+              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1267427&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1552-subway-ticket-tokyo%2F"
+              className={styles.pickCta}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Buy Tokyo Subway Ticket on Klook →
+            </a>
+          </div>
         </section>
 
         {/* Tips */}
