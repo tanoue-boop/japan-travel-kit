@@ -209,7 +209,7 @@ export default function TippingInJapanPage() {
           <p className={styles.bodyText}>
             Japan operates on a service philosophy rooted in the concept of <strong>omotenashi</strong>
             — wholehearted hospitality given without expectation of reward. Service in Japan is not
-            a transaction; it is a point of professional pride. From the ramen chef who has spent
+            a transaction; it is a matter of professional pride. From the ramen chef who has spent
             decades perfecting their broth to the taxi driver who wears white gloves, service excellence
             is simply the standard — not something that requires additional payment.
           </p>
@@ -223,7 +223,7 @@ export default function TippingInJapanPage() {
           <p className={styles.bodyText}>
             Crucially, Japanese service workers receive a professional wage that is not supplemented
             by tips. The price on the menu, the meter in the taxi, the rate at the hotel — these
-            are the complete cost. There is no hidden expectation of gratuity built into the system.
+            is the total cost. There is no hidden expectation of gratuity built into the system.
           </p>
           <p className={styles.bodyText}>
             Many staff will politely but firmly refuse a tip. Some will chase you down the street
@@ -248,7 +248,7 @@ export default function TippingInJapanPage() {
           </p>
           <p className={styles.bodyText}>
             In tourist-heavy areas — particularly in parts of Tokyo, Osaka, and Kyoto that
-            cater heavily to foreign visitors — some staff have become accustomed to the
+            cater primarily to foreign visitors — some staff have become accustomed to the
             practice and may accept a tip without visible discomfort. But this is not
             universal, and it is still not expected.
           </p>
@@ -294,7 +294,7 @@ export default function TippingInJapanPage() {
               <strong>Kokorozuke at traditional ryokan:</strong> A small gratuity in an envelope
               (¥1,000–¥3,000 per person) may be presented to your personal host (nakai-san)
               at the beginning of your stay at a high-end ryokan. This is a formal gesture with
-              specific etiquette attached — it is placed in an envelope, not handed over as cash —
+              its own etiquette — it is placed in an envelope, not handed over as cash —
               and is increasingly rare even among Japanese guests. Most ryokan staff will refuse it.
             </li>
             <li>
@@ -328,7 +328,7 @@ export default function TippingInJapanPage() {
           <p className={styles.bodyText} style={{ marginTop: "1.5rem" }}>
             Becoming a repeat customer is perhaps the highest compliment in Japanese service culture.
             Returning to the same restaurant, the same ryokan, or the same barber on a future trip
-            signals that you valued the experience — far more than any monetary gesture.
+            signals that you valued the experience — and means far more than any monetary gesture.
           </p>
         </section>
 
@@ -401,7 +401,7 @@ export default function TippingInJapanPage() {
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Planning your Japan trip budget?</h2>
             <p className={styles.ctaBannerDesc}>
-              From ATMs and cash tips to currency exchange and travel cards — we cover
+              From tipping etiquette to ATMs and currency exchange — we cover
               everything you need to manage money in Japan.
             </p>
             <Link href="/guides/money" className={styles.ctaBannerBtn}>

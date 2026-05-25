@@ -12,7 +12,7 @@ const comparisonRows = [
 ];
 
 const esimPros = [
-  "Instant setup — install before your flight lands",
+  "Instant setup — install before you fly",
   "No physical card to lose or swap",
   "Cheaper for short trips",
   "Keep your home SIM active in the other slot",
@@ -73,7 +73,7 @@ const esimPicks = [
     badgeClass: "pickBadgeOrange" as const,
     name: "Holafly",
     summary:
-      "Holafly offers unlimited data for Japan on SoftBank — no GB limits, no running out mid-trip. Best for heavy data users who stream video, use video calls, or want peace of mind.",
+      "Holafly offers unlimited data for Japan on SoftBank — no GB limits, no running out mid-trip. Best for heavy data users who stream video, make video calls, or want peace of mind.",
     bestFor: "Heavy data users, streamers, long itineraries",
     pros: ["Unlimited data", "SoftBank network", "No overage worries"],
     cons: ["More expensive than capped plans", "Fair-use speed limits apply", "Data-only"],
@@ -88,7 +88,7 @@ const simPick = {
   badgeClass: "pickBadgeBlue" as const,
   name: "Sakura Mobile",
   summary:
-    "Sakura Mobile is the only Japan tourist SIM with genuine English-speaking customer support, voice call capability, and flexible plans designed for both short and long stays. Runs on Docomo — Japan's most extensive network.",
+    "Sakura Mobile is the only Japan tourist SIM with genuine English-speaking customer support, voice calls, and flexible plans designed for both short and long stays. Runs on Docomo — Japan's most extensive network.",
   bestFor: "Longer stays, travellers who need voice calls, those wanting English support",
   pros: [
     "Voice calls & SMS included",
@@ -117,11 +117,11 @@ const scenarios = [
 const faqItems = [
   {
     q: "Is eSIM better than a SIM card for Japan?",
-    a: "For most tourists visiting Japan for 1–30 days, an eSIM is the better choice. It is cheaper, faster to set up, and requires no visit to an airport kiosk. The main limitation is that most Japan eSIMs are data-only — if you need voice calls or SMS, a physical SIM (Sakura Mobile) is the better option. eSIM also requires a compatible device, which is most smartphones made after 2018 and most current-generation tablets.",
+    a: "For most tourists visiting Japan for 1–30 days, an eSIM is the better choice. It is cheaper, faster to set up, and requires no visit to an airport kiosk. The main limitation is that most Japan eSIMs are data-only — if you need voice calls or SMS, a physical SIM (Sakura Mobile) is the better option. eSIM also requires a compatible device — most smartphones made after 2018 and most current-generation tablets qualify.",
   },
   {
     q: "Can I get a physical SIM at Japan airports?",
-    a: "Yes. Physical SIM cards and eSIM QR codes are available at vending machines and kiosks in most major Japanese airports, including Narita, Haneda, Kansai, and Chubu. However, airport prices are typically higher than pre-ordering online. Pre-ordering from Sakura Mobile before you fly is usually cheaper and avoids any queue time on arrival.",
+    a: "Yes. Physical SIM cards and eSIM QR codes are available at vending machines and kiosks in most major Japanese airports, including Narita, Haneda, Kansai, and Chubu. However, airport prices are typically higher than when you pre-order online. Pre-ordering from Sakura Mobile before you fly is usually cheaper and avoids any queue time on arrival.",
   },
   {
     q: "Which is cheaper, eSIM or physical SIM for Japan?",

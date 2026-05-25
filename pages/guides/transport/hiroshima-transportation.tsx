@@ -26,7 +26,7 @@ const miyajimaSteps = [
   },
   {
     title: "Take the ferry to Miyajima",
-    desc: "Ferries depart approximately every 15 minutes. The crossing offers great views of the floating torii gate as you approach. JR Pass holders should confirm they board the JR-operated vessel, not the private operator.",
+    desc: "Ferries depart approximately every 15 minutes. The crossing offers great views of the floating torii gate as you approach. JR Pass holders should make sure they board the JR ferry, not the private one.",
   },
   {
     title: "Check the tide times before you go",
@@ -62,7 +62,7 @@ const tipsItems = [
   },
   {
     title: "The Peace Park is fully walkable from the tram",
-    desc: "The Hiroshima Peace Memorial Park, A-Bomb Dome, and Peace Memorial Museum are all within easy walking distance of the Genbaku Dome-mae tram stop (Lines 2 and 6). No taxi or additional transport needed.",
+    desc: "The Hiroshima Peace Memorial Park, A-Bomb Dome, and Peace Memorial Museum are all within easy walking distance of the Genbaku Dome-mae tram stop (Lines 2 and 6). No taxi or additional transport is needed.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="5" r="1" fill="currentColor" stroke="none" />
@@ -94,7 +94,7 @@ const faqItems = [
   },
   {
     q: "Is Hiroshima easy to get around?",
-    a: "Yes. Hiroshima is one of the most tourist-friendly cities in Japan for navigation. The tram network is simple, stops are announced in English and Japanese, and all major attractions are concentrated within a compact area. IC cards (Suica, Icoca) work on the tram, JR trains, and most buses. First-time visitors typically have no difficulty.",
+    a: "Yes. Hiroshima is one of the most tourist-friendly cities in Japan for navigation. The tram network is simple, stops are announced in English and Japanese, and all major attractions are concentrated within a compact area. IC cards (Suica, ICOCA) work on the tram, JR trains, and most buses. First-time visitors typically have no difficulty.",
   },
   {
     q: "How long should I spend in Hiroshima?",
@@ -288,7 +288,7 @@ export default function HiroshimaTransportationPage() {
             useful for tourists.
           </p>
           <p className={styles.bodyText}>
-            IC cards (Suica, Icoca, Nimoca) are accepted on all tram routes. Simply tap on as
+            IC cards (Suica, ICOCA, Nimoca) are accepted on all tram routes. Simply tap on as
             you board at the rear door and tap again as you exit at the front.
             A <strong>1-day tram pass (¥700)</strong> breaks even at four journeys and is
             recommended for any full day of sightseeing.
@@ -357,7 +357,7 @@ export default function HiroshimaTransportationPage() {
           <p className={styles.bodyText}>
             Hiroshima is served by the San&apos;yo Shinkansen, placing it within easy reach of
             Osaka, Kyoto, and Tokyo. JR Pass holders can travel on all Hikari and Kodama
-            shinkansen services free; Nozomi is excluded but adds only 15–30 minutes to journeys.
+            shinkansen services for free; Nozomi is excluded but adds only 15–30 minutes to journeys.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

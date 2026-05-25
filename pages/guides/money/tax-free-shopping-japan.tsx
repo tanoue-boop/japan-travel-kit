@@ -12,7 +12,7 @@ const taxFreeStores = [
 
 const eligibleItems = [
   { category: "Electronics & cameras", notes: "All electronics qualify — one of the biggest savings categories" },
-  { category: "Clothing & fashion", notes: "Any item over ¥5,000 combined in one store" },
+  { category: "Clothing & fashion", notes: "Any items totalling ¥5,000 or more in one store" },
   { category: "Cosmetics & medicine", notes: "Must be in original packaging; not for use in Japan" },
   { category: "Food & beverages", notes: "Must spend ¥5,000+ and not consume in Japan (sealed)" },
   { category: "Souvenirs & crafts", notes: "Traditional crafts, ceramics, lacquerware all qualify" },
@@ -248,7 +248,7 @@ export default function TaxFreeShoppingJapanPage() {
             this tax — a significant saving on larger purchases.
           </p>
           <p className={styles.bodyText}>
-            Unlike the VAT refund systems in Europe, where you pay full price and reclaim
+            Unlike VAT refund systems in Europe, where you pay full price and reclaim
             the tax at the airport, Japan&apos;s system deducts the tax at the point of sale.
             You simply pay less at the register — no forms, no queuing at refund counters,
             no waiting for a bank transfer weeks later.

@@ -18,7 +18,7 @@ const picks = [
     badgeClass: "pickBadgeBlue" as const,
     name: "Airalo",
     summary:
-      "Airalo is the world's largest eSIM marketplace and our top pick for Japan on any device — including Android tablets. Plans start at $4.50 for 1 GB / 7 days, running on Docomo and SoftBank networks. Setup is straightforward: buy, scan the QR code in your tablet's SIM settings, and activate on arrival.",
+      "Airalo is the world's largest eSIM marketplace and our top pick for Japan on any device — including Android tablets. Plans start at $4.50 for 1 GB / 7 days, running on the Docomo and SoftBank networks. Setup is straightforward: buy, scan the QR code in your tablet's SIM settings, and activate on arrival.",
     bestFor: "Short trips, first-time eSIM users, budget-conscious travellers",
     pros: [
       "World's largest eSIM marketplace",
@@ -39,7 +39,7 @@ const picks = [
     badgeClass: "pickBadgeOrange" as const,
     name: "Holafly",
     summary:
-      "Holafly offers unlimited data for Japan on the SoftBank network — ideal if you plan heavy use of streaming, maps, or video calls on your tablet. No data cap means you never need to worry about running out mid-trip, though fair-use speeds apply after a daily threshold.",
+      "Holafly offers unlimited data for Japan on the SoftBank network — ideal if you plan heavy use of streaming, maps, or video calls on your tablet. No data cap means you never need to worry about running out of data mid-trip, though fair-use speeds apply after a daily threshold.",
     bestFor: "Heavy data users, long stays, streaming video",
     pros: [
       "Unlimited data — no worrying about GB limits",
@@ -92,7 +92,7 @@ const samsungSteps = [
   },
   {
     title: "Keep the eSIM OFF until you land in Japan",
-    desc: "After installation, disable the eSIM profile until you arrive. Activating it early may consume your data plan before your trip. Switch it on once your flight lands.",
+    desc: "After installation, disable the eSIM profile until you land in Japan. Activating it early may consume your data plan before your trip. Switch it on once your flight lands.",
   },
 ];
 
@@ -137,7 +137,7 @@ const useCases = [
   },
   {
     title: "Shinkansen entertainment",
-    desc: "Japan's bullet trains are a great opportunity to watch downloaded content or stream video. With a Japan eSIM on your tablet, you have reliable data for the entire journey — no dependence on train WiFi.",
+    desc: "Japan's bullet trains offer the perfect opportunity to watch downloaded content or stream video. With a Japan eSIM on your tablet, you have reliable data for the entire journey — no need to rely on the train's WiFi.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="7" width="20" height="15" rx="2" />
@@ -329,7 +329,7 @@ export default function JapanEsimAndroidTabletPage() {
           <p className={styles.bodyText}>
             eSIM support on Android tablets is still limited compared to phones. Before purchasing
             a Japan eSIM, confirm your specific tablet model supports eSIM. Here are the most
-            common tourist devices:
+            popular devices among travellers:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
