@@ -339,6 +339,15 @@ export default function HiroshimaTransportationPage() {
               </table>
             </div>
           </div>
+          <a
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1284449&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F17095-hiroshima-tourist-pass-kyushu-fukuoka-kumamoto%2F"
+            className={styles.pickCta}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            style={{ marginTop: "1.25rem", display: "inline-block" }}
+          >
+            Get Hiroshima Tourist Pass on Klook →
+          </a>
         </section>
 
         {/* Getting to/from Hiroshima */}
