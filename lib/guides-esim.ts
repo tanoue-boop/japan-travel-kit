@@ -189,4 +189,18 @@ export const esimArticles: EsimArticle[] = [
     desc: "Travelling to Japan with an iPad? We compare Airalo, Holafly, and eSIM Go for iPad Pro, Air, and mini — with a step-by-step setup guide for all eSIM-compatible models.",
     date: "May 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-android-tablet",
+    badge: "Guide",
+    title: "Best eSIM for Japan on Android Tablet (2026)",
+    desc: "Travelling to Japan with a Samsung Galaxy Tab or Google Pixel Tablet? We compare Airalo, Holafly, and eSIM Go — with step-by-step setup guides for both devices.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/esim/japan-sim-card-vs-esim-2026",
+    badge: "Comparison",
+    title: "Japan SIM Card vs eSIM (2026): Which Should You Choose?",
+    desc: "Both work in Japan — but one is faster, cheaper, and easier to set up. We compare eSIM and physical SIM on price, setup, voice calls, and best picks for every trip type.",
+    date: "May 2026",
+  },
 ];

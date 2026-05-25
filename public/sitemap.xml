@@ -295,4 +295,36 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- 2026-05-25 additions -->
+  <url>
+    <loc>https://japan-travel-kit.com/guides/money/tipping-in-japan</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/money/tax-free-shopping-japan</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/transport/hiroshima-transportation</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/esim/japan-esim-android-tablet</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://japan-travel-kit.com/guides/esim/japan-sim-card-vs-esim-2026</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

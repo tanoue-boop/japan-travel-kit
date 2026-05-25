@@ -49,4 +49,18 @@ export const moneyArticles: MoneyArticle[] = [
     desc: "Japan has excellent healthcare — but without insurance, a hospital visit can cost thousands. We explain what to cover, the best policies for every budget, and Japan-specific risks to consider.",
     date: "April 2026",
   },
+  {
+    href: "/guides/money/tipping-in-japan",
+    badge: "Cultural Guide",
+    title: "Tipping in Japan (2026): Why You Should Never Tip",
+    desc: "Tipping is not just unnecessary in Japan — it can actually cause offence. We explain Japan's no-tipping culture, what happens if you try, and how to show appreciation the right way.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/money/tax-free-shopping-japan",
+    badge: "Guide",
+    title: "Tax-Free Shopping in Japan (2026): How to Get Your Consumption Tax Back",
+    desc: "As a tourist, you can save up to 10% on electronics, clothing, cosmetics, and more. We explain the rules, eligible stores, minimum spend, and what to watch out for on departure.",
+    date: "May 2026",
+  },
 ];

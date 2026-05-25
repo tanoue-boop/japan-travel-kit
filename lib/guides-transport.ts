@@ -63,4 +63,11 @@ export const transportArticles: TransportArticle[] = [
     desc: "Osaka's subway system is one of the easiest in Japan to navigate. We cover the Midosuji Line, day passes, IC cards, and key routes to top attractions — with 2026 fares.",
     date: "May 2026",
   },
+  {
+    href: "/guides/transport/hiroshima-transportation",
+    badge: "Guide",
+    title: "Getting Around Hiroshima (2026): Trams, Trains & Miyajima",
+    desc: "Hiroshima is compact and easy to navigate. We cover the city tram, JR trains, Miyajima ferry, day passes, and IC cards — with tips for first-time visitors.",
+    date: "May 2026",
+  },
 ];
