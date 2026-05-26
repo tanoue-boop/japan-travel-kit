@@ -18,7 +18,7 @@ const dayPasses = [
 const dazaifuSteps = [
   {
     title: "Get to Tenjin Station",
-    desc: "Take the Fukuoka City Subway Kūkō Line to Tenjin Station. From Hakata it takes about 5 minutes (¥210). From Fukuoka Airport, ride to Tenjin in around 11 minutes (¥310).",
+    desc: "Take the Fukuoka City Subway Kūkō Line to Tenjin Station. From Hakata it takes about 5 minutes (¥210). From Fukuoka Airport, the ride to Tenjin takes around 11 minutes (¥310).",
   },
   {
     title: "Transfer to Nishitetsu Tenjin Omuta Line",
@@ -30,7 +30,7 @@ const dazaifuSteps = [
   },
   {
     title: "Walk to Dazaifu Tenmangu Shrine",
-    desc: "From Nishitetsu-Dazaifu Station, walk 5 minutes through the covered shopping street lined with plum branch shops. The main shrine gate is at the end of the path.",
+    desc: "From Nishitetsu-Dazaifu Station, walk 5 minutes through the covered shopping street lined with traditional sweet shops and souvenir stalls. The main shrine gate is at the end of the path.",
   },
 ];
 
@@ -57,7 +57,7 @@ const tipsItems = [
   },
   {
     title: "Tenjin and Hakata are the two main hubs",
-    desc: "Almost all Fukuoka transport passes through either Hakata Station (JR, Shinkansen, subway) or Tenjin (subway, Nishitetsu trains and buses). Understand these two nodes and navigation becomes simple. They're 5 minutes apart on the subway.",
+    desc: "Almost all Fukuoka transport passes through either Hakata Station (JR, Shinkansen, subway) or Tenjin (subway, Nishitetsu trains and buses). Once you understand these two hubs, getting around is straightforward. They're 5 minutes apart on the subway.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" />
@@ -270,7 +270,7 @@ export default function FukuokaTransportationPage() {
           <span className={styles.sectionLabel}>City transport</span>
           <h2 className={styles.sectionTitle}>Fukuoka City Subway</h2>
           <p className={styles.bodyText}>
-            Fukuoka&apos;s subway has three short lines and is easy to navigate even on a first visit.
+            Fukuoka&apos;s subway has three short lines and is easy to navigate even for first-time visitors.
             The most important line for tourists is the <strong>Kūkō Line (Airport Line)</strong>,
             which runs directly from Fukuoka Airport through Hakata Station and Tenjin —
             Fukuoka&apos;s two main hubs — then continues west to Meinohama.
@@ -282,7 +282,7 @@ export default function FukuokaTransportationPage() {
           </p>
           <p className={styles.bodyText}>
             All IC cards (Suica, Pasmo, Nimoca, ICOCA) work on the subway. A
-            <strong> 1-day subway pass (¥640)</strong> breaks even at three journeys and is worth
+            <strong> 1-day subway pass (¥640)</strong> pays for itself after three rides and is worth
             buying if you plan to move around the city throughout the day.
           </p>
         </section>
@@ -301,7 +301,7 @@ export default function FukuokaTransportationPage() {
           <p className={styles.bodyText}>
             Nishitetsu buses are the primary way to reach areas without subway coverage, including
             Ohori Park, Fukuoka Tower in the Momochi waterfront district, and Canal City Hakata
-            (though the last is a 15-minute walk from Hakata Station).
+            (though Canal City is also within a 15-minute walk of Hakata Station).
           </p>
           <p className={styles.bodyText}>
             IC cards work on all Nishitetsu trains and the Fukuoka city bus network. The
@@ -355,6 +355,15 @@ export default function FukuokaTransportationPage() {
               </table>
             </div>
           </div>
+          <a
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1285111&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F26871-fukuoka-subway-unlimited-pass%2F"
+            className={styles.pickCta}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            style={{ marginTop: "1.25rem", display: "inline-block" }}
+          >
+            Get Fukuoka City Subway Pass on Klook →
+          </a>
         </section>
 
         {/* Getting to/from Fukuoka (Shinkansen) */}

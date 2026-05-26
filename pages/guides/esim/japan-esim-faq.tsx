@@ -13,11 +13,11 @@ const faqGeneral = [
   },
   {
     q: "Does my phone support eSIM?",
-    a: "Most phones released after 2018 support eSIM. For iPhones: iPhone XS (2018) and later. For Android: Samsung Galaxy S21 and later, Google Pixel 3 and later, most OnePlus 9 and later. Check your phone's settings: on iPhone go to Settings → Cellular → Add eSIM; on Android go to Settings → Network → SIM cards (the wording varies). If the option exists, your phone supports eSIM.",
+    a: "Most phones released after 2018 support eSIM. For iPhones: iPhone XS (2018) and later. For Android: Samsung Galaxy S21 and later, Google Pixel 3 and later, OnePlus 9 and later (most models). Check your phone's settings: on iPhone go to Settings → Cellular → Add eSIM; on Android go to Settings → Network → SIM cards (the wording varies). If the option exists, your phone supports eSIM.",
   },
   {
     q: "What's the difference between eSIM and a physical SIM card for Japan?",
-    a: "Both give you mobile data in Japan, but eSIM is faster to set up (no queuing at the airport), cheaper in most cases, and can be purchased in advance. Physical SIM cards require waiting at the airport counter or vending machine after landing. The main advantage of a physical SIM is that it works on phones that don't support eSIM.",
+    a: "Both give you mobile data in Japan, but eSIM is faster to set up (no queuing at the airport), cheaper in most cases, and available before you travel. Physical SIM cards require waiting at the airport counter or vending machine after landing. The main advantage of a physical SIM is that it works on phones that don't support eSIM.",
   },
   {
     q: "Can I use my home carrier in Japan instead of buying an eSIM?",
@@ -40,11 +40,11 @@ const faqProviders = [
   },
   {
     q: "Does Holafly work in Japan?",
-    a: "Yes. Holafly Japan operates on the SoftBank network and offers unlimited data plans starting from $17 for 5 days. It's a good choice for heavy data users who want unlimited streaming, navigation, and browsing without tracking GB usage. Note that 'unlimited' may be throttled after significant daily usage — Holafly states a fair-use threshold.",
+    a: "Yes. Holafly Japan operates on the SoftBank network and offers unlimited data plans starting from $17 for 5 days. It's a good choice for heavy data users who want unlimited streaming, navigation, and browsing without tracking GB usage. Note that 'unlimited' may be throttled after significant daily usage — Holafly applies a fair-use policy.",
   },
   {
     q: "What is Sakura Mobile and who is it for?",
-    a: "Sakura Mobile is a Japan-based carrier that offers both SIM cards and eSIMs specifically designed for tourists and long-term visitors. Unlike Airalo and Holafly, Sakura Mobile includes voice call capability, English-speaking customer support, and plans suitable for stays up to 90 days. It runs on Docomo (Japan's largest carrier). It costs more than budget eSIM options but is the best choice for anyone who needs a Japanese phone number or extended stay connectivity.",
+    a: "Sakura Mobile is a Japan-based carrier that offers both SIM cards and eSIMs specifically designed for tourists and long-term visitors. Unlike Airalo and Holafly, Sakura Mobile includes voice call capability, English-speaking customer support, and plans suitable for stays up to 90 days. It runs on Docomo (Japan's largest carrier). It costs more than budget eSIM options but is the best choice for anyone who needs a Japanese phone number or plans an extended stay.",
   },
 ];
 
@@ -74,7 +74,7 @@ const faqPlans = [
 const faqSetup = [
   {
     q: "When should I activate my Japan eSIM?",
-    a: "Install the eSIM (scan the QR code) before you leave home — this takes 2–5 minutes and requires a Wi-Fi connection. However, most plans start counting days from the first time you connect to a network in Japan, not from when you install the profile. Activate the Japan eSIM data line when your plane lands to make sure the plan starts when you actually need it.",
+    a: "Install the eSIM (scan the QR code) before you leave home — this takes 2–5 minutes and requires a Wi-Fi connection. However, most plans start counting days from the first time you connect to a network in Japan, not from when you install the profile. Switch to the Japan eSIM data line once your plane lands, so your plan starts when you need it.",
   },
   {
     q: "How do I install a Japan eSIM on iPhone?",
@@ -86,7 +86,7 @@ const faqSetup = [
   },
   {
     q: "Can I use my home SIM and Japan eSIM at the same time?",
-    a: "Yes, if your phone supports dual SIM (one physical + one eSIM). Keep your home SIM for calls and messages from people who have your existing number, and use the Japan eSIM for data. On iPhone, go to Settings → Cellular and set the Japan eSIM as the 'Primary' data line while keeping your home SIM active for calls. This is the most common setup for international travellers.",
+    a: "Yes, if your phone supports dual SIM (one physical + one eSIM). Keep your home SIM active so people can still reach you on your regular number, and use the Japan eSIM for data. On iPhone, go to Settings → Cellular and set the Japan eSIM as the 'Primary' data line while keeping your home SIM active for calls. This is the most common setup for international travellers.",
   },
 ];
 

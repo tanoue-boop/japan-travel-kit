@@ -40,7 +40,7 @@ const suicaSteps = [
   },
   {
     title: "Tap to ride trains and buses",
-    desc: "Touch your card to the IC reader at the gate entry and exit. The correct fare is deducted automatically — no need to select a destination.",
+    desc: "Touch your card to the IC reader on entry and on exit. The correct fare is deducted automatically — no need to select a destination.",
   },
   {
     title: "Pay at convenience stores and vending machines",
@@ -67,7 +67,7 @@ const faqItems = [
   },
   {
     q: "Can tourists use PayPay or LINE Pay in Japan?",
-    a: "With difficulty. PayPay requires a Japanese phone number and bank account for full top-up functionality, though limited tourist support launched in 2024. LINE Pay has similar restrictions. For most tourists, a Suica IC card and a contactless Visa or Mastercard will cover everything you need — skip QR pay entirely.",
+    a: "It's possible, but not straightforward. PayPay requires a Japanese phone number and bank account for full top-up functionality, though limited tourist support launched in 2024. LINE Pay has similar restrictions. For most tourists, a Suica IC card and a contactless Visa or Mastercard will cover everything you need — skip QR pay entirely.",
   },
 ];
 
@@ -198,7 +198,7 @@ export default function ContactlessPaymentJapanPage() {
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>Contactless Payments in Japan: The Short Version</h2>
           <p className={styles.bodyText}>
-            Japan has three main contactless payment systems: IC cards (Suica, Pasmo, ICOCA), QR pay apps (PayPay, LINE Pay), and tap-to-pay credit cards (Visa, Mastercard). As a tourist, only two of these are practical.
+            Japan has three main contactless payment systems: IC cards (Suica, Pasmo, ICOCA), QR pay apps (PayPay, LINE Pay), and tap-to-pay credit cards (Visa, Mastercard). For tourists, only two of these are practical.
           </p>
           <p className={styles.bodyText}>
             <strong>IC cards work everywhere that matters.</strong> Trains, buses, convenience stores, vending machines, taxis — a Suica card covers daily transit and small purchases from the moment you land. It&apos;s the single most useful thing to have in Japan.
@@ -276,7 +276,7 @@ export default function ContactlessPaymentJapanPage() {
             The key limitation: contactless credit cards do <strong>not</strong> work on trains, subways, or most buses. Tapping your credit card at a JR or Tokyo Metro gate will not work — you need an IC card for transit.
           </p>
           <p className={styles.bodyText}>
-            American Express contactless has lower acceptance in Japan than Visa or Mastercard. If your wallet has both, use Visa for the broadest acceptance.
+            American Express contactless is less widely accepted in Japan than Visa or Mastercard. If your wallet has both, use Visa for the broadest acceptance.
           </p>
         </section>
 
