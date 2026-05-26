@@ -8,6 +8,11 @@ const nextConfig = {
         destination: "/guides/esim/best-esim-japan",
         permanent: true,
       },
+      {
+        source: "/guides/esim/esim-vs-sim-japan",
+        destination: "/guides/esim/japan-sim-card-vs-esim-2026",
+        permanent: true,
+      },
     ];
   },
 };

@@ -22,13 +22,6 @@ export const esimArticles: EsimArticle[] = [
     date: "April 2026",
   },
   {
-    href: "/guides/esim/esim-vs-sim-japan",
-    badge: "Guide",
-    title: "eSIM vs SIM Card for Japan: Which Should You Get?",
-    desc: "Both work in Japan — but one is faster, cheaper, and easier to set up. We compare price, compatibility, and convenience to help you choose.",
-    date: "April 2026",
-  },
-  {
     href: "/guides/esim/holafly-japan-review",
     badge: "Review",
     title: "Holafly Japan eSIM Review 2026: Unlimited Data Worth It?",
