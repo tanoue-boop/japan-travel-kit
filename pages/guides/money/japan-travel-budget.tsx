@@ -130,10 +130,15 @@ export default function JapanTravelBudgetPage() {
               "@type": "Article",
               headline: "Japan Travel Budget Guide (2026): How Much Does Japan Cost?",
               dateModified: "2026-04-27",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

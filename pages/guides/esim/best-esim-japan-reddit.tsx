@@ -98,10 +98,15 @@ export default function BestEsimJapanRedditPage() {
               "@type": "Article",
               headline: "Best eSIM for Japan: What Reddit Actually Says (2026)",
               dateModified: "2026-04-25",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

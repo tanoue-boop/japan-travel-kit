@@ -137,10 +137,15 @@ export default function AiraloJapanReviewPage() {
               "@type": "Article",
               headline: "Airalo Japan Review 2026: Honest Test & Verdict",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

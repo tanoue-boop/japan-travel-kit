@@ -125,10 +125,15 @@ export default function JapanEsimStudentsPage() {
               "@type": "Article",
               headline: "Best eSIM for Japan for Students (2026): Budget Picks",
               dateModified: "2026-04-30",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

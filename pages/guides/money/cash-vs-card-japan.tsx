@@ -126,10 +126,15 @@ export default function CashVsCardJapanPage() {
               "@type": "Article",
               headline: "Cash vs Card in Japan (2026): What Actually Works?",
               dateModified: "2026-04-24",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

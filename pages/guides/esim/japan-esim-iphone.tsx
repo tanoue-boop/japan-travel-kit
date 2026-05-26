@@ -212,10 +212,15 @@ export default function JapanEsimIphonePage() {
               "@type": "Article",
               headline: "Best eSIM for Japan on iPhone 2026: Top Picks & Setup Guide",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

@@ -27,6 +27,7 @@ const cols = [
   {
     title: "Legal",
     links: [
+      { href: "/about",          label: "About"                },
       { href: "/disclaimer",     label: "Affiliate Disclaimer" },
       { href: "/privacy-policy", label: "Privacy Policy"       },
     ],

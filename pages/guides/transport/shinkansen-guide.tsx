@@ -157,10 +157,15 @@ export default function ShinkansenGuidePage() {
               "@type": "Article",
               headline: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers",
               dateModified: "2026-04-26",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

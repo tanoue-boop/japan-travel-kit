@@ -120,10 +120,15 @@ export default function BestEsimJapanPage() {
               "@type": "Article",
               headline: "Best eSIM for Japan 2026: Top 4 Picks Tested & Compared",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

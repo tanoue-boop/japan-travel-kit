@@ -172,10 +172,15 @@ export default function JapanEsimSeniorsPage() {
               "@type": "Article",
               headline: "Best eSIM for Japan for Seniors (2026): Easy Setup, No Contracts",
               dateModified: "2026-04-29",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

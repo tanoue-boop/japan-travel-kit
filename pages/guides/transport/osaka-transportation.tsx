@@ -134,10 +134,15 @@ export default function OsakaTransportationPage() {
               "@type": "Article",
               headline: "Getting Around Osaka (2026): Subway, Trains & IC Cards Explained",
               dateModified: "2026-05-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

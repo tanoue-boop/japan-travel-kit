@@ -149,10 +149,15 @@ export default function TokyoAirportTransferPage() {
               "@type": "Article",
               headline: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",
               dateModified: "2026-04-27",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

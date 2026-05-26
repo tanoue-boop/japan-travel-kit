@@ -169,10 +169,15 @@ export default function JapanEsimIpadPage() {
               "@type": "Article",
               headline: "Best eSIM for Japan on iPad (2026): Stay Connected on Your Tablet",
               dateModified: "2026-05-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

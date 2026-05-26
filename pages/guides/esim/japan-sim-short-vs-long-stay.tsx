@@ -85,10 +85,15 @@ export default function JapanSimShortVsLongStayPage() {
               "@type": "Article",
               headline: "Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

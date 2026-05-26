@@ -105,10 +105,15 @@ export default function TippingInJapanPage() {
               "@type": "Article",
               headline: "Tipping in Japan (2026): Why You Should Never Tip",
               dateModified: "2026-05-02",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

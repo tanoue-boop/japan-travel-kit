@@ -90,10 +90,15 @@ export default function DoesAiraloWorkInJapanPage() {
               "@type": "Article",
               headline: "Does Airalo Work in Japan? 2026 Coverage & Speed Test",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

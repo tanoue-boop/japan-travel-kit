@@ -148,10 +148,15 @@ export default function JrPassGuidePage() {
               "@type": "Article",
               headline: "JR Pass Guide 2026: Is It Worth It for Your Japan Trip?",
               dateModified: "2026-04-24",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

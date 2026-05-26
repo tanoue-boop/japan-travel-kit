@@ -159,10 +159,15 @@ export default function JapanEsimUnlimitedPage() {
               "@type": "Article",
               headline: "Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users",
               dateModified: "2026-04-29",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

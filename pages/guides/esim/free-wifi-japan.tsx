@@ -118,10 +118,15 @@ export default function FreeWifiJapanPage() {
               "@type": "Article",
               headline: "Free WiFi in Japan (2026): Where to Find It & Why You Still Need a SIM",
               dateModified: "2026-04-24",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

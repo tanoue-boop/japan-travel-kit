@@ -178,10 +178,15 @@ export default function JapanSimCardVsEsim2026Page() {
               "@type": "Article",
               headline: "Japan SIM Card vs eSIM (2026): Which Should You Choose?",
               dateModified: "2026-05-02",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

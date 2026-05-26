@@ -132,10 +132,15 @@ export default function JapanEsimDataPlansPage() {
               "@type": "Article",
               headline: "Japan eSIM Data Plans Compared (2026): Which Is Right for You?",
               dateModified: "2026-04-27",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

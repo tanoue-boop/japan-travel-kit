@@ -71,10 +71,15 @@ export default function DoesHolaflyWorkInJapanPage() {
               "@type": "Article",
               headline: "Does Holafly Work in Japan? 2026 Coverage & Speed Test",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

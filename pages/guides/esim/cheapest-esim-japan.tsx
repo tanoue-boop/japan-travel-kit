@@ -199,10 +199,15 @@ export default function CheapestEsimJapanPage() {
               "@type": "Article",
               headline: "Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

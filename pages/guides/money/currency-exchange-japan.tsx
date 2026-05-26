@@ -129,10 +129,15 @@ export default function CurrencyExchangeJapanPage() {
               headline: "Currency Exchange in Japan (2026): Best Ways to Get Yen",
               datePublished: "2026-04-28",
               dateModified: "2026-04-28",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

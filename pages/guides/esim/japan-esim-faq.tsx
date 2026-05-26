@@ -146,10 +146,15 @@ export default function JapanEsimFaqPage() {
               "@type": "Article",
               headline: "Japan eSIM FAQ (2026): Every Common Question Answered",
               dateModified: "2026-05-26",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

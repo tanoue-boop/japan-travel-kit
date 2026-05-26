@@ -134,10 +134,15 @@ export default function TokyoTransportationPage() {
               "@type": "Article",
               headline: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained",
               dateModified: "2026-04-30",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

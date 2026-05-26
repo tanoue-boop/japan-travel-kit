@@ -141,10 +141,15 @@ export default function IcCardsJapanPage() {
               "@type": "Article",
               headline: "IC Cards in Japan 2026: Suica, Pasmo & How to Use Them",
               dateModified: "2026-04-24",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

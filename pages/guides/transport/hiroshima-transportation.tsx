@@ -143,10 +143,15 @@ export default function HiroshimaTransportationPage() {
               "@type": "Article",
               headline: "Getting Around Hiroshima (2026): Trams, Trains & Miyajima",
               dateModified: "2026-05-02",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

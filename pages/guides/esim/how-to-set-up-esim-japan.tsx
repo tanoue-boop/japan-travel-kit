@@ -152,10 +152,15 @@ export default function HowToSetUpEsimJapanPage() {
               "@type": "Article",
               headline: "How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

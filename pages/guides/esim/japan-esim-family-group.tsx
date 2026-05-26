@@ -65,10 +65,15 @@ export default function JapanEsimFamilyGroupPage() {
               "@type": "Article",
               headline: "Best eSIM for Japan: Family & Group Travel 2026",
               dateModified: "2026-04-01",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

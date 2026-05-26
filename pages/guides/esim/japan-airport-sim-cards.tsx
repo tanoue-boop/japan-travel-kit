@@ -141,10 +141,15 @@ export default function JapanAirportSimCardsPage() {
               "@type": "Article",
               headline: "Japan Airport SIM Cards & eSIMs (2026): What to Know Before You Land",
               dateModified: "2026-04-25",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

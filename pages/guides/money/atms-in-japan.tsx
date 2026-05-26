@@ -157,10 +157,15 @@ export default function AtmsInJapanPage() {
               "@type": "Article",
               headline: "ATMs in Japan (2026): Where to Find Them & How to Use Them",
               dateModified: "2026-04-26",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

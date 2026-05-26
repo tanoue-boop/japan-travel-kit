@@ -169,10 +169,15 @@ export default function KyotoTransportationPage() {
               "@type": "Article",
               headline: "Getting Around Kyoto (2026): Buses, Trains & Taxis Explained",
               dateModified: "2026-04-29",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

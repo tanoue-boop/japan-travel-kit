@@ -140,10 +140,15 @@ export default function TaxFreeShoppingJapanPage() {
               "@type": "Article",
               headline: "Tax-Free Shopping in Japan (2026): How to Get Your Consumption Tax Back",
               dateModified: "2026-05-02",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

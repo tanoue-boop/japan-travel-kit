@@ -114,10 +114,15 @@ export default function ContactlessPaymentJapanPage() {
               "@type": "Article",
               headline: "Contactless Payment in Japan (2026): IC Cards, QR Pay & Tap-to-Pay Explained",
               dateModified: "2026-05-26",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

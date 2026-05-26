@@ -132,10 +132,15 @@ export default function JapanTravelInsurancePage() {
               "@type": "Article",
               headline: "Japan Travel Insurance 2026: Do You Actually Need It?",
               dateModified: "2026-04-30",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

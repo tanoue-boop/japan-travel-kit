@@ -211,10 +211,15 @@ export default function JapanEsimAndroidTabletPage() {
               "@type": "Article",
               headline: "Best eSIM for Japan on Android Tablet (2026)",
               dateModified: "2026-05-02",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

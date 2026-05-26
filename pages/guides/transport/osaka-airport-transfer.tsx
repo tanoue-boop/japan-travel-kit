@@ -149,10 +149,15 @@ export default function OsakaAirportTransferPage() {
               headline: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",
               datePublished: "2026-04-28",
               dateModified: "2026-04-28",
+              author: {
+                "@type": "Organization",
+                name: "Japan Travel Kit",
+                url: "https://www.japan-travel-kit.com",
+              },
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}
