@@ -70,4 +70,11 @@ export const transportArticles: TransportArticle[] = [
     desc: "Hiroshima is compact and easy to navigate. We cover the city tram, JR trains, Miyajima ferry, day passes, and IC cards — with tips for first-time visitors.",
     date: "May 2026",
   },
+  {
+    href: "/guides/transport/fukuoka-transportation",
+    badge: "Guide",
+    title: "Getting Around Fukuoka (2026): Subway, Trains & Buses Explained",
+    desc: "Fukuoka is one of Japan's most navigable cities. We cover the city subway, Nishitetsu trains and buses, the Dazaifu day trip, day passes, and IC cards — with tips for first-time visitors.",
+    date: "May 2026",
+  },
 ];

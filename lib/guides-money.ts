@@ -63,4 +63,11 @@ export const moneyArticles: MoneyArticle[] = [
     desc: "As a tourist, you can save up to 10% on electronics, clothing, cosmetics, and more. We explain the rules, eligible stores, minimum spend, and what to watch out for on departure.",
     date: "May 2026",
   },
+  {
+    href: "/guides/money/contactless-payment-japan",
+    badge: "Guide",
+    title: "Contactless Payment in Japan (2026): IC Cards, QR Pay & Tap-to-Pay Explained",
+    desc: "Which contactless payment methods actually work in Japan? We break down IC cards (Suica/Pasmo), QR pay (PayPay, LINE Pay), and tap-to-pay credit cards — with honest advice on what to use where.",
+    date: "May 2026",
+  },
 ];

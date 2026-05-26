@@ -203,4 +203,11 @@ export const esimArticles: EsimArticle[] = [
     desc: "Both work in Japan — but one is faster, cheaper, and easier to set up. We compare eSIM and physical SIM on price, setup, voice calls, and best picks for every trip type.",
     date: "May 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-faq",
+    badge: "Guide",
+    title: "Japan eSIM FAQ (2026): Every Common Question Answered",
+    desc: "Which providers work in Japan, how much data you need, how to install on iPhone and Android, and what to do when it stops working — 20+ questions answered.",
+    date: "May 2026",
+  },
 ];
