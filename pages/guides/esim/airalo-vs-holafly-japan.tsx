@@ -25,7 +25,7 @@ const priceRows = [
 const faqItems = [
   {
     q: "Is Airalo or Holafly better for Japan?",
-    a: "For most travellers, Airalo offers better value. If you use 1–10 GB during your trip, Airalo's data plans cost significantly less than Holafly's unlimited plans. Holafly is the better choice only if you're a heavy data user who streams video, uses hotspot constantly, or simply doesn't want to think about data limits.",
+    a: "For most travellers, Airalo offers better value. If you use 1–10 GB during your trip, Airalo's data plans cost significantly less than Holafly's unlimited plans. Holafly is the better choice only if you're a heavy data user who streams video, uses a hotspot constantly, or simply doesn't want to think about data limits.",
   },
   {
     q: "Is Holafly worth the extra cost in Japan?",
@@ -33,7 +33,7 @@ const faqItems = [
   },
   {
     q: "Which has better coverage, Airalo or Holafly?",
-    a: "Airalo has an advantage here. Airalo runs on both Docomo and SoftBank networks, giving you better rural coverage across Japan. Holafly runs on SoftBank only. Both cover major cities, tourist routes, and popular areas well — but Airalo's Docomo access means stronger signal in mountainous and regional areas.",
+    a: "Airalo has an advantage here. Airalo runs on both Docomo and SoftBank networks, giving you better rural coverage across Japan. Holafly runs on SoftBank only. Both cover major cities, tourist routes, and popular areas well — but Airalo's Docomo access means stronger signal in mountainous regions and rural areas.",
   },
   {
     q: "Can I switch from Airalo to Holafly mid-trip?",
@@ -297,7 +297,7 @@ export default function AiraloVsHolaflyJapanPage() {
               </div>
               <div className={styles.choiceCardBody}>
                 <ul className={styles.choiceList}>
-                  <li><span className={styles.choiceCheck}>✓</span> True unlimited data — no cap anxiety</li>
+                  <li><span className={styles.choiceCheck}>✓</span> True unlimited data — no data cap to worry about</li>
                   <li><span className={styles.choiceCheck}>✓</span> Comfortable for streaming &amp; video calls</li>
                   <li><span className={styles.choiceCheck}>✓</span> 10-day plan at $27 suits heavy users</li>
                   <li><span className={styles.choiceCheck}>✓</span> Simple pricing — one plan, no decisions</li>
@@ -308,8 +308,8 @@ export default function AiraloVsHolaflyJapanPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Holafly&apos;s core appeal is peace of mind. There&apos;s no data counter to watch, no
-            rationing maps against Instagram posts. If you stream video, share your hotspot,
-            or simply hate thinking about data — Holafly removes that friction entirely.
+            choosing between Google Maps and Instagram. If you stream video, share your hotspot,
+            or simply don&apos;t want to track your usage — Holafly removes that friction entirely.
             The 10-day unlimited plan at $27 is competitive for heavy users.
           </p>
           <Link href="/guides/esim/holafly-japan-review" className={styles.pickCtaInternal} style={{ marginTop: "0.5rem", display: "inline-flex" }}>
@@ -354,9 +354,9 @@ export default function AiraloVsHolaflyJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <strong>Bottom line:</strong> Airalo wins on price for virtually every data scenario
+            <strong>Bottom line:</strong> Airalo wins on price for virtually every usage scenario
             up to 10GB. Holafly only makes financial sense if you genuinely need unlimited data —
-            i.e., you&apos;re streaming video daily or using a hotspot for a laptop.
+            i.e., you&apos;re streaming video daily or tethering a laptop.
           </p>
         </section>
 

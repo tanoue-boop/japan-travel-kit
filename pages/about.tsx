@@ -59,8 +59,8 @@ export default function AboutPage() {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Who runs this site?</h2>
           <p className={styles.text}>
-            Japan Travel Kit is operated by <strong>mjo inc.</strong>, a company specialising in inbound tourism
-            and e-commerce consulting based in Japan.
+            Japan Travel Kit is operated by <strong>mjo inc.</strong>, a Japan-based company specialising in
+            inbound tourism and e-commerce consulting.
             We test and review products independently.
             Some links on this site are affiliate links — we may earn a commission if you make a
             purchase, at no extra cost to you.
@@ -72,7 +72,7 @@ export default function AboutPage() {
           <ul className={styles.list}>
             <li>Based in Japan</li>
             <li>Independent reviews</li>
-            <li>Updated regularly for 2026</li>
+            <li>Regularly updated for 2026</li>
             <li>No paid placements — only honest picks</li>
           </ul>
         </section>

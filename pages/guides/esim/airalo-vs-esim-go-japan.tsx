@@ -24,7 +24,7 @@ const faqItems = [
   },
   {
     q: "Does eSIM Go use the same network as Airalo?",
-    a: "Partly. Both Airalo and eSIM Go offer Japan plans on Docomo. Airalo also offers SoftBank-based plans for Japan. If you want SoftBank coverage specifically, only Airalo provides that option among the two.",
+    a: "Partly. Both Airalo and eSIM Go offer Japan plans on Docomo. Airalo also offers SoftBank-based plans for Japan. If you want SoftBank coverage specifically, only Airalo provides that option between the two.",
   },
   {
     q: "Which has better customer support, Airalo or eSIM Go?",
@@ -300,8 +300,8 @@ export default function AiraloVsEsimGoJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Airalo&apos;s small price premium buys you significantly better support infrastructure and
-            a polished app experience. For first-time eSIM users or anyone who values being able
+            Airalo&apos;s small price premium buys you a significantly better support experience and
+            a more polished app. For first-time eSIM users or anyone who values being able
             to get instant help if something goes wrong, the extra $1–4 is worth paying.
             Airalo also covers 190+ countries, making it ideal for multi-country trips.
           </p>
@@ -332,7 +332,7 @@ export default function AiraloVsEsimGoJapanPage() {
                   <rect x="5" y="2" width="14" height="20" rx="2" /><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" />
                 </svg>
               </div>
-              <p className={styles.whoForTitle}>You&apos;re tech-comfortable</p>
+              <p className={styles.whoForTitle}>You&apos;re tech-savvy</p>
               <p className={styles.whoForDesc}>
                 If you&apos;ve used eSIMs before and can troubleshoot basic issues yourself, you won&apos;t miss live chat.
               </p>
@@ -428,7 +428,7 @@ export default function AiraloVsEsimGoJapanPage() {
           </p>
           <p className={styles.verdictText}>
             The price difference is small enough that either is a good choice.
-            Pick eSIM Go if you want to optimise every dollar. Pick Airalo if you want
+            Pick eSIM Go if keeping costs low is your top priority. Pick Airalo if you want
             the most reliable all-round experience.
           </p>
           <div className={styles.pickCtaRow}>

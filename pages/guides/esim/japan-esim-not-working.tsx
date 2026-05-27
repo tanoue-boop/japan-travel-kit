@@ -6,7 +6,7 @@ const causeRows = [
   { problem: "No signal at all", cause: "eSIM not activated" },
   { problem: "Signal but no data", cause: "Wrong data line selected" },
   { problem: "Slow speeds", cause: "APN settings wrong" },
-  { problem: "eSIM disappeared", cause: "Phone restarted, needs re-enable" },
+  { problem: "eSIM disappeared", cause: "Phone restarted, needs re-enabling" },
   { problem: '"No service" message', cause: "Carrier-locked phone" },
 ];
 
@@ -29,10 +29,10 @@ const fixSteps = [
     title: "Fix 1: eSIM Not Activated",
     steps: [
       "Open your eSIM provider app (Airalo, eSIM Go, Holafly, etc.)",
-      "Navigate to your Japan plan and check the plan status",
+      "Find your Japan plan in the app and check its activation status",
       'Tap "Activate" if the plan shows as installed but not active',
       "Toggle airplane mode off and on to force a network search",
-      "Wait 30–60 seconds for the network to register",
+      "Wait 30–60 seconds for your device to connect to the network",
     ],
   },
   {
@@ -430,8 +430,8 @@ export default function JapanEsimNotWorkingPage() {
               </div>
               <p className={styles.whoForTitle}>Check expiry dates</p>
               <p className={styles.whoForDesc}>
-                eSIM plans have validity periods — check your plan expires after your
-                last day in Japan, not before. Extend or top up before it runs out.
+                eSIM plans have validity periods — make sure your plan covers your entire
+                stay in Japan. Top up or extend before it expires.
               </p>
             </div>
           </div>
