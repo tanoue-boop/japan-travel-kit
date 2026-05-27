@@ -203,4 +203,25 @@ export const esimArticles: EsimArticle[] = [
     desc: "Which providers work in Japan, how much data you need, how to install on iPhone and Android, and what to do when it stops working — 20+ questions answered.",
     date: "May 2026",
   },
+  {
+    href: "/guides/esim/airalo-vs-holafly-japan",
+    badge: "Comparison",
+    title: "Airalo vs Holafly for Japan (2026): Which Should You Choose?",
+    desc: "Both are popular Japan eSIMs — but they suit very different travellers. We compare price, data, coverage and support head-to-head with a clear verdict.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/esim/airalo-vs-esim-go-japan",
+    badge: "Comparison",
+    title: "Airalo vs eSIM Go for Japan (2026): Which Budget eSIM Wins?",
+    desc: "Both Airalo and eSIM Go are affordable Japan eSIMs on Docomo. But one is consistently cheaper — we compare price, support and reliability to help you choose.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/esim/japan-esim-not-working",
+    badge: "Guide",
+    title: "Japan eSIM Not Working? Here's How to Fix It (2026)",
+    desc: "Landed in Japan and your eSIM isn't connecting? We cover the most common causes — wrong data line, APN settings, activation issues — with step-by-step fixes.",
+    date: "May 2026",
+  },
 ];

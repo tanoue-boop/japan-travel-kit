@@ -345,6 +345,26 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- 2026-05-27 additions -->
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/airalo-vs-holafly-japan</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/airalo-vs-esim-go-japan</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/japan-esim-not-working</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Top-level comparison pages -->
   <url>
     <loc>https://www.japan-travel-kit.com/wifi-pocket</loc>
