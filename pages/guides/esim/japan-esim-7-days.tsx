@@ -13,7 +13,7 @@ const dataTable = [
 ];
 
 const itinerary = [
-  { day: "Day 1–2",  location: "Tokyo",              note: "Maps heavy — arrival + exploration", data: "~700MB" },
+  { day: "Day 1–2",  location: "Tokyo",              note: "Heavy map usage — arrival and exploration", data: "~700MB" },
   { day: "Day 3",    location: "Shinkansen to Kyoto", note: "Train WiFi available; light use",    data: "~200MB" },
   { day: "Day 4–5",  location: "Kyoto & Nara",        note: "Maps, photos, social posts",         data: "~500MB" },
   { day: "Day 6",    location: "Osaka",               note: "Active city use, navigation",        data: "~350MB" },
@@ -369,7 +369,7 @@ export default function JapanEsim7DaysPage() {
             eSIM Go offers more data for less money than Airalo. The 5GB plan at $8.00
             is excellent value for a 7-day trip, particularly if you post a lot to Instagram
             or TikTok. The trade-off is email-only support, which is rarely an issue once
-            you&apos;re set up and connected.
+            you&apos;re up and running.
           </p>
           <a
             href="https://breezesim.com?sca_ref=11082101.AF8vabyRKN"
@@ -408,7 +408,7 @@ export default function JapanEsim7DaysPage() {
           </div>
           <p className={styles.bodyText}>
             Holafly is only worth the premium if you genuinely stream video, share your hotspot
-            for a travel companion, or work remotely during your trip. For typical tourists on
+            with a travel companion, or work remotely during your trip. For typical tourists on
             a 7-day visit, paying $19 vs $9.50 for Airalo&apos;s 3GB plan rarely makes sense.
           </p>
           <a
@@ -438,7 +438,7 @@ export default function JapanEsim7DaysPage() {
             or sharing your hotspot continuously — which is uncommon for tourists.
           </p>
           <p className={styles.bodyText}>
-            <strong>Our verdict:</strong> Start with Airalo 3GB or eSIM Go 5GB. If you somehow
+            <strong>Our verdict:</strong> Start with Airalo 3GB or eSIM Go 5GB. If you do
             run low, both providers let you top up instantly from within the app. The flexibility
             of topping up makes starting with unlimited a poor value proposition.
           </p>
@@ -481,8 +481,8 @@ export default function JapanEsim7DaysPage() {
               </div>
               <p className={styles.whoForTitle}>4G beats Shinkansen WiFi</p>
               <p className={styles.whoForDesc}>
-                The Shinkansen has WiFi, but your eSIM&apos;s 4G signal is often more reliable inside
-                tunnels. Use either — just don&apos;t stream video on the train.
+                The Shinkansen has WiFi, but your eSIM&apos;s 4G signal is often more reliable through
+                tunnels. Either works — just don&apos;t stream video on the train.
               </p>
             </div>
             <div className={styles.whoForCard}>

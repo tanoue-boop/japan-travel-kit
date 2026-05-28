@@ -134,7 +134,7 @@ export default function JapanEsim2WeeksPage() {
           <p className={styles.heroSubtitle}>
             Two weeks in Japan means more cities,
             more data, and more to plan. Here&apos;s exactly
-            what eSIM plan to get for a 14-day trip.
+            which eSIM plan to get for a 14-day trip.
           </p>
           <div className={styles.heroBadges}>
             {["Updated May 2026", "2-Week Trips", "Best Value"].map((t) => (
@@ -311,7 +311,7 @@ export default function JapanEsim2WeeksPage() {
           </div>
           <p className={styles.bodyText}>
             eSIM Go&apos;s 10GB plan at $14 is our top pick for 2-week travellers. With 30-day validity
-            covering your full trip and enough data for most travel styles, it&apos;s hard to beat on value.
+            covering your full trip and enough data for most travel styles, it&apos;s hard to beat for value.
           </p>
           <a
             href="https://breezesim.com?sca_ref=11082101.AF8vabyRKN"
@@ -389,7 +389,7 @@ export default function JapanEsim2WeeksPage() {
           <p className={styles.bodyText}>
             Holafly&apos;s 30-day unlimited plan makes sense only for remote workers who video call
             all day, vloggers who upload large files regularly, or groups sharing one connection.
-            For standard tourists, the premium is rarely justified.
+            For most tourists, the premium is rarely justified.
           </p>
           <a
             href="#"
@@ -427,7 +427,7 @@ export default function JapanEsim2WeeksPage() {
           <p className={styles.bodyText}>
             Sakura Mobile is the right choice if you need a real Japanese phone number — for hotel
             SMS verification, local taxi apps, or making calls. It&apos;s the only tourist-friendly SIM
-            with voice support and English customer service. Not necessary for most visitors.
+            with voice support and English customer service. That said, it&apos;s not necessary for most visitors.
           </p>
           <a
             href="https://p.sakuramobile.jp/idevaffiliate.php?id=486"
@@ -470,7 +470,7 @@ export default function JapanEsim2WeeksPage() {
               <p className={styles.whoForTitle}>No eSIM-compatible phone</p>
               <p className={styles.whoForDesc}>
                 Older smartphones (pre-2018) don&apos;t support eSIM. In this case, a physical SIM
-                card from Sakura Mobile or a Japan airport SIM is the only option.
+                card from Sakura Mobile or a Japanese airport SIM is the only option.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -502,7 +502,7 @@ export default function JapanEsim2WeeksPage() {
               <p className={styles.whoForTitle}>Offline maps first</p>
               <p className={styles.whoForDesc}>
                 Download Google Maps for every city before you visit. Offline navigation
-                uses zero data — one of the biggest single savings over a 14-day trip.
+                uses zero data — one of the biggest data savings on a 14-day trip.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -525,8 +525,8 @@ export default function JapanEsim2WeeksPage() {
               </div>
               <p className={styles.whoForTitle}>Konbini WiFi as backup</p>
               <p className={styles.whoForDesc}>
-                7-Eleven, Lawson, and FamilyMart all offer free WiFi. Useful for quick
-                tasks when you want to preserve your eSIM data on busy days.
+                7-Eleven, Lawson, and FamilyMart all offer free WiFi. It comes in handy for quick
+                tasks when you want to conserve your eSIM data on busy days.
               </p>
             </div>
             <div className={styles.whoForCard}>

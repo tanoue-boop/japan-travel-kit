@@ -13,7 +13,7 @@ const dataTable = [
 ];
 
 const itinerary = [
-  { day: "Day 1–3",  location: "Tokyo",              note: "Arrival + exploration; heavy map use",  data: "~900MB" },
+  { day: "Day 1–3",  location: "Tokyo",              note: "Arrival and exploration; heavy map use",  data: "~900MB" },
   { day: "Day 4",    location: "Shinkansen to Kyoto", note: "Train WiFi available; light use",      data: "~200MB" },
   { day: "Day 5–6",  location: "Kyoto & Nara",        note: "Maps, photos, social posts",           data: "~500MB" },
   { day: "Day 7",    location: "Osaka",               note: "Active city use, navigation",          data: "~350MB" },
@@ -260,7 +260,7 @@ export default function JapanEsim10DaysPage() {
           <h2 className={styles.sectionTitle}>Typical 10-Day Japan Itinerary &amp; Data Use</h2>
           <p className={styles.bodyText}>
             Ten days is enough to cover the Golden Route plus one additional destination —
-            Hiroshima, Kobe, or a day trip to Nara. Here&apos;s how data usage typically breaks down:
+            Hiroshima, Kobe, or Nara. Here&apos;s how data usage typically breaks down:
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -357,18 +357,18 @@ export default function JapanEsim10DaysPage() {
               </div>
               <div className={styles.choiceCardBody}>
                 <ul className={styles.choiceList}>
-                  <li><span className={styles.choiceCheck}>✓</span> Docomo &amp; SoftBank dual network access</li>
+                  <li><span className={styles.choiceCheck}>✓</span> Docomo &amp; SoftBank — dual-network access</li>
                   <li><span className={styles.choiceCheck}>✓</span> 24/7 live chat support via the Airalo app</li>
                   <li><span className={styles.choiceCheck}>✓</span> Trusted by 10M+ travellers globally</li>
                   <li><span className={styles.choiceCheck}>✓</span> Easy in-app top-up if needed</li>
-                  <li><span className={styles.conIcon}>−</span> $4 more expensive than eSIM Go for same data</li>
+                  <li><span className={styles.conIcon}>−</span> $4 more expensive than eSIM Go for the same data</li>
                 </ul>
               </div>
             </div>
           </div>
           <p className={styles.bodyText}>
             Airalo&apos;s 10GB plan costs $18 — slightly more than eSIM Go — but includes 24/7 live
-            chat support and dual-network access (Docomo + SoftBank). Worth the extra $4 if you
+            chat support and dual-network access (Docomo + SoftBank). It&apos;s worth the extra $4 if you
             prefer the reassurance of live support during your trip.
           </p>
           <a
@@ -398,7 +398,7 @@ export default function JapanEsim10DaysPage() {
               <div className={styles.choiceCardBody}>
                 <ul className={styles.choiceList}>
                   <li><span className={styles.choiceCheck}>✓</span> Unlimited data — no cap, no top-up anxiety</li>
-                  <li><span className={styles.choiceCheck}>✓</span> Best if you stream video daily or share hotspot</li>
+                  <li><span className={styles.choiceCheck}>✓</span> Best if you stream video daily or share your hotspot</li>
                   <li><span className={styles.conIcon}>−</span> $27 vs eSIM Go $14 — nearly double the price</li>
                   <li><span className={styles.conIcon}>−</span> Fair use policy may throttle at high volumes</li>
                   <li><span className={styles.conIcon}>−</span> SoftBank only — slightly narrower coverage</li>
@@ -408,7 +408,7 @@ export default function JapanEsim10DaysPage() {
           </div>
           <p className={styles.bodyText}>
             Holafly&apos;s unlimited plan for 10 days costs $27. That&apos;s $13 more than eSIM Go&apos;s 10GB
-            plan — a reasonable premium only if you genuinely need more than 10GB. Most 10-day
+            plan — worth the added cost only if you genuinely need more than 10GB. Most 10-day
             visitors do not.
           </p>
           <a
@@ -435,7 +435,7 @@ export default function JapanEsim10DaysPage() {
           <p className={styles.bodyText}>
             That $13 premium is only rational if you plan to use more than 10GB across your trip.
             To put that in context: you&apos;d need to stream roughly 10 hours of Netflix at standard
-            definition, or continuously share your hotspot with other travellers, every single day.
+            definition every day, or share your hotspot continuously with other travellers.
           </p>
           <p className={styles.bodyText}>
             <strong>Our verdict:</strong> Holafly is only the logical choice for genuinely heavy users
