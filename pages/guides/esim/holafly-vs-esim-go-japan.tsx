@@ -35,7 +35,7 @@ const faqItems = [
   },
   {
     q: "How much data does the average tourist use in Japan?",
-    a: "Based on typical tourist behaviour — Google Maps navigation, social media browsing, messaging, and light web use — most visitors use 1–3GB per week. Heavy users who stream video or tether other devices may use 5–10GB per week. Unlimited data is only necessary for the heaviest users.",
+    a: "Based on typical tourist behaviour — Google Maps navigation, social media browsing, messaging, and light web browsing — most visitors use 1–3GB per week. Heavy users who stream video or tether other devices may use 5–10GB per week. Unlimited data is only necessary for the heaviest users.",
   },
   {
     q: "Can I switch from eSIM Go to Holafly mid-trip?",
@@ -267,7 +267,7 @@ export default function HolaflyVsEsimGoJapanPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             eSIM Go is the winner for the vast majority of Japan travellers. At $3.50 for 1GB
-            and $8 for larger plans, it costs a fraction of Holafly&apos;s unlimited pricing. Running
+            and $8 for larger plans, it costs a fraction of Holafly&apos;s unlimited plans. Running
             on Docomo — Japan&apos;s widest network — it delivers reliable coverage from Tokyo to rural
             Tohoku. If you&apos;re not streaming video daily, eSIM Go is almost always the smarter choice.
           </p>
@@ -313,8 +313,8 @@ export default function HolaflyVsEsimGoJapanPage() {
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Holafly&apos;s unlimited plan makes sense when data usage is genuinely high. If you&apos;re
             streaming Netflix on the shinkansen, uploading raw footage daily, or running a hotspot
-            for your group, the unlimited guarantee removes the anxiety of watching a data counter.
-            The 10-day plan at $27 becomes competitive once you&apos;d need more than 7–8GB anyway.
+            for your group, the unlimited guarantee removes the anxiety of tracking your data.
+            The 10-day plan at $27 becomes competitive if you need more than 7–8GB anyway.
           </p>
           <a
             href="#"
@@ -363,7 +363,7 @@ export default function HolaflyVsEsimGoJapanPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Bottom line:</strong> If you use under 10GB, eSIM Go saves you $15–$35
-            compared to Holafly. That&apos;s a significant portion of your daily Japan budget.
+            compared to Holafly. That&apos;s a meaningful saving on your overall Japan travel budget.
             The math only shifts in Holafly&apos;s favour once you genuinely need 10GB+ per trip.
           </p>
         </section>
@@ -381,7 +381,7 @@ export default function HolaflyVsEsimGoJapanPage() {
               </div>
               <p className={styles.whoForTitle}>eSIM Go: Docomo</p>
               <p className={styles.whoForDesc}>
-                Japan&apos;s widest network. Excellent in rural areas, mountains, and less-visited regions. Strongest choice for travellers going off the tourist trail.
+                Japan&apos;s widest network. Excellent in rural areas, mountains, and less-visited regions. The best choice for travellers venturing off the tourist trail.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -436,7 +436,7 @@ export default function HolaflyVsEsimGoJapanPage() {
           </p>
           <p className={styles.verdictText}>
             If you&apos;re unsure, go with eSIM Go. You can always top up if you need more data,
-            and you&apos;ll save significant money compared to paying upfront for unlimited you won&apos;t use.
+            and you&apos;ll save significant money compared to paying upfront for unlimited data you won&apos;t use.
           </p>
           <div className={styles.pickCtaRow}>
             <a

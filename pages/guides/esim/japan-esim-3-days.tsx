@@ -30,7 +30,7 @@ const faqItems = [
   },
   {
     q: "Should I get unlimited data for 3 days in Japan?",
-    a: "No — unlimited plans like Holafly start at $19 for 5 days, which is significant overkill for a 3-day trip where you'll use under 1GB. Save your money and get a 1GB plan instead.",
+    a: "No — unlimited plans like Holafly start at $19 for 5 days, which is serious overkill for a 3-day trip where you'll use under 1GB. Save your money and get a 1GB plan instead.",
   },
 ];
 
@@ -237,8 +237,8 @@ export default function JapanEsim3DaysPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Conclusion:</strong> 1GB is enough for the vast majority of 3-day visitors. Even moderate
-            users — scrolling social media, running Google Maps all day — will stay under 1.5GB.
-            Heavy users (video streaming, daily hotspot) should consider a 3GB plan, but that&apos;s the exception.
+            users — scrolling social media, using Google Maps all day — will stay under 1.5GB.
+            Heavy users (regular video streaming, hotspot use) should consider a 3GB plan, but that&apos;s the exception.
           </p>
         </section>
 
@@ -273,7 +273,7 @@ export default function JapanEsim3DaysPage() {
           </div>
           <p className={styles.bodyText}>
             eSIM Go&apos;s 1GB plan at $3.50 is our top pick for 3-day Japan trips. It runs on Docomo —
-            Japan&apos;s most extensive network — and gives you 1GB over 7 days. More than enough for
+            Japan&apos;s most extensive network — and gives you 1GB over 7 days. That&apos;s more than enough for
             a 3-day stay, even with heavy map usage.
           </p>
           <a
@@ -312,7 +312,7 @@ export default function JapanEsim3DaysPage() {
           </div>
           <p className={styles.bodyText}>
             Airalo costs $1 more than eSIM Go but offers a better app experience and 24/7 live chat
-            support — worth it if this is your first eSIM or you prefer backup support within reach.
+            support — worth it if this is your first eSIM or you prefer having support on hand.
           </p>
           <a
             href="https://airalo.pxf.io/c/7213504/1268485/15608"
@@ -349,9 +349,9 @@ export default function JapanEsim3DaysPage() {
             </div>
           </div>
           <p className={styles.bodyText}>
-            Holafly&apos;s cheapest plan is $19 for 5 days. For a 3-day trip, that&apos;s significant overkill
+            Holafly&apos;s cheapest plan is $19 for 5 days. For a 3-day trip, that&apos;s serious overkill
             for most travellers. Only consider it if you stream video constantly and can&apos;t stand
-            watching a data counter.
+            tracking your data usage.
           </p>
           <a
             href="#"
@@ -372,7 +372,7 @@ export default function JapanEsim3DaysPage() {
             a physical device, charging a second gadget, and carrying it everywhere.
           </p>
           <p className={styles.bodyText}>
-            For solo or couple travel, an eSIM is simpler, cheaper, and requires no hardware.
+            For solo travellers or couples, an eSIM is simpler, cheaper, and requires no hardware.
             Pocket WiFi makes more sense for groups of 3+ who can share one device and split the cost.
           </p>
         </section>
@@ -388,7 +388,7 @@ export default function JapanEsim3DaysPage() {
                   <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 3v18M3 9h18" />
                 </svg>
               </div>
-              <p className={styles.whoForTitle}>Use hotel WiFi fully</p>
+              <p className={styles.whoForTitle}>Make full use of your hotel WiFi</p>
               <p className={styles.whoForDesc}>
                 Download maps, upload photos, and stream video over hotel WiFi to save your eSIM data for when you&apos;re out exploring.
               </p>
@@ -410,7 +410,7 @@ export default function JapanEsim3DaysPage() {
                   <path d="M1 6l5 5 5-5 5 5 5-5" /><path d="M1 12l5 5 5-5 5 5 5-5" />
                 </svg>
               </div>
-              <p className={styles.whoForTitle}>Use konbini free WiFi</p>
+              <p className={styles.whoForTitle}>Use free konbini WiFi</p>
               <p className={styles.whoForDesc}>
                 7-Eleven, FamilyMart, and Lawson offer free WiFi. Use it as a supplement when you&apos;re grabbing snacks.
               </p>

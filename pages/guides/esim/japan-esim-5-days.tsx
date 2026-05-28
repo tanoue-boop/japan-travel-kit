@@ -13,7 +13,7 @@ const dataTable = [
 ];
 
 const itinerary = [
-  { day: "Day 1", location: "Arrive Tokyo",    note: "Maps heavy from airport navigation", data: "~500MB" },
+  { day: "Day 1", location: "Arrive Tokyo",    note: "Heavy map use — airport navigation", data: "~500MB" },
   { day: "Day 2", location: "Tokyo sightseeing", note: "Shibuya, Shinjuku, Asakusa",        data: "~300MB" },
   { day: "Day 3", location: "Shinkansen to Kyoto", note: "Train has WiFi; light usage",    data: "~200MB" },
   { day: "Day 4", location: "Kyoto temples",   note: "Maps, photos, social posting",        data: "~300MB" },
@@ -144,7 +144,7 @@ export default function JapanEsim5DaysPage() {
             Best Japan eSIM for 5 Days (2026):<br />Top Picks for Short Trips
           </h1>
           <p className={styles.heroSubtitle}>
-            5 days in Japan is enough for Tokyo and one more city.
+            Five days in Japan is enough for Tokyo and one more city.
             Here&apos;s the right eSIM plan — without overspending.
           </p>
           <div className={styles.heroBadges}>
@@ -290,7 +290,7 @@ export default function JapanEsim5DaysPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Based on this itinerary, most travellers will use around 1.5GB. We recommend a 3GB
-            plan to have a comfortable buffer — especially on arrival day when map usage spikes.
+            plan for a comfortable buffer — especially on arrival day when map usage spikes.
           </p>
         </section>
 
@@ -403,7 +403,7 @@ export default function JapanEsim5DaysPage() {
           <p className={styles.bodyText}>
             Holafly is only worth considering if you genuinely need unlimited data — streaming
             Netflix on the shinkansen, uploading large videos, or sharing your hotspot constantly.
-            For typical tourists, Airalo&apos;s 3GB plan costs half the price and covers all real-world usage.
+            For typical tourists, Airalo&apos;s 3GB plan costs half the price and covers all typical real-world needs.
           </p>
           <a
             href="#"
