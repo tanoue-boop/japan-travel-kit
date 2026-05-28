@@ -224,4 +224,25 @@ export const esimArticles: EsimArticle[] = [
     desc: "Landed in Japan and your eSIM isn't connecting? We cover the most common causes — wrong data line, APN settings, activation issues — with step-by-step fixes.",
     date: "May 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-3-days",
+    badge: "Guide",
+    title: "Best Japan eSIM for 3 Days (2026): Top Picks for Short Trips",
+    desc: "Only in Japan for 3 days? You need 1GB at most. We recommend the cheapest and most reliable eSIMs for short trips — from just $3.50.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/esim/japan-esim-5-days",
+    badge: "Guide",
+    title: "Best Japan eSIM for 5 Days (2026): Top Picks for Short Trips",
+    desc: "Visiting Japan for 5 days? You'll need 1–3GB. We compare the best eSIM plans for a typical Tokyo and Kyoto trip — with prices from $3.50.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/esim/holafly-vs-esim-go-japan",
+    badge: "Comparison",
+    title: "Holafly vs eSIM Go for Japan (2026): Unlimited vs Budget",
+    desc: "Holafly or eSIM Go for Japan? One offers unlimited data, the other the lowest price. We compare cost, coverage and value to find the better pick.",
+    date: "May 2026",
+  },
 ];
