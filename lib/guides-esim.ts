@@ -245,4 +245,25 @@ export const esimArticles: EsimArticle[] = [
     desc: "Holafly or eSIM Go for Japan? One offers unlimited data, the other the lowest price. We compare cost, coverage and value to find the better pick.",
     date: "May 2026",
   },
+  {
+    href: "/guides/esim/japan-esim-7-days",
+    badge: "Guide",
+    title: "Best Japan eSIM for 7 Days (2026): Top Picks for One Week",
+    desc: "Visiting Japan for 7 days? You'll need 2–5GB. We compare the best eSIM plans for a one-week Tokyo and Kyoto trip — with honest data usage estimates.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/esim/japan-esim-10-days",
+    badge: "Guide",
+    title: "Best Japan eSIM for 10 Days (2026): Top Picks for Extended Trips",
+    desc: "Visiting Japan for 10 days? You'll need 3–10GB. We compare the best eSIM plans for an extended trip covering Tokyo, Kyoto, Osaka and beyond.",
+    date: "May 2026",
+  },
+  {
+    href: "/guides/esim/japan-esim-2-weeks",
+    badge: "Guide",
+    title: "Best Japan eSIM for 2 Weeks (2026): Top Picks for Longer Stays",
+    desc: "Visiting Japan for 2 weeks? Most travellers need 5–10GB. We compare the best eSIM plans for a 14-day trip — with data estimates and honest recommendations.",
+    date: "May 2026",
+  },
 ];
