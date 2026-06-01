@@ -266,4 +266,25 @@ export const esimArticles: EsimArticle[] = [
     desc: "Visiting Japan for 2 weeks? Most travellers need 5–10GB. We compare the best eSIM plans for a 14-day trip — with data estimates and honest recommendations.",
     date: "May 2026",
   },
+  {
+    href: "/guides/esim/sakura-mobile-vs-airalo-japan",
+    badge: "Comparison",
+    title: "Sakura Mobile vs Airalo for Japan (2026): Which Is Right for You?",
+    desc: "Sakura Mobile offers voice calls and long-term plans. Airalo offers simplicity and low prices. We compare both head-to-head for every trip type.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/esim/does-esim-work-in-japan",
+    badge: "Guide",
+    title: "Does eSIM Work in Japan? (2026): Everything You Need to Know",
+    desc: "Yes — eSIMs work excellently in Japan on Docomo and SoftBank. We cover coverage, compatible phones, and the best providers to pick before you fly.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/esim/best-unlimited-esim-japan",
+    badge: "Comparison",
+    title: "Best Unlimited eSIM for Japan (2026): Is It Worth It?",
+    desc: "Unlimited eSIMs are only worth it if you use 10GB+ per trip. We compare Holafly and alternatives with an honest take on when unlimited actually pays off.",
+    date: "June 2026",
+  },
 ];

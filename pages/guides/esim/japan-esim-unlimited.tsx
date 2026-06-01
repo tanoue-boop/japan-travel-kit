@@ -127,7 +127,7 @@ export default function JapanEsimUnlimitedPage() {
           name="description"
           content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large fixed plans — with honest findings on speed and value."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-unlimited" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-unlimited-esim-japan" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Best Unlimited eSIM for Japan 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-unlimited" />
