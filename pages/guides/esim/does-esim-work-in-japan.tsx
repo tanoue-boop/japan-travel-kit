@@ -30,7 +30,7 @@ const whereItWorks = [
   },
   {
     title: "Regional cities",
-    desc: "Hiroshima, Sendai, Kanazawa, Kumamoto, Nagasaki — reliable coverage throughout the city and on JR lines connecting to them.",
+    desc: "Hiroshima, Sendai, Kanazawa, Kumamoto, Nagasaki — reliable coverage throughout each city and on the JR lines connecting them.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 21h18" /><path d="M5 21V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v13" /><line x1="9" y1="9" x2="9" y2="13" /><line x1="15" y1="9" x2="15" y2="13" />
@@ -40,7 +40,7 @@ const whereItWorks = [
   },
   {
     title: "Rural & mountain areas",
-    desc: "Coverage is strong on popular tourist routes (Hakone, Nikko, Takayama), but pockets of weak signal exist deep in the mountains. Docomo carriers handle this best.",
+    desc: "Coverage is strong on popular tourist routes (Hakone, Nikko, Takayama), but pockets of weak signal exist deep in the mountains. Docomo-based providers handle this best.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="3 18 9 12 14 17 21 10" /><polyline points="14 10 21 10 21 17" />
@@ -60,7 +60,7 @@ const whereItWorks = [
   },
   {
     title: "Mt. Fuji climbing routes",
-    desc: "Lower stations and most of the trail have working signal. Coverage near the summit is patchy and depends on weather. Don't rely on data above the 8th station.",
+    desc: "Lower stations and most of the trail have working signal. Coverage near the summit is patchy and weather-dependent. Don't rely on data above the 8th station.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 20l5-8 4 5 3-4 6 7H3z" /><circle cx="17" cy="6" r="2" />
@@ -73,7 +73,7 @@ const whereItWorks = [
 const faqItems = [
   {
     q: "Does eSIM work in rural Japan?",
-    a: "Yes, generally. eSIM providers in Japan run on Docomo or SoftBank — both have strong nationwide coverage, including most rural and tourist areas. Docomo has the broadest reach, especially in mountainous regions. Very remote villages or deep mountains may have weak signal regardless of carrier.",
+    a: "Generally, yes. eSIM providers in Japan run on Docomo or SoftBank — both have strong nationwide coverage, including most rural and tourist areas. Docomo has the broadest reach, especially in mountainous regions. Very remote villages or deep mountains may have weak signal regardless of carrier.",
   },
   {
     q: "Does eSIM work on the Shinkansen?",
@@ -81,11 +81,11 @@ const faqItems = [
   },
   {
     q: "Which eSIM has the best coverage in Japan?",
-    a: "Providers using Docomo (Airalo's Docomo plans, eSIM Go, Sakura Mobile) have the widest rural coverage. Providers on SoftBank (Holafly, Airalo's SoftBank plans) are excellent in cities and tourist areas but slightly weaker in remote mountains. For city-only trips, the difference is unnoticeable.",
+    a: "Providers on Docomo (Airalo's Docomo plans, eSIM Go, Sakura Mobile) have the widest rural coverage. Providers on SoftBank (Holafly, Airalo's SoftBank plans) are excellent in cities and tourist areas but slightly weaker in remote mountains. For city-only trips, the difference isn't noticeable.",
   },
   {
     q: "Can I use eSIM at Japanese airports?",
-    a: "Yes — and that's the whole point. If you activate your eSIM before flying, you'll have a live 4G/5G signal the moment your phone leaves airplane mode at Narita, Haneda, Kansai, New Chitose, Fukuoka, or any other Japanese airport. No need to queue at airport SIM vending machines.",
+    a: "Yes — and that's the whole point. If you activate your eSIM before flying, you'll have a live 4G/5G signal the moment you turn off airplane mode at Narita, Haneda, Kansai, New Chitose, Fukuoka, or any other Japanese airport. No need to queue at airport SIM vending machines.",
   },
   {
     q: "Does eSIM work in Kyoto and Osaka?",
@@ -267,9 +267,9 @@ export default function DoesEsimWorkInJapanPage() {
           </p>
           <p className={styles.bodyText}>
             In practice, that means eSIMs work everywhere a tourist actually goes: city streets,
-            train stations, restaurants, temples, mountains on the popular hiking routes, and the
-            Shinkansen between cities. Even rural prefectures like Tohoku and Shikoku have strong
-            signal across all main roads and rail lines.
+            train stations, restaurants, temples, the popular mountain hiking routes, and the
+            Shinkansen between cities. Even rural regions like Tohoku and Shikoku have strong
+            signal along all main roads and rail lines.
           </p>
           <p className={styles.bodyText}>
             The only requirement on your side is a phone that supports eSIM technology and is
@@ -283,9 +283,9 @@ export default function DoesEsimWorkInJapanPage() {
           <span className={styles.sectionLabel}>Networks</span>
           <h2 className={styles.sectionTitle}>Which Networks Do Japan eSIMs Use?</h2>
           <p className={styles.bodyText}>
-            Every eSIM provider for Japan operates on top of one of the two major Japanese
-            carriers. Both networks are excellent — the difference matters most in remote rural
-            areas, where Docomo has a slight edge.
+            Every Japan eSIM runs on one of the two major Japanese carriers. Both networks are
+            excellent — the difference matters most in remote rural areas, where Docomo has a
+            slight edge.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -316,7 +316,7 @@ export default function DoesEsimWorkInJapanPage() {
           <span className={styles.sectionLabel}>Compatibility</span>
           <h2 className={styles.sectionTitle}>Does My Phone Support eSIM?</h2>
           <p className={styles.bodyText}>
-            Almost every flagship phone made since 2018 supports eSIM. Below is the quick rule of
+            Almost every flagship phone made since 2018 supports eSIM. Here&apos;s a quick rule of
             thumb — if your device is on this list, you&apos;re good to go.
           </p>
           <div className={styles.pickGrid} style={{ marginTop: "1rem" }}>
@@ -341,8 +341,8 @@ export default function DoesEsimWorkInJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <strong>One important caveat:</strong> some Japan-bought iPhones and certain Samsung
-            models sold in Hong Kong do not support eSIM. If your phone was purchased in those
+            <strong>One important caveat:</strong> some iPhones sold in Japan and certain Samsung
+            models sold in Hong Kong don&apos;t support eSIM. If your phone was purchased in those
             markets, check the model number against Apple or Samsung&apos;s eSIM compatibility list
             before buying a plan.
           </p>
@@ -363,9 +363,9 @@ export default function DoesEsimWorkInJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            The most common reason a Japan eSIM doesn&apos;t work is a carrier-locked phone — not a
-            problem with the eSIM itself. If you&apos;re unsure, contact your home carrier and ask
-            whether your handset is fully unlocked for international use.
+            The most common reason a Japan eSIM doesn&apos;t work is that the phone is carrier-locked
+            — not a fault with the eSIM itself. If you&apos;re unsure, contact your home carrier and
+            ask whether your handset is fully unlocked for international use.
           </p>
         </section>
 
@@ -393,8 +393,8 @@ export default function DoesEsimWorkInJapanPage() {
             Airalo — Best Overall
           </h3>
           <p className={styles.bodyText}>
-            The most popular Japan eSIM. Tiered plans from 1 GB to 10 GB, runs on Docomo and
-            SoftBank, and the app makes setup effortless. Best for travellers who want a known,
+            The most popular Japan eSIM. Tiered plans from 1 GB to 10 GB, coverage on Docomo and
+            SoftBank, and an app that makes setup effortless. Best for travellers who want a
             trusted brand at competitive prices.
           </p>
           <a
@@ -411,8 +411,8 @@ export default function DoesEsimWorkInJapanPage() {
             eSIM Go — Best Budget
           </h3>
           <p className={styles.bodyText}>
-            The cheapest reliable Japan eSIM we&apos;ve tested. Runs on Docomo and starts from
-            around $3.50. Choose this if price is your priority and you only need a small data
+            The cheapest reliable Japan eSIM we&apos;ve tested. Runs on Docomo, with plans starting
+            at around $3.50. Choose this if price is your priority and you only need a small data
             allowance.
           </p>
           <a
@@ -429,9 +429,9 @@ export default function DoesEsimWorkInJapanPage() {
             Holafly — Best Unlimited
           </h3>
           <p className={styles.bodyText}>
-            The only major provider offering genuinely unlimited data for Japan. Higher price, but
-            removes any need to track usage. Best for heavy streamers, content creators and remote
-            workers.
+            The only major provider offering genuinely unlimited data for Japan. It costs more, but
+            you&apos;ll never need to track your usage. Best for heavy streamers, content creators,
+            and remote workers.
           </p>
           <a
             href="#"

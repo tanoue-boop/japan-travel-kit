@@ -19,7 +19,7 @@ const planVsDataRows = [
 const faqItems = [
   {
     q: "Is unlimited eSIM worth it for Japan?",
-    a: "Only if you'll actually use more than around 10 GB during your trip. Most tourists use 3–8 GB across a one or two-week visit — well below the threshold where unlimited makes financial sense. If your travel involves daily video streaming, hours of video calls, or tethering a laptop, then yes, unlimited is the right tool. Otherwise, a 10 GB plan saves you a lot of money.",
+    a: "Only if you'll actually use more than around 10 GB during your trip. Most tourists use 3–8 GB on a one- or two-week visit — well below the threshold where unlimited makes financial sense. If your trip involves daily video streaming, hours of video calls, or tethering a laptop, then yes — unlimited is the right tool. Otherwise, a 10 GB plan saves you a lot of money.",
   },
   {
     q: "How much does unlimited eSIM cost for Japan?",
@@ -35,7 +35,7 @@ const faqItems = [
   },
   {
     q: "Can I stream Netflix with unlimited Japan eSIM?",
-    a: "Yes. Holafly's unlimited plan handles Netflix, YouTube, Disney+, and other streaming services on Japan's SoftBank network without issue. Streaming HD video uses roughly 1.2 GB per hour, so it's exactly the kind of use case where unlimited pays off. On 4G LTE in cities, expect smooth HD playback; 5G areas push streaming quality higher still.",
+    a: "Yes. Holafly's unlimited plan handles Netflix, YouTube, Disney+, and other streaming services on Japan's SoftBank network without issue. Streaming HD video uses roughly 1.2 GB per hour, so it's exactly the kind of use case where unlimited pays off. On 4G LTE in cities, expect smooth HD playback, and 5G coverage pushes quality higher still.",
   },
 ];
 
@@ -279,9 +279,9 @@ export default function BestUnlimitedEsimJapanPage() {
             1. Holafly — Best True Unlimited
           </h3>
           <p className={styles.bodyText}>
-            Holafly is the only major eSIM provider offering genuinely unlimited data in Japan
-            with no stated throttle threshold. Runs on SoftBank. Plans range from around $27 for
-            5 days up to about $89 for 30 days. The best fit if you actually need unlimited —
+            Holafly is the only major eSIM provider offering genuinely unlimited data in Japan,
+            with no published throttle threshold. It runs on SoftBank, and plans range from $27
+            for 5 days up to $89 for 30 days. The best fit if you genuinely need unlimited —
             streaming, hotspot use, or remote work — and don&apos;t want to think about data again
             mid-trip.
           </p>
@@ -298,7 +298,7 @@ export default function BestUnlimitedEsimJapanPage() {
           </h3>
           <p className={styles.bodyText}>
             The only unlimited option for Japan that also includes voice calls and SMS. Runs on
-            Docomo — the most reliable network in Japan, including rural coverage. Monthly plans
+            Docomo — Japan&apos;s most reliable network, especially in rural areas. Monthly plans
             only. The right choice for long stays, business travel, or anyone who needs a real
             Japanese phone number alongside unlimited data.
           </p>
@@ -318,7 +318,7 @@ export default function BestUnlimitedEsimJapanPage() {
           <span className={styles.sectionLabel}>Cost Logic</span>
           <h2 className={styles.sectionTitle}>Unlimited vs Large Data Plans</h2>
           <p className={styles.bodyText}>
-            Use this as the rule of thumb when deciding between unlimited and a fixed-data plan:
+            Use this as a rule of thumb when deciding between unlimited and a fixed-data plan:
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -359,20 +359,20 @@ export default function BestUnlimitedEsimJapanPage() {
           </p>
           <p className={styles.bodyText}>
             <strong>Fair use policies exist, but rarely bite.</strong> Holafly doesn&apos;t
-            publicly state a throttle threshold, and the vast majority of users — including those
+            publish a throttle threshold, and the vast majority of users — including those
             tethering or streaming — never report being slowed down. In our own testing, sustained
-            high-volume usage stayed fast across the trip.
+            high-volume use stayed fast throughout the trip.
           </p>
           <p className={styles.bodyText}>
             <strong>Speeds are tied to the host network, not the plan.</strong> Holafly runs on
-            SoftBank. In Tokyo and Osaka, that means 4G LTE speeds of 30–100 Mbps and 5G where
+            SoftBank. In Tokyo and Osaka, that means 4G LTE speeds of 30–100 Mbps, and 5G where
             available. In remote mountains, SoftBank is slightly weaker than Docomo. Sakura
-            Mobile&apos;s unlimited runs on Docomo, which is the network leader for rural reach.
+            Mobile&apos;s unlimited plan runs on Docomo, the leader for rural reach.
           </p>
           <p className={styles.bodyText}>
-            <strong>SoftBank handles streaming well.</strong> If your primary concern is that
-            unlimited plans throttle video, don&apos;t worry — Netflix, YouTube and video calls
-            consistently work at full quality on Holafly&apos;s Japan plan in major cities.
+            <strong>SoftBank handles streaming well.</strong> If your main worry is that
+            unlimited plans throttle video, don&apos;t — Netflix, YouTube, and video calls
+            consistently run at full quality on Holafly&apos;s Japan plan in major cities.
           </p>
         </section>
 
@@ -386,7 +386,7 @@ export default function BestUnlimitedEsimJapanPage() {
             laptop for several hours a day.
           </p>
           <p className={styles.verdictText}>
-            For everyone else — the typical 1–2 week sightseeing trip with maps, messaging and
+            For everyone else — the typical 1–2 week sightseeing trip with maps, messaging, and
             casual browsing — <strong>eSIM Go&apos;s 10 GB plan at around $14 is the smarter
             choice</strong>. Same Docomo coverage, half the price, and more than enough data for
             real-world tourist use.

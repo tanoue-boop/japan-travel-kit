@@ -24,7 +24,7 @@ const costRows = [
 const sakuraMakesSense = [
   {
     title: "Stays of 1 month or more",
-    desc: "If you're in Japan beyond a typical tourist visit, monthly billing and a real local plan make more sense than stacking short prepaid eSIMs.",
+    desc: "If you're staying longer than a typical tourist visit, monthly billing and a real local plan make more sense than buying back-to-back prepaid eSIMs.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
@@ -42,7 +42,7 @@ const sakuraMakesSense = [
   },
   {
     title: "Phone-based verification & calls",
-    desc: "Uber, banks, couriers like Yamato, and Japanese services often call to confirm. Without a working voice line, these flows break down.",
+    desc: "Uber, banks, couriers like Yamato, and Japanese services often call to confirm. Without a working voice line, you can end up waiting on confirmations that never come.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" /><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" />
@@ -67,11 +67,11 @@ const faqItems = [
   },
   {
     q: "Can I make phone calls with Airalo in Japan?",
-    a: "No. Airalo's Japan plans are data-only. You can use VoIP apps like WhatsApp, LINE, FaceTime, or Skype to make calls over the internet, but you cannot make or receive regular phone calls and you don't get a Japanese phone number. If real voice service matters, Sakura Mobile is the more practical choice.",
+    a: "No. Airalo's Japan plans are data-only. You can use VoIP apps like WhatsApp, LINE, FaceTime, or Skype to make calls over the internet, but you can't make or receive regular cellular calls, and you won't get a Japanese phone number. If real voice service matters, Sakura Mobile is the more practical choice.",
   },
   {
     q: "Is Sakura Mobile worth it for a 2-week trip?",
-    a: "Usually not. A 2-week tourist trip is the exact scenario Airalo is built for — $18 for 10 GB over 30 days covers most travellers comfortably. Sakura Mobile's monthly $28+ plans only pay off if you specifically need voice calls, SMS, or a Japanese number during those two weeks (for example, restaurant reservations or Uber confirmation calls).",
+    a: "Usually not. A 2-week tourist trip is exactly the scenario Airalo is built for — $18 for 10 GB over 30 days is more than enough for most travellers. Sakura Mobile's $28+ monthly plans only pay off if you specifically need voice calls, SMS, or a Japanese number during those two weeks (for example, restaurant reservations or Uber confirmation calls).",
   },
   {
     q: "Does Sakura Mobile work as an eSIM?",
@@ -79,7 +79,7 @@ const faqItems = [
   },
   {
     q: "Which is better for business travel in Japan?",
-    a: "Sakura Mobile, in most cases. Business trips often involve client calls, conference dial-ins, restaurant bookings via phone, and verification SMS — none of which Airalo supports. Sakura Mobile's Docomo network is also the most reliable in Japan, and their English-language support handles billing and technical issues from inside Japan during business hours.",
+    a: "Sakura Mobile, in most cases. Business trips often involve client calls, conference dial-ins, restaurant bookings made by phone, and verification SMS — none of which Airalo supports. Sakura Mobile also runs on Docomo, the most reliable network in Japan, and their English-speaking support team is based in Japan and handles billing and technical issues during local business hours.",
   },
 ];
 
@@ -309,8 +309,8 @@ export default function SakuraMobileVsAiraloJapanPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Airalo&apos;s strength is simplicity at a low price. For a typical 1–2 week tourist trip
-            built around maps, messaging and social media, the 3 GB plan at $9.50 or 10 GB plan at
-            $18 covers everything most travellers will use. There&apos;s nothing to set up beyond
+            built around maps, messaging and social media, the 3 GB plan at $9.50 or the 10 GB
+            plan at $18 covers everything most travellers will use. There&apos;s nothing to set up beyond
             scanning a QR code, and the same Airalo app works in dozens of other countries — useful
             if Japan is one stop on a longer trip.
           </p>
@@ -348,7 +348,7 @@ export default function SakuraMobileVsAiraloJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Sakura Mobile is one of the only foreigner-friendly carriers in Japan that offers
+            Sakura Mobile is one of the few foreigner-friendly carriers in Japan that offers
             voice calls, SMS, and a real Japanese phone number to non-residents. For long stays,
             business travel, or anyone whose itinerary depends on phone-based confirmations
             (restaurant reservations, Uber, banking calls, courier deliveries), it solves problems
@@ -380,8 +380,8 @@ export default function SakuraMobileVsAiraloJapanPage() {
           <h2 className={styles.sectionTitle}>Cost Comparison by Trip Length</h2>
           <p className={styles.bodyText}>
             Price is where the gap is widest. For typical tourist trip lengths, Airalo is always
-            cheaper. Sakura Mobile only catches up when stays stretch into multiple months and the
-            cost of stacking Airalo plans starts compounding.
+            cheaper. Sakura Mobile only starts to look reasonable once the convenience of a single
+            monthly bill outweighs the hassle of stacking multiple short-term Airalo plans.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -414,7 +414,7 @@ export default function SakuraMobileVsAiraloJapanPage() {
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Bottom line:</strong> For short stays, Airalo wins decisively. For stays of
             three months or longer — or when voice calls and a Japanese number are part of the
-            requirement — Sakura Mobile becomes the rational choice.
+            requirement — Sakura Mobile starts to make more sense.
           </p>
         </section>
 
@@ -434,8 +434,8 @@ export default function SakuraMobileVsAiraloJapanPage() {
           </p>
           <p className={styles.verdictText}>
             These two providers don&apos;t really compete — they serve different travellers. Pick
-            based on whether your trip needs <em>connectivity</em> or a proper <em>local mobile
-            line</em>.
+            based on whether you mainly need <em>data connectivity</em> or a proper{" "}
+            <em>local phone line</em>.
           </p>
           <div className={styles.pickCtaRow}>
             <a
