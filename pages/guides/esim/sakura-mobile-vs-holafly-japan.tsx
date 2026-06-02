@@ -221,7 +221,7 @@ export default function SakuraMobileVsHolaflyPage() {
           <h2 className={styles.sectionTitle}>Side-by-Side Comparison</h2>
           <p className={styles.bodyText}>
             These two providers sit at opposite ends of the spectrum: a full-service Japanese carrier with
-            voice and SMS, versus a data-only unlimited eSIM. Here&apos;s how they line up feature by feature:
+            voice and SMS, versus an unlimited, data-only eSIM. Here&apos;s how they line up feature by feature:
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -351,7 +351,7 @@ export default function SakuraMobileVsHolaflyPage() {
           <h2 className={styles.sectionTitle}>Cost Comparison</h2>
           <p className={styles.bodyText}>
             Price tells the clearest story. For short trips Holafly is cheaper, but because Sakura Mobile&apos;s
-            monthly rate stays flat while Holafly&apos;s climbs with trip length, the longer you stay the more
+            monthly rate stays flat while Holafly&apos;s climbs with trip length, the longer you stay, the more
             Sakura Mobile pulls ahead:
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
@@ -406,7 +406,7 @@ export default function SakuraMobileVsHolaflyPage() {
             need data?
           </p>
           <p className={styles.verdictText}>
-            <strong>Need voice calls or staying long-term?</strong> Choose Sakura Mobile. The Docomo coverage,
+            <strong>Need voice calls or a long stay?</strong> Choose Sakura Mobile. The Docomo coverage,
             English phone support, Japanese number, and flat monthly price make it the clear pick for longer
             or more demanding trips.
           </p>

@@ -268,8 +268,8 @@ export default function HowMuchYenToBringPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>In practice:</strong> carry ¥30,000–¥50,000 in cash to start your trip, then top up from
-            7-Eleven ATMs every few days. There&apos;s no need — and no benefit — to carrying your entire
-            budget in notes.
+            7-Eleven ATMs every few days. There&apos;s no need to carry your entire budget in notes — and no
+            benefit in doing so.
           </p>
         </section>
 
@@ -370,7 +370,7 @@ export default function HowMuchYenToBringPage() {
               <p className={styles.whoForTitle}>Break ¥10,000 notes early</p>
               <p className={styles.whoForDesc}>
                 Large notes can be awkward at small shops and stalls. Break them at a convenience store or
-                station early in the day so you always have smaller bills and coins.
+                station early in the day so you always have smaller notes and coins.
               </p>
             </div>
           </div>

@@ -252,7 +252,7 @@ export default function TokyoToKyotoPage() {
           <ul className={styles.bodyList}>
             <li><strong>Non-reserved seat (自由席):</strong> ~¥13,320 — cheapest, but no guaranteed seat</li>
             <li><strong>Reserved seat (指定席):</strong> ~¥14,170 — your own guaranteed seat</li>
-            <li><strong>Green Car (グリーン車):</strong> ~¥18,690 — first-class, extra legroom and quiet</li>
+            <li><strong>Green Car (グリーン車):</strong> ~¥18,690 — first class, with extra legroom and a quieter cabin</li>
           </ul>
           <p className={styles.bodyText}>
             If you&apos;re also travelling to other cities, a JR Pass can cover the Hikari at no per-trip cost.
@@ -272,7 +272,7 @@ export default function TokyoToKyotoPage() {
         {/* JR Pass worth it */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Pass Maths</span>
-          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It Tokyo–Kyoto?</h2>
+          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It for Tokyo–Kyoto?</h2>
           <p className={styles.bodyText}>
             This is the question every traveller asks — and for a simple Tokyo–Kyoto round trip, the answer
             is usually no. Let&apos;s run the numbers:
@@ -304,9 +304,9 @@ export default function TokyoToKyotoPage() {
             <li><strong>Comfort tiers:</strong> from basic 4-across seating up to premium reclining and curtained single seats</li>
           </ul>
           <p className={styles.bodyText}>
-            The trade-off is comfort and time: 8–9 hours versus the Shinkansen&apos;s 2-and-a-bit. But for
-            backpackers and budget-focused travellers, the savings are hard to argue with — especially on
-            the overnight services.
+            The trade-off is comfort and time: 8–9 hours versus just over two hours on the Shinkansen. But
+            for backpackers and budget-focused travellers, the savings are hard to argue with — especially
+            on the overnight services.
           </p>
         </section>
 
@@ -336,7 +336,7 @@ export default function TokyoToKyotoPage() {
               <p className={styles.whoForTitle}>Send luggage ahead</p>
               <p className={styles.whoForDesc}>
                 Use a takkyubin (宅急便) courier to forward large bags from your Tokyo hotel to Kyoto a day
-                ahead. You&apos;ll travel light and skip wrestling suitcases through busy stations.
+                ahead. You&apos;ll travel light and avoid dragging suitcases through busy stations.
               </p>
             </div>
             <div className={styles.whoForCard}>
