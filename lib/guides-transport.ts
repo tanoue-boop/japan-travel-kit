@@ -8,6 +8,13 @@ export type TransportArticle = {
 
 export const transportArticles: TransportArticle[] = [
   {
+    href: "/guides/transport/tokyo-to-kyoto",
+    badge: "Guide",
+    title: "Tokyo to Kyoto (2026): Cheapest & Fastest Ways to Get There",
+    desc: "The Shinkansen is fast but not always the cheapest. We compare the bullet train, highway bus, local trains, and rental car on price, speed, and comfort — with 2026 fares.",
+    date: "June 2026",
+  },
+  {
     href: "/guides/transport/jr-pass-guide",
     badge: "Guide",
     title: "JR Pass Guide 2026: Is It Worth It for Your Japan Trip?",

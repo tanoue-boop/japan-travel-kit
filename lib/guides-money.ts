@@ -8,6 +8,13 @@ export type MoneyArticle = {
 
 export const moneyArticles: MoneyArticle[] = [
   {
+    href: "/guides/money/how-much-yen-to-bring-japan",
+    badge: "Guide",
+    title: "How Much Yen to Bring to Japan (2026): A Realistic Guide",
+    desc: "How much yen do you actually need? We break down daily cash needs for budget, mid-range, and comfortable travellers — with totals by trip length and where cash is still essential.",
+    date: "June 2026",
+  },
+  {
     href: "/guides/money/cash-vs-card-japan",
     badge: "Guide",
     title: "Cash vs Card in Japan (2026): What Actually Works?",

@@ -8,6 +8,13 @@ export type EsimArticle = {
 
 export const esimArticles: EsimArticle[] = [
   {
+    href: "/guides/esim/sakura-mobile-vs-holafly-japan",
+    badge: "Comparison",
+    title: "Sakura Mobile vs Holafly for Japan (2026): Which Should You Choose?",
+    desc: "Sakura Mobile has voice calls and Docomo coverage. Holafly has unlimited data and no contracts. We compare both head-to-head for every trip type and budget.",
+    date: "June 2026",
+  },
+  {
     href: "/guides/esim/best-esim-japan",
     badge: "Comparison",
     title: "Best eSIM for Japan 2026: Top 4 Picks Tested & Compared",
