@@ -477,4 +477,24 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- 2026-06-03 additions -->
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/transport/skyliner-vs-nex</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/transport/tokyo-subway-ticket</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/transport/haruka-vs-nankai-rapit</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

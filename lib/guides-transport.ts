@@ -8,6 +8,27 @@ export type TransportArticle = {
 
 export const transportArticles: TransportArticle[] = [
   {
+    href: "/guides/transport/skyliner-vs-nex",
+    badge: "Comparison",
+    title: "Skyliner vs N'EX (2026): Best Train from Narita to Tokyo?",
+    desc: "Skyliner or Narita Express? We compare price, speed, JR Pass coverage, and direct stops by destination to find the best train from Narita to central Tokyo.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/transport/tokyo-subway-ticket",
+    badge: "Guide",
+    title: "Is the Tokyo Subway Ticket Worth It? (2026): 24/48/72-Hour Pass Guide",
+    desc: "The Tokyo Subway Ticket is a bargain on busy days and a waste on quiet ones. We cover prices, coverage, the break-even point, and when Suica beats it.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/transport/haruka-vs-nankai-rapit",
+    badge: "Comparison",
+    title: "Haruka vs Nankai Rapi:t (2026): Best Train from Kansai Airport to Osaka?",
+    desc: "Haruka or Nankai Rapi:t from KIX? We compare fares, journey times, JR Pass coverage, and direct stops by destination — Namba, Tennoji, Shin-Osaka, and Kyoto.",
+    date: "June 2026",
+  },
+  {
     href: "/guides/transport/tokyo-to-kyoto",
     badge: "Guide",
     title: "Tokyo to Kyoto (2026): Cheapest & Fastest Ways to Get There",
