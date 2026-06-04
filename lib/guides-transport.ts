@@ -8,6 +8,27 @@ export type TransportArticle = {
 
 export const transportArticles: TransportArticle[] = [
   {
+    href: "/guides/transport/kyoto-subway-bus-pass",
+    badge: "Guide",
+    title: "Is the Kyoto Subway & Bus 1-Day Pass Worth It? (2026 Guide)",
+    desc: "The ¥1,100 pass is a bargain on a temple-hopping day and a waste on a quiet one. We cover the break-even point, the discontinued ¥700 bus pass, and when an IC card wins.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/transport/osaka-metro-pass",
+    badge: "Comparison",
+    title: "Osaka Metro Pass vs Enjoy Eco Card (2026): Which Should Tourists Buy?",
+    desc: "Two Osaka day passes, often confused. We compare price, who can buy, coverage, and the break-even point so you know which one to buy — or when ICOCA is cheaper.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/transport/tokyo-airport-limousine-bus",
+    badge: "Guide",
+    title: "Tokyo Airport Limousine Bus (2026): When the Bus Beats the Train",
+    desc: "The train is usually faster, but for heavy bags, late arrivals, and door-to-door ease the bus wins. Narita & Haneda fares, destinations, and how it compares to the Skyliner and N'EX.",
+    date: "June 2026",
+  },
+  {
     href: "/guides/transport/skyliner-vs-nex",
     badge: "Comparison",
     title: "Skyliner vs N'EX (2026): Best Train from Narita to Tokyo?",
