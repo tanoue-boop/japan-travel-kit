@@ -13,7 +13,6 @@ const transportOptions = [
 const dayPasses = [
   { pass: "Subway & Bus 1-Day Pass",    price: "¥1,100 (child ¥550)", coverage: "All city buses + both subway lines", bestFor: "Full temple days mixing all areas" },
   { pass: "Subway 1-Day Pass",          price: "¥800 (child ¥400)",   coverage: "Both subway lines only",             bestFor: "East–west sightseeing on the subway" },
-  { pass: "Subway 2-Day Pass",          price: "¥1,400",              coverage: "Both subway lines for 2 days",       bestFor: "Subway-based multi-day trips" },
 ];
 
 const busTips = [
