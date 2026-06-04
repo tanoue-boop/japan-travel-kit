@@ -11,10 +11,9 @@ const transportOptions = [
 ];
 
 const dayPasses = [
-  { pass: "City Bus 1-Day Pass",        price: "¥700",   coverage: "All Kyoto City Bus routes",       bestFor: "Temple-heavy days in west / north" },
-  { pass: "Subway 1-Day Pass",          price: "¥800",   coverage: "Both subway lines",               bestFor: "East–west sightseeing via Tozai Line" },
-  { pass: "Bus + Subway 1-Day Pass",    price: "¥1,100", coverage: "All city buses + both subways",   bestFor: "Full-day itineraries mixing all areas" },
-  { pass: "Subway 2-Day Pass",          price: "¥1,400", coverage: "Both subway lines for 2 days",    bestFor: "Focused subway-based multi-day trips" },
+  { pass: "Subway & Bus 1-Day Pass",    price: "¥1,100 (child ¥550)", coverage: "All city buses + both subway lines", bestFor: "Full temple days mixing all areas" },
+  { pass: "Subway 1-Day Pass",          price: "¥800 (child ¥400)",   coverage: "Both subway lines only",             bestFor: "East–west sightseeing on the subway" },
+  { pass: "Subway 2-Day Pass",          price: "¥1,400",              coverage: "Both subway lines for 2 days",       bestFor: "Subway-based multi-day trips" },
 ];
 
 const busTips = [
@@ -107,8 +106,8 @@ const tips = [
 
 const faqItems = [
   {
-    q: "Do I need a day pass for Kyoto city buses?",
-    a: "It depends on how many rides you take. At ¥230 per ride, you need at least 4 rides for the ¥700 bus day pass to break even. On a full sightseeing day with 5–6 bus rides (Kyoto Station → Kinkakuji → Kiyomizudera → Gion → back), the pass saves money. On a lighter day, an IC card paying per ride is simpler.",
+    q: "Do I need a day pass for Kyoto buses?",
+    a: "First, a heads-up: the old ¥700 City Bus 1-Day Pass has been discontinued — sales ended in September 2023 and it could no longer be used after the end of March 2024. The current option is the Subway & Bus 1-Day Pass at ¥1,100 (¥550 for children), which also covers both subway lines. At ¥230 per bus ride it breaks even at around five rides — easy to hit on a full day visiting Kinkakuji, Kiyomizudera, and Gion. On a lighter day, a pay-as-you-go IC card is simpler. See our Kyoto Subway & Bus Pass guide for the full break-even breakdown.",
   },
   {
     q: "Can I use my Suica IC card in Kyoto?",
@@ -264,8 +263,8 @@ export default function KyotoTransportationPage() {
                 <p className={styles.verdictStatValue}>City Bus + IC Card</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Bus day pass</p>
-                <p className={styles.verdictStatValue}>¥700 (adults)</p>
+                <p className={styles.verdictStatLabel}>Subway &amp; Bus pass</p>
+                <p className={styles.verdictStatValue}>¥1,100 (adult)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>IC card works on</p>
@@ -401,7 +400,12 @@ export default function KyotoTransportationPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Day passes are sold at Kyoto Station Bus Information Center, subway ticket machines, and major hotels. They are not loaded to an IC card — you receive a separate paper ticket.
+            Day passes are sold at the Kyoto Station Bus Information Center, subway ticket machines, and major hotels. They are not loaded to an IC card — you receive a separate paper ticket. <strong>Note:</strong> the old bus-only ¥700 City Bus 1-Day Pass has been discontinued (sales ended September 2023, and it could no longer be used after the end of March 2024) — the current bus-inclusive option is the ¥1,100 Subway &amp; Bus 1-Day Pass. Large suitcases are not allowed on city buses, so store them at Kyoto Station before a bus-based day.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            Not sure it&apos;s worth it? See our{" "}
+            <Link href="/guides/transport/kyoto-subway-bus-pass" style={{ fontWeight: 600 }}>Kyoto Subway &amp; Bus Pass guide</Link>{" "}
+            for the full break-even maths.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <a
