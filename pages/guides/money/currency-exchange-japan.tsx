@@ -11,7 +11,7 @@ const bestWays = [
   {
     rank: 2,
     title: "Wise / Revolut (Pre-loaded Card)",
-    body: "Load your Wise or Revolut card with yen before you fly — both convert at the mid-market rate (the rate you see on Google) with minimal fees. Wise charges around 0.4–0.6% for JPY conversion; Revolut offers fee-free conversion up to a monthly limit. Once loaded, use the card at ATMs or directly at shops. This approach works especially well if you want to lock in a rate before travelling or if you prefer a debit card over carrying cash.",
+    body: "Load your Wise or Revolut card with yen before you fly — both convert at the mid-market rate (the rate you see on Google) with minimal fees. Wise charges a small conversion fee that varies by currency (from around 0.4%); Revolut offers fee-free conversion up to a weekday monthly limit that depends on your plan and account country, with a roughly 1% markup at weekends on the Standard plan. Once loaded, use the card at ATMs or directly at shops. This approach works especially well if you want to lock in a rate before travelling or if you prefer a debit card over carrying cash.",
   },
   {
     rank: 3,
@@ -37,7 +37,7 @@ const budgetRows = [
 const cards = [
   {
     name: "Wise – Best Overall",
-    desc: "Wise converts at the mid-market rate and charges a small transparent fee (around 0.4–0.6% for JPY). You can hold yen in your Wise account and spend directly, or convert on the fly. Available in most countries. The Wise card works at ATMs worldwide; Note that Wise charges a small ATM fee after the first two free withdrawals per month.",
+    desc: "Wise converts at the mid-market rate and charges a small transparent fee that varies by currency (from around 0.4%). You can hold yen in your Wise account and spend directly, or convert on the fly. Available in most countries. The Wise card works at ATMs worldwide; fee-free withdrawals are capped at a monthly allowance that depends on your account's registration country (around ¥30,000/month on a Japan-registered account; roughly £250 / $250 / €250 elsewhere), after which a fee of about 1.75–2.69% applies. Wise revised this structure on 1 May 2026 — confirm current limits in the app.",
   },
   {
     name: "Charles Schwab – Best for US Travellers",
@@ -187,6 +187,20 @@ export default function CurrencyExchangeJapanPage() {
       </section>
 
       <div className={styles.content}>
+        {/* Disclaimer */}
+        <div className={styles.disclosure}>
+          <span className={styles.disclosureIcon}>ℹ️</span>
+          <p className={styles.disclosureText}>
+            <strong>Not financial advice.</strong> This guide is general information only. Card fees and free ATM/FX
+            allowances are current as of 2026, can change, and depend on the country where your account is registered
+            (Wise revised its ATM fee structure on 1 May 2026). Always confirm the latest on the official{" "}
+            <a href="https://wise.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Wise</a>{" "}
+            and{" "}
+            <a href="https://www.revolut.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Revolut</a>{" "}
+            fees pages before you rely on them.
+          </p>
+        </div>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>

@@ -7,7 +7,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 const REVOLUT_URL = "https://www.revolut.com/";
 
 const planRows = [
-  { plan: "Standard", fx: "Free up to ¥300,000/mo, then 0.5%", weekend: "+1% markup", atm: "¥25,000/mo free, then 2%" },
+  { plan: "Standard", fx: "Free to weekday limit (¥300k/mo JP*), then 0.5%", weekend: "+1% markup", atm: "Free to ~¥25,000/mo (JP*), then 2%" },
   { plan: "Premium",  fx: "Higher limit — confirm",             weekend: "No markup",   atm: "Higher limit — confirm" },
   { plan: "Metal",    fx: "Higher limit — confirm",             weekend: "No markup",   atm: "Higher limit — confirm" },
 ];
@@ -19,7 +19,7 @@ const howToSteps = [
   },
   {
     title: "Spend on weekdays to avoid the markup",
-    desc: "On the Standard plan, currency conversion is free up to ¥300,000 per month on weekdays. Conversion at the weekend (roughly Friday afternoon to Sunday evening, US Eastern time) carries a 1% markup. Where you can, time larger conversions for weekdays — or upgrade to a plan with no weekend fee.",
+    desc: "On the Standard plan, currency conversion is free up to a weekday monthly limit (around ¥300,000 on a Japan-registered account; the cap depends on your account's country). Conversion at the weekend (roughly Friday afternoon to Sunday evening, US Eastern time) carries a 1% markup. Where you can, time larger conversions for weekdays — or upgrade to a plan with no weekend fee.",
   },
   {
     title: "Always choose to pay in yen (JPY)",
@@ -27,12 +27,12 @@ const howToSteps = [
   },
   {
     title: "Use 7-Eleven (Seven Bank) ATMs for cash",
-    desc: "Seven Bank ATMs inside 7-Eleven stores are the most reliable for foreign cards, run 24/7, and have an English menu. Keep withdrawals within your plan's free ATM allowance (¥25,000/month on Standard) to avoid the 2% fee, and note the Japanese ATM operator may add its own charge.",
+    desc: "Seven Bank ATMs inside 7-Eleven stores are the most reliable for foreign cards, run 24/7, and have an English menu. Keep withdrawals within your plan's free ATM allowance (around ¥25,000/month on a Japan-registered Standard account; it depends on your account's country) to avoid the 2% fee, and note the Japanese ATM operator may add its own charge.",
   },
 ];
 
 const pros = [
-  "Free currency conversion up to ¥300,000/month on weekdays (Standard)",
+  "Free weekday currency conversion up to a monthly limit (¥300,000 on a Japan-registered Standard account)",
   "Feature-rich app: instant notifications, budgets, card freeze",
   "Premium and Metal plans remove the weekend markup and raise limits",
   "Works at 7-Eleven, Japan Post, and AEON ATMs",
@@ -41,7 +41,7 @@ const pros = [
 
 const cons = [
   "Standard plan adds a 1% markup on weekend conversions",
-  "Free ATM allowance (¥25,000/mo) is lower than Wise's, then 2%",
+  "Free ATM allowance (≈¥25,000/mo on a Japan account) is lower than Wise's, then 2%",
   "Third-party ATM operator fees apply on top",
   "Best limits require a paid Premium or Metal plan",
 ];
@@ -53,7 +53,7 @@ const faqItems = [
   },
   {
     q: "What are Revolut's fees in Japan?",
-    a: "On the Standard plan, currency conversion is free up to ¥300,000 per month on weekdays, then 0.5%; weekend conversions carry a 1% markup. ATM withdrawals are free up to about ¥25,000 per month, then 2%, and the Japanese ATM operator may add its own fee on top. Premium and Metal plans raise these limits and remove the weekend markup. Confirm current figures on the official Revolut site.",
+    a: "These depend on your account's registration country and plan. On a Japan-registered Standard account, weekday currency conversion is free up to around ¥300,000 per month, then 0.5%, and weekend conversions carry a 1% markup; ATM withdrawals are free up to about ¥25,000 per month, then 2% (minimum around €1/£1). Accounts registered elsewhere differ — for example, UK/Eurozone Standard ATM allowances are roughly £200/€200 per month or about five withdrawals. The Japanese ATM operator may also add its own fee. Premium and Metal plans raise the limits and remove the weekend markup. Confirm current figures on the official Revolut site.",
   },
   {
     q: "Is the Revolut weekend fee a problem for Japan trips?",
@@ -188,7 +188,7 @@ export default function RevolutCardJapanPage() {
           <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Not financial advice.</strong> This guide is general information only. Fees, limits, and plans are
-            current as of 2026 and can change — always confirm the latest on the official{" "}
+            current as of 2026, can change, and depend on the country where your Revolut account is registered — always confirm the latest on the official{" "}
             <a href={REVOLUT_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Revolut fees page</a>{" "}
             before you rely on them.
           </p>
@@ -207,11 +207,11 @@ export default function RevolutCardJapanPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Weekday free FX</p>
-                <p className={styles.verdictStatValue}>Up to ¥300,000/mo</p>
+                <p className={styles.verdictStatValue}>Up to ¥300k/mo (JP)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Free ATM allowance</p>
-                <p className={styles.verdictStatValue}>~¥25,000 / month</p>
+                <p className={styles.verdictStatValue}>~¥25,000/mo (JP)</p>
               </div>
             </div>
             <p className={styles.verdictText}>
@@ -271,7 +271,7 @@ export default function RevolutCardJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Standard figures are a 2026 guide; Premium and Metal limits vary and carry a monthly fee — confirm current plan terms on the official Revolut site. The Japanese ATM operator may add its own fee on top of Revolut&apos;s.
+            *Free ATM and FX allowances depend on the country where your Revolut account is registered and your plan — not your destination. The yen figures are for a Japan-registered account; UK/Eurozone Standard accounts are roughly £200/€200 per month (or about five ATM withdrawals), with 2% (minimum around €1/£1) above the ATM allowance. Premium and Metal raise the limits and remove the weekend markup, for a monthly fee. These are a 2026 guide — confirm current terms in your app or on the official Revolut site. The Japanese ATM operator may add its own fee on top of Revolut&apos;s.
           </p>
         </section>
 

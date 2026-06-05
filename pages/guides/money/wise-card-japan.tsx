@@ -9,8 +9,8 @@ const WISE_URL = "https://wise.com/";
 const feeRows = [
   { item: "Monthly / annual fee", detail: "None — you pay only a one-off fee when the card is issued" },
   { item: "Exchange rate",        detail: "Mid-market rate (the rate you see on Google)" },
-  { item: "Conversion fee",       detail: "Small and transparent — typically under ~1%" },
-  { item: "ATM withdrawals",      detail: "Free up to ¥30,000 per month; a small fee applies above that" },
+  { item: "Conversion fee",       detail: "Mid-market rate with a fee from ~0.4%, varying by currency" },
+  { item: "ATM withdrawals",      detail: "Free up to a monthly allowance set by your account's country (¥30,000/mo on a Japan-registered account); above that ~1.75–2.69%" },
   { item: "Japanese ATM fee",     detail: "The ATM operator may add ~¥220 per withdrawal, separate from Wise" },
 ];
 
@@ -36,14 +36,14 @@ const howToSteps = [
 const pros = [
   "Mid-market exchange rate with a small, transparent fee",
   "No monthly or annual fee — just a one-off card cost",
-  "Free ATM withdrawals up to ¥30,000 per month",
+  "Free ATM withdrawals up to a monthly allowance (¥30,000/mo on a Japan-registered account)",
   "Hold and convert yen in advance to lock in a rate",
   "Works at 7-Eleven, Japan Post, and AEON ATMs",
 ];
 
 const cons = [
   "ATM operator fee (~¥220) may apply on the Japanese side",
-  "A small Wise fee applies above the monthly free ATM allowance",
+  "A fee (~1.75–2.69%) applies above the monthly free ATM allowance",
   "Not a credit card — no purchase protection or rewards points",
   "Requires a smartphone app to set up and manage",
 ];
@@ -55,11 +55,11 @@ const faqItems = [
   },
   {
     q: "How much does Wise charge in Japan?",
-    a: "Wise converts at the mid-market rate with a small, transparent conversion fee (typically under about 1%) and charges no monthly or annual fee — only a one-off cost when the card is issued. ATM withdrawals are free up to roughly ¥30,000 per month, after which a small fee applies. Separately, the Japanese ATM operator may add its own fee (often around ¥220 per withdrawal). Confirm current fees on the official Wise site.",
+    a: "Wise converts at the mid-market rate with a small conversion fee that varies by currency (from around 0.4%) and charges no monthly or annual fee — only a one-off cost when the card is issued. ATM withdrawals are free up to a monthly allowance that depends on your account's registration country: around ¥30,000 on a Japan-registered account, or roughly £250 / $250 / €250 elsewhere. Above the allowance the fee is around 1.75–2.69%. Wise revised this structure on 1 May 2026. Separately, the Japanese ATM operator may add its own fee (often around ¥220 per withdrawal). Confirm current fees on the official Wise site.",
   },
   {
     q: "How do I avoid fees with Wise at Japanese ATMs?",
-    a: "Two habits help. First, always choose to pay in yen (JPY) rather than your home currency — declining Dynamic Currency Conversion keeps the rate in Wise's hands. Second, withdraw larger amounts less often to stay within the ~¥30,000 monthly free allowance and to spread any flat operator fee across more cash. Seven Bank ATMs allow up to ¥50,000 per withdrawal.",
+    a: "Two habits help. First, always choose to pay in yen (JPY) rather than your home currency — declining Dynamic Currency Conversion keeps the rate in Wise's hands. Second, withdraw larger amounts less often to stay within the monthly free allowance (around ¥30,000 on a Japan-registered account) and to spread any flat operator fee across more cash. Seven Bank ATMs allow up to ¥50,000 per withdrawal.",
   },
   {
     q: "Should I hold yen in Wise before I travel?",
@@ -67,7 +67,7 @@ const faqItems = [
   },
   {
     q: "Is Wise better than a normal bank card for Japan?",
-    a: "For most travellers, yes. A typical home-bank debit or credit card charges around 3% on foreign transactions plus a marked-up exchange rate. Wise uses the mid-market rate with a fee usually under 1%, so on a two-week trip the savings are meaningful. That said, it's a debit product, so carry a backup card and some cash too.",
+    a: "For most travellers, yes. A typical home-bank debit or credit card charges around 3% on foreign transactions plus a marked-up exchange rate. Wise uses the mid-market rate with a fee from around 0.4%, so on a two-week trip the savings are meaningful. That said, it's a debit product, so carry a backup card and some cash too.",
   },
 ];
 
@@ -190,7 +190,7 @@ export default function WiseCardJapanPage() {
           <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Not financial advice.</strong> This guide is general information only. Fees and limits are current
-            as of 2026 and can change — always confirm the latest on the official{" "}
+            as of 2026, can change, and depend on the country where your Wise account is registered — always confirm the latest on the official{" "}
             <a href={WISE_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Wise fees page</a>{" "}
             before you rely on them.
           </p>
@@ -213,12 +213,12 @@ export default function WiseCardJapanPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Free ATM allowance</p>
-                <p className={styles.verdictStatValue}>~¥30,000 / month</p>
+                <p className={styles.verdictStatValue}>¥30,000/mo (JP acct)</p>
               </div>
             </div>
             <p className={styles.verdictText}>
               <strong>In short:</strong> Wise is one of the best-value ways to spend in Japan — it uses the mid-market
-              rate with a fee usually under 1% and no monthly cost. Two rules make it work: always <strong>pay in
+              rate with a fee from around 0.4% and no monthly cost. Two rules make it work: always <strong>pay in
               yen</strong> (decline DCC), and use <strong>7-Eleven (Seven Bank) ATMs</strong> for cash.
             </p>
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", marginTop: "0.75rem" }}>
@@ -271,7 +271,7 @@ export default function WiseCardJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Figures are a 2026 guide and can vary by region — confirm current fees on the official Wise site before you rely on them.
+            Your free ATM allowance depends on the country where your Wise account is registered — for example ¥30,000/month on a Japan-registered account, or roughly £250 / $250 / €250 / 400 AUD per month for UK, US, Eurozone, and Australian accounts. Wise revised its ATM fee structure on 1 May 2026, and the conversion fee varies by currency (from around 0.4%). These are a 2026 guide — confirm the current figures in your Wise app or on the official Wise fees page.
           </p>
         </section>
 

@@ -10,10 +10,10 @@ const REVOLUT_URL = "https://www.revolut.com/";
 const compareRows = [
   { feature: "Monthly / annual fee",  wise: "None (one-off card issue fee)", revolut: "None on Standard plan" },
   { feature: "Exchange rate",         wise: "Mid-market, every day",         revolut: "Mid-market on weekdays" },
-  { feature: "Conversion fee",        wise: "Under ~1%",                     revolut: "Free up to ¥300,000/mo, then 0.5%" },
+  { feature: "Conversion fee",        wise: "Mid-market, from ~0.4% (varies)", revolut: "Free to weekday limit (¥300k/mo JP), then 0.5%" },
   { feature: "Weekend FX",            wise: "Mid-market (no surcharge)",     revolut: "+1% markup (Fri–Sun, US ET)" },
-  { feature: "Free ATM allowance",    wise: "¥30,000 / month",               revolut: "¥25,000 / month" },
-  { feature: "Above ATM allowance",   wise: "Small fee",                     revolut: "2%" },
+  { feature: "Free ATM allowance",    wise: "By country* (¥30,000/mo JP)",   revolut: "By country/plan* (¥25,000/mo JP)" },
+  { feature: "Above ATM allowance",   wise: "~1.75–2.69%",                   revolut: "2% (min ~€1/£1)" },
   { feature: "Higher limits",         wise: "—",                             revolut: "Premium / Metal plans" },
   { feature: "App features",          wise: "Simple multi-currency",         revolut: "Advanced budgeting & analytics" },
 ];
@@ -36,7 +36,7 @@ const chooseWise = [
 const chooseRevolut = [
   {
     title: "You'll spend mainly on weekdays",
-    desc: "On the Standard plan, Revolut converts currency free up to ¥300,000 per month on weekdays. For weekday-heavy spending under that cap, you'll pay no conversion fee at all.",
+    desc: "On the Standard plan, Revolut converts currency free up to a weekday monthly limit (around ¥300,000 on a Japan-registered account; the cap depends on your account's country). For weekday spending under that limit, you'll pay no conversion fee at all.",
   },
   {
     title: "You want app features and budgeting",
@@ -59,7 +59,7 @@ const faqItems = [
   },
   {
     q: "Which has better ATM limits in Japan?",
-    a: "Wise's free ATM allowance is around ¥30,000 per month, slightly higher than Revolut Standard's ~¥25,000 per month. Above those limits, Wise charges a small fee and Revolut charges 2%. Separately, the Japanese ATM operator itself may add a fee (often around ¥220 per withdrawal) regardless of which card you use. Withdraw larger amounts less often to reduce the per-transaction impact.",
+    a: "It depends on where your account is registered, not your destination. On a Japan-registered account, Wise's free ATM allowance is around ¥30,000 per month and Revolut Standard's is around ¥25,000 per month. Accounts registered elsewhere differ — for example, Wise allowances are roughly £250, $250, or €250 per month in the UK, US, and Eurozone, while Revolut Standard is roughly £200/€200 per month or about five withdrawals. Above the allowance, Wise charges around 1.75–2.69% and Revolut charges 2% (minimum around €1/£1). Wise revised this structure on 1 May 2026, so confirm the current figures in your app. Separately, the Japanese ATM operator may add its own fee (often around ¥220 per withdrawal). Withdraw larger amounts less often to reduce the impact.",
   },
   {
     q: "Can I use both Wise and Revolut in Japan?",
@@ -190,7 +190,7 @@ export default function WiseVsRevolutJapanPage() {
           <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Not financial advice.</strong> This guide is general information only. Fees, limits, and plans
-            are current as of 2026 and can change — always confirm the latest on the official{" "}
+            are current as of 2026, can change, and depend on the country where your account is registered — always confirm the latest on the official{" "}
             <a href={WISE_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Wise</a>{" "}
             and{" "}
             <a href={REVOLUT_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Revolut</a>{" "}
@@ -211,7 +211,7 @@ export default function WiseVsRevolutJapanPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Best weekday free FX</p>
-                <p className={styles.verdictStatValue}>Revolut (¥300k/mo)</p>
+                <p className={styles.verdictStatValue}>Revolut (¥300k/mo, JP)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Best for weekend spend</p>
@@ -258,7 +258,7 @@ export default function WiseVsRevolutJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Figures are a 2026 guide and vary by plan and region — confirm current fees on each provider&apos;s official site. Revolut&apos;s Premium and Metal plans remove the weekend markup and raise the free limits.
+            *Your free ATM and FX allowances depend on the country where your Wise or Revolut account is registered (and, for Revolut, your plan) — not your destination. The yen figures shown are for a Japan-registered account; UK/US/Eurozone accounts differ (e.g. Wise ATM allowances of around £250 / $250 / €250 per month). Wise revised its ATM fee structure on 1 May 2026. These are a 2026 guide — always confirm the current limits in your app or on each provider&apos;s official fees page. Revolut&apos;s Premium and Metal plans remove the weekend markup and raise the free limits.
           </p>
         </section>
 

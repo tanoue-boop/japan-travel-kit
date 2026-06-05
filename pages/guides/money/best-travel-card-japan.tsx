@@ -31,13 +31,13 @@ const bestCards = [
     badge: "Best Overall",
     badgeColor: "#16a34a",
     pros: [
-      "Mid-market exchange rate with a small, transparent conversion fee (~0.5–1.5%)",
-      "Fee-free ATM withdrawals up to ¥75,000/month (approx.)",
+      "Mid-market exchange rate with a small conversion fee (from ~0.4%, varies by currency)",
+      "Fee-free ATM withdrawals up to a monthly allowance set by your account's country (≈¥30,000/mo on a Japan account)",
       "Holds multiple currencies — convert before you travel to lock in a rate",
       "Works at all major Japanese ATM networks (7-Eleven, Japan Post, AEON)",
     ],
     cons: [
-      "ATM fee applies above the monthly free allowance (~1.75% thereafter)",
+      "ATM fee (~1.75–2.69%) applies above the monthly free allowance",
       "Requires a smartphone app for setup and management",
       "Not a credit card — no purchase protection or rewards points",
     ],
@@ -49,12 +49,12 @@ const bestCards = [
     badgeColor: "#2563eb",
     pros: [
       "Mid-market rate on weekdays (a small markup applies on weekends)",
-      "Free ATM withdrawals up to a monthly limit (limit varies by plan tier)",
+      "Free ATM withdrawals up to a monthly limit (varies by plan and account country)",
       "Instant spend notifications and easy card freeze via the app",
       "Premium and Metal plans offer higher ATM limits and travel insurance",
     ],
     cons: [
-      "Weekend exchange rate is marked up ~0.5–1% compared to weekday rate",
+      "Weekend conversion is marked up ~1% on the Standard plan",
       "Free plan has a lower ATM allowance than Wise",
       "Some users report occasional card declines in rural Japan",
     ],
@@ -259,6 +259,20 @@ export default function BestTravelCardJapanPage() {
       </section>
 
       <div className={styles.content}>
+        {/* Disclaimer */}
+        <div className={styles.disclosure}>
+          <span className={styles.disclosureIcon}>ℹ️</span>
+          <p className={styles.disclosureText}>
+            <strong>Not financial advice.</strong> This guide is general information only. Card fees and free ATM/FX
+            allowances are current as of 2026, can change, and depend on the country where your account is registered
+            (Wise revised its ATM fee structure on 1 May 2026). Always confirm the latest on the official{" "}
+            <a href="https://wise.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Wise</a>{" "}
+            and{" "}
+            <a href="https://www.revolut.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Revolut</a>{" "}
+            fees pages before you rely on them.
+          </p>
+        </div>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
