@@ -8,6 +8,27 @@ export type MoneyArticle = {
 
 export const moneyArticles: MoneyArticle[] = [
   {
+    href: "/guides/money/wise-vs-revolut-japan",
+    badge: "Comparison",
+    title: "Wise vs Revolut for Japan (2026): Which Travel Card Wins?",
+    desc: "Wise or Revolut for Japan? We compare exchange rates, weekend fees, ATM limits, and plans — with clear advice on which card suits your spending.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/money/wise-card-japan",
+    badge: "Guide",
+    title: "Wise Card in Japan (2026): Fees, ATMs & How to Use It",
+    desc: "Does the Wise card work in Japan? We cover fees, the mid-market rate, 7-Eleven ATM limits, how to avoid DCC, and how to get the most out of Wise on your trip.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/money/revolut-card-japan",
+    badge: "Guide",
+    title: "Revolut in Japan (2026): Fees, ATMs & Is It Worth It?",
+    desc: "Does Revolut work in Japan? We break down the plans, weekday and weekend FX fees, ATM limits, and whether Revolut is worth it for your trip.",
+    date: "June 2026",
+  },
+  {
     href: "/guides/money/how-much-yen-to-bring-japan",
     badge: "Guide",
     title: "How Much Yen to Bring to Japan (2026): A Realistic Guide",
