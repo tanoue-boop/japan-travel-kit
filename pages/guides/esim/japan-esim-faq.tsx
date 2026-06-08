@@ -103,7 +103,7 @@ const faqTrouble = [
 
 const allFaq = [...faqGeneral, ...faqProviders, ...faqPlans, ...faqSetup, ...faqTrouble];
 
-const canonicalUrl = "https://japan-travel-kit.com/guides/esim/japan-esim-faq";
+const canonicalUrl = "https://www.japan-travel-kit.com/guides/esim/japan-esim-faq";
 
 export default function JapanEsimFaqPage() {
   return (
@@ -166,9 +166,9 @@ export default function JapanEsimFaqPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com/" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM", item: "https://japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM", item: "https://www.japan-travel-kit.com/guides/esim" },
                 { "@type": "ListItem", position: 4, name: "Japan eSIM FAQ", item: canonicalUrl },
               ],
             }),

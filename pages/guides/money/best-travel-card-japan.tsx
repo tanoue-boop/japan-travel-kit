@@ -153,10 +153,10 @@ export default function BestTravelCardJapanPage() {
           name="description"
           content="Which travel card is best for Japan? We compare Wise, Revolut, Charles Schwab and more — no foreign transaction fees, real exchange rates, ATM access."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/money/best-travel-card-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/best-travel-card-japan" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Best Travel Card for Japan 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/money/best-travel-card-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/best-travel-card-japan" />
         <meta property="og:description" content="Which travel card is best for Japan? We compare Wise, Revolut, Charles Schwab and more — no foreign transaction fees, real exchange rates, ATM access." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -205,10 +205,10 @@ export default function BestTravelCardJapanPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://japan-travel-kit.com/guides/money" },
-                { "@type": "ListItem", position: 4, name: "Best Travel Card for Japan", item: "https://japan-travel-kit.com/guides/money/best-travel-card-japan" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://www.japan-travel-kit.com/guides/money" },
+                { "@type": "ListItem", position: 4, name: "Best Travel Card for Japan", item: "https://www.japan-travel-kit.com/guides/money/best-travel-card-japan" },
               ],
             }),
           }}

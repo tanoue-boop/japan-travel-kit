@@ -110,9 +110,9 @@ export default function IcCardsJapanPage() {
           name="description"
           content="Suica or Pasmo? We explain what IC cards are, where to get them, where they work, and how to use Mobile Suica on iPhone and Android."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport/ic-cards-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/ic-cards-japan" />
         <meta property="og:title" content="IC Cards in Japan 2026: Suica, Pasmo & How to Use Them" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport/ic-cards-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/ic-cards-japan" />
         <meta property="og:description" content="Suica or Pasmo? We explain what IC cards are, where to get them, where they work, and how to use Mobile Suica on iPhone and Android." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

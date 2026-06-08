@@ -67,9 +67,9 @@ export default function BestEsimJapanRedditPage() {
           name="description"
           content="What does Reddit say about Japan eSIMs? We analysed hundreds of threads on r/JapanTravel to find the most recommended eSIMs for your trip."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/best-esim-japan-reddit" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-esim-japan-reddit" />
         <meta property="og:title" content="Best eSIM for Japan Reddit 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/best-esim-japan-reddit" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/best-esim-japan-reddit" />
         <meta property="og:description" content="What does Reddit say about Japan eSIMs? We analysed hundreds of threads on r/JapanTravel to find the most recommended eSIMs for your trip." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

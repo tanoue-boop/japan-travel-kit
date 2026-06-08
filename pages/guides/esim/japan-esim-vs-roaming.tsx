@@ -98,10 +98,10 @@ export default function JapanEsimVsRoamingPage() {
           name="description"
           content="Is roaming or an eSIM cheaper for Japan? We compare costs from AT&T, Verizon, T-Mobile, EE and more against Airalo, eSIM Go and Holafly. The answer is clear."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-vs-roaming" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-vs-roaming" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Japan eSIM vs Roaming 2026: Which Is Cheaper?" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-vs-roaming" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-vs-roaming" />
         <meta property="og:description" content="Is roaming or an eSIM cheaper for Japan? We compare costs from AT&T, Verizon, T-Mobile, EE and more against Airalo, eSIM Go and Holafly. The answer is clear." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -115,10 +115,10 @@ export default function JapanEsimVsRoamingPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "eSIM vs Roaming", item: "https://japan-travel-kit.com/guides/esim/japan-esim-vs-roaming" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "eSIM vs Roaming", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-vs-roaming" },
               ],
             }),
           }}

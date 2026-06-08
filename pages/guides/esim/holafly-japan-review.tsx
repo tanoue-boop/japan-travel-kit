@@ -114,9 +114,9 @@ export default function HolaflyJapanReviewPage() {
           name="description"
           content="Is Holafly worth it for Japan? We tested their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/holafly-japan-review" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/holafly-japan-review" />
         <meta property="og:title" content="Holafly Japan Review 2026: Is Unlimited Data Worth the Price?" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/holafly-japan-review" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/holafly-japan-review" />
         <meta property="og:description" content="Is Holafly worth it for Japan? We tested their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

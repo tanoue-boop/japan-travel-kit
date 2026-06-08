@@ -98,10 +98,10 @@ export default function JapanTravelBudgetPage() {
           name="description"
           content="How much does Japan cost per day? We break down realistic budgets for backpackers, mid-range, and comfortable travellers — with 2026 prices for food, transport, and accommodation."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/money/japan-travel-budget" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/japan-travel-budget" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Japan Travel Budget 2026: Daily Costs | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/money/japan-travel-budget" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/japan-travel-budget" />
         <meta property="og:description" content="How much does Japan cost per day? We break down realistic budgets for backpackers, mid-range, and comfortable travellers — with 2026 prices for food, transport, and accommodation." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -150,10 +150,10 @@ export default function JapanTravelBudgetPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home",              item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides",            item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Money & Payment",   item: "https://japan-travel-kit.com/guides/money" },
-                { "@type": "ListItem", position: 4, name: "Japan Travel Budget", item: "https://japan-travel-kit.com/guides/money/japan-travel-budget" },
+                { "@type": "ListItem", position: 1, name: "Home",              item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides",            item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Money & Payment",   item: "https://www.japan-travel-kit.com/guides/money" },
+                { "@type": "ListItem", position: 4, name: "Japan Travel Budget", item: "https://www.japan-travel-kit.com/guides/money/japan-travel-budget" },
               ],
             }),
           }}

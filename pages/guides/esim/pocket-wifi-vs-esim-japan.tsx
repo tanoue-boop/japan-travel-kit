@@ -34,9 +34,9 @@ export default function PocketWifiVsEsimPage() {
           name="description"
           content="Pocket WiFi or eSIM for Japan? We compare price, convenience, and coverage to help you choose the best option for your trip."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/pocket-wifi-vs-esim-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/pocket-wifi-vs-esim-japan" />
         <meta property="og:title" content="Pocket WiFi vs eSIM for Japan 2026: Which Is Better?" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/pocket-wifi-vs-esim-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/pocket-wifi-vs-esim-japan" />
         <meta property="og:description" content="Pocket WiFi or eSIM for Japan? We compare price, convenience, and coverage to help you choose the best option for your trip." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

@@ -101,9 +101,9 @@ export default function JapanTravelInsurancePage() {
           content="Do you need travel insurance for Japan? We explain the risks, what to cover, and the best policies for every budget — with 2026 cost estimates."
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/money/japan-travel-insurance" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/japan-travel-insurance" />
         <meta property="og:title" content="Japan Travel Insurance 2026: Do You Need It?" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/money/japan-travel-insurance" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/japan-travel-insurance" />
         <meta property="og:description" content="Do you need travel insurance for Japan? We explain the risks, what to cover, and the best policies for every budget — with 2026 cost estimates." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -152,10 +152,10 @@ export default function JapanTravelInsurancePage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com/" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://japan-travel-kit.com/guides/money" },
-                { "@type": "ListItem", position: 4, name: "Japan Travel Insurance", item: "https://japan-travel-kit.com/guides/money/japan-travel-insurance" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://www.japan-travel-kit.com/guides/money" },
+                { "@type": "ListItem", position: 4, name: "Japan Travel Insurance", item: "https://www.japan-travel-kit.com/guides/money/japan-travel-insurance" },
               ],
             }),
           }}

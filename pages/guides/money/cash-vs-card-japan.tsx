@@ -95,9 +95,9 @@ export default function CashVsCardJapanPage() {
           name="description"
           content="Japan is still cash-heavy — but cards work in more places than you'd think. Which ATMs accept foreign cards, where cash is required, and how to avoid fees."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/money/cash-vs-card-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/cash-vs-card-japan" />
         <meta property="og:title" content="Cash vs Card in Japan 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/money/cash-vs-card-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/cash-vs-card-japan" />
         <meta property="og:description" content="Japan is still cash-heavy — but cards work in more places than you'd think. Which ATMs accept foreign cards, where cash is required, and how to avoid fees." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

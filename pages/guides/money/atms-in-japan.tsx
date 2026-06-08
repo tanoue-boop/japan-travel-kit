@@ -125,10 +125,10 @@ export default function AtmsInJapanPage() {
           name="description"
           content="Most Japanese ATMs don't accept foreign cards. We explain which ones do — 7-Eleven, Japan Post, AEON — and how to avoid fees and withdrawal limits."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/money/atms-in-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/atms-in-japan" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="ATMs in Japan 2026: Which Accept Foreign Cards | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/money/atms-in-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/atms-in-japan" />
         <meta property="og:description" content="Most Japanese ATMs don't accept foreign cards. We explain which ones do — 7-Eleven, Japan Post, AEON — and how to avoid fees and withdrawal limits." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -177,10 +177,10 @@ export default function AtmsInJapanPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://japan-travel-kit.com/guides/money" },
-                { "@type": "ListItem", position: 4, name: "ATMs in Japan", item: "https://japan-travel-kit.com/guides/money/atms-in-japan" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://www.japan-travel-kit.com/guides/money" },
+                { "@type": "ListItem", position: 4, name: "ATMs in Japan", item: "https://www.japan-travel-kit.com/guides/money/atms-in-japan" },
               ],
             }),
           }}

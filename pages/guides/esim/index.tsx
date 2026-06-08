@@ -12,10 +12,10 @@ export default function GuidesEsimPage() {
           name="description"
           content="Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated April 2026."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim" />
         <meta property="og:description" content="Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated April 2026." />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -29,9 +29,9 @@ export default function GuidesEsimPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
               ],
             }),
           }}

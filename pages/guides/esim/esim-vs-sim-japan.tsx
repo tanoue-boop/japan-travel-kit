@@ -119,7 +119,7 @@ export default function EsimVsSimJapanPage() {
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-sim-card-vs-esim-2026" />
         <meta property="og:title" content="eSIM vs SIM Card for Japan: Which Should You Get?" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/esim-vs-sim-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/esim-vs-sim-japan" />
         <meta property="og:description" content="eSIM or physical SIM card for Japan? We compare price, convenience, phone compatibility, and coverage to help you choose the right option for your trip." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

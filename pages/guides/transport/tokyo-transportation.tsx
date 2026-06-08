@@ -103,9 +103,9 @@ export default function TokyoTransportationPage() {
           content="How to get around Tokyo in 2026. We explain the Yamanote Line, Tokyo Metro, IC cards, and key routes — so you can navigate Japan's biggest city with confidence."
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport/tokyo-transportation" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" />
         <meta property="og:title" content="Getting Around Tokyo 2026: Trains, Subway & IC Cards" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport/tokyo-transportation" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" />
         <meta property="og:description" content="How to get around Tokyo in 2026. We explain the Yamanote Line, Tokyo Metro, IC cards, and key routes — so you can navigate Japan's biggest city with confidence." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -154,10 +154,10 @@ export default function TokyoTransportationPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com/" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Transport", item: "https://japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "Getting Around Tokyo", item: "https://japan-travel-kit.com/guides/transport/tokyo-transportation" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport", item: "https://www.japan-travel-kit.com/guides/transport" },
+                { "@type": "ListItem", position: 4, name: "Getting Around Tokyo", item: "https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" },
               ],
             }),
           }}

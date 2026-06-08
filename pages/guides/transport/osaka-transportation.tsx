@@ -103,9 +103,9 @@ export default function OsakaTransportationPage() {
           content="How to get around Osaka in 2026. We explain the Midosuji Line, Osaka Metro day passes, IC cards, and key routes to top attractions — with 2026 fares."
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport/osaka-transportation" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/osaka-transportation" />
         <meta property="og:title" content="Getting Around Osaka 2026: Subway, Trains & IC Cards" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport/osaka-transportation" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/osaka-transportation" />
         <meta property="og:description" content="How to get around Osaka in 2026. We explain the Midosuji Line, Osaka Metro day passes, IC cards, and key routes to top attractions — with 2026 fares." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -154,10 +154,10 @@ export default function OsakaTransportationPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com/" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Transport", item: "https://japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "Getting Around Osaka", item: "https://japan-travel-kit.com/guides/transport/osaka-transportation" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport", item: "https://www.japan-travel-kit.com/guides/transport" },
+                { "@type": "ListItem", position: 4, name: "Getting Around Osaka", item: "https://www.japan-travel-kit.com/guides/transport/osaka-transportation" },
               ],
             }),
           }}

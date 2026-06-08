@@ -140,10 +140,10 @@ export default function JapanEsimSeniorsPage() {
           name="description"
           content="The easiest Japan eSIM options for older travellers — simple setup, English support, and no contracts. Airalo, Sakura Mobile, and eSIM Go compared."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-seniors" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-seniors" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Best eSIM for Japan for Seniors 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-seniors" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-seniors" />
         <meta property="og:description" content="The easiest Japan eSIM options for older travellers — simple setup, English support, and no contracts. Airalo, Sakura Mobile, and eSIM Go compared." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -192,10 +192,10 @@ export default function JapanEsimSeniorsPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home",               item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides",             item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards",   item: "https://japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "eSIM for Seniors",   item: "https://japan-travel-kit.com/guides/esim/japan-esim-seniors" },
+                { "@type": "ListItem", position: 1, name: "Home",               item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides",             item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards",   item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "eSIM for Seniors",   item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-seniors" },
               ],
             }),
           }}

@@ -110,9 +110,9 @@ export default function JapanAirportSimCardsPage() {
           name="description"
           content="Can you buy a SIM card at Japanese airports? Yes — but pre-ordered eSIMs are cheaper and faster. We compare airport SIMs vs eSIMs for every major Japan airport."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-airport-sim-cards" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-airport-sim-cards" />
         <meta property="og:title" content="Japan Airport SIM Cards 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-airport-sim-cards" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-airport-sim-cards" />
         <meta property="og:description" content="Can you buy a SIM card at Japanese airports? Yes — but pre-ordered eSIMs are cheaper and faster. We compare airport SIMs vs eSIMs for every major Japan airport." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

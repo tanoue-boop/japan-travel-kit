@@ -40,9 +40,9 @@ export default function DoesHolaflyWorkInJapanPage() {
           name="description"
           content="Does Holafly work in Japan? Yes — we tested unlimited data on SoftBank network. Full coverage, speed and activation guide."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/does-holafly-work-in-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/does-holafly-work-in-japan" />
         <meta property="og:title" content="Does Holafly Work in Japan? 2026 Coverage &amp; Speed Test" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/does-holafly-work-in-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/does-holafly-work-in-japan" />
         <meta property="og:description" content="Does Holafly work in Japan? Yes — we tested unlimited data on SoftBank network. Full coverage, speed and activation guide." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

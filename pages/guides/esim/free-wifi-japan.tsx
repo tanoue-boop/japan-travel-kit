@@ -87,9 +87,9 @@ export default function FreeWifiJapanPage() {
           name="description"
           content="Free WiFi exists in Japan but it's patchy and requires registration. We explain where to find it, how reliable it is, and why most travellers use a SIM instead."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/free-wifi-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/free-wifi-japan" />
         <meta property="og:title" content="Free WiFi in Japan (2026): Where to Find It & Why You Still Need a SIM" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/free-wifi-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/free-wifi-japan" />
         <meta property="og:description" content="Free WiFi exists in Japan but it's patchy and requires registration. We explain where to find it, how reliable it is, and why most travellers use a SIM instead." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

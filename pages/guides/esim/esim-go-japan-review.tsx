@@ -118,9 +118,9 @@ export default function EsimGoJapanReviewPage() {
           name="description"
           content="Is eSIM Go the best budget eSIM for Japan? We tested their plans, Docomo network coverage, and activation process. Read our honest review before you buy."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/esim-go-japan-review" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/esim-go-japan-review" />
         <meta property="og:title" content="eSIM Go Japan Review 2026: Cheapest eSIM for Japan? Honest Test" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/esim-go-japan-review" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/esim-go-japan-review" />
         <meta property="og:description" content="Is eSIM Go the best budget eSIM for Japan? We tested their plans, Docomo network coverage, and activation process. Read our honest review before you buy." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

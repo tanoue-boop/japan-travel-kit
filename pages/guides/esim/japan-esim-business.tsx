@@ -133,9 +133,9 @@ export default function JapanEsimBusinessPage() {
           content="The best Japan eSIM for business travellers in 2026. We compare Airalo, Sakura Mobile, Holafly and eSIM Go on reliability, data speed, and expense-friendliness."
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-business" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-business" />
         <meta property="og:title" content="Best eSIM for Japan Business Travel 2026" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-business" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-business" />
         <meta property="og:description" content="The best Japan eSIM for business travellers in 2026. We compare Airalo, Sakura Mobile, Holafly and eSIM Go on reliability, data speed, and expense-friendliness." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -184,10 +184,10 @@ export default function JapanEsimBusinessPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com/" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "eSIM for Business Travel", item: "https://japan-travel-kit.com/guides/esim/japan-esim-business" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "eSIM for Business Travel", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-business" },
               ],
             }),
           }}

@@ -73,10 +73,10 @@ export default function TippingInJapanPage() {
           name="description"
           content="Should you tip in Japan? No — and here's why. We explain Japan's no-tipping culture, what happens if you try, and how to show appreciation instead."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/money/tipping-in-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/tipping-in-japan" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Tipping in Japan 2026: Should You Tip? | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/money/tipping-in-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/tipping-in-japan" />
         <meta property="og:description" content="Should you tip in Japan? No — and here's why. We explain Japan's no-tipping culture, what happens if you try, and how to show appreciation instead." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -125,10 +125,10 @@ export default function TippingInJapanPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://japan-travel-kit.com/guides/money" },
-                { "@type": "ListItem", position: 4, name: "Tipping in Japan", item: "https://japan-travel-kit.com/guides/money/tipping-in-japan" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://www.japan-travel-kit.com/guides/money" },
+                { "@type": "ListItem", position: 4, name: "Tipping in Japan", item: "https://www.japan-travel-kit.com/guides/money/tipping-in-japan" },
               ],
             }),
           }}

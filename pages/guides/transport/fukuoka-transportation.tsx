@@ -97,7 +97,7 @@ const faqItems = [
   },
 ];
 
-const canonicalUrl = "https://japan-travel-kit.com/guides/transport/fukuoka-transportation";
+const canonicalUrl = "https://www.japan-travel-kit.com/guides/transport/fukuoka-transportation";
 
 export default function FukuokaTransportationPage() {
   return (
@@ -160,9 +160,9 @@ export default function FukuokaTransportationPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com/" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Transport", item: "https://japan-travel-kit.com/guides/transport" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport", item: "https://www.japan-travel-kit.com/guides/transport" },
                 { "@type": "ListItem", position: 4, name: "Getting Around Fukuoka", item: canonicalUrl },
               ],
             }),

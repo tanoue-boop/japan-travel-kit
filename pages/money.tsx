@@ -77,7 +77,7 @@ export default function MoneyPage() {
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

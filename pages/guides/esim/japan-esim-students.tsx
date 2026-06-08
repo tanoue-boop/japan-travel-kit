@@ -94,9 +94,9 @@ export default function JapanEsimStudentsPage() {
           content="The best budget eSIM for studying in Japan in 2026. We compare eSIM Go, Airalo, Sakura Mobile and Holafly for short exchanges and long-term study stays."
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-students" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-students" />
         <meta property="og:title" content="Best eSIM for Japan Students 2026: Budget Picks" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-students" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-students" />
         <meta property="og:description" content="The best budget eSIM for studying in Japan in 2026. We compare eSIM Go, Airalo, Sakura Mobile and Holafly for short exchanges and long-term study stays." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -145,10 +145,10 @@ export default function JapanEsimStudentsPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com/" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "eSIM for Students", item: "https://japan-travel-kit.com/guides/esim/japan-esim-students" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "eSIM for Students", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-students" },
               ],
             }),
           }}

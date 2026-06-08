@@ -63,9 +63,9 @@ export default function JapanEsimWithPhoneNumberPage() {
           name="description"
           content="Need a Japan eSIM with a phone number? Most eSIMs are data-only. We compare all your options for voice calls in Japan — find the right plan for your trip."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-with-phone-number" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-with-phone-number" />
         <meta property="og:title" content="Japan eSIM with Phone Number 2026: Best Options for Voice & Data" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-with-phone-number" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-with-phone-number" />
         <meta property="og:description" content="Need a Japan eSIM with a phone number? Most eSIMs are data-only. We compare all your options for voice calls in Japan — find the right plan for your trip." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

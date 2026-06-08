@@ -117,9 +117,9 @@ export default function JrPassGuidePage() {
           name="description"
           content="Is the JR Pass worth it for your Japan trip? We break down all pass types, prices, and real itinerary costs to help you decide before you buy."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport/jr-pass-guide" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/jr-pass-guide" />
         <meta property="og:title" content="JR Pass Guide 2026: Is It Worth It for Your Japan Trip?" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport/jr-pass-guide" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/jr-pass-guide" />
         <meta property="og:description" content="Is the JR Pass worth it for your Japan trip? We break down all pass types, prices, and real itinerary costs to help you decide before you buy." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

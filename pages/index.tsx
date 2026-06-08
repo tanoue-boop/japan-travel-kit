@@ -62,11 +62,11 @@ export default function HomePage() {
       <Head>
         <title>Japan Travel Kit — Practical Travel Tips for Japan</title>
         <meta name="description" content="Compare Japan SIM cards, pocket WiFi, and eSIMs for 2026. Practical advice on transport, money, and connectivity — all in plain English, before you land." />
-        <link rel="canonical" href="https://japan-travel-kit.com" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Japan Travel Kit — Practical Travel Tips for Japan" />
         <meta property="og:description" content="Compare Japan SIM cards, pocket WiFi, and eSIMs for 2026. Practical advice on transport, money, and connectivity — all in plain English, before you land." />
-        <meta property="og:url" content="https://japan-travel-kit.com" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -79,7 +79,7 @@ export default function HomePage() {
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Japan Travel Kit",
-              url: "https://japan-travel-kit.com",
+              url: "https://www.japan-travel-kit.com",
               description: "Practical travel information for foreign visitors to Japan.",
             }),
           }}

@@ -117,10 +117,10 @@ export default function TokyoAirportTransferPage() {
           name="description"
           content="How to get from Narita or Haneda airport to central Tokyo. We compare trains, buses, and taxis on price, speed, and convenience — with 2026 fares."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport/tokyo-airport-transfer" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Tokyo Airport Transfer 2026: Narita &amp; Haneda | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport/tokyo-airport-transfer" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer" />
         <meta property="og:description" content="How to get from Narita or Haneda airport to central Tokyo. We compare trains, buses, and taxis on price, speed, and convenience — with 2026 fares." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -169,10 +169,10 @@ export default function TokyoAirportTransferPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home",                    item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides",                  item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Transport & Getting Around", item: "https://japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "Tokyo Airport Transfer",  item: "https://japan-travel-kit.com/guides/transport/tokyo-airport-transfer" },
+                { "@type": "ListItem", position: 1, name: "Home",                    item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides",                  item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport & Getting Around", item: "https://www.japan-travel-kit.com/guides/transport" },
+                { "@type": "ListItem", position: 4, name: "Tokyo Airport Transfer",  item: "https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer" },
               ],
             }),
           }}

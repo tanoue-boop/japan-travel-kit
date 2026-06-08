@@ -42,9 +42,9 @@ export default function SIMCardsPage() {
           name="description"
           content="Compare the best Japan tourist SIM cards and eSIMs for 2026. Airalo, IIJmio, Klook, Sakura Mobile — prices, coverage, and honest reviews."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/sim-cards" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/sim-cards" />
         <meta property="og:title" content="Best Japan SIM Cards 2026 — Compare Tourist SIM & eSIM" />
-        <meta property="og:url" content="https://japan-travel-kit.com/sim-cards" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/sim-cards" />
         <meta property="og:description" content="Compare the best Japan tourist SIM cards and eSIMs for 2026. Airalo, IIJmio, Klook, Sakura Mobile — prices, coverage, and honest reviews." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -59,8 +59,8 @@ export default function SIMCardsPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "SIM Cards", item: "https://japan-travel-kit.com/sim-cards" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "SIM Cards", item: "https://www.japan-travel-kit.com/sim-cards" },
               ],
             }),
           }}
@@ -90,7 +90,7 @@ export default function SIMCardsPage() {
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
-                url: "https://japan-travel-kit.com",
+                url: "https://www.japan-travel-kit.com",
               },
             }),
           }}

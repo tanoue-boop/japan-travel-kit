@@ -101,10 +101,10 @@ export default function OsakaAirportTransferPage() {
           name="description"
           content="How to get from Kansai Airport (KIX) or Itami (ITM) to Osaka city. We compare trains, buses and taxis on price, speed and convenience — with 2026 fares."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport/osaka-airport-transfer" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/osaka-airport-transfer" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Osaka Airport Transfer 2026: KIX &amp; ITM Guide | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport/osaka-airport-transfer" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/osaka-airport-transfer" />
         <meta property="og:description" content="How to get from Kansai Airport (KIX) or Itami (ITM) to Osaka city. We compare trains, buses and taxis on price, speed and convenience — with 2026 fares." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -118,10 +118,10 @@ export default function OsakaAirportTransferPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Transport", item: "https://japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "Osaka Airport Transfer", item: "https://japan-travel-kit.com/guides/transport/osaka-airport-transfer" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport", item: "https://www.japan-travel-kit.com/guides/transport" },
+                { "@type": "ListItem", position: 4, name: "Osaka Airport Transfer", item: "https://www.japan-travel-kit.com/guides/transport/osaka-airport-transfer" },
               ],
             }),
           }}

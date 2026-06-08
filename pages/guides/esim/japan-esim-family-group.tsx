@@ -34,9 +34,9 @@ export default function JapanEsimFamilyGroupPage() {
           name="description"
           content="Travelling to Japan with family or a group? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-family-group" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-family-group" />
         <meta property="og:title" content="Japan eSIM for Family &amp; Group Travel 2026" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-family-group" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-family-group" />
         <meta property="og:description" content="Travelling to Japan with family or a group? We compare individual eSIMs vs shared Pocket WiFi to find the most cost-effective option." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

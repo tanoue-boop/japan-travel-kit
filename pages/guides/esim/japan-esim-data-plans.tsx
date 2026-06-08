@@ -100,10 +100,10 @@ export default function JapanEsimDataPlansPage() {
           name="description"
           content="Compare every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile. Find the right plan for your trip length and data needs."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-data-plans" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-data-plans" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Japan eSIM Data Plans 2026: Full Comparison | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-data-plans" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-data-plans" />
         <meta property="og:description" content="Compare every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile. Find the right plan for your trip length and data needs." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -152,10 +152,10 @@ export default function JapanEsimDataPlansPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home",                item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides",              item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards",    item: "https://japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "Japan eSIM Data Plans", item: "https://japan-travel-kit.com/guides/esim/japan-esim-data-plans" },
+                { "@type": "ListItem", position: 1, name: "Home",                item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides",              item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards",    item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "Japan eSIM Data Plans", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-data-plans" },
               ],
             }),
           }}

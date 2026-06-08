@@ -96,9 +96,9 @@ export default function GuidesIndexPage() {
           name="description"
           content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides" />
         <meta property="og:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides" />
         <meta property="og:description" content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors." />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -113,8 +113,8 @@ export default function GuidesIndexPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
               ],
             }),
           }}

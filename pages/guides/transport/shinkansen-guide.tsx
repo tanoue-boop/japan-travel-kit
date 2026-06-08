@@ -125,10 +125,10 @@ export default function ShinkansenGuidePage() {
           name="description"
           content="Everything you need to know about Japan's bullet train. We cover ticket types, prices, JR Pass tips, and how to book — before your first ride."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport/shinkansen-guide" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/shinkansen-guide" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Shinkansen Guide 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport/shinkansen-guide" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/shinkansen-guide" />
         <meta property="og:description" content="Everything you need to know about Japan's bullet train. We cover ticket types, prices, JR Pass tips, and how to book — before your first ride." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -177,10 +177,10 @@ export default function ShinkansenGuidePage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Transport & Getting Around", item: "https://japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "Shinkansen Guide", item: "https://japan-travel-kit.com/guides/transport/shinkansen-guide" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport & Getting Around", item: "https://www.japan-travel-kit.com/guides/transport" },
+                { "@type": "ListItem", position: 4, name: "Shinkansen Guide", item: "https://www.japan-travel-kit.com/guides/transport/shinkansen-guide" },
               ],
             }),
           }}

@@ -130,7 +130,7 @@ export default function JapanEsimUnlimitedPage() {
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-unlimited-esim-japan" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Best Unlimited eSIM for Japan 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-unlimited" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-unlimited" />
         <meta property="og:description" content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large fixed plans — with honest findings on speed and value." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -179,10 +179,10 @@ export default function JapanEsimUnlimitedPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home",               item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides",             item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards",   item: "https://japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "Best Unlimited eSIM", item: "https://japan-travel-kit.com/guides/esim/japan-esim-unlimited" },
+                { "@type": "ListItem", position: 1, name: "Home",               item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides",             item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards",   item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "Best Unlimited eSIM", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-unlimited" },
               ],
             }),
           }}

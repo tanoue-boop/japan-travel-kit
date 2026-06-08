@@ -179,10 +179,10 @@ export default function JapanEsimAndroidTabletPage() {
           name="description"
           content="How to get a Japan eSIM for your Android tablet in 2026. We compare Airalo, Holafly and eSIM Go for Samsung Galaxy Tab and Google Pixel Tablet."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-esim-android-tablet" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-android-tablet" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Best eSIM for Japan on Android Tablet 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-esim-android-tablet" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-android-tablet" />
         <meta property="og:description" content="How to get a Japan eSIM for your Android tablet in 2026. We compare Airalo, Holafly and eSIM Go for Samsung Galaxy Tab and Google Pixel Tablet." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -231,10 +231,10 @@ export default function JapanEsimAndroidTabletPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "eSIM for Android Tablet", item: "https://japan-travel-kit.com/guides/esim/japan-esim-android-tablet" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "eSIM for Android Tablet", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-android-tablet" },
               ],
             }),
           }}

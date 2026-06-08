@@ -12,9 +12,9 @@ export default function GuidesMoneyPage() {
           name="description"
           content="Japan money and payment guides: cash vs card, ATM access, currency exchange, and how to pay at convenience stores and restaurants in Japan."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/money" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money" />
         <meta property="og:title" content="Japan Money & Payment Guides 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/money" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money" />
         <meta property="og:description" content="Japan money and payment guides: cash vs card, ATM access, currency exchange, and how to pay at convenience stores and restaurants in Japan." />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -29,9 +29,9 @@ export default function GuidesMoneyPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://japan-travel-kit.com/guides/money" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://www.japan-travel-kit.com/guides/money" },
               ],
             }),
           }}

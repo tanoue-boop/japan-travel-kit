@@ -135,10 +135,10 @@ export default function KyotoTransportationPage() {
           name="description"
           content="How to get around Kyoto by bus, subway, JR train, and taxi. IC card tips, day pass breakdown, and access from Tokyo and Kansai Airport — all covered."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport/kyoto-transportation" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/kyoto-transportation" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport/kyoto-transportation" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/kyoto-transportation" />
         <meta property="og:description" content="How to get around Kyoto by bus, subway, JR train, and taxi. IC card tips, day pass breakdown, and access from Tokyo and Kansai Airport — all covered." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -187,10 +187,10 @@ export default function KyotoTransportationPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home",                        item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides",                      item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Transport & Getting Around",  item: "https://japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "Getting Around Kyoto",        item: "https://japan-travel-kit.com/guides/transport/kyoto-transportation" },
+                { "@type": "ListItem", position: 1, name: "Home",                        item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides",                      item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport & Getting Around",  item: "https://www.japan-travel-kit.com/guides/transport" },
+                { "@type": "ListItem", position: 4, name: "Getting Around Kyoto",        item: "https://www.japan-travel-kit.com/guides/transport/kyoto-transportation" },
               ],
             }),
           }}

@@ -54,9 +54,9 @@ export default function JapanSimShortVsLongStayPage() {
           name="description"
           content="Not sure how much data you need for Japan? We match the best SIM card or eSIM to your trip length — from 1 day to 1 month+. Find the right plan."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
         <meta property="og:title" content="Best Japan SIM Card by Trip Length 2026: 1 Week, 2 Weeks, 1 Month+" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-sim-short-vs-long-stay" />
         <meta property="og:description" content="Not sure how much data you need for Japan? We match the best SIM card or eSIM to your trip length — from 1 day to 1 month+. Find the right plan." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

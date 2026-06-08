@@ -12,9 +12,9 @@ export default function GuidesTransportPage() {
           name="description"
           content="Japan transport guides: JR Pass, IC cards (Suica & Pasmo), airport trains, and everything you need to navigate Japan's rail network."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/transport" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport" />
         <meta property="og:title" content="Japan Transport Guides 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/transport" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport" />
         <meta property="og:description" content="Japan transport guides: JR Pass, IC cards (Suica & Pasmo), airport trains, and everything you need to navigate Japan's rail network." />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -29,9 +29,9 @@ export default function GuidesTransportPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Transport & Getting Around", item: "https://japan-travel-kit.com/guides/transport" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Transport & Getting Around", item: "https://www.japan-travel-kit.com/guides/transport" },
               ],
             }),
           }}

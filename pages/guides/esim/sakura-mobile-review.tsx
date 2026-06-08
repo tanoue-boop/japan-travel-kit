@@ -112,9 +112,9 @@ export default function SakuraMobileReviewPage() {
           name="description"
           content="Sakura Mobile offers voice calls, English support, and Docomo coverage — ideal for long stays in Japan. But is it worth the price? Our honest review."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/sakura-mobile-review" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/sakura-mobile-review" />
         <meta property="og:title" content="Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/sakura-mobile-review" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/sakura-mobile-review" />
         <meta property="og:description" content="Sakura Mobile offers voice calls, English support, and Docomo coverage — ideal for long stays in Japan. But is it worth the price? Our honest review." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

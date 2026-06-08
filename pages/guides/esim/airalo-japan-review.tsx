@@ -106,9 +106,9 @@ export default function AiraloJapanReviewPage() {
           name="description"
           content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/airalo-japan-review" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/airalo-japan-review" />
         <meta property="og:title" content="Airalo Japan Review 2026: Honest Test & Verdict" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/airalo-japan-review" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/airalo-japan-review" />
         <meta property="og:description" content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />

@@ -81,10 +81,10 @@ export default function CurrencyExchangeJapanPage() {
           name="description"
           content="Where should you exchange money in Japan? We rank the best options from ATMs to airport counters — and explain which to avoid to get the best yen rate."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/money/currency-exchange-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/currency-exchange-japan" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Currency Exchange in Japan 2026: Best Ways to Get Yen" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/money/currency-exchange-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/currency-exchange-japan" />
         <meta property="og:description" content="Where should you exchange money in Japan? We rank the best options from ATMs to airport counters — and explain which to avoid to get the best yen rate." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
@@ -98,10 +98,10 @@ export default function CurrencyExchangeJapanPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides", item: "https://japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://japan-travel-kit.com/guides/money" },
-                { "@type": "ListItem", position: 4, name: "Currency Exchange", item: "https://japan-travel-kit.com/guides/money/currency-exchange-japan" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://www.japan-travel-kit.com/guides/money" },
+                { "@type": "ListItem", position: 4, name: "Currency Exchange", item: "https://www.japan-travel-kit.com/guides/money/currency-exchange-japan" },
               ],
             }),
           }}

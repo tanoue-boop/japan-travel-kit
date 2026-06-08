@@ -121,9 +121,9 @@ export default function HowToSetUpEsimJapanPage() {
           name="description"
           content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land."
         />
-        <link rel="canonical" href="https://japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
         <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)" />
-        <meta property="og:url" content="https://japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
+        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
         <meta property="og:description" content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
