@@ -8,6 +8,20 @@ export type MoneyArticle = {
 
 export const moneyArticles: MoneyArticle[] = [
   {
+    href: "/guides/money/best-travel-insurance-japan",
+    badge: "Comparison",
+    title: "Best Travel Insurance for Japan (2026): Compared & Reviewed",
+    desc: "We compare Heymondo, SafetyWing, and World Nomads on medical cover, price structure, ski cover, and English support — with picks for every type of Japan trip.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/money/safetywing-vs-heymondo-japan",
+    badge: "Comparison",
+    title: "SafetyWing vs Heymondo for Japan (2026): Which Should You Pick?",
+    desc: "Subscription vs trip cover for Japan. We compare medical limits, app support, ski cover, and waiting periods so you know which insurer fits your trip.",
+    date: "June 2026",
+  },
+  {
     href: "/guides/money/wise-vs-revolut-japan",
     badge: "Comparison",
     title: "Wise vs Revolut for Japan (2026): Which Travel Card Wins?",

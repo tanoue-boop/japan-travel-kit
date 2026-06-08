@@ -535,4 +535,24 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- 2026-06-08 additions -->
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/transport/jr-pass-worth-it</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/money/best-travel-insurance-japan</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/money/safetywing-vs-heymondo-japan</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

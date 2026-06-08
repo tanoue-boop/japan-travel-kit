@@ -8,6 +8,13 @@ export type TransportArticle = {
 
 export const transportArticles: TransportArticle[] = [
   {
+    href: "/guides/transport/jr-pass-worth-it",
+    badge: "Comparison",
+    title: "Is the JR Pass Worth It in 2026? Honest Cost Breakdown",
+    desc: "Since the 2023 hike to ¥50,000, the JR Pass no longer pays off for most itineraries. We show the break-even math, who should still buy it, and cheaper alternatives.",
+    date: "June 2026",
+  },
+  {
     href: "/guides/transport/kyoto-subway-bus-pass",
     badge: "Guide",
     title: "Is the Kyoto Subway & Bus 1-Day Pass Worth It? (2026 Guide)",
