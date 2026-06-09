@@ -2,9 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// CTA link — normal Klook product link for now.
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const SHIBUYA_SKY_URL = "https://www.klook.com/activity/70672-shibuya-sky-ticket-tokyo/";
+// CTA link — Klook affiliate redirect.
+const SHIBUYA_SKY_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299140&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F70672-shibuya-sky-tokyo%2F";
 
 const priceRows = [
   { ticket: "Adult (advance, online)", price: "¥2,500" },

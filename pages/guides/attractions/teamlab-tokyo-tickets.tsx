@@ -2,11 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// CTA links — normal Klook product/search links for now.
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const PLANETS_URL = "https://www.klook.com/en-US/search/?query=teamLab%20Planets%20Tokyo";
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const BORDERLESS_URL = "https://www.klook.com/en-US/search/?query=teamLab%20Borderless%20Tokyo";
+// CTA links — Klook affiliate redirects.
+const PLANETS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299131&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F25300-teamlab-planets-toyosu-tokyo-ticket%2F";
+const BORDERLESS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299135&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F20707-teamlab-borderless-admission-ticket-tokyo%2F";
 
 const compareRows = [
   { factor: "Location", planets: "Toyosu (Koto City)", borderless: "Azabudai Hills (Minato City)" },

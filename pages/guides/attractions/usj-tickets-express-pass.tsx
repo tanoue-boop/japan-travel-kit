@@ -2,11 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// CTA links — normal Klook product links for now.
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const STUDIO_PASS_URL = "https://www.klook.com/activity/46604-universal-studios-japan-studio-pass-osaka/";
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const EXPRESS_PASS_URL = "https://www.klook.com/activity/3407-universal-studios-japan-express-pass-osaka/";
+// CTA links — Klook affiliate redirects.
+const STUDIO_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
+const EXPRESS_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299138&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F3407-universal-studios-japan-express-pass-osaka%2F";
 
 const ticketRows = [
   { ticket: "1-Day Studio Pass", what: "Park entry for one day; ride standard attractions in standby queues", price: "Tiered by date — confirm at booking" },
