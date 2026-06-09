@@ -4,6 +4,7 @@ import styles from "../../styles/Guides.module.css";
 import { esimArticles } from "../../lib/guides-esim";
 import { transportArticles } from "../../lib/guides-transport";
 import { moneyArticles } from "../../lib/guides-money";
+import { attractionArticles } from "../../lib/guides-attractions";
 
 function IconSim() {
   return (
@@ -49,6 +50,15 @@ function IconMoney() {
   );
 }
 
+function IconTicket() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4z" />
+      <path d="M13 6v2M13 11v2M13 16v2" />
+    </svg>
+  );
+}
+
 function ChevronRight() {
   return (
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,6 +92,15 @@ const categories = [
     name: "Money & Payment",
     desc: "Cash vs card, ATM access, currency exchange, and how to pay at convenience stores and restaurants.",
     badge: `${moneyArticles.length} Guides`,
+    badgeCls: styles.badgeSoftRed,
+    soon: false,
+  },
+  {
+    href: "/guides/attractions",
+    Icon: IconTicket,
+    name: "Things to Do",
+    desc: "Tickets and experiences worth booking ahead — teamLab, Universal Studios Japan, Shibuya Sky, and how to skip the queues.",
+    badge: `${attractionArticles.length} Guides`,
     badgeCls: styles.badgeSoftRed,
     soon: false,
   },
