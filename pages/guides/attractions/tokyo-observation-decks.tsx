@@ -3,10 +3,8 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
 // CTA links — Klook affiliate redirects.
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const SKYTREE_URL = "https://www.klook.com/en-US/activity/41352-tokyo-skytree-ticket-tokyo/";
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const TOKYO_TOWER_URL = "https://www.klook.com/en-US/search/?query=Tokyo%20Tower";
+const SKYTREE_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304894&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F41352-tokyo-skytree%2F";
+const TOKYO_TOWER_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304895&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F4911-tokyo-tower-main-observatory-ticket-tokyo%2F";
 const SHIBUYA_SKY_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299140&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F70672-shibuya-sky-tokyo%2F";
 
 const deckRows = [

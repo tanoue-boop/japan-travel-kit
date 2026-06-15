@@ -3,10 +3,8 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
 // CTA links — Klook affiliate redirects.
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const OSAKA_AMAZING_PASS_URL = "https://www.klook.com/en-US/activity/30889-osaka-amazing-pass-osaka/";
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const KAIYUKAN_URL = "https://www.klook.com/en-US/activity/598-osaka-aquarium-kaiyukan-ticket-osaka/";
+const OSAKA_AMAZING_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304898&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F82312-amazing-pass-osaka%2F";
+const KAIYUKAN_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304901&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F598-osaka-aquarium-kaiyukan-japan%2F";
 
 const includedRows = [
   { attraction: "Osaka Castle (Castle Tower)", included: "✓ Included", price: "approx ¥600" },

@@ -2,8 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const FUJI_TOUR_URL = "https://www.klook.com/en-US/activity/601-mount-fuji-hakone-day-tour-tokyo/";
+const FUJI_TOUR_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304893&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F124332-hakone-shrine-lake-ashi-owakudani-yamanakako-day-tour-from-tokyo%2F";
 
 const compareRows = [
   {

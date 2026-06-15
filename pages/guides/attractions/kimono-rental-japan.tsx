@@ -2,10 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const KIMONO_ASAKUSA_URL = "https://www.klook.com/en-US/activity/24284-kimono-rental-asakusa-tokyo/";
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const KIMONO_KYOTO_URL = "https://www.klook.com/en-US/activity/84720-kimono-rental-kyoto/";
+const KIMONO_ASAKUSA_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304896&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F100721-kimono-rental-experience-asakusa-kimono-mitsuki-tokyo%2F";
+const KIMONO_KYOTO_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304900&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F1079-one-day-kimono-rental-kyoto%2F";
 
 const areaRows = [
   {

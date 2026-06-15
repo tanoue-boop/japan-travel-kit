@@ -2,8 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const DISNEY_TICKET_URL = "https://www.klook.com/en-US/activity/695-tokyo-disney-resort-ticket-tokyo/";
+const DISNEY_TICKET_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304885&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F695-tokyo-disney-resort-1-day-pass-tokyo%2F";
 
 const ticketRows = [
   {
