@@ -581,4 +581,42 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Attractions guides (2026-06-15) -->
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-trip-tokyo</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/kimono-rental-japan</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/osaka-attractions-pass</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
