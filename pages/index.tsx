@@ -2,6 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import { esimArticles } from "../lib/guides-esim";
+import { transportArticles } from "../lib/guides-transport";
+import { moneyArticles } from "../lib/guides-money";
+import { attractionArticles } from "../lib/guides-attractions";
 
 const categories = [
   {
@@ -55,6 +59,72 @@ const stats = [
   { value: "2026", label: "Prices verified"        },
   { value: "Free", label: "No sign-up required"    },
 ];
+
+// Content guide hubs — route crawlers from the homepage into the article ecosystem
+const guideHubs = [
+  {
+    href: "/guides/esim",
+    iconSrc: "/icons/card-sim.svg",
+    iconAlt: "eSIM guides icon",
+    title: "eSIM & SIM Cards",
+    desc: "Which eSIM to buy, how to install it, network coverage, and honest plan comparisons.",
+    badge: `${esimArticles.length} Guides`,
+    badgeCls: styles.badgeSoftRed,
+  },
+  {
+    href: "/guides/transport",
+    iconSrc: "/icons/card-transport.svg",
+    iconAlt: "Transport guides icon",
+    title: "Getting Around",
+    desc: "Shinkansen passes, IC cards, airport trains, and city-by-city transport guides.",
+    badge: `${transportArticles.length} Guides`,
+    badgeCls: styles.badgeSoftGreen,
+  },
+  {
+    href: "/guides/money",
+    iconSrc: "/icons/card-money.svg",
+    iconAlt: "Money guides icon",
+    title: "Money & Payment",
+    desc: "Travel cards, ATM access, cash vs card, and how to pay your way across Japan.",
+    badge: `${moneyArticles.length} Guides`,
+    badgeCls: styles.badgeSoftAmber,
+  },
+  {
+    href: "/guides/attractions",
+    iconSrc: "/icons/icon-attractions.svg",
+    iconAlt: "Things to Do icon",
+    title: "Things to Do",
+    desc: "Tickets and experiences worth booking ahead — teamLab, USJ, Shibuya Sky and more.",
+    badge: `${attractionArticles.length} Guides`,
+    badgeCls: styles.badgeSoftBlue,
+  },
+  {
+    href: "/guides",
+    iconSrc: "/icons/icon-guide.svg",
+    iconAlt: "All guides icon",
+    title: "All Guides",
+    desc: "Browse every Japan travel guide in one place, organised by topic.",
+    badge: "Browse all",
+    badgeCls: styles.badgeSoftRed,
+  },
+];
+
+// Popular individual guides — direct links push crawl equity to key articles
+const popularHrefs = [
+  "/guides/esim/best-esim-japan",
+  "/guides/esim/cheapest-esim-japan",
+  "/guides/transport/jr-pass-guide",
+  "/guides/transport/ic-cards-japan",
+  "/guides/money/best-travel-card-japan",
+  "/guides/money/best-travel-insurance-japan",
+  "/guides/attractions/teamlab-tokyo-tickets",
+  "/guides/attractions/usj-tickets-express-pass",
+  "/guides/attractions/shibuya-sky-tickets",
+];
+const allArticles = [...esimArticles, ...transportArticles, ...moneyArticles, ...attractionArticles];
+const popularGuides = popularHrefs
+  .map((href) => allArticles.find((a) => a.href === href))
+  .filter((a): a is (typeof allArticles)[number] => Boolean(a));
 
 export default function HomePage() {
   return (
@@ -161,6 +231,73 @@ export default function HomePage() {
                   </div>
                   <h3 className={styles.catTitle}>{cat.title}</h3>
                   <p className={styles.catDesc}>{cat.desc}</p>
+                </div>
+                <div className={styles.catArrow}>
+                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Travel Guides hubs */}
+      <section className={styles.categories}>
+        <div className={styles.sectionHead}>
+          <span className={styles.sectionLabel}>Read before you go</span>
+          <h2 className={styles.sectionTitle}>Travel Guides</h2>
+          <p className={styles.sectionDesc}>
+            In-depth, independent guides for every part of your Japan trip — written in plain English.
+          </p>
+        </div>
+
+        <div className={styles.catGrid}>
+          {guideHubs.map((hub) => (
+            <Link key={hub.href} href={hub.href} className={styles.catCard}>
+              <div className={styles.catTop}>
+                <div className={styles.catLeft}>
+                  <div className={styles.catIconRow}>
+                    <span className={styles.catIcon}>
+                      <Image src={hub.iconSrc} width={46} height={46} alt={hub.iconAlt} unoptimized />
+                    </span>
+                    <span className={`${styles.catBadge} ${hub.badgeCls}`}>{hub.badge}</span>
+                  </div>
+                  <h3 className={styles.catTitle}>{hub.title}</h3>
+                  <p className={styles.catDesc}>{hub.desc}</p>
+                </div>
+                <div className={styles.catArrow}>
+                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Popular Guides */}
+      <section className={styles.categories}>
+        <div className={styles.sectionHead}>
+          <span className={styles.sectionLabel}>Most read</span>
+          <h2 className={styles.sectionTitle}>Popular Guides</h2>
+          <p className={styles.sectionDesc}>
+            The articles travellers open most before landing in Japan.
+          </p>
+        </div>
+
+        <div className={styles.catGrid}>
+          {popularGuides.map((article) => (
+            <Link key={article.href} href={article.href} className={styles.catCard}>
+              <div className={styles.catTop}>
+                <div className={styles.catLeft}>
+                  <div className={styles.catIconRow}>
+                    <span className={`${styles.catBadge} ${styles.badgeSoftRed}`}>{article.badge}</span>
+                  </div>
+                  <h3 className={styles.catTitle}>{article.title}</h3>
+                  <p className={styles.catDesc}>{article.desc}</p>
                 </div>
                 <div className={styles.catArrow}>
                   <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">

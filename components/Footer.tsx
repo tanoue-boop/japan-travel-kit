@@ -6,9 +6,11 @@ const cols = [
   {
     title: "Guides",
     links: [
-      { href: "/guides",                          label: "All Guides"        },
-      { href: "/guides/esim/best-esim-japan",     label: "Best eSIM Japan"   },
-      { href: "/guides/attractions",              label: "Things to Do"      },
+      { href: "/guides",             label: "All Guides"   },
+      { href: "/guides/esim",        label: "eSIM"         },
+      { href: "/guides/transport",   label: "Transport"    },
+      { href: "/guides/money",       label: "Money"        },
+      { href: "/guides/attractions", label: "Things to Do" },
     ],
   },
   {

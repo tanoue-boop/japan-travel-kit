@@ -556,7 +556,7 @@ export default function JapanSimCardVsEsim2026Page() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/esim/esim-vs-sim-japan" className={styles.relatedCard}>
+            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 16V4m0 0L3 8m4-4l4 4" />
@@ -564,7 +564,7 @@ export default function JapanSimCardVsEsim2026Page() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>eSIM vs SIM Card for Japan: Which Should You Get?</p>
+                <p className={styles.relatedTitle}>Pocket WiFi vs eSIM for Japan (2026): Which Is Better?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
