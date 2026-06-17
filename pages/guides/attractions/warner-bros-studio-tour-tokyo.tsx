@@ -2,9 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// CTA link — build-ahead. Plain Klook search link for now.
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const WARNER_BROS_URL = "https://www.klook.com/en-US/search/?query=Warner%20Bros%20Studio%20Tour%20Tokyo";
+// CTA link — Klook affiliate redirect.
+const WARNER_BROS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307043&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F84374-warner-bros-studio-tour-tokyo-making-harry-potter%2F";
 
 const priceRows = [
   { ticket: "Adult (18+)", price: "¥7,000" },

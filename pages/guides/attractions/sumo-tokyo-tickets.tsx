@@ -4,8 +4,8 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 
 // Official ticket source (Ticket Oosumo). TODO: swap to Klook Tokyo tournament-tour affiliate link when listed in-season (~Sept 2026 basho)
 const SUMO_TOURNAMENT_URL = "https://sumo.pia.jp/en/";
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const SUMO_PRACTICE_URL = "https://www.klook.com/en-US/search/?query=Sumo%20morning%20practice%20Tokyo";
+// Klook affiliate redirect.
+const SUMO_PRACTICE_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307055&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F130115-sumo-morning-practice-viewing-tour-tokyo%2F";
 
 const scheduleRows = [
   { basho: "January (Hatsu)", dates: "11–25 Jan 2026", days: "15 days" },
