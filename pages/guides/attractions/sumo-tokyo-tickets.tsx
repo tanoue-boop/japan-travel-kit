@@ -2,9 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// CTA links — build-ahead. Plain Klook search links for now.
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const SUMO_TOURNAMENT_URL = "https://www.klook.com/en-US/search/?query=Sumo%20tournament%20Tokyo";
+// Official ticket source (Ticket Oosumo). TODO: swap to Klook Tokyo tournament-tour affiliate link when listed in-season (~Sept 2026 basho)
+const SUMO_TOURNAMENT_URL = "https://sumo.pia.jp/en/";
 // TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
 const SUMO_PRACTICE_URL = "https://www.klook.com/en-US/search/?query=Sumo%20morning%20practice%20Tokyo";
 
@@ -363,9 +362,11 @@ export default function SumoTokyoTicketsPage() {
             they sell out quickly.
           </p>
           <p className={styles.bodyText}>
-            If official tickets are gone, a guided tour that bundles tournament admission is a reasonable
-            fallback, as is queuing for one of the roughly 400 same-day tickets (about ¥2,200) released each
-            morning.
+            Tournament tickets for the Tokyo basho (held at Ryogoku Kokugikan in January, May, and September) are
+            bought from the official Ticket Oosumo site. Klook&apos;s ticket-inclusive spectator tours are listed
+            only intermittently, during the Tokyo tournament season — so if official tickets are gone, such a
+            guided tour is a reasonable in-season fallback, as is queuing for one of the roughly 400 same-day
+            tickets (about ¥2,200) released each morning.
           </p>
         </section>
 
