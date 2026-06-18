@@ -2,9 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// CTA link — build-ahead. Plain Klook search link for now.
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const TOKYO_FOOD_TOUR_URL = "https://www.klook.com/en-US/search/?query=Shinjuku%20izakaya%20bar%20hopping%20Tokyo";
+// CTA link — Klook affiliate redirect.
+const TOKYO_FOOD_TOUR_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307856&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F94282-shinjuku-area-join-half-day-drinks-tour-3-hour-tokyo-local-bar-izakaya-crawl%2F";
 
 const compareRows = [
   {
