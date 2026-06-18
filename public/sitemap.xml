@@ -651,4 +651,36 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Attractions guides (2026-06-18) -->
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/kamakura-day-trip</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/things-to-do-kyoto</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/things-to-do-osaka</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-food-tour</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/tea-ceremony-japan</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
