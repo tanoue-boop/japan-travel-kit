@@ -140,4 +140,25 @@ export const attractionArticles: AttractionArticle[] = [
     desc: "What a tea ceremony involves, how long it takes, Tokyo versus Kyoto, pairing with a kimono, plus seating and pregnancy notes — and how to book a beginner-friendly session.",
     date: "June 2026",
   },
+  {
+    href: "/guides/attractions/nikko-day-trip",
+    badge: "Day Trip",
+    title: "Nikko Day Trip from Tokyo (2026): Toshogu Shrine, Kegon Falls & How to Get There",
+    desc: "About two hours north of Tokyo: the UNESCO-listed Toshogu Shrine in a cedar forest, the 97-metre Kegon Falls and Lake Chuzenji. Train times, the Irohazaka road, and tour vs DIY.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/attractions/tokyo-cooking-class",
+    badge: "Experience",
+    title: "Tokyo Cooking Class (2026): Sushi & Ramen Making — What to Expect & How to Book",
+    desc: "Make sushi and ramen from scratch, then eat it. We cover class types, prices (about ¥5,000–20,000), English-language and kid-friendly options, and how to pick and book the right session.",
+    date: "June 2026",
+  },
+  {
+    href: "/guides/attractions/samurai-ninja-experience-tokyo",
+    badge: "Experience",
+    title: "Samurai & Ninja Experience in Tokyo (2026): Sword Lessons, Where to Go & Tickets",
+    desc: "Armour dress-up, shuriken throwing and sword lessons — indoors and year-round in central Tokyo. We compare museum-style venues and sword classes, flag the age limits, and show how to book.",
+    date: "June 2026",
+  },
 ];
