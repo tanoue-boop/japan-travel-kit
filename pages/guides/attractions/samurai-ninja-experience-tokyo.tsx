@@ -2,8 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const SAMURAI_NINJA_URL = "https://www.klook.com/en-US/search/?query=Tokyo%20samurai%20ninja%20experience";
+// CTA link — Klook affiliate redirect.
+const SAMURAI_NINJA_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1309228&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F133891-samurai-ninja-museum-tokyo-with-samurai-and-ninja-experience%2F";
 
 const typeRows = [
   {

@@ -2,8 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// TODO: replace with Klook affiliate redirect (aid=119070&aff_adid=...) once generated
-const TOKYO_COOKING_CLASS_URL = "https://www.klook.com/en-US/search/?query=Tokyo%20cooking%20class%20sushi%20ramen";
+// CTA link — Klook affiliate redirect.
+const TOKYO_COOKING_CLASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1309224&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F122869-tokyo-sushi-making-experience-japanese-cooking-class%2F";
 
 const typeRows = [
   {
