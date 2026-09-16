@@ -8,7 +8,6 @@ type Item = {
   id: string;
   name: string;
   rating: number;
-  reviewCount: number;
   price: string;
   coverage: string;
   badge: string;
@@ -25,7 +24,6 @@ const items: Item[] = [
     id: "jr-pass",
     name: "JR Pass (7-day)",
     rating: 4.8,
-    reviewCount: 14000,
     price: "From $275",
     coverage: "JR trains nationwide",
     badge: "Best for Multi-City",
@@ -40,7 +38,6 @@ const items: Item[] = [
     id: "suica-ic",
     name: "Suica IC Card",
     rating: 4.9,
-    reviewCount: 8000,
     price: "¥500 deposit + charge",
     coverage: "All trains & buses",
     badge: "Must Have",
@@ -55,7 +52,6 @@ const items: Item[] = [
     id: "narita-express",
     name: "Narita Express (N'EX)",
     rating: 4.5,
-    reviewCount: 367,
     price: "From $25",
     coverage: "Narita → Shinjuku/Shibuya",
     badge: "Fastest from Narita",
@@ -70,7 +66,6 @@ const items: Item[] = [
     id: "keisei-skyliner",
     name: "Keisei Skyliner",
     rating: 4.9,
-    reviewCount: 77601,
     price: "From $14",
     coverage: "Narita → Ueno/Nippori",
     badge: "Most Popular Airport Train",
@@ -248,7 +243,7 @@ export default function TransportationPage() {
                         <span className={`${cardStyles.badge} ${badgeCls}`}>{item.badge}</span>
                       </div>
                       <h3 className={cardStyles.name}>{item.name}</h3>
-                      <StarRating rating={item.rating} reviewCount={item.reviewCount} />
+                      <StarRating rating={item.rating} />
                     </div>
                     <div className={cardStyles.priceBlock}>
                       <p className={cardStyles.priceFrom}>Price</p>

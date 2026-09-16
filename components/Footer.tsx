@@ -37,6 +37,10 @@ const cols = [
   },
 ];
 
+// Set in next.config.js at build time; falls back to "now" for dev.
+const buildDate = new Date(process.env.NEXT_PUBLIC_BUILD_DATE ?? Date.now());
+const updatedLabel = `Updated ${buildDate.toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" })}`;
+
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -55,7 +59,7 @@ export default function Footer() {
             </p>
             <span className={styles.status}>
               <span className={styles.dot} />
-              Updated April 2026
+              {updatedLabel}
             </span>
           </div>
 

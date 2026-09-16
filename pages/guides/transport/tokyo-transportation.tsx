@@ -11,9 +11,24 @@ const keyRoutes = [
 ];
 
 const dayPasses = [
+  { pass: "Tokyo Subway Ticket 24-hour", price: "¥800",   covers: "Tokyo Metro + Toei (13 lines)", worth: "Sometimes" },
+  { pass: "Tokyo Subway Ticket 48-hour", price: "¥1,200", covers: "Tokyo Metro + Toei (13 lines)", worth: "Sometimes" },
+  { pass: "Tokyo Subway Ticket 72-hour", price: "¥1,500", covers: "Tokyo Metro + Toei (13 lines)", worth: "Often" },
   { pass: "Tokyo Metro 1-day", price: "¥600",   covers: "Tokyo Metro only (9 lines)",  worth: "Sometimes" },
-  { pass: "Tokyo Metro 2-day", price: "¥1,000", covers: "Tokyo Metro only (9 lines)",  worth: "Sometimes" },
   { pass: "Tokyo Free Kippu",  price: "¥1,600", covers: "All Tokyo lines (JR + Metro + Toei)", worth: "Rarely" },
+];
+
+const subwayTicketRows = [
+  { pass: "24-hour", price: "¥800",   perDay: "¥800 / day",   breakeven: "~4–5 rides" },
+  { pass: "48-hour", price: "¥1,200", perDay: "¥600 / day",   breakeven: "~3–4 rides / day" },
+  { pass: "72-hour", price: "¥1,500", perDay: "¥500 / day",   breakeven: "~3 rides / day" },
+];
+
+const subwayVsIcRows = [
+  { scenario: "1–3 subway rides per day",   pick: "Suica / Pasmo", note: "Pay-as-you-go is cheaper and more flexible at this level of use." },
+  { scenario: "4+ subway rides per day",    pick: "Subway Ticket", note: "The flat-rate pass beats per-ride fares once you're hopping around a lot." },
+  { scenario: "Using JR (Yamanote) a lot",  pick: "Suica / Pasmo", note: "The Subway Ticket does not cover JR lines — an IC card does." },
+  { scenario: "One intense sightseeing day", pick: "Subway Ticket", note: "A packed day of Asakusa → Ueno → Ginza → Roppongi → Shibuya easily clears 5 rides." },
 ];
 
 const tokyoLines = [
@@ -91,6 +106,18 @@ const faqItems = [
     q: "Is Google Maps accurate for Tokyo trains?",
     a: "Yes, very accurate. Google Maps has real-time Tokyo train schedules, shows transfer instructions, fare estimates, and even carriage position recommendations. It's the most widely used navigation tool by both tourists and locals in Tokyo. Download offline maps for your area as a backup.",
   },
+  {
+    q: "Is the Tokyo Subway Ticket worth it?",
+    a: "It's worth it if you take roughly 4 or more subway rides per day on the Tokyo Metro and Toei lines. The 24-hour pass costs about ¥800 (a 2026 estimate, subject to change), while individual Metro rides run around ¥170–210 each — so 4–5 rides in a day cover the cost. If you only make a couple of journeys, or rely heavily on the JR Yamanote Line, a pay-as-you-go Suica or Pasmo is cheaper and more flexible.",
+  },
+  {
+    q: "What does the Tokyo Subway Ticket cover?",
+    a: "It covers unlimited rides on all 9 Tokyo Metro lines and all 4 Toei Subway lines for 24, 48, or 72 hours from first use (a 24-hour pass first tapped at 3pm is valid until 3pm the next day). It does not cover JR lines (including the Yamanote Line) or private railways. For trips that mix subway and JR, an IC card handles both automatically.",
+  },
+  {
+    q: "Where can I buy the Tokyo Subway Ticket?",
+    a: "You can buy it at Narita and Haneda airports (for example at Keisei counters and Bic Camera), at major tourist information centres, and online through Klook as a voucher you exchange after landing. Specific outlets are a 2026 guide and can change, so follow the in-airport signage or your voucher instructions.",
+  },
 ];
 
 export default function TokyoTransportationPage() {
@@ -133,7 +160,7 @@ export default function TokyoTransportationPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained",
-              dateModified: "2026-04-30",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -188,7 +215,7 @@ export default function TokyoTransportationPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚆</span> Updated April 2026
+            <span>🚆</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Tokyo (2026):<br />Trains, Subway &amp; IC Cards Explained
@@ -197,7 +224,7 @@ export default function TokyoTransportationPage() {
             Tokyo has the world&apos;s most complex train network — but once you know the basics, it&apos;s surprisingly easy to navigate.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "All Train Lines", "Beginner Friendly"].map((t) => (
+            {["Updated September 2026", "All Train Lines", "Subway Ticket Included"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -388,6 +415,69 @@ export default function TokyoTransportationPage() {
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             For most tourists, pay-as-you-go with an IC card is cheaper and more flexible. Day passes only make
             financial sense on unusually busy days of sightseeing with many short journeys.
+          </p>
+
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Tokyo Subway Ticket: prices &amp; break-even point
+          </h3>
+          <p className={styles.bodyText}>
+            The Tokyo Subway Ticket is the pass most visitors actually consider. It gives unlimited rides on all 9
+            Tokyo Metro lines and all 4 Toei lines — but <strong>not JR lines</strong>, including the Yamanote Line.
+            The clock runs in hours from first use, not calendar days. Individual Metro rides cost around ¥170–210,
+            so this is where each version pays for itself:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Pass", "Price", "Per day", "Break-even"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {subwayTicketRows.map((row) => (
+                    <tr key={row.pass}>
+                      <td className={styles.tdProvider}>{row.pass}</td>
+                      <td className={styles.tdPrice}>{row.price}</td>
+                      <td>{row.perDay}</td>
+                      <td>{row.breakeven}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Subway Ticket vs Suica / Pasmo
+          </h3>
+          <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Your day", "Our pick", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {subwayVsIcRows.map((row) => (
+                    <tr key={row.scenario}>
+                      <td className={styles.tdProvider}>{row.scenario}</td>
+                      <td className={styles.tdPrice}>{row.pick}</td>
+                      <td>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Where to buy: Narita and Haneda airports (Keisei counters, Bic Camera), major tourist information
+            centres, or online via Klook as a voucher you exchange after landing.
           </p>
           <div style={{ margin: "1.5rem 0" }}>
             <a

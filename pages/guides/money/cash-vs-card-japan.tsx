@@ -63,6 +63,20 @@ const cardCons = [
   "Chip-and-PIN may be required at some terminals",
 ];
 
+const contactlessRows = [
+  { method: "IC Card (Suica/Pasmo)",       trains: "✓", convenience: "✓", restaurants: "Partial", taxis: "Partial", stores: "Partial" },
+  { method: "Contactless Card (Visa/MC)",  trains: "✗", convenience: "✓", restaurants: "✓",       taxis: "Partial", stores: "✓" },
+  { method: "QR Pay (PayPay etc.)",        trains: "✗", convenience: "✓", restaurants: "✓",       taxis: "✗",       stores: "✓" },
+];
+
+const noTipPlaces = [
+  { place: "Restaurants", why: "Service charge is built into all menu prices" },
+  { place: "Taxis", why: "Tipping is considered rude — drivers may be offended" },
+  { place: "Hotels", why: "Not expected; staff are paid a professional wage" },
+  { place: "Convenience stores", why: "Transaction is impersonal; tip would cause confusion" },
+  { place: "Barbers & salons", why: "Not customary; price listed is the full price" },
+];
+
 const faqItems = [
   {
     q: "Do I need cash in Japan?",
@@ -83,6 +97,26 @@ const faqItems = [
   {
     q: "What are the best travel cards for Japan?",
     a: "Wise (formerly TransferWise) and Revolut are consistently recommended for Japan travel. Both offer near-interbank exchange rates with low or no foreign transaction fees. Charles Schwab's investor checking account (for US residents) offers full ATM fee reimbursement worldwide. Avoid standard bank credit cards that charge 2–3% foreign transaction fees — the savings on a 2-week trip can be significant.",
+  },
+  {
+    q: "Do contactless payments work on Japanese trains?",
+    a: "Only IC cards (Suica, Pasmo, ICOCA) work on Japanese trains and subways. Standard Visa or Mastercard contactless does not work at JR or Tokyo Metro ticket gates. You must use a physical IC card — or the Suica feature loaded into Apple Pay or Google Pay.",
+  },
+  {
+    q: "Can I use Apple Pay or Google Pay in Japan?",
+    a: "Yes — but specifically for IC card functionality. Add Suica or Pasmo to Apple Wallet (Wallet app → + → Transit Card → Suica) and you can tap to ride any train and pay at convenience stores. Standard Apple Pay at retail terminals is growing but not universal. The Suica in Apple Pay works on iPhone 7 and later.",
+  },
+  {
+    q: "Can tourists use PayPay or LINE Pay in Japan?",
+    a: "It's possible, but not straightforward. PayPay requires a Japanese phone number and bank account for full top-up functionality, though limited tourist support launched in 2024. LINE Pay has similar restrictions. For most tourists, a Suica IC card and a contactless Visa or Mastercard will cover everything you need — skip QR pay entirely.",
+  },
+  {
+    q: "Should I tip in Japan?",
+    a: "No. Tipping is not part of Japanese culture and is not expected anywhere — from restaurants and taxis to hotels and salons. Service staff are paid a professional wage and are not dependent on tips. In most situations, the best way to show appreciation is a sincere 'arigatou gozaimasu' and a small bow.",
+  },
+  {
+    q: "Do you tip at ryokan in Japan?",
+    a: "There is a traditional ryokan practice called 'kokorozuke' (心付け) — a small gratuity presented in an envelope to your assigned host (nakai-san) at the start of your stay. This is entirely optional, increasingly rare even among Japanese guests, and is usually ¥1,000–¥3,000 per person if given. It is a formal gesture, not a casual tip. Many ryokan staff will refuse it politely; if in doubt, simply don't.",
   },
 ];
 
@@ -125,7 +159,7 @@ export default function CashVsCardJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Cash vs Card in Japan (2026): What Actually Works?",
-              dateModified: "2026-04-24",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -165,7 +199,7 @@ export default function CashVsCardJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💴</span> Updated April 2026
+            <span>💴</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Cash vs Card in Japan (2026):<br />What Actually Works?
@@ -176,7 +210,7 @@ export default function CashVsCardJapanPage() {
             Here&apos;s exactly where to use each, and how to avoid paying unnecessary fees.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "All Major Payment Types", "ATM Guide Included"].map((t) => (
+            {["Updated September 2026", "All Major Payment Types", "Contactless & Tipping Covered"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -366,6 +400,100 @@ export default function CashVsCardJapanPage() {
           </p>
         </section>
 
+        {/* Contactless payments */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Contactless</span>
+          <h2 className={styles.sectionTitle}>Contactless Payments: IC Cards, Tap-to-Pay &amp; QR</h2>
+          <p className={styles.bodyText}>
+            Japan has three main contactless payment systems: IC cards (Suica, Pasmo, ICOCA), tap-to-pay credit
+            cards (Visa, Mastercard), and QR pay apps (PayPay, LINE Pay). For tourists, only the first two are practical.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>IC cards work everywhere that matters.</strong> Trains, buses, convenience stores, vending machines,
+            taxis — a Suica card covers daily transit and small purchases from the moment you land. Buy a Welcome Suica
+            at Narita or Haneda on arrival, or add Suica to Apple Wallet before you fly, and top up ¥2,000–¥5,000 at any
+            JR station machine.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>Contactless credit cards work at major retailers</strong> — department stores, larger restaurants,
+            hotels and supermarkets — but <strong>not on trains</strong>. <strong>QR pay is mostly for residents:</strong>
+            PayPay and LINE Pay need a Japanese bank account for full functionality, so skip them.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Method", "Trains", "Convenience stores", "Restaurants", "Taxis", "Shops"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {contactlessRows.map((row) => (
+                    <tr key={row.method}>
+                      <td className={styles.tdProvider}>{row.method}</td>
+                      <td>{row.trains}</td>
+                      <td>{row.convenience}</td>
+                      <td>{row.restaurants}</td>
+                      <td>{row.taxis}</td>
+                      <td>{row.stores}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Full details on getting and using an IC card:{" "}
+            <Link href="/guides/transport/ic-cards-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+              Suica &amp; Pasmo guide →
+            </Link>
+          </p>
+        </section>
+
+        {/* Tipping */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Tipping</span>
+          <h2 className={styles.sectionTitle}>Tipping in Japan: Don&apos;t</h2>
+          <p className={styles.bodyText}>
+            Tipping is not part of Japanese culture and is not expected anywhere. Service is built into the price,
+            staff are paid a professional wage, and leaving cash on the table or handing money to a taxi driver can
+            cause confusion — staff will often chase you down to return it. In an upscale restaurant or ryokan, the
+            attempt can even imply you were dissatisfied.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Place</th>
+                    <th>Why no tip</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {noTipPlaces.map((row) => (
+                    <tr key={row.place}>
+                      <td className={styles.tdProvider}>{row.place}</td>
+                      <td>{row.why}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>The exceptions</strong> are narrow and optional: a <em>kokorozuke</em> envelope (¥1,000–¥3,000 per
+            person) for your host at a high-end ryokan, and a small voluntary gratuity for an independent private tour
+            guide. Neither is expected.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>Instead of tipping:</strong> say a clear &ldquo;arigatou gozaimasu&rdquo; with eye contact, bow
+            slightly as you leave, and leave a positive Google review — small family-run restaurants and guesthouses
+            value this far more than money.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
@@ -424,14 +552,14 @@ export default function CashVsCardJapanPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/esim/japan-airport-sim-cards" className={styles.relatedCard}>
+            <Link href="/guides/money/currency-exchange-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan Airport SIM Cards &amp; eSIMs (2026): What to Know Before You Land</p>
+                <p className={styles.relatedTitle}>Currency Exchange in Japan: Where to Get the Best Rate</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

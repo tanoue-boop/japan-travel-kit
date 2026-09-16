@@ -63,6 +63,150 @@ const androidSteps = [
   },
 ];
 
+const iphoneModels = [
+  { model: "iPhone XS / XR",     esim: "✓ (1 eSIM)"  },
+  { model: "iPhone 11 series",   esim: "✓ (1 eSIM)"  },
+  { model: "iPhone 12 series",   esim: "✓ (1 eSIM)"  },
+  { model: "iPhone 13 series",   esim: "✓ (2 eSIMs)" },
+  { model: "iPhone 14 series",   esim: "✓ (2 eSIMs)" },
+  { model: "iPhone 15 series",   esim: "✓ (2 eSIMs)" },
+  { model: "iPhone 16 series",   esim: "✓ (2 eSIMs)" },
+];
+
+const androidModels = [
+  { model: "Samsung Galaxy S20 and later",   esim: "✓" },
+  { model: "Google Pixel 3 and later",       esim: "✓" },
+  { model: "Sony Xperia 10 III and later",   esim: "✓" },
+  { model: "OnePlus 12 and later",           esim: "✓" },
+  { model: "Motorola Razr series",           esim: "✓" },
+];
+
+const ipadModels = [
+  { model: "iPad Pro (3rd gen+, 2018–)",    esim: "✓ Supported" },
+  { model: "iPad Air (3rd gen+, 2019–)",    esim: "✓ Supported" },
+  { model: "iPad mini (5th gen+, 2019–)",   esim: "✓ Supported" },
+  { model: "iPad (7th gen+, 2019–)",        esim: "✓ Supported" },
+  { model: "Older iPad models (pre-2019)",  esim: "✗ Not supported" },
+  { model: "iPad Wi-Fi only (any model)",   esim: "✗ Not supported" },
+];
+
+const androidTabletModels = [
+  { model: "Samsung Galaxy Tab S9 / S9+ / S9 Ultra", esim: "✓ Yes" },
+  { model: "Samsung Galaxy Tab S8 / S8+ / S8 Ultra", esim: "✓ Yes" },
+  { model: "Samsung Galaxy Tab S7 FE (5G version)",  esim: "✓ Yes" },
+  { model: "Google Pixel Tablet",                    esim: "✓ Yes" },
+  { model: "Lenovo Tab P12 Pro",                     esim: "✓ Yes" },
+  { model: "Galaxy Tab S6 and earlier",              esim: "✗ No" },
+];
+
+const samsungSteps = [
+  { title: "Go to Settings → Connections → SIM Manager", desc: "On Samsung Galaxy phones and tablets, eSIM settings live under Connections, then SIM Manager. The exact path may vary slightly between One UI versions." },
+  { title: "Tap 'Add mobile plan' or 'Add eSIM'", desc: "Select the option to add a new eSIM profile. Your device will prompt you to scan a QR code." },
+  { title: "Scan the QR code", desc: "Select 'Scan QR code' and scan the code provided by your eSIM provider. Hold your camera up to the QR code on another device or printout." },
+  { title: "Confirm the plan", desc: "Review the plan details and confirm the download. This takes 1–2 minutes." },
+  { title: "Switch to the eSIM in Japan", desc: "Keep the profile off until you land. Then open SIM Manager and toggle to your Japan eSIM profile." },
+];
+
+const pixelSteps = [
+  { title: "Go to Settings → Network & internet → SIMs", desc: "On Google Pixel phones and the Pixel Tablet, eSIM settings are found under Network & internet in the main Settings menu." },
+  { title: "Tap '+' or 'Add eSIM'", desc: "Select 'Add eSIM' or 'Download a SIM instead?' at the top of the SIMs screen." },
+  { title: "Scan your QR code", desc: "Point the camera at your eSIM provider's QR code and wait for the download to complete. The profile installs automatically." },
+  { title: "Activate on arrival", desc: "In Japan, go to Settings → SIMs and activate your Japan eSIM profile. You should see network bars within a few seconds." },
+];
+
+const ipadSteps = [
+  {
+    title: "Go to Settings → Cellular",
+    desc: "Open the Settings app on your iPad. If you see a 'Cellular' option in the left-hand menu, your iPad supports eSIM. If there is no Cellular option, your iPad is Wi-Fi only and cannot use an eSIM.",
+  },
+  {
+    title: "Tap 'Add eSIM'",
+    desc: "Select 'Add eSIM' (or 'Add Cellular Plan' on older iPadOS versions). You'll be prompted to scan a QR code or enter details manually.",
+  },
+  {
+    title: "Tap 'Use QR Code'",
+    desc: "Choose 'Use QR Code' from the options. Your iPad's camera will open, ready to scan the QR code from your eSIM provider.",
+  },
+  {
+    title: "Scan the QR code from your provider",
+    desc: "Open the QR code from your eSIM provider — either in the provider's app, an email, or a downloaded PDF. Hold your iPad so the camera can read the code. It should scan within a few seconds.",
+  },
+  {
+    title: "Label it 'Japan' and activate on arrival",
+    desc: "Give your new eSIM a label (e.g. 'Japan') so it's easy to identify. Keep it in 'Off' mode until you land in Japan — then switch it to 'On' and select it as your cellular plan.",
+  },
+];
+
+const dualSimTips = [
+  {
+    title: "Receive calls on your home SIM while using Japan data",
+    desc: "In Settings → Cellular, set your home SIM as the \"Default Voice Line\" and your Japan eSIM as the \"Default Data\". Your phone will ring on your home number while all data routes through the Japan eSIM. On Android, set the Japan eSIM as the preferred SIM for mobile data under Settings → Network & internet → SIMs.",
+  },
+  {
+    title: "Switch data to your Japan eSIM on arrival",
+    desc: "When you land, go to Settings → Cellular → Cellular Data and select your Japan eSIM. This routes all data through the local network. Your home SIM stays active for calls and SMS but won't use data (avoiding roaming charges).",
+  },
+  {
+    title: "Turn off data roaming on your home SIM",
+    desc: "To be safe, go to Settings → Cellular → [Your Home SIM] and turn off \"Data Roaming\". This prevents accidental roaming charges if your home SIM tries to connect.",
+  },
+];
+
+const causeRows = [
+  { problem: "No signal at all", cause: "eSIM not activated" },
+  { problem: "Signal but no data", cause: "Wrong data line selected" },
+  { problem: "Slow speeds", cause: "APN settings wrong" },
+  { problem: "eSIM disappeared", cause: "Phone restarted, needs re-enabling" },
+  { problem: '"No service" message', cause: "Carrier-locked phone" },
+];
+
+const apnRows = [
+  { provider: "Airalo (Docomo)", apn: "Auto-configured" },
+  { provider: "eSIM Go (Docomo)", apn: "Auto-configured" },
+  { provider: "Holafly (SoftBank)", apn: "Auto-configured" },
+  { provider: "Sakura Mobile", apn: "plus.4g" },
+];
+
+const supportRows = [
+  { provider: "Airalo", support: "24/7 live chat in app" },
+  { provider: "eSIM Go", support: "Email support" },
+  { provider: "Holafly", support: "Live chat" },
+  { provider: "Sakura Mobile", support: "English phone support" },
+];
+
+const fixSteps = [
+  {
+    title: "Fix 1: eSIM Not Activated",
+    steps: [
+      "Open your eSIM provider app (Airalo, eSIM Go, Holafly, etc.)",
+      "Find your Japan plan in the app and check its activation status",
+      'Tap "Activate" if the plan shows as installed but not active',
+      "Toggle airplane mode off and on to force a network search",
+      "Wait 30–60 seconds for your device to connect to the network",
+    ],
+  },
+  {
+    title: "Fix 2: Wrong Data Line Selected (iPhone)",
+    steps: [
+      "Open Settings → Cellular (or Mobile Data)",
+      'Tap "Cellular Data" at the top of the screen',
+      "Select your Japan eSIM line from the list",
+      'Make sure "Allow Cellular Data Switching" is enabled',
+      "Return to the home screen and test your connection",
+    ],
+  },
+  {
+    title: "Fix 3: Wrong Data Line Selected (Android)",
+    steps: [
+      "Open Settings → Network & Internet → SIMs",
+      "Select your Japan eSIM as the preferred data SIM",
+      'Toggle "Mobile data" on for that SIM if needed',
+      'Check "Preferred SIM for Mobile Data" is set correctly',
+      "Restart your phone if the change doesn't take effect",
+    ],
+  },
+];
+
 const troubleshootItems = [
   {
     title: '"eSIM not working" after scanning',
@@ -110,6 +254,50 @@ const faqItems = [
     q: "Does eSIM work on all iPhones?",
     a: "eSIM is supported on iPhone XS (2018) and all later models. iPhones purchased in mainland China do not support eSIM. iPhones bought through certain carriers may be eSIM-locked — contact your carrier to unlock before travelling.",
   },
+  {
+    q: "Does my iPhone support eSIM for Japan?",
+    a: "iPhone XS and later (released 2018 onwards) support eSIM. This includes the XS, XS Max, XR, and all iPhone 11, 12, 13, 14, 15, and 16 models. To confirm, go to Settings → General → About and scroll down to find \"EID\" — if it's listed, your iPhone supports eSIM. Note: iPhones bought in mainland China do not support eSIM.",
+  },
+  {
+    q: "Can I use eSIM on a carrier-locked phone?",
+    a: "Usually no. Carrier-locked phones typically block eSIM from other providers. You'll need to contact your carrier to unlock your phone before using a Japan eSIM. Most carriers will unlock your phone if your contract is paid up or if you've owned the device for a set period. iPhone 14 and later models sold in the US are eSIM-only and SIM-unlocked by default.",
+  },
+  {
+    q: "How do I switch between SIMs on iPhone?",
+    a: "Go to Settings → Cellular → Cellular Data, then select which SIM to use for data. For calls, go to Settings → Cellular → Default Voice Line. On iPhone 13 and later, you can also manage dual SIM settings directly from the Cellular screen. You can switch at any time — no restart needed.",
+  },
+  {
+    q: "Will my APN settings configure automatically on Android?",
+    a: "In most cases, yes. When you activate your Japan eSIM on Android, the correct APN settings are pushed automatically by the network. If data doesn't work after activation, check the manual APN settings provided by your eSIM provider — Sakura Mobile, for example, uses 'plus.4g'.",
+  },
+  {
+    q: "Can I use eSIM on my iPad in Japan?",
+    a: "Yes — but only on cellular-capable iPad models. iPad Pro (3rd generation and later, 2018+), iPad Air (3rd gen+, 2019+), iPad mini (5th gen+, 2019+), and iPad (7th gen+, 2019+) all support eSIM when purchased in the cellular configuration. Wi-Fi-only iPads have no cellular hardware and cannot use an eSIM regardless of model or software version.",
+  },
+  {
+    q: "How do I check if my Android tablet supports eSIM?",
+    a: "Go to Settings on your tablet. On Samsung Galaxy Tab, navigate to Connections → SIM Manager — if you see an 'Add eSIM' or 'Add mobile plan' option, your device supports eSIM. On Google Pixel Tablet, go to Settings → Network & Internet → SIMs. If 'Add eSIM' or 'Download a SIM instead' appears, the device is eSIM-compatible. The Galaxy Tab S8 and S9 series support eSIM; Tab S7 LTE, Tab S6 and earlier generally do not.",
+  },
+  {
+    q: "Can I share my phone's eSIM with my tablet?",
+    a: "Not directly — each device needs its own eSIM profile and profiles cannot be transferred between devices. However, you can use your phone as a Personal Hotspot (tethering) to share its data connection with your tablet over Wi-Fi or Bluetooth. This works with any Japan eSIM. The downside is that it uses your phone's battery and data allowance. If you're using both devices heavily, two separate eSIM plans may be more practical.",
+  },
+  {
+    q: "Why is my Japan eSIM not connecting?",
+    a: "The most common reasons are: (1) the eSIM is installed but not activated — open your provider's app and check the plan status; (2) your phone is still trying to use your home SIM for data — go to Settings → Cellular and switch the data line to your Japan eSIM; (3) your APN settings are wrong — most major providers auto-configure APN, but Sakura Mobile requires manual entry of 'plus.4g'; (4) your phone is carrier-locked — check with your home carrier if you're unsure.",
+  },
+  {
+    q: "Why does my eSIM show signal but no data?",
+    a: "Signal bars but no data is almost always a data line configuration issue. Your phone has registered on the network (hence signal) but is still routing data through your home SIM instead of the Japan eSIM. Fix: go to Settings → Cellular (iPhone) or Settings → Network & Internet → SIMs (Android) and manually set your Japan eSIM as the active data line. On iPhone, also check that 'Allow Cellular Data Switching' is enabled.",
+  },
+  {
+    q: "Can I get a refund if my eSIM doesn't work?",
+    a: "Refund policies vary by provider. Airalo offers refunds for unused plans if the eSIM never connected — contact their 24/7 live chat. Holafly similarly offers refunds for non-functional eSIMs. eSIM Go handles refund requests via email. Always try the troubleshooting steps first, as most issues are configuration problems rather than faulty eSIMs. If support confirms the eSIM is defective, providers will typically refund or replace.",
+  },
+  {
+    q: "What should I do if my eSIM stops working mid-trip?",
+    a: "First, try the quick fix checklist: toggle airplane mode, restart your phone, and verify the data line is set correctly. If that doesn't work, check your data balance in the provider's app — you may have run out. If you still have data and the connection is dead, contact your provider's support immediately. Airalo's 24/7 live chat is the fastest option. If you need internet urgently, most convenience stores (7-Eleven, FamilyMart, Lawson) offer free WiFi as a temporary solution.",
+  },
 ];
 
 export default function HowToSetUpEsimJapanPage() {
@@ -119,10 +307,10 @@ export default function HowToSetUpEsimJapanPage() {
         <title>How to Set Up a Japan eSIM 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land."
+          content="Step-by-step guide to installing your Japan eSIM on iPhone, Android, iPad or Android tablet before you fly — plus a full troubleshooting section if your eSIM isn't working."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
-        <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)" />
+        <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone, Android & Tablet Guide 2026)" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
         <meta property="og:description" content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land." />
         <meta property="og:type" content="article" />
@@ -151,7 +339,7 @@ export default function HowToSetUpEsimJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)",
-              dateModified: "2026-04-01",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -191,7 +379,7 @@ export default function HowToSetUpEsimJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2026
+            <span>📱</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             How to Set Up an eSIM in Japan<br />(Step-by-Step)
@@ -200,7 +388,7 @@ export default function HowToSetUpEsimJapanPage() {
             Takes under 5 minutes. Do it before you fly and you&apos;ll have 4G the moment your plane lands.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "iPhone & Android", "Takes 5 Minutes"].map((t) => (
+            {["Updated September 2026", "iPhone, Android & Tablets", "Troubleshooting Included"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -227,6 +415,48 @@ export default function HowToSetUpEsimJapanPage() {
               </ul>
             </div>
           </div>
+        </section>
+
+        {/* Device Compatibility */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Compatibility</span>
+          <h2 className={styles.sectionTitle}>Which Devices Support eSIM?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
+            eSIM works on most phones and cellular tablets released since 2018–2019. Check your model
+            below before buying a plan. On any device, the quickest test is to open Settings: if you see
+            an &ldquo;Add eSIM&rdquo; (or &ldquo;Add mobile plan&rdquo;) option, you&apos;re good to go.
+          </p>
+          {[
+            { label: "iPhone", rows: iphoneModels, note: "iPhones bought in mainland China do not support eSIM. iPhone 14 and later sold in the US are eSIM-only." },
+            { label: "Android phones", rows: androidModels, note: "Phones bought from a mobile carrier may be carrier-locked — confirm your handset is unlocked before travelling." },
+            { label: "iPad", rows: ipadModels, note: "Only Wi-Fi + Cellular iPads have an eSIM. If Settings has no 'Cellular' menu, your iPad is Wi-Fi only." },
+            { label: "Android tablets", rows: androidTabletModels, note: "Look for 'Add eSIM' under Connections → SIM Manager (Samsung) or Network & internet → SIMs (Pixel)." },
+          ].map((group) => (
+            <div key={group.label} style={{ marginBottom: "1.5rem" }}>
+              <p className={styles.stepTitle} style={{ marginBottom: "0.5rem" }}>{group.label}</p>
+              <div className={styles.tableWrap}>
+                <div className={styles.tableScroll}>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <th>Model</th>
+                        <th>eSIM support</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {group.rows.map((r) => (
+                        <tr key={r.model}>
+                          <td className={styles.tdProvider}>{r.model}</td>
+                          <td>{r.esim}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.9rem" }}>{group.note}</p>
+            </div>
+          ))}
         </section>
 
         {/* iPhone Setup */}
@@ -257,6 +487,102 @@ export default function HowToSetUpEsimJapanPage() {
                 <div className={styles.stepBody}>
                   <p className={styles.stepTitle}>{step.title}</p>
                   <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Samsung Galaxy Setup */}
+        <section className={styles.installSection}>
+          <span className={styles.sectionLabel}>Samsung Galaxy (phone &amp; Galaxy Tab)</span>
+          <h2 className={styles.sectionTitle}>Samsung Galaxy: Step-by-Step</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Samsung&apos;s One UI labels the menus differently from stock Android. These steps apply to
+            Galaxy S20 and later phones and to eSIM-capable Galaxy Tab models (Tab S8 / S9 series).
+          </p>
+          <div className={styles.stepsList}>
+            {samsungSteps.map((step, i) => (
+              <div key={i} className={styles.stepCard}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{step.title}</p>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Google Pixel Setup */}
+        <section className={styles.installSection}>
+          <span className={styles.sectionLabel}>Google Pixel (phone &amp; Pixel Tablet)</span>
+          <h2 className={styles.sectionTitle}>Google Pixel: Step-by-Step</h2>
+          <div className={styles.stepsList}>
+            {pixelSteps.map((step, i) => (
+              <div key={i} className={styles.stepCard}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{step.title}</p>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* iPad Setup */}
+        <section className={styles.installSection}>
+          <span className={styles.sectionLabel}>iPad</span>
+          <h2 className={styles.sectionTitle}>How to Set Up eSIM on iPad</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The process is almost identical to iPhone. A cellular iPad with a Japan eSIM makes an
+            excellent navigation and translation device — the larger screen is much easier for reading
+            station maps and using camera translation on menus — and it gives you reliable LTE for
+            streaming on the shinkansen, where the free Wi-Fi is inconsistent.
+          </p>
+          <div className={styles.stepsList}>
+            {ipadSteps.map((step, i) => (
+              <div key={i} className={styles.stepCard}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{step.title}</p>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Android Tablet Setup */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Android tablets</span>
+          <h2 className={styles.sectionTitle}>How to Set Up eSIM on an Android Tablet</h2>
+          <p className={styles.bodyText}>
+            eSIM profiles are device-specific, so your tablet needs its own plan (or a hotspot from
+            your phone). On a <strong>Samsung Galaxy Tab</strong>, follow the Samsung steps above:
+            Settings → Connections → SIM Manager → Add eSIM, scan the QR code, then keep the profile
+            off until you land. On a <strong>Google Pixel Tablet</strong>, follow the Pixel steps:
+            Settings → Network &amp; internet → SIMs → Add eSIM.
+          </p>
+          <p className={styles.bodyText}>
+            Tablets bought from a mobile carrier (T-Mobile, Verizon, EE and so on) may be carrier-locked
+            and unable to use a Japanese eSIM. Tablets bought directly from the manufacturer or an
+            unlocked retailer almost always work without issue.
+          </p>
+        </section>
+
+        {/* Dual SIM tips */}
+        <section className={styles.installSection}>
+          <span className={styles.sectionLabel}>Dual SIM</span>
+          <h2 className={styles.sectionTitle}>Using Your Home SIM and Japan eSIM Together</h2>
+          <div className={styles.stepsList}>
+            {dualSimTips.map((tip, i) => (
+              <div key={i} className={styles.stepCard}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{tip.title}</p>
+                  <p className={styles.stepDesc}>{tip.desc}</p>
                 </div>
               </div>
             ))}
@@ -298,6 +624,171 @@ export default function HowToSetUpEsimJapanPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Diagnosis table */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>eSIM not working?</span>
+          <h2 className={styles.sectionTitle}>Diagnose the Problem</h2>
+          <p className={styles.bodyText}>
+            If the quick fixes above didn&apos;t solve it, use this table to identify your problem based on
+            what you&apos;re seeing, then work through the matching fix below:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>What You See</th>
+                    <th>Likely Cause</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {causeRows.map((row) => (
+                    <tr key={row.problem}>
+                      <td className={styles.ftFeature}>{row.problem}</td>
+                      <td className={styles.ftSim}>{row.cause}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* Fix Steps */}
+        {fixSteps.map((fix, fi) => (
+          <section key={fi} className={styles.installSection}>
+            <span className={styles.sectionLabel}>Step-by-step fix</span>
+            <h2 className={styles.sectionTitle}>{fix.title}</h2>
+            <div className={styles.stepsList}>
+              {fix.steps.map((step, i) => (
+                <div key={i} className={styles.stepCard}>
+                  <span className={styles.stepNum}>{i + 1}</span>
+                  <div className={styles.stepBody}>
+                    <p className={styles.stepDesc}>{step}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+
+        {/* Fix 4: APN */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Fix 4</span>
+          <h2 className={styles.sectionTitle}>Fix 4: APN Settings</h2>
+          <p className={styles.bodyText}>
+            Most major Japan eSIM providers auto-configure APN settings during installation.
+            However, if your data isn&apos;t working and everything else looks correct, it&apos;s worth
+            verifying the APN manually. Here are the correct settings per provider:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Provider</th>
+                    <th>APN Setting</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {apnRows.map((row) => (
+                    <tr key={row.provider}>
+                      <td className={styles.tdProvider}>{row.provider}</td>
+                      <td className={row.apn === "Auto-configured" ? styles.ftSim : styles.tdPrice}>{row.apn}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>To manually set APN on iPhone:</strong> Go to Settings → Cellular → Cellular Data
+            Network → APN. Enter the APN value from the table above. Leave username and password blank
+            unless your provider specifies otherwise.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>To manually set APN on Android:</strong> Go to Settings → Network &amp; Internet →
+            SIMs → [Your eSIM] → Access Point Names. Tap the + icon to add a new APN and enter
+            the values provided.
+          </p>
+        </section>
+
+        {/* Fix 5: Carrier-Locked Phone */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Fix 5</span>
+          <h2 className={styles.sectionTitle}>Fix 5: Carrier-Locked Phone</h2>
+          <p className={styles.bodyText}>
+            If your phone shows &ldquo;No Service&rdquo; or &ldquo;SIM Not Supported&rdquo; despite the eSIM being
+            properly installed and activated, your device may be carrier-locked. This means
+            your home carrier has restricted the phone to only use their own SIM cards.
+          </p>
+          <div className={styles.stepsList}>
+            <div className={styles.stepCard}>
+              <span className={styles.stepNum}>1</span>
+              <div className={styles.stepBody}>
+                <p className={styles.stepTitle}>Check if your phone is locked</p>
+                <p className={styles.stepDesc}>
+                  iPhone: go to Settings → General → About → Carrier Lock. If it says
+                  &ldquo;No SIM Restrictions&rdquo;, your phone is unlocked. Android: try inserting a
+                  different carrier&apos;s SIM — if it works, you&apos;re unlocked.
+                </p>
+              </div>
+            </div>
+            <div className={styles.stepCard}>
+              <span className={styles.stepNum}>2</span>
+              <div className={styles.stepBody}>
+                <p className={styles.stepTitle}>Request an unlock from your carrier</p>
+                <p className={styles.stepDesc}>
+                  Contact your home carrier before you travel. Most carriers will unlock phones
+                  that have completed their contract period. Processing can take 1–5 business days.
+                </p>
+              </div>
+            </div>
+            <div className={styles.stepCard}>
+              <span className={styles.stepNum}>3</span>
+              <div className={styles.stepBody}>
+                <p className={styles.stepTitle}>Alternative: rent a Pocket WiFi</p>
+                <p className={styles.stepDesc}>
+                  If you can&apos;t unlock your phone in time, a{" "}
+                  <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>Pocket WiFi device</Link>{" "}
+                  from the airport or hotel works independently of your phone&apos;s lock status.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact support */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Escalation</span>
+          <h2 className={styles.sectionTitle}>Still Not Working? Contact Support</h2>
+          <p className={styles.bodyText}>
+            If none of the fixes above work, contact your provider. Most issues are configuration
+            problems rather than faulty eSIMs, but support can reissue a profile or refund a plan
+            that never connected.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Provider</th>
+                    <th>Support Channel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {supportRows.map((row) => (
+                    <tr key={row.provider}>
+                      <td className={styles.tdProvider}>{row.provider}</td>
+                      <td>{row.support}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
@@ -399,7 +890,7 @@ export default function HowToSetUpEsimJapanPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/esim/japan-sim-card-vs-esim-2026" className={styles.relatedCard}>
+            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="5" width="9" height="14" rx="1" />
@@ -408,7 +899,7 @@ export default function HowToSetUpEsimJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>eSIM vs SIM Card for Japan: Which Should You Get?</p>
+                <p className={styles.relatedTitle}>Pocket WiFi vs eSIM for Japan: Which Should You Get?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

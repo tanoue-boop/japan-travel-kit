@@ -11,6 +11,20 @@ const dataUsageTable = [
   { activity: "Streaming video (1 hr/day)",      perDay: "~1,200 MB", weeklyTotal: "~8 GB"  },
 ];
 
+const usageRows = [
+  { tripType: "Light tourist",   dailyUse: "~300 MB", total: "~4.2 GB / 2 wk",  verdict: "Not worth it",      verdictClass: "bad" as const },
+  { tripType: "Moderate user",   dailyUse: "~600 MB", total: "~8.4 GB / 2 wk",  verdict: "Borderline",        verdictClass: "warn" as const },
+  { tripType: "Heavy streamer",  dailyUse: "1 GB+",   total: "14 GB+ / 2 wk",   verdict: "Worth it",          verdictClass: "good" as const },
+  { tripType: "Remote worker",   dailyUse: "2 GB+",   total: "28 GB+ / 2 wk",   verdict: "Definitely",        verdictClass: "good" as const },
+];
+
+const planVsDataRows = [
+  { usage: "Up to 5 GB",   recommendation: "eSIM Go or Airalo",  reason: "Much cheaper than any unlimited plan" },
+  { usage: "5 GB – 10 GB", recommendation: "eSIM Go 10 GB ($14) or Airalo 10 GB ($18)", reason: "Best price-to-data ratio for typical tourists" },
+  { usage: "10 GB – 15 GB", recommendation: "Holafly unlimited",  reason: "Crosses the break-even point on most multi-day plans" },
+  { usage: "15 GB+",        recommendation: "Holafly unlimited",  reason: "Clearly the better value — no overage anxiety" },
+];
+
 const topPicks = [
   {
     rank: 1,
@@ -81,6 +95,18 @@ const faqItems = [
     q: "Is there a cheaper alternative to Holafly for unlimited data?",
     a: "The closest affordable alternative is Airalo's 10 GB / 30-day plan at $18. For most travellers, this is functionally unlimited. If you genuinely need no cap — for streaming, live gaming, or heavy video uploads — Holafly is the right tool. There is no cheaper provider offering genuinely unlimited data in Japan at the time of writing.",
   },
+  {
+    q: "How much does unlimited eSIM cost for Japan?",
+    a: "Holafly's Japan unlimited plans run from roughly $27 for 5 days to about $89 for 30 days. Sakura Mobile's unlimited monthly plan starts around $40 per month and includes voice calls. By contrast, eSIM Go's 10 GB Japan plan costs around $14 and Airalo's 10 GB plan $18 — typically half the price of an entry-level unlimited plan.",
+  },
+  {
+    q: "What's the cheapest unlimited Japan eSIM?",
+    a: "Holafly's 5-day plan at around $27 is the lowest entry point for true unlimited. If you're willing to consider 'effectively unlimited' fixed plans, eSIM Go's 10 GB at $14 is dramatically cheaper and covers what most travellers would consider unlimited usage on a 1–2 week trip.",
+  },
+  {
+    q: "Can I stream Netflix with an unlimited Japan eSIM?",
+    a: "Yes. Holafly's unlimited plan handles Netflix, YouTube, Disney+, and other streaming services on Japan's SoftBank network without issue. Streaming HD video uses roughly 1.2 GB per hour, so it's exactly the kind of use case where unlimited pays off. On 4G LTE in cities, expect smooth HD playback, and 5G coverage pushes quality higher still.",
+  },
 ];
 
 const whoShouldGet = [
@@ -127,7 +153,7 @@ export default function JapanEsimUnlimitedPage() {
           name="description"
           content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large fixed plans — with honest findings on speed and value."
         />
-        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-unlimited-esim-japan" />
+        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-unlimited" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Best Unlimited eSIM for Japan 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-unlimited" />
@@ -158,7 +184,7 @@ export default function JapanEsimUnlimitedPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users",
-              dateModified: "2026-04-29",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -213,7 +239,7 @@ export default function JapanEsimUnlimitedPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📶</span> Updated April 2026
+            <span>📶</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Best Unlimited eSIM for Japan (2026):<br />Top Picks for Heavy Users
@@ -222,7 +248,7 @@ export default function JapanEsimUnlimitedPage() {
             Holafly, Sakura Mobile, or a large fixed plan? We break down which one is actually worth paying for — and who should skip unlimited entirely.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Honest Speed Findings", "True Unlimited vs Fixed"].map((t) => (
+            {["Updated September 2026", "Honest Speed Findings", "True Unlimited vs Fixed"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -307,6 +333,61 @@ export default function JapanEsimUnlimitedPage() {
           </p>
         </section>
 
+        {/* When is unlimited worth it */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Honest analysis</span>
+          <h2 className={styles.sectionTitle}>When Is Unlimited Worth It?</h2>
+          <p className={styles.bodyText}>
+            Here&apos;s how typical Japan usage maps to whether unlimited pays off over a two-week trip:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Trip Type</th>
+                    <th>Daily Use</th>
+                    <th>Total (2 weeks)</th>
+                    <th>Verdict</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {usageRows.map((row) => (
+                    <tr key={row.tripType}>
+                      <td className={styles.ftFeature}>{row.tripType}</td>
+                      <td className={styles.ftEsim}>{row.dailyUse}</td>
+                      <td className={styles.ftSim}>{row.total}</td>
+                      <td>
+                        <span
+                          className={row.verdictClass === "good" ? styles.ftWinnerEsim : styles.ftWinnerSim}
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.3rem",
+                            fontSize: "0.72rem",
+                            fontWeight: 700,
+                            padding: "0.15rem 0.55rem",
+                            borderRadius: "9999px",
+                            background: row.verdictClass === "warn" ? "#fef3c7" : undefined,
+                            color: row.verdictClass === "warn" ? "#92400e" : undefined,
+                          }}
+                        >
+                          {row.verdict}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>The honest takeaway:</strong> only the bottom two rows justify an unlimited
+            plan. If you&apos;re a typical tourist, you&apos;ll spend twice as much for data you&apos;ll
+            never use.
+          </p>
+        </section>
+
         {/* Best Unlimited section */}
         <section className={styles.picksSection}>
           <span className={styles.sectionLabel}>Top picks</span>
@@ -388,6 +469,42 @@ export default function JapanEsimUnlimitedPage() {
           </div>
         </section>
 
+        {/* Unlimited vs Large Data: rule of thumb */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Cost logic</span>
+          <h2 className={styles.sectionTitle}>Unlimited vs Large Data Plans: Rule of Thumb</h2>
+          <p className={styles.bodyText}>
+            Use this as a rule of thumb when deciding between unlimited and a fixed-data plan:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Expected Usage</th>
+                    <th>Better Choice</th>
+                    <th>Why</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {planVsDataRows.map((row) => (
+                    <tr key={row.usage}>
+                      <td className={styles.ftFeature}>{row.usage}</td>
+                      <td className={styles.ftEsim}>{row.recommendation}</td>
+                      <td className={styles.tdNetwork}>{row.reason}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            The 10 GB mark is the break-even point. Below it, eSIM Go and Airalo are dramatically
+            cheaper. Above it, Holafly stops being a luxury and starts looking like the smarter
+            spend.
+          </p>
+        </section>
+
         {/* Is Holafly really unlimited */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Honest answer</span>
@@ -397,6 +514,12 @@ export default function JapanEsimUnlimitedPage() {
           </p>
           <p className={styles.bodyText}>
             The caveat: Holafly uses the SoftBank network in Japan. SoftBank has excellent coverage in cities, tourist areas, and along major train routes — but Docomo has broader reach in rural areas. For popular tourist destinations (Tokyo, Kyoto, Osaka, Hiroshima, Hokkaido cities), this makes no practical difference.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>Speeds are tied to the host network, not the plan.</strong> In Tokyo and Osaka, SoftBank means
+            4G LTE speeds of 30–100 Mbps, and 5G where available. Netflix, YouTube, and video calls consistently run
+            at full quality on Holafly&apos;s Japan plan in major cities. Sakura Mobile&apos;s unlimited plan runs on
+            Docomo, the leader for rural reach.
           </p>
           <p className={styles.bodyText}>
             Holafly is the correct choice when you genuinely cannot predict your data usage, prefer peace of mind over optimising cost, or plan to stream video daily. It is not necessary for typical tourist use.

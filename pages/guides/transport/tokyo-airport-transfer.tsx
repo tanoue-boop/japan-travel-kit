@@ -51,6 +51,32 @@ const skylinerPoints = [
   },
 ];
 
+const skylinerVsNexRows = [
+  { feature: "Operator",        skyliner: "Keisei (private rail)",   nex: "JR East" },
+  { feature: "One-way fare",    skyliner: "¥2,570",                  nex: "¥3,070" },
+  { feature: "Fastest time",    skyliner: "41 min to Nippori",       nex: "~60 min to Tokyo Station" },
+  { feature: "Covered by JR Pass", skyliner: "No",                   nex: "Yes — free" },
+  { feature: "IC card on fare", skyliner: "No (separate surcharge)", nex: "Yes" },
+  { feature: "Direct stops",    skyliner: "Nippori, Keisei Ueno",    nex: "Tokyo, Shinjuku, Shibuya, Yokohama" },
+  { feature: "Frequency",       skyliner: "~every 30 min",           nex: "~every 30 min" },
+  { feature: "Discount option", skyliner: "+ Tokyo Subway combo",    nex: "Foreign round-trip ¥4,000" },
+];
+
+const destinationRows = [
+  { dest: "Nippori",              pick: "Skyliner", note: "41 min direct — the fastest train link to central Tokyo." },
+  { dest: "Keisei Ueno",          pick: "Skyliner", note: "Skyliner terminus, a few minutes past Nippori (~44 min)." },
+  { dest: "Asakusa / Akihabara",  pick: "Skyliner", note: "Take the Skyliner to Ueno/Nippori, then a short Metro or Toei hop." },
+  { dest: "Tokyo Station",        pick: "N'EX",     note: "~60 min direct, no transfer." },
+  { dest: "Shibuya",              pick: "N'EX",     note: "75 min direct on the same train." },
+  { dest: "Shinjuku",             pick: "N'EX",     note: "90 min direct — no dragging bags through transfers." },
+  { dest: "Yokohama",             pick: "N'EX",     note: "90 min direct, the obvious choice south of Tokyo." },
+];
+
+const busFareRows = [
+  { airport: "Narita (NRT)", time: "90–120 min", price: "¥3,200",  note: "Traffic-dependent; longer in rush hour" },
+  { airport: "Haneda (HND)", time: "30–60 min",  price: "¥1,200",  note: "Much closer to the city than Narita" },
+];
+
 const busPoints = [
   {
     title: "Ideal for heavy or oversized luggage",
@@ -61,8 +87,16 @@ const busPoints = [
     desc: "Many limousine bus services stop directly at major hotel areas: Shinjuku, Shibuya, Tokyo Station, Akasaka, Ikebukuro. Some routes stop at individual hotels. Check the TCAT (Tokyo City Air Terminal) schedule for routes.",
   },
   {
+    title: "Zero transfers — and later running hours",
+    desc: "Many routes run directly to major hotels and districts, so you board once and get off near your door — ideal with young children, elderly travellers, or a lot of gear. Airport buses also run later into the evening than most airport trains, so if you land after the trains wind down the bus is often the cheapest option left before a taxi. Confirm the last departure for your route.",
+  },
+  {
     title: "Subject to traffic delays",
     desc: "Tokyo traffic on the expressway can be severe during peak hours (7–9am, 5–8pm). Budget extra time if travelling during rush hour, or consider taking the train and sending heavy luggage via takkyubin (luggage delivery service) to your hotel.",
+  },
+  {
+    title: "Book ahead in busy periods",
+    desc: "Pre-booking guarantees a seat on popular routes during peak travel seasons, locks in your fare, and saves queuing at the airport counter after a long flight.",
   },
 ];
 
@@ -106,6 +140,22 @@ const faqItems = [
     q: "How do I get from Narita to Shinjuku?",
     a: "The fastest option is the Narita Express (N'EX), which runs directly to Shinjuku in about 90 minutes (¥3,070 without a pass; free with JR Pass). The next best option is the Keisei Skyliner to Nippori (41 min) followed by the JR Yamanote Line to Shinjuku (about 30 min more). Both are reliable choices; the N'EX wins on luggage convenience since you stay on the same train.",
   },
+  {
+    q: "Skyliner or N'EX — which is faster?",
+    a: "It depends where you're going. The Keisei Skyliner is the single fastest train from Narita to central Tokyo, reaching Nippori in 41 minutes. But it only runs to Nippori and Keisei Ueno, so if your destination is Shinjuku, Shibuya, or Yokohama, the Narita Express (N'EX) is usually quicker overall because it goes there directly without a transfer.",
+  },
+  {
+    q: "Can I use the Skyliner with a JR Pass?",
+    a: "No. The Skyliner runs on the Keisei private railway, which the Japan Rail Pass does not cover. JR Pass holders should take the N'EX, which is a JR East service and free with the pass. If you don't have a JR Pass, the Skyliner is a strong option for east Tokyo.",
+  },
+  {
+    q: "Is the airport limousine bus better than the train in Tokyo?",
+    a: "It depends on your priorities. The bus wins when you have heavy luggage, want a transfer-free ride to your hotel, land late at night, or are staying right by a bus stop. The train (Skyliner or N'EX) wins on speed and predictability, especially in rush-hour traffic. For most light-luggage travellers heading to a station-side hotel, the train is faster; for everyone hauling big suitcases, the bus is easier.",
+  },
+  {
+    q: "How much is the limousine bus from Narita and Haneda?",
+    a: "From Narita it's around ¥3,200 one-way and roughly 90–120 minutes depending on traffic. From Haneda it's about ¥1,200 and 30–60 minutes — Haneda is much closer to central Tokyo, so the bus is both cheaper and quicker from there.",
+  },
 ];
 
 export default function TokyoAirportTransferPage() {
@@ -148,7 +198,7 @@ export default function TokyoAirportTransferPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",
-              dateModified: "2026-04-27",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -203,7 +253,7 @@ export default function TokyoAirportTransferPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>✈️</span> Updated April 2026
+            <span>✈️</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Tokyo Airport Transfer Guide (2026):<br />Narita &amp; Haneda to the City
@@ -212,7 +262,7 @@ export default function TokyoAirportTransferPage() {
             Getting from the airport to central Tokyo is easy — once you know which option suits your budget and schedule.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Narita & Haneda", "All Options"].map((t) => (
+            {["Updated September 2026", "Narita & Haneda", "Skyliner vs N'EX vs Bus"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -365,10 +415,92 @@ export default function TokyoAirportTransferPage() {
           </a>
         </section>
 
+        {/* Skyliner vs N'EX */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Head-to-head</span>
+          <h2 className={styles.sectionTitle}>Skyliner vs N&apos;EX at a Glance</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Keisei Skyliner", "Narita Express (N'EX)"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {skylinerVsNexRows.map((row) => (
+                    <tr key={row.feature}>
+                      <td className={styles.tdProvider}>{row.feature}</td>
+                      <td>{row.skyliner}</td>
+                      <td>{row.nex}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            Fares are approximate 2026 one-way prices and can change. The Skyliner time is to Nippori (66 km); the N&apos;EX time is to Tokyo Station.
+          </p>
+        </section>
+
+        {/* By destination */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By destination</span>
+          <h2 className={styles.sectionTitle}>Which Train for Your Hotel?</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Destination", "Our pick", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {destinationRows.map((row) => (
+                    <tr key={row.dest}>
+                      <td className={styles.tdProvider}>{row.dest}</td>
+                      <td className={styles.tdPrice}>{row.pick}</td>
+                      <td>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
         {/* Limousine Bus */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Airport bus</span>
           <h2 className={styles.sectionTitle}>Airport Limousine Bus</h2>
+          <div className={styles.tableWrap} style={{ marginBottom: "1.25rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Airport", "Journey time", "One-way fare", "Note"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {busFareRows.map((row) => (
+                    <tr key={row.airport}>
+                      <td className={styles.tdProvider}>{row.airport}</td>
+                      <td>{row.time}</td>
+                      <td className={styles.tdPrice}>{row.price}</td>
+                      <td>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div className={styles.stepsList}>
             {busPoints.map((point, i) => (
               <div key={i} className={styles.stepCard}>

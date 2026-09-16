@@ -25,7 +25,6 @@ export type SIMCard = {
   plans: DataPlan[];
   affiliateUrl: string;
   rating: number;
-  reviewCount: number;
 };
 
 export const simCards: SIMCard[] = [
@@ -62,7 +61,6 @@ export const simCards: SIMCard[] = [
     ],
     affiliateUrl: "https://airalo.pxf.io/c/7213504/1268485/15608",
     rating: 4.5,
-    reviewCount: 12400,
   },
   {
     id: "holafly-japan",
@@ -98,7 +96,6 @@ export const simCards: SIMCard[] = [
     ],
     affiliateUrl: "#",
     rating: 4.3,
-    reviewCount: 8700,
   },
   {
     id: "sakura-mobile",
@@ -133,7 +130,6 @@ export const simCards: SIMCard[] = [
     ],
     affiliateUrl: "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
     rating: 4.4,
-    reviewCount: 3100,
   },
   {
     id: "esim-go-japan",
@@ -169,6 +165,5 @@ export const simCards: SIMCard[] = [
     ],
     affiliateUrl: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN",
     rating: 4.2,
-    reviewCount: 2900,
   },
 ];

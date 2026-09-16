@@ -15,6 +15,27 @@ const dayPasses = [
   { pass: "Subway 1-Day Pass",          price: "¥800 (child ¥400)",   coverage: "Both subway lines only",             bestFor: "East–west sightseeing on the subway" },
 ];
 
+const passBreakEven = [
+  {
+    title: "The combined pass: about 5 rides",
+    desc: "The Subway & Bus 1-Day Pass is ¥1,100. With a flat city-bus fare of ¥230 and subway fares from ¥210, you need roughly five rides to break even. A full temple day usually clears that before mid-afternoon.",
+  },
+  {
+    title: "The subway-only pass: about 4 rides",
+    desc: "The Subway-only 1-Day Pass is ¥800. At ¥210+ per subway ride, four or more rides put you ahead. It's the better buy only if your itinerary stays on the two subway lines.",
+  },
+  {
+    title: "Below that, use an IC card",
+    desc: "If you'll take just a couple of journeys, a pay-as-you-go Suica or ICOCA is cheaper and more flexible — and it also works on JR local trains to Arashiyama and Uji, which the passes do not cover.",
+  },
+];
+
+const passVsRows = [
+  { scenario: "Temple-hopping across spread-out sights", pick: "Subway & Bus Pass", note: "Kinkakuji, Kiyomizudera, Gion and Arashiyama are best reached by city bus — the combined pass covers them all." },
+  { scenario: "Mostly cross-city hops on the subway",    pick: "Subway-only Pass",  note: "Cheaper at ¥800 if your day runs along the Karasuma or Tozai lines and skips the buses." },
+  { scenario: "Only 2–3 rides all day",                  pick: "Suica / ICOCA",     note: "Pay-as-you-go is cheaper than any day pass at this level of use." },
+];
+
 const busTips = [
   {
     title: "Pay when you exit — not when you board",
@@ -106,7 +127,7 @@ const tips = [
 const faqItems = [
   {
     q: "Do I need a day pass for Kyoto buses?",
-    a: "First, a heads-up: the old ¥700 City Bus 1-Day Pass has been discontinued — sales ended in September 2023 and it could no longer be used after the end of March 2024. The current option is the Subway & Bus 1-Day Pass at ¥1,100 (¥550 for children), which also covers both subway lines. At ¥230 per bus ride it breaks even at around five rides — easy to hit on a full day visiting Kinkakuji, Kiyomizudera, and Gion. On a lighter day, a pay-as-you-go IC card is simpler. See our Kyoto Subway & Bus Pass guide for the full break-even breakdown.",
+    a: "First, a heads-up: the old ¥700 City Bus 1-Day Pass has been discontinued — sales ended in September 2023 and it could no longer be used after the end of March 2024. The current option is the Subway & Bus 1-Day Pass at ¥1,100 (¥550 for children), which also covers both subway lines. At ¥230 per bus ride it breaks even at around five rides — easy to hit on a full day visiting Kinkakuji, Kiyomizudera, and Gion. On a lighter day, a pay-as-you-go IC card is simpler — see the break-even breakdown in the day pass section of this guide.",
   },
   {
     q: "Can I use my Suica IC card in Kyoto?",
@@ -123,6 +144,14 @@ const faqItems = [
   {
     q: "Is the Kyoto subway English-friendly?",
     a: "Yes. All subway station signs and train announcements are bilingual. Ticket machines at every station have English options and accept IC cards, cash, and credit cards at major stations. Platform maps and exit guides are also in English.",
+  },
+  {
+    q: "Subway & Bus Pass or Subway-only Pass — which should I buy?",
+    a: "Choose the Subway & Bus Pass (¥1,100) if your day mixes buses and subway, which most temple itineraries do — Kinkakuji, Kiyomizudera, and Gion are best reached by bus. Choose the cheaper Subway-only Pass (¥800) only if you'll stay on the Karasuma and Tozai subway lines all day. If you'll take just a few rides, skip both and use an IC card.",
+  },
+  {
+    q: "Does the day pass cover JR trains to Arashiyama?",
+    a: "No. The pass covers Kyoto city buses and the two municipal subway lines, but not JR. The JR Sagano Line to Saga-Arashiyama and the JR Nara Line to Uji are not included — for those, use a pay-as-you-go IC card, which is accepted on JR local trains. Outlying spots such as Kibune & Kurama and Mt Hiei also sit outside the pass area or need an extra fare.",
   },
 ];
 
@@ -166,7 +195,7 @@ export default function KyotoTransportationPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Getting Around Kyoto (2026): Buses, Trains & Taxis Explained",
-              dateModified: "2026-04-29",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -221,7 +250,7 @@ export default function KyotoTransportationPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚌</span> Updated April 2026
+            <span>🚌</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Kyoto (2026):<br />Buses, Trains &amp; Taxis Explained
@@ -230,7 +259,7 @@ export default function KyotoTransportationPage() {
             Kyoto&apos;s city bus and subway cover nearly every major sight. Here&apos;s how to get around efficiently — without wasting time or money.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "All Transport Options", "IC Card Tips"].map((t) => (
+            {["Updated September 2026", "All Transport Options", "Day Pass Break-Even"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -401,10 +430,48 @@ export default function KyotoTransportationPage() {
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Day passes are sold at the Kyoto Station Bus Information Center, subway ticket machines, and major hotels. They are not loaded to an IC card — you receive a separate paper ticket. <strong>Note:</strong> the old bus-only ¥700 City Bus 1-Day Pass has been discontinued (sales ended September 2023, and it could no longer be used after the end of March 2024) — the current bus-inclusive option is the ¥1,100 Subway &amp; Bus 1-Day Pass. Large suitcases are not allowed on city buses, so store them at Kyoto Station before a bus-based day.
           </p>
-          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
-            Not sure it&apos;s worth it? See our{" "}
-            <Link href="/guides/transport/kyoto-subway-bus-pass" style={{ fontWeight: 600 }}>Kyoto Subway &amp; Bus Pass guide</Link>{" "}
-            for the full break-even maths.
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.75rem" }}>
+            How many rides to break even?
+          </h3>
+          <div className={styles.stepsList}>
+            {passBreakEven.map((point, i) => (
+              <div key={i} className={styles.stepCard}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{point.title}</p>
+                  <p className={styles.stepDesc}>{point.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Which pass (or no pass) fits your day?
+          </h3>
+          <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Your day", "Our pick", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {passVsRows.map((row) => (
+                    <tr key={row.scenario}>
+                      <td className={styles.tdProvider}>{row.scenario}</td>
+                      <td className={styles.tdPrice}>{row.pick}</td>
+                      <td>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            You can also buy a voucher online via Klook in advance and exchange it for the pass after you arrive.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <a

@@ -10,7 +10,6 @@ const suica = {
   id: "suica-ic",
   name: "Suica IC Card",
   rating: 4.9,
-  reviewCount: 8000,
   price: "¥500 deposit + charge",
   badge: "Must Have",
   pros: [
@@ -139,7 +138,7 @@ export default function MoneyPage() {
                     <span className={`${cardStyles.badge} ${cardStyles.badgeGreen}`}>{suica.badge}</span>
                   </div>
                   <h3 className={cardStyles.name}>{suica.name}</h3>
-                  <StarRating rating={suica.rating} reviewCount={suica.reviewCount} />
+                  <StarRating rating={suica.rating} />
                 </div>
                 <div className={cardStyles.priceBlock}>
                   <p className={cardStyles.priceFrom}>Price</p>

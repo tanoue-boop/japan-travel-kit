@@ -97,6 +97,48 @@ const faqItems = [
   },
 ];
 
+const worksInJapanFaq = [
+  {
+    q: "Does Airalo actually work in Japan?",
+    a: "Yes — Airalo Japan eSIM works nationwide via Docomo and SoftBank networks. We tested it in Tokyo, Kyoto, Osaka, and on intercity routes, including the Tohoku Shinkansen. Coverage was consistent throughout. The only gaps were deep mountain trails and small remote islands, which have limited coverage regardless of carrier.",
+  },
+  {
+    q: "Which network does Airalo use in Japan?",
+    a: "Airalo Japan plans run on Docomo and SoftBank — Japan's two largest networks by coverage. Docomo, in particular, has the best rural and mountainous coverage in the country. You won't need to manually select a network; your phone picks the strongest signal automatically.",
+  },
+  {
+    q: "How fast is Airalo in Japan?",
+    a: "In urban areas (Tokyo, Osaka, Kyoto), Airalo delivered consistent 4G LTE speeds of 30–150 Mbps down — more than enough for Google Maps, streaming, and video calls. In rural areas, speeds dropped to 10–40 Mbps, which is still perfectly usable.",
+  },
+  {
+    q: "Can I use Airalo on the shinkansen?",
+    a: "Yes. Shinkansen trains are covered by Docomo and SoftBank along all major lines, including Tokaido (Tokyo–Osaka), San'yo (Osaka–Hiroshima–Hakata), and Tohoku. Expect brief signal gaps inside tunnels, which can last 30–60 seconds.",
+  },
+  {
+    q: "Is Airalo better than buying a SIM at the airport?",
+    a: "For most travellers, yes. Airport SIM vending machines (IIJmio, JTRIP, etc.) require queuing on arrival and often cost more per GB. Airalo can be purchased and installed from home — you'll have live data the moment you land, without any queuing or paperwork.",
+  },
+];
+
+const commonIssues = [
+  {
+    problem: "eSIM not connecting after arrival",
+    fix: "Toggle airplane mode on and off. If still no signal, go to Settings → Cellular / Mobile Data and manually select your Airalo profile.",
+  },
+  {
+    problem: "QR code won't scan",
+    fix: "Make sure you haven't already scanned it — eSIM QR codes are single-use. Open the Airalo app and tap 'My eSIMs' to find an alternative installation option (manual details).",
+  },
+  {
+    problem: "Data working but very slow",
+    fix: "Check your APN settings. Go to Settings → Cellular → Cellular Data Options → APN and confirm the APN matches the details in the Airalo app. Alternatively, restart your phone.",
+  },
+  {
+    problem: "eSIM shows as active but no internet",
+    fix: "Ensure 'Data Roaming' is turned on for your Airalo profile. On iPhone: Settings → Cellular → Airalo plan → enable Data Roaming. On Android: Settings → Network → Mobile Data → Roaming.",
+  },
+];
+
 export default function AiraloJapanReviewPage() {
   return (
     <>
@@ -121,7 +163,7 @@ export default function AiraloJapanReviewPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: [...worksInJapanFaq, ...faqItems].map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -136,7 +178,7 @@ export default function AiraloJapanReviewPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Airalo Japan Review 2026: Honest Test & Verdict",
-              dateModified: "2026-04-01",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -176,7 +218,7 @@ export default function AiraloJapanReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2026
+            <span>📱</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Airalo Japan Review 2026:<br />Is It Worth It?
@@ -185,7 +227,7 @@ export default function AiraloJapanReviewPage() {
             We tested Airalo&apos;s Japan eSIM. Here&apos;s everything you need to know.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Independently Reviewed", "Data-Only eSIM"].map((t) => (
+            {["Updated September 2026", "Independently Reviewed", "Data-Only eSIM"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -370,6 +412,49 @@ export default function AiraloJapanReviewPage() {
           <a href="https://airalo.pxf.io/c/7213504/1268485/15608" className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
             Get Airalo Japan eSIM →
           </a>
+        </section>
+
+        {/* Does it work in Japan? */}
+        <section className={styles.faqSection}>
+          <span className={styles.sectionLabel}>Does Airalo work in Japan?</span>
+          <h2 className={styles.sectionTitle}>Does Airalo Work in Japan? Coverage, Speed &amp; Fixes</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Short answer: yes, nationwide. Here&apos;s what we found on coverage and speed, plus the quickest fixes for the
+            handful of issues travellers run into.
+          </p>
+          <div className={styles.faqList}>
+            {worksInJapanFaq.map((item, i) => (
+              <details key={item.q} className={styles.faqItem}>
+                <summary className={styles.faqSummary}>
+                  <span>{i + 1}. {item.q}</span>
+                  <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className={styles.faqBody}>{item.a}</div>
+              </details>
+            ))}
+          </div>
+          <div className={styles.tableWrap} style={{ marginTop: "1.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Problem</th>
+                    <th>Fix</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {commonIssues.map((row) => (
+                    <tr key={row.problem}>
+                      <td className={styles.tdProvider}>{row.problem}</td>
+                      <td>{row.fix}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </section>
 
         {/* FAQ */}

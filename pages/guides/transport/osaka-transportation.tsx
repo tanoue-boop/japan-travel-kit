@@ -11,9 +11,27 @@ const attractionRoutes = [
 ];
 
 const dayPasses = [
-  { pass: "Osaka Metro 1-day",        price: "¥820",  bestFor: "Full day sightseeing",   worth: "Yes" },
-  { pass: "Osaka Metro 2-day",        price: "¥1,230", bestFor: "2-day visit",           worth: "Yes" },
-  { pass: "Enjoy Eco Card (Weekend)", price: "¥620",  bestFor: "Weekend visits",          worth: "Yes" },
+  { pass: "Enjoy Eco Card (weekday)",  price: "¥820",   bestFor: "Full day sightseeing — anyone can buy", worth: "Yes" },
+  { pass: "Enjoy Eco Card (weekend)",  price: "¥620",   bestFor: "Weekend & holiday visits",             worth: "Yes" },
+  { pass: "Osaka Metro Pass 2-day",    price: "¥1,800", bestFor: "Two consecutive sightseeing days",      worth: "Yes" },
+];
+
+const passCompareRows = [
+  { feature: "Who can buy",        eco: "Anyone (residents & tourists)", pass: "Short-term foreign visitors*" },
+  { feature: "Price",             eco: "¥820 weekday / ¥620 weekend",   pass: "2-day ¥1,800 (1-day also sold)" },
+  { feature: "Child price",        eco: "¥310",                          pass: "Confirm at purchase" },
+  { feature: "Duration",          eco: "1 day",                         pass: "1 or 2 days" },
+  { feature: "Covers",            eco: "Osaka Metro + city buses",      pass: "Osaka Metro + city buses" },
+  { feature: "Reaches Yumeshima", eco: "Yes (Chuo Line)",               pass: "Yes — incl. the Expo 2025 site" },
+  { feature: "Attraction discounts", eco: "~30 facilities",             pass: "Confirm — varies" },
+  { feature: "Sold on Klook",     eco: "No (station machines)",         pass: "Yes" },
+];
+
+const passVsRows = [
+  { scenario: "One day, on a weekend or holiday", pick: "Enjoy Eco Card", note: "At ¥620 it's the cheapest unlimited day in any major Japanese city — and anyone can buy it." },
+  { scenario: "One day, on a weekday",            pick: "Enjoy Eco Card", note: "Still good value at ¥820, and it comes with ~30 attraction discounts." },
+  { scenario: "Two full days of sightseeing",     pick: "Osaka Metro Pass", note: "The 2-day pass at ¥1,800 spreads the cost and saves swapping tickets each day." },
+  { scenario: "Only 2–3 rides in a day",          pick: "ICOCA / Suica",  note: "Pay-as-you-go is cheaper than any day pass at this level of use." },
 ];
 
 const osakaLines = [
@@ -77,7 +95,7 @@ const faqItems = [
   },
   {
     q: "Is a day pass worth it in Osaka?",
-    a: "Yes, more often than in Tokyo. The Osaka Metro 1-day pass (¥820) pays for itself after four journeys, which is easy to hit on a full sightseeing day. On weekends, the Enjoy Eco Card at ¥620 is even better value. If you're visiting on a weekend and plan to visit more than three Metro destinations, the Enjoy Eco Card is almost always worth buying.",
+    a: "Yes, more often than in Tokyo. The Enjoy Eco Card (¥820 on weekdays) pays for itself after four journeys, which is easy to hit on a full sightseeing day. On weekends and holidays it drops to ¥620 and breaks even at three rides. A single Midosuji Line hop from Umeda to Namba is ¥230, so the maths adds up quickly once you're moving around the city. For two consecutive days, the 2-day Osaka Metro Pass (about ¥1,800) is the better buy.",
   },
   {
     q: "Can I use Suica in Osaka?",
@@ -90,6 +108,14 @@ const faqItems = [
   {
     q: "Is Osaka easy to navigate without Japanese?",
     a: "Yes — Osaka is very tourist-friendly. Station signs, platform announcements, and ticket machines are all available in English. Google Maps works reliably throughout the city. Osaka Metro stations are colour-coded and numbered, making navigation straightforward even if you can't read Japanese characters.",
+  },
+  {
+    q: "Osaka Metro Pass or Enjoy Eco Card — which should tourists buy?",
+    a: "For a single day, the Enjoy Eco Card is usually the better pick — it's cheaper (¥620 at weekends, ¥820 on weekdays), anyone can buy it, and it includes around 30 attraction discounts. For two consecutive days of heavy sightseeing, the 2-day Osaka Metro Pass (about ¥1,800) spreads the cost and saves swapping tickets. If you'll only take a couple of rides, skip both and use a pay-as-you-go ICOCA.",
+  },
+  {
+    q: "Does the day pass cover the trip to Yumeshima?",
+    a: "Yes. Both the Enjoy Eco Card and the Osaka Metro Pass cover the Chuo Line out to Yumeshima, the island that hosted the Expo 2025 site. As always with extended-area coverage, treat it as a 2026 guide and confirm current conditions before you travel.",
   },
 ];
 
@@ -133,7 +159,7 @@ export default function OsakaTransportationPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Getting Around Osaka (2026): Subway, Trains & IC Cards Explained",
-              dateModified: "2026-05-01",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -188,7 +214,7 @@ export default function OsakaTransportationPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚇</span> Updated May 2026
+            <span>🚇</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Osaka (2026):<br />Subway, Trains &amp; IC Cards Explained
@@ -197,7 +223,7 @@ export default function OsakaTransportationPage() {
             Osaka&apos;s subway system is one of the easiest in Japan to navigate. Here&apos;s everything you need to get around the city like a local.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated May 2026", "Subway & Trains", "Beginner Friendly"].map((t) => (
+            {["Updated September 2026", "Subway & Trains", "Day Pass Comparison"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -309,9 +335,67 @@ export default function OsakaTransportationPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Unlike Tokyo, day passes in Osaka are genuinely good value for sightseers. The break-even
-            point is just four journeys for the 1-day pass (¥820), which most visitors hit before lunch.
-            The Enjoy Eco Card (weekends only, ¥620) is the best value pass in any major Japanese city.
+            point is about four journeys for the ¥820 weekday Enjoy Eco Card — and just three at the ¥620
+            weekend price — which most visitors hit before lunch. The Enjoy Eco Card is open to residents
+            and tourists alike (no passport needed) and is sold at any Osaka Metro station ticket machine;
+            it also unlocks discounts at around 30 Osaka attractions. The tourist-oriented Osaka Metro Pass
+            is sold in 1-day and 2-day versions, with the 2-day pass the version most travellers buy.
           </p>
+
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Enjoy Eco Card vs Osaka Metro Pass
+          </h3>
+          <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Enjoy Eco Card", "Osaka Metro Pass"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {passCompareRows.map((row) => (
+                    <tr key={row.feature}>
+                      <td className={styles.tdProvider}>{row.feature}</td>
+                      <td>{row.eco}</td>
+                      <td>{row.pass}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            *Eligibility and prices are a 2026 guide — confirm the current conditions when you buy.
+          </p>
+
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Which pass fits your trip?
+          </h3>
+          <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Your trip", "Our pick", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {passVsRows.map((row) => (
+                    <tr key={row.scenario}>
+                      <td className={styles.tdProvider}>{row.scenario}</td>
+                      <td className={styles.tdPrice}>{row.pick}</td>
+                      <td>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div style={{ margin: "1.5rem 0" }}>
             <a
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1267428&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F11515-osaka-metro-1-2-day-pass-osaka%2F"

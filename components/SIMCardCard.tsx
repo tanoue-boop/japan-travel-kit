@@ -31,7 +31,7 @@ export default function SIMCardCard({ sim }: { sim: SIMCard }) {
             </div>
           )}
           <h3 className={styles.name}>{sim.name}</h3>
-          <StarRating rating={sim.rating} reviewCount={sim.reviewCount} />
+          <StarRating rating={sim.rating} />
           <p className={styles.summary}>{sim.summary}</p>
         </div>
         <div className={styles.priceBlock}>

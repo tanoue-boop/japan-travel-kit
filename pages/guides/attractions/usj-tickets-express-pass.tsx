@@ -369,13 +369,12 @@ export default function UsjTicketsExpressPassPage() {
             Plan your route with our{" "}
             <Link href="/guides/transport/osaka-airport-transfer" style={{ color: "var(--red)", fontWeight: 600 }}>
               Osaka airport transfer guide
-            </Link>,{" "}
-            <Link href="/guides/transport/haruka-vs-nankai-rapit" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Haruka vs Nankai Rapi:t
-            </Link>, and the{" "}
-            <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Osaka Metro pass guide
-            </Link>.
+            </Link>{" "}
+            (including Haruka vs Nankai Rapi:t) and our{" "}
+            <Link href="/guides/transport/osaka-transportation" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Getting Around Osaka guide
+            </Link>{" "}
+            for day pass options.
           </p>
         </section>
 
@@ -414,7 +413,7 @@ export default function UsjTicketsExpressPassPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/transport/haruka-vs-nankai-rapit" className={styles.relatedCard}>
+            <Link href="/guides/transport/osaka-airport-transfer" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="4" y="3" width="16" height="14" rx="3" />
@@ -423,11 +422,11 @@ export default function UsjTicketsExpressPassPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Haruka vs Nankai Rapi:t (2026): Best Train from Kansai Airport</p>
+                <p className={styles.relatedTitle}>Osaka Airport Transfer Guide (2026): KIX &amp; ITM to the City</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/transport/osaka-metro-pass" className={styles.relatedCard}>
+            <Link href="/guides/transport/osaka-transportation" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="16" rx="2" />
@@ -436,7 +435,7 @@ export default function UsjTicketsExpressPassPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Metro Pass vs Enjoy Eco Card (2026): Which to Buy?</p>
+                <p className={styles.relatedTitle}>Getting Around Osaka (2026): Subway, Trains &amp; IC Cards Explained</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

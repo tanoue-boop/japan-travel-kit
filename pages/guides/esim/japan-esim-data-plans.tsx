@@ -431,7 +431,7 @@ export default function JapanEsimDataPlansPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/esim/japan-sim-short-vs-long-stay" className={styles.relatedCard}>
+            <Link href="/guides/esim/japan-esim-unlimited" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -441,7 +441,7 @@ export default function JapanEsimDataPlansPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best Japan SIM Card for Your Trip Length (2026)</p>
+                <p className={styles.relatedTitle}>Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

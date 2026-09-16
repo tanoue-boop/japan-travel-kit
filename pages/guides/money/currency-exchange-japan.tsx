@@ -28,6 +28,14 @@ const avoidTable = [
   { location: "Foreign bank ATMs in Japan",  why: "International network fees vary widely; use 7-Eleven or Japan Post instead" },
 ];
 
+const dailyRows = [
+  { category: "Accommodation", budget: "¥3,000",  mid: "¥10,000", comfort: "¥20,000" },
+  { category: "Food",          budget: "¥1,500",  mid: "¥4,000",  comfort: "¥8,000"  },
+  { category: "Transport",     budget: "¥500",    mid: "¥1,500",  comfort: "¥3,000"  },
+  { category: "Activities",    budget: "¥500",    mid: "¥2,000",  comfort: "¥5,000"  },
+  { category: "Total / day",   budget: "¥5,500",  mid: "¥17,500", comfort: "¥36,000" },
+];
+
 const budgetRows = [
   { length: "1 week",  budget: "¥50,000",  mid: "¥150,000", comfortable: "¥300,000" },
   { length: "2 weeks", budget: "¥100,000", mid: "¥300,000", comfortable: "¥600,000" },
@@ -69,6 +77,18 @@ const faqItems = [
   {
     q: "What is the best exchange rate app for Japan?",
     a: "For checking the current yen rate, Google (type 'USD to JPY') shows the mid-market rate in real time. The Wise app shows you exactly what rate you'll get and what fee you'll pay. XE Currency and OANDA are good secondary references. The rate shown on Google is the interbank rate — your actual cost will be slightly higher regardless of which method you use.",
+  },
+  {
+    q: "How much yen should I bring for 2 weeks in Japan?",
+    a: "It depends on your travel style. Budget travellers can manage with around ¥70,000–¥100,000 for 14 days, mid-range travellers should plan for ¥240,000–¥300,000 total spending (though much can go on card), and comfortable travellers up to ¥500,000–¥600,000. You don't need to carry all of it as cash — bring ¥30,000–¥50,000 to start and top up from 7-Eleven ATMs as you go.",
+  },
+  {
+    q: "How much cash do I need per day in Japan?",
+    a: "Budget travellers typically spend ¥5,000–¥8,000 per day, mid-range travellers ¥10,000–¥15,000, and comfortable travellers ¥20,000–¥30,000. Not all of that needs to be cash — but plan to have at least a few thousand yen on hand each day for cash-only restaurants, temples, and small shops.",
+  },
+  {
+    q: "What is the best way to carry money in Japan?",
+    a: "A combination works best: a travel card like Wise or Revolut for card payments and fee-free ATM withdrawals, plus enough physical cash for daily cash-only spending. Keep an emergency ¥10,000 note separate from your main wallet, and load an IC card (Suica/Pasmo) to handle small purchases and transport without fumbling for coins.",
   },
 ];
 
@@ -128,7 +148,7 @@ export default function CurrencyExchangeJapanPage() {
               "@type": "Article",
               headline: "Currency Exchange in Japan (2026): Best Ways to Get Yen",
               datePublished: "2026-04-28",
-              dateModified: "2026-04-28",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -168,7 +188,7 @@ export default function CurrencyExchangeJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💴</span> Updated April 2026
+            <span>💴</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Currency Exchange in Japan (2026):<br />Best Ways to Get Yen
@@ -177,7 +197,7 @@ export default function CurrencyExchangeJapanPage() {
             Where you exchange your money makes a big difference. Here&apos;s how to get the best yen rate — and what to avoid.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Best Rates", "Avoid These Mistakes"].map((t) => (
+            {["Updated September 2026", "Best Rates", "How Much Yen to Bring"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -280,8 +300,31 @@ export default function CurrencyExchangeJapanPage() {
           <span className={styles.sectionLabel}>Planning</span>
           <h2 className={styles.sectionTitle}>How Much Yen Should I Bring?</h2>
           <p className={styles.bodyText}>
-            Japan is still a heavily cash-reliant country — especially outside major cities. Budget travellers can manage on ¥7,000–¥8,000 per day; mid-range trips typically cost ¥20,000–¥25,000; comfortable travel runs to ¥50,000+. The table below gives rough totals per trip length.
+            Japan is still a heavily cash-reliant country — especially outside major cities. Here&apos;s a rough daily breakdown by travel style, followed by totals per trip length.
           </p>
+          <div className={styles.tableWrap} style={{ marginBottom: "1.25rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Per day", "Budget", "Mid-range", "Comfortable"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {dailyRows.map((row) => (
+                    <tr key={row.category}>
+                      <td className={styles.tdProvider}>{row.category}</td>
+                      <td className={styles.tdPrice}>{row.budget}</td>
+                      <td className={styles.tdPrice}>{row.mid}</td>
+                      <td className={styles.tdPrice}>{row.comfort}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -307,6 +350,7 @@ export default function CurrencyExchangeJapanPage() {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
             These are total yen estimates including accommodation, food, transport, and activities. Actual spending depends heavily on your itinerary and accommodation choices.
+            You don&apos;t need to carry it all as cash: start with ¥30,000–¥50,000, keep an emergency ¥10,000 note separate, put small purchases on a Suica/Pasmo IC card, and top up from 7-Eleven ATMs as you go.
           </p>
         </section>
 

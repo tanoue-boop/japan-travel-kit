@@ -480,7 +480,7 @@ export default function SakuraMobileReviewPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/esim/japan-sim-card-vs-esim-2026" className={styles.relatedCard}>
+            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="5" width="9" height="14" rx="1" />
@@ -489,7 +489,7 @@ export default function SakuraMobileReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>eSIM vs SIM Card for Japan: Which Should You Get?</p>
+                <p className={styles.relatedTitle}>Pocket WiFi vs eSIM for Japan (2026): Which Is Better?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

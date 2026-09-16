@@ -105,6 +105,32 @@ const faqItems = [
   },
 ];
 
+const worksInJapanFaq = [
+  {
+    q: "Is Holafly reliable in Japan?",
+    a: "Yes. Holafly Japan runs on the SoftBank network, Japan's second-largest carrier. SoftBank has strong coverage in major cities and tourist destinations. Speed can vary during peak hours but is generally reliable for streaming, maps, and messaging.",
+  },
+  {
+    q: "Which network does Holafly use in Japan?",
+    a: "Holafly Japan exclusively uses the SoftBank network. SoftBank offers 4G LTE coverage across most of Japan, with theoretical speeds of up to 150Mbps in urban areas.",
+  },
+  {
+    q: "Does Holafly work in rural Japan?",
+    a: "Yes, for the most part. SoftBank has good rural coverage along major tourist routes. Very remote areas — deep mountain villages, some outlying islands — may have limited signal, but most popular tourist destinations are well covered.",
+  },
+  {
+    q: "How do I activate Holafly in Japan?",
+    a: "After purchasing, scan the QR code in your phone's Settings to install the eSIM. You can do this before your trip. Enable the Holafly eSIM profile when your plane lands in Japan — data will start working immediately without any airport queuing.",
+  },
+];
+
+const commonIssues = [
+  { problem: "No signal", fix: "Toggle airplane mode on and off. This forces your phone to reconnect to the SoftBank network. Works in 90% of cases." },
+  { problem: "Slow speeds", fix: "Check your APN settings. Go to Settings → Cellular → Cellular Data Network and verify the APN matches Holafly's provided settings." },
+  { problem: "Can't activate", fix: "Check your phone is unlocked and eSIM-compatible. iPhones from some carriers may be eSIM-locked. Contact your home carrier to unlock if needed." },
+  { problem: "Mountain / remote areas", fix: "Some very remote areas and mountain peaks have limited SoftBank signal. Download offline maps as a backup before heading out." },
+];
+
 export default function HolaflyJapanReviewPage() {
   return (
     <>
@@ -129,7 +155,7 @@ export default function HolaflyJapanReviewPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: [...worksInJapanFaq, ...faqItems].map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -144,7 +170,7 @@ export default function HolaflyJapanReviewPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Holafly Japan Review 2026: Is Unlimited Data Worth the Price?",
-              dateModified: "2026-04-01",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -184,7 +210,7 @@ export default function HolaflyJapanReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2026
+            <span>📱</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Holafly Japan Review 2026:<br />Is Unlimited Data Worth It?
@@ -193,7 +219,7 @@ export default function HolaflyJapanReviewPage() {
             Unlimited data sounds great. But is Holafly actually worth the premium price for Japan?
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Independently Reviewed", "Unlimited Data eSIM"].map((t) => (
+            {["Updated September 2026", "Independently Reviewed", "Unlimited Data eSIM"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -413,6 +439,49 @@ export default function HolaflyJapanReviewPage() {
           </a>
         </section>
 
+        {/* Does it work in Japan? */}
+        <section className={styles.faqSection}>
+          <span className={styles.sectionLabel}>Does Holafly work in Japan?</span>
+          <h2 className={styles.sectionTitle}>Does Holafly Work in Japan? Coverage, Speed &amp; Fixes</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Short answer: yes, on SoftBank. Here&apos;s what to expect from coverage and speed, plus the quickest fixes for
+            the most common connection problems.
+          </p>
+          <div className={styles.faqList}>
+            {worksInJapanFaq.map((item, i) => (
+              <details key={item.q} className={styles.faqItem}>
+                <summary className={styles.faqSummary}>
+                  <span>{i + 1}. {item.q}</span>
+                  <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className={styles.faqBody}>{item.a}</div>
+              </details>
+            ))}
+          </div>
+          <div className={styles.tableWrap} style={{ marginTop: "1.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Problem</th>
+                    <th>Fix</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {commonIssues.map((row) => (
+                    <tr key={row.problem}>
+                      <td className={styles.tdProvider}>{row.problem}</td>
+                      <td>{row.fix}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
@@ -463,7 +532,7 @@ export default function HolaflyJapanReviewPage() {
                 <span className={styles.relatedArrow}>Read review →</span>
               </div>
             </Link>
-            <Link href="/guides/esim/japan-sim-card-vs-esim-2026" className={styles.relatedCard}>
+            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -471,7 +540,7 @@ export default function HolaflyJapanReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>eSIM vs SIM Card for Japan: Which Should You Get?</p>
+                <p className={styles.relatedTitle}>Pocket WiFi vs eSIM for Japan (2026): Which Is Better?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -10,6 +10,12 @@ const SAFETYWING_URL = "https://safetywing.com/";
 // TODO: replace with approved affiliate link
 const WORLDNOMADS_URL = "https://www.worldnomads.com/";
 
+const costRows = [
+  { length: "1 week",  cost: "$30–$60" },
+  { length: "2 weeks", cost: "$50–$100" },
+  { length: "1 month", cost: "$80–$150" },
+];
+
 const whatToLookFor = [
   {
     rank: 1,
@@ -177,7 +183,7 @@ export default function BestTravelInsuranceJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Best Travel Insurance for Japan (2026): Compared & Reviewed",
-              dateModified: "2026-06-03",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -232,7 +238,7 @@ export default function BestTravelInsuranceJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🛡️</span> Updated June 2026
+            <span>🛡️</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Best Travel Insurance for Japan (2026):<br />Compared &amp; Reviewed
@@ -242,7 +248,7 @@ export default function BestTravelInsuranceJapanPage() {
             support, ski cover, and how they pay out. Here are our picks for every type of trip.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Heymondo · SafetyWing · World Nomads", "By Trip Type"].map((t) => (
+            {["Updated September 2026", "Heymondo · SafetyWing · World Nomads", "By Trip Type"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -293,6 +299,50 @@ export default function BestTravelInsuranceJapanPage() {
             </p>
           </div>
         </div>
+
+        {/* Do You Need It */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>First things first</span>
+          <h2 className={styles.sectionTitle}>Do You Need Travel Insurance for Japan?</h2>
+          <p className={styles.bodyText}>
+            Travel insurance is not legally required to enter Japan — there is no visa condition that mandates it.
+            But Japan&apos;s national health insurance system is designed for residents, not visitors. As a tourist, you are
+            billed at the full uninsured rate for any medical treatment, which is significantly higher than what Japanese
+            residents pay.
+          </p>
+          <p className={styles.bodyText}>
+            A minor doctor&apos;s visit might cost ¥5,000–¥15,000. A hospital stay with tests, IV treatment, or
+            surgery can run into hundreds of thousands of yen. Emergency medical evacuation back to your home country
+            can exceed $100,000. Without insurance, these costs fall entirely on you.
+          </p>
+          <p className={styles.bodyText}>
+            Some travellers rely on credit card travel insurance, which can provide adequate basic cover. But limits
+            are often low and exclusions are common. A dedicated policy typically costs $30–$100 for a two-week trip —
+            a small price for genuine peace of mind. Rough estimates for a healthy adult in their 20s–40s with standard
+            medical, cancellation and baggage cover:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Trip Length", "Estimated Cost (Standard Cover)"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {costRows.map((row) => (
+                    <tr key={row.length}>
+                      <td className={styles.tdProvider}>{row.length}</td>
+                      <td className={styles.tdPrice}>{row.cost}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
 
         {/* What to Look For */}
         <section className={styles.installSection}>
@@ -423,10 +473,8 @@ export default function BestTravelInsuranceJapanPage() {
             how you&apos;re travelling.
           </p>
           <p className={styles.bodyText}>
-            Still deciding whether you need cover at all? Start with our{" "}
-            <Link href="/guides/money/japan-travel-insurance" style={{ color: "var(--red)", fontWeight: 600 }}>
-              guide to whether you need travel insurance for Japan
-            </Link>.
+            Still deciding whether you need cover at all? See the &ldquo;Do You Need Travel Insurance for Japan?&rdquo;
+            section at the top of this guide.
           </p>
         </section>
 
@@ -454,7 +502,7 @@ export default function BestTravelInsuranceJapanPage() {
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
-            <Link href="/guides/money/japan-travel-insurance" className={styles.relatedCard}>
+            <Link href="/guides/money/best-travel-card-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2a10 10 0 0 1 8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6a10 10 0 0 1 8-4z" />
@@ -462,7 +510,7 @@ export default function BestTravelInsuranceJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan Travel Insurance (2026): Do You Actually Need It?</p>
+                <p className={styles.relatedTitle}>Best Travel Card for Japan (2026): Top Picks for Foreign Visitors</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

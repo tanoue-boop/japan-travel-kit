@@ -323,11 +323,8 @@ export default function SafetyWingVsHeymondoJapanPage() {
             Want the wider field, including World Nomads for ski trips? See our roundup of the{" "}
             <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               best travel insurance for Japan
-            </Link>, or start with whether you{" "}
-            <Link href="/guides/money/japan-travel-insurance" style={{ color: "var(--red)", fontWeight: 600 }}>
-              need travel insurance for Japan
             </Link>{" "}
-            at all.
+            — it also covers whether you need travel insurance for Japan at all.
           </p>
         </section>
 
@@ -367,7 +364,7 @@ export default function SafetyWingVsHeymondoJapanPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/money/japan-travel-insurance" className={styles.relatedCard}>
+            <Link href="/guides/money/japan-travel-budget" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" />
@@ -375,7 +372,7 @@ export default function SafetyWingVsHeymondoJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan Travel Insurance (2026): Do You Actually Need It?</p>
+                <p className={styles.relatedTitle}>Japan Travel Budget Guide (2026): How Much Does Japan Cost?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

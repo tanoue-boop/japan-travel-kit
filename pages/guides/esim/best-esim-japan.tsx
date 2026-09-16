@@ -14,6 +14,9 @@ const topPicks = [
     ctaExternal: false,
   },
   {
+    // TODO: Holafly affiliate link pending approval. affiliateUrl is "#" in lib/sim-cards.ts,
+    // so the CTA below renders as the same button style but routes to /sim-cards.
+    // Once approved, set affiliateUrl in lib/sim-cards.ts and this CTA becomes external automatically.
     id: "holafly-japan",
     rank: 2,
     bestFor: "Best Unlimited",
@@ -78,6 +81,50 @@ const faqItems = [
     q: "What if my eSIM doesn't work after landing in Japan?",
     a: "First, check that Data Roaming is enabled for your eSIM profile. If still no signal, toggle Airplane Mode on/off to force a network scan. All providers listed here offer 24/7 live chat support — Airalo and Holafly are especially responsive.",
   },
+  {
+    q: "What's the difference between eSIM and a physical SIM card for Japan?",
+    a: "Both give you mobile data in Japan, but eSIM is faster to set up (no queuing at the airport), cheaper in most cases, and available before you travel. Physical SIM cards require waiting at the airport counter or vending machine after landing. The main advantage of a physical SIM is that it works on phones that don't support eSIM.",
+  },
+  {
+    q: "Can I use my home carrier in Japan instead of buying an eSIM?",
+    a: "Yes, but roaming is expensive. Most international carriers charge $10–15 per day for Japan roaming. For a 10-day trip, that's $100–150 just for data — versus $9–18 for a full Japan eSIM plan. Unless your carrier offers a flat travel add-on with good Japan coverage, a dedicated Japan eSIM is almost always cheaper.",
+  },
+  {
+    q: "What network does Airalo use in Japan?",
+    a: "Airalo Japan eSIM plans run on Docomo and SoftBank networks. Docomo has the widest coverage in Japan, including rural areas, mountains, and remote islands. SoftBank has strong urban and suburban coverage. In practice, most travellers won't notice a difference between the two in tourist areas.",
+  },
+  {
+    q: "What is Sakura Mobile and who is it for?",
+    a: "Sakura Mobile is a Japan-based carrier that offers both SIM cards and eSIMs specifically designed for tourists and long-term visitors. Unlike Airalo and Holafly, Sakura Mobile includes voice call capability, English-speaking customer support, and plans suitable for stays up to 90 days. It runs on Docomo (Japan's largest carrier). It costs more than budget eSIM options but is the best choice for anyone who needs a Japanese phone number or plans an extended stay.",
+  },
+  {
+    q: "How much data do I need for Japan?",
+    a: "For typical tourist use — Google Maps, messaging, light browsing, and a few photos — 1 GB per day is a reasonable estimate. A 10-day trip would use around 8–10 GB. If you use maps heavily for driving, stream video, or work remotely, budget 2 GB+ per day. Most travellers find a 3–5 GB plan sufficient for a week-long trip to Japan.",
+  },
+  {
+    q: "How much does a Japan eSIM cost?",
+    a: "Japan eSIM prices vary by provider and plan size. Budget options: eSIM Go starts at around $3.50 for 1 GB, Airalo from $4.50 for 1 GB / 7 days. Mid-range: Airalo 3 GB / 30 days at $9.50, eSIM Go 5 GB at around $11. Unlimited: Holafly from $17 for 5 days. Voice-capable: Sakura Mobile from around $20 for 7 days. For a typical tourist week, expect to pay $10–20.",
+  },
+  {
+    q: "Is unlimited data worth it for a Japan trip?",
+    a: "For most tourists: no. Japan has excellent Wi-Fi coverage in hotels, convenience stores, and tourist areas. A 3–5 GB plan covers a typical week of maps, messaging, and browsing. Unlimited plans (like Holafly) cost 2–3x more and mainly benefit heavy users who stream video, use video calls frequently, or travel to areas with poor Wi-Fi. If you're unsure, start with a 5 GB plan and consider whether you need more.",
+  },
+  {
+    q: "Can I top up my eSIM once I'm in Japan?",
+    a: "Yes — most providers support in-app top-ups without needing a new QR code. With Airalo, purchase an additional plan through the app and it tops up your existing eSIM profile automatically. eSIM Go and Sakura Mobile have similar top-up flows. Holafly unlimited plans are fixed-duration and require purchasing a new plan if you stay longer.",
+  },
+  {
+    q: "Do Japan eSIM plans include calls and SMS?",
+    a: "Most tourist-oriented eSIM plans — including Airalo, eSIM Go, and Holafly — are data-only. They don't include voice calls or SMS. For calls in Japan, you can use WhatsApp, LINE, or FaceTime over data. If you genuinely need a Japanese phone number with voice capability, Sakura Mobile is the best option among the main providers.",
+  },
+  {
+    q: "When should I activate my Japan eSIM?",
+    a: "Install the eSIM (scan the QR code) before you leave home — this takes 2–5 minutes and requires a Wi-Fi connection. However, most plans start counting days from the first time you connect to a network in Japan, not from when you install the profile. Switch to the Japan eSIM data line once your plane lands, so your plan starts when you need it.",
+  },
+  {
+    q: "Why is my Japan eSIM speed slow?",
+    a: "A few possible causes: you've used most of your data allowance (many plans throttle speed after a threshold), you're in a low-coverage area (tunnels, rural mountains), or peak network congestion in crowded tourist areas like Shibuya or Kyoto Station. Try toggling Airplane Mode. If speeds don't improve and you're under your data limit, contact your provider's support.",
+  },
 ];
 
 export default function BestEsimJapanPage() {
@@ -119,7 +166,7 @@ export default function BestEsimJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Best eSIM for Japan 2026: Top 4 Picks Tested & Compared",
-              dateModified: "2026-04-01",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -159,7 +206,7 @@ export default function BestEsimJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2026
+            <span>📱</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Best eSIM for Japan 2026:<br />Tested &amp; Compared
@@ -168,7 +215,7 @@ export default function BestEsimJapanPage() {
             We tested every major Japan eSIM so you don&apos;t have to.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "4 eSIMs Tested", "Independent Review"].map((t) => (
+            {["Updated September 2026", "4 eSIMs Tested", "Independent Review"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -269,7 +316,6 @@ export default function BestEsimJapanPage() {
                     <span className={styles.pickRating}>
                       <span style={{ color: "#fbbf24" }}>★</span>
                       {sim.rating}
-                      <span style={{ color: "#9ca3af", fontWeight: 400 }}>({sim.reviewCount.toLocaleString()})</span>
                     </span>
                   </div>
                   <div className={styles.pickCardBody}>
@@ -423,14 +469,14 @@ export default function BestEsimJapanPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/esim/best-esim-japan-reddit" className={styles.relatedCard}>
+            <Link href="/guides/esim/airalo-vs-holafly-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan: What Reddit Actually Says (2026)</p>
+                <p className={styles.relatedTitle}>Airalo vs Holafly for Japan: Which eSIM Wins?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

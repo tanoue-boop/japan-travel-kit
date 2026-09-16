@@ -8,7 +8,6 @@ type Item = {
   id: string;
   name: string;
   rating: number;
-  reviewCount: number;
   price: string;
   network: string;
   badge: string;
@@ -25,7 +24,6 @@ const items: Item[] = [
     id: "ninja-wifi",
     name: "Ninja WiFi",
     rating: 4.7,
-    reviewCount: 11297,
     price: "From $2.25/day",
     network: "Docomo 4G LTE",
     badge: "Most Popular",
@@ -40,7 +38,6 @@ const items: Item[] = [
     id: "global-wifi",
     name: "Global WiFi + Powerbank",
     rating: 4.7,
-    reviewCount: 5255,
     price: "From $1.85/day",
     network: "Docomo/SoftBank 4G",
     badge: "Best Value",
@@ -55,7 +52,6 @@ const items: Item[] = [
     id: "airalo-esim",
     name: "Airalo eSIM",
     rating: 4.8,
-    reviewCount: 89000,
     price: "From $4.50",
     network: "Docomo & SoftBank",
     badge: "Best for Solo",
@@ -70,7 +66,6 @@ const items: Item[] = [
     id: "esim-go",
     name: "eSIM Go",
     rating: 4.2,
-    reviewCount: 2900,
     price: "From $3.50",
     network: "Docomo",
     badge: "Cheapest",
@@ -248,7 +243,7 @@ export default function WifiPocketPage() {
                         <span className={`${cardStyles.badge} ${badgeCls}`}>{item.badge}</span>
                       </div>
                       <h3 className={cardStyles.name}>{item.name}</h3>
-                      <StarRating rating={item.rating} reviewCount={item.reviewCount} />
+                      <StarRating rating={item.rating} />
                     </div>
                     <div className={cardStyles.priceBlock}>
                       <p className={cardStyles.priceFrom}>Price</p>

@@ -1,6 +1,6 @@
 import styles from "../styles/StarRating.module.css";
 
-export default function StarRating({ rating, reviewCount }: { rating: number; reviewCount: number }) {
+export default function StarRating({ rating }: { rating: number }) {
   return (
     <div className={styles.wrap}>
       <div className={styles.stars}>
@@ -19,7 +19,6 @@ export default function StarRating({ rating, reviewCount }: { rating: number; re
         })}
       </div>
       <span className={styles.score}>{rating}</span>
-      <span className={styles.count}>({reviewCount.toLocaleString()} reviews)</span>
     </div>
   );
 }

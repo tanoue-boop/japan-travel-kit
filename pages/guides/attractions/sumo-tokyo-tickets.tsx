@@ -2,8 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 
-// Official ticket source (Ticket Oosumo). TODO: swap to Klook Tokyo tournament-tour affiliate link when listed in-season (~Sept 2026 basho)
-const SUMO_TOURNAMENT_URL = "https://sumo.pia.jp/en/";
+// Klook affiliate redirect — Tokyo Grand Sumo Tournament tour (Ryogoku Kokugikan), activity 1432.
+// Uses the account-level aid; add an aff_adid from the Klook affiliate dashboard for per-link tracking.
+const SUMO_TOURNAMENT_URL = "https://affiliate.klook.com/redirect?aid=119070&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F1432-grand-sumo-tournament-tokyo%2F";
 // Klook affiliate redirect.
 const SUMO_PRACTICE_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307055&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F130115-sumo-morning-practice-viewing-tour-tokyo%2F";
 
@@ -265,7 +266,7 @@ export default function SumoTokyoTicketsPage() {
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <a href={SUMO_TOURNAMENT_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
-                Tournament Experiences →
+                Tournament Tour on Klook →
               </a>
               <a href={SUMO_PRACTICE_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Morning Practice Tours →
@@ -426,7 +427,7 @@ export default function SumoTokyoTicketsPage() {
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
-            <Link href="/guides/attractions/things-to-do-tokyo" className={styles.relatedCard}>
+            <Link href="/guides/attractions/teamlab-tokyo-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4z" />
@@ -434,7 +435,7 @@ export default function SumoTokyoTicketsPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best Things to Do in Tokyo (2026): Tickets, Attractions &amp; Experiences</p>
+                <p className={styles.relatedTitle}>teamLab Tokyo Tickets (2026): Planets vs Borderless &amp; How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -476,7 +477,7 @@ export default function SumoTokyoTicketsPage() {
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
               <a href={SUMO_TOURNAMENT_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
-                Tournament Experiences →
+                Tournament Tour on Klook →
               </a>
               <a href={SUMO_PRACTICE_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
                 Morning Practice Tours →

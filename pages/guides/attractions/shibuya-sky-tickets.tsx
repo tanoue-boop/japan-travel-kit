@@ -11,6 +11,37 @@ const priceRows = [
   { ticket: "Children under 5", price: "Free" },
 ];
 
+const deckRows = [
+  {
+    deck: "Shibuya Sky",
+    height: "~229 m (rooftop)",
+    highlight: "Open-air rooftop directly above the Scramble Crossing — the iconic Tokyo shot",
+    price: "from ~¥2,500 (advance online adult)",
+    area: "Shibuya Station",
+  },
+  {
+    deck: "Tokyo Skytree",
+    height: "350 m & 450 m decks (634 m tower)",
+    highlight: "Highest views, glass-floor section; Mt. Fuji visible on clear days",
+    price: "approx ¥1,800 (350 m); ~¥3,100 combo",
+    area: "Oshiage, near Asakusa",
+  },
+  {
+    deck: "Tokyo Tower",
+    height: "~150 m & ~250 m decks (332 m tower)",
+    highlight: "Retro 1958 landmark; Top Deck tour for the higher level",
+    price: "approx ¥3,300 (Top Deck tour)",
+    area: "Shiba-koen / Akabanebashi",
+  },
+  {
+    deck: "Tokyo Metropolitan Gov. Building (Tocho)",
+    height: "~202 m",
+    highlight: "Free admission; great-value city panorama with no ticket",
+    price: "Free",
+    area: "Shinjuku",
+  },
+];
+
 const whoFor = [
   {
     title: "Go for sunset if…",
@@ -88,6 +119,18 @@ const faqItems = [
     q: "How high is Shibuya Sky and what will I see?",
     a: "Shibuya Sky is a rooftop observation deck about 229 metres above Shibuya, spread across open-air and indoor areas. From the top you get a 360-degree view over the Shibuya Scramble Crossing, Tokyo's skyline, and — on clear days — Mt. Fuji. The open-air rooftop is the highlight, so dress for wind and check the weather before you go.",
   },
+  {
+    q: "Shibuya Sky vs Skytree — which should I pick?",
+    a: "Shibuya Sky is about the experience and the photo: an open-air rooftop ~229 m above the Scramble Crossing, best at sunset, and the most iconic single view in the city. Tokyo Skytree is about altitude and reach: decks at 350 m and 450 m, a glass-floor section, and far-distance views including Mt. Fuji on clear days. Choose Shibuya Sky for the iconic crossing shot and atmosphere; choose Skytree for the highest, widest panorama.",
+  },
+  {
+    q: "Are there any free observation decks in Tokyo?",
+    a: "Yes. The Tokyo Metropolitan Government Building (Tocho) in Shinjuku has observation decks at about 202 m that are free to enter. It's the best no-cost city view in Tokyo and a smart choice if you'd rather spend your budget on Shibuya Sky or other experiences. Hours and deck availability can vary, so confirm before you go.",
+  },
+  {
+    q: "Can you see Mt. Fuji from Shibuya Sky?",
+    a: "On a clear day, yes — Mt. Fuji can be visible from Shibuya Sky when the air is clear, though Tokyo Skytree offers the best chance thanks to its height. Visibility is weather-dependent and tends to be best in the cooler, drier months and in the early morning — there's never a guarantee on any given day.",
+  },
 ];
 
 export default function ShibuyaSkyTicketsPage() {
@@ -130,7 +173,7 @@ export default function ShibuyaSkyTicketsPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Shibuya Sky Tickets (2026): Price, Best Time & How to Book",
-              dateModified: "2026-06-08",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -185,7 +228,7 @@ export default function ShibuyaSkyTicketsPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🌇</span> Updated June 2026
+            <span>🌇</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Shibuya Sky Tickets (2026):<br />Price, Best Time &amp; How to Book
@@ -195,7 +238,7 @@ export default function ShibuyaSkyTicketsPage() {
             cost, when to go, and how to book the sunset slot before it sells out.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Sunset Booking Tips", "Foreign Cards OK"].map((t) => (
+            {["Updated September 2026", "Sunset Booking Tips", "vs Skytree & Tokyo Tower"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -310,6 +353,47 @@ export default function ShibuyaSkyTicketsPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* vs other decks */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Compare</span>
+          <h2 className={styles.sectionTitle}>Shibuya Sky vs Other Tokyo Observation Decks</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Shibuya Sky wins on the iconic crossing shot, but it isn&apos;t the highest deck in Tokyo — and it
+            isn&apos;t the cheapest. Here&apos;s how the four main options compare. Skytree is the pick for sheer
+            altitude and Mt. Fuji views, Tokyo Tower for the retro landmark, and Tocho if you want a great
+            panorama for free.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Deck", "Height", "Highlight", "Price (approx)", "Area / nearest"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {deckRows.map((row) => (
+                    <tr key={row.deck}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.deck}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.height}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.highlight}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.area}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+            Heights and prices are approximate and as of 2026, subject to change — confirm at booking. Skytree
+            pricing is roughly ¥1,800 for the 350 m Tembo Deck, plus about ¥1,400 to add the 450 m Tembo
+            Galleria, or a combo around ¥3,100.
+          </p>
         </section>
 
         {/* How to book */}

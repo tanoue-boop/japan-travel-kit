@@ -16,6 +16,24 @@ const itmOptions = [
   { option: "Taxi",                    time: "20–40 min",  price: "¥3,000+", bestFor: "Comfort / late night"          },
 ];
 
+const harukaVsRapitRows = [
+  { feature: "Operator",          haruka: "JR West",                     rapit: "Nankai (private rail)" },
+  { feature: "One-way fare",      haruka: "¥3,060 (¥3,640 to Kyoto)",    rapit: "¥1,880" },
+  { feature: "Journey time",      haruka: "Tennoji 30 / Shin-Osaka 60",  rapit: "~40 min to Namba" },
+  { feature: "Covered by JR Pass", haruka: "Yes — free",                 rapit: "No" },
+  { feature: "Kansai Area Pass",  haruka: "Valid (2026 — confirm)",      rapit: "No" },
+  { feature: "Direct to",         haruka: "Tennoji, Shin-Osaka, Kyoto",  rapit: "Namba" },
+  { feature: "Discount option",   haruka: "ICOCA & HARUKA package",      rapit: "Yokoso! Osaka Ticket" },
+];
+
+const destinationRows = [
+  { dest: "Namba (Dotonbori, Shinsaibashi)", pick: "Nankai Rapi:t", note: "~40 min direct — the fastest way to southern Osaka's main hub." },
+  { dest: "Tennoji",        pick: "Haruka", note: "30 min direct on the JR Haruka." },
+  { dest: "Shin-Osaka",     pick: "Haruka", note: "60 min direct — ideal if you're connecting to the Shinkansen." },
+  { dest: "Kyoto",          pick: "Haruka", note: "75 min direct, no transfer (¥3,640, or free with JR Pass)." },
+  { dest: "Umeda / Osaka Stn", pick: "Haruka", note: "Reach via Shin-Osaka or Tennoji; the Haruka is the JR-network choice." },
+];
+
 const harukaPoints = [
   {
     title: "Covered by the JR Pass",
@@ -90,6 +108,14 @@ const faqItems = [
     q: "Is there a direct train from Kansai Airport to Kyoto?",
     a: "Yes. The JR Haruka Limited Express runs directly from Kansai Airport to Kyoto Station in approximately 75 minutes without any transfers. JR Pass holders travel free; others pay ¥3,640 for a reserved seat. This is the most convenient way to reach Kyoto from the airport in a single step.",
   },
+  {
+    q: "Haruka or Nankai Rapi:t — which is better?",
+    a: "It comes down to your destination. If you're heading to Namba (Dotonbori, Shinsaibashi) in southern Osaka, the Nankai Rapi:t is the fastest direct train at around 40 minutes. If you're going to Tennoji, Shin-Osaka, or onward to Kyoto, the JR Haruka is the better choice because it runs there directly — and it's free for JR Pass holders.",
+  },
+  {
+    q: "Is the Rapi:t cheaper than the Haruka?",
+    a: "Yes, for travellers without a rail pass. The Nankai Rapi:t to Namba is ¥1,880 one-way, while the Haruka is ¥3,060 to Tennoji or Shin-Osaka (and ¥3,640 to Kyoto). However, JR Pass holders ride the Haruka for free, which flips the value entirely if you already hold a pass.",
+  },
 ];
 
 export default function OsakaAirportTransferPage() {
@@ -148,7 +174,7 @@ export default function OsakaAirportTransferPage() {
               "@type": "Article",
               headline: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",
               datePublished: "2026-04-28",
-              dateModified: "2026-04-28",
+              dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -188,7 +214,7 @@ export default function OsakaAirportTransferPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚆</span> Updated April 2026
+            <span>🚆</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Osaka Airport Transfer Guide (2026):<br />KIX &amp; ITM to the City
@@ -197,7 +223,7 @@ export default function OsakaAirportTransferPage() {
             Osaka has two airports — Kansai International and Itami. Here&apos;s the fastest and cheapest way to get into the city from each.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "KIX & ITM", "All Options"].map((t) => (
+            {["Updated September 2026", "KIX & ITM", "Haruka vs Rapi:t"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -357,6 +383,65 @@ export default function OsakaAirportTransferPage() {
           >
             Book Nankai Rapi:t Tickets on Klook →
           </a>
+        </section>
+
+        {/* Haruka vs Rapi:t */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Head-to-head</span>
+          <h2 className={styles.sectionTitle}>Haruka vs Rapi:t at a Glance</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "JR Haruka", "Nankai Rapi:t"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {harukaVsRapitRows.map((row) => (
+                    <tr key={row.feature}>
+                      <td className={styles.tdProvider}>{row.feature}</td>
+                      <td>{row.haruka}</td>
+                      <td>{row.rapit}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            Fares are approximate 2026 one-way prices and can change.
+          </p>
+        </section>
+
+        {/* By destination */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By destination</span>
+          <h2 className={styles.sectionTitle}>Which Train for Your Hotel?</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Destination", "Our pick", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {destinationRows.map((row) => (
+                    <tr key={row.dest}>
+                      <td className={styles.tdProvider}>{row.dest}</td>
+                      <td className={styles.tdPrice}>{row.pick}</td>
+                      <td>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </section>
 
         {/* Limousine Bus */}
