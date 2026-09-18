@@ -1,11 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import { simCards } from "../../../lib/sim-cards";
+import { cheapestPlan, formatDate, formatUsd, latestCheckedAt, type EsimProviderId } from "../../../lib/esim-prices";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import tools from "../../../styles/Tools.module.css";
+
+// "Price From" / "Cheapest Plan" in the quick comparison come from data/esim-prices.json,
+// which is refreshed daily by scripts/fetch-esim-prices.mjs.
+const pricesCheckedAt = formatDate(latestCheckedAt());
 
 const topPicks = [
   {
     id: "airalo-japan",
+    esimId: "airalo" as EsimProviderId,
     rank: 1,
     bestFor: "Best Overall",
     badgeCls: styles.pickBadgeBlue,
@@ -18,6 +25,7 @@ const topPicks = [
     // so the CTA below renders as the same button style but routes to /sim-cards.
     // Once approved, set affiliateUrl in lib/sim-cards.ts and this CTA becomes external automatically.
     id: "holafly-japan",
+    esimId: "holafly" as EsimProviderId,
     rank: 2,
     bestFor: "Best Unlimited",
     badgeCls: styles.pickBadgeOrange,
@@ -27,6 +35,7 @@ const topPicks = [
   },
   {
     id: "esim-go-japan",
+    esimId: "esimgo" as EsimProviderId,
     rank: 3,
     bestFor: "Best Value",
     badgeCls: styles.pickBadgeBlue,
@@ -36,6 +45,7 @@ const topPicks = [
   },
   {
     id: "sakura-mobile",
+    esimId: "sakura" as EsimProviderId,
     rank: 4,
     bestFor: "Best for Long Stay",
     badgeCls: styles.pickBadgeGreen,
@@ -245,23 +255,23 @@ export default function BestEsimJapanPage() {
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Provider", "Best For", "Price From", "Data", "Network", "Rating", ""].map((h) => (
+                    {["Provider", "Best For", "Price From", "Cheapest Plan", "Network", "Rating", ""].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {topPicks.map(({ id, bestFor, ctaLabel }) => {
+                  {topPicks.map(({ id, esimId, bestFor, ctaLabel }) => {
                     const sim = simCards.find((s) => s.id === id)!;
-                    const cheapest = sim.plans.reduce((a, b) => (a.price < b.price ? a : b));
+                    const cheapest = cheapestPlan(esimId);
                     const url = sim.affiliateUrl === "#" ? "/sim-cards" : sim.affiliateUrl;
                     const isExternal = sim.affiliateUrl !== "#";
                     return (
                       <tr key={id}>
                         <td className={styles.tdProvider}>{sim.provider}</td>
                         <td className={styles.tdBestFor}>{bestFor}</td>
-                        <td className={styles.tdPrice}>${cheapest.price.toFixed(2)}</td>
-                        <td className={styles.tdNetwork}>{cheapest.data}</td>
+                        <td className={styles.tdPrice}>{cheapest ? formatUsd(cheapest.priceUsd) : "—"}</td>
+                        <td className={styles.tdNetwork}>{cheapest ? cheapest.name : "—"}</td>
                         <td className={styles.tdNetwork}>{sim.coverage.split("(")[0].trim()}</td>
                         <td>
                           <span className={styles.tdRating}>
@@ -292,6 +302,13 @@ export default function BestEsimJapanPage() {
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
+            <span className={tools.liveBadge}><span className={tools.liveDot} /> Prices checked daily</span>
+            <span>
+              &ldquo;Price From&rdquo; is each provider&apos;s cheapest Japan plan as of {pricesCheckedAt}.{" "}
+              <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan, sorted by price per GB →</Link>
+            </span>
+          </p>
         </section>
 
         {/* Top Picks */}

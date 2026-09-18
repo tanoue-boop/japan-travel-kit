@@ -1,0 +1,478 @@
+{
+  "currency": "USD",
+  "generatedAt": "2026-09-18T01:33:40.059Z",
+  "providers": {
+    "airalo": {
+      "name": "Airalo",
+      "brand": "Moshi Moshi (Airalo Japan)",
+      "network": "SoftBank / KDDI (5G)",
+      "sourceUrl": "https://www.airalo.com/japan-esim",
+      "affiliateUrl": "https://airalo.pxf.io/c/7213504/1268485/15608",
+      "fetchedAt": "2026-09-18T01:33:40.059Z",
+      "updatedAt": "2026-09-18T01:19:25.371Z",
+      "plans": [
+        {
+          "id": "airalo-1-gb-3-days",
+          "name": "1 GB / 3 days",
+          "gb": 1,
+          "days": 3,
+          "priceUsd": 4,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-3-gb-3-days",
+          "name": "3 GB / 3 days",
+          "gb": 3,
+          "days": 3,
+          "priceUsd": 7.5,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-3-gb-7-days",
+          "name": "3 GB / 7 days",
+          "gb": 3,
+          "days": 7,
+          "priceUsd": 8,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-5-gb-7-days",
+          "name": "5 GB / 7 days",
+          "gb": 5,
+          "days": 7,
+          "priceUsd": 10,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-5-gb-15-days",
+          "name": "5 GB / 15 days",
+          "gb": 5,
+          "days": 15,
+          "priceUsd": 10.5,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-5-gb-30-days",
+          "name": "5 GB / 30 days",
+          "gb": 5,
+          "days": 30,
+          "priceUsd": 11,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-10-gb-7-days",
+          "name": "10 GB / 7 days",
+          "gb": 10,
+          "days": 7,
+          "priceUsd": 17,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-10-gb-15-days",
+          "name": "10 GB / 15 days",
+          "gb": 10,
+          "days": 15,
+          "priceUsd": 17.5,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-10-gb-30-days",
+          "name": "10 GB / 30 days",
+          "gb": 10,
+          "days": 30,
+          "priceUsd": 18,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-20-gb-15-days",
+          "name": "20 GB / 15 days",
+          "gb": 20,
+          "days": 15,
+          "priceUsd": 24,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-20-gb-30-days",
+          "name": "20 GB / 30 days",
+          "gb": 20,
+          "days": 30,
+          "priceUsd": 25,
+          "unlimited": false
+        },
+        {
+          "id": "airalo-unlimited-3-days",
+          "name": "Unlimited / 3 days",
+          "gb": null,
+          "days": 3,
+          "priceUsd": 11.5,
+          "unlimited": true,
+          "note": "Fair-use policy applies"
+        },
+        {
+          "id": "airalo-unlimited-5-days",
+          "name": "Unlimited / 5 days",
+          "gb": null,
+          "days": 5,
+          "priceUsd": 17,
+          "unlimited": true,
+          "note": "Fair-use policy applies"
+        },
+        {
+          "id": "airalo-unlimited-7-days",
+          "name": "Unlimited / 7 days",
+          "gb": null,
+          "days": 7,
+          "priceUsd": 26.5,
+          "unlimited": true,
+          "note": "Fair-use policy applies"
+        },
+        {
+          "id": "airalo-unlimited-10-days",
+          "name": "Unlimited / 10 days",
+          "gb": null,
+          "days": 10,
+          "priceUsd": 34.5,
+          "unlimited": true,
+          "note": "Fair-use policy applies"
+        },
+        {
+          "id": "airalo-unlimited-15-days",
+          "name": "Unlimited / 15 days",
+          "gb": null,
+          "days": 15,
+          "priceUsd": 48,
+          "unlimited": true,
+          "note": "Fair-use policy applies"
+        },
+        {
+          "id": "airalo-unlimited-30-days",
+          "name": "Unlimited / 30 days",
+          "gb": null,
+          "days": 30,
+          "priceUsd": 69,
+          "unlimited": true,
+          "note": "Fair-use policy applies"
+        }
+      ]
+    },
+    "holafly": {
+      "name": "Holafly",
+      "brand": "Holafly Japan eSIM",
+      "network": "SoftBank / KDDI (5G)",
+      "sourceUrl": "https://esim.holafly.com/esim-japan/",
+      "affiliateUrl": "#",
+      "fetchedAt": "2026-09-18T01:33:40.059Z",
+      "updatedAt": "2026-09-18T01:19:25.371Z",
+      "plans": [
+        {
+          "id": "holafly-unlimited-3-days",
+          "name": "Unlimited / 3 days",
+          "gb": null,
+          "days": 3,
+          "priceUsd": 11.9,
+          "unlimited": true,
+          "note": "Hotspot capped at 1 GB/day"
+        },
+        {
+          "id": "holafly-unlimited-5-days",
+          "name": "Unlimited / 5 days",
+          "gb": null,
+          "days": 5,
+          "priceUsd": 20.5,
+          "unlimited": true,
+          "note": "Hotspot capped at 1 GB/day"
+        },
+        {
+          "id": "holafly-unlimited-7-days",
+          "name": "Unlimited / 7 days",
+          "gb": null,
+          "days": 7,
+          "priceUsd": 27.5,
+          "unlimited": true,
+          "note": "Hotspot capped at 1 GB/day"
+        },
+        {
+          "id": "holafly-unlimited-10-days",
+          "name": "Unlimited / 10 days",
+          "gb": null,
+          "days": 10,
+          "priceUsd": 36.5,
+          "unlimited": true,
+          "note": "Hotspot capped at 1 GB/day"
+        },
+        {
+          "id": "holafly-unlimited-15-days",
+          "name": "Unlimited / 15 days",
+          "gb": null,
+          "days": 15,
+          "priceUsd": 50.5,
+          "unlimited": true,
+          "note": "Hotspot capped at 1 GB/day"
+        },
+        {
+          "id": "holafly-unlimited-30-days",
+          "name": "Unlimited / 30 days",
+          "gb": null,
+          "days": 30,
+          "priceUsd": 73.9,
+          "unlimited": true,
+          "note": "Hotspot capped at 1 GB/day"
+        }
+      ]
+    },
+    "esimgo": {
+      "name": "eSIM Go",
+      "brand": "Breeze (eSIM Go)",
+      "network": "Docomo / SoftBank",
+      "sourceUrl": "https://breezesim.com/products/esim-japan",
+      "affiliateUrl": "https://breezesim.com?sca_ref=11082101.AF8vabyRKN",
+      "fetchedAt": "2026-09-18T01:33:40.059Z",
+      "updatedAt": "2026-09-18T01:20:13.959Z",
+      "plans": [
+        {
+          "id": "esimgo-1-gb-7-days",
+          "name": "1 GB / 7 days",
+          "gb": 1,
+          "days": 7,
+          "priceUsd": 3.99,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-2-gb-15-days",
+          "name": "2 GB / 15 days",
+          "gb": 2,
+          "days": 15,
+          "priceUsd": 5.49,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-3-gb-30-days",
+          "name": "3 GB / 30 days",
+          "gb": 3,
+          "days": 30,
+          "priceUsd": 6.99,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-5-gb-30-days",
+          "name": "5 GB / 30 days",
+          "gb": 5,
+          "days": 30,
+          "priceUsd": 9.99,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-10-gb-30-days",
+          "name": "10 GB / 30 days",
+          "gb": 10,
+          "days": 30,
+          "priceUsd": 13.99,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-20-gb-30-days",
+          "name": "20 GB / 30 days",
+          "gb": 20,
+          "days": 30,
+          "priceUsd": 23.99,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-50-gb-30-days",
+          "name": "50 GB / 30 days",
+          "gb": 50,
+          "days": 30,
+          "priceUsd": 41.99,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-100-gb-30-days",
+          "name": "100 GB / 30 days",
+          "gb": 100,
+          "days": 30,
+          "priceUsd": 81.99,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-unlimited-1-day",
+          "name": "Unlimited / 1 day",
+          "gb": null,
+          "days": 1,
+          "priceUsd": 5.99,
+          "unlimited": true,
+          "note": "Unlimited Essential — speed reduced after daily high-speed allowance"
+        },
+        {
+          "id": "esimgo-unlimited-3-days",
+          "name": "Unlimited / 3 days",
+          "gb": null,
+          "days": 3,
+          "priceUsd": 10.99,
+          "unlimited": true,
+          "note": "Unlimited Essential — speed reduced after daily high-speed allowance"
+        },
+        {
+          "id": "esimgo-unlimited-5-days",
+          "name": "Unlimited / 5 days",
+          "gb": null,
+          "days": 5,
+          "priceUsd": 16.99,
+          "unlimited": true,
+          "note": "Unlimited Essential — speed reduced after daily high-speed allowance"
+        },
+        {
+          "id": "esimgo-unlimited-7-days",
+          "name": "Unlimited / 7 days",
+          "gb": null,
+          "days": 7,
+          "priceUsd": 22.99,
+          "unlimited": true,
+          "note": "Unlimited Essential — speed reduced after daily high-speed allowance"
+        },
+        {
+          "id": "esimgo-unlimited-10-days",
+          "name": "Unlimited / 10 days",
+          "gb": null,
+          "days": 10,
+          "priceUsd": 32.99,
+          "unlimited": true,
+          "note": "Unlimited Essential — speed reduced after daily high-speed allowance"
+        },
+        {
+          "id": "esimgo-unlimited-15-days",
+          "name": "Unlimited / 15 days",
+          "gb": null,
+          "days": 15,
+          "priceUsd": 47.99,
+          "unlimited": true,
+          "note": "Unlimited Essential — speed reduced after daily high-speed allowance"
+        }
+      ]
+    },
+    "sakura": {
+      "name": "Sakura Mobile",
+      "brand": "Sakura Mobile Travel eSIM",
+      "network": "au/KDDI (Unlimited) or Docomo (3 GB/day)",
+      "sourceUrl": "https://www.sakuramobile.jp/travel/esim/",
+      "affiliateUrl": "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
+      "fetchedAt": "2026-09-18T01:33:40.059Z",
+      "updatedAt": "2026-09-18T01:33:09.373Z",
+      "plans": [
+        {
+          "id": "sakura-9-gb-3-days",
+          "name": "9 GB / 3 days",
+          "gb": 9,
+          "days": 3,
+          "priceUsd": 18.07,
+          "unlimited": false,
+          "dailyCapGb": 3,
+          "note": "3 GB/day high-speed, then reduced speed (Docomo)"
+        },
+        {
+          "id": "sakura-15-gb-5-days",
+          "name": "15 GB / 5 days",
+          "gb": 15,
+          "days": 5,
+          "priceUsd": 25.3,
+          "unlimited": false,
+          "dailyCapGb": 3,
+          "note": "3 GB/day high-speed, then reduced speed (Docomo)"
+        },
+        {
+          "id": "sakura-21-gb-7-days",
+          "name": "21 GB / 7 days",
+          "gb": 21,
+          "days": 7,
+          "priceUsd": 30.36,
+          "unlimited": false,
+          "dailyCapGb": 3,
+          "note": "3 GB/day high-speed, then reduced speed (Docomo)"
+        },
+        {
+          "id": "sakura-30-gb-10-days",
+          "name": "30 GB / 10 days",
+          "gb": 30,
+          "days": 10,
+          "priceUsd": 36.87,
+          "unlimited": false,
+          "dailyCapGb": 3,
+          "note": "3 GB/day high-speed, then reduced speed (Docomo)"
+        },
+        {
+          "id": "sakura-45-gb-15-days",
+          "name": "45 GB / 15 days",
+          "gb": 45,
+          "days": 15,
+          "priceUsd": 46.99,
+          "unlimited": false,
+          "dailyCapGb": 3,
+          "note": "3 GB/day high-speed, then reduced speed (Docomo)"
+        },
+        {
+          "id": "sakura-90-gb-30-days",
+          "name": "90 GB / 30 days",
+          "gb": 90,
+          "days": 30,
+          "priceUsd": 65.07,
+          "unlimited": false,
+          "dailyCapGb": 3,
+          "note": "3 GB/day high-speed, then reduced speed (Docomo)"
+        },
+        {
+          "id": "sakura-unlimited-3-days",
+          "name": "Unlimited / 3 days",
+          "gb": null,
+          "days": 3,
+          "priceUsd": 21.33,
+          "unlimited": true,
+          "note": "Unlimited on-device (au/KDDI); hotspot allowance by plan length"
+        },
+        {
+          "id": "sakura-unlimited-5-days",
+          "name": "Unlimited / 5 days",
+          "gb": null,
+          "days": 5,
+          "priceUsd": 30,
+          "unlimited": true,
+          "note": "Unlimited on-device (au/KDDI); hotspot allowance by plan length"
+        },
+        {
+          "id": "sakura-unlimited-7-days",
+          "name": "Unlimited / 7 days",
+          "gb": null,
+          "days": 7,
+          "priceUsd": 37.95,
+          "unlimited": true,
+          "note": "Unlimited on-device (au/KDDI); hotspot allowance by plan length"
+        },
+        {
+          "id": "sakura-unlimited-10-days",
+          "name": "Unlimited / 10 days",
+          "gb": null,
+          "days": 10,
+          "priceUsd": 48.44,
+          "unlimited": true,
+          "note": "Unlimited on-device (au/KDDI); hotspot allowance by plan length"
+        },
+        {
+          "id": "sakura-unlimited-15-days",
+          "name": "Unlimited / 15 days",
+          "gb": null,
+          "days": 15,
+          "priceUsd": 63.62,
+          "unlimited": true,
+          "note": "Unlimited on-device (au/KDDI); hotspot allowance by plan length"
+        },
+        {
+          "id": "sakura-unlimited-30-days",
+          "name": "Unlimited / 30 days",
+          "gb": null,
+          "days": 30,
+          "priceUsd": 95.79,
+          "unlimited": true,
+          "note": "Unlimited on-device (au/KDDI); hotspot allowance by plan length"
+        }
+      ]
+    }
+  }
+}

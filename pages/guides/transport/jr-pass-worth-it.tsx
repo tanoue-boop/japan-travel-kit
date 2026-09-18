@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import JrPassCalculator from "../../../components/JrPassCalculator";
 
 const itineraries = [
   { route: "Tokyo only", fares: "~¥0 intercity JR", verdict: "Skip", win: false },
@@ -44,6 +45,10 @@ const alternatives = [
 ];
 
 const faqItems = [
+  {
+    q: "How do I work out whether the JR Pass is worth it for my trip?",
+    a: "Add up the individual reserved-seat fares for the JR-covered trains you will actually ride and compare the total with the pass price (¥50,000 for 7 days, ¥80,000 for 14, ¥100,000 for 21). The calculator at the top of this page does it for you: tick your legs — for example Tokyo–Kyoto ¥13,970 one-way, Tokyo–Hiroshima ¥19,080, Tokyo–Kanazawa ¥14,380 — mark any round trips, and it shows the saving or the shortfall. Only JR-operated trains, JR buses and the Miyajima ferry count; subways and private railways don't.",
+  },
   {
     q: "Is the JR Pass worth it in 2026?",
     a: "For most travellers, no. After the October 2023 price increase that pushed the 7-day Ordinary pass from ¥29,650 to ¥50,000 (about a 70% rise), the break-even point moved a long way up. To get your money back on a 7-day pass you need roughly ¥50,000 of covered JR travel in a week — which usually means several long-distance Shinkansen legs (e.g. Tokyo–Hiroshima plus Kanazawa or Tohoku). If you're staying in Tokyo, doing only the Golden Route, or only making one or two intercity trips, individual tickets are cheaper.",
@@ -106,7 +111,7 @@ export default function JrPassWorthItPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Is the JR Pass Worth It in 2026? Honest Cost Breakdown",
-              dateModified: "2026-06-03",
+              dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -161,7 +166,7 @@ export default function JrPassWorthItPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated June 2026
+            <span>🚄</span> Updated September 2026
           </p>
           <h1 className={styles.heroTitle}>
             Is the JR Pass Worth It in 2026?<br />Honest Cost Breakdown
@@ -171,7 +176,7 @@ export default function JrPassWorthItPage() {
             Here&apos;s the honest math — including when you should genuinely skip it.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Real Break-Even Math", "Cheaper Alternatives"].map((t) => (
+            {["Break-Even Calculator", "Real 2026 Fares", "Cheaper Alternatives"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -220,16 +225,22 @@ export default function JrPassWorthItPage() {
               the JR Pass costs <em>more</em> than buying tickets individually. It only pays off if your route
               packs in multiple long-distance Shinkansen trips. If yours does, here are current options:
             </p>
-            <a
-              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
-              className={styles.verdictBtn}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              Check JR Pass Prices →
+            <a href="#jr-pass-calculator" className={styles.verdictBtn}>
+              Run the numbers for my route ↓
             </a>
           </div>
         </div>
+
+        {/* Calculator */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Calculator</span>
+          <h2 className={styles.sectionTitle}>Does the JR Pass Pay Off for Your Route?</h2>
+          <p className={styles.bodyText}>
+            Tick the long-distance JR legs you&apos;ll actually ride, choose a pass length, and the calculator compares the
+            total of individual reserved-seat tickets against the pass price — instantly, no sign-up.
+          </p>
+          <JrPassCalculator />
+        </section>
 
         {/* Conclusion first */}
         <section className={styles.bodySection}>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import FxFeeComparison from "../../../components/FxFeeComparison";
 
 const bestWays = [
   {
@@ -58,6 +59,10 @@ const cards = [
 ];
 
 const faqItems = [
+  {
+    q: "How much do I lose exchanging money at a Japanese airport instead of using a Wise or Revolut card?",
+    a: "Roughly 5–7% of your money. Airport counters at Narita, Haneda and Kansai build their margin into the exchange rate, while Wise converts at the mid-market rate for a fee of around 0.5% and Revolut is fee-free on weekdays up to your plan's monthly allowance. On $1,000, that's the difference between receiving about ¥138,000 at the airport and roughly ¥146,000 with a Wise card at a 7-Eleven ATM or shop terminal. Use the comparison tool on this page to see the numbers for your own amount and currency.",
+  },
   {
     q: "Where is the best place to exchange money in Japan?",
     a: "The best place to get yen in Japan is a 7-Eleven ATM or Japan Post ATM, used with a travel card that charges no foreign transaction fees (Wise, Revolut, or Charles Schwab). These give you the mid-market exchange rate with minimal charges. Currency exchange counters — including those at airports — offer significantly worse rates and should be avoided if possible.",
@@ -148,7 +153,7 @@ export default function CurrencyExchangeJapanPage() {
               "@type": "Article",
               headline: "Currency Exchange in Japan (2026): Best Ways to Get Yen",
               datePublished: "2026-04-28",
-              dateModified: "2026-09-16",
+              dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -197,7 +202,7 @@ export default function CurrencyExchangeJapanPage() {
             Where you exchange your money makes a big difference. Here&apos;s how to get the best yen rate — and what to avoid.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "Best Rates", "How Much Yen to Bring"].map((t) => (
+            {["Fee Comparison Tool", "Best Rates", "How Much Yen to Bring"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -245,8 +250,22 @@ export default function CurrencyExchangeJapanPage() {
                 <p className={styles.verdictStatValue}>A travel card with no foreign fees</p>
               </div>
             </div>
+            <a href="#fx-comparison" className={styles.verdictBtn}>
+              Compare fees on my amount ↓
+            </a>
           </div>
         </div>
+
+        {/* Fee comparison tool */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Fee comparison</span>
+          <h2 className={styles.sectionTitle}>Exchange &amp; Card Fees Compared on Your Amount</h2>
+          <p className={styles.bodyText}>
+            Percentages are abstract — yen in your hand isn&apos;t. Enter what you plan to convert in USD, EUR or GBP and
+            see how much each method actually gives you, and how much disappears in fees and spread.
+          </p>
+          <FxFeeComparison />
+        </section>
 
         {/* Best Ways to Get Yen */}
         <section className={styles.installSection}>

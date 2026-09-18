@@ -1,0 +1,83 @@
+{
+  "asOf": "2026-09",
+  "note": "Typical published fees as of September 2026. Card fees depend on your plan and the country your account is registered in; exchange-counter spreads vary by location and day. Reference mid-market rates are editable in the tool and only affect the yen figures, not the percentage comparison.",
+  "currencies": ["USD", "EUR", "GBP"],
+  "referenceRates": { "USD": 147, "EUR": 172, "GBP": 199 },
+  "methods": [
+    {
+      "id": "wise",
+      "name": "Wise card",
+      "kind": "card",
+      "desc": "Mid-market rate plus a small transparent conversion fee (varies by currency).",
+      "percentFee": { "USD": 0.55, "EUR": 0.45, "GBP": 0.45 },
+      "fixedHome": { "USD": 0, "EUR": 0, "GBP": 0 },
+      "fixedJpy": 0,
+      "spreadPercent": 0,
+      "guide": "/guides/money/wise-card-japan",
+      "guideLabel": "Wise card in Japan guide"
+    },
+    {
+      "id": "revolut",
+      "name": "Revolut (Standard plan)",
+      "kind": "card",
+      "desc": "Interbank rate with no fee on weekdays up to your plan's monthly allowance; ~1% above it and a ~1% weekend markup.",
+      "percentFee": { "USD": 0, "EUR": 0, "GBP": 0 },
+      "overAllowancePercent": 1,
+      "allowanceHome": { "USD": 1000, "EUR": 1000, "GBP": 1000 },
+      "weekendPercent": 1,
+      "fixedHome": { "USD": 0, "EUR": 0, "GBP": 0 },
+      "fixedJpy": 0,
+      "spreadPercent": 0,
+      "guide": "/guides/money/revolut-card-japan",
+      "guideLabel": "Revolut card in Japan guide"
+    },
+    {
+      "id": "credit-card",
+      "name": "Typical bank credit / debit card",
+      "kind": "card",
+      "desc": "Visa/Mastercard network rate (close to mid-market) plus a ~3% foreign transaction fee.",
+      "percentFee": { "USD": 3, "EUR": 3, "GBP": 3 },
+      "fixedHome": { "USD": 0, "EUR": 0, "GBP": 0 },
+      "fixedJpy": 0,
+      "spreadPercent": 0,
+      "guide": "/guides/money/best-travel-card-japan",
+      "guideLabel": "Best travel cards for Japan"
+    },
+    {
+      "id": "atm-home-bank",
+      "name": "Japan ATM with a typical home-bank card",
+      "kind": "cash",
+      "desc": "7-Eleven / Japan Post ATM: ~3% foreign fee + your bank's flat withdrawal fee + the machine's ¥220 fee.",
+      "percentFee": { "USD": 3, "EUR": 3, "GBP": 3 },
+      "fixedHome": { "USD": 5, "EUR": 5, "GBP": 3 },
+      "fixedJpy": 220,
+      "spreadPercent": 0,
+      "guide": "/guides/money/atms-in-japan",
+      "guideLabel": "ATMs in Japan guide"
+    },
+    {
+      "id": "city-exchange",
+      "name": "City exchange bureau (Tokyo / Osaka)",
+      "kind": "cash",
+      "desc": "Competitive street bureaux (e.g. around Shinjuku, Ginza, Namba) — spread of roughly 2–3% built into the rate.",
+      "percentFee": { "USD": 0, "EUR": 0, "GBP": 0 },
+      "fixedHome": { "USD": 0, "EUR": 0, "GBP": 0 },
+      "fixedJpy": 0,
+      "spreadPercent": 2.5,
+      "guide": "/guides/money/cash-vs-card-japan",
+      "guideLabel": "Cash vs card in Japan"
+    },
+    {
+      "id": "airport-exchange",
+      "name": "Airport exchange counter",
+      "kind": "cash",
+      "desc": "Narita / Haneda / KIX counters — convenience priced in with a 5–7% spread.",
+      "percentFee": { "USD": 0, "EUR": 0, "GBP": 0 },
+      "fixedHome": { "USD": 0, "EUR": 0, "GBP": 0 },
+      "fixedJpy": 0,
+      "spreadPercent": 6,
+      "guide": "/guides/money/currency-exchange-japan",
+      "guideLabel": "Where not to exchange money"
+    }
+  ]
+}

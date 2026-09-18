@@ -1,0 +1,29 @@
+{
+  "currency": "JPY",
+  "asOf": "2026-09",
+  "note": "One-way regular-season fares (basic fare + reserved-seat limited express charge, Ordinary car) on JR Pass-eligible services. Nozomi/Mizuho are not covered by the pass without a supplement, so Hikari/Sakura/Kodama fares are used on the Tokaido/Sanyo line. Figures are rounded reference values — confirm on JR East/JR Central sites before buying.",
+  "passes": [
+    { "id": "7", "name": "7-day Ordinary", "days": 7, "priceYen": 50000 },
+    { "id": "14", "name": "14-day Ordinary", "days": 14, "priceYen": 80000 },
+    { "id": "21", "name": "21-day Ordinary", "days": 21, "priceYen": 100000 }
+  ],
+  "passNote": "From 1 October 2026 the overseas-sold 7-day Ordinary pass is due to rise to ¥53,000; the official online reservation price is expected to stay at ¥50,000.",
+  "segments": [
+    { "id": "tokyo-kyoto", "from": "Tokyo", "to": "Kyoto", "fareYen": 13970, "train": "Tokaido Shinkansen (Hikari)", "minutes": 160, "group": "Tokaido / Sanyo" },
+    { "id": "tokyo-shin-osaka", "from": "Tokyo", "to": "Shin-Osaka", "fareYen": 14720, "train": "Tokaido Shinkansen (Hikari)", "minutes": 175, "group": "Tokaido / Sanyo" },
+    { "id": "tokyo-nagoya", "from": "Tokyo", "to": "Nagoya", "fareYen": 11090, "train": "Tokaido Shinkansen (Hikari)", "minutes": 100, "group": "Tokaido / Sanyo" },
+    { "id": "tokyo-hiroshima", "from": "Tokyo", "to": "Hiroshima", "fareYen": 19080, "train": "Hikari + Sakura (change at Shin-Osaka)", "minutes": 300, "group": "Tokaido / Sanyo" },
+    { "id": "tokyo-hakata", "from": "Tokyo", "to": "Hakata (Fukuoka)", "fareYen": 23390, "train": "Hikari + Sakura (change at Shin-Osaka)", "minutes": 380, "group": "Tokaido / Sanyo" },
+    { "id": "osaka-hiroshima", "from": "Shin-Osaka", "to": "Hiroshima", "fareYen": 10420, "train": "Sanyo Shinkansen (Sakura)", "minutes": 90, "group": "Tokaido / Sanyo" },
+    { "id": "kyoto-hiroshima", "from": "Kyoto", "to": "Hiroshima", "fareYen": 11400, "train": "Hikari + Sakura (change at Shin-Osaka)", "minutes": 110, "group": "Tokaido / Sanyo" },
+    { "id": "osaka-hakata", "from": "Shin-Osaka", "to": "Hakata (Fukuoka)", "fareYen": 15280, "train": "Sanyo Shinkansen (Sakura)", "minutes": 150, "group": "Tokaido / Sanyo" },
+    { "id": "kyoto-osaka", "from": "Kyoto", "to": "Osaka", "fareYen": 580, "train": "JR Special Rapid (no Shinkansen needed)", "minutes": 30, "group": "Local" },
+    { "id": "tokyo-kanazawa", "from": "Tokyo", "to": "Kanazawa", "fareYen": 14380, "train": "Hokuriku Shinkansen (Kagayaki / Hakutaka)", "minutes": 150, "group": "Hokuriku / Nagano" },
+    { "id": "tokyo-nagano", "from": "Tokyo", "to": "Nagano", "fareYen": 8340, "train": "Hokuriku Shinkansen (Kagayaki / Asama)", "minutes": 85, "group": "Hokuriku / Nagano" },
+    { "id": "kanazawa-kyoto", "from": "Kanazawa", "to": "Kyoto", "fareYen": 8420, "train": "Hokuriku Shinkansen to Tsuruga + Thunderbird", "minutes": 130, "group": "Hokuriku / Nagano" },
+    { "id": "tokyo-sendai", "from": "Tokyo", "to": "Sendai", "fareYen": 11410, "train": "Tohoku Shinkansen (Hayabusa)", "minutes": 95, "group": "Tohoku / Hokkaido" },
+    { "id": "tokyo-hakodate", "from": "Tokyo", "to": "Shin-Hakodate-Hokuto", "fareYen": 23430, "train": "Hokkaido Shinkansen (Hayabusa)", "minutes": 240, "group": "Tohoku / Hokkaido" },
+    { "id": "narita-tokyo", "from": "Narita Airport", "to": "Tokyo", "fareYen": 3070, "train": "Narita Express (N'EX)", "minutes": 60, "group": "Airport" },
+    { "id": "kix-kyoto", "from": "Kansai Airport", "to": "Kyoto", "fareYen": 3640, "train": "Haruka limited express", "minutes": 80, "group": "Airport" }
+  ]
+}

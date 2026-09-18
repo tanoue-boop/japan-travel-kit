@@ -1,93 +1,95 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import tools from "../../../styles/Tools.module.css";
+import EsimPlanFinder from "../../../components/EsimPlanFinder";
+import EsimPlanTable, { ProviderCta } from "../../../components/EsimPlanTable";
+import EsimPriceStatus from "../../../components/EsimPriceStatus";
+import {
+  allEsimPlans,
+  bestValuePlan,
+  esimProviders,
+  findPlansForTrip,
+  formatDate,
+  formatUsd,
+  latestCheckedAt,
+  type EsimPlanRow,
+} from "../../../lib/esim-prices";
 
-const allPlans = [
-  { provider: "eSIM Go",      plan: "Japan S",    data: "1 GB",       duration: "7 days",  price: "$3.50",  network: "Docomo"   },
-  { provider: "eSIM Go",      plan: "Japan M",    data: "5 GB",       duration: "15 days", price: "$8.00",  network: "Docomo"   },
-  { provider: "eSIM Go",      plan: "Japan L",    data: "10 GB",      duration: "30 days", price: "$14.00", network: "Docomo"   },
-  { provider: "Airalo",       plan: "Moshi S",    data: "1 GB",       duration: "7 days",  price: "$4.50",  network: "Docomo"   },
-  { provider: "Airalo",       plan: "Moshi M",    data: "3 GB",       duration: "30 days", price: "$9.50",  network: "Docomo"   },
-  { provider: "Airalo",       plan: "Moshi L",    data: "10 GB",      duration: "30 days", price: "$18.00", network: "Docomo"   },
-  { provider: "Holafly",      plan: "Unlimited",  data: "Unlimited",  duration: "5 days",  price: "$19.00", network: "SoftBank" },
-  { provider: "Holafly",      plan: "Unlimited",  data: "Unlimited",  duration: "10 days", price: "$27.00", network: "SoftBank" },
-  { provider: "Holafly",      plan: "Unlimited",  data: "Unlimited",  duration: "30 days", price: "$49.00", network: "SoftBank" },
-  { provider: "Sakura Mobile", plan: "Standard",  data: "7 GB",       duration: "30 days", price: "$28.00", network: "Docomo"   },
-];
+// Everything below is computed from data/esim-prices.json at build time, so the
+// copy (and the FAQ structured data) never drifts from the table.
+const checkedAt = latestCheckedAt();
+const checkedLabel = formatDate(checkedAt);
+const checkedIso = checkedAt ? checkedAt.slice(0, 10) : "2026-09-18";
+
+const cheapestOf = (rows: EsimPlanRow[]) => (rows.length ? rows.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null);
+const cheapestOverall = cheapestOf(allEsimPlans);
+// 7+ days so a 1-day plan can't "win" the unlimited headline.
+const cheapestUnlimitedAny = cheapestOf(allEsimPlans.filter((p) => p.unlimited && p.days >= 7));
+const cheapest5gb = cheapestOf(allEsimPlans.filter((p) => !p.unlimited && (p.gb ?? 0) >= 5));
+const cheapest10gb = cheapestOf(allEsimPlans.filter((p) => !p.unlimited && (p.gb ?? 0) >= 10));
+const bestValue = bestValuePlan();
+
+const label = (p: EsimPlanRow | null) => (p ? `${p.provider} ${p.name} (${formatUsd(p.priceUsd)})` : "—");
 
 const dataUsage = [
-  { activity: "Google Maps navigation", perDay: "~50 MB"  },
-  { activity: "Social media browsing",  perDay: "~150 MB" },
-  { activity: "Streaming video (SD)",   perDay: "~500 MB" },
-  { activity: "Video calls",            perDay: "~300 MB" },
-  { activity: "Light use total",        perDay: "~200 MB" },
-  { activity: "Heavy use total",        perDay: "~1 GB"   },
+  { activity: "Google Maps navigation", perDay: "~50 MB" },
+  { activity: "Social media browsing", perDay: "~150 MB" },
+  { activity: "Streaming video (SD)", perDay: "~500 MB" },
+  { activity: "Video calls", perDay: "~300 MB" },
+  { activity: "Light use total", perDay: "~300 MB" },
+  { activity: "Heavy use total", perDay: "~1.5 GB" },
 ];
 
-const byTripLength = [
-  { length: "1–3 days",   pick: "eSIM Go 1 GB ($3.50)",      reason: "The cheapest plan available. More than enough data for a short city visit using navigation and messaging." },
-  { length: "4–7 days",   pick: "eSIM Go 1 GB or Airalo 1 GB", reason: "Either 1 GB plan covers a week of moderate use. eSIM Go is slightly cheaper; Airalo has a more established app." },
-  { length: "1–2 weeks",  pick: "Airalo 3 GB ($9.50)",       reason: "The best-value plan for a standard Japan holiday. 3 GB comfortably covers maps, messaging, and social media for 14 days." },
-  { length: "2–4 weeks",  pick: "Holafly Unlimited or eSIM Go 10 GB", reason: "Heavy users and those travelling for 3–4 weeks should consider unlimited (Holafly) or a large data plan (eSIM Go 10 GB at $14)." },
-  { length: "1 month+",   pick: "Sakura Mobile ($28)",       reason: "For long stays, Sakura Mobile offers Docomo coverage, optional voice calls, and English-language customer support — worth the premium." },
-];
+// "Average" traveller: ~0.7 GB/day, matching the finder's default preset.
+const byTripLength = [3, 7, 14, 30].map((days) => {
+  const gb = Math.ceil(0.7 * days * 10) / 10;
+  const pick = findPlansForTrip(days, gb)[0] ?? null;
+  const unlimited = findPlansForTrip(days, Infinity)[0] ?? null;
+  return { days, gb, pick, unlimited };
+});
 
-const byUsage = [
-  {
-    type: "Light user",
-    desc: "Mostly maps and messaging. No video streaming. 1–2 GB is plenty for a standard 2-week trip.",
-    pick: "eSIM Go Japan S (1 GB, $3.50)",
-    affiliateUrl: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN",
-  },
-  {
-    type: "Average user",
-    desc: "Maps, social media, occasional photo uploads to the cloud. Standard tourist behaviour over 1–2 weeks.",
-    pick: "Airalo Moshi M (3 GB, $9.50)",
-    affiliateUrl: "https://airalo.pxf.io/c/7213504/1268485/15608",
-  },
-  {
-    type: "Heavy user",
-    desc: "Streaming video, frequent video calls, uploading content, or travelling for 3+ weeks.",
-    pick: "Holafly Unlimited",
-    affiliateUrl: "#",
-  },
-  {
-    type: "Need voice calls",
-    desc: "Requires a real Japanese phone number for reservations, SIM-dependent apps, or calling hotels.",
-    pick: "Sakura Mobile Standard ($28)",
-    affiliateUrl: "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
-  },
-];
-
-const pricePerGb = [
-  { provider: "eSIM Go",      plan: "Japan L (10 GB)",  pricePerGb: "$1.40/GB",  note: "Best value per GB"     },
-  { provider: "eSIM Go",      plan: "Japan M (5 GB)",   pricePerGb: "$1.60/GB",  note: ""                      },
-  { provider: "Airalo",       plan: "Moshi L (10 GB)",  pricePerGb: "$1.80/GB",  note: ""                      },
-  { provider: "Airalo",       plan: "Moshi M (3 GB)",   pricePerGb: "$3.17/GB",  note: ""                      },
-  { provider: "Sakura Mobile", plan: "Standard (7 GB)", pricePerGb: "$4.00/GB",  note: "Includes voice option" },
-  { provider: "Holafly",      plan: "Unlimited",        pricePerGb: "N/A",        note: "Flat rate per day"     },
-];
+const providerSummaries = esimProviders.map((p) => {
+  const capped = p.plans.filter((x) => !x.unlimited);
+  const cheapestCapped = capped.length ? capped.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null;
+  const unlimited = p.plans.filter((x) => x.unlimited);
+  const cheapestUnl = unlimited.length ? unlimited.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null;
+  const perGbBest = capped.length
+    ? capped.reduce((a, b) => (b.priceUsd / (b.gb ?? 1) < a.priceUsd / (a.gb ?? 1) ? b : a))
+    : null;
+  return { ...p, cheapestCapped, cheapestUnl, perGbBest };
+});
 
 const faqItems = [
   {
-    q: "Which Japan eSIM has the best data plan?",
-    a: "For pure value, eSIM Go's 10 GB plan at $14 offers the lowest cost per GB ($1.40/GB) of any Japan eSIM. For most holiday travellers, Airalo's 3 GB 30-day plan at $9.50 is the most practical — enough data for two weeks of maps, messaging, and social media. Holafly's unlimited plan suits heavy users or those who stream video regularly.",
+    q: "Which Japan eSIM has the best value per GB?",
+    a: bestValue
+      ? `As of ${checkedLabel}, the lowest cost per GB among fixed-allowance plans is ${bestValue.provider}'s ${bestValue.name} at ${formatUsd(bestValue.priceUsd)} — about ${formatUsd(bestValue.perGb ?? 0)} per GB. (Sakura Mobile's 3 GB/day plans show an even lower nominal $/GB, but a daily cap can't be saved up, so we don't count them here.) Big plans always win on per-GB price, but only buy what you'll actually use: a plan that matches your trip is better value than a huge one you use a third of.`
+      : "Sort the comparison table above by Price / GB to see the current best-value plan.",
   },
   {
-    q: "Is 3 GB enough for 2 weeks in Japan?",
-    a: "For most travellers, yes. 3 GB over 14 days works out to about 200 MB per day — enough for navigation, messaging, social media, and occasional photo uploads. If you plan to stream video, make frequent video calls, or upload large files, consider a 5–10 GB plan or Holafly's unlimited option instead.",
+    q: "What is the cheapest Japan eSIM right now?",
+    a: cheapestOverall
+      ? `The cheapest plan we track is ${cheapestOverall.provider}'s ${cheapestOverall.name} at ${formatUsd(cheapestOverall.priceUsd)} (checked ${checkedLabel}). ${cheapest5gb ? `If you need more data, the cheapest 5 GB+ plan is ${label(cheapest5gb)}` : ""}${cheapest10gb ? ` and the cheapest 10 GB+ plan is ${label(cheapest10gb)}.` : "."}`
+      : "Use the comparison table above, sorted by price, to see the cheapest current plan.",
   },
   {
-    q: "Which is cheaper: Airalo or eSIM Go?",
-    a: "eSIM Go is consistently cheaper at every data tier. Their 1 GB plan costs $3.50 vs Airalo's $4.50, and their 10 GB plan costs $14.00 vs Airalo's $18.00. Both run on Docomo — so coverage is identical. eSIM Go wins on price; Airalo wins on app experience and brand recognition.",
+    q: "What is the cheapest unlimited eSIM for Japan?",
+    a: cheapestUnlimitedAny
+      ? `For a week or longer, ${cheapestUnlimitedAny.provider}'s ${cheapestUnlimitedAny.name} at ${formatUsd(cheapestUnlimitedAny.priceUsd)} is the cheapest unlimited plan we track (checked ${checkedLabel}); shorter 1–5 day unlimited plans are cheaper still — see the table. Read the fine print: Holafly caps hotspot use at 1 GB/day, Airalo's unlimited plans have a fair-use policy, and eSIM Go's "Unlimited Essential" slows down after a daily high-speed allowance. Sakura Mobile's unlimited plan runs on au/KDDI with a hotspot allowance that depends on plan length.`
+      : "Compare the unlimited plans in the table above.",
+  },
+  {
+    q: "Is 5 GB enough for 2 weeks in Japan?",
+    a: "For most travellers, yes. 5 GB over 14 days is about 350 MB per day — enough for navigation, messaging, social media, and occasional photo uploads. If you plan to stream video, make frequent video calls, or use your phone as a hotspot for a laptop, use the plan finder above with the \"Heavy\" preset, or pick an unlimited plan.",
+  },
+  {
+    q: "How often are these prices updated?",
+    a: `Every day. A script fetches the current Japan plans from each provider's official website (Airalo, Holafly, eSIM Go/Breeze and Sakura Mobile) and updates this page automatically. If a provider's site can't be read on a given day, we keep the last verified prices and show the date they were last checked, so you can always see how fresh each number is. Last successful check: ${checkedLabel}.`,
   },
   {
     q: "Can I buy more data if I run out in Japan?",
-    a: "Yes, for most providers. Airalo lets you top up by purchasing an additional plan in the app — no new QR code required. eSIM Go allows top-ups through its website. Holafly's unlimited plan means you never run out. Sakura Mobile allows data add-ons via their customer portal. Plan ahead if you're heading to rural areas — you'll need an internet connection to complete the top-up.",
-  },
-  {
-    q: "Which Japan eSIM has the fastest speeds?",
-    a: "Speed depends more on the underlying network than the eSIM provider. Plans running on Docomo (eSIM Go, Airalo, Sakura Mobile) typically offer excellent 4G LTE speeds of 20–80 Mbps in cities. Holafly runs on SoftBank, which is also fast but has slightly less rural coverage than Docomo. In practice, you're unlikely to notice a difference for everyday use — Japan's LTE networks are outstanding nationwide.",
+    a: "Yes, for most providers. Airalo lets you top up by purchasing an additional plan in the app — no new QR code required. eSIM Go (Breeze) allows top-ups through its website. Holafly's plans are unlimited, so you never run out, but they're fixed-length. Sakura Mobile allows data add-ons via its customer portal. Plan ahead if you're heading to rural areas — you'll need an internet connection to complete the top-up.",
   },
 ];
 
@@ -95,21 +97,21 @@ export default function JapanEsimDataPlansPage() {
   return (
     <>
       <Head>
-        <title>Japan eSIM Data Plans 2026: Full Comparison | Japan Travel Kit</title>
+        <title>Japan eSIM Data Plans 2026: Live Price Tracker | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Compare every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile. Find the right plan for your trip length and data needs."
+          content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in one table — prices checked daily, sortable by price per GB, plus a tool that picks the cheapest plan for your trip."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-data-plans" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Japan eSIM Data Plans 2026: Full Comparison | Japan Travel Kit" />
+        <meta property="og:title" content="Japan eSIM Data Plans 2026: Live Price Tracker | Japan Travel Kit" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-data-plans" />
-        <meta property="og:description" content="Compare every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile. Find the right plan for your trip length and data needs." />
+        <meta property="og:description" content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in one table — prices checked daily, sortable by price per GB, plus a tool that picks the cheapest plan for your trip." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan eSIM Data Plans 2026: Full Comparison | Japan Travel Kit" />
-        <meta name="twitter:description" content="Compare every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile. Find the right plan for your trip length and data needs." />
+        <meta name="twitter:title" content="Japan eSIM Data Plans 2026: Live Price Tracker | Japan Travel Kit" />
+        <meta name="twitter:description" content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in one table — prices checked daily, sortable by price per GB, plus a tool that picks the cheapest plan for your trip." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -130,8 +132,8 @@ export default function JapanEsimDataPlansPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: "Japan eSIM Data Plans Compared (2026): Which Is Right for You?",
-              dateModified: "2026-04-27",
+              headline: "Japan eSIM Data Plans Compared (2026): Live Price Tracker",
+              dateModified: checkedIso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -152,9 +154,9 @@ export default function JapanEsimDataPlansPage() {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home",                item: "https://www.japan-travel-kit.com" },
-                { "@type": "ListItem", position: 2, name: "Guides",              item: "https://www.japan-travel-kit.com/guides" },
-                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards",    item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
                 { "@type": "ListItem", position: 4, name: "Japan eSIM Data Plans", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-data-plans" },
               ],
             }),
@@ -186,17 +188,20 @@ export default function JapanEsimDataPlansPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2026
+            <span>📱</span> Prices checked {checkedLabel}
           </p>
           <h1 className={styles.heroTitle}>
-            Japan eSIM Data Plans Compared (2026):<br />Which Is Right for You?
+            Japan eSIM Data Plans (2026):<br />Live Price Tracker
           </h1>
           <p className={styles.heroSubtitle}>
-            Not all Japan eSIM plans are equal. Here&apos;s a clear comparison of every major data plan —
-            so you can pick the right one before you fly.
+            Every Japan plan from Airalo, Holafly, eSIM Go and Sakura Mobile in one sortable table — with a tool that
+            picks the cheapest plan for your exact trip.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "All Providers", "Prices Verified"].map((t) => (
+            <span className={`${tools.liveBadge} ${tools.liveBadgeOnDark}`}>
+              <span className={tools.liveDot} /> Prices checked daily
+            </span>
+            {[`${allEsimPlans.length} plans tracked`, "4 providers", "Sortable by $/GB"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -212,7 +217,7 @@ export default function JapanEsimDataPlansPage() {
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
-            This doesn&apos;t affect our rankings or comparisons.{" "}
+            This doesn&apos;t affect our rankings or comparisons — the table is sorted by the numbers, not by commission.{" "}
             <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
@@ -220,61 +225,133 @@ export default function JapanEsimDataPlansPage() {
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
-            <span className={styles.verdictLabel}>Quick Answer</span>
+            <span className={styles.verdictLabel}>Quick Answer · {checkedLabel}</span>
           </div>
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best 1 GB Plan</p>
-                <p className={styles.verdictStatValue}>eSIM Go ($3.50 / 7 days)</p>
+                <p className={styles.verdictStatLabel}>Cheapest plan</p>
+                <p className={styles.verdictStatValue}>{label(cheapestOverall)}</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best 3 GB Plan</p>
-                <p className={styles.verdictStatValue}>Airalo ($9.50 / 30 days)</p>
+                <p className={styles.verdictStatLabel}>Best value per GB</p>
+                <p className={styles.verdictStatValue}>
+                  {bestValue ? `${bestValue.provider} ${bestValue.name} — ${formatUsd(bestValue.perGb ?? 0)}/GB` : "—"}
+                </p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best Unlimited</p>
-                <p className={styles.verdictStatValue}>Holafly ($19 / 5 days)</p>
+                <p className={styles.verdictStatLabel}>Cheapest unlimited (7+ days)</p>
+                <p className={styles.verdictStatValue}>{label(cheapestUnlimitedAny)}</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>Best with voice calls:</strong> Sakura Mobile ($28 / 30 days) — the only eSIM provider on this list that offers an optional Japanese phone number and English-language customer support.
+              <strong>Most travellers should buy:</strong> {cheapest5gb ? label(cheapest5gb) : "a 5 GB plan"} — 5 GB covers two weeks of
+              maps, messaging and social media. Need a Japanese phone number or English phone support? Sakura Mobile is the
+              only provider here that offers both.
             </p>
+            <a href="#plan-finder" className={styles.verdictBtn}>
+              Find my cheapest plan ↓
+            </a>
           </div>
         </div>
 
-        {/* Full Plan Comparison */}
+        {/* Plan finder */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>All plans</span>
-          <h2 className={styles.sectionTitle}>Full Data Plan Comparison</h2>
+          <span className={styles.sectionLabel}>Step 1</span>
+          <h2 className={styles.sectionTitle}>Tell Us Your Trip — We&apos;ll Pick the Plan</h2>
+          <EsimPlanFinder />
+        </section>
+
+        {/* Full sortable comparison */}
+        <section className={styles.comparisonSection} id="all-plans">
+          <span className={styles.sectionLabel}>Step 2</span>
+          <h2 className={styles.sectionTitle} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.75rem" }}>
+            Every Japan eSIM Plan, Sorted by Price per GB
+            <span className={tools.liveBadge}>
+              <span className={tools.liveDot} /> Prices checked daily
+            </span>
+          </h2>
+          <p className={styles.bodyText}>
+            Click any column header to re-sort. Unlimited plans have no per-GB price, so they sit at the bottom when
+            sorting by data or $/GB — sort by <strong>Price</strong> or <strong>Validity</strong> to compare them directly.
+          </p>
+          <EsimPlanTable />
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            Prices in USD as listed on each provider&apos;s official site, checked automatically every day. All plans are data-only.
+            Sakura Mobile&apos;s 3 GB/day plans are shown with their total high-speed allowance (3 GB × days). Prices at
+            checkout can differ slightly due to your local currency or promotions.
+          </p>
+        </section>
+
+        {/* Price update status */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Freshness</span>
+          <h2 className={styles.sectionTitle}>When Was Each Price Last Verified?</h2>
+          <p className={styles.bodyText}>
+            A script reads each provider&apos;s official pricing page once a day. If a page can&apos;t be read, we keep the last
+            verified numbers rather than guessing — so the &ldquo;checked&rdquo; date below tells you exactly how fresh each row is.
+          </p>
+          <EsimPriceStatus />
+        </section>
+
+        {/* Provider snapshot */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By provider</span>
+          <h2 className={styles.sectionTitle}>Provider Snapshot</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Provider", "Plan", "Data", "Duration", "Price", "Network"].map((h) => (
+                    {["Provider", "Network", "Cheapest plan", "Best $/GB", "Cheapest unlimited", ""].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {allPlans.map((row, i) => (
-                    <tr key={i}>
-                      <td className={styles.tdProvider}>{row.provider}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.plan}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b", whiteSpace: "nowrap" }}>{row.data}</td>
-                      <td style={{ whiteSpace: "nowrap" }}>{row.duration}</td>
-                      <td className={styles.tdPrice}>{row.price}</td>
-                      <td className={styles.tdNetwork}>{row.network}</td>
+                  {providerSummaries.map((p) => (
+                    <tr key={p.id}>
+                      <td className={styles.tdProvider}>{p.name}</td>
+                      <td className={styles.tdNetwork}>{p.network}</td>
+                      <td style={{ whiteSpace: "nowrap" }}>
+                        {p.cheapestCapped ? (
+                          <>
+                            <span className={styles.tdPrice}>{formatUsd(p.cheapestCapped.priceUsd)}</span>{" "}
+                            <span className={tools.tdMuted}>{p.cheapestCapped.name}</span>
+                          </>
+                        ) : (
+                          <span className={tools.tdMuted}>unlimited only</span>
+                        )}
+                      </td>
+                      <td style={{ whiteSpace: "nowrap" }}>
+                        {p.perGbBest ? (
+                          <>
+                            <span className={styles.tdPrice}>{formatUsd(p.perGbBest.priceUsd / (p.perGbBest.gb ?? 1))}/GB</span>{" "}
+                            <span className={tools.tdMuted}>{p.perGbBest.name}</span>
+                          </>
+                        ) : (
+                          <span className={tools.tdMuted}>—</span>
+                        )}
+                      </td>
+                      <td style={{ whiteSpace: "nowrap" }}>
+                        {p.cheapestUnl ? (
+                          <>
+                            <span className={styles.tdPrice}>{formatUsd(p.cheapestUnl.priceUsd)}</span>{" "}
+                            <span className={tools.tdMuted}>{p.cheapestUnl.name}</span>
+                          </>
+                        ) : (
+                          <span className={tools.tdMuted}>—</span>
+                        )}
+                      </td>
+                      <td>
+                        <ProviderCta providerId={p.id} label={`Get ${p.name} →`} />
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Prices shown in USD. All plans are data-only except Sakura Mobile, which offers an optional voice add-on. Prices verified April 2026 — check provider websites for current rates.
-          </p>
         </section>
 
         {/* How Much Data */}
@@ -302,82 +379,36 @@ export default function JapanEsimDataPlansPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Most travellers to Japan fall into the &ldquo;light use&rdquo; category — maps, messaging, and occasional Instagram posts. At ~200 MB/day, a 3 GB plan covers 15 days comfortably. If you stream video on trains or make regular FaceTime calls, budget for 500 MB–1 GB per day.
+            Most travellers to Japan fall into the &ldquo;light&rdquo; or &ldquo;average&rdquo; category — maps, messaging, and
+            Instagram. At ~300–700 MB/day, a 5 GB plan covers one to two weeks comfortably. If you stream video on trains, make
+            regular video calls, or tether a laptop, budget 1–1.5 GB per day or go unlimited.
           </p>
         </section>
 
-        {/* By Trip Length */}
+        {/* By Trip Length — derived from live data */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>By trip length</span>
-          <h2 className={styles.sectionTitle}>Best Plan by Trip Length</h2>
+          <h2 className={styles.sectionTitle}>Best Plan by Trip Length (Average User)</h2>
           <div className={styles.stepsList}>
             {byTripLength.map((row, i) => (
-              <div key={i} className={styles.stepCard}>
+              <div key={row.days} className={styles.stepCard}>
                 <span className={styles.stepNum}>{i + 1}</span>
                 <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{row.length} → {row.pick}</p>
-                  <p className={styles.stepDesc}>{row.reason}</p>
+                  <p className={styles.stepTitle}>
+                    {row.days} days (~{row.gb} GB) → {row.pick ? `${row.pick.provider} ${row.pick.name} at ${formatUsd(row.pick.priceUsd)}` : "no single plan"}
+                  </p>
+                  <p className={styles.stepDesc}>
+                    {row.pick
+                      ? `Cheapest plan that covers ${row.days} days with at least ${row.gb} GB.`
+                      : `No single plan currently covers ${row.days} days at this usage — buy a 30-day plan and top up.`}{" "}
+                    {row.unlimited && `Prefer unlimited? ${row.unlimited.provider} ${row.unlimited.name} is ${formatUsd(row.unlimited.priceUsd)}.`}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
-        </section>
-
-        {/* By Usage Type */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>By usage type</span>
-          <h2 className={styles.sectionTitle}>Best Plan by Usage Type</h2>
-
-          {byUsage.map((item) => (
-            <div key={item.type} className={styles.providerBlock}>
-              <div className={styles.providerHeader}>
-                <h3 className={styles.providerName}>{item.type}</h3>
-              </div>
-              <p className={styles.bodyText} style={{ margin: "0 0 0.75rem" }}>{item.desc}</p>
-              <p className={styles.bodyText} style={{ margin: "0 0 0.75rem" }}>
-                <strong>Our pick:</strong> {item.pick}
-              </p>
-              <a
-                href={item.affiliateUrl}
-                className={styles.pickCta}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-              >
-                Get this plan →
-              </a>
-            </div>
-          ))}
-        </section>
-
-        {/* Price Per GB */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Value comparison</span>
-          <h2 className={styles.sectionTitle}>Price Per GB Comparison</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Provider", "Plan", "Price / GB", "Notes"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {pricePerGb.map((row) => (
-                    <tr key={row.provider + row.plan}>
-                      <td className={styles.tdProvider}>{row.provider}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.plan}</td>
-                      <td className={styles.tdPrice}>{row.pricePerGb}</td>
-                      <td style={{ fontSize: "0.83rem", color: "var(--text-muted)" }}>{row.note}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Price per GB favours larger plans — but only buy what you&apos;ll actually use. A 1 GB plan that lasts your trip is better value than a 10 GB plan you only use 2 GB of.
+            Based on ~0.7 GB/day. Use the finder at the top of the page to change the trip length or usage level.
           </p>
         </section>
 
@@ -442,6 +473,18 @@ export default function JapanEsimDataPlansPage() {
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/esim/how-to-set-up-esim-japan" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>How to Set Up an eSIM in Japan (Step-by-Step)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
