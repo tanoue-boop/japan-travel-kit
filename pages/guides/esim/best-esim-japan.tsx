@@ -226,7 +226,7 @@ export default function BestEsimJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated September 2026
+            <span>📱</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Best eSIM for Japan 2026:<br />Tested &amp; Compared
@@ -235,7 +235,7 @@ export default function BestEsimJapanPage() {
             We tested every major Japan eSIM so you don&apos;t have to.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "4 eSIMs Tested", "Independent Review"].map((t) => (
+            {["Prices checked daily", "4 eSIMs Tested", "Independent Review"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

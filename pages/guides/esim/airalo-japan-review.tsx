@@ -220,7 +220,7 @@ export default function AiraloJapanReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated September 2026
+            <span>📱</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Airalo Japan Review 2026:<br />Is It Worth It?
@@ -229,7 +229,7 @@ export default function AiraloJapanReviewPage() {
             We tested Airalo&apos;s Japan eSIM. Here&apos;s everything you need to know.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "Independently Reviewed", "Data-Only eSIM"].map((t) => (
+            {["Prices checked daily", "Independently Reviewed", "Data-Only eSIM"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

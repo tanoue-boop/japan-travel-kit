@@ -3,9 +3,10 @@ import Link from "next/link";
 import StarRating from "../components/StarRating";
 import pageStyles from "../styles/SimCards.module.css";
 import cardStyles from "../styles/SIMCardCard.module.css";
-import { getProvider, priceFrom } from "../lib/esim-prices";
+import { getProvider, priceFrom, pricesCheckedLabel } from "../lib/esim-prices";
 
 // eSIM rows read price, network and affiliate link from data/esim-prices.json.
+const pricesCheckedAt = pricesCheckedLabel();
 const airalo = getProvider("airalo");
 const esimgo = getProvider("esimgo");
 
@@ -192,7 +193,7 @@ export default function WifiPocketPage() {
         <div className={pageStyles.pageHeaderDots} />
         <div className={pageStyles.pageHeaderInner}>
           <p className={pageStyles.updated}>
-            <span>📶</span> Updated May 2026
+            <span>📶</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={pageStyles.pageTitle}>
             Best Pocket WiFi Rentals<br />for Japan (2026)

@@ -214,7 +214,7 @@ export default function HolaflyJapanReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated September 2026
+            <span>📱</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Holafly Japan Review 2026:<br />Is Unlimited Data Worth It?
@@ -223,7 +223,7 @@ export default function HolaflyJapanReviewPage() {
             Unlimited data sounds great. But is Holafly actually worth the premium price for Japan?
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "Independently Reviewed", "Unlimited Data eSIM"].map((t) => (
+            {["Prices checked daily", "Independently Reviewed", "Unlimited Data eSIM"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
