@@ -1,11 +1,43 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import {
+  formatUsd,
+  getProvider,
+  priceAtLeastLabel,
+  priceFromLabel,
+  pricesCheckedLabel,
+  plansFor,
+  unlimitedFromLabel,
+  type EsimPlan,
+  type EsimProviderId,
+} from "../../../lib/esim-prices";
+
+// Every price on this page is read from data/esim-prices.json (refreshed daily).
+const pricesCheckedAt = pricesCheckedLabel();
+const AIRALO_FROM = priceFromLabel("airalo");
+const HOLAFLY_FROM = priceFromLabel("holafly");
+const AIRALO_5 = priceAtLeastLabel("airalo", 5);
+const AIRALO_10 = priceAtLeastLabel("airalo", 10);
+const HOLAFLY_7 = unlimitedFromLabel("holafly", 7);
+const HOLAFLY_10 = unlimitedFromLabel("holafly", 10);
+const HOLAFLY_30 = unlimitedFromLabel("holafly", 30);
+
+// Cheapest plan that covers each scenario (enough data AND enough days), and who wins on price.
+const cheapestCovering = (id: EsimProviderId, gb: number | null, days: number): EsimPlan | null =>
+  plansFor(id).find((p) => p.days >= days && (gb === null ? p.unlimited : p.unlimited || (p.gb ?? 0) >= gb)) ?? null;
+const scenario = (usage: string, gb: number | null, days: number) => {
+  const aOk = cheapestCovering("airalo", gb, days);
+  const h = cheapestCovering("holafly", gb, days);
+  const fmt = (p: EsimPlan | null) => (p ? `${formatUsd(p.priceUsd)} (${p.name})` : "N/A");
+  const winner = aOk && h ? (aOk.priceUsd <= h.priceUsd ? "Airalo" : "Holafly") : aOk ? "Airalo" : "Holafly";
+  return { usage, airalo: fmt(aOk), holafly: fmt(h), winner };
+};
 
 const comparisonRows = [
-  { feature: "Price (7 days)", airalo: "$4.50 (1GB)", holafly: "$19 (Unlimited)" },
-  { feature: "Data", airalo: "1GB–10GB", holafly: "Unlimited" },
-  { feature: "Network", airalo: "Docomo & SoftBank", holafly: "SoftBank" },
+  { feature: "Price (7 days)", airalo: priceAtLeastLabel("airalo", 3), holafly: HOLAFLY_7 },
+  { feature: "Data", airalo: "1GB–20GB, or unlimited", holafly: "Unlimited" },
+  { feature: "Network", airalo: getProvider("airalo").network, holafly: getProvider("holafly").network },
   { feature: "Speed throttling", airalo: "No", holafly: "Fair use policy" },
   { feature: "Voice calls", airalo: "No", holafly: "No" },
   { feature: "App quality", airalo: "Excellent", holafly: "Good" },
@@ -15,11 +47,11 @@ const comparisonRows = [
 ];
 
 const priceRows = [
-  { usage: "1GB / 7 days",    airalo: "$4.50",  holafly: "$19",  winner: "Airalo" },
-  { usage: "3GB / 7 days",    airalo: "$9.50",  holafly: "$19",  winner: "Airalo" },
-  { usage: "10GB / 10 days",  airalo: "$18",    holafly: "$27",  winner: "Airalo" },
-  { usage: "Unlimited / 10 days", airalo: "N/A", holafly: "$27", winner: "Holafly" },
-  { usage: "Unlimited / 30 days", airalo: "N/A", holafly: "$49", winner: "Holafly" },
+  scenario("1 GB / 7 days", 1, 7),
+  scenario("5 GB / 7 days", 5, 7),
+  scenario("10 GB / 10 days", 10, 10),
+  scenario("Unlimited / 10 days", null, 10),
+  scenario("Unlimited / 30 days", null, 30),
 ];
 
 const faqItems = [
@@ -41,7 +73,7 @@ const faqItems = [
   },
   {
     q: "Which is cheaper for a 2-week Japan trip?",
-    a: "Airalo is cheaper for a 2-week trip unless you're a very heavy data user. Airalo's 10GB 30-day plan costs $18, compared to Holafly's 10-day plan at $27 or 30-day plan at $49. Even the heaviest typical tourist usage (constant maps, social media, some streaming) rarely exceeds 10GB in two weeks.",
+    a: `Airalo is cheaper for a 2-week trip unless you're a very heavy data user. Airalo's 10 GB plan is ${AIRALO_10}, compared to Holafly's ${HOLAFLY_10} or ${HOLAFLY_30} (checked ${pricesCheckedAt}). Even the heaviest typical tourist usage (constant maps, social media, some streaming) rarely exceeds 10GB in two weeks.`,
   },
 ];
 
@@ -86,7 +118,7 @@ export default function AiraloVsHolaflyJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Airalo vs Holafly for Japan (2026): Which Should You Choose?",
-              dateModified: "2026-05-26",
+              dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -140,7 +172,7 @@ export default function AiraloVsHolaflyJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>⚔️</span> Updated May 2026
+            <span>⚔️</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Airalo vs Holafly for Japan (2026):<br />Which Should You Choose?
@@ -150,7 +182,7 @@ export default function AiraloVsHolaflyJapanPage() {
             Here&apos;s the honest comparison.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated May 2026", "Head-to-Head", "Honest Verdict"].map((t) => (
+            {["Prices checked daily", "Head-to-Head", "Honest Verdict"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -189,7 +221,7 @@ export default function AiraloVsHolaflyJapanPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Price Difference</p>
-                <p className={styles.verdictStatValue}>Airalo from $4.50 vs Holafly from $19</p>
+                <p className={styles.verdictStatValue}>Airalo from {AIRALO_FROM} vs Holafly from {HOLAFLY_FROM}</p>
               </div>
             </div>
             <div className={styles.pickCtaRow}>
@@ -253,13 +285,13 @@ export default function AiraloVsHolaflyJapanPage() {
                 </div>
                 <div>
                   <p className={styles.choiceCardTitle}>Airalo Japan</p>
-                  <p className={styles.choiceCardSubtitle}>From $4.50 / 7 days</p>
+                  <p className={styles.choiceCardSubtitle}>From {AIRALO_FROM}</p>
                 </div>
               </div>
               <div className={styles.choiceCardBody}>
                 <ul className={styles.choiceList}>
-                  <li><span className={styles.choiceCheck}>✓</span> Unbeatable cost — 1GB from $4.50</li>
-                  <li><span className={styles.choiceCheck}>✓</span> Granular plans: 1GB, 3GB, 10GB</li>
+                  <li><span className={styles.choiceCheck}>✓</span> Low entry cost — from {AIRALO_FROM}</li>
+                  <li><span className={styles.choiceCheck}>✓</span> Granular plans: 1, 3, 5, 10, 20 GB or unlimited</li>
                   <li><span className={styles.choiceCheck}>✓</span> Docomo network for strong rural coverage</li>
                   <li><span className={styles.choiceCheck}>✓</span> Industry-leading app experience</li>
                   <li><span className={styles.choiceCheck}>✓</span> 24/7 live chat support</li>
@@ -268,8 +300,8 @@ export default function AiraloVsHolaflyJapanPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Airalo&apos;s biggest advantage is value. At $4.50 for 1GB over 7 days, it&apos;s the cheapest
-            eSIM option for Japan. The tiered data plans let you buy only what you need, so
+            Airalo&apos;s biggest advantage is value. From {AIRALO_FROM}, it&apos;s one of the cheapest
+            eSIM options for Japan. The tiered data plans let you buy only what you need, so
             you&apos;re never paying for unused data. Running on Docomo (Japan&apos;s widest network),
             you&apos;ll get reliable signal from Tokyo to rural Tohoku.
           </p>
@@ -292,14 +324,14 @@ export default function AiraloVsHolaflyJapanPage() {
                 </div>
                 <div>
                   <p className={styles.choiceCardTitle}>Holafly Japan</p>
-                  <p className={styles.choiceCardSubtitle}>From $19 / Unlimited</p>
+                  <p className={styles.choiceCardSubtitle}>From {HOLAFLY_FROM} / Unlimited</p>
                 </div>
               </div>
               <div className={styles.choiceCardBody}>
                 <ul className={styles.choiceList}>
                   <li><span className={styles.choiceCheck}>✓</span> True unlimited data — no data cap to worry about</li>
                   <li><span className={styles.choiceCheck}>✓</span> Comfortable for streaming &amp; video calls</li>
-                  <li><span className={styles.choiceCheck}>✓</span> 10-day plan at $27 suits heavy users</li>
+                  <li><span className={styles.choiceCheck}>✓</span> 10-day plan at {HOLAFLY_10} suits heavy users</li>
                   <li><span className={styles.choiceCheck}>✓</span> Simple pricing — one plan, no decisions</li>
                   <li><span className={styles.choiceCheck}>✓</span> Live chat customer support</li>
                 </ul>
@@ -310,7 +342,7 @@ export default function AiraloVsHolaflyJapanPage() {
             Holafly&apos;s core appeal is peace of mind. There&apos;s no data counter to watch, no
             choosing between Google Maps and Instagram. If you stream video, share your hotspot,
             or simply don&apos;t want to track your usage — Holafly removes that friction entirely.
-            The 10-day unlimited plan at $27 is competitive for heavy users.
+            The 10-day unlimited plan at {HOLAFLY_10} is competitive for heavy users.
           </p>
           <Link href="/guides/esim/holafly-japan-review" className={styles.pickCtaInternal} style={{ marginTop: "0.5rem", display: "inline-flex" }}>
             Full Holafly Japan Review →
@@ -373,7 +405,7 @@ export default function AiraloVsHolaflyJapanPage() {
               </div>
               <p className={styles.whoForTitle}>1 week, normal use</p>
               <p className={styles.whoForDesc}>
-                Airalo 3GB ($9.50). Maps, social media, messaging — 3GB is more than enough for a week.
+                Airalo 5 GB ({AIRALO_5}). Maps, social media, messaging — 5 GB is more than enough for a week.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -384,7 +416,7 @@ export default function AiraloVsHolaflyJapanPage() {
               </div>
               <p className={styles.whoForTitle}>2 weeks, normal use</p>
               <p className={styles.whoForDesc}>
-                Airalo 10GB ($18). A comfortable buffer for two weeks without video streaming.
+                Airalo 10 GB ({AIRALO_10}). A comfortable buffer for two weeks without video streaming.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -406,7 +438,7 @@ export default function AiraloVsHolaflyJapanPage() {
               </div>
               <p className={styles.whoForTitle}>Budget traveller</p>
               <p className={styles.whoForDesc}>
-                Airalo 1GB ($4.50). Use offline maps and WiFi at cafes. The cheapest option by far.
+                Airalo from {AIRALO_FROM}. Use offline maps and WiFi at cafes. The cheapest option by far.
               </p>
             </div>
           </div>
@@ -443,8 +475,8 @@ export default function AiraloVsHolaflyJapanPage() {
             Airalo&apos;s 3GB or 10GB plan will cover the trip at a fraction of Holafly&apos;s price.
           </p>
           <p className={styles.verdictText}>
-            The price difference is meaningful: Airalo&apos;s 10GB plan for $18 versus Holafly&apos;s
-            10-day unlimited for $27. Unless you reliably hit 10GB+, Airalo wins on value every time.
+            The price difference is meaningful: Airalo&apos;s 10 GB plan at {AIRALO_10} versus Holafly&apos;s
+            {" "}{HOLAFLY_10}. Unless you reliably hit 10GB+, Airalo wins on value every time.
           </p>
           <div className={styles.pickCtaRow}>
             <a

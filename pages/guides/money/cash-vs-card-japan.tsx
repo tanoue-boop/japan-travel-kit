@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { siteCheapestFrom } from "../../../lib/esim-prices";
 
 const placeRows = [
   { place: "Convenience stores (7-Eleven, FamilyMart, Lawson)", cash: "✓", card: "✓" },
@@ -584,7 +585,7 @@ export default function CashVsCardJapanPage() {
             <h2 className={styles.ctaBannerTitle}>Get your Japan eSIM sorted too</h2>
             <p className={styles.ctaBannerDesc}>
               While you&apos;re planning your money strategy — don&apos;t forget data.
-              Get connected the moment you land with a Japan eSIM from $3.50.
+              Get connected the moment you land with a Japan eSIM from {siteCheapestFrom()}.
             </p>
             <a
               href="https://airalo.pxf.io/c/7213504/1268485/15608"

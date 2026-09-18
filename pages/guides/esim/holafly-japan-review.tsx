@@ -1,12 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import ProviderPlanTable from "../../../components/ProviderPlanTable";
+import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
 
-const plans = [
-  { name: "Japan eSIM", data: "Unlimited", duration: "5 days",  price: "$19.00" },
-  { name: "Japan eSIM", data: "Unlimited", duration: "10 days", price: "$27.00" },
-  { name: "Japan eSIM", data: "Unlimited", duration: "30 days", price: "$49.00" },
-];
+// All prices below are read from data/esim-prices.json (refreshed daily).
+const pricesCheckedAt = pricesCheckedLabel();
+const FROM = priceFromLabel("holafly");
+const SEVEN_DAY = unlimitedFromLabel("holafly", 7);
+const THIRTY_DAY = unlimitedFromLabel("holafly", 30);
+const AIRALO_FROM = priceFromLabel("airalo");
+const AIRALO_FIVE = priceAtLeastLabel("airalo", 5);
 
 const pros = [
   "Truly unlimited data, no caps",
@@ -56,9 +60,9 @@ const whoFor = [
 ];
 
 const vsRows = [
-  { feature: "Data",           holafly: "Unlimited",         airalo: "1 GB – 10 GB"         },
-  { feature: "Price (7 days)", holafly: "$19.00",            airalo: "$4.50 (1 GB)"          },
-  { feature: "Network",        holafly: "SoftBank",          airalo: "Docomo & SoftBank"     },
+  { feature: "Data",           holafly: "Unlimited",         airalo: "1 GB – 20 GB, or unlimited" },
+  { feature: "Price (7 days)", holafly: SEVEN_DAY,           airalo: priceAtLeastLabel("airalo", 3) },
+  { feature: "Network",        holafly: getProvider("holafly").network, airalo: getProvider("airalo").network },
   { feature: "Voice calls",    holafly: "No",                airalo: "No"                    },
   { feature: "Best for",       holafly: "Heavy data users",  airalo: "Budget travellers"     },
 ];
@@ -93,11 +97,11 @@ const faqItems = [
   },
   {
     q: "Is Holafly better than Airalo for Japan?",
-    a: "It depends on your usage. Airalo is better value for light-to-moderate data users — $4.50 for 1 GB or $9.50 for 3 GB covers most tourist trips comfortably. Holafly is better for heavy users who stream video, use data-intensive apps, or simply don't want to monitor their usage. If you'd buy more than 3 GB from Airalo, Holafly's unlimited plan starts to look competitive.",
+    a: `It depends on your usage. Airalo is better value for light-to-moderate data users — from ${AIRALO_FROM}, or ${AIRALO_FIVE} for 5 GB, covers most tourist trips comfortably. Holafly is better for heavy users who stream video, use data-intensive apps, or simply don't want to monitor their usage. If you'd buy more than 10 GB from Airalo, Holafly's unlimited plan starts to look competitive.`,
   },
   {
     q: "Can I use Holafly for a whole month in Japan?",
-    a: "Yes — Holafly offers a 30-day unlimited plan at $49. For a long stay, compare this against Sakura Mobile's physical SIM plans, which include voice calls and English support for a similar price. For pure data, Holafly's 30-day plan is hard to beat.",
+    a: `Yes — Holafly's 30-day unlimited plan is ${THIRTY_DAY} (checked ${pricesCheckedAt}). For a long stay, compare this against Sakura Mobile, which adds English phone support and a voice-call SIM option. For pure data, Holafly's 30-day plan is hard to beat.`,
   },
   {
     q: "What network does Holafly use in Japan?",
@@ -263,11 +267,11 @@ export default function HolaflyJapanReviewPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Price From</p>
-                <p className={styles.verdictStatValue}>$19.00 / 5 days</p>
+                <p className={styles.verdictStatValue}>{FROM}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Network</p>
-                <p className={styles.verdictStatValue}>SoftBank</p>
+                <p className={styles.verdictStatValue}>{getProvider("holafly").network}</p>
               </div>
             </div>
             <a href="#" className={styles.verdictBtn}>
@@ -288,7 +292,7 @@ export default function HolaflyJapanReviewPage() {
           <p className={styles.bodyText}>
             For Japan, Holafly offers unlimited data plans running on the SoftBank network, one of
             Japan&apos;s three major carriers with strong coverage across cities and popular tourist routes.
-            Plans are available for 5, 10, or 30 days, priced from $19.
+            Plans run from 1 to 90 days, priced from {FROM}; prices below were checked on {pricesCheckedAt}.
           </p>
           <p className={styles.bodyText}>
             With 8,700+ customer reviews and a 4.3 average rating, Holafly has a strong track record
@@ -300,29 +304,7 @@ export default function HolaflyJapanReviewPage() {
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
           <h2 className={styles.sectionTitle}>Holafly Japan Plans</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Plan", "Data", "Duration", "Price"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {plans.map((plan, i) => (
-                    <tr key={i}>
-                      <td className={styles.tdProvider}>{plan.name}</td>
-                      <td style={{ fontWeight: 800, color: "#c62828" }}>{plan.data}</td>
-                      <td className={styles.tdNetwork}>{plan.duration}</td>
-                      <td className={styles.tdPrice}>{plan.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <ProviderPlanTable providerId="holafly" />
         </section>
 
         {/* Pros & Cons */}
@@ -424,8 +406,8 @@ export default function HolaflyJapanReviewPage() {
             tick down, the peace of mind is genuinely worth the premium.
           </p>
           <p className={styles.verdictText}>
-            The main trade-off is price. At $19 for 5 days, Holafly costs more than four times
-            Airalo&apos;s cheapest plan. For light users — checking maps, WhatsApp, and email — that premium
+            The main trade-off is price. At {FROM}, Holafly&apos;s entry plan costs several times
+            Airalo&apos;s cheapest ({AIRALO_FROM}). For light users — checking maps, WhatsApp, and email — that premium
             is hard to justify. But for heavy users who&apos;d comfortably burn through 5+ GB in a week,
             Holafly is excellent value.
           </p>

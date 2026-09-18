@@ -1,17 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import ProviderPlanTable from "../../../components/ProviderPlanTable";
+import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
 
-const plans = [
-  { name: "Moshi Moshi S", data: "1 GB",  duration: "7 days",  price: "$4.50"  },
-  { name: "Moshi Moshi M", data: "3 GB",  duration: "30 days", price: "$9.50"  },
-  { name: "Moshi Moshi L", data: "10 GB", duration: "30 days", price: "$18.00" },
-];
+// All Airalo prices below are read from data/esim-prices.json (refreshed daily).
+const pricesCheckedAt = pricesCheckedLabel();
+const FROM = priceFromLabel("airalo");
+const FIVE_GB = priceAtLeastLabel("airalo", 5);
+const UNLIMITED = unlimitedFromLabel("airalo", 7);
 
 const pros = [
   "World's largest eSIM marketplace",
   "Instant activation before you land",
-  "Competitive pricing from $4.50",
+  `Plans from ${FROM} — including unlimited`,
   "Trusted by 10M+ travellers",
   "Easy-to-use app",
 ];
@@ -45,7 +47,7 @@ const whoFor = [
   },
   {
     title: "Budget-conscious travellers",
-    desc: "At $4.50 for 1 GB / 7 days, Airalo is one of the most affordable options for staying connected in Japan.",
+    desc: `From ${FROM}, Airalo is one of the most affordable options for staying connected in Japan.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -89,7 +91,7 @@ const faqItems = [
   },
   {
     q: "Is Airalo cheaper than roaming?",
-    a: "Almost always, yes. Most international roaming plans charge $10–15 per day. Airalo's Japan plans start at $4.50 for 7 days — that's the full week for less than the daily roaming rate. For a two-week trip, Airalo's 3 GB 30-day plan at $9.50 is dramatically cheaper than roaming.",
+    a: `Almost always, yes. Most international roaming plans charge $10–15 per day. Airalo's Japan plans start at ${FROM} — less than a single day of roaming. For a two-week trip, a 5 GB plan at ${FIVE_GB} is dramatically cheaper than roaming.`,
   },
   {
     q: "Can I use Airalo on iPhone?",
@@ -271,11 +273,11 @@ export default function AiraloJapanReviewPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Price From</p>
-                <p className={styles.verdictStatValue}>$4.50 / 7 days</p>
+                <p className={styles.verdictStatValue}>{FROM}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Network</p>
-                <p className={styles.verdictStatValue}>Docomo &amp; SoftBank</p>
+                <p className={styles.verdictStatValue}>{getProvider("airalo").network}</p>
               </div>
             </div>
             <a href="https://airalo.pxf.io/c/7213504/1268485/15608" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
@@ -295,9 +297,9 @@ export default function AiraloJapanReviewPage() {
             eSIM plans through its app and website.
           </p>
           <p className={styles.bodyText}>
-            For Japan, Airalo sells plans under the &ldquo;Moshi Moshi&rdquo; brand. Plans range from 1 GB / 7 days
-            at $4.50 up to 10 GB / 30 days at $18.00. All plans are data-only — there are no voice calls
-            or SMS included.
+            For Japan, Airalo sells plans under the &ldquo;Moshi Moshi&rdquo; brand. Plans range from {FROM}{" "}
+            up to 20 GB and unlimited options (unlimited from {UNLIMITED}); prices below were checked on {pricesCheckedAt}.
+            All plans are data-only — there are no voice calls or SMS included.
           </p>
           <p className={styles.bodyText}>
             The key appeal is simplicity: buy before you fly, scan a QR code, and you have working 4G
@@ -309,29 +311,7 @@ export default function AiraloJapanReviewPage() {
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
           <h2 className={styles.sectionTitle}>Airalo Japan Plans</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Plan", "Data", "Duration", "Price"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {plans.map((plan) => (
-                    <tr key={plan.name}>
-                      <td className={styles.tdProvider}>{plan.name}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b" }}>{plan.data}</td>
-                      <td className={styles.tdNetwork}>{plan.duration}</td>
-                      <td className={styles.tdPrice}>{plan.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <ProviderPlanTable providerId="airalo" />
         </section>
 
         {/* Pros & Cons */}

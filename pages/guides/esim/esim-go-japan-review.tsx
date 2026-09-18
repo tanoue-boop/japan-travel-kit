@@ -1,14 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import ProviderPlanTable from "../../../components/ProviderPlanTable";
+import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel } from "../../../lib/esim-prices";
+
+// All prices below are read from data/esim-prices.json (refreshed daily).
+const pricesCheckedAt = pricesCheckedLabel();
+const FROM = priceFromLabel("esimgo");
+const AIRALO_FROM = priceFromLabel("airalo");
+const TEN_GB = priceAtLeastLabel("esimgo", 10);
+const NETWORK = getProvider("esimgo").network;
 
 const AFFILIATE_URL = "https://breezesim.com?sca_ref=11082101.AF8vabyRKN";
-
-const plans = [
-  { name: "Japan S", data: "1 GB",  duration: "7 days",  price: "$3.50"  },
-  { name: "Japan M", data: "5 GB",  duration: "15 days", price: "$8.00"  },
-  { name: "Japan L", data: "10 GB", duration: "30 days", price: "$14.00" },
-];
 
 const pros = [
   "Best price-per-GB on the market",
@@ -49,7 +52,7 @@ const whoFor = [
   },
   {
     title: "Short-trip visitors",
-    desc: "For a 5–7 day trip to Japan, eSIM Go's 1 GB / 7-day plan at $3.50 covers typical tourist usage — maps, messaging, and browsing — at the lowest available price.",
+    desc: `For a 5–7 day trip to Japan, eSIM Go's entry plan at ${FROM} covers typical tourist usage — maps, messaging, and browsing — at the lowest available price.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="7" width="20" height="14" rx="2" />
@@ -59,12 +62,14 @@ const whoFor = [
   },
 ];
 
+// Cheapest plan at each data tier, from the tracker.
 const vsRows = [
-  { feature: "1 GB / 7 days",   esimgo: "$3.50",          airalo: "$4.50"           },
-  { feature: "5 GB / 30 days",  esimgo: "$8.00",          airalo: "$9.50"           },
-  { feature: "10 GB / 30 days", esimgo: "$14.00",         airalo: "$18.00"          },
-  { feature: "Network",         esimgo: "Docomo",         airalo: "Docomo/SoftBank" },
-  { feature: "Support",         esimgo: "Email only",     airalo: "24/7 live chat"  },
+  { feature: "Cheapest plan",   esimgo: priceFromLabel("esimgo"),         airalo: priceFromLabel("airalo")         },
+  { feature: "5 GB or more",    esimgo: priceAtLeastLabel("esimgo", 5),   airalo: priceAtLeastLabel("airalo", 5)   },
+  { feature: "10 GB or more",   esimgo: priceAtLeastLabel("esimgo", 10),  airalo: priceAtLeastLabel("airalo", 10)  },
+  { feature: "20 GB or more",   esimgo: priceAtLeastLabel("esimgo", 20),  airalo: priceAtLeastLabel("airalo", 20)  },
+  { feature: "Network",         esimgo: NETWORK,                          airalo: getProvider("airalo").network    },
+  { feature: "Support",         esimgo: "Email only",                     airalo: "24/7 live chat"                 },
 ];
 
 const setupSteps = [
@@ -97,7 +102,7 @@ const faqItems = [
   },
   {
     q: "How does eSIM Go compare to Airalo?",
-    a: "eSIM Go is cheaper than Airalo on every comparable plan. The 1 GB / 7-day plan is $3.50 vs Airalo's $4.50, and the 10 GB / 30-day plan is $14.00 vs Airalo's $18.00. Both use Docomo (eSIM Go exclusively; Airalo uses Docomo and SoftBank). The main trade-off is support: Airalo offers 24/7 live chat while eSIM Go is email-only. For straightforward trips where you're unlikely to need support, eSIM Go's lower price is compelling.",
+    a: `eSIM Go is usually cheaper than Airalo at each data tier. As of ${pricesCheckedAt}, its cheapest plan is ${FROM} vs Airalo's ${AIRALO_FROM}, and a 10 GB plan is ${TEN_GB} vs Airalo's ${priceAtLeastLabel("airalo", 10)}. The main trade-off is support: Airalo offers 24/7 live chat while eSIM Go is email-only. For straightforward trips where you're unlikely to need support, eSIM Go's lower price is compelling.`,
   },
   {
     q: "Can I use eSIM Go on iPhone?",
@@ -134,7 +139,7 @@ export default function EsimGoJapanReviewPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "eSIM Go Japan Review 2026: Cheapest eSIM for Japan? Honest Test",
-              dateModified: "2026-04-01",
+              dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -188,7 +193,7 @@ export default function EsimGoJapanReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2026
+            <span>📱</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             eSIM Go Japan Review 2026:<br />Best Budget eSIM for Japan?
@@ -197,7 +202,7 @@ export default function EsimGoJapanReviewPage() {
             The cheapest Japan eSIM we tested. But does it actually deliver on speed and coverage?
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Independently Reviewed", "Best Value Pick"].map((t) => (
+            {["Prices checked daily", "Independently Reviewed", "Best Value Pick"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -241,11 +246,11 @@ export default function EsimGoJapanReviewPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Price From</p>
-                <p className={styles.verdictStatValue}>$3.50 / 7 days</p>
+                <p className={styles.verdictStatValue}>{FROM}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Network</p>
-                <p className={styles.verdictStatValue}>Docomo</p>
+                <p className={styles.verdictStatValue}>{NETWORK}</p>
               </div>
             </div>
             <a
@@ -270,9 +275,9 @@ export default function EsimGoJapanReviewPage() {
             making it one of the most cost-effective ways to stay connected abroad.
           </p>
           <p className={styles.bodyText}>
-            For Japan, eSIM Go runs exclusively on Docomo — Japan&apos;s largest carrier and the network
-            with the best rural coverage. Plans range from 1 GB / 7 days at $3.50 up to 10 GB /
-            30 days at $14.00, all delivered via QR code with instant activation.
+            For Japan, eSIM Go sells through its consumer brand Breeze on {NETWORK}. Plans range from {FROM}
+            up to 100 GB, plus &ldquo;Unlimited Essential&rdquo; daily plans — all delivered via QR code with instant
+            activation. Prices below were checked on {pricesCheckedAt}.
           </p>
           <p className={styles.bodyText}>
             The platform is straightforward: buy a plan, receive a QR code by email, scan it in
@@ -285,29 +290,7 @@ export default function EsimGoJapanReviewPage() {
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
           <h2 className={styles.sectionTitle}>eSIM Go Japan Plans</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Plan", "Data", "Duration", "Price"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {plans.map((plan) => (
-                    <tr key={plan.name}>
-                      <td className={styles.tdProvider}>{plan.name}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b" }}>{plan.data}</td>
-                      <td className={styles.tdNetwork}>{plan.duration}</td>
-                      <td className={styles.tdPrice}>{plan.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <ProviderPlanTable providerId="esimgo" />
         </section>
 
         {/* Pros & Cons */}
@@ -406,9 +389,8 @@ export default function EsimGoJapanReviewPage() {
           <h2 className={styles.sectionTitle}>Verdict</h2>
           <p className={styles.verdictText}>
             eSIM Go Japan is the clearest recommendation for budget-conscious travellers who
-            want the lowest possible price without sacrificing network quality. At $3.50 for
-            1 GB / 7 days on Docomo — Japan&apos;s best-coverage carrier — nothing on the market
-            beats it for value.
+            want the lowest possible price without sacrificing network quality. From {FROM} on
+            {" "}{NETWORK}, nothing on the market beats it for value at the entry level.
           </p>
           <p className={styles.verdictText}>
             The only meaningful weakness is support. Airalo and Holafly both offer 24/7 live

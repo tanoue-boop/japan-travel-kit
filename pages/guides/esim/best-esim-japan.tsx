@@ -1,7 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
 import { simCards } from "../../../lib/sim-cards";
-import { cheapestPlan, formatDate, formatUsd, latestCheckedAt, type EsimProviderId } from "../../../lib/esim-prices";
+import {
+  cheapestPlan,
+  formatDate,
+  formatUsd,
+  getProvider,
+  latestCheckedAt,
+  priceAtLeastLabel,
+  priceFromLabel,
+  unlimitedFromLabel,
+  type EsimProviderId,
+} from "../../../lib/esim-prices";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 
@@ -21,9 +31,9 @@ const topPicks = [
     ctaExternal: false,
   },
   {
-    // TODO: Holafly affiliate link pending approval. affiliateUrl is "#" in lib/sim-cards.ts,
+    // TODO: Holafly affiliate link pending approval. affiliateUrl is "#" in data/esim-prices.json,
     // so the CTA below renders as the same button style but routes to /sim-cards.
-    // Once approved, set affiliateUrl in lib/sim-cards.ts and this CTA becomes external automatically.
+    // Once approved, set affiliateUrl in the JSON and this CTA becomes external automatically.
     id: "holafly-japan",
     esimId: "holafly" as EsimProviderId,
     rank: 2,
@@ -113,7 +123,7 @@ const faqItems = [
   },
   {
     q: "How much does a Japan eSIM cost?",
-    a: "Japan eSIM prices vary by provider and plan size. Budget options: eSIM Go starts at around $3.50 for 1 GB, Airalo from $4.50 for 1 GB / 7 days. Mid-range: Airalo 3 GB / 30 days at $9.50, eSIM Go 5 GB at around $11. Unlimited: Holafly from $17 for 5 days. Voice-capable: Sakura Mobile from around $20 for 7 days. For a typical tourist week, expect to pay $10–20.",
+    a: `Japan eSIM prices vary by provider and plan size (checked ${pricesCheckedAt}). Budget options: eSIM Go from ${priceFromLabel("esimgo")}, Airalo from ${priceFromLabel("airalo")}. Mid-range: a 5 GB plan is ${priceAtLeastLabel("esimgo", 5)} from eSIM Go or ${priceAtLeastLabel("airalo", 5)} from Airalo. Unlimited: Holafly from ${unlimitedFromLabel("holafly")}. Japan-based with English phone support: Sakura Mobile from ${priceFromLabel("sakura")}. For a typical tourist week, expect to pay $10–20.`,
   },
   {
     q: "Is unlimited data worth it for a Japan trip?",
@@ -264,15 +274,16 @@ export default function BestEsimJapanPage() {
                   {topPicks.map(({ id, esimId, bestFor, ctaLabel }) => {
                     const sim = simCards.find((s) => s.id === id)!;
                     const cheapest = cheapestPlan(esimId);
-                    const url = sim.affiliateUrl === "#" ? "/sim-cards" : sim.affiliateUrl;
-                    const isExternal = sim.affiliateUrl !== "#";
+                    const affiliateUrl = getProvider(esimId).affiliateUrl;
+                    const url = affiliateUrl === "#" ? "/sim-cards" : affiliateUrl;
+                    const isExternal = affiliateUrl !== "#";
                     return (
                       <tr key={id}>
                         <td className={styles.tdProvider}>{sim.provider}</td>
                         <td className={styles.tdBestFor}>{bestFor}</td>
                         <td className={styles.tdPrice}>{cheapest ? formatUsd(cheapest.priceUsd) : "—"}</td>
                         <td className={styles.tdNetwork}>{cheapest ? cheapest.name : "—"}</td>
-                        <td className={styles.tdNetwork}>{sim.coverage.split("(")[0].trim()}</td>
+                        <td className={styles.tdNetwork}>{getProvider(esimId).network}</td>
                         <td>
                           <span className={styles.tdRating}>
                             <span style={{ color: "#fbbf24" }}>★</span>
@@ -316,10 +327,11 @@ export default function BestEsimJapanPage() {
           <span className={styles.sectionLabel}>Our picks</span>
           <h2 className={styles.sectionTitle}>Top 4 Japan eSIMs</h2>
           <div className={styles.picksList}>
-            {topPicks.map(({ id, rank, bestFor, badgeCls, target, ctaLabel }) => {
+            {topPicks.map(({ id, esimId, rank, bestFor, badgeCls, target, ctaLabel }) => {
               const sim = simCards.find((s) => s.id === id)!;
-              const url = sim.affiliateUrl === "#" ? "/sim-cards" : sim.affiliateUrl;
-              const isExternal = sim.affiliateUrl !== "#";
+              const affiliateUrl = getProvider(esimId).affiliateUrl;
+              const url = affiliateUrl === "#" ? "/sim-cards" : affiliateUrl;
+              const isExternal = affiliateUrl !== "#";
               return (
                 <article key={id} id={id} className={styles.pickCard}>
                   <div className={styles.pickCardHeader}>

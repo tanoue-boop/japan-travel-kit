@@ -1,8 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
 import { simCards } from "../lib/sim-cards";
+import { cheapestPlan, formatUsd, getProvider, pricesCheckedLabel } from "../lib/esim-prices";
 import SIMCardCard from "../components/SIMCardCard";
 import styles from "../styles/SimCards.module.css";
+import tools from "../styles/Tools.module.css";
+
+// Every price on this page is read from data/esim-prices.json (refreshed daily).
+const pricesCheckedAt = pricesCheckedLabel();
 
 const faqItems = [
   {
@@ -86,7 +91,7 @@ export default function SIMCardsPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Best Japan SIM Cards 2026 — Compare Tourist SIM & eSIM",
-              dateModified: "2026-04-25",
+              dateModified: "2026-09-18",
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -113,7 +118,7 @@ export default function SIMCardsPage() {
         <div className={styles.pageHeaderDots} />
         <div className={styles.pageHeaderInner}>
           <p className={styles.updated}>
-            <span>📱</span> Updated April 2026
+            <span>📱</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.pageTitle}>
             Best Japan SIM Cards<br />&amp; eSIMs for Tourists
@@ -123,7 +128,7 @@ export default function SIMCardsPage() {
             Here&apos;s our honest recommendation for each type of traveler.
           </p>
           <div className={styles.badges}>
-            {["Independently reviewed", "Prices verified", "No paid placements"].map((t) => (
+            {["Independently reviewed", "Prices checked daily", "No paid placements"].map((t) => (
               <span key={t} className={styles.badge}>
                 <span className={styles.badgeCheck}>✓</span> {t}
               </span>
@@ -184,7 +189,7 @@ export default function SIMCardsPage() {
                 </thead>
                 <tbody>
                   {simCards.map((sim) => {
-                    const cheapest = sim.plans.reduce((a, b) => (a.price < b.price ? a : b));
+                    const cheapest = cheapestPlan(sim.esimId);
                     const badgeCls = sim.badgeColor ? (badgeColorMap[sim.badgeColor] ?? styles.tdBadgeBlue) : "";
                     return (
                       <tr key={sim.id}>
@@ -194,8 +199,8 @@ export default function SIMCardsPage() {
                             <span className={`${styles.tdBadge} ${badgeCls}`}>{sim.badge}</span>
                           )}
                         </td>
-                        <td className={styles.tdPrice}>${cheapest.price.toFixed(2)}</td>
-                        <td style={{ fontSize: "0.78rem" }}>{sim.coverage.split("(")[0].trim()}</td>
+                        <td className={styles.tdPrice}>{cheapest ? formatUsd(cheapest.priceUsd) : "—"}</td>
+                        <td style={{ fontSize: "0.78rem" }}>{getProvider(sim.esimId).network}</td>
                         <td>{sim.esim ? <span className={styles.yes}>✓</span> : <span className={styles.no}>✗</span>}</td>
                         <td>{sim.voiceCall ? <span className={styles.yes}>✓</span> : <span className={styles.no}>✗</span>}</td>
                         <td>
@@ -211,6 +216,13 @@ export default function SIMCardsPage() {
               </table>
             </div>
           </div>
+          <p style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
+            <span className={tools.liveBadge}><span className={tools.liveDot} /> Prices checked daily</span>
+            <span>
+              &ldquo;From&rdquo; is each provider&apos;s cheapest Japan plan in USD as of {pricesCheckedAt}.{" "}
+              <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan sorted by price per GB →</Link>
+            </span>
+          </p>
         </section>
 
         {/* Article link */}

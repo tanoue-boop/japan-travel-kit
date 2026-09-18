@@ -1,11 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { getProvider, priceFrom, pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
+
+// eSIM prices on this page are read from data/esim-prices.json (refreshed daily).
+const pricesCheckedAt = pricesCheckedLabel();
+const ESIM_FROM = siteCheapestFrom();
+const AIRALO_FROM = priceFrom("airalo");
+const ESIMGO_FROM = priceFrom("esimgo");
 
 const faqItems = [
   {
     q: "Is eSIM cheaper than Pocket WiFi in Japan?",
-    a: "For solo travellers, yes. eSIM plans start from $3.50–$4.50 for 7 days, while Pocket WiFi typically costs $5–$10 per day. For groups of 3 or more, Pocket WiFi can work out cheaper per person when shared.",
+    a: `For solo travellers, yes. Japan eSIM plans start from ${ESIM_FROM} (checked ${pricesCheckedAt}), while Pocket WiFi typically costs $5–$10 per day. For groups of 3 or more, Pocket WiFi can work out cheaper per person when shared.`,
   },
   {
     q: "Can I use Pocket WiFi and eSIM together?",
@@ -64,7 +71,7 @@ export default function PocketWifiVsEsimPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Pocket WiFi vs eSIM for Japan 2026: Which Is Better?",
-              dateModified: "2026-04-01",
+              dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -104,7 +111,7 @@ export default function PocketWifiVsEsimPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📶</span> Updated April 2026
+            <span>📶</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Pocket WiFi vs eSIM for Japan (2026):<br />Which Is Better?
@@ -115,7 +122,7 @@ export default function PocketWifiVsEsimPage() {
             Here&apos;s how to choose.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Honest Comparison", "All Device Types"].map((t) => (
+            {["Prices checked daily", "Honest Comparison", "All Device Types"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -157,7 +164,7 @@ export default function PocketWifiVsEsimPage() {
               <div className={styles.choiceCardBody}>
                 <ul className={styles.choiceList}>
                   <li><span className={styles.choiceCheck}>✓</span> Solo traveller</li>
-                  <li><span className={styles.choiceCheck}>✓</span> Budget traveller (from $3.50)</li>
+                  <li><span className={styles.choiceCheck}>✓</span> Budget traveller (from {ESIM_FROM})</li>
                   <li><span className={styles.choiceCheck}>✓</span> Short stay (under 2 weeks)</li>
                   <li><span className={styles.choiceCheck}>✓</span> eSIM-compatible phone</li>
                 </ul>
@@ -207,7 +214,7 @@ export default function PocketWifiVsEsimPage() {
                     ["Setup", "QR code scan", "Pick up at airport"],
                     ["Devices", "1 phone", "Up to 10 devices"],
                     ["Battery needed", "No", "Yes"],
-                    ["Price", "From $3.50", "From $5/day"],
+                    ["Price", `From ${ESIM_FROM}`, "From $5/day"],
                     ["Best for", "Solo travel", "Groups & families"],
                     ["Data limit", "Capped or unlimited", "Usually unlimited"],
                   ].map(([feature, esim, wifi]) => (
@@ -300,7 +307,7 @@ export default function PocketWifiVsEsimPage() {
               { scenario: "Group of 2 or more", rec: "Pocket WiFi", desc: "Sharing one device is more cost-effective. Everyone stays connected." },
               { scenario: "No eSIM-compatible phone", rec: "Pocket WiFi", desc: "If your phone doesn't support eSIM, Pocket WiFi is the practical choice." },
               { scenario: "Need laptop data too", rec: "Pocket WiFi", desc: "Connect multiple devices including laptops, tablets, and cameras." },
-              { scenario: "Short stay (under 1 week)", rec: "eSIM Go or Airalo", desc: "Budget eSIM plans start from $3.50 for 7 days — hard to beat for a short trip." },
+              { scenario: "Short stay (under 1 week)", rec: "eSIM Go or Airalo", desc: `Budget eSIM plans start from ${ESIM_FROM} — hard to beat for a short trip.` },
             ].map((item, i) => (
               <div key={i} className={styles.stepCard}>
                 <span className={styles.stepNum}>{i + 1}</span>
@@ -326,7 +333,7 @@ export default function PocketWifiVsEsimPage() {
                 </svg>
               </div>
               <p className={styles.whoForTitle}>Best eSIM: Airalo</p>
-              <p className={styles.whoForDesc}>Largest eSIM marketplace. Japan plans from $4.50. Runs on Docomo &amp; SoftBank.</p>
+              <p className={styles.whoForDesc}>Largest eSIM marketplace. Japan plans from {AIRALO_FROM}. Runs on {getProvider("airalo").network}.</p>
               <a href="https://airalo.pxf.io/c/7213504/1268485/15608" className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
                 Get Airalo →
               </a>
@@ -339,7 +346,7 @@ export default function PocketWifiVsEsimPage() {
                 </svg>
               </div>
               <p className={styles.whoForTitle}>Best Budget eSIM: eSIM Go</p>
-              <p className={styles.whoForDesc}>Japan plans from $3.50 for 7 days. Great value on Docomo network.</p>
+              <p className={styles.whoForDesc}>Japan plans from {ESIMGO_FROM}. Great value on {getProvider("esimgo").network}.</p>
               <a href="https://breezesim.com?sca_ref=11082101.AF8vabyRKN" className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
                 Get eSIM Go →
               </a>

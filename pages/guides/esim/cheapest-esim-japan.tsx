@@ -203,17 +203,17 @@ export default function CheapestEsimJapanPage() {
         <title>Cheapest eSIM for Japan 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile. From $3.50."
+          content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`}
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
         <meta property="og:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
-        <meta property="og:description" content="Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile. From $3.50." />
+        <meta property="og:description" content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared" />
-        <meta name="twitter:description" content="Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile. From $3.50." />
+        <meta name="twitter:description" content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

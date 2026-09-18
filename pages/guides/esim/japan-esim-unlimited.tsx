@@ -1,6 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
+
+// Every price on this page is read from data/esim-prices.json (refreshed daily).
+const pricesCheckedAt = pricesCheckedLabel();
+const HOLAFLY_FROM = priceFromLabel("holafly");
+const HOLAFLY_5 = unlimitedFromLabel("holafly", 5);
+const HOLAFLY_30 = unlimitedFromLabel("holafly", 30);
+const SAKURA_UNL = unlimitedFromLabel("sakura", 7);
+const SAKURA_UNL_30 = unlimitedFromLabel("sakura", 30);
+const AIRALO_10 = priceAtLeastLabel("airalo", 10);
+const AIRALO_FROM = priceFromLabel("airalo");
+const ESIMGO_10 = priceAtLeastLabel("esimgo", 10);
 
 const dataUsageTable = [
   { activity: "Google Maps navigation",          perDay: "~50 MB",   weeklyTotal: "~350 MB" },
@@ -20,7 +32,7 @@ const usageRows = [
 
 const planVsDataRows = [
   { usage: "Up to 5 GB",   recommendation: "eSIM Go or Airalo",  reason: "Much cheaper than any unlimited plan" },
-  { usage: "5 GB – 10 GB", recommendation: "eSIM Go 10 GB ($14) or Airalo 10 GB ($18)", reason: "Best price-to-data ratio for typical tourists" },
+  { usage: "5 GB – 10 GB", recommendation: `eSIM Go 10 GB (${ESIMGO_10}) or Airalo 10 GB (${AIRALO_10})`, reason: "Best price-to-data ratio for typical tourists" },
   { usage: "10 GB – 15 GB", recommendation: "Holafly unlimited",  reason: "Crosses the break-even point on most multi-day plans" },
   { usage: "15 GB+",        recommendation: "Holafly unlimited",  reason: "Clearly the better value — no overage anxiety" },
 ];
@@ -31,7 +43,7 @@ const topPicks = [
     name: "Holafly",
     badge: "True Unlimited",
     badgeClass: "pickBadgeBlue" as const,
-    summary: "Holafly is the only major provider offering genuinely unlimited data for Japan — no hard cap, no throttle after a fixed allowance. Runs on SoftBank. Plans range from around $27 for 5 days to $89 for 30 days. The higher price is the trade-off for truly unlimited usage.",
+    summary: `Holafly is the best-known unlimited eSIM for Japan — no hard cap on your phone, though hotspot use is limited to 1 GB/day. Runs on ${getProvider("holafly").network}. Plans run from ${HOLAFLY_FROM} for a short trip to ${HOLAFLY_30} for a month (checked ${pricesCheckedAt}). The higher price is the trade-off for unlimited usage.`,
     bestFor: "Heavy streamers, remote workers, and anyone unwilling to track their data usage",
     pros: ["No data cap at all", "No throttling after a limit", "Buy before you fly — instant QR delivery", "24/7 chat support"],
     cons: ["Most expensive option", "SoftBank only (slightly less rural coverage than Docomo)", "Data-only — no voice calls"],
@@ -43,10 +55,10 @@ const topPicks = [
     name: "Sakura Mobile",
     badge: "Unlimited + Voice",
     badgeClass: "pickBadgeOrange" as const,
-    summary: "Sakura Mobile offers unlimited data plans on the Docomo network — Japan's most extensive coverage. Uniquely among unlimited options, their plans include voice calls and SMS, making them the best choice for travellers who need to make local calls. Monthly plans only.",
-    bestFor: "Long-stay travellers and anyone who needs a Japanese phone number or to make calls",
-    pros: ["Docomo network (best rural coverage)", "Includes voice calls + SMS", "English-speaking Japan-based support", "Unlimited data with no throttle policy stated"],
-    cons: ["Monthly plans only (30 days minimum)", "More expensive than data-cap alternatives", "Activation takes 1–2 business days"],
+    summary: `Sakura Mobile's unlimited travel eSIM runs on au/KDDI, from ${SAKURA_UNL} up to ${SAKURA_UNL_30}, with a 3 GB/day Docomo option for longer stays. It's the Japan-based choice: English phone support, and physical-SIM plans with a voice option for travellers who need to make local calls.`,
+    bestFor: "Long-stay travellers and anyone who wants Japan-based English support or a voice-call SIM",
+    pros: ["Japan-based English-speaking support", "Unlimited (au/KDDI) or 3 GB/day (Docomo) eSIM plans", "Voice-call SIM plans available", "Plans from 3 to 30+ days"],
+    cons: ["More expensive than data-cap alternatives", "Hotspot allowance depends on plan length", "Slightly slower initial setup"],
     cta: "Get Sakura Mobile Unlimited →",
     href: "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
   },
@@ -55,9 +67,9 @@ const topPicks = [
     name: "Airalo (10 GB plan)",
     badge: "Best Value",
     badgeClass: "pickBadgeGreen" as const,
-    summary: "If your data usage is high but not extreme, Airalo's 10 GB / 30-day plan at $18 is the smartest option. For most travellers — even those making daily video calls and browsing social media — 10 GB for a month is more than enough. A fraction of the Holafly price.",
+    summary: `If your data usage is high but not extreme, Airalo's 10 GB plan at ${AIRALO_10} is the smartest option. For most travellers — even those making daily video calls and browsing social media — 10 GB for a month is more than enough. A fraction of the Holafly price.`,
     bestFor: "Travellers who think they need unlimited but actually use under 10 GB per month",
-    pros: ["$18 for 10 GB / 30 days — outstanding value", "Docomo and SoftBank networks", "Instant activation", "Most travellers won't hit the cap"],
+    pros: [`${AIRALO_10} for 10 GB — outstanding value`, getProvider("airalo").network, "Instant activation", "Most travellers won't hit the cap"],
     cons: ["Hard cap at 10 GB (then data stops)", "No calls or SMS", "Not truly unlimited"],
     cta: "Get Airalo Japan eSIM →",
     href: "https://airalo.pxf.io/c/7213504/1268485/15608",
@@ -65,12 +77,12 @@ const topPicks = [
 ];
 
 const comparisonRows = [
-  { feature: "Data allowance",   holafly: "Unlimited",     sakura: "Unlimited",      airalo: "10 GB / 30 days" },
-  { feature: "Throttling",       holafly: "None stated",   sakura: "None stated",    airalo: "Data stops at cap" },
-  { feature: "Network",         holafly: "SoftBank",      sakura: "Docomo",         airalo: "Docomo + SoftBank" },
-  { feature: "Voice calls",      holafly: "✗",             sakura: "✓",              airalo: "✗" },
-  { feature: "Min. duration",    holafly: "5 days",        sakura: "30 days",        airalo: "7 days" },
-  { feature: "Price from",       holafly: "~$27 / 5 days", sakura: "~$40 / month",  airalo: "$4.50 / 7 days" },
+  { feature: "Data allowance",   holafly: "Unlimited",     sakura: "Unlimited or 3 GB/day", airalo: "10 GB (or unlimited)" },
+  { feature: "Throttling",       holafly: "Hotspot 1 GB/day", sakura: "Hotspot allowance by plan", airalo: "Data stops at cap" },
+  { feature: "Network",         holafly: getProvider("holafly").network, sakura: getProvider("sakura").network, airalo: getProvider("airalo").network },
+  { feature: "Voice calls",      holafly: "✗",             sakura: "SIM plans only", airalo: "✗" },
+  { feature: "Min. duration",    holafly: "1 day",         sakura: "3 days",         airalo: "3 days" },
+  { feature: "Price from",       holafly: HOLAFLY_FROM,    sakura: SAKURA_UNL,       airalo: AIRALO_FROM },
   { feature: "English support",  holafly: "24/7 chat",     sakura: "Email (Japan)",  airalo: "Chat / app" },
 ];
 
@@ -85,7 +97,7 @@ const faqItems = [
   },
   {
     q: "What happens when an Airalo Japan eSIM hits its data cap?",
-    a: "When you use all your data on Airalo, your connection stops entirely — you won't be throttled to a slower speed, you'll simply lose data access. You can purchase an additional plan from the Airalo app and it will top up your eSIM without requiring a new QR code scan. If you're worried about running out, the 10 GB plan ($18 for 30 days) is sufficient for almost all non-streaming use.",
+    a: `When you use all your data on Airalo, your connection stops entirely — you won't be throttled to a slower speed, you'll simply lose data access. You can purchase an additional plan from the Airalo app and it will top up your eSIM without requiring a new QR code scan. If you're worried about running out, the 10 GB plan (${AIRALO_10}) is sufficient for almost all non-streaming use.`,
   },
   {
     q: "Can I use a Japan unlimited eSIM for working remotely?",
@@ -93,15 +105,15 @@ const faqItems = [
   },
   {
     q: "Is there a cheaper alternative to Holafly for unlimited data?",
-    a: "The closest affordable alternative is Airalo's 10 GB / 30-day plan at $18. For most travellers, this is functionally unlimited. If you genuinely need no cap — for streaming, live gaming, or heavy video uploads — Holafly is the right tool. There is no cheaper provider offering genuinely unlimited data in Japan at the time of writing.",
+    a: `The closest affordable alternative is Airalo's 10 GB plan at ${AIRALO_10}. For most travellers, this is functionally unlimited. If you genuinely need no cap — for streaming or heavy video uploads — compare the unlimited plans from Holafly, Airalo and eSIM Go in our live price tracker; prices are re-checked daily.`,
   },
   {
     q: "How much does unlimited eSIM cost for Japan?",
-    a: "Holafly's Japan unlimited plans run from roughly $27 for 5 days to about $89 for 30 days. Sakura Mobile's unlimited monthly plan starts around $40 per month and includes voice calls. By contrast, eSIM Go's 10 GB Japan plan costs around $14 and Airalo's 10 GB plan $18 — typically half the price of an entry-level unlimited plan.",
+    a: `As of ${pricesCheckedAt}, Holafly's Japan unlimited plans run from ${HOLAFLY_5} to ${HOLAFLY_30}. Sakura Mobile's unlimited eSIM starts at ${SAKURA_UNL}. By contrast, eSIM Go's 10 GB plan is ${ESIMGO_10} and Airalo's 10 GB plan ${AIRALO_10} — typically half the price of an unlimited plan for the same length.`,
   },
   {
     q: "What's the cheapest unlimited Japan eSIM?",
-    a: "Holafly's 5-day plan at around $27 is the lowest entry point for true unlimited. If you're willing to consider 'effectively unlimited' fixed plans, eSIM Go's 10 GB at $14 is dramatically cheaper and covers what most travellers would consider unlimited usage on a 1–2 week trip.",
+    a: `Holafly's 5-day plan at ${HOLAFLY_5} is a low entry point for unlimited, and Airalo and eSIM Go now sell unlimited plans too — see the live tracker for today's cheapest. If you're willing to consider 'effectively unlimited' fixed plans, eSIM Go's 10 GB at ${ESIMGO_10} is dramatically cheaper and covers what most travellers would consider unlimited usage on a 1–2 week trip.`,
   },
   {
     q: "Can I stream Netflix with an unlimited Japan eSIM?",
@@ -184,7 +196,7 @@ export default function JapanEsimUnlimitedPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users",
-              dateModified: "2026-09-16",
+              dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -239,7 +251,7 @@ export default function JapanEsimUnlimitedPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📶</span> Updated September 2026
+            <span>📶</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Best Unlimited eSIM for Japan (2026):<br />Top Picks for Heavy Users
@@ -248,7 +260,7 @@ export default function JapanEsimUnlimitedPage() {
             Holafly, Sakura Mobile, or a large fixed plan? We break down which one is actually worth paying for — and who should skip unlimited entirely.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "Honest Speed Findings", "True Unlimited vs Fixed"].map((t) => (
+            {["Prices checked daily", "Honest Speed Findings", "True Unlimited vs Fixed"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -277,7 +289,7 @@ export default function JapanEsimUnlimitedPage() {
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>True unlimited pick</p>
-                <p className={styles.verdictStatValue}>Holafly (from ~$27)</p>
+                <p className={styles.verdictStatValue}>Holafly (from {HOLAFLY_FROM})</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Unlimited + voice</p>
@@ -285,7 +297,7 @@ export default function JapanEsimUnlimitedPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Best value (most users)</p>
-                <p className={styles.verdictStatValue}>Airalo 10 GB — $18</p>
+                <p className={styles.verdictStatValue}>Airalo 10 GB — {AIRALO_10}</p>
               </div>
             </div>
             <a
@@ -329,7 +341,7 @@ export default function JapanEsimUnlimitedPage() {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            A typical tourist (Maps + messaging + social media) uses <strong>1–3 GB per week</strong>. Airalo&apos;s 10 GB / 30-day plan at $18 covers most people completely. Unlimited only makes sense if you&apos;re streaming video daily, doing multi-hour video calls, or uploading large files.
+            A typical tourist (Maps + messaging + social media) uses <strong>1–3 GB per week</strong>. Airalo&apos;s 10 GB plan at {AIRALO_10} covers most people completely. Unlimited only makes sense if you&apos;re streaming video daily, doing multi-hour video calls, or uploading large files.
           </p>
         </section>
 

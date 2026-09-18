@@ -1,18 +1,20 @@
-export type DataPlan = {
-  duration: string;
-  data: string;
-  price: number;
-  affiliateUrl: string;
-};
+import type { EsimProviderId } from "./esim-prices";
 
+/**
+ * Qualitative profile of each provider shown on /sim-cards.
+ *
+ * Anything numeric about pricing, plan sizes, network or the affiliate link
+ * lives in data/esim-prices.json (via lib/esim-prices.ts) — the single source
+ * of truth for eSIM prices site-wide — and is looked up by `esimId`.
+ */
 export type SIMCard = {
   id: string;
+  esimId: EsimProviderId;
   name: string;
   provider: string;
   badge?: string;
   badgeColor?: string;
   summary: string;
-  coverage: string;
   speed: string;
   voiceCall: boolean;
   smsIncluded: boolean;
@@ -22,22 +24,20 @@ export type SIMCard = {
   support: string;
   pros: string[];
   cons: string[];
-  plans: DataPlan[];
-  affiliateUrl: string;
   rating: number;
 };
 
 export const simCards: SIMCard[] = [
   {
     id: "airalo-japan",
+    esimId: "airalo",
     name: "Airalo Japan eSIM",
     provider: "Airalo",
     badge: "Best for eSIM",
     badgeColor: "bg-blue-500",
     summary:
       "The world's largest eSIM marketplace with 10M+ users. Install before you land and activate instantly on arrival — no queues, no physical SIM.",
-    coverage: "Docomo & SoftBank (nationwide)",
-    speed: "Up to 150 Mbps (LTE/4G)",
+    speed: "Up to 150 Mbps (5G/LTE)",
     voiceCall: false,
     smsIncluded: false,
     esim: true,
@@ -47,31 +47,25 @@ export const simCards: SIMCard[] = [
     pros: [
       "World's largest eSIM marketplace",
       "Instant activation before you land",
-      "Competitive pricing from $4.50",
+      "Plans from 1 GB to unlimited, 3 to 30 days",
       "Trusted by 10M+ travellers",
     ],
     cons: [
       "Data-only (no voice calls or SMS)",
       "Requires eSIM-compatible phone",
     ],
-    plans: [
-      { duration: "7 days",  data: "1 GB",  price: 4.50,  affiliateUrl: "https://airalo.pxf.io/c/7213504/1268485/15608" },
-      { duration: "30 days", data: "3 GB",  price: 9.50,  affiliateUrl: "https://airalo.pxf.io/c/7213504/1268485/15608" },
-      { duration: "30 days", data: "10 GB", price: 18.00, affiliateUrl: "https://airalo.pxf.io/c/7213504/1268485/15608" },
-    ],
-    affiliateUrl: "https://airalo.pxf.io/c/7213504/1268485/15608",
     rating: 4.5,
   },
   {
     id: "holafly-japan",
+    esimId: "holafly",
     name: "Holafly Japan eSIM",
     provider: "Holafly",
     badge: "Unlimited Data",
     badgeColor: "bg-orange-500",
     summary:
-      "Unlimited data eSIM — no caps, no throttling worries. Hugely popular with European and American travellers who need constant connectivity.",
-    coverage: "Softbank network (nationwide)",
-    speed: "Up to 150 Mbps (LTE/4G)",
+      "Unlimited data eSIM — no caps to watch. Hugely popular with European and American travellers who need constant connectivity.",
+    speed: "Up to 150 Mbps (5G/LTE)",
     voiceCall: false,
     smsIncluded: false,
     esim: true,
@@ -79,34 +73,28 @@ export const simCards: SIMCard[] = [
     setupEase: 5,
     support: "24/7 live chat (English)",
     pros: [
-      "Truly unlimited data",
-      "No speed caps or fair-use throttling",
+      "Unlimited on-device data",
+      "Any plan length from 1 to 90 days",
       "Popular with US & European travellers",
       "Easy QR-code setup",
     ],
     cons: [
       "Data-only (no calls or SMS)",
+      "Hotspot capped at 1 GB/day",
       "Pricier than data-capped alternatives",
-      "eSIM-only device required",
     ],
-    plans: [
-      { duration: "5 days",  data: "Unlimited", price: 19.00, affiliateUrl: "#" },
-      { duration: "10 days", data: "Unlimited", price: 27.00, affiliateUrl: "#" },
-      { duration: "30 days", data: "Unlimited", price: 49.00, affiliateUrl: "#" },
-    ],
-    affiliateUrl: "#",
     rating: 4.3,
   },
   {
     id: "sakura-mobile",
-    name: "Sakura Mobile SIM",
+    esimId: "sakura",
+    name: "Sakura Mobile Travel eSIM",
     provider: "Sakura Mobile",
     badge: "Best for Long Stay",
     badgeColor: "bg-green-500",
     summary:
-      "The go-to choice for longer stays and travellers who want English-speaking support. Offers both physical SIM and eSIM with optional voice calling.",
-    coverage: "Docomo network (nationwide)",
-    speed: "Up to 150 Mbps (LTE/4G)",
+      "The Japan-based choice for longer stays and travellers who want English-speaking support. Travel eSIMs with 3 GB/day or unlimited data; physical SIM plans with a voice option.",
+    speed: "Up to 150 Mbps (5G/LTE)",
     voiceCall: true,
     smsIncluded: true,
     esim: true,
@@ -115,32 +103,26 @@ export const simCards: SIMCard[] = [
     support: "English phone & email support",
     pros: [
       "Full English customer support",
-      "Voice calls & SMS included",
+      "Voice-call SIM plans available (physical SIM)",
       "Physical SIM or eSIM available",
       "Best for stays of 1 month+",
     ],
     cons: [
-      "Higher price than data-only options",
+      "Higher price than data-only resellers",
       "Slightly slower initial setup",
     ],
-    plans: [
-      { duration: "30 days", data: "7 GB",  price: 28.00, affiliateUrl: "https://p.sakuramobile.jp/idevaffiliate.php?id=486" },
-      { duration: "30 days", data: "15 GB", price: 38.00, affiliateUrl: "https://p.sakuramobile.jp/idevaffiliate.php?id=486" },
-      { duration: "30 days", data: "30 GB", price: 52.00, affiliateUrl: "https://p.sakuramobile.jp/idevaffiliate.php?id=486" },
-    ],
-    affiliateUrl: "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
     rating: 4.4,
   },
   {
     id: "esim-go-japan",
-    name: "eSIM Go Japan",
+    esimId: "esimgo",
+    name: "eSIM Go Japan (Breeze)",
     provider: "eSIM Go",
     badge: "Best Value",
     badgeColor: "bg-blue-500",
     summary:
-      "Outstanding value eSIM covering 190+ countries. Ideal for budget-conscious travellers or those visiting multiple countries in one trip.",
-    coverage: "Docomo network (nationwide)",
-    speed: "Up to 150 Mbps (LTE/4G)",
+      "Outstanding value eSIM covering 190+ countries, sold through eSIM Go's consumer brand Breeze. Ideal for budget-conscious travellers or those visiting multiple countries in one trip.",
+    speed: "Up to 150 Mbps (5G/LTE)",
     voiceCall: false,
     smsIncluded: false,
     esim: true,
@@ -148,7 +130,7 @@ export const simCards: SIMCard[] = [
     setupEase: 5,
     support: "Email support (English)",
     pros: [
-      "Best price-per-GB on the market",
+      "Lowest entry price of the four",
       "Works in 190+ countries",
       "Instant activation via QR code",
       "Great for multi-country trips",
@@ -158,12 +140,6 @@ export const simCards: SIMCard[] = [
       "Smaller brand than Airalo or Holafly",
       "eSIM-compatible phone required",
     ],
-    plans: [
-      { duration: "7 days",  data: "1 GB",  price: 3.50,  affiliateUrl: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN" },
-      { duration: "15 days", data: "5 GB",  price: 8.00,  affiliateUrl: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN" },
-      { duration: "30 days", data: "10 GB", price: 14.00, affiliateUrl: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN" },
-    ],
-    affiliateUrl: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN",
     rating: 4.2,
   },
 ];

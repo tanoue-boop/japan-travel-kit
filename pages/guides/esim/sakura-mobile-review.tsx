@@ -1,12 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import ProviderPlanTable from "../../../components/ProviderPlanTable";
+import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
 
-const plans = [
-  { name: "Standard", data: "7 GB",  duration: "30 days", price: "$28.00" },
-  { name: "Standard", data: "15 GB", duration: "30 days", price: "$38.00" },
-  { name: "Standard", data: "30 GB", duration: "30 days", price: "$52.00" },
-];
+// All prices below are read from data/esim-prices.json (refreshed daily).
+const pricesCheckedAt = pricesCheckedLabel();
+const FROM = priceFromLabel("sakura");
+const THIRTY_DAY = priceAtLeastLabel("sakura", 90);
+const UNLIMITED_30 = unlimitedFromLabel("sakura", 30);
+const AIRALO_FROM = priceFromLabel("airalo");
 
 const pros = [
   "Full English customer support",
@@ -142,7 +145,7 @@ export default function SakuraMobileReviewPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?",
-              dateModified: "2026-04-01",
+              dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -182,7 +185,7 @@ export default function SakuraMobileReviewPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated April 2026
+            <span>📱</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Sakura Mobile Review 2026:<br />Best SIM for Long Stays in Japan?
@@ -192,7 +195,7 @@ export default function SakuraMobileReviewPage() {
             But is it worth the higher price?
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Independently Reviewed", "Physical SIM & eSIM"].map((t) => (
+            {["Prices checked daily", "Independently Reviewed", "Physical SIM & eSIM"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -236,11 +239,11 @@ export default function SakuraMobileReviewPage() {
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Price From</p>
-                <p className={styles.verdictStatValue}>$28 / 30 days</p>
+                <p className={styles.verdictStatValue}>{FROM}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Network</p>
-                <p className={styles.verdictStatValue}>Docomo</p>
+                <p className={styles.verdictStatValue}>{getProvider("sakura").network}</p>
               </div>
             </div>
             <a href="https://p.sakuramobile.jp/idevaffiliate.php?id=486" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
@@ -277,29 +280,7 @@ export default function SakuraMobileReviewPage() {
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
           <h2 className={styles.sectionTitle}>Sakura Mobile Plans</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Plan", "Data", "Duration", "Price"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {plans.map((plan, i) => (
-                    <tr key={i}>
-                      <td className={styles.tdProvider}>{plan.name}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b" }}>{plan.data}</td>
-                      <td className={styles.tdNetwork}>{plan.duration}</td>
-                      <td className={styles.tdPrice}>{plan.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <ProviderPlanTable providerId="sakura" />
         </section>
 
         {/* Pros & Cons */}
@@ -368,13 +349,13 @@ export default function SakuraMobileReviewPage() {
                   </tr>
                   <tr>
                     <td className={styles.ftFeature}>Network</td>
-                    <td className={styles.ftEsim}>Docomo</td>
-                    <td className={styles.ftSim}>Docomo / SoftBank</td>
+                    <td className={styles.ftEsim}>{getProvider("sakura").network}</td>
+                    <td className={styles.ftSim}>{getProvider("airalo").network}</td>
                   </tr>
                   <tr>
                     <td className={styles.ftFeature}>Price (30 days)</td>
-                    <td className={styles.ftEsim}>From $28</td>
-                    <td className={styles.ftSim}>From $9.50</td>
+                    <td className={styles.ftEsim}>{THIRTY_DAY} · unlimited {UNLIMITED_30}</td>
+                    <td className={styles.ftSim}>{priceAtLeastLabel("airalo", 5)}</td>
                   </tr>
                   <tr>
                     <td className={styles.ftFeature}>Best for</td>
@@ -415,8 +396,8 @@ export default function SakuraMobileReviewPage() {
             support, Sakura Mobile is the clear choice.
           </p>
           <p className={styles.verdictText}>
-            The price premium is real — at $28 for 7 GB / 30 days, it&apos;s three times the cost
-            of Airalo&apos;s entry-level plan. But for what you get (voice calls, SMS, Docomo&apos;s
+            The price premium is real — from {FROM} (checked {pricesCheckedAt}), it&apos;s several times
+            the cost of Airalo&apos;s entry-level plan ({AIRALO_FROM}). But for what you get (voice calls, SMS, Docomo&apos;s
             unrivalled rural coverage, and genuine English support), the premium is justified for
             the right traveller.
           </p>

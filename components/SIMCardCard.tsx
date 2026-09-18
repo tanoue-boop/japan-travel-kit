@@ -1,6 +1,11 @@
+import Link from "next/link";
 import type { SIMCard } from "../lib/sim-cards";
+import { cheapestPlan, formatDate, formatUsd, getProvider, plansFor } from "../lib/esim-prices";
 import StarRating from "./StarRating";
 import styles from "../styles/SIMCardCard.module.css";
+
+// Plans, prices, network and the affiliate link all come from data/esim-prices.json.
+const PLAN_LIMIT = 6;
 
 const badgeColorMap: Record<string, string> = {
   "bg-blue-500":   styles.badgeBlue,
@@ -17,7 +22,11 @@ function Pill({ ok, label }: { ok: boolean; label: string }) {
 }
 
 export default function SIMCardCard({ sim }: { sim: SIMCard }) {
-  const cheapest = sim.plans.reduce((a, b) => (a.price < b.price ? a : b));
+  const provider = getProvider(sim.esimId);
+  const cheapest = cheapestPlan(sim.esimId);
+  const plans = plansFor(sim.esimId);
+  const shownPlans = plans.slice(0, PLAN_LIMIT);
+  const affiliateUrl = provider.affiliateUrl;
   const badgeCls = sim.badgeColor ? (badgeColorMap[sim.badgeColor] ?? styles.badgeBlue) : "";
 
   return (
@@ -36,8 +45,8 @@ export default function SIMCardCard({ sim }: { sim: SIMCard }) {
         </div>
         <div className={styles.priceBlock}>
           <p className={styles.priceFrom}>From</p>
-          <p className={styles.price}>${cheapest.price.toFixed(0)}</p>
-          <p className={styles.priceCurrency}>USD</p>
+          <p className={styles.price}>{cheapest ? formatUsd(cheapest.priceUsd) : "—"}</p>
+          <p className={styles.priceCurrency}>USD · checked {formatDate(provider.fetchedAt)}</p>
         </div>
       </div>
 
@@ -53,7 +62,7 @@ export default function SIMCardCard({ sim }: { sim: SIMCard }) {
       <div className={styles.specs}>
         <div>
           <p className={styles.specLabel}>Network</p>
-          <p className={styles.specValue}>{sim.coverage}</p>
+          <p className={styles.specValue}>{provider.network}</p>
         </div>
         <div>
           <p className={styles.specLabel}>Speed</p>
@@ -67,16 +76,21 @@ export default function SIMCardCard({ sim }: { sim: SIMCard }) {
 
       {/* Plans */}
       <div className={styles.plans}>
-        <p className={styles.plansLabel}>Available Plans</p>
-        {sim.plans.map((plan, i) => (
-          <div key={i} className={styles.planRow}>
+        <p className={styles.plansLabel}>
+          Available Plans{plans.length > PLAN_LIMIT ? ` (${PLAN_LIMIT} cheapest of ${plans.length})` : ""}
+        </p>
+        {shownPlans.map((plan) => (
+          <div key={plan.id} className={styles.planRow}>
             <div className={styles.planLeft}>
-              <span className={styles.planData}>{plan.data}</span>
-              <span className={styles.planDur}>/ {plan.duration}</span>
+              <span className={styles.planData}>{plan.unlimited ? "Unlimited" : `${plan.gb} GB`}</span>
+              <span className={styles.planDur}>/ {plan.days} {plan.days === 1 ? "day" : "days"}</span>
             </div>
-            <span className={styles.planPrice}>${plan.price.toFixed(2)}</span>
+            <span className={styles.planPrice}>{formatUsd(plan.priceUsd)}</span>
           </div>
         ))}
+        <Link href="/guides/esim/japan-esim-data-plans" className={styles.planDur} style={{ display: "inline-block", marginTop: "0.5rem", fontWeight: 600, color: "#c62828" }}>
+          See all {plans.length} {provider.name} plans, sorted by price per GB →
+        </Link>
       </div>
 
       {/* Pros / Cons */}
@@ -105,17 +119,26 @@ export default function SIMCardCard({ sim }: { sim: SIMCard }) {
 
       {/* CTA */}
       <div className={styles.cta}>
-        <a
-          href={sim.affiliateUrl}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          className={styles.ctaBtn}
-        >
-          Get {sim.provider}
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </a>
+        {affiliateUrl === "#" ? (
+          <Link href="/guides/esim/holafly-japan-review" className={styles.ctaBtn}>
+            Read our {sim.provider} review
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Link>
+        ) : (
+          <a
+            href={affiliateUrl}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className={styles.ctaBtn}
+          >
+            Get {sim.provider}
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        )}
       </div>
     </article>
   );

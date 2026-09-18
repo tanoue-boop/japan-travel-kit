@@ -46,14 +46,14 @@ export const esimArticles: EsimArticle[] = [
     href: "/guides/esim/esim-go-japan-review",
     badge: "Review",
     title: "eSIM Go Japan Review 2026: Best Budget eSIM?",
-    desc: "The cheapest Japan eSIM we tested. eSIM Go offers Docomo coverage from $3.50 — but how does it hold up on speed, setup, and support?",
+    desc: "The cheapest Japan eSIM we tested. eSIM Go undercuts the big names on price — but how does it hold up on speed, setup, and support?",
     date: "April 2026",
   },
   {
     href: "/guides/esim/cheapest-esim-japan",
     badge: "Comparison",
     title: "Cheapest eSIM for Japan 2026: Best Budget Picks",
-    desc: "Don't overpay for data in Japan. We compared eSIM Go, Airalo, Holafly, and Sakura Mobile on price per GB. Starts from $3.50.",
+    desc: "Don't overpay for data in Japan. We compared eSIM Go, Airalo, Holafly, and Sakura Mobile on price per GB — prices checked daily.",
     date: "April 2026",
   },
   {

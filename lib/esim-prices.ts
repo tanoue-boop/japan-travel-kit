@@ -143,3 +143,52 @@ export function formatDate(iso: string | null): string {
 export function latestCheckedAt(): string | null {
   return esimProviders.reduce<string | null>((acc, p) => (p.fetchedAt && (!acc || p.fetchedAt > acc) ? p.fetchedAt : acc), null);
 }
+
+// ---------------------------------------------------------------------------
+// Copy helpers — so prose across the site can quote live prices without
+// hard-coding them. All return plain strings ready to drop into JSX/templates.
+// ---------------------------------------------------------------------------
+
+/** All plans for a provider as table rows (with $/GB), cheapest first. */
+export function plansFor(providerId: EsimProviderId): EsimPlanRow[] {
+  return allEsimPlans.filter((p) => p.providerId === providerId).sort((a, b) => a.priceUsd - b.priceUsd || a.days - b.days);
+}
+
+/** "$3.99 / 1 GB / 7 days" — a provider's cheapest plan, or "—". */
+export function priceFromLabel(providerId: EsimProviderId): string {
+  const p = cheapestPlan(providerId);
+  return p ? `${formatUsd(p.priceUsd)} / ${p.name}` : "—";
+}
+
+/** "$3.99" — a provider's cheapest plan price only. */
+export function priceFrom(providerId: EsimProviderId): string {
+  const p = cheapestPlan(providerId);
+  return p ? formatUsd(p.priceUsd) : "—";
+}
+
+/** "$13.99 (10 GB / 30 days)" for the cheapest plan with at least `gb` GB, or "—". */
+export function priceAtLeastLabel(providerId: EsimProviderId, gb: number): string {
+  const p = cheapestAtLeastGb(providerId, gb);
+  return p ? `${formatUsd(p.priceUsd)} (${p.name})` : "—";
+}
+
+/** "$22.99 (Unlimited / 7 days)" for the cheapest unlimited plan with at least `minDays`, or "—". */
+export function unlimitedFromLabel(providerId: EsimProviderId, minDays = 1): string {
+  const p = cheapestUnlimited(providerId, minDays);
+  return p ? `${formatUsd(p.priceUsd)} (${p.name})` : "—";
+}
+
+/** Cheapest plan on the whole site, e.g. for "Japan eSIMs from $3.99" banners. */
+export function siteCheapest(): EsimPlanRow | null {
+  return allEsimPlans.length ? allEsimPlans.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null;
+}
+
+export function siteCheapestFrom(): string {
+  const p = siteCheapest();
+  return p ? formatUsd(p.priceUsd) : "—";
+}
+
+/** "18 Sep 2026" — the most recent successful price check. */
+export function pricesCheckedLabel(): string {
+  return formatDate(latestCheckedAt());
+}

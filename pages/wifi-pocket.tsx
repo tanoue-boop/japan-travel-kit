@@ -3,6 +3,11 @@ import Link from "next/link";
 import StarRating from "../components/StarRating";
 import pageStyles from "../styles/SimCards.module.css";
 import cardStyles from "../styles/SIMCardCard.module.css";
+import { getProvider, priceFrom } from "../lib/esim-prices";
+
+// eSIM rows read price, network and affiliate link from data/esim-prices.json.
+const airalo = getProvider("airalo");
+const esimgo = getProvider("esimgo");
 
 type Item = {
   id: string;
@@ -52,28 +57,28 @@ const items: Item[] = [
     id: "airalo-esim",
     name: "Airalo eSIM",
     rating: 4.8,
-    price: "From $4.50",
-    network: "Docomo & SoftBank",
+    price: `From ${priceFrom("airalo")}`,
+    network: airalo.network,
     badge: "Best for Solo",
     badgeColor: "bg-orange-500",
     bestFor: "Solo travellers",
     pros: ["No device to carry", "Instant setup before landing", "Cheaper for solo travellers"],
     cons: ["1 device only", "Requires eSIM-compatible phone", "Data-only"],
-    affiliateUrl: "https://airalo.pxf.io/c/7213504/1268485/15608",
+    affiliateUrl: airalo.affiliateUrl,
     ctaText: "Get Airalo eSIM",
   },
   {
     id: "esim-go",
     name: "eSIM Go",
     rating: 4.2,
-    price: "From $3.50",
-    network: "Docomo",
+    price: `From ${priceFrom("esimgo")}`,
+    network: esimgo.network,
     badge: "Cheapest",
     badgeColor: "bg-green-500",
     bestFor: "Budget solo",
     pros: ["Cheapest overall", "Docomo network", "No device to carry"],
     cons: ["1 device only", "Requires eSIM-compatible phone", "Data-only"],
-    affiliateUrl: "https://breezesim.com?sca_ref=11082101.AF8vabyRKN",
+    affiliateUrl: esimgo.affiliateUrl,
     ctaText: "Get eSIM Go",
   },
 ];
