@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // NOTE: Revolut affiliate programme not yet approved — plain link for now.
 // TODO: replace with approved affiliate link once accepted.
@@ -69,7 +70,9 @@ const faqItems = [
   },
 ];
 
-export default function RevolutCardJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/revolut-card-japan") } });
+
+export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -110,7 +113,7 @@ export default function RevolutCardJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Revolut in Japan (2026): Fees, ATMs & Is It Worth It?",
-              dateModified: "2026-06-03",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -164,7 +167,7 @@ export default function RevolutCardJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💳</span> Updated June 2026
+            <span>💳</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Revolut in Japan (2026):<br />Fees, ATMs &amp; Is It Worth It?
@@ -173,7 +176,7 @@ export default function RevolutCardJapanPage() {
             A feature-packed travel card that&apos;s great value on weekdays — with one catch to watch at the weekend.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Plans Compared", "Weekend Fee Explained"].map((t) => (
+            {[`Updated ${updated.label}`, "Plans Compared", "Weekend Fee Explained"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

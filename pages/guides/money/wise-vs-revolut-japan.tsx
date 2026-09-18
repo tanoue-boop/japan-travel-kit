@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // NOTE: Wise/Revolut affiliate programmes not yet approved — these are plain links.
 // TODO: replace with approved affiliate links once accepted.
@@ -71,7 +72,9 @@ const faqItems = [
   },
 ];
 
-export default function WiseVsRevolutJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/wise-vs-revolut-japan") } });
+
+export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -112,7 +115,7 @@ export default function WiseVsRevolutJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Wise vs Revolut for Japan (2026): Which Travel Card Wins?",
-              dateModified: "2026-06-03",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -166,7 +169,7 @@ export default function WiseVsRevolutJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💳</span> Updated June 2026
+            <span>💳</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Wise vs Revolut for Japan (2026):<br />Which Travel Card Wins?
@@ -175,7 +178,7 @@ export default function WiseVsRevolutJapanPage() {
             Two of the best travel cards for Japan — but they win in different situations. Here&apos;s how to pick.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Fees & Rates Compared", "ATM Limits"].map((t) => (
+            {[`Updated ${updated.label}`, "Fees & Rates Compared", "ATM Limits"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

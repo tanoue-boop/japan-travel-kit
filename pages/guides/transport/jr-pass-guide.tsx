@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const passTypes = [
   { type: "Ordinary",          duration: "7 days",  price: "$275" },
@@ -108,7 +109,9 @@ const faqItems = [
   },
 ];
 
-export default function JrPassGuidePage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/jr-pass-guide") } });
+
+export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -147,7 +150,7 @@ export default function JrPassGuidePage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "JR Pass Guide 2026: Is It Worth It for Your Japan Trip?",
-              dateModified: "2026-04-24",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -187,7 +190,7 @@ export default function JrPassGuidePage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated April 2026
+            <span>🚄</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             JR Pass Guide 2026: Is It Worth It<br />for Your Japan Trip?
@@ -196,7 +199,7 @@ export default function JrPassGuidePage() {
             The JR Pass can save you hundreds of dollars — or cost you more than buying tickets individually. Here&apos;s how to decide.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "All Pass Types", "Cost Calculator"].map((t) => (
+            {[`Updated ${updated.label}`, "All Pass Types", "Cost Calculator"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

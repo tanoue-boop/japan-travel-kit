@@ -2,8 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/Guides.module.css";
 import { transportArticles as articles } from "../../../lib/guides-transport";
+import { articleDates } from "../../../lib/page-dates";
 
-export default function GuidesTransportPage() {
+export const getStaticProps = () => ({ props: { dates: articleDates(articles.map((a) => a.href)) } });
+
+export default function GuidesTransportPage({ dates }: { dates: Record<string, string> }) {
   return (
     <>
       <Head>
@@ -84,7 +87,7 @@ export default function GuidesTransportPage() {
                 <p className={styles.articleTitle}>{article.title}</p>
                 <p className={styles.articleDesc}>{article.desc}</p>
                 <div className={styles.articleFooter}>
-                  <span className={styles.articleDate}>Updated {article.date}</span>
+                  <span className={styles.articleDate}>Updated {dates[article.href]}</span>
                   <span className={styles.articleReadMore}>Read guide →</span>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // NOTE: Wise affiliate programme not yet approved — plain link for now.
 // TODO: replace with approved affiliate link once accepted.
@@ -71,7 +72,9 @@ const faqItems = [
   },
 ];
 
-export default function WiseCardJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/wise-card-japan") } });
+
+export default function WiseCardJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -112,7 +115,7 @@ export default function WiseCardJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Wise Card in Japan (2026): Fees, ATMs & How to Use It",
-              dateModified: "2026-06-03",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -166,7 +169,7 @@ export default function WiseCardJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💳</span> Updated June 2026
+            <span>💳</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Wise Card in Japan (2026):<br />Fees, ATMs &amp; How to Use It
@@ -175,7 +178,7 @@ export default function WiseCardJapanPage() {
             One of the cheapest ways to spend in Japan — if you know how to dodge DCC and ATM fees. Here&apos;s the full guide.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Mid-Market Rate", "7-Eleven ATM Tips"].map((t) => (
+            {[`Updated ${updated.label}`, "Mid-Market Rate", "7-Eleven ATM Tips"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

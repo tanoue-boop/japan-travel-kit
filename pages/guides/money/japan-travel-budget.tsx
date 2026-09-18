@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const budgetTable = [
   { category: "Accommodation", budget: "¥3,000", mid: "¥10,000", comfortable: "¥25,000" },
@@ -89,7 +90,9 @@ const faqItems = [
   },
 ];
 
-export default function JapanTravelBudgetPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/japan-travel-budget") } });
+
+export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -129,7 +132,7 @@ export default function JapanTravelBudgetPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Japan Travel Budget Guide (2026): How Much Does Japan Cost?",
-              dateModified: "2026-04-27",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -184,7 +187,7 @@ export default function JapanTravelBudgetPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💴</span> Updated April 2026
+            <span>💴</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Japan Travel Budget Guide (2026):<br />How Much Does Japan Cost?
@@ -194,7 +197,7 @@ export default function JapanTravelBudgetPage() {
             Here&apos;s a realistic daily budget breakdown.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "All Budget Levels", "2026 Prices"].map((t) => (
+            {[`Updated ${updated.label}`, "All Budget Levels", "2026 Prices"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

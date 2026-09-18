@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // Klook affiliate redirect — Tokyo Grand Sumo Tournament tour (Ryogoku Kokugikan), activity 1432.
 // Uses the account-level aid; add an aff_adid from the Klook affiliate dashboard for per-link tracking.
@@ -110,7 +111,9 @@ const faqItems = [
   },
 ];
 
-export default function SumoTokyoTicketsPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/sumo-tokyo-tickets") } });
+
+export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -150,7 +153,7 @@ export default function SumoTokyoTicketsPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Sumo in Tokyo (2026): Tournament Tickets vs Morning Practice",
-              dateModified: "2026-06-17",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -205,7 +208,7 @@ export default function SumoTokyoTicketsPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🥋</span> Updated June 2026
+            <span>🥋</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Sumo in Tokyo (2026):<br />Tournament Tickets vs Morning Practice
@@ -215,7 +218,7 @@ export default function SumoTokyoTicketsPage() {
             how to buy official tickets safely, and how to see a stable&apos;s morning practice the rest of the year.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Official Tickets Only", "Year-Round Option"].map((t) => (
+            {[`Updated ${updated.label}`, "Official Tickets Only", "Year-Round Option"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // CTA link — Klook affiliate redirect.
 const SHIBUYA_SKY_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299140&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F70672-shibuya-sky-tokyo%2F";
@@ -133,7 +134,9 @@ const faqItems = [
   },
 ];
 
-export default function ShibuyaSkyTicketsPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/shibuya-sky-tickets") } });
+
+export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -173,7 +176,7 @@ export default function ShibuyaSkyTicketsPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Shibuya Sky Tickets (2026): Price, Best Time & How to Book",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -228,7 +231,7 @@ export default function ShibuyaSkyTicketsPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🌇</span> Updated September 2026
+            <span>🌇</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Shibuya Sky Tickets (2026):<br />Price, Best Time &amp; How to Book
@@ -238,7 +241,7 @@ export default function ShibuyaSkyTicketsPage() {
             cost, when to go, and how to book the sunset slot before it sells out.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "Sunset Booking Tips", "vs Skytree & Tokyo Tower"].map((t) => (
+            {[`Updated ${updated.label}`, "Sunset Booking Tips", "vs Skytree & Tokyo Tower"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

@@ -5,6 +5,7 @@ import pageStyles from "../styles/SimCards.module.css";
 import cardStyles from "../styles/SIMCardCard.module.css";
 import guideStyles from "../styles/Guides.module.css";
 import { moneyArticles } from "../lib/guides-money";
+import { articleDates, pageUpdated, type PageUpdated } from "../lib/page-dates";
 
 const suica = {
   id: "suica-ic",
@@ -27,7 +28,11 @@ const suica = {
   ctaText: "Get Suica on Klook",
 };
 
-export default function MoneyPage() {
+export const getStaticProps = () => ({
+  props: { updated: pageUpdated("/money"), dates: articleDates(moneyArticles.map((a) => a.href)) },
+});
+
+export default function MoneyPage({ updated, dates }: { updated: PageUpdated; dates: Record<string, string> }) {
   return (
     <>
       <Head>
@@ -72,7 +77,7 @@ export default function MoneyPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Money & Payment in Japan (2026)",
-              dateModified: "2026-05-26",
+              dateModified: updated.iso,
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -99,7 +104,7 @@ export default function MoneyPage() {
         <div className={pageStyles.pageHeaderDots} />
         <div className={pageStyles.pageHeaderInner}>
           <p className={pageStyles.updated}>
-            <span>💴</span> Updated May 2026
+            <span>💴</span> Updated {updated.label}
           </p>
           <h1 className={pageStyles.pageTitle}>
             Money &amp; Payment<br />in Japan (2026)
@@ -203,7 +208,7 @@ export default function MoneyPage() {
                   <p className={guideStyles.articleTitle}>{article.title}</p>
                   <p className={guideStyles.articleDesc}>{article.desc}</p>
                   <div className={guideStyles.articleFooter}>
-                    <span className={guideStyles.articleDate}>Updated {article.date}</span>
+                    <span className={guideStyles.articleDate}>Updated {dates[article.href]}</span>
                     <span className={guideStyles.articleReadMore}>Read guide →</span>
                   </div>
                 </div>

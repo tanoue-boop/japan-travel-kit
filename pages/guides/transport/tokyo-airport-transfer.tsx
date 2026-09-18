@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const naritaOptions = [
   { option: "Narita Express (N'EX)",  time: "~60 min",    price: "¥3,070", bestFor: "Speed & comfort"         },
@@ -158,7 +159,9 @@ const faqItems = [
   },
 ];
 
-export default function TokyoAirportTransferPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/tokyo-airport-transfer") } });
+
+export default function TokyoAirportTransferPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -198,7 +201,7 @@ export default function TokyoAirportTransferPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -253,7 +256,7 @@ export default function TokyoAirportTransferPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>✈️</span> Updated September 2026
+            <span>✈️</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tokyo Airport Transfer Guide (2026):<br />Narita &amp; Haneda to the City
@@ -262,7 +265,7 @@ export default function TokyoAirportTransferPage() {
             Getting from the airport to central Tokyo is easy — once you know which option suits your budget and schedule.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "Narita & Haneda", "Skyliner vs N'EX vs Bus"].map((t) => (
+            {[`Updated ${updated.label}`, "Narita & Haneda", "Skyliner vs N'EX vs Bus"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

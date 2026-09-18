@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const attractionRoutes = [
   { dest: "Dotonbori",        from: "Namba",         line: "Walk",             time: "5 min",  price: "Free" },
@@ -119,7 +120,9 @@ const faqItems = [
   },
 ];
 
-export default function OsakaTransportationPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/osaka-transportation") } });
+
+export default function OsakaTransportationPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -159,7 +162,7 @@ export default function OsakaTransportationPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Getting Around Osaka (2026): Subway, Trains & IC Cards Explained",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -214,7 +217,7 @@ export default function OsakaTransportationPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚇</span> Updated September 2026
+            <span>🚇</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Osaka (2026):<br />Subway, Trains &amp; IC Cards Explained
@@ -223,7 +226,7 @@ export default function OsakaTransportationPage() {
             Osaka&apos;s subway system is one of the easiest in Japan to navigate. Here&apos;s everything you need to get around the city like a local.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "Subway & Trains", "Day Pass Comparison"].map((t) => (
+            {[`Updated ${updated.label}`, "Subway & Trains", "Day Pass Comparison"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

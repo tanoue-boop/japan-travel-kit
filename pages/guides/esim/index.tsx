@@ -2,26 +2,31 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/Guides.module.css";
 import { esimArticles as articles } from "../../../lib/guides-esim";
+import { articleDates, pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
-export default function GuidesEsimPage() {
+export const getStaticProps = () => ({
+  props: { updated: pageUpdated("/guides/esim"), dates: articleDates(articles.map((a) => a.href)) },
+});
+
+export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdated; dates: Record<string, string> }) {
   return (
     <>
       <Head>
         <title>Japan eSIM Guides 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated September 2026."
+          content={`Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated ${updated.label}.`}
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim" />
-        <meta property="og:description" content="Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated September 2026." />
+        <meta property="og:description" content={`Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated ${updated.label}.`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
-        <meta name="twitter:description" content="Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated September 2026." />
+        <meta name="twitter:description" content={`Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated ${updated.label}.`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -84,7 +89,7 @@ export default function GuidesEsimPage() {
                 <p className={styles.articleTitle}>{article.title}</p>
                 <p className={styles.articleDesc}>{article.desc}</p>
                 <div className={styles.articleFooter}>
-                  <span className={styles.articleDate}>Updated {article.date}</span>
+                  <span className={styles.articleDate}>Updated {dates[article.href]}</span>
                   <span className={styles.articleReadMore}>Read guide →</span>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const taxFreeStores = [
   { type: "Electronics", examples: "Yodobashi Camera, Bic Camera, Akihabara stores" },
@@ -99,7 +100,9 @@ const faqItems = [
   },
 ];
 
-export default function TaxFreeShoppingJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/tax-free-shopping-japan") } });
+
+export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -139,7 +142,7 @@ export default function TaxFreeShoppingJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Tax-Free Shopping in Japan (2026): How to Get Your Consumption Tax Back",
-              dateModified: "2026-05-02",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -194,7 +197,7 @@ export default function TaxFreeShoppingJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🛍️</span> Updated May 2026
+            <span>🛍️</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tax-Free Shopping in Japan (2026):<br />How to Get Your Consumption Tax Back
@@ -204,7 +207,7 @@ export default function TaxFreeShoppingJapanPage() {
             from electronics to clothing.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated May 2026", "Save Up to 10%", "All Tourists"].map((t) => (
+            {[`Updated ${updated.label}`, "Save Up to 10%", "All Tourists"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

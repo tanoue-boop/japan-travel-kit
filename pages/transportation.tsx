@@ -3,6 +3,7 @@ import Link from "next/link";
 import StarRating from "../components/StarRating";
 import pageStyles from "../styles/SimCards.module.css";
 import cardStyles from "../styles/SIMCardCard.module.css";
+import { pageUpdated, type PageUpdated } from "../lib/page-dates";
 
 type Item = {
   id: string;
@@ -107,7 +108,9 @@ const faqItems = [
   },
 ];
 
-export default function TransportationPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/transportation") } });
+
+export default function TransportationPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -160,7 +163,7 @@ export default function TransportationPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Japan Transportation Guide (2026): JR Pass, IC Cards & Airport Transfers",
-              dateModified: "2026-05-26",
+              dateModified: updated.iso,
               publisher: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -187,7 +190,7 @@ export default function TransportationPage() {
         <div className={pageStyles.pageHeaderDots} />
         <div className={pageStyles.pageHeaderInner}>
           <p className={pageStyles.updated}>
-            <span>🚄</span> Updated May 2026
+            <span>🚄</span> Updated {updated.label}
           </p>
           <h1 className={pageStyles.pageTitle}>
             Japan Transportation<br />Guide (2026)

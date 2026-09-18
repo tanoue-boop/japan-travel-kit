@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { esimProviders, priceFromLabel, unlimitedFromLabel, type EsimProviderId } from "../../../lib/esim-prices";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // Prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => esimProviders.find((p) => p.id === id)?.affiliateUrl ?? "#";
@@ -304,7 +305,9 @@ const faqItems = [
   },
 ];
 
-export default function HowToSetUpEsimJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/how-to-set-up-esim-japan") } });
+
+export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -343,7 +346,7 @@ export default function HowToSetUpEsimJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -383,7 +386,7 @@ export default function HowToSetUpEsimJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated September 2026
+            <span>📱</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             How to Set Up an eSIM in Japan<br />(Step-by-Step)
@@ -392,7 +395,7 @@ export default function HowToSetUpEsimJapanPage() {
             Takes under 5 minutes. Do it before you fly and you&apos;ll have 4G the moment your plane lands.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "iPhone, Android & Tablets", "Troubleshooting Included"].map((t) => (
+            {[`Updated ${updated.label}`, "iPhone, Android & Tablets", "Troubleshooting Included"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

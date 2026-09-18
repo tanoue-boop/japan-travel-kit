@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const comparison = [
   { feature: "Issued by",       suica: "JR East",              pasmo: "Tokyo Metro & private rails"  },
@@ -101,7 +102,9 @@ const faqItems = [
   },
 ];
 
-export default function IcCardsJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/ic-cards-japan") } });
+
+export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -140,7 +143,7 @@ export default function IcCardsJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "IC Cards in Japan 2026: Suica, Pasmo & How to Use Them",
-              dateModified: "2026-04-24",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -180,7 +183,7 @@ export default function IcCardsJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚇</span> Updated April 2026
+            <span>🚇</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             IC Cards in Japan 2026:<br />Suica, Pasmo &amp; How to Use Them
@@ -189,7 +192,7 @@ export default function IcCardsJapanPage() {
             An IC card is the single most useful thing you can have in Japan. Here&apos;s everything you need to know.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "All IC Cards", "Beginner Friendly"].map((t) => (
+            {[`Updated ${updated.label}`, "All IC Cards", "Beginner Friendly"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

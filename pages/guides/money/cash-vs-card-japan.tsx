@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { siteCheapestFrom } from "../../../lib/esim-prices";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const placeRows = [
   { place: "Convenience stores (7-Eleven, FamilyMart, Lawson)", cash: "✓", card: "✓" },
@@ -121,7 +122,9 @@ const faqItems = [
   },
 ];
 
-export default function CashVsCardJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/cash-vs-card-japan") } });
+
+export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -160,7 +163,7 @@ export default function CashVsCardJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Cash vs Card in Japan (2026): What Actually Works?",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -200,7 +203,7 @@ export default function CashVsCardJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💴</span> Updated September 2026
+            <span>💴</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Cash vs Card in Japan (2026):<br />What Actually Works?
@@ -211,7 +214,7 @@ export default function CashVsCardJapanPage() {
             Here&apos;s exactly where to use each, and how to avoid paying unnecessary fees.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "All Major Payment Types", "Contactless & Tipping Covered"].map((t) => (
+            {[`Updated ${updated.label}`, "All Major Payment Types", "Contactless & Tipping Covered"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

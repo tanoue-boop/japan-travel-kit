@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // CTA / provider links — normal (non-affiliate) links for now.
 // TODO: replace with approved affiliate link
@@ -143,7 +144,9 @@ const faqItems = [
   },
 ];
 
-export default function BestTravelInsuranceJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/best-travel-insurance-japan") } });
+
+export default function BestTravelInsuranceJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -183,7 +186,7 @@ export default function BestTravelInsuranceJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Best Travel Insurance for Japan (2026): Compared & Reviewed",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -238,7 +241,7 @@ export default function BestTravelInsuranceJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🛡️</span> Updated September 2026
+            <span>🛡️</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Best Travel Insurance for Japan (2026):<br />Compared &amp; Reviewed
@@ -248,7 +251,7 @@ export default function BestTravelInsuranceJapanPage() {
             support, ski cover, and how they pay out. Here are our picks for every type of trip.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "Heymondo · SafetyWing · World Nomads", "By Trip Type"].map((t) => (
+            {[`Updated ${updated.label}`, "Heymondo · SafetyWing · World Nomads", "By Trip Type"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

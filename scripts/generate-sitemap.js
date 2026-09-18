@@ -1,20 +1,21 @@
 /**
- * Generates public/sitemap.xml at build time (runs via `prebuild`).
+ * Generates public/sitemap.xml and data/page-dates.json at build time (runs via `prebuild`).
  *
  * - Walks pages/ for every routable .tsx page (skips _app, _document, api/, 404/500).
- * - lastmod = date of the last git commit that touched the page file
- *   (falls back to the build date if git history is unavailable, e.g. shallow clones).
+ * - lastmod = date of the last git commit that touched the page file, resolved by
+ *   lib/page-dates.js (which also feeds the "Updated" badges and JSON-LD dateModified
+ *   in pages, so all three stay in sync). See that module for the shallow-clone fallback.
+ * - data/page-dates.json is the committed snapshot of those dates, used when the
+ *   build environment has no full git history.
  * - Any URL that has been 301-redirected in lib/redirects.js is excluded.
  */
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
 const { removedGuides } = require("../lib/redirects");
+const { BUILD_DATE, PAGES_DIR, fileToRoute, writeSnapshot } = require("../lib/page-dates");
 
 const SITE = "https://www.japan-travel-kit.com";
-const PAGES_DIR = path.join(__dirname, "..", "pages");
 const OUT = path.join(__dirname, "..", "public", "sitemap.xml");
-const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
 function walk(dir) {
   const out = [];
@@ -30,24 +31,6 @@ function walk(dir) {
   return out;
 }
 
-function toRoute(file) {
-  let rel = path.relative(PAGES_DIR, file).replace(/\\/g, "/").replace(/\.tsx$/, "");
-  if (rel.endsWith("/index")) rel = rel.slice(0, -"/index".length);
-  if (rel === "index") rel = "";
-  return "/" + rel;
-}
-
-function gitLastMod(file) {
-  try {
-    const iso = execSync(`git log -1 --format=%cI -- "${file}"`, { stdio: ["ignore", "pipe", "ignore"] })
-      .toString()
-      .trim();
-    return iso ? iso.slice(0, 10) : BUILD_DATE;
-  } catch {
-    return BUILD_DATE;
-  }
-}
-
 function meta(route) {
   if (route === "/") return { changefreq: "monthly", priority: "1.0" };
   if (["/sim-cards", "/guides"].includes(route)) return { changefreq: "monthly", priority: "0.9" };
@@ -59,17 +42,19 @@ function meta(route) {
 
 const routes = walk(PAGES_DIR)
   .filter((f) => !/[\\/]_(app|document)\.tsx$/.test(f) && !/[\\/](404|500)\.tsx$/.test(f))
-  .map((f) => ({ file: f, route: toRoute(f) }))
-  .filter(({ route }) => !(route in removedGuides))
-  .sort((a, b) => a.route.localeCompare(b.route));
+  .map(fileToRoute)
+  .filter((route) => !(route in removedGuides))
+  .sort((a, b) => a.localeCompare(b));
 
-const urls = routes.map(({ file, route }) => {
+const lastmod = writeSnapshot(routes);
+
+const urls = routes.map((route) => {
   const { changefreq, priority } = meta(route);
   const loc = route === "/" ? `${SITE}/` : `${SITE}${route}`;
   return [
     "  <url>",
     `    <loc>${loc}</loc>`,
-    `    <lastmod>${gitLastMod(file)}</lastmod>`,
+    `    <lastmod>${lastmod[route]}</lastmod>`,
     `    <changefreq>${changefreq}</changefreq>`,
     `    <priority>${priority}</priority>`,
     "  </url>",
@@ -86,4 +71,4 @@ const xml = [
 ].join("\n");
 
 fs.writeFileSync(OUT, xml, "utf8");
-console.log(`sitemap: ${routes.length} URLs written to ${path.relative(process.cwd(), OUT)}`);
+console.log(`sitemap: ${routes.length} URLs written to ${path.relative(process.cwd(), OUT)}; dates snapshot in data/page-dates.json`);

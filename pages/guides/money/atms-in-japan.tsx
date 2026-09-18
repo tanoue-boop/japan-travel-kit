@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const atmComparison = [
   {
@@ -116,7 +117,9 @@ const tips = [
   "Rural Japan has fewer ATMs — stock up on cash in cities before heading to rural areas, mountain towns, or smaller islands. Convenience store coverage drops significantly outside urban centres.",
 ];
 
-export default function AtmsInJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/atms-in-japan") } });
+
+export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -156,7 +159,7 @@ export default function AtmsInJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "ATMs in Japan (2026): Where to Find Them & How to Use Them",
-              dateModified: "2026-04-26",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -211,7 +214,7 @@ export default function AtmsInJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🏧</span> Updated April 2026
+            <span>🏧</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             ATMs in Japan (2026):<br />Where to Find Them &amp; How to Use Them
@@ -221,7 +224,7 @@ export default function AtmsInJapanPage() {
             how to avoid fees, and exactly what to do at the machine.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "7-Eleven & Japan Post", "Fee Guide Included"].map((t) => (
+            {[`Updated ${updated.label}`, "7-Eleven & Japan Post", "Fee Guide Included"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

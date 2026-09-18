@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const transportOptions = [
   { mode: "City Bus",   bestFor: "Temples, Gion, Fushimi Inari",    fare: "¥230 / ride",       icCard: "✓" },
@@ -155,7 +156,9 @@ const faqItems = [
   },
 ];
 
-export default function KyotoTransportationPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/kyoto-transportation") } });
+
+export default function KyotoTransportationPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -195,7 +198,7 @@ export default function KyotoTransportationPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Getting Around Kyoto (2026): Buses, Trains & Taxis Explained",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -250,7 +253,7 @@ export default function KyotoTransportationPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚌</span> Updated September 2026
+            <span>🚌</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Kyoto (2026):<br />Buses, Trains &amp; Taxis Explained
@@ -259,7 +262,7 @@ export default function KyotoTransportationPage() {
             Kyoto&apos;s city bus and subway cover nearly every major sight. Here&apos;s how to get around efficiently — without wasting time or money.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "All Transport Options", "Day Pass Break-Even"].map((t) => (
+            {[`Updated ${updated.label}`, "All Transport Options", "Day Pass Break-Even"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

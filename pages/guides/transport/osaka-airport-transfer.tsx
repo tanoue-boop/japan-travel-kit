@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const kixOptions = [
   { option: "Haruka Limited Express", time: "50–75 min",  price: "¥3,060",  bestFor: "Speed & JR Pass users"   },
@@ -118,7 +119,9 @@ const faqItems = [
   },
 ];
 
-export default function OsakaAirportTransferPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/osaka-airport-transfer") } });
+
+export default function OsakaAirportTransferPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -174,7 +177,7 @@ export default function OsakaAirportTransferPage() {
               "@type": "Article",
               headline: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",
               datePublished: "2026-04-28",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -214,7 +217,7 @@ export default function OsakaAirportTransferPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚆</span> Updated September 2026
+            <span>🚆</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Osaka Airport Transfer Guide (2026):<br />KIX &amp; ITM to the City
@@ -223,7 +226,7 @@ export default function OsakaAirportTransferPage() {
             Osaka has two airports — Kansai International and Itami. Here&apos;s the fastest and cheapest way to get into the city from each.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "KIX & ITM", "Haruka vs Rapi:t"].map((t) => (
+            {[`Updated ${updated.label}`, "KIX & ITM", "Haruka vs Rapi:t"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

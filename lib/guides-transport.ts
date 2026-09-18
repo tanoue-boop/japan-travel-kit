@@ -3,7 +3,6 @@ export type TransportArticle = {
   badge: string;
   title: string;
   desc: string;
-  date: string;
 };
 
 export const transportArticles: TransportArticle[] = [
@@ -12,69 +11,59 @@ export const transportArticles: TransportArticle[] = [
     badge: "Comparison",
     title: "Is the JR Pass Worth It in 2026? Honest Cost Breakdown",
     desc: "Since the 2023 hike to ¥50,000, the JR Pass no longer pays off for most itineraries. We show the break-even math, who should still buy it, and cheaper alternatives.",
-    date: "June 2026",
   },
   {
     href: "/guides/transport/tokyo-to-kyoto",
     badge: "Guide",
     title: "Tokyo to Kyoto (2026): Cheapest & Fastest Ways to Get There",
     desc: "The Shinkansen is fast but not always the cheapest. We compare the bullet train, highway bus, local trains, and rental car on price, speed, and comfort — with 2026 fares.",
-    date: "June 2026",
   },
   {
     href: "/guides/transport/jr-pass-guide",
     badge: "Guide",
     title: "JR Pass Guide 2026: Is It Worth It for Your Japan Trip?",
     desc: "The JR Pass can save you hundreds of dollars — or cost you more than buying individual tickets. We break down all pass types, prices, and real itinerary costs to help you decide.",
-    date: "April 2026",
   },
   {
     href: "/guides/transport/ic-cards-japan",
     badge: "Guide",
     title: "IC Cards in Japan 2026: Suica, Pasmo & How to Use Them",
     desc: "An IC card is the single most useful thing you can have in Japan. Here's everything you need to know about Suica, Pasmo, where to get them, and where they work.",
-    date: "April 2026",
   },
   {
     href: "/guides/transport/shinkansen-guide",
     badge: "Guide",
     title: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers",
     desc: "Japan's bullet train is fast, punctual, and easy to use — once you know how. We cover ticket types, prices, JR Pass tips, and how to book before you board.",
-    date: "April 2026",
   },
   {
     href: "/guides/transport/tokyo-airport-transfer",
     badge: "Guide",
     title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",
     desc: "N'EX, Skyliner, limousine bus, or taxi? We compare every way to get from Narita or Haneda airport to central Tokyo — with a Skyliner vs N'EX head-to-head and when the bus wins.",
-    date: "September 2026",
   },
   {
     href: "/guides/transport/osaka-airport-transfer",
     badge: "Guide",
     title: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",
     desc: "Osaka has two airports — Kansai International and Itami. We compare every way to get into the city from each, with a Haruka vs Nankai Rapi:t head-to-head.",
-    date: "September 2026",
   },
   {
     href: "/guides/transport/kyoto-transportation",
     badge: "Guide",
     title: "Getting Around Kyoto (2026): Buses, Trains & Taxis Explained",
     desc: "Kyoto's city bus and subway cover nearly every major sight. We explain how each option works, which IC card to use, when the Subway & Bus day pass pays off, and how to arrive from Tokyo or Kansai Airport.",
-    date: "September 2026",
   },
   {
     href: "/guides/transport/tokyo-transportation",
     badge: "Guide",
     title: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained",
     desc: "Tokyo has the world's most complex train network — but once you know the basics, it's easy. We cover the Yamanote Line, Tokyo Metro, IC cards, the Tokyo Subway Ticket, and key routes for every tourist destination.",
-    date: "September 2026",
   },
   {
     href: "/guides/transport/osaka-transportation",
     badge: "Guide",
     title: "Getting Around Osaka (2026): Subway, Trains & IC Cards Explained",
     desc: "Osaka's subway system is one of the easiest in Japan to navigate. We cover the Midosuji Line, the Enjoy Eco Card vs Osaka Metro Pass, IC cards, and key routes to top attractions.",
-    date: "September 2026",
   },
 ];

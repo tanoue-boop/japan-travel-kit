@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const whatToLookFor = [
   {
@@ -144,7 +145,9 @@ const faqItems = [
   },
 ];
 
-export default function BestTravelCardJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/best-travel-card-japan") } });
+
+export default function BestTravelCardJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -184,7 +187,7 @@ export default function BestTravelCardJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Best Travel Card for Japan (2026): Top Picks for Foreign Visitors",
-              dateModified: "2026-04-26",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -239,7 +242,7 @@ export default function BestTravelCardJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💳</span> Updated April 2026
+            <span>💳</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Best Travel Card for Japan (2026):<br />Top Picks for Foreign Visitors
@@ -249,7 +252,7 @@ export default function BestTravelCardJapanPage() {
             exchange rates and ATM fees. We compared the top options for US, UK, and international travellers.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "Wise & Revolut Compared", "ATM Tips Included"].map((t) => (
+            {[`Updated ${updated.label}`, "Wise & Revolut Compared", "ATM Tips Included"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

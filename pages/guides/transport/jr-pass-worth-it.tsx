@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import JrPassCalculator from "../../../components/JrPassCalculator";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const itineraries = [
   { route: "Tokyo only", fares: "~¥0 intercity JR", verdict: "Skip", win: false },
@@ -71,7 +72,9 @@ const faqItems = [
   },
 ];
 
-export default function JrPassWorthItPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/jr-pass-worth-it") } });
+
+export default function JrPassWorthItPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -111,7 +114,7 @@ export default function JrPassWorthItPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Is the JR Pass Worth It in 2026? Honest Cost Breakdown",
-              dateModified: "2026-09-18",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -166,7 +169,7 @@ export default function JrPassWorthItPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated September 2026
+            <span>🚄</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Is the JR Pass Worth It in 2026?<br />Honest Cost Breakdown

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // CTA / provider links — normal (non-affiliate) links for now.
 // TODO: replace with approved affiliate link
@@ -56,7 +57,9 @@ const faqItems = [
   },
 ];
 
-export default function SafetyWingVsHeymondoJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/safetywing-vs-heymondo-japan") } });
+
+export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -96,7 +99,7 @@ export default function SafetyWingVsHeymondoJapanPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "SafetyWing vs Heymondo for Japan (2026): Which Should You Pick?",
-              dateModified: "2026-06-03",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -151,7 +154,7 @@ export default function SafetyWingVsHeymondoJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🛡️</span> Updated June 2026
+            <span>🛡️</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             SafetyWing vs Heymondo for Japan (2026):<br />Which Should You Pick?
@@ -161,7 +164,7 @@ export default function SafetyWingVsHeymondoJapanPage() {
             support. We break down which wins for your Japan trip — and why.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Subscription vs Trip Cover", "Head-to-Head"].map((t) => (
+            {[`Updated ${updated.label}`, "Subscription vs Trip Cover", "Head-to-Head"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

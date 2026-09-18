@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const DISNEY_TICKET_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304885&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F695-tokyo-disney-resort-1-day-pass-tokyo%2F";
 
@@ -113,7 +114,9 @@ const faqItems = [
   },
 ];
 
-export default function TokyoDisneyTicketsPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-disney-tickets") } });
+
+export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -153,7 +156,7 @@ export default function TokyoDisneyTicketsPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy",
-              dateModified: "2026-06-15",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -208,7 +211,7 @@ export default function TokyoDisneyTicketsPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🏰</span> Updated June 2026
+            <span>🏰</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tokyo Disney Tickets (2026):<br />Disneyland &amp; DisneySea — How to Buy
@@ -218,7 +221,7 @@ export default function TokyoDisneyTicketsPage() {
             foreign cards. Here&apos;s how to buy, and how to choose between the two parks.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Date-Specified Tickets", "Foreign Cards OK via Klook"].map((t) => (
+            {[`Updated ${updated.label}`, "Date-Specified Tickets", "Foreign Cards OK via Klook"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

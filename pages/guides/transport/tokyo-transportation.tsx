@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const keyRoutes = [
   { from: "Shinjuku", to: "Shibuya",    line: "Yamanote Line",  time: "5 min",  price: "¥160" },
@@ -120,7 +121,9 @@ const faqItems = [
   },
 ];
 
-export default function TokyoTransportationPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/tokyo-transportation") } });
+
+export default function TokyoTransportationPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -160,7 +163,7 @@ export default function TokyoTransportationPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained",
-              dateModified: "2026-09-16",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -215,7 +218,7 @@ export default function TokyoTransportationPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚆</span> Updated September 2026
+            <span>🚆</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Tokyo (2026):<br />Trains, Subway &amp; IC Cards Explained
@@ -224,7 +227,7 @@ export default function TokyoTransportationPage() {
             Tokyo has the world&apos;s most complex train network — but once you know the basics, it&apos;s surprisingly easy to navigate.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated September 2026", "All Train Lines", "Subway Ticket Included"].map((t) => (
+            {[`Updated ${updated.label}`, "All Train Lines", "Subway Ticket Included"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

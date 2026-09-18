@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import FxFeeComparison from "../../../components/FxFeeComparison";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const bestWays = [
   {
@@ -97,7 +98,9 @@ const faqItems = [
   },
 ];
 
-export default function CurrencyExchangeJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/currency-exchange-japan") } });
+
+export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -153,7 +156,7 @@ export default function CurrencyExchangeJapanPage() {
               "@type": "Article",
               headline: "Currency Exchange in Japan (2026): Best Ways to Get Yen",
               datePublished: "2026-04-28",
-              dateModified: "2026-09-18",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -193,7 +196,7 @@ export default function CurrencyExchangeJapanPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💴</span> Updated September 2026
+            <span>💴</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Currency Exchange in Japan (2026):<br />Best Ways to Get Yen

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const shinkansenLines = [
   { line: "Tokaido", route: "Tokyo – Osaka", speed: "285 km/h" },
@@ -116,7 +117,9 @@ const faqItems = [
   },
 ];
 
-export default function ShinkansenGuidePage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/shinkansen-guide") } });
+
+export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -156,7 +159,7 @@ export default function ShinkansenGuidePage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers",
-              dateModified: "2026-04-26",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -211,7 +214,7 @@ export default function ShinkansenGuidePage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated April 2026
+            <span>🚄</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Shinkansen Guide 2026:<br />Tickets, Passes &amp; Tips for First-Timers
@@ -221,7 +224,7 @@ export default function ShinkansenGuidePage() {
             once you know how. Here&apos;s everything you need before you board.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated April 2026", "All Shinkansen Lines", "Beginner Friendly"].map((t) => (
+            {[`Updated ${updated.label}`, "All Shinkansen Lines", "Beginner Friendly"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

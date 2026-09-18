@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const optionsTable = [
   { option: "Nozomi Shinkansen", time: "2h 15min",   price: "¥14,720",       best: "Speed" },
@@ -33,7 +34,9 @@ const faqItems = [
   },
 ];
 
-export default function TokyoToKyotoPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/tokyo-to-kyoto") } });
+
+export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) {
   const metaTitle = "Tokyo to Kyoto 2026: Cheapest & Fastest Ways | Japan Travel Kit";
   const metaDescription =
     "How to get from Tokyo to Kyoto in 2026. We compare the Shinkansen, highway bus, and local trains on price, speed, and comfort — with 2026 fares.";
@@ -76,7 +79,7 @@ export default function TokyoToKyotoPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "Tokyo to Kyoto (2026): Cheapest & Fastest Ways to Get There",
-              dateModified: "2026-06-02",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -130,7 +133,7 @@ export default function TokyoToKyotoPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated June 2026
+            <span>🚄</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tokyo to Kyoto (2026):<br />Cheapest &amp; Fastest Ways to Get There
@@ -141,7 +144,7 @@ export default function TokyoToKyotoPage() {
             so you can choose what suits your trip.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "All Options", "2026 Prices"].map((t) => (
+            {[`Updated ${updated.label}`, "All Options", "2026 Prices"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

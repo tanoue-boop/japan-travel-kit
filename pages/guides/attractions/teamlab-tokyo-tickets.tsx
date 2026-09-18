@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // CTA links — Klook affiliate redirects.
 const PLANETS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299131&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F25300-teamlab-planets-toyosu-tokyo-ticket%2F";
@@ -93,7 +94,9 @@ const faqItems = [
   },
 ];
 
-export default function TeamLabTokyoTicketsPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/teamlab-tokyo-tickets") } });
+
+export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -133,7 +136,7 @@ export default function TeamLabTokyoTicketsPage() {
               "@context": "https://schema.org",
               "@type": "Article",
               headline: "teamLab Tokyo Tickets (2026): Planets vs Borderless & How to Book",
-              dateModified: "2026-06-08",
+              dateModified: updated.iso,
               author: {
                 "@type": "Organization",
                 name: "Japan Travel Kit",
@@ -188,7 +191,7 @@ export default function TeamLabTokyoTicketsPage() {
         <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🎟️</span> Updated June 2026
+            <span>🎟️</span> Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             teamLab Tokyo Tickets (2026):<br />Planets vs Borderless &amp; How to Book
@@ -198,7 +201,7 @@ export default function TeamLabTokyoTicketsPage() {
             your trip — and how to lock in a timed slot before it sells out.
           </p>
           <div className={styles.heroBadges}>
-            {["Updated June 2026", "Planets vs Borderless", "Booking Tips"].map((t) => (
+            {[`Updated ${updated.label}`, "Planets vs Borderless", "Booking Tips"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
