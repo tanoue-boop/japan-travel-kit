@@ -1,6 +1,6 @@
 {
   "currency": "USD",
-  "generatedAt": "2026-09-25T08:55:19.132Z",
+  "generatedAt": "2026-09-26T08:41:28.881Z",
   "providers": {
     "airalo": {
       "name": "Airalo",
@@ -8,7 +8,7 @@
       "network": "SoftBank / KDDI (5G)",
       "sourceUrl": "https://www.airalo.com/japan-esim",
       "affiliateUrl": "https://airalo.pxf.io/c/7213504/1268485/15608",
-      "fetchedAt": "2026-09-25T08:55:19.132Z",
+      "fetchedAt": "2026-09-26T08:41:28.881Z",
       "updatedAt": "2026-09-18T01:19:25.371Z",
       "plans": [
         {
@@ -161,7 +161,7 @@
       "network": "SoftBank / KDDI (5G)",
       "sourceUrl": "https://esim.holafly.com/esim-japan/",
       "affiliateUrl": "#",
-      "fetchedAt": "2026-09-25T08:55:19.132Z",
+      "fetchedAt": "2026-09-26T08:41:28.881Z",
       "updatedAt": "2026-09-18T01:19:25.371Z",
       "plans": [
         {
@@ -226,7 +226,7 @@
       "network": "Docomo / SoftBank",
       "sourceUrl": "https://breezesim.com/products/esim-japan",
       "affiliateUrl": "https://breezesim.com?sca_ref=11082101.AF8vabyRKN",
-      "fetchedAt": "2026-09-25T08:55:19.132Z",
+      "fetchedAt": "2026-09-26T08:41:28.881Z",
       "updatedAt": "2026-09-18T01:20:13.959Z",
       "plans": [
         {
@@ -355,7 +355,7 @@
       "network": "au/KDDI (Unlimited) or Docomo (3 GB/day)",
       "sourceUrl": "https://www.sakuramobile.jp/travel/esim/",
       "affiliateUrl": "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
-      "fetchedAt": "2026-09-25T08:55:19.132Z",
+      "fetchedAt": "2026-09-26T08:41:28.881Z",
       "updatedAt": "2026-09-18T01:33:09.373Z",
       "plans": [
         {
