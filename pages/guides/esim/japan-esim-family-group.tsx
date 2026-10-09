@@ -541,6 +541,18 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            <Link href="/guides/esim/japan-esim-2-weeks" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                  <path d="M15 2v4a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V2" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best Japan eSIM for 2 Weeks (2026): Plans That Last the Trip</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
           </div>
         </section>
 

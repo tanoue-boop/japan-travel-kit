@@ -485,6 +485,30 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            <Link href="/guides/money/best-travel-insurance-japan" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="1" y="6" width="22" height="13" rx="2" />
+                  <circle cx="12" cy="12.5" r="2.5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best Travel Insurance for Japan (2026): Compared &amp; Reviewed</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/money/safetywing-vs-heymondo-japan" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="1" y="6" width="22" height="13" rx="2" />
+                  <circle cx="12" cy="12.5" r="2.5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>SafetyWing vs Heymondo for Japan (2026): Which Should You Pick?</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
           </div>
         </section>
       </div>

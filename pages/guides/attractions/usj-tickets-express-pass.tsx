@@ -454,6 +454,30 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            <Link href="/guides/attractions/tokyo-disney-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4z" />
+                  <path d="M13 6v2M13 11v2M13 16v2" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Disney Tickets (2026): Disneyland &amp; DisneySea — How to Buy</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/transport/osaka-metro-pass" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="3" width="16" height="16" rx="2" />
+                  <path d="M4 11h16M8 19l-1 2M16 19l1 2" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Osaka Metro Pass vs Enjoy Eco Card (2026): Which Should Tourists Buy?</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
           </div>
         </section>
 

@@ -5,15 +5,8 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/jr-pass-guide",
     badge: "Guide",
-    title: "JR Pass Guide 2026: Is It Worth It for Your Japan Trip?",
-    desc: "The JR Pass can save you hundreds of dollars — or cost you more than buying individual tickets. We break down all pass types, prices, and real itinerary costs to help you decide.",
-    group: "passes",
-  },
-  {
-    href: "/guides/transport/jr-pass-worth-it",
-    badge: "Comparison",
-    title: "Is the JR Pass Worth It in 2026? Honest Cost Breakdown",
-    desc: "Since the 2023 hike to ¥50,000, the JR Pass no longer pays off for most itineraries. We show the break-even math, who should still buy it, and cheaper alternatives.",
+    title: "JR Pass Guide 2026: Prices, Is It Worth It and How to Buy",
+    desc: "All pass types and prices, a break-even calculator for your own route, and how to buy and redeem the pass — plus the itineraries where individual tickets cost less.",
     group: "passes",
   },
   {

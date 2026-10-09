@@ -425,6 +425,18 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
                 <span className={styles.relatedArrow}>View comparison →</span>
               </div>
             </Link>
+            <Link href="/guides/transport/kyoto-subway-bus-pass" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="3" width="16" height="16" rx="2" />
+                  <path d="M4 11h16M8 19l-1 2M16 19l1 2" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Is the Kyoto Subway &amp; Bus 1-Day Pass Worth It? (2026)</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
           </div>
         </section>
 

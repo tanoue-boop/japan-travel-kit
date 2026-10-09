@@ -9,6 +9,8 @@
  *   build environment has no full git history.
  * - Any URL that has been 301-redirected in lib/redirects.js is excluded (both the merged
  *   guides and the retired top-level landing pages).
+ * - Pages that set robots=noindex are excluded too. /disclaimer and /privacy-policy were
+ *   listed here until 2026-10-09 despite being noindex, which is a contradictory signal.
  */
 const fs = require("fs");
 const path = require("path");
@@ -40,8 +42,14 @@ function meta(route) {
   return { changefreq: "monthly", priority: "0.8" }; // guide hubs + articles
 }
 
+/** True when the page declares <meta name="robots" content="noindex..."> */
+function isNoindex(file) {
+  return /content=\{?"noindex/.test(fs.readFileSync(file, "utf8"));
+}
+
 const routes = walk(PAGES_DIR)
   .filter((f) => !/[\\/]_(app|document)\.tsx$/.test(f) && !/[\\/](404|500)\.tsx$/.test(f))
+  .filter((f) => !isNoindex(f))
   .map(fileToRoute)
   .filter((route) => !(route in allRedirects))
   .sort((a, b) => a.localeCompare(b));
