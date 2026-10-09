@@ -5,21 +5,17 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import styles from "../styles/Header.module.css";
 
-// Content guide hubs (surfaced via the Guides dropdown)
-const guideHubs = [
-  { href: "/guides",             label: "All Guides",   iconSrc: "/icons/icon-guide.svg",       iconAlt: "All Guides icon" },
-  { href: "/guides/esim",        label: "eSIM",         iconSrc: "/icons/icon-sim.svg",         iconAlt: "eSIM guides icon" },
-  { href: "/guides/transport",   label: "Transport",    iconSrc: "/icons/icon-transport.svg",   iconAlt: "Transport guides icon" },
-  { href: "/guides/money",       label: "Money",        iconSrc: "/icons/icon-money.svg",       iconAlt: "Money guides icon" },
-  { href: "/guides/attractions", label: "Things to Do", iconSrc: "/icons/icon-attractions.svg", iconAlt: "Things to Do icon" },
-];
-
-// Buying guides, promoted alongside the hubs because they are where visitors convert.
-// These were the /sim-cards and /wifi-pocket landing pages until 2026-10-09; the Transport
-// and Money entries went with them, since those now point at hubs already in the dropdown.
-const commercialLinks = [
-  { href: "/guides/esim/best-esim-japan",           label: "Best eSIM",   iconSrc: "/icons/icon-sim.svg",  iconAlt: "Best eSIM icon" },
-  { href: "/guides/esim/pocket-wifi-vs-esim-japan", label: "Pocket WiFi", iconSrc: "/icons/icon-wifi.svg", iconAlt: "Pocket WiFi icon" },
+// One menu, one destination each. Until 2026-10-09 the header carried a Guides dropdown of
+// the five hubs *and* a second row of /sim-cards, /wifi-pocket, /transport and /money links;
+// the October crawl showed those resolved to the same hubs, so visitors and crawlers saw
+// every category twice. The hubs are now the only category entry point — individual buying
+// guides are reached from the hubs and the "Get Connected" CTA.
+const navItems = [
+  { href: "/guides/esim",        label: "eSIM & SIM",    iconSrc: "/icons/icon-sim.svg",         iconAlt: "eSIM guides icon" },
+  { href: "/guides/transport",   label: "Getting Around", iconSrc: "/icons/icon-transport.svg",   iconAlt: "Transport guides icon" },
+  { href: "/guides/money",       label: "Money",          iconSrc: "/icons/icon-money.svg",       iconAlt: "Money guides icon" },
+  { href: "/guides/attractions", label: "Things to Do",   iconSrc: "/icons/icon-attractions.svg", iconAlt: "Things to Do icon" },
+  { href: "/guides",             label: "All Guides",     iconSrc: "/icons/icon-guide.svg",       iconAlt: "All Guides icon" },
 ];
 
 export default function Header() {
@@ -42,30 +38,11 @@ export default function Header() {
           <span className={styles.logoText}>Japan <em>Travel Kit</em></span>
         </Link>
 
+        {/* Text-only on desktop so all five fit beside the logo and the CTA. */}
         <nav className={styles.nav}>
-          {/* Guides dropdown → 5 content hubs */}
-          <div className={styles.dropdown}>
-            <button type="button" className={`${styles.navLink} ${styles.dropdownTrigger}`} aria-haspopup="true">
-              <Image src="/icons/icon-guide.svg" width={20} height={20} alt="Guides icon" unoptimized />
-              Guides
-              <svg className={styles.dropChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div className={styles.dropdownPanel}>
-              {guideHubs.map((h) => (
-                <Link key={h.href} href={h.href} className={styles.dropdownLink}>
-                  <Image src={h.iconSrc} width={18} height={18} alt={h.iconAlt} unoptimized />
-                  {h.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {commercialLinks.map((l) => (
-            <Link key={l.href} href={l.href} className={styles.navLink}>
-              <Image src={l.iconSrc} width={20} height={20} alt={l.iconAlt} unoptimized />
-              {l.label}
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href} className={styles.navLink}>
+              {item.label}
             </Link>
           ))}
         </nav>
@@ -87,21 +64,12 @@ export default function Header() {
 
       <nav className={`${styles.mobileNav}${open ? ` ${styles.open}` : ""}`}>
         <p className={styles.mobileLabel}>Guides</p>
-        {guideHubs.map((h) => (
-          <Link key={h.href} href={h.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
+        {navItems.map((item) => (
+          <Link key={item.href} href={item.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
             <span className={styles.mobileIcon}>
-              <Image src={h.iconSrc} width={20} height={20} alt={h.iconAlt} unoptimized />
+              <Image src={item.iconSrc} width={20} height={20} alt={item.iconAlt} unoptimized />
             </span>
-            {h.label}
-          </Link>
-        ))}
-        <p className={styles.mobileLabel}>Compare &amp; Book</p>
-        {commercialLinks.map((l) => (
-          <Link key={l.href} href={l.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
-            <span className={styles.mobileIcon}>
-              <Image src={l.iconSrc} width={20} height={20} alt={l.iconAlt} unoptimized />
-            </span>
-            {l.label}
+            {item.label}
           </Link>
         ))}
         <Link href="/guides/esim/best-esim-japan" className={styles.mobileCta} onClick={() => setOpen(false)}>

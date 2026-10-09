@@ -1,32 +1,32 @@
 import Head from "next/head";
-import Link from "next/link";
-import styles from "../../../styles/Guides.module.css";
-import { esimArticles as articles } from "../../../lib/guides-esim";
+import GuideHub from "../../../components/GuideHub";
+import { esimArticles, esimCategory } from "../../../lib/guides-esim";
 import { articleDates, pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 export const getStaticProps = () => ({
-  props: { updated: pageUpdated("/guides/esim"), dates: articleDates(articles.map((a) => a.href)) },
+  props: { updated: pageUpdated("/guides/esim"), dates: articleDates(esimArticles.map((a) => a.href)) },
 });
 
+const DESC =
+  "Japan eSIM and SIM card guides, grouped by what you need to decide: which provider to buy, how each one performs, whether your phone supports eSIM, and the right plan for your trip length.";
+
 export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdated; dates: Record<string, string> }) {
+  const description = `${DESC} Updated ${updated.label}.`;
   return (
     <>
       <Head>
-        <title>Japan eSIM Guides 2026 | Japan Travel Kit</title>
-        <meta
-          name="description"
-          content={`Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated ${updated.label}.`}
-        />
+        <title>Japan eSIM Guides 2026: Which to Buy and How to Set It Up | Japan Travel Kit</title>
+        <meta name="description" content={description} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
+        <meta property="og:title" content="Japan eSIM Guides 2026: Which to Buy and How to Set It Up" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim" />
-        <meta property="og:description" content={`Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated ${updated.label}.`} />
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan eSIM Guides 2026 | Japan Travel Kit" />
-        <meta name="twitter:description" content={`Japan eSIM and SIM card guides: which eSIM to choose, how to install it, network coverage breakdowns, and honest plan comparisons. Updated ${updated.label}.`} />
+        <meta name="twitter:title" content="Japan eSIM Guides 2026: Which to Buy and How to Set It Up" />
+        <meta name="twitter:description" content={description} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -43,60 +43,12 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
         />
       </Head>
 
-      {/* Breadcrumb */}
-      <div className={styles.breadcrumb}>
-        <div className={styles.breadcrumbInner}>
-          <Link href="/" className={styles.breadLink}>Home</Link>
-          <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-          <Link href="/guides" className={styles.breadLink}>Guides</Link>
-          <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-          <span className={styles.breadCurrent}>eSIM & SIM Cards</span>
-        </div>
-      </div>
-
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className={styles.heroDots} />
-        <div className={styles.heroInner}>
-          <span className={styles.eyebrow}>📱 eSIM & SIM Cards</span>
-          <h1 className={styles.heroTitle}>Japan eSIM Guides</h1>
-          <p className={styles.heroDesc}>
-            Which SIM to buy, how to install a Japan eSIM, network coverage breakdowns,
-            and honest comparisons — so you can stay connected from the moment you land.
-          </p>
-        </div>
-      </section>
-
-      <div className={styles.content}>
-        <Link href="/guides" className={styles.backLink}>
-          ← All guides
-        </Link>
-
-        <span className={styles.sectionLabel}>eSIM & SIM Cards</span>
-        <h2 className={styles.sectionTitle}>
-          {articles.length} {articles.length === 1 ? "Guide" : "Guides"}
-        </h2>
-
-        <div className={styles.articleList}>
-          {articles.map((article) => (
-            <Link key={article.href} href={article.href} className={styles.articleCard}>
-              <div className={styles.articleMeta}>
-                <span className={styles.articleBadge}>{article.badge}</span>
-                <p className={styles.articleTitle}>{article.title}</p>
-                <p className={styles.articleDesc}>{article.desc}</p>
-                <div className={styles.articleFooter}>
-                  <span className={styles.articleDate}>Updated {dates[article.href]}</span>
-                  <span className={styles.articleReadMore}>Read guide →</span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+      <GuideHub
+        category={esimCategory}
+        heading="Japan eSIM Guides"
+        heroDesc="Which SIM to buy, how to install a Japan eSIM, network coverage breakdowns, and honest comparisons — so you can stay connected from the moment you land."
+        dates={dates}
+      />
     </>
   );
 }

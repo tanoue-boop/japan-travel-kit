@@ -7,52 +7,6 @@ import { transportArticles } from "../lib/guides-transport";
 import { moneyArticles } from "../lib/guides-money";
 import { attractionArticles } from "../lib/guides-attractions";
 
-const categories = [
-  {
-    href: "/guides/esim/best-esim-japan",
-    iconSrc: "/icons/card-sim.svg",
-    iconAlt: "SIM Cards & eSIM icon",
-    title: "SIM Cards & eSIM",
-    desc: "Stay connected from day one. All four Japan providers compared on price, coverage, and instant activation.",
-    badge: "Most Popular",
-    badgeCls: styles.badgeSoftRed,
-  },
-  {
-    href: "/guides/esim/pocket-wifi-vs-esim-japan",
-    iconSrc: "/icons/card-wifi.svg",
-    iconAlt: "Pocket WiFi icon",
-    title: "Pocket WiFi",
-    desc: "Rent a portable WiFi router for unlimited data. Great for groups, families, or heavy data users.",
-    badge: "Great for Groups",
-    badgeCls: styles.badgeSoftBlue,
-  },
-  {
-    href: "/guides/transport",
-    iconSrc: "/icons/card-transport.svg",
-    iconAlt: "Transportation icon",
-    title: "Transportation",
-    desc: "JR Pass, IC cards, Shinkansen tickets. Everything you need to travel Japan quickly and affordably.",
-    badge: "Save Money",
-    badgeCls: styles.badgeSoftGreen,
-  },
-  {
-    href: "/guides/money",
-    iconSrc: "/icons/card-money.svg",
-    iconAlt: "Money & Payment icon",
-    title: "Money & Payment",
-    desc: "Best travel cards, ATM tips, and how to handle cash in Japan's largely cash-based economy.",
-    badge: "Must Read",
-    badgeCls: styles.badgeSoftAmber,
-  },
-];
-
-const tips = [
-  { iconSrc: "/icons/tip-sim.svg",  iconAlt: "Get a SIM before you land", title: "Get a SIM before you land", body: "Order an eSIM online and activate it the moment your plane touches down — no airport queues." },
-  { iconSrc: "/icons/tip-cash.svg", iconAlt: "Always carry cash",          title: "Always carry cash",          body: "Japan is still cash-heavy. 7-Eleven and Japan Post ATMs accept foreign Visa/Mastercard." },
-  { iconSrc: "/icons/tip-ic.svg",   iconAlt: "Load an IC card",            title: "Load an IC card",            body: "Suica or Pasmo works on almost every train, bus, and at convenience stores nationwide." },
-  { iconSrc: "/icons/tip-plug.svg", iconAlt: "Type A plugs",               title: "Type A plugs (100V)",        body: "Same shape as the US. Most devices work without an adapter — just check your voltage." },
-];
-
 const stats = [
   { value: "4+",   label: "SIM options compared" },
   { value: "100%", label: "Independent reviews"   },
@@ -60,7 +14,10 @@ const stats = [
   { value: "Free", label: "No sign-up required"    },
 ];
 
-// Content guide hubs — route crawlers from the homepage into the article ecosystem
+// The homepage's only category navigation. Until 2026-10-09 a "What do you need help with?"
+// section sat above this one pointing at /sim-cards, /wifi-pocket, /transport and /money —
+// the first two now 301 to guides already linked below, and the other two *were* these hubs.
+// One set of four cards, one destination each.
 const guideHubs = [
   {
     href: "/guides/esim",
@@ -98,33 +55,29 @@ const guideHubs = [
     badge: `${attractionArticles.length} Guides`,
     badgeCls: styles.badgeSoftBlue,
   },
-  {
-    href: "/guides",
-    iconSrc: "/icons/icon-guide.svg",
-    iconAlt: "All guides icon",
-    title: "All Guides",
-    desc: "Browse every Japan travel guide in one place, organised by topic.",
-    badge: "Browse all",
-    badgeCls: styles.badgeSoftRed,
-  },
 ];
 
-// Popular individual guides — direct links push crawl equity to key articles
+// Popular guides. Chosen 2026-10-09 from Search Console impressions for 2026-09-09–10-06 plus
+// the pages that actually earn, replacing a hand-picked list that matched neither. Direct
+// links from the homepage push crawl equity to the articles worth ranking.
 const popularHrefs = [
+  "/guides/money/wise-vs-revolut-japan",
   "/guides/esim/best-esim-japan",
-  "/guides/esim/cheapest-esim-japan",
-  "/guides/transport/jr-pass-guide",
-  "/guides/transport/ic-cards-japan",
-  "/guides/money/best-travel-card-japan",
-  "/guides/money/best-travel-insurance-japan",
+  "/guides/esim/sakura-mobile-review",
   "/guides/attractions/teamlab-tokyo-tickets",
-  "/guides/attractions/usj-tickets-express-pass",
-  "/guides/attractions/shibuya-sky-tickets",
+  "/guides/attractions/teamlab-borderless-tickets",
+  "/guides/transport/osaka-airport-transfer",
+  "/guides/money/best-travel-insurance-japan",
+  "/guides/transport/ic-cards-japan",
+  "/guides/transport/osaka-metro-pass",
 ];
 const allArticles = [...esimArticles, ...transportArticles, ...moneyArticles, ...attractionArticles];
-const popularGuides = popularHrefs
-  .map((href) => allArticles.find((a) => a.href === href))
-  .filter((a): a is (typeof allArticles)[number] => Boolean(a));
+const popularGuides = popularHrefs.map((href) => {
+  const article = allArticles.find((a) => a.href === href);
+  if (!article) throw new Error(`index: popular guide ${href} is not in any category list`);
+  return article;
+});
+const totalGuides = allArticles.length;
 
 export default function HomePage() {
   return (
@@ -208,43 +161,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories */}
+      {/* Travel Guides hubs — the one category navigation on the page */}
       <section id="categories" className={styles.categories}>
-        <div className={styles.sectionHead}>
-          <span className={styles.sectionLabel}>What we cover</span>
-          <h2 className={styles.sectionTitle}>What do you need help with?</h2>
-          <p className={styles.sectionDesc}>
-            Practical, unbiased guides on everything every Japan visitor needs to sort out.
-          </p>
-        </div>
-
-        <div className={styles.catGrid}>
-          {categories.map((cat) => (
-            <Link key={cat.href} href={cat.href} className={styles.catCard}>
-              <div className={styles.catTop}>
-                <div className={styles.catLeft}>
-                  <div className={styles.catIconRow}>
-                    <span className={styles.catIcon}>
-                      <Image src={cat.iconSrc} width={46} height={46} alt={cat.iconAlt} unoptimized />
-                    </span>
-                    <span className={`${styles.catBadge} ${cat.badgeCls}`}>{cat.badge}</span>
-                  </div>
-                  <h3 className={styles.catTitle}>{cat.title}</h3>
-                  <p className={styles.catDesc}>{cat.desc}</p>
-                </div>
-                <div className={styles.catArrow}>
-                  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Travel Guides hubs */}
-      <section className={styles.categories}>
         <div className={styles.sectionHead}>
           <span className={styles.sectionLabel}>Read before you go</span>
           <h2 className={styles.sectionTitle}>Travel Guides</h2>
@@ -276,6 +194,10 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
+
+        <p className={styles.sectionFootLink}>
+          <Link href="/guides">Browse all {totalGuides} guides →</Link>
+        </p>
       </section>
 
       {/* Popular Guides */}
@@ -310,30 +232,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tips */}
-      <section className={styles.tips}>
-        <div className={styles.tipsDots} />
-        <div className={styles.tipsInner}>
-          <div className={styles.tipsHead}>
-            <span className={styles.tipsLabel}>Before you go</span>
-            <h2 className={styles.tipsTitle}>Quick tips every visitor should know</h2>
-            <p className={styles.tipsSubtitle}>Japan has some quirks. Sort these out before you board the plane.</p>
-          </div>
-          <div className={styles.tipsGrid}>
-            {tips.map((t) => (
-              <div key={t.title} className={styles.tipCard}>
-                <div className={styles.tipIcon}>
-                  <Image src={t.iconSrc} width={48} height={48} alt={t.iconAlt} unoptimized />
-                </div>
-                <h3 className={styles.tipTitle}>{t.title}</h3>
-                <p className={styles.tipBody}>{t.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trust */}
+      {/* Trust — the one general-interest block on the page. The "Quick tips every visitor
+          should know" section that used to sit above it said nothing the guides don't say
+          better, and pushed the guide links further down. Removed 2026-10-09. */}
       <section className={styles.trust}>
         <div className={styles.trustBox}>
           <span className={styles.trustFlag}>🇯🇵</span>

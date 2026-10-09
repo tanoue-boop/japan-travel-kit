@@ -203,6 +203,83 @@
   text-align: center;
 }
 
+/* Pillar introduction (category hubs) */
+.intro {
+  max-width: 760px;
+  margin-bottom: 2rem;
+}
+.introText {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #374151;
+}
+.introText + .introText { margin-top: 0.9rem; }
+
+/* "Read this first" card */
+.startHere {
+  display: block;
+  background: linear-gradient(135deg, #0d1b4b 0%, #1a237e 100%);
+  border-radius: 20px;
+  padding: 1.75rem;
+  text-decoration: none;
+  margin-bottom: 3.5rem;
+  transition: box-shadow 0.25s, transform 0.22s;
+}
+.startHere:hover {
+  box-shadow: 0 10px 34px rgba(13, 27, 75, 0.3);
+  transform: translateY(-3px);
+}
+.startHereLabel {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fca5a5;
+  margin-bottom: 0.7rem;
+}
+.startHereTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+.startHereWhy {
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 620px;
+  margin-bottom: 0.9rem;
+}
+.startHereArrow {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fca5a5;
+}
+
+/* Intent groups within a category hub */
+.groupSection { margin-bottom: 3rem; }
+.groupSection:last-child { margin-bottom: 0; }
+.groupTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: #0d1b4b;
+  line-height: 1.25;
+  padding-top: 1.25rem;
+  border-top: 2px solid #f3f4f6;
+  margin-bottom: 0.35rem;
+}
+.groupDesc {
+  font-size: 0.86rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  max-width: 660px;
+}
+
 /* Article list (for /guides/esim category) */
 .articleList {
   display: flex;
@@ -279,6 +356,57 @@
   align-items: center;
   gap: 0.25rem;
 }
+
+/* Full index on /guides — every article, under the same groups as its hub */
+.indexCategory {
+  padding-top: 1.5rem;
+  border-top: 2px solid #f3f4f6;
+  margin-bottom: 2.5rem;
+}
+.indexCatTitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0d1b4b;
+  margin-bottom: 1.25rem;
+}
+.indexCatLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.indexCatLink:hover { color: #c62828; }
+
+.indexGroups {
+  display: grid;
+  gap: 1.75rem;
+}
+@media (min-width: 700px) { .indexGroups { grid-template-columns: repeat(2, 1fr); } }
+
+.indexGroupLabel {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 0.6rem;
+}
+.indexList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.indexLink {
+  font-size: 0.87rem;
+  line-height: 1.5;
+  color: #374151;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.indexLink:hover { color: #c62828; }
 
 /* Back link */
 .backLink {

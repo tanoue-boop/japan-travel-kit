@@ -275,74 +275,19 @@
 .catArrow svg { width: 14px; height: 14px; stroke-width: 2.5; }
 .catCard:hover .catArrow { background: #c62828; color: #fff; }
 
-/* ── TIPS ── */
-.tips {
-  background: #0d1b4b;
-  position: relative;
-  overflow: hidden;
-}
-.tipsDots {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 24px 24px;
-  pointer-events: none;
-}
-.tipsInner {
-  position: relative;
-  z-index: 1;
-  max-width: 1152px;
-  margin: 0 auto;
-  padding: 4.5rem 1rem;
-}
-@media (min-width: 640px) { .tipsInner { padding: 4.5rem 1.5rem; } }
-
-.tipsHead { text-align: center; margin-bottom: 2.75rem; }
-.tipsLabel {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #f87171;
-  margin-bottom: 0.4rem;
-}
-.tipsTitle {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 4vw, 2.25rem);
+/* Link under a card grid, e.g. "Browse all 48 guides →" */
+.sectionFootLink {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.88rem;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.75rem;
 }
-.tipsSubtitle { color: rgba(255,255,255,0.42); max-width: 400px; margin: 0 auto; font-size: 0.9rem; }
-
-.tipsGrid {
-  display: grid;
-  gap: 1rem;
+.sectionFootLink a {
+  color: #c62828;
+  text-decoration: none;
+  transition: color 0.15s;
 }
-@media (min-width: 640px)  { .tipsGrid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .tipsGrid { grid-template-columns: repeat(4, 1fr); } }
-
-.tipCard {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 14px;
-  padding: 1.5rem;
-  transition: background 0.2s;
-}
-.tipCard:hover { background: rgba(255,255,255,0.08); }
-.tipIcon {
-  width: 48px; height: 48px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-.tipTitle { font-size: 0.875rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.4; }
-.tipBody  { font-size: 0.82rem; color: rgba(255,255,255,0.42); line-height: 1.65; }
+.sectionFootLink a:hover { color: #b71c1c; text-decoration: underline; }
 
 /* ── TRUST ── */
 .trust {

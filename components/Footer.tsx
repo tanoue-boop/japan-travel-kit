@@ -2,38 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Footer.module.css";
 
+// Two columns, no repeats. Until 2026-10-09 the footer listed the five hubs and then three
+// more columns of individual guides and retired landing pages, several of which pointed at
+// the same destinations as the hub links above them. Category navigation belongs to the
+// hubs; the hubs themselves list the articles.
 const cols = [
   {
     title: "Guides",
     links: [
-      { href: "/guides",             label: "All Guides"   },
-      { href: "/guides/esim",        label: "eSIM"         },
-      { href: "/guides/transport",   label: "Transport"    },
-      { href: "/guides/money",       label: "Money"        },
-      { href: "/guides/attractions", label: "Things to Do" },
+      { href: "/guides/esim",        label: "eSIM & SIM Cards" },
+      { href: "/guides/transport",   label: "Getting Around"   },
+      { href: "/guides/money",       label: "Money & Payment"  },
+      { href: "/guides/attractions", label: "Things to Do"     },
+      { href: "/guides",             label: "All Guides"       },
     ],
   },
   {
-    title: "Connectivity",
-    links: [
-      { href: "/guides/esim/best-esim-japan",           label: "Best eSIM for Japan" },
-      { href: "/guides/esim/pocket-wifi-vs-esim-japan", label: "Pocket WiFi vs eSIM" },
-      { href: "/guides/esim/japan-esim-data-plans",     label: "All Data Plans"      },
-    ],
-  },
-  {
-    // Was "Getting Around" pointing at /transportation and /money. Those pages were merged
-    // into the hubs already listed under Guides (2026-10-09), so this column now surfaces
-    // the individual guides visitors arrive on most instead of repeating the hub links.
-    title: "Popular Guides",
-    links: [
-      { href: "/guides/transport/jr-pass-worth-it", label: "Is the JR Pass Worth It?" },
-      { href: "/guides/transport/ic-cards-japan",   label: "Suica & IC Cards"         },
-      { href: "/guides/money/cash-vs-card-japan",   label: "Cash vs Card"             },
-    ],
-  },
-  {
-    title: "Legal",
+    title: "About this site",
     links: [
       { href: "/about",          label: "About"                },
       { href: "/disclaimer",     label: "Affiliate Disclaimer" },

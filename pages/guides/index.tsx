@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Guides.module.css";
-import { esimArticles } from "../../lib/guides-esim";
-import { transportArticles } from "../../lib/guides-transport";
-import { moneyArticles } from "../../lib/guides-money";
-import { attractionArticles } from "../../lib/guides-attractions";
+import { esimCategory } from "../../lib/guides-esim";
+import { transportCategory } from "../../lib/guides-transport";
+import { moneyCategory } from "../../lib/guides-money";
+import { attractionsCategory } from "../../lib/guides-attractions";
+import { groupedArticles, type GuideCategory } from "../../lib/guide-hub";
 
 function IconSim() {
   return (
@@ -67,63 +68,49 @@ function ChevronRight() {
   );
 }
 
-const categories = [
+/** Category cards up top, then the full index below — same grouping the hubs use. */
+const categories: { category: GuideCategory; Icon: () => JSX.Element; blurb: string }[] = [
   {
-    href: "/guides/esim",
+    category: esimCategory,
     Icon: IconSim,
-    name: "eSIM & SIM Cards",
-    desc: "Which SIM to buy, how to install an eSIM, network coverage, and data plan comparisons for Japan.",
-    badge: `${esimArticles.length} Guides`,
-    badgeCls: styles.badgeSoftRed,
-    soon: false,
+    blurb: "Which SIM to buy, how to install an eSIM, network coverage, and data plan comparisons for Japan.",
   },
   {
-    href: "/guides/transport",
+    category: transportCategory,
     Icon: IconTrain,
-    name: "Getting Around",
-    desc: "Shinkansen passes, IC cards, airport trains, and everything you need to navigate Japan's rail network.",
-    badge: `${transportArticles.length} Guides`,
-    badgeCls: styles.badgeSoftRed,
-    soon: false,
+    blurb: "Shinkansen passes, IC cards, airport trains, and everything you need to navigate Japan's rail network.",
   },
   {
-    href: "/guides/money",
+    category: moneyCategory,
     Icon: IconMoney,
-    name: "Money & Payment",
-    desc: "Cash vs card, ATM access, currency exchange, and how to pay at convenience stores and restaurants.",
-    badge: `${moneyArticles.length} Guides`,
-    badgeCls: styles.badgeSoftRed,
-    soon: false,
+    blurb: "Cash vs card, ATM access, currency exchange, and how to pay at convenience stores and restaurants.",
   },
   {
-    href: "/guides/attractions",
+    category: attractionsCategory,
     Icon: IconTicket,
-    name: "Things to Do",
-    desc: "Tickets and experiences worth booking ahead — teamLab, Universal Studios Japan, Shibuya Sky, and how to skip the queues.",
-    badge: `${attractionArticles.length} Guides`,
-    badgeCls: styles.badgeSoftRed,
-    soon: false,
+    blurb: "Tickets and experiences worth booking ahead — teamLab, Universal Studios Japan, Shibuya Sky, and how to skip the queues.",
   },
 ];
+
+const totalGuides = categories.reduce((n, c) => n + c.category.articles.length, 0);
+
+const DESC = `All ${totalGuides} Japan travel guides in one index: eSIM and SIM cards, transport and rail passes, money and payment, and attraction tickets — grouped by the question each one answers.`;
 
 export default function GuidesIndexPage() {
   return (
     <>
       <Head>
-        <title>Japan Travel Guides 2026 | Japan Travel Kit</title>
-        <meta
-          name="description"
-          content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors."
-        />
+        <title>Japan Travel Guides 2026: All {totalGuides} Guides by Topic | Japan Travel Kit</title>
+        <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides" />
         <meta property="og:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides" />
-        <meta property="og:description" content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
-        <meta name="twitter:description" content="Practical Japan travel guides: eSIM & SIM cards, getting around, money and payment. Up-to-date, independent advice for foreign visitors." />
+        <meta name="twitter:description" content={DESC} />
         <meta name="robots" content="index, follow" />
         <script
           type="application/ld+json"
@@ -169,40 +156,55 @@ export default function GuidesIndexPage() {
         <h2 className={styles.sectionTitle}>All Categories</h2>
 
         <div className={styles.catGrid}>
-          {categories.map((cat) => {
-            const cardContent = (
+          {categories.map(({ category, Icon, blurb }) => (
+            <Link key={category.href} href={category.href} className={styles.catCard}>
               <div className={styles.catTop}>
                 <div className={styles.catLeft}>
                   <div className={styles.catIconRow}>
                     <span className={styles.catIcon}>
-                      <cat.Icon />
+                      <Icon />
                     </span>
-                    <span className={`${styles.catBadge} ${cat.badgeCls}`}>{cat.badge}</span>
+                    <span className={`${styles.catBadge} ${styles.badgeSoftRed}`}>
+                      {category.articles.length} Guides
+                    </span>
                   </div>
-                  <p className={styles.catName}>{cat.name}</p>
-                  <p className={styles.catDesc}>{cat.desc}</p>
+                  <p className={styles.catName}>{category.name}</p>
+                  <p className={styles.catDesc}>{blurb}</p>
                 </div>
-                {cat.soon ? (
-                  <span className={styles.catArrowSoon}>Soon</span>
-                ) : (
-                  <span className={styles.catArrow}>
-                    <ChevronRight />
-                  </span>
-                )}
+                <span className={styles.catArrow}>
+                  <ChevronRight />
+                </span>
               </div>
-            );
-
-            return cat.soon ? (
-              <div key={cat.href} className={styles.catCardSoon}>
-                {cardContent}
-              </div>
-            ) : (
-              <Link key={cat.href} href={cat.href} className={styles.catCard}>
-                {cardContent}
-              </Link>
-            );
-          })}
+            </Link>
+          ))}
         </div>
+
+        {/* Full index — every guide, under the same intent groups as its hub */}
+        <span className={styles.sectionLabel}>Every guide</span>
+        <h2 className={styles.sectionTitle}>All {totalGuides} Guides</h2>
+
+        {categories.map(({ category }) => (
+          <section key={category.href} className={styles.indexCategory}>
+            <h3 className={styles.indexCatTitle}>
+              <span aria-hidden="true">{category.emoji}</span>{" "}
+              <Link href={category.href} className={styles.indexCatLink}>{category.name}</Link>
+            </h3>
+            <div className={styles.indexGroups}>
+              {groupedArticles(category).map(({ group, articles }) => (
+                <div key={group.key} className={styles.indexGroup}>
+                  <p className={styles.indexGroupLabel}>{group.label}</p>
+                  <ul className={styles.indexList}>
+                    {articles.map((article) => (
+                      <li key={article.href}>
+                        <Link href={article.href} className={styles.indexLink}>{article.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
     </>
   );
