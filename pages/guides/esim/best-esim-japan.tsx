@@ -459,6 +459,53 @@ export default function BestEsimJapanPage() {
           </div>
         </section>
 
+        {/* Deep dives — these answer questions this comparison deliberately keeps short. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Going deeper</span>
+          <h2 className={styles.sectionTitle}>If Your Situation Is More Specific</h2>
+          <p className={styles.bodyText}>
+            This page ranks the four providers for a typical trip. Several common situations
+            change the answer, and each has its own guide:
+          </p>
+          <ul className={styles.pickList}>
+            <li>
+              <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                Will an eSIM work in Japan at all?
+              </Link>{" "}
+              — the three checks on your handset to make before you buy anything.
+            </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/japan-sim-card-vs-esim-2026" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                SIM card vs eSIM
+              </Link>{" "}
+              — the two situations where a physical SIM is the only option, regardless of price.
+            </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/japan-esim-students" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                Students and long study stays
+              </Link>{" "}
+              — priced by the month, and when a domestic MVNO beats every tourist eSIM.
+            </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/japan-esim-family-group" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                Families and groups
+              </Link>{" "}
+              — the headcount at which one shared Pocket WiFi beats an eSIM each.
+            </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                What Reddit recommends
+              </Link>{" "}
+              — the standing r/JapanTravel advice, checked against this month&apos;s prices.
+            </li>
+          </ul>
+        </section>
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>

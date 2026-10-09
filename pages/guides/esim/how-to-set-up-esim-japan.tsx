@@ -14,33 +14,6 @@ const beforeYouStart = [
   "QR code from your eSIM provider",
 ];
 
-const iphoneSteps = [
-  {
-    title: "Go to Settings → Cellular",
-    desc: "Open the Settings app on your iPhone and tap 'Cellular' (or 'Mobile Data' in some regions).",
-  },
-  {
-    title: "Tap \"Add eSIM\"",
-    desc: "Scroll down and tap 'Add eSIM'. On newer iPhones you may see 'Add eSIM' directly at the top of the Cellular screen.",
-  },
-  {
-    title: "Tap \"Use QR Code\"",
-    desc: "Select 'Use QR Code' when prompted. Your camera will open ready to scan.",
-  },
-  {
-    title: "Scan the QR code from your provider",
-    desc: "Hold your phone's camera over the QR code sent by your eSIM provider. The code is usually in a confirmation email or inside the provider's app.",
-  },
-  {
-    title: "Label it \"Japan eSIM\"",
-    desc: "When prompted to name the new plan, type 'Japan eSIM' so you can easily identify it later.",
-  },
-  {
-    title: "Keep it OFF until you land in Japan",
-    desc: "Leave the Japan eSIM plan switched off for now. You'll switch it on when your plane lands to avoid unexpected data charges en route.",
-  },
-];
-
 const androidSteps = [
   {
     title: "Go to Settings → Network & Internet",
@@ -468,21 +441,24 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
           ))}
         </section>
 
-        {/* iPhone Setup */}
-        <section className={styles.installSection}>
+        {/* iPhone Setup — summarised; the full walkthrough lives in japan-esim-iphone */}
+        <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>iOS</span>
           <h2 className={styles.sectionTitle}>How to Set Up eSIM on iPhone</h2>
-          <div className={styles.stepsList}>
-            {iphoneSteps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className={styles.bodyText}>
+            On any iPhone XS or later: <strong>Settings → Cellular → Add eSIM → Use QR Code</strong>,
+            scan the code from your provider, label the plan &ldquo;Japan&rdquo;, and leave it
+            switched off until you land. Airalo customers can skip Settings entirely and install
+            from the Airalo iOS app.
+          </p>
+          <p className={styles.bodyText}>
+            There is more to say about iPhone specifically — which models run two eSIMs at once,
+            the dual-SIM toggles that prevent surprise roaming charges, and the one provider that
+            needs its APN typed in by hand. We cover all of it in{" "}
+            <Link href="/guides/esim/japan-esim-iphone" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+              Best eSIM for Japan on iPhone →
+            </Link>
+          </p>
         </section>
 
         {/* Android Setup */}

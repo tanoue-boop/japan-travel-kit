@@ -72,4 +72,46 @@ export const esimArticles: EsimArticle[] = [
     title: "Airalo vs Holafly for Japan (2026): Which Should You Choose?",
     desc: "Both are popular Japan eSIMs — but they suit very different travellers. We compare price, data, coverage and support head-to-head with a clear verdict.",
   },
+  {
+    href: "/guides/esim/does-esim-work-in-japan",
+    badge: "Guide",
+    title: "Does eSIM Work in Japan? (2026): Everything You Need to Know",
+    desc: "Yes — Japan needs no SIM registration and every tourist eSIM rides a tier-one carrier. The real risk is your handset: three checks to make before you buy anything.",
+  },
+  {
+    href: "/guides/esim/japan-esim-iphone",
+    badge: "Guide",
+    title: "Best eSIM for Japan on iPhone (2026): Picks & Setup",
+    desc: "Which Japan eSIM installs cleanly on an iPhone, and exactly where to tap in iOS. Covers iPhone XS to 16, dual-SIM roaming traps, and the one provider needing a manual APN.",
+  },
+  {
+    href: "/guides/esim/japan-sim-card-vs-esim-2026",
+    badge: "Comparison",
+    title: "Japan SIM Card vs eSIM (2026): Which Should You Choose?",
+    desc: "eSIM for almost everyone — but there are exactly two situations where a physical SIM is the only option, and price has nothing to do with either of them.",
+  },
+  {
+    href: "/guides/esim/japan-esim-2-weeks",
+    badge: "Guide",
+    title: "Best Japan eSIM for 2 Weeks (2026): Plans That Last the Trip",
+    desc: "Almost nobody sells a 14-day plan, so the usual mistake is buying on allowance and landing on one that expires at day 7. Every plan filtered by validity, cheapest first.",
+  },
+  {
+    href: "/guides/esim/japan-esim-students",
+    badge: "Guide",
+    title: "Best eSIM for Japan for Students (2026): Budget Picks",
+    desc: "Priced per study month rather than per tourist week, plus the two things tourists never have to decide: whether you need a Japanese phone number, and when to switch to a domestic SIM.",
+  },
+  {
+    href: "/guides/esim/japan-esim-family-group",
+    badge: "Comparison",
+    title: "Japan eSIM for Family & Group Travel (2026)",
+    desc: "An eSIM each or one shared Pocket WiFi? It is arithmetic, and it turns over at a specific headcount. With the per-person cost of both, read from live prices.",
+  },
+  {
+    href: "/guides/esim/best-esim-japan-reddit",
+    badge: "Comparison",
+    title: "Best eSIM for Japan Reddit (2026): Which Advice Still Holds",
+    desc: "r/JapanTravel recommends the same four eSIMs every time. We check each claim against this month's prices — three hold up, and one is badly out of date.",
+  },
 ];

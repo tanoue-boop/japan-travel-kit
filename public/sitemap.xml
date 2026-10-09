@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Generated 2026-09-18 by scripts/generate-sitemap.js — do not edit by hand -->
+  <!-- Generated 2026-10-09 by scripts/generate-sitemap.js — do not edit by hand -->
   <url>
     <loc>https://www.japan-travel-kit.com/</loc>
     <lastmod>2026-06-16</lastmod>
@@ -75,37 +75,55 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/airalo-vs-holafly-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/best-esim-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/best-esim-japan-reddit</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/does-esim-work-in-japan</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/esim-go-japan-review</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/holafly-japan-review</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/japan-esim-2-weeks</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -116,8 +134,32 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/japan-esim-family-group</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/japan-esim-iphone</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/japan-esim-students</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/japan-esim-unlimited</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/esim/japan-sim-card-vs-esim-2026</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -129,7 +171,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/sakura-mobile-review</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -153,13 +195,19 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/best-travel-insurance-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/cash-vs-card-japan</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/money/contactless-payment-japan</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -183,7 +231,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/safetywing-vs-heymondo-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -195,7 +243,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/wise-card-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -208,6 +256,12 @@
   <url>
     <loc>https://www.japan-travel-kit.com/guides/transport</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/transport/haruka-vs-nankai-rapit</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -230,6 +284,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/guides/transport/kyoto-subway-bus-pass</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/guides/transport/kyoto-transportation</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -238,6 +298,12 @@
   <url>
     <loc>https://www.japan-travel-kit.com/guides/transport/osaka-airport-transfer</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/transport/osaka-metro-pass</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

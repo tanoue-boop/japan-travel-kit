@@ -66,4 +66,22 @@ export const transportArticles: TransportArticle[] = [
     title: "Getting Around Osaka (2026): Subway, Trains & IC Cards Explained",
     desc: "Osaka's subway system is one of the easiest in Japan to navigate. We cover the Midosuji Line, the Enjoy Eco Card vs Osaka Metro Pass, IC cards, and key routes to top attractions.",
   },
+  {
+    href: "/guides/transport/haruka-vs-nankai-rapit",
+    badge: "Comparison",
+    title: "Haruka vs Nankai Rapi:t (2026): Best Train from Kansai Airport?",
+    desc: "One runs to Namba, the other to Tennoji, Shin-Osaka and Kyoto — so your hotel decides this, not the fare. A head-to-head on time, price, and JR Pass coverage.",
+  },
+  {
+    href: "/guides/transport/osaka-metro-pass",
+    badge: "Comparison",
+    title: "Osaka Metro Pass vs Enjoy Eco Card (2026): Which Should Tourists Buy?",
+    desc: "Two Osaka day passes, constantly confused. One is cheaper for a single day and open to anyone; the other is built for two. With the break-even ride count for each.",
+  },
+  {
+    href: "/guides/transport/kyoto-subway-bus-pass",
+    badge: "Comparison",
+    title: "Is the Kyoto Subway & Bus 1-Day Pass Worth It? (2026)",
+    desc: "Great value on a temple-hopping day, a waste on a quiet one. We show where the break-even falls — and why the old ¥700 bus pass you may have read about no longer exists.",
+  },
 ];

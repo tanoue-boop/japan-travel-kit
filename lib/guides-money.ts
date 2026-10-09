@@ -72,4 +72,10 @@ export const moneyArticles: MoneyArticle[] = [
     title: "Tax-Free Shopping in Japan (2026): How to Get Your Consumption Tax Back",
     desc: "As a tourist, you can save up to 10% on electronics, clothing, cosmetics, and more. We explain the rules, eligible stores, minimum spend, and what to watch out for on departure.",
   },
+  {
+    href: "/guides/money/contactless-payment-japan",
+    badge: "Guide",
+    title: "Contactless Payment in Japan (2026): What Actually Works",
+    desc: "Japan runs three contactless systems and they are not interchangeable — your tap-to-pay Visa will not open a ticket gate. Which tap works where, and why you should skip QR pay.",
+  },
 ];
