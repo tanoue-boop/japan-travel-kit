@@ -9,8 +9,14 @@ export const attractionArticles: AttractionArticle[] = [
   {
     href: "/guides/attractions/teamlab-tokyo-tickets",
     badge: "Tickets",
-    title: "teamLab Tokyo Tickets (2026): Planets vs Borderless & How to Book",
-    desc: "Tokyo has two teamLab museums — Planets in Toyosu and Borderless in Azabudai. We compare them, explain which suits your trip, and show how to book before they sell out.",
+    title: "teamLab Planets Tickets (2026): Prices, How to Book & Planets vs Borderless",
+    desc: "Official Planets prices, the 30-minute entry slots, opening hours and what to wear for the barefoot water areas — plus how Planets differs from Borderless in Azabudai.",
+  },
+  {
+    href: "/guides/attractions/teamlab-borderless-tickets",
+    badge: "Tickets",
+    title: "teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book",
+    desc: "What a Borderless ticket costs on the official site, how the timed slots and Flexible Pass work, opening hours and closed days, and whether to book direct or through Klook.",
   },
   {
     href: "/guides/attractions/usj-tickets-express-pass",

@@ -438,7 +438,22 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Tokyo Tickets (2026): Planets vs Borderless &amp; How to Book</p>
+                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Prices, How to Book &amp; Planets vs Borderless</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/teamlab-borderless-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="13.5" cy="6.5" r="1.5" />
+                  <circle cx="17.5" cy="10.5" r="1.5" />
+                  <circle cx="8.5" cy="7.5" r="1.5" />
+                  <circle cx="6.5" cy="12.5" r="1.5" />
+                  <path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-1.4-1-1.9-1-3a2 2 0 0 1 2-2h2a4 4 0 0 0 4-4 9 9 0 0 0-9-9z" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -468,7 +468,7 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Tokyo Tickets (2026): Planets vs Borderless &amp; How to Book</p>
+                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Prices, How to Book &amp; Planets vs Borderless</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

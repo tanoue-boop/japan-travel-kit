@@ -3,7 +3,7 @@
   <!-- Generated 2026-10-09 by scripts/generate-sitemap.js — do not edit by hand -->
   <url>
     <loc>https://www.japan-travel-kit.com/</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -40,6 +40,12 @@
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/sumo-tokyo-tickets</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -165,7 +171,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/esim/pocket-wifi-vs-esim-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -183,13 +189,13 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/atms-in-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/best-travel-card-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -213,13 +219,13 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/currency-exchange-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/japan-travel-budget</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -237,7 +243,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/tax-free-shopping-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -267,19 +273,19 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/transport/ic-cards-japan</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/transport/jr-pass-guide</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/transport/jr-pass-worth-it</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -315,19 +321,19 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/transport/shinkansen-guide</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/transport/tokyo-to-kyoto</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
