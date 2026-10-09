@@ -3,9 +3,8 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
-// CTA / provider links — normal (non-affiliate) links for now.
-// TODO: replace with approved affiliate link
-const SAFETYWING_URL = "https://safetywing.com/";
+// CTA / provider links — SafetyWing is an affiliate link; the rest are normal links for now.
+const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614156&utm_source=26614156&utm_medium=Ambassador";
 // TODO: replace with approved affiliate link
 const HEYMONDO_URL = "https://heymondo.com/";
 
@@ -181,7 +180,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             <strong>Not insurance advice.</strong> This is general information only — not insurance advice.
             Coverage and prices vary by age, trip length, and plan, and change over time. Always get a quote
             and read the policy wording before you buy. Confirm the latest details on the official{" "}
-            <a href={SAFETYWING_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>SafetyWing</a>{" "}
+            <a href={SAFETYWING_URL} target="_blank" rel="sponsored noopener noreferrer" style={{ color: "#92400e", fontWeight: 600 }}>SafetyWing</a>{" "}
             and{" "}
             <a href={HEYMONDO_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Heymondo</a>{" "}
             sites.
@@ -297,7 +296,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             </div>
           </div>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1.5rem" }}>
-            <a href={SAFETYWING_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+            <a href={SAFETYWING_URL} target="_blank" rel="sponsored noopener noreferrer" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
               Get a SafetyWing quote →
             </a>
             <a href={HEYMONDO_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>

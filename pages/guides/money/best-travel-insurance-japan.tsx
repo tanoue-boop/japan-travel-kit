@@ -3,13 +3,16 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
-// CTA / provider links — normal (non-affiliate) links for now.
+// CTA / provider links — SafetyWing is an affiliate link; the rest are normal links for now.
 // TODO: replace with approved affiliate link
 const HEYMONDO_URL = "https://heymondo.com/";
-// TODO: replace with approved affiliate link
-const SAFETYWING_URL = "https://safetywing.com/";
+const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614156&utm_source=26614156&utm_medium=Ambassador";
 // TODO: replace with approved affiliate link
 const WORLDNOMADS_URL = "https://www.worldnomads.com/";
+
+// Affiliate links need rel="sponsored"; plain provider links stay nofollow.
+const SPONSORED_REL = "sponsored noopener noreferrer";
+const PLAIN_REL = "noopener noreferrer nofollow";
 
 const costRows = [
   { length: "1 week",  cost: "$30–$60" },
@@ -46,6 +49,7 @@ const providers = [
     badge: "Best Overall",
     badgeColor: "#16a34a",
     url: HEYMONDO_URL,
+    rel: PLAIN_REL,
     pros: [
       "App-first: 24/7 in-app doctor chat and one-tap assistance",
       "High medical limits and strong emergency cover",
@@ -64,6 +68,7 @@ const providers = [
     badge: "Best for Long / Open-Ended Trips",
     badgeColor: "#2563eb",
     url: SAFETYWING_URL,
+    rel: SPONSORED_REL,
     pros: [
       "Subscription model (billed every 4 weeks) — ideal for long or undated stays",
       "You can buy it after you've already left home and cancel when you're done",
@@ -82,6 +87,7 @@ const providers = [
     badge: "Best for Adventure & Skiing",
     badgeColor: "#7c3aed",
     url: WORLDNOMADS_URL,
+    rel: PLAIN_REL,
     pros: [
       "Covers a wide range of adventure activities — strong for Japan's ski and hiking trips",
       "Trip-based cover including cancellation, delay, and baggage",
@@ -269,7 +275,7 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
             Coverage and prices vary by age, trip length, and plan, and change over time. Always get a quote
             and read the policy wording before you buy. Confirm the latest details on the official{" "}
             <a href={HEYMONDO_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Heymondo</a>,{" "}
-            <a href={SAFETYWING_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>SafetyWing</a>, and{" "}
+            <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} style={{ color: "#92400e", fontWeight: 600 }}>SafetyWing</a>, and{" "}
             <a href={WORLDNOMADS_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>World Nomads</a>{" "}
             sites.
           </p>
@@ -398,7 +404,7 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
               <p className={styles.bodyText} style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid var(--border)" }}>
                 <strong>Our verdict:</strong> {p.verdict}
               </p>
-              <a href={p.url} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+              <a href={p.url} target="_blank" rel={p.rel} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
                 Get a {p.name} quote →
               </a>
             </div>
