@@ -78,21 +78,21 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
   return (
     <>
       <Head>
-        <title>Wise Card in Japan 2026: Fees, ATMs &amp; How to Use It | Japan Travel Kit</title>
+        <title>Wise Card in Japan (2026): ATM Fees, Withdrawal Limits and Does It Work? | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Does the Wise card work in Japan? We cover fees, the mid-market rate, ATM limits at 7-Eleven, avoiding DCC, and how to use Wise to save money in 2026."
+          content="Yes, the Wise card works in Japan. Free ATM withdrawal allowance, fees after the limit, which ATMs accept it (7-Eleven, Japan Post), and how to avoid DCC."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/wise-card-japan" />
-        <meta property="og:title" content="Wise Card in Japan (2026): Fees, ATMs & How to Use It" />
+        <meta property="og:title" content="Wise Card in Japan (2026): ATM Fees, Withdrawal Limits and Does It Work? | Japan Travel Kit" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/wise-card-japan" />
-        <meta property="og:description" content="Does the Wise card work in Japan? We cover fees, the mid-market rate, ATM limits at 7-Eleven, avoiding DCC, and how to use Wise to save money in 2026." />
+        <meta property="og:description" content="Yes, the Wise card works in Japan. Free ATM withdrawal allowance, fees after the limit, which ATMs accept it (7-Eleven, Japan Post), and how to avoid DCC." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Wise Card in Japan (2026): Fees, ATMs & How to Use It" />
-        <meta name="twitter:description" content="Does the Wise card work in Japan? We cover fees, the mid-market rate, ATM limits at 7-Eleven, avoiding DCC, and how to use Wise to save money in 2026." />
+        <meta name="twitter:title" content="Wise Card in Japan (2026): ATM Fees, Withdrawal Limits and Does It Work? | Japan Travel Kit" />
+        <meta name="twitter:description" content="Yes, the Wise card works in Japan. Free ATM withdrawal allowance, fees after the limit, which ATMs accept it (7-Eleven, Japan Post), and how to avoid DCC." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -114,7 +114,8 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: "Wise Card in Japan (2026): Fees, ATMs & How to Use It",
+              headline: "Wise Card in Japan (2026): ATM Fees, Withdrawal Limits and Does It Work? | Japan Travel Kit",
+              description: "Yes, the Wise card works in Japan. Free ATM withdrawal allowance, fees after the limit, which ATMs accept it (7-Eleven, Japan Post), and how to avoid DCC.",
               dateModified: updated.iso,
               author: {
                 "@type": "Organization",

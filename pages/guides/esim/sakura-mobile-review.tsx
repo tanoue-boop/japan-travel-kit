@@ -110,20 +110,20 @@ export default function SakuraMobileReviewPage() {
   return (
     <>
       <Head>
-        <title>Sakura Mobile Japan Review 2026 | Japan Travel Kit</title>
+        <title>Sakura Mobile Review 2026: SIM &amp; eSIM Plans, Prices, Pros and Cons | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Sakura Mobile offers voice calls, English support, and Docomo coverage — ideal for long stays in Japan. But is it worth the price? Our honest review."
+          content="Sakura Mobile SIM and eSIM for Japan: plans and prices, Docomo coverage, phone number and English support. Who it suits and cheaper alternatives for short trips."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/sakura-mobile-review" />
-        <meta property="og:title" content="Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?" />
+        <meta property="og:title" content="Sakura Mobile Review 2026: SIM & eSIM Plans, Prices, Pros and Cons | Japan Travel Kit" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/sakura-mobile-review" />
-        <meta property="og:description" content="Sakura Mobile offers voice calls, English support, and Docomo coverage — ideal for long stays in Japan. But is it worth the price? Our honest review." />
+        <meta property="og:description" content="Sakura Mobile SIM and eSIM for Japan: plans and prices, Docomo coverage, phone number and English support. Who it suits and cheaper alternatives for short trips." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?" />
-        <meta name="twitter:description" content="Sakura Mobile offers voice calls, English support, and Docomo coverage — ideal for long stays in Japan. But is it worth the price? Our honest review." />
+        <meta name="twitter:title" content="Sakura Mobile Review 2026: SIM & eSIM Plans, Prices, Pros and Cons | Japan Travel Kit" />
+        <meta name="twitter:description" content="Sakura Mobile SIM and eSIM for Japan: plans and prices, Docomo coverage, phone number and English support. Who it suits and cheaper alternatives for short trips." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -144,7 +144,8 @@ export default function SakuraMobileReviewPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: "Sakura Mobile Review 2026: Best SIM Card for Long Stays in Japan?",
+              headline: "Sakura Mobile Review 2026: SIM & eSIM Plans, Prices, Pros and Cons | Japan Travel Kit",
+              description: "Sakura Mobile SIM and eSIM for Japan: plans and prices, Docomo coverage, phone number and English support. Who it suits and cheaper alternatives for short trips.",
               dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
