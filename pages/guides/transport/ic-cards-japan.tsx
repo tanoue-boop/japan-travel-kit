@@ -409,7 +409,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

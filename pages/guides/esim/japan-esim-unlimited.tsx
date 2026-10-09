@@ -532,7 +532,7 @@ export default function JapanEsimUnlimitedPage() {
           <span className={styles.sectionLabel}>Honest answer</span>
           <h2 className={styles.sectionTitle}>Is Holafly Really Unlimited in Japan?</h2>
           <p className={styles.bodyText}>
-            Based on available user reports and testing, Holafly Japan does not throttle or cap data usage. Travellers who use Holafly for streaming, video calls, and all-day navigation consistently report no slowdowns even after heavy daily use.
+            Based on its published terms and available user reports, Holafly Japan does not throttle or cap data usage. Travellers who use Holafly for streaming, video calls, and all-day navigation consistently report no slowdowns even after heavy daily use.
           </p>
           <p className={styles.bodyText}>
             The caveat: Holafly uses the SoftBank network in Japan. SoftBank has excellent coverage in cities, tourist areas, and along major train routes — but Docomo has broader reach in rural areas. For popular tourist destinations (Tokyo, Kyoto, Osaka, Hiroshima, Hokkaido cities), this makes no practical difference.
@@ -597,7 +597,7 @@ export default function JapanEsimUnlimitedPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

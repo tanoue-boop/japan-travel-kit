@@ -5,7 +5,7 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/best-esim-japan",
     badge: "Comparison",
-    title: "Best eSIM for Japan 2026: Top 4 Picks Tested & Compared",
+    title: "Best eSIM for Japan 2026: Top 4 Picks Compared",
     desc: "Airalo, Holafly, eSIM Go, and Sakura Mobile — compared on price, speed, coverage, and ease of setup. Which one is right for your trip?",
     group: "compare",
   },
@@ -27,7 +27,7 @@ export const esimArticles: GuideArticle[] = [
     href: "/guides/esim/japan-esim-unlimited",
     badge: "Comparison",
     title: "Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users",
-    desc: "Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large data plans — with honest speed test findings.",
+    desc: "Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large data plans — including which ones are unlimited in name only.",
     group: "compare",
   },
   {
@@ -62,14 +62,14 @@ export const esimArticles: GuideArticle[] = [
     href: "/guides/esim/airalo-japan-review",
     badge: "Review",
     title: "Airalo Japan Review 2026: Is It Worth It?",
-    desc: "We tested Airalo's Japan eSIM plans, speeds, and setup process — plus whether it actually works nationwide. An honest verdict on pricing, coverage, and who it's best for.",
+    desc: "Airalo's Japan eSIM plans, networks, and setup process — plus whether it really works nationwide. An honest verdict on pricing, coverage, and who it's best for.",
     group: "reviews",
   },
   {
     href: "/guides/esim/holafly-japan-review",
     badge: "Review",
     title: "Holafly Japan eSIM Review 2026: Unlimited Data Worth It?",
-    desc: "Holafly offers unlimited data for Japan — but is the price right? We tested speeds, coverage, and setup, and answer whether Holafly really works in Japan.",
+    desc: "Holafly offers unlimited data for Japan — but is the price right? We compare its cost per day, SoftBank coverage, and setup against the plans that charge by the gigabyte.",
     group: "reviews",
   },
   {
@@ -83,7 +83,7 @@ export const esimArticles: GuideArticle[] = [
     href: "/guides/esim/esim-go-japan-review",
     badge: "Review",
     title: "eSIM Go Japan Review 2026: Best Budget eSIM?",
-    desc: "The cheapest Japan eSIM we tested. eSIM Go undercuts the big names on price — but how does it hold up on speed, setup, and support?",
+    desc: "The cheapest Japan eSIM in our price comparison. eSIM Go undercuts the big names — but how does it hold up on data allowances, setup, and support?",
     group: "reviews",
   },
   {

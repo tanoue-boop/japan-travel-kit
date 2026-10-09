@@ -149,17 +149,17 @@ export default function HolaflyJapanReviewPage() {
         <title>Holafly Japan Review 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Is Holafly worth it for Japan? We tested their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price."
+          content="Is Holafly worth it for Japan? We break down their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/holafly-japan-review" />
         <meta property="og:title" content="Holafly Japan Review 2026: Is Unlimited Data Worth the Price?" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/holafly-japan-review" />
-        <meta property="og:description" content="Is Holafly worth it for Japan? We tested their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
+        <meta property="og:description" content="Is Holafly worth it for Japan? We break down their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Holafly Japan Review 2026: Is Unlimited Data Worth the Price?" />
-        <meta name="twitter:description" content="Is Holafly worth it for Japan? We tested their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
+        <meta name="twitter:description" content="Is Holafly worth it for Japan? We break down their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -507,7 +507,7 @@ export default function HolaflyJapanReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

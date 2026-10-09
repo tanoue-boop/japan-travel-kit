@@ -181,17 +181,17 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
         <title>Best eSIM for Japan on iPhone 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Which eSIM works best for Japan on iPhone? We tested Airalo, Holafly and eSIM Go on iPhone XS to iPhone 16. Full setup guide."
+          content="Which eSIM works best for Japan on iPhone? Airalo, Holafly and eSIM Go compared for iPhone XS to iPhone 16. Full setup guide."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-iphone" />
         <meta property="og:title" content="Best eSIM for Japan on iPhone 2026: Top Picks & Setup Guide" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-iphone" />
-        <meta property="og:description" content="Which eSIM works best for Japan on iPhone? We tested Airalo, Holafly and eSIM Go on iPhone XS to iPhone 16. Full setup guide." />
+        <meta property="og:description" content="Which eSIM works best for Japan on iPhone? Airalo, Holafly and eSIM Go compared for iPhone XS to iPhone 16. Full setup guide." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best eSIM for Japan on iPhone 2026: Top Picks & Setup Guide" />
-        <meta name="twitter:description" content="Which eSIM works best for Japan on iPhone? We tested Airalo, Holafly and eSIM Go on iPhone XS to iPhone 16. Full setup guide." />
+        <meta name="twitter:description" content="Which eSIM works best for Japan on iPhone? Airalo, Holafly and eSIM Go compared for iPhone XS to iPhone 16. Full setup guide." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -519,7 +519,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

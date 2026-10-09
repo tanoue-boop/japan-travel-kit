@@ -102,7 +102,7 @@ const faqItems = [
 const worksInJapanFaq = [
   {
     q: "Does Airalo actually work in Japan?",
-    a: "Yes — Airalo Japan eSIM works nationwide via Docomo and SoftBank networks. We tested it in Tokyo, Kyoto, Osaka, and on intercity routes, including the Tohoku Shinkansen. Coverage was consistent throughout. The only gaps were deep mountain trails and small remote islands, which have limited coverage regardless of carrier.",
+    a: "Yes — Airalo Japan eSIM works nationwide via Docomo and SoftBank networks, which both publish coverage across the cities and the main intercity rail corridors, including the Tohoku Shinkansen. The gaps are deep mountain trails and small remote islands, which have limited coverage regardless of carrier.",
   },
   {
     q: "Which network does Airalo use in Japan?",
@@ -110,7 +110,7 @@ const worksInJapanFaq = [
   },
   {
     q: "How fast is Airalo in Japan?",
-    a: "In urban areas (Tokyo, Osaka, Kyoto), Airalo delivered consistent 4G LTE speeds of 30–150 Mbps down — more than enough for Google Maps, streaming, and video calls. In rural areas, speeds dropped to 10–40 Mbps, which is still perfectly usable.",
+    a: "Airalo rides Docomo and SoftBank 4G LTE, which typically runs at roughly 30–150 Mbps down in Tokyo, Osaka and Kyoto — more than enough for Google Maps, streaming, and video calls. Rural figures are lower, typically 10–40 Mbps, which is still perfectly usable.",
   },
   {
     q: "Can I use Airalo on the shinkansen?",
@@ -148,17 +148,17 @@ export default function AiraloJapanReviewPage() {
         <title>Airalo Japan Review 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy."
+          content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/airalo-japan-review" />
-        <meta property="og:title" content="Airalo Japan Review 2026: Honest Test & Verdict" />
+        <meta property="og:title" content="Airalo Japan Review 2026: Plans, Coverage & Verdict" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/airalo-japan-review" />
-        <meta property="og:description" content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy." />
+        <meta property="og:description" content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Airalo Japan Review 2026: Honest Test & Verdict" />
-        <meta name="twitter:description" content="Is Airalo worth it for Japan? We tested their Japan eSIM plans, speeds, and setup. Read our honest review before you buy." />
+        <meta name="twitter:title" content="Airalo Japan Review 2026: Plans, Coverage & Verdict" />
+        <meta name="twitter:description" content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -179,7 +179,7 @@ export default function AiraloJapanReviewPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: "Airalo Japan Review 2026: Honest Test & Verdict",
+              headline: "Airalo Japan Review 2026: Plans, Coverage & Verdict",
               dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
@@ -226,7 +226,7 @@ export default function AiraloJapanReviewPage() {
             Airalo Japan Review 2026:<br />Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
-            We tested Airalo&apos;s Japan eSIM. Here&apos;s everything you need to know.
+            A close look at Airalo&apos;s Japan eSIM. Here&apos;s everything you need to know.
           </p>
           <div className={styles.heroBadges}>
             {["Prices checked daily", "Independently Reviewed", "Data-Only eSIM"].map((t) => (
@@ -471,7 +471,7 @@ export default function AiraloJapanReviewPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

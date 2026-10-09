@@ -190,13 +190,13 @@ export default function BestEsimJapanPage() {
           content="The best eSIMs for Japan 2026: Airalo, Holafly, eSIM Go & Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-esim-japan" />
-        <meta property="og:title" content="Best eSIM for Japan 2026: Top 4 Picks Tested & Compared" />
+        <meta property="og:title" content="Best eSIM for Japan 2026: Top 4 Picks Compared" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/best-esim-japan" />
         <meta property="og:description" content="The best eSIMs for Japan 2026: Airalo, Holafly, eSIM Go & Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best eSIM for Japan 2026: Top 4 Picks Tested & Compared" />
+        <meta name="twitter:title" content="Best eSIM for Japan 2026: Top 4 Picks Compared" />
         <meta name="twitter:description" content="The best eSIMs for Japan 2026: Airalo, Holafly, eSIM Go & Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />
         <script
           type="application/ld+json"
@@ -218,7 +218,7 @@ export default function BestEsimJapanPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: "Best eSIM for Japan 2026: Top 4 Picks Tested & Compared",
+              headline: "Best eSIM for Japan 2026: Top 4 Picks Compared",
               dateModified: "2026-09-16",
               author: {
                 "@type": "Organization",
@@ -262,13 +262,13 @@ export default function BestEsimJapanPage() {
             <span>📱</span> Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan 2026:<br />Tested &amp; Compared
+            Best eSIM for Japan 2026:<br />Top 4 Picks Compared
           </h1>
           <p className={styles.heroSubtitle}>
-            We tested every major Japan eSIM so you don&apos;t have to.
+            Every major Japan eSIM on one page, compared on price, data and coverage.
           </p>
           <div className={styles.heroBadges}>
-            {["Prices checked daily", "4 eSIMs Tested", "Independent Review"].map((t) => (
+            {["Prices checked daily", "4 eSIMs Compared", "Independent Review"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>

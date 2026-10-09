@@ -241,7 +241,7 @@ export default function HomePage() {
           <div className={styles.trustContent}>
             <h2 className={styles.trustTitle}>Independent. Honest. Up-to-date.</h2>
             <p className={styles.trustDesc}>
-              We research and test every product we recommend. Our reviews are never
+              We research every product we recommend and check its prices against the provider&apos;s own published rates. Our reviews are never
               sponsored — we only earn a small affiliate commission if you buy through
               our links, at no extra cost to you.
             </p>

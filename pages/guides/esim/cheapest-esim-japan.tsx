@@ -210,13 +210,13 @@ export default function CheapestEsimJapanPage() {
           content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`}
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
-        <meta property="og:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared" />
+        <meta property="og:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Compared" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
         <meta property="og:description" content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared" />
+        <meta name="twitter:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Compared" />
         <meta name="twitter:description" content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`} />
         <script
           type="application/ld+json"
@@ -238,7 +238,7 @@ export default function CheapestEsimJapanPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: "Cheapest eSIM for Japan 2026: Best Budget Picks Tested & Compared",
+              headline: "Cheapest eSIM for Japan 2026: Best Budget Picks Compared",
               dateModified: "2026-09-18",
               author: {
                 "@type": "Organization",
@@ -285,7 +285,7 @@ export default function CheapestEsimJapanPage() {
             Cheapest eSIM for Japan 2026:<br />Best Budget Picks
           </h1>
           <p className={styles.heroSubtitle}>
-            You don&apos;t need to overpay to stay connected in Japan. Here are the best value eSIMs we tested.
+            You don&apos;t need to overpay to stay connected in Japan. Here are the best value eSIMs in this month&apos;s price comparison.
           </p>
           <div className={styles.heroBadges}>
             {["Prices checked daily", "4 eSIMs Compared", "Verified on official sites"].map((t) => (
@@ -542,7 +542,7 @@ export default function CheapestEsimJapanPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Tested &amp; Compared</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

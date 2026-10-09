@@ -105,7 +105,7 @@ export default function DisclaimerPage() {
             <li>Network coverage and connection speed</li>
             <li>Ease of setup and use for foreign travelers</li>
             <li>Quality of customer support</li>
-            <li>User reviews and our own testing</li>
+            <li>User reviews and our own plan and price comparisons</li>
           </ul>
           <p className={styles.text}>
             We recommend products we genuinely believe will benefit our readers. If a product we have an affiliate relationship with does not meet our standards, we will say so — or not recommend it at all.
