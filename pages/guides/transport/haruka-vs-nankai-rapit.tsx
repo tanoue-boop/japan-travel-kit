@@ -416,7 +416,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/transportation" className={styles.relatedCard}>
+            <Link href="/guides/transport" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -424,7 +424,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Compare Japan Transport Options →</p>
+                <p className={styles.relatedTitle}>All Japan Transport Guides →</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -9,16 +9,16 @@ import { attractionArticles } from "../lib/guides-attractions";
 
 const categories = [
   {
-    href: "/sim-cards",
+    href: "/guides/esim/best-esim-japan",
     iconSrc: "/icons/card-sim.svg",
     iconAlt: "SIM Cards & eSIM icon",
     title: "SIM Cards & eSIM",
-    desc: "Stay connected from day one. Compare tourist SIM cards and eSIMs — data, coverage, and instant activation.",
+    desc: "Stay connected from day one. All four Japan providers compared on price, coverage, and instant activation.",
     badge: "Most Popular",
     badgeCls: styles.badgeSoftRed,
   },
   {
-    href: "/wifi-pocket",
+    href: "/guides/esim/pocket-wifi-vs-esim-japan",
     iconSrc: "/icons/card-wifi.svg",
     iconAlt: "Pocket WiFi icon",
     title: "Pocket WiFi",
@@ -27,7 +27,7 @@ const categories = [
     badgeCls: styles.badgeSoftBlue,
   },
   {
-    href: "/transportation",
+    href: "/guides/transport",
     iconSrc: "/icons/card-transport.svg",
     iconAlt: "Transportation icon",
     title: "Transportation",
@@ -36,7 +36,7 @@ const categories = [
     badgeCls: styles.badgeSoftGreen,
   },
   {
-    href: "/money",
+    href: "/guides/money",
     iconSrc: "/icons/card-money.svg",
     iconAlt: "Money & Payment icon",
     title: "Money & Payment",
@@ -180,8 +180,8 @@ export default function HomePage() {
           </p>
 
           <div className={styles.actions}>
-            <Link href="/sim-cards" className={styles.btnPrimary}>
-              Compare SIM Cards →
+            <Link href="/guides/esim/best-esim-japan" className={styles.btnPrimary}>
+              Compare Japan eSIMs →
             </Link>
             <Link href="#categories" className={styles.btnGhost}>
               Browse Topics
@@ -367,8 +367,8 @@ export default function HomePage() {
             <p className={styles.ctaDesc}>
               Start with connectivity — the most important thing to sort before you land.
             </p>
-            <Link href="/sim-cards" className={styles.btnPrimary}>
-              Find the Best Japan SIM Card →
+            <Link href="/guides/esim/best-esim-japan" className={styles.btnPrimary}>
+              Find the Best Japan eSIM →
             </Link>
           </div>
         </div>

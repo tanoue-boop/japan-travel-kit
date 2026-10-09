@@ -147,6 +147,10 @@
 .tdProvider { font-weight: 700; color: #0d1b4b; font-size: 0.88rem; }
 .tdBestFor { font-size: 0.8rem; color: #6b7280; }
 .tdPrice { font-weight: 800; color: #c62828; white-space: nowrap; }
+/* Capability ticks in comparison tables — moved from SimCards.module.css with the
+   voice / physical-SIM columns when /sim-cards was merged in (2026-10-09). */
+.yes { color: #22c55e; font-weight: 800; font-size: 1rem; }
+.no  { color: #e5e7eb; font-size: 1rem; }
 .tdRating {
   display: flex;
   align-items: center;

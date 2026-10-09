@@ -14,12 +14,12 @@ const guideHubs = [
   { href: "/guides/attractions", label: "Things to Do", iconSrc: "/icons/icon-attractions.svg", iconAlt: "Things to Do icon" },
 ];
 
-// Commercial landing pages (kept as-is)
+// Buying guides, promoted alongside the hubs because they are where visitors convert.
+// These were the /sim-cards and /wifi-pocket landing pages until 2026-10-09; the Transport
+// and Money entries went with them, since those now point at hubs already in the dropdown.
 const commercialLinks = [
-  { href: "/sim-cards",      label: "SIM Cards",   iconSrc: "/icons/icon-sim.svg",       iconAlt: "SIM Cards icon" },
-  { href: "/wifi-pocket",    label: "Pocket WiFi", iconSrc: "/icons/icon-wifi.svg",      iconAlt: "Pocket WiFi icon" },
-  { href: "/transportation", label: "Transport",   iconSrc: "/icons/icon-transport.svg", iconAlt: "Transport icon" },
-  { href: "/money",          label: "Money",       iconSrc: "/icons/icon-money.svg",     iconAlt: "Money icon" },
+  { href: "/guides/esim/best-esim-japan",           label: "Best eSIM",   iconSrc: "/icons/icon-sim.svg",  iconAlt: "Best eSIM icon" },
+  { href: "/guides/esim/pocket-wifi-vs-esim-japan", label: "Pocket WiFi", iconSrc: "/icons/icon-wifi.svg", iconAlt: "Pocket WiFi icon" },
 ];
 
 export default function Header() {
@@ -71,7 +71,7 @@ export default function Header() {
         </nav>
 
         <div className={styles.cta}>
-          <Link href="/sim-cards" className={styles.ctaBtn}>Get Connected →</Link>
+          <Link href="/guides/esim/best-esim-japan" className={styles.ctaBtn}>Get Connected →</Link>
         </div>
 
         <button
@@ -104,7 +104,7 @@ export default function Header() {
             {l.label}
           </Link>
         ))}
-        <Link href="/sim-cards" className={styles.mobileCta} onClick={() => setOpen(false)}>
+        <Link href="/guides/esim/best-esim-japan" className={styles.mobileCta} onClick={() => setOpen(false)}>
           Get Connected →
         </Link>
       </nav>

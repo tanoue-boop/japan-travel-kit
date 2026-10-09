@@ -1,18 +1,30 @@
 import Head from "next/head";
 import Link from "next/link";
+import StarRating from "../../../components/StarRating";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import cardStyles from "../../../styles/SIMCardCard.module.css";
 import { getProvider, priceFrom, pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
+import { cheapestPerDay, pocketWifis, ratesCheckedAt } from "../../../lib/pocket-wifi";
 
-// eSIM prices on this page are read from data/esim-prices.json (refreshed daily).
+// eSIM prices on this page are read from data/esim-prices.json (refreshed daily);
+// the Pocket WiFi rentals come from lib/pocket-wifi.ts. The two rental comparison
+// cards below moved here from /wifi-pocket when that page was merged in (2026-10-09).
 const pricesCheckedAt = pricesCheckedLabel();
 const ESIM_FROM = siteCheapestFrom();
 const AIRALO_FROM = priceFrom("airalo");
 const ESIMGO_FROM = priceFrom("esimgo");
+const WIFI_FROM = cheapestPerDay();
+
+const badgeColorMap: Record<string, string> = {
+  "bg-blue-500": cardStyles.badgeBlue,
+  "bg-green-500": cardStyles.badgeGreen,
+  "bg-orange-500": cardStyles.badgeOrange,
+};
 
 const faqItems = [
   {
     q: "Is eSIM cheaper than Pocket WiFi in Japan?",
-    a: `For solo travellers, yes. Japan eSIM plans start from ${ESIM_FROM} (checked ${pricesCheckedAt}), while Pocket WiFi typically costs $5–$10 per day. For groups of 3 or more, Pocket WiFi can work out cheaper per person when shared.`,
+    a: `For solo travellers, yes. Japan eSIM plans start from ${ESIM_FROM} (checked ${pricesCheckedAt}), while the rentals we list start at $${WIFI_FROM.fromUsdPerDay.toFixed(2)} per day — so a week's router costs more than a week's eSIM. For groups of 3 or more the router is a flat charge however many of you share it, which is where it wins.`,
   },
   {
     q: "Can I use Pocket WiFi and eSIM together?",
@@ -24,11 +36,19 @@ const faqItems = [
   },
   {
     q: "Which is better for a family trip to Japan?",
-    a: "For families with multiple devices — phones, tablets, kids' devices — Pocket WiFi is usually more cost-effective since one unit can connect up to 10 devices at a flat daily rate. For couples or solo travellers, eSIM is simpler and cheaper.",
+    a: `For families with multiple devices — phones, tablets, kids' devices — Pocket WiFi is usually more cost-effective since one unit can connect up to ${WIFI_FROM.maxDevices} devices at a flat daily rate. For couples or solo travellers, eSIM is simpler and cheaper. Our family and group guide works the break-even point out in detail.`,
   },
   {
-    q: "Can I rent Pocket WiFi at Japanese airports?",
-    a: "Yes. Narita, Haneda, Kansai, and most major international airports have Pocket WiFi rental counters. You can also arrange delivery to your hotel or pick up in advance at select locations. Returning the device is required at the end of your trip.",
+    q: "How many devices can connect to pocket WiFi?",
+    a: "Most rental pocket WiFi devices support up to 10 simultaneous connections, making them ideal for families or small groups where everyone wants their own phone or tablet connected. Connection speed may slow slightly with multiple devices active at once, but in practice it's rarely noticeable for typical tourist use — maps, messaging, and light browsing.",
+  },
+  {
+    q: "How long does a pocket WiFi battery last in Japan?",
+    a: "Most rental pocket WiFi batteries last 6–10 hours of continuous use. Ninja WiFi devices typically last around 8 hours. For a full day of sightseeing you may need to recharge during the day — Global WiFi includes a free powerbank, which solves this problem. Carrying a charging cable is always recommended.",
+  },
+  {
+    q: "Where do I pick up and return pocket WiFi in Japan?",
+    a: "Most providers offer airport pickup at Narita, Haneda, Kansai, and Fukuoka airports. Return is usually at the airport on departure — drop it in the dedicated return box before boarding. Some providers also offer hotel delivery. Book in advance to guarantee availability, especially during busy travel seasons like spring (cherry blossom) and autumn.",
   },
 ];
 
@@ -212,11 +232,11 @@ export default function PocketWifiVsEsimPage() {
                 <tbody>
                   {[
                     ["Setup", "QR code scan", "Pick up at airport"],
-                    ["Devices", "1 phone", "Up to 10 devices"],
-                    ["Battery needed", "No", "Yes"],
-                    ["Price", `From ${ESIM_FROM}`, "From $5/day"],
+                    ["Devices", "1 phone", `Up to ${WIFI_FROM.maxDevices} devices`],
+                    ["Battery needed", "No", `Yes — ${WIFI_FROM.batteryHours}`],
+                    ["Price", `From ${ESIM_FROM}`, `From $${WIFI_FROM.fromUsdPerDay.toFixed(2)}/day`],
                     ["Best for", "Solo travel", "Groups & families"],
-                    ["Data limit", "Capped or unlimited", "Usually unlimited"],
+                    ["Data limit", "Capped or unlimited", "Unlimited on both rentals here"],
                   ].map(([feature, esim, wifi]) => (
                     <tr key={feature}>
                       <td className={styles.tdProvider}>{feature}</td>
@@ -320,6 +340,93 @@ export default function PocketWifiVsEsimPage() {
           </div>
         </section>
 
+        {/* Pocket WiFi rentals — moved here from /wifi-pocket */}
+        <section className={styles.picksSection}>
+          <span className={styles.sectionLabel}>Pocket WiFi rentals</span>
+          <h2 className={styles.sectionTitle}>The Two Rentals Worth Booking</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1.5rem" }}>
+            If the comparison above points you at a router, these are the two we recommend. Both
+            give unlimited data and connect up to {WIFI_FROM.maxDevices} devices; the difference
+            is price against reviews. Rates are the advertised cheapest booking on Klook as of{" "}
+            {ratesCheckedAt} — longer rentals and peak season cost more, so treat them as a floor.
+          </p>
+          <div className={styles.picksList}>
+            {pocketWifis.map((item) => {
+              const badgeCls = badgeColorMap[item.badgeColor] ?? cardStyles.badgeBlue;
+              return (
+                <article key={item.id} id={item.id} className={cardStyles.card}>
+                  <div className={cardStyles.header}>
+                    <div className={cardStyles.nameBlock}>
+                      <div className={cardStyles.badgeRow}>
+                        <span className={`${cardStyles.badge} ${badgeCls}`}>{item.badge}</span>
+                      </div>
+                      <h3 className={cardStyles.name}>{item.name}</h3>
+                      <StarRating rating={item.rating} />
+                    </div>
+                    <div className={cardStyles.priceBlock}>
+                      <p className={cardStyles.priceFrom}>From</p>
+                      <p className={cardStyles.price}>${item.fromUsdPerDay.toFixed(2)}</p>
+                      <p className={cardStyles.priceCurrency}>USD / day · checked {ratesCheckedAt}</p>
+                    </div>
+                  </div>
+
+                  <div className={cardStyles.specs}>
+                    <div>
+                      <p className={cardStyles.specLabel}>Network</p>
+                      <p className={cardStyles.specValue}>{item.network}</p>
+                    </div>
+                    <div>
+                      <p className={cardStyles.specLabel}>Devices</p>
+                      <p className={cardStyles.specValue}>Up to {item.maxDevices}</p>
+                    </div>
+                    <div>
+                      <p className={cardStyles.specLabel}>Battery</p>
+                      <p className={cardStyles.specValue}>{item.batteryHours}</p>
+                    </div>
+                  </div>
+
+                  <div className={cardStyles.proscons}>
+                    <div>
+                      <p className={`${cardStyles.pcLabel} ${cardStyles.prosLabel}`}>✓ Pros</p>
+                      <ul className={cardStyles.pcList}>
+                        {item.pros.map((p) => (
+                          <li key={p} className={cardStyles.pcItem}>
+                            <span className={cardStyles.iconPro}>+</span>{p}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className={`${cardStyles.pcLabel} ${cardStyles.consLabel}`}>✗ Cons</p>
+                      <ul className={cardStyles.pcList}>
+                        {item.cons.map((c) => (
+                          <li key={c} className={cardStyles.pcItem}>
+                            <span className={cardStyles.iconCon}>−</span>{c}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className={cardStyles.cta}>
+                    <a
+                      href={item.affiliateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className={cardStyles.ctaBtn}
+                    >
+                      {item.ctaText}
+                      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
         {/* Our Recommendations */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Our picks</span>
@@ -334,7 +441,7 @@ export default function PocketWifiVsEsimPage() {
               </div>
               <p className={styles.whoForTitle}>Best eSIM: Airalo</p>
               <p className={styles.whoForDesc}>Largest eSIM marketplace. Japan plans from {AIRALO_FROM}. Runs on {getProvider("airalo").network}.</p>
-              <a href="https://airalo.pxf.io/c/7213504/1268485/15608" className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
+              <a href={getProvider("airalo").affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
                 Get Airalo →
               </a>
             </div>
@@ -347,7 +454,7 @@ export default function PocketWifiVsEsimPage() {
               </div>
               <p className={styles.whoForTitle}>Best Budget eSIM: eSIM Go</p>
               <p className={styles.whoForDesc}>Japan plans from {ESIMGO_FROM}. Great value on {getProvider("esimgo").network}.</p>
-              <a href="https://breezesim.com?sca_ref=11082101.AF8vabyRKN" className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
+              <a href={getProvider("esimgo").affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
                 Get eSIM Go →
               </a>
             </div>
@@ -358,11 +465,14 @@ export default function PocketWifiVsEsimPage() {
                   <path d="M19 9h2v6h-2" />
                 </svg>
               </div>
-              <p className={styles.whoForTitle}>Best Pocket WiFi</p>
-              <p className={styles.whoForDesc}>Compare the best Pocket WiFi rental options for Japan, including airport pickup and hotel delivery.</p>
-              <Link href="/wifi-pocket" className={styles.pickCta} style={{ marginTop: "0.75rem", display: "inline-flex" }}>
-                View Pocket WiFi options →
-              </Link>
+              <p className={styles.whoForTitle}>Best Pocket WiFi: {WIFI_FROM.name}</p>
+              <p className={styles.whoForDesc}>
+                Unlimited data for up to {WIFI_FROM.maxDevices} devices from $
+                {WIFI_FROM.fromUsdPerDay.toFixed(2)}/day, on {WIFI_FROM.network}, with airport pickup.
+              </p>
+              <a href={WIFI_FROM.affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
+                {WIFI_FROM.ctaText} →
+              </a>
             </div>
           </div>
         </section>
@@ -417,7 +527,7 @@ export default function PocketWifiVsEsimPage() {
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/wifi-pocket" className={styles.relatedCard}>
+            <Link href="/guides/esim/japan-esim-family-group" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="1" y="6" width="18" height="12" rx="2" />
@@ -425,7 +535,7 @@ export default function PocketWifiVsEsimPage() {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best Pocket WiFi for Japan: Compare &amp; Rent Options</p>
+                <p className={styles.relatedTitle}>Japan eSIM for Family &amp; Group Travel: Where the Break-Even Falls</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

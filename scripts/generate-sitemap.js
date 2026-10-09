@@ -7,11 +7,12 @@
  *   in pages, so all three stay in sync). See that module for the shallow-clone fallback.
  * - data/page-dates.json is the committed snapshot of those dates, used when the
  *   build environment has no full git history.
- * - Any URL that has been 301-redirected in lib/redirects.js is excluded.
+ * - Any URL that has been 301-redirected in lib/redirects.js is excluded (both the merged
+ *   guides and the retired top-level landing pages).
  */
 const fs = require("fs");
 const path = require("path");
-const { removedGuides } = require("../lib/redirects");
+const { allRedirects } = require("../lib/redirects");
 const { BUILD_DATE, PAGES_DIR, fileToRoute, writeSnapshot } = require("../lib/page-dates");
 
 const SITE = "https://www.japan-travel-kit.com";
@@ -33,8 +34,7 @@ function walk(dir) {
 
 function meta(route) {
   if (route === "/") return { changefreq: "monthly", priority: "1.0" };
-  if (["/sim-cards", "/guides"].includes(route)) return { changefreq: "monthly", priority: "0.9" };
-  if (["/wifi-pocket", "/transportation", "/money"].includes(route)) return { changefreq: "monthly", priority: "0.8" };
+  if (route === "/guides") return { changefreq: "monthly", priority: "0.9" };
   if (["/about"].includes(route)) return { changefreq: "yearly", priority: "0.5" };
   if (["/disclaimer", "/privacy-policy"].includes(route)) return { changefreq: "yearly", priority: "0.3" };
   return { changefreq: "monthly", priority: "0.8" }; // guide hubs + articles
@@ -43,7 +43,7 @@ function meta(route) {
 const routes = walk(PAGES_DIR)
   .filter((f) => !/[\\/]_(app|document)\.tsx$/.test(f) && !/[\\/](404|500)\.tsx$/.test(f))
   .map(fileToRoute)
-  .filter((route) => !(route in removedGuides))
+  .filter((route) => !(route in allRedirects))
   .sort((a, b) => a.localeCompare(b));
 
 const lastmod = writeSnapshot(routes);

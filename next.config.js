@@ -1,4 +1,4 @@
-const { removedGuides } = require("./lib/redirects");
+const { allRedirects } = require("./lib/redirects");
 
 // Captured once per build; surfaced in the footer as "Updated <Month YYYY>".
 const BUILD_DATE = new Date().toISOString();
@@ -22,7 +22,8 @@ const nextConfig = {
         destination: "/guides/esim/best-esim-japan",
         permanent: true,
       },
-      ...Object.entries(removedGuides).map(([source, destination]) => ({
+      // Merged guides plus the retired top-level landing pages — see lib/redirects.js.
+      ...Object.entries(allRedirects).map(([source, destination]) => ({
         source,
         destination,
         permanent: true,

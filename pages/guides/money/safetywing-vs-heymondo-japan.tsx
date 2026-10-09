@@ -378,7 +378,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/money" className={styles.relatedCard}>
+            <Link href="/guides/money" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -386,7 +386,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Compare Japan Money &amp; Payment Options →</p>
+                <p className={styles.relatedTitle}>All Japan Money &amp; Payment Guides →</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

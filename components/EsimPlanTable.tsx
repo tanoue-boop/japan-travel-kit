@@ -25,13 +25,16 @@ type Props = {
   highlightIds?: string[];
 };
 
-/** Affiliate link, or an internal fallback when a programme is still pending. */
+/**
+ * Affiliate link, or an internal fallback when a programme is still pending.
+ * The fallback was /sim-cards until that page was merged into best-esim-japan (2026-10-09).
+ */
 export function ProviderCta({ providerId, label, ghost, className }: { providerId: EsimProviderId; label: string; ghost?: boolean; className?: string }) {
   const p = esimProviders.find((x) => x.id === providerId)!;
   const cls = className ?? `${tools.rowCta} ${ghost ? tools.rowCtaGhost : ""}`;
   if (p.affiliateUrl === "#") {
     return (
-      <Link href="/sim-cards" className={cls}>
+      <Link href="/guides/esim/best-esim-japan" className={cls}>
         {label}
       </Link>
     );

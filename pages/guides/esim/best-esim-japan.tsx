@@ -19,6 +19,10 @@ import tools from "../../../styles/Tools.module.css";
 // which is refreshed daily by scripts/fetch-esim-prices.mjs.
 const pricesCheckedAt = formatDate(latestCheckedAt());
 
+// Where a CTA goes when we have no affiliate link for a provider. Was /sim-cards until that
+// page was merged into this one (2026-10-09); the plan table is the closest equivalent.
+const PLANS_HREF = "/guides/esim/japan-esim-data-plans";
+
 // Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
 // so its purchase CTA points at Airalo's unlimited plans, the closest approved alternative.
 const HOLAFLY_ALT = {
@@ -161,6 +165,16 @@ const faqItems = [
     a: "Install the eSIM (scan the QR code) before you leave home — this takes 2–5 minutes and requires a Wi-Fi connection. However, most plans start counting days from the first time you connect to a network in Japan, not from when you install the profile. Switch to the Japan eSIM data line once your plane lands, so your plan starts when you need it.",
   },
   {
+    // Migrated from /sim-cards when that page was merged in (2026-10-09).
+    q: "Which network has the best coverage in Japan?",
+    a: "Docomo has the most extensive rural coverage, which is why it is worth choosing deliberately if your itinerary leaves the main cities — eSIM Go and Sakura Mobile both ride it. SoftBank and KDDI (used by Airalo and Holafly) are excellent in cities and along the tourist corridors. For the standard Tokyo–Kyoto–Osaka–Hiroshima route, any of the four works well and you will not notice the difference.",
+  },
+  {
+    // Migrated from /sim-cards when that page was merged in (2026-10-09).
+    q: "When should I buy my Japan SIM or eSIM?",
+    a: "Buy an eSIM before you leave home and activate it the moment your plane lands — there is no reason to wait, and nothing sells out. A physical SIM is different: airport counters and vending machines do run out of popular options in peak season, and pre-ordering a Sakura Mobile SIM for airport or hotel collection is both cheaper than buying on arrival and safer than hoping.",
+  },
+  {
     q: "Why is my Japan eSIM speed slow?",
     a: "A few possible causes: you've used most of your data allowance (many plans throttle speed after a threshold), you're in a low-coverage area (tunnels, rural mountains), or peak network congestion in crowded tourist areas like Shibuya or Kyoto Station. Try toggling Airplane Mode. If speeds don't improve and you're under your data limit, contact your provider's support.",
   },
@@ -284,7 +298,7 @@ export default function BestEsimJapanPage() {
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Provider", "Best For", "Price From", "Cheapest Plan", "Network", "Rating", ""].map((h) => (
+                    {["Provider", "Best For", "Price From", "Cheapest Plan", "Network", "Voice / SMS", "Physical SIM", "Rating", ""].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -294,7 +308,7 @@ export default function BestEsimJapanPage() {
                     const sim = simCards.find((s) => s.id === id)!;
                     const cheapest = cheapestPlan(esimId);
                     const affiliateUrl = getProvider(ctaAlt?.esimId ?? esimId).affiliateUrl;
-                    const url = affiliateUrl === "#" ? "/sim-cards" : affiliateUrl;
+                    const url = affiliateUrl === "#" ? PLANS_HREF : affiliateUrl;
                     const isExternal = affiliateUrl !== "#";
                     const label = ctaAlt?.ctaLabel ?? ctaLabel;
                     return (
@@ -304,6 +318,8 @@ export default function BestEsimJapanPage() {
                         <td className={styles.tdPrice}>{cheapest ? formatUsd(cheapest.priceUsd) : "—"}</td>
                         <td className={styles.tdNetwork}>{cheapest ? cheapest.name : "—"}</td>
                         <td className={styles.tdNetwork}>{getProvider(esimId).network}</td>
+                        <td>{sim.voiceCall ? <span className={styles.yes}>✓</span> : <span className={styles.no}>✗</span>}</td>
+                        <td>{sim.physicalSim ? <span className={styles.yes}>✓</span> : <span className={styles.no}>✗</span>}</td>
                         <td>
                           <span className={styles.tdRating}>
                             <span style={{ color: "#fbbf24" }}>★</span>
@@ -321,7 +337,7 @@ export default function BestEsimJapanPage() {
                               {label}
                             </a>
                           ) : (
-                            <Link href="/sim-cards" className={styles.tdLink}>
+                            <Link href={PLANS_HREF} className={styles.tdLink}>
                               {label}
                             </Link>
                           )}
@@ -340,6 +356,14 @@ export default function BestEsimJapanPage() {
               <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan, sorted by price per GB →</Link>
             </span>
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
+            Only Sakura Mobile sells a voice plan or a physical SIM — the other three are
+            data-only eSIMs. If you need a Japanese phone number, or your handset cannot take an
+            eSIM at all, that narrows the choice to one before price enters into it. See{" "}
+            <Link href="/guides/esim/japan-sim-card-vs-esim-2026" className={tools.inlineLink}>
+              SIM card vs eSIM for Japan →
+            </Link>
+          </p>
         </section>
 
         {/* Top Picks */}
@@ -350,7 +374,7 @@ export default function BestEsimJapanPage() {
             {topPicks.map(({ id, esimId, rank, bestFor, badgeCls, target, ctaLabel, ctaAlt }) => {
               const sim = simCards.find((s) => s.id === id)!;
               const affiliateUrl = getProvider(ctaAlt?.esimId ?? esimId).affiliateUrl;
-              const url = affiliateUrl === "#" ? "/sim-cards" : affiliateUrl;
+              const url = affiliateUrl === "#" ? PLANS_HREF : affiliateUrl;
               const isExternal = affiliateUrl !== "#";
               const label = ctaAlt?.ctaLabel ?? ctaLabel;
               return (
@@ -403,11 +427,11 @@ export default function BestEsimJapanPage() {
                           {label}
                         </a>
                       ) : (
-                        <Link href="/sim-cards" className={styles.pickCta}>
+                        <Link href={PLANS_HREF} className={styles.pickCta}>
                           {label}
                         </Link>
                       )}
-                      <Link href="/sim-cards" className={styles.pickCtaInternal}>
+                      <Link href={PLANS_HREF} className={styles.pickCtaInternal}>
                         Compare all plans
                       </Link>
                     </div>
@@ -588,12 +612,12 @@ export default function BestEsimJapanPage() {
         {/* CTA Banner */}
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>Ready to compare all options?</h2>
+            <h2 className={styles.ctaBannerTitle}>Ready to compare every plan?</h2>
             <p className={styles.ctaBannerDesc}>
-              See full plan details, pricing, and our complete reviews for every Japan SIM card and eSIM.
+              Every Japan eSIM plan from all four providers, sorted by price per GB and updated daily.
             </p>
-            <Link href="/sim-cards" className={styles.ctaBannerBtn}>
-              View Full SIM Card Comparison →
+            <Link href={PLANS_HREF} className={styles.ctaBannerBtn}>
+              View All Plans by Price per GB →
             </Link>
           </div>
         </div>

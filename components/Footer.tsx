@@ -16,15 +16,20 @@ const cols = [
   {
     title: "Connectivity",
     links: [
-      { href: "/sim-cards",   label: "SIM Cards & eSIM" },
-      { href: "/wifi-pocket", label: "Pocket WiFi"       },
+      { href: "/guides/esim/best-esim-japan",           label: "Best eSIM for Japan" },
+      { href: "/guides/esim/pocket-wifi-vs-esim-japan", label: "Pocket WiFi vs eSIM" },
+      { href: "/guides/esim/japan-esim-data-plans",     label: "All Data Plans"      },
     ],
   },
   {
-    title: "Getting Around",
+    // Was "Getting Around" pointing at /transportation and /money. Those pages were merged
+    // into the hubs already listed under Guides (2026-10-09), so this column now surfaces
+    // the individual guides visitors arrive on most instead of repeating the hub links.
+    title: "Popular Guides",
     links: [
-      { href: "/transportation", label: "Transportation"   },
-      { href: "/money",          label: "Money & Payment" },
+      { href: "/guides/transport/jr-pass-worth-it", label: "Is the JR Pass Worth It?" },
+      { href: "/guides/transport/ic-cards-japan",   label: "Suica & IC Cards"         },
+      { href: "/guides/money/cash-vs-card-japan",   label: "Cash vs Card"             },
     ],
   },
   {
