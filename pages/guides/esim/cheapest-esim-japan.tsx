@@ -17,7 +17,10 @@ import {
 const AIRALO_URL = "https://airalo.pxf.io/c/7213504/1268485/15608";
 const SAKURA_URL = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
 const ESIMGO_URL = "https://breezesim.com?sca_ref=11082101.AF8vabyRKN";
-const HOLAFLY_URL = "#";
+// Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
+// so its purchase CTA points at Airalo's unlimited plans, the closest approved alternative.
+const HOLAFLY_ALT_LABEL = "Get Airalo unlimited eSIM →";
+const HOLAFLY_ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
 
 // Price comparison is drawn from data/esim-prices.json (refreshed daily by
 // scripts/fetch-esim-prices.mjs): cheapest plan per provider at each data tier.
@@ -105,8 +108,9 @@ const picks = [
     badgeColor: "#e65100",
     priceFrom: p(holaflyCheapest),
     network: "SoftBank / KDDI",
-    affiliateUrl: HOLAFLY_URL,
-    ctaLabel: "Get Holafly Japan eSIM →",
+    affiliateUrl: AIRALO_URL,
+    ctaLabel: HOLAFLY_ALT_LABEL,
+    ctaNote: HOLAFLY_ALT_NOTE,
     pros: [
       "Unlimited on-device data",
       "Plans from 1 to 90 days, any length",
@@ -169,7 +173,7 @@ const dealTips = [
     trip: "Heavy data user",
     pick: `Holafly Unlimited — from ${priceOf(holaflyCheapest)}`,
     why: "Stream video, use your phone as a hotspot, or simply stop worrying about data altogether.",
-    url: HOLAFLY_URL,
+    url: AIRALO_URL,
   },
 ];
 
@@ -444,24 +448,19 @@ export default function CheapestEsimJapanPage() {
                 </div>
               </div>
 
-              {pick.affiliateUrl !== "#" ? (
-                <a
-                  href={pick.affiliateUrl}
-                  className={styles.pickCta}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  style={{ marginTop: "1rem" }}
-                >
-                  {pick.ctaLabel}
-                </a>
-              ) : (
-                <Link
-                  href="/sim-cards"
-                  className={styles.pickCta}
-                  style={{ marginTop: "1rem" }}
-                >
-                  {pick.ctaLabel}
-                </Link>
+              <a
+                href={pick.affiliateUrl}
+                className={styles.pickCta}
+                target="_blank"
+                rel={pick.ctaNote ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                style={{ marginTop: "1rem" }}
+              >
+                {pick.ctaLabel}
+              </a>
+              {pick.ctaNote && (
+                <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+                  {pick.ctaNote}
+                </p>
               )}
             </div>
           ))}

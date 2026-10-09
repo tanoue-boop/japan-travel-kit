@@ -12,6 +12,13 @@ const THIRTY_DAY = unlimitedFromLabel("holafly", 30);
 const AIRALO_FROM = priceFromLabel("airalo");
 const AIRALO_FIVE = priceAtLeastLabel("airalo", 5);
 
+// Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
+// so the purchase CTAs below point at Airalo's unlimited plans, the closest approved alternative.
+const ALT_URL = getProvider("airalo").affiliateUrl;
+const ALT_LABEL = "Get Airalo unlimited eSIM →";
+const ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
+const altNoteStyle = { fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 };
+
 const pros = [
   "Truly unlimited data, no caps",
   "No speed throttling worries",
@@ -274,9 +281,10 @@ export default function HolaflyJapanReviewPage() {
                 <p className={styles.verdictStatValue}>{getProvider("holafly").network}</p>
               </div>
             </div>
-            <a href="#" className={styles.verdictBtn}>
-              Get Holafly Japan eSIM →
+            <a href={ALT_URL} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+              {ALT_LABEL}
             </a>
+            <p style={altNoteStyle}>{ALT_NOTE}</p>
           </div>
         </div>
 
@@ -416,9 +424,10 @@ export default function HolaflyJapanReviewPage() {
             but if your itinerary includes rural areas or very remote locations, Airalo&apos;s dual
             Docomo/SoftBank coverage gives broader fallback options.
           </p>
-          <a href="#" className={styles.pickCta}>
-            Get Holafly Japan eSIM →
+          <a href={ALT_URL} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            {ALT_LABEL}
           </a>
+          <p style={altNoteStyle}>{ALT_NOTE}</p>
         </section>
 
         {/* Does it work in Japan? */}

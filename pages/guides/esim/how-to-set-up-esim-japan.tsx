@@ -231,9 +231,11 @@ const troubleshootItems = [
   },
 ];
 
+// Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
+// so its row links to our review rather than to a purchase page.
 const esimRecommend = [
   { label: "Best overall",   name: "Airalo",        detail: `From ${priceFromLabel("airalo")}`,          href: link("airalo") },
-  { label: "Unlimited data", name: "Holafly",       detail: `From ${unlimitedFromLabel("holafly")}`,     href: link("holafly") },
+  { label: "Unlimited data", name: "Holafly",       detail: `From ${unlimitedFromLabel("holafly")}`,     href: "/guides/esim/holafly-japan-review", cta: "Read review →", internal: true },
   { label: "Best value",     name: "eSIM Go",       detail: `From ${priceFromLabel("esimgo")}`,          href: link("esimgo") },
   { label: "Long stay",      name: "Sakura Mobile", detail: `From ${priceFromLabel("sakura")}`,          href: link("sakura") },
 ];
@@ -824,14 +826,20 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
                       <td className={styles.tdProvider}>{r.name}</td>
                       <td>{r.detail}</td>
                       <td>
-                        <a
-                          href={r.href}
-                          className={styles.tableBtn}
-                          target="_blank"
-                          rel="noopener noreferrer nofollow"
-                        >
-                          Get deal →
-                        </a>
+                        {r.internal ? (
+                          <Link href={r.href} className={styles.tableBtn}>
+                            {r.cta}
+                          </Link>
+                        ) : (
+                          <a
+                            href={r.href}
+                            className={styles.tableBtn}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                          >
+                            Get deal →
+                          </a>
+                        )}
                       </td>
                     </tr>
                   ))}

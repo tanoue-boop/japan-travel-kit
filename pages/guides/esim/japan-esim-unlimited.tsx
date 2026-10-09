@@ -14,6 +14,13 @@ const AIRALO_10 = priceAtLeastLabel("airalo", 10);
 const AIRALO_FROM = priceFromLabel("airalo");
 const ESIMGO_10 = priceAtLeastLabel("esimgo", 10);
 
+// Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
+// so Holafly's purchase CTAs point at Airalo's unlimited plans, the closest approved alternative.
+const ALT_URL = getProvider("airalo").affiliateUrl;
+const ALT_LABEL = "Get Airalo unlimited eSIM →";
+const ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
+const altNoteStyle = { fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 };
+
 const dataUsageTable = [
   { activity: "Google Maps navigation",          perDay: "~50 MB",   weeklyTotal: "~350 MB" },
   { activity: "Messaging (WhatsApp / LINE)",     perDay: "~20 MB",   weeklyTotal: "~140 MB" },
@@ -47,8 +54,9 @@ const topPicks = [
     bestFor: "Heavy streamers, remote workers, and anyone unwilling to track their data usage",
     pros: ["No data cap at all", "No throttling after a limit", "Buy before you fly — instant QR delivery", "24/7 chat support"],
     cons: ["Most expensive option", "SoftBank only (slightly less rural coverage than Docomo)", "Data-only — no voice calls"],
-    cta: "Get Holafly Japan eSIM →",
-    href: "#",
+    cta: ALT_LABEL,
+    href: ALT_URL,
+    note: ALT_NOTE,
   },
   {
     rank: 2,
@@ -301,13 +309,14 @@ export default function JapanEsimUnlimitedPage() {
               </div>
             </div>
             <a
-              href="#"
+              href={ALT_URL}
               className={styles.verdictBtn}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="sponsored noopener"
             >
-              Get Holafly Japan eSIM →
+              {ALT_LABEL}
             </a>
+            <p style={altNoteStyle}>{ALT_NOTE}</p>
           </div>
         </div>
 
@@ -441,10 +450,11 @@ export default function JapanEsimUnlimitedPage() {
                     </div>
                   </div>
                   <div className={styles.pickCtaRow}>
-                    <a href={pick.href} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
+                    <a href={pick.href} className={styles.pickCta} target="_blank" rel={pick.note ? "sponsored noopener" : "noopener noreferrer nofollow"}>
                       {pick.cta}
                     </a>
                   </div>
+                  {pick.note && <p style={altNoteStyle}>{pick.note}</p>}
                 </div>
               </div>
             ))}

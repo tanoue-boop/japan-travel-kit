@@ -19,7 +19,28 @@ import tools from "../../../styles/Tools.module.css";
 // which is refreshed daily by scripts/fetch-esim-prices.mjs.
 const pricesCheckedAt = formatDate(latestCheckedAt());
 
-const topPicks = [
+// Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
+// so its purchase CTA points at Airalo's unlimited plans, the closest approved alternative.
+const HOLAFLY_ALT = {
+  esimId: "airalo" as EsimProviderId,
+  ctaLabel: "Get Airalo unlimited eSIM →",
+  note: "Holafly is not available through our links — Airalo is our recommended alternative.",
+};
+
+type TopPick = {
+  id: string;
+  esimId: EsimProviderId;
+  rank: number;
+  bestFor: string;
+  badgeCls: string;
+  target: string;
+  ctaLabel: string;
+  ctaExternal: boolean;
+  /** Set when we can't link the provider itself — the CTA points at an approved partner instead. */
+  ctaAlt?: typeof HOLAFLY_ALT;
+};
+
+const topPicks: TopPick[] = [
   {
     id: "airalo-japan",
     esimId: "airalo" as EsimProviderId,
@@ -31,9 +52,6 @@ const topPicks = [
     ctaExternal: false,
   },
   {
-    // TODO: Holafly affiliate link pending approval. affiliateUrl is "#" in data/esim-prices.json,
-    // so the CTA below renders as the same button style but routes to /sim-cards.
-    // Once approved, set affiliateUrl in the JSON and this CTA becomes external automatically.
     id: "holafly-japan",
     esimId: "holafly" as EsimProviderId,
     rank: 2,
@@ -42,6 +60,7 @@ const topPicks = [
     target: "Heavy data users: remote workers, streamers, daily video callers.",
     ctaLabel: "Get Holafly eSIM →",
     ctaExternal: false,
+    ctaAlt: HOLAFLY_ALT,
   },
   {
     id: "esim-go-japan",
@@ -271,12 +290,13 @@ export default function BestEsimJapanPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {topPicks.map(({ id, esimId, bestFor, ctaLabel }) => {
+                  {topPicks.map(({ id, esimId, bestFor, ctaLabel, ctaAlt }) => {
                     const sim = simCards.find((s) => s.id === id)!;
                     const cheapest = cheapestPlan(esimId);
-                    const affiliateUrl = getProvider(esimId).affiliateUrl;
+                    const affiliateUrl = getProvider(ctaAlt?.esimId ?? esimId).affiliateUrl;
                     const url = affiliateUrl === "#" ? "/sim-cards" : affiliateUrl;
                     const isExternal = affiliateUrl !== "#";
+                    const label = ctaAlt?.ctaLabel ?? ctaLabel;
                     return (
                       <tr key={id}>
                         <td className={styles.tdProvider}>{sim.provider}</td>
@@ -296,13 +316,13 @@ export default function BestEsimJapanPage() {
                               href={url}
                               className={styles.tdLink}
                               target="_blank"
-                              rel="noopener noreferrer nofollow"
+                              rel={ctaAlt ? "sponsored noopener" : "noopener noreferrer nofollow"}
                             >
-                              {ctaLabel}
+                              {label}
                             </a>
                           ) : (
                             <Link href="/sim-cards" className={styles.tdLink}>
-                              {ctaLabel}
+                              {label}
                             </Link>
                           )}
                         </td>
@@ -327,11 +347,12 @@ export default function BestEsimJapanPage() {
           <span className={styles.sectionLabel}>Our picks</span>
           <h2 className={styles.sectionTitle}>Top 4 Japan eSIMs</h2>
           <div className={styles.picksList}>
-            {topPicks.map(({ id, esimId, rank, bestFor, badgeCls, target, ctaLabel }) => {
+            {topPicks.map(({ id, esimId, rank, bestFor, badgeCls, target, ctaLabel, ctaAlt }) => {
               const sim = simCards.find((s) => s.id === id)!;
-              const affiliateUrl = getProvider(esimId).affiliateUrl;
+              const affiliateUrl = getProvider(ctaAlt?.esimId ?? esimId).affiliateUrl;
               const url = affiliateUrl === "#" ? "/sim-cards" : affiliateUrl;
               const isExternal = affiliateUrl !== "#";
+              const label = ctaAlt?.ctaLabel ?? ctaLabel;
               return (
                 <article key={id} id={id} className={styles.pickCard}>
                   <div className={styles.pickCardHeader}>
@@ -377,19 +398,24 @@ export default function BestEsimJapanPage() {
                           href={url}
                           className={styles.pickCta}
                           target="_blank"
-                          rel="noopener noreferrer nofollow"
+                          rel={ctaAlt ? "sponsored noopener" : "noopener noreferrer nofollow"}
                         >
-                          {ctaLabel}
+                          {label}
                         </a>
                       ) : (
                         <Link href="/sim-cards" className={styles.pickCta}>
-                          {ctaLabel}
+                          {label}
                         </Link>
                       )}
                       <Link href="/sim-cards" className={styles.pickCtaInternal}>
                         Compare all plans
                       </Link>
                     </div>
+                    {ctaAlt && (
+                      <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+                        {ctaAlt.note}
+                      </p>
+                    )}
                   </div>
                 </article>
               );

@@ -22,6 +22,9 @@ const AIRALO_10 = priceAtLeastLabel("airalo", 10);
 const HOLAFLY_7 = unlimitedFromLabel("holafly", 7);
 const HOLAFLY_10 = unlimitedFromLabel("holafly", 10);
 const HOLAFLY_30 = unlimitedFromLabel("holafly", 30);
+// Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026).
+// The secondary Holafly buttons therefore link to our review, next to the Airalo affiliate CTA.
+const HOLAFLY_REVIEW = "/guides/esim/holafly-japan-review";
 
 // Cheapest plan that covers each scenario (enough data AND enough days), and who wins on price.
 const cheapestCovering = (id: EsimProviderId, gb: number | null, days: number): EsimPlan | null =>
@@ -233,12 +236,9 @@ export default function AiraloVsHolaflyJapanPage() {
               >
                 Get Airalo →
               </a>
-              <a
-                href="#"
-                className={styles.pickCtaInternal}
-              >
-                Get Holafly →
-              </a>
+              <Link href={HOLAFLY_REVIEW} className={styles.pickCtaInternal}>
+                Read our Holafly review →
+              </Link>
             </div>
           </div>
         </div>
@@ -451,12 +451,9 @@ export default function AiraloVsHolaflyJapanPage() {
             >
               Get Airalo Japan eSIM →
             </a>
-            <a
-              href="#"
-              className={styles.pickCtaInternal}
-            >
-              Get Holafly Japan eSIM →
-            </a>
+            <Link href={HOLAFLY_REVIEW} className={styles.pickCtaInternal}>
+              Read our Holafly review →
+            </Link>
           </div>
         </section>
 
@@ -487,12 +484,9 @@ export default function AiraloVsHolaflyJapanPage() {
             >
               Get Airalo Japan eSIM →
             </a>
-            <a
-              href="#"
-              className={styles.pickCtaInternal}
-            >
-              Get Holafly Japan eSIM →
-            </a>
+            <Link href={HOLAFLY_REVIEW} className={styles.pickCtaInternal}>
+              Read our Holafly review →
+            </Link>
           </div>
         </section>
 
