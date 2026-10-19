@@ -26,6 +26,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/hakone-day-trip-from-tokyo</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/kyoto-nara-day-tour-from-osaka</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-tour-from-tokyo</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -56,8 +74,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-skytree-tickets</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-subway-ticket</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass</loc>
     <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/warner-bros-studio-tour-tokyo-tickets</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

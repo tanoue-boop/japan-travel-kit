@@ -184,3 +184,102 @@ export const fujiHakoneDayTour: KlookTour = {
   desc: "The Fuji Fifth Station paired with the Hakone volcanic area and Lake Ashi, as one day trip out of Tokyo",
   url: klookLink("https://www.klook.com/en-US/activity/75806-fuji-hakone-day-tour/"),
 };
+
+// ---------------------------------------------------------------------------
+// Day tours and tickets for the attractions guides added 19 Oct 2026
+//
+// Every URL below is a live en-US Klook listing. Klook answers automated
+// requests to its product pages with HTTP 403, so each one was confirmed
+// through the search index of www.klook.com rather than by reading the page
+// directly — which is also why no listing here carries a price.
+// ---------------------------------------------------------------------------
+
+export const fujiSubaruLineHakoneBusTour: KlookTour = {
+  title: "Fuji Subaru Line 5th Station, Lake Ashi & Hakone bus tour",
+  desc: "A join-in coach day tour from Tokyo pairing the Subaru Line Fifth Station with the Lake Ashi cruise",
+  url: klookLink("https://www.klook.com/en-US/activity/84103-fuji-subaru-line-5th-station-lake-ashi-hakone-join-one-day-bus-tour-tokyo/"),
+};
+
+export const fujiHakoneBulletTrainTour: KlookTour = {
+  title: "Mt. Fuji & Hakone tour with bullet-train return",
+  desc: "The same Fifth Station and Lake Ashi route, with the option to come back to Tokyo by shinkansen instead of coach",
+  url: klookLink("https://www.klook.com/en-US/activity/21108-mt-fuji-lake-ashi-owakudani-tokyo/"),
+};
+
+export const hakoneFreepass: KlookTour = {
+  title: "Hakone Freepass (2-day / 3-day)",
+  desc: "Odakyu's own Hakone pass as a Klook QR voucher — eight transport modes plus discounts around the loop",
+  url: klookLink("https://www.klook.com/en-US/activity/821-hakone-transport-day-pass-tokyo/"),
+};
+
+export const hakoneLoopBusTour: KlookTour = {
+  title: "Hakone Owakudani, Lake Ashi & Hakone Shrine bus tour",
+  desc: "A guided coach version of the Hakone loop out of Tokyo, with the ropeway and the pirate-ship cruise included",
+  url: klookLink("https://www.klook.com/en-US/activity/87293-hakone-owakudani-lake-ashi-hakone-shrine-bus-tour-tokyo/"),
+};
+
+export const hakoneCruiseCableCarTour: KlookTour = {
+  title: "Hakone cruise, cable car & Owakudani day tour",
+  desc: "Lake Ashi by boat, the cable car over the volcanic valley and an onsen stop, booked as one day out of Tokyo",
+  url: klookLink("https://www.klook.com/en-US/activity/38220-ontabi-hakone-da-tour/"),
+};
+
+export const skytreeTicket: KlookTour = {
+  title: "TOKYO SKYTREE ticket",
+  desc: "Timed-entry admission to Floor 350, with the Floor 450 combo available on the same listing",
+  url: klookLink("https://www.klook.com/en-US/activity/41352-tokyo-skytree/"),
+};
+
+export const skytreeAquariumCombo: KlookTour = {
+  title: "Tokyo Skytree + Sumida Aquarium combo ticket",
+  desc: "The observation deck bundled with the aquarium in the same Solamachi complex at the tower's base",
+  url: klookLink("https://www.klook.com/en-US/activity/59360-tokyo-skytree-sumida-aquarium-combo-ticket/"),
+};
+
+export const kyotoNaraArashiyamaTour: KlookTour = {
+  title: "Kyoto & Nara day tour: Sagano railway, Nara Park & Fushimi Inari",
+  desc: "Departs Osaka and covers Arashiyama, the Sagano scenic railway, Nara Park and the Fushimi Inari torii gates",
+  url: klookLink("https://www.klook.com/en-US/activity/110001-kyoto-nara-deer-arashiyama-fushimi-inari-day-tour/"),
+};
+
+export const arashiyamaNaraTodaijiTour: KlookTour = {
+  title: "Arashiyama, Kinkaku-ji & Nara Todai-ji day tour from Osaka",
+  desc: "An English-guided coach day tour taking in Arashiyama, Kinkaku-ji and the Great Buddha Hall at Todai-ji",
+  url: klookLink("https://www.klook.com/en-US/activity/3217-arashiyama-nara-todai-ji-day-tour-osaka/"),
+};
+
+export const kyotoNaraKiyomizuTour: KlookTour = {
+  title: "Kyoto & Nara day trip: Kiyomizu-dera, Fushimi Inari & Nara Park",
+  desc: "The temple-and-shrine version of the same day, departing from either Osaka or Kyoto",
+  url: klookLink("https://www.klook.com/en-US/activity/87236-kyoto-tour-nara/"),
+};
+
+export const kyotoNaraUjiTour: KlookTour = {
+  title: "Kyoto, Nara & Uji world-heritage day tour",
+  desc: "Adds Uji and Byodo-in to the Nara Park and Fushimi Inari route — three cities in one day out of Osaka",
+  url: klookLink("https://www.klook.com/en-US/activity/142440-kyoto-nara-uji-world-heritage-scenic-explore-one-day-tour/"),
+};
+
+export const warnerBrosStudioTourTokyo: KlookTour = {
+  title: "Warner Bros. Studio Tour Tokyo — The Making of Harry Potter",
+  desc: "Date- and time-specified admission to the Toshimaen studio tour, bookable in English on a foreign card",
+  url: klookLink("https://www.klook.com/en-US/activity/84374-warner-bros-studio-tour-tokyo-making-harry-potter/"),
+};
+
+export const tokyoSubwayTicket: KlookTour = {
+  title: "Tokyo Subway Ticket (24 / 48 / 72 hour)",
+  desc: "Unlimited rides on all Tokyo Metro and Toei Subway lines, collected on arrival instead of queuing for it",
+  url: klookLink("https://www.klook.com/en-US/activity/1552-subway-ticket-tokyo/"),
+};
+
+export const subwayCityViewCombo: KlookTour = {
+  title: "Tokyo Subway 24-hour Ticket + TOKYO CITY VIEW admission",
+  desc: "The 24-hour subway pass bundled with the Roppongi Hills observation deck",
+  url: klookLink("https://www.klook.com/en-US/activity/185124-tokyo-subway-24-hour-ticket-tokyo-city-view-admission-ticket/"),
+};
+
+export const naritaBusSubwayCombo: KlookTour = {
+  title: "Narita Airport bus + Hakone Freepass or Tokyo Subway 24-hour Ticket",
+  desc: "An airport limousine bus transfer sold together with either the subway pass or the Hakone Freepass",
+  url: klookLink("https://www.klook.com/en-US/activity/177493-narita-airport-limousine-tokyo-subway-pass-the-purpose-of-the-pass-include/"),
+};
