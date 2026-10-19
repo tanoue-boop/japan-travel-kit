@@ -1,0 +1,37 @@
+name: IndexNow
+
+# Tells Bing (and DuckDuckGo / Ecosia / Yahoo, which share its index) about pages
+# changed by the push. Scoped to pages/** and lib/**: the daily data/esim-prices.json
+# commit from update-prices.yml changes no URLs and must not trigger a ping.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "pages/**"
+      - "lib/**"
+  workflow_dispatch:
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      # fetch-depth: 2 — the script diffs HEAD~1..HEAD to find the changed pages.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Vercel builds and promotes the commit in roughly a minute; 3 minutes keeps
+      # us clear of a slow build, so Bing never fetches a URL that is still stale.
+      - name: Wait for the Vercel production deploy
+        run: sleep 180
+
+      - name: Submit changed URLs
+        run: node scripts/indexnow-submit.mjs --changed
