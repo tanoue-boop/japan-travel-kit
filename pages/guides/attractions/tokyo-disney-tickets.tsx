@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { fujiDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const DISNEY_TICKET_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304885&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F695-tokyo-disney-resort-1-day-pass-tokyo%2F";
@@ -441,6 +443,13 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             ))}
           </div>
         </section>
+
+        {/* Klook tours in the same city — the Disney ticket CTAs above are unchanged. */}
+        <KlookTourPicks
+          heading="Day Trips From the Same City"
+          intro="A park day is a whole day, so most people book Disney around the rest of a Tokyo week rather than into it. These two fill one of the non-park days and check out on the same Klook account as the tickets."
+          tours={[fujiDayTour, tokyoSightseeingBusTour]}
+        />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

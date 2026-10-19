@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { osakaStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const attractionRoutes = [
@@ -308,6 +310,13 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             route covers the majority of what most visitors want to see in Osaka.
           </p>
         </section>
+
+        {/* Where to stay for easy transport */}
+        <KlookStayAreas
+          heading="Where to Stay So Getting Around Is Easy"
+          intro="In Osaka the answer is unusually simple: stay on the Midosuji Line. It runs north to south through every hub a visitor needs, trains come every 2–3 minutes, and end-to-end fares are small change. These three stops are the ones worth booking around."
+          areas={osakaStayAreas}
+        />
 
         {/* Day Passes */}
         <section className={styles.comparisonSection}>

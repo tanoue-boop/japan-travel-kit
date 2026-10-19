@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { fujiDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // CTA link — Klook affiliate redirect (teamLab Planets Toyosu ticket).
@@ -495,6 +497,13 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             ))}
           </div>
         </section>
+
+        {/* Klook tours in the same city — the ticket CTAs above are unchanged. */}
+        <KlookTourPicks
+          heading="Day Trips From the Same City"
+          intro="Planets takes about an hour on site, so it usually shares a day with something else. If you still have a free day in the Tokyo half of your trip, these two run out of the city and back the same evening."
+          tours={[fujiDayTour, tokyoSightseeingBusTour]}
+        />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

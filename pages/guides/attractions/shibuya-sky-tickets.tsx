@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { fujiHakoneDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // CTA link — Klook affiliate redirect.
@@ -434,6 +436,13 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             ))}
           </div>
         </section>
+
+        {/* Klook tours in the same city — the Shibuya Sky CTAs above are unchanged. */}
+        <KlookTourPicks
+          heading="Day Trips From the Same City"
+          intro="A Shibuya Sky slot fills an hour of an evening, which leaves the rest of the day open. If a Tokyo day is still unplanned, both of these are booked on the same Klook account as your ticket."
+          tours={[tokyoSightseeingBusTour, fujiHakoneDayTour]}
+        />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

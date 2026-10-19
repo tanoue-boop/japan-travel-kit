@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { kyotoStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const transportOptions = [
@@ -487,6 +489,13 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             </a>
           </div>
         </section>
+
+        {/* Where to stay for easy transport */}
+        <KlookStayAreas
+          heading="Where to Stay So Getting Around Is Easy"
+          intro="Kyoto's sights are spread out and the buses that reach them crawl in peak season, so a hotel near a subway line or a bus terminus saves real time. Stay where the 100 and 101 bus routes or the two subway lines pass, and most temple days start with a short walk rather than a transfer."
+          areas={kyotoStayAreas}
+        />
 
         {/* Getting to/from Kyoto */}
         <section className={styles.installSection}>

@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { tokyoAirportStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const naritaOptions = [
@@ -551,6 +553,13 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             ))}
           </div>
         </section>
+
+        {/* Where to stay for easy airport access */}
+        <KlookStayAreas
+          heading="Where to Stay So the Airport Run Is Easy"
+          intro="Which transfer is best depends less on the airport than on where you sleep, because only a handful of areas have a direct airport train. If you have not booked a hotel yet, picking one of these first makes the arrival and the departure straightforward — and matters most on an early-morning flight out."
+          areas={tokyoAirportStayAreas}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

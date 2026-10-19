@@ -12,6 +12,7 @@ import {
   unlimitedFromLabel,
   type EsimProviderId,
 } from "../../../lib/esim-prices";
+import { klookEsim } from "../../../lib/klook-links";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 
@@ -345,10 +346,33 @@ export default function BestEsimJapanPage() {
                       </tr>
                     );
                   })}
+                  {/* Unranked extra: Klook sells a Japan eSIM of its own, but its product page
+                      blocks automated price reads, so there is no verified figure to rank it on. */}
+                  <tr>
+                    <td className={styles.tdProvider}>{klookEsim.name}</td>
+                    <td className={styles.tdBestFor}>Booking tickets on Klook already</td>
+                    <td className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
+                    <td className={tools.tdMuted}>—</td>
+                    <td className={tools.tdMuted}>Not stated on the listing</td>
+                    <td><span className={styles.no}>✗</span></td>
+                    <td><span className={styles.no}>✗</span></td>
+                    <td className={tools.tdMuted}>Unranked</td>
+                    <td>
+                      <a href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+                        {klookEsim.ctaLabel}
+                      </a>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
+            The Klook row sits outside the ranking on purpose. The four providers above are ranked on
+            prices we read off their own sites every day; Klook&apos;s eSIM listing could not be read
+            automatically when we last tried ({klookEsim.checkedAt}), so we have no price or data tier to
+            place it against them. Open the listing to see the current options.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
             <span className={tools.liveBadge}><span className={tools.liveDot} /> Prices checked daily</span>
             <span>
@@ -445,6 +469,40 @@ export default function BestEsimJapanPage() {
               );
             })}
           </div>
+
+          {/* Fifth slot, deliberately unranked — see the note under the comparison table. */}
+          <article id="klook-japan-esim" className={styles.pickCard} style={{ marginTop: "1.5rem" }}>
+            <div className={styles.pickCardHeader}>
+              <div className={styles.pickRank}>
+                <div className={styles.pickMeta}>
+                  <span className={`${styles.pickBadge} ${styles.pickBadgeBlue}`}>Also available</span>
+                  <span className={styles.pickName}>{klookEsim.name}</span>
+                </div>
+              </div>
+            </div>
+            <div className={styles.pickCardBody}>
+              <p className={styles.pickSummary}>{klookEsim.note}</p>
+              <div className={styles.pickTarget}>
+                <span className={styles.pickTargetLabel}>Best for:</span>
+                <span>
+                  Travellers already buying Japan tickets or transport on Klook who want the eSIM on the
+                  same account.
+                </span>
+              </div>
+              <div className={styles.pickCtaRow}>
+                <a href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+                  {klookEsim.ctaLabel}
+                </a>
+                <Link href={PLANS_HREF} className={styles.pickCtaInternal}>
+                  Compare all plans
+                </Link>
+              </div>
+              <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+                Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;. No price or data allowance is quoted
+                here because the listing could not be read automatically on {klookEsim.checkedAt}.
+              </p>
+            </div>
+          </article>
         </section>
 
         {/* How to Install */}

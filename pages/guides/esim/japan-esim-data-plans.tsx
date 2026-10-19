@@ -5,6 +5,7 @@ import tools from "../../../styles/Tools.module.css";
 import EsimPlanFinder from "../../../components/EsimPlanFinder";
 import EsimPlanTable, { ProviderCta } from "../../../components/EsimPlanTable";
 import EsimPriceStatus from "../../../components/EsimPriceStatus";
+import { klookEsim } from "../../../lib/klook-links";
 import {
   allEsimPlans,
   bestValuePlan,
@@ -348,10 +349,30 @@ export default function JapanEsimDataPlansPage() {
                       </td>
                     </tr>
                   ))}
+                  {/* Klook sells a Japan eSIM too, but its listing blocks automated price reads,
+                      so it stays out of the sortable plan table and appears here without numbers. */}
+                  <tr>
+                    <td className={styles.tdProvider}>{klookEsim.name}</td>
+                    <td className={tools.tdMuted}>Not stated on the listing</td>
+                    <td className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
+                    <td className={tools.tdMuted}>—</td>
+                    <td className={tools.tdMuted}>—</td>
+                    <td>
+                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                        {klookEsim.ctaLabel}
+                      </a>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            Klook&apos;s own Japan eSIM is listed last and without figures: the four providers above are read
+            automatically from their pricing pages every day, and Klook&apos;s listing could not be read on{" "}
+            {klookEsim.checkedAt}. It is therefore absent from the sortable table and the plan finder, which
+            only work on verified prices.
+          </p>
         </section>
 
         {/* How Much Data */}

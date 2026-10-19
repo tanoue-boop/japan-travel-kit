@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { tokyoStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const keyRoutes = [
@@ -387,6 +389,13 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             Prices shown are approximate IC card fares. Cash ticket fares are slightly higher.
           </p>
         </section>
+
+        {/* Where to stay for easy transport */}
+        <KlookStayAreas
+          heading="Where to Stay So Getting Around Is Easy"
+          intro="Tokyo is big enough that your hotel decides how much of your day you spend on trains. The rule of thumb is to sleep on the Yamanote loop, or one or two stops off it: anything on that circle reaches the rest of the city without a transfer. Three areas do that best."
+          areas={tokyoStayAreas}
+        />
 
         {/* Day Passes */}
         <section className={styles.comparisonSection}>

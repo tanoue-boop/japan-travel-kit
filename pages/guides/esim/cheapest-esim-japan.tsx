@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import { ProviderCta } from "../../../components/EsimPlanTable";
+import { klookEsim } from "../../../lib/klook-links";
 import {
   allEsimPlans,
   cheapestAtLeastGb,
@@ -369,13 +370,28 @@ export default function CheapestEsimJapanPage() {
                       <td><ProviderCta providerId={row.id} label="Buy →" /></td>
                     </tr>
                   ))}
+                  {/* Klook also sells a Japan eSIM. Its listing blocks automated price reads, so it
+                      gets a row but no numbers — and it cannot be ranked on price against the four above. */}
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontWeight: 700 }}>{klookEsim.name}</td>
+                    {[...TIERS, "unlimited"].map((tier) => (
+                      <td key={String(tier)} className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
+                    ))}
+                    <td>
+                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                        Open →
+                      </a>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
             Each cell is the provider&apos;s cheapest plan with <em>at least</em> that much data, in USD, read from the provider&apos;s
-            official site on {pricesCheckedAt}. All plans are eSIM-only.{" "}
+            official site on {pricesCheckedAt}. All plans are eSIM-only. The Klook row carries no prices:
+            its listing could not be read automatically on {klookEsim.checkedAt}, so it is not ranked here
+            and we make no claim about whether it undercuts the four above.{" "}
             <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan sorted by price per GB →</Link>
           </p>
         </section>
@@ -464,6 +480,40 @@ export default function CheapestEsimJapanPage() {
               )}
             </div>
           ))}
+
+          {/* Fifth slot, outside the ranking — no verified price to rank it on. */}
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+              <h3 className={styles.sectionTitle} style={{ margin: 0, fontSize: "1.2rem" }}>
+                {klookEsim.name}
+                <span style={{
+                  display: "inline-block",
+                  marginLeft: "0.6rem",
+                  background: "#6b7280",
+                  color: "#fff",
+                  fontSize: "0.68rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
+                  padding: "0.2rem 0.6rem",
+                  borderRadius: "999px",
+                  verticalAlign: "middle",
+                }}>Unranked — price not verified</span>
+              </h3>
+            </div>
+            <p className={styles.bodyText}>{klookEsim.note}</p>
+            <a
+              href={klookEsim.url}
+              className={styles.pickCta}
+              target="_blank"
+              rel="sponsored noopener"
+              style={{ marginTop: "0.5rem" }}
+            >
+              {klookEsim.ctaLabel}
+            </a>
+            <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+              Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;. Last attempted read: {klookEsim.checkedAt}.
+            </p>
+          </div>
         </section>
 
         {/* How to Get the Best Deal */}

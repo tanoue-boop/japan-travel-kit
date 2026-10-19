@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { osakaAirportStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const kixOptions = [
@@ -481,6 +483,13 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             ))}
           </div>
         </section>
+
+        {/* Where to stay for easy airport access */}
+        <KlookStayAreas
+          heading="Where to Stay So the Airport Run Is Easy"
+          intro="Kansai Airport splits neatly by hotel: the Rapi:t serves one side of Osaka and the Haruka the other, and whichever one stops near your hotel is usually the right answer. If the booking is still open, choosing one of these areas settles both the arrival and the trip back out."
+          areas={osakaAirportStayAreas}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>
