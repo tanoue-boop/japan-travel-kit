@@ -285,6 +285,49 @@ export const naritaBusSubwayCombo: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Products for the sixteen attractions guides restored 19 Oct 2026
+//
+// Most of those pages came back with a working affiliate.klook.com/redirect
+// link of their own and kept it. The entries below fill the gaps: the city
+// round-ups had no Klook route at all, and mt-fuji-day-trip-tokyo was pointed
+// at a Hakone tour, which is not what that page is about.
+//
+// Same rule as the block above — confirmed through the www.klook.com search
+// index on 19 Oct 2026, no prices, because the product pages answer automated
+// reads with HTTP 403.
+// ---------------------------------------------------------------------------
+
+export const tokyoMtFujiHighwayBus: KlookTour = {
+  title: "Tokyo – Mt. Fuji highway bus",
+  desc: "The direct coach from Tokyo to Kawaguchiko, Fuji-Q Highland and Fujisan Station, booked as a seat rather than a tour",
+  url: klookLink("https://www.klook.com/en-US/activity/159339-tokyo-mtfuji-highway-bus/"),
+};
+
+export const mtFujiPass: KlookTour = {
+  title: "Mt. Fuji Pass (1, 2 or 3 day)",
+  desc: "Unlimited buses and trains around the Fuji Five Lakes, with the ropeway and lake cruise included — the independent traveller's version of a tour",
+  url: klookLink("https://www.klook.com/en-US/activity/7719-mt-fuji-pass-tokyo/"),
+};
+
+export const fujiPhotographyDayTour: KlookTour = {
+  title: "Mt. Fuji scenic photography day tour from Tokyo",
+  desc: "Chureito Pagoda, Oishi Park on Lake Kawaguchi and Oshino Hakkai — the viewpoints rather than the Fifth Station",
+  url: klookLink("https://www.klook.com/en-US/activity/100747-mount-fuji-arakurayama-park-oshino-hakkai-kawaguchiko-bus-tour-tokyo/"),
+};
+
+export const kyotoHighlightBusTour: KlookTour = {
+  title: "Kyoto one-day highlight bus tour",
+  desc: "Kiyomizu-dera, Kinkaku-ji, Fushimi Inari and the Arashiyama bamboo grove in a single guided day",
+  url: klookLink("https://www.klook.com/en-US/activity/94748-arashiyama-kinkakuji-temple-fushimi-inari-taisha-join-one-day-bus-tour/"),
+};
+
+export const osakaAmazingPass: KlookTour = {
+  title: "Osaka Amazing Pass (1-day / 2-day)",
+  desc: "Unlimited Osaka Metro and city buses plus free admission to more than 40 facilities, as a digital pass",
+  url: klookLink("https://www.klook.com/en-US/activity/82312-amazing-pass-osaka/"),
+};
+
+// ---------------------------------------------------------------------------
 // "Before your trip" slots for the money guides (added 19 Oct 2026)
 //
 // The money guides are the site's second- and third-most-read pages and had no

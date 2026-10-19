@@ -6,7 +6,7 @@ import { articleDates } from "../../../lib/page-dates";
 export const getStaticProps = () => ({ props: { dates: articleDates(attractionArticles.map((a) => a.href)) } });
 
 const DESC =
-  "Japan attraction ticket guides: teamLab Planets and Borderless, Tokyo Disney, Universal Studios Japan, Shibuya Sky and sumo. Official prices, how to book from abroad, and when slots sell out.";
+  "Japan attraction guides: teamLab, Tokyo Disney, Universal Studios Japan, Shibuya Sky and sumo tickets, plus day trips to Fuji, Nikko, Kamakura, Nara and Hiroshima and hands-on experiences. Official prices and how to book from abroad.";
 
 export default function GuidesAttractionsPage({ dates }: { dates: Record<string, string> }) {
   return (

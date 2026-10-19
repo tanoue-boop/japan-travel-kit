@@ -301,6 +301,15 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             the Shinkansen is faster door-to-door than flying, once you factor in airport travel and check-in.
             It also drops you directly into city centres rather than 40 minutes outside them.
           </p>
+          <p className={styles.bodyText}>
+            It is fast enough to turn some of those routes into day trips. Kansai to{" "}
+            <Link href="/guides/attractions/hiroshima-miyajima-day-trip" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Hiroshima and Miyajima
+            </Link>{" "}
+            is around 90 minutes from Osaka and 100 to 120 from Kyoto, which makes both UNESCO sites
+            reachable and back in a single day — with the Nozomi exclusion below deciding which train you
+            board.
+          </p>
         </section>
 
         {/* Main Lines */}

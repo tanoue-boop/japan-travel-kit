@@ -313,6 +313,12 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
             glance. They all stop at the Fifth Station. The difference is what they do with the other six hours
             — and that is the thing worth choosing on.
           </p>
+          <p className={styles.bodyText}>
+            The Lake Kawaguchi side is a different matter: the pagoda, the lake shore and Oshino Hakkai are all
+            reachable on a direct train from Shinjuku, and our{" "}
+            <Link href="/guides/attractions/mt-fuji-day-trip-tokyo">Mt. Fuji day trip guide</Link> covers that
+            route, the Mt. Fuji Pass prices and how to plan the day without a coach.
+          </p>
         </section>
 
         {/* Tour comparison */}
@@ -448,6 +454,19 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Tokyo Skytree Tickets (2026): Prices, Floor 350 vs 450 &amp; How to Book</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/mt-fuji-day-trip-tokyo" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="3" width="16" height="14" rx="3" />
+                  <line x1="4" y1="10" x2="20" y2="10" />
+                  <path d="M7 21l2-4M17 21l-2-4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Mt. Fuji Day Trip From Tokyo (2026): How to Get There Yourself</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
