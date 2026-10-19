@@ -27,7 +27,8 @@
 .logo {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  align-items: flex-start;
+  gap: 0.3rem;
   text-decoration: none;
   flex-shrink: 0;
 }
@@ -38,12 +39,15 @@
   letter-spacing: 0.02em;
   color: var(--text);
   line-height: 1.1;
+  /* The accent rule sits under the whole wordmark with room beneath it. Until 2026-10-19 it
+     was a border-bottom on the <em> around "Travel Kit"; an inline box at line-height 1.1
+     draws its border below the line box, so the rule crossed the tagline underneath and
+     read as a strikethrough. A block-level border plus padding cannot reach the next line. */
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--accent);
 }
 .logoText em {
   font-style: normal;
-  /* Marked by a rule under the second word rather than a second colour. */
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 1px;
 }
 .logoTag {
   font-size: 0.66rem;

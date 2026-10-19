@@ -43,8 +43,12 @@
   --border:       #e4ddd0;
   --border-light: #e4ddd0;
 
-  --font-body:    var(--font-noto-sans), "Helvetica Neue", Arial, system-ui, sans-serif;
-  --font-display: var(--font-noto-serif), "Times New Roman", Georgia, serif;
+  /* --font-noto-* come from next/font and are declared on <html> (pages/_document.tsx).
+     The in-var() fallback is deliberate: a bare var() that resolves to nothing makes the
+     whole declaration invalid at computed-value time, which is how the 2026-10-19 restyle
+     shipped with no webfont at all — every element fell back to the UA default. */
+  --font-body:    var(--font-noto-sans, "Helvetica Neue"), Arial, system-ui, sans-serif;
+  --font-display: var(--font-noto-serif, "Times New Roman"), Georgia, serif;
 
   /* Corners: square by default, 2px where an input needs to read as a field */
   --radius:    0;

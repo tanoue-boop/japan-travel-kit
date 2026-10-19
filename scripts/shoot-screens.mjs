@@ -1,20 +1,25 @@
 /**
- * Screenshot the four reference pages at desktop and phone width.
+ * Screenshot the reference pages at desktop and phone width.
  * Expects `npm start` (or `npm run dev`) to be serving on BASE.
  *
- *   node scripts/shoot-screens.mjs "<output dir>"
+ *   node scripts/shoot-screens.mjs "<output dir>" [base url]
  */
 import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
 
-const BASE = process.env.BASE ?? "http://localhost:3000";
 const OUT = process.argv[2] ?? "screens";
+const BASE = process.argv[3] ?? process.env.BASE ?? "http://localhost:3000";
 
+// One page per template: the homepage, the all-guides index, a category hub, a city hub and
+// three articles that between them cover the article layouts.
 const PAGES = [
   ["home", "/"],
+  ["guides", "/guides"],
   ["guides-attractions", "/guides/attractions"],
+  ["things-to-do-tokyo", "/guides/attractions/things-to-do-tokyo"],
   ["shibuya-sky-tickets", "/guides/attractions/shibuya-sky-tickets"],
   ["best-esim-japan", "/guides/esim/best-esim-japan"],
+  ["jr-pass-guide", "/guides/transport/jr-pass-guide"],
 ];
 
 const VIEWPORTS = [

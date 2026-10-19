@@ -122,12 +122,11 @@
   color: var(--text);
   margin-bottom: 1.25rem;
 }
-/* The second line is marked by a rule, not recoloured — the accent never carries text
-   at display size. */
+/* Second line of the heading, flush left with the first. It carried a 2px accent rule on
+   its left edge until 2026-10-19, which indented the line and read as a stray mark rather
+   than emphasis — the hairline under the heading is the only accent the hero needs. */
 .titleAccent {
   display: block;
-  border-left: 2px solid var(--accent);
-  padding-left: 0.9rem;
 }
 
 .desc {

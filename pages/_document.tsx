@@ -1,9 +1,13 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { GA_MEASUREMENT_ID } from "../lib/gtag";
+import { fontVariableClass } from "../lib/fonts";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    // The next/font variable classes go on <html>, not on a wrapper inside <body>:
+    // globals.css composes --font-body / --font-display from them at :root, and a var()
+    // that is undefined where it is read makes the whole declaration invalid.
+    <Html lang="en" className={fontVariableClass}>
       <Head>
         <meta name="theme-color" content="#23211f" />
         <meta name="google-site-verification" content="RzJ62Gbm4Ng2tGuEyIW1CV4-UjWKOpZRkskuAGP52Gc" />

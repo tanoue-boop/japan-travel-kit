@@ -1,9 +1,9 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { Noto_Sans, Noto_Serif } from "next/font/google";
 import Head from "next/head";
 import "../styles/globals.css";
+import { fontVariableClass } from "../lib/fonts";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { GA_MEASUREMENT_ID, pageview, trackAffiliateClick } from "../lib/gtag";
@@ -30,24 +30,6 @@ const resolvePartner = (hostname: string): string | null => {
   }
   return null;
 };
-
-// Serif headings over sans body copy — the pairing a printed guidebook uses, and the one
-// thing that most separates this from the generic single-sans template the site had until
-// 2026-10-19. Both faces are wired through CSS variables (--font-display / --font-body in
-// styles/globals.css) so no module names a font directly.
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-noto-sans",
-});
-
-const notoSerif = Noto_Serif({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  display: "swap",
-  variable: "--font-noto-serif",
-});
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -99,12 +81,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:image" content="https://www.japan-travel-kit.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-    {/* The two font variables are scoped to this wrapper, so --font-body has to be applied
-        here rather than on <body> — nothing outside this element can resolve it. */}
+    {/* The font variables are declared on <html> in _document.tsx, so body's
+        font-family: var(--font-body) in globals.css resolves and is inherited from here down.
+        This wrapper only owns the sticky-footer layout. The class is kept so the generated
+        font CSS stays in this page bundle. */}
     <div
-      className={`${notoSans.variable} ${notoSerif.variable}`}
+      className={fontVariableClass}
       style={{
-        fontFamily: "var(--font-body)",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
