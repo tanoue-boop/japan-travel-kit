@@ -1,34 +1,64 @@
-/* Design tokens */
+/* ──────────────────────────────────────────────────────────────────────────
+   Design tokens — "a trustworthy editorial guide to what to book in Japan".
+   Three surfaces (生成り / 白 / 墨) plus one accent (弁柄), nothing else.
+
+   House rules, enforced across every module in styles/ and components/:
+     - no gradients, no glow, no blur, no shadow over 8px
+     - no corner radius over 2px
+     - the accent is a mark, a rule or a label — it never fills a surface
+     - contrast comes from swapping the surface (white → paper → sumi),
+       not from adding colour
+   ────────────────────────────────────────────────────────────────────────── */
 :root {
-  --red:        #c62828;
-  --red-dark:   #b71c1c;
-  --red-light:  #fff5f5;
-  --navy:       #0d1b4b;
-  --navy-dark:  #080e2d;
-  --navy-mid:   #1a237e;
-  --gold:       #c9a84c;
-  --cream:      #fdf8f0;
+  /* Surfaces */
+  --paper:        #f5f1e8;  /* 生成り — section backgrounds, the second surface */
+  --paper-deep:   #ece5d7;  /* a step darker: table heads, inset panels on paper */
+  --white:        #ffffff;
+  --sumi:         #23211f;  /* 墨 — body copy, primary buttons, dark bands, footer */
+  --sumi-soft:    #312e2a;  /* panels inside a sumi band */
 
-  --bg:         #f8fafc;
-  --surface:    #ffffff;
-  --border:     #e5e7eb;
-  --border-light: #f3f4f6;
-  --text:       #111827;
-  --text-muted: #6b7280;
-  --text-light: #9ca3af;
+  /* Accent — 弁柄, the vermilion of a torii knocked back to an earth red */
+  --accent:       #9b3d2e;
+  --accent-deep:  #7d2f23;  /* hover only */
+  --accent-wash:  #f3eae4;  /* the only tinted surface, for small labels */
 
-  --font-body:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Type */
+  --text:            #23211f;
+  --text-muted:      #6b665e;
+  --text-faint:      #8d877d;
+  --on-dark:         #f5f1e8;
+  --on-dark-muted:   rgba(245, 241, 232, 0.64);
+  --on-dark-faint:   rgba(245, 241, 232, 0.42);
 
-  --shadow:    0 2px 16px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.14);
-  --shadow-red: 0 4px 20px rgba(198, 40, 40, 0.28);
+  /* Rules */
+  --rule:         #e4ddd0;
+  --rule-strong:  #cdc4b2;
+  --rule-sumi:    #23211f;
+  --rule-on-dark: rgba(245, 241, 232, 0.18);
 
-  --radius:    14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  /* Aliases kept so modules can be read without a lookup table */
+  --bg:           #ffffff;
+  --surface:      #ffffff;
+  --surface-alt:  #f5f1e8;
+  --border:       #e4ddd0;
+  --border-light: #e4ddd0;
 
-  --max-w: 1152px;
+  --font-body:    var(--font-noto-sans), "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-display: var(--font-noto-serif), "Times New Roman", Georgia, serif;
+
+  /* Corners: square by default, 2px where an input needs to read as a field */
+  --radius:    0;
+  --radius-sm: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+
+  /* The one shadow in the system — the sticky header's hairline once scrolled */
+  --shadow-hairline: 0 1px 0 rgba(35, 33, 31, 0.12);
+
+  --max-w:      1152px;
+  --max-w-read: 820px;  /* article column */
+  --gutter:     1rem;
+  --gutter-wide: 1.5rem;
 }
 
 /* Reset */
@@ -44,10 +74,29 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.85;
+  letter-spacing: 0.005em;
   -webkit-font-smoothing: antialiased;
+}
+@media (min-width: 640px) { body { font-size: 16px; } }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  line-height: 1.35;
+  color: var(--text);
 }
 
 a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
 button { font-family: inherit; cursor: pointer; }
 img { display: block; max-width: 100%; }
+
+::selection { background: var(--accent); color: var(--white); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

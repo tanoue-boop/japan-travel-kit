@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta name="theme-color" content="#0d1b4b" />
+        <meta name="theme-color" content="#23211f" />
         <meta name="google-site-verification" content="RzJ62Gbm4Ng2tGuEyIW1CV4-UjWKOpZRkskuAGP52Gc" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

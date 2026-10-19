@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Noto_Sans, Noto_Serif } from "next/font/google";
 import Head from "next/head";
 import "../styles/globals.css";
 import Header from "../components/Header";
@@ -31,11 +31,22 @@ const resolvePartner = (hostname: string): string | null => {
   return null;
 };
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+// Serif headings over sans body copy — the pairing a printed guidebook uses, and the one
+// thing that most separates this from the generic single-sans template the site had until
+// 2026-10-19. Both faces are wired through CSS variables (--font-display / --font-body in
+// styles/globals.css) so no module names a font directly.
+const notoSans = Noto_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-plus-jakarta-sans",
+  variable: "--font-noto-sans",
+});
+
+const notoSerif = Noto_Serif({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-noto-serif",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -88,7 +99,17 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:image" content="https://www.japan-travel-kit.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-    <div className={plusJakartaSans.className} style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    {/* The two font variables are scoped to this wrapper, so --font-body has to be applied
+        here rather than on <body> — nothing outside this element can resolve it. */}
+    <div
+      className={`${notoSans.variable} ${notoSerif.variable}`}
+      style={{
+        fontFamily: "var(--font-body)",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Header />
       <main style={{ flex: 1 }}>
         <Component {...pageProps} />
