@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import styles from "../styles/Header.module.css";
@@ -23,11 +22,14 @@ const destinationItems = [
   { href: "/guides/attractions#daytrips",           label: "Day Trips" },
 ];
 
+// Text only, in both menus. The coloured category icons in public/icons were dropped on
+// 2026-10-19 with the rest of the template palette — five words carry the nav fine, and a
+// single-colour icon beside each one added nothing a label does not already say.
 const navItems = [
-  { href: "/guides/attractions", label: "Things to Do",  iconSrc: "/icons/icon-attractions.svg", iconAlt: "Things to Do icon" },
-  { href: "/guides/transport",   label: "Getting Around", iconSrc: "/icons/icon-transport.svg",   iconAlt: "Transport guides icon" },
-  { href: "/guides/esim",        label: "eSIM & SIM",     iconSrc: "/icons/icon-sim.svg",         iconAlt: "eSIM guides icon" },
-  { href: "/guides/money",       label: "Money",          iconSrc: "/icons/icon-money.svg",       iconAlt: "Money guides icon" },
+  { href: "/guides/attractions", label: "Things to Do"   },
+  { href: "/guides/transport",   label: "Getting Around" },
+  { href: "/guides/esim",        label: "eSIM & SIM"     },
+  { href: "/guides/money",       label: "Money"          },
 ];
 
 const CTA_HREF = "/guides/attractions";
@@ -67,10 +69,8 @@ export default function Header() {
     <header className={`${styles.header}${scrolled ? ` ${styles.scrolled}` : ""}`}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoIcon}>
-            <Image src="/icons/logo.svg" width={33} height={30} alt="Japan Travel Kit logo" unoptimized />
-          </span>
           <span className={styles.logoText}>Japan <em>Travel Kit</em></span>
+          <span className={styles.logoTag}>Tickets, tours &amp; trip prep</span>
         </Link>
 
         {/* Text-only on desktop so all five fit beside the logo and the CTA. */}
@@ -137,9 +137,6 @@ export default function Header() {
       <nav className={`${styles.mobileNav}${open ? ` ${styles.open}` : ""}`}>
         <p className={styles.mobileLabel}>Guides</p>
         <Link href={navItems[0].href} className={styles.mobileLink} onClick={() => setOpen(false)}>
-          <span className={styles.mobileIcon}>
-            <Image src={navItems[0].iconSrc} width={20} height={20} alt={navItems[0].iconAlt} unoptimized />
-          </span>
           {navItems[0].label}
         </Link>
 
@@ -155,16 +152,10 @@ export default function Header() {
         <p className={styles.mobileLabel}>Plan your trip</p>
         {navItems.slice(1).map((item) => (
           <Link key={item.href} href={item.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
-            <span className={styles.mobileIcon}>
-              <Image src={item.iconSrc} width={20} height={20} alt={item.iconAlt} unoptimized />
-            </span>
             {item.label}
           </Link>
         ))}
         <Link href="/guides" className={styles.mobileLink} onClick={() => setOpen(false)}>
-          <span className={styles.mobileIcon}>
-            <Image src="/icons/icon-guide.svg" width={20} height={20} alt="All Guides icon" unoptimized />
-          </span>
           All Guides
         </Link>
 

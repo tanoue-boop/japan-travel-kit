@@ -1,273 +1,261 @@
+/* Header: white, one hairline underneath, a wordmark with the site's job written beside it,
+   and a single square sumi CTA on the right. No tinted logo tile, no pill nav, no glow. */
+
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #ffffff;
-  border-bottom: 1px solid #f3f4f6;
-  transition: box-shadow 0.25s ease;
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
 }
-.header.scrolled {
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.09);
-}
+/* The one shadow in the system, and only once the page has moved under it. */
+.header.scrolled { box-shadow: var(--shadow-hairline); }
 
 .inner {
-  max-width: 1152px;
+  max-width: var(--max-w);
   margin: 0 auto;
-  padding: 0 1rem;
-  height: 64px;
+  padding: 0 var(--gutter);
+  min-height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
 }
-@media (min-width: 640px) { .inner { padding: 0 1.5rem; } }
+@media (min-width: 640px) { .inner { padding: 0 var(--gutter-wide); } }
 
-/* Logo */
+/* ── Wordmark + the line that says what the site is for ──────────────────── */
 .logo {
   display: flex;
-  align-items: center;
-  gap: 0.55rem;
+  flex-direction: column;
+  gap: 0.15rem;
   text-decoration: none;
   flex-shrink: 0;
 }
-.logoIcon {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: #c62828;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-}
 .logoText {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #0d1b4b;
-  line-height: 1;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.1;
 }
 .logoText em {
   font-style: normal;
-  color: #c62828;
+  /* Marked by a rule under the second word rather than a second colour. */
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 1px;
 }
+.logoTag {
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  line-height: 1.2;
+}
+@media (max-width: 420px) { .logoTag { display: none; } }
 
-/* Desktop nav — five hub links, so the breakpoint sits at 900px rather than 768px
-   and the links are text-only; below that the hamburger menu carries them with icons. */
+/* ── Desktop nav ─────────────────────────────────────────────────────────── */
 .nav {
   display: none;
   align-items: center;
-  gap: 0.1rem;
+  gap: 1.6rem;
 }
-@media (min-width: 900px) { .nav { display: flex; } }
+@media (min-width: 980px) { .nav { display: flex; } }
 
 .navLink {
   display: flex;
   align-items: center;
-  padding: 0.45rem 0.7rem;
-  border-radius: 9999px;
-  font-size: 0.83rem;
-  font-weight: 600;
-  color: #6b7280;
+  gap: 0.3rem;
+  padding: 0.35rem 0;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text);
   text-decoration: none;
   white-space: nowrap;
-  transition: color 0.15s, background 0.15s;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
 }
-.navLink:hover {
-  color: #c62828;
-  background: #fff5f5;
-}
-/* The Destinations trigger is a <button>, so it needs the <a> defaults spelled out. */
+.navLink:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
 button.navLink {
-  border: none;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
   background: transparent;
   font-family: inherit;
   cursor: pointer;
-  gap: 0.25rem;
-}
-button.navLink:hover { background: #fff5f5; }
-
-/* Destinations dropdown — opens on hover and on click (touch screens wide enough for the
-   desktop nav would otherwise have no way in). Mobile uses the expanded list instead. */
-.navGroup {
-  position: relative;
-  display: flex;
-  align-items: center;
 }
 
-.navChevron {
-  flex-shrink: 0;
-  transition: transform 0.18s ease;
-}
+.navGroup { position: relative; display: flex; align-items: center; }
+
+.navChevron { flex-shrink: 0; transition: transform 0.18s ease; }
 .navGroup:hover .navChevron,
 button.navLink[aria-expanded="true"] .navChevron { transform: rotate(180deg); }
 
 .dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
-  min-width: 170px;
-  padding: 0.4rem;
-  background: #fff;
-  border: 1px solid #f3f4f6;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  left: -0.9rem;
+  min-width: 180px;
+  padding: 0.3rem 0;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 0;
   display: none;
   flex-direction: column;
-  gap: 0.1rem;
 }
 .dropdownOpen { display: flex; }
 
 .dropdownLink {
   display: block;
-  padding: 0.5rem 0.7rem;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #374151;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--text);
   text-decoration: none;
   white-space: nowrap;
+  border-bottom: 1px solid var(--rule);
   transition: color 0.15s, background 0.15s;
 }
-.dropdownLink:hover {
-  color: #c62828;
-  background: #fff5f5;
-}
+.dropdownLink:last-child { border-bottom: 0; }
+.dropdownLink:hover { color: var(--accent); background: var(--paper); }
 
-/* CTA */
-.cta {
-  display: none;
-}
-@media (min-width: 900px) { .cta { display: block; } }
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+.cta { display: none; }
+@media (min-width: 980px) { .cta { display: block; } }
 
 .ctaBtn {
   display: inline-flex;
   align-items: center;
-  padding: 0.55rem 1.2rem;
-  border-radius: 9999px;
-  background: #c62828;
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 700;
-  border: none;
-  box-shadow: 0 2px 12px rgba(198, 40, 40, 0.3);
-  transition: background 0.18s;
+  gap: 0.45rem;
+  padding: 0.65rem 1.25rem;
+  border: 1px solid var(--sumi);
+  border-radius: 0;
+  background: var(--sumi);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-decoration: none;
   cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
 }
-.ctaBtn:hover { background: #b71c1c; }
+.ctaBtn:hover { background: var(--sumi-soft); border-color: var(--sumi-soft); color: var(--white); }
 
-/* Hamburger */
+/* ── Hamburger ───────────────────────────────────────────────────────────── */
 .hamburger {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 38px;
-  height: 38px;
-  border: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--rule);
+  border-radius: 0;
   background: transparent;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: border-color 0.15s;
 }
-.hamburger:hover { background: #f3f4f6; }
-@media (min-width: 900px) { .hamburger { display: none; } }
+.hamburger:hover { border-color: var(--sumi); }
+@media (min-width: 980px) { .hamburger { display: none; } }
 
 .bar {
   display: block;
-  width: 22px;
-  height: 2px;
-  background: #111827;
-  border-radius: 2px;
+  width: 18px;
+  height: 1px;
+  background: var(--sumi);
   transition: transform 0.25s ease, opacity 0.2s ease;
 }
-.hamburger.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .hamburger.open .bar:nth-child(2) { opacity: 0; }
-.hamburger.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hamburger.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-/* Mobile nav */
+/* ── Mobile nav ──────────────────────────────────────────────────────────── */
 .mobileNav {
   display: none;
   flex-direction: column;
-  gap: 0.2rem;
-  border-top: 1px solid #f3f4f6;
-  padding: 0.75rem 1rem 1.25rem;
+  border-top: 1px solid var(--rule);
+  background: var(--white);
+  padding: 0 var(--gutter) 1.25rem;
 }
 .mobileNav.open { display: flex; }
-@media (min-width: 900px) { .mobileNav { display: none !important; } }
+@media (min-width: 980px) { .mobileNav { display: none !important; } }
 
 .mobileLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #9ca3af;
-  padding: 0.7rem 0.8rem 0.25rem;
+  color: var(--accent);
+  padding: 1.1rem 0 0.5rem;
   margin: 0;
 }
-.mobileLabel:first-child { padding-top: 0.2rem; }
+.mobileLabel::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
 
 .mobileLink {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: 0.65rem 0.8rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--text);
   text-decoration: none;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.15s;
 }
-.mobileLink:hover {
-  color: #c62828;
-  background: #fff5f5;
-}
-.mobileIcon { font-size: 1.2rem; }
+.mobileLink:hover { color: var(--accent); }
+.mobileLink::after { content: "→"; font-family: var(--font-body); font-size: 0.8rem; color: var(--text-faint); }
 
-/* Mobile Destinations — the dropdown contents, laid out flat under their own label. */
 .mobileSub {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.35rem;
-  padding: 0.15rem 0.8rem 0.35rem;
+  border-top: 1px solid var(--rule);
 }
-
 .mobileSubLink {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.6rem 0.5rem;
-  border: 1.5px solid #f3f4f6;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #0d1b4b;
+  padding: 0.75rem 0;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
   text-decoration: none;
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  transition: color 0.15s;
 }
-.mobileSubLink:hover {
-  color: #c62828;
-  border-color: #fecaca;
-  background: #fff5f5;
-}
+.mobileSubLink:nth-child(2n) { padding-left: 1rem; border-left: 1px solid var(--rule); }
+.mobileSubLink:nth-child(n + 3) { border-top: 1px solid var(--rule); }
+.mobileSubLink:hover { color: var(--accent); }
 
 .mobileCta {
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem;
-  border-radius: 10px;
-  background: #c62828;
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  border: none;
-  cursor: pointer;
+  gap: 0.45rem;
+  padding: 0.9rem;
+  border: 1px solid var(--sumi);
+  border-radius: 0;
+  background: var(--sumi);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-decoration: none;
-  transition: background 0.18s;
+  cursor: pointer;
+  transition: background 0.15s;
 }
-.mobileCta:hover { background: #b71c1c; }
+.mobileCta:hover { background: var(--sumi-soft); color: var(--white); }
