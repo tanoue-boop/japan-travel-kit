@@ -1,5 +1,5 @@
 import type { GuideArticle, GuideCategory } from "./guide-hub";
-import { assertGroupsCover } from "./guide-hub";
+import { assertArticleMeta } from "./guide-hub";
 
 export const esimArticles: GuideArticle[] = [
   {
@@ -8,6 +8,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Best eSIM for Japan 2026: Top 4 Picks Compared",
     desc: "Airalo, Holafly, eSIM Go, and Sakura Mobile — compared on price, speed, coverage, and ease of setup. Which one is right for your trip?",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/cheapest-esim-japan",
@@ -15,6 +16,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Cheapest eSIM for Japan 2026: Best Budget Picks",
     desc: "Don't overpay for data in Japan. We compared eSIM Go, Airalo, Holafly, and Sakura Mobile on price per GB — prices checked daily.",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/japan-esim-data-plans",
@@ -22,6 +24,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Japan eSIM Data Plans Compared (2026): Which Is Right for You?",
     desc: "Every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile — compared on price, data, duration, and value per GB.",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/japan-esim-unlimited",
@@ -29,6 +32,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users",
     desc: "Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large data plans — including which ones are unlimited in name only.",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/airalo-vs-holafly-japan",
@@ -36,6 +40,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Airalo vs Holafly for Japan (2026): Which Should You Choose?",
     desc: "Both are popular Japan eSIMs — but they suit very different travellers. We compare price, data, coverage and support head-to-head with a clear verdict.",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/japan-sim-card-vs-esim-2026",
@@ -43,6 +48,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Japan SIM Card vs eSIM (2026): Which Should You Choose?",
     desc: "eSIM for almost everyone — but there are exactly two situations where a physical SIM is the only option, and price has nothing to do with either of them.",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/pocket-wifi-vs-esim-japan",
@@ -50,6 +56,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Pocket WiFi vs eSIM for Japan (2026): Which Is Better?",
     desc: "Both keep you connected in Japan — but one is cheaper, simpler, and needs no hardware. We compare price, convenience, and coverage so you can choose.",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/best-pocket-wifi-japan",
@@ -57,6 +64,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Best Pocket WiFi in Japan (2026): Rental Prices & Pickup Compared",
     desc: "Already decided on a router? The rentals are near-identical on data and network, so the choice is device limit and whether it meets you at the airport or at your hotel.",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/best-esim-japan-reddit",
@@ -64,6 +72,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Best eSIM for Japan Reddit (2026): Which Advice Still Holds",
     desc: "r/JapanTravel recommends the same four eSIMs every time. We check each claim against this month's prices — three hold up, and one is badly out of date.",
     group: "compare",
+    city: "other",
   },
   {
     href: "/guides/esim/airalo-japan-review",
@@ -71,6 +80,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Airalo Japan Review 2026: Is It Worth It?",
     desc: "Airalo's Japan eSIM plans, networks, and setup process — plus whether it really works nationwide. An honest verdict on pricing, coverage, and who it's best for.",
     group: "reviews",
+    city: "other",
   },
   {
     href: "/guides/esim/holafly-japan-review",
@@ -78,6 +88,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Holafly Japan eSIM Review 2026: Unlimited Data Worth It?",
     desc: "Holafly offers unlimited data for Japan — but is the price right? We compare its cost per day, SoftBank coverage, and setup against the plans that charge by the gigabyte.",
     group: "reviews",
+    city: "other",
   },
   {
     href: "/guides/esim/sakura-mobile-review",
@@ -85,6 +96,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Sakura Mobile Review 2026: Best SIM for Long Stays?",
     desc: "The only tourist SIM with real English support and voice calls. We review Sakura Mobile's plans, Docomo coverage, and whether the price is justified.",
     group: "reviews",
+    city: "other",
   },
   {
     href: "/guides/esim/esim-go-japan-review",
@@ -92,6 +104,7 @@ export const esimArticles: GuideArticle[] = [
     title: "eSIM Go Japan Review 2026: Best Budget eSIM?",
     desc: "The cheapest Japan eSIM in our price comparison. eSIM Go undercuts the big names — but how does it hold up on data allowances, setup, and support?",
     group: "reviews",
+    city: "other",
   },
   {
     href: "/guides/esim/how-to-set-up-esim-japan",
@@ -99,6 +112,7 @@ export const esimArticles: GuideArticle[] = [
     title: "How to Set Up an eSIM in Japan (Step-by-Step)",
     desc: "Install your Japan eSIM before you fly and have 4G the moment you land. Step-by-step for iPhone, Android, iPad and Android tablets — plus a full troubleshooting section.",
     group: "setup",
+    city: "other",
   },
   {
     href: "/guides/esim/japan-esim-iphone",
@@ -106,6 +120,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Best eSIM for Japan on iPhone (2026): Picks & Setup",
     desc: "Which Japan eSIM installs cleanly on an iPhone, and exactly where to tap in iOS. Covers iPhone XS to 16, dual-SIM roaming traps, and the one provider needing a manual APN.",
     group: "setup",
+    city: "other",
   },
   {
     href: "/guides/esim/does-esim-work-in-japan",
@@ -113,6 +128,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Does eSIM Work in Japan? (2026): Everything You Need to Know",
     desc: "Yes — Japan needs no SIM registration and every tourist eSIM rides a tier-one carrier. The real risk is your handset: three checks to make before you buy anything.",
     group: "setup",
+    city: "other",
   },
   {
     href: "/guides/esim/japan-esim-2-weeks",
@@ -120,6 +136,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Best Japan eSIM for 2 Weeks (2026): Plans That Last the Trip",
     desc: "Almost nobody sells a 14-day plan, so the usual mistake is buying on allowance and landing on one that expires at day 7. Every plan filtered by validity, cheapest first.",
     group: "trip",
+    city: "other",
   },
   {
     href: "/guides/esim/japan-esim-students",
@@ -127,6 +144,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Best eSIM for Japan for Students (2026): Budget Picks",
     desc: "Priced per study month rather than per tourist week, plus the two things tourists never have to decide: whether you need a Japanese phone number, and when to switch to a domestic SIM.",
     group: "trip",
+    city: "other",
   },
   {
     href: "/guides/esim/japan-esim-family-group",
@@ -134,6 +152,7 @@ export const esimArticles: GuideArticle[] = [
     title: "Japan eSIM for Family & Group Travel (2026)",
     desc: "An eSIM each or one shared Pocket WiFi? It is arithmetic, and it turns over at a specific headcount. With the per-person cost of both, read from live prices.",
     group: "trip",
+    city: "other",
   },
 ];
 
@@ -173,4 +192,4 @@ export const esimCategory: GuideCategory = {
   articles: esimArticles,
 };
 
-assertGroupsCover(esimCategory);
+assertArticleMeta(esimCategory);

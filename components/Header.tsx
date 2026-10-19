@@ -2,31 +2,66 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../styles/Header.module.css";
 
 // One menu, one destination each. Until 2026-10-09 the header carried a Guides dropdown of
 // the five hubs *and* a second row of /sim-cards, /wifi-pocket, /transport and /money links;
 // the October crawl showed those resolved to the same hubs, so visitors and crawlers saw
 // every category twice. The hubs are now the only category entry point — individual buying
-// guides are reached from the hubs and the "Get Connected" CTA.
-const navItems = [
-  { href: "/guides/esim",        label: "eSIM & SIM",    iconSrc: "/icons/icon-sim.svg",         iconAlt: "eSIM guides icon" },
-  { href: "/guides/transport",   label: "Getting Around", iconSrc: "/icons/icon-transport.svg",   iconAlt: "Transport guides icon" },
-  { href: "/guides/money",       label: "Money",          iconSrc: "/icons/icon-money.svg",       iconAlt: "Money guides icon" },
-  { href: "/guides/attractions", label: "Things to Do",   iconSrc: "/icons/icon-attractions.svg", iconAlt: "Things to Do icon" },
-  { href: "/guides",             label: "All Guides",     iconSrc: "/icons/icon-guide.svg",       iconAlt: "All Guides icon" },
+// guides are reached from the hubs and the header CTA.
+//
+// Reordered 2026-10-19. Things to Do is now the largest category and the one the traffic and
+// the bookings come from, so it leads; eSIM, which the nav was built around in September,
+// moves down to where its share of the site actually sits. Destinations is a dropdown over
+// the three city hubs, which is the way most visitors describe what they are looking for
+// ("things to do in Kyoto") rather than by our category names.
+const destinationItems = [
+  { href: "/guides/attractions/things-to-do-tokyo", label: "Tokyo" },
+  { href: "/guides/attractions/things-to-do-kyoto", label: "Kyoto" },
+  { href: "/guides/attractions/things-to-do-osaka", label: "Osaka" },
+  { href: "/guides/attractions#daytrips",           label: "Day Trips" },
 ];
 
+const navItems = [
+  { href: "/guides/attractions", label: "Things to Do",  iconSrc: "/icons/icon-attractions.svg", iconAlt: "Things to Do icon" },
+  { href: "/guides/transport",   label: "Getting Around", iconSrc: "/icons/icon-transport.svg",   iconAlt: "Transport guides icon" },
+  { href: "/guides/esim",        label: "eSIM & SIM",     iconSrc: "/icons/icon-sim.svg",         iconAlt: "eSIM guides icon" },
+  { href: "/guides/money",       label: "Money",          iconSrc: "/icons/icon-money.svg",       iconAlt: "Money guides icon" },
+];
+
+const CTA_HREF = "/guides/attractions";
+const CTA_LABEL = "Find Tours & Tickets →";
+
 export default function Header() {
-  const [open, setOpen]         = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen]           = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const [destOpen, setDestOpen]   = useState(false);
+  const destRef                   = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  // Close the Destinations dropdown on an outside click or Escape — it opens on click as
+  // well as hover so it works on a touch screen that is wide enough for the desktop nav.
+  useEffect(() => {
+    if (!destOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (destRef.current && !destRef.current.contains(e.target as Node)) setDestOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setDestOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [destOpen]);
 
   return (
     <header className={`${styles.header}${scrolled ? ` ${styles.scrolled}` : ""}`}>
@@ -40,7 +75,43 @@ export default function Header() {
 
         {/* Text-only on desktop so all five fit beside the logo and the CTA. */}
         <nav className={styles.nav}>
-          {navItems.map((item) => (
+          <Link href={navItems[0].href} className={styles.navLink}>
+            {navItems[0].label}
+          </Link>
+
+          <div
+            ref={destRef}
+            className={styles.navGroup}
+            onMouseEnter={() => setDestOpen(true)}
+            onMouseLeave={() => setDestOpen(false)}
+          >
+            <button
+              type="button"
+              className={styles.navLink}
+              aria-expanded={destOpen}
+              aria-haspopup="true"
+              onClick={() => setDestOpen((v) => !v)}
+            >
+              Destinations
+              <svg className={styles.navChevron} width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div className={`${styles.dropdown}${destOpen ? ` ${styles.dropdownOpen}` : ""}`}>
+              {destinationItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={styles.dropdownLink}
+                  onClick={() => setDestOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {navItems.slice(1).map((item) => (
             <Link key={item.href} href={item.href} className={styles.navLink}>
               {item.label}
             </Link>
@@ -48,7 +119,7 @@ export default function Header() {
         </nav>
 
         <div className={styles.cta}>
-          <Link href="/guides/esim/best-esim-japan" className={styles.ctaBtn}>Get Connected →</Link>
+          <Link href={CTA_HREF} className={styles.ctaBtn}>{CTA_LABEL}</Link>
         </div>
 
         <button
@@ -62,9 +133,27 @@ export default function Header() {
         </button>
       </div>
 
+      {/* Mobile: Destinations is an always-expanded list rather than a second tap target. */}
       <nav className={`${styles.mobileNav}${open ? ` ${styles.open}` : ""}`}>
         <p className={styles.mobileLabel}>Guides</p>
-        {navItems.map((item) => (
+        <Link href={navItems[0].href} className={styles.mobileLink} onClick={() => setOpen(false)}>
+          <span className={styles.mobileIcon}>
+            <Image src={navItems[0].iconSrc} width={20} height={20} alt={navItems[0].iconAlt} unoptimized />
+          </span>
+          {navItems[0].label}
+        </Link>
+
+        <p className={styles.mobileLabel}>Destinations</p>
+        <div className={styles.mobileSub}>
+          {destinationItems.map((item) => (
+            <Link key={item.href} href={item.href} className={styles.mobileSubLink} onClick={() => setOpen(false)}>
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
+        <p className={styles.mobileLabel}>Plan your trip</p>
+        {navItems.slice(1).map((item) => (
           <Link key={item.href} href={item.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
             <span className={styles.mobileIcon}>
               <Image src={item.iconSrc} width={20} height={20} alt={item.iconAlt} unoptimized />
@@ -72,8 +161,15 @@ export default function Header() {
             {item.label}
           </Link>
         ))}
-        <Link href="/guides/esim/best-esim-japan" className={styles.mobileCta} onClick={() => setOpen(false)}>
-          Get Connected →
+        <Link href="/guides" className={styles.mobileLink} onClick={() => setOpen(false)}>
+          <span className={styles.mobileIcon}>
+            <Image src="/icons/icon-guide.svg" width={20} height={20} alt="All Guides icon" unoptimized />
+          </span>
+          All Guides
+        </Link>
+
+        <Link href={CTA_HREF} className={styles.mobileCta} onClick={() => setOpen(false)}>
+          {CTA_LABEL}
         </Link>
       </nav>
     </header>

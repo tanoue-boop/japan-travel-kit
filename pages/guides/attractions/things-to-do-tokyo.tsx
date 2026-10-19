@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import CityGuideIndex from "../../../components/CityGuideIndex";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
@@ -502,6 +503,9 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             </Link>
           </div>
         </section>
+
+        {/* Every guide for this city, generated from the `city` field in lib/guides-*.ts. */}
+        <CityGuideIndex city="tokyo" exclude="/guides/attractions/things-to-do-tokyo" />
       </div>
     </>
   );

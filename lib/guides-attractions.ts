@@ -1,5 +1,5 @@
 import type { GuideArticle, GuideCategory } from "./guide-hub";
-import { assertGroupsCover } from "./guide-hub";
+import { assertArticleMeta } from "./guide-hub";
 
 export const attractionArticles: GuideArticle[] = [
   {
@@ -7,21 +7,24 @@ export const attractionArticles: GuideArticle[] = [
     badge: "Tickets",
     title: "teamLab Planets Tickets (2026): Prices, How to Book & Planets vs Borderless",
     desc: "Official Planets prices, the 30-minute entry slots, opening hours and what to wear for the barefoot water areas — plus how Planets differs from Borderless in Azabudai.",
-    group: "tokyo",
+    group: "tickets",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/teamlab-borderless-tickets",
     badge: "Tickets",
     title: "teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book",
     desc: "What a Borderless ticket costs on the official site, how the timed slots and Flexible Pass work, opening hours and closed days, and whether to book direct or through Klook.",
-    group: "tokyo",
+    group: "tickets",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/shibuya-sky-tickets",
     badge: "Tickets",
     title: "Shibuya Sky Tickets (2026): Price, Best Time & How to Book",
     desc: "Shibuya Sky is Tokyo's best rooftop view — and its sunset slots sell out fast. We cover prices, the best time to go, and how to book (even with a foreign card).",
-    group: "tokyo",
+    group: "tickets",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/tokyo-disney-tickets",
@@ -29,6 +32,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy",
     desc: "Tokyo Disney tickets are date-specified and sell out weeks ahead — with no gate sales. We explain how to buy (even when the official site blocks foreign cards) and how to choose between Disneyland and DisneySea.",
     group: "parks",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/usj-tickets-express-pass",
@@ -36,20 +40,23 @@ export const attractionArticles: GuideArticle[] = [
     title: "Universal Studios Japan Tickets & Express Pass (2026): What to Buy",
     desc: "USJ now requires online tickets, and Super Nintendo World needs timed entry. We explain Studio Pass tiers, whether the Express Pass is worth it, and what to buy for your visit.",
     group: "parks",
+    city: "osaka",
   },
   {
     href: "/guides/attractions/sumo-tokyo-tickets",
     badge: "Experience",
     title: "Sumo in Tokyo (2026): Tournament Tickets vs Morning Practice",
     desc: "The 2026 Tokyo tournament dates, how to buy official tickets safely (and avoid resale sites), seat types and same-day tickets, plus year-round morning practice tours.",
-    group: "culture",
+    group: "experiences",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/tokyo-skytree-tickets",
     badge: "Tickets",
     title: "Tokyo Skytree Tickets (2026): Prices, Floor 350 vs 450 & How to Book",
     desc: "Official prices for Floor 350 and the Floor 450 combo, the ¥500 service fee the same-day counter adds, and why buying the skywalk up front is cheaper than adding it on site.",
-    group: "tokyo",
+    group: "tickets",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets",
@@ -57,6 +64,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Warner Bros. Studio Tour Tokyo Tickets (2026): Prices & How to Book",
     desc: "Official prices for the Harry Potter studio tour in Nerima, what the Afternoon Tea packages actually add, the four hours to allow, and how to reach Toshimaen.",
     group: "parks",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/tokyo-subway-ticket",
@@ -64,6 +72,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?",
     desc: "The 24/48/72-hour prices from Tokyo Metro, the break-even worked against official single fares, and the exclusion that catches people out — JR, including the Yamanote Line.",
     group: "passes",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/mt-fuji-day-tour-from-tokyo",
@@ -71,6 +80,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Mt. Fuji Day Tour From Tokyo (2026): Which Tour, and What You Actually See",
     desc: "Every tour stops at the Subaru Line Fifth Station — what separates them is whether the rest of the day is Fuji or Hakone, and how long you will sit on a coach.",
     group: "daytrips",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/hakone-day-trip-from-tokyo",
@@ -78,6 +88,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Hakone Day Trip From Tokyo (2026): Freepass Prices vs a Day Tour",
     desc: "Odakyu's official Freepass prices, the eight modes of transport it covers, the Romancecar surcharge it does not — and why there is no 1-day version of the pass.",
     group: "daytrips",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/kyoto-nara-day-tour-from-osaka",
@@ -85,13 +96,15 @@ export const attractionArticles: GuideArticle[] = [
     title: "Kyoto and Nara Day Tour From Osaka (2026): Which Itinerary to Book",
     desc: "Four itineraries compared on which half of Kyoto they cover, how long the day runs, and whether Todai-ji's ¥800 Great Buddha Hall admission is in the price.",
     group: "daytrips",
+    city: "osaka",
   },
   {
     href: "/guides/attractions/tokyo-observation-decks",
     badge: "Compare",
     title: "Tokyo Observation Decks (2026): Shibuya Sky vs Skytree vs Tokyo Tower",
     desc: "Four decks compared on height, official price and what you actually see from each — including the Metropolitan Government Building, which charges nothing at all.",
-    group: "tokyo",
+    group: "tickets",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/mt-fuji-day-trip-tokyo",
@@ -99,6 +112,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Mt. Fuji Day Trip From Tokyo (2026): How to Get There Yourself",
     desc: "The independent route to Kawaguchiko by highway bus or limited express, what the Mt. Fuji Pass covers once you are there, and the season with the best odds of a clear summit.",
     group: "daytrips",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/nikko-day-trip",
@@ -106,6 +120,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Nikko Day Trip From Tokyo (2026): Getting There, Costs and Whether to Take a Tour",
     desc: "Two hours north of Tokyo for Toshogu and Kegon Falls. How the Tobu and JR routes differ, how long the day runs, and when a guided coach beats doing it yourself.",
     group: "daytrips",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/kamakura-day-trip",
@@ -113,6 +128,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Kamakura Day Trip From Tokyo (2026): Great Buddha, Hase-dera and the Fares",
     desc: "The easiest day trip out of Tokyo — about an hour on a JR line a rail pass already covers, with official admissions for Kotoku-in and Hase-dera.",
     group: "daytrips",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/nara-day-trip",
@@ -120,6 +136,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs",
     desc: "Nara is the short day trip in Kansai — well under an hour from either city. The deer park is free; the Great Buddha Hall is ¥800, and that is the fee tours differ on.",
     group: "daytrips",
+    city: "osaka",
   },
   {
     href: "/guides/attractions/hiroshima-miyajima-day-trip",
@@ -127,6 +144,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?",
     desc: "Two UNESCO sites in a day, and the honest answer on whether to attempt it from Kyoto or Osaka — plus Itsukushima Shrine's ¥300 admission and the Mt. Misen ropeway fare.",
     group: "daytrips",
+    city: "osaka",
   },
   {
     href: "/guides/attractions/things-to-do-tokyo",
@@ -134,6 +152,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Things to Do in Tokyo (2026): What to Book Ahead and What to Walk Into",
     desc: "A short list of the Tokyo attractions that need a timed ticket weeks out, and the ones you can turn up to — so your booking effort goes where it is actually needed.",
     group: "cities",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/things-to-do-kyoto",
@@ -141,6 +160,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Things to Do in Kyoto (2026): Temples, Timing and What to Book",
     desc: "Kyoto's headline sights are mostly walk-in, which changes how you plan a day there. What needs reserving, what does not, and how to fit the big three together.",
     group: "cities",
+    city: "kyoto",
   },
   {
     href: "/guides/attractions/things-to-do-osaka",
@@ -148,48 +168,55 @@ export const attractionArticles: GuideArticle[] = [
     title: "Things to Do in Osaka (2026): Where the Pass Pays and Where It Doesn't",
     desc: "Osaka rewards a pass more than most Japanese cities, with one large exception — Universal Studios Japan, which no pass covers.",
     group: "cities",
+    city: "osaka",
   },
   {
     href: "/guides/attractions/kimono-rental-japan",
     badge: "Experience",
     title: "Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works",
     desc: "Rental is a half-day commitment with a fixed return time, not a costume hire. How the dressing appointment works, and which city suits it better.",
-    group: "culture",
+    group: "experiences",
+    city: "kyoto",
   },
   {
     href: "/guides/attractions/tea-ceremony-japan",
     badge: "Experience",
     title: "Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto and What to Expect",
     desc: "A beginner session runs under an hour and is led in English at most listings aimed at visitors. What the session covers, and how Kyoto and Tokyo differ.",
-    group: "culture",
+    group: "experiences",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/samurai-ninja-experience-tokyo",
     badge: "Experience",
     title: "Samurai and Ninja Experience in Tokyo (2026): Sword Lessons, Where to Go and Tickets",
     desc: "Museum visit, armour-wearing session or sword lesson — three different things sold under one name, and the one worth booking depends on who you are going with.",
-    group: "culture",
+    group: "experiences",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/tokyo-go-kart",
     badge: "Experience",
     title: "Tokyo Street Go-Kart (2026): Rules, IDP Requirement and How to Book",
     desc: "Street go-karting in Tokyo needs a Japanese licence or a valid International Driving Permit, and an IDP has to be issued before you leave home. Everything else is detail.",
-    group: "culture",
+    group: "experiences",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/tokyo-food-tour",
     badge: "Food",
     title: "Tokyo Food and Izakaya Tours (2026): Shinjuku Bar Hopping and What to Eat",
     desc: "A guided crawl buys you into the small places you would not walk into alone — the izakaya counters and Golden Gai bars that look closed to outsiders.",
-    group: "food",
+    group: "experiences",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/tokyo-cooking-class",
     badge: "Food",
     title: "Tokyo Cooking Class (2026): Sushi and Ramen Making — What to Expect",
     desc: "Hands-on classes in English run a couple of hours and send you home able to repeat the dish. How to pick between sushi, ramen and the market-shop formats.",
-    group: "food",
+    group: "experiences",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/osaka-attractions-pass",
@@ -197,6 +224,7 @@ export const attractionArticles: GuideArticle[] = [
     title: "Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?",
     desc: "Official 1-day and 2-day prices, what the 40-plus free admissions actually include, and the two attractions everyone assumes are on it that are not.",
     group: "passes",
+    city: "osaka",
   },
 ];
 
@@ -208,49 +236,49 @@ export const attractionsCategory: GuideCategory = {
     "A handful of Japan's best-known attractions cannot be bought at the gate. teamLab, Tokyo Disney, Universal Studios Japan and the Shibuya Sky sunset slots all sell date- and time-specified tickets online, and the popular slots go weeks ahead — in Disney's case, with no same-day sales at all.",
     "Two things routinely catch visitors out: the official sites sometimes reject foreign cards, and the resale listings that rank well in search are often invalid for entry. These guides cover official prices, which booking route works from abroad, and when to book.",
     "The same reasoning applies to the day trips and transport passes further down the page. A Mt. Fuji or Hakone day out of Tokyo, Nikko or Kamakura by train, or a Kyoto-and-Nara day out of Osaka, is a booking decision rather than a sightseeing one — and the pass that looks cheapest often turns out to have a minimum length or an exclusion nobody mentions.",
-    "Plenty of Japan needs none of this, though, and the city round-ups say so plainly. Most of Kyoto's famous temples are walk-in, Nara Park is free, and a kimono rental or a cooking class is a booking you can make the week before. The point of these guides is to put the planning effort where it changes the outcome.",
+    "Plenty of Japan needs none of this, though, and the city guides say so plainly. Most of Kyoto's famous temples are walk-in, Nara Park is free, and a kimono rental or a cooking class is a booking you can make the week before. The point of these guides is to put the planning effort where it changes the outcome.",
   ],
-  startHere: "/guides/attractions/teamlab-tokyo-tickets",
+  startHere: "/guides/attractions/shibuya-sky-tickets",
   startHereWhy:
-    "teamLab Planets is the attraction most visitors add to a Tokyo itinerary, and its 30-minute entry slots are the clearest example of how timed-ticket booking in Japan works.",
+    "Shibuya Sky is the most-read guide on this site, and it is the clearest example of how a Japanese timed ticket works: the same deck costs less booked online than at the door, and only one slot of the day — sunset — actually sells out.",
+  // Reorganised 2026-10-19. The groups were split by Tokyo venue type ("Tokyo art & views")
+  // and by cuisine ("Food & drink"), which stops scaling once the list passes ~30 articles
+  // and every city has its own tickets. They are now split by what you are buying, with
+  // `sortByCity` putting Tokyo first inside each one.
   groups: [
     {
-      key: "tokyo",
-      label: "Tokyo art & views",
-      desc: "Timed-entry museums and observation decks, where the slot matters as much as the ticket.",
+      key: "tickets",
+      label: "Tickets & attractions",
+      desc: "Single-venue admissions — timed-entry museums, observation decks and the rest. Official prices, and whether the slot matters as much as the ticket.",
     },
     {
       key: "parks",
       label: "Theme parks",
-      desc: "Tokyo Disney and Universal Studios Japan: ticket tiers, express passes and how to buy from abroad.",
-    },
-    {
-      key: "culture",
-      label: "Culture & experiences",
-      desc: "Things with a calendar of their own — tournaments, seasons, dressing appointments and practice sessions.",
-    },
-    {
-      key: "food",
-      label: "Food & drink",
-      desc: "Eating as the activity: guided crawls through places that are hard to walk into alone, and classes that send you home with the recipe.",
+      desc: "Tokyo Disney, Universal Studios Japan and the Warner Bros. Studio Tour: ticket tiers, express passes and how to buy from abroad.",
     },
     {
       key: "daytrips",
       label: "Day trips & tours",
-      desc: "Whole days out of Tokyo and Osaka, where the choice is which itinerary rather than which ticket.",
+      desc: "Whole days out of Tokyo, Kyoto and Osaka, where the choice is which itinerary rather than which ticket.",
+    },
+    {
+      key: "experiences",
+      label: "Experiences",
+      desc: "Things you do rather than look at — sumo, kimono, tea, swords, go-karts, food crawls and cooking classes, each with a calendar or a requirement of its own.",
     },
     {
       key: "cities",
-      label: "City round-ups",
-      desc: "What to book ahead in Tokyo, Kyoto and Osaka — and what you can simply turn up to.",
+      label: "City guides",
+      desc: "The city hubs: what to book ahead in Tokyo, Kyoto and Osaka, what to simply turn up to, and every guide we have for that city in one place.",
     },
     {
       key: "passes",
-      label: "Attraction & transport passes",
+      label: "Passes",
       desc: "Multi-ride and multi-entry passes, with the break-even worked against what single tickets cost.",
     },
   ],
   articles: attractionArticles,
+  sortByCity: true,
 };
 
-assertGroupsCover(attractionsCategory);
+assertArticleMeta(attractionsCategory);

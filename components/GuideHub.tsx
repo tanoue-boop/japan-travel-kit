@@ -76,8 +76,10 @@ export default function GuideHub({
         </Link>
 
         {/* Groups */}
+        {/* id so other pages can deep-link a group — e.g. the city hubs point their
+            "all day trips" link at /guides/attractions#daytrips. */}
         {groups.map(({ group, articles }) => (
-          <section key={group.key} className={styles.groupSection}>
+          <section key={group.key} id={group.key} className={styles.groupSection}>
             <h2 className={styles.groupTitle}>{group.label}</h2>
             <p className={styles.groupDesc}>{group.desc}</p>
 

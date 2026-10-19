@@ -2,19 +2,31 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Footer.module.css";
 
-// Two columns, no repeats. Until 2026-10-09 the footer listed the five hubs and then three
-// more columns of individual guides and retired landing pages, several of which pointed at
-// the same destinations as the hub links above them. Category navigation belongs to the
-// hubs; the hubs themselves list the articles.
+// No repeats. Until 2026-10-09 the footer listed the five hubs and then three more columns of
+// individual guides and retired landing pages, several of which pointed at the same
+// destinations as the hub links above them. Category navigation belongs to the hubs; the hubs
+// themselves list the articles.
+//
+// Destinations split out 2026-10-19 to match the header: the city hubs are now the second
+// entry point into the site, and Things to Do leads the guide column.
 const cols = [
   {
     title: "Guides",
     links: [
-      { href: "/guides/esim",        label: "eSIM & SIM Cards" },
-      { href: "/guides/transport",   label: "Getting Around"   },
-      { href: "/guides/money",       label: "Money & Payment"  },
       { href: "/guides/attractions", label: "Things to Do"     },
+      { href: "/guides/transport",   label: "Getting Around"   },
+      { href: "/guides/esim",        label: "eSIM & SIM Cards" },
+      { href: "/guides/money",       label: "Money & Payment"  },
       { href: "/guides",             label: "All Guides"       },
+    ],
+  },
+  {
+    title: "Destinations",
+    links: [
+      { href: "/guides/attractions/things-to-do-tokyo", label: "Tokyo"     },
+      { href: "/guides/attractions/things-to-do-kyoto", label: "Kyoto"     },
+      { href: "/guides/attractions/things-to-do-osaka", label: "Osaka"     },
+      { href: "/guides/attractions#daytrips",           label: "Day Trips" },
     ],
   },
   {
