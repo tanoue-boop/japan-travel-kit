@@ -45,7 +45,7 @@ const faqItems = [
   },
   {
     q: "Is Pocket WiFi better than eSIM for families?",
-    a: `For a family of four or more, usually yes — on cost and on coverage of devices. One router is a flat charge regardless of headcount and connects up to ${ROUTER.maxDevices} devices, so kids' tablets and a laptop come along free. The trade-offs are physical: someone carries it, it lasts ${ROUTER.batteryHours} on a charge, it must be collected and returned at the airport, and if it runs flat the whole family is offline at once.`,
+    a: `For a family of four or more, usually yes — on cost and on coverage of devices. One router is a flat charge regardless of headcount and connects up to ${ROUTER.maxDevices} devices, so kids' tablets and a laptop come along free. The trade-offs are physical: someone carries it, it is rated at ${ROUTER.batteryHours} on a charge, it has to be ${ROUTER.logistics}, and if it runs flat the whole family is offline at once.`,
   },
   {
     q: "Do children need their own SIM card in Japan?",
@@ -297,11 +297,13 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
             longer or peak-season rentals cost more.
           </p>
           <p className={styles.bodyText}>
-            The catch is physical, not financial. Battery life is {ROUTER.batteryHours}, it has
-            to be collected and returned at the airport, and if it dies or walks off with
-            whoever is carrying it, the whole group loses data at once.{" "}
-            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "#c62828", fontWeight: 600 }}>
-              Compare Pocket WiFi options →
+            The catch is physical, not financial. The battery is rated at {ROUTER.batteryHours},
+            the router has to be {ROUTER.logistics}, and if it dies or walks off with whoever is
+            carrying it, the whole group loses data at once. Which of the two rentals suits your group
+            depends on the device count and whether you want it waiting at an airport counter or at
+            the hotel —{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "#c62828", fontWeight: 600 }}>
+              both rentals compared →
             </Link>
           </p>
           <div className={styles.pickGrid}>
@@ -309,9 +311,9 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
               <p className={styles.pickListLabel}>Pros</p>
               <ul className={styles.pickList}>
                 {[
-                  "Connects up to 10 devices",
+                  `Connects up to ${ROUTER.maxDevices} devices`,
                   "Works on any device (no eSIM needed)",
-                  "Usually unlimited data",
+                  "Unlimited data on both rentals we link",
                   "Cost-effective for 4+ people",
                 ].map((p) => (
                   <li key={p}><span className={styles.proIcon}>+</span>{p}</li>
@@ -323,7 +325,7 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
               <ul className={styles.pickList}>
                 {[
                   "Extra device to carry and charge",
-                  "Airport pickup required",
+                  "Has to be collected and returned",
                   "If device dies, everyone loses data",
                 ].map((c) => (
                   <li key={c}><span className={styles.conIcon}>−</span>{c}</li>
@@ -538,6 +540,20 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Cheapest eSIM for Japan 2026: Best Budget Picks</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/esim/best-pocket-wifi-japan" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                  <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                  <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                  <line x1="12" y1="20" x2="12.01" y2="20" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best Pocket WiFi in Japan (2026): Rental Prices &amp; Pickup Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -4,16 +4,20 @@ import StarRating from "../../../components/StarRating";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import cardStyles from "../../../styles/SIMCardCard.module.css";
 import { getProvider, priceFrom, pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
-import { cheapestPerDay, pocketWifis, ratesCheckedAt } from "../../../lib/pocket-wifi";
+import { cheapestPerDay, pocketWifi, pocketWifis, ratesCheckedAt, specsCheckedAt } from "../../../lib/pocket-wifi";
 
 // eSIM prices on this page are read from data/esim-prices.json (refreshed daily);
 // the Pocket WiFi rentals come from lib/pocket-wifi.ts. The two rental comparison
 // cards below moved here from /wifi-pocket when that page was merged in (2026-10-09).
+// Which of the two routers to book is best-pocket-wifi-japan's job, not this page's —
+// this one only decides router-or-eSIM, so the cards here link onwards rather than
+// re-arguing the choice.
 const pricesCheckedAt = pricesCheckedLabel();
 const ESIM_FROM = siteCheapestFrom();
 const AIRALO_FROM = priceFrom("airalo");
 const ESIMGO_FROM = priceFrom("esimgo");
 const WIFI_FROM = cheapestPerDay();
+const WIFI_AIRPORT = pocketWifi("ninja-wifi");
 
 const badgeColorMap: Record<string, string> = {
   "bg-blue-500": cardStyles.badgeBlue,
@@ -40,15 +44,15 @@ const faqItems = [
   },
   {
     q: "How many devices can connect to pocket WiFi?",
-    a: "Most rental pocket WiFi devices support up to 10 simultaneous connections, making them ideal for families or small groups where everyone wants their own phone or tablet connected. Connection speed may slow slightly with multiple devices active at once, but in practice it's rarely noticeable for typical tourist use — maps, messaging, and light browsing.",
+    a: `It varies more than the marketing suggests, so check the listing rather than assuming ten. Of the two rentals here, ${WIFI_AIRPORT.name} states up to ${WIFI_AIRPORT.maxDevices} connected devices and the hotel-delivery rental states up to ${WIFI_FROM.maxDevices}. Count devices rather than people — a couple with two phones, a tablet and a laptop is already at four. Connection speed can dip with several devices active at once, but for maps, messaging and light browsing it is rarely noticeable.`,
   },
   {
     q: "How long does a pocket WiFi battery last in Japan?",
-    a: "Most rental pocket WiFi batteries last 6–10 hours of continuous use. Ninja WiFi devices typically last around 8 hours. For a full day of sightseeing you may need to recharge during the day — Global WiFi includes a free powerbank, which solves this problem. Carrying a charging cable is always recommended.",
+    a: `Both rentals here are rated at ${WIFI_FROM.batteryHours}, and a rated figure is a best case — a router being used as a hotspot by several phones will not reach it. Both listings include a power bank, which is what makes a full day of sightseeing workable; carry it and a cable, because the router going flat takes every device on it offline at once.`,
   },
   {
     q: "Where do I pick up and return pocket WiFi in Japan?",
-    a: "Most providers offer airport pickup at Narita, Haneda, Kansai, and Fukuoka airports. Return is usually at the airport on departure — drop it in the dedicated return box before boarding. Some providers also offer hotel delivery. Book in advance to guarantee availability, especially during busy travel seasons like spring (cherry blossom) and autumn.",
+    a: `That is the main practical difference between rentals. ${WIFI_AIRPORT.name} is collected and returned at an airport counter and its listing covers all of Japan's international airports. The hotel-delivery rental is sent to your hotel instead — Tokyo, Osaka, Nagoya, Fukuoka and Hokkaido only — and goes back in a prepaid envelope through any Japan Post box, so there is no counter to find on departure. Book before you fly either way: the advertised rate is the advance-booking rate, and a delivery has to arrive before you do.`,
   },
 ];
 
@@ -292,10 +296,10 @@ export default function PocketWifiVsEsimPage() {
               <p className={styles.pickListLabel}>Pros</p>
               <ul className={styles.pickList}>
                 {[
-                  "Share with up to 10 devices",
+                  `Share with up to ${WIFI_FROM.maxDevices} devices`,
                   "Works on any device (laptop, tablet)",
                   "No phone compatibility issues",
-                  "Usually unlimited data",
+                  "Unlimited data on both rentals here",
                 ].map((p) => (
                   <li key={p}><span className={styles.proIcon}>+</span>{p}</li>
                 ))}
@@ -306,7 +310,7 @@ export default function PocketWifiVsEsimPage() {
               <ul className={styles.pickList}>
                 {[
                   "Extra device to carry and charge",
-                  "Must pick up at airport or delivery",
+                  "Must be collected and returned",
                   "Can be lost or forgotten",
                   "More expensive for solo use",
                 ].map((c) => (
@@ -346,9 +350,15 @@ export default function PocketWifiVsEsimPage() {
           <h2 className={styles.sectionTitle}>The Two Rentals Worth Booking</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.5rem" }}>
             If the comparison above points you at a router, these are the two we recommend. Both
-            give unlimited data and connect up to {WIFI_FROM.maxDevices} devices; the difference
-            is price against reviews. Rates are the advertised cheapest booking on Klook as of{" "}
-            {ratesCheckedAt} — longer rentals and peak season cost more, so treat them as a floor.
+            give unlimited data on {WIFI_FROM.network}; what separates them is the device limit
+            ({WIFI_AIRPORT.maxDevices} against {WIFI_FROM.maxDevices}) and where the router meets
+            you — an airport counter, or your hotel. Rates are the advertised cheapest booking on
+            Klook as of {ratesCheckedAt} and are a floor rather than a quote; the rest was read off
+            the listings {specsCheckedAt}. Our{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+              best pocket WiFi in Japan guide
+            </Link>{" "}
+            takes that choice apart in full, with the cost of each by trip length.
           </p>
           <div className={styles.picksList}>
             {pocketWifis.map((item) => {
@@ -465,13 +475,17 @@ export default function PocketWifiVsEsimPage() {
                   <path d="M19 9h2v6h-2" />
                 </svg>
               </div>
-              <p className={styles.whoForTitle}>Best Pocket WiFi: {WIFI_FROM.name}</p>
+              <p className={styles.whoForTitle}>Best Pocket WiFi: {WIFI_AIRPORT.name}</p>
               <p className={styles.whoForDesc}>
-                Unlimited data for up to {WIFI_FROM.maxDevices} devices from $
-                {WIFI_FROM.fromUsdPerDay.toFixed(2)}/day, on {WIFI_FROM.network}, with airport pickup.
+                Unlimited data on {WIFI_AIRPORT.network} for up to {WIFI_AIRPORT.maxDevices} devices
+                from ${WIFI_AIRPORT.fromUsdPerDay.toFixed(2)}/day, collected and returned at an
+                airport counter. Need more devices, or a hotel delivery?{" "}
+                <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                  Compare both rentals →
+                </Link>
               </p>
-              <a href={WIFI_FROM.affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
-                {WIFI_FROM.ctaText} →
+              <a href={WIFI_AIRPORT.affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
+                {WIFI_AIRPORT.ctaText} →
               </a>
             </div>
           </div>
@@ -536,6 +550,20 @@ export default function PocketWifiVsEsimPage() {
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Japan eSIM for Family &amp; Group Travel: Where the Break-Even Falls</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/esim/best-pocket-wifi-japan" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                  <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                  <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                  <line x1="12" y1="20" x2="12.01" y2="20" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best Pocket WiFi in Japan (2026): Rental Prices &amp; Pickup Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

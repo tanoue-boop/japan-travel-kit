@@ -52,6 +52,13 @@ export const esimArticles: GuideArticle[] = [
     group: "compare",
   },
   {
+    href: "/guides/esim/best-pocket-wifi-japan",
+    badge: "Comparison",
+    title: "Best Pocket WiFi in Japan (2026): Rental Prices & Pickup Compared",
+    desc: "Already decided on a router? The rentals are near-identical on data and network, so the choice is device limit and whether it meets you at the airport or at your hotel.",
+    group: "compare",
+  },
+  {
     href: "/guides/esim/best-esim-japan-reddit",
     badge: "Comparison",
     title: "Best eSIM for Japan Reddit (2026): Which Advice Still Holds",
