@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import FxFeeComparison from "../../../components/FxFeeComparison";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import { currencyExchangeTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const bestWays = [
@@ -428,6 +430,13 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             ))}
           </div>
         </section>
+
+        {/* Klook: things better paid for before the exchange desk */}
+        <KlookTripPrep
+          heading="Pay for These Before You Change Money"
+          intro="The less you need in cash on day one, the less it matters what the airport counter is quoting. These three are all bookable in your own currency before you leave:"
+          items={currencyExchangeTripPrep}
+        />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

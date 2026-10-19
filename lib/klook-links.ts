@@ -283,3 +283,149 @@ export const naritaBusSubwayCombo: KlookTour = {
   desc: "An airport limousine bus transfer sold together with either the subway pass or the Hakone Freepass",
   url: klookLink("https://www.klook.com/en-US/activity/177493-narita-airport-limousine-tokyo-subway-pass-the-purpose-of-the-pass-include/"),
 };
+
+// ---------------------------------------------------------------------------
+// "Before your trip" slots for the money guides (added 19 Oct 2026)
+//
+// The money guides are the site's second- and third-most-read pages and had no
+// Klook route at all. The two airport-train entries deliberately reuse the
+// tracking URLs already on pages/guides/transport/tokyo-airport-transfer.tsx
+// (aff_adid 1264853 and 1264854) instead of minting new ones.
+//
+// Each listing below was confirmed live through the www.klook.com search index
+// on 19 Oct 2026; Klook answers automated reads of its product pages with HTTP
+// 403, which is why no price appears in any `why` line.
+// ---------------------------------------------------------------------------
+
+export type KlookTripPrepItem = {
+  /** Product name, as Klook names the listing. */
+  label: string;
+  /** Why it is relevant to the reader of this particular guide — one sentence. */
+  why: string;
+  ctaLabel: string;
+  url: string;
+};
+
+/** N'EX round trip — the same tracking link the Tokyo airport-transfer guide uses. */
+export const naritaExpressRoundTripUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264853&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F173165-narita-express-n-ex-round-trip-train-ticket-narita-airport-tokyo%2F";
+
+/** Keisei Skyliner — likewise the existing tracking link, not a new one. */
+export const keiseiSkylinerUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264854&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F1410-skyliner-tokyo%2F";
+
+/** The product half of each slot; the `why` sentence is written per guide. */
+const tripPrepProducts = {
+  esim: {
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+  },
+  naritaExpress: {
+    label: "Narita Express (N'EX) round-trip ticket",
+    ctaLabel: "Check the N'EX round trip →",
+    url: naritaExpressRoundTripUrl,
+  },
+  skyliner: {
+    label: "Keisei Skyliner ticket",
+    ctaLabel: "Check the Skyliner ticket →",
+    url: keiseiSkylinerUrl,
+  },
+  subway: {
+    label: "Tokyo Subway Ticket (24 / 48 / 72 hour)",
+    ctaLabel: "Check the subway ticket →",
+    url: tokyoSubwayTicket.url,
+  },
+} as const;
+
+/** Tax-Free Shopping — the reader is planning or mid-way through a shopping trip. */
+export const taxFreeTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Checking whether a shop runs its own tax-free counter, and where in the building it is, is quicker on your own data than on department-store Wi-Fi.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "The N'EX runs from Narita to Tokyo Station, Shinjuku and Shibuya without a transfer, which covers the three busiest tax-free shopping districts.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The large tax-free department stores sit on Tokyo Metro and Toei lines, so a 24, 48 or 72-hour subway ticket covers a day of shop-hopping in one purchase.",
+  },
+];
+
+/** Currency Exchange — the reader is deciding where to change money. */
+export const currencyExchangeTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Checking a counter's rate against the mid-market rate takes seconds online, so it helps to have data before you walk past the first exchange desk in the arrivals hall.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "If you only want to change a small float at the airport, book the train out in advance — the Skyliner reaches Nippori in 36 minutes and Keisei Ueno in about 41.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "A subway ticket bought before you fly is one fare you do not have to cover out of the yen you exchange on arrival.",
+  },
+];
+
+/** Wise Card — the reader is setting up a card before the trip. */
+export const wiseCardTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "A Wise card is managed entirely from the app, so activating a Japan eSIM before you fly keeps balances and freezes reachable the moment you land.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Booking the Narita to Tokyo round trip ahead of time is one fare settled on the card before departure rather than at a ticket window on arrival.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Foreign contactless cards do not open Tokyo Metro or Toei gates, so a prepaid subway ticket is the simplest way to ride without carrying an IC card balance.",
+  },
+];
+
+/** Cash vs Card — the reader wants to know what to carry. */
+export const cashVsCardTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Most cash-or-card calls come down to checking a place before you go, and that needs data rather than a search for free Wi-Fi.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Airport train tickets are among the few Japanese transport fares you can pay by card in advance instead of in yen at the counter.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Buying the 24, 48 or 72-hour subway ticket up front settles the transport cost that is hardest to put on a foreign card once you arrive.",
+  },
+];
+
+/** ATMs in Japan — the reader is planning a first withdrawal. */
+export const atmsTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Finding the nearest 7-Bank or Lawson machine is a map lookup, which is easier with your own data than with airport Wi-Fi.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "If you would rather withdraw in the city than in the terminal, book the train out first — the Skyliner is about 36 minutes to Nippori and 41 to Keisei Ueno.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "A prepaid subway ticket means your first withdrawal does not have to cover getting around as well.",
+  },
+];
+
+/** Tokyo airport transfers — arrival-day add-ons next to the existing transfer links. */
+export const tokyoAirportTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Train platforms, bus bays and hotel check-ins all go faster with data already working when you clear customs, rather than after queueing for a SIM counter.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "None of the airport tickets above cover travel once you are in the city; the subway ticket does, on all Tokyo Metro and Toei lines, for 24, 48 or 72 hours.",
+  },
+];

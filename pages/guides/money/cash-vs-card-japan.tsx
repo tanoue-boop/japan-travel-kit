@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import { siteCheapestFrom } from "../../../lib/esim-prices";
+import { cashVsCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const placeRows = [
@@ -516,6 +518,13 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             ))}
           </div>
         </section>
+
+        {/* Klook: costs you can settle by card in advance */}
+        <KlookTripPrep
+          heading="Costs You Can Put on a Card in Advance"
+          intro="The cash-versus-card question gets easier the more of your trip is already paid for. These three can all be booked from home:"
+          items={cashVsCardTripPrep}
+        />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

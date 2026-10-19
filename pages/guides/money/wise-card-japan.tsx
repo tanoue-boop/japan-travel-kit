@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import { wiseCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 // NOTE: Wise affiliate programme not yet approved — plain link for now.
@@ -358,6 +360,13 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             ))}
           </div>
         </section>
+
+        {/* Klook: the rest of the pre-trip setup */}
+        <KlookTripPrep
+          heading="The Rest of the Pre-Trip Setup"
+          intro="Once the card is ordered, three other bookings are worth making while you are still at a desk rather than in an arrivals hall:"
+          items={wiseCardTripPrep}
+        />
 
         {/* Related */}
         <section className={styles.relatedSection}>

@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import { atmsTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const atmComparison = [
@@ -425,6 +427,13 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             ))}
           </div>
         </section>
+
+        {/* Klook: what to sort out before the first withdrawal */}
+        <KlookTripPrep
+          heading="Sort These Out Before Your First Withdrawal"
+          intro="A smaller first withdrawal goes further if the obvious arrival-day costs are already booked. Three worth doing before you fly:"
+          items={atmsTripPrep}
+        />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

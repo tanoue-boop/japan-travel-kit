@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import { taxFreeTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 
 const taxFreeStores = [
@@ -378,6 +380,13 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             ))}
           </div>
         </section>
+
+        {/* Klook: arrival-day bookings that fit a shopping trip */}
+        <KlookTripPrep
+          heading="Worth Booking Before You Shop"
+          intro="Tax-free paperwork is only part of the arrival. Three things are cheaper or simply easier to sort out before you fly than from the arrivals hall:"
+          items={taxFreeTripPrep}
+        />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>
