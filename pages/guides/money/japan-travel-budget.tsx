@@ -184,10 +184,9 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💴</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Japan Travel Budget Guide (2026):<br />How Much Does Japan Cost?
@@ -252,11 +251,11 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
                 </thead>
                 <tbody>
                   {budgetTable.map((row) => (
-                    <tr key={row.category} style={row.category === "Total/day" ? { fontWeight: 700, background: "#f8fafc" } : {}}>
+                    <tr key={row.category} style={row.category === "Total/day" ? { fontWeight: 700, background: "var(--paper)" } : {}}>
                       <td className={styles.tdProvider}>{row.category}</td>
                       <td className={styles.tdPrice}>{row.budget}</td>
-                      <td style={{ fontWeight: 600, color: "#0d1b4b" }}>{row.mid}</td>
-                      <td style={{ color: "#6b7280" }}>{row.comfortable}</td>
+                      <td style={{ fontWeight: 600, color: "var(--sumi)" }}>{row.mid}</td>
+                      <td style={{ color: "var(--text-muted)" }}>{row.comfortable}</td>
                     </tr>
                   ))}
                 </tbody>

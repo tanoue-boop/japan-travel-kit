@@ -169,10 +169,9 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💳</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Wise Card in Japan (2026):<br />Fees, ATMs &amp; How to Use It
@@ -193,11 +192,10 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
       <div className={styles.content}>
         {/* Disclaimer */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Not financial advice.</strong> This guide is general information only. Fees and limits are current
             as of 2026, can change, and depend on the country where your Wise account is registered — always confirm the latest on the official{" "}
-            <a href={WISE_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Wise fees page</a>{" "}
+            <a href={WISE_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Wise fees page</a>{" "}
             before you rely on them.
           </p>
         </div>

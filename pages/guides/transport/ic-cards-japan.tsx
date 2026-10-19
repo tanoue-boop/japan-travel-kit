@@ -180,10 +180,9 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚇</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             IC Cards in Japan 2026:<br />Suica, Pasmo &amp; How to Use Them
@@ -204,11 +203,10 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -275,8 +273,8 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
                   {comparison.map((row) => (
                     <tr key={row.feature}>
                       <td className={styles.ftFeature}>{row.feature}</td>
-                      <td style={{ fontSize: "0.85rem", color: "#374151" }}>{row.suica}</td>
-                      <td style={{ fontSize: "0.85rem", color: "#374151" }}>{row.pasmo}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.suica}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.pasmo}</td>
                     </tr>
                   ))}
                 </tbody>

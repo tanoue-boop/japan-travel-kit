@@ -160,10 +160,9 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Best Japan eSIM for 2 Weeks (2026):<br />Top Picks for Longer Stays
@@ -185,12 +184,11 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -225,7 +223,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
               </div>
             </div>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.82rem", marginTop: "0.75rem", marginBottom: "1rem" }}>
-              <strong style={{ color: "#fbbf24" }}>Data needed:</strong> 5GB–15GB for 2 weeks (most travellers: 10GB is enough)
+              <strong style={{ color: "var(--accent)" }}>Data needed:</strong> 5GB–15GB for 2 weeks (most travellers: 10GB is enough)
             </p>
             <div className={styles.pickCtaRow}>
               <a
@@ -281,10 +279,10 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read straight from our daily price feed, checked {pricesCheckedAt}. For the unfiltered
             list of every plan sorted by price per GB, see{" "}
-            <Link href="/guides/esim/japan-esim-data-plans" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/japan-esim-data-plans" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan eSIM data plans compared
             </Link>.
           </p>
@@ -338,7 +336,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
           </p>
 
           <div style={{ marginTop: "1.25rem" }}>
-            <p style={{ fontWeight: 700, color: "#0d1b4b", marginBottom: "0.5rem" }}>Week 1</p>
+            <p style={{ fontWeight: 700, color: "var(--sumi)", marginBottom: "0.5rem" }}>Week 1</p>
             <ul className={styles.pickList} style={{ marginBottom: "1.25rem" }}>
               <li><span className={styles.proIcon}>▸</span> <strong>Days 1–3:</strong> Tokyo — arrival, exploration, heavy map use (~900MB)</li>
               <li><span className={styles.proIcon}>▸</span> <strong>Day 4 (Nikko or Hakone):</strong> Day trip from Tokyo, moderate navigation (~300MB)</li>
@@ -346,7 +344,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
               <li><span className={styles.proIcon}>▸</span> <strong>Days 6–7:</strong> Kyoto — temple visits, maps, social posts (~600MB)</li>
             </ul>
 
-            <p style={{ fontWeight: 700, color: "#0d1b4b", marginBottom: "0.5rem" }}>Week 2</p>
+            <p style={{ fontWeight: 700, color: "var(--sumi)", marginBottom: "0.5rem" }}>Week 2</p>
             <ul className={styles.pickList} style={{ marginBottom: "1.25rem" }}>
               <li><span className={styles.proIcon}>▸</span> <strong>Days 8–9:</strong> Osaka — active city use, food navigation (~600MB)</li>
               <li><span className={styles.proIcon}>▸</span> <strong>Day 10:</strong> Hiroshima day trip — Shinkansen + city maps (~300MB)</li>
@@ -460,7 +458,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
           {/* Holafly */}
           <div className={styles.choiceGrid} style={{ marginBottom: "1.5rem" }}>
             <div className={styles.choiceCard}>
-              <div className={`${styles.choiceCardHeader}`} style={{ background: "linear-gradient(135deg, #6b7280 0%, #4b5563 100%)" }}>
+              <div className={`${styles.choiceCardHeader}`} style={{ background: "var(--text-muted) 100%)" }}>
                 <div className={styles.choiceCardIcon}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
@@ -502,14 +500,14 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
           >
             {HOLAFLY_ALT_LABEL}
           </a>
-          <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", marginBottom: "2rem", lineHeight: 1.6 }}>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", marginBottom: "2rem", lineHeight: 1.6 }}>
             {HOLAFLY_ALT_NOTE}
           </p>
 
           {/* Sakura Mobile */}
           <div className={styles.choiceGrid} style={{ marginBottom: "1.5rem" }}>
             <div className={styles.choiceCard}>
-              <div className={`${styles.choiceCardHeader}`} style={{ background: "linear-gradient(135deg, #be185d 0%, #9d174d 100%)" }}>
+              <div className={`${styles.choiceCardHeader}`} style={{ background: "var(--sumi) 100%)" }}>
                 <div className={styles.choiceCardIcon}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />

@@ -196,10 +196,9 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚇</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tokyo Subway Ticket (2026):<br />24, 48 or 72 Hours — Is It Worth It?
@@ -221,11 +220,10 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -309,7 +307,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Adult and child prices read off the official Tokyo Metro site on {CHECKED}. The cost-per-day column
             is our arithmetic, not an official figure. Validity counts forward in hours from first use.
           </p>
@@ -353,7 +351,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             — a normal pace once you are changing lines a couple of times per outing. That gap is the whole
             decision.
           </p>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Fares read off Tokyo Metro&apos;s adult fare table on {CHECKED}; the quoted prices include the ¥10
             adult barrier-free fee. Toei Subway fares are set separately. Break-even counts are our arithmetic.
           </p>

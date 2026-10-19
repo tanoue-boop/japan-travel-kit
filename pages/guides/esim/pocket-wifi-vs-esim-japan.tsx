@@ -132,10 +132,9 @@ export default function PocketWifiVsEsimPage() {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📶</span> Prices checked {pricesCheckedAt}
+            Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Pocket WiFi vs eSIM for Japan (2026):<br />Which Is Better?
@@ -158,12 +157,11 @@ export default function PocketWifiVsEsimPage() {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -244,7 +242,7 @@ export default function PocketWifiVsEsimPage() {
                   ].map(([feature, esim, wifi]) => (
                     <tr key={feature}>
                       <td className={styles.tdProvider}>{feature}</td>
-                      <td style={{ color: "#1a56db", fontWeight: 600 }}>{esim}</td>
+                      <td style={{ color: "var(--sumi)", fontWeight: 600 }}>{esim}</td>
                       <td className={styles.tdNetwork}>{wifi}</td>
                     </tr>
                   ))}
@@ -355,7 +353,7 @@ export default function PocketWifiVsEsimPage() {
             you — an airport counter, or your hotel. Rates are the advertised cheapest booking on
             Klook as of {ratesCheckedAt} and are a floor rather than a quote; the rest was read off
             the listings {specsCheckedAt}. Our{" "}
-            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               best pocket WiFi in Japan guide
             </Link>{" "}
             takes that choice apart in full, with the cost of each by trip length.
@@ -480,7 +478,7 @@ export default function PocketWifiVsEsimPage() {
                 Unlimited data on {WIFI_AIRPORT.network} for up to {WIFI_AIRPORT.maxDevices} devices
                 from ${WIFI_AIRPORT.fromUsdPerDay.toFixed(2)}/day, collected and returned at an
                 airport counter. Need more devices, or a hotel delivery?{" "}
-                <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
                   Compare both rentals →
                 </Link>
               </p>

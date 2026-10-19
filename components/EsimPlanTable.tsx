@@ -135,7 +135,7 @@ export default function EsimPlanTable({
               {sorted.map((r) => (
                 <tr key={r.id} className={highlight.has(r.id) ? tools.rowHighlight : undefined}>
                   <td className={styles.tdProvider}>{r.provider}</td>
-                  <td style={{ fontWeight: 700, color: "#0d1b4b", whiteSpace: "nowrap" }}>
+                  <td style={{ fontWeight: 700, color: "var(--sumi)", whiteSpace: "nowrap" }}>
                     {r.unlimited ? "Unlimited" : `${r.gb} GB`}
                     {r.note && <span className={tools.tdNote}>{r.note}</span>}
                   </td>
@@ -152,7 +152,7 @@ export default function EsimPlanTable({
               ))}
               {sorted.length === 0 && (
                 <tr>
-                  <td colSpan={7} style={{ textAlign: "center", color: "#9ca3af" }}>
+                  <td colSpan={7} style={{ textAlign: "center", color: "var(--text-faint)" }}>
                     No plans to show.
                   </td>
                 </tr>

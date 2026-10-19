@@ -130,10 +130,9 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tokyo to Kyoto (2026):<br />Cheapest &amp; Fastest Ways to Get There
@@ -156,12 +155,11 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our advice or rankings.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -187,7 +185,7 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
               </div>
             </div>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.82rem", marginTop: "0.75rem", marginBottom: "1rem" }}>
-              <strong style={{ color: "#fbbf24" }}>Recommended:</strong> The Shinkansen is the right choice for most travellers — fast, frequent, and stress-free.
+              <strong style={{ color: "var(--accent)" }}>Recommended:</strong> The Shinkansen is the right choice for most travellers — fast, frequent, and stress-free.
             </p>
             <a
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"

@@ -173,10 +173,9 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Haruka vs Nankai Rapi:t (2026):<br />Best Train from Kansai Airport?
@@ -277,7 +276,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
                   {destinationRows.map((row) => (
                     <tr key={row.dest}>
                       <td className={styles.tdProvider}>{row.dest}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b", whiteSpace: "nowrap" }}>{row.pick}</td>
+                      <td style={{ fontWeight: 700, color: "var(--sumi)", whiteSpace: "nowrap" }}>{row.pick}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.note}</td>
                     </tr>
                   ))}

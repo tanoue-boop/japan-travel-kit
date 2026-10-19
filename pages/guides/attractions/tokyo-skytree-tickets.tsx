@@ -223,10 +223,9 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🗼</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tokyo Skytree Tickets (2026):<br />Prices, Floor 350 vs 450 &amp; How to Book
@@ -248,11 +247,10 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -335,7 +333,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off the official Tokyo Skytree site on {CHECKED}. The official page lists these as
             &ldquo;from&rdquo; prices, so the figure for a specific date can be higher — confirm at booking. The
             ¥500 same-day service fee applies per ticket at the 4th-floor counter and at convenience stores.
@@ -391,7 +389,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Skytree and Shibuya Sky figures are from the operators&apos; own sites; Tokyo Tower and Tocho are
             approximate and subject to change. Confirm at booking.
           </p>

@@ -19,7 +19,7 @@ const ESIMGO_10 = priceAtLeastLabel("esimgo", 10);
 const ALT_URL = getProvider("airalo").affiliateUrl;
 const ALT_LABEL = "Get Airalo unlimited eSIM →";
 const ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
-const altNoteStyle = { fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 };
+const altNoteStyle = { fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 };
 
 const dataUsageTable = [
   { activity: "Google Maps navigation",          perDay: "~50 MB",   weeklyTotal: "~350 MB" },
@@ -256,10 +256,9 @@ export default function JapanEsimUnlimitedPage() {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📶</span> Prices checked {pricesCheckedAt}
+            Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Best Unlimited eSIM for Japan (2026):<br />Top Picks for Heavy Users
@@ -280,11 +279,10 @@ export default function JapanEsimUnlimitedPage() {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -341,7 +339,7 @@ export default function JapanEsimUnlimitedPage() {
                   {dataUsageTable.map((row) => (
                     <tr key={row.activity}>
                       <td className={styles.tdProvider}>{row.activity}</td>
-                      <td style={{ fontSize: "0.85rem", color: "#374151" }}>{row.perDay}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.perDay}</td>
                       <td className={styles.tdPrice}>{row.weeklyTotal}</td>
                     </tr>
                   ))}
@@ -388,9 +386,9 @@ export default function JapanEsimUnlimitedPage() {
                             fontSize: "0.72rem",
                             fontWeight: 700,
                             padding: "0.15rem 0.55rem",
-                            borderRadius: "9999px",
-                            background: row.verdictClass === "warn" ? "#fef3c7" : undefined,
-                            color: row.verdictClass === "warn" ? "#92400e" : undefined,
+                            borderRadius: "var(--radius-sm)",
+                            background: row.verdictClass === "warn" ? "var(--paper-deep)" : undefined,
+                            color: row.verdictClass === "warn" ? "var(--text)" : undefined,
                           }}
                         >
                           {row.verdict}
@@ -480,9 +478,9 @@ export default function JapanEsimUnlimitedPage() {
                   {comparisonRows.map((row) => (
                     <tr key={row.feature}>
                       <td className={styles.ftFeature}>{row.feature}</td>
-                      <td style={{ fontSize: "0.85rem", color: "#374151" }}>{row.holafly}</td>
-                      <td style={{ fontSize: "0.85rem", color: "#374151" }}>{row.sakura}</td>
-                      <td style={{ fontSize: "0.85rem", color: "#374151" }}>{row.airalo}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.holafly}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.sakura}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.airalo}</td>
                     </tr>
                   ))}
                 </tbody>

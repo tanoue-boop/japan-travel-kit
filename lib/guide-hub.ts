@@ -56,8 +56,6 @@ export type GuideCategory = {
   /** Hub route, e.g. "/guides/esim". */
   href: string;
   name: string;
-  /** Hub eyebrow icon, reused on the /guides index. */
-  emoji: string;
   /** Two to three sentences of pillar introduction, above the article groups. */
   intro: string[];
   /** The one article a visitor with no particular question should read first. */

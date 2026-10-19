@@ -171,10 +171,9 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚇</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Osaka Metro Pass vs Enjoy Eco Card<br />(2026): Which Should Tourists Buy?
@@ -319,7 +318,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
                   {vsRows.map((row) => (
                     <tr key={row.scenario}>
                       <td className={styles.tdProvider}>{row.scenario}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b", whiteSpace: "nowrap" }}>{row.pick}</td>
+                      <td style={{ fontWeight: 700, color: "var(--sumi)", whiteSpace: "nowrap" }}>{row.pick}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.note}</td>
                     </tr>
                   ))}

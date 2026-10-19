@@ -214,10 +214,9 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🦌</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Nara Day Trip (2026):<br />From Osaka or Kyoto, and What Todai-ji Costs
@@ -239,11 +238,10 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -330,7 +328,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Most guided options pair Nara with Kyoto highlights such as Arashiyama, Fushimi Inari or Uji — our{" "}
             <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka" style={{ color: "var(--red)", fontWeight: 600 }}>
               Kyoto and Nara day tour comparison
@@ -370,7 +368,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off Todai-ji&apos;s official site on {CHECKED}. Groups of 30 or more pay less. The Great
             Buddha Hall is open 7:30–17:30 from April to October and 8:00–17:00 from November to March.
             Subject to change — confirm before you go.

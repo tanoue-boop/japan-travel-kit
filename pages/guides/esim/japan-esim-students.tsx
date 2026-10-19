@@ -205,10 +205,9 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📚</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Best eSIM for Japan for Students (2026):<br />Budget Picks
@@ -230,12 +229,11 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our recommendations.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -279,7 +277,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>Why Student Picks Differ from Tourist Picks</h2>
           <p className={styles.bodyText}>
             Our{" "}
-            <Link href="/guides/esim/best-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               main Japan eSIM comparison
             </Link>{" "}
             ranks on what matters for a one- or two-week trip: how fast you can get online, and
@@ -504,7 +502,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
                 >
                   {HOLAFLY_ALT_LABEL}
                 </a>
-                <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+                <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                   {HOLAFLY_ALT_NOTE}
                 </p>
               </div>
@@ -534,7 +532,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
                   {dataUsage.map((row) => (
                     <tr key={row.activity}>
                       <td className={styles.tdProvider}>{row.activity}</td>
-                      <td style={{ fontWeight: 700, color: "#c62828" }}>{row.perDay}</td>
+                      <td style={{ fontWeight: 700, color: "var(--accent)" }}>{row.perDay}</td>
                     </tr>
                   ))}
                 </tbody>

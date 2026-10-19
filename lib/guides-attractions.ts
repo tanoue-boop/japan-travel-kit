@@ -231,7 +231,6 @@ export const attractionArticles: GuideArticle[] = [
 export const attractionsCategory: GuideCategory = {
   href: "/guides/attractions",
   name: "Things to Do",
-  emoji: "🎟️",
   intro: [
     "A handful of Japan's best-known attractions cannot be bought at the gate. teamLab, Tokyo Disney, Universal Studios Japan and the Shibuya Sky sunset slots all sell date- and time-specified tickets online, and the popular slots go weeks ahead — in Disney's case, with no same-day sales at all.",
     "Two things routinely catch visitors out: the official sites sometimes reject foreign cards, and the resale listings that rank well in search are often invalid for entry. These guides cover official prices, which booking route works from abroad, and when to book.",

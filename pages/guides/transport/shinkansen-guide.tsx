@@ -211,10 +211,9 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Shinkansen Guide 2026:<br />Tickets, Passes &amp; Tips for First-Timers
@@ -236,12 +235,11 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our recommendations.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -380,7 +378,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
                     <tr key={row.route}>
                       <td className={styles.tdProvider}>{row.route}</td>
                       <td className={styles.tdPrice}>{row.nonReserved}</td>
-                      <td style={{ fontWeight: 600, color: "#0d1b4b" }}>{row.reserved}</td>
+                      <td style={{ fontWeight: 600, color: "var(--sumi)" }}>{row.reserved}</td>
                     </tr>
                   ))}
                 </tbody>

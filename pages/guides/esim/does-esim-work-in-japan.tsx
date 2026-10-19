@@ -205,10 +205,9 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📶</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Does eSIM Work in Japan? (2026):<br />Everything You Need to Know
@@ -230,12 +229,11 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -302,7 +300,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Which leaves your handset as the only real variable — and the rest of this page is
             about checking it. Once your phone passes, see our{" "}
-            <Link href="/guides/esim/best-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               full comparison of the four Japan eSIM providers
             </Link>{" "}
             for which plan to buy. Prices on this page checked {pricesCheckedAt}.
@@ -333,7 +331,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
                     <tr key={row.provider}>
                       <td className={styles.tdProvider}>{row.provider}</td>
                       <td className={styles.tdNetwork}>{row.network}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b" }}>{row.coverage}</td>
+                      <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{row.coverage}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -360,7 +358,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
                 <li><span className={styles.proIcon}>+</span>U.S. iPhone 14 and later — eSIM-only</li>
               </ul>
             </div>
-            <div className={styles.pickPros} style={{ background: "#eef5ff", borderColor: "#bcd4ff" }}>
+            <div className={styles.pickPros} style={{ background: "var(--paper)", borderColor: "var(--rule)" }}>
               <p className={styles.pickListLabel}>Android (major models)</p>
               <ul className={styles.pickList}>
                 <li><span className={styles.proIcon}>+</span>Google Pixel 3a and later (3a, 4–9)</li>
@@ -420,7 +418,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Recommended providers</span>
           <h2 className={styles.sectionTitle}>Best eSIMs for Japan</h2>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1rem", marginBottom: "0.5rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1rem", marginBottom: "0.5rem" }}>
             Airalo — Best Overall
           </h3>
           <p className={styles.bodyText}>
@@ -439,7 +437,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             Get Airalo Japan eSIM →
           </a>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.5rem", marginBottom: "0.5rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.5rem", marginBottom: "0.5rem" }}>
             eSIM Go — Best Budget
           </h3>
           <p className={styles.bodyText}>
@@ -458,7 +456,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             Get eSIM Go Japan eSIM →
           </a>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.5rem", marginBottom: "0.5rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.5rem", marginBottom: "0.5rem" }}>
             Unlimited data — Airalo or Holafly
           </h3>
           <p className={styles.bodyText}>
@@ -476,7 +474,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           >
             {HOLAFLY_ALT_LABEL}
           </a>
-          <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
             {HOLAFLY_ALT_NOTE}
           </p>
         </section>

@@ -150,10 +150,9 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🛡️</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             SafetyWing vs Heymondo for Japan (2026):<br />Which Should You Pick?
@@ -175,14 +174,13 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
       <div className={styles.content}>
         {/* Disclaimer */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Not insurance advice.</strong> This is general information only — not insurance advice.
             Coverage and prices vary by age, trip length, and plan, and change over time. Always get a quote
             and read the policy wording before you buy. Confirm the latest details on the official{" "}
-            <a href={SAFETYWING_URL} target="_blank" rel="sponsored noopener noreferrer" style={{ color: "#92400e", fontWeight: 600 }}>SafetyWing</a>{" "}
+            <a href={SAFETYWING_URL} target="_blank" rel="sponsored noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>SafetyWing</a>{" "}
             and{" "}
-            <a href={HEYMONDO_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Heymondo</a>{" "}
+            <a href={HEYMONDO_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Heymondo</a>{" "}
             sites.
           </p>
         </div>
@@ -267,7 +265,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Details are a 2026 general guide and vary by plan, country of residence, and date — confirm on each
             provider&apos;s site before you buy.
           </p>

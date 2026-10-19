@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
             Affiliate relationships do not influence our editorial recommendations. We only recommend products and services we believe are genuinely useful for travelers to Japan.
           </p>
           <p className={styles.text}>
-            See our full <Link href="/disclaimer" style={{ color: "#c62828", fontWeight: 600 }}>Affiliate Disclaimer</Link> for details.
+            See our full <Link href="/disclaimer" style={{ color: "var(--accent)", fontWeight: 600 }}>Affiliate Disclaimer</Link> for details.
           </p>
         </section>
 
@@ -92,11 +92,11 @@ export default function PrivacyPolicyPage() {
           <ul className={styles.list}>
             <li>
               <strong>Google Analytics:</strong> Tracks site usage statistics. You can opt out via the{" "}
-              <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style={{ color: "#c62828" }}>Google Analytics Opt-out Browser Add-on</a>.
+              <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Google Analytics Opt-out Browser Add-on</a>.
             </li>
             <li>
               <strong>Google AdSense:</strong> Displays personalized or non-personalized ads. Governed by{" "}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#c62828" }}>Google&apos;s Privacy Policy</a>.
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Google&apos;s Privacy Policy</a>.
             </li>
             <li>
               <strong>Affiliate networks (Airalo, Klook, etc.):</strong> May set cookies to track referrals. These operate under their own privacy policies.

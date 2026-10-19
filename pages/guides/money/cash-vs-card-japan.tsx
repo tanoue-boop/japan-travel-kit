@@ -202,10 +202,9 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💴</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Cash vs Card in Japan (2026):<br />What Actually Works?
@@ -228,12 +227,11 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our recommendations.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -282,8 +280,8 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
                   {placeRows.map((row) => (
                     <tr key={row.place}>
                       <td className={styles.tdProvider}>{row.place}</td>
-                      <td style={{ fontWeight: 700, color: row.cash === "Required" ? "#c62828" : row.cash === "✓" ? "#22c55e" : "#78716c" }}>{row.cash}</td>
-                      <td style={{ fontWeight: 600, color: row.card === "✓" ? "#22c55e" : row.card === "✗" ? "#c62828" : "#78716c" }}>{row.card}</td>
+                      <td style={{ fontWeight: 700, color: row.cash === "Required" ? "var(--accent)" : row.cash === "✓" ? "var(--accent)" : "var(--text-muted)" }}>{row.cash}</td>
+                      <td style={{ fontWeight: 600, color: row.card === "✓" ? "var(--accent)" : row.card === "✗" ? "var(--accent)" : "var(--text-muted)" }}>{row.card}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -452,7 +450,7 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Full details on getting and using an IC card:{" "}
-            <Link href="/guides/transport/ic-cards-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Suica &amp; Pasmo guide →
             </Link>
           </p>

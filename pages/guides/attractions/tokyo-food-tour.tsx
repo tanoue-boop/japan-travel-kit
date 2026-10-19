@@ -203,10 +203,9 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🏮</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tokyo Food &amp; Izakaya Tours (2026):<br />Shinjuku Bar Hopping &amp; What to Eat
@@ -228,11 +227,10 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -320,7 +318,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Formats, inclusions, and prices vary by operator and season (2026, variable — confirm at booking).
             Alcohol-inclusive tours are restricted to ages 20 and over.
           </p>

@@ -17,7 +17,7 @@ const AIRALO_FIVE = priceAtLeastLabel("airalo", 5);
 const ALT_URL = getProvider("airalo").affiliateUrl;
 const ALT_LABEL = "Get Airalo unlimited eSIM →";
 const ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
-const altNoteStyle = { fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 };
+const altNoteStyle = { fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 };
 
 const pros = [
   "Truly unlimited data, no caps",
@@ -218,10 +218,9 @@ export default function HolaflyJapanReviewPage() {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Prices checked {pricesCheckedAt}
+            Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Holafly Japan Review 2026:<br />Is Unlimited Data Worth It?
@@ -242,12 +241,11 @@ export default function HolaflyJapanReviewPage() {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -380,8 +378,8 @@ export default function HolaflyJapanReviewPage() {
               </table>
             </div>
           </div>
-          <p style={{ fontSize: "0.82rem", color: "#6b7280", marginTop: "1rem", lineHeight: 1.6 }}>
-            <strong style={{ color: "#0d1b4b" }}>Bottom line:</strong> Choose Holafly if you use more
+          <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginTop: "1rem", lineHeight: 1.6 }}>
+            <strong style={{ color: "var(--sumi)" }}>Bottom line:</strong> Choose Holafly if you use more
             than 3–5 GB per week or simply don&apos;t want to track usage. Choose Airalo if you want the
             best price-per-GB and are comfortable with a data cap.
           </p>

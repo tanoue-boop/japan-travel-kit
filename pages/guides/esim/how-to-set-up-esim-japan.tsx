@@ -358,10 +358,9 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             How to Set Up an eSIM in Japan<br />(Step-by-Step)
@@ -455,7 +454,7 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
             There is more to say about iPhone specifically — which models run two eSIMs at once,
             the dual-SIM toggles that prevent surprise roaming charges, and the one provider that
             needs its APN typed in by hand. We cover all of it in{" "}
-            <Link href="/guides/esim/japan-esim-iphone" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/japan-esim-iphone" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Best eSIM for Japan on iPhone →
             </Link>
           </p>
@@ -738,7 +737,7 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
                 <p className={styles.stepTitle}>Alternative: rent a Pocket WiFi</p>
                 <p className={styles.stepDesc}>
                   If you can&apos;t unlock your phone in time, a{" "}
-                  <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>Pocket WiFi device</Link>{" "}
+                  <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>Pocket WiFi device</Link>{" "}
                   from the airport or hotel works independently of your phone&apos;s lock status.
                 </p>
               </div>
@@ -825,7 +824,7 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Not sure which to pick?{" "}
-            <Link href="/guides/esim/best-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Read our full comparison →
             </Link>
           </p>

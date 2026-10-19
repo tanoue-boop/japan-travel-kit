@@ -109,13 +109,13 @@ export default function FxFeeComparison() {
           <div className={tools.field}>
             <label className={tools.fieldLabel} htmlFor="fx-rate">Mid-market rate (editable)</label>
             <div className={tools.inputRow}>
-              <span className={tools.inputAddon} style={{ borderRadius: "12px 0 0 12px", borderLeft: "1.5px solid #e5e7eb", borderRight: 0 }}>
+              <span className={tools.inputAddon} style={{ borderRadius: "var(--radius-sm) 0 0 var(--radius-sm)", borderLeft: "1.5px solid var(--rule)", borderRight: 0 }}>
                 1 {currency} =
               </span>
               <input
                 id="fx-rate"
                 className={tools.input}
-                style={{ borderRadius: "0 12px 12px 0" }}
+                style={{ borderRadius: "0 var(--radius-sm) var(--radius-sm) 0" }}
                 type="number"
                 min={1}
                 step={0.5}

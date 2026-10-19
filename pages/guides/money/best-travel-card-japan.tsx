@@ -30,7 +30,7 @@ const bestCards = [
   {
     name: "Wise (formerly TransferWise)",
     badge: "Best Overall",
-    badgeColor: "#16a34a",
+    badgeColor: "var(--accent)",
     pros: [
       "Mid-market exchange rate with a small conversion fee (from ~0.4%, varies by currency)",
       "Fee-free ATM withdrawals up to a monthly allowance set by your account's country (≈¥30,000/mo on a Japan account)",
@@ -47,7 +47,7 @@ const bestCards = [
   {
     name: "Revolut",
     badge: "Best for Frequent Travellers",
-    badgeColor: "#2563eb",
+    badgeColor: "var(--sumi)",
     pros: [
       "Mid-market rate on weekdays (a small markup applies on weekends)",
       "Free ATM withdrawals up to a monthly limit (varies by plan and account country)",
@@ -64,7 +64,7 @@ const bestCards = [
   {
     name: "Charles Schwab Investor Checking (US only)",
     badge: "Best for US Travellers",
-    badgeColor: "#7c3aed",
+    badgeColor: "var(--sumi)",
     pros: [
       "Unlimited ATM fee reimbursements worldwide, including Japan",
       "No foreign transaction fees on any purchase",
@@ -81,7 +81,7 @@ const bestCards = [
   {
     name: "Starling Bank / Monzo (UK only)",
     badge: "Best for UK Travellers",
-    badgeColor: "#0891b2",
+    badgeColor: "var(--sumi)",
     pros: [
       "Both use the Mastercard exchange rate with no additional markup",
       "No foreign transaction fees on purchases",
@@ -239,10 +239,9 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💳</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Best Travel Card for Japan (2026):<br />Top Picks for Foreign Visitors
@@ -264,14 +263,13 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         {/* Disclaimer */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Not financial advice.</strong> This guide is general information only. Card fees and free ATM/FX
             allowances are current as of 2026, can change, and depend on the country where your account is registered
             (Wise revised its ATM fee structure on 1 May 2026). Always confirm the latest on the official{" "}
-            <a href="https://wise.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Wise</a>{" "}
+            <a href="https://wise.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Wise</a>{" "}
             and{" "}
-            <a href="https://www.revolut.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Revolut</a>{" "}
+            <a href="https://www.revolut.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Revolut</a>{" "}
             fees pages before you rely on them.
           </p>
         </div>

@@ -263,10 +263,9 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚄</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             JR Pass Guide 2026: Prices,<br />Is It Worth It and How to Buy
@@ -288,11 +287,10 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -423,15 +421,15 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
                   {itineraries.map((row) => (
                     <tr key={row.route}>
                       <td className={styles.tdProvider}>{row.route}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b" }}>{row.fares}</td>
-                      <td style={{ fontWeight: 700, color: row.win ? "#c62828" : "#374151" }}>{row.verdict}</td>
+                      <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{row.fares}</td>
+                      <td style={{ fontWeight: 700, color: row.win ? "var(--accent)" : "var(--text)" }}>{row.verdict}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Tokyo–Kyoto fares are confirmed; other totals are approximate 2026 estimates for covered
             (Hikari/Sakura) services and will vary by route, season, and seat reservations — confirm current
             fares before deciding. Figures exclude non-covered subways, private rail, and the Nozomi supplement.
@@ -474,7 +472,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
               <div key={alt.name} className={styles.stepCard}>
                 <span className={styles.stepNum}>{i + 1}</span>
                 <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{alt.name} <span style={{ fontWeight: 400, color: "#9ca3af" }}>— {alt.bestFor}</span></p>
+                  <p className={styles.stepTitle}>{alt.name} <span style={{ fontWeight: 400, color: "var(--text-faint)" }}>— {alt.bestFor}</span></p>
                   <p className={styles.stepDesc}>{alt.desc}</p>
                 </div>
               </div>
@@ -518,7 +516,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             JR sets the price in yen — ¥50,000, ¥80,000 and ¥100,000 for the 7-, 14- and 21-day Ordinary pass —
             and resellers charge the equivalent, shown here in USD at official rates. Child passes (ages 6–11)
             are approximately half price. All authorised resellers charge the same fixed official price.

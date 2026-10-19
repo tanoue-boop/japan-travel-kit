@@ -12,8 +12,8 @@
   height: 13px;
   display: block;
 }
-.full  svg { fill: #fbbf24; }
-.half  svg { fill: #fcd34d; }
-.empty svg { fill: #e5e7eb; }
+.full  svg { fill: var(--accent); }
+.half  svg { fill: var(--rule-strong); }
+.empty svg { fill: var(--paper-deep); }
 
-.score { font-size: 0.8rem; font-weight: 800; color: #111827; }
+.score { font-size: 0.8rem; font-weight: 800; color: var(--text); }

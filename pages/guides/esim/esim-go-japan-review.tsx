@@ -191,10 +191,9 @@ export default function EsimGoJapanReviewPage() {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Prices checked {pricesCheckedAt}
+            Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             eSIM Go Japan Review 2026:<br />Best Budget eSIM for Japan?
@@ -215,12 +214,11 @@ export default function EsimGoJapanReviewPage() {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -359,8 +357,8 @@ export default function EsimGoJapanReviewPage() {
               </table>
             </div>
           </div>
-          <p style={{ fontSize: "0.82rem", color: "#6b7280", marginTop: "1rem", lineHeight: 1.6 }}>
-            <strong style={{ color: "#0d1b4b" }}>Bottom line:</strong> eSIM Go is cheaper than Airalo
+          <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginTop: "1rem", lineHeight: 1.6 }}>
+            <strong style={{ color: "var(--sumi)" }}>Bottom line:</strong> eSIM Go is cheaper than Airalo
             on every plan. The trade-off is support — Airalo&apos;s 24/7 live chat is more reassuring
             for first-time eSIM users. If you&apos;re comfortable with the setup process, eSIM Go saves
             you money with no compromise on network quality.

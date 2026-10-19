@@ -216,10 +216,9 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚇</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Osaka (2026):<br />Subway, Trains &amp; IC Cards Explained
@@ -338,7 +337,7 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
                       <td className={styles.tdProvider}>{row.pass}</td>
                       <td className={styles.tdPrice}>{row.price}</td>
                       <td className={styles.tdBestFor}>{row.bestFor}</td>
-                      <td style={{ color: "#15803d", fontWeight: 600 }}>{row.worth}</td>
+                      <td style={{ color: "var(--accent)", fontWeight: 600 }}>{row.worth}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -354,7 +353,7 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             is sold in 1-day and 2-day versions, with the 2-day pass the version most travellers buy.
           </p>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
             Enjoy Eco Card vs Osaka Metro Pass
           </h3>
           <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>
@@ -383,7 +382,7 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             *Eligibility and prices are a 2026 guide — confirm the current conditions when you buy.
           </p>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
             Which pass fits your trip?
           </h3>
           <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>
@@ -466,14 +465,14 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
                       <td className={styles.tdProvider}>{row.dest}</td>
                       <td className={styles.tdNetwork}>{row.from}</td>
                       <td className={styles.tdBestFor}>{row.line}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b" }}>{row.time}</td>
+                      <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{row.time}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "#9ca3af" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-faint)" }}>
             Journey times are approximate from Namba or the listed nearest station. IC card fares vary by distance.
           </p>
         </section>

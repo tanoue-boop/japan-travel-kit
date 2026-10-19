@@ -31,7 +31,7 @@ export default function KlookTripPrep({ heading, intro, items }: Props) {
                 href={item.url}
                 target="_blank"
                 rel="sponsored noopener"
-                style={{ color: "#1d4ed8", fontWeight: 600, whiteSpace: "nowrap" }}
+                style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 {item.ctaLabel}
               </a>
@@ -39,7 +39,7 @@ export default function KlookTripPrep({ heading, intro, items }: Props) {
           </li>
         ))}
       </ul>
-      <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+      <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
         These go to Klook, which pays us a commission at no extra cost to you. Prices and availability
         are Klook&apos;s — we do not quote them here because its product pages block automated checks.
       </p>

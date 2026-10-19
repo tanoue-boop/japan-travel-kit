@@ -221,10 +221,9 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>⛩️</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Hiroshima and Miyajima Day Trip (2026):<br />Is One Day Enough?
@@ -246,11 +245,10 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -341,7 +339,7 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Tour duration, inclusions and departure points as the Klook listing described them on {CHECKED}.
             We do not quote a tour price — Klook blocks automated reads of its product pages, so open the
             listing for the figure on your date and departure city.
@@ -377,7 +375,7 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off itsukushimajinja.jp, miyajima-ropeway.info and hpmmuseum.jp on {CHECKED}. The ropeway
             one-way fare is ¥1,100 for an adult and ¥550 for a child, and it runs up only until 16:00.
             Group and other discounts exist at all three. Subject to change — confirm before you go.

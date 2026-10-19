@@ -170,10 +170,9 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🎢</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Universal Studios Japan Tickets &amp;<br />Express Pass (2026): What to Buy
@@ -195,11 +194,10 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -286,7 +284,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             USJ uses tiered, date-based pricing — the same ticket costs more on busy dates. We don&apos;t quote
             fixed figures; check the live price for your date at booking (2026, variable, confirm at checkout).
           </p>
@@ -319,7 +317,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             The exact attractions covered and whether Super Nintendo World timed entry is included vary by
             variant and date — always check the inclusions for your specific date before buying.
           </p>

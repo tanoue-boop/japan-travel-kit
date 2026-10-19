@@ -103,7 +103,6 @@ export const moneyArticles: GuideArticle[] = [
 export const moneyCategory: GuideCategory = {
   href: "/guides/money",
   name: "Money & Payment",
-  emoji: "💴",
   intro: [
     "Japan has a reputation for being cash-only that is roughly a decade out of date — cards and IC cards now work in most city shops, restaurants and convenience stores. What has not changed is that small businesses, shrines, local buses and rural areas often still take cash only, and that most foreign cards are refused by most Japanese ATMs.",
     "So the money question for a Japan trip is really three questions: which card to bring, how to get yen once you land, and what to tap where. These guides cover them in that order, then the budgeting and insurance you sort before you fly.",

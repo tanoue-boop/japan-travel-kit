@@ -239,10 +239,9 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>⛩️</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Kyoto and Nara Day Tour From Osaka (2026):<br />Which Itinerary to Book
@@ -264,11 +263,10 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -356,7 +354,7 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Contents and durations are as the Klook listings described them on {CHECKED}. We do not quote prices
             here: Klook blocks automated reads of its product pages, so there is no figure we could have
             verified — open a listing for the current price on your date.
@@ -397,7 +395,7 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
             October and at 17:00 from November to March. On a short winter day, a tour that reaches Nara late
             can arrive after the doors have shut — worth asking about if Todai-ji is the reason you are going.
           </p>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off Todai-ji&apos;s official site on {CHECKED}. Subject to change — confirm before you go.
           </p>
         </section>

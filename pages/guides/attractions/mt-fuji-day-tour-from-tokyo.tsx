@@ -229,10 +229,9 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🗻</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Mt. Fuji Day Tour From Tokyo (2026):<br />Which Tour, and What You Actually See
@@ -254,11 +253,10 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -352,7 +350,7 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Contents and durations are as the Klook listings described them on {CHECKED}. We do not quote prices
             here: Klook blocks automated reads of its product pages, so there is no figure we could have
             verified — open a listing for the current price on your date.

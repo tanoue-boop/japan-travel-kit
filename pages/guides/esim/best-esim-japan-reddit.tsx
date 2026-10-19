@@ -149,10 +149,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Best eSIM for Japan:<br />Reddit&apos;s Advice, Fact-Checked (2026)
@@ -174,12 +173,11 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t influence which services we cover or how we summarise Reddit opinion.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -236,7 +234,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             So this page does not re-rank the providers — our{" "}
-            <Link href="/guides/esim/best-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               full Japan eSIM comparison
             </Link>{" "}
             already does that. It takes the four claims you will actually meet in those threads
@@ -310,9 +308,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           >
             {HOLAFLY_ALT_LABEL}
           </a>
-          <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
             {HOLAFLY_ALT_NOTE} Our full{" "}
-            <Link href="/guides/esim/holafly-japan-review" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/holafly-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Holafly Japan review
             </Link>{" "}
             covers the plan terms in detail.
@@ -408,7 +406,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
                     <tr key={row.provider}>
                       <td className={styles.tdProvider}>{row.provider}</td>
                       <td className={styles.tdPrice}>{row.price}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b" }}>{row.data}</td>
+                      <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{row.data}</td>
                       <td className={styles.tdNetwork}>{row.network}</td>
                       <td>{row.verdict}</td>
                     </tr>

@@ -35,7 +35,7 @@ const picks = [
     num: 1,
     name: "Airalo",
     badge: "Best Overall for iPhone",
-    badgeColor: "#0d1b4b",
+    badgeColor: "var(--sumi)",
     priceFrom: priceFromLabel("airalo"),
     network: getProvider("airalo").network,
     affiliateUrl: link("airalo"),
@@ -57,7 +57,7 @@ const picks = [
     num: 2,
     name: "Holafly",
     badge: "Best Unlimited for iPhone",
-    badgeColor: "#e65100",
+    badgeColor: "var(--accent)",
     priceFrom: unlimitedFromLabel("holafly"),
     network: getProvider("holafly").network,
     affiliateUrl: link("airalo"),
@@ -80,7 +80,7 @@ const picks = [
     num: 3,
     name: "eSIM Go",
     badge: "Best Budget for iPhone",
-    badgeColor: "#1565c0",
+    badgeColor: "var(--sumi)",
     priceFrom: priceFromLabel("esimgo"),
     network: getProvider("esimgo").network,
     affiliateUrl: link("esimgo"),
@@ -103,7 +103,7 @@ const picks = [
     num: 4,
     name: "Sakura Mobile",
     badge: "Best for Long Stay",
-    badgeColor: "#2e7d32",
+    badgeColor: "var(--accent)",
     priceFrom: priceFromLabel("sakura"),
     network: getProvider("sakura").network,
     affiliateUrl: link("sakura"),
@@ -250,10 +250,9 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Best eSIM for Japan<br />on iPhone (2026)
@@ -274,12 +273,11 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -342,14 +340,14 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                   {iphoneModels.map((row) => (
                     <tr key={row.model}>
                       <td className={styles.tdProvider}>{row.model}</td>
-                      <td style={{ color: "#16a34a", fontWeight: 700 }}>{row.esim}</td>
+                      <td style={{ color: "var(--accent)", fontWeight: 700 }}>{row.esim}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             To confirm eSIM support on your device: Settings → General → About → scroll to EID. If EID is present, your iPhone supports eSIM.
           </p>
         </section>
@@ -360,7 +358,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           <h2 className={styles.sectionTitle}>Best Japan eSIMs for iPhone</h2>
 
           {picks.map((pick) => (
-            <div key={pick.num} style={{ marginBottom: "2.5rem", paddingBottom: "2.5rem", borderBottom: "1px solid #e5e7eb" }}>
+            <div key={pick.num} style={{ marginBottom: "2.5rem", paddingBottom: "2.5rem", borderBottom: "1px solid var(--rule)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
                 <span style={{
                   display: "inline-flex",
@@ -368,7 +366,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                   justifyContent: "center",
                   width: "2rem",
                   height: "2rem",
-                  borderRadius: "50%",
+                  borderRadius: "var(--radius-sm)",
                   background: pick.badgeColor,
                   color: "#fff",
                   fontWeight: 800,
@@ -386,18 +384,18 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                     fontWeight: 700,
                     letterSpacing: "0.05em",
                     padding: "0.2rem 0.6rem",
-                    borderRadius: "999px",
+                    borderRadius: "var(--radius-sm)",
                     verticalAlign: "middle",
                   }}>{pick.badge}</span>
                 </h3>
               </div>
 
               <div style={{ display: "flex", gap: "1.5rem", marginBottom: "0.75rem", flexWrap: "wrap" }}>
-                <span style={{ fontSize: "0.82rem", color: "#6b7280" }}>
-                  <strong style={{ color: "#0d1b4b" }}>From:</strong> {pick.priceFrom}
+                <span style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+                  <strong style={{ color: "var(--sumi)" }}>From:</strong> {pick.priceFrom}
                 </span>
-                <span style={{ fontSize: "0.82rem", color: "#6b7280" }}>
-                  <strong style={{ color: "#0d1b4b" }}>Network:</strong> {pick.network}
+                <span style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+                  <strong style={{ color: "var(--sumi)" }}>Network:</strong> {pick.network}
                 </span>
               </div>
 
@@ -432,7 +430,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                 {pick.ctaLabel}
               </a>
               {pick.ctaNote && (
-                <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+                <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                   {pick.ctaNote}
                 </p>
               )}
@@ -447,7 +445,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             Under two minutes, done at home before you fly. These five steps are iPhone-specific —
             for Android, iPad, Galaxy Tab or Pixel Tablet, use the{" "}
-            <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               multi-device setup guide
             </Link>{" "}
             instead.
@@ -479,7 +477,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             The full dual-SIM walkthrough — including the Android equivalents and what to do when
             a profile disappears after a restart — is in our{" "}
-            <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               step-by-step eSIM setup guide for Japan
             </Link>.
           </p>

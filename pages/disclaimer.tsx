@@ -146,7 +146,7 @@ export default function DisclaimerPage() {
           <h2 className={styles.sectionTitle}>8. Advertising</h2>
           <p className={styles.text}>
             Japan Travel Kit may display advertisements served by <strong>Google AdSense</strong>. Google uses cookies to serve ads based on your prior visits to our site and other sites on the Internet. You may opt out of personalized advertising by visiting{" "}
-            <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: "#c62828" }}>Google Ads Settings</a>.
+            <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Google Ads Settings</a>.
           </p>
           <p className={styles.text}>
             Advertisements are clearly separated from editorial content. Advertised products are not endorsed by Japan Travel Kit unless specifically stated.

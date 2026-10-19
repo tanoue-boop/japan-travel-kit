@@ -97,7 +97,7 @@ export default function JrPassCalculator() {
         </span>
         {groups.map(([group, segs]) => (
           <div key={group} className={tools.segList}>
-            <span className={tools.fieldHint} style={{ fontWeight: 700, color: "#6b7280" }}>{group}</span>
+            <span className={tools.fieldHint} style={{ fontWeight: 700, color: "var(--text-muted)" }}>{group}</span>
             {segs.map((s: Segment) => {
               const on = !!selected[s.id];
               return (
@@ -107,7 +107,7 @@ export default function JrPassCalculator() {
                     type="checkbox"
                     checked={on}
                     onChange={() => toggle(s.id)}
-                    style={{ accentColor: "#c62828", width: "1.05rem", height: "1.05rem", cursor: "pointer" }}
+                    style={{ accentColor: "var(--accent)", width: "1.05rem", height: "1.05rem", cursor: "pointer" }}
                   />
                   <label htmlFor={`seg-${s.id}`} style={{ cursor: "pointer" }}>
                     <p className={tools.segName}>
@@ -137,11 +137,11 @@ export default function JrPassCalculator() {
         <div className={tools.field} style={{ maxWidth: 360, marginBottom: "1.25rem" }}>
           <label className={tools.fieldLabel} htmlFor="jr-extra">Other covered JR fares (optional)</label>
           <div className={tools.inputRow}>
-            <span className={tools.inputAddon} style={{ borderRadius: "12px 0 0 12px", borderLeft: "1.5px solid #e5e7eb", borderRight: 0 }}>¥</span>
+            <span className={tools.inputAddon} style={{ borderRadius: "var(--radius-sm) 0 0 var(--radius-sm)", borderLeft: "1.5px solid var(--rule)", borderRight: 0 }}>¥</span>
             <input
               id="jr-extra"
               className={tools.input}
-              style={{ borderRadius: "0 12px 12px 0" }}
+              style={{ borderRadius: "0 var(--radius-sm) var(--radius-sm) 0" }}
               type="number"
               min={0}
               step={100}

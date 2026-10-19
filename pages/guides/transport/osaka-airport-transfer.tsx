@@ -216,10 +216,9 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚆</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Osaka Airport Transfer Guide (2026):<br />KIX &amp; ITM to the City

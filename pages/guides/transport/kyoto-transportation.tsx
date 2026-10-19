@@ -252,10 +252,9 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚌</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Kyoto (2026):<br />Buses, Trains &amp; Taxis Explained
@@ -276,11 +275,10 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -335,7 +333,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
                       <td className={styles.tdProvider}>{row.mode}</td>
                       <td className={styles.tdBestFor}>{row.bestFor}</td>
                       <td className={styles.tdPrice}>{row.fare}</td>
-                      <td style={{ fontSize: "0.85rem", color: "#374151" }}>{row.icCard}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.icCard}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -435,7 +433,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Day passes are sold at the Kyoto Station Bus Information Center, subway ticket machines, and major hotels. They are not loaded to an IC card — you receive a separate paper ticket. <strong>Note:</strong> the old bus-only ¥700 City Bus 1-Day Pass has been discontinued (sales ended September 2023, and it could no longer be used after the end of March 2024) — the current bus-inclusive option is the ¥1,100 Subway &amp; Bus 1-Day Pass. Large suitcases are not allowed on city buses, so store them at Kyoto Station before a bus-based day.
           </p>
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.75rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.75rem" }}>
             How many rides to break even?
           </h3>
           <div className={styles.stepsList}>
@@ -450,7 +448,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             ))}
           </div>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
             Which pass (or no pass) fits your day?
           </h3>
           <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>

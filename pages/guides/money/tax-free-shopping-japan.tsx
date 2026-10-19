@@ -196,10 +196,9 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🛍️</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Tax-Free Shopping in Japan (2026):<br />How to Get Your Consumption Tax Back

@@ -64,8 +64,9 @@ export default function CityGuideIndex({
 
   return (
     <section className={styles.section}>
-      <span className={styles.label}>Every {name} guide</span>
+      <p className={styles.label}>Every {name} guide</p>
       <h2 className={styles.title}>All {total} of Our {name} Guides</h2>
+      <div className={styles.titleRule} />
       <p className={styles.intro}>
         Everything we have written about {name}, in one list — the tickets and experiences, the days out
         of the city, the passes, and how to get in from the airport and around once you are there. This

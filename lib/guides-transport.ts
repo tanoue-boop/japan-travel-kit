@@ -103,7 +103,6 @@ export const transportArticles: GuideArticle[] = [
 export const transportCategory: GuideCategory = {
   href: "/guides/transport",
   name: "Transport & Getting Around",
-  emoji: "🚄",
   intro: [
     "Japanese transport splits into two layers that barely overlap. Long-distance travel between cities runs mostly on JR, where the question is always the same: individual tickets or a pass. Inside a city it is subways, private railways and buses, where a tappable IC card handles almost everything and day passes only pay off on heavy days.",
     "Nothing in the first layer covers the second — the JR Pass will not open a Tokyo Metro gate — so most trips need a decision in each. These guides are grouped that way.",

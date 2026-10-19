@@ -219,10 +219,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🎟️</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             teamLab Planets Tickets (2026):<br />Prices, How to Book &amp; Planets vs Borderless
@@ -244,11 +243,10 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -289,7 +287,7 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             <a href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check teamLab Planets Tickets →
             </a>
-            <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "#6b7280" }}>
+            <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
               Prices, hours and closed dates on this page were read from the official teamLab sites on {CHECKED}.
               Planets prices vary by date and slot and the calendar shifts, so confirm both for your own date at checkout.
             </p>
@@ -327,7 +325,7 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read from the official teamLab Planets ticket store on {CHECKED}. Discounted tickets need proof of
             eligibility, so bring student ID, a passport or a disability certificate. Tickets are issued as a QR
             code on your phone.
@@ -434,7 +432,7 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Prices and hours read from the official teamLab sites on {CHECKED}. Both museums price adult tickets
             by date and slot and both calendars change, so confirm for your own date. Time needed is our own
             planning guidance, not an official figure.

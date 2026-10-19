@@ -217,10 +217,9 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🚆</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Getting Around Tokyo (2026):<br />Trains, Subway &amp; IC Cards Explained
@@ -377,7 +376,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
                       <td className={styles.tdProvider}>{row.from}</td>
                       <td className={styles.tdProvider}>{row.to}</td>
                       <td className={styles.tdNetwork}>{row.line}</td>
-                      <td style={{ fontWeight: 700, color: "#0d1b4b" }}>{row.time}</td>
+                      <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{row.time}</td>
                       <td className={styles.tdPrice}>{row.price}</td>
                     </tr>
                   ))}
@@ -385,7 +384,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "#9ca3af" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-faint)" }}>
             Prices shown are approximate IC card fares. Cash ticket fares are slightly higher.
           </p>
         </section>
@@ -417,7 +416,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
                       <td className={styles.tdProvider}>{row.pass}</td>
                       <td className={styles.tdPrice}>{row.price}</td>
                       <td className={styles.tdBestFor}>{row.covers}</td>
-                      <td style={{ color: row.worth === "Rarely" ? "#c62828" : "#374151", fontWeight: 600 }}>{row.worth}</td>
+                      <td style={{ color: row.worth === "Rarely" ? "var(--accent)" : "var(--text)", fontWeight: 600 }}>{row.worth}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -429,7 +428,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             financial sense on unusually busy days of sightseeing with many short journeys.
           </p>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
             Tokyo Subway Ticket: prices &amp; break-even point
           </h3>
           <p className={styles.bodyText}>
@@ -462,7 +461,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0d1b4b", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
             Subway Ticket vs Suica / Pasmo
           </h3>
           <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>

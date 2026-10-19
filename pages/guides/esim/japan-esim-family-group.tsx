@@ -135,7 +135,6 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
             <span>👨‍👩‍👧‍👦</span> Updated {updated.label}
@@ -160,12 +159,11 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -302,7 +300,7 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
             carrying it, the whole group loses data at once. Which of the two rentals suits your group
             depends on the device count and whether you want it waiting at an airport counter or at
             the hotel —{" "}
-            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "#c62828", fontWeight: 600 }}>
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               both rentals compared →
             </Link>
           </p>
@@ -361,19 +359,19 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
                     return (
                       <tr key={people}>
                         <td className={styles.tdProvider}>{people} people</td>
-                        <td style={{ fontWeight: 600, color: "#0d1b4b" }}>
+                        <td style={{ fontWeight: 600, color: "var(--sumi)" }}>
                           {formatUsd(esimTotal)}
-                          <span style={{ fontWeight: 400, color: "#6b7280" }}>
+                          <span style={{ fontWeight: 400, color: "var(--text-muted)" }}>
                             {" "}({formatUsd(PER_PERSON_USD)} each)
                           </span>
                         </td>
                         <td className={styles.tdNetwork}>
                           {formatUsd(ROUTER_USD)}
-                          <span style={{ color: "#6b7280" }}>
+                          <span style={{ color: "var(--text-muted)" }}>
                             {" "}({formatUsd(Math.ceil((ROUTER_USD / people) * 100) / 100)} each)
                           </span>
                         </td>
-                        <td style={{ fontWeight: 700, color: esimWins ? "#1d4ed8" : "#c62828" }}>
+                        <td style={{ fontWeight: 700, color: esimWins ? "var(--accent)" : "var(--accent)" }}>
                           {esimWins ? "eSIM each" : "Shared router"}
                         </td>
                       </tr>
@@ -383,7 +381,7 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
             * eSIM column: {PER_PERSON_PLAN?.name} from eSIM Go at {formatUsd(PER_PERSON_USD)} per
             person, the smallest plan that covers a week of maps, messaging and photo uploads —
             prices read from our daily feed, checked {pricesCheckedAt}. Router column:{" "}
@@ -453,7 +451,7 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
               <a href={link("airalo")} className={styles.pickCta} target="_blank" rel="sponsored noopener" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
                 {HOLAFLY_ALT_LABEL}
               </a>
-              <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+              <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                 {HOLAFLY_ALT_NOTE}
               </p>
             </div>

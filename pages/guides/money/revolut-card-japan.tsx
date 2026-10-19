@@ -164,10 +164,9 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💳</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Revolut in Japan (2026):<br />Fees, ATMs &amp; Is It Worth It?
@@ -188,11 +187,10 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
       <div className={styles.content}>
         {/* Disclaimer */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Not financial advice.</strong> This guide is general information only. Fees, limits, and plans are
             current as of 2026, can change, and depend on the country where your Revolut account is registered — always confirm the latest on the official{" "}
-            <a href={REVOLUT_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "#92400e", fontWeight: 600 }}>Revolut fees page</a>{" "}
+            <a href={REVOLUT_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Revolut fees page</a>{" "}
             before you rely on them.
           </p>
         </div>

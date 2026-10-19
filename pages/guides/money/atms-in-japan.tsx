@@ -213,10 +213,9 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🏧</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             ATMs in Japan (2026):<br />Where to Find Them &amp; How to Use Them
@@ -285,10 +284,10 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
                       <td style={{ fontSize: "0.83rem", whiteSpace: "nowrap" }}>{row.availability}</td>
                       <td>
                         {row.foreign === "Yes"
-                          ? <span style={{ color: "#16a34a", fontWeight: 700 }}>✓ Yes</span>
+                          ? <span style={{ color: "var(--accent)", fontWeight: 700 }}>✓ Yes</span>
                           : row.foreign === "Rarely"
-                          ? <span style={{ color: "#dc2626", fontWeight: 700 }}>✗ No</span>
-                          : <span style={{ color: "#d97706", fontWeight: 600 }}>Some</span>
+                          ? <span style={{ color: "var(--accent)", fontWeight: 700 }}>✗ No</span>
+                          : <span style={{ color: "var(--accent)", fontWeight: 600 }}>Some</span>
                         }
                       </td>
                       <td style={{ fontSize: "0.8rem" }}>{row.languages}</td>

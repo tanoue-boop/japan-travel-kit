@@ -159,7 +159,6 @@ export const esimArticles: GuideArticle[] = [
 export const esimCategory: GuideCategory = {
   href: "/guides/esim",
   name: "eSIM & SIM Cards",
-  emoji: "📱",
   intro: [
     "Japan is one of the easiest countries in the world to get online in: there is no SIM registration for visitors, and every tourist eSIM rides one of the three national carriers — Docomo, SoftBank or KDDI — so coverage is rarely what separates them.",
     "What separates them is price per gigabyte, how long a plan stays valid, whether you need a Japanese phone number, and whether your handset can take an eSIM at all. These guides work through those four questions in that order.",

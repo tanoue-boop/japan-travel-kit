@@ -60,7 +60,7 @@ const picks = [
     num: 1,
     name: "eSIM Go",
     badge: "Cheapest Per GB",
-    badgeColor: "#1565c0",
+    badgeColor: "var(--sumi)",
     priceFrom: p(esimgoCheapest),
     network: "Docomo / SoftBank",
     affiliateUrl: ESIMGO_URL,
@@ -83,7 +83,7 @@ const picks = [
     num: 2,
     name: "Airalo",
     badge: "Best Balance",
-    badgeColor: "#0d1b4b",
+    badgeColor: "var(--sumi)",
     priceFrom: p(airaloCheapest),
     network: "SoftBank & KDDI",
     affiliateUrl: AIRALO_URL,
@@ -106,7 +106,7 @@ const picks = [
     num: 3,
     name: "Holafly",
     badge: "Cheapest Unlimited",
-    badgeColor: "#e65100",
+    badgeColor: "var(--accent)",
     priceFrom: p(holaflyCheapest),
     network: "SoftBank / KDDI",
     affiliateUrl: AIRALO_URL,
@@ -130,7 +130,7 @@ const picks = [
     num: 4,
     name: "Sakura Mobile",
     badge: "Cheapest with Voice",
-    badgeColor: "#2e7d32",
+    badgeColor: "var(--accent)",
     priceFrom: p(sakuraCheapest),
     network: "Docomo (3 GB/day) or au/KDDI (unlimited)",
     affiliateUrl: SAKURA_URL,
@@ -277,10 +277,9 @@ export default function CheapestEsimJapanPage() {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💰</span> Prices checked {pricesCheckedAt}
+            Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Cheapest eSIM for Japan 2026:<br />Best Budget Picks
@@ -301,12 +300,11 @@ export default function CheapestEsimJapanPage() {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -378,7 +376,7 @@ export default function CheapestEsimJapanPage() {
                       <td key={String(tier)} className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
                     ))}
                     <td>
-                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         Open →
                       </a>
                     </td>
@@ -387,7 +385,7 @@ export default function CheapestEsimJapanPage() {
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Each cell is the provider&apos;s cheapest plan with <em>at least</em> that much data, in USD, read from the provider&apos;s
             official site on {pricesCheckedAt}. All plans are eSIM-only. The Klook row carries no prices:
             its listing could not be read automatically on {klookEsim.checkedAt}, so it is not ranked here
@@ -402,7 +400,7 @@ export default function CheapestEsimJapanPage() {
           <h2 className={styles.sectionTitle}>Best Cheap eSIMs for Japan</h2>
 
           {picks.map((pick) => (
-            <div key={pick.num} style={{ marginBottom: "2.5rem", paddingBottom: "2.5rem", borderBottom: "1px solid #e5e7eb" }}>
+            <div key={pick.num} style={{ marginBottom: "2.5rem", paddingBottom: "2.5rem", borderBottom: "1px solid var(--rule)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
                 <span style={{
                   display: "inline-flex",
@@ -410,7 +408,7 @@ export default function CheapestEsimJapanPage() {
                   justifyContent: "center",
                   width: "2rem",
                   height: "2rem",
-                  borderRadius: "50%",
+                  borderRadius: "var(--radius-sm)",
                   background: pick.badgeColor,
                   color: "#fff",
                   fontWeight: 800,
@@ -428,18 +426,18 @@ export default function CheapestEsimJapanPage() {
                     fontWeight: 700,
                     letterSpacing: "0.05em",
                     padding: "0.2rem 0.6rem",
-                    borderRadius: "999px",
+                    borderRadius: "var(--radius-sm)",
                     verticalAlign: "middle",
                   }}>{pick.badge}</span>
                 </h3>
               </div>
 
               <div style={{ display: "flex", gap: "1.5rem", marginBottom: "0.75rem", flexWrap: "wrap" }}>
-                <span style={{ fontSize: "0.82rem", color: "#6b7280" }}>
-                  <strong style={{ color: "#0d1b4b" }}>From:</strong> {pick.priceFrom}
+                <span style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+                  <strong style={{ color: "var(--sumi)" }}>From:</strong> {pick.priceFrom}
                 </span>
-                <span style={{ fontSize: "0.82rem", color: "#6b7280" }}>
-                  <strong style={{ color: "#0d1b4b" }}>Network:</strong> {pick.network}
+                <span style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+                  <strong style={{ color: "var(--sumi)" }}>Network:</strong> {pick.network}
                 </span>
               </div>
 
@@ -474,7 +472,7 @@ export default function CheapestEsimJapanPage() {
                 {pick.ctaLabel}
               </a>
               {pick.ctaNote && (
-                <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+                <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                   {pick.ctaNote}
                 </p>
               )}
@@ -489,13 +487,13 @@ export default function CheapestEsimJapanPage() {
                 <span style={{
                   display: "inline-block",
                   marginLeft: "0.6rem",
-                  background: "#6b7280",
+                  background: "var(--text-muted)",
                   color: "#fff",
                   fontSize: "0.68rem",
                   fontWeight: 700,
                   letterSpacing: "0.05em",
                   padding: "0.2rem 0.6rem",
-                  borderRadius: "999px",
+                  borderRadius: "var(--radius-sm)",
                   verticalAlign: "middle",
                 }}>Unranked — price not verified</span>
               </h3>
@@ -510,7 +508,7 @@ export default function CheapestEsimJapanPage() {
             >
               {klookEsim.ctaLabel}
             </a>
-            <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
               Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;. Last attempted read: {klookEsim.checkedAt}.
             </p>
           </div>

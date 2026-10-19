@@ -28,7 +28,7 @@ export default function ProviderPlanTable({ providerId, limit }: { providerId: E
               {rows.map((plan) => (
                 <tr key={plan.id}>
                   <td className={styles.tdProvider}>{plan.name}</td>
-                  <td style={{ fontWeight: 700, color: plan.unlimited ? "#c62828" : "#0d1b4b", whiteSpace: "nowrap" }}>
+                  <td style={{ fontWeight: 700, color: plan.unlimited ? "var(--accent)" : "var(--sumi)", whiteSpace: "nowrap" }}>
                     {plan.unlimited ? "Unlimited" : `${plan.gb} GB`}
                     {plan.note && <span className={tools.tdNote}>{plan.note}</span>}
                   </td>

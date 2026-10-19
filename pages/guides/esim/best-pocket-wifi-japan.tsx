@@ -163,10 +163,9 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📶</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Best Pocket WiFi in Japan (2026):<br />Rental Prices &amp; Pickup Compared
@@ -188,12 +187,11 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our review or verdict.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -307,7 +305,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
             * Every row is what the linked Klook listing states. Daily rates are the advertised
             cheapest booking, hand-checked {ratesCheckedAt}; device limits, battery, network,
             collection, return, ratings and review counts were read off the listings{" "}
@@ -333,7 +331,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             <em>not</em> change: the total is the same whether one person uses the router or{" "}
             {HOTEL.maxDevices} devices do. That is the whole economic case for renting one, and it
             is why the arithmetic turns over at a particular headcount — worked out in our{" "}
-            <Link href="/guides/esim/japan-esim-family-group" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/japan-esim-family-group" style={{ color: "var(--accent)", fontWeight: 600 }}>
               family and group guide
             </Link>
             .
@@ -356,7 +354,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                       {pocketWifis.map((w) => (
                         <td key={w.id} className={styles.tdPrice}>
                           {formatUsd(rentalTotal(w, days))}
-                          <span style={{ fontWeight: 400, color: "#6b7280" }}>
+                          <span style={{ fontWeight: 400, color: "var(--text-muted)" }}>
                             {" "}(${w.fromUsdPerDay.toFixed(2)}/day)
                           </span>
                         </td>
@@ -367,7 +365,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
             * Daily rate × days, on the advertised <em>from</em> rates checked {ratesCheckedAt}.
             A floor for the whole group, not a per-person price and not a quote.
           </p>
@@ -569,11 +567,11 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             cannot take an eSIM. Buy an eSIM when you are travelling alone, when you are moving
             between people rather than with them, or when you simply do not want a second device to
             charge and return. If you have not made that call yet, our{" "}
-            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Pocket WiFi vs eSIM comparison
             </Link>{" "}
             puts the two side by side on price and convenience, and{" "}
-            <Link href="/guides/esim/best-esim-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Best eSIM for Japan
             </Link>{" "}
             names the provider to buy if you land on that side of it.

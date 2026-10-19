@@ -186,10 +186,9 @@ export default function JapanEsimDataPlansPage() {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Prices checked {checkedLabel}
+            Prices checked {checkedLabel}
           </p>
           <h1 className={styles.heroTitle}>
             Japan eSIM Data Plans (2026):<br />Live Price Tracker
@@ -214,12 +213,11 @@ export default function JapanEsimDataPlansPage() {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our rankings or comparisons — the table is sorted by the numbers, not by commission.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -358,7 +356,7 @@ export default function JapanEsimDataPlansPage() {
                     <td className={tools.tdMuted}>—</td>
                     <td className={tools.tdMuted}>—</td>
                     <td>
-                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         {klookEsim.ctaLabel}
                       </a>
                     </td>
@@ -390,7 +388,7 @@ export default function JapanEsimDataPlansPage() {
                 </thead>
                 <tbody>
                   {dataUsage.map((row) => (
-                    <tr key={row.activity} style={row.activity.includes("total") ? { fontWeight: 700, background: "#f8fafc" } : {}}>
+                    <tr key={row.activity} style={row.activity.includes("total") ? { fontWeight: 700, background: "var(--paper)" } : {}}>
                       <td className={styles.tdProvider}>{row.activity}</td>
                       <td className={styles.tdPrice}>{row.perDay}</td>
                     </tr>

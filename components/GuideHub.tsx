@@ -47,10 +47,10 @@ export default function GuideHub({
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
-          <span className={styles.eyebrow}>{category.emoji} {category.name}</span>
+          <p className={styles.eyebrow}>{category.name}</p>
           <h1 className={styles.heroTitle}>{heading}</h1>
+          <div className={styles.heroRule} />
           <p className={styles.heroDesc}>{heroDesc}</p>
         </div>
       </section>
@@ -69,7 +69,7 @@ export default function GuideHub({
 
         {/* Start here */}
         <Link href={start.href} className={styles.startHere}>
-          <span className={styles.startHereLabel}>Read this first</span>
+          <p className={styles.startHereLabel}>Read this first</p>
           <p className={styles.startHereTitle}>{start.title}</p>
           <p className={styles.startHereWhy}>{category.startHereWhy}</p>
           <span className={styles.startHereArrow}>Read guide →</span>

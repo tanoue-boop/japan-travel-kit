@@ -172,10 +172,9 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>💳</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             Contactless Payment in Japan (2026):<br />What Actually Works
@@ -197,12 +196,11 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our editorial recommendations.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -233,7 +231,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
           <p className={styles.bodyText}>
             This page is about <em>which tap works where</em>. If the question you actually have is
             how much physical cash to carry alongside all this, that is answered in{" "}
-            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               cash vs card in Japan
             </Link>.
           </p>

@@ -228,10 +228,9 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>🎟️</span> Updated {updated.label}
+            Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
             teamLab Borderless Tickets (2026):<br />Prices, Time Slots and How to Book
@@ -253,11 +252,10 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -297,7 +295,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check teamLab Borderless Tickets →
             </a>
-            <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "#6b7280" }}>
+            <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
               Prices, hours and closed dates on this page were read from the official teamLab site on {CHECKED}.
               Borderless uses dynamic pricing and a shifting calendar, so confirm both for your own date at checkout.
             </p>
@@ -336,7 +334,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read from the official teamLab site on {CHECKED}. Tickets bought on site cost ¥200 more for adults
             and ¥100 more for children and disability tickets. Discounted tickets need proof of eligibility,
             so bring ID.
@@ -416,7 +414,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             On-site surcharge and date-change allowance as listed on the official teamLab site on {CHECKED}.
             Cancellation and change terms on resellers vary by option — read them on the booking page before paying.
           </p>

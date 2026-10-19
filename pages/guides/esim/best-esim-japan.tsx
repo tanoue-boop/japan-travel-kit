@@ -257,10 +257,9 @@ export default function BestEsimJapanPage() {
 
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroDots} />
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            <span>📱</span> Prices checked {pricesCheckedAt}
+            Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
             Best eSIM for Japan 2026:<br />Top 4 Picks Compared
@@ -281,12 +280,11 @@ export default function BestEsimJapanPage() {
       <div className={styles.content}>
         {/* Disclosure */}
         <div className={styles.disclosure}>
-          <span className={styles.disclosureIcon}>ℹ️</span>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links below are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
             This doesn&apos;t affect our rankings or reviews.{" "}
-            <Link href="/disclaimer" style={{ color: "#92400e", fontWeight: 600 }}>Full disclaimer →</Link>
+            <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
 
@@ -323,7 +321,7 @@ export default function BestEsimJapanPage() {
                         <td>{sim.physicalSim ? <span className={styles.yes}>✓</span> : <span className={styles.no}>✗</span>}</td>
                         <td>
                           <span className={styles.tdRating}>
-                            <span style={{ color: "#fbbf24" }}>★</span>
+                            <span style={{ color: "var(--accent)" }}>★</span>
                             {sim.rating}
                           </span>
                         </td>
@@ -412,7 +410,7 @@ export default function BestEsimJapanPage() {
                       </div>
                     </div>
                     <span className={styles.pickRating}>
-                      <span style={{ color: "#fbbf24" }}>★</span>
+                      <span style={{ color: "var(--accent)" }}>★</span>
                       {sim.rating}
                     </span>
                   </div>
@@ -460,7 +458,7 @@ export default function BestEsimJapanPage() {
                       </Link>
                     </div>
                     {ctaAlt && (
-                      <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+                      <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                         {ctaAlt.note}
                       </p>
                     )}
@@ -497,7 +495,7 @@ export default function BestEsimJapanPage() {
                   Compare all plans
                 </Link>
               </div>
-              <p style={{ fontSize: "0.78rem", color: "#6b7280", marginTop: "0.6rem", lineHeight: 1.6 }}>
+              <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                 Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;. No price or data allowance is quoted
                 here because the listing could not be read automatically on {klookEsim.checkedAt}.
               </p>
@@ -552,35 +550,35 @@ export default function BestEsimJapanPage() {
           <ul className={styles.pickList}>
             <li>
               <span className={styles.proIcon}>▸</span>
-              <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+              <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 Will an eSIM work in Japan at all?
               </Link>{" "}
               — the three checks on your handset to make before you buy anything.
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
-              <Link href="/guides/esim/japan-sim-card-vs-esim-2026" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+              <Link href="/guides/esim/japan-sim-card-vs-esim-2026" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 SIM card vs eSIM
               </Link>{" "}
               — the two situations where a physical SIM is the only option, regardless of price.
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
-              <Link href="/guides/esim/japan-esim-students" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+              <Link href="/guides/esim/japan-esim-students" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 Students and long study stays
               </Link>{" "}
               — priced by the month, and when a domestic MVNO beats every tourist eSIM.
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
-              <Link href="/guides/esim/japan-esim-family-group" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+              <Link href="/guides/esim/japan-esim-family-group" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 Families and groups
               </Link>{" "}
               — the headcount at which one shared Pocket WiFi beats an eSIM each.
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
-              <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "#1d4ed8", fontWeight: 600 }}>
+              <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 What Reddit recommends
               </Link>{" "}
               — the standing r/JapanTravel advice, checked against this month&apos;s prices.

@@ -32,7 +32,7 @@ export default function KlookStayAreas({ heading, intro, areas }: Props) {
                 href={a.url}
                 target="_blank"
                 rel="sponsored noopener"
-                style={{ color: "#1d4ed8", fontWeight: 600, whiteSpace: "nowrap" }}
+                style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 Hotels on Klook →
               </a>
@@ -40,7 +40,7 @@ export default function KlookStayAreas({ heading, intro, areas }: Props) {
           </li>
         ))}
       </ul>
-      <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "#6b7280" }}>
+      <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
         Hotel links go to Klook&apos;s own search for that area, which pays us a commission at no extra
         cost to you. Prices and availability are Klook&apos;s.
       </p>
