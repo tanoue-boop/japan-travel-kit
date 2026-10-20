@@ -126,6 +126,21 @@ Whole days out of Tokyo, Kyoto and Osaka, where the decision is which itinerary 
 - [Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs](https://www.japan-travel-kit.com/guides/attractions/nara-day-trip): Nara is the short day trip in Kansai — well under an hour from either city. The deer park is free; the Great Buddha Hall is ¥800, and that is the fee tours differ on.
 - [Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?](https://www.japan-travel-kit.com/guides/attractions/hiroshima-miyajima-day-trip): Two UNESCO sites in a day, and the honest answer on whether to attempt it from Kyoto or Osaka — plus Itsukushima Shrine's ¥300 admission and the Mt. Misen ropeway fare.
 
+## 繁體中文 (Traditional Chinese edition)
+
+A trial edition of 10 pages in Taiwanese Traditional Chinese, under /zh-tw/. Each one is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Chinese that is not also in English. They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages (hreflang zh-Hant-TW and zh-Hant-HK).
+
+- [澀谷SKY 門票（2026）：票價、最佳時段與預約方式](https://www.japan-travel-kit.com/zh-tw/guides/attractions/shibuya-sky-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
+- [teamLab 無界 門票（2026）：票價、時段預約與購票管道](https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-borderless-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets
+- [teamLab Planets 門票（2026）：票價、預約方式與無界比較](https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-tokyo-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets
+- [東京迪士尼門票（2026）：樂園與海洋怎麼買、怎麼選](https://www.japan-travel-kit.com/zh-tw/guides/attractions/tokyo-disney-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets
+- [日本環球影城門票與快速通關（2026）：該買哪一種](https://www.japan-travel-kit.com/zh-tw/guides/attractions/usj-tickets-express-pass): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass
+- [富士山一日遊（東京出發．2026）：行程怎麼選、五合目看什麼](https://www.japan-travel-kit.com/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-tour-from-tokyo
+- [成田機場到東京市區交通（2026）：Skyliner、N'EX 與利木津巴士比較](https://www.japan-travel-kit.com/zh-tw/guides/transport/tokyo-airport-transfer): 繁體中文 version of https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer
+- [日本網卡推薦（2026）：eSIM 方案比較與 Klook 日本 eSIM](https://www.japan-travel-kit.com/zh-tw/guides/esim/best-esim-japan): 繁體中文 version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
+- [東京自由行景點（2026）：必去景點哪些要先訂票、哪些可以現場去](https://www.japan-travel-kit.com/zh-tw/guides/attractions/things-to-do-tokyo): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo
+- [日本景點門票攻略（2026）：官方票價、預約方式與一日遊](https://www.japan-travel-kit.com/zh-tw/guides/attractions): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions
+
 ## Site information
 
 - [About, and how we check prices](https://www.japan-travel-kit.com/about): who runs the site, how figures are verified and the
