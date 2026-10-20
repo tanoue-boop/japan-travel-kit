@@ -328,6 +328,50 @@ export const osakaAmazingPass: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Tickets for the three attractions guides added 20 Oct 2026
+//
+// Same rule as the blocks above: every URL is a live en-US Klook listing,
+// confirmed through the www.klook.com search index on 20 Oct 2026 because Klook
+// answers automated reads of its product pages with HTTP 403 — which is also
+// why none of these carries a price.
+//
+// Commission matters for which one goes where. The Q Pack bundles a highway
+// bus with the park pass, so it sits in the higher band than a bare admission
+// ticket and is the headline CTA on the Fuji-Q page.
+// ---------------------------------------------------------------------------
+
+export const tokyoTowerTicket: KlookTour = {
+  title: "Tokyo Tower Main Observatory ticket",
+  desc: "Admission to the 150 m Main Deck, with the Top Deck Tour upgrade on the same listing",
+  url: klookLink("https://www.klook.com/en-US/activity/4911-tokyo-tower-main-observatory-ticket-tokyo/"),
+};
+
+export const sanrioPurolandTicket: KlookTour = {
+  title: "Sanrio Puroland ticket",
+  desc: "A date-specified passport for the indoor Hello Kitty park at Tama Center, bookable in English",
+  url: klookLink("https://www.klook.com/en-US/activity/2276-sanrio-puroland-tokyo/"),
+};
+
+/** The higher-commission Fuji-Q entry — a transport bundle, not a bare ticket. */
+export const fujiQHighlandQPack: KlookTour = {
+  title: "Fuji-Q Highland Q Pack — 1-Day Free Pass + highway bus",
+  desc: "The unlimited-ride pass bundled with the round-trip highway bus from Shinjuku or Ueno, so the day needs one booking rather than three",
+  url: klookLink("https://www.klook.com/en-US/activity/4958-fuji-q-highland-q-pack-tokyo/"),
+};
+
+export const fujiQHighlandPass: KlookTour = {
+  title: "Fuji-Q Highland 1-Day Free Pass",
+  desc: "The pass on its own, for anyone already travelling to Kawaguchiko under their own steam",
+  url: klookLink("https://www.klook.com/en-US/activity/592-fuji-q-highland-tokyo/"),
+};
+
+export const fujiQHighlandAdmission: KlookTour = {
+  title: "Fuji-Q Highland admission ticket",
+  desc: "Park entry without the ride pass — the option if you are going for the Mt. Fuji views and the themed areas",
+  url: klookLink("https://www.klook.com/en-US/activity/95879-fujiq-highland-admission-ticket/"),
+};
+
+// ---------------------------------------------------------------------------
 // "Before your trip" slots for the money guides (added 19 Oct 2026)
 //
 // The money guides are the site's second- and third-most-read pages and had no

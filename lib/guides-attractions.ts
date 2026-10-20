@@ -27,6 +27,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-tower-tickets",
+    badge: "Tickets",
+    title: "Tokyo Tower Tickets (2026): Prices, Main Deck vs Top Deck & How to Book",
+    desc: "Main Deck admission is ¥1,500 and costs the same at the door; only the ¥3,300 Top Deck Tour is cheaper booked online. Plus the 23:00 closing that no other Tokyo deck matches.",
+    group: "tickets",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-disney-tickets",
     badge: "Tickets",
     title: "Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy",
@@ -41,6 +49,22 @@ export const attractionArticles: GuideArticle[] = [
     desc: "USJ now requires online tickets, and Super Nintendo World needs timed entry. We explain Studio Pass tiers, whether the Express Pass is worth it, and what to buy for your visit.",
     group: "parks",
     city: "osaka",
+  },
+  {
+    href: "/guides/attractions/sanrio-puroland-tickets",
+    badge: "Tickets",
+    title: "Sanrio Puroland Tickets (2026): Prices, Variable Pricing & How to Book",
+    desc: "An adult Day Passport runs ¥3,900 to ¥6,900 depending on the date, so choosing the day saves more than choosing the seller — and the park also requires a separate arrival reservation.",
+    group: "parks",
+    city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/fuji-q-highland-tickets",
+    badge: "Tickets",
+    title: "Fuji-Q Highland Tickets (2026): Free Pass Prices, the Q Pack & How to Get There",
+    desc: "Entry to the coaster park at the foot of Mt. Fuji is free; the 1-Day Pass is ¥6,000 to ¥7,900 by date, and the Q Pack bundles it with the round-trip highway bus from Tokyo.",
+    group: "parks",
+    city: "other",
   },
   {
     href: "/guides/attractions/sumo-tokyo-tickets",
