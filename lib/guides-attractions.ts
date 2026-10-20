@@ -3,6 +3,15 @@ import { assertArticleMeta } from "./guide-hub";
 
 export const attractionArticles: GuideArticle[] = [
   {
+    href: "/guides/attractions/japan-attraction-ticket-prices",
+    badge: "Prices",
+    title: "Japan Attraction Ticket Prices 2026: Official Prices and Booking Rules",
+    desc: "Official adult and child admission for every ticketed attraction, park, pass and day-trip site we have verified — in one table, each row dated and sourced to the operator's own site.",
+    group: "tickets",
+    // Nationwide: the table spans Tokyo, Osaka, Nara, Kamakura, Miyajima and the Fuji area.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/teamlab-tokyo-tickets",
     badge: "Tickets",
     title: "teamLab Planets Tickets (2026): Prices, How to Book & Planets vs Borderless",

@@ -2,17 +2,22 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
-import { fujiHakoneDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { fujiHakoneDayTour, shibuyaSkyTicketUrl, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { PRICES } from "../../../lib/attraction-prices";
 
-// CTA link — Klook affiliate redirect.
-const SHIBUYA_SKY_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299140&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F70672-shibuya-sky-tokyo%2F";
+// CTA link — Klook affiliate redirect, shared with the ticket price table.
+const SHIBUYA_SKY_URL = shibuyaSkyTicketUrl;
+
+// The three figures below are owned by lib/attraction-prices.ts, which is also what
+// /guides/attractions/japan-attraction-ticket-prices reads — one set of prices, two pages.
+const P = PRICES.shibuyaSky;
 
 const priceRows = [
-  { ticket: "Adult (advance, online)", price: "¥2,500" },
-  { ticket: "Adult (at the door)", price: "¥3,000" },
-  { ticket: "Children under 5", price: "Free" },
+  { ticket: "Adult (advance, online)", price: P.adult },
+  { ticket: "Adult (at the door)", price: P.atDoor },
+  { ticket: `Children ${P.childAges}`, price: P.child },
 ];
 
 const deckRows = [
@@ -329,7 +334,12 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Prices as of 2026 and subject to change — confirm at booking. Booking online (¥2,500) is both
-            cheaper than the door (¥3,000) and the only reliable way to secure a sunset slot.
+            cheaper than the door (¥3,000) and the only reliable way to secure a sunset slot. These figures sit
+            alongside every other attraction we have checked in our{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Japan attraction ticket prices table
+            </Link>
+            , which carries the check date for each one.
           </p>
         </section>
 

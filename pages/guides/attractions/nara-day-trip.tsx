@@ -3,16 +3,26 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { kyotoNaraArashiyamaTour, arashiyamaNaraTodaijiTour, osakaAmazingPass } from "../../../lib/klook-links";
+import {
+  kyotoNaraArashiyamaTour,
+  arashiyamaNaraTodaijiTour,
+  naraDayTourUrl,
+  osakaAmazingPass,
+} from "../../../lib/klook-links";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
-const NARA_TOUR_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307051&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F87236-kyoto-tour-nara%2F";
+const NARA_TOUR_URL = naraDayTourUrl;
 
 // Todai-ji admissions and hours read off todaiji.or.jp on 19 Oct 2026 — the same figures our
 // Kyoto-and-Nara tour guide uses. No tour price is quoted: Klook answers automated reads of
 // its product pages with HTTP 403.
-const CHECKED = "19 October 2026";
+//
+// The Daibutsuden adult and child admissions and the check date are owned by
+// lib/attraction-prices.ts, shared with the ticket price table.
+const P = PRICES.todaiji;
+const CHECKED = checkedLabel(P.checked);
 
 const compareRows = [
   {
@@ -30,8 +40,8 @@ const compareRows = [
 ];
 
 const admissionRows = [
-  { ticket: "Daibutsuden (Great Buddha Hall), adult", price: "¥800" },
-  { ticket: "Daibutsuden, ages 6–12", price: "¥400" },
+  { ticket: "Daibutsuden (Great Buddha Hall), adult", price: P.adult },
+  { ticket: `Daibutsuden, ${P.childAges}`, price: P.child },
   { ticket: "Daibutsuden + Todaiji Museum, adult", price: "¥1,200" },
   { ticket: "Daibutsuden + Todaiji Museum, ages 6–12", price: "¥600" },
   { ticket: "Nara Park and the deer", price: "Free" },

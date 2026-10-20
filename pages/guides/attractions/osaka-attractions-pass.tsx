@@ -3,12 +3,13 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { kyotoNaraArashiyamaTour, kyotoHighlightBusTour } from "../../../lib/klook-links";
+import { kyotoNaraArashiyamaTour, kyotoHighlightBusTour, osakaAmazingPassUrl } from "../../../lib/klook-links";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA links — Klook affiliate redirects (tracking links, both listings confirmed live
-// 19 Oct 2026).
-const OSAKA_AMAZING_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304898&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F82312-amazing-pass-osaka%2F";
+// 19 Oct 2026). The pass link is shared with the ticket price table.
+const OSAKA_AMAZING_PASS_URL = osakaAmazingPassUrl;
 const KAIYUKAN_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304901&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F598-osaka-aquarium-kaiyukan-japan%2F";
 
 // Pass prices and coverage read off the official site, osp.osaka-info.jp/en, on 19 Oct 2026.
@@ -16,9 +17,11 @@ const KAIYUKAN_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1
 // by date from a calendar rather than a fixed rate, and several of the included venues do the
 // same, so a standalone figure would be wrong as often as right. The column says what the pass
 // does with each one instead.
-const PASS_1_DAY = "¥2,500";
+// The 1-day price and the check date are owned by lib/attraction-prices.ts, shared with
+// the ticket price table.
+const PASS_1_DAY = PRICES.osakaAmazingPass.adult;
 const PASS_2_DAY = "¥3,300";
-const CHECKED = "19 October 2026";
+const CHECKED = checkedLabel(PRICES.osakaAmazingPass.checked);
 
 const includedRows = [
   { attraction: "Osaka Metro, subway and city buses (Osaka city)", included: "✓ Unlimited rides", note: "The half of the pass you use whether you plan to or not" },

@@ -3,17 +3,23 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { teamlabBorderlessTicketUrl } from "../../../lib/klook-links";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
-// CTA link — Klook affiliate redirect (teamLab Borderless admission ticket).
-const BORDERLESS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299135&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F20707-teamlab-borderless-admission-ticket-tokyo%2F";
+// CTA link — Klook affiliate redirect (teamLab Borderless admission ticket), shared with
+// the ticket price table.
+const BORDERLESS_URL = teamlabBorderlessTicketUrl;
 
-// All figures below were read from the official teamLab site (teamlab.art) on 9 October 2026.
-const CHECKED = "9 October 2026";
+// All figures below were read from the official teamLab site (teamlab.art) on 9 October
+// 2026. The adult and child figures and the check date are owned by
+// lib/attraction-prices.ts, which also feeds the ticket price table.
+const P = PRICES.teamlabBorderless;
+const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
-  { ticket: "Adult (18 and over)", price: "from ¥3,400", note: "Dynamic pricing — the price for your date and slot can be higher" },
+  { ticket: "Adult (18 and over)", price: P.adult, note: "Dynamic pricing — the price for your date and slot can be higher" },
   { ticket: "Ages 13–17", price: "¥2,800", note: "Fixed price" },
-  { ticket: "Ages 4–12", price: "¥1,500", note: "Fixed price" },
+  { ticket: "Ages 4–12", price: P.child, note: "Fixed price" },
   { ticket: "3 and under", price: "Free", note: "No ticket needed" },
   { ticket: "Visitor with a disability", price: "from ¥1,700", note: "Dynamic pricing; one accompanying person also gets the discounted rate" },
 ];

@@ -152,7 +152,12 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
           </div>
           <p className={styles.text}>
             Every price table on the site states its own check date, so you can see at a glance how fresh a figure
-            is before you rely on it — and so can anything quoting it.
+            is before you rely on it — and so can anything quoting it. The clearest illustration is the{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
+              attraction ticket price table
+            </Link>
+            : official adult and child admission, the advance-booking rule, the operator site and the check date for
+            every ticketed attraction we cover, with each row linking back to the guide that verified it.
           </p>
         </section>
 

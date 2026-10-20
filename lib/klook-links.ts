@@ -372,6 +372,44 @@ export const fujiQHighlandAdmission: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Ticket and tour redirects moved here on 20 Oct 2026
+//
+// Each of these was a `const …_URL` inside the guide that uses it. They moved so
+// lib/attraction-prices.ts — which feeds both the guides and the ticket price
+// table — can reference the same link the guide already used, rather than a
+// second link to the same product. The URLs themselves are unchanged, including
+// their per-link `aff_adid`.
+// ---------------------------------------------------------------------------
+
+/** Shibuya Sky rooftop deck. */
+export const shibuyaSkyTicketUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299140&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F70672-shibuya-sky-tokyo%2F";
+
+/** teamLab Planets TOKYO, Toyosu. */
+export const teamlabPlanetsTicketUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299131&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F25300-teamlab-planets-toyosu-tokyo-ticket%2F";
+
+/** teamLab Borderless, Azabudai Hills. */
+export const teamlabBorderlessTicketUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299135&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F20707-teamlab-borderless-admission-ticket-tokyo%2F";
+
+/** Osaka Amazing Pass — the redirect form the pass guide uses. */
+export const osakaAmazingPassUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304898&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F82312-amazing-pass-osaka%2F";
+
+/** Kamakura and Enoshima day tour — the Klook route for the Kamakura admissions. */
+export const kamakuraEnoshimaDayTourUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307855&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F25457-kamakura-enoshima-day-tour-tokyo%2F";
+
+/** Hiroshima and Miyajima bus tour — the Klook route for the Miyajima admissions. */
+export const hiroshimaMiyajimaBusTourUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307052&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F76852-hiroshima-miyajima-bus-tour%2F";
+
+/** Kyoto and Nara day trip — the Klook route on the Nara guide. */
+export const naraDayTourUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307051&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F87236-kyoto-tour-nara%2F";
+
+// ---------------------------------------------------------------------------
 // "Before your trip" slots for the money guides (added 19 Oct 2026)
 //
 // The money guides are the site's second- and third-most-read pages and had no

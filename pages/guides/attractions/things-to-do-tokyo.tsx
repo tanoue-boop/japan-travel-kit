@@ -215,6 +215,14 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             what to book and when; the sections after it link to the full guide for each, with official prices
             and the booking route that works from abroad.
           </p>
+          <p className={styles.bodyText}>
+            If you want the money side of that list in one place instead, our{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
+              Japan attraction ticket prices table
+            </Link>{" "}
+            lists the official adult and child admission for every Tokyo venue below — plus the rest of the
+            country — with the date each figure was read off the operator&apos;s own site.
+          </p>
         </section>
 
         {/* Booking urgency */}

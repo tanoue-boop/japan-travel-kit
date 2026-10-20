@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import {
   tokyoMtFujiHighwayBus,
   mtFujiPass,
@@ -15,7 +16,9 @@ import {
 // Fuji Excursion journey time and frequency from Klook's own Fuji Excursion rail page the
 // same day — Klook answers automated reads of its *product* pages with HTTP 403, so no tour
 // or ticket price is quoted here.
-const CHECKED = "19 October 2026";
+// The 1-day Mt. Fuji Pass prices and the check date are owned by lib/attraction-prices.ts,
+// shared with the ticket price table.
+const CHECKED = checkedLabel(PRICES.mtFujiPass.checked);
 
 const routeRows = [
   {
@@ -39,7 +42,7 @@ const routeRows = [
 ];
 
 const passRows = [
-  { pass: "Mt. Fuji Pass, 1 day", adult: "¥7,500", child: "¥3,750" },
+  { pass: "Mt. Fuji Pass, 1 day", adult: PRICES.mtFujiPass.adult, child: PRICES.mtFujiPass.child },
   { pass: "Mt. Fuji Pass, 2 day", adult: "¥10,200", child: "¥5,100" },
   { pass: "Mt. Fuji Pass, 3 day", adult: "¥12,400", child: "¥6,200" },
 ];

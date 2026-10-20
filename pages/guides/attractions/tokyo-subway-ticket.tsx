@@ -5,12 +5,16 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { tokyoSubwayTicket, subwayCityViewCombo, naritaBusSubwayCombo, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
-// Pass prices from tokyometro.jp and the Tokyo Metro adult fare table, both read 19 Oct 2026.
-const CHECKED = "19 October 2026";
+// Pass prices from tokyometro.jp and the Tokyo Metro adult fare table, both read 19 Oct
+// 2026. The 24-hour adult and child prices and the check date are owned by
+// lib/attraction-prices.ts, shared with the ticket price table.
+const P = PRICES.tokyoSubwayTicket;
+const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
-  { pass: "24-hour ticket", adult: "¥1,000", child: "¥500", perDay: "¥1,000 / day" },
+  { pass: "24-hour ticket", adult: P.adult, child: P.child, perDay: "¥1,000 / day" },
   { pass: "48-hour ticket", adult: "¥1,500", child: "¥750", perDay: "¥750 / day" },
   { pass: "72-hour ticket", adult: "¥2,000", child: "¥1,000", perDay: "¥667 / day" },
 ];

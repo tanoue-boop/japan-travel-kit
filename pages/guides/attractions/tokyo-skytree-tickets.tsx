@@ -5,13 +5,17 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { skytreeTicket, skytreeAquariumCombo, fujiHakoneDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
-// Prices, tiers and hours below were read off tokyo-skytree.jp on 19 Oct 2026.
-const CHECKED = "19 October 2026";
+// Prices, tiers and hours below were read off tokyo-skytree.jp on 19 Oct 2026. The
+// Floor 350 adult and child figures and that date are owned by lib/attraction-prices.ts,
+// which also feeds /guides/attractions/japan-attraction-ticket-prices.
+const P = PRICES.tokyoSkytree;
+const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
-  { ticket: "Floor 350 — adult (15+)", advance: "from ¥1,800", sameDay: "+¥500 service fee" },
-  { ticket: "Floor 350 — child (6–14)", advance: "from ¥900", sameDay: "+¥500 service fee" },
+  { ticket: "Floor 350 — adult (15+)", advance: P.adult, sameDay: "+¥500 service fee" },
+  { ticket: "Floor 350 — child (6–14)", advance: P.child, sameDay: "+¥500 service fee" },
   { ticket: "Combo, Floor 350 + 450 — adult", advance: "from ¥3,000", sameDay: "+¥500 service fee" },
   { ticket: "Combo, Floor 350 + 450 — child", advance: "from ¥1,500", sameDay: "+¥500 service fee" },
   { ticket: "Floor 450 added on site — adult", advance: "Not sold online", sameDay: "¥1,400" },

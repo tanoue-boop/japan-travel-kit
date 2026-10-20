@@ -11,19 +11,23 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
 // Pass price bands, the free-entry rule, the coaster names and the rail/bus access
 // below were read off fujiq.jp (/en/, /en/ticket/ and /en/access/) on 20 Oct 2026.
 // The four Klook listings were confirmed live through the www.klook.com search index
 // the same day; Klook answers automated reads of its product pages with HTTP 403, so
 // no Klook price appears on this page.
-const CHECKED = "20 October 2026";
+// The adult and elementary 1-Day Pass bands and the check date are owned by
+// lib/attraction-prices.ts, shared with the ticket price table.
+const P = PRICES.fujiQHighland;
+const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
   { ticket: "Park entry (no rides)", day: "Free", afternoon: "Free" },
-  { ticket: "1-Day Pass — adult (18–64)", day: "¥6,000 – ¥7,900", afternoon: "¥4,100 – ¥6,000" },
+  { ticket: "1-Day Pass — adult (18–64)", day: P.adult, afternoon: "¥4,100 – ¥6,000" },
   { ticket: "1-Day Pass — junior / senior high", day: "¥5,500 – ¥7,400", afternoon: "¥3,800 – ¥5,700" },
-  { ticket: "1-Day Pass — elementary", day: "¥4,400 – ¥5,100", afternoon: "¥3,500 – ¥4,200" },
+  { ticket: "1-Day Pass — elementary", day: P.child, afternoon: "¥3,500 – ¥4,200" },
   { ticket: "1-Day Pass — toddler (1 and over)", day: "¥2,100 – ¥2,600", afternoon: "¥1,700 – ¥2,100" },
   { ticket: "1-Day Pass — senior (65+)", day: "¥2,100 – ¥2,600", afternoon: "¥1,700 – ¥2,100" },
 ];

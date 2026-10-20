@@ -5,6 +5,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { skytreeAquariumCombo, subwayCityViewCombo, tokyoSubwayTicket } from "../../../lib/klook-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
 // CTA links — Klook affiliate redirects (tracking links, all three listings confirmed live
 // 19 Oct 2026).
@@ -15,35 +16,39 @@ const SHIBUYA_SKY_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adi
 // Every price on this page is an official one, read on 19 Oct 2026: Tokyo Tower from
 // tokyotower.co.jp/fee, the Tocho deck from metro.tokyo.lg.jp, and Shibuya Sky and Skytree
 // from the dedicated guides on this site that verified them against the operators' own sites.
-const CHECKED = "19 October 2026";
+//
+// All four now read their headline figures out of lib/attraction-prices.ts, which is where
+// those four guides and the ticket price table get them from too — so this comparison
+// cannot drift away from the pages it is comparing.
+const CHECKED = checkedLabel(PRICES.tochoDeck.checked);
 
 const deckRows = [
   {
     deck: "Shibuya Sky",
     height: "~229 m rooftop",
     highlight: "Open-air rooftop directly above the Scramble Crossing — the iconic Tokyo shot",
-    price: "¥2,500 online · ¥3,000 at the door",
+    price: `${PRICES.shibuyaSky.adult} online · ${PRICES.shibuyaSky.atDoor} at the door`,
     area: "Shibuya Station",
   },
   {
     deck: "Tokyo Skytree",
     height: "Floor 350 and Floor 450 (634 m tower)",
     highlight: "The highest decks in Tokyo and the only glass skywalk; Mt. Fuji on clear days",
-    price: "from ¥1,800 (Floor 350) · from ¥3,000 combo",
+    price: `${PRICES.tokyoSkytree.adult} (Floor 350) · from ¥3,000 combo`,
     area: "Oshiage, near Asakusa",
   },
   {
     deck: "Tokyo Tower",
     height: "Main Deck ~150 m, Top Deck ~250 m (332 m tower)",
     highlight: "The retro 1958 landmark; the Top Deck is a guided tour rather than a free wander",
-    price: "¥1,500 Main Deck · ¥3,300 Top Deck online",
+    price: `${PRICES.tokyoTower.adult} Main Deck · ¥3,300 Top Deck online`,
     area: "Shiba-koen / Akabanebashi",
   },
   {
     deck: "Metropolitan Gov. Building (Tocho)",
     height: "202 m, 45th floor",
     highlight: "A full city panorama with the Skytree and Tokyo Tower both in view",
-    price: "Free",
+    price: PRICES.tochoDeck.adult,
     area: "Shinjuku",
   },
 ];

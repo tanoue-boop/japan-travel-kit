@@ -5,19 +5,24 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { tokyoTowerTicket, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
 // Prices, hours, deck heights and station walking times below were read off
 // tokyotower.co.jp (/fee/ and /access/) on 20 Oct 2026. The Klook listing was
 // confirmed live through the www.klook.com search index the same day; Klook
 // answers automated reads of its product pages with HTTP 403, so no Klook price
 // appears anywhere on this page.
-const CHECKED = "20 October 2026";
+//
+// The Main Deck adult and child figures and the check date are owned by
+// lib/attraction-prices.ts, shared with the ticket price table.
+const P = PRICES.tokyoTower;
+const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
-  { ticket: "Main Deck — adult", advance: "¥1,500", door: "¥1,500" },
+  { ticket: "Main Deck — adult", advance: P.adult, door: P.adult },
   { ticket: "Main Deck — high school", advance: "¥1,200", door: "¥1,200" },
   { ticket: "Main Deck — elementary / junior high", advance: "¥900", door: "¥900" },
-  { ticket: "Main Deck — child aged 4 and over", advance: "¥600", door: "¥600" },
+  { ticket: `Main Deck — child aged ${P.childAges.replace(/^ages /, "")}`, advance: P.child, door: P.child },
   { ticket: "Top Deck Tour — adult", advance: "¥3,300", door: "¥3,500" },
   { ticket: "Top Deck Tour — high school", advance: "¥3,100", door: "¥3,300" },
   { ticket: "Top Deck Tour — elementary / junior high", advance: "¥2,100", door: "¥2,300" },

@@ -19,6 +19,7 @@ const { esimCategory } = require("../lib/guides-esim.ts");
 const { transportCategory } = require("../lib/guides-transport.ts");
 const { moneyCategory } = require("../lib/guides-money.ts");
 const { attractionsCategory } = require("../lib/guides-attractions.ts");
+const { attractionPrices, checkedLabel, latestChecked, PRICE_TABLE_ROUTE } = require("../lib/attraction-prices.ts");
 const { BUILD_DATE } = require("../lib/page-dates");
 
 const SITE = "https://www.japan-travel-kit.com";
@@ -107,6 +108,9 @@ const lines = [
   "## Start here",
   "",
   `- [All guides, indexed by topic](${url("/guides")}): every guide on the site, grouped by the question it answers.`,
+  `- [Japan Attraction Ticket Prices 2026](${url(PRICE_TABLE_ROUTE)}): one table of official adult and child` +
+    ` admission, advance-booking rules, operator sources and check dates for ${attractionPrices.length} Japanese` +
+    ` attractions, theme parks, passes and day-trip sites. Most recent check: ${checkedLabel(latestChecked())}.`,
   `- [${oneLine(esimCategory.name)} hub](${url(esimCategory.href)}): ${oneLine(esimCategory.intro[0])}`,
   `- [${oneLine(transportCategory.name)} hub](${url(transportCategory.href)}): ${oneLine(transportCategory.intro[0])}`,
   `- [${oneLine(moneyCategory.name)} hub](${url(moneyCategory.href)}): ${oneLine(moneyCategory.intro[0])}`,

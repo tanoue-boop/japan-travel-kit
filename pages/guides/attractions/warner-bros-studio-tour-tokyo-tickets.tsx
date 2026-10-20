@@ -5,12 +5,16 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { warnerBrosStudioTourTokyo, tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
-// Prices, address and access below are from wbstudiotour.jp, read 19 Oct 2026.
-const CHECKED = "19 October 2026";
+// Prices, address and access below are from wbstudiotour.jp, read 19 Oct 2026. The
+// standard-entry adult and child figures and the check date are owned by
+// lib/attraction-prices.ts, shared with the ticket price table.
+const P = PRICES.wbStudioTour;
+const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
-  { ticket: "Standard entry", adult: "¥6,600~", junior: "¥5,500~", child: "¥4,000~" },
+  { ticket: "Standard entry", adult: P.adult, junior: "¥5,500~", child: P.child },
   { ticket: "With Afternoon Tea", adult: "¥14,000~", junior: "¥12,900~", child: "¥11,400~" },
   { ticket: "With Evening High Tea", adult: "¥16,500~", junior: "¥15,300~", child: "¥13,700~" },
   { ticket: "Group (20+ people)", adult: "¥6,000", junior: "¥5,000", child: "¥3,600" },

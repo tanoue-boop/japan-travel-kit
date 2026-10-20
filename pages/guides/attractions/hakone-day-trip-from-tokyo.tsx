@@ -10,12 +10,16 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
-// Freepass prices and coverage from odakyu-global.com, read 19 Oct 2026.
-const CHECKED = "19 October 2026";
+// Freepass prices and coverage from odakyu-global.com, read 19 Oct 2026. The 2-day
+// Shinjuku prices and the check date are owned by lib/attraction-prices.ts, shared with
+// the ticket price table.
+const P = PRICES.hakoneFreepass;
+const CHECKED = checkedLabel(P.checked);
 
 const passRows = [
-  { pass: "2-day, from Shinjuku", adult: "¥7,100", child: "¥1,600" },
+  { pass: "2-day, from Shinjuku", adult: P.adult, child: P.child },
   { pass: "3-day, from Shinjuku", adult: "¥7,500", child: "¥1,850" },
   { pass: "2-day, from Odawara", adult: "¥6,000", child: "¥1,500" },
   { pass: "3-day, from Odawara", adult: "¥6,400", child: "¥1,750" },

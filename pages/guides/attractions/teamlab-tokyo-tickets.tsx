@@ -2,21 +2,25 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
-import { fujiDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { fujiDayTour, teamlabPlanetsTicketUrl, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
-// CTA link — Klook affiliate redirect (teamLab Planets Toyosu ticket).
-const PLANETS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299131&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F25300-teamlab-planets-toyosu-tokyo-ticket%2F";
+// CTA link — Klook affiliate redirect (teamLab Planets Toyosu ticket), shared with the
+// ticket price table.
+const PLANETS_URL = teamlabPlanetsTicketUrl;
 
 // All figures below were read from the official teamLab sites (teamlab.art and the
-// teamLab Planets TOKYO official ticket store) on 9 October 2026.
-const CHECKED = "9 October 2026";
+// teamLab Planets TOKYO official ticket store) on 9 October 2026. The adult and child
+// figures and the check date are owned by lib/attraction-prices.ts.
+const P = PRICES.teamlabPlanets;
+const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
-  { ticket: "Adult", price: "from ¥3,800", note: "Price varies by date and time slot" },
+  { ticket: "Adult", price: P.adult, note: "Price varies by date and time slot" },
   { ticket: "Junior & senior high school", price: "¥2,800", note: "Bring student ID" },
-  { ticket: "Children (4–12)", price: "¥1,500", note: "Under-4s do not need a ticket" },
+  { ticket: "Children (4–12)", price: P.child, note: "Under-4s do not need a ticket" },
   { ticket: "3 and under", price: "Free", note: "Bring a change of clothes — the water areas get everyone wet" },
   { ticket: "Visitor with a disability", price: "from ¥1,900", note: "Bring your disability certificate" },
   { ticket: "Premium Pass", price: "¥12,000", note: "Priority entry option, ages 4 and over" },
@@ -27,7 +31,7 @@ const compareRows = [
   { factor: "Concept", planets: "Immersive, barefoot, walk through water", borderless: "50+ artworks in a maze with no map" },
   { factor: "Best for", planets: "Families, first-timers, sensory experience", borderless: "Art lovers, slow exploration, photography" },
   { factor: "Time needed", planets: "Around 1.5–2 hours including barefoot prep", borderless: "Around 2 hours, more if you linger" },
-  { factor: "Adult ticket (from)", planets: "from ¥3,800", borderless: "from ¥3,400" },
+  { factor: "Adult ticket (from)", planets: P.adult, borderless: PRICES.teamlabBorderless.adult },
   { factor: "Opening hours", planets: "Listed 08:00–22:00, varies by date", borderless: "Listed 08:30–21:00, varies by date" },
   { factor: "Entry", planets: "30-minute admission slot", borderless: "Timed slot, or a Flexible Pass with no set time" },
   { factor: "Good to know", planets: "Scheduled to run to the end of 2027; barefoot and water areas", borderless: "¥200 more if you buy on site" },

@@ -3,17 +3,21 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { osakaAmazingPass, kyotoHighlightBusTour } from "../../../lib/klook-links";
+import { hiroshimaMiyajimaBusTourUrl, osakaAmazingPass, kyotoHighlightBusTour } from "../../../lib/klook-links";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 
-// CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
-const HIROSHIMA_TOUR_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307052&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F76852-hiroshima-miyajima-bus-tour%2F";
+// CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026),
+// shared with the ticket price table.
+const HIROSHIMA_TOUR_URL = hiroshimaMiyajimaBusTourUrl;
 
 // Admissions and hours read off itsukushimajinja.jp, hpmmuseum.jp and miyajima-ropeway.info;
 // tour duration and departure points as the Klook listing describes them. All checked
 // 19 Oct 2026. No tour price is quoted — Klook answers automated reads of its product pages
 // with HTTP 403.
-const CHECKED = "19 October 2026";
+// The shrine, ropeway and museum headline admissions and the check date are owned by
+// lib/attraction-prices.ts, shared with the ticket price table.
+const CHECKED = checkedLabel(PRICES.itsukushima.checked);
 
 const compareRows = [
   {
@@ -31,13 +35,13 @@ const compareRows = [
 ];
 
 const admissionRows = [
-  { item: "Itsukushima Shrine — adult", price: "¥300" },
+  { item: "Itsukushima Shrine — adult", price: PRICES.itsukushima.adult },
   { item: "Itsukushima Shrine — high school", price: "¥200" },
-  { item: "Itsukushima Shrine — elementary / middle school", price: "¥100" },
+  { item: "Itsukushima Shrine — elementary / middle school", price: PRICES.itsukushima.child },
   { item: "Shrine + Treasure Hall combined — adult", price: "¥500" },
-  { item: "Miyajima Ropeway — adult, round trip", price: "¥2,000" },
-  { item: "Miyajima Ropeway — child (6–11), round trip", price: "¥1,000" },
-  { item: "Peace Memorial Museum — adult", price: "¥200" },
+  { item: "Miyajima Ropeway — adult, round trip", price: PRICES.miyajimaRopeway.adult },
+  { item: "Miyajima Ropeway — child (6–11), round trip", price: PRICES.miyajimaRopeway.child },
+  { item: "Peace Memorial Museum — adult", price: PRICES.peaceMuseum.adult },
   { item: "Peace Memorial Museum — high school", price: "¥100" },
   { item: "Peace Memorial Museum — junior high and younger", price: "Free" },
 ];

@@ -3,17 +3,21 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { kamakuraEnoshimaDayTourUrl, tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 
-// CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
-const KAMAKURA_TOUR_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307855&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F25457-kamakura-enoshima-day-tour-tokyo%2F";
+// CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026),
+// shared with the ticket price table.
+const KAMAKURA_TOUR_URL = kamakuraEnoshimaDayTourUrl;
 
 // Admissions and hours read off kotoku-in.jp and hasedera.jp; tour duration as the Klook
 // listing describes it. All checked 19 Oct 2026. Rail fares are not quoted: JR East's fare
 // tables are not readable by an automated request, and an IC card shows you the figure at
 // the gate anyway.
-const CHECKED = "19 October 2026";
+// Both admissions and the check date are owned by lib/attraction-prices.ts, shared with
+// the ticket price table.
+const CHECKED = checkedLabel(PRICES.kotokuin.checked);
 
 const compareRows = [
   {
@@ -31,8 +35,18 @@ const compareRows = [
 ];
 
 const admissionRows = [
-  { site: "Kotoku-in (Great Buddha)", adult: "¥300", child: "¥150 (ages 6–12)", note: "+¥50 to step inside the statue; under 6 free" },
-  { site: "Hase-dera", adult: "¥400", child: "¥200 (ages 6–11)", note: "08:00–17:00, to 17:30 April–June; last entry 30 min earlier" },
+  {
+    site: "Kotoku-in (Great Buddha)",
+    adult: PRICES.kotokuin.adult,
+    child: `${PRICES.kotokuin.child} (ages 6–12)`,
+    note: "+¥50 to step inside the statue; under 6 free",
+  },
+  {
+    site: "Hase-dera",
+    adult: PRICES.hasedera.adult,
+    child: `${PRICES.hasedera.child} (${PRICES.hasedera.childAges})`,
+    note: "08:00–17:00, to 17:30 April–June; last entry 30 min earlier",
+  },
 ];
 
 const whoFor = [

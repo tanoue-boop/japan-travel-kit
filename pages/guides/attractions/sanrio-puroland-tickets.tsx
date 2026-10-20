@@ -5,6 +5,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { sanrioPurolandTicket, tokyoSightseeingBusTour, warnerBrosStudioTourTokyo } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
 // Passport price bands, the 1 Aug 2026 revision, the arrival-reservation rule and
 // the access routes below were read off puroland.jp (/passport/list/, /fee/,
@@ -12,11 +13,14 @@ import { articleJsonLd } from "../../../lib/structured-data";
 // The Klook listing was confirmed live through the www.klook.com search index the
 // same day; Klook answers automated reads of its product pages with HTTP 403, so no
 // Klook price appears on this page.
-const CHECKED = "20 October 2026";
+// The Day Passport adult and child bands and the check date are owned by
+// lib/attraction-prices.ts, shared with the ticket price table.
+const P = PRICES.sanrioPuroland;
+const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
-  { ticket: "Day Passport — adult (18–64)", price: "¥3,900 – ¥6,900" },
-  { ticket: "Day Passport — child (3–17) / senior (65+)", price: "¥2,800 – ¥5,800" },
+  { ticket: "Day Passport — adult (18–64)", price: P.adult },
+  { ticket: "Day Passport — child (3–17) / senior (65+)", price: P.child },
   { ticket: "Afternoon Passport (from 14:00) — adult", price: "¥2,800 – ¥4,600" },
   { ticket: "Afternoon Passport (from 14:00) — child / senior", price: "¥2,500 – ¥4,300" },
   { ticket: "Under 3", price: "Free" },
