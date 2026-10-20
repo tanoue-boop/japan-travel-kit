@@ -3,6 +3,7 @@ import GuideHub from "../../../components/GuideHub";
 import { attractionArticles, attractionsCategory } from "../../../lib/guides-attractions";
 import { articleDates } from "../../../lib/page-dates";
 import { hubItemListJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 export const getStaticProps = () => ({ props: { dates: articleDates(attractionArticles.map((a) => a.href)) } });
 
@@ -16,6 +17,7 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
         <title>Things to Do in Japan: Tickets &amp; Experiences (2026) | Japan Travel Kit</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions" />
+        {hreflangLinks("/guides/attractions")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Things to Do in Japan: Tickets & Experiences (2026)" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions" />

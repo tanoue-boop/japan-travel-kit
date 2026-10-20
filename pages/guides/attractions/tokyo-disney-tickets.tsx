@@ -5,6 +5,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { fujiDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 const DISNEY_TICKET_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304885&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F695-tokyo-disney-resort-1-day-pass-tokyo%2F";
 
@@ -129,6 +130,7 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           content="Tokyo Disney tickets in 2026: every ticket is date-specified and there are no gate sales. Learn how to buy with a foreign card, and how to choose Disneyland vs DisneySea."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets" />
+        {hreflangLinks("/guides/attractions/tokyo-disney-tickets")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets" />

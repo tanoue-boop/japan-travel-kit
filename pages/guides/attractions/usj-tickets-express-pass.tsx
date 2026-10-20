@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 // CTA links — Klook affiliate redirects.
 const STUDIO_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
@@ -89,6 +90,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           content="USJ now requires online tickets and Super Nintendo World needs timed entry. We explain Studio Pass tiers, whether the Express Pass is worth it, and what to buy in 2026."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass" />
+        {hreflangLinks("/guides/attractions/usj-tickets-express-pass")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Universal Studios Japan Tickets & Express Pass (2026): What to Buy" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass" />

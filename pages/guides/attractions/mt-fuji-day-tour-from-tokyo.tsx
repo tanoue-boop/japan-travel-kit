@@ -10,6 +10,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 // Tour contents and durations below are as the Klook listings describe them, checked 19 Oct 2026.
 // Klook answers automated requests to its product pages with HTTP 403, so no price is quoted here.
@@ -151,6 +152,7 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
         <title>{`${TITLE} | Japan Travel Kit`}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-tour-from-tokyo" />
+        {hreflangLinks("/guides/attractions/mt-fuji-day-tour-from-tokyo")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-tour-from-tokyo" />

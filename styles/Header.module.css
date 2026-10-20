@@ -127,7 +127,37 @@ button.navLink[aria-expanded="true"] .navChevron { transform: rotate(180deg); }
 
 /* ── CTA ─────────────────────────────────────────────────────────────────── */
 .cta { display: none; }
-@media (min-width: 980px) { .cta { display: block; } }
+@media (min-width: 980px) { .cta { display: flex; align-items: center; gap: 1.1rem; } }
+
+/* ── English／繁體中文 switch (added 2026-10-20) ──────────────────────────────
+   Deliberately quiet: it sits to the left of the CTA at the small type size the
+   tagline uses, because it is only shown on the handful of pages that exist in
+   both languages and is not something most visitors are looking for. */
+.langSwitch {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.langLink {
+  color: var(--text-faint);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.langLink:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.langCurrent { color: var(--text); font-weight: 600; }
+.langSep { color: var(--rule); }
+
+/* In the mobile sheet the switch gets a row of its own under a "Language" label. */
+.langSwitchMobile {
+  display: flex;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--rule);
+}
+.langSwitchMobile .langSwitch { font-size: 0.9rem; gap: 0.45rem; }
 
 .ctaBtn {
   display: inline-flex;

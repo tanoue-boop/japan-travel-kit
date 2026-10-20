@@ -5,6 +5,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { fujiHakoneDayTour, shibuyaSkyTicketUrl, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 import { PRICES } from "../../../lib/attraction-prices";
 
 // CTA link — Klook affiliate redirect, shared with the ticket price table.
@@ -154,6 +155,7 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
           content="Shibuya Sky tickets in 2026: prices, the best time to visit (sunset sells out fast), and how to book — even with a foreign card the official site may reject."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets" />
+        {hreflangLinks("/guides/attractions/shibuya-sky-tickets")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Shibuya Sky Tickets (2026): Price, Best Time & How to Book" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets" />

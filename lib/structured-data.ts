@@ -13,6 +13,13 @@
  *     lib/page-dates.js (git history, snapshotted in data/page-dates.json).
  *   - ItemList — on /guides and the four category hubs, via `itemListJsonLd`.
  *
+ * Extended 2026-10-20 for the 繁體中文 edition: `articleJsonLd` and `itemListJsonLd`
+ * take an `inLanguage`, so a Chinese page emits the same shape of graph as its
+ * English counterpart with the language swapped rather than carrying a second,
+ * divergent copy of the publisher and WebSite wiring. The language tags
+ * themselves live in lib/i18n.ts (JSONLD_LANG), which is also what the hreflang
+ * links and the sitemap read.
+ *
  * Existing FAQPage and BreadcrumbList blocks on the pages are untouched: consumers
  * merge every ld+json block on a page into one graph, so the `@id` references below
  * resolve across blocks. author/publisher are still written out in full rather than as
@@ -95,7 +102,10 @@ export function siteJsonLd(): string {
         url: SITE_URL,
         name: SITE_NAME,
         description: SITE_DESCRIPTION,
-        inLanguage: "en",
+        // Both published languages. The WebSite node has one stable @id and is
+        // emitted on every page, so it has to describe the site rather than the
+        // page — the per-page language is on the Article / ItemList node below.
+        inLanguage: ["en", "zh-Hant-TW"],
         publisher,
       },
     ],
@@ -111,10 +121,12 @@ export type ArticleJsonLdInput = {
   description?: string;
   /** Both dates, from `pageUpdated(route)`. */
   updated: PageUpdated;
+  /** BCP 47 tag for the page's language. Defaults to English. */
+  inLanguage?: string;
 };
 
 /** Article node for one guide page. */
-export function articleJsonLd({ route, headline, description, updated }: ArticleJsonLdInput): string {
+export function articleJsonLd({ route, headline, description, updated, inLanguage = "en" }: ArticleJsonLdInput): string {
   const url = `${SITE_URL}${route}`;
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -126,7 +138,7 @@ export function articleJsonLd({ route, headline, description, updated }: Article
     ...(description ? { description } : {}),
     datePublished: updated.published,
     dateModified: updated.iso,
-    inLanguage: "en",
+    inLanguage,
     isPartOf: { "@id": WEBSITE_ID },
     author: publisher,
     publisher,
@@ -141,11 +153,14 @@ export function itemListJsonLd({
   name,
   description,
   items,
+  inLanguage = "en",
 }: {
   route: string;
   name: string;
   description: string;
   items: ItemListEntry[];
+  /** BCP 47 tag for the page's language. Defaults to English. */
+  inLanguage?: string;
 }): string {
   const url = `${SITE_URL}${route}`;
   return JSON.stringify({
@@ -155,7 +170,7 @@ export function itemListJsonLd({
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     name,
     description,
-    inLanguage: "en",
+    inLanguage,
     numberOfItems: items.length,
     itemListOrder: "https://schema.org/ItemListUnordered",
     itemListElement: items.map((item, i) => ({

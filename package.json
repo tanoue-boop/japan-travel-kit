@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "check:links": "node scripts/check-internal-links.js",
-    "check:jsonld": "node scripts/check-jsonld.js"
+    "check:jsonld": "node scripts/check-jsonld.js",
+    "check:i18n": "node scripts/check-i18n.js"
   },
   "dependencies": {
     "next": "14.2.29",

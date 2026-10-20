@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState, useEffect, useRef } from "react";
 import styles from "../styles/Header.module.css";
+import { localeOf, pairFor, type Locale } from "../lib/i18n";
 
 // One menu, one destination each. Until 2026-10-09 the header carried a Guides dropdown of
 // the five hubs *and* a second row of /sim-cards, /wifi-pocket, /transport and /money links;
@@ -32,14 +34,85 @@ const navItems = [
   { href: "/guides/money",       label: "Money"          },
 ];
 
-const CTA_HREF = "/guides/attractions";
-const CTA_LABEL = "Find Tours & Tickets →";
+// ── 繁體中文 nav (added 2026-10-20 with the first ten Chinese pages) ─────────
+//
+// Ten pages are translated, not the whole site, so some of these labels have to
+// point at an English page. Those are marked "（英文）" rather than left to look
+// like a Chinese destination — a reader who taps a Chinese label and lands on an
+// English hub should have been told first. As more pages are translated the
+// marker comes off; lib/i18n.ts is the list that decides which is which.
+const zhDestinationItems = [
+  { href: "/zh-tw/guides/attractions/things-to-do-tokyo",  label: "東京" },
+  { href: "/guides/attractions/things-to-do-kyoto",        label: "京都（英文）" },
+  { href: "/guides/attractions/things-to-do-osaka",        label: "大阪（英文）" },
+  { href: "/zh-tw/guides/attractions#daytrips",            label: "一日遊" },
+];
+
+const zhNavItems = [
+  { href: "/zh-tw/guides/attractions",              label: "景點門票"     },
+  { href: "/zh-tw/guides/transport/tokyo-airport-transfer", label: "機場交通" },
+  { href: "/zh-tw/guides/esim/best-esim-japan",     label: "日本網卡"     },
+  { href: "/guides/money",                          label: "付款（英文）" },
+];
+
+type Copy = {
+  tagline: string;
+  destinationsLabel: string;
+  guidesLabel: string;
+  planLabel: string;
+  allGuidesLabel: string;
+  allGuidesHref: string;
+  ctaHref: string;
+  ctaLabel: string;
+  menuLabel: string;
+  langLabel: string;
+  destinations: { href: string; label: string }[];
+  nav: { href: string; label: string }[];
+};
+
+const COPY: Record<Locale, Copy> = {
+  en: {
+    tagline: "Tickets, tours & trip prep",
+    destinationsLabel: "Destinations",
+    guidesLabel: "Guides",
+    planLabel: "Plan your trip",
+    allGuidesLabel: "All Guides",
+    allGuidesHref: "/guides",
+    ctaHref: "/guides/attractions",
+    ctaLabel: "Find Tours & Tickets →",
+    menuLabel: "Toggle menu",
+    langLabel: "Language",
+    destinations: destinationItems,
+    nav: navItems,
+  },
+  "zh-tw": {
+    tagline: "門票、行程與行前準備",
+    destinationsLabel: "目的地",
+    guidesLabel: "攻略",
+    planLabel: "行前準備",
+    allGuidesLabel: "全部攻略（英文）",
+    allGuidesHref: "/guides",
+    ctaHref: "/zh-tw/guides/attractions",
+    ctaLabel: "找門票與一日遊 →",
+    menuLabel: "開關選單",
+    langLabel: "語言",
+    destinations: zhDestinationItems,
+    nav: zhNavItems,
+  },
+};
 
 export default function Header() {
+  const router = useRouter();
   const [open, setOpen]           = useState(false);
   const [scrolled, setScrolled]   = useState(false);
   const [destOpen, setDestOpen]   = useState(false);
   const destRef                   = useRef<HTMLDivElement>(null);
+
+  // router.pathname is the page's own route (these are all static pages), which is
+  // what lib/i18n.ts keys both the locale and the page pairs off.
+  const locale = localeOf(router.pathname);
+  const copy = COPY[locale];
+  const pair = pairFor(router.pathname);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
@@ -65,18 +138,45 @@ export default function Header() {
     };
   }, [destOpen]);
 
+  /**
+   * English／繁體中文, rendered only when this exact page exists in both. A switch
+   * that drops you on a different page — or on a 404 — is worse than no switch, so
+   * pages outside lib/i18n.ts's pair list show nothing at all.
+   */
+  const langSwitch = pair && (
+    <div className={styles.langSwitch} aria-label={copy.langLabel}>
+      <Link
+        href={pair.en}
+        hrefLang="en"
+        className={`${styles.langLink}${locale === "en" ? ` ${styles.langCurrent}` : ""}`}
+        aria-current={locale === "en" ? "true" : undefined}
+      >
+        English
+      </Link>
+      <span className={styles.langSep} aria-hidden="true">／</span>
+      <Link
+        href={pair.zhTw}
+        hrefLang="zh-Hant-TW"
+        className={`${styles.langLink}${locale === "zh-tw" ? ` ${styles.langCurrent}` : ""}`}
+        aria-current={locale === "zh-tw" ? "true" : undefined}
+      >
+        繁體中文
+      </Link>
+    </div>
+  );
+
   return (
     <header className={`${styles.header}${scrolled ? ` ${styles.scrolled}` : ""}`}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo}>
+        <Link href={locale === "zh-tw" ? "/zh-tw/guides/attractions" : "/"} className={styles.logo}>
           <span className={styles.logoText}>Japan <em>Travel Kit</em></span>
-          <span className={styles.logoTag}>Tickets, tours &amp; trip prep</span>
+          <span className={styles.logoTag}>{copy.tagline}</span>
         </Link>
 
         {/* Text-only on desktop so all five fit beside the logo and the CTA. */}
         <nav className={styles.nav}>
-          <Link href={navItems[0].href} className={styles.navLink}>
-            {navItems[0].label}
+          <Link href={copy.nav[0].href} className={styles.navLink}>
+            {copy.nav[0].label}
           </Link>
 
           <div
@@ -92,13 +192,13 @@ export default function Header() {
               aria-haspopup="true"
               onClick={() => setDestOpen((v) => !v)}
             >
-              Destinations
+              {copy.destinationsLabel}
               <svg className={styles.navChevron} width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
             <div className={`${styles.dropdown}${destOpen ? ` ${styles.dropdownOpen}` : ""}`}>
-              {destinationItems.map((item) => (
+              {copy.destinations.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -111,7 +211,7 @@ export default function Header() {
             </div>
           </div>
 
-          {navItems.slice(1).map((item) => (
+          {copy.nav.slice(1).map((item) => (
             <Link key={item.href} href={item.href} className={styles.navLink}>
               {item.label}
             </Link>
@@ -119,13 +219,14 @@ export default function Header() {
         </nav>
 
         <div className={styles.cta}>
-          <Link href={CTA_HREF} className={styles.ctaBtn}>{CTA_LABEL}</Link>
+          {langSwitch}
+          <Link href={copy.ctaHref} className={styles.ctaBtn}>{copy.ctaLabel}</Link>
         </div>
 
         <button
           className={`${styles.hamburger}${open ? ` ${styles.open}` : ""}`}
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          aria-label={copy.menuLabel}
         >
           <span className={styles.bar} />
           <span className={styles.bar} />
@@ -135,32 +236,39 @@ export default function Header() {
 
       {/* Mobile: Destinations is an always-expanded list rather than a second tap target. */}
       <nav className={`${styles.mobileNav}${open ? ` ${styles.open}` : ""}`}>
-        <p className={styles.mobileLabel}>Guides</p>
-        <Link href={navItems[0].href} className={styles.mobileLink} onClick={() => setOpen(false)}>
-          {navItems[0].label}
+        <p className={styles.mobileLabel}>{copy.guidesLabel}</p>
+        <Link href={copy.nav[0].href} className={styles.mobileLink} onClick={() => setOpen(false)}>
+          {copy.nav[0].label}
         </Link>
 
-        <p className={styles.mobileLabel}>Destinations</p>
+        <p className={styles.mobileLabel}>{copy.destinationsLabel}</p>
         <div className={styles.mobileSub}>
-          {destinationItems.map((item) => (
+          {copy.destinations.map((item) => (
             <Link key={item.href} href={item.href} className={styles.mobileSubLink} onClick={() => setOpen(false)}>
               {item.label}
             </Link>
           ))}
         </div>
 
-        <p className={styles.mobileLabel}>Plan your trip</p>
-        {navItems.slice(1).map((item) => (
+        <p className={styles.mobileLabel}>{copy.planLabel}</p>
+        {copy.nav.slice(1).map((item) => (
           <Link key={item.href} href={item.href} className={styles.mobileLink} onClick={() => setOpen(false)}>
             {item.label}
           </Link>
         ))}
-        <Link href="/guides" className={styles.mobileLink} onClick={() => setOpen(false)}>
-          All Guides
+        <Link href={copy.allGuidesHref} className={styles.mobileLink} onClick={() => setOpen(false)}>
+          {copy.allGuidesLabel}
         </Link>
 
-        <Link href={CTA_HREF} className={styles.mobileCta} onClick={() => setOpen(false)}>
-          {CTA_LABEL}
+        {pair && (
+          <>
+            <p className={styles.mobileLabel}>{copy.langLabel}</p>
+            <div className={styles.langSwitchMobile}>{langSwitch}</div>
+          </>
+        )}
+
+        <Link href={copy.ctaHref} className={styles.mobileCta} onClick={() => setOpen(false)}>
+          {copy.ctaLabel}
         </Link>
       </nav>
     </header>

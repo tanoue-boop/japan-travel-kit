@@ -6,6 +6,7 @@ import { fujiDayTour, teamlabPlanetsTicketUrl, tokyoSightseeingBusTour } from ".
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 // CTA link — Klook affiliate redirect (teamLab Planets Toyosu ticket), shared with the
 // ticket price table.
@@ -142,6 +143,7 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           content="teamLab Planets ticket prices for 2026, checked on the official site: from ¥3,800 adult, 30-minute entry slots, opening hours, what to wear for the water areas, and how Planets compares with Borderless."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets" />
+        {hreflangLinks("/guides/attractions/teamlab-tokyo-tickets")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="teamLab Planets Tickets (2026): Prices, How to Book and Planets vs Borderless" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets" />

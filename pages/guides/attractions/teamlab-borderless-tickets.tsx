@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 import { teamlabBorderlessTicketUrl } from "../../../lib/klook-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
@@ -153,6 +154,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           content="teamLab Borderless ticket prices for 2026, checked on the official site: from ¥3,400 adult with dynamic pricing, timed-entry slots, opening hours, and how to book on the official site or Klook."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets" />
+        {hreflangLinks("/guides/attractions/teamlab-borderless-tickets")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets" />

@@ -17,6 +17,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 // "Price From" / "Cheapest Plan" in the quick comparison come from data/esim-prices.json,
 // which is refreshed daily by scripts/fetch-esim-prices.mjs.
@@ -195,6 +196,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           content="The best eSIMs for Japan 2026: Airalo, Holafly, eSIM Go & Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-esim-japan" />
+        {hreflangLinks("/guides/esim/best-esim-japan")}
         <meta property="og:title" content="Best eSIM for Japan 2026: Top 4 Picks Compared" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/best-esim-japan" />
         <meta property="og:description" content="The best eSIMs for Japan 2026: Airalo, Holafly, eSIM Go & Sakura Mobile compared on price, speed, and coverage. Independent review — no paid placements." />

@@ -20,6 +20,7 @@ const { transportCategory } = require("../lib/guides-transport.ts");
 const { moneyCategory } = require("../lib/guides-money.ts");
 const { attractionsCategory } = require("../lib/guides-attractions.ts");
 const { attractionPrices, checkedLabel, latestChecked, PRICE_TABLE_ROUTE } = require("../lib/attraction-prices.ts");
+const { TRANSLATED_PAGES } = require("../lib/i18n.ts");
 const { BUILD_DATE } = require("../lib/page-dates");
 
 const SITE = "https://www.japan-travel-kit.com";
@@ -85,6 +86,30 @@ const sections = [
   ),
 ];
 
+/**
+ * The 繁體中文 edition, added 2026-10-20. Ten pages, not the site — so the section
+ * says so, and says which English page each one is a translation of. A model
+ * grounding a Chinese-language answer about Japanese tickets should be able to
+ * reach the Chinese page; one grounding an English answer should not mistake
+ * these for extra English articles, and should know the figures are the same.
+ */
+const zhSection = [
+  "## 繁體中文 (Traditional Chinese edition)",
+  "",
+  oneLine(
+    `A trial edition of ${TRANSLATED_PAGES.length} pages in Taiwanese Traditional Chinese, under /zh-tw/. ` +
+      "Each one is a translation of the English page listed beside it, carrying the same prices, the same " +
+      "operator sources and the same check dates — no figure appears in Chinese that is not also in English. " +
+      "They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages " +
+      "(hreflang zh-Hant-TW and zh-Hant-HK).",
+  ),
+  "",
+  ...TRANSLATED_PAGES.map(
+    (p) => `- [${p.zhTitle}](${url(p.zhTw)}): 繁體中文 version of ${url(p.en)}`,
+  ),
+  "",
+].join("\n");
+
 const lines = [
   "# Japan Travel Kit",
   "",
@@ -117,6 +142,7 @@ const lines = [
   `- [${oneLine(attractionsCategory.name)} hub](${url(attractionsCategory.href)}): ${oneLine(attractionsCategory.intro[0])}`,
   "",
   ...sections,
+  zhSection,
   "## Site information",
   "",
   `- [About, and how we check prices](${url("/about")}): who runs the site, how figures are verified and the`,
@@ -139,5 +165,6 @@ const articleCount =
   moneyCategory.articles.length +
   attractionsCategory.articles.length;
 console.log(
-  `llms.txt: ${articleCount} guides in ${sections.length} sections written to ${path.relative(process.cwd(), OUT)}`,
+  `llms.txt: ${articleCount} guides in ${sections.length} sections plus ${TRANSLATED_PAGES.length} ` +
+    `繁體中文 pages written to ${path.relative(process.cwd(), OUT)}`,
 );

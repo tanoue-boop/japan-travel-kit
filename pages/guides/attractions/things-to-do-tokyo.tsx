@@ -5,6 +5,7 @@ import CityGuideIndex from "../../../components/CityGuideIndex";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 import {
   tokyoSightseeingBusTour,
   tokyoSubwayTicket,
@@ -97,6 +98,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           content="Things to do in Tokyo in 2026, ordered by urgency: the four or five attractions whose timed tickets really do sell out, everything you can decide on over breakfast, and the best free view in the city."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo" />
+        {hreflangLinks("/guides/attractions/things-to-do-tokyo")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Things to Do in Tokyo (2026): What to Book Ahead and What to Walk Into" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo" />

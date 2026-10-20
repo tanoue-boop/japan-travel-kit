@@ -6,6 +6,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { tokyoAirportStayAreas, tokyoAirportTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 const naritaOptions = [
   { option: "Narita Express (N'EX)",  time: "~60 min",    price: "¥3,070", bestFor: "Speed & comfort"         },
@@ -175,6 +176,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           content="How to get from Narita or Haneda airport to central Tokyo. We compare trains, buses, and taxis on price, speed, and convenience — with 2026 fares."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer" />
+        {hreflangLinks("/guides/transport/tokyo-airport-transfer")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Tokyo Airport Transfer 2026: Narita &amp; Haneda | Japan Travel Kit" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer" />

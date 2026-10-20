@@ -4,9 +4,14 @@
  * crawl. GA4 says the Bing family is where nearly all of our human search traffic
  * comes from, so this is the cheapest indexing lever we have.
  *
- *   node scripts/indexnow-submit.mjs            # every URL in public/sitemap.xml
- *   node scripts/indexnow-submit.mjs --changed  # only URLs touched by the last commit
- *   node scripts/indexnow-submit.mjs --dry-run  # print the payload, don't POST
+ *   node scripts/indexnow-submit.mjs                  # every URL in public/sitemap.xml
+ *   node scripts/indexnow-submit.mjs --changed        # only URLs touched by the last commit
+ *   node scripts/indexnow-submit.mjs --prefix=/zh-tw  # only URLs under one path
+ *   node scripts/indexnow-submit.mjs --dry-run        # print the payload, don't POST
+ *
+ * --prefix exists for launching a section on its own (it was added for the ten
+ * 繁體中文 pages under /zh-tw): the whole sitemap is 80-odd URLs that Bing has
+ * already seen, and submitting them again to announce ten new ones is noise.
  *
  * public/sitemap.xml is the single source of truth for what may be submitted:
  * it already excludes redirected and noindex routes, so --changed intersects the
@@ -35,6 +40,7 @@ const MAX_URLS = 10_000; // IndexNow's documented per-request limit
 
 const CHANGED = process.argv.includes("--changed");
 const DRY_RUN = process.argv.includes("--dry-run");
+const PREFIX = process.argv.find((a) => a.startsWith("--prefix="))?.slice("--prefix=".length) ?? "";
 
 /** Every <loc> in the generated sitemap. */
 function sitemapUrls() {
@@ -60,7 +66,9 @@ function changedUrls() {
   return [...new Set(files.map(fileToUrl))].filter((url) => live.has(url));
 }
 
-const urls = (CHANGED ? changedUrls() : sitemapUrls()).slice(0, MAX_URLS);
+const urls = (CHANGED ? changedUrls() : sitemapUrls())
+  .filter((url) => !PREFIX || url.startsWith(`${SITE}${PREFIX}`))
+  .slice(0, MAX_URLS);
 
 if (urls.length === 0) {
   // A lib/-only or asset-only commit: nothing page-shaped changed, so there is
@@ -69,7 +77,8 @@ if (urls.length === 0) {
   process.exit(0);
 }
 
-console.log(`indexnow: submitting ${urls.length} URL${urls.length === 1 ? "" : "s"}${CHANGED ? " (changed)" : ""}`);
+const scope = [CHANGED ? "changed" : null, PREFIX ? `under ${PREFIX}` : null].filter(Boolean).join(", ");
+console.log(`indexnow: submitting ${urls.length} URL${urls.length === 1 ? "" : "s"}${scope ? ` (${scope})` : ""}`);
 for (const url of urls) console.log(`  ${url}`);
 
 if (DRY_RUN) {

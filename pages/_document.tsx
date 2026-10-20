@@ -1,14 +1,17 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript, type DocumentContext, type DocumentInitialProps } from "next/document";
 import { GA_MEASUREMENT_ID } from "../lib/gtag";
 import { fontVariableClass } from "../lib/fonts";
 import { siteJsonLd } from "../lib/structured-data";
+import { HTML_LANG, localeOf } from "../lib/i18n";
 
-export default function Document() {
+type Props = DocumentInitialProps & { lang: string };
+
+export default function MyDocument({ lang }: Props) {
   return (
     // The next/font variable classes go on <html>, not on a wrapper inside <body>:
     // globals.css composes --font-body / --font-display from them at :root, and a var()
     // that is undefined where it is read makes the whole declaration invalid.
-    <Html lang="en" className={fontVariableClass}>
+    <Html lang={lang} className={fontVariableClass}>
       <Head>
         <meta name="theme-color" content="#23211f" />
         <meta name="google-site-verification" content="RzJ62Gbm4Ng2tGuEyIW1CV4-UjWKOpZRkskuAGP52Gc" />
@@ -38,3 +41,13 @@ export default function Document() {
     </Html>
   );
 }
+
+/**
+ * `lang` on <html> is resolved from the route rather than hard-coded "en", so the
+ * pages under /zh-tw declare zh-Hant-TW. `ctx.pathname` is the page's own route at
+ * static-generation time, which is exactly what lib/i18n.ts keys the locale off.
+ */
+MyDocument.getInitialProps = async (ctx: DocumentContext): Promise<Props> => {
+  const initialProps = await Document.getInitialProps(ctx);
+  return { ...initialProps, lang: HTML_LANG[localeOf(ctx.pathname)] };
+};
