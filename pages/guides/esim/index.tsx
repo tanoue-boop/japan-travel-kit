@@ -2,6 +2,7 @@ import Head from "next/head";
 import GuideHub from "../../../components/GuideHub";
 import { esimArticles, esimCategory } from "../../../lib/guides-esim";
 import { articleDates, pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { hubItemListJsonLd } from "../../../lib/structured-data";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim"), dates: articleDates(esimArticles.map((a) => a.href)) },
@@ -40,6 +41,10 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
               ],
             }),
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: hubItemListJsonLd(esimCategory, DESC) }}
         />
       </Head>
 

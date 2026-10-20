@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import CityGuideIndex from "../../../components/CityGuideIndex";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 import {
   tokyoSightseeingBusTour,
   tokyoSubwayTicket,
@@ -122,21 +123,10 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/things-to-do-tokyo",
               headline: "Things to Do in Tokyo (2026): What to Book Ahead and What to Walk Into",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

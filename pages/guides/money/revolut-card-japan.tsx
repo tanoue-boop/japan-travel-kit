@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // NOTE: Revolut affiliate programme not yet approved — plain link for now.
 // TODO: replace with approved affiliate link once accepted.
@@ -109,21 +110,10 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/money/revolut-card-japan",
               headline: "Revolut in Japan (2026): Fees, ATMs & Is It Worth It?",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

@@ -1,4 +1,48 @@
+# Japan Travel Kit — https://www.japan-travel-kit.com
+#
+# The wildcard rule below already allows every crawler, including the AI ones.
+# The named blocks that follow are redundant to a spec-compliant parser and are
+# here on purpose: several AI crawlers are documented as needing their own
+# user-agent token to be named before an operator will treat the site as
+# opted in, and some third-party robots.txt checkers report "no rule for
+# GPTBot" when only the wildcard is present. Naming each one makes the intent
+# explicit — we want these pages quoted in AI answers, with attribution.
+#
+# Google-Extended and Applebot-Extended are not crawlers; they are opt-out
+# tokens for Gemini / Apple Intelligence training and grounding. Allow means we
+# do not opt out.
+
 User-agent: *
+Allow: /
+
+# OpenAI — crawler, search index, and user-initiated fetches
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google — Gemini and AI Overviews / AI Mode grounding
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft — Bing index, which also feeds Copilot
+User-agent: Bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://www.japan-travel-kit.com/sitemap.xml

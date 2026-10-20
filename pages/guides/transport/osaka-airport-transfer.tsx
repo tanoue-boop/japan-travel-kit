@@ -4,6 +4,7 @@ import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { osakaAirportStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const kixOptions = [
   { option: "Haruka Limited Express", time: "50–75 min",  price: "¥3,060",  bestFor: "Speed & JR Pass users"   },
@@ -174,22 +175,10 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/transport/osaka-airport-transfer",
               headline: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",
-              datePublished: "2026-04-28",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const whatToLookFor = [
   {
@@ -183,21 +184,10 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/money/best-travel-card-japan",
               headline: "Best Travel Card for Japan (2026): Top Picks for Foreign Visitors",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

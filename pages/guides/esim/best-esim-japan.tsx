@@ -15,6 +15,8 @@ import {
 import { klookEsim } from "../../../lib/klook-links";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // "Price From" / "Cheapest Plan" in the quick comparison come from data/esim-prices.json,
 // which is refreshed daily by scripts/fetch-esim-prices.mjs.
@@ -181,7 +183,9 @@ const faqItems = [
   },
 ];
 
-export default function BestEsimJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/best-esim-japan") } });
+
+export default function BestEsimJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -216,21 +220,10 @@ export default function BestEsimJapanPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/best-esim-japan",
               headline: "Best eSIM for Japan 2026: Top 4 Picks Compared",
-              dateModified: "2026-09-16",
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

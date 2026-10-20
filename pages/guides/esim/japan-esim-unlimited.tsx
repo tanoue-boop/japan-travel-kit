@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Every price on this page is read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -164,7 +166,9 @@ const whoShouldGet = [
   },
 ];
 
-export default function JapanEsimUnlimitedPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/japan-esim-unlimited") } });
+
+export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -200,21 +204,10 @@ export default function JapanEsimUnlimitedPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/japan-esim-unlimited",
               headline: "Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users",
-              dateModified: "2026-09-18",
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

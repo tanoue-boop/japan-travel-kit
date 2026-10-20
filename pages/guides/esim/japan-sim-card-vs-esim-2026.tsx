@@ -11,6 +11,7 @@ import {
   type EsimProviderId,
 } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => getProvider(id).affiliateUrl;
@@ -197,21 +198,10 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/japan-sim-card-vs-esim-2026",
               headline: "Japan SIM Card vs eSIM (2026): Which Should You Choose?",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

@@ -13,6 +13,7 @@ import {
   type PocketWifi,
 } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Every rental number on this page comes from lib/pocket-wifi.ts, which records what the
 // linked Klook listing states and when each part of it was last checked. eSIM prices come
@@ -122,21 +123,10 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/best-pocket-wifi-japan",
               headline: HEADLINE,
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

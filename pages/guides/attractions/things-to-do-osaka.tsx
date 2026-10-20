@@ -5,6 +5,7 @@ import CityGuideIndex from "../../../components/CityGuideIndex";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { osakaAmazingPass, kyotoNaraArashiyamaTour } from "../../../lib/klook-links";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Osaka Amazing Pass prices read off the official site, osp.osaka-info.jp, on 19 Oct 2026.
 // Individual attraction admissions are deliberately absent — most of the included venues
@@ -74,21 +75,10 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/things-to-do-osaka",
               headline: "Things to Do in Osaka (2026): Where the Pass Pays and Where It Doesn't",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const comparison = [
   { feature: "Issued by",       suica: "JR East",              pasmo: "Tokyo Metro & private rails"  },
@@ -139,21 +140,10 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/transport/ic-cards-japan",
               headline: "IC Cards in Japan 2026: Suica, Pasmo & How to Use Them",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

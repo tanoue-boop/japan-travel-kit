@@ -3,6 +3,8 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel } from "../../../lib/esim-prices";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // All prices below are read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -114,7 +116,9 @@ const faqItems = [
   },
 ];
 
-export default function EsimGoJapanReviewPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/esim-go-japan-review") } });
+
+export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -135,22 +139,11 @@ export default function EsimGoJapanReviewPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/esim-go-japan-review",
               headline: "eSIM Go Review for Japan (2026): Prices, Coverage and Setup | Japan Travel Kit",
               description: "eSIM Go Japan plans compared: price per GB, network coverage and activation steps, plus how it stacks up against Airalo and Holafly.",
-              dateModified: "2026-09-18",
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

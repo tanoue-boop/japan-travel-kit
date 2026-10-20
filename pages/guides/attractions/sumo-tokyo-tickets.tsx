@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Klook affiliate redirect — Tokyo Grand Sumo Tournament tour (Ryogoku Kokugikan), activity 1432.
 // Uses the account-level aid; add an aff_adid from the Klook affiliate dashboard for per-link tracking.
@@ -149,21 +150,10 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/sumo-tokyo-tickets",
               headline: "Sumo in Tokyo (2026): Tournament Tickets vs Morning Practice",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

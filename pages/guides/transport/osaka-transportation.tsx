@@ -4,6 +4,7 @@ import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { osakaStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const attractionRoutes = [
   { dest: "Dotonbori",        from: "Namba",         line: "Walk",             time: "5 min",  price: "Free" },
@@ -160,21 +161,10 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/transport/osaka-transportation",
               headline: "Getting Around Osaka (2026): Subway, Trains & IC Cards Explained",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

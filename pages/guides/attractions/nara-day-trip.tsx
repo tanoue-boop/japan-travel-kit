@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kyotoNaraArashiyamaTour, arashiyamaNaraTodaijiTour, osakaAmazingPass } from "../../../lib/klook-links";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 const NARA_TOUR_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307051&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F87236-kyoto-tour-nara%2F";
@@ -158,21 +159,10 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/nara-day-trip",
               headline: "Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

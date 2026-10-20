@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { GA_MEASUREMENT_ID } from "../lib/gtag";
 import { fontVariableClass } from "../lib/fonts";
+import { siteJsonLd } from "../lib/structured-data";
 
 export default function Document() {
   return (
@@ -15,6 +16,10 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        {/* Organization + WebSite, on every page. _document never reaches the client
+            bundle, so the graph costs nothing in JS. Pages add their own Article,
+            ItemList, FAQPage and BreadcrumbList blocks; consumers merge them all. */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: siteJsonLd() }} />
         {GA_MEASUREMENT_ID && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />

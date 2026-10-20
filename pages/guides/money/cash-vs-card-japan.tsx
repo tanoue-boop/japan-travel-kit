@@ -5,6 +5,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import { siteCheapestFrom } from "../../../lib/esim-prices";
 import { cashVsCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const placeRows = [
   { place: "Convenience stores (7-Eleven, FamilyMart, Lawson)", cash: "✓", card: "✓" },
@@ -161,21 +162,10 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/money/cash-vs-card-japan",
               headline: "Cash vs Card in Japan (2026): What Actually Works?",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

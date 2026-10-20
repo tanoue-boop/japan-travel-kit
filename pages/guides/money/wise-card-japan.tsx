@@ -4,6 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { wiseCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // NOTE: Wise affiliate programme not yet approved — plain link for now.
 // TODO: replace with approved affiliate link once accepted.
@@ -113,22 +114,11 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/money/wise-card-japan",
               headline: "Wise Card in Japan (2026): ATM Fees, Withdrawal Limits and Does It Work? | Japan Travel Kit",
               description: "Yes, the Wise card works in Japan. Free ATM withdrawal allowance, fees after the limit, which ATMs accept it (7-Eleven, Japan Post), and how to avoid DCC.",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

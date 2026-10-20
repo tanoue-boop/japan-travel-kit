@@ -3,6 +3,8 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // All prices below are read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -142,7 +144,9 @@ const commonIssues = [
   { problem: "Mountain / remote areas", fix: "Some very remote areas and mountain peaks have limited SoftBank signal. Download offline maps as a backup before heading out." },
 ];
 
-export default function HolaflyJapanReviewPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/holafly-japan-review") } });
+
+export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -177,21 +181,10 @@ export default function HolaflyJapanReviewPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/holafly-japan-review",
               headline: "Holafly Japan Review 2026: Is Unlimited Data Worth the Price?",
-              dateModified: "2026-09-16",
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

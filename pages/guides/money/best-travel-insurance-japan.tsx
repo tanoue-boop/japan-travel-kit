@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA / provider links — SafetyWing is an affiliate link; the rest are normal links for now.
 // TODO: replace with approved affiliate link
@@ -188,21 +189,10 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/money/best-travel-insurance-japan",
               headline: "Best Travel Insurance for Japan (2026): Compared & Reviewed",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

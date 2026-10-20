@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import JrPassCalculator from "../../../components/JrPassCalculator";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Merged 2026-10-09 with /guides/transport/jr-pass-worth-it. Both pages answered "is the JR
 // Pass worth it" — the same query, with the same break-even arithmetic — and both sat outside
@@ -207,21 +208,10 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/transport/jr-pass-guide",
               headline: TITLE,
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

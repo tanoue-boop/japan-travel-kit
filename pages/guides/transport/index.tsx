@@ -2,6 +2,7 @@ import Head from "next/head";
 import GuideHub from "../../../components/GuideHub";
 import { transportArticles, transportCategory } from "../../../lib/guides-transport";
 import { articleDates } from "../../../lib/page-dates";
+import { hubItemListJsonLd } from "../../../lib/structured-data";
 
 export const getStaticProps = () => ({ props: { dates: articleDates(transportArticles.map((a) => a.href)) } });
 
@@ -37,6 +38,10 @@ export default function GuidesTransportPage({ dates }: { dates: Record<string, s
               ],
             }),
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: hubItemListJsonLd(transportCategory, DESC) }}
         />
       </Head>
 

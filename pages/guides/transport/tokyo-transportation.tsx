@@ -4,6 +4,7 @@ import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { tokyoStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const keyRoutes = [
   { from: "Shinjuku", to: "Shibuya",    line: "Yamanote Line",  time: "5 min",  price: "¥160" },
@@ -161,21 +162,10 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/transport/tokyo-transportation",
               headline: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

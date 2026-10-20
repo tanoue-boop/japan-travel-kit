@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { tokyoSubwayTicket, subwayCityViewCombo, naritaBusSubwayCombo, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Pass prices from tokyometro.jp and the Tokyo Metro adult fare table, both read 19 Oct 2026.
 const CHECKED = "19 October 2026";
@@ -148,13 +149,10 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/tokyo-subway-ticket",
               headline: TITLE,
-              dateModified: updated.iso,
-              author: { "@type": "Organization", name: "Japan Travel Kit", url: "https://www.japan-travel-kit.com" },
-              publisher: { "@type": "Organization", name: "Japan Travel Kit", url: "https://www.japan-travel-kit.com" },
+              updated,
             }),
           }}
         />

@@ -10,6 +10,7 @@ import {
   type EsimProviderId,
 } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Networks, prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => getProvider(id).affiliateUrl;
@@ -150,21 +151,10 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/does-esim-work-in-japan",
               headline: "Does eSIM Work in Japan? (2026): Everything You Need to Know",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

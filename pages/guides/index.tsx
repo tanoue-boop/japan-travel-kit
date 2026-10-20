@@ -6,6 +6,7 @@ import { transportCategory } from "../../lib/guides-transport";
 import { moneyCategory } from "../../lib/guides-money";
 import { attractionsCategory } from "../../lib/guides-attractions";
 import { groupedArticles, type GuideCategory } from "../../lib/guide-hub";
+import { itemListJsonLd } from "../../lib/structured-data";
 
 /** Category cards up top, then the full index below — same grouping the hubs use. */
 const categories: { category: GuideCategory; blurb: string }[] = [
@@ -30,6 +31,12 @@ const categories: { category: GuideCategory; blurb: string }[] = [
 const totalGuides = categories.reduce((n, c) => n + c.category.articles.length, 0);
 
 const DESC = `All ${totalGuides} Japan travel guides in one index: eSIM and SIM cards, transport and rail passes, money and payment, and attraction tickets — grouped by the question each one answers.`;
+
+// ItemList of every guide, in the order this page renders them, so an AI crawler reading
+// one page gets the whole site's contents rather than four hub links.
+const ALL_GUIDES = categories.flatMap(({ category }) =>
+  groupedArticles(category).flatMap(({ articles }) => articles),
+);
 
 export default function GuidesIndexPage() {
   return (
@@ -57,6 +64,17 @@ export default function GuidesIndexPage() {
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
               ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: itemListJsonLd({
+              route: "/guides",
+              name: `Japan Travel Kit — all ${totalGuides} Japan travel guides`,
+              description: DESC,
+              items: ALL_GUIDES,
             }),
           }}
         />

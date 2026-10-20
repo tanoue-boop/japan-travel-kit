@@ -9,6 +9,7 @@ import {
   fujiHakoneDayTour,
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Freepass prices and coverage from odakyu-global.com, read 19 Oct 2026.
 const CHECKED = "19 October 2026";
@@ -162,13 +163,10 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/hakone-day-trip-from-tokyo",
               headline: TITLE,
-              dateModified: updated.iso,
-              author: { "@type": "Organization", name: "Japan Travel Kit", url: "https://www.japan-travel-kit.com" },
-              publisher: { "@type": "Organization", name: "Japan Travel Kit", url: "https://www.japan-travel-kit.com" },
+              updated,
             }),
           }}
         />

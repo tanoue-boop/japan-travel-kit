@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 import {
   formatUsd,
   getProvider,
@@ -80,7 +82,9 @@ const faqItems = [
   },
 ];
 
-export default function AiraloVsHolaflyJapanPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/airalo-vs-holafly-japan") } });
+
+export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -117,21 +121,10 @@ export default function AiraloVsHolaflyJapanPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/airalo-vs-holafly-japan",
               headline: "Airalo vs Holafly for Japan (2026): Which Should You Choose?",
-              dateModified: "2026-09-18",
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

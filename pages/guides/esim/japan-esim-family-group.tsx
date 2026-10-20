@@ -12,6 +12,7 @@ import {
 } from "../../../lib/esim-prices";
 import { cheapestPerDay, ratesCheckedAt, rentalCost } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // eSIM prices and affiliate links come from data/esim-prices.json (refreshed daily);
 // Pocket WiFi rates come from lib/pocket-wifi.ts (hand-checked).
@@ -94,21 +95,10 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/japan-esim-family-group",
               headline: "Best eSIM for Japan: Family & Group Travel 2026",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

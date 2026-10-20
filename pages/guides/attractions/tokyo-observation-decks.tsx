@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { skytreeAquariumCombo, subwayCityViewCombo, tokyoSubwayTicket } from "../../../lib/klook-links";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA links — Klook affiliate redirects (tracking links, all three listings confirmed live
 // 19 Oct 2026).
@@ -179,21 +180,10 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/tokyo-observation-decks",
               headline: "Tokyo Observation Decks (2026): Shibuya Sky vs Skytree vs Tokyo Tower",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

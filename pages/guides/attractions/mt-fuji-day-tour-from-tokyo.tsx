@@ -9,6 +9,7 @@ import {
   fujiHakoneBulletTrainTour,
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Tour contents and durations below are as the Klook listings describe them, checked 19 Oct 2026.
 // Klook answers automated requests to its product pages with HTTP 403, so no price is quoted here.
@@ -176,13 +177,10 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/mt-fuji-day-tour-from-tokyo",
               headline: TITLE,
-              dateModified: updated.iso,
-              author: { "@type": "Organization", name: "Japan Travel Kit", url: "https://www.japan-travel-kit.com" },
-              publisher: { "@type": "Organization", name: "Japan Travel Kit", url: "https://www.japan-travel-kit.com" },
+              updated,
             }),
           }}
         />

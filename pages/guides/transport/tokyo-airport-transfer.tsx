@@ -5,6 +5,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { tokyoAirportStayAreas, tokyoAirportTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const naritaOptions = [
   { option: "Narita Express (N'EX)",  time: "~60 min",    price: "¥3,070", bestFor: "Speed & comfort"         },
@@ -200,21 +201,10 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/transport/tokyo-airport-transfer",
               headline: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

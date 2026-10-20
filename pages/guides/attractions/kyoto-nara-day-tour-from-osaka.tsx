@@ -9,6 +9,7 @@ import {
   kyotoNaraUjiTour,
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Tour contents and durations are as the Klook listings describe them; Todai-ji figures are from
 // todaiji.or.jp. Both checked 19 Oct 2026.
@@ -186,13 +187,10 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/kyoto-nara-day-tour-from-osaka",
               headline: TITLE,
-              dateModified: updated.iso,
-              author: { "@type": "Organization", name: "Japan Travel Kit", url: "https://www.japan-travel-kit.com" },
-              publisher: { "@type": "Organization", name: "Japan Travel Kit", url: "https://www.japan-travel-kit.com" },
+              updated,
             }),
           }}
         />

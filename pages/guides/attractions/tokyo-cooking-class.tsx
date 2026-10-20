@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 const TOKYO_COOKING_CLASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1309224&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F122869-tokyo-sushi-making-experience-japanese-cooking-class%2F";
@@ -155,21 +156,10 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/tokyo-cooking-class",
               headline: "Tokyo Cooking Class (2026): Sushi & Ramen Making — What to Expect & How to Book",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

@@ -160,19 +160,9 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESC} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Japan Travel Kit",
-              url: "https://www.japan-travel-kit.com",
-              description:
-                "Japan attraction tickets, tours and day trips — what to book ahead, at what price — plus transport, eSIM and money guides for foreign visitors.",
-            }),
-          }}
-        />
+        {/* The WebSite node that used to sit here moved to pages/_document.tsx on
+            2026-10-20, where it is emitted on every page alongside Organization —
+            keeping it here as well would have declared the site twice on the home page. */}
       </Head>
 
       {/* Hero — copy left, one photograph right. Replaced the navy gradient / glow /

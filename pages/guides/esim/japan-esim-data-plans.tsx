@@ -6,6 +6,8 @@ import EsimPlanFinder from "../../../components/EsimPlanFinder";
 import EsimPlanTable, { ProviderCta } from "../../../components/EsimPlanTable";
 import EsimPriceStatus from "../../../components/EsimPriceStatus";
 import { klookEsim } from "../../../lib/klook-links";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 import {
   allEsimPlans,
   bestValuePlan,
@@ -21,7 +23,6 @@ import {
 // copy (and the FAQ structured data) never drifts from the table.
 const checkedAt = latestCheckedAt();
 const checkedLabel = formatDate(checkedAt);
-const checkedIso = checkedAt ? checkedAt.slice(0, 10) : "2026-09-18";
 
 const cheapestOf = (rows: EsimPlanRow[]) => (rows.length ? rows.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null);
 const cheapestOverall = cheapestOf(allEsimPlans);
@@ -94,7 +95,9 @@ const faqItems = [
   },
 ];
 
-export default function JapanEsimDataPlansPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/japan-esim-data-plans") } });
+
+export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -130,21 +133,10 @@ export default function JapanEsimDataPlansPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/japan-esim-data-plans",
               headline: "Japan eSIM Data Plans Compared (2026): Live Price Tracker",
-              dateModified: checkedIso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

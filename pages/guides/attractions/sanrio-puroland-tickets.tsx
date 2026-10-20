@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { sanrioPurolandTicket, tokyoSightseeingBusTour, warnerBrosStudioTourTokyo } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Passport price bands, the 1 Aug 2026 revision, the arrival-reservation rule and
 // the access routes below were read off puroland.jp (/passport/list/, /fee/,
@@ -148,21 +149,10 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/sanrio-puroland-tickets",
               headline: TITLE,
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

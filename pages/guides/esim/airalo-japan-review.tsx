@@ -3,6 +3,8 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // All Airalo prices below are read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -141,7 +143,9 @@ const commonIssues = [
   },
 ];
 
-export default function AiraloJapanReviewPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/airalo-japan-review") } });
+
+export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -176,21 +180,10 @@ export default function AiraloJapanReviewPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/airalo-japan-review",
               headline: "Airalo Japan Review 2026: Plans, Coverage & Verdict",
-              dateModified: "2026-09-16",
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

@@ -5,6 +5,8 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import cardStyles from "../../../styles/SIMCardCard.module.css";
 import { getProvider, priceFrom, pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
 import { cheapestPerDay, pocketWifi, pocketWifis, ratesCheckedAt, specsCheckedAt } from "../../../lib/pocket-wifi";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // eSIM prices on this page are read from data/esim-prices.json (refreshed daily);
 // the Pocket WiFi rentals come from lib/pocket-wifi.ts. The two rental comparison
@@ -56,7 +58,9 @@ const faqItems = [
   },
 ];
 
-export default function PocketWifiVsEsimPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/pocket-wifi-vs-esim-japan") } });
+
+export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -91,21 +95,10 @@ export default function PocketWifiVsEsimPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/pocket-wifi-vs-esim-japan",
               headline: "Pocket WiFi vs eSIM for Japan 2026: Which Is Better?",
-              dateModified: "2026-09-18",
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

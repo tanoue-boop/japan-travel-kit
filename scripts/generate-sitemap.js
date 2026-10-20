@@ -6,7 +6,8 @@
  *   lib/page-dates.js (which also feeds the "Updated" badges and JSON-LD dateModified
  *   in pages, so all three stay in sync). See that module for the shallow-clone fallback.
  * - data/page-dates.json is the committed snapshot of those dates, used when the
- *   build environment has no full git history.
+ *   build environment has no full git history. data/page-published.json is the same
+ *   thing for first-published dates, which feed JSON-LD datePublished.
  * - Any URL that has been 301-redirected in lib/redirects.js is excluded (both the merged
  *   guides and the retired top-level landing pages).
  * - Pages that set robots=noindex are excluded too. /disclaimer and /privacy-policy were
@@ -15,7 +16,7 @@
 const fs = require("fs");
 const path = require("path");
 const { allRedirects } = require("../lib/redirects");
-const { BUILD_DATE, PAGES_DIR, fileToRoute, writeSnapshot } = require("../lib/page-dates");
+const { BUILD_DATE, PAGES_DIR, fileToRoute, writeSnapshot, writePublishedSnapshot } = require("../lib/page-dates");
 
 const SITE = "https://www.japan-travel-kit.com";
 const OUT = path.join(__dirname, "..", "public", "sitemap.xml");
@@ -55,6 +56,9 @@ const routes = walk(PAGES_DIR)
   .sort((a, b) => a.localeCompare(b));
 
 const lastmod = writeSnapshot(routes);
+// Published dates are not in the sitemap, but the same snapshot mechanism has to run
+// here: on a shallow clone, `git log --diff-filter=A` cannot see the add commit either.
+writePublishedSnapshot(routes);
 
 const urls = routes.map((route) => {
   const { changefreq, priority } = meta(route);
@@ -79,4 +83,7 @@ const xml = [
 ].join("\n");
 
 fs.writeFileSync(OUT, xml, "utf8");
-console.log(`sitemap: ${routes.length} URLs written to ${path.relative(process.cwd(), OUT)}; dates snapshot in data/page-dates.json`);
+console.log(
+  `sitemap: ${routes.length} URLs written to ${path.relative(process.cwd(), OUT)}; ` +
+    "date snapshots in data/page-dates.json and data/page-published.json",
+);

@@ -2,6 +2,7 @@ import Head from "next/head";
 import GuideHub from "../../../components/GuideHub";
 import { attractionArticles, attractionsCategory } from "../../../lib/guides-attractions";
 import { articleDates } from "../../../lib/page-dates";
+import { hubItemListJsonLd } from "../../../lib/structured-data";
 
 export const getStaticProps = () => ({ props: { dates: articleDates(attractionArticles.map((a) => a.href)) } });
 
@@ -37,6 +38,10 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
               ],
             }),
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: hubItemListJsonLd(attractionsCategory, DESC) }}
         />
       </Head>
 

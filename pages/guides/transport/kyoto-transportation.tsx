@@ -4,6 +4,7 @@ import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { kyotoStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const transportOptions = [
   { mode: "City Bus",   bestFor: "Temples, Gion, Fushimi Inari",    fare: "¥230 / ride",       icCard: "✓" },
@@ -196,21 +197,10 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/transport/kyoto-transportation",
               headline: "Getting Around Kyoto (2026): Buses, Trains & Taxis Explained",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

@@ -4,6 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { atmsTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const atmComparison = [
   {
@@ -157,21 +158,10 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/money/atms-in-japan",
               headline: "ATMs in Japan (2026): Where to Find Them & How to Use Them",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

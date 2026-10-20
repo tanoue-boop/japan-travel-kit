@@ -3,6 +3,8 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
+import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // All prices below are read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -106,7 +108,9 @@ const faqItems = [
   },
 ];
 
-export default function SakuraMobileReviewPage() {
+export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/sakura-mobile-review") } });
+
+export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
@@ -141,22 +145,11 @@ export default function SakuraMobileReviewPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/sakura-mobile-review",
               headline: "Sakura Mobile Review 2026: SIM & eSIM Plans, Prices, Pros and Cons | Japan Travel Kit",
               description: "Sakura Mobile SIM and eSIM for Japan: plans and prices, Docomo coverage, phone number and English support. Who it suits and cheaper alternatives for short trips.",
-              dateModified: "2026-09-18",
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

@@ -10,6 +10,7 @@ import {
   type EsimProviderId,
 } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Every price quoted on this page is read from data/esim-prices.json (refreshed daily),
 // so the figures the threads argue over are always checked against today's catalogue.
@@ -108,21 +109,10 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/best-esim-japan-reddit",
               headline: "Best eSIM for Japan: Reddit's Advice, Fact-Checked (2026)",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

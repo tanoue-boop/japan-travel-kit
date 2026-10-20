@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kyotoHighlightBusTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA links — Klook affiliate redirects (tracking links, both listings confirmed live
 // 19 Oct 2026).
@@ -157,21 +158,10 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/attractions/kimono-rental-japan",
               headline: "Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

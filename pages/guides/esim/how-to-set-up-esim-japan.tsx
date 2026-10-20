@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { esimProviders, priceFromLabel, unlimitedFromLabel, type EsimProviderId } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 // Prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => esimProviders.find((p) => p.id === id)?.affiliateUrl ?? "#";
@@ -317,21 +318,10 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/esim/how-to-set-up-esim-japan",
               headline: "How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

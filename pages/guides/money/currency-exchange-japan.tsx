@@ -5,6 +5,7 @@ import FxFeeComparison from "../../../components/FxFeeComparison";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { currencyExchangeTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const bestWays = [
   {
@@ -153,22 +154,10 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/money/currency-exchange-japan",
               headline: "Currency Exchange in Japan (2026): Best Ways to Get Yen",
-              datePublished: "2026-04-28",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />

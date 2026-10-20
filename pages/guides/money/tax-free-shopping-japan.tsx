@@ -4,6 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { taxFreeTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
+import { articleJsonLd } from "../../../lib/structured-data";
 
 const taxFreeStores = [
   { type: "Electronics", examples: "Yodobashi Camera, Bic Camera, Akihabara stores" },
@@ -140,21 +141,10 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
+            __html: articleJsonLd({
+              route: "/guides/money/tax-free-shopping-japan",
               headline: "Tax-Free Shopping in Japan (2026): How to Get Your Consumption Tax Back",
-              dateModified: updated.iso,
-              author: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Japan Travel Kit",
-                url: "https://www.japan-travel-kit.com",
-              },
+              updated,
             }),
           }}
         />
