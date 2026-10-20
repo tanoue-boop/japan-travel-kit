@@ -12,6 +12,8 @@
  * Links are collected from pages/ plus the hub article lists in lib/guides-*.ts (which the hub
  * pages render). Header/Footer links are site-wide chrome, so they are excluded from the
  * inbound-link counts in (c) — a nav link is not editorial support for an article.
+ *
+ * Valid targets are page routes plus the static files in public/ (/llms.txt, /sitemap.xml).
  */
 const fs = require("fs");
 const path = require("path");
@@ -46,6 +48,12 @@ const pageFiles = walk(PAGES_DIR).filter(
   (f) => !/[\\/]_(app|document)\.tsx$/.test(f) && !/[\\/](404|500)\.tsx$/.test(f),
 );
 const routes = new Set(pageFiles.map(fileToRoute));
+
+// Files in public/ are served at the site root, so an href to one is a valid internal
+// link even though no page route matches it — /llms.txt, /sitemap.xml, /robots.txt.
+for (const entry of fs.readdirSync(path.join(ROOT, "public"), { withFileTypes: true })) {
+  if (entry.isFile()) routes.add("/" + entry.name);
+}
 
 /** Article routes = everything under /guides/<category>/ (hubs and static pages excluded). */
 const articles = [...routes].filter((r) => /^\/guides\/[a-z]+\/[a-z0-9-]+$/.test(r)).sort();
