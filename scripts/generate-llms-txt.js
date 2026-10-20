@@ -110,6 +110,31 @@ const zhSection = [
   "",
 ].join("\n");
 
+/**
+ * The 简体中文 edition, added 2026-10-20 alongside the Traditional one. Listed as its
+ * own section rather than folded into the one above, because the two are not
+ * conversions of each other: the titles, the vocabulary and the Klook locale differ,
+ * and a model answering in Simplified should be pointed at the Simplified page. The
+ * facts are the same in all three, which is worth saying explicitly.
+ */
+const cnSection = [
+  "## 简体中文 (Simplified Chinese edition)",
+  "",
+  oneLine(
+    `The same ${TRANSLATED_PAGES.length} pages in Simplified Chinese, under /zh-cn/. Written for the Chinese ` +
+      "communities of Singapore and Malaysia and for Chinese speakers living outside mainland China " +
+      "(hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is " +
+      "the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather " +
+      "than 快速通關) and the Klook links point at Klook's zh-CN locale. Every price, operator source and " +
+      "check date is identical to the English and Traditional pages.",
+  ),
+  "",
+  ...TRANSLATED_PAGES.map(
+    (p) => `- [${p.zhCnTitle}](${url(p.zhCn)}): 简体中文 version of ${url(p.en)}`,
+  ),
+  "",
+].join("\n");
+
 const lines = [
   "# Japan Travel Kit",
   "",
@@ -143,6 +168,7 @@ const lines = [
   "",
   ...sections,
   zhSection,
+  cnSection,
   "## Site information",
   "",
   `- [About, and how we check prices](${url("/about")}): who runs the site, how figures are verified and the`,
@@ -166,5 +192,5 @@ const articleCount =
   attractionsCategory.articles.length;
 console.log(
   `llms.txt: ${articleCount} guides in ${sections.length} sections plus ${TRANSLATED_PAGES.length} ` +
-    `繁體中文 pages written to ${path.relative(process.cwd(), OUT)}`,
+    `繁體中文 and ${TRANSLATED_PAGES.length} 简体中文 pages written to ${path.relative(process.cwd(), OUT)}`,
 );

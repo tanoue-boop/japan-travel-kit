@@ -141,6 +141,21 @@ A trial edition of 10 pages in Taiwanese Traditional Chinese, under /zh-tw/. Eac
 - [東京自由行景點（2026）：必去景點哪些要先訂票、哪些可以現場去](https://www.japan-travel-kit.com/zh-tw/guides/attractions/things-to-do-tokyo): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo
 - [日本景點門票攻略（2026）：官方票價、預約方式與一日遊](https://www.japan-travel-kit.com/zh-tw/guides/attractions): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions
 
+## 简体中文 (Simplified Chinese edition)
+
+The same 10 pages in Simplified Chinese, under /zh-cn/. Written for the Chinese communities of Singapore and Malaysia and for Chinese speakers living outside mainland China (hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather than 快速通關) and the Klook links point at Klook's zh-CN locale. Every price, operator source and check date is identical to the English and Traditional pages.
+
+- [涩谷SKY 门票（2026）：票价、最佳时段与预约方式](https://www.japan-travel-kit.com/zh-cn/guides/attractions/shibuya-sky-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
+- [teamLab 无界 门票（2026）：票价、时段预约与购票渠道](https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-borderless-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets
+- [teamLab Planets 门票（2026）：票价、预约方式与无界比较](https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-tokyo-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets
+- [东京迪士尼门票（2026）：乐园与海洋怎么买、怎么选](https://www.japan-travel-kit.com/zh-cn/guides/attractions/tokyo-disney-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets
+- [日本环球影城门票与快速通行证（2026）：该买哪一种](https://www.japan-travel-kit.com/zh-cn/guides/attractions/usj-tickets-express-pass): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass
+- [富士山一日游（东京出发·2026）：行程怎么选、五合目看什么](https://www.japan-travel-kit.com/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-tour-from-tokyo
+- [成田机场到东京市区交通（2026）：Skyliner、N'EX 与利木津巴士比较](https://www.japan-travel-kit.com/zh-cn/guides/transport/tokyo-airport-transfer): 简体中文 version of https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer
+- [日本eSIM推荐（2026）：流量卡方案比较与 Klook 日本 eSIM](https://www.japan-travel-kit.com/zh-cn/guides/esim/best-esim-japan): 简体中文 version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
+- [东京自由行景点（2026）：必去景点哪些要先订票、哪些可以现场去](https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo
+- [日本景点门票攻略（2026）：官方票价、预约方式与一日游](https://www.japan-travel-kit.com/zh-cn/guides/attractions): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions
+
 ## Site information
 
 - [About, and how we check prices](https://www.japan-travel-kit.com/about): who runs the site, how figures are verified and the

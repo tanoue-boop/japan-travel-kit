@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef } from "react";
 import styles from "../styles/Header.module.css";
-import { localeOf, pairFor, type Locale } from "../lib/i18n";
+import { HTML_LANG, LOCALE_NAME, localeOf, pairFor, routeOf, type Locale } from "../lib/i18n";
 
 // One menu, one destination each. Until 2026-10-09 the header carried a Guides dropdown of
 // the five hubs *and* a second row of /sim-cards, /wifi-pocket, /transport and /money links;
@@ -55,6 +55,25 @@ const zhNavItems = [
   { href: "/guides/money",                          label: "付款（英文）" },
 ];
 
+// ── 简体中文 nav (added 2026-10-20 with the ten Simplified pages) ────────────
+//
+// Same shape and the same "（英文）" rule as the 繁體 nav above, in the vocabulary
+// Singapore, Malaysia and other Simplified-reading readers use: 流量卡 for mobile
+// data rather than 網卡, 一日游 rather than 一日遊.
+const cnDestinationItems = [
+  { href: "/zh-cn/guides/attractions/things-to-do-tokyo",  label: "东京" },
+  { href: "/guides/attractions/things-to-do-kyoto",        label: "京都（英文）" },
+  { href: "/guides/attractions/things-to-do-osaka",        label: "大阪（英文）" },
+  { href: "/zh-cn/guides/attractions#daytrips",            label: "一日游" },
+];
+
+const cnNavItems = [
+  { href: "/zh-cn/guides/attractions",              label: "景点门票"     },
+  { href: "/zh-cn/guides/transport/tokyo-airport-transfer", label: "机场交通" },
+  { href: "/zh-cn/guides/esim/best-esim-japan",     label: "日本流量卡"   },
+  { href: "/guides/money",                          label: "支付（英文）" },
+];
+
 type Copy = {
   tagline: string;
   destinationsLabel: string;
@@ -62,6 +81,8 @@ type Copy = {
   planLabel: string;
   allGuidesLabel: string;
   allGuidesHref: string;
+  /** Where the logo goes: the site's home in English, that edition's hub in Chinese. */
+  homeHref: string;
   ctaHref: string;
   ctaLabel: string;
   menuLabel: string;
@@ -78,6 +99,7 @@ const COPY: Record<Locale, Copy> = {
     planLabel: "Plan your trip",
     allGuidesLabel: "All Guides",
     allGuidesHref: "/guides",
+    homeHref: "/",
     ctaHref: "/guides/attractions",
     ctaLabel: "Find Tours & Tickets →",
     menuLabel: "Toggle menu",
@@ -92,6 +114,7 @@ const COPY: Record<Locale, Copy> = {
     planLabel: "行前準備",
     allGuidesLabel: "全部攻略（英文）",
     allGuidesHref: "/guides",
+    homeHref: "/zh-tw/guides/attractions",
     ctaHref: "/zh-tw/guides/attractions",
     ctaLabel: "找門票與一日遊 →",
     menuLabel: "開關選單",
@@ -99,7 +122,25 @@ const COPY: Record<Locale, Copy> = {
     destinations: zhDestinationItems,
     nav: zhNavItems,
   },
+  "zh-cn": {
+    tagline: "门票、行程与行前准备",
+    destinationsLabel: "目的地",
+    guidesLabel: "攻略",
+    planLabel: "行前准备",
+    allGuidesLabel: "全部攻略（英文）",
+    allGuidesHref: "/guides",
+    homeHref: "/zh-cn/guides/attractions",
+    ctaHref: "/zh-cn/guides/attractions",
+    ctaLabel: "找门票与一日游 →",
+    menuLabel: "开关菜单",
+    langLabel: "语言",
+    destinations: cnDestinationItems,
+    nav: cnNavItems,
+  },
 };
+
+/** The order the switch lists the languages in — the site's own first. */
+const SWITCH_ORDER: Locale[] = ["en", "zh-tw", "zh-cn"];
 
 export default function Header() {
   const router = useRouter();
@@ -139,36 +180,32 @@ export default function Header() {
   }, [destOpen]);
 
   /**
-   * English／繁體中文, rendered only when this exact page exists in both. A switch
-   * that drops you on a different page — or on a 404 — is worse than no switch, so
-   * pages outside lib/i18n.ts's pair list show nothing at all.
+   * English／繁體中文／简体中文, rendered only when this exact page exists in all
+   * three. A switch that drops you on a different page — or on a 404 — is worse than
+   * no switch, so pages outside lib/i18n.ts's list show nothing at all.
    */
   const langSwitch = pair && (
     <div className={styles.langSwitch} aria-label={copy.langLabel}>
-      <Link
-        href={pair.en}
-        hrefLang="en"
-        className={`${styles.langLink}${locale === "en" ? ` ${styles.langCurrent}` : ""}`}
-        aria-current={locale === "en" ? "true" : undefined}
-      >
-        English
-      </Link>
-      <span className={styles.langSep} aria-hidden="true">／</span>
-      <Link
-        href={pair.zhTw}
-        hrefLang="zh-Hant-TW"
-        className={`${styles.langLink}${locale === "zh-tw" ? ` ${styles.langCurrent}` : ""}`}
-        aria-current={locale === "zh-tw" ? "true" : undefined}
-      >
-        繁體中文
-      </Link>
+      {SWITCH_ORDER.map((target, i) => (
+        <Fragment key={target}>
+          {i > 0 && <span className={styles.langSep} aria-hidden="true">／</span>}
+          <Link
+            href={routeOf(pair, target)}
+            hrefLang={HTML_LANG[target]}
+            className={`${styles.langLink}${locale === target ? ` ${styles.langCurrent}` : ""}`}
+            aria-current={locale === target ? "true" : undefined}
+          >
+            {LOCALE_NAME[target]}
+          </Link>
+        </Fragment>
+      ))}
     </div>
   );
 
   return (
     <header className={`${styles.header}${scrolled ? ` ${styles.scrolled}` : ""}`}>
       <div className={styles.inner}>
-        <Link href={locale === "zh-tw" ? "/zh-tw/guides/attractions" : "/"} className={styles.logo}>
+        <Link href={copy.homeHref} className={styles.logo}>
           <span className={styles.logoText}>Japan <em>Travel Kit</em></span>
           <span className={styles.logoTag}>{copy.tagline}</span>
         </Link>

@@ -13,8 +13,8 @@
  *     lib/page-dates.js (git history, snapshotted in data/page-dates.json).
  *   - ItemList — on /guides and the four category hubs, via `itemListJsonLd`.
  *
- * Extended 2026-10-20 for the 繁體中文 edition: `articleJsonLd` and `itemListJsonLd`
- * take an `inLanguage`, so a Chinese page emits the same shape of graph as its
+ * Extended 2026-10-20 for the 繁體中文 and 简体中文 editions: `articleJsonLd` and
+ * `itemListJsonLd` take an `inLanguage`, so a Chinese page emits the same shape of graph as its
  * English counterpart with the language swapped rather than carrying a second,
  * divergent copy of the publisher and WebSite wiring. The language tags
  * themselves live in lib/i18n.ts (JSONLD_LANG), which is also what the hreflang
@@ -102,10 +102,10 @@ export function siteJsonLd(): string {
         url: SITE_URL,
         name: SITE_NAME,
         description: SITE_DESCRIPTION,
-        // Both published languages. The WebSite node has one stable @id and is
+        // Every published language. The WebSite node has one stable @id and is
         // emitted on every page, so it has to describe the site rather than the
         // page — the per-page language is on the Article / ItemList node below.
-        inLanguage: ["en", "zh-Hant-TW"],
+        inLanguage: ["en", "zh-Hant-TW", "zh-Hans"],
         publisher,
       },
     ],

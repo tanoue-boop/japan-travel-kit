@@ -12,11 +12,12 @@
  *   guides and the retired top-level landing pages).
  * - Pages that set robots=noindex are excluded too. /disclaimer and /privacy-policy were
  *   listed here until 2026-10-09 despite being noindex, which is a contradictory signal.
- * - Pages that exist in both English and 繁體中文 carry <xhtml:link> alternates for the
- *   whole cluster (en, zh-Hant-TW, zh-Hant-HK, x-default), from lib/i18n.ts — the same
- *   list the <link rel="alternate"> tags in the pages' <head> are built from. Because the
- *   Chinese pages are real files under pages/zh-tw/, the walk above finds them with no
- *   special case; only the alternates below are new.
+ * - Pages that exist in English, 繁體中文 and 简体中文 carry <xhtml:link> alternates for
+ *   the whole cluster (en, zh-Hant-TW, zh-Hant-HK, zh-Hans, zh-Hans-SG, x-default), from
+ *   lib/i18n.ts — the same list the <link rel="alternate"> tags in the pages' <head> are
+ *   built from. Because the Chinese pages are real files under pages/zh-tw/ and
+ *   pages/zh-cn/, the walk above finds them with no special case; only the alternates
+ *   below are new.
  */
 require("./require-ts");
 

@@ -78,6 +78,41 @@ const zhCols: FooterCol[] = [
   },
 ];
 
+// ── 简体中文 footer (added 2026-10-20) ──────────────────────────────────────
+//
+// Same shape again, in the Simplified readers' vocabulary: 流量卡 for mobile data,
+// 支付 for payment, 一日游 for a day out. The policy pages are English-only.
+const cnCols: FooterCol[] = [
+  {
+    title: "攻略",
+    links: [
+      { href: "/zh-cn/guides/attractions",                        label: "日本景点门票"      },
+      { href: "/zh-cn/guides/transport/tokyo-airport-transfer",    label: "成田机场到东京交通" },
+      { href: "/zh-cn/guides/esim/best-esim-japan",               label: "日本eSIM推荐"      },
+      { href: "/guides/money",                                    label: "支付与货币（英文）" },
+      { href: "/guides",                                          label: "全部攻略（英文）"   },
+    ],
+  },
+  {
+    title: "热门门票",
+    links: [
+      { href: "/zh-cn/guides/attractions/shibuya-sky-tickets",       label: "涩谷SKY 门票"         },
+      { href: "/zh-cn/guides/attractions/teamlab-tokyo-tickets",     label: "teamLab Planets 门票" },
+      { href: "/zh-cn/guides/attractions/tokyo-disney-tickets",      label: "东京迪士尼门票"        },
+      { href: "/zh-cn/guides/attractions/usj-tickets-express-pass",  label: "日本环球影城门票"      },
+      { href: "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo", label: "富士山一日游"        },
+    ],
+  },
+  {
+    title: "关于本站",
+    links: [
+      { href: "/about",          label: "关于我们（英文）"   },
+      { href: "/disclaimer",     label: "推广声明（英文）"   },
+      { href: "/privacy-policy", label: "隐私政策（英文）" },
+    ],
+  },
+];
+
 type Copy = {
   desc: string;
   rights: string;
@@ -105,6 +140,14 @@ const COPY: Record<Locale, Copy> = {
     homeHref: "/zh-tw/guides/attractions",
     cols: zhCols,
     updatedLabel: (d) => `更新於 ${d.getUTCFullYear()}年${d.getUTCMonth() + 1}月`,
+  },
+  "zh-cn": {
+    desc: "为外国旅客整理的日本旅游实用信息，出发前先看一遍。",
+    rights: "版权所有。",
+    affiliate: "本站包含推广联盟链接。通过链接预订，我们可能获得少量分成，不影响您支付的价格。",
+    homeHref: "/zh-cn/guides/attractions",
+    cols: cnCols,
+    updatedLabel: (d) => `更新于 ${d.getUTCFullYear()}年${d.getUTCMonth() + 1}月`,
   },
 };
 
