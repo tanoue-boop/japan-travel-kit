@@ -85,8 +85,8 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/osaka-metro-pass",
     badge: "Comparison",
-    title: "Osaka Metro Pass vs Enjoy Eco Card (2026): Which Should Tourists Buy?",
-    desc: "Two Osaka day passes, constantly confused. One is cheaper for a single day and open to anyone; the other is built for two. With the break-even ride count for each.",
+    title: "Osaka Metro Pass 2026: Price, 1-Day vs 2-Day & Enjoy Eco Card Compared",
+    desc: "The 1-day Osaka Metro Pass is ¥820, or ¥620 at weekends and ¥310 for children. The two-day option is now a ¥1,200 30-hour pass. With pick-up points and the buses it skips.",
     group: "fares",
     city: "osaka",
   },

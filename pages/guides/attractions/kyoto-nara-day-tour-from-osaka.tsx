@@ -418,7 +418,9 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
             <Link href="/guides/transport/osaka-transportation">getting around Osaka</Link> and{" "}
             <Link href="/guides/transport/kyoto-transportation">getting around Kyoto</Link> cover the lines and
             passes, and <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto</Link> handles the long leg
-            if you are coming from further east.
+            if you are coming from further east. For the Osaka Metro rides at either end of the day, the{" "}
+            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro Pass price breakdown</Link> shows whether a
+            day pass beats paying per ride.
           </p>
         </section>
 
