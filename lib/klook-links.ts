@@ -396,6 +396,103 @@ export const kawaguchikoPrivateDayTour: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Tokyo experiences added 21 Oct 2026 — bay cruises, Tsukiji food tours and
+// Asakusa kimono rental
+//
+// Three entry guides, all in the 6.5% tours-and-activities band. Klook answers
+// automated reads of its product pages with HTTP 403, so every listing below was
+// confirmed live and on sale through the www.klook.com search index on
+// 21 Oct 2026 — and that is why none of them carries a price.
+//
+// The `desc` lines repeat only what the listing itself states (duration,
+// boarding point, what is included). Nothing here is first-hand.
+// ---------------------------------------------------------------------------
+
+/** The Symphony — the large cruising restaurant out of Hinode Pier. */
+export const tokyoBayDinnerCruiseSymphony: KlookTour = {
+  title: "Tokyo Bay dinner cruise aboard the Symphony",
+  desc: "The large cruising restaurant from Hinode Pier, listed at 2 hours 30 minutes with a full-course meal and the Rainbow Bridge loop",
+  url: klookLink("https://www.klook.com/en-US/activity/616-tokyo-dinner-cruise/"),
+};
+
+/** Yakatabune with a dinner show — the shorter of the two houseboat listings. */
+export const tokyoBayYakatabuneDinnerShow: KlookTour = {
+  title: "Tokyo Bay yakatabune dinner cruise with a show",
+  desc: "A traditional low-slung houseboat listed at 1 hour 30 minutes, with sukiyaki, free-flowing soft drinks and an open deck off Odaiba",
+  url: klookLink("https://www.klook.com/en-US/activity/106435-yakatabune-house-boat-night-tour-tokyo-bay-dinner-show/"),
+};
+
+/** The longer yakatabune evening — the one with the full dinner-and-drinks format. */
+export const tokyoBayYakatabuneDinnerCruise: KlookTour = {
+  title: "Tokyo Bay yakatabune dinner cruise",
+  desc: "The full houseboat evening, listed at 2 hours 30 minutes, with dinner options, free-flowing drinks and views of Rainbow Bridge and Tokyo Tower",
+  url: klookLink("https://www.klook.com/en-US/activity/38414-tokyo-bay-yakatabune-dinner-cruise/"),
+};
+
+/** The small-boat daytime and sunset option — no meal, one hour. */
+export const tokyoBaySunsetBoatCruise: KlookTour = {
+  title: "Tokyo Bay daytime and sunset boat cruise",
+  desc: "A one-hour small-boat cruise from Shibaura with a guide on board — the no-dinner version of a bay cruise",
+  url: klookLink("https://www.klook.com/en-US/activity/156402-tokyo-day-time-and-sunset-boat-cruise/"),
+};
+
+/** Tsukiji Outer Market food and culture tour, with a sit-down sushi stop. */
+export const tsukijiCultureFoodTour: KlookTour = {
+  title: "Tsukiji culture and food tour",
+  desc: "A guided walk of the Tsukiji Outer Market with tastings and a sit-down sushi stop, led in English, Chinese or Spanish",
+  url: klookLink("https://www.klook.com/en-US/activity/95949-tsukiji-culture-food-tour-tokyo-tokyo/"),
+};
+
+/** The short street-food version — two hours, meets at Tsukiji Hongwanji. */
+export const tsukijiStreetFoodTour: KlookTour = {
+  title: "Tsukiji fish market street food tour",
+  desc: "A two-hour small-group walk from Tsukiji Hongwanji temple into the outer market, tasting skewers, tamagoyaki, sushi and wagyu",
+  url: klookLink("https://www.klook.com/en-US/activity/188797-tokyo-tsukiji-fish-market-street-food-tour/"),
+};
+
+/** Three hours with a morning or late-morning departure. */
+export const tsukijiFoodCultureWalkingTour: KlookTour = {
+  title: "Tsukiji fish market food and culture walking tour",
+  desc: "Listed at three hours with 08:30 and 11:00 departures from Tsukiji Hongan-ji, in a small English-guided group",
+  url: klookLink("https://www.klook.com/en-US/activity/158354-tokyo-tsukiji-fish-market-food-and-culture-walking-tour/"),
+};
+
+/** The half-day food-and-drink format, with five tastings. */
+export const tsukijiFoodDrinkHalfDayTour: KlookTour = {
+  title: "Tsukiji fish market food and drink half-day tour",
+  desc: "The half-day version, listed with five tastings — wagyu, sushi, tamagoyaki and fruit — and a local guide on the market's history",
+  url: klookLink("https://www.klook.com/en-US/activity/9077-tsukiji-fish-market-food-drink-half-day-tour/"),
+};
+
+/** Kimono Yae, by Kaminarimon — the listing that states a 17:30 return. */
+export const asakusaKimonoYae: KlookTour = {
+  title: "Kimono Yae rental, Asakusa",
+  desc: "A shop by Kaminarimon with over 500 kimono and yukata and English, Chinese and Korean-speaking staff; the listing asks for the outfit back by 17:30 the same day",
+  url: klookLink("https://www.klook.com/en-US/activity/13746-kimono-rental-experience-asakusa/"),
+};
+
+/** Aiwafuku's main Asakusa store — six-hour rental with hair styling. */
+export const asakusaKimonoAiwafukuNo1: KlookTour = {
+  title: "Kimono rental with hair styling — Aiwafuku Asakusa No. 1 store",
+  desc: "A six-hour rental at 1-11-1 Hanakawado, Taito-ku, with hair styling included and English and Chinese-speaking staff on every day",
+  url: klookLink("https://www.klook.com/en-US/activity/2125-kimono-experience-tokyo/"),
+};
+
+/** Aiwafuku's second Asakusa store — the one that lists 3L/4L sizes at the same price. */
+export const asakusaKimonoAiwafukuNo2: KlookTour = {
+  title: "Kimono rental with hair set — Aiwafuku Asakusa No. 2 store",
+  desc: "Over 600 kimono on a six-hour rental, with a free hair set, free storage for large cases and 3L and 4L sizes at the same price",
+  url: klookLink("https://www.klook.com/en-US/activity/24284-kimono-rental-experience-aiwafuku-tokyo/"),
+};
+
+/** The Kaminarimon shop with the earliest return deadline of the four — 17:00. */
+export const asakusaKimonoKaminarimon: KlookTour = {
+  title: "Asakusa kimono experience by Kaminarimon",
+  desc: "A shop 20 seconds from Asakusa Station exit 4 and 220 m from Senso-ji, open 09:00–17:00, with over 1,000 kimono and a same-day return before 17:00",
+  url: klookLink("https://www.klook.com/en-US/activity/87187-traditional-kimono-rental-experience-rental-tokyo/"),
+};
+
+// ---------------------------------------------------------------------------
 // Ticket and tour redirects moved here on 20 Oct 2026
 //
 // Each of these was a `const …_URL` inside the guide that uses it. They moved so
