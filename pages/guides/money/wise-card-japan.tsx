@@ -5,10 +5,12 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import { wiseCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { wiseLink, WISE_REL, WISE_PRICING_URL } from "../../../lib/wise-links";
 
-// NOTE: Wise affiliate programme not yet approved — plain link for now.
-// TODO: replace with approved affiliate link once accepted.
-const WISE_URL = "https://wise.com/";
+// Tracked Wise links. pubref is this article's slug; the fees-page link deep-links
+// to Wise's own pricing page, the CTAs land on the localised home page.
+const WISE_URL = wiseLink("wise-card-japan");
+const WISE_FEES_URL = wiseLink("wise-card-japan", WISE_PRICING_URL);
 
 const feeRows = [
   { item: "Monthly / annual fee", detail: "None — you pay only a one-off fee when the card is issued" },
@@ -185,7 +187,7 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.disclosureText}>
             <strong>Not financial advice.</strong> This guide is general information only. Fees and limits are current
             as of 2026, can change, and depend on the country where your Wise account is registered — always confirm the latest on the official{" "}
-            <a href={WISE_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Wise fees page</a>{" "}
+            <a href={WISE_FEES_URL} target="_blank" rel={WISE_REL} style={{ color: "var(--text)", fontWeight: 600 }}>Wise fees page</a>{" "}
             before you rely on them.
           </p>
         </div>
@@ -284,7 +286,7 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
               </div>
             ))}
           </div>
-          <a href={WISE_URL} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "1.5rem", display: "inline-block" }}>
+          <a href={WISE_URL} className={styles.pickCta} target="_blank" rel={WISE_REL} style={{ marginTop: "1.5rem", display: "inline-block" }}>
             Visit Wise →
           </a>
         </section>
@@ -436,7 +438,7 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
               The card is posted to you, so order ahead. Land in Japan ready to spend at the mid-market rate and skip
               the airport exchange counters.
             </p>
-            <a href={WISE_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">
+            <a href={WISE_URL} className={styles.ctaBannerBtn} target="_blank" rel={WISE_REL}>
               Visit Wise →
             </a>
           </div>

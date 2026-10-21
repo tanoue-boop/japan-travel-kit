@@ -3,10 +3,13 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { wiseLink, WISE_REL, WISE_PRICING_URL } from "../../../lib/wise-links";
 
-// NOTE: Wise/Revolut affiliate programmes not yet approved — these are plain links.
-// TODO: replace with approved affiliate links once accepted.
-const WISE_URL = "https://wise.com/";
+// Wise is tracked (see lib/wise-links.ts). The Revolut programme is still
+// unapproved, so that one stays a plain link.
+// TODO: replace REVOLUT_URL with an approved affiliate link once accepted.
+const WISE_URL = wiseLink("wise-vs-revolut-japan");
+const WISE_FEES_URL = wiseLink("wise-vs-revolut-japan", WISE_PRICING_URL);
 const REVOLUT_URL = "https://www.revolut.com/";
 
 const compareRows = [
@@ -182,7 +185,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
           <p className={styles.disclosureText}>
             <strong>Not financial advice.</strong> This guide is general information only. Fees, limits, and plans
             are current as of 2026, can change, and depend on the country where your account is registered — always confirm the latest on the official{" "}
-            <a href={WISE_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Wise</a>{" "}
+            <a href={WISE_FEES_URL} target="_blank" rel={WISE_REL} style={{ color: "var(--text)", fontWeight: 600 }}>Wise</a>{" "}
             and{" "}
             <a href={REVOLUT_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Revolut</a>{" "}
             fees pages before you rely on them.
@@ -268,7 +271,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
               </div>
             ))}
           </div>
-          <a href={WISE_URL} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "1.5rem", display: "inline-block" }}>
+          <a href={WISE_URL} className={styles.pickCta} target="_blank" rel={WISE_REL} style={{ marginTop: "1.5rem", display: "inline-block" }}>
             Visit Wise →
           </a>
         </section>
@@ -394,7 +397,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
               at the mid-market rate.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={WISE_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">
+              <a href={WISE_URL} className={styles.ctaBannerBtn} target="_blank" rel={WISE_REL}>
                 Visit Wise →
               </a>
               <a href={REVOLUT_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">

@@ -3,6 +3,9 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { wiseLink, WISE_REL, WISE_PRICING_URL } from "../../../lib/wise-links";
+
+const WISE_FEES_URL = wiseLink("best-travel-card-japan", WISE_PRICING_URL);
 
 const whatToLookFor = [
   {
@@ -257,7 +260,7 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             <strong>Not financial advice.</strong> This guide is general information only. Card fees and free ATM/FX
             allowances are current as of 2026, can change, and depend on the country where your account is registered
             (Wise revised its ATM fee structure on 1 May 2026). Always confirm the latest on the official{" "}
-            <a href="https://wise.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Wise</a>{" "}
+            <a href={WISE_FEES_URL} target="_blank" rel={WISE_REL} style={{ color: "var(--text)", fontWeight: 600 }}>Wise</a>{" "}
             and{" "}
             <a href="https://www.revolut.com/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Revolut</a>{" "}
             fees pages before you rely on them.
