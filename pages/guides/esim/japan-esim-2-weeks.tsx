@@ -542,7 +542,11 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>SIM vs eSIM</span>
           <h2 className={styles.sectionTitle}>Should I Consider a Physical SIM for 2 Weeks?</h2>
           <p className={styles.bodyText}>
-            For most 2-week visitors, an eSIM is the better choice. But here are the scenarios
+            For most 2-week visitors, an eSIM is the better choice — and{" "}
+            <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              it works everywhere in Japan
+            </Link>{" "}
+            provided the phone is eSIM-capable and carrier-unlocked. But here are the scenarios
             where a physical SIM makes sense:
           </p>
           <div className={styles.whoForGrid}>

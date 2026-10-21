@@ -469,7 +469,11 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             a profile disappears after a restart — is in our{" "}
             <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               step-by-step eSIM setup guide for Japan
-            </Link>.
+            </Link>. If you are still at the stage of asking{" "}
+            <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              whether eSIM works in Japan at all
+            </Link>, start there: it covers the carrier-lock check, the markets where Apple ships
+            iPhones without eSIM, and how a Japan plan compares with roaming and pocket WiFi.
           </p>
         </section>
 

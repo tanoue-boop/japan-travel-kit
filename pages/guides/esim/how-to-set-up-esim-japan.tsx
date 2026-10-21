@@ -542,7 +542,12 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Tablets bought from a mobile carrier (T-Mobile, Verizon, EE and so on) may be carrier-locked
             and unable to use a Japanese eSIM. Tablets bought directly from the manufacturer or an
-            unlocked retailer almost always work without issue.
+            unlocked retailer almost always work without issue. The same two conditions decide it for
+            phones — see{" "}
+            <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              does eSIM work in Japan
+            </Link>{" "}
+            for the hardware and carrier-lock checks to run before you buy anything.
           </p>
         </section>
 

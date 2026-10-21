@@ -126,7 +126,7 @@ export const esimArticles: GuideArticle[] = [
     href: "/guides/esim/does-esim-work-in-japan",
     badge: "Guide",
     title: "Does eSIM Work in Japan? (2026): Everything You Need to Know",
-    desc: "Yes — Japan needs no SIM registration and every tourist eSIM rides a tier-one carrier. The real risk is your handset: three checks to make before you buy anything.",
+    desc: "Yes — on Docomo, SoftBank or au/KDDI, with no SIM registration and no ID check. The real risk is your handset: three checks to make before you buy anything, plus eSIM against SIM, pocket WiFi and roaming.",
     group: "setup",
     city: "other",
   },
