@@ -493,6 +493,67 @@ export const asakusaKimonoKaminarimon: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Tax-free shopping day — tours and hotels added 21 Oct 2026
+//
+// The tax-free guide is one of the site's most-read pages and its reader is, by
+// definition, planning a day of shopping and carrying more home than they came
+// with. Both slots below are in the 6.5% tours-and-hotels band rather than the 5%
+// transport band the airport block on the same page sells into.
+//
+// Same verification rule as every block above: Klook answers automated reads of
+// its product pages with HTTP 403, so each URL was confirmed as a live en-US
+// listing through the www.klook.com search index on 21 Oct 2026 — which is why
+// none of them carries a price.
+// ---------------------------------------------------------------------------
+
+export const tokyoPrivateShoppingTour: KlookTour = {
+  title: "Tokyo private one-day shopping tour",
+  desc: "A chartered vehicle and four stops you choose from a list that includes Isetan Shinjuku, Takashimaya and LAOX, with or without a guide",
+  url: klookLink("https://www.klook.com/en-US/activity/90076-tokyo-private-one-day-shopping-tour/"),
+};
+
+export const osakaSkyVistaHalfDayBusTour: KlookTour = {
+  title: "Osaka Sky Vista double-decker half-day bus trip",
+  desc: "A join-in half day on an open-top double-decker past Osaka Castle, Dotonbori and Tsutenkaku — the sitting-down half of a shopping day",
+  url: klookLink("https://www.klook.com/en-US/activity/83744-sky-vista-double-decker-osaka-join-half-day-bus-trip/"),
+};
+
+export const osakaPrivateWalkingTour: KlookTour = {
+  title: "Osaka private half-day or full-day walking tour",
+  desc: "A private English or Japanese-speaking guide for the Namba and Shinsaibashi end of the city, on a route you set",
+  url: klookLink("https://www.klook.com/en-US/activity/25706-private-osaka-half-full-day-walking-tour/"),
+};
+
+/**
+ * Where to stay if the trip is built around shopping — the four districts this
+ * guide names. Shinjuku and Namba reuse the destination pages already used by the
+ * city transport guides; Ginza (p50061911) and Shinsaibashi Station (p50039917)
+ * are new, both confirmed as live en-US hotel searches on 21 Oct 2026.
+ */
+export const shoppingDistrictStayAreas: KlookStayArea[] = [
+  {
+    area: "Ginza, Tokyo",
+    why: "The department-store district — Mitsukoshi, Matsuya and Ginza Six within a few blocks of each other, which is the one layout where the ¥5,000-per-store minimum is easy to clear in an afternoon.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50061911-ginza/3-hotel/"),
+  },
+  {
+    area: "Shinjuku, Tokyo",
+    why: "Isetan and the big electronics floors on one side of the station and the drugstores on the other, with the Metro and Toei lines a subway ticket covers running underneath.",
+    url: klookLink("https://www.klook.com/en-US/destination/p60269837-shinjuku-station/3-hotel/"),
+  },
+  {
+    area: "Shinsaibashi, Osaka",
+    why: "A covered arcade that runs for most of a kilometre into Dotonbori, so a wet afternoon of shopping does not need a train at all.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50039917-shinsaibashi-station/3-hotel/"),
+  },
+  {
+    area: "Namba, Osaka",
+    why: "Walking distance from the south end of the Shinsaibashi arcade, and the Nankai terminus — which is where the Rapi:t to Kansai Airport leaves from on the day you fly out.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50043205-namba-station/3-hotel/"),
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Ticket and tour redirects moved here on 20 Oct 2026
 //
 // Each of these was a `const …_URL` inside the guide that uses it. They moved so
@@ -529,6 +590,19 @@ export const hiroshimaMiyajimaBusTourUrl =
 /** Kyoto and Nara day trip — the Klook route on the Nara guide. */
 export const naraDayTourUrl =
   "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307051&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F87236-kyoto-tour-nara%2F";
+
+/**
+ * JR Haruka — moved here on 21 Oct 2026 from pages/guides/transport/haruka-vs-nankai-rapit.tsx
+ * so the tax-free guide's departure-day block can reuse the link that page already
+ * uses rather than minting a second one for the same product. URL unchanged,
+ * `aff_adid` included. Listing 18400 confirmed live on www.klook.com, 21 Oct 2026.
+ */
+export const jrHarukaUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265372&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F18400-jr-haruka-airport-express-train-tickets-osaka%2F";
+
+/** Nankai Rapi:t — likewise moved, not re-minted. Listing 599, confirmed 21 Oct 2026. */
+export const nankaiRapitUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265374&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F599-kansai-airport-namba-train-ticket-osaka%2F";
 
 // ---------------------------------------------------------------------------
 // "Before your trip" slots for the money guides (added 19 Oct 2026)
@@ -582,21 +656,60 @@ const tripPrepProducts = {
     ctaLabel: "Check the subway ticket →",
     url: tokyoSubwayTicket.url,
   },
+  naritaBusSubway: {
+    label: "Narita limousine bus + Tokyo Subway Ticket",
+    ctaLabel: "Check the bus and pass combo →",
+    url: naritaBusSubwayCombo.url,
+  },
+  haruka: {
+    label: "JR Haruka airport express ticket",
+    ctaLabel: "Check the Haruka ticket →",
+    url: jrHarukaUrl,
+  },
+  rapit: {
+    label: "Nankai Limited Express Rapi:t ticket",
+    ctaLabel: "Check the Rapi:t ticket →",
+    url: nankaiRapitUrl,
+  },
 } as const;
 
-/** Tax-Free Shopping — the reader is planning or mid-way through a shopping trip. */
+/**
+ * Tax-Free Shopping — the reader is planning a day of shopping, so this slot sits
+ * next to the shopping-day section rather than at the foot of the page. The airport
+ * trains moved to `taxFreeAirportRunPrep`, which sits by the departure-day section.
+ */
 export const taxFreeTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.esim,
-    why: "Checking whether a shop runs its own tax-free counter, and where in the building it is, is quicker on your own data than on department-store Wi-Fi.",
-  },
-  {
-    ...tripPrepProducts.naritaExpress,
-    why: "The N'EX runs from Narita to Tokyo Station, Shinjuku and Shibuya without a transfer, which covers the three busiest tax-free shopping districts.",
+    why: "Every step of the refund runs off your phone — finding a shop's tax-free desk, and, at the seven airports that allow it, doing the customs confirmation through Visit Japan Web instead of queueing at a terminal.",
   },
   {
     ...tripPrepProducts.subway,
-    why: "The large tax-free department stores sit on Tokyo Metro and Toei lines, so a 24, 48 or 72-hour subway ticket covers a day of shop-hopping in one purchase.",
+    why: "The ¥5,000 minimum is per store, so a tax-free day means moving between stores; the large department stores and electronics chains sit on Tokyo Metro and Toei lines a 24, 48 or 72-hour ticket already covers.",
+  },
+];
+
+/**
+ * Tax-Free Shopping, departure day — the bags are heavier than they were on arrival
+ * and the refund has to be done before baggage check-in, which makes a booked seat
+ * to the airport worth more on this page than a cheaper connection.
+ */
+export const taxFreeAirportRunPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaBusSubway,
+    why: "The limousine bus takes hold luggage into the hold and runs from central Tokyo hotels to the Narita terminals, and this listing sells the ride together with the subway pass you want for the shopping days before it.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "The faster way out to Narita if you are staying on the Ueno and Asakusa side — a reserved seat with luggage space, rather than a rush-hour local with four shopping bags.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "For Kansai Airport out of Kyoto, Shin-Osaka or Tennoji, with a reserved seat; Klook's listing states it is sold only to non-Japanese passport holders with a Temporary Visitor stamp.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    why: "The Namba and Shinsaibashi version of the same thing — a reserved seat from Namba out to Kansai Airport, which matters more on the way out than it did on the way in.",
   },
 ];
 

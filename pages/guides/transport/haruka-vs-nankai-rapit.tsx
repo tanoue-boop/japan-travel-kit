@@ -1,13 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import { jrHarukaUrl, nankaiRapitUrl } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
-const HARUKA_URL =
-  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265372&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F18400-jr-haruka-airport-express-train-tickets-osaka%2F";
-const RAPIT_URL =
-  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265374&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F599-kansai-airport-namba-train-ticket-osaka%2F";
+// Both links now live in lib/klook-links.ts, so the tax-free guide's departure-day
+// block points at the same product link this page does. URLs themselves unchanged.
+const HARUKA_URL = jrHarukaUrl;
+const RAPIT_URL = nankaiRapitUrl;
 
 const compareRows = [
   { feature: "Operator",          haruka: "JR West",                     rapit: "Nankai (private rail)" },

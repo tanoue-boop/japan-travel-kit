@@ -13,12 +13,18 @@ type Props = {
   heading: string;
   intro: string;
   items: KlookTripPrepItem[];
+  /**
+   * Eyebrow above the heading. Defaults to "Before your trip", which is wrong for
+   * the one slot that sits next to a departure-day section rather than a planning
+   * one (the tax-free guide's airport run).
+   */
+  label?: string;
 };
 
-export default function KlookTripPrep({ heading, intro, items }: Props) {
+export default function KlookTripPrep({ heading, intro, items, label = "Before your trip" }: Props) {
   return (
     <section className={styles.bodySection}>
-      <span className={styles.sectionLabel}>Before your trip</span>
+      <span className={styles.sectionLabel}>{label}</span>
       <h2 className={styles.sectionTitle}>{heading}</h2>
       <p className={styles.bodyText}>{intro}</p>
       <ul className={styles.pickList}>

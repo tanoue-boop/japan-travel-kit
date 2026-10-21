@@ -69,8 +69,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/tax-free-shopping-japan",
     badge: "Guide",
-    title: "Tax-Free Shopping in Japan (2026): How to Get Your Consumption Tax Back",
-    desc: "As a tourist, you can save up to 10% on electronics, clothing, cosmetics, and more. We explain the rules, eligible stores, minimum spend, and what to watch out for on departure.",
+    title: "Tax-Free Shopping in Japan (2026): The ¥5,000 Rule and the New Airport Refund",
+    desc: "¥5,000 before tax per shop per day, on a non-resident passport. From 1 November 2026 the 10% comes back at an airport customs terminal instead of at the till — here is the official procedure.",
     group: "paying",
     city: "other",
   },
