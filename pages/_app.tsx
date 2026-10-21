@@ -12,6 +12,9 @@ import { GA_MEASUREMENT_ID, pageview, trackAffiliateClick } from "../lib/gtag";
 // アフィリエイト/比較対象ASPの判定表。未承認ASPの素URLも需要把握のため計測対象に含める。
 const AFFILIATE_PARTNERS: { partner: string; hosts: string[] }[] = [
   { partner: "klook", hosts: ["klook.com"] },
+  // GetYourGuide links are plain getyourguide.com URLs carrying partner_id in the
+  // query (see lib/gyg-links.ts), so one host entry attributes all of them.
+  { partner: "getyourguide", hosts: ["getyourguide.com"] },
   { partner: "airalo", hosts: ["airalo.pxf.io", "airalo.com"] },
   { partner: "sakura", hosts: ["sakuramobile.jp"] },
   { partner: "breeze", hosts: ["breezesim.com"] },
