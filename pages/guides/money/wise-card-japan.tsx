@@ -217,6 +217,9 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
               rate with a fee from around 0.4% and no monthly cost. Two rules make it work: always <strong>pay in
               yen</strong> (decline DCC), and use <strong>7-Eleven (Seven Bank) ATMs</strong> for cash.
             </p>
+            <a href={WISE_URL} className={styles.verdictBtn} target="_blank" rel={WISE_REL}>
+              Order a Wise card →
+            </a>
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", marginTop: "0.75rem" }}>
               Weighing it against Revolut? See our{" "}
               <Link href="/guides/money/wise-vs-revolut-japan" style={{ fontWeight: 600 }}>Wise vs Revolut for Japan</Link>{" "}

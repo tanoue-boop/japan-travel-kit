@@ -217,6 +217,9 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
               mid-market rate applies all week. <strong>Revolut</strong> wins for weekday-heavy trips under its
               ¥300,000 fee-free limit, and for travellers who want richer app features or a paid plan.
             </p>
+            <a href={WISE_URL} className={styles.verdictBtn} target="_blank" rel={WISE_REL}>
+              Open a Wise account →
+            </a>
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", marginTop: "0.75rem" }}>
               Comparing more than these two? See our{" "}
               <Link href="/guides/money/best-travel-card-japan" style={{ fontWeight: 600 }}>best travel card for Japan</Link>{" "}

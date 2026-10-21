@@ -6,8 +6,9 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import { currencyExchangeTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
-import { wiseLink, WISE_REL, WISE_PRICING_URL } from "../../../lib/wise-links";
+import { wiseLink, WISE_REL, WISE_PRICING_URL, WISE_CARD_URL, WISE_VERIFIED } from "../../../lib/wise-links";
 
+const WISE_URL = wiseLink("currency-exchange-japan", WISE_CARD_URL);
 const WISE_FEES_URL = wiseLink("currency-exchange-japan", WISE_PRICING_URL);
 
 const bestWays = [
@@ -307,6 +308,33 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
             The golden rule: the more convenient the exchange location, the worse the rate. Airport counters bank on travellers being in a hurry.
           </p>
+        </section>
+
+        {/* Keeping the cost below a counter's — the Wise route */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Cheaper than a counter</span>
+          <h2 className={styles.sectionTitle}>How to Pay Less Than an Exchange Desk Charges</h2>
+          <p className={styles.bodyText}>
+            A counter&apos;s cost is hidden in its rate, so you cannot see what you paid. A multi-currency card
+            inverts that: the rate is the public one and the fee is printed separately. Wise states on its
+            pricing page that it uses {WISE_VERIFIED.rateClaim} — no markup buried in the rate
+            (checked {WISE_VERIFIED.checkedAt}).
+          </p>
+          <p className={styles.bodyText}>
+            For the cash you still need, the card&apos;s free ATM allowance is what matters, and it depends on the
+            country where your account is registered — Wise&apos;s UK card page gives free withdrawals up to{" "}
+            {WISE_VERIFIED.freeAtmUk}, with {WISE_VERIFIED.overAtmFeeUk} on anything above that allowance
+            (checked {WISE_VERIFIED.checkedAt}). Check your own country&apos;s figure in the app before you fly,
+            then withdraw in larger amounts to stay inside it.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <a href={WISE_URL} className={styles.pickCta} target="_blank" rel={WISE_REL}>
+              Get a Wise card →
+            </a>
+            <Link href="/guides/money/wise-card-japan" className={styles.pickCtaInternal}>
+              Read our Wise card guide →
+            </Link>
+          </div>
         </section>
 
         {/* How Much Yen */}

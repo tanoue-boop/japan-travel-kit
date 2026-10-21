@@ -15,6 +15,9 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { wiseLink, WISE_REL, WISE_CARD_URL, WISE_VERIFIED } from "../../../lib/wise-links";
+
+const WISE_URL = wiseLink("tax-free-shopping-japan", WISE_CARD_URL);
 
 /**
  * The date every figure and rule on this page was last read off its primary source.
@@ -642,6 +645,38 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             credit-card refund, an app and cash at the departure port are all possible, and
             which one you get is the shop&apos;s decision rather than yours.
           </p>
+        </section>
+
+        {/* What you pay to turn home currency into the yen you spend here */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Paying for it</span>
+          <h2 className={styles.sectionTitle}>Keeping the Currency Cost Below the Refund</h2>
+          <p className={styles.bodyText}>
+            The 10% consumption tax is not the only percentage in play on a shopping day. Whatever you spend
+            has to become yen first, and an exchange counter takes its cut inside the rate it quotes, where you
+            cannot see it. On a day built around clearing the ¥5,000-per-shop threshold several times,
+            that is the one cost worth settling before you land.
+          </p>
+          <p className={styles.bodyText}>
+            A multi-currency card is the cheaper route because the pricing is stated rather than hidden. Wise
+            says on its pricing page that it uses {WISE_VERIFIED.rateClaim} (checked{" "}
+            {WISE_VERIFIED.checkedAt}). For the cash the smaller shops still want, the free ATM allowance
+            depends on the country where your account is registered — Wise&apos;s UK card page gives free
+            withdrawals up to {WISE_VERIFIED.freeAtmUk}, and {WISE_VERIFIED.overAtmFeeUk} above that allowance
+            (checked {WISE_VERIFIED.checkedAt}).
+          </p>
+          <p className={styles.bodyText}>
+            One habit matters whichever card you bring: when a terminal offers to charge you in your home
+            currency instead of yen, decline it. That is the merchant&apos;s rate, not your card&apos;s.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <a href={WISE_URL} className={styles.pickCta} target="_blank" rel={WISE_REL}>
+              Get a Wise card →
+            </a>
+            <Link href="/guides/money/currency-exchange-japan" className={styles.pickCtaInternal}>
+              Compare every way to get yen →
+            </Link>
+          </div>
         </section>
 
         {/* Planning the shopping day */}
