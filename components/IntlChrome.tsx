@@ -100,18 +100,19 @@ export type Crumb = {
 /**
  * The trail every translated guide page starts from, per edition.
  *
- * In Chinese the first crumb is the Chinese hub of the same script, not the English
- * home page — a reader who taps "back" from a 简体 article should stay in 简体. The
- * Korean and Thai editions are five pages with no hub of their own, so their first
- * crumb is the English Things to Do hub, which is the real parent of all five, and
- * it is labelled as English rather than looking like a page in the reader's own
- * language. When those editions get a hub, this is the only line that changes.
+ * In Chinese the first crumb is the Chinese ticket hub of the same script, not the
+ * English home page — a reader who taps "back" from a 简体 article should stay in 简体.
+ *
+ * The Korean and Thai crumbs pointed at the English Things to Do hub until
+ * 2026-10-21, labelled as English, because those editions had no page of their own to
+ * go back to. They do now: /ko and /th are the editions' entry pages, which is what
+ * the note here said would change this line.
  */
 export const TRAIL_BASE: Record<TranslatedLocale, Crumb[]> = {
   "zh-tw": [{ href: `${LOCALE_PREFIX["zh-tw"]}/guides/attractions`, label: "日本景點門票" }],
   "zh-cn": [{ href: `${LOCALE_PREFIX["zh-cn"]}/guides/attractions`, label: "日本景点门票" }],
-  ko: [{ href: "/guides/attractions", label: "일본 티켓 가이드(영어)" }],
-  th: [{ href: "/guides/attractions", label: "ไกด์ตั๋วญี่ปุ่น (ภาษาอังกฤษ)" }],
+  ko: [{ href: LOCALE_PREFIX.ko, label: "일본 여행 준비 가이드" }],
+  th: [{ href: LOCALE_PREFIX.th, label: "ไกด์เที่ยวญี่ปุ่น" }],
 };
 
 export function Breadcrumb({ trail }: { trail: Crumb[] }) {

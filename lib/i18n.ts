@@ -145,6 +145,24 @@ export const LOCALE_NAME: Record<Locale, string> = {
   th: "ไทย",
 };
 
+/**
+ * Each edition's entry page — where the language switch sends a reader when the page
+ * they are on has no translation, and where that edition's logo and breadcrumbs go.
+ *
+ * Added 2026-10-21 (task jtk-20261021-A04). Until then only the ten translated pages
+ * offered a way into another language, so a reader who landed on the English home
+ * page — or on any of the sixty-odd English-only articles — had no route into 繁體中文
+ * at all. These four pages are that route: one per edition, listing everything that
+ * edition has, so the switch always has somewhere real to point.
+ */
+export const LOCALE_HOME: Record<Locale, string> = {
+  en: "/",
+  "zh-tw": "/zh-tw",
+  "zh-cn": "/zh-cn",
+  ko: "/ko",
+  th: "/th",
+};
+
 export type TranslatedPage = {
   /** English route. Unchanged by the translations. */
   en: string;
@@ -309,6 +327,35 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
   },
 ];
 
+/**
+ * The language entry pages, as a group of the same shape as the ten above, so the
+ * hreflang set, the sitemap alternates, the language switch and the i18n audit all
+ * treat them exactly like a translated article and need no special case.
+ *
+ * It is deliberately *not* a row of TRANSLATED_PAGES: that list is the translated
+ * guide set, and three pages count it to tell readers how many guides their edition
+ * has ("共 10 頁"). An entry page is not a guide. PAGE_GROUPS below is the union, and
+ * is what anything matching a route against a group should use.
+ */
+export const HOME_GROUP: TranslatedPage = {
+  en: "/",
+  zhTw: "/zh-tw",
+  zhTitle: "日本旅遊實用指南（2026）：門票、交通、網卡",
+  zhLabel: "日本旅遊實用指南",
+  zhCn: "/zh-cn",
+  zhCnTitle: "日本旅游实用指南（2026）：门票、交通、流量卡",
+  zhCnLabel: "日本旅游实用指南",
+  ko: "/ko",
+  koTitle: "일본 여행 준비 가이드(2026): 티켓, 교통, eSIM",
+  koLabel: "일본 여행 준비 가이드",
+  th: "/th",
+  thTitle: "ไกด์เที่ยวญี่ปุ่น 2026: ตั๋ว การเดินทาง และ eSIM",
+  thLabel: "ไกด์เที่ยวญี่ปุ่น",
+};
+
+/** Every multilingual group the site publishes: the entry pages, then the guides. */
+export const PAGE_GROUPS: TranslatedPage[] = [HOME_GROUP, ...TRANSLATED_PAGES];
+
 /** Which language a route belongs to, from the route alone. */
 export function localeOf(route: string): Locale {
   for (const locale of TRANSLATED_LOCALES) {
@@ -331,7 +378,7 @@ export function translatedLocaleOf(route: string): TranslatedLocale {
 /** The group a route belongs to, matching any side. Null when the page is English-only. */
 export function pairFor(route: string): TranslatedPage | null {
   return (
-    TRANSLATED_PAGES.find(
+    PAGE_GROUPS.find(
       (p) => p.en === route || p.zhTw === route || p.zhCn === route || p.ko === route || p.th === route,
     ) ?? null
   );

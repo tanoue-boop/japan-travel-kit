@@ -3,9 +3,10 @@
  *
  *   npm run build && node scripts/check-i18n.js
  *
- * Reads the generated HTML in .next/server/pages and asserts, for every page in
- * lib/i18n.ts and every language that page exists in, the four things that are easy
- * to get wrong and invisible until a crawler tells you months later:
+ * Reads the generated HTML in .next/server/pages and asserts, for every group in
+ * lib/i18n.ts's PAGE_GROUPS — the four language entry pages plus the translated guide
+ * set — and every language that group exists in, the four things that are easy to get
+ * wrong and invisible until a crawler tells you months later:
  *
  *   1. every side of a group carries the complete, reciprocal hreflang set — a
  *      one-sided set is ignored. The set is per group, not global: the five pages
@@ -31,7 +32,7 @@ require("./require-ts");
 const fs = require("fs");
 const path = require("path");
 const {
-  TRANSLATED_PAGES,
+  PAGE_GROUPS,
   TRANSLATED_LOCALES,
   HTML_LANG,
   absoluteUrl,
@@ -53,6 +54,14 @@ const BUILD = path.join(__dirname, "..", ".next", "server", "pages");
  * deciding what it ranks for cannot pass silently.
  */
 const SEARCH_TERMS = {
+  // The four language entry pages, added 2026-10-21. Keyed by "/" because the English
+  // side of that group is the home page.
+  "/": {
+    "zh-tw": "日本旅遊實用指南",
+    "zh-cn": "日本旅游实用指南",
+    ko: "일본 여행 준비 가이드",
+    th: "ไกด์เที่ยวญี่ปุ่น",
+  },
   "/guides/attractions": { "zh-tw": "日本景點門票", "zh-cn": "日本景点门票" },
   "/guides/attractions/shibuya-sky-tickets": {
     "zh-tw": "澀谷SKY 門票",
@@ -121,7 +130,7 @@ function checkHreflang(route, markup) {
 
 let checked = 0;
 
-for (const page of TRANSLATED_PAGES) {
+for (const page of PAGE_GROUPS) {
   // 1. Reciprocity: every side of the group emits the same set.
   const en = html(page.en);
   if (en) checkHreflang(page.en, en);
@@ -170,14 +179,14 @@ for (const page of TRANSLATED_PAGES) {
 }
 
 /** Every translated route the site publishes, in group order. */
-const translatedRoutes = TRANSLATED_PAGES.flatMap((page) =>
+const translatedRoutes = PAGE_GROUPS.flatMap((page) =>
   TRANSLATED_LOCALES.map((locale) => routeOf(page, locale)).filter(Boolean),
 );
 
 // The sitemap has to cross-reference every side too.
 const sitemap = fs.readFileSync(path.join(__dirname, "..", "public", "sitemap.xml"), "utf8");
 if (!sitemap.includes('xmlns:xhtml="http://www.w3.org/1999/xhtml"')) fail("sitemap: missing xhtml namespace");
-for (const page of TRANSLATED_PAGES) {
+for (const page of PAGE_GROUPS) {
   for (const route of [page.en, ...TRANSLATED_LOCALES.map((l) => routeOf(page, l)).filter(Boolean)]) {
     for (const { hreflang, href } of hreflangAlternates(route)) {
       if (!sitemap.includes(`<xhtml:link rel="alternate" hreflang="${hreflang}" href="${href}"/>`)) {

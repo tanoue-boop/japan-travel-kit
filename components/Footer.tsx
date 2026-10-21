@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/Footer.module.css";
-import { localeOf, monthLabel, type Locale } from "../lib/i18n";
+import { LOCALE_HOME, localeOf, monthLabel, type Locale } from "../lib/i18n";
 
 /** A build Date as the "YYYY-MM-01" lib/i18n.ts's label helpers take. */
 const isoMonth = (d: Date) => `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-01`;
@@ -206,7 +206,7 @@ const COPY: Record<Locale, Copy> = {
     desc: "為外國旅客整理的日本旅遊實用資訊，出發前先看一遍。",
     rights: "版權所有。",
     affiliate: "本站包含聯盟行銷連結。透過連結預訂，我們可能獲得少許分潤，不影響您支付的價格。",
-    homeHref: "/zh-tw/guides/attractions",
+    homeHref: LOCALE_HOME["zh-tw"],
     cols: zhCols,
     updatedLabel: (d) => `更新於 ${d.getUTCFullYear()}年${d.getUTCMonth() + 1}月`,
   },
@@ -214,7 +214,7 @@ const COPY: Record<Locale, Copy> = {
     desc: "为外国旅客整理的日本旅游实用信息，出发前先看一遍。",
     rights: "版权所有。",
     affiliate: "本站包含推广联盟链接。通过链接预订，我们可能获得少量分成，不影响您支付的价格。",
-    homeHref: "/zh-cn/guides/attractions",
+    homeHref: LOCALE_HOME["zh-cn"],
     cols: cnCols,
     updatedLabel: (d) => `更新于 ${d.getUTCFullYear()}年${d.getUTCMonth() + 1}月`,
   },
@@ -222,7 +222,7 @@ const COPY: Record<Locale, Copy> = {
     desc: "일본을 찾는 외국인 여행자를 위한 실용 정보. 출발 전에 미리 정리해 두는 쪽입니다.",
     rights: "All rights reserved.",
     affiliate: "이 사이트에는 제휴 링크가 포함됩니다. 링크로 예약하면 저희가 수수료를 받을 수 있으며, 고객님이 지불하는 금액은 달라지지 않습니다.",
-    homeHref: "/ko/guides/attractions/shibuya-sky-tickets",
+    homeHref: LOCALE_HOME.ko,
     cols: koCols,
     updatedLabel: (d) => `${monthLabel(isoMonth(d), "ko")} 업데이트`,
   },
@@ -230,7 +230,7 @@ const COPY: Record<Locale, Copy> = {
     desc: "ข้อมูลที่ใช้ได้จริงสำหรับนักท่องเที่ยวต่างชาติที่ไปญี่ปุ่น เตรียมให้พร้อมก่อนเครื่องลง",
     rights: "All rights reserved.",
     affiliate: "เว็บไซต์นี้มีลิงก์พันธมิตร หากคุณจองผ่านลิงก์ เราอาจได้รับค่าตอบแทน โดยราคาที่คุณจ่ายไม่เพิ่มขึ้น",
-    homeHref: "/th/guides/attractions/shibuya-sky-tickets",
+    homeHref: LOCALE_HOME.th,
     cols: thCols,
     updatedLabel: (d) => `อัปเดต ${monthLabel(isoMonth(d), "th")}`,
   },

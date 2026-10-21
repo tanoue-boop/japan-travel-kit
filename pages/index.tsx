@@ -8,6 +8,7 @@ import { moneyArticles } from "../lib/guides-money";
 import { attractionArticles } from "../lib/guides-attractions";
 import { articlesForCity } from "../lib/guide-hub";
 import { pageUpdated } from "../lib/page-dates";
+import { hreflangLinks } from "../components/Hreflang";
 
 const allArticles = [...esimArticles, ...transportArticles, ...moneyArticles, ...attractionArticles];
 const totalGuides = allArticles.length;
@@ -163,6 +164,11 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
         {/* The WebSite node that used to sit here moved to pages/_document.tsx on
             2026-10-20, where it is emitted on every page alongside Organization —
             keeping it here as well would have declared the site twice on the home page. */}
+        {/* The home page is now one side of a translated group: /zh-tw, /zh-cn, /ko and
+            /th each have an entry page of their own (2026-10-21). hreflang has to be
+            reciprocal or Google ignores it, so this page declares the whole cluster
+            exactly as the four translated entry pages do. */}
+        {hreflangLinks("/")}
       </Head>
 
       {/* Hero — copy left, one photograph right. Replaced the navy gradient / glow /

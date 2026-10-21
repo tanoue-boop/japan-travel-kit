@@ -20,7 +20,7 @@ const { transportCategory } = require("../lib/guides-transport.ts");
 const { moneyCategory } = require("../lib/guides-money.ts");
 const { attractionsCategory } = require("../lib/guides-attractions.ts");
 const { attractionPrices, checkedLabel, latestChecked, PRICE_TABLE_ROUTE } = require("../lib/attraction-prices.ts");
-const { TRANSLATED_PAGES, pagesIn } = require("../lib/i18n.ts");
+const { HOME_GROUP, TRANSLATED_PAGES, pagesIn } = require("../lib/i18n.ts");
 const { BUILD_DATE } = require("../lib/page-dates");
 
 const SITE = "https://www.japan-travel-kit.com";
@@ -97,13 +97,15 @@ const zhSection = [
   "## 繁體中文 (Traditional Chinese edition)",
   "",
   oneLine(
-    `A trial edition of ${TRANSLATED_PAGES.length} pages in Taiwanese Traditional Chinese, under /zh-tw/. ` +
-      "Each one is a translation of the English page listed beside it, carrying the same prices, the same " +
-      "operator sources and the same check dates — no figure appears in Chinese that is not also in English. " +
-      "They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages " +
-      "(hreflang zh-Hant-TW and zh-Hant-HK).",
+    `A trial edition of ${TRANSLATED_PAGES.length} guides in Taiwanese Traditional Chinese, under /zh-tw/, ` +
+      `with its own entry page at ${url(HOME_GROUP.zhTw)}. Each guide is a translation of the English page ` +
+      "listed beside it, carrying the same prices, the same operator sources and the same check dates — no " +
+      "figure appears in Chinese that is not also in English. They are written for readers in Taiwan and Hong " +
+      "Kong; both regions are served by the same pages (hreflang zh-Hant-TW and zh-Hant-HK).",
   ),
   "",
+  `- [${HOME_GROUP.zhTitle}](${url(HOME_GROUP.zhTw)}): the 繁體中文 edition's entry page — every page it has,` +
+    ` grouped by category. 繁體中文 counterpart of ${url("/")}`,
   ...TRANSLATED_PAGES.map(
     (p) => `- [${p.zhTitle}](${url(p.zhTw)}): 繁體中文 version of ${url(p.en)}`,
   ),
@@ -121,7 +123,8 @@ const cnSection = [
   "## 简体中文 (Simplified Chinese edition)",
   "",
   oneLine(
-    `The same ${TRANSLATED_PAGES.length} pages in Simplified Chinese, under /zh-cn/. Written for the Chinese ` +
+    `The same ${TRANSLATED_PAGES.length} guides in Simplified Chinese, under /zh-cn/, with its own entry page ` +
+      `at ${url(HOME_GROUP.zhCn)}. Written for the Chinese ` +
       "communities of Singapore and Malaysia and for Chinese speakers living outside mainland China " +
       "(hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is " +
       "the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather " +
@@ -129,6 +132,8 @@ const cnSection = [
       "check date is identical to the English and Traditional pages.",
   ),
   "",
+  `- [${HOME_GROUP.zhCnTitle}](${url(HOME_GROUP.zhCn)}): the 简体中文 edition's entry page — every page it has,` +
+    ` grouped by category. 简体中文 counterpart of ${url("/")}`,
   ...TRANSLATED_PAGES.map(
     (p) => `- [${p.zhCnTitle}](${url(p.zhCn)}): 简体中文 version of ${url(p.en)}`,
   ),
@@ -150,7 +155,8 @@ const koSection = [
   "## 한국어 (Korean edition)",
   "",
   oneLine(
-    `A trial edition of ${koPages.length} pages in Korean, under /ko/ (hreflang ko-KR). Korea is Japan's largest ` +
+    `A trial edition of ${koPages.length} guides in Korean, under /ko/ (hreflang ko-KR), with its own entry ` +
+      `page at ${url(HOME_GROUP.ko)}. Korea is Japan's largest ` +
       "inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo " +
       "Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page " +
       "listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure " +
@@ -158,6 +164,8 @@ const koSection = [
       "the site is English only, and the Korean pages label those links as English.",
   ),
   "",
+  `- [${HOME_GROUP.koTitle}](${url(HOME_GROUP.ko)}): the 한국어 edition's entry page — every page it has,` +
+    ` grouped by category. 한국어 counterpart of ${url("/")}`,
   ...koPages.map((p) => `- [${p.koTitle}](${url(p.ko)}): 한국어 version of ${url(p.en)}`),
   "",
 ].join("\n");
@@ -166,13 +174,16 @@ const thSection = [
   "## ไทย (Thai edition)",
   "",
   oneLine(
-    `The same ${thPages.length} pages in Thai, under /th/ (hreflang th-TH). Thailand is one of Japan's four ` +
+    `The same ${thPages.length} guides in Thai, under /th/ (hreflang th-TH), with its own entry page at ` +
+      `${url(HOME_GROUP.th)}. Thailand is one of Japan's four ` +
       "largest inbound markets, and Thai readers book these attractions through the same platforms. Not a " +
       "translation of the Korean pages: each is written from the English original, with the search terms Thai " +
       "readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's " +
       "th storefront. Every price, operator source and check date is identical to the English pages.",
   ),
   "",
+  `- [${HOME_GROUP.thTitle}](${url(HOME_GROUP.th)}): the ไทย edition's entry page — every page it has,` +
+    ` grouped by category. ไทย counterpart of ${url("/")}`,
   ...thPages.map((p) => `- [${p.thTitle}](${url(p.th)}): ไทย version of ${url(p.en)}`),
   "",
 ].join("\n");

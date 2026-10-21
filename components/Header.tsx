@@ -4,7 +4,16 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useState, useEffect, useRef } from "react";
 import styles from "../styles/Header.module.css";
-import { HTML_LANG, LOCALES, LOCALE_NAME, localeOf, pairFor, routeOf, type Locale } from "../lib/i18n";
+import {
+  HTML_LANG,
+  LOCALES,
+  LOCALE_HOME,
+  LOCALE_NAME,
+  localeOf,
+  pairFor,
+  routeOf,
+  type Locale,
+} from "../lib/i18n";
 
 // One menu, one destination each. Until 2026-10-09 the header carried a Guides dropdown of
 // the five hubs *and* a second row of /sim-cards, /wifi-pocket, /transport and /money links;
@@ -119,7 +128,7 @@ type Copy = {
   planLabel: string;
   allGuidesLabel: string;
   allGuidesHref: string;
-  /** Where the logo goes: the site's home in English, that edition's hub in Chinese. */
+  /** Where the logo goes: the site's home in English, that edition's entry page otherwise. */
   homeHref: string;
   ctaHref: string;
   ctaLabel: string;
@@ -152,7 +161,7 @@ const COPY: Record<Locale, Copy> = {
     planLabel: "行前準備",
     allGuidesLabel: "全部攻略（英文）",
     allGuidesHref: "/guides",
-    homeHref: "/zh-tw/guides/attractions",
+    homeHref: LOCALE_HOME["zh-tw"],
     ctaHref: "/zh-tw/guides/attractions",
     ctaLabel: "找門票與一日遊 →",
     menuLabel: "開關選單",
@@ -167,7 +176,7 @@ const COPY: Record<Locale, Copy> = {
     planLabel: "行前准备",
     allGuidesLabel: "全部攻略（英文）",
     allGuidesHref: "/guides",
-    homeHref: "/zh-cn/guides/attractions",
+    homeHref: LOCALE_HOME["zh-cn"],
     ctaHref: "/zh-cn/guides/attractions",
     ctaLabel: "找门票与一日游 →",
     menuLabel: "开关菜单",
@@ -182,7 +191,7 @@ const COPY: Record<Locale, Copy> = {
     planLabel: "여행 준비",
     allGuidesLabel: "전체 가이드(영어)",
     allGuidesHref: "/guides",
-    homeHref: "/ko/guides/attractions/shibuya-sky-tickets",
+    homeHref: LOCALE_HOME.ko,
     ctaHref: "/ko/guides/attractions/shibuya-sky-tickets",
     ctaLabel: "시부야 스카이 예약 →",
     menuLabel: "메뉴 열기・닫기",
@@ -197,7 +206,7 @@ const COPY: Record<Locale, Copy> = {
     planLabel: "เตรียมทริป",
     allGuidesLabel: "ไกด์ทั้งหมด (อังกฤษ)",
     allGuidesHref: "/guides",
-    homeHref: "/th/guides/attractions/shibuya-sky-tickets",
+    homeHref: LOCALE_HOME.th,
     ctaHref: "/th/guides/attractions/shibuya-sky-tickets",
     ctaLabel: "จองตั๋ว Shibuya Sky →",
     menuLabel: "เปิด・ปิดเมนู",
