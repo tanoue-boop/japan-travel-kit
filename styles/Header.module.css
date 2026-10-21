@@ -133,14 +133,18 @@ button.navLink[aria-expanded="true"] .navChevron { transform: rotate(180deg); }
    Deliberately quiet: it sits to the left of the CTA at the small type size the
    tagline uses, because it is only shown on the handful of pages that exist in
    both languages and is not something most visitors are looking for. */
+/* Wraps because the switch grew from three languages to five on 2026-10-21: at
+   1024px, English／繁體中文／简体中文／한국어／ไทย plus the CTA no longer fits one row. */
 .langSwitch {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.3rem;
   font-size: 0.74rem;
   letter-spacing: 0.02em;
-  white-space: nowrap;
 }
+.langSwitch > * { white-space: nowrap; }
 .langLink {
   color: var(--text-faint);
   text-decoration: none;

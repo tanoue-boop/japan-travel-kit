@@ -2,18 +2,18 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import tools from "../../../../styles/Tools.module.css";
-import { zhSeoTags } from "../../../../components/ZhSeo";
+import { seoTags } from "../../../../components/IntlSeo";
 import {
   KLOOK_REL,
-  ZhBreadcrumb,
-  ZhDisclosure,
-  ZhFaqList,
-  ZhRelated,
-  zhBreadcrumbJsonLd,
-  zhFaqJsonLd,
-  type ZhCrumb,
-  type ZhFaqItem,
-} from "../../../../components/ZhChrome";
+  Breadcrumb,
+  Disclosure,
+  FaqList,
+  Related,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  type Crumb,
+  type FaqItem,
+} from "../../../../components/IntlChrome";
 import { cnKlookEsim } from "../../../../lib/klook-links-zh-cn";
 import { klookEsim } from "../../../../lib/klook-links";
 import {
@@ -120,7 +120,7 @@ const installSteps = [
   },
 ];
 
-const faqItems: ZhFaqItem[] = [
+const faqItems: FaqItem[] = [
   {
     q: "eSIM 是什么？去日本需要吗？",
     a: "eSIM 是内置在手机里的数字 SIM——不需要实体卡片。你用二维码下载配置文件，马上就能用。去日本不一定要 eSIM，但它是目前最方便的选项：出发前买好并安装，落地启用。",
@@ -195,7 +195,7 @@ const faqItems: ZhFaqItem[] = [
   },
 ];
 
-const trail: ZhCrumb[] = [
+const trail: Crumb[] = [
   { href: "/zh-cn/guides/attractions", label: "日本景点门票" },
   { label: "日本eSIM推荐" },
 ];
@@ -208,8 +208,8 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        {zhSeoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhFaqJsonLd(faqItems) }} />
+        {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -222,10 +222,10 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
             }),
           }}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhBreadcrumbJsonLd(trail, ROUTE) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-      <ZhBreadcrumb trail={trail} />
+      <Breadcrumb trail={trail} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -247,7 +247,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
       </section>
 
       <div className={styles.content}>
-        <ZhDisclosure />
+        <Disclosure />
 
         {/* Klook's Japan eSIM leads this edition for the same reason it leads the
             Traditional one: a reader from Singapore or Malaysia is very likely
@@ -419,9 +419,9 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </div>
         </section>
 
-        <ZhFaqList items={faqItems} />
+        <FaqList items={faqItems} />
 
-        <ZhRelated
+        <Related
           items={[
             { href: "/zh-cn/guides/transport/tokyo-airport-transfer", title: "成田机场到东京市区交通（2026）：Skyliner、N'EX 与利木津巴士比较" },
             { href: "/zh-cn/guides/attractions/things-to-do-tokyo", title: "东京自由行景点（2026）：哪些要先订票、哪些可以现场去" },

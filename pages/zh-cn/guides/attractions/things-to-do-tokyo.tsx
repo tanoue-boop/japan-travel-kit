@@ -1,18 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../../styles/BestEsimJapan.module.css";
-import { zhSeoTags } from "../../../../components/ZhSeo";
+import { seoTags } from "../../../../components/IntlSeo";
 import {
   KLOOK_REL,
-  ZhBreadcrumb,
-  ZhDisclosure,
-  ZhFaqList,
-  ZhRelated,
-  zhBreadcrumbJsonLd,
-  zhFaqJsonLd,
-  type ZhCrumb,
-  type ZhFaqItem,
-} from "../../../../components/ZhChrome";
+  Breadcrumb,
+  Disclosure,
+  FaqList,
+  Related,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  type Crumb,
+  type FaqItem,
+} from "../../../../components/IntlChrome";
 import {
   cnFujiHakoneDayTour,
   cnSkytreeTicket,
@@ -51,7 +51,7 @@ const bookingRows = [
   { thing: "东京都厅免费观景室、神社、街区", when: "直接去", why: "没有票可以订" },
 ];
 
-const faqItems: ZhFaqItem[] = [
+const faqItems: FaqItem[] = [
   {
     q: "东京到底哪些需要提前订？",
     a: "其实就四件事：东京迪士尼（指定日期、门口不卖票）、两间 teamLab 美术馆（30 分钟指定时段）、涩谷SKY 的日落时段，以及华纳兄弟哈利波特影城。大相扑也算，但只在你的日期落在 1 月、5 月或 9 月时。东京其他几乎所有东西——晴空塔、东京铁塔、神社、街区、全市最好的免费视野——都可以当天早上再决定。",
@@ -74,7 +74,7 @@ const faqItems: ZhFaqItem[] = [
   },
 ];
 
-const trail: ZhCrumb[] = [
+const trail: Crumb[] = [
   { href: "/zh-cn/guides/attractions", label: "日本景点门票" },
   { label: "东京自由行景点" },
 ];
@@ -87,8 +87,8 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        {zhSeoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhFaqJsonLd(faqItems) }} />
+        {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -101,10 +101,10 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             }),
           }}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhBreadcrumbJsonLd(trail, ROUTE) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-      <ZhBreadcrumb trail={trail} />
+      <Breadcrumb trail={trail} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -127,7 +127,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
       </section>
 
       <div className={styles.content}>
-        <ZhDisclosure />
+        <Disclosure />
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>概要</span>
@@ -241,7 +241,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           </p>
         </section>
 
-        <ZhFaqList items={faqItems} />
+        <FaqList items={faqItems} />
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>值得先订好的东京预订</span>
@@ -259,7 +259,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           </div>
         </section>
 
-        <ZhRelated
+        <Related
           items={[
             { href: "/zh-cn/guides/attractions/shibuya-sky-tickets", title: "涩谷SKY 门票（2026）：票价、最佳时段与预约方式" },
             { href: "/zh-cn/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 门票（2026）：票价、预约方式与无界比较" },

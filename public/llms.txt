@@ -161,6 +161,26 @@ The same 10 pages in Simplified Chinese, under /zh-cn/. Written for the Chinese 
 - [东京自由行景点（2026）：必去景点哪些要先订票、哪些可以现场去](https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo
 - [日本景点门票攻略（2026）：官方票价、预约方式与一日游](https://www.japan-travel-kit.com/zh-cn/guides/attractions): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions
 
+## 한국어 (Korean edition)
+
+A trial edition of 5 pages in Korean, under /ko/ (hreflang ko-KR). Korea is Japan's largest inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Korean that is not also in English. The Klook links point at Klook's ko storefront. The rest of the site is English only, and the Korean pages label those links as English.
+
+- [시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법](https://www.japan-travel-kit.com/ko/guides/attractions/shibuya-sky-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
+- [팀랩 플래닛 예약(2026): 티켓 가격, 입장 시간, 보더리스와 비교](https://www.japan-travel-kit.com/ko/guides/attractions/teamlab-tokyo-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets
+- [도쿄 디즈니랜드 티켓(2026): 날짜 지정 예매와 랜드·씨 선택](https://www.japan-travel-kit.com/ko/guides/attractions/tokyo-disney-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets
+- [유니버설 스튜디오 재팬 익스프레스 패스(2026): 티켓은 어떤 것을 살까](https://www.japan-travel-kit.com/ko/guides/attractions/usj-tickets-express-pass): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass
+- [일본 이심 추천(2026): eSIM 요금제 비교와 클룩 일본 eSIM](https://www.japan-travel-kit.com/ko/guides/esim/best-esim-japan): 한국어 version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
+
+## ไทย (Thai edition)
+
+The same 5 pages in Thai, under /th/ (hreflang th-TH). Thailand is one of Japan's four largest inbound markets, and Thai readers book these attractions through the same platforms. Not a translation of the Korean pages: each is written from the English original, with the search terms Thai readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's th storefront. Every price, operator source and check date is identical to the English pages.
+
+- [ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง](https://www.japan-travel-kit.com/th/guides/attractions/shibuya-sky-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
+- [ตั๋ว teamLab Planets (2026): ราคา รอบเข้าชม และเทียบกับ Borderless](https://www.japan-travel-kit.com/th/guides/attractions/teamlab-tokyo-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets
+- [ตั๋วดิสนีย์แลนด์โตเกียว (2026): บัตรระบุวัน และเลือกแลนด์หรือซี](https://www.japan-travel-kit.com/th/guides/attractions/tokyo-disney-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets
+- [บัตร USJ และ Express Pass USJ (2026): ควรซื้อแบบไหน](https://www.japan-travel-kit.com/th/guides/attractions/usj-tickets-express-pass): ไทย version of https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass
+- [eSIM ญี่ปุ่น 2026: เทียบแพ็กเกจ และ eSIM ญี่ปุ่นของ Klook](https://www.japan-travel-kit.com/th/guides/esim/best-esim-japan): ไทย version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
+
 ## Site information
 
 - [About, and how we check prices](https://www.japan-travel-kit.com/about): who runs the site, how figures are verified and the

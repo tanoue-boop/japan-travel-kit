@@ -12,9 +12,10 @@ import { hreflangAlternates } from "../lib/i18n";
  *     {hreflangLinks("/guides/attractions/shibuya-sky-tickets")}
  *   </Head>
  *
- * All three languages of a translated page emit the identical six links (en,
- * zh-Hant-TW, zh-Hant-HK, zh-Hans, zh-Hans-SG and x-default). English-only pages get
- * nothing, which is correct — a one-sided or self-only hreflang set is worse than none.
+ * Every language of a translated page emits the identical set — one link per
+ * hreflang value of each language that has the page, plus x-default on the English
+ * one. English-only pages get nothing, which is correct: a one-sided or self-only
+ * hreflang set is worse than none.
  */
 export function hreflangLinks(route: string) {
   return hreflangAlternates(route).map(({ hreflang, href }) => (

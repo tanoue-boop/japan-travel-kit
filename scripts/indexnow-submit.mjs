@@ -10,8 +10,9 @@
  *   node scripts/indexnow-submit.mjs --dry-run        # print the payload, don't POST
  *
  * --prefix exists for launching a section on its own (it was added for the ten
- * 繁體中文 pages under /zh-tw): the whole sitemap is 80-odd URLs that Bing has
- * already seen, and submitting them again to announce ten new ones is noise.
+ * 繁體中文 pages under /zh-tw, and used again for /ko and /th on 2026-10-21): the
+ * whole sitemap is 100-odd URLs that Bing has already seen, and submitting them all
+ * again to announce five new ones is noise.
  *
  * public/sitemap.xml is the single source of truth for what may be submitted:
  * it already excludes redirected and noindex routes, so --changed intersects the

@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/Footer.module.css";
-import { localeOf, type Locale } from "../lib/i18n";
+import { localeOf, monthLabel, type Locale } from "../lib/i18n";
+
+/** A build Date as the "YYYY-MM-01" lib/i18n.ts's label helpers take. */
+const isoMonth = (d: Date) => `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-01`;
 
 // No repeats. Until 2026-10-09 the footer listed the five hubs and then three more columns of
 // individual guides and retired landing pages, several of which pointed at the same
@@ -113,6 +116,72 @@ const cnCols: FooterCol[] = [
   },
 ];
 
+// ── 한국어 footer (added 2026-10-21) ────────────────────────────────────────
+//
+// The Korean edition is five pages, so the first column is those five and the rest
+// of the site is reached through the English links, marked "(영어)" by the same rule
+// as the Chinese footers above. The policy pages are English-only.
+const koCols: FooterCol[] = [
+  {
+    title: "티켓 가이드",
+    links: [
+      { href: "/ko/guides/attractions/shibuya-sky-tickets",      label: "시부야 스카이 예약"   },
+      { href: "/ko/guides/attractions/teamlab-tokyo-tickets",    label: "팀랩 플래닛 예약"     },
+      { href: "/ko/guides/attractions/tokyo-disney-tickets",     label: "도쿄 디즈니랜드 티켓" },
+      { href: "/ko/guides/attractions/usj-tickets-express-pass", label: "USJ 익스프레스 패스"  },
+    ],
+  },
+  {
+    title: "여행 준비",
+    links: [
+      { href: "/ko/guides/esim/best-esim-japan",          label: "일본 이심 추천"      },
+      { href: "/guides/transport/tokyo-airport-transfer", label: "공항 교통(영어)"     },
+      { href: "/guides/money",                           label: "결제와 환전(영어)"   },
+      { href: "/guides",                                 label: "전체 가이드(영어)"   },
+    ],
+  },
+  {
+    title: "사이트 정보",
+    links: [
+      { href: "/about",          label: "소개(영어)"         },
+      { href: "/disclaimer",     label: "제휴 고지(영어)"    },
+      { href: "/privacy-policy", label: "개인정보 정책(영어)" },
+    ],
+  },
+];
+
+// ── ไทย footer (added 2026-10-21) ──────────────────────────────────────────
+//
+// Same shape, same rule, with "(อังกฤษ)" as the marker.
+const thCols: FooterCol[] = [
+  {
+    title: "ไกด์ตั๋ว",
+    links: [
+      { href: "/th/guides/attractions/shibuya-sky-tickets",      label: "ตั๋ว Shibuya Sky"       },
+      { href: "/th/guides/attractions/teamlab-tokyo-tickets",    label: "ตั๋ว teamLab Planets"   },
+      { href: "/th/guides/attractions/tokyo-disney-tickets",     label: "ตั๋วดิสนีย์แลนด์โตเกียว" },
+      { href: "/th/guides/attractions/usj-tickets-express-pass", label: "Express Pass USJ"       },
+    ],
+  },
+  {
+    title: "เตรียมทริป",
+    links: [
+      { href: "/th/guides/esim/best-esim-japan",          label: "eSIM ญี่ปุ่น"            },
+      { href: "/guides/transport/tokyo-airport-transfer", label: "รถไฟสนามบิน (อังกฤษ)"   },
+      { href: "/guides/money",                           label: "การจ่ายเงิน (อังกฤษ)"   },
+      { href: "/guides",                                 label: "ไกด์ทั้งหมด (อังกฤษ)"   },
+    ],
+  },
+  {
+    title: "เกี่ยวกับเว็บไซต์",
+    links: [
+      { href: "/about",          label: "เกี่ยวกับเรา (อังกฤษ)"      },
+      { href: "/disclaimer",     label: "การเปิดเผยพันธมิตร (อังกฤษ)" },
+      { href: "/privacy-policy", label: "นโยบายความเป็นส่วนตัว (อังกฤษ)" },
+    ],
+  },
+];
+
 type Copy = {
   desc: string;
   rights: string;
@@ -148,6 +217,22 @@ const COPY: Record<Locale, Copy> = {
     homeHref: "/zh-cn/guides/attractions",
     cols: cnCols,
     updatedLabel: (d) => `更新于 ${d.getUTCFullYear()}年${d.getUTCMonth() + 1}月`,
+  },
+  ko: {
+    desc: "일본을 찾는 외국인 여행자를 위한 실용 정보. 출발 전에 미리 정리해 두는 쪽입니다.",
+    rights: "All rights reserved.",
+    affiliate: "이 사이트에는 제휴 링크가 포함됩니다. 링크로 예약하면 저희가 수수료를 받을 수 있으며, 고객님이 지불하는 금액은 달라지지 않습니다.",
+    homeHref: "/ko/guides/attractions/shibuya-sky-tickets",
+    cols: koCols,
+    updatedLabel: (d) => `${monthLabel(isoMonth(d), "ko")} 업데이트`,
+  },
+  th: {
+    desc: "ข้อมูลที่ใช้ได้จริงสำหรับนักท่องเที่ยวต่างชาติที่ไปญี่ปุ่น เตรียมให้พร้อมก่อนเครื่องลง",
+    rights: "All rights reserved.",
+    affiliate: "เว็บไซต์นี้มีลิงก์พันธมิตร หากคุณจองผ่านลิงก์ เราอาจได้รับค่าตอบแทน โดยราคาที่คุณจ่ายไม่เพิ่มขึ้น",
+    homeHref: "/th/guides/attractions/shibuya-sky-tickets",
+    cols: thCols,
+    updatedLabel: (d) => `อัปเดต ${monthLabel(isoMonth(d), "th")}`,
   },
 };
 

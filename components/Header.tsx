@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useState, useEffect, useRef } from "react";
 import styles from "../styles/Header.module.css";
-import { HTML_LANG, LOCALE_NAME, localeOf, pairFor, routeOf, type Locale } from "../lib/i18n";
+import { HTML_LANG, LOCALES, LOCALE_NAME, localeOf, pairFor, routeOf, type Locale } from "../lib/i18n";
 
 // One menu, one destination each. Until 2026-10-09 the header carried a Guides dropdown of
 // the five hubs *and* a second row of /sim-cards, /wifi-pocket, /transport and /money links;
@@ -74,6 +74,44 @@ const cnNavItems = [
   { href: "/guides/money",                          label: "支付（英文）" },
 ];
 
+// ── 한국어 nav (added 2026-10-21 with the five Korean pages) ─────────────────
+//
+// Five pages, not ten, so this nav is mostly the five themselves and the English
+// destinations are marked "(영어)" by the same rule as the Chinese navs above. The
+// logo and the CTA point at pages that exist in Korean — the Shibuya Sky guide is
+// the edition's entry page — rather than at a hub this edition does not have yet.
+const koDestinationItems = [
+  { href: "/ko/guides/attractions/teamlab-tokyo-tickets", label: "팀랩 플래닛" },
+  { href: "/ko/guides/attractions/tokyo-disney-tickets",  label: "도쿄 디즈니" },
+  { href: "/ko/guides/attractions/usj-tickets-express-pass", label: "오사카 USJ" },
+  { href: "/guides/attractions/things-to-do-tokyo",       label: "도쿄 관광(영어)" },
+];
+
+const koNavItems = [
+  { href: "/ko/guides/attractions/shibuya-sky-tickets", label: "시부야 스카이" },
+  { href: "/ko/guides/esim/best-esim-japan",            label: "일본 eSIM"     },
+  { href: "/guides/transport/tokyo-airport-transfer",   label: "공항 교통(영어)" },
+  { href: "/guides/money",                              label: "결제(영어)"    },
+];
+
+// ── ไทย nav (added 2026-10-21 with the five Thai pages) ─────────────────────
+//
+// Same shape and the same rule, with "(ภาษาอังกฤษ)" as the marker for a
+// destination that has not been translated.
+const thDestinationItems = [
+  { href: "/th/guides/attractions/teamlab-tokyo-tickets", label: "teamLab Planets" },
+  { href: "/th/guides/attractions/tokyo-disney-tickets",  label: "โตเกียวดิสนีย์" },
+  { href: "/th/guides/attractions/usj-tickets-express-pass", label: "USJ โอซาก้า" },
+  { href: "/guides/attractions/things-to-do-tokyo",       label: "เที่ยวโตเกียว (อังกฤษ)" },
+];
+
+const thNavItems = [
+  { href: "/th/guides/attractions/shibuya-sky-tickets", label: "Shibuya Sky"      },
+  { href: "/th/guides/esim/best-esim-japan",            label: "eSIM ญี่ปุ่น"      },
+  { href: "/guides/transport/tokyo-airport-transfer",   label: "รถไฟสนามบิน (อังกฤษ)" },
+  { href: "/guides/money",                              label: "การจ่ายเงิน (อังกฤษ)" },
+];
+
 type Copy = {
   tagline: string;
   destinationsLabel: string;
@@ -137,10 +175,40 @@ const COPY: Record<Locale, Copy> = {
     destinations: cnDestinationItems,
     nav: cnNavItems,
   },
+  ko: {
+    tagline: "티켓, 투어, 여행 준비",
+    destinationsLabel: "목적지",
+    guidesLabel: "가이드",
+    planLabel: "여행 준비",
+    allGuidesLabel: "전체 가이드(영어)",
+    allGuidesHref: "/guides",
+    homeHref: "/ko/guides/attractions/shibuya-sky-tickets",
+    ctaHref: "/ko/guides/attractions/shibuya-sky-tickets",
+    ctaLabel: "시부야 스카이 예약 →",
+    menuLabel: "메뉴 열기・닫기",
+    langLabel: "언어",
+    destinations: koDestinationItems,
+    nav: koNavItems,
+  },
+  th: {
+    tagline: "ตั๋ว ทัวร์ และการเตรียมทริป",
+    destinationsLabel: "จุดหมาย",
+    guidesLabel: "ไกด์",
+    planLabel: "เตรียมทริป",
+    allGuidesLabel: "ไกด์ทั้งหมด (อังกฤษ)",
+    allGuidesHref: "/guides",
+    homeHref: "/th/guides/attractions/shibuya-sky-tickets",
+    ctaHref: "/th/guides/attractions/shibuya-sky-tickets",
+    ctaLabel: "จองตั๋ว Shibuya Sky →",
+    menuLabel: "เปิด・ปิดเมนู",
+    langLabel: "ภาษา",
+    destinations: thDestinationItems,
+    nav: thNavItems,
+  },
 };
 
 /** The order the switch lists the languages in — the site's own first. */
-const SWITCH_ORDER: Locale[] = ["en", "zh-tw", "zh-cn"];
+const SWITCH_ORDER: Locale[] = LOCALES;
 
 export default function Header() {
   const router = useRouter();
@@ -180,17 +248,24 @@ export default function Header() {
   }, [destOpen]);
 
   /**
-   * English／繁體中文／简体中文, rendered only when this exact page exists in all
-   * three. A switch that drops you on a different page — or on a 404 — is worse than
-   * no switch, so pages outside lib/i18n.ts's list show nothing at all.
+   * The language switch, listing only the languages this exact page exists in. A
+   * switch that drops you on a different page — or on a 404 — is worse than no
+   * switch, so pages outside lib/i18n.ts's list show nothing at all, and the five
+   * pages that are Chinese-only do not offer 한국어 or ไทย.
    */
-  const langSwitch = pair && (
+  const languages = pair
+    ? SWITCH_ORDER.map((target) => ({ target, href: routeOf(pair, target) })).filter(
+        (l): l is { target: Locale; href: string } => l.href !== null,
+      )
+    : [];
+
+  const langSwitch = languages.length > 1 && (
     <div className={styles.langSwitch} aria-label={copy.langLabel}>
-      {SWITCH_ORDER.map((target, i) => (
+      {languages.map(({ target, href }, i) => (
         <Fragment key={target}>
           {i > 0 && <span className={styles.langSep} aria-hidden="true">／</span>}
           <Link
-            href={routeOf(pair, target)}
+            href={href}
             hrefLang={HTML_LANG[target]}
             className={`${styles.langLink}${locale === target ? ` ${styles.langCurrent}` : ""}`}
             aria-current={locale === target ? "true" : undefined}
@@ -297,7 +372,7 @@ export default function Header() {
           {copy.allGuidesLabel}
         </Link>
 
-        {pair && (
+        {langSwitch && (
           <>
             <p className={styles.mobileLabel}>{copy.langLabel}</p>
             <div className={styles.langSwitchMobile}>{langSwitch}</div>

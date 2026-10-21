@@ -1,18 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../../styles/BestEsimJapan.module.css";
-import { zhSeoTags } from "../../../../components/ZhSeo";
+import { seoTags } from "../../../../components/IntlSeo";
 import {
   KLOOK_REL,
-  ZhBreadcrumb,
-  ZhDisclosure,
-  ZhFaqList,
-  ZhRelated,
-  zhBreadcrumbJsonLd,
-  zhFaqJsonLd,
-  type ZhCrumb,
-  type ZhFaqItem,
-} from "../../../../components/ZhChrome";
+  Breadcrumb,
+  Disclosure,
+  FaqList,
+  Related,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  type Crumb,
+  type FaqItem,
+} from "../../../../components/IntlChrome";
 import { zhFujiDayTour, zhTokyoDisney, zhTokyoSightseeingBusTour } from "../../../../lib/klook-links-zh-tw";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -94,7 +94,7 @@ const steps = [
   },
 ];
 
-const faqItems: ZhFaqItem[] = [
+const faqItems: FaqItem[] = [
   {
     q: "東京迪士尼門票一定要提前買嗎？",
     a: "是。東京迪士尼度假區門口不賣票——所有票都指定日期，也就是購買時就要選好日期與園區。熱門日期可能在數週到數月前賣完，所以提前訂基本上是必要的，而不是選項。",
@@ -117,7 +117,7 @@ const faqItems: ZhFaqItem[] = [
   },
 ];
 
-const trail: ZhCrumb[] = [
+const trail: Crumb[] = [
   { href: "/zh-tw/guides/attractions", label: "日本景點門票" },
   { label: "東京迪士尼門票" },
 ];
@@ -130,8 +130,8 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        {zhSeoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhFaqJsonLd(faqItems) }} />
+        {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -144,10 +144,10 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             }),
           }}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhBreadcrumbJsonLd(trail, ROUTE) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-      <ZhBreadcrumb trail={trail} />
+      <Breadcrumb trail={trail} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -170,7 +170,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
       </section>
 
       <div className={styles.content}>
-        <ZhDisclosure />
+        <Disclosure />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -337,7 +337,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
-        <ZhFaqList items={faqItems} />
+        <FaqList items={faqItems} />
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>同一座城市的一日遊</span>
@@ -356,7 +356,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </div>
         </section>
 
-        <ZhRelated
+        <Related
           items={[
             { href: "/zh-tw/guides/attractions/usj-tickets-express-pass", title: "日本環球影城門票與快速通關（2026）：該買哪一種" },
             { href: "/zh-tw/guides/attractions/shibuya-sky-tickets", title: "澀谷SKY 門票（2026）：票價、最佳時段與預約方式" },

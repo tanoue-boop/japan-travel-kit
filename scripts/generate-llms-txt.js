@@ -20,7 +20,7 @@ const { transportCategory } = require("../lib/guides-transport.ts");
 const { moneyCategory } = require("../lib/guides-money.ts");
 const { attractionsCategory } = require("../lib/guides-attractions.ts");
 const { attractionPrices, checkedLabel, latestChecked, PRICE_TABLE_ROUTE } = require("../lib/attraction-prices.ts");
-const { TRANSLATED_PAGES } = require("../lib/i18n.ts");
+const { TRANSLATED_PAGES, pagesIn } = require("../lib/i18n.ts");
 const { BUILD_DATE } = require("../lib/page-dates");
 
 const SITE = "https://www.japan-travel-kit.com";
@@ -135,6 +135,48 @@ const cnSection = [
   "",
 ].join("\n");
 
+/**
+ * The 한국어 and ไทย editions, added 2026-10-21. Five pages each, not ten — the
+ * highest-earning entry pages only — so each section says how many it has and which
+ * English page every line is a translation of. A model grounding a Korean- or
+ * Thai-language answer about Japanese tickets should be able to reach the page in
+ * that language; one grounding an English answer should not mistake these for extra
+ * English articles, and should know the figures are the same in every edition.
+ */
+const koPages = pagesIn("ko");
+const thPages = pagesIn("th");
+
+const koSection = [
+  "## 한국어 (Korean edition)",
+  "",
+  oneLine(
+    `A trial edition of ${koPages.length} pages in Korean, under /ko/ (hreflang ko-KR). Korea is Japan's largest ` +
+      "inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo " +
+      "Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page " +
+      "listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure " +
+      "appears in Korean that is not also in English. The Klook links point at Klook's ko storefront. The rest of " +
+      "the site is English only, and the Korean pages label those links as English.",
+  ),
+  "",
+  ...koPages.map((p) => `- [${p.koTitle}](${url(p.ko)}): 한국어 version of ${url(p.en)}`),
+  "",
+].join("\n");
+
+const thSection = [
+  "## ไทย (Thai edition)",
+  "",
+  oneLine(
+    `The same ${thPages.length} pages in Thai, under /th/ (hreflang th-TH). Thailand is one of Japan's four ` +
+      "largest inbound markets, and Thai readers book these attractions through the same platforms. Not a " +
+      "translation of the Korean pages: each is written from the English original, with the search terms Thai " +
+      "readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's " +
+      "th storefront. Every price, operator source and check date is identical to the English pages.",
+  ),
+  "",
+  ...thPages.map((p) => `- [${p.thTitle}](${url(p.th)}): ไทย version of ${url(p.en)}`),
+  "",
+].join("\n");
+
 const lines = [
   "# Japan Travel Kit",
   "",
@@ -169,6 +211,8 @@ const lines = [
   ...sections,
   zhSection,
   cnSection,
+  koSection,
+  thSection,
   "## Site information",
   "",
   `- [About, and how we check prices](${url("/about")}): who runs the site, how figures are verified and the`,
@@ -191,6 +235,7 @@ const articleCount =
   moneyCategory.articles.length +
   attractionsCategory.articles.length;
 console.log(
-  `llms.txt: ${articleCount} guides in ${sections.length} sections plus ${TRANSLATED_PAGES.length} ` +
-    `繁體中文 and ${TRANSLATED_PAGES.length} 简体中文 pages written to ${path.relative(process.cwd(), OUT)}`,
+  `llms.txt: ${articleCount} guides in ${sections.length} sections plus ${TRANSLATED_PAGES.length} 繁體中文, ` +
+    `${TRANSLATED_PAGES.length} 简体中文, ${koPages.length} 한국어 and ${thPages.length} ไทย pages ` +
+    `written to ${path.relative(process.cwd(), OUT)}`,
 );

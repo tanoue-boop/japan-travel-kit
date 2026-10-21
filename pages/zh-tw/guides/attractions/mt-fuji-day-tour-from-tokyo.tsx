@@ -1,18 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../../styles/BestEsimJapan.module.css";
-import { zhSeoTags } from "../../../../components/ZhSeo";
+import { seoTags } from "../../../../components/IntlSeo";
 import {
   KLOOK_REL,
-  ZhBreadcrumb,
-  ZhDisclosure,
-  ZhFaqList,
-  ZhRelated,
-  zhBreadcrumbJsonLd,
-  zhFaqJsonLd,
-  type ZhCrumb,
-  type ZhFaqItem,
-} from "../../../../components/ZhChrome";
+  Breadcrumb,
+  Disclosure,
+  FaqList,
+  Related,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  type Crumb,
+  type FaqItem,
+} from "../../../../components/IntlChrome";
 import {
   zhFujiDayTour,
   zhFujiHakoneBulletTrainTour,
@@ -103,7 +103,7 @@ const steps = [
   },
 ];
 
-const faqItems: ZhFaqItem[] = [
+const faqItems: FaqItem[] = [
   {
     q: "東京出發的富士山一日遊值得嗎？",
     a: "對大多數只有一天空檔的旅客來說，值得——主要是因為替代方案比看起來難。富士Subaru Line五合目搭電車到不了，所以自己去就要轉公車或租車，而山周邊的景點又很分散。巴士團把這些收攏成一次預訂。要注意的是天氣：山經常在雲裡，沒有行程能保證你看到它。",
@@ -138,7 +138,7 @@ const faqItems: ZhFaqItem[] = [
   },
 ];
 
-const trail: ZhCrumb[] = [
+const trail: Crumb[] = [
   { href: "/zh-tw/guides/attractions", label: "日本景點門票" },
   { label: "富士山一日遊（東京出發）" },
 ];
@@ -151,8 +151,8 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        {zhSeoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhFaqJsonLd(faqItems) }} />
+        {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -165,10 +165,10 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
             }),
           }}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhBreadcrumbJsonLd(trail, ROUTE) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-      <ZhBreadcrumb trail={trail} />
+      <Breadcrumb trail={trail} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -191,7 +191,7 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
       </section>
 
       <div className={styles.content}>
-        <ZhDisclosure />
+        <Disclosure />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -311,7 +311,7 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
           </p>
         </section>
 
-        <ZhFaqList items={faqItems} />
+        <FaqList items={faqItems} />
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>上面比較的四個行程</span>
@@ -328,7 +328,7 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
           </div>
         </section>
 
-        <ZhRelated
+        <Related
           items={[
             { href: "/zh-tw/guides/attractions/things-to-do-tokyo", title: "東京自由行景點（2026）：哪些要先訂票、哪些可以現場去" },
             { href: "/zh-tw/guides/attractions/shibuya-sky-tickets", title: "澀谷SKY 門票（2026）：票價、最佳時段與預約方式" },

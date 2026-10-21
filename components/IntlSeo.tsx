@@ -1,16 +1,9 @@
 import { hreflangLinks } from "./Hreflang";
-import { OG_LOCALE, absoluteUrl, localeOf, type Locale } from "../lib/i18n";
+import { LOCALES, OG_LOCALE, absoluteUrl, localeOf } from "../lib/i18n";
 import { SITE_NAME } from "../lib/structured-data";
 
-/** `og:locale:alternate` — the two languages a page is *not* written in. */
-const OTHER_LOCALES: Record<Locale, Locale[]> = {
-  en: ["zh-tw", "zh-cn"],
-  "zh-tw": ["en", "zh-cn"],
-  "zh-cn": ["en", "zh-tw"],
-};
-
 /**
- * The head tags every Chinese page needs, as an array for next/head.
+ * The head tags every translated page needs, as an array for next/head.
  *
  * Same set the English pages write out by hand — title, description, canonical,
  * robots, Open Graph, Twitter — plus `og:locale` and the hreflang cluster, which
@@ -18,14 +11,19 @@ const OTHER_LOCALES: Record<Locale, Locale[]> = {
  * next/head only hoists plain elements; see components/Hreflang.tsx.
  *
  *   <Head>
- *     {zhSeoTags({ route: "/zh-cn/…", title: "…", desc: "…" })}
+ *     {seoTags({ route: "/ko/…", title: "…", desc: "…" })}
  *     … page-specific JSON-LD …
  *   </Head>
  *
  * The locale is read off the route rather than passed in, so a page cannot declare
- * one script in its URL and another in its Open Graph tags.
+ * one language in its URL and another in its Open Graph tags. Named zhSeoTags until
+ * 2026-10-21, when 한국어 and ไทย joined the two Chinese editions.
+ *
+ * `og:locale:alternate` lists every other locale the site publishes, not only the
+ * ones this page exists in: unlike hreflang, it is a statement about the site, and
+ * no consumer treats it as a URL mapping.
  */
-export function zhSeoTags({ route, title, desc }: { route: string; title: string; desc: string }) {
+export function seoTags({ route, title, desc }: { route: string; title: string; desc: string }) {
   const url = absoluteUrl(route);
   const locale = localeOf(route);
   return [
@@ -39,7 +37,7 @@ export function zhSeoTags({ route, title, desc }: { route: string; title: string
     <meta key="og:type" property="og:type" content="article" />,
     <meta key="og:site_name" property="og:site_name" content={SITE_NAME} />,
     <meta key="og:locale" property="og:locale" content={OG_LOCALE[locale]} />,
-    ...OTHER_LOCALES[locale].map((other) => (
+    ...LOCALES.filter((other) => other !== locale).map((other) => (
       <meta
         key={`og:locale:alternate:${other}`}
         property="og:locale:alternate"

@@ -1,18 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../../styles/BestEsimJapan.module.css";
-import { zhSeoTags } from "../../../../components/ZhSeo";
+import { seoTags } from "../../../../components/IntlSeo";
 import {
   KLOOK_REL,
-  ZhBreadcrumb,
-  ZhDisclosure,
-  ZhFaqList,
-  ZhRelated,
-  zhBreadcrumbJsonLd,
-  zhFaqJsonLd,
-  type ZhCrumb,
-  type ZhFaqItem,
-} from "../../../../components/ZhChrome";
+  Breadcrumb,
+  Disclosure,
+  FaqList,
+  Related,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  type Crumb,
+  type FaqItem,
+} from "../../../../components/IntlChrome";
 import { cnShibuyaSky } from "../../../../lib/klook-links-zh-cn";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -107,7 +107,7 @@ const steps = [
   },
 ];
 
-const faqItems: ZhFaqItem[] = [
+const faqItems: FaqItem[] = [
   {
     q: "涩谷SKY 门票多少钱？",
     a: `网上预订成人票 ${ADULT}，当天在现场窗口购买 ${AT_DOOR}。未满 5 岁免费入场，另有儿童与敬老的优惠票种。网上买不只比较便宜，也比较稳妥——热门时段（尤其是日落场）当天就没票了。以上票价读自涩谷SKY 官方网站，核查日期 ${CHECKED}。`,
@@ -142,7 +142,7 @@ const faqItems: ZhFaqItem[] = [
   },
 ];
 
-const trail: ZhCrumb[] = [
+const trail: Crumb[] = [
   { href: "/zh-cn/guides/attractions", label: "日本景点门票" },
   { label: "涩谷SKY 门票" },
 ];
@@ -155,8 +155,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        {zhSeoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhFaqJsonLd(faqItems) }} />
+        {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -171,11 +171,11 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: zhBreadcrumbJsonLd(trail, ROUTE) }}
+          dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }}
         />
       </Head>
 
-      <ZhBreadcrumb trail={trail} />
+      <Breadcrumb trail={trail} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -198,7 +198,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
       </section>
 
       <div className={styles.content}>
-        <ZhDisclosure />
+        <Disclosure />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -347,9 +347,9 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </div>
         </section>
 
-        <ZhFaqList items={faqItems} />
+        <FaqList items={faqItems} />
 
-        <ZhRelated
+        <Related
           items={[
             { href: "/zh-cn/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 门票（2026）：票价、预约方式与无界比较" },
             { href: "/zh-cn/guides/attractions/teamlab-borderless-tickets", title: "teamLab 无界 门票（2026）：票价、时段预约与购票渠道" },

@@ -1,18 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../../styles/BestEsimJapan.module.css";
-import { zhSeoTags } from "../../../../components/ZhSeo";
+import { seoTags } from "../../../../components/IntlSeo";
 import {
   KLOOK_REL,
-  ZhBreadcrumb,
-  ZhDisclosure,
-  ZhFaqList,
-  ZhRelated,
-  zhBreadcrumbJsonLd,
-  zhFaqJsonLd,
-  type ZhCrumb,
-  type ZhFaqItem,
-} from "../../../../components/ZhChrome";
+  Breadcrumb,
+  Disclosure,
+  FaqList,
+  Related,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  type Crumb,
+  type FaqItem,
+} from "../../../../components/IntlChrome";
 import { zhTeamlabBorderless } from "../../../../lib/klook-links-zh-tw";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -108,7 +108,7 @@ const steps = [
   },
 ];
 
-const faqItems: ZhFaqItem[] = [
+const faqItems: FaqItem[] = [
   {
     q: "2026 年 teamLab 無界門票多少錢？",
     a: `依 teamLab 官方網站、查核日 ${CHECKED}：Entrance Pass 成人（18 歲以上）${ADULT}，13～17 歲 ¥2,800，4～12 歲 ${CHILD}，3 歲以下免費。身心障礙人士 ¥1,700 起，一位陪同者同享優惠票價。成人票與身障票採浮動定價，實際金額取決於你選的日期與時段，付款前請確認自己那天的價格。現場購票成人多 ¥200，兒童與身障票多 ¥100。`,
@@ -139,7 +139,7 @@ const faqItems: ZhFaqItem[] = [
   },
 ];
 
-const trail: ZhCrumb[] = [
+const trail: Crumb[] = [
   { href: "/zh-tw/guides/attractions", label: "日本景點門票" },
   { label: "teamLab 無界 門票" },
 ];
@@ -152,8 +152,8 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        {zhSeoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhFaqJsonLd(faqItems) }} />
+        {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -166,10 +166,10 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             }),
           }}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhBreadcrumbJsonLd(trail, ROUTE) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-      <ZhBreadcrumb trail={trail} />
+      <Breadcrumb trail={trail} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -192,7 +192,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
       </section>
 
       <div className={styles.content}>
-        <ZhDisclosure />
+        <Disclosure />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -390,9 +390,9 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </ul>
         </section>
 
-        <ZhFaqList items={faqItems} />
+        <FaqList items={faqItems} />
 
-        <ZhRelated
+        <Related
           items={[
             { href: "/zh-tw/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 門票（2026）：票價、預約方式與無界比較" },
             { href: "/zh-tw/guides/attractions/shibuya-sky-tickets", title: "澀谷SKY 門票（2026）：票價、最佳時段與預約方式" },

@@ -1,18 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../../styles/BestEsimJapan.module.css";
-import { zhSeoTags } from "../../../../components/ZhSeo";
+import { seoTags } from "../../../../components/IntlSeo";
 import {
   KLOOK_REL,
-  ZhBreadcrumb,
-  ZhDisclosure,
-  ZhFaqList,
-  ZhRelated,
-  zhBreadcrumbJsonLd,
-  zhFaqJsonLd,
-  type ZhCrumb,
-  type ZhFaqItem,
-} from "../../../../components/ZhChrome";
+  Breadcrumb,
+  Disclosure,
+  FaqList,
+  Related,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  type Crumb,
+  type FaqItem,
+} from "../../../../components/IntlChrome";
 import { cnFujiHakoneDayTour, cnTeamlabPlanets } from "../../../../lib/klook-links-zh-cn";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -93,7 +93,7 @@ const steps = [
   },
 ];
 
-const faqItems: ZhFaqItem[] = [
+const faqItems: FaqItem[] = [
   {
     q: "2026 年 teamLab Planets 门票多少钱？",
     a: `按 teamLab Planets 官方售票网站、核查日期 ${CHECKED}：成人票 ${ADULT}，初中与高中生 ¥2,800，4～12 岁儿童 ${CHILD}，3 岁以下免费。残障人士 ¥1,900 起，另有 ¥12,000 的 Premium Pass（4 岁以上适用）。成人票会按日期与时段变动，付款前请确认你自己时段的金额。优惠票需要出示证明——请带学生证、护照或残障证明。`,
@@ -132,7 +132,7 @@ const faqItems: ZhFaqItem[] = [
   },
 ];
 
-const trail: ZhCrumb[] = [
+const trail: Crumb[] = [
   { href: "/zh-cn/guides/attractions", label: "日本景点门票" },
   { label: "teamLab Planets 门票" },
 ];
@@ -145,8 +145,8 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
   return (
     <>
       <Head>
-        {zhSeoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhFaqJsonLd(faqItems) }} />
+        {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -159,10 +159,10 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             }),
           }}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhBreadcrumbJsonLd(trail, ROUTE) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-      <ZhBreadcrumb trail={trail} />
+      <Breadcrumb trail={trail} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -185,7 +185,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
       </section>
 
       <div className={styles.content}>
-        <ZhDisclosure />
+        <Disclosure />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -402,9 +402,9 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           </a>
         </section>
 
-        <ZhFaqList items={faqItems} />
+        <FaqList items={faqItems} />
 
-        <ZhRelated
+        <Related
           items={[
             { href: "/zh-cn/guides/attractions/teamlab-borderless-tickets", title: "teamLab 无界 门票（2026）：票价、时段预约与购票渠道" },
             { href: "/zh-cn/guides/attractions/shibuya-sky-tickets", title: "涩谷SKY 门票（2026）：票价、最佳时段与预约方式" },

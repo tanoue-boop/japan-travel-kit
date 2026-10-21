@@ -1,17 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../../styles/BestEsimJapan.module.css";
-import { zhSeoTags } from "../../../../components/ZhSeo";
+import { seoTags } from "../../../../components/IntlSeo";
 import {
   KLOOK_REL,
-  ZhBreadcrumb,
-  ZhDisclosure,
-  ZhFaqList,
-  zhBreadcrumbJsonLd,
-  zhFaqJsonLd,
-  type ZhCrumb,
-  type ZhFaqItem,
-} from "../../../../components/ZhChrome";
+  Breadcrumb,
+  Disclosure,
+  FaqList,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  type Crumb,
+  type FaqItem,
+} from "../../../../components/IntlChrome";
 import { zhKlookEsim, zhTokyoSubwayTicket } from "../../../../lib/klook-links-zh-tw";
 import { attractionPrices, checkedLabel, latestChecked } from "../../../../lib/attraction-prices";
 import { pageUpdated } from "../../../../lib/page-dates";
@@ -109,7 +109,7 @@ const pageByRoute = new Map(TRANSLATED_PAGES.map((p) => [p.zhTw, p]));
 
 const hubRoutes = groups.flatMap((g) => g.routes);
 
-const faqItems: ZhFaqItem[] = [
+const faqItems: FaqItem[] = [
   {
     q: "日本哪些景點門票一定要提前訂？",
     a: "會賣完的是指定日期與時段的那幾個：東京迪士尼（指定日期，門口完全不賣票）、兩間 teamLab 美術館（指定時段）、澀谷SKY 的日落場，以及日本環球影城（2025 年 5 月起當天門口不再售票）。其他大部分的景點與神社，當天再決定都來得及。",
@@ -128,7 +128,7 @@ const faqItems: ZhFaqItem[] = [
   },
 ];
 
-const trail: ZhCrumb[] = [{ label: "日本景點門票" }];
+const trail: Crumb[] = [{ label: "日本景點門票" }];
 
 /**
  * "Updated" labels for the cards, in Chinese. The English hubs use
@@ -146,9 +146,9 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
   return (
     <>
       <Head>
-        {zhSeoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhFaqJsonLd(faqItems) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: zhBreadcrumbJsonLd(trail, ROUTE) }} />
+        {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -166,7 +166,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
         />
       </Head>
 
-      <ZhBreadcrumb trail={trail} />
+      <Breadcrumb trail={trail} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -188,7 +188,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
       </section>
 
       <div className={styles.content}>
-        <ZhDisclosure />
+        <Disclosure />
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>先看這個</span>
@@ -269,7 +269,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
           </div>
         </section>
 
-        <ZhFaqList items={faqItems} />
+        <FaqList items={faqItems} />
       </div>
     </>
   );

@@ -3,22 +3,26 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/BestEsimJapan.module.css";
 import { SITE_URL } from "../lib/structured-data";
-import { ZH_PREFIX, zhLocaleOf, type ZhLocale } from "../lib/i18n";
+import { LOCALE_PREFIX, translatedLocaleOf, type TranslatedLocale } from "../lib/i18n";
 
 /**
- * The repeated furniture of a Chinese guide page: breadcrumb, affiliate
+ * The repeated furniture of a translated guide page: breadcrumb, affiliate
  * disclosure, FAQ accordion and the "keep reading" grid.
  *
  * The English pages each carry their own copy of this markup — eleven lines of
- * chevron SVG per breadcrumb, repeated 74 times. The Chinese editions start from
+ * chevron SVG per breadcrumb, repeated 74 times. The translated editions start from
  * one component instead, because the three strings that differ between its pages
  * (the trail, the disclosure, the FAQ) are the only things that actually differ.
- * Same CSS module as the English pages, so all three editions look identical.
+ * Same CSS module as the English pages, so every edition looks identical.
  *
- * The handful of fixed words this file owns exist twice, once per script, in COPY
- * below. Which set renders is resolved from the route — the same way Header and
- * Footer do it — rather than passed down as a prop through all twenty pages: a page
- * under /zh-cn cannot then accidentally render 繁體 chrome around 简体 body text.
+ * Named ZhChrome until 2026-10-21, when 한국어 and ไทย joined the two Chinese
+ * editions and the name stopped being true. Nothing about the mechanism changed.
+ *
+ * The handful of fixed words this file owns exist once per language in COPY below.
+ * Which set renders is resolved from the route — the same way Header and Footer do
+ * it — rather than passed down as a prop through all thirty pages: a page under
+ * /zh-cn cannot then accidentally render 繁體 chrome around 简体 body text, and a
+ * page under /th cannot render Korean.
  */
 
 type Copy = {
@@ -31,7 +35,7 @@ type Copy = {
   relatedArrow: string;
 };
 
-const COPY: Record<ZhLocale, Copy> = {
+const COPY: Record<TranslatedLocale, Copy> = {
   "zh-tw": {
     disclosureLabel: "聯盟行銷聲明：",
     disclosureText:
@@ -52,11 +56,31 @@ const COPY: Record<ZhLocale, Copy> = {
     relatedTitle: "其他攻略",
     relatedArrow: "看攻略 →",
   },
+  ko: {
+    disclosureLabel: "제휴 링크 안내: ",
+    disclosureText:
+      "이 페이지의 일부 링크는 제휴 링크입니다. 이 링크로 예약하시면 저희가 소액의 수수료를 받을 수 있으며, 고객님이 지불하는 금액은 달라지지 않습니다.",
+    disclosureLink: "전체 고지 사항(영어) →",
+    faqHeading: "자주 묻는 질문",
+    relatedLabel: "함께 읽기",
+    relatedTitle: "다른 가이드",
+    relatedArrow: "가이드 보기 →",
+  },
+  th: {
+    disclosureLabel: "การเปิดเผยลิงก์พันธมิตร: ",
+    disclosureText:
+      "ลิงก์บางส่วนในหน้านี้เป็นลิงก์พันธมิตร หากคุณจองผ่านลิงก์เหล่านี้ เราอาจได้รับค่าตอบแทนเล็กน้อย โดยราคาที่คุณจ่ายไม่เพิ่มขึ้น",
+    disclosureLink: "ข้อความเปิดเผยฉบับเต็ม (ภาษาอังกฤษ) →",
+    faqHeading: "คำถามที่พบบ่อย",
+    relatedLabel: "อ่านต่อ",
+    relatedTitle: "ไกด์อื่น ๆ",
+    relatedArrow: "ดูไกด์ →",
+  },
 };
 
 /** The copy set for the page currently rendering. */
-function useZhCopy(): Copy {
-  return COPY[zhLocaleOf(useRouter().pathname)];
+function useCopy(): Copy {
+  return COPY[translatedLocaleOf(useRouter().pathname)];
 }
 
 function BreadSep() {
@@ -67,23 +91,30 @@ function BreadSep() {
   );
 }
 
-export type ZhCrumb = {
+export type Crumb = {
   /** Omitted on the last crumb, which is the current page. */
   href?: string;
   label: string;
 };
 
 /**
- * The trail every Chinese guide page starts from, per edition. The first crumb is
- * the Chinese hub of the same script, not the English home page — a reader who taps
- * "back" from a 简体 article should stay in 简体.
+ * The trail every translated guide page starts from, per edition.
+ *
+ * In Chinese the first crumb is the Chinese hub of the same script, not the English
+ * home page — a reader who taps "back" from a 简体 article should stay in 简体. The
+ * Korean and Thai editions are five pages with no hub of their own, so their first
+ * crumb is the English Things to Do hub, which is the real parent of all five, and
+ * it is labelled as English rather than looking like a page in the reader's own
+ * language. When those editions get a hub, this is the only line that changes.
  */
-export const ZH_TRAIL_BASE: Record<ZhLocale, ZhCrumb[]> = {
-  "zh-tw": [{ href: `${ZH_PREFIX["zh-tw"]}/guides/attractions`, label: "日本景點門票" }],
-  "zh-cn": [{ href: `${ZH_PREFIX["zh-cn"]}/guides/attractions`, label: "日本景点门票" }],
+export const TRAIL_BASE: Record<TranslatedLocale, Crumb[]> = {
+  "zh-tw": [{ href: `${LOCALE_PREFIX["zh-tw"]}/guides/attractions`, label: "日本景點門票" }],
+  "zh-cn": [{ href: `${LOCALE_PREFIX["zh-cn"]}/guides/attractions`, label: "日本景点门票" }],
+  ko: [{ href: "/guides/attractions", label: "일본 티켓 가이드(영어)" }],
+  th: [{ href: "/guides/attractions", label: "ไกด์ตั๋วญี่ปุ่น (ภาษาอังกฤษ)" }],
 };
 
-export function ZhBreadcrumb({ trail }: { trail: ZhCrumb[] }) {
+export function Breadcrumb({ trail }: { trail: Crumb[] }) {
   return (
     <div className={styles.breadcrumb}>
       <div className={styles.breadcrumbInner}>
@@ -105,7 +136,7 @@ export function ZhBreadcrumb({ trail }: { trail: ZhCrumb[] }) {
 }
 
 /** BreadcrumbList JSON-LD for the same trail, so the two cannot drift apart. */
-export function zhBreadcrumbJsonLd(trail: ZhCrumb[], currentRoute: string): string {
+export function breadcrumbJsonLd(trail: Crumb[], currentRoute: string): string {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -119,12 +150,13 @@ export function zhBreadcrumbJsonLd(trail: ZhCrumb[], currentRoute: string): stri
 }
 
 /**
- * The affiliate disclosure, in Chinese, with the same wording obligation as the
- * English one. It links to the English /disclaimer because that page is not
- * translated yet — and says so, rather than letting the link surprise anyone.
+ * The affiliate disclosure, in the page's language, with the same wording
+ * obligation as the English one. It links to the English /disclaimer because that
+ * page is not translated yet — and says so, rather than letting the link surprise
+ * anyone.
  */
-export function ZhDisclosure() {
-  const copy = useZhCopy();
+export function Disclosure() {
+  const copy = useCopy();
   return (
     <div className={styles.disclosure}>
       <p className={styles.disclosureText}>
@@ -136,10 +168,10 @@ export function ZhDisclosure() {
   );
 }
 
-export type ZhFaqItem = { q: string; a: string };
+export type FaqItem = { q: string; a: string };
 
-export function ZhFaqList({ items, heading }: { items: ZhFaqItem[]; heading?: string }) {
-  const copy = useZhCopy();
+export function FaqList({ items, heading }: { items: FaqItem[]; heading?: string }) {
+  const copy = useCopy();
   return (
     <section className={styles.faqSection}>
       <span className={styles.sectionLabel}>FAQ</span>
@@ -162,7 +194,7 @@ export function ZhFaqList({ items, heading }: { items: ZhFaqItem[]; heading?: st
 }
 
 /** FAQPage JSON-LD from the same items the accordion renders. */
-export function zhFaqJsonLd(items: ZhFaqItem[]): string {
+export function faqJsonLd(items: FaqItem[]): string {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -174,15 +206,17 @@ export function zhFaqJsonLd(items: ZhFaqItem[]): string {
   });
 }
 
-export type ZhRelatedItem = { href: string; title: string };
+export type RelatedItem = { href: string; title: string };
 
 /**
- * "延伸閱讀" / "延伸阅读". Every href here points at another Chinese page of the same
- * script — the ten pages of an edition cross-link only to each other, so a reader
- * never leaves their own language through a link that looks like it stays.
+ * "延伸閱讀" / "함께 읽기" / "อ่านต่อ". Every href here points at another page of the
+ * same edition — the pages of an edition cross-link only to each other, so a reader
+ * never leaves their own language through a link that looks like it stays. Where an
+ * edition has nothing of its own to link (the Korean and Thai sets are five pages),
+ * an English destination is labelled as English in the title.
  */
-export function ZhRelated({ items }: { items: ZhRelatedItem[] }) {
-  const copy = useZhCopy();
+export function Related({ items }: { items: RelatedItem[] }) {
+  const copy = useCopy();
   return (
     <section className={styles.relatedSection}>
       <span className={styles.sectionLabel}>{copy.relatedLabel}</span>
