@@ -129,39 +129,96 @@ button.navLink[aria-expanded="true"] .navChevron { transform: rotate(180deg); }
 .cta { display: none; }
 @media (min-width: 980px) { .cta { display: flex; align-items: center; gap: 1.1rem; } }
 
-/* ── English／繁體中文 switch (added 2026-10-20) ──────────────────────────────
-   Deliberately quiet: it sits to the left of the CTA at the small type size the
-   tagline uses, because it is only shown on the handful of pages that exist in
-   both languages and is not something most visitors are looking for. */
-/* Wraps because the switch grew from three languages to five on 2026-10-21: at
-   1024px, English／繁體中文／简体中文／한국어／ไทย plus the CTA no longer fits one row. */
-.langSwitch {
+/* ── Language switch ─────────────────────────────────────────────────────────
+   Rebuilt 2026-10-21. It used to be an inline English／繁體中文／… row in
+   var(--text-faint) at 0.74rem, shown only on pages that had a translation: five
+   languages wide enough to wrap at 1024px, too pale to read, and missing from the
+   home page and every English-only article — which is how a site with four
+   translated editions ended up with no visible way to pick one.
+
+   Now: a globe, the current language's own name, and a menu of all five, in the
+   same colour and at nearly the same size as the nav beside it. Same square,
+   hairline-bordered panel as the Destinations dropdown, because it is the same
+   kind of object. */
+.langGroup { position: relative; display: flex; align-items: center; }
+
+.langBtn {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.3rem;
-  font-size: 0.74rem;
+  gap: 0.4rem;
+  padding: 0.35rem 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
   letter-spacing: 0.02em;
-}
-.langSwitch > * { white-space: nowrap; }
-.langLink {
-  color: var(--text-faint);
-  text-decoration: none;
+  color: var(--text);
+  white-space: nowrap;
+  cursor: pointer;
   border-bottom: 1px solid transparent;
   transition: color 0.15s, border-color 0.15s;
 }
-.langLink:hover { color: var(--accent); border-bottom-color: var(--accent); }
-.langCurrent { color: var(--text); font-weight: 600; }
-.langSep { color: var(--rule); }
+.langBtn:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.langGlobe { flex-shrink: 0; }
+.langBtn[aria-expanded="true"] .navChevron { transform: rotate(180deg); }
 
-/* In the mobile sheet the switch gets a row of its own under a "Language" label. */
-.langSwitchMobile {
-  display: flex;
-  padding: 0.8rem 0;
-  border-top: 1px solid var(--rule);
+/* Right-aligned: the switch is the rightmost thing in the header bar on desktop,
+   so a menu hanging off its left edge would run under the CTA. */
+.langMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 150px;
+  padding: 0.3rem 0;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  display: none;
+  flex-direction: column;
+  z-index: 110;
 }
-.langSwitchMobile .langSwitch { font-size: 0.9rem; gap: 0.45rem; }
+.langMenuOpen { display: flex; }
+
+.langMenuLink {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.15s, background 0.15s;
+}
+.langMenuLink:last-child { border-bottom: 0; }
+.langMenuLink:hover { color: var(--accent); background: var(--paper); }
+/* The language you are already reading: named, not hidden, so the menu always says
+   where you are. The rule on the left is the one marker in this system for "current". */
+.langMenuCurrent {
+  font-weight: 600;
+  background: var(--paper);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+/* In the mobile sheet the five languages are the first block under the "Language"
+   label, before Guides — on a phone it is the first thing a reader who cannot read
+   the page needs, and the last thing they would find at the bottom of the sheet. */
+.mobileLangList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.1rem;
+}
+.mobileLangLink {
+  padding: 0.65rem 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.mobileLangLink:hover { color: var(--accent); }
+.mobileLangCurrent { font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 
 .ctaBtn {
   display: inline-flex;

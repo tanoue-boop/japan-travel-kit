@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Fragment, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../styles/Header.module.css";
 import {
   HTML_LANG,
@@ -10,8 +10,7 @@ import {
   LOCALE_HOME,
   LOCALE_NAME,
   localeOf,
-  pairFor,
-  routeOf,
+  switchTargetFor,
   type Locale,
 } from "../lib/i18n";
 
@@ -219,18 +218,40 @@ const COPY: Record<Locale, Copy> = {
 /** The order the switch lists the languages in — the site's own first. */
 const SWITCH_ORDER: Locale[] = LOCALES;
 
+/** The switch's own mark. A drawn globe, not the 🌐 emoji, which renders per platform. */
+function GlobeIcon() {
+  return (
+    <svg
+      className={styles.langGlobe}
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3c2.5 2.6 2.5 15.4 0 18C9.5 18.4 9.5 5.6 12 3z" />
+    </svg>
+  );
+}
+
 export default function Header() {
   const router = useRouter();
   const [open, setOpen]           = useState(false);
   const [scrolled, setScrolled]   = useState(false);
   const [destOpen, setDestOpen]   = useState(false);
+  const [langOpen, setLangOpen]   = useState(false);
   const destRef                   = useRef<HTMLDivElement>(null);
+  const langRef                   = useRef<HTMLDivElement>(null);
 
   // router.pathname is the page's own route (these are all static pages), which is
   // what lib/i18n.ts keys both the locale and the page pairs off.
   const locale = localeOf(router.pathname);
   const copy = COPY[locale];
-  const pair = pairFor(router.pathname);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
@@ -256,35 +277,38 @@ export default function Header() {
     };
   }, [destOpen]);
 
-  /**
-   * The language switch, listing only the languages this exact page exists in. A
-   * switch that drops you on a different page — or on a 404 — is worse than no
-   * switch, so pages outside lib/i18n.ts's list show nothing at all, and the five
-   * pages that are Chinese-only do not offer 한국어 or ไทย.
-   */
-  const languages = pair
-    ? SWITCH_ORDER.map((target) => ({ target, href: routeOf(pair, target) })).filter(
-        (l): l is { target: Locale; href: string } => l.href !== null,
-      )
-    : [];
+  // Same for the language menu. Click-only, not hover: picking a language is a
+  // deliberate act and a menu that falls open when the pointer crosses the CTA is a
+  // nuisance.
+  useEffect(() => {
+    if (!langOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLangOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [langOpen]);
 
-  const langSwitch = languages.length > 1 && (
-    <div className={styles.langSwitch} aria-label={copy.langLabel}>
-      {languages.map(({ target, href }, i) => (
-        <Fragment key={target}>
-          {i > 0 && <span className={styles.langSep} aria-hidden="true">／</span>}
-          <Link
-            href={href}
-            hrefLang={HTML_LANG[target]}
-            className={`${styles.langLink}${locale === target ? ` ${styles.langCurrent}` : ""}`}
-            aria-current={locale === target ? "true" : undefined}
-          >
-            {LOCALE_NAME[target]}
-          </Link>
-        </Fragment>
-      ))}
-    </div>
-  );
+  /**
+   * Every language, on every page.
+   *
+   * Until 2026-10-21 this listed only the languages that had *this exact page*, which
+   * meant it appeared on thirty pages out of a hundred and twenty and was absent from
+   * the home page — the complaint that there was no way to choose a language was
+   * simply true. `switchTargetFor` now always has a destination: the translation
+   * where one exists, that edition's entry page where it does not.
+   */
+  const languages = SWITCH_ORDER.map((target) => ({
+    target,
+    href: switchTargetFor(router.pathname, target),
+  }));
 
   return (
     <header className={`${styles.header}${scrolled ? ` ${styles.scrolled}` : ""}`}>
@@ -340,7 +364,36 @@ export default function Header() {
         </nav>
 
         <div className={styles.cta}>
-          {langSwitch}
+          <div ref={langRef} className={styles.langGroup}>
+            <button
+              type="button"
+              className={styles.langBtn}
+              aria-expanded={langOpen}
+              aria-haspopup="true"
+              aria-label={copy.langLabel}
+              onClick={() => setLangOpen((v) => !v)}
+            >
+              <GlobeIcon />
+              {LOCALE_NAME[locale]}
+              <svg className={styles.navChevron} width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div className={`${styles.langMenu}${langOpen ? ` ${styles.langMenuOpen}` : ""}`}>
+              {languages.map(({ target, href }) => (
+                <Link
+                  key={target}
+                  href={href}
+                  hrefLang={HTML_LANG[target]}
+                  className={`${styles.langMenuLink}${locale === target ? ` ${styles.langMenuCurrent}` : ""}`}
+                  aria-current={locale === target ? "true" : undefined}
+                  onClick={() => setLangOpen(false)}
+                >
+                  {LOCALE_NAME[target]}
+                </Link>
+              ))}
+            </div>
+          </div>
           <Link href={copy.ctaHref} className={styles.ctaBtn}>{copy.ctaLabel}</Link>
         </div>
 
@@ -355,8 +408,26 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile: Destinations is an always-expanded list rather than a second tap target. */}
+      {/* Mobile: Destinations is an always-expanded list rather than a second tap target.
+          The language choice leads, because on a phone it is the first thing a reader who
+          cannot read the page needs and the last thing they would find at the bottom. */}
       <nav className={`${styles.mobileNav}${open ? ` ${styles.open}` : ""}`}>
+        <p className={styles.mobileLabel}>{copy.langLabel}</p>
+        <div className={styles.mobileLangList}>
+          {languages.map(({ target, href }) => (
+            <Link
+              key={target}
+              href={href}
+              hrefLang={HTML_LANG[target]}
+              className={`${styles.mobileLangLink}${locale === target ? ` ${styles.mobileLangCurrent}` : ""}`}
+              aria-current={locale === target ? "true" : undefined}
+              onClick={() => setOpen(false)}
+            >
+              {LOCALE_NAME[target]}
+            </Link>
+          ))}
+        </div>
+
         <p className={styles.mobileLabel}>{copy.guidesLabel}</p>
         <Link href={copy.nav[0].href} className={styles.mobileLink} onClick={() => setOpen(false)}>
           {copy.nav[0].label}
@@ -380,13 +451,6 @@ export default function Header() {
         <Link href={copy.allGuidesHref} className={styles.mobileLink} onClick={() => setOpen(false)}>
           {copy.allGuidesLabel}
         </Link>
-
-        {langSwitch && (
-          <>
-            <p className={styles.mobileLabel}>{copy.langLabel}</p>
-            <div className={styles.langSwitchMobile}>{langSwitch}</div>
-          </>
-        )}
 
         <Link href={copy.ctaHref} className={styles.mobileCta} onClick={() => setOpen(false)}>
           {copy.ctaLabel}

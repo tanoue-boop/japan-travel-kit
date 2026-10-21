@@ -1,0 +1,51 @@
+/* The "this page is also in …" bar (2026-10-21). One line, paper surface, hairline
+   underneath — the same furniture as the breadcrumb strip it sits above, because it is
+   the same weight of information. No tint, no icon, no animation: it is an offer, and
+   a reader who does not want it should be able to ignore or close it in one glance.
+   Rendered on the client only; see components/LanguageNotice.tsx. */
+
+.bar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0.55rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+@media (min-width: 640px) { .inner { padding: 0.55rem var(--gutter-wide); } }
+
+/* Body-weight colour, not a muted grey: the whole point is that someone who cannot
+   read the page can read this. */
+.link {
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.close:hover { color: var(--accent); }

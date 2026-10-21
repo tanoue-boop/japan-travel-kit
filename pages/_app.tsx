@@ -6,6 +6,7 @@ import "../styles/globals.css";
 import { fontVariableClass } from "../lib/fonts";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import LanguageNotice from "../components/LanguageNotice";
 import { GA_MEASUREMENT_ID, pageview, trackAffiliateClick } from "../lib/gtag";
 
 // アフィリエイト/比較対象ASPの判定表。未承認ASPの素URLも需要把握のため計測対象に含める。
@@ -94,6 +95,10 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
     >
       <Header />
+      {/* Under the sticky header, above the page: a client-only offer of the reader's
+          own language, when the browser asks for one the site publishes. Nothing is
+          server-rendered here and nothing redirects — see the component. */}
+      <LanguageNotice />
       <main style={{ flex: 1 }}>
         <Component {...pageProps} />
       </main>

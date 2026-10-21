@@ -1,7 +1,16 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/Footer.module.css";
-import { LOCALE_HOME, localeOf, monthLabel, type Locale } from "../lib/i18n";
+import {
+  HTML_LANG,
+  LOCALES,
+  LOCALE_HOME,
+  LOCALE_NAME,
+  localeOf,
+  monthLabel,
+  switchTargetFor,
+  type Locale,
+} from "../lib/i18n";
 
 /** A build Date as the "YYYY-MM-01" lib/i18n.ts's label helpers take. */
 const isoMonth = (d: Date) => `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-01`;
@@ -187,6 +196,8 @@ type Copy = {
   rights: string;
   affiliate: string;
   homeHref: string;
+  /** Heading of the language row — "Language" / 語言 / 언어 / ภาษา. */
+  langLabel: string;
   cols: FooterCol[];
   /** How to render "Updated October 2026" for this language. */
   updatedLabel: (date: Date) => string;
@@ -198,6 +209,7 @@ const COPY: Record<Locale, Copy> = {
     rights: "All rights reserved.",
     affiliate: "This site contains affiliate links. We may earn a commission at no extra cost to you.",
     homeHref: "/",
+    langLabel: "Language",
     cols,
     updatedLabel: (d) =>
       `Updated ${d.toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" })}`,
@@ -207,6 +219,7 @@ const COPY: Record<Locale, Copy> = {
     rights: "版權所有。",
     affiliate: "本站包含聯盟行銷連結。透過連結預訂，我們可能獲得少許分潤，不影響您支付的價格。",
     homeHref: LOCALE_HOME["zh-tw"],
+    langLabel: "語言",
     cols: zhCols,
     updatedLabel: (d) => `更新於 ${d.getUTCFullYear()}年${d.getUTCMonth() + 1}月`,
   },
@@ -215,6 +228,7 @@ const COPY: Record<Locale, Copy> = {
     rights: "版权所有。",
     affiliate: "本站包含推广联盟链接。通过链接预订，我们可能获得少量分成，不影响您支付的价格。",
     homeHref: LOCALE_HOME["zh-cn"],
+    langLabel: "语言",
     cols: cnCols,
     updatedLabel: (d) => `更新于 ${d.getUTCFullYear()}年${d.getUTCMonth() + 1}月`,
   },
@@ -223,6 +237,7 @@ const COPY: Record<Locale, Copy> = {
     rights: "All rights reserved.",
     affiliate: "이 사이트에는 제휴 링크가 포함됩니다. 링크로 예약하면 저희가 수수료를 받을 수 있으며, 고객님이 지불하는 금액은 달라지지 않습니다.",
     homeHref: LOCALE_HOME.ko,
+    langLabel: "언어",
     cols: koCols,
     updatedLabel: (d) => `${monthLabel(isoMonth(d), "ko")} 업데이트`,
   },
@@ -231,6 +246,7 @@ const COPY: Record<Locale, Copy> = {
     rights: "All rights reserved.",
     affiliate: "เว็บไซต์นี้มีลิงก์พันธมิตร หากคุณจองผ่านลิงก์ เราอาจได้รับค่าตอบแทน โดยราคาที่คุณจ่ายไม่เพิ่มขึ้น",
     homeHref: LOCALE_HOME.th,
+    langLabel: "ภาษา",
     cols: thCols,
     updatedLabel: (d) => `อัปเดต ${monthLabel(isoMonth(d), "th")}`,
   },
@@ -241,7 +257,8 @@ const buildDate = new Date(process.env.NEXT_PUBLIC_BUILD_DATE ?? Date.now());
 
 export default function Footer() {
   const router = useRouter();
-  const copy = COPY[localeOf(router.pathname)];
+  const locale = localeOf(router.pathname);
+  const copy = COPY[locale];
 
   return (
     <footer className={styles.footer}>
@@ -267,6 +284,27 @@ export default function Footer() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Language links in the footer too (2026-10-21): the header menu is the one
+            most people will use, but the footer is where a reader who has scrolled a
+            long article to the end already is, and where visitors look for this on
+            every other multilingual site. Same destinations as the header switch. */}
+        <div className={styles.langRow}>
+          <p className={styles.langRowLabel}>{copy.langLabel}</p>
+          <div className={styles.langLinks}>
+            {LOCALES.map((target) => (
+              <Link
+                key={target}
+                href={switchTargetFor(router.pathname, target)}
+                hrefLang={HTML_LANG[target]}
+                className={`${styles.langLink}${locale === target ? ` ${styles.langLinkCurrent}` : ""}`}
+                aria-current={locale === target ? "true" : undefined}
+              >
+                {LOCALE_NAME[target]}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className={styles.bottom}>

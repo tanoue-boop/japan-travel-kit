@@ -33,8 +33,10 @@
  * This module is the one list of groups. It is read by:
  *
  *   - components/Hreflang.tsx — the <link rel="alternate"> set on every side
- *   - components/Header.tsx / Footer.tsx — the language switch, shown only where
- *     the other languages actually have the page
+ *   - components/Header.tsx / Footer.tsx — the language switch, on every page since
+ *     2026-10-21: the translation where there is one, that edition's entry page
+ *     where there is not
+ *   - components/LanguageNotice.tsx — the client-side "this page is also in …" bar
  *   - components/IntlChrome.tsx / IntlSeo.tsx — which language the shared
  *     furniture renders in
  *   - scripts/generate-sitemap.js — the <xhtml:link> cross-references
@@ -446,6 +448,52 @@ export function enRouteFor(route: string): string {
   // Not in the list: strip the prefix, which is where the English page would be if
   // it exists. "/zh-tw" alone strips to "" — that is the home page.
   return route.slice(LOCALE_PREFIX[locale].length) || "/";
+}
+
+/**
+ * Where the language switch sends a reader who is on `route` and picks `locale`.
+ *
+ * The translation of this exact page when there is one; that edition's entry page
+ * when there is not. Before 2026-10-21 the second half did not exist, so the switch
+ * was hidden on every page outside the group list — which is the whole of the site
+ * bar thirty pages, and is why nobody could find it. Dropping someone on a different
+ * page in the language they asked for is a worse answer than the translation and a
+ * much better one than no answer.
+ */
+export function switchTargetFor(route: string, locale: Locale): string {
+  const pair = pairFor(route);
+  return (pair && routeOf(pair, locale)) || LOCALE_HOME[locale];
+}
+
+/** True when `locale` has this exact page, rather than only its entry page. */
+export function hasTranslation(route: string, locale: Locale): boolean {
+  const pair = pairFor(route);
+  return pair ? routeOf(pair, locale) !== null : false;
+}
+
+/**
+ * The edition a browser's language list asks for, or null.
+ *
+ * Read by components/LanguageNotice.tsx, which offers a one-line link and never
+ * redirects: an automatic redirect on Accept-Language would show Googlebot — which
+ * crawls from the US with no language preference — a different page from the one a
+ * reader sees, and risks the whole translated set being read as cloaking.
+ *
+ * Only the specific tags are honoured. zh-TW, zh-HK and zh-Hant mean Traditional;
+ * zh-CN, zh-SG and zh-Hans mean Simplified. A bare `zh` is not matched at all,
+ * because it does not say which script, and guessing wrong puts a Taiwanese reader
+ * on the Simplified edition. First match in the list wins, so the browser's own
+ * priority order decides.
+ */
+export function localeFromBrowserLanguages(tags: readonly string[]): TranslatedLocale | null {
+  for (const raw of tags) {
+    const tag = raw.toLowerCase();
+    if (/^zh-(tw|hk|hant)\b/.test(tag)) return "zh-tw";
+    if (/^zh-(cn|sg|hans)\b/.test(tag)) return "zh-cn";
+    if (/^ko\b/.test(tag)) return "ko";
+    if (/^th\b/.test(tag)) return "th";
+  }
+  return null;
 }
 
 export function absoluteUrl(route: string): string {
