@@ -4,6 +4,8 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kyotoHighlightBusTour, kyotoNaraArashiyamaTour } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygJapanTeaCeremonies, gygKyotoTeaCeremonies, gygTokyoTeaCeremonies } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
@@ -257,9 +259,12 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               <em>seiza</em>, kneeling — and any pregnancy restrictions the venue lists. Session details as
               listed on {CHECKED}.
             </p>
-            <a href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Browse Tea Ceremony Experiences →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Browse Tea Ceremony Experiences →
+              </a>
+              <GygCompareButton slug="tea-ceremony-japan" listing={gygJapanTeaCeremonies} />
+            </div>
           </div>
         </div>
 
@@ -397,6 +402,16 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           tours={[kyotoHighlightBusTour, kyotoNaraArashiyamaTour]}
         />
 
+        {/* This guide covers more than one city, which is why the GetYourGuide side gets
+            three lists rather than one. The Klook link and the seating and pregnancy
+            advice above are unchanged. */}
+        <GygCompare
+          slug="tea-ceremony-japan"
+          heading="Tea Ceremonies on GetYourGuide"
+          intro="A tea room seats a handful of people at a time, so these are among the first things to go in a busy week — and the venue matters more than the platform. GetYourGuide splits its listings by city, with the Japan-wide one worth using if your trip does not pass through Kyoto or Tokyo. The seating and pregnancy questions above apply whichever counter you book through."
+          listings={[gygKyotoTeaCeremonies, gygTokyoTeaCeremonies, gygJapanTeaCeremonies]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -488,9 +503,12 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               experiences. Check seating and any pregnancy restrictions when you book, and consider pairing it with
               a kimono.
             </p>
-            <a href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              Browse Tea Ceremony Experiences →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                Browse Tea Ceremony Experiences →
+              </a>
+              <GygCompareButton slug="tea-ceremony-japan" listing={gygJapanTeaCeremonies} />
+            </div>
           </div>
         </div>
       </div>

@@ -8,6 +8,8 @@ import {
   fujiSubaruLineHakoneBusTour,
   fujiHakoneBulletTrainTour,
 } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygFujiBusTours, gygFujiFromTokyo } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -290,9 +292,12 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
               includes Lake Kawaguchi and Oshino Hakkai. Either way the day runs to about eleven hours and the
               mountain may be in cloud — choose a tour whose other stops you would still enjoy.
             </p>
-            <a href={fujiHakoneDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Check Mt. Fuji day tours on Klook →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={fujiHakoneDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Check Mt. Fuji day tours on Klook →
+              </a>
+              <GygCompareButton slug="mt-fuji-day-tour-from-tokyo" listing={gygFujiFromTokyo} />
+            </div>
           </div>
         </div>
 
@@ -425,6 +430,15 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
           tours={[fujiHakoneDayTour, fujiDayTour, fujiSubaruLineHakoneBusTour, fujiHakoneBulletTrainTour]}
         />
 
+        {/* A coach day trip sells out by date, and the two platforms do not carry the
+            same operators. The four tours compared above are unchanged. */}
+        <GygCompare
+          slug="mt-fuji-day-tour-from-tokyo"
+          heading="Mt. Fuji Day Tours on GetYourGuide"
+          intro="A join-in coach has a fixed number of seats on a fixed date, so the useful question on a Fuji day is not which tour is best but which one still has your date. GetYourGuide runs a different set of operators — if the four above are full, start here rather than giving up on the mountain."
+          listings={[gygFujiFromTokyo, gygFujiBusTours]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -553,9 +567,12 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
               The Fuji-and-Hakone tours pair the Subaru Line Fifth Station with the Owakudani valley and a Lake
               Ashi cruise. Klook checks out in English and takes foreign cards.
             </p>
-            <a href={fujiHakoneDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              View Mt. Fuji day tours on Klook →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={fujiHakoneDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                View Mt. Fuji day tours on Klook →
+              </a>
+              <GygCompareButton slug="mt-fuji-day-tour-from-tokyo" listing={gygFujiFromTokyo} />
+            </div>
           </div>
         </div>
       </div>

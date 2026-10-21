@@ -4,6 +4,8 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSubwayTicket, tokyoSightseeingBusTour, skytreeTicket } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygTokyoSamuraiNinja } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
@@ -253,9 +255,12 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
               minimum age. Both are indoors and run year-round, which makes either a reliable wet-weather
               plan around Asakusa. Confirm the minimum age before booking. Details as listed on {CHECKED}.
             </p>
-            <a href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Browse Samurai &amp; Ninja Experiences →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Browse Samurai &amp; Ninja Experiences →
+              </a>
+              <GygCompareButton slug="samurai-ninja-experience-tokyo" listing={gygTokyoSamuraiNinja} />
+            </div>
           </div>
         </div>
 
@@ -378,6 +383,15 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
           heading="Around Asakusa, the Same Day"
           intro="The museum sits a few minutes from Senso-ji, so the obvious pairings are the ones that start or finish nearby. Open a listing for the current price on your date."
           tours={[skytreeTicket, tokyoSightseeingBusTour, tokyoSubwayTicket]}
+        />
+
+        {/* The same museums, plus the Shinjuku branch, on a second platform. The Klook
+            link and the age-limit advice above are unchanged. */}
+        <GygCompare
+          slug="samurai-ninja-experience-tokyo"
+          heading="Samurai and Ninja Experiences on GetYourGuide"
+          intro="These run as timed sessions with a guide, so a wet afternoon fills them and the slot you want may be gone. GetYourGuide lists the Samurai Ninja Museum at both its Asakusa and Shinjuku branches, along with the kid-friendly training formats — check the minimum age there as carefully as you would here."
+          listings={[gygTokyoSamuraiNinja]}
         />
 
         {/* Related articles */}
@@ -509,9 +523,12 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
               year-round experiences make an easy add to any itinerary. Compare options, check the age limits,
               and book your slot in advance.
             </p>
-            <a href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              Browse Samurai &amp; Ninja Experiences →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                Browse Samurai &amp; Ninja Experiences →
+              </a>
+              <GygCompareButton slug="samurai-ninja-experience-tokyo" listing={gygTokyoSamuraiNinja} />
+            </div>
           </div>
         </div>
       </div>

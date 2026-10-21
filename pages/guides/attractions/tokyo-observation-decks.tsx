@@ -4,6 +4,8 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { skytreeAquariumCombo, subwayCityViewCombo, tokyoSubwayTicket } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygShibuyaSky, gygTokyoEntryTickets, gygTokyoSkytree, gygTokyoTower } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
@@ -503,6 +505,15 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           tours={[skytreeAquariumCombo, subwayCityViewCombo, tokyoSubwayTicket]}
         />
 
+        {/* All three decks are sold on GetYourGuide as well. The Klook links above,
+            and every height and price on this page, are unchanged. */}
+        <GygCompare
+          slug="tokyo-observation-decks"
+          heading="The Same Three Decks on GetYourGuide"
+          intro="Shibuya Sky is the one deck here where the slot you want genuinely sells out, and Skytree and Tokyo Tower both have an upgrade tier that is easier to compare side by side than in sequence. All three have their own GetYourGuide listing."
+          listings={[gygShibuyaSky, gygTokyoSkytree, gygTokyoTower]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -631,6 +642,11 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
               <a href={TOKYO_TOWER_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Tokyo Tower →
               </a>
+              <GygCompareButton
+                slug="tokyo-observation-decks"
+                listing={gygTokyoEntryTickets}
+                label="All three on GetYourGuide →"
+              />
             </div>
           </div>
         </div>

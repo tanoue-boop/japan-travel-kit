@@ -4,6 +4,8 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kyotoHighlightBusTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygKyotoKimono, gygTokyoKimono } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA links — Klook affiliate redirects (tracking links, both listings confirmed live
@@ -275,6 +277,11 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
                 Kimono Rental — Kyoto →
               </a>
             </div>
+            {/* Both Klook shops above are unchanged; these open the same two cities elsewhere. */}
+            <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+              <GygCompareButton slug="kimono-rental-japan" listing={gygTokyoKimono} label="Tokyo on GetYourGuide →" />
+              <GygCompareButton slug="kimono-rental-japan" listing={gygKyotoKimono} label="Kyoto on GetYourGuide →" />
+            </div>
           </div>
         </div>
 
@@ -411,6 +418,15 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           tours={[kyotoHighlightBusTour, tokyoSightseeingBusTour]}
         />
 
+        {/* Both cities, second platform. The two Klook shops and their return times are
+            unchanged. */}
+        <GygCompare
+          slug="kimono-rental-japan"
+          heading="Kimono Rentals on GetYourGuide"
+          intro="A rental shop has a finite number of outfits and dressers, which is exactly why spring and autumn book out — and why a second list of shops is worth having. GetYourGuide covers both cities, Kyoto more deeply than Tokyo. Check the return deadline wherever you book: it is the detail that decides how much of the day you actually get."
+          listings={[gygKyotoKimono, gygTokyoKimono]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -511,6 +527,7 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
               <a href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Kyoto Kimono Rental →
               </a>
+              <GygCompareButton slug="kimono-rental-japan" listing={gygKyotoKimono} />
             </div>
           </div>
         </div>

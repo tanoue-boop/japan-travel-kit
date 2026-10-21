@@ -10,6 +10,8 @@ import {
   kyotoNaraArashiyamaTour,
   arashiyamaNaraTodaijiTour,
 } from "../../../lib/klook-links";
+import GygCompare from "../../../components/GygCompare";
+import { gygKyoto, gygKyotoDayTrips } from "../../../lib/gyg-links";
 
 // Kyoto pass and single-fare figures are the ones our Kyoto Subway & Bus Pass guide verified
 // against the city's own tables. Temple admissions are deliberately absent: Kinkaku-ji has a
@@ -282,6 +284,15 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
           heading="The Kyoto Day, Booked in One Go"
           intro="Guided days that join the districts the buses make awkward, including the versions that add Nara. Open a listing for the current price on your date."
           tours={[kyotoHighlightBusTour, kyotoNaraArashiyamaTour, arashiyamaNaraTodaijiTour]}
+        />
+
+        {/* A second catalogue for the same city. Nothing above is changed, and no temple
+            admission appears here either — see the note on prices at the top of the file. */}
+        <GygCompare
+          slug="things-to-do-kyoto"
+          heading="A Second Catalogue for the Same City"
+          intro="Kyoto is the city where the thing you want is most likely to be full — tea ceremonies seat a handful at a time, kimono shops run out of dressers, and the Arashiyama coaches fill in autumn. GetYourGuide's Kyoto catalogue is the other place to search your dates."
+          listings={[gygKyoto, gygKyotoDayTrips]}
         />
 
         {/* Related articles */}

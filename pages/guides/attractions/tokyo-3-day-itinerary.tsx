@@ -20,6 +20,8 @@ import {
   tokyoSubwayTicket,
   tokyoTowerTicket,
 } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygShibuyaSky, gygTeamlabPlanets, gygTokyo } from "../../../lib/gyg-links";
 
 /**
  * A three-day Tokyo itinerary, written as a booking plan rather than a list of sights.
@@ -650,6 +652,16 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
           tours={[tokyoSightseeingBusTour, tokyoSubwayTicket, tokyoTowerTicket]}
         />
 
+        {/* The two bookings this itinerary can break on are teamLab Planets and the
+            Shibuya Sky sunset slot, so those are the two the second seller is for.
+            Every Klook link and every dated price above is unchanged. */}
+        <GygCompare
+          slug="tokyo-3-day-itinerary"
+          heading="If a Timed Slot Has Already Gone"
+          intro="This plan survives most things, but not a sold-out teamLab Planets slot or a Shibuya Sky sunset that went weeks ago — reorder the days and you still need the ticket. Both are sold on GetYourGuide as well, and the full Tokyo catalogue is there if you are rebuilding a day from scratch."
+          listings={[gygTeamlabPlanets, gygShibuyaSky, gygTokyo]}
+        />
+
         {/* Prices and hours */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Prices &amp; hours</span>
@@ -970,9 +982,12 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
               this itinerary, and both go weeks ahead. Klook checks out in English, takes foreign cards
               the official sites sometimes reject, and keeps all three days on one account.
             </p>
-            <a href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              Book the timed tickets on Klook →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                Book the timed tickets on Klook →
+              </a>
+              <GygCompareButton slug="tokyo-3-day-itinerary" listing={gygTeamlabPlanets} />
+            </div>
           </div>
         </div>
       </div>

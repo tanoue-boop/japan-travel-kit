@@ -4,6 +4,8 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygTokyoFoodTours, gygTokyoStreetFood } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
@@ -257,9 +259,12 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               20 and over; for families, a daytime Tsukiji market walk is the alternative. Details as listed on{" "}
               {CHECKED}.
             </p>
-            <a href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Browse Tokyo Food Tours →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Browse Tokyo Food Tours →
+              </a>
+              <GygCompareButton slug="tokyo-food-tour" listing={gygTokyoFoodTours} />
+            </div>
           </div>
         </div>
 
@@ -391,6 +396,15 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
           tours={[tokyoSubwayTicket, tokyoSightseeingBusTour]}
         />
 
+        {/* A different roster of guides over the same neighbourhoods. The Klook tour
+            and every detail quoted from its listing are unchanged. */}
+        <GygCompare
+          slug="tokyo-food-tour"
+          heading="Tokyo Food Tours on GetYourGuide"
+          intro="Food tours run on small groups, which means a handful of places per departure and a waitlist on a Friday. The two platforms sign different guides, so the neighbourhood you wanted — Shinjuku, Shibuya, Ginza, the Ameyoko arcade — may be bookable on one when it is not on the other."
+          listings={[gygTokyoFoodTours, gygTokyoStreetFood]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -510,9 +524,12 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               A small-group izakaya and bar-hopping tour is the easiest way into Tokyo&apos;s nightlife — yakitori,
               sake, and tiny bars with a guide to lead the way. Alcohol-inclusive tours are for ages 20 and over.
             </p>
-            <a href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              Browse Tokyo Food Tours →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                Browse Tokyo Food Tours →
+              </a>
+              <GygCompareButton slug="tokyo-food-tour" listing={gygTokyoFoodTours} />
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { fujiHakoneDayTour, shibuyaSkyTicketUrl, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { gygShibuyaSky } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -287,9 +289,13 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
               they sell out fastest. If your card is issued abroad, book through Klook, which accepts foreign
               cards and allows free cancellation up to 24 hours before.
             </p>
-            <a href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Check Shibuya Sky Tickets →
-            </a>
+            {/* The Klook CTA is unchanged; GetYourGuide sells the same rooftop and sits beside it. */}
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn}>
+                Check Shibuya Sky Tickets →
+              </a>
+              <GygCompareButton slug="shibuya-sky-tickets" listing={gygShibuyaSky} />
+            </div>
           </div>
         </div>
 
@@ -587,9 +593,12 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
               Book online to save versus the door and lock in a sunset slot. Klook accepts foreign cards and
               allows free cancellation up to 24 hours before — handy if Tokyo&apos;s weather turns.
             </p>
-            <a href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
-              View Shibuya Sky Tickets →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
+                View Shibuya Sky Tickets →
+              </a>
+              <GygCompareButton slug="shibuya-sky-tickets" listing={gygShibuyaSky} />
+            </div>
           </div>
         </div>
       </div>

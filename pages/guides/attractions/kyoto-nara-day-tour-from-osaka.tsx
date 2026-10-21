@@ -8,6 +8,8 @@ import {
   kyotoNaraKiyomizuTour,
   kyotoNaraUjiTour,
 } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygKyotoDayTrips, gygNaraFromOsaka } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -298,9 +300,12 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               around Kiyomizu-dera — and on whether the tour actually goes inside Todai-ji, where the Great
               Buddha Hall charges ¥800 for an adult.
             </p>
-            <a href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Check Kyoto &amp; Nara day tours on Klook →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Check Kyoto &amp; Nara day tours on Klook →
+              </a>
+              <GygCompareButton slug="kyoto-nara-day-tour-from-osaka" listing={gygNaraFromOsaka} />
+            </div>
           </div>
         </div>
 
@@ -469,6 +474,15 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
           tours={[kyotoNaraArashiyamaTour, arashiyamaNaraTodaijiTour, kyotoNaraKiyomizuTour, kyotoNaraUjiTour]}
         />
 
+        {/* A second set of operators for the same two cities. The four itineraries
+            compared above, and the Todai-ji admission figure, are unchanged. */}
+        <GygCompare
+          slug="kyoto-nara-day-tour-from-osaka"
+          heading="The Same Day Out on GetYourGuide"
+          intro="This is a seat on a coach on a particular morning, which means the itinerary you picked above may simply be full on your date. GetYourGuide runs a different set of operators over the same ground — including private cars with a driver, if a fixed timetable is the part you did not want."
+          listings={[gygNaraFromOsaka, gygKyotoDayTrips]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -561,9 +575,12 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               Pick the itinerary that covers the half of Kyoto you want, and check whether Todai-ji&apos;s ¥800
               admission is in the price. Klook checks out in English and takes foreign cards.
             </p>
-            <a href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              View Kyoto &amp; Nara day tours on Klook →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                View Kyoto &amp; Nara day tours on Klook →
+              </a>
+              <GygCompareButton slug="kyoto-nara-day-tour-from-osaka" listing={gygNaraFromOsaka} />
+            </div>
           </div>
         </div>
       </div>

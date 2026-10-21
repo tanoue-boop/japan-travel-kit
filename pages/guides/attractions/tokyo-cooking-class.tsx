@@ -4,6 +4,8 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygTokyoCookingClasses, gygTokyoRamenClasses } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
@@ -264,9 +266,12 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
               sushi with ramen or add a market shop first. Most are beginner-friendly and many welcome
               children; confirm the language and minimum age when you book. Details as listed on {CHECKED}.
             </p>
-            <a href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Browse Tokyo Cooking Classes →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Browse Tokyo Cooking Classes →
+              </a>
+              <GygCompareButton slug="tokyo-cooking-class" listing={gygTokyoCookingClasses} />
+            </div>
           </div>
         </div>
 
@@ -380,6 +385,15 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
           tours={[tokyoSubwayTicket, tokyoSightseeingBusTour]}
         />
 
+        {/* Same experience, different kitchens. The Klook class and the course details
+            quoted from its listing are unchanged. */}
+        <GygCompare
+          slug="tokyo-cooking-class"
+          heading="Tokyo Cooking Classes on GetYourGuide"
+          intro="A class has a kitchen's worth of seats, so popular slots go early and the language you need is not always the one on offer. GetYourGuide lists its own set of Tokyo kitchens, and separates the ramen classes from the sushi ones — handy if you have already decided which of the two you came for."
+          listings={[gygTokyoCookingClasses, gygTokyoRamenClasses]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -486,9 +500,12 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
               results. Browse English-friendly sushi and ramen classes, check the times and prices, and book
               your slot in advance.
             </p>
-            <a href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              Browse Tokyo Cooking Classes →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                Browse Tokyo Cooking Classes →
+              </a>
+              <GygCompareButton slug="tokyo-cooking-class" listing={gygTokyoCookingClasses} />
+            </div>
           </div>
         </div>
       </div>

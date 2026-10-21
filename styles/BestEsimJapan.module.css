@@ -616,6 +616,14 @@
 }
 .ctaBanner .ctaBannerBtn:hover { background: var(--white); border-color: var(--white); color: var(--sumi); }
 
+/* The "Compare on GetYourGuide" button is `pickCtaInternal`: an outline, so the
+   Klook CTA next to it stays the filled one. Inside the dark banner that outline
+   has to invert, same as .ctaBannerBtn does above, or it disappears into --sumi.
+   The row is flex, which would left-align inside the banner's centred text. */
+.ctaBanner .pickCtaRow { justify-content: center; }
+.ctaBanner .pickCtaInternal { border-color: var(--paper); color: var(--on-dark); }
+.ctaBanner .pickCtaInternal:hover { background: var(--paper); color: var(--sumi); }
+
 /* ── Quick-answer / choice pair ──────────────────────────────────────────── */
 .choiceSection { margin-bottom: 3.5rem; }
 .choiceGrid { display: grid; gap: 0; border-top: 1px solid var(--rule); }

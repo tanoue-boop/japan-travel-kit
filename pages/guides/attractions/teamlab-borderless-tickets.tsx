@@ -5,6 +5,8 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { teamlabBorderlessTicketUrl } from "../../../lib/klook-links";
+import { GygCompareButton } from "../../../components/GygCompare";
+import { gygTeamlabBorderless, GYG_CHECKED_AT } from "../../../lib/gyg-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
 // CTA link — Klook affiliate redirect (teamLab Borderless admission ticket), shared with
@@ -25,35 +27,48 @@ const priceRows = [
   { ticket: "Visitor with a disability", price: "from ¥1,700", note: "Dynamic pricing; one accompanying person also gets the discounted rate" },
 ];
 
+/**
+ * The `official`, `klook` and `door` cells are unchanged. The `gyg` column was
+ * added on 21 Oct 2026, and it is deliberately the thinnest of the four:
+ * GetYourGuide answers automated reads of its pages with HTTP 403, so the only
+ * thing that could be confirmed is that the Borderless listing exists and what
+ * it carries. Everything that would need the product page open — the price, the
+ * cancellation window, the change terms — says so rather than guessing.
+ */
 const buyingRows = [
   {
     factor: "Price",
     official: "Base price, dynamic by date and slot",
     klook: "Same ticket, listed in your own currency",
+    gyg: "Set per option; read it on the listing",
     door: "+¥200 adult, +¥100 child / disability",
   },
   {
     factor: "Checkout language",
     official: "English site available",
     klook: "English checkout, instant e-ticket",
+    gyg: "English listing",
     door: "On site, at the museum",
   },
   {
     factor: "Foreign cards",
     official: "Usually fine, but no guarantee",
     klook: "Built for foreign cards and wallets",
+    gyg: "Not verified — check at checkout",
     door: "Card accepted on site",
   },
   {
     factor: "Changing your date",
     official: "Date can be changed up to three times",
     klook: "Depends on the Klook option you pick — check before paying",
+    gyg: "Not verified — varies by option, read before paying",
     door: "Not applicable",
   },
   {
     factor: "Risk of missing out",
     official: "Low if you book early",
     klook: "Low if you book early",
+    gyg: "A second counter worth trying if your slot has gone on the first",
     door: "High — busy slots sell out before the day",
   },
 ];
@@ -290,9 +305,12 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               underground. Buy on the official site for the base price and up to three free date changes; buy
               through Klook for an English, own-currency checkout that accepts foreign cards.
             </p>
-            <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Check teamLab Borderless Tickets →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Check teamLab Borderless Tickets →
+              </a>
+              <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
+            </div>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
               Prices, hours and closed dates on this page were read from the official teamLab site on {CHECKED}.
               Borderless uses dynamic pricing and a shifting calendar, so confirm both for your own date at checkout.
@@ -384,17 +402,19 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
         {/* Where to buy */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Where to buy</span>
-          <h2 className={styles.sectionTitle}>Official Site vs Klook vs the Door</h2>
+          <h2 className={styles.sectionTitle}>Official Site vs Klook vs GetYourGuide vs the Door</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Klook is an official teamLab ticketing partner, so the admission is identical whichever counter you
             use. What differs is the checkout, the flexibility, and — if you leave it to the day — the price.
+            GetYourGuide sells Borderless too, and the column below is thin on purpose: see the note under the
+            table for what we could and could not confirm about it.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", "Official site", "Klook", "On the day, on site"].map((h) => (
+                    {["", "Official site", "Klook", "GetYourGuide", "On the day, on site"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -405,6 +425,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
                       <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.factor}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.official}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.klook}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.gyg}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.door}</td>
                     </tr>
                   ))}
@@ -415,6 +436,9 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             On-site surcharge and date-change allowance as listed on the official teamLab site on {CHECKED}.
             Cancellation and change terms on resellers vary by option — read them on the booking page before paying.
+            The GetYourGuide column is deliberately short: its Borderless listing was confirmed live on{" "}
+            {GYG_CHECKED_AT}, but GetYourGuide blocks automated reads of its pages, so we could not verify its
+            price, its card handling or its change terms. Those cells say so instead of guessing.
           </p>
         </section>
 
@@ -564,9 +588,12 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               Timed entry means the slot you want is the one that sells out. Klook is an official teamLab
               ticketing partner, with an English checkout in your own currency and an e-ticket on your phone.
             </p>
-            <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              View teamLab Borderless Tickets →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                View teamLab Borderless Tickets →
+              </a>
+              <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
+            </div>
           </div>
         </div>
       </div>

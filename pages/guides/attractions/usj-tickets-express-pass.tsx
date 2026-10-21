@@ -4,6 +4,8 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygUsj, gygUsjExpressPass } from "../../../lib/gyg-links";
 
 // CTA links — Klook affiliate redirects.
 const STUDIO_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
@@ -228,6 +230,15 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               <a href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ Express Pass →
               </a>
+            </div>
+            {/* Both Klook CTAs above are unchanged. The Express Pass is the one ticket
+                on this site that sells out earliest, so a second seller goes here too. */}
+            <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+              <GygCompareButton
+                slug="usj-tickets-express-pass"
+                listing={gygUsjExpressPass}
+                label="Compare the Express Pass on GetYourGuide →"
+              />
             </div>
           </div>
         </div>
@@ -507,6 +518,15 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           </div>
         </section>
 
+        {/* The Express Pass is capped per day and dated, which is the whole reason a
+            second seller belongs on this page rather than just a second link. */}
+        <GygCompare
+          slug="usj-tickets-express-pass"
+          heading="USJ Tickets and Express Passes on GetYourGuide"
+          intro="Express Passes are capped per day and tied to the date on them, so the one you want is often simply not there any more. GetYourGuide sells the Express Pass on its own — same caveat as everywhere else, it does not include park admission — and the Studio Pass separately. If your date has gone above, try here before you change the date of your trip."
+          listings={[gygUsjExpressPass, gygUsj]}
+        />
+
         {/* CTA Banner */}
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
@@ -515,9 +535,12 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               Buy your Studio Pass online (required since 2025) and add an Express Pass to beat the
               25th-anniversary crowds and guarantee Super Nintendo World.
             </p>
-            <a href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
-              View USJ Tickets &amp; Passes →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
+                View USJ Tickets &amp; Passes →
+              </a>
+              <GygCompareButton slug="usj-tickets-express-pass" listing={gygUsjExpressPass} />
+            </div>
           </div>
         </div>
       </div>

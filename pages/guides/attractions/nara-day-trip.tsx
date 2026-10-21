@@ -9,6 +9,8 @@ import {
   naraDayTourUrl,
   osakaAmazingPass,
 } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygNara, gygNaraFromOsaka } from "../../../lib/gyg-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -277,9 +279,12 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
               a guided tour only if you want half of Kyoto bolted onto the same day, and check whether the
               ¥800 is in the price, because some itineraries stop at the park.
             </p>
-            <a href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Browse Nara Day Tours →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Browse Nara Day Tours →
+              </a>
+              <GygCompareButton slug="nara-day-trip" listing={gygNara} />
+            </div>
           </div>
         </div>
 
@@ -441,6 +446,15 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
           ]}
         />
 
+        {/* Tours only. The train advice above — which is what this page actually
+            recommends — has no affiliate link on either platform and gains none here. */}
+        <GygCompare
+          slug="nara-day-trip"
+          heading="Nara Tours on GetYourGuide"
+          intro="Going by train stays the cheap, easy answer and needs no booking at all. But if you want a guide at Todai-ji, or Nara folded into a Kyoto day, GetYourGuide carries its own guided walks and day trips — including half-day versions, which Nara suits better than a full one."
+          listings={[gygNara, gygNaraFromOsaka]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -531,9 +545,12 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
               Going independently by train is cheap and easy. If you&apos;d rather pack more into one day, a
               guided tour can pair Nara with Kyoto highlights and sort the transport for you.
             </p>
-            <a href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              Browse Nara Day Tours →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                Browse Nara Day Tours →
+              </a>
+              <GygCompareButton slug="nara-day-trip" listing={gygNara} />
+            </div>
           </div>
         </div>
       </div>

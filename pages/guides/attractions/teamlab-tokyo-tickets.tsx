@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { fujiDayTour, teamlabPlanetsTicketUrl, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { gygTeamlabPlanets } from "../../../lib/gyg-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -280,9 +282,14 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               See our{" "}
               <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless ticket guide</Link>.
             </p>
-            <a href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Check teamLab Planets Tickets →
-            </a>
+            {/* Klook CTA unchanged. Planets slots sell out by date, so a second seller
+                of the same museum is worth having when yours is gone. */}
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Check teamLab Planets Tickets →
+              </a>
+              <GygCompareButton slug="teamlab-tokyo-tickets" listing={gygTeamlabPlanets} />
+            </div>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
               Prices, hours and closed dates on this page were read from the official teamLab sites on {CHECKED}.
               Planets prices vary by date and slot and the calendar shifts, so confirm both for your own date at checkout.
@@ -593,9 +600,12 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               Entry runs in 30-minute slots and the good ones go 2–3 weeks out. Klook is an official teamLab
               ticketing partner, with an English checkout in your own currency and an e-ticket on your phone.
             </p>
-            <a href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              View teamLab Planets Tickets →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                View teamLab Planets Tickets →
+              </a>
+              <GygCompareButton slug="teamlab-tokyo-tickets" listing={gygTeamlabPlanets} />
+            </div>
           </div>
         </div>
       </div>

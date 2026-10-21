@@ -3,6 +3,8 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { fujiDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
+import { gygTokyoDisneyResort, gygTokyoDisneySea } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -263,9 +265,12 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
               Klook is an officially authorized seller that accepts foreign cards and issues a QR you can link
               into the official app.
             </p>
-            <a href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Check Tokyo Disney Tickets →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn}>
+                Check Tokyo Disney Tickets →
+              </a>
+              <GygCompareButton slug="tokyo-disney-tickets" listing={gygTokyoDisneyResort} />
+            </div>
           </div>
         </div>
 
@@ -441,6 +446,14 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           tours={[fujiDayTour, tokyoSightseeingBusTour]}
         />
 
+        {/* A second authorized-reseller route. The Klook advice above is unchanged. */}
+        <GygCompare
+          slug="tokyo-disney-tickets"
+          heading="The Same Passports on GetYourGuide"
+          intro="There are no gate sales at Tokyo Disney, so a date that has gone on one reseller is a real dead end. GetYourGuide carries the 1-Day Passports as well, Disneyland and DisneySea both, plus a 1-Day Park Hopper — worth a second tab before you settle on a date."
+          listings={[gygTokyoDisneyResort, gygTokyoDisneySea]}
+        />
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
@@ -566,9 +579,12 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
               There are no gate sales and popular dates sell out, so book ahead. Klook is an officially
               authorized seller that accepts foreign cards and issues a QR you can link into the official app.
             </p>
-            <a href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
-              View Tokyo Disney Tickets →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
+                View Tokyo Disney Tickets →
+              </a>
+              <GygCompareButton slug="tokyo-disney-tickets" listing={gygTokyoDisneyResort} />
+            </div>
           </div>
         </div>
       </div>

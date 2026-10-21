@@ -12,6 +12,8 @@ import {
   skytreeTicket,
   fujiHakoneDayTour,
 } from "../../../lib/klook-links";
+import GygCompare from "../../../components/GygCompare";
+import { gygTokyo, gygTokyoEntryTickets } from "../../../lib/gyg-links";
 
 // The only prices on this page are the two carried over from the dedicated guides that
 // verified them against the operators' own sites — Shibuya Sky and Tokyo Skytree. The Tocho
@@ -389,6 +391,15 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           heading="Tokyo Bookings Worth Having in Place"
           intro="A city pass for the transport, the deck ticket most people end up buying, a guided loop of the big three sights, and the Fuji coach. Open a listing for the current price on your date."
           tours={[tokyoSubwayTicket, skytreeTicket, tokyoSightseeingBusTour, fujiHakoneDayTour]}
+        />
+
+        {/* A round-up recommends a week, not a product, so this is a second catalogue
+            rather than a second checkout. Nothing above is changed. */}
+        <GygCompare
+          slug="things-to-do-tokyo"
+          heading="A Second Catalogue for the Same City"
+          intro="Nothing on this page depends on one seller. If you are filling in dates and something above is sold out — a Shibuya Sky slot, a Fuji coach, a teamLab entry — GetYourGuide's Tokyo catalogue is the other place to search by date, and it carries operators Klook does not."
+          listings={[gygTokyo, gygTokyoEntryTickets]}
         />
 
         {/* Related articles */}

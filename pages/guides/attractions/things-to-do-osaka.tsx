@@ -5,6 +5,8 @@ import CityGuideIndex from "../../../components/CityGuideIndex";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { osakaAmazingPass, kyotoNaraArashiyamaTour } from "../../../lib/klook-links";
+import GygCompare from "../../../components/GygCompare";
+import { gygNaraFromOsaka, gygOsaka } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // Osaka Amazing Pass prices read off the official site, osp.osaka-info.jp, on 19 Oct 2026.
@@ -261,6 +263,15 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           heading="The Osaka Day, Booked"
           intro="The pass that covers the city day, and the guided Kyoto-and-Nara day most visitors take from here. Open a listing for the current price on your date."
           tours={[osakaAmazingPass, kyotoNaraArashiyamaTour]}
+        />
+
+        {/* A second catalogue for the same city. The Amazing Pass prices above, read off
+            the official site, are unchanged. */}
+        <GygCompare
+          slug="things-to-do-osaka"
+          heading="A Second Catalogue for the Same City"
+          intro="Two things on an Osaka trip genuinely sell out: a USJ date, and a seat on the Kyoto-and-Nara coach. GetYourGuide carries both, along with the Dotonbori cruises and the city walking tours — worth searching if a date above has gone. The Amazing Pass is an official city product and stays where it is."
+          listings={[gygOsaka, gygNaraFromOsaka]}
         />
 
         {/* Related articles */}
