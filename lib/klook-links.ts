@@ -372,6 +372,30 @@ export const fujiQHighlandAdmission: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Kawaguchiko day-trip tours added 21 Oct 2026
+//
+// For the Kawaguchiko-specific day trip guide. Klook answers automated reads of
+// its product pages with HTTP 403, so both were confirmed live and on sale
+// through the www.klook.com search index on 21 Oct 2026 — and that, again, is
+// why neither carries a price.
+//
+// `fujiPhotographyDayTour` (listing 100747) is the third tour that guide uses
+// and is declared further up, because mt-fuji-day-trip-tokyo already links it.
+// ---------------------------------------------------------------------------
+
+export const kawaguchikoYamanakakoBusTour: KlookTour = {
+  title: "Lake Kawaguchi & Lake Yamanaka onsen day bus tour from Tokyo",
+  desc: "A join-in coach day listed at 9.5–11 hours, pairing Arakurayama Sengen Park and Oishi Park with a Yamanakako cruise or hot spring",
+  url: klookLink("https://www.klook.com/en-US/activity/86922-kawaguchiko-yamanakako-hot-spring-join-one-day-bus-tour-tokyo/"),
+};
+
+export const kawaguchikoPrivateDayTour: KlookTour = {
+  title: "Lake Kawaguchi customised private day tour from Tokyo",
+  desc: "A private, English-guided day on the north shore built around what you pick — the version for anyone who wants Kawaguchiko without a coach timetable",
+  url: klookLink("https://www.klook.com/en-US/activity/44596-kawaguchiko-private-day-tour-tokyo/"),
+};
+
+// ---------------------------------------------------------------------------
 // Ticket and tour redirects moved here on 20 Oct 2026
 //
 // Each of these was a `const …_URL` inside the guide that uses it. They moved so

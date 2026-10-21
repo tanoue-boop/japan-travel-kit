@@ -180,6 +180,23 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo",
+    badge: "Day trip",
+    title: "Kawaguchiko Day Trip From Tokyo (2026): Routes, Fares and What Fits in a Day",
+    desc: "The north shore of Lake Kawaguchi is about 1 hr 45 min and ¥2,200 from Shinjuku by bus. Official fares for the ropeway, the lake boat and the sightseeing bus — and why a day holds two or three stops, not five.",
+    group: "daytrips",
+    // The lake, not Tokyo: the day is spent in Yamanashi, like fuji-q-highland-tickets.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/tokyo-3-day-itinerary",
+    badge: "Itinerary",
+    title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order",
+    desc: "Three days, three districts — west, east and centre — with a table per day and only two stops that need a timed ticket. Official prices for each ticketed stop, with the date we checked them.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/things-to-do-tokyo",
     badge: "City guide",
     title: "Things to Do in Tokyo (2026): What to Book Ahead and What to Walk Into",
