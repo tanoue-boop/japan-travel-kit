@@ -30,8 +30,15 @@ export function klookLink(pageUrl: string): string {
 
 /**
  * Klook's own Japan eSIM listing. `priceVerified: false` is load-bearing — the
- * eSIM comparison pages must not print a price or data allowance for it until
- * the product page can actually be read.
+ * eSIM comparison pages must not print a price for it until the product page can
+ * actually be read, and they must not rank it against the four providers in
+ * data/esim-prices.json, whose prices are re-read daily.
+ *
+ * The `spec*` fields below were added 22 Oct 2026. Klook still answers automated
+ * reads of /activity/109393 with HTTP 403, so they come from the www.klook.com
+ * search index for that listing rather than from the page itself — which is why
+ * they carry their own `specsCheckedAt` and why none of them is a price. Anything
+ * not in that index stays off the comparison pages.
  */
 export const klookEsim = {
   name: "Klook Japan eSIM",
@@ -45,8 +52,18 @@ export const klookEsim = {
   priceUnknownLabel: "Check on Klook",
   /** The date the listing was last attempted — shown next to the placeholder. */
   checkedAt: "19 Oct 2026",
+  /** The date the `spec*` fields below were confirmed in Klook's search index. */
+  specsCheckedAt: "22 Oct 2026",
+  /** Carriers the listing names, and which plan family rides which. */
+  specNetwork: "SoftBank 5G (per-day plans) / docomo 4G LTE (total-data plans)",
+  /** Allowance tiers the listing names. No price attaches to any of them here. */
+  specData: "500 MB to 50 GB, plus unlimited (10 GB/day at full speed, then 128 kbps)",
+  /** The listing states hotspot and tethering are supported. */
+  specTethering: "Supported",
+  /** The listing states the service type is data only. */
+  specPhoneNumber: "No — data only",
   note:
-    "Klook sells a Japan eSIM of its own, and it is worth a look if you are already booking tickets or transport there — one checkout, one account. We list it unranked: Klook's product page blocks automated price reads, so we have no verified price or data tier to rank it on. Open the listing for the current options.",
+    "Klook sells a Japan eSIM of its own, and it is worth a look if you are already booking tickets or transport there — one checkout, one account. We list it unranked: Klook's product page blocks automated price reads, so we have no verified price to rank it on. Open the listing for the current options.",
 } as const;
 
 // ---------------------------------------------------------------------------
