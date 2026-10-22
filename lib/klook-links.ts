@@ -688,6 +688,80 @@ export const shinkansenTokyoKaruizawa: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Airport limousine bus and the Osaka Kaiyukan, added 22 Oct 2026
+//
+// Two entry guides: the restored tokyo-airport-limousine-bus (transport, so the
+// 5% passes-and-transport band) and osaka-aquarium-kaiyukan-tickets (an
+// admission, so the 6.5% tours-and-activities band).
+//
+// Klook answers automated reads of its /activity/ pages with HTTP 403, so each
+// listing below was confirmed live and on sale through the www.klook.com search
+// index on 22 Oct 2026, along with the en-US form of its URL.
+//
+// Note on the Kaiyukan: there is already an `affiliate.klook.com/redirect` link
+// to activity 598 inside osaka-attractions-pass.tsx, with its own `aff_adid`.
+// That one is untouched. Klook no longer issues new `aff_adid` values, so the new
+// guide uses the documented `?aid=` form of the same product page.
+//
+// No price appears on any of them, for the usual reason — and in the Kaiyukan's
+// case because the aquarium itself prices by date (価格変動制), so a single
+// figure would be wrong on most days of the year.
+// ---------------------------------------------------------------------------
+
+/** Narita ⇄ central Tokyo limousine bus — the headline CTA on the bus guide. */
+export const naritaLimousineBus: KlookTour = {
+  title: "Narita Airport – Tokyo limousine bus",
+  desc: "The Airport Limousine run between the three Narita terminals and the Tokyo hotel and station stops, boarded with a QR code rather than a paper ticket",
+  url: klookLink("https://www.klook.com/en-US/activity/2274-narita-airport-limousine-bus-tokyo/"),
+};
+
+/** Haneda ⇄ central Tokyo limousine bus — the much shorter, much cheaper ride. */
+export const hanedaLimousineBus: KlookTour = {
+  title: "Haneda Airport – Tokyo limousine bus",
+  desc: "The same operator from Haneda's three terminals, with Shinjuku, Ikebukuro and the Disney resort among the destinations on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/150434-haneda-airport-limousine-bus-tokyo/"),
+};
+
+/** The inter-airport coach — for an itinerary that lands at one and leaves from the other. */
+export const naritaHanedaLimousineBus: KlookTour = {
+  title: "Limousine bus between Haneda and Narita",
+  desc: "The direct airport-to-airport coach, for a trip that arrives at one Tokyo airport and departs from the other",
+  url: klookLink("https://www.klook.com/en-US/activity/167353-limousine-bus-between-haneda-airport-and-narita-airport/"),
+};
+
+/** Osaka Aquarium Kaiyukan admission — the headline CTA on the Kaiyukan guide. */
+export const osakaAquariumKaiyukanTicket: KlookTour = {
+  title: "Osaka Aquarium Kaiyukan ticket",
+  desc: "The straight admission to the Tempozan aquarium, in English and on a foreign card, scanned at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/598-osaka-aquarium-kaiyukan-japan/"),
+};
+
+/**
+ * Osaka Amazing Pass bundled with a Kaiyukan ticket. Worth its own constant
+ * because the Amazing Pass does *not* include the Kaiyukan — this listing is the
+ * only way to buy the two in one checkout.
+ */
+export const osakaAmazingPassKaiyukanCombo: KlookTour = {
+  title: "Osaka Amazing Pass + Kaiyukan combo",
+  desc: "The city pass and the aquarium in one booking — the Amazing Pass does not cover the Kaiyukan on its own, so this is the only single checkout that gets you both",
+  url: klookLink("https://www.klook.com/en-US/activity/30889-osaka-amazing-pass-aquarium-kaiyukan-e-ticket/"),
+};
+
+/** Kaiyukan with NIFREL out at Expo City — the two-aquarium day. */
+export const kaiyukanNifrelCombo: KlookTour = {
+  title: "NIFREL + Kaiyukan combo ticket",
+  desc: "The Tempozan aquarium paired with NIFREL, the Expocity 'living museum' on the opposite side of the city",
+  url: klookLink("https://www.klook.com/en-US/activity/18460-nifrel-aquazoo-aquarium-kaiyukan-osaka/"),
+};
+
+/** Kaiyukan with LEGOLAND Discovery Center, which is in the same Tempozan complex. */
+export const kaiyukanLegolandCombo: KlookTour = {
+  title: "LEGOLAND Discovery Center Osaka + Kaiyukan combo",
+  desc: "Both venues sit in Tempozan Harbor Village, a few minutes apart — the aquarium's own site sells the same pairing as a set ticket",
+  url: klookLink("https://www.klook.com/en-US/activity/31500-legoland-discovery-center-osaka-aquarium-kaiyukan-ticket-combo-package/"),
+};
+
+// ---------------------------------------------------------------------------
 // Ticket and tour redirects moved here on 20 Oct 2026
 //
 // Each of these was a `const …_URL` inside the guide that uses it. They moved so

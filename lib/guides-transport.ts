@@ -35,6 +35,14 @@ export const transportArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/transport/tokyo-airport-limousine-bus",
+    badge: "Guide",
+    title: "Tokyo Airport Limousine Bus (2026): Narita & Haneda Fares, Times and Stops",
+    desc: "A fare per route, not per airport: ¥3,600 Narita to Shinjuku, ¥2,900 to the Disney resort, ¥1,400 from Haneda. With the two-bag hold rule, which routes need a reserved seat, and the ¥2,800 late-night bus.",
+    group: "airports",
+    city: "tokyo",
+  },
+  {
     href: "/guides/transport/osaka-airport-transfer",
     badge: "Guide",
     title: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",
