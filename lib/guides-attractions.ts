@@ -189,6 +189,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/japan-14-day-itinerary",
+    badge: "Itinerary",
+    title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day",
+    desc: "Four bases rather than seven — Tokyo 5 nights, Kawaguchiko or Hakone 1, Kyoto 4 with Nara, Osaka 3 — with a table for each of the fourteen days and official prices for every ticketed stop, dated.",
+    group: "cities",
+    // Nationwide: the fortnight runs Tokyo → the Fuji Five Lakes → Kyoto → Nara → Osaka.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/tokyo-3-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order",

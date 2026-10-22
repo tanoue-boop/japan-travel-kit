@@ -554,6 +554,56 @@ export const shoppingDistrictStayAreas: KlookStayArea[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Long-distance rail and the Kansai park, added 22 Oct 2026 for the 14-day
+// itinerary — the first page on this site whose spine is a 450 km train ride
+// rather than a city.
+//
+// Both rail entries sit in Klook's 5% passes-and-transport band. The JR Pass
+// listing answers automated reads with HTTP 403 like every other Klook product
+// page, so it was confirmed as a live en-US listing through the www.klook.com
+// search index on 22 Oct 2026 ("Buy Whole 7, 14 & 21 Days Japan Rail Pass
+// Online"). The Tokyo–Kyoto rail page is the exception: it answered a read on
+// the same date and lists the Tokaido services with their ticket classes, which
+// is why it is the shinkansen link rather than an /activity/ id.
+//
+// No price appears on either, for the usual reason, and because a shinkansen
+// fare moves with the train type and the season in any case.
+// ---------------------------------------------------------------------------
+
+export const jrPassWholeJapan: KlookTour = {
+  title: "JAPAN RAIL PASS (7, 14 or 21 day)",
+  desc: "The JR Group's whole-country pass as Klook sells it, in Ordinary and Green car — the version to price against your own route before you commit",
+  url: klookLink("https://www.klook.com/en-US/activity/83341-7-day-whole-japan-rail-pass-jr-pass/"),
+};
+
+/**
+ * Klook's Tokyo → Kyoto rail page. A route page rather than a product id on
+ * purpose: Klook sells the Tokaido Shinkansen by date and seat class, and the
+ * route page is the address that keeps working when a train number does not.
+ */
+export const shinkansenTokyoKyoto: KlookTour = {
+  title: "Tokyo → Kyoto shinkansen tickets",
+  desc: "Klook's Tokaido Shinkansen booking page for the route, with non-reserved, reserved and Green Car seats and QR boarding between Tokyo and Shin-Osaka",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/30-kyoto/"),
+};
+
+/**
+ * Universal Studios Japan, for the Osaka leg.
+ *
+ * These two URLs are the ones pages/guides/attractions/usj-tickets-express-pass.tsx
+ * already uses, `aff_adid` included — copied here rather than moved, because that
+ * page's own affiliate links are not ours to rewrite. The Express Pass is the one
+ * ticket on this site Klook pays nothing for, which is why the itinerary offers
+ * GetYourGuide beside it.
+ */
+export const usjStudioPassUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
+
+/** USJ Express Pass — the 0% listing. */
+export const usjExpressPassUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299138&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F3407-universal-studios-japan-express-pass-osaka%2F";
+
+// ---------------------------------------------------------------------------
 // Ticket and tour redirects moved here on 20 Oct 2026
 //
 // Each of these was a `const …_URL` inside the guide that uses it. They moved so
