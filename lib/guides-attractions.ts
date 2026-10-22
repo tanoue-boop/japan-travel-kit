@@ -44,6 +44,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-joypolis-tickets",
+    badge: "Tickets",
+    title: "Tokyo Joypolis Tickets (2026): Passport Prices, Hours and Height Limits",
+    desc: "Admission alone is ¥1,700 and the all-ride Passport ¥6,000 for an adult, with a cheaper Evening Passport from 15:00 — and thirteen of the twenty-one rides have a minimum height.",
+    group: "tickets",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-disney-tickets",
     badge: "Tickets",
     title: "Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy",
@@ -186,6 +194,15 @@ export const attractionArticles: GuideArticle[] = [
     desc: "The north shore of Lake Kawaguchi is about 1 hr 45 min and ¥2,200 from Shinjuku by bus. Official fares for the ropeway, the lake boat and the sightseeing bus — and why a day holds two or three stops, not five.",
     group: "daytrips",
     // The lake, not Tokyo: the day is spent in Yamanashi, like fuji-q-highland-tickets.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/karuizawa-day-trip-from-tokyo",
+    badge: "Day trip",
+    title: "Karuizawa Day Trip From Tokyo (2026): Shinkansen Times, the Five Stops and Tour vs DIY",
+    desc: "The shortest mountain day trip out of Tokyo — 60 to 75 minutes on the Hokuriku Shinkansen, or ¥2,600 and about 3 hr 20 min by Seibu bus. Plus the tourism association's own one-day bus course, and why three stops is a realistic day.",
+    group: "daytrips",
+    // Nagano, not Tokyo: the day is spent in Karuizawa, like kawaguchiko-day-trip-from-tokyo.
     city: "other",
   },
   {

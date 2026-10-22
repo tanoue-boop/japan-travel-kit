@@ -604,6 +604,90 @@ export const usjExpressPassUrl =
   "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299138&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F3407-universal-studios-japan-express-pass-osaka%2F";
 
 // ---------------------------------------------------------------------------
+// Odaiba and Karuizawa, added 22 Oct 2026
+//
+// Two entry guides: tokyo-joypolis-tickets and karuizawa-day-trip-from-tokyo.
+// The Joypolis pair and the four Karuizawa day tours sit in the 6.5%
+// tours-and-activities band; the JR East pass and the Tokyo–Karuizawa rail page
+// are in the 5% passes-and-transport band, which is why a tour is the headline
+// CTA on both pages and the rail links sit inside the body.
+//
+// Klook answers automated reads of its /activity/ pages with HTTP 403, so every
+// listing below was confirmed live and on sale through the www.klook.com search
+// index on 22 Oct 2026. The one exception is `shinkansenTokyoKaruizawa`: like the
+// Tokyo–Kyoto rail page above, it answered a read on the same date and lists the
+// Asama and Hakutaka services with their four seat classes.
+//
+// No price appears on any of them, for the usual reason.
+//
+// One listing was deliberately left out. Klook 17058 bundles a Joypolis passport
+// with Madame Tussauds Tokyo in the same DECKS building, which would have been
+// the obvious combo link — but madametussauds.com states that the Tokyo branch
+// ceased operations on 30 September 2026, and the listing is no longer bookable.
+// ---------------------------------------------------------------------------
+
+/** The all-ride Joypolis passport — the ticket the guide recommends. */
+export const tokyoJoypolisPassport: KlookTour = {
+  title: "Tokyo Joypolis Passport",
+  desc: "The admission-plus-unlimited-rides passport for the DECKS indoor park in Odaiba, with a mobile QR code and a suggested 2 to 4 hours on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/4621-joypolis-passport-tokyo/"),
+};
+
+/** The second Joypolis listing — the one to open if you only want to get in. */
+export const tokyoJoypolisTicket: KlookTour = {
+  title: "Tokyo Joypolis ticket",
+  desc: "Klook's second Joypolis listing, for anyone who wants entry and a couple of rides rather than the all-day passport",
+  url: klookLink("https://www.klook.com/en-US/activity/41323-tokyo-joypolis/"),
+};
+
+/** The Karuizawa coach day that matches this guide's three stops exactly. */
+export const karuizawaShinjukuDayTour: KlookTour = {
+  title: "Karuizawa day tour: Shiraito Falls, Kumoba Pond, Kyu-Karuizawa Ginza & the outlet",
+  desc: "A join-in coach day out of Shinjuku covering the three stops a public-transport day has to pick between, plus the Prince Shopping Plaza",
+  url: klookLink("https://www.klook.com/en-US/activity/164690-karuizawa-day-tour-shiraito-falls-kumoba-pond-outlet-from-shinju/"),
+};
+
+/** The same route sold as a Tokyo departure. */
+export const karuizawaShiraitoOutletDayTour: KlookTour = {
+  title: "Karuizawa day trip: Shiraito Falls, Kumoba Pond & outlet shopping",
+  desc: "The Tokyo-departure version of the waterfall-and-outlet day, listed with Shiraito Falls, Kumoba Pond and Old Karuizawa Ginza",
+  url: klookLink("https://www.klook.com/en-US/activity/132005-shiraito-waterfall-old-karuizawa-ginza-one-day-tour-from-tokyo/"),
+};
+
+/** The shinkansen-based day — transport booked, itinerary left to you. */
+export const karuizawaShinkansenDayTrip: KlookTour = {
+  title: "Karuizawa one-day trip from Tokyo by shinkansen",
+  desc: "The self-guided version: the Hokuriku Shinkansen there and back, with the Prince Shopping Plaza, Kyu-Karuizawa Ginza, Karuizawa Taliesin and Kumoba Pond suggested on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/90953-karuizawa-one-day-trip-shinkansen-tokyo/"),
+};
+
+/** The winter listing — the Prince ski area opens earlier than anywhere near Tokyo. */
+export const karuizawaSkiSnowDayTour: KlookTour = {
+  title: "Karuizawa ski and snow day tour from Tokyo",
+  desc: "A round-trip coach to the Karuizawa ski area with roughly five hours on the snow, for the season the Prince slopes open from late October",
+  url: klookLink("https://www.klook.com/en-US/activity/130492-karuizawa-ski-and-snow-playing-day-tour-from-tokyo/"),
+};
+
+/** JR EAST PASS, Nagano/Niigata area — the 5% band, and it reaches Karuizawa. */
+export const jrEastPassNaganoNiigata: KlookTour = {
+  title: "JR EAST PASS (Nagano / Niigata area)",
+  desc: "JR East's own regional pass as Klook sells it — the listing names Karuizawa, Nagano, Matsumoto, Hakuba and Niigata as what it reaches from Tokyo",
+  url: klookLink("https://www.klook.com/en-US/activity/1419-jr-east-nagano-niigata-area-jr-pass/"),
+};
+
+/**
+ * Klook's Tokyo → Karuizawa rail page. A route page rather than a product id, for
+ * the same reason as `shinkansenTokyoKyoto`: the Hokuriku Shinkansen is sold by
+ * date and seat class, and the route page is the address that keeps working when a
+ * train number does not.
+ */
+export const shinkansenTokyoKaruizawa: KlookTour = {
+  title: "Tokyo → Karuizawa shinkansen tickets",
+  desc: "Klook's Hokuriku Shinkansen booking page for the route, listing the Asama and Hakutaka services in non-reserved, reserved, Green Car and Gran Class seats",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/karuizawa-station/"),
+};
+
+// ---------------------------------------------------------------------------
 // Ticket and tour redirects moved here on 20 Oct 2026
 //
 // Each of these was a `const …_URL` inside the guide that uses it. They moved so
