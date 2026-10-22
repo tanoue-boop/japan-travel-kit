@@ -859,6 +859,14 @@ export const naritaExpressRoundTripUrl =
 export const keiseiSkylinerUrl =
   "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264854&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F1410-skyliner-tokyo%2F";
 
+/**
+ * Hotel search for the trip-prep slots (6.5%). Not a new link: it reads the URL out
+ * of `tokyoAirportStayAreas`, which the Tokyo airport-transfer guide already renders,
+ * so there is one source of truth for the Tokyo Station destination id. Index 0 is
+ * Tokyo Station / Marunouchi — the arrival-day base that block is ordered around.
+ */
+const tokyoStationHotelsUrl = tokyoAirportStayAreas[0].url;
+
 /** The product half of each slot; the `why` sentence is written per guide. */
 const tripPrepProducts = {
   esim: {
@@ -895,6 +903,11 @@ const tripPrepProducts = {
     label: "Nankai Limited Express Rapi:t ticket",
     ctaLabel: "Check the Rapi:t ticket →",
     url: nankaiRapitUrl,
+  },
+  hotelTokyoStation: {
+    label: "Hotels around Tokyo Station / Marunouchi",
+    ctaLabel: "Check hotel prices on Klook →",
+    url: tokyoStationHotelsUrl,
   },
 } as const;
 
@@ -938,12 +951,13 @@ export const taxFreeAirportRunPrep: KlookTripPrepItem[] = [
   },
 ];
 
-/** Currency Exchange — the reader is deciding where to change money. */
+/**
+ * Currency Exchange — the reader is deciding where to change money, so each line is
+ * a cost that can be settled in their own currency instead of out of the yen they
+ * exchange on arrival. Hotels were added 22 Oct 2026: the room is the largest line
+ * item of the trip and the one most clearly removable from the exchange question.
+ */
 export const currencyExchangeTripPrep: KlookTripPrepItem[] = [
-  {
-    ...tripPrepProducts.esim,
-    why: "Checking a counter's rate against the mid-market rate takes seconds online, so it helps to have data before you walk past the first exchange desk in the arrivals hall.",
-  },
   {
     ...tripPrepProducts.skyliner,
     why: "If you only want to change a small float at the airport, book the train out in advance — the Skyliner reaches Nippori in 36 minutes and Keisei Ueno in about 41.",
@@ -951,6 +965,14 @@ export const currencyExchangeTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.subway,
     why: "A subway ticket bought before you fly is one fare you do not have to cover out of the yen you exchange on arrival.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Checking a counter's rate against the mid-market rate takes seconds online, so it helps to have data before you walk past the first exchange desk in the arrivals hall.",
+  },
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "The room is usually the biggest single bill of the trip; prepaying it in your own currency takes it out of the exchange-rate question entirely, and this is the arrival-day base the Narita trains reach without a transfer.",
   },
 ];
 
