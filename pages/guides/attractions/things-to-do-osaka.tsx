@@ -279,6 +279,31 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            <Link href="/guides/attractions/osaka-castle-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 21V9l2-2 2 2V5l4-3 4 3v4l2-2 2 2v12z" />
+                  <path d="M10 21v-5h4v5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Osaka Castle Tickets (2026): Prices, Hours and What the Pass Covers</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/umeda-sky-building-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="6" width="5" height="15" />
+                  <rect x="15" y="6" width="5" height="15" />
+                  <path d="M4 6h16" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Umeda Sky Building Tickets (2026): Prices, Hours and the Best Time to Go</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

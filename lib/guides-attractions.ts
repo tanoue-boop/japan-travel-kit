@@ -68,6 +68,22 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/umeda-sky-building-tickets",
+    badge: "Tickets",
+    title: "Umeda Sky Building Tickets (2026): Prices, Hours and the Best Time to Go",
+    desc: "¥2,000 for an adult and ¥500 for a child aged 4 to elementary school, with the 173 m rooftop open 9:30–22:30 and last entry at 22:00. Plus Osaka sunset times by season and the 15:00 cut-off on the Amazing Pass.",
+    group: "tickets",
+    city: "osaka",
+  },
+  {
+    href: "/guides/attractions/osaka-castle-tickets",
+    badge: "Tickets",
+    title: "Osaka Castle Tickets (2026): Prices, Hours and What the Pass Covers",
+    desc: "The main tower is ¥1,200 and about 60 minutes, open 9:00–18:00 with last admission at 17:30. The four other paid facilities inside the park total ¥5,200 — which is why the city pass wins here.",
+    group: "tickets",
+    city: "osaka",
+  },
+  {
     href: "/guides/attractions/usj-tickets-express-pass",
     badge: "Tickets",
     title: "Universal Studios Japan Tickets & Express Pass (2026): What to Buy",

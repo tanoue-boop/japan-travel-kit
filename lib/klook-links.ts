@@ -801,6 +801,65 @@ export const kaiyukanLegolandCombo: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Umeda Sky Building and Osaka Castle, added 23 Oct 2026
+//
+// Two more Osaka entry guides: umeda-sky-building-tickets and
+// osaka-castle-tickets. Both are admissions, so the 6.5% tours-and-activities
+// band, with the 5% Osaka Amazing Pass (`osakaAmazingPass`, above) as the
+// secondary CTA on each — the pass covers both venues, with a 15:00 cut-off at
+// the Umeda deck that decides whether it is worth buying.
+//
+// Klook still answers automated reads of its /activity/ pages with HTTP 403, so
+// each listing below was confirmed live, on sale, and in its en-US URL form
+// through the www.klook.com search index on 23 Oct 2026.
+//
+// No Gozabune constant: Klook's index has no standalone Osaka Castle Gozabune
+// listing, only the castle tickets and the guided walks. The boat is bought at
+// the kiosk by the Gokurakubashi bridge or free with the Amazing Pass, and the
+// castle guide says so rather than pointing at a product that does not exist.
+//
+// No price appears on any of them, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/** Umeda Sky Building / Kuchu Teien Observatory admission — headline CTA on the Umeda guide. */
+export const umedaSkyBuildingTicket: KlookTour = {
+  title: "Umeda Sky Building & Kuchu Teien Observatory ticket",
+  desc: "The straight admission to the 173 m rooftop ring above the twin towers, in English and on a foreign card",
+  url: klookLink("https://www.klook.com/en-US/activity/35861-umeda-sky-building-kuchu-teien-observatory-ticket/"),
+};
+
+/** Osaka Castle main tower admission — headline CTA on the castle guide. */
+export const osakaCastleTicket: KlookTour = {
+  title: "Osaka Castle ticket",
+  desc: "Admission to the eight floors of the main tower and the Toyotomi Stone Wall Museum, scanned at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/30110-osaka-castle-ticket/"),
+};
+
+/**
+ * The one tour that covers both of these guides' venues in a day — which is why
+ * it is the 6.5% CTA on each of them rather than two separate tours.
+ */
+export const osakaCastleUmedaTonboriDayTour: KlookTour = {
+  title: "Osaka Castle, Umeda Sky Building & Tombori river cruise day tour",
+  desc: "A guided day that takes in the castle, the Umeda deck and the Dotonbori river cruise — the two admissions on this page plus the boat, with someone else doing the routing",
+  url: klookLink("https://www.klook.com/en-US/activity/91767-osaka-castle-umeda-sky-building-tonbori-river-cruise-join-private-one-day-walking-tour/"),
+};
+
+/** Castle plus the Nishinomaru Garden, which is the separately-ticketed half of the grounds. */
+export const osakaCastleNishinomaruWalkingTour: KlookTour = {
+  title: "Osaka Castle & Nishinomaru Garden half-day walking tour",
+  desc: "A join-in half day over the castle grounds and the Nishinomaru Garden, the paid lawn with the postcard view of the tower and about 300 cherry trees",
+  url: klookLink("https://www.klook.com/en-US/activity/84795-osaka-castle-nishinomaru-garden-join-half-day-walking-tour/"),
+};
+
+/** Open-top night bus out of Osaka Station — the Umeda-departing evening alternative. */
+export const osakaNaniWonderNightBusTour: KlookTour = {
+  title: "Osaka “Nani Wonder” open-top double-decker night tour",
+  desc: "Departs the Osaka Station JR express bus terminal in Umeda and runs the night lights down Midosuji to Nipponbashi and Shinsekai",
+  url: klookLink("https://www.klook.com/en-US/activity/142111-osaka-sightseeing-bus-nani-wonder-double-decker-open-top-bus-night-view-tour/"),
+};
+
+// ---------------------------------------------------------------------------
 // Ticket and tour redirects moved here on 20 Oct 2026
 //
 // Each of these was a `const …_URL` inside the guide that uses it. They moved so
