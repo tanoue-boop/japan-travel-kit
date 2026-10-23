@@ -106,6 +106,7 @@ Official ticket prices and booking rules for the attractions that sell date- and
 - [Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?](https://www.japan-travel-kit.com/guides/attractions/tokyo-subway-ticket): The 24/48/72-hour prices from Tokyo Metro, the break-even worked against official single fares, and the exclusion that catches people out — JR, including the Yamanote Line.
 - [Tokyo Observation Decks (2026): Shibuya Sky vs Skytree vs Tokyo Tower](https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks): Four decks compared on height, official price and what you actually see from each — including the Metropolitan Government Building, which charges nothing at all.
 - [Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day](https://www.japan-travel-kit.com/guides/attractions/japan-14-day-itinerary): Four bases rather than seven — Tokyo 5 nights, Kawaguchiko or Hakone 1, Kyoto 4 with Nara, Osaka 3 — with a table for each of the fourteen days and official prices for every ticketed stop, dated.
+- [Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day](https://www.japan-travel-kit.com/guides/attractions/tokyo-5-day-itinerary): Three city days plus Kawaguchiko and Kamakura, with a table for each of the five days, published journey times for every leg out of the city, and only five bookings that have to be made ahead.
 - [Tokyo 3 Day Itinerary (2026): What to Book, and in What Order](https://www.japan-travel-kit.com/guides/attractions/tokyo-3-day-itinerary): Three days, three districts — west, east and centre — with a table per day and only two stops that need a timed ticket. Official prices for each ticketed stop, with the date we checked them.
 - [Things to Do in Tokyo (2026): What to Book Ahead and What to Walk Into](https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo): A short list of the Tokyo attractions that need a timed ticket weeks out, and the ones you can turn up to — so your booking effort goes where it is actually needed.
 - [Things to Do in Kyoto (2026): Temples, Timing and What to Book](https://www.japan-travel-kit.com/guides/attractions/things-to-do-kyoto): Kyoto's headline sights are mostly walk-in, which changes how you plan a day there. What needs reserving, what does not, and how to fit the big three together.
@@ -199,4 +200,4 @@ The same 5 guides in Thai, under /th/ (hreflang th-TH), with its own entry page 
 - [sitemap.xml](https://www.japan-travel-kit.com/sitemap.xml)
 - Contact: info@japan-travel-kit.com
 
-Generated 2026-10-22 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.
+Generated 2026-10-23 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.

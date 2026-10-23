@@ -97,6 +97,28 @@ export const tokyoStayAreas: KlookStayArea[] = [
   },
 ];
 
+/**
+ * Where to stay for a five-day Tokyo trip — added 23 Oct 2026 for
+ * tokyo-5-day-itinerary.
+ *
+ * The first three are `tokyoStayAreas` verbatim, so there is one source of truth
+ * for those destination ids. Shibuya is the fourth because a five-day plan ends two
+ * of its evenings on that side of the loop (the SHIBUYA SKY sunset slot, and the
+ * Kawaguchiko highway bus that boards at Shinjuku next door) — and because the
+ * three-day plan has no room for a Shibuya base at all. The Shibuya Scramble
+ * Crossing hotel search (p50205584) was confirmed as a live en-US page through the
+ * www.klook.com search index on 23 Oct 2026; Klook has no `shibuya-station`
+ * destination page, which is why the landmark id is the one used.
+ */
+export const tokyoFiveDayStayAreas: KlookStayArea[] = [
+  ...tokyoStayAreas,
+  {
+    area: "Shibuya",
+    why: "On the Yamanote loop one stop from Harajuku and two from Shinjuku, so the sunset deck slot and the early highway bus to Kawaguchiko both start within a few minutes of the door.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50205584-shibuya-scramble-crossing/3-hotel/"),
+  },
+];
+
 /** Getting Around Osaka — the three Midosuji Line hubs that guide names. */
 export const osakaStayAreas: KlookStayArea[] = [
   {

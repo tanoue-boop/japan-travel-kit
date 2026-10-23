@@ -223,6 +223,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/tokyo-5-day-itinerary",
+    badge: "Itinerary",
+    title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day",
+    desc: "Three city days plus Kawaguchiko and Kamakura, with a table for each of the five days, published journey times for every leg out of the city, and only five bookings that have to be made ahead.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-3-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order",
