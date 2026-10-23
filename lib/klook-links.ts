@@ -860,6 +860,126 @@ export const osakaNaniWonderNightBusTour: KlookTour = {
 };
 
 // ---------------------------------------------------------------------------
+// Dotonbori river cruises and Kyoto kimono rental, added 23 Oct 2026
+//
+// Two more Kansai entry guides: dotonbori-river-cruise and kyoto-kimono-rental.
+// Everything below is in the 6.5% tours-and-activities band, with the 5% Osaka
+// Amazing Pass (`osakaAmazingPass`, above) as the secondary CTA on the cruise
+// page — the pass operator's own facility list carries the Tombori River Cruise
+// as a free admission, which is the whole of the cruise page's money question.
+//
+// Klook still answers automated reads of its /activity/ pages with HTTP 403, so
+// each listing below was confirmed live, on sale, and in its en-US URL form
+// through the www.klook.com search index on 23 Oct 2026. No price appears on any
+// of them, for the usual reason — and on the kimono page that rule is doubled:
+// rental pricing moves by plan and season, so the guide quotes only what the
+// shops' own operators publish.
+//
+// Note on the cruise block: Klook does not sell the operator's own Tombori River
+// Cruise as a standalone en-US listing. What it sells is the other Dotonbori
+// boats — the lounge-seat City Cruise and the Naniwa sightseeing boat, both from
+// the same stretch of river — plus the pass that includes the Tombori boat free.
+// The guide says exactly that rather than implying the pages are the same thing.
+// ---------------------------------------------------------------------------
+
+/** 20-minute Dotonbori cruise from Tazaemonbashi Pier — lounge seating, BYO drinks. */
+export const dotonboriCityCruise: KlookTour = {
+  title: "Dotonbori city cruise, Osaka",
+  desc: "A 20-minute cruise from Tazaemonbashi Pier past the Glico sign, listed with lounge-style seating, your own drinks allowed on board and pets welcome",
+  url: klookLink("https://www.klook.com/en-US/activity/65390-city-cruise-experience-osaka/"),
+};
+
+/** The 30-minute Naniwa sightseeing boat — the longer of the two Dotonbori rides. */
+export const dotonboriNaniwaSightseeingBoat: KlookTour = {
+  title: "Osaka Dotonbori Naniwa sightseeing boat",
+  desc: "The 30-minute version of the same river, listed with background music and the Glico sign, neon and riverside landmarks from the water",
+  url: klookLink("https://www.klook.com/en-US/activity/176566-osaka-dotonbori-river-cruise/"),
+};
+
+/** Osaka Wonder Cruise — the third Dotonbori operator Klook sells in en-US. */
+export const osakaWonderCruise: KlookTour = {
+  title: "Osaka Wonder Cruise",
+  desc: "A short Dotonbori river ride past the Minami landmarks, sold separately from the Tombori and Naniwa boats",
+  url: klookLink("https://www.klook.com/en-US/activity/84029-osaka-river-cruise/"),
+};
+
+/** The DJ-boat version of the Dotonbori cruise, with club entry attached. */
+export const dotonboriTonboriRaveCruise: KlookTour = {
+  title: "Dotonbori TONBORIRAVE cruise with a DJ",
+  desc: "The night-out version of a Dotonbori cruise — a DJ on board and free admission to the Piccadilly nightclub included with the ticket",
+  url: klookLink("https://www.klook.com/en-US/activity/196953-osaka-dotonbori-tonborirave-cruise-dj-bonus-club-piccadilly-entry/"),
+};
+
+/** Daytime Dotonbori food walk — the 11:00–14:00 join-in, for the hours either side of a cruise. */
+export const dotonboriDaytimeFoodTour: KlookTour = {
+  title: "Dotonbori daytime food tour, Osaka",
+  desc: "A three-hour join-in walk listed at 11:00–14:00 for 2 to 10 people, with kushikatsu, takoyaki, a seasonal lunch set at an izakaya and a local dessert",
+  url: klookLink("https://www.klook.com/en-US/activity/103864-osaka-join-180-min-food-tour-daytime-dotonbori/"),
+};
+
+/** The evening Namba bar crawl — the after-dark half of the same few streets. */
+export const nambaBarHoppingNightTour: KlookTour = {
+  title: "Osaka bar hopping night tour in Namba",
+  desc: "A three-and-a-half-hour join-in evening with an English-speaking guide, through the bars around Namba and Tenma rather than the Dotonbori strip",
+  url: klookLink("https://www.klook.com/en-US/activity/87969-namba-join-half-day-food-tour/"),
+};
+
+/**
+ * Kyoto kimono rental. Six shops across the three areas the guide splits by —
+ * Gion and Kiyomizu, Arashiyama, and Kyoto Station — because which area you book
+ * is the decision the reader is actually making, and a single "Kyoto" link hides it.
+ */
+
+/** Yumeyakata — the listing that publishes all three return options in full. */
+export const kyotoKimonoYumeyakata: KlookTour = {
+  title: "Kyoto kimono rental — Yumeyakata",
+  desc: "Over 500 designs, and the listing that spells out all three return routes: back to the shop by 17:30 the same day, 9:00–17:00 the next day for a fee, or by post for a fee",
+  url: klookLink("https://www.klook.com/en-US/activity/1079-one-day-kimono-rental-kyoto/"),
+};
+
+/** Aiwafuku's Gion Shijo store — free hair set, and returnable at any of their six Kyoto shops. */
+export const kyotoKimonoAiwafukuGion: KlookTour = {
+  title: "Gion kimono rental with free hair styling — Aiwafuku Gion Shijo",
+  desc: "Over 600 kimono with a hair set by a qualified stylist included, two minutes from Hanamikoji and Shirakawa, and returnable at any of the operator's six Kyoto stores",
+  url: klookLink("https://www.klook.com/en-US/activity/107086-kimono-rental-gionshijyo-kyoto-aiwafuki/"),
+};
+
+/** The Yasaka Pagoda store — one minute from the pagoda itself, which is the shot people come for. */
+export const kyotoKimonoAiwafukuKiyomizu: KlookTour = {
+  title: "Kiyomizu kimono rental with hair set — Aiwafuku Kiyomizu / Yasaka Pagoda",
+  desc: "A minute's walk from the Yasaka Pagoda and Yasaka Koshindo with Kiyomizu-dera uphill from it, over 600 kimono, hair set by a licensed stylist, English and Chinese-speaking staff daily",
+  url: klookLink("https://www.klook.com/en-US/activity/122163-kimono-rental-with-hair-set-kyoto-aiwafuku-shimizu-yasaka-tower-sto/"),
+};
+
+/** Misaki, by Gion-Shijo — the Gion option with the photo shoot built in. */
+export const kyotoKimonoMisakiGion: KlookTour = {
+  title: "Kimono and yukata rental with a photo shoot — Misaki, Gion-Shijo",
+  desc: "Over 400 kimono and yukata from a shop set up for Gion, Yasaka Shrine and Kiyomizu-dera, with a photo shoot on the same booking",
+  url: klookLink("https://www.klook.com/en-US/activity/127739-kimono-rental-gion-kyoto-gion-shijo-yasaka-shrine-misaki-store/"),
+};
+
+/** Arashiyama — the bamboo-grove end of the city, which is a different day from Gion. */
+export const kyotoKimonoOokiniArashiyama: KlookTour = {
+  title: "Arashiyama kimono rental — Ookini Arashiyama store",
+  desc: "Three minutes from the bamboo grove and Togetsukyo bridge, with over 1,000 kimono and optional Japanese-style makeup and a photo shoot",
+  url: klookLink("https://www.klook.com/en-US/activity/110642-kimono-rental-japanese-makeup-photoshoot-by-ookini-arashiyama/"),
+};
+
+/** Kyoto Station — the shop you use when the kimono day starts off a shinkansen. */
+export const kyotoKimonoAiwafukuStation: KlookTour = {
+  title: "Kyoto Station kimono rental with hair set — Aiwafuku Kyoto Ekimae",
+  desc: "Five minutes from Kyoto Station, so the kimono day can start the moment the shinkansen does: over 600 kimono, a hair set by a qualified stylist, and a 30-minute photo and 15-minute makeup plan",
+  url: klookLink("https://www.klook.com/en-US/activity/103338-kimono-rental-with-hair-set-kyoto-aiwafuku-kyoto-ekimae-store/"),
+};
+
+/** The Hachijo-exit option, for anyone arriving with cases — the listing states luggage storage. */
+export const kyotoKimonoMimosaStation: KlookTour = {
+  title: "Kyoto Station kimono rental with luggage storage — mimosa MK Taxi",
+  desc: "About a minute from the Kyoto Station Hachijo exit with luggage storage and a hair set included — the one to pick if you are changing before you have checked in",
+  url: klookLink("https://www.klook.com/en-US/activity/103034-kimono-rental-experience-mk-mimosa-kyoto/"),
+};
+
+// ---------------------------------------------------------------------------
 // Ticket and tour redirects moved here on 20 Oct 2026
 //
 // Each of these was a `const …_URL` inside the guide that uses it. They moved so

@@ -287,6 +287,22 @@ export const attractionArticles: GuideArticle[] = [
     city: "kyoto",
   },
   {
+    href: "/guides/attractions/kyoto-kimono-rental",
+    badge: "Experience",
+    title: "Kyoto Kimono Rental (2026): Which Area, What's Included, When to Return",
+    desc: "The decision is the area, not the shop: Gion and Kiyomizu put you inside a 25-minute walking route, Arashiyama is a self-contained day, Kyoto Station is a changing room. Plus the 17:30 same-day return.",
+    group: "experiences",
+    city: "kyoto",
+  },
+  {
+    href: "/guides/attractions/dotonbori-river-cruise",
+    badge: "Experience",
+    title: "Dotonbori River Cruise (2026): Price, Times, Pier and the Pass",
+    desc: "¥2,000 for an adult, about 20 minutes, and a departure every half hour from Tazaemonbashi Pier between 11:00 and 21:00 — free on the Osaka Amazing Pass if you exchange the voucher before the evening boats fill.",
+    group: "experiences",
+    city: "osaka",
+  },
+  {
     href: "/guides/attractions/tea-ceremony-japan",
     badge: "Experience",
     title: "Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto and What to Expect",
