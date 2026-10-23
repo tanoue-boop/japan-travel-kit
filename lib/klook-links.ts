@@ -909,6 +909,26 @@ const tripPrepProducts = {
     ctaLabel: "Check hotel prices on Klook →",
     url: tokyoStationHotelsUrl,
   },
+  naritaLimousine: {
+    label: "Narita Airport limousine bus",
+    ctaLabel: "Check the limousine bus →",
+    url: naritaLimousineBus.url,
+  },
+  osakaPass: {
+    label: "Osaka Amazing Pass (1-day / 2-day)",
+    ctaLabel: "Check the Osaka pass →",
+    url: osakaAmazingPass.url,
+  },
+  fujiHakoneTour: {
+    label: "Mt. Fuji & Hakone day tour from Tokyo",
+    ctaLabel: "Check the day tour →",
+    url: fujiHakoneDayTour.url,
+  },
+  skytree: {
+    label: "TOKYO SKYTREE ticket",
+    ctaLabel: "Check the Skytree ticket →",
+    url: skytreeTicket.url,
+  },
 } as const;
 
 /**
@@ -973,6 +993,51 @@ export const currencyExchangeTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.hotelTokyoStation,
     why: "The room is usually the biggest single bill of the trip; prepaying it in your own currency takes it out of the exchange-rate question entirely, and this is the arrival-day base the Narita trains reach without a transfer.",
+  },
+];
+
+/**
+ * Contactless Payment — added 23 Oct 2026. The reader's question ("can I tap?") now
+ * has a mostly-yes answer on the private railways and subways, so this slot is not
+ * about paying at all: it is about the things a tap at a gate or a counter cannot
+ * get you, which is a booked seat, a timed entry, or a pass that beats per-ride fares.
+ *
+ * Deliberately spread across the bands the page's own prepay table lists: transport
+ * at 5% (limousine bus, Skyliner, subway ticket, Osaka pass), tours and tickets at
+ * 6.5% (Fuji–Hakone day tour, Skytree), eSIM at 20%, hotels at 6.5%.
+ */
+export const contactlessTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "Tap-to-ride is a railway service, so it does nothing for the airport coach — and the limousine bus takes hold luggage, which a rush-hour train does not.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "Keisei's Skyliner is a reserved-seat limited express: the seat is a separate purchase from the fare, so there is no gate to tap your way onto it.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Tokyo Metro and Toei both take a contactless card now, but they charge you per journey; the 24, 48 or 72-hour ticket is the version that stops counting.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Osaka Metro has taken contactless cards at every station since October 2024, so the reason to buy this pass is the 40-plus admissions bundled with the rides — not the rides.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A day out to Fuji or Hakone is the one trip no ticket gate can sell you: it is a coach seat on a fixed departure, booked before you are in Japan.",
+  },
+  {
+    ...tripPrepProducts.skytree,
+    why: "Popular attractions sell timed entry, and the slot is the scarce thing rather than the payment — an observation deck can be sold out while its card terminal works perfectly.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Tap-to-ride only tells you the fare was charged, not what it was: the history lives on a web page, which needs working data rather than a hunt for station Wi-Fi.",
+  },
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "The room is the biggest bill of the trip and the one most worth settling in your own currency before you fly, rather than tapping a card at a front desk at a rate you do not see.",
   },
 ];
 
