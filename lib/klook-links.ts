@@ -195,6 +195,59 @@ export const osakaAirportStayAreas: KlookStayArea[] = [
   },
 ];
 
+/**
+ * Where to stay on a Tokyo–Kyoto–Osaka trip, added 25 Oct 2026 for
+ * tokyo-kyoto-osaka-7-day-itinerary.
+ *
+ * No new URLs: every entry reads the destination page out of the three city
+ * arrays above (`tokyoStayAreas`, `kyotoStayAreas`, `osakaStayAreas`), so there is
+ * still one source of truth per Klook destination id. What is new is the `why`
+ * line — on a seven-day trip the base is chosen around the two moving days and the
+ * flight out of Kansai, which is a different argument from the one the city
+ * transport guides make, so the text is written for this plan rather than reused.
+ *
+ * Gion is deliberately absent and Tennoji too: two Kyoto nights put a premium on
+ * being at the shinkansen end of the city, and one Osaka night on being at the
+ * Nankai terminus or the shinkansen hub.
+ */
+export const tokyoKyotoOsakaStayAreas: KlookStayArea[] = [
+  {
+    area: "Shinjuku, Tokyo",
+    why: "The Yamanote stop that is also the Chuo, Odakyu and Keio terminus, a direct Narita Express stop and a limousine bus stop — so the arrival day and the west-Tokyo day both start at the door.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Tokyo Station / Marunouchi, Tokyo",
+    why: "The base that costs you least on a seven-day trip: the Tokaido Shinkansen to Kyoto leaves from under it, so the Day 4 move is a lift rather than a cross-city journey with luggage.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Ueno / Asakusa, Tokyo",
+    why: "Ueno is on the Yamanote loop with the Ginza Line running to Asakusa, which is the whole of the east-Tokyo day — and the Keisei Skyliner from Narita arrives here faster than anywhere else in the city.",
+    url: tokyoStayAreas[2].url,
+  },
+  {
+    area: "Kyoto Station, Kyoto",
+    why: "Where the shinkansen puts you down on Day 4 and where the 100 and 101 sightseeing buses start, so neither Kyoto morning begins with a transfer — and the airport Haruka leaves from the same platforms.",
+    url: kyotoStayAreas[0].url,
+  },
+  {
+    area: "Shijo-Kawaramachi / Karasuma, Kyoto",
+    why: "The one point the Karasuma and Tozai subway lines cross, with Pontocho, Nishiki Market and the Hankyu and Keihan lines to Osaka all on foot — the better base if you want the evenings as well as the temples.",
+    url: kyotoStayAreas[1].url,
+  },
+  {
+    area: "Namba, Osaka",
+    why: "Midosuji Line, Dotonbori and Kuromon Market on foot, and the Nankai terminus — which means the Day 7 run to Kansai Airport starts under your hotel rather than after a change with the cases.",
+    url: osakaStayAreas[1].url,
+  },
+  {
+    area: "Umeda, Osaka",
+    why: "The northern Midosuji hub, joined to Osaka Station: the stop to pick if you arrive from Kyoto by JR or Hankyu, or if you are connecting back to the shinkansen rather than flying out of Kansai.",
+    url: osakaStayAreas[0].url,
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Tours and activities (6.5%)
 // ---------------------------------------------------------------------------

@@ -239,6 +239,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary",
+    badge: "Itinerary",
+    title: "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan, Day by Day",
+    desc: "The first-visit route in a week — Tokyo 3 nights, Kyoto 2, Osaka 1, out from Kansai — with a table for each of the seven days, the shinkansen and local-train times, and what has to be booked before you fly.",
+    group: "cities",
+    // Nationwide: the week runs Tokyo → Kyoto → Osaka and flies out of Kansai.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/tokyo-5-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day",
