@@ -768,6 +768,36 @@ export const naritaHanedaLimousineBus: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/167353-limousine-bus-between-haneda-airport-and-narita-airport/"),
 };
 
+// ---------------------------------------------------------------------------
+// Door-to-door airport transfers, added 25 Oct 2026 for the answer-first rebuild
+// of pages/guides/transport/tokyo-airport-transfer.tsx.
+//
+// The trains and the limousine bus already had links; what the guide had no route
+// for was the reader whose question is "what do I do with a 23:40 landing or a
+// 06:00 departure", where the answer is a car rather than a timetable. Both
+// listings below sit in the 5% passes-and-transport band.
+//
+// Klook answers automated reads of /activity/ pages with HTTP 403, so each was
+// confirmed live and on sale through the www.klook.com search index on
+// 25 Oct 2026, together with the en-US form of its URL. No price appears for
+// either: the private transfer is priced per area and per vehicle size, so a
+// single figure would be wrong for most bookings even if we could read one.
+// ---------------------------------------------------------------------------
+
+/** Private car from either Tokyo airport — the late-landing, heavy-luggage answer. */
+export const tokyoPrivateAirportTransfer: KlookTour = {
+  title: "Private transfer, Haneda or Narita ⇄ Tokyo",
+  desc: "A car and driver booked to your hotel address rather than to a station, from either airport, with the driver tracking your flight — listed as a 24-hour service in 7- and 10-seater sizes",
+  url: klookLink("https://www.klook.com/en-US/activity/23053-private-haneda-narita-airport-transfers-tokyo/"),
+};
+
+/** The shared-van version — the same door-to-door idea at a seat price. */
+export const tokyoSharedAirportTransfer: KlookTour = {
+  title: "Shared transfer, Narita or Haneda → Tokyo",
+  desc: "The seat-by-seat version of the same thing for one or two travellers, booked to a central Tokyo address instead of a whole vehicle",
+  url: klookLink("https://www.klook.com/en-US/activity/136963-shared-transfer-narita-or-haneda-airport-to-tokyo/"),
+};
+
 /** Osaka Aquarium Kaiyukan admission — the headline CTA on the Kaiyukan guide. */
 export const osakaAquariumKaiyukanTicket: KlookTour = {
   title: "Osaka Aquarium Kaiyukan ticket",
