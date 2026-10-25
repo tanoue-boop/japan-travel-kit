@@ -419,6 +419,15 @@ export const attractionArticles: GuideArticle[] = [
     // Osaka — same rule as kyoto-nara-day-tour-from-osaka: the departure point wins.
     city: "osaka",
   },
+  {
+    href: "/guides/attractions/himeji-castle-day-trip",
+    badge: "Day trip",
+    title: "Himeji Castle Day Trip (2026): ¥2,500 Admission, and Times From Osaka & Kyoto",
+    desc: "1 hr 1 min from Osaka by special rapid, 28 minutes from Shin-Osaka by shinkansen. Admission went to ¥2,500 on 1 March 2026 and under-18s are free — plus the 16:00 last entry and the 1,000-an-hour cap on the keep.",
+    group: "daytrips",
+    // Himeji is in Hyogo, but the day is planned and sold out of Osaka.
+    city: "osaka",
+  },
 ];
 
 export const attractionsCategory: GuideCategory = {

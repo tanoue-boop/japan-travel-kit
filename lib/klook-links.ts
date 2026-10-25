@@ -1719,6 +1719,124 @@ export const rokkosanTouristPass: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/5631-rokkosan-tourist-pass-osaka/"),
 };
 
+// ---------------------------------------------------------------------------
+// Himeji Castle, added 25 Oct 2026 for himeji-castle-day-trip.
+//
+// Same verification rule as the blocks above: Klook answers automated reads of
+// its /activity/ pages with HTTP 403, so each listing below was confirmed live,
+// on sale and in its en-US URL form through the www.klook.com search index on
+// 25 Oct 2026. No price appears on any of them — the guide prints Himeji City's
+// own ¥2,500 / ¥2,600 admissions instead.
+//
+// One finding worth recording here rather than only in the article: Klook has no
+// standalone Himeji Castle admission ticket. Every Himeji listing is a tour, and
+// Klook's own Himeji Castle destination page states that the castle's entrance
+// fee is paid on site. The advance route for admission is Himeji City's own
+// time-slot digital ticket, which the guide links instead. That is also why the
+// headline CTA here is a 6.5% tour and the secondary CTA a 5% rail pass.
+// ---------------------------------------------------------------------------
+
+/** The plainest Himeji day out of Osaka — castle-first, no onsen detour. */
+export const himejiCastleOsakaBusTour: KlookTour = {
+  title: "Himeji & Himeji Castle join-in one-day bus tour from Osaka",
+  desc: "A join-in coach day from Osaka built around Himeji Castle itself rather than around a wider Hyogo circuit",
+  url: klookLink("https://www.klook.com/en-US/activity/82959-himeji-himeji-castle-join-one-day-bus-tour-osaka/"),
+};
+
+/** Castle, garden and the mountain temple — the full Himeji day. */
+export const himejiEngyojiKokoenDayTour: KlookTour = {
+  title: "Himeji Castle, Engyoji Temple & Koko-en one-day landmark trip",
+  desc: "The castle, the Koko-en garden next door and the mountain-top Engyoji complex above the city in one private day",
+  url: klookLink("https://www.klook.com/en-US/activity/87869-himeji-castle-engyoji-temple-koko-en-1-day-landmark-trip/"),
+};
+
+/** A guide for the keep and the garden, for people arriving under their own steam. */
+export const himejiCastleKokoenGuidedTour: KlookTour = {
+  title: "Himeji Castle & Koko-en Garden 3.5-hour guided tour",
+  desc: "A guided walk of the castle and the garden starting in Himeji — the version for travellers who get themselves there by train",
+  url: klookLink("https://www.klook.com/en-US/activity/190808-himeji-himeji-castle-kokoen-garden-3-5-hour-guided-tour/"),
+};
+
+/** The castle town rather than the keep — a half day on a bike. */
+export const himejiCastleTownBikeTour: KlookTour = {
+  title: "Himeji castle-town join-in day bike tour",
+  desc: "The streets, moats and samurai quarters around the castle by bicycle, for a second visit or an afternoon after the keep",
+  url: klookLink("https://www.klook.com/en-US/activity/106463-himeji-castle-town-join-day-bike-tour/"),
+};
+
+/**
+ * The 5% band alternative to a tour, and the only pass that covers the Sanyo
+ * Shinkansen leg into Himeji (Shin-Osaka–Okayama). The Kansai Area Pass above
+ * covers the special rapid but not the bullet train.
+ */
+export const jrKansaiWideAreaPass: KlookTour = {
+  title: "JR West Kansai WIDE Area Pass (5 day)",
+  desc: "The wider JR West pass as Klook sells it — the one that includes Sanyo Shinkansen seats between Shin-Osaka and Okayama, which is the fast way into Himeji",
+  url: klookLink("https://www.klook.com/en-US/activity/3277-5-day-kansai-wide-area-jr-pass/"),
+};
+
+// ---------------------------------------------------------------------------
+// Ski days and ski rental, added 25 Oct 2026 for japan-ski-travel-insurance.
+//
+// Confirmed the same way: live, on sale and in en-US URL form through the
+// www.klook.com search index on 25 Oct 2026. The day trips and the rental
+// packages both sit in the 6.5% tours-and-activities band; the bare GALA lift
+// ticket is a ticket, so it is listed as a secondary link rather than a CTA.
+//
+// Deliberately not used: /activity/8768 (GALA Yuzawa Snow Resort Day Tour). Its
+// indexed slug carries a trailing space that Klook itself serves URL-encoded, so
+// the plain en-US form cannot be written reliably. 140645 covers the same day.
+// ---------------------------------------------------------------------------
+
+/** A Tokyo-based ski day on the Joetsu shinkansen side — the easiest first day. */
+export const galaNaebaSkiDayTripTokyo: KlookTour = {
+  title: "GALA Yuzawa / Naeba ski resort day trip from Tokyo",
+  desc: "A winter-season day trip from Tokyo to the Yuzawa resorts by chartered car, with the resort chosen at booking",
+  url: klookLink("https://www.klook.com/en-US/activity/140645-galayuzawa-naeba-day-tour-by-chartered-car/"),
+};
+
+/** Hakuba in a day from Tokyo, with the resort selectable. */
+export const hakubaSkiResortDayTourTokyo: KlookTour = {
+  title: "Nagano Hakuba ski resort day trip from Tokyo",
+  desc: "A one-day Hakuba Valley trip out of Tokyo with a choice of four resorts, lift ticket and equipment rental in the booking",
+  url: klookLink("https://www.klook.com/en-US/activity/138485-nagano-hakuba-ski-resort-4-ski-resorts-available-tour-from-tokyo/"),
+};
+
+/** The Happo-one package — coach, gondola pass and gear in one checkout. */
+export const hakubaHapponeBusLiftRental: KlookTour = {
+  title: "Hakuba Happo-one: round-trip bus from Tokyo + lift ticket + rental",
+  desc: "Happo-one's common gondola and lift ticket bundled with the round-trip coach from Tokyo and a ski or snowboard set",
+  url: klookLink("https://www.klook.com/en-US/activity/176696-hakuba-happo-one-snow-resort-common-lift-ticket-equipment-rental/"),
+};
+
+/** Niseko rental — the Hirafu shop, for the Hokkaido half of a ski trip. */
+export const nisekoSkiSnowboardRental: KlookTour = {
+  title: "Niseko ski & snowboard rental (Rhythm, Hirafu)",
+  desc: "Ski or snowboard, boots and outerwear reserved before you fly, collected in Hirafu at the foot of the Niseko lifts",
+  url: klookLink("https://www.klook.com/en-US/activity/126937-niseko-rental-ski-or-snowboard-rental-ski-wear/"),
+};
+
+/** Hakuba rental by the day, one to seven days. */
+export const hakubaSkiSnowboardRental: KlookTour = {
+  title: "Hakuba ski & snowboard rental, 1–7 day package",
+  desc: "A Hakuba Village rental package priced by the number of days, booked ahead rather than queued for on the morning",
+  url: klookLink("https://www.klook.com/en-US/activity/116262-hakuba-ski-snowboard-rentals-1-7-days-package/"),
+};
+
+/** The Spicy shops — five branches across the Hakuba valley. */
+export const spicyHakubaSkiRental: KlookTour = {
+  title: "Spicy ski & snowboard set rental (Hakuba, Nagano)",
+  desc: "Ski and snowboard sets from the Spicy shops in Happo, Iwatake, Tsugaike, Echoland and Wadano, reserved in advance",
+  url: klookLink("https://www.klook.com/en-US/activity/103260-spicy-ski-set-snowboard-set-rental-nagano-hakuba/"),
+};
+
+/** The bare GALA Yuzawa lift ticket — a ticket, so a secondary link, not a CTA. */
+export const galaYuzawaLiftTicket: KlookTour = {
+  title: "GALA Yuzawa ski resort lift ticket",
+  desc: "The lift ticket on its own for the resort you can reach from Tokyo Station on the Joetsu shinkansen without a transfer",
+  url: klookLink("https://www.klook.com/en-US/activity/99585-everyone-beginners-experts-adults-children-enjoy-playing-snow/"),
+};
+
 /** Tokyo airport transfers — arrival-day add-ons next to the existing transfer links. */
 export const tokyoAirportTripPrep: KlookTripPrepItem[] = [
   {

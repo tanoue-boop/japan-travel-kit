@@ -70,7 +70,7 @@ Trains, passes and airport runs. 13 guides covering whether the Japan Rail Pass 
 
 ## Money, cards and payments
 
-Paying for things. 12 guides covering cash versus card, which ATMs take foreign cards, the travel cards worth holding, currency exchange, tax-free shopping and what a trip actually costs.
+Paying for things. 13 guides covering cash versus card, which ATMs take foreign cards, the travel cards worth holding, currency exchange, tax-free shopping and what a trip actually costs.
 
 - [Wise vs Revolut for Japan (2026): Which Travel Card Wins?](https://www.japan-travel-kit.com/guides/money/wise-vs-revolut-japan): Wise or Revolut for Japan? We compare exchange rates, weekend fees, ATM limits, and plans — with clear advice on which card suits your spending.
 - [Best Travel Card for Japan (2026): Top Picks for Foreign Visitors](https://www.japan-travel-kit.com/guides/money/best-travel-card-japan): Which travel card saves you the most money in Japan? We compare Wise, Revolut, Charles Schwab, Starling, and Monzo on exchange rates, ATM fees, and real-world usability.
@@ -84,6 +84,7 @@ Paying for things. 12 guides covering cash versus card, which ATMs take foreign 
 - [Japan Travel Budget Guide (2026): How Much Does Japan Cost?](https://www.japan-travel-kit.com/guides/money/japan-travel-budget): Japan is not as expensive as you think. We break down realistic daily budgets for backpackers, mid-range, and comfortable travellers — with 2026 prices for food, transport, and accommodation.
 - [Best Travel Insurance for Japan (2026): Compared & Reviewed](https://www.japan-travel-kit.com/guides/money/best-travel-insurance-japan): We compare Heymondo, SafetyWing, and World Nomads on medical cover, price structure, ski cover, and English support — with picks for every type of Japan trip.
 - [SafetyWing vs Heymondo for Japan (2026): Which Should You Pick?](https://www.japan-travel-kit.com/guides/money/safetywing-vs-heymondo-japan): Subscription vs trip cover for Japan. We compare medical limits, app support, ski cover, and waiting periods so you know which insurer fits your trip.
+- [Best Travel Insurance for Skiing in Japan (2026): Off-Piste, Rescue Costs and What Is Covered](https://www.japan-travel-kit.com/guides/money/japan-ski-travel-insurance): On-piste skiing is standard cover; off-piste is excluded on every SafetyWing plan, add-on included. Compared on published policy wording — plus the ¥100,000 minimum Niseko charges for a backcountry rescue.
 
 ## Attraction tickets, theme parks and passes
 
@@ -145,6 +146,7 @@ Whole days out of Tokyo, Kyoto and Osaka, where the decision is which itinerary 
 - [Kawaguchiko Day Trip From Tokyo (2026): Routes, Fares and What Fits in a Day](https://www.japan-travel-kit.com/guides/attractions/kawaguchiko-day-trip-from-tokyo): The north shore of Lake Kawaguchi is about 1 hr 45 min and ¥2,200 from Shinjuku by bus. Official fares for the ropeway, the lake boat and the sightseeing bus — and why a day holds two or three stops, not five.
 - [Karuizawa Day Trip From Tokyo (2026): Shinkansen Times, the Five Stops and Tour vs DIY](https://www.japan-travel-kit.com/guides/attractions/karuizawa-day-trip-from-tokyo): The shortest mountain day trip out of Tokyo — 60 to 75 minutes on the Hokuriku Shinkansen, or ¥2,600 and about 3 hr 20 min by Seibu bus. Plus the tourism association's own one-day bus course, and why three stops is a realistic day.
 - [Arima Onsen Day Trip (2026): From Osaka or Kobe, and What the Baths Cost](https://www.japan-travel-kit.com/guides/attractions/arima-onsen-day-trip): 65 minutes and ¥1,400 by coach from Osaka Station, 30 minutes and ¥780 from Sannomiya. Kin no Yu ¥800, Gin no Yu ¥700, and the closed Tuesdays that do not overlap.
+- [Himeji Castle Day Trip (2026): ¥2,500 Admission, and Times From Osaka & Kyoto](https://www.japan-travel-kit.com/guides/attractions/himeji-castle-day-trip): 1 hr 1 min from Osaka by special rapid, 28 minutes from Shin-Osaka by shinkansen. Admission went to ¥2,500 on 1 March 2026 and under-18s are free — plus the 16:00 last entry and the 1,000-an-hour cap on the keep.
 
 ## 繁體中文 (Traditional Chinese edition)
 
