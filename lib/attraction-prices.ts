@@ -154,9 +154,12 @@ export const PRICES = {
     child: "¥1,500",
     childAges: "ages 4–12; free under 4",
     booking: "Required",
-    bookingNote: "Entry is a 30-minute slot and the adult price moves with the date, so the slot is the booking.",
-    source: "teamlab.art and the official Planets ticket store",
-    checked: "2026-10-09",
+    bookingNote:
+      "Entry is a 30-minute slot, the official store states that nothing is sold on site, and the adult price moves with the date — so the slot is the booking.",
+    source: "official teamLab Planets ticket store (teamlabplanets.dmm.com)",
+    // Re-read off the official store's own price table, in both its English and
+    // Japanese editions, on 25 October 2026: every tier below was unchanged.
+    checked: "2026-10-25",
     klook: klook("Klook: teamLab Planets Toyosu ticket", teamlabPlanetsTicketUrl),
   },
   teamlabBorderless: {

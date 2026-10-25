@@ -30,6 +30,9 @@ const DESC =
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
 const CHECKED = zhDateLabel(P.checked);
+// 票價是在官方售票網站重新查核的日期（CHECKED）；營業時間與休館日讀自 teamlab.art，
+// 那一頁是用戶端渲染、無法重讀，所以保留自己的日期而不借用更新的日期。與英文版一致。
+const HOURS_CHECKED = zhDateLabel("2026-10-09");
 // "from ¥3,800" -> "¥3,800 起": same figure, Chinese qualifier. See lib/i18n.ts.
 const ADULT = zhPrice(P.adult);
 const CHILD = zhPrice(P.child);
@@ -112,7 +115,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab Planets 的營業時間？什麼時候休館？",
-    a: `營業時間依日期而不同。我們在 ${CHECKED} 查看官方網站時，Planets 公告的時間是 08:00–22:00，最後入場為閉館前一小時。2026 年年底的休館日包含 11 月 5 日（週四）與 12 月 3 日（週四）。因為行事曆每個月都在變，訂時段之前請用你自己的日期查官方行事曆。`,
+    a: `營業時間依日期而不同。我們在 ${HOURS_CHECKED} 查看官方網站時，Planets 公告的時間是 08:00–22:00，最後入場為閉館前一小時。2026 年年底的休館日包含 11 月 5 日（週四）與 12 月 3 日（週四）。因為行事曆每個月都在變，訂時段之前請用你自己的日期查官方行事曆。`,
   },
   {
     q: "錯過 teamLab Planets 的時段怎麼辦？",
@@ -222,7 +225,8 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               查看 teamLab Planets 門票 →
             </a>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-              本頁的票價、營業時間與休館日讀自 teamLab 官方網站，查核日 {CHECKED}。Planets 票價依日期與時段變動、
+              本頁的票價讀自 teamLab Planets 官方售票網站，查核日 {CHECKED}；營業時間與休館日讀自
+              teamlab.art，查核日 {HOURS_CHECKED}。Planets 票價依日期與時段變動、
               行事曆也會改，請在結帳時確認你自己日期的兩項資訊。
             </p>
           </div>
@@ -268,7 +272,7 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>營業時間、入場時段與穿著</h2>
           <p className={styles.bodyText}>
             Planets 對你的要求比一般美術館多：要赤腳進場，而且路線的一部分是水。以下是我們在 {CHECKED}
-            查看官方網站時的內容：
+            查看官方售票網站時的內容，其中營業時間與休館日為 {HOURS_CHECKED} 的查核結果：
           </p>
           <ul className={styles.bodyList}>
             <li><strong>營業時間：</strong>公告為 08:00–22:00，依日期變動，最後入場為閉館前一小時。</li>
@@ -355,7 +359,8 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            票價與營業時間讀自 teamLab 官方網站，查核日 {CHECKED}。兩間的成人票都依日期與時段定價、行事曆也都會變動，
+            Planets 票價讀自官方售票網站，查核日 {CHECKED}；無界票價與兩間的營業時間讀自 teamlab.art，
+            查核日 {HOURS_CHECKED}。兩間的成人票都依日期與時段定價、行事曆也都會變動，
             請確認你自己的日期。「需要時間」是我們的行程建議，不是官方數字。
           </p>
         </section>

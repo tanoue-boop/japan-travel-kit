@@ -31,6 +31,10 @@ const DESC =
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
 const CHECKED = dateLabel(P.checked, "ko");
+// 가격은 공식 티켓 사이트에서 다시 확인한 날짜(CHECKED), 운영 시간과 휴관일은
+// teamlab.art를 읽은 날짜입니다. teamlab.art는 클라이언트 렌더링이라 다시 읽지 못해
+// 더 최근 날짜를 빌리지 않고 자기 날짜를 유지합니다. 영어판과 같은 처리입니다.
+const HOURS_CHECKED = dateLabel("2026-10-09", "ko");
 // "from ¥3,800" -> "¥3,800부터": same figure, Korean qualifier. See lib/i18n.ts.
 const ADULT = priceLabel(P.adult, "ko");
 const CHILD = priceLabel(P.child, "ko");
@@ -113,7 +117,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "팀랩 플래닛 운영 시간과 휴관일은 어떻게 되나요?",
-    a: `운영 시간은 날짜에 따라 다릅니다. 저희가 ${CHECKED}에 공식 사이트를 확인했을 때 플래닛의 공지 시간은 08:00–22:00이었고, 마지막 입장은 폐관 1시간 전이었습니다. 2026년 말 휴관일에는 11월 5일(목)과 12월 3일(목)이 포함됩니다. 달력은 매달 바뀌므로 회차를 예약하기 전에 본인 날짜로 공식 달력을 확인하세요.`,
+    a: `운영 시간은 날짜에 따라 다릅니다. 저희가 ${HOURS_CHECKED}에 공식 사이트를 확인했을 때 플래닛의 공지 시간은 08:00–22:00이었고, 마지막 입장은 폐관 1시간 전이었습니다. 2026년 말 휴관일에는 11월 5일(목)과 12월 3일(목)이 포함됩니다. 달력은 매달 바뀌므로 회차를 예약하기 전에 본인 날짜로 공식 달력을 확인하세요.`,
   },
   {
     q: "예약한 회차를 놓치면 어떻게 되나요?",
@@ -219,7 +223,8 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               팀랩 플래닛 티켓 보기 →
             </a>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-              이 페이지의 가격, 운영 시간, 휴관일은 팀랩 공식 사이트에서 읽었고 확인일은 {CHECKED}입니다. 플래닛
+              이 페이지의 가격은 팀랩 플래닛 공식 티켓 사이트에서 읽었고 확인일은 {CHECKED}, 운영 시간과
+              휴관일은 teamlab.art에서 읽었고 확인일은 {HOURS_CHECKED}입니다. 플래닛
               가격은 날짜와 회차에 따라 변동하고 달력도 바뀌므로, 결제 시점에 본인 날짜로 두 가지를 모두
               확인하세요.
             </p>
@@ -265,8 +270,8 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <span className={styles.sectionLabel}>예약 전에</span>
           <h2 className={styles.sectionTitle}>운영 시간, 입장 회차, 복장</h2>
           <p className={styles.bodyText}>
-            플래닛은 일반적인 미술관보다 요구하는 게 많습니다. 맨발로 들어가고, 경로의 일부가 물입니다. 저희가
-            {" "}{CHECKED}에 공식 사이트를 확인했을 때의 내용은 다음과 같습니다.
+            플래닛은 일반적인 미술관보다 요구하는 게 많습니다. 맨발로 들어가고, 경로의 일부가 물입니다. 아래는
+            공식 티켓 사이트를 {CHECKED}에 확인한 내용이며, 운영 시간과 휴관일은 {HOURS_CHECKED} 확인분입니다.
           </p>
           <ul className={styles.bodyList}>
             <li><strong>운영 시간:</strong> 공지 08:00–22:00, 날짜에 따라 변동하며 마지막 입장은 폐관 1시간 전입니다.</li>
@@ -360,7 +365,8 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            가격과 운영 시간은 팀랩 공식 사이트에서 읽었고 확인일은 {CHECKED}입니다. 두 곳 모두 성인 티켓이
+            플래닛 가격은 공식 티켓 사이트 {CHECKED} 확인분이고, 보더리스 가격과 두 곳의 운영 시간은
+            teamlab.art {HOURS_CHECKED} 확인분입니다. 두 곳 모두 성인 티켓이
             날짜와 회차에 따라 책정되고 달력도 바뀌므로 본인 날짜를 확인하세요. ‘필요한 시간’은 저희의 일정
             제안이며 공식 수치가 아닙니다.
           </p>

@@ -20,7 +20,7 @@ How the facts on this site are sourced, because it matters for quoting them:
 ## Start here
 
 - [All guides, indexed by topic](https://www.japan-travel-kit.com/guides): every guide on the site, grouped by the question it answers.
-- [Japan Attraction Ticket Prices 2026](https://www.japan-travel-kit.com/guides/attractions/japan-attraction-ticket-prices): one table of official adult and child admission, advance-booking rules, operator sources and check dates for 19 Japanese attractions, theme parks, passes and day-trip sites. Most recent check: 20 October 2026.
+- [Japan Attraction Ticket Prices 2026](https://www.japan-travel-kit.com/guides/attractions/japan-attraction-ticket-prices): one table of official adult and child admission, advance-booking rules, operator sources and check dates for 19 Japanese attractions, theme parks, passes and day-trip sites. Most recent check: 25 October 2026.
 - [eSIM & SIM Cards hub](https://www.japan-travel-kit.com/guides/esim): Japan is one of the easiest countries in the world to get online in: there is no SIM registration for visitors, and every tourist eSIM rides one of the three national carriers — Docomo, SoftBank or KDDI — so coverage is rarely what separates them.
 - [Transport & Getting Around hub](https://www.japan-travel-kit.com/guides/transport): Japanese transport splits into two layers that barely overlap. Long-distance travel between cities runs mostly on JR, where the question is always the same: individual tickets or a pass. Inside a city it is subways, private railways and buses, where a tappable IC card handles almost everything and day passes only pay off on heavy days.
 - [Money & Payment hub](https://www.japan-travel-kit.com/guides/money): Japan has a reputation for being cash-only that is roughly a decade out of date — cards and IC cards now work in most city shops, restaurants and convenience stores. What has not changed is that small businesses, shrines, local buses and rural areas often still take cash only, and that most foreign cards are refused by most Japanese ATMs.
@@ -204,4 +204,4 @@ The same 5 guides in Thai, under /th/ (hreflang th-TH), with its own entry page 
 - [sitemap.xml](https://www.japan-travel-kit.com/sitemap.xml)
 - Contact: info@japan-travel-kit.com
 
-Generated 2026-10-23 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.
+Generated 2026-10-25 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.

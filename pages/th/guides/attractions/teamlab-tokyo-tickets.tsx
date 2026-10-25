@@ -31,6 +31,9 @@ const DESC =
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
 const CHECKED = dateLabel(P.checked, "th");
+// ราคาตรวจสอบจากเว็บไซต์ตั๋วทางการ (CHECKED) ส่วนเวลาเปิดและวันปิดอ่านจาก teamlab.art
+// ซึ่งเรนเดอร์ฝั่งไคลเอ็นต์และอ่านซ้ำไม่ได้ จึงคงวันที่ของตัวเองไว้ เหมือนฉบับภาษาอังกฤษ
+const HOURS_CHECKED = dateLabel("2026-10-09", "th");
 // "from ¥3,800" -> "เริ่มต้น ¥3,800": same figure, Thai qualifier. See lib/i18n.ts.
 const ADULT = priceLabel(P.adult, "th");
 const CHILD = priceLabel(P.child, "th");
@@ -113,7 +116,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab Planets เปิดกี่โมง และปิดวันไหน?",
-    a: `เวลาเปิดเปลี่ยนตามวัน ตอนที่เราดูเว็บไซต์ทางการเมื่อ ${CHECKED} Planets ประกาศเวลา 08:00–22:00 และรับเข้าครั้งสุดท้ายหนึ่งชั่วโมงก่อนปิด วันปิดช่วงปลายปี 2026 รวมวันที่ 5 พฤศจิกายน (พฤหัสบดี) และ 3 ธันวาคม (พฤหัสบดี) เนื่องจากปฏิทินเปลี่ยนทุกเดือน ควรเช็กปฏิทินทางการด้วยวันของคุณก่อนจองรอบ`,
+    a: `เวลาเปิดเปลี่ยนตามวัน ตอนที่เราดูเว็บไซต์ทางการเมื่อ ${HOURS_CHECKED} Planets ประกาศเวลา 08:00–22:00 และรับเข้าครั้งสุดท้ายหนึ่งชั่วโมงก่อนปิด วันปิดช่วงปลายปี 2026 รวมวันที่ 5 พฤศจิกายน (พฤหัสบดี) และ 3 ธันวาคม (พฤหัสบดี) เนื่องจากปฏิทินเปลี่ยนทุกเดือน ควรเช็กปฏิทินทางการด้วยวันของคุณก่อนจองรอบ`,
   },
   {
     q: "ถ้าพลาดรอบที่จองไว้จะเป็นอย่างไร?",
@@ -219,7 +222,8 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               ดูตั๋ว teamLab Planets →
             </a>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-              ราคา เวลาเปิด และวันปิดในหน้านี้อ่านจากเว็บไซต์ทางการของ teamLab วันที่ตรวจสอบ {CHECKED}
+              ราคาในหน้านี้อ่านจากเว็บไซต์ตั๋วทางการของ teamLab Planets วันที่ตรวจสอบ {CHECKED} ส่วนเวลาเปิด
+              และวันปิดอ่านจาก teamlab.art วันที่ตรวจสอบ {HOURS_CHECKED}
               ราคาของ Planets เปลี่ยนตามวันและรอบเวลา และปฏิทินก็เปลี่ยน โปรดตรวจสอบทั้งสองอย่างด้วยวันของคุณ
               ตอนชำระเงิน
             </p>
@@ -266,7 +270,7 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>เวลาเปิด รอบเข้าชม และการแต่งตัว</h2>
           <p className={styles.bodyText}>
             Planets เรียกร้องจากคุณมากกว่าพิพิธภัณฑ์ทั่วไป: ต้องเข้าแบบเท้าเปล่า และเส้นทางส่วนหนึ่งเป็นน้ำ
-            ข้อมูลด้านล่างคือสิ่งที่เราเห็นบนเว็บไซต์ทางการเมื่อ {CHECKED}
+            ข้อมูลด้านล่างคือสิ่งที่เราเห็นบนเว็บไซต์ตั๋วทางการเมื่อ {CHECKED} ส่วนเวลาเปิดและวันปิดเป็นข้อมูลวันที่ {HOURS_CHECKED}
           </p>
           <ul className={styles.bodyList}>
             <li><strong>เวลาเปิด:</strong> ประกาศไว้ 08:00–22:00 เปลี่ยนตามวัน และรับเข้าครั้งสุดท้ายหนึ่งชั่วโมงก่อนปิด</li>
@@ -359,7 +363,8 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            ราคาและเวลาเปิดอ่านจากเว็บไซต์ทางการของ teamLab วันที่ตรวจสอบ {CHECKED} ตั๋วผู้ใหญ่ของทั้งสองแห่ง
+            ราคาของ Planets อ่านจากเว็บไซต์ตั๋วทางการวันที่ {CHECKED} ส่วนราคา Borderless และเวลาเปิดของทั้งสองแห่ง
+            อ่านจาก teamlab.art วันที่ {HOURS_CHECKED} ตั๋วผู้ใหญ่ของทั้งสองแห่ง
             คิดราคาตามวันและรอบเวลา และปฏิทินก็เปลี่ยน โปรดตรวจสอบวันของคุณเอง ส่วน ‘เวลาที่ควรเผื่อ’
             เป็นคำแนะนำการจัดเวลาของเรา ไม่ใช่ตัวเลขทางการ
           </p>
