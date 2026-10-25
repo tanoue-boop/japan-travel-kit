@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { bestTravelCardTripPrep } from "../../../lib/klook-links";
 import { wiseLink, WISE_REL, WISE_PRICING_URL } from "../../../lib/wise-links";
 
 const WISE_FEES_URL = wiseLink("best-travel-card-japan", WISE_PRICING_URL);
@@ -396,6 +398,13 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             ))}
           </div>
         </section>
+
+        {/* Klook: the costs that can be settled before the card ever sees a yen terminal */}
+        <KlookTripPrep
+          heading="What Can You Book With Your Card Before You Fly?"
+          intro="Anything with a fixed yen price and a date: data, transport passes, airport trains, day tours. Every one of them you prepay in your own currency is one fewer conversion on the trip — and one fewer chance to be handed a dynamic-currency-conversion prompt at a counter."
+          items={bestTravelCardTripPrep}
+        />
 
         {/* Do I Still Need Cash? */}
         <section className={styles.bodySection}>

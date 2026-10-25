@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
-import { fujiDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { fujiDayTour, tokyoDisneyTripPrep, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygTokyoDisneyResort, gygTokyoDisneySea } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -397,6 +398,14 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             ))}
           </div>
         </section>
+
+        {/* Klook: the stay and the days either side. The ticket CTAs above are unchanged. */}
+        <KlookTripPrep
+          label="Around the park day"
+          heading="Should You Stay Near Tokyo Disney Resort?"
+          intro="If your date is a weekend or an anniversary date, yes — the resort is 15 to 20 minutes out of Tokyo Station on the JR Keiyo Line, which is a commute to make before the gates open and again after the night parade. Staying at Maihama or one stop out buys back both ends of the day."
+          items={tokyoDisneyTripPrep}
+        />
 
         {/* Foreign card / Klook explainer */}
         <section className={styles.bodySection}>

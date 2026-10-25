@@ -1061,6 +1061,64 @@ export const nankaiRapitUrl =
   "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265374&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F599-kansai-airport-namba-train-ticket-osaka%2F";
 
 // ---------------------------------------------------------------------------
+// Shibuya evenings and the Tokyo Disney stay, added 25 Oct 2026
+//
+// Both host guides sell a 2% "special activity" ticket as their headline product
+// (SHIBUYA SKY, the Disney 1-Day Passport) and had no route into any other band.
+// Nothing below replaces those tickets — these are the things booked around them:
+// tours and hotels at 6.5%, the airport coach at 5%, the eSIM at 20%.
+//
+// Klook answers automated reads of its /activity/ and /destination/ pages with
+// HTTP 403, so every URL here was confirmed live, on sale and in its en-US form
+// through the www.klook.com search index on 25 Oct 2026. No price appears on any
+// of them, for that same reason — and for the bar tours because what is included
+// (how many venues, how many drinks) moves the figure more than the date does.
+// ---------------------------------------------------------------------------
+
+/** Shibuya bar crawl — the Shibuya-side counterpart to the Shinjuku tour on tokyo-food-tour. */
+export const shibuyaBarHoppingTour: KlookTour = {
+  title: "Shibuya bar hopping tour (3 hours)",
+  desc: "A join-in evening crawl of two local bars and izakaya with an English-speaking guide, which is the part of Shibuya a rooftop slot does not show you",
+  url: klookLink("https://www.klook.com/en-US/activity/86814-3-hour-join-bar-hopping-shibuya/"),
+};
+
+/** The listing that covers both sides of the loop, for an evening that starts in Shibuya. */
+export const shinjukuShibuyaNightBarTour: KlookTour = {
+  title: "Tokyo night bar hopping tour (Shinjuku / Shibuya)",
+  desc: "The same idea run across both districts, so a Shibuya evening can carry on two Yamanote stops up the line in Shinjuku",
+  url: klookLink("https://www.klook.com/en-US/activity/97057-tokyo-night-bar-hopping-tour-shinjuku-shibuya-tokyo-shinjuku-shibuya/"),
+};
+
+/**
+ * The daytime, all-ages alternative to the two bar crawls — the same reason
+ * tokyo-food-tour.tsx pairs its Shinjuku izakaya crawl with a Tsukiji market walk.
+ */
+export const shibuyaFoodCultureWalkingTour: KlookTour = {
+  title: "Shibuya food and culture half-day walking tour",
+  desc: "A half-day walk through Shibuya 109, Nonbei Yokocho and Miyashita Park with four dishes and two drinks included, as the listing describes it",
+  url: klookLink("https://www.klook.com/en-US/activity/94372-shibuya109-shibuya-nonbei-yokocho-miyashita-park-join-half-day-food-tour/"),
+};
+
+/**
+ * Where to stay for a Tokyo Disney day. Klook has no `shin-urayasu-station`
+ * hotel search — the station has a destination page but no `/3-hotel/` form in
+ * the index — so the Urayasu city listing is the second entry; it is the one
+ * that returns the Shin-Urayasu free-shuttle hotels.
+ */
+export const tokyoDisneyStayAreas: KlookStayArea[] = [
+  {
+    area: "Maihama",
+    why: "The station the parks share, on the JR Keiyo Line from Tokyo Station and the start of the Disney Resort Line monorail that loops between the two gates.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50231652-maihama/3-hotel/"),
+  },
+  {
+    area: "Urayasu / Shin-Urayasu",
+    why: "One stop further out on the Keiyo Line and generally cheaper than the resort-side rooms; many of these hotels run their own free shuttle to the two parks.",
+    url: klookLink("https://www.klook.com/en-US/hotels/city/19368-urayasu-hotels/"),
+  },
+];
+
+// ---------------------------------------------------------------------------
 // "Before your trip" slots for the money guides (added 19 Oct 2026)
 //
 // The money guides are the site's second- and third-most-read pages and had no
@@ -1097,6 +1155,14 @@ export const keiseiSkylinerUrl =
  * Tokyo Station / Marunouchi — the arrival-day base that block is ordered around.
  */
 const tokyoStationHotelsUrl = tokyoAirportStayAreas[0].url;
+
+/**
+ * Shibuya hotel search (6.5%) for the Shibuya Sky slot. Also not a new link: it
+ * reads the URL out of `tokyoFiveDayStayAreas`, where the Shibuya Scramble
+ * Crossing destination id already lives, so the two pages cannot drift apart.
+ * Index 3 is Shibuya — the first three entries are `tokyoStayAreas` verbatim.
+ */
+const shibuyaHotelsUrl = tokyoFiveDayStayAreas[3].url;
 
 /** The product half of each slot; the `why` sentence is written per guide. */
 const tripPrepProducts = {
@@ -1159,6 +1225,41 @@ const tripPrepProducts = {
     label: "TOKYO SKYTREE ticket",
     ctaLabel: "Check the Skytree ticket →",
     url: skytreeTicket.url,
+  },
+  hotelShibuya: {
+    label: "Hotels around Shibuya",
+    ctaLabel: "Check Shibuya hotels on Klook →",
+    url: shibuyaHotelsUrl,
+  },
+  hotelMaihama: {
+    label: "Hotels around Maihama",
+    ctaLabel: "Check Maihama hotels on Klook →",
+    url: tokyoDisneyStayAreas[0].url,
+  },
+  hotelUrayasu: {
+    label: "Hotels in Urayasu / Shin-Urayasu",
+    ctaLabel: "Check Urayasu hotels on Klook →",
+    url: tokyoDisneyStayAreas[1].url,
+  },
+  hanedaLimousine: {
+    label: "Haneda Airport limousine bus",
+    ctaLabel: "Check the Haneda bus →",
+    url: hanedaLimousineBus.url,
+  },
+  shibuyaBarTour: {
+    label: "Shibuya bar hopping tour (3 hours)",
+    ctaLabel: "Check the Shibuya crawl →",
+    url: shibuyaBarHoppingTour.url,
+  },
+  shinjukuShibuyaNightTour: {
+    label: "Tokyo night bar hopping tour (Shinjuku / Shibuya)",
+    ctaLabel: "Check the night tour →",
+    url: shinjukuShibuyaNightBarTour.url,
+  },
+  shibuyaFoodTour: {
+    label: "Shibuya food and culture half-day walking tour",
+    ctaLabel: "Check the food walk →",
+    url: shibuyaFoodCultureWalkingTour.url,
   },
 } as const;
 
@@ -1317,6 +1418,101 @@ export const atmsTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.subway,
     why: "A prepaid subway ticket means your first withdrawal does not have to cover getting around as well.",
+  },
+];
+
+/**
+ * Best Travel Card — added 25 Oct 2026. The page had no Klook route at all, which
+ * is odd for a guide whose whole argument is that a foreign transaction fee and a
+ * marked-up exchange rate are charged per transaction in Japan. The answer that
+ * follows from that argument is to move transactions off the trip: each line below
+ * is a yen cost the reader can settle in their own currency before they fly.
+ *
+ * Deliberately spread across three bands rather than one: eSIM 20%, subway ticket
+ * and airport train 5%, day tour 6.5%.
+ */
+export const bestTravelCardTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "The cheapest data on the trip is the data you do not buy at an airport counter in yen — and a working phone is what lets you check a terminal's rate, or refuse a dynamic-currency-conversion prompt, before you tap.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Tokyo Metro and Toei gates do not take a foreign contactless card, so this is a fare that otherwise comes out of cash you withdrew at an ATM — and the 24, 48 or 72-hour ticket stops counting per journey.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Airport trains are one of the few Japanese transport fares you can buy on a card before departure rather than at a ticket window on arrival, which takes the first and largest transport charge of the trip out of the exchange question.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A day out to Fuji or Hakone is a single large charge rather than a day of small ones; put it on the card before you fly and the whole day costs one conversion instead of a dozen.",
+  },
+];
+
+/**
+ * Shibuya Sky — added 25 Oct 2026, and the reason is the commission band. The
+ * SHIBUYA SKY ticket itself is a 2% "special activity" on Klook, so the site's
+ * most-read page had no route into any other band. This block sits after the
+ * sunset-versus-daytime decision because that decision is what makes the rest of
+ * the day plannable: a rooftop slot is one hour, and the evening around it is not.
+ *
+ * Nothing here replaces the ticket CTAs on the page. Hotels and tours are 6.5%,
+ * the subway ticket 5%.
+ */
+export const shibuyaSkyDayTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelShibuya,
+    why: "A sunset slot ends after dark with the Yamanote loop at its busiest; staying in Shibuya turns the trip home into a walk, and puts you at the station the morning highway buses leave from.",
+  },
+  {
+    ...tripPrepProducts.shibuyaBarTour,
+    why: "The obvious thing to do with the hours after a sunset slot, and the one part of Shibuya a rooftop does not show you — two bars with a guide who orders for you.",
+  },
+  {
+    ...tripPrepProducts.shinjukuShibuyaNightTour,
+    why: "The version that crosses to Shinjuku as well, which suits a night slot: the deck is easiest to book late, and the evening still has somewhere to go afterwards.",
+  },
+  {
+    ...tripPrepProducts.shibuyaFoodTour,
+    why: "The daytime, all-ages answer if your slot is a daytime one or the group includes under-20s — a half-day walk around Shibuya 109, Nonbei Yokocho and Miyashita Park rather than a bar crawl.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Shibuya Station is on the Hanzomon, Ginza and Fukutoshin lines, so a 24, 48 or 72-hour ticket covers the rest of the day around the slot — and a foreign contactless card will not open those gates.",
+  },
+];
+
+/**
+ * Tokyo Disney — added 25 Oct 2026, same reason as the Shibuya block: the Klook
+ * 1-Day Passport is a 2% special activity, so the only Klook route on the page
+ * paid the lowest band on the dashboard.
+ *
+ * A park day is also the one Tokyo day where the accommodation question is
+ * genuinely open — the resort is 15 to 20 minutes out of Tokyo Station, and the
+ * gates open before a commute from central Tokyo comfortably gets you there.
+ * Hotels are 6.5%, the airport coaches 5%, the eSIM 20%.
+ */
+export const tokyoDisneyTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelMaihama,
+    why: "The station the two parks share, reached from Tokyo Station on the JR Keiyo Line in about 15 to 20 minutes — and the start of the Disney Resort Line monorail, which is what makes an early entry or a late parade workable.",
+  },
+  {
+    ...tripPrepProducts.hotelUrayasu,
+    why: "One stop further out and generally cheaper than the resort-side rooms, with many of these hotels running their own free shuttle to the gates — the trade is a shuttle timetable instead of a monorail.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "The Haneda listing names Tokyo Disney Resort among its destinations, so it is the airport run that ends at the resort rather than at a city station you then have to leave again with the luggage.",
+  },
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "Coming in from Narita, the same Airport Limousine operator runs to the central Tokyo hotel and station stops with hold luggage; check the stop list for your date before you book, because the destinations differ by route.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Your passport is a QR code linked into the official Tokyo Disney Resort app, and the app is also where in-park features are managed on the day — none of which works on a phone waiting for hotel Wi-Fi.",
   },
 ];
 

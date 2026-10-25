@@ -1,9 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
-import { fujiHakoneDayTour, shibuyaSkyTicketUrl, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import {
+  fujiHakoneDayTour,
+  shibuyaSkyDayTripPrep,
+  shibuyaSkyTicketUrl,
+  tokyoSightseeingBusTour,
+} from "../../../lib/klook-links";
 import { gygShibuyaSky } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -365,6 +371,14 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             ))}
           </div>
         </section>
+
+        {/* Klook: the evening the slot sits inside. The ticket CTAs above are unchanged. */}
+        <KlookTripPrep
+          label="The rest of the day"
+          heading="What Else Should You Book for Your Shibuya Sky Day?"
+          intro="The deck itself is about an hour, so whichever slot you picked above leaves most of a day or an evening open around it. These are the bookings that follow from that slot — a bed in the same district, somewhere to go afterwards, and the pass that covers the moving between them."
+          items={shibuyaSkyDayTripPrep}
+        />
 
         {/* vs other decks */}
         <section className={styles.comparisonSection}>
