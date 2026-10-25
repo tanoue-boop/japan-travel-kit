@@ -539,6 +539,20 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            {/* China/Hong Kong/Macau iPhones cannot take an eSIM at all — the Sakura Mobile
+                review is where that reader finds a physical SIM card instead. */}
+            <Link href="/guides/esim/sakura-mobile-review" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="6" width="20" height="12" rx="2" />
+                  <line x1="12" y1="6" x2="12" y2="18" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Sakura Mobile Review 2026: eSIM &amp; SIM Card Plans and Prices</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
           </div>
         </section>
 
