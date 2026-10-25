@@ -1569,6 +1569,29 @@ export const tokyoDisneyTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+// ---------------------------------------------------------------------------
+// Kansai rail passes, added 25 Oct 2026 for the kansai-area-pass entry guide.
+//
+// Both sit in Klook's 5% passes-and-transport band. Klook answers automated reads
+// of /activity/ pages with HTTP 403, so both were confirmed as live en-US listings
+// through the www.klook.com search index on 25 Oct 2026 ("JR-West Kansai Rail Pass
+// - Klook US" and "JR Kansai Mini Pass - Klook"). No price appears on either: the
+// guide prints JR West's own published fares instead, which is also the only place
+// the 1 October 2026 switch from the paper pass to the WEST QR version is visible.
+// ---------------------------------------------------------------------------
+
+export const jrKansaiAreaPass: KlookTour = {
+  title: "JR-West Kansai Rail Pass (1–4 day)",
+  desc: "The Kansai Area Pass as Klook sells it — unlimited JR West local, rapid and special rapid trains around Osaka, Kyoto, Kobe, Nara and Himeji, plus the Haruka from Kansai Airport",
+  url: klookLink("https://www.klook.com/en-US/activity/1107-jr-west-kansai-rail-pass-osaka/"),
+};
+
+export const jrKansaiMiniPass: KlookTour = {
+  title: "JR Kansai Mini Pass (3 day)",
+  desc: "The cheaper three-day version for travellers who will not use the Haruka — rapid and local JR West trains only, with the Kansai-Airport Rapid Service",
+  url: klookLink("https://www.klook.com/en-US/activity/18356-jr-kansai-mini-pass/"),
+};
+
 /** Tokyo airport transfers — arrival-day add-ons next to the existing transfer links. */
 export const tokyoAirportTripPrep: KlookTripPrepItem[] = [
   {

@@ -383,6 +383,24 @@ export const attractionArticles: GuideArticle[] = [
     group: "passes",
     city: "osaka",
   },
+  {
+    href: "/guides/attractions/hakone-free-pass",
+    badge: "Pass",
+    title: "Hakone Free Pass (2026): Prices, What It Covers & Is It Worth It?",
+    desc: "Odakyu's official prices — ¥7,100 for 2 days from Shinjuku, ¥6,000 from Odawara — the eight modes of transport it covers, the ¥1,200 Romancecar surcharge it does not, and why there is no 1-day version.",
+    group: "passes",
+    // Hakone is Kanagawa, and the Odawara version of the pass starts outside Tokyo entirely —
+    // same reasoning as kawaguchiko-day-trip-from-tokyo.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/kansai-area-pass",
+    badge: "Pass",
+    title: "Kansai Area Pass (2026): Prices, What It Covers & Is It Worth It?",
+    desc: "JR West ended sales of the old pass on 30 September 2026; the WEST QR version is ¥2,700 for 1 day to ¥6,700 for 4. What it covers, the Haruka rules, and the itineraries that pay it back.",
+    group: "passes",
+    city: "osaka",
+  },
 ];
 
 export const attractionsCategory: GuideCategory = {
