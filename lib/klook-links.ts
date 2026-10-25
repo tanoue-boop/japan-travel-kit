@@ -1592,6 +1592,133 @@ export const jrKansaiMiniPass: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/18356-jr-kansai-mini-pass/"),
 };
 
+// ---------------------------------------------------------------------------
+// Sagano Romantic Train and the Hozugawa boat, added 25 Oct 2026 for
+// sagano-romantic-train-tickets.
+//
+// Klook answers automated reads of /activity/ pages with HTTP 403, so every
+// listing below was confirmed live, on sale and in its en-US URL form through
+// the www.klook.com search index on 25 Oct 2026. No price appears on any of
+// them; the guide prints the operator's own ¥880 / ¥440 fare and the Kameoka
+// City figures for the boat instead.
+//
+// Commission decides which of these is the headline CTA. A bare torokko seat is
+// a rail ticket, not a tour, so it cannot be assumed to pay the 6.5%
+// tours-and-activities band — which is why the page leads with the guided
+// Sagano-plus-Hozugawa day (112332) and offers GetYourGuide beside the bare
+// ticket. See lib/gyg-links.ts, `gygArashiyama` and `gygHozugawaKudari`.
+// ---------------------------------------------------------------------------
+
+/** The bare one-way torokko seat. Not the headline CTA — see the block comment. */
+export const saganoRomanticTrainTicket: KlookTour = {
+  title: "Sagano Romantic Train ticket",
+  desc: "The one-way torokko seat itself, Torokko Saga to Torokko Kameoka, with the car and seat number chosen at checkout",
+  url: klookLink("https://www.klook.com/en-US/activity/17066-sagano-romantic-train-ticket-kyoto/"),
+};
+
+/** The guaranteed-departure train-and-boat day — the headline CTA on that guide. */
+export const saganoHozugawaGuaranteedTour: KlookTour = {
+  title: "Sagano train, Hozugawa boat & Arashiyama walk",
+  desc: "The guaranteed-departure version of the classic pairing — the torokko one way, the river boat back down to Arashiyama, and free time in the bamboo grove",
+  url: klookLink("https://www.klook.com/en-US/activity/112332-kyoto-city-sagano-romantic-train-hozugawa-river-boat-ride-tour/"),
+};
+
+/** The half-day version of the same route, out of the Hozukyo gorge. */
+export const arashiyamaHozukyoHalfDayTour: KlookTour = {
+  title: "Arashiyama & Hozukyo gorge half-day tour",
+  desc: "A half day pairing the Sagano Romantic Train with the Hozugawa-kudari boat and the Arashiyama landmarks, as one booking",
+  url: klookLink("https://www.klook.com/en-US/activity/92794-arashiyama-hozukyo-gorge-half-day-landmark-tour-sagano-romantic-train-hozugawakudari-river-boat-ride/"),
+};
+
+/** Arashiyama with the torokko as an option — for a date the train may not run. */
+export const arashiyamaSaganoOptionalTour: KlookTour = {
+  title: "Arashiyama tour with optional Sagano Romantic Train ride",
+  desc: "The bamboo grove and the Arashiyama stops with the torokko ride as a selectable add-on, which is the listing to open for a winter date",
+  url: klookLink("https://www.klook.com/en-US/activity/131254-arashiyama-tour-with-optional-sagano-romantic-train-ride/"),
+};
+
+/** The coach half-day that adds Kiyomizu-dera to the torokko. */
+export const saganoArashiyamaKiyomizuTour: KlookTour = {
+  title: "Sagano Romantic Train, Arashiyama & Kiyomizu-dera half-day tour",
+  desc: "A guided half day that puts the torokko ride, Arashiyama and Kiyomizu-dera in one coach itinerary",
+  url: klookLink("https://www.klook.com/en-US/activity/74654-shinkibus-sagano-kyoto/"),
+};
+
+/** The Hozugawa boat on its own — the other half of the classic day. */
+export const hozugawaRiverBoatTicket: KlookTour = {
+  title: "Hozugawa River boat ride e-ticket",
+  desc: "The two-hour boat down the gorge from Kameoka to Arashiyama, bought as a dated e-ticket rather than at the Kameoka pier window",
+  url: klookLink("https://www.klook.com/en-US/activity/74947-kyoto-arashiyama-hozugawa-river-boat-ride/"),
+};
+
+// ---------------------------------------------------------------------------
+// Arima Onsen, added 25 Oct 2026 for arima-onsen-day-trip.
+//
+// Same verification rule as every block above: Klook answers automated reads of
+// its /activity/ pages with HTTP 403, so each listing was confirmed live, on sale
+// and in its en-US URL form through the www.klook.com search index on
+// 25 Oct 2026. None carries a price — the guide prints Kin no Yu's, Gin no Yu's
+// and Taiko no Yu's own published admissions and the West JR Bus fares instead.
+//
+// The day tours are in the 6.5% tours band and the Rokkosan Tourist Pass in the
+// 5% passes-and-transport band, which is why a tour is the headline CTA. The
+// Kin no Yu / Gin no Yu bus package (176847) is listed because it is the only
+// Klook product that actually bundles the two city bathhouses with the coach.
+// ---------------------------------------------------------------------------
+
+/** Himeji, Arima and the Rokko deck in one day out of Osaka — the headline CTA. */
+export const arimaHimejiRokkoDayTour: KlookTour = {
+  title: "Himeji Castle, Arima Onsen & Mt. Rokko day tour from Osaka",
+  desc: "A join-in coach day out of Osaka taking in Himeji Castle, the Arima Onsen town and the Mt. Rokko observation deck",
+  url: klookLink("https://www.klook.com/en-US/activity/94348-himeji-castle-arima-onse-mt-rokko-day-tour-osaka/"),
+};
+
+/** The evening version — outlet, onsen town, then the Rokko night view. */
+export const arimaRokkoNightViewDayTour: KlookTour = {
+  title: "Sanda outlets, Arima Onsen & Mt. Rokko night view day trip",
+  desc: "The late-finishing version from Osaka, listed with a Chinese, English and Japanese-speaking guide and a guaranteed departure from two people",
+  url: klookLink("https://www.klook.com/en-US/activity/141670-kobe-outlet-arima-onsen-mt-rokko-night-view-day-tour-from-osaka/"),
+};
+
+/** The bus day built around the Rokko ropeway and the onsen town itself. */
+export const arimaRokkoOutletBusTour: KlookTour = {
+  title: "Mt. Rokko view, Arima Onsen town & Premium Outlets 1-day bus tour",
+  desc: "A coach day that puts the Rokko cable car and ropeway, the Arima Onsen streets and the outlet mall into one booking",
+  url: klookLink("https://www.klook.com/en-US/activity/146094-mt-rokko-view-arima-onsen-town-premium-outlets-1day-bus-tour/"),
+};
+
+/** Walk over the mountain, bathe at the bottom — the one tour that includes a bath. */
+export const rokkoHikingArimaBathingTour: KlookTour = {
+  title: "Mt. Rokko forest hike & Arima Onsen bathing experience",
+  desc: "A guided day from Osaka that walks the Rokko forest to the summit viewpoint over Osaka Bay and finishes in the Arima hot springs",
+  url: klookLink("https://www.klook.com/en-US/activity/17680-mount-rokko-hiking-arima-onsen-bathing-osaka/"),
+};
+
+/** Taiko no Yu — the big day-spa, and the one with a published tattoo rule. */
+export const arimaTaikoNoYuSpa: KlookTour = {
+  title: "Arima Onsen Taiko no Yu day spa ticket",
+  desc: "Admission to Arima's largest day-use bathing complex, with the gold and silver springs, the outdoor baths and the stone saunas on one ticket",
+  url: klookLink("https://www.klook.com/en-US/activity/1417-arima-onsen-taikou-no-yu-spa-osaka/"),
+};
+
+/**
+ * The only Klook product that bundles the two municipal bathhouses with the
+ * coach. Worth its own constant because Kin no Yu and Gin no Yu are otherwise
+ * cash-at-the-counter: there is no advance ticket for either on its own.
+ */
+export const arimaKinGinBusPackage: KlookTour = {
+  title: "Arima Onsen Kin no Yu & Gin no Yu + round-trip express bus from Kobe",
+  desc: "The two city bathhouses sold together with the non-stop round-trip coach from Kobe, valid for three days including the boarding date",
+  url: klookLink("https://www.klook.com/en-US/activity/176847-arima-onsen-kin-no-yu-gin-no-yu-non-stop-expressway-bus-package-adult-round-trip-ticket-from-kobe/"),
+};
+
+/** Rokkosan Tourist Pass — the 5% band, and the independent traveller's route in. */
+export const rokkosanTouristPass: KlookTour = {
+  title: "Rokkosan Tourist Pass",
+  desc: "The foreign-visitor pass for getting to and around Mt. Rokko — the cable car, the Rokko Sanjo buses and the attraction discounts on the mountain above Arima",
+  url: klookLink("https://www.klook.com/en-US/activity/5631-rokkosan-tourist-pass-osaka/"),
+};
+
 /** Tokyo airport transfers — arrival-day add-ons next to the existing transfer links. */
 export const tokyoAirportTripPrep: KlookTripPrepItem[] = [
   {

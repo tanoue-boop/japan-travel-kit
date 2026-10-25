@@ -292,6 +292,30 @@ export const gygOsaka: GygListing = {
   url: "https://www.getyourguide.com/osaka-l1204/",
 };
 
+/**
+ * Arashiyama and the Hozugawa gorge — added 25 Oct 2026 for
+ * sagano-romantic-train-tickets, and both confirmed as live, search-indexed
+ * www.getyourguide.com pages on that date.
+ *
+ * The reason is the same as the entry-ticket block at the top of this file,
+ * with one difference. A bare Sagano torokko seat is a rail ticket rather than a
+ * tour, so it cannot be assumed to pay Klook's 6.5% tours band — and the
+ * torokko has a second problem no commission rate fixes: it does not run at all
+ * between late December and the end of February, and its reserved seats sell out
+ * a month ahead in the autumn. A second catalogue is the honest answer to both.
+ */
+export const gygArashiyama: GygListing = {
+  title: "Arashiyama",
+  what: "GetYourGuide's Arashiyama listing — the Sagano Romantic Train tours, the bamboo grove walks and the day trips that include both",
+  url: "https://www.getyourguide.com/arashiyama-l36984/",
+};
+
+export const gygHozugawaKudari: GygListing = {
+  title: "Hozugawa Kudari",
+  what: "The river-boat side of the same day on its own listing, including the tours that pair the boat with the torokko",
+  url: "https://www.getyourguide.com/hozugawa-kudari-l215514/",
+};
+
 export const gygTokyoEntryTickets: GygListing = {
   title: "Tokyo entry tickets",
   what: "The admissions-only slice of the Tokyo catalogue, for the attractions on this page",

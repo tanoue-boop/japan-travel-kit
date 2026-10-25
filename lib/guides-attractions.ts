@@ -401,6 +401,24 @@ export const attractionArticles: GuideArticle[] = [
     group: "passes",
     city: "osaka",
   },
+  {
+    href: "/guides/attractions/sagano-romantic-train-tickets",
+    badge: "Ticket",
+    title: "Sagano Romantic Train Tickets (2026): Prices, Seats & When It Runs",
+    desc: "¥880 adult and ¥440 child one way for 7.3 km and 25 minutes up the Hozugawa gorge. The 2026 season, the two-month winter shutdown, the one-month booking window and the boat back down.",
+    group: "tickets",
+    city: "kyoto",
+  },
+  {
+    href: "/guides/attractions/arima-onsen-day-trip",
+    badge: "Day trip",
+    title: "Arima Onsen Day Trip (2026): From Osaka or Kobe, and What the Baths Cost",
+    desc: "65 minutes and ¥1,400 by coach from Osaka Station, 30 minutes and ¥780 from Sannomiya. Kin no Yu ¥800, Gin no Yu ¥700, and the closed Tuesdays that do not overlap.",
+    group: "daytrips",
+    // Arima is inside Kobe, but the day is almost always sold and planned out of
+    // Osaka — same rule as kyoto-nara-day-tour-from-osaka: the departure point wins.
+    city: "osaka",
+  },
 ];
 
 export const attractionsCategory: GuideCategory = {
