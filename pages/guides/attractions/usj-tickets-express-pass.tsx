@@ -1,15 +1,50 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookStayAreas from "../../../components/KlookStayAreas";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygUsj, gygUsjExpressPass } from "../../../lib/gyg-links";
+import { checkedLabel } from "../../../lib/attraction-prices";
+import { jrHarukaUrl, jrKansaiMiniPass, nankaiRapitUrl, usjStayAreas, usjTripPrep } from "../../../lib/klook-links";
 
 // CTA links — Klook affiliate redirects.
 const STUDIO_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
 const EXPRESS_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299138&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F3407-universal-studios-japan-express-pass-osaka%2F";
+
+/**
+ * The stay, getting-there and trip-prep sections below were added 26 Oct 2026.
+ * The two Klook ticket links above and the GetYourGuide comparison are unchanged —
+ * the Studio Pass and the Express Pass are the one pair on this site Klook pays
+ * nothing on, so the new sections are the bookings the same reader makes around
+ * them: hotels and a day tour at 6.5%, the airport trains and the Kansai rail pass
+ * at 5%, the eSIM at 20%.
+ *
+ * Every figure in those sections carries the body that published it and the date it
+ * was read. Nothing here is first-hand, and no Klook price appears anywhere: Klook
+ * answers automated reads of its product pages with HTTP 403.
+ *
+ *   westjr.co.jp              Universal Studios Japan's nearest station and       26 Oct 2026
+ *                             "right by Universal-City Station"; the HARUKA's
+ *                             direct destinations; the HARUKA One-way Ticket
+ *                             prices now and from 1 Nov 2026; the WEST QR Kansai
+ *                             Mini Pass price, length and limited-express rule;
+ *                             the WEST QR Kansai Area Pass prices and HARUKA
+ *                             allowance
+ *   nankai.co.jp              the Rapi:t's minimum 34 minutes to Namba and the    26 Oct 2026
+ *                             limited express surcharge
+ *   discover.osaka-info.jp    the five-minute walk from Universal City Station    26 Oct 2026
+ *                             and the 20 minutes from Osaka Station (Osaka
+ *                             Convention & Tourism Bureau)
+ *
+ * JR West publishes no door-to-door journey time for the Yumesaki Line run on its
+ * English site, which is why the two timings are the Tourism Bureau's and are
+ * attributed to it rather than to JR West.
+ */
+const CHECKED = checkedLabel("2026-10-26");
 
 const ticketRows = [
   { ticket: "1-Day Studio Pass", what: "Park entry for one day; ride standard attractions in standby queues", price: "Tiered by date — confirm at booking" },
@@ -77,6 +112,20 @@ const faqItems = [
   {
     q: "How much are USJ tickets?",
     a: "USJ uses tiered, date-based pricing, so the same ticket costs more on busy dates than quiet ones. Because prices change by date and demand, we don't quote a fixed figure — check the live price for your specific date at the time of booking. Express Passes are a separate add-on on top of the Studio Pass and vary widely by date.",
+  },
+  // Added 26 Oct 2026 with the stay, getting-there and trip-prep sections, so the
+  // FAQPage markup carries the same three questions the page now answers in full.
+  {
+    q: "Where should I stay for Universal Studios Japan?",
+    a: `Universal City if you want to be at the gates at opening, Umeda or Osaka Station otherwise. The park gates are approximately five minutes on foot from Universal City Station on the JR Yumesaki Line, and the park is about 20 minutes from Osaka Station — both figures are the Osaka Convention & Tourism Bureau's own, read on ${CHECKED}. JR West's own destination page names Universal-city Station as the park's nearest station and describes the park as "right by" it. The trade-off is the rest of the trip: Umeda and Osaka Station keep you on the main JR network, while the Universal City hotels are a small cluster and so are the first rooms to go on a busy date.`,
+  },
+  {
+    q: "How do I get to USJ from Kansai Airport or Osaka Station?",
+    a: `The station is Universal City on the JR Yumesaki (Sakurajima) Line, usually reached by changing at Nishikujo, and the Osaka Convention & Tourism Bureau puts the park at about 20 minutes from Osaka Station. From Kansai Airport there is no direct train: JR West's HARUKA runs to Tennoji, Osaka, Shin-Osaka and Kyoto with no change — the discounted one-way for foreign passport holders entering as temporary visitors is ¥1,300 to Tennoji and ¥1,800 to Osaka or Shin-Osaka through 31 October 2026, rising to ¥1,600 and ¥1,900 on 1 November 2026 — or Nankai's Rapi:t reaches Namba in a minimum of 34 minutes on a ¥700 adult limited express ticket on top of the fare. From either, take the Loop Line to Nishikujo and the Yumesaki Line on. All figures read on ${CHECKED}.`,
+  },
+  {
+    q: "Is USJ covered by any Osaka or Kansai pass?",
+    a: `The park itself is not on the Osaka Amazing Pass, and no Osaka Metro pass covers the JR run out to Universal City. On the rail side, JR West's own Kansai Area Pass page describes the WEST QR Kansai Mini Pass as "Kyoto, Universal Studios Japan, Osaka, Namba, Kobe and Nara 3-Day Unlimited Rides" — it is ¥3,000 for an adult and ¥1,500 for a child over three consecutive days on ordinary, rapid and special rapid trains, and it cannot be used on any limited express including the HARUKA. The WEST QR Kansai Area Pass does cover the HARUKA, with unlimited non-reserved seats plus two reserved, at ¥2,700 for one day up to ¥6,700 for four. Read on ${CHECKED}. None of them includes park admission — that is always a separate Studio Pass.`,
   },
 ];
 
@@ -360,16 +409,83 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           </div>
         </section>
 
-        {/* Getting there */}
+        {/* Where to stay — the 6.5% Klook band, keyed to the one line that reaches the park. */}
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>Getting to USJ from Osaka &amp; Kansai Airport</h2>
+          <span className={styles.sectionLabel}>Where to stay</span>
+          <h2 className={styles.sectionTitle}>Where Should I Stay for Universal Studios Japan?</h2>
           <p className={styles.bodyText}>
-            USJ is in Konohana-ku, western Osaka, a short walk from Universal City Station on the JR Yumesaki
-            (Sakurajima) Line — usually reached by changing at Nishikujo. From Kansai Airport, the Haruka or
-            Nankai routes get you into the city; from there it&apos;s a straightforward train transfer.
+            <strong>Universal City if you want to be at the gates at opening, Umeda or Osaka Station
+            otherwise.</strong> The park gates are approximately five minutes on foot from Universal City
+            Station on the JR Yumesaki Line, and the park is about 20 minutes from Osaka Station — both
+            figures are the Osaka Convention &amp; Tourism Bureau&apos;s own, read on {CHECKED}. JR West&apos;s
+            own destination page for the park names Universal-city Station as the nearest station and
+            describes the park as &ldquo;right by&rdquo; it, read the same day.
           </p>
           <p className={styles.bodyText}>
+            That walk is the whole argument. On a date with an Express Pass on it you want to be through the
+            turnstiles early, and Universal City is the only area that turns the journey into a five-minute
+            walk. The counter-argument is the rest of the trip: Umeda and Osaka Station keep you on the main
+            JR network, and the Universal City hotels are a small cluster, so they are the first rooms to go
+            on a busy date. Our{" "}
+            <Link href="/guides/attractions/where-to-stay-in-osaka" style={{ color: "var(--red)", fontWeight: 600 }}>
+              where to stay in Osaka guide
+            </Link>{" "}
+            compares all four areas on the lines and the airport route to each.
+          </p>
+        </section>
+
+        <KlookStayAreas
+          heading="USJ Hotel Search, Area by Area"
+          intro="Which rooms are left and at what price is a per-date question, so each area links straight into Klook's own hotel search for it. Set the date on your Studio Pass and compare Universal City against one of the JR-side bases — on a quiet weekday the difference is usually price, and on an anniversary weekend it is usually availability."
+          areas={usjStayAreas}
+        />
+
+        {/* Getting there — question heading, JR West and Nankai facts, and the 5% band. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Getting there</span>
+          <h2 className={styles.sectionTitle}>How Do I Get to USJ From Kansai Airport or Osaka Station?</h2>
+          <p className={styles.bodyText}>
+            USJ is in Konohana-ku, western Osaka, and the station is Universal City on the JR Yumesaki
+            (Sakurajima) Line — usually reached by changing at Nishikujo. JR West names Universal-city
+            Station as the park&apos;s nearest station, and the Osaka Convention &amp; Tourism Bureau puts the
+            gates at approximately five minutes on foot from it and the park at about 20 minutes from Osaka
+            Station. Both read on {CHECKED}. JR West does not publish a door-to-door time for the Yumesaki
+            run on its English site, so we do not print one.
+          </p>
+          <p className={styles.bodyText}>
+            From <strong>Kansai Airport</strong> there are two sensible ways into the city, and neither of
+            them reaches the park directly. JR West&apos;s HARUKA runs from the airport to Tennoji, Osaka,
+            Shin-Osaka and Kyoto with no change; its discounted one-way ticket — sold only to holders of a
+            foreign passport entering as a temporary visitor — is ¥1,300 to Tennoji and ¥1,800 to Osaka or
+            Shin-Osaka through 31 October 2026, rising to ¥1,600 and ¥1,900 on 1 November 2026, with child
+            fares at half. Nankai&apos;s Rapi:t runs to Namba in a minimum of 34 minutes with no transfer, on
+            a ¥700 adult or ¥350 child limited express ticket on top of the ordinary fare — ¥300 more if you
+            buy it onboard, ¥150 less ticketless. JR West and Nankai figures, both read on {CHECKED}. Either
+            way you then take the Loop Line to Nishikujo and the Yumesaki Line on from there.
+          </p>
+          <p className={styles.bodyText}>
+            One pass is worth knowing about: JR West&apos;s own Kansai Area Pass page describes the{" "}
+            <strong>WEST QR Kansai Mini Pass</strong> as &ldquo;Kyoto, Universal Studios Japan, Osaka, Namba,
+            Kobe and Nara 3-Day Unlimited Rides&rdquo;, and the pass itself is ¥3,000 for an adult and ¥1,500
+            for a child over three consecutive days on ordinary trains, special rapid and rapid services
+            included. It cannot be used on any limited express, the HARUKA included — JR West states that
+            needs a separate ticket. The <strong>WEST QR Kansai Area Pass</strong> is the one that does cover
+            the HARUKA (unlimited non-reserved, plus two reserved seats), at ¥2,700 for one day up to ¥6,700
+            for four. All read on {CHECKED}. Neither pass touches the Osaka Metro, and no Osaka Metro pass
+            reaches Universal City.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <a href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the HARUKA ticket on Klook →
+            </a>
+            <a href={nankaiRapitUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Nankai Rapi:t on Klook →
+            </a>
+            <a href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Kansai Mini Pass on Klook →
+            </a>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Plan your route with our{" "}
             <Link href="/guides/transport/osaka-airport-transfer" style={{ color: "var(--red)", fontWeight: 600 }}>
               Osaka airport transfer guide
@@ -378,9 +494,21 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             <Link href="/guides/transport/osaka-transportation" style={{ color: "var(--red)", fontWeight: 600 }}>
               Getting Around Osaka guide
             </Link>{" "}
-            for day pass options.
+            for day pass options, or our{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Kansai Area Pass guide
+            </Link>{" "}
+            for the JR passes above in full.
           </p>
         </section>
+
+        {/* The rest of an Osaka trip — 5% pass, 6.5% day tour, 20% eSIM. */}
+        <KlookTripPrep
+          label="Booked alongside"
+          heading="What Else Should I Book for an Osaka Trip?"
+          intro="A park day is one day. These three are what the same trip usually needs around it, and the first one is on the list mainly so you do not buy it for the wrong reason."
+          items={usjTripPrep}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -300,6 +300,44 @@ export const whereToStayOsakaAreas: KlookStayArea[] = [
 ];
 
 /**
+ * Where to stay for a Universal Studios Japan day, added 26 Oct 2026 for
+ * usj-tickets-express-pass.
+ *
+ * No new URLs: Universal City is `whereToStayOsakaAreas[3]` and the three Midosuji
+ * hubs are `osakaStayAreas` verbatim, so every destination id still has one home.
+ *
+ * What is new is the order and the argument. The city transport guides rank these
+ * areas by the Midosuji Line, which is the wrong axis for this page — the park is on
+ * the JR Yumesaki Line and no Osaka Metro pass reaches it. So Universal City leads,
+ * then the two JR-side bases, then Namba for anyone flying out of Kansai. The walk
+ * and the Osaka Station figure in the `why` lines are the Osaka Convention & Tourism
+ * Bureau's own, read on discover.osaka-info.jp on 26 Oct 2026; the Rapi:t minimum is
+ * Nankai's, read on nankai.co.jp the same day.
+ */
+export const usjStayAreas: KlookStayArea[] = [
+  {
+    area: "Universal City",
+    why: "The park gates are approximately five minutes on foot from Universal City Station, on the Osaka Convention & Tourism Bureau's own figure — which is the whole point of this area on a day you want to be at the gates before opening.",
+    url: whereToStayOsakaAreas[3].url,
+  },
+  {
+    area: "Umeda / Osaka Station",
+    why: "Where the Yumesaki through services leave from: the Bureau puts the park at about 20 minutes from Osaka Station, and you stay on the main JR network — the Kyoto and Kobe lines, the Loop Line and the shinkansen at Shin-Osaka — for the rest of the trip.",
+    url: osakaStayAreas[0].url,
+  },
+  {
+    area: "Tennoji",
+    why: "The cheaper JR-side base and the first city stop on the HARUKA from Kansai Airport; the Loop Line gets you to Nishikujo for the Yumesaki change without crossing the city centre.",
+    url: osakaStayAreas[2].url,
+  },
+  {
+    area: "Namba",
+    why: "The pick if the park is one day of a wider Osaka trip: Dotonbori and Kuromon Market on foot, and the Nankai terminus — Nankai puts the Rapi:t at a minimum of 34 minutes out to Kansai Airport on the day you fly home.",
+    url: osakaStayAreas[1].url,
+  },
+];
+
+/**
  * Where to stay in Kyoto, added 26 Oct 2026 for where-to-stay-in-kyoto.
  *
  * The first three are `kyotoStayAreas` verbatim — Kyoto Station, Karasuma
@@ -1542,6 +1580,15 @@ const tripPrepProducts = {
     ctaLabel: "Check the Shoryudo pass →",
     url: shoryudoHighwayBusPass.url,
   },
+  // Added 26 Oct 2026 for jr-pass-guide. Not a new URL: it reads the Umeda
+  // destination page out of `tokyoKyotoOsakaStayAreas`, index 6, which is the
+  // Osaka entry of the three-city stay list — the same id `osakaStayAreas[0]`
+  // carries, so the JR Pass page and the city guides cannot drift apart.
+  hotelOsakaUmeda: {
+    label: "Hotels around Umeda / Osaka Station",
+    ctaLabel: "Check Osaka Station hotels on Klook →",
+    url: tokyoKyotoOsakaStayAreas[6].url,
+  },
 } as const;
 
 /**
@@ -2325,5 +2372,71 @@ export const whereToStayOsakaTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.esim,
     why: "Osaka's two hubs are 20 minutes apart and the hotel you want may be at either end of the Midosuji Line — data from the moment you land makes that a decision rather than a gamble.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// USJ and the JR Pass, added 26 Oct 2026 — the two highest-traffic pages on this
+// site whose only Klook links were in the bands that pay least.
+//
+// usj-tickets-express-pass sold the Studio Pass (excluded, 0%) and the Express
+// Pass (0%); jr-pass-guide sold the JR Pass alone, which is a 2% special
+// activity. Neither page gains or loses a ticket link here. What both gain is the
+// set of things the same reader books around that ticket: hotels and tours at
+// 6.5%, passes and airport trains at 5%, the eSIM at 20%.
+//
+// No new URLs in either block — every entry reads out of `tripPrepProducts`, so
+// the hotel searches, the Osaka pass, the Kyoto–Nara day and the eSIM are the
+// same links the city guides already render.
+// ---------------------------------------------------------------------------
+
+/**
+ * USJ — what else an Osaka trip built around the park needs booking.
+ *
+ * Deliberately none of it a park ticket: the Osaka Amazing Pass is in the 5%
+ * passes band, the Kyoto–Nara day in the 6.5% tours band, the eSIM at 20%. The
+ * pass line has to lead with what it does *not* cover, because the guide's own
+ * reader is the person most likely to assume it covers the park.
+ */
+export const usjTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Read this one carefully: the pass does not cover Universal Studios Japan, and it does not cover the JR run out to Universal City either. What it covers is every other day of an Osaka trip — unlimited Osaka Metro and city buses plus more than 40 admissions.",
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "The obvious second day for anyone who has flown to Osaka for a theme park: Kiyomizu-dera, Fushimi Inari and Nara Park in one booking, departing from Osaka, with none of the routing left to you.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "USJ sells date-specified Studio Passes as e-tickets and runs Super Nintendo World area timed entry through its own app, which you use inside the park on the day — a queue is a bad place to discover you have no data.",
+  },
+];
+
+/**
+ * JR Pass — what the pass does not buy.
+ *
+ * The three hotel searches are the shinkansen stations a pass itinerary actually
+ * stops at, read out of `tokyoKyotoOsakaStayAreas` via `tripPrepProducts`, and the
+ * eSIM is on it because seat reservations and delay information are both online.
+ * Nothing here competes with the pass itself: a room and a data plan are not rail
+ * products, which is the point — the pass covers the trains and nothing else.
+ */
+export const jrPassTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "A pass itinerary is a series of shinkansen departures, and on the Tokaido and Tohoku lines they start under Tokyo Station — so a Marunouchi room turns a travel morning into a lift ride rather than a cross-city journey with the cases.",
+  },
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "The same argument at the other end of the Tokaido line, with the 100 and 101 sightseeing buses starting from the same forecourt and the airport HARUKA leaving from the same platforms.",
+  },
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "Osaka Station is the JR hub — the Loop Line, the Kyoto and Kobe lines and the Yumesaki through services — with Shin-Osaka two stops up the Midosuji Line for the shinkansen your pass covers.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Everything the pass does not do is online: reserving the Hikari seat it entitles you to, checking whether the train you planned is a Nozomi, and reading JR's delay notices when a typhoon stops the Tokaido line.",
   },
 ];

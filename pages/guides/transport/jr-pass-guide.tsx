@@ -2,8 +2,16 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import JrPassCalculator from "../../../components/JrPassCalculator";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel } from "../../../lib/attraction-prices";
+import {
+  jrKansaiAreaPass,
+  jrKansaiMiniPass,
+  jrKansaiWideAreaPass,
+  jrPassTripPrep,
+} from "../../../lib/klook-links";
 
 // Merged 2026-10-09 with /guides/transport/jr-pass-worth-it. Both pages answered "is the JR
 // Pass worth it" — the same query, with the same break-even arithmetic — and both sat outside
@@ -12,6 +20,65 @@ import { articleJsonLd } from "../../../lib/structured-data";
 // itinerary table here predated (it still showed Tokyo+Kyoto+Osaka+Hiroshima as a clear win).
 // Pass prices below stay in USD at official rates, as reseller listings quote them; the
 // break-even sections work in yen, because JR fares are quoted in yen.
+
+/**
+ * The regional-pass section and the hotel/eSIM block below were added 26 Oct 2026.
+ * The existing JR Pass CTA is unchanged — a JR Pass is a 2% "special activity" in
+ * Klook's bands and was this page's only Klook link, so what is new here is the 5%
+ * regional passes the same reader should be pricing instead, the 6.5% hotel searches
+ * at the stations a pass itinerary stops at, and the 20% eSIM.
+ *
+ * Every yen figure in the new section is a JR company's own published price, read on
+ * the date below. Nothing else is quoted: the Hakone Freepass is Odakyu's and the
+ * Osaka Amazing Pass is not a rail pass at all, so both are linked to the guides that
+ * carry their operators' figures rather than priced here.
+ *
+ *   japanrailpass.net   the JAPAN RAIL PASS price table — the online prices and     26 Oct 2026
+ *                       the higher Exchange Order prices at overseas agencies
+ *   westjr.co.jp        WEST QR Kansai Area Pass prices and HARUKA allowance; the   26 Oct 2026
+ *                       WEST QR Kansai Mini Pass price and its limited-express
+ *                       rule; the Kansai WIDE Area Pass price and what it adds;
+ *                       the end of sales of the earlier Kansai Area Pass
+ *
+ * JR East's pass pages answer automated reads with HTTP 403, so no JR East figure
+ * appears here. No Klook price appears either, for the usual reason.
+ */
+const PASS_CHECKED = checkedLabel("2026-10-26");
+
+/**
+ * JR-published prices only, adult unless stated. The JR Pass row is the yardstick
+ * the other three are measured against, which is why it is first.
+ */
+const regionalPassRows = [
+  {
+    pass: "JAPAN RAIL PASS, Ordinary",
+    operator: "JR Group",
+    price: "¥50,000 / ¥80,000 / ¥100,000 bought online; ¥53,000 / ¥84,000 / ¥105,000 as an Exchange Order from an overseas agency",
+    length: "7 / 14 / 21 days",
+    adds: "Nationwide JR, most shinkansen (not Nozomi or Mizuho), JR buses and the Miyajima ferry",
+  },
+  {
+    pass: "WEST QR Kansai Area Pass",
+    operator: "JR West",
+    price: "¥2,700 / ¥4,700 / ¥5,500 / ¥6,700",
+    length: "1 / 2 / 3 / 4 consecutive days",
+    adds: "JR West ordinary, rapid and special rapid trains around Kansai, plus unlimited HARUKA non-reserved seats and two reserved HARUKA seats. No shinkansen at any length",
+  },
+  {
+    pass: "WEST QR Kansai Mini Pass",
+    operator: "JR West",
+    price: "¥3,000 (child ¥1,500)",
+    length: "3 consecutive days",
+    adds: "Ordinary, rapid and special rapid trains only. JR West states it cannot be used on any limited express, the HARUKA included",
+  },
+  {
+    pass: "Kansai WIDE Area Pass",
+    operator: "JR West",
+    price: "¥12,000 (child ¥6,000)",
+    length: "5 consecutive days",
+    adds: "Everything above plus reserved Sanyo Shinkansen seats between Shin-Osaka and Okayama, and the runs to Kinosaki Onsen, Shirahama and Takamatsu",
+  },
+];
 
 const passTypes = [
   { type: "Ordinary",          duration: "7 days",  price: "$275" },
@@ -166,6 +233,16 @@ const faqItems = [
   {
     q: "What's the difference between Ordinary and Green (1st class)?",
     a: "Green class offers wider seats with a deeper recline and quieter carriages — equivalent to business class. Ordinary class is already comfortable by international standards and is the right choice for most tourists. Green is worth considering for very long journeys or if you plan many long-distance Shinkansen trips.",
+  },
+  // Added 26 Oct 2026 with the regional-pass section, so the FAQPage markup carries
+  // the two questions that section answers.
+  {
+    q: "Is a regional pass cheaper than the JR Pass?",
+    a: `Almost always, if your trip stays in one region. On the operators' own prices, read on ${PASS_CHECKED}: JR West's WEST QR Kansai Area Pass is ¥2,700 for one day and ¥6,700 for four, the WEST QR Kansai Mini Pass is ¥3,000 for three consecutive days, and the Kansai WIDE Area Pass is ¥12,000 for five. A 7-day nationwide Ordinary JR Pass is ¥50,000 bought online, so the four-day Kansai pass is roughly a seventh of it. The catch is coverage, not price: the Kansai Area Pass includes unlimited non-reserved HARUKA seats but no shinkansen at any length, the Mini Pass cannot be used on any limited express including the HARUKA, and only the WIDE pass adds reserved Sanyo Shinkansen seats between Shin-Osaka and Okayama. Price the cheaper pass against the places you are actually going before you look at the national one.`,
+  },
+  {
+    q: "Should I buy the JR Pass online or from an agency?",
+    a: `Online is cheaper. The JR Group's own price table gives ¥50,000, ¥80,000 and ¥100,000 for the 7-, 14- and 21-day Ordinary pass bought online, against ¥53,000, ¥84,000 and ¥105,000 for an Exchange Order issued by an overseas JR-designated agency — a ¥3,000 difference on the 7-day pass. Green Car prices follow the same pattern (¥70,000 online against ¥74,000 for 7 days). Read on ${PASS_CHECKED}. Prices are set by JR either way, so an agency is not undercutting anyone; it is simply the more expensive of the two channels.`,
   },
 ];
 
@@ -480,6 +557,96 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           </p>
         </section>
 
+        {/* Regional passes — the 5% Klook band, against the 2% the JR Pass itself pays. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Regional passes</span>
+          <h2 className={styles.sectionTitle}>Is a Regional Pass Cheaper Than the JR Pass?</h2>
+          <p className={styles.bodyText}>
+            <strong>Almost always, if your trip stays in one region — and by a wide margin.</strong> Every
+            price below is the operator&apos;s own, read on {PASS_CHECKED}. A four-day JR West Kansai Area
+            Pass is ¥6,700, which is roughly a seventh of the ¥50,000 a 7-day nationwide Ordinary pass costs
+            online; the five-day Kansai WIDE Area Pass, the one that adds Sanyo Shinkansen seats, is ¥12,000.
+            The question is never &ldquo;which pass is cheaper&rdquo; but whether the cheaper pass reaches
+            the places you are going.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Pass", "Price (adult)", "Length", "What it covers"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {regionalPassRows.map((row) => (
+                    <tr key={row.pass}>
+                      <td className={styles.tdProvider}>
+                        {row.pass}
+                        <span style={{ display: "block", fontWeight: 400, color: "var(--text-faint)", fontSize: "0.8rem" }}>
+                          {row.operator}
+                        </span>
+                      </td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.length}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.adds}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            JAPAN RAIL PASS prices are from the JR Group&apos;s own price table on japanrailpass.net and the
+            three JR West passes from westjr.co.jp, all read on {PASS_CHECKED}. Note the two JR Pass columns:
+            buying online is ¥3,000 cheaper on the 7-day Ordinary pass than taking an Exchange Order from an
+            overseas agency. One more change to know about — JR West ended sales of the earlier, non-QR
+            Kansai Area Pass on 30 September 2026, at ¥2,800 to ¥7,000; passes bought by that date stay valid
+            for their period, and the WEST QR version above is what is sold now, ¥100 to ¥300 less at every
+            length.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Two things the table cannot show. First, the Kansai Mini Pass is the cheapest of the three but
+            cannot carry you on the HARUKA, so it only beats the Area Pass if you are happy to do the airport
+            run on the slow Kansai-Airport Rapid — our{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Kansai Area Pass guide
+            </Link>{" "}
+            works that break-even through. Second, the passes most tourists actually need in a city are not
+            JR products at all, so no JR Pass ever covers them: the{" "}
+            <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Hakone Freepass
+            </Link>{" "}
+            is Odakyu&apos;s, the{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Osaka Amazing Pass
+            </Link>{" "}
+            is a metro-and-admissions pass, and the{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo Subway Ticket
+            </Link>{" "}
+            covers the two subway operators a JR Pass leaves out. Each of those guides carries its own
+            operator&apos;s prices, which is why they are not reprinted here.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <a href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Kansai Area Pass on Klook →
+            </a>
+            <a href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Kansai Mini Pass on Klook →
+            </a>
+            <a href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Kansai WIDE pass on Klook →
+            </a>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Those three links go to Klook, which pays us a commission at no extra cost to you. We quote the
+            JR companies&apos; own prices above rather than Klook&apos;s, because Klook&apos;s product pages
+            block automated checks.
+          </p>
+        </section>
+
         {/* JR Pass Types & Prices */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
@@ -575,6 +742,14 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             ))}
           </div>
         </section>
+
+        {/* What the pass does not buy — hotels at 6.5%, the eSIM at 20%. */}
+        <KlookTripPrep
+          label="Booked alongside"
+          heading="What Should You Book With Your JR Pass?"
+          intro="A pass covers trains and nothing else, which makes the rest of a rail trip predictable: you need a bed at the station the shinkansen stops at, and you need data, because every reservation and delay notice lives on a web page."
+          items={jrPassTripPrep}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>
