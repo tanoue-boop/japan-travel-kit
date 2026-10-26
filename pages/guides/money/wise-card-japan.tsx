@@ -733,7 +733,7 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>ATMs in Japan (2026): Where to Find Them &amp; How to Use Them</p>
+                <p className={styles.relatedTitle}>ATMs in Japan (2026): Which Accept Foreign Cards &amp; What the Fees Are</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

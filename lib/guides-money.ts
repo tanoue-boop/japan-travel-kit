@@ -45,8 +45,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/atms-in-japan",
     badge: "Guide",
-    title: "ATMs in Japan (2026): Where to Find Them & How to Use Them",
-    desc: "Most Japanese ATMs don't accept foreign cards. We explain which ones do — 7-Eleven, Japan Post, AEON — and how to avoid fees and withdrawal limits.",
+    title: "ATMs in Japan (2026): Which Accept Foreign Cards & What the Fees Are",
+    desc: "Five ATM networks take a card issued abroad — Seven Bank, Japan Post Bank, E-net, Lawson Bank and AEON — and only one publishes its fee. Brands, fees, hours and limits compared.",
     group: "cash",
     city: "other",
   },
