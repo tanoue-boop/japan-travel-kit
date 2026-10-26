@@ -13,8 +13,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/best-travel-card-japan",
     badge: "Guide",
-    title: "Best Travel Card for Japan (2026): Top Picks for Foreign Visitors",
-    desc: "Which travel card saves you the most money in Japan? We compare Wise, Revolut, Charles Schwab, Starling, and Monzo on exchange rates, ATM fees, and real-world usability.",
+    title: "Best Travel Card for Japan (2026): Fees and ATM Limits Compared",
+    desc: "Debit, prepaid and credit compared on card cost, foreign transaction fees, exchange rate and Japanese ATM fees — plus which card to carry from the US, UK, Australia, Canada and the Eurozone.",
     group: "cards",
     city: "other",
   },

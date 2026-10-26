@@ -719,7 +719,7 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best Travel Card for Japan (2026): Top Picks for Foreign Visitors</p>
+                <p className={styles.relatedTitle}>Best Travel Card for Japan (2026): Fees and ATM Limits Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
