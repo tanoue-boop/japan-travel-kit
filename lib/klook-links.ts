@@ -299,6 +299,35 @@ export const whereToStayOsakaAreas: KlookStayArea[] = [
   },
 ];
 
+/**
+ * Where to stay in Kyoto, added 26 Oct 2026 for where-to-stay-in-kyoto.
+ *
+ * The first three are `kyotoStayAreas` verbatim — Kyoto Station, Karasuma
+ * Oike/Shijo and Gion/Higashiyama — so the destination ids stay in one place and
+ * this page cannot drift away from the Kyoto transport guide.
+ *
+ * Arashiyama is the fourth and the only new id. It earns a place on an
+ * area-comparison page that it does not earn on a two- or three-night itinerary:
+ * it is the one Kyoto base that is not reached by city bus or municipal subway at
+ * all — the JR Sagano Line and the Keifuku Randen serve it, and the official Kyoto
+ * travel guide puts Kyoto Station to Saga-Arashiyama at about 11 minutes by JR.
+ * Klook's hotel search p50199665-arashiyama was confirmed as a live en-US page —
+ * "Best hotels near Arashiyama, Japan 2026" — through the www.klook.com search
+ * index on 26 Oct 2026.
+ *
+ * Considered and dropped: Kawaramachi and Kiyomizu as separate ids. Klook's
+ * Karasuma Oike and Gion searches already cover those two walks, and a second id
+ * for the same few streets would split the same inventory across two links.
+ */
+export const whereToStayKyotoAreas: KlookStayArea[] = [
+  ...kyotoStayAreas,
+  {
+    area: "Arashiyama",
+    why: "The one Kyoto base the city buses and the two subway lines do not reach — it is the JR Sagano Line and the Keifuku Randen instead, which puts the bamboo grove and Togetsukyo on foot before the day-trip crowds arrive.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50199665-arashiyama/3-hotel/"),
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Tours and activities (6.5%)
 // ---------------------------------------------------------------------------
@@ -1223,6 +1252,108 @@ export const tokyoDisneyStayAreas: KlookStayArea[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Ghibli Park and LEGOLAND Japan, added 26 Oct 2026 — the first two Nagoya-area
+// guides on this site.
+//
+// Klook answers automated reads of its /activity/ and /destination/ pages with
+// HTTP 403, so every URL below was confirmed live, on sale and in its en-US form
+// through the www.klook.com search index on 26 Oct 2026. No price appears on any
+// of them, for that reason — and because both parks price by date in any case
+// (Ghibli Park by weekday/weekend, LEGOLAND by calendar date), so the guides
+// print the operators' own published figures instead.
+//
+// Commission decides which link is the headline CTA on each page. A bare park
+// ticket cannot be assumed to pay the 6.5% tours-and-activities band, so:
+//   - Ghibli Park leads with the Nagoya bus tour (98263) and the ticket-plus-hotel
+//     package (91217), both of which are in the tours/hotels band, with the bare
+//     ticket (132673) alongside them rather than above them.
+//   - LEGOLAND leads with the LEGOLAND Japan Hotel package (26048), a hotel, with
+//     the 1-Day Pass (44688) beside it.
+// GetYourGuide sits next to the bare tickets on both pages — see lib/gyg-links.ts,
+// `gygGhibliPark`, `gygLegolandJapan` and `gygNagoyaEntryTickets`.
+// ---------------------------------------------------------------------------
+
+/** The guided Nagoya day that includes Ghibli Park — a tour, so the 6.5% band. */
+export const ghibliParkNagoyaBusTour: KlookTour = {
+  title: "Ghibli Park & Aichi Museum of Flight bus tour from Nagoya",
+  desc: "A join-in coach day out of Nagoya that pairs Ghibli Park with the Aichi Museum of Flight, so the Linimo connection is somebody else's problem",
+  url: klookLink("https://www.klook.com/en-US/activity/98263-ghibli-park-aichi-museum-flight-join-one-day-bus-tour-nagoya/"),
+};
+
+/** Ticket plus a night at Hotel Keihan Nagoya — an accommodation package, 6.5%. */
+export const ghibliParkTicketHotelPackage: KlookTour = {
+  title: "Ghibli Park ticket + Hotel Keihan Nagoya, 1 night / 2 days",
+  desc: "The park ticket sold together with a night at Hotel Keihan Nagoya by the station — the version to book if a 9 a.m. Grand Warehouse slot means an early start",
+  url: klookLink("https://www.klook.com/en-US/activity/91217-1n2d-ghibli-park-nagakute-tour-from-nagoya/"),
+};
+
+/**
+ * The bare Ghibli Park ticket. Klook is one of only two sellers the park's own
+ * English ticket page names for overseas buyers, which is why it is on this page
+ * at all — but it is a park admission, so it is not the headline CTA.
+ */
+export const ghibliParkTicket: KlookTour = {
+  title: "Ghibli Park ticket",
+  desc: "The O-Sanpo Day Pass itself, with the Ghibli's Grand Warehouse entry time chosen at checkout — one of the two sellers the park's own English ticket page names for overseas buyers",
+  url: klookLink("https://www.klook.com/en-US/activity/132673-ghibli-park-ticket/"),
+};
+
+/** LEGOLAND Japan Hotel with the park — a hotel package, so the headline CTA. */
+export const legolandJapanHotelPackage: KlookTour = {
+  title: "LEGOLAND Japan Hotel stay",
+  desc: "An overnight in one of the hotel's themed rooms with breakfast, at the resort beside the park gates — the booking that turns a 10:00–17:00 park into two mornings",
+  url: klookLink("https://www.klook.com/en-US/activity/26048-legoland-japan-hotel/"),
+};
+
+/** The 1-Day Pass, with the SEA LIFE combo and the Skip Pass bundles on the same listing. */
+export const legolandJapanTicket: KlookTour = {
+  title: "LEGOLAND® Japan ticket",
+  desc: "The 1-Day Pass, with the SEA LIFE Nagoya combo and the Skip Pass bundles selectable on the same listing, entered on a mobile QR code",
+  url: klookLink("https://www.klook.com/en-US/activity/44688-legoland-japan-nagoya/"),
+};
+
+/** The Skip Pass on its own, for a queue on a school-holiday date. */
+export const legolandJapanSkipPass: KlookTour = {
+  title: "LEGOLAND® Japan Skip Pass",
+  desc: "The queue-skip pass sold separately from admission, in a three-ride pack or unlimited — the thing to add to a date in a Japanese school holiday",
+  url: klookLink("https://www.klook.com/en-US/activity/12343-legoland-japan-skip-pass-nagoya/"),
+};
+
+/**
+ * Where to stay for a Nagoya-area park day. Two ids, and they answer different
+ * questions: the Ghibli Park search returns the Nagakute and Seto hotels out by
+ * the Linimo, and the Nagoya city search returns the ones at the station the
+ * subway and the shinkansen both leave from.
+ *
+ * Both were confirmed as live en-US pages through the www.klook.com search index
+ * on 26 Oct 2026 — "Best hotels near Ghibli Park, Japan 2026" and "Hotels in
+ * Nagoya, Japan".
+ */
+export const nagoyaParkStayAreas: KlookStayArea[] = [
+  {
+    area: "Nagoya Station",
+    why: "Where both park runs start: the Higashiyama subway line to Fujigaoka for the Linimo, and the Aonami Line to Kinjofuto, which Aonami puts at 24 minutes and ¥360 — and the Tokaido Shinkansen arrives in the same building.",
+    url: klookLink("https://www.klook.com/en-US/destination/c71-nagoya/3-hotel/"),
+  },
+  {
+    area: "Around Ghibli Park (Nagakute / Seto)",
+    why: "The hotels out by the Linimo rather than in the city, which is the choice worth making for a 9 a.m. Ghibli's Grand Warehouse entry time — the park is outside Exit 2 of Ai-Chikyuhaku Kinen Koen station.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50189091-ghibli-park/3-hotel/"),
+  },
+];
+
+/**
+ * Shoryudo Highway Bus Pass — the 5% passes-and-transport band, and the one Klook
+ * transport product that covers the region both of these parks sit in. Confirmed
+ * as a live en-US listing through the www.klook.com search index on 26 Oct 2026.
+ */
+export const shoryudoHighwayBusPass: KlookTour = {
+  title: "Shoryudo Highway Bus Pass (3 or 5 day)",
+  desc: "The foreign-visitor highway bus pass for the Chubu region out of Nagoya, with airport access tickets included — the 5% band alternative to buying each leg",
+  url: klookLink("https://www.klook.com/en-US/activity/820-shoryudo-highway-bus-pass-nagoya/"),
+};
+
+// ---------------------------------------------------------------------------
 // "Before your trip" slots for the money guides (added 19 Oct 2026)
 //
 // The money guides are the site's second- and third-most-read pages and had no
@@ -1364,6 +1495,52 @@ const tripPrepProducts = {
     label: "Shibuya food and culture half-day walking tour",
     ctaLabel: "Check the food walk →",
     url: shibuyaFoodCultureWalkingTour.url,
+  },
+  // Added 26 Oct 2026 for where-to-stay-in-kyoto and the two Nagoya park guides.
+  kyotoNaraTour: {
+    label: "Kyoto & Nara day trip (Kiyomizu-dera, Fushimi Inari & Nara Park)",
+    ctaLabel: "Check the Kyoto–Nara day →",
+    url: kyotoNaraKiyomizuTour.url,
+  },
+  kyotoHighlightTour: {
+    label: "Kyoto one-day highlight bus tour",
+    ctaLabel: "Check the Kyoto bus day →",
+    url: kyotoHighlightBusTour.url,
+  },
+  hotelKyotoStation: {
+    label: "Hotels around Kyoto Station",
+    ctaLabel: "Check Kyoto Station hotels on Klook →",
+    url: kyotoStayAreas[0].url,
+  },
+  hotelArashiyama: {
+    label: "Hotels in Arashiyama",
+    ctaLabel: "Check Arashiyama hotels on Klook →",
+    url: whereToStayKyotoAreas[3].url,
+  },
+  hotelNagoya: {
+    label: "Hotels around Nagoya Station",
+    ctaLabel: "Check Nagoya hotels on Klook →",
+    url: nagoyaParkStayAreas[0].url,
+  },
+  hotelGhibliPark: {
+    label: "Hotels near Ghibli Park",
+    ctaLabel: "Check Ghibli Park hotels on Klook →",
+    url: nagoyaParkStayAreas[1].url,
+  },
+  ghibliBusTour: {
+    label: "Ghibli Park & Aichi Museum of Flight bus tour from Nagoya",
+    ctaLabel: "Check the Nagoya bus day →",
+    url: ghibliParkNagoyaBusTour.url,
+  },
+  legolandHotel: {
+    label: "LEGOLAND Japan Hotel stay",
+    ctaLabel: "Check the hotel package →",
+    url: legolandJapanHotelPackage.url,
+  },
+  shoryudoBusPass: {
+    label: "Shoryudo Highway Bus Pass (3 or 5 day)",
+    ctaLabel: "Check the Shoryudo pass →",
+    url: shoryudoHighwayBusPass.url,
   },
 } as const;
 
@@ -2048,6 +2225,86 @@ export const whereToStayTokyoTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.esim,
     why: "Hotel check-in, the last train home and finding which of Shinjuku Station's exits you want all run off your phone — worth having working before you leave the terminal.",
+  },
+];
+
+/**
+ * Where to Stay in Kyoto — added 26 Oct 2026. The airport train and the two
+ * guided days the area choice is made against, plus the eSIM.
+ *
+ * The hotel searches are the page's main CTA and live in `whereToStayKyotoAreas`,
+ * rendered by KlookStayAreas, so nothing is duplicated here. The Haruka is in the
+ * 5% passes-and-transport band and the two Kyoto day tours in the 6.5% band.
+ */
+export const whereToStayKyotoTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.haruka,
+    why: "The Haruka is the whole argument for a Kyoto Station base: it runs direct from Kansai Airport to Kyoto, so the arrival and the departure both start on the platforms under the hotel — and the discounted one-way is sold to foreign passport holders only.",
+  },
+  {
+    ...tripPrepProducts.kyotoHighlightTour,
+    why: "The honest answer to Kyoto's geography problem. Kinkaku-ji is in the north-west, Fushimi Inari in the south and Arashiyama in the west, and no single base is close to all three — a guided day does the routing instead of your legs.",
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "Kiyomizu-dera, Fushimi Inari and Nara Park in one booking, which is the version to take if you have two nights rather than four and would rather not spend one of them on bus timetables.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Kyoto's city buses are flat-fare and pay-on-exit, and the sights they reach are spread across four sides of the city — a live route lookup is worth more here than in any other Japanese city.",
+  },
+];
+
+/**
+ * Ghibli Park — added 26 Oct 2026. The park ticket is a park ticket, so the
+ * commission-bearing bookings around it are the ones in this block: the guided
+ * Nagoya day and the two hotel searches at 6.5%, the Shoryudo bus pass at 5%,
+ * the eSIM at 20%.
+ */
+export const ghibliParkTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.ghibliBusTour,
+    why: "The version of the day with no Linimo connection in it: a coach out of Nagoya that pairs the park with the Aichi Museum of Flight, which matters because the direct Meitetsu bus runs only on days the park is open.",
+  },
+  {
+    ...tripPrepProducts.hotelGhibliPark,
+    why: "Ghibli's Grand Warehouse entry times start at 9 a.m. on 9 a.m. opening days, and you have to be inside within an hour of your slot — the Nagakute and Seto hotels out by the Linimo are the version of that morning that does not start in the city.",
+  },
+  {
+    ...tripPrepProducts.hotelNagoya,
+    why: "The alternative base, and the better one if the park is one day of a longer trip: both park runs and the Tokaido Shinkansen leave from Nagoya Station itself.",
+  },
+  {
+    ...tripPrepProducts.shoryudoBusPass,
+    why: "If Ghibli Park is the reason you are in Chubu at all, this is the regional pass that also reaches Takayama, Shirakawa-go and Kanazawa from the same station — bought once rather than leg by leg.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The park's own ticket rules put your name on the pass and allow a random ID check at entry, and both sellers deliver the ticket to a screen — this is not a day to land without working data.",
+  },
+];
+
+/**
+ * LEGOLAND Japan — added 26 Oct 2026, same reasoning. The 1-Day Pass is a park
+ * admission; the hotel package, the Nagoya hotel search and the regional bus pass
+ * are the bookings around it that sit in the higher bands.
+ */
+export const legolandJapanTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.legolandHotel,
+    why: "LEGOLAND Japan runs 10:00–17:00, which is a short day for a family that has travelled to get there — the themed rooms at the resort are what turn one 10:00 opening into two.",
+  },
+  {
+    ...tripPrepProducts.hotelNagoya,
+    why: "The cheaper base, and the one to pick if the park is a single day: Aonami's own figures put Nagoya Station to Kinjofuto at 24 minutes and ¥360, and the station is where the shinkansen leaves from too.",
+  },
+  {
+    ...tripPrepProducts.shoryudoBusPass,
+    why: "The 5% band alternative to buying transport by the leg, for a Chubu trip that puts LEGOLAND on one day and Takayama or Shirakawa-go on another.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The operator publishes ride closures and date-specific hours on its own site and app rather than at the gate, so the things most likely to change your day are only readable with data.",
   },
 ];
 

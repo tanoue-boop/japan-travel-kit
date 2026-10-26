@@ -1635,6 +1635,30 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            <Link href="/guides/attractions/ghibli-park-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3c4 0 7 3 7 7 0 5-7 11-7 11S5 15 5 10c0-4 3-7 7-7z" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Ghibli Park Tickets (2026): Prices, When They Go On Sale and How to Buy From Overseas</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/legoland-japan-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="9" width="16" height="11" rx="2" />
+                  <path d="M8 9V6h8v3M9 13h.01M15 13h.01" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>LEGOLAND Japan Tickets (2026): Prices, Hours and Is It Worth It?</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/japan-10-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

@@ -724,6 +724,18 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            <Link href="/guides/attractions/where-to-stay-in-kyoto" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21h18M5 21V8l7-5 7 5v13" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/sagano-romantic-train-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

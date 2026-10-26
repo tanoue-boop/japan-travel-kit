@@ -321,3 +321,36 @@ export const gygTokyoEntryTickets: GygListing = {
   what: "The admissions-only slice of the Tokyo catalogue, for the attractions on this page",
   url: "https://www.getyourguide.com/tokyo-l193/entry-tickets-tc123/",
 };
+
+/**
+ * Ghibli Park, LEGOLAND Japan and the Nagoya ticket listing — added 26 Oct 2026
+ * for ghibli-park-tickets and legoland-japan-tickets, and all three confirmed as
+ * live, search-indexed www.getyourguide.com pages on that date.
+ *
+ * The rate argument is the entry-ticket one at the top of this file: both pages
+ * recommend a park admission, and a bare park ticket cannot be assumed to pay
+ * Klook's 6.5% tours band.
+ *
+ * Ghibli Park has a second reason, and it is the stronger one. The park sells
+ * date- and slot-specified passes that go on sale two months ahead on the 10th of
+ * the month, and GetYourGuide's own Ghibli Park listing states that tickets are
+ * limited and cannot be guaranteed at the moment of booking. A reader whose date
+ * is gone on one platform needs somewhere else to look, not a better rate.
+ */
+export const gygGhibliPark: GygListing = {
+  title: "Ghibli Park",
+  what: "GetYourGuide's Ghibli Park listing — the O-Sanpo Day Pass Premium with entry support, and the guided versions of the same day",
+  url: "https://www.getyourguide.com/ghibli-park-l260634/",
+};
+
+export const gygLegolandJapan: GygListing = {
+  title: "Legoland Japan",
+  what: "The park's own GetYourGuide listing, including the LEGOLAND and SEA LIFE Nagoya combo and the private-transfer bundles",
+  url: "https://www.getyourguide.com/legoland-japan-l88543/",
+};
+
+export const gygNagoyaEntryTickets: GygListing = {
+  title: "Nagoya entry tickets",
+  what: "The admissions-only slice of the Nagoya catalogue, which is where both of these parks sit alongside the city's other ticketed sights",
+  url: "https://www.getyourguide.com/nagoya-l32669/entry-tickets-tc123/",
+};

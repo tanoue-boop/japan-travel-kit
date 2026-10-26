@@ -461,6 +461,32 @@ export const attractionArticles: GuideArticle[] = [
     group: "cities",
     city: "osaka",
   },
+  {
+    href: "/guides/attractions/where-to-stay-in-kyoto",
+    badge: "Where to stay",
+    title: "Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time",
+    desc: "Kyoto Station, Karasuma Oike, Gion and Arashiyama compared on the lines under them and the official minutes to the four sights — Fushimi Inari 10, Arashiyama 25, Kiyomizu-dera 35, Kinkaku-ji 40. Plus the lodging tax bands in force since 1 March 2026.",
+    group: "cities",
+    city: "kyoto",
+  },
+  {
+    href: "/guides/attractions/ghibli-park-tickets",
+    badge: "Tickets",
+    title: "Ghibli Park Tickets (2026): Prices, When They Go On Sale and How to Buy From Overseas",
+    desc: "The Standard O-Sanpo Day Pass is ¥3,300 on a weekday and the Premium ¥7,300, with no gate sales at all — tickets open two months ahead on the 10th at 2 p.m. Japan time, from the only two sellers the park names.",
+    group: "parks",
+    // Nagakute, Aichi — east of Nagoya, so none of the three city buckets.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/legoland-japan-tickets",
+    badge: "Tickets",
+    title: "LEGOLAND Japan Tickets (2026): Prices, Hours and Is It Worth It?",
+    desc: "The operator's online rates start at ¥4,900~ for an adult and ¥3,700~ for a child aged 3 to 18 and vary by date, the park is built for ages 2 to 12, and it is 24 minutes and ¥360 from Nagoya Station on the Aonami Line.",
+    group: "parks",
+    // Minato ward, Nagoya — same reason as Ghibli Park above.
+    city: "other",
+  },
 ];
 
 export const attractionsCategory: GuideCategory = {
