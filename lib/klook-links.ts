@@ -248,6 +248,57 @@ export const tokyoKyotoOsakaStayAreas: KlookStayArea[] = [
   },
 ];
 
+/**
+ * Where to stay in Tokyo, added 26 Oct 2026 for where-to-stay-in-tokyo.
+ *
+ * The first four entries are `tokyoFiveDayStayAreas` verbatim — Shinjuku, Tokyo
+ * Station, Ueno/Asakusa and Shibuya — so there is one source of truth per Klook
+ * destination id and this page cannot drift away from the itineraries.
+ *
+ * Ginza is the fifth and the only new destination id here. It earns its place on
+ * an area-comparison page in a way it does not on a three- or five-day plan: it
+ * is the one central area that is a subway base rather than a JR one (Ginza,
+ * Marunouchi and Hibiya lines), and the Keikyu–Toei through service puts
+ * Higashi-ginza 23 minutes from Haneda Terminal 3 without a change. The hotel
+ * search p50061911-ginza was confirmed as a live en-US page — "Best hotels near
+ * Ginza, Japan 2026" — through the www.klook.com search index on 26 Oct 2026.
+ *
+ * Shinagawa was considered and dropped: Klook has a `shinagawa-station`
+ * destination page but its `/3-hotel/` variant could not be confirmed in the
+ * en-US search index, and an unconfirmed id is worse than a shorter list.
+ */
+export const whereToStayTokyoAreas: KlookStayArea[] = [
+  ...tokyoFiveDayStayAreas,
+  {
+    area: "Ginza",
+    why: "Three subway lines (Ginza, Marunouchi, Hibiya) and one stop from Tokyo Station on the Marunouchi Line, with the Keikyu–Toei through train reaching Higashi-ginza from Haneda without a change.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50061911-ginza/3-hotel/"),
+  },
+];
+
+/**
+ * Where to stay in Osaka, added 26 Oct 2026 for where-to-stay-in-osaka.
+ *
+ * The first three are `osakaStayAreas` verbatim — Umeda, Namba and Tennoji, the
+ * three Midosuji Line hubs — so the destination ids stay in one place.
+ *
+ * Universal City is the fourth and the only new id. A "where to stay" page has to
+ * answer the USJ question, and it is the one Osaka area whose argument has nothing
+ * to do with the Midosuji Line: the park is a five-minute walk from Universal City
+ * Station on the JR Yumesaki Line, which no Osaka Metro pass covers. Klook's hotel
+ * search for the park, p50014852-universal-studios-japan, was confirmed as a live
+ * en-US page — "Best hotels near Universal Studios Japan, Japan 2026" — through the
+ * www.klook.com search index on 26 Oct 2026.
+ */
+export const whereToStayOsakaAreas: KlookStayArea[] = [
+  ...osakaStayAreas,
+  {
+    area: "Universal City",
+    why: "Walking distance to the Universal Studios Japan gates, which is the one thing no Osaka Metro pass or Midosuji base can buy you — the park is reached on the JR Yumesaki Line, not the subway.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50014852-universal-studios-japan/3-hotel/"),
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Tours and activities (6.5%)
 // ---------------------------------------------------------------------------
@@ -1969,3 +2020,53 @@ export const tokyoBaySunsetCruise: KlookTour = {
   desc: "A bay sailing the listing times for the hour the city changes over, past Rainbow Bridge, Tokyo Tower and the Odaiba waterfront",
   url: klookLink("https://www.klook.com/en-US/activity/8948-tokyo-bay-sunset-cruise-tokyo/"),
 };
+
+// ---------------------------------------------------------------------------
+// Where to stay — the two supporting blocks, added 26 Oct 2026.
+//
+// No new URLs: both read out of `tripPrepProducts`, so the airport tickets and
+// the eSIM on these pages are the same links the transport guides already use.
+// The hotel searches are the main CTA on both pages and live in
+// `whereToStayTokyoAreas` / `whereToStayOsakaAreas` above, rendered by
+// KlookStayAreas — nothing is duplicated here.
+// ---------------------------------------------------------------------------
+
+/** Where to Stay in Tokyo — the two airport runs the area choice is made against. */
+export const whereToStayTokyoTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "The Narita Express is the reason Tokyo Station, Shibuya and Shinjuku are all equally viable arrival bases — one train, no transfer, and the round-trip ticket is cheaper than two singles.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "If you picked Ueno or Asakusa, this is the train that makes the choice pay: Keisei puts the Skyliner at 41 minutes between Narita Terminal 2·3 and Keisei-Ueno.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Ginza is a subway base rather than a JR one, and so is half of Asakusa — on either, a 24, 48 or 72-hour Metro and Toei pass does more work than an IC card.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Hotel check-in, the last train home and finding which of Shinjuku Station's exits you want all run off your phone — worth having working before you leave the terminal.",
+  },
+];
+
+/** Where to Stay in Osaka — the airport trains, and the pass a city base rides on. */
+export const whereToStayOsakaTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.rapit,
+    why: "The Nankai Rapi:t is the whole argument for a Namba base: Nankai puts it at a minimum of 34 minutes between Kansai Airport and Namba, with no transfer.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "And the Haruka is the argument for Tennoji or Umeda — it runs direct to Tennoji, Osaka, Shin-Osaka and Kyoto, and the discounted one-way ticket is sold to foreign passport holders only.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "If your base is Umeda, Namba or Tennoji, the Osaka Amazing Pass covers the Midosuji rides between them plus more than 40 admissions — it does not cover the JR run to Universal City.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Osaka's two hubs are 20 minutes apart and the hotel you want may be at either end of the Midosuji Line — data from the moment you land makes that a decision rather than a gamble.",
+  },
+];

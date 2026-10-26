@@ -445,6 +445,22 @@ export const attractionArticles: GuideArticle[] = [
     group: "daytrips",
     city: "tokyo",
   },
+  {
+    href: "/guides/attractions/where-to-stay-in-tokyo",
+    badge: "Where to stay",
+    title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport",
+    desc: "Shinjuku, Tokyo Station, Ueno/Asakusa, Shibuya and Ginza compared on the lines under them — the Romancecar's 80 minutes to Hakone, the Skyliner's 41 to Keisei-Ueno, 23 minutes from Haneda to Higashi-ginza. No hotel names and no rates, because neither can be verified.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/where-to-stay-in-osaka",
+    badge: "Where to stay",
+    title: "Where to Stay in Osaka (2026): Best Areas, Compared by Line and Airport",
+    desc: "Namba, Umeda, Tennoji and Universal City compared on the lines under them — the Rapi:t's 34-minute minimum from Kansai, 30 minutes to Kyoto on the JR Special Rapid, 36 to JR Nara from Tennoji, and a five-minute walk to the USJ gates.",
+    group: "cities",
+    city: "osaka",
+  },
 ];
 
 export const attractionsCategory: GuideCategory = {
