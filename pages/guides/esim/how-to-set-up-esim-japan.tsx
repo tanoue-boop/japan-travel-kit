@@ -863,6 +863,18 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            <Link href="/guides/esim/japan-esim-iphone" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="7" y="2" width="10" height="20" rx="2" />
+                  <line x1="10.5" y1="5" x2="13.5" y2="5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best eSIM for Japan on iPhone (2026): Setup &amp; Picks</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/esim/airalo-japan-review" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

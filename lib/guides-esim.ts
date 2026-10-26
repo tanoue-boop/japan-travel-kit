@@ -117,8 +117,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-iphone",
     badge: "Guide",
-    title: "Best eSIM for Japan on iPhone (2026): Picks & Setup",
-    desc: "Which Japan eSIM installs cleanly on an iPhone, and exactly where to tap in iOS. Covers iPhone XS to 16, dual-SIM roaming traps, and the one provider needing a manual APN.",
+    title: "Best eSIM for Japan on iPhone (2026): Japan eSIM iPhone Setup & Picks",
+    desc: "Which Japan eSIM installs cleanly on an iPhone, and exactly where to tap in iOS. Covers iPhone XS to 18 Pro, the carrier-lock check, dual-SIM roaming traps, and Suica in Apple Wallet.",
     group: "setup",
     city: "other",
   },
