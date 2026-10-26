@@ -1848,3 +1848,124 @@ export const tokyoAirportTripPrep: KlookTripPrepItem[] = [
     why: "None of the airport tickets above cover travel once you are in the city; the subway ticket does, on all Tokyo Metro and Toei lines, for 24, 48 or 72 hours.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Ten days in Japan, added 26 Oct 2026 for japan-10-day-itinerary.
+//
+// No new URLs at all. Every entry below reads its destination page out of
+// `tokyoStayAreas`, `kyotoStayAreas` or `osakaStayAreas`, so there is still one
+// source of truth per Klook destination id and the ten-day page cannot drift
+// away from the city transport guides.
+//
+// What is new is the `why` line. A ten-day trip is four Tokyo nights, three
+// Kyoto nights and two Osaka nights, with one mountain day wedged between the
+// first two — which is a different argument from the seven-day plan's three
+// bases. Three Kyoto nights are what earn Gion a place here: at two nights the
+// premium is on being at the shinkansen end of the city, and at three it is not.
+// ---------------------------------------------------------------------------
+
+export const japanTenDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Shinjuku, Tokyo",
+    why: "Four Tokyo nights can afford a base chosen for the day out rather than for the airport: the Kawaguchiko and Fuji highway buses and the Odakyu line to Hakone all leave from under this station, and the Yamanote loop is at the door.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Tokyo Station / Marunouchi, Tokyo",
+    why: "The base that costs you least on the Day 6 move: the Tokaido Shinkansen to Kyoto leaves from beneath it, so the morning you change cities is a lift rather than a cross-town journey with the cases.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Ueno / Asakusa, Tokyo",
+    why: "Ueno is on the Yamanote loop with the Ginza Line running to Asakusa, which is a whole day of this plan — and the Keisei Skyliner from Narita arrives on this side of the city faster than anywhere else.",
+    url: tokyoStayAreas[2].url,
+  },
+  {
+    area: "Kyoto Station, Kyoto",
+    why: "Where the shinkansen puts you down and where the 100 and 101 sightseeing buses start — and the station the Nara trains and the airport Haruka leave from, which is two of the three Kyoto days.",
+    url: kyotoStayAreas[0].url,
+  },
+  {
+    area: "Shijo-Kawaramachi / Karasuma, Kyoto",
+    why: "The one point the Karasuma and Tozai subway lines cross, with Pontocho, Nishiki Market and the Hankyu and Keihan lines to Osaka on foot — the better base if you want the evenings as well as the temples.",
+    url: kyotoStayAreas[1].url,
+  },
+  {
+    area: "Gion / Higashiyama, Kyoto",
+    why: "Only worth it at three nights, and then it is the best of the three: the 100 bus from Kyoto Station and the Tozai Line both reach it, and Kiyomizu-dera is a walk rather than a bus ride at six in the morning.",
+    url: kyotoStayAreas[2].url,
+  },
+  {
+    area: "Namba, Osaka",
+    why: "Midosuji Line, Dotonbori and Kuromon Market on foot, and the Nankai terminus — so the last morning's run to Kansai Airport starts under your hotel instead of after a change with the luggage.",
+    url: osakaStayAreas[1].url,
+  },
+  {
+    area: "Umeda, Osaka",
+    why: "The northern Midosuji hub, joined to Osaka Station: the stop to pick if you come down from Kyoto by JR or Hankyu, or if a Himeji or Kobe day is going on the end of the Osaka leg.",
+    url: osakaStayAreas[0].url,
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Tokyo winter illuminations and the night tours around them, added
+// 26 Oct 2026 for tokyo-illumination-tours.
+//
+// Klook answers automated reads of its /activity/ pages with HTTP 403, so every
+// listing below was confirmed live, on sale and in its en-US URL form through
+// the www.klook.com search index on 26 Oct 2026. No price appears on any of
+// them; the guide prints the venues' own published admissions instead.
+//
+// Commission decides the order. The night tours and the bay cruises are in the
+// 6.5% tours-and-activities band and are the headline CTAs. The two paid
+// illumination admissions (Tokyo Mega Illumi, Yomiuriland) are tickets, so they
+// cannot be assumed to pay that band — which is why GetYourGuide's Tokyo
+// entry-ticket listing sits beside them on the page. See lib/gyg-links.ts,
+// `gygTokyoEntryTickets`.
+//
+// Deliberately not used: Klook has no standalone listing for any of the free
+// street displays — Marunouchi, Keyakizaka, Midtown, Yebisu Garden Place — which
+// is the right answer, because none of them sells a ticket. The guide says so.
+// ---------------------------------------------------------------------------
+
+/** The evening join-in walk — the headline 6.5% CTA on the illumination guide. */
+export const tokyoNightTourAkihabaraShibuya: KlookTour = {
+  title: "Tokyo night tour: Ueno, Akihabara, Shibuya & karaoke",
+  desc: "A guided evening listed at 4 hours 50 minutes from Ueno Station through Akihabara to the Shibuya crossing, with train fares between the stops included",
+  url: klookLink("https://www.klook.com/en-US/activity/140853-tokyo-night-tour-akihabara-shibuya-karaoke-city-lights/"),
+};
+
+/** The open-top bus loop — the route is the illumination corridor, end to end. */
+export const tokyoOpenTopBusSightseeing: KlookTour = {
+  title: "Tokyo open-top sightseeing bus (70 minutes)",
+  desc: "A 70-minute open-top loop the listing routes past Tokyo Station, Marunouchi, Akasaka, Meiji Jingu Gaien, Roppongi, Tokyo Tower and Ginza, with recorded guidance in six languages",
+  url: klookLink("https://www.klook.com/en-US/activity/89277-tokyo-city-open-top-bus-sightseeing-bus-trip/"),
+};
+
+/** Hop-on hop-off, for an evening that visits three districts rather than one. */
+export const skyhopHopOnHopOffBus: KlookTour = {
+  title: "Hop-on hop-off Tokyo bus (Skyhop Bus)",
+  desc: "An open-top hop-on hop-off ticket across the Asakusa, Odaiba and Roppongi–Shibuya courses, which is the version to buy if the evening has more than one stop in it",
+  url: klookLink("https://www.klook.com/en-US/activity/87165-sky-hop-on-hop-off-bus-tokyo/"),
+};
+
+/** Tokyo Mega Illumi at Oi Racecourse — the one ticketed display Klook sells. */
+export const tokyoMegaIllumiTicket: KlookTour = {
+  title: "Tokyo Mega Illumi ticket (Oi Racecourse)",
+  desc: "Admission to the winter-only display on the Oi Racecourse infield, which the listing describes with a fountain show, an aurora area and a 100-metre light tunnel",
+  url: klookLink("https://www.klook.com/en-US/activity/77518-tokyo-mega-illumi/"),
+};
+
+/** Yomiuriland — the Jewellumination is inside the park, so this is the ticket. */
+export const yomiurilandTicket: KlookTour = {
+  title: "Yomiuriland admission ticket",
+  desc: "The Inagi amusement park's own admission, which is what the Jewellumination is seen on — the display is inside the park rather than beside it",
+  url: klookLink("https://www.klook.com/en-US/activity/20251-yomiuriland-admission-ticket-tokyo/"),
+};
+
+/** The plain bay sunset sailing — no meal, and it ends after the lights come on. */
+export const tokyoBaySunsetCruise: KlookTour = {
+  title: "Tokyo Bay sunset cruise",
+  desc: "A bay sailing the listing times for the hour the city changes over, past Rainbow Bridge, Tokyo Tower and the Odaiba waterfront",
+  url: klookLink("https://www.klook.com/en-US/activity/8948-tokyo-bay-sunset-cruise-tokyo/"),
+};
