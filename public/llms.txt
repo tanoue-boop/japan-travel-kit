@@ -74,7 +74,7 @@ Paying for things. 13 guides covering cash versus card, which ATMs take foreign 
 
 - [Wise vs Revolut for Japan (2026): Which Travel Card Wins?](https://www.japan-travel-kit.com/guides/money/wise-vs-revolut-japan): Wise or Revolut for Japan? We compare exchange rates, weekend fees, ATM limits, and plans — with clear advice on which card suits your spending.
 - [Best Travel Card for Japan (2026): Top Picks for Foreign Visitors](https://www.japan-travel-kit.com/guides/money/best-travel-card-japan): Which travel card saves you the most money in Japan? We compare Wise, Revolut, Charles Schwab, Starling, and Monzo on exchange rates, ATM fees, and real-world usability.
-- [Wise Card in Japan (2026): Fees, ATMs & How to Use It](https://www.japan-travel-kit.com/guides/money/wise-card-japan): Does the Wise card work in Japan? We cover fees, the mid-market rate, 7-Eleven ATM limits, how to avoid DCC, and how to get the most out of Wise on your trip.
+- [Wise Card in Japan (2026): ATM Fees, Free Limits & Which ATMs Take It](https://www.japan-travel-kit.com/guides/money/wise-card-japan): Yes, the Wise card works at Japanese ATMs. Free withdrawals to 250 USD/GBP/EUR or 400 AUD a month, then 2.69% — plus the ¥220 Japan Post Bank adds per use.
 - [Revolut in Japan (2026): Fees, ATMs & Is It Worth It?](https://www.japan-travel-kit.com/guides/money/revolut-card-japan): Does Revolut work in Japan? We break down the plans, weekday and weekend FX fees, ATM limits, and whether Revolut is worth it for your trip.
 - [Cash vs Card in Japan (2026): What Actually Works?](https://www.japan-travel-kit.com/guides/money/cash-vs-card-japan): Japan is still surprisingly cash-heavy — but cards work in more places than you'd think. We break down where to use each, which ATMs accept foreign cards, and how to avoid hidden fees.
 - [ATMs in Japan (2026): Where to Find Them & How to Use Them](https://www.japan-travel-kit.com/guides/money/atms-in-japan): Most Japanese ATMs don't accept foreign cards. We explain which ones do — 7-Eleven, Japan Post, AEON — and how to avoid fees and withdrawal limits.
@@ -211,4 +211,4 @@ The same 5 guides in Thai, under /th/ (hreflang th-TH), with its own entry page 
 - [sitemap.xml](https://www.japan-travel-kit.com/sitemap.xml)
 - Contact: info@japan-travel-kit.com
 
-Generated 2026-10-25 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.
+Generated 2026-10-26 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.

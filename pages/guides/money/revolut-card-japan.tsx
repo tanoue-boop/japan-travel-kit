@@ -410,7 +410,7 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Wise Card in Japan (2026): Fees, ATMs &amp; How to Use It</p>
+                <p className={styles.relatedTitle}>Wise Card in Japan (2026): ATM Fees, Free Limits &amp; Which ATMs Take It</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

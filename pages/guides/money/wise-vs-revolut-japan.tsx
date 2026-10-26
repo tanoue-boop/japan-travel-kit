@@ -347,7 +347,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Wise Card in Japan (2026): Fees, ATMs &amp; How to Use It</p>
+                <p className={styles.relatedTitle}>Wise Card in Japan (2026): ATM Fees, Free Limits &amp; Which ATMs Take It</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
