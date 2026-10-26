@@ -441,7 +441,7 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book</p>
+                <p className={styles.relatedTitle}>teamLab Borderless Tickets (2026): Price, How to Book and Time Slots</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

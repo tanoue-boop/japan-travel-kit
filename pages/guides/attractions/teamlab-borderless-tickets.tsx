@@ -16,15 +16,126 @@ const BORDERLESS_URL = teamlabBorderlessTicketUrl;
 // All figures below were read from the official teamLab site (teamlab.art) on 9 October
 // 2026. The adult and child figures and the check date are owned by
 // lib/attraction-prices.ts, which also feeds the ticket price table.
+//
+// They keep that 9 October date. teamlab.art renders its ticket, hours and calendar
+// panels client-side: a re-read was attempted on 26 October 2026 against the English
+// page, the Japanese page and the old borderless.teamlab.art store, and none of them
+// returns a price to an automated fetch. Borrowing a fresher date for a figure nobody
+// re-read is how a price table starts lying, so nothing here moves until the figures
+// themselves can be read again.
 const P = PRICES.teamlabBorderless;
 const CHECKED = checkedLabel(P.checked);
 
+// The Planets column of the Borderless-vs-Planets table has its own record and its own
+// date — that store is server-rendered and was re-read on 25 October 2026.
+const PLANETS = PRICES.teamlabPlanets;
+const PLANETS_CHECKED = checkedLabel(PLANETS.checked);
+
+// The one thing that *was* confirmed first-hand on 26 October 2026: where the official
+// ticket address now points. See the "official ticket site" section below.
+const ADDRESS_CHECKED = checkedLabel("2026-10-26");
+
+// The headline search term is "teamLab Borderless tickets", so it stays verbatim and in
+// that order in the title, the H1 and the description, each of which also carries the two
+// words the query is actually asking about — the price, and how to book.
+const TITLE = "teamLab Borderless Tickets (2026): Price, How to Book and Time Slots";
+const DESC =
+  "teamLab Borderless tickets in 2026, from the official site: adult from ¥3,400 and priced by date and slot, timed entry in Azabudai Hills, hours, closed days, about two hours inside — and how to book direct or on Klook.";
+
+// `varies` is the column that stops the ¥3,400 being read as a price: only the adult and
+// disability tiers move with the date, and teamLab publishes no range for how far.
 const priceRows = [
-  { ticket: "Adult (18 and over)", price: P.adult, note: "Dynamic pricing — the price for your date and slot can be higher" },
-  { ticket: "Ages 13–17", price: "¥2,800", note: "Fixed price" },
-  { ticket: "Ages 4–12", price: P.child, note: "Fixed price" },
-  { ticket: "3 and under", price: "Free", note: "No ticket needed" },
-  { ticket: "Visitor with a disability", price: "from ¥1,700", note: "Dynamic pricing; one accompanying person also gets the discounted rate" },
+  {
+    ticket: "Adult (18 and over)",
+    price: P.adult,
+    varies: "Yes — by date and admission slot",
+    note: "¥3,400 is the floor, not the price: check the figure for your own date before you pay",
+  },
+  { ticket: "Ages 13–17", price: "¥2,800", varies: "No — flat", note: "Bring ID if you look older" },
+  { ticket: "Ages 4–12", price: P.child, varies: "No — flat", note: "Fixed whatever date you pick" },
+  { ticket: "3 and under", price: "Free", varies: "No — free", note: "No ticket needed" },
+  {
+    ticket: "Visitor with a disability",
+    price: "from ¥1,700",
+    varies: "Yes — same calendar as the adult pass",
+    note: "One accompanying person gets the same discounted rate; bring proof of eligibility",
+  },
+];
+
+// Hours, the calendar and the slot mechanics in one table, because these are the figures
+// the rest of your day is built on. Every row carries the source it was read off and the
+// date it was read — including the one row that is ours rather than teamLab's.
+const hoursRows = [
+  { item: "Opening hours", detail: "Listed 08:30–21:00, varying by date", source: `teamlab.art, ${CHECKED}` },
+  { item: "Last entry", detail: "One hour before closing — a 21:00 close means in by 20:00", source: `teamlab.art, ${CHECKED}` },
+  {
+    item: "Shorter and longer days",
+    detail: "Some dates close early (17:00 on 17 November 2026) and some late (22:00 on selected dates)",
+    source: `teamlab.art, ${CHECKED}`,
+  },
+  {
+    item: "Closed days",
+    detail: "Scattered Tuesdays — 20 October, 24 November and 8 December 2026 among them",
+    source: `teamlab.art, ${CHECKED}`,
+  },
+  {
+    item: "Entrance Pass",
+    detail: "Specifies both a date and an admission time; the slot is the booking",
+    source: `teamlab.art, ${CHECKED}`,
+  },
+  {
+    item: "Flexible Pass",
+    detail: "Valid on a chosen date with no designated entry time, at a premium",
+    source: `teamlab.art, ${CHECKED}`,
+  },
+  {
+    item: "Changing your date",
+    detail: "Up to three times on a ticket bought direct from teamLab",
+    source: `teamlab.art, ${CHECKED}`,
+  },
+  {
+    item: "Buying on site",
+    detail: "Sold at the museum while slots remain, at +¥200 adult and +¥100 child or disability",
+    source: `teamlab.art, ${CHECKED}`,
+  },
+  {
+    item: "Time to allow",
+    detail: "About two hours — longer if you photograph, and there is no fixed route to hurry along",
+    source: "Our planning figure — teamLab publishes none",
+  },
+];
+
+// Borderless against Planets, from the Borderless side. The deep comparison of what the
+// two museums *are* lives on the Planets guide; this table is the booking arithmetic.
+const vsPlanetsRows = [
+  {
+    factor: "Where",
+    borderless: "Azabudai Hills, Minato City — 2 min from Kamiyacho",
+    planets: "Toyosu — 1 min from Shin-Toyosu",
+  },
+  { factor: "Adult ticket", borderless: `${P.adult}, by date and slot`, planets: `${PLANETS.adult}, by date and slot` },
+  { factor: "Ages 4–12", borderless: P.child ?? "—", planets: PLANETS.child ?? "—" },
+  {
+    factor: "What you do",
+    borderless: "Walk a map-less maze of 50+ artworks, shoes on",
+    planets: "Barefoot, through water that reaches adult knee height",
+  },
+  {
+    factor: "Entry",
+    borderless: "Date + admission time, or a Flexible Pass with no fixed time",
+    planets: "Date + admission time only",
+  },
+  {
+    factor: "At the door",
+    borderless: "Sold while slots remain, +¥200 for an adult",
+    planets: "Not sold on site at all — online in advance or not at all",
+  },
+  { factor: "Time to allow", borderless: "About 2 hours", planets: "About 1.5–2 hours" },
+  {
+    factor: "Book it for",
+    borderless: "Art, photography, adults, and a rainy afternoon in central Tokyo",
+    planets: "Children, and the single biggest first-visit impression",
+  },
 ];
 
 /**
@@ -132,6 +243,18 @@ const faqItems = [
     a: `On the official teamLab site, checked on ${CHECKED}, the Entrance Pass starts from ¥3,400 for adults (18 and over), with ¥2,800 for ages 13–17, ¥1,500 for ages 4–12, and free admission for children 3 and under. Visitors with a disability pay from ¥1,700, and one accompanying person gets the same discounted rate. Adult and disability tickets use dynamic pricing, so the exact amount depends on the date and time slot you choose — check the price for your own date before you pay. Buying on site costs ¥200 more for adults and ¥100 more for children and disability tickets.`,
   },
   {
+    q: "Can you buy teamLab Borderless tickets at the door?",
+    a: `Yes, but only while slots remain and at a surcharge: the official site listed on-site tickets at ¥200 more for adults and ¥100 more for children and disability tickets when we checked on ${CHECKED}. That makes the door a fallback rather than a plan — on weekends, holidays and evening slots the times most visitors want are gone before the day, and a sold-out calendar cannot be rescued at the counter. It is also the clearest difference from teamLab Planets in Toyosu, where the official store states nothing is sold on site at all.`,
+  },
+  {
+    q: "Can I change the date on a teamLab Borderless ticket?",
+    a: `A ticket bought direct from teamLab can have its date changed up to three times, as listed on the official site on ${CHECKED} — which is the main practical reason to buy direct rather than through a reseller if your Tokyo days are still moving around. Resellers set their own change and cancellation terms per option, and those vary, so read them on the booking page before you pay rather than assuming the official allowance carries over.`,
+  },
+  {
+    q: "What is the difference between the Entrance Pass and the Flexible Pass?",
+    a: `The Entrance Pass specifies a date and an admission time — you pick a slot at checkout and that slot is your booking. The Flexible Pass is valid on a specific date with no designated entry time, so you arrive when you arrive, and it costs a premium for that freedom. Both were listed on the official site on ${CHECKED}. If your day around Azabudai Hills is unpredictable the Flexible Pass buys back the thing a timed slot takes away; if your day is settled, the Entrance Pass is the cheaper ticket.`,
+  },
+  {
     q: "Is teamLab Borderless timed entry? Can I just turn up?",
     a: "The standard Entrance Pass is date- and time-specified: you choose an admission slot when you book. teamLab also sells a Flexible Pass, which is valid for a specific date with no designated entry time. Tickets are sold on site too, but at a ¥200 surcharge for adults and only while slots are still available — on weekends, holidays and evening slots they frequently aren't. Treat walk-up as a fallback, not a plan.",
   },
@@ -163,22 +286,19 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
   return (
     <>
       <Head>
-        <title>teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book | Japan Travel Kit</title>
-        <meta
-          name="description"
-          content="teamLab Borderless ticket prices for 2026, checked on the official site: from ¥3,400 adult with dynamic pricing, timed-entry slots, opening hours, and how to book on the official site or Klook."
-        />
+        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets" />
         {hreflangLinks("/guides/attractions/teamlab-borderless-tickets")}
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets" />
-        <meta property="og:description" content="teamLab Borderless ticket prices for 2026, checked on the official site: from ¥3,400 adult with dynamic pricing, timed-entry slots, opening hours, and how to book on the official site or Klook." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book" />
-        <meta name="twitter:description" content="teamLab Borderless ticket prices for 2026, checked on the official site: from ¥3,400 adult with dynamic pricing, timed-entry slots, opening hours, and how to book on the official site or Klook." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -198,7 +318,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/teamlab-borderless-tickets",
-              headline: "teamLab Borderless Tickets (2026): Prices, Time Slots and How to Book",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -246,7 +366,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            teamLab Borderless Tickets (2026):<br />Prices, Time Slots and How to Book
+            teamLab Borderless Tickets (2026):<br />Price, How to Book and Time Slots
           </h1>
           <p className={styles.heroSubtitle}>
             What a ticket to teamLab Borderless in Azabudai Hills actually costs, how the timed slots
@@ -271,6 +391,19 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* The answer, in one paragraph, before anything else in the body — the hero
+            subtitle above describes the page, it does not answer the question. */}
+        <p className={styles.bodyText}>
+          An adult ticket to <strong>teamLab Borderless</strong> in <strong>Azabudai Hills</strong> starts at{" "}
+          <strong>¥3,400</strong> on the official teamLab site, and the adult tier is dynamically priced, so
+          ¥3,400 is the floor rather than the price for your own date. Entry is{" "}
+          <strong>date- and time-specified</strong> — the standard Entrance Pass fixes an admission slot, and a
+          Flexible Pass fixes the date only — and you should <strong>allow about two hours</strong> inside a
+          museum that has no map and no fixed route to hurry along. Prices, hours and closed dates on this page
+          were read from the official teamLab site (teamlab.art) on {CHECKED}; because the adult figure moves
+          with the calendar, confirm the amount for your date before you pay.
+        </p>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -318,22 +451,22 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           </div>
         </div>
 
-        {/* Prices */}
+        {/* Prices — the heading is the search query, and the first sentence is the answer. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>teamLab Borderless Ticket Prices</h2>
+          <h2 className={styles.sectionTitle}>How much are teamLab Borderless tickets in 2026?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Borderless sells an <strong>Entrance Pass</strong> with a specified admission time. Adult and
-            disability tickets are dynamically priced — the figures below are the base prices on the official
-            site, and a busy Saturday evening will cost more than a quiet Tuesday morning. The teen and child
-            tiers are fixed.
+            An adult pays <strong>from ¥3,400</strong>, a 13–17-year-old ¥2,800, a child aged 4–12 ¥1,500, and
+            under-4s nothing at all. Only the adult and disability tiers move: Borderless prices those two by
+            date and admission slot, which is why the official figure carries a &ldquo;from&rdquo; and why the
+            cheapest ticket on your trip is a question about the calendar rather than about the seller.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Ticket", "Price (from)", "Notes"].map((h) => (
+                    {["Ticket", "Price (from)", "Moves with the date?", "Notes"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -343,6 +476,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
                     <tr key={row.ticket}>
                       <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.ticket}</td>
                       <td className={styles.tdPrice}>{row.price}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.varies}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
                     </tr>
                   ))}
@@ -355,27 +489,54 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             and ¥100 more for children and disability tickets. Discounted tickets need proof of eligibility,
             so bring ID.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>How far the adult price moves is not published.</strong> teamLab prints a starting figure
+            and a calendar, not a price list, so no honest guide can tell you what a Saturday evening in
+            Borderless costs — and any page that quotes you a range for one has made it up. Treat ¥3,400 as the
+            floor, open the official calendar for every date your trip could absorb, and compare the figures
+            before you pay. Shifting the visit by a day is the lever here; shopping for a cheaper seller is
+            not, because the date and the slot set the price.
+          </p>
         </section>
 
-        {/* Hours, slots and what to expect */}
-        <section className={styles.bodySection}>
+        {/* Hours, the calendar and how long to allow — the table the rest of the day is
+            built on, with each row's source and read date in its own column. */}
+        <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Before you book</span>
-          <h2 className={styles.sectionTitle}>Hours, Time Slots and Closed Days</h2>
-          <p className={styles.bodyText}>
+          <h2 className={styles.sectionTitle}>Hours, Time Slots, Closed Days and How Long You Need</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Borderless runs long days but the calendar moves around, which catches people out more often than
-            the price does. Here&apos;s what the official site showed when we checked on {CHECKED}:
+            the price does — the museum closes on scattered Tuesdays, and some dates shut at 17:00. Allow about
+            two hours inside and don&apos;t book anything tight behind it.
           </p>
-          <ul className={styles.bodyList}>
-            <li><strong>Opening hours:</strong> listed as 08:30–21:00, with some dates closing earlier (17:00 on 17 November 2026) and some later (22:00 on selected dates).</li>
-            <li><strong>Last entry:</strong> one hour before closing — so a 21:00 close means you need to be in by 20:00.</li>
-            <li><strong>Closed days:</strong> scattered Tuesdays, including 20 October, 24 November and 8 December 2026.</li>
-            <li><strong>Entry:</strong> the Entrance Pass specifies a date and admission time. A <strong>Flexible Pass</strong> is also sold, valid on a chosen date with no designated entry time.</li>
-            <li><strong>Date changes:</strong> tickets bought direct from teamLab can have their date changed up to three times.</li>
-          </ul>
-          <p className={styles.bodyText}>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "What the official site says", "Source and date"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {hoursRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.detail}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Because hours and closures shift month to month, open the official calendar for your own travel
             dates before you commit — then book the slot. Weekday mornings are the quietest and usually the
-            cheapest; weekend and evening slots are the first to disappear.
+            cheapest; weekend and evening slots are the first to disappear. The only row above that is not
+            teamLab&apos;s own wording is the time to allow, and it says so: the museum publishes no figure for
+            how long a visit takes, because the route is yours to choose.
           </p>
         </section>
 
@@ -395,7 +556,69 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             appear if you wait. It also means Borderless is the more adult, more photographic of Tokyo&apos;s
             two teamLab museums — see our{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets ticket guide</Link>{" "}
-            for the barefoot, walk-through-water one in Toyosu, and for a full Planets vs Borderless comparison.
+            for the barefoot, walk-through-water one in Toyosu, and for what the Planets side of the decision
+            looks like.
+          </p>
+        </section>
+
+        {/* Worth it — a judgement on the published numbers, not on a visit we are claiming. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>The decision</span>
+          <h2 className={styles.sectionTitle}>Is teamLab Borderless worth it?</h2>
+          <p className={styles.bodyText}>
+            For anyone who likes art, photography or simply being somewhere that looks like nowhere else, yes —
+            but it is a roughly two-hour attraction from ¥3,400 a head, so it is priced like an afternoon and
+            consumed like a long lunch. Here is the arithmetic in front of you rather than a verdict behind it:
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>What you pay per hour is high.</strong> ¥3,400 for about two hours is more than twice the ¥1,500 Tokyo Tower Main Deck and above the ¥2,500 Shibuya Sky, both of which you can linger in — compare the figures on our <Link href="/guides/attractions/japan-attraction-ticket-prices">Japan attraction ticket prices</Link> table. You are paying for something you cannot see anywhere else, not for length.</li>
+            <li><strong>The map-less design is the value, and the risk.</strong> More than 50 artworks with no route and no numbered stops means a rushed hour gets you the famous rooms and little else. If you only have an hour, the ticket is poor value rather than a shortened good one.</li>
+            <li><strong>It is the least physical of the two.</strong> Shoes stay on, there is no water to wade and no change of clothes to pack. If the Planets format sounds like an ordeal rather than an experience, this is the same collective without it.</li>
+            <li><strong>It is weatherproof and central.</strong> Azabudai Hills is two minutes underground from Kamiyacho, so a wet afternoon costs you nothing in transit — which is more than can be said for most rainy-day plans in Tokyo.</li>
+            <li><strong>Getting it wrong is survivable here.</strong> Unlike Planets, Borderless does sell at the door while slots remain, so a missed booking is a ¥200 surcharge and a worse time slot rather than a lost afternoon.</li>
+          </ul>
+          <p className={styles.bodyText}>
+            Skip it if your Tokyo days are already tight, if you would only be able to give it an hour, or if
+            you are travelling with small children and can only fit one teamLab museum in — Planets is the
+            easier one with them. Those are the three reasons the ticket disappoints, and none of them is about
+            the art.
+          </p>
+        </section>
+
+        {/* The booking decision: when to buy, whether the door is an option, and what
+            moving a ticket costs. The CTA sits directly after it, because this is the
+            point at which a reader has something to look up rather than read. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Availability</span>
+          <h2 className={styles.sectionTitle}>Do teamLab Borderless tickets sell out?</h2>
+          <p className={styles.bodyText}>
+            Individual time slots do, and the popular ones go first: Borderless has run at well over a million
+            visitors a year, and weekend and evening admissions are the first to disappear. What does not
+            happen is a hard wall — tickets are still sold at the museum while slots remain, which makes
+            Borderless more forgiving than most timed-entry attractions in Tokyo, at a price.
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>Our booking window:</strong> two to three weeks ahead for a weekend, a holiday or an evening slot; a few days is usually enough for a weekday morning. That is our planning guidance from how the calendar behaves, not an official figure — teamLab publishes no sell-out data.</li>
+            <li><strong>Same-day and at the door:</strong> sold while slots remain, at ¥200 more for an adult and ¥100 more for a child or disability ticket. Official, read on {CHECKED}. Treat it as a fallback, not a plan: on the dates most visitors want, the slots most visitors want have gone.</li>
+            <li><strong>If your date moves, change it rather than rebook:</strong> a ticket bought direct from teamLab can have its date changed up to three times. Official, read on {CHECKED}.</li>
+            <li><strong>Reseller terms are their own:</strong> change and cancellation windows on Klook and GetYourGuide are set per option and vary between them, so read the terms on the booking page before you pay rather than assuming teamLab&apos;s three changes carry over.</li>
+            <li><strong>The cheapest slot is a calendar question:</strong> weekday mornings are both the quietest and usually the cheapest, but teamLab publishes no price-per-slot list, so the figure for your own date only exists on the calendar itself.</li>
+          </ul>
+          <p className={styles.bodyText}>
+            The practical order, then: pick the date, read the price it carries, then pick the seller. Only the
+            first two change what you pay.
+          </p>
+          {/* Existing Klook CTA, unchanged, with the GetYourGuide comparison beside it. */}
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Check teamLab Borderless dates and slots →
+            </a>
+            <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Klook is an official teamLab ticketing partner; GetYourGuide is there as a second place to look when
+            the slot you wanted has gone. Neither carries a price on this page — both price by date, so open the
+            calendar rather than trusting a headline figure, including the one on this page.
           </p>
         </section>
 
@@ -457,10 +680,15 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           </div>
         </section>
 
-        {/* How to book */}
+        {/* How to book — the heading is the query, and the four steps are the answer. */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Book teamLab Borderless</h2>
+          <h2 className={styles.sectionTitle}>How do I book teamLab Borderless?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
+            Pick the date first, read the price that date carries, choose between a timed Entrance Pass and a
+            Flexible Pass, then buy — on the official site, or through Klook if you would rather check out in
+            your own currency. Four steps, and the first one is the only one that changes what you pay.
+          </p>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -477,6 +705,79 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener">
               Check Borderless availability and prices on Klook →
             </a>
+          </p>
+        </section>
+
+        {/* The official-site question — asked often enough to deserve a heading, and the
+            one claim on this page that could be confirmed first-hand on 26 Oct 2026. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Buying direct</span>
+          <h2 className={styles.sectionTitle}>Where is the official teamLab Borderless ticket site?</h2>
+          <p className={styles.bodyText}>
+            The museum&apos;s own page is <strong>teamlab.art/e/tokyo</strong> — in English, with the Japanese
+            edition at teamlab.art/jp/e/tokyo — and the ticket calendar and checkout open from there. If you
+            have an older link saved, <strong>borderless.teamlab.art</strong> is no longer a separate store:
+            both its English and Japanese addresses now redirect to the teamlab.art page above, which we
+            confirmed on {ADDRESS_CHECKED}.
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>Why &ldquo;official&rdquo; matters here:</strong> the base price lives on teamLab&apos;s own calendar, and the three free date changes only exist on a ticket bought direct. A reseller sells the same admission under its own terms.</li>
+            <li><strong>Who else is legitimate:</strong> Klook is an official teamLab ticketing partner, so a Klook ticket is the same admission at a different counter — not a workaround and not a markup on the gate price.</li>
+            <li><strong>What direct does not buy you:</strong> a discount. The date and the slot set the adult figure, and that calendar is the same one behind every official channel.</li>
+            <li><strong>What it can cost you:</strong> a refused card. A Japanese checkout is the usual reason visitors end up on a reseller, and an international checkout is a reasonable answer to that rather than a mistake.</li>
+          </ul>
+          <p className={styles.bodyText}>
+            So: buy direct if your card works and you want the date flexibility; buy through Klook if you want
+            the checkout in your own language and currency with the e-ticket alongside your other bookings.
+          </p>
+        </section>
+
+        {/* Borderless vs Planets, from the Borderless side. The Planets guide carries the
+            mirror of this section, and the two link to each other rather than repeating
+            each other: this table is the booking arithmetic, that one is the experience. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Side by side</span>
+          <h2 className={styles.sectionTitle}>teamLab Borderless vs Planets: which should I book?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>Book Borderless if you want to look at art; book Planets if you want to walk through
+            it, or if you are bringing children.</strong> Tokyo has two teamLab museums and visitors routinely
+            book the wrong one. They are separate venues with separate tickets in different parts of the city,
+            and the figures below are the ones that decide it. For the Planets side in full — the barefoot
+            rules, the lockers, the kids&apos; policies — see our{" "}
+            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets ticket guide</Link>.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "teamLab Borderless", "teamLab Planets"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {vsPlanetsRows.map((row) => (
+                    <tr key={row.factor}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.factor}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.borderless}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.planets}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Borderless figures read from the official teamLab site on {CHECKED}; Planets figures from its own
+            official ticket store on {PLANETS_CHECKED}. Both museums price adult admission by date and slot and
+            both calendars change, so confirm for your own date. The time to allow on each is our planning
+            guidance, not an official figure.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            If you have time for both, do them on different days: four hours of digital art in one afternoon is
+            the fastest way to stop seeing any of it, and the two venues are 30 minutes apart on opposite sides
+            of the city.
           </p>
         </section>
 
