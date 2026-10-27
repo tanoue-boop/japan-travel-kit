@@ -248,6 +248,24 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/osaka-2-day-itinerary",
+    badge: "Itinerary",
+    title: "Osaka 2 Day Itinerary (2026): Day by Day, and What to Book",
+    desc: "The castle and Minami on Day 1, the bay and Umeda on Day 2, joined by 20 minutes of Midosuji Line — with a table for each day, the ¥3,500 of Day 1 admissions a ¥2,500 pass covers, and the one stop that has a fixed entry slot.",
+    group: "cities",
+    city: "osaka",
+  },
+  {
+    href: "/guides/attractions/kobe-day-trip-from-osaka",
+    badge: "Day trip",
+    title: "Kobe Day Trip from Osaka (2026): Routes, the Beef and What Fits in a Day",
+    desc: "About 30 minutes to Sannomiya on any of three railways. Kitano's Weathercock House ¥500, the Port Tower ¥1,200 open to 23:00, the Rokko Cable Car ¥1,550 return to 21:00 — and why the Kobe beef table is the only thing that sells out.",
+    group: "daytrips",
+    // Kobe is in Hyogo, but the day is planned and sold out of Osaka — same rule as
+    // himeji-castle-day-trip and arima-onsen-day-trip.
+    city: "osaka",
+  },
+  {
     href: "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan, Day by Day",

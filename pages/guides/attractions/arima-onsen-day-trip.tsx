@@ -665,6 +665,19 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            <Link href="/guides/attractions/kobe-day-trip-from-osaka" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="3" width="16" height="14" rx="3" />
+                  <line x1="4" y1="10" x2="20" y2="10" />
+                  <path d="M7 21l2-4M17 21l-2-4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kobe Day Trip from Osaka (2026): Routes, the Beef and What Fits in a Day</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/things-to-do-osaka" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

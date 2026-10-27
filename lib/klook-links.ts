@@ -2440,3 +2440,132 @@ export const jrPassTripPrep: KlookTripPrepItem[] = [
     why: "Everything the pass does not do is online: reserving the Hikari seat it entitles you to, checking whether the train you planned is a Nozomi, and reading JR's delay notices when a typhoon stops the Tokaido line.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Two days in Osaka and a Kobe day trip, added 27 Oct 2026 for
+// osaka-2-day-itinerary and kobe-day-trip-from-osaka.
+//
+// Same verification rule as every block above: Klook answers automated reads of
+// its /activity/ pages with HTTP 403, so each listing below was confirmed live,
+// on sale and in its en-US URL form through the www.klook.com search index on
+// 27 Oct 2026. None carries a price.
+//
+// Band discipline for the two host pages. The Osaka itinerary already had the
+// castle, the Kaiyukan, the Umeda deck and the Dotonbori boats declared further
+// up, so the only new Osaka entries here are a 6.5% food walk per day and the
+// 5% Tokyo–Osaka rail page. Kobe had no Klook route at all: everything new for
+// it is a 6.5% tour or a Kobe beef restaurant booking, with the 5%
+// `rokkosanTouristPass` (declared in the Arima block) as the pass CTA.
+// ---------------------------------------------------------------------------
+
+/**
+ * Klook's Tokyo → Osaka rail page. A route page rather than an /activity/ id, for
+ * the same reason as `shinkansenTokyoKyoto` and `shinkansenTokyoKaruizawa`: the
+ * Tokaido Shinkansen is sold by date and seat class, and the route page is the
+ * address that keeps working when a train number does not. Unlike the /activity/
+ * pages this one answers automated reads, and on 27 Oct 2026 it listed the three
+ * seat classes below and stated zero transfers on the route.
+ */
+export const shinkansenTokyoOsaka: KlookTour = {
+  title: "Tokyo → Osaka shinkansen tickets",
+  desc: "Klook's Tokaido Shinkansen booking page for the route, with non-reserved, reserved and Green Car seats and no transfer between Tokyo and Shin-Osaka",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/29-osaka/"),
+};
+
+/** Kuromon Market food walk — the half-day join-in, for the Day 1 lunch hours. */
+export const kuromonMarketFoodTour: KlookTour = {
+  title: "Kuromon Market food walking tour, Osaka",
+  desc: "A join-in walk of the Kuromon Ichiba covered market with takoyaki and the market stalls, listed as a small-group half day",
+  url: klookLink("https://www.klook.com/en-US/activity/92805-kuromon-market-join-half-day-food-tour-osaka/"),
+};
+
+/** The three-hour city walk with the food stops attached — the Day 2 version. */
+export const osakaWalkingFoodTour: KlookTour = {
+  title: "Osaka 3-hour join-in walking and food tour",
+  desc: "Three hours on foot through the city with the eating built in, as a join-in departure rather than a private guide",
+  url: klookLink("https://www.klook.com/en-US/activity/102998-osaka-join-3-hr-walking-tour-osaka-food-tour/"),
+};
+
+/**
+ * Where to stay for two days in Osaka.
+ *
+ * No new URLs: every entry reads its destination page out of
+ * `whereToStayOsakaAreas`, so there is still one source of truth per Klook
+ * destination id and this page cannot drift away from the area comparison.
+ *
+ * What is new is the order and the argument. A two-day plan is decided by how
+ * many times you cross the city with luggage and whether USJ is one of the two
+ * days — which is a different axis from the "best area" question, so Namba leads
+ * here and Universal City is last with its condition stated.
+ */
+export const osakaTwoDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Namba",
+    why: "The default for two days: Dotonbori, Kuromon Market and the Shinsaibashi arcade are the Day 1 evening and they are all on foot, the Midosuji Line runs north to the castle and the Umeda deck, and the Nankai terminus is under you for the airport.",
+    url: whereToStayOsakaAreas[1].url,
+  },
+  {
+    area: "Umeda / Osaka Station",
+    why: "The pick if the two days arrive or leave by JR — the Kyoto and Kobe lines, the Loop Line and the Yumesaki through services to Universal City all start here, and Shin-Osaka for the shinkansen is two stops up the Midosuji Line.",
+    url: whereToStayOsakaAreas[0].url,
+  },
+  {
+    area: "Tennoji",
+    why: "The cheaper southern end of the same Midosuji stretch, and the first city stop on the HARUKA from Kansai Airport — useful on a two-day trip precisely because it shortens the airport leg at both ends.",
+    url: whereToStayOsakaAreas[2].url,
+  },
+  {
+    area: "Universal City",
+    why: "Only worth it if one of your two days is Universal Studios Japan: the gates are a short walk from Universal City Station on the JR Yumesaki Line, but you are 20 minutes of JR from everything else in this itinerary and no Osaka Metro pass reaches you.",
+    url: whereToStayOsakaAreas[3].url,
+  },
+];
+
+/** The Kobe day that matches this guide's three stops — harbour, Kitano, the mountain. */
+export const kobeFerrisKitanoArimaRokkoDayTour: KlookTour = {
+  title: "Kobe day trip from Osaka: Mosaic Ferris wheel, Kitano Ijinkan, Arima Onsen & the Mt. Rokko night view",
+  desc: "A round-trip day out of Osaka that strings the harbour Ferris wheel, the Kitano foreign-residence street, the Arima hot-spring town and the Rokko night view into one booking",
+  url: klookLink("https://www.klook.com/en-US/activity/182781-kobe-night-view-ferris-wheel-arima-onsen-day-tour/"),
+};
+
+/** The same circuit with the Kobe beef meal inside the booking rather than beside it. */
+export const kobeBeefHarbourKitanoDayTour: KlookTour = {
+  title: "Kobe day trip with Kobe beef: harbour Ferris wheel, Kitano, Arima Onsen & Mt. Rokko",
+  desc: "The version of the Kobe circuit that has the Kobe beef meal in the price, so the one thing you would otherwise have to reserve separately is already booked",
+  url: klookLink("https://www.klook.com/en-US/activity/108986-kobe-port-mosaic-ferris-wheel-kobe-cattle/"),
+};
+
+/** Kobe plus Himeji in a private day — the pick when the castle is also on the list. */
+export const kobeHimejiPrivateTourBeefLunch: KlookTour = {
+  title: "Kobe & Himeji Castle full-day private tour with optional Kobe beef lunch",
+  desc: "A private car and English-speaking driver covering Himeji Castle and the Kobe stops, with a Kobe beef lunch offered as an upgrade on the same booking",
+  url: klookLink("https://www.klook.com/en-US/activity/187409-kobe-himeji-castle-full-day-private-tour-with-kobe-beef-lunch/"),
+};
+
+/** The outlet-and-onsen version, with the sukiyaki lunch named on the listing. */
+export const kobeSandaOutletArimaBeefLunchTour: KlookTour = {
+  title: "Kobe Sanda Premium Outlets & Arima Onsen day tour from Osaka with lunch",
+  desc: "A coach day out of Osaka pairing the Sanda outlet mall with the Arima Onsen town, listed with a Kobe beef and matsutake sukiyaki set lunch",
+  url: klookLink("https://www.klook.com/en-US/activity/91734-kobe-sanda-premium-outlets-arima-onsen-town-one-day-tour-kobe-beef-matsutake-sukiyaki-lunch-osaka/"),
+};
+
+/** A guide for the city itself, for anyone taking the train over on their own. */
+export const kobePrivateHalfDayWalkingTour: KlookTour = {
+  title: "Kobe private half-day walking tour",
+  desc: "A private local guide for a half day in the city — the version for travellers who get themselves to Sannomiya by train and want the streets explained",
+  url: klookLink("https://www.klook.com/en-US/activity/45511-half-day-kobe-a-local/"),
+};
+
+/** Kobe beef teppanyaki in Kobe itself — a reserved table rather than a queue. */
+export const kobeBeefSakuraTeppanyaki: KlookTour = {
+  title: "Kobe Beef Steak SAKURA teppanyaki, Kobe",
+  desc: "A teppanyaki restaurant in central Kobe booked as a course with a reserved table, in lunch and dinner slots — the answer to the one thing a day trip can genuinely run out of",
+  url: klookLink("https://www.klook.com/en-US/activity/125545-kobe-beef-steak-sakura-teppanyaki-in-kobe/"),
+};
+
+/** The second restaurant booking, for a date the first one has no table on. */
+export const kisshokichiKobeBeefCourse: KlookTour = {
+  title: "Kisshokichi Honten Kobe beef course",
+  desc: "A second bookable Kobe beef course listing, worth opening when the first restaurant has no table left on your date",
+  url: klookLink("https://www.klook.com/en-US/activity/10857-kisshokichi-honten-kobe-osaka/"),
+};
