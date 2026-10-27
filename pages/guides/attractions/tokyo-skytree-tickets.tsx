@@ -1,8 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
-import { skytreeTicket, skytreeAquariumCombo, fujiHakoneDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { gygTokyoSkytree } from "../../../lib/gyg-links";
+import {
+  skytreeTicket,
+  skytreeAquariumCombo,
+  fujiHakoneDayTour,
+  tokyoSightseeingBusTour,
+  skytreeTripPrep,
+} from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
@@ -286,9 +295,12 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               than by luck. If you might want the Floor 450 skywalk, buy the combo up front — adding it on site
               afterwards costs ¥1,400 more. Prices read off the official site on {CHECKED}.
             </p>
-            <a href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              Check Tokyo Skytree tickets on Klook →
-            </a>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Check Tokyo Skytree tickets on Klook →
+              </a>
+              <GygCompareButton slug="tokyo-skytree-tickets" listing={gygTokyoSkytree} />
+            </div>
           </div>
         </div>
 
@@ -341,6 +353,16 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             ¥500 same-day service fee applies per ticket at the 4th-floor counter and at convenience stores.
           </p>
         </section>
+
+        {/* The rest of the afternoon — the Asakusa-side bookings around the ticket above.
+            Sits directly after the price table because that is where a reader has just
+            decided which Skytree ticket to buy and has the rest of the day still open. */}
+        <KlookTripPrep
+          label="Around the tower"
+          heading="What Else the Oshiage Side of the Day Needs Booked"
+          intro="A deck slot takes an hour or two, and the ticket above is the only part of it that has to be timed. These are the bookings the rest of that afternoon runs on — all on the same side of the river as the tower, and all on the same account as the ticket."
+          items={skytreeTripPrep}
+        />
 
         {/* Which ticket */}
         <section className={styles.whoForSection}>
@@ -586,9 +608,12 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               Same-day tickets carry a ¥500 service fee per person. A date-specified ticket booked online skips
               both the fee and the queue — and Klook checks out in English on a foreign card.
             </p>
-            <a href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-              View Tokyo Skytree tickets on Klook →
-            </a>
+            <div className={styles.pickCtaRow}>
+              <a href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                View Tokyo Skytree tickets on Klook →
+              </a>
+              <GygCompareButton slug="tokyo-skytree-tickets" listing={gygTokyoSkytree} />
+            </div>
           </div>
         </div>
       </div>

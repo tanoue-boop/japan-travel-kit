@@ -9,6 +9,14 @@ import { attractionArticles } from "../lib/guides-attractions";
 import { articlesForCity } from "../lib/guide-hub";
 import { pageUpdated } from "../lib/page-dates";
 import { hreflangLinks } from "../components/Hreflang";
+import {
+  klookEsim,
+  tokyoStayAreas,
+  kyotoStayAreas,
+  osakaStayAreas,
+  jrPassWholeJapan,
+  fujiHakoneDayTour,
+} from "../lib/klook-links";
 
 const allArticles = [...esimArticles, ...transportArticles, ...moneyArticles, ...attractionArticles];
 const totalGuides = allArticles.length;
@@ -112,6 +120,63 @@ const popularGuides = popularHrefs.map((href) => {
   return article;
 });
 
+/**
+ * "Book before you fly" — the home page's only outbound booking block, added
+ * 2026-10-27.
+ *
+ * Until now every link on this page pointed at another page of our own, which on
+ * the second most-read page of the site meant it carried no booking route at all.
+ * One card per thing that is worth arranging from home, and each card also links
+ * the guide that argues it, so a reader who wants to read first still can.
+ *
+ * Products are the existing constants in lib/klook-links.ts — no new URLs — and
+ * none of them carries a price: Klook answers automated reads of its product
+ * pages with HTTP 403, so there is no figure here we could have verified. The
+ * hotel searches read the first entry of each city array, so the destination ids
+ * stay in one place.
+ */
+const bookBeforeYouFly = [
+  {
+    kicker: "Data",
+    title: "A Japan eSIM, working before you leave the terminal",
+    desc:
+      "The one thing worth having live the minute you land: train apps, hotel check-in and your tickets all run off the phone. Klook sells a Japan eSIM of its own as a QR voucher.",
+    ctas: [{ label: "See eSIM options on Klook →", url: klookEsim.url }],
+    guide: { href: "/guides/esim/best-esim-japan", label: "Read: the best eSIM for Japan" },
+  },
+  {
+    kicker: "Where to stay",
+    title: "A hotel on the line you will actually ride",
+    desc:
+      "In Tokyo, Kyoto and Osaka the area does more work than the room. A base on the Yamanote loop, on the Kyoto Station forecourt or on the Midosuji Line saves a transfer every day of the trip.",
+    ctas: [
+      { label: "Tokyo hotels on Klook →", url: tokyoStayAreas[0].url },
+      { label: "Kyoto hotels on Klook →", url: kyotoStayAreas[0].url },
+      { label: "Osaka hotels on Klook →", url: osakaStayAreas[0].url },
+    ],
+    guide: { href: "/guides/attractions/where-to-stay-in-tokyo", label: "Read: where to stay in Tokyo" },
+  },
+  {
+    kicker: "Rail",
+    title: "The JR Pass, priced against your own route",
+    desc:
+      "The whole-country pass earns its keep on long hops and loses on a single-city trip, so the only honest way to buy it is to price it against the trains you plan to take. It comes in 7, 14 and 21-day versions, Ordinary and Green Car.",
+    ctas: [{ label: "Price the JR Pass on Klook →", url: jrPassWholeJapan.url }],
+    guide: { href: "/guides/transport/jr-pass-guide", label: "Read: is the JR Pass worth it?" },
+  },
+  {
+    kicker: "Day trip",
+    title: "Mt. Fuji and Hakone, as one day out of Tokyo",
+    desc:
+      "The day trip that is hardest to assemble yourself: the Fuji Fifth Station paired with the Hakone volcanic area and Lake Ashi, as a coach day that is back in Tokyo the same evening.",
+    ctas: [{ label: "Check the day tour on Klook →", url: fujiHakoneDayTour.url }],
+    guide: {
+      href: "/guides/attractions/mt-fuji-day-tour-from-tokyo",
+      label: "Read: which Mt. Fuji day tour",
+    },
+  },
+];
+
 const TITLE = "Japan Travel Kit — Japan Tickets, Tours & Trip Planning for 2026";
 const DESC =
   "Which Japan attractions, tours and day trips need booking ahead — with official prices and the booking route that works from abroad. Plus the transport, eSIM and money basics to sort before you land.";
@@ -208,6 +273,53 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
               className={styles.heroImage}
             />
           </figure>
+        </div>
+      </section>
+
+      {/* Book before you fly — the one outbound booking block on the page, directly
+          under the hero. Nothing below it was removed to make room. */}
+      <section className={styles.book}>
+        <div className={styles.bookInner}>
+          <p className={styles.eyebrow}>Book before you fly</p>
+          <h2 className={styles.sectionTitle}>Four things worth sorting from home</h2>
+          <div className={styles.titleRule} />
+          <p className={styles.sectionDesc}>
+            Most of a Japan trip can be arranged on the day. These four are the exceptions — the
+            connection, the room, the rail and the one day trip that sells out by date. Each card
+            links the guide that explains it as well as the place to book it.
+          </p>
+
+          <div className={styles.bookGrid}>
+            {bookBeforeYouFly.map((card) => (
+              <div key={card.title} className={styles.bookCard}>
+                <p className={styles.bookKicker}>{card.kicker}</p>
+                <h3 className={styles.bookTitle}>{card.title}</h3>
+                <p className={styles.bookDesc}>{card.desc}</p>
+                <div className={styles.bookLinks}>
+                  {card.ctas.map((cta) => (
+                    <a
+                      key={cta.url}
+                      href={cta.url}
+                      target="_blank"
+                      rel="sponsored noopener"
+                      className={styles.bookCta}
+                    >
+                      {cta.label}
+                    </a>
+                  ))}
+                  <Link href={card.guide.href} className={styles.bookGuide}>
+                    {card.guide.label} →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className={styles.bookNote}>
+            The booking links above are affiliate links: we may earn a small commission if you book
+            through them, at no extra cost to you. Prices and availability are the seller&apos;s.{" "}
+            <Link href="/disclaimer">Full disclaimer →</Link>
+          </p>
         </div>
       </section>
 

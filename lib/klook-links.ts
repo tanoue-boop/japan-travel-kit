@@ -3077,3 +3077,51 @@ export const budgetDataPrep: KlookTripPrepItem[] = [
     why: "The one line of a Japan budget that is cheaper than travellers expect and easiest to overpay for on arrival: an airport counter sells you data in yen at its own price, where an eSIM is bought in your own currency before you fly.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// The Oshiage side of a Skytree afternoon, added 27 Oct 2026 for
+// tokyo-skytree-tickets.
+//
+// Why it exists: that page's only Klook route was the Skytree admission itself,
+// and an observation-deck ticket sits in the band Klook calls Special
+// Activities — 2%, where tours and hotels are 6.5% and passes 5%. The entries
+// below are the rest of the same afternoon in the bands that pay: the
+// Ueno/Asakusa hotel search and the two Asakusa listings at 6.5%, the Tokyo
+// Subway Ticket at 5%. The ticket CTAs on the page are untouched.
+//
+// No new URLs. The hotel search reads `tokyoStayAreas[2]`, the kimono rental is
+// `asakusaKimonoYae` and the open-top bus `skyhopHopOnHopOffBus` — which is why
+// this array is declared here at the foot of the file rather than through
+// `tripPrepProducts`: the bus is declared after that object, so referring to it
+// from inside it would be a use before declaration.
+//
+// Every `why` line below follows something the host page already states — that
+// Oshiage is a subway stop covered by the Tokyo Subway Ticket, and that Asakusa
+// is two stops away on the Asakusa Line. Nothing here is first-hand and no
+// price appears, for the usual reason.
+// ---------------------------------------------------------------------------
+
+export const skytreeTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Ueno / Asakusa",
+    ctaLabel: "Check Ueno & Asakusa hotels on Klook →",
+    url: tokyoStayAreas[2].url,
+    why: "The tower's own side of the river: Ueno is on the Yamanote loop, the Ginza Line runs from there to Asakusa and Oshiage is two stops further on the Asakusa Line — so a late deck slot does not end in a cross-city ride back to the hotel.",
+  },
+  {
+    label: asakusaKimonoYae.title,
+    ctaLabel: "Check the Asakusa kimono rental →",
+    url: asakusaKimonoYae.url,
+    why: "The daytime half of the same trip, two stops away: the shop sits by Kaminarimon, and the listing asks for the outfit back by 17:30 — which puts it in front of an evening Skytree slot rather than against it.",
+  },
+  {
+    label: skyhopHopOnHopOffBus.title,
+    ctaLabel: "Check the open-top bus ticket →",
+    url: skyhopHopOnHopOffBus.url,
+    why: "An open-top hop-on hop-off ticket whose courses include Asakusa — the version to buy if the day has Senso-ji and the tower in it rather than one stop and a subway fare for each leg.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Oshiage is a subway station on the Hanzomon and Toei Asakusa lines, so a 24, 48 or 72-hour Metro and Toei ticket already covers the trip to the tower — and the two stops to Senso-ji afterwards.",
+  },
+];
