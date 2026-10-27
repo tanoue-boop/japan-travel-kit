@@ -850,7 +850,7 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Cash vs Card in Japan (2026): What Actually Works?</p>
+                <p className={styles.relatedTitle}>Cash vs Card in Japan (2026): Where Cards Work and Where You Need Yen</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

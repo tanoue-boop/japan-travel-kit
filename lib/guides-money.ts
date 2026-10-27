@@ -37,8 +37,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/cash-vs-card-japan",
     badge: "Guide",
-    title: "Cash vs Card in Japan (2026): What Actually Works?",
-    desc: "Japan is still surprisingly cash-heavy — but cards work in more places than you'd think. We break down where to use each, which ATMs accept foreign cards, and how to avoid hidden fees.",
+    title: "Cash vs Card in Japan (2026): Where Cards Work and Where You Need Yen",
+    desc: "METI puts Japan's cashless share at 58.0% of consumer spending — and yet temples, market stalls and local buses still want yen. Place by place, what each operator says it takes.",
     group: "cash",
     city: "other",
   },
