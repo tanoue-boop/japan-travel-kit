@@ -86,8 +86,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/usj-tickets-express-pass",
     badge: "Tickets",
-    title: "Universal Studios Japan Tickets & Express Pass (2026): What to Buy",
-    desc: "USJ now requires online tickets, and Super Nintendo World needs timed entry. We explain Studio Pass tiers, whether the Express Pass is worth it, and what to buy for your visit.",
+    title: "Universal Studios Japan Express Pass 2026: Types, Prices & Do You Need One",
+    desc: "Express Pass 4 and 7, what each covers, why the price changes with your date, when the day's allocation sells out, and the dates a Studio Pass on its own is enough.",
     group: "parks",
     city: "osaka",
   },

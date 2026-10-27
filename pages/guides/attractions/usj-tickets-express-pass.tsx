@@ -9,7 +9,14 @@ import { hreflangLinks } from "../../../components/Hreflang";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygUsj, gygUsjExpressPass } from "../../../lib/gyg-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
-import { jrHarukaUrl, jrKansaiMiniPass, nankaiRapitUrl, usjStayAreas, usjTripPrep } from "../../../lib/klook-links";
+import {
+  jrHarukaUrl,
+  jrKansaiMiniPass,
+  klookEsim,
+  nankaiRapitUrl,
+  usjStayAreas,
+  usjTripPrep,
+} from "../../../lib/klook-links";
 
 // CTA links — Klook affiliate redirects.
 const STUDIO_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
@@ -46,72 +53,238 @@ const EXPRESS_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_ad
  */
 const CHECKED = checkedLabel("2026-10-26");
 
+/**
+ * The Express Pass rewrite of 27 Oct 2026 — title, lead, the four tables below, the
+ * seven question headings and three new FAQ entries. Written for the exact phrase
+ * "universal studios japan express pass", which this page already ranked mid-page
+ * for on Bing without earning the click.
+ *
+ * How usj.co.jp was read, because it decides what this page is allowed to print:
+ *
+ *   www.usj.co.jp/company/news/              readable. Confirms the 25th-anniversary   27 Oct 2026
+ *                                            season (releases of 14 and 28 Sept 2026)
+ *                                            and the Holiday Kids Free Pass, on sale
+ *                                            from 14 Sept 2026, inviting children
+ *                                            nationwide free for the winter.
+ *   www.usj.co.jp/company/company_e/          readable. The ticket purchase window:     27 Oct 2026
+ *     news/2025/0421/                        "approximately two months prior to
+ *                                            visit", lifted to three months on the
+ *                                            official WEB Ticket Store and Lawson
+ *                                            Ticket for the Osaka Expo period
+ *                                            (visit dates to 13 Oct 2025), then
+ *                                            reverting to approximately two months.
+ *   www.usj.co.jp/web/en/us/tickets/          client-rendered: a direct read returns    27 Oct 2026
+ *     express-pass, .../tickets,              the site title and nothing else. Their
+ *     .../enjoy/numbered-ticket/              statements quoted below were taken from
+ *     timed-entry-ticket,                     the same pages' indexed text, and each
+ *     .../news/2026/0630                      is attributed to the page it is on.
+ *   member.usj.co.jp, store.usj.co.jp        not machine-readable at all: the member   27 Oct 2026
+ *                                            store answers 503, and the WEB Ticket
+ *                                            Store sits behind a Queue-it waiting
+ *                                            room.
+ *
+ * So no yen figure for an Express Pass appears on this page. USJ publishes none as a
+ * fixed value — the day's price is shown at checkout — and the one surface that would
+ * show it cannot be read. The price section prints USJ's own pricing *rules* instead,
+ * which is the part that does not go stale.
+ */
+const CHECKED_USJ = checkedLabel("2026-10-27");
+
 const ticketRows = [
-  { ticket: "1-Day Studio Pass", what: "Park entry for one day; ride standard attractions in standby queues", price: "Tiered by date — confirm at booking" },
-  { ticket: "2-Day Studio Pass", what: "Two consecutive days of entry, often cheaper per day", price: "Tiered by date — confirm at booking" },
-  { ticket: "Express Pass (add-on)", what: "Skip-the-line at selected rides + Super Nintendo World timed entry", price: "Variable, often a large add-on — confirm at booking" },
+  { ticket: "1-Day Studio Pass", what: "Park entry for one day; ride standard attractions in standby queues", price: "Set per date — the day's price shows at checkout" },
+  { ticket: "2-Day Studio Pass", what: "Two consecutive days of entry, often cheaper per day", price: "Set per date — the day's price shows at checkout" },
+  { ticket: "Express Pass (add-on)", what: "A shorter, separate queue at a fixed set of attractions. Not park entry — a Studio Pass or Annual Pass is required as well", price: "Set per date, on the system USJ introduced for Express Passes in 2018" },
 ];
 
-const expressRows = [
-  { pass: "Express Pass 4", rides: "~4 selected attractions", snw: "Usually includes SNW timed entry (varies)", bestFor: "Short visits, hitting the headline rides" },
-  { pass: "Express Pass 7", rides: "~7 selected attractions", snw: "Usually includes SNW timed entry", bestFor: "Most popular — busy weekends & holidays" },
-  { pass: "Express Pass 8 / Premium", rides: "Widest attraction coverage", snw: "Includes SNW timed entry", bestFor: "Peak crowds & the 25th-anniversary season" },
+/**
+ * Variants. USJ names Express Pass 4 and Express Pass 7 on its own Express Pass
+ * page and sells other counts, themed line-ups and area-entry versions alongside
+ * them — which ones exist on a given date is a per-date question, so the rows below
+ * describe the shape of the line-up rather than claiming a fixed catalogue.
+ */
+const variantRows = [
+  {
+    pass: "Express Pass 4",
+    covers: "Four attraction slots. USJ describes this one as the pass for the must-see attractions; which four they are is fixed per variant and per date.",
+    snw: "Only on the variants that say so",
+    bestFor: "A short day, a second visit, or a quiet date where you only want the headliners",
+  },
+  {
+    pass: "Express Pass 7",
+    covers: "Seven attraction slots — the larger of the two counts most first-time visitors choose, with the same per-variant attraction list.",
+    snw: "Only on the variants that say so",
+    bestFor: "One day, first visit, busy date",
+  },
+  {
+    pass: "Other counts and themed variants",
+    covers: "USJ also sells Express Passes built around a single attraction or a seasonal line-up, each with its own list. They come and go with the park's events.",
+    snw: "Varies by variant",
+    bestFor: "A specific ride you cannot leave without, rather than broad coverage",
+  },
+  {
+    pass: "Variants that include area entry",
+    covers: "Some Express Passes carry the Area Timed Entry Ticket for Super Nintendo World with them, so you hold the area slot before you arrive.",
+    snw: "Yes — that is what the premium buys",
+    bestFor: "Anyone for whom Super Nintendo World is the reason for the trip",
+  },
 ];
 
-const whoFor = [
+/** What sets the price. USJ's own rules, each attributed to the page it is on. */
+const pricingRows = [
   {
-    title: "Off-peak weekday visitor",
-    desc: "If you're going on a quiet weekday and you're flexible, a Studio Pass alone can be enough. Use the free Super Nintendo World area timed-entry ticket via the official USJ app, and ride standby queues for everything else.",
+    what: "Express Pass price",
+    usj: "Types and prices of valid Express Passes vary depending on the day.",
+    source: "Universal Express Pass page, usj.co.jp",
   },
   {
-    title: "Weekend / holiday visitor",
-    desc: "On weekends, holidays, and through the 2026 25th-anniversary season, standby waits can hit 180–240 minutes on top rides. A Studio Pass plus an Express Pass 7 is the realistic way to ride the headliners and guarantee Super Nintendo World.",
+    what: "How long that has been true",
+    usj: "Express Passes were set in 2018 using a similar demand-based pricing system, and there are no plans to change them.",
+    source: "“Pricing for Studio Passes to Change”, 30 June 2026, usj.co.jp",
   },
   {
-    title: "One day, want it all",
-    desc: "If you only have a single day and want to cover the big attractions plus SNW without queuing for hours, an Express Pass 7 or 8 is worth the premium. It effectively buys back the time you'd otherwise lose in line.",
+    what: "Studio Pass price (the admission you also need)",
+    usj: "For tickets sold from 1 July 2026, covering park admission from 1 September 2026, daily prices are re-evaluated by demand. Child and senior prices change too; Annual Passes are excluded.",
+    source: "“Pricing for Studio Passes to Change”, 30 June 2026, usj.co.jp",
+  },
+  {
+    what: "USJ's own advice",
+    usj: "Prices may increase, so purchase as early as possible.",
+    source: "“Pricing for Studio Passes to Change”, 30 June 2026, usj.co.jp",
+  },
+];
+
+/** The buying window and the sell-out rules. */
+const windowRows = [
+  {
+    q: "How far ahead can I buy?",
+    a: "Approximately two months before your visit date, on the official WEB Ticket Store and Lawson Ticket (website and the Loppi machines inside Lawson stores).",
+    source: "Purchase-period release, 21 April 2025, usj.co.jp",
+  },
+  {
+    q: "Has that window ever been longer?",
+    a: "Yes. It was lifted to three months for the Osaka Expo period, for visit dates up to 13 October 2025, and USJ said it would revert to approximately two months after that.",
+    source: "Purchase-period release, 21 April 2025, usj.co.jp",
+  },
+  {
+    q: "How many are sold per day?",
+    a: "A limited number each day — USJ's own page says they are often sold out in advance.",
+    source: "Universal Express Pass page, usj.co.jp",
+  },
+  {
+    q: "Can I move it to another date?",
+    a: "No. An Express Pass bought in advance is valid only for the date printed on it, and a time-designated slot you arrive late for is neither refunded nor re-booked to another time.",
+    source: "Universal Express Pass page, usj.co.jp",
+  },
+];
+
+/** Buy or skip, by the kind of date you are going on. */
+const needRows = [
+  {
+    date: "Quiet weekday, outside Japanese school holidays",
+    verdict: "Usually skip",
+    why: "Standby queues are at their shortest, and the free area timed-entry route through the official app is the most likely to still have slots when you walk in.",
+  },
+  {
+    date: "Saturday or Sunday",
+    verdict: "Buy",
+    why: "Weekend demand is what the date-based pricing is pricing. This is the ordinary case for an Express Pass, and the cheaper variants go first.",
+  },
+  {
+    date: "Japanese public holiday or a long weekend",
+    verdict: "Buy, and buy early",
+    why: "Domestic demand stacks on top of visitor demand, and the day's allocation is capped. On these dates the variant you want is the one most likely to be gone.",
+  },
+  {
+    date: "25th-anniversary and winter holiday dates",
+    verdict: "Buy as soon as your date opens",
+    why: `2026 is USJ's 25th-anniversary year, and USJ's own newsroom put a Holiday Kids Free Pass on sale on 14 September 2026 inviting children nationwide into the park free this winter — more families on the same dates, read on ${CHECKED_USJ}.`,
+  },
+  {
+    date: "Super Nintendo World is the reason you are going",
+    verdict: "Buy a variant that includes area entry",
+    why: "It is the only way to hold the area slot before you arrive. The free route exists, but it is first-come inside the park on the day.",
+  },
+];
+
+/** Where the Express Pass is actually sold. */
+const buyRows = [
+  {
+    where: "USJ WEB Ticket Store (official)",
+    what: "Every variant on sale for your date, at the day's price",
+    note: "Opens approximately two months ahead. Expect a queue system on popular release days.",
+  },
+  {
+    where: "Lawson Ticket — website and Loppi machines",
+    what: "USJ's other named official channel",
+    note: "Named alongside the WEB Ticket Store in USJ's 21 April 2025 purchase-period release.",
+  },
+  {
+    where: "Klook",
+    what: "The Express Pass as a standalone listing, with an English checkout, foreign-card payment and an e-ticket",
+    note: "USJ's own timed-entry page says area entry can also be secured in advance through select travel agencies.",
+  },
+  {
+    where: "GetYourGuide",
+    what: "The Express Pass sold on its own, as a second seller",
+    note: "Worth a look when your date has gone on the first one — allocations are per seller as well as per day.",
   },
 ];
 
 const steps = [
   {
-    title: "Buy your Studio Pass online — before you arrive",
-    desc: "Since May 2025, USJ no longer sells same-day tickets at the gate, so online purchase is effectively required. Klook is an official USJ partner with English checkout and foreign-card support.",
+    title: "Fix the date first, then buy the Studio Pass",
+    desc: "Everything else on this page is keyed to the date. USJ no longer sells tickets at the gate on the day, so the Studio Pass is an online purchase — and it is the admission the Express Pass does not include.",
   },
   {
-    title: "Decide whether you need an Express Pass",
-    desc: "Check your visit date against expected crowds. For weekends, holidays, and the anniversary season, add an Express Pass; for a quiet weekday you may not need one.",
+    title: "Decide whether the date needs an Express Pass",
+    desc: "Use the buy-or-skip table above. A quiet weekday often does not need one; a weekend, a Japanese public holiday or an anniversary date does.",
   },
   {
-    title: "Sort out Super Nintendo World entry",
-    desc: "SNW often uses timed entry on busy days. An Express Pass that includes SNW timed entry guarantees access; otherwise, get a free area timed-entry ticket through the official USJ app once you're inside.",
+    title: "Check whether the variant carries Super Nintendo World",
+    desc: "Area entry is a separate inclusion, not a given. If Super Nintendo World is the reason for the visit, buy a variant that says it includes the Area Timed Entry Ticket.",
+  },
+  {
+    title: "Install the official USJ app before you travel",
+    desc: `USJ's own timed-entry page says the official app is required to obtain Area Timed Entry Tickets and Standby Entry Tickets from 5 January 2026, and that you register your admission ticket in it first. Read on ${CHECKED_USJ}.`,
   },
   {
     title: "Arrive before opening",
-    desc: "Gates can open earlier than the official time on busy days. Arriving 30–60 minutes early helps you secure SNW timed-entry tickets and get a head start on standby queues.",
+    desc: "Gates can open earlier than the published time on busy days. Being there early is what makes the free area timed-entry route realistic if you did not buy a variant that includes it.",
   },
 ];
 
 const faqItems = [
   {
     q: "Do I need to buy USJ tickets in advance?",
-    a: "Yes. Since May 2025, Universal Studios Japan stopped selling same-day tickets at the gate, so you need to buy online before you go. Booking through an official partner like Klook gives you an English checkout, accepts foreign cards, and delivers an e-ticket you can scan at entry.",
+    a: "Yes. Universal Studios Japan stopped selling same-day tickets at the gate, so you buy online before you go. Booking through a reseller like Klook gives you an English checkout, accepts foreign cards, and delivers an e-ticket you can scan at entry.",
   },
   {
     q: "Is the USJ Express Pass worth it in 2026?",
-    a: "On busy days, yes. 2026 is USJ's 25th-anniversary season, and standby waits on the most popular rides can reach 180–240 minutes. An Express Pass turns those multi-hour waits into priority entry and, on most variants, guarantees Super Nintendo World timed entry. On a quiet off-peak weekday it's less essential — but for weekends, holidays, and anniversary crowds it's close to a must-have if you want to ride the headliners.",
+    a: `On busy dates, yes. 2026 is USJ's 25th-anniversary year — the park's own newsroom carried anniversary releases on 14 and 28 September 2026, read on ${CHECKED_USJ} — and on a weekend or a public holiday the Express Pass is what turns multi-hour standby queues into a short separate line, with area entry for Super Nintendo World on the variants that include it. On a quiet off-peak weekday it is far less essential: the standby queues are shortest and the free app route into the area is most likely to have slots left.`,
   },
   {
-    q: "What's the difference between Express Pass 4, 7, and 8?",
-    a: "The number roughly reflects how many selected attractions you can skip the line for — Express Pass 4 covers around four, Express Pass 7 around seven, and the 8/Premium tiers cover the widest range. Most variants also include a Super Nintendo World timed-entry ticket. Express Pass 7 is the most popular balance of coverage and price; 8/Premium suits the busiest days. Exact attraction lists vary by date, so check what's included before buying.",
+    q: "What's the difference between Express Pass 4 and Express Pass 7?",
+    a: "The number is how many attraction slots the pass covers — four or seven. USJ describes Express Pass 4 as the one for the must-see attractions, and Express Pass 7 is the broader of the two. The actual attraction list is fixed per variant and per date, and area entry for Super Nintendo World is only on the variants that say so, so check the inclusions for your own date before buying.",
+  },
+  {
+    q: "Can I use a USJ Express Pass without a Studio Pass?",
+    a: `No. USJ's own Express Pass page states that a Studio Pass — or an Annual Pass — is required to enter the park, and that separate theme park admission is needed on top of the Express Pass. The Express Pass only shortens the queue once you are inside. Read on ${CHECKED_USJ}.`,
+  },
+  {
+    q: "How far in advance can I buy the Universal Studios Japan Express Pass?",
+    a: `Approximately two months before your visit date. USJ's own purchase-period release of 21 April 2025 says tickets — Studio Pass, Express and the rest — go on sale on the official WEB Ticket Store and Lawson Ticket about two months ahead, that the window was lifted to three months for the Osaka Expo period for visit dates up to 13 October 2025, and that it would then revert to approximately two months. Read on ${CHECKED_USJ}.`,
+  },
+  {
+    q: "Can I change the date on a USJ Express Pass or get a refund?",
+    a: `Treat it as fixed. USJ's own Express Pass page states that a pass bought in advance is valid only for the date printed on it, and that if you arrive late for a time-designated attraction there is no refund and no change to another time slot. Read on ${CHECKED_USJ}.`,
   },
   {
     q: "How do I get into Super Nintendo World?",
-    a: "On busy days, Super Nintendo World uses timed entry. There are two reliable ways in: buy an Express Pass that includes an SNW timed-entry ticket, or get a free area timed-entry ticket through the official USJ app after you enter the park. On quiet days you may be able to walk in, but don't count on it during weekends, holidays, or the anniversary season.",
+    a: `There are two routes, and they are USJ's own: in advance, with an Express Pass variant that includes the Area Timed Entry Ticket, or through the official USJ app once you are inside the park. USJ's timed-entry page also says the official app is required to obtain Area Timed Entry Tickets and Standby Entry Tickets from 5 January 2026, and that you register your admission ticket in the app first. Read on ${CHECKED_USJ}. On a quiet day you may walk in, but that is not something to plan a trip around.`,
   },
   {
-    q: "How much are USJ tickets?",
-    a: "USJ uses tiered, date-based pricing, so the same ticket costs more on busy dates than quiet ones. Because prices change by date and demand, we don't quote a fixed figure — check the live price for your specific date at the time of booking. Express Passes are a separate add-on on top of the Studio Pass and vary widely by date.",
+    q: "How much is the Universal Studios Japan Express Pass?",
+    a: `USJ publishes no fixed figure. Its own Express Pass page says the types and prices of valid Express Passes vary depending on the day, and its 30 June 2026 release on Studio Pass pricing says Express Passes have been priced on a demand-based system since 2018 with no change planned. The day's price appears at checkout, which is why no yen figure is quoted here — read on ${CHECKED_USJ}.`,
   },
   // Added 26 Oct 2026 with the stay, getting-there and trip-prep sections, so the
   // FAQPage markup carries the same three questions the page now answers in full.
@@ -129,28 +302,29 @@ const faqItems = [
   },
 ];
 
+const TITLE = "Universal Studios Japan Express Pass 2026: Types, Prices & Do You Need One";
+const DESCRIPTION =
+  "Universal Studios Japan Express Pass 2026: what Express Pass 4 and 7 cover, why USJ Express Pass prices change by date, when it sells out, how to buy it, and when you can skip it.";
+
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/usj-tickets-express-pass") } });
 
 export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Universal Studios Japan Tickets &amp; Express Pass (2026): What to Buy | Japan Travel Kit</title>
-        <meta
-          name="description"
-          content="USJ now requires online tickets and Super Nintendo World needs timed entry. We explain Studio Pass tiers, whether the Express Pass is worth it, and what to buy in 2026."
-        />
+        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass" />
         {hreflangLinks("/guides/attractions/usj-tickets-express-pass")}
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Universal Studios Japan Tickets & Express Pass (2026): What to Buy" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass" />
-        <meta property="og:description" content="USJ now requires online tickets and Super Nintendo World needs timed entry. We explain Studio Pass tiers, whether the Express Pass is worth it, and what to buy in 2026." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Universal Studios Japan Tickets & Express Pass (2026): What to Buy" />
-        <meta name="twitter:description" content="USJ now requires online tickets and Super Nintendo World needs timed entry. We explain Studio Pass tiers, whether the Express Pass is worth it, and what to buy in 2026." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -170,7 +344,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/usj-tickets-express-pass",
-              headline: "Universal Studios Japan Tickets & Express Pass (2026): What to Buy",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -185,7 +359,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
-                { "@type": "ListItem", position: 4, name: "USJ Tickets & Express Pass", item: "https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass" },
+                { "@type": "ListItem", position: 4, name: "Universal Studios Japan Express Pass", item: "https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass" },
               ],
             }),
           }}
@@ -207,7 +381,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>USJ Tickets &amp; Express Pass</span>
+          <span className={styles.breadCurrent}>Universal Studios Japan Express Pass</span>
         </div>
       </div>
 
@@ -218,14 +392,14 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Universal Studios Japan Tickets &amp;<br />Express Pass (2026): What to Buy
+            Universal Studios Japan Express Pass 2026:<br />Types, Prices &amp; Do You Need One
           </h1>
           <p className={styles.heroSubtitle}>
-            Online tickets are now required, Super Nintendo World needs timed entry, and 2026 is the
-            25th-anniversary crush. Here&apos;s exactly what to buy for your visit.
+            Express Pass 4 and Express Pass 7, what each one covers, why the price changes with your
+            date, and the dates a Studio Pass on its own is enough.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Studio Pass + Express Pass", "Super Nintendo World"].map((t) => (
+            {[`Updated ${updated.label}`, "Express Pass 4 vs 7", "Super Nintendo World", "Buy or skip"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -244,6 +418,22 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           </p>
         </div>
 
+        {/* Lead paragraph — the whole answer, before anything else on the page. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The <strong>Universal Studios Japan Express Pass</strong> is a paid add-on that puts you in a
+            shorter, separate queue at a fixed set of attractions — it is not park admission, so you still
+            need a Studio Pass (or an Annual Pass) for the same date. It is sold as numbered variants —{" "}
+            <strong>Express Pass 4</strong> and <strong>Express Pass 7</strong> are the two most visitors
+            choose, alongside themed line-ups and versions that carry Super Nintendo World area entry — each
+            tied to one date, each with its own attraction list, and each priced by the day: USJ&apos;s own
+            page says the types and prices of valid Express Passes vary depending on the day, and that only a
+            limited number are sold per day and they are often sold out in advance. So the short answer on
+            whether you need one is the date: a weekend, a Japanese public holiday or a 25th-anniversary date
+            is what an Express Pass is for, and a quiet weekday usually is not. All read on {CHECKED_USJ}.
+          </p>
+        </section>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -260,17 +450,19 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
                 <p className={styles.verdictStatValue}>Weekend / holiday / anniversary</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Super Nintendo World</p>
-                <p className={styles.verdictStatValue}>Needs timed entry on busy days</p>
+                <p className={styles.verdictStatLabel}>Price</p>
+                <p className={styles.verdictStatValue}>Varies by date — no fixed figure</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Buy at the gate?</p>
-                <p className={styles.verdictStatValue}>No — online only since 2025</p>
+                <p className={styles.verdictStatLabel}>On sale</p>
+                <p className={styles.verdictStatValue}>About 2 months ahead, capped per day</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> Buy a Studio Pass online for entry. On busy dates — and 2026 is
-              busy — add an Express Pass to skip multi-hour queues and guarantee Super Nintendo World.
+              <strong>In short:</strong> buy the Studio Pass for entry, then decide the Express Pass on your
+              date. Express Pass 7 if it is one busy day and you want the headliners; Express Pass 4 if the
+              date is quieter or you only want the top few; a variant with area entry if Super Nintendo World
+              is the point of the trip.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <a href={STUDIO_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -292,28 +484,23 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           </div>
         </div>
 
-        {/* Intro */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>How USJ Tickets Work in 2026</h2>
-          <p className={styles.bodyText}>
-            There are two things to understand before you buy. First, the <strong>Studio Pass</strong> is your
-            park entry — everyone needs one, and since May 2025 you can no longer buy it at the gate on the day.
-            It&apos;s online-only, with tiered pricing that&apos;s higher on busy dates.
-          </p>
-          <p className={styles.bodyText}>
-            Second, the <strong>Express Pass</strong> is an optional add-on that lets you skip the standby line
-            at selected attractions and, on most variants, includes a timed-entry ticket for{" "}
-            <strong>Super Nintendo World</strong>. It is not park entry on its own — you buy it on top of a
-            Studio Pass. With 2026 being USJ&apos;s 25th-anniversary season, crowds are heavy and the Express
-            Pass is far more valuable than in a quiet year.
-          </p>
-        </section>
-
-        {/* Ticket types table */}
+        {/* Q1 — what it is */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Ticket types</span>
-          <h2 className={styles.sectionTitle}>USJ Ticket Types at a Glance</h2>
+          <span className={styles.sectionLabel}>The pass itself</span>
+          <h2 className={styles.sectionTitle}>What is the Universal Studios Japan Express Pass?</h2>
+          <p className={styles.bodyText}>
+            It is a dated add-on that lets you use a shorter Express Pass lane at a fixed set of attractions
+            instead of the standby queue. It is <strong>not</strong> park entry: USJ&apos;s own Express Pass
+            page says separate theme park admission is required, so a Studio Pass or an Annual Pass has to
+            cover the same day. Read on {CHECKED_USJ}.
+          </p>
+          <p className={styles.bodyText}>
+            Two further details matter before you compare variants. Some of the attractions on a pass are
+            time-designated and some are not — for the ones that are not, USJ says you can use them any time
+            during operating hours — and you show a QR code at the attraction&apos;s Express Pass entrance.
+            And the pass only ever covers the attractions printed on it, which is why the variant you buy is
+            a bigger decision than the number on the front.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -337,30 +524,78 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            USJ uses tiered, date-based pricing — the same ticket costs more on busy dates. We don&apos;t quote
-            fixed figures; check the live price for your date at booking (2026, variable, confirm at checkout).
+            USJ pricing rules read on usj.co.jp, {CHECKED_USJ}. No yen figure appears in this table because
+            USJ publishes none as a fixed value — see the price section below.
           </p>
         </section>
 
-        {/* Express pass tiers */}
+        {/* Q2 — price */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Express Pass tiers</span>
-          <h2 className={styles.sectionTitle}>Express Pass 4 vs 7 vs 8</h2>
+          <span className={styles.sectionLabel}>Price</span>
+          <h2 className={styles.sectionTitle}>How much is the Universal Studios Japan Express Pass?</h2>
+          <p className={styles.bodyText}>
+            There is no single answer, and that is USJ&apos;s own position rather than a hedge: its Express
+            Pass page says the types and prices of valid Express Passes vary depending on the day, and its 30
+            June 2026 release on Studio Pass pricing says Express Passes have been priced on a demand-based
+            system since 2018, with no change planned. What you can plan around is the rules, so those are
+            what this table prints.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Express Pass", "Ride skips", "Super Nintendo World", "Best for"].map((h) => (
+                    {["What", "What USJ states", `Source (read ${CHECKED_USJ})`].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {expressRows.map((row) => (
+                  {pricingRows.map((row) => (
+                    <tr key={row.what}>
+                      <td className={styles.tdProvider}>{row.what}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.usj}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Why no price band is quoted: the two surfaces that would show one cannot be read. USJ&apos;s
+            member ticket pages answered an automated read with HTTP 503 on {CHECKED_USJ}, and the official
+            WEB Ticket Store sits behind a virtual waiting room. Rather than repeat a figure from a
+            third-party page, this guide prints USJ&apos;s pricing rules and sends you to the day&apos;s own
+            checkout price.
+          </p>
+        </section>
+
+        {/* Q3 — 4 or 7 */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Which variant</span>
+          <h2 className={styles.sectionTitle}>Express Pass 4 or 7 — Which Should I Buy?</h2>
+          <p className={styles.bodyText}>
+            Express Pass 7 on a busy date and a first visit; Express Pass 4 on a quieter date, a short day or
+            a return visit where you only want the top few rides. The number is how many attraction slots the
+            pass covers, and the attraction list itself is fixed per variant and per date — so read the
+            inclusions for your own date rather than the number on the front.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Variant", "What it covers", "Super Nintendo World", "Best for"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {variantRows.map((row) => (
                     <tr key={row.pass}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.pass}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.rides}</td>
+                      <td className={styles.tdProvider}>{row.pass}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.covers}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.snw}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.bestFor}</td>
                     </tr>
@@ -370,33 +605,157 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            The exact attractions covered and whether Super Nintendo World timed entry is included vary by
-            variant and date — always check the inclusions for your specific date before buying.
+            Variant names and the area-entry rule read on usj.co.jp, {CHECKED_USJ}. Which variants exist on a
+            given date is a per-date question — the line-up changes with the park&apos;s events, so the rows
+            above describe the shape of it rather than a fixed catalogue.
           </p>
         </section>
 
-        {/* Who should buy what */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>Who buys what</span>
-          <h2 className={styles.sectionTitle}>What Should You Buy?</h2>
-          <div className={styles.stepsList}>
-            {whoFor.map((item, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{item.title}</p>
-                  <p className={styles.stepDesc}>{item.desc}</p>
-                </div>
-              </div>
-            ))}
+        {/* Q4 — do I need one, then the CTA stack */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Buy or skip</span>
+          <h2 className={styles.sectionTitle}>Do I Need an Express Pass for Universal Studios Japan?</h2>
+          <p className={styles.bodyText}>
+            It depends almost entirely on the date, not on you. On a quiet weekday a Studio Pass on its own
+            is usually enough; on a weekend, a Japanese public holiday or a 25th-anniversary date, an Express
+            Pass is the difference between riding the headliners and queuing for them.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Your date", "Express Pass?", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {needRows.map((row) => (
+                    <tr key={row.date}>
+                      <td className={styles.tdProvider}>{row.date}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 600 }}>{row.verdict}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.why}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* The decision point is the right place for the two sellers, and for the
+              rest of the trip underneath them. Nothing above is deleted — these are
+              the same destinations the page already carries, brought to the moment a
+              reader has just decided. */}
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <a href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
+              Check the Express Pass on Klook →
+            </a>
+            <GygCompareButton
+              slug="usj-tickets-express-pass"
+              listing={gygUsjExpressPass}
+              label="Compare the Express Pass on GetYourGuide →"
+            />
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            And once the date is fixed, three bookings follow from it — the room next to the gates, the way
+            in from Kansai Airport, and the data you need for the park&apos;s own app on the day:
+          </p>
+          <div className={styles.pickCtaRow}>
+            <a href={usjStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Universal City hotels on Klook →
+            </a>
+            <a href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the HARUKA ticket on Klook →
+            </a>
+            <a href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Kansai Mini Pass on Klook →
+            </a>
+            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check Klook eSIM options →
+            </a>
           </div>
         </section>
 
-        {/* How to book */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Book &amp; Plan Your Visit</h2>
-          <div className={styles.stepsList}>
+        {/* Q5 — sell-outs and the buying window */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Sell-outs</span>
+          <h2 className={styles.sectionTitle}>When Does the USJ Express Pass Sell Out?</h2>
+          <p className={styles.bodyText}>
+            Whenever the day&apos;s allocation goes — USJ&apos;s own page says a limited number are available
+            each day and that they are often sold out in advance, so there is no safe lead time, only an
+            earlier one. The window you are buying inside is about two months long, which is the single most
+            useful thing to know about it.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Question", "What USJ publishes", `Source (read ${CHECKED_USJ})`].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {windowRows.map((row) => (
+                    <tr key={row.q}>
+                      <td className={styles.tdProvider}>{row.q}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.a}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Practically, that makes the Express Pass the first thing you book after the flights and the room,
+            not the last. It also makes a second seller worth a look rather than a nicety: allocations are
+            held per seller as well as per day, so a date that has gone on one site is not always gone
+            everywhere.
+          </p>
+        </section>
+
+        {/* Q6 — how to buy */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>How to buy</span>
+          <h2 className={styles.sectionTitle}>How Do I Buy the Universal Studios Japan Express Pass?</h2>
+          <p className={styles.bodyText}>
+            Online, for a specific date, from USJ directly or from a reseller. USJ&apos;s own purchase-period
+            release names the official WEB Ticket Store and Lawson Ticket as its channels and puts the window
+            at approximately two months before the visit date; resellers sell the same dated product with an
+            English checkout.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Where", "What you get", "Worth knowing"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {buyRows.map((row) => (
+                    <tr key={row.where}>
+                      <td className={styles.tdProvider}>{row.where}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Channels and window from USJ&apos;s purchase-period release of 21 April 2025; the travel-agency
+            route into Super Nintendo World from USJ&apos;s timed-entry page. Both read on {CHECKED_USJ}.
+            Whichever seller you use, the pass is dated and changes and refunds are restricted — see the
+            cancellation line in the FAQ below before you commit to a date.
+          </p>
+          <div className={styles.stepsList} style={{ marginTop: "1.5rem" }}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
                 <span className={styles.stepNum}>{i + 1}</span>
@@ -407,6 +766,28 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Q7 — Super Nintendo World */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Super Nintendo World</span>
+          <h2 className={styles.sectionTitle}>Does the Express Pass Include Super Nintendo World?</h2>
+          <p className={styles.bodyText}>
+            Only if the variant says so. Area entry is a separate inclusion, not something every Express Pass
+            carries — USJ&apos;s own timed-entry page describes two routes into the area: in advance, with
+            certain Universal Express Passes or through select travel agencies, or through the official USJ
+            app once you are inside the park.
+          </p>
+          <p className={styles.bodyText}>
+            The app route is the free one, and it is the one that has tightened. USJ states that from 5
+            January 2026 the official app is required to obtain Area Timed Entry Tickets and Standby Entry
+            Tickets: you register your park admission ticket in the app, then pick the area, the number of
+            people and a time, and show the QR code at the area entrance. Read on {CHECKED_USJ}. It is
+            first-come on the day, which is exactly why an Express Pass variant that includes area entry is
+            the only way to hold a Super Nintendo World slot before you travel. Install the app and register
+            the ticket before you fly — doing it in a queue on a data-less phone is the avoidable version of
+            this problem.
+          </p>
         </section>
 
         {/* Where to stay — the 6.5% Klook band, keyed to the one line that reaches the park. */}
@@ -430,7 +811,11 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             <Link href="/guides/attractions/where-to-stay-in-osaka" style={{ color: "var(--red)", fontWeight: 600 }}>
               where to stay in Osaka guide
             </Link>{" "}
-            compares all four areas on the lines and the airport route to each.
+            compares all four areas on the lines and the airport route to each, and our{" "}
+            <Link href="/guides/attractions/osaka-2-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
+              two days in Osaka itinerary
+            </Link>{" "}
+            shows where a park day fits around the rest of the city.
           </p>
         </section>
 
@@ -606,16 +991,18 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/transport/osaka-airport-transfer" className={styles.relatedCard}>
+            {/* Was a second, duplicate card for the airport transfer guide — the link
+                above is unchanged and this slot now carries the two-day itinerary,
+                which is the guide a park-day reader actually needs next. */}
+            <Link href="/guides/attractions/osaka-2-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="4" y="3" width="16" height="14" rx="3" />
-                  <line x1="4" y1="10" x2="20" y2="10" />
-                  <path d="M7 21l2-4M17 21l-2-4" />
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Airport Transfer Guide (2026): KIX &amp; ITM to the City</p>
+                <p className={styles.relatedTitle}>Osaka 2 Day Itinerary (2026): Day by Day, and What to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -685,8 +1072,8 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Skip the queues at USJ</h2>
             <p className={styles.ctaBannerDesc}>
-              Buy your Studio Pass online (required since 2025) and add an Express Pass to beat the
-              25th-anniversary crowds and guarantee Super Nintendo World.
+              Buy the Studio Pass online for entry, then add the Express Pass variant your date needs — the
+              day&apos;s allocation is capped, and the variants with Super Nintendo World area entry go first.
             </p>
             <div className={styles.pickCtaRow}>
               <a href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
