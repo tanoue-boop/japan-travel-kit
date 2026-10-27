@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import {
   kyotoNaraArashiyamaTour,
   arashiyamaNaraTodaijiTour,
@@ -301,9 +302,9 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               Buddha Hall charges ¥800 for an adult.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Kyoto &amp; Nara day tours on Klook →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="kyoto-nara-day-tour-from-osaka" listing={gygNaraFromOsaka} />
             </div>
           </div>
@@ -344,9 +345,9 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
                   {tourRows.map((row) => (
                     <tr key={row.tour}>
                       <td className={styles.tdProvider}>
-                        <a href={row.url} target="_blank" rel="sponsored noopener" className={styles.tdLink}>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener" className={styles.tdLink}>
                           {row.tour}
-                        </a>
+                        </KlookLink>
                       </td>
                       <td style={{ fontSize: "0.88rem" }}>{row.covers}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.length}</td>
@@ -613,9 +614,9 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               admission is in the price. Klook checks out in English and takes foreign cards.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Kyoto &amp; Nara day tours on Klook →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="kyoto-nara-day-tour-from-osaka" listing={gygNaraFromOsaka} />
             </div>
           </div>

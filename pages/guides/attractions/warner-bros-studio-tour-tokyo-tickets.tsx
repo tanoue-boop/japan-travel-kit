@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { warnerBrosStudioTourTokyo, tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -273,9 +274,9 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
               time-specified; there is an on-site ticket office, but the official advice is to pre-book because
               slots sell out. Allow about four hours. Prices checked on {CHECKED}.
             </p>
-            <a href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check studio tour tickets on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -532,9 +533,9 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
               The official advice is to pre-book, because preferred dates and times sell out. Klook sells the
               same date- and time-specified admission with an English checkout and an e-ticket.
             </p>
-            <a href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View studio tour tickets on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "./IntlChrome";
+import KlookLink from "./KlookLink";
 import { zhKlookEsim, zhTokyoSubwayTicket } from "../lib/klook-links-zh-tw";
 import { cnKlookEsim, cnTokyoSubwayTicket } from "../lib/klook-links-zh-cn";
 import { koKlookEsim, koShibuyaSky } from "../lib/klook-links-ko";
@@ -616,9 +617,9 @@ export default function LocaleHome({
           <p className={styles.bodyText}>{copy.prepText}</p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
             {copy.klook.map((product) => (
-              <a key={product.url} href={product.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              <KlookLink key={product.url} href={product.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
                 {product.label} →
-              </a>
+              </KlookLink>
             ))}
           </div>
         </section>

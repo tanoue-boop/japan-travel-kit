@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   arimaHimejiRokkoDayTour,
@@ -422,12 +423,12 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
               season. All figures read off Himeji City&apos;s and the castle&apos;s own pages on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Himeji Day From Osaka →
-              </a>
-              <a href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              </KlookLink>
+              <KlookLink href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Kansai Area Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -571,12 +572,12 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             listing before you book a date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check a Himeji Coach Day →
-            </a>
-            <a href={GUIDED_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={GUIDED_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Guided Castle &amp; Koko-en →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -673,15 +674,15 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             quoted now are not comparing the same thing.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Himeji Coach Day From Osaka →
-            </a>
-            <a href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Kansai Area Pass →
-            </a>
-            <a href={WIDE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={WIDE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               WIDE Pass (Shinkansen) →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -872,12 +873,12 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
               the trains and the timings handled — or want Engyoji in the same day — a coach day does both.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Himeji Day Trips →
-              </a>
-              <a href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Kansai Area Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

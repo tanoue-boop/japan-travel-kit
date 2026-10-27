@@ -1,4 +1,5 @@
 import styles from "../styles/BestEsimJapan.module.css";
+import KlookLink from "./KlookLink";
 import type { KlookTripPrepItem } from "../lib/klook-links";
 
 /**
@@ -33,14 +34,14 @@ export default function KlookTripPrep({ heading, intro, items, label = "Before y
             <span className={styles.proIcon}>▸</span>
             <span>
               <strong>{item.label}</strong> — {item.why}{" "}
-              <a
+              <KlookLink
                 href={item.url}
                 target="_blank"
                 rel="sponsored noopener"
                 style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 {item.ctaLabel}
-              </a>
+              </KlookLink>
             </span>
           </li>
         ))}

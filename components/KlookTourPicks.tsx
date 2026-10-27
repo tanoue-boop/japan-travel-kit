@@ -1,4 +1,5 @@
 import styles from "../styles/BestEsimJapan.module.css";
+import KlookLink from "./KlookLink";
 import type { KlookTour } from "../lib/klook-links";
 
 /**
@@ -20,7 +21,7 @@ export default function KlookTourPicks({ heading, intro, tours }: Props) {
       <p className={styles.bodyText}>{intro}</p>
       <div className={styles.relatedGrid}>
         {tours.map((tour) => (
-          <a
+          <KlookLink
             key={tour.url}
             href={tour.url}
             target="_blank"
@@ -37,7 +38,7 @@ export default function KlookTourPicks({ heading, intro, tours }: Props) {
               <p className={styles.relatedTitle}>{tour.title}</p>
               <span className={styles.relatedArrow}>{tour.desc} · View on Klook →</span>
             </div>
-          </a>
+          </KlookLink>
         ))}
       </div>
     </section>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -347,7 +348,7 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
               </div>
             ))}
           </div>
-          <a
+          <KlookLink
             href={PASS_URL}
             className={styles.pickCta}
             target="_blank"
@@ -355,7 +356,7 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             Book Kyoto Subway &amp; Bus Pass on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* FAQ */}
@@ -443,9 +444,9 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
               If you&apos;ll be hopping between Kinkakuji, Kiyomizudera, and Gion, lock in the Subway &amp; Bus Pass
               online and exchange it after you arrive.
             </p>
-            <a href={PASS_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">
+            <KlookLink href={PASS_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">
               Book Kyoto Subway &amp; Bus Pass on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

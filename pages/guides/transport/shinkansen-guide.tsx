@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -257,14 +258,14 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
               <strong>Key rule:</strong> Nozomi and Mizuho (the fastest services) are <strong>not covered by the JR Pass</strong>.
               Book reserved seats in advance for peak dates — services fill quickly on weekends and holidays.
             </p>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.verdictBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Book Shinkansen Tickets on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -430,7 +431,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
               </div>
             ))}
           </div>
-          <a
+          <KlookLink
             href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
             className={styles.pickCta}
             target="_blank"
@@ -438,7 +439,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             Book Shinkansen Tickets on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* Tips for First-Timers */}
@@ -600,14 +601,14 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             <p className={styles.ctaBannerDesc}>
               Reserve your seats before you fly — popular services fill up fast on weekends and public holidays.
             </p>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.ctaBannerBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Book on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { cnTeamlabBorderless } from "../../../../lib/klook-links-zh-cn";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -224,9 +225,9 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
               （南北线，步行 6 分钟）过去，两站都有地下通道。想要基础票价与最多三次免费改期就买官网；
               想要看得懂、用自己货币、海外卡刷得过的结账就走 Klook。
             </p>
-            <a href={cnTeamlabBorderless.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={cnTeamlabBorderless.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               查看 teamLab 无界门票 →
-            </a>
+            </KlookLink>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
               本页的票价、营业时间与休馆日读自 teamLab 官方网站，核查日期 {CHECKED}。无界采用浮动定价、日历也会变动，
               请在结账时确认你自己日期的两项信息。
@@ -370,9 +371,9 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             决定好要订了吗？{" "}
-            <a href={cnTeamlabBorderless.url} target="_blank" rel={KLOOK_REL}>
+            <KlookLink href={cnTeamlabBorderless.url} target="_blank" rel={KLOOK_REL}>
               在 Klook 查看无界的时段与价格 →
-            </a>
+            </KlookLink>
           </p>
         </section>
 
@@ -409,9 +410,9 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
               指定时段入场的意思是：你最想去的那个时段，就是最先售罄的那个。Klook 是 teamLab 的官方售票合作伙伴，
               可以用自己的货币结账，电子票直接存在手机里。
             </p>
-            <a href={cnTeamlabBorderless.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={cnTeamlabBorderless.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               查看 teamLab 无界门票 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

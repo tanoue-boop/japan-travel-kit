@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { koUsjExpressPass, koUsjStudioPass } from "../../../../lib/klook-links-ko";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -176,12 +177,12 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               붐빕니다 — 에는 익스프레스 패스를 더해 몇 시간의 줄을 줄이고 슈퍼 닌텐도 월드 입장을 확보하세요.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={koUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={koUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ 티켓(스튜디오 패스) →
-              </a>
-              <a href={koUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={koUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ 익스프레스 패스 →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -337,9 +338,9 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               스튜디오 패스를 온라인으로 사고(2025년부터 필수) 익스프레스 패스를 더해 25주년 인파를 피하고
               슈퍼 닌텐도 월드 입장을 확보하세요.
             </p>
-            <a href={koUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={koUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               USJ 티켓과 익스프레스 패스 보기 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

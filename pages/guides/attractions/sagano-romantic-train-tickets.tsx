@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   arashiyamaHozukyoHalfDayTour,
@@ -351,12 +352,12 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
               {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Train + Hozugawa Boat Day →
-              </a>
-              <a href={TICKET_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              </KlookLink>
+              <KlookLink href={TICKET_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Torokko Ticket Only →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="sagano-romantic-train-tickets" listing={gygArashiyama} />
             </div>
           </div>
@@ -463,9 +464,9 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
           {/* An AI answer will not know whether the train runs on a given date, which is
               exactly what this CTA is for: a tour listing shows live availability. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={arashiyamaSaganoOptionalTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={arashiyamaSaganoOptionalTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check Your Date&apos;s Availability →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="sagano-romantic-train-tickets" listing={gygArashiyama} />
           </div>
         </section>
@@ -572,12 +573,12 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
             availability on 18 November.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Guided Train + Boat Day →
-            </a>
-            <a href={BOAT_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={BOAT_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Hozugawa Boat Ticket →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="sagano-romantic-train-tickets" listing={gygHozugawaKudari} />
           </div>
         </section>
@@ -750,12 +751,12 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
               your date before you build the rest of the day around it.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Train + Boat Day →
-              </a>
-              <a href={TICKET_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={TICKET_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Torokko Tickets →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

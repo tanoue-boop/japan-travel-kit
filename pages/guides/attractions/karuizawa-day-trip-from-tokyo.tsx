@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -403,7 +404,7 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
               five is not. The Seibu Bus from Shinjuku or Ikebukuro is ¥2,600 but takes about 3 hours
               20 minutes. Figures read off the operators&apos; own sites on {CHECKED}.
             </p>
-            <a
+            <KlookLink
               href={karuizawaShinjukuDayTour.url}
               target="_blank"
               rel="sponsored noopener"
@@ -411,7 +412,7 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
               style={{ marginTop: "1rem" }}
             >
               Check Karuizawa day tours on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -488,12 +489,12 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
             works through whether a pass earns its price across a whole trip.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shinkansenTokyoKaruizawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKaruizawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo–Karuizawa shinkansen on Klook →
-            </a>
-            <a href={jrEastPassNaganoNiigata.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrEastPassNaganoNiigata.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JR EAST PASS (Nagano / Niigata) →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -609,12 +610,12 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
             date, so it is the one part of a Karuizawa day worth booking early — unlike the train.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={karuizawaShinjukuDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={karuizawaShinjukuDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Karuizawa day tour from Shinjuku →
-            </a>
-            <a href={karuizawaShinkansenDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={karuizawaShinkansenDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               The shinkansen day trip listing →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -649,9 +650,9 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
             Shiraito Falls are both exposed. Dress a layer up from whatever Tokyo asks for.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={karuizawaSkiSnowDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={karuizawaSkiSnowDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Karuizawa ski &amp; snow day tour →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -803,9 +804,9 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
               English and takes foreign cards.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={karuizawaShinjukuDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={karuizawaShinjukuDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Karuizawa day tours on Klook →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -413,12 +414,12 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
               yours before you queue. All figures read off limousinebus.co.jp on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={naritaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={naritaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check the Narita bus on Klook →
-              </a>
-              <a href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 The Haneda bus →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -614,15 +615,15 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={naritaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={naritaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Narita limousine bus on Klook →
-            </a>
-            <a href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Haneda limousine bus →
-            </a>
-            <a href={naritaHanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={naritaHanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Airport to airport →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -828,12 +829,12 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
               you pay.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={naritaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={naritaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Narita bus on Klook →
-              </a>
-              <a href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 View the Haneda bus →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

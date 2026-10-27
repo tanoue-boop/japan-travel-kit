@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { fujiDayTour, tokyoDisneyTripPrep, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygTokyoDisneyResort, gygTokyoDisneySea } from "../../../lib/gyg-links";
@@ -267,9 +268,9 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
               into the official app.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn}>
+              <KlookLink href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn}>
                 Check Tokyo Disney Tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-disney-tickets" listing={gygTokyoDisneyResort} />
             </div>
           </div>
@@ -627,9 +628,9 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
               authorized seller that accepts foreign cards and issues a QR you can link into the official app.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
+              <KlookLink href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
                 View Tokyo Disney Tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-disney-tickets" listing={gygTokyoDisneyResort} />
             </div>
           </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -444,12 +445,12 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
               sites on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Guided Kobe Day From Osaka →
-              </a>
-              <a href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              </KlookLink>
+              <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Reserve a Kobe Beef Table →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -526,12 +527,12 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             three operators without buying a ticket at all.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={rokkosanTouristPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={rokkosanTouristPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Rokkosan Tourist Pass →
-            </a>
-            <a href={kobePrivateHalfDayWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kobePrivateHalfDayWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Private half day in Kobe →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -656,15 +657,15 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             that matters to you, ask the restaurant for its registration number at booking.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Teppanyaki course in Kobe →
-            </a>
-            <a href={kisshokichiKobeBeefCourse.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kisshokichiKobeBeefCourse.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Second restaurant option →
-            </a>
-            <a href={kobeBeefHarbourKitanoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kobeBeefHarbourKitanoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Day tour with the beef included →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -728,15 +729,15 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             the admission and the train times from Osaka.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kobe, Arima &amp; Rokko day →
-            </a>
-            <a href={kobeHimejiPrivateTourBeefLunch.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kobeHimejiPrivateTourBeefLunch.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kobe + Himeji private day →
-            </a>
-            <a href={kobeSandaOutletArimaBeefLunchTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kobeSandaOutletArimaBeefLunchTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Outlets, Arima &amp; lunch →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -811,9 +812,9 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             the sky at four in the afternoon, the restaurant confirmation is an email, and the three
             railways back to Osaka run to three different timetables from three adjacent stations. An eSIM
             activated before departure means all of that is a decision rather than a guess.{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
-            </a>{" "}
+            </KlookLink>{" "}
             Our{" "}
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it against
             the alternatives.
@@ -935,12 +936,12 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
               list — a guided day that fits them into one.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Guided Kobe Days →
-              </a>
-              <a href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Kobe Beef Tables →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

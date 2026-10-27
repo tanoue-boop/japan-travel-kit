@@ -13,6 +13,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { cnFujiHakoneDayTour, cnTeamlabPlanets } from "../../../../lib/klook-links-zh-cn";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -221,9 +222,9 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               想找麻布台之丘那一间？请看我们的{" "}
               <Link href="/zh-cn/guides/attractions/teamlab-borderless-tickets">teamLab 无界门票攻略</Link>。
             </p>
-            <a href={cnTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={cnTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               查看 teamLab Planets 门票 →
-            </a>
+            </KlookLink>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
               本页的票价读自 teamLab Planets 官方售票网站，核查日期 {CHECKED}；营业时间与休馆日读自
               teamlab.art，核查日期 {HOURS_CHECKED}。Planets 票价按日期与时段变动、
@@ -321,9 +322,9 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             决定好要订了吗？{" "}
-            <a href={cnTeamlabPlanets.url} target="_blank" rel={KLOOK_REL}>
+            <KlookLink href={cnTeamlabPlanets.url} target="_blank" rel={KLOOK_REL}>
               在 Klook 查看 Planets 的时段与价格 →
-            </a>
+            </KlookLink>
           </p>
         </section>
 
@@ -402,9 +403,9 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             <Link href="/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo">富士山一日游攻略</Link>
             {" "}比较了四种行程。
           </p>
-          <a href={cnFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta} style={{ marginTop: "0.5rem", display: "inline-block" }}>
+          <KlookLink href={cnFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta} style={{ marginTop: "0.5rem", display: "inline-block" }}>
             查看{cnFujiHakoneDayTour.label} →
-          </a>
+          </KlookLink>
         </section>
 
         <FaqList items={faqItems} />
@@ -426,9 +427,9 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               入场以 30 分钟为一段，好的时段 2～3 周前就会没有。Klook 是 teamLab 的官方售票合作伙伴，
               可以用自己的货币结账，电子票直接存在手机里。
             </p>
-            <a href={cnTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={cnTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               查看 teamLab Planets 门票 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

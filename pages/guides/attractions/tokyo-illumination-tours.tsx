@@ -5,6 +5,7 @@ import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -418,9 +419,9 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
               </div>
             </div>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Tokyo night tours on Klook →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-illumination-tours" listing={gygTokyo} />
             </div>
           </div>
@@ -541,12 +542,12 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             ticket page.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={tokyoMegaIllumiTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoMegaIllumiTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo Mega Illumi ticket →
-            </a>
-            <a href={yomiurilandTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={yomiurilandTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Yomiuriland admission →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="tokyo-illumination-tours" listing={gygTokyoEntryTickets} />
           </div>
         </section>
@@ -589,21 +590,21 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             which boat suits which evening.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo night tour →
-            </a>
-            <a href={tokyoOpenTopBusSightseeing.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={tokyoOpenTopBusSightseeing.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Open-top sightseeing bus →
-            </a>
-            <a href={skyhopHopOnHopOffBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={skyhopHopOnHopOffBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Hop-on hop-off bus →
-            </a>
-            <a href={tokyoBaySunsetCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={tokyoBaySunsetCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo Bay sunset cruise →
-            </a>
-            <a href={tokyoBayDinnerCruiseSymphony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={tokyoBayDinnerCruiseSymphony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Symphony dinner cruise →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -627,24 +628,24 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             lighting time in the table above can change on an individual date, the two ticketed
             venues arrive as a QR code in an inbox, and finding the Keyakizaka slope or the Oi
             Racecourse north gate in the dark is a map problem.{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
-            </a>{" "}
+            </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares
             the providers, and our{" "}
             <Link href="/guides/esim/japan-esim-data-plans">Japan eSIM data plans guide</Link> works
             out how much data a few days of maps and tickets actually uses.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo Subway Ticket (24 / 48 / 72 h) →
-            </a>
-            <a href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               TOKYO SKYTREE ticket →
-            </a>
-            <a href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo Tower ticket →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="tokyo-illumination-tours" listing={gygTokyoSkytree} />
           </div>
         </section>
@@ -852,9 +853,9 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
               and takes foreign cards the Japanese ticket pages sometimes reject.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Book a Tokyo night tour on Klook →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-illumination-tours" listing={gygTokyo} />
             </div>
           </div>

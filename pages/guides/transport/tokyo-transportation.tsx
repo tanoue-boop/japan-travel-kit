@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { tokyoStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -248,14 +249,14 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
                 <p className={styles.verdictStatValue}>Rarely for most tourists</p>
               </div>
             </div>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.verdictBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Get Suica IC Card on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -335,14 +336,14 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             a Suica on Klook before you travel to have it ready to use when you land.
           </p>
           <div style={{ margin: "1.5rem 0" }}>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Pre-order Suica IC Card on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -481,14 +482,14 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             centres, or online via Klook as a voucher you exchange after landing.
           </p>
           <div style={{ margin: "1.5rem 0" }}>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1267427&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1552-subway-ticket-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Buy Tokyo Subway Ticket on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -657,14 +658,14 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               Skip the queues at Tokyo Station. Get your Suica ready before you land and tap straight through
               the turnstile on arrival.
             </p>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.ctaBannerBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Get Suica on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

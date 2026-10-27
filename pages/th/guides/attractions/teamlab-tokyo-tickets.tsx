@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { thFujiHakoneDayTour, thTeamlabPlanets } from "../../../../lib/klook-links-th";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -218,9 +219,9 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               กางเกงขาสั้นหรือกางเกงที่ม้วนขึ้นได้ (ที่นี่มีให้ยืมฟรีไซส์ XS–6L) เผื่อเวลา 1.5–2 ชั่วโมง
               และเดินจากสถานีชินโทโยสุ 1 นาที
             </p>
-            <a href={thTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={thTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               ดูตั๋ว teamLab Planets →
-            </a>
+            </KlookLink>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
               ราคาในหน้านี้อ่านจากเว็บไซต์ตั๋วทางการของ teamLab Planets วันที่ตรวจสอบ {CHECKED} ส่วนเวลาเปิด
               และวันปิดอ่านจาก teamlab.art วันที่ตรวจสอบ {HOURS_CHECKED}
@@ -321,9 +322,9 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             ตัดสินใจจองแล้ว?{" "}
-            <a href={thTeamlabPlanets.url} target="_blank" rel={KLOOK_REL}>
+            <KlookLink href={thTeamlabPlanets.url} target="_blank" rel={KLOOK_REL}>
               ดูรอบเวลาและราคาของ Planets บน Klook →
-            </a>
+            </KlookLink>
           </p>
         </section>
 
@@ -406,9 +407,9 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             วันว่างเต็มวัน ทัวร์ภูเขาไฟฟูจิและฮาโกเน่ออกจากโตเกียวและกลับเย็นวันเดียวกัน และจ่ายในบัญชี Klook
             เดียวกับตั๋ว
           </p>
-          <a href={thFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta} style={{ marginTop: "0.5rem", display: "inline-block" }}>
+          <KlookLink href={thFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta} style={{ marginTop: "0.5rem", display: "inline-block" }}>
             ดู{thFujiHakoneDayTour.label} →
-          </a>
+          </KlookLink>
         </section>
 
         <FaqList items={faqItems} />
@@ -430,9 +431,9 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               การเข้าชมแบ่งเป็นรอบ 30 นาที และรอบดี ๆ หมดก่อน 2–3 สัปดาห์ Klook เป็นพาร์ตเนอร์ขายตั๋วทางการ
               ของ teamLab จ่ายด้วยสกุลเงินของคุณเอง และเก็บตั๋วอิเล็กทรอนิกส์ไว้ในมือถือได้เลย
             </p>
-            <a href={thTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={thTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               ดูตั๋ว teamLab Planets →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

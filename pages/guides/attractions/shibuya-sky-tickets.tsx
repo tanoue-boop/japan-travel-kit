@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import {
   fujiHakoneDayTour,
   shibuyaSkyDayTripPrep,
@@ -297,9 +298,9 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             </p>
             {/* The Klook CTA is unchanged; GetYourGuide sells the same rooftop and sits beside it. */}
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn}>
+              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn}>
                 Check Shibuya Sky Tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="shibuya-sky-tickets" listing={gygShibuyaSky} />
             </div>
           </div>
@@ -608,9 +609,9 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
               allows free cancellation up to 24 hours before — handy if Tokyo&apos;s weather turns.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
+              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
                 View Shibuya Sky Tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="shibuya-sky-tickets" listing={gygShibuyaSky} />
             </div>
           </div>

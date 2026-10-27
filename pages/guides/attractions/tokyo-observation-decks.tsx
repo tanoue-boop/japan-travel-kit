@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { skytreeAquariumCombo, subwayCityViewCombo, tokyoSubwayTicket } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
@@ -298,12 +299,12 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
               lower view. Prices checked {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Shibuya Sky Tickets →
-              </a>
-              <a href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Tokyo Skytree Tickets →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -657,15 +658,15 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
               Tower, booking online saves time at the entrance — and lets you lock in the best slots.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Shibuya Sky →
-              </a>
-              <a href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Tokyo Skytree →
-              </a>
-              <a href={TOKYO_TOWER_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={TOKYO_TOWER_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Tokyo Tower →
-              </a>
+              </KlookLink>
               <GygCompareButton
                 slug="tokyo-observation-decks"
                 listing={gygTokyoEntryTickets}

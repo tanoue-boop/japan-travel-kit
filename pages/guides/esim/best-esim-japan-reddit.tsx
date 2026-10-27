@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { klookEsim } from "../../../lib/klook-links";
 import {
   cheapestUnlimited,
@@ -436,9 +437,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             </a>
             <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
               Already booking tickets or transport on Klook?{" "}
-              <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 {klookEsim.ctaLabel}
-              </a>{" "}
+              </KlookLink>{" "}
               — one checkout for the eSIM and the rest of the trip.
             </p>
           </div>
@@ -589,14 +590,14 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               no price for it, because the product page blocks automated reads and we will not print a
               figure we cannot verify.
             </p>
-            <a
+            <KlookLink
               href={klookEsim.url}
               className={styles.pickCta}
               target="_blank"
               rel="sponsored noopener"
             >
               {klookEsim.ctaLabel}
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -860,14 +861,14 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             >
               Get Airalo Japan eSIM →
             </a>
-            <a
+            <KlookLink
               href={klookEsim.url}
               className={styles.pickCta}
               target="_blank"
               rel="sponsored noopener"
             >
               {klookEsim.ctaLabel}
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -905,9 +906,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
                     <td className={styles.tdNetwork}>{klookEsim.specNetwork}</td>
                     <td>
                       Unranked — no verified price.{" "}
-                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         Open →
-                      </a>
+                      </KlookLink>
                     </td>
                   </tr>
                 </tbody>

@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { koShibuyaSky } from "../../../../lib/klook-links-ko";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -222,9 +223,9 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               마감되는 시간대입니다. 카드가 해외 발행이라면 클룩이 안전합니다. 해외 카드로 결제되고, 입장 24시간
               전까지 무료 취소도 됩니다.
             </p>
-            <a href={koShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={koShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               시부야 스카이 티켓 보기 →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -363,9 +364,9 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               온라인이 현장보다 저렴하고, 일몰 회차를 확보할 수 있는 유일한 방법입니다. 클룩은 해외 발행 카드로
               결제할 수 있고 입장 24시간 전까지 무료 취소가 됩니다. 도쿄 날씨가 바뀌어도 손해가 없습니다.
             </p>
-            <a href={koShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={koShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               시부야 스카이 티켓 보기 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

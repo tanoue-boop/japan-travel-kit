@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -417,12 +418,12 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
               Amazing Pass</strong>. All read on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Osaka Castle tickets on Klook →
-              </a>
-              <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Osaka Amazing Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -560,12 +561,12 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
             approach, the stone walls, the Miraiza building itself — is free.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Osaka Castle ticket on Klook →
-            </a>
-            <a href={osakaCastleNishinomaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaCastleNishinomaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Castle &amp; Nishinomaru walking tour →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -601,12 +602,12 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
             how to split a two or three-day trip around them. Facility list read on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Osaka Amazing Pass on Klook →
-            </a>
-            <a href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Just the main tower →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -668,12 +669,12 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Osaka Castle tickets on Klook →
-            </a>
-            <a href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               With the Umeda deck and the river cruise →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -845,12 +846,12 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
               cancellation window shown on your own booking before you pay.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Osaka Castle tickets on Klook →
-              </a>
-              <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Osaka Amazing Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

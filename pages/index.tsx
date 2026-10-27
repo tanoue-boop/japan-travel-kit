@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import KlookLink from "../components/KlookLink";
 import { esimArticles } from "../lib/guides-esim";
 import { transportArticles } from "../lib/guides-transport";
 import { moneyArticles } from "../lib/guides-money";
@@ -297,7 +298,7 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
                 <p className={styles.bookDesc}>{card.desc}</p>
                 <div className={styles.bookLinks}>
                   {card.ctas.map((cta) => (
-                    <a
+                    <KlookLink
                       key={cta.url}
                       href={cta.url}
                       target="_blank"
@@ -305,7 +306,7 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
                       className={styles.bookCta}
                     >
                       {cta.label}
-                    </a>
+                    </KlookLink>
                   ))}
                   <Link href={card.guide.href} className={styles.bookGuide}>
                     {card.guide.label} →

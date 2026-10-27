@@ -3,6 +3,7 @@ import Link from "next/link";
 import StarRating from "../../../components/StarRating";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import cardStyles from "../../../styles/SIMCardCard.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { getProvider, priceFrom, pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
 import { cheapestPerDay, pocketWifi, pocketWifis, ratesCheckedAt, specsCheckedAt } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -410,7 +411,7 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
                   </div>
 
                   <div className={cardStyles.cta}>
-                    <a
+                    <KlookLink
                       href={item.affiliateUrl}
                       target="_blank"
                       rel="noopener noreferrer nofollow"
@@ -420,7 +421,7 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
                       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
-                    </a>
+                    </KlookLink>
                   </div>
                 </article>
               );
@@ -475,9 +476,9 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
                   Compare both rentals →
                 </Link>
               </p>
-              <a href={WIFI_AIRPORT.affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
+              <KlookLink href={WIFI_AIRPORT.affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow" style={{ marginTop: "0.75rem", display: "inline-flex" }}>
                 {WIFI_AIRPORT.ctaText} →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </section>

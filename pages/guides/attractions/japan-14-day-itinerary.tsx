@@ -4,6 +4,7 @@ import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -1265,7 +1266,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
               at ¥80,000 online on the official price checked {OWN}, does not pay for itself on a route
               like this one.
             </p>
-            <a
+            <KlookLink
               href={jrPassWholeJapan.url}
               target="_blank"
               rel="sponsored noopener"
@@ -1273,7 +1274,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
               style={{ marginTop: "1rem" }}
             >
               Compare rail passes on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -1369,7 +1370,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
                 </p>
                 <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
                   {day.picks.map((pick) => (
-                    <a
+                    <KlookLink
                       key={pick.url}
                       href={pick.url}
                       target="_blank"
@@ -1377,7 +1378,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
                       className={styles.pickCta}
                     >
                       {pick.label}
-                    </a>
+                    </KlookLink>
                   ))}
                 </div>
               </div>
@@ -1437,12 +1438,12 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             refund window, so read it before the Day 7 date is fixed.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo → Kyoto shinkansen on Klook →
-            </a>
-            <a href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JAPAN RAIL PASS on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -1551,15 +1552,15 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             by product, and we do not restate them here because they change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               teamLab Planets on Klook →
-            </a>
-            <a href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Shibuya Sky on Klook →
-            </a>
-            <a href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               USJ Studio Pass on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -1600,9 +1601,9 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             One last thing that is not a sight: data. Fourteen days of it is cheap, every timed ticket
             on this plan arrives as a QR code, and every &ldquo;getting there&rdquo; column above
             assumes a map.{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
-            </a>{" "}
+            </KlookLink>{" "}
             Our{" "}
             <Link href="/guides/esim/japan-esim-2-weeks">eSIM for two weeks in Japan guide</Link>{" "}
             ranks the plans at exactly this trip length, and our{" "}
@@ -1926,9 +1927,9 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
               keeps the whole fortnight on one account.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Book the timed tickets on Klook →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="japan-14-day-itinerary" listing={gygTeamlabPlanets} />
             </div>
           </div>

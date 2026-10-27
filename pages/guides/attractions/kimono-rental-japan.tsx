@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kyotoHighlightBusTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
@@ -270,12 +271,12 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
               listed on {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Kimono Rental — Asakusa →
-              </a>
-              <a href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Kimono Rental — Kyoto →
-              </a>
+              </KlookLink>
             </div>
             {/* Both Klook shops above are unchanged; these open the same two cities elsewhere. */}
             <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
@@ -532,12 +533,12 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
               hair-set. Reserve ahead in spring and autumn, when the best slots and designs sell out fast.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Asakusa Kimono Rental →
-              </a>
-              <a href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Kyoto Kimono Rental →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="kimono-rental-japan" listing={gygKyotoKimono} />
             </div>
           </div>

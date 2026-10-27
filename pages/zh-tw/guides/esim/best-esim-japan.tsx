@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { zhKlookEsim } from "../../../../lib/klook-links-zh-tw";
 import { klookEsim } from "../../../../lib/klook-links";
 import {
@@ -269,9 +270,9 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
               {klookEsim.checkedAt}），所以我們沒有經過查核的價格或流量級距可以拿來跟其他四家比。
               打開商品頁看目前的方案。下面四家的價格則是每天從它們自己的網站讀取的。
             </p>
-            <a href={zhKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={zhKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               查看 Klook 日本 eSIM 方案 →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -327,9 +328,9 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                     <td><span className={styles.no}>✗</span></td>
                     <td><span className={styles.no}>✗</span></td>
                     <td>
-                      <a href={zhKlookEsim.url} className={styles.tdLink} target="_blank" rel={KLOOK_REL}>
+                      <KlookLink href={zhKlookEsim.url} className={styles.tdLink} target="_blank" rel={KLOOK_REL}>
                         查看 Klook eSIM 價格 →
-                      </a>
+                      </KlookLink>
                     </td>
                   </tr>
                 </tbody>
@@ -435,9 +436,9 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             <p className={styles.ctaBannerDesc}>
               同一個帳號、同一次結帳、一張 QR Code 電子券。打開商品頁看目前的方案與價格。
             </p>
-            <a href={zhKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={zhKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               查看 Klook 日本 eSIM →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

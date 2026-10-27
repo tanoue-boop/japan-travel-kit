@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -411,12 +412,12 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
               All read on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Gion kimono rental on Klook →
-              </a>
-              <a href={kyotoKimonoYumeyakata.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={kyotoKimonoYumeyakata.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 The listing with next-day return →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -497,15 +498,15 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={kyotoKimonoAiwafukuKiyomizu.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoKimonoAiwafukuKiyomizu.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kiyomizu / Yasaka Pagoda shop →
-            </a>
-            <a href={kyotoKimonoOokiniArashiyama.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kyotoKimonoOokiniArashiyama.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Arashiyama shop →
-            </a>
-            <a href={kyotoKimonoAiwafukuStation.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kyotoKimonoAiwafukuStation.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kyoto Station shop →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -576,12 +577,12 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
             it in there. Return terms read on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={kyotoKimonoYumeyakata.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoKimonoYumeyakata.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Yumeyakata — next-day and postal return →
-            </a>
-            <a href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Aiwafuku Gion — return at any branch →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -654,12 +655,12 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={kyotoKimonoMisakiGion.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoKimonoMisakiGion.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Gion shop with a photo shoot →
-            </a>
-            <a href={kyotoKimonoMimosaStation.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kyotoKimonoMimosaStation.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Station shop with luggage storage →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -864,12 +865,12 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
               pay; both are set per shop.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Gion kimono rental on Klook →
-              </a>
-              <a href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Kyoto highlights bus tour →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

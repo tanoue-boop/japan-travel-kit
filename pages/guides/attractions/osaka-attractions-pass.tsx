@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kyotoNaraArashiyamaTour, kyotoHighlightBusTour, osakaAmazingPassUrl } from "../../../lib/klook-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
@@ -261,12 +262,12 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
               one of those, skip the pass for that day. Prices read off the official site on {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Osaka Amazing Pass →
-              </a>
-              <a href={KAIYUKAN_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={KAIYUKAN_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Kaiyukan Aquarium Ticket →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -592,12 +593,12 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
               Kaiyukan aquarium ticket, since the whale sharks aren&apos;t on the pass.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Osaka Amazing Pass →
-              </a>
-              <a href={KAIYUKAN_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={KAIYUKAN_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Kaiyukan Ticket →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

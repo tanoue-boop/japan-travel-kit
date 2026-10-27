@@ -5,6 +5,7 @@ import tools from "../../../styles/Tools.module.css";
 import EsimPlanFinder from "../../../components/EsimPlanFinder";
 import EsimPlanTable, { ProviderCta } from "../../../components/EsimPlanTable";
 import EsimPriceStatus from "../../../components/EsimPriceStatus";
+import KlookLink from "../../../components/KlookLink";
 import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -348,9 +349,9 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
                     <td className={tools.tdMuted}>—</td>
                     <td className={tools.tdMuted}>—</td>
                     <td>
-                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         {klookEsim.ctaLabel}
-                      </a>
+                      </KlookLink>
                     </td>
                   </tr>
                 </tbody>

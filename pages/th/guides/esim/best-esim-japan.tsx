@@ -15,6 +15,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { thKlookEsim } from "../../../../lib/klook-links-th";
 import { klookEsim } from "../../../../lib/klook-links";
 import {
@@ -270,9 +271,9 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
               ตรวจสอบแล้วมาเทียบกับอีกสี่ราย ให้เปิดหน้าสินค้าเพื่อดูแพ็กเกจปัจจุบัน ส่วนราคาของสี่รายด้านล่าง
               เราอ่านจากเว็บไซต์ของพวกเขาเองทุกวัน
             </p>
-            <a href={thKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={thKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               ดูแพ็กเกจ eSIM ญี่ปุ่นของ Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -328,9 +329,9 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
                     <td><span className={styles.no}>✗</span></td>
                     <td><span className={styles.no}>✗</span></td>
                     <td>
-                      <a href={thKlookEsim.url} className={styles.tdLink} target="_blank" rel={KLOOK_REL}>
+                      <KlookLink href={thKlookEsim.url} className={styles.tdLink} target="_blank" rel={KLOOK_REL}>
                         ดูราคา eSIM ของ Klook →
-                      </a>
+                      </KlookLink>
                     </td>
                   </tr>
                 </tbody>
@@ -437,9 +438,9 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
             <p className={styles.ctaBannerDesc}>
               บัญชีเดียว จ่ายครั้งเดียว ได้ e-voucher QR code หนึ่งใบ เปิดหน้าสินค้าเพื่อดูแพ็กเกจและราคาปัจจุบัน
             </p>
-            <a href={thKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={thKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               ดู eSIM ญี่ปุ่นของ Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

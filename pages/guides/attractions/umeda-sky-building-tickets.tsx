@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -399,12 +400,12 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               read on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Umeda Sky Building tickets on Klook →
-              </a>
-              <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Osaka Amazing Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -564,12 +565,12 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Umeda Sky Building ticket on Klook →
-            </a>
-            <a href={osakaNaniWonderNightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaNaniWonderNightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Night bus from Osaka Station →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -681,12 +682,12 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Umeda Sky Building tickets on Klook →
-            </a>
-            <a href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               With the castle and the river cruise →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -718,12 +719,12 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             of walls. Facility conditions read on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Osaka Amazing Pass on Klook →
-            </a>
-            <a href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Just the observatory →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -895,12 +896,12 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               works, and check the cancellation window shown on your own booking before you pay.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Umeda Sky Building tickets on Klook →
-              </a>
-              <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Osaka Amazing Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

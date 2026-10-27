@@ -13,6 +13,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import {
   zhHanedaLimousineBus,
   zhKeiseiSkyliner,
@@ -348,7 +349,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
               </div>
             ))}
           </div>
-          <a
+          <KlookLink
             href={zhNaritaExpress.url}
             className={styles.pickCta}
             target="_blank"
@@ -356,7 +357,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             在 Klook 訂 N&apos;EX 車票 →
-          </a>
+          </KlookLink>
         </section>
 
         <section className={styles.installSection}>
@@ -373,7 +374,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
               </div>
             ))}
           </div>
-          <a
+          <KlookLink
             href={zhKeiseiSkyliner.url}
             className={styles.pickCta}
             target="_blank"
@@ -381,7 +382,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             在 Klook 訂京成 Skyliner →
-          </a>
+          </KlookLink>
         </section>
 
         <section className={styles.comparisonSection}>
@@ -479,12 +480,12 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             ))}
           </div>
           <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <a href={zhNaritaLimousineBus.url} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>
+            <KlookLink href={zhNaritaLimousineBus.url} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>
               成田利木津巴士（Klook）→
-            </a>
-            <a href={zhHanedaLimousineBus.url} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>
+            </KlookLink>
+            <KlookLink href={zhHanedaLimousineBus.url} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>
               羽田利木津巴士（Klook）→
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -522,12 +523,12 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             </li>
           </ul>
           <div style={{ marginTop: "1rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <a href={zhKlookEsim.url} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>
+            <KlookLink href={zhKlookEsim.url} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>
               查看 {zhKlookEsim.label} →
-            </a>
-            <a href={zhTokyoSubwayTicket.url} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>
+            </KlookLink>
+            <KlookLink href={zhTokyoSubwayTicket.url} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>
               查看 {zhTokyoSubwayTicket.label} →
-            </a>
+            </KlookLink>
           </div>
         </section>
 

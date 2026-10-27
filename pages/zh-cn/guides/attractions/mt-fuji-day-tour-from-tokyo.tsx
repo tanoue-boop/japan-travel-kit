@@ -13,6 +13,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import {
   cnFujiDayTour,
   cnFujiHakoneBulletTrainTour,
@@ -221,9 +222,9 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
               如果你宁愿看得少但看得仔细，选含河口湖与忍野八海的只跑富士山行程。不论哪一种，这一天大约 11 小时，
               而山可能在云里——请挑一个你就算没看到山也会满意其他停留点的行程。
             </p>
-            <a href={cnFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={cnFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               在 Klook 查看富士山一日游 →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -257,9 +258,9 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
                   {tourRows.map((row) => (
                     <tr key={row.tour}>
                       <td className={styles.tdProvider}>
-                        <a href={row.url} target="_blank" rel={KLOOK_REL} className={styles.tdLink}>
+                        <KlookLink href={row.url} target="_blank" rel={KLOOK_REL} className={styles.tdLink}>
                           {row.tour}
-                        </a>
+                        </KlookLink>
                       </td>
                       <td style={{ fontSize: "0.88rem" }}>{row.covers}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.length}</td>
@@ -321,9 +322,9 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
             {[cnFujiHakoneDayTour, cnFujiDayTour, cnFujiSubaruLineHakoneBusTour, cnFujiHakoneBulletTrainTour].map((t) => (
-              <a key={t.url} href={t.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              <KlookLink key={t.url} href={t.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
                 {t.label} →
-              </a>
+              </KlookLink>
             ))}
           </div>
         </section>
@@ -345,9 +346,9 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
               富士山加箱根的行程把 Subaru Line 五合目和大涌谷、芦之湖游船排在同一天。
               Klook 的界面看得懂，也接受海外信用卡。
             </p>
-            <a href={cnFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={cnFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               在 Klook 查看富士山一日游 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

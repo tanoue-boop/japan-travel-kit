@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -355,7 +356,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
               6:00 (6:30 from October to March) to 17:00. Deadlines and hours read off aiwafuku.com,
               senso-ji.jp and the shop listings on {CHECKED}.
             </p>
-            <a
+            <KlookLink
               href={asakusaKimonoAiwafukuNo2.url}
               target="_blank"
               rel="sponsored noopener"
@@ -363,7 +364,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
               style={{ marginTop: "1rem" }}
             >
               Check Asakusa kimono rental on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -429,9 +430,9 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             reads of its product pages with HTTP 403, so there is no figure we could have verified.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={asakusaKimonoKaminarimon.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asakusaKimonoKaminarimon.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Compare Asakusa kimono shops on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -676,9 +677,9 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
               ones go first in blossom and autumn season. Klook checks out in English, takes foreign
               cards, and shows each shop&apos;s own return deadline and cancellation terms before you pay.
             </p>
-            <a href={asakusaKimonoAiwafukuNo2.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={asakusaKimonoAiwafukuNo2.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View Asakusa kimono rental on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

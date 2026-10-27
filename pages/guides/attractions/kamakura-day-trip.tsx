@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kamakuraEnoshimaDayTourUrl, tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
@@ -274,9 +275,9 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
               are a seven-minute walk apart and come to ¥700 between them for an adult. Take a tour only if
               you want Enoshima added on and would rather not think about it.
             </p>
-            <a href={KAMAKURA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={KAMAKURA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Browse Kamakura Day Tours →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -572,9 +573,9 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
               Going independently by train is cheap and easy. If you&apos;d rather have the route and transport
               handled — and often Enoshima added on — a guided day tour from Tokyo does the planning for you.
             </p>
-            <a href={KAMAKURA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={KAMAKURA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               Browse Kamakura Day Tours →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

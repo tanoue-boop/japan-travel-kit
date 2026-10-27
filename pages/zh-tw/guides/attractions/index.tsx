@@ -12,6 +12,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { zhKlookEsim, zhTokyoSubwayTicket } from "../../../../lib/klook-links-zh-tw";
 import { attractionPrices, checkedLabel, latestChecked } from "../../../../lib/attraction-prices";
 import { pageUpdated } from "../../../../lib/page-dates";
@@ -260,12 +261,12 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
             通關之後最先用到的兩樣東西：手機上網，以及市區交通。打開商品頁看目前的方案與價格。
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-            <a href={zhKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            <KlookLink href={zhKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               {zhKlookEsim.label} →
-            </a>
-            <a href={zhTokyoSubwayTicket.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={zhTokyoSubwayTicket.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               {zhTokyoSubwayTicket.label} →
-            </a>
+            </KlookLink>
           </div>
         </section>
 

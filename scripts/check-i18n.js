@@ -15,9 +15,11 @@
  *      own language — 澀谷SKY 門票 on /zh-tw, 涩谷SKY 门票 on /zh-cn,
  *      시부야 스카이 예약 on /ko, ตั๋ว Shibuya Sky on /th;
  *   3. <html lang> and the canonical point at the page itself;
- *   4. every Klook link on a translated page is a www.klook.com URL in that
+ *   4. every Klook link on a translated page sells a www.klook.com product in that
  *      edition's own locale path (/zh-TW/, /zh-CN/, /ko/ or /th/) with aid=119070,
- *      and carries rel="sponsored noopener". The locale check is the point: a zh-CN
+ *      and carries rel="sponsored noopener". The product is read out of the
+ *      redirect's `k_site`, which is where it lives now that each link carries the
+ *      page's own `aff_adid`. The locale check is the point: a zh-CN
  *      page linking a /zh-TW/ product would hand a Singaporean reader a Traditional
  *      checkout priced in TWD, and a /ko/ page linking /en-US/ would hand a Korean
  *      reader an English one priced in USD.
@@ -158,15 +160,24 @@ for (const page of PAGE_GROUPS) {
     }
 
     // 4. Klook links: this edition's locale path, our aid, and rel="sponsored noopener".
+    //
+    // Since 27 Oct 2026 every Klook link is an affiliate.klook.com/redirect URL
+    // carrying the page's own `aff_adid`, with the product in `k_site` (see
+    // lib/klook-adids.ts). The product is what this check is about, so the
+    // locale test reads k_site; `aid=119070` is on the redirect itself.
     const urls = [...markup.matchAll(/href="(https:\/\/[^"]*klook[^"]*)"/g)].map((m) =>
       m[1].replace(/&amp;/g, "&"),
     );
     if (urls.length === 0) fail(`${route}: no Klook link on the page at all`);
     for (const url of new Set(urls)) {
-      if (!url.startsWith(KLOOK_PREFIX[locale])) fail(`${route}: Klook link not ${locale} — ${url}`);
+      const kSite = (url.match(/[?&]k_site=([^&]+)/) || [])[1];
+      const product = kSite ? decodeURIComponent(kSite) : url;
+      if (!product.startsWith(KLOOK_PREFIX[locale])) {
+        fail(`${route}: Klook link not ${locale} — ${product}`);
+      }
       if (!url.includes("aid=119070")) fail(`${route}: Klook link missing aid=119070 — ${url}`);
     }
-    const anchors = [...markup.matchAll(/<a\s[^>]*href="https:\/\/www\.klook\.com[^"]*"[^>]*>/g)].map((m) => m[0]);
+    const anchors = [...markup.matchAll(/<a\s[^>]*href="https:\/\/[^"]*klook\.com[^"]*"[^>]*>/g)].map((m) => m[0]);
     for (const anchor of anchors) {
       if (!/rel="sponsored noopener"/.test(anchor)) {
         fail(`${route}: Klook anchor without rel="sponsored noopener" — ${anchor.slice(0, 140)}`);

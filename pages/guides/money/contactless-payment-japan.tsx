@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookLink from "../../../components/KlookLink";
 import { contactlessTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -445,14 +446,14 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
               IC cards in Japan guide
             </Link>.
           </p>
-          <a
+          <KlookLink
             href={SUICA_URL}
             className={styles.pickCta}
             target="_blank"
             rel="sponsored noopener"
           >
             Get Suica on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* Tap-to-pay section */}

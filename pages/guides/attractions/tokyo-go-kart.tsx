@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -264,9 +265,9 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
               your own country before you fly — there is no way to get one in Japan and no on-the-spot
               workaround at the shop. Sort that first; everything else is detail.
             </p>
-            <a href={GOKART_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={GOKART_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Tokyo Street Go-Kart →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -485,9 +486,9 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
               Book your street go-kart tour ahead, then bring your International Driving Permit, home licence
               and passport on the day. Remember: the IDP must be sorted in your home country before you fly.
             </p>
-            <a href={GOKART_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={GOKART_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View Tokyo Street Go-Kart →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

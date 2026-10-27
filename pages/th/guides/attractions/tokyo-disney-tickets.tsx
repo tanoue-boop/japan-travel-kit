@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { thFujiDayTour, thTokyoDisney, thTokyoSightseeingBusTour } from "../../../../lib/klook-links-th";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -198,9 +199,9 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               และวันยอดนิยมจะเต็ม ถ้าเว็บไซต์ทางการปฏิเสธบัตรเครดิตต่างประเทศของคุณ Klook เป็นช่องทางขายตั๋ว
               ที่ได้รับอนุญาตอย่างเป็นทางการ รับบัตรต่างประเทศ และส่ง QR code ที่ผูกเข้าแอปทางการได้
             </p>
-            <a href={thTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={thTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               ดูตั๋วโตเกียวดิสนีย์ →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -349,12 +350,12 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             ลงในดิสนีย์ สองแผนด้านล่างเติมวันที่ไม่เข้าสวนได้ และจ่ายในบัญชี Klook เดียวกับตั๋ว
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-            <a href={thFujiDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            <KlookLink href={thFujiDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               ดู{thFujiDayTour.label} →
-            </a>
-            <a href={thTokyoSightseeingBusTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={thTokyoSightseeingBusTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               ดู{thTokyoSightseeingBusTour.label} →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -375,9 +376,9 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               หน้างานไม่มีขาย และวันยอดนิยมจะเต็ม จึงควรจองล่วงหน้า Klook เป็นช่องทางขายตั๋วที่ได้รับอนุญาต
               อย่างเป็นทางการ รับบัตรเครดิตต่างประเทศ และส่ง QR code ที่ผูกเข้าแอปทางการได้
             </p>
-            <a href={thTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={thTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               ดูตั๋วโตเกียวดิสนีย์ →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { thUsjExpressPass, thUsjStudioPass } from "../../../../lib/klook-links-th";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -177,12 +178,12 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               การเข้า Super Nintendo World
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={thUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={thUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 บัตร USJ (Studio Pass) →
-              </a>
-              <a href={thUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={thUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Express Pass USJ →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -337,9 +338,9 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               ซื้อ Studio Pass ออนไลน์ (จำเป็นตั้งแต่ปี 2025) แล้วเพิ่ม Express Pass หนึ่งใบ เพื่อเลี่ยงคน
               ช่วงครบรอบ 25 ปี และการันตีการเข้า Super Nintendo World
             </p>
-            <a href={thUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={thUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               ดูบัตร USJ และ Express Pass →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

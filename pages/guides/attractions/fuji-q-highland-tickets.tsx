@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import {
   fujiQHighlandQPack,
   fujiQHighlandPass,
@@ -264,9 +265,9 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
               car, the Q Pack is the one to book: it is the same pass with the round-trip bus from Shinjuku
               or Ueno attached. Pass prices read off fujiq.jp on {CHECKED}.
             </p>
-            <a href={fujiQHighlandQPack.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={fujiQHighlandQPack.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check the Fuji-Q Q Pack on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -531,9 +532,9 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
               voucher, with an English checkout — which is the difference between a day trip and a logistics
               exercise.
             </p>
-            <a href={fujiQHighlandQPack.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={fujiQHighlandQPack.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View the Fuji-Q Q Pack →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
@@ -260,9 +261,9 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Browse Tokyo Food Tours →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-food-tour" listing={gygTokyoFoodTours} />
             </div>
           </div>
@@ -549,9 +550,9 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               sake, and tiny bars with a guide to lead the way. Alcohol-inclusive tours are for ages 20 and over.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Browse Tokyo Food Tours →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-food-tour" listing={gygTokyoFoodTours} />
             </div>
           </div>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../lib/klook-links";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -271,9 +272,9 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
               timetable; take the coach if you want all three in one day without watching the clock. Either
               way, Toshogu&apos;s ¥1,600 admission is on you — no Tobu pass covers it.
             </p>
-            <a href={NIKKO_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={NIKKO_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Browse Nikko Day Tours →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -543,9 +544,9 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
               you&apos;d rather have Toshogu, Kegon Falls and Lake Chuzenji handled in one day, a guided tour
               from Tokyo does the route for you.
             </p>
-            <a href={NIKKO_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={NIKKO_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               Browse Nikko Day Tours →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

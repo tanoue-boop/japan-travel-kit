@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -277,12 +278,12 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
               with two-day tickets is the booking worth comparing if you have travelled to get there.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={legolandJapanHotelPackage.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={legolandJapanHotelPackage.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check the LEGOLAND Japan Hotel →
-              </a>
-              <a href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Check LEGOLAND Japan tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="legoland-japan-tickets" listing={gygLegolandJapan} />
             </div>
           </div>
@@ -454,12 +455,12 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             the park is worth it but whether one 10:00-to-17:00 day is enough of it.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check LEGOLAND Japan tickets on Klook →
-            </a>
-            <a href={legolandJapanSkipPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={legolandJapanSkipPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Skip Pass →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="legoland-japan-tickets" listing={gygLegolandJapan} />
           </div>
         </section>
@@ -628,12 +629,12 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
               your trip actually needs.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={legolandJapanHotelPackage.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={legolandJapanHotelPackage.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the LEGOLAND Japan Hotel →
-              </a>
-              <a href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 View LEGOLAND Japan tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="legoland-japan-tickets" listing={gygLegolandJapan} />
             </div>
           </div>

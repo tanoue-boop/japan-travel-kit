@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -439,9 +440,9 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               through Klook for an English, own-currency checkout that accepts foreign cards.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check teamLab Borderless Tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
             </div>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
@@ -610,9 +611,9 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           </p>
           {/* Existing Klook CTA, unchanged, with the GetYourGuide comparison beside it. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check teamLab Borderless dates and slots →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
@@ -702,9 +703,9 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Ready to lock a slot in?{" "}
-            <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener">
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener">
               Check Borderless availability and prices on Klook →
-            </a>
+            </KlookLink>
           </p>
         </section>
 
@@ -903,9 +904,9 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               ticketing partner, with an English checkout in your own currency and an e-ticket on your phone.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View teamLab Borderless Tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
             </div>
           </div>

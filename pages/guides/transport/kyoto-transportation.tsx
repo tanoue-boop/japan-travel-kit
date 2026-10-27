@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { kyotoStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -292,14 +293,14 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
                 <p className={styles.verdictStatValue}>Buses, subway, JR local trains</p>
               </div>
             </div>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.verdictBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Get Suica IC Card on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -383,14 +384,14 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Load your IC card before arriving in Kyoto to avoid queues at Kyoto Station machines — during cherry blossom and autumn leaf season, waits at vending machines can exceed 30 minutes.
           </p>
-          <a
+          <KlookLink
             href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
             className={styles.pickCta}
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
             Get Suica IC Card on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* Day Pass table */}
@@ -467,14 +468,14 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             You can also buy a voucher online via Klook in advance and exchange it for the pass after you arrive.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1266287&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F118071-kyoto-city-subway-and-bus-ticket%2F"
               className={styles.pickCta}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Book Kyoto Bus &amp; Subway Day Pass on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -501,22 +502,22 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265372&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F18400-jr-haruka-airport-express-train-tickets-osaka%2F"
               className={styles.pickCta}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Book Haruka Airport Express on Klook →
-            </a>
-            <a
+            </KlookLink>
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.pickCtaInternal}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Book JR Pass on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 

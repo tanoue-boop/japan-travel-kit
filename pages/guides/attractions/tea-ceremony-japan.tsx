@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kyotoHighlightBusTour, kyotoNaraArashiyamaTour } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
@@ -260,9 +261,9 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               listed on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Browse Tea Ceremony Experiences →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tea-ceremony-japan" listing={gygJapanTeaCeremonies} />
             </div>
           </div>
@@ -528,9 +529,9 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               a kimono.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Browse Tea Ceremony Experiences →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tea-ceremony-japan" listing={gygJapanTeaCeremonies} />
             </div>
           </div>

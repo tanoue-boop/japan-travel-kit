@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
@@ -267,9 +268,9 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
               children; confirm the language and minimum age when you book. Details as listed on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Browse Tokyo Cooking Classes →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-cooking-class" listing={gygTokyoCookingClasses} />
             </div>
           </div>
@@ -501,9 +502,9 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
               your slot in advance.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Browse Tokyo Cooking Classes →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-cooking-class" listing={gygTokyoCookingClasses} />
             </div>
           </div>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { hiroshimaMiyajimaBusTourUrl, osakaAmazingPass, kyotoHighlightBusTour } from "../../../lib/klook-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
@@ -278,9 +279,9 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
               Rail Pass covers Hikari and Sakura but not Nozomi or Mizuho. Take the coach if you would rather
               not think about tides and ferry timetables; check which city your chosen departure leaves from.
             </p>
-            <a href={HIROSHIMA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={HIROSHIMA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Browse Hiroshima Day Tours →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -552,9 +553,9 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
               Going by shinkansen gives you full control over the day. If you&apos;d rather have the trains, ferry,
               and lunch arranged for you, a guided tour covers both Hiroshima and Miyajima with an English guide.
             </p>
-            <a href={HIROSHIMA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={HIROSHIMA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               Browse Hiroshima Day Tours →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

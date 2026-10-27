@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import {
   hakoneFreepass,
   hakoneLoopBusTour,
@@ -278,9 +279,9 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
               only, a guided coach tour prices the transport for one day rather than two, and can pair Hakone
               with Mt. Fuji. Prices read off Odakyu&apos;s own site on {CHECKED}.
             </p>
-            <a href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check the Hakone Freepass on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -569,9 +570,9 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
               Klook sells the Odakyu Hakone Freepass as a QR voucher you scan to board, with no counter
               redemption. Children aged 0–5 travel free on the listing.
             </p>
-            <a href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View the Hakone Freepass on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

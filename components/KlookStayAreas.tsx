@@ -1,4 +1,5 @@
 import styles from "../styles/BestEsimJapan.module.css";
+import KlookLink from "./KlookLink";
 import type { KlookStayArea } from "../lib/klook-links";
 
 /**
@@ -28,14 +29,14 @@ export default function KlookStayAreas({ heading, intro, areas }: Props) {
             <span className={styles.proIcon}>▸</span>
             <span>
               <strong>{a.area}</strong> — {a.why}{" "}
-              <a
+              <KlookLink
                 href={a.url}
                 target="_blank"
                 rel="sponsored noopener"
                 style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 Hotels on Klook →
-              </a>
+              </KlookLink>
             </span>
           </li>
         ))}

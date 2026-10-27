@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -370,7 +371,7 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
               departures from Tsukiji Hongan-ji. The tuna auction is not here — it moved to Toyosu in
               2018. Hours read off tsukiji.or.jp on {CHECKED}.
             </p>
-            <a
+            <KlookLink
               href={tsukijiStreetFoodTour.url}
               target="_blank"
               rel="sponsored noopener"
@@ -378,7 +379,7 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
               style={{ marginTop: "1rem" }}
             >
               Check Tsukiji food tours on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -532,9 +533,9 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
             open a listing for the current price and its cancellation terms on your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={tsukijiFoodCultureWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tsukijiFoodCultureWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Compare Tsukiji tours on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -726,9 +727,9 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
               market trading rather than winding down. Klook checks out in English, takes foreign cards,
               and shows each tour&apos;s own cancellation terms before you pay.
             </p>
-            <a href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View Tsukiji food tours on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -458,7 +459,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
               Planets) and {PRICES.tokyoTower.adult} (Tokyo Tower Main Deck) on the dates in the table
               below.
             </p>
-            <a
+            <KlookLink
               href={tokyoSubwayTicket.url}
               target="_blank"
               rel="sponsored noopener"
@@ -466,7 +467,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
               style={{ marginTop: "1rem" }}
             >
               Check the Tokyo Subway Ticket on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -535,12 +536,12 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             puts the four side by side.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Shibuya Sky tickets →
-            </a>
-            <a href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Tokyo Subway Ticket →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -588,12 +589,12 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check teamLab Planets tickets →
-            </a>
-            <a href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check TOKYO SKYTREE tickets →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -735,12 +736,12 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             the same split across the whole city rather than just this itinerary.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               teamLab Planets on Klook →
-            </a>
-            <a href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Shibuya Sky on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -787,24 +788,24 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             {" "}explains how IC cards and the subway lines fit together.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Narita Express round trip →
-            </a>
-            <a href={keiseiSkylinerUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Keisei Skyliner ticket →
-            </a>
-            <a href={naritaBusSubwayCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={naritaBusSubwayCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Narita bus + subway pass →
-            </a>
+            </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             One more arrival-day booking that is not transport: data. Every timed ticket on this
             itinerary is a QR code in an inbox, and every one of the &ldquo;getting there&rdquo; columns
             above assumes you can open a map. An eSIM activated before departure means none of that
             depends on finding airport Wi-Fi.{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
-            </a>{" "}
+            </KlookLink>{" "}
             Our{" "}
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it
             against the alternatives.
@@ -1100,9 +1101,9 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
               the official sites sometimes reject, and keeps all three days on one account.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Book the timed tickets on Klook →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-3-day-itinerary" listing={gygTeamlabPlanets} />
             </div>
           </div>

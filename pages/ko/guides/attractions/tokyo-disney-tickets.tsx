@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { koFujiDayTour, koTokyoDisney, koTokyoSightseeingBusTour } from "../../../../lib/klook-links-ko";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -198,9 +199,9 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               없고 인기 날짜는 마감됩니다. 공식 사이트가 해외 발행 카드를 거부하면 클룩이 공식 승인 판매
               채널이고, 해외 카드를 받고 공식 앱에 등록할 수 있는 QR 코드를 보냅니다.
             </p>
-            <a href={koTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={koTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               도쿄 디즈니 티켓 보기 →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -351,12 +352,12 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             클룩 계정에서 결제됩니다.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-            <a href={koFujiDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            <KlookLink href={koFujiDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               {koFujiDayTour.label} 보기 →
-            </a>
-            <a href={koTokyoSightseeingBusTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={koTokyoSightseeingBusTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               {koTokyoSightseeingBusTour.label} 보기 →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -377,9 +378,9 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               현장 판매가 없고 인기 날짜는 마감되므로 미리 예약하세요. 클룩은 공식 승인 판매 채널로 해외 발행
               신용카드를 받고, 공식 앱에 등록할 수 있는 QR 코드를 보냅니다.
             </p>
-            <a href={koTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={koTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               도쿄 디즈니 티켓 보기 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

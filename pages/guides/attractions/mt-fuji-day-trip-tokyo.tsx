@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
@@ -289,9 +290,9 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
               four services a day each way. The one thing you cannot do on your own is the Fifth Station on
               the mountain itself; that needs a coach.
             </p>
-            <a href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Tokyo–Mt. Fuji bus seats on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -603,9 +604,9 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
               The direct train runs only a handful of times a day and every seat is reserved, so the bus is
               the more forgiving booking. Klook checks out in English and takes foreign cards.
             </p>
-            <a href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View Tokyo–Mt. Fuji bus tickets on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

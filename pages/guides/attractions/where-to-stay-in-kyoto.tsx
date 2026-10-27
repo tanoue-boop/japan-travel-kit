@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -333,9 +334,9 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
               you — check what is actually free on your dates.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={whereToStayKyotoAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={whereToStayKyotoAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Kyoto Station hotels on Klook →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -595,12 +596,12 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
             yet.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={whereToStayKyotoAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={whereToStayKyotoAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Karasuma Oike hotels on Klook →
-            </a>
-            <a href={whereToStayKyotoAreas[2].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={whereToStayKyotoAreas[2].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Gion hotels on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -744,12 +745,12 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
               it answers it quickly.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={whereToStayKyotoAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={whereToStayKyotoAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Check Kyoto Station hotels on Klook →
-              </a>
-              <a href={whereToStayKyotoAreas[3].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={whereToStayKyotoAreas[3].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Check Arashiyama hotels on Klook →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

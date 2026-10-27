@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -361,12 +362,12 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
               Amazing Pass. All read off kaiyukan.com on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Kaiyukan tickets on Klook →
-              </a>
-              <a href={osakaAmazingPassKaiyukanCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={osakaAmazingPassKaiyukanCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 With the Amazing Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -450,15 +451,15 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kaiyukan admission on Klook →
-            </a>
-            <a href={kaiyukanLegolandCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kaiyukanLegolandCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               With LEGOLAND next door →
-            </a>
-            <a href={kaiyukanNifrelCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kaiyukanNifrelCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               With NIFREL at Expocity →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -499,9 +500,9 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Kaiyukan tickets on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -600,12 +601,12 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             that does.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={osakaAmazingPassKaiyukanCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPassKaiyukanCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Amazing Pass + Kaiyukan on Klook →
-            </a>
-            <a href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Just the aquarium →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -764,12 +765,12 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
               your own date before you pay.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Kaiyukan tickets on Klook →
-              </a>
-              <a href={osakaAmazingPassKaiyukanCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={osakaAmazingPassKaiyukanCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 With the Amazing Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

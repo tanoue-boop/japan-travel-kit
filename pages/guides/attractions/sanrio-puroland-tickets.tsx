@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { sanrioPurolandTicket, tokyoSightseeingBusTour, warnerBrosStudioTourTokyo } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -259,9 +260,9 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
               same date, because the official site refuses entry without one. Prices read off puroland.jp on{" "}
               {CHECKED}.
             </p>
-            <a href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Sanrio Puroland tickets on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -535,9 +536,9 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
               Japanese attraction site has already refused your card. Remember to register the arrival
               reservation for the same date.
             </p>
-            <a href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View Sanrio Puroland tickets →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

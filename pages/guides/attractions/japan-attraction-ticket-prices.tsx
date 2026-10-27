@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import {
@@ -127,14 +128,14 @@ function PriceRow({ price }: { price: AttractionPrice }) {
           Full guide →
         </Link>
         {price.klook ? (
-          <a
+          <KlookLink
             href={price.klook.url}
             target="_blank"
             rel="noopener noreferrer nofollow"
             style={{ color: "var(--accent)", fontWeight: 600, display: "block", marginTop: "0.3rem" }}
           >
             {price.klook.label} →
-          </a>
+          </KlookLink>
         ) : (
           <span style={{ color: "var(--text-muted)", display: "block", marginTop: "0.3rem" }}>No ticket to buy</span>
         )}

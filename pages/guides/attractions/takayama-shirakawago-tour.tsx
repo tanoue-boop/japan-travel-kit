@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -374,12 +375,12 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
               own sites on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 English-Guided Day From Kanazawa →
-              </a>
-              <a href={takayamaShirakawagoNagoyaDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              </KlookLink>
+              <KlookLink href={takayamaShirakawagoNagoyaDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Day Trip From Nagoya →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -455,15 +456,15 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             mind reading the plaques yourself, the Takayama day is shorter and covers more ground.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={takayamaShirakawagoGokayamaUnescoTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={takayamaShirakawagoGokayamaUnescoTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Takayama: Gokayama &amp; the deck →
-            </a>
-            <a href={shirakawagoGokayamaKanazawaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={shirakawagoGokayamaKanazawaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kanazawa: with Gokayama →
-            </a>
-            <a href={shirakawagoTakayamaOldTownDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={shirakawagoTakayamaOldTownDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Nagoya: Hida beef lunch option →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -509,9 +510,9 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             both are private highway buses.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shirakawagoLineBusTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoLineBusTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Nohi Shirakawa-go Line bus ticket →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -572,12 +573,12 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             week by week.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shirakawagoLightUpTakayamaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoLightUpTakayamaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Light-up day from Takayama →
-            </a>
-            <a href={shirakawagoObservationDeckDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={shirakawagoObservationDeckDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Day tour with deck access →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -621,15 +622,15 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> the rest.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               English-guided day from Kanazawa →
-            </a>
-            <a href={shirakawagoKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={shirakawagoKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Shirakawa-go + Kanazawa in a day →
-            </a>
-            <a href={takayamaShirakawagoOneDayBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={takayamaShirakawagoOneDayBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Takayama: the village and the old town →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -705,9 +706,9 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             night before, and the single road in closes in heavy snow — the listings say so themselves.
             An eSIM activated before you fly turns all of that into something you can check from a bus stop
             in a valley with no station.{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
-            </a>{" "}
+            </KlookLink>{" "}
             Our{" "}
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it against
             the alternatives.
@@ -829,12 +830,12 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
               and no tickets on the door.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Guided Days →
-              </a>
-              <a href={shirakawagoLineBusTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={shirakawagoLineBusTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Nohi Bus Ticket →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

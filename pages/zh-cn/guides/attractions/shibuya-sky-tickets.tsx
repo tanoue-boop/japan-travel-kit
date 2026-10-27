@@ -13,6 +13,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { cnShibuyaSky } from "../../../../lib/klook-links-zh-cn";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -227,9 +228,9 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               <strong>结论：</strong>网上买（{ADULT}，比现场便宜）并尽量挑日落场——那是最先售罄的时段。
               如果你的卡是海外发行的，走 Klook 比较稳：可以用海外卡结账，入场前 24 小时内还能免费取消。
             </p>
-            <a href={cnShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={cnShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               查看涩谷SKY 门票 →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -367,9 +368,9 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               网上买比现场便宜，也是锁住日落场的唯一方式。Klook 可以用海外信用卡结账，入场前 24 小时内免费取消——
               东京天气变了也不心疼。
             </p>
-            <a href={cnShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={cnShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               查看涩谷SKY 门票 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

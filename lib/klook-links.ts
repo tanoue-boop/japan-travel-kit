@@ -19,7 +19,17 @@
 
 export const KLOOK_AID = "119070";
 
-/** A Klook page URL with our affiliate id appended — the format Klook documents. */
+/**
+ * A Klook page URL with our affiliate id appended — the format Klook documents.
+ *
+ * This is no longer the URL a reader clicks. Since 27 Oct 2026 every Klook
+ * anchor goes through components/KlookLink.tsx, which rebuilds whatever is in
+ * this file into an `affiliate.klook.com/redirect` URL carrying the ad id of
+ * the page the link sits on — the only way Klook's report can say which article
+ * made a booking. See lib/klook-adids.ts. The `?aid=` form survives as the
+ * product URL these constants hold, and as the fallback for a page that has no
+ * ad id yet; the `aid` is stripped before the URL goes into `k_site`.
+ */
 export function klookLink(pageUrl: string): string {
   return `${pageUrl}${pageUrl.includes("?") ? "&" : "?"}aid=${KLOOK_AID}`;
 }

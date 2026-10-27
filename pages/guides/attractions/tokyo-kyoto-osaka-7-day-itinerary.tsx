@@ -4,6 +4,7 @@ import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -1034,7 +1035,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
                 <p className={styles.verdictStatValue}>No — two trains do not pay for ¥50,000</p>
               </div>
             </div>
-            <a
+            <KlookLink
               href={shinkansenTokyoKyoto.url}
               target="_blank"
               rel="sponsored noopener"
@@ -1042,7 +1043,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
               style={{ marginTop: "1rem" }}
             >
               Check Tokyo → Kyoto shinkansen tickets on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -1137,7 +1138,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               {day.picks.map((pick) => (
-                <a
+                <KlookLink
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
@@ -1145,7 +1146,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
                   className={styles.pickCta}
                 >
                   {pick.label}
-                </a>
+                </KlookLink>
               ))}
               {day.gyg ? (
                 <GygCompareButton slug="tokyo-kyoto-osaka-7-day-itinerary" listing={day.gyg} />
@@ -1221,15 +1222,15 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             Day 4 date is fixed rather than after.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo → Kyoto shinkansen on Klook →
-            </a>
-            <a href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JAPAN RAIL PASS on Klook →
-            </a>
-            <a href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JR Haruka to Kansai Airport →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -1320,15 +1321,15 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             is fixed; they differ by product, and we do not restate them here because they change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               teamLab Planets on Klook →
-            </a>
-            <a href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Shibuya Sky on Klook →
-            </a>
-            <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Osaka Amazing Pass on Klook →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="tokyo-kyoto-osaka-7-day-itinerary" listing={gygTeamlabPlanets} />
           </div>
         </section>
@@ -1432,9 +1433,9 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             on this plan is a QR code in an inbox, every &ldquo;getting there&rdquo; column above
             assumes you can open a map, and the Kyoto bus network is the part of the week where that
             matters most.{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
-            </a>{" "}
+            </KlookLink>{" "}
             Our{" "}
             <Link href="/guides/esim/japan-esim-data-plans">Japan eSIM data plans guide</Link> works
             out how much data a week of maps, tickets and messaging actually needs, and our{" "}
@@ -1737,9 +1738,9 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
               account.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Book the Tokyo → Kyoto shinkansen on Klook →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="tokyo-kyoto-osaka-7-day-itinerary" listing={gygKyoto} />
             </div>
           </div>

@@ -12,6 +12,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { cnKlookEsim, cnTokyoSubwayTicket } from "../../../../lib/klook-links-zh-cn";
 import { attractionPrices, checkedLabel, latestChecked } from "../../../../lib/attraction-prices";
 import { pageUpdated } from "../../../../lib/page-dates";
@@ -264,12 +265,12 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
             过海关之后最先用到的两样东西：手机上网，以及市区交通。打开商品页看目前的方案与价格。
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-            <a href={cnKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            <KlookLink href={cnKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               {cnKlookEsim.label} →
-            </a>
-            <a href={cnTokyoSubwayTicket.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={cnTokyoSubwayTicket.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               {cnTokyoSubwayTicket.label} →
-            </a>
+            </KlookLink>
           </div>
         </section>
 

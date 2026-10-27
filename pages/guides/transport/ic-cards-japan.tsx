@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -224,9 +225,9 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
                 <p className={styles.verdictStatValue}>¥500 (refundable)</p>
               </div>
             </div>
-            <a href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
+            <KlookLink href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F" className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
               Get Suica on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 

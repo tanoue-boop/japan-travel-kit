@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   kyotoNaraArashiyamaTour,
@@ -280,9 +281,9 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
               ¥800 is in the price, because some itineraries stop at the park.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Browse Nara Day Tours →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="nara-day-trip" listing={gygNara} />
             </div>
           </div>
@@ -559,9 +560,9 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
               guided tour can pair Nara with Kyoto highlights and sort the transport for you.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Browse Nara Day Tours →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="nara-day-trip" listing={gygNara} />
             </div>
           </div>

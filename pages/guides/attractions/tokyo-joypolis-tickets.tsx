@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -378,7 +379,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
               attractions have a minimum height and the two headline rides need 130 cm. Prices read off
               tokyo-joypolis.com on {CHECKED}.
             </p>
-            <a
+            <KlookLink
               href={tokyoJoypolisPassport.url}
               target="_blank"
               rel="sponsored noopener"
@@ -386,7 +387,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
               style={{ marginTop: "1rem" }}
             >
               Check the Joypolis Passport on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -468,12 +469,12 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Joypolis Passport on Klook →
-            </a>
-            <a href={tokyoJoypolisTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={tokyoJoypolisTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               The entry-only listing →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -565,9 +566,9 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Passport on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -787,9 +788,9 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
               your date before you pay.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Joypolis Passport on Klook →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

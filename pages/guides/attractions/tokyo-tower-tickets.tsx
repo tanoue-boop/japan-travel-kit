@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { tokyoTowerTicket, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -292,9 +293,9 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
               price, it carries a reserved entry time, and it already includes the Main Deck. Prices read off
               the official site on {CHECKED}.
             </p>
-            <a href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Tokyo Tower tickets on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -566,9 +567,9 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
               upgrade on the same listing — useful if a Japanese attraction site has already refused your
               card.
             </p>
-            <a href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View Tokyo Tower tickets →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -274,7 +275,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
               ¥1,200 30-hour pass when your sightseeing straddles two calendar days. Only taking two or three rides?
               Use a pay-as-you-go <strong>ICOCA</strong>.
             </p>
-            <a
+            <KlookLink
               href={METRO_URL}
               className={styles.pickCta}
               target="_blank"
@@ -282,7 +283,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
               style={{ marginTop: "1rem", display: "inline-block" }}
             >
               Check Osaka Metro Pass prices on Klook →
-            </a>
+            </KlookLink>
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", marginTop: "0.75rem" }}>
               Prices and conditions checked {CHECKED} on subway.osakametro.co.jp, osaka-info.jp and osp.osaka-info.jp.
               For the full rundown on lines, hubs and IC cards, see our{" "}
@@ -372,7 +373,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
               </div>
             ))}
           </div>
-          <a
+          <KlookLink
             href={METRO_URL}
             className={styles.pickCta}
             target="_blank"
@@ -380,7 +381,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             Check Osaka Metro Pass prices on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* How long is a day */}
@@ -489,7 +490,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             your passport. Because the underlying tickets changed on 1 October 2026, check on the product page which
             ticket and which price you are actually buying before you book.
           </p>
-          <a
+          <KlookLink
             href={METRO_URL}
             className={styles.pickCta}
             target="_blank"
@@ -497,7 +498,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             style={{ marginTop: "0.5rem", display: "inline-block" }}
           >
             Check Osaka Metro Pass prices on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* FAQ */}
@@ -598,9 +599,9 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
               Compare the voucher price against the ¥1,200 Yoh-okoshi 30h Pass before you book, and check which ticket
               the listing covers.
             </p>
-            <a href={METRO_URL} className={styles.ctaBannerBtn} target="_blank" rel="sponsored noopener">
+            <KlookLink href={METRO_URL} className={styles.ctaBannerBtn} target="_blank" rel="sponsored noopener">
               Check Osaka Metro Pass prices on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

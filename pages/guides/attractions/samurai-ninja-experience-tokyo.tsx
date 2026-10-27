@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { tokyoSubwayTicket, tokyoSightseeingBusTour, skytreeTicket } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
@@ -256,9 +257,9 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
               plan around Asakusa. Confirm the minimum age before booking. Details as listed on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Browse Samurai &amp; Ninja Experiences →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="samurai-ninja-experience-tokyo" listing={gygTokyoSamuraiNinja} />
             </div>
           </div>
@@ -524,9 +525,9 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
               and book your slot in advance.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Browse Samurai &amp; Ninja Experiences →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="samurai-ninja-experience-tokyo" listing={gygTokyoSamuraiNinja} />
             </div>
           </div>

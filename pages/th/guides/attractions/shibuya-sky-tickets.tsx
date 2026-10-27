@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { thShibuyaSky } from "../../../../lib/klook-links-th";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -222,9 +223,9 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               เพราะเป็นรอบที่หมดก่อนใคร ถ้าบัตรของคุณออกนอกญี่ปุ่น จองผ่าน Klook จะชัวร์กว่า จ่ายด้วยบัตร
               ต่างประเทศได้ และยกเลิกฟรีได้ถึง 24 ชั่วโมงก่อนเข้าชม
             </p>
-            <a href={thShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={thShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               ดูตั๋ว Shibuya Sky →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -365,9 +366,9 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               ซื้อออนไลน์ถูกกว่าหน้างาน และเป็นวิธีเดียวที่จะได้รอบพระอาทิตย์ตก Klook จ่ายด้วยบัตรเครดิต
               ต่างประเทศได้ และยกเลิกฟรีได้ถึง 24 ชั่วโมงก่อนเข้าชม ถ้าอากาศโตเกียวเปลี่ยนก็ไม่เสียเงินเปล่า
             </p>
-            <a href={thShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={thShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               ดูตั๋ว Shibuya Sky →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

@@ -6,13 +6,14 @@
     "dev": "next dev",
     "sitemap": "node scripts/generate-sitemap.js",
     "llms": "node scripts/generate-llms-txt.js",
-    "prebuild": "node scripts/generate-sitemap.js && node scripts/generate-llms-txt.js",
+    "prebuild": "node scripts/generate-sitemap.js && node scripts/generate-llms-txt.js && node scripts/check-klook-adids.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "check:links": "node scripts/check-internal-links.js",
     "check:jsonld": "node scripts/check-jsonld.js",
-    "check:i18n": "node scripts/check-i18n.js"
+    "check:i18n": "node scripts/check-i18n.js",
+    "check:klook": "node scripts/check-klook-adids.js --built"
   },
   "dependencies": {
     "next": "14.2.29",

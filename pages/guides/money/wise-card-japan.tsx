@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookLink from "../../../components/KlookLink";
 import { klookEsim, naritaExpressRoundTripUrl, tokyoSubwayTicket, wiseCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -474,13 +475,13 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             It also favours needing less cash in the first place — and two of the things people queue at an
             arrivals-hall ATM for do not need yen at all, because they can be paid for on the card before you
             leave home. A{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan eSIM
-            </a>{" "}
+            </KlookLink>{" "}
             means your data is live the moment you land rather than something to buy at a counter, and a{" "}
-            <a href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Tokyo Subway Ticket
-            </a>{" "}
+            </KlookLink>{" "}
             covers Tokyo Metro and Toei travel without an IC card balance to top up in cash. Both go to Klook,
             which pays us a commission at no extra cost to you; prices are Klook&apos;s and we do not quote them
             here, because its product pages block automated checks.
@@ -653,9 +654,9 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText}>
             The one thing worth settling before you need that reserve is the ride out of the airport, because it is
             among the few Japanese transport fares you can pay by card well in advance:{" "}
-            <a href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               the Narita Express round trip
-            </a>{" "}
+            </KlookLink>{" "}
             is bookable on Klook before you fly, which leaves the arrivals-hall ATM as something you choose rather
             than something you need. The link is an affiliate one and the price is Klook&apos;s.
           </p>

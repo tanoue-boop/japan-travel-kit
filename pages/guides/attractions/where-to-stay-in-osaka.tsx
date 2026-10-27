@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -305,9 +306,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
               — check what is left on your dates.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Namba hotels on Klook →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -503,12 +504,12 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             three districts.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={whereToStayOsakaAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={whereToStayOsakaAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Umeda hotels on Klook →
-            </a>
-            <a href={whereToStayOsakaAreas[3].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={whereToStayOsakaAreas[3].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Universal City hotels on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -690,12 +691,12 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
               them side by side.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Check Namba hotels on Klook →
-              </a>
-              <a href={whereToStayOsakaAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={whereToStayOsakaAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Check Umeda hotels on Klook →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

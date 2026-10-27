@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import {
   formatUsd,
   getProvider,
@@ -726,7 +727,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             Also available — {klookEsim.name}
           </h3>
           <p className={styles.bodyText}>{klookEsim.note}</p>
-          <a
+          <KlookLink
             href={klookEsim.url}
             className={styles.pickCta}
             target="_blank"
@@ -734,7 +735,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             style={{ marginTop: "0.5rem", display: "inline-flex" }}
           >
             {klookEsim.ctaLabel}
-          </a>
+          </KlookLink>
           <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
             Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;. No price or data allowance
             is quoted here because the listing could not be read automatically on{" "}
@@ -774,7 +775,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
                 <li><span className={styles.proIcon}>✓</span>Only buy unlimited if you stream or hotspot daily — see the notes above</li>
                 <li><span className={styles.proIcon}>✓</span>Buying tickets or transport on Klook already? Its own Japan eSIM keeps it to one checkout</li>
               </ul>
-              <a
+              <KlookLink
                 href={klookEsim.url}
                 className={styles.pickCta}
                 target="_blank"
@@ -782,7 +783,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
                 style={{ marginTop: "0.75rem", display: "inline-flex" }}
               >
                 {klookEsim.ctaLabel}
-              </a>
+              </KlookLink>
             </div>
           </div>
         </section>

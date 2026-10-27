@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import JrPassCalculator from "../../../components/JrPassCalculator";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -630,15 +631,15 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             operator&apos;s prices, which is why they are not reprinted here.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Kansai Area Pass on Klook →
-            </a>
-            <a href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Kansai Mini Pass on Klook →
-            </a>
-            <a href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Kansai WIDE pass on Klook →
-            </a>
+            </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Those three links go to Klook, which pays us a commission at no extra cost to you. We quote the
@@ -961,14 +962,14 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
               If your itinerary clears the break-even line, lock in the 7-day Japan Rail Pass and travel
               long-distance without buying tickets each time.
             </p>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.ctaBannerBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               View JR Pass Options →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

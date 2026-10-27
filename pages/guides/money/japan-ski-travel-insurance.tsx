@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   galaNaebaSkiDayTripTokyo,
@@ -381,9 +382,9 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
               <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.verdictBtn}>
                 Get a SafetyWing quote →
               </a>
-              <a href={RENTAL_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={RENTAL_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Reserve Ski Rental →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -626,12 +627,12 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             anything else you book in Japan. A warm week in January genuinely closes runs.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={DAY_TRIP_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={DAY_TRIP_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Hakuba Day Trip From Tokyo →
-            </a>
-            <a href={RENTAL_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={RENTAL_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Niseko Ski Rental →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -753,9 +754,9 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
               <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.ctaBannerBtn}>
                 Get a SafetyWing quote →
               </a>
-              <a href={RENTAL_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={RENTAL_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Ski Rental →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -327,12 +328,12 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
               opens the building interiors, Hill of Youth and Dondoko Forest.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check the Nagoya Ghibli Park tour →
-              </a>
-              <a href={ghibliParkTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={ghibliParkTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 Check Ghibli Park tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="ghibli-park-tickets" listing={gygGhibliPark} />
             </div>
           </div>
@@ -462,12 +463,12 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={ghibliParkTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ghibliParkTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Ghibli Park tickets on Klook →
-            </a>
-            <a href={ghibliParkTicketHotelPackage.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={ghibliParkTicketHotelPackage.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the ticket + Nagoya hotel package →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="ghibli-park-tickets" listing={gygGhibliPark} />
           </div>
         </section>
@@ -491,9 +492,9 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             guided versions of the day rather than to wait for a release that does not come.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Nagoya bus tour with park entry →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="ghibli-park-tickets" listing={gygNagoyaEntryTickets} label="Compare Nagoya tickets on GetYourGuide →" />
           </div>
         </section>
@@ -696,12 +697,12 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
               Grand Warehouse slot you want, and have the seller open before the hour.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Nagoya Ghibli Park tour →
-              </a>
-              <a href={ghibliParkTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              </KlookLink>
+              <KlookLink href={ghibliParkTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
                 View Ghibli Park tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="ghibli-park-tickets" listing={gygGhibliPark} />
             </div>
           </div>

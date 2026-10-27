@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { jrHarukaUrl, nankaiRapitUrl } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -292,7 +293,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
               </div>
             ))}
           </div>
-          <a
+          <KlookLink
             href={HARUKA_URL}
             className={styles.pickCta}
             target="_blank"
@@ -300,7 +301,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             Book Haruka Express on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* Rapi:t guide */}
@@ -318,7 +319,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
               </div>
             ))}
           </div>
-          <a
+          <KlookLink
             href={RAPIT_URL}
             className={styles.pickCta}
             target="_blank"
@@ -326,7 +327,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             Book Nankai Rapi:t on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* Verdict */}
@@ -442,12 +443,12 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
               at KIX.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={HARUKA_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">
+              <KlookLink href={HARUKA_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">
                 Book Haruka →
-              </a>
-              <a href={RAPIT_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">
+              </KlookLink>
+              <KlookLink href={RAPIT_URL} className={styles.ctaBannerBtn} target="_blank" rel="noopener noreferrer nofollow">
                 Book Rapi:t →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

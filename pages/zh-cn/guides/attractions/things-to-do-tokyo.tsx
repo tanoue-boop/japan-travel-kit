@@ -13,6 +13,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import {
   cnFujiHakoneDayTour,
   cnSkytreeTicket,
@@ -252,9 +253,9 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
             {[cnTokyoSubwayTicket, cnSkytreeTicket, cnTokyoSightseeingBusTour, cnFujiHakoneDayTour].map((t) => (
-              <a key={t.url} href={t.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              <KlookLink key={t.url} href={t.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
                 {t.label} →
-              </a>
+              </KlookLink>
             ))}
           </div>
         </section>

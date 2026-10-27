@@ -13,6 +13,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { cnFujiDayTour, cnTokyoDisney, cnTokyoSightseeingBusTour } from "../../../../lib/klook-links-zh-cn";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -199,9 +200,9 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               <strong>结论：</strong>先选园区与日期，然后提前把一日票订下来——现场不卖票，热门日期会售罄。
               如果官网拒绝你的海外信用卡，Klook 是官方授权的销售渠道，接受海外卡，并发送可以绑进官方 App 的二维码。
             </p>
-            <a href={cnTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={cnTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               查看东京迪士尼门票 →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -347,12 +348,12 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             非园区的那一天，而且和门票在同一个 Klook 账号里结账。
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-            <a href={cnFujiDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            <KlookLink href={cnFujiDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               查看{cnFujiDayTour.label} →
-            </a>
-            <a href={cnTokyoSightseeingBusTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={cnTokyoSightseeingBusTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               查看{cnTokyoSightseeingBusTour.label} →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -374,9 +375,9 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               现场不卖票，热门日期会售罄，所以请提前订。Klook 是官方授权的销售渠道，接受海外信用卡，
               并发送可以绑进官方 App 的二维码。
             </p>
-            <a href={cnTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={cnTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               查看东京迪士尼门票 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

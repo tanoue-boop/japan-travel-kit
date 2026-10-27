@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -256,12 +257,12 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
               months, a sumo stable morning practice tour gets you ringside year-round.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={SUMO_TOURNAMENT_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={SUMO_TOURNAMENT_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Tournament Tour on Klook →
-              </a>
-              <a href={SUMO_PRACTICE_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={SUMO_PRACTICE_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Morning Practice Tours →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -482,12 +483,12 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
               morning practice any time of year. Booking ahead is the safest way to secure a spot.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={SUMO_TOURNAMENT_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
+              <KlookLink href={SUMO_TOURNAMENT_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
                 Tournament Tour on Klook →
-              </a>
-              <a href={SUMO_PRACTICE_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={SUMO_PRACTICE_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
                 Morning Practice Tours →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   shinsekaiNightFoodTour,
@@ -365,12 +366,12 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
               Book the evening if you only book one.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check the Shinsekai night tour →
-              </a>
-              <a href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              </KlookLink>
+              <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check the Dotonbori daytime walk →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -412,12 +413,12 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.1rem" }}>
-            <a href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Open the Shinsekai listing →
-            </a>
-            <a href={kuromonMarketFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={kuromonMarketFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Open the Kuromon market walk →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -490,12 +491,12 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.2rem" }}>
-            <a href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check departures on your date →
-            </a>
-            <a href={shinsekaiHalfDayFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={shinsekaiHalfDayFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Second Shinsekai departure →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -564,12 +565,12 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             already slots a food walk into each of them.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check the Dotonbori cruise →
-            </a>
-            <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check the Osaka Amazing Pass →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -714,12 +715,12 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
               over. Details as listed on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Check the Shinsekai night tour →
-              </a>
-              <a href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Or the 11:00 Dotonbori walk →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

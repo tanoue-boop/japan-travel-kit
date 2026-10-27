@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import {
   getProvider,
   priceFrom,
@@ -652,7 +653,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             Short trip, data only — also worth a look: {klookEsim.name}
           </h3>
           <p className={styles.bodyText}>{klookEsim.note}</p>
-          <a
+          <KlookLink
             href={klookEsim.url}
             className={styles.pickCta}
             target="_blank"
@@ -660,7 +661,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             style={{ marginTop: "0.5rem", display: "inline-flex" }}
           >
             {klookEsim.ctaLabel}
-          </a>
+          </KlookLink>
           <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
             Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;, on {klookEsim.specNetwork},
             and {klookEsim.specPhoneNumber.toLowerCase()} — so it sits in the same data-only
@@ -733,7 +734,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
               <li><span className={styles.proIcon}>✓</span>Delivered as a QR-code voucher, which is install route one below</li>
               <li><span className={styles.proIcon}>✓</span>Need a Japanese number instead? Use the Sakura Mobile link above, not this one</li>
             </ul>
-            <a
+            <KlookLink
               href={klookEsim.url}
               className={styles.pickCta}
               target="_blank"
@@ -741,7 +742,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
               style={{ marginTop: "0.75rem", display: "inline-flex" }}
             >
               {klookEsim.ctaLabel}
-            </a>
+            </KlookLink>
           </div>
         </div>
 

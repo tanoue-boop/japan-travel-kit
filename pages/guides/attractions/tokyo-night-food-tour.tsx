@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   shinjukuNightFoodWalkingTour,
@@ -373,12 +374,12 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
               see the same alleys on a full stomach.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check the Shinjuku night food walk →
-              </a>
-              <a href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              </KlookLink>
+              <KlookLink href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check the three-bar crawl →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -420,12 +421,12 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.1rem" }}>
-            <a href={goldenGaiFoodTastingExperience.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={goldenGaiFoodTastingExperience.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Open the Golden Gai tasting →
-            </a>
-            <a href={shinjukuPrivateNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={shinjukuPrivateNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Open the private evening →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -503,12 +504,12 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.2rem" }}>
-            <a href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check departures on your date →
-            </a>
-            <a href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check the subway ticket →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -532,12 +533,12 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
             lights-and-streets evening with the train fares between stops included rather than a bar crawl.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check the Ueno–Akihabara–Shibuya night tour →
-            </a>
-            <a href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check the Tsukiji street-food walk →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -700,12 +701,12 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
               tours are for ages 20 and over, with photo ID. Details as listed on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Check the three-bar Shinjuku crawl →
-              </a>
-              <a href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 Or the food-led night walk →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

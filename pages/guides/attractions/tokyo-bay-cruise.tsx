@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -349,7 +350,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
               to charter — couples book a joined boat instead. Prices and times read off
               symphony-cruise.co.jp and yakatabune-kumiai.jp on {CHECKED}.
             </p>
-            <a
+            <KlookLink
               href={tokyoBayYakatabuneDinnerCruise.url}
               target="_blank"
               rel="sponsored noopener"
@@ -357,7 +358,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
               style={{ marginTop: "1rem" }}
             >
               Check Tokyo Bay cruises on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -462,9 +463,9 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
             </Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={tokyoBayDinnerCruiseSymphony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoBayDinnerCruiseSymphony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Symphony dinner cruise on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -684,9 +685,9 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
               Christmas sailings go long before that. Klook checks out in English, takes foreign cards,
               and shows each listing&apos;s own cancellation terms before you pay.
             </p>
-            <a href={tokyoBayYakatabuneDinnerCruise.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoBayYakatabuneDinnerCruise.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View Tokyo Bay cruises on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

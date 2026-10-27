@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import {
   fujiDayTour,
   teamlabPlanetsTicketUrl,
@@ -418,9 +419,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             {/* Klook CTA unchanged. Planets slots sell out by date, so a second seller
                 of the same museum is worth having when yours is gone. */}
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check teamLab Planets Tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="teamlab-tokyo-tickets" listing={gygTeamlabPlanets} />
             </div>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
@@ -624,9 +625,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           {/* The CTA sits here, directly after the date / slot / ticket-type decision —
               the point at which a reader has something to look up rather than read. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check teamLab Planets dates and slots →
-            </a>
+            </KlookLink>
             <GygCompareButton slug="teamlab-tokyo-tickets" listing={gygTeamlabPlanets} />
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
@@ -653,9 +654,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Ready to lock a slot in?{" "}
-            <a href={PLANETS_URL} target="_blank" rel="sponsored noopener">
+            <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored noopener">
               Check Planets availability and prices on Klook →
-            </a>
+            </KlookLink>
           </p>
         </section>
 
@@ -920,9 +921,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               ticketing partner, with an English checkout in your own currency and an e-ticket on your phone.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View teamLab Planets Tickets →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="teamlab-tokyo-tickets" listing={gygTeamlabPlanets} />
             </div>
           </div>

@@ -13,6 +13,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { zhUsjExpressPass, zhUsjStudioPass } from "../../../../lib/klook-links-zh-tw";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -178,12 +179,12 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               再加一張快速通關，省掉好幾小時的隊伍並確保進入超級任天堂世界。
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={zhUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={zhUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ 門票（Studio Pass）→
-              </a>
-              <a href={zhUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={zhUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ 快速通關 →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -335,9 +336,9 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <p className={styles.ctaBannerDesc}>
               線上買 Studio Pass（2025 年起必須），再加一張快速通關，避開 25 週年的人潮並確保進入超級任天堂世界。
             </p>
-            <a href={zhUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={zhUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               查看 USJ 門票與快速通關 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -177,14 +178,14 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.82rem", marginTop: "0.75rem", marginBottom: "1rem" }}>
               <strong style={{ color: "var(--accent)" }}>Recommended:</strong> The Shinkansen is the right choice for most travellers — fast, frequent, and stress-free.
             </p>
-            <a
+            <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.verdictBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
               Check JR Pass prices on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -249,7 +250,7 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             If you&apos;re also travelling to other cities, a JR Pass can cover the Hikari at no per-trip cost.
             You can check current pass prices and book online before you fly:
           </p>
-          <a
+          <KlookLink
             href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
             className={styles.pickCta}
             target="_blank"
@@ -257,7 +258,7 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             style={{ marginTop: "0.5rem", display: "inline-flex" }}
           >
             Get the JR Pass on Klook →
-          </a>
+          </KlookLink>
         </section>
 
         {/* JR Pass worth it */}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
+import KlookLink from "../../../components/KlookLink";
 import { klookEsim } from "../../../lib/klook-links";
 import {
   formatUsd,
@@ -816,9 +817,9 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
 
           {/* Both checkouts, side by side, split by reader rather than by commission. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
               {klookEsim.ctaLabel}
-            </a>
+            </KlookLink>
             <a href={SAKURA_AFFILIATE} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
               Get Sakura Mobile →
             </a>

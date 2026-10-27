@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import { ProviderCta } from "../../../components/EsimPlanTable";
+import KlookLink from "../../../components/KlookLink";
 import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -369,9 +370,9 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
                       <td key={String(tier)} className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
                     ))}
                     <td>
-                      <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         Open →
-                      </a>
+                      </KlookLink>
                     </td>
                   </tr>
                 </tbody>
@@ -492,7 +493,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
               </h3>
             </div>
             <p className={styles.bodyText}>{klookEsim.note}</p>
-            <a
+            <KlookLink
               href={klookEsim.url}
               className={styles.pickCta}
               target="_blank"
@@ -500,7 +501,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
               style={{ marginTop: "0.5rem" }}
             >
               {klookEsim.ctaLabel}
-            </a>
+            </KlookLink>
             <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
               Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;. Last attempted read: {klookEsim.checkedAt}.
             </p>

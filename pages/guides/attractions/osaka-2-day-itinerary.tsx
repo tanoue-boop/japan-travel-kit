@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import GygCompare from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
@@ -555,12 +556,12 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
               own sites on the dates in the table below.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Both Days as One Guided Day →
-              </a>
-              <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              </KlookLink>
+              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Osaka Amazing Pass (1 / 2 day) →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -642,18 +643,18 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             compares the four boats that work the same stretch of water.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Osaka Amazing Pass →
-            </a>
-            <a href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaCastleTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Osaka Castle ticket →
-            </a>
-            <a href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Dotonbori cruise →
-            </a>
-            <a href={kuromonMarketFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={kuromonMarketFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kuromon Market food walk →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -703,15 +704,15 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kaiyukan ticket →
-            </a>
-            <a href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Umeda Sky Building ticket →
-            </a>
-            <a href={osakaWalkingFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaWalkingFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Osaka walking &amp; food tour →
-            </a>
+            </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             The &ldquo;time to allow&rdquo; column in both tables is our own planning allowance, not an
@@ -792,12 +793,12 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             carry no such risk at all.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kaiyukan on Klook →
-            </a>
-            <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Amazing Pass on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -835,9 +836,9 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             transport-only options.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Amazing Pass (1 / 2 day) →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -939,23 +940,23 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             Itami and the limousine buses as well.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo → Osaka shinkansen →
-            </a>
-            <a href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JR HARUKA ticket →
-            </a>
-            <a href={nankaiRapitUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Nankai Rapi:t ticket →
-            </a>
+            </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             One more arrival-day booking that is not transport: data. The Kaiyukan slot is a QR code in an
             inbox, the Universal Studios Japan area tickets are issued inside the park&apos;s own app, and
             every &ldquo;getting there&rdquo; column above assumes you can open a map.{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
-            </a>{" "}
+            </KlookLink>{" "}
             Our{" "}
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it against
             the alternatives.
@@ -985,9 +986,9 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets and Express Pass guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               USJ Studio Pass on Klook →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -1167,12 +1168,12 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
               sold as one.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Guided Osaka Day →
-              </a>
-              <a href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Amazing Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

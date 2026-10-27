@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { tokyoSubwayTicket, subwayCityViewCombo, naritaBusSubwayCombo, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -259,9 +260,9 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
               six rides in one window, which is a busier day than most people have. Either way the pass excludes
               JR, so the Yamanote Line is not included. Prices and fares checked on {CHECKED}.
             </p>
-            <a href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check the Tokyo Subway Ticket on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
 
@@ -578,9 +579,9 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
               If your Tokyo days run on the Metro and Toei lines rather than the Yamanote loop, the 72-hour
               ticket is the tier that pays for itself. Klook checks out in English on a foreign card.
             </p>
-            <a href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
               View the Tokyo Subway Ticket on Klook →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

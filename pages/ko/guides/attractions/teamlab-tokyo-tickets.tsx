@@ -14,6 +14,7 @@ import {
   type Crumb,
   type FaqItem,
 } from "../../../../components/IntlChrome";
+import KlookLink from "../../../../components/KlookLink";
 import { koFujiHakoneDayTour, koTeamlabPlanets } from "../../../../lib/klook-links-ko";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -219,9 +220,9 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               바지를 입으세요(현장에 XS~6L 무료 대여 반바지가 있습니다). 1.5~2시간을 비워 두면 되고, 신토요스역에서
               도보 1분입니다.
             </p>
-            <a href={koTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={koTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               팀랩 플래닛 티켓 보기 →
-            </a>
+            </KlookLink>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
               이 페이지의 가격은 팀랩 플래닛 공식 티켓 사이트에서 읽었고 확인일은 {CHECKED}, 운영 시간과
               휴관일은 teamlab.art에서 읽었고 확인일은 {HOURS_CHECKED}입니다. 플래닛
@@ -323,9 +324,9 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             예약을 결정했다면{" "}
-            <a href={koTeamlabPlanets.url} target="_blank" rel={KLOOK_REL}>
+            <KlookLink href={koTeamlabPlanets.url} target="_blank" rel={KLOOK_REL}>
               클룩에서 플래닛 회차와 가격 보기 →
-            </a>
+            </KlookLink>
           </p>
         </section>
 
@@ -407,9 +408,9 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             하루가 있다면, 후지산과 하코네 1일 투어는 도쿄에서 출발해 그날 저녁에 돌아오고 티켓과 같은 클룩
             계정에서 결제됩니다.
           </p>
-          <a href={koFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta} style={{ marginTop: "0.5rem", display: "inline-block" }}>
+          <KlookLink href={koFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta} style={{ marginTop: "0.5rem", display: "inline-block" }}>
             {koFujiHakoneDayTour.label} 보기 →
-          </a>
+          </KlookLink>
         </section>
 
         <FaqList items={faqItems} />
@@ -431,9 +432,9 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               입장은 30분 단위이고 좋은 회차는 2~3주 전에 사라집니다. 클룩은 팀랩의 공식 티켓 판매 파트너로,
               자국 통화로 결제하고 전자 티켓을 휴대폰에 바로 받습니다.
             </p>
-            <a href={koTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+            <KlookLink href={koTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
               팀랩 플래닛 티켓 보기 →
-            </a>
+            </KlookLink>
           </div>
         </div>
       </div>

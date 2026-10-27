@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { PRICES, checkedLabel, type AttractionPrice } from "../../../lib/attraction-prices";
@@ -739,14 +740,14 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
                         <span className={styles.tdBestFor} style={{ display: "block", fontWeight: 400 }}>{row.source}</span>
                         {/* The connectivity line is the one row with a product attached to it. */}
                         {row.item.startsWith("Data") && (
-                          <a
+                          <KlookLink
                             href={klookEsim.url}
                             target="_blank"
                             rel="sponsored noopener"
                             style={{ display: "block", marginTop: "0.35rem", color: "var(--accent)", fontWeight: 600, fontSize: "0.8rem" }}
                           >
                             {klookEsim.ctaLabel}
-                          </a>
+                          </KlookLink>
                         )}
                       </td>
                       <td style={{ fontSize: "0.84rem" }}>{row.save}</td>

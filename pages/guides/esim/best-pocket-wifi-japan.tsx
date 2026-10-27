@@ -3,6 +3,7 @@ import Link from "next/link";
 import StarRating from "../../../components/StarRating";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import cardStyles from "../../../styles/SIMCardCard.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { formatUsd, pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
 import {
   pocketWifi,
@@ -222,7 +223,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                   <li><span className={styles.choiceCheck}>✓</span> You fly out of a Japanese airport with a counter</li>
                   <li><span className={styles.choiceCheck}>✓</span> You are not staying in one of the five delivery regions</li>
                 </ul>
-                <a
+                <KlookLink
                   href={AIRPORT.affiliateUrl}
                   className={styles.pickCta}
                   target="_blank"
@@ -230,7 +231,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                   style={{ marginTop: "1rem", display: "inline-flex" }}
                 >
                   {AIRPORT.ctaText} →
-                </a>
+                </KlookLink>
               </div>
             </div>
             <div className={styles.choiceCard}>
@@ -253,7 +254,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                   <li><span className={styles.choiceCheck}>✓</span> You would rather post it back than queue</li>
                   <li><span className={styles.choiceCheck}>✓</span> Your flight lands late or leaves early</li>
                 </ul>
-                <a
+                <KlookLink
                   href={HOTEL.affiliateUrl}
                   className={styles.pickCta}
                   target="_blank"
@@ -261,7 +262,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                   style={{ marginTop: "1rem", display: "inline-flex" }}
                 >
                   {HOTEL.ctaText} →
-                </a>
+                </KlookLink>
               </div>
             </div>
           </div>
@@ -521,7 +522,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                   </div>
 
                   <div className={cardStyles.cta}>
-                    <a
+                    <KlookLink
                       href={item.affiliateUrl}
                       target="_blank"
                       rel="noopener noreferrer nofollow"
@@ -531,7 +532,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                       <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
-                    </a>
+                    </KlookLink>
                   </div>
                 </article>
               );

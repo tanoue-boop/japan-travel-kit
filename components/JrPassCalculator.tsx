@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import fares from "../data/jr-fares.json";
 import tools from "../styles/Tools.module.css";
+import KlookLink from "./KlookLink";
 
 type Segment = (typeof fares.segments)[number];
 type Pass = (typeof fares.passes)[number];
@@ -199,9 +200,9 @@ export default function JrPassCalculator() {
           </div>
           <div className={tools.linkRow}>
             {worthIt && legs > 0 ? (
-              <a href={JR_PASS_URL} className={tools.rowCta} target="_blank" rel="noopener noreferrer nofollow">
+              <KlookLink href={JR_PASS_URL} className={tools.rowCta} target="_blank" rel="noopener noreferrer nofollow">
                 Buy the {pass.name} JR Pass →
-              </a>
+              </KlookLink>
             ) : (
               <Link href="/guides/transport/shinkansen-guide" className={tools.rowCta}>
                 How to buy individual Shinkansen tickets →

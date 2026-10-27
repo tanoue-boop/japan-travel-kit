@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -411,12 +412,12 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
               Tsuruga</strong> onto the Thunderbird. All operator figures read on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Check Tokyo → Kanazawa Tickets →
-              </a>
-              <a href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              </KlookLink>
+              <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Hokuriku Arch Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -488,9 +489,9 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             busier line.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Tokyo → Kanazawa tickets →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -563,12 +564,12 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             reliably sells out. Reserved seats open 30 days before departure.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Pick a train and seat class →
-            </a>
-            <a href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JAPAN RAIL PASS →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -612,12 +613,12 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             for those fares.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Hokuriku Arch Pass (7 day) →
-            </a>
-            <a href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JAPAN RAIL PASS (7/14/21 day) →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -714,9 +715,9 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             will want to check against your actual arrival; and the onward bus to Shirakawa-go is a
             Japanese-language reservation system on a road that closes in heavy snow. An eSIM activated before
             you fly means all of that is something you can look up from a platform rather than guess at.{" "}
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
-            </a>{" "}
+            </KlookLink>{" "}
             Our{" "}
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it against the
             alternatives, and our{" "}
@@ -840,12 +841,12 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
               a there-and-back is cheaper on singles.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Tokyo → Kanazawa Tickets →
-              </a>
-              <a href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Hokuriku Arch Pass →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -465,12 +466,12 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               is the point of the trip.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={STUDIO_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={STUDIO_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ Studio Pass →
-              </a>
-              <a href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ Express Pass →
-              </a>
+              </KlookLink>
             </div>
             {/* Both Klook CTAs above are unchanged. The Express Pass is the one ticket
                 on this site that sells out earliest, so a second seller goes here too. */}
@@ -648,9 +649,9 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               the same destinations the page already carries, brought to the moment a
               reader has just decided. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <a href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
+            <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
               Check the Express Pass on Klook →
-            </a>
+            </KlookLink>
             <GygCompareButton
               slug="usj-tickets-express-pass"
               listing={gygUsjExpressPass}
@@ -662,18 +663,18 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             in from Kansai Airport, and the data you need for the park&apos;s own app on the day:
           </p>
           <div className={styles.pickCtaRow}>
-            <a href={usjStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={usjStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Universal City hotels on Klook →
-            </a>
-            <a href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the HARUKA ticket on Klook →
-            </a>
-            <a href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Kansai Mini Pass on Klook →
-            </a>
-            <a href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Klook eSIM options →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -860,15 +861,15 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             reaches Universal City.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the HARUKA ticket on Klook →
-            </a>
-            <a href={nankaiRapitUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Nankai Rapi:t on Klook →
-            </a>
-            <a href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            </KlookLink>
+            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Kansai Mini Pass on Klook →
-            </a>
+            </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Plan your route with our{" "}
@@ -1076,9 +1077,9 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               day&apos;s allocation is capped, and the variants with Super Nintendo World area entry go first.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
+              <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.ctaBannerBtn}>
                 View USJ Tickets &amp; Passes →
-              </a>
+              </KlookLink>
               <GygCompareButton slug="usj-tickets-express-pass" listing={gygUsjExpressPass} />
             </div>
           </div>

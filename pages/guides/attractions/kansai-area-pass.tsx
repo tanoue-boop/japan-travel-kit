@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { jrHarukaUrl, jrKansaiAreaPass, jrKansaiMiniPass } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -352,12 +353,12 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
               Kintetsu and Nankai all charge separately. Prices read off westjr.co.jp on {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <a href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Kansai Area Pass on Klook →
-              </a>
-              <a href={HARUKA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              </KlookLink>
+              <KlookLink href={HARUKA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Single Haruka Ticket Instead →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -566,12 +567,12 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             fixed date, so check that window against your flight before you buy.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check the Kansai Area Pass →
-            </a>
-            <a href={HARUKA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            </KlookLink>
+            <KlookLink href={HARUKA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Compare a Single Haruka Ticket →
-            </a>
+            </KlookLink>
           </div>
         </section>
 
@@ -799,12 +800,12 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
               from Kansai Airport included. If the airport run is your only JR ride, buy the single instead.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <a href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View the Kansai Area Pass →
-              </a>
-              <a href={HARUKA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              </KlookLink>
+              <KlookLink href={HARUKA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Haruka Tickets →
-              </a>
+              </KlookLink>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import KlookLink from "../../../components/KlookLink";
 import { simCards } from "../../../lib/sim-cards";
 import {
   cheapestPlan,
@@ -351,9 +352,9 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
                     <td><span className={styles.no}>✗</span></td>
                     <td className={tools.tdMuted}>Unranked</td>
                     <td>
-                      <a href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+                      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored noopener">
                         {klookEsim.ctaLabel}
-                      </a>
+                      </KlookLink>
                     </td>
                   </tr>
                 </tbody>
@@ -483,9 +484,9 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
                 </span>
               </div>
               <div className={styles.pickCtaRow}>
-                <a href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+                <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
                   {klookEsim.ctaLabel}
-                </a>
+                </KlookLink>
                 <Link href={PLANS_HREF} className={styles.pickCtaInternal}>
                   Compare all plans
                 </Link>
