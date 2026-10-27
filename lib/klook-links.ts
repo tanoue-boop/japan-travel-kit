@@ -2569,3 +2569,128 @@ export const kisshokichiKobeBeefCourse: KlookTour = {
   desc: "A second bookable Kobe beef course listing, worth opening when the first restaurant has no table left on your date",
   url: klookLink("https://www.klook.com/en-US/activity/10857-kisshokichi-honten-kobe-osaka/"),
 };
+
+// ---------------------------------------------------------------------------
+// Food tours, added 27 Oct 2026 for osaka-food-tour and tokyo-night-food-tour.
+//
+// Every listing below is in the 6.5% tours-and-activities band, which is why both
+// host pages lead with a tour rather than a ticket or a pass.
+//
+// Same verification rule as every block above: Klook answers automated reads of
+// its /activity/ pages with HTTP 403 (confirmed again on 27 Oct 2026 for 89990
+// and 102521), so each URL was confirmed live, on sale and in its en-US form
+// through the www.klook.com search index on 27 Oct 2026. The duration, start
+// time, group size and inclusions in each `desc` are what that index returns for
+// the listing — nothing here is first-hand and no price appears, because what a
+// food tour includes (how many dishes, how many drinks) moves the figure more
+// than the date does.
+//
+// Deliberately left out: a Yurakucho gado-shita izakaya tour. The Tokyo page
+// wanted one for the under-the-tracks block, but Klook has no en-US listing for
+// Yurakucho that could be confirmed — only a destination page — so the page
+// names the area without pretending there is a tour to book there.
+//
+// Also left out: listing 87502 (a 2-hour Osaka takoyaki and okonomiyaki class).
+// It is live, but only in en-AU and locale-less URL forms in the index, and an
+// unconfirmed en-US address is worse than a shorter list — 5295 and 45131 below
+// cover the same "make it yourself" slot and both resolve in en-US.
+// ---------------------------------------------------------------------------
+
+/** Shinsekai after dark — the one listing that publishes both its clock and its dish count. */
+export const shinsekaiNightFoodTour: KlookTour = {
+  title: "Osaka Shinsekai night food tour with a local guide",
+  desc: "A three-hour join-in evening listed at 17:30–20:30 for 2 to 9 people, through five Shinsekai eateries with 15 dishes and 3 drinks — kushikatsu, doteyaki, takoyaki, oden, yakitori, gyoza and a taiyaki dessert — led in English",
+  url: klookLink("https://www.klook.com/en-US/activity/89990-osaka-city-backstreets-shinsekai-half-day-walking-tour-10-dishes-5-hidden-eateries/"),
+};
+
+/** The Dotonbori back-alley evening — the classic Minami crawl. */
+export const absoluteOsakaFoodTour: KlookTour = {
+  title: "Absolute Osaka food tour",
+  desc: "A three-hour join-in walk the listing routes off the main Dotonbori strip through a secret alley, with kushikatsu, Michelin-rated takoyaki, a seasonal spread at a hidden izakaya and a local dessert",
+  url: klookLink("https://www.klook.com/en-US/activity/86986-osaka-join-half-day-food-tour/"),
+};
+
+/** The second Shinsekai departure, for a date the first one is full on. */
+export const shinsekaiHalfDayFoodTour: KlookTour = {
+  title: "Osaka Shinsekai half-day join-in food tour",
+  desc: "Klook's second Shinsekai walk, sold as a join-in half day — the one to open when the 17:30 departure has no places left on your date",
+  url: klookLink("https://www.klook.com/en-US/activity/86990-osaka-shinsekai-join-half-day-food-tour/"),
+};
+
+/** Tako no Tetsu, Umeda — the cook-it-yourself takoyaki slot, with a published clock. */
+export const osakaTakoyakiCookingClass: KlookTour = {
+  title: "Takoyaki cooking class in Osaka — Tako no Tetsu, Umeda",
+  desc: "A 19:50–21:30 class at B2F Osaka Marubiru, 1-9-20 Umeda, about 10 minutes on foot from JR Osaka Station, where you cook your own takoyaki from English instructions and then try okonomiyaki and a local dessert",
+  url: klookLink("https://www.klook.com/en-US/activity/5295-tako-no-tetsu-umeda-osaka/"),
+};
+
+/** The okonomiyaki half day — private, so it is the one that bends to a timetable. */
+export const osakaOkonomiyakiPrivateTour: KlookTour = {
+  title: "Okonomiyaki tasting private half-day tour, Osaka",
+  desc: "A three-hour private half day built around okonomiyaki, with the option on the listing to cook your own version rather than only eat it",
+  url: klookLink("https://www.klook.com/en-US/activity/45131-okonomiyaki-private-half-day-tour-osaka/"),
+};
+
+/** The one Osaka food experience whose listing is vegetarian by design. */
+export const osakaVegetarianSushiClass: KlookTour = {
+  title: "Osaka modern vegetarian sushi cooking class",
+  desc: "The answer to the question a kushikatsu crawl cannot answer: a sushi class Klook lists as vegetarian from the start, rather than a tour with one swapped skewer",
+  url: klookLink("https://www.klook.com/en-US/activity/139703-osaka-modern-vegetarian-sushi-cooking-class/"),
+};
+
+/** The ramen-from-scratch class — the indoor option for a wet Osaka evening. */
+export const osakaRamenNoodleClass: KlookTour = {
+  title: "Homemade noodle making in Osaka (2.5 hours)",
+  desc: "A two-and-a-half-hour join-in class making ramen noodles from scratch — entirely indoors, which is what a food walk is not",
+  url: klookLink("https://www.klook.com/en-US/activity/102690-2-half-hr-join-osaka-class-ramen-cooking/"),
+};
+
+/**
+ * Shinjuku after dark — the food-led walk rather than the bar crawl. The three
+ * alleys this listing names are the three the Tokyo page is about.
+ */
+export const shinjukuNightFoodWalkingTour: KlookTour = {
+  title: "Shinjuku night food tour: Omoide Yokocho, Kabukicho & Golden Gai",
+  desc: "A three-hour join-in walk through Omoide Yokocho, Kabukicho and Golden Gai after dark, with tastings at three local food spots and a drink at a Golden Gai izakaya",
+  url: klookLink("https://www.klook.com/en-US/activity/102521-shinjuku-food-tour-tokyo-join-3-hr-walking-tour-omoide-yokocho-kabukicho-golden-gai/"),
+};
+
+/**
+ * The drink-led version, and the listing that states the age rule in its own
+ * words: Klook's page for 90253 says the legal drinking age in Japan is 20 and
+ * asks for a valid ID as proof of age. That is the one place the 20+ line on
+ * tokyo-night-food-tour comes from, rather than from us asserting it.
+ */
+export const shinjukuBarHoppingNightTour: KlookTour = {
+  title: "Tokyo bar hopping night tour in Shinjuku",
+  desc: "A three-hour join-in evening across three bars — the first in the Omoide Yokocho alley, then two more in Kabukicho and Golden Gai — with all food and drinks included; the listing states Japan's drinking age of 20 and asks for ID",
+  url: klookLink("https://www.klook.com/en-US/activity/90253-join-shinjuku-bar-hopping-tour/"),
+};
+
+/** The sit-down version: two proper meals rather than a string of small plates. */
+export const shinjukuNightFoodieTourWagyuSushi: KlookTour = {
+  title: "Tokyo night foodie tour in Shinjuku (wagyu beef, sushi)",
+  desc: "Three hours in English and Japanese built around a hidden Shinjuku sushi restaurant and wagyu beef, finishing on a Japanese dessert or a drink",
+  url: klookLink("https://www.klook.com/en-US/activity/94392-shinjuku-join-half-day-food-tour-wagyu-beef-sushi/"),
+};
+
+/** Golden Gai specifically, with the food weighted ahead of the bars. */
+export const goldenGaiFoodTastingExperience: KlookTour = {
+  title: "Shinjuku Golden Gai local food tasting experience",
+  desc: "A three-hour guided evening the listing builds around yakitori and a bowl of ramen, ending on a drink inside Golden Gai itself",
+  url: klookLink("https://www.klook.com/en-US/activity/154384-tokyo-city-shinjuku-golden-gai-local-food-tasting-experience/"),
+};
+
+/** The bars-only Golden Gai listing — for an evening that has already eaten. */
+export const goldenGaiBarHoppingExperience: KlookTour = {
+  title: "Shinjuku Golden Gai bar-hopping experience",
+  desc: "Klook's Golden Gai crawl without the meal attached, which is the one to book when dinner is already arranged and the alley is the whole point",
+  url: klookLink("https://www.klook.com/en-US/activity/86817-shinjuku-golden-gai-bar-hopping-experience-tokyo/"),
+};
+
+/** The private Shinjuku evening — the version that sets its own pace and start time. */
+export const shinjukuPrivateNightFoodTour: KlookTour = {
+  title: "Shinjuku private night food and bar tour with a guide",
+  desc: "A private half-day evening across Omoide Yokocho, Kabukicho and Golden Gai — the version for a group that wants its own guide rather than a join-in departure",
+  url: klookLink("https://www.klook.com/en-US/activity/93203-omoide-yokocho-kabukicho-district-shinjuku-golden-gai-private-half-day-food-tour/"),
+};

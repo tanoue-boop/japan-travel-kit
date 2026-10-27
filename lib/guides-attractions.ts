@@ -371,6 +371,22 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-night-food-tour",
+    badge: "Food",
+    title: "Tokyo Night Food Tour (2026): Omoide Yokocho, Golden Gai and the 20+ Rule",
+    desc: "About three hours through Omoide Yokocho, Kabukicho and Golden Gai — roughly 280 bars that mostly open around 20:00, and the drinking age of 20 that decides who can come.",
+    group: "experiences",
+    city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/osaka-food-tour",
+    badge: "Food",
+    title: "Osaka Food Tour (2026): Which One to Book, Times and What You Eat",
+    desc: "The Shinsekai evening runs 17:30–20:30 with five eateries, 15 dishes and 3 drinks; the Dotonbori walk is 11:00–14:00. One replaces dinner, the other lunch — you only need one.",
+    group: "experiences",
+    city: "osaka",
+  },
+  {
     href: "/guides/attractions/tokyo-bay-cruise",
     badge: "Experience",
     title: "Tokyo Bay Cruise (2026): Yakatabune vs the Symphony, Times and Prices",
