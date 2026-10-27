@@ -521,6 +521,24 @@ export const attractionArticles: GuideArticle[] = [
     // Minato ward, Nagoya — same reason as Ghibli Park above.
     city: "other",
   },
+  {
+    href: "/guides/attractions/takayama-shirakawago-tour",
+    badge: "Day trip",
+    title: "Takayama and Shirakawa-go Tour (2026): Which Departure, and the Bus If You Go Alone",
+    desc: "Nagoya is about 11 hours, Kanazawa 8–10 with an English guide, Takayama 7h20m. With Nohi Bus's ¥2,800 fare and 50 minutes, the reserved ¥2,800 bus from Kanazawa, and the four reservation-only 2027 light-up evenings.",
+    group: "daytrips",
+    // Gifu, reached from Nagoya, Kanazawa or Takayama — none of the three city buckets.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/japan-matcha-experiences",
+    badge: "Experience",
+    title: "Matcha Experiences in Japan (2026): Uji, Kyoto and Tokyo Tea Houses Compared",
+    desc: "Uji is 16 minutes from Kyoto Station on the JR Nara Line, and it is where you can grind tencha on a stone mill (3h30m) or pick leaves in Wazuka. Plus the Kyoto and Tokyo tea houses, from 45 minutes up.",
+    group: "experiences",
+    // Uji and Wazuka plus the Kyoto and Tokyo tea rooms — the page spans all three.
+    city: "other",
+  },
 ];
 
 export const attractionsCategory: GuideCategory = {

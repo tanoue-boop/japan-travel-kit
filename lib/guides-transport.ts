@@ -27,6 +27,14 @@ export const transportArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/transport/tokyo-to-kanazawa",
+    badge: "Guide",
+    title: "Tokyo to Kanazawa (2026): Kagayaki Times, Seats and Whether a Pass Pays",
+    desc: "2h28m direct on the Hokuriku Shinkansen, no transfer — and the Kagayaki has no non-reserved car at all. With the ¥35,000 Hokuriku Arch Pass against the ¥50,000 JR Pass, and the Tsuruga change for Kyoto and Osaka.",
+    group: "passes",
+    city: "other",
+  },
+  {
     href: "/guides/transport/tokyo-airport-transfer",
     badge: "Guide",
     title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",

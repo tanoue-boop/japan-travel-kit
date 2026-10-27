@@ -2694,3 +2694,262 @@ export const shinjukuPrivateNightFoodTour: KlookTour = {
   desc: "A private half-day evening across Omoide Yokocho, Kabukicho and Golden Gai — the version for a group that wants its own guide rather than a join-in departure",
   url: klookLink("https://www.klook.com/en-US/activity/93203-omoide-yokocho-kabukicho-district-shinjuku-golden-gai-private-half-day-food-tour/"),
 };
+
+// ---------------------------------------------------------------------------
+// Shirakawa-go, Takayama and Kanazawa, added 27 Oct 2026 for
+// takayama-shirakawago-tour and tokyo-to-kanazawa.
+//
+// Two bands on one trip. The guided days are the 6.5% tours-and-activities
+// band and are the headline CTA on both pages; the Nohi bus seat, the
+// Hokuriku Arch Pass and the Tokyo–Kanazawa rail page are the 5%
+// passes-and-transport band and sit inside the body.
+//
+// Same verification rule as every block above: Klook answers automated reads
+// of its /activity/ pages with HTTP 403, so each listing below was confirmed
+// as a live en-US page through the www.klook.com search index on 27 Oct 2026.
+// The one exception is `shinkansenTokyoKanazawa` — like the Tokyo–Kyoto and
+// Tokyo–Karuizawa rail pages, it answered a read on the same date and names
+// the Kagayaki and Hakutaka with four seat classes, a fastest time of 2h 20m
+// and "0 transfer(s)".
+//
+// No price appears on any of them, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/** The Nagoya departure that gives roughly two hours at each of the two stops. */
+export const takayamaShirakawagoNagoyaDayTrip: KlookTour = {
+  title: "Takayama & Shirakawa-go day trip from Nagoya",
+  desc: "A round trip out of Nagoya Station listed at about 11 hours, with roughly two hours in Shirakawa-go and two in the Takayama old town",
+  url: klookLink("https://www.klook.com/en-US/activity/15800-takayama-shirakawa-go-day-trip-nagoya/"),
+};
+
+/** The second Nagoya listing — the one with the Hida beef lunch as an option. */
+export const shirakawagoTakayamaOldTownDayTour: KlookTour = {
+  title: "Shirakawa-go & Takayama old town day tour (optional Hida beef lunch)",
+  desc: "The other Nagoya departure for the same two stops, with a Hida beef lunch offered as an add-on rather than included",
+  url: klookLink("https://www.klook.com/en-US/activity/14117-takayama-shirakawa-go-day-trip-nagoya/"),
+};
+
+/**
+ * The Kanazawa departure, and the only listing here that will drop you in
+ * Takayama instead of bringing you back — which is what makes it useful on a
+ * Tokyo → Kanazawa → Takayama → Nagoya run rather than only as a day out.
+ */
+export const shirakawagoTakayamaKanazawaDayTour: KlookTour = {
+  title: "Shirakawa-go & Takayama one-day bus tour from Kanazawa",
+  desc: "A join-in day listed at 8 to 10 hours with an English-speaking licensed guide, offered either as a round trip to Kanazawa or as a one-way drop-off in Takayama",
+  url: klookLink("https://www.klook.com/en-US/activity/101875-shirakawago-takayama-join-one-day-bus-tour-kanazawa/"),
+};
+
+/** The Kanazawa day that adds Gokayama to Shirakawa-go. */
+export const shirakawagoGokayamaKanazawaBusTour: KlookTour = {
+  title: "Shirakawa-go, Gokayama & Hida Takayama bus tour from Kanazawa",
+  desc: "The Kanazawa departure that takes in the Gokayama villages as well as Shirakawa-go and the Takayama old town",
+  url: klookLink("https://www.klook.com/en-US/activity/94040-shirakawago-takayama-hida-takayama-bus-tour-kanazawa/"),
+};
+
+/**
+ * The Takayama departure. Listed at 7 hours 20 minutes and guided by a
+ * Japanese-speaking assistant rather than an English guide, which is the one
+ * thing to know before booking it — and the reason the Kanazawa listing above
+ * is the English-guided alternative.
+ */
+export const takayamaShirakawagoGokayamaUnescoTour: KlookTour = {
+  title: "Takayama: Shirakawa-go & Gokayama full-day UNESCO tour",
+  desc: "A Nohi Bus day out of Takayama listed at 7 hours 20 minutes, covering Ainokura in Gokayama, the Gassho-zukuri Minkaen open-air museum and the Shiroyama Tenshukaku observation deck, with a Japanese-speaking assistant",
+  url: klookLink("https://www.klook.com/en-US/activity/90970-historic-villages-shirakawa-go-gokayama-join-bus-trip-takayama/"),
+};
+
+/** The shorter Takayama departure — the village and the old town, nothing else. */
+export const takayamaShirakawagoOneDayBusTour: KlookTour = {
+  title: "Takayama & Shirakawa-go one-day bus tour from Takayama",
+  desc: "Klook's second Takayama departure, for a day that wants the village and the old town without the Gokayama detour",
+  url: klookLink("https://www.klook.com/en-US/activity/91141-takayama-shirakawa-go-one-day-bus-tour-takayama/"),
+};
+
+/** The observation-deck listing — the deck is ticketed separately on the day. */
+export const shirakawagoObservationDeckDayTour: KlookTour = {
+  title: "Shirakawa-go day tour with optional observation-deck access",
+  desc: "A guided day that sells the Ogimachi observation-deck access as an option rather than assuming you can walk up to it",
+  url: klookLink("https://www.klook.com/en-US/activity/200465-shirakawa-go-day-tour-optional-access-to-the-observation-deck/"),
+};
+
+/**
+ * The winter light-up day out of Takayama. Kept separate from the tours above
+ * because the event itself is reservation-only — see the dates and the rules
+ * on the Shirakawa-go Tourist Association's own page, which the guide quotes.
+ */
+export const shirakawagoLightUpTakayamaDayTour: KlookTour = {
+  title: "Shirakawa-go light-up one-day bus tour from Takayama",
+  desc: "The winter illumination day, listed at 5 to 5.5 hours, with the choice of entering the open-air museum or the Ogimachi Castle Ruins observation deck",
+  url: klookLink("https://www.klook.com/en-US/activity/133193-shirakawago-light-up-1-day-bus-tour-from-takayama/"),
+};
+
+/** The 5% band option: a Nohi bus seat rather than a tour. */
+export const shirakawagoLineBusTicket: KlookTour = {
+  title: "Shirakawa-go Line bus ticket (Takayama ⇄ Shirakawa-go)",
+  desc: "Nohi Bus's Shirakawa-go Line as a non-reserved seat, one way or round trip — the version for a day you want to plan yourself",
+  url: klookLink("https://www.klook.com/en-US/activity/149343-shirakawa-go-line-bus-ticket/"),
+};
+
+/**
+ * Klook's Tokyo → Kanazawa rail page. A route page rather than a product id,
+ * for the same reason as `shinkansenTokyoKyoto` and `shinkansenTokyoKaruizawa`:
+ * the Hokuriku Shinkansen is sold by date and seat class, and the route page is
+ * the address that keeps working when a train number does not.
+ */
+export const shinkansenTokyoKanazawa: KlookTour = {
+  title: "Tokyo → Kanazawa shinkansen tickets",
+  desc: "Klook's Hokuriku Shinkansen booking page for the route, naming the Kagayaki and Hakutaka in reserved Ordinary, Green Car, Gran Class and non-reserved Ordinary seats, with no transfers",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/kanazawa-station/"),
+};
+
+/** The Hokuriku Arch Pass — the 5% band pass that actually fits this route. */
+export const hokurikuArchPass: KlookTour = {
+  title: "JR Hokuriku Arch Pass (7 day)",
+  desc: "The Tokyo–Kanazawa–Kansai pass as Klook sells it: seven consecutive days covering the Hokuriku Shinkansen between Tokyo and Tsuruga, but not the Tokaido Shinkansen",
+  url: klookLink("https://www.klook.com/en-US/activity/2781-7-day-jr-hokuriku-arch-pass-jr-pass/"),
+};
+
+/** Kanazawa itself — the garden, the geisha district and the castle in a day. */
+export const kanazawaKenrokuenHigashiChayaDayTour: KlookTour = {
+  title: "Kanazawa: Kenroku-en & Higashi Chaya day tour with temarizushi making",
+  desc: "A join-in bus day pairing Kenroku-en, the Higashi Chaya teahouse district and Omicho Market with a temarizushi-making session",
+  url: klookLink("https://www.klook.com/en-US/activity/101935-kenrokuen-higashi-chaya-district-omicho-market-join-one-day-bus-tour-temarizushi-making/"),
+};
+
+/** The guided walking version of the same three places. */
+export const kanazawaGeishaKenrokuenCastleDayTour: KlookTour = {
+  title: "Kanazawa day tour: geisha district, Kenroku-en & the castle",
+  desc: "An English-guided day through the Higashi Chaya geisha district, Kenroku-en and the Kanazawa Castle grounds",
+  url: klookLink("https://www.klook.com/en-US/activity/146759-kanazawa-day-tour-geisha-district-kenrokuen-garden-and-the-castle/"),
+};
+
+/** Kanazawa and Shirakawa-go as one guided day, with the shinkansen optional. */
+export const shirakawagoKanazawaDayTour: KlookTour = {
+  title: "Shirakawa-go & Kanazawa day tour (optional bullet train)",
+  desc: "Both halves of the Hokuriku day in one booking, with a bullet-train leg offered as an option on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/181355-shirakawago-and-kanazawa-day-tour/"),
+};
+
+// ---------------------------------------------------------------------------
+// Matcha, added 27 Oct 2026 for japan-matcha-experiences.
+//
+// All 6.5% tours-and-activities. The split this page is built on is Uji and
+// Wazuka — where the tea is actually grown and ground — against the Kyoto and
+// Tokyo tea rooms, which tea-ceremony-japan already covers. Every listing was
+// confirmed as a live en-US page through the www.klook.com search index on
+// 27 Oct 2026, and none carries a price.
+//
+// `kyotoTraditionalTeaCeremonyUrl` is the exception to the klookLink() rule:
+// it is the affiliate.klook.com/redirect link that
+// pages/guides/attractions/tea-ceremony-japan.tsx already uses for listing
+// 160630, copied rather than re-minted, so the two pages send the same listing
+// through the same tracking link.
+// ---------------------------------------------------------------------------
+
+/** Uji's tea museum plus the stone mill — the "grind it yourself" listing. */
+export const ujiChazunaStoneMillMatcha: KlookTour = {
+  title: "Uji: Chazuna museum & matcha making from a stone mill",
+  desc: "Grinding tencha leaves on a stone mill at Chazuna in Uji, with the museum ticket included — the listing's three steps are grinding, whisking and drinking",
+  url: klookLink("https://www.klook.com/en-US/activity/227682-uji-grinding-matcha-experience-with-tea-museum-ticket/"),
+};
+
+/** The Wazuka plantation day — the only listing here that picks leaves. */
+export const wazukaMatchaPickingTasting: KlookTour = {
+  title: "Matcha picking and tasting in Wazuka, Kyoto",
+  desc: "Picking leaves on a Wazuka plantation and tasting matcha with tea-flavoured dango, with a cooking lesson using your own leaves as an option",
+  url: klookLink("https://www.klook.com/en-US/activity/141151-matcha-picking-and-tasting-in-kyoto/"),
+};
+
+/** A ceremony taught in Wazuka, the main production area of Uji tea. */
+export const ujiTeaCeremonyExperience: KlookTour = {
+  title: "Tea ceremony experience in Uji, Kyoto",
+  desc: "Matcha preparation and etiquette taught by a professional matcha teacher in Wazuka, which the listing names as the main production area of Uji tea",
+  url: klookLink("https://www.klook.com/en-US/activity/134729-tea-ceremony-experience-in-uji-tea-s-main-production-area-kyoto/"),
+};
+
+/** The small-group Uji walk — three hours, tea shops and a ceremony. */
+export const ujiSmallGroupMatchaTour: KlookTour = {
+  title: "Uji half-day small-group matcha & tea ceremony tour",
+  desc: "A three-hour small-group walk through Uji built around the tea shops and a tea ceremony rather than the temples",
+  url: klookLink("https://www.klook.com/en-US/activity/102484-uji-join-3-hr-walking-tour-matcha-green-tea/"),
+};
+
+/** The Uji half day that includes a lunch set and the Byodo-in outer grounds. */
+export const ujiMatchaGreenTeaHalfDayTour: KlookTour = {
+  title: "Uji half-day matcha green tea tour with lunch",
+  desc: "Three hours in Uji with an English-speaking guide, a lunch set, matcha and wagashi tastings and the outer grounds of Byodo-in",
+  url: klookLink("https://www.klook.com/en-US/activity/86978-kyoto-uji-join-half-day-food-tour-matcha-green-tea/"),
+};
+
+/** The walk that ends at Taihoan, Uji's municipal tea house. */
+export const ujiTaihoanWalkingTour: KlookTour = {
+  title: "Uji half-day walking tour with a tea ceremony at Taihoan",
+  desc: "The Uji Bridge, Nakanoshima Park and a tea ceremony at Taihoan — the town's own tea house — in one half-day join-in walk",
+  url: klookLink("https://www.klook.com/en-US/activity/93576-uji-bridge-nakanoshima-park-taihoan-join-half-day-walking-tour/"),
+};
+
+/** Uji on a day tour out of Osaka, for a trip that is not based in Kyoto. */
+export const ujiTeaCeremonyKyotoDayTourFromOsaka: KlookTour = {
+  title: "Uji tea ceremony & Kyoto highlights day tour from Osaka",
+  desc: "A day out of Osaka that puts a Uji tea ceremony alongside the Arashiyama bamboo grove, Maruyama Park, Yasaka Shrine and Nishiki Market",
+  url: klookLink("https://www.klook.com/en-US/activity/15017-uji-tea-ceremony-experience-bamboo-forest-maruyama-park-yasaka-shrine-nishiki-market-day-tour-kyoto/"),
+};
+
+/** The Arashiyama day with a matcha session attached. */
+export const kyotoArashiyamaMatchaDayTour: KlookTour = {
+  title: "Kyoto & Arashiyama day tour with a matcha experience",
+  desc: "The western-Kyoto sightseeing day — the bamboo grove and the Tenryu-ji gardens — with matcha and traditional sweets built into it",
+  url: klookLink("https://www.klook.com/en-US/activity/129721-kyoto-city-western-kyoto-arashiyama-tour-matcha-experience/"),
+};
+
+/** The Kyoto tea room that teaches tasting as well as whisking. */
+export const kyotoTeaCeremonyTastingMaking: KlookTour = {
+  title: "Kyoto: tea ceremony, tasting and making experience",
+  desc: "A Kyoto session that adds a tasting to the usual whisk-your-own format, so you can tell one grade of matcha from another",
+  url: klookLink("https://www.klook.com/en-US/activity/134710-tea-ceremony-tasting-and-making-experience-in-kyoto/"),
+};
+
+/** Kyoto, with the matcha-making taught rather than demonstrated. */
+export const kyotoTeaCeremonyMatchaMaking: KlookTour = {
+  title: "Kyoto: tea ceremony and matcha making experience",
+  desc: "The hands-on Kyoto version — you are shown the ritual and then make your own bowl rather than being served one",
+  url: klookLink("https://www.klook.com/en-US/activity/77761-tea-ceremony-and-matcha-making-experience-in-kyoto/"),
+};
+
+/**
+ * The Kyoto ceremony pages/guides/attractions/tea-ceremony-japan.tsx already
+ * links, kept on its existing affiliate.klook.com/redirect link rather than a
+ * new one. Listing 160630, a 45-minute-to-an-hour session near Kinkaku-ji with
+ * a second-degree Urasenke instructor.
+ */
+export const kyotoTraditionalTeaCeremonyUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307860&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F160630-traditional-japanese-tea-ceremony-experience-in-kyoto%2F";
+
+/** Tokyo, Toyosu — the Urasenke instructor and the Uji matcha, next to teamLab. */
+export const tokyoMatchaTeaCeremonyExpert: KlookTour = {
+  title: "Tokyo: making matcha & a tea ceremony with an expert",
+  desc: "A private-room session in Toyosu led by a licensed Urasenke instructor, using matcha the listing says is mainly from Uji, with sweets by named confectioners",
+  url: klookLink("https://www.klook.com/en-US/activity/135602-tokyo-making-matcha-experience-a-tea-ceremony-with-an-expert/"),
+};
+
+/** The Tokyo session with a kimono included — 1 hour 30 on the listing. */
+export const tokyoMatchaKimonoTeaCeremony: KlookTour = {
+  title: "Tokyo: matcha & kimono tea ceremony experience",
+  desc: "Listed at 1 hour 30 minutes, with an easy-to-wear kimono before the lecture and a hands-on matcha preparation after it",
+  url: klookLink("https://www.klook.com/en-US/activity/112076-matcha-kimono-experience-in-tokyo/"),
+};
+
+/** The 45-minute Tokyo option — the one that fits into an afternoon. */
+export const tokyoCasualTeaCeremony: KlookTour = {
+  title: "Tokyo: a casual tea ceremony at a hidden-gem shop",
+  desc: "A 45-minute session with an English-speaking host trained in the Omotesenke school — the shortest matcha stop on this page",
+  url: klookLink("https://www.klook.com/en-US/activity/143390-a-casual-tea-ceremony-at-a-hidden-gem-shop-in-tokyo/"),
+};
+
+/** One hour, private, with wagashi — the Tokyo version for a small group. */
+export const tokyoPrivateTeaCeremonyWagashi: KlookTour = {
+  title: "Tokyo: 1-hour private tea ceremony class with wagashi",
+  desc: "A private one-hour class with a traditional sweet, for anyone who would rather not share the room with a join-in group",
+  url: klookLink("https://www.klook.com/en-US/activity/103494-1-hour-private-tokyo-class-tea-ceremony-wagashi/"),
+};
