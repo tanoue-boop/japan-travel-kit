@@ -1589,6 +1589,14 @@ const tripPrepProducts = {
     ctaLabel: "Check Osaka Station hotels on Klook →",
     url: tokyoKyotoOsakaStayAreas[6].url,
   },
+  // Added 27 Oct 2026 for japan-travel-budget — the first page on this site that
+  // sells the pass as a line in a budget rather than as a rail decision, which is
+  // why it needs the product here and not only on jr-pass-guide.
+  jrPass: {
+    label: "JAPAN RAIL PASS (7, 14 or 21 day)",
+    ctaLabel: "Price the JR Pass on Klook →",
+    url: jrPassWholeJapan.url,
+  },
 } as const;
 
 /**
@@ -2953,3 +2961,119 @@ export const tokyoPrivateTeaCeremonyWagashi: KlookTour = {
   desc: "A private one-hour class with a traditional sweet, for anyone who would rather not share the room with a join-in group",
   url: klookLink("https://www.klook.com/en-US/activity/103494-1-hour-private-tokyo-class-tea-ceremony-wagashi/"),
 };
+
+// ---------------------------------------------------------------------------
+// The budget guide, added 27 Oct 2026 for japan-travel-budget.
+//
+// No new URLs at all: every entry below reads its destination page or its
+// listing out of an array declared further up, or out of `tripPrepProducts`.
+// That is deliberate — a budget page is the one page that must agree with every
+// other page on this site about what a thing costs, so it cannot be allowed its
+// own copies of the ids.
+//
+// What is new is where the blocks sit and what they argue. The page is a
+// per-category breakdown (room, transport, food, sights, data), and each block
+// is the thing that category can be bought for in advance, in its own band:
+// the room at 6.5%, the passes at 5%, the day tours at 6.5%, the eSIM at 20%.
+// ---------------------------------------------------------------------------
+
+/**
+ * The room line of the budget, one Klook search per city.
+ *
+ * Three cities rather than one because the page's accommodation section is built
+ * on the three lodging taxes — Tokyo, Kyoto and Osaka each draw their brackets in
+ * a different place — and the reader picking a band wants the search for the city
+ * whose band they are reading about. Tokyo and Kyoto take two areas each because
+ * both have a station base and a centre base that price differently; Osaka takes
+ * the two Midosuji ends.
+ *
+ * Every `url` is read out of `tokyoStayAreas`, `kyotoStayAreas` or
+ * `osakaStayAreas`, so there is still one source of truth per destination id.
+ */
+export const budgetStayAreas: KlookStayArea[] = [
+  {
+    area: "Tokyo Station / Marunouchi",
+    why: "The base that costs you least in transport rather than in room rate: the Yamanote loop and the Tokaido and Tohoku shinkansen all leave from under it, so day trips start without a cross-city ride first.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Ueno / Asakusa, Tokyo",
+    why: "The side of Tokyo where the room rate is usually lowest for the same Yamanote access — Ueno is on the loop, the Ginza Line runs to Asakusa, and the Keisei Skyliner from Narita arrives here faster than anywhere else.",
+    url: tokyoStayAreas[2].url,
+  },
+  {
+    area: "Kyoto Station",
+    why: "Kyoto taxes every stay, with no untaxed band at all, so the thing to buy with the room is position: the 100 and 101 sightseeing buses start on this forecourt and the airport HARUKA leaves from the same platforms.",
+    url: kyotoStayAreas[0].url,
+  },
+  {
+    area: "Karasuma Oike / Shijo, Kyoto",
+    why: "The one point the Karasuma and Tozai subway lines cross — the base that lets a Kyoto day skip the buses, which is the only Kyoto transport cost a pass does not fix.",
+    url: kyotoStayAreas[1].url,
+  },
+  {
+    area: "Umeda, Osaka",
+    why: "Osaka exempts rooms under ¥5,000 a night from its lodging tax, and Umeda is where the JR network starts — the Kyoto and Kobe lines, the Loop Line and Shin-Osaka two stops up the Midosuji Line.",
+    url: osakaStayAreas[0].url,
+  },
+  {
+    area: "Namba, Osaka",
+    why: "Dotonbori and Kuromon Market on foot, so the evenings cost no fares at all, and the Nankai terminus under you for the run out to Kansai Airport.",
+    url: osakaStayAreas[1].url,
+  },
+];
+
+/**
+ * The transport line of the budget — the 5% passes-and-transport band, and the
+ * three passes the page has just priced against single fares.
+ *
+ * The order follows the page's own arithmetic rather than the commission: the JR
+ * Pass is first because it is the one the page argues against for most readers,
+ * and a reader who has just been shown that a Tokyo–Kyoto–Hiroshima–Tokyo run
+ * comes to less than the pass should be able to check the pass price themselves.
+ */
+export const budgetTransportPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.jrPass,
+    why: "Price it against your own legs before you buy: JR's own table puts the 7-day Ordinary pass at ¥50,000 online, and the Hikari fares on this page add up to ¥44,450 for Tokyo–Kyoto–Hiroshima–Tokyo — so the pass is a saving only on an itinerary busier than that.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The cheapest line in a Tokyo budget to fix in advance: ¥2,000 for 72 hours against ¥178 an IC ride means the twelfth ride onwards is free, and a foreign contactless card will not open a Metro or Toei gate in any case.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "The Osaka version of the same sum, except that it is the admissions rather than the rides that pay for it — more than 40 of them, which is why it beats a metro-only pass on a sightseeing day. It does not cover Universal Studios Japan or the Kaiyukan.",
+  },
+];
+
+/**
+ * The sights line of the budget — the 6.5% tours-and-activities band.
+ *
+ * Day trips rather than tickets, because the page's admissions table already
+ * covers tickets at their official prices and a coach seat is the one sightseeing
+ * cost a budget cannot reconstruct from an admission price: the transport, the
+ * guide and the entry are one figure, and there is no walk-up equivalent.
+ */
+export const budgetSightseeingPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "The day out of Tokyo that is cheaper as one booking than as its parts — the Fifth Station and Lake Ashi involve a highway bus, a ropeway and a boat, each of which you would otherwise buy separately on the day.",
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "Kiyomizu-dera, Fushimi Inari and Nara Park in one day, departing Osaka or Kyoto. Worth pricing against the ¥800 Todai-ji admission plus the fares, which is what the same day costs you unguided.",
+  },
+  {
+    ...tripPrepProducts.kyotoHighlightTour,
+    why: "The Kyoto answer to the bus problem: a single guided day covering Kinkaku-ji, Fushimi Inari and the Arashiyama grove, rather than a string of city-bus fares and a timetable between each of them.",
+  },
+];
+
+/** The data line of the budget — 20%, the highest band on the Klook dashboard. */
+export const budgetDataPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "The one line of a Japan budget that is cheaper than travellers expect and easiest to overpay for on arrival: an airport counter sells you data in yen at its own price, where an eSIM is bought in your own currency before you fly.",
+  },
+];

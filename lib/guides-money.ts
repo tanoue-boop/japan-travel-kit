@@ -77,8 +77,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/japan-travel-budget",
     badge: "Guide",
-    title: "Japan Travel Budget Guide (2026): How Much Does Japan Cost?",
-    desc: "Japan is not as expensive as you think. We break down realistic daily budgets for backpackers, mid-range, and comfortable travellers — with 2026 prices for food, transport, and accommodation.",
+    title: "Japan Travel Budget 2026: Trip to Tokyo Japan Cost & How Much Things Cost",
+    desc: "What a trip to Tokyo costs and how much things cost in Japan, built only out of published prices: a ¥178 subway ride, a ¥420 bowl of ramen, official admissions, the three cities' lodging-tax bands, and 3 to 14-day totals.",
     group: "planning",
     city: "other",
   },
