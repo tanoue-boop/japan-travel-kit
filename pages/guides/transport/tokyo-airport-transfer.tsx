@@ -63,11 +63,53 @@ import { hreflangLinks } from "../../../components/Hreflang";
  * lib/klook-links.ts where a constant already exists for the same URL. The two new
  * listings are the private and shared door-to-door transfers, which are what the
  * late-landing and early-departure sections actually need. No Klook price appears.
+ *
+ * ---------------------------------------------------------------------------
+ * Rank pass, 28 Oct 2026 — written for Bing rather than for Google.
+ *
+ * Bing had this page at average position 6.96 over 19–25 October on 95
+ * impressions and zero clicks: inside the first page, and not earning the click.
+ * The three things a zero-CTR top-ten result is usually missing are a title that
+ * fits, a description that names a number, and an answer in the first paragraph
+ * rather than in the fourth section. All three are changed here, and four things
+ * the ranking pages have and this one did not are added:
+ *
+ *   1. a hotel-area × airport table — fastest, cheapest, and whether it arrives
+ *      without a transfer, which is the question a reader with a booking has;
+ *   2. the per-person arithmetic for four people and for two adults with two
+ *      children, which is what decides a car against a bus;
+ *   3. one table carrying every option's one-way fare and published time,
+ *      including a taxi, which replaces the old duplicate "at a glance" pair;
+ *   4. the taxi figure itself. The 25 October draft said no operator published
+ *      one, which was true of the five railway and bus operators. Narita
+ *      International Airport Corporation does: its own access pages carry the
+ *      six-zone flat fare, ¥23,500–¥38,500 with expressway tolls charged on top
+ *      and a 22:00–05:00 surcharge. Read on 28 October 2026. Haneda's official
+ *      site confirms a flat-fare scheme between the airport, Tokyo and Kanagawa
+ *      with tolls extra but publishes no figure and refers readers to the
+ *      operators, and the Tokyo Hire-Taxi Association's own fare pages were
+ *      offline on 28 October — so no Haneda taxi number appears, and the page
+ *      says why rather than estimating one.
+ *
+ * Also corrected: the last Skyliner. The old draft said "to at least 22:30 from
+ * Terminal 1", which was the last departure it could confirm rather than the last
+ * one that runs. Keisei's own Skyliner timetable gives #188 at 23:00 from Narita
+ * Airport on weekdays (Nippori 23:43, Keisei-Ueno 23:48) and #186 at 22:40 at
+ * weekends and on holidays (Nippori 23:23, Keisei-Ueno 23:28), with the first
+ * service, #2, at 07:23. Read on 28 October 2026.
  */
 
-/** The day every figure below was read from the operators' own pages. */
+/** The day the operators' fares, times and frequencies were read. */
 const CHECKED_ISO = "2026-10-25";
 const CHECKED = checkedLabel(CHECKED_ISO);
+
+/**
+ * The day the taxi flat fares and the Skyliner first/last departures were read.
+ * A second date rather than a blanket re-stamp of the first: only these figures
+ * were re-read on the 28th, and a row should not claim a check it did not get.
+ */
+const CHECKED_TAXI_ISO = "2026-10-28";
+const CHECKED_TAXI = checkedLabel(CHECKED_TAXI_ISO);
 
 // ---------------------------------------------------------------------------
 // The two master tables: every option, with the figure and the operator that
@@ -117,12 +159,12 @@ const naritaMasterRows = [
     source: "Airport Limousine",
   },
   {
-    option: "Taxi or private transfer",
+    option: "Flat-fare taxi",
     time: "Traffic-dependent, no published figure",
-    fare: "No fare published by any of the operators above",
+    fare: "¥23,500–¥38,500 by zone, expressway tolls extra",
     often: "On demand",
     lands: "Your hotel address",
-    source: "—",
+    source: "Narita Airport",
   },
 ];
 
@@ -160,12 +202,12 @@ const hanedaMasterRows = [
     source: "Airport Limousine",
   },
   {
-    option: "Taxi or private transfer",
+    option: "Flat-fare taxi",
     time: "Traffic-dependent, no published figure",
-    fare: "No fare published by any of the operators above",
+    fare: "Flat-fare scheme confirmed by the airport, no fare published",
     often: "On demand",
     lands: "Your hotel address",
-    source: "—",
+    source: "Haneda Airport",
   },
 ];
 
@@ -228,48 +270,193 @@ const nightRows = [
     item: "Last Keikyu train, Haneda Terminal 3 → Shinagawa",
     detail: "Departs 00:08, arrives 00:20, weekdays and weekends alike",
     source: "Keikyu",
+    checked: CHECKED,
   },
   {
     item: "First Keikyu train, Haneda Terminal 3 → Shinagawa",
     detail: "Departs 05:26, arrives 05:46",
     source: "Keikyu",
+    checked: CHECKED,
   },
   {
     item: "Last train back to Haneda from Shinagawa",
     detail: "23:59 weekdays (arrives 00:23); at weekends 23:45 with a change at Keikyu Kamata",
     source: "Keikyu",
+    checked: CHECKED,
   },
   {
     item: "Haneda late-night access bus",
     detail: "Leaves the airport between 00:00 and 02:00; ¥2,800 to Shinjuku or Ikebukuro, ¥1,900 to Tokyo, Ginza, Asakusa or Akihabara",
     source: "Airport Limousine",
+    checked: CHECKED,
   },
   {
     item: "Haneda early-morning access bus",
     detail: "Leaves the city from about 04:00 for Terminal 3 — the Ikebukuro departure is 03:35, Higashi-shinjuku 03:50, Busta Shinjuku 04:00",
     source: "Airport Limousine",
+    checked: CHECKED,
   },
   {
-    item: "Late evening Skyliner from Narita",
-    detail: "Departures run to at least 22:30 from Terminal 1 (22:33 from Terminal 2·3), reaching Nippori at 23:11 and Keisei-Ueno at 23:16",
+    item: "Last Skyliner from Narita, weekdays",
+    detail: "Skyliner 188 departs Narita Airport 23:00 and Terminal 2·3 23:03, reaching Nippori at 23:43 and Keisei-Ueno at 23:48",
     source: "Keisei",
+    checked: CHECKED_TAXI,
+  },
+  {
+    item: "Last Skyliner from Narita, weekends and holidays",
+    detail: "Skyliner 186 departs Narita Airport 22:40 and Terminal 2·3 22:43, reaching Nippori at 23:23 and Keisei-Ueno at 23:28",
+    source: "Keisei",
+    checked: CHECKED_TAXI,
+  },
+  {
+    item: "First Skyliner from Narita",
+    detail: "Skyliner 2 departs Narita Airport 07:23 and Terminal 2·3 07:27, reaching Nippori at 08:23 and Keisei-Ueno at 08:29",
+    source: "Keisei",
+    checked: CHECKED_TAXI,
   },
 ];
 
-const naritaOptions = [
-  { option: "Keisei Skyliner",        time: "41 min",     price: "¥2,580",  bestFor: "Fastest to Nippori/Ueno"   },
-  { option: "Narita Express (N'EX)",  time: "from 53 min", price: "¥3,140", bestFor: "Speed & comfort, no change" },
-  { option: "Keisei Access Express",  time: "50 min to Asakusa", price: "¥1,280", bestFor: "Cheap, no surcharge" },
-  { option: "Keisei Main Line LE",    time: "Not published", price: "¥1,060", bestFor: "Cheapest train of all"  },
-  { option: "Limousine Bus",          time: "~1 h 50 min", price: "¥3,100",  bestFor: "Heavy luggage"            },
-  { option: "Taxi",                   time: "Traffic-dependent", price: "No published fare", bestFor: "Groups / late night" },
+/**
+ * Every option from both airports in one table, with the one-way fare and the
+ * published time side by side — the table that replaced the two near-identical
+ * "at a glance" tables the page used to carry, and the one a reader comparing a
+ * price against a clock actually wants.
+ */
+const allOptionRows = [
+  { airport: "Narita", option: "Keisei Access Express",            time: "50 min to Asakusa",                fare: "¥1,280 to Nippori / Keisei-Ueno", source: "Keisei" },
+  { airport: "Narita", option: "Keisei Main Line Limited Express", time: "Not published as a figure",         fare: "¥1,060 to Keisei-Ueno",           source: "Keisei" },
+  { airport: "Narita", option: "Keisei Skyliner",                  time: "41 min to Keisei-Ueno",             fare: "¥2,580 (IC ¥2,567)",              source: "Keisei" },
+  { airport: "Narita", option: "Airport Limousine Bus",            time: "1 h 50 min to Tokyo Station",       fare: "¥3,100 Tokyo Station; ¥3,600 Shinjuku or Shibuya", source: "Airport Limousine" },
+  { airport: "Narita", option: "Narita Express (N'EX)",            time: "From 53 min to Tokyo Station",      fare: "¥3,140 Tokyo; ¥3,330 Shinagawa / Shibuya / Shinjuku", source: "JR East" },
+  { airport: "Narita", option: "Flat-fare taxi",                   time: "Traffic-dependent, no published figure", fare: "¥23,500–¥38,500 by zone, expressway tolls extra", source: "Narita Airport" },
+  { airport: "Haneda", option: "Keikyu Airport Line",              time: "11 min to Shinagawa (T3)",          fare: "¥330 to Shinagawa (IC ¥327)",     source: "Keikyu" },
+  { airport: "Haneda", option: "Tokyo Monorail",                   time: "13 min to Hamamatsucho",            fare: "¥520 adult, ¥260 child",          source: "Tokyo Monorail" },
+  { airport: "Haneda", option: "Airport Limousine Bus",            time: "Traffic-dependent, by route",       fare: "¥1,200 Tokyo Station; ¥1,400 Shinjuku", source: "Airport Limousine" },
+  { airport: "Haneda", option: "Late-night access bus",            time: "Airport departures 00:00–02:00",    fare: "¥1,900 Tokyo / Ginza / Asakusa; ¥2,800 Shinjuku / Ikebukuro", source: "Airport Limousine" },
+  { airport: "Haneda", option: "Flat-fare taxi",                   time: "Traffic-dependent, no published figure", fare: "Flat-fare scheme confirmed, no fare published", source: "Haneda Airport" },
 ];
 
-const hanedaOptions = [
-  { option: "Keikyu Line",     time: "11 min to Shinagawa", price: "¥330",    bestFor: "Budget & speed" },
-  { option: "Tokyo Monorail",  time: "13 min",  price: "¥520",    bestFor: "Reaching Hamamatsucho quickly" },
-  { option: "Limousine Bus",   time: "Traffic-dependent", price: "¥1,200–1,400", bestFor: "Heavy luggage / hotel transfers" },
-  { option: "Taxi",            time: "Traffic-dependent",  price: "No published fare", bestFor: "Direct door-to-door" },
+/**
+ * Hotel area against airport — fastest, cheapest, and whether anything arrives
+ * without a transfer. Every figure in here already appears above with its
+ * operator; nothing new is asserted, it is only sorted by the question a reader
+ * with a confirmed booking is actually asking.
+ */
+const areaRows = [
+  {
+    area: "Shinjuku",
+    naritaFast: "N'EX, direct, ¥3,330",
+    naritaCheap: "Access Express to Nippori ¥1,280, then the Yamanote loop",
+    hanedaFast: "Keikyu, 30 min from Terminal 3 (33 from Terminal 1·2), one change",
+    direct: "N'EX from Narita; limousine bus both ways (¥3,600 / ¥1,400)",
+  },
+  {
+    area: "Shibuya",
+    naritaFast: "N'EX, direct, ¥3,330",
+    naritaCheap: "Access Express to Nippori ¥1,280, then the Yamanote loop",
+    hanedaFast: "Keikyu, 23 min from Terminal 3 (26 from Terminal 1·2)",
+    direct: "N'EX from Narita; limousine bus both ways (¥3,600 / ¥1,300)",
+  },
+  {
+    area: "Tokyo Station / Marunouchi",
+    naritaFast: "N'EX, from 53 min, ¥3,140",
+    naritaCheap: "Access Express to Nippori ¥1,280, then the Yamanote loop",
+    hanedaFast: "Keikyu, 20 min from Terminal 3; or monorail ¥520 to Hamamatsucho in 13 min",
+    direct: "N'EX from Narita; limousine bus both ways (¥3,100 / ¥1,200)",
+  },
+  {
+    area: "Ueno / Asakusa",
+    naritaFast: "Skyliner, 41 min to Keisei-Ueno, ¥2,580",
+    naritaCheap: "Keisei Main Line Limited Express ¥1,060 to Keisei-Ueno",
+    hanedaFast: "Keikyu, 34 min to Asakusa from Terminal 3, no change",
+    direct: "Yes from both — Skyliner or Access Express from Narita, Keikyu through to Asakusa from Haneda",
+  },
+  {
+    area: "Ginza",
+    naritaFast: "N'EX to Tokyo Station ¥3,140, then one subway stop",
+    naritaCheap: "Access Express straight through to Higashi-ginza, no change",
+    hanedaFast: "Keikyu, 23 min to Higashi-ginza from Terminal 3",
+    direct: "Access Express from Narita; Keikyu from Haneda",
+  },
+];
+
+/**
+ * Narita International Airport Corporation's own six-zone flat taxi fare, read
+ * on 28 Oct 2026. Two columns because the airport prices the two expressway
+ * routings separately. Tolls are charged on top of every figure here.
+ */
+const naritaTaxiRows = [
+  { zone: "A", wards: "Edogawa, Katsushika, Adachi",                                        keiyo: "¥23,500", bay: "¥26,500" },
+  { zone: "B", wards: "Koto, Sumida, Minato (Odaiba), Shinagawa (Higashi-yashio)",          keiyo: "¥28,000", bay: "¥28,000" },
+  { zone: "C", wards: "Chuo, Chiyoda, Taito, Bunkyo, Arakawa",                              keiyo: "¥29,000", bay: "¥31,000" },
+  { zone: "D", wards: "Shinjuku, Toshima, Nakano, Shibuya, Meguro, Minato, Shinagawa, Ota", keiyo: "¥31,500", bay: "¥32,500" },
+  { zone: "E", wards: "Itabashi, Kita, Nerima",                                             keiyo: "¥34,000", bay: "¥36,000" },
+  { zone: "F", wards: "Setagaya, Suginami, Mitaka, Musashino",                              keiyo: "¥35,500", bay: "¥38,500" },
+];
+
+/**
+ * The per-person arithmetic, which is the whole family question and the one thing
+ * none of the ranking pages does. Every figure is the published one-way fare above
+ * multiplied out — no new fare is introduced, and where an operator publishes no
+ * child fare the cell says so instead of halving the adult one.
+ */
+const familyRows = [
+  {
+    option: "Keisei Access Express + Yamanote",
+    route: "Narita → Nippori → Shinjuku",
+    four: "¥5,120, plus the Yamanote hop",
+    each: "¥1,280",
+    kids: "Child fare not published for this routing",
+  },
+  {
+    option: "Keisei Skyliner + Yamanote",
+    route: "Narita → Nippori → Shinjuku",
+    four: "¥10,320, plus the Yamanote hop",
+    each: "¥2,580",
+    kids: "¥1,290 a child, so two adults and two children are ¥7,740",
+  },
+  {
+    option: "Narita Express (N'EX)",
+    route: "Narita → Shinjuku, direct",
+    four: "¥13,320",
+    each: "¥3,330",
+    kids: "Round-trip ticket ¥2,600 a child, ¥5,200 an adult",
+  },
+  {
+    option: "Airport Limousine Bus",
+    route: "Narita → Shinjuku, direct, bags in the hold",
+    four: "¥14,400",
+    each: "¥3,600",
+    kids: "Child fare not published for the Narita routes",
+  },
+  {
+    option: "Flat-fare taxi, zone D",
+    route: "Narita → Shinjuku, to the door",
+    four: "¥31,500–¥32,500 plus tolls",
+    each: "¥7,875–¥8,125 plus tolls",
+    kids: "Same fare — the vehicle is priced, not the seat",
+  },
+  {
+    option: "Keikyu Airport Line",
+    route: "Haneda → Shinagawa, then one change",
+    four: "¥1,320 for the airport leg",
+    each: "¥330",
+    kids: "Child fare not published on the pages read",
+  },
+  {
+    option: "Airport Limousine Bus",
+    route: "Haneda → Shinjuku, direct",
+    four: "¥5,600",
+    each: "¥1,400",
+    kids: "¥700 a child, so two adults and two children are ¥4,200",
+  },
+  {
+    option: "Tokyo Monorail",
+    route: "Haneda → Hamamatsucho, then the Yamanote loop",
+    four: "¥2,080 for the airport leg",
+    each: "¥520",
+    kids: "¥260 a child, so two adults and two children are ¥1,560",
+  },
 ];
 
 const nexGuidePoints = [
@@ -370,7 +557,7 @@ const transferTips = [
   },
   {
     title: "Late-night arrivals have limited options",
-    desc: `From Haneda the last Keikyu train to Shinagawa leaves Terminal 3 at 00:08, and after that the choice is the late-night access bus (airport departures between 00:00 and 02:00, ¥2,800 to Shinjuku or Ikebukuro, ¥1,900 to Tokyo, Ginza, Asakusa or Akihabara) or a car. From Narita, Skyliner departures run to at least 22:30 from Terminal 1. None of the five operators publishes a taxi fare, so budget for a booked transfer instead of guessing. Times and bus fares read on ${CHECKED}.`,
+    desc: `From Haneda the last Keikyu train to Shinagawa leaves Terminal 3 at 00:08, and after that the choice is the late-night access bus (airport departures between 00:00 and 02:00, ¥2,800 to Shinjuku or Ikebukuro, ¥1,900 to Tokyo, Ginza, Asakusa or Akihabara) or a car. From Narita the last Skyliner leaves the airport at 23:00 on weekdays and 22:40 at weekends and on holidays. Haneda publishes no taxi fare at all, and Narita's flat fare starts at ¥23,500 before tolls, so budget for a booked transfer instead of guessing. Times and bus fares read on ${CHECKED}; the Skyliner departures and the taxi fares on ${CHECKED_TAXI}.`,
   },
   {
     title: "JR Pass users: validate the pass before boarding",
@@ -401,7 +588,7 @@ const faqItems = [
   },
   {
     q: "What happens if I land after the last train?",
-    a: `From Haneda the last Keikyu train leaves Terminal 3 for Shinagawa at 00:08 and arrives at 00:20. After that the official option is the late-night access bus, which leaves the airport between 00:00 and 02:00 at ¥2,800 for Shinjuku or Ikebukuro and ¥1,900 for Tokyo, Ginza, Asakusa or Akihabara — and it serves only those named stops. From Narita, Skyliner departures run to at least 22:30 from Terminal 1. Beyond those, a booked car is the only thing that reaches an arbitrary address, which is the one case where paying for a transfer rather than a ticket is the obvious call. Read on ${CHECKED}.`,
+    a: `From Haneda the last Keikyu train leaves Terminal 3 for Shinagawa at 00:08 and arrives at 00:20. After that the official option is the late-night access bus, which leaves the airport between 00:00 and 02:00 at ¥2,800 for Shinjuku or Ikebukuro and ¥1,900 for Tokyo, Ginza, Asakusa or Akihabara — and it serves only those named stops. From Narita the last Skyliner leaves the airport at 23:00 on a weekday and 22:40 at a weekend, reaching Keisei-Ueno at 23:48 and 23:28. Beyond those, a booked car is the only thing that reaches an arbitrary address, which is the one case where paying for a transfer rather than a ticket is the obvious call. Train times read on ${CHECKED}, the Skyliner departures on ${CHECKED_TAXI}.`,
   },
   {
     q: "How long does it take from Haneda to central Tokyo?",
@@ -428,6 +615,18 @@ const faqItems = [
     a: "It depends on your priorities. The bus wins when you have heavy luggage, want a transfer-free ride to your hotel, land late at night, or are staying right by a bus stop. The train wins on speed and predictability, especially in rush-hour traffic. For most light-luggage travellers heading to a station-side hotel, the train is faster; for everyone hauling big suitcases, the bus is easier.",
   },
   {
+    q: "What time does the last train leave Narita?",
+    a: `For the Skyliner, Keisei's own timetable gives the last departure from Narita Airport station as 23:00 on weekdays — Skyliner 188, calling at Terminal 2·3 at 23:03, Nippori at 23:43 and Keisei-Ueno at 23:48 — and 22:40 at weekends and on holidays, which is Skyliner 186, reaching Nippori at 23:23 and Keisei-Ueno at 23:28. The first service of the day is Skyliner 2 at 07:23, arriving Keisei-Ueno at 08:29. Ordinary Keisei services run a little later than the last Skyliner, but Keisei does not publish a single figure for them on the Skyliner timetable, so check your own date. Read on ${CHECKED_TAXI}.`,
+  },
+  {
+    q: "How much is a taxi from Narita or Haneda to Tokyo?",
+    a: `From Narita there is a published flat fare in six zones, set by the airport: ¥23,500–¥26,500 for Edogawa, Katsushika and Adachi; ¥28,000 for Koto, Sumida, Odaiba and Higashi-yashio; ¥29,000–¥31,000 for Chuo, Chiyoda, Taito, Bunkyo and Arakawa; ¥31,500–¥32,500 for Shinjuku, Toshima, Nakano, Shibuya, Meguro, Minato, Shinagawa and Ota; ¥34,000–¥36,000 for Itabashi, Kita and Nerima; and ¥35,500–¥38,500 for Setagaya, Suginami, Mitaka and Musashino. The two figures in each range are the two expressway routings, expressway tolls are charged on top, and a surcharge applies between 22:00 and 05:00. From Haneda the airport confirms a flat-fare scheme covering Tokyo and Kanagawa with tolls extra but publishes no amount, so we do not print one. Read on ${CHECKED_TAXI}.`,
+  },
+  {
+    q: "Is a private transfer worth it for 4 people?",
+    a: `Not on price alone. Multiply the published fares out for four adults from Narita to Shinjuku and the limousine bus is ¥14,400, or ¥3,600 each, with the bags in the hold; the N'EX is ¥13,320, or ¥3,330 each; and the flat-fare taxi is ¥31,500–¥32,500 plus tolls, which is ¥7,875–¥8,125 each. From Haneda the gap is wider still, because the Keikyu leg to Shinagawa is ¥330 a head. A car is worth it when the problem is not the fare — a landing after the last train (00:08 at Haneda, 23:00 or 22:40 at Narita), a hotel that no bus route stops at, more cases than hands, or a party of five or more, where a 7- or 10-seater is priced per vehicle rather than per seat. Fares read on ${CHECKED}, the taxi zones on ${CHECKED_TAXI}.`,
+  },
+  {
     q: "How much is the limousine bus from Narita and Haneda?",
     a: `There is no single fare per airport — the operator prices each route. From Narita it runs ¥2,900 to the Disney resort, ¥3,100 to Tokyo Station and T-CAT, and ¥3,600 to Shinjuku or Shibuya; the published Tokyo Station timetable shows a run of about 1 hour 50 minutes. From Haneda it is ¥1,200 to Tokyo Station, ¥1,300 to Shibuya and ¥1,400 to Shinjuku or Nakano. Read on ${CHECKED}.`,
   },
@@ -436,11 +635,19 @@ const faqItems = [
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/tokyo-airport-transfer") } });
 
 // The search terms stay verbatim in the title, the H1 and the description:
-// "Tokyo airport transfer" is the page's own term, and "Narita to Tokyo",
-// "Haneda to Tokyo" and "N'EX vs Skyliner" are the three things readers type.
-const TITLE = "Tokyo Airport Transfer (2026): Narita and Haneda to Tokyo";
+// "Tokyo airport transfer" is the page's own term and leads both the title and
+// the H1 as an exact phrase, and "Narita to Tokyo", "Haneda to Tokyo" and
+// "N'EX vs Skyliner" are the three things readers type.
+//
+// 53 characters, well inside the 60 the en budget allows, because Bing truncates
+// earlier than Google and this page was taking 95 impressions a week there at
+// position 6.96 for no clicks. The description carries the four words that
+// Bing bolds against this query — cheapest, fastest, prices, times — and three
+// numbers, because a top-ten result with no number in its snippet is what a
+// zero-CTR result looks like.
+const TITLE = "Tokyo Airport Transfer 2026: Narita & Haneda to Tokyo";
 const DESC =
-  "Tokyo airport transfer fares, checked at the source: Narita to Tokyo from ¥1,060, the Skyliner ¥2,580 in 41 minutes, and Haneda to Tokyo from ¥330.";
+  "Tokyo airport transfer prices and times, checked at source: the cheapest Narita to Tokyo is ¥1,060, the fastest 41 min; Haneda is ¥330 in 11 min.";
 
 export default function TokyoAirportTransferPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -526,10 +733,11 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Airport Transfer (2026):<br />Narita to Tokyo, Haneda to Tokyo, N&apos;EX vs Skyliner
+            Tokyo Airport Transfer 2026:<br />Narita &amp; Haneda to Tokyo, N&apos;EX vs Skyliner
           </h1>
           <p className={styles.heroSubtitle}>
-            Every fare and journey time below comes from the five operators&apos; own sites, read on {CHECKED}.
+            Every fare and journey time below comes from the operators&apos; own sites, read on {CHECKED}; the taxi
+            flat fares and the first and last Skyliner on {CHECKED_TAXI}.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Narita & Haneda", "N'EX vs Skyliner"].map((t) => (
@@ -551,21 +759,22 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           </p>
         </div>
 
-        {/* The answer, in one paragraph, before anything else in the body — the hero
-            subtitle above is a note on sourcing, not an answer to the question. */}
+        {/* The answer, in three sentences, before anything else in the body — the
+            hero subtitle above is a note on sourcing, not an answer to the question.
+            Fastest and cheapest for both airports, each with its time and its fare,
+            because that is the pair of words the query is built out of. */}
         <p className={styles.bodyText}>
-          For a <strong>Tokyo airport transfer</strong> from <strong>Narita</strong>, the three answers are the{" "}
-          <strong>Keisei Skyliner</strong> at <strong>¥2,580</strong> and <strong>41 minutes</strong> to Keisei-Ueno,
-          the <strong>Narita Express (N&apos;EX)</strong> at <strong>¥3,140</strong> to Tokyo Station in{" "}
-          <strong>as little as 53 minutes</strong> (¥3,330 to Shinagawa, Shibuya or Shinjuku, and free with a JR
-          Pass), and the <strong>Airport Limousine Bus</strong> at <strong>¥3,100</strong> to Tokyo Station on a
-          published run of about <strong>1 hour 50 minutes</strong>. The cheapest train is the{" "}
-          <strong>Keisei Main Line Limited Express at ¥1,060</strong> to Keisei-Ueno. From{" "}
-          <strong>Haneda</strong>, which is far closer in, the <strong>Keikyu Airport Line</strong> reaches{" "}
-          <strong>Shinagawa in 11 minutes for ¥330</strong> and the <strong>Tokyo Monorail</strong> reaches{" "}
-          <strong>Hamamatsucho in 13 minutes for ¥520</strong>, with the limousine bus at ¥1,200–¥1,400 to the
-          main hotel districts. All fares are one-way adult figures read from JR East, Keisei, Keikyu, Tokyo
-          Monorail and Airport Limousine on {CHECKED}.
+          From <strong>Narita</strong>, the fastest <strong>Tokyo airport transfer</strong> is the{" "}
+          <strong>Keisei Skyliner</strong> — <strong>41 minutes</strong> to Keisei-Ueno for{" "}
+          <strong>¥2,580</strong> — and the cheapest is the{" "}
+          <strong>Keisei Main Line Limited Express at ¥1,060</strong>; for <strong>Tokyo Station</strong> the{" "}
+          <strong>Narita Express (N&apos;EX)</strong> is <strong>¥3,140</strong> in{" "}
+          <strong>as little as 53 minutes</strong>, and free with a JR Pass. From <strong>Haneda</strong> the
+          fastest and the cheapest are the same train: the <strong>Keikyu Airport Line</strong> reaches{" "}
+          <strong>Shinagawa in 11 minutes for ¥330</strong>, and the <strong>Tokyo Monorail</strong> reaches{" "}
+          <strong>Hamamatsucho in 13 minutes for ¥520</strong>. Those are one-way adult fares read from JR East,
+          Keisei, Keikyu, Tokyo Monorail and Airport Limousine on {CHECKED}; a flat-fare taxi from Narita is{" "}
+          <strong>¥23,500–¥38,500</strong> by zone with tolls on top, read from Narita Airport on {CHECKED_TAXI}.
         </p>
 
         {/* Quick Answer Box */}
@@ -594,6 +803,105 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             </p>
           </div>
         </div>
+
+        {/* Hotel area against airport — the question a reader with a booking has,
+            and the one thing every page ranking above this one leaves out. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By hotel area</span>
+          <h2 className={styles.sectionTitle}>Which Tokyo airport transfer is best for my hotel area?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            If you already know where you are sleeping, this is the only table you need. Read your area across:
+            the fastest option, the cheapest option, and whether anything gets you there without putting a
+            suitcase on a transfer. West Tokyo is N&apos;EX country from Narita; the east side belongs to Keisei;
+            from Haneda the Keikyu Line reaches all five.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Hotel area", "Fastest from Narita", "Cheapest from Narita", "Fastest from Haneda", "Arrives without a transfer"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {areaRows.map((row) => (
+                    <tr key={row.area}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "normal" }}>{row.area}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "normal", fontSize: "0.88rem" }}>{row.naritaFast}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.naritaCheap}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.hanedaFast}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.direct}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Fares and Narita times read on {CHECKED} from JR East, Keisei and Airport Limousine; the Haneda times
+            are Keikyu&apos;s own estimates, which exclude the transfer itself. Still choosing the room? Our{" "}
+            <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link> guide ranks the
+            same areas by line and airport, and the{" "}
+            <Link href="/guides/attractions/tokyo-5-day-itinerary">5-day Tokyo itinerary</Link> shows which side of
+            the loop a longer trip actually spends its days on.
+          </p>
+        </section>
+
+        {/* Every option, one table — this replaced the two near-identical "at a
+            glance" tables the page used to carry, and is where the Klook ticket
+            CTA sits because it is the point where a reader has picked a train. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Price and time</span>
+          <h2 className={styles.sectionTitle}>How much is a Tokyo airport transfer, and how long does it take?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Eleven options, both airports, one-way adult fare against the operator&apos;s own published journey
+            time, cheapest first within each airport. The spread is the story: from Narita the range is{" "}
+            <strong>¥1,060 to ¥38,500</strong>, and from Haneda the cheapest ride into the city costs{" "}
+            <strong>¥330</strong>. Where an operator publishes no figure, the cell says so.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Airport", "Option", "Published journey time", "One-way adult fare", "Source"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {allOptionRows.map((row) => (
+                    <tr key={`${row.airport}-${row.option}`}>
+                      <td style={{ fontSize: "0.85rem" }}>{row.airport}</td>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "normal" }}>{row.option}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.time}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "normal", fontSize: "0.88rem" }}>{row.fare}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+                        {row.source}, {row.option === "Flat-fare taxi" ? CHECKED_TAXI : CHECKED}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
+            <KlookLink href={keiseiSkylinerUrl} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+              Skyliner tickets on Klook →
+            </KlookLink>
+            <KlookLink href={naritaExpressRoundTripUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+              N&apos;EX round-trip tickets on Klook →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Klook listings open in a new tab, and we print no Klook price: Klook blocks automated reads of its
+            product pages, so no figure here could be verified. The railway fares above are the counter fares —
+            both operators sell a cheaper visitor ticket, which is the{" "}
+            <a href="#prebuy" style={{ color: "var(--text)", fontWeight: 600 }}>pre-buy table</a> further down.
+          </p>
+        </section>
 
         {/* Narita master table */}
         <section className={styles.comparisonSection}>
@@ -702,60 +1010,28 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
-        {/* Legacy at-a-glance tables, kept and corrected. */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>At a glance</span>
-          <h2 className={styles.sectionTitle}>Narita and Haneda Transfer Options Side by Side</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Narita option", "Time", "Fare", "Best For"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {naritaOptions.map((row) => (
-                    <tr key={row.option}>
-                      <td className={styles.tdProvider}>{row.option}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.time}</td>
-                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.price}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.bestFor}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div className={styles.tableWrap} style={{ marginTop: "1.25rem" }}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Haneda option", "Time", "Fare", "Best For"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {hanedaOptions.map((row) => (
-                    <tr key={row.option}>
-                      <td className={styles.tdProvider}>{row.option}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.time}</td>
-                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.price}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.bestFor}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Narita Airport is approximately 60–70 km east of central Tokyo; Haneda Airport is only 15–20 km out — one
-            of the closest major airports to any capital city in the world. Most travellers find Haneda significantly
-            easier to navigate than Narita. All figures read on {CHECKED}.
+        {/* Which airport is closer — the old "at a glance" pair of tables lived here
+            and said nothing the two master tables above had not already said. The
+            one fact in its footnote was the comparison between the airports, which
+            is a question people type, so it is now a section with its own heading. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Narita vs Haneda</span>
+          <h2 className={styles.sectionTitle}>Which Tokyo airport is closer to the city?</h2>
+          <p className={styles.bodyText}>
+            <strong>Haneda</strong>, by a wide margin, and the operators&apos; own numbers show how wide. Keikyu
+            puts <strong>Haneda Terminal 3 to Shinagawa at 11 minutes for ¥330</strong>; the fastest published
+            train out of <strong>Narita</strong> is the Skyliner at <strong>41 minutes to Keisei-Ueno for
+            ¥2,580</strong>, and the fastest to Tokyo Station is the N&apos;EX at{" "}
+            <strong>&ldquo;as fast as 53 minutes&rdquo; for ¥3,140</strong>. So arriving at Haneda saves roughly
+            half an hour and about <strong>¥2,250</strong> a head before you have left the airport. Narita is
+            around 60–70 km east of the city; Haneda is 15–20 km south of it, which is why one journey is a
+            commitment and the other is a city train ride.
+          </p>
+          <p className={styles.bodyText}>
+            That matters when you are still choosing flights. If the Narita fare is more than about ¥2,500 cheaper
+            per person than the Haneda one, the transfer cancels the saving out — and the same arithmetic runs the
+            other way on the day you leave, because a pre-dawn departure from Narita starts before the Skyliner
+            does. Figures read on {CHECKED}.
           </p>
         </section>
 
@@ -1012,8 +1288,133 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           </div>
         </section>
 
-        {/* Booking — the part an AI answer does not finish, with the CTA beside it. */}
+        {/* Taxi — new on 28 Oct 2026. The 25 Oct draft said no operator published a
+            fare, which was true of the five railway and bus operators but not of the
+            airport itself. Narita publishes a six-zone flat fare; Haneda does not. */}
         <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Taxi</span>
+          <h2 className={styles.sectionTitle}>How much is a taxi from Narita or Haneda to Tokyo?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            From <strong>Narita</strong> there is a published answer, and it is a flat fare rather than a meter:
+            Narita Airport sets <strong>six zones from ¥23,500 to ¥38,500</strong>, with{" "}
+            <strong>expressway tolls charged on top</strong> and a <strong>22:00–05:00 surcharge</strong> on top of
+            that. Central Tokyo — Chuo, Chiyoda, Taito, Bunkyo, Arakawa — is zone C at{" "}
+            <strong>¥29,000 or ¥31,000</strong> depending on which expressway the driver takes, and Shinjuku and
+            Shibuya are zone D at <strong>¥31,500 or ¥32,500</strong>. From <strong>Haneda</strong> there is no
+            published answer: the airport confirms a flat-fare scheme covering Tokyo and Kanagawa with tolls extra,
+            but states that passengers should ask the taxi company for the figure, and the Tokyo Hire-Taxi
+            Association&apos;s own fare pages were offline when we checked, so no Haneda number appears here.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Zone", "Wards and cities", "Via the Keiyo Road", "Via the Bay Shore Line"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {naritaTaxiRows.map((row) => (
+                    <tr key={row.zone}>
+                      <td className={styles.tdProvider}>{row.zone}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.wards}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.keiyo}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.bay}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Narita Airport&apos;s own flat taxi fares, read on {CHECKED_TAXI}. The two columns are the two
+            expressway routings the airport prices separately; the airport states that{" "}
+            <em>&ldquo;passengers are required to pay highway tolls&rdquo;</em> in addition to every figure above,
+            and that a late-night and early-morning surcharge applies between 22:00 and 05:00 without naming the
+            amount. These are the fares for a taxi taken from the rank — a car booked in advance is priced by the
+            operator, not by this table.
+          </p>
+        </section>
+
+        {/* Families, luggage and a late landing — the per-person arithmetic, with the
+            door-to-door CTA immediately after it, which is where the reader who has
+            just read the per-head numbers is deciding. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Families and groups</span>
+          <h2 className={styles.sectionTitle}>What is the best Tokyo airport transfer for families?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            For four people the honest answer is <strong>the limousine bus from Narita</strong> and{" "}
+            <strong>the train from Haneda</strong> — not a car, which is the thing most pages imply. Multiply the
+            published fares out and a flat-fare taxi from Narita to Shinjuku is{" "}
+            <strong>¥7,875–¥8,125 a head plus tolls</strong> for a party of four, against{" "}
+            <strong>¥3,600 a head</strong> on the bus with the bags in the hold, and from Haneda the train leg is{" "}
+            <strong>¥330</strong>. A car does not get cheaper per person than a bus at four; it gets cheaper
+            relative to a taxi, which is a different claim.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Option", "Route priced", "Four adults pay", "Per person", "With children"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {familyRows.map((row) => (
+                    <tr key={`${row.option}-${row.route}`}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "normal" }}>{row.option}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.route}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.four}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "normal", fontSize: "0.88rem" }}>{row.each}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.kids}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Every figure is a published one-way fare from the tables above multiplied out — Keisei, JR East,
+            Keikyu, Tokyo Monorail and Airport Limousine, read on {CHECKED}; the zone D taxi fare from Narita
+            Airport, read on {CHECKED_TAXI}, with tolls still to add. Where an operator publishes no child fare
+            the cell says so rather than halving the adult one.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            <strong>So when does a door-to-door car actually win?</strong> On the published numbers, in four
+            situations, and they are about the door rather than the price:
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>You land after the last train.</strong> From Haneda that is after 00:08; from Narita the last Skyliner leaves the airport at 23:00 on a weekday and 22:40 at a weekend. After that a car is the only thing that reaches an address rather than a stop.</li>
+            <li><strong>Your hotel is not on a bus route.</strong> The bus is only ¥3,600 a head if it stops near your door; otherwise you are paying for a bus and then a taxi.</li>
+            <li><strong>The bags outnumber the hands.</strong> Two adults with two children, four cases and a pushchair cannot work a Nippori transfer, and the ¥1,280 Access Express saving disappears the first time someone carries a case up a flight of stairs.</li>
+            <li><strong>You are five or more.</strong> The bus and train fares are per seat and scale linearly; a 7- or 10-seater is priced per vehicle, so the per-head figure keeps falling where the ticket ones do not.</li>
+          </ul>
+          <p className={styles.bodyText}>
+            Book it before you fly rather than at the rank: the point of a booked car is a driver tracking your
+            flight number, and that cannot be arranged in the arrivals hall. Check the quote for your own party
+            size against the per-head column above — if it is not under the bus, take the bus.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
+            <KlookLink href={tokyoPrivateAirportTransfer.url} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+              Private transfer for the whole party →
+            </KlookLink>
+            <KlookLink href={tokyoSharedAirportTransfer.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+              Shared transfer, priced per seat →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Both listings open on Klook in a new tab and were confirmed live and on sale on {CHECKED}. We print no
+            Klook price — the private transfer is quoted per area and per vehicle size, so one figure would be
+            wrong for most bookings even if Klook&apos;s product pages could be read automatically.
+          </p>
+        </section>
+
+        {/* Booking — the part an AI answer does not finish, with the CTA beside it. */}
+        <section className={styles.comparisonSection} id="prebuy">
           <span className={styles.sectionLabel}>Booking</span>
           <h2 className={styles.sectionTitle}>Should I book an airport transfer in advance?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
@@ -1098,7 +1499,9 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             This is the decision that is worth making before you fly, because it is the one with a hard edge. From
             Haneda the last train leaves Terminal 3 at <strong>00:08</strong> and the first at <strong>05:26</strong>;
             in between, the only scheduled public option is the late-night access bus, which serves a handful of named
-            stops and nothing else. A 06:40 departure means being at the terminal before the first train exists.
+            stops and nothing else. From Narita the last Skyliner leaves the airport at <strong>23:00</strong> on a
+            weekday and <strong>22:40</strong> at a weekend, and the first is <strong>07:23</strong>. A 06:40
+            departure means being at the terminal before the first train exists.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1115,7 +1518,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
                     <tr key={row.item}>
                       <td className={styles.tdProvider} style={{ whiteSpace: "normal" }}>{row.item}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.detail}</td>
-                      <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>{row.source}, {CHECKED}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>{row.source}, {row.checked}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1126,7 +1529,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             <li><strong>Landing at Haneda before midnight:</strong> take the train. ¥330 to Shinagawa beats everything else on the page.</li>
             <li><strong>Landing at Haneda between 00:10 and about 02:00:</strong> the access bus, if one of its stops is near your hotel — ¥1,900 for Tokyo, Ginza, Asakusa or Akihabara, ¥2,800 for Shinjuku or Ikebukuro. Otherwise a car.</li>
             <li><strong>Landing at Haneda between 02:00 and 05:26:</strong> a booked car, or the terminal. Haneda&apos;s airside is open; the trains are not.</li>
-            <li><strong>Landing at Narita after about 23:00:</strong> the Skyliner is finished for the day. Check the bus for your route first, and book a car if your hotel is not on it.</li>
+            <li><strong>Landing at Narita after 23:00 on a weekday, or after 22:40 at a weekend:</strong> the Skyliner is finished for the day. Check the bus for your route first, and book a car if your hotel is not on it — the flat-fare taxi starts at ¥23,500 before tolls.</li>
             <li><strong>Flying out before 07:00:</strong> work backwards from 05:26 at Haneda and from the first bus from the city at about 04:00, or sleep near the airport. The early-morning access bus leaves Ikebukuro at 03:35 and Busta Shinjuku at 04:00.</li>
           </ul>
           <p className={styles.bodyText}>
@@ -1296,6 +1699,31 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Tokyo 3 Day Itinerary (2026): What to Book, and in What Order</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/tokyo-5-day-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 10h18M8 2v4M16 2v4" />
+                  <path d="M8 14h2M14 14h2M8 18h2" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo 5 Day Itinerary (2026): Five Days, and What to Book for Each</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/transport/osaka-airport-transfer" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 16l20-6-4-3-7 2-5-5-2 1 3 5-5 1.5z" />
+                  <path d="M4 20h16" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Osaka Airport Transfer (2026): Kansai &amp; Itami to the City, Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
