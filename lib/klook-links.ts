@@ -3462,3 +3462,105 @@ export const hiroshimaStayAreas: KlookStayArea[] = [
     url: klookLink("https://www.klook.com/en-US/destination/p50056982-hiroshima-peace-memorial-museum/3-hotel/"),
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo → Nagoya, teamLab Biovortex Kyoto and the long-stay SIM page, added
+// 28 Oct 2026.
+//
+// Three bands on three pages, and the band decides which link is the headline
+// CTA on each:
+//   - Tokyo → Nagoya is a rail page (5% passes-and-transport), so the tours it
+//     feeds — Ghibli Park's Nagoya bus day and the Takayama/Shirakawa-go days,
+//     both already declared above — are the 6.5% CTAs beside it.
+//   - teamLab Biovortex Kyoto is a museum admission, so the Kyoto walking tour
+//     that ends inside it and the Kyoto hotel searches (both 6.5%) sit next to
+//     the ticket rather than under it, with GetYourGuide beside the bare ticket.
+//   - the long-stay SIM page leads with Sakura Mobile (its own programme, not
+//     Klook), and Klook's eSIM is the 20% band entry for the first few days.
+//
+// Verified the usual way, on 28 Oct 2026. Klook answers automated reads of its
+// /activity/ pages with HTTP 403, so 167098 ("teamLab Biovortex Kyoto ticket")
+// and 184396 ("Kyoto & TeamLab Biovortex Experience Walking Tour") were both
+// confirmed live and on sale through the www.klook.com search index. The
+// Tokyo–Nagoya rail page is the exception, as the Tokyo–Kyoto, Tokyo–Karuizawa
+// and Tokyo–Kanazawa rail pages are: it answered a read on the same date and
+// states "1h 26m" shortest, "2h 26m" average, "0 transfer(s)", "451 trains
+// scheduled on Nov. 03, 2026", a 06:00 first and 22:10 last departure, and the
+// three seat classes.
+//
+// No price appears on any of them, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/**
+ * Klook's Tokyo → Nagoya rail page. A route page rather than a product id, for
+ * the same reason as `shinkansenTokyoKyoto` and `shinkansenTokyoKanazawa`: the
+ * Tokaido Shinkansen is sold by date and seat class, and the route page is the
+ * address that keeps working when a train number does not.
+ */
+export const shinkansenTokyoNagoya: KlookTour = {
+  title: "Tokyo → Nagoya shinkansen tickets",
+  desc: "Klook's Tokaido Shinkansen booking page for the route, with non-reserved Ordinary, reserved Ordinary and reserved Green Car seats, QR boarding and no transfers",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/71-nagoya/"),
+};
+
+/** The teamLab Biovortex Kyoto admission — a museum ticket, so not the headline band. */
+export const teamlabBiovortexKyotoTicket: KlookTour = {
+  title: "teamLab Biovortex Kyoto ticket",
+  desc: "Klook's listing for teamLab's largest museum in Japan, a seven-minute walk from Kyoto Station, with a suggested duration of 1 to 2 hours on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/167098-teamlab-kyoto/"),
+};
+
+/** The guided Kyoto half-day that finishes inside the museum — the 6.5% band. */
+export const kyotoTeamlabBiovortexWalkingTour: KlookTour = {
+  title: "Kyoto & teamLab Biovortex experience walking tour",
+  desc: "A group walking tour of Nishi Hongan-ji and the Kyoto Station light show that ends inside teamLab Biovortex — the version that puts the museum at the end of a guided afternoon",
+  url: klookLink("https://www.klook.com/en-US/activity/184396-kyoto-teamlab-biovortex-experience-walking-tour/"),
+};
+
+/**
+ * The rest of a Kyoto day built around a teamLab slot. Every url but the
+ * walking tour's reads out of a constant or array declared above, so there is
+ * one source of truth per Klook id.
+ */
+export const teamlabKyotoTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kyotoTeamlabBiovortexWalkingTour.title,
+    ctaLabel: "Check the Kyoto walking tour →",
+    url: kyotoTeamlabBiovortexWalkingTour.url,
+    why: "The museum is a ticket rather than a day, and this is the listing that builds the hours in front of it — Nishi Hongan-ji and the Kyoto Station light show, both within the same few blocks, finishing inside teamLab.",
+  },
+  {
+    label: "Hotels around Kyoto Station",
+    ctaLabel: "Check Kyoto Station hotels on Klook →",
+    url: kyotoStayAreas[0].url,
+    why: "Last entry is 19:30 and the museum closes at 21:00, so a late slot ends on foot rather than on a bus — and the museum is seven minutes from the station's Hachijo East Gate.",
+  },
+  {
+    label: kyotoHighlightBusTour.title,
+    ctaLabel: "Check the Kyoto highlight tour →",
+    url: kyotoHighlightBusTour.url,
+    why: "The daytime half of a day that ends after dark: Kiyomizu-dera, Kinkaku-ji, Fushimi Inari and Arashiyama in one guided run, back in the city centre in time for an evening admission slot.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Entry is a timed QR code and the ticket store is where a date change happens — both easier with data already working than on the station wifi.",
+  },
+];
+
+/**
+ * The two Klook products a long-stay reader actually has a use for, and only
+ * those two. Sakura Mobile's own programme carries the monthly plans, so Klook
+ * is here for the gap it genuinely fills: the days before a residence card and
+ * a Japanese address exist.
+ *
+ * The WiFi url is `pocketWifis[0].affiliateUrl` in lib/pocket-wifi.ts, which is
+ * the airport-counter rental the eSIM guides already link — copied as a plain
+ * product URL here would have created a second source of truth for it, so the
+ * page imports it from there instead and this array carries only the eSIM.
+ */
+export const longStaySimPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "A monthly plan needs a residence card registered to a Japanese address, which you do not have on the day you land — a travel eSIM covers the week between arrival and the ward office with no contract to cancel afterwards.",
+  },
+];

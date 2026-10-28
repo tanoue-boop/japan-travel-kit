@@ -99,6 +99,14 @@ export const esimArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/esim/japan-sim-card-long-term-stay",
+    badge: "Guide",
+    title: "Japan SIM Card for Long Term Stay: 90+ Day Plans",
+    desc: "Every travel SIM and eSIM in Japan stops at 90 days and carries no phone number. Sakura Mobile's resident plans from ¥2,980 a month with a Japanese number, the residence-card rule, the one-month minimum and the 25th-of-the-month cancellation.",
+    group: "reviews",
+    city: "other",
+  },
+  {
     href: "/guides/esim/esim-go-japan-review",
     badge: "Review",
     title: "eSIM Go Japan Review 2026: Prices, Networks and Tethering",

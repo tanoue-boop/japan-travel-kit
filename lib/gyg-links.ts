@@ -357,3 +357,26 @@ export const gygNagoyaEntryTickets: GygListing = {
   what: "The admissions-only slice of the Nagoya catalogue, which is where both of these parks sit alongside the city's other ticketed sights",
   url: "https://www.getyourguide.com/nagoya-l32669/entry-tickets-tc123/",
 };
+
+/**
+ * teamLab Biovortex Kyoto — added 28 Oct 2026 for teamlab-kyoto-tickets, and
+ * both URLs confirmed as live, search-indexed www.getyourguide.com pages on
+ * that date.
+ *
+ * Same rate argument as the entry-ticket block above: this is a museum
+ * admission, so Klook's 6.5% tours band cannot be assumed for it. And the same
+ * stock argument as Ghibli Park applies more strongly here than at the Tokyo
+ * venues — teamLab prices and releases this museum by date and admission time,
+ * so a reader whose slot has gone on one platform needs a second place to look.
+ */
+export const gygTeamlabBiovortexKyoto: GygListing = {
+  title: "teamLab Biovortex Kyoto",
+  what: "The museum's own GetYourGuide listing, with the dated entry tickets for Japan's largest teamLab",
+  url: "https://www.getyourguide.com/teamlab-biovortex-kyoto-l250414/",
+};
+
+export const gygKyotoEntryTickets: GygListing = {
+  title: "Kyoto entry tickets",
+  what: "The admissions-only slice of the Kyoto catalogue, which is where the museum sits alongside the city's other ticketed sights",
+  url: "https://www.getyourguide.com/kyoto-l96826/entry-tickets-tc123/",
+};

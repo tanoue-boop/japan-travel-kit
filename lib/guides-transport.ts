@@ -43,6 +43,14 @@ export const transportArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/transport/tokyo-to-nagoya-shinkansen",
+    badge: "Guide",
+    title: "Tokyo to Nagoya Shinkansen: Times, Fares, JR Pass",
+    desc: "1h26m direct and 451 trains a day, at ¥11,100 reserved on JR's own smartEX price. The one Tokaido leg a rail pass barely slows down — plus what Nagoya actually reaches: Ghibli Park, LEGOLAND, Shirakawa-go and Ise.",
+    group: "passes",
+    city: "other",
+  },
+  {
     href: "/guides/transport/osaka-to-hiroshima-shinkansen",
     badge: "Guide",
     title: "Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip",

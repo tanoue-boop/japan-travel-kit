@@ -36,6 +36,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/teamlab-kyoto-tickets",
+    badge: "Tickets",
+    title: "teamLab Kyoto Tickets: Prices, Hours & Booking",
+    desc: "teamLab Biovortex Kyoto is the largest of the four teamLab museums in Japan and the only one seven minutes' walk from a shinkansen station. ¥3,800 adult and ¥1,800 for ages 4–12, variable by slot, with a ¥12,000 Flexible Pass.",
+    group: "tickets",
+    city: "kyoto",
+  },
+  {
     href: "/guides/attractions/shibuya-sky-tickets",
     badge: "Tickets",
     title: "Shibuya Sky Tickets 2026: Price, Hours & Sunset Slots",
