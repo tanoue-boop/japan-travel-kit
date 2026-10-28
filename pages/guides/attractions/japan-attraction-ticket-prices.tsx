@@ -61,7 +61,7 @@ const faqItems = [
   },
   {
     q: "Are tickets cheaper online than at the gate in Japan?",
-    a: "Sometimes, and the difference is smaller than people expect. Shibuya Sky is ¥2,500 online against ¥3,000 at the door. Tokyo Skytree's same-day window adds a ¥500 service fee. teamLab Borderless costs ¥200 more per adult bought on site. But Tokyo Tower's Main Deck is ¥1,500 either way, and most temple and museum admissions have no online price at all. Online booking is usually about securing a slot and paying in your own currency, not about saving money.",
+    a: "Sometimes, and the difference is smaller than people expect. Shibuya Sky is ¥2,700 online against ¥3,000 at the counter for an entry before 15:00, and ¥3,400 against ¥3,700 from 15:00 — ¥300 either way. Tokyo Skytree's same-day window adds a ¥500 service fee. teamLab Borderless costs ¥200 more per adult bought on site. But Tokyo Tower's Main Deck is ¥1,500 either way, and most temple and museum admissions have no online price at all. Online booking is usually about securing a slot and paying in your own currency, not about saving money.",
   },
   {
     q: "Why does the same Japanese ticket show different prices?",

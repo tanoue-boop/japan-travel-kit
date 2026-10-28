@@ -30,8 +30,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/shibuya-sky-tickets",
     badge: "Tickets",
-    title: "Shibuya Sky Tickets (2026): Price, Best Time & How to Book",
-    desc: "Shibuya Sky is Tokyo's best rooftop view — and its sunset slots sell out fast. We cover prices, the best time to go, and how to book (even with a foreign card).",
+    title: "Shibuya Sky Tickets 2026: Price, Hours & Sunset Slots",
+    desc: "¥2,700 online for an adult entering before 15:00 and ¥3,400 after, ¥300 more at the 14F counter — plus the hours, the two-week booking window, and which slot actually sells out.",
     group: "tickets",
     city: "tokyo",
   },
@@ -54,8 +54,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/tokyo-disney-tickets",
     badge: "Tickets",
-    title: "Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy",
-    desc: "Tokyo Disney tickets are date-specified and sell out weeks ahead — with no gate sales. We explain how to buy (even when the official site blocks foreign cards) and how to choose between Disneyland and DisneySea.",
+    title: "Tokyo Disneyland Tickets 2026: Prices, Rules & DisneySea",
+    desc: "A 1-Day Passport starts at ¥8,900 for an adult and is priced by date. No gate sales at either park, your date opens two months ahead at 14:00 JST, and refunds do not exist — but the date can be changed.",
     group: "parks",
     city: "tokyo",
   },

@@ -24,7 +24,7 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 const ROUTE = "/th/guides/attractions/shibuya-sky-tickets";
 const TITLE = "ตั๋ว Shibuya Sky 2026: ราคาและวิธีจอง";
 const DESC =
-  "ตั๋ว Shibuya Sky 2026: ราคาทางการออนไลน์ผู้ใหญ่ ¥2,500 หน้างาน ¥3,000 และวิธีจอง";
+  "ตั๋ว Shibuya Sky 2026: ออนไลน์ผู้ใหญ่ ¥2,700 ก่อน 15:00 และ ¥3,400 หลังจากนั้น";
 
 // Every figure on this page comes from lib/attraction-prices.ts — the same record
 // the English guide and the ticket price table read. Nothing is re-checked for the
@@ -37,9 +37,10 @@ const ADULT = priceLabel(P.adult, "th");
 const AT_DOOR = priceLabel(P.atDoor, "th");
 
 const priceRows = [
-  { ticket: "ผู้ใหญ่ (ซื้อออนไลน์ล่วงหน้า)", price: ADULT },
-  { ticket: "ผู้ใหญ่ (ซื้อหน้างาน)", price: AT_DOOR },
-  { ticket: "เด็กอายุต่ำกว่า 5 ปี", price: priceLabel(P.child, "th") },
+  { ticket: "ผู้ใหญ่ (ซื้อออนไลน์ล่วงหน้า, ก่อน 15:00 / ตั้งแต่ 15:00)", price: ADULT },
+  { ticket: "ผู้ใหญ่ (ซื้อหน้างาน, ก่อน 15:00 / ตั้งแต่ 15:00)", price: AT_DOOR },
+  { ticket: "เด็กอายุ 6–12 ปี (ขายที่เคาน์เตอร์ชั้น 14 เท่านั้น)", price: priceLabel(P.child, "th") },
+  { ticket: "เด็กก่อนวัยเรียน", price: priceLabel("Free", "th") },
 ];
 
 const deckRows = [
@@ -47,7 +48,7 @@ const deckRows = [
     deck: "Shibuya Sky (SHIBUYA SKY)",
     height: "ประมาณ 229 ม. (ดาดฟ้า)",
     highlight: "ดาดฟ้ากลางแจ้งเหนือห้าแยกชิบูยะพอดี ภาพที่เป็นสัญลักษณ์ของโตเกียวที่สุด",
-    price: "ประมาณ ¥2,500 ขึ้นไป (ผู้ใหญ่ ออนไลน์)",
+    price: "¥2,700 / ¥3,400 (ผู้ใหญ่ ออนไลน์ ตามเวลาเข้า)",
     area: "สถานีชิบูยะ",
   },
   {
@@ -110,7 +111,7 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "ตั๋ว Shibuya Sky ราคาเท่าไร?",
-    a: `ซื้อออนไลน์ล่วงหน้า ผู้ใหญ่ ${ADULT} ซื้อหน้างานในวันเข้าชม ${AT_DOOR} เด็กอายุต่ำกว่า 5 ปีเข้าฟรี และมีราคาเด็กและผู้สูงอายุแยกต่างหาก ซื้อออนไลน์ไม่ได้ถูกกว่าอย่างเดียวแต่ปลอดภัยกว่า เพราะรอบยอดนิยม (เฉพาะอย่างยิ่งพระอาทิตย์ตก) หมดก่อนถึงวันเข้าชม ราคาข้างต้นอ่านจากเว็บไซต์ทางการของ Shibuya Sky วันที่ตรวจสอบ ${CHECKED}`,
+    a: `ราคาแบ่งตามเวลาเข้า ผู้ใหญ่ซื้อออนไลน์ล่วงหน้า ¥2,700 สำหรับเข้าก่อน 15:00 และ ¥3,400 ตั้งแต่ 15:00 ส่วนเคาน์เตอร์ชั้น 14 ในวันเข้าชมคือ ¥3,000 และ ¥3,700 ออนไลน์จึงถูกกว่า ¥300 ทั้งสองรอบ เด็กอายุ 6–12 ปี ¥1,200 ขายที่เคาน์เตอร์ชั้น 14 เท่านั้น และเด็กก่อนวัยเรียนเข้าฟรี ราคานี้ใช้กับการเข้าชมตั้งแต่ 1 เมษายน 2025 ตามประกาศปรับราคาบัตรของ Shibuya Scramble Square วันที่ 27 กุมภาพันธ์ 2025 วันที่ตรวจสอบ ${CHECKED}`,
   },
   {
     q: "ควรไป Shibuya Sky ตอนไหนดีที่สุด?",

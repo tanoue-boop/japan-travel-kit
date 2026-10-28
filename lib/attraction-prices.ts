@@ -81,21 +81,30 @@ export const PRICES = {
   // ── Tokyo attraction tickets ──────────────────────────────────────────────
   shibuyaSky: {
     name: "Shibuya Sky",
-    ticket: "Rooftop observation deck, advance online",
+    ticket: "Rooftop deck, advance online — priced by entry time, before or from 15:00",
     href: "/guides/attractions/shibuya-sky-tickets",
     city: "tokyo",
     group: "tickets",
-    adult: "¥2,500",
-    atDoor: "¥3,000",
-    child: "Free",
-    childAges: "under 5",
+    // Two bands, one cell: the first figure is a 10:00–14:59 entry and the second a
+    // 15:00–21:20 one. Written as a pair rather than a sentence because the four
+    // translated editions read this same string through lib/i18n.ts's priceLabel,
+    // which passes anything it does not recognise through verbatim.
+    adult: "¥2,700 / ¥3,400",
+    atDoor: "¥3,000 / ¥3,700",
+    child: "¥1,200",
+    childAges: "ages 6–12, counter only; preschool free",
     booking: "Advised",
     bookingNote:
-      "Online is ¥500 cheaper than the door and the only way to hold a sunset slot — those sell out, the rest of the day usually does not.",
-    source: "Shibuya Sky official site",
-    // Date from the 19 Oct 2026 check recorded on tokyo-observation-decks.tsx, which
-    // re-read ¥2,500 online / ¥3,000 at the door against the operator's site.
-    checked: "2026-10-19",
+      "Online is ¥300 cheaper than the counter and the only way to hold a sunset slot — those sell out, the rest of the day usually does not. A date opens at 00:00 JST two weeks ahead.",
+    source: "Shibuya Scramble Square release, 27 Feb 2025",
+    // Re-read 28 Oct 2026 and corrected. The flat ¥2,500 / ¥3,000 carried here since
+    // 19 Oct 2026 was the pre-April-2025 price: Shibuya Scramble Square's own release of
+    // 27 Feb 2025, "SHIBUYA SKY 入場チケットの改定について", put admission from 1 April 2025
+    // on two time bands — ¥2,700 for a 10:00–14:59 entry and ¥3,400 for 15:00–21:20 on
+    // the web, ¥3,000 and ¥3,700 at the 14th-floor counter — and moved the on-sale moment
+    // to 00:00 two weeks before the admission date with free cancellation up to the day.
+    // The child figure and the counter-only rule are off the operator's own ticket page.
+    checked: "2026-10-28",
     klook: klook("Klook: Shibuya Sky ticket", shibuyaSkyTicketUrl),
   },
   tokyoSkytree: {

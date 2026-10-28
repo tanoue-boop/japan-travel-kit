@@ -1471,6 +1471,19 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             {/* Added 27 Oct 2026: Day 6 offers USJ as an alternative to the castle day,
                 and that is the choice on this itinerary that has to be made before the
                 flights — the Express Pass is dated and capped per day. */}
+            <Link href="/guides/attractions/tokyo-disney-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21V11l4-3 5 4 5-4 4 3v10z" />
+                  <path d="M12 21v-5" />
+                  <path d="M7 11V6l2-2 2 2v2" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Disneyland Tickets 2026: Prices, Rules &amp; DisneySea</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/usj-tickets-express-pass" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

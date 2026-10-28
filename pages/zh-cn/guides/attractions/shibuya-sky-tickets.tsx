@@ -23,7 +23,7 @@ import { JSONLD_LANG, zhDateLabel, zhMonthLabel, zhPrice } from "../../../../lib
 const ROUTE = "/zh-cn/guides/attractions/shibuya-sky-tickets";
 const TITLE = "涩谷SKY 门票（2026）：票价、最佳时段与预约方式";
 const DESC =
-  "涩谷SKY 门票 2026：官方票价网上预订成人 ¥2,500、现场 ¥3,000，哪个时段最值得去（日落场次最快售罄），以及海外信用卡刷不过时怎么订。";
+  "涩谷SKY 门票 2026：官方票价网上预订成人 15 点前 ¥2,700、15 点后 ¥3,400，现场各加 ¥300；日落场次最快售罄。";
 
 // Every figure on this page comes from lib/attraction-prices.ts — the same record
 // the English guide, the 繁體中文 page and the ticket price table read. Nothing is
@@ -37,9 +37,10 @@ const ADULT = zhPrice(P.adult, "zh-cn");
 const AT_DOOR = zhPrice(P.atDoor, "zh-cn");
 
 const priceRows = [
-  { ticket: "成人（网上预订）", price: ADULT },
-  { ticket: "成人（现场购票）", price: AT_DOOR },
-  { ticket: "儿童（未满5岁）", price: zhPrice(P.child, "zh-cn") },
+  { ticket: "成人（网上预订，15 点前／15 点后）", price: ADULT },
+  { ticket: "成人（现场购票，15 点前／15 点后）", price: AT_DOOR },
+  { ticket: "儿童（6～12 岁，仅 14 楼窗口售票）", price: zhPrice(P.child, "zh-cn") },
+  { ticket: "学龄前儿童", price: zhPrice("Free", "zh-cn") },
 ];
 
 const deckRows = [
@@ -47,7 +48,7 @@ const deckRows = [
     deck: "涩谷SKY（SHIBUYA SKY）",
     height: "约 229 米（屋顶）",
     highlight: "涩谷十字路口正上方的开放式屋顶，东京最有代表性的一张照片",
-    price: "约 ¥2,500 起（成人网上预订）",
+    price: "¥2,700／¥3,400（成人网上，按入场时段）",
     area: "涩谷站",
   },
   {
@@ -110,7 +111,7 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "涩谷SKY 门票多少钱？",
-    a: `网上预订成人票 ${ADULT}，当天在现场窗口购买 ${AT_DOOR}。未满 5 岁免费入场，另有儿童与敬老的优惠票种。网上买不只比较便宜，也比较稳妥——热门时段（尤其是日落场）当天就没票了。以上票价读自涩谷SKY 官方网站，核查日期 ${CHECKED}。`,
+    a: `票价按入场时段分两段：网上预订成人票 15 点前 ¥2,700、15 点后 ¥3,400；当天在 14 楼窗口购买则是 ¥3,000 与 ¥3,700，网上各便宜 ¥300。6～12 岁儿童票 ¥1,200，仅在 14 楼窗口售票；学龄前儿童免费。这套票价自 2025 年 4 月 1 日入场起适用，出自涩谷Scramble Square 2025 年 2 月 27 日的票价改定公告；核查日期 ${CHECKED}。`,
   },
   {
     q: "涩谷SKY 什么时候去最好？",

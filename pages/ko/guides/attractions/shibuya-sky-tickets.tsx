@@ -24,7 +24,7 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 const ROUTE = "/ko/guides/attractions/shibuya-sky-tickets";
 const TITLE = "시부야 스카이 예약(2026): 티켓 가격과 예약 방법";
 const DESC =
-  "시부야 스카이 예약 2026: 공식 가격 온라인 성인 ¥2,500, 현장 ¥3,000. 일몰 회차가 먼저 마감되고, 해외 카드 대안도 정리.";
+  "시부야 스카이 예약 2026: 공식 가격 온라인 성인 15시 전 ¥2,700, 15시 후 ¥3,400. 현장은 각 ¥300 비쌉니다.";
 
 // Every figure on this page comes from lib/attraction-prices.ts — the same record
 // the English guide and the ticket price table read. Nothing is re-checked for the
@@ -37,9 +37,10 @@ const ADULT = priceLabel(P.adult, "ko");
 const AT_DOOR = priceLabel(P.atDoor, "ko");
 
 const priceRows = [
-  { ticket: "성인(온라인 사전 구매)", price: ADULT },
-  { ticket: "성인(현장 구매)", price: AT_DOOR },
-  { ticket: "어린이(만 5세 미만)", price: priceLabel(P.child, "ko") },
+  { ticket: "성인(온라인 사전 구매, 15시 전／15시 후)", price: ADULT },
+  { ticket: "성인(현장 구매, 15시 전／15시 후)", price: AT_DOOR },
+  { ticket: "어린이(만 6~12세, 14층 창구에서만 판매)", price: priceLabel(P.child, "ko") },
+  { ticket: "미취학 아동", price: priceLabel("Free", "ko") },
 ];
 
 const deckRows = [
@@ -47,7 +48,7 @@ const deckRows = [
     deck: "시부야 스카이(SHIBUYA SKY)",
     height: "약 229 m(루프톱)",
     highlight: "시부야 스크램블 교차로 바로 위의 야외 루프톱. 도쿄에서 가장 상징적인 사진 한 장",
-    price: "약 ¥2,500부터(성인 온라인)",
+    price: "¥2,700／¥3,400(성인 온라인, 입장 시간대별)",
     area: "시부야역",
   },
   {
@@ -110,7 +111,7 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "시부야 스카이 티켓 가격은 얼마인가요?",
-    a: `온라인 사전 구매 성인 ${ADULT}, 당일 현장 창구 구매 ${AT_DOOR}입니다. 만 5세 미만은 무료이고, 어린이와 경로 할인 요금이 따로 있습니다. 온라인이 더 저렴하기만 한 게 아니라 더 안전합니다. 인기 시간대(특히 일몰)는 당일에 이미 자리가 없습니다. 위 가격은 시부야 스카이 공식 사이트에서 읽은 것이며 확인일은 ${CHECKED}입니다.`,
+    a: `입장 시간대에 따라 두 가격입니다. 온라인 사전 구매 성인은 15시 전 입장 ¥2,700, 15시 이후 ¥3,400이고, 당일 14층 창구는 ¥3,000과 ¥3,700이라 온라인이 각각 ¥300 저렴합니다. 만 6~12세 어린이는 ¥1,200이며 14층 창구에서만 판매하고, 미취학 아동은 무료입니다. 이 가격은 2025년 4월 1일 입장분부터 적용되며 시부야 스크램블 스퀘어가 2025년 2월 27일에 낸 입장권 개정 공지에 따른 것입니다. 확인일은 ${CHECKED}입니다.`,
   },
   {
     q: "시부야 스카이는 언제 가는 게 가장 좋나요?",

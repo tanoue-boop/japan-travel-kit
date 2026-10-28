@@ -85,8 +85,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/best-travel-insurance-japan",
     badge: "Comparison",
-    title: "Best Travel Insurance for Japan (2026): Compared & Reviewed",
-    desc: "We compare Heymondo, SafetyWing, and World Nomads on medical cover, price structure, ski cover, and English support — with picks for every type of Japan trip.",
+    title: "Best Travel Insurance for Japan 2026: Cover and Cost",
+    desc: "Heymondo, SafetyWing and World Nomads on their own published limits and prices — SafetyWing from US$62.72 per 4 weeks, Heymondo cover to $10,000,000 — set against the ¥7.5m and ¥10m treatment cases JNTO publishes.",
     group: "planning",
     city: "other",
   },

@@ -82,7 +82,7 @@ const whoFor = [
   },
   {
     title: "Choose Tokyo Tower if…",
-    desc: `You want the classic retro landmark, and the Main Deck is enough. At ¥1,500 for an adult it is the cheapest paid deck of the three, and it is open until 23:00 with last entry at 22:30 — the latest of any of them. The Top Deck is a separate guided tour at ¥3,300 booked online or ¥3,500 at the counter, which is more than Shibuya Sky costs. Checked ${CHECKED}.`,
+    desc: `You want the classic retro landmark, and the Main Deck is enough. At ¥1,500 for an adult it is the cheapest paid deck of the three, and it is open until 23:00 with last entry at 22:30 — the latest of any of them. The Top Deck is a separate guided tour at ¥3,300 booked online or ¥3,500 at the counter — more than a daytime Shibuya Sky ticket, and just under a 15:00-or-later one. Checked ${CHECKED}.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 22L12 2l6 20" />
@@ -126,11 +126,11 @@ const steps = [
 const faqItems = [
   {
     q: "Which Tokyo observation deck is best?",
-    a: `There is no single answer, but there is a cheapest one: the Tokyo Metropolitan Government Building in Shinjuku, which is free and reaches 202 metres. Of the paid decks, Shibuya Sky at ¥2,500 online buys the open-air rooftop above the Scramble Crossing and the most recognisable view in the city; Tokyo Skytree from ¥1,800 buys the most altitude and the only glass skywalk; Tokyo Tower's Main Deck at ¥1,500 buys the retro landmark and the latest closing time. Prices checked ${CHECKED}.`,
+    a: `There is no single answer, but there is a cheapest one: the Tokyo Metropolitan Government Building in Shinjuku, which is free and reaches 202 metres. Of the paid decks, Shibuya Sky at ¥2,700 online for an entry before 15:00 — ¥3,400 from 15:00 — buys the open-air rooftop above the Scramble Crossing and the most recognisable view in the city; Tokyo Skytree from ¥1,800 buys the most altitude and the only glass skywalk; Tokyo Tower's Main Deck at ¥1,500 buys the retro landmark and the latest closing time. Shibuya Sky checked ${checkedLabel(PRICES.shibuyaSky.checked)}, the rest ${CHECKED}.`,
   },
   {
     q: "Which is the cheapest Tokyo observation deck?",
-    a: `The free one — the Tokyo Metropolitan Government Building in Shinjuku, at 202 metres on the 45th floor, with no ticket involved. Among the paid decks, Tokyo Tower's Main Deck is the cheapest at ¥1,500 for an adult, then Tokyo Skytree's Floor 350 from ¥1,800, then Shibuya Sky at ¥2,500 booked online. The most expensive single ticket is Tokyo Tower's Top Deck tour at ¥3,300 — which costs more than Shibuya Sky for a lower view. Read off the operators' own sites on ${CHECKED}.`,
+    a: `The free one — the Tokyo Metropolitan Government Building in Shinjuku, at 202 metres on the 45th floor, with no ticket involved. Among the paid decks, Tokyo Tower's Main Deck is the cheapest at ¥1,500 for an adult, then Tokyo Skytree's Floor 350 from ¥1,800, then Shibuya Sky at ¥2,700 booked online for an entry before 15:00. The dearest single ticket is now a 15:00-or-later Shibuya Sky entry at ¥3,400, just above Tokyo Tower's ¥3,300 Top Deck tour. Shibuya Sky checked ${checkedLabel(PRICES.shibuyaSky.checked)}, the rest read off the operators' own sites on ${CHECKED}.`,
   },
   {
     q: "Which Tokyo observation deck is the highest?",
@@ -159,18 +159,18 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
         <title>Tokyo Observation Decks (2026): Shibuya Sky vs Skytree</title>
         <meta
           name="description"
-          content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free."
+          content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,700, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Tokyo Observation Decks (2026): Shibuya Sky vs Skytree" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks" />
-        <meta property="og:description" content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free." />
+        <meta property="og:description" content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,700, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tokyo Observation Decks (2026): Shibuya Sky vs Skytree" />
-        <meta name="twitter:description" content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free." />
+        <meta name="twitter:description" content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,700, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -292,11 +292,12 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
               <strong>In short:</strong> go up the free one first. The Metropolitan Government Building in
               Shinjuku puts you 202 metres above the city for nothing, with the Skytree and Tokyo Tower both
               in the frame — which tells you quickly whether a paid deck is worth it to you. If it is, pick by
-              what you want rather than by height: <strong>Shibuya Sky</strong> at ¥2,500 for the open-air
-              rooftop above the Scramble Crossing, <strong>Skytree</strong> from ¥1,800 for the altitude and
-              the glass skywalk, <strong>Tokyo Tower</strong> at ¥1,500 for the 1958 landmark and the latest
-              closing time. Note that Tokyo Tower&apos;s ¥3,300 Top Deck tour costs more than Shibuya Sky for a
-              lower view. Prices checked {CHECKED}.
+              what you want rather than by height: <strong>Shibuya Sky</strong> at ¥2,700 before 15:00 or
+              ¥3,400 after for the open-air rooftop above the Scramble Crossing, <strong>Skytree</strong> from
+              ¥1,800 for the altitude and the glass skywalk, <strong>Tokyo Tower</strong> at ¥1,500 for the
+              1958 landmark and the latest closing time. Note that Tokyo Tower&apos;s ¥3,300 Top Deck tour
+              costs less than a 15:00 entry to Shibuya Sky. Shibuya Sky checked{" "}
+              {checkedLabel(PRICES.shibuyaSky.checked)}, the rest {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -374,9 +375,11 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <p className={styles.bodyText}>
             Shibuya Sky is the open-air rooftop deck atop Shibuya Scramble Square, about 229 metres above one of
             the busiest crossings on earth. Standing on the rooftop looking straight down over the Shibuya
-            Scramble Crossing is the single most recognisable observation experience in Tokyo, and at ¥2,500 for
-            an adult booked online — against ¥3,000 at the door — it is not expensive for what it is. The
-            sunset slots are the prize, and the first to go.
+            Scramble Crossing is the single most recognisable observation experience in Tokyo. Admission is
+            priced by entry time: ¥2,700 for an adult booked online entering between 10:00 and 14:59 and
+            ¥3,400 from 15:00, against ¥3,000 and ¥3,700 at the 14th-floor counter, checked{" "}
+            {checkedLabel(PRICES.shibuyaSky.checked)}. The sunset slots are the prize, and the first to go —
+            and they always fall in the dearer band.
           </p>
           <p className={styles.bodyText}>
             Because it&apos;s the most photographed deck in the city, booking has a few quirks worth getting

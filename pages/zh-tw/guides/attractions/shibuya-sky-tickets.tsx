@@ -23,7 +23,7 @@ import { JSONLD_LANG, zhDateLabel, zhMonthLabel, zhPrice } from "../../../../lib
 const ROUTE = "/zh-tw/guides/attractions/shibuya-sky-tickets";
 const TITLE = "澀谷SKY 門票（2026）：票價、最佳時段與預約方式";
 const DESC =
-  "澀谷SKY 門票 2026：官方票價線上預購成人 ¥2,500、現場 ¥3,000，哪個時段最值得去（日落場最快售完），以及海外信用卡刷不過時怎麼訂。";
+  "澀谷SKY 門票 2026：官方票價線上預購成人 15 點前 ¥2,700、15 點後 ¥3,400，現場各加 ¥300；日落場最快售完。";
 
 // Every figure on this page comes from lib/attraction-prices.ts — the same record
 // the English guide and the ticket price table read. Nothing is re-checked for the
@@ -36,9 +36,10 @@ const ADULT = zhPrice(P.adult);
 const AT_DOOR = zhPrice(P.atDoor);
 
 const priceRows = [
-  { ticket: "成人（線上預購）", price: ADULT },
-  { ticket: "成人（現場購票）", price: AT_DOOR },
-  { ticket: "兒童（未滿5歲）", price: zhPrice(P.child) },
+  { ticket: "成人（線上預購，15 點前／15 點後）", price: ADULT },
+  { ticket: "成人（現場購票，15 點前／15 點後）", price: AT_DOOR },
+  { ticket: "兒童（6～12 歲，僅 14 樓窗口販售）", price: zhPrice(P.child) },
+  { ticket: "學齡前兒童", price: zhPrice("Free") },
 ];
 
 const deckRows = [
@@ -46,7 +47,7 @@ const deckRows = [
     deck: "澀谷SKY（SHIBUYA SKY）",
     height: "約 229 公尺（屋頂）",
     highlight: "澀谷十字路口正上方的開放式屋頂，東京最有代表性的一張照片",
-    price: "約 ¥2,500 起（成人線上預購）",
+    price: "¥2,700／¥3,400（成人線上，依入場時段）",
     area: "澀谷站",
   },
   {
@@ -109,7 +110,7 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "澀谷SKY 門票多少錢？",
-    a: `線上預購成人票 ${ADULT}，當天在現場窗口購買 ${AT_DOOR}。未滿 5 歲免費入場，另有兒童與敬老的優惠票種。線上買不只比較便宜，也比較安全——熱門時段（尤其是日落場）當天就沒票了。以上票價讀自澀谷SKY官方網站，查核日 ${CHECKED}。`,
+    a: `票價依入場時段分兩段：線上預購成人票 15 點前 ¥2,700、15 點後 ¥3,400；當天在 14 樓窗口購買則是 ¥3,000 與 ¥3,700，線上各便宜 ¥300。6～12 歲兒童票 ¥1,200，只在 14 樓窗口販售；學齡前兒童免費。這套票價自 2025 年 4 月 1 日入場起適用，出自澀谷Scramble Square 2025 年 2 月 27 日的票價改定公告；查核日 ${CHECKED}。`,
   },
   {
     q: "澀谷SKY 什麼時候去最好？",

@@ -98,7 +98,10 @@ export const gygShibuyaSky: GygListing = {
 /** Tokyo Disney Resort — the whole-resort listing, Land and Sea together. */
 export const gygTokyoDisneyResort: GygListing = {
   title: "Tokyo Disney Resort",
-  what: "Entry tickets for Tokyo Disneyland and DisneySea on one listing, including the 1-Day Park Hopper",
+  // The Park Hopper used to be named here. Tokyo Disney Resort's own FAQ said on
+  // 28 Oct 2026 that the 1-Day Park Hopper Passport is not currently on sale, so the
+  // listing is described by what it reliably carries instead.
+  what: "Entry tickets for Tokyo Disneyland and DisneySea on one listing, each date- and park-specified",
   url: "https://www.getyourguide.com/tokyo-disney-resort-l104703/entry-tickets-tc123/",
 };
 
