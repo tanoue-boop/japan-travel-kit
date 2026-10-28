@@ -11,8 +11,8 @@
  * this" either, because the same product is linked from a dozen pages.
  *
  * So the unit is the page. data/klook-adids.json holds one ad id per page path
- * (120 of them, created in Klook's own link tool on 27 Oct 2026, plus 40 spares
- * for pages added later), and `klookAffiliateUrl` rebuilds whatever Klook URL a
+ * (160 were created in Klook's own link tool on 27 Oct 2026; the ones not yet on
+ * a page sit in its `spare` list), and `klookAffiliateUrl` rebuilds whatever Klook URL a
  * page hands it into the redirect form carrying *that page's* ad id:
  *
  *   https://affiliate.klook.com/redirect?aid=119070&aff_adid=<page>&k_site=<product URL>
