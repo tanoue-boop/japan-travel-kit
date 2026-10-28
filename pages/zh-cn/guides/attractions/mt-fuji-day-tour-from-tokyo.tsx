@@ -27,8 +27,7 @@ import { JSONLD_LANG, zhMonthLabel } from "../../../../lib/i18n";
 const ROUTE = "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo";
 const TITLE = "富士山一日游（东京出发·2026）：行程怎么选、五合目看什么";
 const DESC =
-  "比较东京出发的富士山一日游：只跑富士山，还是富士山加箱根；Subaru Line 五合目到底是什么地方、" +
-  "一天要多久、以及从海外怎么订。行程内容与英文版同一组数据、同一个核查日期。";
+  "比较东京出发的富士山一日游：只跑富士山，还是加箱根；Subaru Line 五合目是什么地方、一天要多久、从海外怎么订。与英文版同一组数据、同一个核查日。";
 
 // Tour contents and durations are as the Klook listings described them on
 // 19 Oct 2026 — the same check the English guide records. No price is quoted

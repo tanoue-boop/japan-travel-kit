@@ -22,8 +22,7 @@ import { JSONLD_LANG, TRANSLATED_PAGES, zhDateLabel, zhMonthLabel } from "../../
 const ROUTE = "/zh-tw/guides/attractions";
 const TITLE = "日本景點門票攻略（2026）：官方票價、預約方式與一日遊";
 const DESC =
-  "日本景點門票 2026：澀谷SKY、teamLab、東京迪士尼、日本環球影城的官方票價與預約規則，" +
-  "加上富士山一日遊、機場交通與日本網卡。票價全部讀自業者官網，並標示查核日期。";
+  "日本景點門票 2026：澀谷SKY、teamLab、東京迪士尼、日本環球影城的官方票價與預約規則，加上富士山一日遊與機場交通。票價讀自官網並標示查核日期。";
 
 // The hub is the entry point for the ten-page 繁體中文 trial, so it lists exactly
 // those ten and nothing else — a hub that links mostly to English pages is not a

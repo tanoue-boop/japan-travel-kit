@@ -531,15 +531,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-5-day-itinerary") } });
 
-const TITLE = "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day";
+const TITLE = "Tokyo 5-Day Itinerary (2026): 5 Days, Day by Day";
 const DESC =
-  "A Tokyo 5-day itinerary built around the bookings: three city days plus Kawaguchiko and Kamakura, a table for each of the 5 days in Tokyo, official ticket prices and journey times with the date each was checked, and where to stay.";
+  "A Tokyo 5-day itinerary built around the bookings: 3 city days plus Kawaguchiko and Kamakura, a table per day with dated prices, and where to stay.";
 
 export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-5-day-itinerary" />
         {hreflangLinks("/guides/attractions/tokyo-5-day-itinerary")}

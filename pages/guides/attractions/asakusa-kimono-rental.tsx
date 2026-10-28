@@ -205,15 +205,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/asakusa-kimono-rental") },
 });
 
-const TITLE = "Asakusa Kimono Rental (2026): Return Times, Hair Sets and Where to Photograph";
+const TITLE = "Asakusa Kimono Rental (2026): Return Times and Hair Sets";
 const DESC =
-  "Asakusa kimono rental in 2026: the return deadline is 16:30 or 17:30 depending on your arrival time, dressing and hair take about 45–60 minutes, and the shops sit minutes from Kaminarimon. Sizes, rainy days and the four free photo spots around Senso-ji.";
+  "Asakusa kimono rental in 2026: the return deadline is 16:30 or 17:30, dressing and hair take 45–60 minutes, and the shops sit minutes from Kaminarimon.";
 
 export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/asakusa-kimono-rental" />
         {hreflangLinks("/guides/attractions/asakusa-kimono-rental")}

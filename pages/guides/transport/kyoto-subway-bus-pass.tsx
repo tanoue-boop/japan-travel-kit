@@ -89,21 +89,21 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>Is the Kyoto Subway &amp; Bus 1-Day Pass Worth It? 2026 Guide | Japan Travel Kit</title>
+        <title>Kyoto Subway &amp; Bus 1-Day Pass 2026: Is It Worth It?</title>
         <meta
           name="description"
-          content="Is the Kyoto Subway & Bus 1-Day Pass worth it? We cover the ¥1,100 price, the break-even point, the discontinued ¥700 bus pass, and when an IC card is cheaper in 2026."
+          content="Is the Kyoto Subway & Bus 1-Day Pass worth it? The ¥1,100 price, the break-even point, the withdrawn ¥700 bus pass, and when an IC card is cheaper."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/kyoto-subway-bus-pass" />
         <meta property="og:title" content="Is the Kyoto Subway & Bus 1-Day Pass Worth It? (2026 Guide)" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/kyoto-subway-bus-pass" />
-        <meta property="og:description" content="Is the Kyoto Subway & Bus 1-Day Pass worth it? We cover the ¥1,100 price, the break-even point, the discontinued ¥700 bus pass, and when an IC card is cheaper in 2026." />
+        <meta property="og:description" content="Is the Kyoto Subway & Bus 1-Day Pass worth it? The ¥1,100 price, the break-even point, the withdrawn ¥700 bus pass, and when an IC card is cheaper." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Is the Kyoto Subway & Bus 1-Day Pass Worth It? (2026)" />
-        <meta name="twitter:description" content="Is the Kyoto Subway & Bus 1-Day Pass worth it? We cover the ¥1,100 price, the break-even point, the discontinued ¥700 bus pass, and when an IC card is cheaper in 2026." />
+        <meta name="twitter:description" content="Is the Kyoto Subway & Bus 1-Day Pass worth it? The ¥1,100 price, the break-even point, the withdrawn ¥700 bus pass, and when an IC card is cheaper." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

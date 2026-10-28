@@ -267,9 +267,9 @@ const faqItems = [
   },
 ];
 
-const pageTitle = "Cash vs Card in Japan 2026: Where You Still Need Yen | Japan Travel Kit";
+const pageTitle = "Cash vs Card in Japan 2026: Where You Still Need Yen";
 const pageDescription =
-  "Cash vs Card in Japan 2026: is Japan more cash or card? METI puts cashless at 58.0% of consumer spending, but temples, stalls and local buses still want yen. Place-by-place table.";
+  "Cash vs card in Japan 2026: METI puts cashless at 58.0% of consumer spending, but temples, stalls and local buses still want yen. Place-by-place table.";
 const headline = "Cash vs Card in Japan (2026): Where Cards Work and Where You Need Yen";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/cash-vs-card-japan") } });

@@ -263,9 +263,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-illumination-tours") },
 });
 
-const TITLE = "Tokyo Illuminations 2026: Dates, Hours and Which Ones Are Free";
+const TITLE = "Tokyo Illuminations 2026: Dates, Hours and the Free Ones";
 const DESC =
-  "Tokyo Illuminations 2026: the dated opening and closing nights, the lighting hours and which displays are free — Marunouchi, Keyakizaka, Tokyo Midtown, Tokyo Dome City, Yebisu and the two ticketed ones, each with the operator's own figures and the date we checked them.";
+  "Tokyo Illuminations 2026: the opening and closing nights, the lighting hours and which of the 7 displays are free, each with the operator's own figures.";
 const ROUTE = "/guides/attractions/tokyo-illumination-tours";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -288,7 +288,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href={URL} />
         {hreflangLinks(ROUTE)}

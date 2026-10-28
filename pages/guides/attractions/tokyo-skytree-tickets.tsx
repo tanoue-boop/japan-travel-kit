@@ -153,15 +153,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-skytree-tickets") } });
 
-const TITLE = "Tokyo Skytree Tickets (2026): Prices, Floor 350 vs 450 & How to Book";
+const TITLE = "Tokyo Skytree Tickets (2026): Prices and Floor 350 vs 450";
 const DESC =
-  "Tokyo Skytree ticket prices for 2026 from the official site: Floor 350 from ¥1,800, the Floor 450 combo from ¥3,000, and the ¥500 same-day fee that makes booking ahead worth it.";
+  "Tokyo Skytree ticket prices for 2026: Floor 350 from ¥1,800, the Floor 450 combo from ¥3,000, and the ¥500 same-day fee that rewards booking ahead.";
 
 export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-skytree-tickets" />
         <meta name="robots" content="index, follow" />

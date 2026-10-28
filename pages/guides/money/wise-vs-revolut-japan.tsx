@@ -82,7 +82,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>Wise vs Revolut for Japan 2026: Which Travel Card Wins? | Japan Travel Kit</title>
+        <title>Wise vs Revolut for Japan 2026: Which Card Wins?</title>
         <meta
           name="description"
           content="Wise or Revolut for Japan? We compare exchange rates, weekend fees, ATM limits, and plans so you know which travel card saves you more in 2026."

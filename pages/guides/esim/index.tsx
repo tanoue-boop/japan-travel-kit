@@ -8,15 +8,17 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim"), dates: articleDates(esimArticles.map((a) => a.href)) },
 });
 
+// Rendered with " Updated <month>." appended, so this is budgeted ~22 characters short of
+// the 155 scripts/check-meta-length.js allows.
 const DESC =
-  "Japan eSIM and SIM card guides, grouped by what you need to decide: which provider to buy, how each one performs, whether your phone supports eSIM, and the right plan for your trip length.";
+  "Japan eSIM and SIM card guides: which provider to buy, how each one performs, and the right plan for your trip length.";
 
 export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdated; dates: Record<string, string> }) {
   const description = `${DESC} Updated ${updated.label}.`;
   return (
     <>
       <Head>
-        <title>Japan eSIM Guides 2026: Which to Buy and How to Set It Up | Japan Travel Kit</title>
+        <title>Japan eSIM Guides 2026: Which to Buy and How to Set It Up</title>
         <meta name="description" content={description} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim" />
         <meta name="robots" content="index, follow" />

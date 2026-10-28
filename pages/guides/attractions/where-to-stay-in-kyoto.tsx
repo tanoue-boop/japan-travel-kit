@@ -183,9 +183,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time";
+const TITLE = "Where to Stay in Kyoto (2026): Best Areas Compared";
 const DESCRIPTION =
-  "Where to Stay in Kyoto in 2026: Kyoto Station, Karasuma Oike, Gion and Arashiyama compared on the lines that serve them and the official travel time to Kiyomizu-dera, Fushimi Inari, Arashiyama and Kinkaku-ji.";
+  "Where to stay in Kyoto in 2026: 4 areas — Kyoto Station, Karasuma Oike, Gion and Arashiyama — compared on their lines and travel time to the big sights.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/where-to-stay-in-kyoto") } });
 
@@ -193,7 +193,7 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/where-to-stay-in-kyoto" />
         {hreflangLinks("/guides/attractions/where-to-stay-in-kyoto")}
@@ -225,7 +225,7 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/where-to-stay-in-kyoto",
-              headline: "Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time",
+              headline: "Where to Stay in Kyoto (2026): Best Areas Compared",
               description: DESCRIPTION,
               updated,
             }),

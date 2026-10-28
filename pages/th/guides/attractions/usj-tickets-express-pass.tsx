@@ -21,10 +21,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, monthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/th/guides/attractions/usj-tickets-express-pass";
-const TITLE = "บัตร USJ และ Express Pass USJ (2026): ควรซื้อแบบไหน";
+const TITLE = "Express Pass USJ 2026: ตั๋วไหนควรซื้อ";
 const DESC =
-  "USJ ขายบัตรออนไลน์เท่านั้นแล้ว และ Super Nintendo World ต้องใช้บัตรเข้าโซนตามเวลา หน้านี้อธิบายราคาของ " +
-  "Studio Pass ที่คิดตามวัน ว่า Express Pass คุ้มหรือไม่ และปี 2026 ควรซื้อแบบไหน เนื้อหาใช้ข้อเท็จจริงชุดเดียวกับฉบับภาษาอังกฤษ";
+  "Express Pass USJ 2026: USJ ขายบัตรออนไลน์เท่านั้น ราคาคิดตามวัน และควรซื้อแบบไหน";
 
 // Same facts as the English guide: USJ prices by date tier and we deliberately
 // quote no figure, because none could be verified for a given date.

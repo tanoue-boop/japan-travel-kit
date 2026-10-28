@@ -131,15 +131,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/hakone-day-trip-from-tokyo") } });
 
-const TITLE = "Hakone Day Trip From Tokyo (2026): Freepass Prices vs a Day Tour";
+const TITLE = "Hakone Day Trip From Tokyo (2026): Freepass vs a Day Tour";
 const DESC =
-  "Hakone Freepass prices from Odakyu for 2026 — ¥7,100 for 2 days from Shinjuku — what the pass covers, why there is no 1-day version, and when a coach day tour is the better buy.";
+  "Hakone Freepass prices from Odakyu for 2026 — ¥7,100 for 2 days from Shinjuku — what the pass covers, and when a coach day tour is the better buy.";
 
 export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/hakone-day-trip-from-tokyo" />
         <meta name="robots" content="index, follow" />

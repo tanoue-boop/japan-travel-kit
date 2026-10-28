@@ -200,20 +200,20 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Does eSIM Work in Japan? (2026): Complete Answer | Japan Travel Kit</title>
+        <title>Does eSIM Work in Japan? (2026): The Complete Answer</title>
         <meta
           name="description"
-          content="Does eSIM work in Japan? Yes — on Docomo, SoftBank and au/KDDI, if your phone is eSIM-capable and carrier-unlocked. Is eSIM available in Japan to buy before you fly? Yes, with no ID check. Install at home, activate on landing."
+          content="Does eSIM work in Japan? Yes — on Docomo, SoftBank and au/KDDI, if your phone is eSIM-capable and unlocked. Buy before you fly, with no ID check."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/does-esim-work-in-japan" />
-        <meta property="og:title" content="Does eSIM Work in Japan? (2026): Complete Answer" />
+        <meta property="og:title" content="Does eSIM Work in Japan? (2026): The Complete Answer" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/does-esim-work-in-japan" />
         <meta property="og:description" content="Does eSIM work in Japan? Yes — on Docomo, SoftBank and au/KDDI, if your phone is eSIM-capable and carrier-unlocked. Is eSIM available in Japan to buy before you fly? Yes, with no ID check." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Does eSIM Work in Japan? (2026): Complete Answer" />
+        <meta name="twitter:title" content="Does eSIM Work in Japan? (2026): The Complete Answer" />
         <meta name="twitter:description" content="Does eSIM work in Japan? Yes — on Docomo, SoftBank and au/KDDI, if your phone is eSIM-capable and carrier-unlocked. Is eSIM available in Japan to buy before you fly? Yes, with no ID check." />
         <script
           type="application/ld+json"

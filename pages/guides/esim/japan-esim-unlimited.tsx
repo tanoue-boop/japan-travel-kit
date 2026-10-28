@@ -175,18 +175,18 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
         <title>Best Unlimited eSIM for Japan 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large fixed plans — with honest findings on speed and value."
+          content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile and Airalo on true unlimited against large fixed plans, on speed and on value."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-unlimited" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Best Unlimited eSIM for Japan 2026 | Japan Travel Kit" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-unlimited" />
-        <meta property="og:description" content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large fixed plans — with honest findings on speed and value." />
+        <meta property="og:description" content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile and Airalo on true unlimited against large fixed plans, on speed and on value." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Unlimited eSIM for Japan 2026 | Japan Travel Kit" />
-        <meta name="twitter:description" content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large fixed plans — with honest findings on speed and value." />
+        <meta name="twitter:description" content="Need unlimited data in Japan? We compare Holafly, Sakura Mobile and Airalo on true unlimited against large fixed plans, on speed and on value." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

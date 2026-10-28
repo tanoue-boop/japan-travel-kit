@@ -252,15 +252,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/karuizawa-day-trip-from-tokyo") },
 });
 
-const TITLE = "Karuizawa Day Trip From Tokyo (2026): Shinkansen Times, the Five Stops and Tour vs DIY";
+const TITLE = "Karuizawa Day Trip From Tokyo (2026): Times and Tour vs DIY";
 const DESC =
-  "A Karuizawa day trip from Tokyo in 2026: the Hokuriku Shinkansen takes 60 to 75 minutes, the Seibu highway bus about 3 hr 20 min for ¥2,600 — plus the official one-day bus course, the outlet, Shiraito Falls and when a coach tour beats doing it yourself.";
+  "A Karuizawa day trip from Tokyo: 60 to 75 minutes on the Hokuriku Shinkansen, or 3 hr 20 min by Seibu highway bus for ¥2,600 — plus what fits in a day.";
 
 export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/karuizawa-day-trip-from-tokyo" />
         {hreflangLinks("/guides/attractions/karuizawa-day-trip-from-tokyo")}

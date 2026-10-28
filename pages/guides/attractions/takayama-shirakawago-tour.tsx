@@ -213,9 +213,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Takayama and Shirakawa-go Tour (2026): Which Departure, and the Bus If You Go Alone";
+const TITLE = "Takayama and Shirakawa-go Tour (2026): Which Departure";
 const DESCRIPTION =
-  "A Takayama and Shirakawa-go Tour runs from Nagoya (about 11 hours), Kanazawa (8–10 hours with an English guide) or Takayama itself (7h20m). With Nohi Bus's ¥2,800 fare, the reserved Kanazawa bus, and the four reservation-only 2027 light-up dates.";
+  "A Takayama and Shirakawa-go tour runs from Nagoya in about 11 hours, Kanazawa in 8 to 10 with an English guide, or Takayama in 7h20m. Plus the local bus.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/takayama-shirakawago-tour") },
@@ -225,7 +225,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/takayama-shirakawago-tour" />
         <meta name="robots" content="index, follow" />

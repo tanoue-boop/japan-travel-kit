@@ -21,10 +21,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, monthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/ko/guides/attractions/usj-tickets-express-pass";
-const TITLE = "유니버설 스튜디오 재팬 익스프레스 패스(2026): 티켓은 어떤 것을 살까";
+const TITLE = "유니버설 스튜디오 재팬 익스프레스 패스(2026) 구매";
 const DESC =
-  "USJ는 이제 온라인 판매만 하고, 슈퍼 닌텐도 월드는 시간 지정 입장이 필요합니다. 스튜디오 패스의 날짜별 가격 " +
-  "체계, 익스프레스 패스가 값을 하는지, 2026년에 무엇을 사야 하는지. 내용은 영어판과 같은 사실입니다.";
+  "USJ는 온라인 판매만, 슈퍼 닌텐도 월드는 시간 지정 입장. 스튜디오 패스 날짜별 가격과 2026 익스프레스 패스 선택 기준.";
 
 // Same facts as the English guide: USJ prices by date tier and we deliberately
 // quote no figure, because none could be verified for a given date.

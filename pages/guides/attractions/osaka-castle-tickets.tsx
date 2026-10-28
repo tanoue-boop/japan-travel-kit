@@ -260,15 +260,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/osaka-castle-tickets") },
 });
 
-const TITLE = "Osaka Castle Tickets (2026): Prices, Hours and What the Pass Covers";
+const TITLE = "Osaka Castle Tickets (2026): Prices, Hours and the Pass";
 const DESC =
-  "Osaka Castle tickets are ¥1,200 for an adult, ¥600 for a student and free below high school, with the main tower open 9:00–18:00 and last admission at 17:30. Plus the four other paid facilities inside the park, the 15–20 minute walk from every station, and the ¥5,200 the Amazing Pass covers.";
+  "Osaka Castle tickets are ¥1,200 for an adult, ¥600 for a student and free below high school, with the main tower open 9:00–18:00 and last entry at 17:30.";
 
 export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/osaka-castle-tickets" />
         {hreflangLinks("/guides/attractions/osaka-castle-tickets")}

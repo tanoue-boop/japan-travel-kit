@@ -63,21 +63,21 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
   return (
     <>
       <Head>
-        <title>SafetyWing vs Heymondo for Japan (2026): Which Should You Pick? | Japan Travel Kit</title>
+        <title>SafetyWing vs Heymondo for Japan (2026): Which to Pick</title>
         <meta
           name="description"
-          content="SafetyWing vs Heymondo for Japan in 2026. We compare subscription vs trip cover, medical limits, app support, ski cover, and waiting periods to help you choose."
+          content="SafetyWing vs Heymondo for Japan in 2026: subscription against trip cover, medical limits, app support, ski cover and the 2 waiting periods compared."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/safetywing-vs-heymondo-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="SafetyWing vs Heymondo for Japan (2026): Which Should You Pick?" />
+        <meta property="og:title" content="SafetyWing vs Heymondo for Japan (2026): Which to Pick" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/safetywing-vs-heymondo-japan" />
-        <meta property="og:description" content="SafetyWing vs Heymondo for Japan in 2026. We compare subscription vs trip cover, medical limits, app support, ski cover, and waiting periods to help you choose." />
+        <meta property="og:description" content="SafetyWing vs Heymondo for Japan in 2026: subscription against trip cover, medical limits, app support, ski cover and the 2 waiting periods compared." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SafetyWing vs Heymondo for Japan (2026): Which Should You Pick?" />
-        <meta name="twitter:description" content="SafetyWing vs Heymondo for Japan in 2026. We compare subscription vs trip cover, medical limits, app support, ski cover, and waiting periods to help you choose." />
+        <meta name="twitter:title" content="SafetyWing vs Heymondo for Japan (2026): Which to Pick" />
+        <meta name="twitter:description" content="SafetyWing vs Heymondo for Japan in 2026: subscription against trip cover, medical limits, app support, ski cover and the 2 waiting periods compared." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -97,7 +97,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/safetywing-vs-heymondo-japan",
-              headline: "SafetyWing vs Heymondo for Japan (2026): Which Should You Pick?",
+              headline: "SafetyWing vs Heymondo for Japan (2026): Which to Pick",
               updated,
             }),
           }}

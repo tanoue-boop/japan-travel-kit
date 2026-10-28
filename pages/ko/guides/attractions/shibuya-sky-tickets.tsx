@@ -22,10 +22,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/ko/guides/attractions/shibuya-sky-tickets";
-const TITLE = "시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법";
+const TITLE = "시부야 스카이 예약(2026): 티켓 가격과 예약 방법";
 const DESC =
-  "시부야 스카이 예약 2026: 공식 티켓 가격(온라인 성인 ¥2,500, 현장 ¥3,000), 어느 시간대가 가장 좋은지" +
-  "(일몰 회차가 가장 먼저 마감), 그리고 해외 발행 카드가 막힐 때 예약하는 방법. 가격은 영어판과 같은 데이터, 같은 확인일입니다.";
+  "시부야 스카이 예약 2026: 공식 가격 온라인 성인 ¥2,500, 현장 ¥3,000. 일몰 회차가 먼저 마감되고, 해외 카드 대안도 정리.";
 
 // Every figure on this page comes from lib/attraction-prices.ts — the same record
 // the English guide and the ticket price table read. Nothing is re-checked for the

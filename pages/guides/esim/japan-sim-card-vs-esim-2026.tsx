@@ -166,20 +166,20 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
   return (
     <>
       <Head>
-        <title>Japan SIM Card vs eSIM 2026: Which Is Better? | Japan Travel Kit</title>
+        <title>Japan SIM Card vs eSIM 2026: Which Is Better?</title>
         <meta
           name="description"
           content="SIM card or eSIM for Japan in 2026? We compare setup, price, coverage and voice calls across Airalo, eSIM Go, Holafly and Sakura Mobile to help you decide."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-sim-card-vs-esim-2026" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Japan SIM Card vs eSIM 2026: Which Is Better? | Japan Travel Kit" />
+        <meta property="og:title" content="Japan SIM Card vs eSIM 2026: Which Is Better?" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-sim-card-vs-esim-2026" />
         <meta property="og:description" content="SIM card or eSIM for Japan in 2026? We compare setup, price, coverage and voice calls across Airalo, eSIM Go, Holafly and Sakura Mobile to help you decide." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan SIM Card vs eSIM 2026: Which Is Better? | Japan Travel Kit" />
+        <meta name="twitter:title" content="Japan SIM Card vs eSIM 2026: Which Is Better?" />
         <meta name="twitter:description" content="SIM card or eSIM for Japan in 2026? We compare setup, price, coverage and voice calls across Airalo, eSIM Go, Holafly and Sakura Mobile to help you decide." />
         <script
           type="application/ld+json"

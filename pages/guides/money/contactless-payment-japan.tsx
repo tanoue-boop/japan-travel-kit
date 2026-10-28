@@ -207,7 +207,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
         <title>Contactless Payment in Japan (2026) | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Can you use contactless payment in Japan? Yes — and since March 2026 a credit card also opens most Tokyo subway and private railway gates, but not JR East. Operator by operator."
+          content="Can you use contactless payment in Japan? Yes — and since March 2026 a credit card opens most Tokyo subway gates, but not JR East. Operator by operator."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={canonicalUrl} />

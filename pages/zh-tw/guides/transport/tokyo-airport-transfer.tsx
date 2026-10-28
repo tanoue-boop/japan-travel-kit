@@ -27,10 +27,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, zhMonthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/zh-tw/guides/transport/tokyo-airport-transfer";
-const TITLE = "成田機場到東京市區交通（2026）：Skyliner、N'EX 與利木津巴士比較";
+const TITLE = "成田機場到東京交通（2026）：Skyliner、N'EX 與巴士";
 const DESC =
-  "成田機場到東京怎麼走，羽田機場也一起比較：電車、巴士與計程車的價格、時間與方便度，附 2026 年車資。" +
-  "所有車資與英文版同一組數字。";
+  "成田機場到東京怎麼走，羽田機場也一起比較：電車、巴士與計程車的價格、時間與方便度，附 2026 年車資。與英文版同一組數字。";
 
 // Every fare and journey time below is the English guide's, unchanged. They are
 // approximate 2026 one-way figures as that page states, and can change.

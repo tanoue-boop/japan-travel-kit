@@ -22,8 +22,7 @@ import { JSONLD_LANG, TRANSLATED_PAGES, zhDateLabel, zhMonthLabel } from "../../
 const ROUTE = "/zh-cn/guides/attractions";
 const TITLE = "日本景点门票攻略（2026）：官方票价、预约方式与一日游";
 const DESC =
-  "日本景点门票 2026：涩谷SKY、teamLab、东京迪士尼、日本环球影城的官方票价与预约规则，" +
-  "加上富士山一日游、机场交通与日本eSIM。票价全部读自场馆官网，并标示核查日期。";
+  "日本景点门票 2026：涩谷SKY、teamLab、东京迪士尼、日本环球影城的官方票价与预约规则，加上富士山一日游与机场交通。票价读自官网并标示核查日期。";
 
 // The hub is the entry point for the ten-page 简体中文 edition, so it lists exactly
 // those ten and nothing else — a hub that links mostly to English pages is not a

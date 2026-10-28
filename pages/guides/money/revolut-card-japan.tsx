@@ -77,7 +77,7 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
   return (
     <>
       <Head>
-        <title>Revolut in Japan 2026: Fees, ATMs &amp; Is It Worth It? | Japan Travel Kit</title>
+        <title>Revolut in Japan 2026: Fees, ATMs &amp; Is It Worth It?</title>
         <meta
           name="description"
           content="Does Revolut work in Japan? We cover plans, weekday and weekend FX fees, ATM limits, how to avoid DCC, and whether Revolut is worth it for your 2026 trip."

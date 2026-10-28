@@ -21,10 +21,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, zhDateLabel, zhMonthLabel, zhPrice } from "../../../../lib/i18n";
 
 const ROUTE = "/zh-tw/guides/attractions/teamlab-tokyo-tickets";
-const TITLE = "teamLab Planets 門票（2026）：票價、預約方式與無界比較";
+const TITLE = "teamLab Planets 門票（2026）：票價、預約與無界比較";
 const DESC =
-  "teamLab Planets（豐洲）門票 2026：官方票價成人 ¥3,800 起、30 分鐘入場時段怎麼運作、" +
-  "赤腳涉水區該穿什麼，以及 Planets 和麻布台之丘的無界差在哪。數字與英文版同一組資料、同一個查核日。";
+  "teamLab Planets（豐洲）門票 2026：官方票價成人 ¥3,800 起、30 分鐘入場時段怎麼運作、赤腳涉水區該穿什麼，以及和無界差在哪。";
 
 // Same records the English guide and the ticket price table read, from
 // lib/attraction-prices.ts. No figure here is new to the Chinese edition.

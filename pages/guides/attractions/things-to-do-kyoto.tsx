@@ -49,21 +49,21 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Things to Do in Kyoto (2026): Temples, Timing &amp; What to Book | Japan Travel Kit</title>
+        <title>Things to Do in Kyoto (2026): Temples, Timing and Booking</title>
         <meta
           name="description"
-          content="Things to do in Kyoto in 2026: almost nothing needs booking, so the planning is the route. How the districts fit together, why the ¥1,100 day pass is the purchase that matters, and the two experiences worth reserving."
+          content="Things to do in Kyoto in 2026: almost nothing needs booking, so the plan is the route. How the districts fit together, and why the ¥1,100 day pass matters."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-kyoto" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Things to Do in Kyoto (2026): Temples, Timing and What to Book" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/things-to-do-kyoto" />
-        <meta property="og:description" content="Things to do in Kyoto in 2026: almost nothing needs booking, so the planning is the route. How the districts fit together, why the ¥1,100 day pass is the purchase that matters, and the two experiences worth reserving." />
+        <meta property="og:description" content="Things to do in Kyoto in 2026: almost nothing needs booking, so the plan is the route. How the districts fit together, and why the ¥1,100 day pass matters." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Things to Do in Kyoto (2026): Temples, Timing and What to Book" />
-        <meta name="twitter:description" content="Things to do in Kyoto in 2026: almost nothing needs booking, so the planning is the route. How the districts fit together, why the ¥1,100 day pass is the purchase that matters, and the two experiences worth reserving." />
+        <meta name="twitter:description" content="Things to do in Kyoto in 2026: almost nothing needs booking, so the plan is the route. How the districts fit together, and why the ¥1,100 day pass matters." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

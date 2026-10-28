@@ -33,10 +33,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, zhMonthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/zh-tw/guides/esim/best-esim-japan";
-const TITLE = "日本網卡推薦（2026）：eSIM 方案比較與 Klook 日本 eSIM";
+const TITLE = "日本網卡推薦（2026）：eSIM 方案比較與 Klook";
 const DESC =
-  "日本網卡推薦 2026：Klook 日本 eSIM，以及 Airalo、Holafly、eSIM Go、Sakura Mobile 四家的價格、" +
-  "網路與語音比較。價格每天從各家官網抓取，與英文版同一組資料、同一個查核時間。";
+  "日本網卡推薦 2026：Klook 日本 eSIM，以及 Airalo、Holafly、eSIM Go、Sakura Mobile 四家的價格比較，每天更新。";
 
 // Prices come from data/esim-prices.json via lib/esim-prices.ts — the same file
 // scripts/fetch-esim-prices.mjs refreshes daily and the English page reads. The

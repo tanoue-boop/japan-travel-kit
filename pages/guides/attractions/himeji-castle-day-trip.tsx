@@ -263,9 +263,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Himeji Castle Day Trip (2026): ¥2,500 Admission, and Times From Osaka & Kyoto";
+const TITLE = "Himeji Castle Day Trip (2026): ¥2,500 Admission and Times";
 const DESCRIPTION =
-  "A Himeji Castle day trip is 1 hr 1 min from Osaka by JR special rapid and 28 minutes from Shin-Osaka by shinkansen. Admission is ¥2,500 for adults and free under 18, or ¥2,600 with Koko-en — plus the 09:00–17:00 hours, the 16:00 last entry and the 1,000-an-hour cap on the keep.";
+  "A Himeji Castle day trip is 1 hr 1 min from Osaka by JR rapid and 28 minutes by shinkansen. Admission is ¥2,500, free under 18, or ¥2,600 with Koko-en.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/himeji-castle-day-trip") },
@@ -275,7 +275,7 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/himeji-castle-day-trip" />
         <meta name="robots" content="index, follow" />

@@ -4,8 +4,7 @@ import styles from "../styles/LegalPage.module.css";
 import { pageUpdated, type PageUpdated } from "../lib/page-dates";
 
 const DESC =
-  "Japan Travel Kit is an independent planning resource for foreign visitors to Japan, operated by mjo Inc. in Tokyo. " +
-  "How we source prices, how often pages are updated, and our affiliate disclosure.";
+  "Japan Travel Kit is an independent planning site for visitors to Japan, run by mjo Inc. in Tokyo: how we source prices, and our affiliate disclosure.";
 
 /**
  * How a figure gets onto this site. Written out in full because it is the part an

@@ -155,9 +155,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Where to Stay in Osaka (2026): Best Areas, Compared by Line and Airport";
+const TITLE = "Where to Stay in Osaka (2026): Best Areas Compared";
 const DESCRIPTION =
-  "Where to Stay in Osaka in 2026: four areas compared on the lines that serve them, the Kansai Airport route to each and the Kyoto and Nara day trips from the door — with journey times read off the operators' own sites.";
+  "Where to stay in Osaka in 2026: 4 areas compared on the lines that serve them, the Kansai Airport route to each, and the Kyoto and Nara day trips.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/where-to-stay-in-osaka") } });
 
@@ -165,7 +165,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/where-to-stay-in-osaka" />
         {hreflangLinks("/guides/attractions/where-to-stay-in-osaka")}
@@ -197,7 +197,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/where-to-stay-in-osaka",
-              headline: "Where to Stay in Osaka (2026): Best Areas, Compared by Line and Airport",
+              headline: "Where to Stay in Osaka (2026): Best Areas Compared",
               description: DESCRIPTION,
               updated,
             }),

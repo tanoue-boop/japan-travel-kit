@@ -34,10 +34,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, monthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/th/guides/esim/best-esim-japan";
-const TITLE = "eSIM ญี่ปุ่น 2026: เทียบแพ็กเกจ และ eSIM ญี่ปุ่นของ Klook";
+const TITLE = "eSIM ญี่ปุ่น 2026: เทียบแพ็กเกจและ Klook";
 const DESC =
-  "eSIM ญี่ปุ่น 2026: eSIM ญี่ปุ่นของ Klook พร้อมเทียบราคา เครือข่าย และการโทรของ Airalo, Holafly, eSIM Go " +
-  "และ Sakura Mobile ราคาดึงจากเว็บไซต์ของผู้ให้บริการทุกวัน ใช้ชุดข้อมูลและเวลาตรวจสอบเดียวกับฉบับภาษาอังกฤษ";
+  "eSIM ญี่ปุ่น 2026: เทียบราคา เครือข่าย และการโทรของ 4 ผู้ให้บริการ กับ eSIM ของ Klook";
 
 // Prices come from data/esim-prices.json via lib/esim-prices.ts — the same file
 // scripts/fetch-esim-prices.mjs refreshes daily and the English page reads. The

@@ -1114,9 +1114,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/japan-14-day-itinerary") } });
 
-const TITLE = "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day";
+const TITLE = "Japan 14-Day Itinerary (2026): 2 Weeks, Day by Day";
 const DESC =
-  "A Japan 14-day itinerary for 2 weeks in Japan: Tokyo 5 nights, Kawaguchiko or Hakone 1, Kyoto 4 with Nara, Osaka 3 — a table per day for time, transport and bookings, plus official prices with the date each was checked.";
+  "A Japan 14-day itinerary for 2 weeks in Japan: Tokyo 5 nights, Kawaguchiko or Hakone 1, Kyoto 4 with Nara, Osaka 3 — a table per day, with dated prices.";
 const ROUTE = "/guides/attractions/japan-14-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -1124,7 +1124,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href={URL} />
         {hreflangLinks(ROUTE)}

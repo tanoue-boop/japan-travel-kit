@@ -21,10 +21,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, monthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/ko/guides/attractions/tokyo-disney-tickets";
-const TITLE = "도쿄 디즈니랜드 티켓(2026): 날짜 지정 예매와 랜드・씨 선택";
+const TITLE = "도쿄 디즈니랜드 티켓(2026): 날짜 지정 예매와 선택";
 const DESC =
-  "도쿄 디즈니랜드 티켓 2026: 모든 티켓이 날짜 지정이고 현장 판매가 없습니다. 해외 발행 카드가 막힐 때 사는 방법, " +
-  "그리고 디즈니랜드와 디즈니씨 중 어디를 고를지. 내용은 영어판과 같은 사실입니다.";
+  "도쿄 디즈니랜드 티켓 2026: 모든 티켓이 날짜 지정, 현장 판매 0건. 해외 카드 대안과 랜드·씨 선택 기준을 정리했습니다.";
 
 // Facts and figures are the English guide's, unchanged. Tokyo Disney publishes no
 // fixed yen price — the passport is variable, date-based — so this page quotes the

@@ -209,7 +209,7 @@ A trial edition of 5 guides in Korean, under /ko/ (hreflang ko-KR), with its own
 
 The same 5 guides in Thai, under /th/ (hreflang th-TH), with its own entry page at https://www.japan-travel-kit.com/th. Thailand is one of Japan's four largest inbound markets, and Thai readers book these attractions through the same platforms. Not a translation of the Korean pages: each is written from the English original, with the search terms Thai readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's th storefront. Every price, operator source and check date is identical to the English pages.
 
-- [ไกด์เที่ยวญี่ปุ่น 2026: ตั๋ว การเดินทาง และ eSIM](https://www.japan-travel-kit.com/th): the ไทย edition's entry page — every page it has, grouped by category. ไทย counterpart of https://www.japan-travel-kit.com/
+- [ไกด์เที่ยวญี่ปุ่น 2026: ตั๋ว การเดินทาง eSIM](https://www.japan-travel-kit.com/th): the ไทย edition's entry page — every page it has, grouped by category. ไทย counterpart of https://www.japan-travel-kit.com/
 - [ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง](https://www.japan-travel-kit.com/th/guides/attractions/shibuya-sky-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
 - [ตั๋ว teamLab Planets (2026): ราคา รอบเข้าชม และเทียบกับ Borderless](https://www.japan-travel-kit.com/th/guides/attractions/teamlab-tokyo-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets
 - [ตั๋วดิสนีย์แลนด์โตเกียว (2026): บัตรระบุวัน และเลือกแลนด์หรือซี](https://www.japan-travel-kit.com/th/guides/attractions/tokyo-disney-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets
@@ -225,4 +225,4 @@ The same 5 guides in Thai, under /th/ (hreflang th-TH), with its own entry page 
 - [sitemap.xml](https://www.japan-travel-kit.com/sitemap.xml)
 - Contact: info@japan-travel-kit.com
 
-Generated 2026-10-27 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.
+Generated 2026-10-28 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.

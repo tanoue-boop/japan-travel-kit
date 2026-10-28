@@ -254,15 +254,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kyoto-kimono-rental") },
 });
 
-const TITLE = "Kyoto Kimono Rental (2026): Which Area, What's Included, When to Return";
+const TITLE = "Kyoto Kimono Rental (2026): Areas, Plans and Return Times";
 const DESC =
-  "Kyoto kimono rental compared by area — Gion and Kiyomizu, Arashiyama, Kyoto Station — with what each plan includes, the same-day return deadline that shapes the whole day, and a Higashiyama walking route with the temple hours checked against each temple's own site.";
+  "Kyoto kimono rental compared across 3 areas — Gion and Kiyomizu, Arashiyama, Kyoto Station — with what each plan includes and the same-day return time.";
 
 export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kyoto-kimono-rental" />
         {hreflangLinks("/guides/attractions/kyoto-kimono-rental")}

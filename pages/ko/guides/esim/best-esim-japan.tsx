@@ -34,10 +34,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, monthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/ko/guides/esim/best-esim-japan";
-const TITLE = "일본 이심 추천(2026): eSIM 요금제 비교와 클룩 일본 eSIM";
+const TITLE = "일본 이심 추천(2026): eSIM 요금제와 클룩 비교";
 const DESC =
-  "일본 이심 추천 2026: 클룩 일본 eSIM과 함께 Airalo, Holafly, eSIM Go, Sakura Mobile 네 곳의 가격, 통신망, " +
-  "통화 지원을 비교합니다. 가격은 매일 각 사 공식 사이트에서 수집하며, 영어판과 같은 데이터·같은 확인 시각입니다.";
+  "일본 이심 추천 2026: 클룩 일본 eSIM과 Airalo, Holafly 등 4곳의 가격·통신망 비교. 가격은 매일 공식 사이트 확인.";
 
 // Prices come from data/esim-prices.json via lib/esim-prices.ts — the same file
 // scripts/fetch-esim-prices.mjs refreshes daily and the English page reads. The

@@ -157,21 +157,21 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
   return (
     <>
       <Head>
-        <title>Best Travel Insurance for Japan (2026): Compared &amp; Reviewed | Japan Travel Kit</title>
+        <title>Best Travel Insurance for Japan (2026): Compared</title>
         <meta
           name="description"
-          content="The best travel insurance for Japan in 2026, compared. We review Heymondo, SafetyWing, and World Nomads on medical cover, price structure, ski cover, and support."
+          content="The best travel insurance for Japan in 2026: Heymondo, SafetyWing and World Nomads compared on medical cover, price structure, ski cover and support."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/best-travel-insurance-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Best Travel Insurance for Japan (2026): Compared & Reviewed" />
+        <meta property="og:title" content="Best Travel Insurance for Japan (2026): Compared" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/best-travel-insurance-japan" />
-        <meta property="og:description" content="The best travel insurance for Japan in 2026, compared. We review Heymondo, SafetyWing, and World Nomads on medical cover, price structure, ski cover, and support." />
+        <meta property="og:description" content="The best travel insurance for Japan in 2026: Heymondo, SafetyWing and World Nomads compared on medical cover, price structure, ski cover and support." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Travel Insurance for Japan (2026): Compared & Reviewed" />
-        <meta name="twitter:description" content="The best travel insurance for Japan in 2026, compared. We review Heymondo, SafetyWing, and World Nomads on medical cover, price structure, ski cover, and support." />
+        <meta name="twitter:title" content="Best Travel Insurance for Japan (2026): Compared" />
+        <meta name="twitter:description" content="The best travel insurance for Japan in 2026: Heymondo, SafetyWing and World Nomads compared on medical cover, price structure, ski cover and support." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -191,7 +191,7 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/best-travel-insurance-japan",
-              headline: "Best Travel Insurance for Japan (2026): Compared & Reviewed",
+              headline: "Best Travel Insurance for Japan (2026): Compared",
               updated,
             }),
           }}

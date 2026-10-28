@@ -23,8 +23,7 @@ import { JSONLD_LANG, zhDateLabel, zhMonthLabel, zhPrice } from "../../../../lib
 const ROUTE = "/zh-cn/guides/attractions/teamlab-borderless-tickets";
 const TITLE = "teamLab 无界 门票（2026）：票价、时段预约与购票渠道";
 const DESC =
-  "teamLab 无界（麻布台之丘）门票 2026：官方票价成人 ¥3,400 起、浮动定价怎么算、指定入场时段与 Flexible Pass、" +
-  "营业时间与休馆日，以及官网和 Klook 该选哪一个。数字与英文版同一组数据、同一个核查日期。";
+  "teamLab 无界（麻布台之丘）门票 2026：官方票价成人 ¥3,400 起、浮动定价怎么算、指定入场时段与休馆日，官网和 Klook 该选哪个。";
 
 // All figures come from lib/attraction-prices.ts and the English guide that read
 // them off teamlab.art. Nothing was re-checked or added for this edition.

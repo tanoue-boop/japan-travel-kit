@@ -150,15 +150,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-tower-tickets") } });
 
-const TITLE = "Tokyo Tower Tickets (2026): Prices, Main Deck vs Top Deck & How to Book";
+const TITLE = "Tokyo Tower Tickets (2026): Prices and Which Deck to Buy";
 const DESCRIPTION =
-  "Tokyo Tower tickets in 2026: official prices (¥1,500 Main Deck, ¥3,300 Top Deck Tour online), what each deck covers, opening hours to 23:00 and how to book from abroad.";
+  "Tokyo Tower tickets in 2026: the Main Deck is ¥1,500 and the Top Deck Tour ¥3,300 booked online, what each deck covers, and the 23:00 closing time.";
 
 export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-tower-tickets" />
         <meta name="robots" content="index, follow" />

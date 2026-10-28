@@ -117,15 +117,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-subway-ticket") } });
 
-const TITLE = "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?";
+const TITLE = "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours";
 const DESC =
-  "Tokyo Subway Ticket prices for 2026: ¥1,000 / ¥1,500 / ¥2,000 for 24, 48 and 72 hours. We work the break-even against official Metro fares and explain what the pass excludes.";
+  "Tokyo Subway Ticket prices for 2026: ¥1,000, ¥1,500 and ¥2,000 for 24, 48 and 72 hours. The break-even against Metro fares, and what the pass excludes.";
 
 export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-subway-ticket" />
         <meta name="robots" content="index, follow" />

@@ -21,10 +21,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, monthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/th/guides/attractions/tokyo-disney-tickets";
-const TITLE = "ตั๋วดิสนีย์แลนด์โตเกียว (2026): บัตรระบุวัน และเลือกแลนด์หรือซี";
+const TITLE = "ตั๋วดิสนีย์แลนด์โตเกียว 2026: บัตรระบุวัน";
 const DESC =
-  "ตั๋วดิสนีย์แลนด์โตเกียว 2026: ทุกบัตรระบุวันเข้าชม และไม่มีการขายหน้างานเลย วิธีซื้อเมื่อบัตรเครดิต " +
-  "ต่างประเทศใช้ไม่ผ่าน และควรเลือกโตเกียวดิสนีย์แลนด์หรือดิสนีย์ซี เนื้อหาใช้ข้อเท็จจริงชุดเดียวกับฉบับภาษาอังกฤษ";
+  "ตั๋วดิสนีย์แลนด์โตเกียว 2026: ทุกบัตรระบุวัน ไม่มีขายหน้างาน และวิธีซื้อจากต่างประเทศ";
 
 // Facts and figures are the English guide's, unchanged. Tokyo Disney publishes no
 // fixed yen price — the passport is variable, date-based — so this page quotes the

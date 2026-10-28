@@ -244,15 +244,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/dotonbori-river-cruise") },
 });
 
-const TITLE = "Dotonbori River Cruise (2026): Price, Times, Pier and the Pass";
+const TITLE = "Dotonbori River Cruise (2026): Price, Times and the Pier";
 const DESC =
-  "A Dotonbori river cruise on the Tombori boat is ¥2,000 for an adult, runs about 20 minutes, and departs Tazaemonbashi Pier every half hour from 11:00 to 21:00 — free with the Osaka Amazing Pass. Plus same-day tickets, the night-versus-day call, and the three other Dotonbori boats.";
+  "The Tombori river cruise is ¥2,000 for an adult, runs 20 minutes and leaves Tazaemonbashi Pier every half hour from 11:00 to 21:00 — free with the pass.";
 
 export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/dotonbori-river-cruise" />
         {hreflangLinks("/guides/attractions/dotonbori-river-cruise")}

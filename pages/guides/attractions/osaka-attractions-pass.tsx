@@ -121,21 +121,21 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It? | Japan Travel Kit</title>
+        <title>Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?</title>
         <meta
           name="description"
-          content="Osaka Amazing Pass 2026: the official ¥2,500 one-day and ¥3,300 two-day prices, what the 40-plus free admissions cover, and the two attractions everyone assumes are on it that are not."
+          content="Osaka Amazing Pass 2026: the official ¥2,500 one-day and ¥3,300 two-day prices, what the 40-plus free admissions cover, and the 2 big names missing."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/osaka-attractions-pass" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/osaka-attractions-pass" />
-        <meta property="og:description" content="Osaka Amazing Pass 2026: the official ¥2,500 one-day and ¥3,300 two-day prices, what the 40-plus free admissions cover, and the two attractions everyone assumes are on it that are not." />
+        <meta property="og:description" content="Osaka Amazing Pass 2026: the official ¥2,500 one-day and ¥3,300 two-day prices, what the 40-plus free admissions cover, and the 2 big names missing." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?" />
-        <meta name="twitter:description" content="Osaka Amazing Pass 2026: the official ¥2,500 one-day and ¥3,300 two-day prices, what the 40-plus free admissions cover, and the two attractions everyone assumes are on it that are not." />
+        <meta name="twitter:description" content="Osaka Amazing Pass 2026: the official ¥2,500 one-day and ¥3,300 two-day prices, what the 40-plus free admissions cover, and the 2 big names missing." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

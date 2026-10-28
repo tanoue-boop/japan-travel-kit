@@ -222,9 +222,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Arima Onsen Day Trip (2026): From Osaka or Kobe, and What the Baths Cost";
+const TITLE = "Arima Onsen Day Trip (2026): From Osaka or Kobe, and Costs";
 const DESCRIPTION =
-  "An Arima Onsen day trip is about 65 minutes and ¥1,400 by coach from Osaka Station, or 30 minutes and ¥780 from Sannomiya. Kin no Yu is ¥800 and Gin no Yu ¥700, with closed Tuesdays that do not overlap — plus half-day and full-day plans and tour versus doing it yourself.";
+  "An Arima Onsen day trip is 65 minutes and ¥1,400 by coach from Osaka, or 30 minutes from Sannomiya. Kin no Yu is ¥800 and Gin no Yu ¥700.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/arima-onsen-day-trip") },
@@ -234,7 +234,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/arima-onsen-day-trip" />
         <meta name="robots" content="index, follow" />

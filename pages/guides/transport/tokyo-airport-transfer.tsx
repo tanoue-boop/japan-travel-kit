@@ -438,15 +438,15 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/tr
 // The search terms stay verbatim in the title, the H1 and the description:
 // "Tokyo airport transfer" is the page's own term, and "Narita to Tokyo",
 // "Haneda to Tokyo" and "N'EX vs Skyliner" are the three things readers type.
-const TITLE = "Tokyo Airport Transfer (2026): Narita to Tokyo, Haneda to Tokyo, N'EX vs Skyliner";
+const TITLE = "Tokyo Airport Transfer (2026): Narita and Haneda to Tokyo";
 const DESC =
-  "Tokyo airport transfer fares and times, checked on the operators' own sites: Narita to Tokyo from ¥1,060, the Skyliner at ¥2,580 in 41 minutes, the N'EX at ¥3,140, Haneda to Tokyo from ¥330 in 11 minutes — plus N'EX vs Skyliner and what to do after the last train.";
+  "Tokyo airport transfer fares, checked at the source: Narita to Tokyo from ¥1,060, the Skyliner ¥2,580 in 41 minutes, and Haneda to Tokyo from ¥330.";
 
 export default function TokyoAirportTransferPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-airport-transfer" />
         {hreflangLinks("/guides/transport/tokyo-airport-transfer")}

@@ -247,15 +247,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kawaguchiko-day-trip-from-tokyo") },
 });
 
-const TITLE = "Kawaguchiko Day Trip From Tokyo (2026): Routes, Fares and What Fits in a Day";
+const TITLE = "Kawaguchiko Day Trip From Tokyo (2026): Routes and Fares";
 const DESC =
-  "A Kawaguchiko day trip from Tokyo in 2026: the ¥2,200 highway bus from Shinjuku in about 1 hr 45 min, official fares for the ropeway, lake boat and sightseeing bus, and the two or three stops that actually fit.";
+  "A Kawaguchiko day trip from Tokyo: the ¥2,200 highway bus from Shinjuku in 1 hr 45 min, official ropeway and lake boat fares, and the stops that fit.";
 
 export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kawaguchiko-day-trip-from-tokyo" />
         {hreflangLinks("/guides/attractions/kawaguchiko-day-trip-from-tokyo")}

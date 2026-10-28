@@ -220,15 +220,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tsukiji-market-food-tour") },
 });
 
-const TITLE = "Tsukiji Market Food Tour (2026): Hours, What to Eat and Which Tour to Book";
+const TITLE = "Tsukiji Market Food Tour (2026): Hours and Which to Book";
 const DESC =
-  "A Tsukiji market food tour in 2026: the outer market trades 9:00 a.m. to 2:00 p.m. with many shops closed Sundays and some Wednesdays, buyers have priority until 9:00, and tours run two to four hours from Tsukiji Hongan-ji. Plus how Tsukiji differs from Toyosu.";
+  "A Tsukiji market food tour in 2026: the outer market trades 9:00 to 14:00, many shops close Sundays, and tours run 2 to 4 hours from Tsukiji Hongan-ji.";
 
 export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tsukiji-market-food-tour" />
         {hreflangLinks("/guides/attractions/tsukiji-market-food-tour")}

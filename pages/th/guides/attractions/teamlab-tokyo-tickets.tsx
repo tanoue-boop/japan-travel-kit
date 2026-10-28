@@ -22,10 +22,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/th/guides/attractions/teamlab-tokyo-tickets";
-const TITLE = "ตั๋ว teamLab Planets (2026): ราคา รอบเข้าชม และเทียบกับ Borderless";
+const TITLE = "ตั๋ว teamLab Planets 2026: ราคา วิธีจอง";
 const DESC =
-  "ตั๋ว teamLab Planets (โทโยสุ) 2026: ราคาทางการ ผู้ใหญ่เริ่มต้น ¥3,800 รอบเข้าชมแบบ 30 นาทีทำงานอย่างไร " +
-  "ควรใส่อะไรไปเดินเท้าเปล่าในโซนน้ำ และ Planets ต่างจาก Borderless ที่อาซาบุไดฮิลส์อย่างไร ตัวเลขใช้ชุดข้อมูลและวันที่ตรวจสอบเดียวกับฉบับภาษาอังกฤษ";
+  "ตั๋ว teamLab Planets 2026: ราคาผู้ใหญ่เริ่มต้น ¥3,800 รอบเข้าชม 30 นาที และวิธีจอง";
 
 // Same records the English guide and the ticket price table read, from
 // lib/attraction-prices.ts. No figure here is new to the Thai edition.

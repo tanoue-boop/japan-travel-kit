@@ -118,21 +118,21 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
   return (
     <>
       <Head>
-        <title>Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto &amp; What to Expect | Japan Travel Kit</title>
+        <title>Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto</title>
         <meta
           name="description"
-          content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long it takes, Tokyo vs Kyoto, pairing with a kimono, seating and pregnancy notes, and how to book."
+          content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long a session runs, Tokyo against Kyoto, and how to book one from abroad."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tea-ceremony-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto & What to Expect" />
+        <meta property="og:title" content="Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tea-ceremony-japan" />
-        <meta property="og:description" content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long it takes, Tokyo vs Kyoto, pairing with a kimono, seating and pregnancy notes, and how to book." />
+        <meta property="og:description" content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long a session runs, Tokyo against Kyoto, and how to book one from abroad." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto & What to Expect" />
-        <meta name="twitter:description" content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long it takes, Tokyo vs Kyoto, pairing with a kimono, seating and pregnancy notes, and how to book." />
+        <meta name="twitter:title" content="Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto" />
+        <meta name="twitter:description" content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long a session runs, Tokyo against Kyoto, and how to book one from abroad." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -152,7 +152,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tea-ceremony-japan",
-              headline: "Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto & What to Expect",
+              headline: "Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto",
               updated,
             }),
           }}

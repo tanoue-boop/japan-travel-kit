@@ -73,20 +73,20 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks | Japan Travel Kit</title>
+        <title>Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks</title>
         <meta
           name="description"
           content="Visiting Japan for 2 weeks? Most travellers need 5–10GB. We compare the best eSIM plans for a 14-day trip — with data estimates and honest recommendations."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-2-weeks" />
-        <meta property="og:title" content="Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks | Japan Travel Kit" />
+        <meta property="og:title" content="Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-2-weeks" />
         <meta property="og:description" content="Visiting Japan for 2 weeks? Most travellers need 5–10GB. We compare the best eSIM plans for a 14-day trip — with data estimates and honest recommendations." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks | Japan Travel Kit" />
+        <meta name="twitter:title" content="Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks" />
         <meta name="twitter:description" content="Visiting Japan for 2 weeks? Most travellers need 5–10GB. We compare the best eSIM plans for a 14-day trip — with data estimates and honest recommendations." />
         <script
           type="application/ld+json"

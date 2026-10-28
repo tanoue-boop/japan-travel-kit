@@ -284,21 +284,21 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>Tax-Free Shopping in Japan 2026: Rules &amp; Airport Refund | Japan Travel Kit</title>
+        <title>Tax-Free Shopping in Japan 2026: Rules &amp; Airport Refund</title>
         <meta
           name="description"
-          content="¥5,000 per shop per day, a non-resident passport, and — from 1 November 2026 — a customs terminal before bag drop. The official rules for Japan's new tax-refund method."
+          content="Tax-free shopping in Japan: ¥5,000 per shop per day, a non-resident passport, and from 1 November 2026 a customs terminal before you drop your bags."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/tax-free-shopping-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tax-Free Shopping in Japan 2026: Rules & Airport Refund | Japan Travel Kit" />
+        <meta property="og:title" content="Tax-Free Shopping in Japan 2026: Rules & Airport Refund" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/tax-free-shopping-japan" />
-        <meta property="og:description" content="¥5,000 per shop per day, a non-resident passport, and — from 1 November 2026 — a customs terminal before bag drop. The official rules for Japan's new tax-refund method." />
+        <meta property="og:description" content="Tax-free shopping in Japan: ¥5,000 per shop per day, a non-resident passport, and from 1 November 2026 a customs terminal before you drop your bags." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tax-Free Shopping in Japan 2026: Rules & Airport Refund | Japan Travel Kit" />
-        <meta name="twitter:description" content="¥5,000 per shop per day, a non-resident passport, and — from 1 November 2026 — a customs terminal before bag drop. The official rules for Japan's new tax-refund method." />
+        <meta name="twitter:title" content="Tax-Free Shopping in Japan 2026: Rules & Airport Refund" />
+        <meta name="twitter:description" content="Tax-free shopping in Japan: ¥5,000 per shop per day, a non-resident passport, and from 1 November 2026 a customs terminal before you drop your bags." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

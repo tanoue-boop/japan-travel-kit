@@ -146,9 +146,9 @@ const tips = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/atms-in-japan") } });
 
-const TITLE = "ATMs in Japan 2026: Which Accept Foreign Cards & Fees | Japan Travel Kit";
+const TITLE = "ATMs in Japan 2026: Which Accept Foreign Cards & Fees";
 const DESCRIPTION =
-  "Which ATMs in Japan accept foreign cards, and the fees: Seven Bank, Japan Post Bank, E-net, Lawson Bank and AEON compared on brands, fees, hours and withdrawal limits.";
+  "Which ATMs in Japan accept foreign cards, and the fees: Seven Bank, Japan Post Bank, E-net, Lawson Bank and AEON — 5 networks on fees, hours and limits.";
 
 export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
   return (

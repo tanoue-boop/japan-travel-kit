@@ -269,9 +269,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/sakura-mobile-review") } });
 
-const TITLE = "Sakura Mobile Review 2026: eSIM & SIM Card Plans, Prices and Verdict | Japan Travel Kit";
+const TITLE = "Sakura Mobile Review 2026: eSIM and SIM Card Plans";
 const DESCRIPTION =
-  "Sakura Mobile Review 2026: eSIM & SIM Card plans and prices in yen, au vs docomo, phone number, tethering and setup — plus where to pick up a Sakura Mobile SIM card.";
+  "Sakura Mobile review 2026: eSIM and SIM card plans and prices in yen, au against docomo, phone number, tethering, and where to pick a SIM card up.";
 
 export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdated }) {
   return (

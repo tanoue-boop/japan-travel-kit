@@ -22,10 +22,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/th/guides/attractions/shibuya-sky-tickets";
-const TITLE = "ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง";
+const TITLE = "ตั๋ว Shibuya Sky 2026: ราคาและวิธีจอง";
 const DESC =
-  "ตั๋ว Shibuya Sky 2026: ราคาทางการ (ออนไลน์ผู้ใหญ่ ¥2,500 หน้างาน ¥3,000) รอบเวลาที่คุ้มที่สุด " +
-  "(รอบพระอาทิตย์ตกเต็มเร็วที่สุด) และวิธีจองเมื่อบัตรเครดิตที่ออกนอกญี่ปุ่นใช้ไม่ผ่าน ราคาใช้ชุดข้อมูลและวันที่ตรวจสอบเดียวกับฉบับภาษาอังกฤษ";
+  "ตั๋ว Shibuya Sky 2026: ราคาทางการออนไลน์ผู้ใหญ่ ¥2,500 หน้างาน ¥3,000 และวิธีจอง";
 
 // Every figure on this page comes from lib/attraction-prices.ts — the same record
 // the English guide and the ticket price table read. Nothing is re-checked for the

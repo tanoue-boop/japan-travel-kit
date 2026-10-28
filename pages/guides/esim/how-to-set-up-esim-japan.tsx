@@ -290,7 +290,7 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
         <title>How to Set Up a Japan eSIM 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content="Step-by-step guide to installing your Japan eSIM on iPhone, Android, iPad or Android tablet before you fly — plus a full troubleshooting section if your eSIM isn't working."
+          content="Step by step: installing your Japan eSIM on an iPhone, Android, iPad or tablet before you fly — plus what to try if it is not working on arrival."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
         <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone, Android & Tablet Guide 2026)" />

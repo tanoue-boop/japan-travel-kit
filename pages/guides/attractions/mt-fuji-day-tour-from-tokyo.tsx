@@ -144,15 +144,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/mt-fuji-day-tour-from-tokyo") } });
 
-const TITLE = "Mt. Fuji Day Tour From Tokyo (2026): Which Tour, and What You Actually See";
+const TITLE = "Mt. Fuji Day Tour From Tokyo (2026): Which Tour to Book";
 const DESC =
-  "Comparing Mt. Fuji day tours from Tokyo for 2026: Fuji-only versus Fuji and Hakone, what the Subaru Line Fifth Station is, how long the day runs, and how to book from abroad.";
+  "Comparing Mt. Fuji day tours from Tokyo for 2026: Fuji only against Fuji and Hakone, what the Subaru Line 5th Station is, and how to book from abroad.";
 
 export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-tour-from-tokyo" />
         {hreflangLinks("/guides/attractions/mt-fuji-day-tour-from-tokyo")}

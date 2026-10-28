@@ -129,14 +129,14 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>Osaka Airport Transfer 2026: KIX &amp; ITM Guide | Japan Travel Kit</title>
+        <title>Osaka Airport Transfer 2026: KIX &amp; ITM Guide</title>
         <meta
           name="description"
           content="How to get from Kansai Airport (KIX) or Itami (ITM) to Osaka city. We compare trains, buses and taxis on price, speed and convenience — with 2026 fares."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/osaka-airport-transfer" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Osaka Airport Transfer 2026: KIX &amp; ITM Guide | Japan Travel Kit" />
+        <meta property="og:title" content="Osaka Airport Transfer 2026: KIX &amp; ITM Guide" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/osaka-airport-transfer" />
         <meta property="og:description" content="How to get from Kansai Airport (KIX) or Itami (ITM) to Osaka city. We compare trains, buses and taxis on price, speed and convenience — with 2026 fares." />
         <meta property="og:type" content="article" />

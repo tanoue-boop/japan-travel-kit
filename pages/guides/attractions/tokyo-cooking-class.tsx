@@ -127,21 +127,21 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>Tokyo Cooking Class (2026): Sushi &amp; Ramen Making — What to Expect &amp; How to Book | Japan Travel Kit</title>
+        <title>Tokyo Cooking Class (2026): Sushi and Ramen Making</title>
         <meta
           name="description"
-          content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, English-language and kid-friendly options, and how to pick the right class."
+          content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, and the English and kid-friendly ones."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-cooking-class" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Cooking Class (2026): Sushi & Ramen Making — What to Expect & How to Book" />
+        <meta property="og:title" content="Tokyo Cooking Class (2026): Sushi and Ramen Making" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-cooking-class" />
-        <meta property="og:description" content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, English-language and kid-friendly options, and how to pick the right class." />
+        <meta property="og:description" content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, and the English and kid-friendly ones." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Cooking Class (2026): Sushi & Ramen Making — What to Expect & How to Book" />
-        <meta name="twitter:description" content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, English-language and kid-friendly options, and how to pick the right class." />
+        <meta name="twitter:title" content="Tokyo Cooking Class (2026): Sushi and Ramen Making" />
+        <meta name="twitter:description" content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, and the English and kid-friendly ones." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -161,7 +161,7 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-cooking-class",
-              headline: "Tokyo Cooking Class (2026): Sushi & Ramen Making — What to Expect & How to Book",
+              headline: "Tokyo Cooking Class (2026): Sushi and Ramen Making",
               updated,
             }),
           }}

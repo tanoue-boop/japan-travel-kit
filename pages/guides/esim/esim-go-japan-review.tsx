@@ -122,26 +122,26 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>eSIM Go Review for Japan (2026): Prices, Coverage and Setup | Japan Travel Kit</title>
+        <title>eSIM Go Review for Japan (2026): Prices and Coverage</title>
         <meta
           name="description"
           content="eSIM Go Japan plans compared: price per GB, network coverage and activation steps, plus how it stacks up against Airalo and Holafly."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/esim-go-japan-review" />
-        <meta property="og:title" content="eSIM Go Review for Japan (2026): Prices, Coverage and Setup | Japan Travel Kit" />
+        <meta property="og:title" content="eSIM Go Review for Japan (2026): Prices and Coverage" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/esim-go-japan-review" />
         <meta property="og:description" content="eSIM Go Japan plans compared: price per GB, network coverage and activation steps, plus how it stacks up against Airalo and Holafly." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="eSIM Go Review for Japan (2026): Prices, Coverage and Setup | Japan Travel Kit" />
+        <meta name="twitter:title" content="eSIM Go Review for Japan (2026): Prices and Coverage" />
         <meta name="twitter:description" content="eSIM Go Japan plans compared: price per GB, network coverage and activation steps, plus how it stacks up against Airalo and Holafly." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/esim-go-japan-review",
-              headline: "eSIM Go Review for Japan (2026): Prices, Coverage and Setup | Japan Travel Kit",
+              headline: "eSIM Go Review for Japan (2026): Prices and Coverage",
               description: "eSIM Go Japan plans compared: price per GB, network coverage and activation steps, plus how it stacks up against Airalo and Holafly.",
               updated,
             }),

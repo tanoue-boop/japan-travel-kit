@@ -153,15 +153,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kyoto-nara-day-tour-from-osaka") },
 });
 
-const TITLE = "Kyoto and Nara Day Tour From Osaka (2026): Which Itinerary to Book";
+const TITLE = "Kyoto and Nara Day Tour From Osaka (2026): Which to Book";
 const DESC =
-  "Comparing Kyoto and Nara day tours from Osaka for 2026: what each itinerary covers, how long the day runs, Todai-ji's official admission and hours, and which temple fees are extra.";
+  "Comparing Kyoto and Nara day tours from Osaka for 2026: what each itinerary covers, how long the day runs, and Todai-ji's official ¥800 admission.";
 
 export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kyoto-nara-day-tour-from-osaka" />
         <meta name="robots" content="index, follow" />

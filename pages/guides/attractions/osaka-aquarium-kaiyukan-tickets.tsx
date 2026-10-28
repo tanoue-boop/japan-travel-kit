@@ -205,15 +205,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/osaka-aquarium-kaiyukan-tickets") },
 });
 
-const TITLE = "Osaka Aquarium Kaiyukan Tickets (2026): Prices, Hours and Time Slots";
+const TITLE = "Osaka Aquarium Kaiyukan Tickets (2026): Prices and Slots";
 const DESC =
-  "Osaka Aquarium Kaiyukan tickets in 2026: the price moves by date, from ¥2,700 to ¥3,200 for an adult, with 15-minute entry slots on sale 30 days ahead. Plus the hours, the five-minute walk from Osakako, and the re-entry rule that ended in June 2026.";
+  "Osaka Aquarium Kaiyukan tickets move by date, from ¥2,700 to ¥3,200 for an adult, with 15-minute entry slots on sale 30 days ahead. Plus hours and access.";
 
 export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/osaka-aquarium-kaiyukan-tickets" />
         {hreflangLinks("/guides/attractions/osaka-aquarium-kaiyukan-tickets")}

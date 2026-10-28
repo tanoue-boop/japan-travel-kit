@@ -14,11 +14,9 @@ import {
   type PriceGroup,
 } from "../../../lib/attraction-prices";
 
-const TITLE = "Japan Attraction Ticket Prices 2026: Official Prices and Booking Rules";
+const TITLE = "Japan Attraction Ticket Prices 2026: Official Prices";
 const DESC =
-  "Official adult and child admission prices for Japan's ticketed attractions, theme parks, passes and day-trip sites " +
-  "in one table — with whether each one has to be booked in advance, and the date every figure was read off the " +
-  "operator's own site.";
+  "Official adult and child admission for every ticketed Japanese attraction, park and pass in 1 table — each row dated and sourced to the operator.";
 
 const GROUP_ORDER: PriceGroup[] = ["tickets", "parks", "passes", "daytrips"];
 
@@ -148,7 +146,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link
           rel="canonical"

@@ -192,9 +192,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Sagano Romantic Train Tickets (2026): Prices, Seats & When It Runs";
+const TITLE = "Sagano Romantic Train Tickets (2026): Prices and Seats";
 const DESCRIPTION =
-  "Sagano Romantic Train tickets are ¥880 adult and ¥440 child one way for the 25-minute, 7.3 km run through the Hozugawa gorge. The 2026 season, the winter shutdown, when booking opens, same-day tickets and the Hozugawa boat pairing.";
+  "Sagano Romantic Train tickets are ¥880 adult and ¥440 child one way for the 25-minute, 7.3 km run through the Hozugawa gorge. Season, booking and seats.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/sagano-romantic-train-tickets") },
@@ -204,7 +204,7 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/sagano-romantic-train-tickets" />
         <meta name="robots" content="index, follow" />

@@ -395,9 +395,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Osaka 2 Day Itinerary (2026): Day by Day, and What to Book";
+const TITLE = "Osaka 2 Day Itinerary (2026): Day by Day, and Bookings";
 const DESCRIPTION =
-  "A tested-order Osaka 2 Day Itinerary: the castle and Minami on Day 1, the bay and Umeda on Day 2, with a table for each day and official prices — Osaka Castle ¥1,200, the Tombori cruise ¥2,000, the Umeda deck ¥2,000, and the one booking that has a fixed entry slot.";
+  "A tested Osaka 2 day itinerary: the castle and Minami on Day 1, the bay and Umeda on Day 2 — Osaka Castle ¥1,200, the Tombori cruise ¥2,000, Umeda ¥2,000.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/osaka-2-day-itinerary") },
@@ -407,7 +407,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/osaka-2-day-itinerary" />
         <meta name="robots" content="index, follow" />

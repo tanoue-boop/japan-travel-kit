@@ -170,13 +170,20 @@ export type TranslatedPage = {
   en: string;
   /** Traditional Chinese route — LOCALE_PREFIX["zh-tw"] + the English route. */
   zhTw: string;
-  /** The 繁體中文 page's <title>, without the " | Japan Travel Kit" suffix. */
+  /**
+   * The 繁體中文 page's full heading — what the language entry pages print on that
+   * page's card, and the <title> of the entry pages themselves.
+   *
+   * Since 2026-10-28 it is no longer the article's own <title>: the article pages hold
+   * a shorter string that fits the 35-character budget in scripts/check-meta-length.js.
+   * Both still lead with the same search term, which scripts/check-i18n.js asserts.
+   */
   zhTitle: string;
   /** Short 繁體中文 label, for the nav, the footer and llms.txt. */
   zhLabel: string;
   /** Simplified Chinese route — LOCALE_PREFIX["zh-cn"] + the English route. */
   zhCn: string;
-  /** The 简体中文 page's <title>, without the suffix. */
+  /** The 简体中文 page's full heading — see zhTitle. */
   zhCnTitle: string;
   /** Short 简体中文 label. */
   zhCnLabel: string;
@@ -351,7 +358,9 @@ export const HOME_GROUP: TranslatedPage = {
   koTitle: "일본 여행 준비 가이드(2026): 티켓, 교통, eSIM",
   koLabel: "일본 여행 준비 가이드",
   th: "/th",
-  thTitle: "ไกด์เที่ยวญี่ปุ่น 2026: ตั๋ว การเดินทาง และ eSIM",
+  // Shortened 2026-10-28 to fit the 35-character translated-title budget — see
+  // scripts/check-meta-length.js. The other three already did.
+  thTitle: "ไกด์เที่ยวญี่ปุ่น 2026: ตั๋ว การเดินทาง eSIM",
   thLabel: "ไกด์เที่ยวญี่ปุ่น",
 };
 
@@ -402,7 +411,7 @@ export function routeOf(page: TranslatedPage, locale: Locale): string | null {
   }
 }
 
-/** The <title> of one side of a group, without the site-name suffix. */
+/** The full heading of one side of a group — see TranslatedPage.zhTitle. */
 export function titleOf(page: TranslatedPage, locale: TranslatedLocale): string | null {
   switch (locale) {
     case "zh-tw":

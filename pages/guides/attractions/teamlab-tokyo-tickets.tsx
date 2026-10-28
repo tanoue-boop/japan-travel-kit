@@ -253,15 +253,15 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/at
 // title, the H1 and the description. The slug's own term, "teamLab Tokyo tickets",
 // is the other thing readers type — it sits in the description and in the first
 // paragraph of the body, both times in full.
-const TITLE = "teamLab Planets Tickets (2026): Prices, How to Book and Planets vs Borderless";
+const TITLE = "teamLab Planets Tickets (2026): Prices and How to Book";
 const DESC =
-  "teamLab Planets tickets in 2026, from the official store: adult ¥3,800~, priced by date and slot, 30-minute entry windows, nothing sold at the door — the teamLab Tokyo tickets guide, with kids, lockers and Planets vs Borderless.";
+  "teamLab Planets tickets in 2026 start at ¥3,800 for an adult, priced by date and slot, with 30-minute entry windows and nothing at all sold at the door.";
 
 export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets" />
         {hreflangLinks("/guides/attractions/teamlab-tokyo-tickets")}

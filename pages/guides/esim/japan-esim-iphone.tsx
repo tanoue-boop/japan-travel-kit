@@ -287,7 +287,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan on iPhone (2026): Japan eSIM iPhone Setup &amp; Picks</title>
+        <title>Best eSIM for Japan on iPhone (2026): Setup and Picks</title>
         <meta
           name="description"
           content="Best eSIM for Japan on iPhone: which iPhones take a Japan eSIM, the carrier-lock check, and Japan eSIM iPhone setup tap by tap — plus which plan to buy."
@@ -320,7 +320,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/japan-esim-iphone",
-              headline: "Best eSIM for Japan on iPhone (2026): Japan eSIM iPhone Setup & Picks",
+              headline: "Best eSIM for Japan on iPhone (2026): Setup and Picks",
               updated,
             }),
           }}

@@ -242,15 +242,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/umeda-sky-building-tickets") },
 });
 
-const TITLE = "Umeda Sky Building Tickets (2026): Prices, Hours and the Best Time to Go";
+const TITLE = "Umeda Sky Building Tickets (2026): Prices and Best Time";
 const DESC =
-  "Umeda Sky Building tickets are ¥2,000 for an adult and ¥500 for a child aged 4 to elementary school, and the Kuchu Teien Observatory is open 9:30–22:30 with last entry at 22:00. Plus Osaka sunset times by season, the 7-minute walk from Osaka Station, and the 15:00 cut-off that decides whether the Amazing Pass pays.";
+  "Umeda Sky Building tickets are ¥2,000 for an adult and ¥500 for a child, and the Kuchu Teien Observatory opens 9:30–22:30 with last entry at 22:00.";
 
 export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/umeda-sky-building-tickets" />
         {hreflangLinks("/guides/attractions/umeda-sky-building-tickets")}

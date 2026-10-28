@@ -210,9 +210,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Best Travel Insurance for Skiing in Japan (2026): Off-Piste, Rescue Costs and What Is Covered";
+const TITLE = "Ski Travel Insurance for Japan (2026): Off-Piste Cover";
 const DESCRIPTION =
-  "The best travel insurance for skiing in Japan covers on-piste skiing as standard — SafetyWing names skiing and snowboarding but excludes off-piste and heli-skiing even with its US$10 add-on, while Niseko's own rules set a minimum ¥100,000 charge for a backcountry rescue. Compared on published policy wording, checked 25 October 2026.";
+  "Ski insurance for Japan: on-piste cover is standard, SafetyWing excludes off-piste even with its US$10 add-on, and Niseko's rescue minimum is ¥100,000.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/money/japan-ski-travel-insurance") },
@@ -222,7 +222,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/japan-ski-travel-insurance" />
         <meta name="robots" content="index, follow" />

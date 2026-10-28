@@ -7,13 +7,13 @@ import { hubItemListJsonLd } from "../../../lib/structured-data";
 export const getStaticProps = () => ({ props: { dates: articleDates(moneyArticles.map((a) => a.href)) } });
 
 const DESC =
-  "Japan money guides, grouped by what you need to sort: which travel card to bring, how to get yen from an ATM that accepts foreign cards, what to tap where, and what the trip will cost.";
+  "Japan money guides, grouped by what you need to sort: which travel card to bring, how to get yen from an ATM that takes foreign cards, and the budget.";
 
 export default function GuidesMoneyPage({ dates }: { dates: Record<string, string> }) {
   return (
     <>
       <Head>
-        <title>Japan Money &amp; Payment Guides 2026: Cards, Cash & ATMs | Japan Travel Kit</title>
+        <title>Japan Money &amp; Payment Guides 2026: Cards, Cash &amp; ATMs</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money" />
         <meta property="og:title" content="Japan Money & Payment Guides 2026: Cards, Cash & ATMs" />

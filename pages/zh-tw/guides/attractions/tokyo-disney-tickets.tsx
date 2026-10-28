@@ -22,8 +22,7 @@ import { JSONLD_LANG, zhMonthLabel } from "../../../../lib/i18n";
 const ROUTE = "/zh-tw/guides/attractions/tokyo-disney-tickets";
 const TITLE = "東京迪士尼門票（2026）：樂園與海洋怎麼買、怎麼選";
 const DESC =
-  "東京迪士尼門票 2026：每張票都指定日期、現場完全不賣票。海外信用卡刷不過時怎麼買，" +
-  "以及迪士尼樂園與迪士尼海洋該選哪一個。內容與英文版同一組事實。";
+  "東京迪士尼門票 2026：每張票都指定日期、現場完全不賣票。海外信用卡刷不過時怎麼買，以及迪士尼樂園與迪士尼海洋該選哪一個。";
 
 // Facts and figures are the English guide's, unchanged. Tokyo Disney publishes no
 // fixed yen price — the passport is variable, date-based — so this page quotes the

@@ -115,21 +115,21 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
   return (
     <>
       <Head>
-        <title>Samurai &amp; Ninja Experience in Tokyo (2026): Sword Lessons, Where to Go &amp; Tickets | Japan Travel Kit</title>
+        <title>Samurai &amp; Ninja Experience in Tokyo (2026): Where to Go</title>
         <meta
           name="description"
-          content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons. Museum vs lesson styles, age limits, where to go and how to book."
+          content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons — museum against lesson, age limits and booking."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/samurai-ninja-experience-tokyo" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Samurai & Ninja Experience in Tokyo (2026): Sword Lessons, Where to Go & Tickets" />
+        <meta property="og:title" content="Samurai & Ninja Experience in Tokyo (2026): Where to Go" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/samurai-ninja-experience-tokyo" />
-        <meta property="og:description" content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons. Museum vs lesson styles, age limits, where to go and how to book." />
+        <meta property="og:description" content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons — museum against lesson, age limits and booking." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Samurai & Ninja Experience in Tokyo (2026): Sword Lessons, Where to Go & Tickets" />
-        <meta name="twitter:description" content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons. Museum vs lesson styles, age limits, where to go and how to book." />
+        <meta name="twitter:title" content="Samurai & Ninja Experience in Tokyo (2026): Where to Go" />
+        <meta name="twitter:description" content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons — museum against lesson, age limits and booking." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -149,7 +149,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/samurai-ninja-experience-tokyo",
-              headline: "Samurai & Ninja Experience in Tokyo (2026): Sword Lessons, Where to Go & Tickets",
+              headline: "Samurai & Ninja Experience in Tokyo (2026): Where to Go",
               updated,
             }),
           }}

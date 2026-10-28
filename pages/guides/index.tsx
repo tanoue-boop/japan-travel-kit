@@ -30,7 +30,7 @@ const categories: { category: GuideCategory; blurb: string }[] = [
 
 const totalGuides = categories.reduce((n, c) => n + c.category.articles.length, 0);
 
-const DESC = `All ${totalGuides} Japan travel guides in one index: eSIM and SIM cards, transport and rail passes, money and payment, and attraction tickets — grouped by the question each one answers.`;
+const DESC = `All ${totalGuides} Japan travel guides in one index: eSIM and SIM cards, transport and rail passes, money and payment, and attraction tickets.`;
 
 // ItemList of every guide, in the order this page renders them, so an AI crawler reading
 // one page gets the whole site's contents rather than four hub links.
@@ -42,7 +42,7 @@ export default function GuidesIndexPage() {
   return (
     <>
       <Head>
-        <title>Japan Travel Guides 2026: All {totalGuides} Guides by Topic | Japan Travel Kit</title>
+        <title>Japan Travel Guides 2026: All {totalGuides} Guides by Topic</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides" />
         <meta property="og:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />

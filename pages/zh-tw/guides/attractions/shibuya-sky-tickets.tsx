@@ -23,8 +23,7 @@ import { JSONLD_LANG, zhDateLabel, zhMonthLabel, zhPrice } from "../../../../lib
 const ROUTE = "/zh-tw/guides/attractions/shibuya-sky-tickets";
 const TITLE = "澀谷SKY 門票（2026）：票價、最佳時段與預約方式";
 const DESC =
-  "澀谷SKY 門票 2026：官方票價（線上預購成人 ¥2,500、現場 ¥3,000）、什麼時段最值得去（日落場最快售完）、" +
-  "以及海外信用卡刷不過時怎麼訂。票價與英文版同一組資料、同一個查核日。";
+  "澀谷SKY 門票 2026：官方票價線上預購成人 ¥2,500、現場 ¥3,000，哪個時段最值得去（日落場最快售完），以及海外信用卡刷不過時怎麼訂。";
 
 // Every figure on this page comes from lib/attraction-prices.ts — the same record
 // the English guide and the ticket price table read. Nothing is re-checked for the

@@ -7,22 +7,22 @@ import { hubItemListJsonLd } from "../../../lib/structured-data";
 export const getStaticProps = () => ({ props: { dates: articleDates(transportArticles.map((a) => a.href)) } });
 
 const DESC =
-  "Japan transport guides, grouped by the decision in front of you: rail passes and intercity travel, airport transfers, getting around Tokyo, Kyoto and Osaka, and how to pay with an IC card or day pass.";
+  "Japan transport guides, grouped by the decision in front of you: rail passes, airport transfers, getting around 3 big cities, and how to pay a fare.";
 
 export default function GuidesTransportPage({ dates }: { dates: Record<string, string> }) {
   return (
     <>
       <Head>
-        <title>Japan Transport Guides 2026: Rail Passes, Airports & City Travel | Japan Travel Kit</title>
+        <title>Japan Transport Guides 2026: Rail Passes and City Travel</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport" />
-        <meta property="og:title" content="Japan Transport Guides 2026: Rail Passes, Airports & City Travel" />
+        <meta property="og:title" content="Japan Transport Guides 2026: Rail Passes and City Travel" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport" />
         <meta property="og:description" content={DESC} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan Transport Guides 2026: Rail Passes, Airports & City Travel" />
+        <meta name="twitter:title" content="Japan Transport Guides 2026: Rail Passes and City Travel" />
         <meta name="twitter:description" content={DESC} />
         <meta name="robots" content="index, follow" />
         <script

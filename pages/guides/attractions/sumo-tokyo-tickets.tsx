@@ -119,21 +119,21 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
   return (
     <>
       <Head>
-        <title>Sumo in Tokyo (2026): Tournament Tickets vs Morning Practice | Japan Travel Kit</title>
+        <title>Sumo in Tokyo (2026): Tournament Tickets vs Practice</title>
         <meta
           name="description"
-          content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets (and avoid resale scams), seat types, same-day tickets, and morning practice tours."
+          content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets and avoid resale scams, seat types and practice tours."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/sumo-tokyo-tickets" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Sumo in Tokyo (2026): Tournament Tickets vs Morning Practice" />
+        <meta property="og:title" content="Sumo in Tokyo (2026): Tournament Tickets vs Practice" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/sumo-tokyo-tickets" />
-        <meta property="og:description" content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets (and avoid resale scams), seat types, same-day tickets, and morning practice tours." />
+        <meta property="og:description" content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets and avoid resale scams, seat types and practice tours." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sumo in Tokyo (2026): Tournament Tickets vs Morning Practice" />
-        <meta name="twitter:description" content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets (and avoid resale scams), seat types, same-day tickets, and morning practice tours." />
+        <meta name="twitter:title" content="Sumo in Tokyo (2026): Tournament Tickets vs Practice" />
+        <meta name="twitter:description" content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets and avoid resale scams, seat types and practice tours." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -153,7 +153,7 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/sumo-tokyo-tickets",
-              headline: "Sumo in Tokyo (2026): Tournament Tickets vs Morning Practice",
+              headline: "Sumo in Tokyo (2026): Tournament Tickets vs Practice",
               updated,
             }),
           }}

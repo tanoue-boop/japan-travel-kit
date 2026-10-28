@@ -126,15 +126,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/warner-bros-studio-tour-tokyo-tickets") },
 });
 
-const TITLE = "Warner Bros. Studio Tour Tokyo Tickets (2026): Prices & How to Book";
+const TITLE = "Warner Bros. Studio Tour Tokyo Tickets (2026): Prices";
 const DESC =
-  "Official prices for the Harry Potter studio tour in Tokyo: standard entry from ¥6,600, what the tea packages really add, timed admission, and how to get to Toshimaen.";
+  "Official prices for the Harry Potter studio tour in Tokyo: standard entry from ¥6,600, what the tea packages add, timed entry, and getting to Toshimaen.";
 
 export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/warner-bros-studio-tour-tokyo-tickets" />
         <meta name="robots" content="index, follow" />

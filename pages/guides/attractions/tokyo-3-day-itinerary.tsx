@@ -311,15 +311,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-3-day-itinerary") } });
 
-const TITLE = "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order";
+const TITLE = "Tokyo 3 Day Itinerary (2026): What to Book, in What Order";
 const DESC =
-  "A Tokyo 3 day itinerary built around the bookings: a day-by-day plan for west, east and central Tokyo, official ticket prices with the date each was checked, and the only two stops that need a timed slot.";
+  "A Tokyo 3 day itinerary built around the bookings: west, east and central Tokyo day by day, official ticket prices, and the 2 stops that need a timed slot.";
 
 export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-3-day-itinerary" />
         {hreflangLinks("/guides/attractions/tokyo-3-day-itinerary")}

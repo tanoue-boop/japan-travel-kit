@@ -23,8 +23,7 @@ import { JSONLD_LANG, zhDateLabel, zhMonthLabel, zhPrice } from "../../../../lib
 const ROUTE = "/zh-cn/guides/attractions/shibuya-sky-tickets";
 const TITLE = "涩谷SKY 门票（2026）：票价、最佳时段与预约方式";
 const DESC =
-  "涩谷SKY 门票 2026：官方票价（网上预订成人 ¥2,500、现场 ¥3,000）、哪个时段最值得去（日落场次最快售罄）、" +
-  "以及海外信用卡刷不过时怎么订。票价与英文版同一组数据、同一个核查日期。";
+  "涩谷SKY 门票 2026：官方票价网上预订成人 ¥2,500、现场 ¥3,000，哪个时段最值得去（日落场次最快售罄），以及海外信用卡刷不过时怎么订。";
 
 // Every figure on this page comes from lib/attraction-prices.ts — the same record
 // the English guide, the 繁體中文 page and the ticket price table read. Nothing is

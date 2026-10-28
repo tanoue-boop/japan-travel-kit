@@ -9,7 +9,7 @@ export default function PrivacyPolicyPage() {
     <>
       <Head>
         <title>Privacy Policy | Japan Travel Kit</title>
-        <meta name="description" content="Privacy Policy for Japan Travel Kit. Learn how we collect, use, and protect your personal information." />
+        <meta name="description" content="Privacy Policy for Japan Travel Kit: what we collect, how we use it, the cookies and analytics involved, and how to contact us about your own data." />
         <meta name="robots" content="noindex" />
       </Head>
 

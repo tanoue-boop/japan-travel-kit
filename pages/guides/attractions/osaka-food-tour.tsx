@@ -206,15 +206,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/osaka-food-tour") } });
 
-const TITLE = "Osaka Food Tour (2026): Which One to Book, Times and What You Eat";
+const TITLE = "Osaka Food Tour (2026): Which to Book and What You Eat";
 const DESCRIPTION =
-  "An Osaka food tour is the fastest way into takoyaki, okonomiyaki and kushikatsu: the Shinsekai night tour runs 17:30–20:30 with 15 dishes, the Dotonbori walk 11:00–14:00. Times, areas, what is included and which to book.";
+  "An Osaka food tour is the fastest way into takoyaki and kushikatsu: the Shinsekai night tour runs 17:30–20:30 with 15 dishes, the Dotonbori walk 11:00.";
 
 export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/osaka-food-tour" />
         <meta name="robots" content="index, follow" />

@@ -290,7 +290,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan Reddit 2026: Which Advice Still Holds | Japan Travel Kit</title>
+        <title>Best eSIM for Japan Reddit 2026: Which Advice Still Holds</title>
         <meta name="description" content={META_DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-esim-japan-reddit" />
         <meta property="og:title" content="Best eSIM for Japan Reddit 2026: Which Advice Still Holds" />

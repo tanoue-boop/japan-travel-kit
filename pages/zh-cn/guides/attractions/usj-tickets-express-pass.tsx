@@ -22,8 +22,7 @@ import { JSONLD_LANG, zhMonthLabel } from "../../../../lib/i18n";
 const ROUTE = "/zh-cn/guides/attractions/usj-tickets-express-pass";
 const TITLE = "日本环球影城门票与快速通行证（2026）：该买哪一种";
 const DESC =
-  "USJ 现在一律网上购票，超级任天堂世界需要指定时间入园。这页说明 Studio Pass 的分级定价、" +
-  "快速通行证 Express Pass 值不值得，以及 2026 年该买哪一种。内容与英文版同一组事实。";
+  "USJ 现在一律网上购票，超级任天堂世界需要指定时间入园。Studio Pass 的分级定价、快速通行证值不值得，以及 2026 年该买哪一种。";
 
 // Same facts as the English guide: USJ prices by date tier and we deliberately
 // quote no figure, because none could be verified for a given date.

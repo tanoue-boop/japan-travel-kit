@@ -131,21 +131,21 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Getting Around Tokyo 2026: Trains, Subway &amp; IC Cards | Japan Travel Kit</title>
+        <title>Getting Around Tokyo 2026: Trains, Subway &amp; IC Cards</title>
         <meta
           name="description"
-          content="How to get around Tokyo in 2026. We explain the Yamanote Line, Tokyo Metro, IC cards, and key routes — so you can navigate Japan's biggest city with confidence."
+          content="How to get around Tokyo in 2026: the Yamanote Line, Tokyo Metro, IC cards and the routes you will actually use, with fares read off the operators' sites."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" />
         <meta property="og:title" content="Getting Around Tokyo 2026: Trains, Subway & IC Cards" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" />
-        <meta property="og:description" content="How to get around Tokyo in 2026. We explain the Yamanote Line, Tokyo Metro, IC cards, and key routes — so you can navigate Japan's biggest city with confidence." />
+        <meta property="og:description" content="How to get around Tokyo in 2026: the Yamanote Line, Tokyo Metro, IC cards and the routes you will actually use, with fares read off the operators' sites." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Getting Around Tokyo 2026: Trains, Subway & IC Cards" />
-        <meta name="twitter:description" content="How to get around Tokyo in 2026. We explain the Yamanote Line, Tokyo Metro, IC cards, and key routes — so you can navigate Japan's biggest city with confidence." />
+        <meta name="twitter:description" content="How to get around Tokyo in 2026: the Yamanote Line, Tokyo Metro, IC cards and the routes you will actually use, with fares read off the operators' sites." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -114,8 +114,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     subtitle: "哪幾張票一定要先訂、從海外行得通的購票管道，以及落地那天的交通與上網。",
     badges: ["官方票價", "附查核日期", `${pageCount("zh-tw")} 頁繁體中文`],
     desc:
-      "Japan Travel Kit 繁體中文版：日本景點門票、東京迪士尼與日本環球影城的預約規則、" +
-      "富士山一日遊、成田機場到東京的交通，以及日本網卡比較。票價讀自業者官網並標示查核日期。",
+      "Japan Travel Kit 繁體中文版：日本景點門票、東京迪士尼與日本環球影城預約規則、" +
+      "富士山一日遊、成田機場交通與日本網卡。票價讀自官網並標示查核日期。",
     introLabel: "從這裡開始",
     introTitle: "日本的門票，問題不在價格",
     intro: [
@@ -226,8 +226,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     subtitle: "哪几张票一定要先订、从海外行得通的购票渠道，以及落地那天的交通与上网。",
     badges: ["官方票价", "附核查日期", `${pageCount("zh-cn")} 页简体中文`],
     desc:
-      "Japan Travel Kit 简体中文版：日本景点门票、东京迪士尼与日本环球影城的预约规则、" +
-      "富士山一日游、成田机场到东京的交通，以及日本eSIM比较。票价读自业者官网并标示核查日期。",
+      "Japan Travel Kit 简体中文版：日本景点门票、东京迪士尼与日本环球影城预约规则、" +
+      "富士山一日游、机场交通与日本eSIM。票价读自官网并标示核查日期。",
     introLabel: "从这里开始",
     introTitle: "日本的门票，问题不在价格",
     intro: [
@@ -338,8 +338,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     subtitle: "미리 예약해야 하는 입장권, 해외 카드로도 결제되는 예약 경로, 그리고 도착 당일에 필요한 것들.",
     badges: ["공식 요금", "확인 날짜 표기", `한국어 ${pageCount("ko")}페이지`],
     desc:
-      "Japan Travel Kit 한국어판: 시부야 스카이와 팀랩 플래닛 예약, 도쿄 디즈니랜드 티켓, " +
-      "유니버설 스튜디오 재팬 익스프레스 패스, 일본 이심 비교. 요금은 운영사 공식 사이트에서 읽고 확인 날짜를 적어 둡니다.",
+      "Japan Travel Kit 한국어판: 시부야 스카이, 팀랩 플래닛, 도쿄 디즈니랜드, " +
+      "USJ 티켓과 일본 이심 비교 5편. 공식 요금 기준.",
     introLabel: "먼저 읽어 보세요",
     introTitle: "일본 입장권은 가격보다 '언제 파는지'가 문제입니다",
     intro: [
@@ -421,8 +421,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     subtitle: "ตั๋วที่ต้องจองล่วงหน้า ช่องทางจองที่ใช้ได้จากต่างประเทศ และสิ่งที่ต้องมีในวันที่เครื่องลง",
     badges: ["ราคาทางการ", "ระบุวันที่ตรวจสอบ", `ภาษาไทย ${pageCount("th")} หน้า`],
     desc:
-      "Japan Travel Kit ฉบับภาษาไทย: ตั๋ว Shibuya Sky และ teamLab Planets, บัตรดิสนีย์แลนด์โตเกียว, " +
-      "Express Pass USJ และการเทียบ eSIM ญี่ปุ่น ราคาทุกตัวอ่านจากเว็บไซต์ของผู้ให้บริการ พร้อมวันที่ตรวจสอบ",
+      "ฉบับภาษาไทยของ Japan Travel Kit: ตั๋ว Shibuya Sky, ดิสนีย์แลนด์โตเกียว, " +
+      "USJ และ eSIM ญี่ปุ่น",
     introLabel: "เริ่มที่นี่",
     introTitle: "เรื่องของตั๋วญี่ปุ่นไม่ใช่ราคา แต่เป็นเวลาที่ขาย",
     intro: [

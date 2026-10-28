@@ -110,7 +110,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
   return (
     <>
       <Head>
-        <title>IC Cards in Japan 2026: Suica &amp; Pasmo Guide | Japan Travel Kit</title>
+        <title>IC Cards in Japan 2026: Suica &amp; Pasmo Guide</title>
         <meta
           name="description"
           content="Suica or Pasmo? We explain what IC cards are, where to get them, where they work, and how to use Mobile Suica on iPhone and Android."

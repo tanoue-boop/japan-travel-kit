@@ -136,21 +136,21 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Kamakura Day Trip From Tokyo (2026): Great Buddha, Hase-dera &amp; the Fares | Japan Travel Kit</title>
+        <title>Kamakura Day Trip From Tokyo (2026): Temples and Fares</title>
         <meta
           name="description"
-          content="Kamakura day trip from Tokyo in 2026: the direct JR line a rail pass already covers, official admissions for Kotoku-in and Hase-dera, the Enoden tram, and whether a guided tour adds anything."
+          content="Kamakura day trip from Tokyo in 2026: the direct JR line a rail pass already covers, official admissions for Kotoku-in and Hase-dera, and the Enoden tram."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kamakura-day-trip" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Kamakura Day Trip From Tokyo (2026): Great Buddha, Hase-dera and the Fares" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/kamakura-day-trip" />
-        <meta property="og:description" content="Kamakura day trip from Tokyo in 2026: the direct JR line a rail pass already covers, official admissions for Kotoku-in and Hase-dera, the Enoden tram, and whether a guided tour adds anything." />
+        <meta property="og:description" content="Kamakura day trip from Tokyo in 2026: the direct JR line a rail pass already covers, official admissions for Kotoku-in and Hase-dera, and the Enoden tram." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Kamakura Day Trip From Tokyo (2026): Great Buddha, Hase-dera and the Fares" />
-        <meta name="twitter:description" content="Kamakura day trip from Tokyo in 2026: the direct JR line a rail pass already covers, official admissions for Kotoku-in and Hase-dera, the Enoden tram, and whether a guided tour adds anything." />
+        <meta name="twitter:description" content="Kamakura day trip from Tokyo in 2026: the direct JR line a rail pass already covers, official admissions for Kotoku-in and Hase-dera, and the Enoden tram." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -208,9 +208,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Hakone Free Pass (2026): Prices, What It Covers & Is It Worth It?";
+const TITLE = "Hakone Free Pass (2026): Prices and Is It Worth It?";
 const DESCRIPTION =
-  "Hakone Free Pass prices for 2026 from Odakyu — ¥7,100 for 2 days from Shinjuku, ¥6,000 from Odawara — the eight modes of transport it covers, the ¥1,200 Romancecar surcharge it does not, and why there is no 1-day version.";
+  "Hakone Free Pass prices for 2026 from Odakyu: ¥7,100 for 2 days from Shinjuku, ¥6,000 from Odawara, the 8 modes it covers and the ¥1,200 it does not.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/hakone-free-pass") } });
 
@@ -218,7 +218,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass" />
         <meta name="robots" content="index, follow" />

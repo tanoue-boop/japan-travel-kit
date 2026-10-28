@@ -129,21 +129,21 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works | Japan Travel Kit</title>
+        <title>Kimono Rental in Japan (2026): Kyoto vs Asakusa</title>
         <meta
           name="description"
-          content="Kimono rental in Japan for 2026: what a rental actually includes, the fixed return time nobody mentions, and whether to do it in Kyoto or Asakusa."
+          content="Kimono rental in Japan for 2026: what a rental includes, the fixed return time nobody mentions, and whether to do it in Kyoto or in Asakusa."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kimono-rental-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works" />
+        <meta property="og:title" content="Kimono Rental in Japan (2026): Kyoto vs Asakusa" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/kimono-rental-japan" />
-        <meta property="og:description" content="Kimono rental in Japan for 2026: what a rental actually includes, the fixed return time nobody mentions, and whether to do it in Kyoto or Asakusa." />
+        <meta property="og:description" content="Kimono rental in Japan for 2026: what a rental includes, the fixed return time nobody mentions, and whether to do it in Kyoto or in Asakusa." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works" />
-        <meta name="twitter:description" content="Kimono rental in Japan for 2026: what a rental actually includes, the fixed return time nobody mentions, and whether to do it in Kyoto or Asakusa." />
+        <meta name="twitter:title" content="Kimono Rental in Japan (2026): Kyoto vs Asakusa" />
+        <meta name="twitter:description" content="Kimono rental in Japan for 2026: what a rental includes, the fixed return time nobody mentions, and whether to do it in Kyoto or in Asakusa." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -163,7 +163,7 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/kimono-rental-japan",
-              headline: "Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works",
+              headline: "Kimono Rental in Japan (2026): Kyoto vs Asakusa",
               updated,
             }),
           }}

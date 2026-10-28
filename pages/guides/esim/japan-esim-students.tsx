@@ -118,7 +118,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan Students 2026: Budget Picks | Japan Travel Kit</title>
+        <title>Best eSIM for Japan Students 2026: Budget Picks</title>
         <meta
           name="description"
           content="The best budget eSIM for studying in Japan in 2026. We compare eSIM Go, Airalo, Sakura Mobile and Holafly for short exchanges and long-term study stays."

@@ -102,21 +102,21 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>Japan eSIM Data Plans 2026: Live Price Tracker | Japan Travel Kit</title>
+        <title>Japan eSIM Data Plans 2026: Live Price Tracker</title>
         <meta
           name="description"
-          content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in one table — prices checked daily, sortable by price per GB, plus a tool that picks the cheapest plan for your trip."
+          content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in 1 table — prices checked daily, and sortable by price per GB."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-data-plans" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Japan eSIM Data Plans 2026: Live Price Tracker | Japan Travel Kit" />
+        <meta property="og:title" content="Japan eSIM Data Plans 2026: Live Price Tracker" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-data-plans" />
-        <meta property="og:description" content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in one table — prices checked daily, sortable by price per GB, plus a tool that picks the cheapest plan for your trip." />
+        <meta property="og:description" content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in 1 table — prices checked daily, and sortable by price per GB." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan eSIM Data Plans 2026: Live Price Tracker | Japan Travel Kit" />
-        <meta name="twitter:description" content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in one table — prices checked daily, sortable by price per GB, plus a tool that picks the cheapest plan for your trip." />
+        <meta name="twitter:title" content="Japan eSIM Data Plans 2026: Live Price Tracker" />
+        <meta name="twitter:description" content="Every Japan eSIM plan from Airalo, Holafly, eSIM Go and Sakura Mobile in 1 table — prices checked daily, and sortable by price per GB." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

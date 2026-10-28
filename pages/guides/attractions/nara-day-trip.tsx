@@ -140,21 +140,21 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs | Japan Travel Kit</title>
+        <title>Nara Day Trip (2026): From Osaka or Kyoto, and the Costs</title>
         <meta
           name="description"
-          content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission — the only ticket a standard visit needs."
+          content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/nara-day-trip" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs" />
+        <meta property="og:title" content="Nara Day Trip (2026): From Osaka or Kyoto, and the Costs" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/nara-day-trip" />
-        <meta property="og:description" content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission — the only ticket a standard visit needs." />
+        <meta property="og:description" content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs" />
-        <meta name="twitter:description" content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission — the only ticket a standard visit needs." />
+        <meta name="twitter:title" content="Nara Day Trip (2026): From Osaka or Kyoto, and the Costs" />
+        <meta name="twitter:description" content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -174,7 +174,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/nara-day-trip",
-              headline: "Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs",
+              headline: "Nara Day Trip (2026): From Osaka or Kyoto, and the Costs",
               updated,
             }),
           }}

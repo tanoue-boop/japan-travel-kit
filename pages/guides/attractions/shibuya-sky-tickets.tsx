@@ -158,22 +158,22 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>Shibuya Sky Tickets (2026): Price, Best Time &amp; How to Book | Japan Travel Kit</title>
+        <title>Shibuya Sky Tickets (2026): Price, Best Time &amp; How to Book</title>
         <meta
           name="description"
-          content="Shibuya Sky tickets in 2026: prices, the best time to visit (sunset sells out fast), and how to book — even with a foreign card the official site may reject."
+          content="Shibuya Sky tickets in 2026: ¥2,500 for an adult booked online against ¥3,000 at the door, the best time to go (sunset sells out), and how to book abroad."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets" />
         {hreflangLinks("/guides/attractions/shibuya-sky-tickets")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Shibuya Sky Tickets (2026): Price, Best Time & How to Book" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets" />
-        <meta property="og:description" content="Shibuya Sky tickets in 2026: prices, the best time to visit (sunset sells out fast), and how to book — even with a foreign card the official site may reject." />
+        <meta property="og:description" content="Shibuya Sky tickets in 2026: ¥2,500 for an adult booked online against ¥3,000 at the door, the best time to go (sunset sells out), and how to book abroad." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Shibuya Sky Tickets (2026): Price, Best Time & How to Book" />
-        <meta name="twitter:description" content="Shibuya Sky tickets in 2026: prices, the best time to visit (sunset sells out fast), and how to book — even with a foreign card the official site may reject." />
+        <meta name="twitter:description" content="Shibuya Sky tickets in 2026: ¥2,500 for an adult booked online against ¥3,000 at the door, the best time to go (sunset sells out), and how to book abroad." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

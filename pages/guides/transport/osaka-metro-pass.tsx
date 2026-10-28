@@ -10,9 +10,9 @@ const METRO_URL =
 
 const CHECKED = "20 October 2026";
 
-const TITLE = "Osaka Metro Pass 2026: Price, 1-Day vs 2-Day & Enjoy Eco Card Compared";
+const TITLE = "Osaka Metro Pass 2026: Price and 1-Day vs 2-Day";
 const DESCRIPTION =
-  "Osaka Metro Pass price for 2026: ¥820/¥620 for one day, ¥1,200 for 30 hours, ¥310 for children. This guide compares it with the Enjoy Eco Card, lists pick-up points and the buses it does not cover.";
+  "Osaka Metro Pass price for 2026: ¥820 or ¥620 for one day, ¥1,200 for 30 hours and ¥310 for children — against the Enjoy Eco Card, with pick-up points.";
 
 /** Rows = passes, so the Osaka Amazing Pass sits in the same table. Prices checked 2026-10-20. */
 const passRows = [
@@ -148,7 +148,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/osaka-metro-pass" />

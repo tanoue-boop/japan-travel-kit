@@ -505,9 +505,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Japan Travel Budget 2026: Trip to Tokyo Japan Cost & How Much Things Cost";
+const TITLE = "Japan Travel Budget 2026: Trip to Tokyo Cost, Day by Day";
 const META =
-  "Japan Travel Budget 2026: trip to Tokyo Japan cost, and how much do things cost in Japan — official subway, ramen, pass and admission prices, with 3 to 14-day totals.";
+  "Japan travel budget 2026: what a trip to Tokyo costs and how much things cost in Japan — official subway, ramen, pass and admission prices, 3 to 14 days.";
 const ROUTE = "/guides/money/japan-travel-budget";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
@@ -516,17 +516,17 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={META} />
         <link rel="canonical" href={`https://www.japan-travel-kit.com${ROUTE}`} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={`${TITLE} | Japan Travel Kit`} />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content={`https://www.japan-travel-kit.com${ROUTE}`} />
         <meta property="og:description" content={META} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${TITLE} | Japan Travel Kit`} />
+        <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={META} />
         <script
           type="application/ld+json"

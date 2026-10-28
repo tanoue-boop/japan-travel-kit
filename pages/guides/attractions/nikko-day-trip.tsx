@@ -132,21 +132,21 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
   return (
     <>
       <Head>
-        <title>Nikko Day Trip From Tokyo (2026): Getting There, Costs &amp; Whether to Take a Tour | Japan Travel Kit</title>
+        <title>Nikko Day Trip From Tokyo (2026): Costs and Tour or Not</title>
         <meta
           name="description"
-          content="Nikko day trip from Tokyo in 2026: the Tobu route from Asakusa, Toshogu's official admission, what the NIKKO PASS does and does not cover, and when a guided coach beats doing it yourself."
+          content="Nikko day trip from Tokyo in 2026: the Tobu route from Asakusa, Toshogu's official admission, what the NIKKO PASS covers, and when a coach tour wins."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/nikko-day-trip" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Nikko Day Trip From Tokyo (2026): Getting There, Costs and Whether to Take a Tour" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/nikko-day-trip" />
-        <meta property="og:description" content="Nikko day trip from Tokyo in 2026: the Tobu route from Asakusa, Toshogu's official admission, what the NIKKO PASS does and does not cover, and when a guided coach beats doing it yourself." />
+        <meta property="og:description" content="Nikko day trip from Tokyo in 2026: the Tobu route from Asakusa, Toshogu's official admission, what the NIKKO PASS covers, and when a coach tour wins." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Nikko Day Trip From Tokyo (2026): Getting There, Costs and Whether to Take a Tour" />
-        <meta name="twitter:description" content="Nikko day trip from Tokyo in 2026: the Tobu route from Asakusa, Toshogu's official admission, what the NIKKO PASS does and does not cover, and when a guided coach beats doing it yourself." />
+        <meta name="twitter:description" content="Nikko day trip from Tokyo in 2026: the Tobu route from Asakusa, Toshogu's official admission, what the NIKKO PASS covers, and when a coach tour wins." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

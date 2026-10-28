@@ -128,22 +128,22 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>Tokyo Disney Tickets (2026): Disneyland &amp; DisneySea — How to Buy | Japan Travel Kit</title>
+        <title>Tokyo Disney Tickets (2026): Disneyland &amp; DisneySea</title>
         <meta
           name="description"
-          content="Tokyo Disney tickets in 2026: every ticket is date-specified and there are no gate sales. Learn how to buy with a foreign card, and how to choose Disneyland vs DisneySea."
+          content="Tokyo Disney tickets in 2026 are all date-specified, with no gate sales. How to buy with a foreign card, and whether to pick Disneyland or DisneySea."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets" />
         {hreflangLinks("/guides/attractions/tokyo-disney-tickets")}
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy" />
+        <meta property="og:title" content="Tokyo Disney Tickets (2026): Disneyland & DisneySea" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets" />
-        <meta property="og:description" content="Tokyo Disney tickets in 2026: every ticket is date-specified and there are no gate sales. Learn how to buy with a foreign card, and how to choose Disneyland vs DisneySea." />
+        <meta property="og:description" content="Tokyo Disney tickets in 2026 are all date-specified, with no gate sales. How to buy with a foreign card, and whether to pick Disneyland or DisneySea." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy" />
-        <meta name="twitter:description" content="Tokyo Disney tickets in 2026: every ticket is date-specified and there are no gate sales. Learn how to buy with a foreign card, and how to choose Disneyland vs DisneySea." />
+        <meta name="twitter:title" content="Tokyo Disney Tickets (2026): Disneyland & DisneySea" />
+        <meta name="twitter:description" content="Tokyo Disney tickets in 2026 are all date-specified, with no gate sales. How to buy with a foreign card, and whether to pick Disneyland or DisneySea." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -163,7 +163,7 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-disney-tickets",
-              headline: "Tokyo Disney Tickets (2026): Disneyland & DisneySea — How to Buy",
+              headline: "Tokyo Disney Tickets (2026): Disneyland & DisneySea",
               updated,
             }),
           }}

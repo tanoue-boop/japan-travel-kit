@@ -886,9 +886,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary") },
 });
 
-const TITLE = "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan, Day by Day";
+const TITLE = "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan";
 const DESC =
-  "A Tokyo Kyoto Osaka itinerary for 7 days in Japan: Tokyo 3 nights, Kyoto 2, Osaka 1, flying out of Kansai — a table for each of the 7 days, the shinkansen and local-train times, and official prices with the date each was checked.";
+  "A Tokyo Kyoto Osaka itinerary for 7 days in Japan: Tokyo 3 nights, Kyoto 2, Osaka 1, flying out of Kansai — a table per day with times and dated prices.";
 const ROUTE = "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -896,7 +896,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href={URL} />
         {hreflangLinks(ROUTE)}

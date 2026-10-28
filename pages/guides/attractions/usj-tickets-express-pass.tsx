@@ -303,9 +303,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Universal Studios Japan Express Pass 2026: Types, Prices & Do You Need One";
+const TITLE = "Universal Studios Japan Express Pass 2026: Which to Buy";
 const DESCRIPTION =
-  "Universal Studios Japan Express Pass 2026: what Express Pass 4 and 7 cover, why USJ Express Pass prices change by date, when it sells out, how to buy it, and when you can skip it.";
+  "Universal Studios Japan Express Pass 2026: what Express Pass 4 and 7 cover, why USJ prices move by date, when it sells out, and when you can skip it.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/usj-tickets-express-pass") } });
 
@@ -313,7 +313,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass" />
         {hreflangLinks("/guides/attractions/usj-tickets-express-pass")}

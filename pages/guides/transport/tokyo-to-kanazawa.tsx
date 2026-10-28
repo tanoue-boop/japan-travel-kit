@@ -244,9 +244,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Tokyo to Kanazawa (2026): Kagayaki Times, Seats and Whether a Pass Pays";
+const TITLE = "Tokyo to Kanazawa (2026): Kagayaki Times and Passes";
 const DESCRIPTION =
-  "Tokyo to Kanazawa is 2h28m direct on the Hokuriku Shinkansen with no transfer. The Kagayaki is all-reserved; the Hakutaka has non-reserved cars 1–4. With the ¥35,000 Hokuriku Arch Pass, the ¥50,000 JR Pass, and the Tsuruga change for Kyoto and Osaka.";
+  "Tokyo to Kanazawa is 2h28m direct on the Hokuriku Shinkansen. The Kagayaki is all-reserved; the Hakutaka has non-reserved cars 1–4. Passes compared.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/transport/tokyo-to-kanazawa") },
@@ -256,7 +256,7 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-to-kanazawa" />
         <meta name="robots" content="index, follow" />

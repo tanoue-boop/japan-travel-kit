@@ -96,7 +96,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Best Pocket WiFi in Japan 2026: Prices &amp; Pickup | Japan Travel Kit</title>
+        <title>Best Pocket WiFi in Japan 2026: Prices &amp; Pickup</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-pocket-wifi-japan" />
         <meta property="og:title" content="Best Pocket WiFi in Japan (2026): Rental Prices &amp; Pickup Compared" />

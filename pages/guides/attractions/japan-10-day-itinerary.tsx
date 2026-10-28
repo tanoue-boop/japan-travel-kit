@@ -1203,9 +1203,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/japan-10-day-itinerary") },
 });
 
-const TITLE = "Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day";
+const TITLE = "Japan 10 Day Itinerary (2026): 10 Days, Day by Day";
 const DESC =
-  "A Japan 10 Day Itinerary planned as 4 nights in Tokyo, 3 in Kyoto and 2 in Osaka, with a Hakone or Mt. Fuji day and a Nara day trip — a table for each of the 10 days, the published journey times, and the JR Pass worked against what this route actually costs.";
+  "A Japan 10 day itinerary: 4 nights in Tokyo, 3 in Kyoto and 2 in Osaka, with a Fuji or Hakone day and Nara — a table per day, and the JR Pass worked out.";
 const ROUTE = "/guides/attractions/japan-10-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -1213,7 +1213,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href={URL} />
         {hreflangLinks(ROUTE)}

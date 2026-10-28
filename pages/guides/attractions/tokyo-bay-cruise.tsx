@@ -199,15 +199,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-bay-cruise") },
 });
 
-const TITLE = "Tokyo Bay Cruise (2026): Yakatabune vs the Symphony, Times and Prices";
+const TITLE = "Tokyo Bay Cruise (2026): Yakatabune vs the Symphony";
 const DESC =
-  "A Tokyo Bay cruise in 2026: the Symphony sails from Hinode Pier at 11:50, 15:00, 16:20 and 19:00 with boarding-only tickets from ¥1,800, and a yakatabune houseboat runs 2 to 2 hr 30 min from ¥13,000 with dinner. Which to book, and when.";
+  "A Tokyo Bay cruise in 2026: the Symphony sails from Hinode Pier 4 times a day with tickets from ¥1,800, and a yakatabune runs 2 hours from ¥13,000.";
 
 export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-bay-cruise" />
         {hreflangLinks("/guides/attractions/tokyo-bay-cruise")}

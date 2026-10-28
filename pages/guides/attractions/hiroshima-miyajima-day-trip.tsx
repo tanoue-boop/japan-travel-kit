@@ -139,21 +139,21 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
   return (
     <>
       <Head>
-        <title>Hiroshima and Miyajima Day Trip (2026): Is One Day Enough? | Japan Travel Kit</title>
+        <title>Hiroshima and Miyajima Day Trip (2026): Is 1 Day Enough?</title>
         <meta
           name="description"
-          content="Hiroshima and Miyajima in one day in 2026: official admissions for the Peace Memorial Museum and Itsukushima Shrine, the Mt. Misen ropeway fare, the JR Pass Nozomi exclusion, and the timings that break the day."
+          content="Hiroshima and Miyajima in one day in 2026: official admissions for the Peace Memorial Museum and Itsukushima Shrine, plus the JR Pass Nozomi catch."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/hiroshima-miyajima-day-trip" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?" />
+        <meta property="og:title" content="Hiroshima and Miyajima Day Trip (2026): Is 1 Day Enough?" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/hiroshima-miyajima-day-trip" />
-        <meta property="og:description" content="Hiroshima and Miyajima in one day in 2026: official admissions for the Peace Memorial Museum and Itsukushima Shrine, the Mt. Misen ropeway fare, the JR Pass Nozomi exclusion, and the timings that break the day." />
+        <meta property="og:description" content="Hiroshima and Miyajima in one day in 2026: official admissions for the Peace Memorial Museum and Itsukushima Shrine, plus the JR Pass Nozomi catch." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?" />
-        <meta name="twitter:description" content="Hiroshima and Miyajima in one day in 2026: official admissions for the Peace Memorial Museum and Itsukushima Shrine, the Mt. Misen ropeway fare, the JR Pass Nozomi exclusion, and the timings that break the day." />
+        <meta name="twitter:title" content="Hiroshima and Miyajima Day Trip (2026): Is 1 Day Enough?" />
+        <meta name="twitter:description" content="Hiroshima and Miyajima in one day in 2026: official admissions for the Peace Memorial Museum and Itsukushima Shrine, plus the JR Pass Nozomi catch." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -173,7 +173,7 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/hiroshima-miyajima-day-trip",
-              headline: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?",
+              headline: "Hiroshima and Miyajima Day Trip (2026): Is 1 Day Enough?",
               updated,
             }),
           }}

@@ -325,9 +325,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Best Travel Card for Japan (2026): Fees and ATM Limits Compared";
+const TITLE = "Best Travel Card for Japan (2026): Fees and ATM Limits";
 const META =
-  "Best travel card for Japan, fees compared: Wise free ATM allowances by country, the ¥220 Japan Post Bank adds per use, and the best travel cards for Japan from the US and UK.";
+  "Best travel card for Japan, fees compared: Wise's free ATM allowance by country, the ¥220 Japan Post Bank adds per use, and the best US and UK picks.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/best-travel-card-japan") } });
 
@@ -335,17 +335,17 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={META} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/best-travel-card-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={`${TITLE} | Japan Travel Kit`} />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/best-travel-card-japan" />
         <meta property="og:description" content={META} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${TITLE} | Japan Travel Kit`} />
+        <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={META} />
         <script
           type="application/ld+json"

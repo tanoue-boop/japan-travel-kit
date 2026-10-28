@@ -130,7 +130,7 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Getting Around Osaka 2026: Subway, Trains &amp; IC Cards | Japan Travel Kit</title>
+        <title>Getting Around Osaka 2026: Subway, Trains &amp; IC Cards</title>
         <meta
           name="description"
           content="How to get around Osaka in 2026. We explain the Midosuji Line, Osaka Metro day passes, IC cards, and key routes to top attractions — with 2026 fares."

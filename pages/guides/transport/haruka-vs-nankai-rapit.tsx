@@ -88,7 +88,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Haruka vs Nankai Rapi:t 2026: Best Train from Kansai Airport? | Japan Travel Kit</title>
+        <title>Haruka vs Nankai Rapi:t 2026: Which from Kansai Airport?</title>
         <meta
           name="description"
           content="Haruka or Nankai Rapi:t from Kansai Airport (KIX) to Osaka? We compare fares, journey times, JR Pass coverage, and direct stops by destination for 2026."
@@ -101,7 +101,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Haruka vs Nankai Rapi:t 2026: Best Train from Kansai Airport?" />
+        <meta name="twitter:title" content="Haruka vs Nankai Rapi:t 2026: Which from Kansai Airport?" />
         <meta name="twitter:description" content="Haruka or Nankai Rapi:t from Kansai Airport (KIX) to Osaka? We compare fares, journey times, JR Pass coverage, and direct stops by destination for 2026." />
         <script
           type="application/ld+json"

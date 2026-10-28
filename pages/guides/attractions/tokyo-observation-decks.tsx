@@ -156,21 +156,21 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
   return (
     <>
       <Head>
-        <title>Tokyo Observation Decks (2026): Shibuya Sky vs Skytree vs Tokyo Tower | Japan Travel Kit</title>
+        <title>Tokyo Observation Decks (2026): Shibuya Sky vs Skytree</title>
         <meta
           name="description"
-          content="Tokyo observation decks compared for 2026 on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800, Tokyo Tower from ¥1,500 — and the Metropolitan Government Building, 202 m up and free."
+          content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Observation Decks (2026): Shibuya Sky vs Skytree vs Tokyo Tower" />
+        <meta property="og:title" content="Tokyo Observation Decks (2026): Shibuya Sky vs Skytree" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks" />
-        <meta property="og:description" content="Tokyo observation decks compared for 2026 on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800, Tokyo Tower from ¥1,500 — and the Metropolitan Government Building, 202 m up and free." />
+        <meta property="og:description" content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Observation Decks (2026): Shibuya Sky vs Skytree vs Tokyo Tower" />
-        <meta name="twitter:description" content="Tokyo observation decks compared for 2026 on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800, Tokyo Tower from ¥1,500 — and the Metropolitan Government Building, 202 m up and free." />
+        <meta name="twitter:title" content="Tokyo Observation Decks (2026): Shibuya Sky vs Skytree" />
+        <meta name="twitter:description" content="Tokyo observation decks on official prices: Shibuya Sky at ¥2,500, Skytree from ¥1,800 and Tokyo Tower from ¥1,500 — plus one 202 m up that is free." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -190,7 +190,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-observation-decks",
-              headline: "Tokyo Observation Decks (2026): Shibuya Sky vs Skytree vs Tokyo Tower",
+              headline: "Tokyo Observation Decks (2026): Shibuya Sky vs Skytree",
               updated,
             }),
           }}

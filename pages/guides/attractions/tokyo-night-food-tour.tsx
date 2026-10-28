@@ -203,15 +203,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-night-food-tour") } });
 
-const TITLE = "Tokyo Night Food Tour (2026): Omoide Yokocho, Golden Gai and the 20+ Rule";
+const TITLE = "Tokyo Night Food Tour (2026): Omoide Yokocho, Golden Gai";
 const DESCRIPTION =
-  "A Tokyo night food tour runs about 3 hours through Omoide Yokocho, Kabukicho and Golden Gai — roughly 280 tiny bars, most opening around 20:00. Which format to book, what's included, and why alcohol tours are 20+.";
+  "A Tokyo night food tour runs about 3 hours through Omoide Yokocho, Kabukicho and Golden Gai — roughly 280 tiny bars, most opening around 20:00. 20+ only.";
 
 export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-night-food-tour" />
         <meta name="robots" content="index, follow" />

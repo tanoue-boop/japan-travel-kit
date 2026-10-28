@@ -22,12 +22,19 @@ import { SITE_NAME } from "../lib/structured-data";
  * `og:locale:alternate` lists every other locale the site publishes, not only the
  * ones this page exists in: unlike hreflang, it is a statement about the site, and
  * no consumer treats it as a URL mapping.
+ *
+ * The " | Japan Travel Kit" suffix came off on 2026-10-28 (task jtk-20261027-A08b).
+ * A Chinese, Korean or Thai title has about 35 characters before Google truncates it —
+ * roughly half the English budget, because the glyphs are wider — and nineteen of them
+ * spent on the site name left no room for the search term the page is written for.
+ * `title` is now exactly what a reader sees, which also makes it the same string as
+ * og:title and the Article headline rather than a shorter variant of them.
  */
 export function seoTags({ route, title, desc }: { route: string; title: string; desc: string }) {
   const url = absoluteUrl(route);
   const locale = localeOf(route);
   return [
-    <title key="title">{`${title} | ${SITE_NAME}`}</title>,
+    <title key="title">{title}</title>,
     <meta key="desc" name="description" content={desc} />,
     <link key="canonical" rel="canonical" href={url} />,
     <meta key="robots" name="robots" content="index, follow" />,

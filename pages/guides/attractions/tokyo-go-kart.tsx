@@ -125,21 +125,21 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Tokyo Street Go-Kart (2026): Rules, IDP Requirement &amp; How to Book | Japan Travel Kit</title>
+        <title>Tokyo Street Go-Kart (2026): Rules and the IDP You Need</title>
         <meta
           name="description"
-          content="Tokyo street go-kart in 2026: the driving rules that matter most — you need an International Driving Permit, home licence and passport — plus eligibility by country and how to book."
+          content="Tokyo street go-kart in 2026: you need an International Driving Permit, your home licence and your passport — plus eligibility by country and booking."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Street Go-Kart (2026): Rules, IDP Requirement & How to Book" />
+        <meta property="og:title" content="Tokyo Street Go-Kart (2026): Rules and the IDP You Need" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart" />
-        <meta property="og:description" content="Tokyo street go-kart in 2026: the driving rules that matter most — you need an International Driving Permit, home licence and passport — plus eligibility by country and how to book." />
+        <meta property="og:description" content="Tokyo street go-kart in 2026: you need an International Driving Permit, your home licence and your passport — plus eligibility by country and booking." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Street Go-Kart (2026): Rules, IDP Requirement & How to Book" />
-        <meta name="twitter:description" content="Tokyo street go-kart in 2026: the driving rules that matter most — you need an International Driving Permit, home licence and passport — plus eligibility by country and how to book." />
+        <meta name="twitter:title" content="Tokyo Street Go-Kart (2026): Rules and the IDP You Need" />
+        <meta name="twitter:description" content="Tokyo street go-kart in 2026: you need an International Driving Permit, your home licence and your passport — plus eligibility by country and booking." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -159,7 +159,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-go-kart",
-              headline: "Tokyo Street Go-Kart (2026): Rules, IDP Requirement & How to Book",
+              headline: "Tokyo Street Go-Kart (2026): Rules and the IDP You Need",
               updated,
             }),
           }}

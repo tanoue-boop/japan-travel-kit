@@ -88,7 +88,7 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>Airalo vs Holafly Japan 2026: Which Is Better? | Japan Travel Kit</title>
+        <title>Airalo vs Holafly Japan 2026: Which Is Better?</title>
         <meta
           name="description"
           content="Airalo or Holafly for Japan? We compare price, data, coverage and support head-to-head — with a clear recommendation for every type of traveller."

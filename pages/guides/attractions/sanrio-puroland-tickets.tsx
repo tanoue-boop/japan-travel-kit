@@ -117,15 +117,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/sanrio-puroland-tickets") } });
 
-const TITLE = "Sanrio Puroland Tickets (2026): Prices, Variable Pricing & How to Book";
+const TITLE = "Sanrio Puroland Tickets (2026): Prices and How to Book";
 const DESCRIPTION =
-  "Sanrio Puroland tickets in 2026: official passport prices (¥3,900–¥6,900 adult Day Passport), why the price changes by date, the arrival reservation you also need, and how to book from abroad.";
+  "Sanrio Puroland tickets in 2026: official passport prices from ¥3,900 to ¥6,900 for an adult, why the price moves by date, and the arrival reservation.";
 
 export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/sanrio-puroland-tickets" />
         <meta name="robots" content="index, follow" />

@@ -45,21 +45,21 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Things to Do in Osaka (2026): Where the Pass Pays &amp; Where It Doesn&apos;t | Japan Travel Kit</title>
+        <title>Things to Do in Osaka (2026): Where the Pass Pays</title>
         <meta
           name="description"
-          content="Things to do in Osaka in 2026: the Amazing Pass at ¥2,500 a day covers Osaka Castle, the Umeda Sky deck and the river cruise — but not Universal Studios Japan or the Kaiyukan. How to split the days around that."
+          content="Things to do in Osaka in 2026: the ¥2,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-osaka" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Things to Do in Osaka (2026): Where the Pass Pays and Where It Doesn't" />
+        <meta property="og:title" content="Things to Do in Osaka (2026): Where the Pass Pays" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/things-to-do-osaka" />
-        <meta property="og:description" content="Things to do in Osaka in 2026: the Amazing Pass at ¥2,500 a day covers Osaka Castle, the Umeda Sky deck and the river cruise — but not Universal Studios Japan or the Kaiyukan. How to split the days around that." />
+        <meta property="og:description" content="Things to do in Osaka in 2026: the ¥2,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Things to Do in Osaka (2026): Where the Pass Pays and Where It Doesn't" />
-        <meta name="twitter:description" content="Things to do in Osaka in 2026: the Amazing Pass at ¥2,500 a day covers Osaka Castle, the Umeda Sky deck and the river cruise — but not Universal Studios Japan or the Kaiyukan. How to split the days around that." />
+        <meta name="twitter:title" content="Things to Do in Osaka (2026): Where the Pass Pays" />
+        <meta name="twitter:description" content="Things to do in Osaka in 2026: the ¥2,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -79,7 +79,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/things-to-do-osaka",
-              headline: "Things to Do in Osaka (2026): Where the Pass Pays and Where It Doesn't",
+              headline: "Things to Do in Osaka (2026): Where the Pass Pays",
               updated,
             }),
           }}

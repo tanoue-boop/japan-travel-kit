@@ -283,9 +283,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Kobe Day Trip from Osaka (2026): Routes, the Beef and What Fits in a Day";
+const TITLE = "Kobe Day Trip from Osaka (2026): Routes and the Beef";
 const DESCRIPTION =
-  "A Kobe Day Trip from Osaka is about 30 minutes to Sannomiya on JR, Hankyu or Hanshin. Kitano's Weathercock House ¥500, the Port Tower ¥1,200, the Rokko Cable Car ¥1,550 return and the ¥800 City Loop pass — plus where Kobe beef actually needs booking.";
+  "A Kobe day trip from Osaka is about 30 minutes to Sannomiya. The Weathercock House is ¥500, the Port Tower ¥1,200 and the City Loop day pass ¥800.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kobe-day-trip-from-osaka") },
@@ -295,7 +295,7 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kobe-day-trip-from-osaka" />
         <meta name="robots" content="index, follow" />

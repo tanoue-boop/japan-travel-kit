@@ -127,9 +127,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "LEGOLAND Japan Tickets (2026): Prices, Hours and Is It Worth It?";
+const TITLE = "LEGOLAND Japan Tickets (2026): Prices and Is It Worth It?";
 const DESCRIPTION =
-  "LEGOLAND Japan tickets in 2026: the operator's own 1 Day Pass and SEA LIFE combo prices (they vary by date), the 2-to-12 target age, the hours and closures, and the 24-minute Aonami Line run from Nagoya Station.";
+  "LEGOLAND Japan tickets in 2026: the 1 Day Pass and SEA LIFE combo prices, the 2-to-12 target age, and the 24-minute Aonami Line run from Nagoya.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/legoland-japan-tickets") } });
 
@@ -137,7 +137,7 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/legoland-japan-tickets" />
         {hreflangLinks("/guides/attractions/legoland-japan-tickets")}
@@ -169,7 +169,7 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/legoland-japan-tickets",
-              headline: "LEGOLAND Japan Tickets (2026): Prices, Hours and Is It Worth It?",
+              headline: "LEGOLAND Japan Tickets (2026): Prices and Is It Worth It?",
               description: DESCRIPTION,
               updated,
             }),

@@ -22,10 +22,9 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/ko/guides/attractions/teamlab-tokyo-tickets";
-const TITLE = "팀랩 플래닛 예약(2026): 티켓 가격, 입장 시간, 보더리스와 비교";
+const TITLE = "팀랩 플래닛 예약(2026): 티켓 가격과 입장 시간";
 const DESC =
-  "팀랩 플래닛 예약 2026: 도요스 공식 티켓 가격(성인 ¥3,800부터), 30분 단위 입장 시간이 어떻게 돌아가는지, " +
-  "맨발로 물을 걷는 구간에 무엇을 입어야 하는지, 그리고 플래닛과 아자부다이힐스 보더리스의 차이. 숫자는 영어판과 같은 데이터, 같은 확인일입니다.";
+  "팀랩 플래닛 예약 2026: 도요스 공식 가격 성인 ¥3,800부터, 30분 단위 입장 시간, 맨발 구간 복장, 보더리스와의 차이.";
 
 // Same records the English guide and the ticket price table read, from
 // lib/attraction-prices.ts. No figure here is new to the Korean edition.

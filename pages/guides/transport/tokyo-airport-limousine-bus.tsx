@@ -257,15 +257,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/transport/tokyo-airport-limousine-bus") },
 });
 
-const TITLE = "Tokyo Airport Limousine Bus (2026): Narita & Haneda Fares, Times and Stops";
+const TITLE = "Tokyo Airport Limousine Bus (2026): Fares and Times";
 const DESC =
-  "Tokyo airport limousine bus fares in 2026: ¥3,600 Narita to Shinjuku, ¥2,900 to the Disney resort and ¥1,400 from Haneda, with journey times, the 2-bag hold rule, when a seat must be reserved and the ¥2,800 late-night bus.";
+  "Tokyo airport limousine bus fares in 2026: ¥3,600 Narita to Shinjuku, ¥2,900 to the Disney resort and ¥1,400 from Haneda — with times and the bag rule.";
 
 export default function TokyoAirportLimousineBusPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-airport-limousine-bus" />
         {hreflangLinks("/guides/transport/tokyo-airport-limousine-bus")}

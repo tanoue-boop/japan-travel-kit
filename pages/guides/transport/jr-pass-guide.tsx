@@ -247,9 +247,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "JR Pass Guide 2026: Prices, Is It Worth It and How to Buy";
+const TITLE = "JR Pass Guide 2026: Prices and Is It Worth It?";
 const DESC =
-  "All JR Pass types and prices, a break-even calculator for your own route, and how to buy and redeem the pass — plus the itineraries where individual tickets cost less.";
+  "All JR Pass types and prices, a break-even calculator for your own route, and how to buy and redeem it — plus where individual tickets cost less.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/jr-pass-guide") } });
 
@@ -257,7 +257,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/jr-pass-guide" />
         <meta name="robots" content="index, follow" />

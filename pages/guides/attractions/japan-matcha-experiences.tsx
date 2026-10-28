@@ -219,9 +219,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Matcha Experiences in Japan (2026): Uji, Kyoto and Tokyo Tea Houses Compared";
+const TITLE = "Matcha Experiences in Japan (2026): Uji, Kyoto and Tokyo";
 const DESCRIPTION =
-  "Matcha Experiences in Japan start in Uji: stone-mill grinding at Chazuna (3h30m), leaf picking in Wazuka, and 16 minutes from Kyoto Station on the JR Nara Line. With the Kyoto and Tokyo matcha tea houses, session lengths from 45 minutes, and what to book ahead.";
+  "Matcha experiences in Japan start in Uji: stone-mill grinding at Chazuna takes 3h30m, and Uji is 16 minutes from Kyoto Station on the JR Nara Line.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/japan-matcha-experiences") },
@@ -231,7 +231,7 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/japan-matcha-experiences" />
         <meta name="robots" content="index, follow" />

@@ -8,13 +8,13 @@ import { hreflangLinks } from "../../../components/Hreflang";
 export const getStaticProps = () => ({ props: { dates: articleDates(attractionArticles.map((a) => a.href)) } });
 
 const DESC =
-  "Japan attraction guides: teamLab, Tokyo Disney, Universal Studios Japan, Shibuya Sky and sumo tickets, plus day trips to Fuji, Nikko, Kamakura, Nara and Hiroshima and hands-on experiences. Official prices and how to book from abroad.";
+  "Japan attraction guides: teamLab, Tokyo Disney, USJ, Shibuya Sky and sumo tickets, plus the day trips — with official prices and how to book abroad.";
 
 export default function GuidesAttractionsPage({ dates }: { dates: Record<string, string> }) {
   return (
     <>
       <Head>
-        <title>Things to Do in Japan: Tickets &amp; Experiences (2026) | Japan Travel Kit</title>
+        <title>Things to Do in Japan: Tickets &amp; Experiences (2026)</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions" />
         {hreflangLinks("/guides/attractions")}

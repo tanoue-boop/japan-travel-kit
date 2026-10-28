@@ -122,15 +122,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/fuji-q-highland-tickets") } });
 
-const TITLE = "Fuji-Q Highland Tickets (2026): Free Pass Prices, the Q Pack & How to Get There";
+const TITLE = "Fuji-Q Highland Tickets (2026): Pass Prices and the Q Pack";
 const DESCRIPTION =
-  "Fuji-Q Highland tickets in 2026: entry is free, the 1-Day Pass is ¥6,000–¥7,900 for an adult depending on the date, and the Q Pack bundles the pass with the highway bus from Tokyo.";
+  "Fuji-Q Highland tickets in 2026: entry is free, the 1-Day Pass is ¥6,000–¥7,900 for an adult by date, and the Q Pack adds the highway bus from Tokyo.";
 
 export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/fuji-q-highland-tickets" />
         <meta name="robots" content="index, follow" />

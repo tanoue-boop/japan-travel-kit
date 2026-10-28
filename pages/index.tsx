@@ -178,9 +178,9 @@ const bookBeforeYouFly = [
   },
 ];
 
-const TITLE = "Japan Travel Kit — Japan Tickets, Tours & Trip Planning for 2026";
+const TITLE = "Japan Travel Kit | Tickets, Tours & Trip Planning for 2026";
 const DESC =
-  "Which Japan attractions, tours and day trips need booking ahead — with official prices and the booking route that works from abroad. Plus the transport, eSIM and money basics to sort before you land.";
+  "Which Japan attractions, tours and day trips need booking ahead — with official prices and the booking route that works from abroad, checked at source.";
 
 /**
  * "Prices checked" stat. Taken from the most recently updated Things to Do guide rather than

@@ -226,15 +226,15 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-joypolis-tickets") },
 });
 
-const TITLE = "Tokyo Joypolis Tickets (2026): Passport Prices, Hours and Height Limits";
+const TITLE = "Tokyo Joypolis Tickets (2026): Passport Prices and Hours";
 const DESC =
-  "Tokyo Joypolis tickets in 2026: admission is ¥1,700 and the all-ride Passport ¥6,000 for an adult, with a cheaper Evening Passport from 15:00 — plus the height limits on thirteen rides, the Odaiba access and how long to allow.";
+  "Tokyo Joypolis tickets in 2026: admission alone is ¥1,700 and the all-ride Passport ¥6,000 for an adult, with a cheaper Evening Passport from 15:00.";
 
 export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-joypolis-tickets" />
         {hreflangLinks("/guides/attractions/tokyo-joypolis-tickets")}

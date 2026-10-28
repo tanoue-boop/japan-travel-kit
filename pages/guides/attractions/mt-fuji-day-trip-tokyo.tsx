@@ -146,15 +146,15 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/mt-fuji-day-trip-tokyo") } });
 
-const TITLE = "Mt. Fuji Day Trip From Tokyo (2026): How to Get There Yourself";
+const TITLE = "Mt. Fuji Day Trip From Tokyo (2026): Doing It Yourself";
 const DESC =
-  "Doing Mt. Fuji from Tokyo under your own steam in 2026: the direct train and bus to Kawaguchiko, which viewpoints are reachable without a tour, official Mt. Fuji Pass prices, and what a coach is still needed for.";
+  "Mt. Fuji from Tokyo without a tour in 2026: the direct train and bus to Kawaguchiko, the viewpoints you can reach alone, and official Mt. Fuji Pass prices.";
 
 export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-trip-tokyo" />
         <meta name="robots" content="index, follow" />

@@ -39,7 +39,7 @@ const faqItems = [
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/tokyo-to-kyoto") } });
 
 export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) {
-  const metaTitle = "Tokyo to Kyoto 2026: Cheapest & Fastest Ways | Japan Travel Kit";
+  const metaTitle = "Tokyo to Kyoto 2026: Cheapest & Fastest Ways";
   const metaDescription =
     "How to get from Tokyo to Kyoto in 2026. We compare the Shinkansen, highway bus, and local trains on price, speed, and comfort — with 2026 fares.";
   const canonical = "https://www.japan-travel-kit.com/guides/transport/tokyo-to-kyoto";

@@ -39,9 +39,9 @@ const ADDRESS_CHECKED = checkedLabel("2026-10-26");
 // The headline search term is "teamLab Borderless tickets", so it stays verbatim and in
 // that order in the title, the H1 and the description, each of which also carries the two
 // words the query is actually asking about — the price, and how to book.
-const TITLE = "teamLab Borderless Tickets (2026): Price, How to Book and Time Slots";
+const TITLE = "teamLab Borderless Tickets (2026): Price and Time Slots";
 const DESC =
-  "teamLab Borderless tickets in 2026, from the official site: adult from ¥3,400 and priced by date and slot, timed entry in Azabudai Hills, hours, closed days, about two hours inside — and how to book direct or on Klook.";
+  "teamLab Borderless tickets in 2026 start at ¥3,400 for an adult and are priced by date and slot, with timed entry in Azabudai Hills and 2 hours inside.";
 
 // `varies` is the column that stops the ¥3,400 being read as a price: only the adult and
 // disability tiers move with the date, and teamLab publishes no range for how far.
@@ -287,7 +287,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets" />
         {hreflangLinks("/guides/attractions/teamlab-borderless-tickets")}

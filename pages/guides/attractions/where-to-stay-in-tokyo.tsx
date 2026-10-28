@@ -166,9 +166,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport";
+const TITLE = "Where to Stay in Tokyo (2026): Best Areas Compared";
 const DESCRIPTION =
-  "Where to Stay in Tokyo in 2026: five areas compared on the lines that serve them, the airport route to each and the day trips that leave from the door — with journey times read off the operators' own sites.";
+  "Where to stay in Tokyo in 2026: 5 areas compared on the lines that serve them, the airport route to each, and the day trips that leave from the door.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/where-to-stay-in-tokyo") } });
 
@@ -176,7 +176,7 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/where-to-stay-in-tokyo" />
         {hreflangLinks("/guides/attractions/where-to-stay-in-tokyo")}
@@ -208,7 +208,7 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/where-to-stay-in-tokyo",
-              headline: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport",
+              headline: "Where to Stay in Tokyo (2026): Best Areas Compared",
               description: DESCRIPTION,
               updated,
             }),

@@ -28,8 +28,7 @@ import { JSONLD_LANG, zhDateLabel, zhMonthLabel, zhPrice } from "../../../../lib
 const ROUTE = "/zh-cn/guides/attractions/things-to-do-tokyo";
 const TITLE = "东京自由行景点（2026）：必去景点哪些要先订票、哪些可以现场去";
 const DESC =
-  "2026 年东京自由行景点，按「紧迫性」排序：真的会售罄的那四、五个指定时段门票，" +
-  "可以当天早上再决定的其他行程，以及全市最值得的免费视野。票价与英文版同一组数据、同一个核查日期。";
+  "2026 年东京自由行景点，按紧迫性排序：真的会售罄的那四、五个指定时段门票，可以当天早上再决定的行程，以及全市最值得的免费视野。";
 
 // The only prices on this page are the two carried over from the guides that
 // verified them against the operators' own sites — Shibuya Sky and Tokyo Skytree —

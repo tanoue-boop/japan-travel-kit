@@ -177,9 +177,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Ghibli Park Tickets (2026): Prices, When They Go On Sale and How to Buy From Overseas";
+const TITLE = "Ghibli Park Tickets (2026): Prices and How to Buy Abroad";
 const DESCRIPTION =
-  "Ghibli Park tickets in 2026: the Standard and Premium O-Sanpo Day Pass prices, the two-months-ahead 2 p.m. sale rule, the two sellers the park names for overseas buyers, and how to get there from Nagoya.";
+  "Ghibli Park tickets in 2026: Standard and Premium O-Sanpo Day Pass prices, the 2 p.m. sale two months ahead, and the 2 sellers the park names overseas.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/ghibli-park-tickets") } });
 
@@ -187,7 +187,7 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>{TITLE} | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/ghibli-park-tickets" />
         {hreflangLinks("/guides/attractions/ghibli-park-tickets")}
@@ -219,7 +219,7 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/ghibli-park-tickets",
-              headline: "Ghibli Park Tickets (2026): Prices, When They Go On Sale and How to Buy From Overseas",
+              headline: "Ghibli Park Tickets (2026): Prices and How to Buy Abroad",
               description: DESCRIPTION,
               updated,
             }),

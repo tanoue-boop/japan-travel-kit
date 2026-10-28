@@ -202,9 +202,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Kansai Area Pass (2026): Prices, What It Covers & Is It Worth It?";
+const TITLE = "Kansai Area Pass (2026): Prices and Is It Worth It?";
 const DESCRIPTION =
-  "Kansai Area Pass prices for 2026: JR West ended sales of the old pass on 30 September 2026 and now sells the WEST QR version at ¥2,700 for 1 day to ¥6,700 for 4 — what it covers, the Haruka rules, and whether it pays off.";
+  "Kansai Area Pass prices for 2026: JR West now sells the WEST QR version at ¥2,700 for 1 day to ¥6,700 for 4 — what it covers, and whether it pays off.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/kansai-area-pass") } });
 
@@ -212,7 +212,7 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
   return (
     <>
       <Head>
-        <title>{`${TITLE} | Japan Travel Kit`}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kansai-area-pass" />
         <meta name="robots" content="index, follow" />

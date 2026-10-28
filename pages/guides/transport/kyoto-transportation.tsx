@@ -166,20 +166,20 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide | Japan Travel Kit</title>
+        <title>Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide</title>
         <meta
           name="description"
           content="How to get around Kyoto by bus, subway, JR train, and taxi. IC card tips, day pass breakdown, and access from Tokyo and Kansai Airport — all covered."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/kyoto-transportation" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide | Japan Travel Kit" />
+        <meta property="og:title" content="Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/kyoto-transportation" />
         <meta property="og:description" content="How to get around Kyoto by bus, subway, JR train, and taxi. IC card tips, day pass breakdown, and access from Tokyo and Kansai Airport — all covered." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide | Japan Travel Kit" />
+        <meta name="twitter:title" content="Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide" />
         <meta name="twitter:description" content="How to get around Kyoto by bus, subway, JR train, and taxi. IC card tips, day pass breakdown, and access from Tokyo and Kansai Airport — all covered." />
         <script
           type="application/ld+json"
