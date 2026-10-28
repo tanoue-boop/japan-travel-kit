@@ -574,6 +574,27 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/japan-esim-business" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                Business travel
+              </Link>{" "}
+              — the hotspot clause rather than the price, because a tethered laptop triples a day.
+            </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/japan-esim-android" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                On Android
+              </Link>{" "}
+              — the EID check, and the menu to open on Samsung, Pixel, Xperia and OnePlus.
+            </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/esim-go-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                eSIM Go in detail
+              </Link>{" "}
+              — our cheapest pick, one provider at a time: prices, networks and tethering.
+            </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
               <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 What Reddit recommends
               </Link>{" "}

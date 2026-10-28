@@ -677,6 +677,15 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
               SIM card vs eSIM for Japan, across all providers →
             </Link>
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.6rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            The Voice + Data product is the reason Sakura Mobile appears on the three pages where a
+            Japanese number is the deciding factor:{" "}
+            <Link href="/guides/esim/japan-esim-students" className={tools.inlineLink}>students and long study stays</Link>,{" "}
+            <Link href="/guides/esim/japan-esim-business" className={tools.inlineLink}>business travel</Link>{" "}
+            and{" "}
+            <Link href="/guides/esim/japan-esim-android" className={tools.inlineLink}>Android handsets</Link>, where
+            its plan is also the one that needs an APN entered by hand.
+          </p>
         </section>
 
         {/* Pickup */}

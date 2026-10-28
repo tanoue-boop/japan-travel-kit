@@ -1,105 +1,128 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import EsimAnswerTable from "../../../components/EsimAnswerTable";
+import EsimRelatedCard from "../../../components/EsimRelatedCard";
 import {
   getProvider,
+  plansFor,
   priceFrom,
   priceFromLabel,
   pricesCheckedLabel,
+  siteCheapest,
   siteCheapestFrom,
   unlimitedFromLabel,
+  type EsimPlan,
   type EsimProviderId,
 } from "../../../lib/esim-prices";
+import { esimLink, esimSpec, HOLAFLY_ALT_LABEL, HOLAFLY_ALT_NOTE, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
-// Prices and affiliate links come from data/esim-prices.json (refreshed daily).
-const link = (id: EsimProviderId) => getProvider(id).affiliateUrl;
+// Three sources, three dates.
+//
+// - USD prices: data/esim-prices.json, refreshed daily from each provider's own site
+//   (`pricesCheckedAt`).
+// - Phone-number and tethering clauses: lib/esim-specs.ts, read off the providers' own
+//   pages on SPECS_CHECKED_AT.
+// - SAKURA_OFFICIAL_CHECKED is the day the Sakura Mobile plan lengths, the Voice + Data
+//   product and the install timing were read off www.sakuramobile.jp itself.
+//
+// No price is quoted for a generic "Japan tourist SIM": there is no publisher to check
+// one against. Sakura Mobile is the only physical tourist SIM we link, so it is the only
+// one costed here.
 const pricesCheckedAt = pricesCheckedLabel();
-const ESIM_FROM = siteCheapestFrom();
+const SAKURA_OFFICIAL_CHECKED = "25 Oct 2026";
 
-// Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
-// so its purchase CTA points at Airalo's unlimited plans, the closest approved alternative.
-const HOLAFLY_ALT_LABEL = "Get Airalo unlimited eSIM →";
-const HOLAFLY_ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
+const ESIM_FROM = siteCheapestFrom();
+const ESIM_FROM_PLAN = siteCheapest();
+/** Sakura Mobile is the only physical tourist SIM we link, so it sets the SIM-side floor. */
+const SAKURA_ENTRY = priceFrom("sakura");
+const SAKURA_ENTRY_PLAN = plansFor("sakura")[0];
+
+/** The cheapest plan a provider sells that covers a seven-day trip with 5 GB or more. */
+const weekPlan = (id: EsimProviderId): EsimPlan | null =>
+  plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 5)) ?? null;
+
+const TITLE = `Japan SIM Card vs eSIM 2026: eSIM From ${ESIM_FROM}`;
+const DESCRIPTION =
+  `eSIM wins unless you need a Japanese phone number or your phone predates 2018 — from ` +
+  `${ESIM_FROM} for ${ESIM_FROM_PLAN?.name}. Prices checked ${pricesCheckedAt}.`;
 
 const comparisonRows = [
-  { feature: "Setup", esim: "QR code — install before you fly", physicalSim: "At airport kiosk or mail delivery" },
-  { feature: "Installation", esim: "Digital, no physical card", physicalSim: "Insert physical SIM card" },
-  { feature: "Phone requirement", esim: "eSIM-compatible device only", physicalSim: "Any unlocked phone" },
-  { feature: "Voice calls", esim: "Data-only (every Japan eSIM)", physicalSim: "Available (Sakura Mobile)" },
-  { feature: "Japanese phone number", esim: "No", physicalSim: "Yes" },
-  { feature: "Price", esim: `From ${ESIM_FROM}`, physicalSim: "From ~¥3,000 (~$20)" },
-  { feature: "Best for", esim: "Short trips (1 day – 1 month)", physicalSim: "Long stays (1 month+) or voice needs" },
+  { feature: "How you get it", esim: "QR code by email — install before you fly", physicalSim: "Collected or delivered inside Japan" },
+  { feature: "Phone requirement", esim: "An eSIM-capable, unlocked handset", physicalSim: "Any unlocked phone, however old" },
+  { feature: "Japanese phone number", esim: "No — every Japan travel eSIM is data only", physicalSim: "Only on Sakura Mobile's Voice + Data product" },
+  { feature: "Voice calls and SMS", esim: "No", physicalSim: "On the Voice + Data plan" },
+  { feature: "Cheapest we can price", esim: `${ESIM_FROM} — ${ESIM_FROM_PLAN?.name}`, physicalSim: `${SAKURA_ENTRY} — Sakura Mobile, ${SAKURA_ENTRY_PLAN?.name}` },
+  { feature: "Plan lengths sold", esim: "1 to 30 days across the four providers", physicalSim: "4 to 93 days (Sakura Mobile's own SIM pages)" },
+  { feature: "Your home SIM", esim: "Stays in the phone and keeps working", physicalSim: "Comes out while the Japan card is in" },
+  { feature: "Best for", esim: "Almost every visitor", physicalSim: "A Japanese number, or a pre-2018 handset" },
 ];
 
 const esimPros = [
-  "Instant setup — install before you fly",
-  "No physical card to lose or swap",
-  "Cheaper for short trips",
-  "Keep your home SIM active in the other slot",
-  "Works in 190+ countries with multi-country plans",
+  "Installed before you fly — online the moment you land",
+  "Nothing to collect, nothing to lose, nothing to return",
+  `Cheapest option by a wide margin: from ${ESIM_FROM}`,
+  "Your home SIM stays in the phone for calls and texts",
+  "One account covers a multi-country trip",
 ];
 
 const esimCons = [
-  "Requires an eSIM-compatible device",
-  "Data-only on most Japan plans (no voice)",
-  "Less English support on some providers",
+  "Needs an eSIM-capable, unlocked handset",
+  "Data only — no voice, no SMS, no Japanese number",
+  "Support quality varies: live chat on some, email on others",
 ];
 
 const simPros = [
-  "Works on any unlocked phone",
-  "Voice calls and SMS available",
-  "English customer support (Sakura Mobile)",
-  "Better value for stays of 1 month or longer",
-  "No need to check device compatibility",
+  "Works in any unlocked phone, whatever its age",
+  "The Voice + Data product carries a Japanese number and domestic calls",
+  "English-speaking support on Sakura Mobile",
+  "Sold in lengths up to 93 days, so a long stay is one purchase",
 ];
 
 const simCons = [
-  "Must pick up at airport or wait for delivery",
-  "More expensive than eSIM for short trips",
-  "Physical card can be lost or damaged",
-  "Must swap your home SIM out",
+  `Dearest entry point: ${SAKURA_ENTRY} against ${ESIM_FROM} for an eSIM`,
+  "Has to be collected or delivered inside Japan",
+  "Your home SIM comes out of the phone",
+  "A physical card can be lost or damaged",
 ];
 
 const esimPicks = [
   {
     rank: 1,
-    badge: "Best Overall eSIM",
-    badgeClass: "pickBadgeBlue" as const,
-    name: "Airalo",
-    summary:
-      `Our top pick on the eSIM side: plans from ${priceFromLabel("airalo")} on ${getProvider("airalo").network}, instant QR activation, and the only iOS app here that installs the profile for you. Data-only, like every Japan eSIM.`,
-    bestFor: "Most travellers visiting for 1 week to 1 month",
-    pros: [`Prices from ${priceFrom("airalo")}`, "iOS app installs the profile for you", "24/7 live chat support"],
-    cons: ["Data-only — no Japanese number", "Dearer than eSIM Go per GB"],
-    href: link("airalo"),
-    cta: "Get Airalo Japan eSIM →",
-  },
-  {
-    rank: 2,
     badge: "Best Budget eSIM",
     badgeClass: "pickBadgeGreen" as const,
     name: "eSIM Go",
-    summary:
-      `The cheapest Japan eSIM, from ${priceFromLabel("esimgo")} on ${getProvider("esimgo").network} — the network with the broadest rural reach, which is unusual at this price. Sold to consumers under the Breeze brand.`,
-    bestFor: "Budget travellers on short trips (1–14 days)",
-    pros: [`Cheapest entry price at ${priceFrom("esimgo")}`, "Docomo — widest rural coverage", "Simple QR setup"],
-    cons: ["Less well-known brand", "Data-only — no Japanese number", "Email-only support"],
-    href: link("esimgo"),
+    summary: `The cheapest Japan eSIM, from ${priceFromLabel("esimgo")} on ${getProvider("esimgo").network} — the network with the broadest rural reach, which is unusual at this price. Tethering is stated on every Japan plan at no extra cost. Sold to consumers as Breeze.`,
+    bestFor: "Anyone choosing on price, and anyone tethering a laptop",
+    pros: [`Cheapest entry price at ${priceFrom("esimgo")}`, "docomo — widest rural coverage", "Tethering at no extra cost"],
+    cons: ["Email-only support", "No in-app top-up", "Data only — no Japanese number"],
+    href: esimLink("esimgo"),
     cta: "Get eSIM Go Japan →",
   },
   {
+    rank: 2,
+    badge: "Best Balance",
+    badgeClass: "pickBadgeBlue" as const,
+    name: "Airalo",
+    summary: `Plans from ${priceFromLabel("airalo")} on ${getProvider("airalo").network}, with the only iOS app here that installs the profile for you and the only in-app top-up. Costs more per GB than eSIM Go; what you are paying for is the recovery path when something goes wrong.`,
+    bestFor: "A first eSIM, or anyone who cannot predict their usage",
+    pros: ["App installs the profile for you", "Top up without a new profile", "24/7 live chat support"],
+    cons: ["Dearer than eSIM Go per GB", "Data only — no Japanese number"],
+    href: esimLink("airalo"),
+    cta: "Get Airalo Japan eSIM →",
+  },
+  {
     rank: 3,
-    badge: "Best Unlimited eSIM",
+    badge: "Unlimited Data",
     badgeClass: "pickBadgeOrange" as const,
     name: "Holafly",
-    summary:
-      `Unlimited on-device data from ${unlimitedFromLabel("holafly")}, with nothing to monitor mid-trip. Worth knowing that Airalo (${unlimitedFromLabel("airalo")}) and eSIM Go (${unlimitedFromLabel("esimgo")}) now sell unlimited Japan plans too, and for less.`,
-    bestFor: "Heavy data users, streamers, long itineraries",
-    pros: ["Unlimited on-device data", "No overage worries", "Plain QR install on any eSIM phone"],
-    cons: ["Dearest unlimited of the four", "Hotspot capped at 1 GB/day", "Data-only — no Japanese number"],
-    href: link("airalo"),
+    summary: `Unlimited on-device data from ${unlimitedFromLabel("holafly")}, with nothing to monitor. Two things to know: Airalo (${unlimitedFromLabel("airalo")}) and eSIM Go (${unlimitedFromLabel("esimgo")}) now sell unlimited Japan plans for less, and its hotspot is capped at 1 GB of shareable data a day.`,
+    bestFor: "Heavy data users who will not be tethering",
+    pros: ["Unlimited on-device data", "Nothing to top up", "Plain QR install on any eSIM phone"],
+    cons: ["Dearest unlimited of the four", "Hotspot capped at 1 GB/day", "Data only — no Japanese number"],
+    href: esimLink("airalo"),
     cta: HOLAFLY_ALT_LABEL,
     ctaNote: HOLAFLY_ALT_NOTE,
   },
@@ -110,53 +133,57 @@ const simPick = {
   badge: "Best Physical SIM",
   badgeClass: "pickBadgeBlue" as const,
   name: "Sakura Mobile",
-  summary:
-    "Sakura Mobile is the only Japan tourist SIM with genuine English-speaking customer support, voice calls, and flexible plans designed for both short and long stays. Runs on Docomo — Japan's most extensive network.",
-  bestFor: "Longer stays, travellers who need voice calls, those wanting English support",
+  summary: `The only Japan tourist SIM we link, and the only product on this page that can come with a Japanese phone number: ${esimSpec("sakura").phoneNumber}. Its own pages sell the SIM card in lengths from 4 to 93 days, on docomo for the 3 GB/day plans and au/KDDI for unlimited, with English-speaking support (read ${SAKURA_OFFICIAL_CHECKED}).`,
+  bestFor: "A Japanese number, a stay measured in months, or a handset with no eSIM",
   pros: [
-    "Voice calls & SMS included",
+    "Voice + Data product carries a Japanese number and domestic calls",
     "English-speaking support team",
-    "Docomo network — best rural coverage",
-    "Flexible plan lengths",
+    "Sold in lengths up to 93 days",
+    "Works in any unlocked phone",
   ],
   cons: [
-    "More expensive than eSIM for short stays",
-    "Requires airport pickup or delivery",
-    "Need to swap your home SIM",
+    `Entry price ${SAKURA_ENTRY} against ${ESIM_FROM} for an eSIM`,
+    "Collected or delivered inside Japan",
+    "Your home SIM comes out",
   ],
-  href: link("sakura"),
+  href: esimLink("sakura"),
   cta: "Get Sakura Mobile SIM →",
 };
 
 const scenarios = [
-  { trip: "1 week or under", recommendation: "eSIM", reason: `A physical SIM cannot compete at ${priceFrom("esimgo")} — and there is nothing to collect on arrival` },
-  { trip: "2–4 weeks", recommendation: "eSIM", reason: "Still cheaper, and 15- or 30-day plans cover the trip without a kiosk visit" },
-  { trip: "1 month or more", recommendation: "Physical SIM", reason: "Per-day rates flip in the SIM's favour, and voice is bundled rather than impossible" },
-  { trip: "Voice calls needed", recommendation: "Physical SIM", reason: "No Japan eSIM sells voice — this is the one requirement eSIM cannot meet at any price" },
-  { trip: "Phone made before 2018", recommendation: "Physical SIM", reason: "No eSIM hardware, so the comparison does not apply — any unlocked phone takes a SIM" },
-  { trip: "Group of 3+", recommendation: "Neither — Pocket WiFi", reason: "One shared router beats buying either a SIM or an eSIM per person" },
+  { trip: "A week or less", recommendation: "eSIM", reason: `Nothing physical competes at ${ESIM_FROM}, and there is nothing to collect on arrival` },
+  { trip: "Two to four weeks", recommendation: "eSIM", reason: "Still cheaper, and 15- and 30-day plans cover the trip in one purchase" },
+  { trip: "A month or more", recommendation: "Physical SIM", reason: "Sakura Mobile sells up to 93 days in one go; stacked eSIM months cost more and install three times" },
+  { trip: "You need a Japanese number", recommendation: "Physical SIM", reason: "No Japan travel eSIM sells voice or SMS at any price — this is the one requirement an eSIM cannot meet" },
+  { trip: "Handset made before about 2018", recommendation: "Physical SIM", reason: "No eSIM hardware, so there is no comparison to make — any unlocked phone takes a card" },
+  { trip: "iPhone bought in mainland China", recommendation: "Physical SIM", reason: "Those models shipped without eSIM whatever the generation, so the hardware check fails" },
+  { trip: "Two or more sharing one connection", recommendation: "Neither — Pocket WiFi", reason: "One flat rental beats an eSIM each from two people up; the arithmetic is on our family and group page" },
 ];
 
 const faqItems = [
   {
-    q: "Is eSIM better than a SIM card for Japan?",
-    a: "For most tourists visiting Japan for 1–30 days, an eSIM is the better choice. It is cheaper, faster to set up, and requires no visit to an airport kiosk. The main limitation is that most Japan eSIMs are data-only — if you need voice calls or SMS, a physical SIM (Sakura Mobile) is the better option. eSIM also requires a compatible device — most smartphones made after 2018 and most current-generation tablets qualify.",
+    q: "Is an eSIM better than a SIM card for Japan?",
+    a: `For almost every visitor, yes. It is cheaper (from ${ESIM_FROM} for ${ESIM_FROM_PLAN?.name} against ${SAKURA_ENTRY} for the cheapest physical travel plan we link), it installs before you fly, and your home SIM stays in the phone. There are exactly two situations where cost is irrelevant and a card is the only option: you need a Japanese phone number, or your handset has no eSIM hardware. Prices checked ${pricesCheckedAt}.`,
   },
   {
-    q: "Can I get a physical SIM at Japan airports?",
-    a: "Yes. Physical SIM cards and eSIM QR codes are available at vending machines and kiosks in most major Japanese airports, including Narita, Haneda, Kansai, and Chubu. However, airport prices are typically higher than when you pre-order online. Pre-ordering from Sakura Mobile before you fly is usually cheaper and avoids any queue time on arrival.",
+    q: "Which is cheaper for Japan, an eSIM or a SIM card?",
+    a: `An eSIM, clearly, at the short end. The cheapest Japan eSIM is ${ESIM_FROM} for ${ESIM_FROM_PLAN?.name}; the cheapest physical travel plan we can price is ${SAKURA_ENTRY} from Sakura Mobile, and that buys ${SAKURA_ENTRY_PLAN?.name} rather than a week. The gap closes on a long stay, because Sakura Mobile sells a single plan up to 93 days while an eSIM month has to be re-bought and re-installed each time. We quote no figure for a generic "tourist SIM" — there is no publisher to check one against.`,
   },
   {
-    q: "Which is cheaper, eSIM or physical SIM for Japan?",
-    a: `eSIMs are significantly cheaper for short trips. Japan eSIM plans start at ${ESIM_FROM}, while a physical tourist SIM typically starts around ¥3,000–¥4,000 (~$20–$27) for a basic plan. For stays of 1 month or longer the gap narrows and a physical SIM can offer better per-day value — with voice capability included, which no Japan eSIM offers at any price.`,
+    q: "Can I get a Japanese phone number with an eSIM?",
+    a: `Not from a travel eSIM. ${esimSpec("esimgo").phoneNumber} ${esimSpec("holafly").phoneNumber}, and Airalo's Japan plans are data only too. The one exception among the four providers is Sakura Mobile's separate Voice + Data eSIM, which adds a Japanese number and domestic calls. Clauses read ${SPECS_CHECKED_AT}.`,
   },
   {
-    q: "Do I need to be in Japan to activate a physical SIM?",
-    a: "Generally, yes — a Japan SIM card must be inserted and activated in Japan. However, Sakura Mobile ships SIMs internationally, so you receive the card before you travel and insert it when you land. Some providers also offer pre-activated eSIM QR codes that you scan before departure and activate on arrival.",
+    q: "How do I know whether my phone takes an eSIM?",
+    a: "Two checks. First the hardware: on an iPhone, Settings → General → About and scroll to EID; on Android, the same EID row under About phone. An EID means the hardware is there — iPhone XS and later, Pixel 3 and later, Galaxy S20 and later. iPhones bought in mainland China shipped without eSIM whatever the model. Second the carrier lock: a handset bought on contract can refuse a third-party profile even with the hardware present, and a home carrier typically needs 24–48 hours to unlock it.",
   },
   {
-    q: "What happens if my eSIM doesn't work in Japan?",
-    a: "First, ensure the eSIM profile is toggled on in your phone's settings and that your device is not in airplane mode. If you still have no signal, check that the eSIM is set as the primary data line. Contact your eSIM provider's support — Airalo, Holafly, and eSIM Go all offer online support. As a backup, 7-Eleven convenience stores in Japan sell physical SIM cards at reasonable prices.",
+    q: "Can I buy a physical SIM at a Japanese airport?",
+    a: `Physical SIM cards and eSIM QR codes are sold from counters and vending machines at the major airports — Narita, Haneda, Kansai and Chubu among them. The catch is that you are buying at the counter price after a long flight rather than the pre-order price, and the counter's opening hours bind an early or late arrival. Pre-ordering is both cheaper and faster; the eSIM route skips the counter entirely.`,
+  },
+  {
+    q: "Can I keep my home number while using a Japan eSIM?",
+    a: "Yes, and this is one of the real advantages over a card. On a dual-SIM handset the home SIM stays in place for calls and texts while the Japan eSIM carries the data. Set the eSIM as the default data line and turn data roaming off on the home SIM so it cannot connect by accident. With a physical Japan SIM, your home SIM has to come out.",
   },
 ];
 
@@ -166,21 +193,18 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
   return (
     <>
       <Head>
-        <title>Japan SIM Card vs eSIM 2026: Which Is Better?</title>
-        <meta
-          name="description"
-          content="SIM card or eSIM for Japan in 2026? We compare setup, price, coverage and voice calls across Airalo, eSIM Go, Holafly and Sakura Mobile to help you decide."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-sim-card-vs-esim-2026" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Japan SIM Card vs eSIM 2026: Which Is Better?" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-sim-card-vs-esim-2026" />
-        <meta property="og:description" content="SIM card or eSIM for Japan in 2026? We compare setup, price, coverage and voice calls across Airalo, eSIM Go, Holafly and Sakura Mobile to help you decide." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan SIM Card vs eSIM 2026: Which Is Better?" />
-        <meta name="twitter:description" content="SIM card or eSIM for Japan in 2026? We compare setup, price, coverage and voice calls across Airalo, eSIM Go, Holafly and Sakura Mobile to help you decide." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -201,6 +225,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
             __html: articleJsonLd({
               route: "/guides/esim/japan-sim-card-vs-esim-2026",
               headline: "Japan SIM Card vs eSIM (2026): Which Should You Choose?",
+              description: DESCRIPTION,
               updated,
             }),
           }}
@@ -244,9 +269,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <p className={styles.eyebrow}>
-            Updated {updated.label}
-          </p>
+          <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
             Japan SIM Card vs eSIM (2026):<br />Which Should You Choose?
           </h1>
@@ -255,7 +278,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
             or your handset cannot take one. Those are the only two real reasons.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Full Comparison", "Live 2026 prices"].map((t) => (
+            {[`Updated ${updated.label}`, `eSIM from ${ESIM_FROM}`, "Prices checked daily"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -275,43 +298,63 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
           </p>
         </div>
 
-        {/* Quick Answer Box */}
+        {/* Quick Answer Box — the whole answer, first */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
             <span className={styles.verdictLabel}>Quick Answer</span>
           </div>
           <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>
+              <strong>Buy an eSIM unless one of two things is true.</strong> On price it is not
+              close: the cheapest Japan eSIM is {ESIM_FROM} for {ESIM_FROM_PLAN?.name}, against{" "}
+              {SAKURA_ENTRY} for the cheapest physical travel plan we can price, and
+              the eSIM installs before you fly with nothing to collect at the airport. But cost is
+              not what decides this. There are exactly two situations where the price comparison is
+              irrelevant and a physical SIM is the only option: <strong>you need a Japanese phone
+              number</strong> — no Japan travel eSIM sells voice or SMS at any price, and only
+              Sakura Mobile&apos;s Voice + Data product carries one — or <strong>your handset has
+              no eSIM hardware</strong>, which covers anything made before about 2018 and every
+              iPhone bought in mainland China. If neither applies, buy an eSIM and stop reading.
+              Prices checked {pricesCheckedAt}; phone-number and tethering clauses{" "}
+              {SPECS_CHECKED_AT}.
+            </p>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>For most travellers</p>
-                <p className={styles.verdictStatValue}>eSIM (Airalo or eSIM Go)</p>
+                <p className={styles.verdictStatLabel}>For most visitors</p>
+                <p className={styles.verdictStatValue}>eSIM — from {ESIM_FROM}</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Need voice calls?</p>
-                <p className={styles.verdictStatValue}>Physical SIM (Sakura Mobile)</p>
+                <p className={styles.verdictStatLabel}>Need a Japanese number?</p>
+                <p className={styles.verdictStatValue}>Sakura Mobile Voice + Data</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Older phone?</p>
-                <p className={styles.verdictStatValue}>Physical SIM</p>
+                <p className={styles.verdictStatLabel}>Phone with no EID?</p>
+                <p className={styles.verdictStatValue}>Physical SIM, no choice</p>
               </div>
             </div>
-            <p className={styles.verdictText}>
-              <strong>eSIM wins for most trips</strong> — from {ESIM_FROM} against roughly
-              $20 for the cheapest physical tourist SIM, with nothing to collect on arrival.
-              But cost is not what decides this. There are exactly two situations where the
-              price comparison is irrelevant and a physical SIM is the only option:{" "}
-              <strong>you need a Japanese phone number</strong> (no Japan eSIM sells voice or
-              SMS, at any price), or <strong>your handset has no eSIM hardware</strong> — any
-              phone from before about 2018, and any iPhone bought in mainland China. If neither
-              applies to you, buy an eSIM and stop reading. Prices checked {pricesCheckedAt}.
-            </p>
           </div>
         </div>
 
-        {/* Comparison Table */}
+        {/* The table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Side by side</span>
-          <h2 className={styles.sectionTitle}>What&apos;s the Difference?</h2>
+          <h2 className={styles.sectionTitle}>What Does a Week in Japan Cost Either Way?</h2>
+          <p className={styles.bodyText}>
+            One week, 5 GB or more: the cheapest plan each provider sells that covers it, with the
+            phone-number and tethering clauses that actually decide this comparison. Sakura
+            Mobile&apos;s row is the one to read if you need a number — it is the only provider of
+            the four that can supply one.
+          </p>
+          <EsimAnswerTable
+            pick={weekPlan}
+            note="The cheapest plan each provider sells with at least 7 days' validity and 5 GB or more; Holafly sells unlimited only."
+          />
+        </section>
+
+        {/* Comparison Table */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Format</span>
+          <h2 className={styles.sectionTitle}>What Is Actually Different Between the Two?</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -334,12 +377,19 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            The physical-SIM column describes Sakura Mobile, the only Japan tourist SIM we link —
+            plan lengths, networks and the Voice + Data product read off sakuramobile.jp on{" "}
+            {SAKURA_OFFICIAL_CHECKED}, prices from our daily feed, checked {pricesCheckedAt}. No
+            figure appears here for a generic &ldquo;Japan tourist SIM&rdquo;, because there is no
+            publisher to check one against.
+          </p>
         </section>
 
         {/* eSIM Pros & Cons */}
         <section className={styles.prosConsSection}>
           <span className={styles.sectionLabel}>eSIM</span>
-          <h2 className={styles.sectionTitle}>eSIM: Full Pros &amp; Cons</h2>
+          <h2 className={styles.sectionTitle}>eSIM: What Do You Gain and Give Up?</h2>
           <div className={styles.pickGrid}>
             <div className={styles.pickPros}>
               <p className={styles.pickListLabel}>Pros</p>
@@ -363,7 +413,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
         {/* Physical SIM Pros & Cons */}
         <section className={styles.prosConsSection}>
           <span className={styles.sectionLabel}>Physical SIM</span>
-          <h2 className={styles.sectionTitle}>Physical SIM: Full Pros &amp; Cons</h2>
+          <h2 className={styles.sectionTitle}>Physical SIM: What Do You Gain and Give Up?</h2>
           <div className={styles.pickGrid}>
             <div className={styles.pickPros}>
               <p className={styles.pickListLabel}>Pros</p>
@@ -387,7 +437,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
         {/* Best eSIMs */}
         <section className={styles.picksSection}>
           <span className={styles.sectionLabel}>Top eSIM picks</span>
-          <h2 className={styles.sectionTitle}>Best eSIMs for Japan 2026</h2>
+          <h2 className={styles.sectionTitle}>Which eSIM Should You Buy?</h2>
           <div className={styles.picksList}>
             {esimPicks.map((pick) => (
               <div key={pick.rank} className={styles.pickCard}>
@@ -446,7 +496,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
         {/* Best Physical SIM */}
         <section className={styles.picksSection}>
           <span className={styles.sectionLabel}>Top SIM pick</span>
-          <h2 className={styles.sectionTitle}>Best Physical SIM for Japan 2026</h2>
+          <h2 className={styles.sectionTitle}>Which Physical SIM Should You Buy?</h2>
           <div className={styles.picksList}>
             <div className={styles.pickCard}>
               <div className={styles.pickCardHeader}>
@@ -490,6 +540,14 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
                 >
                   {simPick.cta}
                 </a>
+                <p className={styles.bodyText} style={{ marginTop: "0.9rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+                  Yen prices, the daily cap, hotspot allowances and the Voice + Data plan are
+                  broken down in our{" "}
+                  <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                    Sakura Mobile review
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
           </div>
@@ -498,17 +556,17 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
         {/* Which Should You Choose */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Decision guide</span>
-          <h2 className={styles.sectionTitle}>Which Should You Choose?</h2>
+          <h2 className={styles.sectionTitle}>Which Should You Choose for Your Trip?</h2>
           <p className={styles.bodyText}>
-            The right option depends on your trip length, device, and whether you need voice calls.
-            Here&apos;s a quick scenario guide:
+            Find your row. Trip length decides it on cost; the last four rows override cost
+            entirely, because in each of them one of the two options simply cannot do the job.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Your Situation", "Recommendation", "Reason"].map((h) => (
+                    {["Your situation", "Buy", "Why"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -524,6 +582,63 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
                 </tbody>
               </table>
             </div>
+          </div>
+        </section>
+
+        {/* The part an AI answer can't do for you — and the CTA */}
+        <section className={styles.installSection}>
+          <span className={styles.sectionLabel}>Before you buy</span>
+          <h2 className={styles.sectionTitle}>Will It Work on Your Phone, and When Should You Buy?</h2>
+          <p className={styles.bodyText}>
+            This whole comparison collapses into one question about your own handset, and nothing
+            but the handset can answer it. Three checks, about two minutes.
+          </p>
+          <div className={styles.stepsList}>
+            {[
+              {
+                title: "Is there an EID?",
+                desc: "iPhone: Settings → General → About, scroll to EID. Android: About phone, same row. An EID means eSIM hardware — iPhone XS and later, Pixel 3 and later, Galaxy S20 and later. No EID row, and the eSIM column of every table above is unavailable to you: buy the card.",
+              },
+              {
+                title: "Is the handset carrier-locked?",
+                desc: "A phone bought on contract can refuse a third-party eSIM profile even with the hardware present. Ask your home carrier to unlock it before you fly — our setup guide puts that at 24–48 hours for most carriers — because an unlock request from Japan is a bad week.",
+              },
+              {
+                title: "When do the days start counting?",
+                desc: `eSIM: buy any time, install at home with the profile switched off, turn it on when you land. Physical SIM: it is collected or delivered inside Japan, so it has to be ordered before you fly. Sakura Mobile's 3 GB/day plan is the one exception on the eSIM side — its own guide says that one installs on the day you want it to start, and the days run from install (read ${SAKURA_OFFICIAL_CHECKED}).`,
+              },
+            ].map((step, i) => (
+              <div key={i} className={styles.stepCard}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{step.title}</p>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.2rem" }}>
+            Full walkthroughs:{" "}
+            <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              the compatibility checks
+            </Link>
+            ,{" "}
+            <Link href="/guides/esim/japan-esim-android" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              where to tap on Android
+            </Link>{" "}
+            and{" "}
+            <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              the install steps per phone
+            </Link>
+            .
+          </p>
+          <div className={styles.pickCtaRow}>
+            <a href={esimLink("esimgo")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
+              Get an eSIM — from {ESIM_FROM} →
+            </a>
+            <a href={esimLink("sakura")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
+              Get a Sakura Mobile SIM →
+            </a>
           </div>
         </section>
 
@@ -551,56 +666,30 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
-            <Link href="/guides/esim/best-esim-japan" className={styles.relatedCard}>
-              <div className={styles.relatedIcon}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
-                  <rect x="9" y="3" width="6" height="4" rx="1" />
-                  <line x1="9" y1="12" x2="15" y2="12" />
-                  <line x1="9" y1="16" x2="13" y2="16" />
-                </svg>
-              </div>
-              <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan 2026: Top 4 Picks Compared</p>
-                <span className={styles.relatedArrow}>Read guide →</span>
-              </div>
-            </Link>
-            <Link href="/guides/esim/sakura-mobile-review" className={styles.relatedCard}>
-              <div className={styles.relatedIcon}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="5" y="2" width="14" height="20" rx="2" />
-                  <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" />
-                </svg>
-              </div>
-              <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sakura Mobile Review 2026: Best SIM for Long Stays?</p>
-                <span className={styles.relatedArrow}>Read guide →</span>
-              </div>
-            </Link>
-            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" className={styles.relatedCard}>
-              <div className={styles.relatedIcon}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 16V4m0 0L3 8m4-4l4 4" />
-                  <path d="M17 8v12m0 0l4-4m-4 4l-4-4" />
-                </svg>
-              </div>
-              <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Pocket WiFi vs eSIM for Japan (2026): Which Is Better?</p>
-                <span className={styles.relatedArrow}>Read guide →</span>
-              </div>
-            </Link>
-            <Link href="/guides/esim/does-esim-work-in-japan" className={styles.relatedCard}>
-              <div className={styles.relatedIcon}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="5" y="2" width="14" height="20" rx="2" />
-                  <path d="M15 2v4a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V2" />
-                </svg>
-              </div>
-              <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Does eSIM Work in Japan? (2026): Everything You Need to Know</p>
-                <span className={styles.relatedArrow}>Read guide →</span>
-              </div>
-            </Link>
+            <EsimRelatedCard href="/guides/esim/best-esim-japan">
+              Best eSIM for Japan 2026: Top 4 Picks Compared
+            </EsimRelatedCard>
+            <EsimRelatedCard href="/guides/esim/sakura-mobile-review">
+              Sakura Mobile Review 2026: eSIM &amp; SIM Card Plans and Prices
+            </EsimRelatedCard>
+            <EsimRelatedCard href="/guides/esim/esim-go-japan-review">
+              eSIM Go Japan Review 2026: Prices, Networks and Tethering
+            </EsimRelatedCard>
+            <EsimRelatedCard href="/guides/esim/japan-esim-android">
+              Best eSIM for Japan on Android (2026): Picks and Setup
+            </EsimRelatedCard>
+            <EsimRelatedCard href="/guides/esim/japan-esim-business">
+              Best eSIM for Japan for Business Travel (2026)
+            </EsimRelatedCard>
+            <EsimRelatedCard href="/guides/esim/japan-esim-students">
+              Best eSIM for Japan for Students (2026): Priced by the Study Month
+            </EsimRelatedCard>
+            <EsimRelatedCard href="/guides/esim/japan-esim-family-group">
+              Japan eSIM for Family &amp; Group Travel (2026): Cost Per Head
+            </EsimRelatedCard>
+            <EsimRelatedCard href="/guides/esim/pocket-wifi-vs-esim-japan">
+              Pocket WiFi vs eSIM for Japan (2026): Which Is Better?
+            </EsimRelatedCard>
           </div>
         </section>
 
@@ -609,8 +698,8 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Compare all Japan connectivity options</h2>
             <p className={styles.ctaBannerDesc}>
-              eSIM, physical SIM, Pocket WiFi — we compare every way to stay connected
-              in Japan so you can choose with confidence.
+              eSIM, physical SIM, Pocket WiFi — every way to stay connected in Japan, priced
+              side by side.
             </p>
             <Link href="/guides/esim/best-esim-japan" className={styles.ctaBannerBtn}>
               View Full eSIM Comparison →
