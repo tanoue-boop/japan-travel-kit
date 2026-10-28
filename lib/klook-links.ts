@@ -1229,6 +1229,16 @@ export const naraDayTourUrl =
   "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307051&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F87236-kyoto-tour-nara%2F";
 
 /**
+ * Nikko cultural day tour — moved here on 28 Oct 2026 from
+ * pages/guides/attractions/nikko-day-trip.tsx for the same reason as the block
+ * above: the ticket price table's day-tour section needed the link that guide
+ * already used rather than a second one to the same product. URL unchanged,
+ * `aff_adid` included; listing 20405 was confirmed live on 19 Oct 2026.
+ */
+export const nikkoCulturalDayTourUrl =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1309223&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F20405-nikko-cultural-day-tour-tokyo%2F";
+
+/**
  * JR Haruka — moved here on 21 Oct 2026 from pages/guides/transport/haruka-vs-nankai-rapit.tsx
  * so the tax-free guide's departure-day block can reuse the link that page already
  * uses rather than minting a second one for the same product. URL unchanged,

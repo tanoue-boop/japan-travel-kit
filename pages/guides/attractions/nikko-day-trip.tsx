@@ -4,11 +4,13 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../lib/klook-links";
+import { nikkoCulturalDayTourUrl, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../lib/klook-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
-const NIKKO_TOUR_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1309223&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F20405-nikko-cultural-day-tour-tokyo%2F";
+// The URL itself now lives in lib/klook-links.ts, so the attraction ticket price
+// table can link the same listing instead of minting a second link to it.
+const NIKKO_TOUR_URL = nikkoCulturalDayTourUrl;
 
 // Toshogu admission and hours read off toshogu.jp; NIKKO PASS prices and coverage off
 // tobu.co.jp/en/ticket/nikko/all.html. Tour duration as the Klook listing describes it.

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
@@ -13,6 +14,22 @@ import {
   type AttractionPrice,
   type PriceGroup,
 } from "../../../lib/attraction-prices";
+import {
+  fujiHakoneDayTour,
+  hakoneFreepass,
+  hakoneLoopBusTour,
+  hiroshimaMiyajimaMultiCityDayTour,
+  jrKansaiAreaPass,
+  klookEsim,
+  kyotoNaraKiyomizuTour,
+  kyotoStayAreas,
+  nikkoCulturalDayTourUrl,
+  osakaAmazingPass,
+  osakaStayAreas,
+  tokyoSharedAirportTransfer,
+  tokyoSubwayTicket,
+  whereToStayTokyoAreas,
+} from "../../../lib/klook-links";
 
 const TITLE = "Japan Attraction Ticket Prices 2026: Official Prices";
 const DESC =
@@ -50,6 +67,158 @@ const EXCLUDED = [
   },
 ];
 
+/**
+ * The four passes in the table above, set against the single tickets — added
+ * 28 Oct 2026, because the pass rows carry a price but not the arithmetic that
+ * decides the purchase, which is the thing a reader comparing tickets actually
+ * needs. `breakEven` is where each pass stops being more expensive than paying
+ * per ride or per gate.
+ *
+ * Every figure is the operator's own with the date it was read, carried over from
+ * the guide on this site that read it — the Metro fare table and the pass prices
+ * from tokyometro.jp and osp.osaka-info.jp (19 Oct 2026), the castle and deck
+ * admissions from osakacastle.net and Osaka's official tourism site (23 Oct 2026),
+ * the Hakone prices and leg fares from odakyu-global.com and hakonenavi.jp, and the
+ * Kansai pass prices and the HARUKA single from westjr.co.jp (both 25 Oct 2026).
+ *
+ * No Klook price appears anywhere here: Klook answers automated reads of its
+ * product pages with HTTP 403, so none could be verified.
+ */
+const PASS_ROWS = [
+  {
+    pass: "Tokyo Subway Ticket",
+    href: "/guides/attractions/tokyo-subway-ticket",
+    covers:
+      "Unlimited rides on every Tokyo Metro and Toei Subway line from first use. No JR at all, so the Yamanote Line is not on it.",
+    breakEven:
+      "Tokyo Metro adult fares run ¥178–¥324 a ride, so the 24-hour tier needs five or six rides inside one window. The 72-hour tier is about ¥667 a day, which four short rides already beat.",
+    price: "¥1,000 / ¥1,500 / ¥2,000 adult for 24 / 48 / 72 hours",
+    source: "tokyometro.jp, read 19 October 2026",
+    url: tokyoSubwayTicket.url,
+    cta: "Check the subway ticket →",
+  },
+  {
+    pass: "Osaka Amazing Pass",
+    href: "/guides/attractions/osaka-attractions-pass",
+    covers:
+      "Unlimited Osaka Metro and city buses plus free admission to more than 40 facilities — Osaka Castle, the Umeda Sky Building observatory, Tsutenkaku, the HEP FIVE wheel and the river cruises. Universal Studios Japan and the Kaiyukan are not on it.",
+    breakEven:
+      "Two paid facilities usually do it. The Osaka Castle keep is ¥1,200 and the Gozabune boat ¥1,800 at the gate — ¥3,000 against a ¥2,500 pass. The Umeda Sky Building is ¥2,000, but the pass only admits you free before 15:00.",
+    price: "¥2,500 (1 day) / ¥3,300 (2 day) adult",
+    source: "osp.osaka-info.jp/en, read 19 October 2026",
+    url: osakaAmazingPass.url,
+    cta: "Check the Osaka pass →",
+  },
+  {
+    pass: "Hakone Freepass",
+    href: "/guides/attractions/hakone-free-pass",
+    covers:
+      "The Odakyu Line out and back plus the eight transport modes around the loop — Tozan train, cable car, ropeway, the Lake Ashi cruise and the designated buses. The Romancecar reserved seat is ¥1,200 extra, and there is no 1-day version.",
+    breakEven:
+      "Ride the whole loop and it clears easily: the ropeway alone is ¥2,000 and the lake cruise ¥1,200, and Odakyu's own published comparison puts the same Hakone route at ¥9,200 via JR against ¥7,100 with the pass. Two short legs do not come close.",
+    price: "¥7,100 (2-day) / ¥7,500 (3-day) from Shinjuku; ¥6,000 / ¥6,400 from Odawara",
+    source: "odakyu-global.com and hakonenavi.jp, read 25 October 2026",
+    url: hakoneFreepass.url,
+    cta: "Check the Hakone Freepass →",
+  },
+  {
+    pass: "WEST QR Kansai Area Pass",
+    href: "/guides/attractions/kansai-area-pass",
+    covers:
+      "JR West local, rapid and special rapid trains around Osaka, Kyoto, Kobe, Nara and Himeji, plus unlimited non-reserved HARUKA from Kansai Airport and two reserved HARUKA seats. No subway, no city bus, no private railway and no shinkansen.",
+    breakEven:
+      "The airport run does most of the work: from 1 November 2026 the discounted HARUKA one-way ticket to Kyoto is ¥2,700 — exactly the price of a 1-day pass, with every other JR ride that day on top of it.",
+    price: "¥2,700 (1 day) to ¥6,700 (4 days) adult, children half",
+    source: "westjr.co.jp, read 25 October 2026",
+    url: jrKansaiAreaPass.url,
+    cta: "Check the Kansai pass →",
+  },
+];
+
+/**
+ * Day tours against the day-trip admissions in the table above — added
+ * 28 Oct 2026. The comparison is deliberately not a price one: the admissions
+ * here are ¥200 to ¥2,000 and a guided day never undercuts them, so what each
+ * line states instead is the transport and the entries the listing itself covers.
+ * Nothing below is first-hand, and no tour price appears — Klook's product pages
+ * answer automated reads with HTTP 403.
+ */
+const TOUR_ROWS = [
+  {
+    title: fujiHakoneDayTour.title,
+    covers:
+      "The Fuji Fifth Station paired with the Hakone volcanic area and Lake Ashi in one day out of Tokyo. There is no admission to the Fifth Station — what the booking buys is the coach, which is the part a train and mountain bus day makes hardest.",
+    url: fujiHakoneDayTour.url,
+    cta: "Check the Fuji & Hakone day →",
+  },
+  {
+    title: hakoneLoopBusTour.title,
+    covers:
+      "The guided version of the Hakone loop, with the ropeway and the pirate-ship cruise inside the booking — the two legs that are ¥2,000 and ¥1,200 on their own, and the reason the Hakone Freepass exists.",
+    url: hakoneLoopBusTour.url,
+    cta: "Check the Hakone loop day →",
+  },
+  {
+    title: kyotoNaraKiyomizuTour.title,
+    covers:
+      "Kiyomizu-dera, Fushimi Inari and Nara Park on one coach day from Osaka or Kyoto. Nara Park and the deer are free either way; the ¥800 Great Buddha Hall fee at Todai-ji is the one in the table above that listings differ on, so read the inclusions before you book.",
+    url: kyotoNaraKiyomizuTour.url,
+    cta: "Check the Kyoto–Nara day →",
+  },
+  {
+    title: hiroshimaMiyajimaMultiCityDayTour.title,
+    covers:
+      "Itsukushima Shrine and the Peace Memorial Park as a guided day, sold out of Hiroshima, Kyoto or Osaka. The admissions themselves are small — ¥300 for the shrine and ¥200 for the museum — so the long rail legs and the Miyajima crossing are what you are actually buying.",
+    url: hiroshimaMiyajimaMultiCityDayTour.url,
+    cta: "Check the Miyajima day →",
+  },
+  {
+    title: "Nikko cultural day tour from Tokyo",
+    covers:
+      "Toshogu Shrine, Kegon Falls and Lake Chuzenji in a single day. Nikko has no row in the table above because its admissions sit in a different guide — Toshogu is ¥1,600 for an adult, read off toshogu.jp on 19 October 2026 — and the Irohazaka bus climb is the part a tour removes.",
+    url: nikkoCulturalDayTourUrl,
+    cta: "Check the Nikko day →",
+  },
+];
+
+/**
+ * The three things worth settling before a ticket, each with the guide on this
+ * site that answers it. Added 28 Oct 2026: a reader on this page is pricing a
+ * trip, not just a ticket, and timed entries are the one purchase where where you
+ * sleep and whether your phone works decide whether the slot is usable.
+ */
+const BEFORE_BOOKING = [
+  {
+    title: "Pick the area before the slot",
+    body:
+      "A timed entry is only as good as the journey to it — the teamLab museums sell a 30-minute window and Shibuya Sky's sunset slots are the ones that sell out. Our area guides compare the bases by the lines that reach them:",
+    links: [
+      { href: "/guides/attractions/where-to-stay-in-tokyo", label: "Where to stay in Tokyo" },
+      { href: "/guides/attractions/where-to-stay-in-osaka", label: "Osaka" },
+      { href: "/guides/attractions/where-to-stay-in-kyoto", label: "Kyoto" },
+    ],
+    klook: [
+      { label: "Shinjuku hotels", url: whereToStayTokyoAreas[0].url },
+      { label: "Namba hotels", url: osakaStayAreas[1].url },
+      { label: "Kyoto Station hotels", url: kyotoStayAreas[0].url },
+    ],
+  },
+  {
+    title: "Know how you get in from the airport",
+    body:
+      "Arrival day is the one most often wasted on a ticket bought for it. Which train or coach suits your landing time is the whole of our",
+    links: [{ href: "/guides/transport/tokyo-airport-transfer", label: "Tokyo airport transfer guide" }],
+    klook: [{ label: tokyoSharedAirportTransfer.title, url: tokyoSharedAirportTransfer.url }],
+  },
+  {
+    title: "Have data before you need the QR code",
+    body:
+      "Almost every ticket on this page is now a QR code on a phone, and the two teamLab museums sell nothing at the door at all. That makes mobile data part of the ticket rather than a convenience.",
+    links: [{ href: "/guides/esim/best-esim-japan", label: "Best eSIM for Japan" }],
+    klook: [{ label: klookEsim.name, url: klookEsim.url }],
+  },
+];
+
 const faqItems = [
   {
     q: "How much do attraction tickets cost in Japan?",
@@ -62,6 +231,10 @@ const faqItems = [
   {
     q: "Are tickets cheaper online than at the gate in Japan?",
     a: "Sometimes, and the difference is smaller than people expect. Shibuya Sky is ¥2,700 online against ¥3,000 at the counter for an entry before 15:00, and ¥3,400 against ¥3,700 from 15:00 — ¥300 either way. Tokyo Skytree's same-day window adds a ¥500 service fee. teamLab Borderless costs ¥200 more per adult bought on site. But Tokyo Tower's Main Deck is ¥1,500 either way, and most temple and museum admissions have no online price at all. Online booking is usually about securing a slot and paying in your own currency, not about saving money.",
+  },
+  {
+    q: "Is it cheaper to buy a pass or individual attraction tickets in Japan?",
+    a: "It depends on the pass, and three of the four in the table above have a clear break-even. The Tokyo Subway Ticket is transport only — against Tokyo Metro fares of ¥178 to ¥324 a ride, the ¥1,000 24-hour tier needs five or six rides in one window, while the ¥2,000 72-hour tier at about ¥667 a day needs roughly four a day. The ¥2,500 Osaka Amazing Pass is the one that competes with admissions directly: the Osaka Castle keep (¥1,200) plus the Gozabune boat (¥1,800) is ¥3,000 at the gate, so two facilities clear it, though Universal Studios Japan and the Kaiyukan are not included and the Umeda Sky Building is only free before 15:00. The ¥7,100 two-day Hakone Freepass pays for itself if you ride the whole loop, where the ropeway alone is ¥2,000 and the lake cruise ¥1,200, and Odakyu's own comparison puts the same route at ¥9,200 via JR. The WEST QR Kansai Area Pass is decided by the airport run: from 1 November 2026 the discounted HARUKA single to Kyoto is ¥2,700, identical to a 1-day pass. What makes a pass the wrong buy is a short day — one or two admissions and a couple of rides almost never adds up.",
   },
   {
     q: "Why does the same Japanese ticket show different prices?",
@@ -139,6 +312,121 @@ function PriceRow({ price }: { price: AttractionPrice }) {
         )}
       </td>
     </tr>
+  );
+}
+
+/**
+ * The pass-versus-single-tickets question, directly under the pass table whose
+ * rows it is about. Prices are the operators' own and dated; the Klook CTA on each
+ * row is the pass itself, not a reseller's price.
+ */
+function PassComparison() {
+  return (
+    <section className={styles.comparisonSection}>
+      <span className={styles.sectionLabel}>Pass or single tickets</span>
+      <h2 className={styles.sectionTitle}>Should I buy a city pass instead of single tickets?</h2>
+      <p className={styles.bodyText}>
+        Only when the pass replaces things you were going to pay for anyway — and for three of the four above, two
+        admissions or five short subway rides in one day is the whole of the test. A pass bought for a light day, or
+        for a day built around something it does not cover, costs more than the tickets it replaced.
+      </p>
+      <div className={styles.tableWrap}>
+        <div className={styles.tableScroll}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                {["Pass", "What it covers", "Where it breaks even", "Official price", "Buy"].map((h) => (
+                  <th key={h}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {PASS_ROWS.map((row) => (
+                <tr key={row.pass}>
+                  <td className={styles.tdProvider}>
+                    <Link href={row.href} style={{ color: "var(--text)", fontWeight: 600 }}>
+                      {row.pass}
+                    </Link>
+                  </td>
+                  <td style={{ fontSize: "0.86rem" }}>{row.covers}</td>
+                  <td style={{ fontSize: "0.86rem" }}>{row.breakEven}</td>
+                  <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>
+                    {row.price}
+                    <span style={{ display: "block", fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: 400 }}>
+                      {row.source}
+                    </span>
+                  </td>
+                  <td style={{ fontSize: "0.82rem" }}>
+                    <KlookLink
+                      href={row.url}
+                      target="_blank"
+                      rel="sponsored noopener"
+                      style={{ color: "var(--accent)", fontWeight: 600 }}
+                    >
+                      {row.cta}
+                    </KlookLink>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+        Pass prices and the fares they are measured against are the operators&apos; own, with the date each was read
+        in the price column. The Buy column goes to Klook, which pays us a commission at no extra cost to you — we
+        quote no Klook price, because its product pages block automated checks.
+      </p>
+    </section>
+  );
+}
+
+/**
+ * The day-tour question, under the day-trip admissions table. Deliberately not a
+ * price comparison — see the TOUR_ROWS comment.
+ */
+function DayTours() {
+  return (
+    <section className={styles.bodySection}>
+      <span className={styles.sectionLabel}>Tour or tickets</span>
+      <h2 className={styles.sectionTitle}>Is a day tour cheaper than buying tickets yourself?</h2>
+      <p className={styles.bodyText}>
+        On the admissions alone, no — and that is the wrong comparison. The fees in the table above run from ¥200 to
+        ¥2,000, so no guided day undercuts them. What a day tour replaces is everything around them: the coach seat
+        out of Tokyo, the ferry or the mountain bus, and the ordering of a day that otherwise needs four changes and
+        a timetable.
+      </p>
+      <p className={styles.bodyText}>
+        So the thing to read on a listing is its inclusions, not its price. Tours differ on whether a temple
+        admission is inside the booking or collected on the day — the ¥800 Great Buddha Hall fee at Todai-ji is the
+        clearest example in the table above — and on whether the paid legs of a route, like the ¥2,000 Hakone
+        ropeway and the ¥1,200 Lake Ashi cruise, are covered. A tour that includes those is doing more than driving
+        you there.
+      </p>
+      <ul className={styles.pickList}>
+        {TOUR_ROWS.map((tour) => (
+          <li key={tour.url}>
+            <span className={styles.proIcon}>▸</span>
+            <span>
+              <strong>{tour.title}</strong> — {tour.covers}{" "}
+              <KlookLink
+                href={tour.url}
+                target="_blank"
+                rel="sponsored noopener"
+                style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
+              >
+                {tour.cta}
+              </KlookLink>
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+        These go to Klook, which pays us a commission at no extra cost to you. What each line states is what the
+        listing itself covers; prices and availability are Klook&apos;s, and we do not quote them because its product
+        pages block automated checks.
+      </p>
+    </section>
   );
 }
 
@@ -260,9 +548,10 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
         {/* Disclosure */}
         <div className={styles.disclosure}>
           <p className={styles.disclosureText}>
-            <strong>Affiliate disclosure:</strong> The Klook links in the last column are affiliate links. We may
-            earn a small commission if you book through them, at no extra cost to you. Every price in this table is
-            the operator&apos;s own, not a reseller&apos;s.{" "}
+            <strong>Affiliate disclosure:</strong> The Klook links on this page — the last column of the tables, and
+            the passes, tours and hotels in the sections around them — are affiliate links. We may earn a small
+            commission if you book through them, at no extra cost to you. Every price on this page is the
+            operator&apos;s own, not a reseller&apos;s.{" "}
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
@@ -301,6 +590,51 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           </div>
         </div>
 
+        {/* Before you book — the trip decisions a ticket depends on */}
+        <div className={styles.verdictBox} style={{ marginTop: "1.5rem" }}>
+          <div className={styles.verdictHeader}>
+            <span className={styles.verdictLabel}>Before you book tickets</span>
+          </div>
+          <div className={styles.verdictBody}>
+            <ul className={styles.pickList}>
+              {BEFORE_BOOKING.map((item) => (
+                <li key={item.title}>
+                  <span className={styles.proIcon}>▸</span>
+                  <span>
+                    <strong>{item.title}</strong> — {item.body}{" "}
+                    {item.links.map((link, i) => (
+                      <span key={link.href}>
+                        {i > 0 && " · "}
+                        <Link href={link.href} style={{ color: "var(--text)", fontWeight: 600 }}>
+                          {link.label} →
+                        </Link>
+                      </span>
+                    ))}
+                    {". "}
+                    {item.klook.map((product, i) => (
+                      <span key={product.url}>
+                        {i > 0 && " · "}
+                        <KlookLink
+                          href={product.url}
+                          target="_blank"
+                          rel="sponsored noopener"
+                          style={{ color: "var(--accent)", fontWeight: 600 }}
+                        >
+                          {product.label} →
+                        </KlookLink>
+                      </span>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: "0.75rem 0 0" }}>
+              The Klook links here are affiliate links and pay us a commission at no extra cost to you. We quote no
+              price for them: Klook&apos;s product pages block automated checks, so nothing on them could be verified.
+            </p>
+          </div>
+        </div>
+
         {/* Why this page exists */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>How to read this</span>
@@ -331,29 +665,34 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           if (!rows.length) return null;
           const meta = PRICE_GROUP_LABELS[group];
           return (
-            <section key={group} className={styles.comparisonSection}>
-              <span className={styles.sectionLabel}>{rows.length} tickets</span>
-              <h2 className={styles.sectionTitle}>{meta.label}</h2>
-              <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>{meta.desc}</p>
-              <div className={styles.tableWrap}>
-                <div className={styles.tableScroll}>
-                  <table className={styles.table}>
-                    <thead>
-                      <tr>
-                        {["Attraction", "Adult", "Child", "Advance booking", "Checked", "Links"].map((h) => (
-                          <th key={h}>{h}</th>
+            <Fragment key={group}>
+              <section className={styles.comparisonSection}>
+                <span className={styles.sectionLabel}>{rows.length} tickets</span>
+                <h2 className={styles.sectionTitle}>{meta.label}</h2>
+                <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>{meta.desc}</p>
+                <div className={styles.tableWrap}>
+                  <div className={styles.tableScroll}>
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          {["Attraction", "Adult", "Child", "Advance booking", "Checked", "Links"].map((h) => (
+                            <th key={h}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {rows.map((price) => (
+                          <PriceRow key={`${price.href}-${price.name}`} price={price} />
                         ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {rows.map((price) => (
-                        <PriceRow key={`${price.href}-${price.name}`} price={price} />
-                      ))}
-                    </tbody>
-                  </table>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
+              {/* Each group's own follow-on question, directly under the rows it is about. */}
+              {group === "passes" && <PassComparison />}
+              {group === "daytrips" && <DayTours />}
+            </Fragment>
           );
         })}
 
