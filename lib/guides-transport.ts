@@ -117,8 +117,8 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/ic-cards-japan",
     badge: "Guide",
-    title: "IC Cards in Japan 2026: Suica, Pasmo & How to Use Them",
-    desc: "An IC card is the single most useful thing you can have in Japan. Here's everything you need to know about Suica, Pasmo, where to get them, and where they work.",
+    title: "IC Cards Japan 2026: Suica, PASMO & ICOCA Compared",
+    desc: "Six cards, one network: Suica, PASMO, ICOCA, Welcome Suica, TOURIST PASMO and the Wallet version. Deposit, refund, expiry and where to buy each, with the operators' own figures.",
     group: "fares",
     city: "other",
   },
