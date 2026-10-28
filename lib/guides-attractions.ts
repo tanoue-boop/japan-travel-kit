@@ -28,6 +28,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/teamlab-botanical-garden-osaka-tickets",
+    badge: "Tickets",
+    title: "teamLab Botanical Garden Osaka Tickets: Prices & Hours",
+    desc: "¥1,800 for an adult and ¥500 for ages 6–15, ¥200 more at the gate — the cheapest teamLab in Japan, and the only one that is outdoors and opens only after dark. Dated hours, the rain rule and the walk from Nagai.",
+    group: "tickets",
+    city: "osaka",
+  },
+  {
     href: "/guides/attractions/shibuya-sky-tickets",
     badge: "Tickets",
     title: "Shibuya Sky Tickets 2026: Price, Hours & Sunset Slots",
@@ -245,6 +253,16 @@ export const attractionArticles: GuideArticle[] = [
     desc: "Nine nights on three hotel bills — Tokyo 4, Kyoto 3, Osaka 2 — with a Hakone day that ends on a westbound train and a Nara day trip, plus a table for each of the ten days and the JR Pass worked against what this route actually uses.",
     group: "cities",
     // Nationwide: the ten days run Tokyo → Hakone → Kyoto → Nara → Osaka, out from Kansai.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/japan-winter-itinerary",
+    badge: "Itinerary",
+    title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)",
+    desc: "Tokyo 4 nights, Kanazawa 2, Takayama 2, Kyoto 2, Osaka 1 — the Hokuriku route winter is actually better for, with a table per day, the four reservation-only Shirakawa-go light-up evenings, the 2027 Sapporo Snow Festival dates and the JMA temperature normals.",
+    group: "cities",
+    // Nationwide: the twelve days run Tokyo → Kanazawa → Shirakawa-go → Takayama → Kyoto → Osaka,
+    // with a February Hokkaido variant.
     city: "other",
   },
   {

@@ -3135,3 +3135,212 @@ export const skytreeTripPrep: KlookTripPrepItem[] = [
     why: "Oshiage is a subway station on the Hanzomon and Toei Asakusa lines, so a 24, 48 or 72-hour Metro and Toei ticket already covers the trip to the tower — and the two stops to Senso-ji afterwards.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// teamLab Botanical Garden Osaka, added 28 Oct 2026 for
+// teamlab-botanical-garden-osaka-tickets.
+//
+// The admission is a ticket, so it cannot be assumed to pay the 6.5%
+// tours-and-activities band — which is why the Osaka Amazing Pass (5%), the
+// Namba hotel search (6.5%) and an Osaka half-day tour (6.5%) sit beside it on
+// the page rather than underneath it. No new URLs for those three: they read
+// out of the Osaka arrays already declared above.
+//
+// Verified the usual way. Klook answers automated reads of its /activity/ pages
+// with HTTP 403, so listing 73632 was confirmed live, on sale and in its en-US
+// URL form through the www.klook.com search index on 28 Oct 2026 ("teamLab
+// Botanical Garden Osaka Ticket"), which also names the admission-only package
+// and an admission-plus-HARUKA package. No price appears on the page, for the
+// usual reason — and because teamLab prices this venue dynamically by date, so
+// a figure quoted here would be wrong by the time anyone read it.
+// ---------------------------------------------------------------------------
+
+/** The admission itself — the page's headline CTA. */
+export const teamlabBotanicalGardenOsakaTicket: KlookTour = {
+  title: "teamLab Botanical Garden Osaka ticket",
+  desc: "Klook's listing for the night-only outdoor exhibition inside Nagai Botanical Garden, sold as admission alone or bundled with a one-way JR HARUKA leg from Kansai Airport",
+  url: klookLink("https://www.klook.com/en-US/activity/73632-teamlab-botanical-garden-osaka/"),
+};
+
+/**
+ * The rest of an Osaka day that ends at Nagai after dark. Every url reads out of
+ * an array or a constant declared above, so there is one source of truth per id.
+ */
+export const teamlabBotanicalTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "The garden is a night venue and its own ticket, so it is the hours before it that are unplanned — and the Osaka Amazing Pass covers more than 40 city admissions plus the Metro rides between them, including the Midosuji Line you take out to Nagai.",
+  },
+  {
+    label: "Hotels around Namba",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: osakaStayAreas[1].url,
+    why: "Nagai is a straight run down the Midosuji Line, so a Namba base makes the trip back at 21:00 or later one train with no change — and Dotonbori and Kuromon Market are on foot for the afternoon beforehand.",
+  },
+  {
+    label: osakaSkyVistaHalfDayBusTour.title,
+    ctaLabel: "Check the Osaka bus tour →",
+    url: osakaSkyVistaHalfDayBusTour.url,
+    why: "An open-top half day that finishes well before the 18:00 opening — the daytime half of a day whose evening is already committed to a 6 pm entry slot.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Entry is a QR code read at a gate in a park after dark, ten minutes on foot from the station — easier with data already working than with the hotel wifi left behind.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Winter in Japan, added 28 Oct 2026 for japan-winter-itinerary.
+//
+// This is the first page on this site whose spine is a season rather than a
+// city, so it reaches into almost every block above: the Tokyo illuminations,
+// the ski days, the Hokuriku rail page, the Shirakawa-go light-up day and the
+// Kyoto and Osaka tours are all already here and are reused unchanged.
+//
+// What is new is Hokkaido, which no page on this site covered before. Klook
+// answers automated reads of its /activity/ and /destination/ pages with HTTP
+// 403, so every listing and every hotel search below was confirmed live and in
+// its en-US URL form through the www.klook.com search index on 28 Oct 2026.
+//
+// Bands, in the order the page sells them: the guided days and every hotel
+// search are 6.5%, the rail pass and the airport and resort shuttles are 5%,
+// the eSIM 20%. No price appears anywhere, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/**
+ * The Hokkaido pass that fits a Tokyo-in, Hokkaido-out winter trip: JR East's
+ * network plus the southern Hokkaido section, which is the Tohoku and Hokkaido
+ * Shinkansen as far as Shin-Hakodate-Hokuto. The whole-island JR Hokkaido Rail
+ * Pass is a different product and is deliberately not linked — the en-US form
+ * of its listing could not be confirmed on 28 Oct 2026, and an unconfirmed URL
+ * is worse than none.
+ */
+export const jrEastSouthHokkaidoPass: KlookTour = {
+  title: "JR East–South Hokkaido Rail Pass (flexible 6 days)",
+  desc: "Six travel days inside fourteen across JR East and southern Hokkaido — the pass shaped like a Tokyo-in, Hokkaido-out winter trip rather than an island-only one",
+  url: klookLink("https://www.klook.com/en-US/activity/2792-flexible-6-day-jr-east-south-hokkaido-rail-pass-jr-pass/"),
+};
+
+/** New Chitose to the city, as a seat booked before you fly. */
+export const newChitoseSapporoSharedTransfer: KlookTour = {
+  title: "New Chitose Airport shared transfer (Sapporo & Hoshino Resorts)",
+  desc: "A shared airport transfer between New Chitose and Sapporo or the Hoshino resorts, which the listing requires 45 minutes after a domestic arrival and 90 after an international one",
+  url: klookLink("https://www.klook.com/en-US/activity/12479-shared-new-chitose-airport-transfers-between-sapporo-hoshino-resorts/"),
+};
+
+/** The Niseko run — the transfer that takes ski bags, rather than a JR change. */
+export const nisekoResortShuttleBus: KlookTour = {
+  title: "Niseko shuttle bus (New Chitose Airport & Sapporo)",
+  desc: "A direct coach between Niseko and either New Chitose Airport or Sapporo, with ski equipment and one piece of luggage per person in the booking",
+  url: klookLink("https://www.klook.com/en-US/activity/82391-niseko-ski-resort-shuttle-bus/"),
+};
+
+/** Rusutsu, the other side of the same shuttle network. */
+export const rusutsuResortShuttleBus: KlookTour = {
+  title: "Rusutsu shuttle bus (New Chitose Airport & Sapporo)",
+  desc: "The Rusutsu version of the same airport coach, for a trip basing at the resort rather than in the city",
+  url: klookLink("https://www.klook.com/en-US/activity/82518-rusutsu-ski-resort-shuttle-bus/"),
+};
+
+/** The half day that is snow play rather than skiing — the one that fits a city base. */
+export const sapporoSnowParkHalfDayTour: KlookTour = {
+  title: "Wonderland Sapporo snow park half-day tour",
+  desc: "A half day at a snow park outside the city with hotel pick-up and a Genghis Khan barbecue, listed as the version for travellers who are not carrying ski gear",
+  url: klookLink("https://www.klook.com/en-US/activity/97175-sapporo-city-wonderland-sapporo-half-day-bus-tour-genghis-khan-bbq-buffet/"),
+};
+
+/** Lake Shikotsu's ice festival — a February evening, as a half day out of Sapporo. */
+export const lakeShikotsuIceFestivalHalfDayTour: KlookTour = {
+  title: "Lake Shikotsu ice festival half-day tour from Sapporo",
+  desc: "The winter-only ice festival on Lake Shikotsu as a guided half day out of Sapporo — the other February event on this side of Hokkaido",
+  url: klookLink("https://www.klook.com/en-US/activity/136930-lake-shikotsu-illumination-and-ice-festival-half-day-from-sapporo/"),
+};
+
+/** Otaru and a snow park in a day — the canal town, in the one season it is lit. */
+export const otaruSnowParkDayTour: KlookTour = {
+  title: "Otaru, Shiroi Koibito Park & snow park day tour",
+  desc: "A Hokkaido day pairing the Otaru canal and its steam clock with Shiroi Koibito Park and a snow-play stop",
+  url: klookLink("https://www.klook.com/en-US/activity/98528-otaru-shiroi-koibito-park-snow-park-day-tour-hokkaido/"),
+};
+
+/** Asahiyama Zoo in the one season the penguins walk — a winter-only departure. */
+export const asahiyamaZooWinterDayTour: KlookTour = {
+  title: "Asahiyama Zoo winter day trip from Sapporo",
+  desc: "A winter-season day out of Sapporo to Asahikawa's zoo and the Biei hills, with a snowmobile stop at Shikisai-no-Oka offered inside the booking",
+  url: klookLink("https://www.klook.com/en-US/activity/164281-winter-asahiyama-zoo-day-trip-with-snowmobile-from-sapporo/"),
+};
+
+/**
+ * Where a twelve-day winter trip actually sleeps, one Klook search per base.
+ *
+ * Four of the eight read their destination id out of an array already declared
+ * above — Shinjuku and Tokyo Station from `tokyoStayAreas`, Kyoto Station from
+ * `kyotoStayAreas`, Namba from `osakaStayAreas` — so the winter page cannot
+ * drift away from the city guides. The four new ones are the bases no page on
+ * this site had before: Kanazawa and Takayama on the main route, Sapporo and
+ * Niseko for the February swap.
+ */
+export const japanWinterStayAreas: KlookStayArea[] = [
+  {
+    area: "Shinjuku, Tokyo",
+    why: "The winter base that costs least on the snow day: the ski coaches and the Odakyu line to Hakone leave from under this station, and the Yamanote loop is at the door for the illumination evenings.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Tokyo Station / Marunouchi, Tokyo",
+    why: "The base for a plan that leaves Tokyo by shinkansen twice — the Joetsu line to GALA Yuzawa and the Hokuriku line to Kanazawa both start beneath it, and the Marunouchi lights are the walk out of the building.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Kanazawa",
+    why: "Two nights at the Hokuriku Shinkansen terminus, with the Kenroku-en buses and the reservation-only Shirakawa-go coach both leaving from the station forecourt — the leg of this trip with the least slack in it.",
+    url: klookLink("https://www.klook.com/en-US/destination/c445-kanazawa/3-hotel/"),
+  },
+  {
+    area: "Takayama Station",
+    why: "The one night this route spends in the mountains, and the base the January Shirakawa-go light-up buses run from — the Nohi Bus terminal is beside the station, so a 19:30 finish ends in a walk rather than a transfer.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50003173-takayama-station/3-hotel/"),
+  },
+  {
+    area: "Kyoto Station",
+    why: "Where the Hida and the Tokaido trains put you down and where the 100 and 101 sightseeing buses start — and the platform the airport HARUKA leaves from on a departure morning in the dark.",
+    url: kyotoStayAreas[0].url,
+  },
+  {
+    area: "Namba, Osaka",
+    why: "Midosuji Line, Dotonbori and Kuromon Market on foot, the Nankai terminus underneath for Kansai Airport — and a straight run south to Nagai for the teamLab garden, which only opens after 18:00.",
+    url: osakaStayAreas[1].url,
+  },
+  {
+    area: "Sapporo Station",
+    why: "The February swap's city base: Odori Park is one subway stop or a short walk, which is what you want when the snow festival sites are outdoors and the mean February daily maximum is 0.4°C.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50006996-sapporo-station/3-hotel/"),
+  },
+  {
+    area: "Niseko",
+    why: "Worth a base of its own only if the trip is about the snow rather than the cities — the lifts are at the door, and the airport coach that takes ski bags runs to it directly from New Chitose.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50340243-niseko/3-hotel/"),
+  },
+];
+
+/** What a winter trip buys before it flies, in band order. */
+export const japanWinterTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Winter is the season a Japan plan changes on the day — a light-up cancelled for weather, a ropeway shut in wind, a train held by snow — and every one of those notices arrives on your phone rather than at a counter.",
+  },
+  {
+    ...tripPrepProducts.jrPass,
+    why: "Price it against this route before you buy. A twelve-day winter trip going Tokyo → Kanazawa → Takayama → Kyoto → Osaka uses two long legs and a limited express, which is not obviously more than the pass costs; our JR Pass guide has the calculator for your own legs.",
+  },
+  {
+    label: hokurikuArchPass.title,
+    ctaLabel: "Check the Hokuriku Arch Pass →",
+    url: hokurikuArchPass.url,
+    why: "The pass actually shaped like this itinerary — seven consecutive days covering the Hokuriku Shinkansen out of Tokyo and the Kansai area at the far end. It does not cover the Tokaido Shinkansen, so it only works going out one way and back the other.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The Tokyo days at the start are Metro and Toei days, and the illumination corridor — Marunouchi, Roppongi, Ebisu — is on those lines rather than the Yamanote. It covers neither JR nor the Yamanote Line, which is the thing people get wrong about it.",
+  },
+];
