@@ -35,6 +35,22 @@ export const transportArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/transport/tokyo-to-hiroshima-shinkansen",
+    badge: "Guide",
+    title: "Tokyo to Hiroshima Shinkansen: Times, Fares, JR Pass",
+    desc: "3h39m direct on a Nozomi — the one train a JAPAN RAIL PASS does not cover without a ¥6,500 supplement. With JR's own ¥19,560 Smart EX fare, the eight peak periods when every Nozomi car is reserved, and whether it works as a day trip.",
+    group: "passes",
+    city: "tokyo",
+  },
+  {
+    href: "/guides/transport/osaka-to-hiroshima-shinkansen",
+    badge: "Guide",
+    title: "Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip",
+    desc: "1h20m at the fastest and 181 trains a day, so Hiroshima is a real day trip from Kansai. JR's own ¥10,750 reserved fare, the ¥17,000 Kansai-Hiroshima Area Pass against the ¥50,000 national one, and the Miyajima ferry rules.",
+    group: "passes",
+    city: "osaka",
+  },
+  {
     href: "/guides/transport/tokyo-airport-transfer",
     badge: "Guide",
     title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",

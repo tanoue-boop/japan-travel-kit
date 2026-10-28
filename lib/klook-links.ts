@@ -3344,3 +3344,121 @@ export const japanWinterTripPrep: KlookTripPrepItem[] = [
     why: "The Tokyo days at the start are Metro and Toei days, and the illumination corridor — Marunouchi, Roppongi, Ebisu — is on those lines rather than the Yamanote. It covers neither JR nor the Yamanote Line, which is the thing people get wrong about it.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Hiroshima and Miyajima, added 28 Oct 2026 for tokyo-to-hiroshima-shinkansen
+// and osaka-to-hiroshima-shinkansen.
+//
+// Two bands again. The guided Hiroshima/Miyajima days and the Hiroshima hotel
+// searches are the 6.5% tours-and-hotels band; the two rail route pages and the
+// three passes are the 5% passes-and-transport band, which is why the body CTAs
+// on both pages pair a rail link with a tour rather than selling only the train.
+//
+// Verification, all on 28 Oct 2026. Klook answers automated reads of its
+// /activity/ and /destination/ pages with HTTP 403, so every listing below was
+// confirmed as a live en-US page through the www.klook.com search index. The two
+// exceptions are the rail route pages: both answered a read on that date, and
+// what they state is quoted on the articles with the date attached —
+// Tokyo–Hiroshima "3h 39m" shortest, "3h 49m" average, "0 transfer(s)", "127
+// trains scheduled", earliest 06:00; Osaka–Hiroshima "1h 20m" shortest, "2h 15m"
+// average, "0 transfer(s)", "181 trains scheduled", earliest 06:00.
+//
+// No price appears on any of them, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/**
+ * Klook's Tokyo → Hiroshima rail page. A route page rather than a product id,
+ * for the same reason as `shinkansenTokyoKyoto` and `shinkansenTokyoKanazawa`:
+ * the Tokaido–Sanyo run is sold by date and seat class, and the route page is
+ * the address that keeps working when a train number does not.
+ */
+export const shinkansenTokyoHiroshima: KlookTour = {
+  title: "Tokyo → Hiroshima shinkansen tickets",
+  desc: "Klook's Tokaido–Sanyo Shinkansen booking page for the route, in non-reserved Ordinary, reserved Ordinary and reserved Green Car, with no transfer",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/24323-hiroshima/"),
+};
+
+/** The same page for the Sanyo leg on its own. */
+export const shinkansenOsakaHiroshima: KlookTour = {
+  title: "Osaka → Hiroshima shinkansen tickets",
+  desc: "Klook's Sanyo Shinkansen booking page for the route, naming the Mizuho, Hikari, Sakura and Kodama in reserved Ordinary, non-reserved Ordinary and Green Car seats",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/29-osaka/24323-hiroshima/"),
+};
+
+/**
+ * JR West's 5-day Kansai-Hiroshima Area Pass. The 5% band, and the pass whose
+ * shape matches an Osaka-based trip: JR West's own page puts the covered
+ * Shinkansen section at Shin-Osaka ⇔ Hiroshima and stops it there.
+ */
+export const jrKansaiHiroshimaAreaPass: KlookTour = {
+  title: "JR Kansai-Hiroshima Area Pass (5 day)",
+  desc: "JR West's Kansai-and-Hiroshima pass as Klook sells it — reserved Sanyo Shinkansen seats between Shin-Osaka and Hiroshima, plus the JR Miyajima ferry",
+  url: klookLink("https://www.klook.com/en-US/activity/3278-5-day-jr-kansai-hiroshima-area-pass-jr-pass/"),
+};
+
+/** The wider JR West pass, for a week that carries on past Hiroshima. */
+export const jrSanyoSaninAreaPass: KlookTour = {
+  title: "JR Sanyo-San'in Area Pass (7 day)",
+  desc: "The seven-day JR West pass that runs the Sanyo Shinkansen all the way to Hakata, with the San'in coast and the JR Miyajima ferry included",
+  url: klookLink("https://www.klook.com/en-US/activity/2729-7-day-jr-sanyo-san-in-area-pass-jr-pass/"),
+};
+
+/** The join-in guided day that covers both UNESCO sites, out of Hiroshima. */
+export const hiroshimaMiyajimaJoinDayTour: KlookTour = {
+  title: "Hiroshima & Miyajima join-in day tour: Itsukushima Shrine, Peace Memorial Museum & the Atomic Bomb Dome",
+  desc: "An English-guided join-in day listing both UNESCO sites — the floating torii at Itsukushima and the Peace Memorial Park — starting in Hiroshima",
+  url: klookLink("https://www.klook.com/en-US/activity/88659-itsukushima-shrine-hiroshima-peace-memorial-museum-atomic-bomb-dome-join-day-guided-tour-hiroshima/"),
+};
+
+/** The ferry-included day, for a first visit that does not want to plan the crossing. */
+export const hiroshimaMiyajimaFerryDayTour: KlookTour = {
+  title: "Hiroshima & Miyajima day trip with the ferry ride",
+  desc: "The guided day that puts the Miyajima crossing inside the booking rather than leaving it to you at Miyajimaguchi",
+  url: klookLink("https://www.klook.com/en-US/activity/140942-day-trip-to-hiroshima-and-miyajima-with-ferry-ride/"),
+};
+
+/** The private version, for a group that wants its own pace and start time. */
+export const hiroshimaMiyajimaPrivateDayTour: KlookTour = {
+  title: "Hiroshima & Miyajima private day tour from Hiroshima",
+  desc: "The private alternative to a join-in coach — the same two UNESCO sites with your own guide and your own start time",
+  url: klookLink("https://www.klook.com/en-US/activity/76431-hiroshima-miyajima-day-tour/"),
+};
+
+/** The listing sold out of three cities at once — useful on either article. */
+export const hiroshimaMiyajimaMultiCityDayTour: KlookTour = {
+  title: "Hiroshima & Miyajima day tour from Hiroshima, Kyoto or Osaka",
+  desc: "One listing with three departure cities, which is the one to open if you have not yet decided whether to sleep in Hiroshima or come back the same night",
+  url: klookLink("https://www.klook.com/en-US/activity/19772-miyajima-tour-hiroshima-okayama-shikoku/"),
+};
+
+/** The Osaka departure with the shinkansen leg inside the booking. */
+export const osakaHiroshimaMiyajimaBulletTrainDayTrip: KlookTour = {
+  title: "Osaka to Hiroshima & Miyajima day trip with the bullet train",
+  desc: "A long guided day out of Shin-Osaka with the Shinkansen leg included, taking in the Peace Memorial Park, the Atomic Bomb Dome and Itsukushima Shrine",
+  url: klookLink("https://www.klook.com/en-US/activity/151437-day-trip-from-osaka-to-hiroshima-miyajima-with-bullet-train/"),
+};
+
+/** The private Osaka departure, for a day built around Mt Misen rather than the park. */
+export const osakaHiroshimaMiyajimaPrivateDayTour: KlookTour = {
+  title: "Miyajima & Mt. Misen private island-hopping day from Osaka",
+  desc: "The private Osaka departure, listed around Itsukushima Shrine and the Mt. Misen climb rather than the Peace Memorial Park",
+  url: klookLink("https://www.klook.com/en-US/activity/90960-miyajima-itsukushima-shrine-mt-misen-private-one-day-island-hopping-tour-osaka/"),
+};
+
+/**
+ * Where to sleep if Hiroshima turns into a night rather than a day. The 6.5%
+ * hotels band, and the two areas the articles actually argue between: the
+ * Shinkansen station, and the Peace Memorial Park end of the city.
+ */
+export const hiroshimaStayAreas: KlookStayArea[] = [
+  {
+    area: "Hiroshima Station",
+    why: "Where the Sanyo Shinkansen puts you down, and where the Miyajimaguchi local trains and the airport coaches leave from — the base to pick if Hiroshima is one night inside a longer rail itinerary.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50039899-hiroshima-station/3-hotel/"),
+  },
+  {
+    area: "Peace Memorial Park",
+    why: "The other end of the tram line and the quieter half of the city: the museum, the Dome and the park are on the doorstep, which is what you want if the reason you came is the one you can walk to before the coaches arrive.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50056982-hiroshima-peace-memorial-museum/3-hotel/"),
+  },
+];
