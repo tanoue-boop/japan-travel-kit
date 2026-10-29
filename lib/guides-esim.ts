@@ -107,6 +107,22 @@ export const esimArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/esim/japan-sim-card-working-holiday",
+    badge: "Guide",
+    title: "Japan SIM Card for Working Holiday: Plans & Rules",
+    desc: "The residence card gates the address, the address gates the phone number, and the number gates the bank and the job. Sakura Mobile's full tier grid from ¥2,980 a month, the ¥5,500 activation fee, the passport-verification route and the 14-day address rule.",
+    group: "reviews",
+    city: "other",
+  },
+  {
+    href: "/guides/esim/japan-home-internet-for-foreigners",
+    badge: "Guide",
+    title: "Japan Home Internet for Foreigners: Prices & Setup",
+    desc: "A plug-in router from ¥6,980 a month that works the day it arrives, or fibre at the same price with a one-week-to-one-month wait. Installation lead times, the no-annual-contract clause and paying without a Japanese card.",
+    group: "reviews",
+    city: "other",
+  },
+  {
     href: "/guides/esim/esim-go-japan-review",
     badge: "Review",
     title: "eSIM Go Japan Review 2026: Prices, Networks and Tethering",

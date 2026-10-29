@@ -3864,3 +3864,57 @@ export const kyotoToTokyoArrivalStayAreas: KlookStayArea[] = [
     url: whereToStayTokyoAreas[3].url,
   },
 ];
+
+// ---------------------------------------------------------------------------
+// The working-holiday arrival and the foreigner's home line — added 29 Oct 2026
+// for japan-sim-card-working-holiday and japan-home-internet-for-foreigners.
+//
+// No new Klook ids at all. Both readers buy their actual connection from Sakura
+// Mobile's own programme, so Klook is here for the two gaps that programme
+// cannot fill: the days between landing and a registered address (the eSIM,
+// 20%), the arrival itself with a year's luggage (the two Tokyo airport
+// transfers, 5%, already declared above for tokyo-airport-transfer), and the
+// weeks between ordering a fibre line and an engineer turning up (the monthly
+// pocket WiFi rentals, which live in lib/pocket-wifi.ts with their own two check
+// dates and are read from there by the page rather than copied here).
+//
+// Prices are absent for the usual reason: Klook answers automated reads of its
+// product pages with HTTP 403.
+// ---------------------------------------------------------------------------
+
+/**
+ * The arrival week on a working-holiday visa. Ordered by when you need it: data
+ * on the day you land, then the ride into the city, then the seat version of the
+ * same ride for one person with one case.
+ */
+export const workingHolidayArrivalPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "A Japanese number needs a residence card registered to an address, and the Immigration Services Agency gives you 14 days from deciding on that address to register it — so your first fortnight online is a travel product whatever plan you eventually sign.",
+  },
+  {
+    label: tokyoPrivateAirportTransfer.title,
+    ctaLabel: "Check a private airport transfer →",
+    url: tokyoPrivateAirportTransfer.url,
+    why: "A working holiday arrives with a year of luggage rather than a cabin bag, and the Narita Express has no space for two hold cases at rush hour — this is booked to a street address, which is what you have on day one instead of a station name.",
+  },
+  {
+    label: tokyoSharedAirportTransfer.title,
+    ctaLabel: "Check a shared airport transfer →",
+    url: tokyoSharedAirportTransfer.url,
+    why: "The seat-price version for one person: still door-to-door to a central Tokyo address, which matters on the day your sharehouse check-in is a time slot rather than a 24-hour desk.",
+  },
+];
+
+/**
+ * What covers a flat while a fibre order is in the system. The eSIM is the only
+ * Klook product here — the two monthly pocket WiFi rentals come from
+ * lib/pocket-wifi.ts, where their specs and rates each carry a check date, and
+ * the page renders them from there rather than from a second copy in this file.
+ */
+export const homeInternetGapPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Sakura Mobile puts a fibre installation at one week to one month, and a Japanese tenancy almost never starts with a live line — a travel eSIM is the no-contract way to have the flat online on the night you get the keys.",
+  },
+];
