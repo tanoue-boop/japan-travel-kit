@@ -3793,3 +3793,74 @@ export const teamlabFukuokaTripPrep: KlookTripPrepItem[] = [
     why: "The Catching and Collecting Forest is played through teamLab's own app on your phone, and the ticket is a QR code — this is not a venue to arrive at waiting for hotel Wi-Fi.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kyoto → Tokyo, added 29 Oct 2026 for kyoto-to-tokyo-shinkansen.
+//
+// The reverse of the leg this site has covered since tokyo-to-kyoto, and a
+// different search: the questions an eastbound traveller asks — which Kyoto
+// Station platform, which Tokyo station to get off at, which side Mt Fuji is on
+// when you are heading east — are not the ones the westbound guide answers.
+//
+// One new rail page and one new stay array, no new Klook /activity/ ids. The
+// rail page is the usual exception to the HTTP 403 rule: like the Tokyo–Kyoto,
+// Tokyo–Nagoya, Tokyo–Karuizawa, Tokyo–Kanazawa and Tokyo–Hiroshima route
+// pages it answered an automated read, on 29 Oct 2026, and states "2h"
+// shortest, "4h 1m" average, "0 transfer(s)", "352 trains scheduled on Nov. 04,
+// 2026", a 06:03 first and 21:38 last departure, and the three seat classes.
+//
+// Bands: the rail page and the Tokyo airport transfers are the 5% passes-and-
+// transport band, the Tokyo hotel searches are 6.5%, and the eSIM is 20%. No
+// price appears on any of them, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/**
+ * Klook's Kyoto → Tokyo rail page. A route page rather than a product id, for
+ * the same reason as `shinkansenTokyoKyoto`: the Tokaido Shinkansen is sold by
+ * date and seat class, and the route page is the address that keeps working
+ * when a train number does not. The station ids are the reverse pair of
+ * `shinkansenTokyoKyoto` — Klook sells each direction as its own page.
+ */
+export const shinkansenKyotoTokyo: KlookTour = {
+  title: "Kyoto → Tokyo shinkansen tickets",
+  desc: "Klook's Tokaido Shinkansen booking page for the eastbound route, with non-reserved Ordinary, reserved Ordinary and reserved Green Car seats, QR boarding and no transfers",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/30-kyoto/28-tokyo/"),
+};
+
+/**
+ * Where to stay at the Tokyo end of a Kyoto → Tokyo run.
+ *
+ * No new Klook ids: every url reads out of `whereToStayTokyoAreas`, which is
+ * itself built on `tokyoStayAreas`, so each destination id still has one home.
+ * What is new is the order and the argument. The where-to-stay page ranks these
+ * areas for a whole Tokyo trip; this page ranks them for the twenty minutes
+ * after a shinkansen arrives, which puts Marunouchi first — the Tokaido
+ * platforms are inside that building — and Shibuya on the list at all, because
+ * a Kyoto train calls at Shinagawa before it reaches the terminus.
+ *
+ * Ueno is deliberately absent: it is the fastest side of the city from Narita,
+ * which is the argument the airport pages make, and it is the slowest of the
+ * four from a Tokaido platform.
+ */
+export const kyotoToTokyoArrivalStayAreas: KlookStayArea[] = [
+  {
+    area: "Tokyo Station / Marunouchi",
+    why: "The Tokaido Shinkansen terminates inside the building, so arriving is a walk upstairs rather than a cross-city ride with the cases — and the Narita Express leaves from the same basement on the day you fly home.",
+    url: whereToStayTokyoAreas[1].url,
+  },
+  {
+    area: "Ginza",
+    why: "One Marunouchi Line stop from Tokyo Station, and the Keikyu–Toei through train reaches Higashi-ginza from Haneda without a change — the pick if the Kyoto train is the second-to-last leg of the trip.",
+    url: whereToStayTokyoAreas[4].url,
+  },
+  {
+    area: "Shinjuku",
+    why: "Not a shinkansen stop, but a straight Chuo Line run from Tokyo Station and the terminus for the Chuo, Odakyu and Keio lines — the base if Tokyo is several more days rather than one night before a flight.",
+    url: whereToStayTokyoAreas[0].url,
+  },
+  {
+    area: "Shibuya",
+    why: "Two Yamanote stops from Shinagawa, which is the Tokaido station before the terminus — so getting off early puts you at the door instead of crossing back out of Tokyo Station.",
+    url: whereToStayTokyoAreas[3].url,
+  },
+];

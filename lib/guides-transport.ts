@@ -27,6 +27,14 @@ export const transportArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/transport/kyoto-to-tokyo-shinkansen",
+    badge: "Guide",
+    title: "Kyoto to Tokyo Shinkansen: Times, Fares, JR Pass",
+    desc: "About 2 hours direct and 352 eastbound trains a day, the last at 21:38. The questions only this direction asks: Kyoto Station's Hachijo-side platforms 11–14, Mt Fuji on your left in seat E, and whether to get off at Tokyo, Shinagawa or Shin-Yokohama.",
+    group: "passes",
+    city: "kyoto",
+  },
+  {
     href: "/guides/transport/tokyo-to-kanazawa",
     badge: "Guide",
     title: "Tokyo to Kanazawa (2026): Kagayaki Times, Seats and Whether a Pass Pays",
