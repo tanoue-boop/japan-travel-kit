@@ -1778,6 +1778,49 @@ export const atmsTripPrep: KlookTripPrepItem[] = [
 ];
 
 /**
+ * How Much Yen to Bring — added 29 Oct 2026 with the restored page. The question
+ * the slug is asked ("how much cash do I carry?") has an answer nobody writing it
+ * ever states: the float shrinks by whatever you have already paid for. So this
+ * slot is not a shopping list — every line is a yen cost that is normally settled
+ * out of the cash float and can be taken out of it before departure instead.
+ *
+ * No new URLs: all seven read out of `tripPrepProducts`, which the money and
+ * transport guides already render. Spread across the bands deliberately — airport
+ * trains and the two passes at 5%, the day tour and the Skytree ticket at 6.5%,
+ * the eSIM at 20% — so the page is not one product repeated.
+ */
+export const howMuchYenTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "The first fare of the trip, and the one most often paid out of the notes you just exchanged at the airport — book the Narita round trip before you fly and the arrival-day float does not have to cover it.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "The Ueno and Asakusa side of the same decision: a reserved seat bought in your own currency instead of ¥2,000-odd out of your opening cash.",
+  },
+  {
+    ...tripPrepProducts.jrPass,
+    why: "Long-distance rail is the largest single line in most Japan budgets; buy the pass before you land and the cash you carry is for days, not for intercity travel.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Kansai's version — unlimited Osaka Metro and city buses plus the admissions bundled with them, which is a day of small cash payments turned into one card charge.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A day trip is the costliest thing a cash float ever has to absorb, and a coach seat on a fixed departure cannot be bought at the gate anyway — it is booked before you are in Japan.",
+  },
+  {
+    ...tripPrepProducts.skytree,
+    why: "Observation decks and museums are the admissions you can prepay; temple and shrine gates are not, which is why the float below is sized around the gates rather than the towers.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Working data is what stops the float being guesswork — checking whether a restaurant takes cards, or finding the nearest 7-Eleven ATM, is a map lookup rather than a hunt for station Wi-Fi.",
+  },
+];
+
+/**
  * Best Travel Card — added 25 Oct 2026. The page had no Klook route at all, which
  * is odd for a guide whose whole argument is that a foreign transaction fee and a
  * marked-up exchange rate are charged per transaction in Japan. The answer that

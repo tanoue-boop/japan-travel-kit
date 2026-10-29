@@ -628,6 +628,19 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            <Link href="/guides/money/how-much-yen-to-bring-japan" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="6" width="20" height="12" rx="2" />
+                  <circle cx="12" cy="12" r="2.5" />
+                  <path d="M6 12h.01M18 12h.01" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>How Much Yen to Bring to Japan 2026: Cash per Day</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/money/cash-vs-card-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

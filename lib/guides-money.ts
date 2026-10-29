@@ -51,6 +51,14 @@ export const moneyArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/money/how-much-yen-to-bring-japan",
+    badge: "Guide",
+    title: "How Much Yen to Bring to Japan 2026: Cash per Day",
+    desc: "A cash float of ¥2,000–¥3,000 a day on a budget trip and ¥5,000–¥8,000 if you eat out — not the whole budget. 3, 7 and 14-day totals, and the gates, lockers and buses that take nothing else.",
+    group: "cash",
+    city: "other",
+  },
+  {
     href: "/guides/money/currency-exchange-japan",
     badge: "Guide",
     title: "Currency Exchange in Japan (2026): Best Ways to Get Yen",
