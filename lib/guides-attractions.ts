@@ -44,6 +44,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "kyoto",
   },
   {
+    href: "/guides/attractions/teamlab-fukuoka-tickets",
+    badge: "Tickets",
+    title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking",
+    desc: "teamLab Forest Fukuoka is the cheapest of the five teamLab venues in Japan and the only one you move through rather than walk around. ¥2,400 adult on a regular date and ¥2,700 on a peak one, ¥1,000 for ages 4–15, about an hour inside.",
+    group: "tickets",
+    // Fukuoka is outside the three city hubs, so it reads as nationwide.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/shibuya-sky-tickets",
     badge: "Tickets",
     title: "Shibuya Sky Tickets 2026: Price, Hours & Sunset Slots",
@@ -280,6 +289,14 @@ export const attractionArticles: GuideArticle[] = [
     desc: "The castle and Minami on Day 1, the bay and Umeda on Day 2, joined by 20 minutes of Midosuji Line — with a table for each day, the ¥3,500 of Day 1 admissions a ¥2,500 pass covers, and the one stop that has a fixed entry slot.",
     group: "cities",
     city: "osaka",
+  },
+  {
+    href: "/guides/attractions/kyoto-2-day-itinerary",
+    badge: "Itinerary",
+    title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book",
+    desc: "Fushimi Inari at dawn, Kiyomizu-dera from 6:00 and Nijo Castle on Day 1; Arashiyama, the Sagano torokko and Kinkaku-ji on Day 2 — routed on Kyoto City's own travel times, with ¥1,800 of Day 1 admissions and only one reserved seat to book.",
+    group: "cities",
+    city: "kyoto",
   },
   {
     href: "/guides/attractions/kobe-day-trip-from-osaka",

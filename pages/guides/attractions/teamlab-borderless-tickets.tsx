@@ -829,6 +829,21 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 29 Oct 2026: the fifth venue, and the one furthest from
+                Tokyo in both geography and format. */}
+            <Link href="/guides/attractions/teamlab-fukuoka-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 21c0-6 3-9 7-10-1 5-3 8-7 10z" />
+                  <path d="M12 21c0-6-3-9-7-10 1 5 3 8 7 10z" />
+                  <path d="M12 21V11" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>teamLab Fukuoka Tickets 2026: Price, Hours &amp; Booking</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/teamlab-kyoto-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

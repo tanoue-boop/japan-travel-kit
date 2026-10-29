@@ -566,6 +566,20 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 29 Oct 2026: the two-day plan is where the bus-versus-train
+                question on this page actually gets decided, route by route. */}
+            <Link href="/guides/attractions/kyoto-2-day-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/where-to-stay-in-kyoto" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

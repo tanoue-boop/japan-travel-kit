@@ -3574,3 +3574,222 @@ export const longStaySimPrep: KlookTripPrepItem[] = [
     why: "A monthly plan needs a residence card registered to a Japanese address, which you do not have on the day you land — a travel eSIM covers the week between arrival and the ward office with no contract to cancel afterwards.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kyoto in two days, and teamLab Forest Fukuoka — added 29 Oct 2026 for
+// kyoto-2-day-itinerary and teamlab-fukuoka-tickets.
+//
+// Verified the usual way: Klook answers automated reads of its /activity/ and
+// /destination/ pages with HTTP 403, so every URL below was confirmed as a live,
+// on-sale en-US page through the www.klook.com search index on 29 Oct 2026 —
+// which is also why none of them carries a price.
+//
+// Band decides which link leads on each page:
+//   - kyoto-2-day-itinerary is an itinerary, so the 6.5% tours, experiences and
+//     hotel searches are the headline CTAs on each day, and the 5% rail links
+//     (the Tokaido Shinkansen route page and the Kansai Area Pass, both already
+//     declared above) sit in the "getting there" section where they belong.
+//   - teamlab-fukuoka-tickets is a museum admission, so the bare ticket is not
+//     assumed to pay the tours band: the Fukuoka bus day that *includes* the
+//     museum (104095), the two Dazaifu/Yanagawa days and the three Fukuoka hotel
+//     searches are the 6.5% links, with the city passes at 5% beside them.
+// ---------------------------------------------------------------------------
+
+/** Fushimi Inari on foot with a guide — the Day 1 dawn stop, done as a tour. */
+export const kyotoFushimiInariWalkingTour: KlookTour = {
+  title: "Kyoto Fushimi Inari Taisha small-group walking tour",
+  desc: "A small-group guided walk of the Senbon Torii gates with the option of carrying on up the Mount Inari trails, listed at three hours",
+  url: klookLink("https://www.klook.com/en-US/activity/88010-kyoto-fushimi-inari-taisha-small-group-tour-walking-tour/"),
+};
+
+/** The Gion evening — the one Kyoto hour a self-guided plan reliably wastes. */
+export const kyotoGionNightWalkingTour: KlookTour = {
+  title: "Kyoto Gion night guided walking tour (3 hours)",
+  desc: "A small-group evening through the Gion backstreets and Hanamikoji, with the offbeat shrines and the etiquette that stops you becoming the reason the lanes are now patrolled",
+  url: klookLink("https://www.klook.com/en-US/activity/87999-kyoto-gion-night-walk-small-group-guided-tour-walking-tour/"),
+};
+
+/**
+ * Where to stay for two days in Kyoto. No new destination ids: every url reads
+ * out of `whereToStayKyotoAreas`, so the Klook ids stay in one place.
+ *
+ * The order and the `why` lines are written for a two-day plan rather than for
+ * the area-comparison page, where the argument is different. On two days the
+ * base is a time question — Kyoto Station and Karasuma Oike are the two that cost
+ * you nothing in crossings, Gion earns its place only because an early
+ * Kiyomizu-dera is the one thing it buys that no bus can, and Arashiyama is
+ * deliberately last: it is 25 minutes from the station on the city's own figure,
+ * which is a long way to carry cases for two nights.
+ */
+export const kyotoTwoDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Kyoto Station",
+    why: "The default for two days: the Tokaido Shinkansen and every Haruka arrive under it, the 100 and 101 sightseeing buses start at it, and the JR Nara and Sagano lines put Fushimi Inari and Arashiyama 9 and 11 minutes away without a bus at all.",
+    url: whereToStayKyotoAreas[0].url,
+  },
+  {
+    area: "Karasuma Oike / Shijo",
+    why: "The one point the Karasuma and Tozai subway lines cross, with Nishiki Market and Pontocho on foot — so the Gion evening on Day 1 ends in a walk rather than a last bus.",
+    url: whereToStayKyotoAreas[1].url,
+  },
+  {
+    area: "Gion / Higashiyama",
+    why: "Buys you one thing nothing else can on a two-day trip: Kiyomizu-dera from its 6:00 opening on foot, before the first coach has left Kyoto Station.",
+    url: whereToStayKyotoAreas[2].url,
+  },
+  {
+    area: "Arashiyama",
+    why: "The bamboo grove and Togetsukyo before the day-trippers arrive — but Kyoto City puts Saga/Arashiyama 25 minutes from Kyoto Station, so this is the base for three nights rather than two.",
+    url: whereToStayKyotoAreas[3].url,
+  },
+];
+
+/**
+ * The bookings a two-day Kyoto trip makes outside the two days themselves: how
+ * you arrive, the pass that covers the region, the one experience that needs an
+ * appointment rather than a ticket, and data.
+ *
+ * Every url reads out of a constant declared above — `shinkansenTokyoKyoto`,
+ * `jrKansaiAreaPass`, `kyotoKimonoYumeyakata`, `saganoHozugawaGuaranteedTour`
+ * and `klookEsim` — so nothing here is a second source of truth for a Klook id.
+ */
+export const kyotoTwoDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: shinkansenTokyoKyoto.title,
+    ctaLabel: "Check Tokyo → Kyoto tickets →",
+    url: shinkansenTokyoKyoto.url,
+    why: "Two days in Kyoto is almost always two days inside a longer trip, and the Tokaido Shinkansen is how it starts — Klook sells the route by date and seat class, so a reserved seat on a Friday is the one thing worth settling before the temples.",
+  },
+  {
+    label: jrKansaiAreaPass.title,
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass.url,
+    why: "The pass to price if Kyoto is reached from Kansai Airport or paired with Osaka, Nara or Himeji: it covers the Haruka and the JR Nara and Sagano lines, which are the two trains this itinerary actually uses inside Kyoto.",
+  },
+  {
+    label: kyotoKimonoYumeyakata.title,
+    ctaLabel: "Check Kyoto kimono rental →",
+    url: kyotoKimonoYumeyakata.url,
+    why: "The one thing in two Kyoto days that is an appointment rather than a ticket — a dressing slot has to be booked, and the listing's own return deadline of 17:30 is what decides whether the kimono day is Day 1 or Day 2.",
+  },
+  {
+    label: saganoHozugawaGuaranteedTour.title,
+    ctaLabel: "Check the Sagano train & boat day →",
+    url: saganoHozugawaGuaranteedTour.url,
+    why: "If Day 2 is Arashiyama, this is the version with the torokko seat and the river boat already held — the torokko is the only reserved-seat ride in the itinerary and it does not run every month.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Kyoto city buses are flat-fare and pay-on-exit, Kyoto City's own guide tells visitors to avoid two specific bus routes, and the better alternatives are all trains — none of which you can route without data.",
+  },
+];
+
+/** teamLab Forest Fukuoka — the admission itself, on the 5th floor of BOSS E・ZO. */
+export const teamlabForestFukuokaTicket: KlookTour = {
+  title: "teamLab Forest Fukuoka ticket",
+  desc: "Klook's listing for the permanent teamLab museum on the 5th floor of BOSS E・ZO FUKUOKA, with a mobile QR entry and a suggested 1 to 2 hours on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/51227-teamlab-forest-fukuoka/"),
+};
+
+/** The one Klook day tour that has the museum inside it — the 6.5% band. */
+export const fukuokaTeamlabBusTour: KlookTour = {
+  title: "Fukuoka day bus tour with teamLab, strawberry picking & shopping",
+  desc: "A join-in coach day out of Fukuoka that puts the teamLab visit inside a wider itinerary rather than leaving it as an hour to fill",
+  url: klookLink("https://www.klook.com/en-US/activity/104095-strawberry-shopping-teamlab-fukuoka-join-day-bus-tour/"),
+};
+
+/** Dazaifu and the Yanagawa canals — the standard Fukuoka day out. */
+export const dazaifuYanagawaDayTour: KlookTour = {
+  title: "Dazaifu, Yanagawa river cruise & Itoshima day trip from Fukuoka",
+  desc: "A round-trip coach from the Chikushi exit of Hakata Station taking in Dazaifu Tenmangu, the Yanagawa donko boat ride and the Itoshima coast",
+  url: klookLink("https://www.klook.com/en-US/activity/121441-dazaifu-yanagawa-river-cruising-one-day-tour-from-fukuoka/"),
+};
+
+/** The ten-hour Itoshima version of the same day. */
+export const yanagawaItoshimaDayTour: KlookTour = {
+  title: "Itoshima & Yanagawa scenic day tour from Fukuoka",
+  desc: "Listed as a full day covering Itoshima's Meoto Iwa, Shiraito Falls, Dazaifu and the Yanagawa river cruise in one coach run",
+  url: klookLink("https://www.klook.com/en-US/activity/160366-yanagawa-and-itoshima-scenic-day-tour/"),
+};
+
+/** The transport pass — 5% band, and the one that includes an airport pick-up. */
+export const fukuokaTouristCityPass: KlookTour = {
+  title: "Fukuoka Tourist City Pass",
+  desc: "Unlimited Nishitetsu and Showa buses, JR, Nishitetsu trains, the city subway and the municipal ferry, collected at the Fukuoka Airport international terminal — the listing states it is not sold to Japanese passport holders",
+  url: klookLink("https://www.klook.com/en-US/activity/94833-fukuoka-tourist-city-pass/"),
+};
+
+/** The attraction bundle, for a reader whose teamLab hour is one of several. */
+export const klookPassFukuoka: KlookTour = {
+  title: "Klook Pass Fukuoka",
+  desc: "Klook's own multi-attraction pass for the city — the version to price if the teamLab slot is one of three or four paid stops rather than the whole reason you are in Fukuoka",
+  url: klookLink("https://www.klook.com/en-US/activity/108593-klook-pass-fukuoka/"),
+};
+
+/**
+ * Where to stay around a teamLab Forest slot. Three new destination ids, all
+ * confirmed as live en-US hotel searches through the www.klook.com search index
+ * on 29 Oct 2026 — p60271497 ("Best hotels near Momochi Seaside Park, Japan
+ * 2026"), p50007409 ("Best hotels near Hakata Station, Japan 2026") and
+ * p60271225 ("Best hotels near Tenjin Ward, Japan 2026").
+ *
+ * Momochi leads because it is the only one of the three that is the same
+ * waterfront as the museum: BOSS E・ZO is at 2-2-6 Jigyohama in Chuo-ku, and the
+ * city subway does not reach it — Fukuoka City's own access page puts the complex
+ * 15 minutes on foot from exit 3 of Tojinmachi Station.
+ */
+export const fukuokaStayAreas: KlookStayArea[] = [
+  {
+    area: "Momochi / Jigyohama",
+    why: "The same stretch of waterfront as the museum — which matters here more than anywhere, because no subway station is at the door: the venue's own access page gives 15 minutes on foot from Tojinmachi exit 3.",
+    url: klookLink("https://www.klook.com/en-US/destination/p60271497-momochi-seaside-park/3-hotel/"),
+  },
+  {
+    area: "Hakata Station",
+    why: "The Kyushu Shinkansen terminus and the subway Airport Line in one building, so a teamLab slot is a 15-minute ride plus a bus and the trip in or out of the city needs no transfer at all.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50007409-hakata-station/3-hotel/"),
+  },
+  {
+    area: "Tenjin",
+    why: "The central base and the midpoint of the subway Airport Line between Hakata and Tojinmachi — the pick if the museum is one evening of a Fukuoka trip rather than its reason.",
+    url: klookLink("https://www.klook.com/en-US/destination/p60271225-tenjin-ward/3-hotel/"),
+  },
+];
+
+/**
+ * The rest of a Fukuoka day built around a teamLab Forest slot. The museum hour
+ * is short — the official listing's own suggested duration is 1 to 2 hours — so
+ * every slot here is about what the other seven hours hold.
+ *
+ * Every url but the ticket's reads out of a constant or array declared above.
+ */
+export const teamlabFukuokaTripPrep: KlookTripPrepItem[] = [
+  {
+    label: fukuokaTeamlabBusTour.title,
+    ctaLabel: "Check the Fukuoka bus day →",
+    url: fukuokaTeamlabBusTour.url,
+    why: "The listing that solves the real problem with this museum: an hour inside it is not a day, and this is the one Klook product that builds the rest of the day around the same visit.",
+  },
+  {
+    label: dazaifuYanagawaDayTour.title,
+    ctaLabel: "Check the Dazaifu & Yanagawa day →",
+    url: dazaifuYanagawaDayTour.url,
+    why: "The standard Fukuoka day out, and it pairs neatly with a museum slot: the coach leaves and returns to Hakata Station, which is 15 minutes by subway and a bus from the venue.",
+  },
+  {
+    label: "Hotels around Momochi / Jigyohama",
+    ctaLabel: "Check Momochi hotels on Klook →",
+    url: fukuokaStayAreas[0].url,
+    why: "A 19:00 close and a last entry 30 minutes before it means a late slot ends after dark on a waterfront with no station on it — the one night of a Fukuoka trip where being at the dome rather than at Hakata is worth something.",
+  },
+  {
+    label: fukuokaTouristCityPass.title,
+    ctaLabel: "Check the Fukuoka city pass →",
+    url: fukuokaTouristCityPass.url,
+    why: "The venue is reached by subway plus a bus or a 15-minute walk, and the pass covers the city subway, the Nishitetsu and Showa buses and JR on one ticket — collected at the airport international terminal on arrival.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The Catching and Collecting Forest is played through teamLab's own app on your phone, and the ticket is a QR code — this is not a venue to arrive at waiting for hotel Wi-Fi.",
+  },
+];
