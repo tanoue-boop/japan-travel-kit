@@ -5,8 +5,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/best-esim-japan",
     badge: "Comparison",
-    title: "Best eSIM for Japan 2026: Top 4 Picks Compared",
-    desc: "Airalo, Holafly, eSIM Go, and Sakura Mobile — compared on price, speed, coverage, and ease of setup. Which one is right for your trip?",
+    title: "Best eSIM for Japan 2026: Compared by Price & Network",
+    desc: "Airalo, eSIM Go, Sakura Mobile and Klook compared on price, data and the carrier each plan rides — with a pick for each kind of trip.",
     group: "compare",
     city: "other",
   },
