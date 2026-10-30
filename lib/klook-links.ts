@@ -3961,3 +3961,242 @@ export const homeInternetGapPrep: KlookTripPrepItem[] = [
     why: "Sakura Mobile puts a fibre installation at one week to one month, and a Japanese tenancy almost never starts with a live line — a travel eSIM is the no-contract way to have the flat online on the night you get the keys.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Three days across Osaka and Kyoto — added 30 Oct 2026 for
+// osaka-kyoto-3-day-itinerary.
+//
+// No new Klook ids at all, which is the point: every product this itinerary
+// sells already has a home in this file, verified on the date its own block
+// records. The airport trains (`jrHarukaUrl`, `nankaiRapitUrl`), USJ
+// (`usjStudioPassUrl`), the Kyoto–Nara and Arashiyama–Fushimi Inari coach days,
+// the Dotonbori boat, the Kansai Area Pass, the Osaka Amazing Pass, the two
+// Tokaido route pages and the eSIM are all reused unchanged.
+//
+// Bands, in the order the page sells them: the guided days, the food walks and
+// every hotel search are 6.5%; the two rail passes, the two airport trains and
+// the shinkansen route pages are 5%; the eSIM is 20%. The USJ Studio Pass is
+// the one headline product on this page Klook pays little or nothing for, which
+// is why GetYourGuide sits beside it (see lib/gyg-links.ts) rather than
+// replacing it.
+// ---------------------------------------------------------------------------
+
+/**
+ * Where three days split between the two cities actually sleep.
+ *
+ * No new destination ids: the Osaka entries read out of `whereToStayOsakaAreas`
+ * (via `osakaTwoDayStayAreas`'s sources) and the Kyoto ones out of
+ * `whereToStayKyotoAreas`, so each Klook id still has exactly one home and this
+ * page cannot drift away from the two area guides.
+ *
+ * The order is the argument. On three days the question is not "which area" but
+ * "how many times do I move the luggage", so the two single-base options lead
+ * and the split-stay areas follow with the condition each one carries.
+ */
+export const osakaKyotoThreeDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Namba, Osaka (three nights, one base)",
+    why: "The default: Dotonbori, Kuromon Market and the Shinsaibashi arcade are the evening and they are on foot, the Nankai terminus for Kansai Airport is underneath, and Kyoto is about 30 minutes away on the city's own figure once you walk or ride to Umeda.",
+    url: whereToStayOsakaAreas[1].url,
+  },
+  {
+    area: "Umeda / Osaka Station, Osaka (three nights, one base)",
+    why: "The pick if two of the three days are in Kyoto or Nara: the JR Kyoto Line special rapids leave from here, so the Kyoto day starts on a platform rather than on a subway to a platform, and Shin-Osaka is two Midosuji stops for the shinkansen.",
+    url: whereToStayOsakaAreas[0].url,
+  },
+  {
+    area: "Kyoto Station (two nights, split stay)",
+    why: "The Kyoto half of a split stay. Every Haruka from Kansai Airport and every Tokaido train arrive under it, the 100 and 101 sightseeing buses start at it, and the JR Nara and Sagano lines put Fushimi Inari and Arashiyama 9 and 11 minutes out without a bus.",
+    url: whereToStayKyotoAreas[0].url,
+  },
+  {
+    area: "Karasuma Oike / Shijo, Kyoto (two nights, split stay)",
+    why: "The one crossing of Kyoto's two subway lines, with Nishiki Market and Pontocho on foot — the split-stay option if the point of moving hotels is to get a Kyoto evening rather than to shorten a morning.",
+    url: whereToStayKyotoAreas[1].url,
+  },
+  {
+    area: "Universal City, Osaka (only if USJ is one of the three days)",
+    why: "A short walk from the gates on the JR Yumesaki Line, and worth it only on the night before a park day: you are 20 minutes of JR from everything else here on the Osaka Convention & Tourism Bureau's own figure, and no Osaka Metro pass reaches you.",
+    url: whereToStayOsakaAreas[3].url,
+  },
+];
+
+/**
+ * The bookings a three-day Kansai trip makes before it flies, in band order.
+ *
+ * Every url reads out of a constant declared above, so nothing here is a second
+ * source of truth for a Klook id.
+ */
+export const osakaKyotoThreeDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: jrKansaiAreaPass.title,
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass.url,
+    why: "The one pass shaped like this trip: it covers the Haruka from Kansai Airport, the Osaka–Kyoto special rapids and the JR Nara and Sagano lines inside Kyoto. Price the three-day version against two airport singles plus two city hops before you buy — our Kansai Area Pass guide does the arithmetic.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "If the pass does not pay, this is the airport leg on its own — and the discounted one-way for foreign passport holders entering as temporary visitors went up on 1 November 2026, so a trip straddling that date pays two different prices for the same ride.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    why: "The Namba version of the same arrival. Nankai's Rapi:t reaches Namba in a minimum of 34 minutes, which is the reason a Namba base can be reached without a change at all.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Worth it only on a day that is genuinely Osaka: the castle, the Umeda deck and the Dotonbori boat are all on it, and on three days that day is Day 1. It does not cover JR, so it does nothing for the Kyoto day.",
+  },
+  {
+    label: kyotoNaraKiyomizuTour.title,
+    ctaLabel: "Check the Kyoto–Nara day →",
+    url: kyotoNaraKiyomizuTour.url,
+    why: "The listing to open if Day 2 or Day 3 should be handed to a coach rather than routed by you — Kyoto's headline sights sit on four different sides of the city, which is the single thing a guided day actually solves.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Three days across two cities is four or five rail decisions a day on three operators' networks — JR, Hankyu and Keihan all run the Osaka–Kyoto hop — and every timetable, platform and delay notice arrives on your phone.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// The Sapporo Snow Festival — added 30 Oct 2026 for sapporo-snow-festival-tours.
+//
+// The winter block above (28 Oct 2026) already carried the Hokkaido products a
+// twelve-day winter route needed: the New Chitose transfer, the two resort
+// shuttles, the Wonderland snow park half day, the Lake Shikotsu ice festival
+// half day, the Otaru snow-park day, the Asahiyama Zoo winter day and the
+// Sapporo Station hotel search. Those are reused here unchanged.
+//
+// What is new is everything a reader whose whole trip is the festival needs and
+// that block did not have: the whole-island rail pass, the Lake Shikotsu shuttle
+// as a seat rather than a tour, two Jozankei days, the Noboribetsu–Toya–Otaru
+// day, the deck that looks down the Odori site, and two more hotel searches.
+//
+// One honest limitation, stated on the page as well as here: on 30 Oct 2026 no
+// Klook listing sold the Sapporo Snow Festival itself, and none should — all
+// three sites are free to walk into on the organiser's own FAQ ("全会場無料で
+// す"). What Klook sells is the week around it, which is what these listings
+// are and what the page says they are.
+//
+// Verification, all on 30 Oct 2026. Klook answers automated reads of its
+// /activity/ and /destination/ pages with HTTP 403, so every URL below was
+// confirmed live, on sale and in its en-US form through the www.klook.com search
+// index. The whole-island JR Hokkaido Rail Pass is the one the winter block
+// deliberately left out on 28 Oct because its en-US form could not be confirmed
+// then; it was confirmed on this date and is included.
+//
+// Bands: the guided days and the three hotel searches are 6.5%, the rail pass
+// and the airport and festival shuttles are 5%, the eSIM 20%. The TV Tower and
+// Moiwa set ticket is an admission rather than a tour, so it is never a headline
+// CTA on the page. No price appears anywhere, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/**
+ * The whole-island pass, as distinct from `jrEastSouthHokkaidoPass`: this one is
+ * JR Hokkaido's own network — Sapporo, Furano, Noboribetsu and the rest — and is
+ * the pass a trip that flies into New Chitose and stays in Hokkaido should price.
+ * The JR East–South Hokkaido pass above is for a Tokyo-in, Hokkaido-out route.
+ */
+export const jrHokkaidoRailPass: KlookTour = {
+  title: "JR Hokkaido Rail Pass",
+  desc: "JR Hokkaido's own island pass in its consecutive-day and flexible versions — the one to price for a trip that flies into New Chitose and travels inside Hokkaido rather than down to Honshu",
+  url: klookLink("https://www.klook.com/en-US/activity/3067-jr-hokkaido-rail-pass-jr-pass/"),
+};
+
+/** The Lake Shikotsu ice festival as a coach seat rather than a guided day. */
+export const lakeShikotsuIceFestivalShuttleBus: KlookTour = {
+  title: "Sapporo – Chitose Lake Shikotsu Ice Festival shuttle bus",
+  desc: "A round-trip coach seat from Sapporo to the Lake Shikotsu ice festival, for travellers who want the February evening without a guide attached to it",
+  url: klookLink("https://www.klook.com/en-US/activity/103596-sapporo-lake-shikotsu-shuttle-bus/"),
+};
+
+/** Jozankei and the Hill of the Buddha — the city-highlights day. */
+export const sapporoJozankeiBuddhaDayTour: KlookTour = {
+  title: "Sapporo, Jozankei & Hill of the Buddha day tour",
+  desc: "A full day pairing the Jozankei gorge with Tadao Ando's Hill of the Buddha, Shiroi Koibito Park and the beer museum — the guided version of a Sapporo day that is not the festival sites",
+  url: klookLink("https://www.klook.com/en-US/activity/156263-jozankei-hill-of-the-buddha-beer-museum-hokkaido-day-tour/"),
+};
+
+/** Jozankei as a hot-spring day with the bus ticket inside the booking. */
+export const jozankeiHotSpringBusTrip: KlookTour = {
+  title: "Jozankei hot-spring day trip with bus ticket",
+  desc: "A Jozankei onsen day sold with the Jotetsu bus ticket in it, which is the half-day to put opposite an evening at the Odori and Susukino sites",
+  url: klookLink("https://www.klook.com/en-US/activity/86391-hokkaido-join-bus-trip-jozankei-hot-spring/"),
+};
+
+/** Noboribetsu, Lake Toya and Otaru — the long day out of Sapporo. */
+export const noboribetsuToyaOtaruDayTour: KlookTour = {
+  title: "Noboribetsu, Lake Toya & Otaru day tour from Sapporo",
+  desc: "A panoramic join-in day south and west of the city, for a festival trip with a spare day that should not be a fourth evening at Odori",
+  url: klookLink("https://www.klook.com/en-US/activity/97495-noboribetsu-touyako-otaru-one-day-bus-tour-join-one-day-bus-tour-sapporo/"),
+};
+
+/**
+ * The deck that looks straight down the Odori site, sold with the Moiwa ropeway.
+ *
+ * An admission, not a tour, so it never leads a CTA row on the page — it is here
+ * because the Odori snow sculptures run eleven blocks in a straight line from the
+ * foot of this tower, which is the one thing a deck ticket buys at this festival
+ * that a guided day does not.
+ */
+export const sapporoTvTowerMoiwaSetTicket: KlookTour = {
+  title: "Sapporo TV Tower observation deck + Mt. Moiwa ropeway set ticket",
+  desc: "The Odori-end observation deck bundled with the Mt. Moiwa ropeway — the deck stands at West 1, which is where the Odori site's eleven blocks of sculptures begin",
+  url: klookLink("https://www.klook.com/en-US/activity/22630-sapporro-tv-tower-moiwa-ropeway-hokkaido/"),
+};
+
+/**
+ * Where a festival trip sleeps. Three searches, ordered by what each one buys on
+ * eight outdoor days at a mean daily maximum of 0.4°C.
+ *
+ * Sapporo Station reads its id out of `japanWinterStayAreas`, where it was
+ * confirmed on 28 Oct 2026; Susukino and Otaru Station are new destination pages,
+ * both confirmed in en-US form on 30 Oct 2026.
+ */
+export const sapporoSnowFestivalStayAreas: KlookStayArea[] = [
+  {
+    area: "Sapporo Station",
+    why: "One subway stop or a covered walk from Odori, and where the Rapid Airport from New Chitose puts you down — which on eight February days matters more than any view, because it is the base that lets you go back indoors between sites.",
+    url: japanWinterStayAreas[6].url,
+  },
+  {
+    area: "Susukino",
+    why: "The ice-sculpture site is the street outside: the Susukino site runs along Ekimae-dori between South 4 and South 6, lit until 23:00, so the late half of the festival is a walk home rather than a last subway.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50291802-susukino/3-hotel/"),
+  },
+  {
+    area: "Otaru Station",
+    why: "The fallback when Sapporo is full, and a destination in its own right — Otaru is 33 to 41 minutes out on the JR Hakodate Line by Rapid Airport and runs its own Snow Light Path in the same stretch of February.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50045503-otaru-station/3-hotel/"),
+  },
+];
+
+/**
+ * What a festival trip books before it flies. The eSIM leads because the one
+ * thing an eight-day outdoor event in Hokkaido generates is same-day change —
+ * weather, shuttle queues, a site closing early.
+ */
+export const sapporoSnowFestivalTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Three sites, one of them a 25-minute subway-and-shuttle ride away, in a month when the daily maximum averages 0.4°C — the shuttle timings, the site notices and the weather all arrive on your phone rather than at a counter.",
+  },
+  {
+    label: jrHokkaidoRailPass.title,
+    ctaLabel: "Price the JR Hokkaido pass →",
+    url: jrHokkaidoRailPass.url,
+    why: "Worth pricing only if the trip leaves the city: the airport run is ¥1,230 each way on JR Hokkaido's own figure, so a pass pays when Otaru, Asahikawa or Noboribetsu are also on the plan rather than when Sapporo alone is.",
+  },
+  {
+    label: newChitoseSapporoSharedTransfer.title,
+    ctaLabel: "Check the airport transfer →",
+    url: newChitoseSapporoSharedTransfer.url,
+    why: "The alternative to the train with cases in February: a booked seat, which the listing requires 45 minutes after a domestic arrival and 90 after an international one — so it is bought before you fly, not on the day.",
+  },
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo hotels on Klook →",
+    url: japanWinterStayAreas[6].url,
+    why: "The dates have been public since 11 February 2026, when the organising committee announced them in the same notice that closed the 76th festival — which is why rooms for these eight nights are the booking to settle first and the one this page cannot quote a price for.",
+  },
+];

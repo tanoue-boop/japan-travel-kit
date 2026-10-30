@@ -229,6 +229,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/sapporo-snow-festival-tours",
+    badge: "Festival",
+    title: "Sapporo Snow Festival Tours (2027): 4–11 Feb, Free Sites",
+    desc: "The 77th festival runs 4–11 February 2027 across Odori, Susukino and Tsudome, and all three are free on the committee's own FAQ — so what the tours are actually for is the other half of each day, at a February daily maximum of 0.4°C.",
+    group: "daytrips",
+    // Hokkaido is outside the three city hubs, so it reads as nationwide.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/hiroshima-miyajima-day-trip",
     badge: "Day trip",
     title: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?",
@@ -287,6 +296,14 @@ export const attractionArticles: GuideArticle[] = [
     badge: "Itinerary",
     title: "Osaka 2 Day Itinerary (2026): Day by Day, and What to Book",
     desc: "The castle and Minami on Day 1, the bay and Umeda on Day 2, joined by 20 minutes of Midosuji Line — with a table for each day, the ¥3,500 of Day 1 admissions a ¥2,500 pass covers, and the one stop that has a fixed entry slot.",
+    group: "cities",
+    city: "osaka",
+  },
+  {
+    href: "/guides/attractions/osaka-kyoto-3-day-itinerary",
+    badge: "Itinerary",
+    title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings",
+    desc: "Osaka on Day 1, Kyoto on Day 2 and Nara, Arashiyama or USJ on Day 3 — with the two decisions three days actually turns on: whether to sleep in one city or two, and whether the ¥5,500 three-day Kansai Area Pass beats two HARUKA singles.",
     group: "cities",
     city: "osaka",
   },

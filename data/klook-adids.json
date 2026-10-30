@@ -35,9 +35,11 @@
   "/guides/attractions/osaka-attractions-pass": 1528112,
   "/guides/attractions/osaka-castle-tickets": 1528113,
   "/guides/attractions/osaka-food-tour": 1528114,
+  "/guides/attractions/osaka-kyoto-3-day-itinerary": 1528233,
   "/guides/attractions/sagano-romantic-train-tickets": 1528115,
   "/guides/attractions/samurai-ninja-experience-tokyo": 1528116,
   "/guides/attractions/sanrio-puroland-tickets": 1528117,
+  "/guides/attractions/sapporo-snow-festival-tours": 1528234,
   "/guides/attractions/shibuya-sky-tickets": 1528118,
   "/guides/attractions/sumo-tokyo-tickets": 1528119,
   "/guides/attractions/takayama-shirakawago-tour": 1528210,
@@ -109,8 +111,8 @@
   "/guides/transport/tokyo-airport-transfer": 1528173,
   "/guides/transport/tokyo-to-hiroshima-shinkansen": 1528222,
   "/guides/transport/tokyo-to-kanazawa": 1528215,
-  "/guides/transport/tokyo-to-nagoya-shinkansen": 1528224,
   "/guides/transport/tokyo-to-kyoto": 1528174,
+  "/guides/transport/tokyo-to-nagoya-shinkansen": 1528224,
   "/guides/transport/tokyo-transportation": 1528175,
   "/ko": 1528216,
   "/ko/guides/attractions/shibuya-sky-tickets": 1528176,
@@ -147,5 +149,5 @@
   "/zh-tw/guides/esim/best-esim-japan": 1528204,
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
  },
- "spare": [1528233,1528234,1528235,1528236,1528237,1528238,1528239,1528240,1528241,1528242,1528243,1528244,1528245,1528246,1528247]
+ "spare": [1528235,1528236,1528237,1528238,1528239,1528240,1528241,1528242,1528243,1528244,1528245,1528246,1528247]
 }
