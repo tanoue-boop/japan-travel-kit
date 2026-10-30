@@ -115,6 +115,22 @@ export const esimArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/esim/japan-sim-card-for-students",
+    badge: "Guide",
+    title: "Japan SIM Card for Students: Plans & Residence Card",
+    desc: "For a student status longer than three months, not a travel eSIM. Sakura Mobile's resident tiers from ¥2,980 a month with a Japanese number, the ¥1,100 student discount on the activation fee, the residence-card address rule and the 1–3 day start.",
+    group: "reviews",
+    city: "other",
+  },
+  {
+    href: "/guides/esim/japan-phone-number-for-foreigners",
+    badge: "Guide",
+    title: "Japan Phone Number for Foreigners: 070/080/090 Plans",
+    desc: "Every travel eSIM sold to visitors is data only, and the number is a separate product rather than an add-on. The two routes that carry a 070, 080 or 090 number, what each one demands, and what a bank actually asks for.",
+    group: "reviews",
+    city: "other",
+  },
+  {
     href: "/guides/esim/japan-home-internet-for-foreigners",
     badge: "Guide",
     title: "Japan Home Internet for Foreigners: Prices & Setup",

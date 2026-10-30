@@ -4200,3 +4200,57 @@ export const sapporoSnowFestivalTripPrep: KlookTripPrepItem[] = [
     why: "The dates have been public since 11 February 2026, when the organising committee announced them in the same notice that closed the 76th festival — which is why rooms for these eight nights are the booking to settle first and the one this page cannot quote a price for.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// The two long-stay telecom entry pages added 30 Oct 2026 —
+// japan-sim-card-for-students and japan-phone-number-for-foreigners.
+//
+// No new Klook ids: both blocks read products already declared in this file.
+// The eSIM is `tripPrepProducts.esim` (listing 109393, 20%) and the two Tokyo
+// airport transfers are `tokyoPrivateAirportTransfer` and
+// `tokyoSharedAirportTransfer` (listings 23053 and 136963, 5%), each first
+// confirmed on the date its own block above records. All three were re-confirmed
+// live and on sale as en-US listings through the www.klook.com search index on
+// 30 Oct 2026, which is the usual route — Klook answers automated reads of its
+// product pages with HTTP 403, and that is also why no price appears here.
+//
+// Sakura Mobile's own programme carries the monthly plans on both pages, so Klook
+// is here only for the thing a monthly plan cannot do: cover the fortnight
+// between landing and a residence card that shows a Japanese address.
+// ---------------------------------------------------------------------------
+
+/**
+ * The arrival weeks of a student visa. The eSIM leads because it is the only item
+ * a reader can finish before leaving home; the two transfers follow because a
+ * study year arrives with hold luggage and a dormitory check-in slot.
+ */
+export const studentSimArrivalPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "A monthly student plan verifies against a residence card registered to your current address, and the Immigration Services Agency gives you 14 days from deciding on that address to register it — so the first fortnight online is a travel product whatever you sign afterwards.",
+  },
+  {
+    label: tokyoSharedAirportTransfer.title,
+    ctaLabel: "Check a shared airport transfer →",
+    url: tokyoSharedAirportTransfer.url,
+    why: "The seat-price version of a door-to-door ride, booked to a street address rather than a station — which is what a dormitory or sharehouse check-in gives you on day one, usually inside a fixed time slot.",
+  },
+  {
+    label: tokyoPrivateAirportTransfer.title,
+    ctaLabel: "Check a private airport transfer →",
+    url: tokyoPrivateAirportTransfer.url,
+    why: "A study year travels with more than a cabin bag, and the airport trains have no room for two hold cases at rush hour; the listing is a 24-hour service in 7- and 10-seater sizes, which also covers a late landing.",
+  },
+];
+
+/**
+ * The one Klook product a reader hunting a Japanese phone number has a use for —
+ * and the honest framing for it, since the listing is data only and therefore
+ * cannot answer the question the page is named after.
+ */
+export const phoneNumberDataPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "It carries no Japanese number at all — the listing states data only — so it is here for the opposite reader: the one who came looking for a number, worked out that maps, messaging and email are all they actually need, and wants the cheap no-contract way to have them working on landing.",
+  },
+];
