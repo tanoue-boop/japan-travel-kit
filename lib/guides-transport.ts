@@ -11,6 +11,14 @@ export const transportArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/transport/tokyo-wide-pass",
+    badge: "Pass",
+    title: "JR Tokyo Wide Pass (2026): Price, Coverage and Is It Worth It?",
+    desc: "¥16,000 for three consecutive days of JR East trains around Tokyo — ¥15,000 until the 14 March 2026 revision. The Fuji Excursion to Kawaguchiko and the shinkansen to Karuizawa are on it; the Tokaido Shinkansen and every subway line are not.",
+    group: "passes",
+    city: "tokyo",
+  },
+  {
     href: "/guides/transport/shinkansen-guide",
     badge: "Guide",
     title: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers",

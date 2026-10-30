@@ -116,6 +116,7 @@
   "/guides/transport/tokyo-to-kyoto": 1528174,
   "/guides/transport/tokyo-to-nagoya-shinkansen": 1528224,
   "/guides/transport/tokyo-transportation": 1528175,
+  "/guides/transport/tokyo-wide-pass": 1528237,
   "/ko": 1528216,
   "/ko/guides/attractions/shibuya-sky-tickets": 1528176,
   "/ko/guides/attractions/teamlab-tokyo-tickets": 1528177,
@@ -151,5 +152,5 @@
   "/zh-tw/guides/esim/best-esim-japan": 1528204,
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
  },
- "spare": [1528237,1528238,1528239,1528240,1528241,1528242,1528243,1528244,1528245,1528246,1528247]
+ "spare": [1528238,1528239,1528240,1528241,1528242,1528243,1528244,1528245,1528246,1528247]
 }

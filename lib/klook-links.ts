@@ -4254,3 +4254,24 @@ export const phoneNumberDataPrep: KlookTripPrepItem[] = [
     why: "It carries no Japanese number at all — the listing states data only — so it is here for the opposite reader: the one who came looking for a number, worked out that maps, messaging and email are all they actually need, and wants the cheap no-contract way to have them working on landing.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// JR TOKYO Wide Pass, added 30 Oct 2026 for /guides/transport/tokyo-wide-pass
+//
+// JR East's own three-day Kanto pass, in Klook's 5% passes-and-transport band —
+// which is why it is the headline CTA on that guide and the Kawaguchiko, Nikko
+// and Karuizawa day tours already declared above (6.5%) sit in the body.
+//
+// Klook answers automated reads of its /activity/ pages with HTTP 403, so
+// listing 49927 was confirmed live and on sale as an en-US listing through the
+// www.klook.com search index on 30 Oct 2026 ("JR Tokyo Wide Pass"), along with
+// its redemption at Haneda and Narita on a voucher plus passport. No price
+// appears here, for the usual reason — and because JR East's own figure
+// (¥16,000 adult from 14 March 2026) is the one the guide quotes instead.
+// ---------------------------------------------------------------------------
+
+export const jrTokyoWidePass: KlookTour = {
+  title: "JR TOKYO Wide Pass (3 consecutive days)",
+  desc: "JR East's own Kanto pass as Klook sells it — the listing names Mt Fuji, Karuizawa, Izu and GALA Yuzawa as what it reaches, and redeems at Haneda or Narita on your passport",
+  url: klookLink("https://www.klook.com/en-US/activity/49927-jr-east-tokyo-tokyowidepass/"),
+};
