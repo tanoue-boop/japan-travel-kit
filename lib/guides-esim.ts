@@ -21,8 +21,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-data-plans",
     badge: "Comparison",
-    title: "Japan eSIM Data Plans Compared (2026): Which Is Right for You?",
-    desc: "Every major Japan eSIM data plan from Airalo, eSIM Go, Holafly, and Sakura Mobile — compared on price, data, duration, and value per GB.",
+    title: "Japan eSIM Data Plans (2026): How Much Data Do You Need?",
+    desc: "How many GB a 3, 5, 7, 10, 14 or 30-day trip needs, and the cheapest plan on sale that covers it — plus data, validity, network, speed caps and tethering by provider.",
     group: "compare",
     city: "other",
   },
