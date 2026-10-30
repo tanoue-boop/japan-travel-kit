@@ -1,6 +1,6 @@
 {
   "currency": "USD",
-  "generatedAt": "2026-10-29T10:09:13.520Z",
+  "generatedAt": "2026-10-30T10:10:51.112Z",
   "providers": {
     "airalo": {
       "name": "Airalo",
@@ -8,7 +8,7 @@
       "network": "SoftBank / KDDI (5G)",
       "sourceUrl": "https://www.airalo.com/japan-esim",
       "affiliateUrl": "https://airalo.pxf.io/c/7213504/1268485/15608",
-      "fetchedAt": "2026-10-29T10:09:13.520Z",
+      "fetchedAt": "2026-10-30T10:10:51.112Z",
       "updatedAt": "2026-09-18T01:19:25.371Z",
       "plans": [
         {
@@ -161,7 +161,7 @@
       "network": "SoftBank / KDDI (5G)",
       "sourceUrl": "https://esim.holafly.com/esim-japan/",
       "affiliateUrl": "#",
-      "fetchedAt": "2026-10-29T10:09:13.520Z",
+      "fetchedAt": "2026-10-30T10:10:51.112Z",
       "updatedAt": "2026-09-18T01:19:25.371Z",
       "plans": [
         {
@@ -226,8 +226,8 @@
       "network": "Docomo / SoftBank",
       "sourceUrl": "https://breezesim.com/products/esim-japan",
       "affiliateUrl": "https://breezesim.com?sca_ref=11082101.AF8vabyRKN",
-      "fetchedAt": "2026-10-29T10:09:13.520Z",
-      "updatedAt": "2026-09-18T01:20:13.959Z",
+      "fetchedAt": "2026-10-30T10:10:51.112Z",
+      "updatedAt": "2026-10-30T10:10:51.112Z",
       "plans": [
         {
           "id": "esimgo-1-gb-7-days",
@@ -266,7 +266,7 @@
           "name": "10 GB / 30 days",
           "gb": 10,
           "days": 30,
-          "priceUsd": 13.99,
+          "priceUsd": 14.99,
           "unlimited": false
         },
         {
@@ -274,23 +274,31 @@
           "name": "20 GB / 30 days",
           "gb": 20,
           "days": 30,
-          "priceUsd": 23.99,
+          "priceUsd": 26.99,
           "unlimited": false
         },
         {
-          "id": "esimgo-50-gb-30-days",
-          "name": "50 GB / 30 days",
+          "id": "esimgo-50-gb-45-days",
+          "name": "50 GB / 45 days",
           "gb": 50,
-          "days": 30,
-          "priceUsd": 41.99,
+          "days": 45,
+          "priceUsd": 66.99,
           "unlimited": false
         },
         {
-          "id": "esimgo-100-gb-30-days",
-          "name": "100 GB / 30 days",
+          "id": "esimgo-100-gb-70-days",
+          "name": "100 GB / 70 days",
           "gb": 100,
-          "days": 30,
-          "priceUsd": 81.99,
+          "days": 70,
+          "priceUsd": 133.49,
+          "unlimited": false
+        },
+        {
+          "id": "esimgo-200-gb-90-days",
+          "name": "200 GB / 90 days",
+          "gb": 200,
+          "days": 90,
+          "priceUsd": 251.49,
           "unlimited": false
         },
         {
@@ -316,7 +324,7 @@
           "name": "Unlimited / 5 days",
           "gb": null,
           "days": 5,
-          "priceUsd": 16.99,
+          "priceUsd": 17.49,
           "unlimited": true,
           "note": "Unlimited Essential — speed reduced after daily high-speed allowance"
         },
@@ -325,7 +333,7 @@
           "name": "Unlimited / 7 days",
           "gb": null,
           "days": 7,
-          "priceUsd": 22.99,
+          "priceUsd": 23.99,
           "unlimited": true,
           "note": "Unlimited Essential — speed reduced after daily high-speed allowance"
         },
@@ -355,7 +363,7 @@
       "network": "au/KDDI (Unlimited) or Docomo (3 GB/day)",
       "sourceUrl": "https://www.sakuramobile.jp/travel/esim/",
       "affiliateUrl": "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
-      "fetchedAt": "2026-10-29T10:09:13.520Z",
+      "fetchedAt": "2026-10-30T10:10:51.112Z",
       "updatedAt": "2026-09-18T01:33:09.373Z",
       "plans": [
         {
