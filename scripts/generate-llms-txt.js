@@ -61,7 +61,7 @@ const sections = [
   section(
     "Transport, rail passes and airport transfers",
     `Trains, passes and airport runs. ${transportCategory.articles.length} guides covering whether the Japan Rail Pass ` +
-      "still pays after the 2023 price rise, IC cards, the shinkansen, city-by-city transport, and the airport routes " +
+      "still pays after the 2023 and October 2026 price rises, IC cards, the shinkansen, city-by-city transport, and the airport routes " +
       "into Tokyo, Osaka and Kyoto, with official fares.",
     pick(transportCategory),
   ),

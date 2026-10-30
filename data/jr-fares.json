@@ -3,11 +3,11 @@
   "asOf": "2026-09",
   "note": "One-way regular-season fares (basic fare + reserved-seat limited express charge, Ordinary car) on JR Pass-eligible services. Nozomi/Mizuho are not covered by the pass without a supplement, so Hikari/Sakura/Kodama fares are used on the Tokaido/Sanyo line. Figures are rounded reference values — confirm on JR East/JR Central sites before buying.",
   "passes": [
-    { "id": "7", "name": "7-day Ordinary", "days": 7, "priceYen": 50000 },
-    { "id": "14", "name": "14-day Ordinary", "days": 14, "priceYen": 80000 },
-    { "id": "21", "name": "21-day Ordinary", "days": 21, "priceYen": 100000 }
+    { "id": "7", "name": "7-day Ordinary", "days": 7, "priceYen": 53000, "priceOnlineYen": 50000 },
+    { "id": "14", "name": "14-day Ordinary", "days": 14, "priceYen": 84000, "priceOnlineYen": 80000 },
+    { "id": "21", "name": "21-day Ordinary", "days": 21, "priceYen": 105000, "priceOnlineYen": 100000 }
   ],
-  "passNote": "From 1 October 2026 the overseas-sold 7-day Ordinary pass is due to rise to ¥53,000; the official online reservation price is expected to stay at ¥50,000.",
+  "passNote": "Pass prices above are the Exchange Order prices charged by JR-designated agencies outside Japan — the channel every reseller sells through — revised on 1 October 2026 to ¥53,000, ¥84,000 and ¥105,000 for the 7-, 14- and 21-day adult Ordinary pass. The JR Group's own price page still lists ¥50,000, ¥80,000 and ¥100,000 for a pass bought on the official website, with no closing date published for that; read on japanrailpass.net, 30 October 2026. Buying online therefore lowers your break-even by ¥3,000 to ¥5,000.",
   "segments": [
     { "id": "tokyo-kyoto", "from": "Tokyo", "to": "Kyoto", "fareYen": 13970, "train": "Tokaido Shinkansen (Hikari)", "minutes": 160, "group": "Tokaido / Sanyo" },
     { "id": "tokyo-shin-osaka", "from": "Tokyo", "to": "Shin-Osaka", "fareYen": 14720, "train": "Tokaido Shinkansen (Hikari)", "minutes": 175, "group": "Tokaido / Sanyo" },

@@ -184,6 +184,17 @@ export default function JrPassCalculator() {
             <span>Tickets: {yen(total)}</span>
             <span>Break-even: {yen(pass.priceYen)}</span>
           </div>
+          {/*
+            Added 30 Oct 2026 with the October price revision: the break-even above is the
+            Exchange Order price, because that is what Klook and every other reseller charges.
+            The official website is still selling the pre-revision price, so a reader who buys
+            there faces a lower bar and has to be told which number applies to them.
+          */}
+          <p className={tools.fieldHint} style={{ marginTop: "0.5rem" }}>
+            Break-even uses the {yen(pass.priceYen)} Exchange Order price that JR-designated agencies
+            and resellers charge since 1 October 2026. Bought on the official JR website the same pass
+            is still {yen(pass.priceOnlineYen)}, which lowers the bar by {yen(pass.priceYen - pass.priceOnlineYen)}.
+          </p>
           <div className={tools.statGrid}>
             <div className={tools.stat}>
               <p className={tools.statLabel}>Individual tickets</p>

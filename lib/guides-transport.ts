@@ -5,8 +5,8 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/jr-pass-guide",
     badge: "Guide",
-    title: "JR Pass Guide 2026: Prices, Is It Worth It and How to Buy",
-    desc: "All pass types and prices, a break-even calculator for your own route, and how to buy and redeem the pass — plus the itineraries where individual tickets cost less.",
+    title: "JR Pass Cost 2026: New Prices & Is It Worth It?",
+    desc: "¥53,000 for 7 days, ¥84,000 for 14 and ¥105,000 for 21 since the 1 October 2026 revision — and still ¥50,000 / ¥80,000 / ¥100,000 on the official JR site. Both prices, a break-even calculator for your own route, and the itineraries where individual tickets cost less.",
     group: "passes",
     city: "other",
   },
