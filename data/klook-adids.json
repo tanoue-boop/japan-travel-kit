@@ -1,5 +1,5 @@
 {
- "_note": "Klook aff_adid per page (created 2026-10-27 via Klook Text Links, label1 = page path, label2 = jtk-page). spare は新規ページ用。使ったら pages へ移し spare から消す",
+ "_note": "Klook aff_adid per page (created 2026-10-27 via Klook Text Links, label1 = page path, label2 = jtk-page). spare は新規ページ用。使ったら pages へ移し spare から消す。1538089–1538128 の40個は 2026-11-01 に同じ Text Links ツールで追加作成した予備（spare が残り4個になったため）",
  "pages": {
   "/": 1528206,
   "/guides/attractions/akihabara-anime-tour": 1528242,
@@ -158,5 +158,9 @@
   "/zh-tw/guides/esim/best-esim-japan": 1528204,
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
  },
- "spare": [1528244,1528245,1528246,1528247]
+ "spare": [1528244,1528245,1528246,1528247,
+  1538089,1538090,1538091,1538092,1538093,1538094,1538095,1538096,1538097,1538098,
+  1538099,1538100,1538101,1538102,1538103,1538104,1538105,1538106,1538107,1538108,
+  1538109,1538110,1538111,1538112,1538113,1538114,1538115,1538116,1538117,1538118,
+  1538119,1538120,1538121,1538122,1538123,1538124,1538125,1538126,1538127,1538128]
 }
