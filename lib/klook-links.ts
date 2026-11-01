@@ -4819,3 +4819,76 @@ export const akihabaraTripPrep: KlookTripPrepItem[] = [
     why: "Akihabara is the district where you will actually use the data: shop floors stack six storeys deep with little English signage, much of the figure and retro-game stock is only findable by searching a Japanese title, and a maid café's own reservation page is in Japanese too.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// "Book for the same day" blocks, added 1 Nov 2026 for shibuya-sky-tickets and
+// usj-tickets-express-pass — the two pages Klook's report shows taking the most
+// clicks, and both selling a ticket in the bands that pay least (SHIBUYA SKY is a
+// 2% special activity, the USJ Express Pass 0%). The ticket links stay; these sit
+// directly under the price / booking section so the higher bands are on screen
+// before the reader leaves for the ticket: tours and hotels 6.5%, passes, airport
+// transfers and trains 5%, the Klook eSIM 20%.
+//
+// Every product below was confirmed live on www.klook.com through a search
+// restricted to that domain on 1 Nov 2026 (listings 102521, 5672, 1552, 109393,
+// 23053, the p50014852 hotel search, 82312, 18400 and 86986). No price is quoted
+// for the usual reason: Klook answers automated reads of its product pages with
+// HTTP 403. Defined at the foot of the module because the tours they reuse are
+// declared after `tripPrepProducts`.
+// ---------------------------------------------------------------------------
+
+export const shibuyaSkySameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: shinjukuNightFoodWalkingTour.title,
+    ctaLabel: "Check the Shinjuku night tour →",
+    url: shinjukuNightFoodWalkingTour.url,
+    why: "The evening after a sunset slot, a short Yamanote ride from Shibuya: a three-hour join-in walk through Omoide Yokocho, Kabukicho and Golden Gai, ending with a drink at a Golden Gai izakaya.",
+  },
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the Tokyo day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "If the slot is in the evening, the daytime can still be the rest of Tokyo: a guided day of the Imperial Palace gardens, Asakusa and Tokyo Skytree with multilingual audio guidance.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Shibuya Station is on the Hanzomon, Ginza and Fukutoshin lines, so a 24, 48 or 72-hour ticket covers the rides to and from the deck — the ticket does not cover JR lines such as the Yamanote.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A Klook ticket arrives as an e-ticket on your phone, and the slot is fixed to a time — data from the airport onwards means the voucher, the map and the weather check are all there on the day.",
+  },
+  {
+    label: tokyoPrivateAirportTransfer.title,
+    ctaLabel: "Check the airport transfer →",
+    url: tokyoPrivateAirportTransfer.url,
+    why: "Booked to your hotel address rather than a station, from either Narita or Haneda, with the driver tracking your flight — useful when you land the same day as a late slot.",
+  },
+];
+
+export const usjSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels near Universal Studios Japan (Universal City)",
+    ctaLabel: "Check Universal City hotels on Klook →",
+    url: usjStayAreas[0].url,
+    why: "The same Klook hotel search the Osaka where-to-stay guide uses. The park gates are about five minutes on foot from Universal City Station, which is what you want on a morning you mean to be there before opening.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "For the Osaka days either side of the park, not the park day itself: it covers Osaka Metro and city buses plus more than 40 admissions, but not Universal Studios Japan and not the JR line out to Universal City.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "From Kansai Airport straight to Tennoji, Osaka or Shin-Osaka, the stations a USJ trip starts from; Klook's listing states it is sold only to non-Japanese passport holders with a Temporary Visitor stamp.",
+  },
+  {
+    label: absoluteOsakaFoodTour.title,
+    ctaLabel: "Check the Osaka food tour →",
+    url: absoluteOsakaFoodTour.url,
+    why: "An evening for a non-park day: a three-hour join-in walk off the Dotonbori strip with kushikatsu, takoyaki, a hidden izakaya and a local dessert.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "USJ runs Super Nintendo World area timed entry through its own app, used inside the park on the day, and the Studio Pass is an e-ticket — both need data in the queue, not only on hotel Wi-Fi.",
+  },
+];

@@ -14,7 +14,16 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
-import { zhShibuyaSky } from "../../../../lib/klook-links-zh-tw";
+import KlookTripPrep from "../../../../components/KlookTripPrep";
+import type { KlookTripPrepItem } from "../../../../lib/klook-links";
+import {
+  zhKlookEsim,
+  zhShibuyaSky,
+  zhShinjukuNightFoodTour,
+  zhTokyoPrivateAirportTransfer,
+  zhTokyoSightseeingBusTour,
+  zhTokyoSubwayTicket,
+} from "../../../../lib/klook-links-zh-tw";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -140,6 +149,17 @@ const faqItems: FaqItem[] = [
     q: "從澀谷SKY 看得到富士山嗎？",
     a: "天氣清朗時看得到——空氣通透的日子從澀谷SKY 可以看見富士山，不過機會最高的還是高度更高的東京晴空塔。能見度看天氣，通常在較涼、較乾燥的月份與清晨最好，任何一天都不保證。",
   },
+];
+
+// Klook, "book for the same day" (1 Nov 2026): the ticket on this page pays the
+// lowest Klook band, so these sit under it — tours and hotels 6.5%, passes,
+// transfers and trains 5%, the Klook eSIM 20%. No prices, as everywhere else.
+const sameDayPrep: KlookTripPrepItem[] = [
+  { label: zhShinjukuNightFoodTour.label, url: zhShinjukuNightFoodTour.url, ctaLabel: "查看新宿夜間導覽 →", why: "日落場之後的夜晚，從澀谷搭山手線很快就到新宿：3小時的併團步行導覽，走回憶橫丁、歌舞伎町與黃金街，最後在黃金街的居酒屋喝一杯。" },
+  { label: zhTokyoSightseeingBusTour.label, url: zhTokyoSightseeingBusTour.url, ctaLabel: "查看東京一日遊 →", why: "如果時段在晚上，白天還能看東京其他地方：一日遊行程包含皇居庭園、淺草與東京晴空塔，附多語語音導覽。" },
+  { label: zhTokyoSubwayTicket.label, url: zhTokyoSubwayTicket.url, ctaLabel: "查看地鐵通票 →", why: "澀谷站有半藏門線、銀座線與副都心線，24／48／72小時票就能涵蓋往返展望台的地鐵；山手線等 JR 路線不在範圍內。" },
+  { label: zhKlookEsim.label, url: zhKlookEsim.url, ctaLabel: "查看 Klook eSIM →", why: "Klook 的門票是手機上的電子票，時段也是固定的。從機場開始就有網路，當天的憑證、地圖和天氣都能隨時查看。" },
+  { label: zhTokyoPrivateAirportTransfer.label, url: zhTokyoPrivateAirportTransfer.url, ctaLabel: "查看機場接送 →", why: "直接預約到飯店地址而不是車站，成田、羽田兩座機場都有，司機會追蹤你的航班——抵達當天就排了晚場時特別實用。" },
 ];
 
 const trail: Crumb[] = [
@@ -280,6 +300,15 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             ，每一列都附上查核日期。
           </p>
         </section>
+
+        {/* Klook, directly under the price table — the ticket CTAs are unchanged. */}
+        <KlookTripPrep
+          label="同一天要訂的"
+          heading="和澀谷SKY 門票一起預訂的項目"
+          intro="澀谷SKY 的時段大約只佔一天中的一小時。同一天通常還需要這些：看完之後的夜晚、之前的白天、中間的移動、手機網路，以及從機場進市區。"
+          items={sameDayPrep}
+          note="這些連結前往 Klook，我們會獲得佣金，你不需多付任何費用。價格與庫存以 Klook 為準；其商品頁會阻擋自動查核，所以這裡不列價格。"
+        />
 
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>最佳時段</span>

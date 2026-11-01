@@ -104,3 +104,27 @@ export const koKlookEsim = product(
   "클룩 일본 eSIM",
   "activity/109393-japan-esim-high-speed-internet-qr-code-voucher/",
 );
+
+// ── "Book for the same day" (added 1 Nov 2026) ──────────────────────────────
+// For the Shibuya Sky and USJ pages. en-US counterparts, in order:
+// tokyoSubwayTicket, shinjukuNightFoodWalkingTour, tokyoPrivateAirportTransfer,
+// the Universal City hotel search in usjStayAreas[0], jrHarukaUrl and
+// absoluteOsakaFoodTour. Same product ids on Klook's ko path; each listing was
+// confirmed live on www.klook.com on 1 Nov 2026.
+export const koTokyoSubwayTicket = product("도쿄 서브웨이 티켓(24・48・72시간)", "activity/1552-subway-ticket-tokyo/");
+
+export const koShinjukuNightFoodTour = product(
+  "신주쿠 야간 푸드 투어(오모이데요코초・가부키초・골든가이)",
+  "activity/102521-shinjuku-food-tour-tokyo-join-3-hr-walking-tour-omoide-yokocho-kabukicho-golden-gai/",
+);
+
+export const koTokyoPrivateAirportTransfer = product(
+  "나리타・하네다 공항 ⇄ 도쿄 단독 차량 픽업・샌딩",
+  "activity/23053-private-haneda-narita-airport-transfers-tokyo/",
+);
+
+export const koUsjHotels = product("유니버설 스튜디오 재팬 주변 호텔", "destination/p50014852-universal-studios-japan/3-hotel/");
+
+export const koJrHaruka = product("JR 하루카 간사이 공항 특급 열차 티켓", "activity/18400-jr-haruka-airport-express-train-tickets-osaka/");
+
+export const koOsakaFoodTour = product("오사카 푸드 투어(도톤보리 골목)", "activity/86986-osaka-join-half-day-food-tour/");

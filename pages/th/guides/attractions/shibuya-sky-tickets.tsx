@@ -15,7 +15,16 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
-import { thShibuyaSky } from "../../../../lib/klook-links-th";
+import KlookTripPrep from "../../../../components/KlookTripPrep";
+import type { KlookTripPrepItem } from "../../../../lib/klook-links";
+import {
+  thKlookEsim,
+  thShibuyaSky,
+  thShinjukuNightFoodTour,
+  thTokyoPrivateAirportTransfer,
+  thTokyoSightseeingBusTour,
+  thTokyoSubwayTicket,
+} from "../../../../lib/klook-links-th";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -141,6 +150,17 @@ const faqItems: FaqItem[] = [
     q: "จาก Shibuya Sky เห็นภูเขาไฟฟูจิไหม?",
     a: "วันที่อากาศใสเห็นได้ ในวันที่อากาศโปร่ง Shibuya Sky มองเห็นภูเขาไฟฟูจิ แต่โอกาสสูงที่สุดยังเป็น Tokyo Skytree ที่สูงกว่า ทัศนวิสัยขึ้นอยู่กับสภาพอากาศ มักดีที่สุดในเดือนที่อากาศเย็นและแห้ง และในช่วงเช้า ไม่มีวันไหนรับประกันได้",
   },
+];
+
+// Klook, "book for the same day" (1 Nov 2026): the ticket on this page pays the
+// lowest Klook band, so these sit under it — tours and hotels 6.5%, passes,
+// transfers and trains 5%, the Klook eSIM 20%. No prices, as everywhere else.
+const sameDayPrep: KlookTripPrepItem[] = [
+  { label: thShinjukuNightFoodTour.label, url: thShinjukuNightFoodTour.url, ctaLabel: "ดูทัวร์ค่ำชินจูกุ →", why: "สำหรับช่วงค่ำหลังรอบพระอาทิตย์ตก ชินจูกุอยู่ไม่ไกลจากชิบูย่าบนสาย Yamanote: ทัวร์เดินแบบจอยกรุ๊ป 3 ชั่วโมงผ่านโอโมอิเดะโยโกโจ คาบุกิโจ และโกลเด้นไก ปิดท้ายด้วยเครื่องดื่มที่อิซากายะในโกลเด้นไก" },
+  { label: thTokyoSightseeingBusTour.label, url: thTokyoSightseeingBusTour.url, ctaLabel: "ดูทัวร์โตเกียว 1 วัน →", why: "ถ้ารอบของคุณเป็นช่วงค่ำ กลางวันยังเที่ยวส่วนอื่นของโตเกียวได้: ทัวร์ 1 วันผ่านสวนพระราชวังอิมพีเรียล อาซากุสะ และโตเกียวสกายทรี พร้อมออดิโอไกด์หลายภาษา" },
+  { label: thTokyoSubwayTicket.label, url: thTokyoSubwayTicket.url, ctaLabel: "ดู Tokyo Subway Ticket →", why: "สถานีชิบูย่ามีสาย Hanzomon, Ginza และ Fukutoshin ตั๋ว 24 / 48 / 72 ชั่วโมงจึงครอบคลุมการเดินทางไปกลับจุดชมวิว แต่ไม่รวมสาย JR อย่าง Yamanote" },
+  { label: thKlookEsim.label, url: thKlookEsim.url, ctaLabel: "ดู eSIM ของ Klook →", why: "ตั๋วจาก Klook เป็นอีตั๋วบนมือถือ และรอบเข้าชมกำหนดเวลาไว้แล้ว มีอินเทอร์เน็ตตั้งแต่สนามบินทำให้เปิดวอชเชอร์ แผนที่ และเช็กสภาพอากาศได้ทันทีในวันนั้น" },
+  { label: thTokyoPrivateAirportTransfer.label, url: thTokyoPrivateAirportTransfer.url, ctaLabel: "ดูรถรับส่งสนามบิน →", why: "จองถึงที่อยู่โรงแรมแทนสถานี ได้ทั้งนาริตะและฮาเนดะ และคนขับติดตามเที่ยวบินของคุณ — เหมาะเมื่อคุณถึงญี่ปุ่นวันเดียวกับรอบช่วงค่ำ" },
 ];
 
 const trail: Crumb[] = [...TRAIL_BASE.th, { label: "ตั๋ว Shibuya Sky" }];
@@ -279,6 +299,15 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             {" "}โดยทุกแถวมีวันที่ตรวจสอบกำกับไว้
           </p>
         </section>
+
+        {/* Klook, directly under the price table — the ticket CTAs are unchanged. */}
+        <KlookTripPrep
+          label="จองไว้สำหรับวันเดียวกัน"
+          heading="สิ่งที่ควรจองคู่กับตั๋ว Shibuya Sky"
+          intro="รอบ Shibuya Sky ใช้เวลาราวหนึ่งชั่วโมงของวัน วันเดียวกันนั้นมักต้องใช้สิ่งเหล่านี้ด้วย — ช่วงค่ำหลังขึ้นจุดชมวิว ช่วงกลางวันก่อนหน้า การเดินทางระหว่างนั้น อินเทอร์เน็ตบนมือถือ และการเดินทางจากสนามบินเข้าเมือง"
+          items={sameDayPrep}
+          note="ลิงก์เหล่านี้ไปที่ Klook ซึ่งจ่ายค่าคอมมิชชันให้เราโดยคุณไม่ต้องจ่ายเพิ่ม ราคาและที่ว่างเป็นของ Klook — เราไม่ระบุราคาไว้ที่นี่เพราะหน้าสินค้าของ Klook บล็อกการตรวจสอบอัตโนมัติ"
+        />
 
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>รอบเวลา</span>

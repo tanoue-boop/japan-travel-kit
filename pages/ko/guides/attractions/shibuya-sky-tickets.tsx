@@ -15,7 +15,16 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
-import { koShibuyaSky } from "../../../../lib/klook-links-ko";
+import KlookTripPrep from "../../../../components/KlookTripPrep";
+import type { KlookTripPrepItem } from "../../../../lib/klook-links";
+import {
+  koKlookEsim,
+  koShibuyaSky,
+  koShinjukuNightFoodTour,
+  koTokyoPrivateAirportTransfer,
+  koTokyoSightseeingBusTour,
+  koTokyoSubwayTicket,
+} from "../../../../lib/klook-links-ko";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -141,6 +150,17 @@ const faqItems: FaqItem[] = [
     q: "시부야 스카이에서 후지산이 보이나요?",
     a: "맑은 날에는 보입니다. 공기가 투명한 날이면 시부야 스카이에서도 후지산이 보이지만, 확률이 가장 높은 곳은 더 높은 도쿄 스카이트리입니다. 가시거리는 날씨에 달려 있고 보통 서늘하고 건조한 달과 이른 아침이 가장 좋습니다. 어느 날에도 보장되지는 않습니다.",
   },
+];
+
+// Klook, "book for the same day" (1 Nov 2026): the ticket on this page pays the
+// lowest Klook band, so these sit under it — tours and hotels 6.5%, passes,
+// transfers and trains 5%, the Klook eSIM 20%. No prices, as everywhere else.
+const sameDayPrep: KlookTripPrepItem[] = [
+  { label: koShinjukuNightFoodTour.label, url: koShinjukuNightFoodTour.url, ctaLabel: "신주쿠 야간 투어 보기 →", why: "일몰 회차 뒤의 저녁입니다. 시부야에서 야마노테선으로 금방인 신주쿠에서 오모이데요코초・가부키초・골든가이를 걷는 3시간 조인 투어로, 골든가이 이자카야에서 한 잔으로 끝납니다." },
+  { label: koTokyoSightseeingBusTour.label, url: koTokyoSightseeingBusTour.url, ctaLabel: "도쿄 1일 투어 보기 →", why: "회차가 저녁이라면 낮에는 도쿄의 다른 곳을 볼 수 있습니다. 고쿄 정원・아사쿠사・도쿄 스카이트리를 다국어 오디오 가이드와 함께 도는 1일 투어입니다." },
+  { label: koTokyoSubwayTicket.label, url: koTokyoSubwayTicket.url, ctaLabel: "서브웨이 티켓 보기 →", why: "시부야역에는 한조몬선・긴자선・후쿠토신선이 지나므로 24・48・72시간 티켓으로 전망대 왕복을 해결할 수 있습니다. 야마노테선 같은 JR 노선은 포함되지 않습니다." },
+  { label: koKlookEsim.label, url: koKlookEsim.url, ctaLabel: "클룩 eSIM 보기 →", why: "클룩 티켓은 휴대폰의 전자 티켓으로 받고, 회차는 시간이 정해져 있습니다. 공항에서부터 데이터가 있으면 당일 바우처・지도・날씨를 바로 확인할 수 있습니다." },
+  { label: koTokyoPrivateAirportTransfer.label, url: koTokyoPrivateAirportTransfer.url, ctaLabel: "공항 픽업・샌딩 보기 →", why: "역이 아니라 호텔 주소로 예약하고, 나리타・하네다 어느 공항이든 기사가 항공편을 확인합니다. 도착한 날 늦은 회차를 잡았다면 유용합니다." },
 ];
 
 const trail: Crumb[] = [...TRAIL_BASE.ko, { label: "시부야 스카이 예약" }];
@@ -278,6 +298,15 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             에 있으며, 모든 행에 확인 날짜가 붙어 있습니다.
           </p>
         </section>
+
+        {/* Klook, directly under the price table — the ticket CTAs are unchanged. */}
+        <KlookTripPrep
+          label="같은 날 예약할 것"
+          heading="시부야 스카이 티켓과 함께 예약할 것"
+          intro="시부야 스카이 회차는 하루 중 약 한 시간입니다. 같은 날에는 보통 이것들도 필요합니다 — 전망대 다음의 저녁, 그 전의 낮, 그 사이의 이동, 휴대폰 데이터, 그리고 공항에서 시내까지."
+          items={sameDayPrep}
+          note="이 목록의 링크는 클룩으로 연결되며, 추가 비용 없이 저희가 수수료를 받습니다. 가격과 재고는 클룩 기준이며, 상품 페이지가 자동 확인을 막고 있어 여기에는 적지 않습니다."
+        />
 
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>추천 시간대</span>

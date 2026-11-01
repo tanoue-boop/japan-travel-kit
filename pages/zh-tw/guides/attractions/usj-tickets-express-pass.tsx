@@ -14,7 +14,17 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
-import { zhUsjExpressPass, zhUsjStudioPass } from "../../../../lib/klook-links-zh-tw";
+import KlookTripPrep from "../../../../components/KlookTripPrep";
+import type { KlookTripPrepItem } from "../../../../lib/klook-links";
+import {
+  zhJrHaruka,
+  zhKlookEsim,
+  zhOsakaAmazingPass,
+  zhOsakaFoodTour,
+  zhUsjExpressPass,
+  zhUsjHotels,
+  zhUsjStudioPass,
+} from "../../../../lib/klook-links-zh-tw";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, zhMonthLabel } from "../../../../lib/i18n";
@@ -93,6 +103,17 @@ const faqItems: FaqItem[] = [
     q: "USJ 門票多少錢？",
     a: "USJ 採依日期分級的定價，所以同一張票在熱門日期會比清閒日期貴。因為票價隨日期與需求變動，我們不報固定金額——請在訂票時查你那個特定日期的即時價格。快速通關是 Studio Pass 之外的加購項目，金額依日期差異很大。",
   },
+];
+
+// Klook, "book for the same day" (1 Nov 2026): the ticket on this page pays the
+// lowest Klook band, so these sit under it — tours and hotels 6.5%, passes,
+// transfers and trains 5%, the Klook eSIM 20%. No prices, as everywhere else.
+const sameDayPrep: KlookTripPrepItem[] = [
+  { label: zhUsjHotels.label, url: zhUsjHotels.url, ctaLabel: "查看環球城周邊飯店 →", why: "與我們大阪住宿指南相同的 Klook 飯店搜尋。從環球城站步行到樂園大門約5分鐘，適合想在開園前就到門口的早晨。" },
+  { label: zhOsakaAmazingPass.label, url: zhOsakaAmazingPass.url, ctaLabel: "查看大阪周遊卡 →", why: "用在樂園前後的大阪行程，而不是樂園當天：包含大阪地鐵、市營巴士與40多處設施入場，但不含日本環球影城，也不含前往環球城的 JR。" },
+  { label: zhJrHaruka.label, url: zhJrHaruka.url, ctaLabel: "查看 HARUKA 車票 →", why: "從關西機場直達天王寺、大阪與新大阪。Klook 商品頁註明，僅限持「短期滯在（Temporary Visitor）」入境章的非日本護照旅客購買。" },
+  { label: zhOsakaFoodTour.label, url: zhOsakaFoodTour.url, ctaLabel: "查看大阪美食導覽 →", why: "留給不去樂園那天的晚上：3小時的併團步行導覽，避開道頓堀大街走進巷弄，有串炸、章魚燒、隱藏版居酒屋與在地甜點。" },
+  { label: zhKlookEsim.label, url: zhKlookEsim.url, ctaLabel: "查看 Klook eSIM →", why: "USJ 的超級任天堂世界區域入場券要在官方 App 上取得，Studio Pass 也是電子票——兩者都需要你在排隊現場有網路，而不只是飯店 Wi-Fi。" },
 ];
 
 const trail: Crumb[] = [
@@ -181,6 +202,27 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               <KlookLink href={zhUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ 門票（Studio Pass）→
               </KlookLink>
+            </div>
+          </div>
+        </div>
+
+        {/* Order on purpose (1 Nov 2026): Studio Pass, then the same-day bookings, then the
+            Express Pass, whose Klook CTA is moved here from the box above, not removed. */}
+        <KlookTripPrep
+          label="同一天要訂的"
+          heading="和 USJ 門票（Studio Pass）一起預訂的項目"
+          intro="Studio Pass 是入園門票；去樂園的那一天還需要住宿、往返大阪市區的交通與手機網路。以下五項都能用同一個 Klook 帳號，和門票一起預訂。"
+          items={sameDayPrep}
+          note="這些連結前往 Klook，我們會獲得佣金，你不需多付任何費用。價格與庫存以 Klook 為準；其商品頁會阻擋自動查核，所以這裡不列價格。"
+        />
+
+        <div className={styles.verdictBox}>
+          <div className={styles.verdictHeader}>
+            <span className={styles.verdictLabel}>快速通關</span>
+          </div>
+          <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>快速通關是加購項目，不是入園門票：同一天需要另外有 Studio Pass，而且每天的販售數量有限。請參考下方內容，依你的日期決定。</p>
+            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={zhUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ 快速通關 →
               </KlookLink>

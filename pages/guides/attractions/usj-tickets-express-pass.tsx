@@ -15,6 +15,7 @@ import {
   jrKansaiMiniPass,
   klookEsim,
   nankaiRapitUrl,
+  usjSameDayPrep,
   usjStayAreas,
   usjTripPrep,
 } from "../../../lib/klook-links";
@@ -469,12 +470,37 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               <KlookLink href={STUDIO_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ Studio Pass →
               </KlookLink>
+            </div>
+          </div>
+        </div>
+
+        {/* Order on purpose (1 Nov 2026): Studio Pass, then the same-day bookings, then
+            the Express Pass. The Express Pass pays 0% and the Studio Pass is excluded,
+            so the 5 / 6.5 / 20% products go on screen before the Express CTA — which
+            is moved here from the Quick Answer box, not removed. */}
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What to Book Alongside Your USJ Studio Pass"
+          intro="The Studio Pass gets you in; the park day around it still needs a bed, the rides to and from Osaka, and data on your phone. These five are booked on the same Klook account as the ticket."
+          items={usjSameDayPrep}
+        />
+
+        <div className={styles.verdictBox}>
+          <div className={styles.verdictHeader}>
+            <span className={styles.verdictLabel}>Express Pass</span>
+          </div>
+          <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>
+              The Express Pass is an add-on, not admission — it needs a Studio Pass for the same date, and
+              the day&apos;s allocation is capped. Decide it on your date, using the sections below.
+            </p>
+            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ Express Pass →
               </KlookLink>
             </div>
-            {/* Both Klook CTAs above are unchanged. The Express Pass is the one ticket
-                on this site that sells out earliest, so a second seller goes here too. */}
+            {/* The Klook Express Pass CTA is unchanged apart from its position. It is the
+                one ticket on this site that sells out earliest, so a second seller goes here too. */}
             <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
               <GygCompareButton
                 slug="usj-tickets-express-pass"

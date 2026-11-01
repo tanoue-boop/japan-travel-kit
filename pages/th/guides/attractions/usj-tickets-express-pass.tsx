@@ -15,7 +15,17 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
-import { thUsjExpressPass, thUsjStudioPass } from "../../../../lib/klook-links-th";
+import KlookTripPrep from "../../../../components/KlookTripPrep";
+import type { KlookTripPrepItem } from "../../../../lib/klook-links";
+import {
+  thJrHaruka,
+  thKlookEsim,
+  thOsakaAmazingPass,
+  thOsakaFoodTour,
+  thUsjExpressPass,
+  thUsjHotels,
+  thUsjStudioPass,
+} from "../../../../lib/klook-links-th";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, monthLabel } from "../../../../lib/i18n";
@@ -94,6 +104,17 @@ const faqItems: FaqItem[] = [
     q: "บัตร USJ ราคาเท่าไร?",
     a: "USJ คิดราคาเป็นระดับตามวัน ดังนั้นบัตรใบเดียวกันจะแพงกว่าในวันยอดนิยมและถูกกว่าในวันที่คนน้อย เพราะราคาขยับตามวันและความต้องการ เราจึงไม่ระบุยอดคงที่ — โปรดตรวจสอบราคาจริงของวันคุณตอนจอง Express Pass เป็นรายการซื้อเพิ่มนอกเหนือจาก Studio Pass และยอดต่างกันมากตามวัน",
   },
+];
+
+// Klook, "book for the same day" (1 Nov 2026): the ticket on this page pays the
+// lowest Klook band, so these sit under it — tours and hotels 6.5%, passes,
+// transfers and trains 5%, the Klook eSIM 20%. No prices, as everywhere else.
+const sameDayPrep: KlookTripPrepItem[] = [
+  { label: thUsjHotels.label, url: thUsjHotels.url, ctaLabel: "ดูโรงแรมย่านยูนิเวอร์แซลซิตี้ →", why: "หน้าค้นหาโรงแรมของ Klook เดียวกับในคู่มือที่พักโอซาก้าของเรา ประตูสวนอยู่ห่างจากสถานี Universal City ราว 5 นาทีเดิน เหมาะกับเช้าที่อยากไปถึงก่อนสวนเปิด" },
+  { label: thOsakaAmazingPass.label, url: thOsakaAmazingPass.url, ctaLabel: "ดู Osaka Amazing Pass →", why: "ใช้กับวันเที่ยวโอซาก้าก่อนและหลังวันสวนสนุก ไม่ใช่วันไป USJ: ครอบคลุม Osaka Metro รถบัสในเมือง และสถานที่กว่า 40 แห่ง แต่ไม่รวมยูนิเวอร์แซล สตูดิโอ เจแปน และไม่รวมรถไฟ JR ไป Universal City" },
+  { label: thJrHaruka.label, url: thJrHaruka.url, ctaLabel: "ดูตั๋ว HARUKA →", why: "จากสนามบินคันไซตรงไปเท็นโนจิ โอซาก้า และชินโอซาก้า หน้าสินค้าของ Klook ระบุว่าขายเฉพาะผู้ถือพาสปอร์ตที่ไม่ใช่ญี่ปุ่นและมีตราประทับ Temporary Visitor" },
+  { label: thOsakaFoodTour.label, url: thOsakaFoodTour.url, ctaLabel: "ดูทัวร์อาหารโอซาก้า →", why: "สำหรับค่ำวันที่ไม่ได้ไปสวนสนุก: ทัวร์เดินแบบจอยกรุ๊ป 3 ชั่วโมงที่แยกออกจากถนนหลักโดทงโบริเข้าตรอก มีคุชิคัตสึ ทาโกยากิ อิซากายะลับ และของหวานท้องถิ่น" },
+  { label: thKlookEsim.label, url: thKlookEsim.url, ctaLabel: "ดู eSIM ของ Klook →", why: "USJ ใช้แอปทางการสำหรับบัตรเข้าโซน Super Nintendo World และ Studio Pass เองก็เป็นอีตั๋ว ทั้งสองอย่างต้องใช้อินเทอร์เน็ตตอนต่อคิวในสวน ไม่ใช่แค่ Wi-Fi ที่โรงแรม" },
 ];
 
 const trail: Crumb[] = [...TRAIL_BASE.th, { label: "บัตร USJ และ Express Pass" }];
@@ -180,6 +201,27 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               <KlookLink href={thUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 บัตร USJ (Studio Pass) →
               </KlookLink>
+            </div>
+          </div>
+        </div>
+
+        {/* Order on purpose (1 Nov 2026): Studio Pass, then the same-day bookings, then the
+            Express Pass, whose Klook CTA is moved here from the box above, not removed. */}
+        <KlookTripPrep
+          label="จองไว้สำหรับวันเดียวกัน"
+          heading="สิ่งที่ควรจองคู่กับ Studio Pass ของ USJ"
+          intro="Studio Pass คือบัตรเข้าสวน วันที่ไปสวนสนุกยังต้องมีที่พัก การเดินทางไปกลับตัวเมืองโอซาก้า และอินเทอร์เน็ตบนมือถือ ทั้งห้ารายการนี้จองได้ในบัญชี Klook เดียวกับตั๋ว"
+          items={sameDayPrep}
+          note="ลิงก์เหล่านี้ไปที่ Klook ซึ่งจ่ายค่าคอมมิชชันให้เราโดยคุณไม่ต้องจ่ายเพิ่ม ราคาและที่ว่างเป็นของ Klook — เราไม่ระบุราคาไว้ที่นี่เพราะหน้าสินค้าของ Klook บล็อกการตรวจสอบอัตโนมัติ"
+        />
+
+        <div className={styles.verdictBox}>
+          <div className={styles.verdictHeader}>
+            <span className={styles.verdictLabel}>Express Pass</span>
+          </div>
+          <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>Express Pass เป็นตัวเสริม ไม่ใช่บัตรเข้าสวน: ต้องมี Studio Pass ของวันเดียวกันด้วย และแต่ละวันขายจำนวนจำกัด ดูหัวข้อด้านล่างแล้วตัดสินใจตามวันที่ของคุณ</p>
+            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={thUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Express Pass USJ →
               </KlookLink>

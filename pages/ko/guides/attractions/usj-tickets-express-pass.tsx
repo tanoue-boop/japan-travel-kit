@@ -15,7 +15,17 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
-import { koUsjExpressPass, koUsjStudioPass } from "../../../../lib/klook-links-ko";
+import KlookTripPrep from "../../../../components/KlookTripPrep";
+import type { KlookTripPrepItem } from "../../../../lib/klook-links";
+import {
+  koJrHaruka,
+  koKlookEsim,
+  koOsakaAmazingPass,
+  koOsakaFoodTour,
+  koUsjExpressPass,
+  koUsjHotels,
+  koUsjStudioPass,
+} from "../../../../lib/klook-links-ko";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, monthLabel } from "../../../../lib/i18n";
@@ -94,6 +104,17 @@ const faqItems: FaqItem[] = [
     q: "USJ 티켓은 얼마인가요?",
     a: "USJ는 날짜별 등급 가격 체계여서 같은 티켓이 인기 날짜에는 한가한 날짜보다 비쌉니다. 가격이 날짜와 수요에 따라 움직이므로 저희는 고정 금액을 적지 않습니다. 예약 시점에 본인 날짜의 실시간 가격을 확인하세요. 익스프레스 패스는 스튜디오 패스와 별도의 추가 구매 항목이고 금액 차이가 날짜에 따라 큽니다.",
   },
+];
+
+// Klook, "book for the same day" (1 Nov 2026): the ticket on this page pays the
+// lowest Klook band, so these sit under it — tours and hotels 6.5%, passes,
+// transfers and trains 5%, the Klook eSIM 20%. No prices, as everywhere else.
+const sameDayPrep: KlookTripPrepItem[] = [
+  { label: koUsjHotels.label, url: koUsjHotels.url, ctaLabel: "유니버설시티 호텔 보기 →", why: "오사카 숙소 가이드와 같은 클룩 호텔 검색입니다. 파크 게이트는 유니버설시티역에서 걸어서 약 5분이라, 개장 전에 도착하고 싶은 아침에 맞습니다." },
+  { label: koOsakaAmazingPass.label, url: koOsakaAmazingPass.url, ctaLabel: "오사카 주유패스 보기 →", why: "파크 당일이 아니라 그 앞뒤 오사카 일정용입니다. 오사카 메트로와 시내버스, 40곳 이상의 입장이 포함되지만 유니버설 스튜디오 재팬과 유니버설시티로 가는 JR은 포함되지 않습니다." },
+  { label: koJrHaruka.label, url: koJrHaruka.url, ctaLabel: "하루카 티켓 보기 →", why: "간사이 공항에서 덴노지・오사카・신오사카까지 바로 갑니다. 클룩 상품 페이지에는 '단기 체류(Temporary Visitor)' 도장이 있는 일본 외 여권 소지자만 구매할 수 있다고 적혀 있습니다." },
+  { label: koOsakaFoodTour.label, url: koOsakaFoodTour.url, ctaLabel: "오사카 푸드 투어 보기 →", why: "파크에 가지 않는 날의 저녁입니다. 도톤보리 큰길에서 벗어난 골목을 걷는 3시간 조인 투어로, 쿠시카츠・타코야키・숨은 이자카야・디저트가 들어 있습니다." },
+  { label: koKlookEsim.label, url: koKlookEsim.url, ctaLabel: "클룩 eSIM 보기 →", why: "USJ는 슈퍼 닌텐도 월드 시간 지정 입장을 공식 앱으로 운영하고, 스튜디오 패스도 전자 티켓입니다. 둘 다 호텔 와이파이가 아니라 줄을 선 그 자리에서 데이터가 필요합니다." },
 ];
 
 const trail: Crumb[] = [...TRAIL_BASE.ko, { label: "USJ 티켓과 익스프레스 패스" }];
@@ -179,6 +200,27 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               <KlookLink href={koUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ 티켓(스튜디오 패스) →
               </KlookLink>
+            </div>
+          </div>
+        </div>
+
+        {/* Order on purpose (1 Nov 2026): Studio Pass, then the same-day bookings, then the
+            Express Pass, whose Klook CTA is moved here from the box above, not removed. */}
+        <KlookTripPrep
+          label="같은 날 예약할 것"
+          heading="USJ 스튜디오 패스와 함께 예약할 것"
+          intro="스튜디오 패스는 입장권입니다. 파크에 가는 하루에는 그 밖에도 숙소, 오사카를 오가는 교통, 휴대폰 데이터가 필요합니다. 아래 다섯 가지는 티켓과 같은 클룩 계정으로 예약할 수 있습니다."
+          items={sameDayPrep}
+          note="이 목록의 링크는 클룩으로 연결되며, 추가 비용 없이 저희가 수수료를 받습니다. 가격과 재고는 클룩 기준이며, 상품 페이지가 자동 확인을 막고 있어 여기에는 적지 않습니다."
+        />
+
+        <div className={styles.verdictBox}>
+          <div className={styles.verdictHeader}>
+            <span className={styles.verdictLabel}>익스프레스 패스</span>
+          </div>
+          <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>익스프레스 패스는 입장권이 아닌 추가 상품입니다. 같은 날짜의 스튜디오 패스가 필요하고, 하루 판매 수량이 정해져 있습니다. 아래 내용을 보고 날짜에 맞춰 정하세요.</p>
+            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={koUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 USJ 익스프레스 패스 →
               </KlookLink>

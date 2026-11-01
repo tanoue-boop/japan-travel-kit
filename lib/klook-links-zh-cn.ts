@@ -140,3 +140,25 @@ export const cnKlookEsim = product(
   "Klook 日本 eSIM 流量卡",
   "activity/109393-japan-esim-high-speed-internet-qr-code-voucher/",
 );
+
+// ── "Book for the same day" (added 1 Nov 2026) ──────────────────────────────
+// For the Shibuya Sky and USJ pages. en-US counterparts, in order:
+// shinjukuNightFoodWalkingTour, tokyoPrivateAirportTransfer, the Universal City
+// hotel search in usjStayAreas[0], jrHarukaUrl and absoluteOsakaFoodTour. Same
+// product ids on Klook's zh-CN path; each listing was confirmed live on
+// www.klook.com on 1 Nov 2026.
+export const cnShinjukuNightFoodTour = product(
+  "新宿夜间美食导览（回忆横丁・歌舞伎町・黄金街）",
+  "activity/102521-shinjuku-food-tour-tokyo-join-3-hr-walking-tour-omoide-yokocho-kabukicho-golden-gai/",
+);
+
+export const cnTokyoPrivateAirportTransfer = product(
+  "成田・羽田机场 ⇄ 东京 专车接送",
+  "activity/23053-private-haneda-narita-airport-transfers-tokyo/",
+);
+
+export const cnUsjHotels = product("日本环球影城周边酒店", "destination/p50014852-universal-studios-japan/3-hotel/");
+
+export const cnJrHaruka = product("JR HARUKA 关西机场特急车票", "activity/18400-jr-haruka-airport-express-train-tickets-osaka/");
+
+export const cnOsakaFoodTour = product("大阪美食导览（道顿堀小巷）", "activity/86986-osaka-join-half-day-food-tour/");

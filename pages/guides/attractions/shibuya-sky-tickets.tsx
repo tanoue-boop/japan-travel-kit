@@ -8,6 +8,7 @@ import KlookLink from "../../../components/KlookLink";
 import {
   fujiHakoneDayTour,
   shibuyaSkyDayTripPrep,
+  shibuyaSkySameDayPrep,
   shibuyaSkyTicketUrl,
   tokyoSightseeingBusTour,
 } from "../../../lib/klook-links";
@@ -453,6 +454,15 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             , which carries the check date for each one.
           </p>
         </section>
+
+        {/* Klook, directly under the price table: what the same day needs booking. The
+            Shibuya Sky ticket CTAs are unchanged — this adds the 5 / 6.5 / 20% bands. */}
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What to Book Alongside Your Shibuya Sky Ticket"
+          intro="A Shibuya Sky slot is about an hour of one day. These five are what that same day usually needs as well — the evening after it, the daytime before it, the rides in between, data on your phone and the trip in from the airport."
+          items={shibuyaSkySameDayPrep}
+        />
 
         {/* Q2 — hours */}
         <section className={styles.comparisonSection}>

@@ -20,9 +20,15 @@ type Props = {
    * one (the tax-free guide's airport run).
    */
   label?: string;
+  /**
+   * The disclosure line under the list. Defaults to the English one; the
+   * translated editions pass their own, so a Korean or Thai page does not end
+   * its block in English.
+   */
+  note?: string;
 };
 
-export default function KlookTripPrep({ heading, intro, items, label = "Before your trip" }: Props) {
+export default function KlookTripPrep({ heading, intro, items, label = "Before your trip", note }: Props) {
   return (
     <section className={styles.bodySection}>
       <span className={styles.sectionLabel}>{label}</span>
@@ -47,8 +53,8 @@ export default function KlookTripPrep({ heading, intro, items, label = "Before y
         ))}
       </ul>
       <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-        These go to Klook, which pays us a commission at no extra cost to you. Prices and availability
-        are Klook&apos;s — we do not quote them here because its product pages block automated checks.
+        {note ??
+          "These go to Klook, which pays us a commission at no extra cost to you. Prices and availability are Klook's — we do not quote them here because its product pages block automated checks."}
       </p>
     </section>
   );
