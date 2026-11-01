@@ -60,6 +60,35 @@ export const thUsjExpressPass = product(
   "activity/3407-universal-studios-japan-express-pass-osaka/",
 );
 
+// en-US counterpart: teamlabBorderlessTicketUrl (aff_adid 1299135); zh-TW: zhTeamlabBorderless
+export const thTeamlabBorderless = product(
+  "ตั๋ว teamLab Borderless อาซาบุไดฮิลส์",
+  "activity/20707-teamlab-borderless-admission-ticket-tokyo/",
+);
+
+// en-US counterpart: skytreeTicket; zh-TW: zhSkytreeTicket
+export const thSkytreeTicket = product("ตั๋ว Tokyo Skytree", "activity/41352-tokyo-skytree/");
+
+// ── Osaka: the Dotonbori river boats and the pass that covers one of them ───
+// en-US counterparts: osakaAmazingPass, dotonboriCityCruise,
+// dotonboriNaniwaSightseeingBoat. Klook has no standalone listing for the
+// operator's own Tombori River Cruise in any locale — the Thai page says so
+// rather than implying one of these is it.
+export const thOsakaAmazingPass = product(
+  "Osaka Amazing Pass (1 วัน／2 วัน)",
+  "activity/82312-amazing-pass-osaka/",
+);
+
+export const thDotonboriCityCruise = product(
+  "ล่องเรือซิตี้ครูซโดทงโบริ",
+  "activity/65390-city-cruise-experience-osaka/",
+);
+
+export const thDotonboriNaniwaBoat = product(
+  "เรือชมวิวนานิวะ โดทงโบริ โอซาก้า",
+  "activity/176566-osaka-dotonbori-river-cruise/",
+);
+
 // ── Day tours, for the "what to do with the rest of the day" blocks ─────────
 export const thFujiHakoneDayTour = product("ทัวร์ 1 วัน ภูเขาไฟฟูจิ＋ฮาโกเน่", "activity/75806-fuji-hakone-day-tour/");
 

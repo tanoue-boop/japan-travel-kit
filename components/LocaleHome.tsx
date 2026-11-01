@@ -129,11 +129,13 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "門票與景點",
-        desc: "單一場館的入場券——指定時段的美術館與展望台。",
+        desc: "單一場館的入場券——東京的美術館與展望台，以及大阪的道頓堀遊船。",
         routes: [
           "/zh-tw/guides/attractions/shibuya-sky-tickets",
+          "/zh-tw/guides/attractions/tokyo-skytree-tickets",
           "/zh-tw/guides/attractions/teamlab-tokyo-tickets",
           "/zh-tw/guides/attractions/teamlab-borderless-tickets",
+          "/zh-tw/guides/attractions/dotonbori-river-cruise",
         ],
       },
       {
@@ -173,6 +175,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
     blurbs: {
       "/zh-tw/guides/attractions/shibuya-sky-tickets":
         "官方票價、為什麼日落場最先賣完，以及海外信用卡刷不過時怎麼訂。",
+      "/zh-tw/guides/attractions/tokyo-skytree-tickets":
+        "350 樓與 450 樓怎麼選、套票為什麼比現場加購便宜，以及當天購票多 ¥500。",
+      "/zh-tw/guides/attractions/dotonbori-river-cruise":
+        "とんぼり遊船的票價與班次、大阪周遊卡怎麼換票，以及同一條河上五艘船的比較。",
       "/zh-tw/guides/attractions/teamlab-tokyo-tickets":
         "豐洲 Planets 的票價、30 分鐘入場時段、涉水區該穿什麼，以及和無界的比較。",
       "/zh-tw/guides/attractions/teamlab-borderless-tickets":
@@ -241,11 +247,13 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "门票与景点",
-        desc: "单一场馆的入场券——指定时段的美术馆与观景台。",
+        desc: "单一场馆的入场券——东京的美术馆与观景台，以及大阪的道顿堀游船。",
         routes: [
           "/zh-cn/guides/attractions/shibuya-sky-tickets",
+          "/zh-cn/guides/attractions/tokyo-skytree-tickets",
           "/zh-cn/guides/attractions/teamlab-tokyo-tickets",
           "/zh-cn/guides/attractions/teamlab-borderless-tickets",
+          "/zh-cn/guides/attractions/dotonbori-river-cruise",
         ],
       },
       {
@@ -285,6 +293,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
     blurbs: {
       "/zh-cn/guides/attractions/shibuya-sky-tickets":
         "官方票价、为什么日落场最先卖完，以及海外信用卡刷不过时怎么订。",
+      "/zh-cn/guides/attractions/tokyo-skytree-tickets":
+        "350 楼与 450 楼怎么选、套票为什么比现场加购便宜，以及当天购票多 ¥500。",
+      "/zh-cn/guides/attractions/dotonbori-river-cruise":
+        "とんぼり游船的票价与班次、大阪周游卡怎么换票，以及同一条河上五艘船的比较。",
       "/zh-cn/guides/attractions/teamlab-tokyo-tickets":
         "丰洲 Planets 的票价、30 分钟入场时段、涉水区该穿什么，以及和无界的比较。",
       "/zh-cn/guides/attractions/teamlab-borderless-tickets":
@@ -353,10 +365,13 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "입장권",
-        desc: "시간대를 지정해서 파는 전망대와 미술관 — 공식 요금과 예약 방법.",
+        desc: "도쿄의 전망대와 미술관, 그리고 오사카의 도톤보리 리버크루즈 — 공식 요금과 예약 방법.",
         routes: [
           "/ko/guides/attractions/shibuya-sky-tickets",
+          "/ko/guides/attractions/tokyo-skytree-tickets",
           "/ko/guides/attractions/teamlab-tokyo-tickets",
+          "/ko/guides/attractions/teamlab-borderless-tickets",
+          "/ko/guides/attractions/dotonbori-river-cruise",
         ],
       },
       {
@@ -378,8 +393,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
     blurbs: {
       "/ko/guides/attractions/shibuya-sky-tickets":
         "공식 요금, 일몰 시간대가 가장 먼저 마감되는 이유, 해외 카드가 막힐 때의 예약 방법.",
+      "/ko/guides/attractions/tokyo-skytree-tickets":
+        "플로어 350과 450 선택 기준, 콤보가 현장 추가보다 싼 이유, 당일 구매 ¥500 추가.",
       "/ko/guides/attractions/teamlab-tokyo-tickets":
         "도요스 플래닛의 요금과 30분 단위 입장 시간, 물에 들어가는 구역 복장, 보더리스와 비교.",
+      "/ko/guides/attractions/teamlab-borderless-tickets":
+        "아자부다이힐스 보더리스: 변동 요금제, 지정 시간 입장과 Flexible Pass의 차이.",
+      "/ko/guides/attractions/dotonbori-river-cruise":
+        "톤보리 리버크루즈의 요금과 운항 시간, 오사카 주유패스 교환 규칙, 배 5종 비교.",
       "/ko/guides/attractions/tokyo-disney-tickets":
         "모든 티켓이 날짜 지정이고 현장 판매는 없습니다. 구매 방법과 랜드·씨 선택 기준.",
       "/ko/guides/attractions/usj-tickets-express-pass":
@@ -436,10 +457,13 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "ตั๋วเข้าชม",
-        desc: "จุดชมวิวและพิพิธภัณฑ์ที่ขายเป็นรอบเวลา — ราคาทางการและวิธีจอง",
+        desc: "จุดชมวิวและพิพิธภัณฑ์ในโตเกียว และล่องเรือโดทงโบริที่โอซาก้า — ราคาทางการและวิธีจอง",
         routes: [
           "/th/guides/attractions/shibuya-sky-tickets",
+          "/th/guides/attractions/tokyo-skytree-tickets",
           "/th/guides/attractions/teamlab-tokyo-tickets",
+          "/th/guides/attractions/teamlab-borderless-tickets",
+          "/th/guides/attractions/dotonbori-river-cruise",
         ],
       },
       {
@@ -461,8 +485,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
     blurbs: {
       "/th/guides/attractions/shibuya-sky-tickets":
         "ราคาทางการ เหตุผลที่รอบพระอาทิตย์ตกเต็มก่อน และวิธีจองเมื่อบัตรต่างประเทศถูกปฏิเสธ",
+      "/th/guides/attractions/tokyo-skytree-tickets":
+        "เลือกชั้น 350 หรือ 450 เหตุผลที่คอมโบถูกกว่าการเพิ่มหน้างาน และค่าบริการ ¥500 เมื่อซื้อวันนั้น",
       "/th/guides/attractions/teamlab-tokyo-tickets":
         "ราคาของ Planets ที่โทโยสุ รอบเข้าชมทุก 30 นาที การแต่งตัวสำหรับโซนลุยน้ำ และเทียบกับ Borderless",
+      "/th/guides/attractions/teamlab-borderless-tickets":
+        "Borderless ที่อาซาบุไดฮิลส์: ราคาแบบยืดหยุ่น และความต่างของรอบระบุเวลากับ Flexible Pass",
+      "/th/guides/attractions/dotonbori-river-cruise":
+        "ราคาและรอบของ Tombori River Cruise กฎการแลกตั๋วของ Osaka Amazing Pass และเทียบเรือห้าลำ",
       "/th/guides/attractions/tokyo-disney-tickets":
         "บัตรทุกใบระบุวัน และไม่มีขายที่ประตู วิธีซื้อ และเลือกระหว่างแลนด์กับซี",
       "/th/guides/attractions/usj-tickets-express-pass":

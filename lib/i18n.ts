@@ -187,21 +187,22 @@ export type TranslatedPage = {
   zhCnTitle: string;
   /** Short 简体中文 label. */
   zhCnLabel: string;
-  /** Korean route, on the five pages that have one. */
+  /** Korean route, on the pages that have one — eight of twelve since 2026-11-01. */
   ko?: string;
   koTitle?: string;
   koLabel?: string;
-  /** Thai route, on the five pages that have one. */
+  /** Thai route, on the pages that have one — eight of twelve since 2026-11-01. */
   th?: string;
   thTitle?: string;
   thLabel?: string;
 };
 
 /**
- * The ten pages, in the order they were picked: by revenue and clicks, with the
- * Things to Do hub last because it is the category entry point rather than an
- * article. Adding a page to an edition means adding its file under pages/<prefix>/
- * and the three fields here — nothing else.
+ * The translated guide set, in the order the pages were picked: by revenue and
+ * clicks, with the Things to Do hub last because it is the category entry point
+ * rather than an article. Ten rows until 2026-11-01, twelve since. Adding a page
+ * to an edition means adding its file under pages/<prefix>/, the three fields
+ * here, and the edition's search term in scripts/check-i18n.js — nothing else.
  *
  * The titles are not conversions of each other. Each carries the phrase its own
  * readers type into Google, checked against live results in that language before
@@ -209,7 +210,7 @@ export type TranslatedPage = {
  * against ตั๋ว Shibuya Sky; 快速通關 against 快速通行证 against 익스프레스 패스
  * against Express Pass.
  *
- * Korean and Thai exist on five of the ten rows. The missing ones are left absent
+ * Korean and Thai exist on eight of the twelve rows. The missing ones are left absent
  * rather than pointed at English: a page that does not exist in a language must not
  * appear in that language's hreflang set or its sitemap alternates.
  */
@@ -237,6 +238,15 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     zhCn: "/zh-cn/guides/attractions/teamlab-borderless-tickets",
     zhCnTitle: "teamLab 无界 门票（2026）：票价、时段预约与购票渠道",
     zhCnLabel: "teamLab 无界 门票",
+    // Korean and Thai added 2026-11-01: a Borderless booking came through the
+    // Korean edition of the Planets page on 25 October, so the museum it spends
+    // half its comparison table on now has a page of its own in both.
+    ko: "/ko/guides/attractions/teamlab-borderless-tickets",
+    koTitle: "팀랩 보더리스 티켓(2026): 가격, 지정 시간 입장, 구매 경로",
+    koLabel: "팀랩 보더리스 티켓",
+    th: "/th/guides/attractions/teamlab-borderless-tickets",
+    thTitle: "ตั๋ว teamLab Borderless (2026): ราคา รอบเวลา และช่องทางซื้อ",
+    thLabel: "ตั๋ว teamLab Borderless",
   },
   {
     en: "/guides/attractions/teamlab-tokyo-tickets",
@@ -282,6 +292,40 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     th: "/th/guides/attractions/usj-tickets-express-pass",
     thTitle: "บัตร USJ และ Express Pass USJ (2026): ควรซื้อแบบไหน",
     thLabel: "Express Pass USJ",
+  },
+  // Added 2026-11-01. Both English pages converted in the week to 1 November —
+  // Skytree on 29 October, the Dotonbori cruise on 27 — and both are in all four
+  // editions rather than the Chinese pair only, because the translated clicks
+  // that week were Korean and Thai as much as Chinese.
+  {
+    en: "/guides/attractions/tokyo-skytree-tickets",
+    zhTw: "/zh-tw/guides/attractions/tokyo-skytree-tickets",
+    zhTitle: "東京晴空塔門票（2026）：票價、350 與 450 樓怎麼選",
+    zhLabel: "東京晴空塔門票",
+    zhCn: "/zh-cn/guides/attractions/tokyo-skytree-tickets",
+    zhCnTitle: "东京晴空塔门票（2026）：票价、350 与 450 楼怎么选",
+    zhCnLabel: "东京晴空塔门票",
+    ko: "/ko/guides/attractions/tokyo-skytree-tickets",
+    koTitle: "도쿄 스카이트리 티켓(2026): 요금과 플로어 350·450 선택",
+    koLabel: "도쿄 스카이트리 티켓",
+    th: "/th/guides/attractions/tokyo-skytree-tickets",
+    thTitle: "ตั๋ว Tokyo Skytree (2026): ราคา และเลือกชั้น 350 หรือ 450",
+    thLabel: "ตั๋ว Tokyo Skytree",
+  },
+  {
+    en: "/guides/attractions/dotonbori-river-cruise",
+    zhTw: "/zh-tw/guides/attractions/dotonbori-river-cruise",
+    zhTitle: "道頓堀遊船（2026）：票價、班次時間與搭船處",
+    zhLabel: "道頓堀遊船",
+    zhCn: "/zh-cn/guides/attractions/dotonbori-river-cruise",
+    zhCnTitle: "道顿堀游船（2026）：票价、班次时间与搭船处",
+    zhCnLabel: "道顿堀游船",
+    ko: "/ko/guides/attractions/dotonbori-river-cruise",
+    koTitle: "도톤보리 리버크루즈(2026): 요금, 운항 시간, 선착장",
+    koLabel: "도톤보리 리버크루즈",
+    th: "/th/guides/attractions/dotonbori-river-cruise",
+    thTitle: "ล่องเรือโดทงโบริ (2026): ราคา เวลาออกเรือ และท่าเรือ",
+    thLabel: "ล่องเรือโดทงโบริ",
   },
   {
     en: "/guides/attractions/mt-fuji-day-tour-from-tokyo",

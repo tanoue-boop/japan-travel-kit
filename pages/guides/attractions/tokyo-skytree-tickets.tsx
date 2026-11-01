@@ -5,6 +5,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import { hreflangLinks } from "../../../components/Hreflang";
 import { gygTokyoSkytree } from "../../../lib/gyg-links";
 import {
   skytreeTicket,
@@ -164,6 +165,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
         <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-skytree-tickets" />
+        {hreflangLinks("/guides/attractions/tokyo-skytree-tickets")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-skytree-tickets" />

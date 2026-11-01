@@ -69,6 +69,22 @@ export const zhUsjExpressPass = product(
 
 export const zhSkytreeTicket = product("東京晴空塔門票", "activity/41352-tokyo-skytree/");
 
+// ── 大阪：道頓堀的遊船，以及包含其中一艘的通票 ──────────────────────────────
+// en-US counterparts: osakaAmazingPass, dotonboriCityCruise,
+// dotonboriNaniwaSightseeingBoat. Klook 任何語系都沒有業者自營的「とんぼりリバー
+// クルーズ」單獨商品頁，所以繁體中文頁照英文頁的寫法直接說明，而不把這幾艘當成那一艘。
+export const zhOsakaAmazingPass = product("大阪周遊卡（1日／2日）", "activity/82312-amazing-pass-osaka/");
+
+export const zhDotonboriCityCruise = product(
+  "道頓堀 City Cruise 遊船",
+  "activity/65390-city-cruise-experience-osaka/",
+);
+
+export const zhDotonboriNaniwaBoat = product(
+  "大阪道頓堀 浪花觀光遊船",
+  "activity/176566-osaka-dotonbori-river-cruise/",
+);
+
 // ── Mt. Fuji day tours ──────────────────────────────────────────────────────
 export const zhFujiHakoneDayTour = product("富士山＋箱根一日遊", "activity/75806-fuji-hakone-day-tour/");
 

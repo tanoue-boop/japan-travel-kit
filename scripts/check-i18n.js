@@ -71,7 +71,28 @@ const SEARCH_TERMS = {
     ko: "시부야 스카이 예약",
     th: "ตั๋ว Shibuya Sky",
   },
-  "/guides/attractions/teamlab-borderless-tickets": { "zh-tw": "teamLab 無界 門票", "zh-cn": "teamLab 无界 门票" },
+  "/guides/attractions/teamlab-borderless-tickets": {
+    "zh-tw": "teamLab 無界 門票",
+    "zh-cn": "teamLab 无界 门票",
+    ko: "팀랩 보더리스",
+    th: "teamLab Borderless",
+  },
+  // Added 2026-11-01 with the Skytree and Dotonbori editions. The Korean and Thai
+  // terms are the transliterations those readers actually search — 도쿄 스카이트리
+  // rather than Tokyo Skytree, ล่องเรือโดทงโบริ rather than Dotonbori cruise —
+  // while Thai keeps the Latin "Tokyo Skytree", which is what Thai results show.
+  "/guides/attractions/tokyo-skytree-tickets": {
+    "zh-tw": "東京晴空塔門票",
+    "zh-cn": "东京晴空塔门票",
+    ko: "도쿄 스카이트리 티켓",
+    th: "ตั๋ว Tokyo Skytree",
+  },
+  "/guides/attractions/dotonbori-river-cruise": {
+    "zh-tw": "道頓堀遊船",
+    "zh-cn": "道顿堀游船",
+    ko: "도톤보리 리버크루즈",
+    th: "ล่องเรือโดทงโบริ",
+  },
   "/guides/attractions/teamlab-tokyo-tickets": {
     "zh-tw": "teamLab Planets 門票",
     "zh-cn": "teamLab Planets 门票",
