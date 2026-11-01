@@ -421,8 +421,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/dotonbori-river-cruise",
     badge: "Experience",
-    title: "Dotonbori River Cruise (2026): Price, Times, Pier and the Pass",
-    desc: "¥2,000 for an adult, about 20 minutes, and a departure every half hour from Tazaemonbashi Pier between 11:00 and 21:00 — free on the Osaka Amazing Pass if you exchange the voucher before the evening boats fill.",
+    title: "Dotonbori River Cruise 2026: Price, Times and the Tombori Boat",
+    desc: "¥2,000 for an adult, about 20 minutes, and a departure every half hour from Tazaemonbashi Pier between 11:00 and 21:00 — free on the Osaka Amazing Pass if you exchange the voucher before the evening boats fill. Plus the ¥1,000 Wonder Cruise alternative.",
     group: "experiences",
     city: "osaka",
   },

@@ -22,7 +22,7 @@ import {
  * Dotonbori river cruise — the Tombori River Cruise, and the three other boats
  * that run the same stretch of water.
  *
- * Sources, all read on 23 Oct 2026, and nothing here first-hand:
+ * Sources, all re-read on 1 Nov 2026, and nothing here first-hand:
  *
  * - osaka-info.jp (Osaka Convention & Tourism Bureau, the city's official tourism
  *   body), the English spot page for the Tombori River Cruise: the ¥2,000 /
@@ -30,30 +30,38 @@ import {
  *   and half hour, Tazaemonbashi Pier and the Don Quijote Dotonbori 1F reception,
  *   the 5–10 minute walks from Namba, Shinsaibashi and Nipponbashi, the ticket
  *   office opening an hour before the first departure, the no-phone-reservations
- *   rule, the online booking window closing 10 minutes before departure, and the
- *   Osaka e-Pass inclusion.
+ *   rule, the online booking window closing 10 minutes before departure, the
+ *   free-for-one-preschooler-per-adult rule, and the Osaka e-Pass inclusion.
  * - osaka-amazing-pass.com/en/service_free.html, the pass operator's own free-
  *   admission list: the same three fares, the same 11:00–21:00 half-hourly
  *   schedule, the 13, 24 and 25 July closures, the voucher-exchange-for-a-timed-
  *   slot rule, "Boarding is only allowed at the time stated on the ticket", the
  *   warning that evening cruises sell out and should be exchanged in the daytime,
- *   and the river-conditions suspension clause.
+ *   "You can't go on board when all seats are taken", and the river-conditions
+ *   suspension clause.
  * - suito-osaka.jp (Aqua Metropolis Osaka, the city/prefecture cruise portal) for
  *   the operator name — Ipponmatsu Kaiun — the ~20 minute duration, the
  *   Tazaemonbashi Pier departure, and the boat being listed as 屋根なし, without
  *   a roof. That last line is the whole of the wet-weather answer below.
+ * - osaka-info.jp/experience/en/osaka/spot/396, the same tourism body's listing
+ *   for WONDER CRUISE・PIRATES, new to this page on 1 Nov 2026: the 20-minute
+ *   Dotonbori course at ¥1,000 / ¥500, the 30–40 minute one-way Osaka Cruise
+ *   course at ¥1,800 / ¥900, Nipponbashi Pier and the WONDER PUB ticket booth,
+ *   the 60-passenger capacity and the advance-reservation advice. That makes the
+ *   Wonder boat the one rival on this river with officially published fares, and
+ *   it undercuts the Tombori boat by half.
  * - The www.klook.com search index for the four boat listings and the two food
  *   walks linked here. Klook answers automated reads of /activity/ pages with
  *   HTTP 403, so the index is the route the queue doc prescribes.
  *
  * Two judgement calls worth flagging:
  *
- * 1. The operator's own site, ipponmatsu.co.jp, was down for maintenance on the
- *    check date (a posted PHP-vulnerability notice, with the cruise detail pages
- *    unreachable). Every figure below therefore comes from the city tourism body
- *    and the pass operator rather than from the boat company's own pages. Those
- *    two agree line for line on the fares and the schedule, which is why the
- *    numbers are stated plainly.
+ * 1. The operator's own site, ipponmatsu.co.jp, was still down for maintenance on
+ *    1 Nov 2026 — the same posted PHP-vulnerability notice as on 23 Oct, with the
+ *    cruise detail pages unreachable and only a phone number given. Every figure
+ *    below therefore comes from the city tourism body and the pass operator
+ *    rather than from the boat company's own pages. Those two agree line for line
+ *    on the fares and the schedule, which is why the numbers are stated plainly.
  * 2. Klook has no standalone en-US listing for the operator's own Tombori River
  *    Cruise. It sells the other Dotonbori boats and the pass that includes the
  *    Tombori one free. The page says so rather than implying one is the other.
@@ -62,7 +70,7 @@ import {
  */
 
 /** Every figure on this page was read on this date. */
-const CHECKED_ISO = "2026-10-23";
+const CHECKED_ISO = "2026-11-01";
 const CHECKED = checkedLabel(CHECKED_ISO);
 
 /** The pass price is owned by lib/attraction-prices.ts, shared with the ticket price table. */
@@ -85,6 +93,11 @@ const fareRows = [
     what: "A quarter of the adult fare",
   },
   {
+    tier: "Preschool child",
+    price: "Free",
+    what: "One per paying adult rides free; a second preschooler pays the ¥500 child fare",
+  },
+  {
     tier: "Osaka Amazing Pass holder",
     price: "Free",
     what: "One ride, included — but you must exchange the pass for a timed ticket at the reception desk first",
@@ -97,22 +110,40 @@ const fareRows = [
 ];
 
 const scheduleRows = [
-  { what: "Departures", when: "11:00 to 21:00, every hour on the hour and on the half hour" },
+  { what: "First departure", when: "11:00" },
+  { what: "Last departure", when: "21:00" },
+  { what: "Interval", when: "Every 30 minutes — on the hour and on the half hour, so 21 sailings a day" },
   { what: "Time on the water", when: "About 20 minutes" },
-  { what: "Boarding point", when: "Tazaemonbashi Pier, Tonbori River Walk (north bank)" },
+  { what: "Boarding point", when: "Tazaemonbashi Pier, Tonbori River Walk (north bank), a minute from Ebisubashi" },
   { what: "Reception", when: "1F of the Don Quijote Dotonbori store, directly in front of the pier" },
-  { what: "Ticket office opens", when: "One hour before the first departure of the day" },
+  { what: "Ticket office opens", when: "One hour before the first departure of the day — 10:00" },
   { what: "Online booking closes", when: "10 minutes before departure (prepaid)" },
+  { what: "Phone reservations", when: "Not accepted" },
   { what: "Closed days in 2026", when: "13, 24 and 25 July" },
+  { what: "Suspensions", when: "Subject to change without notice for river conditions and vessel maintenance" },
 ];
 
 const boatRows = [
   {
-    boat: "Tombori River Cruise",
+    boat: "Tombori River Cruise (Ipponmatsu Kaiun)",
     run: "About 20 minutes, 11:00–21:00 every half hour",
     fare: "¥2,000 adult / ¥1,000 student / ¥500 child",
     pass: "Free with the Osaka Amazing Pass and the Osaka e-Pass",
     sold: "Counter at Tazaemonbashi Pier, or the operator's own online booking",
+  },
+  {
+    boat: "Wonder Cruise — Dotonbori course",
+    run: "20 minutes, a loop of the Dotonbori stretch",
+    fare: "¥1,000 adult / ¥500 child",
+    pass: "Not listed as a pass facility",
+    sold: "Nipponbashi Pier, ticket booth at the WONDER PUB shop beside it",
+  },
+  {
+    boat: "Wonder Cruise — Osaka Cruise course",
+    run: "30–40 minutes, one way between Nipponbashi and Hachikenyahama",
+    fare: "¥1,800 adult / ¥900 child",
+    pass: "Not listed as a pass facility",
+    sold: "Same booth — limited runs, so the listing advises reserving ahead",
   },
   {
     boat: "Naniwa sightseeing boat",
@@ -159,7 +190,7 @@ const whoFor = [
   },
   {
     title: "Pick a different boat if…",
-    desc: "You want a seat rather than a bench, a longer ride, or a drink in your hand. The Tombori boat is the cheap, frequent, pass-covered one; the other Dotonbori operators sell a 30-minute run, a lounge-seat cruise that lets you bring your own drinks, and a DJ boat with club entry attached. Same river, different evenings.",
+    desc: "You want a cheaper fare, a seat rather than a bench, a longer ride, or a drink in your hand. The Tombori boat is the frequent, pass-covered one; the Wonder Cruise runs the same 20 minutes for half the money from Nipponbashi Pier, and the other Dotonbori operators sell a 30-minute run, a lounge-seat cruise that lets you bring your own drinks, and a DJ boat with club entry attached. Same river, different evenings.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 17h18l-2 4H5z" />
@@ -173,7 +204,7 @@ const whoFor = [
 const steps = [
   {
     title: "Decide whether you are on a pass before you buy anything",
-    desc: `This is the only decision on the page that moves money. The Tombori River Cruise is a free admission on the Osaka Amazing Pass, which is ${PASS_1_DAY} for one day — so if a pass day is already in your plan, you do not buy a cruise ticket at all. If it is not, the counter fare is ¥2,000 for an adult.`,
+    desc: `This is the only decision on the page that moves money. The Tombori River Cruise is a free admission on the Osaka Amazing Pass, which is ${PASS_1_DAY} for one day — so if a pass day is already in your plan, you do not buy a cruise ticket at all. If it is not, the counter fare is ¥2,000 for an adult, and the Wonder Cruise from Nipponbashi Pier is ¥1,000 for a 20-minute Dotonbori loop, which is the cheaper single ticket on this river.`,
   },
   {
     title: "If you are on a pass, exchange the voucher early in the day",
@@ -195,43 +226,55 @@ const steps = [
 
 const faqItems = [
   {
-    q: "How much does the Dotonbori river cruise cost?",
-    a: `The Tombori River Cruise — the operator's boat from Tazaemonbashi Pier — is ¥2,000 for an adult, ¥1,000 for a student from junior high school age up, and ¥500 for an elementary-school child. Both Osaka's official tourism body and the Osaka Amazing Pass operator's own facility list publish the same three figures. It is free with the Osaka Amazing Pass and free with the Osaka e-Pass, in both cases after you exchange the pass for a timed ticket at the reception desk. The other Dotonbori boats sold through Klook price themselves separately — open a listing for the current fare. All read on ${CHECKED}.`,
+    q: "How much is the Dotonbori River Cruise?",
+    a: `¥2,000 for an adult. The Tombori River Cruise — the operator's boat from Tazaemonbashi Pier — is ¥2,000 for an adult, ¥1,000 for a student from junior high school age up, and ¥500 for an elementary-school child, with one preschooler free per paying adult. Both Osaka's official tourism body and the Osaka Amazing Pass operator's own facility list publish the same three figures. It is free with the Osaka Amazing Pass and free with the Osaka e-Pass, in both cases after you exchange the pass for a timed ticket at the reception desk. The other Dotonbori boats price themselves separately — the Wonder Cruise from Nipponbashi Pier is ¥1,000 for its 20-minute Dotonbori course, and the Klook-sold boats publish their own fares on their listings. All read on ${CHECKED}.`,
   },
   {
-    q: "How long is the Dotonbori river cruise?",
+    q: "How long is the Tombori River Cruise?",
     a: `About 20 minutes on the water, running the Dotonbori canal through the heart of Minami and back. That is short by cruise standards and it is the right length: the stretch of river it covers is only a few hundred metres of neon frontage, and a longer boat would simply go round again. Budget closer to 40 minutes door to door once the reception desk, the walk to the pontoon and the boarding are counted. Duration as published by Osaka's official tourism site and the Aqua Metropolis Osaka cruise portal, read on ${CHECKED}.`,
   },
   {
-    q: "What time does the Dotonbori river cruise run?",
-    a: `Departures run from 11:00 to 21:00, on the hour and on the half hour — so 21 sailings a day, every day except 13, 24 and 25 July in 2026. The ticket office by the pier opens one hour before the first departure. That 21:00 last boat is the number that matters when you are planning: it is late enough that a night cruise fits after dinner in any season, and it means the evening slots are the scarce ones rather than the daytime ones. Schedule read on ${CHECKED}; it is subject to change for river conditions and vessel maintenance.`,
+    q: "What time does the Dotonbori River Cruise run?",
+    a: `Departures run from 11:00 to 21:00, every 30 minutes — on the hour and on the half hour, so 21 sailings a day, every day except 13, 24 and 25 July in 2026. The ticket office by the pier opens one hour before the first departure, which makes it 10:00. That 21:00 last boat is the number that matters when you are planning: it is late enough that a night cruise fits after dinner in any season, and it means the evening slots are the scarce ones rather than the daytime ones. Schedule read on ${CHECKED}; it is subject to change for river conditions and vessel maintenance.`,
   },
   {
-    q: "Where do you board the Dotonbori river cruise?",
-    a: "At Tazaemonbashi Pier, on the Tonbori River Walk promenade along the north bank of the Dotonbori canal. The reception desk is on the first floor of the Don Quijote Dotonbori store directly in front of the pier, which is the landmark to aim for rather than the pier itself. It is a 5 to 10 minute walk from Namba, Shinsaibashi or Nipponbashi stations. All three leave you on the south side with the Glico sign, so you cross at Ebisubashi or Tazaemonbashi to reach the boat.",
+    q: "What time is the last Dotonbori River Cruise boat?",
+    a: `21:00, every day the boat runs. Because every departure costs the same, the last sailing is the cheapest way to get the fully lit version of Dotonbori — but it is also inside the window the pass operator says sells out first, so it is the one slot worth securing in advance rather than turning up for. If you are on a pass, exchange the voucher for a 20:30 or 21:00 ticket during the daytime; if you are paying, the operator's web booking stays open until 10 minutes before departure. Last-departure time read on ${CHECKED} from Osaka's official tourism site and the pass operator's facility list, which agree.`,
   },
   {
-    q: "Is the Dotonbori river cruise included in the Osaka Amazing Pass?",
+    q: "Where do you board the Dotonbori River Cruise?",
+    a: "At Tazaemonbashi Pier, on the Tonbori River Walk promenade along the north bank of the Dotonbori canal, about a minute east of Ebisubashi. The reception desk is on the first floor of the Don Quijote Dotonbori store directly in front of the pier, which is the landmark to aim for rather than the pier itself. It is a 5 to 10 minute walk from Namba, Shinsaibashi or Nipponbashi stations. All three leave you on the south side with the Glico sign, so you cross at Ebisubashi or Tazaemonbashi to reach the boat. Note that the Wonder Cruise, a different operator, boards at Nipponbashi Pier instead — so check which boat your ticket is for before you walk to a pontoon.",
+  },
+  {
+    q: "What is the difference between the Dotonbori river cruise and the Tombori River Cruise?",
+    a: `They are the same boat under two names. “Tombori River Cruise” (とんぼりリバークルーズ) is the official product name, operated by Ipponmatsu Kaiun, and it is what appears on the ticket, on the pier and on the Osaka Amazing Pass free-admission list. “Dotonbori river cruise” is the descriptive phrase most visitors search for, and it also gets used loosely for any of the boats on this canal — including the Wonder Cruise from Nipponbashi Pier and the Klook-sold city cruise, Naniwa sightseeing boat and TONBORIRAVE DJ boat, which are different operators at different fares. If the pass is the reason you are riding, the Tombori boat is the only one of them it covers. Names and operator checked on ${CHECKED}.`,
+  },
+  {
+    q: "Is there a cheaper Dotonbori boat ride than the ¥2,000 Tombori River Cruise?",
+    a: `Yes, if you are not on a pass. Osaka's official tourism body lists the Wonder Cruise Dotonbori course at ¥1,000 for an adult and ¥500 for a child for a 20-minute loop of the same stretch — half the Tombori fare for the same length of ride — boarding at Nipponbashi Pier with the ticket booth at the WONDER PUB shop beside it. Its longer Osaka Cruise course, a one-way 30 to 40 minutes between Nipponbashi and Hachikenyahama, is ¥1,800 adult and ¥900 child. The trade-offs are that it has limited runs per course, so the listing advises reserving ahead, and that no Osaka pass covers it. If you are holding an Osaka Amazing Pass, the Tombori boat is free and the comparison does not arise. Fares read on ${CHECKED}.`,
+  },
+  {
+    q: "Is the Dotonbori River Cruise free with the Osaka Amazing Pass?",
     a: `Yes — the Tombori River Cruise is one of the free admissions on the Osaka Amazing Pass, with no time cut-off of the kind the Umeda Sky Building has. It is also free on the Osaka e-Pass. The condition is procedural rather than financial: you exchange the pass at the reception desk for a ticket with a departure time on it, and the operator states that boarding is only allowed at the time stated on the ticket. The pass operator also warns that evening cruises sell out quickly and recommends exchanging during the daytime. With the pass at ${PASS_1_DAY} for a day, a ¥2,000 cruise plus Osaka Castle's ¥1,200 main tower is most of the way to break-even before you count a single subway ride. Conditions read on ${CHECKED}.`,
   },
   {
-    q: "Do you need to book the Dotonbori river cruise in advance?",
+    q: "Do you need to book the Dotonbori River Cruise in advance?",
     a: "Not usually, but the evening is a different question from the afternoon. Same-day tickets are sold at the ticket office by the pier, which opens an hour before the first departure, and on a weekday afternoon you can simply turn up. There are no phone reservations. For a Friday or Saturday night sailing, use the operator's online booking — it stays open until 10 minutes before departure and is prepaid — or, if you are on a pass, exchange your voucher for an evening slot early in the day, because the operator's own guidance is that the night boats go first.",
   },
   {
-    q: "Is the Dotonbori river cruise better at night or during the day?",
+    q: "Is the Dotonbori River Cruise better at night or during the day?",
     a: "At night, if you only ride once. The thing you are paying for is the Glico sign, the neon frontages and the lights off the water, and all of them need darkness. Daytime has two arguments in its favour and they are both practical: the slots are easier to get, and a pass holder trying to fit several free admissions into one day will find the 13:00 sailing easier to work around than the 19:30. Our Umeda Sky Building guide has the published Osaka sunset times by season if you want to pick the sailing that catches the light changing.",
   },
   {
-    q: "Does the Dotonbori river cruise run in the rain?",
+    q: "Does the Dotonbori River Cruise run in the rain?",
     a: `Usually yes, but bring a layer and a hood: the boat is listed as having no roof on the Aqua Metropolis Osaka cruise portal, read on ${CHECKED}, which is what lets it pass under the low Dotonbori bridges. The published cancellation trigger is not rain as such — the pass operator's facility list says the service can be suspended because of river conditions or vessel maintenance. Treat heavy rain and high water as the risk rather than a shower, and if the weather is marginal, the covered alternative in the same few streets is a food walk rather than a boat.`,
   },
   {
     q: "Which Dotonbori cruise should you pick?",
-    a: "The Tombori River Cruise if you hold an Osaka pass or want the cheapest, most frequent ride — it is the ¥2,000, 20-minute, half-hourly boat and the only one the passes cover. The Naniwa sightseeing boat if you want the longer run at 30 minutes. The Dotonbori city cruise if you would rather have lounge seating and your own drink on board; its listing also says pets are welcome, which is unusual. The TONBORIRAVE boat if you are starting a night out rather than sightseeing — it is a DJ cruise with free Piccadilly nightclub entry attached. Same river, four quite different evenings.",
+    a: "The Tombori River Cruise if you hold an Osaka pass or want the most frequent ride — it is the ¥2,000, 20-minute, half-hourly boat and the only one the passes cover. The Wonder Cruise Dotonbori course if you are paying cash and want the same 20 minutes for ¥1,000, boarding at Nipponbashi Pier instead, and you do not mind reserving ahead because it has limited runs. The Naniwa sightseeing boat if you want the longer run at 30 minutes. The Dotonbori city cruise if you would rather have lounge seating and your own drink on board; its listing also says pets are welcome, which is unusual. The TONBORIRAVE boat if you are starting a night out rather than sightseeing — it is a DJ cruise with free Piccadilly nightclub entry attached. Same river, quite different evenings.",
   },
   {
-    q: "Is the Dotonbori river cruise good with children?",
+    q: "Is the Dotonbori River Cruise good with children?",
     a: "Yes, and the fare structure says so: ¥500 for an elementary-school child against ¥2,000 for an adult. Twenty minutes is short enough to hold a small child's attention, the commentary is lively rather than reverent, and there is nothing to queue for in the way that an observation deck or a theme park ride demands. The things to plan around are the open boat — no roof, so sun in August and wind in January — and the fact that a timed ticket means arriving before the time printed on it rather than when you get there.",
   },
   {
@@ -244,9 +287,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/dotonbori-river-cruise") },
 });
 
-const TITLE = "Dotonbori River Cruise (2026): Price, Times and the Pier";
+const TITLE = "Dotonbori River Cruise 2026: Tombori Price, Times & Pier";
 const DESC =
-  "The Tombori river cruise is ¥2,000 for an adult, runs 20 minutes and leaves Tazaemonbashi Pier every half hour from 11:00 to 21:00 — free with the pass.";
+  "Dotonbori River Cruise price and times: the Tombori boat is ¥2,000 adult, runs 20 minutes and leaves Tazaemonbashi Pier every half hour, 11:00–21:00.";
 
 export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpdated }) {
   return (
@@ -336,15 +379,15 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Dotonbori River Cruise (2026):<br />Price, Times, Pier and the Pass
+            Dotonbori River Cruise 2026:<br />Price, Times and the Tombori Boat
           </h1>
           <p className={styles.heroSubtitle}>
-            Twenty minutes of neon from the water, every half hour until 21:00 — and free
-            on the Osaka city pass, as long as you exchange the voucher before the evening
-            boats fill.
+            ¥2,000 for an adult, about 20 minutes, and a departure from Tazaemonbashi Pier
+            every half hour between 11:00 and 21:00 — free with the Osaka Amazing Pass if
+            you exchange the voucher before the evening boats fill.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official fares, dated", "Four boats compared"].map((t) => (
+            {[`Updated ${updated.label}`, "Official fares, dated", "Six options compared"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -388,19 +431,25 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> a Dotonbori river cruise on the{" "}
-              <strong>Tombori River Cruise</strong> boat costs <strong>¥2,000</strong> for an
-              adult, <strong>¥1,000</strong> for a student from junior high school age up and{" "}
-              <strong>¥500</strong> for an elementary-school child. It runs{" "}
-              <strong>about 20 minutes</strong> and leaves{" "}
-              <strong>Tazaemonbashi Pier</strong> — the Tonbori River Walk promenade on the
-              north bank, reception on the 1F of the Don Quijote Dotonbori store —{" "}
-              <strong>every hour on the hour and half hour from 11:00 to 21:00</strong>. It is{" "}
-              <strong>free with the Osaka Amazing Pass</strong> and the Osaka e-Pass, with no
-              afternoon cut-off, but you must exchange the pass at the reception desk for a
-              ticket with a time printed on it, and the operator says the evening boats go
-              first. Same-day tickets are sold at the pier from an hour before the first
-              departure; there are no phone bookings. All read on {CHECKED}.
+              The <strong>Dotonbori River Cruise</strong> — officially the{" "}
+              <strong>Tombori River Cruise</strong>, run by{" "}
+              <strong>Ipponmatsu Kaiun</strong> — costs <strong>¥2,000</strong> for an adult,
+              runs <strong>about 20 minutes</strong>, and leaves{" "}
+              <strong>Tazaemonbashi Pier</strong> on the Tonbori River Walk, a minute from
+              Ebisubashi, <strong>every 30 minutes from 11:00 to 21:00</strong>. It is{" "}
+              <strong>free with the Osaka Amazing Pass</strong>.
+            </p>
+            <p className={styles.verdictText}>
+              The rest of the detail: <strong>¥1,000</strong> for a student from junior high
+              school age up, <strong>¥500</strong> for an elementary-school child, and one
+              preschooler free per paying adult. Reception is on the 1F of the Don Quijote
+              Dotonbori store, directly in front of the pier. The{" "}
+              <strong>Osaka e-Pass</strong> covers it too, with no afternoon cut-off on either
+              pass — but a pass does not board you: you exchange it at the reception desk for
+              a ticket with a departure time printed on it, and the pass operator warns that
+              the evening cruises sell out first. Same-day tickets are sold at the pier from
+              an hour before the first departure (10:00); online booking closes 10 minutes
+              before a departure and there are no phone bookings. All read on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -418,10 +467,18 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>What Is the Dotonbori River Cruise?</h2>
           <p className={styles.bodyText}>
-            A low, open boat on the Dotonbori canal, running the few hundred metres of water
-            that the Glico sign, the Ebisubashi crowds and the giant mechanical crab all face
-            onto. The operator is <strong>Ipponmatsu Kaiun</strong>, the boat is the{" "}
-            <strong>Tombori River Cruise</strong>, and it has a guide on board doing the
+            A <strong>20-minute, ¥2,000</strong> ride on a low, open boat called the{" "}
+            <strong>Tombori River Cruise</strong>, run by <strong>Ipponmatsu Kaiun</strong>{" "}
+            from <strong>Tazaemonbashi Pier</strong> every half hour from{" "}
+            <strong>11:00 to 21:00</strong>, and{" "}
+            <strong>free on the Osaka Amazing Pass</strong>. &ldquo;Dotonbori river
+            cruise&rdquo; is what visitors search for; <strong>Tombori River Cruise</strong>{" "}
+            is the name on the ticket, the pier sign and the pass operator&apos;s free-admission
+            list, so it is the one to look for on the ground.
+          </p>
+          <p className={styles.bodyText}>
+            It runs the few hundred metres of water that the Glico sign, the Ebisubashi crowds
+            and the giant mechanical crab all face onto, with a guide on board doing the
             commentary in the brisk Osaka register the city is known for.
           </p>
           <p className={styles.bodyText}>
@@ -444,10 +501,11 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
         {/* Fares */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How Much Does the Dotonbori River Cruise Cost?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is the Dotonbori River Cruise?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            One fare per age band, the same at every departure — there is no premium for a
-            night sailing, which is unusual and is the quiet reason this is good value:
+            <strong>¥2,000 for an adult, ¥1,000 for a student, ¥500 for a child.</strong> One
+            fare per age band, the same at every departure — there is no premium for a night
+            sailing, which is unusual and is the quiet reason this is good value:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -487,7 +545,12 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
         {/* Schedule */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Times &amp; pier</span>
-          <h2 className={styles.sectionTitle}>What Time Does It Run, and Where Do You Board?</h2>
+          <h2 className={styles.sectionTitle}>What Time Does the Dotonbori River Cruise Run?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>From 11:00 to 21:00, every 30 minutes</strong> — on the hour and on the
+            half hour, every day except 13, 24 and 25 July in 2026. The ticket office by the
+            pier opens an hour before the first departure, so <strong>10:00</strong>:
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -513,22 +576,83 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             Twenty-one sailings a day is the useful figure. It means the cruise is something
             you fit around the rest of the evening rather than something the evening is built
             around, and the <strong>21:00 last boat</strong> is late enough that it still works
-            after dinner in any season. The pier is a 5 to 10 minute walk from{" "}
-            <strong>Namba</strong>, <strong>Shinsaibashi</strong> or <strong>Nipponbashi</strong>{" "}
-            stations — all of which leave you on the south bank with the Glico sign, so cross at
-            Ebisubashi or Tazaemonbashi to reach the boat. Our{" "}
+            after dinner in any season. Schedule read on {CHECKED}.
+          </p>
+
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            How Long Is the Tombori River Cruise?
+          </h3>
+          <p className={styles.bodyText}>
+            <strong>About 20 minutes on the water.</strong> Osaka&apos;s official tourism site
+            prints 20 minutes and the Aqua Metropolis Osaka cruise portal prints
+            &ldquo;approx. 20 minutes&rdquo;, both read on {CHECKED}. Plan{" "}
+            <strong>about 40 minutes door to door</strong> instead: the reception desk, the
+            walk down to the pontoon and the boarding of a boat that holds a couple of dozen
+            people are the other half. Twenty minutes is the right length for the route — the
+            stretch of river is only a few hundred metres of neon frontage, and a longer boat
+            would simply go round again.
+          </p>
+
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            Where Do You Board the Dotonbori River Cruise?
+          </h3>
+          <p className={styles.bodyText}>
+            At <strong>Tazaemonbashi Pier</strong>, on the Tonbori River Walk promenade along
+            the <strong>north bank</strong> of the Dotonbori canal, roughly a minute east of
+            Ebisubashi. Aim for the landmark rather than the pier: reception is on the{" "}
+            <strong>1F of the Don Quijote Dotonbori store</strong> — the one with the Ferris
+            wheel on the side of it — directly in front of the pontoon. It is a 5 to 10 minute
+            walk from <strong>Namba</strong>, <strong>Shinsaibashi</strong> or{" "}
+            <strong>Nipponbashi</strong> stations, all of which leave you on the south bank
+            with the Glico sign, so cross at Ebisubashi or Tazaemonbashi to reach the boat.
+            Our{" "}
             <Link href="/guides/transport/osaka-transportation">getting around Osaka guide</Link>{" "}
-            covers how the Midosuji Line joins Namba to Umeda and Tennoji. Schedule and walking
+            covers how the Midosuji Line joins Namba to Umeda and Tennoji. Location and walking
             times read on {CHECKED}.
           </p>
+
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            Same-Day Tickets vs Booking Ahead — and When the Boats Sell Out
+          </h3>
+          <p className={styles.bodyText}>
+            The two routes are not equivalent, and the difference only matters after dark.{" "}
+            <strong>Same-day</strong>: the ticket office by the pier sells for the next
+            available sailing from 10:00, and the pass operator&apos;s own wording is blunt
+            about the limit — &ldquo;You can&apos;t go on board when all seats are
+            taken.&rdquo; <strong>Ahead</strong>: the operator&apos;s web reservation is
+            prepaid and stays open until <strong>10 minutes before departure</strong>, which
+            is the version worth using for a Friday or Saturday evening. Telephone
+            reservations are not accepted at all.
+          </p>
+          <p className={styles.bodyText}>
+            On which slots go first, the only published guidance is the pass
+            operator&apos;s, and it is specific: exchange your voucher{" "}
+            <strong>during the daytime</strong>, because <strong>the evening cruises sell
+            out quickly</strong>. Read straight, that makes the sailings after dark — the
+            19:00 to 21:00 run of departures, and more so at a weekend — the scarce ones, and
+            a weekday afternoon the turn-up-and-ride window. We have no published occupancy
+            figures beyond that, so treat anything more precise as guesswork rather than a
+            number. Guidance read on {CHECKED}.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Osaka Amazing Pass — cruise included →
+            </KlookLink>
+            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Book a Dotonbori cruise slot ahead →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Night or day */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Best time to go</span>
-          <h2 className={styles.sectionTitle}>Is the Cruise Better at Night or During the Day?</h2>
+          <h2 className={styles.sectionTitle}>
+            Is the Dotonbori River Cruise Better at Night or During the Day?
+          </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            Night, if you ride once — the neon is the product. But the pass changes the answer,
+            <strong>Night, if you ride once</strong> — the neon is the product, and the fare is
+            the same at every departure, so the view is free. But the pass changes the answer,
             because the slot you can actually get is not always the slot you want:
           </p>
           <div className={styles.whoForGrid}>
@@ -562,11 +686,14 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Compare</span>
           <h2 className={styles.sectionTitle}>Which Dotonbori Cruise Should You Pick?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Four boats work this stretch of water and they are not interchangeable. The
-            important asymmetry is the last column but one:{" "}
-            <strong>only the Tombori boat is a pass facility</strong>, and Klook does not sell
-            it as a standalone listing — so if you are on an Osaka pass, the boat you want is
-            the one you book at a desk rather than on your phone.
+            Several operators work this stretch of water and they are not interchangeable. Two
+            asymmetries matter. First, <strong>only the Tombori boat is a pass facility</strong>,
+            and Klook does not sell it as a standalone listing — so if you are on an Osaka
+            pass, the boat you want is the one you book at a desk rather than on your phone.
+            Second, the one rival with officially published fares, the{" "}
+            <strong>Wonder Cruise</strong> from Nipponbashi Pier,{" "}
+            <strong>runs a 20-minute Dotonbori loop for ¥1,000 — half the Tombori fare</strong>,
+            which is the answer if you are paying cash and not carrying a pass.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -594,11 +721,12 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Tombori figures from Osaka&apos;s official tourism site and the pass operator&apos;s
-            facility list; the other three rows describe what each Klook listing itself states,
-            all read on {CHECKED}. Klook answers automated price reads with an error, so no
-            Klook fare is quoted here — open a listing for the current figure and the
-            cancellation window, which is set per listing rather than per operator. Subject to
-            change.
+            facility list; the two Wonder Cruise rows from the same tourism body&apos;s own
+            WONDER CRUISE・PIRATES listing; the last three rows describe what each Klook
+            listing itself states. All read on {CHECKED}. Klook answers automated price reads
+            with an error, so no Klook fare is quoted here — open a listing for the current
+            figure and the cancellation window, which is set per listing rather than per
+            operator. Subject to change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -638,7 +766,9 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
         {/* The pass question */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The pass question</span>
-          <h2 className={styles.sectionTitle}>Is the Cruise Free on the Osaka Amazing Pass?</h2>
+          <h2 className={styles.sectionTitle}>
+            Is the Dotonbori River Cruise Free with the Osaka Amazing Pass?
+          </h2>
           <p className={styles.bodyText}>
             <strong>Yes, all day.</strong> The Tombori River Cruise is one of the 40-plus free
             admissions on the Osaka Amazing Pass and it carries{" "}

@@ -545,6 +545,20 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 1 Nov 2026: the Minami question — if you sleep in Namba or Shinsaibashi, the pier is a walk away. */}
+            <Link href="/guides/attractions/dotonbori-river-cruise" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 17h18l-2 4H5z" />
+                  <path d="M5 17V9h14v8" />
+                  <path d="M12 3v6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Dotonbori River Cruise 2026: Price, Times and the Tombori Boat</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 30 Oct 2026: the three-day itinerary that turns on whether you sleep in Osaka or Kyoto. */}
             <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
