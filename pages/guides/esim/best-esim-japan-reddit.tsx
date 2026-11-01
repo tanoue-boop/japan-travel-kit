@@ -90,7 +90,7 @@ const networkCards = [
     carrier: "SoftBank",
     what: "Strong in the cities and along the main tourist corridors; this is the network most of the cheap tourist eSIMs sit on.",
     who: [
-      "Airalo — airalo.com lists Softbank as the network for its Moshi Moshi Japan plans.",
+      "Airalo — airalo.com lists Softbank as the primary network for its Moshi Moshi Japan plans, plus two others it does not name (checked 1 Nov 2026).",
       "Holafly — its Japan page names KDDI / Softbank.",
       `${klookEsim.name} — the listing states SoftBank 5G for its per-day plans.`,
     ],
@@ -100,7 +100,6 @@ const networkCards = [
     what: "The third national network, and the one Sakura Mobile puts its unlimited plans on.",
     who: [
       "Sakura Mobile — the unlimited eSIM is advertised as 5G on au.",
-      "Airalo — SoftBank plus KDDI, per the plan pages.",
       "Holafly — KDDI / Softbank, per its Japan page.",
     ],
   },
@@ -148,7 +147,7 @@ const specRows = [
 const redditQAs = [
   {
     q: '"Just buy Airalo before you go" — still the right default?',
-    a: `Yes, with one correction. Airalo is reliable on SoftBank/KDDI and installs from its own iOS app, which is why it gets recommended so often. But the threads usually present it as the cheap option too, and that has not been true for a while: Airalo starts at ${priceFrom("airalo")} while eSIM Go starts at ${priceFrom("esimgo")}. Pick Airalo for the app and the support, not for the price.`,
+    a: `Yes, with one correction. Airalo runs on SoftBank as its primary network and installs from its own iOS app, which is why it gets recommended so often. But the threads usually present it as the cheap option too, and that has not been true for a while: Airalo starts at ${priceFrom("airalo")} while eSIM Go starts at ${priceFrom("esimgo")}. Pick Airalo for the app and the support, not for the price.`,
   },
   {
     q: '"Holafly is the one to get for unlimited" — does the price still justify it?',
@@ -160,7 +159,7 @@ const redditQAs = [
   },
   {
     q: '"Get Docomo for the countryside" — does the network choice matter?',
-    a: "It matters less than it used to, but the advice is sound in direction. Docomo still has the broadest rural reach, and eSIM Go and Sakura Mobile both ride it. Airalo and Holafly run on SoftBank/KDDI, which is excellent in cities and along the main tourist corridors. In genuinely remote mountains or on small islands, coverage thins out whoever you buy from.",
+    a: "It matters less than it used to, but the advice is sound in direction. Docomo still has the broadest rural reach, and eSIM Go and Sakura Mobile both ride it. Holafly runs on SoftBank/KDDI and Airalo on SoftBank as its primary network (plus two others its Japan page does not name), which is excellent in cities and along the main tourist corridors. In genuinely remote mountains or on small islands, coverage thins out whoever you buy from.",
   },
 ];
 
@@ -184,7 +183,7 @@ const askedQuestions = [
     q: "What is the best eSIM for Japan?",
     a: (
       <>
-        For most travellers, Airalo — from {priceFrom("airalo")}, on SoftBank/KDDI, with its own app for
+        For most travellers, Airalo — from {priceFrom("airalo")}, on SoftBank as its primary network, with its own app for
         installation. If price is the deciding factor, eSIM Go undercuts it at {priceFrom("esimgo")}; if you
         want a Japanese phone number, Sakura Mobile is the only one of the four that sells one. Our{" "}
         <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>full Japan eSIM comparison</Link>{" "}
@@ -252,7 +251,7 @@ const faqItems = [
   },
   {
     q: "Is Airalo recommended on Reddit for Japan?",
-    a: "Yes — Airalo is frequently recommended on r/JapanTravel as a reliable and affordable option. Most users report solid Docomo/SoftBank coverage and smooth setup. The main criticism is that it's data-only, with no voice calls or SMS.",
+    a: "Yes — Airalo is frequently recommended on r/JapanTravel as a reliable and affordable option. Its Japan page shows SoftBank as the primary network plus two others it does not name (checked 1 Nov 2026). The main criticism is that it's data-only, with no voice calls or SMS.",
   },
   {
     q: "What do Reddit users say about Holafly Japan?",
@@ -268,7 +267,7 @@ const faqItems = [
   },
   {
     q: "Which Japan eSIM runs on docomo?",
-    a: `eSIM Go (sold to consumers as Breeze), whose Japan page names NTT docomo among its networks, and Sakura Mobile's 3 GB/day data plans. Klook's Japan eSIM listing also states docomo 4G LTE for its total-data plans. Airalo and Holafly run on SoftBank/KDDI instead. All checked against each provider's own site on 22 Oct 2026.`,
+    a: `eSIM Go (sold to consumers as Breeze), whose Japan page names NTT docomo among its networks, and Sakura Mobile's 3 GB/day data plans. Klook's Japan eSIM listing also states docomo 4G LTE for its total-data plans. Holafly runs on SoftBank/KDDI instead, and Airalo's Japan page names SoftBank as the primary network with two unnamed others. Checked against each provider's own site on 22 Oct 2026 (Airalo re-read 1 Nov 2026).`,
   },
   {
     q: "Can I use a Japan eSIM as a hotspot?",

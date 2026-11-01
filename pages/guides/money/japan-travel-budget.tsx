@@ -148,7 +148,10 @@ const TRANSPORT_TREAT = TOKYO_COMBINATION; // 1,720
 /** One paid sight per day, by tier — all three figures are official admissions. */
 const SIGHT_SAVE = 0; // the Tokyo Metropolitan Government Building decks are free
 const SIGHT_MID_LOW = 1500; // Tokyo Tower Main Deck
-const SIGHT_MID_HIGH = 2500; // Shibuya Sky, online
+// Shibuya Sky, online, entry before 15:00 — the first band of PRICES.shibuyaSky.adult
+// ("¥2,700 / ¥3,400"). Read from the record since 1 Nov 2026; it was a literal 2500, the
+// pre-April-2025 price, until then.
+const SIGHT_MID_HIGH = Number(PRICES.shibuyaSky.adult.split(" / ")[0].replace(/[^\d]/g, "")); // 2,700
 const SIGHT_TREAT = 3800; // teamLab Planets, from
 
 /** Daily totals before the room. */
@@ -197,7 +200,7 @@ const dailyBreakdown: TierRow[] = [
   {
     item: "One paid sight",
     save: "¥0 — the Tokyo Metropolitan Government Building observation decks charge nothing and need no ticket",
-    mid: `${yen(SIGHT_MID_LOW)}–${yen(SIGHT_MID_HIGH)} — the Tokyo Tower Main Deck at ¥1,500, or Shibuya Sky at ¥2,500 booked online`,
+    mid: `${yen(SIGHT_MID_LOW)}–${yen(SIGHT_MID_HIGH)} — the Tokyo Tower Main Deck at ¥1,500, or Shibuya Sky at ${yen(SIGHT_MID_HIGH)} booked online for an entry before 15:00`,
     treat: `${yen(SIGHT_TREAT)}+ — teamLab Planets TOKYO, from ¥3,800 by date`,
     source: `operator sites via our ticket-price table — metro.tokyo.lg.jp ${checkedLabel(PRICES.tochoDeck.checked)}, tokyotower.co.jp ${checkedLabel(PRICES.tokyoTower.checked)}, Shibuya Sky ${checkedLabel(PRICES.shibuyaSky.checked)}, teamLab Planets ${checkedLabel(PRICES.teamlabPlanets.checked)}`,
   },
@@ -463,7 +466,7 @@ const hiddenCosts = [
   {
     cost: "Buying the ticket at the venue instead of online",
     detail:
-      "Not a tax, but it behaves like one. Shibuya Sky is ¥500 more at the door, Tokyo Skytree's same-day counter adds a ¥500 service fee per ticket, and teamLab Borderless is ¥200 more per adult bought on site.",
+      "Not a tax, but it behaves like one. Shibuya Sky is ¥300 more at the counter, Tokyo Skytree's same-day counter adds a ¥500 service fee per ticket, and teamLab Borderless is ¥200 more per adult bought on site.",
     source: "Operator sites, dates in the booking table above",
   },
   {
@@ -489,7 +492,7 @@ const faqItems = [
   },
   {
     q: "How much does a trip to Tokyo, Japan cost per day?",
-    a: `On published prices, ${yen(round10(DAY_SAVE_LOW))}–${yen(round10(DAY_SAVE_HIGH))} a day before the room at the saving end, ${yen(round10(DAY_MID_LOW))}–${yen(round10(DAY_MID_HIGH))} at a standard level, and ${yen(round10(DAY_TREAT_LOW))}–${yen(round10(DAY_TREAT_HIGH))} if one meal a day is a hotel restaurant course. Those are sums of figures you can check: ¥178 an IC subway ride, ¥420 a bowl of chuka soba, ¥498 a beef bowl, ¥1,500 the Tokyo Tower Main Deck, ¥2,500 Shibuya Sky online. Add the room at its Tokyo lodging-tax band and a standard day is about ${yen(round10(DAY_MID_LOW + TOKYO_MID_BAND_LOW))}–${yen(round10(DAY_MID_HIGH + TOKYO_MID_BAND_HIGH))}.`,
+    a: `On published prices, ${yen(round10(DAY_SAVE_LOW))}–${yen(round10(DAY_SAVE_HIGH))} a day before the room at the saving end, ${yen(round10(DAY_MID_LOW))}–${yen(round10(DAY_MID_HIGH))} at a standard level, and ${yen(round10(DAY_TREAT_LOW))}–${yen(round10(DAY_TREAT_HIGH))} if one meal a day is a hotel restaurant course. Those are sums of figures you can check: ¥178 an IC subway ride, ¥420 a bowl of chuka soba, ¥498 a beef bowl, ¥1,500 the Tokyo Tower Main Deck, ${yen(SIGHT_MID_HIGH)} Shibuya Sky online before 15:00. Add the room at its Tokyo lodging-tax band and a standard day is about ${yen(round10(DAY_MID_LOW + TOKYO_MID_BAND_LOW))}–${yen(round10(DAY_MID_HIGH + TOKYO_MID_BAND_HIGH))}.`,
   },
   {
     q: "How much money should I bring to Japan for two weeks?",
@@ -624,7 +627,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
               course.
             </strong>{" "}
             Those are sums of figures you can check for yourself: ¥178 an IC subway ride, ¥420 for a bowl of chuka
-            soba at Hidakaya, ¥498 for a Yoshinoya beef bowl, ¥1,500 for the Tokyo Tower Main Deck, ¥2,500 for
+            soba at Hidakaya, ¥498 for a Yoshinoya beef bowl, ¥1,500 for the Tokyo Tower Main Deck, {yen(SIGHT_MID_HIGH)} for
             Shibuya Sky booked online. The room is the one line we will not put a number on — the only prices that
             exist are live search results — so instead we use the brackets the Tokyo government draws itself: no
             lodging tax at all under ¥10,000 per person per night, ¥100 from ¥10,000 to ¥15,000, ¥200 above it.
@@ -774,7 +777,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>How much do things cost in Japan?</h2>
           <p className={styles.bodyText}>
             The short version: a subway ride ¥178, a bowl of chuka soba ¥420, a beef bowl ¥498, a convenience-store
-            onigiri from ¥145.80, an observation deck ¥1,500–¥2,500 and a shinkansen to Kyoto {yen(tokyoKyoto.fareYen)}.
+            onigiri from ¥145.80, an observation deck ¥1,500–{yen(SIGHT_MID_HIGH)} and a shinkansen to Kyoto {yen(tokyoKyoto.fareYen)}.
             Every row below names the site the figure was read off and the date.
           </p>
           <div className={styles.tableWrap}>
@@ -1055,7 +1058,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             The free option is worth saying twice: the Tokyo Metropolitan Government Building&apos;s 45th-floor decks
             are {PRICES.tochoDeck.adult.toLowerCase()} and need no ticket of any kind, 202 m up in Shinjuku. If one
-            paid deck is enough for your trip, that is ¥2,500 back in the budget. More on the choice in our{" "}
+            paid deck is enough for your trip, that is up to {yen(SIGHT_MID_HIGH)} back in the budget. More on the choice in our{" "}
             <Link href="/guides/attractions/tokyo-observation-decks" style={{ color: "var(--red)", fontWeight: 600 }}>
               Tokyo observation decks guide
             </Link>.

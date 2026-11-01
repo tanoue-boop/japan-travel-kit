@@ -208,7 +208,7 @@ const itineraryPicks = [
     trip: "Rural Japan, the mountains, the islands",
     pick: "A plan that rides Docomo, or one that rides all four",
     detail: () =>
-      "Sakura Mobile's 3 GB/day plans are Docomo 5G, and eSIM Go's are multi-carrier with automatic selection. Airalo's Japan eSIM is SoftBank and KDDI; the Klook listing is SoftBank 5G on its per-day plans and docomo 4G LTE on its total-data plans.",
+      "Sakura Mobile's 3 GB/day plans are Docomo 5G, and eSIM Go's are multi-carrier with automatic selection. Airalo's Japan page shows SoftBank as the primary network plus two others it does not name (checked 1 Nov 2026); the Klook listing is SoftBank 5G on its per-day plans and docomo 4G LTE on its total-data plans.",
   },
   {
     trip: "Unlimited data — remote work, streaming, a tethered laptop",
@@ -258,9 +258,12 @@ const dataNeedRows = [10, 14, 21].map((days) => ({
 const networkRows = [
   {
     provider: "Airalo (Moshi Moshi Japan)",
-    carriers: "SoftBank and KDDI",
-    how: "The Japan product page names SoftBank as the primary network with further carriers behind it. Data only.",
-    checked: SPECS_CHECKED,
+    // Re-read 1 Nov 2026. This row said "SoftBank and KDDI" while the FAQ said "Docomo and
+    // SoftBank"; the page itself names only SoftBank and shows "+2 others" without naming
+    // them, so neither second carrier is stated here.
+    carriers: "SoftBank (primary), plus two others the page does not name",
+    how: "The Japan product page names SoftBank as the primary network and shows \"+2 others\" without naming them. Data only.",
+    checked: "1 Nov 2026",
   },
   {
     provider: "eSIM Go (Breeze)",
@@ -402,7 +405,7 @@ const faqItems = [
   },
   {
     q: "Is Airalo or Holafly better for Japan?",
-    a: "Airalo is better for most people — it's cheaper, has flexible data caps, and uses both Docomo and SoftBank. Holafly wins if you genuinely need unlimited data (remote work, heavy streaming) and the premium price is justified for your trip.",
+    a: "Airalo is better for most people — it's cheaper, has flexible data caps, and runs on SoftBank as its primary network on Airalo's own Japan page (checked 1 Nov 2026). Holafly wins if you genuinely need unlimited data (remote work, heavy streaming) and the premium price is justified for your trip.",
   },
   {
     q: "What if my eSIM doesn't work after landing in Japan?",
@@ -418,7 +421,7 @@ const faqItems = [
   },
   {
     q: "What network does Airalo use in Japan?",
-    a: "Airalo Japan eSIM plans run on Docomo and SoftBank networks. Docomo has the widest coverage in Japan, including rural areas, mountains, and remote islands. SoftBank has strong urban and suburban coverage. In practice, most travellers won't notice a difference between the two in tourist areas.",
+    a: "The networks shown on Airalo's own Japan page: SoftBank as the primary network, plus \"+2 others\" that the page does not name — so this guide does not name them either. Checked on 1 November 2026. If one particular carrier matters for your route, open the network list on that page before you buy.",
   },
   {
     q: "What is Sakura Mobile and who is it for?",
@@ -451,7 +454,7 @@ const faqItems = [
   {
     // Migrated from /sim-cards when that page was merged in (2026-10-09).
     q: "Which network has the best coverage in Japan?",
-    a: "Docomo has the most extensive rural coverage, which is why it is worth choosing deliberately if your itinerary leaves the main cities — eSIM Go and Sakura Mobile both ride it. SoftBank and KDDI (used by Airalo and Holafly) are excellent in cities and along the tourist corridors. For the standard Tokyo–Kyoto–Osaka–Hiroshima route, any of the four works well and you will not notice the difference.",
+    a: "Docomo has the most extensive rural coverage, which is why it is worth choosing deliberately if your itinerary leaves the main cities — eSIM Go and Sakura Mobile both ride it. SoftBank and KDDI (Holafly's networks; SoftBank is also the primary network on Airalo's Japan page) are excellent in cities and along the tourist corridors. For the standard Tokyo–Kyoto–Osaka–Hiroshima route, any of the four works well and you will not notice the difference.",
   },
   {
     // Migrated from /sim-cards when that page was merged in (2026-10-09).

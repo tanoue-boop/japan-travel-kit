@@ -507,7 +507,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             价格像半天行程，花的时间却像一顿悠闲的午饭。与其直接给结论，不如把账摊开算：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>每小时的花费很高。</strong>1.5～2 小时 ¥3,800~，是东京塔主展望台 ¥1,500 的两倍以上，也明显高于涩谷SKY 的 ¥2,500，而这两处你都可以多待一会儿。你付的是别处看不到的东西，不是时长——数字可以对照我们的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景点门票价格总表（英文）</Link>。</li>
+            <li><strong>每小时的花费很高。</strong>1.5～2 小时 ¥3,800~，是东京塔主展望台 ¥1,500 的两倍以上，也明显高于涩谷SKY 白天网上票的 {PRICES.shibuyaSky.adult.split(" / ")[0]}，而这两处你都可以多待一会儿。你付的是别处看不到的东西，不是时长——数字可以对照我们的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景点门票价格总表（英文）</Link>。</li>
             <li><strong>入场的成本是时间，不只是钱。</strong>官方 FAQ 提醒高峰时段入场可能要等 30 到 60 分钟，还要加上赤脚换装的时间。实际要空出两小时。</li>
             <li><strong>它是东京体力消耗最大的美术馆。</strong>全程赤脚、水深及成人膝盖、镜面地板。如果这听起来像折腾而不是体验，麻布台的无界是同一个团体、但没有水。</li>
             <li><strong>不怕下雨，也适合小孩。</strong>室内、未满 4 岁免费，而且常常是孩子在整趟旅行中比寺庙记得更清楚的地方。</li>

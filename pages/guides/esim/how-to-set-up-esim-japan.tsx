@@ -140,7 +140,7 @@ const causeRows = [
 ];
 
 const apnRows = [
-  { provider: "Airalo (Docomo)", apn: "Auto-configured" },
+  { provider: "Airalo (SoftBank primary)", apn: "Auto-configured" },
   { provider: "eSIM Go (Docomo)", apn: "Auto-configured" },
   { provider: "Holafly (SoftBank)", apn: "Auto-configured" },
   { provider: "Sakura Mobile", apn: "plus.4g" },

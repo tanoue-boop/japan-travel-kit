@@ -481,7 +481,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             價格像一個下午，花掉的時間卻像一頓長午餐。與其直接給結論，不如把算式攤在你面前：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>每小時的花費偏高。</strong>¥3,400 換大約兩小時，是東京鐵塔主展望台 ¥1,500 的兩倍多，也高於 ¥2,500 的澀谷SKY，而那兩處都可以待很久——數字可以在我們的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景點門票價格表（英文）</Link>比較。你付的是別處看不到的東西，不是時間長度。</li>
+            <li><strong>每小時的花費偏高。</strong>¥3,400 換大約兩小時，是東京鐵塔主展望台 ¥1,500 的兩倍多，也高於澀谷SKY 白天線上票的 {PRICES.shibuyaSky.adult.split(" / ")[0]}，而那兩處都可以待很久——數字可以在我們的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景點門票價格表（英文）</Link>比較。你付的是別處看不到的東西，不是時間長度。</li>
             <li><strong>沒有地圖的設計是價值，也是風險。</strong>50 多件作品、沒有路線、沒有編號站點，代表趕一小時只能看到幾個有名的展間。如果你只有一小時，這張票就不划算，而不是「縮短版的好體驗」。</li>
             <li><strong>它是兩間當中最不費體力的。</strong>穿著鞋、不用涉水，也不必帶替換衣物。如果 Planets 的形式對你來說像折磨而不是體驗，這裡就是同一個團隊、但沒有那些的版本。</li>
             <li><strong>不怕下雨，又在市中心。</strong>麻布台之丘離神谷町站走地下 2 分鐘，下雨的午後在交通上不會有任何損失——東京大多數雨天行程可做不到。</li>

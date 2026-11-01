@@ -85,7 +85,7 @@ const faqItems = [
   },
   {
     q: "Does Airalo work in rural Japan?",
-    a: "Airalo Japan runs on Docomo and SoftBank networks — two of Japan's three main carriers. Docomo has the broadest rural coverage in Japan. In practice, you'll have signal on popular tourist routes including mountainous areas like Nikko and Hakone. Very remote areas (deep mountains, some islands) may have limited coverage regardless of carrier.",
+    a: "Airalo's own Japan page shows SoftBank as the primary network, plus two further networks it does not name (checked 1 November 2026). In practice, you'll have signal on popular tourist routes including mountainous areas like Nikko and Hakone. Very remote areas (deep mountains, some islands) may have limited coverage regardless of carrier.",
   },
   {
     q: "Can I top up my Airalo eSIM in Japan?",
@@ -104,19 +104,19 @@ const faqItems = [
 const worksInJapanFaq = [
   {
     q: "Does Airalo actually work in Japan?",
-    a: "Yes — Airalo Japan eSIM works nationwide via Docomo and SoftBank networks, which both publish coverage across the cities and the main intercity rail corridors, including the Tohoku Shinkansen. The gaps are deep mountain trails and small remote islands, which have limited coverage regardless of carrier.",
+    a: "Yes — Airalo's Japan page names SoftBank as the primary network (with two further, unnamed networks behind it; checked 1 November 2026), and SoftBank publishes coverage across the cities and the main intercity rail corridors, including the Tohoku Shinkansen. The gaps are deep mountain trails and small remote islands, which have limited coverage regardless of carrier.",
   },
   {
     q: "Which network does Airalo use in Japan?",
-    a: "Airalo Japan plans run on Docomo and SoftBank — Japan's two largest networks by coverage. Docomo, in particular, has the best rural and mountainous coverage in the country. You won't need to manually select a network; your phone picks the strongest signal automatically.",
+    a: "The networks shown on Airalo's own Japan page: SoftBank as the primary network, plus \"+2 others\" that the page does not name — so this review does not name them either (checked 1 November 2026). You won't need to manually select a network; your phone picks the strongest signal automatically.",
   },
   {
     q: "How fast is Airalo in Japan?",
-    a: "Airalo rides Docomo and SoftBank 4G LTE, which typically runs at roughly 30–150 Mbps down in Tokyo, Osaka and Kyoto — more than enough for Google Maps, streaming, and video calls. Rural figures are lower, typically 10–40 Mbps, which is still perfectly usable.",
+    a: "Airalo's primary network in Japan is SoftBank, per Airalo's own Japan page (checked 1 November 2026). Japanese 4G LTE typically runs at roughly 30–150 Mbps down in Tokyo, Osaka and Kyoto — more than enough for Google Maps, streaming, and video calls. Rural figures are lower, typically 10–40 Mbps, which is still perfectly usable.",
   },
   {
     q: "Can I use Airalo on the shinkansen?",
-    a: "Yes. Shinkansen trains are covered by Docomo and SoftBank along all major lines, including Tokaido (Tokyo–Osaka), San'yo (Osaka–Hiroshima–Hakata), and Tohoku. Expect brief signal gaps inside tunnels, which can last 30–60 seconds.",
+    a: "Yes. Shinkansen trains are covered by SoftBank, Airalo's primary network in Japan, along all major lines, including Tokaido (Tokyo–Osaka), San'yo (Osaka–Hiroshima–Hakata), and Tohoku. Expect brief signal gaps inside tunnels, which can last 30–60 seconds.",
   },
   {
     q: "Is Airalo better than buying a SIM at the airport?",
@@ -284,7 +284,8 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             Airalo is the world&apos;s largest eSIM marketplace, founded in 2019 and now trusted by over
             10 million travellers across 190+ countries. Rather than operating its own network, Airalo
-            partners with local carriers — in Japan&apos;s case, Docomo and SoftBank — and sells data-only
+            partners with local carriers — in Japan&apos;s case, its Japan page shows SoftBank as the primary
+            network plus two others it does not name (checked 1 November 2026) — and sells data-only
             eSIM plans through its app and website.
           </p>
           <p className={styles.bodyText}>
@@ -367,7 +368,7 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>Verdict</h2>
           <p className={styles.verdictText}>
             Airalo Japan is an excellent choice for most travellers, especially those visiting for
-            a week to a month. The combination of reliable Docomo/SoftBank coverage, competitive
+            a week to a month. The combination of SoftBank as its primary network, competitive
             pricing, and near-instant setup makes it hard to beat as a first-time eSIM experience.
           </p>
           <p className={styles.verdictText}>

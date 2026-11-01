@@ -226,7 +226,7 @@ const faqItems = [
   },
   {
     q: "Which Japanese attractions have to be booked in advance?",
-    a: `${MUST_BOOK.length} of the ${ROW_COUNT} tickets here genuinely require a booking before you arrive: ${MUST_BOOK.map((p) => p.name).join(", ")}. All of them sell a specific date, and most sell a specific entry slot within that date. Tokyo Disney and Universal Studios Japan also require advance tickets, which is why they are discussed separately below rather than given a price here. Everything else in the table can be bought on the day, though two cases are worth booking anyway: Shibuya Sky is ¥500 cheaper online, and Tokyo Skytree's same-day counter adds a ¥500 service fee.`,
+    a: `${MUST_BOOK.length} of the ${ROW_COUNT} tickets here genuinely require a booking before you arrive: ${MUST_BOOK.map((p) => p.name).join(", ")}. All of them sell a specific date, and most sell a specific entry slot within that date. Tokyo Disney and Universal Studios Japan also require advance tickets, which is why they are discussed separately below rather than given a price here. Everything else in the table can be bought on the day, though two cases are worth booking anyway: Shibuya Sky is ¥300 cheaper online, and Tokyo Skytree's same-day counter adds a ¥500 service fee.`,
   },
   {
     q: "Are tickets cheaper online than at the gate in Japan?",

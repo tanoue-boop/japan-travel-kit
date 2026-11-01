@@ -73,6 +73,25 @@ import { gygShibuyaSky, gygTeamlabPlanets, gygUsjExpressPass } from "../../../li
 const OWN_CHECKED = "2026-10-22";
 const OWN = checkedLabel(OWN_CHECKED);
 
+/**
+ * The fortnight's sightseeing bill, added up from the same records the price table prints.
+ * Until 1 Nov 2026 this was a literal ¥15,400, built on Shibuya Sky's pre-April-2025 ¥2,500;
+ * the plan books the Day 2 sunset slot, which is always in the 15:00-onward band (the second
+ * figure of PRICES.shibuyaSky.adult). The 72-hour subway ticket (¥2,000) and Kinkaku-ji
+ * (¥500) are the two figures the table carries as text rather than as a record.
+ */
+const yenOf = (s: string) => Number(s.replace(/[^\d]/g, ""));
+const ADMISSIONS_TOTAL =
+  2000 + // Tokyo Subway Ticket, 72 hours
+  yenOf(PRICES.shibuyaSky.adult.split(" / ")[1]) +
+  yenOf(PRICES.tokyoSkytree.adult) +
+  yenOf(PRICES.teamlabPlanets.adult) +
+  yenOf(PRICES.tokyoTower.adult) +
+  500 + // Kinkaku-ji
+  yenOf(PRICES.todaiji.adult) +
+  yenOf(PRICES.osakaAmazingPass.adult);
+const ADMISSIONS_TOTAL_LABEL = `¥${ADMISSIONS_TOTAL.toLocaleString("en-US")}`;
+
 type Stop = {
   time: string;
   place: string;
@@ -1092,7 +1111,7 @@ const faqItems = [
   },
   {
     q: "How much does 2 weeks in Japan cost in tickets and transport?",
-    a: "On the official prices in the table above, the city passes and admissions this plan actually uses — the 72-hour Tokyo Subway Ticket, Shibuya Sky, Skytree, teamLab Planets, Tokyo Tower, Kinkaku-ji, Todai-ji and a one-day Osaka Amazing Pass — come to ¥15,400 for one adult. That excludes long-distance rail, the Day 6 pass, the optional Day 13 trip, and anything to do with hotels or food, none of which we quote figures for. Every row in that table is the operator's own published price with the date we read it.",
+    a: `On the official prices in the table above, the city passes and admissions this plan actually uses — the 72-hour Tokyo Subway Ticket, Shibuya Sky (online, in the 15:00-onward band the sunset slot falls in), Skytree, teamLab Planets, Tokyo Tower, Kinkaku-ji, Todai-ji and a one-day Osaka Amazing Pass — come to ${ADMISSIONS_TOTAL_LABEL} for one adult. That excludes long-distance rail, the Day 6 pass, the optional Day 13 trip, and anything to do with hotels or food, none of which we quote figures for. Every row in that table is the operator's own published price with the date we read it.`,
   },
   {
     q: "Should you fly home from Kansai or go back to Tokyo?",
@@ -1504,9 +1523,9 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Added up, the admissions and city passes this plan actually uses — a 72-hour Tokyo Subway
-            Ticket, Shibuya Sky online, Skytree Floor 350, teamLab Planets, the Tokyo Tower Main Deck,
-            Kinkaku-ji, Todai-ji and a one-day Osaka Amazing Pass — come to{" "}
-            <strong>¥15,400 for one adult</strong> across the fortnight. That is the whole sightseeing
+            Ticket, Shibuya Sky online at a sunset-band entry, Skytree Floor 350, teamLab Planets, the Tokyo
+            Tower Main Deck, Kinkaku-ji, Todai-ji and a one-day Osaka Amazing Pass — come to{" "}
+            <strong>{ADMISSIONS_TOTAL_LABEL} for one adult</strong> across the fortnight. That is the whole sightseeing
             bill, and it is smaller than one leg of the shinkansen. It excludes long-distance rail, the
             Day 6 pass, the optional Day 13 trip, and anything to do with beds or meals.
           </p>

@@ -214,7 +214,7 @@ const itineraryPicks = [
     trip: "일본 시골, 산간, 섬",
     pick: "Docomo를 쓰는 요금제, 또는 네 통신사를 모두 쓰는 요금제",
     detail: () =>
-      "Sakura Mobile의 하루 3 GB 요금제는 Docomo 5G이고, eSIM Go는 자동 선택되는 다중 통신사입니다. Airalo의 일본 eSIM은 SoftBank와 KDDI이며, 클룩 상품은 1일 단위 요금제가 SoftBank 5G, 총량형 요금제가 docomo 4G LTE입니다.",
+      "Sakura Mobile의 하루 3 GB 요금제는 Docomo 5G이고, eSIM Go는 자동 선택되는 다중 통신사입니다. Airalo의 일본 페이지는 SoftBank를 주 통신망으로, 그 밖에 이름을 밝히지 않은 통신망 두 곳을 표시하며(2026년 11월 1일 확인), 클룩 상품은 1일 단위 요금제가 SoftBank 5G, 총량형 요금제가 docomo 4G LTE입니다.",
   },
   {
     trip: "무제한 데이터 — 원격 근무, 스트리밍, 노트북 테더링",
@@ -245,9 +245,9 @@ const dataNeedRows = [10, 14, 21].map((days) => ({
 const networkRows = [
   {
     provider: "Airalo(Moshi Moshi Japan)",
-    carriers: "SoftBank, KDDI",
-    how: "일본 상품 페이지는 SoftBank를 주 통신망으로 명시하고 그 뒤에 다른 통신사가 있습니다. 데이터 전용.",
-    checked: SPECS_CHECKED,
+    carriers: "SoftBank(주 통신망), 그 밖에 페이지에 이름이 없는 2곳",
+    how: "일본 상품 페이지는 SoftBank를 주 통신망으로 명시하고 “+2 others”를 표시하지만 그 이름은 밝히지 않습니다. 데이터 전용.",
+    checked: dateLabel("2026-11-01", LOCALE),
   },
   {
     provider: "eSIM Go(Breeze)",
@@ -376,7 +376,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "일본에서는 Airalo와 Holafly 중 어느 쪽이 나을까요?",
-    a: "대부분에게는 Airalo가 낫습니다. 더 저렴하고 용량 선택이 유연하며 Docomo와 SoftBank를 함께 씁니다. 정말로 무제한이 필요하고(원격 근무, 영상 시청이 많음) 이번 여행에 그 높은 가격을 들일 이유가 있다면 Holafly가 앞섭니다.",
+    a: "대부분에게는 Airalo가 낫습니다. 더 저렴하고 용량 선택이 유연하며, Airalo의 일본 페이지에서 SoftBank를 주 통신망으로 씁니다(2026년 11월 1일 확인). 정말로 무제한이 필요하고(원격 근무, 영상 시청이 많음) 이번 여행에 그 높은 가격을 들일 이유가 있다면 Holafly가 앞섭니다.",
   },
   {
     q: "일본에 도착했는데 eSIM이 안 되면 어떻게 하나요?",
@@ -392,7 +392,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "Airalo는 일본에서 어느 통신망을 쓰나요?",
-    a: "Airalo의 일본 eSIM 요금제는 Docomo와 SoftBank 망을 씁니다. Docomo는 일본에서 커버리지가 가장 넓어 시골, 산간, 외딴 섬까지 들어갑니다. SoftBank는 도시와 근교에서 강합니다. 실제로는 관광지에서 대부분의 여행자가 둘의 차이를 느끼지 못합니다.",
+    a: "Airalo의 공식 일본 페이지에 표시되는 통신망입니다. SoftBank가 주 통신망이고, 그 밖에 “+2 others”가 있지만 페이지에 이름이 나오지 않아 이 가이드도 이름을 적지 않습니다. 2026년 11월 1일 확인. 특정 통신사가 일정에 중요하다면 구매 전에 그 페이지의 통신망 목록을 열어 보세요.",
   },
   {
     q: "Sakura Mobile은 무엇이고 누구에게 맞나요?",
@@ -424,7 +424,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "일본에서 커버리지가 가장 좋은 통신망은 어디인가요?",
-    a: "Docomo가 시골 커버리지가 가장 넓습니다. 그래서 일정이 주요 도시를 벗어난다면 의식적으로 고를 가치가 있고, eSIM Go와 Sakura Mobile이 모두 Docomo를 씁니다. SoftBank와 KDDI(Airalo와 Holafly가 사용)는 도시와 관광 동선에서 훌륭합니다. 표준적인 도쿄–교토–오사카–히로시마 경로라면 네 곳 모두 잘 터져서 차이를 느끼지 못할 것입니다.",
+    a: "Docomo가 시골 커버리지가 가장 넓습니다. 그래서 일정이 주요 도시를 벗어난다면 의식적으로 고를 가치가 있고, eSIM Go와 Sakura Mobile이 모두 Docomo를 씁니다. SoftBank와 KDDI(Holafly가 사용하며, SoftBank는 Airalo 일본 페이지의 주 통신망이기도 함)는 도시와 관광 동선에서 훌륭합니다. 표준적인 도쿄–교토–오사카–히로시마 경로라면 네 곳 모두 잘 터져서 차이를 느끼지 못할 것입니다.",
   },
   {
     q: "일본 심이나 eSIM은 언제 사는 게 좋나요?",

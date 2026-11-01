@@ -1277,7 +1277,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
             <strong>付款前先确认三件事。</strong>第一，是电子票还是要兑换的凭证：Skyliner 与巴士都可以是直接扫描的
             二维码，而 N&apos;EX 往返车票必须带护照到机场车站领取，长途飞行后还要再排一次队。第二，取消期限——在分销平台上
             是按各商品而定，不是铁路公司定的，请确认你那天日期显示的规定。第三，你几点落地：23:40 抵达羽田，离末班车只剩
-            半小时左右，提前买什么都改变不了这一点，除了一辆车。
+            28 分钟（3 号航站楼 00:08 发车，依京急深夜时段信息页，核查日期 2026年11月1日），提前买什么都改变不了这一点，除了一辆车。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={skylinerUrl} className={styles.verdictBtn} target="_blank" rel={KLOOK_REL}>

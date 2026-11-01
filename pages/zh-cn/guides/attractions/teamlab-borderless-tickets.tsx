@@ -481,7 +481,7 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
             价格像一个下午，花掉的时间却像一顿长午饭。与其直接给结论，不如把算式摆在你面前：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>每小时的花费偏高。</strong>¥3,400 换大约两小时，是东京塔主展望台 ¥1,500 的两倍多，也高于 ¥2,500 的涩谷SKY，而那两处都可以待很久——数字可以在我们的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景点门票价格表（英文）</Link>比较。你付的是别处看不到的东西，不是时间长度。</li>
+            <li><strong>每小时的花费偏高。</strong>¥3,400 换大约两小时，是东京塔主展望台 ¥1,500 的两倍多，也高于涩谷SKY 白天网上票的 {PRICES.shibuyaSky.adult.split(" / ")[0]}，而那两处都可以待很久——数字可以在我们的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景点门票价格表（英文）</Link>比较。你付的是别处看不到的东西，不是时间长度。</li>
             <li><strong>没有地图的设计是价值，也是风险。</strong>50 多件作品、没有路线、没有编号站点，意味着赶一小时只能看到几个有名的展厅。如果你只有一小时，这张票就不划算，而不是「缩短版的好体验」。</li>
             <li><strong>它是两间当中最不费体力的。</strong>穿着鞋、不用蹚水，也不必带替换衣物。如果 Planets 的形式对你来说像折磨而不是体验，这里就是同一个团队、但没有那些的版本。</li>
             <li><strong>不怕下雨，又在市中心。</strong>麻布台之丘离神谷町站走地下 2 分钟，下雨的午后在交通上不会有任何损失——东京大多数雨天行程可做不到。</li>

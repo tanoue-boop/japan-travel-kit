@@ -188,7 +188,7 @@ const faqItems = [
   },
   {
     q: "Is a cheap eSIM reliable in Japan?",
-    a: "Yes. Cheap eSIMs like eSIM Go and Airalo run on the same Docomo and SoftBank infrastructure used by expensive plans. Network quality in Japan is world-class regardless of which reseller you buy from — you're paying less for distribution, not for a worse connection.",
+    a: "Yes. Cheap eSIMs like eSIM Go (Docomo among its networks) and Airalo (SoftBank as the primary network on its Japan page, checked 1 November 2026) run on the same national networks used by expensive plans. Network quality in Japan is world-class regardless of which reseller you buy from — you're paying less for distribution, not for a worse connection.",
   },
   {
     q: "How much data do I need for 1 week in Japan?",
@@ -533,8 +533,8 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>Are Cheap eSIMs Reliable in Japan?</h2>
           <p className={styles.bodyText}>
             Yes — and here&apos;s why. Japan&apos;s mobile infrastructure is among the best in the world.
-            Docomo and SoftBank, the two networks used by budget eSIMs like eSIM Go and Airalo,
-            consistently rank among the world&apos;s top 10 for 4G coverage and download speeds.
+            Docomo and SoftBank — Docomo among eSIM Go&apos;s networks, SoftBank the primary network on
+            Airalo&apos;s Japan page (checked 1 November 2026) — consistently rank among the world&apos;s top 10 for 4G coverage and download speeds.
           </p>
           <p className={styles.bodyText}>
             When you buy a cheap eSIM for Japan, you&apos;re not buying a worse network — you&apos;re buying

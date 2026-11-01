@@ -166,7 +166,7 @@ const faqItems = [
   },
   {
     q: "Which eSIM has the best coverage in Japan?",
-    a: "Providers on Docomo (Airalo's Docomo plans, eSIM Go, Sakura Mobile) have the widest rural coverage. Providers on SoftBank (Holafly, Airalo's SoftBank plans) are excellent in cities and tourist areas but slightly weaker in remote mountains. For city-only trips, the difference isn't noticeable.",
+    a: "Providers on Docomo (eSIM Go, Sakura Mobile's 3 GB/day plans) have the widest rural coverage. Providers on SoftBank (Holafly, and Airalo, whose Japan page shows SoftBank as the primary network plus two unnamed others — checked 1 November 2026) are excellent in cities and tourist areas but slightly weaker in remote mountains. For city-only trips, the difference isn't noticeable.",
   },
   {
     q: "Can I use eSIM at Japanese airports?",

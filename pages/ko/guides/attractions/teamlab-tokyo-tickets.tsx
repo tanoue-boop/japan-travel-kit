@@ -513,7 +513,7 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             반나절인데 소비는 긴 점심처럼 끝납니다. 결론 대신 계산을 그대로 보여 드립니다.
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>시간당 가격이 높습니다.</strong> 1.5~2시간에 ¥3,800부터는 ¥1,500인 도쿄타워 메인 데크의 두 배가 넘고 ¥2,500인 시부야 스카이보다도 훨씬 비쌉니다. 두 곳 모두 오래 머물 수 있습니다. 길이가 아니라 다른 곳에서는 볼 수 없는 것에 돈을 내는 것입니다 — 금액은 <Link href="/guides/attractions/japan-attraction-ticket-prices">일본 명소 티켓 가격(영어)</Link> 표에서 비교해 보세요.</li>
+            <li><strong>시간당 가격이 높습니다.</strong> 1.5~2시간에 ¥3,800부터는 ¥1,500인 도쿄타워 메인 데크의 두 배가 넘고 시부야 스카이의 낮 시간 온라인 티켓 {PRICES.shibuyaSky.adult.split(" / ")[0]}보다도 훨씬 비쌉니다. 두 곳 모두 오래 머물 수 있습니다. 길이가 아니라 다른 곳에서는 볼 수 없는 것에 돈을 내는 것입니다 — 금액은 <Link href="/guides/attractions/japan-attraction-ticket-prices">일본 명소 티켓 가격(영어)</Link> 표에서 비교해 보세요.</li>
             <li><strong>입장 비용은 돈만이 아니라 시간입니다.</strong> 공식 FAQ는 붐비는 시간대에 입장까지 30~60분 대기를 경고하고, 그 위에 맨발 준비가 더해집니다. 정직하게 잡아야 할 시간은 2시간입니다.</li>
             <li><strong>도쿄에서 가장 몸을 쓰는 미술관입니다.</strong> 처음부터 끝까지 맨발, 성인 무릎 높이의 물, 거울 바닥. 그게 체험이 아니라 고생처럼 들린다면, 아자부다이의 보더리스가 물 없는 같은 컬렉티브입니다.</li>
             <li><strong>날씨와 상관없고 아이에게 맞습니다.</strong> 실내이고, 만 4세 미만은 무료이며, 아이들이 여행에서 사찰보다 더 자주 기억하는 곳입니다.</li>

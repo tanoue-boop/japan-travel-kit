@@ -70,7 +70,7 @@ const faqItems = [
   },
   {
     q: "Which has better coverage, Airalo or Holafly?",
-    a: "Airalo has an advantage here. Airalo runs on both Docomo and SoftBank networks, giving you better rural coverage across Japan. Holafly runs on SoftBank only. Both cover major cities, tourist routes, and popular areas well — but Airalo's Docomo access means stronger signal in mountainous regions and rural areas.",
+    a: "Neither can be called better on the providers' own pages. Airalo's Japan page shows SoftBank as the primary network plus two others it does not name (checked 1 November 2026); Holafly runs on SoftBank. Both cover major cities, tourist routes, and popular areas well. If rural coverage matters for your route, open the network list on Airalo's Japan page before you buy.",
   },
   {
     q: "Can I switch from Airalo to Holafly mid-trip?",
@@ -283,7 +283,7 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
                 <ul className={styles.choiceList}>
                   <li><span className={styles.choiceCheck}>✓</span> Low entry cost — from {AIRALO_FROM}</li>
                   <li><span className={styles.choiceCheck}>✓</span> Granular plans: 1, 3, 5, 10, 20 GB or unlimited</li>
-                  <li><span className={styles.choiceCheck}>✓</span> Docomo network for strong rural coverage</li>
+                  <li><span className={styles.choiceCheck}>✓</span> SoftBank primary network, plus two others shown on its Japan page</li>
                   <li><span className={styles.choiceCheck}>✓</span> Industry-leading app experience</li>
                   <li><span className={styles.choiceCheck}>✓</span> 24/7 live chat support</li>
                 </ul>
@@ -293,8 +293,8 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Airalo&apos;s biggest advantage is value. From {AIRALO_FROM}, it&apos;s one of the cheapest
             eSIM options for Japan. The tiered data plans let you buy only what you need, so
-            you&apos;re never paying for unused data. Running on Docomo (Japan&apos;s widest network),
-            you&apos;ll get reliable signal from Tokyo to rural Tohoku.
+            you&apos;re never paying for unused data. Its Japan page shows SoftBank as the primary network,
+            plus two others it does not name (checked 1 November 2026).
           </p>
           <Link href="/guides/esim/airalo-japan-review" className={styles.pickCtaInternal} style={{ marginTop: "0.5rem", display: "inline-flex" }}>
             Full Airalo Japan Review →
@@ -454,7 +454,7 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>Our Verdict</h2>
           <p className={styles.verdictText}>
             For most travellers, <strong>Airalo offers better value</strong>. The combination of
-            affordable data plans, Docomo coverage, and a best-in-class app makes it the default
+            affordable data plans, tiered data caps, and a best-in-class app makes it the default
             recommendation for anyone visiting Japan for 1–4 weeks on a typical tourist itinerary.
           </p>
           <p className={styles.verdictText}>

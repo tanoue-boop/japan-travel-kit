@@ -114,7 +114,7 @@ const faqItems = [
   },
   {
     q: "What network does Holafly use in Japan?",
-    a: "Holafly Japan runs on the SoftBank network. SoftBank has excellent coverage across major cities, tourist routes, and most populated areas. For very rural travel (deep mountains, remote islands), Docomo generally has the edge — in which case Airalo's dual Docomo/SoftBank coverage may be a better fit.",
+    a: "Holafly Japan runs on the SoftBank network. SoftBank has excellent coverage across major cities, tourist routes, and most populated areas. For very rural travel (deep mountains, remote islands), Docomo generally has the edge — in which case a Docomo plan such as eSIM Go or Sakura Mobile's 3 GB/day may be a better fit. (Airalo's Japan page shows SoftBank as its primary network plus two others it does not name, checked 1 November 2026.)",
   },
 ];
 

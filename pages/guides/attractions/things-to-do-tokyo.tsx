@@ -14,11 +14,20 @@ import {
 } from "../../../lib/klook-links";
 import GygCompare from "../../../components/GygCompare";
 import { gygTokyo, gygTokyoEntryTickets } from "../../../lib/gyg-links";
+import { PRICES, checkedLabel } from "../../../lib/attraction-prices";
 
 // The only prices on this page are the two carried over from the dedicated guides that
-// verified them against the operators' own sites — Shibuya Sky and Tokyo Skytree. The Tocho
-// deck's 202 m height and free admission were read off metro.tokyo.lg.jp. All 19 Oct 2026.
+// verified them against the operators' own sites — Shibuya Sky and Tokyo Skytree — and both
+// are read from lib/attraction-prices.ts, so this page cannot drift from those guides again.
+// (It did once: until 1 Nov 2026 it still printed Shibuya Sky's pre-April-2025 flat
+// ¥2,500 / ¥3,000.) The Tocho deck's 202 m height and free admission were read off
+// metro.tokyo.lg.jp on 19 Oct 2026.
 const CHECKED = "19 October 2026";
+const SKY = PRICES.shibuyaSky;
+// "¥2,700 / ¥3,400" -> entry 10:00–14:59, entry 15:00–21:20 (see the record's own comment).
+const [SKY_ONLINE_DAY, SKY_ONLINE_LATE] = SKY.adult.split(" / ");
+const [SKY_DOOR_DAY, SKY_DOOR_LATE] = (SKY.atDoor ?? "").split(" / ");
+const SKY_CHECKED = checkedLabel(SKY.checked);
 
 const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 
@@ -263,10 +272,12 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <h2 className={styles.sectionTitle}>Observation Decks</h2>
           <p className={styles.bodyText}>
             <strong>Shibuya Sky</strong> is the open-air rooftop above the Shibuya Scramble Crossing and the
-            one deck where the slot matters: ¥2,500 for an adult booked online, ¥3,000 at the door, and the
-            sunset window is what sells out. See our{" "}
+            one deck where the slot matters. An adult booked online pays {SKY_ONLINE_DAY} to enter before 15:00
+            and {SKY_ONLINE_LATE} from 15:00; the 14th-floor counter charges {SKY_DOOR_DAY} and {SKY_DOOR_LATE}{" "}
+            (official prices, checked {SKY_CHECKED}). Sunset always falls in the later band, and those slots
+            are what sell out. See our{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets" style={linkStyle}>Shibuya Sky tickets guide</Link>.{" "}
-            <strong>Tokyo Skytree</strong> is the altitude option, from ¥1,800 for Floor 350 —{" "}
+            <strong>Tokyo Skytree</strong> is the altitude option, {PRICES.tokyoSkytree.adult} for Floor 350 —{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets" style={linkStyle}>our guide</Link> explains
             why adding Floor 450 up front is cheaper than adding it on site.
           </p>

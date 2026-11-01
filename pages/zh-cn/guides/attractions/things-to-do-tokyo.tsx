@@ -25,7 +25,8 @@ import { withKlookLocale } from "../../../../lib/klook-locale";
 import { gygTokyo, gygTokyoEntryTickets } from "../../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
-import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { PRICES } from "../../../../lib/attraction-prices";
 
 // Mirrors the English page (pages/guides/attractions/things-to-do-tokyo.tsx) as of
 // 2026-11-01, section for section and block for block; no figures added beyond it.
@@ -36,6 +37,11 @@ const DESC =
   "2026 年东京自由行景点，按紧迫性排序：真的会售罄的那四、五个指定时段门票，可以当天早上再决定的行程，以及全市最值得的免费视野。";
 
 const CHECKED = dateLabel("2026-10-19", "zh-cn");
+// Shibuya Sky and Skytree figures come from lib/attraction-prices.ts, as on the English page.
+const SKY = PRICES.shibuyaSky;
+const [SKY_ONLINE_DAY, SKY_ONLINE_LATE] = SKY.adult.split(" / ");
+const [SKY_DOOR_DAY, SKY_DOOR_LATE] = (SKY.atDoor ?? "").split(" / ");
+const SKY_CHECKED = dateLabel(SKY.checked, "zh-cn");
 
 const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 
@@ -203,9 +209,10 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>观景台</h2>
           <p className={styles.bodyText}>
             <strong>涩谷SKY</strong> 是涩谷十字路口上方的露天屋顶，也是唯一一个“时段比门票重要”的观景台：
-            成人网上预订 ¥2,500、现场 ¥3,000，而会售罄的是日落那个时段。详见我们的{" "}
+            成人网上预订 15 点前入场 {SKY_ONLINE_DAY}、15 点起 {SKY_ONLINE_LATE}；14 层售票柜台则是 {SKY_DOOR_DAY} 与{" "}
+            {SKY_DOOR_LATE}（官方票价，核查日期 {SKY_CHECKED}）。日落一定落在较晚的时段，而会售罄的正是这些时段。详见我们的{" "}
             <Link href="/zh-cn/guides/attractions/shibuya-sky-tickets" style={linkStyle}>涩谷SKY 门票攻略</Link>。{" "}
-            <strong>东京晴空塔</strong>是走高度的选项，350 层天望甲板 ¥1,800 起——
+            <strong>东京晴空塔</strong>是走高度的选项，350 层天望甲板 {priceLabel(PRICES.tokyoSkytree.adult, "zh-cn")}——
             <Link href="/zh-cn/guides/attractions/tokyo-skytree-tickets" style={linkStyle}>我们的晴空塔门票攻略</Link>
             解释了为什么一开始就加购 450 层，比到现场再加购便宜。
           </p>

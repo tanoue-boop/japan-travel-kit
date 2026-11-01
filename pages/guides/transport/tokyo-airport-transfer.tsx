@@ -1459,7 +1459,8 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             round-trip ticket has to be picked up at the airport station with your passport, which is a queue after a
             long flight. Second, the cancellation window, which on a reseller is set per listing rather than by the
             railway — check the one shown for your own date. Third, the hour you land: a 23:40 arrival at Haneda is
-            32 minutes from the last train, and nothing you buy in advance changes that except a car.
+            28 minutes from the last train (00:08 from Terminal 3, on Keikyu&apos;s late-night page read on
+            1 November 2026), and nothing you buy in advance changes that except a car.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={keiseiSkylinerUrl} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">

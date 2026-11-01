@@ -1277,7 +1277,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             <strong>付款前先確認三件事。</strong>第一，是電子票還是要兌換的憑證：Skyliner 與巴士都可以是直接掃描的
             QR code，而 N&apos;EX 來回車票必須帶護照到機場車站領取，長途飛行後還要再排一次隊。第二，取消期限——在轉售平台上
             是依各商品而定，不是鐵路公司訂的，請確認你那天日期顯示的規定。第三，你幾點落地：23:40 抵達羽田，離末班車只剩
-            半小時左右，事先買什麼都改變不了這一點，除了一台車。
+            28 分鐘（第 3 航廈 00:08 發車，依京急深夜時段資訊頁，查核日 2026年11月1日），事先買什麼都改變不了這一點，除了一台車。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={skylinerUrl} className={styles.verdictBtn} target="_blank" rel={KLOOK_REL}>

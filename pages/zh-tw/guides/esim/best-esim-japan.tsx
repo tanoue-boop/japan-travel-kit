@@ -75,7 +75,7 @@ function planName(name: string): string {
 
 /** The provider's network string from the price data, with its English connectives in Chinese. */
 function networkLabel(s: string): string {
-  return s.replace(/\(Unlimited\)/g, "（吃到飽）").replace(/ or /g, " 或 ").replace(/\/day/g, "/天");
+  return s.replace(/ ?\(\+2 others\)/g, "（另有 2 家）").replace(/\(Unlimited\)/g, "（吃到飽）").replace(/ or /g, " 或 ").replace(/\/day/g, "/天");
 }
 
 // The plan table is English-only, so links to it are labelled as English.
@@ -210,7 +210,7 @@ const itineraryPicks = [
     trip: "日本鄉間、山區、離島",
     pick: "走 Docomo 的方案，或四家都走的方案",
     detail: () =>
-      "Sakura Mobile 的每日 3 GB 方案走 Docomo 5G，eSIM Go 則是多家電信自動選擇。Airalo 的日本 eSIM 走 SoftBank 與 KDDI；Klook 的商品頁上，按天計的方案走 SoftBank 5G，總流量方案走 docomo 4G LTE。",
+      "Sakura Mobile 的每日 3 GB 方案走 Docomo 5G，eSIM Go 則是多家電信自動選擇。Airalo 的日本頁面顯示 SoftBank 為主要網路，另有兩家頁面未列名稱（查核日 2026年11月1日）；Klook 的商品頁上，按天計的方案走 SoftBank 5G，總流量方案走 docomo 4G LTE。",
   },
   {
     trip: "吃到飽——遠端工作、看影音、筆電分享網路",
@@ -242,9 +242,9 @@ const dataNeedRows = [10, 14, 21].map((days) => ({
 const networkRows = [
   {
     provider: "Airalo（Moshi Moshi Japan）",
-    carriers: "SoftBank 與 KDDI",
-    how: "日本產品頁把 SoftBank 列為主要網路，背後還有其他電信。純數據。",
-    checked: SPECS_CHECKED,
+    carriers: "SoftBank（主要網路），另有 2 家頁面未列名稱",
+    how: "日本產品頁把 SoftBank 列為主要網路，並顯示「+2 others」但未列出名稱。純數據。",
+    checked: enDate("1 Nov 2026"),
   },
   {
     provider: "eSIM Go（Breeze）",
@@ -373,7 +373,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "日本要用 Airalo 還是 Holafly？",
-    a: "對大多數人來說 Airalo 比較好——比較便宜、流量級距有彈性，而且同時使用 Docomo 與 SoftBank。如果你真的需要吃到飽（遠端工作、大量看影片），而且這趟的預算撐得起它的價差，Holafly 才勝出。",
+    a: "對大多數人來說 Airalo 比較好——比較便宜、流量級距有彈性，而且依 Airalo 自己的日本頁面，主要網路是 SoftBank（查核日 2026年11月1日）。如果你真的需要吃到飽（遠端工作、大量看影片），而且這趟的預算撐得起它的價差，Holafly 才勝出。",
   },
   {
     q: "落地日本後 eSIM 不能用怎麼辦？",
@@ -389,7 +389,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "Airalo 在日本用哪家網路？",
-    a: "Airalo 的日本 eSIM 方案走 Docomo 與 SoftBank。Docomo 在日本的覆蓋最廣，包含鄉間、山區與離島。SoftBank 在都會與近郊很強。實際上，在觀光區大多數旅客感覺不出兩者的差別。",
+    a: "以 Airalo 官方日本頁面上顯示的網路為準：SoftBank 是主要網路，另有「+2 others」，但頁面沒有列出名稱，所以本指南也不列名稱。查核日 2026年11月1日。如果某一家電信對你的行程很重要，購買前請先打開該頁面的網路清單確認。",
   },
   {
     q: "Sakura Mobile 是什麼？適合誰？",
@@ -421,7 +421,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "日本哪家網路覆蓋最好？",
-    a: "Docomo 的鄉間覆蓋最完整，所以如果你的行程會離開主要城市，值得刻意挑它——eSIM Go 與 Sakura Mobile 都走它。SoftBank 與 KDDI（Airalo 與 Holafly 使用）在城市與觀光動線上表現很好。走標準的東京－京都－大阪－廣島路線，四家都夠用，你感覺不出差別。",
+    a: "Docomo 的鄉間覆蓋最完整，所以如果你的行程會離開主要城市，值得刻意挑它——eSIM Go 與 Sakura Mobile 都走它。SoftBank 與 KDDI（Holafly 使用；SoftBank 也是 Airalo 日本頁面上的主要網路）在城市與觀光動線上表現很好。走標準的東京－京都－大阪－廣島路線，四家都夠用，你感覺不出差別。",
   },
   {
     q: "日本網卡什麼時候買？",

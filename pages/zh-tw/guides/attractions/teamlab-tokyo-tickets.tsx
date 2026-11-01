@@ -507,7 +507,7 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             價格像半天行程，花的時間卻像一頓悠閒的午餐。與其直接給結論，不如把算式攤開：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>每小時的花費很高。</strong>1.5～2 小時 ¥3,800~，是東京鐵塔主展望台 ¥1,500 的兩倍以上，也明顯高於澀谷SKY 的 ¥2,500，而這兩處你都可以待久一點。你付的是別處看不到的東西，不是時間長度——數字可以對照我們的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景點門票價格總表（英文）</Link>。</li>
+            <li><strong>每小時的花費很高。</strong>1.5～2 小時 ¥3,800~，是東京鐵塔主展望台 ¥1,500 的兩倍以上，也明顯高於澀谷SKY 白天線上票的 {PRICES.shibuyaSky.adult.split(" / ")[0]}，而這兩處你都可以待久一點。你付的是別處看不到的東西，不是時間長度——數字可以對照我們的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景點門票價格總表（英文）</Link>。</li>
             <li><strong>入場的成本是時間，不只是錢。</strong>官方 FAQ 提醒忙碌時段入場可能要等 30 到 60 分鐘，還要加上赤腳更換的時間。老實說要空出兩小時。</li>
             <li><strong>它是東京身體負擔最大的美術館。</strong>全程赤腳、水深及成人膝蓋、鏡面地板。如果這聽起來像折磨而不是體驗，麻布台的無界是同一個團體、但沒有水。</li>
             <li><strong>不怕下雨，也適合小孩。</strong>室內、未滿 4 歲免費，而且常常是孩子在整趟旅程中比寺廟更記得的地方。</li>
