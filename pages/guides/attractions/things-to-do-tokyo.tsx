@@ -407,6 +407,18 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 1 Nov 2026: the one Tokyo district where the free version of the day is the good one. */}
+            <Link href="/guides/attractions/akihabara-anime-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Akihabara Anime Tour (2026): Guided Tours, Shop Hours &amp; How to Get There</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 1 Nov 2026: the winter day trip that leaves from Tokyo Station and needs no transfer. */}
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

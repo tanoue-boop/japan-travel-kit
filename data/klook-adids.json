@@ -2,6 +2,7 @@
  "_note": "Klook aff_adid per page (created 2026-10-27 via Klook Text Links, label1 = page path, label2 = jtk-page). spare は新規ページ用。使ったら pages へ移し spare から消す",
  "pages": {
   "/": 1528206,
+  "/guides/attractions/akihabara-anime-tour": 1528242,
   "/guides/attractions/arima-onsen-day-trip": 1528086,
   "/guides/attractions/asakusa-kimono-rental": 1528087,
   "/guides/attractions/dotonbori-river-cruise": 1528088,
@@ -156,5 +157,5 @@
   "/zh-tw/guides/esim/best-esim-japan": 1528204,
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
  },
- "spare": [1528242,1528243,1528244,1528245,1528246,1528247]
+ "spare": [1528243,1528244,1528245,1528246,1528247]
 }

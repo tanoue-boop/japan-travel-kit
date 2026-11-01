@@ -444,6 +444,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/akihabara-anime-tour",
+    badge: "Experience",
+    title: "Akihabara Anime Tour (2026): Guided Tours, Shop Hours and How to Get There",
+    desc: "Guided walks run 3 to 5 hours from the Electric Town Exit, and the best-booked one departs only at 14:00 and 18:00 — but every shop it enters is free to walk into, with animate open from 10:00 and Mandarake Complex from 12:00.",
+    group: "experiences",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/samurai-ninja-experience-tokyo",
     badge: "Experience",
     title: "Samurai and Ninja Experience in Tokyo (2026): Sword Lessons, Where to Go and Tickets",

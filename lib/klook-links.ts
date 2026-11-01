@@ -4724,3 +4724,98 @@ export const nisekoSkiTripPrep: KlookTripPrepItem[] = [
     why: "A Niseko day is decided by weather more than any other ski trip in Japan — upper lifts hold for wind, areas close and reopen through a storm, and those notices reach a phone rather than a noticeboard at the bottom of the hill.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Akihabara anime tours — added 1 Nov 2026 for akihabara-anime-tour
+//
+// Klook still answers automated reads of its /activity/ pages with HTTP 403, so
+// every listing below was confirmed live, on sale and in its en-US URL form
+// through the www.klook.com search index on 1 November 2026. The durations and
+// departure times in the `desc` lines are the ones that index carries for each
+// listing; anything it does not carry is absent rather than guessed, and no
+// price appears on any of them.
+//
+// All six are guided tours and activities, which is the 6.5% band — the right
+// headline CTA for this page. GetYourGuide is deliberately not here: the entry-
+// article queue brings it in only when Klook has nothing above 2% for the
+// subject, and Akihabara is the opposite case.
+// ---------------------------------------------------------------------------
+
+/**
+ * The headline CTA. The best-reviewed and most-booked of the Akihabara walks in
+ * the index on 1 Nov 2026 (4.7/5, 200+ bookings), and the only one whose index
+ * entry names its departure times — 14:00 and 18:00 — which is what makes it
+ * usable for a reader deciding where a tour fits in a Tokyo day.
+ */
+export const akihabaraAnimeMangaMaidCafeTour: KlookTour = {
+  title: "Akihabara anime, manga, video games & maid café tour",
+  desc: "Departures listed at 14:00 and 18:00 for groups of 1 to 10 with an English- or Japanese-speaking guide, anime, figure and classic-game shops, and a maid café with seating guaranteed",
+  url: klookLink("https://www.klook.com/en-US/activity/150558-tokyo-akihabara-anime-manga-video-games-maid-cafe-tour/"),
+};
+
+/** The three-hour join-in walk — the shortest of the guided options. */
+export const akihabaraElectricTownWalk: KlookTour = {
+  title: "Akihabara Electric & Anime Town walk (3 hours)",
+  desc: "Listed at 3 hours: how the district grew out of a post-war radio market, a retro arcade and Super Potato, figure shops and a guided maid-café visit",
+  url: klookLink("https://www.klook.com/en-US/activity/94433-tokyo-city-akihabara-anime-gaming-adventure-half-day-walking-tour/"),
+};
+
+/** The five-hour version, for a reader who wants the whole afternoon in one place. */
+export const akihabaraOtakuFiveHourTour: KlookTour = {
+  title: "Tokyo otaku tour: Akihabara anime & game culture (5 hours)",
+  desc: "Listed at 5 hours as a private group meeting in Akihabara Electric Town — the long version, for a day built around Akihabara rather than one that passes through it",
+  url: klookLink("https://www.klook.com/en-US/activity/96769-tokyo-city-akihabara-games-anime-manga-otaku-half-day-walking-tour/"),
+};
+
+/** Private, and the one that pairs the maid café with Kanda Myojin shrine. */
+export const akihabaraPrivateAnimeLoverTour: KlookTour = {
+  title: "Akihabara private half-day walk with an anime-lover guide",
+  desc: "A private half day routed through a maid café and Kanda Myojin shrine, which is the pairing to pick if the group has one anime fan in it and four people along for the ride",
+  url: klookLink("https://www.klook.com/en-US/activity/91351-akihabara-maid-cafe-kanda-myoujin-shrine-private-half-day-walking-tour/"),
+};
+
+/** The other private half day — no fixed group to keep up with. */
+export const akihabaraAnimeMangaPrivateTour: KlookTour = {
+  title: "Akihabara anime & manga private half-day walking tour",
+  desc: "A private half-day walk through the manga, figure and game shops at your own pace, which is the format that lets you stop in one shop for an hour",
+  url: klookLink("https://www.klook.com/en-US/activity/91799-akihabara-anime-manga-private-half-day-walking-tour/"),
+};
+
+/** A fourth shape of the same afternoon, kept for the comparison block. */
+export const akihabaraOtakuUniverseTour: KlookTour = {
+  title: "Akihabara Otaku Universe tour",
+  desc: "Another guided run at the same district, listed separately — worth opening alongside the others because the shops each tour actually enters are not the same",
+  url: klookLink("https://www.klook.com/en-US/activity/111055-akihabara-otaku-universe-tour-tokyo/"),
+};
+
+/**
+ * What an Akihabara day books, in the order it needs them.
+ *
+ * Subway ticket first on purpose. Akihabara is the one Tokyo district where the
+ * pass advice flips: the station is a JR station (Yamanote, Keihin-Tohoku and
+ * Chuo-Sobu), so the Tokyo Subway Ticket does not reach it on JR at all — it
+ * reaches it on the Hibiya Line. That is a thing to know before buying rather
+ * than after, which is why the line is written the way it is.
+ */
+export const akihabaraTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.subway,
+    why: "Worth reading the small print for this district specifically. Akihabara is a JR station on the Yamanote, Keihin-Tohoku and Chuo-Sobu lines, none of which this pass covers; it gets you there on the Tokyo Metro Hibiya Line instead, and it is the Hibiya Line platform you want if the rest of your day is Ginza, Roppongi or Ueno.",
+  },
+  {
+    label: akihabaraAnimeMangaMaidCafeTour.title,
+    ctaLabel: "Check Akihabara tour times →",
+    url: akihabaraAnimeMangaMaidCafeTour.url,
+    why: "The one booking on this page with a clock on it. Its listed departures are 14:00 and 18:00, so the tour decides the shape of your day rather than slotting into it — and a maid café with seating guaranteed is the part that is genuinely awkward to arrange on your own.",
+  },
+  {
+    label: "Hotels around Ueno and Asakusa",
+    ctaLabel: "Check hotel prices on Klook →",
+    url: tokyoStayAreas[2].url,
+    why: "Ueno is two Yamanote stops from Akihabara and one on the Hibiya Line, which puts a late evening in the arcades within a ten-minute ride of your room without paying Ginza prices for the privilege.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Akihabara is the district where you will actually use the data: shop floors stack six storeys deep with little English signage, much of the figure and retro-game stock is only findable by searching a Japanese title, and a maid café's own reservation page is in Japanese too.",
+  },
+];
