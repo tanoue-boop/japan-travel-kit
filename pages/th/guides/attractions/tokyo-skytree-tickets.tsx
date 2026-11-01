@@ -15,40 +15,125 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
-import { thFujiHakoneDayTour, thSkytreeTicket } from "../../../../lib/klook-links-th";
+import KlookTourPicks from "../../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../../components/KlookTripPrep";
+import { GygCompareButton } from "../../../../components/GygCompare";
+import { gygTokyoSkytree } from "../../../../lib/gyg-links";
+import {
+  skytreeTicket,
+  skytreeAquariumCombo,
+  fujiHakoneDayTour,
+  tokyoSightseeingBusTour,
+  skytreeTripPrep,
+} from "../../../../lib/klook-links";
+import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+
+// Mirrors the English guide (/guides/attractions/tokyo-skytree-tickets) block for block as of
+// 2026-11-01. Every figure comes from that page or lib/attraction-prices.ts; nothing was added.
 
 const ROUTE = "/th/guides/attractions/tokyo-skytree-tickets";
 const TITLE = "ตั๋ว Tokyo Skytree 2026: ราคา ชั้น 350";
 const DESC =
   "ตั๋ว Tokyo Skytree 2026: ชั้น 350 เริ่ม ¥1,800 คอมโบ 350+450 ¥3,000 ซื้อหน้างานบวก ¥500";
 
-// Every figure comes from lib/attraction-prices.ts and the English guide that read
-// it off tokyo-skytree.jp. Nothing was re-checked or added for this edition.
 const P = PRICES.tokyoSkytree;
 const CHECKED = dateLabel(P.checked, "th");
-// "from ¥1,800" -> "เริ่มต้น ¥1,800": same figure, Thai qualifier. See lib/i18n.ts.
 const ADULT = priceLabel(P.adult, "th");
 const CHILD = priceLabel(P.child, "th");
+
+const TICKET_URL = klookFor(skytreeTicket.url, "th");
+const GYG_SLUG = "th-tokyo-skytree-tickets";
+
+const tripPrepItems = [
+  withKlookLocale(skytreeTripPrep[0], "th", {
+    label: "โรงแรมย่านอุเอโนะ / อาซากุสะ",
+    ctaLabel: "ดูโรงแรมย่านอุเอโนะและอาซากุสะบน Klook →",
+    why: "ฝั่งแม่น้ำเดียวกับหอ อุเอโนะอยู่บนสายยามาโนเตะ จากนั้นสายกินซ่าวิ่งไปถึงอาซากุสะ และโอชิอาเกะอยู่ถัดไปอีกสองสถานีบนสายอาซากุสะ ขึ้นจุดชมวิวรอบดึกแล้วจึงไม่ต้องนั่งรถไฟข้ามเมืองกลับโรงแรม",
+  }),
+  withKlookLocale(skytreeTripPrep[1], "th", {
+    label: "เช่ากิโมโน Kimono Yae ที่อาซากุสะ",
+    ctaLabel: "ดูร้านเช่ากิโมโนที่อาซากุสะ →",
+    why: "ครึ่งกลางวันของทริปเดียวกัน ห่างไปสองสถานี ร้านอยู่ข้างประตูคามินาริมง และหน้าสินค้าระบุให้คืนชุดภายใน 17:30 ซึ่งทำให้กิจกรรมนี้มาก่อนรอบ Skytree ตอนเย็นพอดี ไม่ชนกัน",
+  }),
+  withKlookLocale(skytreeTripPrep[2], "th", {
+    label: "รถบัส Hop-on hop-off โตเกียว (Skyhop Bus)",
+    ctaLabel: "ดูตั๋วรถบัสหลังคาเปิด →",
+    why: "ตั๋วรถบัสหลังคาเปิดแบบขึ้นลงได้ไม่จำกัด ที่มีเส้นทางผ่านอาซากุสะ เหมาะซื้อถ้าวันนั้นมีทั้งวัดเซ็นโซจิและหอ แทนที่จะแวะจุดเดียวแล้วจ่ายค่ารถไฟใต้ดินทุกช่วง",
+  }),
+  withKlookLocale(skytreeTripPrep[3], "th", {
+    label: "Tokyo Subway Ticket (24 / 48 / 72 ชั่วโมง)",
+    ctaLabel: "ดูตั๋วรถไฟใต้ดิน →",
+    why: "โอชิอาเกะเป็นสถานีรถไฟใต้ดินของสายฮันโซมงและสายโทเออาซากุสะ ตั๋ว Metro และ Toei แบบ 24, 48 หรือ 72 ชั่วโมงจึงครอบคลุมการเดินทางไปหอแล้ว รวมถึงสองสถานีไปวัดเซ็นโซจิหลังจากนั้นด้วย",
+  }),
+];
+
+const tourPicks = [
+  withKlookLocale(skytreeAquariumCombo, "th", {
+    title: "ตั๋วคอมโบ Tokyo Skytree + Sumida Aquarium",
+    desc: "จุดชมวิวรวมกับพิพิธภัณฑ์สัตว์น้ำในคอมเพล็กซ์ Solamachi เดียวกันที่ฐานหอ",
+  }),
+  withKlookLocale(tokyoSightseeingBusTour, "th", {
+    title: "ทัวร์รถบัสเที่ยวโตเกียว 1 วัน",
+    desc: "ทัวร์พร้อมไกด์วนรอบสวนพระราชวังอิมพีเรียล อาซากุสะ และ Tokyo Skytree พร้อมออดิโอไกด์หลายภาษา",
+  }),
+  withKlookLocale(fujiHakoneDayTour, "th", {
+    title: "ทัวร์ 1 วัน ภูเขาไฟฟูจิ＋ฮาโกเน่",
+    desc: "สถานีที่ 5 ของภูเขาไฟฟูจิ คู่กับเขตภูเขาไฟฮาโกเน่และทะเลสาบอาชิ เป็นทริปไปกลับหนึ่งวันจากโตเกียว",
+  }),
+];
 
 const priceRows = [
   { ticket: "ชั้น 350 — ผู้ใหญ่ (15 ปีขึ้นไป)", advance: ADULT, sameDay: "บวกค่าบริการ ¥500" },
   { ticket: "ชั้น 350 — เด็ก (6–14 ปี)", advance: CHILD, sameDay: "บวกค่าบริการ ¥500" },
-  { ticket: "คอมโบ 350＋450 — ผู้ใหญ่", advance: "เริ่มต้น ¥3,000", sameDay: "บวกค่าบริการ ¥500" },
-  { ticket: "คอมโบ 350＋450 — เด็ก", advance: "เริ่มต้น ¥1,500", sameDay: "บวกค่าบริการ ¥500" },
+  { ticket: "คอมโบ ชั้น 350＋450 — ผู้ใหญ่", advance: "เริ่มต้น ¥3,000", sameDay: "บวกค่าบริการ ¥500" },
+  { ticket: "คอมโบ ชั้น 350＋450 — เด็ก", advance: "เริ่มต้น ¥1,500", sameDay: "บวกค่าบริการ ¥500" },
   { ticket: "เพิ่มชั้น 450 ที่หน้างาน — ผู้ใหญ่", advance: "ไม่ขายออนไลน์", sameDay: "¥1,400" },
   { ticket: "เพิ่มชั้น 450 ที่หน้างาน — เด็ก", advance: "ไม่ขายออนไลน์", sameDay: "¥700" },
   { ticket: "อายุไม่เกิน 5 ปี", advance: "ฟรี", sameDay: "ฟรี" },
+];
+
+const whoFor = [
+  {
+    title: "ชั้น 350 อย่างเดียวก็พอ ถ้า…",
+    desc: `คุณต้องการวิว ไม่ใช่ของเสริม ชั้น 350 คือจุดชมวิวหลักสามชั้น และมองเห็นที่ราบคันโตทั้งผืนอยู่แล้ว ผู้ใหญ่ ${ADULT} คิดต่อความสูงหนึ่งเมตรแล้วถูกที่สุดในบรรดาจุดชมวิวแบบเสียเงินหลัก ๆ ของโตเกียว`,
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2l3 7h-6l3-7z" />
+        <line x1="12" y1="9" x2="12" y2="21" />
+        <line x1="6" y1="21" x2="18" y2="21" />
+      </svg>
+    ),
+  },
+  {
+    title: "เพิ่มชั้น 450 ถ้า…",
+    desc: "ความสูงคือเป้าหมายของทริป ชั้น 450 คือ Tembo Galleria ทางเดินกระจกลาดเอียงที่วนขึ้นไปถึงจุดสูงสุดที่เข้าถึงได้ของหอ คอมโบออนไลน์เริ่มต้น ¥3,000 ถ้าไปเพิ่มในวันนั้นจะบวกอีก ¥1,400 จากตั๋วชั้น 350",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 20l8-16 8 16" />
+        <path d="M7.5 13h9" />
+      </svg>
+    ),
+  },
+  {
+    title: "ไปรอบดึก ถ้า…",
+    desc: "คุณอยากได้วิวกลางคืนมากกว่าเส้นขอบฟ้า ในวันที่ตรวจสอบ จุดชมวิวเปิดถึง 22:00 และรับเข้าครั้งสุดท้าย 21:00 รอบดึกคือรอบที่ยังมีที่ว่างเมื่อรอบกลางวันเต็มไปแล้ว",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+      </svg>
+    ),
+  },
 ];
 
 const deckRows = [
   {
     deck: "Tokyo Skytree",
     height: "ชั้น 350 และชั้น 450",
-    price: `ชั้น 350 ${ADULT}・คอมโบ เริ่มต้น ¥3,000`,
+    price: "เริ่มต้น ¥1,800 (ชั้น 350)・คอมโบ เริ่มต้น ¥3,000",
     highlight: "จุดชมวิวที่สูงที่สุดในโตเกียว และเป็นที่เดียวที่มีทางเดินกระจก",
     area: "โอชิอาเกะ／สถานี Tokyo Skytree",
   },
@@ -70,77 +155,62 @@ const deckRows = [
     deck: "อาคารรัฐบาลกรุงโตเกียว",
     height: "ราว 202 เมตร",
     price: "ฟรี",
-    highlight: "ไม่ต้องมีตั๋วเลย — วิวเมืองที่คุ้มที่สุดในโตเกียว",
+    highlight: "ไม่ต้องมีตั๋วเลย — วิวพาโนรามาเมืองที่คุ้มที่สุดในโตเกียว",
     area: "ชินจูกุ",
-  },
-];
-
-const whoFor = [
-  {
-    title: "ชั้น 350 ก็พอ ถ้า…",
-    desc: `คุณต้องการวิว ไม่ใช่ของเสริม ชั้น 350 คือจุดชมวิวหลักสามชั้น และมองเห็นที่ราบคันโตทั้งผืนอยู่แล้ว ผู้ใหญ่ ${ADULT} คิดต่อความสูงหนึ่งเมตรแล้วถูกที่สุดในบรรดาจุดชมวิวแบบเก็บเงินหลัก ๆ ของโตเกียว`,
-  },
-  {
-    title: "เพิ่มชั้น 450 ถ้า…",
-    desc: "ความสูงเป็นเป้าหมายของทริปนี้ ชั้น 450 คือ Tembo Galleria ทางเดินกระจกที่ไล่ลาดวนขึ้นไปถึงจุดสูงสุดที่เข้าถึงได้ของหอ คอมโบออนไลน์เริ่มต้น ¥3,000 แต่ถ้าไปเพิ่มที่หน้างานบนตั๋วชั้น 350 จะบวกอีก ¥1,400",
-  },
-  {
-    title: "เลือกรอบดึก ถ้า…",
-    desc: `คุณอยากได้วิวกลางคืนมากกว่าเส้นขอบฟ้า วันที่ตรวจสอบเว็บไซต์ทางการ ${CHECKED} จุดชมวิวเปิดถึง 22:00 และรับเข้าครั้งสุดท้าย 21:00 รอบที่ยังเหลือหลังรอบกลางวันเต็มมักเป็นรอบดึก`,
   },
 ];
 
 const steps = [
   {
-    title: "ตัดสินใจก่อนจองว่าเอาแค่ชั้น 350 หรือคอมโบ",
-    desc: "ชั้น 450 ซื้อเป็นคอมโบออนไลน์ (ผู้ใหญ่เริ่มต้น ¥3,000) ถูกกว่าไปเพิ่มที่หน้างานบนตั๋วชั้น 350 (บวก ¥1,400) ถ้ามีโอกาสที่คุณจะอยากขึ้นทางเดินกระจก ให้ซื้อคอมโบตั้งแต่แรก",
+    title: "ตัดสินใจก่อนจองว่าเอาชั้น 350 หรือคอมโบ",
+    desc: "ชั้น 450 ซื้อเป็นคอมโบออนไลน์ (ผู้ใหญ่เริ่มต้น ¥3,000) ถูกกว่าไปซื้อเพิ่มในวันนั้นบนตั๋วชั้น 350 (บวก ¥1,400) ถ้ามีโอกาสที่คุณจะอยากขึ้นทางเดินกระจก ให้ซื้อคอมโบตั้งแต่แรก",
   },
   {
     title: "จองตั๋วระบุวันทางออนไลน์",
-    desc: `เว็บไซต์ทางการขายตั๋วระบุวันด้วยราคา "เริ่มต้น" ข้างบน และยอดจริงของวันคุณอาจสูงกว่านั้น ซื้อหน้างานที่เคาน์เตอร์ชั้น 4 หรือร้านสะดวกซื้อจะบวกค่าบริการ ¥500 ต่อตั๋วหนึ่งใบ นี่คือเหตุผลที่ชัดที่สุดของการจองล่วงหน้า วันที่ตรวจสอบ ${CHECKED}`,
+    desc: `เว็บไซต์ทางการขายตั๋วระบุวันตามราคา "เริ่มต้น" ข้างบน และยอดของวันที่คุณไปจริงอาจสูงกว่านั้น ซื้อในวันนั้นที่เคาน์เตอร์ชั้น 4 หรือร้านสะดวกซื้อจะบวกค่าบริการ ¥500 ต่อตั๋วหนึ่งใบ ซึ่งเป็นเหตุผลที่ชัดที่สุดของการจองล่วงหน้า วันที่ตรวจสอบ ${CHECKED}`,
   },
   {
-    title: "ถ้าใช้บัตรที่ออกนอกญี่ปุ่น ให้ใช้ตัวแทนจำหน่าย",
-    desc: "Klook ขายตั๋วระบุเวลาเข้าชมใบเดียวกัน พร้อมหน้าจอที่อ่านเข้าใจและตั๋วอิเล็กทรอนิกส์ทันที ช่วยเลี่ยงปัญหาบัตรและภาษาที่เจอบ่อยในเว็บขายตั๋วทางการของญี่ปุ่น และหน้าสินค้าเดียวกันก็มีคอมโบชั้น 450 ด้วย",
+    title: "ถ้าใช้บัตรที่ออกในต่างประเทศ ให้ซื้อผ่านตัวแทนจำหน่าย",
+    desc: "Klook ขายตั๋วระบุเวลาเข้าชมแบบเดียวกัน พร้อมหน้าชำระเงินภาษาไทยและ e-ticket ช่วยเลี่ยงปัญหาเรื่องบัตรและภาษาที่ผู้มาเยือนหลายคนเจอในเว็บไซต์สถานที่ท่องเที่ยวของญี่ปุ่น และหน้าสินค้าเดียวกันก็มีคอมโบชั้น 450 ด้วย",
   },
   {
-    title: "เช็กเวลาของวันคุณ ไม่ใช่เวลาทั่วไป",
-    desc: `Skytree ประกาศปฏิทินรายวัน และเว็บไซต์ทางการระบุชัดว่า "เวลาเปิดอาจเปลี่ยนโดยไม่แจ้งล่วงหน้า" โดยรับเข้าครั้งสุดท้ายหนึ่งชั่วโมงก่อนปิด วันที่ตรวจสอบ ${CHECKED} จุดชมวิวเปิด 10:00–22:00 และรับเข้าครั้งสุดท้าย 21:00`,
+    title: "เช็กเวลาเปิดของวันที่คุณไป ไม่ใช่เวลาทั่วไป",
+    desc: `Skytree ประกาศปฏิทินรายวัน และระบุชัดว่า "เวลาเปิดอาจเปลี่ยนแปลงโดยไม่แจ้งล่วงหน้า" โดยรับเข้าครั้งสุดท้ายหนึ่งชั่วโมงก่อนปิด ในวันที่ตรวจสอบ จุดชมวิวเปิด 10:00–22:00 และรับเข้าครั้งสุดท้าย 21:00`,
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
     q: "ตั๋ว Tokyo Skytree ราคาเท่าไร?",
-    a: `ตั๋วระบุวันบนเว็บไซต์ทางการ สำหรับชั้น 350 ซึ่งเป็นจุดชมวิวหลัก ผู้ใหญ่ (15 ปีขึ้นไป) ${ADULT} และเด็กอายุ 6–14 ปี ${CHILD} ตั๋วคอมโบที่ครอบคลุมชั้น 350 และชั้น 450 ผู้ใหญ่เริ่มต้น ¥3,000 เด็กเริ่มต้น ¥1,500 เด็กอายุไม่เกิน 5 ปีเข้าฟรี ทั้งหมดเป็นราคา "เริ่มต้น" ยอดของวันที่เจาะจงอาจสูงกว่า วันที่ตรวจสอบเว็บไซต์ทางการ ${CHECKED}`,
+    a: `ตั๋วระบุวันบนเว็บไซต์ทางการสำหรับชั้น 350 ซึ่งเป็นจุดชมวิวหลัก ผู้ใหญ่ (15 ปีขึ้นไป) เริ่มต้น ¥1,800 และเด็กอายุ 6–14 ปี เริ่มต้น ¥900 ตั๋วคอมโบที่รวมชั้น 350 และชั้น 450 ผู้ใหญ่เริ่มต้น ¥3,000 เด็กเริ่มต้น ¥1,500 เด็กอายุไม่เกิน 5 ปีเข้าฟรี ทั้งหมดเป็นราคา "เริ่มต้น" ยอดของวันที่เจาะจงอาจสูงกว่า ตรวจสอบจากเว็บไซต์ทางการเมื่อ ${CHECKED}`,
   },
   {
     q: "ซื้อตั๋ว Tokyo Skytree ล่วงหน้าถูกกว่าไหม?",
-    a: `ถูกกว่า และส่วนต่างเป็นตัวเลขที่ประกาศไว้ ไม่ใช่เรื่องของอุปสงค์ ซื้อหน้างานที่เคาน์เตอร์ขายตั๋วชั้น 4 หรือร้านสะดวกซื้อจะบวกค่าบริการ ¥500 ต่อตั๋วหนึ่งใบบนราคาค่าเข้า ครอบครัวสี่คนคือ ¥2,000 ที่เลี่ยงได้ การจองตั๋วระบุวันออนไลน์ ไม่ว่าจะที่เว็บไซต์ทางการหรือตัวแทนจำหน่าย ข้ามทั้งค่าบริการและคิวที่เคาน์เตอร์ วันที่ตรวจสอบ ${CHECKED}`,
+    a: `ถูกกว่า และส่วนต่างเป็นตัวเลขที่ประกาศไว้ชัดเจน ไม่ได้ขึ้นกับความต้องการที่ขึ้นลง ซื้อในวันนั้นที่เคาน์เตอร์ขายตั๋วชั้น 4 หรือที่ร้านสะดวกซื้อจะบวกค่าบริการ ¥500 ต่อตั๋วหนึ่งใบจากค่าเข้าชม ครอบครัวสี่คนคือ ¥2,000 ที่เลี่ยงได้ การจองตั๋วระบุวันทางออนไลน์ ไม่ว่าที่เว็บไซต์ทางการหรือผ่านตัวแทนจำหน่าย จะข้ามทั้งค่าบริการและคิวที่เคาน์เตอร์ วันที่ตรวจสอบ ${CHECKED}`,
   },
   {
     q: "ชั้น 350 กับชั้น 450 ต่างกันอย่างไร?",
-    a: "ชั้น 350 คือ Tembo Deck จุดชมวิวหลักสามชั้น และเป็นชั้นที่ตั๋วทุกใบรวมอยู่แล้ว ชั้น 450 คือ Tembo Galleria ทางเดินผนังกระจกที่ไล่ลาดวนขึ้นไปถึงจุดสูงสุดที่เข้าถึงได้ของหอ ชั้น 450 ไปแบบเดี่ยวไม่ได้ คุณต้องมีตั๋วชั้น 350 ก่อน ไม่ว่าจะเป็นส่วนหนึ่งของคอมโบออนไลน์ หรือเพิ่มที่เครื่องขายตั๋วหน้างานในราคาผู้ใหญ่ ¥1,400",
+    a: "ชั้น 350 คือ Tembo Deck จุดชมวิวหลักสามชั้น และเป็นชั้นที่ตั๋วทุกใบรวมไว้ ชั้น 450 คือ Tembo Galleria ทางเดินผนังกระจกลาดเอียงที่วนขึ้นไปถึงจุดสูงสุดที่เข้าถึงได้ของหอ ชั้น 450 ไปอย่างเดียวไม่ได้ ต้องมีตั๋วชั้น 350 ก่อน ไม่ว่าจะซื้อเป็นคอมโบออนไลน์ หรือเพิ่มที่เครื่องขายตั๋วหน้างานในราคา ¥1,400 (ผู้ใหญ่)",
   },
   {
     q: "ซื้อตั๋วชั้น 450 ออนไลน์ได้ไหม?",
-    a: `ซื้อแบบเดี่ยวไม่ได้ เว็บไซต์ทางการขายชั้น 450 เฉพาะในรูปคอมโบ ถ้าคุณมาถึงพร้อมตั๋วชั้น 350 แล้วเปลี่ยนใจ ให้เพิ่มชั้น 450 ที่เครื่องขายตั๋วหน้างาน ผู้ใหญ่ ¥1,400 หรือเด็ก 6–14 ปี ¥700 ซื้อคอมโบออนไลน์เป็นทางที่ถูกกว่า เพราะผู้ใหญ่เริ่มต้น ¥3,000 เทียบกับ ¥1,800 บวก ¥1,400 เมื่อแยกซื้อสองครั้ง วันที่ตรวจสอบ ${CHECKED}`,
+    a: `ซื้อเป็นตั๋วเดี่ยวไม่ได้ เว็บไซต์ทางการขายชั้น 450 เฉพาะในตั๋วคอมโบ ถ้าคุณมาพร้อมตั๋วชั้น 350 แล้วเปลี่ยนใจ ให้เพิ่มชั้น 450 ที่เครื่องขายตั๋วหน้างานในราคา ¥1,400 (ผู้ใหญ่) หรือ ¥700 (เด็ก 6–14 ปี) การซื้อคอมโบออนไลน์ถูกกว่า คือผู้ใหญ่เริ่มต้น ¥3,000 เทียบกับ ¥1,800 บวก ¥1,400 เมื่อแยกซื้อสองครั้ง วันที่ตรวจสอบ ${CHECKED}`,
   },
   {
     q: "Tokyo Skytree เปิดกี่โมง?",
-    a: `Skytree ใช้ปฏิทินรายวันแทนตารางเวลาคงที่ และเว็บไซต์ทางการระบุว่า "เวลาเปิดอาจเปลี่ยนโดยไม่แจ้งล่วงหน้า" โดยรับเข้าครั้งสุดท้ายหนึ่งชั่วโมงก่อนปิด วันที่ตรวจสอบ ${CHECKED} จุดชมวิวเปิด 10:00–22:00 และรับเข้าครั้งสุดท้าย 21:00 ควรเปิดปฏิทินด้วยวันของคุณเองก่อนจัดเย็นนั้นไว้ที่นี่`,
+    a: `Skytree ใช้ปฏิทินรายวันแทนตารางเวลาเดียวตายตัว และเว็บไซต์ทางการระบุว่า "เวลาเปิดอาจเปลี่ยนแปลงโดยไม่แจ้งล่วงหน้า" และรับเข้าครั้งสุดท้ายหนึ่งชั่วโมงก่อนปิด ในวันที่ตรวจสอบ จุดชมวิวเปิด 10:00–22:00 และรับเข้าครั้งสุดท้าย 21:00 ควรเช็กปฏิทินของวันที่คุณไปก่อนวางแผนช่วงเย็นไว้ที่นี่ วันที่ตรวจสอบ ${CHECKED}`,
   },
   {
-    q: "Tokyo Skytree หรือ Shibuya Sky ดีกว่า?",
-    a: "สองที่ตอบคำถามต่างกัน Skytree คือเรื่องความสูงและระยะสายตา ชั้น 350 และ 450 เป็นจุดชมวิวที่สูงที่สุดในโตเกียว วิวครอบคลุมที่ราบคันโตทั้งผืน และวันที่อากาศดีจะมีภูเขาไฟฟูจิอยู่ในนั้น Shibuya Sky คือเรื่องรูปถ่าย ดาดฟ้ากลางแจ้งราว 229 เมตรเหนือแยกชิบูยะพอดี สวยที่สุดตอนพระอาทิตย์ตก และได้บรรยากาศมากกว่าความสูง ถ้าเลือกได้แห่งเดียว เอาวิวพาโนรามาไป Skytree เอารูปที่ทุกคนจำได้ไป Shibuya Sky",
+    q: "Tokyo Skytree หรือ Shibuya Sky ที่ไหนดีกว่า?",
+    a: "สองที่ตอบโจทย์ต่างกัน Skytree คือเรื่องความสูงและระยะมอง ชั้น 350 และชั้น 450 เป็นจุดชมวิวที่สูงที่สุดในโตเกียว วิวครอบคลุมที่ราบคันโตทั้งผืน และวันที่ฟ้าใสจะเห็นภูเขาไฟฟูจิด้วย Shibuya Sky คือเรื่องรูปถ่าย ดาดฟ้ากลางแจ้งสูงราว 229 เมตรเหนือแยกชิบูยะพอดี สวยที่สุดตอนพระอาทิตย์ตก และให้บรรยากาศมากกว่าความสูง ถ้าเลือกได้ที่เดียว ไป Skytree เพื่อวิวพาโนรามา และไป Shibuya Sky เพื่อรูปที่ทุกคนจำได้",
   },
   {
     q: "มองเห็นภูเขาไฟฟูจิจาก Tokyo Skytree ไหม?",
-    a: "วันที่อากาศดีเห็น และด้วยความสูงของมัน โอกาสสูงกว่าจุดชมวิวอื่นในเมืองนี้ ทัศนวิสัยขึ้นอยู่กับอากาศทั้งหมด และมักดีกว่าในเดือนที่อากาศเย็นและแห้ง รวมถึงช่วงต้นของวัน ไม่มีการรับประกันสำหรับวันใดวันหนึ่ง ซึ่งควรจำไว้ก่อนจ่ายราคาคอมโบเพื่อวิวฟูจิโดยเฉพาะ",
+    a: "วันที่ฟ้าใสมองเห็นได้ และด้วยความสูง Skytree จึงมีโอกาสดีที่สุดในบรรดาจุดชมวิวในเมือง ทัศนวิสัยขึ้นอยู่กับสภาพอากาศทั้งหมด และมักดีกว่าในเดือนที่อากาศเย็นและแห้ง รวมถึงช่วงเช้า ไม่มีอะไรรับประกันในวันใดวันหนึ่ง ซึ่งควรจำไว้ก่อนจ่ายราคาคอมโบเพื่อวิวฟูจิโดยเฉพาะ",
   },
   {
     q: "ไป Tokyo Skytree อย่างไร?",
-    a: "หอตั้งอยู่เหนือสถานี Tokyo Skytree ของสาย Tobu Skytree และสถานีโอชิอาเกะ ซึ่งมีรถไฟใต้ดินโตเกียวเมโทรสายฮันโซมง สายโทเออาซากุสะ และสายเคเซโอชิอาเกะ โอชิอาเกะอยู่ในขอบเขตของ Tokyo Subway Ticket ดังนั้นถ้าคุณถือบัตรนั้นอยู่แล้ว การเดินทางไปที่นี่ไม่มีค่าใช้จ่ายเพิ่ม อาซากุสะอยู่ห่างสองสถานีบนสายอาซากุสะ ทำให้จัดสองที่นี้ไว้ในบ่ายเดียวกันได้ง่าย",
+    a: "หอตั้งอยู่เหนือสถานี Tokyo Skytree ของสาย Tobu Skytree และสถานีโอชิอาเกะ ซึ่งมีรถไฟใต้ดินโตเกียวเมโทรสายฮันโซมง สายโทเออาซากุสะ และสายเคเซโอชิอาเกะ โอชิอาเกะอยู่ในขอบเขตของ Tokyo Subway Ticket ถ้าคุณถือบัตรนั้นอยู่แล้ว การเดินทางมาที่นี่จึงไม่มีค่าใช้จ่ายเพิ่ม อาซากุสะอยู่ห่างไปสองสถานีบนสายอาซากุสะ จัดสองที่นี้ไว้ในบ่ายเดียวกันได้ง่าย",
   },
 ];
 
@@ -177,10 +247,10 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            ตั๋ว Tokyo Skytree 2026:<br />ราคา ชั้น 350 กับ 450 และวิธีจอง
+            ตั๋ว Tokyo Skytree 2026:<br />ราคา ชั้น 350 vs 450 และวิธีจอง
           </h1>
           <p className={styles.heroSubtitle}>
-            จุดชมวิวที่สูงที่สุดในโตเกียว และเป็นสถานที่ไม่กี่แห่งที่การซื้อหน้างานมีราคาที่ประกาศไว้ชัดเจน
+            จุดชมวิวที่สูงที่สุดในโตเกียว และเป็นสถานที่ที่การซื้อตั๋วในวันนั้นมีค่าปรับที่ประกาศไว้ชัดเจน
             นี่คือราคาทางการ สิ่งที่ชั้น 450 ให้เพิ่มจริง ๆ และวิธีจองจากต่างประเทศ
           </p>
           <div className={styles.heroBadges}>
@@ -204,14 +274,14 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>ชั้น 350 (ผู้ใหญ่)</p>
-                <p className={styles.verdictStatValue}>{ADULT}</p>
+                <p className={styles.verdictStatValue}>เริ่มต้น ¥1,800</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>คอมโบ 350＋450</p>
                 <p className={styles.verdictStatValue}>เริ่มต้น ¥3,000</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>ซื้อหน้างาน</p>
+                <p className={styles.verdictStatLabel}>ซื้อในวันนั้น</p>
                 <p className={styles.verdictStatValue}>บวก ¥500 ต่อใบ</p>
               </div>
               <div className={styles.verdictStat}>
@@ -221,27 +291,30 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
             </div>
             <p className={styles.verdictText}>
               <strong>สรุป:</strong> จองตั๋วระบุวันทางออนไลน์ Skytree เก็บค่าบริการ ¥500 ต่อตั๋วหนึ่งใบ
-              ที่เคาน์เตอร์หน้างาน ดังนั้นการจองล่วงหน้าถูกกว่าด้วยจำนวนที่ประกาศไว้ ไม่ใช่ด้วยโชค
+              ที่เคาน์เตอร์ขายตั๋ววันเดียวกัน การจองล่วงหน้าจึงถูกกว่าด้วยจำนวนที่ประกาศไว้ ไม่ใช่ด้วยโชค
               ถ้ามีโอกาสที่คุณจะอยากขึ้นทางเดินกระจกชั้น 450 ให้ซื้อคอมโบตั้งแต่แรก เพราะไปเพิ่มที่หน้างาน
               ภายหลังจะแพงขึ้น ¥1,400 ราคาอ่านจากเว็บไซต์ทางการ วันที่ตรวจสอบ {CHECKED}
             </p>
-            <KlookLink href={thSkytreeTicket.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              ดูตั๋ว Tokyo Skytree →
-            </KlookLink>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <KlookLink href={TICKET_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+                เช็กตั๋ว Tokyo Skytree บน Klook →
+              </KlookLink>
+              <GygCompareButton slug={GYG_SLUG} listing={gygTokyoSkytree} />
+            </div>
           </div>
         </div>
 
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>คุณซื้ออะไร</span>
-          <h2 className={styles.sectionTitle}>ตั๋วหนึ่งใบครอบคลุมถึงไหน</h2>
+          <span className={styles.sectionLabel}>ภาพรวม</span>
+          <h2 className={styles.sectionTitle}>คุณกำลังซื้ออะไร</h2>
           <p className={styles.bodyText}>
-            Tokyo Skytree ขายค่าเข้าสองชั้นที่แยกกัน <strong>ชั้น 350</strong> คือ Tembo Deck
-            จุดชมวิวสามชั้น และเป็นชั้นที่ตั๋วทุกใบรวมอยู่แล้ว <strong>ชั้น 450</strong> คือ Tembo Galleria
-            ทางเดินผนังกระจกที่ไล่ลาดวนขึ้นไปถึงจุดสูงสุดที่เข้าถึงได้ของหอ และไปแบบเดี่ยวไม่ได้
+            Tokyo Skytree ขายค่าเข้าชมสองชั้นที่แยกกัน <strong>ชั้น 350</strong> คือ Tembo Deck
+            จุดชมวิวสามชั้น และเป็นชั้นที่ตั๋วทุกใบรวมไว้ <strong>ชั้น 450</strong> คือ Tembo Galleria
+            ทางเดินผนังกระจกลาดเอียงที่วนขึ้นไปถึงจุดสูงสุดที่เข้าถึงได้ของหอ และไปอย่างเดียวไม่ได้
           </p>
           <p className={styles.bodyText}>
-            ความสับสนส่วนใหญ่มาจากโครงสร้างสองชั้นนี้ เพราะราคาของสองชั้นต่างกันตามว่าคุณซื้อรวมกันออนไลน์
-            หรือแยกซื้อที่หน้างาน ส่วนถัดไปวางสองเส้นทางไว้ข้างกัน
+            ความสับสนส่วนใหญ่มาจากโครงสร้างสองระดับนี้ เพราะราคาของสองชั้นต่างกันตามว่าคุณซื้อรวมกันออนไลน์
+            หรือแยกซื้อในวันนั้น ส่วนถัดไปวางสองทางเลือกไว้เทียบกัน
           </p>
         </section>
 
@@ -253,7 +326,7 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["ตั๋ว", "ออนไลน์ ระบุวัน", "ที่หน้างาน"].map((h) => (
+                    {["ตั๋ว", "ออนไลน์ ระบุวัน", "ซื้อในวันนั้น"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -272,10 +345,17 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             อ่านจากเว็บไซต์ทางการของ Tokyo Skytree วันที่ตรวจสอบ {CHECKED} หน้าทางการระบุราคาเหล่านี้เป็นราคา
-            &ldquo;เริ่มต้น&rdquo; ยอดของวันที่เจาะจงจึงอาจสูงกว่า ควรยืนยันตอนชำระเงิน ค่าบริการหน้างาน ¥500
-            คิดต่อตั๋วหนึ่งใบ ทั้งที่เคาน์เตอร์ชั้น 4 และที่ร้านสะดวกซื้อ
+            &ldquo;เริ่มต้น&rdquo; ยอดของวันที่เจาะจงจึงอาจสูงกว่า ควรยืนยันตอนจอง ค่าบริการ ¥500
+            สำหรับการซื้อในวันนั้นคิดต่อตั๋วหนึ่งใบ ทั้งที่เคาน์เตอร์ชั้น 4 และที่ร้านสะดวกซื้อ
           </p>
         </section>
+
+        <KlookTripPrep
+          label="รอบ ๆ หอ"
+          heading="สิ่งที่ควรจองไว้สำหรับวันฝั่งโอชิอาเกะ"
+          intro="รอบขึ้นจุดชมวิวใช้เวลาหนึ่งถึงสองชั่วโมง และตั๋วข้างบนเป็นสิ่งเดียวที่ต้องระบุเวลา รายการด้านล่างคือการจองที่ช่วงบ่ายที่เหลือของวันนั้นต้องใช้ ทั้งหมดอยู่ฝั่งแม่น้ำเดียวกับหอ และอยู่ในบัญชีเดียวกับตั๋ว"
+          items={tripPrepItems}
+        />
 
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>ตั๋วแบบไหน</span>
@@ -283,6 +363,7 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
+                <div className={styles.whoForIcon}>{item.icon}</div>
                 <p className={styles.whoForTitle}>{item.title}</p>
                 <p className={styles.whoForDesc}>{item.desc}</p>
               </div>
@@ -295,10 +376,8 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <h2 className={styles.sectionTitle}>Skytree เทียบกับจุดชมวิวอื่นในโตเกียว</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Skytree คือตัวเลือกด้านความสูง ถ้าสิ่งที่คุณอยากได้จริง ๆ คือรูปแยกชิบูยะ{" "}
-            <Link href="/th/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Shibuya Sky
-            </Link>{" "}
-            คุ้มกว่า และถ้าอยากได้วิวเมืองโดยไม่จ่ายอะไรเลย อาคารรัฐบาลกรุงโตเกียวที่ชินจูกุเข้าฟรี
+            <Link href="/th/guides/attractions/shibuya-sky-tickets">Shibuya Sky</Link>{" "}
+            คุ้มกว่า และถ้าอยากได้วิวพาโนรามาเมืองโดยไม่เสียเงินเลย อาคารรัฐบาลกรุงโตเกียวที่ชินจูกุเข้าฟรี
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -326,12 +405,12 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             ตัวเลขของ Skytree และ Shibuya Sky มาจากเว็บไซต์ของผู้ให้บริการเอง ส่วน Tokyo Tower และอาคารรัฐบาล
-            เป็นค่าประมาณและอาจเปลี่ยนแปลง ควรยืนยันตอนชำระเงิน
+            กรุงโตเกียวเป็นค่าประมาณและอาจเปลี่ยนแปลง ควรยืนยันตอนจอง
           </p>
         </section>
 
         <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>ขั้นตอน</span>
+          <span className={styles.sectionLabel}>ทีละขั้นตอน</span>
           <h2 className={styles.sectionTitle}>วิธีจองตั๋ว Tokyo Skytree</h2>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
@@ -345,62 +424,51 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            ตัดสินใจจองแล้ว?{" "}
-            <KlookLink href={thSkytreeTicket.url} target="_blank" rel={KLOOK_REL}>
-              ดูรอบและราคาของ Skytree บน Klook →
-            </KlookLink>
+            การเดินทางเป็นส่วนที่ง่าย หอตั้งอยู่บนสถานี Tokyo Skytree และสถานีโอชิอาเกะ และโอชิอาเกะเป็นสถานี
+            รถไฟใต้ดิน จึงใช้{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket (ภาษาอังกฤษ)</Link>{" "}
+            ได้ถ้าคุณมีอยู่แล้ว ส่วน{" "}
+            <Link href="/guides/transport/tokyo-transportation">คู่มือการเดินทางในโตเกียว (ภาษาอังกฤษ)</Link>{" "}
+            อธิบายว่าเครือข่าย Metro และ Toei เชื่อมกันอย่างไร
           </p>
-        </section>
-
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>การเดินทาง</span>
-          <h2 className={styles.sectionTitle}>Tokyo Skytree อยู่ที่ไหน</h2>
-          <p className={styles.bodyText}>
-            การเดินทางเป็นส่วนที่ง่าย เพราะหอตั้งอยู่บนสถานีพอดี
-          </p>
-          <ul className={styles.bodyList}>
-            <li><strong>สถานี Tokyo Skytree</strong> (สาย Tobu Skytree) — อยู่ใต้หอโดยตรง</li>
-            <li><strong>สถานีโอชิอาเกะ</strong> — สายฮันโซมงของโตเกียวเมโทร สายโทเออาซากุสะ และสายเคเซโอชิอาเกะ</li>
-            <li>โอชิอาเกะเป็นสถานีรถไฟใต้ดิน จึงอยู่ในขอบเขตของ Tokyo Subway Ticket ถ้าถือบัตรนั้นอยู่แล้วก็ไม่มีค่าใช้จ่ายเพิ่ม</li>
-            <li>อาซากุสะอยู่ห่างสองสถานีบนสายอาซากุสะ จัดสองที่ไว้ในบ่ายเดียวกันได้ง่าย</li>
-          </ul>
-        </section>
-
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>เวลาที่เหลือของวัน</span>
-          <h2 className={styles.sectionTitle}>จุดชมวิวใช้หนึ่งถึงสองชั่วโมง แล้วที่เหลือ?</h2>
-          <p className={styles.bodyText}>
-            รอบ Skytree ใช้เวลาหนึ่งถึงสองชั่วโมง จึงมักแบ่งวันกับกิจกรรมอื่น ถ้าในแผนโตเกียวของคุณยังมีวันว่าง
-            ทัวร์หนึ่งวันภูเขาไฟฟูจิกับฮาโกเน่ออกจากโตเกียวและกลับเย็นวันเดียวกัน และจ่ายในบัญชี Klook
-            เดียวกับตั๋วใบนี้
-          </p>
-          <KlookLink href={thFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta} style={{ marginTop: "0.5rem", display: "inline-block" }}>
-            ดู{thFujiHakoneDayTour.label} →
-          </KlookLink>
         </section>
 
         <FaqList items={faqItems} />
 
+        <KlookTourPicks
+          heading="จองไปพร้อมกับกิจกรรมอื่นของวัน"
+          intro="รอบ Skytree ใช้เวลาหนึ่งถึงสองชั่วโมง รายการเหล่านี้อยู่ในบัญชี Klook เดียวกับตั๋ว จึงจองกิจกรรมที่เหลือของวันในการชำระเงินครั้งเดียวกันได้"
+          tours={tourPicks}
+        />
+
         <Related
           items={[
+            { href: "/guides/attractions/tokyo-bay-cruise", title: "ล่องเรืออ่าวโตเกียว (2026): Yakatabune vs Symphony เวลาและราคา (ภาษาอังกฤษ)" },
+            { href: "/guides/attractions/asakusa-kimono-rental", title: "เช่ากิโมโนที่อาซากุสะ (2026): เวลาคืนชุด ทำผม และจุดถ่ายรูป (ภาษาอังกฤษ)" },
+            { href: "/guides/attractions/tokyo-3-day-itinerary", title: "แผนเที่ยวโตเกียว 3 วัน (2026): จองอะไร และจองตามลำดับไหน (ภาษาอังกฤษ)" },
+            { href: "/guides/attractions/tokyo-tower-tickets", title: "ตั๋ว Tokyo Tower (2026): ราคา Main Deck vs Top Deck และวิธีจอง (ภาษาอังกฤษ)" },
             { href: "/th/guides/attractions/shibuya-sky-tickets", title: "ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง" },
+            { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket (2026): 24, 48 หรือ 72 ชั่วโมง คุ้มไหม (ภาษาอังกฤษ)" },
+            { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "ตั๋ว Warner Bros. Studio Tour Tokyo (2026): ราคาและวิธีจอง (ภาษาอังกฤษ)" },
+            { href: "/guides/attractions/mt-fuji-day-tour-from-tokyo", title: "ทัวร์ภูเขาไฟฟูจิ 1 วันจากโตเกียว (2026): เลือกทัวร์ไหน และได้เห็นอะไรจริง (ภาษาอังกฤษ)" },
             { href: "/th/guides/attractions/teamlab-tokyo-tickets", title: "ตั๋ว teamLab Planets (2026): ราคา รอบเข้าชม และเทียบกับ Borderless" },
-            { href: "/th/guides/attractions/teamlab-borderless-tickets", title: "ตั๋ว teamLab Borderless (2026): ราคา รอบเวลา และช่องทางซื้อ" },
-            { href: "/th/guides/attractions/tokyo-disney-tickets", title: "ตั๋วดิสนีย์แลนด์โตเกียว (2026): บัตรระบุวัน และเลือกแลนด์หรือซี" },
-            { href: "/th/guides/esim/best-esim-japan", title: "eSIM ญี่ปุ่น 2026: เทียบแพ็กเกจ และ eSIM ญี่ปุ่นของ Klook" },
+            { href: "/guides/attractions", title: "สิ่งที่น่าทำในญี่ปุ่นเพิ่มเติม (ภาษาอังกฤษ) →" },
           ]}
         />
 
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>จองก่อนที่เคาน์เตอร์จะคิดเพิ่ม</h2>
+            <h2 className={styles.ctaBannerTitle}>จองก่อนที่เคาน์เตอร์จะคิดเงินเพิ่ม</h2>
             <p className={styles.ctaBannerDesc}>
-              ตั๋วหน้างานมีค่าบริการ ¥500 ต่อคน ตั๋วระบุวันที่จองออนไลน์ข้ามทั้งค่าบริการและคิว
-              และ Klook จ่ายด้วยสกุลเงินของคุณเอง พร้อมตั๋วอิเล็กทรอนิกส์เข้ามือถือทันที
+              ตั๋วที่ซื้อในวันนั้นมีค่าบริการ ¥500 ต่อคน ตั๋วระบุวันที่จองออนไลน์ข้ามทั้งค่าบริการและคิว
+              และ Klook ให้ชำระเงินผ่านหน้าภาษาไทยด้วยบัตรต่างประเทศได้
             </p>
-            <KlookLink href={thSkytreeTicket.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
-              ดูตั๋ว Tokyo Skytree →
-            </KlookLink>
+            <div className={styles.pickCtaRow}>
+              <KlookLink href={TICKET_URL} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+                ดูตั๋ว Tokyo Skytree บน Klook →
+              </KlookLink>
+              <GygCompareButton slug={GYG_SLUG} listing={gygTokyoSkytree} />
+            </div>
           </div>
         </div>
       </div>

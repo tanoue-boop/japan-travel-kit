@@ -14,152 +14,291 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
-import type { KlookTripPrepItem } from "../../../../lib/klook-links";
+import { GygCompareButton } from "../../../../components/GygCompare";
 import {
-  zhKlookEsim,
-  zhShibuyaSky,
-  zhShinjukuNightFoodTour,
-  zhTokyoPrivateAirportTransfer,
-  zhTokyoSightseeingBusTour,
-  zhTokyoSubwayTicket,
-} from "../../../../lib/klook-links-zh-tw";
+  fujiHakoneDayTour,
+  shibuyaSkyDayTripPrep,
+  shibuyaSkySameDayPrep,
+  shibuyaSkyTicketUrl,
+  tokyoSightseeingBusTour,
+  type KlookTour,
+  type KlookTripPrepItem,
+} from "../../../../lib/klook-links";
+import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
+import { gygShibuyaSky } from "../../../../lib/gyg-links";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
-import { JSONLD_LANG, zhDateLabel, zhMonthLabel, zhPrice } from "../../../../lib/i18n";
+import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 
+// Mirrors the English guide (/guides/attractions/shibuya-sky-tickets) block for block as of
+// 2026-11-01: same sections, tables, Klook and GetYourGuide CTAs in the same places. Every
+// figure is the English page's own or read from lib/attraction-prices.ts; nothing is added.
+
+const LOCALE = "zh-tw" as const;
 const ROUTE = "/zh-tw/guides/attractions/shibuya-sky-tickets";
 const TITLE = "澀谷SKY 門票（2026）：票價、最佳時段與預約方式";
 const DESC =
   "澀谷SKY 門票 2026：官方票價線上預購成人 15 點前 ¥2,700、15 點後 ¥3,400，現場各加 ¥300；日落場最快售完。";
 
-// Every figure on this page comes from lib/attraction-prices.ts — the same record
-// the English guide and the ticket price table read. Nothing is re-checked for the
-// Chinese edition and nothing new is added: same numbers, same source, same date.
-const P = PRICES.shibuyaSky;
-const CHECKED = zhDateLabel(P.checked);
-// zhPrice moves the English qualifier in these records ("from …", "Free") into
-// Chinese without touching the figure — see lib/i18n.ts.
-const ADULT = zhPrice(P.adult);
-const AT_DOOR = zhPrice(P.atDoor);
+const SHIBUYA_SKY_URL = klookFor(shibuyaSkyTicketUrl, LOCALE);
+const GYG_SLUG = "zh-tw-shibuya-sky-tickets";
 
+const P = PRICES.shibuyaSky;
+const CHECKED = dateLabel(P.checked, LOCALE);
+
+/** 依入場時段與購買管道區分的票價。 */
 const priceRows = [
-  { ticket: "成人（線上預購，15 點前／15 點後）", price: ADULT },
-  { ticket: "成人（現場購票，15 點前／15 點後）", price: AT_DOOR },
-  { ticket: "兒童（6～12 歲，僅 14 樓窗口販售）", price: zhPrice(P.child) },
-  { ticket: "學齡前兒童", price: zhPrice("Free") },
+  { ticket: "成人，10:00～14:59 入場", online: "¥2,700", counter: "¥3,000" },
+  { ticket: "成人，15:00～21:20 入場", online: "¥3,400", counter: "¥3,700" },
+  {
+    ticket: "兒童，6～12 歲（含仍就讀小學的 12 歲兒童）",
+    online: "不在線上販售",
+    counter: "¥1,200",
+  },
+  { ticket: "學齡前兒童（尚未就讀小學）", online: "免費", counter: "免費" },
+];
+
+/** 開放時間、最後入場與休館日——決定你付哪一段票價的部分。 */
+const hoursRows = [
+  { what: "開放時間", detail: "10:00～22:30" },
+  { what: "最後入場", detail: "21:20" },
+  { what: "較便宜的時段", detail: "10:00～14:59 入場" },
+  { what: "較貴的時段", detail: "15:00～21:20 入場——所有日落場次都落在這一段" },
+  {
+    what: "休館",
+    detail: "元旦。其他日子也可能臨時休館或縮短開放時間",
+  },
+];
+
+/** 開賣時間、窗口與取消規定。 */
+const bookingRows = [
+  {
+    q: "某個日期什麼時候開賣？",
+    a: "入場日兩週前的日本時間 00:00。2025 年 2 月 27 日的公告特別把開賣改在這個時間點，就是為了讓開賣時間可以預期。",
+  },
+  {
+    q: "可以取消嗎？",
+    a: "同一份公告也為官網門票加入了入場日當天前可免費取消的規定。請以你自己結帳時顯示的條款為準——售票平台有各自的規定，Klook 的商品頁標示入場前 24 小時可免費取消。",
+  },
+  {
+    q: "現場買得到票嗎？",
+    a: "買得到——14 樓窗口販售，15 點前入場 ¥3,000、15 點起 ¥3,700。窗口做不到的是事先保留時段，所以它是備案，不是計畫。",
+  },
+  {
+    q: "哪些票只在窗口賣？",
+    a: "兒童票。6～12 歲 ¥1,200，只在當天的 14 樓窗口販售、不在線上賣——所以全家線上訂票時，是先買成人票，孩子的票到現場再付。",
+  },
 ];
 
 const deckRows = [
   {
-    deck: "澀谷SKY（SHIBUYA SKY）",
+    deck: "澀谷SKY",
     height: "約 229 公尺（屋頂）",
-    highlight: "澀谷十字路口正上方的開放式屋頂，東京最有代表性的一張照片",
-    price: "¥2,700／¥3,400（成人線上，依入場時段）",
+    highlight: "澀谷十字路口正上方的開放式屋頂——東京最具代表性的一張照片",
+    price: `線上 ${priceLabel(P.adult, LOCALE)}（窗口 ${priceLabel(P.atDoor, LOCALE)}）`,
     area: "澀谷站",
   },
   {
     deck: "東京晴空塔",
     height: "350 公尺與 450 公尺展望台（塔高 634 公尺）",
-    highlight: "全市最高的視野、玻璃地板區；天氣好時看得到富士山",
-    price: "約 ¥1,800（350 公尺）；套票約 ¥3,100",
-    area: "押上，淺草旁",
+    highlight: "最高的視野、玻璃地板區；天氣晴朗時看得到富士山",
+    price: `${priceLabel(PRICES.tokyoSkytree.adult, LOCALE)}（Floor 350）`,
+    area: "押上，淺草附近",
   },
   {
     deck: "東京鐵塔",
-    height: "約 150 公尺與 250 公尺展望台（塔高 332 公尺）",
-    highlight: "1958 年的復古地標；要上更高一層得買 Top Deck Tour",
-    price: "約 ¥3,300（Top Deck Tour）",
+    height: "約 150 公尺與約 250 公尺展望台（塔高 332 公尺）",
+    highlight: "1958 年的復古地標；要上更高一層得參加 Top Deck Tour",
+    price: `${priceLabel(PRICES.tokyoTower.adult, LOCALE)}（Main Deck）`,
     area: "芝公園／赤羽橋",
   },
   {
     deck: "東京都廳展望室",
     height: "約 202 公尺",
-    highlight: "免費入場，不用門票就有完整的市景",
-    price: "免費",
+    highlight: "免費入場；不用門票就有超值的城市全景",
+    price: priceLabel(PRICES.tochoDeck.adult, LOCALE),
     area: "新宿",
   },
 ];
 
 const whoFor = [
   {
-    title: "想拍日落就選這個時段",
-    desc: "日落場次是最美也最搶手的，通常最先賣完。建議挑日落前 30～60 分鐘入場，一次看完白天、黃金時刻與城市亮燈。",
+    title: "選日落場，如果……",
+    desc: "你想拍那張經典照片，而且能提早規劃。不論哪個月份，日落都落在 ¥3,400 那一段，所以你要取捨的只有「訂不訂得到」——而這正是最先賣完的時段。建議在日落前 30～60 分鐘入場，一次看到白天、黃金時刻與城市亮燈。",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 18a5 5 0 0 0-10 0" />
+        <line x1="12" y1="2" x2="12" y2="9" />
+        <line x1="4.2" y1="10.2" x2="5.6" y2="11.6" />
+        <line x1="1" y1="18" x2="3" y2="18" />
+        <line x1="21" y1="18" x2="23" y2="18" />
+        <line x1="18.4" y1="11.6" x2="19.8" y2="10.2" />
+        <line x1="2" y1="22" x2="22" y2="22" />
+      </svg>
+    ),
   },
   {
-    title: "行程不確定就選白天",
-    desc: "白天場次比較好訂，常常臨近日期還有位子，天氣晴朗時甚至能看到富士山。如果行程還會變動，這是最有彈性的選擇。",
+    title: "選 15 點前，如果……",
+    desc: "價格比光線重要。10:00～14:59 入場是 ¥2,700，對比 ¥3,400——同一個屋頂便宜 ¥700，而且較早的時段最容易臨時訂到。在晴朗乾燥的日子，白天的視野看得最遠，包括富士山。",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+      </svg>
+    ),
   },
   {
-    title: "只想看夜景就選晚上",
-    desc: "夜間場看的是整片霓虹燈海，看不到地平線。這也是最容易臨時訂到的時段，日落場售完時的備案。",
+    title: "選晚場，如果……",
+    desc: "你要看的是霓虹夜景，而日落場已經沒了。晚場和日落場同屬 ¥3,400 那一段，但通常最晚賣完；最後入場 21:20，展望台開到 22:30——當你的日期兩週前就開賣、黃金時刻早已被訂走時，這是很可靠的補救方案。",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+      </svg>
+    ),
   },
 ];
 
 const steps = [
   {
-    title: "先決定時段，日落是重點",
-    desc: "日落場一次給你白天、黃金時刻與夜景，所以也最先消失。要日落場就把訂票當成有時效的事來處理。",
+    title: "從你的日期往回推兩週",
+    desc: "每個日期在剛好兩週前的日本時間 00:00 開賣（台北時間前一天 23:00）。在做任何事之前，先把這個時間點換算成你所在地的時間記進行事曆——日落場你到底訂不訂得到，就看這一刻。",
   },
   {
-    title: "約兩週前、日本時間午夜開賣",
-    desc: "門票大約在入場日兩週前釋出，新日期通常在日本時間 00:00 開賣。想搶日落場，就在你的日期一開賣時登入下單。",
+    title: "先決定時段區間，再去看場次",
+    desc: "15 點前入場 ¥2,700，15 點起入場 ¥3,400。日落與夜景都在較貴的那一段，所以沒有便宜的日落場——先選你要的光線，再選時間。",
   },
   {
-    title: "持海外信用卡建議走售票平台",
-    desc: "自 2024 年 7 月起，澀谷SKY 官網對許多海外發行的信用卡刷不過。Klook 可以用海外卡結帳、介面看得懂，並提供入場前 24 小時內免費取消——東京天氣說變就變，這點很有用。",
+    title: "線上訂，不要到窗口買",
+    desc: "不論哪一段，線上都比 14 樓窗口便宜 ¥300，而且是唯一能事先保留時段的方式。兒童票是例外：6～12 歲的票只在當天的窗口販售。",
+  },
+  {
+    title: "持海外信用卡就用售票平台",
+    desc: "自 2024 年 7 月起，澀谷SKY 官網對許多海外發行的信用卡刷不過。Klook 接受海外信用卡、結帳流程看得懂，並標示入場前 24 小時可免費取消——面對東京多變的天氣，這是很實用的保險。",
   },
   {
     title: "日落場請提前 30～60 分鐘到",
-    desc: "留時間過入口、把隨身物品寄進置物櫃（屋頂是開放式的，風很大），在光線轉變前先站好位置。",
+    desc: "留時間過入口、把隨身物品放進置物櫃（屋頂是開放式的，風很大），在光線轉變之前先站好位置。",
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
-    q: "澀谷SKY 門票多少錢？",
-    a: `票價依入場時段分兩段：線上預購成人票 15 點前 ¥2,700、15 點後 ¥3,400；當天在 14 樓窗口購買則是 ¥3,000 與 ¥3,700，線上各便宜 ¥300。6～12 歲兒童票 ¥1,200，只在 14 樓窗口販售；學齡前兒童免費。這套票價自 2025 年 4 月 1 日入場起適用，出自澀谷Scramble Square 2025 年 2 月 27 日的票價改定公告；查核日 ${CHECKED}。`,
+    q: "2026 年澀谷SKY 門票多少錢？",
+    a: `官網成人票 10:00～14:59 入場為 ¥2,700，15:00～21:20 入場為 ¥3,400。同樣的票在 14 樓窗口買是 ¥3,000 與 ¥3,700，所以不論哪一段，線上預訂都省 ¥300。6～12 歲兒童票 ¥1,200，只在窗口販售；學齡前兒童免費入場。這套票價依澀谷 Scramble Square 自己的票價改定，自 2025 年 4 月 1 日入場起適用；查核日 ${CHECKED}。`,
   },
   {
-    q: "澀谷SKY 什麼時候去最好？",
-    a: "日落場最熱門也最美——一次看到白天、黃金時刻與夜景。也正因為如此，日落場是最快售完的。建議在日落前 30～60 分鐘入場。日落場沒票的話，晴朗的白天場看得到富士山，夜間場看的是整片燈海，而且最容易臨時訂到。",
+    q: "澀谷SKY 幾點開放？最後入場是幾點？",
+    a: `根據東京都官方觀光網站的資料（查核日 ${CHECKED}），澀谷SKY 開放時間為 10:00～22:30，最後入場 21:20。元旦休館，其他日子也可能臨時休館或縮短開放時間。開放時間不只影響行程，也影響票價：¥2,700 那一段到 14:59 為止，15:00 到 21:20 截止前一律 ¥3,400。`,
   },
   {
-    q: "澀谷SKY 要多久前訂票？",
-    a: "門票通常在入場日約兩週前釋出，新日期大約在日本時間 00:00（午夜）開賣。日落場請在你的日期一開賣就下單——旺季時幾分鐘內就會賣完。白天與夜間場比較從容，但還是建議提前訂。",
+    q: "澀谷SKY 需要事先預約嗎？",
+    a: "想看日落的話，需要——而且這就是整件事的關鍵。白天或晚場通常不必急，但事先預訂每人仍比窗口省 ¥300，也免去想要的時段被訂走的風險。14 樓窗口當天確實有賣票，所以沒預約也不是進不去；當天做不到的，是自己決定什麼時候上去。",
+  },
+  {
+    q: "澀谷SKY 門票多久前開賣？",
+    a: `兩週。每個日期在剛好十四天前的日本時間 00:00 開賣，這是營運方在 2025 年 2 月 27 日的公告中刻意訂下的，讓開賣時間可以預期。熱門日期的日落場，請在開賣那一刻就下單，不要等到當天晚一點。查核日 ${CHECKED}。`,
+  },
+  {
+    q: "澀谷SKY 哪個時段最先賣完？",
+    a: "日落場，而且遙遙領先——這是唯一一個能一次看到白天、黃金時刻與夜景的時段；東京的日落時間從 12 月的 16:30 左右到 6 月的 19:00 之後，所以最搶手的場次每個月都不一樣。白天時段最從容。晚場則是常見的備案：同樣是 ¥3,400，競爭少得多，看到的是亮燈的城市而不是地平線。",
+  },
+  {
+    q: "澀谷SKY 門票可以取消或更改嗎？",
+    a: `推出現行票價的 2025 年 2 月 27 日公告，同時也為向營運方購買的官網門票加入了入場日當天前可免費取消的規定。售票平台有自己的條款——Klook 的商品頁標示入場前 24 小時可免費取消——所以請以你結帳時顯示的內容為準。查核日 ${CHECKED}。`,
   },
   {
     q: "可以用海外信用卡買澀谷SKY 門票嗎？",
-    a: "在澀谷SKY 官網上，常常不行——自 2024 年 7 月起，官網對許多海外發行的信用卡刷不過。可靠的做法是透過 Klook 這類售票平台預訂：可以用海外卡結帳、拿到電子票，並且入場前 24 小時內可免費取消。",
+    a: "在澀谷SKY 官網上常常不行——自 2024 年 7 月起，官網對許多海外發行的信用卡刷不過。可靠的替代方案是 Klook 這類售票平台：接受海外信用卡、結帳流程看得懂、提供電子票，並標示入場前 24 小時可免費取消。",
   },
   {
-    q: "澀谷SKY 有多高？會看到什麼？",
-    a: "澀谷SKY 是位於澀谷上方約 229 公尺的屋頂展望台，分為開放式屋頂與室內區域。從上面可以 360 度看到澀谷十字路口、東京天際線，天氣清朗時還能看到富士山。重點是那個開放式屋頂，所以請穿擋風的衣服，出發前先看天氣。",
+    q: "澀谷SKY 有多高？看得到什麼？",
+    a: "澀谷SKY 是位在澀谷上方約 229 公尺的屋頂展望台，分為開放式與室內區域。從頂樓可以 360 度看到澀谷十字路口、東京天際線，天氣晴朗時還能看到富士山。開放式屋頂是最大的亮點，所以請穿擋風的衣服，出發前先確認天氣。",
   },
   {
-    q: "澀谷SKY 和晴空塔該選哪一個？",
-    a: "澀谷SKY 賣的是體驗與照片：澀谷十字路口正上方約 229 公尺的開放式屋頂，日落時最美，是全市最有辨識度的一個視角。東京晴空塔賣的是高度與視距：350 公尺與 450 公尺兩層展望台、玻璃地板區，天氣好時看得很遠，包括富士山。想拍十字路口與氛圍選澀谷SKY；想要最高最廣的全景選晴空塔。",
+    q: "澀谷SKY 和晴空塔怎麼選？",
+    a: `澀谷SKY 賣的是體驗與照片：十字路口上方約 229 公尺的開放式屋頂，日落時最美，15 點前 ¥2,700、15 點後 ¥3,400。東京晴空塔賣的是高度與視距：350 公尺與 450 公尺展望台、玻璃地板區與遠方的景色，Floor 350 ${priceLabel(PRICES.tokyoSkytree.adult, LOCALE)}。想拍十字路口、感受氣氛就選澀谷SKY；想要最高、最廣的全景就選晴空塔。`,
   },
   {
     q: "東京有免費的展望台嗎？",
-    a: "有。新宿的東京都廳在約 202 公尺處設有展望室，免費入場。這是東京最值得的免錢市景，如果你想把預算留給澀谷SKY 或其他體驗，是個聰明的選擇。開放時間與開放的展望室會變動，去之前請先確認。",
+    a: "有。新宿的東京都廳在約 202 公尺處設有展望室，免費入場——東京最好的免費城市景觀；如果不想把預算花在日落場的 ¥3,400，這是很合理的替代。開放時間與開放的展望室會變動，去之前請先確認。",
   },
   {
     q: "從澀谷SKY 看得到富士山嗎？",
-    a: "天氣清朗時看得到——空氣通透的日子從澀谷SKY 可以看見富士山，不過機會最高的還是高度更高的東京晴空塔。能見度看天氣，通常在較涼、較乾燥的月份與清晨最好，任何一天都不保證。",
+    a: "天氣晴朗時看得到——不過高度更高的東京晴空塔機會更大。能見度取決於天氣，通常在較涼爽乾燥的月份、一天中較早的時候最好；如果你上去就是為了富士山，這也是選 ¥2,700 白天時段的理由。任何一天都沒有保證。",
   },
 ];
 
-// Klook, "book for the same day" (1 Nov 2026): the ticket on this page pays the
-// lowest Klook band, so these sit under it — tours and hotels 6.5%, passes,
-// transfers and trains 5%, the Klook eSIM 20%. No prices, as everywhere else.
+// Klook "book for the same day" — the English page's items, on the zh-TW locale path.
 const sameDayPrep: KlookTripPrepItem[] = [
-  { label: zhShinjukuNightFoodTour.label, url: zhShinjukuNightFoodTour.url, ctaLabel: "查看新宿夜間導覽 →", why: "日落場之後的夜晚，從澀谷搭山手線很快就到新宿：3小時的併團步行導覽，走回憶橫丁、歌舞伎町與黃金街，最後在黃金街的居酒屋喝一杯。" },
-  { label: zhTokyoSightseeingBusTour.label, url: zhTokyoSightseeingBusTour.url, ctaLabel: "查看東京一日遊 →", why: "如果時段在晚上，白天還能看東京其他地方：一日遊行程包含皇居庭園、淺草與東京晴空塔，附多語語音導覽。" },
-  { label: zhTokyoSubwayTicket.label, url: zhTokyoSubwayTicket.url, ctaLabel: "查看地鐵通票 →", why: "澀谷站有半藏門線、銀座線與副都心線，24／48／72小時票就能涵蓋往返展望台的地鐵；山手線等 JR 路線不在範圍內。" },
-  { label: zhKlookEsim.label, url: zhKlookEsim.url, ctaLabel: "查看 Klook eSIM →", why: "Klook 的門票是手機上的電子票，時段也是固定的。從機場開始就有網路，當天的憑證、地圖和天氣都能隨時查看。" },
-  { label: zhTokyoPrivateAirportTransfer.label, url: zhTokyoPrivateAirportTransfer.url, ctaLabel: "查看機場接送 →", why: "直接預約到飯店地址而不是車站，成田、羽田兩座機場都有，司機會追蹤你的航班——抵達當天就排了晚場時特別實用。" },
+  withKlookLocale(shibuyaSkySameDayPrep[0], LOCALE, {
+    label: "新宿夜間美食導覽（回憶橫丁・歌舞伎町・黃金街）",
+    ctaLabel: "查看新宿夜間導覽 →",
+    why: "日落場之後的夜晚，從澀谷搭山手線很快就到新宿：3 小時的併團步行導覽，走過回憶橫丁、歌舞伎町與黃金街，最後在黃金街的居酒屋喝一杯。",
+  }),
+  withKlookLocale(shibuyaSkySameDayPrep[1], LOCALE, {
+    label: "東京市區觀光巴士一日遊",
+    ctaLabel: "查看東京一日遊 →",
+    why: "如果時段在晚上，白天還能看東京其他地方：由導遊帶領走訪皇居庭園、淺草與東京晴空塔的一日遊，附多語語音導覽。",
+  }),
+  withKlookLocale(shibuyaSkySameDayPrep[2], LOCALE, {
+    label: "東京地鐵通票（24／48／72小時）",
+    ctaLabel: "查看地鐵通票 →",
+    why: "澀谷站有半藏門線、銀座線與副都心線，24／48／72 小時票就能涵蓋往返展望台的地鐵——但不包含山手線等 JR 路線。",
+  }),
+  withKlookLocale(shibuyaSkySameDayPrep[3], LOCALE, {
+    label: "Klook 日本 eSIM 網卡",
+    ctaLabel: "查看 Klook eSIM →",
+    why: "Klook 的門票是手機上的電子票，時段也是固定的——從機場開始就有網路，當天的憑證、地圖和天氣都能隨時查看。",
+  }),
+  withKlookLocale(shibuyaSkySameDayPrep[4], LOCALE, {
+    label: "成田・羽田機場 ⇄ 東京 專車接送",
+    ctaLabel: "查看機場接送 →",
+    why: "直接預約到飯店地址而不是車站，成田、羽田兩座機場都有，司機會追蹤你的航班——抵達當天就排了晚場時特別實用。",
+  }),
+];
+
+// Klook "the rest of the day" — the English page's items, on the zh-TW locale path.
+const dayTripPrep: KlookTripPrepItem[] = [
+  withKlookLocale(shibuyaSkyDayTripPrep[0], LOCALE, {
+    label: "澀谷周邊飯店",
+    ctaLabel: "在 Klook 查看澀谷飯店 →",
+    why: "日落場結束時天已經黑了，山手線正是最擠的時候；住在澀谷，回程就是走路的距離，隔天早上也正好在高速巴士發車的車站旁。",
+  }),
+  withKlookLocale(shibuyaSkyDayTripPrep[1], LOCALE, {
+    label: "澀谷酒吧巡禮導覽（3 小時）",
+    ctaLabel: "查看澀谷酒吧巡禮 →",
+    why: "日落場之後那幾個小時最順理成章的安排，也是屋頂上看不到的那一面澀谷——兩間酒吧，由導遊幫你點酒。",
+  }),
+  withKlookLocale(shibuyaSkyDayTripPrep[2], LOCALE, {
+    label: "東京夜間酒吧巡禮導覽（新宿／澀谷）",
+    ctaLabel: "查看夜間導覽 →",
+    why: "連新宿一起走的版本，適合夜間場：展望台晚場最好訂，看完之後這個夜晚還有地方可去。",
+  }),
+  withKlookLocale(shibuyaSkyDayTripPrep[3], LOCALE, {
+    label: "澀谷美食與文化半日步行導覽",
+    ctaLabel: "查看美食步行導覽 →",
+    why: "如果你的時段在白天，或同行有未滿 20 歲的人，這是白天、全年齡都適合的選擇——半天走訪澀谷 109、呑兵衛橫丁與宮下公園，而不是酒吧巡禮。",
+  }),
+  withKlookLocale(shibuyaSkyDayTripPrep[4], LOCALE, {
+    label: "東京地鐵通票（24／48／72小時）",
+    ctaLabel: "查看地鐵通票 →",
+    why: "澀谷站有半藏門線、銀座線與副都心線，24／48／72 小時票就能涵蓋時段前後一整天的移動——而且海外感應式信用卡刷不開這些閘門。",
+  }),
+];
+
+// Klook tours in the same city — the English page's two, on the zh-TW locale path.
+const tourPicks: KlookTour[] = [
+  withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
+    title: "東京市區觀光巴士一日遊",
+    desc: "由導遊帶領走訪皇居庭園、淺草與東京晴空塔，附多語語音導覽",
+  }),
+  withKlookLocale(fujiHakoneDayTour, LOCALE, {
+    title: "富士山＋箱根一日遊",
+    desc: "富士山五合目搭配箱根火山地帶與蘆之湖，從東京出發的一日遊",
+  }),
 ];
 
 const trail: Crumb[] = [
@@ -170,7 +309,7 @@ const trail: Crumb[] = [
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
 export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpdated }) {
-  const updatedLabel = zhMonthLabel(updated.iso);
+  const updatedLabel = monthLabel(updated.iso, LOCALE);
 
   return (
     <>
@@ -185,7 +324,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               headline: TITLE,
               description: DESC,
               updated,
-              inLanguage: JSONLD_LANG["zh-tw"],
+              inLanguage: JSONLD_LANG[LOCALE],
             }),
           }}
         />
@@ -197,18 +336,19 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
 
       <Breadcrumb trail={trail} />
 
+      {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            澀谷SKY 門票（2026）：<br />票價、最佳時段與預約方式
+            澀谷SKY 門票（2026）：<br />票價、開放時間與日落時段
           </h1>
           <p className={styles.heroSubtitle}>
-            東京最好的屋頂視角——澀谷十字路口上方 229 公尺。門票多少錢、什麼時候去、
-            以及怎麼在日落場賣完之前訂到。
+            東京最好的屋頂視角——澀谷十字路口上方 229 公尺。兩段票價、兩週的預約窗口，
+            以及一個真的會賣完的時段。
           </p>
           <div className={styles.heroBadges}>
-            {[`更新於 ${updatedLabel}`, "日落場搶票重點", "與晴空塔、東京鐵塔比較"].map((t) => (
+            {[`更新於 ${updatedLabel}`, "官方票價已查核", "日落場開賣時間", "與晴空塔、東京鐵塔比較"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -220,6 +360,20 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         <Disclosure />
 
+        {/* Lead paragraph */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>澀谷SKY 門票</strong>依上去的時間定價：官網成人票 10:00～14:59 入場為{" "}
+            <strong>¥2,700</strong>，15:00～21:20 入場為 <strong>¥3,400</strong>；同樣兩種票在 14 樓窗口買是
+            ¥3,000 與 ¥3,700——所以不論選哪一段，線上預訂都省 ¥300；6～12 歲兒童票 ¥1,200，只在窗口販售。
+            可以向營運方官網或 Klook 這類售票平台購買，而且要早點買：每個日期在
+            <strong>剛好兩週前的日本時間 00:00</strong> 開賣，賣完的就是日落場，所以實際的截止時間是你的日期開賣那一刻，
+            而不是出發那一週。展望台開放時間 10:00～22:30，最後入場 21:20。所有數字查核日 {CHECKED}——票價出自澀谷
+            Scramble Square 2025 年 2 月 27 日自己的票價改定，開放時間出自東京都的官方觀光網站。
+          </p>
+        </section>
+
+        {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
             <span className={styles.verdictLabel}>快速結論</span>
@@ -228,53 +382,49 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>票價（線上）</p>
-                <p className={styles.verdictStatValue}>成人 {ADULT}</p>
+                <p className={styles.verdictStatValue}>成人 ¥2,700／¥3,400</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>最佳時段</p>
-                <p className={styles.verdictStatValue}>日落場（最快售完）</p>
+                <p className={styles.verdictStatLabel}>開放時間</p>
+                <p className={styles.verdictStatValue}>10:00～22:30，最後入場 21:20</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>何時訂</p>
-                <p className={styles.verdictStatValue}>約兩週前、日本時間午夜</p>
+                <p className={styles.verdictStatLabel}>開賣</p>
+                <p className={styles.verdictStatValue}>兩週前、日本時間 00:00</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>海外信用卡？</p>
-                <p className={styles.verdictStatValue}>建議走售票平台</p>
+                <p className={styles.verdictStatLabel}>最先賣完</p>
+                <p className={styles.verdictStatValue}>日落場</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>結論：</strong>線上買（{ADULT}，比現場便宜）並盡量挑日落場——那是最先賣完的時段。
-              如果你的卡是海外發行的，走 Klook 比較穩：可以用海外卡結帳，入場前 24 小時內還能免費取消。
+              <strong>結論：</strong>線上訂（兩段都比窗口便宜 ¥300）；想看日落，就在兩週前你的日期一開賣時立刻訂。
+              如果你的卡是海外發行的，就透過 Klook 訂：接受海外信用卡，並標示入場前 24 小時可免費取消。
             </p>
-            <KlookLink href={zhShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              查看澀谷SKY 門票 →
-            </KlookLink>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+                查看澀谷SKY 門票 →
+              </KlookLink>
+              <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
+            </div>
           </div>
         </div>
 
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>這是什麼</span>
-          <h2 className={styles.sectionTitle}>澀谷SKY 是什麼？</h2>
-          <p className={styles.bodyText}>
-            澀谷SKY 是澀谷 Scramble Square 頂樓的展望台，位在全世界最繁忙的路口之一上方約 229 公尺處。
-            它由開放式屋頂與室內區域組成，可以 360 度看到澀谷十字路口、東京天際線，天氣好的日子還有富士山。
-          </p>
-          <p className={styles.bodyText}>
-            它已經是東京最常被拍的地點之一——這既是它的賣點，也是它的麻煩：好時段會賣完，而訂票系統對海外旅客
-            有幾個小陷阱。把這兩件事處理好，它就是東京最划算的體驗之一。
-          </p>
-        </section>
-
+        {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>票價</span>
-          <h2 className={styles.sectionTitle}>澀谷SKY 門票價格</h2>
+          <h2 className={styles.sectionTitle}>2026 年澀谷SKY 門票多少錢？</h2>
+          <p className={styles.bodyText}>
+            成人 15 點前入場 ¥2,700、15 點起 ¥3,400——在窗口買而不是線上買，每段再多 ¥300。這個兩段式的結構，
+            是多數攻略到現在還寫錯的地方：自 2025 年 4 月 1 日澀谷 Scramble Square 依入場時間拆分票價以來，
+            澀谷SKY 就不再只有一種票價。
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["票種", "價格"].map((h) => (
+                    {["票種", "官網（預購）", "14 樓窗口"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -283,7 +433,8 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
                   {priceRows.map((row) => (
                     <tr key={row.ticket}>
                       <td className={styles.tdProvider}>{row.ticket}</td>
-                      <td className={styles.tdPrice}>{row.price}</td>
+                      <td className={styles.tdPrice}>{row.online}</td>
+                      <td className={styles.tdPrice}>{row.counter}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -291,51 +442,155 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            以上票價讀自澀谷SKY 官方網站，查核日 {CHECKED}；票價可能調整，結帳前請再確認。
-            線上預購（{ADULT}）既比現場（{AT_DOOR}）便宜，也是唯一能確保日落場的方式。同樣的官方票價，連同我們查核過的
-            其他日本景點，都整理在{" "}
+            票價查核日 {CHECKED}，依澀谷 Scramble Square 2025 年 2 月 27 日的公告「SHIBUYA SKY
+            入場チケットの改定について」，自 2025 年 4 月 1 日入場起適用。兒童票價與僅限窗口販售的規定出自營運方的票券頁面。
+            預訂時請再確認——這些數字連同我們查核過的其他景點，都整理在{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               日本景點門票價格總表（英文）
             </Link>
-            ，每一列都附上查核日期。
+            ，每一項都附上查核日期。
           </p>
         </section>
 
-        {/* Klook, directly under the price table — the ticket CTAs are unchanged. */}
+        {/* Klook, directly under the price table: what the same day needs booking. */}
         <KlookTripPrep
           label="同一天要訂的"
           heading="和澀谷SKY 門票一起預訂的項目"
-          intro="澀谷SKY 的時段大約只佔一天中的一小時。同一天通常還需要這些：看完之後的夜晚、之前的白天、中間的移動、手機網路，以及從機場進市區。"
+          intro="澀谷SKY 的時段大約只佔一天中的一小時。同一天通常還需要這五項：看完之後的夜晚、之前的白天、中間的移動、手機網路，以及從機場進市區。"
           items={sameDayPrep}
-          note="這些連結前往 Klook，我們會獲得佣金，你不需多付任何費用。價格與庫存以 Klook 為準；其商品頁會阻擋自動查核，所以這裡不列價格。"
         />
 
-        <section className={styles.whoForSection}>
-          <span className={styles.sectionLabel}>最佳時段</span>
-          <h2 className={styles.sectionTitle}>該挑哪個時段？</h2>
-          <div className={styles.whoForGrid}>
-            {whoFor.map((item) => (
-              <div key={item.title} className={styles.whoForCard}>
-                <p className={styles.whoForTitle}>{item.title}</p>
-                <p className={styles.whoForDesc}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
+        {/* Q2 — hours */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>比較</span>
-          <h2 className={styles.sectionTitle}>澀谷SKY 與東京其他展望台</h2>
-          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            澀谷SKY 贏在那張十字路口的照片，但它不是東京最高的展望台，也不是最便宜的。四個主要選項如下：
-            要高度與富士山視野選晴空塔，要復古地標選東京鐵塔，想免費看全景選東京都廳。
+          <span className={styles.sectionLabel}>開放時間</span>
+          <h2 className={styles.sectionTitle}>澀谷SKY 幾點開放？最後入場是幾點？</h2>
+          <p className={styles.bodyText}>
+            10:00 到 22:30，最後入場 21:20。開放時間同時也是票價：14:59 是 ¥2,700 那一段的最後入場時間，
+            15:00 到截止前一律 ¥3,400——所以「我們幾點去？」在成為光線問題之前，先是一個 ¥700 的問題。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["展望台", "高度", "特色", "票價（約）", "區域／最近車站"].map((h) => (
+                    {["", `澀谷SKY（查核日 ${CHECKED}）`].map((h) => (
+                      <th key={h || "blank"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {hoursRows.map((row) => (
+                    <tr key={row.what}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            開放時間、最後入場與元旦休館，出自東京都官方觀光網站 gotokyo.org 上 SHIBUYA SKY 的資料，英文與日文版內容相同，
+            查核日 {CHECKED}。屋頂是開放式的，所以遇到強風、打雷或大雨時，屋頂可能當天關閉，室內樓層則照常開放。
+          </p>
+        </section>
+
+        {/* Q3 — booking window, then the CTA stack */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>開賣時間</span>
+          <h2 className={styles.sectionTitle}>澀谷SKY 需要事先預約嗎？</h2>
+          <p className={styles.bodyText}>
+            想看日落的話，需要——而且截止時間比多數人以為的更早。每個日期在
+            <strong>剛好兩週前的日本時間 00:00</strong> 開賣，也就是台北時間前一天晚上 23:00。熱門日期的日落場就是會被訂光的那一批，
+            所以實用的原則是：你的日期一開賣就在結帳頁面等著，而不是出發那一週才訂。白天或晚場的空間大得多——
+            但線上訂每人仍省 ¥300。
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["問題", `營運方公布的內容（查核日 ${CHECKED}）`].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {bookingRows.map((row) => (
+                    <tr key={row.q}>
+                      <td className={styles.tdProvider}>{row.q}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.a}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            列出兩個販售管道，是因為一邊賣完的時段，另一邊不一定也沒了——也因為自 2024 年 7 月起，
+            官網對許多海外發行的信用卡刷不過：
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              在 Klook 查看澀谷SKY 門票 →
+            </KlookLink>
+            <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
+          </div>
+        </section>
+
+        {/* Q4 — which slot */}
+        <section className={styles.whoForSection}>
+          <span className={styles.sectionLabel}>選時段</span>
+          <h2 className={styles.sectionTitle}>澀谷SKY 該訂哪個時段？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            訂得到就選日落場；價格是關鍵就選 15 點前；日落場沒了就選晚場。東京的日落時間從 12 月的 16:30 左右
+            到 6 月的 19:00 之後，所以最搶手的場次並不是一整年都同一個——但它永遠落在 ¥3,400 那一段。
+          </p>
+          <div className={styles.whoForGrid}>
+            {whoFor.map((item) => (
+              <div key={item.title} className={styles.whoForCard}>
+                <div className={styles.whoForIcon}>{item.icon}</div>
+                <p className={styles.whoForTitle}>{item.title}</p>
+                <p className={styles.whoForDesc}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            在屋頂待一小時只是一個晚上的其中一段，所以時段通常是配合當天其他安排來選的。我們把它排進了{" "}
+            <Link href="/guides/attractions/tokyo-3-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
+              東京三天行程（英文）
+            </Link>
+            ，也列在{" "}
+            <Link href="/zh-tw/guides/attractions/things-to-do-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
+              東京自由行景點
+            </Link>
+            的推薦名單裡。
+          </p>
+        </section>
+
+        {/* Klook: the evening the slot sits inside. */}
+        <KlookTripPrep
+          label="當天其他時間"
+          heading="澀谷SKY 這一天還要訂什麼？"
+          intro="展望台本身大約一小時，所以不論你在上面選了哪個時段，前後都還有大半天或一整個晚上。以下是隨著時段而來的預訂——同一區的住宿、看完之後的去處，以及涵蓋其間移動的票券。"
+          items={dayTripPrep}
+        />
+
+        {/* Q5 — vs other decks */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>比較</span>
+          <h2 className={styles.sectionTitle}>澀谷SKY、晴空塔、東京鐵塔——該選哪個展望台？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            澀谷SKY 贏在那張經典的十字路口照片，但它既不是東京最高的展望台，也不是最便宜的——而且自 2025 年 4 月的票價改定後，
+            15:00 入場比東京鐵塔的 Top Deck Tour 還貴。要純粹的高度與富士山視野選晴空塔，要復古地標選東京鐵塔，
+            想免費看全景就去新宿的東京都廳。
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["展望台", "高度", "特色", "成人票價", "區域／最近車站"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -355,14 +610,22 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            高度與票價為 2026 年的概估值，可能調整，結帳前請再確認。晴空塔的部分：350 公尺天望甲板約 ¥1,800，
-            加購 450 公尺天望迴廊約再 ¥1,400，套票約 ¥3,100。
+            高度為概估值；每個票價都是營運方自己的價格，取自{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
+              我們的門票價格總表（英文）
+            </Link>
+            ，每一項都有各自的查核日期。四個展望台逐一、逐時段的完整比較，請見{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks" style={{ color: "var(--text)", fontWeight: 600 }}>
+              東京展望台比較（英文）
+            </Link>
+            。
           </p>
         </section>
 
+        {/* How to book */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>步驟</span>
-          <h2 className={styles.sectionTitle}>澀谷SKY 怎麼訂</h2>
+          <h2 className={styles.sectionTitle}>澀谷SKY 怎麼訂？</h2>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -378,27 +641,43 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
 
         <FaqList items={faqItems} />
 
+        {/* Klook tours in the same city */}
+        <KlookTourPicks
+          heading="同一座城市出發的一日遊"
+          intro="澀谷SKY 的時段只佔一個晚上中的一小時，一天裡其他時間都還空著。如果東京的某一天還沒排好，這兩個行程都能用你訂門票的同一個 Klook 帳號預訂。"
+          tours={tourPicks}
+        />
+
         <Related
           items={[
+            { href: "/guides/attractions/tokyo-observation-decks", title: "東京展望台比較（2026）：澀谷SKY、晴空塔、東京鐵塔（英文）" },
+            { href: "/guides/attractions/tokyo-3-day-itinerary", title: "東京三天行程（2026）：要訂什麼、照什麼順序訂（英文）" },
+            { href: "/guides/attractions/tokyo-tower-tickets", title: "東京鐵塔門票（2026）：票價、Main Deck 與 Top Deck、預訂方式（英文）" },
+            { href: "/zh-tw/guides/attractions/tokyo-skytree-tickets", title: "東京晴空塔門票（2026）：票價、350 與 450 樓怎麼選" },
+            { href: "/guides/attractions/tokyo-subway-ticket", title: "東京地鐵通票（2026）：24、48 或 72 小時——值得買嗎？（英文）" },
             { href: "/zh-tw/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 門票（2026）：票價、預約方式與無界比較" },
             { href: "/zh-tw/guides/attractions/teamlab-borderless-tickets", title: "teamLab 無界 門票（2026）：票價、時段預約與購票管道" },
-            { href: "/zh-tw/guides/attractions/tokyo-disney-tickets", title: "東京迪士尼門票（2026）：樂園與海洋怎麼買、怎麼選" },
-            { href: "/zh-tw/guides/attractions/things-to-do-tokyo", title: "東京自由行景點（2026）：哪些要先訂票、哪些可以現場去" },
-            { href: "/zh-tw/guides/transport/tokyo-airport-transfer", title: "成田機場到東京市區交通（2026）：Skyliner、N'EX 與利木津巴士比較" },
+            { href: "/guides/transport/tokyo-transportation", title: "東京交通攻略（2026）：電車、地鐵與 IC 卡（英文）" },
             { href: "/zh-tw/guides/attractions", title: "日本景點門票攻略（2026）：官方票價、預約方式與一日遊 →" },
+            { href: "/zh-tw/guides/attractions/tokyo-disney-tickets", title: "東京迪士尼門票（2026）：樂園與海洋怎麼買、怎麼選" },
+            { href: "/guides/attractions/sumo-tokyo-tickets", title: "東京看相撲（2026）：本場所門票與晨間練習（英文）" },
           ]}
         />
 
+        {/* CTA Banner */}
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>搶下澀谷的日落</h2>
             <p className={styles.ctaBannerDesc}>
-              線上買比現場便宜，也是鎖住日落場的唯一方式。Klook 可以用海外信用卡結帳，入場前 24 小時內免費取消——
-              東京天氣變了也不心痛。
+              兩段票價都是線上比窗口便宜 ¥300，每個日期在兩週前的日本時間午夜開賣。Klook 接受海外信用卡，
+              並標示入場前 24 小時可免費取消——東京天氣變了也不怕。
             </p>
-            <KlookLink href={zhShibuyaSky.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
-              查看澀谷SKY 門票 →
-            </KlookLink>
+            <div className={styles.pickCtaRow}>
+              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+                查看澀谷SKY 門票 →
+              </KlookLink>
+              <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
+            </div>
           </div>
         </div>
       </div>

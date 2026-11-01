@@ -15,24 +15,76 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
-import { koFujiHakoneDayTour, koSkytreeTicket } from "../../../../lib/klook-links-ko";
+import KlookTourPicks from "../../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../../components/KlookTripPrep";
+import { GygCompareButton } from "../../../../components/GygCompare";
+import { gygTokyoSkytree } from "../../../../lib/gyg-links";
+import {
+  skytreeTicket,
+  skytreeAquariumCombo,
+  fujiHakoneDayTour,
+  tokyoSightseeingBusTour,
+  skytreeTripPrep,
+} from "../../../../lib/klook-links";
+import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+
+// Mirrors the English guide (/guides/attractions/tokyo-skytree-tickets) block for block as of
+// 2026-11-01. Every figure comes from that page or lib/attraction-prices.ts; nothing was added.
 
 const ROUTE = "/ko/guides/attractions/tokyo-skytree-tickets";
 const TITLE = "도쿄 스카이트리 티켓(2026): 요금과 예약";
 const DESC =
   "도쿄 스카이트리 티켓 2026: 플로어 350 ¥1,800부터, 350+450 콤보 ¥3,000부터, 당일 구매는 1장당 ¥500 추가.";
 
-// Every figure comes from lib/attraction-prices.ts and the English guide that read
-// it off tokyo-skytree.jp. Nothing was re-checked or added for this edition.
 const P = PRICES.tokyoSkytree;
 const CHECKED = dateLabel(P.checked, "ko");
-// "from ¥1,800" -> "¥1,800부터": same figure, Korean qualifier. See lib/i18n.ts.
 const ADULT = priceLabel(P.adult, "ko");
 const CHILD = priceLabel(P.child, "ko");
+
+const TICKET_URL = klookFor(skytreeTicket.url, "ko");
+const GYG_SLUG = "ko-tokyo-skytree-tickets";
+
+const tripPrepItems = [
+  withKlookLocale(skytreeTripPrep[0], "ko", {
+    label: "우에노・아사쿠사 주변 호텔",
+    ctaLabel: "클룩에서 우에노・아사쿠사 호텔 보기 →",
+    why: "타워와 같은 강변 쪽입니다. 우에노는 야마노테선 위에 있고, 거기서 긴자선이 아사쿠사까지 가며, 오시아게는 아사쿠사선으로 두 정거장 더 가면 됩니다. 늦은 전망대 회차를 마친 뒤 도시를 가로질러 호텔로 돌아갈 필요가 없습니다.",
+  }),
+  withKlookLocale(skytreeTripPrep[1], "ko", {
+    label: "기모노 야에 렌털(아사쿠사)",
+    ctaLabel: "아사쿠사 기모노 렌털 보기 →",
+    why: "같은 여행의 낮 시간 쪽으로, 두 정거장 거리입니다. 가게는 가미나리몬 옆에 있고 상품 페이지는 의상을 17:30까지 반납하도록 안내합니다. 그래서 저녁 스카이트리 회차와 부딪히지 않고 그 앞에 들어갑니다.",
+  }),
+  withKlookLocale(skytreeTripPrep[2], "ko", {
+    label: "도쿄 홉온 홉오프 버스(스카이 홉 버스)",
+    ctaLabel: "오픈탑 버스 티켓 보기 →",
+    why: "코스에 아사쿠사가 들어 있는 오픈탑 홉온 홉오프 티켓입니다. 하루에 센소지와 타워를 모두 넣는다면, 한 곳만 들르고 구간마다 지하철 요금을 내는 대신 사는 쪽입니다.",
+  }),
+  withKlookLocale(skytreeTripPrep[3], "ko", {
+    label: "도쿄 서브웨이 티켓(24・48・72시간)",
+    ctaLabel: "서브웨이 티켓 보기 →",
+    why: "오시아게는 한조몬선과 도에이 아사쿠사선의 지하철역이라, 24・48・72시간 도쿄메트로・도에이 티켓이면 타워까지의 이동이 이미 포함되고, 그 뒤 센소지까지 두 정거장도 마찬가지입니다.",
+  }),
+];
+
+const tourPicks = [
+  withKlookLocale(skytreeAquariumCombo, "ko", {
+    title: "도쿄 스카이트리＋스미다 수족관 콤보 티켓",
+    desc: "전망대와, 타워 아래 같은 소라마치 단지에 있는 수족관을 묶은 티켓",
+  }),
+  withKlookLocale(tokyoSightseeingBusTour, "ko", {
+    title: "도쿄 관광버스 1일 투어",
+    desc: "고쿄 정원, 아사쿠사, 도쿄 스카이트리를 다국어 오디오 가이드와 함께 도는 가이드 투어",
+  }),
+  withKlookLocale(fujiHakoneDayTour, "ko", {
+    title: "후지산＋하코네 1일 투어",
+    desc: "후지산 5합목과 하코네 화산 지대, 아시노호를 도쿄 출발 당일치기로 묶은 투어",
+  }),
+];
 
 const priceRows = [
   { ticket: "플로어 350 — 성인(만 15세 이상)", advance: ADULT, sameDay: "서비스 수수료 ¥500 추가" },
@@ -44,11 +96,44 @@ const priceRows = [
   { ticket: "만 5세 이하", advance: "무료", sameDay: "무료" },
 ];
 
+const whoFor = [
+  {
+    title: "플로어 350만으로 충분한 경우",
+    desc: `업셀이 아니라 전망을 원하는 경우입니다. 플로어 350은 3층 구조의 메인 전망대이고, 여기만으로도 간토 평야 전체가 내려다보입니다. 성인 ${ADULT}로, 도쿄의 주요 유료 전망대 중 높이 1m당 가격이 가장 저렴합니다.`,
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2l3 7h-6l3-7z" />
+        <line x1="12" y1="9" x2="12" y2="21" />
+        <line x1="6" y1="21" x2="18" y2="21" />
+      </svg>
+    ),
+  },
+  {
+    title: "플로어 450을 추가할 경우",
+    desc: "높이 자체가 여행의 목적인 경우입니다. 플로어 450은 덴보 갤러리아로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리 스카이워크입니다. 온라인 콤보는 ¥3,000부터이고, 당일 추가하면 플로어 350 티켓에 ¥1,400이 더 붙습니다.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 20l8-16 8 16" />
+        <path d="M7.5 13h9" />
+      </svg>
+    ),
+  },
+  {
+    title: "늦은 시간대를 고를 경우",
+    desc: "지평선보다 야경을 원하는 경우입니다. 확인한 날짜 기준으로 전망대는 22:00까지 운영했고 마지막 입장은 21:00이었습니다. 낮 시간대가 마감된 뒤에도 자리가 남아 있는 쪽이 늦은 회차입니다.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+      </svg>
+    ),
+  },
+];
+
 const deckRows = [
   {
     deck: "도쿄 스카이트리",
     height: "플로어 350・플로어 450",
-    price: `플로어 350 ${ADULT}・콤보 ¥3,000부터`,
+    price: "¥1,800부터(플로어 350)・콤보 ¥3,000부터",
     highlight: "도쿄에서 가장 높은 전망대이고, 유리 스카이워크는 여기뿐입니다",
     area: "오시아게／도쿄 스카이트리역",
   },
@@ -70,77 +155,62 @@ const deckRows = [
     deck: "도쿄도청 전망대",
     height: "약 202m",
     price: "무료",
-    highlight: "티켓이 아예 없습니다 — 도쿄에서 가성비가 가장 좋은 파노라마",
+    highlight: "티켓이 아예 필요 없습니다 — 도쿄에서 가성비가 가장 좋은 도시 파노라마",
     area: "신주쿠",
-  },
-];
-
-const whoFor = [
-  {
-    title: "플로어 350만으로 충분한 경우",
-    desc: `전망만 보면 되는 경우입니다. 플로어 350은 3층 구조의 메인 전망대이고, 여기만으로도 간토 평야가 전부 보입니다. 성인 ${ADULT}로, 도쿄의 주요 유료 전망대 중 높이당 가격이 가장 저렴합니다.`,
-  },
-  {
-    title: "플로어 450을 추가할 경우",
-    desc: "높이 자체가 목적인 경우입니다. 플로어 450은 덴보 갤러리아로, 타워에서 올라갈 수 있는 가장 높은 지점까지 비스듬히 올라가는 유리 스카이워크입니다. 온라인 콤보는 ¥3,000부터이고, 현장에서 추가하면 플로어 350 티켓 위에 ¥1,400이 더 붙습니다.",
-  },
-  {
-    title: "늦은 시간대를 고를 경우",
-    desc: `지평선보다 야경을 원하는 경우입니다. 공식 사이트 확인일 ${CHECKED} 기준으로 전망대는 22:00까지 운영하고 마지막 입장은 21:00이었습니다. 낮 시간대가 마감된 뒤에도 남아 있는 쪽은 늦은 회차입니다.`,
   },
 ];
 
 const steps = [
   {
     title: "예약 전에 플로어 350인지 콤보인지 정합니다",
-    desc: "플로어 450은 온라인 콤보(성인 ¥3,000부터)로 사는 쪽이, 당일 플로어 350 티켓 위에 얹는 쪽(¥1,400 추가)보다 저렴합니다. 스카이워크에 올라갈 가능성이 조금이라도 있으면 처음부터 콤보로 사세요.",
+    desc: "플로어 450은 온라인 콤보(성인 ¥3,000부터)로 사는 쪽이, 당일 플로어 350 티켓에 얹어 사는 쪽(¥1,400 추가)보다 저렴합니다. 스카이워크에 올라갈 가능성이 조금이라도 있으면 처음부터 콤보로 사세요.",
   },
   {
     title: "날짜 지정 티켓을 온라인으로 예약합니다",
-    desc: `공식 사이트는 위의 '부터' 가격으로 날짜 지정 티켓을 팔고, 실제 날짜의 금액은 더 높을 수 있습니다. 당일 4층 창구나 편의점에서 사면 티켓 1장당 ¥500의 서비스 수수료가 붙습니다. 미리 예약해야 하는 이유 중 가장 분명한 것입니다. 확인일 ${CHECKED}.`,
+    desc: `공식 사이트는 위의 '부터' 가격으로 날짜 지정 티켓을 팔고, 실제 날짜의 금액은 더 높을 수 있습니다. 당일 4층 창구나 편의점에서 사면 티켓 1장당 ¥500의 서비스 수수료가 붙습니다. 미리 예약해야 하는 가장 분명한 이유입니다. 확인일 ${CHECKED}.`,
   },
   {
-    title: "해외 발급 카드라면 판매 파트너를 씁니다",
-    desc: "클룩은 같은 시간 지정 입장권을 한국어 화면과 전자 티켓으로 팝니다. 일본 공식 예매 사이트에서 카드와 언어 때문에 막히는 경우를 피할 수 있고, 같은 상품 페이지에 플로어 450 콤보도 있습니다.",
+    title: "해외 발급 카드라면 판매 파트너를 이용합니다",
+    desc: "클룩은 같은 시간 지정 입장권을 한국어 결제 화면과 전자 티켓으로 판매합니다. 일본 명소 공식 사이트에서 많은 방문객이 겪는 카드・언어 문제를 피할 수 있고, 같은 상품 페이지에 플로어 450 콤보도 있습니다.",
   },
   {
     title: "일반 운영 시간이 아니라 본인 날짜의 시간을 확인합니다",
-    desc: `스카이트리는 날짜별 달력을 공개하고 '운영 시간은 사전 공지 없이 변경될 수 있다'고 분명히 적고 있습니다. 마지막 입장은 폐관 1시간 전입니다. 확인일 ${CHECKED} 기준으로 전망대는 10:00–22:00, 마지막 입장은 21:00이었습니다.`,
+    desc: "스카이트리는 날짜별 달력을 공개하고 '운영 시간은 사전 공지 없이 변경될 수 있다'고 분명히 적고 있으며, 마지막 입장은 폐관 1시간 전입니다. 확인한 날짜 기준으로 전망대는 10:00–22:00, 마지막 입장은 21:00이었습니다.",
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
     q: "도쿄 스카이트리 티켓은 얼마인가요?",
-    a: `공식 사이트의 날짜 지정 티켓은 메인 전망대인 플로어 350이 성인(만 15세 이상) ${ADULT}, 만 6~14세 어린이 ${CHILD}입니다. 플로어 350과 450을 함께 쓰는 콤보 티켓은 성인 ¥3,000부터, 어린이 ¥1,500부터입니다. 만 5세 이하는 무료입니다. 모두 '부터' 가격이라 특정 날짜의 금액은 더 높을 수 있습니다. 공식 사이트 확인일 ${CHECKED}.`,
+    a: `공식 사이트의 날짜 지정 티켓은 메인 전망대인 플로어 350이 성인(만 15세 이상) ¥1,800부터, 만 6~14세 어린이 ¥900부터입니다. 플로어 350과 450을 함께 이용하는 콤보 티켓은 성인 ¥3,000부터, 어린이 ¥1,500부터입니다. 만 5세 이하는 무료입니다. 모두 '부터' 가격이라 특정 날짜의 금액은 더 높을 수 있습니다. 공식 사이트 확인일 ${CHECKED}.`,
   },
   {
     q: "도쿄 스카이트리 티켓은 미리 사는 게 더 싼가요?",
-    a: `더 쌉니다. 그리고 수요에 따라 변하는 문제가 아니라 공개된 금액 차이입니다. 당일 4층 매표 창구나 편의점에서 사면 입장료 위에 티켓 1장당 ¥500의 서비스 수수료가 붙습니다. 4인 가족이면 ¥2,000을 피할 수 있는 비용으로 내는 셈입니다. 공식 사이트든 판매 파트너든 날짜 지정 티켓을 온라인으로 예약하면 수수료와 창구 줄을 모두 건너뜁니다. 확인일 ${CHECKED}.`,
+    a: `네, 그리고 수요에 따라 오르내리는 문제가 아니라 명시된 금액 차이입니다. 당일 4층 매표 창구나 편의점에서 사면 입장료에 더해 티켓 1장당 ¥500의 서비스 수수료가 붙습니다. 4인 가족이면 피할 수 있는 비용이 ¥2,000입니다. 공식 사이트든 판매 파트너든 날짜 지정 티켓을 온라인으로 예약하면 수수료와 창구 줄을 모두 건너뜁니다. 확인일 ${CHECKED}.`,
   },
   {
     q: "플로어 350과 플로어 450의 차이는 무엇인가요?",
-    a: "플로어 350은 덴보 데크로, 3층 구조의 메인 전망층이고 모든 티켓에 포함됩니다. 플로어 450은 덴보 갤러리아로, 타워에서 올라갈 수 있는 가장 높은 지점까지 비스듬히 올라가는 유리벽 스카이워크입니다. 플로어 450만 따로 볼 수는 없습니다. 먼저 플로어 350 티켓이 있어야 하고, 온라인 콤보로 묶거나 현장 발매기에서 성인 ¥1,400을 추가해야 합니다.",
+    a: "플로어 350은 덴보 데크로, 3층 구조의 메인 전망층이고 모든 티켓에 포함됩니다. 플로어 450은 덴보 갤러리아로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리벽 스카이워크입니다. 플로어 450만 따로 방문할 수는 없습니다. 먼저 플로어 350 티켓이 있어야 하고, 온라인 콤보로 묶거나 현장 발권기에서 추가(성인 ¥1,400)해야 합니다.",
   },
   {
     q: "플로어 450 티켓을 온라인으로 살 수 있나요?",
-    a: `단독 티켓으로는 살 수 없습니다. 공식 사이트는 플로어 450을 콤보 티켓으로만 팝니다. 플로어 350 티켓으로 도착한 뒤 마음이 바뀌면 현장 발매기에서 성인 ¥1,400, 만 6~14세 어린이 ¥700으로 추가합니다. 온라인 콤보가 더 싼 경로입니다. 성인 기준 ¥3,000부터인 반면, 두 단계로 나눠 사면 ¥1,800에 ¥1,400을 더하게 됩니다. 확인일 ${CHECKED}.`,
+    a: `단독 티켓으로는 살 수 없습니다. 공식 사이트는 플로어 450을 콤보 티켓으로만 판매합니다. 플로어 350 티켓으로 도착한 뒤 마음이 바뀌면 현장 발권기에서 성인 ¥1,400, 만 6~14세 어린이 ¥700에 플로어 450을 추가합니다. 온라인 콤보가 더 싼 경로입니다. 성인 기준 ¥3,000부터인 반면, 두 단계로 나눠 사면 ¥1,800에 ¥1,400을 더하게 됩니다. 확인일 ${CHECKED}.`,
   },
   {
     q: "도쿄 스카이트리 운영 시간은 어떻게 되나요?",
-    a: `스카이트리는 고정 시간표가 아니라 날짜별 달력으로 운영하고, 공식 사이트도 '운영 시간은 사전 공지 없이 변경될 수 있다'와 마지막 입장이 폐관 1시간 전이라는 점을 적어 두었습니다. 확인일 ${CHECKED} 기준으로 전망대는 10:00–22:00, 마지막 입장은 21:00이었습니다. 저녁 일정을 여기에 맞춰 짜기 전에 본인 날짜로 달력을 확인하세요.`,
+    a: `스카이트리는 고정된 시간표 하나가 아니라 날짜별 달력으로 운영하며, 공식 사이트는 '운영 시간은 사전 공지 없이 변경될 수 있다'는 점과 마지막 입장이 폐관 1시간 전이라는 점을 적어 두었습니다. 확인한 날짜 기준으로 전망대는 10:00–22:00, 마지막 입장은 21:00이었습니다. 저녁 일정을 여기에 맞춰 짜기 전에 본인 날짜로 달력을 확인하세요. 확인일 ${CHECKED}.`,
   },
   {
     q: "도쿄 스카이트리와 시부야 스카이 중 어디가 좋나요?",
-    a: "서로 다른 질문에 답하는 곳입니다. 스카이트리는 높이와 시야입니다. 플로어 350과 450은 도쿄에서 가장 높은 전망대이고, 간토 평야 전체가 보이며 맑은 날에는 후지산도 들어옵니다. 시부야 스카이는 사진입니다. 스크램블 교차로 바로 위 약 229m의 야외 루프톱으로, 일몰이 가장 좋고 높이보다 분위기입니다. 하나만 고른다면 파노라마는 스카이트리, 누구나 아는 그 한 장은 시부야 스카이입니다.",
+    a: "서로 다른 질문에 답하는 곳입니다. 스카이트리는 높이와 시야입니다. 플로어 350과 450은 도쿄에서 가장 높은 전망대이고, 간토 평야 전체가 보이며 맑은 날에는 후지산도 들어옵니다. 시부야 스카이는 사진입니다. 스크램블 교차로 바로 위 약 229m의 야외 루프톱으로, 일몰 때가 가장 좋고 높이보다 분위기입니다. 한 곳만 고른다면 파노라마는 스카이트리, 누구나 알아보는 그 한 장은 시부야 스카이입니다.",
   },
   {
     q: "도쿄 스카이트리에서 후지산이 보이나요?",
-    a: "맑은 날에는 보입니다. 높이 덕분에 도쿄의 어느 전망대보다 확률이 높습니다. 다만 전적으로 날씨에 달려 있고, 서늘하고 건조한 달과 이른 시간대가 더 유리한 편입니다. 특정 날짜에 보인다는 보장은 없으니, 후지산 전망만을 위해 콤보 요금을 낼 생각이라면 기억해 두세요.",
+    a: "맑은 날에는 보입니다. 높이 덕분에 도쿄의 어느 전망대보다 확률이 높습니다. 다만 시야는 전적으로 날씨에 달려 있고, 서늘하고 건조한 달과 이른 시간대가 더 유리한 편입니다. 특정 날짜에 보인다는 보장은 없으니, 후지산 전망만을 위해 콤보 요금을 낼 생각이라면 기억해 두세요.",
   },
   {
     q: "도쿄 스카이트리에 어떻게 가나요?",
-    a: "타워는 도부 스카이트리라인의 도쿄 스카이트리역과, 도쿄메트로 한조몬선・도에이 아사쿠사선・게이세이 오시아게선이 지나는 오시아게역 위에 있습니다. 오시아게는 도쿄 서브웨이 티켓 범위에 들어가므로 그 패스를 이미 쓰고 있다면 이동에 추가 비용이 없습니다. 아사쿠사는 아사쿠사선으로 두 정거장이라 오후 한 번에 묶기 쉽습니다.",
+    a: "타워는 도부 스카이트리라인의 도쿄 스카이트리역과, 도쿄메트로 한조몬선・도에이 아사쿠사선・게이세이 오시아게선이 지나는 오시아게역 위에 있습니다. 오시아게는 도쿄 서브웨이 티켓 적용 범위라서 이미 그 패스를 갖고 있다면 이동에 추가 비용이 없습니다. 아사쿠사는 아사쿠사선으로 두 정거장이라 오후 한나절에 두 곳을 묶기 쉽습니다.",
   },
 ];
 
@@ -177,14 +247,14 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            도쿄 스카이트리 티켓(2026):<br />요금, 플로어 350과 450, 예약 방법
+            도쿄 스카이트리 티켓(2026):<br />요금, 플로어 350 vs 450, 예약 방법
           </h1>
           <p className={styles.heroSubtitle}>
-            도쿄에서 가장 높은 전망대이고, 당일 구매에 공개된 벌금이 붙는 거의 유일한 명소입니다. 공식 요금,
-            플로어 450이 실제로 더해 주는 것, 그리고 해외에서 예약하는 방법.
+            도쿄에서 가장 높은 전망대이자, 당일 구매에 공식적으로 정해진 추가 요금이 붙는 명소입니다. 공식
+            요금, 플로어 450이 실제로 더해 주는 것, 그리고 해외에서 예약하는 방법을 정리했습니다.
           </p>
           <div className={styles.heroBadges}>
-            {[`${updatedLabel} 업데이트`, "공식 요금", "플로어 350 vs 450"].map((t) => (
+            {[`${updatedLabel} 업데이트`, "공식 요금", "플로어 350 vs 플로어 450"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -204,7 +274,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>플로어 350(성인)</p>
-                <p className={styles.verdictStatValue}>{ADULT}</p>
+                <p className={styles.verdictStatValue}>¥1,800부터</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>350+450 콤보</p>
@@ -220,29 +290,32 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>결론:</strong> 날짜 지정 티켓을 온라인으로 예약하세요. 스카이트리는 당일 창구에서
-              티켓 1장당 ¥500의 서비스 수수료를 받으므로, 사전 예약이 운이 아니라 공개된 금액만큼 더
-              저렴합니다. 플로어 450 스카이워크에 올라갈 가능성이 있으면 처음부터 콤보로 사세요. 나중에
-              현장에서 추가하면 ¥1,400이 더 듭니다. 가격은 공식 사이트에서 읽었고 확인일은 {CHECKED}입니다.
+              <strong>요약:</strong> 날짜 지정 티켓을 온라인으로 예약하세요. 스카이트리는 당일 창구에서
+              티켓 1장당 ¥500의 서비스 수수료를 받으므로, 사전 예약은 운이 아니라 명시된 금액만큼 저렴합니다.
+              플로어 450 스카이워크에 올라갈 생각이 있다면 처음부터 콤보로 사세요. 나중에 현장에서 추가하면
+              ¥1,400이 더 듭니다. 가격은 공식 사이트 기준이며 확인일은 {CHECKED}입니다.
             </p>
-            <KlookLink href={koSkytreeTicket.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
-              도쿄 스카이트리 티켓 보기 →
-            </KlookLink>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <KlookLink href={TICKET_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+                클룩에서 도쿄 스카이트리 티켓 확인 →
+              </KlookLink>
+              <GygCompareButton slug={GYG_SLUG} listing={gygTokyoSkytree} />
+            </div>
           </div>
         </div>
 
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>무엇을 사는가</span>
-          <h2 className={styles.sectionTitle}>티켓이 포함하는 범위</h2>
+          <span className={styles.sectionLabel}>개요</span>
+          <h2 className={styles.sectionTitle}>무엇을 사는 것인가</h2>
           <p className={styles.bodyText}>
-            도쿄 스카이트리는 서로 다른 두 층의 입장권을 팝니다. <strong>플로어 350</strong>은 덴보 데크로,
-            3층 구조의 전망층이고 모든 티켓에 포함됩니다. <strong>플로어 450</strong>은 덴보 갤러리아로,
-            타워에서 올라갈 수 있는 가장 높은 지점까지 비스듬히 올라가는 유리벽 스카이워크이며, 단독으로는
-            갈 수 없습니다.
+            도쿄 스카이트리는 서로 다른 두 층의 입장권을 판매합니다. <strong>플로어 350</strong>은 덴보
+            데크로, 3층 구조의 전망층이며 모든 티켓에 포함됩니다. <strong>플로어 450</strong>은 덴보
+            갤러리아로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리벽
+            스카이워크이며, 단독으로는 방문할 수 없습니다.
           </p>
           <p className={styles.bodyText}>
-            혼란은 대부분 이 두 층 구조에서 나옵니다. 두 층을 온라인에서 함께 사는지, 당일 따로 사는지에
-            따라 가격이 달라지기 때문입니다. 아래 표가 두 경로를 나란히 둡니다.
+            혼란은 대부분 이 두 단계 구조에서 나옵니다. 두 층을 온라인에서 함께 사는지, 당일 따로 사는지에
+            따라 가격이 달라지기 때문입니다. 아래에서 두 경로를 나란히 비교합니다.
           </p>
         </section>
 
@@ -272,11 +345,18 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            도쿄 스카이트리 공식 사이트에서 읽었고 확인일은 {CHECKED}입니다. 공식 페이지는 이 금액들을
-            &lsquo;부터&rsquo; 가격으로 표기하므로 특정 날짜의 금액은 더 높을 수 있습니다. 결제 시점에
+            도쿄 스카이트리 공식 사이트 기준이며 확인일은 {CHECKED}입니다. 공식 페이지는 이 금액들을
+            &lsquo;부터&rsquo; 가격으로 표기하므로 특정 날짜의 금액은 더 높을 수 있습니다. 예약 시
             확인하세요. ¥500 당일 서비스 수수료는 4층 창구와 편의점에서 티켓 1장마다 붙습니다.
           </p>
         </section>
+
+        <KlookTripPrep
+          label="타워 주변"
+          heading="오시아게 쪽 하루에 함께 예약할 것들"
+          intro="전망대 회차는 한두 시간이면 끝나고, 시간을 맞춰야 하는 것은 위의 티켓뿐입니다. 아래는 그날 오후의 나머지를 받쳐 주는 예약들로, 모두 타워와 같은 강변 쪽에 있고 티켓과 같은 계정에서 예약됩니다."
+          items={tripPrepItems}
+        />
 
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>어느 티켓</span>
@@ -284,6 +364,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
+                <div className={styles.whoForIcon}>{item.icon}</div>
                 <p className={styles.whoForTitle}>{item.title}</p>
                 <p className={styles.whoForDesc}>{item.desc}</p>
               </div>
@@ -292,14 +373,12 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
         </section>
 
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>나란히 비교</span>
+          <span className={styles.sectionLabel}>비교</span>
           <h2 className={styles.sectionTitle}>스카이트리 vs 도쿄의 다른 전망대</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            스카이트리는 높이를 고르는 선택입니다. 원하는 것이 스크램블 교차로 사진이라면{" "}
-            <Link href="/ko/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              시부야 스카이
-            </Link>
-            가 더 맞고, 돈을 전혀 쓰지 않고 도시 파노라마만 보고 싶다면 신주쿠의 도쿄도청 전망대는 무료입니다.
+            스카이트리는 높이를 고르는 선택입니다. 정말 원하는 것이 스크램블 교차로 사진이라면{" "}
+            <Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이</Link>가 더 나은 선택이고,
+            돈을 전혀 쓰지 않고 도시 파노라마를 보고 싶다면 신주쿠의 도쿄도청 전망대는 무료입니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -326,13 +405,13 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            스카이트리와 시부야 스카이의 숫자는 운영사 공식 사이트 기준입니다. 도쿄 타워와 도쿄도청은
-            대략값이고 변경될 수 있습니다. 결제 시점에 확인하세요.
+            스카이트리와 시부야 스카이의 수치는 각 운영사 공식 사이트 기준입니다. 도쿄 타워와 도쿄도청은
+            대략값이며 변경될 수 있습니다. 예약 시 확인하세요.
           </p>
         </section>
 
         <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>예약 절차</span>
+          <span className={styles.sectionLabel}>단계별 안내</span>
           <h2 className={styles.sectionTitle}>도쿄 스카이트리 티켓 예약 방법</h2>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
@@ -346,62 +425,50 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            예약을 결정했다면{" "}
-            <KlookLink href={koSkytreeTicket.url} target="_blank" rel={KLOOK_REL}>
-              클룩에서 스카이트리 회차와 가격 보기 →
-            </KlookLink>
+            가는 길은 쉬운 편입니다. 타워는 도쿄 스카이트리역과 오시아게역 바로 위에 있고, 오시아게는
+            지하철역이라{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket">도쿄 서브웨이 티켓(영어)</Link>을 갖고 있다면
+            그대로 쓸 수 있습니다. 도쿄메트로와 도에이 노선이 어떻게 연결되는지는{" "}
+            <Link href="/guides/transport/tokyo-transportation">도쿄 교통 가이드(영어)</Link>에서 다룹니다.
           </p>
-        </section>
-
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>교통</span>
-          <h2 className={styles.sectionTitle}>도쿄 스카이트리 위치</h2>
-          <p className={styles.bodyText}>
-            가는 길은 쉬운 쪽입니다. 타워가 역 위에 그대로 서 있습니다.
-          </p>
-          <ul className={styles.bodyList}>
-            <li><strong>도쿄 스카이트리역</strong>(도부 스카이트리라인) — 타워 바로 아래입니다.</li>
-            <li><strong>오시아게역</strong> — 도쿄메트로 한조몬선, 도에이 아사쿠사선, 게이세이 오시아게선.</li>
-            <li>오시아게는 지하철역이라 도쿄 서브웨이 티켓 범위에 들어갑니다. 그 패스를 쓰고 있다면 추가 비용이 없습니다.</li>
-            <li>아사쿠사는 아사쿠사선으로 두 정거장입니다. 오후 한 번에 두 곳을 묶기 쉽습니다.</li>
-          </ul>
-        </section>
-
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>남은 하루</span>
-          <h2 className={styles.sectionTitle}>전망대는 한두 시간, 나머지는?</h2>
-          <p className={styles.bodyText}>
-            스카이트리 회차는 한두 시간이라 보통 다른 일정과 하루를 공유합니다. 도쿄 일정에 아직 비어 있는
-            하루가 있다면, 후지산과 하코네 1일 투어는 도쿄에서 출발해 그날 저녁에 돌아오고 티켓과 같은 클룩
-            계정에서 결제됩니다.
-          </p>
-          <KlookLink href={koFujiHakoneDayTour.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta} style={{ marginTop: "0.5rem", display: "inline-block" }}>
-            {koFujiHakoneDayTour.label} 보기 →
-          </KlookLink>
         </section>
 
         <FaqList items={faqItems} />
 
+        <KlookTourPicks
+          heading="남은 하루도 함께 예약하기"
+          intro="스카이트리 회차는 한두 시간이면 끝납니다. 아래 상품은 티켓과 같은 클룩 계정에 있어서, 하루의 나머지도 같은 결제에서 예약할 수 있습니다."
+          tours={tourPicks}
+        />
+
         <Related
           items={[
+            { href: "/guides/attractions/tokyo-bay-cruise", title: "도쿄만 크루즈(2026): 야카타부네 vs 심포니, 시간과 요금(영어)" },
+            { href: "/guides/attractions/asakusa-kimono-rental", title: "아사쿠사 기모노 렌털(2026): 반납 시간, 헤어 세트, 촬영 장소(영어)" },
+            { href: "/guides/attractions/tokyo-3-day-itinerary", title: "도쿄 3일 일정(2026): 무엇을 어떤 순서로 예약할까(영어)" },
+            { href: "/guides/attractions/tokyo-tower-tickets", title: "도쿄 타워 티켓(2026): 요금, 메인 데크 vs 톱 데크, 예약 방법(영어)" },
             { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법" },
+            { href: "/guides/attractions/tokyo-subway-ticket", title: "도쿄 서브웨이 티켓(2026): 24・48・72시간, 살 만한가(영어)" },
+            { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "워너 브라더스 스튜디오 투어 도쿄 티켓(2026): 요금과 예약 방법(영어)" },
+            { href: "/guides/attractions/mt-fuji-day-tour-from-tokyo", title: "도쿄 출발 후지산 1일 투어(2026): 어떤 투어로, 실제로 무엇을 보나(영어)" },
             { href: "/ko/guides/attractions/teamlab-tokyo-tickets", title: "팀랩 플래닛 예약(2026): 티켓 가격, 입장 시간, 보더리스와 비교" },
-            { href: "/ko/guides/attractions/teamlab-borderless-tickets", title: "팀랩 보더리스 티켓(2026): 가격, 지정 시간 입장, 구매 경로" },
-            { href: "/ko/guides/attractions/tokyo-disney-tickets", title: "도쿄 디즈니랜드 티켓(2026): 날짜 지정 예매와 랜드・씨 선택" },
-            { href: "/ko/guides/esim/best-esim-japan", title: "일본 이심 추천(2026): eSIM 요금제 비교와 클룩 일본 eSIM" },
+            { href: "/guides/attractions", title: "일본에서 할 것 더 보기(영어) →" },
           ]}
         />
 
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>창구에서 더 받기 전에 예약하세요</h2>
+            <h2 className={styles.ctaBannerTitle}>창구에서 더 내기 전에 예약하세요</h2>
             <p className={styles.ctaBannerDesc}>
               당일 티켓에는 1인당 ¥500의 서비스 수수료가 붙습니다. 온라인으로 예약한 날짜 지정 티켓은
-              수수료와 줄을 모두 건너뜁니다. 클룩은 한국어 화면으로 결제하고 전자 티켓을 휴대폰에 바로 받습니다.
+              수수료와 줄을 모두 건너뛰고, 클룩은 해외 카드로 한국어 화면에서 결제할 수 있습니다.
             </p>
-            <KlookLink href={koSkytreeTicket.url} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
-              도쿄 스카이트리 티켓 보기 →
-            </KlookLink>
+            <div className={styles.pickCtaRow}>
+              <KlookLink href={TICKET_URL} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>
+                클룩에서 도쿄 스카이트리 티켓 보기 →
+              </KlookLink>
+              <GygCompareButton slug={GYG_SLUG} listing={gygTokyoSkytree} />
+            </div>
           </div>
         </div>
       </div>
