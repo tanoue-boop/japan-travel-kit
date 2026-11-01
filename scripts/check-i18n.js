@@ -24,6 +24,10 @@
  *      checkout priced in TWD, and a /ko/ page linking /en-US/ would hand a Korean
  *      reader an English one priced in USD.
  *
+ *   5. (warn-only) every translated article has the same <h2> count as its English
+ *      page, KlookTourPicks/KlookTripPrep wherever the English page has them, and at
+ *      least 80% of its Klook links — see the section near the end.
+ *
  * Note on hreflang casing: React 18 serialises the `hrefLang` prop verbatim, and
  * HTML attribute names are case-insensitive, so `hrefLang="en"` in the markup is
  * `hreflang="en"` to every parser. The match below is case-insensitive for that
@@ -233,6 +237,77 @@ for (const page of PAGE_GROUPS) {
 const llms = fs.readFileSync(path.join(__dirname, "..", "public", "llms.txt"), "utf8");
 for (const route of translatedRoutes) {
   if (!llms.includes(absoluteUrl(route))) fail(`llms.txt: ${route} not listed`);
+}
+
+// ---------------------------------------------------------------------------
+// 5. Parity with the English page (added 2026-11-01, task jtk-20261101-A15).
+//
+// The translated articles had drifted into shortened versions of the English ones —
+// /ko/…/shibuya-sky-tickets was 405 lines against 848, with no KlookTourPicks, one of
+// two KlookTripPrep blocks, no GetYourGuide button and 7 Klook links against 15 — so a
+// reader who switched language lost both content and the links that pay. For every
+// translated article this lists the ones that do not carry:
+//
+//   a. the same number of <h2> sections as the English page (built HTML);
+//   b. KlookTourPicks and KlookTripPrep wherever the English page has them (source);
+//   c. at least 80% of the English page's Klook links (built HTML anchors).
+//
+// Warn-only, like check-klook-adids and check-meta-length: it prints the list and
+// never changes the exit code. Hubs are skipped — the language entry pages (A14) and
+// /guides/attractions, whose English side is a generated index of English-only
+// articles rather than an article to mirror.
+// ---------------------------------------------------------------------------
+const PARITY_SKIP = new Set(["/", "/guides/attractions"]);
+const PARITY_COMPONENTS = ["KlookTourPicks", "KlookTripPrep"];
+const PAGES_DIR = path.join(__dirname, "..", "pages");
+
+function sourceOf(route) {
+  for (const file of [path.join(PAGES_DIR, `${route}.tsx`), path.join(PAGES_DIR, route, "index.tsx")]) {
+    if (fs.existsSync(file)) return fs.readFileSync(file, "utf8");
+  }
+  return "";
+}
+const h2Count = (markup) => (markup.match(/<h2[\s>]/g) || []).length;
+const klookCount = (markup) => (markup.match(/<a\s[^>]*href="[^"]*klook\.com[^"]*"/g) || []).length;
+
+const parityGaps = [];
+let parityChecked = 0;
+for (const page of PAGE_GROUPS) {
+  if (PARITY_SKIP.has(page.en)) continue;
+  const enFile = path.join(BUILD, `${page.en.replace(/^\//, "")}.html`);
+  if (!fs.existsSync(enFile)) continue;
+  const enMarkup = fs.readFileSync(enFile, "utf8");
+  const enSource = sourceOf(page.en);
+  const enH2 = h2Count(enMarkup);
+  const enKlook = klookCount(enMarkup);
+
+  for (const locale of TRANSLATED_LOCALES) {
+    const route = routeOf(page, locale);
+    if (!route) continue;
+    const file = path.join(BUILD, `${route.replace(/^\//, "")}.html`);
+    if (!fs.existsSync(file)) continue;
+    const markup = fs.readFileSync(file, "utf8");
+    const source = sourceOf(route);
+    const gaps = [];
+    const h2 = h2Count(markup);
+    if (h2 !== enH2) gaps.push(`h2 ${h2} vs English ${enH2}`);
+    for (const c of PARITY_COMPONENTS) {
+      const re = new RegExp(`<${c}[\\s>/]`);
+      if (re.test(enSource) && !re.test(source)) gaps.push(`no ${c}`);
+    }
+    const klook = klookCount(markup);
+    if (klook < Math.ceil(enKlook * 0.8)) gaps.push(`Klook links ${klook} vs English ${enKlook} (< 80%)`);
+    parityChecked++;
+    if (gaps.length) parityGaps.push(`${route}: ${gaps.join("; ")}`);
+  }
+}
+
+console.log(`\nParity with English: ${parityChecked} translated articles checked (h2 count, KlookTourPicks/KlookTripPrep, Klook links >= 80%)`);
+if (parityGaps.length) {
+  console.warn(`! ${parityGaps.length} translated page(s) fall short of their English page:`);
+  for (const gap of parityGaps) console.warn(`  - ${gap}`);
+} else {
+  console.log("✓ every translated article matches its English page's sections and revenue blocks");
 }
 
 if (failures.length) {
