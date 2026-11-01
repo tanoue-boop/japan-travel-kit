@@ -238,6 +238,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/otaru-day-trip-from-sapporo",
+    badge: "Day trip",
+    title: "Otaru Day Trip from Sapporo (2027): ¥800, 33 Min by JR",
+    desc: "The cheapest good day trip in Hokkaido — ¥800 and about 33 minutes each way on the Rapid Airport. The canal is half an hour, Sakaimachi is the afternoon, the cruise is ¥1,800, and Yoichi is the one part worth booking.",
+    group: "daytrips",
+    // Hokkaido sits outside the three city hubs, like sapporo-snow-festival-tours.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/hiroshima-miyajima-day-trip",
     badge: "Day trip",
     title: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?",
@@ -279,6 +288,15 @@ export const attractionArticles: GuideArticle[] = [
     desc: "Nine nights on three hotel bills — Tokyo 4, Kyoto 3, Osaka 2 — with a Hakone day that ends on a westbound train and a Nara day trip, plus a table for each of the ten days and the JR Pass worked against what this route actually uses.",
     group: "cities",
     // Nationwide: the ten days run Tokyo → Hakone → Kyoto → Nara → Osaka, out from Kansai.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/hokkaido-7-day-itinerary",
+    badge: "Itinerary",
+    title: "Hokkaido 7 Day Itinerary: 7 Days in Hokkaido, Day by Day",
+    desc: "Two bases and six nights — Sapporo 4, Furano 2 — running Sapporo, Otaru, Asahikawa, Biei and Furano, with a table per day, the winter and summer versions side by side, and the rail-pass arithmetic worked on JR Hokkaido's own fares.",
+    group: "cities",
+    // The island, not one of the three city hubs — same call as sapporo-snow-festival-tours.
     city: "other",
   },
   {

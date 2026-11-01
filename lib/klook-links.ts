@@ -4275,3 +4275,228 @@ export const jrTokyoWidePass: KlookTour = {
   desc: "JR East's own Kanto pass as Klook sells it — the listing names Mt Fuji, Karuizawa, Izu and GALA Yuzawa as what it reaches, and redeems at Haneda or Narita on your passport",
   url: klookLink("https://www.klook.com/en-US/activity/49927-jr-east-tokyo-tokyowidepass/"),
 };
+
+// ---------------------------------------------------------------------------
+// Hokkaido as a whole trip, and Otaru as a day — added 1 Nov 2026 for
+// hokkaido-7-day-itinerary and otaru-day-trip-from-sapporo.
+//
+// The two Hokkaido blocks above cover the city week: the 28 Oct 2026 winter
+// block (New Chitose transfer, the Niseko and Rusutsu resort shuttles, the
+// Wonderland snow park half day, the Lake Shikotsu ice festival, the Otaru
+// snow-park day, the Asahiyama Zoo winter day, the Sapporo Station hotel
+// search) and the 30 Oct 2026 Snow Festival block (the whole-island rail pass,
+// the Lake Shikotsu shuttle seat, two Jozankei days, the Noboribetsu–Toya–Otaru
+// day, the TV Tower deck, and the Susukino and Otaru Station hotel searches).
+// Both are reused here unchanged rather than re-declared.
+//
+// What is new is the half of Hokkaido those pages had no reason to carry. A
+// seven-day island route is not a city week: it goes inland to Asahikawa, Biei
+// and Furano, which is a summer season as much as a winter one, and it sleeps
+// in up to four places rather than one. And a day in Otaru is not the Otaru
+// stop inside a coach day: what a reader actually books there is a canal
+// cruise, a whisky distillery one stop further west, or a ski half-day — so
+// those are the listings added, plus the Furano hotel search.
+//
+// Verification, all on 1 Nov 2026. Klook answers automated reads of its
+// /activity/ and /destination/ pages with HTTP 403, so every URL below was
+// confirmed live, on sale and in its en-US form through the www.klook.com
+// search index. Three listings were found only in other storefronts on that
+// date and are therefore deliberately absent: /activity/17912 (Otaru Canal and
+// Yoichi Distillery, en-AU only), /activity/153314 (Sapporo and Otaru
+// Highlights, en-AU only) and /activity/96776 (Otaru sightseeing and skiing,
+// no locale prefix). en-US listings covering the same ground are used instead.
+//
+// Bands: every guided day, the canal cruise and all four hotel searches are
+// 6.5%; the rail pass and the airport and resort transfers are 5%; the eSIM is
+// 20%. No price appears anywhere, for the usual reason — and because on these
+// two pages the fares that matter (¥800 Sapporo–Otaru, ¥1,230 to the airport,
+// ¥28,000 for the seven-day island pass) are the operators' own.
+// ---------------------------------------------------------------------------
+
+/**
+ * Otaru and Yoichi in one booked day, with a guide who works in English.
+ *
+ * The listing that answers the one real problem with doing Yoichi yourself:
+ * Nikka's own access page warns that "there are few trains operating between
+ * Otaru Station and Yoichi Station", and a distillery tour is a fixed-time
+ * reservation at the far end of that gap.
+ */
+export const otaruYoichiDayTour: KlookTour = {
+  title: "Otaru & Yoichi day trip from Sapporo",
+  desc: "The canal town and the Yoichi distillery in one booked day with a Chinese- and English-speaking guide — the version that takes the sparse Otaru–Yoichi train service out of the plan",
+  url: klookLink("https://www.klook.com/en-US/activity/181965-hokkaido-otaru-yoichi-one-day-tour-chinese-english-tour-guide/"),
+};
+
+/** The longer west-coast version: Otaru, Cape Kamui, Shimamui and Yoichi. */
+export const otaruShakotanYoichiCoachTour: KlookTour = {
+  title: "Otaru, Cape Kamui, Shimamui Coast & Yoichi distillery coach day",
+  desc: "A full day down the Shakotan peninsula with the Yoichi distillery attached — the itinerary to take when Otaru on its own is not enough for the day",
+  url: klookLink("https://www.klook.com/en-US/activity/199716-otaru-cape-kamui-shimamui-coast-yoichi-distillery-coach-tour/"),
+};
+
+/**
+ * The canal cruise itself, sold with a seal-carving workshop.
+ *
+ * Worth being clear what this is and is not: the operator's own fares are
+ * published (¥1,800 day, ¥2,000 night, 40 minutes) and both articles quote
+ * them, so this listing is here for the reader who wants the cruise with an
+ * indoor half-hour attached — not as a cheaper way to buy the boat.
+ */
+export const otaruCanalCruiseSealCarving: KlookTour = {
+  title: "Otaru canal cruise + seal-carving workshop",
+  desc: "The 40-minute canal cruise bundled with a hanko seal-carving workshop — the indoor half of an Otaru afternoon, which in February is the half that decides the day",
+  url: klookLink("https://www.klook.com/en-US/activity/157929-otaru-canal-cruise-and-hanko-making-experience-in-hokkaido/"),
+};
+
+/** Cape Kamui, the canal cruise and Shiroi Koibito Park as one summer day. */
+export const capeKamuiOtaruCanalCruiseDayTour: KlookTour = {
+  title: "Cape Kamui, Otaru canal cruise & Shiroi Koibito Park day tour",
+  desc: "A summer-weighted day out of Sapporo with the canal cruise ticket inside the booking and free time in Otaru, rather than a photo stop at the canal",
+  url: klookLink("https://www.klook.com/en-US/activity/150100-cape-kamui-otaru-otaru-canal-cruise-shiroi-koibito-park-day-tour/"),
+};
+
+/** The spring version of the same west-coast run. */
+export const otaruShakotanKamuiDayTour: KlookTour = {
+  title: "Otaru & Shakotan Peninsula Cape Kamui day tour from Sapporo",
+  desc: "The Shakotan coast road and Otaru in a single join-in day — the listing to open for a trip in the weeks the Hokkaido cherry blossom runs, which is May rather than April",
+  url: klookLink("https://www.klook.com/en-US/activity/85124-hokkaido-otaru-join-one-day-tour-cheery-blossom/"),
+};
+
+/**
+ * Furano and Biei as a day out of Sapporo. Three listings rather than one
+ * because they differ on the thing that actually decides a summer day there:
+ * whether the Blue Pond is in the itinerary, whether Farm Tomita is, and
+ * whether lunch and a craft stop are inside the price.
+ */
+export const furanoBieiBluePondDayTour: KlookTour = {
+  title: "Furano, Biei Blue Pond & Shikisai-no-oka day trip from Sapporo",
+  desc: "The inland day that includes the Shirogane Blue Pond and the Shikisai-no-oka flower hills, with a tractor ride and a lavender-pillow workshop inside the booking",
+  url: klookLink("https://www.klook.com/en-US/activity/88593-furano-biei-blue-pond-shikisai-no-oka-day-tour-bus-tour-sapporo/"),
+};
+
+/** The lavender-first version of the inland day. */
+export const bieiFuranoLavenderDayTour: KlookTour = {
+  title: "Biei & Furano lavender day tour from Sapporo",
+  desc: "The lavender version of the inland day, built around Farm Tomita in the weeks it is actually in flower rather than around the hills themselves",
+  url: klookLink("https://www.klook.com/en-US/activity/89729-hokkaido-biei-furano-day-tour-sapporo/"),
+};
+
+/** The join-in coach version, with a Furano lunch named in the listing. */
+export const sapporoFuranoBieiLavenderBusTour: KlookTour = {
+  title: "Sapporo, Furano & Biei join-in bus tour with lavender",
+  desc: "The plain join-in coach down the same route with a Furano lunch in it — the cheapest shape of a Furano day for a traveller who is not hiring a car",
+  url: klookLink("https://www.klook.com/en-US/activity/86149-sapporo-furano-biei-join-one-day-bus-tour-lavender/"),
+};
+
+/**
+ * The two Otaru-side ski days. Both are the no-gear version — lift ticket,
+ * rental and the coach from Sapporo in one booking — which is what a seven-day
+ * island route or an Otaru day needs, as distinct from the Niseko rental in the
+ * ski block above, which assumes you are already standing in Hirafu.
+ */
+export const sapporoKokusaiSkiOtaruAquariumDayTour: KlookTour = {
+  title: "Sapporo Kokusai ski resort & Otaru Aquarium day tour",
+  desc: "Half a day on the snow at Sapporo Kokusai and half in Otaru, with the coach from the city in the booking — the listing for a trip carrying no ski gear",
+  url: klookLink("https://www.klook.com/en-US/activity/97999-sapporo-kokusai-ski-resort-otaru-aquarium-day-tour-hokkaido/"),
+};
+
+/** Otaru's own ski hill, a short run inland from the canal. */
+export const otaruAsarigawaSkiDayTour: KlookTour = {
+  title: "Otaru Asarigawa Onsen ski resort day trip from Sapporo",
+  desc: "Lift ticket, equipment rental and instruction at Otaru's own ski area with round-trip transport from Sapporo — the shortest ski day on this side of Hokkaido",
+  url: klookLink("https://www.klook.com/en-US/activity/171758-hokkaido-otaru-asarigawa-ski-resort-tour-from-sapporo/"),
+};
+
+/**
+ * Where a seven-day Hokkaido route sleeps. Four bases, in route order.
+ *
+ * Sapporo Station, Otaru Station and Niseko read their ids out of the two
+ * blocks above — `japanWinterStayAreas` (28 Oct 2026) and
+ * `sapporoSnowFestivalStayAreas` (30 Oct 2026) — so the island pages cannot
+ * drift apart. Furano is the one new destination page, confirmed in en-US form
+ * on 1 Nov 2026.
+ */
+export const hokkaidoSevenDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Sapporo Station",
+    why: "Three or four of the seven nights, because every inland and coastal day on this route starts here: the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa and the Furano Lavender Express all leave from this building, and Odori is one subway stop or a covered walk.",
+    url: japanWinterStayAreas[6].url,
+  },
+  {
+    area: "Otaru Station",
+    why: "Worth one night rather than a day trip if you want the canal lit and the Snow Light Path after the day-trippers have gone — it is ¥800 and about 33 minutes back to Sapporo on JR Hokkaido's own figures, so moving here costs almost nothing.",
+    url: sapporoSnowFestivalStayAreas[2].url,
+  },
+  {
+    area: "Furano",
+    why: "The base that turns the inland leg from a ten-hour coach day into two unhurried ones — Farm Tomita and the Biei hills in the morning light instead of at the back of a day trip, and the Furano Lavender Express is two hours back to Sapporo.",
+    url: klookLink("https://www.klook.com/en-US/destination/c85051-furano/3-hotel/"),
+  },
+  {
+    area: "Niseko",
+    why: "Only if the week is about the snow: the lifts are at the door and the coach that takes ski bags runs there directly from New Chitose, which is why the ski version of this route skips Sapporo on the arrival day.",
+    url: japanWinterStayAreas[7].url,
+  },
+];
+
+/**
+ * What a seven-day Hokkaido trip books before it flies. The pass is second
+ * rather than first because on the route this page actually lays out it does
+ * not pay — which is the honest headline, and the reason the item is here at
+ * all is so a reader can price their own legs against it.
+ */
+export const hokkaidoSevenDayTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Seven days across up to four bases on an island where a February road can close and a July country bus runs a handful of times a day — every timetable, closure notice and tour pick-up point on this route arrives on your phone rather than at a counter.",
+  },
+  {
+    label: jrHokkaidoRailPass.title,
+    ctaLabel: "Price the JR Hokkaido pass →",
+    url: jrHokkaidoRailPass.url,
+    why: "Price it, do not assume it. The seven-day pass is ¥28,000 on JR Hokkaido's own figure while the rail legs this route uses come to roughly ¥17,000 — so it pays only if you add a second long inland or coastal run, and the four-day Sapporo–Furano Area Pass at ¥11,000 is the one that clears its own cost on this itinerary.",
+  },
+  {
+    label: newChitoseSapporoSharedTransfer.title,
+    ctaLabel: "Check the airport transfer →",
+    url: newChitoseSapporoSharedTransfer.url,
+    why: "The alternative to the Rapid Airport with hold cases: a booked seat to the hotel door, which the listing requires 45 minutes after a domestic arrival and 90 after an international one — so it is a before-you-fly decision rather than an on-the-day one.",
+  },
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo hotels on Klook →",
+    url: japanWinterStayAreas[6].url,
+    why: "The booking with the least slack in it on this route: three or four of the seven nights sit here, and the February week the island is busiest is a set of fixed dates announced a year ahead by the Snow Festival committee.",
+  },
+  {
+    label: nisekoResortShuttleBus.title,
+    ctaLabel: "Check the Niseko shuttle →",
+    url: nisekoResortShuttleBus.url,
+    why: "Only for the ski version of this week, and then it is the whole arrival plan: the listing carries ski equipment and one piece of luggage per person, which a Rapid Airport seat and a JR change at Otaru do not.",
+  },
+];
+
+/**
+ * What an Otaru day books, in the order the day uses them. Short on purpose:
+ * the train needs nothing booked and the streets are free, so there are only
+ * three honest items — the data, the guided version of the Yoichi half, and a
+ * room if the canal after dark is the reason you came.
+ */
+export const otaruDayTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "The two things that change an Otaru day are notices rather than tickets: the canal cruise is weather-dependent on the operator's own warning, and the Otaru–Yoichi train service is sparse enough that one missed connection rewrites the afternoon.",
+  },
+  {
+    label: otaruYoichiDayTour.title,
+    ctaLabel: "Check the Otaru & Yoichi day →",
+    url: otaruYoichiDayTour.url,
+    why: "The one part of this day that is genuinely easier booked: Nikka's distillery tour is a fixed-time reservation and its own access page warns there are few trains between Otaru and Yoichi, so a coach removes the only real timing risk in the plan.",
+  },
+  {
+    label: "Hotels around Otaru Station",
+    ctaLabel: "Check Otaru hotels on Klook →",
+    url: sapporoSnowFestivalStayAreas[2].url,
+    why: "For the reader who works out mid-page that the canal is better after dark than at lunchtime — and for the first fortnight of February, when the Snow Light Path runs and Sapporo's own rooms are at their tightest.",
+  },
+];

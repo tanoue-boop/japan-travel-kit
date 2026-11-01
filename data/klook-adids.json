@@ -11,6 +11,7 @@
   "/guides/attractions/hakone-free-pass": 1528092,
   "/guides/attractions/himeji-castle-day-trip": 1528093,
   "/guides/attractions/hiroshima-miyajima-day-trip": 1528094,
+  "/guides/attractions/hokkaido-7-day-itinerary": 1528238,
   "/guides/attractions/japan-10-day-itinerary": 1528095,
   "/guides/attractions/japan-14-day-itinerary": 1528096,
   "/guides/attractions/japan-attraction-ticket-prices": 1528207,
@@ -36,6 +37,7 @@
   "/guides/attractions/osaka-castle-tickets": 1528113,
   "/guides/attractions/osaka-food-tour": 1528114,
   "/guides/attractions/osaka-kyoto-3-day-itinerary": 1528233,
+  "/guides/attractions/otaru-day-trip-from-sapporo": 1528239,
   "/guides/attractions/sagano-romantic-train-tickets": 1528115,
   "/guides/attractions/samurai-ninja-experience-tokyo": 1528116,
   "/guides/attractions/sanrio-puroland-tickets": 1528117,
@@ -152,5 +154,5 @@
   "/zh-tw/guides/esim/best-esim-japan": 1528204,
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
  },
- "spare": [1528238,1528239,1528240,1528241,1528242,1528243,1528244,1528245,1528246,1528247]
+ "spare": [1528240,1528241,1528242,1528243,1528244,1528245,1528246,1528247]
 }
