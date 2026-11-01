@@ -1265,6 +1265,20 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Ten days is the single most-asked trip length, and it has its own page again
+                since 1 Nov 2026 — picks sized for it rather than for a tourist week. */}
+            <Link href="/guides/esim/japan-esim-10-days" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 10h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Japan eSIM 10 Days: How Much Data Do You Need?</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* The sizing question this page's picks assume an answer to — how many GB a
                 3, 5, 7, 10, 14 or 30-day trip needs — lives on the data-plans page. */}
             <Link href="/guides/esim/japan-esim-data-plans" className={styles.relatedCard}>

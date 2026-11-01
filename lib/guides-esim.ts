@@ -179,6 +179,14 @@ export const esimArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/esim/japan-esim-10-days",
+    badge: "Guide",
+    title: "Japan eSIM 10 Days: How Much Data Do You Need?",
+    desc: "5 GB for maps and messaging, 10 GB for normal use, 15 GB with a tethered laptop — and the plans that cover ten days on validity as well as on data, since 3, 5, 7, 15 and 30 days is what providers actually sell.",
+    group: "trip",
+    city: "other",
+  },
+  {
     href: "/guides/esim/japan-esim-2-weeks",
     badge: "Guide",
     title: "Best Japan eSIM for 2 Weeks (2026): Plans That Last the Trip",
