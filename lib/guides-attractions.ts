@@ -247,6 +247,16 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+    badge: "Ski day trip",
+    title: "Gala Yuzawa Ski Day Trip from Tokyo: 71 Min, ¥8,000 Lifts",
+    desc: "The one Japanese resort with a shinkansen station inside it — 71 minutes from Tokyo Station, slopes open 19 Dec 2026, a ¥8,000 lift day at the window, and the South Area shut for the whole season.",
+    group: "daytrips",
+    // The day starts and ends at Tokyo Station, so it belongs to the Tokyo hub
+    // even though the resort is in Niigata — same call as karuizawa-day-trip-from-tokyo.
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/hiroshima-miyajima-day-trip",
     badge: "Day trip",
     title: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?",
@@ -423,6 +433,15 @@ export const attractionArticles: GuideArticle[] = [
     desc: "A beginner session runs under an hour and is led in English at most listings aimed at visitors. What the session covers, and how Kyoto and Tokyo differ.",
     group: "experiences",
     city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/niseko-ski-tours",
+    badge: "Ski",
+    title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas",
+    desc: "2.5 hours and ¥6,000 from New Chitose by booked coach, four linked areas on one pass, ¥13,500 a day at peak — and the resort school only takes advance bookings for full days between 24 Dec and 28 Feb.",
+    group: "experiences",
+    // Hokkaido sits outside the three city hubs, like the other Hokkaido pages.
+    city: "other",
   },
   {
     href: "/guides/attractions/samurai-ninja-experience-tokyo",

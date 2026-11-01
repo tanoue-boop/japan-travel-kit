@@ -1618,6 +1618,31 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 1 Nov 2026: the snow day this route puts on the Joetsu Shinkansen, in full. */}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 18l6-13 5 8 3-4 4 9z" />
+                  <line x1="2" y1="21" x2="22" y2="21" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Gala Yuzawa Ski Day Trip from Tokyo: 71 Min, ¥8,000 Lifts</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            {/* Added 1 Nov 2026: the resort this page lists as a base in japanWinterStayAreas, as its own guide. */}
+            <Link href="/guides/attractions/niseko-ski-tours" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5L4.9 17.5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Niseko Ski Tours (2027): Transfers, Lessons &amp; the Four Areas</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 1 Nov 2026: the February Hokkaido variant here is a swap inside a national route — this is the week that stays on the island. */}
             <Link href="/guides/attractions/hokkaido-7-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

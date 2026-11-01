@@ -4500,3 +4500,227 @@ export const otaruDayTripPrep: KlookTripPrepItem[] = [
     why: "For the reader who works out mid-page that the canal is better after dark than at lunchtime — and for the first fortnight of February, when the Snow Light Path runs and Sapporo's own rooms are at their tightest.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Ski entry pages, added 1 Nov 2026 for gala-yuzawa-ski-day-trip-from-tokyo
+// and niseko-ski-tours.
+//
+// Published now rather than in December because both pages sell a season that
+// starts on a date the operators have already announced: GALA Yuzawa opens its
+// slopes 19 Dec 2026 and the four Niseko United areas open 28 Nov 2026. A ski
+// page that lands in December lands after the search it answers has begun.
+//
+// Most of what these two pages need is already in this file and is reused
+// rather than re-declared: the 25 Oct 2026 ski block (the GALA/Naeba chartered
+// day, the bare GALA lift ticket, the Niseko Hirafu rental) and the 28 Oct 2026
+// winter block (the Niseko and Rusutsu resort shuttles, the New Chitose shared
+// transfer, the Niseko hotel search inside `japanWinterStayAreas`), plus the
+// JR TOKYO Wide Pass from 30 Oct 2026 and the Nagano/Niigata JR EAST PASS.
+//
+// What is new is the half neither page could borrow. GALA had no lesson listing
+// and no Tokyo-departing coach day — the chartered car in the ski block is a
+// different product at a different price point. Niseko had rental, a shuttle
+// and a hotel search but nothing you actually *do*: no lift-pass-plus-bus day,
+// no lesson, no multi-day tour, no private driver.
+//
+// Verification, all on 1 Nov 2026. Klook answers automated reads of its
+// /activity/ and /destination/ pages with HTTP 403, so every URL below was
+// confirmed live, on sale and in its en-US form through the www.klook.com
+// search index. Deliberately absent, each found only in another storefront on
+// that date: /activity/19078 (GALA Yuzawa 2/4-hour lesson, en-PH only),
+// /activity/181173 (Tokyo-departure Iwappara day, no locale prefix),
+// /activity/54176 (en-MY, and its indexed title names Mt. Fuji rather than
+// Yuzawa), /activity/101880 (Echigo-Yuzawa resort ticket, en-SG only) and
+// /activity/17870 (Rusutsu/Hirafu ski bus with lift ticket, en-PH only).
+// /activity/8768 stays out for the reason the 25 Oct block records — its slug
+// carries a trailing space Klook serves URL-encoded.
+//
+// Bands: every lesson, coach day, multi-day tour, private charter and the
+// Niseko hotel search are 6.5%; the two rail passes and the airport and resort
+// shuttles are 5%; the eSIM is 20%. The bare GALA lift ticket is a ticket, so
+// it stays a secondary link rather than a CTA. No price appears anywhere — for
+// the usual 403 reason, and because on these two pages the figures that matter
+// (¥8,000 at the GALA window, ¥13,500 for a peak Niseko day, ¥6,000 on the
+// airport coach) are the operators' own.
+// ---------------------------------------------------------------------------
+
+/**
+ * GALA Yuzawa's own ski and snowboard coaching, 3 to 6 hours.
+ *
+ * The listing that matters most on a beginner's first day out of Tokyo, and the
+ * reason it is a separate booking: GALA's own price list sells a lift ticket and
+ * a rental set, not instruction. The indexed listing names Chinese- and
+ * English-speaking instructors and states plainly that a "Cable Car Lift Ticket"
+ * must be bought as well by anyone who wants to ski — which is the single thing
+ * readers get wrong about buying a lesson here.
+ */
+export const galaYuzawaSkiLesson: KlookTour = {
+  title: "GALA Yuzawa ski resort 1-day coaching course",
+  desc: "Three to six hours of ski or snowboard coaching at GALA with a Chinese- or English-speaking instructor — a separate booking from the lift ticket, which the listing says you still need",
+  url: klookLink("https://www.klook.com/en-US/activity/137253-gala-yuzawa-ski-resort-1-day-ski-lessons-in-niigata/"),
+};
+
+/**
+ * The coach alternative to the shinkansen: Tokyo to Iwappara and back in a day.
+ *
+ * Not GALA — one valley over in the same Echigo-Yuzawa basin — and that is the
+ * point of including it. It is the listing for a reader who wants a ski day
+ * booked as one line item with the transport inside it, rather than a shinkansen
+ * ticket plus a lift ticket plus a rental reservation assembled separately.
+ */
+export const yuzawaIwapparaSkiDayTourTokyo: KlookTour = {
+  title: "Yuzawa Iwappara ski resort snow-play & ski day trip from Tokyo",
+  desc: "A round-trip coach day from Tokyo to Iwappara in the Echigo-Yuzawa basin, with snow play, skiing, rental and lessons each selectable inside the one booking",
+  url: klookLink("https://www.klook.com/en-US/activity/178055-iwappara-ski-resort-ski-snow-play-day-trip-from-tokyo/"),
+};
+
+/**
+ * The Niseko day for a traveller based in Sapporo: lift pass and coach in one.
+ *
+ * The headline listing on niseko-ski-tours, because it answers the question the
+ * page is named for. Niseko United's own access figures make the airport run
+ * 2 to 3.5 hours each way, so a reader who has already booked a city hotel is
+ * not going to move — and a six-hour window on Grand Hirafu with the bus inside
+ * the price is what that reader actually wants.
+ */
+export const nisekoHirafuLiftPassBusTour: KlookTour = {
+  title: "Niseko Grand Hirafu ski tour from Sapporo (6-hour lift pass + bus)",
+  desc: "Six hours on Grand Hirafu with the round-trip coach from central Sapporo and the lift pass in one booking, picking up at several city stops",
+  url: klookLink("https://www.klook.com/en-US/activity/98450-6-hour-niseko-hirafu-lift-pass-bus-package-hokkaido/"),
+};
+
+/** Two or three days at Niseko out of Sapporo, with the beds inside the booking. */
+export const nisekoSkiHotSpringTourFromSapporo: KlookTour = {
+  title: "Niseko ski & hot spring tour from Sapporo (2D1N / 3D2N)",
+  desc: "The multi-day version for a traveller who decides mid-trip that one Niseko day is not enough — small group, villa accommodation, departing Sapporo",
+  url: klookLink("https://www.klook.com/en-US/activity/96813-sapporo-niseko-skiing-2-3-days-tour-sapporo/"),
+};
+
+/** A private day at Niseko — the one that is not a ski day at all. */
+export const nisekoPrivateOneDayTour: KlookTour = {
+  title: "Niseko private one-day tour",
+  desc: "A private, driver-led day around Niseko for the half of a ski party that is not skiing, and for a trip where Mt Yotei and the villages are the point",
+  url: klookLink("https://www.klook.com/en-US/activity/90084-niseko-private-one-day-tour/"),
+};
+
+/**
+ * An English lesson on Grand Hirafu, 4 or 6 hours.
+ *
+ * On this page a lesson listing is not an upsell, it is the answer to a timing
+ * problem. Hanazono's own ski-school page states that "during peak season, only
+ * full-day lessons are available for advance booking", and Niseko United's peak
+ * period runs 24 Dec 2026 to 28 Feb 2027 — so a half day over Christmas is a
+ * thing you turn up and hope for rather than a thing you book.
+ */
+export const nisekoHirafuEnglishSkiLesson: KlookTour = {
+  title: "Niseko Grand Hirafu English ski & snowboard lesson (4 or 6 hours)",
+  desc: "A private lesson on Grand Hirafu in English or Chinese at either length — the booking to make early, because the resort school limits peak-season advance bookings to full days",
+  url: klookLink("https://www.klook.com/en-US/activity/116117-private-ski-and-snowboard-lessons-4-6-hours-in-niseko/"),
+};
+
+/** Rhythm's own lessons — the same Hirafu shop as the rental listing above. */
+export const rhythmNisekoPrivateSkiLesson: KlookTour = {
+  title: "Rhythm Japan Niseko private ski lesson",
+  desc: "Private instruction from the Hirafu shop that also rents the gear, which makes it one pick-up point rather than two on a first morning",
+  url: klookLink("https://www.klook.com/en-US/activity/129392-rhythm-japan-niseko-private-ski-lesson/"),
+};
+
+/** One lesson booking across three resorts — useful before the beds are fixed. */
+export const nisekoRusutsuKiroroPrivateLesson: KlookTour = {
+  title: "Private ski or snowboard lesson at Niseko, Rusutsu or Kiroro",
+  desc: "The listing to open when the resort is still undecided: the same private lesson sold for any of the three Hokkaido mountains within reach of New Chitose",
+  url: klookLink("https://www.klook.com/en-US/activity/29306-private-ski-snowboard-lesson-niseko-rusutsu-kiroro-resort-hokkaido/"),
+};
+
+/** The non-ski Hokkaido day that passes through Niseko — for a thaw or a rest day. */
+export const noboribetsuToyaNisekoDayTour: KlookTour = {
+  title: "Noboribetsu, Lake Toya & Niseko day trip from Sapporo",
+  desc: "Hell Valley, Lake Toya and the Niseko side in one guided day — the rest-day option on a ski week, and the one that works when the mountain is closed for wind",
+  url: klookLink("https://www.klook.com/en-US/activity/125019-hokkaido-noboribetsu-lake-toya-niseko-one-day-tour/"),
+};
+
+/**
+ * A private car with a driver, Sapporo or the airport to Niseko.
+ *
+ * The 6.5% answer to the same journey the 5% resort shuttle covers, and they are
+ * genuinely different products: the shuttle is a fixed timetable with ski bags
+ * allowed, this is a 7- to 14-seater that goes when your party goes. Worth the
+ * difference only with children, early flights or a group splitting the fare.
+ */
+export const hokkaidoPrivateCarCharterNiseko: KlookTour = {
+  title: "Hokkaido private car charter (Sapporo / New Chitose to Niseko)",
+  desc: "A 7- to 14-seater with a driver between Sapporo or the airport and Niseko, Rusutsu, Lake Toya or Furano, on your own departure time rather than a timetable",
+  url: klookLink("https://www.klook.com/en-US/activity/147120-niseko/"),
+};
+
+/**
+ * What a GALA Yuzawa day books, in the order the day uses them.
+ *
+ * The pass is first and it is the only item here with arithmetic behind it: JR
+ * East's own worked example for the TOKYO Wide Pass is a GALA return plus a
+ * Nikko return at about ¥21,500 against a ¥16,000 pass. Everything after it is
+ * the ski day itself, which GALA sells as three separate purchases — lift
+ * ticket, rental, instruction — and which is the thing readers under-book.
+ */
+export const galaYuzawaDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: jrTokyoWidePass.title,
+    ctaLabel: "Check the TOKYO Wide Pass →",
+    url: jrTokyoWidePass.url,
+    why: "The one booking with real arithmetic behind it. JR East's own published example for this pass is a GALA Yuzawa return plus a Nikko return in reserved seats at about ¥21,500, against ¥16,000 for three consecutive days — so a GALA day plus one more day trip is roughly where it starts paying.",
+  },
+  {
+    label: galaYuzawaLiftTicket.title,
+    ctaLabel: "Check the GALA lift ticket →",
+    url: galaYuzawaLiftTicket.url,
+    why: "GALA's own window price for a gondola-and-lift day is ¥8,000 adult and its own web price ¥7,500, so buying ahead is worth ¥500 wherever you buy it — and a reseller checkout takes a foreign card and reads in English.",
+  },
+  {
+    label: galaYuzawaSkiLesson.title,
+    ctaLabel: "Check GALA lessons →",
+    url: galaYuzawaSkiLesson.url,
+    why: "The purchase a first-timer forgets, because GALA's price list does not bundle it: the lift ticket and the rental set are separate items from instruction, and 35% of the sixteen courses are graded beginner — which is a lot of easy terrain and no one to show you how to use it.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "GALA is a seasonal station on a branch line and the resort states outright that its operating dates and hours change with snow and weather — a closure notice, a shuttle change or a held shinkansen reaches you on your phone and nowhere else.",
+  },
+];
+
+/**
+ * What a Niseko trip books before it flies, in the order the trip needs them.
+ *
+ * Deliberately airport-first. Nothing else on this list fails if you get it
+ * wrong on the day, and Niseko United's own access page prices the gap: a
+ * booked coach is 2.5 hours and a train-plus-bus you can just turn up for is 3.
+ */
+export const nisekoSkiTripPrep: KlookTripPrepItem[] = [
+  {
+    label: nisekoResortShuttleBus.title,
+    ctaLabel: "Check the Niseko shuttle →",
+    url: nisekoResortShuttleBus.url,
+    why: "Niseko United's own figures put the direct coach from New Chitose at 2.5 hours and ¥6,000 against 3 hours and ¥6,200 on the train-and-bus route, and this listing is the one that carries ski equipment plus a piece of luggage per person — which the JR change does not.",
+  },
+  {
+    label: nisekoHirafuEnglishSkiLesson.title,
+    ctaLabel: "Check Niseko lessons →",
+    url: nisekoHirafuEnglishSkiLesson.url,
+    why: "The booking with a published deadline behind it: the resort-run school states that in peak season only full-day lessons can be booked in advance, and peak season is 24 December 2026 to 28 February 2027 — so a half day in that window is turn-up-and-hope.",
+  },
+  {
+    label: nisekoSkiSnowboardRental.title,
+    ctaLabel: "Check Niseko rental →",
+    url: nisekoSkiSnowboardRental.url,
+    why: "Gear reserved before you fly and collected in Hirafu at the foot of the lifts, which is the difference between skiing on your first morning and queueing through it — and it is the same shop as the private-lesson listing, so one pick-up rather than two.",
+  },
+  {
+    label: "Hotels in Niseko",
+    ctaLabel: "Check Niseko hotels on Klook →",
+    url: japanWinterStayAreas[7].url,
+    why: "The booking that fixes everything else. Which of the four areas you sleep in decides whether the lifts are a walk or a shuttle ride, and the Christmas and New Year weeks inside Niseko's 24 December to 28 February peak are the ones that go first.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A Niseko day is decided by weather more than any other ski trip in Japan — upper lifts hold for wind, areas close and reopen through a storm, and those notices reach a phone rather than a noticeboard at the bottom of the hill.",
+  },
+];

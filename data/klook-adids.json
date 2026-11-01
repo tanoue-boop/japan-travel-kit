@@ -6,6 +6,7 @@
   "/guides/attractions/asakusa-kimono-rental": 1528087,
   "/guides/attractions/dotonbori-river-cruise": 1528088,
   "/guides/attractions/fuji-q-highland-tickets": 1528089,
+  "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo": 1528240,
   "/guides/attractions/ghibli-park-tickets": 1528090,
   "/guides/attractions/hakone-day-trip-from-tokyo": 1528091,
   "/guides/attractions/hakone-free-pass": 1528092,
@@ -31,6 +32,7 @@
   "/guides/attractions/mt-fuji-day-trip-tokyo": 1528107,
   "/guides/attractions/nara-day-trip": 1528108,
   "/guides/attractions/nikko-day-trip": 1528109,
+  "/guides/attractions/niseko-ski-tours": 1528241,
   "/guides/attractions/osaka-2-day-itinerary": 1528110,
   "/guides/attractions/osaka-aquarium-kaiyukan-tickets": 1528111,
   "/guides/attractions/osaka-attractions-pass": 1528112,
@@ -154,5 +156,5 @@
   "/zh-tw/guides/esim/best-esim-japan": 1528204,
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
  },
- "spare": [1528240,1528241,1528242,1528243,1528244,1528245,1528246,1528247]
+ "spare": [1528242,1528243,1528244,1528245,1528246,1528247]
 }
