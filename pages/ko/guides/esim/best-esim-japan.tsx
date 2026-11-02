@@ -141,8 +141,8 @@ const SIM_COPY: Record<string, { name: string; summary: string; pros: string[]; 
   "airalo-japan": {
     name: "Airalo 일본 eSIM",
     summary:
-      "이용자 1,000만 명 이상의 세계 최대 eSIM 마켓플레이스. 착륙 전에 설치해 두고 도착하면 바로 활성화 — 줄도, 물리 심도 필요 없습니다.",
-    pros: ["세계 최대 eSIM 마켓플레이스", "착륙 전에 즉시 활성화 준비", "1 GB부터 무제한까지, 3~30일 요금제", "1,000만 명 이상의 여행자가 이용"],
+      "이용자 1,000만 명 이상의 세계 최대 eSIM 마켓플레이스. 출국 전에 설치하고 일본에 도착하면 활성화할 수 있습니다 — 줄을 설 필요도, 물리 심도 필요 없습니다.",
+    pros: ["세계 최대 eSIM 마켓플레이스", "출국 전에 설치해 두고 도착 후 활성화", "1 GB부터 무제한까지, 3~30일 요금제", "1,000만 명 이상의 여행자가 이용"],
     cons: ["데이터 전용(음성 통화·문자 없음)", "eSIM 지원 기기 필요"],
   },
   "holafly-japan": {
@@ -211,7 +211,7 @@ const itineraryPicks = [
       `${planLabel(LONG_TRIP_PLAN)}이면 같은 네 통신사로 하루 1 GB씩 21일을 버팁니다. 매일 아침 새 용량을 받고 싶다면 Sakura Mobile의 하루 3 GB 요금제가 Docomo 5G로 돌아가며 — ${planLabel(SAKURA_DAILY_LONG)} — 하루에 3 GB를 넘겨야 비로소 200 kbps로 제한됩니다.`,
   },
   {
-    trip: "일본 시골, 산간, 섬",
+    trip: "일본 지방, 산간 지역, 섬",
     pick: "Docomo를 쓰는 요금제, 또는 네 통신사를 모두 쓰는 요금제",
     detail: () =>
       "Sakura Mobile의 하루 3 GB 요금제는 Docomo 5G이고, eSIM Go는 자동 선택되는 다중 통신사입니다. Airalo의 일본 페이지는 SoftBank를 주 통신망으로, 그 밖에 이름을 밝히지 않은 통신망 두 곳을 표시하며(2026년 11월 1일 확인), 클룩 상품은 1일 단위 요금제가 SoftBank 5G, 총량형 요금제가 docomo 4G LTE입니다.",
@@ -357,7 +357,7 @@ const installSteps = [
   },
   {
     title: "도착하면 활성화합니다",
-    desc: "비행기가 착륙할 때 일본 eSIM 프로필로 전환하세요. 수하물 수취대에 가기 전에 4G 신호가 잡힙니다. 공항에서 심카드 자판기를 찾을 필요가 없습니다.",
+    desc: "일본에 도착한 뒤 안내에 따라 일본 eSIM을 활성화하세요. 설정이 완료되고 통신망에 연결되면 수하물을 찾기 전부터 4G 모바일 데이터를 사용할 수 있습니다. 공항에서 심카드 자판기를 찾을 필요가 없습니다.",
   },
 ];
 
@@ -424,11 +424,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "일본에서 커버리지가 가장 좋은 통신망은 어디인가요?",
-    a: "Docomo가 시골 커버리지가 가장 넓습니다. 그래서 일정이 주요 도시를 벗어난다면 의식적으로 고를 가치가 있고, eSIM Go와 Sakura Mobile이 모두 Docomo를 씁니다. SoftBank와 KDDI(Holafly가 사용하며, SoftBank는 Airalo 일본 페이지의 주 통신망이기도 함)는 도시와 관광 동선에서 훌륭합니다. 표준적인 도쿄–교토–오사카–히로시마 경로라면 네 곳 모두 잘 터져서 차이를 느끼지 못할 것입니다.",
+    a: "Docomo가 지방 커버리지가 가장 넓습니다. 그래서 일정이 주요 도시를 벗어난다면 의식적으로 고를 가치가 있고, eSIM Go와 Sakura Mobile이 모두 Docomo를 씁니다. SoftBank와 KDDI(Holafly가 사용하며, SoftBank는 Airalo 일본 페이지의 주 통신망이기도 함)는 도시와 관광 동선에서 훌륭합니다. 표준적인 도쿄–교토–오사카–히로시마 경로라면 네 곳 모두 잘 터져서 차이를 느끼지 못할 것입니다.",
   },
   {
     q: "일본 심이나 eSIM은 언제 사는 게 좋나요?",
-    a: "eSIM은 출발 전에 사고 비행기가 착륙하는 순간 활성화하면 됩니다. 기다릴 이유가 없고 매진되지도 않습니다. 물리 심은 다릅니다. 공항 카운터와 자판기는 성수기에 인기 상품이 실제로 동나고, Sakura Mobile 심을 공항이나 호텔 수령으로 미리 주문하면 도착해서 사는 것보다 저렴하고 운에 맡기는 것보다 안전합니다.",
+    a: "eSIM은 출발 전에 사 두고 일본에 도착한 뒤 활성화하면 됩니다. 기다릴 이유가 없고 매진되지도 않습니다. 물리 심은 다릅니다. 공항 카운터와 자판기는 성수기에 인기 상품이 실제로 동나고, Sakura Mobile 심을 공항이나 호텔 수령으로 미리 주문하면 도착해서 사는 것보다 저렴하고 현지 재고를 걱정하지 않아도 됩니다.",
   },
   {
     q: "eSIM으로 일본 전화번호를 받을 수 있나요?",
@@ -502,7 +502,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>가격 확인 {pricesCheckedAt}｜{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            일본 이심 추천(2026):<br />가격과 통신망으로 비교
+            일본 eSIM(이심) 추천(2026):<br />가격과 통신망으로 비교
           </h1>
           <p className={styles.heroSubtitle}>
             주요 일본 eSIM을 한 페이지에 모아, 여행 유형별 추천과 각 요금제가 실제로 어느 통신망을 쓰는지까지
@@ -647,9 +647,9 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>짧은 답</span>
           <h2 className={styles.sectionTitle}>일본 eSIM, 어디가 가장 좋을까?</h2>
           <p className={styles.bodyText}>
-            하나로 정해진 정답은 없습니다. 네 사업자가 같은 여행을 두고 경쟁하지 않기 때문입니다. eSIM Go는 GB당
+            하나로 정해진 정답은 없습니다. 여행 기간과 데이터 사용량에 따라 적합한 통신사가 다르기 때문입니다. eSIM Go는 GB당
             가장 싸고 일본 통신사 네 곳을 모두 쓰는 유일한 곳이고, Airalo는 테더링 제한 없는 무제한을 원할 때
-            고를 곳이며, Sakura Mobile은 일본 전화번호를 얻는 유일한 방법입니다. 내 여행에 맞는 행을 찾으세요.
+            고를 곳이며, Sakura Mobile은 일본 전화번호를 얻는 유일한 방법입니다. 여행 일정에 맞는 요금제를 선택하세요.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -758,7 +758,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <h2 className={styles.sectionTitle}>일본 통신망은 어디가 좋을까: Docomo, au, SoftBank?</h2>
           <p className={styles.bodyText}>
             도쿄–교토–오사카–히로시마 경로에서는 실질적인 차이가 없습니다 — 세 곳 모두 도시와 신칸센 구간을
-            커버합니다. 차이가 나는 곳은 그 바깥으로, 일본 현지 사업자들이 시골용 요금제를 짓는 기반이 Docomo
+            커버합니다. 차이가 나는 곳은 그 바깥으로, 일본 현지 사업자들이 지방용 요금제를 만드는 기반이 Docomo
             망입니다. 그리고 확인한 페이지 어디에도 커버리지 비율을 공개한 사업자가 없으므로, 정직하게 고르는
             방법은 홍보 문구가 아니라 요금제가 실제로 쓰는 망을 보는 것입니다. 결제 페이지의 브랜드가 곧 통신망은
             아닙니다.
@@ -911,7 +911,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             {planLabel(cheapestPlan("esimgo"))}로, 대부분의 통신사가 받는 로밍 하루 요금보다 쌉니다.
           </p>
           <p className={styles.bodyText}>
-            가격보다 중요한 확인이 두 가지 있습니다. 기기가 eSIM을 지원하고 통신사 잠금이 풀려 있어야 하며, 요금제가
+            가격을 비교하기 전에 두 가지를 먼저 확인해야 합니다. 기기가 eSIM을 지원하고 통신사 잠금이 풀려 있어야 하며, 요금제가
             여행 기간이 아니라 여행 방식에 맞아야 합니다 — 5 GB짜리 30일 요금제는 영상 통화가 잦은 2주 여행에는
             잘못된 선택입니다.{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" className={tools.inlineLink}>
@@ -1029,7 +1029,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             <div className={styles.pickCardHeader}>
               <div className={styles.pickRank}>
                 <div className={styles.pickMeta}>
-                  <span className={`${styles.pickBadge} ${styles.pickBadgeBlue}`}>이것도 있어요</span>
+                  <span className={`${styles.pickBadge} ${styles.pickBadgeBlue}`}>추가 선택지</span>
                   <span className={styles.pickName}>{koKlookEsim.label}</span>
                 </div>
               </div>
@@ -1037,7 +1037,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             <div className={styles.pickCardBody}>
               <p className={styles.pickSummary}>
                 클룩도 자체 일본 eSIM을 판매합니다. 이미 클룩에서 티켓이나 교통편을 예약하고 있다면 살펴볼 만합니다
-                — 결제 한 번, 계정 하나. 순위에는 넣지 않았습니다: 클룩 상품 페이지가 자동 가격 조회를 막아, 순위를
+                — 하나의 계정에서 한 번에 결제할 수 있습니다. 순위에는 넣지 않았습니다: 클룩 상품 페이지가 자동 가격 조회를 막아, 순위를
                 매길 확인된 가격이 없기 때문입니다. 현재 요금제는 상품 페이지에서 확인하세요.
               </p>
               <div className={styles.pickTarget}>

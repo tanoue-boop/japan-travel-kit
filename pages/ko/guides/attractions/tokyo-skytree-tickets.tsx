@@ -110,7 +110,7 @@ const whoFor = [
   },
   {
     title: "플로어 450을 추가할 경우",
-    desc: "높이 자체가 여행의 목적인 경우입니다. 플로어 450은 덴보 갤러리아로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리 스카이워크입니다. 온라인 콤보는 ¥3,000부터이고, 당일 추가하면 플로어 350 티켓에 ¥1,400이 더 붙습니다.",
+    desc: "높이 자체가 여행의 목적인 경우입니다. 플로어 450은 덴보 회랑로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리 스카이워크입니다. 온라인 콤보는 ¥3,000부터이고, 당일 추가하면 플로어 350 티켓에 ¥1,400이 더 붙습니다.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 20l8-16 8 16" />
@@ -190,7 +190,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "플로어 350과 플로어 450의 차이는 무엇인가요?",
-    a: "플로어 350은 덴보 데크로, 3층 구조의 메인 전망층이고 모든 티켓에 포함됩니다. 플로어 450은 덴보 갤러리아로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리벽 스카이워크입니다. 플로어 450만 따로 방문할 수는 없습니다. 먼저 플로어 350 티켓이 있어야 하고, 온라인 콤보로 묶거나 현장 발권기에서 추가(성인 ¥1,400)해야 합니다.",
+    a: "플로어 350은 덴보 데크로, 3층 구조의 메인 전망층이고 모든 티켓에 포함됩니다. 플로어 450은 덴보 회랑로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리벽 스카이워크입니다. 플로어 450만 따로 방문할 수는 없습니다. 먼저 플로어 350 티켓이 있어야 하고, 온라인 콤보로 묶거나 현장 발권기에서 추가(성인 ¥1,400)해야 합니다.",
   },
   {
     q: "플로어 450 티켓을 온라인으로 살 수 있나요?",
@@ -202,7 +202,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "도쿄 스카이트리와 시부야 스카이 중 어디가 좋나요?",
-    a: "서로 다른 질문에 답하는 곳입니다. 스카이트리는 높이와 시야입니다. 플로어 350과 450은 도쿄에서 가장 높은 전망대이고, 간토 평야 전체가 보이며 맑은 날에는 후지산도 들어옵니다. 시부야 스카이는 사진입니다. 스크램블 교차로 바로 위 약 229m의 야외 루프톱으로, 일몰 때가 가장 좋고 높이보다 분위기입니다. 한 곳만 고른다면 파노라마는 스카이트리, 누구나 알아보는 그 한 장은 시부야 스카이입니다.",
+    a: "두 곳은 매력이 서로 다릅니다. 스카이트리는 높은 전망대와 먼 곳까지 보이는 시야가 강점입니다. 플로어 350과 450은 도쿄에서 가장 높은 전망대이고, 간토 평야 전체가 보이며 맑은 날에는 후지산도 들어옵니다. 시부야 스카이는 사진 촬영이 매력입니다. 스크램블 교차로를 내려다보는 약 229m 높이의 야외 루프톱으로, 일몰 때가 가장 좋고 높이보다 분위기를 즐기는 곳입니다. 한 곳만 고른다면 탁 트인 전경은 스카이트리, 누구나 알아보는 그 한 장의 사진은 시부야 스카이가 좋습니다.",
   },
   {
     q: "도쿄 스카이트리에서 후지산이 보이나요?",
@@ -250,8 +250,8 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             도쿄 스카이트리 티켓(2026):<br />요금, 플로어 350 vs 450, 예약 방법
           </h1>
           <p className={styles.heroSubtitle}>
-            도쿄에서 가장 높은 전망대이자, 당일 구매에 공식적으로 정해진 추가 요금이 붙는 명소입니다. 공식
-            요금, 플로어 450이 실제로 더해 주는 것, 그리고 해외에서 예약하는 방법을 정리했습니다.
+            도쿄에서 가장 높은 전망대로, 당일 현장에서 티켓을 구매하면 추가 요금이 발생합니다. 공식
+            요금, 플로어 450에서 추가로 즐길 수 있는 것, 그리고 해외에서 예약하는 방법을 정리했습니다.
           </p>
           <div className={styles.heroBadges}>
             {[`${updatedLabel} 업데이트`, "공식 요금", "플로어 350 vs 플로어 450"].map((t) => (
@@ -306,11 +306,11 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>개요</span>
-          <h2 className={styles.sectionTitle}>무엇을 사는 것인가</h2>
+          <h2 className={styles.sectionTitle}>어떤 입장권을 선택해야 할까?</h2>
           <p className={styles.bodyText}>
-            도쿄 스카이트리는 서로 다른 두 층의 입장권을 판매합니다. <strong>플로어 350</strong>은 덴보
-            데크로, 3층 구조의 전망층이며 모든 티켓에 포함됩니다. <strong>플로어 450</strong>은 덴보
-            갤러리아로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리벽
+            도쿄 스카이트리는 전망대 높이에 따라 두 가지 입장권을 판매합니다. <strong>플로어 350</strong>은 덴보
+            데크(天望デッキ)이며, 3층 구조의 전망층이며 모든 티켓에 포함됩니다. <strong>플로어 450</strong>은 덴보
+            회랑(天望回廊)으로, 타워에서 올라갈 수 있는 가장 높은 지점까지 나선형으로 비스듬히 올라가는 유리벽
             스카이워크이며, 단독으로는 방문할 수 없습니다.
           </p>
           <p className={styles.bodyText}>
@@ -376,7 +376,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>비교</span>
           <h2 className={styles.sectionTitle}>스카이트리 vs 도쿄의 다른 전망대</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            스카이트리는 높이를 고르는 선택입니다. 정말 원하는 것이 스크램블 교차로 사진이라면{" "}
+            높은 곳에서 도쿄 전경을 감상하고 싶다면 스카이트리가 좋은 선택입니다. 정말 원하는 것이 스크램블 교차로 사진이라면{" "}
             <Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이</Link>가 더 나은 선택이고,
             돈을 전혀 쓰지 않고 도시 파노라마를 보고 싶다면 신주쿠의 도쿄도청 전망대는 무료입니다.
           </p>
@@ -458,10 +458,10 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
 
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>창구에서 더 내기 전에 예약하세요</h2>
+            <h2 className={styles.ctaBannerTitle}>현장 구매보다 저렴한 온라인 사전 예약을 이용하세요</h2>
             <p className={styles.ctaBannerDesc}>
               당일 티켓에는 1인당 ¥500의 서비스 수수료가 붙습니다. 온라인으로 예약한 날짜 지정 티켓은
-              수수료와 줄을 모두 건너뛰고, 클룩은 해외 카드로 한국어 화면에서 결제할 수 있습니다.
+              추가 요금 없이 미리 구매할 수 있고 창구 줄도 설 필요가 없으며, 클룩은 해외 카드로 한국어 화면에서 결제할 수 있습니다.
             </p>
             <div className={styles.pickCtaRow}>
               <KlookLink href={TICKET_URL} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>

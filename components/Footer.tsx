@@ -233,7 +233,7 @@ const COPY: Record<Locale, Copy> = {
     updatedLabel: (d) => `更新于 ${d.getUTCFullYear()}年${d.getUTCMonth() + 1}月`,
   },
   ko: {
-    desc: "일본을 찾는 외국인 여행자를 위한 실용 정보. 출발 전에 미리 정리해 두는 쪽입니다.",
+    desc: "일본을 찾는 외국인 여행자를 위한 실용 정보. 여행 출발 전에 필요한 정보를 미리 확인해 보세요.",
     rights: "All rights reserved.",
     affiliate: "이 사이트에는 제휴 링크가 포함됩니다. 링크로 예약하면 저희가 수수료를 받을 수 있으며, 고객님이 지불하는 금액은 달라지지 않습니다.",
     homeHref: LOCALE_HOME.ko,
@@ -242,7 +242,7 @@ const COPY: Record<Locale, Copy> = {
     updatedLabel: (d) => `${monthLabel(isoMonth(d), "ko")} 업데이트`,
   },
   th: {
-    desc: "ข้อมูลที่ใช้ได้จริงสำหรับนักท่องเที่ยวต่างชาติที่ไปญี่ปุ่น เตรียมให้พร้อมก่อนเครื่องลง",
+    desc: "ข้อมูลเที่ยวญี่ปุ่นที่เป็นประโยชน์สำหรับนักท่องเที่ยวต่างชาติ เพื่อช่วยให้คุณเตรียมตัวก่อนออกเดินทาง",
     rights: "All rights reserved.",
     affiliate: "เว็บไซต์นี้มีลิงก์พันธมิตร หากคุณจองผ่านลิงก์ เราอาจได้รับค่าตอบแทน โดยราคาที่คุณจ่ายไม่เพิ่มขึ้น",
     homeHref: LOCALE_HOME.th,

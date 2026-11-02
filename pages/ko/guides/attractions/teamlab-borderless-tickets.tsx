@@ -54,9 +54,9 @@ const priceRows = [
     ticket: "성인(만 18세 이상)",
     price: ADULT,
     varies: "예 — 날짜와 입장 시간대에 따라",
-    note: "¥3,400은 가격이 아니라 하한선입니다. 결제 전에 본인 날짜의 금액을 확인하세요",
+    note: "¥3,400은 최저 요금이며, 실제 요금은 방문 날짜에 따라 달라집니다. 결제 전에 본인 날짜의 금액을 확인하세요",
   },
-  { ticket: "만 13~17세", price: "¥2,800", varies: "아니요 — 고정", note: "나이보다 들어 보인다면 신분증을 챙기세요" },
+  { ticket: "만 13~17세", price: "¥2,800", varies: "아니요 — 고정", note: "연령 확인이 필요할 수 있으니 신분증을 지참하세요" },
   { ticket: "만 4~12세", price: CHILD, varies: "아니요 — 고정", note: "어느 날짜를 골라도 같습니다" },
   { ticket: "만 3세 이하", price: "무료", varies: "아니요 — 무료", note: "티켓이 필요하지 않습니다" },
   {
@@ -189,7 +189,7 @@ const whoFor = [
   },
   {
     title: "클룩을 고른다면",
-    desc: "자국 통화와 읽을 수 있는 화면으로 결제하고, 일본 외 발행 카드로 지불하며, 전자 티켓을 다른 예약과 같은 앱에 두고 싶은 경우입니다. 클룩은 팀랩의 공식 티켓 판매 파트너이므로 같은 입장권이고, 창구만 다릅니다.",
+    desc: "자국 통화로 결제할 수 있는 이해하기 쉬운 예약 화면을 원하고, 일본 외 발급 카드로 지불하며, 전자 티켓을 다른 예약과 같은 앱에 두고 싶은 경우입니다. 클룩은 팀랩의 공식 티켓 판매 파트너이므로 같은 입장권이고, 창구만 다릅니다.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="20" height="12" rx="2" />
@@ -213,7 +213,7 @@ const whoFor = [
 const steps = [
   {
     title: "날짜를 먼저 정하고 그 날짜의 가격을 봅니다",
-    desc: "보더리스의 성인 티켓과 장애인 티켓은 변동 요금제입니다. 보이는 금액은 고른 날짜와 입장 시간대에 달려 있습니다. 평일 오전이 보통 가장 저렴하고 가장 한가합니다.",
+    desc: "팀랩 보더리스의 성인 티켓과 장애인 티켓은 변동 요금제입니다. 보이는 금액은 고른 날짜와 입장 시간대에 달려 있습니다. 평일 오전이 보통 가장 저렴하고 가장 한가합니다.",
   },
   {
     title: "입장 시간을 고르거나 Flexible Pass를 고릅니다",
@@ -221,7 +221,7 @@ const steps = [
   },
   {
     title: "주말과 저녁 회차는 2~3주 전에 예약합니다",
-    desc: "보더리스의 연간 관람객은 100만 명을 크게 넘고, 인기 시간대가 가장 먼저 사라집니다. 미리 예약하느냐에 따라 원하는 시간을 고르느냐, 남은 시간을 받아들이느냐가 갈립니다.",
+    desc: "팀랩 보더리스의 연간 관람객은 100만 명을 크게 넘고, 인기 시간대가 가장 먼저 사라집니다. 미리 예약하느냐에 따라 원하는 시간을 고르느냐, 남은 시간을 받아들이느냐가 갈립니다.",
   },
   {
     title: "약 두 시간을 비우고 짐은 줄입니다",
@@ -256,7 +256,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "팀랩 보더리스는 얼마나 걸리나요?",
-    a: "약 두 시간을 비워 두세요. 보더리스에는 지도도, 정해진 경로도 없습니다. 50점이 넘는 작품이 미로 같은 공간에 퍼져 있고 작품이 방 사이를 넘나들며 하루 동안 변하므로, 얼마나 머무는지는 정말로 본인에게 달려 있습니다. 두 시간이면 주요 전시실을 서두르지 않고 볼 수 있고, 미술과 사진을 좋아하는 사람은 세 시간 가까이 머무는 일도 흔합니다.",
+    a: "약 두 시간을 비워 두세요. 팀랩 보더리스에는 지도도, 정해진 경로도 없습니다. 50점이 넘는 작품이 미로 같은 공간에 퍼져 있고 작품이 방 사이를 넘나들며 하루 동안 변하므로, 얼마나 머무는지는 정말로 본인에게 달려 있습니다. 두 시간이면 주요 전시실을 서두르지 않고 볼 수 있고, 미술과 사진을 좋아하는 사람은 세 시간 가까이 머무는 일도 흔합니다.",
   },
   {
     q: "팀랩 보더리스는 어디에 있고 어떻게 가나요?",
@@ -264,11 +264,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "팀랩 보더리스는 공식 사이트와 클룩 중 어디서 사야 하나요?",
-    a: "둘 다 정식 경로입니다. 클룩은 팀랩의 공식 티켓 판매 파트너이므로 어느 쪽에서 사도 같은 입장권입니다. 공식 사이트는 기본 요금을 주고 날짜를 최대 3회까지 바꿀 수 있습니다. 클룩은 자국 통화로 결제하는 읽기 쉬운 화면, 해외 발급 카드의 안정적인 승인, 다른 예약과 함께 두는 전자 티켓을 줍니다. 날짜 유연성이 가장 중요하면 공식 사이트, 막힘 없는 결제가 가장 중요하면 클룩입니다.",
+    a: "둘 다 정식 경로입니다. 클룩은 팀랩의 공식 티켓 판매 파트너이므로 어느 쪽에서 사도 같은 입장권입니다. 공식 사이트는 기본 요금을 주고 날짜를 최대 3회까지 바꿀 수 있습니다. 클룩은 자국 통화로 결제할 수 있는 이해하기 쉬운 예약 화면, 해외 발급 카드의 안정적인 승인, 다른 예약과 함께 두는 전자 티켓을 줍니다. 날짜 유연성이 가장 중요하면 공식 사이트, 해외 카드로 간편하게 결제하고 싶다면 클룩이 좋습니다.",
   },
   {
     q: "팀랩 보더리스와 팀랩 플래닛 중 어느 쪽을 예약할까요?",
-    a: "같은 곳의 두 분점이 아니라 도쿄의 다른 구역에 있는 서로 다른 미술관입니다. 아자부다이힐스의 보더리스는 50점이 넘는 작품으로 이루어진 미로를 헤매는 곳으로, 시간과 호기심을 들일수록 보답합니다. 도요스의 플래닛은 맨발로 무릎 깊이의 물속을 걷는 곳이고 아이와 함께라면 더 쉬운 선택입니다. 한 곳만 갈 시간이 있다면 미술과 사진은 보더리스, 아이와 함께하는 몸으로 느끼는 체험은 플래닛입니다.",
+    a: "같은 시설의 분관이 아니라 도쿄의 다른 구역에 있는 서로 다른 미술관입니다. 아자부다이힐스의 팀랩 보더리스는 50점이 넘는 작품으로 이루어진 미로를 헤매는 곳으로, 시간을 들여 천천히 둘러볼수록 더 많은 작품을 발견할 수 있습니다. 도요스의 플래닛은 맨발로 무릎 깊이의 물속을 걷는 곳이고 아이와 함께라면 더 쉬운 선택입니다. 한 곳만 갈 시간이 있다면 미술과 사진은 팀랩 보더리스, 아이와 함께하는 몸으로 느끼는 체험은 플래닛입니다.",
   },
 ];
 
@@ -308,7 +308,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             팀랩 보더리스 티켓(2026):<br />가격, 예약 방법, 입장 시간대
           </h1>
           <p className={styles.heroSubtitle}>
-            아자부다이힐스의 팀랩 보더리스 티켓이 실제로 얼마인지, 시간 지정 입장은 어떻게 돌아가는지,
+            아자부다이힐스의 팀랩 보더리스(teamLab Borderless) 티켓이 실제로 얼마인지, 지정 시간 입장권은 어떻게 이용하는지,
             그리고 공식 사이트와 클룩 중 어디서 살지.
           </p>
           <div className={styles.heroBadges}>
@@ -326,10 +326,10 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
 
         <p className={styles.bodyText}>
           아자부다이힐스의 <strong>팀랩 보더리스</strong> 성인 티켓은 팀랩 공식 사이트에서{" "}
-          <strong>¥3,400부터</strong>입니다. 성인 요금은 변동 요금제라 ¥3,400은 본인 날짜의 가격이
-          아니라 하한선입니다. 입장은 <strong>날짜와 시간 지정</strong>입니다. 표준 Entrance Pass는 입장
-          시간대를 정하고, Flexible Pass는 날짜만 정합니다. 지도도 없고 서둘러 지나갈 정해진 경로도 없는
-          미술관이니 <strong>약 두 시간</strong>을 비워 두세요. 이 페이지의 가격, 운영 시간, 휴관일은 팀랩
+          <strong>¥3,400부터</strong>입니다. 성인 입장권은 날짜와 시간대에 따라 가격이 달라지므로
+          ¥3,400은 최저 요금이며, 실제 요금은 방문 날짜에 따라 달라집니다. 입장은 <strong>날짜와 시간 지정</strong>입니다. 표준 Entrance Pass는 입장
+          시간대를 정하고, Flexible Pass는 날짜만 정합니다. 정해진 관람 동선이 없는
+          미술관이므로 <strong>약 두 시간</strong>을 비워 두세요. 이 페이지의 가격, 운영 시간, 휴관일은 팀랩
           공식 사이트(teamlab.art)에서 {CHECKED}에 읽은 것입니다. 성인 요금은 달력에 따라 움직이므로 결제
           전에 본인 날짜의 금액을 확인하세요.
         </p>
@@ -363,7 +363,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
               자리가 있어야 합니다. 운영 시간은 대략 08:30–21:00이고 마지막 입장은 폐관 1시간 전입니다.
               약 두 시간을 비워 두고, 가미야초역(히비야선, 도보 2분)이나 롯폰기잇초메역(난보쿠선, 도보
               6분)으로 가세요. 두 역 모두 지하로 연결됩니다. 기본 요금과 최대 3회 무료 날짜 변경을 원하면
-              공식 사이트, 해외 카드가 통하는 자국 통화・읽기 쉬운 결제를 원하면 클룩입니다.
+              공식 사이트, 해외 카드로 자국 통화 결제를 할 수 있는 이해하기 쉬운 예약 화면을 원하면 클룩입니다.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -372,7 +372,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
               <GygCompareButton slug={GYG_SLUG} listing={gygTeamlabBorderless} />
             </div>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-              이 페이지의 가격, 운영 시간, 휴관일은 팀랩 공식 사이트에서 {CHECKED}에 읽었습니다. 보더리스는
+              이 페이지의 가격, 운영 시간, 휴관일은 팀랩 공식 사이트에서 {CHECKED}에 읽었습니다. 팀랩 보더리스는
               변동 요금제이고 달력도 바뀌므로, 결제 시점에 본인 날짜로 두 가지를 모두 확인하세요.
             </p>
           </div>
@@ -383,7 +383,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>2026년 팀랩 보더리스 티켓 가격은 얼마인가요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             성인은 <strong>¥3,400부터</strong>, 만 13~17세는 ¥2,800, 만 4~12세는 ¥1,500이고 만 4세 미만은
-            무료입니다. 움직이는 것은 성인과 장애인 요금뿐입니다. 보더리스는 이 두 가지를 날짜와 입장
+            무료입니다. 날짜에 따라 달라지는 요금은 성인과 장애인 요금뿐입니다. 팀랩 보더리스는 이 두 가지를 날짜와 입장
             시간대별로 매기기 때문에 공식 금액에 &ldquo;부터&rdquo;가 붙고, 여행 중 가장 싼 티켓은 판매처가
             아니라 달력의 문제가 됩니다.
           </p>
@@ -416,8 +416,8 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>성인 요금이 얼마나 움직이는지는 공표되지 않습니다.</strong> 팀랩이 내놓는 것은 가격표가
-            아니라 시작 금액과 달력이므로, 정직한 가이드라면 보더리스의 토요일 저녁이 얼마인지 말할 수
-            없습니다. 그 범위를 알려 주는 페이지가 있다면 지어낸 것입니다. ¥3,400을 하한선으로 보고, 여행에
+            아니라 시작 금액과 달력이므로, 정직한 가이드라면 팀랩 보더리스의 토요일 저녁이 얼마인지 말할 수
+            없습니다. 그 범위를 알려 주는 페이지가 있다면 지어낸 것입니다. ¥3,400을 최저 요금으로 보고, 여행에
             넣을 수 있는 모든 날짜로 공식 달력을 열어 금액을 비교한 뒤 결제하세요. 여기서 쓸 수 있는 지렛대는
             방문을 하루 옮기는 것이지 더 싼 판매처를 찾는 것이 아닙니다. 가격을 정하는 것은 날짜와
             시간대이기 때문입니다.
@@ -428,7 +428,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>예약 전에</span>
           <h2 className={styles.sectionTitle}>운영 시간, 입장 시간대, 휴관일, 소요 시간</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            보더리스는 오래 열지만 달력이 자주 바뀌고, 이 점이 가격보다 더 자주 사람들의 발목을 잡습니다.
+            팀랩 보더리스는 오래 열지만 달력이 자주 바뀌고, 이 점이 가격보다 더 자주 사람들의 발목을 잡습니다.
             비정기적인 화요일에 휴관하고 17:00에 닫는 날도 있습니다. 안에서 약 두 시간을 보내게 되니 바로
             뒤에 빠듯한 일정을 잡지 마세요.
           </p>
@@ -466,7 +466,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>무엇을 사는가</span>
           <h2 className={styles.sectionTitle}>팀랩 보더리스는 정확히 무엇인가</h2>
           <p className={styles.bodyText}>
-            보더리스는 지도가 없는 미술관입니다. 50점이 넘는 디지털 작품이 서로 이어진 방들에 퍼져 있고,
+            팀랩 보더리스는 지도가 없는 미술관입니다. 50점이 넘는 디지털 작품이 서로 이어진 방들에 퍼져 있고,
             작품 자체가 움직입니다. 한 공간에서 다른 공간으로 옮겨 가고, 방 안의 사람에게 반응하며, 하루
             동안 변합니다. 권장 경로도, 번호가 붙은 지점도 없어서 같은 티켓을 산 두 사람의 관람이 실제로
             다를 수 있습니다.
@@ -474,7 +474,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             바로 그 설계 때문에 이 티켓은 계획을 세울 가치가 있습니다. 한 시간을 서두르면 유명한 전시실만
             보고 끝나고, 두 시간쯤 되어야 돌아다니고 되돌아가며 기다려야 나타나는 작품까지 찾을 수 있습니다.
-            그래서 보더리스는 도쿄의 두 팀랩 미술관 중 더 어른스럽고 사진에 더 맞는 쪽입니다. 도요스에서
+            그래서 팀랩 보더리스는 도쿄의 두 팀랩 미술관 중 더 어른스럽고 사진 촬영에 더 잘 맞는 곳입니다. 도요스에서
             맨발로 물속을 걷는 쪽, 그리고 플래닛 쪽에서 본 선택은{" "}
             <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 티켓 가이드</Link>
             를 보세요.
@@ -492,9 +492,9 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <ul className={styles.bodyList}>
             <li><strong>시간당 비용은 높습니다.</strong> 약 두 시간에 ¥3,400은 ¥1,500인 도쿄타워 메인 데크의 두 배가 넘고 시부야 스카이의 낮 시간 온라인 티켓 {PRICES.shibuyaSky.adult.split(" / ")[0]}보다도 비쌉니다. 두 곳 모두 오래 머물 수 있는 곳입니다. 금액 비교는 <Link href="/guides/attractions/japan-attraction-ticket-prices">일본 관광지 티켓 가격표(영어)</Link>에서 볼 수 있습니다. 길이가 아니라 다른 곳에서 볼 수 없는 것에 돈을 내는 셈입니다.</li>
             <li><strong>지도 없는 설계는 가치이자 위험입니다.</strong> 경로도 번호도 없는 50점 이상의 작품이란, 서두른 한 시간으로는 유명한 전시실만 보고 끝난다는 뜻입니다. 한 시간밖에 없다면 이 티켓은 줄어든 좋은 경험이 아니라 손해 보는 경험입니다.</li>
-            <li><strong>두 곳 중 몸을 덜 쓰는 쪽입니다.</strong> 신발을 신은 채이고, 물을 건널 일도 갈아입을 옷을 챙길 일도 없습니다. 플래닛 방식이 체험이 아니라 고생처럼 들린다면, 이곳은 그것을 뺀 같은 팀랩입니다.</li>
+            <li><strong>두 곳 중 몸을 덜 쓰는 곳입니다.</strong> 신발을 신은 채이고, 물을 건널 일도 갈아입을 옷을 챙길 일도 없습니다. 플래닛 방식이 체험이 아니라 고생처럼 들린다면, 이곳은 그것을 뺀 같은 팀랩입니다.</li>
             <li><strong>날씨에 강하고 도심에 있습니다.</strong> 아자부다이힐스는 가미야초역에서 지하로 2분이라, 비 오는 오후에도 이동에서 잃는 것이 없습니다. 도쿄의 비 오는 날 계획 대부분은 그렇지 못합니다.</li>
-            <li><strong>실수해도 만회할 수 있습니다.</strong> 플래닛과 달리 보더리스는 남은 자리가 있으면 현장에서도 팔기 때문에, 예약을 놓쳐도 ¥200 추가 요금과 덜 좋은 시간대로 끝나지 오후 전체를 잃지는 않습니다.</li>
+            <li><strong>실수해도 만회할 수 있습니다.</strong> 플래닛과 달리 팀랩 보더리스는 남은 자리가 있으면 현장에서도 팔기 때문에, 예약을 놓쳐도 ¥200 추가 요금과 덜 좋은 시간대로 끝나지 오후 전체를 잃지는 않습니다.</li>
           </ul>
           <p className={styles.bodyText}>
             도쿄 일정이 이미 빠듯하거나, 한 시간밖에 낼 수 없거나, 어린아이와 함께라서 팀랩을 한 곳만 갈 수
@@ -507,9 +507,9 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>잔여석</span>
           <h2 className={styles.sectionTitle}>팀랩 보더리스 티켓은 매진되나요?</h2>
           <p className={styles.bodyText}>
-            개별 시간대는 매진되고, 인기 있는 시간대가 먼저 사라집니다. 보더리스의 연간 관람객은 100만 명을
+            개별 시간대는 매진되고, 인기 있는 시간대가 먼저 사라집니다. 팀랩 보더리스의 연간 관람객은 100만 명을
             크게 넘고, 주말과 저녁 회차가 가장 먼저 없어집니다. 다만 완전히 막히지는 않습니다. 남은 자리가
-            있는 동안은 미술관에서도 티켓을 팔기 때문에, 보더리스는 도쿄의 다른 시간 지정 명소 대부분보다
+            있는 동안은 미술관에서도 티켓을 팔기 때문에, 팀랩 보더리스는 도쿄의 다른 시간 지정 명소 대부분보다
             관대합니다. 대가는 치러야 하지만요.
           </p>
           <ul className={styles.bodyList}>
@@ -541,7 +541,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>공식 사이트 vs 클룩 vs GetYourGuide vs 현장</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             클룩은 팀랩의 공식 티켓 판매 파트너이므로 어느 창구를 거쳐도 입장권은 같습니다. 다른 것은 결제
-            과정, 유연성, 그리고 당일까지 미뤘을 때의 가격입니다. GetYourGuide에서도 보더리스를 팔지만 아래
+            과정, 유연성, 그리고 당일까지 미뤘을 때의 가격입니다. GetYourGuide에서도 팀랩 보더리스를 팔지만 아래
             열은 일부러 비워 두었습니다. 무엇을 확인했고 무엇을 확인하지 못했는지는 표 아래 주석을 보세요.
           </p>
           <div className={styles.tableWrap}>
@@ -571,7 +571,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             현장 추가 요금과 날짜 변경 횟수는 팀랩 공식 사이트 {CHECKED} 공지 기준입니다. 판매 플랫폼의 취소・변경
             조건은 옵션마다 다르므로 결제 전에 예약 페이지에서 확인하세요. GetYourGuide 열은 일부러 짧게
-            두었습니다. 보더리스 상품 페이지가 있다는 것은 {GYG_CHECKED}에 확인했지만, GetYourGuide는 자동
+            두었습니다. 팀랩 보더리스 상품 페이지가 있다는 것은 {GYG_CHECKED}에 확인했지만, GetYourGuide는 자동
             조회를 차단하기 때문에 가격, 카드 처리, 변경 조건은 확인하지 못했습니다. 해당 칸에는 추측 대신
             그렇게 적었습니다.
           </p>
@@ -613,7 +613,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             시간대를 잡을 준비가 되었다면{" "}
             <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL}>
-              클룩에서 보더리스 잔여석과 가격 보기 →
+              클룩에서 팀랩 보더리스 잔여석과 가격 보기 →
             </KlookLink>
           </p>
         </section>
@@ -643,7 +643,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>나란히 비교</span>
           <h2 className={styles.sectionTitle}>팀랩 보더리스 vs 플래닛: 어느 쪽을 예약할까?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            <strong>작품을 보고 싶다면 보더리스, 작품 속을 걷고 싶거나 아이와 함께라면 플래닛입니다.</strong>{" "}
+            <strong>작품을 보고 싶다면 팀랩 보더리스, 작품 속을 걷고 싶거나 아이와 함께라면 플래닛입니다.</strong>{" "}
             도쿄에는 팀랩 미술관이 두 곳 있고, 방문객이 엉뚱한 쪽을 예약하는 일이 흔합니다. 도시의 다른 구역에
             있는 별개의 미술관이고 티켓도 따로이며, 결정을 내려 주는 숫자는 아래와 같습니다. 맨발 규칙, 사물함,
             어린이 관련 규정 등 플래닛 쪽의 전체 내용은{" "}
@@ -672,7 +672,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            보더리스 수치는 팀랩 공식 사이트에서 {CHECKED}에, 플래닛 수치는 플래닛 공식 티켓 스토어에서{" "}
+            팀랩 보더리스 수치는 팀랩 공식 사이트에서 {CHECKED}에, 플래닛 수치는 플래닛 공식 티켓 스토어에서{" "}
             {PLANETS_CHECKED}에 읽었습니다. 두 미술관 모두 성인 요금을 날짜와 시간대별로 매기고 달력도 바뀌므로
             본인 날짜로 확인하세요. 각 권장 소요 시간은 이 가이드의 계획용 기준이지 공식 수치가 아닙니다.
           </p>
@@ -687,7 +687,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>팀랩 보더리스 위치</h2>
           <p className={styles.bodyText}>
             미술관은 미나토구 도라노몬 5초메 일대의 아자부다이힐스 Garden Plaza B 지하 1층에 있습니다. 예전
-            오다이바의 보더리스가 아닙니다. 그곳은 문을 닫았으니 해변으로 안내하는 경로는 무시하세요.
+            오다이바의 팀랩 보더리스가 아닙니다. 그곳은 문을 닫았으니 해변으로 안내하는 경로는 무시하세요.
           </p>
           <ul className={styles.bodyList}>
             <li><strong>가미야초역</strong>(도쿄메트로 히비야선) — 5번 출구에서 도보 2분.</li>
@@ -718,7 +718,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
 
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>보더리스 시간대를 예약하세요</h2>
+            <h2 className={styles.ctaBannerTitle}>팀랩 보더리스 시간대를 예약하세요</h2>
             <p className={styles.ctaBannerDesc}>
               시간 지정 입장이라는 것은, 가장 원하는 시간대가 가장 먼저 매진된다는 뜻입니다. 클룩은 팀랩의
               공식 티켓 판매 파트너로, 자국 통화로 결제하고 전자 티켓을 휴대폰으로 받습니다.
