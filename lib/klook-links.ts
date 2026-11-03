@@ -5257,3 +5257,30 @@ export const skylinerVsNexSameDayPrep: KlookTripPrepItem[] = [
     why: "If your flight is late, the seat you booked has to be changed from the arrivals hall, and doing that online needs data before you reach the train.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kansai Area Pass, rank fix 3 Nov 2026 (task jtk-20261103-06). The pass and the
+// Haruka are Klook's 5% transfer band; the block under the break-even CTA lists the
+// bookings made for the same days: a Kyoto–Nara day tour (6.5%), a hotel at either
+// end of the Haruka (6.5%) and the eSIM (20%). Every entry reuses an existing
+// constant; no price is quoted for any listing.
+// ---------------------------------------------------------------------------
+
+export const kansaiAreaPassSameDayPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "The pass covers JR to Kyoto and Nara but not the Keihan to Fushimi Inari or the Kintetsu into Nara Park; a coach day covers all three stops in one booking.",
+  },
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "Kyoto Station is the Haruka's terminus from Kansai Airport, so a hotel here turns the pass's airport run into a door-to-door ride with no change.",
+  },
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "Osaka Station is a JR West hub for the special rapids to Kyoto, Kobe and Himeji — the intercity hops the multi-day pass is paid back on.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The WEST QR pass is a QR code on your phone: you press \"Use ticket\" and book the two Haruka reserved seats online, and both need data from the moment you land.",
+  },
+];
