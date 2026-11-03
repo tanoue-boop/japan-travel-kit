@@ -4894,6 +4894,34 @@ export const usjSameDayPrep: KlookTripPrepItem[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Umeda Sky Building, added 3 Nov 2026 (task jtk-20261103-04). The observatory
+// ticket is assumed to sit in Klook's low special-activity band, like SHIBUYA SKY,
+// so a same-day block follows the ticket / pass decision: hotels and tours 6.5%,
+// the Haruka 5%, the eSIM 20%. Every entry reuses an existing constant; no price.
+// ---------------------------------------------------------------------------
+
+export const umedaSkySameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: absoluteOsakaFoodTour.title,
+    ctaLabel: "Check the Osaka food tour →",
+    url: absoluteOsakaFoodTour.url,
+    why: "The evening after the deck: the Midosuji Line runs from Umeda to Namba, and this is a three-hour join-in walk off the Dotonbori strip with kushikatsu, takoyaki, a hidden izakaya and a local dessert.",
+  },
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "The deck closes at 22:30, and a bed around Osaka Station keeps the walk back to a few minutes after a late visit.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "From Kansai Airport straight to Osaka Station, the stop the deck is walked from; Klook's listing states it is sold only to non-Japanese passport holders with a Temporary Visitor stamp.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A Klook ticket arrives as an e-ticket on your phone, and the walk from Osaka Station goes through an underpass where a map on data helps.",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Tokyo itinerary with kids, added 3 Nov 2026 for tokyo-itinerary-with-kids.
 //
 // Klook answers automated reads of /activity/ pages with HTTP 403, so the two

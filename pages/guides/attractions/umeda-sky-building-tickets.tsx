@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -13,13 +14,35 @@ import {
   osakaNaniWonderNightBusTour,
   osakaPrivateWalkingTour,
   umedaSkyBuildingTicket,
+  umedaSkySameDayPrep,
 } from "../../../lib/klook-links";
 
 /**
  * Umeda Sky Building — the Kuchu Teien Observatory, and the one Osaka admission where
  * the Amazing Pass has a clock on it.
  *
- * Sources, all read on 23 Oct 2026 and nothing here first-hand:
+ * Re-checked on 3 Nov 2026 (task jtk-20261103-04), this time against the operator itself:
+ *
+ * - skybldg.co.jp/en/ and /en/observatory/: ¥2,000 adult / ¥500 ages 4–12 / under-4s free,
+ *   ¥1,000 / ¥250 for visitors with a disability certificate, groups of 10+ at ¥1,800 /
+ *   ¥450; 9:30–22:30, last admission 22:00; "Rooftop may be closed in case of heavy rain";
+ *   Amazing Pass / e-Pass free 9:30–15:00 and 10% off 15:00–22:00; cash and credit cards
+ *   at the counter; floor list (39F counter, shop, restaurant, lounge; 40F cafe SKY 40;
+ *   RF 360° open-air deck); Takimi Koji retro street on B1F–1F. No regular closing day
+ *   is printed, so the page no longer says "open every day of the year".
+ * - skybldg.co.jp/observatory/ (Japanese): advance web tickets with a date choice are
+ *   sold through asoview as "WEB限定のおトクなチケット", amount not printed — the old
+ *   "up to ¥200 under" line is gone. RF lists "ルミ・スカイ・ウォーク" by name only.
+ * - abenoharukas-300.jp/observatory/ and /observatory/ticket/: 9:00–22:00, last entry
+ *   21:30; counter ¥2,200 adult / ¥900 child, web advance ¥1,980 / ¥810.
+ * - tsutenkaku.co.jp/annai/: general deck ¥1,500 adult (15+), 9:00–21:45, last entry
+ *   21:15; ¥1,800 from 30 Dec 2026 to 3 Jan 2027.
+ * - osaka-amazing-pass.com/en/service_free.html: Umeda free until 15:00, 10% off after;
+ *   Tsutenkaku needs a time slot booked at the facility; Harukas 300 not listed.
+ * - osaka-info.jp/en/spot/umeda-sky-building/: 7 min from JR Osaka, 9 min from Hankyu /
+ *   Osaka Metro Umeda (a sister page on the same site says about 10).
+ *
+ * Original sources, read on 23 Oct 2026 and nothing here first-hand:
  *
  * - osaka-info.jp (Osaka Convention & Tourism Bureau, the city's official tourism site),
  *   both the English and the Japanese spot pages for the building: the ¥2,000 / ¥500
@@ -45,7 +68,7 @@ import {
  */
 
 /** Every figure on this page was read on this date. */
-const CHECKED_ISO = "2026-10-23";
+const CHECKED_ISO = "2026-11-03";
 const CHECKED = checkedLabel(CHECKED_ISO);
 
 /** The pass price is owned by lib/attraction-prices.ts, shared with the ticket price table. */
@@ -53,12 +76,12 @@ const PASS_1_DAY = PRICES.osakaAmazingPass.adult;
 
 const priceRows = [
   {
-    tier: "Adult — junior high school age and over",
+    tier: "Adult",
     price: "¥2,000",
-    what: "The counter price. Advance web tickets on Japan's e-ticket platforms run up to ¥200 under it",
+    what: "The counter price on the 39th floor, payable in cash or by credit card. The operator's Japanese site also sells a cheaper date-specific web ticket through asoview, without printing the amount",
   },
   {
-    tier: "Child — age 4 through elementary school",
+    tier: "Child — ages 4 to 12",
     price: "¥500",
     what: "A quarter of the adult rate, which is unusually generous for an Osaka deck",
   },
@@ -66,6 +89,16 @@ const priceRows = [
     tier: "Under 4",
     price: "Free",
     what: "No ticket needed",
+  },
+  {
+    tier: "Visitors with a disability certificate",
+    price: "¥1,000 / ¥250",
+    what: "Adult / ages 4–12, bought at the observatory counter on showing the certificate",
+  },
+  {
+    tier: "Groups of 10 or more",
+    price: "¥1,800 / ¥450",
+    what: "Adult / ages 4–12, handled at the 39th-floor counter",
   },
   {
     tier: "Osaka Amazing Pass holder, entering before 15:00",
@@ -79,11 +112,21 @@ const priceRows = [
   },
 ];
 
+/** From skybldg.co.jp/en/observatory/ and the Japanese /observatory/ page, read 3 Nov 2026. */
+const floorRows = [
+  { floor: "RF (rooftop)", what: "360-degree open-air observation floor; the Japanese site also lists Lumi Sky Walk here", ticket: "Yes — may close in heavy rain" },
+  { floor: "40F", what: "Indoor floor with cafe SKY 40 and counter seats along the window", ticket: "Yes" },
+  { floor: "39F", what: "Ticket counter, gallery shop, Chinese restaurant Sangu, Sky Lounge Stardust", ticket: "Counter and shop level" },
+  { floor: "35F–39F", what: "The way up to the observatory, through the gap between the two towers", ticket: "Reached by the observatory's own entrance, not the office lifts" },
+  { floor: "B1F–1F", what: "Takimi Koji — a Showa-retro street of restaurants and shops, with an ATM and post office", ticket: "No" },
+];
+
 const hoursRows = [
   { what: "Observatory open", when: "9:30 – 22:30" },
   { what: "Last entry", when: "22:00" },
-  { what: "Closed days", when: "None — open all year round" },
-  { what: "Free entry with the Osaka Amazing Pass", when: "Until 15:00 only" },
+  { what: "Closed days", when: "No regular closing day is printed on the operator's site; special event days (such as the Yodogawa fireworks) run on special tickets and hours" },
+  { what: "Bad weather", when: "The open-air rooftop may be closed in heavy rain; the 39F and 40F floors are indoors" },
+  { what: "Free entry with the Osaka Amazing Pass", when: "9:30 – 15:00 only; 10% off from 15:00 to 22:00" },
   { what: "How long to allow", when: "1 – 2 hours (Klook's own estimate for the listing)" },
 ];
 
@@ -106,23 +149,23 @@ const deckRows = [
   {
     deck: "Umeda Sky Building (Kuchu Teien)",
     height: "173 m — 39F, 40F and the open-air rooftop",
-    price: "¥2,000 adult / ¥500 child",
+    price: "¥2,000 adult / ¥500 ages 4–12",
     hours: "9:30 – 22:30 (last entry 22:00)",
     area: "Umeda — 7 min from JR Osaka Station",
     pass: "Free with the Amazing Pass before 15:00, 10% off after",
   },
   {
     deck: "Harukas 300 (Abeno Harukas)",
-    height: "300 m — 58F, 59F and 60F of Japan's tallest building",
-    price: "¥2,200 adult",
+    height: "The top floors of what the operator calls Japan's tallest building, with a roofless deck on 58F",
+    price: "¥2,200 adult / ¥900 child at the counter; ¥1,980 / ¥810 web advance",
     hours: "9:00 – 22:00 (last entry 21:30)",
     area: "Tennoji — built over Kintetsu Osaka-Abenobashi Station",
-    pass: "Not an Amazing Pass facility",
+    pass: "Not on the Amazing Pass facility list",
   },
   {
     deck: "Tsutenkaku",
     height: "The Shinsekai landmark tower",
-    price: "¥1,500 (observation deck)",
+    price: "¥1,500 adult, age 15+ (¥1,800 from 30 Dec to 3 Jan)",
     hours: "9:00 – 21:45 (last entry 21:15)",
     area: "Shinsekai — Ebisucho / Dobutsuen-mae",
     pass: "Free with the Amazing Pass, but you book a time slot at the facility",
@@ -175,7 +218,7 @@ const steps = [
   },
   {
     title: "Buy ahead if you want an English checkout or a foreign card",
-    desc: "There is no timed-entry system here and no sell-out risk, so advance booking is about convenience rather than availability. Klook's listing is the English-language route to the same admission, taking a foreign card and giving you a code to scan. Check the cancellation window shown on your own booking before you pay — it is set per listing, not per venue.",
+    desc: "There is no timed-entry slot here and the 39th-floor counter sells tickets for cash or credit card, so advance booking is about convenience rather than availability. The operator's Japanese site sells a cheaper date-specific web ticket through asoview; Klook's listing is the English-language route to the same admission, taking a foreign card and giving you a code to scan. Check the cancellation window shown on your own booking before you pay — it is set per listing, not per venue.",
   },
   {
     title: "Allow 15 minutes on top for the escalator",
@@ -189,12 +232,24 @@ const steps = [
 
 const faqItems = [
   {
-    q: "How much are Umeda Sky Building tickets?",
-    a: `An adult ticket — junior high school age and over — is ¥2,000, and a child aged 4 through elementary school is ¥500. Under-4s go free. Those are the counter prices, published by both Osaka's official tourism site and the Osaka Amazing Pass operator's facility list; advance web tickets sold through Japan's e-ticket platforms run up to about ¥200 under the counter rate. An Osaka Amazing Pass gets you in free if you enter before 15:00 and gives 10% off from 15:00 onwards. All read on ${CHECKED}.`,
+    q: "How much is the Umeda Sky Building entrance fee?",
+    a: `The Umeda Sky Building entrance fee is ¥2,000 for an adult and ¥500 for a child aged 4 to 12, with under-4s free — the operator's own published prices for the Kuchu Teien Observatory. Visitors with a disability certificate pay ¥1,000 / ¥250, and groups of 10 or more ¥1,800 / ¥450. An Osaka Amazing Pass gets you in free from 9:30 to 15:00 and gives 10% off from 15:00 to 22:00. All read on ${CHECKED}.`,
+  },
+  {
+    q: "What is the Umeda Sky Building ticket price for kids?",
+    a: `¥500 for a child aged 4 to 12, and free under 4 — a quarter of the ¥2,000 adult price. A child with a disability certificate pays ¥250, and in a group of 10 or more a child ticket is ¥450. From 13 the adult price applies. Prices from the operator's site, read on ${CHECKED}.`,
   },
   {
     q: "What are the Umeda Sky Building opening hours?",
-    a: `The Kuchu Teien Observatory is open 9:30 to 22:30 with last entry at 22:00, and it is open all year round — no weekly closing day and no winter shutdown. That 22:30 close is the longest evening of any paid deck in Osaka: Harukas 300 shuts at 22:00 and Tsutenkaku's observation deck at 21:45. Hours do shift for special events, so confirm the day before if you are cutting it fine. Read on ${CHECKED}.`,
+    a: `The Kuchu Teien Observatory is open 9:30 to 22:30 with last admission at 22:00. The operator's site prints no regular closing day, but it does run special event days — the Yodogawa fireworks evening, for example — on special tickets and hours, so check the site before a date that clashes with a big event. The 22:30 close is later than Harukas 300 (22:00, last entry 21:30) and Tsutenkaku's general deck (21:45, last entry 21:15). Read on ${CHECKED}.`,
+  },
+  {
+    q: "Can you pay by card, and are there cheaper tickets online?",
+    a: `Yes to both. The operator lists cash and credit cards (and certain contract coupons) at the 39th-floor counter. Its Japanese site also sells a date-specific web-only ticket through asoview that it describes as a better deal than the counter, without printing the amount, and its English site links to a Klook ticket. On the Osaka Amazing Pass you do not buy a ticket at all before 15:00. Read on ${CHECKED}.`,
+  },
+  {
+    q: "What is on the rooftop and in the basement of the Umeda Sky Building?",
+    a: `The rooftop (RF) is a 360-degree open-air observation floor, and the operator's Japanese site lists a feature called Lumi Sky Walk on that level. Below it, 40F has cafe SKY 40 with counter seats, and 39F has the ticket counter, a gallery shop, the Chinese restaurant Sangu and Sky Lounge Stardust. At street level and below, B1F–1F is Takimi Koji, a Showa-retro street of restaurants and shops that you can walk into without a ticket. Floor list read on ${CHECKED}.`,
   },
   {
     q: "What is the best time to visit the Umeda Sky Building?",
@@ -209,28 +264,28 @@ const faqItems = [
     a: "Klook's own listing allows one to two hours, and that fits the building: three observatory levels — the 39th floor where you ticket, the indoor 40th floor with its 35-metre glass counter, and the open-air rooftop above it — plus the see-through escalator up from the 35th. An hour is enough if you are only there for the view. Two hours is the honest figure if you want to sit with a drink at the glass counter or wait out the light changing on the roof.",
   },
   {
-    q: "How do you get to the Umeda Sky Building from Osaka Station?",
-    a: `It is a 7-minute walk from JR Osaka Station and about 9 minutes from Hankyu Osaka-Umeda or the Osaka Metro Umeda station, heading north-west from the station complex. The building sits on the far side of the rail lines in the New Umeda City block, which is why the walk feels longer than the distance — you go under the tracks rather than across them. No bus, no transfer and nothing to book. Walking times from Osaka's official tourism site, read on ${CHECKED}.`,
+    q: "How do I get to Umeda Sky Building from Osaka Station?",
+    a: `On foot: Osaka's official tourism site gives 7 minutes from JR Osaka Station and 9 minutes from Hankyu Osaka-Umeda or Osaka Metro Umeda (a sister page on the same site says about 10). Head north-west from the station complex; the building sits on the far side of the rail lines, and the operator's route from each station includes a 40-metre underground walkway under the tracks, which is why the walk feels longer than the distance. No bus, no transfer and nothing to book. Read on ${CHECKED}.`,
   },
   {
     q: "Do you need to book Umeda Sky Building tickets in advance?",
-    a: "No. There is no timed-entry system and no slot to secure, the counter on the 39th floor sells same-day tickets throughout opening hours, and the deck does not sell out the way a Tokyo timed ticket does. Booking ahead buys you three things instead: an English checkout, a card issued abroad that actually works, and up to about ¥200 off the counter price on the Japanese advance-ticket platforms. Treat it as a convenience, not a necessity — and if you are on the Amazing Pass, you do not buy a ticket at all.",
+    a: "No. There is no timed-entry slot, and the counter on the 39th floor sells tickets for cash or credit card. Booking ahead buys you convenience instead: an English checkout and a card issued abroad that works on Klook, or the cheaper date-specific web ticket the operator sells through asoview in Japanese. If you are on the Amazing Pass and arriving before 15:00, you do not buy a ticket at all.",
   },
   {
-    q: "Is the Umeda Sky Building worth it on the Osaka Amazing Pass?",
-    a: `It depends entirely on the clock, and this is the detail most guides skip. The pass is ${PASS_1_DAY} for one day and the Umeda deck is one of its 40-plus free admissions — but only until 15:00. From 15:00 the pass becomes a 10% discount, so an evening visit still costs about ¥1,800 on top of the pass. The arithmetic that works: a pass day with the Umeda deck before 15:00 (¥2,000) plus Osaka Castle (¥1,200) is ¥3,200 of admissions against a ${PASS_1_DAY} pass, before you count a single subway ride. The arithmetic that does not: buying the pass for a sunset trip up this one building.`,
+    q: "Is Umeda Sky Building free with the Osaka Amazing Pass?",
+    a: `Only from 9:30 to 15:00, and this is the detail most guides skip. The pass is ${PASS_1_DAY} for one day and the Umeda deck is one of its 40-plus free admissions — but only until 15:00. From 15:00 the pass becomes a 10% discount, so an evening visit still costs about ¥1,800 on top of the pass. The arithmetic that works: a pass day with the Umeda deck before 15:00 (¥2,000) plus Osaka Castle (¥1,200) is ¥3,200 of admissions against a ${PASS_1_DAY} pass, before you count a single subway ride. The arithmetic that does not: buying the pass for a sunset trip up this one building.`,
   },
   {
     q: "Umeda Sky Building or Harukas 300 — which should you pick?",
-    a: `Different products at a similar price, and the choice is open air against altitude. The Umeda deck is 173 metres with an unroofed 360-degree rooftop ring, ¥2,000, open until 22:30, seven minutes from JR Osaka Station, and free on the Amazing Pass before 15:00. Harukas 300 is 300 metres across floors 58 to 60 of Japan's tallest building, ¥2,200, open 9:00 to 22:00 with last entry at 21:30, built directly over Kintetsu Osaka-Abenobashi in Tennoji — and not an Amazing Pass facility at all. Pick Umeda for the rooftop and the location; pick Harukas for the sheer height and the clear-day view out to Awaji and Kansai Airport. Both read on ${CHECKED}.`,
+    a: `Different products at a similar price, and the choice is open air against altitude. The Umeda deck is an unroofed 360-degree rooftop ring, ¥2,000, open until 22:30, seven minutes from JR Osaka Station, and free on the Amazing Pass before 15:00. Harukas 300 sits on top of what its operator calls Japan's tallest building, in Tennoji, at ¥2,200 at the counter or ¥1,980 as a web advance ticket, open 9:00 to 22:00 with last entry at 21:30 — and it is not on the Amazing Pass facility list. Pick Umeda for the open rooftop, the late close and the location; pick Harukas for the sheer height. Both read on ${CHECKED}.`,
   },
   {
     q: "Is the Umeda Sky Building good with children?",
-    a: "Yes, and the pricing is the reason: ¥500 from age 4 through elementary school and free below that, which is a quarter of the adult rate and cheaper per head than almost anything else in central Osaka. The practical notes are the escalator, which small children either love or do not, and the rooftop, which is open to the sky and the wind at 173 metres — hold hands and bring a layer. There is no timed slot to work around and no minimum stay, so it folds into an afternoon easily.",
+    a: "Yes, and the pricing is the reason: ¥500 for ages 4 to 12 and free below that, which is a quarter of the adult rate and cheaper per head than almost anything else in central Osaka. The practical notes are the escalator, which small children either love or do not, and the rooftop, which is open to the sky and the wind at 173 metres — hold hands and bring a layer. There is no timed slot to work around and no minimum stay, so it folds into an afternoon easily.",
   },
   {
     q: "What happens if it rains, and is the rooftop ever closed?",
-    a: "Two of the three observatory levels are indoors — the 39th floor where you ticket and the 40th with its glass counter — so a wet day still buys you the view from behind glass. The top level is the one that suffers: it is an open-air ring with no cover, so rain lands on you and strong wind is felt at full strength. Access to open-air decks anywhere is at the operator's discretion in bad weather, so if the roof is the reason you are going, watch the forecast and keep the date flexible rather than booking a fixed one.",
+    a: "Two of the three observatory levels are indoors — the 39th floor where you ticket and the 40th with its glass counter — so a wet day still buys you the view from behind glass. The top level is the one that suffers: it is an open-air ring with no cover, so rain lands on you and strong wind is felt at full strength, and the operator states that the rooftop may be closed in heavy rain. If the roof is the reason you are going, watch the forecast and keep the date flexible rather than booking a fixed one.",
   },
   {
     q: "Is there a free observation deck in Osaka instead?",
@@ -242,9 +297,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/umeda-sky-building-tickets") },
 });
 
-const TITLE = "Umeda Sky Building Tickets (2026): Prices and Best Time";
+const TITLE = "Umeda Sky Building Tickets 2026: Price, Hours & Entrance Fee";
 const DESC =
-  "Umeda Sky Building tickets are ¥2,000 for an adult and ¥500 for a child, and the Kuchu Teien Observatory opens 9:30–22:30 with last entry at 22:00.";
+  "Umeda Sky Building tickets: entrance fee ¥2,000 adult, ¥500 ages 4–12. Open 9:30–22:30, last entry 22:00; allow 1–2 hours. Free on Amazing Pass to 15:00.";
 
 export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -334,7 +389,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Umeda Sky Building Tickets (2026):<br />Prices, Hours and the Best Time to Go
+            Umeda Sky Building Tickets 2026:<br />Price, Hours and Entrance Fee
           </h1>
           <p className={styles.heroSubtitle}>
             The open-air rooftop ring 173 metres above Umeda, seven minutes from Osaka Station.
@@ -387,16 +442,16 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             </div>
             <p className={styles.verdictText}>
               <strong>In short:</strong> Umeda Sky Building tickets are <strong>¥2,000</strong> for an
-              adult (junior high school age and over) and <strong>¥500</strong> for a child aged 4
-              through elementary school, with under-4s free. The Kuchu Teien Observatory — three
-              levels at <strong>173 metres</strong>, topped by a 360-degree open-air rooftop — is open{" "}
-              <strong>9:30 to 22:30 with last entry at 22:00</strong>, every day of the year, and
-              Klook&apos;s own listing allows <strong>one to two hours</strong>. It is a{" "}
+              adult and <strong>¥500</strong> for a child aged 4 to 12, with under-4s free. The
+              Kuchu Teien Observatory — three levels at <strong>173 metres</strong>, topped by a
+              360-degree open-air rooftop — is open{" "}
+              <strong>9:30 to 22:30 with last entry at 22:00</strong>, and Klook&apos;s own listing
+              allows <strong>one to two hours</strong>. It is a{" "}
               <strong>7-minute walk from JR Osaka Station</strong> and 9 minutes from Hankyu
-              Osaka-Umeda or Osaka Metro Umeda. There are no timed slots and nothing sells out, so
-              the only real decision is the hour: the{" "}
+              Osaka-Umeda or Osaka Metro Umeda. There are no timed slots and the counter sells
+              tickets on the day, so the only real decision is the hour: the{" "}
               <strong>Osaka Amazing Pass covers this deck free only until 15:00</strong>, and from
-              15:00 it is 10% off — which means the pass and the sunset view do not overlap. All
+              15:00 it is 10% off — which means the pass and the sunset view rarely overlap. All
               read on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -413,7 +468,18 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What Is the Umeda Sky Building Observatory?</h2>
+          <h2 className={styles.sectionTitle}>Umeda Sky Building Tickets: Price, Hours and How to Buy</h2>
+          <p className={styles.bodyText}>
+            The Kuchu Teien Observatory at the Umeda Sky Building costs{" "}
+            <strong>¥2,000 for an adult and ¥500 for a child aged 4 to 12</strong> (under-4s free),
+            and it is open <strong>9:30 to 22:30 with last admission at 22:00</strong> — the
+            operator&apos;s own figures, read on {CHECKED}. You can buy a ticket{" "}
+            <strong>on the day at the 39th-floor counter</strong> (cash or credit card) or{" "}
+            <strong>in advance online</strong> — Klook in English, or the operator&apos;s cheaper
+            date-specific web ticket on asoview in Japanese. The{" "}
+            <strong>Osaka Amazing Pass gets you in free from 9:30 to 15:00</strong> and gives 10%
+            off from 15:00 to 22:00, so it covers a daytime visit but not a sunset one.
+          </p>
           <p className={styles.bodyText}>
             Two 40-storey towers, 173 metres high, joined at the top by a ring — that is the whole
             idea, and it is why the building is on every Osaka postcard. The paid part is the{" "}
@@ -436,15 +502,47 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             people should plan the visit. The rest of this page is the prices, the hours, the sunset
             arithmetic and that one decision.
           </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.5rem", marginBottom: "0.6rem" }}>
+            What is on each floor — rooftop to basement
+          </h3>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Floor", "What is there", "Ticket needed?"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {floorRows.map((row) => (
+                    <tr key={row.floor}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.floor}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.ticket}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Floor list from the operator&apos;s English and Japanese observatory pages, read on{" "}
+            {CHECKED}. The Japanese page names Lumi Sky Walk on the rooftop floor without describing
+            it, so this page does not either.
+          </p>
         </section>
 
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How Much Are Umeda Sky Building Tickets?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is the Umeda Sky Building Entrance Fee?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            One flat price per age band, with no dynamic pricing and no premium slots. The only
-            variable is the pass, and the pass has a clock on it:
+            The entrance fee is <strong>¥2,000 for an adult</strong> and{" "}
+            <strong>¥500 for a child aged 4 to 12</strong>, read off the operator&apos;s site on{" "}
+            {CHECKED}. One flat price per age band, with no premium slots; the only variable is the
+            pass, and the pass has a clock on it:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -469,14 +567,23 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Prices read on {CHECKED} from Osaka&apos;s official tourism site and the Osaka Amazing
-            Pass operator&apos;s own facility list, which both print the same two bands. The
-            building&apos;s own site blocks automated reads, so those are the sources behind every
-            figure here. Subject to change — confirm before you buy. For the admissions we track
+            Prices read on {CHECKED} from the operator&apos;s own site (skybldg.co.jp), with the pass
+            conditions matching the Osaka Amazing Pass operator&apos;s facility list the same day.
+            Subject to change — confirm before you buy. For the admissions we track
             across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>.
+          </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.5rem", marginBottom: "0.6rem" }}>
+            What is the Umeda Sky Building ticket price for kids?
+          </h3>
+          <p className={styles.bodyText}>
+            <strong>¥500 for ages 4 to 12, and free under 4</strong> — a quarter of the adult price.
+            From 13 the ¥2,000 adult ticket applies. A child with a disability certificate pays ¥250
+            and a child in a group of 10 or more ¥450. For a family day around the deck, our{" "}
+            <Link href="/guides/attractions/osaka-2-day-itinerary">Osaka 2-day itinerary</Link> puts
+            the deck on day two, after the aquarium and before the 15:00 pass cut-off.
           </p>
         </section>
 
@@ -506,21 +613,23 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            That <strong>22:30 close</strong> is the deck&apos;s quiet advantage. It is the latest of
-            the three paid Osaka decks — Harukas 300 shuts at 22:00 and Tsutenkaku&apos;s observation
-            deck at 21:45 — and it is still two hours past sunset in midsummer, when sunset in Osaka
-            is as late as 19:15. If your day is already full, this is the attraction you can do
-            after dinner. Hours read on {CHECKED}; they do shift for special events, so check the
-            day before if you are arriving close to last entry.
+            That <strong>22:30 close</strong> is the deck&apos;s quiet advantage. It is later than
+            Harukas 300 (22:00) and Tsutenkaku&apos;s general deck (21:45), and it is still three
+            hours past sunset in midsummer, when sunset in Osaka is as late as 19:15. If your day is
+            already full, this is the attraction you can do after dinner. Hours read off the
+            operator&apos;s site on {CHECKED}; it runs special event days on separate tickets, so
+            check the site before a date with a big event such as the Yodogawa fireworks.
           </p>
         </section>
 
         {/* Best time / sunset */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Best time to go</span>
-          <h2 className={styles.sectionTitle}>When Is Sunset in Osaka, and When Should You Go Up?</h2>
+          <h2 className={styles.sectionTitle}>What Time Is Best for Sunset at Umeda Sky Building?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            &quot;Go at sunset&quot; is useless advice without a date, because Osaka sunset moves by
+            <strong>Enter 30 to 45 minutes before sunset</strong> — between about 16:00 in early
+            December and about 18:30 in early July — and one ticket gets you daylight, golden hour
+            and the night view from the open rooftop. &quot;Go at sunset&quot; is useless advice without a date, because Osaka sunset moves by
             about <strong>two and a half hours</strong> across the year. These are the published
             times from the National Astronomical Observatory of Japan&apos;s own ephemeris for Osaka
             in 2026 — enter 30 to 45 minutes before the one that matches your trip:
@@ -633,10 +742,11 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Umeda and Tsutenkaku figures read off the Osaka Amazing Pass operator&apos;s facility
-            list on {CHECKED}; Harukas 300 off Osaka&apos;s official tourism pages the same day. Note
-            the two asymmetries: <strong>Harukas 300 is not an Amazing Pass facility at all</strong>,
-            so its ¥2,200 is payable on any pass day, and <strong>Tsutenkaku asks you to book a time
+            Every row re-read on {CHECKED} from the operator&apos;s own site — skybldg.co.jp,
+            abenoharukas-300.jp and tsutenkaku.co.jp — with the pass column from the Osaka Amazing
+            Pass operator&apos;s facility list. Umeda&apos;s 173 m height is from Osaka&apos;s official
+            tourism site. Note the two asymmetries: <strong>Harukas 300 is not on the Amazing Pass
+            facility list</strong>, so its price is payable on any pass day, and <strong>Tsutenkaku asks you to book a time
             slot at the facility</strong> even with a pass, which the other two do not. Subject to
             change — confirm before you travel.
           </p>
@@ -645,15 +755,16 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         {/* Getting there */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>How Do You Get to the Umeda Sky Building?</h2>
+          <h2 className={styles.sectionTitle}>How Do I Get to Umeda Sky Building from Osaka Station?</h2>
           <p className={styles.bodyText}>
-            On foot from Umeda, and that is the whole journey. It is a{" "}
-            <strong>7-minute walk from JR Osaka Station</strong> and about{" "}
+            On foot: it is a <strong>7-minute walk from JR Osaka Station</strong> and about{" "}
             <strong>9 minutes from Hankyu Osaka-Umeda or the Osaka Metro Umeda station</strong>,
-            north-west through the New Umeda City block. The reason it feels longer than seven
-            minutes is the railway: you pass under the tracks rather than over them, through a
-            pedestrian underpass, so the building disappears from view for part of the walk. Keep
-            going — it reappears.
+            north-west through the New Umeda City block (Osaka&apos;s official tourism site; one of
+            its sister pages says about 10). The reason it feels longer than seven minutes is the
+            railway: the operator&apos;s step-by-step route from each station includes a 40-metre
+            underground walkway beneath the tracks, so the building disappears from view for part
+            of the walk. Keep going — it reappears. Once inside, use the observatory&apos;s own
+            entrance rather than the office lifts.
           </p>
           <p className={styles.bodyText}>
             Umeda is the northern hub of the Midosuji Line, so getting to Osaka Station in the first
@@ -661,15 +772,23 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             <Link href="/guides/transport/osaka-transportation">getting around Osaka guide</Link>{" "}
             explains how the Midosuji Line joins Umeda to Namba and Tennoji, and the{" "}
             <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link> works out
-            whether a day pass beats tapping a card on a day with several stops in it. Walking times
-            read on {CHECKED}.
+            whether a day pass beats tapping a card on a day with several stops in it, and our{" "}
+            <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka guide</Link>{" "}
+            compares Umeda with Namba as a base. Walking times read on {CHECKED}.
           </p>
         </section>
 
         {/* Booking */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Book Umeda Sky Building Tickets</h2>
+          <h2 className={styles.sectionTitle}>Do You Need to Book Umeda Sky Building Tickets in Advance?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>No.</strong> There is no timed-entry slot, and the 39th-floor counter sells
+            tickets on the day for cash or credit card. Book ahead only for convenience: Klook for
+            an English checkout on a foreign card, or the operator&apos;s cheaper date-specific web
+            ticket on asoview if you can work through Japanese. If you hold an Osaka Amazing Pass and
+            arrive before 15:00, buy nothing.
+          </p>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -685,20 +804,34 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Umeda Sky Building tickets on Klook →
             </KlookLink>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Daytime visit? Osaka Amazing Pass →
+            </KlookLink>
             <KlookLink href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               With the castle and the river cruise →
             </KlookLink>
           </div>
         </section>
 
+        {/* Same-day bookings (3 Nov 2026): directly after the advance-or-counter and
+            pass-or-ticket decision, because the observatory ticket is assumed to sit in
+            Klook's low special-activity band. Existing ticket and pass links are unchanged. */}
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What to Book Alongside Your Umeda Sky Building Ticket"
+          intro="The deck is an hour or two; the rest of the day still needs dinner, a bed near Umeda, the ride in from Kansai Airport and data on your phone. These four are booked on the same Klook account as the ticket. No prices are quoted — open each listing for the current figure."
+          items={umedaSkySameDayPrep}
+        />
+
         {/* The pass question */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The pass question</span>
-          <h2 className={styles.sectionTitle}>Does the Osaka Amazing Pass Pay for the Umeda Deck?</h2>
+          <h2 className={styles.sectionTitle}>Is Umeda Sky Building Free with the Osaka Amazing Pass?</h2>
           <p className={styles.bodyText}>
-            <strong>Only if you go before 15:00.</strong> The Umeda Sky Building is one of the
-            40-plus free admissions on the Osaka Amazing Pass, but the operator&apos;s own facility
-            list restricts pass entry to <strong>before 15:00</strong>; from 15:00 the pass is worth
+            <strong>Yes, but only from 9:30 to 15:00.</strong> The Umeda Sky Building is one of the
+            40-plus free admissions on the Osaka Amazing Pass (and the Osaka e-Pass), but both the
+            building&apos;s site and the pass operator&apos;s facility list restrict pass entry to{" "}
+            <strong>before 15:00</strong>; from 15:00 the pass is worth
             a <strong>10% discount</strong> instead, so an evening visit still costs about ¥1,800 on
             top of the {PASS_1_DAY} you paid for the pass. That is the single most expensive
             misunderstanding available on an Osaka pass day, and almost nothing written about this
@@ -817,6 +950,53 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Things to Do in Osaka (2026): Where the Pass Pays and Where It Doesn&apos;t</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/osaka-2-day-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Osaka 2 Day Itinerary (2026): Day by Day, and Bookings</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4M8 14h3" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Osaka Kyoto 3 Day Itinerary (2026): Day by Day &amp; Bookings</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/osaka-food-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 2v8a2 2 0 0 0 4 0V2M8 10v12M16 2c-2 2-2 6 0 8v12" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Osaka Food Tour (2026): Which to Book and What You Eat</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/where-to-stay-in-osaka" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21V8l9-5 9 5v13" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Where to Stay in Osaka (2026): Best Areas Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
