@@ -40,9 +40,9 @@ import {
  *   - It printed a single "¥3,200 from Narita, ¥1,200 from Haneda". The operator
  *     does not have one fare per airport; it has one fare per route, and the
  *     Narita spread alone runs ¥2,900 to ¥3,600. The table is per route now.
- *   - It linked to /guides/transport/skyliner-vs-nex, which is still a 301 source.
- *     The train half of the decision now points at tokyo-airport-transfer, which
- *     absorbed that comparison.
+ *   - It linked to /guides/transport/skyliner-vs-nex, which was then a 301 source.
+ *     The train half of the decision points at tokyo-airport-transfer; the
+ *     skyliner-vs-nex page was restored on 3 Nov 2026 and is linked from Keep Reading.
  */
 
 /** Everything on this page was read off limousinebus.co.jp on this date. */
@@ -725,6 +725,19 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            <Link href="/guides/transport/skyliner-vs-nex" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="3" width="16" height="14" rx="3" />
+                  <line x1="4" y1="10" x2="20" y2="10" />
+                  <path d="M7 21l2-4M17 21l-2-4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Skyliner vs N&apos;EX (2026): Which Narita Train Is Better?</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/transport/tokyo-airport-transfer" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

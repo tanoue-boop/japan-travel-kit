@@ -107,6 +107,14 @@ export const transportArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/transport/skyliner-vs-nex",
+    badge: "Comparison",
+    title: "Skyliner vs N'EX (2026): Which Narita Train Is Better?",
+    desc: "Skyliner ¥2,580 and 36 minutes to Nippori, or N'EX ¥3,140 and 53 minutes to Tokyo Station with a ¥5,200 round trip. Pick by the station you need without a change — with a destination table and JR Pass rules.",
+    group: "airports",
+    city: "tokyo",
+  },
+  {
     href: "/guides/transport/osaka-airport-transfer",
     badge: "Guide",
     title: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",

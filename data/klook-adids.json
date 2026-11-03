@@ -120,6 +120,7 @@
   "/guides/transport/osaka-to-hiroshima-shinkansen": 1528223,
   "/guides/transport/osaka-transportation": 1528170,
   "/guides/transport/shinkansen-guide": 1528171,
+  "/guides/transport/skyliner-vs-nex": 1538100,
   "/guides/transport/tokyo-airport-limousine-bus": 1528172,
   "/guides/transport/tokyo-airport-transfer": 1528173,
   "/guides/transport/tokyo-to-hiroshima-shinkansen": 1528222,
@@ -174,7 +175,7 @@
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
  },
  "spare": [
-  1538100,1538101,1538102,1538103,1538104,1538105,1538106,1538107,1538108,
+  1538101,1538102,1538103,1538104,1538105,1538106,1538107,1538108,
   1538109,1538110,1538111,1538112,1538113,1538114,1538115,1538116,1538117,1538118,
   1538119,1538120,1538121,1538122,1538123,1538124,1538125,1538126,1538127,1538128]
 }

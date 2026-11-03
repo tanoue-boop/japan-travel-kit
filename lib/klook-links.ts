@@ -5228,3 +5228,32 @@ export const jigokudaniStayAreas: KlookStayArea[] = [
     url: klookLink("https://www.klook.com/en-US/destination/c26277-nagano/3-hotel/"),
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Skyliner vs N'EX, restored 3 Nov 2026 (task jtk-20261103-05). The two train
+// tickets are Klook's 5% transfer band, so the page puts a "book the same day"
+// block under each decision point: a hotel at either end of the two lines (6.5%),
+// the subway ticket for the days after (5%) and the eSIM (20%). Every entry reuses
+// an existing constant; no price is quoted for any listing.
+// ---------------------------------------------------------------------------
+
+export const skylinerVsNexSameDayPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "If the N'EX is your train, this is where it stops first: JR East puts the fastest run from Narita Airport to Tokyo Station at 53 minutes, with no change.",
+  },
+  {
+    label: "Hotels around Ueno / Asakusa",
+    ctaLabel: "Check Ueno hotel prices →",
+    url: tokyoAirportStayAreas[2].url,
+    why: "If the Skyliner is your train, this is the side of the city it serves: Keisei puts Ueno 41 minutes from Narita Airport Terminal 2·3.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Neither airport ticket covers the Tokyo Metro or Toei subway lines; this one does, for 24, 48 or 72 hours.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "If your flight is late, the seat you booked has to be changed from the arrivals hall, and doing that online needs data before you reach the train.",
+  },
+];
