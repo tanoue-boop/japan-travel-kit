@@ -746,6 +746,11 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions", title: "Things to Do in Japan: Tickets & Experiences (2026)" },
+              // Added 3 Nov 2026: the first Okinawa admission, priced off the aquarium's own fee page.
+              {
+                href: "/guides/attractions/okinawa-churaumi-aquarium-tickets",
+                title: "Okinawa Churaumi Aquarium Tickets 2026: Price, Hours, Access",
+              },
               {
                 href: "/guides/attractions/things-to-do-tokyo",
                 title: "Things to Do in Tokyo (2026): What to Book Ahead and What to Walk Into",

@@ -375,6 +375,18 @@ export const gygTeamlabBiovortexKyoto: GygListing = {
   url: "https://www.getyourguide.com/teamlab-biovortex-kyoto-l250414/",
 };
 
+/**
+ * Okinawa Churaumi Aquarium — added 3 Nov 2026 for okinawa-churaumi-aquarium-tickets.
+ * The attraction's own GetYourGuide listing (l35653), confirmed live through the
+ * getyourguide.com search index that day. It sits beside the bare Klook ticket,
+ * which cannot be assumed to pay more than the special-activity band.
+ */
+export const gygChuraumiAquarium: GygListing = {
+  title: "Okinawa Churaumi Aquarium",
+  what: "The aquarium's own GetYourGuide listing, with the entry ticket and the day tours from Naha that include it",
+  url: "https://www.getyourguide.com/okinawa-churaumi-aquarium-l35653/",
+};
+
 export const gygKyotoEntryTickets: GygListing = {
   title: "Kyoto entry tickets",
   what: "The admissions-only slice of the Kyoto catalogue, which is where the museum sits alongside the city's other ticketed sights",

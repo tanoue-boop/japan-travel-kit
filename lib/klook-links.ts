@@ -4892,3 +4892,191 @@ export const usjSameDayPrep: KlookTripPrepItem[] = [
     why: "USJ runs Super Nintendo World area timed entry through its own app, used inside the park on the day, and the Studio Pass is an e-ticket — both need data in the queue, not only on hotel Wi-Fi.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo itinerary with kids, added 3 Nov 2026 for tokyo-itinerary-with-kids.
+//
+// Klook answers automated reads of /activity/ pages with HTTP 403, so the two
+// new listings below were confirmed live, on sale and in their en-US form through
+// the www.klook.com search index on 3 Nov 2026: "Tokyo Disney Resort - Tokyo
+// Disneyland & Tokyo DisneySea Park Tickets" (695) and "LEGOLAND Discovery
+// Center Tokyo Ticket" (5563). Everything else on that page reuses a constant
+// already in this file. No price appears for either listing.
+//
+// Commission: the Disney passport is a 2% special activity and a bare indoor-
+// attraction ticket cannot be assumed to pay more, so the page carries a
+// "book the same day" block (hotels 6.5%, transfers 5%, eSIM 20%) next to them.
+// ---------------------------------------------------------------------------
+
+/** Tokyo Disney Resort 1-Day Passport, as a plain product URL (the Disney guide keeps its own redirect). */
+export const tokyoDisneyOneDayPassport: KlookTour = {
+  title: "Tokyo Disney Resort 1-Day Passport (Disneyland or DisneySea)",
+  desc: "A date- and park-specified e-ticket for one of the two parks, shown on a smartphone at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/695-tokyo-disney-resort-1-day-pass-tokyo/"),
+};
+
+/** LEGOLAND Discovery Center Tokyo, Odaiba — an indoor attraction adults may only enter with a child. */
+export const legolandDiscoveryCenterTokyoTicket: KlookTour = {
+  title: "LEGOLAND Discovery Center Tokyo ticket",
+  desc: "Admission to the indoor LEGO centre in DECKS Tokyo Beach, Odaiba — the listing suggests 2 to 3 hours",
+  url: klookLink("https://www.klook.com/en-US/activity/5563-legoland-discovery-center-tokyo/"),
+};
+
+/**
+ * Where a family bases itself for the kids itinerary. Every URL is an existing
+ * destination id already in this file — Tokyo Station, Shinjuku, Maihama and
+ * Urayasu — so the page cannot drift from the guides that introduced them.
+ */
+export const tokyoKidsStayAreas: KlookStayArea[] = [
+  {
+    area: "Tokyo Station / Marunouchi",
+    why: "The N'EX from Narita and the limousine buses from both airports stop here, the JR Keiyo Line runs to Maihama for the Disney day, and the JR Yokosuka Line runs direct to Kamakura — the base with the fewest changes for this route.",
+    url: tokyoAirportStayAreas[0].url,
+  },
+  {
+    area: "Maihama",
+    why: "The station the two Disney parks share. Worth one or two nights around the park day if your children are young enough that an early start and a late finish both need a short trip back to the room.",
+    url: tokyoDisneyStayAreas[0].url,
+  },
+  {
+    area: "Urayasu / Shin-Urayasu",
+    why: "One stop further out on the Keiyo Line and generally cheaper than the resort-side rooms; many of these hotels run their own free shuttle to the parks.",
+    url: tokyoDisneyStayAreas[1].url,
+  },
+  {
+    area: "Shinjuku",
+    why: "The Odakyu and Keio lines start here — Odakyu to Hakone and Tama Center, Keio to Tama Center for Sanrio Puroland — so the west-side day out and the Hakone option both begin at your own station.",
+    url: tokyoAirportStayAreas[1].url,
+  },
+];
+
+/** The same-day block under the Disney day (2% ticket → 6.5 / 5 / 20% neighbours). */
+export const tokyoKidsDisneyDayPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelMaihama,
+    why: "A room at the station the parks share turns a 15-to-20-minute Keiyo Line ride from Tokyo Station into a short walk or a monorail stop — what makes a nap break, or staying for the evening, realistic with small children.",
+  },
+  {
+    ...tripPrepProducts.hotelUrayasu,
+    why: "The cheaper side of the same idea: one stop further out, and many of these hotels run their own free shuttle to the gates.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "The Haneda listing names Tokyo Disney Resort among its destinations — the airport run that ends at the resort, with the luggage under the bus rather than on a train beside a stroller.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The passport is a QR code on each guest's own smartphone, and the official app is where in-park features are managed — none of which works on a phone waiting for hotel Wi-Fi.",
+  },
+];
+
+/** The same-day block under the Odaiba / Sanrio days. */
+export const tokyoKidsCityDayPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.subway,
+    why: "Covers Tokyo Metro and Toei between the base and the day's starting point — but not JR, not the Yurikamome to Odaiba and not the Keio or Odakyu lines to Tama Center, so on those two days it covers the city half only.",
+  },
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the sightseeing bus tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "A seated, guided loop of the Imperial Palace gardens, Asakusa and Skytree — the low-walking version of a sightseeing day, and the listing sells a child rate.",
+  },
+  {
+    label: tokyoPrivateAirportTransfer.title,
+    ctaLabel: "Check the airport transfer →",
+    url: tokyoPrivateAirportTransfer.url,
+    why: "A car to your hotel address from Narita or Haneda, in 7- and 10-seater sizes — the arrival that avoids carrying children, cases and a stroller through two stations.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Every ticket on this route is an e-ticket or a timed reservation on a phone, and so are the maps between them.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Okinawa Churaumi Aquarium, added 3 Nov 2026 for
+// okinawa-churaumi-aquarium-tickets — the first Okinawa page on this site.
+//
+// Each listing was confirmed live and in its en-US form through the www.klook.com
+// search index on 3 Nov 2026 (the /activity/ pages still answer automated reads
+// with HTTP 403): "Okinawa Churaumi Aquarium Ticket" (1421); "Northern Okinawa:
+// Churaumi Aquarium & Kouri Island & Cape Manza & American Village Day Tour
+// (Departing from Naha & Chatan)" (134350); "Shared Naha Airport Limousine Bus
+// Transfer for Okinawa" (33381); the Naha Airport car-rental search; the Naha
+// hotel search (c13641) and the hotels-near-the-aquarium search (p50046533).
+// Not used: 19157, whose en-US title states a Chinese-speaking guide, and 179447,
+// which surfaced only without a locale. No price appears for any of them.
+//
+// The aquarium ticket is a bare attraction admission, so it is not the only CTA:
+// the northern day tour (6.5%) sits beside it with a GetYourGuide compare, and
+// hotels / car rental / airport bus / eSIM are in the same-day block.
+// ---------------------------------------------------------------------------
+
+export const churaumiAquariumTicket: KlookTour = {
+  title: "Okinawa Churaumi Aquarium ticket",
+  desc: "The straight admission as an e-ticket, scanned at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/1421-churaumi-aquarium-okinawa/"),
+};
+
+export const churaumiKouriNorthernDayTour: KlookTour = {
+  title: "Northern Okinawa day tour: Churaumi Aquarium, Kouri Island, Cape Manzamo & American Village",
+  desc: "A join-in coach day from Naha or Chatan that strings the aquarium together with the north's other headline stops",
+  url: klookLink("https://www.klook.com/en-US/activity/134350-churaumi-aquarium-kouri-island-american-village-one-day-tour/"),
+};
+
+export const nahaAirportLimousineBus: KlookTour = {
+  title: "Shared Naha Airport limousine bus transfer",
+  desc: "The airport coach to hotel zones from Naha out to the west-coast resort areas, with the bus and time chosen at checkout",
+  url: klookLink("https://www.klook.com/en-US/activity/33381-shared-naha-airport-limousine-bus-transfer-okinawa/"),
+};
+
+export const nahaAirportCarRental: KlookTour = {
+  title: "Car rental at Naha Airport",
+  desc: "Klook's car-rental search for pick-up at Naha Airport; the page states non-residents need a passport, their own licence and an international driving permit, and a credit card",
+  url: klookLink("https://www.klook.com/en-US/car-rentals/poi/50036544-naha-airport-car-rentals/"),
+};
+
+export const okinawaChuraumiStayAreas: KlookStayArea[] = [
+  {
+    area: "Naha",
+    why: "Where the airport, the monorail, the day tours' pick-up points and the airport limousine bus all are — the base if the aquarium is one day of a longer Okinawa trip.",
+    url: klookLink("https://www.klook.com/en-US/destination/c13641-naha/3-hotel/"),
+  },
+  {
+    area: "Motobu / near the aquarium",
+    why: "Klook's search for hotels near the aquarium, on the Motobu Peninsula. A night here turns a four-hour round trip into a short drive, and puts the 8:30 opening, Kouri Island and Bise within easy reach.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50046533-okinawa-churaumi-aquarium/3-hotel/"),
+  },
+];
+
+export const churaumiSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: churaumiKouriNorthernDayTour.title,
+    ctaLabel: "Check the northern day tour →",
+    url: churaumiKouriNorthernDayTour.url,
+    why: "If nobody in your group is driving, this is the day in one booking: the coach from Naha or Chatan, the aquarium and Kouri Island. Check whether the option you pick includes the aquarium ticket and which language the guide speaks.",
+  },
+  {
+    label: nahaAirportCarRental.title,
+    ctaLabel: "Check Naha Airport car rentals →",
+    url: nahaAirportCarRental.url,
+    why: "The aquarium's own access page puts it about two hours from Naha Airport by car on the Okinawa Expressway, against about three by express bus — and a car is what makes Kouri Island and Bise the same afternoon.",
+  },
+  {
+    label: "Hotels near Okinawa Churaumi Aquarium",
+    ctaLabel: "Check hotels near the aquarium →",
+    url: okinawaChuraumiStayAreas[1].url,
+    why: "One night on the Motobu Peninsula means being at the gate for the 8:30 opening, before the coaches from Naha arrive.",
+  },
+  {
+    label: nahaAirportLimousineBus.title,
+    ctaLabel: "Check the airport bus →",
+    url: nahaAirportLimousineBus.url,
+    why: "For a family that is not driving, the coach from the airport to the hotel zones — choose the bus number and time at checkout.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Your ticket, the bus times and the parking map are all on your phone, and the drive north is the part of the day with no hotel Wi-Fi.",
+  },
+];

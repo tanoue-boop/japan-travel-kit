@@ -93,6 +93,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/okinawa-churaumi-aquarium-tickets",
+    badge: "Tickets",
+    title: "Okinawa Churaumi Aquarium Tickets 2026: Price, Hours, Access",
+    desc: "¥2,180 for an adult, ¥710 for a child, free under 6. Open 8:30–18:30 most of the year, about two hours by car from Naha Airport — and whether a northern day tour beats renting a car.",
+    group: "tickets",
+    // Okinawa is outside the three city hubs, so it reads as nationwide.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/umeda-sky-building-tickets",
     badge: "Tickets",
     title: "Umeda Sky Building Tickets (2026): Prices, Hours and the Best Time to Go",
@@ -375,6 +384,14 @@ export const attractionArticles: GuideArticle[] = [
     badge: "Itinerary",
     title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order",
     desc: "Three days, three districts — west, east and centre — with a table per day and only two stops that need a timed ticket. Official prices for each ticketed stop, with the date we checked them.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/tokyo-itinerary-with-kids",
+    badge: "Itinerary",
+    title: "Tokyo Itinerary with Kids: 5 Days, Day by Day (2026)",
+    desc: "Disney on Day 2, LEGOLAND Discovery Center and Sanrio Puroland on the two indoor days, Kamakura or Hakone on Day 5 — with what children pay on the trains, the stroller rules and where families should stay.",
     group: "cities",
     city: "tokyo",
   },
