@@ -5080,3 +5080,50 @@ export const churaumiSameDayPrep: KlookTripPrepItem[] = [
     why: "Your ticket, the bus times and the parking map are all on your phone, and the drive north is the part of the day with no hotel Wi-Fi.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Hokkaido Rail Pass and JR EAST PASS entry guides — added 3 Nov 2026 for
+// /guides/transport/hokkaido-rail-pass and /guides/transport/jr-east-pass.
+//
+// Reused unchanged: jrHokkaidoRailPass (3067), furanoBieiBluePondDayTour (88593),
+// otaruSnowParkDayTour (98528), the Sapporo Station hotel search
+// (p50006996), jrTokyoWidePass (49927), galaNaebaSkiDayTripTokyo (140645),
+// karuizawaShinkansenDayTrip (90953) and klookEsim (109393). Each was
+// re-confirmed live as an en-US listing through the www.klook.com search index
+// on 3 Nov 2026, because Klook answers automated reads with HTTP 403.
+//
+// New below, all confirmed the same way on 3 Nov 2026:
+//   - /activity/1418-jr-east-pass — the single JR EAST PASS (5 or 10 consecutive
+//     days) that replaced the Tohoku-area and Nagano/Niigata-area passes on
+//     14 March 2026. `jrEastPassNaganoNiigata` (1419) above is the withdrawn
+//     product and is deliberately not used on the new guide.
+//   - /activity/71864 — the Sapporo–Furano Area Pass, the comparison the
+//     Hokkaido guide has to make.
+//   - Klook's New Chitose airport-transfer page. The older shared-transfer
+//     listing (12479) now indexes as a Tomamu resort coach, so the airport
+//     page is the transfer CTA on the Hokkaido guide instead.
+//
+// Bands: the three passes and the airport transfer are 5%, the day tours and
+// hotel search 6.5%, the eSIM 20%. No Klook price appears on either page.
+// ---------------------------------------------------------------------------
+
+/** The one JR EAST PASS sold since 14 March 2026 — 5 or 10 consecutive days. */
+export const jrEastPass: KlookTour = {
+  title: "JR EAST PASS (5 or 10 consecutive days)",
+  desc: "JR East's single regional pass as Klook sells it — every JR East line including the Tohoku, Joetsu, Akita, Yamagata and Hokuriku (to Joetsumyoko) shinkansen, collected at a major JR East station",
+  url: klookLink("https://www.klook.com/en-US/activity/1418-jr-east-pass/"),
+};
+
+/** JR Hokkaido's four-day Sapporo–Furano Area Pass. */
+export const sapporoFuranoAreaPass: KlookTour = {
+  title: "Hokkaido Sapporo–Furano Area Pass (4 days)",
+  desc: "Four consecutive days between New Chitose Airport, Sapporo, Otaru, Asahikawa, Biei and Furano — the smaller pass that beats the island pass when the trip stays on that line",
+  url: klookLink("https://www.klook.com/en-US/activity/71864-hokkaido-sapporo-furano-area-pass-4-day/"),
+};
+
+/** Klook's New Chitose Airport transfer page — private car and shared options. */
+export const newChitoseAirportTransfers: KlookTour = {
+  title: "New Chitose Airport transfers (private car & shared)",
+  desc: "Klook's airport-transfer page for New Chitose, for arrivals with ski bags or a hotel outside Sapporo that the Rapid Airport train does not reach",
+  url: klookLink("https://www.klook.com/en-US/airport-transfers/service/cts-new-chitose-airport/"),
+};

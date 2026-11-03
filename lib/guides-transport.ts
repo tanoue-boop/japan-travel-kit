@@ -19,6 +19,22 @@ export const transportArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/transport/jr-east-pass",
+    badge: "Pass",
+    title: "JR East Pass (2026): Price, Coverage and Is It Worth It?",
+    desc: "¥35,000 for 5 consecutive days or ¥50,000 for 10 — one pass for Tohoku, Niigata and Nagano since the two area passes ended on 13 March 2026. The Hokuriku Shinkansen stops at Joetsumyoko, so Kanazawa is not on it.",
+    group: "passes",
+    city: "other",
+  },
+  {
+    href: "/guides/transport/hokkaido-rail-pass",
+    badge: "Pass",
+    title: "Hokkaido Rail Pass (2026): Price and Is It Worth It?",
+    desc: "¥22,000 / ¥28,000 / ¥37,000 for 5, 7 or 10 days bought in advance. No Hokkaido Shinkansen — and on a Sapporo-based trip the ¥11,000 Sapporo–Furano Area Pass beats it. Break-even on JR Hokkaido's own fares.",
+    group: "passes",
+    city: "other",
+  },
+  {
     href: "/guides/transport/shinkansen-guide",
     badge: "Guide",
     title: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers",
