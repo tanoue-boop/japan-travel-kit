@@ -5127,3 +5127,76 @@ export const newChitoseAirportTransfers: KlookTour = {
   desc: "Klook's airport-transfer page for New Chitose, for arrivals with ski bags or a hotel outside Sapporo that the Rapid Airport train does not reach",
   url: klookLink("https://www.klook.com/en-US/airport-transfers/service/cts-new-chitose-airport/"),
 };
+
+// ---------------------------------------------------------------------------
+// Jigokudani snow monkey guide — added 3 Nov 2026 for
+// /guides/attractions/jigokudani-snow-monkey-tour.
+//
+// Klook answers automated reads of /activity/ and /hotels/ pages with HTTP 403,
+// so every URL below was confirmed live and in its en-US form through the
+// www.klook.com search index on 3 Nov 2026. No Klook price appears on the page.
+//
+// Reused unchanged: jrEastPass (1418) and klookEsim (109393).
+// Bands: the day tours and hotel pages 6.5%, the JR EAST PASS 5%, the eSIM 20%.
+// Not used: /activity/7290, whose en-US and default-locale index titles disagree
+// (a Nagano day tour on one, a two-day Shirakawa-go tour on the other).
+// ---------------------------------------------------------------------------
+
+/** The coach day — the park and Zenko-ji with a sukiyaki lunch. The headline CTA. */
+export const jigokudaniZenkojiSukiyakiTour: KlookTour = {
+  title: "Jigokudani Snow Monkey Park & Zenko-ji day tour (beef sukiyaki lunch)",
+  desc: "A guided day pairing the snow monkey park with Zenko-ji, the national-treasure temple in Nagano, with a beef sukiyaki lunch in the booking",
+  url: klookLink("https://www.klook.com/en-US/activity/171615-jigokudani-snow-monkey-park-zenkoji-temple-tour-with-beef-sukiyaki/"),
+};
+
+/** The shinkansen version — the guide meets you at Tokyo Station. */
+export const snowMonkeysShinkansenDayTourTokyo: KlookTour = {
+  title: "Meet Snow Monkeys day tour from Tokyo (by shinkansen)",
+  desc: "The bullet-train version of the day: an English-speaking guide meets you at Tokyo Station, with Zenko-ji's approach street for lunch",
+  url: klookLink("https://www.klook.com/en-US/activity/2032-snow-monkeys-private-day-tour-tokyo/"),
+};
+
+/** A second Tokyo-departure listing, for date availability. */
+export const naganoSnowMonkeyDayTourTokyo: KlookTour = {
+  title: "Nagano Snow Monkey day tour from Tokyo",
+  desc: "A Tokyo-departure day to Jigokudani — a second listing to check when the first is full on your date",
+  url: klookLink("https://www.klook.com/en-US/activity/33453-nagano-snow-monkey-day-tour-tokyo/"),
+};
+
+/** Private vehicle, the park and Zenko-ji. */
+export const jigokudaniZenkojiPrivateDayTrip: KlookTour = {
+  title: "Jigokudani Monkey Park & Zenko-ji private day trip",
+  desc: "The same two stops in a private vehicle for your own group — the version for families or anyone who wants to set the pace on the trail",
+  url: klookLink("https://www.klook.com/en-US/activity/143326-jigokudani-monkey-park-zenkoji-temple-private-day-trip/"),
+};
+
+/** Ski-trip version: the monkeys as a day off from Nozawa Onsen. */
+export const nozawaSnowMonkeyZenkojiTour: KlookTour = {
+  title: "Winter tour from Nozawa Onsen: snow monkeys, Zenko-ji & sake tasting",
+  desc: "A winter-only day out of Nozawa Onsen for skiers already in Nagano, with Zenko-ji and a sake tasting on the same run",
+  url: klookLink("https://www.klook.com/en-US/activity/121803-winter-only-1-day-tour-from-nozawa-onsen-snow-monkeys-zenko-ji-t/"),
+};
+
+/** Where to stay for a snow monkey morning — one Klook hotel link per base. */
+export const jigokudaniStayAreas: KlookStayArea[] = [
+  {
+    area: "Kanbayashi Onsen (Kanbayashi Hotel Senjukaku)",
+    why: "The hot-spring village at the trailhead: the park's free car park and the 2 km Yumichi trail start here, so you can be on the path before the day-trip crowd arrives.",
+    url: klookLink("https://www.klook.com/en-US/hotels/detail/442488-kanbayashi-hotel-senjukaku/"),
+  },
+  {
+    area: "Shibu Onsen (Wafu No Yado MASUYA)",
+    why: "The old ryokan street just below the park, for a night between the monkeys and the train back to Nagano.",
+    url: klookLink("https://www.klook.com/en-US/hotels/detail/394283-wafu-no-yado-masuya/"),
+  },
+  {
+    area: "Yudanaka (Hotel Tsubakino)",
+    why: "At the end of the Nagano Electric Railway, where the 15-minute local bus to the Snow Monkey Park stop begins.",
+    url: klookLink("https://www.klook.com/en-US/hotels/detail/50279-hotel-tsubakino/"),
+  },
+  {
+    area: "Nagano Station",
+    why: "The base that keeps every option open: the shinkansen from Tokyo, the Nagaden line to Yudanaka, the express bus to the park and Zenko-ji all start here.",
+    url: klookLink("https://www.klook.com/en-US/destination/c26277-nagano/3-hotel/"),
+  },
+];

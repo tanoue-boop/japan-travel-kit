@@ -292,6 +292,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/jigokudani-snow-monkey-tour",
+    badge: "Day trip",
+    title: "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026",
+    desc: "Jigokudani's ¥800 entry and 9:00–16:00 winter hours, the 79-minute shinkansen to Nagano and the 30–35 minute walk in snow — plus when a tour beats doing it yourself.",
+    group: "daytrips",
+    // Nagano, not Tokyo: the day is spent at the park, same call as karuizawa-day-trip-from-tokyo.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/japan-14-day-itinerary",
     badge: "Itinerary",
     title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day",

@@ -1618,6 +1618,19 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 3 Nov 2026: the winter-only day out of Nagano — the snow monkeys, in full. */}
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 18l6-13 5 8 3-4 4 9z" />
+                  <line x1="2" y1="21" x2="22" y2="21" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 1 Nov 2026: the snow day this route puts on the Joetsu Shinkansen, in full. */}
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

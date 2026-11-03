@@ -806,6 +806,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
               { href: "/guides/transport/hokkaido-rail-pass", title: "Hokkaido Rail Pass (2026): Price and Is It Worth It?" },
               { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Gala Yuzawa Ski Day Trip from Tokyo" },
               { href: "/guides/attractions/karuizawa-day-trip-from-tokyo", title: "Karuizawa Day Trip From Tokyo" },
+              { href: "/guides/attractions/jigokudani-snow-monkey-tour", title: "Snow Monkey Tour from Tokyo: Jigokudani Guide" },
               { href: "/guides/attractions/nikko-day-trip", title: "Nikko Day Trip From Tokyo" },
               { href: "/guides/transport", title: "More Transport Guides →" },
             ].map((r) => (
