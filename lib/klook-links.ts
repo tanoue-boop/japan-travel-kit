@@ -1850,6 +1850,44 @@ export const bestTravelCardTripPrep: KlookTripPrepItem[] = [
 ];
 
 /**
+ * Revolut in Japan — added 4 Nov 2026. The page had no Klook route, and "does
+ * Revolut work in Japan" is answered in full by an AI summary. What a summary does
+ * not do is move a charge off the weekend or out of the ATM allowance, so each line
+ * here is tied to one of those two limits. Spread across eSIM 20%, airport access
+ * and the passes 5%, and the Tokyo hotel 6.5%. No new URLs.
+ */
+export const revolutCardTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Revolut runs from its app: spend alerts, the card freeze and the plan screen that shows your allowance all need data from the moment you land.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Land on a Saturday and a ticket bought on the day falls in Revolut's weekend window. Book the Narita round trip on a weekday before you fly and it does not.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "The Haneda side of the same decision: one fare settled ahead, so your first ATM withdrawal is not going on the ride into town.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "For Kansai arrivals: with the airport train already paid for, more of your free ATM allowance is left for the places that only take cash.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Tokyo Metro and Toei gates do not take a foreign contactless card, so this is one card payment in place of a run of yen fares.",
+  },
+  {
+    ...tripPrepProducts.jrPass,
+    why: "A single large charge, so check your plan's exchange limit first, and on Standard buy it on a weekday to stay clear of the 1% weekend fee.",
+  },
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "Another large payment that is better made on a weekday than at a front desk on a Saturday night, when Standard's weekend fee applies to any exchange.",
+  },
+];
+
+/**
  * Shibuya Sky — added 25 Oct 2026, and the reason is the commission band. The
  * SHIBUYA SKY ticket itself is a 2% "special activity" on Klook, so the site's
  * most-read page had no route into any other band. This block sits after the
