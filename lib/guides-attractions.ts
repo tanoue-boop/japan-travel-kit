@@ -292,6 +292,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/gion-night-walking-tour",
+    badge: "Tour",
+    title: "Gion Night Walking Tour 2026: Times, Types & Photo Rules",
+    desc: "About 3 hours, starting 16:00–20:00 by listing: small-group, private and kaiseki tours compared on start, group size and cancellation, plus Gion's photo rules and who actually set them.",
+    group: "daytrips",
+    city: "kyoto",
+  },
+  {
     href: "/guides/attractions/jigokudani-snow-monkey-tour",
     badge: "Day trip",
     title: "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026",

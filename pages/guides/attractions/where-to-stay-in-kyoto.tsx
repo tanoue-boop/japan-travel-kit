@@ -637,6 +637,18 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 4 Nov 2026: the Gion evening as a booked tour. */}
+            <Link href="/guides/attractions/gion-night-walking-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Gion Night Walking Tour 2026: Times, Types &amp; Photo Rules</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 29 Oct 2026: the area choice is made against an itinerary,
                 and the two-day plan is the one this page's four areas are sized for. */}
             <Link href="/guides/attractions/kyoto-2-day-itinerary" className={styles.relatedCard}>

@@ -5461,3 +5461,85 @@ export const tokyoOsakaArrivalPrep: KlookTripPrepItem[] = [
     why: "Changing a smartEX seat or reading a delay notice happens on your phone, so it needs data before you reach Tokyo Station.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Gion night walking tour guide — added 4 Nov 2026 for
+// /guides/attractions/gion-night-walking-tour.
+//
+// Klook answers automated reads of /activity/ pages with HTTP 403, so listings were
+// read through the www.klook.com search index on 4 Nov 2026. 186308, 102519 and 88827
+// appear there in en-US form. 45723 and 210008 appear only under other locale paths
+// (default-locale, en-AU, en-CA) with the same activity id; the en-US path is the same
+// activity. No Klook price appears on the page.
+//
+// Reused unchanged: kyotoGionNightWalkingTour (87999), kyotoStayAreas,
+// kyotoKimonoAiwafukuGion, klookEsim. Bands: tours and hotels 6.5%, eSIM 20%.
+// ---------------------------------------------------------------------------
+
+/** Hanamikoji after dark and the alleys off it; the listing notes the walk may be shared. */
+export const kyotoGionHiddenGemsNightTour: KlookTour = {
+  title: "Kyoto Gion night tour: the geisha district and hidden gems",
+  desc: "A night walk along Hanamikoji Street with teahouse architecture and quiet alleys and temples off the main road",
+  url: klookLink("https://www.klook.com/en-US/activity/186308-kyoto-gion-night-tour-discover-geisha-district-and-hidden-gems/"),
+};
+
+/** The one Gion night tour with dinner in the booking. */
+export const kyotoGionKaisekiNightTour: KlookTour = {
+  title: "Kyoto Gion night tour with kaiseki dinner",
+  desc: "Listed 17:00–20:00 for a small group of 2–10 with an English-speaking guide and a kaiseki dinner in the booking",
+  url: klookLink("https://www.klook.com/en-US/activity/102519-gion-tour-night-kyoto-join-3-hr-walking-tour-kaiseki-meal/"),
+};
+
+/** Your own party, with a choice of three evening departures. */
+export const kyotoGionPrivateWalkingTour: KlookTour = {
+  title: "Private Kyoto Gion highlights & hidden gems tour",
+  desc: "A 3-hour private walk with a local guide, leaving at 16:00, 17:00 or 18:00; meals and admissions are not included",
+  url: klookLink("https://www.klook.com/en-US/activity/45723-kyoto-gion-memoirs-geisha-private-walking-tour-guided-tour/"),
+};
+
+/** The latest departures of the set, capped at six. */
+export const kyotoGionStudentNightWalk: KlookTour = {
+  title: "Kyoto Gion small-group night walk with local students",
+  desc: "A walk for up to six, run by Kyoto with Locals in English, with departures listed from 18:00",
+  url: klookLink("https://www.klook.com/en-US/activity/210008-kyoto-gion-night-small-group-walk-with-sweets/"),
+};
+
+/** The evening as a food tour rather than a walk. */
+export const kyotoGionFoodieNightTour: KlookTour = {
+  title: "Kyoto premium night foodie tour in Gion",
+  desc: "A night food tour of Gion with nine-plus dishes and three sake tastings listed",
+  url: klookLink("https://www.klook.com/en-US/activity/88827-gion-join-half-day-food-tour/"),
+};
+
+/** Two bases a walk from the tour, so the end of the night needs no bus. */
+export const gionNightStayAreas: KlookStayArea[] = [
+  {
+    area: "Gion / Higashiyama",
+    why: "You are already there when the tour ends, and the Tozai Line at Higashiyama is close by for the morning.",
+    url: kyotoStayAreas[2].url,
+  },
+  {
+    area: "Shijo-Kawaramachi / Karasuma",
+    why: "Kyoto's tourism association puts Shijo Kawaramachi about 13 minutes on foot from Yasaka Shrine, with Karasuma's two subway lines beyond it for the next day.",
+    url: kyotoStayAreas[1].url,
+  },
+];
+
+export const gionNightSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels in Gion",
+    ctaLabel: "Check Gion hotel prices →",
+    url: kyotoStayAreas[2].url,
+    why: "A 3-hour evening tour ends after dark, and a bed in Gion means the walk back is the end of the tour.",
+  },
+  {
+    label: "Gion kimono rental with hair styling",
+    ctaLabel: "Check the kimono rental →",
+    url: kyotoKimonoAiwafukuGion.url,
+    why: "The listing puts the Gion Shijo store two minutes from Hanamikoji and Shirakawa, but check its return time against your tour.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Your booking names a meeting point in a district of narrow lanes, and you will want a working map to reach it on time.",
+  },
+];
