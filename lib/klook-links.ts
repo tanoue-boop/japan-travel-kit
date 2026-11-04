@@ -2446,6 +2446,42 @@ export const whereToStayOsakaTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * Osaka Metro Pass, added 4 Nov 2026 — what a day on the pass still needs booking.
+ * No new URLs: food tour 6.5%, the Namba and Umeda hotel searches 6.5%, the airport
+ * trains 5%, the eSIM 20%. Neither airport train is on any Osaka Metro pass.
+ */
+export const osakaMetroPassTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Dotonbori daytime food tour",
+    why: "Listed at 11:00 to 14:00, so it sits in the middle of a pass day with the afternoon still to ride.",
+    ctaLabel: "Check the food tour →",
+    url: dotonboriDaytimeFoodTour.url,
+  },
+  {
+    label: "Hotels in Namba",
+    why: "The southern hub of the Midosuji Line, so most subway days on the pass start and end with one straight ride.",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: osakaStayAreas[1].url,
+  },
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "The northern Midosuji hub, a 2-ku ride from Namba, and the better base if you are connecting to the shinkansen.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "No Osaka Metro pass reaches Kansai Airport, and the Haruka runs direct to Tennoji, Osaka and Shin-Osaka.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    why: "The Namba alternative: Nankai puts it at a minimum of 34 minutes from Kansai Airport, with no transfer.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Live route and fare searches need data, and Osaka Metro's own fare search runs in the browser.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // USJ and the JR Pass, added 26 Oct 2026 — the two highest-traffic pages on this
 // site whose only Klook links were in the bands that pay least.
