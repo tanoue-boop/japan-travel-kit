@@ -2881,6 +2881,54 @@ export const hokurikuArchPass: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/2781-7-day-jr-hokuriku-arch-pass-jr-pass/"),
 };
 
+// ---------------------------------------------------------------------------
+// Added 4 Nov 2026 for /guides/transport/hokuriku-arch-pass and
+// /guides/transport/kintetsu-rail-pass.
+//
+// Klook answers automated reads with HTTP 403, so each page below was confirmed
+// as a live en-US URL through the www.klook.com search index on 4 Nov 2026. The
+// pass is the 5% band; the Ise days are tours (6.5%); the hotel searches are
+// Klook Hotels (6.5%). No price appears on any of them.
+// ---------------------------------------------------------------------------
+
+/** Listing 15984 is the one the index shows in en-US form; 5540 only appeared without a locale. */
+export const kintetsuRailPass: KlookTour = {
+  title: "Kintetsu Rail Pass (1 Day / 2 Days / 5 Days / Plus)",
+  desc: "The digital pass as Klook sells it, for Kintetsu trains around Osaka, Nara, Kyoto, Nagoya and Mie. Limited express seats stay a separate ticket",
+  url: klookLink("https://www.klook.com/en-US/activity/15984-kintetsu-rail-pass-osaka/"),
+};
+
+export const iseShrineOkageGuidedTour: KlookTour = {
+  title: "Ise Grand Shrine & Okage Yokocho guided tour",
+  desc: "A guided visit to the shrine and the Okage Yokocho street once you are in Ise — the rail pass gets you there, and this covers the day",
+  url: klookLink("https://www.klook.com/en-US/activity/134489-ise-ise-grand-shrine-and-okage-yokocho-guided-tour/"),
+};
+
+/** Listed as a Japanese-language tour that needs 20 participants, so check both before booking. */
+export const iseFutamiBusTourOsaka: KlookTour = {
+  title: "Ise Grand Shrine & Futami bus tour from Osaka (lobster lunch)",
+  desc: "A coach day out of Osaka instead of the train, listed in Japanese with a translator device and a 20-person minimum, so check the language and the departure first",
+  url: klookLink("https://www.klook.com/en-US/activity/87921-futami-okitama-shrine-ise-grand-shrine-one-day-bus-tour-spiny-lobster-lunch-osaka/"),
+};
+
+export const kanazawaHotels: KlookTour = {
+  title: "Hotels in Kanazawa",
+  desc: "Klook's Kanazawa hotel search, for the night that splits the Tokyo and Kansai halves of the trip",
+  url: klookLink("https://www.klook.com/en-US/destination/c445-kanazawa/3-hotel/"),
+};
+
+export const toyamaHotels: KlookTour = {
+  title: "Hotels in Toyama",
+  desc: "Klook's Toyama hotel search, for a night one stop before Kanazawa on the same shinkansen",
+  url: klookLink("https://www.klook.com/en-US/destination/c21926-toyama/3-hotel/"),
+};
+
+export const naraHotels: KlookTour = {
+  title: "Hotels in Nara",
+  desc: "Klook's Nara hotel search, for staying over rather than coming back from a day trip",
+  url: klookLink("https://www.klook.com/en-US/hotels/city/12999-nara-hotels/"),
+};
+
 /** Kanazawa itself — the garden, the geisha district and the castle in a day. */
 export const kanazawaKenrokuenHigashiChayaDayTour: KlookTour = {
   title: "Kanazawa: Kenroku-en & Higashi Chaya day tour with temarizushi making",

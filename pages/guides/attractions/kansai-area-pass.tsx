@@ -784,6 +784,19 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 4 Nov 2026: the rail pass guide for this route. */}
+            <Link href="/guides/transport/kintetsu-rail-pass" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 5h16v6a3 3 0 0 0 0 6v2H4v-2a3 3 0 0 0 0-6z" />
+                  <path d="M12 7v10" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kintetsu Rail Pass (2026): Prices and Is It Worth It?</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 30 Oct 2026: the itinerary this pass is usually bought for, with the three-day break-even worked through. */}
             <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

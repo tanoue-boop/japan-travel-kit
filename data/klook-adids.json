@@ -174,10 +174,12 @@
   "/zh-tw/guides/attractions/tokyo-skytree-tickets": 1528245,
   "/zh-tw/guides/attractions/usj-tickets-express-pass": 1528203,
   "/zh-tw/guides/esim/best-esim-japan": 1528204,
-  "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
+  "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205,
+  "/guides/transport/hokuriku-arch-pass": 1538103,
+  "/guides/transport/kintetsu-rail-pass": 1538104
  },
  "spare": [
-  1538103,1538104,1538105,1538106,1538107,1538108,
+  1538105,1538106,1538107,1538108,
   1538109,1538110,1538111,1538112,1538113,1538114,1538115,1538116,1538117,1538118,
   1538119,1538120,1538121,1538122,1538123,1538124,1538125,1538126,1538127,1538128]
 }

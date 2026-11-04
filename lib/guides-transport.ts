@@ -27,6 +27,22 @@ export const transportArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/transport/hokuriku-arch-pass",
+    badge: "Pass",
+    title: "Hokuriku Arch Pass (2026): Price, Route and Is It Worth It?",
+    desc: "¥35,000 adult, ¥17,500 child for 7 days from Tokyo to Kanazawa and Osaka, Thunderbird and Haruka included, Tokaido Shinkansen not. ¥15,000 to ¥18,000 under the JR Pass, but a single run costs less on tickets.",
+    group: "passes",
+    city: "other",
+  },
+  {
+    href: "/guides/transport/kintetsu-rail-pass",
+    badge: "Pass",
+    title: "Kintetsu Rail Pass (2026): Prices and Is It Worth It?",
+    desc: "¥1,900 for 1 day, ¥3,700 for 2, ¥4,900 for 5 and ¥6,700 for the 5day Plus. Limited express seats are always extra, a plain Nara return is cheaper on singles, and Kashikojima is where the 5day starts to pay.",
+    group: "passes",
+    city: "osaka",
+  },
+  {
     href: "/guides/transport/hokkaido-rail-pass",
     badge: "Pass",
     title: "Hokkaido Rail Pass (2026): Price and Is It Worth It?",
