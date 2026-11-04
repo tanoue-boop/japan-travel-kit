@@ -21,8 +21,8 @@ import {
   jrHarukaUrl,
   jrPassWholeJapan,
   klookEsim,
+  kyotoCityFushimiArashiyamaTour,
   kyotoGionNightWalkingTour,
-  kyotoHighlightBusTour,
   kyotoNaraKiyomizuTour,
   nankaiRapitUrl,
   naritaExpressRoundTripUrl,
@@ -118,7 +118,9 @@ const days: Day[] = [
         30-minute slot with nothing sold on site, and SHIBUYA SKY goes on sale at 00:00 Japan time two
         weeks ahead, with sunset the slot that goes. Prices are {PRICES.teamlabPlanets.adult} and{" "}
         {PRICES.shibuyaSky.adult} (read {checkedLabel(PRICES.teamlabPlanets.checked)} and{" "}
-        {checkedLabel(PRICES.shibuyaSky.checked)}).
+        {checkedLabel(PRICES.shibuyaSky.checked)}). Klook&apos;s SHIBUYA SKY listing now says that for
+        visits from 19 November 2026 its buyers must bring the original passport for everyone in the party,
+        and that QR codes are not accepted (read {OWN}), so pack them.
       </>
     ),
     stops: [
@@ -187,7 +189,7 @@ const days: Day[] = [
       { time: "Night", place: "Gion and Hanamikoji, with a guide if you want the history", allow: "2–3 hours", getting: "On foot from Kiyomizu-dera", booking: "Only for a guided walk" },
     ],
     picks: [
-      { label: "Kyoto one-day bus tour →", url: kyotoHighlightBusTour.url },
+      { label: "Kyoto one-day tour →", url: kyotoCityFushimiArashiyamaTour.url },
       { label: "Gion night walking tour →", url: kyotoGionNightWalkingTour.url },
     ],
   },
@@ -292,7 +294,7 @@ const railRows = [
 const checklistRows = [
   { item: "Hotels", when: "As soon as your dates are fixed; earliest for blossom and autumn colour", detail: "All three cities, by area, in the section below" },
   { item: "Ghibli Museum, if you want it", when: "10:00 Japan time on the 10th of the month before your visit", detail: "Reserved tickets only, and nothing is sold at the museum. Buy through the channels on the museum's own ticket page" },
-  { item: "SHIBUYA SKY", when: "00:00 Japan time, two weeks ahead", detail: "Sunset goes first. Book the moment your date opens" },
+  { item: "SHIBUYA SKY", when: "00:00 Japan time, two weeks ahead", detail: "Sunset goes first. Book the moment your date opens, and bring your passport if you buy on Klook" },
   { item: "teamLab Planets", when: "As early as you can; no walk-up", detail: "A 30-minute slot, and the official store sells nothing on site" },
   { item: "Shinkansen seat", when: "smartEX opens one year ahead, seats confirmed one month out; JR reserved seats on sale at 10:00 one month ahead", detail: "Essential on the dates every Nozomi is reserved, and for bags over 160 cm" },
   { item: "USJ, if Day 8 is a park day", when: "Before you arrive", detail: "The gate stopped selling tickets in May 2025" },

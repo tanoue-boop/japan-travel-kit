@@ -5287,12 +5287,22 @@ export const kansaiAreaPassSameDayPrep: KlookTripPrepItem[] = [
 
 // ---------------------------------------------------------------------------
 // First-time Japan itinerary and the Tokyo to Osaka shinkansen, added 4 Nov 2026
-// (task jtk-20261104-01). No new Klook URLs: every entry reuses an existing constant
-// or destination id, each re-confirmed live and in en-US form through the
-// www.klook.com search index on 4 Nov 2026 (the JR Pass through Klook's rail-pass
-// page). The itinerary carries SHIBUYA SKY and teamLab, Klook's low bands, so its
-// block leads with the 6.5% hotels and tours, then 5% rail and the 20% eSIM. No prices.
+// (task jtk-20261104-01). One new URL, `kyotoCityFushimiArashiyamaTour`, because
+// activity 94748 (`kyotoHighlightBusTour`) could not be found in the www.klook.com
+// search index on 4 Nov 2026. Every other listing the two pages use was confirmed in
+// that index the same day, through a sibling locale where en-US did not surface, and
+// the JR Pass through Klook's rail-pass page. The two rail route pages answered a
+// direct read. The itinerary carries SHIBUYA SKY and teamLab, Klook's low bands, so
+// its block leads with the 6.5% hotels and tours, then 5% rail and the 20% eSIM.
+// No prices.
 // ---------------------------------------------------------------------------
+
+/** Kyoto Station departure, for Day 5 of the first-time itinerary. */
+export const kyotoCityFushimiArashiyamaTour: KlookTour = {
+  title: "Kyoto day tour: Fushimi Inari, Arashiyama and Kiyomizu-dera",
+  desc: "A one-day guided tour of the city's main sights, listed as leaving from the Hachijo side of Kyoto Station",
+  url: klookLink("https://www.klook.com/en-US/activity/82323-temples-shurines-day-tour-from-kyoto/"),
+};
 
 /** Three bases for nine days: two areas per city, chosen around the moving days. */
 export const firstTimeItineraryStayAreas: KlookStayArea[] = [
