@@ -22,6 +22,7 @@
   "/guides/attractions/jigokudani-snow-monkey-tour": 1538099,
   "/guides/attractions/kamakura-day-trip": 1528097,
   "/guides/attractions/kansai-area-pass": 1528098,
+  "/guides/attractions/japan-first-time-itinerary": 1538101,
   "/guides/attractions/karuizawa-day-trip-from-tokyo": 1528099,
   "/guides/attractions/kawaguchiko-day-trip-from-tokyo": 1528100,
   "/guides/attractions/kimono-rental-japan": 1528101,
@@ -127,6 +128,7 @@
   "/guides/transport/tokyo-to-kanazawa": 1528215,
   "/guides/transport/tokyo-to-kyoto": 1528174,
   "/guides/transport/tokyo-to-nagoya-shinkansen": 1528224,
+  "/guides/transport/tokyo-to-osaka-shinkansen": 1538102,
   "/guides/transport/tokyo-transportation": 1528175,
   "/guides/transport/tokyo-wide-pass": 1528237,
   "/ko": 1528216,
@@ -175,7 +177,7 @@
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205
  },
  "spare": [
-  1538101,1538102,1538103,1538104,1538105,1538106,1538107,1538108,
+  1538103,1538104,1538105,1538106,1538107,1538108,
   1538109,1538110,1538111,1538112,1538113,1538114,1538115,1538116,1538117,1538118,
   1538119,1538120,1538121,1538122,1538123,1538124,1538125,1538126,1538127,1538128]
 }

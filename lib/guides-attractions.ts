@@ -381,6 +381,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/japan-first-time-itinerary",
+    badge: "Itinerary",
+    title: "First Time Japan Itinerary (2026): 9 Days, Day by Day",
+    desc: "Tokyo 3 nights, Kyoto 3, Osaka 2, with Hakone or Nikko and Nara as day trips. A morning, afternoon and night table for each of the nine days, the JR Pass maths, how much cash to carry, and what to book before you fly.",
+    group: "cities",
+    // Nationwide: the trip runs Tokyo → Kyoto → Osaka and flies home from Kansai or Haneda.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/tokyo-5-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day",

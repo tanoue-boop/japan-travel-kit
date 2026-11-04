@@ -545,6 +545,19 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="3" width="16" height="14" rx="3" />
+                  <line x1="4" y1="10" x2="20" y2="10" />
+                  <path d="M7 21l2-4M17 21l-2-4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo to Osaka Shinkansen: Times, Fares, JR Pass</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 1 Nov 2026: the Minami question — if you sleep in Namba or Shinsaibashi, the pier is a walk away. */}
             <Link href="/guides/attractions/dotonbori-river-cruise" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

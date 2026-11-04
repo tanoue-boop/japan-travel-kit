@@ -5284,3 +5284,122 @@ export const kansaiAreaPassSameDayPrep: KlookTripPrepItem[] = [
     why: "The WEST QR pass is a QR code on your phone: you press \"Use ticket\" and book the two Haruka reserved seats online, and both need data from the moment you land.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// First-time Japan itinerary and the Tokyo to Osaka shinkansen, added 4 Nov 2026
+// (task jtk-20261104-01). No new Klook URLs: every entry reuses an existing constant
+// or destination id, each re-confirmed live and in en-US form through the
+// www.klook.com search index on 4 Nov 2026 (the JR Pass through Klook's rail-pass
+// page). The itinerary carries SHIBUYA SKY and teamLab, Klook's low bands, so its
+// block leads with the 6.5% hotels and tours, then 5% rail and the 20% eSIM. No prices.
+// ---------------------------------------------------------------------------
+
+/** Three bases for nine days: two areas per city, chosen around the moving days. */
+export const firstTimeItineraryStayAreas: KlookStayArea[] = [
+  {
+    area: "Tokyo Station / Marunouchi, Tokyo (3 nights)",
+    why: "The Tokaido Shinkansen leaves from under it on Day 4 and the Narita Express runs here direct on Day 1, so neither moving day starts with a cross-city ride with the cases.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Shinjuku, Tokyo (3 nights)",
+    why: "The better pick if Hakone is your Day 3: the Romancecar leaves from Shinjuku, and the Yamanote reaches Harajuku and Shibuya in minutes for the Day 2 sunset slot.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Kyoto Station, Kyoto (3 nights)",
+    why: "Where the shinkansen puts you down, where the 100 and 101 sightseeing buses start, and where the Day 6 Kintetsu and JR trains to Nara leave from.",
+    url: kyotoStayAreas[0].url,
+  },
+  {
+    area: "Gion / Higashiyama, Kyoto (3 nights)",
+    why: "Further from the station but on foot from Kiyomizu-dera and the Gion lanes, which is what three nights in Kyoto buys you room for.",
+    url: kyotoStayAreas[2].url,
+  },
+  {
+    area: "Namba, Osaka (2 nights)",
+    why: "Dotonbori on foot and the Nankai terminus under the hotel, so the Day 9 run to Kansai Airport starts without a change.",
+    url: osakaStayAreas[1].url,
+  },
+  {
+    area: "Umeda, Osaka (2 nights)",
+    why: "Joined to Osaka Station, so the pick if you arrive by JR Special Rapid on Day 7, and two stops from Shin-Osaka if your flight home leaves from Haneda.",
+    url: osakaStayAreas[0].url,
+  },
+];
+
+/** The checklist block: what a first trip needs before the plane leaves. */
+export const firstTimeBeforeYouFlyPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "Three nights booked first, because every other booking on this list depends on which side of Tokyo you wake up on.",
+  },
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "Three of your eight nights, in the city where blossom and autumn-colour dates are the first to tighten.",
+  },
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "The last two nights, and the one hotel you choose by your flight home: Umeda for the shinkansen, Namba for the Rapi:t.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "The Day 3 option if you would rather not plan the Hakone loop yourself: one coach, one guide, back in Tokyo the same night.",
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "The Day 6 option: Kiyomizu-dera, Fushimi Inari and Nara Park as one departure instead of two railways.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "The first thing you need on landing at Narita, and the last thing you want to be working out in an arrivals hall.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Covers Tokyo Metro and Toei on Days 1 and 2 and the Day 4 morning in Asakusa, but not JR or the Yamanote Line.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Every timed ticket on this page reaches you as a QR code, so data has to work before you reach immigration.",
+  },
+];
+
+/** The Osaka end of the train, for the shinkansen guide. */
+export const tokyoOsakaArrivalStayAreas: KlookStayArea[] = [
+  {
+    area: "Umeda, Osaka",
+    why: "Two stops down the Midosuji Line from Shin-Osaka, joined to Osaka Station, and the easier base if you are taking the train back.",
+    url: osakaStayAreas[0].url,
+  },
+  {
+    area: "Namba, Osaka",
+    why: "Stay on the same Midosuji Line train from Shin-Osaka, with Dotonbori on foot and the Nankai terminus for Kansai Airport.",
+    url: osakaStayAreas[1].url,
+  },
+  {
+    area: "Tennoji, Osaka",
+    why: "The far end of the useful stretch of the Midosuji Line, and a direct JR Haruka stop if you fly out of Kansai.",
+    url: osakaStayAreas[2].url,
+  },
+];
+
+export const tokyoOsakaArrivalPrep: KlookTripPrepItem[] = [
+  {
+    label: "Dotonbori daytime food tour",
+    why: "Listed at 11:00 to 14:00, so a train out of Tokyo by about 08:00 puts you there for it with the afternoon still to come.",
+    ctaLabel: "Check the food tour →",
+    url: dotonboriDaytimeFoodTour.url,
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Osaka Metro and city buses from the moment you leave Shin-Osaka, plus the castle and the river cruises on the same day.",
+  },
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "Book the room with the seat, so the train you choose and the night you arrive are settled in one sitting.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Changing a smartEX seat or reading a delay notice happens on your phone, so it needs data before you reach Tokyo Station.",
+  },
+];

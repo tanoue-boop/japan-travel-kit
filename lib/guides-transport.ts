@@ -83,6 +83,14 @@ export const transportArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/transport/tokyo-to-osaka-shinkansen",
+    badge: "Guide",
+    title: "Tokyo to Osaka Shinkansen: Times, Fares, JR Pass",
+    desc: "2h21m at the fastest and ¥14,720 reserved at the window, ¥14,520 on smartEX. A JR Pass needs a ¥4,960 ticket for the Nozomi, a return does not pay for one, and Nozomi reserved fares rise from 1 July 2027.",
+    group: "passes",
+    city: "other",
+  },
+  {
     href: "/guides/transport/osaka-to-hiroshima-shinkansen",
     badge: "Guide",
     title: "Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip",
