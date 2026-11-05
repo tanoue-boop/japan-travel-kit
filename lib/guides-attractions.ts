@@ -191,6 +191,23 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/kyoto-day-trip-from-tokyo",
+    badge: "Day trip",
+    title: "Kyoto Day Trip from Tokyo: Train, Cost & Plan (2026)",
+    desc: "About 2 hours 10 minutes each way by Nozomi and 6–8 hours in Kyoto: the return fare, a model day, tour or on your own, the JR Pass maths and what fits in one day.",
+    group: "daytrips",
+    city: "kyoto",
+  },
+  {
+    href: "/guides/attractions/hiroshima-peace-memorial-tours",
+    badge: "Day tour",
+    title: "Hiroshima Peace Memorial Tour: Guides, Museum & Tickets",
+    desc: "Guided tours of the park, the Atomic Bomb Dome and the museum compared, with official hours and fees, the busiest times, booking, visiting with children and getting there.",
+    group: "daytrips",
+    // Hiroshima sits outside the three city hubs.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/hakone-day-trip-from-tokyo",
     badge: "Day tour",
     title: "Hakone Day Trip From Tokyo (2026): Freepass Prices vs a Day Tour",

@@ -784,6 +784,19 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 5 Nov 2026: west of the pass area, for a longer loop. */}
+            <Link href="/guides/attractions/hiroshima-peace-memorial-tours" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Hiroshima Peace Memorial Tour: Guides, Museum &amp; Tickets</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 4 Nov 2026: the rail pass guide for this route. */}
             <Link href="/guides/transport/kintetsu-rail-pass" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

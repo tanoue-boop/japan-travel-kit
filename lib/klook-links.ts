@@ -5768,3 +5768,114 @@ export const okinawaDayToursPrep: KlookTripPrepItem[] = [
     why: "Operators send the meeting point, coach number and any weather cancellation by message the day before, so you need data from the moment you land.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kyoto day trip from Tokyo and Hiroshima Peace Memorial tours, added 5 Nov 2026.
+//
+// Each listing below was confirmed live in its en-US form through the www.klook.com
+// search index on 5 Nov 2026; the /activity/ pages still answer automated reads with
+// HTTP 403. Klook has no Kyoto day tour sold out of Tokyo with the train included,
+// so the Kyoto page pairs `shinkansenTokyoKyoto` (5%) with tours that start in Kyoto.
+// Two Hiroshima listings are deliberately not linked by id: the 2-hour historical
+// tour (no address in the index) and activity 190558, the 3-hour tour, seen only
+// without an en-US locale. Both are reached through `hiroshimaPeaceToursListUrl`.
+// ---------------------------------------------------------------------------
+
+/** The whole of the eastern side on foot, listed at 8 hours from Kyoto Station. */
+export const kyotoEasternWalkingTour: KlookTour = {
+  title: "Walking tour of eastern Kyoto: Fushimi Inari, Kiyomizu & Gion",
+  desc: "An 8-hour group day from Kyoto Station covering the three sights a day trip from Tokyo is usually built around",
+  url: klookLink("https://www.klook.com/en-US/activity/108981-walking-tour-of-eastern-kyoto-fushimi-inari-shrine-kiyomizu-gion/"),
+};
+
+/** A two-hour guided block for the afternoon of a self-planned day. */
+export const kyotoGionHigashiyamaWalkingTour: KlookTour = {
+  title: "Kyoto: Gion and Higashiyama walking tour",
+  desc: "A 2-hour guided walk, listed in English or Thai, that fits inside a self-planned day",
+  url: klookLink("https://www.klook.com/en-US/activity/162998-kyoto-gion-and-higashiyama-walking-tour/"),
+};
+
+/** Klook's list of tours around the museum, including the 2- and 3-hour listings. */
+export const hiroshimaPeaceToursListUrl = klookLink(
+  "https://www.klook.com/en-US/destination/p50056982-hiroshima-peace-memorial-museum/5-tour/",
+);
+
+/** The English-and-Japanese group walk: museum, Dome and park, listed at 5 hours. */
+export const hiroshimaPeaceHalfDayTour: KlookTour = {
+  title: "Hiroshima City, Peace Memorial Museum & Atomic Bomb Dome half-day tour",
+  desc: "A 5-hour group tour in English and Japanese, meeting a guide with a Magical Trip Tour sign",
+  url: klookLink("https://www.klook.com/en-US/activity/93034-hiroshima-city-peace-memorial-museum-atomic-bomb-dome-half-day-tour/"),
+};
+
+/** The private city version, which adds the castle and the garden. */
+export const hiroshimaPrivateWalkingTour: KlookTour = {
+  title: "4-hour private Hiroshima city walking tour",
+  desc: "A private walk taking in the Atomic Bomb Dome, Hiroshima Castle and Shukkeien Garden",
+  url: klookLink("https://www.klook.com/en-US/activity/118442-4-hour-private-hiroshima-city-walking-tour/"),
+};
+
+/** The park and museum in the morning, Miyajima in the afternoon, by coach. */
+export const hiroshimaPeaceMiyajimaBusTour: KlookTour = {
+  title: "Hiroshima Peace Memorial Museum & Miyajima one-day bus tour",
+  desc: "The museum and Itsukushima Shrine in one coach day, with a full refund up to 24 hours before on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/160219-hiroshima-peace-memorial-museum-miyajima-itsukushima-shrine-one-day-bus-tour/"),
+};
+
+/** The museum's own permanent-exhibition admission, sold as a QR ticket. */
+export const hiroshimaPeaceMuseumTicket: KlookTour = {
+  title: "Hiroshima Peace Memorial Museum ticket",
+  desc: "Permanent-exhibition admission on Klook, with instant confirmation",
+  url: klookLink("https://www.klook.com/en-US/activity/106604-hiroshima-peace-memorial-museum-permanent-exhibitions-admission/"),
+};
+
+/** Under the plan table: the train first, because that is what closes first. */
+export const kyotoDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: shinkansenTokyoKyoto.title,
+    ctaLabel: "Check Tokyo → Kyoto shinkansen →",
+    url: shinkansenTokyoKyoto.url,
+    why: "The return leg decides the length of your day. Klook sells it by date and seat class, with QR boarding, so fix the way back at the same time.",
+  },
+  {
+    label: kyotoCityFushimiArashiyamaTour.title,
+    ctaLabel: "Check the Kyoto day tour →",
+    url: kyotoCityFushimiArashiyamaTour.url,
+    why: "The way to see the most in one day without planning buses. It meets at JR Kyoto Station, where your shinkansen arrives.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A self-planned Kyoto day runs on bus routes and maps, so have data working before you leave Tokyo.",
+  },
+  {
+    label: "Hotels around Kyoto Station",
+    ctaLabel: "Check Kyoto Station hotels on Klook →",
+    url: kyotoStayAreas[0].url,
+    why: "If the plan outgrows one day, a night here keeps you beside the morning train back and turns the return into a choice rather than a deadline.",
+  },
+];
+
+/** The museum ticket is a low-band product, so the 5 / 6.5 / 20% bands sit beside it. */
+export const hiroshimaPeaceSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: shinkansenTokyoHiroshima.title,
+    ctaLabel: "Check Tokyo → Hiroshima shinkansen →",
+    url: shinkansenTokyoHiroshima.url,
+    why: "A morning arrival is what puts you in the park before the museum's busiest hours.",
+  },
+  {
+    label: "Hotels near the Peace Memorial Park",
+    ctaLabel: "Check nearby hotels on Klook →",
+    url: hiroshimaStayAreas[1].url,
+    why: "A night within walking distance lets you use the reserved early slot from 7:30, which a same-day arrival cannot reach.",
+  },
+  {
+    label: hiroshimaMiyajimaFerryDayTour.title,
+    ctaLabel: "Check the Miyajima day →",
+    url: hiroshimaMiyajimaFerryDayTour.url,
+    why: "For the day after, or for a day that starts earlier: the ferry crossing is inside the booking.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The museum's web ticket arrives by email as a barcode, and its live queue cameras are online, so data is useful before you reach the door.",
+  },
+];
