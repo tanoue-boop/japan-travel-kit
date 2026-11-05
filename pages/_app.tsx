@@ -20,6 +20,7 @@ const AFFILIATE_PARTNERS: { partner: string; hosts: string[] }[] = [
   { partner: "breeze", hosts: ["breezesim.com"] },
   { partner: "holafly", hosts: ["holafly.com"] },
   { partner: "esimgo", hosts: ["esimgo", "esim-go"] },
+  { partner: "simbye", hosts: ["simbye.com"] },
   // wise.prf.hn is the approved Partnerize click host (see lib/wise-links.ts);
   // wise.com stays listed so any stray plain link is still attributed.
   { partner: "wise", hosts: ["wise.prf.hn", "wise.com"] },

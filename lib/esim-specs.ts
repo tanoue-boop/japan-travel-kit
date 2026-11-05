@@ -42,7 +42,23 @@ export type EsimSpec = {
   dataRange: string;
 };
 
+/**
+ * Simbye joined after the others, so its row has its own date. Its clauses come from
+ * simbye.com/products/esim-japan and the plan flags in its price feed.
+ */
+export const SIMBYE_SPECS_CHECKED_AT = "5 Nov 2026";
+
 export const esimSpecs: EsimSpec[] = [
+  {
+    id: "simbye",
+    label: "Simbye",
+    phoneNumber:
+      'No — its Japan eSIM is data only ("Calls and texts: Not included"). Simbye sells separate US, UK, Dutch and Australian numbers, but no Japanese one',
+    phoneNumberShort: "No — data only",
+    tethering: 'Yes — its Japan page says hotspot use is "Allowed — for a laptop, tablet or a travel companion"',
+    tetheringShort: "Yes, on every Japan plan",
+    dataRange: "1–50 GB, plus unlimited",
+  },
   {
     id: "esimgo",
     label: "eSIM Go (Breeze)",

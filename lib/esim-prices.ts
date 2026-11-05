@@ -1,4 +1,5 @@
 import raw from "../data/esim-prices.json";
+import { simbyeLink } from "./simbye";
 
 /**
  * Typed access to data/esim-prices.json (refreshed daily by
@@ -17,9 +18,19 @@ export type EsimPlan = {
   /** Set when the allowance is per day (e.g. 3 GB/day); gb is then the trip total (cap × days). */
   dailyCapGb?: number;
   note?: string;
+  // The fields below are carried by Simbye's feed only.
+  /** Price with the partner discount code applied; priceUsd stays the list price. */
+  discountedUsd?: number;
+  /** Purchase URL from the feed, with the referral code and discount already on it. */
+  link?: string;
+  tethering?: boolean;
+  network5G?: boolean;
+  topUp?: boolean;
+  /** Carrier names exactly as the feed gives them. */
+  networks?: string[];
 };
 
-export type EsimProviderId = "airalo" | "holafly" | "esimgo" | "sakura";
+export type EsimProviderId = "airalo" | "holafly" | "esimgo" | "sakura" | "simbye";
 
 export type EsimProvider = {
   id: EsimProviderId;
@@ -42,7 +53,7 @@ export type EsimPlanRow = EsimPlan & {
   perGb: number | null;
 };
 
-const PROVIDER_ORDER: EsimProviderId[] = ["airalo", "holafly", "esimgo", "sakura"];
+const PROVIDER_ORDER: EsimProviderId[] = ["airalo", "holafly", "esimgo", "sakura", "simbye"];
 
 type RawData = {
   currency: string;
@@ -55,6 +66,13 @@ const data = raw as RawData;
 export const esimProviders: EsimProvider[] = PROVIDER_ORDER.filter((id) => data.providers[id]).map((id) => ({
   id,
   ...data.providers[id],
+  // The JSON holds bare simbye.com URLs; simbyeLink is the one place that adds the ref.
+  ...(id === "simbye"
+    ? {
+        affiliateUrl: simbyeLink(data.providers[id].affiliateUrl),
+        sourceUrl: simbyeLink(data.providers[id].sourceUrl),
+      }
+    : {}),
 }));
 
 export const esimGeneratedAt = data.generatedAt;

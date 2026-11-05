@@ -6,7 +6,7 @@ import {
   type EsimPlan,
   type EsimProviderId,
 } from "../lib/esim-prices";
-import { esimSpecs, SPECS_CHECKED_AT } from "../lib/esim-specs";
+import { esimSpecs, SIMBYE_SPECS_CHECKED_AT, SPECS_CHECKED_AT } from "../lib/esim-specs";
 import styles from "../styles/BestEsimJapan.module.css";
 import tools from "../styles/Tools.module.css";
 
@@ -73,7 +73,8 @@ export default function EsimAnswerTable({
         {note ? <>{note}{" "}</> : null}
         Data, validity and price are each provider&apos;s own figures, read by our daily
         feed on {pricesCheckedLabel()}. The phone-number and tethering clauses were read off
-        the same providers&apos; own pages and help centres on {SPECS_CHECKED_AT}.
+        the same providers&apos; own pages and help centres on {SPECS_CHECKED_AT} (Simbye:{" "}
+        {SIMBYE_SPECS_CHECKED_AT}).
       </p>
     </div>
   );

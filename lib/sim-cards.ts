@@ -24,10 +24,40 @@ export type SIMCard = {
   support: string;
   pros: string[];
   cons: string[];
-  rating: number;
+  /** Null where we hold no basis for a score: Simbye was added on 5 Nov 2026, unrated. */
+  rating: number | null;
 };
 
 export const simCards: SIMCard[] = [
+  {
+    id: "simbye-japan",
+    esimId: "simbye",
+    name: "Simbye Japan eSIM",
+    provider: "Simbye",
+    badge: "Lowest Price",
+    badgeColor: "bg-blue-500",
+    summary:
+      "A data-only Japan eSIM on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile, with fixed plans from 1 GB to 50 GB and unlimited plans at 2 GB a day of full speed. Every plan in its price feed allows tethering.",
+    speed: "",
+    voiceCall: false,
+    smsIncluded: false,
+    esim: true,
+    physicalSim: false,
+    setupEase: 5,
+    support: "Support chat and email on simbye.com",
+    pros: [
+      "Lowest list price of the five on fixed plans",
+      "Four Japanese carriers, chosen automatically",
+      "Tethering allowed on every Japan plan",
+      "A 50 GB plan valid for 180 days",
+    ],
+    cons: [
+      "Data-only (no Japanese number, calls or SMS)",
+      "Unlimited plans drop to 1 Mbps after 2 GB a day",
+      "Unlimited plans have no top-up",
+    ],
+    rating: null,
+  },
   {
     id: "airalo-japan",
     esimId: "airalo",
@@ -130,7 +160,7 @@ export const simCards: SIMCard[] = [
     setupEase: 5,
     support: "Email support (English)",
     pros: [
-      "Lowest entry price of the four",
+      "Short unlimited plans from 1 day",
       "Works in 190+ countries",
       "Instant activation via QR code",
       "Great for multi-country trips",

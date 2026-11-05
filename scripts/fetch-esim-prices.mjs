@@ -20,6 +20,8 @@
  *              Sakura's own plan page prices are rendered by a Checkfront booking
  *              widget behind an authenticated API, so the blog table is the only
  *              parseable official source.
+ *   Simbye     partner JSON feed (see fetchSimbye)      -> one read an hour at most,
+ *              so don't loop this script; --dry-run reads the feed too.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -248,9 +250,68 @@ async function fetchSakura() {
 }
 
 // ---------------------------------------------------------------------------
+// Simbye — partner JSON feed: a bare array of about 740 plans worldwide, refreshed
+// every 6 hours. The partner terms allow one read an hour, so this script must not be
+// re-run in a loop; the daily workflow reads it once. Only single-country Japan plans
+// are kept: the regional Asia plans also list Japan but are a different product.
+//   entity.data      { value: 5, unit: "GB" }  (value null on unlimited plans)
+//   entity.validity  { value: 30, unit: "days" }
+//   entity.prices    { USD: { standard, current } } in dollars; `current` is after the
+//                    discount code in the feed URL
+//   metadata.fairUse.description  throttle terms on unlimited plans
+//   link             purchase URL, already carrying the referral code and the discount
+// ---------------------------------------------------------------------------
+const SIMBYE_FEED =
+  "https://phpstack-1363863-5021510.cloudwaysapps.com/data-plans-of-simbye?ref=eqvmffxd&discount=ROEBHIOM";
+
+async function fetchSimbye() {
+  const feed = await get(SIMBYE_FEED, { json: true });
+  if (!Array.isArray(feed)) throw new Error("simbye: feed is not an array");
+  const plans = [];
+  for (const item of feed) {
+    const countries = item?.entity?.coverage?.countries;
+    if (!Array.isArray(countries) || countries.length !== 1 || countries[0]?.iso !== "JP") continue;
+
+    const unlimited = item.unlimited === true;
+    const { value: dataValue, unit: dataUnit } = item.entity.data ?? {};
+    const { value: days, unit: daysUnit } = item.entity.validity ?? {};
+    const price = item.entity.prices?.USD;
+    if (daysUnit !== "days") throw new Error(`simbye: validity unit ${daysUnit} on ${item.name}`);
+    if (!unlimited && dataUnit !== "GB") throw new Error(`simbye: data unit ${dataUnit} on ${item.name}`);
+    if (!(price?.current > 0 && price.current <= price.standard)) {
+      throw new Error(`simbye: bad prices on ${item.name}: ${JSON.stringify(price)}`);
+    }
+    if (!String(item.link).includes("ref=eqvmffxd")) throw new Error(`simbye: link without ref on ${item.name}`);
+
+    const plan = makePlan({
+      provider: "simbye",
+      gb: unlimited ? null : Number(dataValue),
+      days: Number(days),
+      priceUsd: Number(price.standard),
+      unlimited,
+      note: item.metadata?.fairUse?.description,
+    });
+    plan.discountedUsd = round2(Number(price.current));
+    plan.link = item.link;
+    plan.tethering = item.tethering === true;
+    plan.network5G = item.network5G === true;
+    plan.topUp = item.topUp === true;
+    plan.networks = (item.networks ?? []).map((n) => n.name);
+    plans.push(plan);
+  }
+  return sortPlans(plans);
+}
+
+// ---------------------------------------------------------------------------
 // main
 // ---------------------------------------------------------------------------
-const FETCHERS = { airalo: fetchAiralo, holafly: fetchHolafly, esimgo: fetchEsimGo, sakura: fetchSakura };
+const FETCHERS = {
+  airalo: fetchAiralo,
+  holafly: fetchHolafly,
+  esimgo: fetchEsimGo,
+  sakura: fetchSakura,
+  simbye: fetchSimbye,
+};
 
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
 const now = new Date().toISOString();
@@ -268,6 +329,9 @@ for (const [id, fetcher] of Object.entries(FETCHERS)) {
     const plans = validate(await fetcher(), id);
     const changed = JSON.stringify(plans) !== JSON.stringify(provider.plans);
     provider.plans = plans;
+    // Providers whose source names the carriers per plan keep the summary line in step.
+    const networks = [...new Set(plans.flatMap((p) => p.networks ?? []))];
+    if (networks.length) provider.network = networks.join(", ");
     provider.fetchedAt = now;
     if (changed || !provider.updatedAt) provider.updatedAt = now;
     report.push({ id, status: "ok", detail: `${plans.length} plans${changed ? " (prices changed)" : " (unchanged)"}` });

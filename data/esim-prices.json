@@ -1,6 +1,6 @@
 {
   "currency": "USD",
-  "generatedAt": "2026-11-03T10:59:57.457Z",
+  "generatedAt": "2026-11-05T06:19:35.804Z",
   "providers": {
     "airalo": {
       "name": "Airalo",
@@ -8,7 +8,7 @@
       "network": "SoftBank (+2 others)",
       "sourceUrl": "https://www.airalo.com/japan-esim",
       "affiliateUrl": "https://airalo.pxf.io/c/7213504/1268485/15608",
-      "fetchedAt": "2026-11-03T10:59:57.457Z",
+      "fetchedAt": "2026-11-05T06:19:35.804Z",
       "updatedAt": "2026-09-18T01:19:25.371Z",
       "plans": [
         {
@@ -161,7 +161,7 @@
       "network": "SoftBank / KDDI (5G)",
       "sourceUrl": "https://esim.holafly.com/esim-japan/",
       "affiliateUrl": "#",
-      "fetchedAt": "2026-11-03T10:59:57.457Z",
+      "fetchedAt": "2026-11-05T06:19:35.804Z",
       "updatedAt": "2026-09-18T01:19:25.371Z",
       "plans": [
         {
@@ -363,7 +363,7 @@
       "network": "au/KDDI (Unlimited) or Docomo (3 GB/day)",
       "sourceUrl": "https://www.sakuramobile.jp/travel/esim/",
       "affiliateUrl": "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
-      "fetchedAt": "2026-11-03T10:59:57.457Z",
+      "fetchedAt": "2026-11-05T06:19:35.804Z",
       "updatedAt": "2026-09-18T01:33:09.373Z",
       "plans": [
         {
@@ -479,6 +479,191 @@
           "priceUsd": 95.79,
           "unlimited": true,
           "note": "Unlimited on-device (au/KDDI); hotspot allowance by plan length"
+        }
+      ]
+    },
+    "simbye": {
+      "name": "Simbye",
+      "brand": "Simbye Japan eSIM",
+      "network": "NTT docomo, KDDI/au, SoftBank, Rakuten Mobile",
+      "sourceUrl": "https://simbye.com/products/esim-japan",
+      "affiliateUrl": "https://simbye.com/products/esim-japan",
+      "fetchedAt": "2026-11-05T06:19:35.804Z",
+      "updatedAt": "2026-11-05T05:13:33.841Z",
+      "plans": [
+        {
+          "id": "simbye-1-gb-7-days",
+          "name": "1 GB / 7 days",
+          "gb": 1,
+          "days": 7,
+          "priceUsd": 1.99,
+          "unlimited": false,
+          "discountedUsd": 1.69,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": true,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
+        },
+        {
+          "id": "simbye-3-gb-15-days",
+          "name": "3 GB / 15 days",
+          "gb": 3,
+          "days": 15,
+          "priceUsd": 4.99,
+          "unlimited": false,
+          "discountedUsd": 4.24,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": true,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
+        },
+        {
+          "id": "simbye-5-gb-30-days",
+          "name": "5 GB / 30 days",
+          "gb": 5,
+          "days": 30,
+          "priceUsd": 6.99,
+          "unlimited": false,
+          "discountedUsd": 5.94,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": true,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
+        },
+        {
+          "id": "simbye-10-gb-30-days",
+          "name": "10 GB / 30 days",
+          "gb": 10,
+          "days": 30,
+          "priceUsd": 11.99,
+          "unlimited": false,
+          "discountedUsd": 10.19,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": true,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
+        },
+        {
+          "id": "simbye-20-gb-30-days",
+          "name": "20 GB / 30 days",
+          "gb": 20,
+          "days": 30,
+          "priceUsd": 19.99,
+          "unlimited": false,
+          "discountedUsd": 16.99,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": true,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
+        },
+        {
+          "id": "simbye-50-gb-180-days",
+          "name": "50 GB / 180 days",
+          "gb": 50,
+          "days": 180,
+          "priceUsd": 44.99,
+          "unlimited": false,
+          "discountedUsd": 38.24,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": true,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
+        },
+        {
+          "id": "simbye-unlimited-7-days",
+          "name": "Unlimited / 7 days",
+          "gb": null,
+          "days": 7,
+          "priceUsd": 19.99,
+          "unlimited": true,
+          "note": "2 GB/day at full speed, then unlimited at 1 Mbps",
+          "discountedUsd": 16.99,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": false,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
+        },
+        {
+          "id": "simbye-unlimited-15-days",
+          "name": "Unlimited / 15 days",
+          "gb": null,
+          "days": 15,
+          "priceUsd": 34.99,
+          "unlimited": true,
+          "note": "2 GB/day at full speed, then unlimited at 1 Mbps",
+          "discountedUsd": 29.74,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": false,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
+        },
+        {
+          "id": "simbye-unlimited-30-days",
+          "name": "Unlimited / 30 days",
+          "gb": null,
+          "days": 30,
+          "priceUsd": 64.99,
+          "unlimited": true,
+          "note": "2 GB/day at full speed, then unlimited at 1 Mbps",
+          "discountedUsd": 55.24,
+          "link": "https://simbye.com/discount/ROEBHIOM?redirect=/products/esim-japan?ref=eqvmffxd",
+          "tethering": true,
+          "network5G": true,
+          "topUp": false,
+          "networks": [
+            "NTT docomo",
+            "KDDI/au",
+            "SoftBank",
+            "Rakuten Mobile"
+          ]
         }
       ]
     }
