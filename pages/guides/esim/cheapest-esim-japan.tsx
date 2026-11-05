@@ -4,6 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import { ProviderCta } from "../../../components/EsimPlanTable";
 import KlookLink from "../../../components/KlookLink";
+import SimbyeOffer from "../../../components/SimbyeOffer";
 import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -14,6 +15,7 @@ import {
   esimProviders,
   formatDate,
   formatUsd,
+  getProvider,
   latestCheckedAt,
   type EsimPlan,
 } from "../../../lib/esim-prices";
@@ -21,6 +23,7 @@ import {
 const AIRALO_URL = "https://airalo.pxf.io/c/7213504/1268485/15608";
 const SAKURA_URL = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
 const ESIMGO_URL = "https://breezesim.com?sca_ref=11082101.AF8vabyRKN";
+const SIMBYE_URL = getProvider("simbye").affiliateUrl;
 // Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
 // so its purchase CTA points at Airalo's unlimited plans, the closest approved alternative.
 const HOLAFLY_ALT_LABEL = "Get Airalo unlimited eSIM →";
@@ -42,11 +45,14 @@ const cheapestUnlimitedAny = cheapestOf(allEsimPlans.filter((p) => p.unlimited &
 const cheapestLongStay = cheapestOf(allEsimPlans.filter((p) => p.days >= 30 && !p.unlimited && (p.gb ?? 0) >= 10));
 const p = (plan: EsimPlan | null) => (plan ? `${formatUsd(plan.priceUsd)} / ${plan.name}` : "—");
 const priceOf = (plan: EsimPlan | null) => (plan ? formatUsd(plan.priceUsd) : "—");
+const simbyeCheapest = cheapestAtLeastGb("simbye", 1);
+const simbye5 = cheapestAtLeastGb("simbye", 5);
+const simbye10 = cheapestAtLeastGb("simbye", 10);
+const airalo10 = cheapestAtLeastGb("airalo", 10);
 const esimgoCheapest = cheapestAtLeastGb("esimgo", 1);
 const airaloCheapest = cheapestAtLeastGb("airalo", 1);
 const holaflyCheapest = cheapestUnlimited("holafly", 7);
 const sakuraCheapest = cheapestAtLeastGb("sakura", 1);
-const esimgo5 = cheapestAtLeastGb("esimgo", 5);
 const esimgo10 = cheapestAtLeastGb("esimgo", 10);
 const cell = (plan: EsimPlan | null) =>
   plan ? (
@@ -61,15 +67,38 @@ const cell = (plan: EsimPlan | null) =>
 const picks = [
   {
     num: 1,
+    name: "Simbye",
+    badge: "Lowest Price",
+    badgeColor: "var(--sumi)",
+    priceFrom: p(simbyeCheapest),
+    network: getProvider("simbye").network,
+    affiliateUrl: SIMBYE_URL,
+    ctaLabel: "Get Simbye Japan eSIM →",
+    pros: [
+      "Lowest list price of the plans we track at 1 GB, 5 GB and 10 GB",
+      "NTT docomo, KDDI/au, SoftBank and Rakuten Mobile",
+      "Tethering allowed on every Japan plan",
+      "Top-up without changing the eSIM on fixed plans",
+    ],
+    cons: [
+      "Data-only (no Japanese number, calls or SMS)",
+      "Unlimited plans drop to 1 Mbps after 2 GB a day",
+      "eSIM-compatible, unlocked phone required",
+    ],
+    summary:
+      `First because the price says so: ${p(simbye10)} against ${p(esimgo10)} from eSIM Go and ${p(airalo10)} from Airalo at the 10 GB tier, and ${p(simbyeCheapest)} at the entry tier. The plan is data only, so it suits anyone who keeps messaging on apps.`,
+  },
+  {
+    num: 2,
     name: "eSIM Go",
-    badge: "Cheapest Per GB",
+    badge: "Short Unlimited Plans",
     badgeColor: "var(--sumi)",
     priceFrom: p(esimgoCheapest),
     network: "Docomo / SoftBank",
     affiliateUrl: ESIMGO_URL,
     ctaLabel: "Get eSIM Go Japan →",
     pros: [
-      "Lowest price per GB on the market",
+      "Unlimited plans from 1 day",
       "Docomo network — best rural coverage",
       "Instant QR code activation",
       "Works in 190+ countries",
@@ -80,10 +109,10 @@ const picks = [
       "Email-only customer service",
     ],
     summary:
-      `eSIM Go (sold through its consumer brand Breeze) is consistently the cheapest Japan eSIM we track, from ${p(esimgoCheapest)}${esimgo10 ? `, and its ${esimgo10.name} plan at ${priceOf(esimgo10)} is one of the lowest prices per GB anywhere` : ""}. It activates instantly via QR code. Ideal for short visits or anyone watching their budget.`,
+      `eSIM Go (sold through its consumer brand Breeze) starts at ${p(esimgoCheapest)}${esimgo10 ? `, and its ${esimgo10.name} plan is ${priceOf(esimgo10)}` : ""}. It activates via QR code, and it sells allowances up to 200 GB plus unlimited plans from a single day.`,
   },
   {
-    num: 2,
+    num: 3,
     name: "Airalo",
     badge: "Best Balance",
     badgeColor: "var(--sumi)",
@@ -106,9 +135,9 @@ const picks = [
       `Airalo's Japan plans start at ${p(airaloCheapest)} — close to eSIM Go on price, but you get 24/7 live chat support, in-app top-ups and the backing of the world's largest eSIM marketplace. A great choice if you want budget pricing with stronger customer support.`,
   },
   {
-    num: 3,
+    num: 4,
     name: "Holafly",
-    badge: "Cheapest Unlimited",
+    badge: "Unlimited Only",
     badgeColor: "var(--accent)",
     priceFrom: p(holaflyCheapest),
     network: "SoftBank / KDDI",
@@ -130,7 +159,7 @@ const picks = [
       `If you stream constantly, use Google Maps all day, or simply want peace of mind about your data, Holafly's unlimited plans start at ${p(holaflyCheapest)}. Hotspot use is capped at 1 GB/day. It costs more than a capped plan, but on an unlimited plan, per-GB cost is irrelevant.`,
   },
   {
-    num: 4,
+    num: 5,
     name: "Sakura Mobile",
     badge: "Cheapest with Voice",
     badgeColor: "var(--accent)",
@@ -157,21 +186,21 @@ const picks = [
 const dealTips = [
   {
     trip: "Short trip (up to 7 days)",
-    pick: esimgoCheapest ? `eSIM Go ${esimgoCheapest.name} — ${priceOf(esimgoCheapest)}` : "eSIM Go 1 GB",
-    why: "Covers typical tourist data use (maps, social, messaging) without overpaying.",
-    url: ESIMGO_URL,
+    pick: simbyeCheapest ? `Simbye ${simbyeCheapest.name} — ${priceOf(simbyeCheapest)}` : "Simbye 1 GB",
+    why: "Covers light tourist data use (maps, messaging) for the lowest outlay we track.",
+    url: SIMBYE_URL,
   },
   {
     trip: "Two-week trip",
-    pick: esimgo5 ? `eSIM Go ${esimgo5.name} — ${priceOf(esimgo5)}` : "eSIM Go 5 GB",
+    pick: simbye5 ? `Simbye ${simbye5.name} — ${priceOf(simbye5)}` : "Simbye 5 GB",
     why: "Plenty of data for navigation, translation apps, and social media over two weeks.",
-    url: ESIMGO_URL,
+    url: SIMBYE_URL,
   },
   {
     trip: "One-month stay",
-    pick: `eSIM Go 10 GB (${priceOf(esimgo10)}) or Sakura Mobile (from ${priceOf(sakuraCheapest)})`,
-    why: "eSIM Go if data-only is fine; Sakura Mobile if you want English phone support or a Japanese number.",
-    url: ESIMGO_URL,
+    pick: `Simbye 10 GB (${priceOf(simbye10)}) or Sakura Mobile (from ${priceOf(sakuraCheapest)})`,
+    why: "Simbye if data-only is fine; Sakura Mobile if you want English phone support or a Japanese number.",
+    url: SIMBYE_URL,
   },
   {
     trip: "Heavy data user",
@@ -184,11 +213,11 @@ const dealTips = [
 const faqItems = [
   {
     q: "What is the cheapest eSIM for Japan?",
-    a: `As of ${pricesCheckedAt}, ${cheapestOverall ? `${cheapestOverall.provider} is the cheapest Japan eSIM we track, at ${priceOf(cheapestOverall)} for ${cheapestOverall.name}` : "eSIM Go is usually the cheapest Japan eSIM"}. Airalo is a close second at ${p(airaloCheapest)}. Both are data-only eSIMs that activate instantly via QR code. Prices on this page are re-checked every day.`,
+    a: `As of ${pricesCheckedAt}, ${cheapestOverall ? `${cheapestOverall.provider} is the cheapest Japan eSIM we track, at ${priceOf(cheapestOverall)} for ${cheapestOverall.name}` : "Simbye is usually the cheapest Japan eSIM"}. eSIM Go starts at ${p(esimgoCheapest)} and Airalo at ${p(airaloCheapest)}. All three are data-only eSIMs installed from a QR code or link. Prices on this page are re-checked every day.`,
   },
   {
     q: "Is a cheap eSIM reliable in Japan?",
-    a: "Yes. Cheap eSIMs like eSIM Go (Docomo among its networks) and Airalo (SoftBank as the primary network on its Japan page, checked 1 November 2026) run on the same national networks used by expensive plans. Network quality in Japan is world-class regardless of which reseller you buy from — you're paying less for distribution, not for a worse connection.",
+    a: "Yes. Cheap eSIMs like Simbye (NTT docomo, KDDI/au, SoftBank and Rakuten Mobile in its feed), eSIM Go (Docomo among its networks) and Airalo (SoftBank as the primary network on its Japan page, checked 1 November 2026) run on the same national networks used by expensive plans. Network quality in Japan is world-class regardless of which reseller you buy from — you're paying less for distribution, not for a worse connection.",
   },
   {
     q: "How much data do I need for 1 week in Japan?",
@@ -200,7 +229,7 @@ const faqItems = [
   },
   {
     q: "Is eSIM cheaper than roaming in Japan?",
-    a: `Almost always, yes. Most international roaming plans charge $10–15 per day. eSIM Go starts at ${p(esimgoCheapest)} — less than a single day of roaming. Even Holafly's unlimited plan at ${p(holaflyCheapest)} works out far cheaper than roaming charges for the same period.`,
+    a: `Almost always, yes. Most international roaming plans charge $10–15 per day. Simbye starts at ${p(simbyeCheapest)} — less than a single day of roaming. Even Holafly's unlimited plan at ${p(holaflyCheapest)} works out far cheaper than roaming charges for the same period.`,
   },
 ];
 
@@ -213,17 +242,17 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
         <title>Cheapest eSIM for Japan 2026 | Japan Travel Kit</title>
         <meta
           name="description"
-          content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`}
+          content={`Looking for the cheapest eSIM for Japan? We compared Simbye, Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99"}.`}
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
         <meta property="og:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Compared" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
-        <meta property="og:description" content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`} />
+        <meta property="og:description" content={`Looking for the cheapest eSIM for Japan? We compared Simbye, Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99"}.`} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Compared" />
-        <meta name="twitter:description" content={`Looking for the cheapest eSIM for Japan? We compared prices across Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$3.99"}.`} />
+        <meta name="twitter:description" content={`Looking for the cheapest eSIM for Japan? We compared Simbye, Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99"}.`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -334,6 +363,8 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <SimbyeOffer />
+
         {/* Price Comparison Table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>At a glance</span>
@@ -363,7 +394,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
                     </tr>
                   ))}
                   {/* Klook also sells a Japan eSIM. Its listing blocks automated price reads, so it
-                      gets a row but no numbers — and it cannot be ranked on price against the four above. */}
+                      gets a row but no numbers — and it cannot be ranked on price against the five above. */}
                   <tr>
                     <td className={styles.tdProvider} style={{ fontWeight: 700 }}>{klookEsim.name}</td>
                     {[...TIERS, "unlimited"].map((tier) => (
@@ -383,7 +414,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             Each cell is the provider&apos;s cheapest plan with <em>at least</em> that much data, in USD, read from the provider&apos;s
             official site on {pricesCheckedAt}. All plans are eSIM-only. The Klook row carries no prices:
             its listing could not be read automatically on {klookEsim.checkedAt}, so it is not ranked here
-            and we make no claim about whether it undercuts the four above.{" "}
+            and we make no claim about whether it undercuts the five above.{" "}
             <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan sorted by price per GB →</Link>
           </p>
         </section>
@@ -543,7 +574,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             reseller pricing, not from degraded network access.
           </p>
           <p className={styles.bodyText}>
-            In practice, eSIM Go and Airalo both provide the same download speeds and coverage as
+            In practice, Simbye, eSIM Go and Airalo all provide the same download speeds and coverage as
             plans that cost three times more. The main trade-off at lower price points is customer
             support quality — eSIM Go offers email-only support, while Airalo has 24/7 live chat.
             For most travellers who just need their eSIM to work, support rarely comes up.
@@ -660,7 +691,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Compare all Japan eSIM options</h2>
             <p className={styles.ctaBannerDesc}>
-              See how eSIM Go, Airalo, Holafly, and Sakura Mobile compare on price, coverage, and features.
+              See how Simbye, eSIM Go, Airalo, Holafly, and Sakura Mobile compare on price, coverage, and features.
             </p>
             <Link href="/guides/esim/best-esim-japan" className={styles.ctaBannerBtn}>
               View Full eSIM Comparison →

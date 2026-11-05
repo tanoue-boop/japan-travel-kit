@@ -6,8 +6,9 @@ import EsimPlanFinder from "../../../components/EsimPlanFinder";
 import EsimPlanTable, { ProviderCta } from "../../../components/EsimPlanTable";
 import EsimPriceStatus from "../../../components/EsimPriceStatus";
 import KlookLink from "../../../components/KlookLink";
+import SimbyeOffer from "../../../components/SimbyeOffer";
 import { klookEsim } from "../../../lib/klook-links";
-import { esimSpec, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
+import { esimSpec, SIMBYE_SPECS_CHECKED_AT, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import {
@@ -207,6 +208,16 @@ type ComparisonRow = {
 
 const comparisonRows: ComparisonRow[] = [
   {
+    provider: "Simbye",
+    data: esimSpec("simbye").dataRange,
+    validity: validityRange(plansOf("simbye")),
+    network: getProvider("simbye").network,
+    speed:
+      "Unlimited plans: “2 GB/day at full speed, then unlimited at 1 Mbps”, from Simbye's price feed. The feed shows no throttle on fixed allowances.",
+    tethering: esimSpec("simbye").tetheringShort,
+    phone: esimSpec("simbye").phoneNumberShort,
+  },
+  {
     provider: "Airalo",
     data: esimSpec("airalo").dataRange,
     validity: validityRange(plansOf("airalo")),
@@ -258,6 +269,12 @@ const comparisonRows: ComparisonRow[] = [
  */
 const timingRows = [
   {
+    provider: "Simbye",
+    starts: "“Your plan only starts counting when the eSIM first connects at your destination.”",
+    install: "Yes — its Japan page says to install over Wi-Fi before you fly",
+    checked: SIMBYE_SPECS_CHECKED_AT,
+  },
+  {
     provider: "Airalo",
     starts:
       "“The validity period of your eSIM package starts when one of the following happens: When you connect to a supported network in its coverage area or When you install your eSIM.” The package's own Validity Policy says which applies.",
@@ -296,7 +313,7 @@ const faqItems = [
   },
   {
     q: "Should I get an unlimited eSIM for Japan?",
-    a: `Only if you genuinely cannot predict your usage, because no "unlimited" Japan plan is unmetered at full speed. ${cheapestUnlimitedAny ? `The cheapest unlimited plan we track for a week or longer is ${cheapestUnlimitedAny.provider}'s ${cheapestUnlimitedAny.name} at ${formatUsd(cheapestUnlimitedAny.priceUsd)} (checked ${checkedLabel}).` : "Compare the unlimited plans in the table above."} Each one publishes a threshold: Airalo runs full speed to 3 GB a day then 1 Mbps until the 24-hour reset; eSIM Go's Premium Unlimited gives 30 GB over 5 days, 60 GB over 10 or 90 GB over 15 before the speed is reduced; Sakura Mobile's unlimited plan is unlimited on the device but caps the hotspot at 2–30 GB depending on plan length; the Klook listing's unlimited tier runs 10 GB a day then 128 kbps. Provider terms checked ${SPECS_CHECKED}; the Klook figures come from its listing data of ${klookEsim.specsCheckedAt}.`,
+    a: `Only if you genuinely cannot predict your usage, because no "unlimited" Japan plan is unmetered at full speed. ${cheapestUnlimitedAny ? `The cheapest unlimited plan we track for a week or longer is ${cheapestUnlimitedAny.provider}'s ${cheapestUnlimitedAny.name} at ${formatUsd(cheapestUnlimitedAny.priceUsd)} (checked ${checkedLabel}).` : "Compare the unlimited plans in the table above."} Each one publishes a threshold: Simbye gives 2 GB a day at full speed and then 1 Mbps; Airalo runs full speed to 3 GB a day then 1 Mbps until the 24-hour reset; eSIM Go's Premium Unlimited gives 30 GB over 5 days, 60 GB over 10 or 90 GB over 15 before the speed is reduced; Sakura Mobile's unlimited plan is unlimited on the device but caps the hotspot at 2–30 GB depending on plan length; the Klook listing's unlimited tier runs 10 GB a day then 128 kbps. Provider terms checked ${SPECS_CHECKED}; the Klook figures come from its listing data of ${klookEsim.specsCheckedAt}.`,
   },
   {
     q: "When should I install and activate my Japan eSIM?",
@@ -304,7 +321,7 @@ const faqItems = [
   },
   {
     q: "Do Japan eSIM data plans include a phone number?",
-    a: `No — every Japan eSIM data plan on this page is data only, with one exception. Airalo, eSIM Go and the Klook listing give you no Japanese number, no SMS and no voice calls. Sakura Mobile's separate Voice + Data eSIM is the only route to a Japanese number, and it needs an in-person ID check in Japan before the usage period starts. If you only need SMS for verification codes, keep your home SIM active in the other slot and let the eSIM carry the data. Clauses checked ${SPECS_CHECKED_AT}.`,
+    a: `No — every Japan eSIM data plan on this page is data only, with one exception. Simbye, Airalo, eSIM Go and the Klook listing give you no Japanese number, no SMS and no voice calls. Sakura Mobile's separate Voice + Data eSIM is the only route to a Japanese number, and it needs an in-person ID check in Japan before the usage period starts. If you only need SMS for verification codes, keep your home SIM active in the other slot and let the eSIM carry the data. Clauses checked ${SPECS_CHECKED_AT}.`,
   },
   {
     q: "Can I top up a Japan eSIM?",
@@ -328,7 +345,7 @@ const faqItems = [
   },
   {
     q: "How often are these prices updated?",
-    a: `Every day. A script fetches the current Japan plans from each provider's official website (Airalo, Holafly, eSIM Go/Breeze and Sakura Mobile) and updates this page automatically. If a provider's site can't be read on a given day, we keep the last verified prices and show the date they were last checked, so you can always see how fresh each number is. Last successful check: ${checkedLabel}.`,
+    a: `Every day. A script fetches the current Japan plans from each provider's official website or price feed (Simbye, Airalo, Holafly, eSIM Go/Breeze and Sakura Mobile) and updates this page automatically. If a provider's site can't be read on a given day, we keep the last verified prices and show the date they were last checked, so you can always see how fresh each number is. Last successful check: ${checkedLabel}.`,
   },
 ];
 
@@ -456,7 +473,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             <span className={`${tools.liveBadge} ${tools.liveBadgeOnDark}`}>
               <span className={tools.liveDot} /> Prices checked daily
             </span>
-            {[`${allEsimPlans.length} plans tracked`, "4 providers", "Sortable by $/GB"].map((t) => (
+            {[`${allEsimPlans.length} plans tracked`, "5 providers", "Sortable by $/GB"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -686,6 +703,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Tool</span>
           <h2 className={styles.sectionTitle}>Tell Us Your Trip — We&apos;ll Pick the Plan</h2>
           <EsimPlanFinder />
+          <SimbyeOffer />
         </section>
 
         {/* Full sortable comparison */}
@@ -793,7 +811,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Klook&apos;s own Japan eSIM is listed last and without figures: the four providers above are read
+            Klook&apos;s own Japan eSIM is listed last and without figures: the five providers above are read
             automatically from their pricing pages every day, and Klook&apos;s listing could not be read on{" "}
             {klookEsim.checkedAt}. It is therefore absent from the sortable table and the plan finder, which
             only work on verified prices.
@@ -879,7 +897,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>Do Japan eSIM data plans include a phone number?</h2>
           <p className={styles.bodyText}>
             No — every Japan eSIM data plan on this page is <strong>data only</strong>, with one exception. Airalo,
-            eSIM Go and the Klook listing give you no Japanese number, no SMS and no voice calls.
+            Simbye, eSIM Go and the Klook listing give you no Japanese number, no SMS and no voice calls.
           </p>
           <p className={styles.bodyText}>
             Sakura Mobile&apos;s separate <strong>Voice + Data eSIM</strong> is the only route to a Japanese number,
@@ -894,7 +912,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Running out</span>
           <h2 className={styles.sectionTitle}>Can I top up a Japan eSIM?</h2>
           <p className={styles.bodyText}>
-            Yes, for most providers. Airalo lets you top up by buying an additional package in the app — no new QR
+            Yes, for most providers. Simbye&apos;s fixed plans can be topped up without changing the eSIM. Airalo lets you top up by buying an additional package in the app — no new QR
             code required. eSIM Go (Breeze) allows top-ups through its website, and Sakura Mobile allows data add-ons
             through its customer portal. Holafly&apos;s plans are unlimited, so there is nothing to top up, but they
             are fixed-length.

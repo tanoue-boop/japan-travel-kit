@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
 import EsimRelatedCard from "../../../components/EsimRelatedCard";
+import SimbyeOffer from "../../../components/SimbyeOffer";
 import {
   cheapestUnlimited,
   formatUsd,
@@ -45,14 +46,15 @@ const studyMonth = (id: EsimProviderId): EsimPlan | null =>
 const dataLabel = (p: EsimPlan | null) => (p ? (p.unlimited ? "Unlimited" : `${p.gb} GB`) : "—");
 const priceLabel = (p: EsimPlan | null) => (p ? formatUsd(p.priceUsd) : "—");
 
+const SIMBYE_MONTH = studyMonth("simbye");
 const ESIMGO_MONTH = studyMonth("esimgo");
 const AIRALO_MONTH = studyMonth("airalo");
 const SAKURA_MONTH = studyMonth("sakura");
 const HOLAFLY_MONTH = cheapestUnlimited("holafly", 30);
 
-const TITLE = `Best eSIM for Japan Students 2026: ${dataLabel(ESIMGO_MONTH)} for ${priceLabel(ESIMGO_MONTH)}`;
+const TITLE = `Best eSIM for Japan Students 2026: ${dataLabel(SIMBYE_MONTH)} for ${priceLabel(SIMBYE_MONTH)}`;
 const DESCRIPTION =
-  `${dataLabel(ESIMGO_MONTH)} for a study month is ${priceLabel(ESIMGO_MONTH)} on eSIM Go, ` +
+  `${dataLabel(SIMBYE_MONTH)} for a study month is ${priceLabel(SIMBYE_MONTH)} on Simbye, ` +
   `${priceLabel(AIRALO_MONTH)} on Airalo. Neither includes a Japanese phone number — only ` +
   `Sakura Mobile does. Prices ${pricesCheckedAt}.`;
 
@@ -67,7 +69,7 @@ const dataUsage = [
 const stayOptions = [
   {
     title: "Short exchange (1–4 weeks)",
-    desc: `eSIM Go or Airalo. eSIM Go's 10 GB / 30-day plan is ${priceAtLeastLabel("esimgo", 10)}; Airalo's equivalent is ${priceAtLeastLabel("airalo", 10)} and adds in-app top-up, which matters if you guess your allowance wrong.`,
+    desc: `Simbye or Airalo. Simbye's 10 GB / 30-day plan is ${priceAtLeastLabel("simbye", 10)}; Airalo's equivalent is ${priceAtLeastLabel("airalo", 10)} and adds in-app top-up, which matters if you guess your allowance wrong.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="7" width="20" height="14" rx="2" />
@@ -77,7 +79,7 @@ const stayOptions = [
   },
   {
     title: "A term (1–3 months)",
-    desc: `Either a ${dataLabel(ESIMGO_MONTH)} plan renewed each month, or Sakura Mobile, whose own pages sell a travel eSIM for 1 to 90 days and a SIM card in lengths up to 93 days — and whose separate Voice + Data eSIM is the only product here that comes with a Japanese number (read ${SAKURA_OFFICIAL_CHECKED}).`,
+    desc: `Either a ${dataLabel(SIMBYE_MONTH)} plan renewed each month, or Sakura Mobile, whose own pages sell a travel eSIM for 1 to 90 days and a SIM card in lengths up to 93 days — and whose separate Voice + Data eSIM is the only product here that comes with a Japanese number (read ${SAKURA_OFFICIAL_CHECKED}).`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -107,26 +109,26 @@ const studentTips = [
   },
   {
     title: "Airalo's top-up is the reason to pay the difference",
-    desc: `Airalo's ${dataLabel(AIRALO_MONTH)} month is ${priceLabel(AIRALO_MONTH)} against eSIM Go's ${priceLabel(ESIMGO_MONTH)}. The gap buys in-app top-up: you add data without installing a second profile. Worth it in a first term, when you have no idea what you use.`,
+    desc: `Airalo's ${dataLabel(AIRALO_MONTH)} month is ${priceLabel(AIRALO_MONTH)} against eSIM Go's ${priceLabel(ESIMGO_MONTH)}. The gap buys in-app top-up and live chat: you add data without installing a second profile. Worth it in a first term, when you have no idea what you use.`,
   },
   {
     title: "Stacking short plans is the expensive mistake",
-    desc: `Four consecutive one-week plans cost far more than one ${dataLabel(ESIMGO_MONTH)} / 30-day plan at ${priceLabel(ESIMGO_MONTH)}, and each one has to be installed. Buy by the month from the start.`,
+    desc: `Four consecutive one-week plans cost far more than one ${dataLabel(SIMBYE_MONTH)} / 30-day plan at ${priceLabel(SIMBYE_MONTH)}, and each one has to be installed. Buy by the month from the start.`,
   },
 ];
 
 const faqItems = [
   {
     q: "Is there a student discount on Japan eSIMs?",
-    a: `No. None of the four providers publishes a student rate, a campus plan or an education discount, so a student pays what anyone else pays. What a student can do that a tourist cannot is buy by the month: eSIM Go's ${dataLabel(ESIMGO_MONTH)} / 30-day plan is ${priceLabel(ESIMGO_MONTH)}, and four short-trip plans bought back to back cost far more for the same data. Prices checked ${pricesCheckedAt}.`,
+    a: `No. None of the five providers publishes a student rate, a campus plan or an education discount, so a student pays what anyone else pays. What a student can do that a tourist cannot is buy by the month: Simbye's ${dataLabel(SIMBYE_MONTH)} / 30-day plan is ${priceLabel(SIMBYE_MONTH)}, and four short-trip plans bought back to back cost far more for the same data. Prices checked ${pricesCheckedAt}.`,
   },
   {
     q: "What is the cheapest eSIM for studying in Japan?",
-    a: `eSIM Go, at ${priceLabel(ESIMGO_MONTH)} for ${dataLabel(ESIMGO_MONTH)} over 30 days — the lowest price per GB at study-month sizes of the four providers here. Airalo's nearest plan is ${priceLabel(AIRALO_MONTH)}, Sakura Mobile's ${priceLabel(SAKURA_MONTH)} and an unlimited month on Holafly ${priceLabel(HOLAFLY_MONTH)}. Its entry tier starts at ${priceFromLabel("esimgo")} if you only need a few days.`,
+    a: `Simbye, at ${priceLabel(SIMBYE_MONTH)} for ${dataLabel(SIMBYE_MONTH)} over 30 days, against ${priceLabel(ESIMGO_MONTH)} on eSIM Go. Airalo's nearest plan is ${priceLabel(AIRALO_MONTH)}, Sakura Mobile's ${priceLabel(SAKURA_MONTH)} and an unlimited month on Holafly ${priceLabel(HOLAFLY_MONTH)}. Simbye's entry tier starts at ${priceFromLabel("simbye")} if you only need a few days.`,
   },
   {
     q: "Do I need a Japanese phone number as an exchange student?",
-    a: `For a one-term exchange, usually not: university WiFi, a messaging app and an eSIM cover it. You do need one to open most bank accounts, to sign a phone contract and for many part-time job applications, because those forms want a domestic number. No travel eSIM here provides one — eSIM Go's Japan plans state "No SMS or voice calls included. Data only.", Airalo's and Holafly's are data-only too. Sakura Mobile's separate Voice + Data eSIM adds a Japanese number and domestic calls, which makes it the only route on this page to one (read off sakuramobile.jp on ${SAKURA_OFFICIAL_CHECKED}).`,
+    a: `For a one-term exchange, usually not: university WiFi, a messaging app and an eSIM cover it. You do need one to open most bank accounts, to sign a phone contract and for many part-time job applications, because those forms want a domestic number. No travel eSIM here provides one — eSIM Go's Japan plans state "No SMS or voice calls included. Data only.", and Simbye's, Airalo's and Holafly's are data-only too. Sakura Mobile's separate Voice + Data eSIM adds a Japanese number and domestic calls, which makes it the only route on this page to one (read off sakuramobile.jp on ${SAKURA_OFFICIAL_CHECKED}).`,
   },
   {
     q: "Is 20 GB a month enough for a student in Japan?",
@@ -265,11 +267,11 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           <div className={styles.verdictBody}>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
               <strong>
-                Buy eSIM Go&apos;s {dataLabel(ESIMGO_MONTH)} / 30-day plan at{" "}
-                {priceLabel(ESIMGO_MONTH)} if you have campus WiFi and do not need a Japanese
+                Buy Simbye&apos;s {dataLabel(SIMBYE_MONTH)} / 30-day plan at{" "}
+                {priceLabel(SIMBYE_MONTH)} if you have campus WiFi and do not need a Japanese
                 phone number; buy Sakura Mobile&apos;s Voice + Data eSIM if you do.
               </strong>{" "}
-              There is no student discount on any Japan eSIM — none of the four providers
+              There is no student discount on any Japan eSIM — none of the five providers
               publishes one — so the saving comes from buying by the month instead of the week.
               Airalo&apos;s nearest month is {priceLabel(AIRALO_MONTH)} and buys you in-app
               top-up; Sakura Mobile&apos;s data month is {priceLabel(SAKURA_MONTH)}, and its
@@ -285,7 +287,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Cheapest study month</p>
                 <p className={styles.verdictStatValue}>
-                  eSIM Go — {priceLabel(ESIMGO_MONTH)} / {dataLabel(ESIMGO_MONTH)}
+                  Simbye — {priceLabel(SIMBYE_MONTH)} / {dataLabel(SIMBYE_MONTH)}
                 </p>
               </div>
               <div className={styles.verdictStat}>
@@ -306,7 +308,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>Which eSIM Is Cheapest for a Study Month?</h2>
           <p className={styles.bodyText}>
             One row per provider, showing the cheapest plan each sells that lasts a month and
-            carries at least {dataLabel(ESIMGO_MONTH)} — the comparison a term makes, rather
+            carries at least {dataLabel(SIMBYE_MONTH)} — the comparison a term makes, rather
             than the one a week does.
           </p>
           <EsimAnswerTable
@@ -343,11 +345,46 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>Which Provider Should a Student Buy From?</h2>
 
           <div className={styles.picksList}>
-            {/* eSIM Go */}
+            {/* Simbye */}
             <div className={styles.pickCard}>
               <div className={styles.pickCardHeader}>
                 <div className={styles.pickRank}>
                   <span className={styles.pickNumber}>1</span>
+                  <div className={styles.pickMeta}>
+                    <span className={`${styles.pickBadge} ${styles.pickBadgeGreen}`}>Lowest Price</span>
+                    <span className={styles.pickName}>Simbye</span>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.pickCardBody}>
+                <p className={styles.pickSummary}>
+                  First on price: {priceLabel(SIMBYE_MONTH)} for {dataLabel(SIMBYE_MONTH)} over{" "}
+                  {SIMBYE_MONTH?.days ?? 30} days, against {priceLabel(ESIMGO_MONTH)} on eSIM Go. It
+                  runs on {getProvider("simbye").network}, tethering is allowed on every Japan plan,
+                  and fixed plans can be topped up without changing the eSIM. It is data only, so it
+                  does not solve the Japanese-number problem below.
+                </p>
+                <div className={styles.pickTarget}>
+                  <span className={styles.pickTargetLabel}>Best for:</span>
+                  <span>A study month on campus WiFi with no need for a phone number</span>
+                </div>
+                <SimbyeOffer gb={20} />
+                <div className={styles.pickCtaRow}>
+                  <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+                    Get Simbye — {priceLabel(SIMBYE_MONTH)} / {dataLabel(SIMBYE_MONTH)} →
+                  </a>
+                  <Link href="/guides/esim/simbye-japan-review" className={styles.pickCtaInternal}>
+                    Simbye in detail
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* eSIM Go */}
+            <div className={styles.pickCard}>
+              <div className={styles.pickCardHeader}>
+                <div className={styles.pickRank}>
+                  <span className={styles.pickNumber}>2</span>
                   <div className={styles.pickMeta}>
                     <span className={`${styles.pickBadge} ${styles.pickBadgeGreen}`}>Best Budget</span>
                     <span className={styles.pickName}>eSIM Go</span>
@@ -356,7 +393,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
               </div>
               <div className={styles.pickCardBody}>
                 <p className={styles.pickSummary}>
-                  The cheapest study month of the four: {priceLabel(ESIMGO_MONTH)} for{" "}
+                  {priceLabel(ESIMGO_MONTH)} for{" "}
                   {dataLabel(ESIMGO_MONTH)} over 30 days. eSIM Go sells 30-day plans the whole way
                   up its range, so a term&apos;s data is one purchase rather than four stacked
                   short-trip plans. It runs on {getProvider("esimgo").network}, which also gives it
@@ -372,7 +409,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
                   <div className={styles.pickPros}>
                     <p className={styles.pickListLabel}>Pros</p>
                     <ul className={styles.pickList}>
-                      <li><span className={styles.proIcon}>+</span>Cheapest per GB at study-month sizes</li>
+                      <li><span className={styles.proIcon}>+</span>Larger allowances than Simbye sells on 30 days</li>
                       <li><span className={styles.proIcon}>+</span>30-day validity across the whole range</li>
                       <li><span className={styles.proIcon}>+</span>Tethering stated at no extra cost</li>
                     </ul>
@@ -393,7 +430,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
             <div className={styles.pickCard}>
               <div className={styles.pickCardHeader}>
                 <div className={styles.pickRank}>
-                  <span className={styles.pickNumber}>2</span>
+                  <span className={styles.pickNumber}>3</span>
                   <div className={styles.pickMeta}>
                     <span className={`${styles.pickBadge} ${styles.pickBadgeBlue}`}>Best Balance</span>
                     <span className={styles.pickName}>Airalo</span>
@@ -436,7 +473,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
             <div className={styles.pickCard}>
               <div className={styles.pickCardHeader}>
                 <div className={styles.pickRank}>
-                  <span className={styles.pickNumber}>3</span>
+                  <span className={styles.pickNumber}>4</span>
                   <div className={styles.pickMeta}>
                     <span className={`${styles.pickBadge} ${styles.pickBadgeOrange}`}>Only Phone Number</span>
                     <span className={styles.pickName}>Sakura Mobile</span>
@@ -469,7 +506,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
                   <div className={styles.pickCons}>
                     <p className={styles.pickListLabel}>Cons</p>
                     <ul className={styles.pickList}>
-                      <li><span className={styles.conIcon}>−</span>Dearest per GB of the four</li>
+                      <li><span className={styles.conIcon}>−</span>Dearest per GB of the five</li>
                       <li><span className={styles.conIcon}>−</span>Daily cap rather than one pooled allowance</li>
                     </ul>
                   </div>
@@ -481,7 +518,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
             <div className={styles.pickCard}>
               <div className={styles.pickCardHeader}>
                 <div className={styles.pickRank}>
-                  <span className={styles.pickNumber}>4</span>
+                  <span className={styles.pickNumber}>5</span>
                   <div className={styles.pickMeta}>
                     <span className={`${styles.pickBadge} ${styles.pickBadgeBlue}`}>Unlimited Data</span>
                     <span className={styles.pickName}>Holafly</span>
@@ -655,8 +692,8 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
             .
           </p>
           <div className={styles.pickCtaRow}>
-            <a href={esimLink("esimgo")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
-              Get eSIM Go — {priceLabel(ESIMGO_MONTH)} / {dataLabel(ESIMGO_MONTH)} →
+            <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+              Get Simbye — {priceLabel(SIMBYE_MONTH)} / {dataLabel(SIMBYE_MONTH)} →
             </a>
             <a href={esimLink("airalo")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
               Get Airalo — top-up from the app →
@@ -800,7 +837,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Compare all Japan eSIM options</h2>
             <p className={styles.ctaBannerDesc}>
-              See how eSIM Go, Airalo, Sakura Mobile and Holafly compare on price, data and
+              See how Simbye, eSIM Go, Airalo, Sakura Mobile and Holafly compare on price, data and
               coverage in our full Japan eSIM comparison.
             </p>
             <Link href="/guides/esim/best-esim-japan" className={styles.ctaBannerBtn}>

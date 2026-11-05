@@ -16,6 +16,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import SimbyeOffer from "../../../../components/SimbyeOffer";
 import { simCards } from "../../../../lib/sim-cards";
 import {
   allEsimPlans,
@@ -39,7 +40,7 @@ import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 
 /**
  * Korean edition of /guides/esim/best-esim-japan. Mirrors the English page block by
- * block as of 2026-11-01 — same sections, tables, FAQ and Klook CTAs in the same
+ * block as of 2026-11-05 — same sections, tables, FAQ and Klook CTAs in the same
  * places — and reads every price from lib/esim-prices.ts exactly as the English page
  * does. No figure here that the English page (or its data) does not carry.
  */
@@ -47,7 +48,7 @@ import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 const ROUTE = "/ko/guides/esim/best-esim-japan";
 const TITLE = "일본 이심 추천(2026): eSIM 요금제와 클룩 비교";
 const DESC =
-  "일본 이심 추천 2026: 클룩 일본 eSIM과 Airalo, Holafly 등 4곳의 가격·통신망 비교. 가격은 매일 공식 사이트 확인.";
+  "일본 이심 추천 2026: 클룩 일본 eSIM과 Simbye, Airalo 등 5곳의 가격·통신망 비교. 가격은 매일 공식 사이트 확인.";
 
 const LOCALE = "ko" as const;
 
@@ -65,6 +66,8 @@ const pricesCheckedAt = latest ? dateLabel(latest.slice(0, 10), LOCALE) : "확�
 const SPECS_CHECKED = dateLabel("2026-10-29", LOCALE);
 const KLOOK_CHECKED = dateLabel(isoOfEnDate(klookEsim.checkedAt), LOCALE);
 const KLOOK_SPECS_CHECKED = dateLabel(isoOfEnDate(klookEsim.specsCheckedAt), LOCALE);
+// Simbye joined after the others, so its rows have their own date (the English SIMBYE_SPECS_CHECKED_AT).
+const SIMBYE_CHECKED = dateLabel("2026-11-05", LOCALE);
 
 // English-only for now, so every link to it says so.
 const PLANS_HREF = "/guides/esim/japan-esim-data-plans";
@@ -80,6 +83,13 @@ const HOLAFLY_ALT = {
   note: "Holafly는 저희 링크로 구매할 수 없습니다. 대안으로 Airalo를 권합니다.",
 };
 
+/** Korean copy of the default in components/SimbyeOffer.tsx. {plan} prints the feed's English plan name. */
+const SIMBYE_OFFER = {
+  label: "Simbye 할인:",
+  text: "코드 {code} 입력 시 모든 eSIM 요금제 {percent}% 할인: {plan} 정가 {list}, 코드 적용 시 {price}.",
+  cta: "Simbye eSIM 보기 →",
+};
+
 type TopPick = {
   id: string;
   esimId: EsimProviderId;
@@ -90,54 +100,88 @@ type TopPick = {
   ctaLabel: string;
   ctaExternal: boolean;
   ctaAlt?: typeof HOLAFLY_ALT;
+  /** One line of fact for why the pick sits where it does, with live prices in it. */
+  why: () => string;
+};
+
+const tenGb = (id: EsimProviderId) => {
+  const plan = cheapestAtLeastGb(id, 10);
+  return plan ? formatUsd(plan.priceUsd) : "—";
 };
 
 const topPicks: TopPick[] = [
   {
+    id: "simbye-japan",
+    esimId: "simbye",
+    rank: 1,
+    bestFor: "최저가",
+    badgeCls: styles.pickBadgeGreen,
+    target: "데이터만 필요한 대부분의 여행자, 어떤 일정이든.",
+    ctaLabel: "Simbye eSIM 보기 →",
+    ctaExternal: true,
+    why: () =>
+      `다섯 곳 중 정가가 가장 낮습니다. 10 GB가 Simbye ${tenGb("simbye")}, eSIM Go ${tenGb("esimgo")}, Airalo ${tenGb("airalo")}이고, 일본 통신사 네 곳을 쓰며 테더링도 허용됩니다.`,
+  },
+  {
     id: "airalo-japan",
     esimId: "airalo",
-    rank: 1,
-    bestFor: "종합 1순위",
+    rank: 2,
+    bestFor: "앱·고객 지원 1순위",
     badgeCls: styles.pickBadgeBlue,
-    target: "대부분의 여행자 — 안정적이고 저렴하며 설정이 아주 간단합니다.",
+    target: "앱, 실시간 채팅, 제한 없는 테더링을 원하는 여행자.",
     ctaLabel: "Airalo eSIM 보기 →",
     ctaExternal: false,
+    why: () =>
+      `10 GB가 ${tenGb("airalo")}로 더 비싸지만, 무제한 요금제는 하루 3 GB까지 최고 속도에 테더링 제한이 없고 24시간 실시간 채팅도 제공합니다.`,
   },
   {
     id: "holafly-japan",
     esimId: "holafly",
-    rank: 2,
+    rank: 3,
     bestFor: "무제한 1순위",
     badgeCls: styles.pickBadgeOrange,
     target: "데이터를 많이 쓰는 사람: 원격 근무, 스트리밍, 매일 영상 통화.",
     ctaLabel: "Holafly eSIM 보기 →",
     ctaExternal: false,
     ctaAlt: HOLAFLY_ALT,
+    why: () =>
+      `무제한 전용으로 ${formatUsd(cheapestUnlimited("holafly")?.priceUsd ?? 0)}부터이며 휴대폰 자체에는 하루 속도 기준이 없습니다. 다만 핫스팟이 하루 1 GB로 제한되고 저희 링크로 살 수 없어 Airalo 다음입니다.`,
   },
   {
     id: "esim-go-japan",
     esimId: "esimgo",
-    rank: 3,
-    bestFor: "가성비 1순위",
+    rank: 4,
+    bestFor: "최대 용량",
     badgeCls: styles.pickBadgeBlue,
     target: "예산을 아끼는 여행자, 또는 아시아 여러 나라를 도는 여행자.",
     ctaLabel: "eSIM Go 보기 →",
     ctaExternal: true,
+    why: () =>
+      `10 GB가 ${tenGb("esimgo")}이고, 100 GB와 200 GB 요금제, 1일부터 시작하는 무제한 요금제를 파는 곳은 여기서 eSIM Go뿐입니다.`,
   },
   {
     id: "sakura-mobile",
     esimId: "sakura",
-    rank: 4,
+    rank: 5,
     bestFor: "장기 체류 1순위",
     badgeCls: styles.pickBadgeGreen,
     target: "한 달 이상 머물며 음성 통화와 영어 고객 지원이 필요한 사람.",
     ctaLabel: "Sakura Mobile 보기 →",
     ctaExternal: false,
+    why: () =>
+      "가격은 가장 뒤지만, 다섯 곳 중 통화와 문자가 되는 일본 번호를 파는 유일한 곳이자 물리 심이 있는 유일한 곳입니다.",
   },
 ];
 
 /** Korean copy of the qualitative profile in lib/sim-cards.ts — translated, nothing added. */
 const SIM_COPY: Record<string, { name: string; summary: string; pros: string[]; cons: string[] }> = {
+  "simbye-japan": {
+    name: "Simbye 일본 eSIM",
+    summary:
+      "NTT docomo, KDDI/au, SoftBank, Rakuten Mobile을 쓰는 데이터 전용 일본 eSIM. 용량제는 1 GB부터 50 GB까지이고, 무제한 요금제는 하루 2 GB까지 최고 속도입니다. 가격 피드의 모든 요금제가 테더링을 허용합니다.",
+    pros: ["용량제 정가가 다섯 곳 중 가장 낮음", "일본 통신사 네 곳을 자동으로 선택", "모든 일본 요금제에서 테더링 허용", "180일간 쓸 수 있는 50 GB 요금제"],
+    cons: ["데이터 전용(일본 번호, 통화, 문자 없음)", "무제한 요금제는 하루 2 GB 이후 1 Mbps로 감속", "무제한 요금제는 충전 불가"],
+  },
   "airalo-japan": {
     name: "Airalo 일본 eSIM",
     summary:
@@ -156,7 +200,7 @@ const SIM_COPY: Record<string, { name: string; summary: string; pros: string[]; 
     name: "eSIM Go 일본(Breeze)",
     summary:
       "190개국 이상을 커버하는 뛰어난 가성비의 eSIM으로, eSIM Go의 소비자 브랜드 Breeze를 통해 판매됩니다. 예산을 아끼는 여행자나 한 번에 여러 나라를 도는 여행자에게 알맞습니다.",
-    pros: ["네 곳 중 가장 낮은 시작 가격", "190개국 이상에서 사용 가능", "QR 코드로 즉시 활성화", "여러 나라를 도는 여행에 적합"],
+    pros: ["1일부터 쓰는 단기 무제한 요금제", "190개국 이상에서 사용 가능", "QR 코드로 즉시 활성화", "여러 나라를 도는 여행에 적합"],
     cons: ["데이터 전용(음성·문자 없음)", "Airalo나 Holafly보다 작은 브랜드", "eSIM 지원 기기 필요"],
   },
   "sakura-mobile": {
@@ -187,8 +231,9 @@ function tripPlanLabel(days: number, gb: number): string {
   return p ? `${p.provider} ${planName(p.name)} — ${formatUsd(p.priceUsd)}` : "—";
 }
 
-const SHORT_TRIP_PLAN = cheapestAtLeastGb("esimgo", 10);
-const LONG_TRIP_PLAN = cheapestAtLeastGb("esimgo", 20);
+const SHORT_TRIP_PLAN = cheapestAtLeastGb("simbye", 10);
+const LONG_TRIP_PLAN = cheapestAtLeastGb("simbye", 20);
+const SIMBYE_UNLIMITED = cheapestUnlimited("simbye", 7);
 const ESIMGO_UNLIMITED = cheapestUnlimited("esimgo", 7);
 const AIRALO_UNLIMITED = cheapestUnlimited("airalo", 7);
 const SAKURA_DAILY_LONG = allEsimPlans.find((p) => p.id === "sakura-90-gb-30-days") ?? null;
@@ -200,33 +245,33 @@ function planLabel(plan: { priceUsd: number; name: string } | null): string {
 const itineraryPicks = [
   {
     trip: "10일 이하, 일반적인 관광",
-    pick: "eSIM Go(Breeze) 용량제",
+    pick: "Simbye 용량제",
     detail: () =>
-      `${planLabel(SHORT_TRIP_PLAN)} — 10일 일정에 하루 1 GB씩 써도 남는 10 GB이고, NTT Docomo, KDDI, Rakuten Mobile, SoftBank를 모두 쓰며 한 통신사가 아니라 “가장 강한 신호”에 연결됩니다.`,
+      `${planLabel(SHORT_TRIP_PLAN)} — 10일 일정에 하루 1 GB씩 써도 남는 10 GB입니다. Simbye의 가격 피드에는 NTT docomo, KDDI/au, SoftBank, Rakuten Mobile이 올라 있고, 일본 페이지는 “네트워크를 직접 고를 일이 없습니다”라고 밝힙니다. 테더링도 허용됩니다.`,
   },
   {
     trip: "2~4주",
-    pick: "용량제는 eSIM Go, 일일 한도형은 Sakura Mobile",
+    pick: "용량제는 Simbye, 일일 한도형은 Sakura Mobile",
     detail: () =>
-      `${planLabel(LONG_TRIP_PLAN)}이면 같은 네 통신사로 하루 1 GB씩 21일을 버팁니다. 매일 아침 새 용량을 받고 싶다면 Sakura Mobile의 하루 3 GB 요금제가 Docomo 5G로 돌아가며 — ${planLabel(SAKURA_DAILY_LONG)} — 하루에 3 GB를 넘겨야 비로소 200 kbps로 제한됩니다.`,
+      `${planLabel(LONG_TRIP_PLAN)}이면 같은 네 통신사로 하루 1 GB씩 20일을 버팁니다. 매일 아침 새 용량을 받고 싶다면 Sakura Mobile의 하루 3 GB 요금제가 Docomo 5G로 돌아가며 — ${planLabel(SAKURA_DAILY_LONG)} — 하루에 3 GB를 넘겨야 비로소 200 kbps로 제한됩니다.`,
   },
   {
     trip: "일본 지방, 산간 지역, 섬",
     pick: "Docomo를 쓰는 요금제, 또는 네 통신사를 모두 쓰는 요금제",
     detail: () =>
-      "Sakura Mobile의 하루 3 GB 요금제는 Docomo 5G이고, eSIM Go는 자동 선택되는 다중 통신사입니다. Airalo의 일본 페이지는 SoftBank를 주 통신망으로, 그 밖에 이름을 밝히지 않은 통신망 두 곳을 표시하며(2026년 11월 1일 확인), 클룩 상품은 1일 단위 요금제가 SoftBank 5G, 총량형 요금제가 docomo 4G LTE입니다.",
+      "Sakura Mobile의 하루 3 GB 요금제는 Docomo 5G이고, Simbye와 eSIM Go는 자동 선택되는 다중 통신사입니다. Airalo의 일본 페이지는 SoftBank를 주 통신망으로, 그 밖에 이름을 밝히지 않은 통신망 두 곳을 표시하며(2026년 11월 1일 확인), 클룩 상품은 1일 단위 요금제가 SoftBank 5G, 총량형 요금제가 docomo 4G LTE입니다.",
   },
   {
     trip: "무제한 데이터 — 원격 근무, 스트리밍, 노트북 테더링",
-    pick: "eSIM Go Premium Unlimited 또는 Airalo Unlimited",
+    pick: "가격은 Simbye Unlimited, 최고 속도 데이터가 더 필요하면 eSIM Go Premium 또는 Airalo Unlimited",
     detail: () =>
-      `${planLabel(ESIMGO_UNLIMITED)}는 5일 30 GB, 10일 60 GB, 15일 90 GB까지 최고 속도이고, 그 뒤에는 “속도가 낮아지지만 720p 영상 스트리밍에는 여전히 충분”하며 “모든 요금제에서 테더링”이 됩니다. Airalo의 ${planLabel(AIRALO_UNLIMITED)}는 하루 3 GB까지 최고 속도, 그 뒤 24시간 초기화 때까지 1 Mbps이고 “테더링이나 연결 기기 수에 제한이 없다”고 밝힙니다.`,
+      `Simbye의 ${planLabel(SIMBYE_UNLIMITED)}는 일주일 기준 정가가 가장 낮고, 하루 2 GB까지 최고 속도, 그 뒤 1 Mbps입니다. eSIM Go의 ${planLabel(ESIMGO_UNLIMITED)}는 5일 30 GB, 10일 60 GB, 15일 90 GB까지 최고 속도이고, 그 뒤에는 “속도가 낮아지지만 720p 영상 스트리밍에는 여전히 충분”하며 “모든 요금제에서 테더링”이 됩니다. Airalo의 ${planLabel(AIRALO_UNLIMITED)}는 하루 3 GB까지 최고 속도, 그 뒤 24시간 초기화 때까지 1 Mbps이고 “테더링이나 연결 기기 수에 제한이 없다”고 밝힙니다.`,
   },
   {
     trip: "일본 전화번호가 필요하다",
     pick: "Sakura Mobile 음성+데이터 eSIM",
     detail: () =>
-      "다섯 곳 중 일본 번호, 통화, 문자가 되는 유일한 요금제: au(KDDI) 5G, 하루 3 GB, 통화 시간은 1~10일 요금제 120분, 11~60일 240분, 61일 이상 360분. 일본에서 대면 신분 확인이 필요하고, 이용 기간은 도착 시점이 아니라 그 확인 뒤부터 시작됩니다.",
+      "여섯 곳 중 일본 번호, 통화, 문자가 되는 유일한 요금제: au(KDDI) 5G, 하루 3 GB, 통화 시간은 1~10일 요금제 120분, 11~60일 240분, 61일 이상 360분. 일본에서 대면 신분 확인이 필요하고, 이용 기간은 도착 시점이 아니라 그 확인 뒤부터 시작됩니다.",
   },
   {
     trip: "한 여행에 일본과 한국 또는 대만",
@@ -243,6 +288,12 @@ const dataNeedRows = [10, 14, 21].map((days) => ({
 }));
 
 const networkRows = [
+  {
+    provider: "Simbye",
+    carriers: getProvider("simbye").network,
+    how: "Simbye 가격 피드에 표시된 통신사입니다. 일본 페이지는 “네트워크를 직접 고를 일이 없습니다”라고 밝히고, 50 GB 요금제는 NTT Docomo만 쓴다고 안내합니다. 테더링 허용. 데이터 전용.",
+    checked: SIMBYE_CHECKED,
+  },
   {
     provider: "Airalo(Moshi Moshi Japan)",
     carriers: "SoftBank(주 통신망), 그 밖에 페이지에 이름이 없는 2곳",
@@ -276,6 +327,13 @@ const networkRows = [
 ];
 
 const unlimitedRows = [
+  {
+    plan: "Simbye Unlimited",
+    full: "하루 2 GB",
+    after: "가격 피드 기준 “이후 1 Mbps로 무제한”",
+    hotspot: "“허용 — 노트북, 태블릿, 동행자용”",
+    checked: SIMBYE_CHECKED,
+  },
   {
     plan: "Airalo Unlimited(일본)",
     full: "하루 3 GB",
@@ -314,6 +372,13 @@ const unlimitedRows = [
 ];
 
 const timingRows = [
+  {
+    provider: "Simbye",
+    starts: "“요금제는 eSIM이 목적지에서 처음 연결될 때부터 계산됩니다.”",
+    install: "가능 — 일본 페이지는 출국 전에 와이파이로 설치하라고 안내합니다",
+    refund: "설치·활성화하지 않았고 데이터를 쓰지 않았다면 구매 후 30일 이내 요청 시 전액 환불. 환불 정책 참고",
+    checked: SIMBYE_CHECKED,
+  },
   {
     provider: "Airalo",
     starts:
@@ -404,7 +469,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "일본 eSIM은 가격이 얼마나 하나요?",
-    a: `일본 eSIM 가격은 사업자와 요금제 용량에 따라 다릅니다(확인일 ${pricesCheckedAt}). 절약형: eSIM Go ${priceFromLabel("esimgo")}부터, Airalo ${priceFromLabel("airalo")}부터. 중간: 5 GB 요금제가 eSIM Go ${priceAtLeastLabel("esimgo", 5)}, Airalo ${priceAtLeastLabel("airalo", 5)}. 무제한: Holafly ${unlimitedFromLabel("holafly")}부터. 영어 전화 지원이 되는 일본 현지 사업자: Sakura Mobile ${priceFromLabel("sakura")}부터. 일반적인 일주일 관광이라면 $10~20을 예상하세요.`,
+    a: `일본 eSIM 가격은 사업자와 요금제 용량에 따라 다릅니다(확인일 ${pricesCheckedAt}). 절약형: Simbye ${priceFromLabel("simbye")}부터, eSIM Go ${priceFromLabel("esimgo")}부터, Airalo ${priceFromLabel("airalo")}부터. 중간: 5 GB 요금제가 Simbye ${priceAtLeastLabel("simbye", 5)}, eSIM Go ${priceAtLeastLabel("esimgo", 5)}, Airalo ${priceAtLeastLabel("airalo", 5)}. 무제한: Holafly ${unlimitedFromLabel("holafly")}부터. 영어 전화 지원이 되는 일본 현지 사업자: Sakura Mobile ${priceFromLabel("sakura")}부터. 일반적인 일주일 관광이라면 $10~20을 예상하세요.`,
   },
   {
     q: "일본 여행에 무제한 데이터가 값을 할까요?",
@@ -416,7 +481,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "일본 eSIM 요금제에 통화와 문자가 포함되나요?",
-    a: "Airalo, eSIM Go, Holafly를 포함한 여행자용 eSIM 요금제는 대부분 데이터 전용이라 음성 통화나 문자가 없습니다. 일본에서 통화는 왓츠앱, 라인, 페이스타임을 데이터로 쓰면 됩니다. 음성 통화가 되는 일본 전화번호가 정말 필요하다면 주요 사업자 중에서는 Sakura Mobile이 최선입니다.",
+    a: "Simbye, Airalo, eSIM Go, Holafly를 포함한 여행자용 eSIM 요금제는 대부분 데이터 전용이라 음성 통화나 문자가 없습니다. 일본에서 통화는 왓츠앱, 라인, 페이스타임을 데이터로 쓰면 됩니다. 음성 통화가 되는 일본 전화번호가 정말 필요하다면 주요 사업자 중에서는 Sakura Mobile이 최선입니다.",
   },
   {
     q: "일본 eSIM은 언제 활성화해야 하나요?",
@@ -424,7 +489,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "일본에서 커버리지가 가장 좋은 통신망은 어디인가요?",
-    a: "Docomo가 지방 커버리지가 가장 넓습니다. 그래서 일정이 주요 도시를 벗어난다면 의식적으로 고를 가치가 있고, eSIM Go와 Sakura Mobile이 모두 Docomo를 씁니다. SoftBank와 KDDI(Holafly가 사용하며, SoftBank는 Airalo 일본 페이지의 주 통신망이기도 함)는 도시와 관광 동선에서 훌륭합니다. 표준적인 도쿄–교토–오사카–히로시마 경로라면 네 곳 모두 잘 터져서 차이를 느끼지 못할 것입니다.",
+    a: "Docomo가 지방 커버리지가 가장 넓습니다. 그래서 일정이 주요 도시를 벗어난다면 의식적으로 고를 가치가 있고, Simbye, eSIM Go, Sakura Mobile이 모두 Docomo를 씁니다. SoftBank와 KDDI(Holafly가 사용하며, SoftBank는 Airalo 일본 페이지의 주 통신망이기도 함)는 도시와 관광 동선에서 훌륭합니다. 표준적인 도쿄–교토–오사카–히로시마 경로라면 어느 곳이든 잘 터져서 차이를 느끼지 못할 것입니다.",
   },
   {
     q: "일본 심이나 eSIM은 언제 사는 게 좋나요?",
@@ -432,15 +497,15 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "eSIM으로 일본 전화번호를 받을 수 있나요?",
-    a: `Sakura Mobile에서만 가능합니다. 음성+데이터 eSIM은 au(KDDI) 5G에 하루 3 GB 고속 데이터, 일본 번호, 음성 통화와 문자를 포함합니다 — 통화 시간은 1~10일 요금제 120분, 11~60일 240분, 61일 이상 360분 — 다만 일본에서 대면 신분 확인이 필요하고, 이용 기간은 그 확인 뒤부터 시작됩니다. Airalo, eSIM Go, 클룩 상품은 모두 데이터 전용입니다: 번호, 문자, 음성 모두 없습니다. 인증번호 문자만 받으면 된다면 다른 슬롯의 한국 심을 켜 두고 데이터는 eSIM에 맡기세요. 확인일 ${SPECS_CHECKED}.`,
+    a: `Sakura Mobile에서만 가능합니다. 음성+데이터 eSIM은 au(KDDI) 5G에 하루 3 GB 고속 데이터, 일본 번호, 음성 통화와 문자를 포함합니다 — 통화 시간은 1~10일 요금제 120분, 11~60일 240분, 61일 이상 360분 — 다만 일본에서 대면 신분 확인이 필요하고, 이용 기간은 그 확인 뒤부터 시작됩니다. Simbye, Airalo, eSIM Go, 클룩 상품은 일본 요금제가 모두 데이터 전용입니다: 일본 번호, 문자, 음성 모두 없습니다. 인증번호 문자만 받으면 된다면 다른 슬롯의 한국 심을 켜 두고 데이터는 eSIM에 맡기세요. 확인일 ${SPECS_CHECKED}.`,
   },
   {
     q: "무제한 데이터도 속도가 느려지나요?",
-    a: `네. 일본의 모든 “무제한” 요금제에는 공개된 기준이 있습니다. Airalo는 3 GB를 넘기면 그날 남은 시간 동안 1 Mbps로 느려지고, 용량은 “eSIM을 활성화한 시각부터 계산해 24시간마다 초기화”됩니다. eSIM Go의 Premium Unlimited는 5일 30 GB, 10일 60 GB, 15일 90 GB까지 최고 속도이고, 그 뒤에는 “속도가 낮아지지만 720p 영상 스트리밍에는 여전히 충분”합니다. Sakura Mobile의 무제한 요금제는 기기 자체는 무제한이지만 핫스팟은 요금제 기간에 따라 2~30 GB로 제한되고, 하루 3 GB 요금제는 하루 3 GB를 넘기면 200 kbps로 떨어집니다. 클룩 상품의 무제한 요금제는 하루 10 GB까지 최고 속도, 그 뒤 128 kbps입니다. Airalo와 eSIM Go 수치는 ${SPECS_CHECKED} 확인, 클룩 수치는 ${KLOOK_SPECS_CHECKED} 상품 데이터 기준입니다.`,
+    a: `네. 일본의 모든 “무제한” 요금제에는 공개된 기준이 있습니다. Simbye는 하루 2 GB까지 최고 속도, 그 뒤 1 Mbps입니다. Airalo는 3 GB를 넘기면 그날 남은 시간 동안 1 Mbps로 느려지고, 용량은 “eSIM을 활성화한 시각부터 계산해 24시간마다 초기화”됩니다. eSIM Go의 Premium Unlimited는 5일 30 GB, 10일 60 GB, 15일 90 GB까지 최고 속도이고, 그 뒤에는 “속도가 낮아지지만 720p 영상 스트리밍에는 여전히 충분”합니다. Sakura Mobile의 무제한 요금제는 기기 자체는 무제한이지만 핫스팟은 요금제 기간에 따라 2~30 GB로 제한되고, 하루 3 GB 요금제는 하루 3 GB를 넘기면 200 kbps로 떨어집니다. 클룩 상품의 무제한 요금제는 하루 10 GB까지 최고 속도, 그 뒤 128 kbps입니다. Airalo와 eSIM Go 수치는 ${SPECS_CHECKED} 확인, 클룩 수치는 ${KLOOK_SPECS_CHECKED} 상품 데이터 기준입니다.`,
   },
   {
     q: "일본 eSIM을 한 번도 안 쓰면 환불받을 수 있나요?",
-    a: `사업자에 따라 다릅니다. eSIM Go는 “데이터를 전혀 쓰지 않았다면 이유를 묻지 않고 전액 환불”된다고 밝히며, 영업일 기준 3일 안에 처리됩니다. Airalo는 계정에서 환불을 요청할 수 있고, 만료되었거나 다 쓴 eSIM은 대상이 아니라고 안내합니다. Sakura Mobile은 여행용 eSIM 페이지에 환불 조건을 공개하지 않았고, 클룩 상품의 조건은 확인할 수 없었습니다. 관련된 함정은 돈보다 타이밍입니다: eSIM Go의 유효 기간은 “구매 시점이 아니라 일본에서 처음 데이터를 쓸 때 시작”되지만, Sakura Mobile의 하루 3 GB 요금제는 “eSIM을 설치하면” 시작됩니다 — 그러니 이 요금제는 집이 아니라 도착해서 설치하세요. 확인일 ${SPECS_CHECKED}.`,
+    a: `사업자에 따라 다릅니다. Simbye의 환불 정책은 설치하거나 활성화한 적이 없고 데이터를 쓰지 않은 eSIM에 대해, 구매 후 30일 이내에 요청하면 전액 환불해 줍니다. eSIM Go는 “데이터를 전혀 쓰지 않았다면 이유를 묻지 않고 전액 환불”된다고 밝히며, 영업일 기준 3일 안에 처리됩니다. Airalo는 계정에서 환불을 요청할 수 있고, 만료되었거나 다 쓴 eSIM은 대상이 아니라고 안내합니다. Sakura Mobile은 여행용 eSIM 페이지에 환불 조건을 공개하지 않았고, 클룩 상품의 조건은 확인할 수 없었습니다. 관련된 함정은 돈보다 타이밍입니다: eSIM Go의 유효 기간은 “구매 시점이 아니라 일본에서 처음 데이터를 쓸 때 시작”되지만, Sakura Mobile의 하루 3 GB 요금제는 “eSIM을 설치하면” 시작됩니다 — 그러니 이 요금제는 집이 아니라 도착해서 설치하세요. 확인일 ${SPECS_CHECKED}.`,
   },
   {
     q: "일본 eSIM 속도가 느린 이유는 무엇인가요?",
@@ -509,7 +574,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             정리했습니다.
           </p>
           <div className={styles.heroBadges}>
-            {["가격 매일 확인", "eSIM 5곳 비교", "독립 평가"].map((t) => (
+            {["가격 매일 확인", "eSIM 6곳 비교", "독립 평가"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -525,10 +590,13 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             일반적인 관광으로 <strong>10일 이하</strong> 머문다면 추천은{" "}
-            <strong>eSIM Go의 {planLabel(SHORT_TRIP_PLAN)}</strong>입니다 — 10 GB면 하루 1 GB씩 쓰고도 남고,
-            NTT Docomo, KDDI, Rakuten Mobile, SoftBank 가운데 가장 강한 신호를 잡습니다.{" "}
+            <strong>Simbye의 {planLabel(SHORT_TRIP_PLAN)}</strong>입니다 — 10 GB면 하루 1 GB씩 쓰고도 남고,
+            저희가 확인하는 요금 중 정가가 가장 낮으며, 가격 피드에는 NTT docomo, KDDI/au, SoftBank, Rakuten Mobile이
+            올라 있습니다.{" "}
             <strong>2~4주</strong>라면 같은 사업자의 <strong>{planLabel(LONG_TRIP_PLAN)}</strong>가 같은 속도로
-            21일을 커버합니다. 용량제가 아니라 <strong>무제한</strong>을 원한다면 eSIM Go의{" "}
+            20일을 커버합니다. 용량제가 아니라 <strong>무제한</strong>을 원한다면 Simbye의{" "}
+            <strong>{planLabel(SIMBYE_UNLIMITED)}</strong>가 일주일 기준 가장 싸지만 하루 2 GB까지 최고 속도, 그 뒤
+            1 Mbps입니다. eSIM Go의{" "}
             <strong>{planLabel(ESIMGO_UNLIMITED)}</strong>는 5일 30 GB 또는 10일 60 GB까지 최고 속도이고 그 뒤
             720p 영상이 가능한 속도로 내려가며, Airalo의 <strong>{planLabel(AIRALO_UNLIMITED)}</strong>는 하루
             3 GB까지 최고 속도, 그 뒤 24시간 초기화 때까지 1 Mbps이고 테더링 제한이 없습니다.{" "}
@@ -538,7 +606,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             가격은 매일 다시 읽어 오는 작업이 {pricesCheckedAt}에 각 사업자 공식 사이트에서 읽은 값입니다.
-            통신망, 공정 사용 기준, 핫스팟 한도, 전화번호 제공 여부, 환불 규정은 {SPECS_CHECKED}에 확인했습니다.
+            통신망, 공정 사용 기준, 핫스팟 한도, 전화번호 제공 여부, 환불 규정은 {SPECS_CHECKED}에 확인했습니다(Simbye는 {SIMBYE_CHECKED}, simbye.com과 가격 피드 기준).
             클룩 항목은 {KLOOK_SPECS_CHECKED} 클룩 자체 상품 데이터 기준인데, 클룩 상품 페이지가 자동 조회에
             HTTP 403으로 응답하기 때문입니다.
           </p>
@@ -577,8 +645,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                         <td>{sim.physicalSim ? <span className={styles.yes}>✓</span> : <span className={styles.no}>✗</span>}</td>
                         <td>
                           <span className={styles.tdRating}>
-                            <span style={{ color: "var(--accent)" }}>★</span>
-                            {sim.rating}
+                            {sim.rating !== null && <span style={{ color: "var(--accent)" }}>★</span>}
+                            {sim.rating ?? "—"}
                           </span>
                         </td>
                         <td>
@@ -587,7 +655,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                               href={url}
                               className={styles.tdLink}
                               target="_blank"
-                              rel={ctaAlt ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                              rel={ctaAlt || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
                             >
                               {label}
                             </a>
@@ -621,7 +689,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-            클룩 행은 일부러 순위 밖에 두었습니다. 위의 네 곳은 매일 각 사 사이트에서 읽어 오는 가격으로 순위를
+            클룩 행은 일부러 순위 밖에 두었습니다. 위의 다섯 곳은 매일 각 사 사이트에서 읽어 오는 가격으로 순위를
             매기는데, 클룩의 eSIM 상품은 마지막 시도({KLOOK_CHECKED}) 때 자동으로 읽을 수 없었기 때문에 이들과
             나란히 둘 가격이나 용량 단계가 없습니다. 상품 페이지를 열어 현재 요금제를 확인하세요.
           </p>
@@ -633,7 +701,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </span>
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-            음성 요금제나 물리 심을 파는 곳은 Sakura Mobile뿐이고, 나머지 세 곳은 데이터 전용 eSIM입니다. 일본
+            음성 요금제나 물리 심을 파는 곳은 Sakura Mobile뿐이고, 나머지 네 곳은 데이터 전용 eSIM입니다. 일본
             전화번호가 필요하거나 기기가 eSIM을 아예 쓸 수 없다면, 가격을 따지기 전에 선택지가 하나로 줄어듭니다.
             참고:{" "}
             <Link href="/guides/esim/japan-sim-card-vs-esim-2026" className={tools.inlineLink}>
@@ -647,8 +715,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>짧은 답</span>
           <h2 className={styles.sectionTitle}>일본 eSIM, 어디가 가장 좋을까?</h2>
           <p className={styles.bodyText}>
-            하나로 정해진 정답은 없습니다. 여행 기간과 데이터 사용량에 따라 적합한 통신사가 다르기 때문입니다. eSIM Go는 GB당
-            가장 싸고 일본 통신사 네 곳을 모두 쓰는 유일한 곳이고, Airalo는 테더링 제한 없는 무제한을 원할 때
+            하나로 정해진 정답은 없습니다. 여행 기간과 데이터 사용량에 따라 적합한 통신사가 다르기 때문입니다. Simbye는 용량제
+            정가가 가장 낮고, eSIM Go는 용량이 가장 크며, Airalo는 테더링 제한 없는 무제한을 원할 때
             고를 곳이며, Sakura Mobile은 일본 전화번호를 얻는 유일한 방법입니다. 여행 일정에 맞는 요금제를 선택하세요.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
@@ -788,8 +856,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            통신사를 아예 고르고 싶지 않다면 eSIM Go가 그 고민을 덜어 줍니다. 다섯 곳 중 공식 페이지에 통신사 네
-            곳을 명시하고 기기가 가장 강한 신호에 연결된다고 밝힌 곳은 eSIM Go뿐입니다.
+            통신사를 아예 고르고 싶지 않다면 Simbye와 eSIM Go가 그 고민을 덜어 줍니다. 둘 다 통신사 네 곳을
+            명시하고 자동으로 하나를 고릅니다.
           </p>
         </section>
 
@@ -829,7 +897,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            따옴표 안의 문구는 마지막 열의 날짜에 확인한 사업자 자신의 표현을 옮긴 것입니다. Holafly는 다섯 번째
+            따옴표 안의 문구는 마지막 열의 날짜에 확인한 사업자 자신의 표현을 옮긴 것입니다. Holafly는 여섯 번째
             무제한 판매처로 핫스팟을 하루 1 GB로 제한합니다. 위 비교표에는 있지만, 이 사이트가 가입할 수 있는 제휴
             프로그램이 없어 여기서는 링크가 없습니다.{" "}
             <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>
@@ -843,8 +911,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>통화와 문자</span>
           <h2 className={styles.sectionTitle}>일본 전화번호, 문자, 음성 통화</h2>
           <p className={styles.bodyText}>
-            다섯 곳 중 네 곳은 데이터 전용입니다 — 일본 번호도, 문자도, 음성도 없습니다. eSIM Go는 이를
-            분명히 밝히고(“문자나 음성 통화는 포함되지 않습니다. 데이터 전용.”), Airalo의 일본 패키지도 번호 없는
+            여섯 곳 중 다섯 곳은 데이터 전용입니다 — 일본 번호도, 문자도, 음성도 없습니다. eSIM Go는 이를
+            분명히 밝히고(“문자나 음성 통화는 포함되지 않습니다. 데이터 전용.”), Simbye의 일본 페이지는 “통화와 문자: 포함되지 않음”이라고 적고 있으며, Airalo의 일본 패키지도 번호 없는
             데이터 전용이며, 클룩 상품은 서비스 유형을 ‘전화번호 없음 — 데이터 전용’으로 설명합니다.
           </p>
           <p className={styles.bodyText}>
@@ -907,8 +975,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             아닙니다 — 일본 입국에 eSIM이 필요한 것은 아니고, 호텔, 편의점, 역, 대부분의 카페에 와이파이가
             있습니다. eSIM이 해결해 주는 것은 그 사이의 순간들입니다: 시간표가 바뀐 기차 승강장, 지도가 필요한 버스
-            정류장, QR 메뉴를 요구하는 식당 대기 줄. 이 페이지에서 가장 싼 일본 요금제는 eSIM Go의{" "}
-            {planLabel(cheapestPlan("esimgo"))}로, 대부분의 통신사가 받는 로밍 하루 요금보다 쌉니다.
+            정류장, QR 메뉴를 요구하는 식당 대기 줄. 이 페이지에서 가장 싼 일본 요금제는 Simbye의{" "}
+            {planLabel(cheapestPlan("simbye"))}로, 대부분의 통신사가 받는 로밍 하루 요금보다 쌉니다.
           </p>
           <p className={styles.bodyText}>
             가격을 비교하기 전에 두 가지를 먼저 확인해야 합니다. 기기가 eSIM을 지원하고 통신사 잠금이 풀려 있어야 하며, 요금제가
@@ -925,7 +993,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>기기별</span>
           <h2 className={styles.sectionTitle}>일본에서 아이폰과 안드로이드에 가장 잘 맞는 eSIM은?</h2>
           <p className={styles.bodyText}>
-            둘 다 같습니다. 네 사업자 중 아이폰 전용이나 안드로이드 전용 일본 요금제를 파는 곳은 없습니다 — QR
+            둘 다 같습니다. 다섯 사업자 중 아이폰 전용이나 안드로이드 전용 일본 요금제를 파는 곳은 없습니다 — QR
             코드나 활성화 링크로 설치하는 표준 eSIM 프로필이며, 사업자는 기기가 아니라 위의 표로 고르면 됩니다.
             달라지는 것은 사기 전에 확인할 사항과 설치하는 메뉴입니다.
           </p>
@@ -946,9 +1014,9 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
         {/* Top Picks */}
         <section className={styles.picksSection}>
           <span className={styles.sectionLabel}>저희 추천</span>
-          <h2 className={styles.sectionTitle}>일본 eSIM 추천 4곳</h2>
+          <h2 className={styles.sectionTitle}>일본 eSIM 추천 5곳</h2>
           <div className={styles.picksList}>
-            {topPicks.map(({ id, esimId, rank, bestFor, badgeCls, target, ctaLabel, ctaAlt }) => {
+            {topPicks.map(({ id, esimId, rank, bestFor, badgeCls, target, ctaLabel, ctaAlt, why }) => {
               const sim = simCards.find((s) => s.id === id)!;
               const copy = SIM_COPY[id];
               const affiliateUrl = getProvider(ctaAlt?.esimId ?? esimId).affiliateUrl;
@@ -966,8 +1034,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                       </div>
                     </div>
                     <span className={styles.pickRating}>
-                      <span style={{ color: "var(--accent)" }}>★</span>
-                      {sim.rating}
+                      {sim.rating !== null && <span style={{ color: "var(--accent)" }}>★</span>}
+                      {sim.rating ?? "—"}
                     </span>
                   </div>
                   <div className={styles.pickCardBody}>
@@ -975,6 +1043,10 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                     <div className={styles.pickTarget}>
                       <span className={styles.pickTargetLabel}>어울리는 경우:</span>
                       <span>{target}</span>
+                    </div>
+                    <div className={styles.pickTarget} style={{ marginTop: "0.6rem" }}>
+                      <span className={styles.pickTargetLabel}>{rank}위인 이유:</span>
+                      <span>{why()}</span>
                     </div>
                     <div className={styles.pickGrid}>
                       <div className={styles.pickPros}>
@@ -1000,7 +1072,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                           href={url}
                           className={styles.pickCta}
                           target="_blank"
-                          rel={ctaAlt ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                          rel={ctaAlt || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
                         >
                           {label}
                         </a>
@@ -1013,6 +1085,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                         모든 요금제 비교(영어)
                       </Link>
                     </div>
+                    {esimId === "simbye" && <SimbyeOffer copy={SIMBYE_OFFER} />}
                     {ctaAlt && (
                       <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                         {ctaAlt.note}
@@ -1084,7 +1157,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>더 깊이</span>
           <h2 className={styles.sectionTitle}>상황이 더 구체적이라면</h2>
           <p className={styles.bodyText}>
-            이 페이지는 일반적인 여행을 기준으로 네 사업자의 순위를 매깁니다. 흔한 몇몇 상황에서는 답이 달라지며,
+            이 페이지는 일반적인 여행을 기준으로 다섯 사업자의 순위를 매깁니다. 흔한 몇몇 상황에서는 답이 달라지며,
             각각 별도 가이드가 있습니다(모두 영어).
           </p>
           <ul className={styles.pickList}>
@@ -1132,10 +1205,17 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
+              <Link href="/guides/esim/simbye-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                Simbye 자세히(영어)
+              </Link>{" "}
+              — 최저가 추천: 모든 일본 요금제, 할인 코드, 어울리지 않는 사람.
+            </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
               <Link href="/guides/esim/esim-go-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 eSIM Go 자세히(영어)
               </Link>{" "}
-              — 가장 저렴한 추천을 한 사업자씩: 가격, 통신망, 테더링.
+              — 한 사업자씩: 가격, 통신망, 테더링.
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
@@ -1167,7 +1247,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>모든 요금제를 비교해 볼까요?</h2>
             <p className={styles.ctaBannerDesc}>
-              네 사업자의 모든 일본 eSIM 요금제를 GB당 단가로 정렬하고 매일 업데이트합니다.
+              다섯 사업자의 모든 일본 eSIM 요금제를 GB당 단가로 정렬하고 매일 업데이트합니다.
             </p>
             <Link href={PLANS_HREF} className={styles.ctaBannerBtn}>
               GB당 단가로 모든 요금제 보기(영어) →

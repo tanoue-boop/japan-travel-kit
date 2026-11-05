@@ -3,10 +3,12 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import KlookLink from "../../../components/KlookLink";
+import SimbyeOffer from "../../../components/SimbyeOffer";
 import { klookEsim } from "../../../lib/klook-links";
 import {
   esimSpec,
   esimLink,
+  SIMBYE_SPECS_CHECKED_AT,
   SPECS_CHECKED_AT,
   HOLAFLY_ALT_LABEL,
   HOLAFLY_ALT_NOTE,
@@ -127,12 +129,13 @@ function tenDayCapped(id: EsimProviderId): EsimPlanRow | null {
   return rows[0] ?? null;
 }
 
+const simbyePick = tenDayCapped("simbye");
 const esimgoPick = tenDayCapped("esimgo");
 const airaloPick = tenDayCapped("airalo");
 const sakuraPick = tenDayCapped("sakura");
 
 /** Cheapest unlimited plan per provider that stays valid for the whole ten days. */
-const unlimitedRows = (["esimgo", "airalo", "holafly", "sakura"] as EsimProviderId[])
+const unlimitedRows = (["simbye", "esimgo", "airalo", "holafly", "sakura"] as EsimProviderId[])
   .map((id) => ({ id, plan: cheapestUnlimited(id, TRIP_DAYS) }))
   .filter((r): r is { id: EsimProviderId; plan: EsimPlan } => Boolean(r.plan))
   .sort((a, b) => a.plan.priceUsd - b.plan.priceUsd);
@@ -203,6 +206,14 @@ type CompareRow = {
 
 const compareRows: CompareRow[] = [
   {
+    provider: "Simbye",
+    plan: simbyePick?.name ?? "—",
+    valid: `${simbyePick?.days ?? "—"} days`,
+    tethering: esimSpec("simbye").tetheringShort,
+    phone: esimSpec("simbye").phoneNumberShort,
+    price: planPrice(simbyePick),
+  },
+  {
     provider: "eSIM Go (Breeze)",
     plan: esimgoPick?.name ?? "—",
     valid: `${esimgoPick?.days ?? "—"} days`,
@@ -246,6 +257,12 @@ const compareRows: CompareRow[] = [
  */
 const timingRows = [
   {
+    provider: "Simbye",
+    starts: "“Your plan only starts counting when the eSIM first connects at your destination.”",
+    install: "Yes — its Japan page says to install over Wi-Fi before you fly",
+    checked: SIMBYE_SPECS_CHECKED_AT,
+  },
+  {
     provider: "eSIM Go (Breeze)",
     starts: "“Plan validity starts on first data use in Japan, not at purchase.”",
     install: "“Install before you fly.”",
@@ -280,7 +297,7 @@ const faqItems = [
   },
   {
     q: "Is unlimited eSIM worth it for 10 days?",
-    a: `For most ten-day trips, no. ${cheapestUnlimitedRow ? `The cheapest unlimited plan that stays valid for the full ten days is ${getProvider(cheapestUnlimitedRow.id).name}'s ${cheapestUnlimitedRow.plan.name} at ${formatUsd(cheapestUnlimitedRow.plan.priceUsd)}` : "The cheapest unlimited plan that lasts ten days"} — ${unlimitedPremium} more than ${planName(normalPick)} at ${planPrice(normalPick)}, which carries a gigabyte a day (checked ${pricesCheckedAt}). None of the unlimited plans is unmetered at full speed either: Airalo runs full speed to 3 GB a day then 1 Mbps until the 24-hour reset, eSIM Go's cheaper Unlimited Essential tier reduces speed after a daily high-speed allowance and its Premium Unlimited publishes 60 GB over 10 days before the reduction, Holafly caps shareable hotspot data at 1 GB a day, and Sakura Mobile's unlimited plan is unlimited on the device but allows a fixed hotspot total by plan length. Unlimited is worth it for three readers: anyone tethering a laptop all day, anyone streaming video daily, and anyone who would rather not think about it at all.`,
+    a: `For most ten-day trips, no. ${cheapestUnlimitedRow ? `The cheapest unlimited plan that stays valid for the full ten days is ${getProvider(cheapestUnlimitedRow.id).name}'s ${cheapestUnlimitedRow.plan.name} at ${formatUsd(cheapestUnlimitedRow.plan.priceUsd)}` : "The cheapest unlimited plan that lasts ten days"} — ${unlimitedPremium} more than ${planName(normalPick)} at ${planPrice(normalPick)}, which carries a gigabyte a day (checked ${pricesCheckedAt}). None of the unlimited plans is unmetered at full speed either: Simbye gives 2 GB a day at full speed and then 1 Mbps, Airalo runs full speed to 3 GB a day then 1 Mbps until the 24-hour reset, eSIM Go's cheaper Unlimited Essential tier reduces speed after a daily high-speed allowance and its Premium Unlimited publishes 60 GB over 10 days before the reduction, Holafly caps shareable hotspot data at 1 GB a day, and Sakura Mobile's unlimited plan is unlimited on the device but allows a fixed hotspot total by plan length. Unlimited is worth it for three readers: anyone tethering a laptop all day, anyone streaming video daily, and anyone who would rather not think about it at all.`,
   },
   {
     q: "Should I buy a 10-day or 15-day eSIM?",
@@ -292,11 +309,11 @@ const faqItems = [
   },
   {
     q: "Can I top up a Japan eSIM?",
-    a: "Yes, for most providers — which is why starting at 10 GB rather than paying for unlimited is the safe choice on a ten-day trip. Airalo lets you top up by buying an additional package in the app, with no new QR code. eSIM Go (Breeze) allows top-ups through its website. Sakura Mobile allows data add-ons through its customer portal. Holafly's plans are unlimited, so there is nothing to top up. The practical catch is that a top-up needs a working connection to complete, so buy the extra data before you head into the mountains or out to the smaller islands, not after.",
+    a: "Yes, for most providers — which is why starting at 10 GB rather than paying for unlimited is the safe choice on a ten-day trip. Simbye's fixed plans can be topped up without changing the eSIM. Airalo lets you top up by buying an additional package in the app, with no new QR code. eSIM Go (Breeze) allows top-ups through its website. Sakura Mobile allows data add-ons through its customer portal. Holafly's plans are unlimited, so there is nothing to top up. The practical catch is that a top-up needs a working connection to complete, so buy the extra data before you head into the mountains or out to the smaller islands, not after.",
   },
   {
     q: "Does a Japan eSIM come with a Japanese phone number?",
-    a: `No — every ten-day eSIM on this page is data only, with one exception. Airalo, eSIM Go and the Klook listing give you no Japanese number, no SMS and no voice calls. Sakura Mobile's separate Voice + Data eSIM is the only route to a Japanese number, and it needs an in-person ID check in Japan before the usage period starts. If you only need SMS for verification codes, keep your home SIM active in the other slot and let the eSIM carry the data. Clauses checked ${SPECS_CHECKED_AT}.`,
+    a: `No — every ten-day eSIM on this page is data only, with one exception. Simbye, Airalo, eSIM Go and the Klook listing give you no Japanese number, no SMS and no voice calls. Sakura Mobile's separate Voice + Data eSIM is the only route to a Japanese number, and it needs an in-person ID check in Japan before the usage period starts. If you only need SMS for verification codes, keep your home SIM active in the other slot and let the eSIM carry the data. Clauses checked ${SPECS_CHECKED_AT}.`,
   },
   {
     q: "Can I tether a laptop to a Japan eSIM for 10 days?",
@@ -515,6 +532,14 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
                 {klookEsim.ctaLabel}
               </KlookLink>
               <a
+                href={esimLink("simbye")}
+                className={styles.pickCtaInternal}
+                target="_blank"
+                rel="sponsored noopener"
+              >
+                Get Simbye {simbyePick?.name ?? "10 GB"} →
+              </a>
+              <a
                 href={esimLink("esimgo")}
                 className={styles.pickCtaInternal}
                 target="_blank"
@@ -631,10 +656,13 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <strong>Which one to buy.</strong> {planName(esimgoPick)} at {planPrice(esimgoPick)} is
-            the cheapest of the four and states tethering on every plan at no extra cost, with
-            {" "}{esimgoPick?.days ?? 30} days of validity so the clock is never the constraint — the
-            trade-off is email-only support and no in-app top-up. {planName(airaloPick)} at{" "}
+            <strong>Which one to buy.</strong> {planName(simbyePick)} at {planPrice(simbyePick)} has
+            the lowest list price of the table, allows tethering, and has {simbyePick?.days ?? 30} days
+            of validity so the clock is never the constraint.{" "}
+            <Link href="/guides/esim/simbye-japan-review" className={tools.inlineLink}>Simbye in detail →</Link>{" "}
+            {planName(esimgoPick)} at {planPrice(esimgoPick)} also states tethering on every plan at no
+            extra cost, with {esimgoPick?.days ?? 30} days of validity; the trade-off is email-only
+            support and no in-app top-up. {planName(airaloPick)} at{" "}
             {planPrice(airaloPick)} costs{" "}
             {airaloPick && esimgoPick ? formatUsd(airaloPick.priceUsd - esimgoPick.priceUsd) : "a little"}{" "}
             more for the same allowance and buys two things worth having on a ten-day trip: 24/7
@@ -643,6 +671,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             Japanese phone number — on its separate Voice + Data eSIM, which needs an in-person ID
             check in Japan.
           </p>
+          <SimbyeOffer />
           <KlookEsimSlot why="Klook's own Japan eSIM sells the same sizes — 500 MB to 50 GB plus an unlimited tier — and its listing states tethering is supported and the service is data only, so the sizing above transfers. It is unpriced here because the listing blocks automated price reads, which is also why it sits outside the ordered comparison rather than in it." />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Data, validity and price from the daily price feed ({pricesCheckedAt}); tethering and

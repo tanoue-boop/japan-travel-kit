@@ -3,7 +3,9 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import KlookLink from "../../../components/KlookLink";
+import SimbyeOffer from "../../../components/SimbyeOffer";
 import { klookEsim } from "../../../lib/klook-links";
+import { esimSpec } from "../../../lib/esim-specs";
 import {
   cheapestUnlimited,
   findPlansForTrip,
@@ -30,7 +32,7 @@ const pricesCheckedAt = pricesCheckedLabel();
 const HOLAFLY_ALT_LABEL = "Get Airalo unlimited eSIM →";
 const HOLAFLY_ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
 
-const PROVIDERS: EsimProviderId[] = ["airalo", "holafly", "esimgo", "sakura"];
+const PROVIDERS: EsimProviderId[] = ["simbye", "airalo", "holafly", "esimgo", "sakura"];
 
 /** The cheapest unlimited plan on the whole site that still covers a `days`-day trip. */
 function cheapestUnlimitedAcross(days: number): { provider: string; plan: EsimPlan } | null {
@@ -67,8 +69,9 @@ const tripRows = TRIP_LENGTHS.map((t) => ({
 const comparisonRows = [
   { provider: "Airalo", price: `From ${priceFrom("airalo")}`, data: "1–20 GB, plus unlimited", network: getProvider("airalo").network, verdict: "The default reply — and it holds up" },
   { provider: "Holafly", price: `From ${priceFrom("holafly")}`, data: "Unlimited only", network: getProvider("holafly").network, verdict: "No longer the cheapest unlimited" },
-  { provider: "eSIM Go", price: `From ${priceFrom("esimgo")}`, data: "1–100 GB, plus unlimited", network: getProvider("esimgo").network, verdict: "Still the budget winner" },
+  { provider: "eSIM Go", price: `From ${priceFrom("esimgo")}`, data: "1–100 GB, plus unlimited", network: getProvider("esimgo").network, verdict: "Cheapest of Reddit's usual four" },
   { provider: "Sakura Mobile", price: `From ${priceFrom("sakura")}`, data: "9–90 GB, plus unlimited", network: getProvider("sakura").network, verdict: "Right for long stays, as advised" },
+  { provider: "Simbye", price: `From ${priceFrom("simbye")}`, data: esimSpec("simbye").dataRange, network: getProvider("simbye").network, verdict: "Outside Reddit's usual four; lowest entry price we track" },
 ];
 
 /**
@@ -136,6 +139,12 @@ const specRows = [
     phone: "Only on the Voice + Data eSIM, which adds a Japanese number and domestic calls",
   },
   {
+    provider: "Simbye",
+    unlimited: "Yes, 7–30 days",
+    tethering: esimSpec("simbye").tetheringShort,
+    phone: esimSpec("simbye").phoneNumberShort,
+  },
+  {
     provider: klookEsim.name,
     unlimited: klookEsim.specData,
     tethering: klookEsim.specTethering,
@@ -184,10 +193,11 @@ const askedQuestions = [
     a: (
       <>
         For most travellers, Airalo — from {priceFrom("airalo")}, on SoftBank as its primary network, with its own app for
-        installation. If price is the deciding factor, eSIM Go undercuts it at {priceFrom("esimgo")}; if you
-        want a Japanese phone number, Sakura Mobile is the only one of the four that sells one. Our{" "}
+        installation. If price is the deciding factor, Simbye at {priceFrom("simbye")} and eSIM Go at{" "}
+        {priceFrom("esimgo")} both undercut it; if you want a Japanese phone number, Sakura Mobile is the
+        only provider here that sells one. Our{" "}
         <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>full Japan eSIM comparison</Link>{" "}
-        ranks all four on current prices.
+        ranks all five on current prices.
       </>
     ),
   },
@@ -806,6 +816,20 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           >
             Get eSIM Go Japan →
           </a>
+        </section>
+
+        {/* Simbye is not one of Reddit's usual four, so this section quotes no sentiment at all. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Outside the usual four</span>
+          <h2 className={styles.sectionTitle}>The Cheaper Option the Threads Don&apos;t List: Simbye</h2>
+          <p className={styles.bodyText}>
+            Simbye is not one of the four names this page checks, so there is no Reddit sentiment to report
+            here. It is included because of the price check itself: its entry tier is{" "}
+            {priceFromLabel("simbye")}, under eSIM Go&apos;s {priceFromLabel("esimgo")}, and its feed lists{" "}
+            {getProvider("simbye").network}. It is data only, with no Japanese number.{" "}
+            <Link href="/guides/esim/simbye-japan-review" className={tools.inlineLink}>Simbye in detail →</Link>
+          </p>
+          <SimbyeOffer />
         </section>
 
         {/* Common Reddit Q&A */}

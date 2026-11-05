@@ -73,7 +73,7 @@ const faqItems = [
   },
   {
     q: "Which network should I pick for a regional business trip?",
-    a: `docomo, if the itinerary leaves Tokyo, Osaka and Nagoya. It has the broadest reach of the three national carriers outside the cities, and eSIM Go runs on ${getProvider("esimgo").network} — unusual for the cheapest provider, since the budget option is normally the one on the narrowest footprint. Holafly sits on ${getProvider("holafly").network}, and Airalo's Japan page shows SoftBank as its primary network plus two others it does not name (checked 1 Nov 2026); SoftBank is strong in the cities and along the main corridors.`,
+    a: `docomo, if the itinerary leaves Tokyo, Osaka and Nagoya. It has the broadest reach of the three national carriers outside the cities, and eSIM Go runs on ${getProvider("esimgo").network} — unusual for a budget provider, since the budget option is normally the one on the narrowest footprint. Holafly sits on ${getProvider("holafly").network}, and Airalo's Japan page shows SoftBank as its primary network plus two others it does not name (checked 1 Nov 2026); SoftBank is strong in the cities and along the main corridors.`,
   },
   {
     q: "Is it worth buying unlimited for a business trip?",
@@ -384,7 +384,7 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
           </p>
           <p className={styles.bodyText}>
             docomo has the broadest reach of the three outside the cities, and eSIM Go runs on{" "}
-            {getProvider("esimgo").network} — an unusual combination, because the cheapest
+            {getProvider("esimgo").network} — an unusual combination, because a budget
             provider is normally the one on the narrowest footprint. Holafly sits on{" "}
             {getProvider("holafly").network}; Airalo&apos;s Japan page shows SoftBank as the primary network
             plus two others it does not name (checked 1 Nov 2026). Sakura Mobile splits them: {getProvider("sakura").network}.

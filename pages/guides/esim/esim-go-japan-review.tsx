@@ -45,11 +45,11 @@ const weekPlan = (id: EsimProviderId): EsimPlan | null =>
 
 const TITLE = `eSIM Go Japan Review 2026: ${dataLabel(ENTRY)} ${priceLabel(ENTRY)}, ${dataLabel(MONTH_20)} ${priceLabel(MONTH_20)}`;
 const DESCRIPTION =
-  `The cheapest Japan eSIM: ${priceLabel(ENTRY)} for ${ENTRY?.name}, ${priceLabel(MONTH_20)} for ` +
+  `A budget Japan eSIM: ${priceLabel(ENTRY)} for ${ENTRY?.name}, ${priceLabel(MONTH_20)} for ` +
   `${MONTH_20?.name} on ${NETWORK}. Tethering included, no phone number, email support.`;
 
 const pros = [
-  "Cheapest entry price and cheapest per GB of the four",
+  "Cheaper than Airalo, Holafly and Sakura Mobile on fixed plans",
   "30-day validity the whole way up the range",
   "Tethering stated on every Japan plan, at no extra cost",
   "Docomo — the widest reach outside the cities",
@@ -66,7 +66,7 @@ const cons = [
 const whoFor = [
   {
     title: "Anyone buying on price",
-    desc: `eSIM Go undercuts the other three at every tier we track: ${priceLabel(ENTRY)} to start, ${TEN_GB} for 10 GB and ${priceLabel(MONTH_20)} for ${dataLabel(MONTH_20)} over 30 days. If cost is the deciding factor, nothing here beats it.`,
+    desc: `eSIM Go undercuts Airalo, Holafly and Sakura Mobile at the tiers we track: ${priceLabel(ENTRY)} to start, ${TEN_GB} for 10 GB and ${priceLabel(MONTH_20)} for ${dataLabel(MONTH_20)} over 30 days. Simbye is the one provider here that lists lower: ${priceFromLabel("simbye")} to start and ${priceAtLeastLabel("simbye", 10)} at 10 GB.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -112,7 +112,7 @@ const vsRows = [
 const faqItems = [
   {
     q: "Is eSIM Go the cheapest eSIM for Japan?",
-    a: `Yes, at every tier in our tracker. Its entry plan is ${priceLabel(ENTRY)} for ${ENTRY?.name} against Airalo's ${AIRALO_ENTRY}; 10 GB is ${TEN_GB} against Airalo's ${priceLabel(cheapestAtLeastGb("airalo", 10))}; ${dataLabel(MONTH_20)} over 30 days is ${priceLabel(MONTH_20)} against Airalo's ${AIRALO_20}. Prices read from the providers' own sites on ${pricesCheckedAt}.`,
+    a: `No longer. Simbye now lists lower, at ${priceFromLabel("simbye")} to start and ${priceAtLeastLabel("simbye", 10)} at 10 GB. eSIM Go is still under Airalo at each tier: its entry plan is ${priceLabel(ENTRY)} for ${ENTRY?.name} against Airalo's ${AIRALO_ENTRY}; 10 GB is ${TEN_GB} against Airalo's ${priceLabel(cheapestAtLeastGb("airalo", 10))}; ${dataLabel(MONTH_20)} over 30 days is ${priceLabel(MONTH_20)} against Airalo's ${AIRALO_20}. Prices read from the providers' own sites on ${pricesCheckedAt}.`,
   },
   {
     q: "Can you tether or use a hotspot on eSIM Go?",
@@ -128,7 +128,7 @@ const faqItems = [
   },
   {
     q: "What does eSIM Go's \"unlimited\" actually mean?",
-    a: `Not unmetered. The tier is sold as "Unlimited Essential" and its own plan note says speed is reduced after a daily high-speed allowance. An unlimited week is ${unlimitedFromLabel("esimgo", 7)} against ${unlimitedFromLabel("holafly", 7)} on Holafly, so it is the cheapest unlimited of the four as well — but a ${dataLabel(MONTH_20)} plan at ${priceLabel(MONTH_20)} is better value unless you genuinely cannot predict your usage.`,
+    a: `Not unmetered. The tier is sold as "Unlimited Essential" and its own plan note says speed is reduced after a daily high-speed allowance. An unlimited week is ${unlimitedFromLabel("esimgo", 7)} against ${unlimitedFromLabel("holafly", 7)} on Holafly, and Simbye's is ${unlimitedFromLabel("simbye", 7)} with 2 GB a day at full speed — but a ${dataLabel(MONTH_20)} plan at ${priceLabel(MONTH_20)} is better value unless you genuinely cannot predict your usage.`,
   },
   {
     q: "What is the catch with eSIM Go?",
@@ -226,7 +226,7 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
             eSIM Go Japan Review (2026):<br />Prices, Networks and Tethering
           </h1>
           <p className={styles.heroSubtitle}>
-            The cheapest Japan eSIM at every tier we track — and the two things it does not do.
+            A budget Japan eSIM with allowances up to 200 GB — and the two things it does not do.
           </p>
           <div className={styles.heroBadges}>
             {[`From ${priceLabel(ENTRY)}`, "Prices checked daily", "Tethering included"].map((t) => (
@@ -270,8 +270,8 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
                 Buy it if price or tethering decides this for you; buy Airalo instead if you want
                 live chat and in-app top-up.
               </strong>{" "}
-              eSIM Go — sold to consumers as Breeze — is the cheapest of the four providers we
-              track at every tier: {priceLabel(ENTRY)} for {ENTRY?.name}, {TEN_GB} for 10 GB and{" "}
+              eSIM Go — sold to consumers as Breeze — is under Airalo, Holafly and Sakura Mobile at
+              the tiers we track, though Simbye now lists lower: {priceLabel(ENTRY)} for {ENTRY?.name}, {TEN_GB} for 10 GB and{" "}
               {priceLabel(MONTH_20)} for {MONTH_20?.name}, against Airalo&apos;s {AIRALO_ENTRY}{" "}
               entry and {AIRALO_20} for 20 GB. It
               runs on {NETWORK}, which is unusual at this price, and tethering is stated on every
@@ -300,7 +300,7 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
         {/* The table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Side by side</span>
-          <h2 className={styles.sectionTitle}>How Does eSIM Go Compare with the Other Three?</h2>
+          <h2 className={styles.sectionTitle}>How Does eSIM Go Compare with the Other Four?</h2>
           <p className={styles.bodyText}>
             One week in Japan, 5 GB or more: the cheapest plan each provider sells that covers it,
             with the two clauses the price alone does not tell you.
@@ -318,8 +318,8 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             eSIM Go is a global eSIM provider that sells to travellers under the Breeze brand at
             breezesim.com, covering 190+ countries with data-only plans. It has none of the brand
-            recognition of Airalo or Holafly, and it undercuts both at every tier — which is the
-            whole case for it.
+            recognition of Airalo or Holafly, and it undercuts both at every fixed tier — which is the
+            main case for it.
           </p>
           <p className={styles.bodyText}>
             For Japan it runs on {NETWORK}; its Japan page names NTT docomo among the networks it
@@ -473,10 +473,12 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Bottom line</span>
           <h2 className={styles.sectionTitle}>Verdict</h2>
           <p className={styles.verdictText}>
-            For anyone choosing on price, eSIM Go is the straightforward answer: cheapest at every
-            tier we track, from {priceLabel(ENTRY)}, on {NETWORK} — a network combination the
-            budget option usually does not get. Tethering at no extra cost makes it the pick for a
-            laptop too.
+            eSIM Go is a strong budget option, from {priceLabel(ENTRY)} on {NETWORK}, with larger
+            allowances than anyone else here and tethering at no extra cost. On list price alone,{" "}
+            <Link href="/guides/esim/simbye-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Simbye
+            </Link>{" "}
+            now comes in lower.
           </p>
           <p className={styles.verdictText}>
             The weakness is the recovery path. Airalo and Holafly both run live chat; eSIM Go is
@@ -487,7 +489,7 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
           <p className={styles.verdictText}>
             And if you need a Japanese phone number, none of this applies — no eSIM Go plan sells
             voice or SMS at any price, and Sakura Mobile&apos;s Voice + Data eSIM is the only route
-            to a number among the four.
+            to a number among the five.
           </p>
         </section>
 
@@ -516,7 +518,10 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             <EsimRelatedCard href="/guides/esim/best-esim-japan">
-              Best eSIM for Japan 2026: Top 4 Picks Compared
+              Best eSIM for Japan 2026: Compared by Price &amp; Network
+            </EsimRelatedCard>
+            <EsimRelatedCard href="/guides/esim/simbye-japan-review">
+              Simbye Japan Review 2026: Prices, Networks and Discount Code
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/sakura-mobile-review">
               Sakura Mobile Review 2026: eSIM &amp; SIM Card Plans and Prices
@@ -544,7 +549,7 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Compare all Japan eSIM options</h2>
             <p className={styles.ctaBannerDesc}>
-              See how eSIM Go stacks up against Airalo, Holafly and Sakura Mobile on price, data
+              See how eSIM Go stacks up against Simbye, Airalo, Holafly and Sakura Mobile on price, data
               and coverage.
             </p>
             <Link href="/guides/esim/best-esim-japan" className={styles.ctaBannerBtn}>

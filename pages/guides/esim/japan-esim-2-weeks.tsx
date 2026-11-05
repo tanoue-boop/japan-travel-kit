@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import tools from "../../../styles/Tools.module.css";
+import SimbyeOffer from "../../../components/SimbyeOffer";
 import {
   allEsimPlans,
   findPlansForTrip,
@@ -33,6 +35,7 @@ const pick = (id: EsimProviderId): EsimPlanRow | undefined => fitsTrip.find((p) 
 const bestValue = fitsTrip.find((p) => !p.unlimited);
 const airaloPick = pick("airalo");
 const esimgoPick = pick("esimgo");
+const simbyePick = pick("simbye");
 const sakuraPick = pick("sakura");
 /** Plans with enough data for the trip but too short a validity — the trap this page exists to flag. */
 const tooShort = allEsimPlans.filter((p) => !p.unlimited && (p.gb ?? 0) >= TARGET_GB && p.days < TRIP_DAYS).length;
@@ -59,7 +62,7 @@ const faqItems = [
   },
   {
     q: "Should I get unlimited data for 2 weeks in Japan?",
-    a: `Only if you genuinely use more than ${TARGET_GB} GB. An unlimited plan long enough for the trip runs ${unlimitedFromLabel("esimgo", TRIP_DAYS)} on eSIM Go or ${unlimitedFromLabel("holafly", TRIP_DAYS)} on Holafly, against ${planLabel(bestValue)} for a capped plan that covers most itineraries. Unlimited is for remote workers, constant streamers, and anyone sharing a hotspot all day.`,
+    a: `Only if you genuinely use more than ${TARGET_GB} GB. An unlimited plan long enough for the trip runs ${unlimitedFromLabel("simbye", TRIP_DAYS)} on Simbye, ${unlimitedFromLabel("esimgo", TRIP_DAYS)} on eSIM Go or ${unlimitedFromLabel("holafly", TRIP_DAYS)} on Holafly, against ${planLabel(bestValue)} for a capped plan that covers most itineraries. Unlimited is for remote workers, constant streamers, and anyone sharing a hotspot all day.`,
   },
   {
     q: "Can I use Sakura Mobile as an eSIM for 2 weeks?",
@@ -209,7 +212,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Unlimited, long enough</p>
-                <p className={styles.verdictStatValue}>from {unlimitedFromLabel("esimgo", TRIP_DAYS)}</p>
+                <p className={styles.verdictStatValue}>from {unlimitedFromLabel("simbye", TRIP_DAYS)}</p>
               </div>
             </div>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.82rem", marginTop: "0.75rem", marginBottom: "1rem" }}>
@@ -217,8 +220,16 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             </p>
             <div className={styles.pickCtaRow}>
               <a
-                href={link("esimgo")}
+                href={link("simbye")}
                 className={styles.verdictBtn}
+                target="_blank"
+                rel="sponsored noopener"
+              >
+                Get Simbye {simbyePick?.name ?? "10 GB"} →
+              </a>
+              <a
+                href={link("esimgo")}
+                className={styles.pickCtaInternal}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
               >
@@ -359,6 +370,41 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>Top Picks</span>
           <h2 className={styles.sectionTitle}>Best eSIMs for a 2-Week Japan Trip</h2>
 
+          {/* Simbye */}
+          <div className={styles.choiceGrid} style={{ marginBottom: "1.5rem" }}>
+            <div className={styles.choiceCard}>
+              <div className={`${styles.choiceCardHeader} ${styles.choiceCardHeaderEsim}`}>
+                <div className={styles.choiceCardIcon}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" /><path d="M12 6v2m0 8v2m-4-6h2a2 2 0 1 0 0-4H9a2 2 0 1 0 0 4h2a2 2 0 1 0 0 4H9" />
+                  </svg>
+                </div>
+                <div>
+                  <p className={styles.choiceCardTitle}>1. Simbye {simbyePick?.name ?? "10 GB"} – Lowest Price</p>
+                  <p className={styles.choiceCardSubtitle}>
+                    {simbyePick ? formatUsd(simbyePick.priceUsd) : "—"} · {getProvider("simbye").network}
+                  </p>
+                </div>
+              </div>
+              <div className={styles.choiceCardBody}>
+                <ul className={styles.choiceList}>
+                  <li><span className={styles.choiceCheck}>✓</span> Lowest list price for {TARGET_GB} GB that outlasts 14 days</li>
+                  <li><span className={styles.choiceCheck}>✓</span> {simbyePick?.days ?? 30}-day validity, so no day-7 cliff</li>
+                  <li><span className={styles.choiceCheck}>✓</span> Tethering allowed; top-up without a new eSIM</li>
+                  <li><span className={styles.conIcon}>−</span> Data only: no Japanese number, calls or SMS</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p className={styles.bodyText}>
+            First on price alone: at {simbyePick ? formatUsd(simbyePick.priceUsd) : "—"} it is{" "}
+            {simbyePick && esimgoPick ? formatUsd(esimgoPick.priceUsd - simbyePick.priceUsd) : "a little"} under
+            eSIM Go for the same {simbyePick?.name ?? "plan"}, on the carriers listed above.{" "}
+            <Link href="/guides/esim/simbye-japan-review" className={tools.inlineLink}>Simbye in detail →</Link>
+          </p>
+          <SimbyeOffer />
+          <div style={{ marginBottom: "2rem" }} />
+
           {/* eSIM Go */}
           <div className={styles.choiceGrid} style={{ marginBottom: "1.5rem" }}>
             <div className={styles.choiceCard}>
@@ -369,7 +415,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
                   </svg>
                 </div>
                 <div>
-                  <p className={styles.choiceCardTitle}>1. eSIM Go {esimgoPick?.name ?? "10 GB"} – Best Value</p>
+                  <p className={styles.choiceCardTitle}>2. eSIM Go {esimgoPick?.name ?? "10 GB"} – Same Allowance, More Plan Sizes</p>
                   <p className={styles.choiceCardSubtitle}>
                     {esimgoPick ? formatUsd(esimgoPick.priceUsd) : "—"} · {getProvider("esimgo").network}
                   </p>
@@ -377,7 +423,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
               </div>
               <div className={styles.choiceCardBody}>
                 <ul className={styles.choiceList}>
-                  <li><span className={styles.choiceCheck}>✓</span> Cheapest plan that outlasts a 14-day trip</li>
+                  <li><span className={styles.choiceCheck}>✓</span> Refund if unused, on its own stated terms</li>
                   <li><span className={styles.choiceCheck}>✓</span> Docomo — Japan&apos;s widest rural coverage</li>
                   <li><span className={styles.choiceCheck}>✓</span> {esimgoPick?.days ?? 30}-day validity, so no day-7 cliff</li>
                   <li><span className={styles.conIcon}>−</span> Email-only support (no live chat)</li>
@@ -387,9 +433,9 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText}>
-            The value pick, and for the right reason: at {esimgoPick ? formatUsd(esimgoPick.priceUsd) : "—"} it
-            is the cheapest plan in the whole catalogue that still has {TARGET_GB} GB and{" "}
-            {esimgoPick?.days ?? 30} days of validity — comfortably past the day you fly home.
+            At {esimgoPick ? formatUsd(esimgoPick.priceUsd) : "—"} it still has {TARGET_GB} GB and{" "}
+            {esimgoPick?.days ?? 30} days of validity, comfortably past the day you fly home, and its range
+            runs up to much larger allowances if a fortnight turns out to need them.
           </p>
           <a
             href={link("esimgo")}
@@ -411,7 +457,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
                   </svg>
                 </div>
                 <div>
-                  <p className={styles.choiceCardTitle}>2. Airalo {airaloPick?.name ?? "10 GB"} – Best Support</p>
+                  <p className={styles.choiceCardTitle}>3. Airalo {airaloPick?.name ?? "10 GB"} – Best Support</p>
                   <p className={styles.choiceCardSubtitle}>
                     {airaloPick ? formatUsd(airaloPick.priceUsd) : "—"} · {getProvider("airalo").network}
                   </p>

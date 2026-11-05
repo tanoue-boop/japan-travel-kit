@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import SimbyeOffer from "../../../components/SimbyeOffer";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -15,6 +16,10 @@ const SAKURA_UNL_30 = unlimitedFromLabel("sakura", 30);
 const AIRALO_10 = priceAtLeastLabel("airalo", 10);
 const AIRALO_FROM = priceFromLabel("airalo");
 const ESIMGO_10 = priceAtLeastLabel("esimgo", 10);
+const SIMBYE_10 = priceAtLeastLabel("simbye", 10);
+const SIMBYE_UNL = unlimitedFromLabel("simbye", 7);
+const SIMBYE_UNL_30 = unlimitedFromLabel("simbye", 30);
+const SIMBYE_FAIR_USE = "2 GB/day at full speed, then 1 Mbps";
 
 // Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
 // so Holafly's purchase CTAs point at Airalo's unlimited plans, the closest approved alternative.
@@ -40,8 +45,8 @@ const usageRows = [
 ];
 
 const planVsDataRows = [
-  { usage: "Up to 5 GB",   recommendation: "eSIM Go or Airalo",  reason: "Much cheaper than any unlimited plan" },
-  { usage: "5 GB – 10 GB", recommendation: `eSIM Go 10 GB (${ESIMGO_10}) or Airalo 10 GB (${AIRALO_10})`, reason: "Best price-to-data ratio for typical tourists" },
+  { usage: "Up to 5 GB",   recommendation: "Simbye, eSIM Go or Airalo",  reason: "Much cheaper than any unlimited plan" },
+  { usage: "5 GB – 10 GB", recommendation: `Simbye 10 GB (${SIMBYE_10}), eSIM Go 10 GB (${ESIMGO_10}) or Airalo 10 GB (${AIRALO_10})`, reason: "Best price-to-data ratio for typical tourists" },
   { usage: "10 GB – 15 GB", recommendation: "Holafly unlimited",  reason: "Crosses the break-even point on most multi-day plans" },
   { usage: "15 GB+",        recommendation: "Holafly unlimited",  reason: "Clearly the better value — no overage anxiety" },
 ];
@@ -62,6 +67,18 @@ const topPicks = [
   },
   {
     rank: 2,
+    name: "Simbye Unlimited",
+    badge: "Lowest Unlimited Price",
+    badgeClass: "pickBadgeGreen" as const,
+    summary: `Ranked below Holafly only because full speed stops at 2 GB a day; on price it is the lowest of the plans listed here at 7 days or more, from ${SIMBYE_UNL} up to ${SIMBYE_UNL_30} (checked ${pricesCheckedAt}). Past the daily 2 GB it stays connected at 1 Mbps. Runs on ${getProvider("simbye").network}.`,
+    bestFor: "Travellers who want no hard stop but rarely pass 2 GB a day",
+    pros: ["Lowest unlimited list price at 7 days or more", "Tethering allowed", "7, 15 and 30-day plans"],
+    cons: [SIMBYE_FAIR_USE, "No top-up on unlimited plans", "Data-only — no Japanese number or calls"],
+    cta: "Get Simbye Unlimited →",
+    href: getProvider("simbye").affiliateUrl,
+  },
+  {
+    rank: 3,
     name: "Sakura Mobile",
     badge: "Unlimited + Voice",
     badgeClass: "pickBadgeOrange" as const,
@@ -73,7 +90,7 @@ const topPicks = [
     href: "https://p.sakuramobile.jp/idevaffiliate.php?id=486",
   },
   {
-    rank: 3,
+    rank: 4,
     name: "Airalo (10 GB plan)",
     badge: "Best Value",
     badgeClass: "pickBadgeGreen" as const,
@@ -87,13 +104,13 @@ const topPicks = [
 ];
 
 const comparisonRows = [
-  { feature: "Data allowance",   holafly: "Unlimited",     sakura: "Unlimited or 3 GB/day", airalo: "10 GB (or unlimited)" },
-  { feature: "Throttling",       holafly: "Hotspot 1 GB/day", sakura: "Hotspot allowance by plan", airalo: "Data stops at cap" },
-  { feature: "Network",         holafly: getProvider("holafly").network, sakura: getProvider("sakura").network, airalo: getProvider("airalo").network },
-  { feature: "Voice calls",      holafly: "✗",             sakura: "SIM plans only", airalo: "✗" },
-  { feature: "Min. duration",    holafly: "1 day",         sakura: "3 days",         airalo: "3 days" },
-  { feature: "Price from",       holafly: HOLAFLY_FROM,    sakura: SAKURA_UNL,       airalo: AIRALO_FROM },
-  { feature: "English support",  holafly: "24/7 chat",     sakura: "Email (Japan)",  airalo: "Chat / app" },
+  { feature: "Data allowance",   holafly: "Unlimited",     simbye: "Unlimited", sakura: "Unlimited or 3 GB/day", airalo: "10 GB (or unlimited)" },
+  { feature: "Throttling",       holafly: "Hotspot 1 GB/day", simbye: SIMBYE_FAIR_USE, sakura: "Hotspot allowance by plan", airalo: "Data stops at cap" },
+  { feature: "Network",         holafly: getProvider("holafly").network, simbye: getProvider("simbye").network, sakura: getProvider("sakura").network, airalo: getProvider("airalo").network },
+  { feature: "Voice calls",      holafly: "✗",             simbye: "✗", sakura: "SIM plans only", airalo: "✗" },
+  { feature: "Min. duration",    holafly: "1 day",         simbye: "7 days", sakura: "3 days",         airalo: "3 days" },
+  { feature: "Price from",       holafly: HOLAFLY_FROM,    simbye: SIMBYE_UNL, sakura: SAKURA_UNL,       airalo: AIRALO_FROM },
+  { feature: "English support",  holafly: "24/7 chat",     simbye: "Chat and email", sakura: "Email (Japan)",  airalo: "Chat / app" },
 ];
 
 const faqItems = [
@@ -115,15 +132,15 @@ const faqItems = [
   },
   {
     q: "Is there a cheaper alternative to Holafly for unlimited data?",
-    a: `The closest affordable alternative is Airalo's 10 GB plan at ${AIRALO_10}. For most travellers, this is functionally unlimited. If you genuinely need no cap — for streaming or heavy video uploads — compare the unlimited plans from Holafly, Airalo and eSIM Go in our live price tracker; prices are re-checked daily.`,
+    a: `The closest affordable alternative is Airalo's 10 GB plan at ${AIRALO_10}. For most travellers, this is functionally unlimited. If you genuinely need no cap — for streaming or heavy video uploads — compare the unlimited plans from Simbye, Holafly, Airalo and eSIM Go in our live price tracker; prices are re-checked daily.`,
   },
   {
     q: "How much does unlimited eSIM cost for Japan?",
-    a: `As of ${pricesCheckedAt}, Holafly's Japan unlimited plans run from ${HOLAFLY_5} to ${HOLAFLY_30}. Sakura Mobile's unlimited eSIM starts at ${SAKURA_UNL}. By contrast, eSIM Go's 10 GB plan is ${ESIMGO_10} and Airalo's 10 GB plan ${AIRALO_10} — typically half the price of an unlimited plan for the same length.`,
+    a: `As of ${pricesCheckedAt}, Holafly's Japan unlimited plans run from ${HOLAFLY_5} to ${HOLAFLY_30}. Sakura Mobile's unlimited eSIM starts at ${SAKURA_UNL} and Simbye's at ${SIMBYE_UNL}. By contrast, eSIM Go's 10 GB plan is ${ESIMGO_10} and Airalo's 10 GB plan ${AIRALO_10} — typically half the price of an unlimited plan for the same length.`,
   },
   {
     q: "What's the cheapest unlimited Japan eSIM?",
-    a: `Holafly's 5-day plan at ${HOLAFLY_5} is a low entry point for unlimited, and Airalo and eSIM Go now sell unlimited plans too — see the live tracker for today's cheapest. If you're willing to consider 'effectively unlimited' fixed plans, eSIM Go's 10 GB at ${ESIMGO_10} is dramatically cheaper and covers what most travellers would consider unlimited usage on a 1–2 week trip.`,
+    a: `At 7 days or more, Simbye's plan at ${SIMBYE_UNL} has the lowest list price here, with 2 GB a day at full speed and then 1 Mbps. Holafly's 5-day plan at ${HOLAFLY_5} is a short entry point, and Airalo and eSIM Go sell unlimited plans too — see the live tracker for today's cheapest. If you're willing to consider 'effectively unlimited' fixed plans, eSIM Go's 10 GB at ${ESIMGO_10} is dramatically cheaper and covers what most travellers would consider unlimited usage on a 1–2 week trip.`,
   },
   {
     q: "Can I stream Netflix with an unlimited Japan eSIM?",
@@ -463,6 +480,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
                   <tr>
                     <th>Feature</th>
                     <th>Holafly</th>
+                    <th>Simbye Unlimited</th>
                     <th>Sakura Mobile</th>
                     <th>Airalo 10 GB</th>
                   </tr>
@@ -472,6 +490,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
                     <tr key={row.feature}>
                       <td className={styles.ftFeature}>{row.feature}</td>
                       <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.holafly}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.simbye}</td>
                       <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.sakura}</td>
                       <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.airalo}</td>
                     </tr>
@@ -481,6 +500,8 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             </div>
           </div>
         </section>
+
+        <SimbyeOffer />
 
         {/* Unlimited vs Large Data: rule of thumb */}
         <section className={styles.comparisonSection}>
@@ -636,7 +657,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Compare all Japan eSIM options</h2>
             <p className={styles.ctaBannerDesc}>
-              See how Holafly, Airalo, eSIM Go, and Sakura Mobile compare on price, speed, and features in our full comparison guide.
+              See how Simbye, Holafly, Airalo, eSIM Go, and Sakura Mobile compare on price, speed, and features in our full comparison guide.
             </p>
             <Link href="/guides/esim/best-esim-japan" className={styles.ctaBannerBtn}>
               View Full eSIM Comparison →

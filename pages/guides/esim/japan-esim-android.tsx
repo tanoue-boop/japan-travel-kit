@@ -107,7 +107,7 @@ const faqItems = [
   },
   {
     q: "Which is the best Japan eSIM for Android?",
-    a: `The same one as on an iPhone, because the plan is identical — what differs is where you tap. eSIM Go is the cheapest at every tier: ${priceLabel(ENTRY)} for ${ENTRY?.name}, ${priceAtLeastLabel("esimgo", 10)} for 10 GB. Airalo costs a little more (from ${priceFrom("airalo")}) and adds live chat and in-app top-up. The one Android-specific point: Airalo's automatic profile install is an iOS feature, so on Android you scan a QR code whichever provider you choose. Prices checked ${pricesCheckedAt}.`,
+    a: `The same one as on an iPhone, because the plan is identical — what differs is where you tap. Simbye has the lowest list price, ${priceAtLeastLabel("simbye", 10)} for 10 GB; eSIM Go is ${priceAtLeastLabel("esimgo", 10)} for 10 GB, or ${priceLabel(ENTRY)} for ${ENTRY?.name}. Airalo costs a little more (from ${priceFrom("airalo")}) and adds live chat and in-app top-up. The one Android-specific point: Airalo's automatic profile install is an iOS feature, so on Android you scan a QR code whichever provider you choose. Prices checked ${pricesCheckedAt}.`,
   },
   {
     q: "Where do I add an eSIM on a Samsung Galaxy?",
@@ -250,11 +250,11 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
           <div className={styles.verdictBody}>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
               <strong>
-                Buy eSIM Go at {priceLabel(ENTRY)} for {ENTRY?.name} — the cheapest Japan plan at
-                every tier — or Airalo from {priceFrom("airalo")} if you would rather have
-                live chat and in-app top-up.
+                Buy Simbye for the lowest list price, {priceAtLeastLabel("simbye", 10)} for 10 GB, eSIM
+                Go at {priceLabel(ENTRY)} for {ENTRY?.name}, or Airalo from {priceFrom("airalo")} if you
+                would rather have live chat and in-app top-up.
               </strong>{" "}
-              There is no Android-specific eSIM: all four providers sell the same Japan plans to
+              There is no Android-specific eSIM: all five providers sell the same Japan plans to
               any handset, and nothing about the plan changes with the operating system. Two
               things do. <strong>Compatibility</strong> is per handset rather than per brand:
               Pixel 3 and later, Galaxy S20 and later, Xperia 10 III and later are safe, but the

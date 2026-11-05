@@ -21,6 +21,10 @@ const affiliateNetworks = [
     name: "Sakura Mobile",
     desc: "Foreigner-friendly SIM card service in Japan. Commissions are earned on plan purchases.",
   },
+  {
+    name: "Simbye",
+    desc: "eSIM provider. We earn a commission on purchases made through our Simbye links, and our readers get a discount code.",
+  },
 ];
 
 export default function DisclaimerPage() {
@@ -28,7 +32,7 @@ export default function DisclaimerPage() {
     <>
       <Head>
         <title>Affiliate Disclaimer | Japan Travel Kit</title>
-        <meta name="description" content="Affiliate disclosure and disclaimer for Japan Travel Kit. Learn about our affiliate relationships with Airalo, Klook, IIJmio, and Sakura Mobile." />
+        <meta name="description" content="Affiliate disclosure and disclaimer for Japan Travel Kit. Learn about our affiliate relationships with Airalo, Klook, IIJmio, Sakura Mobile and Simbye." />
         <meta name="robots" content="noindex" />
       </Head>
 

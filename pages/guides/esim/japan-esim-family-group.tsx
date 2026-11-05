@@ -465,7 +465,7 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
                   <path d="M12 6v2m0 8v2m-4-6h2a2 2 0 1 0 0-4H9a2 2 0 1 0 0 4h2a2 2 0 1 0 0 4H9" />
                 </svg>
               </div>
-              <p className={styles.whoForTitle}>eSIM Go — cheapest per head</p>
+              <p className={styles.whoForTitle}>eSIM Go — low cost per head</p>
               <p className={styles.whoForDesc}>
                 {priceAtLeastLabel("esimgo", 5)} per person — the figure the maths above is built
                 on. Runs on {getProvider("esimgo").network}, the better choice if the itinerary
