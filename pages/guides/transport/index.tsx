@@ -1,6 +1,9 @@
 import Head from "next/head";
+import Link from "next/link";
 import GuideHub from "../../../components/GuideHub";
+import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import { transportArticles, transportCategory } from "../../../lib/guides-transport";
+import { jrPassWholeJapan, tokyoSubwayTicket } from "../../../lib/klook-links";
 import { articleDates } from "../../../lib/page-dates";
 import { hubItemListJsonLd } from "../../../lib/structured-data";
 
@@ -50,6 +53,21 @@ export default function GuidesTransportPage({ dates }: { dates: Record<string, s
         heading="Japan Transport Guides"
         heroDesc="JR Pass, IC cards, Shinkansen routes, airport trains, and everything you need to get around Japan — prepared before you arrive."
         dates={dates}
+        picks={
+          <PartnerPick
+            label="Ready to book"
+            heading="Rail and subway passes on Klook"
+            cta={{ href: jrPassWholeJapan.url, label: "Check JR Pass options on Klook →" }}
+          >
+            Once{" "}
+            <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>our JR Pass guide</Link>{" "}
+            has shown the pass pays off on your route, Klook sells the{" "}
+            <PartnerTextLink href={jrPassWholeJapan.url}>7, 14 or 21 day JAPAN RAIL PASS</PartnerTextLink>. For a stay
+            based in the capital, the{" "}
+            <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> covers all Tokyo Metro
+            and Toei Subway lines for 24, 48 or 72 hours.
+          </PartnerPick>
+        }
       />
     </>
   );

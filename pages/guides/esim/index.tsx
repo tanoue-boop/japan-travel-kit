@@ -1,6 +1,9 @@
 import Head from "next/head";
+import Link from "next/link";
 import GuideHub from "../../../components/GuideHub";
+import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import { esimArticles, esimCategory } from "../../../lib/guides-esim";
+import { klookEsim } from "../../../lib/klook-links";
 import { articleDates, pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { hubItemListJsonLd } from "../../../lib/structured-data";
 
@@ -55,6 +58,20 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
         heading="Japan eSIM Guides"
         heroDesc="Which SIM to buy, how to install a Japan eSIM, network coverage breakdowns, and honest comparisons — so you can stay connected from the moment you land."
         dates={dates}
+        picks={
+          <PartnerPick
+            label="Booking other things on Klook?"
+            heading="One checkout for your eSIM and tickets"
+            cta={{ href: klookEsim.url, label: klookEsim.ctaLabel }}
+          >
+            If you are already booking tickets or transport on Klook, its{" "}
+            <PartnerTextLink href={klookEsim.url}>{klookEsim.name}</PartnerTextLink> keeps everything in one account.
+            We leave it out of our rankings because its product page blocks automated price reads, so compare it with
+            the prices in{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>our eSIM comparison</Link>{" "}
+            before you buy.
+          </PartnerPick>
+        }
       />
     </>
   );

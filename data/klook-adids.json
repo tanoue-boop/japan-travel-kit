@@ -184,9 +184,16 @@
   "/zh-tw/guides/esim/best-esim-japan": 1528204,
   "/zh-tw/guides/transport/tokyo-airport-transfer": 1528205,
   "/guides/transport/hokuriku-arch-pass": 1538103,
-  "/guides/transport/kintetsu-rail-pass": 1538104
+  "/guides/transport/kintetsu-rail-pass": 1538104,
+  "/guides": 1538113,
+  "/guides/attractions": 1538114,
+  "/guides/esim": 1538115,
+  "/guides/money": 1538116,
+  "/guides/transport": 1538117,
+  "/about": 1538118,
+  "/disclaimer": 1538119,
+  "/privacy-policy": 1538120
  },
  "spare": [
-  1538113,1538114,1538115,1538116,1538117,1538118,
-  1538119,1538120,1538121,1538122,1538123,1538124,1538125,1538126,1538127,1538128]
+  1538121,1538122,1538123,1538124,1538125,1538126,1538127,1538128]
 }

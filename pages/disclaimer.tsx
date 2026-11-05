@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/LegalPage.module.css";
+import PartnerPick, { PartnerTextLink } from "../components/PartnerPick";
+import { klookEsim } from "../lib/klook-links";
 
 const UPDATED = "April 20, 2026";
 
@@ -156,6 +158,15 @@ export default function DisclaimerPage() {
             Advertisements are clearly separated from editorial content. Advertised products are not endorsed by Japan Travel Kit unless specifically stated.
           </p>
         </section>
+
+        <PartnerPick
+          label="Example"
+          heading="What an affiliate link looks like"
+          cta={{ href: klookEsim.url, label: klookEsim.ctaLabel }}
+        >
+          This link to the <PartnerTextLink href={klookEsim.url}>{klookEsim.name}</PartnerTextLink> is one of our
+          affiliate links. It works as section 3 describes, and the button below goes to the same page.
+        </PartnerPick>
 
         <div className={styles.contactBox}>
           <h3>Questions or concerns?</h3>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import styles from "../styles/Guides.module.css";
 import { groupedArticles, startHereArticle, type GuideCategory } from "../lib/guide-hub";
 
@@ -22,12 +23,15 @@ export default function GuideHub({
   heading,
   heroDesc,
   dates,
+  picks,
 }: {
   category: GuideCategory;
   /** <h1>. Usually a search-friendly phrasing of category.name. */
   heading: string;
   heroDesc: string;
   dates: Record<string, string>;
+  /** The hub's paid-link block (components/PartnerPick), shown after "Read this first". */
+  picks?: ReactNode;
 }) {
   const start = startHereArticle(category);
   const groups = groupedArticles(category);
@@ -74,6 +78,8 @@ export default function GuideHub({
           <p className={styles.startHereWhy}>{category.startHereWhy}</p>
           <span className={styles.startHereArrow}>Read guide →</span>
         </Link>
+
+        {picks}
 
         {/* Groups */}
         {/* id so other pages can deep-link a group — e.g. the city hubs point their

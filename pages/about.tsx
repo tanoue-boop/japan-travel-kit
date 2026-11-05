@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/LegalPage.module.css";
+import PartnerPick, { PartnerTextLink } from "../components/PartnerPick";
+import { klookEsim } from "../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../lib/page-dates";
 
 const DESC =
@@ -208,6 +210,16 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
             of money.
           </p>
         </section>
+
+        <PartnerPick
+          label="Planning a trip?"
+          heading="Start by getting online"
+          cta={{ href: klookEsim.url, label: klookEsim.ctaLabel }}
+        >
+          Getting online is the first of the four decisions this site covers. If you are booking tickets or transport
+          on Klook anyway, its <PartnerTextLink href={klookEsim.url}>{klookEsim.name}</PartnerTextLink> keeps them in
+          one account.
+        </PartnerPick>
 
         <div className={styles.contactBox}>
           <h3>Contact</h3>

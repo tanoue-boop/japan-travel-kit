@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/LegalPage.module.css";
+import PartnerPick, { PartnerTextLink } from "../components/PartnerPick";
+import { klookEsim } from "../lib/klook-links";
 
 const UPDATED = "April 20, 2026";
 
@@ -151,6 +153,15 @@ export default function PrivacyPolicyPage() {
             We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated &ldquo;Last updated&rdquo; date. We encourage you to review this policy periodically.
           </p>
         </section>
+
+        <PartnerPick
+          label="Example"
+          heading="An affiliate link on this site"
+          cta={{ href: klookEsim.url, label: klookEsim.ctaLabel }}
+        >
+          This link to the <PartnerTextLink href={klookEsim.url}>{klookEsim.name}</PartnerTextLink> is the kind of
+          affiliate link described in section 4. Klook may set a cookie to track the referral, as section 5 explains.
+        </PartnerPick>
 
         <div className={styles.contactBox}>
           <h3>Questions about this policy?</h3>

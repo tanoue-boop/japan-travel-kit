@@ -14,7 +14,8 @@
     "check:jsonld": "node scripts/check-jsonld.js",
     "check:i18n": "node scripts/check-i18n.js",
     "check:klook": "node scripts/check-klook-adids.js --built",
-    "check:meta": "node scripts/check-meta-length.js"
+    "check:meta": "node scripts/check-meta-length.js",
+    "check:revenue": "node scripts/check-revenue-links.mjs"
   },
   "dependencies": {
     "next": "14.2.29",

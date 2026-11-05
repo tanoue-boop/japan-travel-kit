@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Guides.module.css";
+import PartnerPick, { PartnerTextLink } from "../../components/PartnerPick";
+import { fujiDayTour, klookEsim, tokyoSubwayTicket } from "../../lib/klook-links";
 import { esimCategory } from "../../lib/guides-esim";
 import { transportCategory } from "../../lib/guides-transport";
 import { moneyCategory } from "../../lib/guides-money";
@@ -120,6 +122,17 @@ export default function GuidesIndexPage() {
             </Link>
           ))}
         </div>
+
+        <PartnerPick
+          label="Before you land"
+          heading="Three things to book ahead"
+          cta={{ href: klookEsim.url, label: klookEsim.ctaLabel }}
+        >
+          Most of these guides come down to a few bookings, and Klook sells all three in one account: a{" "}
+          <PartnerTextLink href={klookEsim.url}>Japan eSIM</PartnerTextLink> to get online when you land, the{" "}
+          <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> for your first days in
+          the city, and a <PartnerTextLink href={fujiDayTour.url}>Mt. Fuji day tour</PartnerTextLink> for a day out.
+        </PartnerPick>
 
         {/* Full index — every guide, under the same intent groups as its hub */}
         <p className={styles.sectionLabel}>Every guide</p>

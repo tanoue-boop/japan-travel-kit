@@ -1,6 +1,8 @@
 import Head from "next/head";
 import GuideHub from "../../../components/GuideHub";
+import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import { attractionArticles, attractionsCategory } from "../../../lib/guides-attractions";
+import { fujiDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { articleDates } from "../../../lib/page-dates";
 import { hubItemListJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -52,6 +54,19 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
         heading="Things to Do in Japan"
         heroDesc="Tickets and experiences worth planning ahead — teamLab, Universal Studios Japan, Shibuya Sky and more. How to book, when to go, and which option suits your trip."
         dates={dates}
+        picks={
+          <PartnerPick
+            label="Two easy first bookings"
+            heading="Guided days out from Tokyo"
+            cta={{ href: fujiDayTour.url, label: "See the Mt. Fuji day tour on Klook →" }}
+          >
+            If you want one day out of the city without planning the transport, this{" "}
+            <PartnerTextLink href={fujiDayTour.url}>Mt. Fuji day tour from Tokyo</PartnerTextLink> runs by coach to the
+            Fuji Fifth Station, Lake Kawaguchi and Oshino Hakkai and returns the same evening. In the city itself, the{" "}
+            <PartnerTextLink href={tokyoSightseeingBusTour.url}>Tokyo sightseeing bus day tour</PartnerTextLink> is a
+            guided loop of the Imperial Palace gardens, Asakusa and Tokyo Skytree.
+          </PartnerPick>
+        }
       />
     </>
   );
