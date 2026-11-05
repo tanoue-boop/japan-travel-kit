@@ -5617,3 +5617,154 @@ export const gionNightSameDayPrep: KlookTripPrepItem[] = [
     why: "Your booking names a meeting point in a district of narrow lanes, and you will want a working map to reach it on time.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Japan 5 Day Itinerary, added 5 Nov 2026 for japan-5-day-itinerary. No new Klook
+// listing: every product is one this file already holds, chosen for a Tokyo-in,
+// Kansai-out route. The areas are the five the two-city plan actually turns on.
+// ---------------------------------------------------------------------------
+
+export const japanFiveDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Tokyo Station / Marunouchi, Tokyo (3 nights)",
+    why: "The Day 4 shinkansen leaves from under your hotel, so the one long move of the trip starts with a lift rather than a cross-city ride with the cases.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Shinjuku, Tokyo (3 nights)",
+    why: "The pick if your evenings matter most: a direct Narita Express stop, the limousine bus, and Omoide Yokocho on foot for the Day 2 night.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Ueno / Asakusa, Tokyo (3 nights)",
+    why: "Puts you beside Senso-ji for the Day 3 early start, and the Keisei Skyliner from Narita arrives at Ueno.",
+    url: tokyoStayAreas[2].url,
+  },
+  {
+    area: "Kyoto Station, Kyoto (1 night)",
+    why: "With one Kyoto night there is no second chance to move bags. The shinkansen arrives here, the Day 5 train to Fushimi Inari leaves from here, and so does the Haruka to Kansai Airport.",
+    url: kyotoStayAreas[0].url,
+  },
+  {
+    area: "Shijo-Kawaramachi / Karasuma, Kyoto (2 nights on the 2+2 split)",
+    why: "Worth it only if you take the two-night Kyoto version below: on foot to Pontocho, Gion and Nishiki Market, at the cost of a transfer back to Kyoto Station with the cases.",
+    url: kyotoStayAreas[1].url,
+  },
+];
+
+/** The checklist's bookings, from the 20% band down. Goes under the checklist table. */
+export const japanFiveDayPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Every ticket on this route is a QR code on your phone, so install it at home on Wi-Fi and it is working when you land.",
+  },
+  {
+    label: "Hotels for your Tokyo nights",
+    ctaLabel: "Check Tokyo hotels on Klook →",
+    url: japanFiveDayStayAreas[0].url,
+    why: "Three nights at one address is the point of this plan, so pick the base from the table below and book it first.",
+  },
+  {
+    label: "Hotels around Kyoto Station",
+    ctaLabel: "Check Kyoto hotels on Klook →",
+    url: japanFiveDayStayAreas[3].url,
+    why: "A single Kyoto night has no slack in it: if the Station area is full in cherry-blossom or autumn-leaf season, the whole of Day 5 starts with a transfer.",
+  },
+  {
+    label: shinkansenTokyoKyoto.title,
+    ctaLabel: "Check Tokyo → Kyoto shinkansen →",
+    url: shinkansenTokyoKyoto.url,
+    why: "The one reserved seat of the trip, on the morning of Day 4. Klook's page sells it by date and seat class, with QR boarding.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Days 2 and 3 are Tokyo Metro days; the 72-hour version covers both and the Day 1 evening. It does not cover JR.",
+  },
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "The door-to-hotel option if you land at Narita with large cases and a hotel that is not beside a station.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Okinawa day tours, added 5 Nov 2026 for okinawa-day-tours.
+//
+// Each listing below was confirmed live in its en-US form through the www.klook.com
+// search index on 5 Nov 2026 (the /activity/ pages still answer automated reads with
+// HTTP 403), and the durations, stops and terms quoted on the page come from the same
+// index: 91094, 28134, 6489, 142932, 2405 and 160735, plus the two en-US Klook tour
+// lists. 134350 is the existing churaumiKouriNorthernDayTour.
+//
+// Not used as links: 19157 and 143435 (Chinese-speaking guide in the title); 28223, the
+// half-day southern bus with Sefa-Utaki, and 168838, which surfaced only without an
+// en-US locale; "Okinawa regular sightseeing bus: Shuri Castle / Okinawa World course",
+// which appears on en-US Klook destination pages but whose own activity URL could not
+// be found, so the Naha tour list stands in for it. No price appears for any of them.
+// ---------------------------------------------------------------------------
+
+export const okinawaManzamoKouriChuraumiTour: KlookTour = {
+  title: "Cape Manzamo, Kouri Island & Churaumi Aquarium day tour from Naha",
+  desc: "The three northern headline stops from Naha, listed at 9 hours 35 minutes to 11 hours 30 minutes",
+  url: klookLink("https://www.klook.com/en-US/activity/91094-cape-manzamo-kouri-island-churaumi-aquarium-one-day-tour-naha/"),
+};
+
+export const okinawaChuraumiKouriFullDayTour: KlookTour = {
+  title: "Okinawa Churaumi Aquarium & Kouri Island full-day tour",
+  desc: "A northern coach day with named hotel pick-ups and free cancellation up to 24 hours before",
+  url: klookLink("https://www.klook.com/en-US/activity/28134-okinawa-churaumi-aquarium-cape-manzamo-kouri-island-bus-day-tour/"),
+};
+
+export const okinawaChurashimaBusDayTour: KlookTour = {
+  title: "Churashima Okinawa bus day tour (Naha or Chatan departure)",
+  desc: "The longest of the coach days, listed at 11 hours, with an English option among its languages",
+  url: klookLink("https://www.klook.com/en-US/activity/6489-churashima-bus-day-tour-okinawa/"),
+};
+
+export const okinawaNorthSouthBusTour: KlookTour = {
+  title: "Okinawa sightseeing bus, north and south routes",
+  desc: "A bus-only day on either route: no guide, tickets or meals, about 3 hours at the aquarium on the north route",
+  url: klookLink("https://www.klook.com/en-US/activity/142932-okinawa-south-north-1-day-bus-tour-churaumi-dmm-autoguiding/"),
+};
+
+export const southernOkinawaDayTrip: KlookTour = {
+  title: "Southern Okinawa day trip from Naha",
+  desc: "About 8 hours from a 9:30 departure, with Cape Chinen and the Nirai Kanai Bridge; a Japanese-speaking driver and no guide",
+  url: klookLink("https://www.klook.com/en-US/activity/2405-southern-okinawa-day-trip/"),
+};
+
+export const shuriCastlePeaceWalkingTour: KlookTour = {
+  title: "Okinawa Shuri Castle peace walking tour",
+  desc: "About 4 hours on foot with a local guide around Shurijo Castle and Tamaudun, both World Heritage sites",
+  url: klookLink("https://www.klook.com/en-US/activity/160735-okinawa-shuri-castle-peace-walking-tour/"),
+};
+
+/** Klook's own list, for the Shuri Castle bus course that has no confirmed activity URL. */
+export const nahaToursListUrl = klookLink("https://www.klook.com/en-US/experiences/list/naha-tours/c13641-cate9/");
+
+export const okinawaToursListUrl = klookLink("https://www.klook.com/en-US/destination/c6484-okinawa/1001-tours/");
+
+/** The Churaumi ticket is a low-band product, so the 5 / 6.5 / 20% bands sit beside it. */
+export const okinawaDayToursPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels in Naha",
+    ctaLabel: "Check Naha hotels on Klook →",
+    url: okinawaChuraumiStayAreas[0].url,
+    why: "Tour pick-ups cluster here, so a hotel near the monorail keeps the early start simple and the 10-hour day from getting longer.",
+  },
+  {
+    label: nahaAirportLimousineBus.title,
+    ctaLabel: "Check the airport bus →",
+    url: nahaAirportLimousineBus.url,
+    why: "The coach from the airport to the hotel zones, if you are staying on the west coast and joining a tour at Chatan rather than Naha.",
+  },
+  {
+    label: nahaAirportCarRental.title,
+    ctaLabel: "Check Naha Airport car rentals →",
+    url: nahaAirportCarRental.url,
+    why: "For the days a tour does not cover. Klook's page states non-residents need a passport, their own licence, an international driving permit and a credit card.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Operators send the meeting point, coach number and any weather cancellation by message the day before, so you need data from the moment you land.",
+  },
+];

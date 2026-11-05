@@ -182,6 +182,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/okinawa-day-tours",
+    badge: "Day tour",
+    title: "Okinawa Day Tours from Naha: North vs South Compared (2026)",
+    desc: "The two routes out of Naha, with hours, pick-ups and what each tour includes side by side, plus car versus tour, the typhoon rules, children, rain and the 23 November change at Shuri Castle.",
+    group: "daytrips",
+    // Okinawa sits outside the three city hubs.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/hakone-day-trip-from-tokyo",
     badge: "Day tour",
     title: "Hakone Day Trip From Tokyo (2026): Freepass Prices vs a Day Tour",
@@ -378,6 +387,15 @@ export const attractionArticles: GuideArticle[] = [
     // Kobe is in Hyogo, but the day is planned and sold out of Osaka — same rule as
     // himeji-castle-day-trip and arima-onsen-day-trip.
     city: "osaka",
+  },
+  {
+    href: "/guides/attractions/japan-5-day-itinerary",
+    badge: "Itinerary",
+    title: "Japan 5 Day Itinerary: Tokyo and Kyoto, Day by Day (2026)",
+    desc: "Tokyo on Days 1 to 3, Kyoto on Days 4 and 5, out from Kansai: a morning, afternoon and night table for each day, what to book for it, where to stay, and why a JR Pass loses on this route.",
+    group: "cities",
+    // Nationwide: the trip runs Tokyo → Kyoto and flies out of Kansai.
+    city: "other",
   },
   {
     href: "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary",

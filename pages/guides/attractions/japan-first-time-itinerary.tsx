@@ -756,6 +756,7 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
+              { href: "/guides/attractions/japan-5-day-itinerary", title: "Japan 5 Day Itinerary: Tokyo and Kyoto, Day by Day (2026)" },
               { href: "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary", title: "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan, Day by Day" },
               { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },

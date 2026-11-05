@@ -585,6 +585,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
+              { href: "/guides/attractions/okinawa-day-tours", title: "Okinawa Day Tours from Naha: North vs South Compared (2026)" },
               { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "Osaka Aquarium Kaiyukan Tickets (2026): Prices, Hours and Time Slots" },
               { href: "/guides/attractions/japan-attraction-ticket-prices", title: "Japan Attraction Ticket Prices 2026: Official Prices and Booking Rules" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
