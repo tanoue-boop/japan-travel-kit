@@ -1,65 +1,142 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
-import { kyotoStayAreas } from "../../../lib/klook-links";
+import { jrKansaiAreaPass, kyotoStayAreas, kyotoTransportTripPrep } from "../../../lib/klook-links";
+import { checkedLabel } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
-const transportOptions = [
-  { mode: "City Bus",   bestFor: "Temples, Gion, Fushimi Inari",    fare: "¥230 / ride",       icCard: "✓" },
-  { mode: "Subway",     bestFor: "Fast north–south & east–west",     fare: "From ¥210",         icCard: "✓" },
-  { mode: "JR Local",   bestFor: "Arashiyama, Nijo, Uji",           fare: "From ¥200",         icCard: "✓" },
-  { mode: "Bicycle",    bestFor: "Temple districts, riverside",      fare: "¥1,000–2,000 / day", icCard: "—" },
-  { mode: "Taxi",       bestFor: "Groups, luggage, late night",      fare: "¥680 flag fall",    icCard: "✓" },
+/**
+ * Sources for this page, read on 5 November 2026 unless a date is given. Every
+ * fare and time in a table comes from one of these; nothing here is first-hand,
+ * and no Klook price appears (Klook answers automated reads with HTTP 403).
+ *
+ *   city.kyoto.lg.jp/kotsu         page 0000204850 (fares and passes, dated 14 May
+ *                                  2026), 0000324695 (how to ride, 1 Dec 2024),
+ *                                  0000351261 (resident-priority fare, 3 Jun 2026),
+ *                                  0000358942 (EX buses and the pass, 9 Oct 2026),
+ *                                  0000359584 (autumn 2026 crowd measures),
+ *                                  0000028337 (the withdrawn Bus 1-Day Pass)
+ *   www2.city.kyoto.lg.jp/kotsu    webguide fare_bus (¥230 / ¥120), fare_tika
+ *                                  (subway ¥220–¥360, from 1 Oct 2025),
+ *                                  limited_express (EX100 / EX101 stops, times,
+ *                                  front-door boarding), howtoride_bus, and the
+ *                                  busdia pages for routes 100, 101 and 205
+ *   keihan.co.jp                   the Gion-Shijo fare table, revised 1 Oct 2025
+ *   keifuku.co.jp                  Randen ¥250 / ¥120 and IC cards. Its 3 March
+ *                                  2023 notice gives the same ¥250; older pages
+ *                                  on randen.keifuku.co.jp were not reachable
+ *   jr-odekake.net                 Inari about 5 minutes from platforms 8–10;
+ *                                  Emmachi 7–11 minutes then bus 204 or 205 for
+ *                                  about 9; Tofukuji and Keihan to Kiyomizu-dera
+ *   kyoto.travel                   JR to Saga-Arashiyama about 11 minutes by Rapid;
+ *                                  Karasuma line to Kitaoji about 15 minutes plus
+ *                                  bus about 15; commuting peaks 7:00–9:00 and
+ *                                  18:00–19:00
+ *   hankyu.co.jp                   timetable: Limited Express Osaka-umeda to
+ *                                  Kyoto-kawaramachi about 43 minutes
+ *
+ * Deliberately absent: JR and Hankyu fares. Neither was readable on the operator's
+ * own site and the transit-search figures are not an official source, so the
+ * tables say that instead of printing them. Taxi and bicycle figures went for the
+ * same reason. A claimed tourist-peak window on Higashioji-dori was also dropped:
+ * the city publishes its measures, not an hour-by-hour crowd figure.
+ */
+const CHECKED = checkedLabel("2026-11-05");
+
+const PASS_URL =
+  "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1266287&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F118071-kyoto-city-subway-and-bus-ticket%2F";
+
+const fareRows = [
+  { mode: "City Bus (flat-fare area)",            useFor: "The last stretch to a temple",               adult: "¥230",        child: "¥120",        ic: "Yes" },
+  { mode: "Sightseeing Express EX100 / EX101",    useFor: "Kyoto Station to Kiyomizu-dera, Gion and Ginkaku-ji, Saturdays, Sundays and holidays", adult: "¥500", child: "¥250", ic: "Yes" },
+  { mode: "Subway (Karasuma and Tozai lines)",    useFor: "Fast north–south and east–west trunk rides", adult: "¥220–¥360 by distance", child: "¥110–¥180", ic: "Yes" },
+  { mode: "Keihan: Gion-Shijo to Fushimi-Inari",  useFor: "Downtown to the shrine without a bus",       adult: "¥240",        child: "Not checked", ic: "Yes" },
+  { mode: "Keihan: Gion-Shijo to Kiyomizu-Gojo",  useFor: "The Kiyomizu-dera walk from the river",      adult: "¥180",        child: "Not checked", ic: "Yes" },
+  { mode: "Randen (Keifuku), whole line",         useFor: "Shijo-Omiya or the Tozai Line to Arashiyama", adult: "¥250 flat",  child: "¥120",        ic: "Yes" },
+  { mode: "JR local trains and Hankyu",           useFor: "Fushimi Inari, Arashiyama, Osaka",           adult: "By distance: see the operator", child: "By distance", ic: "Yes" },
+];
+
+const routeRows = [
+  { to: "Fushimi Inari",  route: "JR Nara Line, platforms 8–10, to Inari. The shrine is in front of the exit",                     time: "About 5 min",                       fare: "JR fare" },
+  { to: "Arashiyama",     route: "JR Sagano Line Rapid to Saga-Arashiyama, then about 8 minutes on foot to Togetsu-kyo",           time: "About 11 min by Rapid",             fare: "JR fare" },
+  { to: "Kinkaku-ji",     route: "Karasuma subway to Kitaoji, then bus 205 or 204 to Kinkakuji-michi",                             time: "About 15 + 15 min",                 fare: "¥260 + ¥230" },
+  { to: "Kinkaku-ji (by JR)", route: "JR Sagano Line to Emmachi, then bus 204 or 205 to Kinkakuji-michi",                          time: "About 7–11 + 9 min",                fare: "JR fare + ¥230" },
+  { to: "Kiyomizu-dera",  route: "EX100 or EX101 to Gojo-zaka, Saturdays, Sundays and holidays",                                   time: "About 12 min",                      fare: "¥500" },
+  { to: "Kiyomizu-dera (any day)", route: "JR Nara Line to Tofukuji, Keihan to Kiyomizu-Gojo, then about 20 minutes on foot",     time: "About 25 min plus the transfer",    fare: "JR + Keihan fare" },
+  { to: "Ginkaku-ji",     route: "EX100 to Ginkakuji-mae, Saturdays, Sundays and holidays",                                        time: "About 30 min",                      fare: "¥500" },
+  { to: "Ginkaku-ji (any day)", route: "Karasuma subway to Imadegawa, then city bus. This is the city's own advice for avoiding the direct bus", time: "Not published", fare: "Subway + ¥230" },
 ];
 
 const dayPasses = [
-  { pass: "Subway & Bus 1-Day Pass",    price: "¥1,100 (child ¥550)", coverage: "All city buses + both subway lines", bestFor: "Full temple days mixing all areas" },
-  { pass: "Subway 1-Day Pass",          price: "¥800 (child ¥400)",   coverage: "Both subway lines only",             bestFor: "East–west sightseeing on the subway" },
+  { pass: "Subway & Bus 1-Day Pass",    price: "¥1,100 (child ¥550)", coverage: "Both subway lines, all city buses including EX100 / EX101, and set routes on Kyoto Bus, Keihan Bus and JR Bus", bestFor: "Full sightseeing days with five or more rides" },
+  { pass: "Subway 1-Day Pass",          price: "¥800 (child ¥400)",   coverage: "Both subway lines only",             bestFor: "Days along the Karasuma and Tozai lines" },
 ];
 
-const passBreakEven = [
-  {
-    title: "The combined pass: about 5 rides",
-    desc: "The Subway & Bus 1-Day Pass is ¥1,100. With a flat city-bus fare of ¥230 and subway fares from ¥210, you need roughly five rides to break even. A full temple day usually clears that before mid-afternoon.",
-  },
-  {
-    title: "The subway-only pass: about 4 rides",
-    desc: "The Subway-only 1-Day Pass is ¥800. At ¥210+ per subway ride, four or more rides put you ahead. It's the better buy only if your itinerary stays on the two subway lines.",
-  },
-  {
-    title: "Below that, use an IC card",
-    desc: "If you'll take just a couple of journeys, a pay-as-you-go Suica or ICOCA is cheaper and more flexible — and it also works on JR local trains to Arashiyama and Uji, which the passes do not cover.",
-  },
+const breakEvenRows = [
+  { rides: "3 bus rides",                 payg: "¥690",   pass: "Pay per ride, saves ¥410" },
+  { rides: "4 bus rides",                 payg: "¥920",   pass: "Pay per ride, saves ¥180" },
+  { rides: "5 bus rides",                 payg: "¥1,150", pass: "Pass, saves ¥50" },
+  { rides: "2 EX buses + 2 city buses",   payg: "¥1,460", pass: "Pass, saves ¥360" },
+  { rides: "3 subway (¥260) + 3 bus",     payg: "¥1,470", pass: "Pass, saves ¥370" },
 ];
 
 const passVsRows = [
-  { scenario: "Temple-hopping across spread-out sights", pick: "Subway & Bus Pass", note: "Kinkakuji, Kiyomizudera, Gion and Arashiyama are best reached by city bus — the combined pass covers them all." },
-  { scenario: "Mostly cross-city hops on the subway",    pick: "Subway-only Pass",  note: "Cheaper at ¥800 if your day runs along the Karasuma or Tozai lines and skips the buses." },
-  { scenario: "Only 2–3 rides all day",                  pick: "Suica / ICOCA",     note: "Pay-as-you-go is cheaper than any day pass at this level of use." },
+  { scenario: "Five or more rides mixing bus and subway", pick: "Subway & Bus Pass", note: "Kinkaku-ji, Ginkaku-ji and Kiyomizu-dera all end in a bus ride or a walk, and the pass covers the EX buses with no extra charge." },
+  { scenario: "Four or more rides, all on the subway",    pick: "Subway-only Pass",  note: "¥800 against ¥880 at the lowest ¥220 fare, and it pays sooner on longer rides." },
+  { scenario: "Arashiyama or Fushimi Inari by train",     pick: "Suica / ICOCA",     note: "JR and the Randen are not covered by either pass, so pay per ride on these days." },
+  { scenario: "Four rides or fewer",                      pick: "Suica / ICOCA",     note: "Pay-as-you-go is cheaper than the ¥1,100 pass at this level of use." },
 ];
 
 const busTips = [
   {
-    title: "Pay when you exit — not when you board",
-    desc: "On most Kyoto city buses, you board at the rear door and pay the flat ¥230 fare when you exit at the front. Tap your IC card on the reader near the driver, or drop exact coins in the fare box. Have change ready if paying cash.",
+    title: "Most buses: board at the rear, pay at the front when you exit",
+    desc: "Kyoto City Bus's own guide says to board through the rear door, press the stop button, and pay at the front as you get off. On a flat-fare bus you touch your IC card on the fare box for about a second, once, on the way out.",
   },
   {
-    title: "Routes 100 and 101 cover the main sights",
-    desc: "The 100 Bus (Higashiyama Route) links Kyoto Station to Gion, Kiyomizudera, Heian Shrine, and the Silver Pavilion. The 101 goes from Kyoto Station to the Golden Pavilion via Nijo Castle. Both run frequently on weekdays and weekends.",
+    title: "EX100 and EX101 work the other way round",
+    desc: "On the Sightseeing Express buses you board at the front, pay or show your pass there, and leave by the rear door. Do not assume every Kyoto bus works like the last one you rode.",
   },
   {
-    title: "Buses can be very crowded in peak season",
-    desc: "During cherry blossom (late March–early April) and autumn leaves (mid-November), city buses are often standing-room only. Walk between nearby attractions or take the subway when buses are jammed.",
+    title: "Paying cash",
+    desc: "Fare boxes give change, and 500-yen coins and 1,000-yen notes can go straight in. Change 2,000-, 5,000- and 10,000-yen notes before you board. Tell the driver first if you are paying for two or more people.",
+  },
+  {
+    title: "Routes 100, 101 and 205 are the ones to know",
+    desc: "Route 100 links Kyoto Station with Gojo-zaka, Kiyomizu-michi, Gion, Okazaki and Ginkaku-ji. Route 101 runs between Kyoto Station and Gojo-zaka. Route 205 is a loop through Kyoto Station, Shijo-Kawaramachi and Kinkakuji-michi.",
+  },
+];
+
+const crowdTips = [
+  {
+    title: "Ride the train first and the bus last",
+    desc: "Kyoto City's advice for autumn 2026 is the same shape as this page: from Kyoto Station, take the subway to Kitaoji and a bus to Kinkaku-ji, the subway to Imadegawa and a bus to Ginkaku-ji, and the subway to Kujo and a bus toward Higashiyama.",
+  },
+  {
+    title: "Use the EX bus if it is a Saturday, Sunday or holiday",
+    desc: "EX100 and EX101 stop only at the main sights. Morning departures from Kyoto Station run roughly every 7 to 8 minutes, from about 9:00 to about 12:30 in the current timetable. Check the timetable for your date.",
+  },
+  {
+    title: "In autumn, switch to the subway in the late afternoon",
+    desc: "Between 31 October and 29 November 2026, on Saturdays, Sundays and holidays, the city offers a free bus-to-subway transfer at Higashiyama-Sanjo (15:45–19:20) and from Kinkakuji-michi to Kitaoji (15:00–17:30). Those windows show when it is working hardest to thin out the buses.",
+  },
+  {
+    title: "Avoid the commuter peaks and watch the app",
+    desc: "The city's tourism site names 7:00–9:00 and 18:00–19:00 as the commuting peaks, on top of cherry-blossom and autumn-leaf season. Kyoto City Bus's Pocket Loca plus+ app shows where a bus is and how full it is.",
+  },
+  {
+    title: "Leave big suitcases out of it",
+    desc: "The city asks visitors not to bring large luggage on to buses. Use same-day hotel delivery or storage at the station, or take a train or taxi for that leg.",
   },
 ];
 
 const subwayLines = [
   {
     title: "Karasuma Line (north–south)",
-    desc: "Runs from Kokusai Kaikan in the north through Kyoto Station to Takeda in the south. Key stops: Kyoto Station, Shijo (Gion area), Marutamachi, Kitaoji (Golden Pavilion bus stop). Blue line.",
+    desc: "Runs from Kokusaikaikan in the north through Kyoto Station to Takeda in the south. Key stops: Kyoto Station, Kujo (buses toward Higashiyama), Shijo, Karasuma Oike, Imadegawa (buses to Ginkaku-ji) and Kitaoji (buses to Kinkaku-ji).",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="3" width="16" height="14" rx="3" />
@@ -71,7 +148,7 @@ const subwayLines = [
   },
   {
     title: "Tozai Line (east–west)",
-    desc: "Runs from Rokujizo in the southeast to Uzumasa Tenjingawa in the west. Key stops: Sanjo Keihan (east Gion), Higashiyama (Nanzenji), Nijo Castle. Red line.",
+    desc: "Runs from Rokujizo in the southeast to Uzumasa Tenjingawa in the west. Key stops: Sanjo Keihan, Higashiyama, Nijojo-mae and Uzumasa Tenjingawa, where you change to the Randen for Arashiyama.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="3" width="16" height="14" rx="3" />
@@ -98,11 +175,11 @@ const subwayLines = [
 const kyotoAccess = [
   {
     title: "From Tokyo: Shinkansen (2 hr 15 min)",
-    desc: "The Nozomi (fastest, not JR Pass valid) takes about 2 hours 15 minutes from Tokyo Station. The Hikari (JR Pass valid) takes roughly 2 hours 40 minutes. Trains depart every 10 minutes during peak hours. IC cards do not cover Shinkansen fares — use a separate ticket or JR Pass.",
+    desc: "The Nozomi (fastest, not JR Pass valid) takes about 2 hours 15 minutes from Tokyo Station. The Hikari (JR Pass valid) takes roughly 2 hours 45 minutes. Trains depart every 10 minutes during peak hours. IC cards do not cover Shinkansen fares — use a separate ticket or JR Pass.",
   },
   {
     title: "From Osaka (Shin-Osaka): Shinkansen (15 min)",
-    desc: "The shortest Shinkansen hop in Japan. Alternatively, the Hankyu Kyoto Line from Umeda takes 45 minutes at ¥400 — not JR Pass valid but excellent value for budget travellers travelling directly between Osaka and Kyoto.",
+    desc: "The quickest option by train. Alternatively, a Hankyu Kyoto Line Limited Express from Osaka-umeda reaches Kyoto-kawaramachi in about 43 minutes on Hankyu's timetable. It is not JR Pass valid, and it puts you downtown rather than at Kyoto Station.",
   },
   {
     title: "From Kansai Airport (KIX): Haruka Express (75 min)",
@@ -112,8 +189,8 @@ const kyotoAccess = [
 
 const tips = [
   {
-    title: "Load your IC card before you arrive",
-    desc: "Loading your IC card onto Apple Pay or Google Pay before you arrive means no queuing at Kyoto Station machines. Queues during cherry blossom and autumn season can exceed 30 minutes.",
+    title: "Sort out your IC card before you arrive",
+    desc: "A card already on your phone, or one bought at the airport, means one less machine to find at Kyoto Station on the busiest day of your trip.",
   },
   {
     title: "Walk between nearby sights — Kyoto rewards it",
@@ -121,42 +198,54 @@ const tips = [
   },
   {
     title: "Avoid taxis in narrow tourist areas",
-    desc: "Central Kyoto streets are tight. Taxis can be stuck for 20+ minutes in Gion or Nishiki Market on routes that take 5 minutes on foot. Walk or take the bus in these areas.",
+    desc: "Central Kyoto streets are tight and traffic around Gion and Higashiyama moves slowly in season. On a short hop, walking is usually the better call.",
   },
   {
-    title: "Google Maps is reliable for Kyoto buses",
-    desc: "Google Maps shows real-time delay information for most Kyoto city bus services and includes English directions for every stop. Bus stop QR codes also link to live arrival boards.",
+    title: "Check the live bus position before you wait",
+    desc: "Kyoto City Bus's Pocket Loca plus+ app shows how close a bus is and how crowded it is, which is the fastest way to decide between waiting and walking to a station.",
   },
 ];
 
 const faqItems = [
   {
+    q: "Is the bus free in Kyoto?",
+    a: "No. Kyoto city buses are not free for visitors. The flat fare is ¥230 for adults and ¥120 for children, and the EX100 and EX101 Sightseeing Express buses are ¥500 and ¥250. Riders with a Subway & Bus 1-Day Pass pay nothing extra.",
+  },
+  {
     q: "Do I need a day pass for Kyoto buses?",
-    a: "First, a heads-up: the old ¥700 City Bus 1-Day Pass has been discontinued — sales ended in September 2023 and it could no longer be used after the end of March 2024. The current option is the Subway & Bus 1-Day Pass at ¥1,100 (¥550 for children), which also covers both subway lines. At ¥230 per bus ride it breaks even at around five rides — easy to hit on a full day visiting Kinkakuji, Kiyomizudera, and Gion. On a lighter day, a pay-as-you-go IC card is simpler — see the break-even breakdown in the day pass section of this guide.",
+    a: "No, only if you will make five or more rides. The old ¥700 Bus 1-Day Pass is gone: sales ended on 30 September 2023 and use ended on 31 March 2024. The current option is the Subway & Bus 1-Day Pass at ¥1,100 (¥550 for children), which also covers both subway lines. At ¥230 a bus ride it pays from the fifth ride. On a lighter day, a pay-as-you-go IC card is cheaper.",
   },
   {
     q: "Can I use my Suica IC card in Kyoto?",
-    a: "Yes. Suica, Pasmo, and all other IC cards work on Kyoto City Bus, both subway lines, and JR local trains (Sagano Line to Arashiyama, Nara Line to Uji). IC cards do not cover Shinkansen fares — these require a separate ticket or JR Pass.",
+    a: "Yes. Suica, ICOCA and PASMO work on Kyoto City Bus and both subway lines, and transport IC cards are also accepted on the Randen and Kyoto's railways. They do not cover Shinkansen fares, which need a separate ticket or a JR Pass.",
   },
   {
-    q: "What is the best way to get from Kyoto Station to Kinkakuji?",
-    a: "Take Kyoto City Bus route 101 or 205 from Kyoto Station (Karasuma Central Gate) to Kinkakujicho (金閣寺道). The ride takes about 40 minutes and costs ¥230. Alternatively, take the Karasuma Line subway to Kitaoji station then a 12-minute walk or short taxi — faster when buses are delayed.",
+    q: "What is the best way to get from Kyoto Station to Kinkaku-ji?",
+    a: "Take the Karasuma subway to Kitaoji (about 15 minutes, ¥260), then bus 205 or 204 to Kinkakuji-michi (about 15 minutes, ¥230). You can also take JR to Emmachi and change to the same buses. Bus 205 runs direct from Kyoto Station, but it is the option most exposed to crowds and delay.",
   },
   {
     q: "How do I get to Arashiyama from central Kyoto?",
-    a: "Three options: (1) JR Sagano Line from Kyoto Station to Saga-Arashiyama — 15 minutes, ¥240, IC card valid. This is the fastest and most convenient. (2) Keifuku Randen tram from Shijo-Omiya — 20 minutes, ¥220, cash or contactless only (IC card not accepted). (3) City Bus routes 28 or 11 from Kyoto Station — around 50 minutes, ¥230, IC card valid. Take the JR for speed.",
+    a: "From Kyoto Station, take the JR Sagano Line to Saga-Arashiyama, about 11 minutes by Rapid, then walk about 8 minutes to Togetsu-kyo. From the centre, take the Tozai Line to Uzumasa Tenjingawa and the Randen to Arashiyama (flat ¥250, IC cards accepted), or the Hankyu Line with a change at Katsura. Kyoto's tourism site advises against the city bus from Kyoto Station on this route.",
+  },
+  {
+    q: "What are the EX100 and EX101 buses in Kyoto?",
+    a: "They are Kyoto City Bus's Sightseeing Express services, running on Saturdays, Sundays and holidays since 1 June 2024. EX100 stops at Gojo-zaka for Kiyomizu-dera, Gion, Okazaki and Ginkaku-ji, and EX101 runs between Kyoto Station and Gojo-zaka. The fare is ¥500 (¥250 for children), and the Subway & Bus 1-Day Pass covers it. You board at the front.",
+  },
+  {
+    q: "Will tourists pay more for Kyoto buses?",
+    a: "Possibly, but not yet. Kyoto City plans a resident-priority fare within fiscal 2027: ¥200 for residents and about ¥350–¥400 for everyone else, subject to national approval. As of 5 November 2026 the only fare in force is the ¥230 flat fare.",
   },
   {
     q: "Is the Kyoto subway English-friendly?",
-    a: "Yes. All subway station signs and train announcements are bilingual. Ticket machines at every station have English options and accept IC cards, cash, and credit cards at major stations. Platform maps and exit guides are also in English.",
+    a: "Yes. Stations and tickets are straightforward to use in English, and with only two lines there are few ways to go wrong. An IC card removes the ticket machine from the journey altogether.",
   },
   {
     q: "Subway & Bus Pass or Subway-only Pass — which should I buy?",
-    a: "Choose the Subway & Bus Pass (¥1,100) if your day mixes buses and subway, which most temple itineraries do — Kinkakuji, Kiyomizudera, and Gion are best reached by bus. Choose the cheaper Subway-only Pass (¥800) only if you'll stay on the Karasuma and Tozai subway lines all day. If you'll take just a few rides, skip both and use an IC card.",
+    a: "Choose the Subway & Bus Pass (¥1,100) if your day mixes buses and subway and reaches five rides. Choose the cheaper Subway-only Pass (¥800) only if you'll stay on the Karasuma and Tozai lines all day. If you'll take just a few rides, skip both and use an IC card.",
   },
   {
     q: "Does the day pass cover JR trains to Arashiyama?",
-    a: "No. The pass covers Kyoto city buses and the two municipal subway lines, but not JR. The JR Sagano Line to Saga-Arashiyama and the JR Nara Line to Uji are not included — for those, use a pay-as-you-go IC card, which is accepted on JR local trains. Outlying spots such as Kibune & Kurama and Mt Hiei also sit outside the pass area or need an extra fare.",
+    a: "No. The pass covers both subway lines, all city buses and set routes on three other bus companies, but not JR. The JR Sagano Line to Saga-Arashiyama and the JR Nara Line to Inari and Uji need a pay-as-you-go IC card or a ticket. The pass also does not work toward Kibune or the Mt Hiei summit.",
   },
 ];
 
@@ -166,21 +255,21 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide</title>
+        <title>Kyoto Transportation 2026: Getting Around Kyoto by Bus</title>
         <meta
           name="description"
-          content="How to get around Kyoto by bus, subway, JR train, and taxi. IC card tips, day pass breakdown, and access from Tokyo and Kansai Airport — all covered."
+          content="Kyoto Transportation guide: Getting Around Kyoto by subway, JR and the ¥230 city bus, when the ¥1,100 day pass pays, and the fastest routes to each sight."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/kyoto-transportation" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide" />
+        <meta property="og:title" content="Kyoto Transportation 2026: Getting Around Kyoto by Bus" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/kyoto-transportation" />
-        <meta property="og:description" content="How to get around Kyoto by bus, subway, JR train, and taxi. IC card tips, day pass breakdown, and access from Tokyo and Kansai Airport — all covered." />
+        <meta property="og:description" content="Kyoto Transportation guide: Getting Around Kyoto by subway, JR and the ¥230 city bus, when the ¥1,100 day pass pays, and the fastest routes to each sight." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Getting Around Kyoto 2026: Bus, Train &amp; Taxi Guide" />
-        <meta name="twitter:description" content="How to get around Kyoto by bus, subway, JR train, and taxi. IC card tips, day pass breakdown, and access from Tokyo and Kansai Airport — all covered." />
+        <meta name="twitter:title" content="Kyoto Transportation 2026: Getting Around Kyoto by Bus" />
+        <meta name="twitter:description" content="Kyoto Transportation guide: Getting Around Kyoto by subway, JR and the ¥230 city bus, when the ¥1,100 day pass pays, and the fastest routes to each sight." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -200,7 +289,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/transport/kyoto-transportation",
-              headline: "Getting Around Kyoto (2026): Buses, Trains & Taxis Explained",
+              headline: "Kyoto Transportation (2026): Getting Around Kyoto by Bus, Subway & Train",
               updated,
             }),
           }}
@@ -248,13 +337,13 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Getting Around Kyoto (2026):<br />Buses, Trains &amp; Taxis Explained
+            Kyoto Transportation (2026):<br />Getting Around Kyoto by Bus, Subway &amp; Train
           </h1>
           <p className={styles.heroSubtitle}>
-            Kyoto&apos;s city bus and subway cover nearly every major sight. Here&apos;s how to get around efficiently — without wasting time or money.
+            Fares, routes and the day-pass sum, taken from the operators&apos; own sites, so you spend the day at the temples and not at a bus stop.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "All Transport Options", "Day Pass Break-Even"].map((t) => (
+            {[`Updated ${updated.label}`, "Official Fare Table", "Day Pass Break-Even"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -273,6 +362,14 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           </p>
         </div>
 
+        {/* Answer-first opening paragraph */}
+        <p className={styles.bodyText}>
+          The short answer on Kyoto transportation: use the two subway lines, JR and the private railways as your trunk
+          routes, and ride the city bus (a flat <strong>¥230</strong>) only for the last stretch. If you will make five or
+          more rides in a day, buy the <strong>¥1,100 Subway &amp; Bus 1-Day Pass</strong>; below that, pay per ride with
+          ICOCA or Suica. Fares confirmed with Kyoto City&apos;s Transportation Bureau on {CHECKED}.
+        </p>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -282,7 +379,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Best for most visitors</p>
-                <p className={styles.verdictStatValue}>City Bus + IC Card</p>
+                <p className={styles.verdictStatValue}>Subway + JR, bus last</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Subway &amp; Bus pass</p>
@@ -290,55 +387,155 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>IC card works on</p>
-                <p className={styles.verdictStatValue}>Buses, subway, JR local trains</p>
+                <p className={styles.verdictStatValue}>Buses, subway, JR, Randen</p>
               </div>
             </div>
             <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.verdictBtn}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="sponsored noopener"
             >
               Get Suica IC Card on Klook →
             </KlookLink>
           </div>
         </div>
 
-        {/* Transport options comparison table */}
+        {/* Fare table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>Kyoto Transport Options at a Glance</h2>
+          <h2 className={styles.sectionTitle}>What is the best way to get around Kyoto?</h2>
+          <p className={styles.bodyText}>
+            By train first and bus last. The subway, JR, Keihan and the Randen do not sit in traffic, so use them for the
+            long part of each journey, then take a ¥230 bus or walk the last stretch. Each line charges its own fare, as
+            the table shows.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", padding: "0.6rem 0.75rem", fontSize: "0.82rem", textAlign: "left", color: "var(--text-muted)" }}>
+                  One-way fares, confirmed {CHECKED} with Kyoto City Transportation Bureau, Keihan and Keifuku Electric
+                  Railway.
+                </caption>
                 <thead>
                   <tr>
-                    {["Mode", "Best For", "Fare", "IC Card"].map((h) => (
+                    {["Mode", "Use it for", "Adult", "Child", "IC card"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {transportOptions.map((row) => (
+                  {fareRows.map((row) => (
                     <tr key={row.mode}>
                       <td className={styles.tdProvider}>{row.mode}</td>
-                      <td className={styles.tdBestFor}>{row.bestFor}</td>
-                      <td className={styles.tdPrice}>{row.fare}</td>
-                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.icCard}</td>
+                      <td className={styles.tdBestFor}>{row.useFor}</td>
+                      <td className={styles.tdPrice}>{row.adult}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.child}</td>
+                      <td style={{ fontSize: "0.85rem", color: "var(--text)" }}>{row.ic}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            We could not read an official JR or Hankyu fare for these trips, so we print none. Use the operator&apos;s fare
+            search before you travel. Taxis and rental bikes are left out for the same reason.
+          </p>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Is Kyoto easy to get around without a car?
+          </h3>
+          <p className={styles.bodyText}>
+            Yes. You do not need a car in Kyoto: every sight on this page has a train or bus route from Kyoto Station, and
+            driving puts you in the same traffic as the buses. The harder part is getting the order right, which is why
+            the route table below starts with the train.
+          </p>
+        </section>
+
+        {/* Fastest routes */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Routes</span>
+          <h2 className={styles.sectionTitle}>How do I get from Kyoto Station to Fushimi Inari, Arashiyama or Kinkaku-ji?</h2>
+          <p className={styles.bodyText}>
+            Take the JR Nara Line to Inari for Fushimi Inari, the JR Sagano Line to Saga-Arashiyama for Arashiyama, and the
+            Karasuma subway plus a bus for Kinkaku-ji. Kiyomizu-dera and Ginkaku-ji are the two where the EX bus is worth
+            it on a Saturday, Sunday or holiday. Ride times are the operators&apos; own and leave out walking and waiting.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", padding: "0.6rem 0.75rem", fontSize: "0.82rem", textAlign: "left", color: "var(--text-muted)" }}>
+                  Confirmed {CHECKED} with JR West&apos;s JR Odekake, Kyoto City Transportation Bureau and the Kyoto City
+                  Tourism Association&apos;s kyoto.travel. The subway fare is the 3–7 km band and the bus time is the
+                  association&apos;s figure.
+                </caption>
+                <thead>
+                  <tr>
+                    {["To", "Route", "Ride time", "Adult fare"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {routeRows.map((row) => (
+                    <tr key={row.to}>
+                      <td className={styles.tdProvider}>{row.to}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.route}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.time}</td>
+                      <td className={styles.tdPrice}>{row.fare}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            For where these rides fit into a real day, see{" "}
+            <Link href="/guides/attractions/things-to-do-kyoto" style={{ fontWeight: 600 }}>
+              the best things to do in Kyoto
+            </Link>
+            . In Arashiyama, the{" "}
+            <Link href="/guides/attractions/sagano-romantic-train-tickets" style={{ fontWeight: 600 }}>
+              Sagano Romantic Train
+            </Link>{" "}
+            starts a short walk from Saga-Arashiyama Station.
+          </p>
+        </section>
+
+        {/* Is the bus free */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Bus fares</span>
+          <h2 className={styles.sectionTitle}>Is the bus free in Kyoto?</h2>
+          <p className={styles.bodyText}>
+            No. Kyoto city buses are not free: the flat fare is <strong>¥230 for adults and ¥120 for children</strong>,
+            confirmed {CHECKED}. The only way to ride without paying each time is to hold a day pass.
+          </p>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            How much is the bus in Kyoto?
+          </h3>
+          <p className={styles.bodyText}>
+            ¥230 a ride for an adult anywhere in the flat-fare area. The EX100 and
+            EX101 Sightseeing Express buses cost ¥500 (¥250 for children). Outside the flat-fare area, on numbered-ticket
+            buses, the fare depends on where you board and get off, so take a ticket as you board.
+          </p>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Will Kyoto bus fares go up for tourists?
+          </h3>
+          <p className={styles.bodyText}>
+            Not yet, but it is planned. Kyoto City&apos;s Transportation Bureau proposes a resident-priority fare within
+            fiscal 2027 (April 2027 to March 2028): ¥200 for residents and about ¥350–¥400 for everyone else. It needs
+            national approval, and the final fare is not set. The only fare in force on {CHECKED} is ¥230.
+          </p>
         </section>
 
         {/* City Bus section */}
         <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>Main option</span>
-          <h2 className={styles.sectionTitle}>City Bus</h2>
+          <span className={styles.sectionLabel}>City bus</span>
+          <h2 className={styles.sectionTitle}>How do Kyoto city buses work?</h2>
           <p className={styles.bodyText}>
-            The Kyoto City Bus is the primary way to reach most major tourist attractions — Kinkakuji, Kiyomizudera, Fushimi Inari, Gion, and Arashiyama are all reachable by bus. The flat fare of <strong>¥230</strong> applies to most routes within the city. Pay when you exit by tapping your IC card or inserting exact coins near the driver.
+            On most buses you board at the rear and pay at the front as you get off. EX100 and EX101 reverse that: you
+            board at the front and pay as you get on. That difference has been in place since the EX buses began on
+            1 June 2024.
           </p>
           <div className={styles.stepsList}>
             {busTips.map((tip, i) => (
@@ -353,12 +550,35 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           </div>
         </section>
 
+        {/* Crowds */}
+        <section className={styles.installSection}>
+          <span className={styles.sectionLabel}>Crowds</span>
+          <h2 className={styles.sectionTitle}>How do I avoid crowded buses in Kyoto?</h2>
+          <p className={styles.bodyText}>
+            Ride the subway or a train as far as you can, then take the bus for the last stop or two. Kyoto City&apos;s own
+            crowd plan for autumn 2026 says exactly that. The Higashiyama side is where it concentrates its measures.
+          </p>
+          <div className={styles.stepsList}>
+            {crowdTips.map((tip, i) => (
+              <div key={i} className={styles.stepCard}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{tip.title}</p>
+                  <p className={styles.stepDesc}>{tip.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Subway section */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Fast option</span>
-          <h2 className={styles.sectionTitle}>Kyoto Subway</h2>
+          <h2 className={styles.sectionTitle}>How does the Kyoto subway work?</h2>
           <p className={styles.bodyText}>
-            Kyoto&apos;s municipal subway has just two lines, but they cover the most important cross-city routes. Fares start at ¥210 and the system is fully IC card compatible. When buses are stuck in tourist traffic, the subway is almost always faster.
+            Kyoto&apos;s municipal subway has just two lines, and they cross at Karasuma Oike. Fares run from ¥220 to ¥360 by
+            distance (child ¥110 to ¥180) and IC cards work on both lines. When buses are stuck in tourist traffic, the
+            subway keeps moving.
           </p>
           <div className={styles.whoForGrid}>
             {subwayLines.map((line) => (
@@ -374,21 +594,22 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
         {/* IC Card section */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Essential tool</span>
-          <h2 className={styles.sectionTitle}>IC Card: Your Most Important Travel Item in Kyoto</h2>
+          <h2 className={styles.sectionTitle}>Can I use Suica or ICOCA in Kyoto?</h2>
           <p className={styles.bodyText}>
-            An IC card (Suica or Pasmo) is the single most useful thing you can carry in Kyoto. It works on all city buses, both subway lines, JR local trains (the Sagano Line to Arashiyama, the Nara Line to Uji), and most taxis. Tap to board, tap to exit — no tickets, no change, no queuing.
+            Yes. Kyoto City Bus names ICOCA, Suica and PASMO, and IC cards also work on both subway lines, JR local trains
+            and the Randen. On a flat-fare bus you touch once as you get off. If the balance falls short, the bus takes what
+            is on the card and you pay the rest in cash.
           </p>
           <p className={styles.bodyText}>
-            You can load an IC card onto your phone via Apple Pay (iPhone XR and later) or Google Pay (most NFC Android phones), or pick up a physical Suica card at any JR station machine in Japan.
-          </p>
-          <p className={styles.bodyText}>
-            Load your IC card before arriving in Kyoto to avoid queues at Kyoto Station machines — during cherry blossom and autumn leaf season, waits at vending machines can exceed 30 minutes.
+            For the ways to get a card, including Apple Wallet and which Android phones do and do not work, see our{" "}
+            <Link href="/guides/transport/ic-cards-japan" style={{ fontWeight: 600 }}>IC card guide</Link>. An IC card does
+            not lower the fare: it saves you handling coins at every stop.
           </p>
           <KlookLink
             href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
             className={styles.pickCta}
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="sponsored noopener"
           >
             Get Suica IC Card on Klook →
           </KlookLink>
@@ -397,7 +618,11 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
         {/* Day Pass table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Day passes</span>
-          <h2 className={styles.sectionTitle}>Kyoto Day Pass Options</h2>
+          <h2 className={styles.sectionTitle}>Which Kyoto day pass should I buy?</h2>
+          <p className={styles.bodyText}>
+            Buy the ¥1,100 Subway &amp; Bus 1-Day Pass for a day of five or more rides, the ¥800 Subway 1-Day Pass only if
+            you will stay on the subway, and neither on a day built around JR. Prices confirmed {CHECKED}.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -422,21 +647,49 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Day passes are sold at the Kyoto Station Bus Information Center, subway ticket machines, and major hotels. They are not loaded to an IC card — you receive a separate paper ticket. <strong>Note:</strong> the old bus-only ¥700 City Bus 1-Day Pass has been discontinued (sales ended September 2023, and it could no longer be used after the end of March 2024) — the current bus-inclusive option is the ¥1,100 Subway &amp; Bus 1-Day Pass. Large suitcases are not allowed on city buses, so store them at Kyoto Station before a bus-based day.
+            The pass is sold at City Bus and Subway Information Offices, subway stations, bus depots, some convenience
+            stores and on city buses, where it can sell out. It is a separate ticket, not something loaded on to your IC
+            card. On your first bus ride you feed it into the reader, which prints the date; after that, show the date to
+            the driver as you get off. It is not a 24-hour ticket: it runs until the end of service on the day you use it.
           </p>
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.75rem" }}>
-            How many rides to break even?
+          <p className={styles.bodyText}>
+            <strong>The ¥700 bus pass is gone.</strong> Older guides still mention a ¥700 Bus 1-Day Pass. Sales ended on
+            30 September 2023 and use ended on 31 March 2024, and the bureau moved visitors to the ¥1,100 pass to take
+            pressure off the buses.
+          </p>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Is the Kyoto subway and bus pass worth it?
           </h3>
-          <div className={styles.stepsList}>
-            {passBreakEven.map((point, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{point.title}</p>
-                  <p className={styles.stepDesc}>{point.desc}</p>
-                </div>
-              </div>
-            ))}
+          <p className={styles.bodyText}>
+            Yes, from five rides. Four ¥230 bus rides come to ¥920 and five come to ¥1,150, so the fifth ride is where the
+            ¥1,100 pass wins. It wins sooner on longer subway rides or an EX bus at ¥500. Our{" "}
+            <Link href="/guides/transport/kyoto-subway-bus-pass" style={{ fontWeight: 600 }}>Kyoto Subway &amp; Bus Pass guide</Link>{" "}
+            works through a full day.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", padding: "0.6rem 0.75rem", fontSize: "0.82rem", textAlign: "left", color: "var(--text-muted)" }}>
+                  Worked from Kyoto City Transportation Bureau&apos;s adult fares, confirmed {CHECKED}.
+                </caption>
+                <thead>
+                  <tr>
+                    {["Your day", "Pay per ride", "Cheaper option against ¥1,100"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {breakEvenRows.map((row) => (
+                    <tr key={row.rides}>
+                      <td className={styles.tdProvider}>{row.rides}</td>
+                      <td className={styles.tdPrice}>{row.payg}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.pass}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
@@ -465,19 +718,27 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            You can also buy a voucher online via Klook in advance and exchange it for the pass after you arrive.
+            You can also buy a voucher online via Klook in advance and exchange it for the pass after you arrive. If your
+            trip also takes in Osaka, Nara or Kobe, compare the JR-only{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={{ fontWeight: 600 }}>Kansai Area Pass</Link> instead:
+            it covers the JR lines to Inari and Saga-Arashiyama, which the Kyoto passes do not.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink
-              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1266287&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F118071-kyoto-city-subway-and-bus-ticket%2F"
-              className={styles.pickCta}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
+            <KlookLink href={PASS_URL} className={styles.pickCta} target="_blank" rel="sponsored noopener">
               Book Kyoto Bus &amp; Subway Day Pass on Klook →
+            </KlookLink>
+            <KlookLink href={jrKansaiAreaPass.url} className={styles.pickCtaInternal} target="_blank" rel="sponsored noopener">
+              Check the Kansai Area Pass on Klook →
             </KlookLink>
           </div>
         </section>
+
+        <KlookTripPrep
+          label="Book with the pass"
+          heading="What to Book for the Same Day"
+          intro="The pass and your IC card sort out the rides inside the city. These are the bookings the rest of the trip needs: a guided day if you would rather skip the routing, a bed on a train line, the shinkansen, and data for live bus positions."
+          items={kyotoTransportTripPrep}
+        />
 
         {/* Where to stay for easy transport */}
         <KlookStayAreas
@@ -506,7 +767,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265372&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F18400-jr-haruka-airport-express-train-tickets-osaka%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="sponsored noopener"
             >
               Book Haruka Airport Express on Klook →
             </KlookLink>
@@ -514,7 +775,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.pickCtaInternal}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="sponsored noopener"
             >
               Book JR Pass on Klook →
             </KlookLink>
@@ -566,6 +827,31 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            <Link href="/guides/attractions/things-to-do-kyoto" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21h18M5 21V10l7-6 7 6v11" />
+                  <path d="M9 21v-5h6v5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best Things to Do in Kyoto</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/sagano-romantic-train-tickets" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="3" width="16" height="14" rx="3" />
+                  <line x1="4" y1="10" x2="20" y2="10" />
+                  <path d="M7 21l2-4" /><path d="M17 21l-2-4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 5 Nov 2026: the shrine as a guided walk, with the hike time and trains. */}
             <Link href="/guides/attractions/fushimi-inari-tour" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

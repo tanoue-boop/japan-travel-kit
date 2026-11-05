@@ -3849,6 +3849,50 @@ export const kyotoTwoDayTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * Kyoto transportation — added 5 Nov 2026 under the pass decision on
+ * kyoto-transportation. Guided days and hotels are the 6.5% band, the shinkansen
+ * route page 5%, the eSIM 20%. Every url reads out of an existing constant.
+ */
+export const kyotoTransportTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.kyotoHighlightTour,
+    why: "Kinkaku-ji, Fushimi Inari and Arashiyama sit on three different sides of the city, so this is the alternative to working out each transfer yourself.",
+  },
+  {
+    label: kyotoFushimiInariWalkingTour.title,
+    ctaLabel: "Check the Fushimi Inari walk →",
+    url: kyotoFushimiInariWalkingTour.url,
+    why: "Fushimi Inari is about 5 minutes from Kyoto Station on JR, which makes this easy to fit around a morning train. The listing runs three hours.",
+  },
+  {
+    label: arashiyamaSaganoOptionalTour.title,
+    ctaLabel: "Check the Arashiyama tour →",
+    url: arashiyamaSaganoOptionalTour.url,
+    why: "Neither Kyoto day pass covers the JR ride to Arashiyama, so a guided half of the day is worth pricing against the fares and the planning.",
+  },
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "The JR Nara and Sagano lines, the Karasuma subway and the EX buses all start here, so most of the routes on this page begin at your hotel door.",
+  },
+  {
+    label: "Hotels around Karasuma Oike / Shijo",
+    ctaLabel: "Check Karasuma Oike hotels on Klook →",
+    url: kyotoStayAreas[1].url,
+    why: "The one point where the Karasuma and Tozai lines cross, so both subway lines are a short walk away on a day-pass day.",
+  },
+  {
+    label: "Kyoto ↔ Tokyo shinkansen tickets",
+    ctaLabel: "Check Tokyo ↔ Kyoto tickets →",
+    url: shinkansenTokyoKyoto.url,
+    why: "An IC card does not cover the shinkansen, and Klook sells the route by date and seat class.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Pocket Loca plus+ and the operators' fare searches all need data at the bus stop, which is when you will want them.",
+  },
+];
+
 /** teamLab Forest Fukuoka — the admission itself, on the 5th floor of BOSS E・ZO. */
 export const teamlabForestFukuokaTicket: KlookTour = {
   title: "teamLab Forest Fukuoka ticket",
