@@ -1888,6 +1888,44 @@ export const revolutCardTripPrep: KlookTripPrepItem[] = [
 ];
 
 /**
+ * Wise vs Revolut — added 5 Nov 2026. The page had no Klook route, and which card
+ * wins is the part an AI summary answers in full. Each line is a payment the reader
+ * can make on either card before the trip, tied to the weekend window or the ATM
+ * allowance. Spread across eSIM 20%, airport access and the passes 5%, and the Tokyo
+ * hotel 6.5%. No new URLs.
+ */
+export const wiseVsRevolutTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Both cards run from an app: your Wise balance and the Revolut plan screen that shows your allowance need data from the moment you land.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Land at Narita on a Saturday and a ticket bought on the day falls in Revolut's weekend window. Book the round trip on a weekday before you fly and the question does not come up on either card.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "The Haneda side of the same decision: one fare settled ahead, so neither card's free ATM allowance goes on the ride into town.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "For Kansai arrivals: with the airport train already paid for, more of your free ATM allowance is left for the places that only take cash.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "One card payment in place of a run of yen fares, so on Revolut Standard there is one exchange to time rather than many.",
+  },
+  {
+    ...tripPrepProducts.jrPass,
+    why: "A single large charge. On Wise it is one conversion; on Revolut Standard, buy it on a weekday and check your plan's exchange limit first.",
+  },
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "Often the largest bill of the trip, and on Revolut Standard better paid on a weekday than at a front desk on a Saturday night. Wise's terms are the same on either day.",
+  },
+];
+
+/**
  * Shibuya Sky — added 25 Oct 2026, and the reason is the commission band. The
  * SHIBUYA SKY ticket itself is a 2% "special activity" on Klook, so the site's
  * most-read page had no route into any other band. This block sits after the

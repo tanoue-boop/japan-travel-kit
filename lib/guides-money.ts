@@ -5,8 +5,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/wise-vs-revolut-japan",
     badge: "Comparison",
-    title: "Wise vs Revolut for Japan (2026): Which Travel Card Wins?",
-    desc: "Wise or Revolut for Japan? We compare exchange rates, weekend fees, ATM limits, and plans — with clear advice on which card suits your spending.",
+    title: "Wise vs Revolut Japan (2026): Which Travel Card Wins?",
+    desc: "Wise vs Revolut Japan: free ATM allowances, exchange fees and Revolut's weekend markup side by side, with advice on which card suits your spending.",
     group: "cards",
     city: "other",
   },
