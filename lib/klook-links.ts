@@ -5879,3 +5879,77 @@ export const hiroshimaPeaceSameDayPrep: KlookTripPrepItem[] = [
     why: "The museum's web ticket arrives by email as a barcode, and its live queue cameras are online, so data is useful before you reach the door.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Fushimi Inari tours, added 5 Nov 2026 for fushimi-inari-tour.
+//
+// Each listing below was confirmed in its en-US form through the www.klook.com search
+// index on 5 Nov 2026; the /activity/ pages still answer automated reads with HTTP 403.
+// Activity 158589 (2-hour walk) was seen only without an en-US locale, and the Kyoto
+// Early Morning Tour was seen only as a card on regional destination pages with no
+// activity URL, so neither is linked by id. `fushimiInariToursListUrl` reaches both.
+// ---------------------------------------------------------------------------
+
+/** Klook's Fushimi Inari Taisha destination page, which lists every tour of the shrine. */
+export const fushimiInariToursListUrl = klookLink(
+  "https://www.klook.com/en-US/destination/p50001443-fushimi-inari-taisha/",
+);
+
+/** The short version: the shrine's story, listed at 1 to 1 hour 15. */
+export const fushimiInariShortWalkingTour: KlookTour = {
+  title: "Fushimi Inari Shrine walking tour",
+  desc: "A walk of 1 hour to 1 hour 15 on the shrine's history, its foxes and the meaning of the red gates",
+  url: klookLink("https://www.klook.com/en-US/activity/59975-fushimi-inari-shrine-walking-tour/"),
+};
+
+/** The 90-minute walk that meets at the JR Inari ticket gate. */
+export const fushimiInari90MinuteTour: KlookTour = {
+  title: "90-minute Fushimi Inari Taisha walking guided tour",
+  desc: "Meets in front of the JR Inari Station ticket gate, and the listing takes children from age 1",
+  url: klookLink("https://www.klook.com/en-US/activity/87446-kyoto-join-half-day-tour-kyoto/"),
+};
+
+/** The 2 hours 30 walk that goes up into the Mount Inari scenery. */
+export const fushimiInariGuidedWalk: KlookTour = {
+  title: "Fushimi Inari Shrine walking guided tour",
+  desc: "A guided walk listed at 2 hours 30, taking in the natural scenery of Mount Inari",
+  url: klookLink("https://www.klook.com/en-US/activity/87418-kyoto-tour-kyoto/"),
+};
+
+/** The back-trail hike: about 7 km, away from the main gate paths. */
+export const fushimiInariHiddenHikingTour: KlookTour = {
+  title: "Fushimi Inari hidden hiking tour",
+  desc: "A 3-hour hike of about 7 km on quieter trails, with shoes with good grip advised on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/90628-fushimi-inari-hidden-hiking-tour-hiking-tour/"),
+};
+
+/** The shrine plus a sake museum tasting, listed at 3 hours 40. */
+export const fushimiInariSakeTour: KlookTour = {
+  title: "Fushimi Inari half-day walking tour with sake tasting",
+  desc: "The shrine and the Gekkeikan Okura Sake Museum with a licensed English-speaking guide, listed at 3 hours 40",
+  url: klookLink("https://www.klook.com/en-US/activity/94022-fushimiinari-shrine-gekkeikan-okura-sake-museum-join-half-day-walking-tour-sake-tasting/"),
+};
+
+/** The rest of the day around a Fushimi Inari morning. */
+export const fushimiInariSameDayPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "An early start is the whole plan here, and JR Inari is two stations down the Nara Line from Kyoto Station, so a bed by the station keeps the dawn train short.",
+  },
+  {
+    label: "Kyoto Station kimono rental with hair set",
+    ctaLabel: "Check the kimono rental →",
+    url: kyotoKimonoAiwafukuStation.url,
+    why: "The shop lists itself five minutes from Kyoto Station, so the lower gates fit in by train. Keep to the lower gates rather than the mountain path, and check the return time.",
+  },
+  {
+    label: jrKansaiAreaPass.title,
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass.url,
+    why: "The JR Nara Line to Inari is the recommended route, so the pass is worth a look if the same days also take you to Osaka, Nara or the airport.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Tour meeting points here are a station gate, a street address and a convenience store, and you will want a working map and Kyoto's crowd forecast on the day.",
+  },
+];

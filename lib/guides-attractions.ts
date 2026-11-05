@@ -326,6 +326,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "kyoto",
   },
   {
+    href: "/guides/attractions/fushimi-inari-tour",
+    badge: "Tour",
+    title: "Fushimi Inari Tour 2026: Hike Time, Hours & Best Time",
+    desc: "Free, open 24 hours and a 2–3 hour walk round the mountain: Klook tours from 1 hour to 3 hours 40 compared on length and meeting point, plus trains from Kyoto Station and the shrine's own rules.",
+    group: "daytrips",
+    city: "kyoto",
+  },
+  {
     href: "/guides/attractions/jigokudani-snow-monkey-tour",
     badge: "Day trip",
     title: "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026",
