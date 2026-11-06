@@ -5635,6 +5635,57 @@ export const tokyoOsakaArrivalStayAreas: KlookStayArea[] = [
   },
 ];
 
+/**
+ * Osaka airport transfer, added 6 Nov 2026 (task jtk-20261106-05) — what to settle
+ * before landing at KIX or Itami, directly under the "which train" decision. No new
+ * URLs and no prices. eSIM 20%; passes 5%; hotels and tours 6.5%. The USJ line is the
+ * Universal City hotel search because the Studio Pass itself is excluded from
+ * commission. The pocket WiFi (5%) reads from lib/pocket-wifi.ts in the page, per the
+ * single-source rule that file sets.
+ */
+export const osakaAirportArrivalPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Bus stands, platform changes and your hotel map all sit on your phone, so install it at home and it is working when you clear customs.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "For the city once you are in it: Osaka Metro, city buses and more than 40 admissions. It does not cover either airport train or Universal Studios Japan.",
+  },
+  {
+    label: "JR Kansai Area Pass",
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass.url,
+    why: "Worth pricing if you are also riding JR to Kyoto, Nara or Himeji, because JR West's pass covers the Haruka's non-reserved seats.",
+  },
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "The Haruka stops at Osaka Station, so an Umeda room is one direct ride from Kansai Airport, and the Itami limousine bus serves the same area.",
+  },
+  {
+    label: "Hotels in Namba",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: osakaStayAreas[1].url,
+    why: "The Rapi:t ends here, so a Namba room means no change of train after a long flight.",
+  },
+  {
+    label: "Hotels near Universal Studios Japan (Universal City)",
+    ctaLabel: "Check Universal City hotels on Klook →",
+    url: usjStayAreas[0].url,
+    why: "If the park is the reason for the trip. The park gates are about five minutes on foot from Universal City Station.",
+  },
+  {
+    label: absoluteOsakaFoodTour.title,
+    ctaLabel: "Check the Osaka food tour →",
+    url: absoluteOsakaFoodTour.url,
+    why: "A first-evening plan off the Dotonbori strip that needs no routing of your own.",
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "A guided day out of Osaka, with Kiyomizu-dera, Fushimi Inari and Nara Park in one booking.",
+  },
+];
+
 export const tokyoOsakaArrivalPrep: KlookTripPrepItem[] = [
   {
     label: "Dotonbori daytime food tour",
