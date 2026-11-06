@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { EsimAltLinks } from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import { ProviderCta } from "../../../components/EsimPlanTable";
@@ -450,6 +451,9 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
         </div>
 
         <SimbyeOffer />
+        <div data-placement="esim-page-answer">
+          <EsimAltLinks />
+        </div>
 
         {/* Price Comparison Table */}
         <section className={styles.comparisonSection}>

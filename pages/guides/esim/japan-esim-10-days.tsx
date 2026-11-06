@@ -523,21 +523,29 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
               verified price to quote because the listing blocks automated reads.
             </p>
             <div className={styles.pickCtaRow}>
+              <a
+                href={esimLink("simbye")}
+                className={styles.verdictBtn}
+                target="_blank"
+                rel="sponsored noopener"
+              >
+                Get Simbye {simbyePick?.name ?? "10 GB"} →
+              </a>
               <KlookLink
                 href={klookEsim.url}
-                className={styles.verdictBtn}
+                className={styles.pickCtaInternal}
                 target="_blank"
                 rel="sponsored noopener"
               >
                 {klookEsim.ctaLabel}
               </KlookLink>
               <a
-                href={esimLink("simbye")}
+                href={esimLink("airalo")}
                 className={styles.pickCtaInternal}
                 target="_blank"
                 rel="sponsored noopener"
               >
-                Get Simbye {simbyePick?.name ?? "10 GB"} →
+                Get Airalo {airaloPick?.name ?? "10 GB"} →
               </a>
               <a
                 href={esimLink("esimgo")}
@@ -546,14 +554,6 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
                 rel="sponsored noopener"
               >
                 Get eSIM Go {esimgoPick?.name ?? "10 GB"} →
-              </a>
-              <a
-                href={esimLink("airalo")}
-                className={styles.pickCtaInternal}
-                target="_blank"
-                rel="sponsored noopener"
-              >
-                Get Airalo {airaloPick?.name ?? "10 GB"} →
               </a>
             </div>
           </div>

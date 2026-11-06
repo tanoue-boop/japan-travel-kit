@@ -28,33 +28,43 @@ export default function EsimPageAnswer({ route }: { route: string }) {
         <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
           Get Simbye eSIM{from ? ` from ${formatUsd(from.priceUsd)}` : ""} →
         </a>
-        <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
-          Or{" "}
-          <KlookLink
-            href={klookEsim.url}
-            target="_blank"
-            rel="sponsored noopener"
-            style={{ color: "var(--accent)", fontWeight: 600 }}
-          >
-            {klookEsim.ctaLabel}
-          </KlookLink>{" "}
-          ·{" "}
-          <a
-            href={getProvider("airalo").affiliateUrl}
-            target="_blank"
-            rel="sponsored noopener"
-            style={{ color: "var(--accent)", fontWeight: 600 }}
-          >
-            Get Airalo eSIM →
-          </a>{" "}
-          ·{" "}
-          <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-            Best eSIM for Japan, by need
-          </Link>
-          <br />
-          Affiliate links. Prices checked {pricesCheckedLabel()}.
-        </p>
+        <EsimAltLinks />
       </div>
     </div>
+  );
+}
+
+/**
+ * The partners after the main button, in commission order. Stands alone on pages that
+ * already opened with their own Simbye button before EsimPageAnswer existed.
+ */
+export function EsimAltLinks() {
+  return (
+    <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
+      Or{" "}
+      <KlookLink
+        href={klookEsim.url}
+        target="_blank"
+        rel="sponsored noopener"
+        style={{ color: "var(--accent)", fontWeight: 600 }}
+      >
+        {klookEsim.ctaLabel}
+      </KlookLink>{" "}
+      ·{" "}
+      <a
+        href={getProvider("airalo").affiliateUrl}
+        target="_blank"
+        rel="sponsored noopener"
+        style={{ color: "var(--accent)", fontWeight: 600 }}
+      >
+        Get Airalo eSIM →
+      </a>{" "}
+      ·{" "}
+      <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+        Best eSIM for Japan, by need
+      </Link>
+      <br />
+      Affiliate links. Prices checked {pricesCheckedLabel()}.
+    </p>
   );
 }

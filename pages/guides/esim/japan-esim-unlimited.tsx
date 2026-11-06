@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { EsimAltLinks } from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import SimbyeOffer from "../../../components/SimbyeOffer";
 import {
@@ -436,6 +437,9 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
         </div>
 
         <SimbyeOffer />
+        <div data-placement="esim-page-answer">
+          <EsimAltLinks />
+        </div>
 
         {/* Answer table: price by trip length, then what each "unlimited" slows to. */}
         <section className={styles.comparisonSection}>
