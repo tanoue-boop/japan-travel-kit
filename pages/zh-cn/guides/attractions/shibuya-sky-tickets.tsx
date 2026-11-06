@@ -226,6 +226,10 @@ const faqItems: FaqItem[] = [
     a: "有。新宿的东京都厅在约 202 米处设有观景室，免费入场——东京最好的免费城市景观；如果不想把预算花在日落场的 ¥3,400 上，这是很合理的替代。开放时间与开放的观景室会变动，去之前请先确认。",
   },
   {
+    q: "SHIBUYA SKY 顶楼可以带包吗？",
+    a: "不行。包、背包、雨伞与自拍杆不可带上顶楼，要先存放在 46 楼的储物柜；手机与可放进口袋的相机没问题。三脚架与单脚架只能在 46 楼室内使用，人多时可能被要求停止。依运营方购票 FAQ 的搜索索引内容，2026 年 11 月 6 日查阅。",
+  },
+  {
     q: "从涩谷SKY 能看到富士山吗？",
     a: "天气晴朗时能看到——不过高度更高的东京晴空塔机会更大。能见度取决于天气，通常在较凉爽干燥的月份、一天中较早的时候最好；如果你上去就是为了富士山，这也是选 ¥2,700 白天时段的理由。任何一天都没有保证。",
   },
@@ -619,6 +623,20 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               东京观景台比较（英文）
             </Link>
             。
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>顶楼规定</span>
+          <h2 className={styles.sectionTitle}>SHIBUYA SKY 顶楼可以带什么上去？</h2>
+          <ul className={styles.bodyList}>
+            <li><strong>不可带上顶楼:</strong> 包、背包、雨伞、自拍杆。上去前先存放在 46 楼的储物柜。</li>
+            <li><strong>可以带:</strong> 手机与可放进口袋的相机。</li>
+            <li><strong>三脚架与单脚架:</strong> 只能在 46 楼室内使用，人多时工作人员可能请你停止。顶楼与其他楼层禁止使用。</li>
+            <li><strong>天气不佳:</strong> 天气转坏时顶楼可能不经预告关闭，室内楼层仍开放。订票前请看清楚你的票券条款。</li>
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            依运营方购票 FAQ 的搜索索引内容，2026 年 11 月 6 日查阅。实际页面无法自动读取，当天请再确认规定。
           </p>
         </section>
 

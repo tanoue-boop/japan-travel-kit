@@ -89,7 +89,7 @@ const hoursRows = [
   { item: "最後入場", detail: "閉館前一小時", source: `官方售票網站，${CHECKED}` },
   {
     item: "休館日",
-    detail: "不定期——2026 年 11 月 5 日（週四）與 12 月 3 日（週四）都在內",
+    detail: "不定期——2026 年 12 月 3 日（週四）在內",
     source: `teamlab.art，${HOURS_CHECKED}`,
   },
   {
@@ -229,12 +229,16 @@ const faqItems: FaqItem[] = [
     a: "短褲，或可以捲到膝蓋以上的長褲。部分作品是水空間，水深可達成人膝蓋高，而且整間美術館都是赤腳體驗——入場時會在置物間脫掉鞋子、襪子與褲襪。部分地板是鏡面的，所以裙子與寬管褲不是好主意；現場有 XS 到 6L 的免費短褲可借。帶小孩的話請準備替換衣物，另外嬰兒車不能進場（有嬰兒車停放區，背巾可以）。",
   },
   {
+    q: "teamLab Planets 的 QR 票什麼時候會收到？",
+    a: "門票一律是 QR 電子票。購票確認信裡有票券連結，入場前 2 天會收到提醒信，QR 碼在入場當天 00:00 起才會顯示。一個 QR 涵蓋同筆訂單的所有人，可以用手機、平板出示或列印。2026 年 11 月 6 日查閱。",
+  },
+  {
     q: "teamLab Planets 要逛多久？",
     a: "整體預留大約 1.5 到 2 小時。作品本身以不趕的步調大約需要一到一個半小時，但你還要算上置物間、赤腳與事後擦乾的時間——而且在忙碌時段，光是入場準備就可能要 30～60 分鐘。結束後不要緊接著排其他行程。",
   },
   {
     q: "teamLab Planets 的營業時間？什麼時候休館？",
-    a: `營業時間依日期而不同。我們在 ${HOURS_CHECKED} 查看 teamlab.art 時，Planets 公告的時間是 08:00–22:00；官方售票網站在 ${CHECKED} 仍寫著最後入場為閉館前一小時。2026 年年底的休館日包含 11 月 5 日（週四）與 12 月 3 日（週四）。因為行事曆每個月都在變，訂時段之前請用你自己的日期查官方行事曆。`,
+    a: `營業時間依日期而不同。我們在 ${HOURS_CHECKED} 查看 teamlab.art 時，Planets 公告的時間是 08:00–22:00；官方售票網站在 ${CHECKED} 仍寫著最後入場為閉館前一小時。2026 年年底的休館日包含 12 月 3 日（週四）。因為行事曆每個月都在變，訂時段之前請用你自己的日期查官方行事曆。`,
   },
   {
     q: "錯過 teamLab Planets 的時段怎麼辦？",
@@ -691,6 +695,23 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               </div>
             ))}
           </div>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>出發前</span>
+          <h2 className={styles.sectionTitle}>去 teamLab Planets 該穿什麼、帶什麼？</h2>
+          <ul className={styles.bodyList}>
+            <li><strong>穿著:</strong> 短褲或可捲到膝上的長褲。水深可到成人膝蓋，部分地板是鏡面，不建議穿迷你裙。現場有免費租借短褲，尺寸 XS 到 6L，離場前歸還。</li>
+            <li><strong>門票:</strong> 手機或平板上的 QR 電子票，或列印出來。一個 QR 涵蓋同筆訂單的所有人。入場前 2 天會收到提醒信，QR 碼在入場當天 00:00 起才會顯示。</li>
+            <li><strong>證件:</strong> 國高中生票需學生證或官方年齡證明，身障票需經認可的證明文件。</li>
+            <li><strong>包包:</strong> 入場閘門後有免費置物櫃，尺寸 23 × 34 × 37 公分。更大的行李只能用鋼絲鎖固定在館外的嬰兒車停放處。</li>
+            <li><strong>毛巾:</strong> 不必帶。水中作品的出口有提供毛巾。</li>
+            <li><strong>帶小孩:</strong> 每 3 名兒童至少要有 1 名成人陪同，免費入場的兒童也要計入。請帶替換衣物。揹巾可入內，嬰兒車需停在館外。</li>
+            <li><strong>再次入場:</strong> 所有票種都不可以，包括 Premium Pass。入場後不可退票。</li>
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            資料來自官方售票網站與說明頁面，2026 年 11 月 6 日查閱。
+          </p>
         </section>
 
         <section className={styles.bodySection}>

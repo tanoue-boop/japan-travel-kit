@@ -253,6 +253,10 @@ const faqItems: FaqItem[] = [
     a: `車站是 JR 夢咲線（櫻島線）的環球城站，通常在西九條轉車，大阪觀光局說從大阪站到樂園約 20 分鐘。從關西機場沒有直達電車：JR 西日本的 HARUKA 不必轉車直達天王寺、大阪、新大阪與京都——以短期滯在身分入境的外國護照持有人可買的優惠單程票，到2026年10月31日為止，到天王寺 ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起調整為 ¥1,600 與 ¥1,900——或搭南海 Rapi:t 到難波，最快 34 分鐘，除車資外另需成人 ¥700 的特急券。之後都搭環狀線到西九條，再轉夢咲線。所有數字於${CHECKED}查閱。`,
   },
   {
+    q: "USJ 快速通關當天要怎麼使用？",
+    a: "在快速通關入口向工作人員出示含 QR 碼的完整票券畫面。部分設施的時間印在票上，其餘在營業時間內隨時可搭。指定時間遲到不退款也不能改時段，票券每人一張。依 usj.co.jp 的搜尋索引內容，2026 年 11 月 6 日查閱。",
+  },
+  {
     q: "有哪張大阪或關西的票券包含 USJ 嗎？",
     a: `樂園本身不在大阪周遊卡（Osaka Amazing Pass）的範圍內，也沒有任何大阪地鐵票券涵蓋前往環球城的 JR 路段。鐵路方面，JR 西日本自己的關西地區鐵路周遊券頁面把 WEST QR Kansai Mini Pass 描述為「京都、日本環球影城、大阪、難波、神戶、奈良 3 日無限搭乘」——成人 ¥3,000、兒童 ¥1,500，連續三天可搭普通、快速與新快速列車，但不能搭包括 HARUKA 在內的任何特急。WEST QR Kansai Area Pass 則涵蓋 HARUKA，自由席無限次加上兩次指定席，一日 ¥2,700 到四日 ¥6,700。於${CHECKED}查閱。以上都不含樂園門票——那永遠是另外一張 Studio Pass。`,
   },
@@ -696,6 +700,22 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               </div>
             ))}
           </div>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>當天使用</span>
+          <h2 className={styles.sectionTitle}>USJ 快速通關當天怎麼用？</h2>
+          <ul className={styles.bodyList}>
+            <li><strong>指定時間的設施:</strong> 部分設施的時間印在票上，須依該時間前往。遲到不退款，也不能改時段。</li>
+            <li><strong>不指定時間的設施:</strong> 其餘設施在營業時間內隨時可搭。</li>
+            <li><strong>搭乘時:</strong> 在快速通關入口向工作人員出示含 QR 碼的完整票券畫面。</li>
+            <li><strong>一格一項:</strong> 同一格印有多項設施時，只能使用其中一項。</li>
+            <li><strong>每人一張:</strong> 票券為個人使用，同行每人都需要自己的票。</li>
+            <li><strong>單人搭乘:</strong> 與快速通關無關的另一套制度：與同行者分開，填補空位。部分日期與時段不能使用，請洽各設施的工作人員。</li>
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            依 USJ 快速通關與 FAQ 頁面的搜尋索引內容，2026 年 11 月 6 日查閱。實際頁面無法自動讀取，請以你票上的時間為準。
+          </p>
         </section>
 
         <section className={styles.bodySection}>

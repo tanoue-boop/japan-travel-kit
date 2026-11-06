@@ -253,6 +253,10 @@ const faqItems: FaqItem[] = [
     a: `车站是 JR 梦咲线（樱岛线）的环球城站，通常在西九条换乘，大阪观光局说从大阪站到乐园约 20 分钟。从关西机场没有直达列车：JR 西日本的 HARUKA 无需换乘直达天王寺、大阪、新大阪和京都——以短期滞在身份入境的外国护照持有人可购买的优惠单程票，截至2026年10月31日，到天王寺 ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起调整为 ¥1,600 和 ¥1,900——或坐南海 Rapi:t 到难波，最快 34 分钟，除车费外另需成人 ¥700 的特急券。之后都坐环状线到西九条，再换乘梦咲线。所有数字于${CHECKED}查阅。`,
   },
   {
+    q: "USJ 快速通行证当天要怎么使用？",
+    a: "在快速通行证入口向工作人员出示含 QR 码的完整票券画面。部分设施的时间印在票上，其余在营业时间内随时可玩。指定时间迟到不退款也不能改时段，票券每人一张。依 usj.co.jp 的搜索索引内容，2026 年 11 月 6 日查阅。",
+  },
+  {
     q: "有哪张大阪或关西的通票包含 USJ 吗？",
     a: `乐园本身不在大阪周游卡（Osaka Amazing Pass）的范围内，也没有任何大阪地铁通票覆盖前往环球城的 JR 路段。铁路方面，JR 西日本自己的关西地区铁路周游券页面把 WEST QR Kansai Mini Pass 描述为“京都、日本环球影城、大阪、难波、神户、奈良 3 日无限乘坐”——成人 ¥3,000、儿童 ¥1,500，连续三天可乘坐普通、快速和新快速列车，但不能乘坐包括 HARUKA 在内的任何特急。WEST QR Kansai Area Pass 则覆盖 HARUKA，自由席不限次数加两次指定席，一日 ¥2,700 到四日 ¥6,700。于${CHECKED}查阅。以上都不含乐园门票——那永远是另外一张 Studio Pass。`,
   },
@@ -695,6 +699,22 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               </div>
             ))}
           </div>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>当天使用</span>
+          <h2 className={styles.sectionTitle}>USJ 快速通行证当天怎么用？</h2>
+          <ul className={styles.bodyList}>
+            <li><strong>指定时间的设施:</strong> 部分设施的时间印在票上，须按该时间前往。迟到不退款，也不能改时段。</li>
+            <li><strong>不指定时间的设施:</strong> 其余设施在营业时间内随时可玩。</li>
+            <li><strong>乘坐时:</strong> 在快速通行证入口向工作人员出示含 QR 码的完整票券画面。</li>
+            <li><strong>一格一项:</strong> 同一格印有多项设施时，只能使用其中一项。</li>
+            <li><strong>每人一张:</strong> 票券为个人使用，同行每人都需要自己的票。</li>
+            <li><strong>单人乘坐:</strong> 与快速通行证无关的另一套制度：与同行者分开，填补空位。部分日期与时段不能使用，请询问各设施的工作人员。</li>
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            依 USJ 快速通行证与 FAQ 页面的搜索索引内容，2026 年 11 月 6 日查阅。实际页面无法自动读取，请以你票上的时间为准。
+          </p>
         </section>
 
         <section className={styles.bodySection}>

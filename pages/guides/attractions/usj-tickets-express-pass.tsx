@@ -92,6 +92,21 @@ const CHECKED = checkedLabel("2026-10-26");
  */
 const CHECKED_USJ = checkedLabel("2026-10-27");
 
+/**
+ * How a pass works on the day, from usj.co.jp's own Express Pass and FAQ pages as carried
+ * in its search index on 6 Nov 2026 (the live pages are client-rendered). No time saved per
+ * ride and no wait table: USJ publishes neither, and we have measured neither.
+ */
+const USE_CHECKED = "6 Nov 2026";
+const useRows = [
+  { item: "Fixed-time rides", detail: "Some attractions on a pass carry a set time, printed on the ticket. Go at that time: arriving late brings no refund and no change of slot." },
+  { item: "Any-time rides", detail: "The rest can be ridden at any point during operating hours." },
+  { item: "At the ride", detail: "Show the whole ticket screen, QR code included, to the crew at the Express Pass entrance." },
+  { item: "One ride per entry", detail: "Where several attractions are printed on one line of a pass, it is valid for one of them." },
+  { item: "Every guest", detail: "Tickets are personal, so each guest needs their own." },
+  { item: "Single Rider", detail: "A separate system, not part of the Express Pass: you fill empty seats apart from your group. It does not run at all times, so ask the crew at the ride." },
+];
+
 const ticketRows = [
   { ticket: "1-Day Studio Pass", what: "Park entry for one day; ride standard attractions in standby queues", price: "Set per date — the day's price shows at checkout" },
   { ticket: "2-Day Studio Pass", what: "Two consecutive days of entry, often cheaper per day", price: "Set per date — the day's price shows at checkout" },
@@ -299,12 +314,16 @@ const faqItems = [
     a: `The station is Universal City on the JR Yumesaki (Sakurajima) Line, usually reached by changing at Nishikujo, and the Osaka Convention & Tourism Bureau puts the park at about 20 minutes from Osaka Station. From Kansai Airport there is no direct train: JR West's HARUKA runs to Tennoji, Osaka, Shin-Osaka and Kyoto with no change — the discounted one-way for foreign passport holders entering as temporary visitors is ¥1,300 to Tennoji and ¥1,800 to Osaka or Shin-Osaka through 31 October 2026, rising to ¥1,600 and ¥1,900 on 1 November 2026 — or Nankai's Rapi:t reaches Namba in a minimum of 34 minutes on a ¥700 adult limited express ticket on top of the fare. From either, take the Loop Line to Nishikujo and the Yumesaki Line on. All figures read on ${CHECKED}.`,
   },
   {
+    q: "How do you use a USJ Express Pass on the day?",
+    a: `Show the full ticket screen, QR code included, to the crew at the Express Pass entrance of the ride. Some attractions on a pass carry a set time printed on the ticket; the rest can be ridden at any point during operating hours. Late arrival at a fixed-time ride brings no refund and no change of slot, and each guest needs their own ticket. From usj.co.jp as indexed on ${USE_CHECKED}.`,
+  },
+  {
     q: "Is USJ covered by any Osaka or Kansai pass?",
     a: `The park itself is not on the Osaka Amazing Pass, and no Osaka Metro pass covers the JR run out to Universal City. On the rail side, JR West's own Kansai Area Pass page describes the WEST QR Kansai Mini Pass as "Kyoto, Universal Studios Japan, Osaka, Namba, Kobe and Nara 3-Day Unlimited Rides" — it is ¥3,000 for an adult and ¥1,500 for a child over three consecutive days on ordinary, rapid and special rapid trains, and it cannot be used on any limited express including the HARUKA. The WEST QR Kansai Area Pass does cover the HARUKA, with unlimited non-reserved seats plus two reserved, at ¥2,700 for one day up to ¥6,700 for four. Read on ${CHECKED}. None of them includes park admission — that is always a separate Studio Pass.`,
   },
 ];
 
-const TITLE = "Universal Studios Japan Express Pass 2026: Which to Buy";
+const TITLE = "Universal Studios Japan Express Pass 2026: 4 vs 7, Worth It?";
 const DESCRIPTION =
   "Universal Studios Japan Express Pass 2026: what Express Pass 4 and 7 cover, why USJ prices move by date, when it sells out, and when you can skip it.";
 
@@ -793,6 +812,21 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               </div>
             ))}
           </div>
+        </section>
+
+        {/* The day itself: how the pass is actually used, sold by nobody's checkout page. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>On the day</span>
+          <h2 className={styles.sectionTitle}>How Do You Use an Express Pass at USJ?</h2>
+          <ul className={styles.bodyList}>
+            {useRows.map((row) => (
+              <li key={row.item}><strong>{row.item}:</strong> {row.detail}</li>
+            ))}
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            From USJ&apos;s own Express Pass and FAQ pages as indexed on {USE_CHECKED}; its live pages could not be
+            read automatically, so check the times on your own ticket.
+          </p>
         </section>
 
         {/* Q7 — Super Nintendo World */}

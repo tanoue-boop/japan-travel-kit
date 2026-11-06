@@ -255,20 +255,20 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
   return (
     <>
       <Head>
-        <title>Tokyo Observation Decks 2026: Shibuya Sky vs Skytree Prices</title>
+        <title>Tokyo Observation Decks 2026: Best Views, Prices and Hours</title>
         <meta
           name="description"
           content="Tokyo Observation Decks compared: Shibuya Sky vs Skytree on price, hours and sunset. Shibuya Sky ¥2,700~, Skytree ¥1,800~, Tokyo Tower ¥1,500, Tocho free."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Observation Decks 2026: Shibuya Sky vs Skytree Prices" />
+        <meta property="og:title" content="Tokyo Observation Decks 2026: Best Views, Prices and Hours" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks" />
         <meta property="og:description" content="Tokyo Observation Decks compared: Shibuya Sky vs Skytree on price, hours and sunset. Shibuya Sky ¥2,700~, Skytree ¥1,800~, Tokyo Tower ¥1,500, Tocho free." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Observation Decks 2026: Shibuya Sky vs Skytree Prices" />
+        <meta name="twitter:title" content="Tokyo Observation Decks 2026: Best Views, Prices and Hours" />
         <meta name="twitter:description" content="Tokyo Observation Decks compared: Shibuya Sky vs Skytree on price, hours and sunset. Shibuya Sky ¥2,700~, Skytree ¥1,800~, Tokyo Tower ¥1,500, Tocho free." />
         <script
           type="application/ld+json"
@@ -289,7 +289,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-observation-decks",
-              headline: "Tokyo Observation Decks 2026: Shibuya Sky vs Skytree Prices",
+              headline: "Tokyo Observation Decks 2026: Best Views, Prices and Hours",
               updated,
             }),
           }}
@@ -337,7 +337,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Observation Decks (2026):<br />Best Observation Deck in Tokyo, Shibuya Sky vs Skytree vs Tokyo Tower
+            Best Observation Decks in Tokyo (2026):<br />Skytree, Shibuya Sky, Tokyo Tower and Tocho Compared
           </h1>
           <p className={styles.heroSubtitle}>
             Four ways to look down on Tokyo, compared on official prices — the iconic rooftop, the tallest

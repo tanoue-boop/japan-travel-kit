@@ -10,7 +10,7 @@ import {
   hakoneLoopBusTour,
 } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 
 // CTA links — the two Klook listings this page uses. Both are existing constants in
 // lib/klook-links.ts rather than new ones: listing 821 (the pass, Klook's 5%
@@ -165,7 +165,26 @@ const steps = [
   },
 ];
 
+/** Digital against paper, read off odakyu-global.com on 6 Nov 2026. */
+const FORMAT_CHECKED = "6 Nov 2026";
+const formatRows = [
+  { item: "Where you get it", digital: "EMot Online Tickets, on a smartphone only", paper: "Odakyu Sightseeing Service Center or a station ticket machine" },
+  { item: "Paying", digital: "Online", paper: "Machines take cash, PASMO/Suica and several major credit cards" },
+  { item: "A group", digital: "Up to 4 tickets on one phone with the For Group option; you must travel together, and at the gate scan companions first and your own last", paper: "One paper pass each" },
+  { item: "Children", digital: "6–11 pay the child fare, under 6 need no ticket. Japanese Kids Phones are not accepted", paper: "6–11 pay the child fare, under 6 need no ticket" },
+  { item: "Romancecar seat", digital: "Adds ¥1,200 from Shinjuku, and booking it online saves ¥50", paper: "Adds ¥1,200 from Shinjuku" },
+  { item: "Refund", digital: "Only where the ticket shows a Refund button", paper: "Not stated on the page read" },
+];
+
 const faqItems = [
+  {
+    q: "Can I use the Hakone Free Pass on my phone?",
+    a: `Yes. The digital pass is bought through EMot Online Tickets and works on smartphones only. One phone can hold up to 4 tickets with the For Group option, as long as the group stays together; at the gate, scan companions' codes first and your own last. A paper pass is sold at Odakyu Sightseeing Service Centers and station ticket machines. Read on odakyu-global.com on ${FORMAT_CHECKED}.`,
+  },
+  {
+    q: "What discounts does the Hakone Free Pass give?",
+    a: `Odakyu says about 70 hot springs, museums and restaurants give a discount when you show the pass; the Hakone Museum of Art is one example, and the full list is on Hakone Navi. Read on ${FORMAT_CHECKED}.`,
+  },
   {
     q: "How much is the Hakone Free Pass?",
     a: `From Odakyu's own site: the 2-day pass from Shinjuku is ${PASS_2_DAY_SHINJUKU} for an adult and ¥1,600 for a child, and the 3-day is ${PASS_3_DAY_SHINJUKU} / ¥1,850. The Hakone-area-only version bought from Odawara is ${PASS_2_DAY_ODAWARA} / ¥1,500 for 2 days and ¥6,400 / ¥1,750 for 3. The Limited Express Romancecar is not included and costs ${ROMANCECAR} for an adult or ¥600 for a child extra from Shinjuku to Hakone-Yumoto. Prices checked ${CHECKED}.`,
@@ -208,7 +227,7 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Hakone Free Pass (2026): Prices and Is It Worth It?";
+const TITLE = "Hakone Free Pass 2026: ¥7,100 From Shinjuku, Is It Worth It?";
 const DESCRIPTION =
   "Hakone Free Pass prices for 2026 from Odakyu: ¥7,100 for 2 days from Shinjuku, ¥6,000 from Odawara, the 8 modes it covers and the ¥1,200 it does not.";
 
@@ -270,6 +289,21 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: productOfferJsonLd({
+              route: "/guides/attractions/hakone-free-pass",
+              name: "Hakone Freepass",
+              description: DESCRIPTION,
+              brand: "Odakyu",
+              currency: "JPY",
+              lowPrice: 6000,
+              highPrice: 7500,
+              offerCount: 4,
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}
@@ -321,6 +355,17 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* The answer, before anything else on the page. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The <strong>Hakone Free Pass</strong> costs <strong>¥7,100 for 2 days from Shinjuku</strong> and ¥6,000
+            from Odawara, or ¥7,500 and ¥6,400 for 3 days, and children aged 6–11 pay ¥1,600 from Shinjuku. It
+            covers eight modes of transport around the Hakone loop plus the Odakyu trip from Shinjuku, but not the
+            ¥1,200 Romancecar seat. It is worth buying if you ride the whole loop; there is no 1-day version.
+            Prices read off odakyu-global.com on {FORMAT_CHECKED}.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -571,6 +616,38 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Digital or paper */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>The ticket itself</span>
+          <h2 className={styles.sectionTitle}>Digital or Paper: Which Hakone Free Pass Should You Get?</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Digital (EMot)", "Paper"].map((h) => (
+                      <th key={h || "blank"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {formatRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.digital}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.paper}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Read off odakyu-global.com on {FORMAT_CHECKED}. Go digital if everyone in your group stays together
+            with one phone; go paper if a child has their own Kids Phone or you would rather not depend on a battery.
+          </p>
         </section>
 
         {/* Getting there */}

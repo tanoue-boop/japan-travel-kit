@@ -16,7 +16,7 @@ import {
 import { gygTeamlabPlanets } from "../../../lib/gyg-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 
 // CTA link — Klook affiliate redirect (teamLab Planets Toyosu ticket), shared with the
@@ -80,7 +80,7 @@ const hoursRows = [
   { item: "Last admission", detail: "One hour before closing", source: `Official ticket store, ${CHECKED}` },
   {
     item: "Closed days",
-    detail: "Scattered dates — Thursday 5 November and Thursday 3 December 2026 among them",
+    detail: "Scattered dates — Thursday 3 December 2026 among them",
     source: `teamlab.art, ${HOURS_CHECKED}`,
   },
   {
@@ -125,6 +125,18 @@ const ticketChoice = [
     title: "Changes, not refunds",
     desc: `Nothing is refundable once bought. What you can do is move it: the store's Help pages allow an Entrance Pass to be changed up to 2 hours before its admission time, a Premium Pass until 08:30 on the day, three changes maximum either way, and tickets bought with a coupon not at all. Read on ${CHECKED}.`,
   },
+];
+
+/** Read off the official ticket store and its Help pages on 6 Nov 2026. */
+const PREP_CHECKED = "6 Nov 2026";
+const prepRows = [
+  { item: "Wear", detail: "Shorts or trousers that roll above the knee. Water reaches adult knee height, and mirrored floors make mini-skirts a poor choice. Free rental shorts come in XS to 6L and go back before you leave." },
+  { item: "Your ticket", detail: "A QR e-ticket on a phone or tablet, or printed. One QR covers everyone on the purchase. A reminder email arrives 2 days before, and the QR code only displays from 00:00 on the day." },
+  { item: "ID", detail: "Junior and senior high school tickets need a student ID or an official age document; disability tickets need an approved certificate." },
+  { item: "Bags", detail: "Free lockers sit after the entrance gate, 23 × 34 × 37 cm. Anything larger stays at the stroller parking outside, on a wire lock." },
+  { item: "Towel", detail: "Not needed: towels are provided at the exit of the water artworks." },
+  { item: "With children", detail: "At least one adult for every three children, free entrants included. Bring a change of clothes. Baby carriers are fine inside; strollers stay outside." },
+  { item: "Re-entry", detail: "Not permitted on any ticket, the Premium Pass included. Tickets cannot be refunded once you have entered." },
 ];
 
 const compareRows = [
@@ -222,12 +234,16 @@ const faqItems = [
     a: "Shorts, or trousers you can roll up above the knee. Some of the artworks are water spaces and the water can rise to adult knee height, and the whole museum is experienced barefoot — you take off shoes, socks and tights in the locker room on the way in. Parts of the floor are mirrored, so skirts and wide-leg trousers are a bad idea; free rental shorts are available in sizes XS to 6L. If you're bringing children, pack a change of clothes, and note that strollers can't go inside (there's stroller parking, and baby carriers are fine).",
   },
   {
+    q: "When do I get my teamLab Planets QR ticket?",
+    a: `Tickets are QR e-tickets only. The purchase confirmation email carries the link, a reminder is sent 2 days before your date, and the QR code itself displays from 00:00 on the day of admission. One QR covers everyone on the purchase, and you can show it on a phone or tablet or print it. Read on ${PREP_CHECKED}.`,
+  },
+  {
     q: "How long do you need at teamLab Planets?",
     a: "Allow about 1.5 to 2 hours in total. The artworks themselves take around an hour to an hour and a half at an unhurried pace, but you also need time for the locker room, going barefoot, and drying off afterwards — and entry preparation alone can take 30–60 minutes when the museum is busy. Don't schedule anything tight immediately afterwards.",
   },
   {
     q: "What are teamLab Planets opening hours, and when is it closed?",
-    a: `Hours vary by date. When we checked teamlab.art on ${HOURS_CHECKED}, Planets was listed as open 08:00–22:00, and the official ticket store still stated on ${CHECKED} that last admission is one hour before closing. Closed dates in late 2026 included Thursday 5 November and Thursday 3 December. Because the calendar shifts month to month, check the official calendar for your own dates before booking a slot.`,
+    a: `Hours vary by date. When we checked teamlab.art on ${HOURS_CHECKED}, Planets was listed as open 08:00–22:00, and the official ticket store still stated on ${CHECKED} that last admission is one hour before closing. Closed dates in late 2026 included Thursday 3 December. Because the calendar shifts month to month, check the official calendar for your own dates before booking a slot.`,
   },
   {
     q: "What if I miss my teamLab Planets time slot?",
@@ -253,7 +269,7 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/at
 // title, the H1 and the description. The slug's own term, "teamLab Tokyo tickets",
 // is the other thing readers type — it sits in the description and in the first
 // paragraph of the body, both times in full.
-const TITLE = "teamLab Planets Tickets (2026): Prices and How to Book";
+const TITLE = "teamLab Planets Tickets 2026: From ¥3,800, How to Book";
 const DESC =
   "teamLab Planets tickets in 2026 start at ¥3,800 for an adult, priced by date and slot, with 30-minute entry windows and nothing at all sold at the door.";
 
@@ -310,6 +326,21 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
                 { "@type": "ListItem", position: 4, name: "teamLab Planets Tickets", item: "https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets" },
               ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: productOfferJsonLd({
+              route: "/guides/attractions/teamlab-tokyo-tickets",
+              name: "teamLab Planets TOKYO admission ticket",
+              description: DESC,
+              brand: "teamLab",
+              currency: "JPY",
+              lowPrice: 1500,
+              highPrice: 12000,
+              offerCount: 5,
             }),
           }}
         />
@@ -764,6 +795,20 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               </div>
             ))}
           </div>
+        </section>
+
+        {/* What to wear and bring — the checklist the competing guides lead with. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Before you go</span>
+          <h2 className={styles.sectionTitle}>What to Wear and Bring to teamLab Planets</h2>
+          <ul className={styles.bodyList}>
+            {prepRows.map((row) => (
+              <li key={row.item}><strong>{row.item}:</strong> {row.detail}</li>
+            ))}
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            From the official ticket store and its Help pages, read on {PREP_CHECKED}.
+          </p>
         </section>
 
         {/* Getting there */}

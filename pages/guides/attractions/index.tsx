@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import GuideHub from "../../../components/GuideHub";
 import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import { attractionArticles, attractionsCategory } from "../../../lib/guides-attractions";
@@ -64,7 +65,13 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             <PartnerTextLink href={fujiDayTour.url}>Mt. Fuji day tour from Tokyo</PartnerTextLink> runs by coach to the
             Fuji Fifth Station, Lake Kawaguchi and Oshino Hakkai and returns the same evening. In the city itself, the{" "}
             <PartnerTextLink href={tokyoSightseeingBusTour.url}>Tokyo sightseeing bus day tour</PartnerTextLink> is a
-            guided loop of the Imperial Palace gardens, Asakusa and Tokyo Skytree.
+            guided loop of the Imperial Palace gardens, Asakusa and Tokyo Skytree. The tickets that sell out by date are{" "}
+            <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Planets</Link>,{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>Shibuya Sky</Link> and the{" "}
+            <Link href="/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--text)", fontWeight: 600 }}>USJ Express Pass</Link>; the passes
+            that pay back fastest are the{" "}
+            <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Hakone Free Pass</Link> and the{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>JR Kansai Area Pass</Link>.
           </PartnerPick>
         }
       />

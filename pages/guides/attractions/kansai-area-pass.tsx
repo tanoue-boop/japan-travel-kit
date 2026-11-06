@@ -7,7 +7,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { jrHarukaUrl, jrKansaiAreaPass, jrKansaiMiniPass, kansaiAreaPassSameDayPrep } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 
 // CTA links — both in Klook's 5% passes-and-transport band. The pass listing (1107)
 // is a new constant in lib/klook-links.ts, confirmed live through the www.klook.com
@@ -190,6 +190,10 @@ const steps = [
 
 const faqItems = [
   {
+    q: "What if I already bought a paper Kansai Area Pass?",
+    a: `It stays valid. JR West states sales ended on 30 September 2026 and that passes bought by that date remain valid for their full validity period. To refund one, JR West asks for the pass plus its three vouchers (Kyoto City Subway, Keihan and Hankyu), charges a 10% handling fee with a ¥220 minimum per pass, and refunds nothing after use has started or the pass has expired. Exchanged passes are refunded at JR West station ticket counters only. Read on westjr.co.jp on 6 Nov 2026.`,
+  },
+  {
     q: "How much is the JR Kansai Area Pass in 2026?",
     a: `JR West's current version, the WEST QR Kansai Area Pass, is ${QR_1_DAY} for 1 day, ¥4,700 for 2 days, ¥5,500 for 3 days and ${QR_4_DAY} for 4 days for an adult, with children aged 6 to 11 at ¥1,350 / ¥2,350 / ¥2,750 / ¥3,350. The older paper Kansai Area Pass it replaced was ¥2,800 / ¥4,800 / ¥5,800 / ¥7,000. All prices read off westjr.co.jp on ${CHECKED}.`,
   },
@@ -243,7 +247,7 @@ const faqItems = [
   },
 ];
 
-const TITLE = "JR Kansai Area Pass 2026: Price, Coverage & Is It Worth It?";
+const TITLE = "JR Kansai Area Pass 2026: ¥2,700 a Day, HARUKA Included";
 const DESCRIPTION =
   "JR Kansai Area Pass price 2026: ¥2,700 for 1 day, ¥6,700 for 4. Covers the HARUKA from Kansai Airport and JR local trains; no Shinkansen, subway or Hankyu.";
 
@@ -305,6 +309,21 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: productOfferJsonLd({
+              route: "/guides/attractions/kansai-area-pass",
+              name: "WEST QR Kansai Area Pass",
+              description: DESCRIPTION,
+              brand: "JR West",
+              currency: "JPY",
+              lowPrice: 2700,
+              highPrice: 6700,
+              offerCount: 4,
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}
@@ -356,6 +375,17 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* The answer, before anything else on the page. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The <strong>JR Kansai Area Pass</strong> costs <strong>{QR_1_DAY} for 1 day and {QR_4_DAY} for 4 days</strong>{" "}
+            as a WEST QR ticket, the version JR West sells now that the paper pass ended on 30 September 2026. It
+            pays for itself fastest on the airport run: the HARUKA from Kansai Airport is included, then JR trains
+            to Kyoto, Osaka, Kobe, Nara and Himeji. It does not cover the Shinkansen, the subways or private
+            railways such as Hankyu. Prices read off westjr.co.jp on {CHECKED}.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

@@ -14,7 +14,7 @@ import {
 } from "../../../lib/klook-links";
 import { gygShibuyaSky } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { PRICES, checkedLabel } from "../../../lib/attraction-prices";
 
@@ -170,6 +170,19 @@ const whoFor = [
   },
 ];
 
+/**
+ * Rooftop rules, from the operator's own ticket FAQ as carried in its search index on
+ * 6 Nov 2026: the live page renders client-side and an automated read returns nothing.
+ * No locker fee is printed because that source gives none.
+ */
+const RULES_CHECKED = "6 Nov 2026";
+const ruleRows = [
+  { item: "Not allowed on the rooftop", detail: "Bags, rucksacks, umbrellas and selfie sticks. Store them in the lockers on 46F before you go up." },
+  { item: "Allowed", detail: "Phones and pocketable cameras." },
+  { item: "Tripods and monopods", detail: "Indoors on 46F only, and staff may ask you to stop at busy times. They are prohibited on the rooftop and on other floors." },
+  { item: "Bad weather", detail: "The rooftop can close without notice when the weather turns, while the indoor floors stay open. Check the terms on your own ticket before you book." },
+];
+
 const steps = [
   {
     title: "Count back two weeks from your date",
@@ -235,12 +248,16 @@ const faqItems = [
     a: `Yes. The Tokyo Metropolitan Government Building (Tocho) in Shinjuku has decks at about 202 m that are free to enter — the best no-cost city view in Tokyo, and a sensible swap if ¥3,400 at sunset is not where you want the budget to go. Hours and deck availability vary, so confirm before you go.`,
   },
   {
+    q: "Can I take a bag up to the Shibuya Sky rooftop?",
+    a: `No. Bags, rucksacks, umbrellas and selfie sticks are not allowed on the rooftop and go in the lockers on 46F first; phones and pocketable cameras are fine. Tripods and monopods can be used indoors on 46F only, and staff may stop that at busy times. From the operator's ticket FAQ as indexed on ${RULES_CHECKED}.`,
+  },
+  {
     q: "Can you see Mt. Fuji from Shibuya Sky?",
     a: "On a clear day, yes — though Tokyo Skytree offers the better chance thanks to its height. Visibility is weather-dependent and tends to be best in the cooler, drier months and early in the day, which is an argument for the ¥2,700 daytime band if Fuji is the reason you are going up. There is never a guarantee on any given day.",
   },
 ];
 
-const TITLE = "Shibuya Sky Tickets 2026: Price, Hours & Sunset Slots";
+const TITLE = "Shibuya Sky Tickets 2026: From ¥2,700, Hours & Sunset Slots";
 const DESCRIPTION =
   "Shibuya Sky tickets are ¥2,700 online for entry before 15:00 and ¥3,400 from 15:00, ¥300 more at the counter. Hours, the booking window and sunset slots.";
 
@@ -299,6 +316,21 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
                 { "@type": "ListItem", position: 4, name: "Shibuya Sky Tickets", item: "https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets" },
               ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: productOfferJsonLd({
+              route: "/guides/attractions/shibuya-sky-tickets",
+              name: "SHIBUYA SKY admission ticket",
+              description: DESCRIPTION,
+              brand: "SHIBUYA SKY",
+              currency: "JPY",
+              lowPrice: 1200,
+              highPrice: 3700,
+              offerCount: 5,
             }),
           }}
         />
@@ -590,7 +622,7 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
         {/* Q5 — vs other decks */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Shibuya Sky vs Skytree vs Tokyo Tower — Which Deck?</h2>
+          <h2 className={styles.sectionTitle}>Is Shibuya Sky the Right Tokyo Deck for You?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Shibuya Sky wins on the iconic crossing shot, but it is neither the highest deck in Tokyo nor the
             cheapest — and since the April 2025 revision a 15:00 entry costs more than Tokyo Tower&apos;s Top
@@ -630,6 +662,21 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             <Link href="/guides/attractions/tokyo-observation-decks" style={{ color: "var(--text)", fontWeight: 600 }}>
               Tokyo observation decks guide
             </Link>.
+          </p>
+        </section>
+
+        {/* Rooftop rules, which the ticket page never gets round to and competitors lead with. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Rooftop rules</span>
+          <h2 className={styles.sectionTitle}>What Can You Take Up to the Shibuya Sky Rooftop?</h2>
+          <ul className={styles.bodyList}>
+            {ruleRows.map((row) => (
+              <li key={row.item}><strong>{row.item}:</strong> {row.detail}</li>
+            ))}
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            From the operator&apos;s ticket FAQ as indexed on {RULES_CHECKED}; its live page could not be read
+            automatically, so confirm the rules on the day.
           </p>
         </section>
 
