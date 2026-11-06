@@ -6035,3 +6035,137 @@ export const fushimiInariSameDayPrep: KlookTripPrepItem[] = [
     why: "Tour meeting points here are a station gate, a street address and a convenience store, and you will want a working map and Kyoto's crowd forecast on the day.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Amanohashidate and Ine, added 6 Nov 2026. Klook answers automated reads of its
+// product pages with HTTP 403, so every listing below was confirmed through the
+// www.klook.com search index on that date. The first is the listing whose name
+// matches the tour booked on 5 Nov ("Kyoto Amanohashidate & Ine Funaya"). No
+// price is carried from any of them.
+// ---------------------------------------------------------------------------
+
+/** The full-day coach tour, with a choice of departure time at checkout. */
+export const amanohashidateIneFullDayTour: KlookTour = {
+  title: "Kyoto Amanohashidate & Ine Funaya full-day tour",
+  desc: "A shared coach day with Chion-ji, the Amanohashidate cable car and free time around the Ine boathouses, listed 07:30–18:30 with the Ine boat as an add-on",
+  url: klookLink("https://www.klook.com/en-US/activity/218014-kyoto-amanohashidate-ine-funaya-full-day-sightseeing-experience/"),
+};
+
+/** The one you can board in one city and leave in the other. */
+export const amanohashidateIneBayScenicTour: KlookTour = {
+  title: "Amanohashidate, Ine Funaya & Ine Bay scenic day tour",
+  desc: "Departs Osaka or Kyoto and lets you board in one and leave in the other, with a package that adds the cable car and Ine Bay boat tickets",
+  url: klookLink("https://www.klook.com/en-US/activity/154563-japan-s-three-most-scenic-spots-amanohashidate-ine-funaya-and-ine/"),
+};
+
+/** Adds Chion-ji, an optional Tango Sea Train leg and a meal on some plans. */
+export const amanohashidateIneChionjiTour: KlookTour = {
+  title: "Sea of Kyoto day trip: Amanohashidate, Ine and Chion-ji",
+  desc: "A 10.5-hour day from Osaka or Kyoto with the Ine Bay boat and Chion-ji, an optional Tango Sea Train ride, and a local specialty meal on some plans",
+  url: klookLink("https://www.klook.com/en-US/activity/166970-amanohashidate-ine-tour-w-abalone-lunch-from-osaka-kyoto/"),
+};
+
+/** The Miyama thatched-village version, from Osaka or Kyoto. */
+export const amanohashidateIneMiyamaTour: KlookTour = {
+  title: "Amanohashidate, Ine no Funaya & Miyama thatched village day trip",
+  desc: "Three stops in nine to ten hours: the sandbar, the boathouses and the Miyama thatched village, departing Osaka or Kyoto",
+  url: klookLink("https://www.klook.com/en-US/activity/198928-amanohashidate-ine-funaya-miyama-thatch-village-day-tour/"),
+};
+
+/** The Miyama version sold out of Kyoto. */
+export const amanohashidateIneMiyamaKyotoTour: KlookTour = {
+  title: "Ine boathouses, Amanohashidate & Miyama day trip from Kyoto",
+  desc: "A 10-hour join-in day listed from Kyoto, covering the same three stops as a single coach route",
+  url: klookLink("https://www.klook.com/en-US/activity/110091-amanohashidate-ine-no-funaya-miyama-kayabuki-no-sato-day-trip/"),
+};
+
+/** For the reader who goes by train: boats, the viewpoints and local buses. */
+export const amanohashidateIneTwoDayPass: KlookTour = {
+  title: "Kyoto Amanohashidate Ine sightseeing 2-day pass",
+  desc: "Two days of the Amanohashidate sightseeing boat, the Kasamatsu Park and Viewland viewpoints, the Ine Bay cruise and local buses; the train from Kyoto does not appear to be in it",
+  url: klookLink("https://www.klook.com/en-US/activity/76788-kyoto-amanohashidate-ine-sightseeing-2-day-pass/"),
+};
+
+/** A join-in day that covers both of the Day 3 options on the Kyoto itinerary. */
+export const kyotoUjiNaraDayTour: KlookTour = {
+  title: "1-day Kyoto, Uji & Nara tour",
+  desc: "A join-in day through Nara Park, Todai-ji and Kasuga Taisha with Uji on the same route, for a third day with no trains to work out",
+  url: klookLink("https://www.klook.com/en-US/activity/101883-todai-ji-temple-kasuga-taisha-shrine-nara-park-join-one-day-walking-tour/"),
+};
+
+/**
+ * Three nights in Kyoto. No new destination ids: each url reads out of
+ * whereToStayKyotoAreas. Klook has no Shijo-Kawaramachi search of its own that we
+ * could confirm, so that area uses the Karasuma Oike search, one station west.
+ */
+export const kyotoThreeDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Kyoto Station (3 nights)",
+    why: "The default: the shinkansen and the Haruka arrive under it, and Fushimi Inari, Arashiyama, Nara and Uji are all on JR lines from it, so the two trickiest mornings start at your own station.",
+    url: whereToStayKyotoAreas[0].url,
+  },
+  {
+    area: "Shijo-Kawaramachi / Karasuma (3 nights)",
+    why: "The evening base: Pontocho and Nishiki Market on foot and Gion across the river, at the cost of an extra change on the JR mornings.",
+    url: whereToStayKyotoAreas[1].url,
+  },
+  {
+    area: "Gion / Higashiyama (2 nights, then Kyoto Station)",
+    why: "The split stay: Kiyomizu-dera on foot at its 6:00 opening on Day 1, then a move to Kyoto Station for the Day 3 train and the journey out.",
+    url: whereToStayKyotoAreas[2].url,
+  },
+];
+
+/** The bookings around a three-night Kyoto stay. Every url is declared above. */
+export const kyotoThreeDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: shinkansenTokyoKyoto.title,
+    ctaLabel: "Check Tokyo → Kyoto tickets →",
+    url: shinkansenTokyoKyoto.url,
+    why: "Three full days means arriving the evening before Day 1, so this is the seat that sets the whole plan; Klook sells it by date and seat class.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "The direct train if you land at Kansai Airport instead, with no change on the way to Kyoto Station.",
+  },
+  {
+    label: kyotoKimonoYumeyakata.title,
+    ctaLabel: "Check Kyoto kimono rental →",
+    url: kyotoKimonoYumeyakata.url,
+    why: "A dressing slot is an appointment, and the listing's 17:30 same-day return is why the kimono belongs on Day 1 in Higashiyama.",
+  },
+  {
+    label: kyotoGionNightWalkingTour.title,
+    ctaLabel: "Check the Gion night walk →",
+    url: kyotoGionNightWalkingTour.url,
+    why: "The Day 1 evening, with a guide who knows which private lanes now carry photography rules.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Three days means several rail lines and a day trip out of the city, and each leg depends on an open map and a live timetable.",
+  },
+];
+
+/** Around an Amanohashidate day. The early start makes the hotel the first booking. */
+export const amanohashidateTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels near Kyoto Station",
+    ctaLabel: "Check Kyoto Station hotels →",
+    url: whereToStayKyotoAreas[0].url,
+    why: "The tours we read leave at about 7:30 and the train and highway bus start here too, so the night before decides how early your alarm is.",
+  },
+  {
+    label: shinkansenTokyoKyoto.title,
+    ctaLabel: "Check Tokyo → Kyoto tickets →",
+    url: shinkansenTokyoKyoto.url,
+    why: "A tour day starts early and ends back in the city around 17:30 to 18:30, so an arrival from Tokyo has to be the day before.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "From Kansai Airport, the direct way to the Kyoto Station area the night before a tour.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Meeting points are easy to miss at 7:30, and on your own the bus to Ine is a timetable you will want open on your phone.",
+  },
+];

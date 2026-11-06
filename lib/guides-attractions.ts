@@ -396,6 +396,22 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/kyoto-3-day-itinerary",
+    badge: "Itinerary",
+    title: "Kyoto 3 Day Itinerary (2026): Day by Day, and What to Book",
+    desc: "Three nights in one Kyoto base: Kiyomizu-dera and Gion on Day 1, Fushimi Inari before 7:00 and Arashiyama on Day 2, and Nara or Uji on Day 3, compared side by side, with a hotel split and a booking checklist.",
+    group: "cities",
+    city: "kyoto",
+  },
+  {
+    href: "/guides/attractions/amanohashidate-ine-day-trip",
+    badge: "Day trip",
+    title: "Amanohashidate Day Trip (2026): Ine Boathouses, Tours and Trains From Kyoto",
+    desc: "2 hours 14 minutes from Kyoto Station by limited express, or a 9 to 11 hour tour. Five Klook tours compared, the ¥1,200 Ine Bay boat, official winter hours, and why the bus to Ine decides tour or train.",
+    group: "daytrips",
+    city: "kyoto",
+  },
+  {
     href: "/guides/attractions/kyoto-2-day-itinerary",
     badge: "Itinerary",
     title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book",
