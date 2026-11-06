@@ -139,6 +139,12 @@ const SEARCH_TERMS = {
     ko: "지고쿠다니 원숭이 공원",
     th: "ลิงหิมะจิโกกุดานิ",
   },
+  "/guides/attractions/sapporo-snow-festival-tours": {
+    "zh-tw": "札幌雪祭",
+    "zh-cn": "札幌雪祭",
+    ko: "삿포로 눈축제",
+    th: "เทศกาลหิมะซัปโปโร",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

@@ -2,6 +2,18 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-06：冬ページの今季化と翻訳版、Klook eSIM の表記（jtk-20261106-A21b）
+
+- 目的：12〜2月の予約需要を Klook ツアー（6.5%）とパス（5%）で取る。比較は Search Console の対象9ページと、Klook の Top performing ads（広告ID別）。比較の目安は 11/20〜12/4。
+- 変更：/guides/attractions の冬9ページ（sapporo-snow-festival-tours、niseko-ski-tours、gala-yuzawa-ski-day-trip-from-tokyo、jigokudani-snow-monkey-tour、takayama-shirakawago-tour、otaru-day-trip-from-sapporo、hokkaido-7-day-itinerary、japan-winter-itinerary、tokyo-illumination-tours）に、冒頭の WinterBookingTop（予約の目安・ツアー3本・ボタン）と「同じ旅で予約しておくもの」（Klook eSIM・空港送迎・JR／周遊パス）を追加。
+- 変更：今季の値に更新（確認日 2026-11-06）。さっぽろ雪まつり 2/4〜11、小樽雪あかりの路 2/6〜13（詳細は発表待ち）、GALA 12/19〜5/5、地獄谷の入苑料は 12/1 から ¥1,000（web ¥880）、白川郷ライトアップ 1/11・17・24・31、東京メガイルミ 1/10 まで（12/24〜1/1 休み）。
+- 変更：販売終了・日付切れ・内容違いの Klook 商品を差し替え（lib/klook-links-winter-*.ts）。ラベンダーエクスプレスは夏の列車なので、北海道7日の冬の帰路を旭川経由に変更。
+- 内部リンク：冬ページ同士、トップ、/guides/attractions、tokyo-illumination-tours から文脈内リンク。保険とスキー記事の相互リンクは維持。
+- 修正：gala-yuzawa と niseko-ski-tours の「保険はスノースポーツを除外するのが普通」を、保険ページ（オンピステは対象）に合わせて修正。
+- 変更：Klook eSIM の表記を 11/6 の商品ページに合わせた（US$1.05〜、4.6（50K+ reviews）、2M+ booked、SoftBank 5G／IIJ（Docomo）、テザリング可、使い放題は10GB/日まで高速）。lib/klook-esim-facts.ts に集約。プラン別の価格は書かない。
+- 修正：Simbye の「Lowest Price」「最安」表記を、確認できたプランの中での最安という表現に変更（バッジ、固定バー、cheapest-esim-japan の description ほか。5言語）。
+- 新規：翻訳版（ko・zh-tw・zh-cn・th）。広告IDは spare が0個のため、英語版のIDを借りる（data/klook-adids.json の borrowed）。
+
 ## 2026-11-06：teamLab Planets の専用ページと旅行保険の作り直し（jtk-20261106-A24）
 
 - 目的：表示が多く順位が低い2テーマを専用ページで取る。teamlab planets tickets は表示959・23.6位、関連語を足して1,300超。旅行保険は表示2,500以上・60〜80位。

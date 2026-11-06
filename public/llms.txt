@@ -214,7 +214,7 @@ Whole days out of Tokyo, Kyoto and Osaka, where the decision is which itinerary 
 
 ## 繁體中文 (Traditional Chinese edition)
 
-A trial edition of 14 guides in Taiwanese Traditional Chinese, under /zh-tw/, with its own entry page at https://www.japan-travel-kit.com/zh-tw. Each guide is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Chinese that is not also in English. They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages (hreflang zh-Hant-TW and zh-Hant-HK).
+A trial edition of 15 guides in Taiwanese Traditional Chinese, under /zh-tw/, with its own entry page at https://www.japan-travel-kit.com/zh-tw. Each guide is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Chinese that is not also in English. They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages (hreflang zh-Hant-TW and zh-Hant-HK).
 
 - [日本旅遊實用指南（2026）：門票、交通、網卡](https://www.japan-travel-kit.com/zh-tw): the 繁體中文 edition's entry page — every page it has, grouped by category. 繁體中文 counterpart of https://www.japan-travel-kit.com/
 - [澀谷SKY 門票（2026）：票價、最佳時段與預約方式](https://www.japan-travel-kit.com/zh-tw/guides/attractions/shibuya-sky-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -230,11 +230,12 @@ A trial edition of 14 guides in Taiwanese Traditional Chinese, under /zh-tw/, wi
 - [日本網卡推薦（2026）：eSIM 方案比較與 Klook 日本 eSIM](https://www.japan-travel-kit.com/zh-tw/guides/esim/best-esim-japan): 繁體中文 version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
 - [東京自由行景點（2026）：必去景點哪些要先訂票、哪些可以現場去](https://www.japan-travel-kit.com/zh-tw/guides/attractions/things-to-do-tokyo): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo
 - [地獄谷野猿公苑（2027）：東京出發一日遊與交通](https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour
+- [札幌雪祭（2027）：2/4–11 三會場免費，該訂什麼](https://www.japan-travel-kit.com/zh-tw/guides/attractions/sapporo-snow-festival-tours): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours
 - [日本景點門票攻略（2026）：官方票價、預約方式與一日遊](https://www.japan-travel-kit.com/zh-tw/guides/attractions): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions
 
 ## 简体中文 (Simplified Chinese edition)
 
-The same 14 guides in Simplified Chinese, under /zh-cn/, with its own entry page at https://www.japan-travel-kit.com/zh-cn. Written for the Chinese communities of Singapore and Malaysia and for Chinese speakers living outside mainland China (hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather than 快速通關) and the Klook links point at Klook's zh-CN locale. Every price, operator source and check date is identical to the English and Traditional pages.
+The same 15 guides in Simplified Chinese, under /zh-cn/, with its own entry page at https://www.japan-travel-kit.com/zh-cn. Written for the Chinese communities of Singapore and Malaysia and for Chinese speakers living outside mainland China (hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather than 快速通關) and the Klook links point at Klook's zh-CN locale. Every price, operator source and check date is identical to the English and Traditional pages.
 
 - [日本旅游实用指南（2026）：门票、交通、流量卡](https://www.japan-travel-kit.com/zh-cn): the 简体中文 edition's entry page — every page it has, grouped by category. 简体中文 counterpart of https://www.japan-travel-kit.com/
 - [涩谷SKY 门票（2026）：票价、最佳时段与预约方式](https://www.japan-travel-kit.com/zh-cn/guides/attractions/shibuya-sky-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -250,11 +251,12 @@ The same 14 guides in Simplified Chinese, under /zh-cn/, with its own entry page
 - [日本eSIM推荐（2026）：流量卡方案比较与 Klook 日本 eSIM](https://www.japan-travel-kit.com/zh-cn/guides/esim/best-esim-japan): 简体中文 version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
 - [东京自由行景点（2026）：必去景点哪些要先订票、哪些可以现场去](https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo
 - [地狱谷野猿公苑（2027）：东京出发一日游与交通](https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour
+- [札幌雪祭（2027）：2/4–11 三会场免费，该订什么](https://www.japan-travel-kit.com/zh-cn/guides/attractions/sapporo-snow-festival-tours): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours
 - [日本景点门票攻略（2026）：官方票价、预约方式与一日游](https://www.japan-travel-kit.com/zh-cn/guides/attractions): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions
 
 ## 한국어 (Korean edition)
 
-A trial edition of 10 guides in Korean, under /ko/ (hreflang ko-KR), with its own entry page at https://www.japan-travel-kit.com/ko. Korea is Japan's largest inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Korean that is not also in English. The Klook links point at Klook's ko storefront. The rest of the site is English only, and the Korean pages label those links as English.
+A trial edition of 11 guides in Korean, under /ko/ (hreflang ko-KR), with its own entry page at https://www.japan-travel-kit.com/ko. Korea is Japan's largest inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Korean that is not also in English. The Klook links point at Klook's ko storefront. The rest of the site is English only, and the Korean pages label those links as English.
 
 - [일본 여행 준비 가이드(2026): 티켓, 교통, eSIM](https://www.japan-travel-kit.com/ko): the 한국어 edition's entry page — every page it has, grouped by category. 한국어 counterpart of https://www.japan-travel-kit.com/
 - [시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법](https://www.japan-travel-kit.com/ko/guides/attractions/shibuya-sky-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -267,10 +269,11 @@ A trial edition of 10 guides in Korean, under /ko/ (hreflang ko-KR), with its ow
 - [도톤보리 리버크루즈(2026): 요금, 운항 시간, 선착장](https://www.japan-travel-kit.com/ko/guides/attractions/dotonbori-river-cruise): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/dotonbori-river-cruise
 - [일본 이심 추천(2026): eSIM 요금제 비교와 클룩 일본 eSIM](https://www.japan-travel-kit.com/ko/guides/esim/best-esim-japan): 한국어 version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
 - [지고쿠다니 원숭이 공원(2027): 도쿄 출발 투어](https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour
+- [삿포로 눈축제(2027): 2월 4~11일, 무료 회장](https://www.japan-travel-kit.com/ko/guides/attractions/sapporo-snow-festival-tours): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours
 
 ## ไทย (Thai edition)
 
-The same 10 guides in Thai, under /th/ (hreflang th-TH), with its own entry page at https://www.japan-travel-kit.com/th. Thailand is one of Japan's four largest inbound markets, and Thai readers book these attractions through the same platforms. Not a translation of the Korean pages: each is written from the English original, with the search terms Thai readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's th storefront. Every price, operator source and check date is identical to the English pages.
+The same 11 guides in Thai, under /th/ (hreflang th-TH), with its own entry page at https://www.japan-travel-kit.com/th. Thailand is one of Japan's four largest inbound markets, and Thai readers book these attractions through the same platforms. Not a translation of the Korean pages: each is written from the English original, with the search terms Thai readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's th storefront. Every price, operator source and check date is identical to the English pages.
 
 - [ไกด์เที่ยวญี่ปุ่น 2026: ตั๋ว การเดินทาง eSIM](https://www.japan-travel-kit.com/th): the ไทย edition's entry page — every page it has, grouped by category. ไทย counterpart of https://www.japan-travel-kit.com/
 - [ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง](https://www.japan-travel-kit.com/th/guides/attractions/shibuya-sky-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -283,6 +286,7 @@ The same 10 guides in Thai, under /th/ (hreflang th-TH), with its own entry page
 - [ล่องเรือโดทงโบริ (2026): ราคา เวลาออกเรือ และท่าเรือ](https://www.japan-travel-kit.com/th/guides/attractions/dotonbori-river-cruise): ไทย version of https://www.japan-travel-kit.com/guides/attractions/dotonbori-river-cruise
 - [eSIM ญี่ปุ่น 2026: เทียบแพ็กเกจ และ eSIM ญี่ปุ่นของ Klook](https://www.japan-travel-kit.com/th/guides/esim/best-esim-japan): ไทย version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
 - [ลิงหิมะจิโกกุดานิ 2027: ทัวร์จากโตเกียว](https://www.japan-travel-kit.com/th/guides/attractions/jigokudani-snow-monkey-tour): ไทย version of https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour
+- [เทศกาลหิมะซัปโปโร 2027: 4–11 ก.พ.](https://www.japan-travel-kit.com/th/guides/attractions/sapporo-snow-festival-tours): ไทย version of https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours
 
 ## Site information
 

@@ -122,6 +122,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         label: "冬季旅遊",
         desc: "12 月到 2 月的雪祭、滑雪與雪猴：什麼要先訂，以及從哪裡出發。",
         routes: [
+          "/zh-tw/guides/attractions/sapporo-snow-festival-tours",
           "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -172,6 +173,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
     ],
     blurbs: {
+      "/zh-tw/guides/attractions/sapporo-snow-festival-tours":
+        "2027 年 2 月 4–11 日，三個會場都免費。真正要先訂的是住宿與周邊一日遊。",
       "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour":
         "從東京出發看泡湯雪猴：一日遊、自行前往的交通與入苑資訊。",
       "/zh-tw/guides/attractions/shibuya-sky-tickets":
@@ -233,6 +236,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         label: "冬季旅游",
         desc: "12 月到 2 月的雪祭、滑雪与雪猴：什么要先订，以及从哪里出发。",
         routes: [
+          "/zh-cn/guides/attractions/sapporo-snow-festival-tours",
           "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -283,6 +287,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
     ],
     blurbs: {
+      "/zh-cn/guides/attractions/sapporo-snow-festival-tours":
+        "2027 年 2 月 4–11 日，三个会场都免费。真正要先订的是住宿与周边一日游。",
       "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour":
         "从东京出发看泡汤雪猴：一日游、自行前往的交通与入苑信息。",
       "/zh-cn/guides/attractions/shibuya-sky-tickets":
@@ -344,6 +350,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         label: "겨울 여행",
         desc: "12월부터 2월까지의 눈축제, 스키, 눈원숭이 — 무엇을 먼저 예약하고 어디서 출발할지.",
         routes: [
+          "/ko/guides/attractions/sapporo-snow-festival-tours",
           "/ko/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -376,6 +383,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
     ],
     blurbs: {
+      "/ko/guides/attractions/sapporo-snow-festival-tours":
+        "2027년 2월 4~11일, 세 회장 모두 무료. 먼저 예약할 것은 숙소와 근교 당일 투어입니다.",
       "/ko/guides/attractions/jigokudani-snow-monkey-tour":
         "도쿄에서 온천 원숭이를 보러 가는 당일 투어, 직접 가는 교통편, 입장 정보.",
       "/ko/guides/attractions/shibuya-sky-tickets":
@@ -429,6 +438,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         label: "เที่ยวหน้าหนาว",
         desc: "เทศกาลหิมะ สกี และลิงแช่ออนเซ็นช่วงธันวาคมถึงกุมภาพันธ์ — ควรจองอะไรก่อนและออกจากที่ไหน",
         routes: [
+          "/th/guides/attractions/sapporo-snow-festival-tours",
           "/th/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -461,6 +471,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
     ],
     blurbs: {
+      "/th/guides/attractions/sapporo-snow-festival-tours":
+        "4–11 กุมภาพันธ์ 2027 ทั้งสามสถานที่เข้าฟรี สิ่งที่ต้องจองก่อนคือที่พักและทริปรอบเมือง",
       "/th/guides/attractions/jigokudani-snow-monkey-tour":
         "ไปดูลิงแช่ออนเซ็นจากโตเกียว: ทัวร์วันเดียว การเดินทางเอง และข้อมูลการเข้าชม",
       "/th/guides/attractions/shibuya-sky-tickets":

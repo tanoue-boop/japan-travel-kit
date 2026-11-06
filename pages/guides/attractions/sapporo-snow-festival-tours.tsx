@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { hreflangLinks } from "../../../components/Hreflang";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -367,6 +368,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours" />
+        {hreflangLinks("/guides/attractions/sapporo-snow-festival-tours")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours" />
