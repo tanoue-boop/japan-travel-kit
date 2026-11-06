@@ -69,7 +69,12 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             We leave it out of our rankings because its product page blocks automated price reads, so compare it with
             the prices in{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>our eSIM comparison</Link>{" "}
-            before you buy.
+            before you buy. Then pick by what matters most: the{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link>, an{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--text)", fontWeight: 600 }}>unlimited eSIM</Link>, a{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--text)", fontWeight: 600 }}>pocket WiFi rental</Link> for a group, or a{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--text)", fontWeight: 600 }}>SIM card at the airport</Link> if your
+            phone cannot take an eSIM.
           </PartnerPick>
         }
       />

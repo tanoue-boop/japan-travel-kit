@@ -640,6 +640,11 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
               Get a Sakura Mobile SIM →
             </a>
           </div>
+          <p className={styles.bodyText}>
+            If a physical SIM is the answer, our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>airport SIM card guide</Link>{" "}
+            lists the counters and vending machines at Narita, Haneda and Kansai, with hours.
+          </p>
         </section>
 
         {/* FAQ */}

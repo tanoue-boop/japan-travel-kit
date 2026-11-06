@@ -145,6 +145,65 @@ export function articleJsonLd({ route, headline, description, updated, inLanguag
   });
 }
 
+export type ProductOfferInput = {
+  /** Route of the page the product is the subject (or the top pick) of. */
+  route: string;
+  /** The product itself, not the page: "Shibuya Sky admission ticket". */
+  name: string;
+  description: string;
+  /** Operator or brand, where the product has one. */
+  brand?: string;
+  currency: "JPY" | "USD";
+  /** Lowest published price. */
+  lowPrice: number;
+  /** Highest published price. Omit for a single price or a "from" floor. */
+  highPrice?: number;
+  /** How many priced options lowPrice..highPrice spans. */
+  offerCount?: number;
+};
+
+/**
+ * Product + Offer (or AggregateOffer) for a page about one ticket, pass or plan.
+ *
+ * Added 2026-11-06 (jtk-20261106-A20). Prices come in as numbers from the same record the
+ * page prints, so the markup cannot disagree with the table. No `availability`, no rating
+ * and no `seller`: this site sells nothing itself and has not checked stock, and a claim
+ * the page does not make is not one to put in the markup. A comparison page marks up its
+ * top pick rather than the whole category — Google's Product rules exclude category pages.
+ */
+export function productOfferJsonLd({
+  route,
+  name,
+  description,
+  brand,
+  currency,
+  lowPrice,
+  highPrice,
+  offerCount,
+}: ProductOfferInput): string {
+  const url = `${SITE_URL}${route}`;
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${url}#product`,
+    name,
+    description,
+    url,
+    ...(brand ? { brand: { "@type": "Brand", name: brand } } : {}),
+    offers:
+      highPrice !== undefined
+        ? {
+            "@type": "AggregateOffer",
+            priceCurrency: currency,
+            lowPrice,
+            highPrice,
+            ...(offerCount ? { offerCount } : {}),
+            url,
+          }
+        : { "@type": "Offer", priceCurrency: currency, price: lowPrice, url },
+  });
+}
+
 export type ItemListEntry = { href: string; title: string };
 
 /** ItemList node for /guides and the category hubs. */

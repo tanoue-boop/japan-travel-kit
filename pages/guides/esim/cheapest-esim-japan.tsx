@@ -7,7 +7,7 @@ import KlookLink from "../../../components/KlookLink";
 import SimbyeOffer from "../../../components/SimbyeOffer";
 import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import {
   allEsimPlans,
   cheapestAtLeastGb,
@@ -17,7 +17,10 @@ import {
   formatUsd,
   getProvider,
   latestCheckedAt,
+  plansFor,
+  pricePerGb,
   type EsimPlan,
+  type EsimPlanRow,
 } from "../../../lib/esim-prices";
 
 const AIRALO_URL = "https://airalo.pxf.io/c/7213504/1268485/15608";
@@ -54,6 +57,28 @@ const airaloCheapest = cheapestAtLeastGb("airalo", 1);
 const holaflyCheapest = cheapestUnlimited("holafly", 7);
 const sakuraCheapest = cheapestAtLeastGb("sakura", 1);
 const esimgo10 = cheapestAtLeastGb("esimgo", 10);
+
+/**
+ * Fixed-allowance plans only: unlimited plans have no price per GB, and a daily-capped plan's
+ * headline total is not a pot of data you can spend in one go.
+ */
+const fixedPlans: EsimPlanRow[] = allEsimPlans.filter((row) => !row.unlimited && !row.dailyCapGb && row.gb);
+
+/** The two cheapest fixed plans with at least `gb`, from different providers. */
+function cheapestTwo(gb: number): EsimPlanRow[] {
+  const sorted = fixedPlans.filter((row) => (row.gb ?? 0) >= gb).sort((a, b) => a.priceUsd - b.priceUsd);
+  const second = sorted.find((row) => sorted[0] && row.providerId !== sorted[0].providerId);
+  return second ? [sorted[0], second] : sorted.slice(0, 1);
+}
+
+const SIZE_ROWS = [1, 3, 5, 10, 20, 50].map((gb) => ({ gb, plans: cheapestTwo(gb) }));
+
+/** Lowest price per gigabyte across every fixed plan on sale, best first. */
+const perGbRows = [...fixedPlans].sort((a, b) => (pricePerGb(a) ?? 0) - (pricePerGb(b) ?? 0)).slice(0, 6);
+
+const rowLabel = (row: EsimPlanRow | undefined) => (row ? `${row.provider} ${row.name}` : "—");
+const SIMBYE_FIXED = plansFor("simbye").filter((plan) => !plan.unlimited);
+
 const cell = (plan: EsimPlan | null) =>
   plan ? (
     <>
@@ -94,12 +119,12 @@ const picks = [
     badge: "Short Unlimited Plans",
     badgeColor: "var(--sumi)",
     priceFrom: p(esimgoCheapest),
-    network: "Docomo / SoftBank",
+    network: "NTT Docomo, KDDI, Rakuten Mobile, SoftBank",
     affiliateUrl: ESIMGO_URL,
     ctaLabel: "Get eSIM Go Japan →",
     pros: [
       "Unlimited plans from 1 day",
-      "Docomo network — best rural coverage",
+      "Docomo among its four carriers, for rural coverage",
       "Instant QR code activation",
       "Works in 190+ countries",
     ],
@@ -114,25 +139,25 @@ const picks = [
   {
     num: 3,
     name: "Airalo",
-    badge: "Best Balance",
+    badge: "Dearer, With Support",
     badgeColor: "var(--sumi)",
     priceFrom: p(airaloCheapest),
-    network: "SoftBank & KDDI",
+    network: "SoftBank (primary), plus two others Airalo does not name",
     affiliateUrl: AIRALO_URL,
     ctaLabel: "Get Airalo Japan eSIM →",
     pros: [
       "Trusted by 10M+ travellers worldwide",
-      "Slightly more data options than eSIM Go",
+      "Unlimited plans from 3 days",
       "24/7 live chat support",
       "Easy-to-use app",
     ],
     cons: [
       "Data-only (no voice calls or SMS)",
-      "Slightly pricier than eSIM Go",
+      "Dearer than Simbye and eSIM Go at most sizes",
       "eSIM-compatible phone required",
     ],
     summary:
-      `Airalo's Japan plans start at ${p(airaloCheapest)} — close to eSIM Go on price, but you get 24/7 live chat support, in-app top-ups and the backing of the world's largest eSIM marketplace. A great choice if you want budget pricing with stronger customer support.`,
+      `Airalo's Japan plans start at ${p(airaloCheapest)}. It costs more than Simbye and eSIM Go at most sizes, and what the extra buys is 24/7 live chat and in-app top-ups.`,
   },
   {
     num: 4,
@@ -140,7 +165,7 @@ const picks = [
     badge: "Unlimited Only",
     badgeColor: "var(--accent)",
     priceFrom: p(holaflyCheapest),
-    network: "SoftBank / KDDI",
+    network: getProvider("holafly").network,
     affiliateUrl: AIRALO_URL,
     ctaLabel: HOLAFLY_ALT_LABEL,
     ctaNote: HOLAFLY_ALT_NOTE,
@@ -212,6 +237,14 @@ const dealTips = [
 
 const faqItems = [
   {
+    q: "What is the cheapest 10 GB eSIM for Japan?",
+    a: `${rowLabel(cheapestTwo(10)[0])} at ${priceOf(cheapestTwo(10)[0] ?? null)}, ahead of ${rowLabel(cheapestTwo(10)[1])} at ${priceOf(cheapestTwo(10)[1] ?? null)}, as of ${pricesCheckedAt}. Both prices are list prices before any discount code, and both are data only.`,
+  },
+  {
+    q: "Is an eSIM cheaper than a physical SIM in Japan?",
+    a: `Yes, on published prices. Sakura Mobile's Travel SIM starts at ¥3,850 with tax and its Travel eSIM at ¥1,375 (read on sakuramobile.jp on 6 Nov 2026), and the cheapest eSIM we track is ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "under $2"}. A physical SIM makes sense when your phone cannot take an eSIM; our airport SIM card guide lists where to buy one on arrival.`,
+  },
+  {
     q: "What is the cheapest eSIM for Japan?",
     a: `As of ${pricesCheckedAt}, ${cheapestOverall ? `${cheapestOverall.provider} is the cheapest Japan eSIM we track, at ${priceOf(cheapestOverall)} for ${cheapestOverall.name}` : "Simbye is usually the cheapest Japan eSIM"}. eSIM Go starts at ${p(esimgoCheapest)} and Airalo at ${p(airaloCheapest)}. All three are data-only eSIMs installed from a QR code or link. Prices on this page are re-checked every day.`,
   },
@@ -235,24 +268,28 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/cheapest-esim-japan") } });
 
+// Owns "cheapest eSIM Japan": the subject is price, sorted by size and per GB. "Best" belongs
+// to best-esim-japan (a pick per trip) and the Reddit angle to best-esim-japan-reddit.
+const FROM = cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99";
+const TITLE = `Cheapest eSIM for Japan 2026: From ${FROM}, Ranked by Price`;
+const H1 = "Cheapest eSIM for Japan 2026: Lowest Price at Every Data Size";
+const DESCRIPTION = `The cheapest Japan eSIM is ${FROM}, checked daily. The lowest price at 1, 3, 5, 10, 20 and 50 GB, price per GB, and the cheapest plan for your trip length.`;
+
 export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Cheapest eSIM for Japan 2026 | Japan Travel Kit</title>
-        <meta
-          name="description"
-          content={`Looking for the cheapest eSIM for Japan? We compared Simbye, Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99"}.`}
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
-        <meta property="og:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Compared" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" />
-        <meta property="og:description" content={`Looking for the cheapest eSIM for Japan? We compared Simbye, Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99"}.`} />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Cheapest eSIM for Japan 2026: Best Budget Picks Compared" />
-        <meta name="twitter:description" content={`Looking for the cheapest eSIM for Japan? We compared Simbye, Airalo, eSIM Go, Holafly and Sakura Mobile — checked daily. From ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99"}.`} />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -272,8 +309,40 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/cheapest-esim-japan",
-              headline: "Cheapest eSIM for Japan 2026: Best Budget Picks Compared",
+              headline: H1,
               updated,
+            }),
+          }}
+        />
+        {SIMBYE_FIXED.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: productOfferJsonLd({
+                route: "/guides/esim/cheapest-esim-japan",
+                name: "Simbye Japan eSIM",
+                description: "Data-only Japan eSIM on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile, the lowest list price we track.",
+                brand: "Simbye",
+                currency: "USD",
+                lowPrice: Math.min(...SIMBYE_FIXED.map((plan) => plan.priceUsd)),
+                highPrice: Math.max(...SIMBYE_FIXED.map((plan) => plan.priceUsd)),
+                offerCount: SIMBYE_FIXED.length,
+              }),
+            }}
+          />
+        )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "Cheapest eSIM for Japan", item: "https://www.japan-travel-kit.com/guides/esim/cheapest-esim-japan" },
+              ],
             }),
           }}
         />
@@ -305,13 +374,13 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Cheapest eSIM for Japan 2026:<br />Best Budget Picks
+            Cheapest eSIM for Japan 2026:<br />Lowest Price at Every Data Size
           </h1>
           <p className={styles.heroSubtitle}>
-            You don&apos;t need to overpay to stay connected in Japan. Here are the best value eSIMs in this month&apos;s price comparison.
+            Which Japan eSIM is cheapest at 1, 3, 5, 10, 20 and 50 GB, what each costs per gigabyte, and the cheapest plan for your trip length.
           </p>
           <div className={styles.heroBadges}>
-            {["Prices checked daily", "4 eSIMs Compared", "Verified on official sites"].map((t) => (
+            {["Prices checked daily", "5 eSIMs ranked on price", "Read from official sites"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -330,6 +399,23 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* The answer, in the first sentence on the page. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The <strong>cheapest eSIM for Japan</strong> is{" "}
+            {cheapestOverall ? <strong>{cheapestOverall.provider} {cheapestOverall.name} at {FROM}</strong> : "Simbye"}, and
+            at the size most tourists need it is <strong>{rowLabel(cheapestTwo(10)[0])} at {priceOf(cheapestTwo(10)[0] ?? null)}</strong>{" "}
+            (list prices in USD, checked {pricesCheckedAt}). The lowest headline price is not always the lowest cost
+            per gigabyte, so both are below. Cheap here does not mean a weaker network: the
+            same Japanese carriers sit behind every plan. For picks by trip type rather than by price, see our{" "}
+            <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan guide</Link>; for
+            what travellers say, our{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit advice check</Link>; and if
+            you need no cap at all, the{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited eSIM comparison</Link>.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -419,10 +505,69 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           </p>
         </section>
 
-        {/* Best Cheap eSIMs */}
+        {/* Cheapest by data size, with the runner-up, then price per GB. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By size</span>
+          <h2 className={styles.sectionTitle}>What Is the Cheapest Japan eSIM at Each Data Size?</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["You need", "Cheapest", "Price", "Next cheapest", "Price"].map((h, i) => (
+                      <th key={`${h}-${i}`}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {SIZE_ROWS.map(({ gb, plans }) => (
+                    <tr key={gb}>
+                      <td className={styles.tdProvider}>{gb} GB or more</td>
+                      <td className={styles.tdNetwork}>{rowLabel(plans[0])}</td>
+                      <td className={styles.tdPrice}>{priceOf(plans[0] ?? null)}</td>
+                      <td className={styles.tdNetwork}>{rowLabel(plans[1])}</td>
+                      <td className={styles.tdPrice}>{priceOf(plans[1] ?? null)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>Which Japan eSIM Is Cheapest per GB?</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Plan", "Price", "Per GB", "Valid for"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {perGbRows.map((row) => (
+                    <tr key={row.id}>
+                      <td className={styles.tdProvider}>{row.provider} {row.gb} GB</td>
+                      <td className={styles.tdPrice}>{formatUsd(row.priceUsd)}</td>
+                      <td className={styles.tdPrice}>{formatUsd(pricePerGb(row) ?? 0)}</td>
+                      <td className={styles.tdNetwork}>{row.days} days</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Fixed-allowance plans only, read from each provider&apos;s official site on {pricesCheckedAt}. Unlimited
+            plans and Sakura Mobile&apos;s 3 GB/day plans are left out because a daily cap has no comparable price per GB.
+            A plan&apos;s validity is part of its price: check it covers your whole trip before you buy the lowest figure.
+          </p>
+        </section>
+
+        {/* The five, ranked on price */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Rankings</span>
-          <h2 className={styles.sectionTitle}>Best Cheap eSIMs for Japan</h2>
+          <h2 className={styles.sectionTitle}>The Five Cheapest Japan eSIMs, Ranked by Price</h2>
 
           {picks.map((pick) => (
             <div key={pick.num} style={{ marginBottom: "2.5rem", paddingBottom: "2.5rem", borderBottom: "1px solid var(--rule)" }}>
@@ -539,10 +684,10 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           </div>
         </section>
 
-        {/* How to Get the Best Deal */}
+        {/* Cheapest by trip length */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Buying guide</span>
-          <h2 className={styles.sectionTitle}>How to Get the Best Deal</h2>
+          <h2 className={styles.sectionTitle}>Cheapest Japan eSIM by Trip Length</h2>
           <div className={styles.stepsList}>
             {dealTips.map((tip, i) => (
               <div key={i} className={styles.stepCard}>

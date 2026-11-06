@@ -5,7 +5,7 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/best-esim-japan",
     badge: "Comparison",
-    title: "Best eSIM for Japan 2026: Compared by Price & Network",
+    title: "Best eSIM for Japan 2026: Picks by Trip, Network and Data",
     desc: "Simbye, Airalo, eSIM Go, Sakura Mobile and Klook compared on price, data and the carrier each plan rides — with a pick for each kind of trip.",
     group: "compare",
     city: "other",
@@ -13,8 +13,16 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/cheapest-esim-japan",
     badge: "Comparison",
-    title: "Cheapest eSIM for Japan 2026: Best Budget Picks",
-    desc: "Don't overpay for data in Japan. We compared Simbye, eSIM Go, Airalo, Holafly, and Sakura Mobile on price per GB — prices checked daily.",
+    title: "Cheapest eSIM for Japan 2026: Lowest Price at Every Data Size",
+    desc: "The lowest Japan eSIM price at 1, 3, 5, 10, 20 and 50 GB, price per GB, and the cheapest plan for your trip length, checked daily.",
+    group: "compare",
+    city: "other",
+  },
+  {
+    href: "/guides/esim/japan-airport-sim-cards",
+    badge: "Comparison",
+    title: "Japan Airport SIM Cards 2026: Where to Buy, Hours and Prices",
+    desc: "SIM counters and vending machines at Narita, Haneda and Kansai, from each airport's own listing, and what to do if you land after they close.",
     group: "compare",
     city: "other",
   },
@@ -29,8 +37,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-unlimited",
     badge: "Comparison",
-    title: "Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users",
-    desc: "Need unlimited data in Japan? We compare Holafly, Sakura Mobile, and Airalo on true unlimited vs large data plans — including which ones are unlimited in name only.",
+    title: "Unlimited eSIM for Japan (2026): Prices, Daily Limits & Tethering",
+    desc: "What each unlimited Japan plan costs for 7, 15 and 30 days, how much data runs at full speed, and which one you can tether a laptop to.",
     group: "compare",
     city: "other",
   },

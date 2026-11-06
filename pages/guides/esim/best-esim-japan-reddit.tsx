@@ -663,6 +663,14 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             shareable cap is the one that catches people out, and it is almost never mentioned in the
             threads that recommend it.
           </p>
+          <p className={styles.bodyText}>
+            This page checks what Reddit says. For every unlimited plan by price and daily limit, see our{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>unlimited eSIM comparison</Link>; for
+            the lowest price at each size, our{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM ranking</Link>; and for a
+            group sharing one connection, our{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>pocket WiFi guide</Link>.
+          </p>
         </section>
 
         {/* Device check */}

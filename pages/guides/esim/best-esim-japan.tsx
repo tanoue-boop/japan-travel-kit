@@ -23,7 +23,7 @@ import { SIMBYE_SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
@@ -69,10 +69,12 @@ const pricesCheckedAt = formatDate(latestCheckedAt());
  */
 const SPECS_CHECKED = "29 Oct 2026";
 
-const TITLE = "Best eSIM for Japan 2026: Compared by Price & Network";
+// Owns "best eSIM Japan": a pick per trip. Lowest price lives on cheapest-esim-japan, the
+// unlimited term on japan-esim-unlimited and traveller advice on best-esim-japan-reddit.
+const TITLE = "Best eSIM for Japan 2026: Picks by Trip, Network and Data";
 const DESCRIPTION =
-  "Best eSIM for Japan: Simbye, Airalo, eSIM Go, Sakura Mobile and Klook compared on price, data and network: Docomo, au or SoftBank. Checked Nov 2026.";
-const OG_TITLE = "Best eSIM for Japan 2026: Compared by Price & Network";
+  "Best eSIM for Japan by trip: Simbye for most visits, plus the pick for long stays, rural travel, tethering or a Japanese number. Terms checked Nov 2026.";
+const OG_TITLE = TITLE;
 
 // Where a CTA goes when we have no affiliate link for a provider. Was /sim-cards until that
 // page was merged into this one (2026-10-09); the plan table is the closest equivalent.
@@ -426,6 +428,8 @@ const timingRows = [
   },
 ];
 
+const SIMBYE_PLANS = allEsimPlans.filter((p) => p.providerId === "simbye" && !p.unlimited);
+
 const installSteps = [
   {
     title: "Purchase & receive your QR code",
@@ -601,6 +605,36 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: productOfferJsonLd({
+              route: "/guides/esim/best-esim-japan",
+              name: "Simbye Japan eSIM",
+              description: "Data-only Japan eSIM on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile, our pick for most trips.",
+              brand: "Simbye",
+              currency: "USD",
+              lowPrice: Math.min(...SIMBYE_PLANS.map((p) => p.priceUsd)),
+              highPrice: Math.max(...SIMBYE_PLANS.map((p) => p.priceUsd)),
+              offerCount: SIMBYE_PLANS.length,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "Best eSIM for Japan", item: "https://www.japan-travel-kit.com/guides/esim/best-esim-japan" },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}
@@ -629,7 +663,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan 2026:<br />Compared by Price &amp; Network
+            Best eSIM for Japan 2026:<br />Picks by Trip, Network &amp; Data
           </h1>
           <p className={styles.heroSubtitle}>
             Every major Japan eSIM on one page, with a pick for each kind of trip —
@@ -819,6 +853,17 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Prices as of {pricesCheckedAt}; carrier lists, fair-use thresholds and the regional country
             counts read on each provider&apos;s own site on {SPECS_CHECKED}.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            If price is the only thing that matters, our{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM ranking</Link> sorts every
+            plan by size and price per GB. For a tethered laptop or heavy streaming, go to the{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited eSIM comparison</Link>, and for
+            what travellers themselves report, the{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit advice check</Link>. If your
+            phone cannot take an eSIM, see{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" className={tools.inlineLink}>airport SIM cards</Link> or{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" className={tools.inlineLink}>pocket WiFi rental</Link>.
           </p>
           <KlookEsimSlot why="If the tickets and transport for this trip are already in a Klook basket, its own Japan eSIM goes on the same checkout — per-day plans on SoftBank 5G, total-data plans on docomo 4G LTE, tethering supported. It is unranked here because the listing blocks automated price reads, so open it to see the current options." />
         </section>

@@ -14,7 +14,7 @@ import {
   type PocketWifi,
 } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 
 // Every rental number on this page comes from lib/pocket-wifi.ts, which records what the
 // linked Klook listing states and when each part of it was last checked. eSIM prices come
@@ -51,7 +51,23 @@ const TRIP_LENGTHS = [5, 7, 10, 14];
 const CHEAPEST_DAY = Math.min(...pocketWifis.map((w) => w.fromUsdPerDay));
 const DEAREST_DAY = Math.max(...pocketWifis.map((w) => w.fromUsdPerDay));
 
+/** Who rents at the three main gateways, off each airport's own listing. */
+const AIRPORTS_CHECKED = "6 Nov 2026";
+const counterRows = [
+  { airport: "Narita", who: "J WiFi & Mobile, XCom Global, Telecomsquare, JAL ABC, AnyFone Japan, SoftBank Global Rental", hours: "Most 07:00–21:00" },
+  { airport: "Haneda Terminal 3", who: "Mobile Center, AnyFone Japan, plus a 24-hour unmanned WiFi rental in front of Mobile Center", hours: "Counters 06:00–23:00" },
+  { airport: "Kansai Terminal 1", who: "Global WiFi, Telecom Square, Sakura Mobile", hours: "06:00–23:00" },
+];
+
 const faqItems = [
+  {
+    q: "Can I rent pocket WiFi at the airport without booking?",
+    a: `Sometimes, but do not plan on it. Kansai Airport's listing for Telecom Square says same-day rental without a reservation is possible only when in stock, and counters close overnight: most at Narita run 07:00–21:00. Booking ahead is also where the advertised from-rates apply. Airport listings read on ${AIRPORTS_CHECKED}.`,
+  },
+  {
+    q: "Which companies rent pocket WiFi in Japan?",
+    a: `The airport listings name J WiFi & Mobile, XCom Global, Telecomsquare, JAL ABC, AnyFone Japan and SoftBank Global Rental at Narita, and Global WiFi, Telecom Square and Sakura Mobile at Kansai. Sakura Mobile publishes pocket WiFi from ¥329 a day with tax. This page links the two Klook rentals because their terms can be read and booked in one place. Read on ${AIRPORTS_CHECKED}.`,
+  },
   {
     q: "How much does pocket WiFi cost in Japan?",
     a: `The two rentals linked on this page advertise ${formatUsd(CHEAPEST_DAY)} and ${formatUsd(DEAREST_DAY)} per day on Klook, checked ${ratesCheckedAt}. On those rates a seven-day trip works out at roughly ${formatUsd(rentalTotal(HOTEL, 7))} to ${formatUsd(rentalTotal(AIRPORT, 7))} for the router — a flat cost, not per person, however many of you share it. Both figures are floors rather than quotes: they are the advertised cheapest booking, and the price Klook shows you rises with rental length, in peak season, and with the currency you book in.`,
@@ -88,6 +104,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/best-pocket-wifi-japan") } });
 
+// Owns "pocket WiFi Japan" (which router to rent). /wifi-pocket has 301'd here since
+// 2026-10-19; "router or eSIM" stays with pocket-wifi-vs-esim-japan.
+const TITLE = `Best Pocket WiFi in Japan 2026: From $${HOTEL.fromUsdPerDay.toFixed(2)} a Day, by Pickup`;
 const HEADLINE = "Best Pocket WiFi in Japan (2026): Rental Prices & Pickup Compared";
 const DESCRIPTION =
   "Which pocket WiFi to rent in Japan — two Klook rentals compared on price per day, device limit, battery, and airport pickup against hotel delivery.";
@@ -96,16 +115,16 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Best Pocket WiFi in Japan 2026: Prices &amp; Pickup</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-pocket-wifi-japan" />
-        <meta property="og:title" content="Best Pocket WiFi in Japan (2026): Rental Prices &amp; Pickup Compared" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/best-pocket-wifi-japan" />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Pocket WiFi in Japan (2026): Rental Prices &amp; Pickup Compared" />
+        <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
@@ -128,6 +147,34 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
               route: "/guides/esim/best-pocket-wifi-japan",
               headline: HEADLINE,
               updated,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: productOfferJsonLd({
+              route: "/guides/esim/best-pocket-wifi-japan",
+              name: `${AIRPORT.name} Japan pocket WiFi rental`,
+              description: `Unlimited data on ${AIRPORT.network}, up to ${AIRPORT.maxDevices} devices, airport pickup; price is the advertised daily from-rate.`,
+              brand: AIRPORT.name,
+              currency: "USD",
+              lowPrice: AIRPORT.fromUsdPerDay,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
+                { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
+                { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
+                { "@type": "ListItem", position: 4, name: "Best Pocket WiFi in Japan", item: "https://www.japan-travel-kit.com/guides/esim/best-pocket-wifi-japan" },
+              ],
             }),
           }}
         />
@@ -407,6 +454,42 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
               </div>
             ))}
           </div>
+        </section>
+
+        {/* The wider market, for readers searching by airport or by company. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>At the airport</span>
+          <h2 className={styles.sectionTitle}>Who Rents Pocket WiFi at Japanese Airports?</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Airport", "Counters listed", "Hours"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {counterRows.map((row) => (
+                    <tr key={row.airport}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.airport}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.who}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.hours}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            From the airports&apos; own service listings, read on {AIRPORTS_CHECKED}; the Narita page carries no
+            update date, so check a counter&apos;s hours against your flight. All are before security, so a return at
+            the counter has to come before you go through. For prepaid SIM cards at the same airports, see our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              airport SIM card guide
+            </Link>.
+          </p>
         </section>
 
         {/* Choosing on devices, battery, data */}
