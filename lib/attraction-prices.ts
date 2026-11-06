@@ -119,7 +119,8 @@ export const PRICES = {
     booking: "Advised",
     bookingNote: "The same-day counter adds a ¥500 service fee per ticket, so booking ahead is simply cheaper.",
     source: "tokyo-skytree.jp",
-    checked: "2026-10-19",
+    // Re-read 6 Nov 2026 on en.tokyo-skytree.jp/ticket: every tier unchanged.
+    checked: "2026-11-06",
     klook: klook("Klook: TOKYO SKYTREE ticket", skytreeTicket.url),
   },
   tokyoTower: {
@@ -135,7 +136,8 @@ export const PRICES = {
     bookingNote:
       "The Main Deck costs the same at the door, and runs to 23:00. Only the ¥3,300 Top Deck Tour is cheaper online, and it is timed.",
     source: "tokyotower.co.jp",
-    checked: "2026-10-20",
+    // Re-read 6 Nov 2026 on tokyotower.co.jp/fee, /access and the home page: unchanged.
+    checked: "2026-11-06",
     klook: klook("Klook: Tokyo Tower Main Observatory ticket", tokyoTowerTicket.url),
   },
   tochoDeck: {
@@ -150,7 +152,8 @@ export const PRICES = {
     booking: "Not needed",
     bookingNote: "No ticket of any kind. Hours and which of the two decks is open vary, so check the day before.",
     source: "metro.tokyo.lg.jp",
-    checked: "2026-10-19",
+    // Re-read 6 Nov 2026 on zaimu.metro.tokyo.lg.jp/tochousha/goannai/tenbou: unchanged.
+    checked: "2026-11-06",
     klook: null,
   },
   teamlabPlanets: {

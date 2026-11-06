@@ -81,7 +81,7 @@ const deckRows = [
   {
     deck: "Shibuya Sky",
     height: "~229 m rooftop",
-    price: "¥2,500 advance online",
+    price: `${PRICES.shibuyaSky.adult} online`,
     highlight: "Open-air rooftop over the Scramble Crossing — the photo, not the altitude",
     area: "Shibuya Station",
   },

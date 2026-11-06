@@ -5070,6 +5070,44 @@ export const shibuyaSkySameDayPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * Same block for tokyo-observation-decks, added 6 Nov 2026 for the same reason: the
+ * decks are the low bands (SHIBUYA SKY 2%, the others 2-5%). Reuses the products above
+ * and adds no URL. Tours and hotels 6.5%, passes and transfers 5%, the eSIM 20%.
+ */
+export const observationDecksSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the Tokyo day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "A deck is one to two hours of one day, so the rest of it can be the city at street level: a guided day of the Imperial Palace gardens, Asakusa and Tokyo Skytree with multilingual audio guidance.",
+  },
+  {
+    label: shinjukuNightFoodWalkingTour.title,
+    ctaLabel: "Check the Shinjuku night tour →",
+    url: shinjukuNightFoodWalkingTour.url,
+    why: "The evening after a sunset deck: a three-hour join-in walk through Omoide Yokocho, Kabukicho and Golden Gai, ending with a drink at a Golden Gai izakaya.",
+  },
+  {
+    ...tripPrepProducts.hotelShibuya,
+    why: "A sunset slot ends after dark, so staying near the deck makes the trip back a short one. Our Tokyo stay guide, linked below, compares the other areas.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Shibuya, Oshiage, Akabanebashi and Tochomae are all subway stations, so a 24, 48 or 72-hour ticket covers two decks in a day. It does not cover JR lines such as the Yamanote.",
+  },
+  {
+    label: tokyoPrivateAirportTransfer.title,
+    ctaLabel: "Check the airport transfer →",
+    url: tokyoPrivateAirportTransfer.url,
+    why: "Booked to your hotel address rather than a station, from either Narita or Haneda, with the driver tracking your flight — useful when you land the same day as a late slot.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A Klook ticket arrives as an e-ticket on your phone, and every deck here depends on the weather — data from the airport onwards means the voucher, the map and the forecast are all there on the day.",
+  },
+];
+
 export const usjSameDayPrep: KlookTripPrepItem[] = [
   {
     label: "Hotels near Universal Studios Japan (Universal City)",
