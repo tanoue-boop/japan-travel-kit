@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { hreflangLinks } from "../../../components/Hreflang";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../components/WinterBookingTop";
@@ -379,6 +380,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours" />
+        {hreflangLinks("/guides/attractions/niseko-ski-tours")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours" />

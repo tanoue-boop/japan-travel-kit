@@ -641,9 +641,9 @@ const days: Day[] = [
     stops: [
       {
         time: "Morning",
-        place: "Furano → Sapporo on the Furano Lavender Express",
+        place: "Furano → Sapporo: Lavender Express in summer, local train and Lilac or Kamui in winter",
         allow: "2 hours",
-        getting: `Reserved limited express — ${FURANO_OW} one way on JR Hokkaido's own round-trip figure`,
+        getting: `Summer: reserved limited express, ${FURANO_OW} one way on JR Hokkaido's own round-trip figure. Winter: ${FURANO_WINTER} by the route through Asahikawa`,
         booking: "Yes",
       },
       {

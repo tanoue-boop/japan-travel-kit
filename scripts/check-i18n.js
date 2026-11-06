@@ -145,6 +145,12 @@ const SEARCH_TERMS = {
     ko: "삿포로 눈축제",
     th: "เทศกาลหิมะซัปโปโร",
   },
+  "/guides/attractions/niseko-ski-tours": {
+    "zh-tw": "二世谷滑雪",
+    "zh-cn": "二世谷滑雪",
+    ko: "니세코 스키",
+    th: "เล่นสกีนิเซโกะ",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

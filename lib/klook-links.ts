@@ -4627,7 +4627,7 @@ export const otaruAsarigawaSkiDayTour: KlookTour = {
 export const hokkaidoSevenDayStayAreas: KlookStayArea[] = [
   {
     area: "Sapporo Station",
-    why: "Three or four of the seven nights, because every inland and coastal day on this route starts here: the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa and the Furano Lavender Express all leave from this building, and Odori is one subway stop or a covered walk.",
+    why: "Three or four of the seven nights, because every inland and coastal day on this route starts here: the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa and, in summer, the Furano Lavender Express all leave from this building, and Odori is one subway stop or a covered walk.",
     url: japanWinterStayAreas[6].url,
   },
   {
@@ -4637,7 +4637,7 @@ export const hokkaidoSevenDayStayAreas: KlookStayArea[] = [
   },
   {
     area: "Furano",
-    why: "The base that turns the inland leg from a ten-hour coach day into two unhurried ones — Farm Tomita and the Biei hills in the morning light instead of at the back of a day trip, and the Furano Lavender Express is two hours back to Sapporo.",
+    why: "The base that turns the inland leg from a ten-hour coach day into two unhurried ones — Farm Tomita and the Biei hills in the morning light instead of at the back of a day trip, and in summer the Furano Lavender Express is two hours back to Sapporo.",
     url: klookLink("https://www.klook.com/en-US/destination/c85051-furano/3-hotel/"),
   },
   {

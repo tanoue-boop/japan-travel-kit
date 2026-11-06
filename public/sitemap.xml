@@ -315,6 +315,14 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
     <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1172,6 +1180,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/ko/guides/attractions/niseko-ski-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/ko/guides/attractions/sapporo-snow-festival-tours</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/sapporo-snow-festival-tours"/>
@@ -1335,6 +1357,20 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/jigokudani-snow-monkey-tour"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/th/guides/attractions/niseko-ski-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
     <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1528,6 +1564,20 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-tour-from-tokyo"/>
     <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1744,6 +1794,20 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/mt-fuji-day-tour-from-tokyo"/>
     <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/niseko-ski-tours"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
