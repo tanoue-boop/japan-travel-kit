@@ -6335,3 +6335,123 @@ export const yufuinBeppuTripPrep: KlookTripPrepItem[] = [
     why: "For a family or a group, a car and driver gives you your own stops and breaks.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kumano Kodo, added 6 Nov 2026 for kumano-kodo-tour.
+//
+// Confirmed through the www.klook.com search index, because Klook answers automated
+// reads with HTTP 403. 158473, 172638, 160250, 89727, 80054, 76602, the Wakayama hotel
+// page, the Kuroshio rail page and 416909 were seen in en-US form. 169963 and 138713
+// were seen on sale in other locales, so their en-US URLs keep the same id and slug.
+// No Klook luggage, transfer, Kyoto departure or Shirahama departure listing was found.
+// Bands: tours and hotels 6.5%, rail 5%, eSIM 20%.
+// ---------------------------------------------------------------------------
+
+/** All three grand shrines in a day: the lead listing for this route. */
+export const kumanoSanzanExpressTour: KlookTour = {
+  title: "Kumano Sanzan one-day tour from Osaka (choose the Kumano Kodo route)",
+  desc: "About 10 hours from Shinsaibashi to Hongu, Hayatama and Nachi with a light hike on the old road. One tour with three routes, so pick Kumano; tickets and meals are extra",
+  url: klookLink("https://www.klook.com/en-US/activity/158473-a/"),
+};
+
+/** The second Osaka listing, with departure times chosen at checkout. */
+export const kumanoSanzanPilgrimageTour: KlookTour = {
+  title: "Kumano Kodo & Kumano Sanzan full-day pilgrimage tour",
+  desc: "A day from Osaka in a window of about 07:00 to 19:50, with several departure times on the same itinerary",
+  url: klookLink("https://www.klook.com/en-US/activity/172638-one-day-pilgrimage-trekking-tour/"),
+};
+
+/** For the falls more than the walk. */
+export const kumanoNachiHayatamaTour: KlookTour = {
+  title: "Kumano Nachi Taisha, Nachi Falls & Hayatama Taisha day tour from Osaka",
+  desc: "A 12 hour 45 minute bus day, 07:30 to 20:15, with a boxed lunch; many stone steps, so wear comfortable shoes. It needs a minimum group size",
+  url: klookLink("https://www.klook.com/en-US/activity/169963-kumano-nachi-taisha-nachi-falls-day-tour-by-luxury-bus-from-osaka/"),
+};
+
+/** The Nagoya departure. */
+export const kumanoNachiNagoyaTour: KlookTour = {
+  title: "Kumano Kodo walking trail & Nachi Falls day tour from Nagoya",
+  desc: "An 11-hour bus day from downtown Nagoya with about four hours exploring the Kumano trails",
+  url: klookLink("https://www.klook.com/en-US/activity/80054-kumano-kodo-nachi-falls-hiking-tour-nagoya/"),
+};
+
+/** A guide on the trail, for walkers already in the Kumano area. */
+export const kumanoKodoPrivateWalk: KlookTour = {
+  title: "World Heritage Kumano Kodo private walking tour",
+  desc: "A private guide in English or Japanese for 6 hours to 2 days. Options include Hosshinmon-oji to Hongu and a Nachi route from Kii-Katsuura Station; no suitcases",
+  url: klookLink("https://www.klook.com/en-US/activity/76602-kumanokodo-walking-tour-japan/"),
+};
+
+/** Koyasan and Kumano with a hotel night. */
+export const kumanoKoyaTwoDayTour: KlookTour = {
+  title: "2-day Mt. Koya, Kumano Kodo & Nachi Falls tour from Osaka",
+  desc: "One night by coach with Toretore Market lunch and hotel meals; read the trail time on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/89727-2d1n-koyasan-kumano-kodo-nachi-falls-tour-bus-tour-osaka/"),
+};
+
+/** Shirahama's coast with Daimon-zaka and Nachi. */
+export const kumanoShirahamaTwoDayTour: KlookTour = {
+  title: "2-day Wakayama tour: Shirahama, Sandanbeki, Daimon-zaka & Nachi Taisha",
+  desc: "Two days from Osaka along the coast to Nachi; rates assume two people to a room",
+  url: klookLink("https://www.klook.com/en-US/activity/138713-wakayama-kuroshio-market-shirahama-engetsu-island-senjojiki-sa/"),
+};
+
+/** Seen by title only: the page tells readers so. */
+export const kumanoMultiDayPilgrimage: KlookTour = {
+  title: "Osaka Kumano Hongu Taisha & Nachi Falls multi-day pilgrimage tour",
+  desc: "A multi-day tour from Osaka; read the listing for the itinerary",
+  url: klookLink("https://www.klook.com/en-US/activity/160250-kumano-hongu-taisha-nachi-falls-multi-day-unesco-site-pilgrimage-tour/"),
+};
+
+/** Klook's Wakayama hotel page. No Tanabe or Shirahama area page was found. */
+export const kumanoWakayamaHotels: KlookTour = {
+  title: "Hotels in Wakayama on Klook",
+  desc: "Klook's hotel search for Wakayama; check the map for Tanabe, Shirahama or Hongu",
+  url: klookLink("https://www.klook.com/en-US/destination/c25492-wakayama/3-hotel/"),
+};
+
+/** One bookable bed at the end of the Nakahechi. */
+export const kumanoYunomineGuesthouse: KlookTour = {
+  title: "J-Hoppers Kumano Yunomine Guesthouse",
+  desc: "A hostel at Yunomine Onsen, about 36 km from Kii-Tanabe Station and a 5-minute walk from the pilgrimage route",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/416909-jhoppers-kumano-yunomine-guesthouse--hostel/"),
+};
+
+/** Reserved seats on the train to Kii-Tanabe and Shirahama. */
+export const kumanoKuroshioTickets: KlookTour = {
+  title: "Limited express Kuroshio tickets",
+  desc: "Reserved ordinary and Green seats on the Kuroshio toward Shirahama",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/kuroshio/"),
+};
+
+/** Around a Kumano day or a night on the trail. Every url is declared above or earlier. */
+export const kumanoKodoTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels in Namba",
+    ctaLabel: "Check Namba hotels →",
+    url: osakaStayAreas[1].url,
+    why: "The Kumano Sanzan tour meets at Shinsaibashi, on the same Midosuji Line, so a Namba bed makes an early start simple.",
+  },
+  {
+    label: "Hotels in Wakayama",
+    ctaLabel: "Check Wakayama hotels →",
+    url: kumanoWakayamaHotels.url,
+    why: "For a walk, the night before in Tanabe or Shirahama puts you close to the first bus.",
+  },
+  {
+    label: kumanoYunomineGuesthouse.title,
+    ctaLabel: "Check the Yunomine guesthouse →",
+    url: kumanoYunomineGuesthouse.url,
+    why: "Yunomine Onsen is one of the three hot spring areas near Hongu, where the two-day walk ends.",
+  },
+  {
+    label: kumanoKuroshioTickets.title,
+    ctaLabel: "Check Kuroshio tickets →",
+    url: kumanoKuroshioTickets.url,
+    why: "Shin-Osaka to Kii-Tanabe takes about 2 hours to 2 hours 20 minutes, and your bus connection depends on it.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Bus times and trail maps are easier with data, and the bureau says to carry a phone on the walk.",
+  },
+];

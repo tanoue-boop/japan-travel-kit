@@ -428,6 +428,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/kumano-kodo-tour",
+    badge: "Tour",
+    title: "Kumano Kodo Tour (2026): Day Trips, the Nakahechi and How Far You Walk",
+    desc: "About 10 to 12 hours 45 minutes from Osaka, or about 38 km over two days on foot. Five Klook tours compared, every Nakahechi stage by distance and climb, the Kuroshio and buses, gear, seasons and luggage.",
+    group: "daytrips",
+    city: "other",
+  },
+  {
     href: "/guides/attractions/kyoto-2-day-itinerary",
     badge: "Itinerary",
     title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book",
