@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { hreflangLinks } from "../../../components/Hreflang";
 import type { ReactNode } from "react";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
@@ -826,6 +827,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/hokkaido-7-day-itinerary" />
+        {hreflangLinks("/guides/attractions/hokkaido-7-day-itinerary")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/hokkaido-7-day-itinerary" />

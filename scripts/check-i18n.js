@@ -151,6 +151,12 @@ const SEARCH_TERMS = {
     ko: "니세코 스키",
     th: "เล่นสกีนิเซโกะ",
   },
+  "/guides/attractions/hokkaido-7-day-itinerary": {
+    "zh-tw": "北海道7天行程",
+    "zh-cn": "北海道7日游",
+    ko: "홋카이도 7일 여행",
+    th: "เที่ยวฮอกไกโด 7 วัน",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

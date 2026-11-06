@@ -124,6 +124,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/zh-tw/guides/attractions/sapporo-snow-festival-tours",
           "/zh-tw/guides/attractions/niseko-ski-tours",
+          "/zh-tw/guides/attractions/hokkaido-7-day-itinerary",
           "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -178,6 +179,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "2027 年 2 月 4–11 日，三個會場都免費。真正要先訂的是住宿與周邊一日遊。",
       "/zh-tw/guides/attractions/niseko-ski-tours":
         "新千歲機場接送、教練課、四大雪場怎麼選，以及從札幌出發的滑雪行程。",
+      "/zh-tw/guides/attractions/hokkaido-7-day-itinerary":
+        "7 天逐日路線，含周遊券的算法，以及冬季要怎麼調整。",
       "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour":
         "從東京出發看泡湯雪猴：一日遊、自行前往的交通與入苑資訊。",
       "/zh-tw/guides/attractions/shibuya-sky-tickets":
@@ -241,6 +244,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/zh-cn/guides/attractions/sapporo-snow-festival-tours",
           "/zh-cn/guides/attractions/niseko-ski-tours",
+          "/zh-cn/guides/attractions/hokkaido-7-day-itinerary",
           "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -295,6 +299,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "2027 年 2 月 4–11 日，三个会场都免费。真正要先订的是住宿与周边一日游。",
       "/zh-cn/guides/attractions/niseko-ski-tours":
         "新千岁机场接送、教练课、四大雪场怎么选，以及从札幌出发的滑雪行程。",
+      "/zh-cn/guides/attractions/hokkaido-7-day-itinerary":
+        "7 天逐日路线，含周游券的算法，以及冬季要怎么调整。",
       "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour":
         "从东京出发看泡汤雪猴：一日游、自行前往的交通与入苑信息。",
       "/zh-cn/guides/attractions/shibuya-sky-tickets":
@@ -358,6 +364,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/ko/guides/attractions/sapporo-snow-festival-tours",
           "/ko/guides/attractions/niseko-ski-tours",
+          "/ko/guides/attractions/hokkaido-7-day-itinerary",
           "/ko/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -394,6 +401,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "2027년 2월 4~11일, 세 회장 모두 무료. 먼저 예약할 것은 숙소와 근교 당일 투어입니다.",
       "/ko/guides/attractions/niseko-ski-tours":
         "신치토세 공항 셔틀, 강습, 4개 스키장 선택, 삿포로 출발 스키 투어.",
+      "/ko/guides/attractions/hokkaido-7-day-itinerary":
+        "7일 일정을 날짜별로 정리하고 패스 계산과 겨울철 조정 방법을 담았습니다.",
       "/ko/guides/attractions/jigokudani-snow-monkey-tour":
         "도쿄에서 온천 원숭이를 보러 가는 당일 투어, 직접 가는 교통편, 입장 정보.",
       "/ko/guides/attractions/shibuya-sky-tickets":
@@ -449,6 +458,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/th/guides/attractions/sapporo-snow-festival-tours",
           "/th/guides/attractions/niseko-ski-tours",
+          "/th/guides/attractions/hokkaido-7-day-itinerary",
           "/th/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -485,6 +495,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "4–11 กุมภาพันธ์ 2027 ทั้งสามสถานที่เข้าฟรี สิ่งที่ต้องจองก่อนคือที่พักและทริปรอบเมือง",
       "/th/guides/attractions/niseko-ski-tours":
         "รถรับส่งสนามบินชิโตเสะ คลาสสกี การเลือกสี่พื้นที่ และทัวร์สกีจากซัปโปโร",
+      "/th/guides/attractions/hokkaido-7-day-itinerary":
+        "แผนเที่ยวรายวัน 7 วัน พร้อมวิธีคำนวณพาส และการปรับแผนในหน้าหนาว",
       "/th/guides/attractions/jigokudani-snow-monkey-tour":
         "ไปดูลิงแช่ออนเซ็นจากโตเกียว: ทัวร์วันเดียว การเดินทางเอง และข้อมูลการเข้าชม",
       "/th/guides/attractions/shibuya-sky-tickets":
