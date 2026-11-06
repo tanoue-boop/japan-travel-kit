@@ -112,7 +112,7 @@ const topPicks = [
   {
     rank: 1,
     name: "Simbye Unlimited",
-    badge: "Lowest Unlimited Price",
+    badge: "Lowest Confirmed Unlimited Price",
     badgeClass: "pickBadgeGreen" as const,
     summary: `The lowest unlimited list price at 7 days or more: ${SIMBYE_UNL} for a week up to ${SIMBYE_UNL_30} for 30 days (checked ${pricesCheckedAt}), with 2 GB a day at full speed and then 1 Mbps. Runs on ${getProvider("simbye").network}, with tethering allowed. Our top pick unless you regularly pass 2 GB a day.`,
     bestFor: "Most people searching for unlimited: no hard stop, and rarely past 2 GB a day",

@@ -152,7 +152,7 @@ const numberRows = [
     number: `${klookEsim.specPhoneNumber} — as the listing states it`,
     card: "No",
     term: "Sold by the day; nothing to cancel",
-    price: "Check on Klook — its product pages block automated price reads, so we quote none",
+    price: "From US$1.05 on Klook, read 6 Nov 2026. That is before you choose days and data, and no plan is named",
   },
   {
     product: "Airalo, Holafly and eSIM Go Japan plans",
@@ -512,8 +512,7 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
             monthly price is a published &ldquo;from&rdquo; and the data tier moves it. The Airalo, Holafly and
             eSIM Go phone-number clauses come from their own pages, {SPECS_CHECKED_AT}, and their prices from
             our daily feed, checked {PRICES_CHECKED}. The Klook row quotes its listing&apos;s own stated
-            service type; no Klook price appears anywhere on this site because Klook blocks automated reads of
-            its product pages. Our{" "}
+            service type. Our{" "}
             <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>
               Sakura Mobile review
             </Link>{" "}

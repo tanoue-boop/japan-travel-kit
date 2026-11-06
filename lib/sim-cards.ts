@@ -34,7 +34,7 @@ export const simCards: SIMCard[] = [
     esimId: "simbye",
     name: "Simbye Japan eSIM",
     provider: "Simbye",
-    badge: "Lowest Price",
+    badge: "Lowest Confirmed Price",
     badgeColor: "bg-blue-500",
     summary:
       "A data-only Japan eSIM on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile, with fixed plans from 1 GB to 50 GB and unlimited plans at 2 GB a day of full speed. Every plan in its price feed allows tethering.",

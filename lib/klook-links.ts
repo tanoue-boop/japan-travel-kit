@@ -49,11 +49,15 @@ export function klookLink(pageUrl: string): string {
  * search index for that listing rather than from the page itself — which is why
  * they carry their own `specsCheckedAt` and why none of them is a price. Anything
  * not in that index stays off the comparison pages.
+ *
+ * Re-read in a browser on 6 Nov 2026. The listing's from-price, rating and network
+ * are in lib/klook-esim-facts.ts. The from-price names no plan, so `priceVerified`
+ * stays false: there is still no per-plan price to rank.
  */
 export const klookEsim = {
   name: "Klook Japan eSIM",
   /** Title as the Klook listing itself is named. */
-  listingTitle: "Japan eSIM: High-Speed Internet (QR Code Voucher)",
+  listingTitle: "eSIM Japan | Softbank 5G / IIJ (Docomo) 4G LTE",
   url: klookLink("https://www.klook.com/en-US/activity/109393-japan-esim-high-speed-internet-qr-code-voucher/"),
   ctaLabel: "Check Klook eSIM prices →",
   /** Set true only once prices and data tiers have been read off the listing. */
@@ -63,17 +67,17 @@ export const klookEsim = {
   /** The date the listing was last attempted — shown next to the placeholder. */
   checkedAt: "19 Oct 2026",
   /** The date the `spec*` fields below were confirmed in Klook's search index. */
-  specsCheckedAt: "22 Oct 2026",
+  specsCheckedAt: "6 Nov 2026",
   /** Carriers the listing names, and which plan family rides which. */
-  specNetwork: "SoftBank 5G (per-day plans) / docomo 4G LTE (total-data plans)",
+  specNetwork: "SoftBank 5G (per-day plans) / IIJ (Docomo) 4G LTE (total-data plans)",
   /** Allowance tiers the listing names. No price attaches to any of them here. */
-  specData: "500 MB to 50 GB, plus unlimited (10 GB/day at full speed, then 128 kbps)",
+  specData: "500 MB to 50 GB, plus per-day and unlimited plans (unlimited: 10 GB/day at high speed, then 128 kbps)",
   /** The listing states hotspot and tethering are supported. */
   specTethering: "Supported",
   /** The listing states the service type is data only. */
   specPhoneNumber: "No — data only",
   note:
-    "Klook sells a Japan eSIM of its own, and it is worth a look if you are already booking tickets or transport there — one checkout, one account. We list it unranked: Klook's product page blocks automated price reads, so we have no verified price to rank it on. Open the listing for the current options.",
+    "Klook sells a Japan eSIM of its own, rated 4.6 (50K+ reviews) with 2M+ booked, on SoftBank 5G and IIJ (Docomo). Tethering is allowed, and unlimited plans run at high speed up to 10 GB a day. It is worth a look if you are already booking tickets or transport there: one checkout, one account. Klook shows from US$1.05 before you choose days and data, and does not say which plan that is, so we list it unranked. Listing read 6 Nov 2026.",
 } as const;
 
 // ---------------------------------------------------------------------------

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -11,15 +12,20 @@ import {
   capeKamuiOtaruCanalCruiseDayTour,
   jrHokkaidoRailPass,
   klookEsim,
+  newChitoseAirportTransfers,
   otaruAsarigawaSkiDayTour,
   otaruCanalCruiseSealCarving,
-  otaruDayTripPrep,
-  otaruShakotanKamuiDayTour,
   otaruShakotanYoichiCoachTour,
   otaruSnowParkDayTour,
-  otaruYoichiDayTour,
+  sapporoFuranoAreaPass,
   sapporoKokusaiSkiOtaruAquariumDayTour,
+  sapporoSnowFestivalStayAreas,
+  type KlookTripPrepItem,
 } from "../../../lib/klook-links";
+import {
+  sapporoKokusaiOtaruDayTour,
+  yoichiOtaruWalkingTour,
+} from "../../../lib/klook-links-winter-hokkaido";
 
 /**
  * Otaru as a day out of Sapporo, written for the reader searching "Otaru Day
@@ -101,13 +107,42 @@ import {
  * 2027 Snow Festival dates (committee announcement, 30 Oct 2026) and the JMA
  * 1991–2020 February normals for Sapporo (28 Oct 2026).
  *
- * Nothing here is first-hand, and no Klook price appears: Klook answers
- * automated reads of its product pages with HTTP 403.
+ * Re-read on 6 November 2026 for the winter booking pass (task jtk-20261106-A21):
+ *   otaru.gr.jp/event/         Snow Light Path 6–13 Feb 2027, details still to be
+ *     yukiakari2027            announced. otaru-yukiakari.jp did not resolve.
+ *   tenguyama.ckk.chuo-bus     the ropeway's own 2026-27 winter: 28 Nov 2026 to
+ *     .co.jp/en/ropeway/       28 Mar 2027, round trip ¥2,000 adult and ¥1,000
+ *                              child, standard hours 9:00 to 20:00, with an earlier
+ *                              close on 31 Dec and 1–3 Jan.
+ *   otaru.cc                   cruise fares unchanged, ¥500 for infants with one
+ *                              free per adult, roofed boats in winter.
+ *   nikka.com/en/distilleries  closure dates unchanged; reservations open up to 4
+ *     /yoichi/faq/             weeks ahead, with no on-the-day waitlist.
+ *   jrhokkaido.co.jp/airport/  ¥1,230 unchanged.
+ *   jrhokkaido.co.jp/global/   pass prices unchanged.
+ *     english/ticket/railpass/
+ * The JR Sapporo↔Otaru page now returns "not found", so the ¥800 fare could not be
+ * re-read there. A JR Hokkaido fare table shows Otaru moving from ¥750 to ¥800,
+ * and the figure stands on the earlier reads.
+ *
+ * Nothing here is first-hand. Klook answers automated reads of its product pages
+ * with HTTP 403, so the body carries no Klook price; the WinterBookingTop block
+ * carries the indexed from-price, dated, and nothing else on the page does.
+ *
+ * Changed in that pass: `otaruYoichiDayTour` (181965) left the page. Its title
+ * says Otaru and Yoichi but its indexed body describes an Otaru and Cape Kamui
+ * small-group tour, so 181785 is now the Yoichi listing beside the 199716 coach.
+ * `otaruShakotanKamuiDayTour` (85124) is a cherry-blossom listing and left the
+ * picks.
  */
 
 /** Figures read off the operators' own sites for this page. */
 const OWN_ISO = "2026-11-01";
 const OWN = checkedLabel(OWN_ISO);
+
+/** The winter pass's re-reads of the official sites and of Klook's index. */
+const SEASON_ISO = "2026-11-06";
+const SEASON = checkedLabel(SEASON_ISO);
 
 /** Carried from sapporo-snow-festival-tours and japan-winter-itinerary. */
 const FESTIVAL_CHECKED = checkedLabel("2026-10-30");
@@ -178,7 +213,7 @@ const stopRows = [
     where: "Ticket centre and dock at the Chuo-bashi bridge, a short walk from the station",
     allow: "40 minutes, plus the 15 minutes the operator asks you to arrive before",
     cost: `${CRUISE_DAY} adult day, ${CRUISE_NIGHT} adult night, ${CRUISE_CHILD} for a primary-school child on either`,
-    note: `The operator's own fares and duration, read ${OWN}. "Adult" starts at junior-high age. Sailings are cancelled for weather, which on this coast in winter is not a formality — and the night cruise is the one to take, because the canal is a lamp-lit view rather than a daylight one.`,
+    note: `The operator's own fares and duration, read ${SEASON}. "Adult" starts at junior-high age. In winter the boats run with roofs on, and sailings are still cancelled for weather, which on this coast is not a formality. The night cruise is the one to take, because the canal is a lamp-lit view rather than a daylight one.`,
   },
   {
     stop: "Sakaimachi-dori (堺町通り)",
@@ -198,15 +233,15 @@ const stopRows = [
     stop: "Tenguyama ropeway",
     where: "A bus ride inland from the station",
     allow: "1.5–2 hours including the ride up",
-    cost: "¥2,000 adult round trip in the 2025–26 winter season; ¥1,800 adult in the 2026 summer season",
-    note: `The Otaru Tourism Association's own notices, read ${OWN}: winter ran 29 Nov to 31 Mar at 9:00–20:00, summer 25 Apr to 3 Nov. Check the notice for your own dates — the hill closes for maintenance between seasons.`,
+    cost: "¥2,000 adult and ¥1,000 child round trip in the 2026-27 winter season; ¥1,800 adult in the 2026 summer season",
+    note: `The ropeway's own page, read ${SEASON}: this winter runs 28 November 2026 to 28 March 2027, 9:00 to 20:00 on standard days and closing earlier on 31 December and 1 to 3 January. The summer season ran 25 April to 3 November 2026, and the hill closes for maintenance between seasons.`,
   },
   {
     stop: "Nikka Whisky Yoichi Distillery",
     where: "One town further west, 5 minutes on foot from JR Yoichi Station",
     allow: "2–3 hours including the travel each way",
     cost: "Tours free; the museum's tasting bar is paid",
-    note: `Nikka's own wording, read ${OWN}: "Distillery tours are free of charge" and "We request that you make reservations in advance". Without a reservation you can still use the shop, Rita's Kitchen and the Nikka Museum, but not the production areas. Closed 23 December to 7 January and on 11 June.`,
+    note: `Nikka's own wording, read ${SEASON}: "Distillery tours are free of charge" and "We request that you make reservations in advance". Reservations open up to four weeks ahead, and there is no on-the-day waitlist. Without one you can still use the shop, Rita's Kitchen and the Nikka Museum, but not the production areas. Closed 23 December to 7 January and on 11 June.`,
   },
 ];
 
@@ -227,7 +262,7 @@ const shapeRows = [
   {
     shape: "Long day with Yoichi (10 hours or more)",
     covers: "Otaru in the morning, the Nikka distillery in the afternoon",
-    verdict: "Worth it for the distillery, and the one shape of this day where a booked coach genuinely beats the train",
+    verdict: "Worth it for the distillery, and the one shape of this day where a guided booking genuinely beats going alone",
     note: `Nikka asks for a reservation and its own access page warns there are few trains between Otaru and Yoichi — two fixed points at opposite ends of a sparse timetable is exactly the problem a guided day removes. Read ${OWN}.`,
   },
   {
@@ -253,7 +288,7 @@ const faqItems = [
   },
   {
     q: "Is Otaru better in winter?",
-    a: `For the canal, yes — and there is a specific week. The Otaru Snow Light Path (小樽雪あかりの路) runs ${SNOW_LIGHT_PATH} on the Otaru Tourism Association's own page, read ${OWN}; the association states the dates and adds 「詳細は決まり次第お知らせいたします」, so the dates are confirmed and nothing else about the 2027 edition is published yet, which is why no hours or venues appear here. Those dates overlap the Sapporo Snow Festival's 4 to 11 February 2027 almost exactly, which is both the reason the trains are full and the reason the two are worth doing in one trip. Two practical winter notes. The February daily maximum in this part of Hokkaido averages ${FEB_MAX} on the Japan Meteorological Agency's 1991–2020 normals for Sapporo (read ${JMA_CHECKED}), so the ground is hard-packed rather than wet and grip matters more than waterproofing. And the canal cruise is cancelled for weather on the operator's own warning — in winter that is a real possibility rather than a formality, so do not build the only evening of your trip on it.`,
+    a: `For the canal, yes — and there is a specific week. The Otaru Snow Light Path (小樽雪あかりの路) runs ${SNOW_LIGHT_PATH} on the Otaru Tourism Association's own page, re-read ${SEASON}; the association states the dates and adds 「詳細は決まり次第お知らせいたします」, so the dates are confirmed and nothing else about the 2027 edition is published yet, which is why no hours or venues appear here. Those dates overlap the Sapporo Snow Festival's 4 to 11 February 2027 almost exactly, which is both the reason the trains are full and the reason the two are worth doing in one trip. Two practical winter notes. The February daily maximum in this part of Hokkaido averages ${FEB_MAX} on the Japan Meteorological Agency's 1991–2020 normals for Sapporo (read ${JMA_CHECKED}), so the ground is hard-packed rather than wet and grip matters more than waterproofing. And the canal cruise is cancelled for weather on the operator's own warning — in winter that is a real possibility rather than a formality, so do not build the only evening of your trip on it.`,
   },
   {
     q: "Should I combine Otaru and Yoichi?",
@@ -278,6 +313,40 @@ const faqItems = [
   {
     q: "Can I do Otaru on the day I land at New Chitose?",
     a: `Yes, and it is one of the better uses of an arrival afternoon. JR Hokkaido's own airport page puts New Chitose to Otaru at 73 minutes at fastest, read ${OWN}, and the Rapid Airport runs through Sapporo without a change — so you do not have to drop bags first. Six Airport Trains an hour run between 09:00 and 16:00 on the same page's figures, and the Sapporo leg of that fare is ${AIRPORT_FARE}. Two conditions. You need to land before about midday for it to be a real afternoon rather than a train ride, and you need somewhere for your cases: coin lockers at Otaru Station fill on festival dates, which is the argument for either staying in Otaru that night or taking a booked transfer to your Sapporo hotel first. If the flight is later, a lit canal evening still works — the walk is free and the night cruise sails after dark.`,
+  },
+];
+
+/** The same-trip block: the eSIM, the airport leg, the pass that fits, and the two extras. */
+const otaruSameTrip: KlookTripPrepItem[] = [
+  {
+    label: klookEsim.name,
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "The two things that change an Otaru day are notices rather than tickets: the canal cruise is weather-dependent on the operator's own warning, and the Otaru–Yoichi train service is sparse enough that one missed connection rewrites the afternoon.",
+  },
+  {
+    label: newChitoseAirportTransfers.title,
+    ctaLabel: "Check New Chitose transfers →",
+    url: newChitoseAirportTransfers.url,
+    why: "For a night in Otaru with cases. The Rapid Airport runs through to Otaru without a change, 73 minutes at fastest, so most arrivals should take it; a booked car is for a late landing or a party with ski bags.",
+  },
+  {
+    label: sapporoFuranoAreaPass.title,
+    ctaLabel: "Price the area pass →",
+    url: sapporoFuranoAreaPass.url,
+    why: "Not for one Otaru day, which is ¥1,600 return. It is ¥11,000 for four days on JR Hokkaido's own page and covers Otaru, so it starts to pay only when Otaru sits inside a week that also reaches Asahikawa or Furano.",
+  },
+  {
+    label: yoichiOtaruWalkingTour.title,
+    ctaLabel: "Check the Yoichi & Otaru day →",
+    url: yoichiOtaruWalkingTour.url,
+    why: "The one part of this day that is genuinely easier booked: Nikka's distillery tour is a fixed-time reservation and its own access page warns there are few trains between Otaru and Yoichi. Remember the distillery is closed 23 December to 7 January.",
+  },
+  {
+    label: "Hotels around Otaru Station",
+    ctaLabel: "Check Otaru hotels on Klook →",
+    url: sapporoSnowFestivalStayAreas[2].url,
+    why: "For the reader who works out that the canal is better after dark than at lunchtime, and for 6 to 13 February 2027, when the Snow Light Path runs and the Snow Festival is filling Sapporo's own rooms.",
   },
 ];
 
@@ -402,6 +471,41 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           </p>
         </div>
 
+        <WinterBookingTop
+          heading="Which Otaru Day Trip From Sapporo Should You Book This Winter?"
+          checkedIso={SEASON_ISO}
+          deadline={
+            <>
+              For the Snow Light Path on 6 to 13 February 2027, hold a tour or an Otaru room by 31 December.
+              If you want the Nikka distillery, its reservations open four weeks ahead, so a Snow Light Path
+              visit opens from about 9 January. It is closed 23 December to 7 January.
+            </>
+          }
+          tours={[
+            {
+              title: otaruSnowParkDayTour.title,
+              url: otaruSnowParkDayTour.url,
+              price: "about US$65–76",
+              duration: "Full day",
+              departs: "Sapporo",
+            },
+            {
+              title: sapporoKokusaiOtaruDayTour.title,
+              url: sapporoKokusaiOtaruDayTour.url,
+              price: null,
+              duration: "10 hours",
+              departs: "Sapporo",
+            },
+            {
+              title: otaruAsarigawaSkiDayTour.title,
+              url: otaruAsarigawaSkiDayTour.url,
+              price: null,
+              duration: "See listing",
+              departs: "Sapporo",
+            },
+          ]}
+        />
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -445,8 +549,8 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
               <strong>Nikka distillery at Yoichi</strong> justifies ten hours. All fares read {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={otaruYoichiDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
-                The Otaru &amp; Yoichi Day →
+              <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                The Yoichi &amp; Otaru Day →
               </KlookLink>
               <KlookLink href={otaruCanalCruiseSealCarving.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Canal Cruise Options →
@@ -454,6 +558,14 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             </div>
           </div>
         </div>
+
+        {/* Same-trip block, moved up from above the FAQ on 6 Nov 2026. */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What an Otaru Day Actually Books"
+          intro="The train is not on this list. The fare is ¥800 at the gate and the streets are free, so what is left is the data that carries the weather and timetable notices, the airport leg if you are sleeping here, a pass only if the week is longer than this day, the guided Yoichi half, and a room if the canal after dark is why you came."
+          items={otaruSameTrip}
+        />
 
         {/* Getting there */}
         <section className={styles.comparisonSection}>
@@ -548,10 +660,10 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
               Canal cruise + workshop →
             </KlookLink>
             <KlookLink href={capeKamuiOtaruCanalCruiseDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Cape Kamui &amp; canal cruise day →
+              Cape Kamui &amp; canal cruise day (summer) →
             </KlookLink>
-            <KlookLink href={otaruYoichiDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Otaru &amp; Yoichi day →
+            <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Yoichi &amp; Otaru day →
             </KlookLink>
           </div>
         </section>
@@ -598,8 +710,8 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           <p className={styles.bodyText}>
             For the canal, yes — and there is one specific week. The{" "}
             <strong>Otaru Snow Light Path (小樽雪あかりの路)</strong> runs{" "}
-            <strong>{SNOW_LIGHT_PATH}</strong> on the Otaru Tourism Association&apos;s own page, read{" "}
-            {OWN}. The association publishes the dates and then adds
+            <strong>{SNOW_LIGHT_PATH}</strong> on the Otaru Tourism Association&apos;s own page, re-read{" "}
+            {SEASON}. The association publishes the dates and then adds
             「詳細は決まり次第お知らせいたします」 — details to follow as they are confirmed — so the dates
             are the only part of the 2027 edition that is announced, and they are the only part stated here.
             We are not going to guess at hours or venues.
@@ -643,7 +755,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           <h2 className={styles.sectionTitle}>Should You Combine Otaru and Yoichi?</h2>
           <p className={styles.bodyText}>
             If whisky is any part of why you are in Hokkaido, yes — and this is the one leg of the day
-            where a booked coach genuinely beats a train ticket. The{" "}
+            where a guided booking genuinely beats a train ticket of your own. The{" "}
             <strong>Nikka Whisky Yoichi Distillery</strong> is a <strong>5-minute walk</strong> from JR
             Yoichi Station and about <strong>30 minutes</strong> from Otaru on the JR Hakodate Main Line,
             or about <strong>40 minutes</strong> by bus from Otaru Station&apos;s bus terminal. Those are
@@ -660,11 +772,14 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             a reservation, the distillery shop, Rita&apos;s Kitchen and the Nikka Museum are open to all
             guests, and the museum&apos;s tasting bar is paid; the production areas are not open without a
             booked tour. The distillery is closed{" "}
-            <strong>23 December to 7 January</strong> and on <strong>11 June</strong>.
+            <strong>23 December to 7 January</strong> and on <strong>11 June</strong>, re-read {SEASON}, so
+            neither listing can reach it over New Year. The first is a small-group day by train and bus with
+            an English-speaking assistant. The second is a coach day whose title also names Cape Kamui, a
+            coast road, so check the winter route on the listing before you book it for December to February.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={otaruYoichiDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Otaru &amp; Yoichi day trip →
+            <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Yoichi &amp; Otaru walking day →
             </KlookLink>
             <KlookLink href={otaruShakotanYoichiCoachTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Cape Kamui + Yoichi coach day →
@@ -691,12 +806,12 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
               </p>
             </div>
             <div className={styles.whoForCard}>
-              <p className={styles.whoForTitle}>Book a coach if Yoichi is in the day</p>
+              <p className={styles.whoForTitle}>Book a guided day if Yoichi is in the day</p>
               <p className={styles.whoForDesc}>
                 This is the real case. Nikka asks for an advance reservation and its own access page warns
                 there are few trains between Otaru and Yoichi — a fixed time at the end of a thin timetable.
-                A booked day removes both problems and usually adds Cape Kamui or Shiroi Koibito Park, which
-                are worse again by public transport.
+                A guided day takes both problems off your hands, and a coach day can add stops that are
+                worse again by public transport.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -763,13 +878,30 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           </div>
         </section>
 
-        {/* Trip prep */}
-        <KlookTripPrep
-          label="Before you go"
-          heading="What an Otaru Day Actually Books"
-          intro="Three things, and the train is not one of them. The fare is ¥800 at the gate and the streets are free — so what is left is the data that carries the weather and timetable notices, the guided version of the Yoichi half, and a room if you work out mid-page that the canal is better after dark. Klook blocks automated price reads, so open a listing for the figure on your own dates."
-          items={otaruDayTripPrep}
-        />
+        {/* The rest of the winter */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>The rest of your winter</span>
+          <h2 className={styles.sectionTitle}>What Should You Pair With a Winter Otaru Day?</h2>
+          <p className={styles.bodyText}>
+            Otaru is a day, so it works best inside something longer. If you are in Hokkaido for the snow,
+            our <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link> covers the
+            resort side of the island, and Otaru makes the easy rest day between the airport and the
+            mountain. Our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> shows how a
+            Hokkaido leg joins a route through Honshu.
+          </p>
+          <p className={styles.bodyText}>
+            If your trip starts in Tokyo and Hokkaido is a stretch, the mainland has its own snow days. The{" "}
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour</Link>{" "}
+            gives you old streets under snow, and the{" "}
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>{" "}
+            is the other winter-only day out. A{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa ski day from Tokyo</Link>{" "}
+            does the job of the Sapporo ski days above, and if the lit canal is what drew you here, our guide
+            to <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo illuminations</Link> covers the
+            winter lights at the other end of the flight.
+          </p>
+        </section>
 
         {/* FAQ */}
         <section className={styles.faqSection}>
@@ -793,8 +925,8 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
         {/* Klook tours */}
         <KlookTourPicks
           heading="The Days That Pair Otaru With Something Else"
-          intro="Four join-in departures out of Sapporo, each one Otaru plus the thing that is genuinely hard to reach by train — the Yoichi distillery, the Shakotan coast, a snow park or a ski hill. None of them is a substitute for the ¥800 train if Otaru alone is the plan."
-          tours={[otaruYoichiDayTour, otaruShakotanYoichiCoachTour, otaruShakotanKamuiDayTour, otaruSnowParkDayTour]}
+          intro="Four departures out of Sapporo, each one Otaru plus the thing that is genuinely hard to reach on the ¥800 train alone: the Yoichi distillery, a snow park or a ski hill. None of them is a substitute for that train if Otaru alone is the plan."
+          tours={[yoichiOtaruWalkingTour, otaruShakotanYoichiCoachTour, sapporoKokusaiOtaruDayTour, otaruSnowParkDayTour]}
         />
 
         {/* Related articles */}
@@ -851,6 +983,65 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            <Link href="/guides/attractions/niseko-ski-tours" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 18l6-13 5 8 3-4 4 9z" />
+                  <line x1="2" y1="21" x2="22" y2="21" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Niseko Ski Tours (2027): Transfers, Lessons &amp; 4 Areas</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 18l6-13 5 8 3-4 4 9z" />
+                  <line x1="2" y1="21" x2="22" y2="21" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Gala Yuzawa Ski Day Trip from Tokyo: 71 Min, ¥8,000 Lifts</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5L4.9 17.5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/takayama-shirakawago-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21l9-16 9 16z" />
+                  <line x1="8" y1="21" x2="8" y2="15" />
+                  <line x1="16" y1="21" x2="16" y2="15" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Takayama and Shirakawa-go Tour (2026): Which Departure</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/tokyo-illumination-tours" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11v2h6v-2a6 6 0 0 0-3-11z" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Illuminations 2026: Dates, Hours and the Free Ones</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/transport/jr-pass-guide" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -897,11 +1088,11 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             <h2 className={styles.ctaBannerTitle}>{JR_FARE} each way, and one decision worth making</h2>
             <p className={styles.ctaBannerDesc}>
               The train needs nothing booked. What does is the half of the day that is not Otaru — the
-              Yoichi distillery, the Shakotan coast or a ski hill — and a canal cruise on a date that fills.
+              Yoichi distillery or a ski hill — and a canal cruise on a date that fills.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={otaruYoichiDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-                See the Otaru &amp; Yoichi Day →
+              <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+                See the Yoichi &amp; Otaru Day →
               </KlookLink>
               <KlookLink href={otaruCanalCruiseSealCarving.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View Canal Cruise Options →

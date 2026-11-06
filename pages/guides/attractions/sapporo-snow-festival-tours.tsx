@@ -3,27 +3,32 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
-  asahiyamaZooWinterDayTour,
   jozankeiHotSpringBusTrip,
   jrHokkaidoRailPass,
   klookEsim,
   lakeShikotsuIceFestivalHalfDayTour,
   lakeShikotsuIceFestivalShuttleBus,
-  newChitoseSapporoSharedTransfer,
+  newChitoseAirportTransfers,
   noboribetsuToyaOtaruDayTour,
   otaruSnowParkDayTour,
+  sapporoFuranoAreaPass,
   sapporoJozankeiBuddhaDayTour,
   sapporoSnowFestivalStayAreas,
-  sapporoSnowFestivalTripPrep,
   sapporoSnowParkHalfDayTour,
   sapporoTvTowerMoiwaSetTicket,
+  type KlookTripPrepItem,
 } from "../../../lib/klook-links";
+import {
+  asahiyamaBieiHighlightsTour,
+  lakeShikotsuTomamuIceVillageDayTour,
+} from "../../../lib/klook-links-winter-hokkaido";
 
 /**
  * The Sapporo Snow Festival, written for the reader searching "Sapporo Snow
@@ -96,13 +101,44 @@ import {
  * the headline total an automated read returned, so no figure here would be
  * reliable. The booking argument is made from the published dates instead.
  *
- * Nothing here is first-hand, and no Klook price appears: Klook answers
- * automated reads of its product pages with HTTP 403.
+ * Re-read on 6 November 2026 for the winter booking pass (task jtk-20261106-A21):
+ *   snowfes.com/news/948.html  dates and site boundaries unchanged (notice dated
+ *                              13 Jul 2026), Sapporo Snow Sports Park on 12–14 Feb
+ *                              2027 at Daiwa House Premist Dome, and 「2027さっぽろ
+ *                              雪まつりの情報は、順次更新予定です」.
+ *   snowfes.com/faq/           admission and hours unchanged.
+ *   hyoutou-special.asia       the Lake Shikotsu organisers' own site, now on the
+ *                              2027 edition: 30 Jan (Sat) to 23 Feb (Tue, holiday)
+ *                              2027, 10:00–20:00, lit 16:30–20:00; ¥1,000 weekdays
+ *                              and ¥3,000 weekends and holidays from junior-high
+ *                              age, free below that; dates can move with weather.
+ *   otaru.gr.jp/event/         Snow Light Path 6–13 Feb 2027, details still to come.
+ *     yukiakari2027
+ *   jrhokkaido.co.jp/airport/  ¥1,230 and the uシート figures unchanged.
+ *   jrhokkaido.co.jp/global/   Sapporo–Furano Area Pass ¥11,000 pre-purchase.
+ *     english/ticket/railpass/
+ *   city.sapporo.jp/st/        subway day tickets ¥830 and ¥520 unchanged.
+ *     josyaken/
+ * The 2027 Tsudome shuttle is still unannounced.
+ *
+ * Nothing here is first-hand. Klook answers automated reads of its product pages
+ * with HTTP 403, so the body carries no Klook price; the WinterBookingTop block
+ * carries the indexed from-prices, dated, and nothing else on the page does.
+ *
+ * Changed in that pass: the New Chitose transfer is now Klook's airport-transfer
+ * page, because the indexed text of listing 12479 shows a Tomamu route with no
+ * airport-to-Sapporo leg, and its 45- and 90-minute rule belonged to the Niseko
+ * shuttle. The Asahiyama day is 161857, because 164281's indexed dates stop at
+ * 15 March 2026.
  */
 
 /** Figures read off the official sites for this page. */
 const OWN_ISO = "2026-10-30";
 const OWN = checkedLabel(OWN_ISO);
+
+/** The winter pass's re-reads of the official sites and of Klook's index. */
+const SEASON_ISO = "2026-11-06";
+const SEASON = checkedLabel(SEASON_ISO);
 
 /** JMA normals, carried from our winter itinerary. */
 const JMA_CHECKED = checkedLabel("2026-10-28");
@@ -148,19 +184,19 @@ const tourRows = [
     tour: "Otaru, Shiroi Koibito Park & snow park day",
     adds: "The canal town 33 to 41 minutes west by Rapid Airport, its steam clock and a snow-play stop, as one booked day",
     fits: "A full day. Pair it with a festival evening rather than with another day out",
-    note: "Otaru runs its own Snow Light Path in the same stretch of February, which is the reason this day is better in festival week than in December",
+    note: "Otaru runs its own Snow Light Path on 6 to 13 February 2027, which is the reason this day is better in festival week than in December",
   },
   {
-    tour: "Asahiyama Zoo winter day trip",
-    adds: "Asahikawa's zoo in the one season the penguins walk, plus the Biei hills, with a snowmobile stop offered inside the booking",
+    tour: "Asahiyama Zoo, Biei Blue Pond & Ningle Terrace day",
+    adds: "Asahikawa's zoo in the one season the penguins walk, plus Biei, with a snowmobile option in winter at extra cost",
     fits: "A long full day — the furthest of these from Sapporo",
-    note: "A winter-season departure rather than a year-round one, so the listing itself is only open for part of the year",
+    note: "The zoo's penguin walk needs a snow course and its 2026-27 start date is not announced, though February sits inside the late-December to mid-March run the zoo gives",
   },
   {
-    tour: "Lake Shikotsu ice festival, as a half day or a shuttle seat",
-    adds: "The other February ice event on this side of Hokkaido, lit after dark",
+    tour: "Lake Shikotsu ice festival, as a half day, a shuttle seat or a Tomamu day",
+    adds: "The other February ice event on this side of Hokkaido, 30 January to 23 February 2027, lit 16:30 to 20:00",
     fits: "A half day or an evening, which is exactly the shape of a festival day with a free afternoon",
-    note: "Sold both ways: as a guided half day and as a plain round-trip coach seat. The seat is the cheaper way to go if you do not want a guide",
+    note: "Sold three ways: a guided half day, a plain round-trip coach seat, and a ten-hour day with the Tomamu Ice Village. Entry is ¥1,000 on weekdays and ¥3,000 at weekends and on public holidays, and the Tomamu listing says it is not in the price, so check the others",
   },
   {
     tour: "Jozankei — the hot-spring day, or the Hill of the Buddha day",
@@ -193,8 +229,8 @@ const transportRows = [
   {
     leg: "New Chitose Airport → Sapporo, booked transfer",
     time: "By road, so weather-dependent in February",
-    fare: "Per seat, by date — Klook blocks automated price reads, so open the listing",
-    note: "The listing requires 45 minutes after a domestic arrival and 90 after an international one, which makes it a before-you-fly booking rather than an on-the-day one.",
+    fare: "By vehicle and date — Klook blocks automated price reads, so open the page",
+    note: "Klook's airport-transfer page for New Chitose, with the terms set per vehicle, so it is a before-you-fly booking.",
   },
   {
     leg: "Sapporo Station → Odori",
@@ -229,11 +265,11 @@ const bookingWindow = [
   },
   {
     title: "Before you fly — the airport leg and the island pass",
-    desc: "The train is ¥1,230 and needs nothing booked, but a February road transfer does: the shared listing requires 45 minutes after a domestic arrival and 90 after an international one. The JR Hokkaido Rail Pass only pays if the trip leaves the city for Otaru, Asahikawa or Noboribetsu — price it against single fares rather than buying it by default.",
+    desc: "The train is ¥1,230 and needs nothing booked; a road transfer is the one to book before you fly. A rail pass only pays if the trip leaves the city for Otaru, Asahikawa or Noboribetsu, and the four-day Sapporo–Furano Area Pass at ¥11,000 is the first to price against single fares.",
   },
   {
-    title: "Weeks ahead — the seasonal day trips",
-    desc: "The Asahiyama Zoo winter day, the Lake Shikotsu ice festival half day and the snow parks are seasonal listings rather than year-round ones, and they run in exactly the weeks the festival does. That is also when the coaches out of Sapporo are fullest, which is the argument for holding one before you arrive.",
+    title: "By 31 December — the seasonal day trips",
+    desc: "The Lake Shikotsu ice festival half day and the snow parks are seasonal listings, and the Asahiyama Zoo day depends on the penguin season. They run in exactly the weeks the festival does, which is the argument for holding one before you arrive and checking its cancellation window while you can still change it.",
   },
   {
     title: "Nothing at all — the festival itself",
@@ -264,7 +300,7 @@ const faqItems = [
   },
   {
     q: "How do I get from New Chitose Airport to Sapporo?",
-    a: `The Rapid Airport train, in 33 to 37 minutes for ${AIRPORT_FARE}. JR Hokkaido's own figures, read ${OWN}: the Special Rapid is 33 minutes at fastest and the Rapid 37, with six services an hour through the middle of the day — one Special Rapid, three Rapid and two Section Rapid. Car 4 is the reserved uシート, which costs ¥1,000 on top of the fare or ¥800 if you reserve it ticketless, and is worth it in February precisely because the ordinary cars fill with ski bags. The alternative is a booked road transfer, which has one genuine advantage for a festival trip — it ends at your hotel door rather than at a station with cases in the snow — and one condition: the listing requires 45 minutes after a domestic arrival and 90 after an international one, so it is bought before you fly.`,
+    a: `The Rapid Airport train, in 33 to 37 minutes for ${AIRPORT_FARE}. JR Hokkaido's own figures, read ${OWN}: the Special Rapid is 33 minutes at fastest and the Rapid 37, with six services an hour through the middle of the day — one Special Rapid, three Rapid and two Section Rapid. Car 4 is the reserved uシート, which costs ¥1,000 on top of the fare or ¥800 if you reserve it ticketless, and is worth it in February precisely because the ordinary cars fill with ski bags. The alternative is a booked road transfer, which has one genuine advantage for a festival trip: it ends at your hotel door rather than at a station with cases in the snow. It is bought before you fly, and the terms are per vehicle on Klook's page.`,
   },
   {
     q: "How do you get between the three festival sites?",
@@ -284,7 +320,35 @@ const faqItems = [
   },
   {
     q: "What else is on in Hokkaido during festival week?",
-    a: `Two things that are worth planning around. The committee's own announcement adds さっぽろスノースポーツパーク2027 on 12 to 14 February 2027, immediately after the festival closes — so a trip that arrives late in the eight days catches both. And the Lake Shikotsu ice festival runs in the same stretch of February, south of the city, which is why it is sold both as a guided half day and as a plain shuttle seat. Otaru's Snow Light Path is the third, in the same weeks and the same 33 to 41 minutes west. Dates and the linked event read on ${OWN} from the committee's notice; the Otaru and Lake Shikotsu events are the ones the Klook listings on this page cover, so check the exact dates on the listing for your year before you build an evening on either.`,
+    a: `Three things, all with published dates. The committee's own announcement adds さっぽろスノースポーツパーク2027 on 12 to 14 February 2027 at Daiwa House Premist Dome, immediately after the festival closes, so a trip that arrives late in the eight days catches both. The Lake Shikotsu ice festival runs 30 January to 23 February 2027 on its organisers' own site, open 10:00 to 20:00 and lit from 16:30, at ¥1,000 on weekdays and ¥3,000 at weekends and on public holidays from junior-high age, free below that. That makes Thursday 11 February, a public holiday, a ¥3,000 day. The organisers say the dates can move with the weather. The third is Otaru's Snow Light Path, 6 to 13 February 2027 on the Otaru Tourism Association's page, the same 33 to 41 minutes west; its hours and venues are awaiting the official announcement. All read on ${SEASON}.`,
+  },
+];
+
+/** The same-trip block: the eSIM, the airport leg, the pass that fits, and the room. */
+const festivalSameTrip: KlookTripPrepItem[] = [
+  {
+    label: klookEsim.name,
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "Three outdoor sites, a Tsudome shuttle whose 2027 timetable is not yet published, and a month when the daily maximum averages 0.4°C: every site notice and weather change reaches your phone rather than a counter.",
+  },
+  {
+    label: newChitoseAirportTransfers.title,
+    ctaLabel: "Check New Chitose transfers →",
+    url: newChitoseAirportTransfers.url,
+    why: "The alternative to the Rapid Airport train with cases in February: it ends at your hotel door rather than at a station in the snow, which matters most for a late landing or a Susukino hotel.",
+  },
+  {
+    label: sapporoFuranoAreaPass.title,
+    ctaLabel: "Price the area pass →",
+    url: sapporoFuranoAreaPass.url,
+    why: "Only if the week leaves the city by train. It is ¥11,000 pre-purchase on JR Hokkaido's own page and covers New Chitose, Otaru and Asahikawa, against ¥2,460 for a return airport run alone. A trip that stays in Sapporo and books guided days does not need it.",
+  },
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo hotels on Klook →",
+    url: sapporoSnowFestivalStayAreas[0].url,
+    why: "The dates have been public since 11 February 2026, which is why rooms for these eight nights are the booking to settle first and the one this page cannot quote a price for.",
   },
 ];
 
@@ -409,6 +473,41 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           </p>
         </div>
 
+        <WinterBookingTop
+          heading="Which Sapporo Snow Festival Tours Should You Book for February 2027?"
+          checkedIso={SEASON_ISO}
+          deadline={
+            <>
+              Book the room now: the festival&apos;s eight days have been fixed since 11 February 2026, and
+              it is the one part of this trip with no fallback. Hold a day tour by 31 December, while you
+              can still read its cancellation window and change your mind.
+            </>
+          }
+          tours={[
+            {
+              title: otaruSnowParkDayTour.title,
+              url: otaruSnowParkDayTour.url,
+              price: "about US$65–76",
+              duration: "Full day",
+              departs: "Sapporo",
+            },
+            {
+              title: asahiyamaBieiHighlightsTour.title,
+              url: asahiyamaBieiHighlightsTour.url,
+              price: "from about US$55",
+              duration: "Full day",
+              departs: "Sapporo",
+            },
+            {
+              title: lakeShikotsuTomamuIceVillageDayTour.title,
+              url: lakeShikotsuTomamuIceVillageDayTour.url,
+              price: "from about US$103",
+              duration: "10 hours",
+              departs: "Sapporo",
+            },
+          ]}
+        />
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -461,6 +560,14 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           </div>
         </div>
 
+        {/* Same-trip block, moved up from below the booking window on 6 Nov 2026. */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What a Festival Trip Books Before It Flies"
+          intro="Four bookings sit outside the eight days themselves: data, the airport leg as a vehicle rather than a platform, a rail pass to price against your route, and the room, which on fixed dates announced a year ahead is the one with no fallback."
+          items={festivalSameTrip}
+        />
+
         {/* Dates and sites */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Dates &amp; sites</span>
@@ -469,7 +576,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             <strong>4 to 11 February 2027</strong>, eight days, on the organising committee&apos;s own
             announcement — 「2027年2月4日（木）から11日（木・祝）の8日間」. These are confirmed dates, not an
             estimate from previous years, and the same notice names all three sites and their boundaries. A
-            linked event, the Sapporo Snow Sports Park, follows on <strong>12 to 14 February 2027</strong>.
+            linked event, the Sapporo Snow Sports Park, follows on <strong>12 to 14 February 2027</strong> at
+            Daiwa House Premist Dome.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -498,7 +606,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Dates and site boundaries from the Sapporo Snow Festival Executive Committee&apos;s own
             announcement of the 77th edition; the hours and the admission line from the committee&apos;s own
-            FAQ, which answers the fee question with 「全会場無料です」. Both read on {OWN}. The committee
+            FAQ, which answers the fee question with 「全会場無料です」. Both first read on {OWN} and re-read
+            unchanged on {SEASON}. The committee
             notes that 2027 information will be updated as it is confirmed, so check the site boundaries again
             closer to the date — and note that the Susukino site&apos;s southern limit moved from South 7 in
             2026 to South 6 for 2027.
@@ -544,9 +653,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           <h2 className={styles.sectionTitle}>Which Tours Are Worth Booking in Festival Week?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The ones that are only sold in this season, and the ones that give an outdoor day an indoor
-            middle. Every listing below was confirmed live and on sale on {OWN}; none of them is a Snow
-            Festival tour, and each row says what it actually adds and what shape of day it fits. No prices
-            appear, because Klook answers automated reads of its product pages with an error — open the
+            middle. Every listing below was re-checked against Klook&apos;s search index on {SEASON}; none of
+            them is a Snow Festival tour, and each row says what it actually adds and what shape of day it
+            fits. The table carries no prices, because Klook answers automated reads of its product pages
+            with an error. The from-prices at the top of this page are the ones its index showed; open a
             listing for the figure on your dates.
           </p>
           <div className={styles.tableWrap}>
@@ -586,8 +696,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Otaru &amp; snow park day →
             </KlookLink>
-            <KlookLink href={asahiyamaZooWinterDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Asahiyama Zoo winter day →
+            <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Asahiyama Zoo day →
             </KlookLink>
             <KlookLink href={lakeShikotsuIceFestivalHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Lake Shikotsu ice festival →
@@ -699,8 +809,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             national pass.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              New Chitose → Sapporo transfer →
+            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              New Chitose transfers →
             </KlookLink>
             <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JR Hokkaido Rail Pass →
@@ -747,13 +857,34 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           </p>
         </section>
 
-        {/* Trip prep */}
-        <KlookTripPrep
-          label="Before you go"
-          heading="What a Festival Trip Books Before It Flies"
-          intro="Four bookings sit outside the eight days themselves: data, the island pass to price against your route, the airport leg as a seat rather than a platform, and the room — which on fixed dates announced a year ahead is the one with no fallback. Klook blocks automated price reads, so open a listing for the figure on your own dates."
-          items={sapporoSnowFestivalTripPrep}
-        />
+        {/* The rest of the winter */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>The rest of your winter</span>
+          <h2 className={styles.sectionTitle}>What Should You Pair With the Snow Festival?</h2>
+          <p className={styles.bodyText}>
+            Stay on Hokkaido first. Our{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo</Link>{" "}
+            is the easy add, because its Snow Light Path overlaps most of the festival. If you have
+            a full week, our{" "}
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary">Hokkaido 7 day itinerary</Link> puts the
+            festival inside a route that reaches Asahikawa and Furano, and if a day on the snow matters more
+            than a third evening at Odori, our{" "}
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link> covers the guided
+            day out of Sapporo.
+          </p>
+          <p className={styles.bodyText}>
+            If you are flying in through Tokyo, the mainland winter is worth one more stop. The{" "}
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>{" "}
+            and the{" "}
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour</Link>{" "}
+            both give you deep snow without the flight north, and a{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa ski day from Tokyo</Link>{" "}
+            is the shorter answer if you only want one day on skis. For the evenings before or after Hokkaido,
+            our guide to{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo illuminations</Link> shows which
+            displays are still running in February.
+          </p>
+        </section>
 
         {/* FAQ */}
         <section className={styles.faqSection}>
@@ -777,8 +908,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         {/* Klook tours */}
         <KlookTourPicks
           heading="The Days Out That Only Run in This Season"
-          intro="Four seasonal departures out of Sapporo, for the half of each festival day that is not spent at Odori. All of them are winter-only or winter-weighted listings rather than year-round ones, which is why they are worth opening before you arrive rather than on the morning."
-          tours={[otaruSnowParkDayTour, asahiyamaZooWinterDayTour, sapporoJozankeiBuddhaDayTour, noboribetsuToyaOtaruDayTour]}
+          intro="Four departures out of Sapporo, for the half of each festival day that is not spent at Odori. Their winter routes differ from their summer ones, which is why they are worth opening before you arrive rather than on the morning."
+          tours={[otaruSnowParkDayTour, asahiyamaBieiHighlightsTour, sapporoJozankeiBuddhaDayTour, noboribetsuToyaOtaruDayTour]}
         />
 
         {/* Related articles */}
@@ -867,6 +998,42 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Tokyo Illumination Tours (2026): Dates, Free Spots and What to Book</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 18l6-13 5 8 3-4 4 9z" />
+                  <line x1="2" y1="21" x2="22" y2="21" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Gala Yuzawa Ski Day Trip from Tokyo: 71 Min, ¥8,000 Lifts</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5L4.9 17.5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/takayama-shirakawago-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21l9-16 9 16z" />
+                  <line x1="8" y1="21" x2="8" y2="15" />
+                  <line x1="16" y1="21" x2="16" y2="15" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Takayama and Shirakawa-go Tour (2026): Which Departure</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -514,7 +514,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             month. Both are a gigabyte a day or better, both are 30-day plans so validity is not the constraint,
             and both are the cheapest thing on sale that covers the trip as of {checkedLabel}.
           </p>
-          <KlookEsimSlot why="Klook sells a Japan eSIM of its own in tiers from 500 MB to 50 GB plus an unlimited option, which covers the same sizing — worth a look if the tickets and transport for this trip are already in a Klook basket, since it goes on the same checkout. It is unranked here because the listing blocks automated price reads." />
+          <KlookEsimSlot why="Klook sells a Japan eSIM of its own in tiers from 500 MB to 50 GB plus an unlimited option, which covers the same sizing — worth a look if the tickets and transport for this trip are already in a Klook basket, since it goes on the same checkout. It is unranked here because its US$1.05 from-price names no plan." />
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Prices read off each provider&apos;s own site on {checkedLabel} by the job that re-reads them daily.
             Fair-use thresholds, speed caps and start rules read on {SPECS_CHECKED}; tethering and phone-number
@@ -692,7 +692,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             is priced in the sortable table below but absent from this one — there is no link to it on this site, and
             none of its fine print was re-read on {SPECS_CHECKED}.
           </p>
-          <KlookEsimSlot why="Klook's own Japan eSIM is the last row of this comparison and is complete in everything but price: SoftBank 5G on its per-day plans and docomo 4G LTE on its total-data plans, tethering supported, data only, 500 MB to 50 GB plus an unlimited tier that runs 10 GB a day before 128 kbps. Open the listing for the current prices." />
+          <KlookEsimSlot why="Klook's own Japan eSIM is the last row of this comparison and is complete in everything but price: SoftBank 5G on its per-day plans and IIJ (Docomo) 4G LTE on its total-data plans, tethering allowed, data only, 500 MB to 50 GB plus an unlimited tier at high speed up to 10 GB a day, then 128 kbps. Open the listing for the current prices." />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Want the picks rather than the specification?{" "}
             <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>

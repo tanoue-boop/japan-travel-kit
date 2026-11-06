@@ -3,21 +3,22 @@ import { SIMBYE_DISCOUNT_CODE, SIMBYE_DISCOUNT_PERCENT, SIMBYE_JAPAN_DISCOUNT_UR
 import styles from "../styles/EsimStickyCta.module.css";
 
 /**
- * The fixed "see the cheapest eSIM" bar on phones, on every eSIM page in every language.
+ * The fixed "see the lowest confirmed price" bar on phones, on every eSIM page in every language.
  *
  * Mounted once in _app.tsx and switched on by route, so a new eSIM page gets it without
  * being edited, and the wording has one home. The bar links to Simbye because it is the
- * lowest list price in data/esim-prices.json and the highest commission on the site; it
+ * lowest list price in data/esim-prices.json and the highest commission on the site. The
+ * wording stops at "confirmed" because Klook's US$1.05 from-price names no plan. It
  * quotes no price, so the price file stays out of the bundle of every other page.
  *
  * Hidden on wider screens by the stylesheet, not by JavaScript, so it never flashes.
  */
 const COPY = {
-  en: { cta: "See the cheapest eSIM", code: "Code {code}: {percent}% off" },
-  ko: { cta: "최저가 eSIM 보기", code: "코드 {code} {percent}% 할인" },
-  "zh-tw": { cta: "查看最便宜的 eSIM", code: "優惠碼 {code} 享 {percent}% 折扣" },
-  "zh-cn": { cta: "查看最便宜的 eSIM", code: "优惠码 {code} 享 {percent}% 折扣" },
-  th: { cta: "ดู eSIM ราคาถูกที่สุด", code: "โค้ด {code} ลด {percent}%" },
+  en: { cta: "See the lowest confirmed price", code: "Code {code}: {percent}% off" },
+  ko: { cta: "확인된 최저가 보기", code: "코드 {code} {percent}% 할인" },
+  "zh-tw": { cta: "查看已確認的最低價", code: "優惠碼 {code} 享 {percent}% 折扣" },
+  "zh-cn": { cta: "查看已确认的最低价", code: "优惠码 {code} 享 {percent}% 折扣" },
+  th: { cta: "ดูราคาต่ำสุดที่ยืนยันได้", code: "โค้ด {code} ลด {percent}%" },
 } as const;
 
 type Locale = keyof typeof COPY;

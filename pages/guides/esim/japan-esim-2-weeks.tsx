@@ -386,7 +386,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
                   </svg>
                 </div>
                 <div>
-                  <p className={styles.choiceCardTitle}>1. Simbye {simbyePick?.name ?? "10 GB"} – Lowest Price</p>
+                  <p className={styles.choiceCardTitle}>1. Simbye {simbyePick?.name ?? "10 GB"} – Lowest Confirmed Price</p>
                   <p className={styles.choiceCardSubtitle}>
                     {simbyePick ? formatUsd(simbyePick.priceUsd) : "—"} · {getProvider("simbye").network}
                   </p>

@@ -39,6 +39,7 @@ import { klookEsim } from "../../../../lib/klook-links";
 import { thKlookEsim } from "../../../../lib/klook-links-th";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
+import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 
 /**
@@ -117,7 +118,7 @@ const topPicks: TopPick[] = [
     id: "simbye-japan",
     esimId: "simbye",
     rank: 1,
-    bestFor: "ราคาต่ำสุด",
+    bestFor: "ราคาต่ำสุดในแพ็กเกจที่ยืนยันได้",
     badgeCls: styles.pickBadgeGreen,
     target: "นักท่องเที่ยวส่วนใหญ่ที่ต้องการแค่เน็ต ไม่ว่าทริปแบบไหน",
     ctaLabel: "ดู eSIM ของ Simbye →",
@@ -323,7 +324,7 @@ const networkRows = [
   },
   {
     provider: thKlookEsim.label,
-    carriers: "SoftBank 5G (แพ็กรายวัน) / docomo 4G LTE (แพ็กปริมาณรวม)",
+    carriers: "SoftBank 5G (แพ็กรายวัน) / IIJ (Docomo) 4G LTE (แพ็กปริมาณรวม)",
     how: "ไม่มีเบอร์ — เน็ตอย่างเดียว แชร์เน็ต: รองรับ ข้อมูลจากรายการสินค้าของ Klook เอง ไม่ใช่จากหน้าสินค้า — หน้านั้นตอบการอ่านอัตโนมัติด้วย HTTP 403",
     checked: KLOOK_SPECS_CHECKED,
   },
@@ -737,7 +738,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
             ราคา ณ {pricesCheckedAt} รายชื่อค่าย เกณฑ์การใช้งานที่เป็นธรรม และจำนวนประเทศของ eSIM โซน อ่านจากเว็บไซต์ของ
             ผู้ให้บริการแต่ละรายเมื่อ {SPECS_CHECKED}
           </p>
-          <KlookEsimSlot why="ถ้าตั๋วและการเดินทางของทริปนี้อยู่ในตะกร้า Klook แล้ว eSIM ญี่ปุ่นของ Klook เองก็จ่ายรวมในครั้งเดียวกันได้ — แพ็กรายวันใช้ SoftBank 5G แพ็กปริมาณรวมใช้ docomo 4G LTE รองรับการแชร์เน็ต ที่นี่ไม่จัดอันดับให้เพราะหน้าสินค้าบล็อกการอ่านราคาอัตโนมัติ เปิดดูเพื่อเช็กตัวเลือกปัจจุบัน" />
+          <KlookEsimSlot why="ถ้าตั๋วและการเดินทางของทริปนี้อยู่ในตะกร้า Klook แล้ว eSIM ญี่ปุ่นของ Klook เองก็จ่ายรวมในครั้งเดียวกันได้ — แพ็กรายวันใช้ SoftBank 5G แพ็กปริมาณรวมใช้ IIJ (Docomo) 4G LTE แชร์เน็ตได้ ที่นี่ไม่จัดอันดับให้เพราะราคาเริ่มต้น US$1.05 ไม่ได้ระบุแพ็กเกจ เปิดดูเพื่อเช็กตัวเลือกปัจจุบัน" />
         </section>
 
         {/* Q: Which eSIM is best for a 2-week trip? */}
@@ -1113,8 +1114,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
                 </Link>
               </div>
               <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
-                บน Klook ใช้ชื่อสินค้าว่า “{klookEsim.listingTitle}” ที่นี่ไม่แสดงราคาหรือปริมาณเน็ต เพราะอ่านหน้าสินค้า
-                แบบอัตโนมัติไม่ได้เมื่อ {KLOOK_CHECKED}
+                บน Klook ใช้ชื่อสินค้าว่า “{klookEsim.listingTitle}” {KLOOK_ESIM_FACTS["th"]}
               </p>
             </div>
           </article>

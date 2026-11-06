@@ -115,7 +115,7 @@ export default function EsimBrandCompare({ brand }: { brand: EsimBrand }) {
       </p>
       <p className={styles.note}>
         Prices in USD, checked {pricesCheckedLabel()}. Unlimited plans differ in their full-speed limits, so read those
-        before comparing on price alone. Klook blocks automated checks, so no Klook price is shown.
+        before comparing on price alone. Klook shows from US$1.05 before you choose days and data, with no plan named, so no per-plan price is shown.
         {brandUrl === "#" ? ` We have no link to ${provider.name}.` : ""} Affiliate links.
       </p>
     </section>

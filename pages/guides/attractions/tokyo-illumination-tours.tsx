@@ -3,6 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -11,7 +13,10 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import {
+  type KlookTripPrepItem,
+  hanedaLimousineBus,
   klookEsim,
+  naritaLimousineBus,
   skyhopHopOnHopOffBus,
   skytreeTicket,
   tokyoBayDinnerCruiseSymphony,
@@ -29,7 +34,7 @@ import {
 import { gygTokyo, gygTokyoEntryTickets, gygTokyoSkytree } from "../../../lib/gyg-links";
 
 /**
- * Tokyo Illuminations 2026 — the winter season, as a dated table rather than a
+ * Tokyo Illuminations 2026-27 — the winter season, as a dated table rather than a
  * gallery.
  *
  * The rule this page is built on: a display appears below only if its *operator*
@@ -42,26 +47,64 @@ import { gygTokyo, gygTokyoEntryTickets, gygTokyoSkytree } from "../../../lib/gy
  *                                             organising committee as at OWN_CHECKED
  *   カレッタ汐留 (Caretta Shiodome)          — likewise
  *
- * Sources read on OWN_CHECKED (26 Oct 2026):
+ * Sources re-read on OWN_CHECKED (6 Nov 2026):
  *
- *   mec.co.jp / Mitsubishi Estate release  Marunouchi Illumination 2026 period
- *   Tokyo Midtown Management release       MIDTOWN CHRISTMAS 2026, MIDTOWN YAESU
- *   roppongihills.com                      Keyakizaka Illumination period & hours
- *   tokyo-skytree.jp                       Dream Christmas 2026 period & hours
- *   Tokyo Dome Co. release                 TOKYO SNOW DOME CITY period & hours
- *   Sapporo Real Estate Development rel.   Baccarat ETERNAL LIGHTS, Yebisu
- *   tokyomegaillumi.jp                     Tokyo Mega Illumi period, hours, prices
- *   Yomiuriland release                    Jewellumination 2026 period & hours
+ *   marunouchi.com/en/lp/brightholiday2026/  Marunouchi period and hours (16:00-23:00,
+ *                                            24:00 in December), now published
+ *   yaesu.tokyo-midtown.com                  MIDTOWN YAESU CHRISTMAS period & hours
+ *   tokyo-midtown.com/jp/news/8186/          MIDTOWN CHRISTMAS 2026 period
+ *   roppongihills.com/sp/christmashills/102/ Keyakizaka Illumination period & hours
+ *   tokyo-skytree.jp/event/christmas2026/    tower lighting 5 Nov-25 Dec, listed dark
+ *                                            dates. The 24 Feb date this page used to
+ *                                            print belongs to a shop symbol tree.
+ *   tokyo-dome.co.jp/en/illumination/        period & hours
+ *   gardenplace.jp                           Baccarat ETERNAL LIGHTS, Yebisu
+ *   tokyomegaillumi.jp                       period, hours, prices, final season,
+ *                                            closed dates (homepage and FAQ differ on
+ *                                            late December; the page says so)
  *
- * One cell in the table is a dash: the Marunouchi committee has published the
- * 2026 period but not the 2026 lighting hours, and an unverified figure is worse
- * than a dash. No Klook price appears anywhere — Klook answers automated reads of
- * its product pages with HTTP 403.
+ * Still dated 26 Oct 2026, because they could not be re-read: the Yomiuriland release
+ * (its site refuses our fetcher) and the Midtown garden hours and Path of Light end
+ * date (the 2026 press PDF is image-only).
+ *
+ * The body quotes no Klook price, because Klook answers automated reads of its
+ * product pages with HTTP 403; the top block alone shows from-prices taken from
+ * Klook's indexed listings.
  */
 
-/** The date every figure on this page was read off its operator's own source. */
-const OWN_CHECKED = "2026-10-26";
+/** The date the figures on this page were read off the operators' own sources. */
+const OWN_CHECKED = "2026-11-06";
 const OWN = checkedLabel(OWN_CHECKED);
+/** Rows that could only be read on the first pass. */
+const FIRST_READ = checkedLabel("2026-10-26");
+
+/** The same-trip block, for an evening based in Tokyo. */
+const sameTripItems: KlookTripPrepItem[] = [
+  {
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "Lighting times can change on an individual date, and a Mega Illumi ticket arrives as a QR code, so you want data working from the moment you land.",
+  },
+  {
+    label: "Narita Airport limousine bus",
+    ctaLabel: "Check the Narita bus →",
+    url: naritaLimousineBus.url,
+    why: "Runs to the Tokyo hotel and station stops, which suits an evening arrival when you want to drop the cases and walk straight out to the lights.",
+  },
+  {
+    label: "Haneda Airport limousine bus",
+    ctaLabel: "Check the Haneda bus →",
+    url: hanedaLimousineBus.url,
+    why: "The shorter run, with Shinjuku and Ikebukuro among the stops, for a landing late enough that the first evening is the one you see the lights.",
+  },
+  {
+    label: tokyoSubwayTicket.title,
+    ctaLabel: "Check the subway ticket →",
+    url: tokyoSubwayTicket.url,
+    why: "Covers Tokyo Metro and Toei, which reach Roppongi, Nijubashimae and Korakuen. It does not cover JR, so Ebisu and Tokyo Station on the Yamanote Line sit outside it.",
+  },
+];
 
 type Display = {
   name: string;
@@ -69,11 +112,13 @@ type Display = {
   where: string;
   /** The 2026–27 season, as the operator announced it. */
   period: string;
-  /** Lighting hours, or "—" where the operator has not published them. */
+  /** Lighting hours, as the operator published them. */
   hours: string;
   /** Free or paid, and what the money buys. */
   ticket: string;
   source: string;
+  /** Set only where a row could not be re-read on OWN_CHECKED. */
+  checked?: string;
 };
 
 /**
@@ -85,10 +130,10 @@ const displays: Display[] = [
   {
     name: "Marunouchi Illumination 2026",
     where: "Marunouchi Nakadori, about 1.2 km of it — Tokyo Station (Marunouchi side), Nijubashimae or Yurakucho",
-    period: "12 Nov 2026 – 14 Feb 2027",
-    hours: "—",
+    period: "12 Nov 2026 – 14 Feb 2027; Gyoko-dori lit 27 Nov – 25 Dec",
+    hours: "16:00 – 23:00, to 24:00 throughout December; the opening night starts at a different time",
     ticket: "Free — a public street, no ticket of any kind",
-    source: "Mitsubishi Estate release",
+    source: "marunouchi.com",
   },
   {
     name: "MIDTOWN YAESU CHRISTMAS 2026",
@@ -96,13 +141,13 @@ const displays: Display[] = [
     period: "19 Nov – 25 Dec 2026; the YAESU WINTER LIGHTS run on to 14 Feb 2027",
     hours: "16:00 – 23:00",
     ticket: "Free",
-    source: "Tokyo Midtown Management release",
+    source: "yaesu.tokyo-midtown.com",
   },
   {
     name: "Dream Christmas 2026 at TOKYO SKYTREE",
     where: "The tower itself, Sumida — Tokyo Skytree Station or Oshiage",
-    period: "5 Nov 2026 – 24 Feb 2027",
-    hours: "Tower lighting 17:30 – 22:00; to midnight on 24 and 25 Dec; from about 18:20 on the opening night, and dark on a handful of dates the tower lists",
+    period: "5 Nov – 25 Dec 2026; not on 7 and 12 Nov or 1, 5, 6, 9, 12 and 19 Dec",
+    hours: "Tower lighting 17:30 – 22:00; to midnight on 24 and 25 Dec; from about 18:20 on the opening night",
     ticket: "Free to look at from the street; the Tembo Deck is a separate ticket",
     source: "tokyo-skytree.jp",
   },
@@ -119,8 +164,9 @@ const displays: Display[] = [
     where: "Tokyo Midtown garden, Roppongi — Roppongi (Hibiya and Oedo lines)",
     period: "26 Nov – 25 Dec 2026",
     hours: "17:00 – 23:00",
-    ticket: "Free; the Midtown ice rink beside it is a paid ticket",
+    ticket: "Free; the Midtown ice rink beside it, open from 5 Dec, is a paid ticket",
     source: "Tokyo Midtown Management release",
+    checked: FIRST_READ,
   },
   {
     name: "Tokyo Midtown Path of Light (光の散歩道)",
@@ -129,6 +175,7 @@ const displays: Display[] = [
     hours: "17:00 – 23:00",
     ticket: "Free",
     source: "Tokyo Midtown Management release",
+    checked: FIRST_READ,
   },
   {
     name: "Baccarat ETERNAL LIGHTS, Yebisu Garden Place",
@@ -136,7 +183,7 @@ const displays: Display[] = [
     period: "Chandelier 14 Nov 2026 – 11 Jan 2027; the garden illumination on to 28 Feb 2027",
     hours: "Chandelier 11:00 – 23:00 (from 17:00 on the 14 Nov opening day); the illumination 16:00 – 23:00",
     ticket: "Free — an open plaza",
-    source: "Sapporo Real Estate Development release",
+    source: "gardenplace.jp",
   },
   {
     name: "TOKYO SNOW DOME CITY, Tokyo Dome City",
@@ -144,14 +191,14 @@ const displays: Display[] = [
     period: "19 Nov 2026 – 28 Feb 2027 (102 nights)",
     hours: "17:00 – 24:00, varying with sunset and with events on site",
     ticket: "Free to enter the site",
-    source: "Tokyo Dome Co. release",
+    source: "tokyo-dome.co.jp",
   },
   {
     name: "Tokyo Mega Illumi, Oi Racecourse",
     where: "The Oi Racecourse infield, Shinagawa — Oi Keibajo-mae on the Tokyo Monorail, about 2 minutes on foot",
-    period: "31 Oct 2026 – 10 Jan 2027; closed on race days and on the dates its own calendar marks",
+    period: "31 Oct 2026 – 10 Jan 2027, its final season; closed 16–20 Nov, 30 Nov – 4 Dec and 24 Dec – 1 Jan on its homepage",
     hours: "16:30 – 21:00, last entry 20:00",
-    ticket: "Paid — from ¥800 adult (18+) and from ¥400 elementary to high school, preschool free; priced by date",
+    ticket: "Paid — from ¥800 adult (18+) and from ¥400 elementary to high school, preschool free; priced by date, and advance tickets sell until 19:00 on the day",
     source: "tokyomegaillumi.jp",
   },
   {
@@ -161,6 +208,7 @@ const displays: Display[] = [
     hours: "16:00 – 20:30, varying by period",
     ticket: "Paid — the display is inside the amusement park, so it needs a park ticket",
     source: "Yomiuriland release",
+    checked: FIRST_READ,
   },
 ];
 
@@ -176,7 +224,7 @@ const whoFor: { title: string; desc: string }[] = [
   },
   {
     title: "Buy a ticket if…",
-    desc: "The display you want is Tokyo Mega Illumi at Oi Racecourse or the Jewellumination at Yomiuriland. These two are not streets — they are ticketed venues with a last entry, priced by date, and the Mega Illumi is dark on race days. Those are the only two on this page where turning up on the wrong night means not getting in.",
+    desc: "The display you want is Tokyo Mega Illumi at Oi Racecourse or the Jewellumination at Yomiuriland. These two are not streets — they are ticketed venues with a last entry, priced by date, and the Mega Illumi is dark on race days and over the Christmas and New Year week. Those are the only two on this page where turning up on the wrong night means not getting in.",
   },
 ];
 
@@ -184,7 +232,7 @@ const whoFor: { title: string; desc: string }[] = [
 const steps = [
   {
     title: "Pick the night by what is open, not by what looks best",
-    desc: "The seasons do not overlap neatly: Keyakizaka and the Roppongi Christmas displays end on 25 December, while Marunouchi, Tokyo Dome City and Yebisu run deep into February. A trip in the first week of November has Skytree, Keyakizaka and the Mega Illumi and almost nothing else; a trip in late January has the long-running ones and no Christmas markets at all.",
+    desc: "The seasons do not overlap neatly: Keyakizaka, the Skytree lighting and the Roppongi Christmas displays end on 25 December, while Marunouchi, Tokyo Dome City and Yebisu run deep into February. A trip in the first week of November has Skytree, Keyakizaka and the Mega Illumi and almost nothing else; a trip in late January has the long-running ones and no Christmas markets at all.",
   },
   {
     title: "Group by district, not by ranking",
@@ -192,7 +240,7 @@ const steps = [
   },
   {
     title: "Book the ticketed two, and only those, before the night",
-    desc: "Tokyo Mega Illumi has a last entry of 20:00 and prices that move by date, and Yomiuriland is a park ticket rather than a display ticket. Both are the kind of booking that is easier on a reseller than on a Japanese ticket page from abroad. Nothing else on this page sells a ticket at all.",
+    desc: "Tokyo Mega Illumi has a last entry of 20:00 and prices that move by date, and its gate machines may not sell at all when it is crowded; Yomiuriland is a park ticket rather than a display ticket. Both are the kind of booking that is easier on a reseller than on a Japanese ticket page from abroad. Nothing else on this page sells a ticket at all.",
   },
   {
     title: "Settle the moving-around before you leave the hotel",
@@ -203,11 +251,11 @@ const steps = [
 const faqItems = [
   {
     q: "When do Tokyo illuminations start?",
-    a: `Between late October and the end of November, and 2026 is unusually early at the front end. On the operators' own announcements, read on ${OWN}: Yomiuriland's Jewellumination opened on 29 October 2026 and Tokyo Mega Illumi at Oi Racecourse on 31 October; TOKYO SKYTREE's Dream Christmas and the Roppongi Hills Keyakizaka Illumination both started on 5 November; Marunouchi on 12 November; Yebisu Garden Place on 14 November; Tokyo Dome City and Midtown Yaesu on 19 November; and Tokyo Midtown in Roppongi last, on 26 November. If you are in Tokyo in the first half of November, four of the ten are already lit and the Roppongi garden is not.`,
+    a: `Between late October and the end of November, and 2026 is unusually early at the front end. On the operators' own announcements: Yomiuriland's Jewellumination opened on 29 October 2026 and Tokyo Mega Illumi at Oi Racecourse on 31 October; TOKYO SKYTREE's Dream Christmas and the Roppongi Hills Keyakizaka Illumination both started on 5 November; Marunouchi on 12 November; Yebisu Garden Place on 14 November; Tokyo Dome City and Midtown Yaesu on 19 November; and Tokyo Midtown in Roppongi last, on 26 November. In the first week of November four of the ten are lit and the Roppongi garden is not.`,
   },
   {
     q: "What is the best illumination in Tokyo?",
-    a: "Marunouchi Nakadori, if you only have one evening — about 1.2 km of champagne-gold street trees that runs from 12 November 2026 to 14 February 2027, which makes it both the longest season and the easiest to reach, straight out of Tokyo Station. For a shorter, denser walk, the Roppongi Hills Keyakizaka slope is the one with Tokyo Tower framed at the bottom of it, and the Tokyo Midtown garden is a seven-minute walk from the top of that slope, so the two together are one evening rather than two. If you want a display that is an event rather than a street, that is Tokyo Mega Illumi at Oi Racecourse — and that one is ticketed, with a last entry at 20:00.",
+    a: "Marunouchi Nakadori, if you only have one evening — about 1.2 km of champagne-gold street trees that runs from 12 November 2026 to 14 February 2027, which makes it a long season as well as the easiest to reach, straight out of Tokyo Station. For a shorter, denser walk, the Roppongi Hills Keyakizaka slope is the one with Tokyo Tower framed at the bottom of it, and the Tokyo Midtown garden is a seven-minute walk from the top of that slope, so the two together are one evening rather than two. If you want a display that is an event rather than a street, that is Tokyo Mega Illumi at Oi Racecourse — and that one is ticketed, with a last entry at 20:00, and this is its final season before a pause for the racecourse rebuild.",
   },
   {
     q: "Are Tokyo illuminations free?",
@@ -215,7 +263,7 @@ const faqItems = [
   },
   {
     q: "What time do Tokyo illuminations turn on?",
-    a: `Mostly 16:00 or 17:00, and the useful thing is when they turn off. On the operators' published hours, read on ${OWN}: Midtown Yaesu and Yebisu Garden Place light at 16:00, Keyakizaka and both Tokyo Midtown displays at 17:00, Tokyo Dome City at 17:00 and the Skytree tower at 17:30. Closing runs 22:00 at Keyakizaka and the Skytree tower, 23:00 at Midtown, Yaesu and Yebisu, and midnight at Tokyo Dome City — which makes Korakuen the one to leave until last. The two ticketed venues are the opposite shape: Tokyo Mega Illumi runs 16:30 to 21:00 with last entry at 20:00, and the Yomiuriland display 16:00 to 20:30. Sunset in Tokyo is around 16:30 in December, so a 17:00 start is genuinely dark.`,
+    a: `Mostly 16:00 or 17:00, and the useful thing is when they turn off. On the operators' published hours: Marunouchi, Midtown Yaesu and Yebisu Garden Place light at 16:00, Keyakizaka and both Tokyo Midtown displays at 17:00, Tokyo Dome City at 17:00 and the Skytree tower at 17:30. Closing runs 22:00 at Keyakizaka and the Skytree tower, 23:00 at Marunouchi, Midtown, Yaesu and Yebisu, and midnight at Tokyo Dome City and, throughout December, at Marunouchi — which makes those two the ones to leave until last. The two ticketed venues are the opposite shape: Tokyo Mega Illumi runs 16:30 to 21:00 with last entry at 20:00, and the Yomiuriland display 16:00 to 20:30. Sunset in Tokyo is around 16:30 in December, so a 17:00 start is genuinely dark.`,
   },
   {
     q: "How do I see several illuminations in one night?",
@@ -223,11 +271,11 @@ const faqItems = [
   },
   {
     q: "Do Tokyo illuminations need tickets or reservations?",
-    a: "Only two of the ten do. Tokyo Mega Illumi sells a dated ticket, prices it by date, closes on race days and stops admitting at 20:00 — so turning up on the wrong evening means not getting in. Yomiuriland needs a park ticket, which is a different purchase from an illumination ticket and covers the rides as well. Everything else on this page is a street or a plaza with no gate. What does get booked out in December is not the lights but everything around them: the bay cruises, the guided evenings and the restaurant terraces along Marunouchi Nakadori. If your evening includes any of those, that is the reservation, not the display.",
+    a: "Only two of the ten do. Tokyo Mega Illumi sells a dated ticket, prices it by date, closes on race days and from 24 December to 1 January on its homepage calendar, and stops admitting at 20:00 — so turning up on the wrong evening means not getting in. Yomiuriland needs a park ticket, which is a different purchase from an illumination ticket and covers the rides as well. Everything else on this page is a street or a plaza with no gate. What does get booked out in December is not the lights but everything around them: the bay cruises, the guided evenings and the restaurant terraces along Marunouchi Nakadori. If your evening includes any of those, that is the reservation, not the display.",
   },
   {
     q: "When do Tokyo illuminations end?",
-    a: "25 December for the Christmas ones, and well into the new year for the rest — which is the single most useful thing to know if you are travelling in January. Keyakizaka, both Roppongi Christmas displays, Midtown Yaesu's Christmas programme and the Skytree's Christmas decorations all finish on 25 December 2026. After that, Marunouchi runs to 14 February 2027, Tokyo Midtown's Path of Light and the Skytree lighting to late February, Yebisu Garden Place and Tokyo Dome City to 28 February, the Mega Illumi to 10 January, and the Yomiuriland Jewellumination all the way to 4 April 2027. A January trip to Tokyo is not too late for illuminations; it is just too late for the markets.",
+    a: "25 December for the Christmas ones, and well into the new year for the rest — which is the single most useful thing to know if you are travelling in January. Keyakizaka, Midtown's Christmas displays, Midtown Yaesu's Christmas programme and the Skytree's special tower lighting all finish on 25 December 2026. After that, the Mega Illumi runs to 10 January, Marunouchi and the Yaesu Winter Lights to 14 February 2027, Tokyo Midtown's Path of Light to 23 February, Yebisu Garden Place's illumination and Tokyo Dome City to 28 February, and the Yomiuriland Jewellumination all the way to 4 April 2027. A January trip to Tokyo is not too late for illuminations; it is just too late for the markets.",
   },
   {
     q: "Which night of the week is least crowded?",
@@ -263,9 +311,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-illumination-tours") },
 });
 
-const TITLE = "Tokyo Illuminations 2026: Dates, Hours and the Free Ones";
+const TITLE = "Tokyo Illuminations 2026-27: Dates, Hours, Free Ones";
 const DESC =
-  "Tokyo Illuminations 2026: the opening and closing nights, the lighting hours and which of the 7 displays are free, each with the operator's own figures.";
+  "Tokyo Illuminations 2026-27: opening and closing nights, lighting hours and which 8 of the 10 displays are free, from each operator's own page.";
 const ROUTE = "/guides/attractions/tokyo-illumination-tours";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -280,7 +328,7 @@ const sectionIntro: ReactNode = (
     22:00 and midnight, the Christmas ones finish on <strong>25 December</strong>, and only two of
     the ten &mdash; Tokyo Mega Illumi at Oi Racecourse and the Yomiuriland Jewellumination &mdash;
     need a ticket at all. Every figure below was read off the operator&apos;s own site or its own
-    press release on {OWN}.
+    press release, with the date of each read in the table.
   </>
 );
 
@@ -336,7 +384,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
-                { "@type": "ListItem", position: 4, name: "Tokyo Illuminations 2026", item: URL },
+                { "@type": "ListItem", position: 4, name: "Tokyo Illuminations 2026-27", item: URL },
               ],
             }),
           }}
@@ -358,7 +406,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>Tokyo Illuminations 2026</span>
+          <span className={styles.breadCurrent}>Tokyo Illuminations 2026-27</span>
         </div>
       </div>
 
@@ -367,7 +415,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Illuminations 2026:<br />Dates, Hours and Which Ones Are Free
+            Tokyo Illuminations 2026&ndash;27:<br />Dates, Hours and Which Ones Are Free
           </h1>
           <p className={styles.heroSubtitle}>
             Ten displays whose operators have announced the 2026&ndash;27 season, with the opening
@@ -392,6 +440,43 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Winter booking block (task A21): the bookable evenings, ahead of the long read. */}
+        <WinterBookingTop
+          heading="Which Tokyo Illumination Tours Should You Book for December?"
+          checkedIso="2026-11-06"
+          deadline={
+            <>
+              For a December weekend, book the tour or cruise by <strong>20 November</strong>: the
+              Christmas displays all stop on 25 December, so the weekends before it are the fixed
+              window. If you also want Tokyo Mega Illumi, its homepage shows it closed from 24 December
+              to 1 January, and its last night is 10 January 2027.
+            </>
+          }
+          tours={[
+            {
+              title: tokyoNightTourAkihabaraShibuya.title,
+              url: tokyoNightTourAkihabaraShibuya.url,
+              price: "from about US$89",
+              duration: "4 hours 50 minutes",
+              departs: "Ueno Station",
+            },
+            {
+              title: tokyoBayDinnerCruiseSymphony.title,
+              url: tokyoBayDinnerCruiseSymphony.url,
+              price: "about US$88–98",
+              duration: "2 hours 30 minutes",
+              departs: "Hinode Pier; confirm on your voucher",
+            },
+            {
+              title: "Tokyo open-top sightseeing bus (choose an after-dark departure)",
+              url: tokyoOpenTopBusSightseeing.url,
+              price: "from about US$13",
+              duration: "70 minutes",
+              departs: "See listing",
+            },
+          ]}
+        />
 
         {/* Quick Answer Box — the answer, before anything else */}
         <div className={styles.verdictBox}>
@@ -427,15 +512,23 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        {/* Same-trip block (task A21). */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What Else Should You Book for a Tokyo Winter Evening?"
+          intro="The lights are mostly free, so what is left to book is getting to Tokyo and getting around it after dark: data, one airport run, and the subway ticket that reaches most of the free displays."
+          items={sameTripItems}
+        />
+
         {/* The table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The 2026&ndash;27 season</span>
           <h2 className={styles.sectionTitle}>When Do Tokyo Illuminations Start, and When Do They End?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Between 29 October and 26 November, and then they end in two waves &mdash; 25 December
-            for the Christmas displays, late February or later for the rest. Every row below is the
-            operator&apos;s own announcement for the 2026&ndash;27 season, read on {OWN}. Nothing
-            here is carried over from last winter: a display whose operator has not announced this
+            Between 29 October and 26 November, and then they end in stages &mdash; 25 December for
+            the Christmas displays, 10 January for the Mega Illumi, mid to late February or later for
+            the rest. Every row below is the operator&apos;s own announcement for the 2026&ndash;27
+            season, with the date we read it. Nothing here is carried over from last winter: a display whose operator has not announced this
             season is not in the table at all.
           </p>
           <div className={styles.tableWrap}>
@@ -457,7 +550,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
                       <td style={{ fontSize: "0.85rem" }}>{row.hours}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.ticket}</td>
                       <td style={{ fontSize: "0.82rem" }}>
-                        {row.source}, {OWN}
+                        {row.source}, {row.checked ?? OWN}
                       </td>
                     </tr>
                   ))}
@@ -468,11 +561,14 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Subject to change &mdash; confirm on the operator&apos;s own page before you travel, and
             note that several of these displays go dark on a handful of individual dates each season.
-            The dash in the Marunouchi row is deliberate: the committee has announced the 2026 period
-            but not the 2026 lighting hours, and we print only figures we could read off an
-            operator&apos;s own source. Two displays Tokyo visitors often search for &mdash; the Blue
-            Grotto in Shibuya and Caretta Shiodome &mdash; are absent for the same reason: neither
-            organiser had announced a 2026&ndash;27 season as at {OWN}, so there is nothing to print.
+            The Mega Illumi&apos;s own pages differ on late December: its homepage closes 24 December
+            to 1 January, while its FAQ names race days plus 26 and 27 December and 1 January, so check
+            its calendar for any date in that week. Third-party guides report that Yomiuriland&apos;s
+            display pauses on weekdays from 1 to 12 March 2027; that is reported, not something we
+            could read on the operator&apos;s site. Two displays Tokyo visitors often search for
+            &mdash; the Blue Grotto in Shibuya and Caretta Shiodome &mdash; are absent because we found
+            no 2026&ndash;27 season from either organiser as at {OWN}, so both are awaiting an official
+            announcement and there is nothing to print.
           </p>
         </section>
 
@@ -483,7 +579,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             Marunouchi Nakadori, if you have one evening and you are starting from the middle of the
             city. It is about 1.2 km of champagne-gold street trees running out of Tokyo Station, it
-            has the longest season of the ten &mdash; 12 November 2026 to 14 February 2027 &mdash;
+            lights from 12 November 2026 to 14 February 2027, until midnight throughout December,
             and it costs nothing. Midtown Yaesu is connected to the same station underground, which
             makes those two a single evening with no train in it.
           </p>
@@ -497,8 +593,9 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             <strong>If you want an event rather than a street,</strong> that is Tokyo Mega Illumi on
             the Oi Racecourse infield &mdash; a ticketed site with a light tunnel and a fountain
-            show, 16:30&ndash;21:00 with last entry at 20:00, and dark on race days. It is also the
-            one on this list with a published end: 10 January 2027. Tokyo Dome City is the free
+            show, 16:30&ndash;21:00 with last entry at 20:00, and dark on race days. This is its final
+            season: the operator says it will pause from next season for the racecourse rebuild, and
+            the last night is 10 January 2027. Tokyo Dome City is the free
             equivalent, lit across the whole site until midnight, which is the latest finish of the
             ten and the easiest with children.
           </p>
@@ -583,8 +680,8 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             <strong>A Tokyo Bay cruise</strong> is the one that shows you something a walk cannot.
             The Symphony sails from Hinode Pier with Rainbow Bridge, Tokyo Tower and the Skytree on
             the route; a yakatabune houseboat is the smaller, lower, more traditional version of the
-            same water; and a plain sunset sailing is the no-dinner option that finishes after the
-            city has changed over. All three run to fixed departures, and December weekends are when
+            same water; and a sunset sailing is the earlier option, for an evening that carries on
+            after the city has changed over. All three run to fixed departures, and December weekends are when
             they go first. Our{" "}
             <Link href="/guides/attractions/tokyo-bay-cruise">Tokyo Bay cruise guide</Link> sets out
             which boat suits which evening.
@@ -655,6 +752,41 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           </p>
         </section>
 
+        {/* The other winter pages, as advice rather than a link list (task A21). */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>The rest of the season</span>
+          <h2 className={styles.sectionTitle}>What Else Can You Pair With Tokyo&apos;s Winter Lights?</h2>
+          <p className={styles.bodyText}>
+            A few nights of illuminations sit easily at the start of a longer trip. If Tokyo is only
+            your first stop, our <Link href="/guides/attractions/japan-winter-itinerary">12-day Japan winter itinerary</Link>{" "}
+            puts these evenings on Days 1 to 4, then carries on through Kanazawa, Takayama, Kyoto and
+            Osaka. A daytime snow trip pairs best with a late display, because you are back in the city
+            by evening: our{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa ski day trip from Tokyo</Link>{" "}
+            starts at Tokyo Station, the same station as Marunouchi Nakadori, and the slopes open on 19
+            December 2026. For snow you do not ski on, our{" "}
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour guide</Link>{" "}
+            covers the winter day out towards Nagano.
+          </p>
+          <p className={styles.bodyText}>
+            If you want lights on a bigger scale than a Tokyo street, January is the month for
+            Shirakawa-go: its light-up runs on 11, 17, 24 and 31 January 2027 with nothing sold on the
+            day, and our{" "}
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour guide</Link>{" "}
+            compares the departures. A January trip also misses the Christmas displays here, which is
+            the reason to go on to a place where winter peaks later. February is Hokkaido: the{" "}
+            <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours guide</Link>{" "}
+            covers 4 to 11 February 2027, and Marunouchi stays lit to 14 February if you fly back
+            through Tokyo. Our{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo</Link>{" "}
+            adds the Snow Light Path on 6 to 13 February 2027, our{" "}
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary">7-day Hokkaido itinerary</Link>{" "}
+            joins the whole week together, and our{" "}
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link> is the one to
+            read if you would rather ski than walk the lights.
+          </p>
+        </section>
+
         {/* Where to stay */}
         <KlookStayAreas
           heading="Where Should You Stay for a Tokyo Illumination Trip?"
@@ -683,7 +815,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
 
         <KlookTourPicks
           heading="The Evenings Around the Lights"
-          intro="An illumination fills an hour or two of an evening and most of them are free, which leaves the rest of the night open and unpaid for. These are the things that are actually booked on a Tokyo winter evening — a boat, a bus, a guided few hours. Klook blocks automated price reads, so open a listing for the figure on your own date."
+          intro="An illumination fills an hour or two of an evening and most of them are free, which leaves the rest of the night open and unpaid for. These are the things that are actually booked on a Tokyo winter evening — a boat, a bus, a guided few hours. Klook blocks automated price reads, so beyond the indexed from-prices at the top of this page, open a listing for the figure on your own date."
           tours={[
             tokyoNightTourAkihabaraShibuya,
             tokyoOpenTopBusSightseeing,
@@ -726,6 +858,77 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Japan Winter Itinerary: 12 Days, Day by Day (2027)</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            {/* Added 6 Nov 2026 (task A21): the six winter guides this list was missing. */}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 18l6-13 5 8 3-4 4 9z" />
+                  <line x1="2" y1="21" x2="22" y2="21" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>GALA Yuzawa Ski Day Trip from Tokyo</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 18l6-13 5 8 3-4 4 9z" />
+                  <line x1="2" y1="21" x2="22" y2="21" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Snow Monkey Tour from Tokyo: Jigokudani Park Guide</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/takayama-shirakawago-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 20l9-14 9 14z" />
+                  <path d="M8 20v-4h8v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Takayama and Shirakawa-go Tour: Which Departure</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/niseko-ski-tours" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5L4.9 17.5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Niseko Ski Tours: Transfers, Lessons &amp; the Four Areas</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Hokkaido 7 Day Itinerary: 7 Days in Hokkaido, Day by Day</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 17h18M5 17l1-5h12l1 5M9 12V7h6v5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Otaru Day Trip from Sapporo</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

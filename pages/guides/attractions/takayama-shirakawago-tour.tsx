@@ -1,16 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
+  hokurikuArchPass,
   klookEsim,
+  naritaExpressRoundTripUrl,
   shirakawagoGokayamaKanazawaBusTour,
   shirakawagoKanazawaDayTour,
-  shirakawagoLightUpTakayamaDayTour,
   shirakawagoLineBusTicket,
   shirakawagoObservationDeckDayTour,
   shirakawagoTakayamaKanazawaDayTour,
@@ -18,14 +21,35 @@ import {
   takayamaShirakawagoGokayamaUnescoTour,
   takayamaShirakawagoNagoyaDayTrip,
   takayamaShirakawagoOneDayBusTour,
+  type KlookTripPrepItem,
 } from "../../../lib/klook-links";
+import {
+  shirakawagoFairytale2027NagoyaTour,
+  shirakawagoIllumination2027NagoyaTour,
+} from "../../../lib/klook-links-winter-honshu";
 
 /**
  * A Takayama and Shirakawa-go tour, written as a which-departure guide.
  * Added 27 Oct 2026.
  *
- * Every fare and journey time on this page was read off the operating bus
- * company's own site on 27 October 2026:
+ * Re-read 6 Nov 2026, with what changed. Nohi Bus's route page and its notice
+ * of 19 Oct 2026 raise fares from 1 Dec 2026: Takayama–Shirakawa-go ¥2,900,
+ * Takayama–Kanazawa ¥4,400, Shirakawa-go–Kanazawa ¥2,900; Toyama ¥2,400 and
+ * Takaoka ¥2,200 from Shirakawa-go are unchanged. It prints no child fares, and
+ * hokutetsu.co.jp still shows ¥2,800 / ¥1,400 and ¥4,200 / ¥2,100 with no
+ * December change, so child fares from 1 Dec are awaiting the official
+ * announcement. Hokutetsu's phone line opens 8:00, not 9:00.
+ *
+ * Light-up, from shirakawa-go.gr.jp/events/441/ (page dated 1 Oct 2026) and
+ * nouhibus.co.jp/shirakawa_lightup_2027/: dates unchanged. Village stays are by
+ * lottery (applications 1–31 Oct, winners 10 Nov). First parking sale sold out;
+ * second opens 1 Dec 13:00 at ¥7,000 / ¥10,000. Agency bus plans post 2 Dec 13:00.
+ * Route-bus tours went on sale 13, 19, 26 Oct and 2 Nov. Nohi's three courses
+ * from Takayama are ¥13,000, ¥14,000 and ¥16,000 (only the last has the deck),
+ * sold on the web only, and no route bus returns to Takayama after the event.
+ *
+ * Except where the note above replaces them, the fares and journey times below
+ * were read off the operating bus company's own site on 27 October 2026:
  *  - the ¥2,800 Takayama Nohi Bus Center → Shirakawa-go fare, the ¥4,200 to
  *    Kanazawa Station, the ¥3,800 to Toyama and the ¥3,300 to Takaoka, the
  *    ¥2,800 / ¥2,400 / ¥2,200 fares onward from Shirakawa-go, the "2h5m–2h20m"
@@ -43,21 +67,22 @@ import {
  * reservation-only rather than describing it as something you can turn up to.
  *
  * Tour durations, stops and guide languages are as the Klook listings describe
- * them, confirmed through the www.klook.com search index on 27 Oct 2026 — Klook
- * answers automated reads of its product pages with HTTP 403, which is also why
- * no Klook price appears anywhere on this page.
+ * them, confirmed through the www.klook.com search index on 27 Oct and 6 Nov 2026.
+ * Klook answers automated reads of its product pages with HTTP 403, so the top
+ * block shows only from-prices that index tied to a listing; the body has none.
  *
  * One deliberate gap: Nohi Bus publishes its round-trip (往復) Shirakawa-go
  * ticket price only inside its Japanese reservation flow, not as a table, so
  * only the one-way fares are printed here.
  */
 
-const OWN_ISO = "2026-10-27";
+const OWN_ISO = "2026-11-06";
 const OWN = checkedLabel(OWN_ISO);
 
-const NOHI_ONE_WAY = "¥2,800";
-const HOKUTETSU_ONE_WAY = "¥2,800";
-const NOHI_TAKAYAMA_KANAZAWA = "¥4,200";
+/** Nohi Bus's fares from 1 December 2026, the ones a December to February trip pays. */
+const NOHI_ONE_WAY = "¥2,900";
+const KANAZAWA_ONE_WAY = "¥2,900";
+const NOHI_TAKAYAMA_KANAZAWA = "¥4,400";
 
 /** The three places a Takayama and Shirakawa-go tour can start from. */
 const departureRows = [
@@ -89,28 +114,28 @@ const busRows = [
   {
     route: "Takayama Nohi Bus Center → Shirakawa-go",
     time: "Approximately 50 minutes",
-    fare: `${NOHI_ONE_WAY} one way, adult`,
-    book: "Some departures are marked R (reservation required) on the timetable; the rest are non-reserved",
+    fare: `${NOHI_ONE_WAY} one way, adult, from 1 December (¥2,800 until 30 November)`,
+    book: "Some departures are reservation-only and open a month ahead; the rest are non-reserved",
     source: `nouhibus.co.jp, ${OWN}`,
   },
   {
     route: "Kanazawa Station West Exit → Shirakawa-go",
     time: "1 hour 15 minutes",
-    fare: `${HOKUTETSU_ONE_WAY} adult, ¥1,400 child`,
-    book: "Reserved seating (座席指定制) — Hokuriku Railroad states you must book before boarding",
-    source: `hokutetsu.co.jp, ${OWN}`,
+    fare: `${KANAZAWA_ONE_WAY} adult from 1 December on Nohi Bus's table. Hokuriku Railroad still shows ¥2,800 adult, ¥1,400 child`,
+    book: "Reserved seating (座席指定制) — you must book before boarding, and sales open a month ahead",
+    source: `nouhibus.co.jp and hokutetsu.co.jp, ${OWN}`,
   },
   {
     route: "Takayama → Kanazawa Station (through Shirakawa-go)",
     time: "2 hours 5 minutes to 2 hours 20 minutes",
-    fare: `${NOHI_TAKAYAMA_KANAZAWA} one way, adult (¥2,100 child on the Hokuriku Railroad table)`,
+    fare: `${NOHI_TAKAYAMA_KANAZAWA} one way, adult, from 1 December. Hokuriku Railroad still shows ¥4,200 adult, ¥2,100 child`,
     book: "Reservation required on the Kanazawa Line",
     source: `nouhibus.co.jp and hokutetsu.co.jp, ${OWN}`,
   },
   {
     route: "Shirakawa-go → Kanazawa Station",
     time: "1 hour 15 minutes",
-    fare: "¥2,800 one way, adult",
+    fare: `${KANAZAWA_ONE_WAY} one way, adult, from 1 December (¥2,800 until 30 November)`,
     book: "Reserved seating — book in advance",
     source: `nouhibus.co.jp, ${OWN}`,
   },
@@ -163,17 +188,23 @@ const compareRows = [
     pick: "If the view over the thatched roofs is the photograph you came for.",
   },
   {
-    option: "Winter light-up day from Takayama",
+    option: "Nohi Bus's own light-up bus from Takayama",
+    cost: "¥13,000, ¥14,000 or ¥16,000, by course",
+    gets: "The round trip on one of the four 2027 evenings, leaving between 14:40 and 15:40 and back by 20:45. Only the ¥16,000 course has the observation deck.",
+    pick: "The way in from Takayama: there is no route bus back after the event. Sold on Nohi Bus's website only, so it is not a Klook booking.",
+  },
+  {
+    option: "Winter light-up day from Nagoya",
     cost: "Check the listing for your date",
-    gets: "A 5 to 5.5-hour evening on one of the four 2027 light-up dates, with the choice of the open-air museum or the Ogimachi Castle Ruins deck.",
-    pick: "The only realistic way in if you are not sleeping in the village — the event is reservation-only and sells no same-day tickets at all.",
+    gets: "A long coach day on Klook's 2027 listings, with the Hida Takayama stop on one and no observation deck on the other.",
+    pick: "The realistic way in if you are based in Nagoya. The event is reservation-only and sells no same-day tickets at all.",
   },
 ];
 
 const faqItems = [
   {
     q: "How do I visit Shirakawa-go from Takayama?",
-    a: `On the Nohi Bus Shirakawa-go Line, which Nohi Bus's own site puts at approximately 50 minutes and ${NOHI_ONE_WAY} one way for an adult from the Takayama Nohi Bus Center, next to JR Takayama Station. Read on ${OWN}. There is no train — Shirakawa-go has no railway station at all, which is the single fact that shapes every plan on this page. The bus continues through the village to Kanazawa (¥2,800 onward), Toyama (¥2,400) and Takaoka (¥2,200), so the same ride can be a day trip or the first half of a journey out of the mountains. The alternative is a guided day out of Takayama, which is listed at 7 hours 20 minutes and adds Ainokura in Gokayama, the Gassho-zukuri Minkaen open-air museum and the Shiroyama Tenshukaku observation deck — three stops a service bus will not join up for you.`,
+    a: `On the Nohi Bus Shirakawa-go Line, which Nohi Bus's own site puts at approximately 50 minutes and ${NOHI_ONE_WAY} one way for an adult from the Takayama Nohi Bus Center from 1 December 2026 (¥2,800 until then), next to JR Takayama Station. Read on ${OWN}. There is no train — Shirakawa-go has no railway station at all, which is the single fact that shapes every plan on this page. The bus continues through the village to Kanazawa (${KANAZAWA_ONE_WAY} onward from 1 December), Toyama (¥2,400) and Takaoka (¥2,200), so the same ride can be a day trip or the first half of a journey out of the mountains. The alternative is a guided day out of Takayama, which is listed at 7 hours 20 minutes and adds Ainokura in Gokayama, the Gassho-zukuri Minkaen open-air museum and the Shiroyama Tenshukaku observation deck — three stops a service bus will not join up for you.`,
   },
   {
     q: "Is a Shirakawa-go tour worth it?",
@@ -181,11 +212,11 @@ const faqItems = [
   },
   {
     q: "Do I need to book the Shirakawa-go bus in advance?",
-    a: `From Kanazawa, yes, always. Hokuriku Railroad states the Kanazawa–Shirakawa-go service is reserved-seating (座席指定制) and that you must book before boarding; the fare is ${HOKUTETSU_ONE_WAY} for an adult and ¥1,400 for a child, on a journey of 1 hour 15 minutes. From Takayama it is mixed: Nohi Bus marks some departures R for "reservation required" on its own timetable and states that everything except those is non-reserved, so there are walk-up seats — but they are finite and this is a single-lane mountain road in a region with no train alternative. Book either end if your day depends on it. Nohi Bus's reservation centre is (0577) 32-1688, 9:00 to 17:00, and the Hokuriku Railroad centre for the Kanazawa Line is (076) 234-0123, 9:00 to 18:00. All read on ${OWN}.`,
+    a: `From Kanazawa, yes, always. Hokuriku Railroad states the Kanazawa–Shirakawa-go service is reserved-seating (座席指定制), that you must book before boarding, and that sales open one month before travel; the adult fare is ${KANAZAWA_ONE_WAY} from 1 December on Nohi Bus's table, on a journey of 1 hour 15 minutes. From Takayama it is mixed: Nohi Bus runs some departures as reservation-only, open a month ahead, and the rest are non-reserved, so there are walk-up seats — but they are finite and this is a single road through the mountains in a region with no train alternative. Book either end if your day depends on it. Nohi Bus's reservation centre is (0577) 32-1688, 9:00 to 17:00, and the Hokuriku Railroad centre for the Kanazawa Line is (076) 234-0123, 8:00 to 18:00. All read on ${OWN}.`,
   },
   {
     q: "When is the Shirakawa-go light-up?",
-    a: `The Shirakawa-go Tourist Association has published the 41st event as four evenings only: 11, 17, 24 and 31 January 2027, each from 17:30 to 19:30. Read on ${OWN}. The important part is not the dates but the access rule — the association states it is a complete advance-reservation system (完全事前予約制), that you cannot take part by simply turning up without a reservation, and that no entry tickets are sold on the day. It lists five permitted ways in: staying overnight in the village (which comes with an observation-deck ticket), your own car with a reserved parking space, a taxi using a reserved parking space, a highway-bus tour with a participating carrier, or a travel agency's bus tour — and it notes that the car, taxi and agency-tour routes do not include deck access. Everyone must hold an entry ticket beforehand and wear it visibly.`,
+    a: `The Shirakawa-go Tourist Association has published the 41st event as four evenings only: 11, 17, 24 and 31 January 2027, each from 17:30 to 19:30. Read on ${OWN}. The important part is not the dates but the access rule — the association states it is a complete advance-reservation system (完全事前予約制), that you cannot take part by simply turning up without a reservation, and that no entry tickets are sold on the day. It lists five permitted ways in: staying overnight in the village, by a lottery that closed on 31 October with winners told on 10 November; your own car with a reserved parking space; a taxi using a reserved parking space, with the second parking sale opening 1 December at 13:00 after the first sold out; a route-bus tour with a participating carrier, on sale now; or a travel agency's bus tour, with plans posted 2 December at 13:00. The car, taxi and agency-tour routes do not include deck access, and deck tickets are not sold separately. Bookings cannot be changed or refunded unless the organisers cancel, and they may cancel for a severe cold wave. Everyone must hold an entry ticket beforehand and wear it visibly.`,
   },
   {
     q: "How long do you need in Shirakawa-go?",
@@ -197,7 +228,7 @@ const faqItems = [
   },
   {
     q: "What does the bus cost from Kanazawa to Shirakawa-go?",
-    a: `${HOKUTETSU_ONE_WAY} for an adult and ¥1,400 for a child one way, on Hokuriku Railroad's own fare table, for a journey it gives as 1 hour 15 minutes from the Kanazawa Station West Exit. Read on ${OWN}. Carrying on to Takayama is ¥4,200 adult and ¥2,100 child, with a journey of 2 hours 15 minutes — and Nohi Bus, which operates the line jointly, gives the Takayama–Kanazawa run as 2 hours 5 minutes to 2 hours 20 minutes. Both operators sell the same seats, so the route works in either direction at the same price. Note that this is a reserved service: there is no walk-up fallback on the Kanazawa side.`,
+    a: `${KANAZAWA_ONE_WAY} one way for an adult from 1 December 2026 on Nohi Bus's revised table, for a journey Hokuriku Railroad gives as 1 hour 15 minutes from the Kanazawa Station West Exit. Hokuriku Railroad's own page still showed ¥2,800 adult and ¥1,400 child on ${OWN}, with no December change, so confirm at booking; child fares from 1 December are awaiting the official announcement. Carrying on to Takayama is ${NOHI_TAKAYAMA_KANAZAWA} adult from 1 December on Nohi Bus's table (Hokuriku Railroad's page still shows ¥4,200 and ¥2,100 child), with a journey of 2 hours 15 minutes — and Nohi Bus, which operates the line jointly, gave the Takayama–Kanazawa run as 2 hours 5 minutes to 2 hours 20 minutes on 27 October. Note that this is a reserved service: there is no walk-up fallback on the Kanazawa side.`,
   },
   {
     q: "Is Shirakawa-go worth it in summer, or only in the snow?",
@@ -205,7 +236,7 @@ const faqItems = [
   },
   {
     q: "Is a Shirakawa-go day good with children?",
-    a: `Reasonably, with two caveats that are about the bus rather than the village. Ogimachi itself is flat, short and outdoors, the houses you can go into are genuinely interesting to look at from the inside, and child fares are published — ¥1,400 on the Kanazawa bus against ¥2,800 for an adult, and ¥2,100 against ¥4,200 through to Takayama. The caveats: the walk up to the Shiroyama Tenshukaku deck is a climb, and the coach days are long. Eleven hours out of Nagoya with two hours at each end of it is a lot of seat time for a small child; the Takayama departures, at 7 hours 20 minutes or less, are the gentler option.`,
+    a: `Reasonably, with two caveats that are about the bus rather than the village. Ogimachi itself is flat, short and outdoors, the houses you can go into are genuinely interesting to look at from the inside, and Hokuriku Railroad publishes child fares at half the adult fare (¥1,400 and ¥2,100 on its table read ${OWN}; the rates from 1 December are awaiting the official announcement). The caveats: the walk up to the Shiroyama Tenshukaku deck is a climb, and the coach days are long. Eleven hours out of Nagoya with two hours at each end of it is a lot of seat time for a small child; the Takayama departures, at 7 hours 20 minutes or less, are the gentler option.`,
   },
   {
     q: "Does the JR Pass cover the bus to Shirakawa-go?",
@@ -213,7 +244,32 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Takayama and Shirakawa-go Tour (2026): Which Departure";
+/**
+ * The same-trip block. Klook sells no Chubu airport transfer we could tie to this route,
+ * so the transfer is the Narita one that starts the page's Tokyo–Kanazawa–Takayama loop.
+ */
+const sameTripItems: KlookTripPrepItem[] = [
+  {
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "Nohi Bus warns of winter delays of two hours or more from snow and road closures. Timetables, reservations and your tour's pick-up emails are all online, and Shirakawa-go has no station to ask at.",
+  },
+  {
+    label: "Narita Express (N'EX) round-trip ticket",
+    ctaLabel: "Check the N'EX round trip →",
+    url: naritaExpressRoundTripUrl,
+    why: "For the Tokyo–Kanazawa start of this route: it reaches Tokyo Station, where the Hokuriku Shinkansen leaves. If you land at Nagoya instead, this one is not for you.",
+  },
+  {
+    label: hokurikuArchPass.title,
+    ctaLabel: "Check the Hokuriku Arch Pass →",
+    url: hokurikuArchPass.url,
+    why: "The pass for the long way round: the Hokuriku Shinkansen from Tokyo to the Kanazawa side over seven consecutive days. It does not cover the bus to Shirakawa-go, which is a private line.",
+  },
+];
+
+const TITLE = "Takayama and Shirakawa-go Tour (2027): Which Departure";
 const DESCRIPTION =
   "A Takayama and Shirakawa-go tour runs from Nagoya in about 11 hours, Kanazawa in 8 to 10 with an English guide, or Takayama in 7h20m. Plus the local bus.";
 
@@ -308,7 +364,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Takayama and Shirakawa-go Tour (2026):<br />Which Departure, and the Bus If You Go Alone
+            Takayama and Shirakawa-go Tour (2027):<br />Which Departure, and the Bus If You Go Alone
           </h1>
           <p className={styles.heroSubtitle}>
             There is no train to Shirakawa-go, which is why this is a bus question rather than a rail one.
@@ -334,6 +390,42 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           </p>
         </div>
 
+        <WinterBookingTop
+          heading="Which Takayama and Shirakawa-go Tour Can You Book for This Winter?"
+          checkedIso="2026-11-06"
+          deadline={
+            <>
+              If you want the light-up on 11, 17, 24 or 31 January 2027, book now: entry is reservation-only
+              with nothing sold on the day, route-bus tours are already on sale, and travel agency plans post
+              on 2 December. For ordinary daytime coach days, book by 30 November for New Year dates and at
+              least three weeks out for January and February.
+            </>
+          }
+          tours={[
+            {
+              title: shirakawagoIllumination2027NagoyaTour.title,
+              url: shirakawagoIllumination2027NagoyaTour.url,
+              price: null,
+              duration: "09:00–22:30 on the listing",
+              departs: "Nagoya",
+            },
+            {
+              title: shirakawagoTakayamaOldTownDayTour.title,
+              url: shirakawagoTakayamaOldTownDayTour.url,
+              price: "from about US$45",
+              duration: "11 hours 20 minutes",
+              departs: "Nagoya",
+            },
+            {
+              title: shirakawagoGokayamaKanazawaBusTour.title,
+              url: shirakawagoGokayamaKanazawaBusTour.url,
+              price: "about US$90–105",
+              duration: "6 hours 10 minutes to 9 hours 30 minutes",
+              departs: "JR Kanazawa Station, West Exit",
+            },
+          ]}
+        />
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -347,7 +439,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>From Kanazawa</p>
-                <p className={styles.verdictStatValue}>1h 15m, {HOKUTETSU_ONE_WAY}</p>
+                <p className={styles.verdictStatValue}>1h 15m, {KANAZAWA_ONE_WAY}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Guided day length</p>
@@ -368,8 +460,8 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
               Takayama rather than a round trip. From <strong>Takayama</strong> itself the guided day runs{" "}
               <strong>7 hours 20 minutes</strong> and adds Ainokura in Gokayama, the Gassho-zukuri Minkaen
               museum and the Shiroyama Tenshukaku deck — but with a Japanese-speaking assistant, not an English
-              guide. Going alone, Nohi Bus charges <strong>{NOHI_ONE_WAY}</strong> one way for the{" "}
-              <strong>50-minute</strong> run from Takayama, and Hokuriku Railroad <strong>{HOKUTETSU_ONE_WAY}</strong>{" "}
+              guide. Going alone from 1 December 2026, the adult fare is <strong>{NOHI_ONE_WAY}</strong> one way for the{" "}
+              <strong>50-minute</strong> run from Takayama and <strong>{KANAZAWA_ONE_WAY}</strong>{" "}
               for the <strong>1 hour 15 minute</strong> run from Kanazawa — which is reserved-seating and must be
               booked. There is no railway station in Shirakawa-go at all. Fares and times read off the operators&apos;
               own sites on {OWN}.
@@ -384,6 +476,14 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             </div>
           </div>
         </div>
+
+        {/* Same trip */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What Else Does This Route Need?"
+          intro="This is a bus route in snow country at the far end of a long train journey. Three bookings make it hold together: data for the buses, the airport train, and the rail pass for the long way round."
+          items={sameTripItems}
+        />
 
         {/* Overview */}
         <section className={styles.bodySection}>
@@ -421,8 +521,8 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The three columns that actually decide it are the length, what the day includes beyond the village,
             and the language the guide speaks. Only the values Klook&apos;s own listings state are below —
-            durations, stops and inclusions, confirmed on {OWN}. No price appears, because Klook&apos;s product
-            pages refuse automated reads and a coach fare moves with the season in any case.
+            durations, stops and inclusions, confirmed on {OWN}. No price appears in this table, because
+            Klook&apos;s product pages refuse automated reads and a coach fare moves with the season in any case.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -475,8 +575,10 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Every figure below is the operating company&apos;s own published fare, with the site it came from
             and the date it was read. Two operators share the line — Nohi Bus out of Takayama and Hokuriku
-            Railroad out of Kanazawa — and they sell the same seats, so the route works in either direction
-            at the same price.
+            Railroad out of Kanazawa. <strong>Fares rise on 1 December 2026</strong> on Nohi Bus&apos;s
+            notice, so a winter trip pays the higher figure. Hokuriku Railroad&apos;s own page showed no
+            change when we read it, and child fares from that date are awaiting the official
+            announcement, so confirm the Kanazawa fare when you book.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -505,9 +607,11 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Subject to change — confirm with the operator at booking. Nohi Bus publishes its round-trip
             Shirakawa-go ticket price only inside its own reservation flow rather than as a table, so only
-            one-way fares are printed here; Klook sells the same Nohi seat as a one-way or round-trip voucher
-            if you would rather not telephone a Japanese call centre. No JR pass covers either operator —
-            both are private highway buses.
+            one-way fares are printed here; Klook sells a non-reserved Nohi seat as a one-way or round-trip
+            voucher if you would rather not telephone a Japanese call centre. No JR pass covers either
+            operator — both are private highway buses. In winter, Nohi Bus warns that parking queues, snow
+            or expressway closures can delay a bus by more than two hours even with a detour, so leave
+            slack before any onward train.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shirakawagoLineBusTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -522,13 +626,13 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           <h2 className={styles.sectionTitle}>Do I Need to Book the Shirakawa-go Bus in Advance?</h2>
           <p className={styles.bodyText}>
             From Kanazawa, yes, without exception. Hokuriku Railroad states on its own page that the service
-            is reserved-seating — <em>座席指定制</em> — and that you must book before you board. There is no
-            standing and no walk-up. Read on {OWN}.
+            is reserved-seating — <em>座席指定制</em> — and that you must book before you board, with sales
+            opening one month before travel. There is no standing and no walk-up. Read on {OWN}.
           </p>
           <p className={styles.bodyText}>
             From Takayama it is mixed, and the distinction is printed on Nohi Bus&apos;s own timetable: some
-            departures carry an <strong>R</strong> for reservation required, and the company states that
-            everything except those is non-reserved. So there are walk-up seats on the Takayama side — a
+            departures are reservation-only, bookable from one month ahead, and everything else is
+            non-reserved. So there are walk-up seats on the Takayama side — a
             useful thing to know if your plans change at breakfast. What there is not is a second bus if the
             first one fills. This is one road through a mountain valley with no rail alternative, which in
             practice means you should book anything your day depends on and treat the non-reserved
@@ -537,7 +641,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           <p className={styles.bodyText}>
             The reservation centres, both read on {OWN}: Nohi Bus on <strong>(0577) 32-1688</strong>, 9:00 to
             17:00, and Hokuriku Railroad&apos;s centre for the Kanazawa Line on <strong>(076) 234-0123</strong>,
-            9:00 to 18:00. If a Japanese-language phone call is not how you want to start the day, the
+            8:00 to 18:00. If a Japanese-language phone call is not how you want to start the day, the
             Klook voucher for the same Nohi seat and the guided days below both sidestep it — which is most of
             the reason a tour wins on this particular route more often than it does elsewhere in Japan.
           </p>
@@ -556,25 +660,51 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             And no, you cannot just turn up. The association states the event runs on a{" "}
             <strong>complete advance-reservation system</strong> (<em>完全事前予約制</em>), that turning up on
             the day without a reservation means you cannot take part, and that{" "}
-            <strong>no entry tickets are sold on the day</strong>. It lists exactly five ways in: an overnight
-            stay in the village, which comes with an observation-deck ticket; your own car with a reserved
-            parking space; a taxi using a reserved parking space; a highway-bus tour with a participating
-            carrier; or a travel agency&apos;s bus tour. The car, taxi and agency-tour routes do not include
-            deck access. Everyone taking part has to hold an entry ticket beforehand and wear it where it can
-            be seen.
+            <strong>no entry tickets are sold on the day</strong>. It lists exactly five ways in, and each
+            one now has its own status:
+          </p>
+          <ul className={styles.pickList}>
+            {[
+              "An overnight stay in the village, with an observation-deck ticket. This is by lottery, not first come: applications closed on 31 October 2026 and winners are told on 10 November.",
+              "Your own car with a reserved parking space. The first sale sold out; the second opens 1 December 2026 at 13:00, at ¥7,000 per vehicle for 1–5 people and ¥10,000 for 6–10.",
+              "A taxi using a reserved parking space, on the same parking sale.",
+              "A route-bus tour with a participating carrier, booked directly with Nohi, Kaetsunou, Toyama Chitetsu, Hokutetsu or Iruka Kotsu. All four dates are on sale. Deck access depends on the tour.",
+              "A travel agency's bus tour, without deck access. The association posts these plans on 2 December 2026 at 13:00; Klook's agency listings are already up.",
+            ].map((way) => (
+              <li key={way}>
+                <span className={styles.proIcon}>▸</span>
+                <span>{way}</span>
+              </li>
+            ))}
+          </ul>
+          <p className={styles.bodyText}>
+            Deck tickets are not sold separately. Bookings cannot be changed or refunded unless the
+            organisers cancel, which they may do if a severe cold wave is forecast to disrupt transport.
+            Everyone taking part has to hold an entry ticket beforehand and wear it where it can be seen.
           </p>
           <p className={styles.bodyText}>
-            Read practically, that leaves two realistic options for a visitor without a car: sleep in the
-            village — a handful of farmhouse minshuku, booked out months ahead — or take one of the bus tours
-            that holds the tickets and the parking for you. Klook&apos;s light-up day out of Takayama is listed
-            at 5 to 5.5 hours with the choice of entering the open-air museum or the Ogimachi Castle Ruins
-            observation deck. Because the dates are fixed and the capacity is not elastic, this is the one
-            booking on this page where the question is availability rather than price, and the answer moves
-            week by week.
+            Read practically, that leaves bus tours as the realistic option for a visitor without a car and
+            without a lottery win. From Takayama, Nohi Bus&apos;s own light-up bus has three courses:{" "}
+            <strong>¥13,000</strong> with the Gassho Farmhouse Park and zenzai, <strong>¥14,000</strong> with
+            an onsen ticket, and <strong>¥16,000</strong> with the Ogimachi Castle Ruins deck, which Nohi says
+            has limited seats and a walk of about 20 minutes uphill each way. It is sold on Nohi Bus&apos;s
+            website only, and <strong>no route bus runs back to Takayama after the event</strong>. From Nagoya,
+            Klook has two 2027 listings; one runs 09:00 to 22:30 and the other states the deck is not included.
+            Check the refund line first: one gives a full refund only 60 days out. Because the dates are fixed
+            and the capacity is not elastic, this is the one booking on this page where the question is
+            availability rather than price. All official details read on {OWN}.
+          </p>
+          <p className={styles.bodyText}>
+            One knock-on for an ordinary coach day: on all four dates, sightseeing buses have to enter the
+            village by 14:00 and leave by 16:00 unless they hold a light-up booking, so a daytime tour on
+            those dates may run to a different shape. Check the listing for your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shirakawagoLightUpTakayamaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Light-up day from Takayama →
+            <KlookLink href={shirakawagoIllumination2027NagoyaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              2027 light-up day from Nagoya →
+            </KlookLink>
+            <KlookLink href={shirakawagoFairytale2027NagoyaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Second 2027 Nagoya listing →
             </KlookLink>
             <KlookLink href={shirakawagoObservationDeckDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Day tour with deck access →
@@ -659,6 +789,29 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             <Link href="/guides/attractions/legoland-japan-tickets">LEGOLAND Japan</Link> guides cover the
             Nagoya end of the same region.
           </p>
+          <p className={styles.bodyText}>
+            In winter, this stretch is the middle of our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">12-day Japan winter itinerary</Link>, and
+            a January trip should be built around the light-up date because nothing else on a winter route is
+            that fixed. Coming from Tokyo, the{" "}
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>{" "}
+            sits on the same Hokuriku Shinkansen line, so Nagano can be a stop on the way to Kanazawa. A{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">Gala Yuzawa ski day trip from Tokyo</Link>{" "}
+            and an evening at the{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo winter illuminations</Link> are
+            the easy bookends at the Tokyo end, because both need only a free day or night.
+          </p>
+          <p className={styles.bodyText}>
+            If the snow is the draw and you have more than a fortnight, Hokkaido is a separate leg. Time a
+            February flight north for the{" "}
+            <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours</Link>,
+            4–11 February 2027, which falls after the last light-up evening. Add an{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo</Link>,
+            skiers can extend into{" "}
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link>, and our{" "}
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary">7-day Hokkaido itinerary</Link> shows the
+            whole island as one week.
+          </p>
         </section>
 
         <KlookTourPicks
@@ -672,7 +825,8 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             shirakawagoGokayamaKanazawaBusTour,
             takayamaShirakawagoOneDayBusTour,
             shirakawagoObservationDeckDayTour,
-            shirakawagoLightUpTakayamaDayTour,
+            shirakawagoIllumination2027NagoyaTour,
+            shirakawagoFairytale2027NagoyaTour,
           ]}
         />
 
@@ -720,6 +874,29 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 6 Nov 2026: the rest of the nine winter guides. */}
+            {[
+              { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Gala Yuzawa Ski Day Trip from Tokyo" },
+              { href: "/guides/attractions/jigokudani-snow-monkey-tour", title: "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2027" },
+              { href: "/guides/attractions/sapporo-snow-festival-tours", title: "Sapporo Snow Festival Tours (2027)" },
+              { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
+              { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "Otaru Day Trip from Sapporo (2027)" },
+              { href: "/guides/attractions/hokkaido-7-day-itinerary", title: "Hokkaido 7 Day Itinerary: 7 Days in Hokkaido, Day by Day" },
+              { href: "/guides/attractions/tokyo-illumination-tours", title: "Tokyo Illuminations: Dates, Hours and the Free Ones" },
+            ].map((r) => (
+              <Link key={r.href} href={r.href} className={styles.relatedCard}>
+                <div className={styles.relatedIcon}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2v20M3.5 7l17 10M20.5 7l-17 10" />
+                    <path d="M12 6l-2.5-2M12 6l2.5-2M12 18l-2.5 2M12 18l2.5 2" />
+                  </svg>
+                </div>
+                <div className={styles.relatedMeta}>
+                  <p className={styles.relatedTitle}>{r.title}</p>
+                  <span className={styles.relatedArrow}>Read guide →</span>
+                </div>
+              </Link>
+            ))}
             {/* Added 4 Nov 2026: the rail pass guide for this route. */}
             <Link href="/guides/transport/hokuriku-arch-pass" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

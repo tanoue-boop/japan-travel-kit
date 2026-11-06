@@ -396,7 +396,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
               cut-off Apple states — provided the handset is not locked to your home carrier,
               which Settings → General → About reports as &ldquo;No SIM restrictions&rdquo;.</strong>{" "}
               For a short trip where you only need data, buy a data-only travel eSIM: Airalo if
-              you want its iOS app to do the install, Simbye for the lowest list price, or Klook&apos;s
+              you want its iOS app to do the install, Simbye for the lowest list price we track, or Klook&apos;s
               own Japan eSIM if you are already booking tickets and transport there. If you need
               a Japanese phone number or you are staying a month or more, Sakura Mobile is the
               one to look at instead. Apple facts checked {FACTS_CHECKED}; prices
@@ -630,7 +630,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             For a short trip where all you need is data, any data-only eSIM above will do the job
             and the choice comes down to how you want to install it — Airalo for its iOS app,
-            Simbye for the lowest list price, or Klook&apos;s own Japan eSIM if your tickets and
+            Simbye for the lowest list price we track, or Klook&apos;s own Japan eSIM if your tickets and
             transport are already going on one Klook booking. If you need a Japanese phone number,
             or you are staying a month or more, Sakura Mobile is the one to look at instead.
           </p>

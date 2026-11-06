@@ -94,7 +94,7 @@ const picks = [
   {
     num: 1,
     name: "Simbye",
-    badge: "Lowest Price",
+    badge: "Lowest Confirmed Price",
     badgeColor: "var(--sumi)",
     priceFrom: p(simbyeCheapest),
     network: getProvider("simbye").network,
@@ -274,7 +274,7 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/es
 const FROM = cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99";
 const TITLE = `Cheapest eSIM for Japan 2026: From ${FROM}, Ranked by Price`;
 const H1 = "Cheapest eSIM for Japan 2026: Lowest Price at Every Data Size";
-const DESCRIPTION = `The cheapest Japan eSIM is ${FROM}, checked daily. The lowest price at 1, 3, 5, 10, 20 and 50 GB, price per GB, and the cheapest plan for your trip length.`;
+const DESCRIPTION = `The cheapest Japan eSIM plan we can confirm is ${FROM}, checked daily. Lowest price at 1, 3, 5, 10, 20 and 50 GB, plus price per GB by trip length.`;
 
 export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -426,7 +426,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Cheapest Overall</p>
+                <p className={styles.verdictStatLabel}>Cheapest Confirmed Plan</p>
                 <p className={styles.verdictStatValue}>
                   {cheapestOverall ? `${cheapestOverall.provider} ${cheapestOverall.name} — ${formatUsd(cheapestOverall.priceUsd)}` : "—"}
                 </p>
@@ -502,9 +502,10 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Each cell is the provider&apos;s cheapest plan with <em>at least</em> that much data, in USD, read from the provider&apos;s
-            official site on {pricesCheckedAt}. All plans are eSIM-only. The Klook row carries no prices:
-            its listing could not be read automatically on {klookEsim.checkedAt}, so it is not ranked here
-            and we make no claim about whether it undercuts the five above.{" "}
+            official site on {pricesCheckedAt}. All plans are eSIM-only. Klook&apos;s listing shows
+            from US$1.05 (read {klookEsim.specsCheckedAt}) before you choose days and data and does not say
+            which plan that is, so its row has no per-plan prices, it is not ranked here, and we make no
+            claim about whether a given plan undercuts the five above.{" "}
             <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan sorted by price per GB →</Link>
           </p>
         </section>

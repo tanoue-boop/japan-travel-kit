@@ -248,6 +248,30 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
 
       <StatsBand stats={stats} />
 
+      {/* Winter, December to February. Added 6 Nov 2026 (jtk-20261106-A21): the booking
+          window for these trips opens now, and the guides had no route from this page. */}
+      <HomeSection
+        tone="paper"
+        eyebrow="December to February"
+        title="Planning a Winter Trip to Japan?"
+        desc="The dates, tours and passes for this winter, on a separate track from the rest of the year."
+      >
+        <p style={{ color: "var(--text-muted)", lineHeight: 1.75 }}>
+          Start with the <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link>,
+          then pick the part you came for. In February that is the{" "}
+          <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival</Link>, which pairs
+          with an <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip</Link> or a full{" "}
+          <Link href="/guides/attractions/hokkaido-7-day-itinerary">7-day Hokkaido itinerary</Link>. For skiing,
+          compare <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link> with a{" "}
+          <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa day trip from Tokyo</Link>.
+          For a day out of the snow-country kind, see the{" "}
+          <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkeys</Link> and the{" "}
+          <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tours</Link>. If
+          you are staying in the city, the <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo
+          illuminations</Link> run through the season.
+        </p>
+      </HomeSection>
+
       {/* Travel Guides hubs — the one category navigation on the page */}
       <HomeSection
         id="categories"

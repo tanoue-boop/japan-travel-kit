@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -10,18 +11,18 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import {
   hokkaidoPrivateCarCharterNiseko,
   japanWinterStayAreas,
+  jrHokkaidoRailPass,
   klookEsim,
-  newChitoseSapporoSharedTransfer,
+  newChitoseAirportTransfers,
   nisekoHirafuEnglishSkiLesson,
   nisekoHirafuLiftPassBusTour,
-  nisekoPrivateOneDayTour,
   nisekoResortShuttleBus,
   nisekoRusutsuKiroroPrivateLesson,
   nisekoSkiHotSpringTourFromSapporo,
   nisekoSkiSnowboardRental,
-  nisekoSkiTripPrep,
   noboribetsuToyaNisekoDayTour,
   rhythmNisekoPrivateSkiLesson,
+  type KlookTripPrepItem,
 } from "../../../lib/klook-links";
 
 /**
@@ -102,19 +103,48 @@ import {
  *                              around — "During peak season, only full-day
  *                              lessons are available for advance booking."
  *
- * What is deliberately absent. No per-lesson price: NISS publishes rate cards
- * per lesson type and season and we could not read a single figure we would
- * stand behind. No accommodation prices. No Klook prices — Klook answers
- * automated reads of its product pages with HTTP 403. And no claim about how
- * early any particular week sells out: Niseko United says in its own words that
- * popular properties and peak holiday periods sell out early, and that is as far
- * as the sourcing goes, so that is as far as this page goes.
+ * Re-read on 6 November 2026 for the winter booking pass (task jtk-20261106-A21).
+ * niseko.ne.jp/en/lift/ and getting-to-niseko/: all dates, price periods, pass
+ * prices and access figures unchanged. The page's 2026-27 one-day table labels no
+ * period on the ¥6,300 row; it is read as Final by elimination. On the access page
+ * the seasonal ski bus sits in the block for connecting flights via Narita or
+ * Haneda rather than in the direct New Chitose block, but it is still a bus from
+ * New Chitose, so the row stands.
+ *
+ *   hanazononiseko.com/en/     The correction that pass made. The school's own
+ *     winter/ski-school/       peak is not Niseko United's lift-pass peak: Peak 14
+ *     private                  Dec 2026 – 3 Jan 2027 and 6–12 Feb 2027; Regular
+ *                              8–13 Dec, 4 Jan – 5 Feb and 13–28 Feb; Early/Spring
+ *                              28 Nov – 7 Dec and 1 Mar – 11 Apr. Private rates per
+ *                              group of up to 6, peak / regular / early-spring:
+ *                              Niseko Classic 6 hours ¥120,000 / ¥93,000 / ¥87,000;
+ *                              AM ¥93,000 / ¥71,000 / ¥59,000; PM ¥55,000 / ¥43,000
+ *                              / ¥43,000. This page used to read the full-day rule
+ *                              against 24 Dec – 28 Feb, which was wrong.
+ *
+ * What is deliberately absent. No accommodation prices. No Klook price in the
+ * body, because Klook answers automated reads of its product pages with HTTP 403;
+ * the WinterBookingTop block carries the one indexed from-price, dated. And no
+ * claim about how early any particular week sells out: Niseko United says in its
+ * own words that popular properties and peak holiday periods sell out early, and
+ * that is as far as the sourcing goes, so that is as far as this page goes.
+ *
+ * Also changed in that pass: `nisekoPrivateOneDayTour` (90084) left the page, since
+ * the index shows a green-season tour for summer and autumn, and 12479 gave way to
+ * Klook's New Chitose transfer page, since its indexed text is a Tomamu route.
  *
  * Nothing here is first-hand.
  */
 
 const OWN_ISO = "2026-11-01";
 const OWN = checkedLabel(OWN_ISO);
+
+/** The winter pass's re-reads of the official sites and of Klook's index. */
+const SEASON_ISO = "2026-11-06";
+const SEASON = checkedLabel(SEASON_ISO);
+
+/** The resort school's own peak, which is not the lift-pass peak below. */
+const LESSON_PEAK = "14 December 2026 to 3 January 2027 and 6 to 12 February 2027";
 
 const AIRPORT_BUS = "2.5 hours";
 const AIRPORT_BUS_FARE = "¥6,000";
@@ -262,11 +292,11 @@ const faqItems = [
   },
   {
     q: "Do I need to book Niseko ski lessons in advance?",
-    a: `Yes, and there is a published rule behind it rather than just advice. The resort-operated Niseko International Snowsports School states on its own page, read ${OWN}, that "during peak season, only full-day lessons are available for advance booking" — and Niseko United's peak season is ${PEAK_FROM} to ${PEAK_TO}. Read together, that means a half-day lesson over Christmas, New Year or in February is something you turn up and ask about, not something you reserve. If a half day is what your legs or your children can manage, either book a full day and quit early, or go outside the peak band. The school runs 28 November 2026 to 11 April 2027 on its own tentative dates, offers group, private and fully customised programmes, and had 2026-27 bookings open when this page was written. Private lessons through a reseller are a separate pool of availability and take a foreign card in English, which is worth knowing if the resort school is full on your date.`,
+    a: `Yes, and there is a published rule behind it rather than just advice. The resort-operated Niseko International Snowsports School states on its own page, read ${SEASON}, that "during peak season, only full-day lessons are available for advance booking", and its own lesson peak is ${LESSON_PEAK}. That is not the lift-pass peak: a half-day lesson in late January can still be booked ahead, while one on 20 December or 8 February is something you turn up and ask about. If a half day in those weeks is what your legs or your children can manage, either book a full day and quit early, or move your dates. The school runs 28 November 2026 to 11 April 2027 on its own tentative dates, offers group, private and fully customised programmes, and has 2026-27 bookings open. Private lessons through a reseller are a separate pool of availability and take a foreign card in English, which is worth knowing if the resort school is full on your date.`,
   },
   {
     q: "Is Niseko good for beginners?",
-    a: `Yes — more so than its powder reputation suggests. On Grand Hirafu's own terrain figures read ${OWN}, 9 of its 22 courses are graded beginner against 6 intermediate and 7 advanced, and the gentlest, widest terrain of the four linked areas is at Annupuri on the western side. Two practical points in a beginner's favour. The linked All Mountain Pass means you are not stuck on one hill while you improve, and the resort-run ski school is based at Hanazono, which is the quietest side — fewer fast skiers on the slope you are learning on. Two against. The booking rule above is the real one: in the ${PEAK_FROM} to ${PEAK_TO} peak band only full-day lessons can be reserved in advance, which is awkward for a first-timer who wants a cautious half day. And the peak one-day pass is ${PEAK_DAY} for an adult, so a beginner in January is paying the same per day for nine beginner runs as an expert is paying for the whole mountain — an argument for December or March.`,
+    a: `Yes — more so than its powder reputation suggests. On Grand Hirafu's own terrain figures read ${OWN}, 9 of its 22 courses are graded beginner against 6 intermediate and 7 advanced, and the gentlest, widest terrain of the four linked areas is at Annupuri on the western side. Two practical points in a beginner's favour. The linked All Mountain Pass means you are not stuck on one hill while you improve, and the resort-run ski school is based at Hanazono, which is the quietest side — fewer fast skiers on the slope you are learning on. Two against. The booking rule above is the real one: in the resort school's own peak, ${LESSON_PEAK}, only full-day lessons can be reserved in advance, which is awkward for a first-timer who wants a cautious half day. And the peak one-day pass is ${PEAK_DAY} for an adult, so a beginner in January is paying the same per day for nine beginner runs as an expert is paying for the whole mountain — an argument for December or March.`,
   },
   {
     q: "Where should I stay in Niseko?",
@@ -278,7 +308,7 @@ const faqItems = [
   },
   {
     q: "Do you need a tour for Niseko, or can you do it yourself?",
-    a: `It depends entirely on where you are sleeping, and that is the one question this search term hides. If you are staying at Niseko, you do not need a tour: book the airport coach, book a lesson, reserve the gear, buy the pass, and the days look after themselves. If you are staying in Sapporo — which plenty of people are, because the city is where the hotels and the restaurants are — then a guided day is the only sensible way to ski Niseko, because Niseko United's own access figures make the run 2 to 3.5 hours each way from the airport side and a self-assembled day burns most of the daylight on buses. That is what the lift-pass-and-coach day out of Sapporo is for: a fixed six hours on Grand Hirafu with the transport and the pass in one booking. The third case is a mixed party — some skiing, some not — and there the private day tour and the private car charter are the listings that work, because both are priced per vehicle rather than per skier.`,
+    a: `It depends entirely on where you are sleeping, and that is the one question this search term hides. If you are staying at Niseko, you do not need a tour: book the airport coach, book a lesson, reserve the gear, buy the pass, and the days look after themselves. If you are staying in Sapporo — which plenty of people are, because the city is where the hotels and the restaurants are — then a guided day is the only sensible way to ski Niseko, because Niseko United's own access figures make the run 2 to 3.5 hours each way from the airport side and a self-assembled day burns most of the daylight on buses. That is what the lift-pass-and-coach day out of Sapporo is for: a fixed six hours on Grand Hirafu with the transport and the pass in one booking. The third case is a mixed party — some skiing, some not — and there the private car charter is the listing that works, because it is priced per vehicle rather than per skier.`,
   },
   {
     q: "Can you do Niseko as a day trip from Sapporo?",
@@ -291,6 +321,46 @@ const faqItems = [
   {
     q: "How long should a Niseko trip be?",
     a: `Three nights minimum if you are coming for the snow, and the reason is the access rather than the mountain. Niseko United's own figures make the airport run ${AIRPORT_BUS} by booked coach each way, so a two-night trip spends a meaningful share of itself in a vehicle, and a one-night trip is not worth the transfer. Three nights gives you two full days plus an arrival afternoon or a departure morning. Five to seven is where Niseko starts to pay for itself, because the thing it is actually famous for — consistent, repeated powder — is a statistical argument, not a single-day one, and Grand Hirafu's own January figure of 620 cm in a month is a lot of mornings rather than one. The counter-argument: if your trip is mostly cities and you want one ski day on it, do not move your base to Niseko at all. Book a guided day out of Sapporo and keep the city hotel.`,
+  },
+];
+
+/** The same-trip block: the eSIM, the Niseko coach, the pass, then what the trip already booked. */
+const nisekoSameTrip: KlookTripPrepItem[] = [
+  {
+    label: klookEsim.name,
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "A Niseko day is decided by weather: upper lifts hold for wind, areas close and reopen through a storm, and those notices reach a phone rather than a noticeboard at the bottom of the hill.",
+  },
+  {
+    label: nisekoResortShuttleBus.title,
+    ctaLabel: "Check the Niseko shuttle →",
+    url: nisekoResortShuttleBus.url,
+    why: "Niseko United's own figures put the direct coach from New Chitose at 2.5 hours and ¥6,000, against 3 hours and ¥6,200 by train and bus. This listing carries ski equipment plus one bag per person, and it asks for 45 minutes after a domestic landing and 90 after an international one, so match it to your flight.",
+  },
+  {
+    label: jrHokkaidoRailPass.title,
+    ctaLabel: "Price the JR Hokkaido pass →",
+    url: jrHokkaidoRailPass.url,
+    why: "Only if Niseko is one stop on a longer island trip. It runs from ¥22,000 for five days on JR Hokkaido's own page and covers no coach, so a trip that goes from the airport to the resort and back should skip it.",
+  },
+  {
+    label: nisekoHirafuEnglishSkiLesson.title,
+    ctaLabel: "Check Niseko lessons →",
+    url: nisekoHirafuEnglishSkiLesson.url,
+    why: `The booking with a published rule behind it: the resort-run school takes advance bookings for full days only in its own peak, ${LESSON_PEAK}, so a half day in those weeks needs a reseller or a turn-up.`,
+  },
+  {
+    label: nisekoSkiSnowboardRental.title,
+    ctaLabel: "Check Niseko rental →",
+    url: nisekoSkiSnowboardRental.url,
+    why: "Gear reserved before you fly and collected in Hirafu at the foot of the lifts, which is the difference between skiing on your first morning and queueing through it.",
+  },
+  {
+    label: "Hotels in Niseko",
+    ctaLabel: "Check Niseko hotels on Klook →",
+    url: japanWinterStayAreas[7].url,
+    why: "The booking that fixes everything else. Which of the four areas you sleep in decides whether the lifts are a walk or a shuttle ride, and Niseko United itself says the peak holiday periods sell out early.",
   },
 ];
 
@@ -415,6 +485,42 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           </p>
         </div>
 
+        <WinterBookingTop
+          heading="Which Niseko Ski Tours Should You Book for Winter 2026-27?"
+          checkedIso={SEASON_ISO}
+          deadline={
+            <>
+              For Christmas or New Year, book the lesson and the airport coach by 28 November, the day the
+              lifts open: the resort school&apos;s lesson peak starts 14 December, and in it only full days
+              can be booked ahead. For January or February, book by 31 December, before the school&apos;s
+              second peak on 6 to 12 February.
+            </>
+          }
+          tours={[
+            {
+              title: nisekoHirafuLiftPassBusTour.title,
+              url: nisekoHirafuLiftPassBusTour.url,
+              price: null,
+              duration: "Same-day return, 6-hour lift ticket",
+              departs: "10 stops in central Sapporo",
+            },
+            {
+              title: nisekoHirafuEnglishSkiLesson.title,
+              url: nisekoHirafuEnglishSkiLesson.url,
+              price: null,
+              duration: "4 or 6 hours",
+              departs: "Niseko Tokyu Grand Hirafu",
+            },
+            {
+              title: noboribetsuToyaNisekoDayTour.title,
+              url: noboribetsuToyaNisekoDayTour.url,
+              price: null,
+              duration: "About 10 hours",
+              departs: "Sapporo",
+            },
+          ]}
+        />
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -453,8 +559,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
               <strong>5 May 2027</strong>. A one-day All Mountain Pass is <strong>{PEAK_DAY}</strong> in
               the <strong>{PEAK_FROM} to {PEAK_TO}</strong> peak band and <strong>{EARLY_DAY}</strong>{" "}
               early or spring. And the one thing to book rather than buy on the day is a{" "}
-              <strong>lesson</strong>: the resort school states that in peak season only full-day lessons
-              can be reserved in advance. All figures the operators&apos; own, read {OWN}.
+              <strong>lesson</strong>: the resort school states that in its own peak, {LESSON_PEAK}, only
+              full-day lessons can be reserved in advance. All figures the operators&apos; own, re-read{" "}
+              {SEASON}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -466,6 +573,14 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
         </div>
+
+        {/* Same-trip block, moved up from above the FAQ on 6 Nov 2026. */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What a Niseko Trip Actually Books"
+          intro="Data and the airport coach first, because nothing else on this list fails if you get it wrong on the day. Niseko United's own access page prices the gap: a booked coach is 2.5 hours and the walk-up train-and-bus is 3."
+          items={nisekoSameTrip}
+        />
 
         {/* Getting there */}
         <section className={styles.comparisonSection}>
@@ -504,7 +619,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Every time and fare in the table is Niseko United&apos;s own, from its own &ldquo;Getting to
-            Niseko&rdquo; page, read {OWN}. The notes column is ours. One thing the table cannot tell you
+            Niseko&rdquo; page, re-read {SEASON}. The notes column is ours. One thing the table cannot tell you
             and a listing can: whether a given coach takes ski equipment and how much luggage per person
             — the resort shuttle listing states one piece plus equipment, which is the detail that makes
             it a different product from the train.
@@ -516,8 +631,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             <KlookLink href={hokkaidoPrivateCarCharterNiseko.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Private car to Niseko →
             </KlookLink>
-            <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Shared airport transfer →
+            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              New Chitose transfers →
             </KlookLink>
           </div>
         </section>
@@ -536,7 +651,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", `Niseko United, 2026-27 (read ${OWN})`].map((h) => (
+                    {["", `Niseko United, 2026-27 (read ${SEASON})`].map((h) => (
                       <th key={h || "blank"}>{h}</th>
                     ))}
                   </tr>
@@ -553,7 +668,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            All dates Niseko United&apos;s own, read {OWN}. The resort describes the closing dates as
+            All dates Niseko United&apos;s own, read {SEASON}. The resort describes the closing dates as
             scheduled, and a Hokkaido spring can move them. The detail worth re-reading before a
             late-season booking: <strong>Niseko Village closes 4 April and Hanazono 11 April</strong>,
             while Grand HIRAFU and Annupuri carry on to 5 May.
@@ -601,7 +716,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             the season is a counter purchase on arrival, which is fine, but it is not something you can
             lock in from home. Multi-day passes run to seven days and a 50-hour online-only ticket exists;
             we quote only the one-day figures here, because those are the ones on the resort&apos;s own
-            table we could read in full. All prices read {OWN}.
+            table we could read in full. All prices read {SEASON}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -620,27 +735,29 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             <strong>Yes — and there is a published rule behind it, not just advice.</strong> The
             resort-operated <strong>Niseko International Snowsports School</strong> states on its own page,
-            read {OWN}:{" "}
+            read {SEASON}:{" "}
             <em>&ldquo;During peak season, only full-day lessons are available for advance
-            booking.&rdquo;</em> Set that against Niseko United&apos;s own peak band —{" "}
-            <strong>{PEAK_FROM} to {PEAK_TO}</strong> — and the consequence is concrete: across Christmas,
-            New Year, the whole of January and all of February, a half-day lesson is something you turn up
-            and ask about rather than something you reserve.
+            booking.&rdquo;</em> The school&apos;s own peak is{" "}
+            <strong>{LESSON_PEAK}</strong>, which is not the lift-pass peak of {PEAK_FROM} to {PEAK_TO}. So
+            across the Christmas and New Year weeks and the 6 to 12 February week, a half-day lesson is
+            something you turn up and ask about rather than something you reserve.
           </p>
           <p className={styles.bodyText}>
             That is the single most useful sentence on this page for a family or a first-timer, because it
-            inverts the usual plan. If a half day is what your legs or your children can actually manage,
-            you have three choices: book a full day and quit at lunch, go outside the peak band — early
-            December or March, which are also the two cheapest pass periods — or book through a reseller,
-            which is a separate pool of availability, prices in your own currency and reads in English.
-            The school itself runs <strong>{SEASON_OPEN} to 11 April 2027</strong> on its own tentative
-            dates, offers group, private and fully customised programmes, and had 2026-27 bookings open
-            when this page was written.
+            inverts the usual plan. If a half day in those weeks is what your legs or your children can
+            actually manage, you have three choices: book a full day and quit at lunch, move to the
+            school&apos;s regular weeks (8 to 13 December, 4 January to 5 February, 13 to 28 February), or
+            book through a reseller, which is a separate pool of availability, prices in your own currency
+            and reads in English. The school itself runs <strong>{SEASON_OPEN} to 11 April 2027</strong> on
+            its own tentative dates, offers group, private and fully customised programmes, and has 2026-27
+            bookings open.
           </p>
           <p className={styles.bodyText}>
-            One honest limit on what we can tell you: we publish no lesson price. The school sets rates per
-            lesson type and per season and we could not read a figure off its own pages that we would
-            stand behind, so there is none here. Open a listing for the price on your own dates.
+            The school&apos;s private rates are per group of up to six, on its own page read {SEASON}: the
+            six-hour Niseko Classic is <strong>¥120,000</strong> peak, ¥93,000 regular and ¥87,000 in early
+            and spring weeks; a morning lesson is ¥93,000, ¥71,000 and ¥59,000; an afternoon lesson is
+            ¥55,000, ¥43,000 and ¥43,000. Group lessons have their own rates, and they do not run from 28
+            November to 7 December. Open a listing for the reseller&apos;s price on your own dates.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={nisekoHirafuEnglishSkiLesson.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -779,9 +896,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
               <p className={styles.whoForTitle}>Mixed party? Book per vehicle</p>
               <p className={styles.whoForDesc}>
                 Some skiing, some not, is the hardest Niseko trip to arrange and the one where per-seat
-                pricing falls apart. The private day tour and the private car charter are both priced per
-                vehicle, which is also what makes them rational for four or more rather than
-                extravagant.
+                pricing falls apart. The private car charter is priced per vehicle, which is also what
+                makes it rational for four or more rather than extravagant.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -810,13 +926,34 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           </p>
         </section>
 
-        {/* Trip prep */}
-        <KlookTripPrep
-          label="Before you go"
-          heading="What a Niseko Trip Actually Books"
-          intro="Five things, airport first — because nothing else on this list fails if you get it wrong on the day. Niseko United's own access page prices the gap: a booked coach is 2.5 hours and the walk-up train-and-bus is 3. Klook blocks automated price reads, so open a listing for the figure on your own dates."
-          items={nisekoSkiTripPrep}
-        />
+        {/* The rest of the winter */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>The rest of your winter</span>
+          <h2 className={styles.sectionTitle}>What Should You Pair With a Niseko Trip?</h2>
+          <p className={styles.bodyText}>
+            A February trip can take in the city as well as the snow. Our{" "}
+            <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival guide</Link>{" "}
+            covers the eight days in the city on 4 to 11 February 2027, and our{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo</Link>{" "}
+            is the easiest rest day on the way back to the airport. If the snow is only part of your week, our{" "}
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary">Hokkaido 7 day itinerary</Link> has a
+            ski swap built in, and our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> treats
+            Hokkaido as one leg of a national trip.
+          </p>
+          <p className={styles.bodyText}>
+            Coming through Tokyo? If you have not skied before and want to test it before committing to
+            Hokkaido, a{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa ski day from Tokyo</Link>{" "}
+            is the low-commitment version. For non-skiers in your party, the{" "}
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>{" "}
+            and the{" "}
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour</Link>{" "}
+            are snow days with no skis, and our guide to{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo illuminations</Link> covers the
+            evenings at the start or end of the flight.
+          </p>
+        </section>
 
         {/* FAQ */}
         <section className={styles.faqSection}>
@@ -840,8 +977,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
         {/* Klook tours */}
         <KlookTourPicks
           heading="The Niseko Days You Can Actually Book"
-          intro="Four shapes of the same trip: a fixed six hours on Grand Hirafu out of Sapporo with the pass inside it, two or three nights with the beds inside it, a private day for a party that is not all skiing, and the non-ski Hokkaido day for the morning the upper lifts are held for wind."
-          tours={[nisekoHirafuLiftPassBusTour, nisekoSkiHotSpringTourFromSapporo, nisekoPrivateOneDayTour, noboribetsuToyaNisekoDayTour]}
+          intro="Four shapes of the same trip: a fixed six hours on Grand Hirafu out of Sapporo with the pass inside it, two or three nights with the beds inside it, a private car for a party that is not all skiing, and the non-ski Hokkaido day for the morning the upper lifts are held for wind."
+          tours={[nisekoHirafuLiftPassBusTour, nisekoSkiHotSpringTourFromSapporo, hokkaidoPrivateCarCharterNiseko, noboribetsuToyaNisekoDayTour]}
         />
 
         {/* Related articles */}
@@ -927,6 +1064,41 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5L4.9 17.5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/takayama-shirakawago-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21l9-16 9 16z" />
+                  <line x1="8" y1="21" x2="8" y2="15" />
+                  <line x1="16" y1="21" x2="16" y2="15" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Takayama and Shirakawa-go Tour (2026): Which Departure</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/tokyo-illumination-tours" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11v2h6v-2a6 6 0 0 0-3-11z" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Illuminations 2026: Dates, Hours and the Free Ones</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/esim/best-esim-japan" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -960,8 +1132,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             <h2 className={styles.ctaBannerTitle}>Four areas, one pass, and one deadline</h2>
             <p className={styles.ctaBannerDesc}>
               The lifts open {SEASON_OPEN} and peak pricing starts {PEAK_FROM}. The transfer and the
-              lesson are the two bookings with dates attached — in peak season the resort school only
-              takes advance bookings for full days.
+              lesson are the two bookings with dates attached: from 14 December to 3 January and on 6 to 12
+              February, the resort school only takes advance bookings for full days.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
               <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>

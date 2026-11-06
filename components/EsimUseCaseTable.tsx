@@ -1,6 +1,7 @@
 import { formatUsd, getProvider, type EsimPlan } from "../lib/esim-prices";
 import type { EsimPicksCopy } from "../lib/esim-picks-copy";
 import { pickRows, type PickSeller } from "../lib/esim-picks";
+import { KLOOK_ESIM_FACTS, KLOOK_ESIM_FROM_LABEL } from "../lib/klook-esim-facts";
 import { klookEsim } from "../lib/klook-links";
 import { klookFor } from "../lib/klook-locale";
 import type { TranslatedLocale } from "../lib/i18n";
@@ -112,6 +113,8 @@ export default function EsimUseCaseTable({
                   </>
                 ) : plan ? (
                   <strong>{formatUsd(plan.priceUsd)}</strong>
+                ) : seller === "klook" ? (
+                  KLOOK_ESIM_FROM_LABEL[klookLocale ?? "en"]
                 ) : (
                   copy.noPrice[seller as "klook" | "sakura"]
                 )}
@@ -124,6 +127,7 @@ export default function EsimUseCaseTable({
         </tbody>
       </table>
       <p className={styles.note}>{copy.tableNote}</p>
+      <p className={styles.note}>{KLOOK_ESIM_FACTS[klookLocale ?? "en"]}</p>
     </section>
   );
 }

@@ -675,7 +675,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             check in Japan.
           </p>
           <SimbyeOffer />
-          <KlookEsimSlot why="Klook's own Japan eSIM sells the same sizes — 500 MB to 50 GB plus an unlimited tier — and its listing states tethering is supported and the service is data only, so the sizing above transfers. It is unpriced here because the listing blocks automated price reads, which is also why it sits outside the ordered comparison rather than in it." />
+          <KlookEsimSlot why="Klook's own Japan eSIM sells the same sizes — 500 MB to 50 GB plus an unlimited tier — and its listing states tethering is supported and the service is data only, so the sizing above transfers. Its listing shows from US$1.05 before you choose days and data, with no plan named, which is why it sits outside the ordered comparison rather than in it." />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Data, validity and price from the daily price feed ({pricesCheckedAt}); tethering and
             phone-number clauses from each provider&apos;s own pages ({SPECS_CHECKED_AT}); the Klook

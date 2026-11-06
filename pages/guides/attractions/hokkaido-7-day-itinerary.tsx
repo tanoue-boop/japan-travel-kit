@@ -4,34 +4,39 @@ import type { ReactNode } from "react";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
-  asahiyamaZooWinterDayTour,
   bieiFuranoLavenderDayTour,
   furanoBieiBluePondDayTour,
   hokkaidoSevenDayStayAreas,
-  hokkaidoSevenDayTripPrep,
   jozankeiHotSpringBusTrip,
   jrHokkaidoRailPass,
   klookEsim,
   lakeShikotsuIceFestivalHalfDayTour,
-  newChitoseSapporoSharedTransfer,
+  newChitoseAirportTransfers,
   nisekoResortShuttleBus,
-  nisekoSkiSnowboardRental,
+  noboribetsuToyaNisekoDayTour,
   noboribetsuToyaOtaruDayTour,
   otaruCanalCruiseSealCarving,
   otaruShakotanYoichiCoachTour,
   otaruSnowParkDayTour,
-  otaruYoichiDayTour,
+  sapporoFuranoAreaPass,
   sapporoFuranoBieiLavenderBusTour,
   sapporoJozankeiBuddhaDayTour,
   sapporoSnowParkHalfDayTour,
   sapporoTvTowerMoiwaSetTicket,
+  type KlookTripPrepItem,
 } from "../../../lib/klook-links";
+import {
+  asahiyamaBieiHighlightsTour,
+  furanoBieiWinterIlluminationTour,
+  yoichiOtaruWalkingTour,
+} from "../../../lib/klook-links-winter-hokkaido";
 
 /**
  * A seven-day Hokkaido route, written for the reader searching "Hokkaido 7 Day
@@ -50,7 +55,7 @@ import {
  *      the arrival and departure days are shaped by New Chitose rather than by
  *      a station.
  *   2. The distances are real. Sapporo to Asahikawa is 1 hr 25 min on a limited
- *      express and Sapporo to Furano two hours — which means a seven-day route
+ *      express and Sapporo to Furano two hours in summer — which means a seven-day route
  *      sleeps in two or three places, and the pass arithmetic is completely
  *      different from the Honshu one. Worked in full below: on this route the
  *      seven-day island pass does not pay and the four-day area pass does.
@@ -121,13 +126,44 @@ import {
  *                               with HTTP 403, so it was read through the
  *                               jal.co.jp search index.
  *
+ * Re-read on 6 November 2026 for the winter booking pass (task jtk-20261106-A21).
+ * This pass corrected the winter version of the route:
+ *   jrhokkaido.co.jp            The Furano Lavender Express is "a seasonal train":
+ *     /global/english/travel/    JR Hokkaido's 2026 timetable has it on June to
+ *     model/furano.html and      September dates, last run 23 Sep, with no winter
+ *     the 2026 sightseeing       dates. The same page says "You can also go to
+ *     train timetable            Biei and Furano via Asahikawa when the Furano
+ *                                Lavender Express is not operated". This page used
+ *                                to route December to March on it, and to print
+ *                                Sapporo–Furano in two hours all year.
+ *                                That page's 40 minutes is Furano–Biei, not
+ *                                Asahikawa–Biei or –Furano as we used to say. It
+ *                                publishes no Asahikawa–Furano time and none is
+ *                                printed here.
+ *   jrhokkaido.co.jp            ¥1,380 Asahikawa–Furano, from JR Hokkaido's 2026
+ *     /CM/Info/press/pdf/        Furano Line notice, which also says IC cards do not
+ *     260325_KO_Furano-Biei.pdf  work between Asahikawa and Furano. The rail totals
+ *                                are now ¥17,160 by the Lavender Express and ¥17,700
+ *                                in winter.
+ *   jrhokkaido.co.jp/global/    pass prices unchanged, and the area pass "allows an
+ *     english/ticket/railpass/   ordinary car reserved seat", which is what makes it
+ *                                work on the all-reserved Lilac and Kamui.
+ *   city.asahikawa.hokkaido.jp  Winter opening 11 Nov 2026 to 7 Apr 2027, 10:30–
+ *     /asahiyamazoo/ (d082799,   15:30, last admission 15:00, closed 30 Dec to 1 Jan;
+ *     d084291)                   penguin walks 11:00 and 14:30, March 11:00 only,
+ *                                start date to be announced on official social media;
+ *                                adult ¥1,000 now, ¥1,400 from 29 Apr 2027.
+ *   hyoutou-special.asia        Lake Shikotsu ice festival 30 Jan to 23 Feb 2027.
+ *   otaru.gr.jp/event/          Snow Light Path dates unchanged, details to follow.
+ *     yukiakari2027
+ *   Listings: 12479 is out because its indexed text is a Tomamu route, 181965 because
+ *   its indexed body describes Cape Kamui rather than Yoichi, and 164281 because its
+ *   indexed dates stop at 15 Mar 2026.
+ *
  * Deliberately absent: an Osaka–New Chitose flight duration. No carrier page we
  * could read on 1 Nov 2026 published one, and the aggregator figures are not an
  * operator's own, so the table says to check the airline timetable rather than
- * printing a number. Also absent: the local fares between Asahikawa, Biei and
- * Furano — JR Hokkaido publishes the 40-minute journey time on its own model
- * page but not the fare, so the pass arithmetic below is run without them and
- * says so, which makes the case for the pass stronger rather than weaker.
+ * printing a number.
  *
  * Carried from our own pages, with their original check dates: the 4–11 February
  * 2027 Sapporo Snow Festival dates and the free-admission line (committee
@@ -136,13 +172,18 @@ import {
  * (28 Oct 2026) and the national JR Pass prices after the 1 October 2026
  * revision (JR Group, carried from our JR Pass guide).
  *
- * Nothing here is first-hand, and no Klook price appears: Klook answers
- * automated reads of its product pages with HTTP 403.
+ * Nothing here is first-hand. Klook answers automated reads of its product pages
+ * with HTTP 403, so the body carries no Klook price; the WinterBookingTop block
+ * carries the indexed from-prices, dated, and nothing else on the page does.
  */
 
 /** Figures read off the operators' own sites for this page. */
 const OWN_ISO = "2026-11-01";
 const OWN = checkedLabel(OWN_ISO);
+
+/** The winter pass's re-reads of the official sites and of Klook's index. */
+const SEASON_ISO = "2026-11-06";
+const SEASON = checkedLabel(SEASON_ISO);
 
 /** Carried from our own Hokkaido pages, with their own check dates. */
 const FESTIVAL_CHECKED = checkedLabel("2026-10-30");
@@ -154,6 +195,11 @@ const ASAHIKAWA_RT = "¥10,880";
 const ASAHIKAWA_OW = "¥5,440";
 const FURANO_RT = "¥12,560";
 const FURANO_OW = "¥6,280";
+const FURANO_LOCAL = "¥1,380";
+/** Furano to Sapporo out of season: the local to Asahikawa, then the Lilac or Kamui. */
+const FURANO_WINTER = "¥6,820";
+const TOTAL_SUMMER = "¥17,160";
+const TOTAL_WINTER = "¥17,700";
 const PASS_7 = "¥28,000";
 const PASS_5 = "¥22,000";
 const PASS_10 = "¥37,000";
@@ -194,7 +240,7 @@ const baseRows = [
   {
     base: "Sapporo Station",
     nights: "4 of 6",
-    why: "Nights 1, 2, 3 and 6. Every leg of this route starts under this building — the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa, the Furano Lavender Express — and Odori is one subway stop or a covered walk. The two blocks of nights can be one booking with a gap or two separate ones; prices usually decide it.",
+    why: "Nights 1, 2, 3 and 6. Every leg of this route starts under this building — the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa, and in summer the Furano Lavender Express — and Odori is one subway stop or a covered walk. The two blocks of nights can be one booking with a gap or two separate ones; prices usually decide it.",
   },
   {
     base: "Furano",
@@ -242,7 +288,7 @@ const seasonRows = [
   },
   {
     day: "Day 6",
-    winter: "Back to Sapporo on the Lavender Express, then a ski day at Niseko or Rusutsu, or the Lake Shikotsu ice festival in February",
+    winter: "Back to Sapporo by the local train to Asahikawa and the Lilac or Kamui, because the Lavender Express is a summer train, then a snow-park half day or, 30 January to 23 February 2027, the Lake Shikotsu ice festival",
     summer: "Back to Sapporo, then Noboribetsu and Lake Toya as a long day south, or a slow last afternoon in the city",
   },
   {
@@ -271,13 +317,18 @@ const passRows = [
   },
   {
     leg: "Asahikawa → Biei → Furano, local trains (Day 4)",
-    fare: "Not quoted",
-    note: "JR Hokkaido publishes the 40-minute journey time on its own model page but not the fare, so it is left out of the total below rather than estimated.",
+    fare: FURANO_LOCAL,
+    note: `Asahikawa–Furano on JR Hokkaido's own 2026 notice for the line, which also says IC cards do not work between Asahikawa and Furano, so buy a ticket. Read ${SEASON}.`,
   },
   {
-    leg: "Furano → Sapporo, Furano Lavender Express reserved (Day 6)",
+    leg: "Furano → Sapporo, Furano Lavender Express reserved (Day 6, summer)",
     fare: FURANO_OW,
-    note: `Half of JR Hokkaido's own ${FURANO_RT} round-trip figure. Two hours, no transfer.`,
+    note: `Half of JR Hokkaido's own ${FURANO_RT} round-trip figure. Two hours, no transfer, on the June to September dates JR Hokkaido publishes; the 2027 dates are awaiting its announcement.`,
+  },
+  {
+    leg: "Furano → Asahikawa → Sapporo, local then Lilac or Kamui (Day 6, winter)",
+    fare: FURANO_WINTER,
+    note: `${FURANO_LOCAL} plus ${ASAHIKAWA_OW}. This is the route JR Hokkaido gives for when the Lavender Express is not operated. Allow a full morning, and check the timetable for the local connection.`,
   },
   {
     leg: "Sapporo → New Chitose Airport (Day 7)",
@@ -285,9 +336,14 @@ const passRows = [
     note: "The same Rapid Airport in reverse.",
   },
   {
-    leg: "Total of the quoted legs",
-    fare: "¥15,780",
-    note: "Plus the two unquoted local legs between Asahikawa, Biei and Furano — call it under ¥18,000 all in.",
+    leg: "Total, summer version",
+    fare: TOTAL_SUMMER,
+    note: "Every leg above except the winter return.",
+  },
+  {
+    leg: "Total, winter version",
+    fare: TOTAL_WINTER,
+    note: "Every leg above except the Lavender Express. Either way, under ¥18,000.",
   },
 ];
 
@@ -333,8 +389,7 @@ const days: Day[] = [
         Your data, the room, and — if you are landing with hold luggage in February — a seat rather than a
         platform. The train needs nothing booked, which is the useful thing about this arrival; the booked
         road transfer is the alternative worth having when the cases are large or the hotel is not beside a
-        station, and its listing requires 45 minutes after a domestic arrival and 90 after an international
-        one, so it is a before-you-fly decision. One Day 1 decision that is not transport: if you are
+        station, and it is a before-you-fly decision. One Day 1 decision that is not transport: if you are
         arriving before midday, New Chitose runs through to Otaru in 73 minutes at fastest without a
         change, which turns an arrival afternoon into a real one — see our{" "}
         <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip guide</Link> for how
@@ -342,7 +397,7 @@ const days: Day[] = [
       </>
     ),
     picks: [
-      { label: "New Chitose → Sapporo transfer →", url: newChitoseSapporoSharedTransfer.url },
+      { label: "New Chitose transfers →", url: newChitoseAirportTransfers.url },
       { label: "See Klook eSIM options →", url: klookEsim.url },
       { label: "Price the JR Hokkaido pass →", url: jrHokkaidoRailPass.url },
       { label: "TV Tower + Moiwa set ticket →", url: sapporoTvTowerMoiwaSetTicket.url },
@@ -447,7 +502,8 @@ const days: Day[] = [
         are free of charge but that reservations are requested in advance, and its access page warns that{" "}
         <em>&ldquo;there are few trains operating between Otaru Station and Yoichi Station&rdquo;</em>: a
         fixed-time booking at the far end of a thin timetable is exactly what a guided day solves, which is
-        why the Otaru-and-Yoichi listings lead here. The canal cruise is the other thing worth holding —
+        why the Yoichi listings lead here. The distillery is closed 23 December to 7 January. The canal
+        cruise is the other thing worth holding —
         the operator&apos;s own fares are {CRUISE_DAY} adult by day and ¥2,000 at night for 40 minutes, and
         its own policy is that sailings are cancelled for weather. Our{" "}
         <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo</Link>{" "}
@@ -455,7 +511,7 @@ const days: Day[] = [
       </>
     ),
     picks: [
-      { label: "Otaru & Yoichi day trip →", url: otaruYoichiDayTour.url },
+      { label: "Yoichi & Otaru walking day →", url: yoichiOtaruWalkingTour.url },
       { label: "Cape Kamui + Yoichi coach day →", url: otaruShakotanYoichiCoachTour.url },
       { label: "Canal cruise + workshop →", url: otaruCanalCruiseSealCarving.url },
       { label: "Otaru & snow park day →", url: otaruSnowParkDayTour.url },
@@ -466,7 +522,7 @@ const days: Day[] = [
     label: "Day 4",
     heading: "Day 4 — Inland: Asahikawa, the Zoo, and the Train Down to Furano",
     intro:
-      "This is the day the itinerary stops being a city break. Sapporo to Asahikawa is 1 hr 25 min on the Ltd. Exp. Lilac or Kamui, and Asahiyama Zoo — the reason almost everyone makes this trip — is the most-visited thing in Hokkaido outside Sapporo. Then rather than going back, you carry on: Asahikawa to Biei and Furano is 40 minutes of local train on JR Hokkaido's own figure, and sleeping at the far end is what turns Day 5 from a coach day into a morning. Two hard facts to plan around. The zoo changes season in early November and closes for a week while it does. And in winter it shuts at 15:30, with last admission at 15:00 — which is before you would normally think about leaving.",
+      "This is the day the itinerary stops being a city break. Sapporo to Asahikawa is 1 hr 25 min on the Ltd. Exp. Lilac or Kamui, and Asahiyama Zoo — the reason almost everyone makes this trip — is the most-visited thing in Hokkaido outside Sapporo. Then rather than going back, you carry on south by local train through Biei to Furano, and sleeping at the far end is what turns Day 5 from a coach day into a morning. Two hard facts to plan around. The zoo closes for New Year, 30 December to 1 January. And in winter it shuts at 15:30, with last admission at 15:00 — which is before you would normally think about leaving.",
     stops: [
       {
         time: "Early morning",
@@ -485,8 +541,8 @@ const days: Day[] = [
       {
         time: "Mid-afternoon",
         place: "Back to Asahikawa, then the local train south",
-        allow: "40 minutes to Biei or Furano",
-        getting: "JR local train — JR Hokkaido's own figure",
+        allow: "Check the timetable: JR Hokkaido publishes 40 minutes for Biei–Furano, and no time for the Asahikawa leg",
+        getting: `JR local train, ${FURANO_LOCAL} Asahikawa–Furano. IC cards do not work on this line`,
         booking: "No",
       },
       {
@@ -501,17 +557,19 @@ const days: Day[] = [
       <>
         The reserved seats and the Furano room, in that order. The Lilac and Kamui are all-reserved trains,
         so the Asahikawa leg is a booking rather than a turn-up — and this is the leg that decides the pass
-        question, because {ASAHIKAWA_OW} one way plus {FURANO_OW} back from Furano on Day 6 is already more
-        than the four-day Sapporo–Furano Area Pass costs. The zoo is {ZOO_ADULT} at the gate and needs
-        nothing booked; what it needs is the right hours. Asahiyama&apos;s own pages, read {OWN}: the
-        winter season runs from 11 November at <strong>10:30–15:30 with last admission 15:00</strong>, and
-        the zoo is <strong>closed 4 to 10 November</strong> while it changes over. The penguin walk —
-        genuinely the reason to come in winter — only runs once there is enough snow for a course, which
-        the zoo puts at roughly late December to mid-March, twice a day.
+        question, because this leg, the return from Furano on Day 6 and the Otaru return already come to
+        more than the four-day Sapporo–Furano Area Pass costs. The zoo is {ZOO_ADULT} at the gate (¥1,400
+        from 29 April 2027) and needs nothing booked; what it needs is the right hours. Asahiyama&apos;s
+        own pages, read {SEASON}: the winter season runs <strong>11 November 2026 to 7 April 2027</strong>{" "}
+        at <strong>10:30–15:30 with last admission 15:00</strong>, and the zoo is{" "}
+        <strong>closed 30 December to 1 January</strong>. The penguin walk — genuinely the reason to come
+        in winter — only runs once there is enough snow for a course, which the zoo puts at late December
+        to mid-March, at 11:00 and 14:30, and 11:00 only in March. The 2026-27 start date is awaiting the
+        zoo&apos;s announcement on its official social media.
       </>
     ),
     picks: [
-      { label: "Asahiyama Zoo winter day →", url: asahiyamaZooWinterDayTour.url },
+      { label: "Asahiyama Zoo day from Sapporo →", url: asahiyamaBieiHighlightsTour.url },
       { label: "Furano & Biei Blue Pond day →", url: furanoBieiBluePondDayTour.url },
       { label: "Check Furano hotels →", url: hokkaidoSevenDayStayAreas[2].url },
       { label: "Price the JR Hokkaido pass →", url: jrHokkaidoRailPass.url },
@@ -567,9 +625,10 @@ const days: Day[] = [
       </>
     ),
     picks: [
-      { label: "Biei & Furano lavender day →", url: bieiFuranoLavenderDayTour.url },
+      { label: "Furano & Biei winter day →", url: furanoBieiWinterIlluminationTour.url },
+      { label: "Biei & Furano lavender day (summer) →", url: bieiFuranoLavenderDayTour.url },
       { label: "Furano, Blue Pond & Shikisai-no-oka →", url: furanoBieiBluePondDayTour.url },
-      { label: "Furano & Biei join-in coach →", url: sapporoFuranoBieiLavenderBusTour.url },
+      { label: "Furano & Biei join-in coach (summer) →", url: sapporoFuranoBieiLavenderBusTour.url },
       { label: "Check Furano hotels →", url: hokkaidoSevenDayStayAreas[2].url },
     ],
   },
@@ -578,7 +637,7 @@ const days: Day[] = [
     label: "Day 6",
     heading: "Day 6 — Back to Sapporo, and the Last Big Day Out",
     intro:
-      "The Furano Lavender Express runs Sapporo to Furano in two hours with no transfer, which means Day 6 can be a travel morning and still be a full day. What you do with the afternoon is the one genuinely free choice in the week, and it splits by season rather than by taste. In winter the honest answer is snow: a ski or snow-play day at Niseko or Rusutsu, or in February the Lake Shikotsu ice festival, which is lit after dark and sold both as a guided half day and as a plain coach seat. In summer it is the long run south to Noboribetsu and Lake Toya — the hot-spring valley and the caldera lake — which is a lot of coach for one day but the only way to see either without a second base.",
+      "How you get back depends on the season. In summer the Furano Lavender Express runs to Sapporo in two hours with no transfer, so Day 6 can be a travel morning and still be a full day. It is a seasonal train, so from December to February you take the local to Asahikawa and change to the Lilac or Kamui, which uses up the morning. What you do with the afternoon splits by season too. In winter the honest answer is close to Sapporo: a snow-park half day, or from 30 January to 23 February 2027 the Lake Shikotsu ice festival, which is lit from 16:30 and sold both as a guided half day and as a plain coach seat. In summer it is the long run south to Noboribetsu and Lake Toya — the hot-spring valley and the caldera lake — which is a lot of coach for one day but the only way to see either without a second base.",
     stops: [
       {
         time: "Morning",
@@ -611,12 +670,12 @@ const days: Day[] = [
     ],
     book: (
       <>
-        Whichever of the two afternoons you picked, and the Lavender Express seat that gets you back for it.
-        The ski version of this day is three things in one booking — lift ticket, rental and the coach from
-        Sapporo — which for a traveller carrying no gear is cheaper to organise than to assemble; the Niseko
-        rental listing is the one to open if you are already going to be standing in Hirafu. In February the
-        Lake Shikotsu ice festival is the alternative worth knowing about, because it is sold two ways: as a
-        guided half day, and as a plain round-trip coach seat for people who do not want a guide attached.
+        Whichever of the two afternoons you picked and, in summer, the Lavender Express seat that gets you back
+        for it. If you want a ski day instead, our{" "}
+        <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link> sets out the same-day
+        lift and coach package from Sapporo. From 30 January to 23 February 2027 the Lake Shikotsu ice
+        festival is the alternative worth knowing about, and the half-day tour below is the simple way to
+        reach it.
         Whatever you book, read the cancellation window. This is the day a Hokkaido snow day takes away — it
         does not close the free festival sites, but it closes roads out of the city.
       </>
@@ -625,7 +684,7 @@ const days: Day[] = [
       { label: "Noboribetsu, Toya & Otaru day →", url: noboribetsuToyaOtaruDayTour.url },
       { label: "Lake Shikotsu ice festival →", url: lakeShikotsuIceFestivalHalfDayTour.url },
       { label: "Sapporo snow park half day →", url: sapporoSnowParkHalfDayTour.url },
-      { label: "Niseko ski & snowboard rental →", url: nisekoSkiSnowboardRental.url },
+      { label: "Noboribetsu, Toya & Niseko day →", url: noboribetsuToyaNisekoDayTour.url },
     ],
   },
   {
@@ -675,9 +734,37 @@ const days: Day[] = [
       </>
     ),
     picks: [
-      { label: "New Chitose → Sapporo transfer →", url: newChitoseSapporoSharedTransfer.url },
+      { label: "New Chitose transfers →", url: newChitoseAirportTransfers.url },
       { label: "See Klook eSIM options →", url: klookEsim.url },
     ],
+  },
+];
+
+/** The same-trip block under the Quick Answer box. */
+const hokkaidoSameTrip: KlookTripPrepItem[] = [
+  {
+    label: klookEsim.name,
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "A February week here runs on notices: train delays, road closures and flight changes all reach your phone first, and the Asahikawa and Furano legs need a live timetable.",
+  },
+  {
+    label: newChitoseAirportTransfers.title,
+    ctaLabel: "Check New Chitose transfers →",
+    url: newChitoseAirportTransfers.url,
+    why: `The Rapid Airport train at ${AIRPORT_FARE} suits most arrivals. A booked car is for a late landing, a hotel away from a station, or a party with ski bags.`,
+  },
+  {
+    label: sapporoFuranoAreaPass.title,
+    ctaLabel: "Price the area pass →",
+    url: sapporoFuranoAreaPass.url,
+    why: `The pass that pays on this route: ${AREA_FURANO} for four consecutive days on JR Hokkaido's own page, laid over Days 3 to 6.`,
+  },
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo hotels on Klook →",
+    url: hokkaidoSevenDayStayAreas[0].url,
+    why: "Four of the six nights are here, and every rail leg of the week starts in this building.",
   },
 ];
 
@@ -688,23 +775,23 @@ const faqItems = [
   },
   {
     q: "Do I need a car in Hokkaido?",
-    a: `Not for this route, with one genuine exception. Sapporo, Otaru, Asahikawa and Furano are all on JR lines with limited expresses or several-an-hour rapids between them — Sapporo to Otaru is ${OTARU_FARE} and about 33 minutes, Sapporo to Asahikawa 1 hr 25 min, Sapporo to Furano two hours on the Lavender Express, all JR Hokkaido's own figures read ${OWN}. Inside Sapporo the subway does everything. The exception is Day 5: Biei's patchwork hills, Shikisai-no-oka and the Shirogane Blue Pond are spread across farmland with infrequent local buses, and that is the one leg where not having a car genuinely costs you. The three workable answers without one are a sightseeing bus, a taxi course from Biei station, or a guided day — which is why that day's listings are the most useful ones on this page. Two cautions about driving instead: winter road conditions in Hokkaido are the real thing, not an inconvenience, and a car is dead money on the four days you are in cities.`,
+    a: `Not for this route, with one genuine exception. Sapporo, Otaru, Asahikawa and Furano are all on JR lines with limited expresses or several-an-hour rapids between them — Sapporo to Otaru is ${OTARU_FARE} and about 33 minutes, Sapporo to Asahikawa 1 hr 25 min, Sapporo to Furano two hours on the seasonal Lavender Express in summer, all JR Hokkaido's own figures read ${OWN}. In winter that train does not run, so you go by the local train to Asahikawa and the Lilac or Kamui. Inside Sapporo the subway does everything. The exception is Day 5: Biei's patchwork hills, Shikisai-no-oka and the Shirogane Blue Pond are spread across farmland with infrequent local buses, and that is the one leg where not having a car genuinely costs you. The three workable answers without one are a sightseeing bus, a taxi course from Biei station, or a guided day — which is why that day's listings are the most useful ones on this page. Two cautions about driving instead: winter road conditions in Hokkaido are the real thing, not an inconvenience, and a car is dead money on the four days you are in cities.`,
   },
   {
     q: "Is the Hokkaido Rail Pass worth it for 7 days?",
-    a: `On this route, no — and the arithmetic is worth seeing rather than taking on trust. JR Hokkaido's own prices, read ${OWN}: the Hokkaido Rail Pass is ${PASS_5} for five consecutive days, ${PASS_7} for seven and ${PASS_10} for ten when bought before arrival, ¥1,000 more at a station, with no flexible-day version. Now the legs. The airport runs are ${AIRPORT_FARE} each way. Otaru return is ¥1,600. Sapporo to Asahikawa reserved is ${ASAHIKAWA_OW} one way, which is half JR Hokkaido's own ${ASAHIKAWA_RT} round-trip figure. Furano back to Sapporo on the Lavender Express is ${FURANO_OW}, half its own ${FURANO_RT}. That totals ¥15,780 of quoted fares, plus the local legs between Asahikawa, Biei and Furano, whose fare JR Hokkaido does not publish on that page — call the whole week under ¥18,000. Against ${PASS_7}, the seven-day pass loses by about ¥10,000. What does pay is the four-day Sapporo–Furano Area Pass at ${AREA_FURANO}: the Asahikawa and Furano limited-express legs alone are ¥11,720 of fares, and that pass also covers New Chitose, Sapporo, Otaru and Biei — so used across Days 3 to 6 it clears its cost with the Otaru return on top. The Sapporo–Noboribetsu Area Pass at ${AREA_NOBORIBETSU} is the equivalent for a route that goes south instead of inland. And the national JR Pass, at ¥53,000 for seven days after the 1 October 2026 revision, has no business on an island-only trip at all.`,
+    a: `On this route, no — and the arithmetic is worth seeing rather than taking on trust. JR Hokkaido's own prices, read ${OWN}: the Hokkaido Rail Pass is ${PASS_5} for five consecutive days, ${PASS_7} for seven and ${PASS_10} for ten when bought before arrival, ¥1,000 more at a station, with no flexible-day version. Now the legs. The airport runs are ${AIRPORT_FARE} each way. Otaru return is ¥1,600. Sapporo to Asahikawa reserved is ${ASAHIKAWA_OW} one way, which is half JR Hokkaido's own ${ASAHIKAWA_RT} round-trip figure. Asahikawa to Furano by local train is ${FURANO_LOCAL}. Furano back to Sapporo on the summer Lavender Express is ${FURANO_OW}, half its own ${FURANO_RT}, or ${FURANO_WINTER} in winter by the local train and the Lilac or Kamui. That totals ${TOTAL_SUMMER} in summer and ${TOTAL_WINTER} in winter, so under ¥18,000 either way. Against ${PASS_7}, the seven-day pass loses by about ¥10,000. What does pay is the four-day Sapporo–Furano Area Pass at ${AREA_FURANO}: the Asahikawa and Furano limited-express legs alone are ¥11,720 of fares, and that pass also covers New Chitose, Sapporo, Otaru and Biei — so used across Days 3 to 6 it clears its cost with the Otaru return on top. The Sapporo–Noboribetsu Area Pass at ${AREA_NOBORIBETSU} is the equivalent for a route that goes south instead of inland. And the national JR Pass, at ¥53,000 for seven days after the 1 October 2026 revision, has no business on an island-only trip at all.`,
   },
   {
     q: "Where should I stay in Hokkaido?",
-    a: `Two bases for seven days: Sapporo for four nights and Furano for two. Sapporo Station is the base that makes the route work rather than the base with the view — the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa and the Furano Lavender Express all leave from that building, and Odori is one subway stop or a covered walk, which in a month averaging a ${FEB_MAX} daily maximum matters more than anything else. Furano for Nights 4 and 5 is the part people skip and should not: Biei and Furano as a day trip from Sapporo is a ten-hour coach run, and as two mornings from a Furano room it is the best part of the week. Two worthwhile swaps. Put Night 3 in Otaru if the lit canal is the point, and especially in the first fortnight of February when the Snow Light Path runs — it is ${OTARU_FARE} and about 33 minutes back, so it costs almost nothing. And if the week is really a ski week, replace Furano with Niseko, because the airport coach runs there directly from New Chitose and takes ski bags.`,
+    a: `Two bases for seven days: Sapporo for four nights and Furano for two. Sapporo Station is the base that makes the route work rather than the base with the view — the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa and, in summer, the Furano Lavender Express all leave from that building, and Odori is one subway stop or a covered walk, which in a month averaging a ${FEB_MAX} daily maximum matters more than anything else. Furano for Nights 4 and 5 is the part people skip and should not: Biei and Furano as a day trip from Sapporo is a ten-hour coach run, and as two mornings from a Furano room it is the best part of the week. Two worthwhile swaps. Put Night 3 in Otaru if the lit canal is the point, and especially in the first fortnight of February when the Snow Light Path runs — it is ${OTARU_FARE} and about 33 minutes back, so it costs almost nothing. And if the week is really a ski week, replace Furano with Niseko, because the airport coach runs there directly from New Chitose and takes ski bags.`,
   },
   {
     q: "What is the best time to visit Hokkaido?",
-    a: `There are two right answers and they are different holidays. February is the winter one, and it has fixed dates attached: the Sapporo Snow Festival runs 4 to 11 February 2027 across three free sites on the committee's own announcement (read ${FESTIVAL_CHECKED}), the Otaru Snow Light Path runs 6 to 13 February 2027 on the Otaru Tourism Association's own page (read ${OWN}), and Asahiyama Zoo's penguin walk needs a snow course, which the zoo puts at roughly late December to mid-March. The cost is the weather: on the Japan Meteorological Agency's 1991–2020 normals for Sapporo, February averages a daily maximum of ${FEB_MAX}, a minimum of ${FEB_MIN} and ${FEB_SNOW} of snowfall (read ${JMA_CHECKED}). July is the summer one, and it is the opposite trip — the Furano lavender and the Biei hills, long daylight, and the one month the rest of Japan is unbearable and Hokkaido is not. Between them: May for the late cherry blossom and the Shakotan coast, late September and October for the Daisetsuzan colours. The months to think twice about are November, when the island is between seasons and attractions close to change over — Asahiyama Zoo itself shuts 4 to 10 November — and April, which is mud.`,
+    a: `There are two right answers and they are different holidays. February is the winter one, and it has fixed dates attached: the Sapporo Snow Festival runs 4 to 11 February 2027 across three free sites on the committee's own announcement (read ${FESTIVAL_CHECKED}), the Otaru Snow Light Path runs 6 to 13 February 2027 on the Otaru Tourism Association's own page (read ${OWN}), and Asahiyama Zoo's penguin walk needs a snow course, and the zoo announces its start date on its official social media. The cost is the weather: on the Japan Meteorological Agency's 1991–2020 normals for Sapporo, February averages a daily maximum of ${FEB_MAX}, a minimum of ${FEB_MIN} and ${FEB_SNOW} of snowfall (read ${JMA_CHECKED}). July is the summer one, and it is the opposite trip — the Furano lavender and the Biei hills, long daylight, and the one month the rest of Japan is unbearable and Hokkaido is not. Between them: May for the late cherry blossom and the Shakotan coast, late September and October for the Daisetsuzan colours. The months to think twice about are November, when the island is between seasons and attractions close to change over — Asahiyama Zoo itself shuts 4 to 10 November — and April, which is mud.`,
   },
   {
     q: "How do I get from New Chitose Airport to Sapporo?",
-    a: `The Rapid Airport train, for ${AIRPORT_FARE}. JR Hokkaido's own figures, read ${OWN}: six Airport Trains an hour between 09:00 and 16:00 — one Special Rapid, three Rapid and two Semi-Rapid — with the Japanese page giving fastest times of 36, 37 and 43 minutes by service type and the English page quoting 33 minutes for the Special Rapid. The station is under the domestic terminal, nothing needs reserving, and Kitaca, Suica and PASMO all work at the gate. Car 4 is the reserved uシート at ¥1,000 on top of the fare, or ¥800 reserved ticketless, and in winter it earns that because the ordinary cars fill with ski bags. Two things the train does that people do not expect. It runs through to Otaru without a change — 73 minutes at fastest on JR Hokkaido's own figure — so an early arrival can go straight there. And the alternative, a booked road transfer, has one real advantage (it ends at your hotel door rather than at a station with cases in snow) and one condition: the listing requires 45 minutes after a domestic arrival and 90 after an international one, so it is bought before you fly.`,
+    a: `The Rapid Airport train, for ${AIRPORT_FARE}. JR Hokkaido's own figures, read ${OWN}: six Airport Trains an hour between 09:00 and 16:00 — one Special Rapid, three Rapid and two Semi-Rapid — with the Japanese page giving fastest times of 36, 37 and 43 minutes by service type and the English page quoting 33 minutes for the Special Rapid. The station is under the domestic terminal, nothing needs reserving, and Kitaca, Suica and PASMO all work at the gate. Car 4 is the reserved uシート at ¥1,000 on top of the fare, or ¥800 reserved ticketless, and in winter it earns that because the ordinary cars fill with ski bags. Two things the train does that people do not expect. It runs through to Otaru without a change — 73 minutes at fastest on JR Hokkaido's own figure — so an early arrival can go straight there. And the alternative, a booked road transfer, has one real advantage: it ends at your hotel door rather than at a station with cases in snow. Book it before you fly, and check the pick-up terms on the listing.`,
   },
   {
     q: "How long does it take to fly to Hokkaido from Tokyo or Osaka?",
@@ -712,7 +799,7 @@ const faqItems = [
   },
   {
     q: "What does a 7-day Hokkaido trip cost in transport?",
-    a: `Under ¥18,000 a head in rail fares on the route above, which is the figure most people get wrong in both directions. Broken out from JR Hokkaido's own numbers, read ${OWN}: ${AIRPORT_FARE} in from New Chitose, ¥1,600 for the Otaru return, ${ASAHIKAWA_OW} for the reserved limited express to Asahikawa, ${FURANO_OW} for the Lavender Express back from Furano, ${AIRPORT_FARE} out again — ¥15,780, plus the Asahikawa–Biei–Furano local legs that JR Hokkaido does not price on that page. Inside Sapporo, a one-zone subway ride is ¥210 and the Transportation Bureau's day tickets are ${SUBWAY_DAY_PASS} on a weekday and ${DONICHIKA} at weekends and on public holidays, so they pay from three or four rides. What is not in that figure, and what actually sets the budget: the flights in and out, six nights of rooms, and the guided days for Biei and Yoichi where public transport is genuinely bad. Those are the three lines worth comparing, and all three are per-date rather than fixed — which is why no price for any of them appears on this page.`,
+    a: `Under ¥18,000 a head in rail fares on the route above, which is the figure most people get wrong in both directions. Broken out from JR Hokkaido's own numbers, read ${OWN}: ${AIRPORT_FARE} in from New Chitose, ¥1,600 for the Otaru return, ${ASAHIKAWA_OW} for the reserved limited express to Asahikawa, ${FURANO_LOCAL} for the local train from Asahikawa to Furano, ${FURANO_OW} for the summer Lavender Express back or ${FURANO_WINTER} by the winter route through Asahikawa, ${AIRPORT_FARE} out again: ${TOTAL_SUMMER} in summer and ${TOTAL_WINTER} in winter. Inside Sapporo, a one-zone subway ride is ¥210 and the Transportation Bureau's day tickets are ${SUBWAY_DAY_PASS} on a weekday and ${DONICHIKA} at weekends and on public holidays, so they pay from three or four rides. What is not in that figure, and what actually sets the budget: the flights in and out, six nights of rooms, and the guided days for Biei and Yoichi where public transport is genuinely bad. Those are the three lines worth comparing, and all three are per-date rather than fixed — which is why no price for any of them appears on this page.`,
   },
   {
     q: "Can you do this itinerary in reverse, or from New Chitose outwards?",
@@ -845,6 +932,41 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           </p>
         </div>
 
+        <WinterBookingTop
+          heading="Which Hokkaido Tours Should You Book for a 7 Day Itinerary?"
+          checkedIso={SEASON_ISO}
+          deadline={
+            <>
+              Book the room first if your week touches the Sapporo Snow Festival on 4 to 11 February 2027 or
+              the Otaru Snow Light Path on 6 to 13 February. Hold day tours by 31 December, and leave the
+              Nikka distillery until its reservations open four weeks ahead.
+            </>
+          }
+          tours={[
+            {
+              title: furanoBieiWinterIlluminationTour.title,
+              url: furanoBieiWinterIlluminationTour.url,
+              price: null,
+              duration: "About 10 hours",
+              departs: "Sapporo",
+            },
+            {
+              title: asahiyamaBieiHighlightsTour.title,
+              url: asahiyamaBieiHighlightsTour.url,
+              price: "from about US$55",
+              duration: "Full day",
+              departs: "Sapporo",
+            },
+            {
+              title: yoichiOtaruWalkingTour.title,
+              url: yoichiOtaruWalkingTour.url,
+              price: null,
+              duration: "See listing",
+              departs: "Sapporo",
+            },
+          ]}
+        />
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -878,7 +1000,8 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
               Sapporo is <strong>{AIRPORT_FARE}</strong> and <strong>36 to 43 minutes</strong>, Sapporo to
               Otaru <strong>{OTARU_FARE}</strong> and <strong>about 33 minutes</strong>, Sapporo to
               Asahikawa <strong>1 hr 25 min</strong> on a reserved Lilac or Kamui, and Furano back to
-              Sapporo <strong>two hours</strong> on the Furano Lavender Express. Add it up and the whole
+              Sapporo <strong>two hours</strong> on the Furano Lavender Express in summer, or by local train
+              and Lilac or Kamui in winter. Add it up and the whole
               week is <strong>under ¥18,000</strong> of rail fares a head — which is why the{" "}
               <strong>seven-day Hokkaido Rail Pass at {PASS_7} does not pay on this route</strong>, while
               the four-day <strong>Sapporo–Furano Area Pass at {AREA_FURANO}</strong> does. The one day you
@@ -896,6 +1019,13 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
             </div>
           </div>
         </div>
+
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What to Book With a Hokkaido Week"
+          intro="Three things sit outside the seven days: the data that carries every weather and timetable notice, the airport leg, and the rail pass that pays on this route. Klook blocks automated price reads, so open a listing for the figure on your own dates."
+          items={hokkaidoSameTrip}
+        />
 
         {/* Bases */}
         <section className={styles.comparisonSection}>
@@ -989,7 +1119,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>Not on this route — and the four-day area pass is.</strong> This is the most useful
             number on the page, so here is the whole working rather than a verdict. Every fare below is JR
-            Hokkaido&apos;s own, read {OWN}, and the two limited-express figures are half of the
+            Hokkaido&apos;s own, read {OWN} or {SEASON}, and the two limited-express figures are half of the
             round-trip prices the operator publishes on its own model-route page.
           </p>
           <div className={styles.tableWrap}>
@@ -1034,8 +1164,8 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
             <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Price the JR Hokkaido pass →
             </KlookLink>
-            <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              New Chitose → Sapporo transfer →
+            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              New Chitose transfers →
             </KlookLink>
             <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Niseko resort shuttle →
@@ -1053,7 +1183,14 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14-day itinerary</Link> cover the
           Tokyo–Kyoto–Osaka corridor instead, and our{" "}
           <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival guide</Link>{" "}
-          is the version of this week built entirely around the February dates.
+          is the version of this week built entirely around the February dates. Flying home through Tokyo
+          gives you other winter days to add: a ski day with our{" "}
+          <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa day trip from Tokyo</Link>,
+          the bathing monkeys on a{" "}
+          <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>, or an
+          evening with the <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo illuminations</Link>.
+          Our <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour guide</Link>{" "}
+          covers the snow villages on the Honshu side.
         </p>
 
         {/* Day 1 to Day 7 */}
@@ -1137,14 +1274,6 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           none is published.
         </p>
 
-        {/* Trip prep */}
-        <KlookTripPrep
-          label="Before you go"
-          heading="What a Hokkaido Week Books Before It Flies"
-          intro="Five things sit outside the seven days themselves: the data that carries every weather and timetable notice, the island pass to price against your own legs rather than buy by default, the airport leg as a seat rather than a platform, the Sapporo room, and — for a ski version of this week — the coach that actually takes ski bags. Klook blocks automated price reads, so open a listing for the figure on your own dates."
-          items={hokkaidoSevenDayTripPrep}
-        />
-
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
@@ -1168,7 +1297,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
         <KlookTourPicks
           heading="The Four Days This Route Actually Books"
           intro="Of the seven days above, four are walk-up and three are not. These are the three that are genuinely hard without a booking — Biei and Furano, Otaru plus Yoichi, and the Asahikawa zoo run — plus the long southern day for a week with a spare one."
-          tours={[furanoBieiBluePondDayTour, otaruYoichiDayTour, asahiyamaZooWinterDayTour, noboribetsuToyaOtaruDayTour]}
+          tours={[furanoBieiBluePondDayTour, yoichiOtaruWalkingTour, asahiyamaBieiHighlightsTour, noboribetsuToyaOtaruDayTour]}
         />
 
         {/* Related articles */}

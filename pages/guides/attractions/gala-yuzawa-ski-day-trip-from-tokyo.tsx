@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -9,14 +10,16 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
   galaNaebaSkiDayTripTokyo,
-  galaYuzawaDayTripPrep,
   galaYuzawaLiftTicket,
   galaYuzawaSkiLesson,
   hakubaSkiResortDayTourTokyo,
-  jrEastPassNaganoNiigata,
+  hanedaLimousineBus,
+  jrEastPass,
   jrTokyoWidePass,
   klookEsim,
+  naritaExpressRoundTripUrl,
   yuzawaIwapparaSkiDayTourTokyo,
+  type KlookTripPrepItem,
 } from "../../../lib/klook-links";
 
 /**
@@ -98,14 +101,40 @@ import {
  * the figure that makes a break-even table worthless. The arithmetic here is
  * built out of JR East's own ¥21,500 example instead.
  *
- * Nothing here is first-hand, and no Klook price appears: Klook answers
+ * Re-read 6 November 2026, with what changed:
+ *
+ *   gala.co.jp/winter/         dates and all three passes unchanged. The page has
+ *     hours-pricing/           an hours heading but no daily hours, and the
+ *                              8:30–16:30 gondola line on the older charges page
+ *                              sits with spring 2026 operation. So the 2026-27
+ *                              hours are written as awaiting the announcement.
+ *   gala.co.jp/winter/rental/  goggles are ¥1,800 for one day and ¥3,600 for two,
+ *                              helmets ¥2,300 and ¥4,600: earlier copy read these
+ *                              as ranges. Bands are 中学生以上 / 小学生以下. PICK UP
+ *                              BOX booking opens a month before opening day and
+ *                              closes at noon two days before use; 7:30–12:00.
+ *   gala.co.jp/winter/gelande/ North 6, Central 5, South 4, descent 1. The 16 includes
+ *                              the shut South Area, so 12 courses operate.
+ *   gala.co.jp/winter/         超早割 lift ticket, ¥4,300, 1,000 tickets, on sale
+ *     information/liftticket   5 Oct 2026, marked sold out.
+ *     earlysale20261015/
+ *   jre-travel.com/seasonal/   JR SKISKI still "Coming Soon", mid-November.
+ *     ski/gala/
+ *   jreast.co.jp               through its restricted index: TOKYO Wide Pass
+ *                              ¥16,000 / ¥8,000 and N'EX reserved seats included
+ *                              (0128_pass_en.pdf); the regional Nagano/Niigata JR
+ *                              EAST PASS stopped selling on 13 March 2026, replaced
+ *                              by the one JR EAST PASS, so this page links that.
+ *
+ * Nothing here is first-hand. The top block shows the one from-price a klook.com
+ * index result tied to its listing; the body has none, because Klook answers
  * automated reads of its product pages with HTTP 403.
  */
 
-const OWN_ISO = "2026-11-01";
+const OWN_ISO = "2026-11-06";
 const OWN = checkedLabel(OWN_ISO);
-/** The date tokyo-wide-pass.tsx read the pass price and JR East's worked example. */
-const PASS_CHECKED = checkedLabel("2026-10-30");
+/** The pass price was re-read on this date; JR East's worked example is carried from 30 Oct. */
+const PASS_CHECKED = checkedLabel("2026-11-06");
 
 const FASTEST = "71 minutes";
 const SLOPES_OPEN = "19 December 2026";
@@ -136,7 +165,7 @@ const accessRows = [
     leg: "Tokyo → the Yuzawa basin by coach, as a booked day",
     time: "A full day, pick-up in Tokyo",
     cost: "Per seat, by date — Klook blocks automated price reads, so open the listing",
-    note: "A different product rather than a cheaper one: the coach days go to Iwappara and the other Yuzawa resorts, with the transport, the lift ticket and the rental inside one booking. Slower than the shinkansen, and nothing to assemble.",
+    note: "A different product rather than a cheaper one: the coach days go to Iwappara and the other Yuzawa resorts, with round-trip transport in one booking and rental or lessons as options on the listing. Slower than the shinkansen, and less to assemble.",
   },
   {
     leg: "Tokyo → GALA or Naeba by chartered car",
@@ -197,44 +226,44 @@ const rentalRows = [
   {
     item: "Ski 3-piece set (skis, boots, poles)",
     adult: `${SKI_SET} for one day`,
-    child: "¥4,000 for one day (12 and under)",
+    child: "¥4,000 for one day (primary school and under)",
     note: "Two days is ¥13,000 for an adult and ¥8,000 for a child — exactly double, so there is no multi-day discount to wait for.",
   },
   {
     item: "Snowboard 2-piece set (board, boots)",
     adult: `${SKI_SET} for one day`,
-    child: "¥4,000 for one day (12 and under)",
+    child: "¥4,000 for one day (primary school and under)",
     note: "Priced identically to the ski set, at both ages and both durations.",
   },
   {
     item: "Wear (jacket and trousers)",
     adult: `${WEAR} for one day`,
-    child: "¥3,000 for one day (12 and under)",
+    child: "¥3,000 for one day (primary school and under)",
     note: "The line most day-trippers from Tokyo need and do not budget for — you are not going to ski in the coat you flew in.",
   },
   {
     item: "Goggles and helmet",
-    adult: "Goggles ¥1,800–¥3,600; helmet ¥2,300–¥4,600",
-    child: "Same range",
-    note: "Sold as small items rather than inside the sets, which is the detail that makes a 'full kit' day cost more than the two headline lines.",
+    adult: "Goggles ¥1,800, helmet ¥2,300 for one day",
+    child: "Same prices",
+    note: "Two days is ¥3,600 and ¥4,600. Rented as small items rather than inside the sets, which is the detail that makes a 'full kit' day cost more than the two headline lines.",
   },
   {
     item: "PICK UP BOX",
     adult: "+¥1,000 per person",
     child: "+¥1,000 per person",
-    note: "The resort's own queue-skip for rental collection, booked on the web a month ahead. On a January Saturday that is the difference between a 9:00 and a 10:00 first run.",
+    note: "The resort's own queue-skip for rental collection, 7:30–12:00. Web booking opens a month before opening day and closes at noon two days before you use it; card prepayment only, limited numbers, and a 100% fee after that noon deadline. The rental period is 19 December to 31 March.",
   },
 ];
 
 /** What the mountain actually is this season — including the part that is shut. */
 const mountainRows = [
-  { what: "Courses operating", detail: "16 in total: 5 in the Central Area, 6 in the North Area, plus the Falcon descent course" },
-  { what: "South Area", detail: "Closed for the 2026-27 season — 南エリアの営業を休止いたします on the resort's own trail-map page" },
-  { what: "Grading", detail: "35% beginner, 45% intermediate, 20% advanced" },
+  { what: "Courses operating", detail: "12 of the resort's 16: 5 in the Central Area, 6 in the North Area, plus the Falcon descent course" },
+  { what: "South Area", detail: "Its 4 courses are closed for the 2026-27 season — 南エリアの営業を休止いたします on the resort's own trail-map page" },
+  { what: "Grading", detail: "35% beginner, 45% intermediate, 20% advanced, as the resort publishes it for the whole mountain" },
   { what: "Lifts", detail: "11, including the 8-person Diligence gondola out of the station building" },
   { what: "Longest run", detail: "2,500 m — the Falcon descent course" },
   { what: "Elevation", detail: "1,181 m at the top, 358 m at the base; 70 hectares; 33° at the steepest" },
-  { what: "Hours", detail: "Slopes 8:00–16:30, gondola 8:30–16:30, sightseeing lift 8:40–16:00, ticket counter from 7:30" },
+  { what: "Hours", detail: "2026-27 daily hours: awaiting the official announcement. Rental opens 7:30 from 19 December" },
 ];
 
 /** Tour versus the shinkansen, which is the decision the page is really about. */
@@ -242,18 +271,18 @@ const shapeRows = [
   {
     shape: "Shinkansen, independent",
     covers: "Train to GALA Yuzawa, lift ticket and rental bought at the resort or online",
-    verdict: "The right answer for most people, and the only one that gets you on snow before 9:00",
-    note: `${FASTEST} at fastest and the station is inside the building. The cost is that you are assembling four purchases — seat, lift ticket, gear, wear — and GALA charges ¥500 more at the window than online on every pass.`,
+    verdict: "The right answer for most people, and the one with the most hours on snow",
+    note: `${FASTEST} at fastest and the station is inside the building. The cost is that you are assembling four purchases — seat, lift ticket, gear, wear — and GALA charges at least ¥500 more at the window than online on every pass.`,
   },
   {
     shape: "Shinkansen + a JR East pass",
-    covers: "The rail legs covered by the TOKYO Wide Pass or the Nagano/Niigata JR EAST PASS",
+    covers: "The rail legs covered by the TOKYO Wide Pass or the JR EAST PASS",
     verdict: "Worth pricing only if GALA is one of two or three day trips, not if it is the only one",
     note: `The pass is ${PASS_ADULT} for three consecutive days, and JR East's own worked example — a GALA return plus a Nikko return in reserved seats — is ${JR_EXAMPLE}. One GALA day on its own does not get there.`,
   },
   {
     shape: "Booked coach day from Tokyo",
-    covers: "Round-trip transport, lift ticket and rental in one booking, to Iwappara or a Yuzawa resort",
+    covers: "Round-trip transport in one booking to Iwappara, with snow play, rental or lessons as listing options; meals not included",
     verdict: "The pick for a first-ever ski day, or for anyone who would rather buy one thing than four",
     note: "Slower each way than the shinkansen and it is not GALA — these go to the neighbouring resorts in the same basin. What you are buying is that nothing is left to arrange on the morning.",
   },
@@ -272,7 +301,7 @@ const faqItems = [
   },
   {
     q: "Can you do a ski day trip from Tokyo?",
-    a: `Yes, and GALA Yuzawa is the clearest case in the country. ${FASTEST} on the shinkansen to a station inside the resort means a first run at 8:00 or 8:30 and a train home the same evening, with slopes open until 16:30 on the resort's own hours read ${OWN}. The honest version of the answer includes what it costs, because the travel is the cheap part of a day trip and the resort is not: a gondola-and-lift day is ${LIFT_WINDOW} at the window or ${LIFT_WEB} online, a ski or snowboard set is ${SKI_SET}, and wear is another ${WEAR} if you are not carrying any — so a gear-free adult day on the snow is comfortably over ¥20,000 before the train. The alternative shape is a booked coach day out of Tokyo with transport, lift pass and rental inside one price, which goes to the neighbouring Yuzawa resorts rather than GALA and takes longer each way.`,
+    a: `Yes, and GALA Yuzawa is the clearest case in the country. ${FASTEST} on the shinkansen to a station inside the resort means a morning train out and a train home the same evening. GALA's daily hours for 2026-27 are awaiting the official announcement as of ${OWN}, so check them before you pick trains. The honest version of the answer includes what it costs, because the travel is the cheap part of a day trip and the resort is not: a gondola-and-lift day is ${LIFT_WINDOW} at the window or ${LIFT_WEB} online, a ski or snowboard set is ${SKI_SET}, and wear is another ${WEAR} if you are not carrying any — so a gear-free adult day on the snow is ¥19,500 to ¥20,000 before the train. The alternative shape is a booked coach day out of Tokyo to Iwappara, a neighbouring Yuzawa resort rather than GALA, with rental or lessons as options on the listing and a longer ride each way.`,
   },
   {
     q: "When does Gala Yuzawa open for the 2026-27 season?",
@@ -280,15 +309,15 @@ const faqItems = [
   },
   {
     q: "How much are Gala Yuzawa lift tickets for 2026-27?",
-    a: `A one-day gondola-and-lift pass is ${LIFT_WINDOW} for an adult at the window and ${LIFT_WEB} online, with a primary-school child ¥4,000 and ¥3,500 — the resort's own prices, read ${OWN}. There are two cheaper options and both are real choices rather than traps. The gondola-and-Barouche pass is ¥6,500 at the window and ¥5,500 online for an adult (¥3,400 and ¥2,900 for a child) and limits you to the gondola and the Barouche quad, which is enough for a first day or a snow-play day. The four-hour pass is ¥7,500 and ¥7,000, only ¥500 under the full day, so it buys a late start rather than a saving. Preschool children are free, two per paying adult, with a third paying the primary-school rate. Buying online rather than at the window is worth ¥500 on every adult pass, which is the single easiest saving on this day.`,
+    a: `A one-day gondola-and-lift pass is ${LIFT_WINDOW} for an adult at the window and ${LIFT_WEB} online, with a primary-school child ¥4,000 and ¥3,500 — the resort's own prices, read ${OWN}. There are two cheaper options and both are real choices rather than traps. The gondola-and-Barouche pass is ¥6,500 at the window and ¥5,500 online for an adult (¥3,400 and ¥2,900 for a child) and limits you to the gondola and the Barouche quad, which is enough for a first day or a snow-play day. The four-hour pass is ¥7,500 and ¥7,000, only ¥500 under the full day, so it buys a late start rather than a saving. Preschool children are free, two per paying adult, with a third paying the primary-school rate. Buying online rather than at the window is worth at least ¥500 on every adult pass, which is the single easiest saving on this day. GALA's ¥4,300 super-early ticket, 1,000 of them from 5 October, has sold out.`,
   },
   {
     q: "Can I rent ski gear at Gala Yuzawa?",
-    a: `Yes — and this is the resort that makes a gear-free day trip practical, because the rental counter is in the same building as the station. GALA's own prices, read ${OWN}: a ski three-piece set and a snowboard two-piece set are both ${SKI_SET} for one day at 13 and over and ¥4,000 at 12 and under, and two days is exactly double at ¥13,000 and ¥8,000, so there is no multi-day discount. Wear — jacket and trousers — is a separate ${WEAR} for an adult and ¥3,000 for a child. Goggles (¥1,800–¥3,600) and helmets (¥2,300–¥4,600) are sold as small items rather than inside the sets, which is why a full kit costs more than the two headline lines suggest. The one thing worth booking ahead is the PICK UP BOX: ¥1,000 extra per person, reserved on the web a month in advance, and it replaces the rental queue — which on a January Saturday is an hour of your ski day.`,
+    a: `Yes — and this is the resort that makes a gear-free day trip practical, because the rental counter is in the same building as the station. GALA's own prices, read ${OWN}: a ski three-piece set and a snowboard two-piece set are both ${SKI_SET} for one day from junior-high age up and ¥4,000 at primary-school age and under, and two days is exactly double at ¥13,000 and ¥8,000, so there is no multi-day discount. Wear — jacket and trousers — is a separate ${WEAR} for an adult and ¥3,000 for a child. Goggles (¥1,800 one day, ¥3,600 two) and helmets (¥2,300 and ¥4,600) are rented as small items rather than inside the sets, which is why a full kit costs more than the two headline lines suggest. The one thing worth booking ahead is the PICK UP BOX: ¥1,000 extra per person, limited in number, with web booking opening a month before opening day and closing at noon two days before you use it. It replaces the wait at the rental counter.`,
   },
   {
     q: "Is Gala Yuzawa good for beginners?",
-    a: `Yes, with one caveat specific to this season. On the resort's own trail-map figures read ${OWN}, 35% of the terrain is graded beginner, 45% intermediate and 20% advanced across 16 courses and 11 lifts, and the gondola lifts you out of the station building to the top of the beginner terrain rather than making you ride a chair from the bottom. For a first-ever day that is close to ideal. The caveat: the South Area is closed for 2026-27 — 南エリアの営業を休止いたします on GALA's own page — so the mountain is the Central Area's five courses, the North Area's six and the Falcon descent run, and it will feel smaller than older guides describe. The other thing beginners get wrong here is the shopping list: GALA sells the lift ticket, the rental set and the lessons as three separate purchases, so a day booked with a pass and gear but no instruction leaves you on 35% beginner terrain with nobody to show you how to use it.`,
+    a: `Yes, with one caveat specific to this season. On the resort's own trail-map figures read ${OWN}, 35% of the terrain is graded beginner, 45% intermediate and 20% advanced, with 11 lifts, and the gondola lifts you out of the station building to the top of the beginner terrain rather than making you ride a chair from the bottom. For a first-ever day that is close to ideal. The caveat: the South Area is closed for 2026-27 — 南エリアの営業を休止いたします on GALA's own page — so the 16 courses older guides describe are 12 this season: the Central Area's five, the North Area's six and the Falcon descent run. The other thing beginners get wrong here is the shopping list: GALA sells the lift ticket, the rental set and the lessons as three separate purchases, so a day booked with a pass and gear but no instruction leaves you on 35% beginner terrain with nobody to show you how to use it.`,
   },
   {
     q: "Does the JR Tokyo Wide Pass cover Gala Yuzawa?",
@@ -296,15 +325,55 @@ const faqItems = [
   },
   {
     q: "What time does Gala Yuzawa open, and how long is a day there?",
-    a: `The slopes run 8:00 to 16:30, the gondola 8:30 to 16:30 and the sightseeing lift 8:40 to 16:00, with the Kawabanga ticket counter open from 7:30 — GALA's own hours read ${OWN}, and the resort states they can change with snow and weather. Those hours are what make the day trip work: a first shinkansen out of Tokyo puts you at the counter near opening, and 16:30 leaves a comfortable evening train. Allow seven to eight hours door to door from central Tokyo for roughly six on the mountain. The two things that eat into it are the rental queue on a weekend morning, which the ¥1,000 PICK UP BOX exists to remove, and buying your pass at the window rather than online — ¥500 more and a line to stand in.`,
+    a: `GALA's daily hours for 2026-27 are awaiting the official announcement: its hours-and-prices page, read ${OWN}, gives the operating dates and prices but no times, and the gondola times on its older page belong to earlier operation, so we do not repeat them as this season's. What is published is that rental collection runs from 7:30 from 19 December and the PICK UP BOX from 7:30 to 12:00, and that dates and hours can change with snow and weather. An early shinkansen out of Tokyo is what makes the day trip work. The two things that eat into the day are the rental queue on a weekend morning, which the ¥1,000 PICK UP BOX exists to remove, and buying your pass at the window rather than online — at least ¥500 more and a line to stand in.`,
   },
   {
     q: "Do I need to book a Gala Yuzawa day in advance?",
-    a: `The lift ticket and rental, no — but booking them is worth ¥500 a head on the pass and an hour of queueing on the gear. What genuinely needs a decision in advance is the shape of the day. If you want JR East's own shinkansen-plus-lift-ticket package, note that as of ${OWN} the 2026-27 JR SKISKI GALA packages were still marked "Coming Soon" on JR East's own travel site, with reservations expected around mid-November 2026 — so a reader planning in early November cannot book that version yet and should check back. A reseller's lift ticket and lesson listings are on sale now and take a foreign card. Lessons are the one thing to book rather than buy on the day, because instruction is capacity-limited in a way a lift ticket is not. And if you are going by coach or chartered car, that is a seat or a vehicle on a fixed date — the earliest deadline on the page.`,
+    a: `The lift ticket and rental, no — but booking them is worth at least ¥500 a head on the pass and the rental queue on the gear. What genuinely needs a decision in advance is the shape of the day. If you want JR East's own shinkansen-plus-lift-ticket package, note that as of ${OWN} the 2026-27 JR SKISKI GALA packages were still marked "Coming Soon" on JR East's own travel site, with reservations expected around mid-November 2026 — so a reader planning in early November cannot book that version yet and should check back. A reseller's lift ticket and lesson listings are on sale now and take a foreign card. Lessons are the one thing to book rather than buy on the day, because instruction is capacity-limited in a way a lift ticket is not. And if you are going by coach or chartered car, that is a seat or a vehicle on a fixed date — the earliest deadline on the page.`,
   },
   {
     q: "What should I wear for a day at Gala Yuzawa?",
-    a: `Assume you are renting the outer layers, because almost nobody flies to Tokyo with ski clothing. GALA rents a jacket-and-trousers set at ${WEAR} for an adult and ¥3,000 for a child for the day, plus goggles at ¥1,800–¥3,600 and a helmet at ¥2,300–¥4,600 as separate items — its own prices, read ${OWN}. What the resort does not rent is the layer against your skin, so bring thermal base layers, ski socks (not cotton), and gloves if you own them. The context: the top of the mountain is 1,181 m and the base 358 m, so the weather at the gondola top is a different proposition from the station platform, and the resort's own notice is that dates and hours change with snow and weather. A ski day is also the one day of a Japan trip where travel insurance wording matters — snowsports are routinely excluded from standard policies.`,
+    a: `Assume you are renting the outer layers, because almost nobody flies to Tokyo with ski clothing. GALA rents a jacket-and-trousers set at ${WEAR} for an adult and ¥3,000 for a child for the day, plus goggles at ¥1,800 and a helmet at ¥2,300 for the day as separate items — its own prices, read ${OWN}. What the resort does not rent is the layer against your skin, so bring thermal base layers, ski socks (not cotton), and gloves if you own them. The context: the top of the mountain is 1,181 m and the base 358 m, so the weather at the gondola top is a different proposition from the station platform, and the resort's own notice is that dates and hours change with snow and weather. A ski day is also the one day of a Japan trip where travel insurance wording matters — snowsports are routinely excluded from standard policies.`,
+  },
+];
+
+/** The same-trip block: the pass and transfer first, then what GALA sells separately. */
+const sameTripItems: KlookTripPrepItem[] = [
+  {
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "GALA states that its operating dates and hours change with snow and weather, and its 2026-27 daily hours are still to come. A closure notice or a held shinkansen reaches you on your phone at a seasonal station, and nowhere else.",
+  },
+  {
+    label: "Narita Express (N'EX) round-trip ticket",
+    ctaLabel: "Check the N'EX round trip →",
+    url: naritaExpressRoundTripUrl,
+    why: "It reaches Tokyo Station, where the Joetsu Shinkansen to GALA leaves. Skip it if your TOKYO Wide Pass days start on arrival: JR East says the pass includes reserved N'EX seats.",
+  },
+  {
+    label: hanedaLimousineBus.title,
+    ctaLabel: "Check the limousine bus →",
+    url: hanedaLimousineBus.url,
+    why: "The Haneda version, boarded with a QR code. Worth having if you land with ski bags, because you still need to get them to your Tokyo hotel before the train north.",
+  },
+  {
+    label: jrTokyoWidePass.title,
+    ctaLabel: "Check the TOKYO Wide Pass →",
+    url: jrTokyoWidePass.url,
+    why: "The one booking with real arithmetic behind it. JR East's own example is a GALA return plus a Nikko return in reserved seats at about ¥21,500, against ¥16,000 for three consecutive days, so a GALA day plus one more day trip is roughly where it starts paying.",
+  },
+  {
+    label: galaYuzawaLiftTicket.title,
+    ctaLabel: "Check the GALA lift ticket →",
+    url: galaYuzawaLiftTicket.url,
+    why: "GALA's window price for a gondola-and-lift day is ¥8,000 adult and its web price ¥7,500, so buying ahead is worth ¥500. A reseller checkout also takes a foreign card and reads in English.",
+  },
+  {
+    label: galaYuzawaSkiLesson.title,
+    ctaLabel: "Check GALA lessons →",
+    url: galaYuzawaSkiLesson.url,
+    why: "The purchase a first-timer forgets. Lift ticket, rental and instruction are separate items at GALA, and the listing states you still need a lift ticket on top of the lesson.",
   },
 ];
 
@@ -429,6 +498,42 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           </p>
         </div>
 
+        <WinterBookingTop
+          heading="Which Gala Yuzawa Ski Day Trip from Tokyo Can You Book Now?"
+          checkedIso="2026-11-06"
+          deadline={
+            <>
+              Book by 30 November for any date from 19 December through the New Year, when the slopes
+              first open: 12–18 December is gondola-only, with no skiing. For January and February, book
+              at least three weeks out. JR East&apos;s own JR SKISKI packages are expected around
+              mid-November, and GALA&apos;s PICK UP BOX rental booking opens a month before opening day.
+            </>
+          }
+          tours={[
+            {
+              title: yuzawaIwapparaSkiDayTourTokyo.title,
+              url: yuzawaIwapparaSkiDayTourTokyo.url,
+              price: null,
+              duration: "11 to 12.5 hours",
+              departs: "Tokyo",
+            },
+            {
+              title: galaNaebaSkiDayTripTokyo.title,
+              url: galaNaebaSkiDayTripTokyo.url,
+              price: "about US$475–546 per vehicle",
+              duration: "10-hour charter",
+              departs: "Your hotel in Tokyo's 23 wards",
+            },
+            {
+              title: galaYuzawaSkiLesson.title,
+              url: galaYuzawaSkiLesson.url,
+              price: null,
+              duration: "3 to 6 hours",
+              departs: "Meets at GALA Yuzawa",
+            },
+          ]}
+        />
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -463,12 +568,12 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               <strong>2026-27</strong> the resort opens its gondola for sightseeing only from{" "}
               <strong>{SIGHTSEEING_OPEN}</strong> and its <strong>slopes from {SLOPES_OPEN}</strong>{" "}
               through to <strong>{SLOPES_CLOSE}</strong>, with the <strong>South Area closed</strong> for
-              the whole season — so the mountain is 16 courses across the Central and North Areas, 35% of
-              it graded beginner. What the day costs is three separate purchases, not one: a one-day
+              the whole season — so the mountain is 12 courses in the Central and North Areas and the
+              Falcon descent, not the 16 older guides list. What the day costs is three separate purchases, not one: a one-day
               gondola-and-lift pass is <strong>{LIFT_WINDOW}</strong> at the window or{" "}
               <strong>{LIFT_WEB}</strong> online, a ski or snowboard set is <strong>{SKI_SET}</strong>,
-              and jacket-and-trousers is another <strong>{WEAR}</strong>. Slopes run{" "}
-              <strong>8:00–16:30</strong>. Every figure is GALA&apos;s own, read {OWN}.
+              and jacket-and-trousers is another <strong>{WEAR}</strong>. Daily hours for 2026-27 are
+              awaiting the official announcement. Every figure is GALA&apos;s own, read {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -480,6 +585,14 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </div>
           </div>
         </div>
+
+        {/* Same trip */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What a Gala Yuzawa Day Actually Books"
+          intro="Connectivity and the airport first, then the pass, then what GALA sells as separate purchases: the lift ticket and the instruction are the two a first ski day trip tends to under-book. Klook blocks automated price reads, so open a listing for the figure on your own dates."
+          items={sameTripItems}
+        />
 
         {/* Getting there */}
         <section className={styles.comparisonSection}>
@@ -570,8 +683,8 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Courses, grading, lifts, elevation and the South Area closure are GALA&apos;s own trail-map
-            page; the hours are the resort&apos;s own FAQ, read through a gala.co.jp-restricted search
-            index of it. Both read {OWN}. The <strong>South Area closure is specific to 2026-27</strong>{" "}
+            page, read {OWN}. The resort&apos;s hours page has no 2026-27 daily times yet, so we print
+            none rather than last season&apos;s. The <strong>South Area closure is specific to 2026-27</strong>{" "}
             and is the one thing older guides to this resort will not tell you.
           </p>
         </section>
@@ -581,9 +694,9 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           <span className={styles.sectionLabel}>Lift tickets</span>
           <h2 className={styles.sectionTitle}>How Much Are Gala Yuzawa Lift Tickets?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            <strong>{LIFT_WINDOW} for an adult day at the window, {LIFT_WEB} online</strong> — and the
-            ¥500 gap applies to every pass GALA sells, which makes buying ahead the easiest saving on this
-            whole day. There are two genuinely cheaper options rather than one, and the four-hour pass is
+            <strong>{LIFT_WINDOW} for an adult day at the window, {LIFT_WEB} online</strong> — and a gap
+            of at least ¥500 applies to every pass GALA sells, which makes buying ahead the easiest saving
+            on this whole day. There are two genuinely cheaper options rather than one, and the four-hour pass is
             not really one of them.
           </p>
           <div className={styles.tableWrap}>
@@ -611,9 +724,9 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Every figure is GALA Yuzawa&apos;s own 2026-27 price list, read {OWN}. &ldquo;Primary-school
-            child&rdquo; is the resort&apos;s 小学生 band. Confirm at your own checkout — and note that the
-            resort&apos;s own early-bird tickets are sold in a window that closes before the season opens,
-            so by December the web price above is the one on the table.
+            child&rdquo; is the resort&apos;s 小学生 band. Confirm at your own checkout. GALA&apos;s ¥4,300
+            super-early ticket, 1,000 of them on sale from 5 October 2026, is marked sold out, so the web
+            price above is the one on the table.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -640,7 +753,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Item", "13 and over", "12 and under", "The thing to know"].map((h) => (
+                    {["Item", "Junior high and over", "Primary school and under", "The thing to know"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -663,8 +776,8 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             pass bought online is {LIFT_WEB} plus {SKI_SET} for the set plus {WEAR} for wear — before
             goggles, a helmet, the shinkansen or lunch. That total is why the Klook listings on this page
             are worth comparing against buying each piece at the counter, and why the PICK UP BOX at ¥1,000
-            is the one upsell here that buys you something measurable: an hour of ski time on a Saturday
-            morning. All prices GALA&apos;s own, read {OWN}.
+            is the one upsell here that buys you something concrete: no wait at the rental counter.
+            All prices GALA&apos;s own, read {OWN}.
           </p>
         </section>
 
@@ -682,7 +795,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             <div className={styles.whoForCard}>
               <p className={styles.whoForTitle}>What is in your favour</p>
               <p className={styles.whoForDesc}>
-                Sixteen courses graded 35% beginner, 45% intermediate and 20% advanced on the resort&apos;s
+                A mountain graded 35% beginner, 45% intermediate and 20% advanced on the resort&apos;s
                 own figures, eleven lifts, and a station-to-slope walk measured in minutes. For a
                 first-ever day on snow that beats every other resort reachable from Tokyo in a day,
                 because nothing about the logistics can go wrong before you start.
@@ -692,9 +805,9 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               <p className={styles.whoForTitle}>What is against it this season</p>
               <p className={styles.whoForDesc}>
                 The South Area does not operate in 2026-27 — the resort&apos;s own wording is
-                南エリアの営業を休止いたします. You have the Central Area&apos;s five courses, the North
-                Area&apos;s six and the Falcon descent run. Enough for a beginner day; thin for a second
-                visit, and a reason to look at the Hakuba and Naeba day trips instead.
+                南エリアの営業を休止いたします. You have 12 courses: the Central Area&apos;s five, the
+                North Area&apos;s six and the Falcon descent run. Enough for a beginner day; thin for a
+                second visit, and a reason to look at the Hakuba and Naeba day trips instead.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -756,8 +869,8 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Price the TOKYO Wide Pass →
             </KlookLink>
-            <KlookLink href={jrEastPassNaganoNiigata.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              JR EAST PASS (Nagano / Niigata) →
+            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              JR EAST PASS (5 or 10 days) →
             </KlookLink>
           </div>
         </section>
@@ -812,22 +925,46 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           </div>
         </section>
 
-        {/* Trip prep */}
-        <KlookTripPrep
-          label="Before you go"
-          heading="What a Gala Yuzawa Day Actually Books"
-          intro="Four things, in the order the day uses them — and the first one is the only one with arithmetic behind it. GALA sells the lift ticket, the rental and the instruction as three separate purchases, which is the thing a first-time ski day trip under-books. Klook blocks automated price reads, so open a listing for the figure on your own dates."
-          items={galaYuzawaDayTripPrep}
-        />
+        {/* The rest of the winter */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>The rest of your winter</span>
+          <h2 className={styles.sectionTitle}>What Pairs Well With a GALA Day?</h2>
+          <p className={styles.bodyText}>
+            GALA is one day out of a Tokyo base, so plan it around the rest of the trip. Our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">12-day Japan winter itinerary</Link>{" "}
+            shows how a Tokyo stay fits with snow country further north and west. The other winter day
+            trip worth pricing alongside it is the{" "}
+            <Link href="/guides/attractions/jigokudani-snow-monkey-tour">snow monkey tour to Jigokudani</Link>:
+            GALA on the Joetsu Shinkansen and Nagano on the Hokuriku Shinkansen are both on the JR EAST
+            PASS, which changes the sums if you do both. After a ski day, get back to the city in time for
+            one of the{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo winter illuminations</Link>,
+            which only need an evening.
+          </p>
+          <p className={styles.bodyText}>
+            If you are in Japan in January, settle the{" "}
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go light-up tour</Link>{" "}
+            first and fit GALA around it, because the light-up runs on four fixed evenings and GALA runs
+            all season. If a first day leaves you wanting a proper ski week, the next step up is{" "}
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link> in Hokkaido. A
+            February trip north can be built around the{" "}
+            <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours</Link>{" "}
+            on 4–11 February 2027, with an{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo</Link>{" "}
+            added on, or stretched into a full{" "}
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary">7-day Hokkaido itinerary</Link>.
+          </p>
+        </section>
 
         {/* Insurance */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Before you ski</span>
           <h2 className={styles.sectionTitle}>Does Your Travel Insurance Cover a Ski Day?</h2>
           <p className={styles.bodyText}>
-            Check before you buy the lift ticket, not after. Snowsports are routinely excluded from
-            standard travel policies, and a single day on snow is the day of a Japan trip most likely to
-            produce a hospital bill — which is why this is the one thing on the page that matters more
+            Check before you buy the lift ticket, not after. Whether a policy covers snowsports depends on
+            the policy: SafetyWing, for example, covers on-piste skiing and snowboarding if you wear a
+            helmet, while off-piste is outside that wording, and other policies may need an add-on. A single
+            day on snow is the day of a Japan trip most likely to produce a hospital bill, which is why this is the one thing on the page that matters more
             than the ¥500 you save buying the pass online. Our{" "}
             <Link href="/guides/money/japan-ski-travel-insurance">best travel insurance for skiing in Japan</Link>{" "}
             sets out what the common exclusions actually say and what counts as off-piste.
@@ -869,7 +1006,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
         {/* Klook tours */}
         <KlookTourPicks
           heading="The Other Ski Days Within Reach of Tokyo"
-          intro="GALA is the fastest, not the only one. These three are the alternatives when the Yuzawa basin is thin on snow, when the South Area closure makes 16 courses feel small, or when you would rather buy one booking than four."
+          intro="GALA is the fastest, not the only one. These are the alternatives when the Yuzawa basin is thin on snow, when the South Area closure makes 12 courses feel small, or when you would rather buy one booking than four."
           tours={[yuzawaIwapparaSkiDayTourTokyo, galaNaebaSkiDayTripTokyo, hakubaSkiResortDayTourTokyo, galaYuzawaSkiLesson]}
         />
 
@@ -887,7 +1024,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026</p>
+                <p className={styles.relatedTitle}>Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2027</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -958,6 +1095,26 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            {/* Added 6 Nov 2026: the rest of the nine winter guides. */}
+            {[
+              { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tour (2027): Which Departure" },
+              { href: "/guides/attractions/sapporo-snow-festival-tours", title: "Sapporo Snow Festival Tours (2027)" },
+              { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "Otaru Day Trip from Sapporo (2027)" },
+              { href: "/guides/attractions/hokkaido-7-day-itinerary", title: "Hokkaido 7 Day Itinerary: 7 Days in Hokkaido, Day by Day" },
+              { href: "/guides/attractions/tokyo-illumination-tours", title: "Tokyo Illuminations: Dates, Hours and the Free Ones" },
+            ].map((r) => (
+              <Link key={r.href} href={r.href} className={styles.relatedCard}>
+                <div className={styles.relatedIcon}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2v20M4.9 6.5l14.2 11M19.1 6.5L4.9 17.5" />
+                  </svg>
+                </div>
+                <div className={styles.relatedMeta}>
+                  <p className={styles.relatedTitle}>{r.title}</p>
+                  <span className={styles.relatedArrow}>Read guide →</span>
+                </div>
+              </Link>
+            ))}
             <Link href="/guides/attractions/things-to-do-tokyo" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

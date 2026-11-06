@@ -39,6 +39,7 @@ import { klookEsim } from "../../../../lib/klook-links";
 import { koKlookEsim } from "../../../../lib/klook-links-ko";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
+import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 
 /**
@@ -117,7 +118,7 @@ const topPicks: TopPick[] = [
     id: "simbye-japan",
     esimId: "simbye",
     rank: 1,
-    bestFor: "최저가",
+    bestFor: "확인된 요금제 중 최저가",
     badgeCls: styles.pickBadgeGreen,
     target: "데이터만 필요한 대부분의 여행자, 어떤 일정이든.",
     ctaLabel: "Simbye eSIM 보기 →",
@@ -323,7 +324,7 @@ const networkRows = [
   },
   {
     provider: koKlookEsim.label,
-    carriers: "SoftBank 5G(1일 단위 요금제) / docomo 4G LTE(총량형 요금제)",
+    carriers: "SoftBank 5G(1일 단위 요금제) / IIJ(Docomo) 4G LTE(총량형 요금제)",
     how: "전화번호 없음 — 데이터 전용. 테더링: 지원. 상품 페이지 자체가 아니라 클룩 자체 상품 데이터 기준입니다 — 상품 페이지는 자동 조회에 HTTP 403으로 응답합니다.",
     checked: KLOOK_SPECS_CHECKED,
   },
@@ -742,7 +743,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             가격은 {pricesCheckedAt} 기준. 통신사 목록, 공정 사용 기준, 지역 eSIM의 국가 수는 {SPECS_CHECKED}에
             각 사업자 공식 사이트에서 확인했습니다.
           </p>
-          <KlookEsimSlot why="이번 여행의 티켓과 교통편이 이미 클룩 장바구니에 있다면, 클룩 자체 일본 eSIM도 같은 결제로 담을 수 있습니다 — 1일 단위 요금제는 SoftBank 5G, 총량형 요금제는 docomo 4G LTE, 테더링 지원. 상품 페이지가 자동 가격 조회를 막아 여기서는 순위에 넣지 않았으니, 열어서 현재 요금제를 확인하세요." />
+          <KlookEsimSlot why="이번 여행의 티켓과 교통편이 이미 클룩 장바구니에 있다면, 클룩 자체 일본 eSIM도 같은 결제로 담을 수 있습니다 — 1일 단위 요금제는 SoftBank 5G, 총량형 요금제는 IIJ(Docomo) 4G LTE, 테더링 가능. US$1.05부터라는 시작 가격에 요금제가 표시되지 않아 여기서는 순위에 넣지 않았으니, 열어서 현재 요금제를 확인하세요." />
         </section>
 
         {/* Q: Which eSIM is best for a 2-week trip? */}
@@ -814,7 +815,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
               모든 요금제를 GB당 단가로 정렬해 보기(영어) →
             </Link>
           </p>
-          <KlookEsimSlot why="클룩 자체 일본 eSIM은 500 MB부터 50 GB까지의 단계와 무제한 옵션으로 판매되어 같은 용량대를 커버합니다 — 상품 페이지를 자동으로 읽을 수 없어 여기서는 가격을 싣지 않습니다." />
+          <KlookEsimSlot why="클룩 자체 일본 eSIM은 500 MB부터 50 GB까지의 단계와 무제한 옵션으로 판매되어 같은 용량대를 커버합니다 — US$1.05는 일수와 데이터를 고르기 전의 시작 가격이라 여기서는 요금제별 가격을 싣지 않습니다." />
         </section>
 
         {/* Q: Which network is best in Japan? — carrier table */}
@@ -1123,8 +1124,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                 </Link>
               </div>
               <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
-                클룩에서의 상품명은 “{klookEsim.listingTitle}”입니다. {KLOOK_CHECKED}에 상품 페이지를 자동으로 읽을 수
-                없어 여기서는 가격이나 데이터 용량을 싣지 않습니다.
+                클룩에서의 상품명은 “{klookEsim.listingTitle}”입니다. {KLOOK_ESIM_FACTS["ko"]}
               </p>
             </div>
           </article>

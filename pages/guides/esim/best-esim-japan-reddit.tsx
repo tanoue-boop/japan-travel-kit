@@ -89,7 +89,7 @@ const networkCards = [
     who: [
       "eSIM Go / Breeze — breezesim.com's Japan page names NTT docomo among the networks it covers.",
       "Sakura Mobile — the 3 GB/day data plans are docomo.",
-      `${klookEsim.name} — the listing states docomo 4G LTE for its total-data plans.`,
+      `${klookEsim.name} — the listing states IIJ (Docomo) 4G LTE for its total-data plans.`,
     ],
   },
   {
@@ -987,7 +987,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
                     <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{klookEsim.specData}</td>
                     <td className={styles.tdNetwork}>{klookEsim.specNetwork}</td>
                     <td>
-                      Unranked — no verified price.{" "}
+                      Unranked: from US$1.05, no plan named.{" "}
                       <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         Open →
                       </KlookLink>
@@ -999,9 +999,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Prices are each provider&apos;s cheapest plan, read from its official site on {pricesCheckedAt}.
-            The Klook row carries no price: its listing could not be read automatically on{" "}
-            {klookEsim.checkedAt}, so it is not ranked here and we make no claim about whether it undercuts
-            the four above. Its data tiers and networks are what the listing itself states, confirmed
+            The Klook row shows only the from-price on its listing (read {klookEsim.specsCheckedAt}), which
+            comes before you choose days and data and names no plan, so it is not ranked here and we make no
+            claim about whether a given plan undercuts the four above. Its data tiers and networks are what the listing itself states, confirmed
             through Klook&apos;s search index on {klookEsim.specsCheckedAt}.
           </p>
         </section>

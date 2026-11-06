@@ -354,7 +354,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
                 <div className={styles.pickRank}>
                   <span className={styles.pickNumber}>1</span>
                   <div className={styles.pickMeta}>
-                    <span className={`${styles.pickBadge} ${styles.pickBadgeGreen}`}>Lowest Price</span>
+                    <span className={`${styles.pickBadge} ${styles.pickBadgeGreen}`}>Lowest Confirmed Price</span>
                     <span className={styles.pickName}>Simbye</span>
                   </div>
                 </div>

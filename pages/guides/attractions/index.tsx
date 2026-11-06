@@ -3,12 +3,14 @@ import Link from "next/link";
 import GuideHub from "../../../components/GuideHub";
 import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import { attractionArticles, attractionsCategory } from "../../../lib/guides-attractions";
-import { fujiDayTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import { fujiDayTour, jrHokkaidoRailPass, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { articleDates } from "../../../lib/page-dates";
 import { hubItemListJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 
 export const getStaticProps = () => ({ props: { dates: articleDates(attractionArticles.map((a) => a.href)) } });
+
+const L = { color: "var(--text)", fontWeight: 600 } as const;
 
 const DESC =
   "Japan attraction guides: teamLab, Tokyo Disney, USJ, Shibuya Sky and sumo tickets, plus the day trips — with official prices and how to book abroad.";
@@ -56,6 +58,7 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
         heroDesc="Tickets and experiences worth planning ahead — teamLab, Universal Studios Japan, Shibuya Sky and more. How to book, when to go, and which option suits your trip."
         dates={dates}
         picks={
+          <>
           <PartnerPick
             label="Two easy first bookings"
             heading="Guided days out from Tokyo"
@@ -73,6 +76,25 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Hakone Free Pass</Link> and the{" "}
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>JR Kansai Area Pass</Link>.
           </PartnerPick>
+          {/* Winter route, added 6 Nov 2026 (jtk-20261106-A21). */}
+          <PartnerPick
+            label="December to February"
+            heading="Planning a winter trip?"
+            cta={{ href: jrHokkaidoRailPass.url, label: "Price the JR Hokkaido Rail Pass on Klook →" }}
+          >
+            The <Link href="/guides/attractions/japan-winter-itinerary" style={L}>Japan winter itinerary</Link> is the
+            place to start. It leads to the <Link href="/guides/attractions/sapporo-snow-festival-tours" style={L}>Sapporo
+            Snow Festival</Link>, the <Link href="/guides/attractions/otaru-day-trip-from-sapporo" style={L}>Otaru day
+            trip</Link> and the <Link href="/guides/attractions/hokkaido-7-day-itinerary" style={L}>7-day Hokkaido
+            itinerary</Link> in the north, and for skiing to <Link href="/guides/attractions/niseko-ski-tours" style={L}>Niseko
+            ski tours</Link> and the <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={L}>GALA Yuzawa
+            day trip from Tokyo</Link>. The <Link href="/guides/attractions/jigokudani-snow-monkey-tour" style={L}>Jigokudani
+            snow monkeys</Link>, the <Link href="/guides/attractions/takayama-shirakawago-tour" style={L}>Takayama and
+            Shirakawa-go tours</Link> and the <Link href="/guides/attractions/tokyo-illumination-tours" style={L}>Tokyo
+            illuminations</Link> fit a shorter trip. A Hokkaido trip that leaves Sapporo is also where the{" "}
+            <PartnerTextLink href={jrHokkaidoRailPass.url}>JR Hokkaido Rail Pass</PartnerTextLink> is worth pricing.
+          </PartnerPick>
+          </>
         }
       />
     </>

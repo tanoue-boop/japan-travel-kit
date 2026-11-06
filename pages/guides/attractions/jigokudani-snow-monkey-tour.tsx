@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -9,28 +11,39 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
+  hanedaLimousineBus,
   jigokudaniStayAreas,
   jigokudaniZenkojiPrivateDayTrip,
   jigokudaniZenkojiSukiyakiTour,
   jrEastPass,
   klookEsim,
-  naganoSnowMonkeyDayTourTokyo,
+  naritaExpressRoundTripUrl,
   nozawaSnowMonkeyZenkojiTour,
-  snowMonkeysShinkansenDayTourTokyo,
+  type KlookTripPrepItem,
 } from "../../../lib/klook-links";
+import {
+  snowMonkeySukiyakiTourTokyo,
+  snowMonkeysZenkojiSakeNaganoTour,
+} from "../../../lib/klook-links-winter-honshu";
 
 /**
  * Jigokudani Yaen-koen (the Snow Monkey Park) as a day from Tokyo — a winter page that has to be
  * live before December, when the bathing season starts and the park's web-ticket priority begins.
  *
- * What is dated in the copy, and where it came from, all read on 3 Nov 2026:
+ * Re-read 6 Nov 2026. The park's 20 Sep 2026 fee notice (information-3104, an image, read in full)
+ * sets new admission from 1 Dec 2026 (令和8年12月1日): adults ¥800 → ¥1,000, children ¥400 → ¥500,
+ * groups of 20+ ¥680 → ¥840 and ¥340 → ¥420, with web tickets at ¥880 / ¥440 and group web tickets
+ * at ¥740 / ¥380. Its hours-and-fees page confirms the 1 Dec date and still prints the old table.
+ * Online tickets started with the park's notice of 6 Aug 2026; the home page keeps the December–April
+ * web-ticket priority. Access times were re-read from the park's access page and are unchanged.
+ * The English site's guide page still says there is no advance ticket service; the Japanese
+ * notices are newer, so this page follows them.
  *
- * - Admission, hours, closures: the park's own hours-and-fees page (jigokudani-yaenkoen.co.jp/guide/):
- *   adults (18+) ¥800, children (elementary to high school) ¥400, under-6s free with a guardian,
- *   groups of 20+ ¥680/¥340; April–October 8:30–17:00, November–March 9:00–16:00; open every day
- *   but may close without notice for weather, the monkeys' behaviour or natural disasters. The home
- *   page showed "本日の営業時間 9:00~16:00" on 3 Nov, which agrees. The 20 Sep 2026 fee-revision
- *   notice is an image we could not read, so the page relies on the hours-and-fees page itself.
+ * Other dated copy, and where it came from, read on 3 Nov 2026:
+ *
+ * - Hours, closures: the park's own hours-and-fees page (jigokudani-yaenkoen.co.jp/guide/):
+ *   April–October 8:30–17:00, November–March 9:00–16:00; open every day but may close without
+ *   notice for weather, the monkeys' behaviour or natural disasters.
  * - Web-ticket priority: the park's home page (Japanese and English) — December to April, entry
  *   priority goes to visitors holding web tickets.
  * - Access: the park's own access page (Japanese and English) — Hokuriku Shinkansen Tokyo–Nagano
@@ -50,22 +63,23 @@ import {
  * Deliberately absent: the shinkansen fare (JR East's site does not return readable pages to
  * automated reads), the Nagaden train fare and the bus fares (Nagaden publishes its fare table
  * only as a PDF we could not read, and third-party figures for the 2026-27 express bus disagree).
- * No Klook price appears either — Klook answers automated reads with HTTP 403.
+ * The top block shows from-prices only where a klook.com index result tied one to the listing; the
+ * body has no Klook price, because Klook answers automated reads with HTTP 403.
  */
 
 /** Everything dated below was read off the operators' own sites on this date. */
-const CHECKED_ISO = "2026-11-03";
+const CHECKED_ISO = "2026-11-06";
 const CHECKED = checkedLabel(CHECKED_ISO);
 
 const ROUTE = "/guides/attractions/jigokudani-snow-monkey-tour";
 
 const factRows = [
-  { item: "Admission, adult (18+)", value: "¥800", note: "Groups of 20 or more ¥680" },
-  { item: "Admission, child (elementary to high school)", value: "¥400", note: "Under 6 free with a guardian; groups ¥340" },
+  { item: "Admission from 1 Dec 2026, adult (18+)", value: "¥1,000 at the gate, ¥880 web ticket", note: "¥800 until 30 Nov. Groups of 20 or more ¥840, or ¥740 by web ticket" },
+  { item: "Admission from 1 Dec 2026, child (elementary to high school)", value: "¥500 at the gate, ¥440 web ticket", note: "¥400 until 30 Nov. Under 6 free with a guardian; groups ¥420, or ¥380 by web ticket" },
   { item: "Opening hours, November–March", value: "9:00–16:00", note: "Arrive at least 30 minutes before closing" },
   { item: "Opening hours, April–October", value: "8:30–17:00", note: "" },
   { item: "Closed", value: "No fixed closing day", note: "May close without notice for weather, the monkeys' behaviour or natural disasters" },
-  { item: "Web tickets", value: "Priority entry December–April", note: "Bought online for a chosen date" },
+  { item: "Web tickets", value: "Priority entry December–April", note: "Bought online for a chosen date; cheaper than the gate from 1 Dec" },
   { item: "Elevation", value: "850 m", note: "Winter lows to −10°C and over 1 m of snow" },
 ];
 
@@ -118,22 +132,22 @@ const compareRows = [
   {
     aspect: "Getting there",
     diy: "Shinkansen to Nagano (79 min at fastest), then train and bus or the express bus, then the walk",
-    tour: "Coach or shinkansen with a guide; the connections are the tour's problem",
+    tour: "A coach from Tokyo, or a guided day from Nagano Station after your own shinkansen; the connections are the tour's problem",
   },
   {
     aspect: "Time on the move, one way",
     diy: "About 2 hr 50 min of pure travel and walking (79 + 38 + 15 + 35 min) before any waiting for connections",
-    tour: "Longer by coach, similar by shinkansen — but nothing to miss",
+    tour: "A long day: the Tokyo coach listings run about 12 to 13 hours round trip — but nothing to miss",
   },
   {
     aspect: "Park entry",
-    diy: "¥800 at the gate, or a dated web ticket — which has priority December to April",
+    diy: "From 1 December, ¥1,000 at the gate or ¥880 by dated web ticket — which has priority December to April",
     tour: "Check the listing for whether admission is included",
   },
   {
     aspect: "Zenko-ji on the same day",
     diy: "Possible, but only if you start early: the temple is in Nagano city, the park is 41+ minutes beyond it",
-    tour: "Most Jigokudani day tours on Klook build it in",
+    tour: "Several Jigokudani day tours on Klook build it in; the Shinjuku sukiyaki coach day does not",
   },
   {
     aspect: "What goes wrong",
@@ -150,7 +164,7 @@ const compareRows = [
 const faqItems = [
   {
     q: "How much is the Jigokudani Snow Monkey Park entrance fee?",
-    a: `¥800 for an adult (18 and over) and ¥400 for a child from elementary to high school age, according to the park's own hours-and-fees page. Children under 6 are free with a guardian, groups of 20 or more pay ¥680 and ¥340, and there is no senior discount. Discounts cannot be combined. From December to April, visitors who bought a web ticket for their date get priority entry. Read on ${CHECKED}.`,
+    a: `From 1 December 2026 it is ¥1,000 for an adult (18 and over) and ¥500 for a child from elementary to high school age at the gate, or ¥880 and ¥440 by web ticket, according to the park's own fee notice. Until 30 November it is still ¥800 and ¥400. Children under 6 are free with a guardian, groups of 20 or more pay ¥840 and ¥420 (¥740 and ¥380 by web ticket), and there is no senior discount. Discounts cannot be combined. From December to April, visitors who bought a web ticket for their date get priority entry. Read on ${CHECKED}.`,
   },
   {
     q: "What are the Jigokudani opening hours?",
@@ -174,15 +188,15 @@ const faqItems = [
   },
   {
     q: "Is a snow monkey tour worth it?",
-    a: "For a single day from Tokyo, usually yes. The train route has four legs and a walk, two of them on small operators with limited departures, and the winter closing is 16:00 — a missed connection costs you the monkeys, not just time. A tour also tends to add Zenko-ji, which is hard to fit in independently on the same day. If you are staying a night at Shibu, Yudanaka or Kanbayashi, or already hold a JR EAST PASS, doing it yourself is easy and cheaper.",
+    a: "For a single day from Tokyo, usually yes. The train route has four legs and a walk, two of them on small operators with limited departures, and the winter closing is 16:00 — a missed connection costs you the monkeys, not just time. Several tours also add Zenko-ji, which is hard to fit in independently on the same day. If you are staying a night at Shibu, Yudanaka or Kanbayashi, or already hold a JR EAST PASS, doing it yourself is easy and cheaper.",
   },
   {
     q: "Can you combine snow monkeys with Shibu Onsen or Zenko-ji?",
-    a: "Yes, and both are on the way. Shibu Onsen is the hot-spring village just below the park, and the natural add-on if you stay the night. Zenko-ji is in Nagano city, where the trip changes trains, and most Klook Jigokudani day tours pair it with the park. Done independently in one day from Tokyo, the temple works best in the afternoon on the way back — but only if you left the park well before the 16:00 winter closing.",
+    a: "Yes, and both are on the way. Shibu Onsen is the hot-spring village just below the park, and the natural add-on if you stay the night. Zenko-ji is in Nagano city, where the trip changes trains, and several Klook Jigokudani day tours pair it with the park. Done independently in one day from Tokyo, the temple works best in the afternoon on the way back — but only if you left the park well before the 16:00 winter closing.",
   },
   {
     q: "Do you need to book Jigokudani tickets in advance?",
-    a: "Not essential, but worth it in winter. The park sells dated web tickets and gives their holders priority entry from December to April, so in the busy season a web ticket is the way past the queue. Join-in tours also run to a fixed capacity on a fixed date, so book one as soon as your date is fixed, and check the listing's cancellation terms for snow days.",
+    a: "Not essential, but worth it in winter. The park sells dated web tickets, gives their holders priority entry from December to April, and from 1 December 2026 charges ¥880 for one against ¥1,000 at the gate, so in the busy season a web ticket is both the way past the queue and the cheaper ticket. Join-in tours also run to a fixed capacity on a fixed date, so book one as soon as your date is fixed, and check the listing's cancellation terms for snow days.",
   },
   {
     q: "Can you bring children, a pushchair or a dog to Jigokudani?",
@@ -202,9 +216,37 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
 });
 
-const TITLE = "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2026";
+/** The same-trip block. The TOKYO Wide Pass stops short of Nagano, so the pass here is the JR EAST PASS. */
+const sameTripItems: KlookTripPrepItem[] = [
+  {
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "Your dated web ticket, the bus times at Yudanaka and Nagano, and the park's monkey forecast all live on your phone, and the park can close without notice for weather.",
+  },
+  {
+    label: "Narita Express (N'EX) round-trip ticket",
+    ctaLabel: "Check the N'EX round trip →",
+    url: naritaExpressRoundTripUrl,
+    why: "It reaches Tokyo Station, where the Hokuriku Shinkansen to Nagano leaves, so an arrival from Narita can sleep near the first train north.",
+  },
+  {
+    label: hanedaLimousineBus.title,
+    ctaLabel: "Check the limousine bus →",
+    url: hanedaLimousineBus.url,
+    why: "The Haneda version, with Shinjuku among its stops. That matters if you are taking the Shinjuku coach day, which leaves early from the west side of the station.",
+  },
+  {
+    label: jrEastPass.title,
+    ctaLabel: "Check the JR EAST PASS →",
+    url: jrEastPass.url,
+    why: "Covers the shinkansen as far as Nagano, not the private railway and buses after it. It pays when the snow monkeys are one of several long trips in the same 5 or 10 days.",
+  },
+];
+
+const TITLE = "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2027";
 const DESC =
-  "Snow Monkey Tour or DIY? Jigokudani is ¥800, open 9:00–16:00 in winter, 79 min from Tokyo to Nagano by shinkansen, then train, bus and a 35-min snowy walk.";
+  "Snow Monkey Tour or DIY? Jigokudani is ¥1,000 from 1 Dec (¥880 web), open 9:00–16:00 in winter, 79 min to Nagano by shinkansen, then a 35-min snowy walk.";
 
 export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -294,7 +336,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Snow Monkey Tour from Tokyo (2026):<br />Jigokudani Fees, Hours, the Walk and Tour vs DIY
+            Snow Monkey Tour from Tokyo (2027):<br />Jigokudani Fees, Hours, the Walk and Tour vs DIY
           </h1>
           <p className={styles.heroSubtitle}>
             Japan&apos;s bathing monkeys live in a valley above Nagano, a train, a bus and a snowy
@@ -321,6 +363,42 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           </p>
         </div>
 
+        <WinterBookingTop
+          heading="Which Snow Monkey Tour from Tokyo Can You Book for This Winter?"
+          checkedIso="2026-11-06"
+          deadline={
+            <>
+              Book by 30 November for Christmas and New Year dates, and at least three weeks out for January
+              and February. Bathing is mainly December to March, so every tour date falls in the same short
+              season. Going on your own? Buy the dated web ticket when your date is fixed: holders get
+              priority from December to April, and from 1 December it costs ¥880 against ¥1,000 at the gate.
+            </>
+          }
+          tours={[
+            {
+              title: snowMonkeySukiyakiTourTokyo.title,
+              url: snowMonkeySukiyakiTourTokyo.url,
+              price: "from about US$128",
+              duration: "12 hours (08:00–20:00)",
+              departs: "Shinjuku, Tokyo",
+            },
+            {
+              title: jigokudaniZenkojiSukiyakiTour.title,
+              url: jigokudaniZenkojiSukiyakiTour.url,
+              price: null,
+              duration: "About 13 hours 10 minutes",
+              departs: "Tokyo",
+            },
+            {
+              title: jigokudaniZenkojiPrivateDayTrip.title,
+              url: jigokudaniZenkojiPrivateDayTrip.url,
+              price: null,
+              duration: "10 hours",
+              departs: "Your hotel in Tokyo",
+            },
+          ]}
+        />
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -329,8 +407,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Admission</p>
-                <p className={styles.verdictStatValue}>¥800 adult, ¥400 child</p>
+                <p className={styles.verdictStatLabel}>Admission from 1 Dec</p>
+                <p className={styles.verdictStatValue}>¥1,000 adult (¥880 web)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Winter hours (Nov–Mar)</p>
@@ -346,18 +424,19 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> Jigokudani Yaen-koen, the Snow Monkey Park, costs ¥800 for
-              an adult and ¥400 for a child, and is open 9:00–16:00 from November to March (8:30–17:00
+              <strong>In short:</strong> Jigokudani Yaen-koen, the Snow Monkey Park, costs ¥1,000 for
+              an adult and ¥500 for a child at the gate from 1 December 2026, or ¥880 and ¥440 by web
+              ticket (¥800 and ¥400 until 30 November), and is open 9:00–16:00 from November to March (8:30–17:00
               April to October). From Tokyo it is 79 minutes at fastest to Nagano on the Hokuriku
               Shinkansen, then 38 minutes on the Nagano Electric Railway to Yudanaka and a 15-minute
               bus — or a 41-minute express bus from Nagano — and finally about 35 minutes on foot on
               an unpaved trail that is snow and ice in winter. A snow monkey tour carries all of
-              those connections for you and usually adds Zenko-ji; doing it yourself is cheaper but
+              those connections for you and often adds Zenko-ji; doing it yourself is cheaper but
               close to three hours each way. All figures from the park&apos;s own site, read on{" "}
               {CHECKED}.
             </p>
             <KlookLink
-              href={jigokudaniZenkojiSukiyakiTour.url}
+              href={snowMonkeySukiyakiTourTokyo.url}
               target="_blank"
               rel="sponsored noopener"
               className={styles.verdictBtn}
@@ -367,6 +446,14 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             </KlookLink>
           </div>
         </div>
+
+        {/* Same trip */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What Else Does a Snow Monkey Trip Need?"
+          intro="Three things a day to Jigokudani depends on: data for the buses and your ticket, a way in from the airport, and the pass that covers the shinkansen half."
+          items={sameTripItems}
+        />
 
         {/* Overview */}
         <section className={styles.bodySection}>
@@ -413,11 +500,12 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Fees, hours and closures from the park&apos;s hours-and-fees page; web-ticket priority from
-            its home page; elevation and climate from its English &quot;about&quot; page. All read on
-            jigokudani-yaenkoen.co.jp on {CHECKED}. The park posted a fee-revision notice on 20
-            September 2026 and changed to winter hours on 1 November; the figures above are what its
-            hours-and-fees page showed after both.
+            Fees from the park&apos;s fee-revision notice of 20 September 2026; hours and closures from
+            its hours-and-fees page, which confirms the 1 December change but still prints the old
+            table; web-ticket priority from its home page; elevation and climate from its English
+            &quot;about&quot; page. Fees, hours and priority read on jigokudani-yaenkoen.co.jp on{" "}
+            {CHECKED}. The web ticket is sold through the park&apos;s webticket page, and Nagaden also
+            sells a bus-plus-admission version.
           </p>
         </section>
 
@@ -453,7 +541,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Times from the park&apos;s own access page, read on {CHECKED}; the pass contents from
-            Nagano Electric Railway&apos;s own Snow Monkey page the same day.{" "}
+            Nagano Electric Railway&apos;s own Snow Monkey page, read on 3 November 2026.{" "}
             <strong>On fares:</strong> we print no yen figure for the shinkansen, the Nagaden train or
             the buses. JR East&apos;s site did not return a readable fare page, Nagaden publishes its
             fare table only as a PDF we could not read, and the third-party figures for the 2026-27
@@ -468,8 +556,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               JR EAST PASS on Klook →
             </KlookLink>
-            <KlookLink href={snowMonkeysShinkansenDayTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Shinkansen snow monkey tour →
+            <KlookLink href={snowMonkeysZenkojiSakeNaganoTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Guided day from Nagano Station →
             </KlookLink>
           </div>
         </section>
@@ -589,7 +677,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           <h2 className={styles.sectionTitle}>Can You Combine the Snow Monkeys With Shibu Onsen or Zenko-ji?</h2>
           <p className={styles.bodyText}>
             <strong>Zenko-ji</strong> is in Nagano city, where every route to the park changes, and it
-            is the stop most Jigokudani tours on Klook add. On your own, put it on the way back — only
+            is the stop several Jigokudani tours on Klook add. On your own, put it on the way back — only
             if you left the park in good time — rather than on the way out, when the park&apos;s
             closing time is the one that matters.
           </p>
@@ -604,6 +692,37 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
               From Nozawa Onsen →
             </KlookLink>
           </div>
+        </section>
+
+        {/* The rest of the winter */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>The rest of your winter</span>
+          <h2 className={styles.sectionTitle}>What Goes Well With the Snow Monkeys on a Winter Trip?</h2>
+          <p className={styles.bodyText}>
+            Jigokudani sits best inside a longer route rather than on its own, and our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> lays out
+            the 12-day version. If you are based in Tokyo, the closest match is a{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">Gala Yuzawa ski day trip</Link>:
+            a JR EAST PASS covers both, so two long days share one pass. Save a free evening back in the
+            city for the{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo illuminations</Link>, which ask
+            far less of you than a 12-hour day out. The Hokuriku Shinkansen that brings you to Nagano also
+            runs on to Kanazawa, the usual way into a{" "}
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour</Link>,
+            and a January trip should fix that light-up date before the monkey day.
+          </p>
+          <p className={styles.bodyText}>
+            Going further north is a separate trip, and a fair alternative if snow is the point. Skiers
+            should compare this valley with{" "}
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link>. In February, the{" "}
+            <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours</Link>{" "}
+            are tied to 4–11 February 2027, so a monkey day has to fit before or after them. From Sapporo,
+            an{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip</Link> is the easy
+            add-on, and the{" "}
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary">7-day Hokkaido itinerary</Link> shows
+            what a full week up there looks like.
+          </p>
         </section>
 
         <KlookStayAreas
@@ -648,11 +767,11 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 
         <KlookTourPicks
           heading="Snow Monkey Tours on Klook"
-          intro="Two Tokyo-departure day tours, the shinkansen version, a private day trip and the ski-season tour from Nozawa Onsen. Klook blocks automated price reads, so open a listing for the price, what is included and the cancellation terms on your date."
+          intro="Two Tokyo-departure day tours, a guided day from Nagano Station, a private day trip and the ski-season tour from Nozawa Onsen. Open a listing for the current price, what is included, the guide language and the cancellation terms on your date."
           tours={[
+            snowMonkeySukiyakiTourTokyo,
             jigokudaniZenkojiSukiyakiTour,
-            snowMonkeysShinkansenDayTourTokyo,
-            naganoSnowMonkeyDayTourTokyo,
+            snowMonkeysZenkojiSakeNaganoTour,
             jigokudaniZenkojiPrivateDayTrip,
             nozawaSnowMonkeyZenkojiTour,
           ]}
@@ -667,6 +786,12 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary" },
               { href: "/guides/transport/jr-east-pass", title: "JR East Pass (2026): Price, Coverage and Is It Worth It?" },
               { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Gala Yuzawa Ski Day Trip from Tokyo" },
+              { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tour (2027): Which Departure" },
+              { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
+              { href: "/guides/attractions/sapporo-snow-festival-tours", title: "Sapporo Snow Festival Tours (2027)" },
+              { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "Otaru Day Trip from Sapporo (2027)" },
+              { href: "/guides/attractions/hokkaido-7-day-itinerary", title: "Hokkaido 7 Day Itinerary: 7 Days in Hokkaido, Day by Day" },
+              { href: "/guides/attractions/tokyo-illumination-tours", title: "Tokyo Illuminations: Dates, Hours and the Free Ones" },
               { href: "/guides/attractions/karuizawa-day-trip-from-tokyo", title: "Karuizawa Day Trip From Tokyo" },
               { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa (2026)" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026)" },
@@ -700,7 +825,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
               foreign cards.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={jigokudaniZenkojiSukiyakiTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={snowMonkeySukiyakiTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
                 View snow monkey tours on Klook →
               </KlookLink>
             </div>

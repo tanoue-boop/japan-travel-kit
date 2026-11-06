@@ -69,7 +69,7 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
           >
             If you are already booking tickets or transport on Klook, its{" "}
             <PartnerTextLink href={klookEsim.url}>{klookEsim.name}</PartnerTextLink> keeps everything in one account.
-            We leave it out of our rankings because its product page blocks automated price reads, so compare it with
+            We leave it out of our rankings because its US$1.05 from-price names no plan, so compare it with
             the prices in{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>our eSIM comparison</Link>{" "}
             before you buy. Then pick by what matters most: the{" "}

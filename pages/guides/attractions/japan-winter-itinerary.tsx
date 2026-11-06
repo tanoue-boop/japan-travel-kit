@@ -4,9 +4,11 @@ import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import WinterBookingTop from "../../../components/WinterBookingTop";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
+  type KlookTripPrepItem,
   asahiyamaZooWinterDayTour,
   dotonboriCityCruise,
   galaNaebaSkiDayTripTokyo,
@@ -16,10 +18,8 @@ import {
   hanedaLimousineBus,
   hokurikuArchPass,
   japanWinterStayAreas,
-  japanWinterTripPrep,
   jrEastSouthHokkaidoPass,
   jrHarukaUrl,
-  jrPassWholeJapan,
   kanazawaGeishaKenrokuenCastleDayTour,
   kanazawaKenrokuenHigashiChayaDayTour,
   klookEsim,
@@ -52,6 +52,7 @@ import {
   tokyoSubwayTicket,
   yomiurilandTicket,
 } from "../../../lib/klook-links";
+import { jrPassWholeJapanCurrent, shirakawagoLightUp2027NagoyaTour } from "../../../lib/klook-links-winter-hub";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -84,12 +85,77 @@ import { checkedLabel } from "../../../lib/attraction-prices";
  *     nml_sfc_ym.php          and Sapporo (47412) — the monthly means, the mean daily
  *                             maxima and minima, and Sapporo's monthly snowfall totals.
  *
- * The journey times and fares are not re-derived here: each one is carried from the page
- * on this site that verified it against the operator, and says so in the table. Nothing
- * on this page is first-hand — there is no "we visited" anywhere — and no Klook price
- * appears, because Klook answers automated reads of its product pages with HTTP 403.
+ * Re-read on 6 Nov 2026 for the winter booking pass (task jtk-20261106-A21):
+ *
+ *   shirakawa-go.gr.jp/events/441/   the same four evenings; three routes sold by the
+ *                             association (stay ballot closed 31 Oct, results 10 Nov; car
+ *                             park round 1 sold out, round 2 from 1 Dec 13:00 at ¥7,000
+ *                             or ¥10,000), travel-agency tours from 2 Dec 13:00.
+ *   nouhibus.co.jp/shirakawa_lightup_2027/  the Takayama light-up bus: three courses at
+ *                             ¥13,000–¥16,000, on sale since 13 Oct to 2 Nov by evening.
+ *   nouhibus.co.jp/route_bus/shirakawago/   Takayama and Kanazawa to Shirakawa-go both
+ *                             ¥2,800 to 30 Nov 2026 and ¥2,900 from 1 Dec 2026.
+ *   hokutetsu.co.jp/highway-bus/shirakawa   seat-reserved, 1h15, booking opens one month
+ *                             ahead; this page still showed ¥2,800 on 6 Nov.
+ *   snowfes.com/news/948.html the same festival dates and sites.
+ *   gala.co.jp/winter         slopes 19 Dec 2026–5 May 2027, sightseeing only 12–18 Dec,
+ *                             South Area closed for the season.
+ *   niseko.ne.jp/en/lift/     all four areas from 28 Nov 2026, closing 4 Apr–5 May 2027.
+ *   hakubavalley.com/seasonpass/  planned December 2026 to early May 2027; no 2026–27
+ *                             opening date published yet, so the page says so.
+ *   teamlab.art/e/botanicalgarden/  last entry 20:30 to 31 Jan 2027; ¥1,800 / ¥500.
+ *   otaru.gr.jp/event/yukiakari2027 and visit-hokkaido.jp  Otaru Snow Light Path 6–13 Feb 2027.
+ *   visit-hokkaido.jp/en/event/detail_11029.html  Lake Shikotsu 30 Jan–23 Feb 2027.
+ *   tokyomegaillumi.jp        final season, closed 24 Dec–1 Jan on its homepage.
+ *
+ * The other journey times and fares are not re-derived here: each one is carried from the
+ * page on this site that verified it against the operator, and says so in the table.
+ * Nothing on this page is first-hand — there is no "we visited" anywhere. The body quotes
+ * no Klook price, because Klook answers automated reads of its product pages with HTTP
+ * 403; the top block alone shows from-prices taken from Klook's indexed listings.
  */
 const CHECKED = checkedLabel("2026-10-28");
+const REREAD = checkedLabel("2026-11-06");
+
+/** The same-trip block: the JR Pass item points at the listing that is on sale now. */
+const sameTripItems: KlookTripPrepItem[] = [
+  {
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "Winter is the season a Japan plan changes on the day — a train held by snow, a ropeway shut in wind — and every one of those notices arrives on your phone rather than at a counter.",
+  },
+  {
+    label: "Narita Airport limousine bus",
+    ctaLabel: "Check the Narita bus →",
+    url: naritaLimousineBus.url,
+    why: "One way, because this route flies home from Kansai. It is the arrival to pick with large cases or winter luggage and a hotel that is not beside a station.",
+  },
+  {
+    label: "Haneda Airport limousine bus",
+    ctaLabel: "Check the Haneda bus →",
+    url: hanedaLimousineBus.url,
+    why: "The same one-way logic from Haneda, with Shinjuku and Ikebukuro among its stops — useful on a Day 1 that is dark by half past four.",
+  },
+  {
+    label: hokurikuArchPass.title,
+    ctaLabel: "Check the Hokuriku Arch Pass →",
+    url: hokurikuArchPass.url,
+    why: "The pass actually shaped like this itinerary — seven consecutive days covering the Hokuriku Shinkansen out of Tokyo and the Kansai area at the far end. It does not cover the Tokaido Shinkansen, so it only works going out one way and back the other.",
+  },
+  {
+    label: jrPassWholeJapanCurrent.title,
+    ctaLabel: "Price the JR Pass on Klook →",
+    url: jrPassWholeJapanCurrent.url,
+    why: "Price it against this route before you buy. A twelve-day trip going Tokyo → Kanazawa → Takayama → Kyoto → Osaka uses two long legs and a limited express, which is not obviously more than the pass costs; our JR Pass guide has the calculator for your own legs.",
+  },
+  {
+    label: tokyoSubwayTicket.title,
+    ctaLabel: "Check the subway ticket →",
+    url: tokyoSubwayTicket.url,
+    why: "The Tokyo days at the start are Metro and Toei days, and the illumination corridor — Marunouchi, Roppongi, Ebisu — is on those lines rather than the Yamanote. It covers neither JR nor the Yamanote Line, which is the thing people get wrong about it.",
+  },
+];
 
 type Stop = {
   time: string;
@@ -119,7 +185,7 @@ const days: Day[] = [
     label: "Day 1",
     heading: "Day 1 — Tokyo: the Airport Run, in the Dark",
     intro:
-      "Winter changes this day in one specific way: it is dark by about half past four, so the arrival-day sightseeing most itineraries pencil in simply is not available to you. Plan for transport, check-in and one neighbourhood lit up on foot. That is not a compromise — Tokyo's illumination season runs from mid-November, and the lights are at their best in exactly the hours you will be arriving.",
+      "Winter changes this day in one specific way: it is dark by about half past four, so the arrival-day sightseeing most itineraries pencil in simply is not available to you. Plan for transport, check-in and one neighbourhood lit up on foot. That is not a compromise — Tokyo's illumination season is already running by early November, and the lights are at their best in exactly the hours you will be arriving.",
     stops: [
       {
         time: "On landing",
@@ -156,7 +222,8 @@ const days: Day[] = [
         Narita route suits you depends entirely on which side of the city you are sleeping on, and our{" "}
         <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link> works
         through all of them; the limousine bus is the one to pick with large cases or a hotel that is
-        not beside a station. One winter-specific point about the Tokyo Subway Ticket: the illumination
+        not beside a station, and the N&apos;EX round trip only earns its return half on a version of
+        this trip that flies home from Tokyo. One winter-specific point about the Tokyo Subway Ticket: the illumination
         corridor — Marunouchi, Roppongi, Ebisu — is on Metro and Toei lines rather than the Yamanote,
         so the pass is a better fit in December than in any other month, and it covers neither JR nor
         the Yamanote Line.
@@ -193,7 +260,7 @@ const days: Day[] = [
       },
       {
         time: "Dusk, from about 16:30",
-        place: "A free street display — Marunouchi, Roppongi Keyakizaka, Ebisu Garden Place",
+        place: "A free street display — Marunouchi (to 14 February), Roppongi Keyakizaka (to 25 December), Ebisu Garden Place (to 28 February)",
         allow: "1.5–2 hours",
         getting: "Metro; Marunouchi is a walk from Tokyo Station",
         booking: "No — these are free and need no ticket at all",
@@ -213,7 +280,10 @@ const days: Day[] = [
         the dates, hours and admissions for each display with the venue each one was read off. What is
         worth booking is the version of the evening that covers ground: a guided night walk, or the
         open-top bus, whose route is the illumination corridor end to end. If you would rather see one
-        big ticketed display, Tokyo Mega Illumi and Yomiuriland are both sold ahead.
+        big ticketed display, Tokyo Mega Illumi and Yomiuriland are both sold ahead. Mega Illumi is in
+        its final season before a pause for the racecourse rebuild: its homepage shows it closed from
+        24 December to 1 January, and its last night is 10 January 2027, so a later January trip means
+        Yomiuriland.
       </>
     ),
     picks: [
@@ -264,16 +334,24 @@ const days: Day[] = [
         Decide first whether you are skiing or visiting snow, because they are different bookings. If
         you are skiing, the packages that bundle the coach, the lift pass and the gear are worth more
         than the sum of their parts, because the alternative is three separate queues in a language you
-        do not read. If you are not, a day trip with the resort chosen at booking does the job, and the
-        bare GALA lift ticket covers a half day of sledging and a long lunch. One thing to settle before
-        you go: standard travel insurance treats on-piste and off-piste completely differently, which
+        do not read. If you are not, or you are a group, the chartered-car day covers GALA Yuzawa,
+        Naeba or Hakuba at a price per car rather than per seat, and the bare GALA lift ticket covers a
+        half day of sledging and a long lunch. GALA&apos;s own calendar has the slopes open from 19
+        December 2026 to 5 May 2027, with 12 to 18 December sightseeing only and the South Area shut
+        for the whole season; our{" "}
+        <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa ski day trip guide</Link>{" "}
+        has the trains and the lift prices in full. If you would rather look at snow than ski on it,
+        our{" "}
+        <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour guide</Link>{" "}
+        covers the winter day out on the Nagano side, which fits this same slot. One thing to settle
+        before you go: standard travel insurance treats on-piste and off-piste completely differently, which
         our{" "}
         <Link href="/guides/money/japan-ski-travel-insurance">ski travel insurance comparison</Link>{" "}
         works through on the published policy wording.
       </>
     ),
     picks: [
-      { label: "GALA Yuzawa / Naeba day trip →", url: galaNaebaSkiDayTripTokyo.url },
+      { label: "GALA Yuzawa / Naeba chartered car →", url: galaNaebaSkiDayTripTokyo.url },
       { label: "Hakuba day trip from Tokyo →", url: hakubaSkiResortDayTourTokyo.url },
       { label: "Happo-one bus + lift + rental →", url: hakubaHapponeBusLiftRental.url },
       { label: "GALA Yuzawa lift ticket →", url: galaYuzawaLiftTicket.url },
@@ -385,7 +463,7 @@ const days: Day[] = [
     picks: [
       { label: "Tokyo → Kanazawa shinkansen →", url: shinkansenTokyoKanazawa.url },
       { label: "Hokuriku Arch Pass →", url: hokurikuArchPass.url },
-      { label: "Price the JR Pass →", url: jrPassWholeJapan.url },
+      { label: "Price the JR Pass →", url: jrPassWholeJapanCurrent.url },
     ],
   },
   {
@@ -430,9 +508,11 @@ const days: Day[] = [
         Higashi Chaya district and Omicho Market into one booking, which is worth it on a short winter
         afternoon where the alternative is three bus legs. The important booking is the bus out of the
         city tomorrow: Hokuriku Railroad states the Kanazawa–Shirakawa-go service is reserved-seating
-        and must be booked before boarding, at ¥2,800 for an adult and ¥1,400 for a child on a journey
-        of 1 hour 15 minutes from the Kanazawa Station West Exit. There is no walk-up fallback on this
-        side, as our{" "}
+        and must be booked before boarding, on a journey of 1 hour 15 minutes from the Kanazawa Station
+        West Exit, with seats opening one month before the travel date. Nohi Bus, which shares the
+        line, lists the adult fare at ¥2,800 to 30 November 2026 and ¥2,900 from 1 December; Hokuriku
+        Railroad&apos;s own page still showed ¥2,800 when read on {REREAD}. There is no walk-up fallback
+        on this side, as our{" "}
         <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go guide</Link>{" "}
         sets out.
       </>
@@ -453,7 +533,7 @@ const days: Day[] = [
         time: "Morning",
         place: "Kanazawa Station West Exit to Shirakawa-go",
         allow: "1.5 hours",
-        getting: "Hokuriku Railroad highway bus — 1 hour 15 minutes, ¥2,800 adult",
+        getting: "Hokuriku Railroad highway bus — 1 hour 15 minutes, ¥2,900 adult from 1 December 2026",
         booking: "Required — the service is reserved-seating and must be booked before boarding",
       },
       {
@@ -467,7 +547,7 @@ const days: Day[] = [
         time: "Mid-afternoon",
         place: "Shirakawa-go to Takayama",
         allow: "1 hour",
-        getting: "Nohi Bus Shirakawa-go Line — approximately 50 minutes, ¥2,800 adult",
+        getting: "Nohi Bus Shirakawa-go Line — approximately 50 minutes, ¥2,900 adult from 1 December 2026",
         booking: "Some departures are marked reservation-required; book either end if the day depends on it",
       },
       {
@@ -483,9 +563,9 @@ const days: Day[] = [
         Either a guided day that does the whole move for you, or two bus seats. The Kanazawa departure
         is the one listing here that will drop you in Takayama instead of bringing you back, which is
         exactly what this leg needs — it is listed at 8 to 10 hours with an English-speaking licensed
-        guide. If you would rather run it yourself, the fares above are the operators&apos; own:{" "}
-        ¥2,800 Kanazawa → Shirakawa-go on Hokuriku Railroad and about 50 minutes and ¥2,800 onward to
-        Takayama on Nohi Bus. No JR pass covers either, because both are private highway buses rather
+        guide. If you would rather run it yourself, the fares above are the operators&apos; own, and
+        they rise on 1 December 2026: ¥2,900 Kanazawa → Shirakawa-go and about 50 minutes and ¥2,900
+        onward to Takayama, up from ¥2,800 each. No JR pass covers either, because both are private highway buses rather
         than JR ones.
       </>
     ),
@@ -525,19 +605,24 @@ const days: Day[] = [
       {
         time: "17:30–19:30, on 11, 17, 24 or 31 January 2027 only",
         place: "The Shirakawa-go light-up",
-        allow: "5–5.5 hours including the coach each way",
-        getting: "A reserved coach from Takayama — there is no walk-up route to this event",
+        allow: "4 hours 40 minutes to 5 hours 35 minutes on Nohi Bus's 2027 timetable, by course",
+        getting: "A reserved coach from Takayama, leaving between 14:40 and 15:40 — there is no walk-up route to this event",
         booking: "Required, in advance, with no same-day tickets at all",
       },
     ],
     book: (
       <>
-        If your date is one of the four, book this before you book anything else on the trip — the
-        association publishes five routes to attend, and the two that do not involve a tour (staying in
-        the village, or reserving a designated car park) are balloted or first-come and open months
-        ahead. Klook&apos;s light-up day out of Takayama is the route that needs no car and no village
-        bed: it is listed at 5 to 5.5 hours, with the choice of entering the open-air museum or the
-        Ogimachi observation deck. If your date is not one of the four, take the Gokayama day instead,
+        If your date is one of the four, book this before you book anything else on the trip. The
+        association publishes five routes to attend, and as read on {REREAD} two of them are nearly
+        gone: the village-stay ballot closed on 31 October, and the first car-park round has sold out,
+        with a second opening on 1 December at 13:00 at ¥7,000 for up to five people. Travel-agency
+        tour plans follow on 2 December at 13:00. The route that needs no car and no village bed is
+        Nohi Bus&apos;s own light-up bus from Takayama, on sale for all four evenings since 2 November
+        at ¥13,000 with the open-air museum, ¥14,000 with an onsen stop or ¥16,000 with the observation
+        deck, which is the only course that reaches it; it books through a Japanese web system only.
+        Klook&apos;s light-up day out of Takayama is listed at 5 to 5.5 hours with the same choice of
+        museum or deck, but its index entry did not yet show the 2027 evenings, so confirm your date
+        appears on the listing. If your date is not one of the four, take the Gokayama day instead,
         which adds Ainokura and the Minkaen to the village — the detail our{" "}
         <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go guide</Link>{" "}
         goes through departure by departure.
@@ -597,7 +682,7 @@ const days: Day[] = [
       </>
     ),
     picks: [
-      { label: "Price the JR Pass for these legs →", url: jrPassWholeJapan.url },
+      { label: "Price the JR Pass for these legs →", url: jrPassWholeJapanCurrent.url },
       { label: "Tokyo ⇄ Kyoto shinkansen tickets →", url: shinkansenTokyoKyoto.url },
     ],
   },
@@ -761,7 +846,7 @@ const days: Day[] = [
 const baseRows = [
   { base: "Tokyo", nights: "4", why: "Two city days, one snow day out and back, and the illumination evenings — the season's one genuine advantage over summer" },
   { base: "Kanazawa", nights: "2", why: "Kenroku-en in snow, and the only base the reserved Shirakawa-go coach leaves from on this side" },
-  { base: "Takayama", nights: "2", why: "The old town, and the only base the four January light-up evenings can be reached from without a car or a village bed" },
+  { base: "Takayama", nights: "2", why: "The old town, and the base for Nohi Bus's own light-up bus on the four January evenings, which needs no car and no village bed" },
   { base: "Kyoto", nights: "2", why: "The thinnest crowds of the year at the walk-in sites — and almost nothing here needs booking" },
   { base: "Osaka", nights: "1", why: "An indoor-and-after-dark city, plus the night-only teamLab garden, and the Kansai Airport run under your hotel" },
 ];
@@ -774,13 +859,13 @@ const tempRows = [
   { city: "Sapporo", dec: "−0.9°C (2.0 / −4.0)", jan: "−3.2°C (−0.4 / −6.4)", feb: "−2.7°C (0.4 / −6.2)" },
 ];
 
-/** The two dated events, and what their own organisers say about booking. */
+/** The dated events, and what their own organisers say about booking. */
 const datedRows = [
   {
     event: "Shirakawa-go winter light-up (41st)",
     when: "11, 17, 24 and 31 January 2027, each 17:30–19:30",
-    rule: "Fully advance reservation with an entry ticket. The association states plainly that tickets are not sold on the day and that arriving without a reservation does not get you in — five routes to attend are published, including a ballot for village accommodation and a first-come designated car park",
-    source: "Shirakawa-go Tourist Association",
+    rule: "Fully advance reservation with an entry ticket. The association states plainly that tickets are not sold on the day and that arriving without a reservation does not get you in — five routes to attend are published. The village-stay ballot closed on 31 October, the second car-park round opens on 1 December at 13:00, and Nohi Bus's Takayama light-up bus is on sale for all four evenings",
+    source: "Shirakawa-go Tourist Association; Nohi Bus",
   },
   {
     event: "Sapporo Snow Festival (77th)",
@@ -789,10 +874,22 @@ const datedRows = [
     source: "Sapporo Snow Festival Executive Committee",
   },
   {
+    event: "Otaru Snow Light Path (29th)",
+    when: "6–13 February 2027, overlapping the Snow Festival",
+    rule: "Dates set; the Otaru Tourism Association says further details will follow, so hours and sites are awaiting the official announcement",
+    source: "Otaru Tourism Association; Hokkaido's official tourism site",
+  },
+  {
+    event: "Lake Shikotsu Ice Festival",
+    when: "30 January–23 February 2027, daily 10:00–20:00, lit 16:30–20:00",
+    rule: "An admission fee applies, free for elementary school age and younger. Hokkaido's official tourism site does not print the adult figure, so we do not either",
+    source: "Hokkaido's official tourism site",
+  },
+  {
     event: "Ski days and rentals",
-    when: "Roughly December to March, by resort",
-    rule: "The coach-plus-lift-plus-gear packages are sold by date and the popular weekend departures go first. Rental is the piece worth reserving earliest — a shop that has run out of your boot size on the morning has no second option",
-    source: "Klook listings",
+    when: "Niseko planned from 28 November 2026; GALA Yuzawa slopes from 19 December 2026; Hakuba opening dates awaiting the official announcement",
+    rule: "The coach-plus-lift-plus-gear packages are sold by date. Rental is worth settling early — a shop that has run out of your boot size on the morning has no second option — though Klook's Happo-one package collects its gear at the resort shop on the day",
+    source: "Niseko United; GALA Yuzawa; Hakuba Valley; Klook listings",
   },
   {
     event: "teamLab Botanical Garden Osaka",
@@ -807,13 +904,13 @@ const snowRows = [
   {
     place: "Yuzawa and Naeba (Niigata)",
     getting: "Joetsu Shinkansen from Tokyo Station, no transfer — GALA Yuzawa's base station and lift station are the same building",
-    season: "Reliable from late December to March",
+    season: "GALA's slopes run 19 December 2026 to 5 May 2027 on its own calendar; 12–18 December is sightseeing only",
     forWhom: "A snow day inside a Tokyo trip, with no extra night",
   },
   {
     place: "Hakuba (Nagano)",
     getting: "Coach from Tokyo, or the Hokuriku Shinkansen to Nagano and a bus",
-    season: "Reliable December to April",
+    season: "Planned December 2026 to early May 2027 on the Hakuba Valley season pass; each resort's opening date is awaiting the official announcement",
     forWhom: "Actual skiing, four resorts on one valley pass",
   },
   {
@@ -825,7 +922,7 @@ const snowRows = [
   {
     place: "Niseko and Rusutsu (Hokkaido)",
     getting: "Coach direct from New Chitose Airport — the version that takes ski bags",
-    season: "December to early April",
+    season: "Niseko United plans all four areas from 28 November 2026, closing between 4 April and 5 May 2027 by area",
     forWhom: "The trip that is about the snow rather than the cities",
   },
   {
@@ -850,7 +947,7 @@ const hokkaidoRows = [
   { leg: "Days 1–4", plan: "Tokyo, exactly as above — the illumination evenings and the snow day are unchanged" },
   { leg: "Day 5", plan: "Fly Haneda to New Chitose, or take the Tohoku and Hokkaido Shinkansen if you are holding the JR East–South Hokkaido pass. Booked transfer into Sapporo" },
   { leg: "Days 6–7", plan: "The Snow Festival sites: Odori from West 1 to West 11, Susukino on Ekimae-dori, and the Tsudome site. All free to walk into, all outdoors, all at a mean daily maximum of 0.4°C" },
-  { leg: "Day 8", plan: "A day out: Otaru and a snow park, or Asahiyama Zoo in the one season the penguins walk, or the Lake Shikotsu ice festival as a half day" },
+  { leg: "Day 8", plan: "A day out: Otaru and a snow park (the Snow Light Path runs 6–13 February 2027), or Asahiyama Zoo in the one season the penguins walk, or the Lake Shikotsu ice festival as a half day (30 January–23 February 2027)" },
   { leg: "Days 9–11", plan: "Niseko or Rusutsu, with the airport coach that takes ski bags — or back to Tokyo and the Kanazawa half of the main route if you would rather have both" },
   { leg: "Day 12", plan: "Out of New Chitose, or back down to Tokyo. The one risk on this version is a February snow day closing the airport, so do not book the last flight of the day" },
 ];
@@ -894,7 +991,7 @@ const faqItems = [
   },
   {
     q: "Can you do this itinerary with children in winter?",
-    a: `Most of it, with two adjustments. The first is the evenings: the illuminations, the Shirakawa-go light-up and the teamLab garden are all after-dark outings in the cold, and a 19:30 finish in the mountains is a late night for a small child. The second is the Day 9 travel day, which is most of a day on two trains — worth splitting or cutting if the ages are young. What works well is the snow day, because snow play needs no skill and no lift pass; Hokkaido's snow-park half days are built for exactly that. teamLab Botanical Garden Osaka is also the cheapest family ticket on the whole route at ¥500 for ages 6 to 15 and free for preschool children, though its listing warns of flashing lights and loud noises.`,
+    a: `Most of it, with two adjustments. The first is the evenings: the illuminations, the Shirakawa-go light-up and the teamLab garden are all after-dark outings in the cold, and Nohi Bus's light-up coach is not back in Takayama until 20:20 at the earliest, which is a late night for a small child. The second is the Day 9 travel day, which is most of a day on two trains — worth splitting or cutting if the ages are young. What works well is the snow day, because snow play needs no skill and no lift pass; Hokkaido's snow-park half days are built for exactly that. teamLab Botanical Garden Osaka is also the cheapest family ticket on the whole route at ¥500 for ages 6 to 15 and free for preschool children, though its listing warns of flashing lights and loud noises.`,
   },
 ];
 
@@ -1024,6 +1121,44 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           </p>
         </div>
 
+        {/* Winter booking block (task A21): the bookable tours, ahead of the long read. */}
+        <WinterBookingTop
+          heading="What Should You Book First for a Japan Winter Itinerary?"
+          checkedIso="2026-11-06"
+          deadline={
+            <>
+              The January light-up first: Nohi Bus&apos;s Takayama coaches for all four evenings are
+              already on sale, nothing is sold on the day, and the next car-park round opens on 1
+              December, so aim to hold your seat by <strong>30 November</strong>. Settle beds and
+              flights by the same date if you are building the trip around the fixed 4&ndash;11
+              February Snow Festival dates.
+            </>
+          }
+          tours={[
+            {
+              title: "Shirakawa-go & Takayama full day from Kanazawa",
+              url: shirakawagoTakayamaKanazawaDayTour.url,
+              price: null,
+              duration: "8–10 hours",
+              departs: "Kanazawa, back there or one way to Takayama",
+            },
+            {
+              title: shirakawagoLightUp2027NagoyaTour.title,
+              url: shirakawagoLightUp2027NagoyaTour.url,
+              price: null,
+              duration: "10–12 hours",
+              departs: "Nagoya, optional hotel pick-up",
+            },
+            {
+              title: "One-day Hakuba ski trip, choice of four resorts",
+              url: hakubaSkiResortDayTourTokyo.url,
+              price: null,
+              duration: "About 11 hours 20 minutes",
+              departs: "Tokyo, by private car",
+            },
+          ]}
+        />
+
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
@@ -1039,7 +1174,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             into. Expect short daylight — dark by about half past four in December — and Tokyo at a
             January mean of 5.4°C against Sapporo&apos;s −3.2°C on the Japan Meteorological
             Agency&apos;s 1991–2020 normals. Every event date, temperature and fare below carries the
-            source it was read off and the date we read it, {CHECKED}.
+            source it was read off: the event dates and bus fares were re-read on {REREAD}, the climate
+            normals on {CHECKED}.
           </p>
         </section>
 
@@ -1093,6 +1229,14 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        {/* Klook: what a winter trip buys before it flies. Moved up from below Packing (task A21). */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What Should You Book Before You Fly?"
+          intro="Six things, in the order they matter for a winter trip: the data that carries the weather notices, a one-way airport run from either Tokyo airport, the pass that actually fits this route, the pass arithmetic, and the Tokyo subway ticket the illumination corridor sits on."
+          items={sameTripItems}
+        />
+
         {/* How the days split */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The shape of it</span>
@@ -1100,8 +1244,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Five bases rather than eight, because winter days are short and a travel day in January
             costs you more than the same day in May. The unusual choice here is two nights in Takayama,
-            and it is the one that makes the plan work: it is the only base the four January light-up
-            evenings can be reached from without a car or a bed in the village.
+            and it is the one that makes the plan work: Nohi Bus runs its own coach from there on the
+            four January light-up evenings, so you need neither a car nor a bed in the village.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1191,14 +1335,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           style={{ marginTop: "-1.5rem", marginBottom: "3.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}
         >
           The &ldquo;time to allow&rdquo; column in all twelve tables is our own planning allowance, not
-          an operator figure. The journey times and fares are the operators&apos; own, each carried from
-          the guide on this site that verified it: the 2 hour 28 minute Hokuriku Shinkansen figure from
-          JR West via our{" "}
+          an operator figure. The journey times and fares are the operators&apos; own: the 2 hour 28
+          minute Hokuriku Shinkansen figure from JR West via our{" "}
           <Link href="/guides/transport/tokyo-to-kanazawa" style={{ color: "var(--text)", fontWeight: 600 }}>
             Tokyo to Kanazawa guide
           </Link>
-          , and the ¥2,800 Shirakawa-go bus fares and their journey times from Hokuriku Railroad and
-          Nohi Bus via our{" "}
+          , and the Shirakawa-go bus fares and journey times from Nohi Bus and Hokuriku Railroad, re-read
+          on {REREAD}, with the wider picture in our{" "}
           <Link href="/guides/attractions/takayama-shirakawago-tour" style={{ color: "var(--text)", fontWeight: 600 }}>
             Takayama and Shirakawa-go guide
           </Link>
@@ -1255,17 +1398,18 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <li>
               <span className={styles.proIcon}>▸</span>
               <span>
-                <strong>Kanazawa → Shirakawa-go, 1 hour 15 minutes, ¥2,800 adult.</strong> Hokuriku
-                Railroad&apos;s own fare and time from the Kanazawa Station West Exit. It is a
-                reserved-seating service and the operator states it must be booked before boarding —
-                there is no walk-up fallback on this side.
+                <strong>Kanazawa → Shirakawa-go, 1 hour 15 minutes, ¥2,900 adult from 1 December
+                2026.</strong> ¥2,800 until 30 November, on Nohi Bus&apos;s fare table, from the Kanazawa
+                Station West Exit. It is a reserved-seating service, seats open one month ahead, and
+                Hokuriku Railroad states it must be booked before boarding — there is no walk-up
+                fallback on this side.
               </span>
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
               <span>
-                <strong>Shirakawa-go → Takayama, about 50 minutes, ¥2,800 adult.</strong> Nohi Bus&apos;s
-                Shirakawa-go Line. Some departures are marked reservation-required on its own timetable
+                <strong>Shirakawa-go → Takayama, about 50 minutes, ¥2,900 adult from 1 December
+                2026.</strong> Nohi Bus&apos;s Shirakawa-go Line, ¥2,800 until 30 November. Some departures are marked reservation-required on its own timetable
                 and the rest are non-reserved, so there are walk-up seats — but they are finite, and
                 there is no train alternative because Shirakawa-go has no railway station.
               </span>
@@ -1304,7 +1448,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Hokuriku Arch Pass →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapanCurrent.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Price the JAPAN RAIL PASS →
             </KlookLink>
             <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -1397,11 +1541,14 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             rather than the lift pass — and settle the insurance before you go, because on-piste and
             off-piste are treated completely differently in the policy wording, as our{" "}
             <Link href="/guides/money/japan-ski-travel-insurance">ski travel insurance comparison</Link>{" "}
-            sets out.
+            sets out. If the snow is the whole point of the trip, skip the cities and read our{" "}
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link>, which covers
+            the transfers, the lessons and the four areas, with a peak-season adult 1-day All Mountain
+            pass at ¥13,500 from 24 December 2026 to 28 February 2027 on Niseko United&apos;s own table.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              GALA Yuzawa / Naeba day trip →
+              GALA Yuzawa / Naeba chartered car →
             </KlookLink>
             <KlookLink href={hakubaHapponeBusLiftRental.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Hakuba bus + lift + rental →
@@ -1448,9 +1595,12 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Light-up dates and the no-same-day-tickets rule from the Shirakawa-go Tourist
-            Association&apos;s own notice for the 41st event; snow festival dates and sites from the
-            Sapporo Snow Festival&apos;s own announcement of the 77th edition; the teamLab figures from
-            teamLab&apos;s own exhibition page and FAQ. All read on {CHECKED}. Nothing beyond the dates
+            Association&apos;s own notice for the 41st event, and the light-up bus from Nohi Bus&apos;s own
+            page; snow festival dates and sites from the Sapporo Snow Festival&apos;s own announcement of
+            the 77th edition; the Otaru dates from the Otaru Tourism Association and Hokkaido&apos;s
+            official tourism site, which also lists the Lake Shikotsu festival; the ski dates from
+            Niseko United, GALA Yuzawa and Hakuba Valley; the teamLab figures from teamLab&apos;s own
+            exhibition page. All read on {REREAD}. Nothing beyond the dates
             each organiser has published is assumed here — if your trip falls outside those windows,
             treat the relevant row as not applying rather than as approximately applying.
           </p>
@@ -1497,7 +1647,10 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             Odori from West 1 to West 11, Susukino on Ekimae-dori between South 4 and South 6, and the
             Tsudome site — and all of it is free to walk into, which is the opposite of the
             Shirakawa-go light-up. What the festival requires instead is a bed and a flight, both of
-            which go months ahead. This version keeps the Tokyo days and swaps the Hokuriku leg out.
+            which go months ahead. Our{" "}
+            <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours guide</Link>{" "}
+            has the sites and the tours in full. This version keeps the Tokyo days and swaps the
+            Hokuriku leg out.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1522,11 +1675,20 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Festival dates and site boundaries from the Sapporo Snow Festival Executive Committee&apos;s
-            own announcement of the 77th event, read on {CHECKED}; the same notice adds a Sapporo Snow
+            own announcement of the 77th event, read on {REREAD}; the same notice adds a Sapporo Snow
             Sports Park on 12 to 14 February 2027 as a linked event. Sapporo&apos;s February mean daily
             maximum of 0.4°C and January snowfall normal of 137 cm are the JMA figures above. One
             honest caveat: the rail route to Hokkaido is long, so most visitors fly — the JR East–South
             Hokkaido pass only earns its keep if you were going to use JR East heavily anyway.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            For the Day 8 day out, the Otaru Snow Light Path falls on 6 to 13 February 2027, so a
+            festival trip can catch both; our{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo guide</Link>{" "}
+            has the train and the canal town. If you would rather give Hokkaido the whole trip than a
+            swap inside this one, our{" "}
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary">7-day Hokkaido itinerary</Link> is
+            the week that stays on the island.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -1580,13 +1742,6 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           </div>
         </section>
 
-        {/* Klook: what a winter trip buys before it flies. */}
-        <KlookTripPrep
-          heading="What Should You Book Before You Fly?"
-          intro="Four things, in the order they matter for a winter trip: the data that carries the weather notices, the pass arithmetic, the pass that actually fits this route, and the Tokyo subway ticket the illumination corridor sits on."
-          items={japanWinterTripPrep}
-        />
-
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
@@ -1609,7 +1764,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
         {/* Klook tours — the Hokkaido days, which have no home elsewhere on the site. */}
         <KlookTourPicks
           heading="Winter Days Out, If You Add Hokkaido"
-          intro="Four winter-season departures out of Sapporo, for the February version of this trip. All of them are seasonal listings rather than year-round ones, which is the reason they are worth opening early rather than on the day."
+          intro="Four winter-season departures out of Sapporo, for the February version of this trip. All of them are seasonal listings rather than year-round ones, which is the reason they are worth opening early rather than on the day. The Asahiyama listing still showed last winter's dates when we read it on 6 Nov 2026, so confirm this winter's departures on the listing."
           tours={[otaruSnowParkDayTour, asahiyamaZooWinterDayTour, lakeShikotsuIceFestivalHalfDayTour, sapporoSnowParkHalfDayTour]}
         />
 
@@ -1750,7 +1905,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Illuminations 2026: Dates, Hours and Which Ones Are Free</p>
+                <p className={styles.relatedTitle}>Tokyo Illuminations 2026-27: Dates, Hours, Free Ones</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -35,6 +35,7 @@ import { klookEsim } from "../../../../lib/klook-links";
 import { zhKlookEsim } from "../../../../lib/klook-links-zh-tw";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
+import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel } from "../../../../lib/i18n";
 
 /**
@@ -129,7 +130,7 @@ const topPicks: TopPick[] = [
     esimId: "simbye",
     rank: 1,
     name: "Simbye 日本 eSIM",
-    bestFor: "最低價",
+    bestFor: "已確認方案中的最低價",
     badgeCls: styles.pickBadgeGreen,
     target: "只需要數據的大多數旅客，任何行程都適用。",
     summary: "純數據的日本 eSIM，走 NTT docomo、KDDI/au、SoftBank 與 Rakuten Mobile，固定流量方案從 1 GB 到 50 GB，吃到飽方案每天前 2 GB 全速。價格資料中的每個方案都允許分享網路。",
@@ -316,7 +317,7 @@ const networkRows = [
   },
   {
     provider: zhKlookEsim.label,
-    carriers: "SoftBank 5G（按天計方案）／docomo 4G LTE（總流量方案）",
+    carriers: "SoftBank 5G（按天計方案）／IIJ（Docomo）4G LTE（總流量方案）",
     how: "沒有電話號碼——純數據。分享網路：支援。資料來自 Klook 自己的商品資料，而不是商品頁本身——該頁會以 HTTP 403 拒絕自動讀取。",
     checked: KLOOK_SPECS_CHECKED,
   },
@@ -724,7 +725,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             價格時間點為 {pricesCheckedAt}；電信名單、合理使用門檻與區域方案的國家數，於 {SPECS_CHECKED} 從各業者自己的網站讀取。
           </p>
-          <KlookEsimSlot why="如果這趟行程的門票與交通已經放在 Klook 的購物車裡，它自己的日本 eSIM 可以一起結帳——按天計方案走 SoftBank 5G，總流量方案走 docomo 4G LTE，支援分享網路。這裡不列入排名，因為商品頁封鎖自動讀取價格，請打開商品頁查看目前的方案。" />
+          <KlookEsimSlot why="如果這趟行程的門票與交通已經放在 Klook 的購物車裡，它自己的日本 eSIM 可以一起結帳——按天計方案走 SoftBank 5G，總流量方案走 IIJ（Docomo）4G LTE，可分享熱點。這裡不列入排名，因為 US$1.05 起的起價未標明方案，請打開商品頁查看目前的方案。" />
         </section>
 
         {/* Q: Which eSIM is best for a 2-week trip? */}
@@ -790,7 +791,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
               所有方案，依每 GB 單價排序（英文）→
             </Link>
           </p>
-          <KlookEsimSlot why="Klook 自己的日本 eSIM 分級從 500 MB 到 50 GB，另有吃到飽選項，所以同樣涵蓋這些用量——這裡不標價，因為商品頁無法自動讀取。" />
+          <KlookEsimSlot why="Klook 自己的日本 eSIM 分級從 500 MB 到 50 GB，另有吃到飽選項，所以同樣涵蓋這些用量。US$1.05 是選擇天數與流量前的起價，因此這裡不列各方案價格。" />
         </section>
 
         {/* Q: Which network is best in Japan? — carrier table */}
@@ -1082,7 +1083,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                 </Link>
               </div>
               <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
-                在 Klook 上的商品名稱為「{klookEsim.listingTitle}」。這裡不標示價格或流量，因為商品頁在 {KLOOK_CHECKED} 無法自動讀取。
+                在 Klook 上的商品名稱為「{klookEsim.listingTitle}」。{KLOOK_ESIM_FACTS["zh-tw"]}
               </p>
             </div>
           </article>

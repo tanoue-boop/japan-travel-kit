@@ -122,7 +122,7 @@ const topPicks: TopPick[] = [
     id: "simbye-japan",
     esimId: "simbye" as EsimProviderId,
     rank: 1,
-    bestFor: "Lowest Price",
+    bestFor: "Lowest Confirmed Price",
     badgeCls: styles.pickBadgeGreen,
     target: "Most travellers who only need data, on any itinerary.",
     ctaLabel: "Get Simbye eSIM →",
@@ -882,7 +882,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             <Link href="/guides/esim/japan-airport-sim-cards" className={tools.inlineLink}>airport SIM cards</Link> or{" "}
             <Link href="/guides/esim/best-pocket-wifi-japan" className={tools.inlineLink}>pocket WiFi rental</Link>.
           </p>
-          <KlookEsimSlot why="If the tickets and transport for this trip are already in a Klook basket, its own Japan eSIM goes on the same checkout — per-day plans on SoftBank 5G, total-data plans on docomo 4G LTE, tethering supported. It is unranked here because the listing blocks automated price reads, so open it to see the current options." />
+          <KlookEsimSlot why="If the tickets and transport for this trip are already in a Klook basket, its own Japan eSIM goes on the same checkout — per-day plans on SoftBank 5G, total-data plans on IIJ (Docomo) 4G LTE, tethering allowed. It is unranked here because its US$1.05 from-price names no plan, so open it to see the current options." />
         </section>
 
         {/* Q: Which eSIM is best for a 2-week trip? */}
@@ -958,7 +958,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
               Every plan, sorted by price per GB →
             </Link>
           </p>
-          <KlookEsimSlot why="Klook&rsquo;s own Japan eSIM is sold in tiers from 500 MB to 50 GB plus an unlimited option, so it covers the same sizing — no price is quoted here because the listing could not be read automatically." />
+          <KlookEsimSlot why="Klook&rsquo;s own Japan eSIM is sold in tiers from 500 MB to 50 GB plus an unlimited option, so it covers the same sizing. Its US$1.05 is a from-price before you choose days and data, so no plan price is quoted here." />
         </section>
 
         {/* Q: Which network is best in Japan? — carrier table */}

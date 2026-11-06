@@ -55,7 +55,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     pricesChecked: "Prices checked {date}",
     cols: { need: "You want", pick: "Buy", plan: "Plan", price: "Price", buy: "" },
     rows: {
-      cheapest: { need: "The lowest price", why: "The cheapest plan in our price data." },
+      cheapest: { need: "Lowest confirmed plan price", why: "The cheapest plan in our price data." },
       short: { need: "A short trip", why: "About 0.5 GB a day for ten days, with 30 days to use it." },
       unlimited: { need: "Unlimited data", why: "2 GB a day at full speed, then unlimited at 1 Mbps." },
       heavy: { need: "More data", why: "A fixed 20 GB, about 1 GB a day for a 20-day trip." },
@@ -114,7 +114,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     pricesChecked: "가격 확인일 {date}",
     cols: { need: "원하는 것", pick: "추천", plan: "요금제", price: "가격", buy: "" },
     rows: {
-      cheapest: { need: "최저가", why: "가격 데이터에서 가장 저렴한 요금제입니다." },
+      cheapest: { need: "확인된 요금제 중 최저가", why: "가격 데이터에서 가장 저렴한 요금제입니다." },
       short: { need: "짧은 여행", why: "10일 동안 하루 약 0.5 GB를 쓸 수 있고, 30일 안에 쓰면 됩니다." },
       unlimited: { need: "무제한 데이터", why: "하루 2 GB까지 최고 속도, 이후 1 Mbps로 무제한입니다." },
       heavy: { need: "넉넉한 데이터", why: "20 GB 고정 용량으로, 20일 여행이면 하루 약 1 GB입니다." },
@@ -173,7 +173,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     pricesChecked: "價格確認日 {date}",
     cols: { need: "你要的是", pick: "推薦", plan: "方案", price: "價格", buy: "" },
     rows: {
-      cheapest: { need: "最低價", why: "我們價格資料中最便宜的方案。" },
+      cheapest: { need: "已確認方案中的最低價", why: "我們價格資料中最便宜的方案。" },
       short: { need: "短期旅行", why: "十天每天約 0.5 GB，30 天內用完即可。" },
       unlimited: { need: "吃到飽", why: "每天 2 GB 全速，之後以 1 Mbps 無限使用。" },
       heavy: { need: "較多流量", why: "固定 20 GB，20 天旅行約每天 1 GB。" },
@@ -232,7 +232,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     pricesChecked: "价格确认日 {date}",
     cols: { need: "你想要", pick: "推荐", plan: "套餐", price: "价格", buy: "" },
     rows: {
-      cheapest: { need: "最低价", why: "我们价格数据中最便宜的套餐。" },
+      cheapest: { need: "已确认套餐中的最低价", why: "我们价格数据中最便宜的套餐。" },
       short: { need: "短途旅行", why: "十天每天约 0.5 GB，30 天内用完即可。" },
       unlimited: { need: "不限流量", why: "每天 2 GB 全速，之后以 1 Mbps 不限量使用。" },
       heavy: { need: "更多流量", why: "固定 20 GB，20 天旅行约每天 1 GB。" },
@@ -291,7 +291,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     pricesChecked: "ตรวจสอบราคาเมื่อ {date}",
     cols: { need: "สิ่งที่ต้องการ", pick: "แนะนำ", plan: "แพ็กเกจ", price: "ราคา", buy: "" },
     rows: {
-      cheapest: { need: "ราคาถูกที่สุด", why: "แพ็กเกจที่ถูกที่สุดในข้อมูลราคาของเรา" },
+      cheapest: { need: "ราคาต่ำสุดในแพ็กเกจที่ยืนยันได้", why: "แพ็กเกจที่ถูกที่สุดในข้อมูลราคาของเรา" },
       short: { need: "ทริปสั้น", why: "ใช้ได้ราววันละ 0.5 GB เป็นเวลา 10 วัน และมีอายุ 30 วัน" },
       unlimited: { need: "เน็ตไม่จำกัด", why: "ความเร็วเต็มวันละ 2 GB จากนั้นไม่จำกัดที่ 1 Mbps" },
       heavy: { need: "ดาต้าเยอะขึ้น", why: "20 GB คงที่ ราววันละ 1 GB สำหรับทริป 20 วัน" },
