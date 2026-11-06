@@ -17,9 +17,9 @@ const nextConfig = {
         permanent: true,
       },
       {
-        // Previously pointed at japan-sim-card-vs-esim-2026, which is now merged into best-esim-japan.
+        // japan-sim-card-vs-esim-2026 is live again and answers exactly this question.
         source: "/guides/esim/esim-vs-sim-japan",
-        destination: "/guides/esim/best-esim-japan",
+        destination: "/guides/esim/japan-sim-card-vs-esim-2026",
         permanent: true,
       },
       // Merged guides plus the retired top-level landing pages — see lib/redirects.js.
