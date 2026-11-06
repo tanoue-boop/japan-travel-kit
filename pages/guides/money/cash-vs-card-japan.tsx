@@ -267,9 +267,9 @@ const faqItems = [
   },
 ];
 
-const pageTitle = "Cash vs Card in Japan 2026: Where You Still Need Yen";
+const pageTitle = "Cash vs Card in Japan 2026: Carry ¥10,000–¥20,000 a Day";
 const pageDescription =
-  "Cash vs card in Japan 2026: METI puts cashless at 58.0% of consumer spending, but temples, stalls and local buses still want yen. Place-by-place table.";
+  "Cash vs card in Japan 2026: cashless is 58.0% of spending (METI), but temples, stalls and local buses want yen. Carry ¥10,000–¥20,000 and compare cards.";
 const headline = "Cash vs Card in Japan (2026): Where Cards Work and Where You Need Yen";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/cash-vs-card-japan") } });
@@ -416,6 +416,9 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
               independent restaurants and rural buses. Those four are the only categories on this page
               where no operator publishes a card.
             </p>
+            <a href={WISE_CARD_CTA} className={styles.verdictBtn} target="_blank" rel={WISE_REL} style={{ display: "inline-block", marginTop: "1rem" }}>
+              Get a Wise card before you fly →
+            </a>
           </div>
         </div>
 

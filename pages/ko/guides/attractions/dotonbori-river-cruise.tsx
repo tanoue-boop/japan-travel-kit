@@ -38,9 +38,9 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // suito-osaka.jp; nothing was re-checked or added for this edition.
 
 const ROUTE = "/ko/guides/attractions/dotonbori-river-cruise";
-const TITLE = "도톤보리 리버크루즈(2026): 요금과 시간";
+const TITLE = "도톤보리 리버크루즈 2026: ¥2,000, 20분, 출항 시간";
 const DESC =
-  "도톤보리 리버크루즈 요금과 시간: 성인 ¥2,000, 약 20분, 다자에몬바시 선착장에서 11:00~21:00 30분 간격.";
+  "도톤보리 리버크루즈 요금과 시간: 성인 ¥2,000, 약 20분, 11:00~21:00 30분 간격, 주유패스 무료. 배를 비교하고 예약하세요.";
 
 const CHECKED = dateLabel("2026-11-01", "ko");
 // The pass price is owned by lib/attraction-prices.ts, shared with the English pages.

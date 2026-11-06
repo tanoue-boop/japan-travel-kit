@@ -5,6 +5,8 @@ import tools from "../../../styles/Tools.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import KlookLink from "../../../components/KlookLink";
 import { klookEsim } from "../../../lib/klook-links";
+import { esimLink } from "../../../lib/esim-specs";
+import { SIMBYE_DISCOUNT_CODE } from "../../../lib/simbye";
 import {
   formatUsd,
   getProvider,
@@ -38,6 +40,7 @@ const FROM = priceFromLabel("sakura");
 const THIRTY_DAY = priceAtLeastLabel("sakura", 90);
 const UNLIMITED_30 = unlimitedFromLabel("sakura", 30);
 const AIRALO_FROM = priceFromLabel("airalo");
+const SIMBYE_WEEK = plansFor("simbye").find((p) => p.days === 7 && p.unlimited) ?? null;
 
 // Yen prices as Sakura Mobile's own comparison post prints them, read on
 // OFFICIAL_CHECKED. The USD column is not hard-coded here — it is looked up from
@@ -269,9 +272,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/sakura-mobile-review") } });
 
-const TITLE = "Sakura Mobile Review 2026: eSIM and SIM Card Plans";
+const TITLE = "Sakura Mobile Review 2026: 3 Days ¥2,750 vs Cheaper eSIMs";
 const DESCRIPTION =
-  "Sakura Mobile review 2026: eSIM and SIM card plans and prices in yen, au against docomo, phone number, tethering, and where to pick a SIM card up.";
+  "Sakura Mobile review 2026: 3 GB/day is ¥2,750 for 3 days, unlimited ¥14,575 for 30. See au vs docomo, a Japanese number and cheaper eSIMs, then compare.";
 
 export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -415,6 +418,21 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             <a href={SAKURA_AFFILIATE} className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
               Get Sakura Mobile →
             </a>
+            {/* Brand search first, then the cheaper comparison, highest commission first. */}
+            {SIMBYE_WEEK?.discountedUsd ? (
+              <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
+                Only need a week of data? Unlimited for 7 days is {usdFor(7, true)} here against{" "}
+                {formatUsd(SIMBYE_WEEK.priceUsd)} at{" "}
+                <a href={esimLink("simbye")} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                  Simbye
+                </a>{" "}
+                ({formatUsd(SIMBYE_WEEK.discountedUsd)} with code {SIMBYE_DISCOUNT_CODE}), or compare the{" "}
+                <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                  Klook Japan eSIM
+                </KlookLink>
+                .
+              </p>
+            ) : null}
           </div>
         </div>
 

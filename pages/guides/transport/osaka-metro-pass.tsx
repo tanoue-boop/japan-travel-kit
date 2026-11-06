@@ -15,9 +15,9 @@ const CHECKED = "4 November 2026";
 /** Osaka Tourism Bureau wording and the 26h/48h end of sale: not re-read in the November pass. */
 const EARLIER_CHECK = "20 October 2026";
 
-const TITLE = "Osaka Metro Pass 2026: Osaka Subway Pass Price & Worth It?";
+const TITLE = "Osaka Metro Pass 2026: Osaka Subway Pass ¥820, Worth It?";
 const DESCRIPTION =
-  "Osaka Metro Pass and Osaka Subway Pass price: ¥820 on weekdays, ¥620 at weekends and ¥310 for children, for the subway plus city buses. Is it worth it?";
+  "Osaka Metro Pass and Osaka Subway Pass price: ¥820 weekdays, ¥620 weekends, ¥310 children, subway plus city buses. See if it's worth it, then book it.";
 
 const OFFICIAL_ECO_URL = "https://subway.osakametro.co.jp/en/guide/page/enjoy-eco.php";
 const OFFICIAL_MAP_URL = "https://subway.osakametro.co.jp/en/guide/routemap.php";
@@ -332,7 +332,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             </p>
             <KlookLink
               href={METRO_URL}
-              className={styles.pickCta}
+              className={styles.verdictBtn}
               target="_blank"
               rel="sponsored noopener"
               style={{ marginTop: "1rem", display: "inline-block" }}

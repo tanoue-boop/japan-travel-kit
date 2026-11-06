@@ -291,24 +291,25 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/best-esim-japan-reddit") } });
 
+const TITLE = `Best eSIM for Japan Reddit 2026: Picks Checked, From ${priceFrom("simbye")}`;
 const META_DESCRIPTION =
-  "Best eSIM for Japan Reddit advice, fact-checked for 2026 against live prices: Airalo is still the " +
-  "default, eSIM Go the cheapest, plus plans by trip length.";
+  `Best eSIM for Japan Reddit advice, fact-checked for 2026: Airalo from ${priceFrom("airalo")}, ` +
+  `eSIM Go from ${priceFrom("esimgo")}, Simbye from ${priceFrom("simbye")}. Compare plans by trip length, then buy.`;
 
 export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan Reddit 2026: Which Advice Still Holds</title>
+        <title>{TITLE}</title>
         <meta name="description" content={META_DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/best-esim-japan-reddit" />
-        <meta property="og:title" content="Best eSIM for Japan Reddit 2026: Which Advice Still Holds" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/best-esim-japan-reddit" />
         <meta property="og:description" content={META_DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best eSIM for Japan Reddit 2026: Which Advice Still Holds" />
+        <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={META_DESCRIPTION} />
         <script
           type="application/ld+json"
@@ -329,7 +330,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/best-esim-japan-reddit",
-              headline: "Best eSIM for Japan Reddit 2026: Which Advice Still Holds",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -436,20 +437,19 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
                 <p className={styles.verdictStatValue}>Holafly unlimited — {priceFrom("holafly")}</p>
               </div>
             </div>
-            <a
-              href={link("airalo")}
-              className={styles.verdictBtn}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              Get Airalo Japan eSIM →
+            <a href={link("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+              Get Simbye Japan eSIM from {priceFrom("simbye")} →
             </a>
             <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
               Already booking tickets or transport on Klook?{" "}
               <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 {klookEsim.ctaLabel}
               </KlookLink>{" "}
-              — one checkout for the eSIM and the rest of the trip.
+              — one checkout for the eSIM and the rest of the trip. Want Reddit&apos;s default instead?{" "}
+              <a href={link("airalo")} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                Get Airalo Japan eSIM
+              </a>
+              .
             </p>
           </div>
         </div>

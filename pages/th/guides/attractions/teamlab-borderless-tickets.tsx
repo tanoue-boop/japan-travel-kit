@@ -28,9 +28,9 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // page; nothing was re-checked or added for this edition.
 
 const ROUTE = "/th/guides/attractions/teamlab-borderless-tickets";
-const TITLE = "ตั๋ว teamLab Borderless 2026: ราคา";
+const TITLE = "ตั๋ว teamLab Borderless เริ่ม ¥3,400";
 const DESC =
-  "ตั๋ว teamLab Borderless 2026: ผู้ใหญ่เริ่มต้น ¥3,400 รอบระบุเวลา ซื้อหน้างานแพงกว่า ¥200";
+  "ตั๋ว teamLab Borderless: ผู้ใหญ่เริ่มต้น ¥3,400 ตามวันและรอบ ราว 2 ชั่วโมง เทียบแล้วจองเลย";
 
 const BORDERLESS_URL = thTeamlabBorderless.url;
 const GYG_SLUG = "th-teamlab-borderless-tickets";
@@ -367,7 +367,7 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
-                ดูตั๋ว teamLab Borderless →
+                จองตั๋ว teamLab Borderless →
               </KlookLink>
               <GygCompareButton slug={GYG_SLUG} listing={gygTeamlabBorderless} />
             </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
 import EsimRelatedCard from "../../../components/EsimRelatedCard";
+import KlookLink from "../../../components/KlookLink";
 import {
   cheapestAtLeastGb,
   formatUsd,
@@ -15,6 +16,8 @@ import {
   type EsimProviderId,
 } from "../../../lib/esim-prices";
 import { esimLink, esimSpecs, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
+import { klookEsim } from "../../../lib/klook-links";
+import { SIMBYE_DISCOUNT_CODE } from "../../../lib/simbye";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -35,15 +38,17 @@ const priceLabel = (p: EsimPlan | null) => (p ? formatUsd(p.priceUsd) : "—");
 
 const WORK_WEEK = cheapestAtLeastGb("esimgo", 10);
 const WORK_MONTH = cheapestAtLeastGb("esimgo", 20);
+/** The same 20 GB from Simbye, whose Japan page also allows hotspot use (lib/esim-specs.ts). */
+const SIMBYE_MONTH = cheapestAtLeastGb("simbye", 20);
 
 /** The cheapest plan a provider sells that covers a working week: 7 days, 10 GB or more. */
 const workWeekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 10)) ?? null;
 
-const TITLE = "Best eSIM for Japan Business Travel 2026: Tether a Laptop";
+const TITLE = `Best eSIM for Japan Business Travel 2026: 20 GB From ${priceLabel(SIMBYE_MONTH)}`;
 const DESCRIPTION =
-  `For business travel the tethering terms decide it: eSIM Go states tethering on every Japan ` +
-  `plan, ${WORK_MONTH?.name} ${priceLabel(WORK_MONTH)}; Holafly caps hotspot at 1 GB/day.`;
+  `Best eSIM for Japan business travel: compare tethering terms. Simbye 20 GB is ${priceLabel(SIMBYE_MONTH)}, ` +
+  `eSIM Go ${priceLabel(WORK_MONTH)}; Holafly caps hotspot at 1 GB/day. Compare, then buy.`;
 
 const dataEstimates = [
   { activity: "Email, calendar, messaging", perDay: "~200 MB" },
@@ -238,6 +243,22 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
                 <p className={styles.verdictStatValue}>3–4 GB with a laptop</p>
               </div>
             </div>
+            {SIMBYE_MONTH?.discountedUsd ? (
+              <p className={styles.bodyText} style={{ marginTop: "1rem", marginBottom: "0.75rem" }}>
+                Paying for it yourself? Simbye&apos;s Japan page also allows hotspot use for a laptop, and its{" "}
+                {SIMBYE_MONTH.name} plan is {priceLabel(SIMBYE_MONTH)}, or {formatUsd(SIMBYE_MONTH.discountedUsd)} with
+                code {SIMBYE_DISCOUNT_CODE}.
+              </p>
+            ) : null}
+            <a href={esimLink("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+              Get Simbye {dataLabel(SIMBYE_MONTH)} for {priceLabel(SIMBYE_MONTH)} →
+            </a>
+            <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
+              Booking the rest of the trip on Klook?{" "}
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                {klookEsim.ctaLabel}
+              </KlookLink>
+            </p>
           </div>
         </div>
 

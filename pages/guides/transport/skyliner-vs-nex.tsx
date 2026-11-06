@@ -216,9 +216,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
-const TITLE = "Skyliner vs N'EX (2026): Which Narita Train Is Better?";
+const TITLE = "Skyliner vs N'EX 2026: ¥2,580 vs ¥3,140, Which Is Better?";
 const DESC =
-  "Skyliner vs N'EX from Narita: Skyliner ¥2,580 and 36 min to Nippori; N'EX ¥3,140 and 53 min to Tokyo Station, ¥5,200 round trip. Pick by your station.";
+  "Skyliner vs N'EX from Narita: Skyliner ¥2,580, 36 min to Nippori; N'EX ¥3,140, 53 min to Tokyo Station. Pick by your hotel's station and book your seat.";
 
 export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated }) {
   return (

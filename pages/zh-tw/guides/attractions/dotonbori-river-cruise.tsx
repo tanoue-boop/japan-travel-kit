@@ -38,9 +38,9 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // list and suito-osaka.jp, read 1 November 2026); nothing was added for this edition.
 
 const ROUTE = "/zh-tw/guides/attractions/dotonbori-river-cruise";
-const TITLE = "道頓堀遊船（2026）：票價、時間與搭船處";
+const TITLE = "道頓堀遊船 2026：¥2,000、20 分鐘、班次與搭船處";
 const DESC =
-  "道頓堀遊船票價與時間：とんぼり遊船成人 ¥2,000、約 20 分鐘，太左衛門橋碼頭 11:00–21:00 每半小時一班。";
+  "道頓堀遊船票價與時間：とんぼり遊船成人 ¥2,000、約 20 分鐘，11:00–21:00 每半小時一班，大阪周遊卡免費。比較各船後預訂。";
 
 const L = "zh-tw" as const;
 const CHECKED = dateLabel("2026-11-01", L);

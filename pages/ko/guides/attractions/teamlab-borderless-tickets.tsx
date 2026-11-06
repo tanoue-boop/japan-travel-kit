@@ -28,9 +28,9 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // page; nothing was re-checked or added for this edition.
 
 const ROUTE = "/ko/guides/attractions/teamlab-borderless-tickets";
-const TITLE = "팀랩 보더리스 티켓(2026): 가격과 예약";
+const TITLE = "팀랩 보더리스 티켓 2026: 성인 ¥3,400부터";
 const DESC =
-  "팀랩 보더리스 티켓 2026: 아자부다이힐스 공식 가격 성인 ¥3,400부터, 지정 시간 입장, 현장 구매는 ¥200 더.";
+  "팀랩 보더리스 티켓 2026: 성인 ¥3,400부터 날짜·시간대별 변동, 약 2시간 관람, 현장 구매는 ¥200 더. 비교 후 예약하세요.";
 
 const BORDERLESS_URL = koTeamlabBorderless.url;
 const GYG_SLUG = "ko-teamlab-borderless-tickets";
@@ -367,7 +367,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
-                팀랩 보더리스 티켓 보기 →
+                팀랩 보더리스 티켓 예약하기 →
               </KlookLink>
               <GygCompareButton slug={GYG_SLUG} listing={gygTeamlabBorderless} />
             </div>

@@ -38,9 +38,9 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // suito-osaka.jp; nothing was re-checked or added for this edition.
 
 const ROUTE = "/th/guides/attractions/dotonbori-river-cruise";
-const TITLE = "ล่องเรือโดทงโบริ 2026: ราคาและเวลา";
+const TITLE = "ล่องเรือโดทงโบริ 2026: ¥2,000 20 นาที";
 const DESC =
-  "ล่องเรือโดทงโบริ 2026: ผู้ใหญ่ ¥2,000 ราว 20 นาที ท่าทาซาเอมงบาชิ 11:00–21:00 ทุกครึ่งชั่วโมง";
+  "ล่องเรือโดทงโบริ: ผู้ใหญ่ ¥2,000 ราว 20 นาที ทุกครึ่งชั่วโมง 11:00–21:00 เทียบเรือแล้วจองเลย";
 
 const CHECKED = dateLabel("2026-11-01", "th");
 // The pass price is owned by lib/attraction-prices.ts, shared with the English pages.

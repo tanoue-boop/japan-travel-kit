@@ -119,21 +119,21 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
   return (
     <>
       <Head>
-        <title>Tokyo Food &amp; Izakaya Tours (2026): Shinjuku Bar Hopping</title>
+        <title>Tokyo Food Tour 2026: 3-Hour Shinjuku Izakaya Bar Hopping</title>
         <meta
           name="description"
-          content="Tokyo food and izakaya tours in 2026: Shinjuku bar hopping through Omoide Yokocho and Golden Gai, costs, the 20+ alcohol rule, and a Tsukiji option."
+          content="Tokyo food tour guide 2026: 3 hours in a small group through Omoide Yokocho and Golden Gai, the 20+ alcohol rule and a Tsukiji option. Compare and book."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-food-tour" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Food & Izakaya Tours (2026): Shinjuku Bar Hopping" />
+        <meta property="og:title" content="Tokyo Food Tour 2026: 3-Hour Shinjuku Izakaya Bar Hopping" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-food-tour" />
-        <meta property="og:description" content="Tokyo food and izakaya tours in 2026: Shinjuku bar hopping through Omoide Yokocho and Golden Gai, costs, the 20+ alcohol rule, and a Tsukiji option." />
+        <meta property="og:description" content="Tokyo food tour guide 2026: 3 hours in a small group through Omoide Yokocho and Golden Gai, the 20+ alcohol rule and a Tsukiji option. Compare and book." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Food & Izakaya Tours (2026): Shinjuku Bar Hopping" />
-        <meta name="twitter:description" content="Tokyo food and izakaya tours in 2026: Shinjuku bar hopping through Omoide Yokocho and Golden Gai, costs, the 20+ alcohol rule, and a Tsukiji option." />
+        <meta name="twitter:title" content="Tokyo Food Tour 2026: 3-Hour Shinjuku Izakaya Bar Hopping" />
+        <meta name="twitter:description" content="Tokyo food tour guide 2026: 3 hours in a small group through Omoide Yokocho and Golden Gai, the 20+ alcohol rule and a Tsukiji option. Compare and book." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -153,7 +153,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-food-tour",
-              headline: "Tokyo Food & Izakaya Tours (2026): Shinjuku Bar Hopping",
+              headline: "Tokyo Food Tour 2026: 3-Hour Shinjuku Izakaya Bar Hopping",
               updated,
             }),
           }}

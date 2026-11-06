@@ -89,21 +89,21 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
   return (
     <>
       <Head>
-        <title>Kyoto Subway &amp; Bus 1-Day Pass 2026: Is It Worth It?</title>
+        <title>Kyoto Subway &amp; Bus Pass 2026: ¥1,100, Worth It From 5 Rides</title>
         <meta
           name="description"
-          content="Is the Kyoto Subway & Bus 1-Day Pass worth it? The ¥1,100 price, the break-even point, the withdrawn ¥700 bus pass, and when an IC card is cheaper."
+          content="Is the Kyoto Subway & Bus 1-Day Pass worth it? ¥1,100 for adults, about 5 rides to break even, and when an IC card is cheaper. Check it, then book it."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/kyoto-subway-bus-pass" />
-        <meta property="og:title" content="Is the Kyoto Subway & Bus 1-Day Pass Worth It? (2026 Guide)" />
+        <meta property="og:title" content="Kyoto Subway & Bus Pass 2026: ¥1,100, Worth It From 5 Rides" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/kyoto-subway-bus-pass" />
-        <meta property="og:description" content="Is the Kyoto Subway & Bus 1-Day Pass worth it? The ¥1,100 price, the break-even point, the withdrawn ¥700 bus pass, and when an IC card is cheaper." />
+        <meta property="og:description" content="Is the Kyoto Subway & Bus 1-Day Pass worth it? ¥1,100 for adults, about 5 rides to break even, and when an IC card is cheaper. Check it, then book it." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Is the Kyoto Subway & Bus 1-Day Pass Worth It? (2026)" />
-        <meta name="twitter:description" content="Is the Kyoto Subway & Bus 1-Day Pass worth it? The ¥1,100 price, the break-even point, the withdrawn ¥700 bus pass, and when an IC card is cheaper." />
+        <meta name="twitter:title" content="Kyoto Subway & Bus Pass 2026: ¥1,100, Worth It From 5 Rides" />
+        <meta name="twitter:description" content="Is the Kyoto Subway & Bus 1-Day Pass worth it? ¥1,100 for adults, about 5 rides to break even, and when an IC card is cheaper. Check it, then book it." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -211,6 +211,12 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
               <strong>Bottom line:</strong> The <strong>Subway &amp; Bus 1-Day Pass (¥1,100)</strong> pays off on a busy
               temple day of roughly five or more rides. For lighter days — or any day relying on JR trains to Arashiyama —
               a pay-as-you-go <strong>Suica or ICOCA</strong> is cheaper and more flexible.
+            </p>
+            <KlookLink href={PASS_URL} className={styles.verdictBtn} target="_blank" rel="sponsored noopener" style={{ marginTop: "1rem", display: "inline-block" }}>
+              Check the Kyoto Subway &amp; Bus Pass on Klook →
+            </KlookLink>
+            <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
+              Affiliate link: we may earn a commission if you book, at no extra cost to you.
             </p>
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", marginTop: "0.75rem" }}>
               This guide weighs up the pass on its own. For the full picture on buses, subway, and JR, see our{" "}

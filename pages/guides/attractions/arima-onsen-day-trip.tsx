@@ -222,9 +222,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Arima Onsen Day Trip (2026): From Osaka or Kobe, and Costs";
+const TITLE = "Arima Onsen Day Trip 2026: 65 Min, ¥1,400 From Osaka, Kobe";
 const DESCRIPTION =
-  "An Arima Onsen day trip is 65 minutes and ¥1,400 by coach from Osaka, or 30 minutes from Sannomiya. Kin no Yu is ¥800 and Gin no Yu ¥700.";
+  "An Arima Onsen day trip is 65 minutes and ¥1,400 by coach from Osaka, or 30 minutes from Sannomiya. Kin no Yu is ¥800, Gin no Yu ¥700. Compare and book.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/arima-onsen-day-trip") },
@@ -383,7 +383,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
-                Guided Day From Osaka →
+                Book a guided day from Osaka →
               </KlookLink>
               <KlookLink href={BATH_BUS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
                 Both Baths + Coach →

@@ -242,9 +242,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "teamLab Kyoto Tickets: Prices, Hours & Booking";
+const TITLE = "teamLab Kyoto Tickets 2026: From ¥3,800, Hours & Booking";
 const DESCRIPTION =
-  "teamLab Kyoto tickets are ¥3,800 adult and ¥1,800 for ages 4–12, variable by slot. Hours 9:00–21:00, last entry 19:30, 7 minutes from Kyoto Station.";
+  "teamLab Kyoto tickets start at ¥3,800 adult and ¥1,800 for ages 4–12, by slot. Open 9:00–21:00, last entry 19:30, 7 min from Kyoto Station. Book a slot.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/teamlab-kyoto-tickets") },
@@ -418,7 +418,7 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
-                Check teamLab Kyoto tickets →
+                Book teamLab Kyoto tickets →
               </KlookLink>
               <GygCompareButton slug={SLUG} listing={gygTeamlabBiovortexKyoto} />
             </div>

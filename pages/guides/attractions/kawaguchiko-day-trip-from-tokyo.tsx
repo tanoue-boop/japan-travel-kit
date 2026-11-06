@@ -247,9 +247,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kawaguchiko-day-trip-from-tokyo") },
 });
 
-const TITLE = "Kawaguchiko Day Trip From Tokyo (2026): Routes and Fares";
+const TITLE = "Kawaguchiko Day Trip From Tokyo 2026: ¥2,200 Bus or Tour";
 const DESC =
-  "A Kawaguchiko day trip from Tokyo: the ¥2,200 highway bus from Shinjuku in 1 hr 45 min, official ropeway and lake boat fares, and the stops that fit.";
+  "A Kawaguchiko day trip from Tokyo: the ¥2,200 highway bus from Shinjuku in 1 hr 45 min, or a guided tour. See fares and stops, then compare and book one.";
 
 export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -398,15 +398,14 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
               bus route. The local sightseeing bus is from ¥180 a ride, or ¥1,500 for a day of unlimited
               rides. Fares read off the Fujikyu bus site on {CHECKED}.
             </p>
-            <KlookLink
-              href={tokyoMtFujiHighwayBus.url}
-              target="_blank"
-              rel="sponsored noopener"
-              className={styles.verdictBtn}
-              style={{ marginTop: "1rem" }}
-            >
-              Check Tokyo–Kawaguchiko bus seats on Klook →
-            </KlookLink>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Compare Kawaguchiko day tours on Klook →
+              </KlookLink>
+              <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                Or just the bus seat →
+              </KlookLink>
+            </div>
           </div>
         </div>
 

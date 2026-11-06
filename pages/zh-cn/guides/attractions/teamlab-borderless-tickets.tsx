@@ -27,9 +27,9 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // lib/attraction-prices.ts, and nothing was added for this edition.
 
 const ROUTE = "/zh-cn/guides/attractions/teamlab-borderless-tickets";
-const TITLE = "teamLab 无界 门票（2026）：票价、时段预约与购票渠道";
+const TITLE = "teamLab 无界 门票 2026：成人 ¥3,400 起、时段购票";
 const DESC =
-  "teamLab 无界（麻布台之丘）门票 2026：官方票价成人 ¥3,400 起、浮动定价怎么算、指定入场时段与休馆日，官网和 Klook 该选哪个。";
+  "teamLab 无界（麻布台之丘）门票 2026：成人 ¥3,400 起，按日期与时段浮动，停留约 2 小时，现场买贵 ¥200。比较官网与 Klook 订票。";
 
 const BORDERLESS_URL = cnTeamlabBorderless.url;
 const GYG_SLUG = "zh-cn-teamlab-borderless-tickets";
@@ -367,7 +367,7 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
-                查看 teamLab 无界门票 →
+                预订 teamLab 无界门票 →
               </KlookLink>
               <GygCompareButton slug={GYG_SLUG} listing={gygTeamlabBorderless} />
             </div>

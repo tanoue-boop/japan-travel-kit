@@ -287,9 +287,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/dotonbori-river-cruise") },
 });
 
-const TITLE = "Dotonbori River Cruise 2026: Tombori Price, Times & Pier";
+const TITLE = "Dotonbori River Cruise 2026: ¥2,000, 20 Min, Tombori Times";
 const DESC =
-  "Dotonbori River Cruise price and times: the Tombori boat is ¥2,000 adult, runs 20 minutes and leaves Tazaemonbashi Pier every half hour, 11:00–21:00.";
+  "Dotonbori River Cruise price and times: the Tombori boat is ¥2,000, runs 20 minutes and leaves every half hour, 11:00–21:00. Compare the boats and book.";
 
 export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpdated }) {
   return (

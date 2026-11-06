@@ -191,9 +191,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/wise-card-japan") } });
 
-const TITLE = "Wise Card in Japan (2026): ATM Fees and Limits";
+const TITLE = "Wise Card in Japan 2026: Free ATM to 250/mo, Then 2.69%";
 const DESCRIPTION =
-  "Yes, the Wise card works at Japanese ATMs. Withdrawals are free to 250 USD/GBP/EUR or 400 AUD a month, then 2.69%; Japan Post Bank adds ¥220 per use.";
+  "Yes, the Wise card works in Japan. ATMs are free to 250 USD/GBP/EUR or 400 AUD a month, then 2.69%; Japan Post Bank adds ¥220. Order one before you fly.";
 
 export default function WiseCardJapanPage({ updated }: { updated: PageUpdated }) {
   return (

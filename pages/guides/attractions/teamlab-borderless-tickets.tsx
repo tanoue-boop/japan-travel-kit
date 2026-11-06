@@ -39,9 +39,9 @@ const ADDRESS_CHECKED = checkedLabel("2026-10-26");
 // The headline search term is "teamLab Borderless tickets", so it stays verbatim and in
 // that order in the title, the H1 and the description, each of which also carries the two
 // words the query is actually asking about — the price, and how to book.
-const TITLE = "teamLab Borderless Tickets (2026): Price and Time Slots";
+const TITLE = "teamLab Borderless Tickets 2026: From ¥3,400, Time Slots";
 const DESC =
-  "teamLab Borderless tickets in 2026 start at ¥3,400 for an adult and are priced by date and slot, with timed entry in Azabudai Hills and 2 hours inside.";
+  "teamLab Borderless tickets 2026: adults from ¥3,400, priced by date and slot, 2 hours inside at Azabudai Hills. See how slots work, then compare and book.";
 
 // `varies` is the column that stops the ¥3,400 being read as a price: only the adult and
 // disability tiers move with the date, and teamLab publishes no range for how far.
@@ -441,7 +441,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
-                Check teamLab Borderless Tickets →
+                Book teamLab Borderless tickets →
               </KlookLink>
               <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
             </div>

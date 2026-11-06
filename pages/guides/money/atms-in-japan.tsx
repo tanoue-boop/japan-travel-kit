@@ -146,9 +146,9 @@ const tips = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/atms-in-japan") } });
 
-const TITLE = "ATMs in Japan 2026: Which Accept Foreign Cards & Fees";
+const TITLE = "ATMs in Japan 2026: 5 Accept Foreign Cards, Fees Compared";
 const DESCRIPTION =
-  "Which ATMs in Japan accept foreign cards, and the fees: Seven Bank, Japan Post Bank, E-net, Lawson Bank and AEON — 5 networks on fees, hours and limits.";
+  "Which ATMs in Japan accept foreign cards: Seven Bank, Japan Post Bank (¥220), E-net, Lawson Bank and AEON on fees, hours and limits. Compare and pick one.";
 
 export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -294,6 +294,12 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
               brands, allows ¥100,000 per withdrawal against ¥50,000 at Japan Post Bank and Lawson Bank,
               and runs around the clock on Visa and Mastercard. The fee is shown on screen before you
               confirm — on three of the five networks that is the only place an amount appears at all.
+            </p>
+            <a href={WISE_CARD_CTA} className={styles.verdictBtn} target="_blank" rel={WISE_REL} style={{ display: "inline-block", marginTop: "1rem" }}>
+              Get a Wise card before you fly →
+            </a>
+            <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
+              Affiliate link: we may earn a commission if you sign up, at no extra cost to you.
             </p>
           </div>
         </div>
