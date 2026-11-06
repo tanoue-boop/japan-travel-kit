@@ -580,7 +580,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         <Disclosure />
 
-        <EsimUseCaseTable copy={esimPicksCopy["th"]} checkedLabel={pricesCheckedAt} formatPlan={planName} />
+        <EsimUseCaseTable copy={esimPicksCopy["th"]} checkedLabel={pricesCheckedAt} formatPlan={planName} klookLocale="th" />
 
         {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
         <section className={styles.bodySection}>

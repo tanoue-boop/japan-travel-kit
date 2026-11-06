@@ -581,7 +581,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         <Disclosure />
 
-        <EsimUseCaseTable copy={esimPicksCopy["ko"]} checkedLabel={pricesCheckedAt} formatPlan={planName} />
+        <EsimUseCaseTable copy={esimPicksCopy["ko"]} checkedLabel={pricesCheckedAt} formatPlan={planName} klookLocale="ko" />
 
         {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
         <section className={styles.bodySection}>

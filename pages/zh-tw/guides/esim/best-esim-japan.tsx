@@ -574,7 +574,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         <Disclosure />
 
-        <EsimUseCaseTable copy={esimPicksCopy["zh-tw"]} checkedLabel={pricesCheckedAt} formatPlan={planName} />
+        <EsimUseCaseTable copy={esimPicksCopy["zh-tw"]} checkedLabel={pricesCheckedAt} formatPlan={planName} klookLocale="zh-tw" />
 
         {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
         <section className={styles.bodySection}>

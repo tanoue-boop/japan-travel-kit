@@ -574,7 +574,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         <Disclosure />
 
-        <EsimUseCaseTable copy={esimPicksCopy["zh-cn"]} checkedLabel={pricesCheckedAt} formatPlan={planName} />
+        <EsimUseCaseTable copy={esimPicksCopy["zh-cn"]} checkedLabel={pricesCheckedAt} formatPlan={planName} klookLocale="zh-cn" />
 
         {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
         <section className={styles.bodySection}>

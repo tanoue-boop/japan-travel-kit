@@ -2,6 +2,8 @@ import { formatUsd, getProvider, type EsimPlan } from "../lib/esim-prices";
 import type { EsimPicksCopy } from "../lib/esim-picks-copy";
 import { pickRows, type PickSeller } from "../lib/esim-picks";
 import { klookEsim } from "../lib/klook-links";
+import { klookFor } from "../lib/klook-locale";
+import type { TranslatedLocale } from "../lib/i18n";
 import { SIMBYE_DISCOUNT_CODE, SIMBYE_DISCOUNT_PERCENT, SIMBYE_JAPAN_DISCOUNT_URL } from "../lib/simbye";
 import KlookLink from "./KlookLink";
 import styles from "../styles/EsimUseCase.module.css";
@@ -13,10 +15,25 @@ const SELLER_NAME: Record<PickSeller, string> = {
   sakura: "Sakura Mobile",
 };
 
-function Buy({ seller, plan, label }: { seller: PickSeller; plan: EsimPlan | null; label: string }) {
+function Buy({
+  seller,
+  plan,
+  label,
+  klookLocale,
+}: {
+  seller: PickSeller;
+  plan: EsimPlan | null;
+  label: string;
+  klookLocale?: TranslatedLocale;
+}) {
   if (seller === "klook") {
     return (
-      <KlookLink href={klookEsim.url} className={styles.buy} target="_blank" rel="sponsored noopener">
+      <KlookLink
+        href={klookLocale ? klookFor(klookEsim.url, klookLocale) : klookEsim.url}
+        className={styles.buy}
+        target="_blank"
+        rel="sponsored noopener"
+      >
         {label}
       </KlookLink>
     );
@@ -39,12 +56,15 @@ export default function EsimUseCaseTable({
   copy,
   checkedLabel,
   formatPlan = (name) => name,
+  klookLocale,
 }: {
   copy: EsimPicksCopy;
   /** The last price check, already formatted for the page's language. */
   checkedLabel: string;
   /** A translated page passes its own formatter, so "30 days" comes out localised. */
   formatPlan?: (name: string) => string;
+  /** On a translated page, so the Klook button opens Klook in the reader's language. */
+  klookLocale?: TranslatedLocale;
 }) {
   return (
     <section className={styles.section} data-placement="esim-use-case-table">
@@ -97,7 +117,7 @@ export default function EsimUseCaseTable({
                 )}
               </td>
               <td className={styles.buyCell}>
-                <Buy seller={seller} plan={plan} label={copy.cta[seller]} />
+                <Buy seller={seller} plan={plan} label={copy.cta[seller]} klookLocale={klookLocale} />
               </td>
             </tr>
           ))}
