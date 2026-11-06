@@ -2,6 +2,13 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-06：Klook 広告IDの追加と使い回しの解消（jtk-20261106-A25）
+
+- 広告ID：60個発行（1550160–1550219、ラベル spare-20261106b-01〜60）。
+- 変更：A22 でページのIDを使っていた6つの表に専用IDを割り当て（1550160–1550165）。how-to-set-up-esim-japan、japan-esim-2-weeks、japan-esim-android の esim-days-table、airalo-japan-review、esim-go-japan-review、holafly-japan-review の brand-compare-table。
+- 変更：翻訳版20ページを borrowed から pages へ移し、言語別のIDを割り当て（1550166–1550185）。borrowed は空。
+- 比較の注意：この20ページの本日より前のクリックは英語版の行に合算されている。spare は34個（1550186–1550219）。
+
 ## 2026-11-06：冬ページの今季化と翻訳版、Klook eSIM の表記（jtk-20261106-A21b）
 
 - 目的：12〜2月の予約需要を Klook ツアー（6.5%）とパス（5%）で取る。比較は Search Console の対象9ページと、Klook の Top performing ads（広告ID別）。比較の目安は 11/20〜12/4。
