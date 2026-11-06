@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
@@ -21,6 +22,7 @@ import {
 import { esimLink, esimSpec, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { esimProductJsonLd } from "../../../lib/esim-picks";
 
 // Two sources, two dates. Every USD figure comes from data/esim-prices.json, refreshed
 // daily from each provider's own site (`pricesCheckedAt`). The tethering and
@@ -160,6 +162,12 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
+            __html: esimProductJsonLd("esimgo", "/guides/esim/esim-go-japan-review", "eSIM Go Japan eSIM", "Data-only Japan eSIM sold through Breeze, on Japanese carriers selected automatically."),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/esim-go-japan-review",
               headline: "eSIM Go Japan Review (2026): Prices, Networks and Tethering",
@@ -248,6 +256,8 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/esim-go-japan-review" />
 
         {/* Quick Verdict — the whole answer, first */}
         <div className={styles.verdictBox}>

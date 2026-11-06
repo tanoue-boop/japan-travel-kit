@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import GuideHub from "../../../components/GuideHub";
 import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import { esimArticles, esimCategory } from "../../../lib/guides-esim";
@@ -59,6 +60,8 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
         heroDesc="Which SIM to buy, how to install a Japan eSIM, network coverage breakdowns, and honest comparisons — so you can stay connected from the moment you land."
         dates={dates}
         picks={
+          <>
+          <EsimPageAnswer route="/guides/esim" />
           <PartnerPick
             label="Booking other things on Klook?"
             heading="One checkout for your eSIM and tickets"
@@ -76,6 +79,7 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--text)", fontWeight: 600 }}>SIM card at the airport</Link> if your
             phone cannot take an eSIM.
           </PartnerPick>
+          </>
         }
       />
     </>

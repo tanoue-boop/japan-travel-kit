@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -196,6 +197,8 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/airalo-vs-holafly-japan" />
 
         {/* Quick Verdict Box */}
         <div className={styles.verdictBox}>

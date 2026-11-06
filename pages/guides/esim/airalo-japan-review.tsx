@@ -1,10 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { esimProductJsonLd } from "../../../lib/esim-picks";
 
 // All Airalo prices below are read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -180,6 +182,12 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
+            __html: esimProductJsonLd("airalo", "/guides/esim/airalo-japan-review", "Airalo Japan eSIM", "Data-only Japan eSIM with fixed and unlimited plans, installed from Airalo's app."),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/airalo-japan-review",
               headline: "Airalo Japan Review 2026: Plans, Coverage & Verdict",
@@ -240,6 +248,8 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/airalo-japan-review" />
 
         {/* Quick Verdict */}
         <div className={styles.verdictBox}>

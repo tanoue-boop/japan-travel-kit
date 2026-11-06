@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import StarRating from "../../../components/StarRating";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import cardStyles from "../../../styles/SIMCardCard.module.css";
@@ -158,6 +159,8 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/pocket-wifi-vs-esim-japan" />
 
         {/* Quick Answer */}
         <section className={styles.choiceSection}>

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -416,6 +417,8 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/japan-sim-card-for-students" />
 
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>

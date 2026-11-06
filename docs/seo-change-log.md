@@ -2,6 +2,21 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-06：eSIM 記事の整理と柱ページの作り直し（jtk-20261106-A23）
+
+- 目的：eSIM 記事から検索流入と送客を取る。週の eSIM 送客クリック目標は 11/9週 50 → 12月 週250（11/2週の実績は4）。
+- 変更日：2026-11-06。11/20〜11/27 に、best-esim-japan（基準 240表示／23.3位）と各ページの順位、GA4 の affiliate_click を比べる。
+- 検索語の対応表：docs/esim-keyword-map.md。クエリ×ページのデータは未取得（自動化用Chromeを使えず）。
+- リダイレクト：/sim-cards → japan-airport-sim-cards、esim-vs-sim-japan → japan-sim-card-vs-esim-2026 に変更。現存ページの統合は無し（理由は対応表）。
+- 柱ページ（英語＋ko／zh-tw／zh-cn／th）：冒頭に用途別の結論の表（各行にボタン、割引コード ROEBHIOM と割引後価格、Prices checked）。端末の確認方法、購入から開通までの手順、よくある失敗を追加。FAQ の誤り（Sakura の回線、全社24時間チャット、チャージの説明）を修正。title は A20 の変更から日が浅いので変えていない。
+- 固定ボタン：components/EsimStickyCta.tsx。_app.tsx で eSIM の全ルートに表示（スマホのみ）。
+- 冒頭の結論とボタン：21ページ＋ハブ（components/EsimPageAnswer.tsx、文言は lib/esim-page-answers.ts）。Simbye → Klook eSIM → Airalo の順。Holafly のボタンは無し。
+- Reddit ページ：用途別の表と、Reddit 検索へのリンクを追加。個別スレッドのリンクは未掲載（自動取得を拒否され実在を確認できず）。
+- 計測：affiliate_click に placement を追加（esim-sticky、esim-page-answer、esim-use-case-table）。
+- 構造化データ：柱ページと Reddit に ItemList、Simbye・Airalo・eSIM Go・Sakura のレビューに Product/AggregateOffer。
+- 文脈リンク：how-much-yen-to-bring-japan、japan-first-time-itinerary に柱ページへのリンクを追加。eSIM 系は結論ボックス経由で全ページ。トップと japan-travel-budget は既にリンクあり。
+- 広告ID：A22 用に発行された 1549784〜1549823 を spare に追加し、ID の無かった11ページに 1549784〜1549794 を割り当てた。spare は29個。
+
 ## 2026-11-06：表示は多いのに順位15〜50位のページを1ページ目へ（jtk-20261106-A20）
 
 - 目的：Search Console 過去28日（10/7〜11/3、11/6取得）で表示回数が多く順位が15〜50位のページを10位以内へ上げる。

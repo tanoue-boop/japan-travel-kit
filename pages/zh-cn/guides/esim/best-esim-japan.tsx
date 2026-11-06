@@ -1,5 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimUseCaseTable from "../../../../components/EsimUseCaseTable";
+import EsimBuyGuide from "../../../../components/EsimBuyGuide";
+import { esimPicksCopy } from "../../../../lib/esim-picks-copy";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import tools from "../../../../styles/Tools.module.css";
 import { seoTags } from "../../../../components/IntlSeo";
@@ -362,6 +365,13 @@ const unlimitedRows = [
     hotspot: "支持",
     checked: KLOOK_SPECS_CHECKED,
   },
+  {
+    plan: "Holafly 不限流量",
+    full: "未公布每日门槛",
+    after: "适用“Fair Usage Policy”，官方表示一次不超过一天，之后恢复原速",
+    hotspot: "每天可共享 1 GB",
+    checked: "2026年11月6日",
+  },
 ];
 
 const timingRows = [
@@ -401,21 +411,6 @@ const timingRows = [
     install: "未说明——请查看商品页",
     refund: "未说明——请查看商品页",
     checked: KLOOK_SPECS_CHECKED,
-  },
-];
-
-const installSteps = [
-  {
-    title: "购买并收到二维码",
-    desc: "出发前在网上买好。几分钟内你就会通过邮件收到二维码，直接发到你的邮箱。",
-  },
-  {
-    title: "在「设置」里扫二维码",
-    desc: "进入「设置」→「蜂窝网络」（或移动网络）→「添加 eSIM」→「扫描二维码」。不到 2 分钟，还没收拾行李就能在家做完。",
-  },
-  {
-    title: "抵达时启用",
-    desc: "飞机落地时把移动数据切到日本的 eSIM。你会在走到行李转盘前就有 4G 信号——不用找机场的 SIM 卡售卖机。",
   },
 ];
 
@@ -578,6 +573,8 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
 
       <div className={styles.content}>
         <Disclosure />
+
+        <EsimUseCaseTable copy={esimPicksCopy["zh-cn"]} checkedLabel={pricesCheckedAt} formatPlan={planName} />
 
         {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
         <section className={styles.bodySection}>
@@ -1091,22 +1088,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </article>
         </section>
 
-        {/* How to Install */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>设置教程</span>
-          <h2 className={styles.sectionTitle}>日本 eSIM 怎么安装</h2>
-          <div className={styles.stepsList}>
-            {installSteps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <EsimBuyGuide copy={esimPicksCopy["zh-cn"]} />
 
         <FaqList items={faqItems} />
 

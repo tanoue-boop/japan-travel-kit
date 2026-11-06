@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
 import EsimRelatedCard from "../../../components/EsimRelatedCard";
@@ -258,6 +259,8 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/japan-esim-students" />
 
         {/* Quick Answer Box — the whole answer, before anything else */}
         <div className={styles.verdictBox}>

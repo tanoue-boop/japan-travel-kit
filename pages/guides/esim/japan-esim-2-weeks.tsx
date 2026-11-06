@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import SimbyeOffer from "../../../components/SimbyeOffer";
@@ -184,6 +185,8 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/japan-esim-2-weeks" />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

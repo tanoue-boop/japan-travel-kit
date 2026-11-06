@@ -4,6 +4,9 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import KlookLink from "../../../components/KlookLink";
 import SimbyeOffer from "../../../components/SimbyeOffer";
+import EsimUseCaseTable from "../../../components/EsimUseCaseTable";
+import { esimPicksCopy } from "../../../lib/esim-picks-copy";
+import { pickRows, pickSellerHref } from "../../../lib/esim-picks";
 import { klookEsim } from "../../../lib/klook-links";
 import { esimSpec } from "../../../lib/esim-specs";
 import {
@@ -20,7 +23,7 @@ import {
   type EsimProviderId,
 } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, itemListJsonLd } from "../../../lib/structured-data";
 
 // Every price quoted on this page is read from data/esim-prices.json (refreshed daily),
 // so the figures the threads argue over are always checked against today's catalogue.
@@ -150,6 +153,18 @@ const specRows = [
     tethering: klookEsim.specTethering,
     phone: klookEsim.specPhoneNumber,
   },
+];
+
+/**
+ * Live Reddit searches, so a reader can read the threads themselves. These are searches
+ * rather than links to individual threads because none could be opened when this was
+ * written: Reddit refused the automated read on 6 Nov 2026, and a thread link must not
+ * go on this page until someone has opened it. We summarise opinion and quote no comment.
+ */
+const redditSearches = [
+  { label: "r/JapanTravel: top eSIM threads", href: "https://www.reddit.com/r/JapanTravel/search/?q=esim&restrict_sr=1&sort=top" },
+  { label: "r/JapanTravel: pocket WiFi or eSIM", href: "https://www.reddit.com/r/JapanTravel/search/?q=pocket%20wifi%20esim&restrict_sr=1&sort=top" },
+  { label: "r/eSIM: Japan threads", href: "https://www.reddit.com/r/eSIM/search/?q=japan&restrict_sr=1&sort=top" },
 ];
 
 // The four claims that recur most in Japan eSIM threads, each checked against current pricing.
@@ -335,6 +350,20 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: itemListJsonLd({
+              route: "/guides/esim/best-esim-japan-reddit",
+              name: "Japan eSIM picks by need",
+              description: "Which Japan eSIM to buy for each kind of trip.",
+              items: pickRows.map(({ id, seller }) => ({
+                href: pickSellerHref[seller],
+                title: esimPicksCopy.en.rows[id].need,
+              })),
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}
@@ -453,6 +482,28 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             </p>
           </div>
         </div>
+
+        <EsimUseCaseTable copy={esimPicksCopy.en} checkedLabel={pricesCheckedAt} />
+
+        {/* Where the opinions come from */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Read it yourself</span>
+          <h2 className={styles.sectionTitle}>What Reddit Says About Japan eSIMs: the Summary</h2>
+          <p className={styles.bodyText}>
+            This page summarises the opinions that keep coming up, in our own words, and quotes no one.
+            The claims are checked <Link href="#claim-check" className={tools.inlineLink}>further down</Link>. To
+            read the threads themselves, these searches open on Reddit:
+          </p>
+          <ul className={styles.bodyList}>
+            {redditSearches.map((s) => (
+              <li key={s.href}>
+                <a href={s.href} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* How to read the threads */}
         <section className={styles.bodySection}>

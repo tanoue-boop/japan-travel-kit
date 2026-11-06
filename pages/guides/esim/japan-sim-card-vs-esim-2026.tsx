@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
 import EsimRelatedCard from "../../../components/EsimRelatedCard";
@@ -297,6 +298,8 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/japan-sim-card-vs-esim-2026" />
 
         {/* Quick Answer Box — the whole answer, first */}
         <div className={styles.verdictBox}>

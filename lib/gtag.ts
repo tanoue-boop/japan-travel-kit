@@ -9,6 +9,8 @@ export type AffiliateClickParams = {
   link_url: string;
   page_path: string;
   link_text: string;
+  /** Which block on the page the link sits in, where that block declares one. */
+  placement?: string;
 };
 
 export const trackAffiliateClick = (params: AffiliateClickParams) => {

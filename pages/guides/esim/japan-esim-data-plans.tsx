@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import EsimPlanFinder from "../../../components/EsimPlanFinder";
@@ -492,6 +493,8 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/japan-esim-data-plans" />
 
         {/* The answer, before the tools — the arithmetic and the plan, with the numbers in it. */}
         <section className={styles.bodySection}>

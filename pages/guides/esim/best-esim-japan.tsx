@@ -2,6 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookLink from "../../../components/KlookLink";
 import SimbyeOffer from "../../../components/SimbyeOffer";
+import EsimUseCaseTable from "../../../components/EsimUseCaseTable";
+import EsimBuyGuide from "../../../components/EsimBuyGuide";
+import { esimPicksCopy, GUIDE_CHECKED_AT } from "../../../lib/esim-picks-copy";
+import { pickRows, pickSellerHref } from "../../../lib/esim-picks";
 import { simCards } from "../../../lib/sim-cards";
 import {
   allEsimPlans,
@@ -23,7 +27,7 @@ import { SIMBYE_SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, itemListJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
@@ -48,6 +52,11 @@ import { hreflangLinks } from "../../../components/Hreflang";
  * SPECS_CHECKED; prices stay on data/esim-prices.json, which the daily job re-reads.
  * Holafly is still in the comparison table and still has no CTA — it runs no
  * affiliate programme we can join, so there is no path to it to build.
+ *
+ * Pillar pass, 6 Nov 2026 (jtk-20261106-A23): the first thing under the disclosure is
+ * now the answer by need with a button on each row and the Simbye code, from the shared
+ * EsimUseCaseTable, and the install section became EsimBuyGuide (phone check, steps,
+ * common mistakes). Both are shared with the four translated editions.
  */
 
 // "Price From" / "Cheapest Plan" in the quick comparison come from data/esim-prices.json,
@@ -360,16 +369,23 @@ const unlimitedRows = [
   {
     plan: "Sakura Mobile Unlimited (au 5G)",
     full: "Unlimited on the device itself",
-    after: "No on-device threshold published on the page read",
-    hotspot: "Capped by plan length — 2 GB to 30 GB depending on how long the plan runs",
-    checked: SPECS_CHECKED,
+    after: "“Truly unlimited 5G, no daily speed cap”",
+    hotspot: "“Capped at 30 GB or less, depending on plan length”",
+    checked: GUIDE_CHECKED_AT,
   },
   {
     plan: "Sakura Mobile 3 GB/day (Docomo 5G)",
     full: "3 GB per day",
-    after: "“Your speed will be limited to 200 Kbps after using 3 GB of data per day”",
-    hotspot: "Available",
-    checked: SPECS_CHECKED,
+    after: "Reduced for the rest of the day. Its page gives both 256 kbps and 200 Kbps",
+    hotspot: "Available, no specific cap stated",
+    checked: GUIDE_CHECKED_AT,
+  },
+  {
+    plan: "Holafly Unlimited",
+    full: "No daily threshold published",
+    after: "A “Fair Usage Policy” applied for no more than one day at a time, then the original speed returns",
+    hotspot: "1 GB of shareable data per day",
+    checked: GUIDE_CHECKED_AT,
   },
   {
     plan: `${klookEsim.name} — unlimited tier`,
@@ -430,21 +446,6 @@ const timingRows = [
 
 const SIMBYE_PLANS = allEsimPlans.filter((p) => p.providerId === "simbye" && !p.unlimited);
 
-const installSteps = [
-  {
-    title: "Purchase & receive your QR code",
-    desc: "Buy online before you travel. You'll receive a QR code by email within minutes — delivered straight to your inbox.",
-  },
-  {
-    title: "Scan the QR code in Settings",
-    desc: "Go to Settings → Cellular (or Mobile Data) → Add eSIM → Scan QR Code. Takes under 2 minutes. You can do this at home before you even pack.",
-  },
-  {
-    title: "Activate on arrival",
-    desc: "Switch to your Japan eSIM profile as your plane lands. You'll have a 4G signal before you reach baggage claim — no airport SIM vending machine needed.",
-  },
-];
-
 const faqItems = [
   {
     q: "What is an eSIM and do I need one for Japan?",
@@ -464,7 +465,7 @@ const faqItems = [
   },
   {
     q: "What if my eSIM doesn't work after landing in Japan?",
-    a: "First, check that Data Roaming is enabled for your eSIM profile. If still no signal, toggle Airplane Mode on/off to force a network scan. All providers listed here offer 24/7 live chat support — Airalo and Holafly are especially responsive.",
+    a: "First, check that Data Roaming is enabled for your eSIM profile. If there is still no signal, toggle Airplane Mode on and off to force a network scan, then contact the provider's support.",
   },
   {
     q: "What's the difference between eSIM and a physical SIM card for Japan?",
@@ -480,7 +481,7 @@ const faqItems = [
   },
   {
     q: "What is Sakura Mobile and who is it for?",
-    a: "Sakura Mobile is a Japan-based carrier that offers both SIM cards and eSIMs specifically designed for tourists and long-term visitors. Unlike Airalo and Holafly, Sakura Mobile includes voice call capability, English-speaking customer support, and plans suitable for stays up to 90 days. It runs on Docomo (Japan's largest carrier). It costs more than budget eSIM options but is the best choice for anyone who needs a Japanese phone number or plans an extended stay.",
+    a: "Sakura Mobile is a Japan-based carrier that offers both SIM cards and eSIMs specifically designed for tourists and long-term visitors. Unlike Airalo and Holafly, Sakura Mobile sells a voice plan, has English-speaking customer support, and offers plans suitable for stays up to 90 days. Its 3 GB/day data plans run on NTT Docomo; its unlimited and Voice + Data plans run on au by KDDI. It costs more than budget eSIM options but is the best choice for anyone who needs a Japanese phone number or plans an extended stay.",
   },
   {
     q: "How much data do I need for Japan?",
@@ -496,7 +497,7 @@ const faqItems = [
   },
   {
     q: "Can I top up my eSIM once I'm in Japan?",
-    a: "Yes — most providers support in-app top-ups without needing a new QR code. With Airalo, purchase an additional plan through the app and it tops up your existing eSIM profile automatically. eSIM Go and Sakura Mobile have similar top-up flows. Holafly unlimited plans are fixed-duration and require purchasing a new plan if you stay longer.",
+    a: "It depends on the plan. Simbye's price feed marks its fixed plans as top-up capable and its unlimited plans as not. With Airalo, you buy an additional plan through the app and it tops up your existing eSIM. Check the provider's own page for the plan you buy.",
   },
   {
     q: "Do Japan eSIM plans include calls and SMS?",
@@ -623,6 +624,20 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
+            __html: itemListJsonLd({
+              route: "/guides/esim/best-esim-japan",
+              name: "Best eSIM for Japan, by need",
+              description: "Which Japan eSIM to buy for each kind of trip.",
+              items: pickRows.map(({ id, seller }) => ({
+                href: pickSellerHref[seller],
+                title: esimPicksCopy.en.rows[id].need,
+              })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
@@ -689,6 +704,8 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimUseCaseTable copy={esimPicksCopy.en} checkedLabel={pricesCheckedAt} />
 
         {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
         <section className={styles.bodySection}>
@@ -1263,22 +1280,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           </article>
         </section>
 
-        {/* How to Install */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>Setup guide</span>
-          <h2 className={styles.sectionTitle}>How to Install a Japan eSIM</h2>
-          <div className={styles.stepsList}>
-            {installSteps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <EsimBuyGuide copy={esimPicksCopy.en} />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

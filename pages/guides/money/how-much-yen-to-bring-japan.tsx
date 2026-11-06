@@ -564,6 +564,11 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
             <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               cash vs card in Japan
             </Link>
+            . Paying by phone and finding an ATM both need mobile data once you leave the hotel Wi-Fi, so
+            sort that out before you fly with the{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              best eSIM for Japan
+            </Link>
             .
           </p>
         </section>

@@ -18,6 +18,7 @@ import {
 } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { esimProductJsonLd } from "../../../lib/esim-picks";
 
 // Two sources, two dates, deliberately.
 //
@@ -303,6 +304,12 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
                 acceptedAnswer: { "@type": "Answer", text: item.a },
               })),
             }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: esimProductJsonLd("sakura", "/guides/esim/sakura-mobile-review", "Sakura Mobile Travel eSIM", "Japan-based travel eSIM with 3 GB/day and unlimited data plans."),
           }}
         />
         <script

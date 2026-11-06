@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
@@ -22,6 +23,7 @@ import { esimLink, SIMBYE_SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { simbyeLink, SIMBYE_DISCOUNT_CODE, SIMBYE_DISCOUNT_PERCENT } from "../../../lib/simbye";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { esimProductJsonLd } from "../../../lib/esim-picks";
 
 /**
  * Review written from published facts only, 5 Nov 2026. Nothing here is first-hand:
@@ -170,6 +172,12 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
+            __html: esimProductJsonLd("simbye", "/guides/esim/simbye-japan-review", "Simbye Japan eSIM", "Data-only Japan eSIM on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile."),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/simbye-japan-review",
               headline: "Simbye Japan Review (2026): Prices, Networks and Discount Code",
@@ -259,6 +267,8 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/simbye-japan-review" />
 
         {/* Quick Verdict — the whole answer, first */}
         <div className={styles.verdictBox}>

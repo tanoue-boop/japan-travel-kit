@@ -1,0 +1,80 @@
+.section { margin-bottom: 3.5rem; }
+.label {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 0.9rem;
+}
+.intro { font-size: 0.95rem; line-height: 1.7; color: var(--text); margin-bottom: 1.25rem; }
+
+/* The discount code */
+.code {
+  display: grid;
+  gap: 0.75rem 1.5rem;
+  border: 1px solid var(--sumi);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 640px) { .code { grid-template-columns: auto 1fr; align-items: center; } }
+.codeHeading { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.15rem; }
+.codeValue {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--sumi);
+  user-select: all;
+}
+.codeText { font-size: 0.9rem; line-height: 1.6; color: var(--text); }
+.codeNote { font-size: 0.78rem; line-height: 1.6; color: var(--text-muted); margin-top: 0.2rem; }
+
+/* The table */
+.table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.table th {
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--sumi);
+}
+.table td { padding: 0.8rem 0.75rem; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--text); }
+.need { font-weight: 600; min-width: 13rem; }
+.why { display: block; font-size: 0.78rem; font-weight: 400; line-height: 1.5; color: var(--text-muted); margin-top: 0.2rem; }
+.seller { font-weight: 600; white-space: nowrap; }
+.price { white-space: nowrap; }
+.price s { color: var(--text-muted); }
+.withCode { display: block; font-size: 0.72rem; color: var(--text-muted); }
+.buyCell { white-space: nowrap; }
+.buy {
+  display: inline-block;
+  background: var(--sumi);
+  color: var(--white);
+  padding: 0.5rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.buy:hover { background: var(--sumi-soft); color: var(--white); }
+.note { font-size: 0.78rem; line-height: 1.6; color: var(--text-muted); margin-top: 0.9rem; }
+
+/* On a phone each row becomes a card, so no sideways scrolling to reach the button. */
+@media (max-width: 639px) {
+  .table thead { display: none; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table tr { border-bottom: 1px solid var(--rule); padding: 0.8rem 0; }
+  .table td { border-bottom: 0; padding: 0.15rem 0; }
+  .need { min-width: 0; }
+  .buyCell { padding-top: 0.5rem !important; }
+  .buy { display: block; text-align: center; padding: 0.65rem 0.8rem; }
+}

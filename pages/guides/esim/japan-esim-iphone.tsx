@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
@@ -378,6 +379,8 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/japan-esim-iphone" />
 
         {/* Quick Verdict Box — the answer-first paragraph for "best esim for japan iphone". */}
         <div className={styles.verdictBox}>

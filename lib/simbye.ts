@@ -30,3 +30,10 @@ export function simbyeLink(pathOrUrl: string): string {
 
 /** The Japan product page, the default target for a Simbye CTA. */
 export const SIMBYE_JAPAN_PATH = "/products/esim-japan";
+
+/**
+ * The Japan product page with the discount code already applied, in the same shape as
+ * the `link` on every plan in the price feed. Spelled out here for the places that must
+ * not pull the whole price file into their bundle, such as the sticky bar in _app.tsx.
+ */
+export const SIMBYE_JAPAN_DISCOUNT_URL = `${SIMBYE_ORIGIN}/discount/${SIMBYE_DISCOUNT_CODE}?redirect=${SIMBYE_JAPAN_PATH}?ref=${SIMBYE_REF}`;

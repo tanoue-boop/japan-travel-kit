@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
 import EsimRelatedCard from "../../../components/EsimRelatedCard";
@@ -241,6 +242,8 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/japan-esim-android" />
 
         {/* Quick Answer — the whole answer, first */}
         <div className={styles.verdictBox}>

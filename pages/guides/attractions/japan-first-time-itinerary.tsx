@@ -795,6 +795,12 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
                 See Klook eSIM Options →
               </KlookLink>
             </div>
+            <p className={styles.ctaBannerDesc} style={{ marginTop: "1rem" }}>
+              Not sure which eSIM?{" "}
+              <Link href="/guides/esim/best-esim-japan" style={{ color: "inherit", fontWeight: 600 }}>
+                Best eSIM for Japan, by need →
+              </Link>
+            </p>
           </div>
         </div>
       </div>

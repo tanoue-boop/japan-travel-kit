@@ -1,5 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimUseCaseTable from "../../../../components/EsimUseCaseTable";
+import EsimBuyGuide from "../../../../components/EsimBuyGuide";
+import { esimPicksCopy } from "../../../../lib/esim-picks-copy";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import tools from "../../../../styles/Tools.module.css";
 import { seoTags } from "../../../../components/IntlSeo";
@@ -369,6 +372,13 @@ const unlimitedRows = [
     hotspot: "지원",
     checked: KLOOK_SPECS_CHECKED,
   },
+  {
+    plan: "Holafly 무제한",
+    full: "일일 기준 공개 없음",
+    after: "“Fair Usage Policy”를 적용하며, 한 번에 하루를 넘지 않고 이후 원래 속도로 돌아간다고 안내합니다",
+    hotspot: "하루 1 GB 공유",
+    checked: "2026년 11월 6일",
+  },
 ];
 
 const timingRows = [
@@ -408,21 +418,6 @@ const timingRows = [
     install: "미기재 — 상품 페이지에서 확인",
     refund: "미기재 — 상품 페이지에서 확인",
     checked: KLOOK_SPECS_CHECKED,
-  },
-];
-
-const installSteps = [
-  {
-    title: "구매하고 QR 코드를 받습니다",
-    desc: "출발 전에 온라인으로 사 두세요. 몇 분 안에 이메일로 QR 코드가 도착합니다.",
-  },
-  {
-    title: "설정에서 QR 코드를 스캔합니다",
-    desc: "설정 → 셀룰러(모바일 데이터) → eSIM 추가 → QR 코드 스캔. 2분이 안 걸리고, 짐을 싸기 전에 집에서 끝낼 수 있습니다.",
-  },
-  {
-    title: "도착하면 활성화합니다",
-    desc: "일본에 도착한 뒤 안내에 따라 일본 eSIM을 활성화하세요. 설정이 완료되고 통신망에 연결되면 수하물을 찾기 전부터 4G 모바일 데이터를 사용할 수 있습니다. 공항에서 심카드 자판기를 찾을 필요가 없습니다.",
   },
 ];
 
@@ -585,6 +580,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
 
       <div className={styles.content}>
         <Disclosure />
+
+        <EsimUseCaseTable copy={esimPicksCopy["ko"]} checkedLabel={pricesCheckedAt} formatPlan={planName} />
 
         {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
         <section className={styles.bodySection}>
@@ -1133,22 +1130,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </article>
         </section>
 
-        {/* How to Install */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>설치 방법</span>
-          <h2 className={styles.sectionTitle}>일본 eSIM 설치하는 법</h2>
-          <div className={styles.stepsList}>
-            {installSteps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <EsimBuyGuide copy={esimPicksCopy["ko"]} />
 
         <FaqList items={faqItems} />
 

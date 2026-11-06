@@ -7,6 +7,7 @@ import { fontVariableClass } from "../lib/fonts";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import LanguageNotice from "../components/LanguageNotice";
+import EsimStickyCta from "../components/EsimStickyCta";
 import { GA_MEASUREMENT_ID, pageview, trackAffiliateClick } from "../lib/gtag";
 
 // アフィリエイト/比較対象ASPの判定表。未承認ASPの素URLも需要把握のため計測対象に含める。
@@ -74,6 +75,8 @@ export default function App({ Component, pageProps }: AppProps) {
         link_url: anchor.href.slice(0, 200),
         page_path: window.location.pathname,
         link_text: (anchor.innerText || anchor.textContent || "").trim().slice(0, 80),
+        // Set by a wrapping element where a block needs its own line in the report.
+        placement: anchor.closest("[data-placement]")?.getAttribute("data-placement") ?? undefined,
       });
     };
 
@@ -109,6 +112,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </main>
       <Footer />
+      <EsimStickyCta />
     </div>
     </>
   );

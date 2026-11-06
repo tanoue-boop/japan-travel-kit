@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { esimProviders, priceFromLabel, unlimitedFromLabel, type EsimProviderId } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -369,6 +370,8 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
       </section>
 
       <div className={styles.content}>
+
+        <EsimPageAnswer route="/guides/esim/how-to-set-up-esim-japan" />
 
         {/* Before You Start */}
         <section className={styles.prosConsSection}>

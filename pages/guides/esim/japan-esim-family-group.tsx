@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
 import EsimRelatedCard from "../../../components/EsimRelatedCard";
@@ -197,6 +198,8 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimPageAnswer route="/guides/esim/japan-esim-family-group" />
 
         {/* Quick Answer — the whole answer, first */}
         <section className={styles.choiceSection}>

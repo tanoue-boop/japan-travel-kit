@@ -1,5 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimUseCaseTable from "../../../../components/EsimUseCaseTable";
+import EsimBuyGuide from "../../../../components/EsimBuyGuide";
+import { esimPicksCopy } from "../../../../lib/esim-picks-copy";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import tools from "../../../../styles/Tools.module.css";
 import { seoTags } from "../../../../components/IntlSeo";
@@ -362,6 +365,13 @@ const unlimitedRows = [
     hotspot: "支援",
     checked: KLOOK_SPECS_CHECKED,
   },
+  {
+    plan: "Holafly 吃到飽",
+    full: "未公布每日門檻",
+    after: "適用「Fair Usage Policy」，官方表示一次不超過一天，之後恢復原速",
+    hotspot: "每天可分享 1 GB",
+    checked: "2026年11月6日",
+  },
 ];
 
 const timingRows = [
@@ -401,21 +411,6 @@ const timingRows = [
     install: "未說明——請查看商品頁",
     refund: "未說明——請查看商品頁",
     checked: KLOOK_SPECS_CHECKED,
-  },
-];
-
-const installSteps = [
-  {
-    title: "購買並收到 QR Code",
-    desc: "出發前在線上買好。幾分鐘內你就會收到 email 裡的 QR Code，直接寄到你的信箱。",
-  },
-  {
-    title: "在「設定」裡掃 QR Code",
-    desc: "進入「設定」→「行動服務」（或行動網路）→「加入 eSIM」→「掃描 QR 碼」。不到 2 分鐘，還沒打包行李就能在家做完。",
-  },
-  {
-    title: "抵達時啟用",
-    desc: "飛機落地時把行動數據切到日本的 eSIM。你會在走到行李轉盤前就有 4G 訊號——不用找機場的 SIM 卡販賣機。",
   },
 ];
 
@@ -578,6 +573,8 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
 
       <div className={styles.content}>
         <Disclosure />
+
+        <EsimUseCaseTable copy={esimPicksCopy["zh-tw"]} checkedLabel={pricesCheckedAt} formatPlan={planName} />
 
         {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
         <section className={styles.bodySection}>
@@ -1091,22 +1088,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </article>
         </section>
 
-        {/* How to Install */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>設定教學</span>
-          <h2 className={styles.sectionTitle}>日本 eSIM 怎麼安裝</h2>
-          <div className={styles.stepsList}>
-            {installSteps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <EsimBuyGuide copy={esimPicksCopy["zh-tw"]} />
 
         <FaqList items={faqItems} />
 
