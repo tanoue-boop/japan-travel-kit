@@ -43,8 +43,12 @@ import { KLOOK_AID, klookLink } from "./klook-links";
 /** Klook's affiliate redirect endpoint — the only URL that carries an ad id. */
 const KLOOK_REDIRECT = "https://affiliate.klook.com/redirect";
 
-/** Page path -> ad id, straight out of data/klook-adids.json. */
-const PAGE_AD_IDS: Record<string, number> = adIds.pages;
+/**
+ * Page path -> ad id, straight out of data/klook-adids.json. `borrowed` holds translated
+ * pages that use their English page's id because `spare` ran out: their clicks are counted
+ * on the English page's row until a real id moves them into `pages`.
+ */
+const PAGE_AD_IDS: Record<string, number> = { ...adIds.borrowed, ...adIds.pages };
 
 /** klook.com and every subdomain of it (www, affiliate, s). */
 const KLOOK_HOST = /(^|\.)klook\.com$/i;

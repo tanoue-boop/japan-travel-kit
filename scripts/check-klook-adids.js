@@ -95,17 +95,20 @@ const klookRoutes = walk(PAGES_DIR)
   .filter((r) => !SPECIAL.has(r))
   .sort();
 
-const pageKeys = Object.keys(adIds.pages).filter((k) => !k.includes("#"));
-const placementKeys = Object.keys(adIds.pages).filter((k) => k.includes("#"));
+// `borrowed`: pages using another page's id until real ids are issued. Counted as covered,
+// left out of the duplicate check on purpose, and printed so they are not forgotten.
+const allPages = { ...adIds.borrowed, ...adIds.pages };
+const pageKeys = Object.keys(allPages).filter((k) => !k.includes("#"));
+const placementKeys = Object.keys(allPages).filter((k) => k.includes("#"));
 
-const missing = klookRoutes.filter((r) => !(r in adIds.pages));
+const missing = klookRoutes.filter((r) => !(r in allPages));
 const stale = [...pageKeys, ...placementKeys.map((k) => k.split("#")[0])].filter((r) => !klookRoutes.includes(r));
 
 const allIds = [...Object.values(adIds.pages), ...adIds.spare];
 const duplicates = [...new Set(allIds.filter((id, i) => allIds.indexOf(id) !== i))];
 
 console.log(
-  `Klook ad ids: ${pageKeys.length} pages, ${placementKeys.length} placements, ${adIds.spare.length} spare; ` +
+  `Klook ad ids: ${pageKeys.length} pages (${Object.keys(adIds.borrowed).length} on a borrowed id), ${placementKeys.length} placements, ${adIds.spare.length} spare; ` +
     `${klookRoutes.length} pages carry Klook links`,
 );
 if (duplicates.length) console.warn(`\n! ad id(s) listed more than once: ${duplicates.join(", ")}`);
@@ -152,9 +155,9 @@ if (BUILT) {
   for (const file of htmlFiles) {
     const rel = path.relative(BUILD_DIR, file).replace(/\\/g, "/").replace(/\.html$/, "");
     const route = `/${rel === "index" ? "" : rel}`.replace(/\/$/, "") || "/";
-    const expected = adIds.pages[route];
+    const expected = allPages[route];
     const placementIds = new Map(
-      placementKeys.filter((k) => k.startsWith(`${route}#`)).map((k) => [adIds.pages[k], k]),
+      placementKeys.filter((k) => k.startsWith(`${route}#`)).map((k) => [allPages[k], k]),
     );
     const markup = fs.readFileSync(file, "utf8");
     const hrefs = [...markup.matchAll(/<a\s[^>]*href="([^"]*klook\.com[^"]*)"/g)].map((m) =>

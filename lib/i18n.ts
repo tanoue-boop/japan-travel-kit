@@ -386,6 +386,24 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     zhCnTitle: "东京自由行景点（2026）：必去景点哪些要先订票、哪些可以现场去",
     zhCnLabel: "东京自由行景点",
   },
+  // Added 2026-11-06 (task jtk-20261106-A21): the winter set, in all four editions. Korea,
+  // Taiwan, China and Thailand send many of the December to February visitors to Hokkaido
+  // and the snow-monkey park, and the tours these pages sell pay 6.5%.
+  {
+    en: "/guides/attractions/jigokudani-snow-monkey-tour",
+    zhTw: "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour",
+    zhTitle: "地獄谷野猿公苑（2027）：東京出發一日遊與交通",
+    zhLabel: "地獄谷野猿公苑",
+    zhCn: "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour",
+    zhCnTitle: "地狱谷野猿公苑（2027）：东京出发一日游与交通",
+    zhCnLabel: "地狱谷野猿公苑",
+    ko: "/ko/guides/attractions/jigokudani-snow-monkey-tour",
+    koTitle: "지고쿠다니 원숭이 공원(2027): 도쿄 출발 투어",
+    koLabel: "지고쿠다니 원숭이 공원",
+    th: "/th/guides/attractions/jigokudani-snow-monkey-tour",
+    thTitle: "ลิงหิมะจิโกกุดานิ 2027: ทัวร์จากโตเกียว",
+    thLabel: "ลิงหิมะจิโกกุดานิ",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",
@@ -503,6 +521,19 @@ export function labelOf(page: TranslatedPage, locale: TranslatedLocale): string 
 /** Every group that has a page in `locale`, in declaration order. */
 export function pagesIn(locale: TranslatedLocale): TranslatedPage[] {
   return TRANSLATED_PAGES.filter((p) => routeOf(p, locale) !== null);
+}
+
+/** Every page an edition publishes: its entry page, any hub, and its guides. */
+export function editionPageCount(locale: TranslatedLocale): number {
+  return PAGE_GROUPS.filter((p) => routeOf(p, locale) !== null).length;
+}
+
+/**
+ * The guides in an edition, counted the way the English home counts them: articles only,
+ * so neither the entry page nor the /guides/attractions hub is a guide.
+ */
+export function editionGuideCount(locale: TranslatedLocale): number {
+  return pagesIn(locale).filter((p) => p.en !== "/guides/attractions").length;
 }
 
 /**

@@ -11,7 +11,7 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/"/>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -193,7 +193,15 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour</loc>
-    <lastmod>2026-11-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -361,7 +369,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/otaru-day-trip-from-sapporo</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -385,7 +393,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -411,7 +419,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/takayama-shirakawago-tour</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1142,6 +1150,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/ko/guides/attractions/shibuya-sky-tickets</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/shibuya-sky-tickets"/>
@@ -1277,6 +1299,20 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/dotonbori-river-cruise"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/dotonbori-river-cruise"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/dotonbori-river-cruise"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/th/guides/attractions/jigokudani-snow-monkey-tour</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
     <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1429,6 +1465,20 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/dotonbori-river-cruise"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/dotonbori-river-cruise"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/dotonbori-river-cruise"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
     <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1617,6 +1667,20 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/dotonbori-river-cruise"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/dotonbori-river-cruise"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/dotonbori-river-cruise"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/jigokudani-snow-monkey-tour"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour"/>
     <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

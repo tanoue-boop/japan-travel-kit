@@ -17,7 +17,7 @@ import { zhKlookEsim, zhTokyoSubwayTicket } from "../../../../lib/klook-links-zh
 import { attractionPrices, checkedLabel, latestChecked } from "../../../../lib/attraction-prices";
 import { pageUpdated } from "../../../../lib/page-dates";
 import { itemListJsonLd } from "../../../../lib/structured-data";
-import { JSONLD_LANG, TRANSLATED_PAGES, zhDateLabel, zhMonthLabel } from "../../../../lib/i18n";
+import { JSONLD_LANG, TRANSLATED_PAGES, editionGuideCount, editionPageCount, zhDateLabel, zhMonthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/zh-tw/guides/attractions";
 const TITLE = "日本景點門票攻略（2026）：官方票價、預約方式與一日遊";
@@ -124,7 +124,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "繁體中文版只有這幾頁嗎？",
-    a: `目前是。繁體中文版是試行版，共 ${TRANSLATED_PAGES.length} 頁，挑的是銷售與點擊實績最高的那幾個入口頁。其他的攻略（京都、大阪、鐵路周遊券、付款與貨幣等）目前只有英文版，連結到那些頁面時我們會標示「（英文）」。每一頁的右上角都有 English／繁體中文 切換，只在該頁兩種語言都有時才顯示。`,
+    a: `目前是。繁體中文版是試行版，共 ${editionPageCount("zh-tw")} 頁，挑的是銷售與點擊實績最高的那幾個入口頁。其他的攻略（京都、大阪、鐵路周遊券、付款與貨幣等）目前只有英文版，連結到那些頁面時我們會標示「（英文）」。每一頁的右上角都有 English／繁體中文 切換，只在該頁兩種語言都有時才顯示。`,
   },
 ];
 
@@ -178,7 +178,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
             會賣完的那幾張票、從海外行得通的購票管道，以及每一個價格的查核日期。
           </p>
           <div className={styles.heroBadges}>
-            {["官方票價", "附查核日期", `${TRANSLATED_PAGES.length} 篇繁體中文攻略`].map((t) => (
+            {["官方票價", "附查核日期", `${editionGuideCount("zh-tw")} 篇繁體中文攻略`].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -240,7 +240,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
           <span className={styles.sectionLabel}>其他語言</span>
           <h2 className={styles.sectionTitle}>還沒翻譯的部分</h2>
           <p className={styles.bodyText}>
-            繁體中文版目前是 {TRANSLATED_PAGES.length} 頁的試行版。京都與大阪的城市攻略、其他的一日遊、
+            繁體中文版目前是 {editionPageCount("zh-tw")} 頁的試行版。京都與大阪的城市攻略、其他的一日遊、
             鐵路周遊券、IC 卡、付款與貨幣，以及完整的門票價格總表，目前只有英文版：{" "}
             <Link href="/guides/attractions" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>
               Things to Do in Japan（英文）

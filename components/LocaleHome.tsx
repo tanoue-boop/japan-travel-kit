@@ -30,7 +30,8 @@ import {
   HOME_GROUP,
   JSONLD_LANG,
   LOCALE_HOME,
-  PAGE_GROUPS,
+  editionGuideCount,
+  editionPageCount,
   monthLabel,
   pagesIn,
   pairFor,
@@ -106,10 +107,6 @@ type Copy = {
   itemListName: string;
 };
 
-/** How many pages an edition has, this entry page included. */
-const pageCount = (locale: TranslatedLocale) =>
-  PAGE_GROUPS.filter((p) => routeOf(p, locale) !== null).length;
-
 const COPY: Record<TranslatedLocale, Copy> = {
   // ── 繁體中文 ──────────────────────────────────────────────────────────────
   "zh-tw": {
@@ -120,6 +117,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
       "Japan Travel Kit 繁體中文版：日本景點門票、東京迪士尼與日本環球影城預約規則、" +
       "富士山一日遊、成田機場交通與日本網卡。票價讀自官網並標示查核日期。",
     groups: [
+      {
+        key: "winter",
+        label: "冬季旅遊",
+        desc: "12 月到 2 月的雪祭、滑雪與雪猴：什麼要先訂，以及從哪裡出發。",
+        routes: [
+          "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour",
+        ],
+      },
       {
         key: "tickets",
         label: "門票與景點",
@@ -167,6 +172,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
     ],
     blurbs: {
+      "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour":
+        "從東京出發看泡湯雪猴：一日遊、自行前往的交通與入苑資訊。",
       "/zh-tw/guides/attractions/shibuya-sky-tickets":
         "官方票價、為什麼日落場最先賣完，以及海外信用卡刷不過時怎麼訂。",
       "/zh-tw/guides/attractions/tokyo-skytree-tickets":
@@ -198,7 +205,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
     faq: [
       {
         q: "這個網站有繁體中文版嗎？",
-        a: `有，但不是全站。目前繁體中文版共 ${pageCount("zh-tw")} 頁（本頁與 ${pageCount("zh-tw") - 1} 篇攻略），挑的是台灣與香港讀者最常查、也最需要先訂票的那幾個入口。其餘的攻略只有英文版，連結到那些頁面時我們會標示「（英文）」。`,
+        a: `有，但不是全站。目前繁體中文版共 ${editionPageCount("zh-tw")} 頁（本頁、門票總覽與 ${editionGuideCount("zh-tw")} 篇攻略），挑的是台灣與香港讀者最常查、也最需要先訂票的那幾個入口。其餘的攻略只有英文版，連結到那些頁面時我們會標示「（英文）」。`,
       },
       {
         q: "怎麼從英文頁切換到繁體中文？",
@@ -221,6 +228,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
       "Japan Travel Kit 简体中文版：日本景点门票、东京迪士尼与日本环球影城预约规则、" +
       "富士山一日游、机场交通与日本eSIM。票价读自官网并标示核查日期。",
     groups: [
+      {
+        key: "winter",
+        label: "冬季旅游",
+        desc: "12 月到 2 月的雪祭、滑雪与雪猴：什么要先订，以及从哪里出发。",
+        routes: [
+          "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour",
+        ],
+      },
       {
         key: "tickets",
         label: "门票与景点",
@@ -268,6 +283,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
     ],
     blurbs: {
+      "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour":
+        "从东京出发看泡汤雪猴：一日游、自行前往的交通与入苑信息。",
       "/zh-cn/guides/attractions/shibuya-sky-tickets":
         "官方票价、为什么日落场最先卖完，以及海外信用卡刷不过时怎么订。",
       "/zh-cn/guides/attractions/tokyo-skytree-tickets":
@@ -299,7 +316,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
     faq: [
       {
         q: "这个网站有简体中文版吗？",
-        a: `有，但不是全站。目前简体中文版共 ${pageCount("zh-cn")} 页（本页与 ${pageCount("zh-cn") - 1} 篇攻略），挑的是销售与点击实绩最高、也最需要提前订票的那几个入口。其余的攻略只有英文版，链接到那些页面时我们会标示「（英文）」。`,
+        a: `有，但不是全站。目前简体中文版共 ${editionPageCount("zh-cn")} 页（本页、门票总览与 ${editionGuideCount("zh-cn")} 篇攻略），挑的是销售与点击实绩最高、也最需要提前订票的那几个入口。其余的攻略只有英文版，链接到那些页面时我们会标示「（英文）」。`,
       },
       {
         q: "怎么从英文页切换到简体中文？",
@@ -322,6 +339,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
       "Japan Travel Kit 한국어판: 시부야 스카이, 팀랩 플래닛, 도쿄 디즈니랜드, " +
       "USJ 티켓과 일본 이심 비교 5편. 공식 요금 기준.",
     groups: [
+      {
+        key: "winter",
+        label: "겨울 여행",
+        desc: "12월부터 2월까지의 눈축제, 스키, 눈원숭이 — 무엇을 먼저 예약하고 어디서 출발할지.",
+        routes: [
+          "/ko/guides/attractions/jigokudani-snow-monkey-tour",
+        ],
+      },
       {
         key: "tickets",
         label: "입장권",
@@ -351,6 +376,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
     ],
     blurbs: {
+      "/ko/guides/attractions/jigokudani-snow-monkey-tour":
+        "도쿄에서 온천 원숭이를 보러 가는 당일 투어, 직접 가는 교통편, 입장 정보.",
       "/ko/guides/attractions/shibuya-sky-tickets":
         "공식 요금, 일몰 시간대가 가장 먼저 마감되는 이유, 해외 카드가 막힐 때의 예약 방법.",
       "/ko/guides/attractions/tokyo-skytree-tickets":
@@ -374,7 +401,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
     faq: [
       {
         q: "이 사이트는 전체가 한국어인가요?",
-        a: `아니요. 현재 한국어판은 이 페이지와 가이드 ${pageCount("ko") - 1}편, 모두 ${pageCount("ko")}페이지입니다. 한국 여행자가 가장 많이 찾고 미리 예약해야 하는 입장권을 중심으로 골랐습니다. 나머지 가이드는 영어판만 있고, 그런 링크에는 "(영어)"를 붙여 둡니다.`,
+        a: `아니요. 현재 한국어판은 이 페이지와 가이드 ${editionGuideCount("ko")}편, 모두 ${editionPageCount("ko")}페이지입니다. 한국 여행자가 가장 많이 찾고 미리 예약해야 하는 입장권을 중심으로 골랐습니다. 나머지 가이드는 영어판만 있고, 그런 링크에는 "(영어)"를 붙여 둡니다.`,
       },
       {
         q: "영어 페이지에서 한국어로 어떻게 바꾸나요?",
@@ -397,6 +424,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
       "ฉบับภาษาไทยของ Japan Travel Kit: ตั๋ว Shibuya Sky, ดิสนีย์แลนด์โตเกียว, " +
       "USJ และ eSIM ญี่ปุ่น",
     groups: [
+      {
+        key: "winter",
+        label: "เที่ยวหน้าหนาว",
+        desc: "เทศกาลหิมะ สกี และลิงแช่ออนเซ็นช่วงธันวาคมถึงกุมภาพันธ์ — ควรจองอะไรก่อนและออกจากที่ไหน",
+        routes: [
+          "/th/guides/attractions/jigokudani-snow-monkey-tour",
+        ],
+      },
       {
         key: "tickets",
         label: "ตั๋วเข้าชม",
@@ -426,6 +461,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
     ],
     blurbs: {
+      "/th/guides/attractions/jigokudani-snow-monkey-tour":
+        "ไปดูลิงแช่ออนเซ็นจากโตเกียว: ทัวร์วันเดียว การเดินทางเอง และข้อมูลการเข้าชม",
       "/th/guides/attractions/shibuya-sky-tickets":
         "ราคาทางการ เหตุผลที่รอบพระอาทิตย์ตกเต็มก่อน และวิธีจองเมื่อบัตรต่างประเทศถูกปฏิเสธ",
       "/th/guides/attractions/tokyo-skytree-tickets":
@@ -449,7 +486,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
     faq: [
       {
         q: "เว็บไซต์นี้เป็นภาษาไทยทั้งหมดไหม",
-        a: `ยังไม่ทั้งหมด ปัจจุบันฉบับภาษาไทยมี ${pageCount("th")} หน้า (หน้านี้กับไกด์อีก ${pageCount("th") - 1} บท) เลือกจากตั๋วที่นักท่องเที่ยวไทยค้นหามากที่สุดและต้องจองล่วงหน้า ไกด์ที่เหลือมีเฉพาะภาษาอังกฤษ และเราจะกำกับลิงก์เหล่านั้นว่า "(อังกฤษ)"`,
+        a: `ยังไม่ทั้งหมด ปัจจุบันฉบับภาษาไทยมี ${editionPageCount("th")} หน้า (หน้านี้กับไกด์อีก ${editionGuideCount("th")} บท) เลือกจากตั๋วที่นักท่องเที่ยวไทยค้นหามากที่สุดและต้องจองล่วงหน้า ไกด์ที่เหลือมีเฉพาะภาษาอังกฤษ และเราจะกำกับลิงก์เหล่านั้นว่า "(อังกฤษ)"`,
       },
       {
         q: "เปลี่ยนจากหน้าภาษาอังกฤษเป็นภาษาไทยได้อย่างไร",
@@ -960,7 +997,7 @@ export default function LocaleHome({
   });
 
   const stats = [
-    { value: `${pageCount(locale) - 1}`, label: home.stats.translated },
+    { value: `${editionGuideCount(locale)}`, label: home.stats.translated },
     { value: `${attractionPrices.length}`, label: home.stats.prices },
     { value: `${allArticles.length}`, label: home.stats.total },
     { value: monthLabel(latestChecked(), locale), label: home.stats.checked },

@@ -131,6 +131,14 @@ const SEARCH_TERMS = {
     th: "eSIM ญี่ปุ่น",
   },
   "/guides/attractions/things-to-do-tokyo": { "zh-tw": "東京自由行", "zh-cn": "东京自由行" },
+  // Added 2026-11-06 with the winter set. Chinese readers write 札幌雪祭 in both scripts;
+  // the other four differ only by script, or by the 一日游 / 行程 wording each side uses.
+  "/guides/attractions/jigokudani-snow-monkey-tour": {
+    "zh-tw": "地獄谷野猿公苑",
+    "zh-cn": "地狱谷野猿公苑",
+    ko: "지고쿠다니 원숭이 공원",
+    th: "ลิงหิมะจิโกกุดานิ",
+  },
 };
 
 /** Klook's own locale path each edition must link. */
