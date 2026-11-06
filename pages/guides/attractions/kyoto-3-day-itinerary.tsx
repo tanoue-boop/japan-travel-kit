@@ -269,6 +269,7 @@ const ROUTE = "/guides/attractions/kyoto-3-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
+  { href: "/guides/attractions/arashiyama-bamboo-forest-tour", title: "Arashiyama Bamboo Forest Tour (2026): Best Time, Tours and Routes From Kyoto" },
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },
   { href: "/guides/attractions/amanohashidate-ine-day-trip", title: "Amanohashidate Day Trip (2026): Ine Boathouses, Tours and Trains From Kyoto" },

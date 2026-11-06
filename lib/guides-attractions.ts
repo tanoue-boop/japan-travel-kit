@@ -412,6 +412,22 @@ export const attractionArticles: GuideArticle[] = [
     city: "kyoto",
   },
   {
+    href: "/guides/attractions/arashiyama-bamboo-forest-tour",
+    badge: "Tour",
+    title: "Arashiyama Bamboo Forest Tour (2026): Best Time, Tours and Routes From Kyoto",
+    desc: "The grove is free and open 24/7, so go before 8:00. Six Klook tours from 30 minutes to a full day compared, plus the JR, Randen and Hankyu routes, Tenryu-ji's ¥500 garden, rain and strollers.",
+    group: "daytrips",
+    city: "kyoto",
+  },
+  {
+    href: "/guides/attractions/yufuin-beppu-tour-from-fukuoka",
+    badge: "Day trip",
+    title: "Yufuin and Beppu Tour from Fukuoka (2026): Tours, Trains and Onsen Time",
+    desc: "A 10 to 10.5 hour coach day to the Beppu hells and Yufuin. Six Klook tours compared with the Yufuin no Mori and Sonic trains, the ¥2,400 hells ticket, which tours include a bath, and cancellation terms.",
+    group: "daytrips",
+    city: "other",
+  },
+  {
     href: "/guides/attractions/kyoto-2-day-itinerary",
     badge: "Itinerary",
     title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book",

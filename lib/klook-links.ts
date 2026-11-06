@@ -6169,3 +6169,169 @@ export const amanohashidateTripPrep: KlookTripPrepItem[] = [
     why: "Meeting points are easy to miss at 7:30, and on your own the bus to Ine is a timetable you will want open on your phone.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Arashiyama and Yufuin/Beppu entry pages, added 6 Nov 2026
+// (task jtk-20261106-02). Klook answers automated reads of its product pages
+// with HTTP 403, so each listing below was read in the www.klook.com search
+// index on that date. `jrKyushuRailPass` is the one exception to en-US: the
+// index showed id 2371 without a locale and under en-HK, so the en-US URL is
+// built from the same id and slug. Tours and hotels 6.5%, rail passes 5%,
+// eSIM 20%. No prices.
+// ---------------------------------------------------------------------------
+
+/** The early-start walk: the reason to book a guide for the grove at all. */
+export const arashiyamaEarlyMorningWalk: KlookTour = {
+  title: "Arashiyama Bamboo Grove early morning walking tour",
+  desc: "A 2.5-hour small-group walk from Saga-Arashiyama Station, using quieter paths beyond the main route and ending with a matcha tea ceremony",
+  url: klookLink("https://www.klook.com/en-US/activity/191374-arashiyama-bamboo-grove-early-morning-walking-tour-small-group/"),
+};
+
+/** Starts at Kyoto Station, so the train is part of the tour. */
+export const arashiyamaTenryujiWalkingTour: KlookTour = {
+  title: "Kyoto Arashiyama walking tour: Sagano bamboo grove & Tenryu-ji",
+  desc: "A 4 to 5 hour walk with a licensed English-speaking guide from Kyoto AVANTI, by public transport, with Tenryu-ji and Togetsukyo Bridge",
+  url: klookLink("https://www.klook.com/en-US/activity/91757-kyoto-city-jojakkoji-arashiyama-bamboo-grove-tenryuji-one-day-walking-tour/"),
+};
+
+/** The longest walk: two gardens and a temple lunch. */
+export const arashiyamaGardenLunchWalkingTour: KlookTour = {
+  title: "Arashiyama bamboo forest & garden half-day walking tour",
+  desc: "Five hours through the grove, Tenryu-ji and Okochi Sanso, with a vegetarian lunch inside Tenryu-ji",
+  url: klookLink("https://www.klook.com/en-US/activity/92976-arashiyama-bamboo-forest-tenryu-ji-temple-okochi-sanso-garden-join-half-day-walking-tour/"),
+};
+
+/** Arashiyama and Sagano on foot, with Daikaku-ji named on the listing. */
+export const arashiyamaSaganoHalfDayWalk: KlookTour = {
+  title: "Kyoto City, Arashiyama and Sagano half-day walking tour",
+  desc: "A 3 hour 45 minute guided walk through Arashiyama and Sagano; the listing names Daikaku-ji as one of its locations",
+  url: klookLink("https://www.klook.com/en-US/activity/91572-kyoto-city-arashiyama-sagano-half-day-walking-tour/"),
+};
+
+/** Ebisuya's rickshaw, for a shorter visit or less walking. */
+export const arashiyamaRickshawTour: KlookTour = {
+  title: "Kyoto Arashiyama rickshaw tour",
+  desc: "A private Ebisuya rickshaw for your own group, from 30 minutes to 2 hours, with part of the route through the bamboo",
+  url: klookLink("https://www.klook.com/en-US/activity/1031-arashiyama-rickshaw-tour-kyoto/"),
+};
+
+/** The whole-city answer: Arashiyama as one stop among several. */
+export const kyotoPanoramicDayTour: KlookTour = {
+  title: "Kyoto panoramic day trip: Kinkaku-ji, Arashiyama, Nijo Castle & Fushimi Inari",
+  desc: "A 10 to 11 hour shared day from Osaka or Kyoto that gives Arashiyama one slot alongside three other major stops",
+  url: klookLink("https://www.klook.com/en-US/activity/144196-kyoto-panoramic-day-tour-kinkakuji-temple-arashiyama-nijo-castle/"),
+};
+
+/** Around a morning in Arashiyama. Every url is declared above. */
+export const arashiyamaTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels in Arashiyama",
+    ctaLabel: "Check Arashiyama hotels →",
+    url: whereToStayKyotoAreas[3].url,
+    why: "Sleeping nearby is the surest way to be in the grove before 8:00.",
+  },
+  {
+    label: "Hotels near Kyoto Station",
+    ctaLabel: "Check Kyoto Station hotels →",
+    url: whereToStayKyotoAreas[0].url,
+    why: "The 11-minute JR ride to Saga-Arashiyama starts here, and so does the Kyoto AVANTI walking tour.",
+  },
+  {
+    label: kyotoKimonoOokiniArashiyama.title,
+    ctaLabel: "Check kimono in Arashiyama →",
+    url: kyotoKimonoOokiniArashiyama.url,
+    why: "A store in Arashiyama means no train ride in kimono, and a dressing slot is an appointment to book ahead.",
+  },
+  {
+    label: saganoHozugawaGuaranteedTour.title,
+    ctaLabel: "Check the train and boat day →",
+    url: saganoHozugawaGuaranteedTour.url,
+    why: "For a full day here, this holds the torokko seat and the river boat in one booking.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The walks start at stations and the free grove has no ticket office to ask, so an open map does the work.",
+  },
+];
+
+/** Yufuin no Mori, Nyoirin-ji, Dazaifu and the hells: the lead listing for this route. */
+export const yufuinBeppuNoMoriTour: KlookTour = {
+  title: "Kyushu one-day tour: Yufuin no Mori train, Yufuin, Nyoirin-ji, Dazaifu & the Beppu hells",
+  desc: "A shared 10.5-hour day from Fukuoka. One route has Umi Jigoku and the Yufuin no Mori train, the other Umi Jigoku and Kamado Jigoku tickets",
+  url: klookLink("https://www.klook.com/en-US/activity/95611-beppu-onsen-yufuin-one-day-tour-fukuoka/"),
+};
+
+/** The ropeway version. */
+export const yufuinBeppuRopewayTour: KlookTour = {
+  title: "Dazaifu, Yufuin, Beppu Ropeway & Kamado Jigoku day tour",
+  desc: "A 10-hour coach day from Fukuoka with a complimentary onsen egg and lemon soda; seats are taken in order of arrival",
+  url: klookLink("https://www.klook.com/en-US/activity/129252-dazaifu-yufuin-beppu-ropeway-kamado-jigoku-one-day-tour/"),
+};
+
+/** The listing that names Kinrin Lake. */
+export const yufuinKinrinNyoirinjiTour: KlookTour = {
+  title: "Kyushu one-day tour: Nyoirin-ji, Mt. Yufu, Yufuin, Kinrin Lake & the hells",
+  desc: "A 10-hour day from Fukuoka in Chinese, English and Cantonese; the listing shows a minimum of 4 people",
+  url: klookLink("https://www.klook.com/en-US/activity/153188-nyoirinji-temple-beppu-hell-yufuin-tour-chinese-and-english-guide/"),
+};
+
+/** The one listing here with an onsen facility on the route. */
+export const yufuinHyotanOnsenTour: KlookTour = {
+  title: "Kyushu onsen day tour: Hyotan Onsen, Yufuin, Dazaifu & Umi Jigoku",
+  desc: "About 10 hours from Fukuoka with Hyotan Onsen on the route; check what your package covers, and bring or rent a towel",
+  url: klookLink("https://www.klook.com/en-US/activity/181573-hyoutan-onsen-yufuin-floral-village-dazaifu-tenmangu-sea-hell/"),
+};
+
+/** Hita's old town on the same day. */
+export const yufuinBeppuHitaTour: KlookTour = {
+  title: "One-day trip to Oita: Yufuin, Beppu & Hita old town",
+  desc: "A 10-hour day from Fukuoka that adds Hita's old town to Yufuin and Beppu",
+  url: klookLink("https://www.klook.com/en-US/activity/186820-kyushu-oita-day-trip-yufuin-beppu-hita-old-town-itinerary/"),
+};
+
+/** Dazaifu and Bungo-Mori, with a Japanese-English guide. */
+export const yufuinBeppuBungoMoriTour: KlookTour = {
+  title: "Dazaifu, Bungo-Mori, Beppu & Yufuin 1-day bus tour",
+  desc: "A 10.5-hour shared bus day from Fukuoka with a Japanese-English guide; the bus has no toilet, and a date short of its minimum is cancelled 3 days ahead with a full refund",
+  url: klookLink("https://www.klook.com/en-US/activity/117277-dazaifu-bungo-mori-beppu-yufuin-1-day-bus-tour-from-fukuoka/"),
+};
+
+/** A car and driver, for a route the coaches do not run. */
+export const fukuokaPrivateCharter: KlookTour = {
+  title: "Customized chartered car from Fukuoka",
+  desc: "A private car with a driver for 8 or 10 hours on your own route, with attraction admission not included",
+  url: klookLink("https://www.klook.com/en-US/activity/9118-beppu-eight-hot-springs-yufuin-spa-town-one-day-private-tour/"),
+};
+
+/** For a stay in Yufuin or Beppu rather than a day. */
+export const jrKyushuRailPass: KlookTour = {
+  title: "JR Kyushu Rail Pass (North, South or All Kyushu)",
+  desc: "Three, five or seven days depending on the area, for non-Japanese passport holders on a Temporary Visitor stamp; Klook's guide lists Hakata, Yufuin and Beppu inside the North pass",
+  url: klookLink("https://www.klook.com/en-US/activity/2371-jr-kyushu-jr-pass/"),
+};
+
+/** Around a Fukuoka coach day. The hotel comes first because the day starts early. */
+export const yufuinBeppuTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels at Hakata Station",
+    ctaLabel: "Check Hakata hotels →",
+    url: fukuokaStayAreas[1].url,
+    why: "One listing shows an 08:30 departure and tours do not wait for latecomers, so the night before decides the day.",
+  },
+  {
+    label: jrKyushuRailPass.title,
+    ctaLabel: "Check the JR Kyushu pass →",
+    url: jrKyushuRailPass.url,
+    why: "If you would rather stay a night in Yufuin or Beppu, this is the pass to price against single fares.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Meeting points, free time in Yufuin and the walk back to the coach all depend on a working map.",
+  },
+  {
+    label: fukuokaPrivateCharter.title,
+    ctaLabel: "Check the private car →",
+    url: fukuokaPrivateCharter.url,
+    why: "For a family or a group, a car and driver gives you your own stops and breaks.",
+  },
+];
