@@ -881,7 +881,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             <strong>What to book for Day 3.</strong> teamLab Planets, without exception — the entry
             window is 30 minutes, there is no counter at the museum, and the popular slots go weeks
             ahead; our{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets tickets guide</Link>{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
             also covers what to wear, because parts of it are walked barefoot through water. Then the two
             fixed departures: the Tsukiji food walk, which runs in small groups while the outer market is
             still trading, and the sunset boat, which is an hour rather than a dinner cruise. Our{" "}
@@ -1213,7 +1213,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             anchor. Day 2 has the Tokyo National Museum in Ueno Park, ¥1,000 for an adult and open
             9:30–17:00 with later Friday and Saturday hours — closed Mondays — read off tnm.jp on{" "}
             {CHECKED}. Day 3 has{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets</Link>, which is
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets</Link>, which is
             indoors throughout, and{" "}
             <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis</Link> inside the
             DECKS building a few minutes away in Odaiba. Day 1&apos;s rooftop is the one stop that rain
@@ -1528,7 +1528,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" className={styles.relatedCard}>
+            <Link href="/guides/attractions/teamlab-planets-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4z" />
@@ -1536,7 +1536,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Prices, How to Book &amp; Planets vs Borderless</p>
+                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Price, Hours and How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

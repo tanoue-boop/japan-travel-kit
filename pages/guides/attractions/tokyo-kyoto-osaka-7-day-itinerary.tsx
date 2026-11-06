@@ -301,7 +301,7 @@ const days: Day[] = [
         teamLab Planets, without exception: entry is a 30-minute slot, the official store states that
         nothing is sold on site, and the adult price moves with the date — {PRICES.teamlabPlanets.adult}{" "}
         on the figures we checked. Our{" "}
-        <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets tickets guide</Link>{" "}
+        <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
         also covers what to wear, because parts of it are walked barefoot through water. The kimono
         appointment is the booking that shapes this day rather than decorating it — the Klook listing
         for Kimono Yae, by Kaminarimon, asks for the outfit back by 17:30, so plan the return before
@@ -1359,7 +1359,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
           </p>
           <p className={styles.bodyText}>
             <strong>In Tokyo,</strong> Day 3 is already weatherproof:{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets</Link> is indoors
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets</Link> is indoors
             throughout and Solamachi under Skytree is a mall. Day 2 is the vulnerable one, because an
             observation deck in low cloud shows you cloud — move the SHIBUYA SKY slot to the Day 3
             evening rather than sitting it out, and our{" "}
@@ -1763,7 +1763,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" className={styles.relatedCard}>
+            <Link href="/guides/attractions/teamlab-planets-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6-10-6-10-6z" />
@@ -1771,7 +1771,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Prices, How to Book &amp; Planets vs Borderless</p>
+                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Price, Hours and How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

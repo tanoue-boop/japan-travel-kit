@@ -1237,6 +1237,12 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            <Link href="/guides/money/best-travel-insurance-japan" className={styles.relatedCard}>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best Travel Insurance for Japan 2026: Who Needs What, Cost</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/money/japan-ski-travel-insurance" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

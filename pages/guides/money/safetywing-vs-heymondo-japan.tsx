@@ -9,15 +9,20 @@ const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614
 // TODO: replace with approved affiliate link
 const HEYMONDO_URL = "https://heymondo.com/";
 
+// Rows re-read on both insurers' own pages on 6 Nov 2026 (task jtk-20261106-A24). The old table
+// had SafetyWing charging a per-claim excess, a Heymondo winter-sports add-on and a 72-hour
+// waiting period; neither insurer's pages say any of those. "Not stated" means just that.
 const compareRows = [
-  { factor: "Policy model", sw: "Subscription, billed every 4 weeks", hm: "Single trip with fixed dates" },
-  { factor: "Pricing", sw: "Flat 4-weekly rate (quote-based)", hm: "Per-trip premium (quote-based, by age/length)" },
+  { factor: "Policy model", sw: "Fixed dates from 5 days, or a subscription billed every 4 weeks", hm: "Single trip, annual multi-trip or long stay" },
+  { factor: "Published price", sw: "US$62.72 per 4 weeks, ages 10–39", hm: "None. Quote only" },
   { factor: "Best trip length", sw: "Long or open-ended / undated", hm: "Defined trips (days to a few weeks)" },
-  { factor: "Medical limits", sw: "Solid but leaner", hm: "High medical & evacuation cover" },
-  { factor: "App & medical chat", sw: "App-based claims", hm: "24/7 in-app doctor chat (advantage)" },
-  { factor: "Adventure / skiing", sw: "Limited", hm: "Winter-sports add-on available" },
-  { factor: "Waiting period (buy after departure)", sw: "Cover from your chosen start", hm: "Waiting period applies (often ~72h)" },
-  { factor: "Deductible / excess", sw: "Per-claim excess applies", hm: "Varies by plan" },
+  { factor: "Medical limit", sw: "US$250,000 (Essential)", hm: "Up to US$10,000,000" },
+  { factor: "App & medical chat", sw: "App-based claims", hm: "24/7 in-app doctor chat" },
+  { factor: "Skiing", sw: "On piste with a helmet; off-piste excluded", hm: "Skiing not named on the plan page" },
+  { factor: "Search and rescue", sw: "Not on Essential", hm: "Up to US$10,000 if lost during the trip" },
+  { factor: "Trip cancellation", sw: "Not listed on Essential", hm: "Up to US$7,000" },
+  { factor: "Waiting period (buy after departure)", sw: "Not stated", hm: "Not stated on the plan page" },
+  { factor: "Deductible", sw: "None on either plan", hm: "“Our Heymondo insurances don't have a deductible”" },
 ];
 
 const pickSafetyWing = [
@@ -31,25 +36,25 @@ const pickHeymondo = [
   "You have a defined trip of a few days to a few weeks",
   "You want high medical limits and strong emergency cover",
   "24/7 in-app English medical chat matters to you in Japan",
-  "You're skiing or doing adventure activities (with the add-on)",
+  "You want trip cancellation cover, up to US$7,000",
 ];
 
 const faqItems = [
   {
     q: "SafetyWing or Heymondo for Japan — which is better?",
-    a: "It depends on your trip. Heymondo is the stronger all-round choice for a standard, defined Japan trip: higher medical limits, 24/7 in-app medical chat, and winter-sports add-ons. SafetyWing is better for long or open-ended stays thanks to its subscription model, which you can cancel when you leave. Neither is universally 'better' — match the model to your trip.",
+    a: "It depends on your trip. Heymondo lists the higher medical limit, 24/7 in-app doctor chat and trip cancellation cover. SafetyWing publishes its price and suits long or open-ended stays because its subscription can stop when you leave. Match the model to your trip.",
   },
   {
     q: "Is SafetyWing or Heymondo cheaper for Japan?",
-    a: "There's no fixed answer because both are quote-based. SafetyWing charges a flat rate every four weeks, which can work out cheaper for very long, undated stays. Heymondo prices a single trip by your age and dates, which is often better value for a short, defined trip with higher cover. Always get a quote for your exact dates and compare the cover, not just the price.",
+    a: "We cannot say, because only one publishes a price. SafetyWing Essential is US$62.72 per 4 weeks at ages 10–39, and rises with age. Heymondo gives no price without a quote. Get a quote for your exact dates and compare the cover as well as the price. Read on 6 Nov 2026.",
   },
   {
     q: "Does Heymondo or SafetyWing cover skiing in Japan?",
-    a: "Heymondo offers winter-sports cover as an add-on, which suits a Niseko or Hakuba ski trip. SafetyWing's standard cover for skiing is more limited. Either way, confirm that your specific activity is named in the policy wording before you travel — winter sports are commonly excluded unless explicitly added.",
+    a: "SafetyWing covers skiing and snowboarding on piste with a helmet and excludes off-piste. Heymondo's plan page lists sledding in ski resorts but does not name skiing, so ask it in writing before you buy. Read on 6 Nov 2026.",
   },
   {
     q: "Can I buy either policy after arriving in Japan?",
-    a: "Yes for both, with conditions. SafetyWing can be started while you're already travelling. Heymondo can be bought after departure, but a waiting period (commonly around 72 hours) usually applies before cover begins, and anything already known or pre-existing won't be covered. Buying before you leave home is always the safer option.",
+    a: "SafetyWing says you can sign up during your travels. Heymondo's plan page does not state a rule for buying after departure, so check its quote. Anything you already have when you buy will not be covered, so buying before you leave home is the safer option.",
   },
   {
     q: "Which has better support if I get sick in Japan?",
@@ -192,7 +197,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Pricing model</p>
-                <p className={styles.verdictStatValue}>Subscription vs per-trip</p>
+                <p className={styles.verdictStatValue}>Published vs quote only</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>In-app medical chat</p>
@@ -200,9 +205,9 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> Heymondo is the better all-round pick for a standard Japan trip;
-              SafetyWing is the flexible choice for long or undated stays. Prices are quote-based — get a quote
-              for your exact dates before deciding.
+              <strong>In short:</strong> Heymondo lists the higher limits and cancellation cover. SafetyWing
+              publishes its price and suits long or undated stays. Get a quote for your exact dates before
+              deciding.
             </p>
           </div>
         </div>
@@ -256,8 +261,8 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Details are a 2026 general guide and vary by plan, country of residence, and date — confirm on each
-            provider&apos;s site before you buy.
+            Read on both insurers&apos; own pages on 6 Nov 2026. Details vary by plan, country of residence and
+            date, so confirm on each provider&apos;s site before you buy.
           </p>
         </section>
 
@@ -310,11 +315,13 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             out is simpler and often cheaper than insuring an uncertain block of trip dates.
           </p>
           <p className={styles.bodyText}>
-            Want the wider field, including World Nomads for ski trips? See our roundup of the{" "}
+            This page only compares these two. For every kind of trip, see our guide to the{" "}
             <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               best travel insurance for Japan
-            </Link>{" "}
-            — it also covers whether you need travel insurance for Japan at all.
+            </Link>. Ski trips have their own guide: the{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance" style={{ color: "var(--red)", fontWeight: 600 }}>
+              best travel insurance for skiing in Japan
+            </Link>.
           </p>
         </section>
 

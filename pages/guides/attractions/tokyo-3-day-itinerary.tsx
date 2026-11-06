@@ -582,7 +582,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             <strong>What to book for Day 2.</strong> teamLab Planets, without exception — the entry
             window is 30 minutes, there is no counter at the museum, and the popular slots go weeks
             ahead. Our{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets tickets guide</Link>{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
             also covers what to wear, because parts of it are walked barefoot through water. Skytree is
             worth booking for a different reason: the same-day counter adds a service fee per ticket, so
             buying ahead is cheaper rather than safer — the detail is in our{" "}
@@ -1064,7 +1064,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" className={styles.relatedCard}>
+            <Link href="/guides/attractions/teamlab-planets-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4z" />
@@ -1072,7 +1072,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Prices, How to Book &amp; Planets vs Borderless</p>
+                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Price, Hours and How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

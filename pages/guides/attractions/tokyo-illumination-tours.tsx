@@ -649,7 +649,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             <GygCompareButton slug="tokyo-illumination-tours" listing={gygTokyoSkytree} />
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            The same winter evening also suits an indoor booking if the weather turns: <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>teamLab Planets tickets</Link> are sold by
+            The same winter evening also suits an indoor booking if the weather turns: <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>teamLab Planets tickets</Link> are sold by
             timed slot. If you are adding a night away from the city, the <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>Hakone Free Pass</Link> covers the loop for two days, and our{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM for Japan</Link> ranking keeps your maps working on the walk between lights.
           </p>

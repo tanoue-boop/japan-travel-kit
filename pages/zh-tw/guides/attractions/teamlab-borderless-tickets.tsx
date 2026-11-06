@@ -109,7 +109,7 @@ const vsPlanetsRows = [
   {
     factor: "地點",
     borderless: "港區．麻布台之丘——神谷町站步行 2 分鐘",
-    planets: "豐洲——新豐洲站步行 1 分鐘",
+    planets: "豐洲——新豐洲站 1A 出口步行 3 分鐘",
   },
   { factor: "成人票", borderless: `${ADULT}，依日期與時段`, planets: `${priceLabel(PLANETS.adult, "zh-tw")}，依日期與時段` },
   { factor: "4～12 歲", borderless: CHILD, planets: priceLabel(PLANETS.child, "zh-tw") },
@@ -469,7 +469,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             正因為這個設計，這張票值得先規劃。趕一小時只能看到幾個有名的展間；大約兩小時才夠你亂走、折返，
             並找到那些要等才會出現的作品。這也讓無界成為東京兩間 teamLab 當中比較偏成人、比較適合攝影的那一間——
             想找赤腳走進水裡的豐洲那一間，以及 Planets 那一方的考量，請看我們的{" "}
-            <Link href="/zh-tw/guides/attractions/teamlab-tokyo-tickets">teamLab Planets 門票攻略</Link>。
+            <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票攻略</Link>。
           </p>
         </section>
 
@@ -627,7 +627,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             <strong>想「看」藝術就訂無界；想「走進」藝術，或要帶小孩，就訂 Planets。</strong>東京有兩間 teamLab 美術館，
             遊客經常訂錯。它們是不同的場館、不同的門票，位在城市的不同區域，下面這些數字就是決定的關鍵。
             Planets 那一方的完整資訊——赤腳規定、置物櫃、兒童相關規定——請看我們的{" "}
-            <Link href="/zh-tw/guides/attractions/teamlab-tokyo-tickets">teamLab Planets 門票攻略</Link>。
+            <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票攻略</Link>。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -689,7 +689,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/teamlab-kyoto-tickets", title: "teamLab 京都門票：票價、營業時間與預約（英文）" },
             { href: "/guides/attractions/teamlab-botanical-garden-osaka-tickets", title: "teamLab 植物園 大阪門票：票價與營業時間（英文）" },
             { href: "/guides/attractions/tokyo-joypolis-tickets", title: "東京 Joypolis 門票（2026）：通行證票價、營業時間與身高限制（英文）" },
-            { href: "/zh-tw/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 門票（2026）：票價、預約方式與無界比較" },
+            { href: "/zh-tw/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets 門票 2026：票價、時間與預約方式" },
             { href: "/zh-tw/guides/attractions/shibuya-sky-tickets", title: "澀谷SKY 門票（2026）：票價、最佳時段與預約方式" },
             { href: "/guides/transport/tokyo-transportation", title: "東京交通攻略（2026）：電車、地鐵與 IC 卡（英文）" },
             { href: "/zh-tw/guides/attractions", title: "日本景點門票攻略（2026）：官方票價、預約方式與一日遊 →" },

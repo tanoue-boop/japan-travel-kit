@@ -318,7 +318,7 @@ const days: Day[] = [
         teamLab Planets, without exception: entry is a 30-minute slot, the official store states
         nothing is sold on site, and the adult price moves with the date — {PRICES.teamlabPlanets.adult}{" "}
         on the figures we checked. Our{" "}
-        <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets tickets guide</Link>{" "}
+        <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
         also covers what to wear, because parts of it are walked barefoot through water. The kimono
         appointment shapes this day rather than decorating it — the Klook listing for Kimono Yae, by
         Kaminarimon, asks for the outfit back by 17:30, so plan the return before Toyosu rather than
@@ -1749,7 +1749,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             <strong>In Tokyo,</strong> Day 3 is already weatherproof:{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets</Link> is indoors
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets</Link> is indoors
             throughout and Solamachi under Skytree is a mall. Day 2 is the vulnerable one, because an
             observation deck in low cloud shows you cloud &mdash; move the rooftop slot to a Day 3 or
             Day 4 evening, and our{" "}

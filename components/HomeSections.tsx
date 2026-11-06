@@ -50,7 +50,7 @@ export const CITY_HREFS = {
 // The translated editions list the ones they have a translation of, in this order.
 export const POPULAR_HREFS = [
   "/guides/attractions/shibuya-sky-tickets",
-  "/guides/attractions/teamlab-tokyo-tickets",
+  "/guides/attractions/teamlab-planets-tickets",
   "/guides/attractions/tokyo-disney-tickets",
   "/guides/attractions/mt-fuji-day-tour-from-tokyo",
   "/guides/attractions/kyoto-nara-day-tour-from-osaka",

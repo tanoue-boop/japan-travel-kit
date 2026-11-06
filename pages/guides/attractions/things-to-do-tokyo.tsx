@@ -296,7 +296,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             Tokyo has two teamLab digital-art museums — Planets in Toyosu and Borderless in Azabudai — both
             immersive, walk-through experiences that use timed entry and sell out fast. Our{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" style={linkStyle}>teamLab tickets guide</Link>{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab tickets guide</Link>{" "}
             compares the two and explains which suits your trip and how to book before they&apos;re gone.
           </p>
         </section>
@@ -479,7 +479,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" className={styles.relatedCard}>
+            <Link href="/guides/attractions/teamlab-planets-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6-10-6-10-6z" />
@@ -487,7 +487,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Prices, How to Book &amp; Planets vs Borderless</p>
+                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Price, Hours and How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

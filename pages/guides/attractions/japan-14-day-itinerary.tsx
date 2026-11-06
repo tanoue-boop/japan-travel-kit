@@ -279,7 +279,7 @@ const legs: Leg[] = [
           <>
             teamLab Planets, without exception — the entry window is 30 minutes, there is no counter
             at the museum, and the popular slots go weeks ahead. Our{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets tickets guide</Link>{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
             also covers what to wear, because parts of it are walked barefoot through water. Skytree
             is worth booking for a different reason: the same-day counter adds a service fee per
             ticket, so buying ahead is cheaper rather than safer.
@@ -1947,7 +1947,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" className={styles.relatedCard}>
+            <Link href="/guides/attractions/teamlab-planets-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6-10-6-10-6z" />
@@ -1955,7 +1955,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Prices, How to Book &amp; Planets vs Borderless</p>
+                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Price, Hours and How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

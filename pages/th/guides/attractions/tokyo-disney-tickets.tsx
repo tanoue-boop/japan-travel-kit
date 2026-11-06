@@ -688,7 +688,7 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             { href: "/guides/attractions/fuji-q-highland-tickets", title: "ตั๋วฟูจิคิว ไฮแลนด์ (2026): ราคา Free Pass, Q Pack และวิธีเดินทาง (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "ตั๋ว Warner Bros. Studio Tour Tokyo (2026): ราคาและวิธีจอง (ภาษาอังกฤษ)" },
             { href: "/th/guides/attractions/shibuya-sky-tickets", title: "ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง" },
-            { href: "/th/guides/attractions/teamlab-tokyo-tickets", title: "ตั๋ว teamLab Planets (2026): ราคา รอบเข้าชม และเทียบกับ Borderless" },
+            { href: "/th/guides/attractions/teamlab-planets-tickets", title: "ตั๋ว teamLab Planets 2026 ราคา เวลา" },
             { href: "/guides/transport/tokyo-transportation", title: "เดินทางในโตเกียว (2026): รถไฟ รถไฟใต้ดิน และบัตร IC (ภาษาอังกฤษ)" },
             { href: "/guides/attractions", title: "กิจกรรมอื่น ๆ ในญี่ปุ่น (ภาษาอังกฤษ) →" },
             { href: "/th/guides/attractions/usj-tickets-express-pass", title: "บัตร USJ และ Express Pass USJ (2026): ควรซื้อแบบไหน" },

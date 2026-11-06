@@ -44,7 +44,7 @@ const groups: ZhHubGroup[] = [
     desc: "單一場館的入場券——指定時段的美術館與展望台。官方票價，以及為什麼「時段」常常比「門票」更重要。",
     routes: [
       "/zh-tw/guides/attractions/shibuya-sky-tickets",
-      "/zh-tw/guides/attractions/teamlab-tokyo-tickets",
+      "/zh-tw/guides/attractions/teamlab-planets-tickets",
       "/zh-tw/guides/attractions/teamlab-borderless-tickets",
     ],
   },
@@ -86,7 +86,7 @@ const groups: ZhHubGroup[] = [
 const BLURBS: Record<string, string> = {
   "/zh-tw/guides/attractions/shibuya-sky-tickets":
     "澀谷十字路口上方的開放式屋頂。官方票價、為什麼日落場最先賣完，以及海外信用卡刷不過時怎麼訂。",
-  "/zh-tw/guides/attractions/teamlab-tokyo-tickets":
+  "/zh-tw/guides/attractions/teamlab-planets-tickets":
     "豐洲的 Planets：官方票價、30 分鐘入場時段、赤腳涉水區該穿什麼，以及和無界的完整比較。",
   "/zh-tw/guides/attractions/teamlab-borderless-tickets":
     "麻布台之丘的無界：浮動定價怎麼算、指定時段與 Flexible Pass 的差別、營業時間與休館日。",

@@ -686,7 +686,7 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/tokyo-tower-tickets", title: "ตั๋ว Tokyo Tower (2026): ราคา Main Deck vs Top Deck และวิธีจอง (ภาษาอังกฤษ)" },
             { href: "/th/guides/attractions/tokyo-skytree-tickets", title: "ตั๋ว Tokyo Skytree (2026): ราคา และเลือกชั้น 350 หรือ 450" },
             { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket (2026): 24, 48 หรือ 72 ชั่วโมง คุ้มไหม? (ภาษาอังกฤษ)" },
-            { href: "/th/guides/attractions/teamlab-tokyo-tickets", title: "ตั๋ว teamLab Planets (2026): ราคา รอบเข้าชม และเทียบกับ Borderless" },
+            { href: "/th/guides/attractions/teamlab-planets-tickets", title: "ตั๋ว teamLab Planets 2026 ราคา เวลา" },
             { href: "/th/guides/attractions/teamlab-borderless-tickets", title: "ตั๋ว teamLab Borderless (2026): ราคา รอบเวลา และช่องทางซื้อ" },
             { href: "/guides/transport/tokyo-transportation", title: "เดินทางในโตเกียว (2026): รถไฟ รถไฟใต้ดิน และบัตร IC (ภาษาอังกฤษ)" },
             { href: "/guides/attractions", title: "เที่ยวญี่ปุ่นที่อื่นอีก (ภาษาอังกฤษ) →" },

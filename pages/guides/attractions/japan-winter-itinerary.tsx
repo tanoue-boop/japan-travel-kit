@@ -323,7 +323,7 @@ const days: Day[] = [
         <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets guide</Link> has the
         two price bands and the booking window in full. teamLab Planets is a 30-minute admission slot
         with no door sales, covered in our{" "}
-        <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets guide</Link>. Both are
+        <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets guide</Link>. Both are
         indoor-or-sheltered, which makes this the right day to move to if Day 3 is snowed off.
       </>
     ),

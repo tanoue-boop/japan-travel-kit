@@ -89,7 +89,7 @@ const cnNavItems = [
 // logo and the CTA point at pages that exist in Korean — the Shibuya Sky guide is
 // the edition's entry page — rather than at a hub this edition does not have yet.
 const koDestinationItems = [
-  { href: "/ko/guides/attractions/teamlab-tokyo-tickets", label: "팀랩 플래닛" },
+  { href: "/ko/guides/attractions/teamlab-planets-tickets", label: "팀랩 플래닛" },
   { href: "/ko/guides/attractions/tokyo-disney-tickets",  label: "도쿄 디즈니" },
   { href: "/ko/guides/attractions/usj-tickets-express-pass", label: "오사카 USJ" },
   { href: "/guides/attractions/things-to-do-tokyo",       label: "도쿄 관광(영어)" },
@@ -107,7 +107,7 @@ const koNavItems = [
 // Same shape and the same rule, with "(ภาษาอังกฤษ)" as the marker for a
 // destination that has not been translated.
 const thDestinationItems = [
-  { href: "/th/guides/attractions/teamlab-tokyo-tickets", label: "teamLab Planets" },
+  { href: "/th/guides/attractions/teamlab-planets-tickets", label: "teamLab Planets" },
   { href: "/th/guides/attractions/tokyo-disney-tickets",  label: "โตเกียวดิสนีย์" },
   { href: "/th/guides/attractions/usj-tickets-express-pass", label: "USJ โอซาก้า" },
   { href: "/guides/attractions/things-to-do-tokyo",       label: "เที่ยวโตเกียว (อังกฤษ)" },

@@ -97,11 +97,18 @@ const SEARCH_TERMS = {
     ko: "도톤보리 리버크루즈",
     th: "ล่องเรือโดทงโบริ",
   },
-  "/guides/attractions/teamlab-tokyo-tickets": {
+  "/guides/attractions/teamlab-planets-tickets": {
     "zh-tw": "teamLab Planets 門票",
     "zh-cn": "teamLab Planets 门票",
     ko: "팀랩 플래닛 예약",
     th: "ตั๋ว teamLab Planets",
+  },
+  // From 2026-11-06 the comparison page, so it must not chase the Planets ticket terms.
+  "/guides/attractions/teamlab-tokyo-tickets": {
+    "zh-tw": "teamLab Planets 無界 比較",
+    "zh-cn": "teamLab Planets 无界 比较",
+    ko: "팀랩 플래닛 보더리스 비교",
+    th: "teamLab Planets หรือ Borderless",
   },
   "/guides/attractions/tokyo-disney-tickets": {
     "zh-tw": "東京迪士尼門票",

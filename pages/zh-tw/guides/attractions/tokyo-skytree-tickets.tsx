@@ -460,7 +460,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
             { href: "/guides/attractions/tokyo-subway-ticket", title: "東京地鐵通票（2026）：24、48 還是 72 小時？值得買嗎（英文）" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "華納兄弟東京影城之旅門票（2026）：票價與預約方式（英文）" },
             { href: "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo", title: "富士山一日遊（東京出發．2026）：行程怎麼選、五合目看什麼" },
-            { href: "/zh-tw/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 門票（2026）：票價、預約方式與無界比較" },
+            { href: "/zh-tw/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets 門票 2026：票價、時間與預約方式" },
             { href: "/zh-tw/guides/attractions", title: "更多日本景點門票攻略 →" },
           ]}
         />

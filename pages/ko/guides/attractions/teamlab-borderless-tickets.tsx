@@ -111,7 +111,7 @@ const vsPlanetsRows = [
   {
     factor: "위치",
     borderless: "미나토구 아자부다이힐스 — 가미야초역에서 2분",
-    planets: "도요스 — 신토요스역에서 1분",
+    planets: "도요스 — 신토요스역 1A 출구에서 도보 3분",
   },
   { factor: "성인 티켓", borderless: `${ADULT}, 날짜・시간대별`, planets: `${priceLabel(PLANETS.adult, "ko")}, 날짜・시간대별` },
   { factor: "만 4~12세", borderless: CHILD, planets: priceLabel(PLANETS.child, "ko") },
@@ -476,7 +476,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             보고 끝나고, 두 시간쯤 되어야 돌아다니고 되돌아가며 기다려야 나타나는 작품까지 찾을 수 있습니다.
             그래서 팀랩 보더리스는 도쿄의 두 팀랩 미술관 중 더 어른스럽고 사진 촬영에 더 잘 맞는 곳입니다. 도요스에서
             맨발로 물속을 걷는 쪽, 그리고 플래닛 쪽에서 본 선택은{" "}
-            <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 티켓 가이드</Link>
+            <Link href="/ko/guides/attractions/teamlab-planets-tickets">팀랩 플래닛 티켓 가이드</Link>
             를 보세요.
           </p>
         </section>
@@ -647,7 +647,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             도쿄에는 팀랩 미술관이 두 곳 있고, 방문객이 엉뚱한 쪽을 예약하는 일이 흔합니다. 도시의 다른 구역에
             있는 별개의 미술관이고 티켓도 따로이며, 결정을 내려 주는 숫자는 아래와 같습니다. 맨발 규칙, 사물함,
             어린이 관련 규정 등 플래닛 쪽의 전체 내용은{" "}
-            <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 티켓 가이드</Link>를 보세요.
+            <Link href="/ko/guides/attractions/teamlab-planets-tickets">팀랩 플래닛 티켓 가이드</Link>를 보세요.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -709,7 +709,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/teamlab-kyoto-tickets", title: "팀랩 교토 티켓: 가격, 운영 시간, 예약(영어)" },
             { href: "/guides/attractions/teamlab-botanical-garden-osaka-tickets", title: "팀랩 보태니컬 가든 오사카 티켓: 가격과 운영 시간(영어)" },
             { href: "/guides/attractions/tokyo-joypolis-tickets", title: "도쿄 조이폴리스 티켓(2026): 패스포트 가격, 운영 시간, 키 제한(영어)" },
-            { href: "/ko/guides/attractions/teamlab-tokyo-tickets", title: "팀랩 플래닛 예약(2026): 티켓 가격, 입장 시간, 보더리스와 비교" },
+            { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
             { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법" },
             { href: "/guides/transport/tokyo-transportation", title: "도쿄 교통 가이드(2026): 전철, 지하철, IC 카드(영어)" },
             { href: "/guides/attractions", title: "일본의 더 많은 즐길 거리(영어) →" },

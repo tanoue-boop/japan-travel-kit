@@ -804,7 +804,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it
             against the alternatives, and our{" "}
-            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance guide</Link>{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance">best travel insurance for skiing in Japan</Link>{" "}
             covers the other thing to sort before a lift ticket: standard travel policies routinely
             exclude snowsports.
           </p>
@@ -858,6 +858,12 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Gala Yuzawa Ski Day Trip from Tokyo: 71 Min, ¥8,000 Lifts</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/money/best-travel-insurance-japan" className={styles.relatedCard}>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best Travel Insurance for Japan 2026: Who Needs What, Cost</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

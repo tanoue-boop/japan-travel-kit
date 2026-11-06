@@ -235,13 +235,12 @@
     "/guides/esim/does-esim-work-in-japan#esim-days-table": 1549815,
     "/guides/esim/japan-esim-iphone#esim-days-table": 1549816,
     "/guides/esim/japan-esim-10-days#esim-days-table": 1549817,
-    "/guides/esim/sakura-mobile-review#brand-compare-table": 1549818
+    "/guides/esim/sakura-mobile-review#brand-compare-table": 1549818,
+    "/guides/attractions/teamlab-planets-tickets": 1549819,
+    "/ko/guides/attractions/teamlab-planets-tickets": 1549820,
+    "/zh-tw/guides/attractions/teamlab-planets-tickets": 1549821,
+    "/zh-cn/guides/attractions/teamlab-planets-tickets": 1549822,
+    "/th/guides/attractions/teamlab-planets-tickets": 1549823
   },
-  "spare": [
-    1549819,
-    1549820,
-    1549821,
-    1549822,
-    1549823
-  ]
+  "spare": []
 }

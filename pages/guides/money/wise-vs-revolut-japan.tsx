@@ -502,7 +502,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Whichever card you pick, the first yen it spends is usually on bookings made before you fly:
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>teamLab Planets tickets</Link>, <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>Shibuya Sky tickets</Link>{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>teamLab Planets tickets</Link>, <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>Shibuya Sky tickets</Link>{" "}
             and the <Link href="/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>Universal Studios Japan Express Pass</Link> all sell out by date. A card also pays a hospital bill
             only up to its limit, so check it against our <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best travel insurance for Japan</Link> comparison.
           </p>

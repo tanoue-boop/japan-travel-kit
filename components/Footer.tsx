@@ -74,7 +74,7 @@ const zhCols: FooterCol[] = [
     title: "熱門門票",
     links: [
       { href: "/zh-tw/guides/attractions/shibuya-sky-tickets",       label: "澀谷SKY 門票"         },
-      { href: "/zh-tw/guides/attractions/teamlab-tokyo-tickets",     label: "teamLab Planets 門票" },
+      { href: "/zh-tw/guides/attractions/teamlab-planets-tickets",     label: "teamLab Planets 門票" },
       { href: "/zh-tw/guides/attractions/tokyo-disney-tickets",      label: "東京迪士尼門票"        },
       { href: "/zh-tw/guides/attractions/usj-tickets-express-pass",  label: "日本環球影城門票"      },
       { href: "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo", label: "富士山一日遊"        },
@@ -109,7 +109,7 @@ const cnCols: FooterCol[] = [
     title: "热门门票",
     links: [
       { href: "/zh-cn/guides/attractions/shibuya-sky-tickets",       label: "涩谷SKY 门票"         },
-      { href: "/zh-cn/guides/attractions/teamlab-tokyo-tickets",     label: "teamLab Planets 门票" },
+      { href: "/zh-cn/guides/attractions/teamlab-planets-tickets",     label: "teamLab Planets 门票" },
       { href: "/zh-cn/guides/attractions/tokyo-disney-tickets",      label: "东京迪士尼门票"        },
       { href: "/zh-cn/guides/attractions/usj-tickets-express-pass",  label: "日本环球影城门票"      },
       { href: "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo", label: "富士山一日游"        },
@@ -135,7 +135,7 @@ const koCols: FooterCol[] = [
     title: "티켓 가이드",
     links: [
       { href: "/ko/guides/attractions/shibuya-sky-tickets",      label: "시부야 스카이 예약"   },
-      { href: "/ko/guides/attractions/teamlab-tokyo-tickets",    label: "팀랩 플래닛 예약"     },
+      { href: "/ko/guides/attractions/teamlab-planets-tickets",    label: "팀랩 플래닛 예약"     },
       { href: "/ko/guides/attractions/tokyo-disney-tickets",     label: "도쿄 디즈니랜드 티켓" },
       { href: "/ko/guides/attractions/usj-tickets-express-pass", label: "USJ 익스프레스 패스"  },
     ],
@@ -167,7 +167,7 @@ const thCols: FooterCol[] = [
     title: "ไกด์ตั๋ว",
     links: [
       { href: "/th/guides/attractions/shibuya-sky-tickets",      label: "ตั๋ว Shibuya Sky"       },
-      { href: "/th/guides/attractions/teamlab-tokyo-tickets",    label: "ตั๋ว teamLab Planets"   },
+      { href: "/th/guides/attractions/teamlab-planets-tickets",    label: "ตั๋ว teamLab Planets"   },
       { href: "/th/guides/attractions/tokyo-disney-tickets",     label: "ตั๋วดิสนีย์แลนด์โตเกียว" },
       { href: "/th/guides/attractions/usj-tickets-express-pass", label: "Express Pass USJ"       },
     ],

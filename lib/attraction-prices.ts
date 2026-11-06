@@ -159,7 +159,7 @@ export const PRICES = {
   teamlabPlanets: {
     name: "teamLab Planets TOKYO",
     ticket: "Admission, Toyosu",
-    href: "/guides/attractions/teamlab-tokyo-tickets",
+    href: "/guides/attractions/teamlab-planets-tickets",
     city: "tokyo",
     group: "tickets",
     adult: "from ¥3,800",
@@ -169,9 +169,9 @@ export const PRICES = {
     bookingNote:
       "Entry is a 30-minute slot, the official store states that nothing is sold on site, and the adult price moves with the date — so the slot is the booking.",
     source: "official teamLab Planets ticket store (teamlabplanets.dmm.com)",
-    // Re-read off the official store's own price table, in both its English and
-    // Japanese editions, on 25 October 2026: every tier below was unchanged.
-    checked: "2026-10-25",
+    // Re-read on teamlab.art and the official store's price table on 6 November 2026:
+    // every tier below was unchanged.
+    checked: "2026-11-06",
     klook: klook("Klook: teamLab Planets Toyosu ticket", teamlabPlanetsTicketUrl),
   },
   teamlabBorderless: {
@@ -446,3 +446,20 @@ export const PRICE_GROUP_LABELS: Record<PriceGroup, { label: string; desc: strin
 export function pricesInGroup(group: PriceGroup): AttractionPrice[] {
   return attractionPrices.filter((p) => p.group === group);
 }
+
+/**
+ * teamLab Planets, as read on teamlab.art/e/planets on 6 Nov 2026. Read by the answer block
+ * in every edition and by the JSON-LD, so the table and the markup cannot disagree.
+ */
+export const PLANETS_FACTS = {
+  adultYen: 3800,
+  lowYen: 1500,
+  highYen: 12000,
+  offerCount: 5,
+  startDate: "2018-07-07",
+  endDate: "2027-12-31",
+  opens: "08:00",
+  closes: "22:00",
+  streetAddress: "6-1-16 Toyosu, Koto-ku",
+  postalCode: "135-0061",
+} as const;

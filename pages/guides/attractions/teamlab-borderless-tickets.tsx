@@ -113,7 +113,7 @@ const vsPlanetsRows = [
   {
     factor: "Where",
     borderless: "Azabudai Hills, Minato City — 2 min from Kamiyacho",
-    planets: "Toyosu — 1 min from Shin-Toyosu",
+    planets: "Toyosu — 3 min from Shin-Toyosu",
   },
   { factor: "Adult ticket", borderless: `${P.adult}, by date and slot`, planets: `${PLANETS.adult}, by date and slot` },
   { factor: "Ages 4–12", borderless: P.child ?? "—", planets: PLANETS.child ?? "—" },
@@ -397,6 +397,8 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
         {/* The answer, in one paragraph, before anything else in the body — the hero
             subtitle above describes the page, it does not answer the question. */}
         <p className={styles.bodyText}>
+          Not sure which museum to book? See our{" "}
+          <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo comparison of Planets and Borderless</Link>.{" "}
           An adult ticket to <strong>teamLab Borderless</strong> in <strong>Azabudai Hills</strong> starts at{" "}
           <strong>¥3,400</strong> on the official teamLab site, and the adult tier is dynamically priced, so
           ¥3,400 is the floor rather than the price for your own date. Entry is{" "}
@@ -559,7 +561,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             rooms and little else; about two hours lets you wander, double back, and find the works that only
             appear if you wait. It also means Borderless is the more adult, more photographic of Tokyo&apos;s
             two teamLab museums — see our{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets ticket guide</Link>{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets ticket guide</Link>{" "}
             for the barefoot, walk-through-water one in Toyosu, and for what the Planets side of the decision
             looks like.
           </p>
@@ -748,7 +750,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             book the wrong one. They are separate venues with separate tickets in different parts of the city,
             and the figures below are the ones that decide it. For the Planets side in full — the barefoot
             rules, the lockers, the kids&apos; policies — see our{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets ticket guide</Link>.
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets ticket guide</Link>.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -885,7 +887,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" className={styles.relatedCard}>
+            <Link href="/guides/attractions/teamlab-planets-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6-10-6-10-6z" />
@@ -893,7 +895,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Prices, How to Book &amp; Planets vs Borderless</p>
+                <p className={styles.relatedTitle}>teamLab Planets Tickets (2026): Price, Hours and How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

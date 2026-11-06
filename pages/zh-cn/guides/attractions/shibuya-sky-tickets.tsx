@@ -676,7 +676,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/tokyo-tower-tickets", title: "东京铁塔门票（2026）：票价、Main Deck 与 Top Deck、预订方式（英文）" },
             { href: "/zh-cn/guides/attractions/tokyo-skytree-tickets", title: "东京晴空塔门票（2026）：票价、350 与 450 楼怎么选" },
             { href: "/guides/attractions/tokyo-subway-ticket", title: "东京地铁通票（2026）：24、48 还是 72 小时——值得买吗？（英文）" },
-            { href: "/zh-cn/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 门票（2026）：票价、预约方式与无界比较" },
+            { href: "/zh-cn/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets 门票 2026：票价、时间与预约方式" },
             { href: "/zh-cn/guides/attractions/teamlab-borderless-tickets", title: "teamLab 无界 门票（2026）：票价、时段预约与购票渠道" },
             { href: "/guides/transport/tokyo-transportation", title: "东京交通攻略（2026）：电车、地铁与 IC 卡（英文）" },
             { href: "/zh-cn/guides/attractions", title: "日本景点门票攻略（2026）：官方票价、预约方式与一日游 →" },

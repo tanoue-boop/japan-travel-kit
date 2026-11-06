@@ -454,7 +454,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             { href: "/guides/attractions/tokyo-subway-ticket", title: "도쿄 서브웨이 티켓(2026): 24・48・72시간, 살 만한가(영어)" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "워너 브라더스 스튜디오 투어 도쿄 티켓(2026): 요금과 예약 방법(영어)" },
             { href: "/guides/attractions/mt-fuji-day-tour-from-tokyo", title: "도쿄 출발 후지산 1일 투어(2026): 어떤 투어로, 실제로 무엇을 보나(영어)" },
-            { href: "/ko/guides/attractions/teamlab-tokyo-tickets", title: "팀랩 플래닛 예약(2026): 티켓 가격, 입장 시간, 보더리스와 비교" },
+            { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
             { href: "/guides/attractions", title: "일본에서 할 것 더 보기(영어) →" },
           ]}
         />

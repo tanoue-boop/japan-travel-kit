@@ -29,6 +29,10 @@ const SPONSORED_REL = "sponsored noopener noreferrer";
 const DAY_TRIP_URL = hakubaSkiResortDayTourTokyo.url;
 const RENTAL_URL = nisekoSkiSnowboardRental.url;
 
+// Retitled 6 Nov 2026 (task jtk-20261106-A24) for the searches this page should own: "best
+// travel insurance for skiing in japan", "travel insurance for snowboarding in japan" and
+// "best travel insurance for a family ski trip to hokkaido". SafetyWing's prices, add-on rules
+// and Complete commitment were re-read that day (SW_CHECKED). The rest:
 // Every figure and quotation on this page was read on 25 October 2026:
 //  - SafetyWing's covered-activities list, the off-piste and heli-skiing
 //    exclusions, the helmet and on-piste condition, the Adventure Sports Add-On
@@ -45,6 +49,7 @@ const RENTAL_URL = nisekoSkiSnowboardRental.url;
 //  - Saitama Prefecture's helicopter rescue fee: pref.saitama.lg.jp's own page on
 //    the ordinance; Nagano's position on who pays: pref.nagano.lg.jp.
 const CHECKED = checkedLabel("2026-10-25");
+const SW_CHECKED = checkedLabel("2026-11-06");
 
 const skiRows = [
   {
@@ -55,9 +60,9 @@ const skiRows = [
     gear: "Lost checked luggage up to US$3,000 per plan; no separate winter-sports equipment benefit.",
   },
   {
-    provider: "SafetyWing Adventure Sports Add-On (US$10 / 28 days)",
+    provider: "SafetyWing Adventure Sports Add-On (US$10 / 28 days, subscriptions only)",
     skiing: "Adds free-style skiing, ski and snowboard jumping, ski-flying and skiing/snowboarding acrobatics to the Essential plan.",
-    offPiste: "Still excluded — the add-on's own exclusion list names heli-skiing and off-piste skiing/snowboarding.",
+    offPiste: "Still excluded — the add-on's own exclusion list names heli-skiing and off-piste skiing/snowboarding. Cover is up to US$100,000 lifetime.",
     rescue: "Unchanged: no search and rescue.",
     gear: "Unchanged.",
   },
@@ -100,15 +105,15 @@ const costRows = [
   },
   {
     plan: "Essential + Adventure Sports Add-On",
-    price: "+US$10 per 28 days",
+    price: "+US$10 per 28 days, subscriptions only",
     what: "Free-style, jumping, ski-flying and acrobatics on top. Off-piste and heli-skiing stay excluded.",
-    when: "Park riders. It is ten dollars, and it is not what buys you backcountry cover — nothing in this plan does.",
+    when: "Park riders on a subscription. Fixed-date plans cannot take it. It does not buy backcountry cover.",
   },
   {
     plan: "SafetyWing Nomad Insurance Complete",
-    price: "US$177.50 per month, ages 18–39",
+    price: "US$177.50 per month, ages 18–39, 12-month commitment",
     what: "US$1,500,000 annual medical maximum, sports without an add-on, and search and rescue at a recognised ski resort.",
-    when: "A long winter in Japan, or anyone who wants the resort search-and-rescue clause. This is the one clause that changes the risk picture.",
+    when: "Someone who wants a year of health cover anyway. It is a 12-month commitment, so it does not suit a single ski trip.",
   },
   {
     plan: "World Nomads Standard / Explorer",
@@ -118,7 +123,7 @@ const costRows = [
   },
   {
     plan: "Heymondo",
-    price: "Quoted per trip; US$250 deductible on medical claims",
+    price: "Quoted per trip; no published price",
     what: "Medical to US$10,000,000 and a named US$10,000 search-and-rescue benefit.",
     when: "If the headline medical limit and the rescue benefit matter more than a published ski clause — but get skiing confirmed in writing first.",
   },
@@ -169,12 +174,20 @@ const faqItems = [
     a: `Usually yes for on-piste skiing, and usually no the moment you leave the marked runs. SafetyWing's Nomad Insurance names skiing and snowboarding in its covered-activities list, with the condition that injuries are covered "as long as you're on piste and wearing a helmet", and the same list says skiing is "not covered off-piste and/or against the advice of the local ski school or local authoritative body". World Nomads goes further on its own published lists: all its plans include skiing and snowboarding "on piste or off piste within resort boundaries", and only the Explorer plan adds backcountry and outside-resort-boundary terrain. Heymondo's published standard cover names sledding in ski resorts and its Adventure sports add-on list does not name downhill skiing, so confirm that one in writing. All read off the providers' own pages on ${CHECKED}.`,
   },
   {
+    q: "Does travel insurance cover snowboarding in Japan?",
+    a: `Yes, on the same terms as skiing where the wording names it. SafetyWing lists snowboarding as covered on piste with a helmet and not covered off-piste. Jumping and acrobatics need its US$10 add-on, which is sold on subscriptions only. Read on ${SW_CHECKED}.`,
+  },
+  {
+    q: "What is the best travel insurance for a family ski trip to Hokkaido?",
+    a: `For marked runs, SafetyWing Essential, because children aged 14 days to 9 years are added free, up to two per adult, and on-piste skiing is covered with a helmet. It does not cover search and rescue or off-piste. Read on ${SW_CHECKED}.`,
+  },
+  {
     q: "Is off-piste skiing covered?",
     a: `Not by default anywhere, and the distinction that matters is not "off-piste" but "inside or outside the resort boundary". SafetyWing excludes off-piste skiing and snowboarding outright, and its US$10 Adventure Sports Add-On does not change that — the add-on's own exclusions name heli-skiing and off-piste. World Nomads covers off-piste within resort boundaries on every plan, and names backcountry, outside-resort-boundary, alpine ski touring and helicopter or snowcat access only on the Explorer plan. So if you intend to go through a Niseko or Hakuba backcountry gate, that is a plan-level decision you make before you buy, not an add-on you tick at checkout.`,
   },
   {
     q: "How much does ski travel insurance for Japan cost?",
-    a: `SafetyWing publishes US$62.72 per 4 weeks for Nomad Insurance Essential at ages 18–39, with the Adventure Sports Add-On at an extra US$10 per 28 days, and US$177.50 a month for Nomad Insurance Complete at the same ages. World Nomads and Heymondo are both quoted per trip by age and dates, so neither has a list price — Heymondo publishes a US$250 deductible on medical claims, and SafetyWing has no deductible on either plan. Figures read on ${CHECKED}. The useful way to read them: the winter-sports decision costs ten dollars if you ride the park, and about three times the premium if you want the Complete plan's resort search-and-rescue clause.`,
+    a: `SafetyWing publishes US$62.72 per 4 weeks for Nomad Insurance Essential at ages 10–39, with the Adventure Sports Add-On at an extra US$10 per 28 days on subscriptions, and US$177.50 a month for Nomad Insurance Complete at ages 18–39, which is a 12-month commitment. Prices rise with age. World Nomads and Heymondo are both quoted per trip, so neither has a list price. SafetyWing has no deductible on either plan. Read on ${SW_CHECKED}.`,
   },
   {
     q: "Who pays for a mountain rescue in Japan?",
@@ -206,13 +219,13 @@ const faqItems = [
   },
   {
     q: "Is SafetyWing or World Nomads better for a Japan ski trip?",
-    a: "On published ski wording, it depends entirely on where you intend to ride. Inside the ropes, SafetyWing names skiing and snowboarding, has no deductible and is cheap, and the Complete plan adds search and rescue at a recognised ski resort — which is the clause most ski trips should actually be shopping for. Outside the ropes, SafetyWing excludes you on every plan, and World Nomads' Explorer plan is the one whose own activity list names backcountry, outside-resort-boundary touring and helicopter access. Neither is better in the abstract; the gate you intend to go through decides it.",
+    a: "On published ski wording, it depends entirely on where you intend to ride. Inside the ropes, SafetyWing names skiing and snowboarding and has no deductible. Its Complete plan adds search and rescue at a recognised ski resort, but it is a 12-month commitment. Outside the ropes, SafetyWing excludes you on every plan, and World Nomads' Explorer plan is the one whose own activity list names backcountry, outside-resort-boundary touring and helicopter access. Neither is better in the abstract; the gate you intend to go through decides it.",
   },
 ];
 
-const TITLE = "Ski Travel Insurance for Japan (2026): Off-Piste Cover";
+const TITLE = "Best Travel Insurance for Skiing in Japan 2026: Compared";
 const DESCRIPTION =
-  "Ski insurance for Japan: on-piste cover is standard, SafetyWing excludes off-piste even with its US$10 add-on, and Niseko's rescue minimum is ¥100,000.";
+  "Best travel insurance for skiing and snowboarding in Japan: on-piste cover, off-piste limits, rescue bills, and the pick for a family trip to Hokkaido.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/money/japan-ski-travel-insurance") },
@@ -296,7 +309,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>Ski Travel Insurance</span>
+          <span className={styles.breadCurrent}>Travel Insurance for Skiing</span>
         </div>
       </div>
 
@@ -305,7 +318,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Best Travel Insurance for Skiing in Japan (2026):<br />Off-Piste, Rescue Costs and What Is Covered
+            Best Travel Insurance for Skiing and Snowboarding in Japan (2026)
           </h1>
           <p className={styles.heroSubtitle}>
             On-piste skiing is standard cover almost everywhere. One gate at Niseko or Hakuba moves you
@@ -415,12 +428,14 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             That third condition is the one that does the work, because Japanese resorts publish their rules
             and close their gates on a daily basis. Ducking a rope at Niseko is not an ambiguous judgement
             call that an adjuster might take your side on; it is a documented breach of the resort&apos;s
-            own published rules, which is exactly what the exclusion is written to catch. For the wider
-            comparison across all three insurers, see our{" "}
+            own published rules, which is exactly what the exclusion is written to catch. For cover on the rest of your trip, see our{" "}
             <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               best travel insurance for Japan
             </Link>{" "}
-            roundup.
+            guide. Heading out from Tokyo for a day? See{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Gala Yuzawa day trip from Tokyo
+            </Link>.
           </p>
         </section>
 
@@ -504,6 +519,35 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           </p>
         </section>
 
+        {/* The two searches the title cannot carry. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Snowboarders</span>
+          <h2 className={styles.sectionTitle}>Travel Insurance for Snowboarding in Japan</h2>
+          <p className={styles.bodyText}>
+            Snowboarding is treated the same as skiing. SafetyWing lists both, on the same on-piste and helmet
+            conditions, and World Nomads lists them together on every plan. Park riding is where they split:
+            on SafetyWing, snowboard jumping and acrobatics need the US$10 Adventure Sports Add-On, and fixed-date
+            plans cannot take it, so a park rider needs a subscription. SafetyWing wording re-read on{" "}
+            {SW_CHECKED}.
+          </p>
+          <span className={styles.sectionLabel} style={{ marginTop: "1.5rem" }}>Families</span>
+          <h2 className={styles.sectionTitle}>Best Travel Insurance for a Family Ski Trip to Hokkaido</h2>
+          <p className={styles.bodyText}>
+            For a family skiing marked runs at Niseko or Rusutsu, SafetyWing Essential is our pick. Children
+            aged 14 days to 9 years are added free, up to two per adult, and on-piste skiing is covered with a
+            helmet. Check three things before you buy: everyone wears a helmet, nobody rides the backcountry,
+            and you accept that Essential does not cover search and rescue. The Niseko Rules also bar
+            elementary-school children from backcountry areas unless accompanied. Plan the trip with our{" "}
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link> and{" "}
+            <Link href="/guides/attractions/hokkaido-7-day-itinerary">7-day Hokkaido itinerary</Link> guides.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.verdictBtn}>
+              Check SafetyWing for a family trip →
+            </a>
+          </div>
+        </section>
+
         {/* Japan specifics */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Japan specifics</span>
@@ -540,9 +584,9 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             Put the two halves together and the picture is uncomfortable but clear. The one cost that is
             genuinely large and genuinely chargeable — a rescue from outside the ropes — is the one cost that
             SafetyWing&apos;s Essential plan states plainly it does not cover, and that World Nomads attaches
-            to its most expensive plan. The only policy wording in this comparison that covers search and
-            rescue at a ski resort at all is <strong>SafetyWing&apos;s Complete plan</strong>, and even that
-            says it does not apply at sea or &quot;during off-site winter sports&quot;.
+            to its most expensive plan. SafetyWing&apos;s <strong>Complete plan</strong> covers search and rescue at a recognised ski
+            resort, but not at sea or &quot;during off-site winter sports&quot;, and it is a 12-month
+            commitment.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Niseko rules and the ¥100,000 rescue minimum from niseko.ne.jp, the resorts&apos; own rules page.
@@ -589,9 +633,9 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             Two of the five rows have no list price, and that is not an omission: World Nomads and Heymondo
             both quote per trip from your age and dates, so the only honest number is the one your own quote
             returns. The two figures that are published — <strong>US$62.72 per 4 weeks</strong> for
-            SafetyWing Essential and <strong>US$177.50 a month</strong> for Complete, both at ages 18–39 —
-            are what make the trade-off legible: the gap between them is roughly what the resort
-            search-and-rescue clause costs. Prices read on {CHECKED}; see also our{" "}
+            SafetyWing Essential at ages 10–39 and <strong>US$177.50 a month</strong> for Complete at ages 18–39.
+            Complete is a 12-month commitment, so the resort search-and-rescue clause is not a one-trip
+            purchase. Prices read on {SW_CHECKED}; see also our{" "}
             <Link href="/guides/money/japan-travel-budget" style={{ color: "var(--red)", fontWeight: 600 }}>
               Japan travel budget guide
             </Link>{" "}

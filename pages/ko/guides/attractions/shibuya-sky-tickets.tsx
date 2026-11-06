@@ -689,7 +689,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/tokyo-tower-tickets", title: "도쿄 타워 티켓(2026): 가격, 메인 덱 vs Top Deck, 예약 방법(영어)" },
             { href: "/ko/guides/attractions/tokyo-skytree-tickets", title: "도쿄 스카이트리 티켓(2026): 요금과 플로어 350·450 선택" },
             { href: "/guides/attractions/tokyo-subway-ticket", title: "도쿄 서브웨이 티켓(2026): 24・48・72시간, 살 만한가?(영어)" },
-            { href: "/ko/guides/attractions/teamlab-tokyo-tickets", title: "팀랩 플래닛 예약(2026): 티켓 가격, 입장 시간, 보더리스와 비교" },
+            { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
             { href: "/ko/guides/attractions/teamlab-borderless-tickets", title: "팀랩 보더리스 티켓(2026): 가격, 지정 시간 입장, 구매 경로" },
             { href: "/guides/transport/tokyo-transportation", title: "도쿄 교통 가이드(2026): 전철, 지하철, IC 카드(영어)" },
             { href: "/guides/attractions", title: "일본에서 할 것 더 보기(영어) →" },

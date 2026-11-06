@@ -204,6 +204,87 @@ export function productOfferJsonLd({
   });
 }
 
+/**
+ * TouristAttraction plus an ExhibitionEvent with its offers, for one museum page.
+ *
+ * Added 2026-11-06 (jtk-20261106-A24). Google reads Offer on the Event, not on the
+ * attraction, and Planets has a published run (2018 to the end of 2027), so the event is
+ * real rather than a wrapper. As in productOfferJsonLd, no availability is claimed.
+ */
+export function attractionEventJsonLd({
+  route,
+  name,
+  description,
+  inLanguage = "en",
+  facts,
+}: {
+  route: string;
+  name: string;
+  description: string;
+  inLanguage?: string;
+  facts: {
+    lowYen: number;
+    highYen: number;
+    offerCount: number;
+    startDate: string;
+    endDate: string;
+    opens: string;
+    closes: string;
+    streetAddress: string;
+    postalCode: string;
+  };
+}): string {
+  const url = `${SITE_URL}${route}`;
+  const place = {
+    "@type": "TouristAttraction",
+    "@id": `${url}#attraction`,
+    name,
+    description,
+    url,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: facts.streetAddress,
+      addressLocality: "Tokyo",
+      postalCode: facts.postalCode,
+      addressCountry: "JP",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: facts.opens,
+      closes: facts.closes,
+    },
+  };
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      place,
+      {
+        "@type": "ExhibitionEvent",
+        "@id": `${url}#event`,
+        name,
+        description,
+        url,
+        inLanguage,
+        startDate: facts.startDate,
+        endDate: facts.endDate,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        location: { "@id": `${url}#attraction`, "@type": "TouristAttraction", name, address: place.address },
+        organizer: { "@type": "Organization", name: "teamLab", url: "https://www.teamlab.art" },
+        offers: {
+          "@type": "AggregateOffer",
+          priceCurrency: "JPY",
+          lowPrice: facts.lowYen,
+          highPrice: facts.highYen,
+          offerCount: facts.offerCount,
+          url,
+        },
+      },
+    ],
+  });
+}
+
 export type ItemListEntry = { href: string; title: string };
 
 /** ItemList node for /guides and the category hubs. */

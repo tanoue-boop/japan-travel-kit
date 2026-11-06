@@ -127,7 +127,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/zh-tw/guides/attractions/shibuya-sky-tickets",
           "/zh-tw/guides/attractions/tokyo-skytree-tickets",
-          "/zh-tw/guides/attractions/teamlab-tokyo-tickets",
+          "/zh-tw/guides/attractions/teamlab-planets-tickets",
           "/zh-tw/guides/attractions/teamlab-borderless-tickets",
           "/zh-tw/guides/attractions/dotonbori-river-cruise",
         ],
@@ -173,7 +173,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "350 樓與 450 樓怎麼選、套票為什麼比現場加購便宜，以及當天購票多 ¥500。",
       "/zh-tw/guides/attractions/dotonbori-river-cruise":
         "とんぼり遊船的票價與班次、大阪周遊卡怎麼換票，以及同一條河上五艘船的比較。",
-      "/zh-tw/guides/attractions/teamlab-tokyo-tickets":
+      "/zh-tw/guides/attractions/teamlab-planets-tickets":
         "豐洲 Planets 的票價、30 分鐘入場時段、涉水區該穿什麼，以及和無界的比較。",
       "/zh-tw/guides/attractions/teamlab-borderless-tickets":
         "麻布台之丘的無界：浮動定價怎麼算、指定時段與 Flexible Pass 的差別。",
@@ -228,7 +228,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/zh-cn/guides/attractions/shibuya-sky-tickets",
           "/zh-cn/guides/attractions/tokyo-skytree-tickets",
-          "/zh-cn/guides/attractions/teamlab-tokyo-tickets",
+          "/zh-cn/guides/attractions/teamlab-planets-tickets",
           "/zh-cn/guides/attractions/teamlab-borderless-tickets",
           "/zh-cn/guides/attractions/dotonbori-river-cruise",
         ],
@@ -274,7 +274,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "350 楼与 450 楼怎么选、套票为什么比现场加购便宜，以及当天购票多 ¥500。",
       "/zh-cn/guides/attractions/dotonbori-river-cruise":
         "とんぼり游船的票价与班次、大阪周游卡怎么换票，以及同一条河上五艘船的比较。",
-      "/zh-cn/guides/attractions/teamlab-tokyo-tickets":
+      "/zh-cn/guides/attractions/teamlab-planets-tickets":
         "丰洲 Planets 的票价、30 分钟入场时段、涉水区该穿什么，以及和无界的比较。",
       "/zh-cn/guides/attractions/teamlab-borderless-tickets":
         "麻布台之丘的无界：浮动定价怎么算、指定时段与 Flexible Pass 的差别。",
@@ -329,7 +329,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/ko/guides/attractions/shibuya-sky-tickets",
           "/ko/guides/attractions/tokyo-skytree-tickets",
-          "/ko/guides/attractions/teamlab-tokyo-tickets",
+          "/ko/guides/attractions/teamlab-planets-tickets",
           "/ko/guides/attractions/teamlab-borderless-tickets",
           "/ko/guides/attractions/dotonbori-river-cruise",
         ],
@@ -355,7 +355,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "공식 요금, 일몰 시간대가 가장 먼저 마감되는 이유, 해외 카드가 막힐 때의 예약 방법.",
       "/ko/guides/attractions/tokyo-skytree-tickets":
         "플로어 350과 450 선택 기준, 콤보가 현장 추가보다 싼 이유, 당일 구매 ¥500 추가.",
-      "/ko/guides/attractions/teamlab-tokyo-tickets":
+      "/ko/guides/attractions/teamlab-planets-tickets":
         "도요스 플래닛의 요금과 30분 단위 입장 시간, 물에 들어가는 구역 복장, 보더리스와 비교.",
       "/ko/guides/attractions/teamlab-borderless-tickets":
         "아자부다이힐스 보더리스: 변동 요금제, 지정 시간 입장과 Flexible Pass의 차이.",
@@ -404,7 +404,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/th/guides/attractions/shibuya-sky-tickets",
           "/th/guides/attractions/tokyo-skytree-tickets",
-          "/th/guides/attractions/teamlab-tokyo-tickets",
+          "/th/guides/attractions/teamlab-planets-tickets",
           "/th/guides/attractions/teamlab-borderless-tickets",
           "/th/guides/attractions/dotonbori-river-cruise",
         ],
@@ -430,7 +430,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "ราคาทางการ เหตุผลที่รอบพระอาทิตย์ตกเต็มก่อน และวิธีจองเมื่อบัตรต่างประเทศถูกปฏิเสธ",
       "/th/guides/attractions/tokyo-skytree-tickets":
         "เลือกชั้น 350 หรือ 450 เหตุผลที่คอมโบถูกกว่าการเพิ่มหน้างาน และค่าบริการ ¥500 เมื่อซื้อวันนั้น",
-      "/th/guides/attractions/teamlab-tokyo-tickets":
+      "/th/guides/attractions/teamlab-planets-tickets":
         "ราคาของ Planets ที่โทโยสุ รอบเข้าชมทุก 30 นาที การแต่งตัวสำหรับโซนลุยน้ำ และเทียบกับ Borderless",
       "/th/guides/attractions/teamlab-borderless-tickets":
         "Borderless ที่อาซาบุไดฮิลส์: ราคาแบบยืดหยุ่น และความต่างของรอบระบุเวลากับ Flexible Pass",

@@ -679,7 +679,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             { href: "/guides/attractions/fuji-q-highland-tickets", title: "富士急乐园门票（2026）：一日券票价、Q Pack 与交通方式（英文）" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "东京华纳兄弟哈利·波特影城门票（2026）：票价与预订方式（英文）" },
             { href: "/zh-cn/guides/attractions/shibuya-sky-tickets", title: "涩谷SKY 门票（2026）：票价、最佳时段与预约方式" },
-            { href: "/zh-cn/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 门票（2026）：票价、预约方式与无界比较" },
+            { href: "/zh-cn/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets 门票 2026：票价、时间与预约方式" },
             { href: "/guides/transport/tokyo-transportation", title: "东京交通全攻略（2026）：电车、地铁与 IC 卡（英文）" },
             { href: "/zh-cn/guides/attractions", title: "日本景点门票攻略（2026）：官方票价、预约方式与一日游 →" },
             { href: "/zh-cn/guides/attractions/usj-tickets-express-pass", title: "日本环球影城门票与快速通行证（2026）：该买哪一种" },

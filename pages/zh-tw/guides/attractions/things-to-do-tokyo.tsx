@@ -230,7 +230,7 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             東京有兩間 teamLab 數位藝術美術館——豐洲的 Planets 與麻布台的無界——
             兩間都是走進去的沉浸式體驗，都採指定時段入場，而且很快賣完。我們的{" "}
-            <Link href="/zh-tw/guides/attractions/teamlab-tokyo-tickets" style={linkStyle}>teamLab 門票攻略</Link>{" "}
+            <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab 門票攻略</Link>{" "}
             比較了兩間，說明哪一間適合你的行程，以及怎麼在賣完之前訂到。
           </p>
         </section>
@@ -330,7 +330,7 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             { href: "/guides/attractions/tokyo-night-food-tour", title: "東京夜間美食導覽（2026）：回憶橫丁、黃金街與 20 歲以上規定（英文）" },
             { href: "/guides/attractions/where-to-stay-in-tokyo", title: "東京住宿區域推薦（2026）：依路線與機場比較最佳區域（英文）" },
             { href: "/guides/attractions/tokyo-illumination-tours", title: "東京燈飾 2026：日期、時間與哪些免費（英文）" },
-            { href: "/zh-tw/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 門票（2026）：票價、預約方式與無界比較" },
+            { href: "/zh-tw/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets 門票 2026：票價、時間與預約方式" },
             { href: "/zh-tw/guides/attractions/teamlab-borderless-tickets", title: "teamLab 無界 門票（2026）：票價、時段預約與購票管道" },
             { href: "/guides/attractions/tokyo-5-day-itinerary", title: "東京五天行程（2026）：東京 5 天，每天怎麼排（英文）" },
             { href: "/guides/attractions/tokyo-joypolis-tickets", title: "東京 Joypolis 門票（2026）：Passport 票價、營業時間與身高限制（英文）" },

@@ -905,7 +905,7 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             A travel card does not cover the rest of the pre-trip list. For data, start with our <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best eSIM for Japan</Link> picks, or a{" "}
             <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>pocket WiFi rental</Link> if several of you are sharing. For the tickets to put on the card first, see{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>teamLab Planets tickets</Link> in Tokyo and the <Link href="/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>USJ Express Pass</Link> in Osaka.
+            <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>teamLab Planets tickets</Link> in Tokyo and the <Link href="/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>USJ Express Pass</Link> in Osaka.
           </p>
         </section>
 

@@ -111,7 +111,7 @@ const vsPlanetsRows = [
   {
     factor: "ที่ตั้ง",
     borderless: "อาซาบุไดฮิลส์ เขตมินาโตะ — 2 นาทีจากสถานีคามิยะโจ",
-    planets: "โทโยสุ — 1 นาทีจากสถานีชินโทโยสุ",
+    planets: "โทโยสุ — เดิน 3 นาทีจากทางออก 1A สถานีชินโทโยสุ",
   },
   { factor: "ตั๋วผู้ใหญ่", borderless: `${ADULT} ตามวันและรอบ`, planets: `${priceLabel(PLANETS.adult, "th")} ตามวันและรอบ` },
   { factor: "อายุ 4–12 ปี", borderless: CHILD, planets: priceLabel(PLANETS.child, "th") },
@@ -474,7 +474,7 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             ส่วนราวสองชั่วโมงทำให้คุณเดินเรื่อยเปื่อย ย้อนกลับ และเจอผลงานที่ปรากฏเฉพาะเมื่อคุณรอ
             นี่จึงทำให้ Borderless เป็นแห่งที่เป็นผู้ใหญ่กว่าและเหมาะกับการถ่ายรูปมากกว่าในบรรดา
             พิพิธภัณฑ์ teamLab สองแห่งของโตเกียว — ดู{" "}
-            <Link href="/th/guides/attractions/teamlab-tokyo-tickets">ไกด์ตั๋ว teamLab Planets</Link>{" "}
+            <Link href="/th/guides/attractions/teamlab-planets-tickets">ไกด์ตั๋ว teamLab Planets</Link>{" "}
             สำหรับแห่งที่โทโยสุซึ่งเดินเท้าเปล่าลุยน้ำ และมุมมองการตัดสินใจจากฝั่ง Planets
           </p>
         </section>
@@ -642,7 +642,7 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             โตเกียวมีพิพิธภัณฑ์ teamLab สองแห่ง และผู้มาเยือนจองผิดแห่งกันเป็นประจำ ทั้งสองเป็นสถานที่แยกกัน
             ตั๋วแยกกัน อยู่คนละย่านของเมือง และตัวเลขด้านล่างคือสิ่งที่ช่วยตัดสิน สำหรับฝั่ง Planets แบบเต็ม — กฎเท้าเปล่า
             ล็อกเกอร์ นโยบายเรื่องเด็ก — ดู{" "}
-            <Link href="/th/guides/attractions/teamlab-tokyo-tickets">ไกด์ตั๋ว teamLab Planets</Link>
+            <Link href="/th/guides/attractions/teamlab-planets-tickets">ไกด์ตั๋ว teamLab Planets</Link>
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -707,7 +707,7 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/teamlab-kyoto-tickets", title: "ตั๋ว teamLab Kyoto: ราคา เวลาเปิด และการจอง (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/teamlab-botanical-garden-osaka-tickets", title: "ตั๋ว teamLab Botanical Garden Osaka: ราคาและเวลาเปิด (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/tokyo-joypolis-tickets", title: "ตั๋ว Tokyo Joypolis (2026): ราคาพาสปอร์ต เวลาเปิด และเกณฑ์ส่วนสูง (ภาษาอังกฤษ)" },
-            { href: "/th/guides/attractions/teamlab-tokyo-tickets", title: "ตั๋ว teamLab Planets (2026): ราคา รอบเข้าชม และเทียบกับ Borderless" },
+            { href: "/th/guides/attractions/teamlab-planets-tickets", title: "ตั๋ว teamLab Planets 2026 ราคา เวลา" },
             { href: "/th/guides/attractions/shibuya-sky-tickets", title: "ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง" },
             { href: "/guides/transport/tokyo-transportation", title: "เดินทางในโตเกียว (2026): รถไฟ รถไฟใต้ดิน และบัตร IC (ภาษาอังกฤษ)" },
             { href: "/guides/attractions", title: "สิ่งที่น่าทำอีกมากในญี่ปุ่น (ภาษาอังกฤษ) →" },

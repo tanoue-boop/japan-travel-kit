@@ -829,7 +829,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             standard travel policies, and a single day on snow is the day of a Japan trip most likely to
             produce a hospital bill — which is why this is the one thing on the page that matters more
             than the ¥500 you save buying the pass online. Our{" "}
-            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance guide</Link>{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance">best travel insurance for skiing in Japan</Link>{" "}
             sets out what the common exclusions actually say and what counts as off-piste.
           </p>
           <p className={styles.bodyText}>
@@ -914,6 +914,12 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>JR Tokyo Wide Pass (2026): ¥16,000 for 3 Days — Worth It?</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/money/best-travel-insurance-japan" className={styles.relatedCard}>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Best Travel Insurance for Japan 2026: Who Needs What, Cost</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

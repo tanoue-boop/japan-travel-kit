@@ -2,6 +2,22 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-06：teamLab Planets の専用ページと旅行保険の作り直し（jtk-20261106-A24）
+
+- 目的：表示が多く順位が低い2テーマを専用ページで取る。teamlab planets tickets は表示959・23.6位、関連語を足して1,300超。旅行保険は表示2,500以上・60〜80位。
+- 比較方法：Search Console で下の URL を変更前の過去3か月（_tasks/data-jtk-gsc-queries-20261106.txt）と比べる。
+- 新規：/guides/attractions/teamlab-planets-tickets（en・ko・zh-tw・zh-cn・th）。冒頭に答えの表と Klook ボタン、続けて「同じ日に予約するもの」（Klook eSIM、築地ツアー、Tokyo Subway Ticket）。components/PlanetsBooking.tsx。TouristAttraction と ExhibitionEvent（Offer）を追加。
+- 広告ID：1549819（en）、1549820（ko）、1549821（zh-tw）、1549822（zh-cn）、1549823（th）。spare は0個。
+- 変更：/guides/attractions/teamlab-tokyo-tickets（5言語）を Planets と Borderless の比較ページに変更。title は teamLab Tokyo Tickets 2026: Planets or Borderless? Product の構造化データは外した。
+- Planets への内部リンク（48ファイル）は新しいページへ付け替えた。
+- 公式の値を更新：新豊洲駅は 1A 出口から徒歩3分（従来は1分）、12/31〜1/2 は 8:00〜20:00、休館日は 12/3 と 1/14。
+- 削除：公式に無い記述（売り切れの時期、空いている時間帯、来場者数、増設）。混雑する時間帯と所要時間は「公式に記載なし」。
+- 変更：/guides/money/best-travel-insurance-japan を「誰にどれ」「料金」「日本で必要になる場面」「スキー・スノボ」「よくある質問」に組み直し。title は Best Travel Insurance for Japan 2026: Who Needs What, Cost。
+- 変更：/guides/money/japan-ski-travel-insurance の title を Best Travel Insurance for Skiing in Japan 2026: Compared に変更。スノーボードと北海道の家族スキーの節を追加。Complete の12か月契約と、特約がサブスク限定であることを反映。
+- 変更：/guides/money/safetywing-vs-heymondo-japan の誤りを修正（SafetyWing の免責額、Heymondo の冬季特約と72時間の待機期間は公式に記載が無い）。統合はしない。
+- 301：japan-travel-insurance は従来どおり best-travel-insurance-japan へ。新しい301は無し。
+- 文脈リンク：保険2ページと niseko-ski-tours、gala-yuzawa-ski-day-trip-from-tokyo、hokkaido-7-day-itinerary を相互にリンク。
+
 ## 2026-11-06：Klook の予約ページと購入直前のページで eSIM を売る（jtk-20261106-A22）
 
 - 目的：Klook 以外で成約が0件。Simbye 25%・Klook eSIM 20%・Airalo を、予約を終えた人と eSIM を買う直前の人に見せる。
