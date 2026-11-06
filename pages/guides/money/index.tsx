@@ -70,7 +70,10 @@ export default function GuidesMoneyPage({ dates }: { dates: Record<string, strin
             <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--text)", fontWeight: 600 }}>travel insurance comparison</Link> sets it against
             the alternatives. And buying the{" "}
             <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> up front on Klook
-            settles the transport cost that is hardest to put on a foreign card once you arrive.
+            settles the transport cost that is hardest to put on a foreign card once you arrive. Outside Tokyo, the{" "}
+            <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Hakone Free Pass</Link> and the{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>JR Kansai Area Pass</Link> do the same job, and the{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link> keeps your banking apps online.
           </PartnerPick>
         }
       />

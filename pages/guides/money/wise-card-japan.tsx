@@ -666,6 +666,12 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             and for where cards work at all, our{" "}
             <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>cash vs card guide</Link>.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            Yen-priced passes are where the card&apos;s rate shows up first: the <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>Hakone Free Pass</Link> from Shinjuku
+            and the <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>JR Kansai Area Pass</Link> are both priced in yen. You will also want data on your phone to reach the Wise
+            app abroad, and our <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM for Japan</Link> ranking lists the lowest price at each size. Medical cover is a separate
+            purchase: see our <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best travel insurance for Japan</Link> guide.
+          </p>
         </section>
 
         {/* FAQ */}

@@ -603,6 +603,12 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
               </div>
             ))}
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            Tapping your phone needs the phone to stay online for wallets, maps and tickets, so sort data before you land: our{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best eSIM for Japan</Link> picks cover most trips, the <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>unlimited eSIM comparison</Link> covers heavy use, and our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>airport SIM card guide</Link> covers a phone that cannot take an eSIM. Regional passes are a separate purchase: the{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>JR Kansai Area Pass</Link> is a QR ticket, not a tap-and-go fare.
+          </p>
         </section>
 
         {/* FAQ */}

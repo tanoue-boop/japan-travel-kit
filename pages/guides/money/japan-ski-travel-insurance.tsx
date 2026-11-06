@@ -94,7 +94,7 @@ const skiRows = [
 const costRows = [
   {
     plan: "SafetyWing Nomad Insurance Essential",
-    price: "US$62.72 per 4 weeks, ages 18–39",
+    price: "US$62.72 per 4 weeks, ages 10–39",
     what: "On-piste skiing and snowboarding in the covered list, US$250,000 overall limit, US$100,000 lifetime emergency evacuation, no deductible.",
     when: "A one-week or two-week ski trip where you ski inside the ropes. The cheapest route to cover that actually names skiing.",
   },

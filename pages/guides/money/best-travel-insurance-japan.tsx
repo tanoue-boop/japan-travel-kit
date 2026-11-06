@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 
 // CTA / provider links — SafetyWing is an affiliate link; the rest are normal links for now.
@@ -39,7 +39,7 @@ const PLAIN_REL = "noopener noreferrer nofollow";
  *                                       during your travels".
  *   safetywing.com/nomad-insurance/faq  "Nomad Insurance does not have a deductible    28 Oct 2026
  *                                       on either plan!", the Complete plan's
- *                                       $1.5 million per policy year and US$161.50 a
+ *                                       $1.5 million per policy year and US$177.50 a
  *                                       month for ages 18–39, and the Essential plan's
  *                                       on-piste-only skiing with a $10 adventure-sports
  *                                       add-on per 4 weeks.
@@ -80,14 +80,14 @@ const coverRows = [
     medical: "US$250,000 overall limit",
     evac: "US$100,000 lifetime max",
     excess: "No deductible on either plan",
-    premium: "US$62.72 per 4 weeks, ages 18–39",
+    premium: "US$62.72 per 4 weeks, ages 10–39 (re-read 6 Nov 2026)",
   },
   {
     plan: "SafetyWing — Nomad Insurance Complete",
     medical: "US$1.5 million per policy year, as full health cover",
     evac: "Included; the plan adds routine care, check-ups and sports",
     excess: "No deductible on either plan",
-    premium: "US$161.50 a month, ages 18–39",
+    premium: "US$177.50 a month, ages 18–39 (re-read 6 Nov 2026)",
   },
   {
     plan: "Heymondo — single trip, annual multi-trip or long stay",
@@ -103,6 +103,16 @@ const coverRows = [
     excess: "Varies by plan and residence",
     premium: "Not published — priced per quote",
   },
+];
+
+/** Beyond medical: the columns the competing comparisons carry. Each cell is the provider's own figure. */
+const TRIP_COVER_CHECKED = "6 Nov 2026";
+const tripCoverRows = [
+  { factor: "Trip cancellation", safetywing: "Not listed on the Essential plan page", heymondo: "Up to US$7,000 on its top tier; lower tiers less", worldnomads: "By plan and residence" },
+  { factor: "Trip interruption", safetywing: "US$5,000 for a ticket home after a family death", heymondo: "Up to US$7,000 on its top tier; lower tiers less", worldnomads: "By plan and residence" },
+  { factor: "Delay", safetywing: "US$60 for 3–8 hours, US$150 for 8 hours or more", heymondo: "Baggage delay covered; cap varies by plan", worldnomads: "By plan and residence" },
+  { factor: "Lost or stolen luggage", safetywing: "US$500 per item, US$3,000 per plan", heymondo: "Up to US$2,500 on its top tier", worldnomads: "By plan and residence" },
+  { factor: "Who pays the hospital", safetywing: "Not stated on the plan page", heymondo: "Not stated on the pages read", worldnomads: "Not stated on the pages read" },
 ];
 
 /** What Japan itself publishes about the bill. This is the part that sets the limit. */
@@ -262,7 +272,7 @@ const faqItems = [
   },
   {
     q: "How much does travel insurance for Japan cost?",
-    a: `Only one of the three providers on this page publishes a number: SafetyWing's Nomad Insurance Essential is US$62.72 per 4 weeks for ages 18–39, and its Complete plan US$161.50 a month for the same band, both rising with age. Heymondo and World Nomads publish no premium at all — they price per quote, on your age, trip length, residence and plan — so any single figure you see quoted for them is someone's guess. Get a quote for your own dates and compare it against that SafetyWing figure as the reference point. Read on ${CHECKED}.`,
+    a: `Only one of the three providers on this page publishes a number: SafetyWing's Nomad Insurance Essential is US$62.72 per 4 weeks for ages 10–39, and its Complete plan US$177.50 a month for ages 18–39, both rising with age. Heymondo and World Nomads publish no premium at all — they price per quote, on your age, trip length, residence and plan — so any single figure you see quoted for them is someone's guess. Get a quote for your own dates and compare it against that SafetyWing figure as the reference point. Read on ${CHECKED}.`,
   },
   {
     q: "How much medical cover do you need for Japan?",
@@ -285,12 +295,16 @@ const faqItems = [
     a: "Most Japanese hospitals take payment on the day and leave you to claim it back, so the practical limit is what your card can carry — see our Japan travel card guide for the daily ceilings. Keep every itemised receipt (領収書) and any medical report; both are what the claim is built on. Where your insurer can arrange payment directly for a larger bill, call the assistance line before treatment rather than afterwards. JNTO's free Japan Visitor Hotline on 050-3816-2787 operates 24/7 in English, Chinese and Korean and can help you find a hospital that will see a foreign visitor.",
   },
   {
+    q: "Does travel insurance cover typhoon delays in Japan?",
+    a: `Check the delay line rather than the headline. SafetyWing's Essential plan lists US$60 for a 3–8 hour delay and US$150 for 8 hours or more, for unplanned overnight costs, and US$5,000 for a ticket home only after a family death. Heymondo lists trip cancellation up to US$7,000 on its top tier for covered reasons. A named storm that was already forecast when you bought may be excluded, so read the wording before you buy. Provider pages read on ${TRIP_COVER_CHECKED}.`,
+  },
+  {
     q: "Is credit card travel insurance enough for Japan?",
-    a: `Rarely, and the reason is the limit rather than the principle. Card cover is typically tens of thousands of dollars where Japan's published worst cases run to about ¥10 million, it often requires the trip to be paid on the card, and evacuation is frequently excluded or tightly capped. As a comparison point, SafetyWing publishes US$250,000 of cover with no deductible for US$62.72 per 4 weeks at ages 18–39 — read on ${CHECKED} — which is a small fraction of a single night in a Japanese hospital.`,
+    a: `Rarely, and the reason is the limit rather than the principle. Card cover is typically tens of thousands of dollars where Japan's published worst cases run to about ¥10 million, it often requires the trip to be paid on the card, and evacuation is frequently excluded or tightly capped. As a comparison point, SafetyWing publishes US$250,000 of cover with no deductible for US$62.72 per 4 weeks at ages 10–39 — read on ${CHECKED} — which is a small fraction of a single night in a Japanese hospital.`,
   },
 ];
 
-const TITLE = "Best Travel Insurance for Japan 2026: Cover and Cost";
+const TITLE = "Best Travel Insurance for Japan 2026: From $62.72, Compared";
 const DESCRIPTION =
   "Best travel insurance for Japan in 2026 on published figures: SafetyWing from US$62.72 per 4 weeks, Heymondo cover to $10,000,000, and what Japan bills.";
 
@@ -348,6 +362,19 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
                 { "@type": "ListItem", position: 3, name: "Money & Payment", item: "https://www.japan-travel-kit.com/guides/money" },
                 { "@type": "ListItem", position: 4, name: "Best Travel Insurance for Japan", item: "https://www.japan-travel-kit.com/guides/money/best-travel-insurance-japan" },
               ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: productOfferJsonLd({
+              route: "/guides/money/best-travel-insurance-japan",
+              name: "SafetyWing Nomad Insurance Essential",
+              description: "Travel medical insurance with a US$250,000 overall limit, billed every 4 weeks; the published price is for ages 10–39.",
+              brand: "SafetyWing",
+              currency: "USD",
+              lowPrice: 62.72,
             }),
           }}
         />
@@ -420,7 +447,7 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
             <strong>¥7.5 million</strong> and a heart attack with a long stay and transport home at about{" "}
             <strong>¥10 million</strong>, all of which a short-term visitor pays in full because national
             health insurance covers residents only. Against that, <strong>SafetyWing</strong> publishes
-            US$250,000 of cover with no deductible at <strong>US$62.72 per 4 weeks</strong> for ages 18–39 —
+            US$250,000 of cover with no deductible at <strong>US$62.72 per 4 weeks</strong> for ages 10–39 —
             the only published premium of the three — while <strong>Heymondo</strong> states medical expenses
             up to <strong>US$10,000,000</strong> with repatriation included and prices per quote, and{" "}
             <strong>World Nomads</strong> publishes neither limit nor price until it knows your country of
@@ -456,6 +483,9 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
               thousands of dollars — with evacuation listed separately — is the floor, and a credit card&apos;s
               incidental cover is not it.
             </p>
+            <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+              Check SafetyWing for your dates →
+            </a>
           </div>
         </div>
 
@@ -517,8 +547,8 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>Cost and cover</span>
           <h2 className={styles.sectionTitle}>How Much Does Travel Insurance for Japan Cost?</h2>
           <p className={styles.bodyText}>
-            One of the three publishes a price. SafetyWing shows US$62.72 per 4 weeks for ages 18–39 on its
-            Essential plan and US$161.50 a month for its Complete plan in the same band; Heymondo and World
+            One of the three publishes a price. SafetyWing shows US$62.72 per 4 weeks for ages 10–39 on its
+            Essential plan and US$177.50 a month for ages 18–39 on its Complete plan; Heymondo and World
             Nomads quote rather than publish, so the honest answer for them is &ldquo;get the quote&rdquo;
             rather than a range invented for a page. What all three do publish is their cover, which is the
             part worth comparing before the price.
@@ -549,8 +579,8 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Every cell is the provider&apos;s own published wording, read on {CHECKED}. Premiums rise with age
-            and vary with trip length and country of residence, so the SafetyWing figures are the published
-            18–39 band rather than what you will pay. No estimated premium appears anywhere on this page —
+            and vary with trip length and country of residence, so the SafetyWing figures are its published
+            youngest bands rather than what you will pay. No estimated premium appears anywhere on this page —
             where a provider publishes none, the cell says so. For the two app-first providers side by side,
             see our{" "}
             <Link href="/guides/money/safetywing-vs-heymondo-japan" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -653,6 +683,39 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
             Read off the three providers&apos; own sites on {CHECKED}. Plans change and so do limits — confirm
             on the provider&apos;s site before you buy, and note that World Nomads&apos; figures depend on
             where you live, which is why its column says so rather than guessing.
+          </p>
+        </section>
+
+        {/* Q5b — cover beyond medical */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Beyond medical</span>
+          <h2 className={styles.sectionTitle}>What Do They Pay for Delays, Cancellations and Luggage?</h2>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Cover", "SafetyWing Essential", "Heymondo", "World Nomads"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tripCoverRows.map((row) => (
+                    <tr key={row.factor}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.factor}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.safetywing}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.heymondo}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.worldnomads}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            SafetyWing read off its plan page and Heymondo off its international and tier pages on{" "}
+            {TRIP_COVER_CHECKED}. World Nomads shows limits only once you select a country of residence.
           </p>
         </section>
 
