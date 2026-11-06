@@ -97,7 +97,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -145,7 +145,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/hokkaido-7-day-itinerary</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -163,7 +163,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/japan-5-day-itinerary</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -187,7 +187,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/japan-winter-itinerary</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -307,7 +307,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -405,7 +405,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/sumo-tokyo-tickets</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -437,7 +437,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/teamlab-botanical-garden-osaka-tickets</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -449,6 +449,20 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/teamlab-kyoto-tickets</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
     <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -487,19 +501,19 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo"/>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-3-day-itinerary</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-5-day-itinerary</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -525,7 +539,7 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets"/>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -555,13 +569,13 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-joypolis-tickets</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -631,7 +645,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/attractions/warner-bros-studio-tour-tokyo-tickets</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -915,7 +929,7 @@
   </url>
   <url>
     <loc>https://www.japan-travel-kit.com/guides/money/safetywing-vs-heymondo-japan</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1156,6 +1170,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/ko/guides/attractions/teamlab-planets-tickets</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/ko/guides/attractions/teamlab-tokyo-tickets</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-tokyo-tickets"/>
@@ -1179,7 +1207,7 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets"/>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1282,6 +1310,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/th/guides/attractions/teamlab-planets-tickets</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/th/guides/attractions/teamlab-tokyo-tickets</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-tokyo-tickets"/>
@@ -1305,7 +1347,7 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets"/>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1373,7 +1415,7 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions"/>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1432,6 +1474,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-tokyo-tickets</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-tokyo-tickets"/>
@@ -1453,7 +1509,7 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo"/>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1467,7 +1523,7 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets"/>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1547,7 +1603,7 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions"/>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1606,6 +1662,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/teamlab-planets-tickets"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets"/>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-tokyo-tickets</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-tokyo-tickets"/>
@@ -1627,7 +1697,7 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans-SG" href="https://www.japan-travel-kit.com/zh-cn/guides/attractions/things-to-do-tokyo"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo"/>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1641,7 +1711,7 @@
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://www.japan-travel-kit.com/ko/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="th-TH" href="https://www.japan-travel-kit.com/th/guides/attractions/tokyo-disney-tickets"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets"/>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
