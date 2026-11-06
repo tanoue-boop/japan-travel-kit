@@ -629,7 +629,7 @@ const faqItems = [
 
 const TITLE = "北海道7日游（2027）：每日路线与周游券算法";
 const DESC =
-  "北海道7日游，每天一张表：札幌、小樽、旭川、美瑛和富良野，并附住宿据点、航班信息与铁路周游券的完整算法。";
+  "北海道7日游怎么排：每天一张表，走札幌、小樽、旭川、美瑛和富良野，并附两个住宿据点、航班信息与铁路周游券的完整算法说明。";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -891,7 +891,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
         </section>
 
         <p className={styles.bodyText} style={{ marginBottom: "2.5rem" }}>
-下面七天每天都有一张表：时段、地点、预留时间、交通方式、是否要预订，下方是当天的商品。如果旅行形式不同，<Link href="/guides/attractions/japan-winter-itinerary" hrefLang="en">日本冬季行程（英文）</Link>是含 2 月北海道版本的 12 天全国路线，<Link href="/guides/attractions/japan-10-day-itinerary" hrefLang="en">日本 10 天行程（英文）</Link>和<Link href="/guides/attractions/japan-14-day-itinerary" hrefLang="en">日本 14 天行程（英文）</Link>走东京到京都大阪，<Link href="/zh-cn/guides/attractions/sapporo-snow-festival-tours">札幌雪祭攻略</Link>则是完全围绕 2 月日期的版本。经东京回程的话，还可以加其他冬季行程：<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">东京出发 GALA 汤泽滑雪（英文）</Link>滑一天雪、<Link href="/zh-cn/guides/attractions/jigokudani-snow-monkey-tour">地狱谷雪猴行程</Link>看泡温泉的猴子，或晚上看<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">东京灯饰（英文）</Link>。本州的雪乡则请看<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山与白川乡行程（英文）</Link>。
+下面七天每天都有一张表：时段、地点、预留时间、交通方式、是否要预订，下方是当天的商品。如果旅行形式不同，<Link href="/zh-cn/guides/attractions/japan-winter-itinerary">日本冬季行程</Link>是含 2 月北海道版本的 12 天全国路线，<Link href="/guides/attractions/japan-10-day-itinerary" hrefLang="en">日本 10 天行程（英文）</Link>和<Link href="/guides/attractions/japan-14-day-itinerary" hrefLang="en">日本 14 天行程（英文）</Link>走东京到京都大阪，<Link href="/zh-cn/guides/attractions/sapporo-snow-festival-tours">札幌雪祭攻略</Link>则是完全围绕 2 月日期的版本。经东京回程的话，还可以加其他冬季行程：<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">东京出发 GALA 汤泽滑雪（英文）</Link>滑一天雪、<Link href="/zh-cn/guides/attractions/jigokudani-snow-monkey-tour">地狱谷雪猴行程</Link>看泡温泉的猴子，或晚上看<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">东京灯饰（英文）</Link>。本州的雪乡则请看<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山与白川乡行程（英文）</Link>。
 </p>
 
                 {days.map((day) => (
@@ -969,7 +969,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           tours={[withKlookLocale(furanoBieiBluePondDayTour, LOCALE, { title: "札幌出发富良野、美瑛青池与四季彩之丘一日游", desc: "包含白金青池和四季彩之丘花田的内陆行程，含拖拉机游园和薰衣草枕手作" }), withKlookLocale(yoichiOtaruWalkingTour, LOCALE, { title: "札幌出发余市与小樽步行一日游", desc: "有英语助理的小团电车与巴士一日：Nikka 余市蒸馏所、酒造和小樽运河游船，步行约 4 公里" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "札幌出发旭山动物园、美瑛青池与精灵露台一日游", desc: "从札幌前往旭川动物园、美瑛青池和精灵露台的一日巴士，有多条路线，冬季可加购雪地摩托" }), withKlookLocale(noboribetsuToyaOtaruDayTour, LOCALE, { title: "札幌出发登别、洞爷湖与小樽一日游", desc: "市区南方和西方的全景跟团行程，适合多一天、又不想在大通度过第四晚的雪祭旅行" })]}
         />
 
-                <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周游券（2026）：价格与是否划算 （英文）" }, { href: "/zh-cn/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、教练课与四大区域" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出发小樽一日游（2027）：¥800，JR 33 分钟 （英文）" }, { href: "/zh-cn/guides/attractions/sapporo-snow-festival-tours", title: "札幌雪祭（2027）：2/4–11 三会场免费，该订什么" }, { href: "/guides/attractions/japan-winter-itinerary", title: "日本冬季行程（2027）：12 天路线逐日安排 （英文）" }, { href: "/guides/money/best-travel-insurance-japan", title: "日本旅行保险推荐 2026：谁需要什么 （英文）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅行保险（2027）：该保什么 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：价格、范围与是否划算 （英文）" }, { href: "/zh-cn/guides/esim/best-esim-japan", title: "日本 eSIM 推荐（2026）：运营商、价格与怎么选" }]} />
+                <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周游券（2026）：价格与是否划算 （英文）" }, { href: "/zh-cn/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、教练课与四大区域" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出发小樽一日游（2027）：¥800，JR 33 分钟 （英文）" }, { href: "/zh-cn/guides/attractions/sapporo-snow-festival-tours", title: "札幌雪祭（2027）：2/4–11 三会场免费，该订什么" }, { href: "/zh-cn/guides/attractions/japan-winter-itinerary", title: "日本冬季行程（2027）：12 天路线逐日安排" }, { href: "/guides/money/best-travel-insurance-japan", title: "日本旅行保险推荐 2026：谁需要什么 （英文）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅行保险（2027）：该保什么 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：价格、范围与是否划算 （英文）" }, { href: "/zh-cn/guides/esim/best-esim-japan", title: "日本 eSIM 推荐（2026）：运营商、价格与怎么选" }]} />
 
                 <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>

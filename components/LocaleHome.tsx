@@ -125,6 +125,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/zh-tw/guides/attractions/sapporo-snow-festival-tours",
           "/zh-tw/guides/attractions/niseko-ski-tours",
           "/zh-tw/guides/attractions/hokkaido-7-day-itinerary",
+          "/zh-tw/guides/attractions/japan-winter-itinerary",
           "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -181,6 +182,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "新千歲機場接送、教練課、四大雪場怎麼選，以及從札幌出發的滑雪行程。",
       "/zh-tw/guides/attractions/hokkaido-7-day-itinerary":
         "7 天逐日路線，含周遊券的算法，以及冬季要怎麼調整。",
+      "/zh-tw/guides/attractions/japan-winter-itinerary":
+        "12 天的冬季路線：東京、金澤、京都、大阪，以及 2 月的北海道版本。",
       "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour":
         "從東京出發看泡湯雪猴：一日遊、自行前往的交通與入苑資訊。",
       "/zh-tw/guides/attractions/shibuya-sky-tickets":
@@ -245,6 +248,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/zh-cn/guides/attractions/sapporo-snow-festival-tours",
           "/zh-cn/guides/attractions/niseko-ski-tours",
           "/zh-cn/guides/attractions/hokkaido-7-day-itinerary",
+          "/zh-cn/guides/attractions/japan-winter-itinerary",
           "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -301,6 +305,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "新千岁机场接送、教练课、四大雪场怎么选，以及从札幌出发的滑雪行程。",
       "/zh-cn/guides/attractions/hokkaido-7-day-itinerary":
         "7 天逐日路线，含周游券的算法，以及冬季要怎么调整。",
+      "/zh-cn/guides/attractions/japan-winter-itinerary":
+        "12 天的冬季路线：东京、金泽、京都、大阪，以及 2 月的北海道版本。",
       "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour":
         "从东京出发看泡汤雪猴：一日游、自行前往的交通与入苑信息。",
       "/zh-cn/guides/attractions/shibuya-sky-tickets":
@@ -365,6 +371,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/ko/guides/attractions/sapporo-snow-festival-tours",
           "/ko/guides/attractions/niseko-ski-tours",
           "/ko/guides/attractions/hokkaido-7-day-itinerary",
+          "/ko/guides/attractions/japan-winter-itinerary",
           "/ko/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -403,6 +410,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "신치토세 공항 셔틀, 강습, 4개 스키장 선택, 삿포로 출발 스키 투어.",
       "/ko/guides/attractions/hokkaido-7-day-itinerary":
         "7일 일정을 날짜별로 정리하고 패스 계산과 겨울철 조정 방법을 담았습니다.",
+      "/ko/guides/attractions/japan-winter-itinerary":
+        "도쿄, 가나자와, 교토, 오사카를 잇는 12일 겨울 일정과 2월 홋카이도 버전.",
       "/ko/guides/attractions/jigokudani-snow-monkey-tour":
         "도쿄에서 온천 원숭이를 보러 가는 당일 투어, 직접 가는 교통편, 입장 정보.",
       "/ko/guides/attractions/shibuya-sky-tickets":
@@ -459,6 +468,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/th/guides/attractions/sapporo-snow-festival-tours",
           "/th/guides/attractions/niseko-ski-tours",
           "/th/guides/attractions/hokkaido-7-day-itinerary",
+          "/th/guides/attractions/japan-winter-itinerary",
           "/th/guides/attractions/jigokudani-snow-monkey-tour",
         ],
       },
@@ -497,6 +507,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "รถรับส่งสนามบินชิโตเสะ คลาสสกี การเลือกสี่พื้นที่ และทัวร์สกีจากซัปโปโร",
       "/th/guides/attractions/hokkaido-7-day-itinerary":
         "แผนเที่ยวรายวัน 7 วัน พร้อมวิธีคำนวณพาส และการปรับแผนในหน้าหนาว",
+      "/th/guides/attractions/japan-winter-itinerary":
+        "เส้นทาง 12 วันผ่านโตเกียว คานาซาวะ เกียวโต และโอซาก้า พร้อมแบบฮอกไกโดช่วงกุมภาพันธ์",
       "/th/guides/attractions/jigokudani-snow-monkey-tour":
         "ไปดูลิงแช่ออนเซ็นจากโตเกียว: ทัวร์วันเดียว การเดินทางเอง และข้อมูลการเข้าชม",
       "/th/guides/attractions/shibuya-sky-tickets":

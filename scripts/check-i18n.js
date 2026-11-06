@@ -157,6 +157,12 @@ const SEARCH_TERMS = {
     ko: "홋카이도 7일 여행",
     th: "เที่ยวฮอกไกโด 7 วัน",
   },
+  "/guides/attractions/japan-winter-itinerary": {
+    "zh-tw": "日本冬季行程",
+    "zh-cn": "日本冬季行程",
+    ko: "일본 겨울 여행",
+    th: "เที่ยวญี่ปุ่นหน้าหนาว",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

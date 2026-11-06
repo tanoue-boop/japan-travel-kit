@@ -225,7 +225,7 @@ const days: Day[] = [
     label: "第 1 天",
     heading: "第 1 天：飛抵，新千歲到札幌的 36 分鐘",
     intro:
-      "北海道從機場開始，不是從車站開始，第 1 天只要把這件事做好。新千歲到札幌的電車白天每小時六班，依車種 36 到 43 分鐘，¥1,230，所以沒有接送要安排，也沒有票要先拿。落地前值得決定的是：要不要帶著行李坐在座位上，以及走出航廈時手機能不能上網。",
+      "北海道從機場開始，不是從車站開始，第 1 天只要把這件事做好。新千歲到札幌的電車白天每小時六班，依車種 36 到 43 分鐘，¥1,230，所以沒有接送要安排，也沒有票要先拿。抵達前值得決定的是：要不要帶著行李坐在座位上，以及走出航廈時手機能不能上網。",
     stops: [
       {
         time: "抵達後",
@@ -629,7 +629,7 @@ const faqItems = [
 
 const TITLE = "北海道7天行程（2027）：每日路線與周遊券算法";
 const DESC =
-  "北海道7天行程，每天一張表：札幌、小樽、旭川、美瑛與富良野，並附住宿據點、航班資訊與鐵路周遊券的完整算法。";
+  "北海道7天行程怎麼排：每天一張表，走札幌、小樽、旭川、美瑛與富良野，並附兩個住宿據點、航班資訊與鐵路周遊券的完整算法說明。";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -891,7 +891,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
         </section>
 
         <p className={styles.bodyText} style={{ marginBottom: "2.5rem" }}>
-下面七天每天都有一張表：時段、地點、預留時間、交通方式、是否要預訂，下方是當天的商品。如果旅程形式不同，<Link href="/guides/attractions/japan-winter-itinerary" hrefLang="en">日本冬季行程（英文）</Link>是含 2 月北海道版本的 12 天全國路線，<Link href="/guides/attractions/japan-10-day-itinerary" hrefLang="en">日本 10 天行程（英文）</Link>和<Link href="/guides/attractions/japan-14-day-itinerary" hrefLang="en">日本 14 天行程（英文）</Link>走東京到京都大阪，<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours">札幌雪祭攻略</Link>則是完全圍繞 2 月日期的版本。經東京回程的話，還可以加其他冬季行程：<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">東京出發 GALA 湯澤滑雪（英文）</Link>滑一天雪、<Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷雪猴行程</Link>看泡湯的猴子，或晚上看<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">東京燈飾（英文）</Link>。本州的雪鄉則請看<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉行程（英文）</Link>。
+下面七天每天都有一張表：時段、地點、預留時間、交通方式、是否要預訂，下方是當天的商品。如果旅程形式不同，<Link href="/zh-tw/guides/attractions/japan-winter-itinerary">日本冬季行程</Link>是含 2 月北海道版本的 12 天全國路線，<Link href="/guides/attractions/japan-10-day-itinerary" hrefLang="en">日本 10 天行程（英文）</Link>和<Link href="/guides/attractions/japan-14-day-itinerary" hrefLang="en">日本 14 天行程（英文）</Link>走東京到京都大阪，<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours">札幌雪祭攻略</Link>則是完全圍繞 2 月日期的版本。經東京回程的話，還可以加其他冬季行程：<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">東京出發 GALA 湯澤滑雪（英文）</Link>滑一天雪、<Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷雪猴行程</Link>看泡湯的猴子，或晚上看<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">東京燈飾（英文）</Link>。本州的雪鄉則請看<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉行程（英文）</Link>。
 </p>
 
                 {days.map((day) => (
@@ -969,7 +969,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           tours={[withKlookLocale(furanoBieiBluePondDayTour, LOCALE, { title: "札幌出發富良野、美瑛青池與四季彩之丘一日遊", desc: "包含白金青池和四季彩之丘花田的內陸行程，含拖拉機遊園和薰衣草枕手作" }), withKlookLocale(yoichiOtaruWalkingTour, LOCALE, { title: "札幌出發余市與小樽步行一日遊", desc: "有英語助理的小團電車與巴士一日：Nikka 余市蒸餾所、酒造和小樽運河遊船，步行約 4 公里" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "札幌出發旭山動物園、美瑛青池與精靈露台一日遊", desc: "從札幌前往旭川動物園、美瑛青池和精靈露台的一日巴士，有多條路線，冬季可加購雪上摩托車" }), withKlookLocale(noboribetsuToyaOtaruDayTour, LOCALE, { title: "札幌出發登別、洞爺湖與小樽一日遊", desc: "市區南方和西方的全景跟團行程，適合多一天、又不想在大通度過第四晚的雪祭旅程" })]}
         />
 
-                <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周遊券（2026）：價格與是否划算 （英文）" }, { href: "/zh-tw/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、教練課與四大區域" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出發小樽一日遊（2027）：¥800，JR 33 分鐘 （英文）" }, { href: "/zh-tw/guides/attractions/sapporo-snow-festival-tours", title: "札幌雪祭（2027）：2/4–11 三會場免費，該訂什麼" }, { href: "/guides/attractions/japan-winter-itinerary", title: "日本冬季行程（2027）：12 天路線逐日安排 （英文）" }, { href: "/guides/money/best-travel-insurance-japan", title: "日本旅遊保險推薦 2026：誰需要什麼 （英文）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅遊保險（2027）：該保什麼 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：價格、範圍與是否划算 （英文）" }, { href: "/zh-tw/guides/esim/best-esim-japan", title: "日本 eSIM 推薦（2026）：業者、價格與怎麼選" }]} />
+                <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周遊券（2026）：價格與是否划算 （英文）" }, { href: "/zh-tw/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、教練課與四大區域" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出發小樽一日遊（2027）：¥800，JR 33 分鐘 （英文）" }, { href: "/zh-tw/guides/attractions/sapporo-snow-festival-tours", title: "札幌雪祭（2027）：2/4–11 三會場免費，該訂什麼" }, { href: "/zh-tw/guides/attractions/japan-winter-itinerary", title: "日本冬季行程（2027）：12 天路線逐日安排" }, { href: "/guides/money/best-travel-insurance-japan", title: "日本旅遊保險推薦 2026：誰需要什麼 （英文）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅遊保險（2027）：該保什麼 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：價格、範圍與是否划算 （英文）" }, { href: "/zh-tw/guides/esim/best-esim-japan", title: "日本 eSIM 推薦（2026）：業者、價格與怎麼選" }]} />
 
                 <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>

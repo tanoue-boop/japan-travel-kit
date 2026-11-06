@@ -12,7 +12,8 @@
 - 修正：gala-yuzawa と niseko-ski-tours の「保険はスノースポーツを除外するのが普通」を、保険ページ（オンピステは対象）に合わせて修正。
 - 変更：Klook eSIM の表記を 11/6 の商品ページに合わせた（US$1.05〜、4.6（50K+ reviews）、2M+ booked、SoftBank 5G／IIJ（Docomo）、テザリング可、使い放題は10GB/日まで高速）。lib/klook-esim-facts.ts に集約。プラン別の価格は書かない。
 - 修正：Simbye の「Lowest Price」「最安」表記を、確認できたプランの中での最安という表現に変更（バッジ、固定バー、cheapest-esim-japan の description ほか。5言語）。
-- 新規：翻訳版（ko・zh-tw・zh-cn・th）。広告IDは spare が0個のため、英語版のIDを借りる（data/klook-adids.json の borrowed）。
+- 新規：翻訳版20ページ（ko・zh-tw・zh-cn・th × sapporo-snow-festival-tours、niseko-ski-tours、hokkaido-7-day-itinerary、japan-winter-itinerary、jigokudani-snow-monkey-tour）。各言語のトップに冬のグループを追加。
+- 広告ID：spare が0個のため、翻訳版20ページは英語版のIDを借りる（data/klook-adids.json の borrowed）。クリックは英語版の行に合算される。
 
 ## 2026-11-06：teamLab Planets の専用ページと旅行保険の作り直し（jtk-20261106-A24）
 

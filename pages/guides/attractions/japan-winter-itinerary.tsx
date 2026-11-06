@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { hreflangLinks } from "../../../components/Hreflang";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -9,8 +10,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
   type KlookTripPrepItem,
-  asahiyamaZooWinterDayTour,
-  dotonboriCityCruise,
+    dotonboriCityCruise,
   galaNaebaSkiDayTripTokyo,
   galaYuzawaLiftTicket,
   hakubaHapponeBusLiftRental,
@@ -52,6 +52,7 @@ import {
   tokyoSubwayTicket,
   yomiurilandTicket,
 } from "../../../lib/klook-links";
+import { asahiyamaBieiHighlightsTour } from "../../../lib/klook-links-winter-hokkaido";
 import { jrPassWholeJapanCurrent, shirakawagoLightUp2027NagoyaTour } from "../../../lib/klook-links-winter-hub";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -1010,6 +1011,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/japan-winter-itinerary" />
+        {hreflangLinks("/guides/attractions/japan-winter-itinerary")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/japan-winter-itinerary" />
@@ -1764,8 +1766,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
         {/* Klook tours — the Hokkaido days, which have no home elsewhere on the site. */}
         <KlookTourPicks
           heading="Winter Days Out, If You Add Hokkaido"
-          intro="Four winter-season departures out of Sapporo, for the February version of this trip. All of them are seasonal listings rather than year-round ones, which is the reason they are worth opening early rather than on the day. The Asahiyama listing still showed last winter's dates when we read it on 6 Nov 2026, so confirm this winter's departures on the listing."
-          tours={[otaruSnowParkDayTour, asahiyamaZooWinterDayTour, lakeShikotsuIceFestivalHalfDayTour, sapporoSnowParkHalfDayTour]}
+          intro="Four winter-season departures out of Sapporo, for the February version of this trip. All of them are seasonal listings rather than year-round ones, which is the reason they are worth opening early rather than on the day."
+          tours={[otaruSnowParkDayTour, asahiyamaBieiHighlightsTour, lakeShikotsuIceFestivalHalfDayTour, sapporoSnowParkHalfDayTour]}
         />
 
         {/* Related articles */}

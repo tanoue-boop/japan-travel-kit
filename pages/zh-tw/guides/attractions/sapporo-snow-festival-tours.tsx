@@ -184,7 +184,7 @@ const bookingWindow = [
   },
   {
     title: "完全不用訂：雪祭本身",
-    desc: "依執行委員會的常見問題，三個會場全部免費。大通和薄野是隨時都能走進去的公園和街道，Tsudome 免費入場，內部部分體驗收費。沒有門票、沒有時段，也沒有什麼要預訂。",
+    desc: "依執行委員會的常見問題，三個會場全部免費。大通和薄野是隨時都能進入的公園和街道，Tsudome 免費入場，內部部分體驗收費。沒有門票、沒有時段，也沒有什麼要預訂。",
   },
 ];
 
@@ -453,7 +453,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 札幌雪祭免費嗎？需要跟團嗎？
 </h2>
           <p className={styles.bodyText}>
-免費，也不需要跟團。執行委員會的常見問題用一句話回答票價：<strong>「全会場無料です」</strong>，所有會場免費，雪祭沒有任何部分需要門票。大通會場是八天內隨時能走進去的公園，薄野會場是公共街道。Tsudome 會場免費入場，內部部分活動另收費，委員會也提醒人多時受理可能在 16:00 前截止。查核日：{OWN}。
+免費，也不需要跟團。執行委員會的常見問題用一句話回答票價：<strong>「全会場無料です」</strong>，所有會場免費，雪祭沒有任何部分需要門票。大通會場是八天內隨時能進入的公園，薄野會場是公共街道。Tsudome 會場免費入場，內部部分活動另收費，委員會也提醒人多時受理可能在 16:00 前截止。查核日：{OWN}。
 </p>
           <p className={styles.bodyText}>
 這讓它在本站介紹的活動中很特別：沒有隊伍可跳過、沒有時段入場，所以也不存在有意義的「免排隊」商品。我們找不到販售札幌雪祭本身的 Klook 商品，也不應該有。雪祭旅程真正要花錢預訂的是<strong>每天的另一半</strong>。會場全在戶外，日本氣象廳平年值的平均最高溫是 <strong>{FEB_MAX}</strong>，雪雕又以天黑後最美，所以理想的雪祭日是上午去郊外或下午待室內，晚上再看大通和薄野的點燈。下面的商品就是前半段。
@@ -547,7 +547,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 依日本氣象廳 1991–2020 年札幌平年值，2 月月均溫 <strong>{FEB_MEAN}</strong>，<strong>平均最高 {FEB_MAX}</strong>，<strong>平均最低 {FEB_MIN}</strong>，全月降雪 <strong>{FEB_SNOW}</strong>。查核日：{JMA_CHECKED}。
 </p>
           <p className={styles.bodyText}>
-這些數字帶來三個實際結論。第一，最高溫約在冰點，腳下的雪是壓實又滑，而不是濕的，所以抓地力比防水重要，這是最該做對的一件事。第二，札幌的建築、電車和地下通道暖氣都很強，能脫的多層穿搭比一件厚外套好；札幌站到大通的地下通道正是為此而建，也是規劃雪祭夜晚的一部分。第三，雪雕天黑後最美，這時氣溫接近最低，所以你最想在外面的時間就是一天中最冷的時候，手套、帽子和遮臉衣物不是可有可無。<Link href="/guides/attractions/japan-winter-itinerary" hrefLang="en">日本冬季行程（英文）</Link>把東京、京都、大阪和札幌的氣象廳平年值放在一起，可以看出北海道為什麼要穿得不一樣。
+這些數字帶來三個實際結論。第一，最高溫約在冰點，腳下的雪是壓實又滑，而不是濕的，所以抓地力比防水重要，這是最該做對的一件事。第二，札幌的建築、電車和地下通道暖氣都很強，能脫的多層穿搭比一件厚外套好；札幌站到大通的地下通道正是為此而建，也是規劃雪祭夜晚的一部分。第三，雪雕天黑後最美，這時氣溫接近最低，所以你最想在外面的時間就是一天中最冷的時候，手套、帽子和遮臉衣物不是可有可無。<Link href="/zh-tw/guides/attractions/japan-winter-itinerary">日本冬季行程</Link>把東京、京都、大阪和札幌的氣象廳平年值放在一起，可以看出北海道為什麼要穿得不一樣。
 </p>
         </section>
 
@@ -649,7 +649,7 @@ JR 北海道周遊券 →
           tours={[withKlookLocale(otaruSnowParkDayTour, LOCALE, { title: "小樽、白色戀人公園與雪上樂園一日遊", desc: "結合小樽運河、蒸汽時鐘、白色戀人公園和玩雪的北海道一日遊" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "札幌出發旭山動物園、美瑛青池與精靈露台一日遊", desc: "從札幌前往旭川動物園、美瑛青池和精靈露台的一日巴士，有多條路線，冬季可加購雪上摩托車" }), withKlookLocale(sapporoJozankeiBuddhaDayTour, LOCALE, { title: "札幌、定山溪與頭大佛一日遊", desc: "結合定山溪峽谷、安藤忠雄頭大佛、白色戀人公園和啤酒博物館的全日導覽，是雪祭會場以外的札幌一天" }), withKlookLocale(noboribetsuToyaOtaruDayTour, LOCALE, { title: "札幌出發登別、洞爺湖與小樽一日遊", desc: "市區南方和西方的全景跟團行程，適合多一天、又不想在大通度過第四晚的雪祭旅程" })]}
         />
 
-                <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周遊券（2026）：價格與是否划算 （英文）" }, { href: "/zh-tw/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、教練課與四大區域" }, { href: "/zh-tw/guides/attractions/hokkaido-7-day-itinerary", title: "北海道 7 天行程：每日路線" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出發小樽一日遊（2027）：¥800，JR 33 分鐘 （英文）" }, { href: "/guides/attractions/japan-winter-itinerary", title: "日本冬季行程：12 天逐日安排（2027） （英文）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅遊保險（2027）：該保什麼 （英文）" }, { href: "/guides/attractions/tokyo-illumination-tours", title: "東京燈飾行程：日期、免費景點與該訂什麼 （英文）" }, { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "東京出發 GALA 湯澤滑雪一日遊：71 分鐘，纜車 ¥8,000 （英文）" }, { href: "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour", title: "東京出發雪猴行程：地獄谷野猿公苑攻略（2027）" }, { href: "/guides/attractions/takayama-shirakawago-tour", title: "高山與白川鄉行程（2027）：該從哪裡出發 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：價格、範圍與是否划算 （英文）" }, { href: "/zh-tw/guides/esim/best-esim-japan", title: "日本 eSIM 推薦（2026）：業者、價格與怎麼選" }, { href: "/zh-tw/guides/attractions", title: "更多日本景點 →" }]} />
+                <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周遊券（2026）：價格與是否划算 （英文）" }, { href: "/zh-tw/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、教練課與四大區域" }, { href: "/zh-tw/guides/attractions/hokkaido-7-day-itinerary", title: "北海道 7 天行程：每日路線" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出發小樽一日遊（2027）：¥800，JR 33 分鐘 （英文）" }, { href: "/zh-tw/guides/attractions/japan-winter-itinerary", title: "日本冬季行程：12 天逐日安排（2027）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅遊保險（2027）：該保什麼 （英文）" }, { href: "/guides/attractions/tokyo-illumination-tours", title: "東京燈飾行程：日期、免費景點與該訂什麼 （英文）" }, { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "東京出發 GALA 湯澤滑雪一日遊：71 分鐘，纜車 ¥8,000 （英文）" }, { href: "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour", title: "東京出發雪猴行程：地獄谷野猿公苑攻略（2027）" }, { href: "/guides/attractions/takayama-shirakawago-tour", title: "高山與白川鄉行程（2027）：該從哪裡出發 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：價格、範圍與是否划算 （英文）" }, { href: "/zh-tw/guides/esim/best-esim-japan", title: "日本 eSIM 推薦（2026）：業者、價格與怎麼選" }, { href: "/zh-tw/guides/attractions", title: "更多日本景點 →" }]} />
 
                 <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
