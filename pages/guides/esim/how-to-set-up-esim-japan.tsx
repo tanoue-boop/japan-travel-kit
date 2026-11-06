@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimDaysTable from "../../../components/EsimDaysTable";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { esimProviders, priceFromLabel, unlimitedFromLabel, type EsimProviderId } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -372,6 +373,8 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
 
         <EsimPageAnswer route="/guides/esim/how-to-set-up-esim-japan" />
+
+        <EsimDaysTable />
 
         {/* Before You Start */}
         <section className={styles.prosConsSection}>

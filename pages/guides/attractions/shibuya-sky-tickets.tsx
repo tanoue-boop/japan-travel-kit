@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { GygCompareButton } from "../../../components/GygCompare";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
@@ -442,6 +443,8 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>

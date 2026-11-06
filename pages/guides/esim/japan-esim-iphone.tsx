@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimDaysTable from "../../../components/EsimDaysTable";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
@@ -381,6 +382,8 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
         </div>
 
         <EsimPageAnswer route="/guides/esim/japan-esim-iphone" />
+
+        <EsimDaysTable />
 
         {/* Quick Verdict Box — the answer-first paragraph for "best esim for japan iphone". */}
         <div className={styles.verdictBox}>

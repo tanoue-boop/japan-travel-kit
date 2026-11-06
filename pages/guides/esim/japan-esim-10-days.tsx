@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimDaysTable from "../../../components/EsimDaysTable";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -457,6 +458,8 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimDaysTable defaultDays={10} />
 
         {/* The answer, first. */}
         <section className={styles.bodySection}>

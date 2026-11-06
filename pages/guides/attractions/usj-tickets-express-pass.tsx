@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -492,6 +493,8 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Order on purpose (1 Nov 2026): Studio Pass, then the same-day bookings, then
             the Express Pass. The Express Pass pays 0% and the Studio Pass is excluded,

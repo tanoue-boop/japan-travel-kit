@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../../components/BookingEsimCard";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import { seoTags } from "../../../../components/IntlSeo";
 import {
@@ -431,6 +432,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Order on purpose (1 Nov 2026), as on the English page: Studio Pass, then the
             same-day bookings, then the Express Pass. */}

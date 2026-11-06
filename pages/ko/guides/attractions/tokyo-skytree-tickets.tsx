@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../../components/BookingEsimCard";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import { seoTags } from "../../../../components/IntlSeo";
 import {
@@ -303,6 +304,8 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>개요</span>

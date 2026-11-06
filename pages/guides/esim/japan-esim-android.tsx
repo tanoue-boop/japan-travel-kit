@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimDaysTable from "../../../components/EsimDaysTable";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
 import EsimRelatedCard from "../../../components/EsimRelatedCard";
@@ -244,6 +245,8 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
         </div>
 
         <EsimPageAnswer route="/guides/esim/japan-esim-android" />
+
+        <EsimDaysTable />
 
         {/* Quick Answer — the whole answer, first */}
         <div className={styles.verdictBox}>

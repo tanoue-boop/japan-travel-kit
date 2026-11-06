@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -451,6 +452,8 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             </p>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Prices — the heading is the search query, and the first sentence is the answer. */}
         <section className={styles.comparisonSection}>

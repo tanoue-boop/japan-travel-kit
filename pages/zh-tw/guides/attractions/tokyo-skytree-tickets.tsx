@@ -4,6 +4,7 @@
 // lib/attraction-prices.ts — nothing was re-checked or added for this edition.
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../../components/BookingEsimCard";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import { seoTags } from "../../../../components/IntlSeo";
 import {
@@ -307,6 +308,8 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Intro */}
         <section className={styles.bodySection}>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import { GygCompareButton } from "../../../components/GygCompare";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
@@ -462,6 +463,8 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             </p>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Prices — the heading is the search query, and the first sentence is the answer. */}
         <section className={styles.comparisonSection}>

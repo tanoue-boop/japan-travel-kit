@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimBrandCompare, { brandReviewTitle } from "../../../components/EsimBrandCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
@@ -147,23 +148,25 @@ const commonIssues = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/holafly-japan-review") } });
 
+const TITLE = brandReviewTitle("holafly", "Holafly");
+
 export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Holafly Japan Review 2026 | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta
           name="description"
           content="Is Holafly worth it for Japan? We break down their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/holafly-japan-review" />
-        <meta property="og:title" content="Holafly Japan Review 2026: Is Unlimited Data Worth the Price?" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/holafly-japan-review" />
         <meta property="og:description" content="Is Holafly worth it for Japan? We break down their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Holafly Japan Review 2026: Is Unlimited Data Worth the Price?" />
+        <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content="Is Holafly worth it for Japan? We break down their unlimited data eSIM plans, SoftBank coverage, and value for money. Find out if it's worth the price." />
         <script
           type="application/ld+json"
@@ -244,6 +247,8 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
         </div>
 
         <EsimPageAnswer route="/guides/esim/holafly-japan-review" />
+
+        <EsimBrandCompare brand="holafly" />
 
         {/* Quick Verdict */}
         <div className={styles.verdictBox}>

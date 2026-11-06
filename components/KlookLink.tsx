@@ -23,12 +23,13 @@ import { klookAffiliateUrl } from "../lib/klook-adids";
  *      `?utm_source=` visit hydrates to the same URL it was served with.
  *
  * Props are an `<a>`'s own: `target`, `rel`, `className`, children and the rest
- * pass straight through, and a non-Klook `href` comes out untouched.
+ * pass straight through, and a non-Klook `href` comes out untouched. `adPlacement`
+ * names a block with its own ad id: see lib/klook-adids.ts.
  */
-type KlookLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
+type KlookLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; adPlacement?: string };
 
-export default function KlookLink({ href, ...rest }: KlookLinkProps) {
+export default function KlookLink({ href, adPlacement, ...rest }: KlookLinkProps) {
   const router = useRouter();
   const pagePath = router.asPath.includes("[") ? router.pathname : router.asPath;
-  return <a {...rest} href={klookAffiliateUrl(href, pagePath)} />;
+  return <a {...rest} href={klookAffiliateUrl(href, pagePath, adPlacement)} />;
 }

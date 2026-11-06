@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimDaysTable from "../../../components/EsimDaysTable";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import SimbyeOffer from "../../../components/SimbyeOffer";
@@ -187,6 +188,8 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
         </div>
 
         <EsimPageAnswer route="/guides/esim/japan-esim-2-weeks" />
+
+        <EsimDaysTable defaultDays={14} />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

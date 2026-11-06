@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimBrandCompare, { brandReviewTitle } from "../../../components/EsimBrandCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
@@ -147,23 +148,25 @@ const commonIssues = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/airalo-japan-review") } });
 
+const TITLE = brandReviewTitle("airalo", "Airalo");
+
 export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Airalo Japan Review 2026 | Japan Travel Kit</title>
+        <title>{TITLE}</title>
         <meta
           name="description"
           content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/airalo-japan-review" />
-        <meta property="og:title" content="Airalo Japan Review 2026: Plans, Coverage & Verdict" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/airalo-japan-review" />
         <meta property="og:description" content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Airalo Japan Review 2026: Plans, Coverage & Verdict" />
+        <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy." />
         <script
           type="application/ld+json"
@@ -250,6 +253,8 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
         </div>
 
         <EsimPageAnswer route="/guides/esim/airalo-japan-review" />
+
+        <EsimBrandCompare brand="airalo" />
 
         {/* Quick Verdict */}
         <div className={styles.verdictBox}>

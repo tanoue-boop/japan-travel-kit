@@ -1,0 +1,116 @@
+/* The eSIM card on ticket pages, and the buying tables at the top of eSIM pages. */
+.block { margin-bottom: 3rem; }
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 0.9rem;
+}
+.intro { font-size: 0.92rem; line-height: 1.7; color: var(--text); margin-bottom: 1rem; }
+.note { font-size: 0.78rem; line-height: 1.6; color: var(--text-muted); margin-top: 0.9rem; }
+
+/* Card */
+.card {
+  border: 1px solid var(--sumi);
+  padding: 1.25rem;
+  margin-bottom: 3rem;
+}
+.label {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.cardIntro { font-size: 0.9rem; line-height: 1.7; color: var(--text); margin-bottom: 1rem; }
+.choices { display: grid; gap: 1rem; }
+@media (min-width: 640px) { .choices { grid-template-columns: 1fr 1fr; } }
+.choice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.8rem;
+}
+.choiceName { font-size: 1rem; font-weight: 700; color: var(--text); }
+.choiceTag { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+.choiceText { font-size: 0.86rem; line-height: 1.6; color: var(--text); margin-bottom: 0.3rem; }
+
+/* Buttons */
+.buy,
+.buySecondary {
+  display: inline-block;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--sumi);
+}
+.buy { background: var(--sumi); color: var(--white); }
+.buy:hover { background: var(--sumi-soft); color: var(--white); }
+.buySecondary { background: transparent; color: var(--sumi); }
+.buySecondary:hover { background: var(--sumi); color: var(--white); }
+.choice .buy,
+.choice .buySecondary { margin-top: auto; }
+.buttons { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+
+/* Day picker */
+.days { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.day {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--text);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.dayOn { background: var(--sumi); border-color: var(--sumi); color: var(--white); font-weight: 600; }
+
+/* Table */
+.table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.table th {
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--sumi);
+}
+.table td { padding: 0.75rem; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--text); }
+.seller { font-weight: 600; white-space: nowrap; }
+.price { white-space: nowrap; }
+.price s { color: var(--text-muted); }
+.withCode { display: block; font-size: 0.72rem; color: var(--text-muted); }
+.buyCell { white-space: nowrap; }
+
+/* Discount code */
+.code { font-size: 0.88rem; line-height: 1.6; color: var(--text); margin-top: 1rem; }
+.codeValue { letter-spacing: 0.06em; color: var(--sumi); user-select: all; }
+
+/* On a phone each row becomes a card, so no sideways scrolling to reach the button. */
+@media (max-width: 639px) {
+  .table thead { display: none; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table tr { border-bottom: 1px solid var(--rule); padding: 0.7rem 0; }
+  .table td { border-bottom: 0; padding: 0.15rem 0; }
+  .table td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  .buyCell { padding-top: 0.5rem !important; }
+  .buyCell .buy { display: block; text-align: center; }
+}

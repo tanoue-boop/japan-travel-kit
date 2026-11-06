@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { GygCompareButton } from "../../../components/GygCompare";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -306,6 +307,8 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Intro */}
         <section className={styles.bodySection}>

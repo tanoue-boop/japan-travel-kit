@@ -31,6 +31,11 @@
  *
  * Non-Klook URLs are returned byte-for-byte, so components/KlookLink.tsx is
  * safe to use on any outbound link.
+ *
+ * Placements (6 Nov 2026). A block that sells something other than the page's own
+ * product needs its own row in the report, or a ticket page's eSIM clicks vanish into
+ * its ticket clicks. Such a block has a key `<page path>#<placement>` in the same
+ * JSON, and passes `placement` here. With no such key it falls back to the page's id.
  */
 import adIds from "../data/klook-adids.json";
 import { KLOOK_AID, klookLink } from "./klook-links";
@@ -55,9 +60,13 @@ export function normalizeKlookPagePath(pagePath: string): string {
   return path.length > 1 ? path.replace(/\/+$/, "") : path;
 }
 
-/** This page's Klook ad id, or null if the page has not been given one yet. */
-export function klookAdIdFor(pagePath: string): number | null {
-  return PAGE_AD_IDS[normalizeKlookPagePath(pagePath)] ?? null;
+/**
+ * The ad id for this page, or for one block on it, or null if the page has not been
+ * given one yet.
+ */
+export function klookAdIdFor(pagePath: string, placement?: string): number | null {
+  const path = normalizeKlookPagePath(pagePath);
+  return (placement ? PAGE_AD_IDS[`${path}#${placement}`] : undefined) ?? PAGE_AD_IDS[path] ?? null;
 }
 
 /** Every page path that has an ad id — read by scripts/check-klook-adids.js. */
@@ -72,8 +81,9 @@ export const klookAdIdPages = (): string[] => Object.keys(PAGE_AD_IDS);
  *                 Klook URL is returned unchanged.
  * @param pagePath The route the link is rendered on, e.g.
  *                 `/guides/attractions/shibuya-sky-tickets`.
+ * @param placement The block the link sits in, where that block has its own ad id.
  */
-export function klookAffiliateUrl(url: string, pagePath: string): string {
+export function klookAffiliateUrl(url: string, pagePath: string, placement?: string): string {
   let parsed: URL;
   try {
     parsed = new URL(url);
@@ -93,7 +103,7 @@ export function klookAffiliateUrl(url: string, pagePath: string): string {
     product = parsed.toString();
   }
 
-  const adId = klookAdIdFor(pagePath);
+  const adId = klookAdIdFor(pagePath, placement);
   if (adId === null) return klookLink(product);
 
   return `${KLOOK_REDIRECT}?aid=${KLOOK_AID}&aff_adid=${adId}&k_site=${encodeURIComponent(product)}`;

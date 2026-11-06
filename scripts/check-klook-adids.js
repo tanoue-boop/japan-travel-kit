@@ -20,6 +20,10 @@
  * `--built` is the stricter, slower check — for every `klook.com` anchor in
  * .next/server/pages it asserts the `aff_adid` is the one belonging to the page
  * the anchor is on, and counts the ones that fell back.
+ *
+ * A key of the form `<route>#<placement>` is a second id for one block on that page
+ * (see lib/klook-adids.ts). An anchor may carry either id, each placement id must turn
+ * up on its page, and no id may be listed twice.
  */
 const fs = require("fs");
 const path = require("path");
@@ -91,13 +95,20 @@ const klookRoutes = walk(PAGES_DIR)
   .filter((r) => !SPECIAL.has(r))
   .sort();
 
+const pageKeys = Object.keys(adIds.pages).filter((k) => !k.includes("#"));
+const placementKeys = Object.keys(adIds.pages).filter((k) => k.includes("#"));
+
 const missing = klookRoutes.filter((r) => !(r in adIds.pages));
-const stale = Object.keys(adIds.pages).filter((r) => !klookRoutes.includes(r));
+const stale = [...pageKeys, ...placementKeys.map((k) => k.split("#")[0])].filter((r) => !klookRoutes.includes(r));
+
+const allIds = [...Object.values(adIds.pages), ...adIds.spare];
+const duplicates = [...new Set(allIds.filter((id, i) => allIds.indexOf(id) !== i))];
 
 console.log(
-  `Klook ad ids: ${Object.keys(adIds.pages).length} assigned, ${adIds.spare.length} spare; ` +
+  `Klook ad ids: ${pageKeys.length} pages, ${placementKeys.length} placements, ${adIds.spare.length} spare; ` +
     `${klookRoutes.length} pages carry Klook links`,
 );
+if (duplicates.length) console.warn(`\n! ad id(s) listed more than once: ${duplicates.join(", ")}`);
 if (missing.length) {
   console.warn(
     `\n! ${missing.length} page(s) with Klook links have no ad id — their links fall back to ?aid=119070\n` +
@@ -136,11 +147,15 @@ if (BUILT) {
   let correct = 0;
   const wrong = [];
   const fallback = new Map();
+  const unusedPlacements = new Set(placementKeys);
 
   for (const file of htmlFiles) {
     const rel = path.relative(BUILD_DIR, file).replace(/\\/g, "/").replace(/\.html$/, "");
     const route = `/${rel === "index" ? "" : rel}`.replace(/\/$/, "") || "/";
     const expected = adIds.pages[route];
+    const placementIds = new Map(
+      placementKeys.filter((k) => k.startsWith(`${route}#`)).map((k) => [adIds.pages[k], k]),
+    );
     const markup = fs.readFileSync(file, "utf8");
     const hrefs = [...markup.matchAll(/<a\s[^>]*href="([^"]*klook\.com[^"]*)"/g)].map((m) =>
       m[1].replace(/&amp;/g, "&"),
@@ -153,6 +168,9 @@ if (BUILT) {
         else fallback.set(route, (fallback.get(route) || 0) + 1);
       } else if (Number(adId) === expected) {
         correct++;
+      } else if (placementIds.has(Number(adId))) {
+        correct++;
+        unusedPlacements.delete(placementIds.get(Number(adId)));
       } else {
         wrong.push(`${route}: expected aff_adid=${expected}, got ${adId || "none"} — ${href.slice(0, 90)}`);
       }
@@ -169,6 +187,10 @@ if (BUILT) {
   );
   console.log(`  (c) ?aid= fallback (no ad id):     ${fallbackCount}`);
   for (const [route, n] of [...fallback].sort()) console.log(`      - ${route}  ${n}`);
+  if (unusedPlacements.size) {
+    console.warn(`\n! ${unusedPlacements.size} placement id(s) appear on no link:`);
+    for (const key of unusedPlacements) console.warn(`  ${key}`);
+  }
   if (wrong.length) {
     console.warn(`\n! ${wrong.length} link(s) carry the wrong ad id:`);
     for (const line of wrong.slice(0, 40)) console.warn(`  ${line}`);

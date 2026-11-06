@@ -37,3 +37,22 @@ export const SIMBYE_JAPAN_PATH = "/products/esim-japan";
  * not pull the whole price file into their bundle, such as the sticky bar in _app.tsx.
  */
 export const SIMBYE_JAPAN_DISCOUNT_URL = `${SIMBYE_ORIGIN}/discount/${SIMBYE_DISCOUNT_CODE}?redirect=${SIMBYE_JAPAN_PATH}?ref=${SIMBYE_REF}`;
+
+/**
+ * The discount link with the placement on it, for Simbye's own analytics.
+ *
+ * The shape matters. Tested against simbye.com on 6 Nov 2026: adding `&utm_...` after
+ * SIMBYE_JAPAN_DISCOUNT_URL makes the redirect drop the `ref` nested inside `redirect=`,
+ * which would lose the referral. With `ref` beside the utm parameters, the 302 lands on
+ * /products/esim-japan?ref=eqvmffxd&utm_... and still sets the discount cookie.
+ */
+export function simbyeTrackedUrl(placement: string, pageTag: string): string {
+  const query = new URLSearchParams({
+    ref: SIMBYE_REF,
+    utm_source: "japantravelkit",
+    utm_medium: "affiliate",
+    utm_campaign: placement,
+    utm_content: pageTag,
+  });
+  return `${SIMBYE_ORIGIN}/discount/${SIMBYE_DISCOUNT_CODE}?redirect=${SIMBYE_JAPAN_PATH}&${query}`;
+}

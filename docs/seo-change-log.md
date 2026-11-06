@@ -2,6 +2,26 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-06：Klook の予約ページと購入直前のページで eSIM を売る（jtk-20261106-A22）
+
+- 目的：Klook 以外で成約が0件。Simbye 25%・Klook eSIM 20%・Airalo を、予約を終えた人と eSIM を買う直前の人に見せる。
+- 変更日：2026-11-06。比較は GA4 の affiliate_click（placement 別）と Klook の Top performing ads。placement を GA4 の報告で見るにはカスタムディメンションの登録が必要（未登録）。
+- eSIM カード（components/BookingEsimCard.tsx、5言語）：予約ボタンの入った枠の直後に20ページ。Simbye → Klook eSIM の順。Klook eSIM の料金は data に無いので出していない（Klook が自動取得を拒否）。
+  - shibuya-sky-tickets（en・ko・zh-tw・zh-cn・th）、usj-tickets-express-pass（同5言語）、tokyo-skytree-tickets（同5言語）、teamlab-tokyo-tickets（en・ko・zh-tw・zh-cn）、teamlab-borderless-tickets（en）。
+- 日数の表（components/EsimDaysTable.tsx）：how-to-set-up-esim-japan、does-esim-work-in-japan、japan-esim-iphone、japan-esim-android、japan-esim-10-days、japan-esim-2-weeks。japan-esim-3-days・5-days・7-days は 301 済みで実ページが無いので対象外。
+- 料金比較の表（components/EsimBrandCompare.tsx）：airalo-japan-review、holafly-japan-review、esim-go-japan-review、sakura-mobile-review。
+
+| ページ | 変更前の title | 変更後の title |
+|---|---|---|
+| /guides/esim/airalo-japan-review | Airalo Japan Review 2026 \| Japan Travel Kit | Airalo Japan Review 2026: 7 Days $8.00 vs Cheaper eSIMs |
+| /guides/esim/holafly-japan-review | Holafly Japan Review 2026 \| Japan Travel Kit | Holafly Japan Review 2026: 7 Days $27.50 vs Cheaper eSIMs |
+| /guides/esim/esim-go-japan-review | eSIM Go Japan Review 2026: 1 GB $3.99, 20 GB $26.99 | eSIM Go Japan Review 2026: 7 Days $3.99 vs Cheaper eSIMs |
+
+- title の金額は data/esim-prices.json から生成するので、価格が変わると title も変わる（比較時に注意）。
+- 計測：placement は booking-esim-card、esim-days-table、brand-compare-table。Simbye は utm_campaign に置き場所、utm_content にページ。Airalo は subId1 に置き場所、subId2 にページ。Klook は data/klook-adids.json の `<ページ>#<置き場所>` キー（24個）。
+- Simbye の URL：既存の割引リンクの末尾に utm を足すと、飛び先で ref が消える（2026-11-06 に実測）。`/discount/ROEBHIOM?redirect=/products/esim-japan&ref=eqvmffxd&utm_...` の形なら ref・utm・割引クッキーが全部残る。lib/simbye.ts の simbyeTrackedUrl に集約。
+- 広告ID：spare 1549795〜1549818 を使用、残り5個（1549819〜1549823）。A24 の teamLab Planets 5言語分として残した。
+
 ## 2026-11-06：eSIM 記事の整理と柱ページの作り直し（jtk-20261106-A23）
 
 - 目的：eSIM 記事から検索流入と送客を取る。週の eSIM 送客クリック目標は 11/9週 50 → 12月 週250（11/2週の実績は4）。

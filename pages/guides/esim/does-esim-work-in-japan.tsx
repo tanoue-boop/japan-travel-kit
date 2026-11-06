@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimDaysTable from "../../../components/EsimDaysTable";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
@@ -312,6 +313,8 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
         </div>
 
         <EsimPageAnswer route="/guides/esim/does-esim-work-in-japan" />
+
+        <EsimDaysTable />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

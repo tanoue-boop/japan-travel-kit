@@ -121,6 +121,21 @@ export function cheapestUnlimited(providerId: EsimProviderId, minDays = 1): Esim
   return plans.length ? plans.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null;
 }
 
+/**
+ * Cheapest plan that lasts at least `days` days. With `atLeast`, only plans that also
+ * give at least that plan's data, so two providers are compared like for like: an
+ * unlimited plan matches only unlimited, and a fixed allowance can be met by unlimited.
+ */
+export function cheapestCovering(providerId: EsimProviderId, days: number, atLeast?: EsimPlan): EsimPlan | null {
+  const plans = getProvider(providerId).plans.filter((p) => {
+    if (p.days < days) return false;
+    if (!atLeast) return true;
+    if (atLeast.unlimited) return p.unlimited;
+    return p.unlimited || (p.gb ?? 0) >= (atLeast.gb ?? 0);
+  });
+  return plans.length ? plans.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null;
+}
+
 /** Lowest $/GB across every fixed-allowance plan (daily-capped plans excluded — their "total" isn't bankable). */
 export function bestValuePlan(): EsimPlanRow | null {
   const capped = allEsimPlans.filter((p) => p.perGb !== null && !p.dailyCapGb);

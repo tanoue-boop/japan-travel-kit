@@ -4,6 +4,7 @@
 // none is added here.
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../../components/BookingEsimCard";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import { seoTags } from "../../../../components/IntlSeo";
 import {
@@ -397,6 +398,8 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             </p>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>票價</span>

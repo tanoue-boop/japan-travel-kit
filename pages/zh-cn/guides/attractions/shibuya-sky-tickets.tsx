@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../../components/BookingEsimCard";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import { seoTags } from "../../../../components/IntlSeo";
 import {
@@ -413,6 +414,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>

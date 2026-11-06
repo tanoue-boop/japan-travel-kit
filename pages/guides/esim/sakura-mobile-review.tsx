@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import EsimBrandCompare from "../../../components/EsimBrandCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
@@ -377,6 +378,8 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimBrandCompare brand="sakura" />
 
         {/* Answer first. The hero subtitle above sells the page; this paragraph answers it. */}
         <p className={styles.bodyText}>

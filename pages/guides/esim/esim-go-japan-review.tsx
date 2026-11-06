@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimBrandCompare, { brandReviewTitle } from "../../../components/EsimBrandCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import EsimAnswerTable from "../../../components/EsimAnswerTable";
@@ -45,7 +46,7 @@ const AIRALO_20 = priceLabel(cheapestAtLeastGb("airalo", 20));
 const weekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 5)) ?? null;
 
-const TITLE = `eSIM Go Japan Review 2026: ${dataLabel(ENTRY)} ${priceLabel(ENTRY)}, ${dataLabel(MONTH_20)} ${priceLabel(MONTH_20)}`;
+const TITLE = brandReviewTitle("esimgo", "eSIM Go");
 const DESCRIPTION =
   `A budget Japan eSIM: ${priceLabel(ENTRY)} for ${ENTRY?.name}, ${priceLabel(MONTH_20)} for ` +
   `${MONTH_20?.name} on ${NETWORK}. Tethering included, no phone number, email support.`;
@@ -258,6 +259,8 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
         </div>
 
         <EsimPageAnswer route="/guides/esim/esim-go-japan-review" />
+
+        <EsimBrandCompare brand="esimgo" />
 
         {/* Quick Verdict — the whole answer, first */}
         <div className={styles.verdictBox}>
