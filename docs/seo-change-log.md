@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-07：/guides/attractions/tokyo-go-kart の順位改善（task-jtk-20261107-R01）
+
+- 2026-11-07 title 変更：「Tokyo Street Go-Kart (2026): Rules and the IDP You Need」→「Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book」
+
 ## 2026-11-06：Klook 広告IDの追加と使い回しの解消（jtk-20261106-A25）
 
 - 広告ID：60個発行（1550160–1550219、ラベル spare-20261106b-01〜60）。

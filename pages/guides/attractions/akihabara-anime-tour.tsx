@@ -504,6 +504,14 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
             headline listing&apos;s two departures are 14:00 and 18:00, and the 18:00 start leaves two
             hours before the shops begin shutting.
           </p>
+          <p className={styles.bodyText}>
+            If you hold an International Driving Permit, you can also leave Akihabara on wheels: street
+            kart tours start here, and our{" "}
+            <Link href="/guides/attractions/tokyo-go-kart" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo go kart guide
+            </Link>{" "}
+            has the price and the document rules.
+          </p>
         </section>
 
         {/* Shop hours table */}
@@ -826,7 +834,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Street Go-Kart (2026): Rules, IDP Requirement &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -533,7 +533,9 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             Metropolitan Government Building decks in Shinjuku are the free alternative if the slot has
             gone; our{" "}
             <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks comparison</Link>{" "}
-            puts the four side by side.
+            puts the four side by side. Drivers with an International Driving Permit can add a street
+            kart tour from Shibuya, and our{" "}
+            <Link href="/guides/attractions/tokyo-go-kart">Tokyo go kart guide</Link> has the price and rules.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

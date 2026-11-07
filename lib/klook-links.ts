@@ -418,6 +418,24 @@ export const fujiHakoneDayTour: KlookTour = {
 // directly — which is also why no listing here carries a price.
 // ---------------------------------------------------------------------------
 
+/**
+ * Street Kart's two named Tokyo go-kart listings, added 7 Nov 2026 for the booking
+ * CTAs on /guides/attractions/tokyo-go-kart. Both URLs were confirmed in the
+ * www.klook.com search index that day. 133849 is the Shibuya Annex tour that has
+ * been converting; the shop's own page (course H2-S) is the source of the route.
+ */
+export const shibuyaAnnexGoKartTour: KlookTour = {
+  title: "Street Kart go-kart tour in Shibuya Annex",
+  desc: "About an hour on public roads from the Shibuya Annex shop, through Shibuya Crossing, Omotesando and Harajuku",
+  url: klookLink("https://www.klook.com/en-US/activity/133849-street-kart-go-kart-tour-in-shibuya-annex/"),
+};
+
+export const akihabaraGoKartTour: KlookTour = {
+  title: "Street go-kart experience in Akihabara",
+  desc: "About an hour from Akihabara, on a route through Tokyo Station and Ginza",
+  url: klookLink("https://www.klook.com/en-US/activity/98308-street-go-kart-experience-akihabara/"),
+};
+
 export const fujiSubaruLineHakoneBusTour: KlookTour = {
   title: "Fuji Subaru Line 5th Station, Lake Ashi & Hakone bus tour",
   desc: "A join-in coach day tour from Tokyo pairing the Subaru Line Fifth Station with the Lake Ashi cruise",

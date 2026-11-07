@@ -596,8 +596,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/tokyo-go-kart",
     badge: "Experience",
-    title: "Tokyo Street Go-Kart (2026): Rules, IDP Requirement and How to Book",
-    desc: "Street go-karting in Tokyo needs a Japanese licence or a valid International Driving Permit, and an IDP has to be issued before you leave home. Everything else is detail.",
+    title: "Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book",
+    desc: "A Tokyo go kart tour costs about ¥5,000 to ¥25,000 and needs a Japanese licence or a valid International Driving Permit, which has to be issued before you leave home.",
     group: "experiences",
     city: "tokyo",
   },

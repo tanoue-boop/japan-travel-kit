@@ -324,8 +324,8 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             The hands-on things are mostly easy to book late, with one exception.{" "}
             <strong>Street go-karting</strong> lets you drive Tokyo&apos;s public roads in costume, but it
             needs an International Driving Permit, and an IDP has to be issued in your own country before you
-            fly — our <Link href="/guides/attractions/tokyo-go-kart" style={linkStyle}>go-kart guide</Link>{" "}
-            covers who can and cannot get one. To see the national sport, our{" "}
+            fly — our <Link href="/guides/attractions/tokyo-go-kart" style={linkStyle}>Tokyo go kart guide</Link>{" "}
+            covers the price, the IDP rules and which tour to book. To see the national sport, our{" "}
             <Link href="/guides/attractions/sumo-tokyo-tickets" style={linkStyle}>sumo in Tokyo guide</Link>{" "}
             explains tournament tickets, which Tokyo only sells in January, May and September, against the
             year-round morning practice tours.

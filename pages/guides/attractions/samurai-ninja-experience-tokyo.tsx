@@ -457,7 +457,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Street Go-Kart (2026): Rules, IDP Requirement &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
