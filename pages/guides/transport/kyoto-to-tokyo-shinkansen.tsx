@@ -25,8 +25,8 @@ import {
  * "cheapest and fastest ways" comparison for the westbound trip.
  *
  * The two pages deliberately do not share a table. tokyo-to-kyoto answers
- * "how do I get from Tokyo to Kyoto" by ranking the shinkansen against the
- * highway bus, the local-train marathon and a rental car. This page answers the
+ * "how do I get from Tokyo to Kyoto" by ranking the shinkansen trains against
+ * the night buses. This page answers the
  * questions that only exist in the other direction and are the ones a traveller
  * actually has on their last Kyoto morning: which Kyoto Station platform, which
  * Tokyo-area station to get off at, which side of the train Mt Fuji is on when
@@ -238,9 +238,9 @@ const compareRows = [
     pick: "Worth it on the one leg where you are catching a flight or have a timed booking in Tokyo. JR prices it the same whether you then sit in Green, reserved or non-reserved.",
   },
   {
-    option: "The highway bus or the local-train route",
-    cost: "A fraction of the fare, at eight to nine hours",
-    gets: "The cheapest way between the two cities, overnight in the bus's case.",
+    option: "The night bus",
+    cost: "A fraction of the fare, at about seven to eight hours",
+    gets: "The cheapest way between the two cities, with a night on board.",
     pick: "Rarely the right call eastbound with a full suitcase. We compare it properly on the westbound page rather than repeating the table here.",
   },
 ];
@@ -555,7 +555,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             opens and what it does not — our{" "}
             <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> covers the mechanics, and{" "}
             <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto</Link> is the westbound version of
-            this trip with the highway bus and local-train options priced against the train.
+            this trip, with the night bus priced against the train.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

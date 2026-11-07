@@ -2,46 +2,154 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel } from "../../../lib/attraction-prices";
+import { shinkansenTokyoKyoto, tokyoToKyotoTripPrep } from "../../../lib/klook-links";
+
+/**
+ * Tokyo to Kyoto: how to make the journey, and what to book around it. Rebuilt on
+ * 7 Nov 2026 (task-jtk-20261107-03) because a plain "Tokyo to Kyoto" answer ends
+ * in the AI summary; which train, which seat and what to reserve in Kyoto does not.
+ *
+ * kyoto-to-tokyo-shinkansen covers the eastbound questions and
+ * kyoto-day-trip-from-tokyo plans a day there and back. This page is the
+ * comparison of ways to travel and links to both instead of repeating them.
+ *
+ * Read on 7 November 2026:
+ *  - smartEX adult one-way prices, regular season, from the price lists smart-ex.jp
+ *    links (dated 1 April 2025): reserved Nozomi ¥13,970, Hikari/Kodama ¥13,650;
+ *    Green Nozomi ¥18,840, Hikari/Kodama ¥18,520; non-reserved ¥13,320. JR's
+ *    16 Oct 2026 release still gives Tokyo–Shin-Osaka as ¥14,720 at the window,
+ *    ¥200 over the same list, so the list has not moved.
+ *  - From that release: the Nozomi reserved charge for Tokyo–Kyoto goes up ¥700 on
+ *    purchases from 1 July 2027, non-reserved is unchanged, and Green charges go
+ *    up from travel on 15 December 2027.
+ *  - Journey times of about 2h15, 2h40 and 3h40 from JR Central Tours.
+ *  - Bus fares from West JR Bus, bus times from the JR Bus Kanto timetable
+ *    (revised 1 April 2025). Pass prices from japanrailpass.net.
+ *
+ * Two rows of the old table are gone. The ¥2,270 local-train fare could not be
+ * confirmed from any JR page, nor could the journey time, and the rental-car row
+ * had no official source. Willer is no longer named because its fares could not
+ * be read. No Klook price appears, as Klook blocks automated reads.
+ */
+
+const CHECKED = checkedLabel("2026-11-07");
+
+const NOZOMI_RESERVED = "¥13,970";
+const HIKARI_RESERVED = "¥13,650";
+const NON_RESERVED = "¥13,320";
+const NOZOMI_GREEN = "¥18,840";
+const HIKARI_GREEN = "¥18,520";
+const NOZOMI_TICKET = "¥4,960";
+const BUS_FROM = "¥2,500";
+const ROUND_TRIP_NOZOMI = "¥27,940";
+const ROUND_TRIP_HIKARI = "¥27,300";
+
+const SMARTEX_SOURCE = `smartEX price lists (dated 1 April 2025), read ${CHECKED}`;
 
 const optionsTable = [
-  { option: "Nozomi Shinkansen", time: "2h 15min",   price: "¥14,720",       best: "Speed" },
-  { option: "Hikari Shinkansen", time: "2h 45min",   price: "¥13,850",       best: "JR Pass users" },
-  { option: "Highway bus",       time: "8–9 hours",  price: "¥3,000–¥5,000", best: "Budget" },
-  { option: "Local trains",      time: "8–9 hours",  price: "¥2,270",        best: "Ultra budget" },
-  { option: "Rental car",        time: "4–5 hours",  price: "¥15,000+",      best: "Flexibility" },
+  {
+    option: "Nozomi Shinkansen",
+    time: "About 2h 15min",
+    price: `${NOZOMI_RESERVED} reserved`,
+    best: "Most travellers: the fastest train and only ¥320 more than the Hikari",
+    source: `Time: JR Central Tours. Fare: ${SMARTEX_SOURCE}`,
+  },
+  {
+    option: "Hikari Shinkansen",
+    time: "About 2h 40min",
+    price: `${HIKARI_RESERVED} reserved`,
+    best: "JR Pass holders, who ride it at no extra charge",
+    source: `Time: JR Central Tours. Fare: ${SMARTEX_SOURCE}`,
+  },
+  {
+    option: "Kodama Shinkansen",
+    time: "About 3h 40min",
+    price: `${HIKARI_RESERVED} reserved`,
+    best: "Rarely worth it: same price as the Hikari, one hour slower",
+    source: `Time: JR Central Tours. Fare: ${SMARTEX_SOURCE}`,
+  },
+  {
+    option: "Night bus, 4-across seats (Seishun Eco Dream)",
+    time: "About 7–8 hours",
+    price: "¥3,300–¥12,500, or ¥2,500–¥2,900 on the limited Super Tokuwari fare",
+    best: "The lowest fare, and it saves a night's hotel",
+    source: `Fare: West JR Bus, read ${CHECKED}. Time: JR Bus Kanto timetable revised 1 April 2025`,
+  },
+  {
+    option: "Night bus, 3-across seats (Grand Dream)",
+    time: "About 7–8 hours",
+    price: "¥5,000–¥14,500, or ¥4,400–¥14,000 on the limited Tokuwari fare",
+    best: "Night travel with more room",
+    source: `Fare: West JR Bus, read ${CHECKED}. Time: JR Bus Kanto timetable revised 1 April 2025`,
+  },
+];
+
+/** Shinkansen fares by seat. The non-reserved fare is the same on every train. */
+const seatTable = [
+  { seat: "Non-reserved", nozomi: NON_RESERVED, hikari: NON_RESERVED, note: "No guaranteed seat" },
+  { seat: "Reserved Ordinary", nozomi: NOZOMI_RESERVED, hikari: HIKARI_RESERVED, note: "Your own seat on a named train" },
+  { seat: "Green Car", nozomi: NOZOMI_GREEN, hikari: HIKARI_GREEN, note: "Reserved only, with a wider seat" },
+];
+
+const passTable = [
+  { days: "7 days", agent: "¥53,000", site: "¥50,000" },
+  { days: "14 days", agent: "¥84,000", site: "¥80,000" },
+  { days: "21 days", agent: "¥105,000", site: "¥100,000" },
+];
+
+/** Still to come, from JR Central's list of periods running to March 2027. */
+const nozomiAllReservedPeriods = [
+  "21–23 November 2026",
+  "25 December 2026 – 5 January 2027",
+  "9–11 January 2027",
+  "20–22 March 2027",
 ];
 
 const faqItems = [
   {
     q: "What is the cheapest way from Tokyo to Kyoto?",
-    a: "The absolute cheapest option is a chain of local trains, which costs around ¥2,270 but takes 8–9 hours with several transfers. For most budget travellers, an overnight highway bus (¥3,000–¥5,000) is the better choice — it's nearly as cheap, more comfortable, and saves you a night's accommodation since you sleep on board.",
+    a: `The overnight highway bus. West JR Bus lists its limited Super Tokuwari fare at ¥2,500–¥2,900 on the 4-across Seishun Eco Dream, and its ordinary fares on that bus at ¥3,300–¥12,500, depending on the date. Read on ${CHECKED}. The low fares are limited in number and cannot be changed after purchase.`,
   },
   {
     q: "Can I use the JR Pass on the Shinkansen to Kyoto?",
-    a: "Yes — but only on the Hikari and Kodama trains, not the faster Nozomi. The JR Pass does not cover the Nozomi, so pass holders should board a Hikari (2h 45min) instead. The Hikari is only about 30 minutes slower and is fully covered by the pass at no extra cost.",
+    a: `Yes, on the Hikari and Kodama at no extra charge. The pass alone is not valid on the Nozomi. A pass holder can ride one by buying a special ticket, which is ${NOZOMI_TICKET} for Tokyo to Kyoto, one ticket per ride, and it can only be bought in Japan.`,
   },
   {
     q: "How long does the Shinkansen take from Tokyo to Kyoto?",
-    a: "The Nozomi, the fastest Shinkansen, takes about 2 hours 15 minutes from Tokyo Station to Kyoto Station. The Hikari takes around 2 hours 45 minutes, and the all-stops Kodama takes closer to 3 hours 40 minutes. All three run on the same Tokaido Shinkansen line.",
+    a: "About 2 hours 15 minutes on the Nozomi, about 2 hours 40 minutes on the Hikari and about 3 hours 40 minutes on the Kodama, according to JR Central Tours. All three run on the same Tokaido Shinkansen line with no transfer.",
   },
   {
     q: "Is the Nozomi faster than the Hikari?",
-    a: "Yes. The Nozomi makes fewer stops and reaches Kyoto in about 2h 15min, while the Hikari stops at more stations and takes about 2h 45min — roughly 30 minutes longer. The Nozomi costs slightly more (¥14,720 vs ¥13,850) and, importantly, is not covered by the JR Pass.",
+    a: `Yes, by about 25 minutes, because it makes fewer stops. On smartEX a reserved seat is ${NOZOMI_RESERVED} on the Nozomi and ${HIKARI_RESERVED} on the Hikari, a ¥320 difference. The Nozomi is not covered by the JR Pass without the special ticket.`,
   },
   {
     q: "Can I take a night bus from Tokyo to Kyoto?",
-    a: "Yes. Overnight highway buses depart Tokyo in the evening and arrive in Kyoto early the next morning, taking 8–9 hours. They're operated by companies like Willer Express and JR Bus, cost ¥3,000–¥5,000, and let you save on a night's accommodation. Reclining and premium seats are available for a more comfortable sleep.",
+    a: "Yes. The Dream buses run by JR Bus Kanto and West JR Bus leave Tokyo Station at night and reach Kyoto Station's Karasuma side early the next morning. On the timetable revised on 1 April 2025, the Tokyo–Kyoto journey took about 7 to 8 hours, with arrivals between 05:16 and 07:02. Times change, so check your date before booking.",
+  },
+  {
+    q: "Can I buy Shinkansen tickets with a foreign credit card?",
+    a: "Yes, on smartEX, which takes bookings from inside and outside Japan. It accepts Visa, Mastercard, JCB, American Express, Diners Club and Discover. Your card must work with 3-D Secure, and debit or prepaid cards may be refused by the issuer. Your card company may add a foreign transaction fee.",
+  },
+  {
+    q: "How far in advance can I book the Shinkansen from Tokyo to Kyoto?",
+    a: "smartEX sells seats from 5:30 am one year before the boarding date, up to 4 minutes before departure. JR Pass holders can reserve from 10:00 am one month before the train leaves.",
+  },
+  {
+    q: "Is the Tokyo to Kyoto Shinkansen price going up?",
+    a: "Yes, for reserved Nozomi seats. JR Central and JR West said on 16 October 2026 that the Tokyo–Kyoto reserved charge will rise by ¥700 on tickets bought from 1 July 2027. The non-reserved charge does not change. Green Car charges rise for travel from 15 December 2027.",
   },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/tokyo-to-kyoto") } });
 
 export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) {
-  const metaTitle = "Tokyo to Kyoto 2026: Cheapest & Fastest Ways";
+  const metaTitle = "Tokyo to Kyoto 2026: Shinkansen Price, Time and Cheapest Way";
   const metaDescription =
-    "How to get from Tokyo to Kyoto in 2026. We compare the Shinkansen, highway bus, and local trains on price, speed, and comfort — with 2026 fares.";
+    "Tokyo to Kyoto Shinkansen Price: ¥13,970 reserved on a Nozomi, about 2h15. Night bus from ¥2,500. Why the ¥53,000 JR Pass loses, and what to book next.";
   const canonical = "https://www.japan-travel-kit.com/guides/transport/tokyo-to-kyoto";
 
   return (
@@ -79,7 +187,8 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/transport/tokyo-to-kyoto",
-              headline: "Tokyo to Kyoto (2026): Cheapest & Fastest Ways to Get There",
+              headline: metaTitle,
+              description: metaDescription,
               updated,
             }),
           }}
@@ -126,15 +235,13 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo to Kyoto (2026):<br />Cheapest &amp; Fastest Ways to Get There
+            Tokyo to Kyoto 2026:<br />Shinkansen Price, Time and the Cheapest Way
           </h1>
           <p className={styles.heroSubtitle}>
-            The Shinkansen is fast but not always the cheapest.
-            Here&apos;s every option — from the bullet train to overnight buses —
-            so you can choose what suits your trip.
+            Which train and seat to book, when to reserve, and what to line up before you reach Kyoto.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "All Options", "2026 Prices"].map((t) => (
+            {[`Updated ${updated.label}`, "Dated JR and bus fares", "Mt. Fuji seat", "What to book"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -164,46 +271,57 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Fastest</p>
-                <p className={styles.verdictStatValue}>Nozomi Shinkansen (2h 15min, ¥14,720)</p>
+                <p className={styles.verdictStatValue}>Nozomi, about 2h 15min, {NOZOMI_RESERVED}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Cheapest</p>
-                <p className={styles.verdictStatValue}>Highway bus (¥3,000–¥5,000)</p>
+                <p className={styles.verdictStatValue}>Night bus, from {BUS_FROM}</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best Value</p>
-                <p className={styles.verdictStatValue}>Hikari Shinkansen with JR Pass</p>
+                <p className={styles.verdictStatLabel}>JR Pass</p>
+                <p className={styles.verdictStatValue}>7 days ¥53,000: not for a round trip alone</p>
               </div>
             </div>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.82rem", marginTop: "0.75rem", marginBottom: "1rem" }}>
-              <strong style={{ color: "var(--accent)" }}>Recommended:</strong> The Shinkansen is the right choice for most travellers — fast, frequent, and stress-free.
+            {/* Answer-first: the first body paragraph of the article, not the hero line. */}
+            <p className={styles.verdictText}>
+              <strong>Tokyo to Kyoto</strong> takes <strong>about 2 hours 15 minutes</strong> on a Nozomi
+              Shinkansen, and a reserved seat is <strong>{NOZOMI_RESERVED}</strong> one way on JR&apos;s
+              smartEX service (adult, regular season, read on {CHECKED}). The cheapest way is the overnight
+              highway bus, <strong>from {BUS_FROM}</strong> on West JR Bus&apos;s limited lowest fare. A 7-day
+              JR Pass is <strong>¥53,000</strong> from an overseas agent, so it does not pay for a Tokyo–Kyoto
+              round trip alone, which is {ROUND_TRIP_NOZOMI} on smartEX.
             </p>
-            <KlookLink
-              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
-              className={styles.verdictBtn}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              Check JR Pass prices on Klook →
-            </KlookLink>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Check Tokyo → Kyoto tickets →
+              </KlookLink>
+              <KlookLink
+                href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
+                className={styles.verdictBtn}
+                target="_blank"
+                rel="sponsored noopener"
+              >
+                Check JR Pass prices on Klook →
+              </KlookLink>
+            </div>
           </div>
         </div>
 
-        {/* All Options Compared */}
+        {/* Comparison */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>All Options Compared</h2>
+          <span className={styles.sectionLabel}>Compare</span>
+          <h2 className={styles.sectionTitle}>What is the best way to get from Tokyo to Kyoto?</h2>
           <p className={styles.bodyText}>
-            Tokyo and Kyoto are about 450km apart. There&apos;s a route for every budget and travel style —
-            from the 2-hour bullet train to a ¥2,270 local-train marathon. Here&apos;s how the main options
-            stack up on time, price, and who they suit best.
+            For most people it is a reserved seat on the Nozomi: the fastest train, no transfer, and only ¥320
+            more than the Hikari. Take the Hikari if you hold a JR Pass, and the night bus if the fare matters
+            more than a night&apos;s sleep. All prices are one way for one adult, read on {CHECKED}.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Option", "Time", "Price", "Best For"].map((h) => (
+                    {["Option", "Time", "Price", "Best For", "Source & date checked"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -215,50 +333,132 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
                       <td className={styles.ftEsim}>{row.time}</td>
                       <td className={styles.tdPrice}>{row.price}</td>
                       <td className={styles.tdBestFor}>{row.best}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Subject to change, so confirm before buying. Local trains and rental cars are not listed because
+            no operator figure for this route could be confirmed.
+          </p>
         </section>
 
-        {/* Shinkansen */}
+        <KlookTripPrep
+          label="Book ahead"
+          heading="What to Book for Tokyo to Kyoto"
+          intro="Start with the train, then the hotel at the other end. The tours and eSIM are the bookings that shape your first days in Kyoto."
+          items={tokyoToKyotoTripPrep}
+        />
+
+        {/* Shinkansen fares */}
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Most Popular</span>
-          <h2 className={styles.sectionTitle}>Shinkansen: The Most Popular Option</h2>
+          <span className={styles.sectionLabel}>Shinkansen fares</span>
+          <h2 className={styles.sectionTitle}>How much is the Shinkansen from Tokyo to Kyoto?</h2>
           <p className={styles.bodyText}>
-            The Tokaido Shinkansen is how the vast majority of travellers make the Tokyo–Kyoto trip.
-            Trains depart Tokyo Station every few minutes, run with famous punctuality, and deliver you
-            to the heart of Kyoto in well under three hours. There are three train types on the line:
+            On smartEX, <strong>{NOZOMI_RESERVED}</strong> for a reserved Nozomi seat and{" "}
+            <strong>{HIKARI_RESERVED}</strong> on the Hikari or Kodama. Off-peak dates take ¥200 off a reserved
+            or Green seat, peak dates add ¥200 and the busiest dates add ¥400.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Seat", "Nozomi", "Hikari / Kodama", "What you get"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {seatTable.map((row) => (
+                    <tr key={row.seat}>
+                      <td className={styles.tdProvider}>{row.seat}</td>
+                      <td className={styles.tdPrice}>{row.nozomi}</td>
+                      <td className={styles.tdPrice}>{row.hikari}</td>
+                      <td className={styles.tdBestFor}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Adult, one way, regular season. Source: {SMARTEX_SOURCE}.
+          </p>
+          <p className={styles.bodyText}>
+            Tickets from a station window cost a little more. On Tokyo–Shin-Osaka, JR gives ¥14,720 for a
+            reserved Nozomi seat against ¥14,520 on smartEX, so allow about ¥200 extra for Kyoto. JR does not
+            publish a Tokyo–Kyoto window fare in a table we could read, so we do not print one.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>Prices change in 2027.</strong> JR Central and JR West announced on 16 October 2026 that
+            the reserved Nozomi charge for Tokyo–Kyoto will rise by ¥700 on tickets bought from 1 July 2027.
+            Non-reserved stays the same, and Green Car charges rise for travel from 15 December 2027.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>Foreign cards on smartEX.</strong> smartEX accepts Visa, Mastercard, JCB, American Express,
+            Diners Club and Discover, and you can book from outside Japan. The card must work with 3-D Secure,
+            and debit or prepaid cards may be refused. If yours will not register, Klook sells the same route
+            by date and seat class.
+          </p>
+          <p className={styles.bodyText}>
+            Going further along the line? Our{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka Shinkansen guide</Link>{" "}
+            covers the next stop, and the{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo Shinkansen guide</Link>{" "}
+            covers the trip back.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Pick a train and seat on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Reservations */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Reservations</span>
+          <h2 className={styles.sectionTitle}>Do I need to reserve Shinkansen seats from Tokyo to Kyoto?</h2>
+          <p className={styles.bodyText}>
+            Not on most days, but we suggest you do. Klook&apos;s route page showed 433 trains on 13 November
+            2026, from 06:00 to 21:31, so a later train is rarely far away. A reserved seat costs{" "}
+            {NOZOMI_RESERVED}, only ¥650 more than non-reserved on the Nozomi, and JR Central&apos;s own advice
+            is to book one if you want a guaranteed seat.
+          </p>
+          <p className={styles.bodyText}>
+            On the dates below, it is not a choice. Every Nozomi car is reserved, and only the Hikari and Kodama
+            keep non-reserved cars, which JR Central warns may be overcrowded. Read on {CHECKED}:
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>Nozomi</strong> — the fastest (2h 15min). Makes the fewest stops, but is <strong>not covered by the JR Pass</strong>.</li>
-            <li><strong>Hikari</strong> — slightly slower (2h 45min) with a few more stops. <strong>Fully covered by the JR Pass</strong>, making it the go-to for pass holders.</li>
-            <li><strong>Kodama</strong> — the all-stops local Shinkansen (around 3h 40min). Rarely worth it for this route.</li>
+            {nozomiAllReservedPeriods.map((period) => (
+              <li key={period}><strong>{period}</strong></li>
+            ))}
           </ul>
           <p className={styles.bodyText}>
-            A standard one-way ticket breaks down into a base fare plus a Shinkansen reservation charge.
-            For Tokyo–Kyoto you&apos;re looking at roughly:
+            On other days, the non-reserved cars are 1–2 on the Nozomi, 1–5 on the Hikari, and 1–6 and 13–16 on
+            the Kodama, though JR Central says these may change. Oversized bags need a reserved seat with a
+            baggage area, which our <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo
+            guide</Link> explains.
           </p>
-          <ul className={styles.bodyList}>
-            <li><strong>Non-reserved seat (自由席):</strong> ~¥13,320 — cheapest, but no guaranteed seat</li>
-            <li><strong>Reserved seat (指定席):</strong> ~¥14,170 — your own guaranteed seat</li>
-            <li><strong>Green Car (グリーン車):</strong> ~¥18,690 — first class, with extra legroom and a quieter cabin</li>
-          </ul>
+        </section>
+
+        {/* JR Pass on the Nozomi */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>JR Pass rules</span>
+          <h2 className={styles.sectionTitle}>Can I use the JR Pass on the Nozomi?</h2>
           <p className={styles.bodyText}>
-            If you&apos;re also travelling to other cities, a JR Pass can cover the Hikari at no per-trip cost.
-            You can check current pass prices and book online before you fly:
+            Not with the pass alone. JR says the pass is not valid for any seat on the Nozomi or Mizuho, so use
+            the Hikari or Kodama, which it covers. Reserving a seat on those trains costs nothing extra.
           </p>
-          <KlookLink
-            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
-            className={styles.pickCta}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            style={{ marginTop: "0.5rem", display: "inline-flex" }}
-          >
-            Get the JR Pass on Klook →
-          </KlookLink>
+          <p className={styles.bodyText}>
+            If you want the Nozomi, buy the special ticket for pass holders. For Tokyo or Shinagawa to Kyoto it
+            is <strong>{NOZOMI_TICKET}</strong>, the same for Green, reserved and non-reserved seats, and you
+            need one for each ride. It goes on sale one month before travel and can only be bought in Japan, at
+            JR machines, ticket offices and some travel agencies. Read on {CHECKED}.
+          </p>
         </section>
 
         {/* JR Pass worth it */}
@@ -266,41 +466,114 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>Pass Maths</span>
           <h2 className={styles.sectionTitle}>Is the JR Pass Worth It for Tokyo–Kyoto?</h2>
           <p className={styles.bodyText}>
-            This is the question every traveller asks — and for a simple Tokyo–Kyoto round trip, the answer
-            is usually no. Let&apos;s run the numbers:
+            No, not for a Tokyo–Kyoto round trip on its own. Two reserved seats cost {ROUND_TRIP_NOZOMI} on the
+            Nozomi or {ROUND_TRIP_HIKARI} on the Hikari on smartEX, well under the cheapest pass.
           </p>
-          <ul className={styles.bodyList}>
-            <li>Tokyo ↔ Kyoto return (reserved Hikari): <strong>~¥27,700</strong></li>
-            <li>7-day JR Pass: <strong>~¥50,000</strong></li>
-          </ul>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Ordinary pass", "Overseas agent", "Official website"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {passTable.map((row) => (
+                    <tr key={row.days}>
+                      <td className={styles.tdProvider}>{row.days}</td>
+                      <td className={styles.tdPrice}>{row.agent}</td>
+                      <td className={styles.tdPrice}>{row.site}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Adult prices from japanrailpass.net, read on {CHECKED}. The overseas agent price applies to an
+            Exchange Order.
+          </p>
           <p className={styles.bodyText}>
-            <strong>Conclusion:</strong> A return trip alone costs roughly ¥27,700 — far less than the
-            ¥50,000 pass. The JR Pass only pays off if you&apos;re covering more ground: adding Hiroshima,
-            Hakone, or a Tokyo–Osaka–Kyoto loop, for example. If Kyoto is your only major Shinkansen
-            destination, buy individual tickets and skip the pass.
+            The pass starts to pay when the same week adds much more rail travel, such as Hiroshima or Kanazawa.
+            Our <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> works out the break-even for
+            your own route.
           </p>
+          <KlookLink
+            href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
+            className={styles.pickCta}
+            target="_blank"
+            rel="sponsored noopener"
+            style={{ marginTop: "0.5rem", display: "inline-flex" }}
+          >
+            Get the JR Pass on Klook →
+          </KlookLink>
         </section>
 
         {/* Highway bus */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Budget Option</span>
-          <h2 className={styles.sectionTitle}>Highway Bus: The Budget Option</h2>
+          <h2 className={styles.sectionTitle}>What is the cheapest way from Tokyo to Kyoto?</h2>
           <p className={styles.bodyText}>
-            If your budget matters more than your time, the highway bus is unbeatable. An overnight
-            (夜行) service departs Tokyo in the evening and reaches Kyoto the next morning — so you also
-            save a night&apos;s accommodation while you sleep on board.
+            The overnight highway bus, from <strong>{BUS_FROM}</strong>. That is West JR Bus&apos;s Super Tokuwari
+            fare on the 4-across Seishun Eco Dream. Seats at that fare are limited, it is for adults only, and
+            you cannot change it after buying. The ordinary fare on the same bus is ¥3,300–¥12,500, depending on
+            the date.
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>Main operators:</strong> Willer Express, JR Bus, and a range of smaller companies</li>
-            <li><strong>Price:</strong> ¥3,000–¥5,000 one way — a fraction of the Shinkansen fare</li>
-            <li><strong>Comfort tiers:</strong> from basic 4-across seating up to premium reclining and curtained single seats</li>
+            <li><strong>Who runs it:</strong> JR Bus Kanto and West JR Bus, sold through Kousoku Bus Net</li>
+            <li><strong>Seats:</strong> 4-across on Seishun Eco Dream, or 3-across on Grand Dream from ¥5,000 (¥4,400 on the limited fare)</li>
+            <li><strong>Daytime buses:</strong> West JR Bus lists these from ¥2,700</li>
+            <li><strong>When tickets go on sale:</strong> usually from 10:00 one month and one day before travel</li>
           </ul>
           <p className={styles.bodyText}>
-            The trade-off is comfort and time: 8–9 hours versus just over two hours on the Shinkansen. But
-            for backpackers and budget-focused travellers, the savings are hard to argue with — especially
-            on the overnight services.
+            On the JR Bus Kanto timetable revised on 1 April 2025, buses left Tokyo Station between 21:50 and
+            23:20 and reached Kyoto Station&apos;s Karasuma side between 05:16 and 07:02, about 7 to 8 hours later.
+            Your hotel will probably not let you in that early, so plan where to leave your bags. Fares were
+            read from West JR Bus on {CHECKED}.
           </p>
         </section>
+
+        {/* Mt. Fuji */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>The view</span>
+          <h2 className={styles.sectionTitle}>Which side of the Shinkansen has the Mt. Fuji view?</h2>
+          <p className={styles.bodyText}>
+            The right side going from Tokyo to Kyoto. JR Central&apos;s advice is to choose{" "}
+            <strong>Seat E in Standard Class or Seat D in Green Class</strong>, and its Mt. Fuji page places the
+            mountain on the right. JR Central also says Mt. Fuji may not be visible, depending on the weather.
+            Read on {CHECKED}. You need a reserved seat to pick the letter, so non-reserved will not get you
+            this view for sure.
+          </p>
+        </section>
+
+        {/* What to book */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Before you arrive</span>
+          <h2 className={styles.sectionTitle}>What should I book before arriving in Kyoto?</h2>
+          <p className={styles.bodyText}>
+            Your train and first hotel, then any tour with a fixed start time. A Nozomi from Tokyo gets you to
+            Kyoto about 2 hours 15 minutes later, so a morning departure leaves the afternoon free. After a night
+            bus, keep the first morning light.
+          </p>
+          <p className={styles.bodyText}>
+            To choose a base, see <Link href="/guides/attractions/where-to-stay-in-kyoto">where to stay in
+            Kyoto</Link>. Our <Link href="/guides/attractions/kyoto-3-day-itinerary">3-day Kyoto itinerary</Link>{" "}
+            shows how to order the sights, and{" "}
+            <Link href="/guides/transport/kyoto-transportation">getting around Kyoto</Link> covers the buses and
+            trains. Only have one day? This page compares ways to travel, while our{" "}
+            <Link href="/guides/attractions/kyoto-day-trip-from-tokyo">Kyoto day trip from Tokyo</Link> plans the
+            sightseeing.
+          </p>
+        </section>
+
+        <KlookTripPrep
+          label="Your first days"
+          heading="Bookings for Your First Days in Kyoto"
+          intro="The same short list, in the order most trips need it: train, hotel, guided days, then data."
+          items={tokyoToKyotoTripPrep}
+        />
 
         {/* Tips */}
         <section className={styles.whoForSection}>
@@ -313,10 +586,10 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
                   <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" /><path d="M9 9v.01M9 12v.01M9 15v.01" />
                 </svg>
               </div>
-              <p className={styles.whoForTitle}>Sit on the right for Mt. Fuji</p>
+              <p className={styles.whoForTitle}>Kyoto Station has two sides</p>
               <p className={styles.whoForDesc}>
-                Heading from Tokyo to Kyoto, book seat E (window, right-hand side) for the best Mt. Fuji
-                views — clearest on the Hikari and Kodama, which run a touch slower past it.
+                JR&apos;s night buses stop on the Karasuma side, while the shinkansen gates are on the Hachijo
+                side. Check which side your hotel is on before you set off with your bags.
               </p>
             </div>
             <div className={styles.whoForCard}>

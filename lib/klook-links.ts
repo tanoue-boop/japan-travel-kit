@@ -6864,3 +6864,51 @@ export const hakoneRyokanTripPrep: KlookTripPrepItem[] = [
     why: "Gora Kadan's shuttle starts with a phone call from the station, and bus times are easiest to check on your phone.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo to Kyoto — added 7 Nov 2026 (task-jtk-20261107-03).
+//
+// The route page is the 5% rail band, the hotels and guided days 6.5%, the eSIM
+// 20%. Every url reads out of an existing constant, so nothing here is a second
+// source of truth for a Klook id. It sits at the end of the file because
+// `arashiyamaEarlyMorningWalk` is declared late. Fushimi Inari and Arashiyama are
+// the main CTAs of fushimi-inari-tour and arashiyama-bamboo-forest-tour.
+// ---------------------------------------------------------------------------
+export const tokyoToKyotoTripPrep: KlookTripPrepItem[] = [
+  {
+    label: shinkansenTokyoKyoto.title,
+    ctaLabel: "Check Tokyo → Kyoto tickets →",
+    url: shinkansenTokyoKyoto.url,
+    why: "Sold by date and seat class, so you can pick the train and settle the E seat for Mt. Fuji before you travel.",
+  },
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "The shinkansen stops here and the night buses set down here, so your bags are off your hands within minutes.",
+  },
+  {
+    label: "Hotels around Shijo-Kawaramachi",
+    ctaLabel: "Check Shijo-Kawaramachi hotels on Klook →",
+    url: kyotoStayAreas[1].url,
+    why: "The better base if your evenings are for restaurants and Gion rather than an early train out.",
+  },
+  {
+    label: kyotoFushimiInariWalkingTour.title,
+    ctaLabel: "Check the Fushimi Inari walk →",
+    url: kyotoFushimiInariWalkingTour.url,
+    why: "A short JR ride from Kyoto Station, which makes it the easiest guided half-day to fit around your arrival.",
+  },
+  {
+    label: arashiyamaEarlyMorningWalk.title,
+    ctaLabel: "Check the Arashiyama walk →",
+    url: arashiyamaEarlyMorningWalk.url,
+    why: "It starts early, so book it for your first full morning rather than the day your train gets in.",
+  },
+  {
+    ...tripPrepProducts.kyotoHighlightTour,
+    why: "Kinkaku-ji, Fushimi Inari and Arashiyama sit on different sides of the city, so a guided day saves working out each transfer.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Live maps and your QR tickets all need data from the moment you step off at Kyoto Station.",
+  },
+];

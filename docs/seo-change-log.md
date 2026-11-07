@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-07：/guides/transport/tokyo-to-kyoto の Klook 導線と運賃表（task-jtk-20261107-03）
+
+- 2026-11-07 title 変更：「Tokyo to Kyoto 2026: Cheapest & Fastest Ways」→「Tokyo to Kyoto 2026: Shinkansen Price, Time and Cheapest Way」
+
 ## 2026-11-07：/guides/attractions/tea-ceremony-japan の順位改善（task-jtk-20261107-R04）
 
 - 2026-11-07 title 変更：「Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto」→「Japanese Tea Ceremony Experience: Price, How Long, Where」

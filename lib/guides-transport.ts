@@ -61,8 +61,8 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/tokyo-to-kyoto",
     badge: "Guide",
-    title: "Tokyo to Kyoto (2026): Cheapest & Fastest Ways to Get There",
-    desc: "The Shinkansen is fast but not always the cheapest. We compare the bullet train, highway bus, local trains, and rental car on price, speed, and comfort — with 2026 fares.",
+    title: "Tokyo to Kyoto 2026: Shinkansen Price, Time and Cheapest Way",
+    desc: "About 2h 15min on a Nozomi, ¥13,970 reserved on smartEX, or a night bus from ¥2,500. Dated fares, the Mt. Fuji seat, JR Pass rules and what to book before you reach Kyoto.",
     group: "passes",
     city: "tokyo",
   },
