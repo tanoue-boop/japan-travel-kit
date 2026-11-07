@@ -1851,6 +1851,19 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            {/* Added 7 Nov 2026: five days in northern Kyushu, for a trip that continues west. */}
+            <Link href="/guides/attractions/kyushu-5-day-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 6 Nov 2026: a day out of Fukuoka to Kyushu's hot spring towns. */}
             <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

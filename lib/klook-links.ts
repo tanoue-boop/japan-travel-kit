@@ -6631,3 +6631,103 @@ export const kumanoKodoTripPrep: KlookTripPrepItem[] = [
     why: "Bus times and trail maps are easier with data, and the bureau says to carry a phone on the walk.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kyushu 5-day itinerary, added 7 Nov 2026 (task jtk-20261107-01).
+//
+// Klook answers automated reads with HTTP 403, so each listing was read in the
+// www.klook.com search index on that date. 119927, 174646, 159280, 191563, 96308,
+// the Kumamoto Castle hotel page and ONE STATION HOTEL were seen in en-US form.
+// 129725 was seen without a locale and under en-AU, so its en-US URL keeps the same
+// id and slug. 119927 and 129725 show different stops by locale and the page says so.
+// Reused: yufuinBeppuNoMoriTour, jrKyushuRailPass, dazaifuYanagawaDayTour,
+// fukuokaStayAreas, klookEsim. Tours and hotels 6.5%, rail 5%, eSIM 20%. No prices.
+// ---------------------------------------------------------------------------
+
+/** The Kumamoto departure: the tour for a night in Kumamoto on Day 3. */
+export const kumamotoTakachihoRailwayTour: KlookTour = {
+  title: "Kumamoto Takachiho Gorge & Minamiaso Railway full-day tour",
+  desc: "A 9.5-hour day from 08:00 to 17:30 from Kumamoto, with the order adjusted around train and boat times; Minami Aso Railway fares are extra",
+  url: klookLink("https://www.klook.com/en-US/activity/174646-takachiho-railway-takachiho-gorge-mt-aso-kusasenri-day-tour/"),
+};
+
+/** Fukuoka departure with Kusasenri standing in for the closed crater. */
+export const asoTakachihoFukuokaTour: KlookTour = {
+  title: "Mt. Aso & Takachiho Gorge guided day tour",
+  desc: "A 10.2-hour day from Fukuoka, 07:50 to 18:00, with no meals included and Kusasenri replacing the crater while it is closed",
+  url: klookLink("https://www.klook.com/en-US/activity/129725-kumamoto-castle-aso-volcano-kamishikimi-kumanoimasu-shrine-tour/"),
+};
+
+/** Fukuoka departure with the lunch included. */
+export const takachihoAsoBeefLunchTour: KlookTour = {
+  title: "Takachiho Gorge, Mt. Aso & Kusasenri day trip with beef lunch",
+  desc: "About 9.5 to 10.5 hours from Fukuoka with a Takachiho beef lunch and an optional boat ride; read the package for what your date includes",
+  url: klookLink("https://www.klook.com/en-US/activity/159280-takachiho-gorge-mt-aso-kusasenri-one-day-tour/"),
+};
+
+/** Fukuoka departure; the title names Kumamoto Castle, so read the stops. */
+export const kumamotoCastleTakachihoTour: KlookTour = {
+  title: "Kumamoto Castle, Josaien & Takachiho Gorge day trip from Fukuoka",
+  desc: "A 10.5-hour day from Fukuoka with a Chinese and English guide; other Klook sites name the Takachiho Railway and Amano Iwato Shrine, so confirm the stops",
+  url: klookLink("https://www.klook.com/en-US/activity/119927-kumamoto-castle-takachiho-gorge-footpath-one-day-tour-from-fukuoka/"),
+};
+
+/** Nagasaki from Hakata Station, for Day 5 without planning the trains. */
+export const nagasakiSmallGroupDayTour: KlookTour = {
+  title: "Nagasaki small-group day trip from Fukuoka",
+  desc: "Starts at 8:00 at Hakata Station and returns around 18:00, with the Atomic Bomb Museum, Peace Park, the Hamamachi shopping street and Glover Garden",
+  url: klookLink("https://www.klook.com/en-US/activity/191563-nagasaki-day-trip-small-group-tour/"),
+};
+
+/** The night-view version, with a late return. */
+export const nagasakiInasayamaDayTour: KlookTour = {
+  title: "Yutoku Inari Shrine, Nagasaki Atomic Bomb Museum & Mt. Inasa day tour",
+  desc: "A coach day from Fukuoka that ends with the night view from Inasayama Park; the listing warns of a late return",
+  url: klookLink("https://www.klook.com/en-US/activity/96308-yutoku-inari-shrine-nagasaki-atomic-bomb-museum-mt-inasa-bus-tour-fukuoka/"),
+};
+
+/** Klook has no Kumamoto Station hotel page in the index, so this one is the castle's. */
+export const kumamotoCastleHotels: KlookTour = {
+  title: "Hotels near Kumamoto Castle",
+  desc: "Klook's hotel page for the castle area, for a night in the city centre",
+  url: klookLink("https://www.klook.com/en-US/destination/p50001572-kumamoto-castle/3-hotel/"),
+};
+
+/** Next to Kumamoto Station, for a morning tour pickup or a train out. */
+export const oneStationHotelKumamoto: KlookTour = {
+  title: "ONE STATION HOTEL KUMAMOTO",
+  desc: "Listed as adjacent to Kumamoto Station, with JR, trams, buses and the airport shuttle nearby",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/248219-one-station-hotel-kumamoto/"),
+};
+
+/** Everything a five-day Kyushu trip books once. The two hotels come first. */
+export const kyushuItineraryTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels at Hakata Station",
+    ctaLabel: "Check Hakata hotels →",
+    url: fukuokaStayAreas[1].url,
+    why: "Three of the four nights are here, and the shinkansen, the Sonic and the Yufuin no Mori all leave from this station.",
+  },
+  {
+    label: oneStationHotelKumamoto.title,
+    ctaLabel: "Check the Kumamoto Station hotel →",
+    url: oneStationHotelKumamoto.url,
+    why: "The Day 4 tour starts at 08:00, so a night beside the station is the easy way to make it.",
+  },
+  {
+    label: kumamotoTakachihoRailwayTour.title,
+    ctaLabel: "Check the Takachiho tour →",
+    url: kumamotoTakachihoRailwayTour.url,
+    why: "Takachiho's own access page lists one bus a day from Kumamoto Station, about 3 hours each way, so this is the day to book first.",
+  },
+  {
+    label: jrKyushuRailPass.title,
+    ctaLabel: "Check the JR Kyushu pass →",
+    url: jrKyushuRailPass.url,
+    why: "Worth it if you take the train to Yufuin and Kumamoto. Work out your version in the rail pass table first.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Tour meeting points, tram stops and yatai all depend on a working map on every day of the trip.",
+  },
+];

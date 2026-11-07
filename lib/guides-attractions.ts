@@ -378,6 +378,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/kyushu-5-day-itinerary",
+    badge: "Itinerary",
+    title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho",
+    desc: "Fukuoka 3 nights and Kumamoto 1, with a morning, afternoon and night table for each day, the ¥17,000 JR Kyushu pass worked against each route, the Aso crater restriction, and when the Yufuin no Mori and Takachiho boats go on sale.",
+    group: "cities",
+    // The island, not one of the three city hubs — same call as hokkaido-7-day-itinerary.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/japan-winter-itinerary",
     badge: "Itinerary",
     title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)",
