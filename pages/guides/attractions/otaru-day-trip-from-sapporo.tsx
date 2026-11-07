@@ -934,6 +934,19 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 7 Nov 2026: the longer day out of Sapporo, inland to Biei. */}
+            <Link href="/guides/attractions/furano-biei-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Furano Biei Tour from Sapporo (2026): Winter vs Summer</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 3 Nov 2026: the island pass, for an Otaru day inside a longer Hokkaido trip. */}
             <Link href="/guides/transport/hokkaido-rail-pass" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

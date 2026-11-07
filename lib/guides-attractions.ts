@@ -387,6 +387,24 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/furano-biei-tour",
+    badge: "Day trip",
+    title: "Furano Biei Tour from Sapporo (2026): Winter Light-Ups or Summer Lavender",
+    desc: "A coach day of about 10 to 11.6 hours from Sapporo. Six tours compared, the Blue Pond light-up dates to 21 April 2027, why snow hides the blue, the Ningle Terrace closure, and tour against train.",
+    group: "daytrips",
+    // Hokkaido sits outside the three city hubs, like otaru-day-trip-from-sapporo.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/hakone-ryokan-private-onsen",
+    badge: "Where to stay",
+    title: "Hakone Ryokan with Private Onsen (2026): 4 Inns Compared",
+    desc: "Four inns confirmed on their own sites, compared on the bath in the room, reserved baths, meals and check-in, with six areas of Hakone, tattoo rules by inn and how far ahead to book.",
+    group: "cities",
+    // Hakone is outside the three city hubs, and a night there is not a Tokyo stay.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/japan-winter-itinerary",
     badge: "Itinerary",
     title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)",

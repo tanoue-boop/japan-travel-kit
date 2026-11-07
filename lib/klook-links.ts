@@ -6731,3 +6731,136 @@ export const kyushuItineraryTripPrep: KlookTripPrepItem[] = [
     why: "Tour meeting points, tram stops and yatai all depend on a working map on every day of the trip.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// furano-biei-tour and hakone-ryokan-private-onsen, added 7 Nov 2026.
+//
+// Tours: Klook answers automated reads with HTTP 403, so each en-US URL was confirmed
+// in the www.klook.com search index that day. 130175 is left out because only en-AU,
+// en-PH and no-locale forms appeared. No Klook price appears.
+// ---------------------------------------------------------------------------
+
+/** The light-up version: Ningle Terrace, the Blue Pond and Shirahige Falls. */
+export const furanoBieiIlluminationTour: KlookTour = {
+  title: "Illumination tour: Ningle Terrace, Blue Pond & Shirahige Falls",
+  desc: "10 hours 10 minutes from Sapporo, join-in or private. Lunch is not included: you pick Biei Station's front area or snow play at Shikisai-no-oka",
+  url: klookLink("https://www.klook.com/en-US/activity/100735-ningle-terrace-biei-blue-pond-shirahige-waterfall-join-one-day-bus-tour-sapporo/"),
+};
+
+/** The longest winter day, with a late return. */
+export const bieiWinterBluePondShirahigeTour: KlookTour = {
+  title: "Biei winter Blue Pond & Shirahige Falls light-up day tour",
+  desc: "About 11.6 hours, 08:55 to around 20:30, with the Blue Pond light-up, Shirahige Falls and a Furano stop. Minimum 12 people",
+  url: klookLink("https://www.klook.com/en-US/activity/98680-winter-biei-blue-pond-shirahige-waterfall-light-up-day-tour/"),
+};
+
+/** The snow-play winter day. The indexed stops do not name the Blue Pond. */
+export const furanoBieiWinterDayTour: KlookTour = {
+  title: "Furano & Biei winter day tour from Sapporo",
+  desc: "About 10 hours to the Biei Christmas Tree, Shikisai-no-oka, Shirahige Falls and Ningle Terrace, with paid snow activities on site",
+  url: klookLink("https://www.klook.com/en-US/activity/178365-biei-hokkaido-shikisai-no-oka-ningle-terrace-day-tour-form-sapporo/"),
+};
+
+/** Two routes under one listing, so the choice is made at booking. */
+export const sapporoBluePondOrZooRouteTour: KlookTour = {
+  title: "Sapporo day tour: Blue Pond light-up route or Asahiyama Zoo route",
+  desc: "A late-departure Blue Pond and Ningle Terrace light-up route, or Asahiyama Zoo and Ningle Terrace. Pick the route when you book",
+  url: klookLink("https://www.klook.com/en-US/activity/4160-sapporo-flower-farm-blue-pond-tour-hokkaido/"),
+};
+
+/** What a Furano and Biei day books around the tour. */
+export const furanoBieiTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo hotels →",
+    url: japanWinterStayAreas[6].url,
+    why: "Every tour here starts in Sapporo, and the winter light-up tours can run to around 20:30.",
+  },
+  {
+    label: "Hotels in Furano",
+    ctaLabel: "Check Furano hotels →",
+    url: hokkaidoSevenDayStayAreas[2].url,
+    why: "A night inland removes the drive of about 2.5 hours each way and leaves you close to Ningle Terrace after dark.",
+  },
+  {
+    label: sapporoFuranoAreaPass.title,
+    ctaLabel: "Check the Furano area pass →",
+    url: sapporoFuranoAreaPass.url,
+    why: "If you go by train, the ¥11,000 4-day pass beats a ¥12,240 return from Sapporo to Biei on JR Hokkaido's fares.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Snow can change a tour's route or return time, and the Biei bus and train times are easiest to check on your phone.",
+  },
+];
+
+/**
+ * The four inns on hakone-ryokan-private-onsen. Each room-bath claim on that page comes
+ * from the inn's own site. Hotels pay the 6.5% band.
+ */
+export const hakoneYoshiikeRyokan: KlookTour = {
+  title: "Yoshiike Ryokan",
+  desc: "About 7 minutes on foot from Hakone-Yumoto Station, with two room types that have an open-air bath",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/915458-yoshiike-ryokan/"),
+};
+
+export const hakoneKowakienMikawaya: KlookTour = {
+  title: "Hakone Kowakien Mikawaya Ryokan",
+  desc: "Kowakudani, with 10 of its 25 rooms listed with an open-air bath, plus a free semi-open-air family bath",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/318964-hakone-kowakien-mikawaya-ryokan/"),
+};
+
+export const hakoneRyokanKyuan: KlookTour = {
+  title: "Hakone Ryouriyado Ryokan Kyuan",
+  desc: "Ninotaira, 10 rooms and no public bath: every room has an open-air or semi-open-air bath of its own",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/586522-hakone-ryouriyado-ryokan-kyuan/"),
+};
+
+export const hakoneGoraKadan: KlookTour = {
+  title: "Gora Kadan",
+  desc: "Gora, about 5 minutes on foot from the station, with several room types that have an open-air bath",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/499174-gora-kadan/"),
+};
+
+/**
+ * Two more Klook listings. Neither inn's own site could be found, so the page makes no
+ * claim about their room baths and quotes only the listing's own name.
+ */
+export const hakoneYuyuListing: KlookTour = {
+  title: "YuYu Hakone",
+  desc: "Klook's listing name adds \"Private Open Air Onsen Usage Guaranteed\". Read the room type before you book",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/1422853-yuyu-hakone--private-open-air-onsen-usage-guaranteed/"),
+};
+
+export const hakoneChisujiListing: KlookTour = {
+  title: "Chisuji Ryokan",
+  desc: "A small inn on Klook. Read the room type for its bath before you book",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/1263742-chisuji-ryokan/"),
+};
+
+/** Klook's Hakone hotel page, for readers who want other inns or dates. */
+export const hakoneHotels: KlookTour = {
+  title: "All hotels in Hakone",
+  desc: "Klook's hotel page for Hakone, to compare other inns on your dates",
+  url: klookLink("https://www.klook.com/en-US/destination/c441-hakone/3-hotel/"),
+};
+
+/** What a night in Hakone books around the room. */
+export const hakoneRyokanTripPrep: KlookTripPrepItem[] = [
+  {
+    label: hakoneHotels.title,
+    ctaLabel: "Check Hakone hotels →",
+    url: hakoneHotels.url,
+    why: "If the inns here are full on your dates, this is the quickest way to compare others. Check the room type for its bath.",
+  },
+  {
+    label: hakoneFreepass.title,
+    ctaLabel: "Check the Hakone Freepass →",
+    url: hakoneFreepass.url,
+    why: "It has no 1-day version, so it suits a night here. The 2-day pass from Shinjuku is ¥7,100 on Odakyu's figures.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Gora Kadan's shuttle starts with a phone call from the station, and bus times are easiest to check on your phone.",
+  },
+];
