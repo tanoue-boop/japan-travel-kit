@@ -1025,7 +1025,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Things to Do in Tokyo (2026): What to Book Ahead and What to Walk Into</p>
+                <p className={styles.relatedTitle}>Things to Do in Tokyo 2026: Top Picks and Ticket Prices</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

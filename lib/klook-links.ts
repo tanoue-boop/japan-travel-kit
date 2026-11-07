@@ -3995,6 +3995,13 @@ export const klookPassFukuoka: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/108593-klook-pass-fukuoka/"),
 };
 
+/** Added 7 Nov 2026 for things-to-do-tokyo; live en-US listing in the www.klook.com search index. */
+export const klookPassGreaterTokyo: KlookTour = {
+  title: "Klook Pass Greater Tokyo",
+  desc: "Klook's own multi-attraction pass: pick 2 to 7 attractions from the listing. Worth pricing once three or four paid stops are fixed",
+  url: klookLink("https://www.klook.com/en-US/activity/74574-klook-pass-greater-tokyo/"),
+};
+
 /**
  * Where to stay around a teamLab Forest slot. Three new destination ids, all
  * confirmed as live en-US hotel searches through the www.klook.com search index

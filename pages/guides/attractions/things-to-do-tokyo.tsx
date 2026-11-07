@@ -6,30 +6,210 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
+import KlookLink from "../../../components/KlookLink";
 import {
   tokyoSightseeingBusTour,
   tokyoSubwayTicket,
   skytreeTicket,
   fujiHakoneDayTour,
+  klookEsim,
+  klookPassGreaterTokyo,
+  hanedaLimousineBus,
+  naritaLimousineBus,
+  shibuyaAnnexGoKartTour,
+  shinjukuNightFoodWalkingTour,
+  tokyoDisneyOneDayPassport,
+  tokyoJoypolisPassport,
+  tokyoStayAreas,
 } from "../../../lib/klook-links";
 import GygCompare from "../../../components/GygCompare";
 import { gygTokyo, gygTokyoEntryTickets } from "../../../lib/gyg-links";
-import { PRICES, checkedLabel } from "../../../lib/attraction-prices";
+import { PRICES, TOKYO_GUIDE_PRICES, checkedLabel } from "../../../lib/attraction-prices";
 
-// The only prices on this page are the two carried over from the dedicated guides that
-// verified them against the operators' own sites — Shibuya Sky and Tokyo Skytree — and both
-// are read from lib/attraction-prices.ts, so this page cannot drift from those guides again.
-// (It did once: until 1 Nov 2026 it still printed Shibuya Sky's pre-April-2025 flat
-// ¥2,500 / ¥3,000.) The Tocho deck's 202 m height and free admission were read off
-// metro.tokyo.lg.jp on 19 Oct 2026.
-const CHECKED = "19 October 2026";
+// Every yen figure on this page comes from lib/attraction-prices.ts, so it cannot drift from
+// the guide that verified it. (It did once: until 1 Nov 2026 this page still printed Shibuya
+// Sky's pre-April-2025 flat ¥2,500 / ¥3,000.) Row dates are the records' own `checked` dates.
+//
+// Same-day and change terms were read on the operators' pages. Shibuya Sky: release of
+// 27 Feb 2025. teamLab Planets: official store Help, 6 Nov 2026. Borderless: teamlab.art,
+// 9 Oct 2026. Disney: official FAQ, 28 Oct 2026. Warner Bros.: wbstudiotour.jp/en/tickets,
+// Skytree: en.tokyo-skytree.jp/ticket and /ticket/cancel, Sanrio: puroland.jp/ticket, all
+// 7 Nov 2026. Go-kart: Street Kart's own pages, 7 Nov 2026. Tokyo Tower's fee page and
+// Joypolis publish no terms we could read, so those cells say so rather than guess.
+const TITLE = "Things to Do in Tokyo 2026: Top Picks and Ticket Prices";
+const DESC =
+  "Things to do in Tokyo with 2026 ticket prices: Shibuya Sky from ¥2,700, teamLab Planets from ¥3,800, Disney from ¥8,900, and what to book or get free.";
+
+const CHECKED_FREE = "7 November 2026";
+const TOCHO_CHECKED = checkedLabel(PRICES.tochoDeck.checked);
 const SKY = PRICES.shibuyaSky;
 // "¥2,700 / ¥3,400" -> entry 10:00–14:59, entry 15:00–21:20 (see the record's own comment).
 const [SKY_ONLINE_DAY, SKY_ONLINE_LATE] = SKY.adult.split(" / ");
 const [SKY_DOOR_DAY, SKY_DOOR_LATE] = (SKY.atDoor ?? "").split(" / ");
 const SKY_CHECKED = checkedLabel(SKY.checked);
+const SUBWAY_CHECKED = checkedLabel(PRICES.tokyoSubwayTicket.checked);
+const WB_FROM = `from ${PRICES.wbStudioTour.adult.replace("~", "")}`;
 
 const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
+
+/** Adult official prices, Tokyo only. The nationwide list is japan-attraction-ticket-prices. */
+const priceRows = [
+  {
+    name: "Shibuya Sky",
+    adult: `${SKY_ONLINE_DAY} before 15:00, ${SKY_ONLINE_LATE} from 15:00 (online)`,
+    book: "Advised: sunset slots sell out",
+    sameDay: `Yes, 14th-floor counter: ${SKY_DOOR_DAY} / ${SKY_DOOR_LATE}`,
+    change: "Official web tickets: free cancellation up to the admission day",
+    checked: SKY.checked,
+    href: SKY.href,
+    klook: SKY.klook.url,
+  },
+  {
+    name: "Tokyo Disney (1-Day Passport)",
+    adult: `${TOKYO_GUIDE_PRICES.tokyoDisney.adult}, by date`,
+    book: "Required",
+    sameDay: "No gate sales. Official site or app only, while tickets remain",
+    change: "No refunds. Date can be changed online at the new date's price",
+    checked: TOKYO_GUIDE_PRICES.tokyoDisney.checked,
+    href: "/guides/attractions/tokyo-disney-tickets",
+    klook: tokyoDisneyOneDayPassport.url,
+  },
+  {
+    name: "teamLab Planets",
+    adult: `${PRICES.teamlabPlanets.adult}, by date`,
+    book: "Required",
+    sameDay: "No on-site sales",
+    change: "No refunds. Up to 3 changes, until 2 hours before entry",
+    checked: PRICES.teamlabPlanets.checked,
+    href: PRICES.teamlabPlanets.href,
+    klook: PRICES.teamlabPlanets.klook.url,
+  },
+  {
+    name: "teamLab Borderless",
+    adult: `${PRICES.teamlabBorderless.adult}, by date`,
+    book: "Required",
+    sameDay: "On site while slots remain, ¥200 more",
+    change: "Official tickets: date can be changed up to 3 times",
+    checked: PRICES.teamlabBorderless.checked,
+    href: PRICES.teamlabBorderless.href,
+    klook: PRICES.teamlabBorderless.klook.url,
+  },
+  {
+    name: "Warner Bros. Studio Tour Tokyo",
+    adult: PRICES.wbStudioTour.adult,
+    book: "Required",
+    sameDay: "On-site ticket office, but dates and times can sell out",
+    change: "Non-refundable. ¥1,500 per date or time change",
+    checked: PRICES.wbStudioTour.checked,
+    href: PRICES.wbStudioTour.href,
+    klook: PRICES.wbStudioTour.klook.url,
+  },
+  {
+    name: "Sanrio Puroland (1-day passport)",
+    adult: PRICES.sanrioPuroland.adult,
+    book: "Required: a visit reservation as well as the ticket",
+    sameDay: "Ticket window, but you still need the visit reservation",
+    change: "No refund if refused entry without a reservation",
+    checked: PRICES.sanrioPuroland.checked,
+    href: PRICES.sanrioPuroland.href,
+    klook: PRICES.sanrioPuroland.klook.url,
+  },
+  {
+    name: "Tokyo Skytree (Floor 350)",
+    adult: PRICES.tokyoSkytree.adult,
+    book: "Advised: cheaper than the counter",
+    sameDay: "Yes, ¥500 fee per ticket at the counter",
+    change: "Official web tickets: free 31+ days out, then 20%. No date changes",
+    checked: PRICES.tokyoSkytree.checked,
+    href: PRICES.tokyoSkytree.href,
+    klook: PRICES.tokyoSkytree.klook.url,
+  },
+  {
+    name: "Tokyo Tower (Main Deck)",
+    adult: PRICES.tokyoTower.adult,
+    book: "Not needed",
+    sameDay: "Yes, same price",
+    change: "Not stated on the fee page",
+    checked: PRICES.tokyoTower.checked,
+    href: PRICES.tokyoTower.href,
+    klook: PRICES.tokyoTower.klook.url,
+  },
+  {
+    name: "Tokyo Joypolis (Passport)",
+    adult: TOKYO_GUIDE_PRICES.tokyoJoypolis.adult,
+    book: "Not needed",
+    sameDay: "Yes, sold at the door",
+    change: "Check your seller's terms",
+    checked: TOKYO_GUIDE_PRICES.tokyoJoypolis.checked,
+    href: "/guides/attractions/tokyo-joypolis-tickets",
+    klook: tokyoJoypolisPassport.url,
+  },
+  {
+    name: "Tokyo street go kart",
+    adult: `${TOKYO_GUIDE_PRICES.tokyoGoKart.adult}, by course`,
+    book: "Advised, and you need an IDP before you fly",
+    sameDay: "Not stated by the operator",
+    change: "Free up to 7 days before. No refund if your documents are missing",
+    checked: TOKYO_GUIDE_PRICES.tokyoGoKart.checked,
+    href: "/guides/attractions/tokyo-go-kart",
+    klook: shibuyaAnnexGoKartTour.url,
+  },
+  {
+    name: "Tokyo Metropolitan Government Building deck",
+    adult: "Free",
+    book: "Not needed",
+    sameDay: "No ticket exists",
+    change: "—",
+    checked: PRICES.tochoDeck.checked,
+    href: PRICES.tochoDeck.href,
+    klook: null,
+  },
+];
+
+const freeRows = [
+  {
+    thing: "Tokyo Metropolitan Government Building, Shinjuku",
+    what: "45th-floor observation rooms at 202 m. Hours and which room is open vary, so check the day before",
+    checked: TOCHO_CHECKED,
+    source: "metro.tokyo.lg.jp",
+  },
+  {
+    thing: "Meiji Jingu, Harajuku",
+    what: "Open every day, sunrise to sunset. Some facilities inside close earlier",
+    checked: CHECKED_FREE,
+    source: "meijijingu.or.jp",
+  },
+  {
+    thing: "Imperial Palace East Gardens",
+    what: "Usually closed Mondays and Fridays, and 28 December to 3 January",
+    checked: CHECKED_FREE,
+    source: "kunaicho.go.jp",
+  },
+  {
+    thing: "Shibuya Scramble Crossing",
+    what: "A public street, so there is no ticket and no opening time",
+    checked: "—",
+    source: "—",
+  },
+];
+
+/** The Tokyo bookings block. The first four cards are the page's original four. */
+const bookingPicks = [
+  tokyoSubwayTicket,
+  skytreeTicket,
+  tokyoSightseeingBusTour,
+  fujiHakoneDayTour,
+  shinjukuNightFoodWalkingTour,
+  ...tokyoStayAreas.slice(0, 2).map((stay) => ({ title: `Hotels in ${stay.area}`, desc: stay.why, url: stay.url })),
+  naritaLimousineBus,
+  hanedaLimousineBus,
+  klookPassGreaterTokyo,
+  {
+    title: klookEsim.name,
+    desc: "Data from the moment you land, in the same checkout as your tickets",
+    url: klookEsim.url,
+  },
+];
 
 const bookingRows = [
   {
@@ -77,11 +257,11 @@ const bookingRows = [
 const faqItems = [
   {
     q: "What actually needs booking ahead in Tokyo?",
-    a: "Four things, really: Tokyo Disney (date-specified, no gate sales), the teamLab museums (30-minute timed slots), Shibuya Sky's sunset window, and the Warner Bros. Studio Tour. A sumo tournament counts too, but only if your dates fall in January, May or September. Almost everything else in Tokyo — the Skytree, Tokyo Tower, shrines, neighbourhoods, the free Tocho deck — you can decide on the morning of.",
+    a: "Five things, really: Tokyo Disney (date-specified, no gate sales), the teamLab museums (30-minute timed slots), Shibuya Sky's sunset window, the Warner Bros. Studio Tour, and Sanrio Puroland, which wants a visit reservation on top of its ticket. A sumo tournament counts too, but only if your dates fall in January, May or September. Almost everything else in Tokyo — the Skytree, Tokyo Tower, shrines, neighbourhoods, the free Tocho deck — you can decide on the morning of.",
   },
   {
     q: "Are there free things to do in Tokyo?",
-    a: `Yes, and one of them is a genuine rival to the paid decks. The Tokyo Metropolitan Government Building (Tocho) in Shinjuku has an observation room on the 45th floor at 202 metres, free to enter, with the Skytree and Tokyo Tower both in view. Shrines, parks and whole neighbourhoods cost nothing to wander, so the paid list below can stay short. Height and admission read off metro.tokyo.lg.jp on ${CHECKED}.`,
+    a: `Yes, and one of them is a genuine rival to the paid decks. The Tokyo Metropolitan Government Building (Tocho) in Shinjuku has an observation room on the 45th floor at 202 metres, free to enter, with the Skytree and Tokyo Tower both in view. Shrines, parks and whole neighbourhoods cost nothing to wander, so the paid list below can stay short. Height and admission read off metro.tokyo.lg.jp on ${TOCHO_CHECKED}.`,
   },
   {
     q: "Why do Tokyo's official ticket sites reject my card?",
@@ -95,6 +275,18 @@ const faqItems = [
     q: "What is worth doing as a day trip from Tokyo?",
     a: "Four stand out, and they are genuinely different days. Kamakura is the easiest — under an hour on one JR line, with the open-air Great Buddha and seaside temples. Nikko is a UNESCO shrine plus mountain scenery, two hours north. Hakone is hot springs and a volcanic valley, with one pass covering the whole loop. Lake Kawaguchi is where you go to look at Mt. Fuji. Each has its own guide below.",
   },
+  {
+    q: "Should I pick Shibuya Sky or Tokyo Skytree?",
+    a: `Pick Shibuya Sky for an open-air rooftop above the crossing, and Tokyo Skytree for height. Shibuya Sky is ${SKY_ONLINE_DAY} online before 15:00 and ${SKY_ONLINE_LATE} from 15:00, and the sunset slots are the ones that sell out. Skytree's Floor 350 is ${PRICES.tokyoSkytree.adult}, with a ¥500 fee per ticket at the counter. Official prices, checked ${SKY_CHECKED} and ${checkedLabel(PRICES.tokyoSkytree.checked)}.`,
+  },
+  {
+    q: "Can you visit both Tokyo Disney parks in one day?",
+    a: `Not on one ticket at the moment. Each park ticket is for one park on one date, and the resort's FAQ says the 1-Day Park Hopper is not currently sold, so two parks means two days. Read on ${checkedLabel(TOKYO_GUIDE_PRICES.tokyoDisney.checked)}.`,
+  },
+  {
+    q: "Can I get a refund on Tokyo attraction tickets?",
+    a: "It depends on the venue. Tokyo Disney, teamLab Planets and the Warner Bros. Studio Tour do not refund a change of plan, though each lets you move the date under its own rules. Official Shibuya Sky web tickets can be cancelled free up to the admission day, and official Skytree tickets are free to cancel 31 or more days out and cost 20% after that. A reseller sets its own terms, so read them at checkout.",
+  },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/things-to-do-tokyo") } });
@@ -103,22 +295,22 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Things to Do in Tokyo (2026): What to Book Ahead</title>
+        <title>{TITLE}</title>
         <meta
           name="description"
-          content="Things to do in Tokyo in 2026, ordered by urgency: the 4 or 5 attractions whose timed tickets really do sell out, and the best free view in the city."
+          content={DESC}
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo" />
         {hreflangLinks("/guides/attractions/things-to-do-tokyo")}
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Things to Do in Tokyo (2026): What to Book Ahead" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/things-to-do-tokyo" />
-        <meta property="og:description" content="Things to do in Tokyo in 2026, ordered by urgency: the 4 or 5 attractions whose timed tickets really do sell out, and the best free view in the city." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Things to Do in Tokyo (2026): What to Book Ahead" />
-        <meta name="twitter:description" content="Things to do in Tokyo in 2026, ordered by urgency: the 4 or 5 attractions whose timed tickets really do sell out, and the best free view in the city." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -138,7 +330,8 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/things-to-do-tokyo",
-              headline: "Things to Do in Tokyo (2026): What to Book Ahead",
+              headline: TITLE,
+              description: DESC,
               updated,
             }),
           }}
@@ -186,14 +379,14 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Things to Do in Tokyo (2026):<br />What to Book Ahead and What to Walk Into
+            Things to Do in Tokyo 2026:<br />Top Picks and Ticket Prices
           </h1>
           <p className={styles.heroSubtitle}>
-            Only four or five things in Tokyo genuinely sell out. Here is that short list, how far ahead to
-            book each one, and everything else you can decide on over breakfast.
+            Official ticket prices for Tokyo&apos;s top attractions, what to book ahead, what is free, and
+            everything else you can decide on over breakfast.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Ordered by urgency", "Official prices"].map((t) => (
+            {[`Updated ${updated.label}`, "Dated official prices", "Ordered by urgency"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -215,33 +408,126 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>Most of Tokyo Does Not Need Booking</h2>
+          <h2 className={styles.sectionTitle}>What do you need to book ahead in Tokyo?</h2>
           <p className={styles.bodyText}>
-            The useful thing to know about Tokyo is how short the list of genuinely time-sensitive attractions
-            is. Four or five venues sell date- and time-specified tickets that really do run out, and
-            everything else — the Skytree, Tokyo Tower, the shrines, the neighbourhoods, the best free view in
-            the city — you can decide on over breakfast. Planning a Tokyo trip is mostly a matter of pinning
-            down that short list first.
+            Only a handful of things to do in Tokyo need booking ahead: Shibuya Sky (adult from {SKY_ONLINE_DAY}),
+            teamLab Planets ({PRICES.teamlabPlanets.adult}), Tokyo Disney ({TOKYO_GUIDE_PRICES.tokyoDisney.adult}),
+            the Warner Bros. Studio Tour ({WB_FROM}) and Sanrio Puroland&apos;s visit reservation. Everything else
+            can wait for the day, and the best free view is the Tokyo Metropolitan Government Building, whose
+            observation rooms sit at 202 metres. These are official prices, with the date each was checked in
+            the table below.
           </p>
           <p className={styles.bodyText}>
-            So this page is ordered by urgency rather than by how famous something is. The table below says
-            what to book and when; the sections after it link to the full guide for each, with official prices
-            and the booking route that works from abroad.
-          </p>
-          <p className={styles.bodyText}>
-            If you want the money side of that list in one place instead, our{" "}
+            This page covers Tokyo only. For Kyoto, Osaka and child rates, our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
               Japan attraction ticket prices table
             </Link>{" "}
-            lists the official adult and child admission for every Tokyo venue below — plus the rest of the
-            country — with the date each figure was read off the operator&apos;s own site.
+            lists the official figures nationwide. To compare the decks in detail, use our{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>Tokyo observation decks comparison</Link>.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={SKY.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Shibuya Sky on Klook →
+            </KlookLink>
+            <KlookLink href={PRICES.teamlabPlanets.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              teamLab Planets on Klook →
+            </KlookLink>
+            <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Tokyo Disney on Klook →
+            </KlookLink>
+            <KlookLink href={PRICES.wbStudioTour.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Warner Bros. Studio Tour on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Price table */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Ticket prices</span>
+          <h2 className={styles.sectionTitle}>How much do Tokyo attractions cost?</h2>
+          <p className={styles.bodyText}>
+            For an adult, an observation deck or teamLab museum starts at ¥1,500 to ¥3,800, and a theme park or
+            studio day starts at ¥3,900 to ¥8,900. Several of these change with the date, so a &quot;from&quot;
+            price is the published minimum.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Attraction", "Adult price", "Book ahead?", "Same-day tickets", "Cancel or change", "Checked", "Details"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {priceRows.map((row) => (
+                    <tr key={row.name}>
+                      <td className={styles.tdProvider}>{row.name}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.adult}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.book}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.sameDay}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.change}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{checkedLabel(row.checked)}</td>
+                      <td style={{ fontSize: "0.88rem" }}>
+                        <Link href={row.href} style={linkStyle}>Guide</Link>
+                        {row.klook && (
+                          <>
+                            {" · "}
+                            <KlookLink href={row.klook} target="_blank" rel="sponsored noopener" style={linkStyle}>
+                              Klook
+                            </KlookLink>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            Official adult prices and terms, read on the operator&apos;s site on the date shown. Klook sets its
+            own price and cancellation terms, so open the listing for your date. Go kart prices are per person
+            across Street Kart&apos;s own price tables.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={PRICES.teamlabBorderless.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              teamLab Borderless on Klook →
+            </KlookLink>
+            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Tokyo day tour on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        <KlookTourPicks
+          heading="Tokyo bookings worth having in place"
+          intro="The transport pass, a day tour, a night food tour, somewhere to stay, the airport run, a multi-attraction pass and data for your phone, plus the deck ticket and the Fuji coach. Open a listing for the current price on your date."
+          tours={bookingPicks}
+        />
+
+        {/* Top picks */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Top picks</span>
+          <h2 className={styles.sectionTitle}>What are the top things to do in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            The top things to do in Tokyo are a deck at sunset, a teamLab museum, one park day and an evening of
+            small bars and food. Add a shrine, a garden and a day trip, and you have a full first visit.
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>A view from above:</strong> <Link href="/guides/attractions/shibuya-sky-tickets" style={linkStyle}>Shibuya Sky</Link> at sunset, or <Link href="/guides/attractions/tokyo-tower-tickets" style={linkStyle}>Tokyo Tower</Link> with no booking.</li>
+            <li><strong>Digital art:</strong> <Link href="/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab Planets</Link> or <Link href="/guides/attractions/teamlab-borderless-tickets" style={linkStyle}>teamLab Borderless</Link>.</li>
+            <li><strong>A park day:</strong> <Link href="/guides/attractions/tokyo-disney-tickets" style={linkStyle}>Tokyo Disney</Link>, <Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>Sanrio Puroland</Link> or indoor <Link href="/guides/attractions/tokyo-joypolis-tickets" style={linkStyle}>Tokyo Joypolis</Link>.</li>
+            <li><strong>An evening out:</strong> a <Link href="/guides/attractions/tokyo-night-food-tour" style={linkStyle}>night food tour</Link> through Omoide Yokocho and Golden Gai.</li>
+            <li><strong>Something hands-on:</strong> a <Link href="/guides/attractions/tokyo-go-kart" style={linkStyle}>Tokyo go kart</Link> tour if you hold the right permit.</li>
+          </ul>
         </section>
 
         {/* Booking urgency */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Book or walk in</span>
-          <h2 className={styles.sectionTitle}>What to Reserve, and How Far Ahead</h2>
+          <h2 className={styles.sectionTitle}>How far ahead should you book Tokyo attractions?</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -266,10 +552,93 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           </div>
         </section>
 
+        {/* Free */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Free</span>
+          <h2 className={styles.sectionTitle}>What can you do in Tokyo for free?</h2>
+          <p className={styles.bodyText}>
+            You can see the city from 202 metres, walk the Meiji Jingu forest and the Imperial Palace East
+            Gardens, and cross Shibuya Scramble without buying a ticket. All four cost nothing.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Place", "What to know", "Checked", "Source"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {freeRows.map((row) => (
+                    <tr key={row.thing}>
+                      <td className={styles.tdProvider}>{row.thing}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.checked}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            In winter, some of the{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours" style={linkStyle}>Tokyo illuminations</Link>{" "}
+            are free as well.
+          </p>
+        </section>
+
+        {/* Subway ticket */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Getting around</span>
+          <h2 className={styles.sectionTitle}>Is the Tokyo Subway Ticket worth it?</h2>
+          <p className={styles.bodyText}>
+            Usually yes for the 72-hour ticket, and only on a busy day for the 24-hour one. At{" "}
+            {PRICES.tokyoSubwayTicket.adult} for 24 hours, ¥1,500 for 48 and ¥2,000 for 72, the longest ticket
+            works out to about ¥667 a day, which roughly four short rides cover at ¥178 to ¥324 a ride on an IC
+            card. The 24-hour ticket needs five or six.
+          </p>
+          <p className={styles.bodyText}>
+            It covers Tokyo Metro and Toei lines but not JR, so the Yamanote Line is not included. Our{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket" style={linkStyle}>Tokyo Subway Ticket guide</Link>{" "}
+            has the full break-even. Prices and fares read off tokyometro.jp on {SUBWAY_CHECKED}.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Tokyo Subway Ticket on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Days */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Planning</span>
+          <h2 className={styles.sectionTitle}>How many days do you need in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            Three days covers the main sights, and five leaves room for two day trips out of the city. Fix the timed entries first, then fill the gaps with walk-in sightseeing.
+            Our <Link href="/guides/attractions/tokyo-3-day-itinerary" style={linkStyle}>Tokyo 3-day itinerary</Link>{" "}
+            and <Link href="/guides/attractions/tokyo-5-day-itinerary" style={linkStyle}>Tokyo 5-day itinerary</Link>{" "}
+            lay out each day.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Tokyo day tour on Klook →
+            </KlookLink>
+            <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Night food tour on Klook →
+            </KlookLink>
+            <KlookLink href={tokyoStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Shinjuku hotels on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
         {/* Views from above */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Views from above</span>
-          <h2 className={styles.sectionTitle}>Observation Decks</h2>
+          <h2 className={styles.sectionTitle}>Which Tokyo observation deck should you pick?</h2>
           <p className={styles.bodyText}>
             <strong>Shibuya Sky</strong> is the open-air rooftop above the Shibuya Scramble Crossing and the
             one deck where the slot matters. An adult booked online pays {SKY_ONLINE_DAY} to enter before 15:00
@@ -285,14 +654,14 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             Before paying for any of them, read our{" "}
             <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>observation decks comparison</Link>,
             which puts all four side by side — including the Tokyo Metropolitan Government Building in
-            Shinjuku, whose 202-metre deck is free. Prices checked {CHECKED}.
+            Shinjuku, whose 202-metre deck is free.
           </p>
         </section>
 
         {/* teamLab */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Digital art</span>
-          <h2 className={styles.sectionTitle}>teamLab Museums</h2>
+          <h2 className={styles.sectionTitle}>Which teamLab museum should you book?</h2>
           <p className={styles.bodyText}>
             Tokyo has two teamLab digital-art museums — Planets in Toyosu and Borderless in Azabudai — both
             immersive, walk-through experiences that use timed entry and sell out fast. Our{" "}
@@ -304,7 +673,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
         {/* Theme parks */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Theme parks</span>
-          <h2 className={styles.sectionTitle}>Tokyo Disney &amp; the Warner Bros. Studio Tour</h2>
+          <h2 className={styles.sectionTitle}>Should you book Tokyo Disney or the Warner Bros. Studio Tour?</h2>
           <p className={styles.bodyText}>
             <strong>Tokyo Disney</strong> (Disneyland and DisneySea) uses date-specified tickets that sell out
             weeks ahead, with no gate sales — and the official site can block foreign cards. Our{" "}
@@ -319,7 +688,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
         {/* Experiences */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Experiences</span>
-          <h2 className={styles.sectionTitle}>Go-Karts, Sumo, Kimono and Swords</h2>
+          <h2 className={styles.sectionTitle}>Which hands-on experiences are worth booking in Tokyo?</h2>
           <p className={styles.bodyText}>
             The hands-on things are mostly easy to book late, with one exception.{" "}
             <strong>Street go-karting</strong> lets you drive Tokyo&apos;s public roads in costume, but it
@@ -344,7 +713,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
         {/* Food */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Eating</span>
-          <h2 className={styles.sectionTitle}>Food Tours and Cooking Classes</h2>
+          <h2 className={styles.sectionTitle}>Is a food tour in Tokyo worth booking?</h2>
           <p className={styles.bodyText}>
             Tokyo is a city where the best food is often behind a door you would not push open on your own —
             the six-seat izakaya counters of Omoide Yokocho, the bars of Golden Gai. That is the actual
@@ -358,7 +727,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
         {/* Day trips */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Beyond the city</span>
-          <h2 className={styles.sectionTitle}>Four Day Trips, Four Different Days</h2>
+          <h2 className={styles.sectionTitle}>What are the best day trips from Tokyo?</h2>
           <p className={styles.bodyText}>
             <Link href="/guides/attractions/kamakura-day-trip" style={linkStyle}>Kamakura</Link> is the one to
             take if you only have a spare morning&apos;s worth of planning in you: under an hour on a single
@@ -397,12 +766,6 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             ))}
           </div>
         </section>
-
-        <KlookTourPicks
-          heading="Tokyo Bookings Worth Having in Place"
-          intro="A city pass for the transport, the deck ticket most people end up buying, a guided loop of the big three sights, and the Fuji coach. Open a listing for the current price on your date."
-          tours={[tokyoSubwayTicket, skytreeTicket, tokyoSightseeingBusTour, fujiHakoneDayTour]}
-        />
 
         {/* A round-up recommends a week, not a product, so this is a second catalogue
             rather than a second checkout. Nothing above is changed. */}

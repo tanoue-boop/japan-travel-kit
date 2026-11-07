@@ -186,6 +186,9 @@ export const PRICES = {
     booking: "Required",
     bookingNote: "Timed slot or a Flexible Pass, and buying on site costs ¥200 more per adult ticket.",
     source: "teamlab.art",
+    // Still 9 Oct on purpose. On 7 Nov 2026 the search index of teamlab.art/e/tokyo showed
+    // the same ¥3,400, ¥1,500 and ¥200 on-site figures, but the page itself renders its
+    // prices client-side and the index carries no capture date, so it is not a re-read.
     checked: "2026-10-09",
     klook: klook("Klook: teamLab Borderless admission ticket", teamlabBorderlessTicketUrl),
   },
@@ -236,7 +239,8 @@ export const PRICES = {
     bookingNote:
       "Date- and time-specified, and the tour takes about four hours — the time slot decides the rest of your day.",
     source: "wbstudiotour.jp",
-    checked: "2026-10-19",
+    // Re-read 7 Nov 2026 on wbstudiotour.jp/en/tickets: adult, junior and child unchanged.
+    checked: "2026-11-07",
     klook: klook("Klook: Warner Bros. Studio Tour Tokyo ticket", warnerBrosStudioTourTokyo.url),
   },
 
@@ -254,7 +258,9 @@ export const PRICES = {
     bookingNote:
       "Sold to visitors only, at airports and designated counters. It covers Tokyo Metro and Toei but not JR — including the Yamanote Line.",
     source: "tokyometro.jp",
-    checked: "2026-10-19",
+    // Re-read 7 Nov 2026 on tokyometro.jp/en/ticket/value/travel and /ticket/regular:
+    // all three pass lengths and the ¥178–¥324 IC fare table unchanged.
+    checked: "2026-11-07",
     klook: klook("Klook: Tokyo Subway Ticket (24 / 48 / 72 hour)", tokyoSubwayTicket.url),
   },
   osakaAmazingPass: {
@@ -400,6 +406,20 @@ export const PRICES = {
     klook: klook("Klook: Hiroshima & Miyajima bus tour", hiroshimaMiyajimaBusTourUrl),
   },
 } satisfies Record<string, AttractionPrice>;
+
+/**
+ * Tokyo prices owned by their own guides, for the table on things-to-do-tokyo in every
+ * edition. Kept out of PRICES so the nationwide summary table does not change. Added
+ * 2026-11-07. Each date is the one on the guide that read the figure.
+ */
+export const TOKYO_GUIDE_PRICES = {
+  /** 1-Day Passport minimum, priced by date: pages/guides/attractions/tokyo-disney-tickets.tsx. */
+  tokyoDisney: { adult: "from ¥8,900", checked: "2026-10-28" },
+  /** Passport with unlimited rides: pages/guides/attractions/tokyo-joypolis-tickets.tsx. */
+  tokyoJoypolis: { adult: "¥6,000", checked: "2026-10-22" },
+  /** Range across Street Kart's own price tables: pages/guides/attractions/tokyo-go-kart.tsx. */
+  tokyoGoKart: { adult: "¥5,000 – ¥25,000", checked: "2026-11-07" },
+} as const;
 
 /** Every record, in declaration order (tickets, parks, passes, day trips). */
 export const attractionPrices: AttractionPrice[] = Object.values(PRICES);

@@ -75,6 +75,9 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             that pay back fastest are the{" "}
             <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Hakone Free Pass</Link> and the{" "}
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>JR Kansai Area Pass</Link>.
+            For Tokyo alone, our{" "}
+            <Link href="/guides/attractions/things-to-do-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>things to do in Tokyo guide</Link>{" "}
+            lists ticket prices and what to book ahead.
           </PartnerPick>
           {/* Winter route, added 6 Nov 2026 (jtk-20261106-A21). */}
           <PartnerPick

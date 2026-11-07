@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-07：/guides/attractions/things-to-do-tokyo の順位改善（task-jtk-20261107-R02）
+
+- 2026-11-07 title 変更：「Things to Do in Tokyo (2026): What to Book Ahead」→「Things to Do in Tokyo 2026: Top Picks and Ticket Prices」（zh-tw・zh-cn も同じ構成に変更）
+
 ## 2026-11-07：/guides/attractions/tokyo-go-kart の順位改善（task-jtk-20261107-R01）
 
 - 2026-11-07 title 変更：「Tokyo Street Go-Kart (2026): Rules and the IDP You Need」→「Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book」

@@ -515,8 +515,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/things-to-do-tokyo",
     badge: "City guide",
-    title: "Things to Do in Tokyo (2026): What to Book Ahead and What to Walk Into",
-    desc: "A short list of the Tokyo attractions that need a timed ticket weeks out, and the ones you can turn up to — so your booking effort goes where it is actually needed.",
+    title: "Things to Do in Tokyo 2026: Top Picks and Ticket Prices",
+    desc: "Official ticket prices for Tokyo's top attractions, which ones need booking ahead, what you can do for free, and how many days to allow.",
     group: "cities",
     city: "tokyo",
   },
