@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
+import { Fragment } from "react";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -619,8 +621,9 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
         </section>
 
         {/* Days */}
-        {days.map((day) => (
-          <section key={day.label} className={styles.comparisonSection}>
+        {days.map((day, i) => (
+          <Fragment key={day.label}>
+          <section className={styles.comparisonSection}>
             <span className={styles.sectionLabel}>{day.label}</span>
             <h2 className={styles.sectionTitle}>{day.heading}</h2>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>{day.answer}</p>
@@ -670,6 +673,8 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
               ))}
             </div>
           </section>
+          {i === 0 && <BookingEsimCard lead="Planning the Kyushu route? Get mobile data before you land." />}
+          </Fragment>
         ))}
 
         {/* Takachiho */}

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -733,6 +734,8 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             the bureau&apos;s bus page before you plan a connection.
           </p>
         </section>
+
+        <BookingEsimCard lead="Planning the Kumano Kodo route? Get mobile data before you land." />
 
         {/* Wear */}
         <section className={styles.bodySection}>

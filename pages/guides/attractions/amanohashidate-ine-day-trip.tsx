@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -504,6 +505,8 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             JR West&apos;s 60 because it is the figure that fits Ine&apos;s 3-hour total from Kyoto.
           </p>
         </section>
+
+        <BookingEsimCard lead="Planning the Amanohashidate trip? Get mobile data before you land." />
 
         {/* Official fares */}
         <section className={styles.comparisonSection}>

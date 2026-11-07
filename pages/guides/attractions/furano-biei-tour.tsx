@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -612,6 +613,8 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             times can differ. Regular fares and the pass price were read {RAIL_FARES}.
           </p>
         </section>
+
+        <BookingEsimCard lead="Planning the Biei route? Get mobile data before you land." />
 
         {/* Lavender */}
         <section className={styles.bodySection}>

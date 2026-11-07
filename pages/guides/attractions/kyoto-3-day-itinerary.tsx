@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
@@ -681,6 +682,8 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             </KlookLink>
           </div>
         </section>
+
+        <BookingEsimCard lead="Planning three days in Kyoto? Get mobile data before you land." />
 
         {/* Bus pass */}
         <section className={styles.bodySection}>

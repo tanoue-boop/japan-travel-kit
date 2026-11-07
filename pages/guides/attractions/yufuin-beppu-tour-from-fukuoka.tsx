@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -503,6 +504,8 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             shortest on its Oita and Beppu page. The bus operators show different fares, so check yours on the operator&apos;s site.
           </p>
         </section>
+
+        <BookingEsimCard lead="Planning Yufuin and Beppu? Get mobile data before you land." />
 
         {/* Hells */}
         <section className={styles.comparisonSection}>

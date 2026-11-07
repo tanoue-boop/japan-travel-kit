@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -594,6 +595,8 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
             for the passes.
           </p>
         </section>
+
+        <BookingEsimCard lead="Planning the Arashiyama route? Get mobile data before you land." />
 
         {/* Rain */}
         <section className={styles.bodySection}>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import {
   fushimiInari90MinuteTour,
@@ -617,6 +618,8 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
             covers the rest of the city.
           </p>
         </section>
+
+        <BookingEsimCard lead="Heading to Fushimi Inari? Get mobile data before you land." />
 
         {/* Tour vs solo */}
         <section className={styles.comparisonSection}>
