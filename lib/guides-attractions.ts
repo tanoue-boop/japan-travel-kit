@@ -563,8 +563,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/tea-ceremony-japan",
     badge: "Experience",
-    title: "Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto and What to Expect",
-    desc: "A beginner session runs under an hour and is led in English at most listings aimed at visitors. What the session covers, and how Kyoto and Tokyo differ.",
+    title: "Japanese Tea Ceremony Experience: Price, How Long and Where to Book",
+    desc: "A tea ceremony takes 45 to 60 minutes, or about 90 with a kimono, and costs from ¥3,300 in Kyoto on the venues' own price lists. Kyoto and Tokyo compared.",
     group: "experiences",
     city: "tokyo",
   },

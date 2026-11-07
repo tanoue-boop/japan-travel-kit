@@ -845,7 +845,7 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto and What to Expect</p>
+                <p className={styles.relatedTitle}>Japanese Tea Ceremony Experience: Price, How Long and Where to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

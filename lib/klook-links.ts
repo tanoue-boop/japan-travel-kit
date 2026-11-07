@@ -3207,6 +3207,38 @@ export const tokyoPrivateTeaCeremonyWagashi: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/103494-1-hour-private-tokyo-class-tea-ceremony-wagashi/"),
 };
 
+// Four named ceremonies added 7 Nov 2026 for the booking CTAs on tea-ceremony-japan.
+// All four en-US URLs were confirmed in the www.klook.com search index that day, and
+// each desc repeats only what the indexed listing states. No prices, as elsewhere.
+
+/** Gion, kimono and hair included: the Kyoto listing for the kimono CTA. */
+export const kyotoGionKimonoTeaCeremony: KlookTour = {
+  title: "Kyoto: kimono tea ceremony at Orizuruya, Gion",
+  desc: "1.5 to 2 hours in a small group of up to 10, with kimono dressing and hair styling before the ceremony",
+  url: klookLink("https://www.klook.com/en-US/activity/233020-kimono-tea-ceremony-experience-at-kyoto-orizuruya-gion/"),
+};
+
+/** Gion, seated on chairs throughout: the answer for anyone who cannot kneel. */
+export const kyotoGionChairTeaCeremony: KlookTour = {
+  title: "Kyoto: traditional tea ceremony with matcha and sweets",
+  desc: "A one-hour Gion session held on chairs, with a demonstration, a bowl you whisk yourself and Kyoto sweets",
+  url: klookLink("https://www.klook.com/en-US/activity/177406-kyoto-traditional-tea-ceremony-with-matcha-and-sweets/"),
+};
+
+/** Maikoya's Asakusa branch, not Kyoto: the listing says so itself. */
+export const asakusaKimonoTeaCeremony: KlookTour = {
+  title: "Tokyo: tea ceremony with kimono in Asakusa",
+  desc: "1 hour 30 minutes at the Asakusa branch, with a maximum of 14 guests",
+  url: klookLink("https://www.klook.com/en-US/activity/137057-tea-ceremony-with-kimono-experience-in-tokyo/"),
+};
+
+/** Asakusa at tables and chairs, about ten minutes on foot from Senso-ji. */
+export const asakusaTableKimonoTeaCeremony: KlookTour = {
+  title: "Tokyo: table-style kimono tea ceremony near Senso-ji",
+  desc: "About 90 minutes at tables and chairs with a kimono included, two bowls of matcha and seasonal sweets",
+  url: klookLink("https://www.klook.com/en-US/activity/139616-table-style-tea-ceremony-experience-near-senso-ji-and-skytree/"),
+};
+
 // ---------------------------------------------------------------------------
 // The budget guide, added 27 Oct 2026 for japan-travel-budget.
 //
@@ -5815,6 +5847,32 @@ export const gionNightSameDayPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.esim,
     why: "Your booking names a meeting point in a district of narrow lanes, and you will want a working map to reach it on time.",
+  },
+];
+
+/** The rest of a Kyoto tea ceremony day, for tea-ceremony-japan. No new listing. */
+export const teaCeremonySameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: "Gion kimono rental with hair styling",
+    ctaLabel: "Check the kimono rental →",
+    url: kyotoKimonoAiwafukuGion.url,
+    why: "For a tea room with no kimono of its own, but check the return time against your slot first.",
+  },
+  {
+    label: "Gion night walking tour",
+    ctaLabel: "Check the Gion night tour →",
+    url: kyotoGionNightWalkingTour.url,
+    why: "A late-afternoon ceremony leaves the evening free, and this is the same district after dark.",
+  },
+  {
+    label: "Hotels in Gion",
+    ctaLabel: "Check Gion hotel prices →",
+    url: kyotoStayAreas[2].url,
+    why: "A bed near the tea rooms means no cross-city ride before a morning slot.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Your booking names an address in a district of narrow lanes, and you will want a working map to reach it on time.",
   },
 ];
 

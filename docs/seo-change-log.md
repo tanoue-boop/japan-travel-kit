@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-07：/guides/attractions/tea-ceremony-japan の順位改善（task-jtk-20261107-R04）
+
+- 2026-11-07 title 変更：「Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto」→「Japanese Tea Ceremony Experience: Price, How Long, Where」
+
 ## 2026-11-07：/guides/attractions/sagano-romantic-train-tickets の順位改善（task-jtk-20261107-R03）
 
 - 2026-11-07 title 変更：「Sagano Romantic Train Tickets (2026): Prices and Seats」→「Sagano Romantic Train Tickets 2026–2027: Fares and Booking」

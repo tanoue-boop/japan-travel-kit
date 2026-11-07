@@ -4,7 +4,16 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { kyotoHighlightBusTour, kyotoNaraArashiyamaTour } from "../../../lib/klook-links";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import {
+  asakusaKimonoTeaCeremony,
+  asakusaTableKimonoTeaCeremony,
+  kyotoGionChairTeaCeremony,
+  kyotoGionKimonoTeaCeremony,
+  kyotoHighlightBusTour,
+  kyotoNaraArashiyamaTour,
+  teaCeremonySameDayPrep,
+} from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygJapanTeaCeremonies, gygKyotoTeaCeremonies, gygTokyoTeaCeremonies } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -12,24 +21,48 @@ import { articleJsonLd } from "../../../lib/structured-data";
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 const TEA_CEREMONY_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307860&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F160630-traditional-japanese-tea-ceremony-experience-in-kyoto%2F";
 
-// Session length, format and inclusions are as the Klook listing describes them, checked
-// 19 Oct 2026. No price is quoted: Klook answers automated reads of its product pages with
-// HTTP 403, so there is no figure here we could have verified.
-const CHECKED = "19 October 2026";
+// Yen figures come only from each venue's own site, read on the date in CHECKED. Klook prices are
+// never quoted: Klook answers automated reads of its product pages with HTTP 403, so Klook rows
+// repeat the duration and inclusions from its search-indexed listing text and nothing else.
+// No venue page read that day publishes a formal chaji or a temple zazen-and-tea session, so the
+// page does not describe them.
+const CHECKED = "7 November 2026";
+const CHECKED_SHORT = "7 Nov 2026";
+
+const linkStyle = { color: "var(--red)", fontWeight: 600 };
+
+const formatRows = [
+  { format: "Short matcha session", time: "20–30 minutes", starts: "Booked slot", includes: "Tea ceremony and matcha-making with an English guide", source: "TIA, Kiyomizu (Klook)" },
+  { format: "Shared group ceremony", time: "45 minutes", starts: "11:45, 13:00, 14:15, 15:30, 16:45", includes: "A bowl made by the host, one you make yourself, organic Uji matcha, a dried sweet", source: "Tea Ceremony Koto, Kyoto (official)" },
+  { format: "Table-seated ceremony", time: "50 minutes", starts: "Hourly 10:00–17:00, March to November; 11:00, 13:00, 15:00, 17:00 in winter", includes: "A performance, a sweet, a bowl you make yourself", source: "Camellia Garden, Kyoto (official)" },
+  { format: "Hotel tea room", time: "About 60 minutes", starts: "Tue, Thu, Sat at 12:00, 13:30, 15:00", includes: "The ceremony, with tea-making", source: "The Okura Tokyo (official)" },
+  { format: "Kimono and ceremony", time: "About 90 minutes", starts: "Booked slot; the ceremony starts about 30 minutes after dressing begins", includes: "Kimono and dressing, an English-guided ceremony, a bowl you make yourself, sweets", source: "Maikoya, Gion and Asakusa (official)" },
+  { format: "Kimono, hair and ceremony", time: "1.5–2 hours", starts: "Booked slot", includes: "Kimono dressing and hair styling, then the ceremony, in a group of up to 10", source: "Orizuruya, Gion (Klook)" },
+  { format: "Maiko ceremony", time: "2 hours 50 minutes", starts: "Booked slot", includes: "A maiko performance, matcha served by a maiko, a folding fan you make", source: "Gion-Shijo join-in (Klook)" },
+];
+
+const priceRows = [
+  { venue: "Tea Ceremony Koto, near Kinkaku-ji, Kyoto", session: "Shared, 45 minutes", price: "¥3,300 (child 6–12 ¥2,500)", note: "Kimono +¥3,000" },
+  { venue: "Tea Ceremony Koto, Kyoto", session: "Private, 45 minutes", price: "¥7,700 (solo ¥9,840)", note: "Kimono +¥3,000" },
+  { venue: "Tea Ceremony Koto, Kyoto", session: "Private, ceremony with kimono and ikebana", price: "¥16,800 (solo ¥15,000)", note: "Child under 13 ¥13,000" },
+  { venue: "Camellia Garden, near Ryoan-ji, Kyoto", session: "50 minutes, two or more guests", price: "¥15,000; ¥18,000 in peak months", note: "Solo ¥25,000 or ¥30,000; tax included" },
+  { venue: "The Okura Tokyo, Chosho-an", session: "About 60 minutes, two or more guests", price: "¥5,000", note: "Tax and 15% service included" },
+  { venue: "The Okura Tokyo, Chosho-an", session: "About 30 minutes, no tea-making", price: "¥3,000", note: "By phone only" },
+  { venue: "Hotel Chinzanso Tokyo", session: "About 1 hour, price per group", price: "¥90,000 for 1–3 guests; ¥120,000 for 4–6; ¥180,000 for 7–12", note: "Kimono from ¥22,000 each" },
+  { venue: "Maikoya, Gion and Asakusa", session: "About 90 minutes with kimono", price: "Varies by date", note: "Shown in the booking calendar" },
+];
 
 const compareRows = [
-  {
-    city: "Kyoto",
-    setting: "Gion, Kiyomizu & Daitoku-ji areas; traditional machiya tea rooms",
-    matcha: "Uji matcha heartland",
-    pairing: "Often combined with kimono rental",
-  },
-  {
-    city: "Tokyo",
-    setting: "Central venues and tea houses, easy to slot into a city day",
-    matcha: "Quality matcha, broad choice of sessions",
-    pairing: "Good for a short, convenient introduction",
-  },
+  { city: "Kyoto", area: "Gion / Kiyomizu (Maikoya)", time: "About 90 minutes", kimono: "Included", language: "English" },
+  { city: "Kyoto", area: "Gion (Orizuruya, Klook)", time: "1.5–2 hours", kimono: "Included, with hair", language: "Not stated" },
+  { city: "Kyoto", area: "Gion, on chairs (Klook)", time: "1 hour", kimono: "None listed", language: "Not stated" },
+  { city: "Kyoto", area: "Kiyomizu (TIA, Klook)", time: "20–30 minutes", kimono: "Rental shop next door", language: "English" },
+  { city: "Kyoto", area: "Kinkaku-ji (Tea Ceremony Koto)", time: "45 minutes", kimono: "Optional, +¥3,000", language: "English" },
+  { city: "Kyoto", area: "Ryoan-ji (Camellia Garden)", time: "50 minutes", kimono: "Not available", language: "Not stated" },
+  { city: "Tokyo", area: "Asakusa (Maikoya)", time: "About 90 minutes", kimono: "Included", language: "English" },
+  { city: "Tokyo", area: "Asakusa, at tables (Klook)", time: "About 90 minutes", kimono: "Included", language: "Not stated" },
+  { city: "Tokyo", area: "Toranomon (The Okura Tokyo)", time: "About 60 minutes", kimono: "None listed", language: "Not stated" },
+  { city: "Tokyo", area: "Bunkyo (Hotel Chinzanso)", time: "About 1 hour", kimono: "Optional, from ¥22,000", language: "English, Chinese, Japanese" },
 ];
 
 const whoFor = [
@@ -73,15 +106,19 @@ const steps = [
   },
   {
     title: "Pick a session length and format",
-    desc: `Experiences typically run about 20 to 60 minutes, and the format matters more than the length. The Kyoto listing we checked, a few steps from Kinkaku-ji, runs 45 minutes to an hour with a second-degree Urasenke-school instructor: you are served organic Uji matcha first, then given a hands-on lesson in whisking your own, with a traditional sweet. Shorter sessions tend to be watch-and-taste only. Most have English-speaking hosts. Details as listed on ${CHECKED}.`,
+    desc: `Most sessions run 45 to 60 minutes, and the format matters more than the length. One Kyoto listing on Klook, a few steps from Kinkaku-ji, runs 45 minutes to an hour with a second-degree Urasenke-school instructor: you are served organic Uji matcha first, then given a hands-on lesson in whisking your own, with a traditional sweet. Sessions of 20 to 30 minutes are the compact version. Details as listed on ${CHECKED}.`,
   },
   {
     title: "Check seating and any restrictions",
-    desc: "Traditional seating is on tatami in the kneeling seiza position, which not everyone finds comfortable. Many venues offer chairs or table seating — worth confirming if you need it. Note that some ceremonies, especially those combined with kimono, advise against attendance during pregnancy, so check the policy.",
+    desc: "Traditional seating is on tatami in the kneeling seiza position. Chairs are the default at some venues and on request at others, so ask when you book if you need one. Some ceremonies, especially those combined with kimono, advise against attendance during pregnancy, so check the policy.",
   },
   {
     title: "Consider pairing it with a kimono",
-    desc: `A popular combination is to rent a kimono and attend a tea ceremony in it, which makes one immersive cultural half-day out of two short bookings. Some venues bundle it: the Kyoto listing we checked offers an optional kimono package where the kimono is worn for the session only and returned before you leave — which neatly sidesteps the fixed return deadline a full-day rental comes with. Checked ${CHECKED}.`,
+    desc: `A popular combination is to rent a kimono and attend a tea ceremony in it, which makes one cultural half-day out of two short bookings. Some venues bundle it: Maikoya keeps the kimono with you until 18:00 the same day, and one Kyoto listing on Klook has you wear it for the session only and return it before you leave. Checked ${CHECKED}.`,
+  },
+  {
+    title: "Book ahead, and earlier in spring and autumn",
+    desc: `The Okura Tokyo asks for at least 7 days' notice and Hotel Chinzanso Tokyo at least 10. Tea Ceremony Koto takes online bookings or email, and Maikoya shows open slots in its booking calendar. Camellia Garden charges its peak rate in March, April, October, November and over New Year, which are the months to book first. Checked ${CHECKED}.`,
   },
 ];
 
@@ -91,24 +128,28 @@ const faqItems = [
     a: "The Japanese tea ceremony (chanoyu, or sado, 'the way of tea') is the ritual preparation and serving of matcha — powdered green tea — whisked to a froth and served with a seasonal sweet (wagashi). It's as much about hospitality, mindfulness, and seasonal aesthetics as about the drink itself. Visitor experiences distil this into a guided session, usually with an English-speaking host.",
   },
   {
-    q: "How long does a tea ceremony experience take?",
-    a: "Most visitor experiences run between about 20 and 60 minutes. Shorter sessions centre on watching the matcha being prepared and tasting it with a sweet, while longer ones explain the etiquette and history and may invite you to whisk your own bowl. Pick the length that suits your schedule and how deeply you want to go.",
+    q: "Is a tea ceremony suitable for beginners?",
+    a: "Yes. Most visitor experiences are designed for first-timers, with hosts who walk you through what to do, so no prior knowledge is needed. If you have specific needs, dietary or otherwise, mention them when booking, as venues vary in what they can accommodate.",
   },
   {
-    q: "Should I do a tea ceremony in Tokyo or Kyoto?",
-    a: "Both are excellent. Kyoto is the spiritual home of the tea ceremony and sits near the Uji matcha region, with atmospheric traditional tea rooms around Gion and Kiyomizu — and it pairs beautifully with a kimono rental. Tokyo offers convenient, beginner-friendly venues that are easy to fit into a city day. Choose Kyoto for atmosphere, Tokyo for convenience.",
-  },
-  {
-    q: "Is a tea ceremony suitable for beginners and children?",
-    a: "Yes. Most visitor experiences are designed for first-timers, with English-speaking hosts who walk you through what to do, so no prior knowledge is needed. Many welcome children too. If you have specific needs — dietary, mobility, or otherwise — mention them when booking, as venues vary in what they can accommodate.",
-  },
-  {
-    q: "Do I have to kneel, and can I attend if I'm pregnant?",
-    a: "Traditional seating is on tatami in the seiza (kneeling) position, but many venues offer chairs or table seating — ask when you book. Because some ceremonies involve kneeling and, where kimono is included, being dressed in one, certain venues advise against attendance during pregnancy. Policies differ, so confirm directly with the operator before booking.",
+    q: "Can I attend a tea ceremony if I'm pregnant?",
+    a: "It depends on the venue. Because some ceremonies involve kneeling and, where kimono is included, being dressed in one, certain venues advise against attendance during pregnancy. A session on chairs without a kimono is the simpler choice, but policies differ, so confirm directly with the operator before booking.",
   },
   {
     q: "What's the background of the tea ceremony?",
     a: "The way of tea has deep roots in Zen Buddhism; matcha was popularised in Japan after the monk Eisai brought tea-drinking practices from China, and the ceremony was later refined into the form known today. You don't need any of this history to enjoy a session — hosts share as much or as little as you like — but it adds meaning to the ritual.",
+  },
+  {
+    q: "How much is a tea ceremony in Tokyo?",
+    a: `At The Okura Tokyo a ceremony of about 60 minutes costs ¥5,000 per person with a minimum of two guests, and a 30-minute session without the tea-making costs ¥3,000. Hotel Chinzanso Tokyo charges per group, from ¥90,000 for up to three guests. Maikoya's Asakusa price varies by date and shows in its booking calendar. Checked ${CHECKED}.`,
+  },
+  {
+    q: "How far in advance should I book a tea ceremony?",
+    a: `At least 7 days for The Okura Tokyo and 10 days for Hotel Chinzanso Tokyo, the two venues here that set a minimum. Elsewhere the booking calendar decides, so book as soon as your dates are firm, and earlier for March, April, October and November. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Do I need a kimono for a tea ceremony?",
+    a: "No. A kimono is an add-on, not a requirement. Tea Ceremony Koto sells it as an extra, Maikoya includes it in the plans listed here, and Camellia Garden does not offer it at its Ryoan-ji location. Without one, wear modest clothes and socks.",
   },
 ];
 
@@ -118,21 +159,21 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
   return (
     <>
       <Head>
-        <title>Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto</title>
+        <title>Japanese Tea Ceremony Experience: Price, How Long, Where</title>
         <meta
           name="description"
-          content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long a session runs, Tokyo against Kyoto, and how to book one from abroad."
+          content="A Japanese tea ceremony experience takes 45 to 60 minutes, or about 90 with a kimono. Price and how long at each venue in Kyoto and Tokyo, from ¥3,300."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tea-ceremony-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto" />
+        <meta property="og:title" content="Japanese Tea Ceremony Experience: Price, How Long, Where" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tea-ceremony-japan" />
-        <meta property="og:description" content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long a session runs, Tokyo against Kyoto, and how to book one from abroad." />
+        <meta property="og:description" content="A Japanese tea ceremony experience takes 45 to 60 minutes, or about 90 with a kimono. Price and how long at each venue in Kyoto and Tokyo, from ¥3,300." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto" />
-        <meta name="twitter:description" content="Japanese tea ceremony experiences in 2026: what chanoyu involves, how long a session runs, Tokyo against Kyoto, and how to book one from abroad." />
+        <meta name="twitter:title" content="Japanese Tea Ceremony Experience: Price, How Long, Where" />
+        <meta name="twitter:description" content="A Japanese tea ceremony experience takes 45 to 60 minutes, or about 90 with a kimono. Price and how long at each venue in Kyoto and Tokyo, from ¥3,300." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -152,7 +193,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tea-ceremony-japan",
-              headline: "Japanese Tea Ceremony Experience (2026): Tokyo or Kyoto",
+              headline: "Japanese Tea Ceremony Experience: Price, How Long, Where",
               updated,
             }),
           }}
@@ -200,7 +241,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Japanese Tea Ceremony Experience (2026):<br />Tokyo, Kyoto &amp; What to Expect
+            Japanese Tea Ceremony Experience:<br />Price, How Long It Takes &amp; Where to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Whisked matcha, a seasonal sweet, and a quiet, mindful ritual centuries in the making. Here&apos;s what
@@ -226,6 +267,18 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           </p>
         </div>
 
+        {/* The answer */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            A Japanese tea ceremony experience for visitors takes about 45 to 60 minutes, or about 90 minutes to
+            2 hours with a kimono. Kyoto has sessions around Gion and Higashiyama and near Kinkaku-ji, Tokyo has
+            them in Asakusa and in hotel tea rooms, and the venues listed here run several start times between
+            late morning and late afternoon. Prices on the venues&apos; own sites run from ¥3,300 to ¥18,000 per
+            person in Kyoto, and a 60-minute session at The Okura Tokyo costs ¥5,000. Book early for spring and
+            autumn. Checked {CHECKED}.
+          </p>
+        </section>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -239,11 +292,11 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Length</p>
-                <p className={styles.verdictStatValue}>~20–60 minutes</p>
+                <p className={styles.verdictStatValue}>45–60 min; 90–120 with kimono</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Where</p>
-                <p className={styles.verdictStatValue}>Tokyo &amp; Kyoto</p>
+                <p className={styles.verdictStatLabel}>Price</p>
+                <p className={styles.verdictStatValue}>From ¥3,300 (Kyoto, venue price)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Good to know</p>
@@ -251,14 +304,10 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> this is a short, beginner-friendly session, not a commitment —
-              the Kyoto listing we checked runs 45 minutes to an hour, is led by a second-degree instructor
-              of the Urasenke school, and includes organic Uji matcha brewed for you, a hands-on
-              tea-making lesson and a traditional sweet. No background is needed and the host speaks English.
-              Kyoto gives you the most traditional setting and pairs naturally with a kimono rental; Tokyo is
-              the convenient option. The two things to check before booking are the seating — much of it is{" "}
-              <em>seiza</em>, kneeling — and any pregnancy restrictions the venue lists. Session details as
-              listed on {CHECKED}.
+              <strong>In short:</strong> no background is needed. Kyoto gives you the most traditional setting
+              and pairs naturally with a kimono rental; Tokyo is the convenient option. The two things to check
+              before booking are the seating, because much of it is <em>seiza</em>, kneeling, and any pregnancy
+              restrictions the venue lists.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -272,7 +321,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What a Tea Ceremony Actually Is</h2>
+          <h2 className={styles.sectionTitle}>What happens at a Japanese tea ceremony?</h2>
           <p className={styles.bodyText}>
             The Japanese tea ceremony — <strong>chanoyu</strong>, or <strong>sado</strong>, &ldquo;the way of
             tea&rdquo; — is the careful preparation and serving of matcha, powdered green tea whisked to a froth and
@@ -283,32 +332,43 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             You don&apos;t need any background to take part. Sessions are designed for beginners, hosts usually speak
             English, and the focus is on the experience itself — the taste of the matcha, the quiet of the room, and
-            the small, deliberate movements of the ritual. Below we cover where to do it, how to choose, and a few
-            practical points to check before booking.
+            the small, deliberate movements of the ritual. Typically the host prepares a bowl, you are served a
+            sweet and the matcha, and at most visitor sessions you then whisk your own.
+          </p>
+          <p className={styles.bodyText}>
+            This guide covers the ceremony itself: the etiquette, the time and the booking. For the tea, meaning
+            Uji, Wazuka and grinding matcha on a stone mill, see our{" "}
+            <Link href="/guides/attractions/japan-matcha-experiences" style={linkStyle}>matcha experiences guide</Link>.
           </p>
         </section>
 
-        {/* Comparison table */}
+        {/* Duration */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Where to go</span>
-          <h2 className={styles.sectionTitle}>Tokyo vs Kyoto for a Tea Ceremony</h2>
+          <span className={styles.sectionLabel}>Time</span>
+          <h2 className={styles.sectionTitle}>How long does a Japanese tea ceremony take?</h2>
+          <p className={styles.bodyText}>
+            About 45 to 60 minutes for the ceremony alone, and about 90 minutes to 2 hours with a kimono, because
+            dressing takes the first half hour. A maiko session takes close to 3 hours.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["City", "Setting", "Matcha", "Pairs with"].map((h) => (
+                    {["Format", "How long", "Start times", "Includes", "Source", "Checked"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {compareRows.map((row) => (
-                    <tr key={row.city}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.city}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.setting}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.matcha}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.pairing}</td>
+                  {formatRows.map((row) => (
+                    <tr key={row.format}>
+                      <td className={styles.tdProvider}>{row.format}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.starts}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.includes}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.source}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{CHECKED_SHORT}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -316,15 +376,92 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Venues, formats, and prices vary (2026, variable — confirm at booking). Both cities offer
-            beginner-friendly, English-language sessions.
+            From each venue&apos;s own site, or Klook&apos;s search-indexed listing text where marked, checked{" "}
+            {CHECKED}. &ldquo;Booked slot&rdquo; means the times appear only in the booking calendar.
+          </p>
+        </section>
+
+        {/* Price */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Price</span>
+          <h2 className={styles.sectionTitle}>How much is a tea ceremony experience in Kyoto?</h2>
+          <p className={styles.bodyText}>
+            From ¥3,300 per adult for a shared session to ¥15,000 to ¥18,000 at a garden tea house, on the
+            prices the venues publish themselves. In Tokyo, The Okura Tokyo charges ¥5,000.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Venue", "Session", "Price per person", "Note", "Checked"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {priceRows.map((row) => (
+                    <tr key={row.venue + row.session}>
+                      <td className={styles.tdProvider}>{row.venue}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.session}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{CHECKED_SHORT}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Official prices from each venue&apos;s own site, checked {CHECKED}. Camellia&apos;s peak rate applies in
+            March, April, October, November and over New Year. Klook prices are shown on each listing, not here.
+          </p>
+        </section>
+
+        {/* Comparison table */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Where to go</span>
+          <h2 className={styles.sectionTitle}>Should you do a tea ceremony in Kyoto or Tokyo?</h2>
+          <p className={styles.bodyText}>
+            Kyoto if you are going anyway, because the tea rooms sit in the old streets you came to walk. Tokyo if
+            you are not, because Asakusa offers the same kimono-and-ceremony format and fits into a city day.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["City", "Area and venue", "How long", "Kimono", "Language", "Checked"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareRows.map((row) => (
+                    <tr key={row.area}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.city}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.area}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.kimono}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.language}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{CHECKED_SHORT}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            &ldquo;Not stated&rdquo; means the page read did not name a language, so confirm it before you
+            book. Venues change their plans, so check the listing for your date. Checked {CHECKED}.
           </p>
         </section>
 
         {/* Who is it for */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Which suits you</span>
-          <h2 className={styles.sectionTitle}>Where Should You Do It?</h2>
+          <h2 className={styles.sectionTitle}>Which tea ceremony should you choose?</h2>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -334,12 +471,47 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               </div>
             ))}
           </div>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={kyotoGionKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Gion kimono ceremony →
+            </KlookLink>
+            <KlookLink href={kyotoGionChairTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Gion ceremony on chairs →
+            </KlookLink>
+            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Asakusa kimono ceremony →
+            </KlookLink>
+            <KlookLink href={asakusaTableKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Asakusa ceremony at tables →
+            </KlookLink>
+            <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Browse Tea Ceremony Experiences →
+            </KlookLink>
+            <GygCompareButton slug="tea-ceremony-japan" listing={gygKyotoTeaCeremonies} />
+          </div>
+        </section>
+
+        {/* Time of day */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Timing</span>
+          <h2 className={styles.sectionTitle}>What time of day is best for a tea ceremony?</h2>
+          <p className={styles.bodyText}>
+            None of the venue pages names a best hour, so choose the slot that fits your day. With a kimono, take
+            a morning or early-afternoon slot: Maikoya&apos;s rental ends at 18:00, so an earlier start leaves time
+            to walk in it afterwards. Without one, a late slot works well. Tea Ceremony Koto&apos;s last session
+            starts at 16:45 and Camellia Garden&apos;s at 17:00, which leaves the evening for a{" "}
+            <Link href="/guides/attractions/gion-night-walking-tour" style={linkStyle}>Gion night walking tour</Link>.
+            Camellia Garden has fewer slots in winter and closes on winter Sundays. For where a ceremony fits in a
+            longer stay, see our{" "}
+            <Link href="/guides/attractions/kyoto-3-day-itinerary" style={linkStyle}>Kyoto 3 day itinerary</Link>.
+            Checked {CHECKED}.
+          </p>
         </section>
 
         {/* Steps */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Choose &amp; Book</h2>
+          <h2 className={styles.sectionTitle}>How do you book a tea ceremony in Japan?</h2>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -351,30 +523,77 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               </div>
             ))}
           </div>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={kyotoGionKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Book the Gion kimono ceremony on Klook →
+            </KlookLink>
+            <KlookLink href={kyotoGionChairTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Book the Gion ceremony on chairs →
+            </KlookLink>
+            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Book the Asakusa kimono ceremony on Klook →
+            </KlookLink>
+            <KlookLink href={asakusaTableKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Book the Asakusa ceremony at tables →
+            </KlookLink>
+            <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Browse Tea Ceremony Experiences →
+            </KlookLink>
+            <GygCompareButton slug="tea-ceremony-japan" listing={gygKyotoTeaCeremonies} />
+          </div>
         </section>
+
+        <KlookTripPrep
+          label="Same day"
+          heading="What should you book for the same day?"
+          intro="A ceremony fills an hour or two, so the rest of a Kyoto day is yours to plan. These are the bookings that fit around it."
+          items={teaCeremonySameDayPrep}
+        />
 
         {/* Good to know */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Good to know</span>
-          <h2 className={styles.sectionTitle}>Seating, Pregnancy &amp; Pairing with Kimono</h2>
+          <h2 className={styles.sectionTitle}>Do you have to kneel at a tea ceremony?</h2>
           <p className={styles.bodyText}>
-            Two practical points are worth checking before you book. First, seating: the traditional posture is
-            seiza (kneeling on tatami), which not everyone finds comfortable — many venues offer chairs or table
-            seating, so ask if you need it. Second, some ceremonies involve kneeling and, where a kimono is
-            included, being dressed in one; for that reason certain venues advise against attendance during
-            pregnancy. Policies vary, so confirm directly with the operator.
+            No, not at every visitor session. The traditional posture is seiza, kneeling on tatami, but Maikoya
+            says you need not stay in it and offers chairs on request, subject to availability. Camellia Garden
+            seats up to 10 guests at tables and chairs, and the one-hour Gion session on Klook is held on chairs
+            throughout. Ask when you book. Some ceremonies involve kneeling and, where a kimono is included,
+            being dressed in one, so certain venues advise against attendance during pregnancy. Checked{" "}
+            {CHECKED}.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Dress</span>
+          <h2 className={styles.sectionTitle}>What should I wear to a tea ceremony?</h2>
+          <p className={styles.bodyText}>
+            Modest clothes and socks. Maikoya&apos;s etiquette guide says everyone must wear socks, because shoes
+            are not allowed on tatami. It says to avoid hats, ripped jeans and sleeveless tops, and warns that
+            shorts can leave red marks from the cushion and the floor. Shoes that slip off easily save time at the
+            door. Checked {CHECKED}.
           </p>
           <p className={styles.bodyText}>
-            A tea ceremony also pairs wonderfully with a{" "}
-            <Link href="/guides/attractions/kimono-rental-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
-              kimono rental
-            </Link>{" "}
-            for a fully traditional half-day — especially in Kyoto, where you can wander between the two. For more
-            ideas in the city, see our{" "}
-            <Link href="/guides/attractions/things-to-do-kyoto" style={{ color: "var(--red)", fontWeight: 600 }}>
-              best things to do in Kyoto
-            </Link>{" "}
+            To wear a kimono instead, book it with the ceremony or rent one first: see our{" "}
+            <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>Kyoto kimono rental</Link> and{" "}
+            <Link href="/guides/attractions/asakusa-kimono-rental" style={linkStyle}>Asakusa kimono rental</Link>{" "}
+            guides for return times, or the wider{" "}
+            <Link href="/guides/attractions/kimono-rental-japan" style={linkStyle}>kimono rental</Link> guide. For
+            more ideas in the city, see our{" "}
+            <Link href="/guides/attractions/things-to-do-kyoto" style={linkStyle}>best things to do in Kyoto</Link>{" "}
             guide.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Families</span>
+          <h2 className={styles.sectionTitle}>Can children join a tea ceremony?</h2>
+          <p className={styles.bodyText}>
+            Yes, but the minimum age varies. Maikoya takes guests aged 7 and up, in Asakusa as well as Gion.
+            Camellia Garden&apos;s sessions are typically for ages 4 and up, and it asks families with younger
+            children to get in touch. Tea Ceremony Koto does not take babies aged 0 to 2 in its shared session,
+            charges ¥2,500 for ages 6 to 12, may ask a crying child to wait in the next room, and suggests a
+            private plan for families with small children. Checked {CHECKED}.
           </p>
         </section>
 
@@ -399,7 +618,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
 
         <KlookTourPicks
           heading="The Rest of a Kyoto Day"
-          intro="A ceremony takes under an hour, so it slots into a bigger day rather than filling one. Open a listing for the current price on your date."
+          intro="A ceremony takes an hour or two, so it slots into a bigger day rather than filling one. Open a listing for the current price on your date."
           tours={[kyotoHighlightBusTour, kyotoNaraArashiyamaTour]}
         />
 
@@ -536,9 +755,8 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Sit down to the way of tea</h2>
             <p className={styles.ctaBannerDesc}>
-              A short, beginner-friendly ceremony in Tokyo or Kyoto is one of Japan&apos;s most rewarding cultural
-              experiences. Check seating and any pregnancy restrictions when you book, and consider pairing it with
-              a kimono.
+              A beginner-friendly ceremony in Tokyo or Kyoto takes about an hour. Check seating and any pregnancy
+              restrictions when you book, and consider pairing it with a kimono.
             </p>
             <div className={styles.pickCtaRow}>
               <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>

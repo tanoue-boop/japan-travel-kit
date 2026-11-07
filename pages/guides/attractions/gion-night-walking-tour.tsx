@@ -266,7 +266,7 @@ const relatedGuides = [
   { href: "/guides/attractions/where-to-stay-in-kyoto", title: "Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time" },
   { href: "/guides/attractions/kyoto-kimono-rental", title: "Kyoto Kimono Rental (2026): Which Area, What's Included, When to Return" },
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },
-  { href: "/guides/attractions/tea-ceremony-japan", title: "Japanese Tea Ceremony Experience (2026): Tokyo, Kyoto and What to Expect" },
+  { href: "/guides/attractions/tea-ceremony-japan", title: "Japanese Tea Ceremony Experience: Price, How Long and Where to Book" },
 ];
 
 const chevron = (
