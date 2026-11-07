@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
@@ -937,6 +938,8 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
           intro="Two things that are cheaper or simply easier to sort out before you fly than from the arrivals hall:"
           items={taxFreeTripPrep}
         />
+
+        <BookingEsimCard lead="Shopping list ready? Get mobile data before you land." />
 
         {/* (2) The airport procedure, in order */}
         <section className={styles.comparisonSection}>

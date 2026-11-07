@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import JrPassCalculator from "../../../components/JrPassCalculator";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -961,6 +962,8 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             page are the JR companies&apos;. Both links pay us a commission at no extra cost to you.
           </p>
         </section>
+
+        <BookingEsimCard lead="Pass sorted? Keep maps and train times on your phone." />
 
         {/* JR Pass Tips */}
         <section className={styles.whoForSection}>

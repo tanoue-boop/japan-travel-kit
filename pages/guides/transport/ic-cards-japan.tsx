@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
@@ -773,6 +774,8 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
           </p>
           <KlookPicks items={airportPaths} />
         </section>
+
+        <BookingEsimCard lead="Need maps and IC card top-ups on the go?" />
 
         {/* How to Get an IC Card */}
         <section className={styles.installSection}>

@@ -20,11 +20,16 @@ import styles from "../styles/EsimBuyBlocks.module.css";
  * no plan-by-plan price is written for Klook.
  *
  * Words live here once per language. Which language comes from the route.
+ *
+ * On a guide with no booking to follow, a page passes `lead`: its own one-line title.
+ * The eyebrow and intro then drop the booking and ticket wording.
  */
 type Copy = {
   eyebrow: string;
+  guideEyebrow: string;
   title: string;
   intro: string;
+  guideIntro: string;
   lowest: string;
   simbyeFrom: string;
   simbyeCode: string;
@@ -42,6 +47,9 @@ const COPY: Record<Locale, Copy> = {
     title: "Get your Japan eSIM sorted before you fly",
     intro:
       "Set it up by QR code before you leave and it works as soon as you land, so your ticket, maps and train times are on your phone from the airport.",
+    guideEyebrow: "Mobile data for Japan",
+    guideIntro:
+      "Set it up by QR code before you leave and it works as soon as you land, so maps and train times are on your phone from the airport.",
     lowest: "Lowest plan price we could confirm",
     simbyeFrom: "From {price} ({plan})",
     simbyeCode: "{discounted} with code {code}, {percent}% off",
@@ -55,6 +63,8 @@ const COPY: Record<Locale, Copy> = {
     eyebrow: "訂完票之後",
     title: "出發前先把日本 eSIM 準備好",
     intro: "出發前掃 QR Code 完成設定，抵達後馬上就能上網。門票、地圖和電車時刻，從機場開始都能用手機查看。",
+    guideEyebrow: "日本行動上網",
+    guideIntro: "出發前掃 QR Code 完成設定，抵達後馬上就能上網。地圖和電車時刻，從機場開始都能用手機查看。",
     lowest: "已確認方案中的最低價",
     simbyeFrom: "{price} 起（{plan}）",
     simbyeCode: "輸入折扣碼 {code} 享 {percent}% 折扣：{discounted}",
@@ -68,6 +78,8 @@ const COPY: Record<Locale, Copy> = {
     eyebrow: "订完票之后",
     title: "出发前先把日本 eSIM 准备好",
     intro: "出发前扫二维码完成设置，落地后马上就能上网。门票、地图和电车时刻，从机场开始都能用手机查看。",
+    guideEyebrow: "日本移动上网",
+    guideIntro: "出发前扫二维码完成设置，落地后马上就能上网。地图和电车时刻，从机场开始都能用手机查看。",
     lowest: "已确认套餐中的最低价",
     simbyeFrom: "{price} 起（{plan}）",
     simbyeCode: "输入折扣码 {code} 享 {percent}% 折扣：{discounted}",
@@ -81,6 +93,8 @@ const COPY: Record<Locale, Copy> = {
     eyebrow: "예약 다음 단계",
     title: "출국 전에 일본 eSIM까지 준비하세요",
     intro: "출발 전에 QR 코드로 설정해 두면 도착하자마자 쓸 수 있습니다. 티켓, 지도, 열차 시간을 공항에서부터 휴대폰으로 확인하세요.",
+    guideEyebrow: "일본 모바일 데이터",
+    guideIntro: "출발 전에 QR 코드로 설정해 두면 도착하자마자 쓸 수 있습니다. 지도와 열차 시간을 공항에서부터 휴대폰으로 확인하세요.",
     lowest: "확인된 요금제 중 최저가",
     simbyeFrom: "{price}부터 ({plan})",
     simbyeCode: "코드 {code} 입력 시 {percent}% 할인: {discounted}",
@@ -94,6 +108,8 @@ const COPY: Record<Locale, Copy> = {
     eyebrow: "หลังจองเสร็จ",
     title: "เตรียม eSIM ญี่ปุ่นให้พร้อมก่อนออกเดินทาง",
     intro: "ตั้งค่าด้วย QR Code ก่อนออกเดินทาง แล้วใช้งานได้ทันทีเมื่อถึงญี่ปุ่น ทั้งตั๋ว แผนที่ และเวลารถไฟดูบนมือถือได้ตั้งแต่สนามบิน",
+    guideEyebrow: "อินเทอร์เน็ตมือถือในญี่ปุ่น",
+    guideIntro: "ตั้งค่าด้วย QR Code ก่อนออกเดินทาง แล้วใช้งานได้ทันทีเมื่อถึงญี่ปุ่น ทั้งแผนที่และเวลารถไฟดูบนมือถือได้ตั้งแต่สนามบิน",
     lowest: "ราคาต่ำสุดในแพ็กเกจที่ยืนยันได้",
     simbyeFrom: "เริ่ม {price} ({plan})",
     simbyeCode: "ใส่โค้ด {code} ลด {percent}% เหลือ {discounted}",
@@ -105,7 +121,7 @@ const COPY: Record<Locale, Copy> = {
   },
 };
 
-export default function BookingEsimCard() {
+export default function BookingEsimCard({ lead }: { lead?: string }) {
   const locale = useComponentLocale();
   const route = useRouter().pathname;
   const copy = COPY[locale];
@@ -119,9 +135,9 @@ export default function BookingEsimCard() {
 
   return (
     <aside className={styles.card} data-placement={ESIM_PLACEMENT.bookingCard}>
-      <span className={styles.label}>{copy.eyebrow}</span>
-      <p className={styles.cardTitle}>{copy.title}</p>
-      <p className={styles.cardIntro}>{copy.intro}</p>
+      <span className={styles.label}>{lead ? copy.guideEyebrow : copy.eyebrow}</span>
+      <p className={styles.cardTitle}>{lead ?? copy.title}</p>
+      <p className={styles.cardIntro}>{lead ? copy.guideIntro : copy.intro}</p>
       <div className={styles.choices}>
         <div className={styles.choice}>
           <p className={styles.choiceName}>Simbye</p>

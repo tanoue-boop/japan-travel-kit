@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -495,6 +496,8 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
             Visit Revolut →
           </a>
         </section>
+
+        <BookingEsimCard lead="Revolut ready? Get mobile data before you land." />
 
         {/* Pros & Cons */}
         <section className={styles.prosConsSection}>

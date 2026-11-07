@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import FxFeeComparison from "../../../components/FxFeeComparison";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -539,6 +540,8 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             One practical tip: withdraw larger amounts less frequently to minimise ATM fees. A single ¥50,000 withdrawal costs the same machine fee as a ¥10,000 withdrawal.
           </p>
         </section>
+
+        <BookingEsimCard lead="Exchange plan sorted? Get mobile data before you land." />
 
         {/* Card vs cash, and the prepay table — the part a rate comparison can't answer */}
         <section className={styles.bodySection} id="prepay">

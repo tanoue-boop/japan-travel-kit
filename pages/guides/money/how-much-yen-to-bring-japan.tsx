@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { howMuchYenTripPrep } from "../../../lib/klook-links";
@@ -730,6 +731,8 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
             compares the fee structures that decide the cost of every withdrawal in the table above.
           </p>
         </section>
+
+        <BookingEsimCard lead="Yen sorted? Get mobile data before you land." />
 
         {/* Tips */}
         <section className={styles.bodySection}>

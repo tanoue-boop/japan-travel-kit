@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import KlookLink from "../../../components/KlookLink";
@@ -617,6 +618,8 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             Visit Wise →
           </a>
         </section>
+
+        <BookingEsimCard lead="Card sorted? Get mobile data before you land." />
 
         {/* Pros & Cons */}
         <section className={styles.prosConsSection}>

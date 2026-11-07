@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
@@ -781,6 +782,8 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             </KlookLink>
           </div>
         </section>
+
+        <BookingEsimCard lead="Need maps and bus routes on the go?" />
 
         {/* Tips */}
         <section className={styles.whoForSection}>

@@ -2,6 +2,14 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-07：Bing 上位のお金・交通ページに eSIM カード（task-jtk-20261107-04）
+
+- 目的：11/2週の eSIM 送客クリックが目標30に対し実績4（11/6 時点）。Bing で表示の多いお金・交通の10ページに Simbye と Klook eSIM のカードを置く。
+- 変更日：2026-11-07。比較は GA4 の affiliate_click（placement=booking-esim-card、partner=simbye / klook）と Klook の Top performing ads（広告ID別）。
+- 変更：components/BookingEsimCard.tsx に `lead` を追加。渡すとカードの見出しがその1行になり、見出し上の小ラベルと導入文は予約・チケットに触れない文面になる。既存20ページの表示は変わらない。
+- 対象：tax-free-shopping-japan、how-much-yen-to-bring-japan、currency-exchange-japan、wise-card-japan、revolut-card-japan、japan-travel-budget、kyoto-transportation、ic-cards-japan、jr-pass-guide、osaka-airport-transfer（すべて英語版のみ）。本文・見出し・既存リンクは変更なし。
+- 広告ID：spare の 1550189–1550198 を `<ページ>#booking-esim-card` に割り当て。
+
 ## 2026-11-07：/guides/transport/tokyo-to-kyoto の Klook 導線と運賃表（task-jtk-20261107-03）
 
 - 2026-11-07 title 変更：「Tokyo to Kyoto 2026: Cheapest & Fastest Ways」→「Tokyo to Kyoto 2026: Shinkansen Price, Time and Cheapest Way」

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -802,6 +803,8 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             ))}
           </div>
         </section>
+
+        <BookingEsimCard lead="Landing at Kansai? Get mobile data before you fly." />
 
         {/* Where to stay for easy airport access */}
         <KlookStayAreas

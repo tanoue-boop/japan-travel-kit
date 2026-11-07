@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
@@ -1092,6 +1093,8 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             round-up. Prices last checked {pricesCheckedLabel()}.
           </p>
         </section>
+
+        <BookingEsimCard lead="Budget set? Get mobile data before you land." />
 
         <KlookTripPrep
           label="Prepay the data"
