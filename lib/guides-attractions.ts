@@ -686,8 +686,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/sagano-romantic-train-tickets",
     badge: "Ticket",
-    title: "Sagano Romantic Train Tickets (2026): Prices, Seats & When It Runs",
-    desc: "¥880 adult and ¥440 child one way for 7.3 km and 25 minutes up the Hozugawa gorge. The 2026 season, the two-month winter shutdown, the one-month booking window and the boat back down.",
+    title: "Sagano Romantic Train Tickets 2026–2027: Fares and Booking",
+    desc: "¥880 adult and ¥440 child one way to 29 December 2026, closed to 28 February, then a new train from 1 March 2027 at ¥1,500 with a seat. Booking windows and the boat back down.",
     group: "tickets",
     city: "kyoto",
   },

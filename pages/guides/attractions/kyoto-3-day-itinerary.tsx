@@ -48,7 +48,7 @@ import { articleJsonLd } from "../../../lib/structured-data";
 const OWN = checkedLabel("2026-11-06");
 const CARRIED = checkedLabel("2026-10-29");
 const FARES_CHECKED = checkedLabel("2026-10-26");
-const SAGANO_CHECKED = checkedLabel("2026-10-25");
+const SAGANO_CHECKED = checkedLabel("2026-11-07");
 const TODAIJI = PRICES.todaiji;
 const TODAIJI_CHECKED = checkedLabel(TODAIJI.checked);
 
@@ -191,7 +191,7 @@ const priceRows = [
   { stop: "Kiyomizu-dera (Day 1)", price: "¥500 adult, ¥200 elementary and junior high", hours: "6:00–18:00 (18:30 in July and August)", source: `kiyomizudera.or.jp, ${CARRIED}` },
   { stop: "Fushimi Inari Taisha (Day 2)", price: "Free", hours: "Gate paths are open outside office hours", source: `Kyoto City, ${CARRIED}` },
   { stop: "Bamboo grove and Togetsukyo (Day 2)", price: "Free", hours: "Open paths; Tenryu-ji charges separately", source: `Kyoto City, ${CARRIED}` },
-  { stop: "Sagano Romantic Train (Day 2)", price: "¥880 adult, ¥440 child one way", hours: "7.3 km, 25 minutes; not all year", source: `Operator's fare, ${SAGANO_CHECKED}` },
+  { stop: "Sagano Romantic Train (Day 2)", price: "¥880 adult, ¥440 child one way to 29 Dec 2026; ¥1,500 and ¥750 with a seat from 1 Mar 2027", hours: "7.3 km, 25 minutes; closed 30 Dec 2026 – 28 Feb 2027", source: `Operator's fare, ${SAGANO_CHECKED}` },
   { stop: "Kinkaku-ji (Day 2)", price: "Confirm at the gate", hours: "9:00–17:00", source: `shokoku-ji.jp, ${CARRIED}; the temple's revised fare is published as an image we could not read` },
   { stop: "Todai-ji Great Buddha Hall (Day 3, Nara)", price: `${TODAIJI.adult} adult, ${TODAIJI.child} ${TODAIJI.childAges}`, hours: "8:00–17:00 November to March, 7:30–17:30 April to October", source: `todaiji.or.jp, ${TODAIJI_CHECKED}` },
   { stop: "Byodo-in (Day 3, Uji)", price: "¥700 adult, ¥400 junior and senior high, ¥300 elementary; Phoenix Hall interior ¥300 extra", hours: "Garden 8:45–17:30; interior 9:30–16:10, every 20 minutes", source: `byodoin.or.jp, ${OWN}` },
@@ -214,7 +214,7 @@ const checklist = [
   },
   {
     title: "A few weeks out: the shinkansen and the Sagano train",
-    desc: "Lock in the arrival seat once the hotel is booked, and the Sagano Romantic Train if it is on Day 2. The train does not run all year and seats are reserved, so check your date first.",
+    desc: "Lock in the arrival seat once the hotel is booked, and the Sagano Romantic Train if it is on Day 2. The train is closed from 30 December 2026 to 28 February 2027, a new train with a seat fee starts on 1 March 2027, and seats are reserved, so check your date first.",
   },
   {
     title: "A week or two out: the kimono slot and tours",
@@ -249,7 +249,7 @@ const faqItems = [
   },
   {
     q: "What does this itinerary cost in admissions?",
-    a: `About ¥1,300 for one adult on the Nara version: Kiyomizu-dera ¥500 and Todai-ji ${TODAIJI.adult}. The Uji version is about ¥1,200, or ¥1,500 with the Phoenix Hall interior. Fushimi Inari, the bamboo grove and Togetsukyo are free. Kinkaku-ji and the ¥880 Sagano train are extra if you choose them, and we do not quote Kinkaku-ji because its revised fare is published as an image we could not read.`,
+    a: `About ¥1,300 for one adult on the Nara version: Kiyomizu-dera ¥500 and Todai-ji ${TODAIJI.adult}. The Uji version is about ¥1,200, or ¥1,500 with the Phoenix Hall interior. Fushimi Inari, the bamboo grove and Togetsukyo are free. Kinkaku-ji and the Sagano train (¥880 to 29 December 2026, ¥1,500 with a seat from 1 March 2027) are extra if you choose them, and we do not quote Kinkaku-ji because its revised fare is published as an image we could not read.`,
   },
   {
     q: "Does this plan work in rain or with children?",

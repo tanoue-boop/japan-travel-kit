@@ -674,7 +674,7 @@ const days: Day[] = [
         place: "The Sagano Romantic Train or the Hozugawa river boat, if you want one",
         allow: "1–2 hours",
         getting: "Torokko Saga station, beside Saga-Arashiyama",
-        booking: "Yes in autumn and blossom season — the torokko is a reserved seat, and it does not run in deep winter",
+        booking: "Yes in autumn and blossom season — the torokko is a reserved seat, and it is closed from 30 December 2026 to 28 February 2027",
       },
       {
         time: "Early afternoon",
@@ -705,7 +705,8 @@ const days: Day[] = [
         children on the figures we read on {KINKAKUJI_CHECKED}, and it is 9:00 to 17:00 — so a late
         Arashiyama morning quietly rules it out, which is fine. The Sagano Romantic Train is the one
         booking on this day that can be impossible rather than inconvenient: its reserved seats go a
-        month ahead in autumn and it does not run at all in deep winter, both of which our{" "}
+        month ahead in autumn and it is closed from 30 December 2026 to 28 February 2027, with a new
+        train and a seat fee from 1 March 2027, all of which our{" "}
         <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train guide</Link>{" "}
         sets out. Do <em>not</em> plan the move for the morning and Arashiyama for the afternoon: the
         grove at 14:00 in October is a queue, and the point of three Kyoto nights is to be there at

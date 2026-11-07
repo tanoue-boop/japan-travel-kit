@@ -105,7 +105,7 @@ const OWN = checkedLabel(OWN_ISO);
 
 /** Dates carried over from our own Kyoto guides. */
 const KYOTO_CITY_CHECKED = checkedLabel("2026-10-26");
-const SAGANO_CHECKED = checkedLabel("2026-10-25");
+const SAGANO_CHECKED = checkedLabel("2026-11-07");
 
 const KIYOMIZU_ADULT = "¥500";
 const NIJO_ADULT = "¥1,300";
@@ -255,10 +255,10 @@ const ticketRows = [
   },
   {
     stop: "Sagano Romantic Train (Day 2)",
-    price: "¥880 adult, ¥440 child one way",
-    hours: "A 7.3 km, 25-minute run; the line does not operate all year",
+    price: "¥880 adult, ¥440 child one way to 29 Dec 2026; ¥1,500 and ¥750 with a seat from 1 Mar 2027",
+    hours: "A 7.3 km, 25-minute run; closed 30 Dec 2026 – 28 Feb 2027",
     booking: "Reserved car and seat",
-    note: "The only reserved-seat ride in these two days. Our Sagano guide covers the season, the four car types and what happens when the train is not running",
+    note: "The only reserved-seat ride in these two days. Our Sagano guide covers the season, the 2027 changes and what happens when the train is not running",
     source: `the operator's own fare, ${SAGANO_CHECKED}`,
   },
   {
@@ -378,7 +378,7 @@ const accessRows = [
 const bookingWindow = [
   {
     title: "Weeks ahead — the Sagano Romantic Train, if Day 2 includes it",
-    desc: "The only reserved-seat ride in these two days: a specific car and seat on a line that does not run all year. It is also the one thing a rained-off morning cannot be moved around, so check the season before you build the day on it.",
+    desc: "The only reserved-seat ride in these two days: a specific car and seat on a line that is closed from 30 December 2026 to 28 February 2027 and gets a new train and a seat fee on 1 March 2027. It is also the one thing a rained-off morning cannot be moved around, so check the season before you build the day on it.",
   },
   {
     title: "A week or two ahead — a kimono dressing slot and a tea ceremony",
@@ -417,11 +417,11 @@ const faqItems = [
   },
   {
     q: "Should I book tours in Kyoto in advance?",
-    a: `Only three things in two Kyoto days need booking, and none of them is a temple. The Sagano Romantic Train is a reserved car and seat on a line that does not run all year — ¥880 adult and ¥440 child one way. A kimono dressing slot is an appointment, and the shop's return deadline (17:30 on the Yumeyakata listing) is what decides which day it goes on. And the Okoshi Bus "Kiyomizu-dera Line", which is the one direct Kyoto Station to Gojo-zaka route, needs advance reservation and prepayment and runs weekdays only, 1 July 2026 to 29 January 2027 as scheduled, at ¥1,500 adult with Kiyomizu-dera admission included. A guided day is the other thing worth buying, and it is bought for a reason specific to Kyoto: it does the four-compass-points routing instead of your legs.`,
+    a: `Only three things in two Kyoto days need booking, and none of them is a temple. The Sagano Romantic Train is a reserved car and seat on a line that is closed from 30 December 2026 to 28 February 2027 — ¥880 adult and ¥440 child one way, or ¥1,500 and ¥750 with a seat from 1 March 2027. A kimono dressing slot is an appointment, and the shop's return deadline (17:30 on the Yumeyakata listing) is what decides which day it goes on. And the Okoshi Bus "Kiyomizu-dera Line", which is the one direct Kyoto Station to Gojo-zaka route, needs advance reservation and prepayment and runs weekdays only, 1 July 2026 to 29 January 2027 as scheduled, at ¥1,500 adult with Kiyomizu-dera admission included. A guided day is the other thing worth buying, and it is bought for a reason specific to Kyoto: it does the four-compass-points routing instead of your legs.`,
   },
   {
     q: "What does a 2 day Kyoto itinerary cost in admissions?",
-    a: `Less than almost any other Japanese city of this size, because two of the six headline stops are free. Day 1 is ${KIYOMIZU_ADULT} for Kiyomizu-dera and ${NIJO_ADULT} for Nijo Castle with the Ninomaru-goten Palace, so ¥1,800 for an adult, and Fushimi Inari charges nothing. Day 2 is the torokko at ¥880 one way if you take it, Kinkaku-ji's own admission (the temple has a revision notice posted and the amount on it is an image we cannot read, so we quote no figure), and nothing for the bamboo grove or Togetsukyo. Add the ${PASS_ADULT} Subway & Bus 1-Day Pass if your day is bus-heavy. Sources and the date each figure was read are in the table above.`,
+    a: `Less than almost any other Japanese city of this size, because two of the six headline stops are free. Day 1 is ${KIYOMIZU_ADULT} for Kiyomizu-dera and ${NIJO_ADULT} for Nijo Castle with the Ninomaru-goten Palace, so ¥1,800 for an adult, and Fushimi Inari charges nothing. Day 2 is the torokko at ¥880 one way if you take it (¥1,500 with a seat from 1 March 2027), Kinkaku-ji's own admission (the temple has a revision notice posted and the amount on it is an image we cannot read, so we quote no figure), and nothing for the bamboo grove or Togetsukyo. Add the ${PASS_ADULT} Subway & Bus 1-Day Pass if your day is bus-heavy. Sources and the date each figure was read are in the table above.`,
   },
   {
     q: "Which day should the kimono day be?",
@@ -600,7 +600,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
               <strong>Nijo Castle</strong> ({NIJO_ADULT} with the Ninomaru-goten Palace, last entry 16:00), and
               Gion in the evening. <strong>Day 2</strong> runs west then north: the{" "}
               <strong>Arashiyama bamboo grove</strong> at opening (<strong>11 minutes</strong> by JR Sagano
-              Line Rapid), Togetsukyo, the <strong>Sagano Romantic Train</strong> at ¥880 one way, then{" "}
+              Line Rapid), Togetsukyo, the <strong>Sagano Romantic Train</strong> at ¥880 one way (closed 30 December 2026 to 28 February 2027), then{" "}
               <strong>Kinkaku-ji</strong>, which closes at <strong>17:00</strong> and is the hard edge of the
               day. Kyoto City&apos;s own travel times from Kyoto Station are 10, 35, 25 and 40 minutes to
               those four sights — which is why the order, not the list, is the plan. Exactly one thing needs
@@ -747,13 +747,13 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>What to book for Day 2.</strong> The <strong>Sagano Romantic Train</strong>, and only
-            that. It is a reserved car and seat at ¥880 adult and ¥440 child one way, on a line that does not
-            run all year — so it is both the one scarce thing in two Kyoto days and the one thing a wet
+            that. It is a reserved car and seat at ¥880 adult and ¥440 child one way (¥1,500 and ¥750 with a seat
+            from 1 March 2027), on a line that is closed from 30 December 2026 to 28 February 2027 — so it is both the one scarce thing in two Kyoto days and the one thing a wet
             morning cannot be rearranged around. If you want the classic pairing, the torokko one way and the
             Hozugawa river boat back down to Arashiyama is sold as a single guaranteed-departure day. Kinkaku-ji,
             the grove and Togetsukyo need nothing at all. Details in our{" "}
             <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train guide</Link>,
-            which covers the season, the four car types and what to do when the train is not running.
+            which covers the season, the 2027 changes and what to do when the train is not running.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -1188,7 +1188,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets (2026): ¥880, the Season and How to Book</p>
+                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets 2026–2027: Fares and Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

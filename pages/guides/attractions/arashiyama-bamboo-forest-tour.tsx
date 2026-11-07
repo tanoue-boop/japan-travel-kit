@@ -207,7 +207,7 @@ const faqItems = [
   },
   {
     q: "Is Arashiyama good on a rainy day?",
-    a: "Yes, with fewer outdoor stops. The grove has no closure that we could find, and Tenryu-ji's halls are an indoor option for ¥300 on top of the garden fee. The Hozugawa boat can stop in bad weather. On the Sagano train, the open car 5 can get wet inside, and umbrellas are banned on board.",
+    a: "Yes, with fewer outdoor stops. The grove has no closure that we could find, and Tenryu-ji's halls are an indoor option for ¥300 on top of the garden fee. The Hozugawa boat can stop in bad weather. On the Sagano train, the open car 5 can get wet inside until it retires on 29 December 2026, and umbrellas are banned on board.",
   },
   {
     q: "Can you bring a stroller or children to the Arashiyama Bamboo Forest?",
@@ -224,7 +224,7 @@ const ROUTE = "/guides/attractions/arashiyama-bamboo-forest-tour";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
-  { href: "/guides/attractions/sagano-romantic-train-tickets", title: "Sagano Romantic Train Tickets (2026): Prices, Seats & When It Runs" },
+  { href: "/guides/attractions/sagano-romantic-train-tickets", title: "Sagano Romantic Train Tickets 2026–2027: Fares and Booking" },
   { href: "/guides/attractions/things-to-do-kyoto", title: "Things to Do in Kyoto (2026): Temples, Timing and What to Book" },
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/kyoto-3-day-itinerary", title: "Kyoto 3 Day Itinerary (2026): Day by Day, and What to Book" },
@@ -535,8 +535,9 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
           <p className={styles.bodyText}>
             A full day needs the train and the boat. The Hozugawa boat alone is about 2 hours. Our{" "}
             <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train guide</Link> covers
-            the seats, the winter shutdown from 30 December and the booking window, and this page stays with the
-            grove and the walk. If you want both held in one booking, use the train and boat day below.
+            the seats and the booking window, and this page stays with the grove and the walk. The train is closed
+            from 30 December 2026 to 28 February 2027, and from 1 March 2027 a new train adds a seat fee (adult
+            ¥1,500 in total). If you want both held in one booking, use the train and boat day below.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

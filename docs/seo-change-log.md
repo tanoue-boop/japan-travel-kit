@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-07：/guides/attractions/sagano-romantic-train-tickets の順位改善（task-jtk-20261107-R03）
+
+- 2026-11-07 title 変更：「Sagano Romantic Train Tickets (2026): Prices and Seats」→「Sagano Romantic Train Tickets 2026–2027: Fares and Booking」
+
 ## 2026-11-07：/guides/attractions/things-to-do-tokyo の順位改善（task-jtk-20261107-R02）
 
 - 2026-11-07 title 変更：「Things to Do in Tokyo (2026): What to Book Ahead」→「Things to Do in Tokyo 2026: Top Picks and Ticket Prices」（zh-tw・zh-cn も同じ構成に変更）

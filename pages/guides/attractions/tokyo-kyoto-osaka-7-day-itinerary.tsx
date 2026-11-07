@@ -1643,7 +1643,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets (2026): Prices, Seats &amp; When It Runs</p>
+                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets 2026–2027: Fares and Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

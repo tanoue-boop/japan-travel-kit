@@ -713,7 +713,7 @@ const days: Day[] = [
         place: "Arashiyama: the bamboo grove, Tenryu-ji, the Katsura riverside",
         allow: "3 hours",
         getting: "JR Sagano Line to Saga-Arashiyama",
-        booking: "No for the grove; the Sagano Romantic Train does not run in deep winter, so do not build the day on it",
+        booking: "No for the grove; the Sagano Romantic Train is closed from 30 December 2026 to 28 February 2027, with a new train and seat fee from 1 March, so do not build the day on it",
       },
       {
         time: "Evening",
