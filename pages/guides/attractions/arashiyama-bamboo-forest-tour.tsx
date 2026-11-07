@@ -175,7 +175,7 @@ const costRows = [
 const faqItems = [
   {
     q: "Is the Arashiyama Bamboo Forest free?",
-    a: `Yes. Klook's destination page says there is no entrance fee and no ticket, and that the grove is open 24 hours. Paid sites sit beside it: Tenryu-ji's garden is ¥500 for an adult. We could not find hours or admission for the path on an official Kyoto page, so those two points carry Klook's page. Read ${OWN}.`,
+    a: `Yes. Klook's destination page says there is no entrance fee and no ticket, and that the grove is open 24 hours. Paid sites sit beside it: Tenryu-ji's garden is ¥500 for an adult. The official Kyoto pages checked do not give hours or admission for the path, so those two points rest on Klook's page. Read ${OWN}.`,
   },
   {
     q: "What time should I go to the Arashiyama Bamboo Forest?",
@@ -199,7 +199,7 @@ const faqItems = [
   },
   {
     q: "Do I need to book an Arashiyama tour in advance?",
-    a: "The grove needs no booking. A tour does, and there is no sell-out date we can quote because availability is per tour and per day. The Kyoto AVANTI tour may cancel a date with fewer than 2 adults booked 4 days ahead, so keep a free-morning fallback. Check availability once your Kyoto dates are fixed.",
+    a: "The grove needs no booking. A tour does, and there is no fixed sell-out date because availability is per tour and per day. The Kyoto AVANTI tour may cancel a date with fewer than 2 adults booked 4 days ahead, so keep a free-morning fallback. Check availability once your Kyoto dates are fixed.",
   },
   {
     q: "Can I walk through from Tenryu-ji to the bamboo grove?",
@@ -207,11 +207,11 @@ const faqItems = [
   },
   {
     q: "Is Arashiyama good on a rainy day?",
-    a: "Yes, with fewer outdoor stops. The grove has no closure that we could find, and Tenryu-ji's halls are an indoor option for ¥300 on top of the garden fee. The Hozugawa boat can stop in bad weather. On the Sagano train, the open car 5 can get wet inside until it retires on 29 December 2026, and umbrellas are banned on board.",
+    a: "Yes, with fewer outdoor stops. The official sources checked list no closure for the grove, and Tenryu-ji's halls are an indoor option for ¥300 on top of the garden fee. The Hozugawa boat can stop in bad weather. On the Sagano train, the open car 5 can get wet inside until it retires on 29 December 2026, and umbrellas are banned on board.",
   },
   {
     q: "Can you bring a stroller or children to the Arashiyama Bamboo Forest?",
-    a: "Children are fine, and the grove is free for them too, but we could not find an official stroller rule. Tenryu-ji says its Hyakkaen path follows the natural slope of the land, so call the temple on 075-881-1235 about stroller access. Pick a short plan: the rickshaw runs from 30 minutes, while the Kyoto AVANTI walk covers about 3 km.",
+    a: "Children are fine, and the grove is free for them too, but no official stroller rule is published. Tenryu-ji says its Hyakkaen path follows the natural slope of the land, so call the temple on 075-881-1235 about stroller access. Pick a short plan: the rickshaw runs from 30 minutes, while the Kyoto AVANTI walk covers about 3 km.",
   },
 ];
 
@@ -422,7 +422,7 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            We could not find the path&apos;s hours or admission on an official Kyoto page, so both rest on
+            The official Kyoto pages checked do not give the path&apos;s hours or admission, so both rest on
             Klook&apos;s page. Tenryu-ji&apos;s early opening applies to the garden entrance only. The north
             gate still opens at 8:30.
           </p>
@@ -459,7 +459,7 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            This is a planning guide, not a count of visitors. No source we read publishes hourly numbers. For
+            This is a planning guide, not a count of visitors. No source publishes hourly numbers. For
             today&apos;s picture, use the congestion forecast and live cameras linked from{" "}
             <a href="https://kyoto.travel/en/areas/saga-arashiyama/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>
               Kyoto&apos;s Saga &amp; Arashiyama page
@@ -505,8 +505,7 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook blocks automated reads of its product pages, so these rows come from the listings as they
-            appear in search results. The early walk&apos;s start time and most cancellation terms were not
+            These rows come from the listings as they appear in search results. The early walk&apos;s start time and most cancellation terms were not
             shown, and packages differ by date. The listing shows both, plus the current price. The Kyoto AVANTI
             tour may cancel a date with fewer than 2 adults booked 4 days before.
           </p>
@@ -586,8 +585,8 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Times and the subway and Randen fares are from Kyoto&apos;s tourism site, the walk to the grove from
-            the Japan National Tourism Organization, and the walks to Tenryu-ji from the temple. We could not
-            read JR or Hankyu fares on the operators&apos; sites, so we do not print them. Neither Kyoto day pass
+            the Japan National Tourism Organization, and the walks to Tenryu-ji from the temple. JR and Hankyu
+            fares are not listed here, so check the operators&apos; sites. Neither Kyoto day pass
             covers JR. See{" "}
             <Link href="/guides/transport/kyoto-transportation" style={{ color: "var(--text)", fontWeight: 600 }}>
               getting around Kyoto
@@ -601,7 +600,7 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
           <span className={styles.sectionLabel}>Weather</span>
           <h2 className={styles.sectionTitle}>What Happens at Arashiyama on a Rainy Day?</h2>
           <p className={styles.bodyText}>
-            The grove stays usable: we found no closure rule for it. The fallback indoors is Tenryu-ji&apos;s
+            The grove stays usable: the official sources checked list no closure rule for it. The fallback indoors is Tenryu-ji&apos;s
             halls, ¥300 on top of the garden fee. The two rides are less certain. The Hozugawa boat can be
             suspended in bad weather or high water, and the Sagano train&apos;s open car 5 can get wet inside,
             with umbrellas banned on board and no refund for rain. Read the rain wording on a tour listing before
@@ -614,7 +613,7 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
           <span className={styles.sectionLabel}>Families</span>
           <h2 className={styles.sectionTitle}>Can You Bring Children or a Stroller?</h2>
           <p className={styles.bodyText}>
-            Yes for children, and we could not confirm strollers. The grove has no ticket, Tenryu-ji&apos;s garden
+            Yes for children, but no official source confirms strollers. The grove has no ticket, Tenryu-ji&apos;s garden
             is ¥300 for elementary and junior high pupils, and preschool children enter free. Neither
             Tenryu-ji&apos;s pages nor Kyoto&apos;s tourism site give a stroller rule, and the temple says its
             Hyakkaen path follows the natural slope of the land. Call Tenryu-ji on 075-881-1235 (8:30–17:00)

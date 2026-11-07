@@ -146,7 +146,7 @@ const hellRows = [
     hell: "Chinoike Jigoku (Blood Pond Hell)",
     why: "A red mud pond of about 1,300 m², about 78°C. Called Japan's oldest natural hell",
     area: "About 3 km from the Kannawa group",
-    pick: "The most striking colour, but tours we read name Umi and Kamado instead",
+    pick: "The most striking colour, but the listed tours name Umi and Kamado instead",
   },
   {
     hell: "Tatsumaki Jigoku (Dragon Whirl Hell)",
@@ -177,7 +177,7 @@ const faqItems = [
   },
   {
     q: "Which Beppu hell is the best?",
-    a: `Umi Jigoku for most people. It is the largest, a cobalt blue pond at about 98°C with a free foot bath. Chinoike Jigoku is the red pond, but it is about 3 km from the main group and the tours we read do not name it. All seven are on one ¥2,400 common ticket, valid for two days, and open 8:00 to 17:00 every day. Read ${OWN}.`,
+    a: `Umi Jigoku for most people. It is the largest, a cobalt blue pond at about 98°C with a free foot bath. Chinoike Jigoku is the red pond, but it is about 3 km from the main group and the tours listed here do not name it. All seven are on one ¥2,400 common ticket, valid for two days, and open 8:00 to 17:00 every day. Read ${OWN}.`,
   },
   {
     q: "Do Yufuin tours include an onsen?",
@@ -193,15 +193,15 @@ const faqItems = [
   },
   {
     q: "Can you do this day trip with children?",
-    a: "Yes, but read the listing's child rule first, because we could not read the age bands. The hells common ticket is ¥1,200 for elementary and junior high pupils. The real issue is 10 hours or more, mostly on a coach, and one tour's bus has no toilet. A private car solves that if your group can share the cost.",
+    a: "Yes, but check the child rule and age bands on the listing for your date first. The hells common ticket is ¥1,200 for elementary and junior high pupils. The real issue is 10 hours or more, mostly on a coach, and one tour's bus has no toilet. A private car solves that if your group can share the cost.",
   },
   {
     q: "What is the cancellation policy on these tours?",
-    a: `It varies, and we could not read every listing. Klook's destination page shows free cancellation on the Dazaifu, Yufuin and Beppu Ropeway tour. The Bungo-Mori bus tour cancels with a full refund if it misses its minimum 3 days ahead. Related Fukuoka listings confirm typhoon or heavy snow cancellations by 18:00 the day before. On the Yufuin no Mori tour, late arrivals, changed meeting points and leaving early are not refunded. Read as of ${OWN}.`,
+    a: `It varies by listing, so check the terms for your date. Klook's destination page shows free cancellation on the Dazaifu, Yufuin and Beppu Ropeway tour. The Bungo-Mori bus tour cancels with a full refund if it misses its minimum 3 days ahead. Related Fukuoka listings confirm typhoon or heavy snow cancellations by 18:00 the day before. On the Yufuin no Mori tour, late arrivals, changed meeting points and leaving early are not refunded. Read as of ${OWN}.`,
   },
   {
     q: "Where do these tours leave from?",
-    a: "All of them leave from Fukuoka, and the exact point depends on the tour and package. We could not read a Hakata or Tenjin meeting point for each listing, and one itinerary starts from a Fukuoka hotel at 08:30. Check the meeting point on the listing before you pay, especially if you are also choosing a hotel.",
+    a: "All of them leave from Fukuoka, and the exact point depends on the tour and package. A Hakata or Tenjin meeting point is not shown for each listing, and one itinerary starts from a Fukuoka hotel at 08:30. Check the meeting point on the listing before you pay, especially if you are also choosing a hotel.",
   },
 ];
 
@@ -435,8 +435,8 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            All six leave from Fukuoka. Klook blocks automated reads of its product pages, so these rows come
-            from the listings as they appear in search results, and we could not read every field. Open the
+            All six leave from Fukuoka. These rows come from the listings as they appear in search results,
+            so not every field is shown. Open the
             listing for the current price, the exact meeting point and what your package includes. The ropeway
             maintenance dates shown there were 22 June to 17 July 2026, so check for later notices.
           </p>
@@ -500,7 +500,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             The Yufuin no Mori times are on JR Kyushu&apos;s timetable of 14 March 2026. The Sonic figure is the
-            shortest on its Oita and Beppu page. The bus operators show different fares, so we print none.
+            shortest on its Oita and Beppu page. The bus operators show different fares, so check yours on the operator&apos;s site.
           </p>
         </section>
 
@@ -539,7 +539,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             All figures from beppu-jigoku.com, read {OWN}. The common ticket price dates from 1 February 2025.
-            The operators publish no individual prices on the page we read. A tour&apos;s tickets may be
+            The operators publish no individual prices on that page. A tour&apos;s tickets may be
             included or extra, so read your listing.
           </p>
         </section>
@@ -591,8 +591,8 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           <span className={styles.sectionLabel}>Families</span>
           <h2 className={styles.sectionTitle}>Can You Do This Tour With Children?</h2>
           <p className={styles.bodyText}>
-            Yes, if they cope with 10 hours or more, mostly on a coach. We could not read the age bands on the
-            listings, so check them before you pay. The hells ticket is ¥1,200 for elementary and junior high
+            Yes, if they cope with 10 hours or more, mostly on a coach. Check the age bands on the
+            listing for your date before you pay. The hells ticket is ¥1,200 for elementary and junior high
             pupils. Seats on several tours go by order of arrival, and the Bungo-Mori tour&apos;s bus has no
             toilet. The private car is the easier option for a family if the total cost works for you.
           </p>
@@ -603,7 +603,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           <span className={styles.sectionLabel}>Booking</span>
           <h2 className={styles.sectionTitle}>When Should You Book, and Can You Cancel?</h2>
           <p className={styles.bodyText}>
-            Book once your Fukuoka dates are fixed. We cannot give a sell-out date, because availability is per
+            Book once your Fukuoka dates are fixed. There is no fixed sell-out date, because availability is per
             tour and per day. These are shared tours that can miss a minimum, so a date may be cancelled
             days ahead. Leave room in your plans for that.
           </p>
@@ -611,7 +611,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             Terms differ by listing. Klook&apos;s destination page shows free cancellation on the ropeway tour.
             The Bungo-Mori tour cancels with a full refund if it misses its minimum 3 days ahead. On the Yufuin
             no Mori tour, there is no refund for arriving late or leaving early, the coach does not wait, and you
-            cannot join midway. We could not read every policy, so read yours before you pay. Terms read {OWN}.
+            cannot join midway. Policies differ by listing, so read yours before you pay. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

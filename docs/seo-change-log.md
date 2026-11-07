@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-07：/guides/attractions/amanohashidate-ine-day-trip の冒頭回答（task-jtk-20261107-05）
+
+- 2026-11-07 title 変更なし（「Amanohashidate Day Trip (2026): Ine Funaya, Tours & Trains」のまま）。Quick Answer の回答段落を差し替えて箱の先頭へ移し、直後に Klook CTA（activity 218014／154563）を配置。5ページと KlookTripPrep（en）の一人称の調査メモを第三者視点に変更。
+
 ## 2026-11-07：Bing 上位のお金・交通ページに eSIM カード（task-jtk-20261107-04）
 
 - 目的：11/2週の eSIM 送客クリックが目標30に対し実績4（11/6 時点）。Bing で表示の多いお金・交通の10ページに Simbye と Klook eSIM のカードを置く。

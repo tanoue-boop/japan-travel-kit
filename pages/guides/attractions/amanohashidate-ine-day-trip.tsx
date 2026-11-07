@@ -165,7 +165,7 @@ const faqItems = [
   },
   {
     q: "How do I get from Amanohashidate to Ine?",
-    a: `By Tankai route bus from Amanohashidate Station, which JR West puts at about 60 minutes. Ine's tourism association tells visitors to board a bus for Kamairi or Ine Yubinkyoku-mae. Tankai's own trip page shows 30 minutes for the same pair, but only the hour fits Ine's published total of about 3 hours from Kyoto, so plan on 60. Check the timetable before you set off: we could not read the number of buses a day, and that number decides whether the trip works on your own.`,
+    a: `By Tankai route bus from Amanohashidate Station, which JR West puts at about 60 minutes. Ine's tourism association tells visitors to board a bus for Kamairi or Ine Yubinkyoku-mae. Tankai's own trip page shows 30 minutes for the same pair, but only the hour fits Ine's published total of about 3 hours from Kyoto, so plan on 60. Check the number of buses a day on the operator's timetable before you set off, because that number decides whether the trip works on your own.`,
   },
   {
     q: "Can you do Amanohashidate and Ine in one day?",
@@ -189,11 +189,11 @@ const faqItems = [
   },
   {
     q: "What is the cancellation policy on these tours?",
-    a: `The listings we read show free cancellation with either 24 or 48 hours' notice before the activity date, depending on the tour. Some Miyama-route listings ask for 48. Late arrivals and no-shows are not refunded, and at least one Kyoto-departing listing cancels if it does not reach a minimum of 10 participants, offering a new time or a refund. These are the listings' own terms as read ${OWN}, so read the one shown for your date before you pay.`,
+    a: `The listings show free cancellation with either 24 or 48 hours' notice before the activity date, depending on the tour. Some Miyama-route listings ask for 48. Late arrivals and no-shows are not refunded, and at least one Kyoto-departing listing cancels if it does not reach a minimum of 10 participants, offering a new time or a refund. These are the listings' own terms as read ${OWN}, so read the one shown for your date before you pay.`,
   },
   {
     q: "Does the Kansai WIDE Area Pass cover Amanohashidate?",
-    a: `JR West names Amanohashidate as a destination for that pass, and tickets can be booked up to a month ahead. We could not confirm from its pages how the Kyoto Tango Railway section is treated, and the Hashidate runs over that line, so check the valid-area map before you rely on the pass. The route bus to Ine is a separate fare either way.`,
+    a: `JR West names Amanohashidate as a destination for that pass, and tickets can be booked up to a month ahead. How the Kyoto Tango Railway section is treated is not confirmed here, and the Hashidate runs over that line, so check the valid-area map before you rely on the pass. The route bus to Ine is a separate fare either way.`,
   },
 ];
 
@@ -325,7 +325,24 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             <span className={styles.verdictLabel}>Quick Answer</span>
           </div>
           <div className={styles.verdictBody}>
-            <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+            {/* Answer-first: the first body paragraph of the article, not the hero line. */}
+            <p className={styles.verdictText}>
+              <strong>Amanohashidate</strong> is about <strong>2 hours 14 minutes</strong> from Kyoto on the
+              Hashidate limited express (about <strong>¥4,790</strong>), and <strong>Ine</strong> is about another
+              hour by local bus, so the simplest way to do both in one day is a guided tour from Kyoto or Osaka
+              (about <strong>9 to 11 hours</strong>). The core stops are the Kasamatsu Park or Amanohashidate
+              Viewland lookout, the Ine boathouses and the roughly 25-minute Ine Bay cruise (adult{" "}
+              <strong>¥1,200</strong>). Checked {OWN}.
+            </p>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Amanohashidate &amp; Ine Tour →
+              </KlookLink>
+              <KlookLink href={amanohashidateIneBayScenicTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Tour With Boat Tickets →
+              </KlookLink>
+            </div>
+            <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)", marginTop: "1rem" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Train from Kyoto</p>
                 <p className={styles.verdictStatValue}>2h14 to Amanohashidate</p>
@@ -342,24 +359,6 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
                 <p className={styles.verdictStatLabel}>Kyoto to Ine on your own</p>
                 <p className={styles.verdictStatValue}>About 3 hours each way</p>
               </div>
-            </div>
-            {/* Answer-first: the first body paragraph of the article, not the hero line. */}
-            <p className={styles.verdictText}>
-              An <strong>Amanohashidate day trip</strong> from Kyoto Station takes{" "}
-              <strong>2 hours 14 minutes</strong> by limited express Hashidate, or a{" "}
-              <strong>9 to 11 hour</strong> coach tour from Kyoto or Osaka. A standard day combines the
-              sandbar from Kasamatsu Park or Viewland, the <strong>Ine boathouses</strong>, and the{" "}
-              <strong>25-minute Ine Bay boat</strong> at <strong>¥1,200</strong>. Ine is about another hour
-              by bus from Amanohashidate Station, so we recommend a tour for one day and the train only if you
-              are staying overnight. Fares and hours read off the operators&apos; sites on {OWN}.
-            </p>
-            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
-                Amanohashidate &amp; Ine Tour →
-              </KlookLink>
-              <KlookLink href={amanohashidateIneBayScenicTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
-                Tour With Boat Tickets →
-              </KlookLink>
             </div>
           </div>
         </div>
@@ -422,9 +421,9 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook blocks automated reads of its product pages, so these rows come from the listings as they
-            appear in search results. We could not read every field, and packages differ by date. Open the
-            listing for the current price, meeting point and what your package includes.
+            These rows come from the listings as they appear in search results, so not every field is shown,
+            and packages differ by date. Check the listing for your date: it shows the current price, meeting
+            point and what your package includes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -462,8 +461,8 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             For a single day, yes. Reaching Amanohashidate on your own is easy; Ine is the difficult part. It
             has no railway, and you depend on a route bus. Ine&apos;s tourism association tells visitors to
-            board a bus for <strong>Kamairi</strong> or <strong>Ine Yubinkyoku-mae</strong>. We could not read
-            the number of buses a day from the operator&apos;s timetable, so check it before you commit.
+            board a bus for <strong>Kamairi</strong> or <strong>Ine Yubinkyoku-mae</strong>. Check the number
+            of buses a day on the operator&apos;s timetable before you commit.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -501,7 +500,7 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Train fares are the regional tourism site&apos;s reference examples and it asks readers to treat
-            them as a guide. Tankai&apos;s own trip page shows 30 minutes between Amanohashidate and Ine; we use
+            them as a guide. Tankai&apos;s own trip page shows 30 minutes between Amanohashidate and Ine; this guide uses
             JR West&apos;s 60 because it is the figure that fits Ine&apos;s 3-hour total from Kyoto.
           </p>
         </section>
@@ -543,7 +542,7 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             Viewland is the one you can walk to from the station, on Mt. Monju south of the sandbar, and has a
             Ferris wheel and a monorail. Kasamatsu Park is across the bay, reached by the cable car. Some tours
             fix this for you, so read the listing. You do not need to book the boat or either viewpoint in
-            advance for an individual visit; neither operator page we read asks for it.
+            advance for an individual visit; neither operator&apos;s page asks for it.
           </p>
         </section>
 
@@ -589,12 +588,12 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>Booking</span>
           <h2 className={styles.sectionTitle}>When Should You Book, and Can You Cancel?</h2>
           <p className={styles.bodyText}>
-            Book once your Kyoto dates are fixed, and earlier for a weekend or a peak season. We cannot give a
+            Book once your Kyoto dates are fixed, and earlier for a weekend or a peak season. There is no fixed
             sell-out date, because availability is per tour and per day, so check your date now rather than the
             day before. These are join-in coach tours, and same-day booking is not something to rely on.
           </p>
           <p className={styles.bodyText}>
-            The listings we read allow free cancellation with <strong>24 or 48 hours&apos; notice</strong>{" "}
+            The listings allow free cancellation with <strong>24 or 48 hours&apos; notice</strong>{" "}
             before the activity date, depending on the tour. Late arrivals and no-shows are not refunded, and
             at least one Kyoto-departing listing can cancel below a minimum of 10 participants. Weather wording
             varies too, so check it before you pay. Terms read {OWN}.
@@ -612,7 +611,7 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
         <KlookTripPrep
           label="Before you go"
           heading="What Should You Book Around an Amanohashidate Day?"
-          intro="A 7:30 departure means the night before is part of the trip. These are the bookings around the tour itself. Klook blocks automated price reads, so open a listing for the figure on your dates."
+          intro="A 7:30 departure means the night before is part of the trip. These are the bookings around the tour itself. Open a listing for the price on your dates."
           items={amanohashidateTripPrep}
         />
 

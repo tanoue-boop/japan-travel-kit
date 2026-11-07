@@ -37,7 +37,7 @@ type Props = {
 const COPY: Record<Locale, { label: string; note: string }> = {
   en: {
     label: "Before your trip",
-    note: "These go to Klook, which pays us a commission at no extra cost to you. Prices and availability are Klook's — we do not quote them here because its product pages block automated checks.",
+    note: "These go to Klook, which pays us a commission at no extra cost to you. Prices and availability are Klook's, so check the listing for your date.",
   },
   "zh-tw": {
     label: "出發之前",

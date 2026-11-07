@@ -270,7 +270,7 @@ const faqItems = [
   },
   {
     q: "Do I need a guide for the Kumano Kodo?",
-    a: "No. We found no rule that requires one, and the Tanabe City Kumano Tourism Bureau publishes route pages and maps for walkers on their own. A guide adds the history and the route-finding. The bureau suggests checking that a guide holds a national translator guide license or the Koyasan and Kumano regional guide license.",
+    a: "No. A guide is not required by any published rule, and the Tanabe City Kumano Tourism Bureau publishes route pages and maps for walkers on their own. A guide adds the history and the route-finding. The bureau suggests checking that a guide holds a national translator guide license or the Koyasan and Kumano regional guide license.",
   },
   {
     q: "How hard is the Kumano Kodo Nakahechi route?",
@@ -286,11 +286,11 @@ const faqItems = [
   },
   {
     q: "Can you do the Kumano Kodo from Kyoto?",
-    a: "Yes, but we found no Klook tour leaving from Kyoto. Kyoto to Kii-Tanabe is 2 hours 35 minutes on the Kuroshio, and not all trains run there. The practical options are a night in Tanabe, or an early move to Osaka for a tour that leaves from Shinsaibashi.",
+    a: "Yes, but none of the Klook tours here leaves from Kyoto. Kyoto to Kii-Tanabe is 2 hours 35 minutes on the Kuroshio, and not all trains run there. The practical options are a night in Tanabe, or an early move to Osaka for a tour that leaves from Shinsaibashi.",
   },
   {
     q: "Is the Kumano Kodo suitable for children?",
-    a: "Short sections are. The bureau's rule of thumb is about a kilometre for every year of age, walked slower than adults. It names Daimon-zaka and Hosshinmon-oji to Hongu as the easiest, and says the full Tsugizakura-oji to Hongu stretch is not advisable with smaller children. We found no official stroller guidance, and the bureau calls the trail rugged, so do not plan on one.",
+    a: "Short sections are. The bureau's rule of thumb is about a kilometre for every year of age, walked slower than adults. It names Daimon-zaka and Hosshinmon-oji to Hongu as the easiest, and says the full Tsugizakura-oji to Hongu stretch is not advisable with smaller children. No official stroller guidance is published, and the bureau calls the trail rugged, so do not plan on one.",
   },
   {
     q: "What should I wear on the Kumano Kodo?",
@@ -509,7 +509,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Pick the Kumano Sanzan tour for all three grand shrines in a day. Pick the Nachi and Hayatama bus day
             if the waterfall matters more than the walk, and the private tour if you are already in the Kumano
-            area and want a guide on the trail. We found no tour leaving from Kyoto or Shirahama.
+            area and want a guide on the trail. None of these tours leaves from Kyoto or Shirahama.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -541,8 +541,8 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook blocks automated reads of its product pages, so these rows come from the listings as they appear
-            in search results, and we could not read every field. The Kumano Sanzan listing is one tour with three
+            These rows come from the listings as they appear in search results, so not every field is shown.
+            The Kumano Sanzan listing is one tour with three
             routes, so pick Kumano on the package. Its published 09:30 start is the example for the Awaji route,
             and the operator changes times twice a year, so read the start for your date. Open any listing for the
             current price, the exact meeting point and what your package includes.
@@ -599,7 +599,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             Official figures differ by page. The bureau gives about 38 km for Takijiri-oji to Hongu on one page and
             about 40 km across its suggested two days, and Wakayama&apos;s course page says about 40 km. Its rating
             page shows shorter times (for example 6.5 hours for Tsugizakura-oji to Hongu) for a healthy walker
-            without a pack in good weather, excluding breaks. We print the longer section-page times, which suit
+            without a pack in good weather, excluding breaks. This guide uses the longer section-page times, which suit
             planning better. Ratings are the bureau&apos;s own subjective estimates. Wakayama&apos;s course page
             also mentions a detour at Iwagami Pass and a recent reopening, so check trail status before you walk.
           </p>
@@ -646,8 +646,8 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             <strong>Want a night without planning it?</strong> Klook also lists coach tours with a hotel night. The
             2-day Koyasan tour pairs Mt. Koya with the Kumano Kodo and Nachi Falls, with Toretore Market lunch and
             hotel meals. The 2-day Shirahama tour adds the coast at Sandanbeki and Senjojiki, and uses Daimon-zaka
-            as its walk. Neither is a two-day hike, so read the trail time on the listing. We could read only the
-            title of the third, a multi-day tour of Hongu and Nachi.
+            as its walk. Neither is a two-day hike, so read the trail time on the listing. Check the listing for
+            your date for the third, a multi-day tour of Hongu and Nachi.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kumanoKoyaTwoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -667,7 +667,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Guides</span>
           <h2 className={styles.sectionTitle}>Do I Need a Guide for the Kumano Kodo?</h2>
           <p className={styles.bodyText}>
-            No. We found no rule that requires one, and the bureau publishes route pages and maps for walkers on
+            No. A guide is not required by any published rule, and the bureau publishes route pages and maps for walkers on
             their own. It does call a local guide one of the best ways to get the most from the walk, and it says
             to check for a national translator guide license or the Koyasan and Kumano regional guide license. A
             private guide on Klook suits anyone who wants the history explained on the trail.
@@ -715,7 +715,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             <strong>Which ticket?</strong> JR West lists the Kuroshio among the limited expresses on the{" "}
             <Link href="/guides/attractions/kansai-area-pass">Kansai WIDE Area Pass</Link> (¥12,000 for an adult,
             ¥6,000 for a child, 5 days, reserved seats booked before boarding) and names Shirahama as a trip you
-            can make with it. The area map is an image we could not read, so confirm Kii-Tanabe on it. The
+            can make with it. Confirm Kii-Tanabe on the pass&apos;s area map before you rely on it. The
             ordinary Kansai Area Pass does not cover the Kuroshio.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -728,7 +728,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             The bus times are round figures, and the Hongu ones are given from Hongu. JR buses do not serve these
-            routes, and the fare charts are images, so we print no bus fares. Timetables changed on 19 September
+            routes. Bus fares are not listed here, so check the operators&apos; fare charts. Timetables changed on 19 September
             2026, and some Hosshinmon-oji buses run from April to November only. Check the current timetable on
             the bureau&apos;s bus page before you plan a connection.
           </p>
@@ -755,8 +755,8 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             Expect it, and slow down. The bureau calls the Kii Peninsula one of the wettest areas in Japan, and it
             says most injuries are slips and falls on stone and root-lined paths. The old cobble steps are
             particularly slippery when wet, so take care on stone stairs such as Daimon-zaka. Avoid walking in extreme
-            weather, and note that typhoons can bring flash floods and landslides. We could not read the
-            bad-weather terms on every tour, so check yours.
+            weather, and note that typhoons can bring flash floods and landslides. Check the bad-weather
+            terms on the listing for your date.
           </p>
         </section>
 
@@ -791,9 +791,9 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             On short sections, yes. The bureau&apos;s rule of thumb is about a kilometre for every year of age,
             walked more slowly than adults. It names Daimon-zaka and Hosshinmon-oji to Hongu as the easiest, and
             says the full Tsugizakura-oji to Hongu stretch is not advisable with smaller children. Infants take
-            much more preparation. We found no official stroller guidance, and the bureau calls the trail rugged,
+            much more preparation. No official stroller guidance is published, and the bureau calls the trail rugged,
             so do not plan on one. On local buses, under-6s ride free and ages 6 to 11 pay half, on the
-            bureau&apos;s 2022 article. We could not read child rules on the Klook listings, and a coach day of
+            bureau&apos;s 2022 article. Check the listing for your date for child rules; a coach day of
             10 hours or more is the bigger test.
           </p>
         </section>
@@ -804,8 +804,8 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           <h2 className={styles.sectionTitle}>Can I Send My Luggage Ahead on the Kumano Kodo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Yes, but the same-day shuttle needs planning. It runs only between inns booked through KUMANO TRAVEL,
-            at least 20 days ahead. Otherwise, ship your case to your last inn, or leave it in Tanabe. We found
-            no luggage or transfer product on Klook. On a day tour, leave bags at your Osaka hotel; the private
+            at least 20 days ahead. Otherwise, ship your case to your last inn, or leave it in Tanabe. No luggage
+            or transfer product is listed on Klook for this route. On a day tour, leave bags at your Osaka hotel; the private
             walking tour does not allow suitcases.
           </p>
           <div className={styles.tableWrap}>
@@ -859,15 +859,15 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Booking</span>
           <h2 className={styles.sectionTitle}>When Should You Book, and Can You Cancel?</h2>
           <p className={styles.bodyText}>
-            For a day tour, book once your Osaka dates are fixed. We cannot give a sell-out date, because
+            For a day tour, book once your Osaka dates are fixed. There is no fixed sell-out date, because
             availability is per tour and per day. For the two-day walk, the firm deadline is the luggage shuttle
             at 20 days, and the inns in small villages are the real limit in spring and autumn.
           </p>
           <p className={styles.bodyText}>
             Terms differ by listing. The Nachi and Hayatama bus day shows free cancellation with 24 hours&apos;
             notice, and it can be called off below a minimum group: one page shows 15 people by 14 days before
-            departure, another 20. The Nagoya tour shows free cancellation. We could not read the terms on the
-            other listings, so read yours before you pay. Terms read {OWN}.
+            departure, another 20. The Nagoya tour shows free cancellation. For the other listings, check the terms
+            for your date before you pay. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

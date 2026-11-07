@@ -192,7 +192,7 @@ const priceRows = [
   { stop: "Fushimi Inari Taisha (Day 2)", price: "Free", hours: "Gate paths are open outside office hours", source: `Kyoto City, ${CARRIED}` },
   { stop: "Bamboo grove and Togetsukyo (Day 2)", price: "Free", hours: "Open paths; Tenryu-ji charges separately", source: `Kyoto City, ${CARRIED}` },
   { stop: "Sagano Romantic Train (Day 2)", price: "¥880 adult, ¥440 child one way to 29 Dec 2026; ¥1,500 and ¥750 with a seat from 1 Mar 2027", hours: "7.3 km, 25 minutes; closed 30 Dec 2026 – 28 Feb 2027", source: `Operator's fare, ${SAGANO_CHECKED}` },
-  { stop: "Kinkaku-ji (Day 2)", price: "Confirm at the gate", hours: "9:00–17:00", source: `shokoku-ji.jp, ${CARRIED}; the temple's revised fare is published as an image we could not read` },
+  { stop: "Kinkaku-ji (Day 2)", price: "Confirm at the gate", hours: "9:00–17:00", source: `shokoku-ji.jp, ${CARRIED}; check the temple's site for the revised fare` },
   { stop: "Todai-ji Great Buddha Hall (Day 3, Nara)", price: `${TODAIJI.adult} adult, ${TODAIJI.child} ${TODAIJI.childAges}`, hours: "8:00–17:00 November to March, 7:30–17:30 April to October", source: `todaiji.or.jp, ${TODAIJI_CHECKED}` },
   { stop: "Byodo-in (Day 3, Uji)", price: "¥700 adult, ¥400 junior and senior high, ¥300 elementary; Phoenix Hall interior ¥300 extra", hours: "Garden 8:45–17:30; interior 9:30–16:10, every 20 minutes", source: `byodoin.or.jp, ${OWN}` },
   { stop: "Subway & Bus 1-Day Pass", price: "¥1,100 adult, ¥550 child", hours: "One calendar day", source: `Kyoto City Transportation Bureau, ${FARES_CHECKED}` },
@@ -206,7 +206,7 @@ const accessRows = [
 const checklist = [
   {
     title: "As soon as your dates are fixed: the hotel",
-    desc: "Three nights in one place makes this the largest booking of the trip. Cherry blossom and autumn leaf weeks are when to do it first. Rates and availability are per hotel and per date, so we do not quote a window.",
+    desc: "Three nights in one place makes this the largest booking of the trip. Cherry blossom and autumn leaf weeks are when to do it first. Rates and availability are per hotel and per date, so there is no fixed window.",
   },
   {
     title: "One month out: the HARUKA",
@@ -249,7 +249,7 @@ const faqItems = [
   },
   {
     q: "What does this itinerary cost in admissions?",
-    a: `About ¥1,300 for one adult on the Nara version: Kiyomizu-dera ¥500 and Todai-ji ${TODAIJI.adult}. The Uji version is about ¥1,200, or ¥1,500 with the Phoenix Hall interior. Fushimi Inari, the bamboo grove and Togetsukyo are free. Kinkaku-ji and the Sagano train (¥880 to 29 December 2026, ¥1,500 with a seat from 1 March 2027) are extra if you choose them, and we do not quote Kinkaku-ji because its revised fare is published as an image we could not read.`,
+    a: `About ¥1,300 for one adult on the Nara version: Kiyomizu-dera ¥500 and Todai-ji ${TODAIJI.adult}. The Uji version is about ¥1,200, or ¥1,500 with the Phoenix Hall interior. Fushimi Inari, the bamboo grove and Togetsukyo are free. Kinkaku-ji and the Sagano train (¥880 to 29 December 2026, ¥1,500 with a seat from 1 March 2027) are extra if you choose them. Check Kinkaku-ji's revised fare on the temple's site.`,
   },
   {
     q: "Does this plan work in rain or with children?",
@@ -609,8 +609,8 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Subject to change, so confirm at the gate. No Klook price appears on this page: Klook blocks automated
-            reads of its product pages, so open a listing for the figure on your date.
+            Subject to change, so confirm at the gate. For a Klook price, open a listing for your
+            date.
           </p>
         </section>
 
@@ -717,7 +717,7 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
         <KlookTripPrep
           label="Before you go"
           heading="The Klook Bookings for a 3 Day Kyoto Trip"
-          intro="The arrival, the appointment and the data. Klook blocks automated price reads, so open a listing for the figure on your dates."
+          intro="The arrival, the appointment and the data. Open a listing for the price on your dates."
           items={kyotoThreeDayTripPrep}
         />
 

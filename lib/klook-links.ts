@@ -6328,7 +6328,7 @@ export const amanohashidateTripPrep: KlookTripPrepItem[] = [
     label: "Hotels near Kyoto Station",
     ctaLabel: "Check Kyoto Station hotels →",
     url: whereToStayKyotoAreas[0].url,
-    why: "The tours we read leave at about 7:30 and the train and highway bus start here too, so the night before decides how early your alarm is.",
+    why: "The listed tours leave at about 7:30 and the train and highway bus start here too, so the night before decides how early your alarm is.",
   },
   {
     label: shinkansenTokyoKyoto.title,
