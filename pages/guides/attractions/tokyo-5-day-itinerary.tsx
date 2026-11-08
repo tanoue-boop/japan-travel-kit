@@ -1222,7 +1222,10 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-observation-decks">our deck comparison</Link> covers
             which of the four is worth the gamble on a marginal day. Covered shopping streets are the
             other default; Nakamise-dori in Asakusa and Ameyoko at Ueno are both roofed for most of their
-            length.
+            length. For a whole wet day indoors, the{" "}
+            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter studio tour at Toshimaen</Link>{" "}
+            is three to four hours under one roof, 20 minutes from Shinjuku on the Toei Oedo Line — but it
+            runs on dated, timed tickets that can sell out, so check availability before you move a day for it.
           </p>
         </section>
 

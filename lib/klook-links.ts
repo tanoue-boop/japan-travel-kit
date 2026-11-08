@@ -6912,3 +6912,34 @@ export const tokyoToKyotoTripPrep: KlookTripPrepItem[] = [
     why: "Live maps and your QR tickets all need data from the moment you step off at Kyoto Station.",
   },
 ];
+
+/**
+ * Same-day block for warner-bros-studio-tour-tokyo-tickets, added 8 Nov 2026 (task
+ * jtk-20261108-R02). The studio tour ticket is an attraction ticket, treated here as
+ * Klook's 2% special-activity band, so the rest of the day carries the higher bands:
+ * tours 6.5%, the Tokyo Subway Ticket 5%, the Klook eSIM 20%. Reuses existing
+ * products only — no new URL or ad id. The studio tour's own FAQ recommends three
+ * to four hours (wbstudiotour.jp/en/faqs/facilities, read 8 Nov 2026).
+ */
+export const warnerBrosStudioTourSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: shinjukuNightFoodWalkingTour.title,
+    ctaLabel: "Check the Shinjuku night tour →",
+    url: shinjukuNightFoodWalkingTour.url,
+    why: "A morning or early-afternoon slot leaves the evening free, and the Toei Oedo Line runs straight back from Toshimaen to Shinjuku: a three-hour join-in walk through Omoide Yokocho, Kabukicho and Golden Gai.",
+  },
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the Tokyo day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "For the day either side of the studio tour: a guided day of the Imperial Palace gardens, Asakusa and Tokyo Skytree with multilingual audio guidance.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The Shinjuku route to Toshimaen is the Toei Oedo Line, a subway line, so a 24, 48 or 72-hour ticket covers the ride there and back. The Seibu Ikebukuro Line from Ikebukuro is a private railway and is not covered.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Entry has to be within 30 minutes of your slot, and a Klook ticket arrives as an e-ticket on your phone — data from the airport onwards keeps the voucher and the route to Toshimaen on hand.",
+  },
+];

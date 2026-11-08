@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-08：/guides/attractions/warner-bros-studio-tour-tokyo-tickets の順位改善（task-jtk-20261108-R02）
+
+- 2026-11-08 title 変更：「Warner Bros. Studio Tour Tokyo Tickets (2026): Prices」→「Harry Potter Studio Tour Tokyo Tickets 2026: Price & Booking」。冒頭回答・公式規定表（払い戻し不可・変更 ¥1,500・年齢区分・入場30分以内・所要3〜4時間、2026-11-08 公式確認）・質問見出し・FAQ 3問追加・同日ブロック（KlookTripPrep）・GetYourGuide 比較ボタンを追加。逆リンク：tokyo-5-day-itinerary、tokyo-itinerary-with-kids。
+
 ## 2026-11-08：/guides/attractions/tokyo-subway-ticket の順位改善と旧URLの集約（task-jtk-20261108-R01）
 
 - 2026-11-08 title 変更：「Tokyo Subway Ticket (2026): 24, 48 or 72 Hours」→「Tokyo Subway Ticket 2026: 24/48/72-Hour Price, Worth It?」。旧URL /guides/transport/tokyo-subway-ticket の 301 先を /guides/transport/tokyo-transportation → /guides/attractions/tokyo-subway-ticket に変更。tokyo-transportation（title・H1 変更なし）の Tokyo Subway Ticket・Metro 24時間券・単発運賃を公式値（2026-11-08 確認）に修正し、break-even 表を削除して本ページへの文脈リンクに置換。

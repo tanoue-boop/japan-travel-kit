@@ -392,3 +392,17 @@ export const gygKyotoEntryTickets: GygListing = {
   what: "The admissions-only slice of the Kyoto catalogue, which is where the museum sits alongside the city's other ticketed sights",
   url: "https://www.getyourguide.com/kyoto-l96826/entry-tickets-tc123/",
 };
+
+/**
+ * Warner Bros. Studio Tour Tokyo — The Making of Harry Potter (t975381), added
+ * 8 Nov 2026 (task jtk-20261108-R02). GetYourGuide is on the studio tour's own
+ * authorised-distributor list (wbstudiotour.jp/en/authorised-distributors, read
+ * that day), and the listing was confirmed live through the getyourguide.com
+ * search index the same day. It sits beside the Klook ticket, a special-activity
+ * band product.
+ */
+export const gygWarnerBrosStudioTourTokyo: GygListing = {
+  title: "Warner Bros. Studio Tour Tokyo",
+  what: "The same date- and time-specified admission, sold by another authorised distributor",
+  url: "https://www.getyourguide.com/tokyo-l193/warner-bros-studio-tour-tokyo-the-making-of-harry-potter-t975381/",
+};

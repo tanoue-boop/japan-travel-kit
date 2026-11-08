@@ -240,7 +240,8 @@ export const PRICES = {
       "Date- and time-specified, and the tour takes about four hours — the time slot decides the rest of your day.",
     source: "wbstudiotour.jp",
     // Re-read 7 Nov 2026 on wbstudiotour.jp/en/tickets: adult, junior and child unchanged.
-    checked: "2026-11-07",
+    // Re-read 8 Nov 2026 (task jtk-20261108-R02): ¥6,600~ / ¥5,500~ / ¥4,000~ unchanged.
+    checked: "2026-11-08",
     klook: klook("Klook: Warner Bros. Studio Tour Tokyo ticket", warnerBrosStudioTourTokyo.url),
   },
 
