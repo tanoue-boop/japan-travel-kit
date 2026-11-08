@@ -217,6 +217,10 @@
 .bookLinks { display: flex; flex-direction: column; gap: 0.5rem; }
 .bookCta {
   align-self: flex-start;
+  /* A 40px tap target on phones; the text still reads as a link. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--accent);

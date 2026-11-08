@@ -154,6 +154,13 @@
 .featureTable tbody tr:hover { background: var(--paper); }
 .table td,
 .featureTable td { padding: 0.9rem 1.1rem; color: var(--text); vertical-align: middle; line-height: 1.7; }
+/* Korean, Chinese and Thai can break between any two characters, so on a phone the
+   table squeezed its text columns to one character a line. A floor on each cell makes
+   the table scroll inside .tableScroll instead; Korean also breaks at spaces only. */
+.table td:lang(ko),
+.table td:lang(zh),
+.table td:lang(th) { min-width: 7.5em; }
+.table td:lang(ko) { word-break: keep-all; }
 
 .tdProvider,
 .ftFeature { font-weight: 600; color: var(--text); font-size: 0.88rem; }
