@@ -210,3 +210,4 @@
 - 広告ID：spare から8個を上記8ページに割り当て（data/klook-adids.json）。
 - 再発防止：scripts/check-revenue-links.mjs（npm run check:revenue）を追加。0本のページがあればエラーで終了する。一覧は --write で docs/revenue-link-audit.md に出力する。
 - 効果測定：Klook の広告ID別レポートと Partnerize の pubref（guides-money-hub）で、追加した8ページのクリックを確認する。
+- 2026-11-08（task-jtk-20261108-04）2% チケットページ10本に BookingEsimCard（lead 付き、広告ID 1550210–1550219 を `<ページ>#booking-esim-card` に割当、spare 残0）、うち KlookTripPrep が無かった5本（sanrio-puroland・osaka-castle・tokyo-joypolis・fuji-q-highland・sumo-tokyo）に「Book for the same day」ブロック（既存定数のホテル・ツアー 6.5%／パス・交通 5%）を追加。japan-attraction-ticket-prices・things-to-do-osaka・things-to-do-kyoto は spare 不足で未追加。

@@ -2,6 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
+import { sumoTokyoTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 
@@ -394,6 +397,15 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
             ))}
           </div>
         </section>
+
+        <BookingEsimCard lead="Sumo seats booked? Get mobile data before you land." />
+
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What Else Is Worth Booking Around a Sumo Day?"
+          intro="A tournament day or a morning practice fixes the start of the day on the east side of Tokyo. Where you stay and what fills the rest of it are the bookings left to make."
+          items={sumoTokyoTripPrep}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

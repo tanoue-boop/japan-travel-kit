@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -472,6 +473,8 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             <GygCompareButton slug="ghibli-park-tickets" listing={gygGhibliPark} />
           </div>
         </section>
+
+        <BookingEsimCard lead="Ghibli Park booked? Get mobile data before you land." />
 
         {/* Sell-out / availability */}
         <section className={styles.bodySection}>

@@ -290,20 +290,19 @@
     "/guides/attractions/kyushu-5-day-itinerary#booking-esim-card": 1550206,
     "/guides/attractions/hiroshima-2-day-itinerary": 1550207,
     "/guides/attractions/kyoto-maiko-dinner": 1550208,
-    "/guides/attractions/kyoto-cooking-class": 1550209
+    "/guides/attractions/kyoto-cooking-class": 1550209,
+    "/guides/attractions/sanrio-puroland-tickets#booking-esim-card": 1550210,
+    "/guides/attractions/ghibli-park-tickets#booking-esim-card": 1550211,
+    "/guides/attractions/legoland-japan-tickets#booking-esim-card": 1550212,
+    "/guides/attractions/osaka-castle-tickets#booking-esim-card": 1550213,
+    "/guides/attractions/tokyo-joypolis-tickets#booking-esim-card": 1550214,
+    "/guides/attractions/fuji-q-highland-tickets#booking-esim-card": 1550215,
+    "/guides/attractions/sumo-tokyo-tickets#booking-esim-card": 1550216,
+    "/guides/attractions/teamlab-botanical-garden-osaka-tickets#booking-esim-card": 1550217,
+    "/guides/attractions/teamlab-fukuoka-tickets#booking-esim-card": 1550218,
+    "/guides/attractions/teamlab-kyoto-tickets#booking-esim-card": 1550219
   },
-  "spare": [
-    1550210,
-    1550211,
-    1550212,
-    1550213,
-    1550214,
-    1550215,
-    1550216,
-    1550217,
-    1550218,
-    1550219
-  ],
+  "spare": [],
   "borrowed": {},
   "_borrowedNote": "borrowed: spare が足りないページが英語版のIDを一時的に借りる置き場所。2026-11-06 の A21b で翻訳版20ページが借り、A25 で全ページを pages へ移したので今は空。"
 }

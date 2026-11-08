@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
@@ -423,6 +424,8 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
             </Link>.
           </p>
         </section>
+
+        <BookingEsimCard lead="Garden tickets booked? Get mobile data before you land." />
 
         {/* Q2 — hours */}
         <section className={styles.comparisonSection}>

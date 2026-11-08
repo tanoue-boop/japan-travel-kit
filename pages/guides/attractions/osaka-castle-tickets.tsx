@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -11,6 +13,7 @@ import {
   osakaAmazingPass,
   osakaCastleNishinomaruWalkingTour,
   osakaCastleTicket,
+  osakaCastleTripPrep,
   osakaCastleUmedaTonboriDayTour,
   osakaSkyVistaHalfDayBusTour,
 } from "../../../lib/klook-links";
@@ -677,6 +680,15 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
             </KlookLink>
           </div>
         </section>
+
+        <BookingEsimCard lead="Castle tickets booked? Get mobile data before you land." />
+
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What Else Is Worth Booking Around an Osaka Castle Day?"
+          intro="The keep and the walls take about half a day, and the castle sits between Umeda and Namba, so where you stay and how the evening goes are the bookings left to make."
+          items={osakaCastleTripPrep}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

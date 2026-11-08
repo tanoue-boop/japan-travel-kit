@@ -1,9 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
-import { sanrioPurolandTicket, tokyoSightseeingBusTour, warnerBrosStudioTourTokyo } from "../../../lib/klook-links";
+import {
+  sanrioPurolandTicket,
+  sanrioPurolandTripPrep,
+  tokyoSightseeingBusTour,
+  warnerBrosStudioTourTokyo,
+} from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
@@ -349,6 +356,8 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
           </div>
         </section>
 
+        <BookingEsimCard lead="Puroland booked? Get mobile data before you land." />
+
         {/* Getting there */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Getting there</span>
@@ -369,6 +378,13 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
             Checked {CHECKED}.
           </p>
         </section>
+
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What Else Is Worth Booking for a Puroland Day?"
+          intro="Puroland is a half day indoors at Tama Center, so the base you sleep in and the other half of the day are the bookings left to make."
+          items={sanrioPurolandTripPrep}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

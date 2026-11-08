@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -523,6 +524,8 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
             </Link>, which carries the check date for each one.
           </p>
         </section>
+
+        <BookingEsimCard lead="teamLab Fukuoka booked? Get mobile data before you land." />
 
         {/* Q2 — hours and duration */}
         <section className={styles.comparisonSection}>

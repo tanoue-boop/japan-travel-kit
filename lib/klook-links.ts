@@ -7244,3 +7244,147 @@ export const kyotoCookingClassTripPrep: KlookTripPrepItem[] = [
     why: "Several classes give a street address rather than a station exit, so a map on your phone is how you find the door on time.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// "Book for the same day" blocks for five 2% ticket pages, added 8 Nov 2026:
+// sanrio-puroland-tickets, osaka-castle-tickets, tokyo-joypolis-tickets,
+// fuji-q-highland-tickets and sumo-tokyo-tickets.
+//
+// Each page's headline Klook product is a park or venue admission, which books
+// in the 2% band. These lists send the same reader to the 6.5% tours and hotels
+// and the 5% passes around that day. The page ticket CTAs are untouched.
+//
+// No new URLs: every entry reads a constant or a stay-area id already declared
+// above, each confirmed through the www.klook.com search index when it was first
+// added. No price appears, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/** Sanrio Puroland — a 3-to-5-hour indoor day at Tama Center, reached from Shinjuku. */
+export const sanrioPurolandTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "The Keio and Odakyu lines both start at Shinjuku and both run to Tama Center, so a Shinjuku base puts the Puroland train at your own station.",
+  },
+  {
+    ...tripPrepProducts.shibuyaFoodTour,
+    why: "A Day Passport visit runs 3 to 5 hours by the listing's own estimate, which leaves the other half of the day free for a guided half day in central Tokyo.",
+  },
+  {
+    label: tokyoBaySunsetCruise.title,
+    ctaLabel: "Check the bay sunset cruise →",
+    url: tokyoBaySunsetCruise.url,
+    why: "An evening sailing past Rainbow Bridge and Tokyo Tower, timed for the hour the lights come on: the after-dark half of a morning spent at Puroland.",
+  },
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "The airport coach with hold luggage to central Tokyo stops, for the arrival day before a park day; check the stop list for your hotel before you book.",
+  },
+];
+
+/** Osaka Castle — an admission that takes about half a day, between Umeda and Namba. */
+export const osakaCastleTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "Umeda is the northern hub of the Midosuji Line and joined to Osaka Station, so the castle, the Umeda deck and the trains out of the city are all a short ride from the door.",
+  },
+  {
+    label: "Hotels around Namba",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: osakaStayAreas[1].url,
+    why: "The southern half of the same day: Dotonbori and Kuromon Market are on foot from Namba, and the Nankai line to Kansai Airport starts there.",
+  },
+  {
+    label: dotonboriCityCruise.title,
+    ctaLabel: "Check the Dotonbori cruise →",
+    url: dotonboriCityCruise.url,
+    why: "A 20-minute boat from Tazaemonbashi Pier past the Glico sign: the evening end of a day that starts at the castle.",
+  },
+  {
+    label: osakaNaniWonderNightBusTour.title,
+    ctaLabel: "Check the night bus tour →",
+    url: osakaNaniWonderNightBusTour.url,
+    why: "An open-top night run from the Osaka Station bus terminal down Midosuji to Shinsekai, for the hours after the keep closes.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "The pass covers the castle keep among its city admissions, plus the Metro rides between them, so it is worth pricing against the single ticket before you buy either.",
+  },
+];
+
+/** Tokyo Joypolis — 2 to 4 hours indoors in Odaiba, with an evening on the water. */
+export const tokyoJoypolisTripPrep: KlookTripPrepItem[] = [
+  {
+    label: tokyoBaySunsetCruise.title,
+    ctaLabel: "Check the bay sunset cruise →",
+    url: tokyoBaySunsetCruise.url,
+    why: "A sailing timed for sunset past Rainbow Bridge and the Odaiba waterfront, which lines up with an Evening Passport afternoon at Joypolis.",
+  },
+  {
+    label: tokyoBayDinnerCruiseSymphony.title,
+    ctaLabel: "Check the Symphony dinner cruise →",
+    url: tokyoBayDinnerCruiseSymphony.url,
+    why: "The dinner version of the same evening: a 2 hour 30 minute full-course cruise from Hinode Pier on the Rainbow Bridge loop.",
+  },
+  {
+    label: skyhopHopOnHopOffBus.title,
+    ctaLabel: "Check the open-top bus ticket →",
+    url: skyhopHopOnHopOffBus.url,
+    why: "Its courses include Odaiba as well as Asakusa and Roppongi–Shibuya, so it covers the ride out to the island and the rest of the day around it.",
+  },
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "The limousine buses from both airports and the N'EX from Narita stop here, which makes it the simplest base for an Odaiba day early in the trip.",
+  },
+];
+
+/** Fuji-Q Highland — a full park day at the foot of Mt. Fuji, mostly reached by highway bus. */
+export const fujiQHighlandTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "The Kawaguchiko highway buses board at Shinjuku, so a Shinjuku base turns an early coach to the park into a walk to the terminal.",
+  },
+  {
+    label: kawaguchikoYamanakakoBusTour.title,
+    ctaLabel: "Check the Kawaguchiko bus tour →",
+    url: kawaguchikoYamanakakoBusTour.url,
+    why: "The lakes side of the same corridor as a guided day from Tokyo, for the travel day either side of the park if the views matter as much as the coasters.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "The other way to see Mt. Fuji from Tokyo in a day, with Hakone on the same coach: the option for travellers in the group who would rather skip the rides.",
+  },
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "The airport coach with hold luggage to central Tokyo stops, so the arrival day ends at the hotel you will leave from for the park; check the stop list first.",
+  },
+];
+
+/** Sumo in Tokyo — Ryogoku Kokugikan or a morning practice, on the east side of the city. */
+export const sumoTokyoTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Ueno / Asakusa",
+    ctaLabel: "Check Ueno & Asakusa hotels on Klook →",
+    url: tokyoStayAreas[2].url,
+    why: "The east side of Tokyo, a short ride from Ryogoku: a nearby base helps when same-day tickets are sold early in the morning and practice tours start before the city is busy.",
+  },
+  {
+    label: tsukijiCultureFoodTour.title,
+    ctaLabel: "Check the Tsukiji food tour →",
+    url: tsukijiCultureFoodTour.url,
+    why: "Ryogoku is on the Toei Oedo Line, which also runs to Tsukiji, so a market walk with a sit-down sushi stop fits the hours after a morning practice.",
+  },
+  {
+    label: asakusaKimonoYae.title,
+    ctaLabel: "Check the Asakusa kimono rental →",
+    url: asakusaKimonoYae.url,
+    why: "A shop by Kaminarimon, across the river from Ryogoku, for the other half of an east-Tokyo day; the listing asks for the outfit back by 17:30.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Ryogoku's subway station is on the Toei Oedo Line, so a 24, 48 or 72-hour Metro and Toei ticket covers the arena trip and the rest of the day.",
+  },
+];

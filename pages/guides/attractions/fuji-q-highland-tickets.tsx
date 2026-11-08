@@ -1,9 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
+  fujiQHighlandTripPrep,
   fujiQHighlandQPack,
   fujiQHighlandPass,
   fujiQHighlandAdmission,
@@ -361,6 +364,8 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
           </div>
         </section>
 
+        <BookingEsimCard lead="Fuji-Q booked? Get mobile data before you land." />
+
         {/* Getting there */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Getting there</span>
@@ -381,6 +386,13 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
             covers the same corridor without a park ticket attached.
           </p>
         </section>
+
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What Else Is Worth Booking for a Fuji-Q Day?"
+          intro="The park ticket settles the day itself. The base you leave from and the lakes on either side of it are the other bookings this trip takes."
+          items={fujiQHighlandTripPrep}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

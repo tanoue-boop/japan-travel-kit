@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -12,6 +14,7 @@ import {
   tokyoBayYakatabuneDinnerShow,
   tokyoJoypolisPassport,
   tokyoJoypolisTicket,
+  tokyoJoypolisTripPrep,
   tokyoSightseeingBusTour,
 } from "../../../lib/klook-links";
 
@@ -572,6 +575,8 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
           </div>
         </section>
 
+        <BookingEsimCard lead="Joypolis booked? Get mobile data before you land." />
+
         {/* Pairing it with Odaiba */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The rest of the day</span>
@@ -606,6 +611,13 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             into. Joypolis is firmly in the second group.
           </p>
         </section>
+
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What Else Is Worth Booking for an Odaiba Day?"
+          intro="Two to four hours inside leaves the evening open, and the bay is the obvious way to spend it."
+          items={tokyoJoypolisTripPrep}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

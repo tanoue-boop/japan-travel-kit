@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
@@ -466,6 +467,8 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             </Link>.
           </p>
         </section>
+
+        <BookingEsimCard lead="teamLab Kyoto booked? Get mobile data before you land." />
 
         {/* Q2 — where */}
         <section className={styles.bodySection}>
