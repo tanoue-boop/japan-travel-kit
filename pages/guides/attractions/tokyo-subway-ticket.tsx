@@ -1,18 +1,32 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
-import { tokyoSubwayTicket, subwayCityViewCombo, naritaBusSubwayCombo, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import {
+  tokyoSubwayTicket,
+  subwayCityViewCombo,
+  naritaBusSubwayCombo,
+  tokyoSightseeingBusTour,
+  fujiDayTour,
+  shinjukuNightFoodWalkingTour,
+} from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
-import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { PRICES } from "../../../lib/attraction-prices";
 
-// Pass prices from tokyometro.jp and the Tokyo Metro adult fare table, both read 19 Oct
-// 2026. The 24-hour adult and child prices and the check date are owned by
-// lib/attraction-prices.ts, shared with the ticket price table.
+// Every price, fare and rule on this page was read off tokyometro.jp on 8 November 2026:
+//   /en/ticket/travel/   Tokyo Subway Ticket prices, validity, lines, who can buy, QR version
+//   /en/ticket/regular/  Tokyo Metro single fares by distance (IC and paper, adult and child)
+//   /en/ticket/1day/     Tokyo Metro 24-hour Ticket and the Common One-day Ticket
+//   /en/ticket/age/      fare age bands
+//   /en/ticket/airport_bus/  airport bundles that include the pass
+//   /lang_en/news/223056.html  QR version usable on Metro and Toei from 25 March 2026
+// The 24-hour adult and child prices are shared with lib/attraction-prices.ts.
 const P = PRICES.tokyoSubwayTicket;
-const CHECKED = checkedLabel(P.checked);
+const CHECKED = "8 November 2026";
+const OFFICIAL = "https://www.tokyometro.jp/en/ticket/travel/index.html";
 
 const priceRows = [
   { pass: "24-hour ticket", adult: P.adult, child: P.child, perDay: "¥1,000 / day" },
@@ -20,12 +34,26 @@ const priceRows = [
   { pass: "72-hour ticket", adult: "¥2,000", child: "¥1,000", perDay: "¥667 / day" },
 ];
 
+// Rides needed to beat the pass price with single IC fares: ceil(price / fare).
+const breakEvenRows = [
+  { pass: "24-hour (¥1,000)", short: "6 rides", mid: "5 rides", perDay: "5–6 in the 24 hours" },
+  { pass: "48-hour (¥1,500)", short: "9 rides", mid: "8 rides", perDay: "about 4–5 a day" },
+  { pass: "72-hour (¥2,000)", short: "12 rides", mid: "10 rides", perDay: "about 3–4 a day" },
+];
+
 const fareRows = [
-  { band: "1–6 km", ic: "¥178", paper: "¥180" },
-  { band: "7–11 km", ic: "¥209", paper: "¥210" },
-  { band: "12–19 km", ic: "¥252", paper: "¥260" },
-  { band: "20–27 km", ic: "¥293", paper: "¥300" },
-  { band: "28–40 km", ic: "¥324", paper: "¥330" },
+  { band: "1–6 km", ic: "¥178", paper: "¥180", child: "¥89" },
+  { band: "7–11 km", ic: "¥209", paper: "¥210", child: "¥104" },
+  { band: "12–19 km", ic: "¥252", paper: "¥260", child: "¥126" },
+  { band: "20–27 km", ic: "¥293", paper: "¥300", child: "¥146" },
+  { band: "28–40 km", ic: "¥324", paper: "¥330", child: "¥162" },
+];
+
+const ageRows = [
+  { band: "Adult", ages: "12 and over", fare: "Adult price" },
+  { band: "Child", ages: "6 to 11", fare: "Child price (half)" },
+  { band: "Toddler", ages: "1 to 6, not yet at elementary school", fare: "Free, up to two per adult or child; a third pays the child fare" },
+  { band: "Infant", ages: "Under 1", fare: "Free" },
 ];
 
 const whoFor = [
@@ -51,7 +79,7 @@ const whoFor = [
   },
   {
     title: "The 24-hour is the marginal one…",
-    desc: "At ¥1,000 you need roughly five or six subway rides in a single 24-hour window to break even, depending on distance. That is a lot for one day unless you are deliberately crossing the city. Check your route before you buy this tier.",
+    desc: "At ¥1,000 you need five Metro rides of 7–11 km, or six of the shortest band, in a single 24-hour window to break even. That is a lot for one day unless you are deliberately crossing the city. Check your route before you buy this tier.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 3v18M3 12h18" />
@@ -71,8 +99,8 @@ const steps = [
     desc: "The pass excludes JR, including the Yamanote Line, and private railways. Asakusa, Oshiage, Ginza, Roppongi, Omotesando and Tsukiji are all subway; Shibuya, Shinjuku, Ueno and Akihabara are reachable by subway but are also Yamanote stops you may end up using instead.",
   },
   {
-    title: "Buy before you land, or at least before the counter",
-    desc: "The ticket is sold to overseas visitors, and the official site offers both a physical ticket and a digital QR version. Klook sells the same pass with an English checkout and a voucher you collect on arrival — useful if you would rather not work out which window sells it at the airport.",
+    title: "Buy online before you land",
+    desc: "Tokyo Metro's official page sells the pass online, as a standard ticket or as a QR version sent to your phone. Klook sells the same pass with an English checkout; the listing for your date says whether you ride on a QR code or collect a ticket, and where.",
   },
   {
     title: "Keep an IC card anyway",
@@ -87,7 +115,7 @@ const faqItems = [
   },
   {
     q: "Is the Tokyo Subway Ticket worth it?",
-    a: `It depends on how many subway rides you actually take. Tokyo Metro adult fares run from ¥178 for 1–6 km up to ¥324 for 28–40 km on an IC card, so the ¥1,000 24-hour ticket needs roughly five to six rides in one window to break even. The ¥2,000 72-hour ticket needs only about four rides a day, which an ordinary sightseeing day reaches easily — that tier is the one most visitors come out ahead on. Fares and prices checked on ${CHECKED}.`,
+    a: `It depends on how many subway rides you actually take. Tokyo Metro adult fares run from ¥178 for 1–6 km up to ¥324 for 28–40 km on an IC card, so the ¥1,000 24-hour ticket needs five to six rides in one window to break even. The ¥2,000 72-hour ticket needs 10 to 12 rides across its three days, about three or four a day, which an ordinary sightseeing day reaches — that tier is the one most visitors come out ahead on. Fares and prices checked on ${CHECKED}.`,
   },
   {
     q: "Does the Tokyo Subway Ticket cover JR and the Yamanote Line?",
@@ -95,15 +123,15 @@ const faqItems = [
   },
   {
     q: "When does the 24 hours start?",
-    a: "At first use, not at purchase and not at midnight. A 24-hour ticket first tapped at 15:00 is valid until 15:00 the following day, which means one pass can cover an afternoon of sightseeing and the next morning's travel. The 48- and 72-hour versions work the same way, counting forward in hours from the first tap.",
+    a: "At first use, not at purchase and not at midnight — the official page counts 24, 48 or 72 hours from the travel starting time. A 24-hour ticket first tapped at 15:00 is valid until 15:00 the following day, which means one pass can cover an afternoon of sightseeing and the next morning's travel. The 48- and 72-hour versions work the same way, counting forward in hours from the first tap.",
   },
   {
     q: "Who can buy the Tokyo Subway Ticket?",
-    a: "It is sold as a visitor pass. The Klook listing states that the offer is not available to Japanese passport holders, and the pass is marketed through tourist channels rather than ordinary commuter windows. Bring your passport when you collect a physical ticket.",
+    a: `Overseas visitors, and Japanese residents who live outside Tokyo, Kanagawa, Saitama, Chiba, Ibaraki, Tochigi, Gunma and Yamanashi, according to the official Tokyo Metro page checked on ${CHECKED}. The official pages checked do not say whether a passport is shown at purchase, so check the listing for your date and carry your passport when you collect a ticket.`,
   },
   {
     q: "Physical ticket or digital QR version?",
-    a: "The official Tokyo Metro site offers both: a physical Tokyo Subway Ticket, and a digital QR version that can be distributed to mobile devices. The physical card goes through the gate like any other ticket, which is the less error-prone option if you are travelling as a group and handing passes around. Either way the validity period and the price are the same.",
+    a: "The official Tokyo Metro site offers both: a standard Tokyo Subway Ticket, and a QR version that can be distributed to several mobile devices when you buy more than one. Since 25 March 2026 the QR version can be used on Tokyo Metro and Toei Subway lines directly, so buying and riding happen on one phone. The validity period and the price are the same either way.",
   },
   {
     q: "Can I use the Tokyo Subway Ticket to get to Tokyo Skytree?",
@@ -111,15 +139,27 @@ const faqItems = [
   },
   {
     q: "Is there a cheaper Tokyo subway pass?",
-    a: "The Tokyo Metro 1-day pass is cheaper, but it covers only the nine Tokyo Metro lines and not the four Toei lines — and the Oedo, Asakusa and Shinjuku lines are Toei. Because Metro and Toei are separate companies, a journey that switches between them is charged as two fares, which is exactly the gap the Tokyo Subway Ticket closes. Our Tokyo transport guide compares the pass options in more detail.",
+    a: `The Tokyo Metro 24-hour Ticket is cheaper at ¥700 adult (¥350 child), but it covers only the nine Tokyo Metro lines and not the four Toei lines — and the Oedo, Asakusa and Shinjuku lines are Toei. The Common One-day Ticket for Tokyo Metro & Toei costs ¥1,100 and runs for one day rather than 24 hours, so the ¥1,000 Tokyo Subway Ticket beats it for anyone eligible. Prices from tokyometro.jp, checked ${CHECKED}.`,
+  },
+  {
+    q: "Do children need their own Tokyo Subway Ticket?",
+    a: `Children aged 6 to 11 pay the child price, which is half the adult price at every length (¥500 / ¥750 / ¥1,000). Tokyo Metro's age rules let up to two toddlers aged 1 to 6 who are not yet at elementary school ride free with an adult or child, and under-1s ride free. From 12 the adult price applies. Checked on tokyometro.jp, ${CHECKED}.`,
+  },
+  {
+    q: "Can I use the Tokyo Subway Ticket from Narita or Haneda airport?",
+    a: "Not on its own. The pass covers Tokyo Metro and Toei Subway lines only, so the airport train or bus is paid separately. Tokyo Metro's airport page lists bundles that add the pass to the airport leg: the Keisei Skyliner & Tokyo Subway Ticket and the Limousine & Subway Pass from Narita, and the Limousine & Subway Pass from Haneda. Each bundle's own site gives the sales points.",
+  },
+  {
+    q: "Does the Tokyo Subway Ticket cover the Toei Oedo and Asakusa lines?",
+    a: "Yes. The official page says the pass is valid on all lines of Tokyo Metro and Toei Subway, and the Oedo, Asakusa, Mita and Shinjuku lines are the four Toei lines. That is the main difference from the Tokyo Metro 24-hour Ticket, which stops at the Metro network.",
   },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-subway-ticket") } });
 
-const TITLE = "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours";
+const TITLE = "Tokyo Subway Ticket 2026: 24/48/72-Hour Price, Worth It?";
 const DESC =
-  "Tokyo Subway Ticket prices for 2026: ¥1,000, ¥1,500 and ¥2,000 for 24, 48 and 72 hours. The break-even against Metro fares, and what the pass excludes.";
+  "Tokyo Subway Ticket price for 24, 48 or 72 Hours: ¥1,000, ¥1,500, ¥2,000 on all Metro and Toei lines. Rides to break even, where to buy, and JR rules.";
 
 export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -204,11 +244,13 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Subway Ticket (2026):<br />24, 48 or 72 Hours — Is It Worth It?
+            Tokyo Subway Ticket 2026:<br />Price for 24, 48 or 72 Hours, and Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
-            The pass is good value on the 72-hour tier and marginal on the 24-hour one. Here are the official
-            prices, the break-even against real Metro fares, and the one exclusion that catches people out.
+            The Tokyo Subway Ticket gives unlimited rides on every Tokyo Metro and Toei Subway line for 24, 48 or
+            72 hours from first use, at ¥1,000, ¥1,500 or ¥2,000 for adults (children half price; official prices
+            checked {CHECKED}). It pays off if you take five or six single subway rides in 24 hours, or three to
+            four a day on the 72-hour ticket. JR lines, including the Yamanote Line, are not covered.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices", "Break-even worked out"].map((t) => (
@@ -247,7 +289,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Break-even</p>
-                <p className={styles.verdictStatValue}>~4 rides/day on 72h</p>
+                <p className={styles.verdictStatValue}>3–4 rides/day on 72h</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Covers JR?</p>
@@ -257,7 +299,8 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             <p className={styles.verdictText}>
               <strong>In short:</strong> the 72-hour ticket at ¥2,000 works out to about ¥667 a day, which four
               short Metro rides already beat — that tier is usually worth it. The 24-hour at ¥1,000 needs five or
-              six rides in one window, which is a busier day than most people have. Either way the pass excludes
+              six rides in one window, which is a busier day than most people have. The clock starts at first use,
+              not at purchase. Either way the pass excludes
               JR, so the Yamanote Line is not included. Prices and fares checked on {CHECKED}.
             </p>
             <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
@@ -266,27 +309,15 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
-        {/* Intro */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What the Pass Actually Covers</h2>
-          <p className={styles.bodyText}>
-            The Tokyo Subway Ticket is a visitor pass giving unlimited rides on <strong>all Tokyo Metro and all
-            Toei Subway lines</strong> for 24, 48 or 72 hours from the moment you first use it. That combination
-            matters: Tokyo Metro and Toei are separate companies, so a journey that switches between the two
-            normally costs two fares. The pass removes that penalty entirely.
-          </p>
-          <p className={styles.bodyText}>
-            What it does not cover is JR — and in Tokyo that is a large hole. The Yamanote Line, the loop that
-            links Shibuya, Shinjuku, Shinagawa, Tokyo and Ueno, is JR. So are the Chuo and Sobu lines. If your
-            days are built around the loop rather than the subway, the pass will sit unused in your pocket.
-          </p>
-        </section>
-
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>Tokyo Subway Ticket Prices</h2>
+          <h2 className={styles.sectionTitle}>How much is the Tokyo Subway Ticket?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            ¥1,000 for 24 hours, ¥1,500 for 48 hours and ¥2,000 for 72 hours for adults, with children paying
+            half. The pass covers <strong>all Tokyo Metro and all Toei Subway lines</strong>, which matters because
+            the two are separate companies with separate fares.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -311,26 +342,91 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Adult and child prices read off the official Tokyo Metro site on {CHECKED}. The cost-per-day column
-            is our arithmetic, not an official figure. Validity counts forward in hours from first use.
+            Adult and child prices read off the{" "}
+            <a href={OFFICIAL} target="_blank" rel="noopener">official Tokyo Metro Tokyo Subway Ticket page</a> on{" "}
+            {CHECKED}. The cost-per-day column is simple division, not an official figure.
+          </p>
+
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            What is the child price, and who counts as a child?
+          </h3>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Fare band", "Age", "What they pay"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {ageRows.map((row) => (
+                    <tr key={row.band}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.band}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.ages}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.fare}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Age bands from Tokyo Metro&apos;s Fares According to Age page, checked {CHECKED}. A six-year-old who
+            has not started elementary school still counts as a toddler.
           </p>
         </section>
 
         {/* Break-even */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Break-even</span>
-          <h2 className={styles.sectionTitle}>What a Single Ride Costs Instead</h2>
+          <h2 className={styles.sectionTitle}>Is the Tokyo Subway Ticket worth it?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            To know whether the pass pays, you need the fare it replaces. These are Tokyo Metro&apos;s published
-            adult single fares by distance band — the IC-card column is what a Suica or Pasmo charges, and it is
-            marginally cheaper than a paper ticket at every band.
+            Yes on the 72-hour ticket for most subway-based trips, and only on a busy day for the 24-hour one.
+            The table counts how many single IC-card rides it takes to cost more than the pass.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Distance", "IC card", "Paper ticket"].map((h) => (
+                    {["Pass (adult)", "Rides at ¥178 (1–6 km)", "Rides at ¥209 (7–11 km)", "Pace needed"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {breakEvenRows.map((row) => (
+                    <tr key={row.pass}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.pass}</td>
+                      <td className={styles.tdPrice}>{row.short}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.mid}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.perDay}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Pass prices and Tokyo Metro IC fares read off tokyometro.jp on {CHECKED}. Ride counts are the pass
+            price divided by one fare, rounded up. Toei Subway sets its own fares, which are not used here.
+          </p>
+
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            What does a single subway ride cost instead?
+          </h3>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            These are Tokyo Metro&apos;s published single fares by distance band. The IC-card column is what a
+            Suica or Pasmo charges, marginally less than a paper ticket at every band.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Distance", "Adult IC card", "Adult paper ticket", "Child IC card"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -341,6 +437,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
                       <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.band}</td>
                       <td className={styles.tdPrice}>{row.ic}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.paper}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.child}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -348,22 +445,106 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Most central-Tokyo subway hops fall in the first two bands, so call it ¥178–¥209 a ride. Against
-            that, the ¥1,000 24-hour ticket needs <strong>five to six rides</strong> in a single window to break
-            even. The ¥2,000 72-hour ticket, at about ¥667 a day, needs roughly <strong>four rides a day</strong>{" "}
-            — a normal pace once you are changing lines a couple of times per outing. That gap is the whole
-            decision.
+            Most central-Tokyo subway hops fall in the first two bands, so call it ¥178–¥209 a ride. The ¥2,000
+            72-hour ticket, at about ¥667 a day, is beaten by four short rides a day — a normal pace once you are
+            changing lines a couple of times per outing. The cheaper Tokyo Metro 24-hour Ticket (¥700) stops at
+            the Metro network, so it only competes on days with no Toei rides.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Fares read off Tokyo Metro&apos;s adult fare table on {CHECKED}; the quoted prices include the ¥10
-            adult barrier-free fee. Toei Subway fares are set separately. Break-even counts are our arithmetic.
+            Fares read off Tokyo Metro&apos;s fare table on {CHECKED}; adult fares include the ¥10 barrier-free fee.
+          </p>
+          <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta} style={{ marginTop: "1rem" }}>
+            Check Tokyo Subway Ticket dates on Klook →
+          </KlookLink>
+        </section>
+
+        {/* Where to buy */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Where to buy</span>
+          <h2 className={styles.sectionTitle}>Where do I buy and exchange the Tokyo Subway Ticket?</h2>
+          <p className={styles.bodyText}>
+            Buy it online before you fly. Tokyo Metro&apos;s official page sells two versions online: a standard
+            Tokyo Subway Ticket and a QR version, which can be sent to several phones when one person buys for a
+            group. Since 25 March 2026 the QR version can be used on Tokyo Metro and Toei Subway lines directly, so
+            purchase and riding happen on one phone.
+          </p>
+          <p className={styles.bodyText}>
+            For the standard ticket, the official pages checked on {CHECKED} do not list the stations or machines
+            where an online purchase is exchanged; the voucher you receive gives the collection point, so check it
+            before you head for a station. Booking through Klook works the same way: the listing for your date says
+            whether you ride on a QR code or collect a ticket, and where.
+          </p>
+          <p className={styles.bodyText}>
+            Arriving by plane, the pass does not cover the airport leg. Tokyo Metro&apos;s airport page lists
+            bundles that add it: the Keisei Skyliner &amp; Tokyo Subway Ticket and the Limousine &amp; Subway Pass
+            from Narita, and the Limousine &amp; Subway Pass from Haneda.{" "}
+            <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfers</Link> compares the routes
+            into town.
+          </p>
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
+            Who can buy the Tokyo Subway Ticket?
+          </h3>
+          <p className={styles.bodyText}>
+            Overseas visitors, and Japanese residents who live outside Tokyo, Kanagawa, Saitama, Chiba, Ibaraki,
+            Tochigi, Gunma and Yamanashi. The official pages checked do not say whether a passport is shown at
+            purchase, so check the listing for your date and carry your passport when you collect a ticket.
+          </p>
+          <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta} style={{ marginTop: "1rem" }}>
+            Book the Tokyo Subway Ticket on Klook →
+          </KlookLink>
+        </section>
+
+        <KlookTourPicks
+          heading="What to Book for the Same Trip"
+          intro="Two Tokyo bookings that sell out on popular dates: a full-day trip out of the city, and an evening food walk in Shinjuku. Check the listing for your date."
+          tours={[fujiDayTour, shinjukuNightFoodWalkingTour]}
+        />
+
+        <BookingEsimCard lead="Riding the subway on a QR ticket? Get mobile data before you land." />
+
+        {/* JR */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>What it excludes</span>
+          <h2 className={styles.sectionTitle}>Does the Tokyo Subway Ticket cover JR lines?</h2>
+          <p className={styles.bodyText}>
+            No. It covers Tokyo Metro and Toei Subway only, so JR lines — including the Yamanote Line — and
+            private railways are paid separately. In Tokyo that is a large hole: the Yamanote loop that links
+            Shibuya, Shinjuku, Shinagawa, Tokyo and Ueno is JR, and so are the Chuo and Sobu lines.
+          </p>
+          <p className={styles.bodyText}>
+            For a JR-only hop, tap a Suica or Pasmo and pay the single fare; see our{" "}
+            <Link href="/guides/transport/ic-cards-japan">guide to Japanese IC cards</Link>. Many JR stops also have
+            a subway station a short walk away, so check the subway route first in a map app before paying for the
+            JR leg. If your days are built around the loop rather than the subway,{" "}
+            <Link href="/guides/transport/tokyo-transportation">getting around Tokyo</Link> explains how JR, Metro
+            and Toei divide up the city.
+          </p>
+        </section>
+
+        {/* Validity */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Validity</span>
+          <h2 className={styles.sectionTitle}>Does the 24-hour ticket start when I buy it or when I first use it?</h2>
+          <p className={styles.bodyText}>
+            When you first use it. The official page counts 24, 48 or 72 hours from the travel starting time, not
+            from purchase and not by calendar day, so a 24-hour ticket first used at 15:00 runs until 15:00 the next
+            day.
+          </p>
+          <p className={styles.bodyText}>
+            That is why the 72-hour ticket fits a three-night, four-day trip: start it on your first subway ride
+            after landing at, say, 14:00, and it runs until 14:00 on day four, covering the last morning too. Our{" "}
+            <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3-day itinerary</Link> shows how
+            three full days in the city fit together; on the{" "}
+            <Link href="/guides/attractions/tokyo-5-day-itinerary">5-day itinerary</Link>, cover the three busiest
+            subway days with the pass and pay by IC card on the rest. For what to fill the days with, see{" "}
+            <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link>.
           </p>
         </section>
 
         {/* Who for */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Which tier</span>
-          <h2 className={styles.sectionTitle}>Which Version Should You Buy?</h2>
+          <h2 className={styles.sectionTitle}>Which version should you buy: 24, 48 or 72 hours?</h2>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -378,7 +559,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
         {/* How to buy */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Decide and Where to Buy</h2>
+          <h2 className={styles.sectionTitle}>How do I decide which ticket to buy?</h2>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>

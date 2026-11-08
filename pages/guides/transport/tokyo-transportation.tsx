@@ -15,18 +15,16 @@ const keyRoutes = [
   { from: "Asakusa",  to: "Shinjuku",   line: "Toei Oedo Line", time: "40 min", price: "¥280" },
 ];
 
-const dayPasses = [
-  { pass: "Tokyo Subway Ticket 24-hour", price: "¥800",   covers: "Tokyo Metro + Toei (13 lines)", worth: "Sometimes" },
-  { pass: "Tokyo Subway Ticket 48-hour", price: "¥1,200", covers: "Tokyo Metro + Toei (13 lines)", worth: "Sometimes" },
-  { pass: "Tokyo Subway Ticket 72-hour", price: "¥1,500", covers: "Tokyo Metro + Toei (13 lines)", worth: "Often" },
-  { pass: "Tokyo Metro 1-day", price: "¥600",   covers: "Tokyo Metro only (9 lines)",  worth: "Sometimes" },
-  { pass: "Tokyo Free Kippu",  price: "¥1,600", covers: "All Tokyo lines (JR + Metro + Toei)", worth: "Rarely" },
-];
+// Tokyo Metro and Tokyo Subway Ticket prices read off tokyometro.jp on 8 November 2026
+// (/en/ticket/travel/, /en/ticket/1day/, /en/ticket/regular/). The Tokyo Subway Ticket
+// break-even table lives on /guides/attractions/tokyo-subway-ticket only.
+const METRO_CHECKED = "8 November 2026";
 
-const subwayTicketRows = [
-  { pass: "24-hour", price: "¥800",   perDay: "¥800 / day",   breakeven: "~4–5 rides" },
-  { pass: "48-hour", price: "¥1,200", perDay: "¥600 / day",   breakeven: "~3–4 rides / day" },
-  { pass: "72-hour", price: "¥1,500", perDay: "¥500 / day",   breakeven: "~3 rides / day" },
+const dayPasses = [
+  { pass: "Tokyo Subway Ticket (24 / 48 / 72-hour)", price: "¥1,000 / ¥1,500 / ¥2,000", covers: "Tokyo Metro + Toei Subway, from first use", worth: "Often (72-hour)" },
+  { pass: "Tokyo Metro 24-hour Ticket", price: "¥700", covers: "Tokyo Metro only, 24 hours from first use", worth: "Sometimes" },
+  { pass: "Common One-day Ticket (Metro & Toei)", price: "¥1,100", covers: "Tokyo Metro + Toei Subway, one day", worth: "Sometimes" },
+  { pass: "Tokyo Free Kippu",  price: "¥1,600", covers: "All Tokyo lines (JR + Metro + Toei)", worth: "Rarely" },
 ];
 
 const subwayVsIcRows = [
@@ -97,7 +95,7 @@ const faqItems = [
   },
   {
     q: "Should I get a day pass for Tokyo trains?",
-    a: "For most tourists, day passes rarely save money. The Tokyo Metro 1-day pass (¥600) only makes sense if you take five or more Metro journeys in one day — which is possible if you're covering a lot of ground. The Tokyo Free Kippu (¥1,600) covers all lines but is almost never worth it unless you're doing an unusually busy day of sightseeing. An IC card with pay-as-you-go is more flexible for most itineraries.",
+    a: "For most tourists, day passes rarely save money. The Tokyo Metro 24-hour Ticket (¥700 adult on tokyometro.jp, checked 8 November 2026) only makes sense if you take four or more Metro journeys inside 24 hours, since the shortest Metro ride is ¥178 on an IC card. The Tokyo Free Kippu (¥1,600) covers all lines but is almost never worth it unless you're doing an unusually busy day of sightseeing. An IC card with pay-as-you-go is more flexible for most itineraries.",
   },
   {
     q: "Can I use Suica on all Tokyo trains?",
@@ -113,7 +111,7 @@ const faqItems = [
   },
   {
     q: "Is the Tokyo Subway Ticket worth it?",
-    a: "It's worth it if you take roughly 4 or more subway rides per day on the Tokyo Metro and Toei lines. The 24-hour pass costs about ¥800 (a 2026 estimate, subject to change), while individual Metro rides run around ¥170–210 each — so 4–5 rides in a day cover the cost. If you only make a couple of journeys, or rely heavily on the JR Yamanote Line, a pay-as-you-go Suica or Pasmo is cheaper and more flexible.",
+    a: "Usually on the 72-hour version. The official adult prices are ¥1,000 (24-hour), ¥1,500 (48-hour) and ¥2,000 (72-hour), and Tokyo Metro single rides cost ¥178–¥209 on an IC card for trips up to 11 km (tokyometro.jp, checked 8 November 2026). That puts break-even at five or six rides for the 24-hour ticket and about four a day for the 72-hour one. If you rely heavily on the JR Yamanote Line, a pay-as-you-go Suica or Pasmo is cheaper. The ride-by-ride break-even table is in the Tokyo Subway Ticket guide.",
   },
   {
     q: "What does the Tokyo Subway Ticket cover?",
@@ -121,7 +119,7 @@ const faqItems = [
   },
   {
     q: "Where can I buy the Tokyo Subway Ticket?",
-    a: "You can buy it at Narita and Haneda airports (for example at Keisei counters and Bic Camera), at major tourist information centres, and online through Klook as a voucher you exchange after landing. Specific outlets are a 2026 guide and can change, so follow the in-airport signage or your voucher instructions.",
+    a: "Tokyo Metro's official page sells it online, as a standard ticket or as a QR version that is sent to your phone; since 25 March 2026 the QR version can be used on Tokyo Metro and Toei Subway lines directly. Klook also sells it, with the collection or QR instructions on the listing for your date. It is sold to overseas visitors and to Japanese residents living outside Tokyo and the seven neighbouring prefectures the official page lists.",
   },
 ];
 
@@ -253,7 +251,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.verdictBtn}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="sponsored noopener"
             >
               Get Suica IC Card on Klook →
             </KlookLink>
@@ -316,8 +314,12 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             automatically — you don&apos;t need to think about it.
           </p>
           <p className={styles.bodyText}>
-            The <strong>Tokyo Metro 1-day pass (¥600)</strong> covers all 9 Metro lines unlimited. It makes sense if you
-            plan to take 5+ Metro rides in a single day — for example, a day visiting Asakusa, Ginza, Roppongi, and Shibuya.
+            The <strong>Tokyo Metro 24-hour Ticket (¥700 adult, ¥350 child)</strong> covers all 9 Metro lines unlimited
+            for 24 hours from first use. Single Metro rides cost ¥178–¥324 on an IC card depending on distance, so it makes sense if
+            you plan four or more Metro rides in that window — for example, a day visiting Asakusa, Ginza, Roppongi,
+            and Omotesando. If your day also uses the Toei lines, the{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket (24, 48 or 72 hours)</Link> covers
+            both networks. Prices and fares from tokyometro.jp, checked {METRO_CHECKED}.
           </p>
         </section>
 
@@ -340,7 +342,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="sponsored noopener"
             >
               Pre-order Suica IC Card on Klook →
             </KlookLink>
@@ -414,43 +416,25 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Adult prices. Tokyo Subway Ticket, Tokyo Metro 24-hour Ticket and Common One-day Ticket prices read off
+            tokyometro.jp on {METRO_CHECKED}; children pay half.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             For most tourists, pay-as-you-go with an IC card is cheaper and more flexible. Day passes only make
             financial sense on unusually busy days of sightseeing with many short journeys.
           </p>
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
-            Tokyo Subway Ticket: prices &amp; break-even point
+            Is the Tokyo Subway Ticket worth it?
           </h3>
           <p className={styles.bodyText}>
-            The Tokyo Subway Ticket is the pass most visitors actually consider. It gives unlimited rides on all 9
-            Tokyo Metro lines and all 4 Toei lines — but <strong>not JR lines</strong>, including the Yamanote Line.
-            The clock runs in hours from first use, not calendar days. Individual Metro rides cost around ¥170–210,
-            so this is where each version pays for itself:
+            The Tokyo Subway Ticket is the pass most visitors actually consider: unlimited Tokyo Metro and Toei
+            Subway rides for 24, 48 or 72 hours from first use at ¥1,000 / ¥1,500 / ¥2,000, but{" "}
+            <strong>not JR lines</strong>, including the Yamanote Line. The ride-by-ride break-even, where to buy
+            it and how the QR version works are in our{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket price and break-even guide</Link>.
           </p>
-          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Pass", "Price", "Per day", "Break-even"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {subwayTicketRows.map((row) => (
-                    <tr key={row.pass}>
-                      <td className={styles.tdProvider}>{row.pass}</td>
-                      <td className={styles.tdPrice}>{row.price}</td>
-                      <td>{row.perDay}</td>
-                      <td>{row.breakeven}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
             Subway Ticket vs Suica / Pasmo
@@ -478,15 +462,15 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Where to buy: Narita and Haneda airports (Keisei counters, Bic Camera), major tourist information
-            centres, or online via Klook as a voucher you exchange after landing.
+            Where to buy: online from Tokyo Metro&apos;s official sales page (standard or QR version), or from Klook,
+            whose listing gives the collection or QR instructions for your date.
           </p>
           <div style={{ margin: "1.5rem 0" }}>
             <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1267427&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1552-subway-ticket-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="sponsored noopener"
             >
               Buy Tokyo Subway Ticket on Klook →
             </KlookLink>
@@ -613,7 +597,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Tokyo Subway Ticket 2026: Price for 24, 48 or 72 Hours, and Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -692,7 +676,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.ctaBannerBtn}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="sponsored noopener"
             >
               Get Suica on Klook →
             </KlookLink>

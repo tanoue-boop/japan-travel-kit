@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-08：/guides/attractions/tokyo-subway-ticket の順位改善と旧URLの集約（task-jtk-20261108-R01）
+
+- 2026-11-08 title 変更：「Tokyo Subway Ticket (2026): 24, 48 or 72 Hours」→「Tokyo Subway Ticket 2026: 24/48/72-Hour Price, Worth It?」。旧URL /guides/transport/tokyo-subway-ticket の 301 先を /guides/transport/tokyo-transportation → /guides/attractions/tokyo-subway-ticket に変更。tokyo-transportation（title・H1 変更なし）の Tokyo Subway Ticket・Metro 24時間券・単発運賃を公式値（2026-11-08 確認）に修正し、break-even 表を削除して本ページへの文脈リンクに置換。
+
 ## 2026-11-08：作業メモ型の一人称の一掃と本番 dateModified の修正（task-jtk-20261108-05）
 
 - 2026-11-08 全ページ（en・ko・zh-tw・zh-cn・th）と共有部品の読者向け文言から「we could not read / we track / Klook blocks automated reads」型の作業メモを第三者視点に置換（約160ファイル）。数値・title・見出し・構成は変更なし（11/20 効果測定中のページも文言の置き換えのみ）。
