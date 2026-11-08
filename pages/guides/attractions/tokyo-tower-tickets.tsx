@@ -1,39 +1,80 @@
 import Head from "next/head";
 import Link from "next/link";
-import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
-import { tokyoTowerTicket, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../lib/klook-links";
+import { tokyoTowerTicket, tokyoTowerTripPrep } from "../../../lib/klook-links";
+import { gygTokyoTower } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
-// Prices, hours, deck heights and station walking times below were read off
-// tokyotower.co.jp (/fee/ and /access/) on 20 Oct 2026. The Klook listing was
-// confirmed live through the www.klook.com search index the same day; Klook
-// answers automated reads of its product pages with HTTP 403, so no Klook price
-// appears anywhere on this page.
-//
-// The Main Deck adult and child figures and the check date are owned by
-// lib/attraction-prices.ts, shared with the ticket price table.
+// Sources, all re-read on 8 Nov 2026:
+// - tokyotower.co.jp/fee/ — Main Deck and Top Deck Tour prices (WEB vs 窓口),
+//   hours and last entry, the note that Main Deck last entry can move earlier
+//   when crowded, Tokyo Diamond Tour prices and departures, group and
+//   disability rates, the set-ticket list. No foreign-visitor or passport
+//   discount and no RED° TOKYO TOWER set appear on it.
+// - tokyotower.co.jp (home) — 333 m tower, 150 m / 250 m decks, hours.
+//   The /en/ address serves the same Japanese content.
+// - tokyotower.co.jp/ticket/ — online sellers and set tickets (names only).
+// - tdt.tokyotower.co.jp/topdecktour/ and /topdecktour/faq/ — reserved time,
+//   first slot 9:00–9:15, last 22:00–22:15, no date/time change, late arrival
+//   voids the booking, 100% cancellation fee from two days before, weather
+//   cancellation, one entry only, no time limit on the Top Deck (to 22:45),
+//   about 5 minutes from the elevator to the Top Deck gate.
+// - eco.mtk.nao.ac.jp/koyomi (NAOJ) — Tokyo sunset times, Nov and Dec 2026.
+// The Klook listing was confirmed live through the www.klook.com search index;
+// no Klook price appears anywhere on this page.
 const P = PRICES.tokyoTower;
-const CHECKED = checkedLabel(P.checked);
+const CHECKED = checkedLabel("2026-11-08");
+
+const FEE_URL = "https://www.tokyotower.co.jp/fee/";
+const TDT_FAQ_URL = "https://tdt.tokyotower.co.jp/topdecktour/faq/";
+const NAOJ_URL = "https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1311.html";
 
 const priceRows = [
-  { ticket: "Main Deck — adult", advance: P.adult, door: P.adult },
+  { ticket: "Main Deck (150 m) — adult", advance: P.adult, door: P.adult },
   { ticket: "Main Deck — high school", advance: "¥1,200", door: "¥1,200" },
   { ticket: "Main Deck — elementary / junior high", advance: "¥900", door: "¥900" },
   { ticket: `Main Deck — child aged ${P.childAges.replace(/^ages /, "")}`, advance: P.child, door: P.child },
-  { ticket: "Top Deck Tour — adult", advance: "¥3,300", door: "¥3,500" },
+  { ticket: "Top Deck Tour (150 m + 250 m) — adult", advance: "¥3,300", door: "¥3,500" },
   { ticket: "Top Deck Tour — high school", advance: "¥3,100", door: "¥3,300" },
   { ticket: "Top Deck Tour — elementary / junior high", advance: "¥2,100", door: "¥2,300" },
   { ticket: "Top Deck Tour — child aged 4 and over", advance: "¥1,500", door: "¥1,700" },
+  { ticket: "Tokyo Diamond Tour (150 m + 250 m + lounge) — adult", advance: "¥7,000", door: "¥7,000" },
+];
+
+const factRows = [
+  { item: "Tower height", value: "333 m", source: "tokyotower.co.jp" },
+  { item: "Main Deck height", value: "150 m", source: "tokyotower.co.jp/fee/" },
+  { item: "Main Deck hours", value: "9:00–23:00, last entry 22:30 (can move earlier when crowded)", source: "tokyotower.co.jp/fee/" },
+  { item: "Top Deck height", value: "250 m (tour also stops at the 150 m Main Deck)", source: "tokyotower.co.jp/fee/" },
+  { item: "Top Deck Tour hours", value: "9:00–22:45, last entry 22:15", source: "tokyotower.co.jp/fee/" },
+  { item: "Top Deck Tour slots", value: "Reserved entry time; first slot 9:00–9:15, last slot 22:00–22:15", source: "Top Deck Tour FAQ" },
+  { item: "Time limit on the Top Deck", value: "None; Top Deck viewing ends 22:45", source: "Top Deck Tour FAQ" },
+  { item: "Where Top Deck Tour is sold", value: "Online, and as advance sales at the Foot Town 1F ticket counter", source: "Top Deck Tour FAQ" },
+  { item: "Change of date or time", value: "Not possible after purchase", source: "Top Deck Tour FAQ" },
+  { item: "Late for your slot", value: "Booking void, no refund; Main Deck still allowed", source: "Top Deck Tour FAQ" },
+  { item: "Cancellation", value: "100% fee from two days before the visit date", source: "Top Deck Tour FAQ" },
+  { item: "Weather", value: "Tour can be cancelled for wind of 20 m/s or more at the Top Deck, snow or inspections; online tickets refunded", source: "Top Deck Tour FAQ" },
+  { item: "Re-entry", value: "One entry only", source: "Top Deck Tour FAQ" },
+  { item: "Tokyo Diamond Tour", value: "70 guests a day; departures hourly 12:00–18:00", source: "tokyotower.co.jp/fee/" },
+];
+
+const sunsetRows = [
+  { date: "1 November 2026", sunset: "16:46" },
+  { date: "15 November 2026", sunset: "16:35" },
+  { date: "30 November 2026", sunset: "16:28" },
+  { date: "15 December 2026", sunset: "16:29" },
+  { date: "31 December 2026", sunset: "16:37" },
 ];
 
 const whoFor = [
   {
     title: "Main Deck only is enough if…",
-    desc: "You want the landmark and the view without the upsell. The Main Deck sits at 150 metres, costs ¥1,500 for an adult, and includes the glass-floor Lookdown Window. It is the cheapest ticket of Tokyo's three big paid towers.",
+    desc: "You want the landmark and the view without the upsell. The Main Deck sits at 150 metres, costs ¥1,500 for an adult whichever way you buy it, and has no timed slot. It is the cheapest ticket of Tokyo's three big paid towers.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2l4 10h-8l4-10z" />
@@ -44,7 +85,7 @@ const whoFor = [
   },
   {
     title: "Add the Top Deck Tour if…",
-    desc: "You want the 250-metre level, which is only sold as a guided tour with a reserved entry time. It is ¥3,300 for an adult booked online against ¥3,500 at the window, and it includes the Main Deck — so it replaces the cheaper ticket rather than adding to it.",
+    desc: "You want the 250-metre level, which is only sold as a tour with a reserved entry time. It is ¥3,300 for an adult booked online against ¥3,500 at the window, and it includes the Main Deck — so it replaces the cheaper ticket rather than adding to it. The official tour page lists a drink and a photo card as part of it.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 20l8-16 8 16" />
@@ -54,7 +95,7 @@ const whoFor = [
   },
   {
     title: "Go after dark if…",
-    desc: "You would rather see the city lit than the horizon. The Main Deck runs to 23:00 with last admission at 22:30 — far later than Shibuya Sky or Skytree — which makes Tokyo Tower the one deck you can still get into after dinner.",
+    desc: "You would rather see the city lit than the horizon. The Main Deck runs to 23:00 with last admission at 22:30 — later than Shibuya Sky or Skytree — which makes Tokyo Tower the one deck you can still get into after dinner.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
@@ -66,14 +107,14 @@ const whoFor = [
 const deckRows = [
   {
     deck: "Tokyo Tower",
-    height: "150 m Main Deck · 250 m Top Deck",
+    height: "150 m Main Deck · 250 m Top Deck (333 m tower)",
     price: "¥1,500 (Main Deck) · ¥3,300 online (Top Deck Tour)",
     highlight: "The 1958 landmark itself, open until 23:00, and the one deck with Skytree in the view",
     area: "Akabanebashi / Kamiyacho / Onarimon",
   },
   {
     deck: "Tokyo Skytree",
-    height: "Floor 350 and Floor 450",
+    height: "Floor 350 and Floor 450 (634 m tower)",
     price: "from ¥1,800 (Floor 350) · from ¥3,000 combo",
     highlight: "The highest decks in Tokyo, and the only glass skywalk",
     area: "Oshiage / Tokyo Skytree Station",
@@ -100,16 +141,20 @@ const steps = [
     desc: `They are two different products, not two tiers of one. The Main Deck ticket is ¥1,500 for an adult and admits you whenever you turn up during opening hours. The Top Deck Tour is ¥3,300 online, carries a reserved entry time, and includes the Main Deck in the price. Checked ${CHECKED}.`,
   },
   {
-    title: "Book the Top Deck Tour online, not at the window",
-    desc: `This is the only place on the ticket list where booking ahead is cheaper: the Top Deck Tour is ¥3,300 for an adult online against ¥3,500 bought on site, and ¥2,100 against ¥2,300 for an elementary or junior-high child. The Main Deck price is the same either way, so for that ticket advance booking buys you the queue rather than a discount. Checked ${CHECKED}.`,
+    title: "Book the Top Deck Tour online for a date and time",
+    desc: `This is the only place on the ticket list where booking ahead is cheaper: ¥3,300 for an adult online against ¥3,500 bought on site, with the same ¥200 gap on every tier. Pick the slot carefully — the official FAQ states that the date and time cannot be changed after purchase, and that the full price is charged for cancellations from two days before the visit. Checked ${CHECKED}.`,
+  },
+  {
+    title: "Arrive before your slot, and do not leave the Main Deck",
+    desc: `At your reserved time you go to the Top Deck gate on the Main Deck; the official FAQ puts the walk from the elevator at about 5 minutes. Arriving late voids the booking with no refund, although the Main Deck is still open to you. Entry is once only, so if you go back down to the ground there is no way back up. Checked ${CHECKED}.`,
   },
   {
     title: "Use a reseller if your card is issued abroad",
-    desc: "Klook sells Tokyo Tower admission with an English checkout and an e-ticket, which avoids the card and language friction that several Japanese attraction sites cause for overseas visitors. The same listing carries the Top Deck Tour upgrade.",
+    desc: "The official ticket page sends online buyers to Japanese and international sellers. Klook sells Tokyo Tower admission with an English checkout and an e-ticket, and the same listing carries the Top Deck Tour upgrade. A reseller's own change and cancellation terms are shown on the listing — check them for your date before you pay.",
   },
   {
     title: "Pick your station — Akabanebashi is the closest",
-    desc: `Tokyo Tower publishes six walking routes: Akabanebashi on the Toei Oedo Line at 5 minutes, Onarimon on the Mita Line at 6, Kamiyacho on the Hibiya Line at 7, Shibakoen on the Mita Line and Daimon on the Asakusa Line at 10 each, and JR Hamamatsucho at 15. Checked ${CHECKED}.`,
+    desc: "Tokyo Tower publishes six walking routes: Akabanebashi on the Toei Oedo Line at 5 minutes, Onarimon on the Mita Line at 6, Kamiyacho on the Hibiya Line at 7, Shibakoen on the Mita Line and Daimon on the Asakusa Line at 10 each, and JR Hamamatsucho at 15.",
   },
 ];
 
@@ -120,7 +165,7 @@ const faqItems = [
   },
   {
     q: "What is the difference between the Main Deck and the Top Deck?",
-    a: `The Main Deck is the 150-metre observation level and the one the standard ticket covers; it includes the glass-floor Lookdown Window. The Top Deck is the 250-metre level, and it is sold only as the Top Deck Tour — a reserved-time guided entry that includes the Main Deck as well. You do not buy the two separately: the Top Deck Tour replaces the Main Deck ticket. Checked ${CHECKED}.`,
+    a: `The Main Deck is the 150-metre observation level and the one the standard ticket covers. The Top Deck is the 250-metre level, and it is sold only as the Top Deck Tour — a reserved-time entry that includes the Main Deck as well. You do not buy the two separately: the Top Deck Tour replaces the Main Deck ticket. Checked ${CHECKED}.`,
   },
   {
     q: "Is it cheaper to buy Tokyo Tower tickets in advance?",
@@ -128,11 +173,11 @@ const faqItems = [
   },
   {
     q: "What time does Tokyo Tower close?",
-    a: `The Main Deck runs 9:00 to 23:00 with last admission at 22:30, and the Top Deck Tour runs 9:00 to 22:45 with last admission at 22:15. That makes it the latest-closing of Tokyo's major observation decks and a realistic after-dinner stop. Hours can change for events, so confirm the date you are going. Checked ${CHECKED}.`,
+    a: `The Main Deck runs 9:00 to 23:00 with last admission at 22:30, and the Top Deck Tour runs 9:00 to 22:45 with last admission at 22:15. The official fee page notes that Main Deck last entry can move earlier when it is crowded, and hours can change for events, so confirm the date you are going. Checked ${CHECKED}.`,
   },
   {
     q: "How do I get to Tokyo Tower?",
-    a: `Six routes are published on the official access page. Akabanebashi Station on the Toei Oedo Line is closest at a 5-minute walk, followed by Onarimon on the Toei Mita Line at 6 minutes and Kamiyacho on the Tokyo Metro Hibiya Line at 7. Shibakoen (Mita Line) and Daimon (Asakusa Line) are both about 10 minutes, and JR Hamamatsucho is about 15. All of the subway options are covered by a Tokyo Subway Ticket; JR is not. Checked ${CHECKED}.`,
+    a: "Six routes are published on the official access page. Akabanebashi Station on the Toei Oedo Line is closest at a 5-minute walk, followed by Onarimon on the Toei Mita Line at 6 minutes and Kamiyacho on the Tokyo Metro Hibiya Line at 7. Shibakoen (Mita Line) and Daimon (Asakusa Line) are both about 10 minutes, and JR Hamamatsucho is about 15. All of the subway options are covered by a Tokyo Subway Ticket; JR is not.",
   },
   {
     q: "Tokyo Tower or Tokyo Skytree — which should I pick?",
@@ -146,13 +191,27 @@ const faqItems = [
     q: "Is Tokyo Tower worth it compared with the free decks?",
     a: "The Tokyo Metropolitan Government Building in Shinjuku has decks at about 202 metres and charges nothing, so on height-per-yen it wins outright. What it does not give you is the building itself: Tokyo Tower is a 1958 landmark, lit at night, and the visit is as much about standing inside it as about the panorama. At ¥1,500 for the Main Deck that is a reasonable trade — but if your budget is tight, see Tocho for free and spend the money elsewhere.",
   },
+  {
+    q: "Can I change the date or time of a Top Deck Tour ticket?",
+    a: `Not on an official ticket. The Top Deck Tour FAQ states that the date and time cannot be changed after purchase, that cancellations for your own reasons — including bad weather that does not stop the tour — are not accepted, and that the full price is charged from two days before the visit. If the tower itself cancels the tour, for example for wind of 20 m/s or more at the Top Deck, online purchases are refunded. Checked ${CHECKED}.`,
+  },
+  {
+    q: "What happens if I am late for my Top Deck Tour slot?",
+    a: `The official FAQ states that the booking becomes invalid and is not refunded, although you can still visit the Main Deck. Slots run from 9:00–9:15 to a last one at 22:00–22:15, and the walk from the elevator to the Top Deck gate is about 5 minutes, so be on the Main Deck before your time starts. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Is there a Tokyo Tower discount for foreign passport holders?",
+    a: `The official fee page checked on ${CHECKED} lists no foreign-visitor or passport discount. The discounts it does list are group rates for 20 or more people and a disability rate of about half price for the holder and one companion. "Passport" tickets seen on reseller sites are for RED° TOKYO TOWER, a separate gaming venue in the Foot Town building, not the observation decks; the official Tokyo Tower ticket pages checked do not list it or a set with it.`,
+  },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-tower-tickets") } });
 
-const TITLE = "Tokyo Tower Tickets (2026): Prices and Which Deck to Buy";
+const TITLE = "Tokyo Tower Tickets 2026: Price, Main Deck vs Top Deck";
 const DESCRIPTION =
-  "Tokyo Tower tickets in 2026: the Main Deck is ¥1,500 and the Top Deck Tour ¥3,300 booked online, what each deck covers, and the 23:00 closing time.";
+  "Tokyo Tower tickets price: Main Deck (150 m) ¥1,500, Top Deck Tour (250 m) ¥3,300 online. Main Deck vs Top Deck, hours to 23:00, best time, booking rules.";
+
+const linkStyle = { color: "var(--text)", fontWeight: 600 } as const;
 
 export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -235,12 +294,14 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Tower Tickets (2026):<br />Prices, Main Deck vs Top Deck &amp; How to Book
+            Tokyo Tower Tickets 2026:<br />Price, Main Deck vs Top Deck &amp; How to Book
           </h1>
           <p className={styles.heroSubtitle}>
-            Main Deck admission is ¥1,500 for an adult and the same price at the door, so there is nothing to
-            rush. The Top Deck Tour is the one worth booking online — ¥3,300 instead of ¥3,500 — and the Main
-            Deck stays open until 23:00, later than any other major deck in the city.
+            Tokyo Tower tickets come in two kinds: the Main Deck (150 m) at ¥1,500 for an adult, the same price
+            online and at the window, and the Top Deck Tour (250 m, reserved entry time) at ¥3,300 online or
+            ¥3,500 at the window (official site, checked {CHECKED}). For the view alone the Main Deck is
+            enough; to go to the top for sunset into the night, book the Top Deck Tour online for a date and
+            time. Last entry is 22:30 for the Main Deck and 22:15 for the Top Deck Tour.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices", "Open to 23:00"].map((t) => (
@@ -290,8 +351,8 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
               <strong>In short:</strong> if you only want the view, buy the Main Deck ticket — ¥1,500, no
               timed slot, and the price is identical online and at the window. If you want the 250-metre
               level, book the Top Deck Tour online instead: it is ¥200 cheaper per person than the window
-              price, it carries a reserved entry time, and it already includes the Main Deck. Prices read off
-              the official site on {CHECKED}.
+              price, it carries a reserved entry time that cannot be changed, and it already includes the
+              Main Deck. Prices read off the official site on {CHECKED}.
             </p>
             <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Tokyo Tower tickets on Klook →
@@ -302,28 +363,35 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What You Are Buying</h2>
+          <h2 className={styles.sectionTitle}>What does a Tokyo Tower ticket get you?</h2>
           <p className={styles.bodyText}>
             Tokyo Tower is a 333-metre broadcasting tower in Shiba-koen, finished in 1958 and still the
             shape most people picture when they picture Tokyo. It has two paid levels: the Main Deck at 150
-            metres, which includes a glass-floor Lookdown Window, and the Top Deck at 250 metres, which is
-            sold only as a guided, reserved-time tour.
+            metres, and the Top Deck at 250 metres, which is sold only as a tour with a reserved entry time.
           </p>
           <p className={styles.bodyText}>
             That split is the whole decision. The Main Deck is an ordinary walk-up admission at a flat
             ¥1,500 for an adult; the Top Deck Tour is more than double that and behaves like a timed ticket.
-            Everything below is the official pricing, the hours, and the one case where booking in advance
-            actually saves money.
+            Everything below is the official pricing, the hours, the booking rules, and the one case where
+            booking in advance actually saves money.
           </p>
         </section>
 
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>Tokyo Tower Ticket Prices</h2>
+          <h2 className={styles.sectionTitle}>How much are Tokyo Tower tickets?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            An adult pays ¥1,500 for the Main Deck and ¥3,300 online or ¥3,500 at the window for the Top Deck
+            Tour, which includes the Main Deck. Only the Top Deck Tour is cheaper online.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", textAlign: "left", fontSize: "0.8rem", padding: "0.5rem", color: "var(--text-muted)" }}>
+                  Official prices, checked {CHECKED} on tokyotower.co.jp/fee/. The fee page does not split the
+                  Tokyo Diamond Tour price by online and window.
+                </caption>
                 <thead>
                   <tr>
                     {["Ticket", "Online", "At the window"].map((h) => (
@@ -344,16 +412,64 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off tokyotower.co.jp on {CHECKED} and subject to change — confirm at booking. The Main Deck
-            price is the same whichever way you buy it; only the Top Deck Tour is cheaper online, by ¥200 on
-            every tier. The Top Deck Tour price includes the Main Deck.
+            Read off{" "}
+            <a href={FEE_URL} target="_blank" rel="noopener" style={linkStyle}>tokyotower.co.jp/fee/</a>{" "}
+            on {CHECKED} and subject to change — confirm at booking. The Tokyo Diamond Tour is a separate
+            premium tour with a lounge, limited to 70 guests a day.
+          </p>
+        </section>
+
+        {/* Hours, heights, rules */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Hours and rules</span>
+          <h2 className={styles.sectionTitle}>What time does Tokyo Tower close?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The Main Deck closes at 23:00 with last entry at 22:30, and the Top Deck Tour closes at 22:45 with
+            last entry at 22:15 — both open at 9:00. The official fee page adds that Main Deck last entry can
+            move earlier when it is crowded.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", textAlign: "left", fontSize: "0.8rem", padding: "0.5rem", color: "var(--text-muted)" }}>
+                  Checked {CHECKED} on tokyotower.co.jp/fee/, the tokyotower.co.jp home page and the official
+                  Top Deck Tour FAQ.
+                </caption>
+                <thead>
+                  <tr>
+                    {["Item", "Official figure or rule", "Source"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {factRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.value}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Top Deck Tour rules from the{" "}
+            <a href={TDT_FAQ_URL} target="_blank" rel="noopener" style={linkStyle}>official Top Deck Tour FAQ</a>
+            . The tour and the Tokyo Diamond Tour can be cancelled in bad weather, so check the day before.
           </p>
         </section>
 
         {/* Which ticket */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Which ticket</span>
-          <h2 className={styles.sectionTitle}>Main Deck, Top Deck, or After Dark?</h2>
+          <h2 className={styles.sectionTitle}>Is the Tokyo Tower Top Deck worth it?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            It is worth it if the extra 100 metres matter to you: the Top Deck is at 250 m against the Main
+            Deck&apos;s 150 m, for ¥1,800 more online. For the landmark and a city view, the Main Deck alone
+            is enough.
+          </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -365,14 +481,78 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
           </div>
         </section>
 
+        {/* Best time */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Timing</span>
+          <h2 className={styles.sectionTitle}>What is the best time to visit Tokyo Tower?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            For daylight, dusk and the lit city in one visit, arrive a little before sunset — around 16:30 in
+            November and December. For the night view alone, the late hours are the advantage: the Main Deck
+            admits you until 22:30.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", textAlign: "left", fontSize: "0.8rem", padding: "0.5rem", color: "var(--text-muted)" }}>
+                  Tokyo sunset times from the National Astronomical Observatory of Japan, checked {CHECKED}.
+                </caption>
+                <thead>
+                  <tr>
+                    {["Date", "Sunset in Tokyo"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sunsetRows.map((row) => (
+                    <tr key={row.date}>
+                      <td className={styles.tdProvider}>{row.date}</td>
+                      <td className={styles.tdPrice}>{row.sunset}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            If you want the Top Deck at sunset, book a slot that starts before the time in the table — slots
+            cannot be changed after purchase. The tower is also part of the evening from below: the{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours" style={linkStyle}>Tokyo winter illumination guide</Link>{" "}
+            covers the light-up season around it, and a{" "}
+            <Link href="/guides/attractions/tokyo-bay-cruise" style={linkStyle}>Tokyo Bay cruise</Link>{" "}
+            shows the tower from the water. Sunset times from the{" "}
+            <a href={NAOJ_URL} target="_blank" rel="noopener" style={linkStyle}>NAOJ calendar</a>.
+          </p>
+        </section>
+
+        {/* How long */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Time needed</span>
+          <h2 className={styles.sectionTitle}>How long do you need at Tokyo Tower?</h2>
+          <p className={styles.bodyText}>
+            The official sources checked do not give a set visit length, and there is no time limit on the
+            Top Deck — viewing there runs until 22:45. What the Top Deck Tour FAQ does state is that the walk
+            from the elevator to the Top Deck gate takes about 5 minutes and that entry is once only, so plan
+            the Main Deck and the Top Deck as one continuous visit. Checked {CHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            For where the tower fits in a wider plan, the{" "}
+            <Link href="/guides/attractions/tokyo-3-day-itinerary" style={linkStyle}>Tokyo 3-day itinerary</Link>{" "}
+            puts it on the evening of a central-Tokyo day.
+          </p>
+        </section>
+
         {/* vs other decks */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Tokyo Tower vs the Other Tokyo Decks</h2>
+          <h2 className={styles.sectionTitle}>Tokyo Tower or Tokyo Skytree: which is better?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Tokyo Tower is neither the highest deck in the city nor the most photographed, and it does not
-            try to be. What it has is the cheapest paid ticket of the three, the latest closing time, and the
-            landmark itself. Here is how the four main options line up.
+            Skytree is better for height — decks at 350 m and 450 m — and Tokyo Tower is better for price,
+            late hours and the landmark itself. Tokyo Tower has the cheapest paid ticket of the three big
+            decks and the latest closing time; for the details on the others, see the{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets" style={linkStyle}>Tokyo Skytree tickets guide</Link>{" "}
+            and the{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets" style={linkStyle}>Shibuya Sky tickets guide</Link>.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -400,18 +580,39 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Tokyo Tower figures read off the official site on {CHECKED}; the other three are the official
-            prices covered in our{" "}
-            <Link href="/guides/attractions/tokyo-observation-decks" style={{ color: "var(--text)", fontWeight: 600 }}>
+            prices covered in the{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>
               Tokyo observation decks comparison
             </Link>
             . All are approximate and subject to change.
           </p>
         </section>
 
+        {/* Discounts and sets */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Discounts</span>
+          <h2 className={styles.sectionTitle}>Are there Tokyo Tower discounts or set tickets?</h2>
+          <p className={styles.bodyText}>
+            There is no foreign-visitor or passport discount on the official fee page. The discounts it lists
+            are group rates (from ¥1,350 an adult for 20 to 49 people on the Main Deck) and a disability rate
+            for the holder and one companion (¥750 an adult on the Main Deck). Checked {CHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            The official ticket page names four set tickets — Bungee VR, a tea-ceremony seat on the deck,
+            teamLab Planets and a subway pass — without prices; check the seller&apos;s listing for your
+            date. It does not list a set with RED° TOKYO TOWER, the separate gaming venue in the Foot Town
+            building that reseller &quot;passport&quot; tickets refer to.
+          </p>
+        </section>
+
         {/* How to book */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Book Tokyo Tower Tickets</h2>
+          <h2 className={styles.sectionTitle}>How do I book Tokyo Tower Top Deck Tour tickets?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Book online for a date and an entry time, then be at the Top Deck gate on the Main Deck when your
+            slot starts. The slot cannot be changed after purchase.
+          </p>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -423,12 +624,25 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
               </div>
             ))}
           </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
+            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check Tokyo Tower tickets on Klook →
+            </KlookLink>
+            <GygCompareButton slug="tokyo-tower-tickets" listing={gygTokyoTower} />
+          </div>
         </section>
+
+        <KlookTripPrep
+          label="Same day, same booking"
+          heading="What should you book for the rest of a Tokyo Tower day?"
+          intro="An observation deck fills an hour or two. These book on the same Klook account as the ticket — an evening on the bay or in the city, a daytime bus loop, the subway pass for the five Metro and Toei stations around the tower, and data for the day."
+          items={tokyoTowerTripPrep()}
+        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>What else do people ask about Tokyo Tower tickets?</h2>
           <div className={styles.faqList}>
             {faqItems.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
@@ -443,13 +657,6 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
             ))}
           </div>
         </section>
-
-        {/* Klook picks for the rest of the day — the ticket CTAs above are unchanged. */}
-        <KlookTourPicks
-          heading="The Rest of the Day in Tokyo"
-          intro="An observation deck fills an hour. Both of these are booked on the same Klook account as the ticket, and the subway pass covers five of the six stations listed on Tokyo Tower's own access page — Akabanebashi, Onarimon, Kamiyacho, Shibakoen and Daimon are all Metro or Toei."
-          tours={[tokyoSightseeingBusTour, tokyoSubwayTicket]}
-        />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

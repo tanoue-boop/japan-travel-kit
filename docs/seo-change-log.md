@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-08：/guides/attractions/tokyo-tower-tickets の順位改善（task-jtk-20261108-R04）
+
+- 2026-11-08 title 変更：「Tokyo Tower Tickets (2026): Prices and Which Deck to Buy」→「Tokyo Tower Tickets 2026: Price, Main Deck vs Top Deck」。冒頭回答段落・公式時間/高さ/予約ルール表・日の入り表（NAOJ）・質問見出し化・FAQ 3問追加・予約手順直後に Klook CTA＋GetYourGuide 比較・同日ブロック（KlookTripPrep：ベイ夕日クルーズ・夜ツアー・バス1日ツアー・Subway Ticket・eSIM）。本文リンク：tokyo-illumination-tours、tokyo-bay-cruise、tokyo-3-day-itinerary、tokyo-skytree-tickets、shibuya-sky-tickets。逆リンク：tokyo-bay-cruise（関連カード）。
+
 ## 2026-11-08：/guides/attractions/osaka-aquarium-kaiyukan-tickets の順位改善（task-jtk-20261108-R03）
 
 - 2026-11-08 title 変更：「Osaka Aquarium Kaiyukan Tickets (2026): Prices and Slots」→「Osaka Aquarium Kaiyukan Tickets (2026): Price, Hours, Slots」。meta に「Kaiyukan ticket price」「Osaka aquarium tickets」。冒頭回答段落・料金帯を 2026-11-08 公式再確認・公式ルール表（出典URL・確認日付き）・質問見出し4つ・FAQ 2問追加・同日ブロック（KlookTripPrep）。逆リンク：osaka-kyoto-3-day-itinerary、where-to-stay-in-osaka。

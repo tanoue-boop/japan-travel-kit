@@ -588,6 +588,45 @@ export const tokyoTowerTicket: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/4911-tokyo-tower-main-observatory-ticket-tokyo/"),
 };
 
+/**
+ * Tokyo Tower — added 8 Nov 2026 (task-jtk-20261108-R04). The admission is a
+ * ticket, so it cannot be assumed to pay more than the 2% ticket band; the
+ * evening around it is where the 6.5% tours (bay sunset cruise, night tour,
+ * day bus tour), the 5% subway ticket and the 20% eSIM sit. Every url reads
+ * out of a constant declared elsewhere in this file — no new Klook ids. The
+ * bay cruise and night tour were confirmed in the www.klook.com search index
+ * in en-US form on 26 Oct 2026; the bus tour and subway ticket already render
+ * on the Tokyo Tower page.
+ */
+export const tokyoTowerTripPrep = (): KlookTripPrepItem[] => [
+  {
+    label: tokyoBaySunsetCruise.title,
+    ctaLabel: "Check the bay sunset cruise →",
+    url: tokyoBaySunsetCruise.url,
+    why: "The listing routes the sailing past Rainbow Bridge and Tokyo Tower at the hour the city lights come on — the view of the tower from the water, before or after the view from it.",
+  },
+  {
+    label: tokyoNightTourAkihabaraShibuya.title,
+    ctaLabel: "Check the Tokyo night tour →",
+    url: tokyoNightTourAkihabaraShibuya.url,
+    why: "A guided evening from Ueno through Akihabara to the Shibuya crossing — the other half of a night out if your deck visit is a daytime one.",
+  },
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the Tokyo bus day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "A guided daytime loop of the Imperial Palace gardens, Asakusa and Tokyo Skytree, which leaves the evening free for the tower's late hours.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Akabanebashi, Onarimon, Kamiyacho, Shibakoen and Daimon — five of the six stations on Tokyo Tower's own access page — are Toei or Metro stops, so a 24, 48 or 72-hour ticket covers the trip there.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Top Deck Tour tickets are sold online for a set date and time, and a booked slot cannot be changed afterwards — data from the day you land lets you check the weather and book from the street rather than the hotel Wi-Fi.",
+  },
+];
+
 export const sanrioPurolandTicket: KlookTour = {
   title: "Sanrio Puroland ticket",
   desc: "A date-specified passport for the indoor Hello Kitty park at Tama Center, bookable in English",
