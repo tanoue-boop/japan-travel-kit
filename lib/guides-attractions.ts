@@ -479,6 +479,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "kyoto",
   },
   {
+    href: "/guides/attractions/hiroshima-2-day-itinerary",
+    badge: "Itinerary",
+    title: "Hiroshima 2 Day Itinerary (2026): Peace Park and Miyajima",
+    desc: "The Peace Memorial Park and the ¥200 museum on Day 1, Miyajima on Day 2: three ways to the island compared, the ¥100 visitor tax, the tide table, where to stay, and what to book before you go.",
+    group: "cities",
+    // Hiroshima sits outside the three city hubs, same call as hiroshima-peace-memorial-tours.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/kobe-day-trip-from-osaka",
     badge: "Day trip",
     title: "Kobe Day Trip from Osaka (2026): Routes, the Beef and What Fits in a Day",

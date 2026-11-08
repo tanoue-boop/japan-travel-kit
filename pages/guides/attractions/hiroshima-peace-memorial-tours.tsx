@@ -137,6 +137,7 @@ const faqItems = [
 ];
 
 const relatedLinks = [
+  { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "Hiroshima 2 Day Itinerary" },
   { href: "/guides/attractions/hiroshima-miyajima-day-trip", title: "Hiroshima & Miyajima Day Trip" },
   { href: "/guides/transport/tokyo-to-hiroshima-shinkansen", title: "Tokyo to Hiroshima by Shinkansen" },
   { href: "/guides/transport/osaka-to-hiroshima-shinkansen", title: "Osaka to Hiroshima by Shinkansen" },

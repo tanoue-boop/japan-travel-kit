@@ -7013,3 +7013,80 @@ export const kaiyukanSameDayPrep: KlookTripPrepItem[] = [
     why: "The date-and-time e-ticket and the price calendar both live on your phone, so data from the airport onwards keeps the voucher and the route to Osakako on hand.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Hiroshima 2 day itinerary, added 8 Nov 2026 (task-jtk-20261108-01).
+//
+// Two new tour ids and one new hotel search; everything else on the page reuses the
+// Hiroshima constants above. Each listing was confirmed live in its en-US form through
+// the www.klook.com search index on 8 Nov 2026 (the /activity/ pages answer automated
+// reads with HTTP 403): 2084 "Hiroshima and Miyajima Private Day Tour", 118461
+// "Hiroshima / Miyajima Full-day Private Tour" (8 hours, hotel pick-up, guides in
+// Chinese, English or Japanese), and destination p50001702 "Best hotels near Miyajima
+// Itsukushima Shrine". No price appears on the page.
+// ---------------------------------------------------------------------------
+
+/** The private walking day: the Peace Park, the ferry and the shrine with one guide. */
+export const hiroshimaMiyajimaPrivateWalkingDay: KlookTour = {
+  title: "Hiroshima & Miyajima private day tour (walking)",
+  desc: "A private guided day on foot and by public transport: the Peace Memorial Park, the ferry across and Itsukushima Shrine, with the listing itself pointing you to the tide table",
+  url: klookLink("https://www.klook.com/en-US/activity/2084-hiroshima-miyajima-private-day-tour-hiroshima/"),
+};
+
+/** The 8-hour private day with hotel pick-up, for a group that wants a driver. */
+export const hiroshimaMiyajimaFullDayPrivateTour: KlookTour = {
+  title: "Hiroshima / Miyajima full-day private tour",
+  desc: "Listed at 8 hours with hotel pick-up, a guide in English, Chinese or Japanese, and a route you can adjust",
+  url: klookLink("https://www.klook.com/en-US/activity/118461-hiroshima-miyajima-full-day-private-tour/"),
+};
+
+/** The three places to sleep for two days: the station, the Peace Park end, or the island. */
+export const hiroshimaTwoDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Hiroshima Station",
+    why: "The shinkansen arrives and leaves here, and the JR local to Miyajimaguchi starts here too, so both the arrival on Day 1 and the onward train on Day 2 are a short walk.",
+    url: hiroshimaStayAreas[0].url,
+  },
+  {
+    area: "Peace Memorial Park",
+    why: "Day 1 is on foot from the door, the museum opens at 7:30, and the World Heritage Sea Route boat to Miyajima leaves from the pier beside the park on Day 2.",
+    url: hiroshimaStayAreas[1].url,
+  },
+  {
+    area: "Miyajima (one night on the island)",
+    why: "The shrine opens at 6:30 and the day visitors arrive later by ferry, so a night on the island buys the early and late hours.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50001702-miyajima-itsukushima-shrine/3-hotel/"),
+  },
+];
+
+/** Before-you-go block: the train, the pass, the Miyajima day, the island night, data. */
+export const hiroshimaTwoDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: shinkansenTokyoHiroshima.title,
+    ctaLabel: "Check Tokyo → Hiroshima shinkansen →",
+    url: shinkansenTokyoHiroshima.url,
+    why: "A morning arrival is what makes Day 1 a full day in the Peace Park, and a reserved seat is the part to fix first in the busy periods.",
+  },
+  {
+    label: jrKansaiHiroshimaAreaPass.title,
+    ctaLabel: "Check the Kansai-Hiroshima pass →",
+    url: jrKansaiHiroshimaAreaPass.url,
+    why: "Coming from Osaka or Kyoto, this pass covers reserved Sanyo Shinkansen seats to Hiroshima, the local train to Miyajimaguchi and the JR ferry. The ¥100 visitor tax is still paid on top.",
+  },
+  {
+    label: hiroshimaMiyajimaPrivateDayTour.title,
+    ctaLabel: "Check the private Miyajima day →",
+    url: hiroshimaMiyajimaPrivateDayTour.url,
+    why: "Day 2 with someone else handling the ferry, the tide and the order of the island. Pick-up is listed for hotels near JR Hiroshima Station.",
+  },
+  {
+    label: "Hotels near Itsukushima Shrine on Miyajima",
+    ctaLabel: "Check Miyajima hotels on Klook →",
+    url: hiroshimaTwoDayStayAreas[2].url,
+    why: "The island has far fewer rooms than the city, so if you want the night on Miyajima, book it first.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The ferry timetable, the tide table and the museum's web ticket all live on your phone on these two days.",
+  },
+];
