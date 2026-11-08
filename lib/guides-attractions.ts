@@ -694,6 +694,22 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/kyoto-cooking-class",
+    badge: "Food",
+    title: "Kyoto Cooking Class (2026): Sushi, Ramen, Wagashi Compared",
+    desc: "1 to 2.5 hours, mostly in English: seven Klook classes compared on the dish, the nearest station, vegetarian options and the youngest age, plus which ones cancel free.",
+    group: "experiences",
+    city: "kyoto",
+  },
+  {
+    href: "/guides/attractions/kyoto-maiko-dinner",
+    badge: "Experience",
+    title: "Kyoto Maiko Dinner (2026): Types, Gion Rules & Booking",
+    desc: "From a 1.5-hour course at AN KYOTO to a 3.5-hour Gion walk and dinner: seven formats compared, Gion Corner's one-hour show, maiko vs geiko, and Gion's official photo rules.",
+    group: "experiences",
+    city: "kyoto",
+  },
+  {
     href: "/guides/attractions/osaka-attractions-pass",
     badge: "Pass",
     title: "Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?",

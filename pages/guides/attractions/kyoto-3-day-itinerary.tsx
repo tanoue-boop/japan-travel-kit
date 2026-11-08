@@ -270,6 +270,8 @@ const ROUTE = "/guides/attractions/kyoto-3-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
+  { href: "/guides/attractions/kyoto-maiko-dinner", title: "Kyoto Maiko Dinner (2026): Types, Gion Rules & Booking" },
+  { href: "/guides/attractions/kyoto-cooking-class", title: "Kyoto Cooking Class (2026): Sushi, Ramen, Wagashi Compared" },
   { href: "/guides/attractions/arashiyama-bamboo-forest-tour", title: "Arashiyama Bamboo Forest Tour (2026): Best Time, Tours and Routes From Kyoto" },
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },

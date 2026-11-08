@@ -300,6 +300,31 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 8 Nov 2026: dinner with a maiko, booked as a tour. */}
+            <Link href="/guides/attractions/kyoto-maiko-dinner" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kyoto Maiko Dinner (2026): Types, Gion Rules &amp; Booking</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            {/* Added 8 Nov 2026: sushi, ramen, bento and wagashi classes. */}
+            <Link href="/guides/attractions/kyoto-cooking-class" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 10h13v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z" />
+                  <path d="M17 11h2a2 2 0 0 1 0 4h-2" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kyoto Cooking Class (2026): Sushi, Ramen, Wagashi Compared</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 6 Nov 2026: the grove, the walk and who needs a guide. */}
             <Link href="/guides/attractions/arashiyama-bamboo-forest-tour" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

@@ -261,6 +261,7 @@ const breadcrumbSchema = {
 };
 
 const relatedGuides = [
+  { href: "/guides/attractions/kyoto-maiko-dinner", title: "Kyoto Maiko Dinner (2026): Types, Gion Rules & Booking" },
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/things-to-do-kyoto", title: "Things to Do in Kyoto (2026): Temples, Timing and What to Book" },
   { href: "/guides/attractions/where-to-stay-in-kyoto", title: "Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time" },

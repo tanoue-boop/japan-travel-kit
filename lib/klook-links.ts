@@ -7090,3 +7090,157 @@ export const hiroshimaTwoDayTripPrep: KlookTripPrepItem[] = [
     why: "The ferry timetable, the tide table and the museum's web ticket all live on your phone on these two days.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kyoto maiko dinner and Kyoto cooking class entry pages, added 8 Nov 2026
+// (task jtk-20261108-02). Klook answers automated reads of its product pages
+// with HTTP 403, so each listing below was confirmed as an en-US URL in the
+// www.klook.com search index on that date. Tours and experiences 6.5%, the
+// Kyoto subway and bus ticket 5%, eSIM 20%. No prices.
+// ---------------------------------------------------------------------------
+
+/** AN KYOTO: the short format, a lunch or dinner course with a maiko at the table. */
+export const kyotoMaikoLunchDinnerAnKyoto: KlookTour = {
+  title: "Lunch and Dinner with Maiko in Kyoto (AN KYOTO)",
+  desc: "A 1.5-hour seated lunch or dinner course with a maiko at the table, with time to photograph her up close",
+  url: klookLink("https://www.klook.com/en-US/activity/45256-lunch-dinner-maiko/"),
+};
+
+/** Gion walk, then a Kyoto-cuisine dinner with maiko games, for adults (15+). */
+export const kyotoMaikoDinnerGionRestaurant: KlookTour = {
+  title: "Dinner with Maiko in a traditional Kyoto style restaurant",
+  desc: "A 3.5-hour evening that starts with a guided Gion walk and ends at a Kyoto-cuisine dinner with maiko dance and ozashiki games",
+  url: klookLink("https://www.klook.com/en-US/activity/108519-dinner-with-maiko-in-a-traditional-kyoto-style-restaurant-tour/"),
+};
+
+/** Yasaka-dori Enraku, a few minutes from Gion: games and a dance during the meal. */
+export const kyotoMaikoInteractiveDinner: KlookTour = {
+  title: "Interactive Dinner with Maiko in Kyoto",
+  desc: "Dinner at Yasaka-dori Enraku near Gion, with a maiko dance during the meal and ozashiki-asobi games at the table",
+  url: klookLink("https://www.klook.com/en-US/activity/21268-interactive-dinner-maiko-kyoto/"),
+};
+
+/** The walk-plus-dinner format with pick-up and a 24-hour free cancellation. */
+export const kyotoGeishaDinnerGionWalk: KlookTour = {
+  title: "Kyoto: Geisha Dinner & Gion Cultural Walk",
+  desc: "A 3-hour evening of a Gion walk and a dinner with a geiko or maiko, with dance, music and time to talk",
+  url: klookLink("https://www.klook.com/en-US/activity/185037-kyoto-geisha-dinner-gion-cultural-walk/"),
+};
+
+/** Walk and a 50-minute geisha meeting, with dining as an option. */
+export const kyotoGionWalkGeishaPerformance: KlookTour = {
+  title: "Kyoto: Gion Cultural Walk & Geisha Performance",
+  desc: "A 3 to 3.5-hour evening: a 1.5 to 2-hour walk of the geisha district and a 50-minute meeting with a geisha, with a dining option",
+  url: klookLink("https://www.klook.com/en-US/activity/170028-kyoto-gion-cultural-walk-geisha-performance/"),
+};
+
+/** Private, all-day: kimono and sightseeing first, then a tatami dinner with maiko dance. */
+export const kyotoKimonoMaikoDinnerPrivate: KlookTour = {
+  title: "[Private Tour] Kimono Experience and Maiko Dinner Show in Kyoto",
+  desc: "A 7-hour private day: kimono and sightseeing in Kyoto, then a tatami-room dinner where maiko perform Kyomai, for two or more",
+  url: klookLink("https://www.klook.com/en-US/activity/76247-kyoto-maiko-geisha-dinner-show/"),
+};
+
+/** The daytime alternative: a maiko show with a set lunch. */
+export const kyotoMaikoShowLunch: KlookTour = {
+  title: "Kyoto Maiko Show Viewing Tour with Lunch",
+  desc: "A 1 hour 40 minute daytime format: a maiko show and a Japanese set lunch, with an English-speaking guide",
+  url: klookLink("https://www.klook.com/en-US/activity/94997-1-hour-maiko-show-viewing-qr-code-direct-entry-admission-lunch-kyoto/"),
+};
+
+/** Kyoto Ramen & Gyoza: 2.5 hours, lunch included, ages 6+. */
+export const kyotoRamenGyozaClass: KlookTour = {
+  title: "Kyoto Ramen & Gyoza Cooking Class with Professional Chefs",
+  desc: "A 2.5-hour English-guided class making ramen, gyoza and fried rice, eaten as lunch afterwards",
+  url: klookLink("https://www.klook.com/en-US/activity/149660-kyoto-ramen-gyoza-cooking-class-with-professional-chefs/"),
+};
+
+/** Ramen noodles by hand near Kyoto-Kawaramachi; vegetarian and vegan tasting on request. */
+export const kyotoRamenNoodleMaking: KlookTour = {
+  title: "Kyoto Ramen Noodle Making",
+  desc: "Hand-made ramen noodles in 1 to 1.5 hours, about 5 minutes on foot from Kyoto-Kawaramachi Station, with vegetarian and vegan tasting options",
+  url: klookLink("https://www.klook.com/en-US/activity/114661-kyoto-ramen-noodle-making/"),
+};
+
+/** Wagashi by Fushimi Inari, six to a class, in English. */
+export const kyotoFushimiInariWagashiClass: KlookTour = {
+  title: "Fushimiinari Wagashi (Japanese sweets) Cooking Class in Kyoto",
+  desc: "A 2-hour class of up to six by Fushimi Inari: three kinds of Japanese sweets, then matcha, taught in English",
+  url: klookLink("https://www.klook.com/en-US/activity/111279-fushimiinari-wagashi-japanese-sweets-cooking-class-in-kyoto/"),
+};
+
+/** The 1-hour sushi class: the chef preps rice and fish, you shape eleven pieces. */
+export const kyotoSushiOneHourClass: KlookTour = {
+  title: "1 Hour Join In Kyoto Cooking Class by Sushi Making",
+  desc: "A 1-hour group class shaping six nigiri, three temari, one gunkan and one inari, with tea and miso soup",
+  url: klookLink("https://www.klook.com/en-US/activity/92420-1-hour-join-kyoto-cooking-class-sushi-making/"),
+};
+
+/** Kawaramachi sushi, 90 minutes, the clearest child rules. */
+export const kyotoSushiKawaramachiClass: KlookTour = {
+  title: "Sushi making in Kawaramachi, Kyoto",
+  desc: "A 90-minute sushi class in Kawaramachi where you eat what you make; children 12 and under join with an adult",
+  url: klookLink("https://www.klook.com/en-US/activity/148642-let-s-experience-making-sushi-in-kawaramachi-popular-place-in-kyoto/"),
+};
+
+/** Roujiya's Kyoto-style sushi: 2.5 hours, rice washing to plating, plus dashi. */
+export const kyotoStyleSushiRoujiya: KlookTour = {
+  title: "Kyoto Style Sushi Making Class (Roujiya)",
+  desc: "A 2.5-hour English-guided class in Nakagyo covering sushi from rice washing to plating, plus dashi",
+  url: klookLink("https://www.klook.com/en-US/activity/103266-2-half-hr-join-kyoto-class-kyoto-style-sushi-making/"),
+};
+
+/** The morning bento course: 4–5 dishes, 72-hour free cancellation. */
+export const kyotoBentoCookingClass: KlookTour = {
+  title: "Kyoto Bento Cooking Class",
+  desc: "A morning class preparing 4 to 5 dishes for a bento lunch, with dashi and seasonings explained, eaten together afterwards",
+  url: klookLink("https://www.klook.com/en-US/activity/792-morning-bento-cooking-course-kyoto/"),
+};
+
+/** Klook's own list of Kyoto cooking classes, for dates the picks above do not cover. */
+export const kyotoCookingClassesListUrl = klookLink(
+  "https://www.klook.com/en-US/destination/c30-kyoto/1042-cooking-classes/",
+);
+
+/** Kyoto City Subway and Bus 1-day ticket (5%). Voucher collected at KIX Terminal 1. */
+export const kyotoSubwayBusTicket: KlookTour = {
+  title: "Kyoto City Subway and Bus Ticket (1 day)",
+  desc: "Unlimited Kyoto City Bus and subway rides for one day; the voucher is collected at the Kansai Airport Terminal 1 desk",
+  url: klookLink("https://www.klook.com/en-US/activity/118071-kyoto-city-subway-and-bus-ticket/"),
+};
+
+/** Same-day bookings for a maiko dinner evening. */
+export const kyotoMaikoDinnerTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.kyotoHighlightTour,
+    why: "A maiko dinner fills an evening, and this coach day covers Kinkaku-ji, Fushimi Inari and Arashiyama, so the two make a full Kyoto day between them. Check the tour's return time against your dinner.",
+  },
+  {
+    label: kyotoSubwayBusTicket.title,
+    ctaLabel: "Check the subway & bus ticket →",
+    url: kyotoSubwayBusTicket.url,
+    why: "Gion is on the city buses and a short walk from the Tozai line, so one day ticket covers the sightseeing and the ride to dinner. Collect it at Kansai Airport when you land.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Meeting points such as the Izumo no Okuni statue by Gion-Shijo are easy to miss after dark, and late arrivals are not refunded.",
+  },
+];
+
+/** Same-day bookings around a Kyoto cooking class. */
+export const kyotoCookingClassTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.kyotoHighlightTour,
+    why: "Most classes run 1 to 3 hours, so a class fits on the day before or after this coach day, which covers Kinkaku-ji, Fushimi Inari and Arashiyama for you.",
+  },
+  {
+    label: kyotoSubwayBusTicket.title,
+    ctaLabel: "Check the subway & bus ticket →",
+    url: kyotoSubwayBusTicket.url,
+    why: "Kawaramachi, Nakagyo and Fushimi Inari classes are spread across the city, and one day ticket covers the bus and subway legs between them. Collect it at Kansai Airport.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Several classes give a street address rather than a station exit, so a map on your phone is how you find the door on time.",
+  },
+];
