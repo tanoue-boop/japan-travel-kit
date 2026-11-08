@@ -52,7 +52,7 @@ import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 const ROUTE = "/ko/guides/esim/best-esim-japan";
 const TITLE = "일본 이심 추천(2026): eSIM 요금제와 클룩 비교";
 const DESC =
-  "일본 이심 추천 2026: 클룩 일본 eSIM과 Simbye, Airalo 등 5곳의 가격·통신망 비교. 가격은 매일 공식 사이트 확인.";
+  "일본 이심 추천 2026: 클룩 일본 eSIM과 Simbye, Airalo 등 6곳의 가격·통신망 비교. 가격은 매일 공식 사이트 확인.";
 
 const LOCALE = "ko" as const;
 
@@ -87,10 +87,10 @@ const HOLAFLY_ALT = {
   note: "Holafly는 저희 링크로 구매할 수 없습니다. 대안으로 Airalo를 권합니다.",
 };
 
-/** Korean copy of the default in components/SimbyeOffer.tsx. {plan} prints the feed's English plan name. */
+/** Korean copy of the default in components/SimbyeOffer.tsx. {plan} goes through planName, so it reads 30일 rather than the feed's "30 days". */
 const SIMBYE_OFFER = {
   label: "Simbye 할인:",
-  text: "코드 {code} 입력 시 모든 eSIM 요금제 {percent}% 할인: {plan} 정가 {list}, 코드 적용 시 {price}.",
+  text: "코드 {code}을 입력하면 모든 eSIM 요금제가 {percent}% 할인됩니다. {plan} 요금제는 정가 {list}, 코드 적용 시 {price}입니다.",
   cta: "Simbye eSIM 보기 →",
 };
 
@@ -120,7 +120,7 @@ const topPicks: TopPick[] = [
     rank: 1,
     bestFor: "확인된 요금제 중 최저가",
     badgeCls: styles.pickBadgeGreen,
-    target: "데이터만 필요한 대부분의 여행자, 어떤 일정이든.",
+    target: "일정과 관계없이 데이터만 필요한 대부분의 여행자",
     ctaLabel: "Simbye eSIM 보기 →",
     ctaExternal: true,
     why: () =>
@@ -182,8 +182,8 @@ const SIM_COPY: Record<string, { name: string; summary: string; pros: string[]; 
   "simbye-japan": {
     name: "Simbye 일본 eSIM",
     summary:
-      "NTT docomo, KDDI/au, SoftBank, Rakuten Mobile을 쓰는 데이터 전용 일본 eSIM. 용량제는 1 GB부터 50 GB까지이고, 무제한 요금제는 하루 2 GB까지 최고 속도입니다. 가격 피드의 모든 요금제가 테더링을 허용합니다.",
-    pros: ["용량제 정가가 다섯 곳 중 가장 낮음", "일본 통신사 네 곳을 자동으로 선택", "모든 일본 요금제에서 테더링 허용", "180일간 쓸 수 있는 50 GB 요금제"],
+      "NTT docomo, KDDI/au, SoftBank, Rakuten Mobile을 쓰는 데이터 전용 일본 eSIM. 용량제는 1 GB부터 50 GB까지이고, 무제한 요금제는 하루 2 GB까지 최고 속도입니다. 가격 정보에 있는 모든 요금제에서 테더링을 사용할 수 있습니다.",
+    pros: ["용량제 정가가 다섯 곳 중 가장 낮음", "일본 4개 통신망 중 이용 가능한 망에 자동으로 연결", "모든 일본 요금제에서 테더링 허용", "유효기간 180일의 50 GB 요금제"],
     cons: ["데이터 전용(일본 번호, 통화, 문자 없음)", "무제한 요금제는 하루 2 GB 이후 1 Mbps로 감속", "무제한 요금제는 충전 불가"],
   },
   "airalo-japan": {
@@ -211,7 +211,7 @@ const SIM_COPY: Record<string, { name: string; summary: string; pros: string[]; 
     name: "Sakura Mobile 여행용 eSIM",
     summary:
       "장기 체류자와 영어 지원을 원하는 여행자를 위한 일본 현지 선택지. 여행용 eSIM은 하루 3 GB 또는 무제한, 물리 심 요금제에는 음성 옵션이 있습니다.",
-    pros: ["완전한 영어 고객 지원", "음성 통화 심 요금제 있음(물리 심)", "물리 심 또는 eSIM 선택 가능", "한 달 이상 체류에 최적"],
+    pros: ["완전한 영어 고객 지원", "음성 통화 심 요금제 있음(물리 심)", "물리 심 또는 eSIM 선택 가능", "한 달 이상 체류하는 여행자에게 적합"],
     cons: ["데이터 전용 리셀러보다 비쌈", "초기 설정이 약간 더 걸림"],
   },
 };
@@ -251,7 +251,7 @@ const itineraryPicks = [
     trip: "10일 이하, 일반적인 관광",
     pick: "Simbye 용량제",
     detail: () =>
-      `${planLabel(SHORT_TRIP_PLAN)} — 10일 일정에 하루 1 GB씩 써도 남는 10 GB입니다. Simbye의 가격 피드에는 NTT docomo, KDDI/au, SoftBank, Rakuten Mobile이 올라 있고, 일본 페이지는 “네트워크를 직접 고를 일이 없습니다”라고 밝힙니다. 테더링도 허용됩니다.`,
+      `${planLabel(SHORT_TRIP_PLAN)} — 10일 일정에 하루 1 GB씩 써도 남는 10 GB입니다. Simbye의 가격 정보에는 NTT docomo, KDDI/au, SoftBank, Rakuten Mobile이 올라 있고, 일본 페이지는 “네트워크를 직접 고를 일이 없습니다”라고 밝힙니다. 테더링도 허용됩니다.`,
   },
   {
     trip: "2~4주",
@@ -295,7 +295,7 @@ const networkRows = [
   {
     provider: "Simbye",
     carriers: getProvider("simbye").network,
-    how: "Simbye 가격 피드에 표시된 통신사입니다. 일본 페이지는 “네트워크를 직접 고를 일이 없습니다”라고 밝히고, 50 GB 요금제는 NTT Docomo만 쓴다고 안내합니다. 테더링 허용. 데이터 전용.",
+    how: "Simbye 가격 정보에 표시된 통신사입니다. 일본 페이지는 “네트워크를 직접 고를 일이 없습니다”라고 밝히고, 50 GB 요금제는 NTT Docomo만 쓴다고 안내합니다. 테더링 허용. 데이터 전용.",
     checked: SIMBYE_CHECKED,
   },
   {
@@ -334,7 +334,7 @@ const unlimitedRows = [
   {
     plan: "Simbye Unlimited",
     full: "하루 2 GB",
-    after: "가격 피드 기준 “이후 1 Mbps로 무제한”",
+    after: "가격 정보 기준 “이후 1 Mbps로 무제한”",
     hotspot: "“허용 — 노트북, 태블릿, 동행자용”",
     checked: SIMBYE_CHECKED,
   },
@@ -589,7 +589,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             일반적인 관광으로 <strong>10일 이하</strong> 머문다면 추천은{" "}
             <strong>Simbye의 {planLabel(SHORT_TRIP_PLAN)}</strong>입니다 — 10 GB면 하루 1 GB씩 쓰고도 남고,
-            이 페이지에서 비교한 요금 중 정가가 가장 낮으며, 가격 피드에는 NTT docomo, KDDI/au, SoftBank, Rakuten Mobile이
+            이 페이지에서 비교한 요금 중 정가가 가장 낮으며, 가격 정보에는 NTT docomo, KDDI/au, SoftBank, Rakuten Mobile이
             올라 있습니다.{" "}
             <strong>2~4주</strong>라면 같은 사업자의 <strong>{planLabel(LONG_TRIP_PLAN)}</strong>가 같은 속도로
             20일을 커버합니다. 용량제가 아니라 <strong>무제한</strong>을 원한다면 Simbye의{" "}
@@ -604,7 +604,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             가격은 매일 다시 읽어 오는 작업이 {pricesCheckedAt}에 각 사업자 공식 사이트에서 읽은 값입니다.
-            통신망, 공정 사용 기준, 핫스팟 한도, 전화번호 제공 여부, 환불 규정은 {SPECS_CHECKED}에 확인했습니다(Simbye는 {SIMBYE_CHECKED}, simbye.com과 가격 피드 기준).
+            통신망, 공정 사용 기준, 핫스팟 한도, 전화번호 제공 여부, 환불 규정은 {SPECS_CHECKED}에 확인했습니다(Simbye는 {SIMBYE_CHECKED}, simbye.com과 가격 정보 기준).
             클룩 항목은 {KLOOK_SPECS_CHECKED} 클룩 자체 상품 데이터 기준입니다.
           </p>
         </section>
@@ -1038,7 +1038,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                   <div className={styles.pickCardBody}>
                     <p className={styles.pickSummary}>{copy.summary}</p>
                     <div className={styles.pickTarget}>
-                      <span className={styles.pickTargetLabel}>어울리는 경우:</span>
+                      <span className={styles.pickTargetLabel}>추천 대상:</span>{" "}
                       <span>{target}</span>
                     </div>
                     <div className={styles.pickTarget} style={{ marginTop: "0.6rem" }}>
@@ -1082,7 +1082,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                         모든 요금제 비교(영어)
                       </Link>
                     </div>
-                    {esimId === "simbye" && <SimbyeOffer copy={SIMBYE_OFFER} />}
+                    {esimId === "simbye" && <SimbyeOffer copy={SIMBYE_OFFER} formatPlan={planName} />}
                     {ctaAlt && (
                       <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                         {ctaAlt.note}
@@ -1111,7 +1111,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
                 매길 확인된 가격이 없기 때문입니다. 현재 요금제는 상품 페이지에서 확인하세요.
               </p>
               <div className={styles.pickTarget}>
-                <span className={styles.pickTargetLabel}>어울리는 경우:</span>
+                <span className={styles.pickTargetLabel}>추천 대상:</span>{" "}
                 <span>이미 클룩에서 일본 티켓이나 교통편을 사면서, eSIM도 같은 계정으로 받고 싶은 여행자.</span>
               </div>
               <div className={styles.pickCtaRow}>

@@ -175,7 +175,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
             日本景點門票攻略（2026）：<br />官方票價、預約方式與一日遊
           </h1>
           <p className={styles.heroSubtitle}>
-            會賣完的那幾張票、從海外行得通的購票管道，以及每一個價格的查核日期。
+            會賣完的那幾張票、海外旅客可用的購票管道，以及每一個價格的查核日期。
           </p>
           <div className={styles.heroBadges}>
             {["官方票價", "附查核日期", `${editionGuideCount("zh-tw")} 篇繁體中文攻略`].map((t) => (
@@ -192,17 +192,17 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>先看這個</span>
-          <h2 className={styles.sectionTitle}>日本的門票，問題不在價格</h2>
+          <h2 className={styles.sectionTitle}>日本景點門票：重點不在價格</h2>
           <p className={styles.bodyText}>
-            日本幾個最有名的景點，門口是買不到票的。teamLab、東京迪士尼、日本環球影城與澀谷SKY 的日落場，
-            全都在線上販售指定日期與時段的票，熱門時段數週前就沒了——迪士尼的情況更極端，完全沒有當日票。
+            日本幾個最熱門的景點不提供現場售票。teamLab、東京迪士尼、日本環球影城與澀谷SKY 的日落場，
+            全都在線上販售指定日期與時段的票，熱門時段往往數週前就會售罄——迪士尼的情況更極端，完全沒有當日票。
           </p>
           <p className={styles.bodyText}>
-            有兩件事特別容易讓旅客踩雷：官方網站有時刷不過海外發行的信用卡，而搜尋結果裡排名很前面的轉售頁面，
-            常常是入場時無效的票。這些攻略寫的是官方票價、從海外行得通的購票管道，以及該什麼時候訂。
+            有兩件事特別容易讓旅客踩雷：日本官方售票網站有時無法使用海外發行的信用卡付款，而搜尋結果裡排名很前面的轉售頁面，
+            常常是入場時無效的票。這些攻略寫的是官方票價、海外旅客可用的購票管道，以及該什麼時候訂。
           </p>
           <p className={styles.bodyText}>
-            日本也有很多地方完全不需要這些。京都多數知名寺院可以直接走進去，奈良公園免費，
+            日本也有很多地方完全不需要這些。京都多數知名寺院可直接入內參觀，奈良公園免費，
             和服體驗或料理課前一週訂都還來得及。這些攻略的重點是：把規劃的力氣花在真的會影響結果的地方。
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.86rem", color: "var(--text-muted)" }}>

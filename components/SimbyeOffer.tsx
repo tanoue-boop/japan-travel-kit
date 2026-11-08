@@ -21,18 +21,27 @@ const EN: OfferCopy = {
  * feed's own `standard` and `current` figures, and the link is the feed's purchase URL,
  * so what the reader sees here is what the checkout was built to show.
  */
-export default function SimbyeOffer({ gb = 10, copy = EN }: { gb?: number; copy?: OfferCopy }) {
+export default function SimbyeOffer({
+  gb = 10,
+  copy = EN,
+  formatPlan = (name: string) => name,
+}: {
+  gb?: number;
+  copy?: OfferCopy;
+  /** A translated page passes its own plan-name formatter, so "30 days" comes out localised. */
+  formatPlan?: (name: string) => string;
+}) {
   const plan = cheapestAtLeastGb("simbye", gb);
   if (!plan?.discountedUsd || !plan.link) return null;
   const text = copy.text
     .replace("{code}", SIMBYE_DISCOUNT_CODE)
     .replace("{percent}", String(SIMBYE_DISCOUNT_PERCENT))
-    .replace("{plan}", plan.name)
+    .replace("{plan}", formatPlan(plan.name))
     .replace("{list}", formatUsd(plan.priceUsd))
     .replace("{price}", formatUsd(plan.discountedUsd));
   return (
     <div className={styles.pickTarget} style={{ marginTop: "1.25rem", flexWrap: "wrap", gap: "0.6rem" }}>
-      <span className={styles.pickTargetLabel}>{copy.label}</span>
+      <span className={styles.pickTargetLabel}>{copy.label}</span>{" "}
       <span>
         {text}{" "}
         <a

@@ -120,7 +120,7 @@ const topPicks: TopPick[] = [
     rank: 1,
     bestFor: "ราคาต่ำสุดในแพ็กเกจที่ยืนยันได้",
     badgeCls: styles.pickBadgeGreen,
-    target: "นักท่องเที่ยวส่วนใหญ่ที่ต้องการแค่เน็ต ไม่ว่าทริปแบบไหน",
+    target: "นักท่องเที่ยวส่วนใหญ่ที่ต้องการแค่เน็ต ไม่ว่าจะเที่ยวแบบไหน",
     ctaLabel: "ดู eSIM ของ Simbye →",
     ctaExternal: true,
     why: () =>
@@ -142,7 +142,7 @@ const topPicks: TopPick[] = [
     id: "holafly-japan",
     esimId: "holafly",
     rank: 3,
-    bestFor: "ดีที่สุดสายไม่จำกัด",
+    bestFor: "ดีที่สุดสำหรับคนที่ต้องการเน็ตไม่จำกัด",
     badgeCls: styles.pickBadgeOrange,
     target: "คนใช้เน็ตหนัก: ทำงานทางไกล สตรีมมิง วิดีโอคอลทุกวัน",
     ctaLabel: "ดู eSIM ของ Holafly →",
@@ -183,7 +183,7 @@ const SIM_COPY: Record<string, { name: string; summary: string; pros: string[]; 
     name: "eSIM ญี่ปุ่นของ Simbye",
     summary:
       "eSIM ญี่ปุ่นแบบเน็ตอย่างเดียวบน NTT docomo, KDDI/au, SoftBank และ Rakuten Mobile มีแพ็กกำหนดปริมาณตั้งแต่ 1 GB ถึง 50 GB และแพ็กไม่จำกัดที่เร็วเต็มที่วันละ 2 GB ทุกแพ็กในฟีดราคาของ Simbye แชร์เน็ตได้",
-    pros: ["ราคาปกติต่ำสุดในห้ารายสำหรับแพ็กกำหนดปริมาณ", "สี่ค่ายของญี่ปุ่น เลือกให้อัตโนมัติ", "แชร์เน็ตได้ทุกแพ็กญี่ปุ่น", "แพ็ก 50 GB ใช้ได้ 180 วัน"],
+    pros: ["ราคาปกติต่ำสุดในห้ารายสำหรับแพ็กกำหนดปริมาณ", "สี่ค่ายของญี่ปุ่น เลือกให้อัตโนมัติ", "ทุกแพ็กเกจญี่ปุ่นแชร์เน็ต (Hotspot) ได้", "แพ็ก 50 GB ใช้ได้ 180 วัน"],
     cons: ["เน็ตอย่างเดียว (ไม่มีเบอร์ญี่ปุ่น โทร หรือ SMS)", "แพ็กไม่จำกัดลดเหลือ 1 Mbps หลังใช้ครบวันละ 2 GB", "แพ็กไม่จำกัดเติมเน็ตไม่ได้"],
   },
   "airalo-japan": {
@@ -425,7 +425,7 @@ const timingRows = [
 const faqItems: FaqItem[] = [
   {
     q: "eSIM คืออะไร และไปญี่ปุ่นจำเป็นไหม?",
-    a: "eSIM คือซิมดิจิทัลที่ฝังอยู่ในเครื่อง ไม่ต้องใช้การ์ดจริง คุณดาวน์โหลดโปรไฟล์ด้วย QR code แล้วใช้ได้ทันที ไปญี่ปุ่นไม่จำเป็นต้องใช้ eSIM แต่เป็นตัวเลือกที่สะดวกที่สุดแบบทิ้งห่าง: ซื้อและติดตั้งก่อนบิน แล้วเปิดใช้งานเมื่อเครื่องลง",
+    a: "eSIM คือซิมแบบดิจิทัลที่ติดตั้งอยู่ในเครื่อง ไม่ต้องใส่ซิมการ์ด คุณดาวน์โหลดโปรไฟล์ด้วย QR code แล้วใช้ได้ทันที ไปญี่ปุ่นไม่จำเป็นต้องใช้ eSIM แต่เป็นตัวเลือกที่สะดวกที่สุดแบบทิ้งห่าง: ซื้อและติดตั้งก่อนบิน แล้วเปิดใช้งานเมื่อเครื่องลง",
   },
   {
     q: "มือถือรุ่นไหนใช้ eSIM ในญี่ปุ่นได้?",
@@ -566,10 +566,10 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
             eSIM ญี่ปุ่น 2026:<br />เทียบตามราคาและเครือข่าย
           </h1>
           <p className={styles.heroSubtitle}>
-            eSIM ญี่ปุ่นรายใหญ่ทุกรายในหน้าเดียว พร้อมตัวเลือกสำหรับทริปแต่ละแบบ — และแต่ละแพ็กใช้เครือข่ายค่ายไหนจริง ๆ
+            รวมผู้ให้บริการ eSIM ญี่ปุ่นรายหลักไว้ในหน้าเดียว พร้อมตัวเลือกสำหรับทริปแต่ละแบบ — และแต่ละแพ็กใช้เครือข่ายค่ายไหนจริง ๆ
           </p>
           <div className={styles.heroBadges}>
-            {["ตรวจสอบราคาทุกวัน", "เทียบ eSIM 6 ราย", "ประเมินอย่างเป็นอิสระ"].map((t) => (
+            {["ตรวจสอบราคาทุกวัน", "เทียบ eSIM 6 รายการ", "ประเมินอย่างเป็นอิสระ"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -707,7 +707,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>คำตอบสั้น ๆ</span>
           <h2 className={styles.sectionTitle}>eSIM ญี่ปุ่นเจ้าไหนดีที่สุด?</h2>
           <p className={styles.bodyText}>
-            ไม่มีเจ้าเดียวที่ดีที่สุด เพราะผู้ให้บริการทั้งห้าไม่ได้แข่งกันในทริปแบบเดียวกัน Simbye มีราคาปกติต่ำสุดในแพ็กกำหนดปริมาณ
+            ไม่มีผู้ให้บริการรายเดียวที่เหมาะกับทุกคน เพราะผู้ให้บริการทั้งห้าไม่ได้แข่งกันในทริปแบบเดียวกัน Simbye มีราคาปกติต่ำสุดในแพ็กกำหนดปริมาณ
             eSIM Go มีปริมาณเน็ตสูงสุด Airalo คือตัวเลือกสำหรับเน็ตไม่จำกัดที่แชร์เน็ตได้ไม่จำกัด
             ส่วน Sakura Mobile เป็นทางเดียวที่จะได้เบอร์โทรญี่ปุ่น หาแถวที่ตรงกับคุณ:
           </p>
@@ -968,7 +968,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
             ซึ่งถูกกว่าค่าโรมมิ่งหนึ่งวันที่ค่ายส่วนใหญ่เรียกเก็บ
           </p>
           <p className={styles.bodyText}>
-            มีสองเรื่องที่ต้องเช็กสำคัญกว่าราคา เครื่องของคุณต้องรองรับ eSIM และไม่ติดล็อกค่าย และแพ็กต้องตรงกับวิธีเที่ยว
+            มีสองเรื่องที่ควรตรวจสอบก่อนดูราคา เครื่องของคุณต้องรองรับ eSIM และไม่ติดล็อกค่าย และควรเลือกแพ็กเกจให้ตรงกับรูปแบบการเที่ยว
             ของคุณ ไม่ใช่แค่จำนวนวันที่ไป — แพ็ก 30 วันที่มี 5 GB เป็นการซื้อที่ผิดสำหรับสองสัปดาห์ที่วิดีโอคอลบ่อย{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" className={tools.inlineLink}>
               มือถือของคุณใช้ eSIM ในญี่ปุ่นได้ไหม? (ภาษาอังกฤษ) →
@@ -1016,7 +1016,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
                     <div className={styles.pickRank}>
                       <span className={styles.pickNumber}>{rank}</span>
                       <div className={styles.pickMeta}>
-                        <span className={`${styles.pickBadge} ${badgeCls}`}>{bestFor}</span>
+                        <span className={`${styles.pickBadge} ${badgeCls}`}>{bestFor}</span>{" "}
                         <span className={styles.pickName}>{copy.name}</span>
                       </div>
                     </div>
@@ -1028,7 +1028,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
                   <div className={styles.pickCardBody}>
                     <p className={styles.pickSummary}>{copy.summary}</p>
                     <div className={styles.pickTarget}>
-                      <span className={styles.pickTargetLabel}>เหมาะกับ:</span>
+                      <span className={styles.pickTargetLabel}>เหมาะกับ:</span>{" "}
                       <span>{target}</span>
                     </div>
                     <div className={styles.pickTarget} style={{ marginTop: "0.6rem" }}>
@@ -1072,7 +1072,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
                         เทียบทุกแพ็กเกจ (ภาษาอังกฤษ)
                       </Link>
                     </div>
-                    {esimId === "simbye" && <SimbyeOffer copy={SIMBYE_OFFER} />}
+                    {esimId === "simbye" && <SimbyeOffer copy={SIMBYE_OFFER} formatPlan={planName} />}
                     {ctaAlt && (
                       <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                         {ctaAlt.note}
@@ -1101,7 +1101,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
                 มาจัดอันดับ เปิดหน้าสินค้าเพื่อดูตัวเลือกปัจจุบัน
               </p>
               <div className={styles.pickTarget}>
-                <span className={styles.pickTargetLabel}>เหมาะกับ:</span>
+                <span className={styles.pickTargetLabel}>เหมาะกับ:</span>{" "}
                 <span>นักเดินทางที่ซื้อตั๋วหรือการเดินทางในญี่ปุ่นบน Klook อยู่แล้ว และอยากได้ eSIM ในบัญชีเดียวกัน</span>
               </div>
               <div className={styles.pickCtaRow}>

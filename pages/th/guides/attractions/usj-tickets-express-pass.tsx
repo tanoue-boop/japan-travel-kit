@@ -158,7 +158,7 @@ const needRows = [
   {
     date: "ไปเพราะ Super Nintendo World",
     verdict: "ซื้อเวอร์ชันที่รวมบัตรเข้าโซน",
-    why: "เป็นวิธีเดียวที่จะได้รอบเข้าโซนไว้ก่อนไปถึง วิธีฟรีก็มี แต่เป็นแบบใครมาก่อนได้ก่อนในสวนในวันนั้น",
+    why: "เป็นวิธีเดียวที่จะได้รอบเข้าโซนไว้ก่อนไปถึง วิธีฟรีก็มี แต่รับสิทธิ์ได้ในสวนวันนั้นตามลำดับก่อนหลัง",
   },
 ];
 
@@ -204,7 +204,7 @@ const steps = [
   },
   {
     title: "ไปถึงก่อนสวนเปิด",
-    desc: "วันที่คนเยอะ ประตูอาจเปิดก่อนเวลาที่ประกาศ การไปถึงเร็วคือสิ่งที่ทำให้วิธีรับบัตรเข้าโซนแบบฟรีเป็นไปได้จริง ถ้าคุณไม่ได้ซื้อเวอร์ชันที่รวมไว้",
+    desc: "วันที่คนเยอะ ประตูอาจเปิดก่อนเวลาที่ประกาศ ไปถึงสวนแต่เช้าจะเพิ่มโอกาสได้สิทธิ์เข้าโซนแบบฟรี ถ้าคุณไม่ได้ซื้อเวอร์ชันที่รวมไว้",
   },
 ];
 
@@ -322,7 +322,7 @@ const tripPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjTripPrep[2], LOCALE, {
     label: "eSIM ญี่ปุ่นของ Klook",
     ctaLabel: "ดู eSIM ของ Klook →",
-    why: "USJ ขาย Studio Pass แบบระบุวันเป็นอีตั๋ว และใช้แอปของตัวเองสำหรับบัตรเข้าโซน Super Nintendo World ตามเวลา ซึ่งใช้ในสวนในวันนั้น — การมารู้ว่าไม่มีอินเทอร์เน็ตตอนต่อคิวไม่ใช่เรื่องดี",
+    why: "USJ ขาย Studio Pass แบบระบุวันเป็นอีตั๋ว และใช้แอปของตัวเองสำหรับบัตรเข้าโซน Super Nintendo World ตามเวลา ซึ่งใช้ในสวนในวันนั้น — ควรเตรียมอินเทอร์เน็ตมือถือให้พร้อม เพราะต้องใช้แอประหว่างอยู่ในสวน",
   }),
 ];
 
@@ -364,8 +364,8 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             Express Pass ยูนิเวอร์แซล สตูดิโอ เจแปน 2026:<br />ประเภท ราคา และต้องมีไหม
           </h1>
           <p className={styles.heroSubtitle}>
-            Express Pass 4 และ Express Pass 7 แต่ละแบบครอบคลุมอะไร ทำไมราคาเปลี่ยนตามวันที่คุณไป และวันไหนที่
-            Studio Pass ใบเดียวก็พอ
+            Express Pass 4 และ Express Pass 7 แต่ละแบบใช้กับเครื่องเล่นใดได้บ้าง ทำไมราคาเปลี่ยนตามวันที่คุณไป และวันไหนที่
+            ซื้อแค่ Studio Pass ก็เพียงพอ
           </p>
           <div className={styles.heroBadges}>
             {[`อัปเดต ${updatedLabel}`, "Express Pass 4 vs 7", "Super Nintendo World", "ซื้อหรือไม่ซื้อ"].map((t) => (
@@ -554,7 +554,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["เวอร์ชัน", "ครอบคลุมอะไร", "Super Nintendo World", "เหมาะกับ"].map((h) => (
+                    {["เวอร์ชัน", "ใช้กับเครื่องเล่นใดได้บ้าง", "Super Nintendo World", "เหมาะกับ"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -582,7 +582,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>ซื้อหรือไม่ซื้อ</span>
           <h2 className={styles.sectionTitle}>ไปยูนิเวอร์แซล สตูดิโอ เจแปน ต้องมี Express Pass ไหม?</h2>
           <p className={styles.bodyText}>
-            แทบทั้งหมดขึ้นกับวัน ไม่ใช่ขึ้นกับตัวคุณ วันธรรมดาที่คนน้อย Studio Pass ใบเดียวมักพอ ส่วนเสาร์อาทิตย์
+            แทบทั้งหมดขึ้นกับวัน ไม่ใช่ขึ้นกับตัวคุณ วันธรรมดาที่คนน้อย ซื้อแค่ Studio Pass ก็มักเพียงพอ ส่วนเสาร์อาทิตย์
             วันหยุดราชการญี่ปุ่น หรือวันในช่วงครบรอบ 25 ปี Express Pass คือความต่างระหว่างได้เล่นเครื่องเล่นหลัก
             กับได้แค่ต่อคิว
           </p>
@@ -639,8 +639,8 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>ขายหมด</span>
           <h2 className={styles.sectionTitle}>Express Pass USJ ขายหมดเมื่อไร?</h2>
           <p className={styles.bodyText}>
-            เมื่อจำนวนของวันนั้นหมด — หน้าของ USJ เองระบุว่าแต่ละวันมีจำนวนจำกัดและมักขายหมดล่วงหน้า จึงไม่มีช่วง
-            เวลาที่ปลอดภัย มีแต่ช่วงที่เร็วกว่า ช่วงเวลาที่คุณซื้อได้ยาวประมาณสองเดือน ซึ่งเป็นเรื่องที่มีประโยชน์
+            เมื่อจำนวนของวันนั้นหมด — หน้าของ USJ เองระบุว่าแต่ละวันมีจำนวนจำกัดและมักขายหมดล่วงหน้า จึงไม่มีช่วงเวลาที่รับประกันว่าบัตรจะยังเหลือ ยิ่งจองเร็วยิ่งดี
+            ช่วงเวลาที่คุณซื้อได้ยาวประมาณสองเดือน ซึ่งเป็นเรื่องที่มีประโยชน์
             ที่สุดที่ควรรู้
           </p>
           <div className={styles.tableWrap}>
@@ -748,7 +748,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             เส้นทางผ่านแอปคือแบบฟรี และเป็นเส้นทางที่เข้มขึ้น USJ ระบุว่าตั้งแต่ 5 มกราคม 2026 ต้องใช้แอปทางการเพื่อ
             รับ Area Timed Entry Ticket และ Standby Entry Ticket: ลงทะเบียนบัตรเข้าสวนในแอป แล้วเลือกโซน จำนวนคน
-            และเวลา จากนั้นแสดง QR code ที่ทางเข้าโซน ตรวจสอบเมื่อ {CHECKED_USJ} เป็นแบบใครมาก่อนได้ก่อนในวันนั้น
+            และเวลา จากนั้นแสดง QR code ที่ทางเข้าโซน ตรวจสอบเมื่อ {CHECKED_USJ} สิทธิ์นี้รับได้ในวันนั้นตามลำดับก่อนหลัง
             ซึ่งเป็นเหตุผลที่ Express Pass เวอร์ชันที่รวมสิทธิ์เข้าโซนคือวิธีเดียวที่จะได้รอบ Super Nintendo World
             ไว้ก่อนเดินทาง ติดตั้งแอปและลงทะเบียนบัตรก่อนบิน — การมาทำตอนต่อคิวด้วยมือถือที่ไม่มีอินเทอร์เน็ต
             คือปัญหาที่หลีกเลี่ยงได้
@@ -878,7 +878,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>ต่อคิวให้น้อยลงที่ USJ</h2>
+            <h2 className={styles.ctaBannerTitle}>ลดเวลารอคิวเครื่องเล่นที่ USJ</h2>
             <p className={styles.ctaBannerDesc}>
               ซื้อ Studio Pass ออนไลน์เพื่อเข้าสวน แล้วเพิ่ม Express Pass เวอร์ชันที่วันของคุณต้องการ — จำนวนต่อวัน
               มีจำกัด และเวอร์ชันที่รวมสิทธิ์เข้าโซน Super Nintendo World หมดก่อน
