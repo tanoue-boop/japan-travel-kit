@@ -63,7 +63,7 @@ const whoFor = [
   },
   {
     title: "Take a Fuji + Hakone tour if…",
-    desc: "You have one spare day and want two destinations out of it. The combined tours add the Owakudani volcanic valley, a cable car and a Lake Ashi cruise — around 11 hours on the listing we checked, which is a long day but a full one.",
+    desc: "You have one spare day and want two destinations out of it. The combined tours add the Owakudani volcanic valley, a cable car and a Lake Ashi cruise — around 11 hours on the listing shown, which is a long day but a full one.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 17s2-3 5-3 4 3 7 3 4-3 4-3" />
@@ -91,7 +91,7 @@ const steps = [
   },
   {
     title: "Check what the Fifth Station actually is on your date",
-    desc: `The Fuji Subaru Line Fifth Station is the highest point on the mountain reachable by road — the listing we checked describes it as 2,300 m above sea level. It is a viewpoint and a cluster of shops, not a summit: the official climbing season for Mt. Fuji ends on 10 September, and the trails above are closed in winter. Checked ${CHECKED}.`,
+    desc: `The Fuji Subaru Line Fifth Station is the highest point on the mountain reachable by road — the listing shown describes it as 2,300 m above sea level. It is a viewpoint and a cluster of shops, not a summit: the official climbing season for Mt. Fuji ends on 10 September, and the trails above are closed in winter. Checked ${CHECKED}.`,
   },
   {
     title: "Accept that the view is weather-dependent",
@@ -114,11 +114,11 @@ const faqItems = [
   },
   {
     q: "What is the Fuji Subaru Line Fifth Station?",
-    a: `It is the highest point on Mt. Fuji that can be reached by road, and the point almost every day tour from Tokyo stops at — the Klook listing we checked describes it as 2,300 m above sea level. It is a viewpoint with shops and restaurants, not the summit. Mt. Fuji's official climbing season ends on 10 September, and the trails above the Fifth Station are closed in winter, so a day tour is a visit to the mountainside rather than a climb. Checked ${CHECKED}.`,
+    a: `It is the highest point on Mt. Fuji that can be reached by road, and the point almost every day tour from Tokyo stops at — the Klook listing shown describes it as 2,300 m above sea level. It is a viewpoint with shops and restaurants, not the summit. Mt. Fuji's official climbing season ends on 10 September, and the trails above the Fifth Station are closed in winter, so a day tour is a visit to the mountainside rather than a climb. Checked ${CHECKED}.`,
   },
   {
     q: "How long is a Mt. Fuji day tour from Tokyo?",
-    a: `Expect a full day. The Mt. Fuji and Hakone combined tour we checked is listed at around 11 hours, and the Fuji-only tours return to Tokyo the same evening. Departures are early morning from central Tokyo. If your schedule is tight, a day tour is a whole day gone — not a half-day excursion. Durations as listed on ${CHECKED}.`,
+    a: `Expect a full day. The Mt. Fuji and Hakone combined tour here is listed at around 11 hours, and the Fuji-only tours return to Tokyo the same evening. Departures are early morning from central Tokyo. If your schedule is tight, a day tour is a whole day gone — not a half-day excursion. Durations as listed on ${CHECKED}.`,
   },
   {
     q: "Should I pick a Fuji-only tour or a Fuji and Hakone tour?",
@@ -357,9 +357,8 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Contents and durations are as the Klook listings described them on {CHECKED}. We do not quote prices
-            here: Klook blocks automated reads of its product pages, so there is no figure we could have
-            verified — open a listing for the current price on your date.
+            Contents and durations are as the Klook listings described them on {CHECKED}. No prices are quoted
+            here: Klook prices change by date, so open a listing for the current price on your date.
           </p>
         </section>
 

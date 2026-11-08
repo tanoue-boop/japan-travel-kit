@@ -93,7 +93,7 @@ const faqItems = [
   },
   {
     q: "How much does a Tokyo food tour cost?",
-    a: `We do not quote a figure, because the honest answer is that it depends almost entirely on what is included and the listings change. What to compare instead of headline price: how many stops, how many dishes and drinks are covered versus paid on the night, the group size, and whether the guide stays with you throughout. A three-hour tour with two venues and drinks included is a different product from a walking tour that stops outside places and leaves you to order. Open a listing for the current price on your date — Klook blocks automated reads of its product pages, so we have no verified figure to print. Checked ${CHECKED}.`,
+    a: `No figure is quoted here, because the honest answer is that it depends almost entirely on what is included and the listings change. What to compare instead of headline price: how many stops, how many dishes and drinks are covered versus paid on the night, the group size, and whether the guide stays with you throughout. A three-hour tour with two venues and drinks included is a different product from a walking tour that stops outside places and leaves you to order. Open a listing for the current price on your date — Klook prices change by date, so there is no fixed figure to print. Checked ${CHECKED}.`,
   },
   {
     q: "Is there an age limit for izakaya bar-hopping tours?",
@@ -255,7 +255,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               <strong>In short:</strong> what you are paying for is access, not food. Tokyo&apos;s best cheap
               eating happens in six-seat counters and alley bars where the menu is handwritten in Japanese and
               the etiquette is unwritten — places you could find on a map and still not walk into. The Shinjuku
-              listing we checked runs three hours in a small group through an izakaya in Omoide Yokocho or
+              listing compared here runs three hours in a small group through an izakaya in Omoide Yokocho or
               Kabukicho and then bars in Golden Gai, led in English and Japanese. Alcohol-inclusive tours are
               20 and over; for families, a daytime Tsukiji market walk is the alternative. Details as listed on{" "}
               {CHECKED}.

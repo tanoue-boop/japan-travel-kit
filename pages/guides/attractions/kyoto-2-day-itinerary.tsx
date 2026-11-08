@@ -263,10 +263,10 @@ const ticketRows = [
   },
   {
     stop: "Kinkaku-ji (Day 2)",
-    price: "Published on the temple's own site; we do not quote a figure — see the note",
+    price: "Published on the temple's own site; no figure is quoted here — see the note",
     hours: "9:00–17:00",
     booking: "Not needed",
-    note: "The temple has an admission revision notice posted on shokoku-ji.jp and the amount on it is an image, so no figure we could publish would be verified. Confirm at the gate",
+    note: "The temple has an admission revision notice posted on shokoku-ji.jp and the amount on it is an image, so no figure is printed here. Confirm at the gate",
     source: `shokoku-ji.jp, ${OWN}`,
   },
   {
@@ -421,7 +421,7 @@ const faqItems = [
   },
   {
     q: "What does a 2 day Kyoto itinerary cost in admissions?",
-    a: `Less than almost any other Japanese city of this size, because two of the six headline stops are free. Day 1 is ${KIYOMIZU_ADULT} for Kiyomizu-dera and ${NIJO_ADULT} for Nijo Castle with the Ninomaru-goten Palace, so ¥1,800 for an adult, and Fushimi Inari charges nothing. Day 2 is the torokko at ¥880 one way if you take it (¥1,500 with a seat from 1 March 2027), Kinkaku-ji's own admission (the temple has a revision notice posted and the amount on it is an image we cannot read, so we quote no figure), and nothing for the bamboo grove or Togetsukyo. Add the ${PASS_ADULT} Subway & Bus 1-Day Pass if your day is bus-heavy. Sources and the date each figure was read are in the table above.`,
+    a: `Less than almost any other Japanese city of this size, because two of the six headline stops are free. Day 1 is ${KIYOMIZU_ADULT} for Kiyomizu-dera and ${NIJO_ADULT} for Nijo Castle with the Ninomaru-goten Palace, so ¥1,800 for an adult, and Fushimi Inari charges nothing. Day 2 is the torokko at ¥880 one way if you take it (¥1,500 with a seat from 1 March 2027), Kinkaku-ji's own admission (the temple has a revision notice posted and the amount on it is published as an image, so no figure is quoted here), and nothing for the bamboo grove or Togetsukyo. Add the ${PASS_ADULT} Subway & Bus 1-Day Pass if your day is bus-heavy. Sources and the date each figure was read are in the table above.`,
   },
   {
     q: "Which day should the kimono day be?",
@@ -817,8 +817,8 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>{" "}
-            where that table carries them. No Klook price appears anywhere on this page: Klook answers
-            automated reads of its product pages with an error, so no figure from it could be verified.
+            where that table carries them. No Klook price appears anywhere on this page: Klook prices
+            change by date, so open a listing for the figure on yours.
           </p>
         </section>
 
@@ -930,7 +930,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            We publish no room rates, because none can be verified — availability and price are per-hotel and
+            No room rates are published here, because none can be verified — availability and price are per-hotel and
             per-date. The travel times are the Kyoto City Tourism Association&apos;s own, read on {OWN}. One
             thing to budget for that is not the room: Kyoto&apos;s lodging tax has been banded since{" "}
             <strong>1 March 2026</strong>, from ¥200 a person a night under ¥6,000 to ¥10,000 at ¥100,000 and
@@ -1018,7 +1018,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
         <KlookTripPrep
           label="Before you go"
           heading="What Should You Book Before a Two-Day Kyoto Stop?"
-          intro="Five bookings sit outside the two days themselves: how you arrive, the regional pass to price against your route, the one experience that is an appointment rather than a ticket, the reserved-seat ride on Day 2, and data. Klook blocks automated price reads, so open a listing for the figure on your dates."
+          intro="Five bookings sit outside the two days themselves: how you arrive, the regional pass to price against your route, the one experience that is an appointment rather than a ticket, the reserved-seat ride on Day 2, and data. Klook prices change by date, so open a listing for the figure on your dates."
           items={kyotoTwoDayTripPrep}
         />
 

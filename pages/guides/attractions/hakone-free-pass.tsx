@@ -471,7 +471,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             third day costs only ¥400 more than the second at either start point, so if there is any chance of
             staying on, take the 3-day. And the Odawara version is ¥1,100 cheaper because it drops the
             Shinjuku–Odawara leg — buy it if a shinkansen, not the Odakyu Line, is bringing you in. Every
-            figure on this page sits alongside the other passes we have checked in our{" "}
+            figure on this page sits alongside the other passes checked in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>
@@ -511,8 +511,8 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Coverage list read off odakyu-global.com on {CHECKED}. The pass also carries discounts at
-            facilities around the loop — museums, ropeway-side attractions and hot-spring baths — which we do
-            not price here because the participating list and the discount both change.
+            facilities around the loop — museums, ropeway-side attractions and hot-spring baths — which are
+            not priced here because the participating list and the discount both change.
           </p>
         </section>
 
@@ -521,8 +521,8 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Break-even</span>
           <h2 className={styles.sectionTitle}>Does the Loop Cost More Than the Pass?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Short answer: yes, if you ride all of it. Below are the loop fares we could read off the
-            operators&apos; own sites. The legs whose fare tables we could not read on an official page are
+            Short answer: yes, if you ride all of it. Below are the loop fares published on the
+            operators&apos; own sites. The legs without an official fare table to quote are
             deliberately missing rather than estimated, which means the total below is a floor, not the real
             cost of doing the loop piecemeal.
           </p>

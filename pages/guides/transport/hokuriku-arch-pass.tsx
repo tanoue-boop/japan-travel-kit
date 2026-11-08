@@ -188,13 +188,13 @@ const fareRows = [
     journey: "Kanazawa → Kyoto, HOKURIKU One-way Ticket",
     fare: "¥6,500",
     source: `JR West, ${CHECKED}`,
-    note: "A visitor discount ticket covering the shinkansen to Tsuruga and the Thunderbird. ¥8,000 to Osaka. JR West's page dates its prices to February 2025. The regular fare could not be read.",
+    note: "A visitor discount ticket covering the shinkansen to Tsuruga and the Thunderbird. ¥8,000 to Osaka. JR West's page dates its prices to February 2025. The regular fare is not listed here.",
   },
   {
     journey: "Osaka → Kansai Airport, HARUKA One-way Ticket",
     fare: "¥1,900",
     source: `JR West, ${CHECKED}`,
-    note: "A visitor discount ticket, ¥2,700 from Kyoto. JR West warns of a change for tickets sold from 1 November 2026 and still printed this figure on the page we read.",
+    note: "A visitor discount ticket, ¥2,700 from Kyoto. JR West warns of a change for tickets sold from 1 November 2026 and still printed this figure on the page checked.",
   },
   {
     journey: "Kyoto → Osaka",
@@ -237,7 +237,7 @@ const worthRows = [
   {
     plan: "A straight run from Tokyo through Kanazawa to Kansai",
     verdict: "✗ Buy tickets",
-    why: "On every fare we could confirm, single tickets come to about ¥26,000 against ¥35,000. The missing Kyoto–Osaka hop and the regular Kanazawa–Kyoto fare do not plausibly bridge ¥9,060.",
+    why: "On every fare confirmed with an operator, single tickets come to about ¥26,000 against ¥35,000. The missing Kyoto–Osaka hop and the regular Kanazawa–Kyoto fare do not plausibly bridge ¥9,060.",
   },
   {
     plan: "That run with side trips on the Hokuriku Shinkansen",
@@ -247,7 +247,7 @@ const worthRows = [
   {
     plan: "Tokyo ⇄ Kanazawa and back, arriving at Narita",
     verdict: "◐ Close",
-    why: "¥34,000 at normal-season prices. One more ride would tip it, and so could a busier season, since JR West prices those dates differently. We could not read the peak figures.",
+    why: "¥34,000 at normal-season prices. One more ride would tip it, and so could a busier season, since JR West prices those dates differently. The peak figures are not listed here.",
   },
   {
     plan: "You want not to think about each leg",
@@ -321,7 +321,7 @@ const faqItems = [
   },
   {
     q: "Is the Hokuriku Arch Pass worth it?",
-    a: `On a single run from Tokyo through Kanazawa to Kansai Airport, no. Using fares we could confirm from operators, the N'EX (¥3,140), Tokyo to Kanazawa (¥14,400), Kanazawa to Kyoto (¥6,500) and Osaka to Kansai Airport (¥1,900) come to ¥25,940, which is ¥9,060 below the ${ADULT} pass. That sum leaves out Kyoto to Osaka and uses a discounted ticket for Kanazawa to Kyoto, so the true gap is a little smaller. It pays when you add long side trips: one Kanazawa to Nagano return adds ¥17,940 and leaves you ¥8,880 ahead. Fares are normal season, read ${CHECKED}.`,
+    a: `On a single run from Tokyo through Kanazawa to Kansai Airport, no. Using fares confirmed from operators, the N'EX (¥3,140), Tokyo to Kanazawa (¥14,400), Kanazawa to Kyoto (¥6,500) and Osaka to Kansai Airport (¥1,900) come to ¥25,940, which is ¥9,060 below the ${ADULT} pass. That sum leaves out Kyoto to Osaka and uses a discounted ticket for Kanazawa to Kyoto, so the true gap is a little smaller. It pays when you add long side trips: one Kanazawa to Nagano return adds ¥17,940 and leaves you ¥8,880 ahead. Fares are normal season, read ${CHECKED}.`,
   },
   {
     q: "Hokuriku Arch Pass vs JR Pass: which is cheaper?",
@@ -553,8 +553,8 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off JR West&apos;s pass page on {CHECKED}. JR East&apos;s 28 January 2026 press release, read through a
-            search index, gives the same ¥35,000 and ¥17,500.
+            Read off JR West&apos;s pass page on {CHECKED}. JR East&apos;s 28 January 2026 press release
+            gives the same ¥35,000 and ¥17,500.
           </p>
         </section>
 
@@ -602,7 +602,7 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             Only with more riding than a single run gives you. The table adds the fares for the classic route, using
             only figures an operator prints. Two of them are visitor discount tickets, because those are the published
-            figures we could read, so a full-fare version of the sum would run a little higher. Kyoto to Osaka is left
+            figures available, so a full-fare version of the sum would run a little higher. Kyoto to Osaka is left
             out, and so are peak-season shinkansen prices.
           </p>
           <div className={styles.tableWrap}>

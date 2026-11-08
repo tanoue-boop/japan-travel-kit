@@ -146,7 +146,7 @@ const faqItems = [
   },
   {
     q: "How far ahead should I book a Hakone ryokan?",
-    a: "As soon as your dates are fixed, and earlier for weekends and November's autumn colour. Rooms with a bath are a minority at some inns: 10 of 25 at Mikawaya. Gora Kadan opens reservations six months ahead, on the 1st of the month at 12:30 Japan time. We could not read a sell-out date for any inn.",
+    a: "As soon as your dates are fixed, and earlier for weekends and November's autumn colour. Rooms with a bath are a minority at some inns: 10 of 25 at Mikawaya. Gora Kadan opens reservations six months ahead, on the 1st of the month at 12:30 Japan time. None of the inns gives a sell-out date.",
   },
   {
     q: "What is the difference between a room with an open-air bath and a reserved bath?",
@@ -287,7 +287,7 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             A <strong>Hakone Ryokan with Private Onsen</strong> is either a room with its own open-air bath or an
-            inn with a bath you reserve for about 40 to 60 minutes. Of the four inns we confirmed on their own
+            inn with a bath you reserve for about 40 to 60 minutes. Of the four inns confirmed on their own
             sites, three are in central Hakone around <strong>Kowakudani and Gora</strong>, and one is 7 minutes
             on foot from Hakone-Yumoto Station. Stays are usually sold with dinner and breakfast, so book early
             for weekends and November&apos;s autumn colour. Read {OWN}.
@@ -340,7 +340,7 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           <h2 className={styles.sectionTitle}>Which Hakone Ryokan Have a Private Onsen?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             These four, on their own sites. Only some rooms qualify at three of them, so choose the room type,
-            not just the inn. Prices move by date, so we print none: open Klook for yours.
+            not just the inn. Prices move by date, so none are listed here: open Klook for yours.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -375,7 +375,7 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Kyuan&apos;s home page says every room has an open-air bath, while its rooms page splits them into 2
-            open-air and 8 semi-open-air, so we use the rooms page. Its times come from its booking page.
+            open-air and 8 semi-open-air, so this guide uses the rooms page. Its times come from its booking page.
             Yoshiike&apos;s Hollywood Twin bath is circulated rather than free-flowing, and the whole inn is closed
             7 to 10 December 2026. Gora Kadan&apos;s walk is from the Hakone tourism association.
           </p>
@@ -391,7 +391,7 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <strong>Two more on Klook.</strong> We could not find an official site for{" "}
+            <strong>Two more on Klook.</strong> No official site is listed here for{" "}
             <KlookLink href={hakoneYuyuListing.url} target="_blank" rel="sponsored noopener">YuYu Hakone</KlookLink>{" "}
             or{" "}
             <KlookLink href={hakoneChisujiListing.url} target="_blank" rel="sponsored noopener">Chisuji Ryokan</KlookLink>

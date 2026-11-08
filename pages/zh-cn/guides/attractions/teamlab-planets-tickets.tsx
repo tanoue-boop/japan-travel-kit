@@ -616,7 +616,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
         <KlookTourPicks
           heading="同一天在丰洲与台场就能订的行程"
-          intro="我们按 1.5–2 小时规划 Planets，这只占东边这一天的一部分，而把你送到门口的百合海鸥线会继续开往台场。地铁通票覆盖去丰洲的地铁路段，但不含百合海鸥线；另外三个都在美术馆附近、坐一小段车就到。Klook 会阻止自动查价，所以请打开页面查看你那一天的金额与时间。"
+          intro="我们按 1.5–2 小时规划 Planets，这只占东边这一天的一部分，而把你送到门口的百合海鸥线会继续开往台场。地铁通票覆盖去丰洲的地铁路段，但不含百合海鸥线；另外三个都在美术馆附近、坐一小段车就到。Klook 价格随日期变化，所以请打开页面查看你那一天的金额与时间。"
           tours={sameDayTours}
         />
 

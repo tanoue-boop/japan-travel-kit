@@ -489,8 +489,8 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             Prices read off each provider&apos;s own site on {pricesCheckedAt} by the job that
             re-reads them daily. Fair-use thresholds, speed caps and validity start rules read on{" "}
             {SPECS_CHECKED}; tethering and phone-number clauses on {SPECS_CHECKED_AT}; the Klook rows
-            come from its own listing data of {klookEsim.specsCheckedAt}, because Klook answers
-            automated reads of the product page with HTTP 403.
+            come from its own listing data of {klookEsim.specsCheckedAt}; Klook prices change by
+            date, so open the listing for yours.
           </p>
         </section>
 
@@ -523,7 +523,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
               If the tickets and transport for this trip are already going through one checkout,
               Klook sells a Japan eSIM of its own — tiers from 500 MB to 50 GB plus an unlimited
               option, so the sizing above still applies, and it is the one option here with no
-              verified price to quote because the listing blocks automated reads.
+              verified price to quote because Klook prices change by date.
             </p>
             <div className={styles.pickCtaRow}>
               <a

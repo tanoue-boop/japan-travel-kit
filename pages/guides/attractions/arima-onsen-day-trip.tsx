@@ -198,7 +198,7 @@ const faqItems = [
   },
   {
     q: "Can you visit Arima Onsen with tattoos?",
-    a: `Taiko no Yu, the large day spa, states plainly on its own site that it refuses admission to anyone with a tattoo. For the two municipal bathhouses, Kin no Yu and Gin no Yu, we could not find a published tattoo rule on the official pages as of ${CHECKED} — so treat the answer there as unconfirmed rather than assuming either way, and ask at the counter. The reliable route for a tattooed visitor anywhere in Japan is a private bath: most Arima ryokan have a reservable kashikiri bath, and that sidesteps the question entirely.`,
+    a: `Taiko no Yu, the large day spa, states plainly on its own site that it refuses admission to anyone with a tattoo. For the two municipal bathhouses, Kin no Yu and Gin no Yu, the official pages checked do not give a published tattoo rule as of ${CHECKED} — so treat the answer there as unconfirmed rather than assuming either way, and ask at the counter. The reliable route for a tattooed visitor anywhere in Japan is a private bath: most Arima ryokan have a reservable kashikiri bath, and that sidesteps the question entirely.`,
   },
   {
     q: "Is half a day enough for Arima Onsen, or do you need a full day?",
@@ -512,9 +512,9 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             One of the three has a published answer. <strong>Taiko no Yu</strong>, the large day spa, states
             on its own site that it refuses admission to anyone with a tattoo. For{" "}
-            <strong>Kin no Yu</strong> and <strong>Gin no Yu</strong> we could not find a published tattoo
-            rule on the official pages as of {CHECKED} — so rather than tell you either way, we will say that
-            it is unconfirmed, and that the counter is the place to ask.
+            <strong>Kin no Yu</strong> and <strong>Gin no Yu</strong> the official pages checked do not give a published
+            tattoo rule as of {CHECKED} — so rather than an answer either way, treat it as unconfirmed, and
+            the counter as the place to ask.
           </p>
           <p className={styles.bodyText}>
             The route that does not depend on anyone&apos;s rulebook is a <em>kashikiri</em> — a private bath

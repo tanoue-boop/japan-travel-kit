@@ -738,7 +738,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Tokyo Metro fares and Tokyo Subway Ticket prices read on tokyometro.jp, {CHECKED}; the Osaka figures on
             subway.osakametro.co.jp and osp.osaka-info.jp, {OSAKA_CHECKED}. Klook&apos;s own prices are not quoted here —
-            its product pages block automated checks.
+            they change by date, so check the listing.
           </p>
         </section>
 
@@ -818,7 +818,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Mutual-use scheme and area rules from the operators&apos; own pages; the shop, vending-machine and taxi lists
-            are the ones we read for our{" "}
+            are the ones checked for the{" "}
             <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               cash vs card guide
             </Link>{" "}

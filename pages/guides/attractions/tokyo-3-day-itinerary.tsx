@@ -193,7 +193,7 @@ const ticketRows = [
   {
     stop: "TOKYO SKYTREE, Floor 350 (Day 2)",
     price: `${PRICES.tokyoSkytree.adult} adult, ${PRICES.tokyoSkytree.child} child`,
-    hours: "10:00–22:00 with last admission 21:00 on the date we checked; the calendar varies by day",
+    hours: "10:00–22:00 with last admission 21:00 on the date checked; the calendar varies by day",
     booking: PRICES.tokyoSkytree.booking,
     note: PRICES.tokyoSkytree.bookingNote,
     checked: PRICES.tokyoSkytree.checked,
@@ -301,7 +301,7 @@ const faqItems = [
   },
   {
     q: "Is three days in Tokyo enough with children?",
-    a: "Three days works with children if you cut the number of stops per day rather than the number of days — four stops instead of six, with the timed ticket in the morning while everyone is fresh. The two ticketed stops in this itinerary both publish child rates, and the free sights (Senso-ji, Meiji Jingu, Shiba Park, the Metropolitan Government Building decks) carry no risk if a day falls apart. The ticket prices and child rates we have checked, with the date for each, are in the table above.",
+    a: "Three days works with children if you cut the number of stops per day rather than the number of days — four stops instead of six, with the timed ticket in the morning while everyone is fresh. The two ticketed stops in this itinerary both publish child rates, and the free sights (Senso-ji, Meiji Jingu, Shiba Park, the Metropolitan Government Building decks) carry no risk if a day falls apart. The ticket prices and child rates checked, with the date for each, are in the table above.",
   },
   {
     q: "What should I book for the arrival and departure days?",
@@ -651,7 +651,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
 
         <KlookTourPicks
           heading="The Day-3 Alternative: Hand It to a Coach"
-          intro="A guided loop of the big central sights, or the city pass that covers getting between them yourself. Klook blocks automated price reads, so open a listing for the figure on your date."
+          intro="A guided loop of the big central sights, or the city pass that covers getting between them yourself. Klook prices change by date, so open a listing for the figure on your date."
           tours={[tokyoSightseeingBusTour, tokyoSubwayTicket, tokyoTowerTicket]}
         />
 

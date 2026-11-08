@@ -429,8 +429,8 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             them as text, while the main ticket page shows the exact figure only once you pick a
             date on its calendar. The operator adds two notes worth knowing: dates in the ¥3,200
             adult tier accept reservations from 15:00 only, and dates in a ¥3,500 tier accept no
-            reservations at all. Subject to change — confirm your own date before you buy. For the
-            admissions we track across the rest of Japan, each with its own check date, see our{" "}
+            reservations at all. Subject to change — confirm your own date before you buy. For
+            admissions across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>.
@@ -631,7 +631,7 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
 
         <KlookTourPicks
           heading="The Rest of an Osaka Day"
-          intro="Kaiyukan takes two to three hours of a day, which leaves the other half open — and Tempozan is a long way from the parts of Osaka most people want to see. Both of these cover the Castle, Dotonbori and Shinsekai end of the city. Klook blocks automated price reads, so open a listing for the current figure and the meeting point."
+          intro="Kaiyukan takes two to three hours of a day, which leaves the other half open — and Tempozan is a long way from the parts of Osaka most people want to see. Both of these cover the Castle, Dotonbori and Shinsekai end of the city. Klook prices change by date, so open a listing for the current figure and the meeting point."
           tours={[osakaSkyVistaHalfDayBusTour, osakaPrivateWalkingTour]}
         />
 

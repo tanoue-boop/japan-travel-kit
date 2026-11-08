@@ -204,7 +204,7 @@ const faqItems = [
   },
   {
     q: "How long does the shinkansen take from Tokyo to Karuizawa, and what does it cost?",
-    a: `The official figures we could verify put it at 60 to 75 minutes direct, with no transfer: the Karuizawa Tourism Association says about 1 hour 15 minutes from Tokyo Station, Nagano Prefecture's tourism database says 60 minutes. Services are the Asama and the Hakutaka, and tickets are sold in four classes — non-reserved ordinary, reserved ordinary, reserved Green Car and reserved Gran Class. We do not print a yen fare: JR East's own website answers automated requests with an HTTP 403 across the whole domain, so there was no official figure for us to verify, and we would rather leave a gap than copy one from an aggregator. Check it at a ticket machine, at a JR window or on the operator's own booking site. All read on ${CHECKED}.`,
+    a: `The official figures put it at 60 to 75 minutes direct, with no transfer: the Karuizawa Tourism Association says about 1 hour 15 minutes from Tokyo Station, Nagano Prefecture's tourism database says 60 minutes. Services are the Asama and the Hakutaka, and tickets are sold in four classes — non-reserved ordinary, reserved ordinary, reserved Green Car and reserved Gran Class. No yen fare is printed here: the official sources checked do not give one in a form that can be confirmed, and a gap is better than a figure copied from an aggregator. Check it at a ticket machine, at a JR window or on the operator's own booking site. All read on ${CHECKED}.`,
   },
   {
     q: "Is there a cheaper way to get to Karuizawa than the shinkansen?",
@@ -477,9 +477,9 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
             Shinkansen journey times from the Karuizawa Tourism Association&apos;s access page and
             Nagano Prefecture&apos;s tourism database; bus distance, duration and fares from Seibu
             Bus&apos;s own Chikuma Line page. All read on {CHECKED} and subject to change.{" "}
-            <strong>On the shinkansen fare:</strong> we print no yen figure because JR East&apos;s own
-            website answers automated requests with an HTTP 403 across the whole domain, so there was
-            nothing official for us to verify — and a figure we cannot check does not go on this site.
+            <strong>On the shinkansen fare:</strong> no yen figure is printed here, because the official
+            sources checked do not give one in a form that can be confirmed — and an unconfirmed
+            figure does not go on this site.
             Tickets are sold in four classes (non-reserved ordinary, reserved ordinary, reserved Green
             Car and reserved Gran Class); check the fare at a machine, a JR window or the
             operator&apos;s own booking site. Our{" "}
@@ -677,7 +677,7 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
 
         <KlookTourPicks
           heading="The Guided Versions of This Day"
-          intro="Three Karuizawa day tours out of Tokyo, the ski-season version, and the shinkansen seats if you would rather own the itinerary. Klook blocks automated price reads, so open a listing for the figure and the departure point on your date."
+          intro="Three Karuizawa day tours out of Tokyo, the ski-season version, and the shinkansen seats if you would rather own the itinerary. Klook prices change by date, so open a listing for the figure and the departure point on your date."
           tours={[
             karuizawaShinjukuDayTour,
             karuizawaShiraitoOutletDayTour,

@@ -440,7 +440,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            We could not read an official JR or Hankyu fare for these trips, so we print none. Use the operator&apos;s fare
+            The official sources checked do not give a JR or Hankyu fare for these trips, so none is printed. Use the operator&apos;s fare
             search before you travel. Taxis and rental bikes are left out for the same reason.
           </p>
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>

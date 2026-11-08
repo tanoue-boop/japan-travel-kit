@@ -416,7 +416,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             票价读自大阪官方旅游网站与大阪周游卡运营方自己的免费设施清单，核查日 {CHECKED}，两边印的是同样
             三个数字。船公司自己的网站在核查当天因维护无法访问，所以本页每一个数字的来源都是上面那两个。
-            可能变动——付款前请确认。我们追踪的日本其他景点门票（各自附核查日），请见{" "}
+            可能变动——付款前请确认。本站整理的日本其他景点门票（各自附核查日），请见{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
               日本景点门票价格总表（英文）
             </Link>。
@@ -577,7 +577,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             とんぼり的数字来自大阪官方旅游网站与通票运营方的设施清单；Wonder Cruise 那两行来自同一个旅游
             机构自己的 WONDER CRUISE・PIRATES 页面；最后三行写的是各 Klook 商品页自己的说明。全部核查日{" "}
-            {CHECKED}。Klook 会拦截自动读取价格，所以这里不引用任何 Klook 票价——请打开商品页看当前的金额
+            {CHECKED}。Klook 价格随日期变化，所以这里不引用任何 Klook 票价——请打开商品页看当前的金额
             与取消条件，那是按商品而不是按运营方设定的。可能变动。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
@@ -653,7 +653,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
 
         <KlookTourPicks
           heading="坐船前后的那几个小时"
-          intro="船上 20 分钟之外，整个晚上都还空着，而码头周围的街道是全日本吃的密度最高的地方。第一个是白天的漫步行程，第二个是天黑之后的。Klook 会拦截自动读取价格，请打开商品页查看当前的金额与集合地点。"
+          intro="船上 20 分钟之外，整个晚上都还空着，而码头周围的街道是全日本吃的密度最高的地方。第一个是白天的漫步行程，第二个是天黑之后的。Klook 价格随日期变化，请打开商品页查看当前的金额与集合地点。"
           tours={tourPicks}
         />
 

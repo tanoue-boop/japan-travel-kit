@@ -163,7 +163,7 @@ const faqItems = [
   },
   {
     q: "How early should I book a Kyoto hotel in autumn and cherry blossom season?",
-    a: `We do not publish a number, because nobody publishes one: availability and nightly price are per-hotel and per-date, so any “book X weeks ahead” figure would be invented. What is published is what you are booking against. Kyoto's two peak windows are the cherry-blossom weeks from late March into early April and the autumn-leaf weeks of mid to late November, and in both of them domestic demand lands on top of international — the same weeks the city's own transport bureau's sightseeing bus routes are at their fullest. Two things do have published numbers. Kyoto's lodging tax has been charged on new rates since 1 March 2026, from ¥200 to ¥10,000 per person per night depending on the room rate, read on ${OWN}; and it is set by the date you stay, not the date you book, so booking early does not lock in the old rate. The practical move is the opposite of guessing: open the hotel search for your real dates and party size in two or three of the areas above and compare what is left.`,
+    a: `There is no number here, because nobody publishes one: availability and nightly price are per-hotel and per-date, so any “book X weeks ahead” figure would be invented. What is published is what you are booking against. Kyoto's two peak windows are the cherry-blossom weeks from late March into early April and the autumn-leaf weeks of mid to late November, and in both of them domestic demand lands on top of international — the same weeks the city's own transport bureau's sightseeing bus routes are at their fullest. Two things do have published numbers. Kyoto's lodging tax has been charged on new rates since 1 March 2026, from ¥200 to ¥10,000 per person per night depending on the room rate, read on ${OWN}; and it is set by the date you stay, not the date you book, so booking early does not lock in the old rate. The practical move is the opposite of guessing: open the hotel search for your real dates and party size in two or three of the areas above and compare what is left.`,
   },
   {
     q: "How much is Kyoto's lodging tax and is it included in the room price?",
@@ -361,9 +361,9 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText}>
             What follows is the comparison behind that, and what it deliberately leaves out. There are no
-            hotel names, no room impressions and no nightly rates on this page: we cannot verify any of the
-            three from here, and two of them change with your dates. Every journey time below carries the
-            official body that published it and the date we read it.
+            hotel names, no room impressions and no nightly rates on this page: none of the three can be
+            verified here, and two of them change with your dates. Every journey time below carries the
+            official body that published it and the date it was read.
           </p>
         </section>
 
@@ -551,7 +551,7 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
             How Early Should I Book a Kyoto Hotel in Autumn and Cherry Blossom Season?
           </h2>
           <p className={styles.bodyText}>
-            <strong>We do not publish a number, because nobody publishes one.</strong> Availability and
+            <strong>There is no number here, because nobody publishes one.</strong> Availability and
             nightly price are per-hotel and per-date, so any &ldquo;book X weeks ahead&rdquo; figure would be
             invented. What is published is what you are booking against: the cherry-blossom weeks from late
             March into early April, and the autumn-leaf weeks of mid to late November. In both, Japanese

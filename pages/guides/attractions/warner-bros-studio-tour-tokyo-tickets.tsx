@@ -114,7 +114,7 @@ const faqItems = [
   },
   {
     q: "What ages do the junior and child tickets cover?",
-    a: "The official ticket page lists three tiers — adult, junior and child — but does not state the age bands on the pricing page itself, so we are not going to guess them. Check the age definition at the point of booking, where the tier is selected; it is also the only place the price for your specific date is shown.",
+    a: "The official ticket page lists three tiers — adult, junior and child — but does not state the age bands on the pricing page itself, so they are not estimated here. Check the age definition at the point of booking, where the tier is selected; it is also the only place the price for your specific date is shown.",
   },
   {
     q: "Should I visit the studio tour or a Tokyo theme park?",

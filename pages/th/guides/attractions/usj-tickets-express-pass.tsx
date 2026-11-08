@@ -534,8 +534,8 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            ทำไมไม่ระบุช่วงราคา: สองหน้าที่จะแสดงราคาได้นั้นอ่านไม่ได้ หน้าบัตรสำหรับสมาชิกของ USJ ตอบการอ่าน
-            อัตโนมัติด้วย HTTP 503 เมื่อ {CHECKED_USJ} และ WEB Ticket Store ทางการอยู่หลังห้องรอเสมือน แทนที่จะ
+            ทำไมไม่ระบุช่วงราคา: สองหน้าที่จะแสดงราคาได้นั้นใช้งานไม่ได้ หน้าบัตรสำหรับสมาชิกของ USJ แสดงข้อผิดพลาด
+            ของเซิร์ฟเวอร์ (HTTP 503) เมื่อ {CHECKED_USJ} และ WEB Ticket Store ทางการอยู่หลังห้องรอเสมือน แทนที่จะ
             คัดลอกตัวเลขจากหน้าของบุคคลที่สาม คู่มือนี้แสดงกฎการตั้งราคาของ USJ และให้คุณดูราคาของวันนั้นที่หน้า
             ชำระเงินเอง
           </p>
@@ -733,7 +733,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <li><strong>Single Rider:</strong> เป็นระบบแยกจาก Express Pass โดยนั่งเติมที่ว่างแยกจากกลุ่ม บางวันและบางเวลาใช้ไม่ได้ ควรถามทีมงานที่เครื่องเล่น</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            จากหน้า Express Pass และ FAQ ของ USJ ตามดัชนีการค้นหา ตรวจสอบเมื่อ 6 พ.ย. 2026 หน้าจริงอ่านอัตโนมัติไม่ได้ จึงควรดูเวลาบนตั๋วของคุณ
+            จากหน้า Express Pass และ FAQ ของ USJ ตามดัชนีการค้นหา ตรวจสอบเมื่อ 6 พ.ย. 2026 เวลาอาจเปลี่ยนได้ จึงควรดูเวลาบนตั๋วของคุณ
           </p>
         </section>
 
@@ -795,7 +795,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             — ปกติไปถึงโดยเปลี่ยนรถที่นิชิคุโจ JR West ระบุว่าสถานี Universal-city เป็นสถานีที่ใกล้สวนที่สุด และ
             Osaka Convention &amp; Tourism Bureau ระบุว่าประตูอยู่ห่างจากสถานีประมาณห้านาทีเดิน และสวนอยู่ห่างจาก
             สถานีโอซาก้าประมาณ 20 นาที ทั้งสองตรวจสอบเมื่อ {CHECKED} JR West ไม่ได้ประกาศเวลาเดินทางแบบประตูถึง
-            ประตูของช่วงสาย Yumesaki บนเว็บไซต์ภาษาอังกฤษ เราจึงไม่ระบุไว้
+            ประตูของช่วงสาย Yumesaki บนเว็บไซต์ภาษาอังกฤษ ที่นี่จึงไม่ระบุไว้
           </p>
           <p className={styles.bodyText}>
             จาก<strong>สนามบินคันไซ</strong> มีสองวิธีที่สมเหตุสมผลในการเข้าเมือง และไม่มีวิธีไหนถึงสวนโดยตรง

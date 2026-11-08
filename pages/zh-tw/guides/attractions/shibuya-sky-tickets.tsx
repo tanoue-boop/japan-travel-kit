@@ -451,7 +451,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             票價查核日 {CHECKED}，依澀谷 Scramble Square 2025 年 2 月 27 日的公告「SHIBUYA SKY
             入場チケットの改定について」，自 2025 年 4 月 1 日入場起適用。兒童票價與僅限窗口販售的規定出自營運方的票券頁面。
-            預訂時請再確認——這些數字連同我們查核過的其他景點，都整理在{" "}
+            預訂時請再確認——這些數字連同本指南涵蓋的其他景點，都整理在{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               日本景點門票價格總表（英文）
             </Link>
@@ -639,7 +639,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             <li><strong>天候不佳:</strong> 天氣轉壞時頂樓可能不經預告關閉，室內樓層仍開放。訂票前請看清楚你的票券條款。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            依營運方購票 FAQ 的搜尋索引內容，2026 年 11 月 6 日查閱。實際頁面無法自動讀取，當天請再確認規定。
+            依營運方購票 FAQ 的搜尋索引內容，2026 年 11 月 6 日查閱。規定可能變動，當天請在實際頁面再確認。
           </p>
         </section>
 

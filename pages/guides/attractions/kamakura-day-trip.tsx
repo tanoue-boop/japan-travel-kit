@@ -29,7 +29,7 @@ const compareRows = [
   },
   {
     option: "Guided day tour",
-    cost: "One booking that usually adds Enoshima; the listing we checked runs 10.3 hours",
+    cost: "One booking that usually adds Enoshima; the listing shown runs 10.3 hours",
     flexibility: "Fixed route & timings",
     effort: "Very low — transport, guide and stops sorted",
   },
@@ -327,8 +327,8 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Tour duration as the Klook listing described it on {CHECKED}. We do not quote a tour price here —
-            Klook blocks automated reads of its product pages, so open the listing for the figure on your
+            Tour duration as the Klook listing described it on {CHECKED}. No tour price is quoted here —
+            Klook prices change by date, so open the listing for the figure on your
             date. Rail fares are not quoted either; an IC card shows you the amount at the gate, and a{" "}
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--red)", fontWeight: 600 }}>
               Japan Rail Pass

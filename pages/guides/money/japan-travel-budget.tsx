@@ -217,7 +217,7 @@ const dailyBreakdown: TierRow[] = [
     save: `Under ${yen(TOKYO_FREE_BAND)} — the Tokyo band that pays no lodging tax at all`,
     mid: `${yen(TOKYO_FREE_BAND)}–${yen(15000)} — Tokyo adds ¥100 a night of lodging tax in this band`,
     treat: `${yen(15000)} and over — Tokyo adds ¥200 a night`,
-    source: `tax.metro.tokyo.lg.jp, read ${OWN}. We do not quote room rates: the only prices that exist are live search results`,
+    source: `tax.metro.tokyo.lg.jp, read ${OWN}. Room rates are not quoted here: the only prices that exist are live search results`,
   },
   {
     item: "Total per day, before the room",
@@ -434,7 +434,7 @@ const savingTips = [
   },
   {
     title: "Buy the data before you fly, not at the airport",
-    desc: `A week of data on 5 GB is ${ESIM_WEEK} on the prices we re-read daily — about ${ESIM_DAY} a day, in your own currency, settled before you land. An arrivals-hall counter prices the same thing in yen at whatever it likes.`,
+    desc: `A week of data on 5 GB is ${ESIM_WEEK} on the prices re-read daily — about ${ESIM_DAY} a day, in your own currency, settled before you land. An arrivals-hall counter prices the same thing in yen at whatever it likes.`,
   },
 ];
 
@@ -489,7 +489,7 @@ const faqItems = [
   },
   {
     q: "How much is a hotel in Tokyo per night?",
-    a: "We will not put a number on it, because the only Tokyo room prices that exist are live search results that change by the date and the district — anyone quoting you a fixed figure has made it up. What is official is where the Tokyo government draws its brackets: no lodging tax at all below ¥10,000 per person per night, ¥100 from ¥10,000 to under ¥15,000, and ¥200 at ¥15,000 and over, read on tax.metro.tokyo.lg.jp on 27 October 2026. Those three bands are the honest way to budget a room — pick the band, then open a hotel search for the area you want and see what it costs on your dates.",
+    a: "There is no fixed number to give, because the only Tokyo room prices that exist are live search results that change by the date and the district — anyone quoting you a fixed figure has made it up. What is official is where the Tokyo government draws its brackets: no lodging tax at all below ¥10,000 per person per night, ¥100 from ¥10,000 to under ¥15,000, and ¥200 at ¥15,000 and over, read on tax.metro.tokyo.lg.jp on 27 October 2026. Those three bands are the honest way to budget a room — pick the band, then open a hotel search for the area you want and see what it costs on your dates.",
   },
   {
     q: "How much does a trip to Tokyo, Japan cost per day?",
@@ -629,8 +629,8 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             </strong>{" "}
             Those are sums of figures you can check for yourself: ¥178 an IC subway ride, ¥420 for a bowl of chuka
             soba at Hidakaya, ¥498 for a Yoshinoya beef bowl, ¥1,500 for the Tokyo Tower Main Deck, {yen(SIGHT_MID_HIGH)} for
-            Shibuya Sky booked online. The room is the one line we will not put a number on — the only prices that
-            exist are live search results — so instead we use the brackets the Tokyo government draws itself: no
+            Shibuya Sky booked online. The room is the one line with no number here — the only prices that
+            exist are live search results — so instead this guide uses the brackets the Tokyo government draws itself: no
             lodging tax at all under ¥10,000 per person per night, ¥100 from ¥10,000 to ¥15,000, ¥200 above it.
           </p>
           <p className={styles.bodyText}>
@@ -767,8 +767,8 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             Long-distance rail is deliberately not in this table. A {yen(tokyoKyoto.fareYen)} Tokyo–Kyoto leg is a
             one-off, not a daily cost, and spreading it across the days is how budgets end up wrong in both
             directions — see the pass arithmetic further down. The one link in the table goes to Klook&apos;s own
-            Japan eSIM listing; no Klook price appears anywhere on this page, because its product pages block
-            automated checks.
+            Japan eSIM listing; no Klook price appears anywhere on this page, because Klook prices change by
+            date.
           </p>
         </section>
 
@@ -820,8 +820,8 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Accommodation</span>
           <h2 className={styles.sectionTitle}>Accommodation: budget by tax band, not by guesswork</h2>
           <p className={styles.bodyText}>
-            The room is the largest line in a Japan budget and the one every other guide invents a figure for. We
-            will not: a Tokyo room price is a live search result, and it moves with the date, the district and the
+            The room is the largest line in a Japan budget and the one every other guide invents a figure for. This
+            one does not: a Tokyo room price is a live search result, and it moves with the date, the district and the
             week. What does not move is where the three local governments draw their own brackets — and because
             those brackets are set at the rates travellers actually pay, they are a better planning tool than an
             invented average.
@@ -883,7 +883,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
         {/* Klook, 6.5% band — the room line, immediately after the room breakdown. */}
         <KlookStayAreas
           heading="Where to Put the Room So the Rest of the Budget Gets Cheaper"
-          intro="A base is a transport decision as much as a room rate: the right station turns a day of fares into a walk, and the wrong one adds two rides to every morning. These are the areas whose position does the most work on a budget trip — the price is whatever Klook's search says on your dates, which is exactly why we do not quote it."
+          intro="A base is a transport decision as much as a room rate: the right station turns a day of fares into a walk, and the wrong one adds two rides to every morning. These are the areas whose position does the most work on a budget trip — the price is whatever Klook's search says on your dates, which is exactly why it is not quoted here."
           areas={budgetStayAreas}
         />
 
@@ -1079,7 +1079,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Data</span>
           <h2 className={styles.sectionTitle}>Connectivity: the cheapest line, if you buy it first</h2>
           <p className={styles.bodyText}>
-            A week of data on 5 GB is {ESIM_WEEK} on the prices we re-read every day — about {ESIM_DAY} a day, which
+            A week of data on 5 GB is {ESIM_WEEK} on the prices re-read every day — about {ESIM_DAY} a day, which
             makes it the smallest line in this whole budget. It is also the easiest one to overpay for, because the
             alternative is an arrivals-hall counter pricing the same thing in yen after a long flight. Compare the
             plans in our{" "}
@@ -1099,7 +1099,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
         <KlookTripPrep
           label="Prepay the data"
           heading="Buy the Data Before You Land"
-          intro="One line, highest commission band on this page, and the only product here whose price we genuinely cannot read — Klook blocks automated checks on its own product pages, so open the listing for the current options."
+          intro="One line, highest commission band on this page, and the only product here with no verified price — Klook prices change by date, so open the listing for the current options."
           items={budgetDataPrep}
         />
 

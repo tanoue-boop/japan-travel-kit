@@ -336,7 +336,7 @@ const ticketRows = [
     price: "No fixed figure is published — the price moves with the date",
     hours: "Park hours move by date too",
     booking: "Date-specific, about two months ahead",
-    note: "USJ's own pages state that a pass bought in advance is valid only for its printed date with no refund, and that Express Passes have been priced on demand since 2018. We quote no yen figure because USJ publishes none",
+    note: "USJ's own pages state that a pass bought in advance is valid only for its printed date with no refund, and that Express Passes have been priced on demand since 2018. No yen figure is quoted because USJ publishes none",
     source: `usj.co.jp via our USJ guide, ${USJ_CHECKED}`,
   },
 ];
@@ -960,8 +960,8 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>{" "}
-            where that table carries them. No Klook price appears anywhere on this page: Klook answers
-            automated reads of its product pages with an error, so no figure from it could be verified.
+            where that table carries them. No Klook price appears anywhere on this page: Klook prices
+            change by date, so open a listing for the figure on yours.
           </p>
         </section>
 
@@ -1000,7 +1000,7 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            We publish no room rates, because none can be verified — availability and price are per-hotel and
+            No room rates are published here, because none can be verified — availability and price are per-hotel and
             per-date. The journey times are the official bodies&apos; own, read {KYOTO_TRAVEL_CHECKED}. One
             thing to budget for that is not the room: if you do sleep in Kyoto, its lodging tax has been banded
             since <strong>1 March 2026</strong>, from ¥200 a person a night under ¥6,000 upward. Our{" "}
@@ -1151,7 +1151,7 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             bought in advance is <strong>valid only for the date printed on it</strong>, with no refund and no
             move to another slot if you miss a time-designated attraction; and the park quotes{" "}
             <strong>no fixed Studio Pass figure</strong> at all, because the price moves with the date and
-            Express Passes have been priced on demand since 2018. We therefore quote no yen figure here — the
+            Express Passes have been priced on demand since 2018. No yen figure is therefore quoted here — the
             day&apos;s price appears at checkout.
           </p>
           <p className={styles.bodyText}>
@@ -1178,7 +1178,7 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
         <GygCompare
           slug="osaka-kyoto-3-day-itinerary"
           heading="The USJ Tickets, Compared on GetYourGuide"
-          intro="One product on this page is worth checking in two places. The USJ Studio Pass and the Express Pass are sold by GetYourGuide as well as by Klook, and the Express Pass in particular is the ticket we have the least reason to steer you to one seller for. We publish no price or cancellation comparison — neither seller's pages can be read automatically, so neither could be verified."
+          intro="One product on this page is worth checking in two places. The USJ Studio Pass and the Express Pass are sold by GetYourGuide as well as by Klook, and the Express Pass in particular is the ticket we have the least reason to steer you to one seller for. No price or cancellation comparison is published here — both change by date, so check each seller's page for yours."
           listings={[gygUsj, gygUsjExpressPass, gygOsaka]}
         />
 
@@ -1211,7 +1211,7 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
         <KlookTripPrep
           label="Before you go"
           heading="The Bookings That Sit Outside the Three Days"
-          intro="Six bookings happen before the itinerary starts: the regional pass, the two airport trains it is priced against, the city pass for Day 1, one guided day if Day 2 or Day 3 should be someone else's routing problem, and data. Klook blocks automated price reads, so open a listing for the figure on your own dates."
+          intro="Six bookings happen before the itinerary starts: the regional pass, the two airport trains it is priced against, the city pass for Day 1, one guided day if Day 2 or Day 3 should be someone else's routing problem, and data. Klook prices change by date, so open a listing for the figure on your own dates."
           items={osakaKyotoThreeDayTripPrep}
         />
 

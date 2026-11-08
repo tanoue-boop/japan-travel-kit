@@ -99,7 +99,7 @@ const faqItems = [
   },
   {
     q: "What age is LEGOLAND Japan for?",
-    a: `The operator's own answer is children aged 2 to 12 with their family, which is narrower than most big parks and is the single most useful fact on this page. Ticketing uses a different split again — children are 3 to 18 and adults 19 and over — so a 2-year-old is inside the target age but a 3-year-old is the youngest paying visitor. Individual rides have their own limits on top: the park publishes a facility and attraction status page, which as we read it on ${OWN} listed The Beetle Bounce as restricted to passengers under 16. If your children are older than about 12, check the ride list against their heights and interests before you buy.`,
+    a: `The operator's own answer is children aged 2 to 12 with their family, which is narrower than most big parks and is the single most useful fact on this page. Ticketing uses a different split again — children are 3 to 18 and adults 19 and over — so a 2-year-old is inside the target age but a 3-year-old is the youngest paying visitor. Individual rides have their own limits on top: the park publishes a facility and attraction status page, which when checked on ${OWN} listed The Beetle Bounce as restricted to passengers under 16. If your children are older than about 12, check the ride list against their heights and interests before you buy.`,
   },
   {
     q: "How do I get to LEGOLAND Japan from Nagoya Station?",
@@ -107,7 +107,7 @@ const faqItems = [
   },
   {
     q: "What are LEGOLAND Japan's opening hours and closed days?",
-    a: `The operator states LEGOLAND Japan at 10:00–17:00 and SEA LIFE Nagoya Aquarium at 11:00–18:00, and notes that hours may change without notice; it publishes an operation calendar with date-specific hours. As we read its facility closure page on ${OWN}, no park-wide closure days were listed at all — unlike Ghibli Park, which closes every Tuesday. What the closure page does list is individual attractions out of service, which is the thing actually worth checking before a date: Anchors Away was down from 30 November to 11 December 2026, Rebuild the World Center from 4 to 19 November 2026, Lost Kingdom Adventure from 9 to 13 November 2026, and Lloyd's Spinjitzu Spinners had been closed since 16 May 2025 “for the time being”.`,
+    a: `The operator states LEGOLAND Japan at 10:00–17:00 and SEA LIFE Nagoya Aquarium at 11:00–18:00, and notes that hours may change without notice; it publishes an operation calendar with date-specific hours. On its facility closure page as checked on ${OWN}, no park-wide closure days were listed at all — unlike Ghibli Park, which closes every Tuesday. What the closure page does list is individual attractions out of service, which is the thing actually worth checking before a date: Anchors Away was down from 30 November to 11 December 2026, Rebuild the World Center from 4 to 19 November 2026, Lost Kingdom Adventure from 9 to 13 November 2026, and Lloyd's Spinjitzu Spinners had been closed since 16 May 2025 “for the time being”.`,
   },
   {
     q: "Is the SEA LIFE Nagoya combo ticket worth adding?",
@@ -345,8 +345,8 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             these are online promotional rates and it states they vary by date, with a price list and calendar
             published for date-specific figures. The Overnight Plan figure is per person and includes
             breakfast and two-day combo tickets. There is no standalone 2 Day Pass price on the ticket page —
-            the two-day product is sold inside that hotel plan. These sit alongside every other attraction we
-            have checked in our{" "}
+            the two-day product is sold inside that hotel plan. These sit alongside every other attraction
+            covered in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices">
               Japan attraction ticket prices table
             </Link>
@@ -385,8 +385,8 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText}>
-            On closed days the answer is unusual for a Japanese theme park: as we read LEGOLAND&apos;s own
-            facility closure page on {OWN}, <strong>no park-wide closure days were listed at all</strong> —
+            On closed days the answer is unusual for a Japanese theme park: on LEGOLAND&apos;s own
+            facility closure page as checked on {OWN}, <strong>no park-wide closure days were listed at all</strong> —
             unlike Ghibli Park an hour east, which closes every Tuesday. What the page does list is individual
             attractions out of service, and those are the dates actually worth checking before you commit.
           </p>
@@ -431,8 +431,8 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             Ticketing then uses a different split again: a child is 3 to 18 and an adult 19 and over. So a
             two-year-old is squarely in the target age but a three-year-old is the youngest paying visitor,
             and a teenager pays the child rate. Individual rides carry their own limits on top — the
-            operator&apos;s facility status page listed The Beetle Bounce as restricted to under-16s when we
-            read it. If your children are over about 12, read the ride list before you buy rather than after.
+            operator&apos;s facility status page listed The Beetle Bounce as restricted to under-16s when it
+            was checked. If your children are over about 12, read the ride list before you buy rather than after.
           </p>
         </section>
 

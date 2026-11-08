@@ -522,7 +522,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             The three columns that actually decide it are the length, what the day includes beyond the village,
             and the language the guide speaks. Only the values Klook&apos;s own listings state are below —
             durations, stops and inclusions, confirmed on {OWN}. No price appears in this table, because
-            Klook&apos;s product pages refuse automated reads and a coach fare moves with the season in any case.
+            Klook prices change by date and a coach fare moves with the season in any case.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -577,7 +577,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             and the date it was read. Two operators share the line — Nohi Bus out of Takayama and Hokuriku
             Railroad out of Kanazawa. <strong>Fares rise on 1 December 2026</strong> on Nohi Bus&apos;s
             notice, so a winter trip pays the higher figure. Hokuriku Railroad&apos;s own page showed no
-            change when we read it, and child fares from that date are awaiting the official
+            change when it was read, and child fares from that date are awaiting the official
             announcement, so confirm the Kanazawa fare when you book.
           </p>
           <div className={styles.tableWrap}>
@@ -743,7 +743,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             Four things to settle on a listing rather than here, because none of them is a published figure.
             Whether your date is running at all — the mountain coach days have minimum party sizes and will
             cancel below them. What the cancellation window is: the Takayama UNESCO listing states a 100%
-            cancellation fee from three days out, which is stricter than most of what we link anywhere else
+            cancellation fee from three days out, which is stricter than most of the listings linked anywhere else
             on this site. Whether the lunch is included or an upgrade, which differs between the two Nagoya
             listings. And whether the observation-deck access is in the price, because on some listings it is
             an option. For the rail that gets you to any of these three cities, our{" "}

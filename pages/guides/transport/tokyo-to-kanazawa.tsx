@@ -208,7 +208,7 @@ const faqItems = [
   },
   {
     q: "How much is the Shinkansen from Tokyo to Kanazawa?",
-    a: `Roughly ${yen(tokyoKanazawa.fareYen)} one way for a reserved Ordinary seat, on our own rounded reference figure as of ${FARE_AS_OF} — and we are deliberately not quoting an operator price. Neither JR East nor JR West publishes the Tokyo–Kanazawa fare as a static table: both put it behind a route-search tool, and JR East revised its fares on 14 March 2026, so any figure you find reprinted on a travel site is likely to predate that. The honest way to get the exact number for your date is the booking page, which prices the four classes — reserved Ordinary, reserved Green, Gran Class and non-reserved Ordinary — against the train you actually pick. What we can print from an operator's own page are the alternatives: the Hokuriku Arch Pass at ${ARCH_PASS} for seven days, and the HOKURIKU One-way Ticket at ¥6,500 from Kyoto city or ¥8,000 from Osaka city for the other half of a loop.`,
+    a: `Roughly ${yen(tokyoKanazawa.fareYen)} one way for a reserved Ordinary seat, on our own rounded reference figure as of ${FARE_AS_OF} — no operator price is quoted here, deliberately. Neither JR East nor JR West publishes the Tokyo–Kanazawa fare as a static table: both put it behind a route-search tool, and JR East revised its fares on 14 March 2026, so any figure you find reprinted on a travel site is likely to predate that. The honest way to get the exact number for your date is the booking page, which prices the four classes — reserved Ordinary, reserved Green, Gran Class and non-reserved Ordinary — against the train you actually pick. What an operator's own page does give are the alternatives: the Hokuriku Arch Pass at ${ARCH_PASS} for seven days, and the HOKURIKU One-way Ticket at ¥6,500 from Kyoto city or ¥8,000 from Osaka city for the other half of a loop.`,
   },
   {
     q: "Is the JR Pass worth it for Tokyo to Kanazawa?",
@@ -533,8 +533,8 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Subject to change — confirm before buying. {fares.note} The Hokuriku Arch Pass also requires a
             passport at collection and, on JR West&apos;s own page, lets a pass holder take up to two children
-            aged 1 to 5 free. No Klook price appears on this page: Klook answers automated reads of its product
-            pages with an error, so no figure from it could be verified.
+            aged 1 to 5 free. No Klook price appears on this page: Klook prices change by date, so check the
+            listing for your date.
           </p>
         </section>
 

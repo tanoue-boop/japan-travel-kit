@@ -613,7 +613,7 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
         <KlookTourPicks
           heading="同一天在豐洲與台場就能訂的行程"
-          intro="Planets 的時段只佔東邊這一天的一個半小時，而載你到門口的百合海鷗線會繼續開往台場。地鐵通票涵蓋到豐洲的地下鐵路段，但不含百合海鷗線；另外三個都在美術館附近、搭一小段車就到。Klook 會擋自動讀取價格，所以請打開頁面查看你那一天的金額與時間。"
+          intro="Planets 的時段只佔東邊這一天的一個半小時，而載你到門口的百合海鷗線會繼續開往台場。地鐵通票涵蓋到豐洲的地下鐵路段，但不含百合海鷗線；另外三個都在美術館附近、搭一小段車就到。Klook 價格依日期而變，所以請打開頁面查看你那一天的金額與時間。"
           tours={sameDayTours}
         />
 

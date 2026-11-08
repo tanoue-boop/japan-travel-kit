@@ -169,7 +169,7 @@ const faqItems = [
   },
   {
     q: "Can I use Revolut for Suica or Pasmo?",
-    a: `We could not confirm it. Apple says a Suica or PASMO in Wallet needs "an eligible payment card" but does not name which ones, and neither JR East nor Revolut says a Revolut card qualifies. Plan to top up with yen cash at a station ticket machine, and treat any card top-up that works as a bonus. Checked ${CHECKED}.`,
+    a: `The official sources checked do not confirm it. Apple says a Suica or PASMO in Wallet needs "an eligible payment card" but does not name which ones, and neither JR East nor Revolut says a Revolut card qualifies. Plan to top up with yen cash at a station ticket machine, and treat any card top-up that works as a bonus. Checked ${CHECKED}.`,
   },
 ];
 
@@ -392,8 +392,8 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
             <a href={REVOLUT_JP_CASH_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>cash withdrawal limits</a>,{" "}
             <a href={REVOLUT_JP_FX_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>exchange fees</a> and{" "}
             <a href={REVOLUT_ATM_JAPAN_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>ATMs in Japan</a>.
-            Revolut blocks automated page reads, so these were read from its pages&apos; search-index entries on {CHECKED},
-            not from the live pages.
+            These were read from its pages&apos; search-index entries on {CHECKED}, not from the live pages, so check
+            them on Revolut&apos;s site.
           </p>
         </section>
 
@@ -464,7 +464,7 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
           <span className={styles.sectionLabel}>Transit cards</span>
           <h2 className={styles.sectionTitle}>Can I Use Revolut for Suica or Pasmo?</h2>
           <p className={styles.bodyText}>
-            We could not confirm that a Revolut card can top up Suica or PASMO, so plan on yen cash at a station ticket
+            The official sources checked do not confirm that a Revolut card can top up Suica or PASMO, so plan on yen cash at a station ticket
             machine. Apple says a Suica or PASMO in Wallet needs &quot;an eligible payment card&quot; without naming which
             cards qualify, and neither JR East nor Revolut says Revolut is one of them.
           </p>

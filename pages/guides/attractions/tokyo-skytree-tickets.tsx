@@ -59,7 +59,7 @@ const whoFor = [
   },
   {
     title: "Go late if…",
-    desc: "You would rather have the night panorama than the horizon. On the date we checked, the decks ran to 22:00 with last admission at 21:00, and the late slots are the ones still showing availability when the daytime ones have gone.",
+    desc: "You would rather have the night panorama than the horizon. On the date checked, the decks ran to 22:00 with last admission at 21:00, and the late slots are the ones still showing availability when the daytime ones have gone.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
@@ -114,7 +114,7 @@ const steps = [
   },
   {
     title: "Check the hours for your date, not the general ones",
-    desc: `Skytree publishes a per-date calendar and says plainly that "opening hours may change without prior notice", with last admission one hour before closing. On the date we checked the decks ran 10:00–22:00 with last admission at 21:00.`,
+    desc: `Skytree publishes a per-date calendar and says plainly that "opening hours may change without prior notice", with last admission one hour before closing. On the date checked the decks ran 10:00–22:00 with last admission at 21:00.`,
   },
 ];
 
@@ -137,7 +137,7 @@ const faqItems = [
   },
   {
     q: "What are Tokyo Skytree's opening hours?",
-    a: `Skytree runs a per-date calendar rather than one fixed timetable, and the official site notes that "opening hours may change without prior notice" and that the last admission is one hour before closing. On the date we checked, the observation decks were open 10:00–22:00 with last admission at 21:00. Check the calendar for your own date before you build an evening around it. Checked ${CHECKED}.`,
+    a: `Skytree runs a per-date calendar rather than one fixed timetable, and the official site notes that "opening hours may change without prior notice" and that the last admission is one hour before closing. On the date checked, the observation decks were open 10:00–22:00 with last admission at 21:00. Check the calendar for your own date before you build an evening around it. Checked ${CHECKED}.`,
   },
   {
     q: "Tokyo Skytree or Shibuya Sky — which is better?",

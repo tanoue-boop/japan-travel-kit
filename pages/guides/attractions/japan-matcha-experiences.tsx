@@ -428,7 +428,7 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Ordered from the leaf outwards: the Uji and Wazuka experiences first, then Kyoto, then Tokyo.
             Lengths and inclusions are as the listings describe themselves, checked on {OWN}. No price appears
-            — Klook&apos;s product pages refuse automated reads, and a session price moves with the group size
+            — Klook prices change by date, and a session price moves with the group size
             and the options in any case.
           </p>
           <div className={styles.tableWrap}>
@@ -457,9 +457,9 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Subject to change — confirm on the listing for your date. Where a length says &ldquo;check the
-            listing&rdquo;, the operator does not state a duration we could read. No admission price is printed
-            for Byodo-in or Chazuna on this page: neither could be confirmed from its own site on {OWN}, so we
-            have left both out rather than reprint a figure from elsewhere.
+            listing&rdquo;, the operator does not state a duration in the listing. No admission price is printed
+            for Byodo-in or Chazuna on this page: neither was confirmed from its own site on {OWN}, so both
+            are left out rather than reprint a figure from elsewhere.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={ujiChazunaStoneMillMatcha.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

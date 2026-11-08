@@ -374,8 +374,8 @@ function PassComparison() {
       </div>
       <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
         Pass prices and the fares they are measured against are the operators&apos; own, with the date each was read
-        in the price column. The Buy column goes to Klook, which pays us a commission at no extra cost to you — we
-        quote no Klook price, because its product pages block automated checks.
+        in the price column. The Buy column goes to Klook, which pays us a commission at no extra cost to you — no
+        Klook price is quoted, because Klook prices change by date.
       </p>
     </section>
   );
@@ -423,8 +423,8 @@ function DayTours() {
       </ul>
       <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
         These go to Klook, which pays us a commission at no extra cost to you. What each line states is what the
-        listing itself covers; prices and availability are Klook&apos;s, and we do not quote them because its product
-        pages block automated checks.
+        listing itself covers; prices and availability are Klook&apos;s, so check the listing for your
+        date.
       </p>
     </section>
   );
@@ -531,7 +531,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
             Japan Attraction Ticket Prices 2026:<br />Official Prices and Booking Rules
           </h1>
           <p className={styles.heroSubtitle}>
-            Every official adult and child admission price we have verified, in one table — with whether the ticket
+            Every verified official adult and child admission price, in one table — with whether the ticket
             has to be booked before you arrive, and the date each figure was read off the operator&apos;s own site.
           </p>
           <div className={styles.heroBadges}>
@@ -629,8 +629,8 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
               ))}
             </ul>
             <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", margin: "0.75rem 0 0" }}>
-              The Klook links here are affiliate links and pay us a commission at no extra cost to you. We quote no
-              price for them: Klook&apos;s product pages block automated checks, so nothing on them could be verified.
+              The Klook links here are affiliate links and pay us a commission at no extra cost to you. No price is
+              quoted for them: Klook prices change by date, so check the listing for yours.
             </p>
           </div>
         </div>
@@ -638,7 +638,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
         {/* Why this page exists */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>How to read this</span>
-          <h2 className={styles.sectionTitle}>Official Prices, and the Date We Read Them</h2>
+          <h2 className={styles.sectionTitle}>Official Prices, and the Date Each Was Read</h2>
           <p className={styles.bodyText}>
             Japanese attraction prices are harder to pin down than they look. Several operators moved to date-based
             pricing during 2026, so there is no single adult figure to quote —{" "}

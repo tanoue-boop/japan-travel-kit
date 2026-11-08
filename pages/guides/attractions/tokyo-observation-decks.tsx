@@ -378,7 +378,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             Beyond that, each deck trades on something different: Shibuya Sky on atmosphere and the photo,
             Skytree on height and distance, Tokyo Tower on nostalgia and late hours, and Tocho on a good view
             for nothing. Figures below come from each operator&apos;s own site, or from the Tokyo government&apos;s
-            tourism site for Shibuya Sky, whose own pages cannot be read automatically. All are subject to
+            tourism site in the case of Shibuya Sky. All are subject to
             change, so confirm at booking.
           </p>
         </section>
@@ -521,8 +521,8 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             rows={accessRows.map((r) => [r.deck, r.time, r.access])}
           />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Checked {CHECKED}. &ldquo;Not published&rdquo; means the operator gives no figure, so we do not
-            estimate one. To fit a deck into a wider plan, see our{" "}
+            Checked {CHECKED}. &ldquo;Not published&rdquo; means the operator gives no figure, so none is
+            estimated here. To fit a deck into a wider plan, see our{" "}
             <Link href="/guides/attractions/tokyo-3-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
               Tokyo 3-day itinerary
             </Link>.
@@ -623,7 +623,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             online or ¥2,000 on site because access to the area facing Mt. Fuji is restricted.
           </p>
           <p className={styles.bodyText}>
-            <strong>Azabudai Hills</strong> has no ticketed deck that we could confirm. Its official listing
+            <strong>Azabudai Hills</strong> has no confirmed ticketed deck. Its official listing
             shows the Hills House Sky Room Cafe &amp; Bar on the 34th floor of Mori JP Tower, open 9:00–21:00 with
             no reservations and a view of Tokyo Tower. Treat it as a cafe with a view. Kamiyacho Station Exit 5
             connects directly. Checked {CHECKED}.
@@ -714,7 +714,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           </p>
           <p className={styles.bodyText}>
             Skytree&apos;s two decks and the Tocho deck are named by Tokyo&apos;s official tourism site as Mt. Fuji
-            viewpoints. Tokyo Tower&apos;s site does not mention the view, so we do not claim it. No deck can
+            viewpoints. Tokyo Tower&apos;s site does not mention the view, so it is not claimed here. No deck can
             promise it on a given date. Checked {CHECKED}.
           </p>
         </section>

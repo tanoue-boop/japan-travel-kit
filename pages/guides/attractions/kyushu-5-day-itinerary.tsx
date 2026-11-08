@@ -361,7 +361,7 @@ const prepRows = [
   {
     item: "Takachiho Gorge boat",
     when: "Online from 9:00 two weeks before, until 9:00 two days before",
-    why: "No phone bookings and no waiting list. The boats for 7 to 9 November had no same-day tickets when we read the page",
+    why: "No phone bookings and no waiting list. The boats for 7 to 9 November had no same-day tickets when the page was checked",
   },
   {
     item: "Hakata–Kumamoto online fare",
@@ -424,7 +424,7 @@ const faqItems = [
   },
   {
     q: "Can you do this itinerary with children?",
-    a: "Yes, but Days 2 and 4 are about 10 hours each, mostly on a coach, and listings warn of many stairs at the gorge. Kumamoto Castle is ¥300 for elementary and junior high pupils and free under 6. The rail pass is half price for ages 6 to 11. Check each tour's child rule, because we could not read the age bands.",
+    a: "Yes, but Days 2 and 4 are about 10 hours each, mostly on a coach, and listings warn of many stairs at the gorge. Kumamoto Castle is ¥300 for elementary and junior high pupils and free under 6. The rail pass is half price for ages 6 to 11. Check each tour's child rule, because the age bands are not listed here.",
   },
   {
     q: "What should you wear at Takachiho?",
@@ -714,8 +714,8 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={smallNote}>
-            Klook blocks automated reads of its product pages, so these rows come from the listings as they appear in
-            search results, and we could not read every field. Klook&apos;s sites name some of these tours differently, so
+            These rows summarise the listings, and not every field is shown for every tour. Listing details change by
+            date. Klook&apos;s sites name some of these tours differently, so
             open the listing and confirm the stops, the meeting point and the price before you pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -931,7 +931,7 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={smallNote}>
-            Cancellation terms differ by listing, and we could not read every one. Related listings do not refund late
+            Cancellation terms differ by listing, and not every one is listed here. Related listings do not refund late
             arrival, leaving the group, or a closed Mt. Aso on some fees. Read yours before you pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

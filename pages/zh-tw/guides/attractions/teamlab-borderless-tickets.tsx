@@ -236,7 +236,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab 無界可以現場買票嗎？",
-    a: `可以，但只在還有名額時，而且要加價：我們在 ${CHECKED} 查看時，官方網站公告現場票成人多 ¥200、兒童與身障票多 ¥100。所以現場購票是備案而不是計畫——週末、連假與傍晚場，大多數人想要的時段在當天之前就沒了，行事曆一旦額滿，到窗口也救不回來。這也是它和豐洲 teamLab Planets 最明顯的差別：Planets 的官方售票頁寫明現場完全不售票。`,
+    a: `可以，但只在還有名額時，而且要加價：${CHECKED} 查看時，官方網站公告現場票成人多 ¥200、兒童與身障票多 ¥100。所以現場購票是備案而不是計畫——週末、連假與傍晚場，大多數人想要的時段在當天之前就沒了，行事曆一旦額滿，到窗口也救不回來。這也是它和豐洲 teamLab Planets 最明顯的差別：Planets 的官方售票頁寫明現場完全不售票。`,
   },
   {
     q: "teamLab 無界的門票可以改日期嗎？",
@@ -252,7 +252,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab 無界的營業時間是？",
-    a: `營業時間依日期而不同。我們在 ${CHECKED} 查看官方網站時，館方公告的時間是 08:30–21:00，部分日期提早閉館（2026 年 11 月 17 日為 17:00），部分日期延長（特定日期到 22:00）。最後入場是閉館前一小時。另外也有不定期的週二休館——2026 年 10 月 20 日、11 月 24 日與 12 月 8 日都在內。訂時段之前，請務必打開官方行事曆查你自己的日期。`,
+    a: `營業時間依日期而不同。${CHECKED} 查看官方網站時，館方公告的時間是 08:30–21:00，部分日期提早閉館（2026 年 11 月 17 日為 17:00），部分日期延長（特定日期到 22:00）。最後入場是閉館前一小時。另外也有不定期的週二休館——2026 年 10 月 20 日、11 月 24 日與 12 月 8 日都在內。訂時段之前，請務必打開官方行事曆查你自己的日期。`,
   },
   {
     q: "teamLab 無界要逛多久？",
@@ -528,7 +528,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Klook 是 teamLab 的官方售票合作夥伴，所以不論走哪個櫃台，入場資格都一樣。差別在結帳流程、彈性，
             以及——如果你拖到當天——價格。GetYourGuide 也賣無界的票，下表中它那一欄刻意寫得很少：
-            我們能確認與無法確認的內容，請看表格下方的說明。
+            已確認與未確認的內容，請看表格下方的說明。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -557,7 +557,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             現場加價與改期次數依 teamLab 官方網站 {CHECKED} 的公告。售票平台的取消與變更條件依方案而異，
             付款前請在訂購頁上看清楚。GetYourGuide 一欄刻意寫得很短：它的無界頁面在 {GYG_CHECKED} 確認仍在販售，
-            但 GetYourGuide 會擋自動讀取，所以我們無法確認它的價格、刷卡情況與變更條件，那幾格就照實寫，不用猜的。
+            但它的價格、刷卡情況與變更條件未經本頁確認，請在商品頁查看。那幾格就照實寫，不用猜的。
           </p>
         </section>
 
@@ -607,7 +607,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             美術館自己的頁面是 <strong>teamlab.art/e/tokyo</strong>（英文版，日文版為 teamlab.art/jp/e/tokyo），
             購票行事曆與結帳都從那裡進入。如果你存的是舊連結，<strong>borderless.teamlab.art</strong>{" "}
-            已經不是獨立的售票網站：它的英文與日文網址現在都會轉址到上面的 teamlab.art 頁面，這點我們在 {ADDRESS_CHECKED} 確認過。
+            已經不是獨立的售票網站：它的英文與日文網址現在都會轉址到上面的 teamlab.art 頁面，這點已於 {ADDRESS_CHECKED} 確認。
           </p>
           <ul className={styles.bodyList}>
             <li><strong>為什麼「官方」在這裡很重要：</strong>基本票價在 teamLab 自己的行事曆上，三次免費改期也只有直接購買的票才有。售票平台賣的是同一個入場資格，但用自己的條件。</li>

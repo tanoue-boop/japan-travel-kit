@@ -60,18 +60,18 @@ const atmNetworks = [
     sub: "ATMs in Lawson stores",
     where: "Lawson stores and some commercial facilities — but only part of its ATM estate takes overseas cards, so the screen is the test.",
     brands: "Visa, Mastercard, JCB and UnionPay.",
-    fee: "Not published to an automated read — see the note under the table.",
-    hours: "Not published to an automated read — see the note under the table.",
+    fee: "Not confirmed on the official site — see the note under the table.",
+    hours: "Not confirmed on the official site — see the note under the table.",
     limit: "¥50,000 per withdrawal.",
   },
   {
     name: "AEON Bank",
     sub: "ATMs in AEON malls",
     where: "AEON malls and supermarkets.",
-    brands: "Not published to an automated read — see the note under the table.",
-    fee: "Not published to an automated read — see the note under the table.",
-    hours: "Not published to an automated read — see the note under the table.",
-    limit: "Not published to an automated read — see the note under the table.",
+    brands: "Not confirmed on the official site — see the note under the table.",
+    fee: "Not confirmed on the official site — see the note under the table.",
+    hours: "Not confirmed on the official site — see the note under the table.",
+    limit: "Not confirmed on the official site — see the note under the table.",
   },
 ];
 
@@ -105,7 +105,7 @@ const howToUseSteps = [
 const faqItems = [
   {
     q: "Which ATMs in Japan accept foreign cards?",
-    a: `Five networks, all of them outside the big commercial banks: Seven Bank in 7-Eleven stores (Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, DISCOVER and Diners Club), Japan Post Bank at post offices (“VISA, PLUS, Mastercard, Maestro, Cirrus, JCB, China Unionpay and DISCOVER”), E-net in FamilyMart and Don Quijote (Visa, Mastercard, UnionPay and JCB), part of the Lawson Bank estate (Visa, Mastercard, JCB and UnionPay), and AEON Bank in its malls. Brand lists read off each operator's own pages on ${CHECKED}; AEON Bank's site answers an automated read with HTTP 403, so no figure for it is quoted here.`,
+    a: `Five networks, all of them outside the big commercial banks: Seven Bank in 7-Eleven stores (Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, DISCOVER and Diners Club), Japan Post Bank at post offices (“VISA, PLUS, Mastercard, Maestro, Cirrus, JCB, China Unionpay and DISCOVER”), E-net in FamilyMart and Don Quijote (Visa, Mastercard, UnionPay and JCB), part of the Lawson Bank estate (Visa, Mastercard, JCB and UnionPay), and AEON Bank in its malls. Brand lists read off each operator's own pages on ${CHECKED}; AEON Bank's figures are not confirmed on its own site, so no figure for it is quoted here.`,
   },
   {
     q: "How much do ATMs in Japan charge foreign cards?",
@@ -345,9 +345,9 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             Sources, all read {CHECKED}: Seven Bank&apos;s overseas-card pages (brands and service hours,
             and its ATM-usage page for the limits), Japan Post Bank&apos;s international ATM service page,
             E-net&apos;s overseas-card page plus its own notice of the limit change, and Lawson Bank&apos;s
-            FAQ. The two gaps are deliberate: www.aeonbank.co.jp answers an automated read with HTTP 403
-            in full, and www.lawsonbank.jp does the same — Lawson Bank&apos;s brands and ¥50,000 limit come
-            from its FAQ subdomain, which does respond, and its fee and hours are therefore not printed
+            FAQ. The two gaps are deliberate: the official sources checked do not give them — neither
+            www.aeonbank.co.jp nor www.lawsonbank.jp could be checked, so Lawson Bank&apos;s brands and ¥50,000 limit come
+            from its FAQ subdomain, and its fee and hours are therefore not printed
             here rather than borrowed from a comparison site. Fees change: the ATM screen states the
             charge before you confirm the withdrawal.
           </p>

@@ -427,7 +427,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           <p className={styles.bodyText} style={noteStyle}>
             Car and bus times and the route names are the aquarium&apos;s own access page; free parking is Ocean Expo
             Park&apos;s FAQ; read {CHECKED}. The tour duration and aquarium time are Klook&apos;s listing. No bus fare is
-            printed because the operator&apos;s own fare page could not be read.
+            printed here, so check the operator&apos;s own fare page before you ride.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

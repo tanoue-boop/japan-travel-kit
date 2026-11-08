@@ -152,7 +152,7 @@ const accessRows = [
   {
     leg: "Tokyo Station → GALA Yuzawa, Joetsu Shinkansen",
     time: `${FASTEST} at fastest; JR East also publishes 75 minutes on another of its own pages`,
-    cost: "No fare published in English that we could read — see the note below the table",
+    cost: "No English fare quoted here — see the note below the table",
     note: `The reason this day trip exists. GALA Yuzawa is a seasonal shinkansen station built into the ski centre, so you walk out of the ticket gate into the building where the lift tickets and the rental are sold. No bus, no transfer, no taxi. Read ${OWN}.`,
   },
   {
@@ -164,7 +164,7 @@ const accessRows = [
   {
     leg: "Tokyo → the Yuzawa basin by coach, as a booked day",
     time: "A full day, pick-up in Tokyo",
-    cost: "Per seat, by date — Klook blocks automated price reads, so open the listing",
+    cost: "Per seat, by date — Klook prices change by date, so open the listing",
     note: "A different product rather than a cheaper one: the coach days go to Iwappara and the other Yuzawa resorts, with round-trip transport in one booking and rental or lessons as options on the listing. Slower than the shinkansen, and less to assemble.",
   },
   {
@@ -325,7 +325,7 @@ const faqItems = [
   },
   {
     q: "What time does Gala Yuzawa open, and how long is a day there?",
-    a: `GALA's daily hours for 2026-27 are awaiting the official announcement: its hours-and-prices page, read ${OWN}, gives the operating dates and prices but no times, and the gondola times on its older page belong to earlier operation, so we do not repeat them as this season's. What is published is that rental collection runs from 7:30 from 19 December and the PICK UP BOX from 7:30 to 12:00, and that dates and hours can change with snow and weather. An early shinkansen out of Tokyo is what makes the day trip work. The two things that eat into the day are the rental queue on a weekend morning, which the ¥1,000 PICK UP BOX exists to remove, and buying your pass at the window rather than online — at least ¥500 more and a line to stand in.`,
+    a: `GALA's daily hours for 2026-27 are awaiting the official announcement: its hours-and-prices page, read ${OWN}, gives the operating dates and prices but no times, and the gondola times on its older page belong to earlier operation, so they are not repeated here as this season's. What is published is that rental collection runs from 7:30 from 19 December and the PICK UP BOX from 7:30 to 12:00, and that dates and hours can change with snow and weather. An early shinkansen out of Tokyo is what makes the day trip work. The two things that eat into the day are the rental queue on a weekend morning, which the ¥1,000 PICK UP BOX exists to remove, and buying your pass at the window rather than online — at least ¥500 more and a line to stand in.`,
   },
   {
     q: "Do I need to book a Gala Yuzawa day in advance?",
@@ -590,7 +590,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
         <KlookTripPrep
           label="Book on the same trip"
           heading="What a Gala Yuzawa Day Actually Books"
-          intro="Connectivity and the airport first, then the pass, then what GALA sells as separate purchases: the lift ticket and the instruction are the two a first ski day trip tends to under-book. Klook blocks automated price reads, so open a listing for the figure on your own dates."
+          intro="Connectivity and the airport first, then the pass, then what GALA sells as separate purchases: the lift ticket and the instruction are the two a first ski day trip tends to under-book. Klook prices change by date, so open a listing for the figure on your own dates."
           items={sameTripItems}
         />
 
@@ -633,16 +633,15 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Why there is no shinkansen fare in that table.</strong> JR East publishes no
-            point-to-point English fare table for this route that we could read, and a guessed shinkansen
+            <strong>Why there is no shinkansen fare in that table.</strong> JR East&apos;s
+            point-to-point English fare for this route is not quoted here, and a guessed shinkansen
             fare is exactly the figure that makes a break-even calculation worthless — the same call our{" "}
             <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
               TOKYO Wide Pass guide
             </Link>{" "}
             makes and documents. What JR East does publish is a worked example for the pass, and that is
             the arithmetic used further down this page. Times and the shuttle are GALA&apos;s own and JR
-            East&apos;s own, read {OWN}; jreast.co.jp answers automated reads with HTTP 403, so its pages
-            were read through a jreast.co.jp-restricted search index of them.
+            East&apos;s own, read {OWN}.
           </p>
         </section>
 
@@ -683,8 +682,8 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Courses, grading, lifts, elevation and the South Area closure are GALA&apos;s own trail-map
-            page, read {OWN}. The resort&apos;s hours page has no 2026-27 daily times yet, so we print
-            none rather than last season&apos;s. The <strong>South Area closure is specific to 2026-27</strong>{" "}
+            page, read {OWN}. The resort&apos;s hours page has no 2026-27 daily times yet, so none are
+            given here rather than last season&apos;s. The <strong>South Area closure is specific to 2026-27</strong>{" "}
             and is the one thing older guides to this resort will not tell you.
           </p>
         </section>

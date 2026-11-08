@@ -178,7 +178,7 @@ const days: Day[] = [
         that is not beside a station, and it has a guide of its own in our{" "}
         <Link href="/guides/transport/tokyo-airport-limousine-bus">Tokyo airport limousine bus guide</Link>.
         The Tokyo Subway Ticket is {PRICES.tokyoSubwayTicket.adult} for 24 hours, ¥1,500 for 48 and
-        ¥2,000 for 72 on the official prices we checked. On a ten-day trip the 72-hour version is the
+        ¥2,000 for 72 on the official prices checked. On a ten-day trip the 72-hour version is the
         one that fits, because Days 2, 3 and 4 are all Metro and Toei days — and it covers neither JR
         nor the Yamanote Line, which is the thing people get wrong about it.
       </>
@@ -245,7 +245,7 @@ const days: Day[] = [
       <>
         The Shibuya Sky slot, and nothing else — the rest of this day sells no tickets at all. Online
         was {PRICES.shibuyaSky.adult} against {PRICES.shibuyaSky.atDoor} at the door on the official
-        prices we checked, and the route you book through matters as much as the price: the official
+        prices checked, and the route you book through matters as much as the price: the official
         site has rejected many foreign-issued cards since July 2024, which our{" "}
         <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets guide</Link> covers
         in full. If the sunset window has gone for your date, move it rather than dropping it — you
@@ -317,7 +317,7 @@ const days: Day[] = [
       <>
         teamLab Planets, without exception: entry is a 30-minute slot, the official store states
         nothing is sold on site, and the adult price moves with the date — {PRICES.teamlabPlanets.adult}{" "}
-        on the figures we checked. Our{" "}
+        on the figures checked. Our{" "}
         <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
         also covers what to wear, because parts of it are walked barefoot through water. The kimono
         appointment shapes this day rather than decorating it — the Klook listing for Kimono Yae, by
@@ -628,7 +628,7 @@ const days: Day[] = [
       <>
         Nothing, unless you want somebody else to drive. Todai-ji&apos;s Great Buddha Hall was{" "}
         {PRICES.todaiji.adult} for an adult and {PRICES.todaiji.child} for ages 6 to 12 on the
-        figures we checked, paid at the gate, and the hall closes at 17:30 from April to October and
+        figures checked, paid at the gate, and the hall closes at 17:30 from April to October and
         17:00 from November to March — which matters on a short winter afternoon and matters more on
         a guided tour whose timings you do not control. Our{" "}
         <Link href="/guides/attractions/nara-day-trip">Nara day trip guide</Link> has the routes from
@@ -702,7 +702,7 @@ const days: Day[] = [
       <>
         The torokko, if your date is in autumn colour or blossom season, and the Dotonbori cruise if
         you want it. Kinkaku-ji was ¥500 for an adult and ¥300 for elementary and junior-high
-        children on the figures we read on {KINKAKUJI_CHECKED}, and it is 9:00 to 17:00 — so a late
+        children on the figures read on {KINKAKUJI_CHECKED}, and it is 9:00 to 17:00 — so a late
         Arashiyama morning quietly rules it out, which is fine. The Sagano Romantic Train is the one
         booking on this day that can be impossible rather than inconvenient: its reserved seats go a
         month ahead in autumn and it is closed from 30 December 2026 to 28 February 2027, with a new
@@ -1160,7 +1160,7 @@ const faqItems = [
   },
   {
     q: "How much does 10 days in Japan cost?",
-    a: `For tickets and transport, much less than most people expect — because most of Kyoto and much of Tokyo is free to walk into, and the free things on this plan include Meiji Jingu, the Tocho decks, Fushimi Inari, the Arashiyama bamboo grove, Nara Park and the deer, and the Dotonbori streets. What you actually pay for is a 72-hour subway ticket, two or three Tokyo tickets, the Hakone Freepass and the Romancecar surcharge, one temple in Kyoto and one hall in Nara, a city pass and a castle in Osaka, the long train west, and the run to the airport. Every one of those figures is in the dated table above against the operator's own site and the date it was read. We publish no hotel, food or shopping estimate at all, on purpose: those move by season, city and party size, and an invented average is worse than none — our Japan travel budget guide covers what moves them.`,
+    a: `For tickets and transport, much less than most people expect — because most of Kyoto and much of Tokyo is free to walk into, and the free things on this plan include Meiji Jingu, the Tocho decks, Fushimi Inari, the Arashiyama bamboo grove, Nara Park and the deer, and the Dotonbori streets. What you actually pay for is a 72-hour subway ticket, two or three Tokyo tickets, the Hakone Freepass and the Romancecar surcharge, one temple in Kyoto and one hall in Nara, a city pass and a castle in Osaka, the long train west, and the run to the airport. Every one of those figures is in the dated table above against the operator's own site and the date it was read. No hotel, food or shopping estimate appears here at all, on purpose: those move by season, city and party size, and an invented average is worse than none — our Japan travel budget guide covers what moves them.`,
   },
   {
     q: "Tokyo, Kyoto or Osaka first?",
@@ -1483,7 +1483,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
         <p className={styles.bodyText} style={{ marginTop: "-1.5rem", marginBottom: "3.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
           The &ldquo;time to allow&rdquo; column in all ten tables is our own planning allowance, not
           an operator figure. Journey times, prices and opening hours are in the dated tables below,
-          each against the operator&apos;s own site and the date we read it.
+          each against the operator&apos;s own site and the date it was read.
         </p>
 
         {/* Long-distance legs */}
@@ -1588,7 +1588,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             <strong>Why one row has no price.</strong> JR Central publishes Tokaido Shinkansen fares
             through its own fare search rather than as a readable page, and the figure moves with the
-            train type and the season, so we do not print one &mdash; check your own date on the
+            train type and the season, so none is printed here &mdash; check your own date on the
             official booking route or on Klook&apos;s Tokyo-to-Kyoto rail page. One official figure is
             worth knowing: a non-reserved seat is cheaper than the reserved one by a fixed amount in
             the normal period, which is set out in JR Central&apos;s own fare rules. The pass prices
@@ -1699,7 +1699,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             at all. It is also the practical argument for a reseller on the timed tickets
             specifically: an English checkout, foreign cards the official Shibuya Sky site has
             rejected since July 2024, and all ten days on one account. Read the cancellation terms on
-            each listing before the date is fixed; they differ by product, and we do not restate them
+            each listing before the date is fixed; they differ by product, and they are not restated
             here because they change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -1721,7 +1721,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
 
         <KlookTourPicks
           heading="If You Would Rather Hand a Day to Somebody Else"
-          intro="Four of these ten days work as a guided day instead of a plan of your own — the mountain day, the Nara day, the Arashiyama morning and the Osaka city day, which a pass covers almost entirely. Klook blocks automated price reads, so open a listing for the figure on your own date."
+          intro="Four of these ten days work as a guided day instead of a plan of your own — the mountain day, the Nara day, the Arashiyama morning and the Osaka city day, which a pass covers almost entirely. Klook prices change by date, so open a listing for the figure on your own date."
           tours={[fujiHakoneDayTour, kyotoNaraArashiyamaTour, saganoHozugawaGuaranteedTour, osakaAmazingPass]}
         />
 

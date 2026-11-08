@@ -318,7 +318,7 @@ const networkRows = [
   {
     provider: zhKlookEsim.label,
     carriers: "SoftBank 5G（按天計方案）／IIJ（Docomo）4G LTE（總流量方案）",
-    how: "沒有電話號碼——純數據。分享網路：支援。資料來自 Klook 自己的商品資料，而不是商品頁本身——該頁會以 HTTP 403 拒絕自動讀取。",
+    how: "沒有電話號碼——純數據。分享網路：支援。資料來自 Klook 自己的商品資料，而不是商品頁本身。",
     checked: KLOOK_SPECS_CHECKED,
   },
 ];
@@ -494,7 +494,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "日本 eSIM 完全沒用，可以退款嗎？",
-    a: `要看業者。依 Simbye 的退款政策，從未安裝或啟用且未使用任何數據的 eSIM，於購買後 30 天內申請可全額退款。eSIM Go 寫明「如果你還沒使用任何數據，可以獲得全額退款——不問理由」，3 個工作天內處理。Airalo 可以從帳戶提出退款申請，並註明已過期或已用完的 eSIM 不符合資格。Sakura Mobile 的旅遊 eSIM 頁面沒有公布退款條款，Klook 商品的條款則無法讀取。相關的陷阱在於時間而不是錢：eSIM Go 的有效期「從在日本第一次使用數據開始，不是從購買時開始」，但 Sakura Mobile 的每日 3 GB 方案「安裝 eSIM 後開始計算」——所以這些方案要抵達後再安裝，不要在家裝。查核時間 ${SPECS_CHECKED}。`,
+    a: `要看業者。依 Simbye 的退款政策，從未安裝或啟用且未使用任何數據的 eSIM，於購買後 30 天內申請可全額退款。eSIM Go 寫明「如果你還沒使用任何數據，可以獲得全額退款——不問理由」，3 個工作天內處理。Airalo 可以從帳戶提出退款申請，並註明已過期或已用完的 eSIM 不符合資格。Sakura Mobile 的旅遊 eSIM 頁面沒有公布退款條款，Klook 商品的條款未列於此，請在商品頁確認。相關的陷阱在於時間而不是錢：eSIM Go 的有效期「從在日本第一次使用數據開始，不是從購買時開始」，但 Sakura Mobile 的每日 3 GB 方案「安裝 eSIM 後開始計算」——所以這些方案要抵達後再安裝，不要在家裝。查核時間 ${SPECS_CHECKED}。`,
   },
   {
     q: "為什麼我的日本 eSIM 速度很慢？",
@@ -581,7 +581,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>10 天以內</strong>、一般觀光用量的行程，首選是
-            <strong>Simbye 的 {planLabel(SHORT_TRIP_PLAN)}</strong>——10 GB 等於每天 1 GB 還有剩，是我們追蹤的方案中定價最低的，其價格資料列出
+            <strong>Simbye 的 {planLabel(SHORT_TRIP_PLAN)}</strong>——10 GB 等於每天 1 GB 還有剩，是本頁比較的方案中定價最低的，其價格資料列出
             NTT docomo、KDDI/au、SoftBank 與 Rakuten Mobile；<strong>二到四週</strong>的話，同一家的
             <strong>{planLabel(LONG_TRIP_PLAN)}</strong> 以同樣的用量可撐 20 天。如果你要的是<strong>吃到飽</strong>而不是固定流量，Simbye 的
             <strong>{planLabel(SIMBYE_UNLIMITED)}</strong> 是一週方案中最便宜的，但每天前 2 GB 全速，之後 1 Mbps；eSIM Go 的
@@ -592,7 +592,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             價格由每天重新讀取的程式於 {pricesCheckedAt} 從各業者自己的網站讀取。網路、合理使用門檻、熱點上限、是否提供電話號碼與退款規定的讀取時間為
-            {SPECS_CHECKED}（Simbye 為 {SIMBYE_CHECKED}，來自 simbye.com 與其價格資料）；Klook 的資料來自其 {KLOOK_SPECS_CHECKED} 的商品資料，因為 Klook 的產品頁會以 HTTP 403 拒絕自動讀取。
+            {SPECS_CHECKED}（Simbye 為 {SIMBYE_CHECKED}，來自 simbye.com 與其價格資料）；Klook 的資料來自其 {KLOOK_SPECS_CHECKED} 的商品資料。
           </p>
         </section>
 
@@ -673,7 +673,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-            Klook 這一列刻意放在排名之外。上面五家是依每天從它們自己網站讀取的價格排名；Klook 的 eSIM 商品頁在最近一次嘗試（{KLOOK_CHECKED}）時無法自動讀取，
+            Klook 這一列刻意放在排名之外。上面五家是依每天從它們自己網站讀取的價格排名；Klook 的 eSIM 價格依日期而變（查核日 {KLOOK_CHECKED}），
             所以沒有價格或流量級距可以拿來和它們比較。請打開商品頁查看目前的方案。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
@@ -1067,8 +1067,8 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
             <div className={styles.pickCardBody}>
               <p className={styles.pickSummary}>
-                Klook 自己也賣日本 eSIM，如果你已經在那裡訂門票或交通，值得一看——一次結帳、一個帳號。我們不把它列入排名：Klook 的產品頁封鎖自動讀取價格，
-                所以我們沒有經過查核的價格可以拿來排名。請打開商品頁查看目前的方案。
+                Klook 自己也賣日本 eSIM，如果你已經在那裡訂門票或交通，值得一看——一次結帳、一個帳號。它不列入排名：Klook 的價格依日期而變，
+                所以沒有經過查核的價格可以拿來排名。請打開商品頁查看目前的方案。
               </p>
               <div className={styles.pickTarget}>
                 <span className={styles.pickTargetLabel}>最適合：</span>

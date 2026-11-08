@@ -172,7 +172,7 @@ const priceRows = [
     price: `About ${yen(kyotoTokyo.fareYen)}`,
     covers:
       "Basic fare plus the reserved-seat limited express charge, one adult, regular season. This is the number to budget with",
-    source: `Our own JR fare dataset, as of ${FARE_AS_OF} — a rounded reference value, not an operator table`,
+    source: `This site's own JR fare dataset, as of ${FARE_AS_OF} — a rounded reference value, not an operator table`,
   },
   {
     item: "Non-reserved Ordinary",
@@ -274,7 +274,7 @@ const faqItems = [
   },
   {
     q: "How much is the shinkansen from Kyoto to Tokyo?",
-    a: `Budget about ${yen(kyotoTokyo.fareYen)} one way for a reserved seat in an ordinary car — basic fare plus the reserved-seat limited express charge, one adult, regular season. We label that as our own rounded reference figure rather than an operator price, and the reason is worth saying: JR Central publishes the smartEX price list only as a PDF and does not publish the station-window fare as a static table, so no live operator figure for this exact pair could be verified from here on ${OWN}. The prices on this page that *are* JR's own are the pass-holder ones: the NOZOMI/MIZUHO ticket for Tokyo–Kyoto is ${NOZOMI_TICKET}, and a 7-day Ordinary JAPAN RAIL PASS is ${JR_PASS_7} online or ¥53,000 as an Exchange Order. A non-reserved seat costs the reserved-seat charge less; a Green Car seat costs more and is sold as its own class. Check the live price for your date before you buy — peak and off-peak dates move the reserved-seat charge either way.`,
+    a: `Budget about ${yen(kyotoTokyo.fareYen)} one way for a reserved seat in an ordinary car — basic fare plus the reserved-seat limited express charge, one adult, regular season. This guide labels that as its own rounded reference figure rather than an operator price, and the reason is worth saying: JR Central publishes the smartEX price list only as a PDF and does not publish the station-window fare as a static table, so no live operator figure for this exact pair could be verified from here on ${OWN}. The prices on this page that *are* JR's own are the pass-holder ones: the NOZOMI/MIZUHO ticket for Tokyo–Kyoto is ${NOZOMI_TICKET}, and a 7-day Ordinary JAPAN RAIL PASS is ${JR_PASS_7} online or ¥53,000 as an Exchange Order. A non-reserved seat costs the reserved-seat charge less; a Green Car seat costs more and is sold as its own class. Check the live price for your date before you buy — peak and off-peak dates move the reserved-seat charge either way.`,
   },
   {
     q: "Which side is Mt Fuji on from Kyoto to Tokyo?",
@@ -294,7 +294,7 @@ const faqItems = [
   },
   {
     q: "Which platform does the Tokyo train leave from at Kyoto Station?",
-    a: `The Tokaido Shinkansen uses tracks 11 to 14 at Kyoto Station, with the Tokyo-bound (eastbound) trains on 11 and 13 and the Shin-Osaka direction on 12 and 14. Those platforms sit behind their own shinkansen ticket gates on the Hachijo — south — side of the station, which is the opposite side from the Karasuma entrance, the bus terminal and the Kyoto Tower. Allow for that: crossing Kyoto Station from the north side to the shinkansen gates with cases is a walk of several minutes through a very busy concourse, not a dash. We confirmed the track numbers through the westjr.co.jp search index for JR West's own Kyoto Station map on ${OWN}, because the map itself is published as a PDF we could not read automatically — so check the departure boards on the day, as you would anyway. Platform assignment for an individual train is shown on the board and on your reservation.`,
+    a: `The Tokaido Shinkansen uses tracks 11 to 14 at Kyoto Station, with the Tokyo-bound (eastbound) trains on 11 and 13 and the Shin-Osaka direction on 12 and 14. Those platforms sit behind their own shinkansen ticket gates on the Hachijo — south — side of the station, which is the opposite side from the Karasuma entrance, the bus terminal and the Kyoto Tower. Allow for that: crossing Kyoto Station from the north side to the shinkansen gates with cases is a walk of several minutes through a very busy concourse, not a dash. The track numbers are from JR West's own Kyoto Station map, checked on ${OWN}, and the map itself is published only as a PDF — so check the departure boards on the day, as you would anyway. Platform assignment for an individual train is shown on the board and on your reservation.`,
   },
   {
     q: "Should I get off at Tokyo, Shinagawa or Shin-Yokohama?",
@@ -310,7 +310,7 @@ const faqItems = [
   },
   {
     q: "What do I do with my suitcases after checking out in Kyoto?",
-    a: `Three options, in order of how little effort each takes. Leave the cases in your hotel's luggage room after checkout, go and do your last Kyoto morning, and collect them on the way to the station — almost every hotel will hold them for the day and it costs nothing. Or take them to Kyoto Station and use the coin lockers or the staffed luggage service there, which is the better plan if the morning ends on the Hachijo side anyway. Or forward them: a takkyubin courier counter will send cases to a Tokyo hotel, usually for next-day arrival, which is what people with more luggage than hands do and what saves you the oversized-baggage reservation on the train entirely. Sizes, fees and cut-off times vary by hotel and counter, so we do not quote them here — ask at your hotel desk the night before, which is also when to confirm they will accept a delivery at the Tokyo end.`,
+    a: `Three options, in order of how little effort each takes. Leave the cases in your hotel's luggage room after checkout, go and do your last Kyoto morning, and collect them on the way to the station — almost every hotel will hold them for the day and it costs nothing. Or take them to Kyoto Station and use the coin lockers or the staffed luggage service there, which is the better plan if the morning ends on the Hachijo side anyway. Or forward them: a takkyubin courier counter will send cases to a Tokyo hotel, usually for next-day arrival, which is what people with more luggage than hands do and what saves you the oversized-baggage reservation on the train entirely. Sizes, fees and cut-off times vary by hotel and counter, so they are not quoted here — ask at your hotel desk the night before, which is also when to confirm they will accept a delivery at the Tokyo end.`,
   },
 ];
 
@@ -469,7 +469,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
               departure as <strong>&ldquo;2h&rdquo;</strong> with <strong>&ldquo;0 transfer(s)&rdquo;</strong>,{" "}
               <strong>352 trains</strong> on its sample date and departures from{" "}
               <strong>06:03 to 21:38</strong>. Budget roughly <strong>{yen(kyotoTokyo.fareYen)}</strong> one way
-              for a reserved ordinary seat — our own rounded reference figure, because JR publishes this fare
+              for a reserved ordinary seat — this guide&apos;s own rounded reference figure, because JR publishes this fare
               only as a PDF. Three things are different in this direction: Mt Fuji is on{" "}
               <strong>your left</strong> (still <strong>Seat E</strong>, or <strong>Seat D</strong> in Green, on
               JR Central&apos;s own advice — the letters are fixed to the carriage), the train calls at{" "}
@@ -572,7 +572,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             Budget about <strong>{yen(kyotoTokyo.fareYen)}</strong> one way for a reserved ordinary seat. One
             honest caveat up front, because it decides how to read the table: JR Central publishes its smartEX
             price list only as a PDF, and does not publish the station-window fare as a static table at all, so
-            the single-ticket row below is <em>our own</em> rounded reference value and is marked as such. The
+            the single-ticket row below is <em>this guide&apos;s own</em> rounded reference value and is marked as such. The
             pass-holder rows are JR&apos;s own figures, read on {OWN}.
           </p>
           <div className={styles.tableWrap}>
@@ -601,8 +601,8 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Subject to change — confirm before buying. {fares.note} Peak and off-peak dates move the
             reserved-seat charge by a couple of hundred yen either way, and online prices differ from the
-            station window. No Klook price appears on this page: Klook answers automated reads of its product
-            pages with an error, so no figure from it could be verified.
+            station window. No Klook price appears on this page: Klook prices change by date, so check the
+            listing for your date.
           </p>
         </section>
 
@@ -695,9 +695,9 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             The Tokaido Shinkansen uses <strong>tracks 11 to 14</strong> at Kyoto Station, with the
             Tokyo-bound trains on <strong>11 and 13</strong>. They sit behind their own shinkansen ticket
             gates on the <strong>Hachijo — south — side</strong> of the station, which is the opposite side
-            from the Karasuma entrance, the bus terminal and the Kyoto Tower. We confirmed the track numbers
-            through the westjr.co.jp search index for JR West&apos;s own Kyoto Station map on {OWN}, because
-            the map is published as a PDF we could not read automatically — so give the departure boards a
+            from the Karasuma entrance, the bus terminal and the Kyoto Tower. The track numbers are
+            from JR West&apos;s own Kyoto Station map, checked on {OWN}, and
+            the map is published only as a PDF — so give the departure boards a
             glance on the day, as you would anyway.
           </p>
           <p className={styles.bodyText}>
@@ -711,8 +711,8 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             checkout and collect them on the way to the station; take them to Kyoto Station and use the
             lockers or the staffed service there; or forward them to your Tokyo hotel with a takkyubin
             courier, which is what anyone with more bags than hands does and which sidesteps the shinkansen
-            oversized-baggage reservation entirely. Fees and cut-off times vary by hotel and counter, so we do
-            not quote them — ask at the desk the night before, and confirm the Tokyo hotel will accept a
+            oversized-baggage reservation entirely. Fees and cut-off times vary by hotel and counter, so they are
+            not quoted here — ask at the desk the night before, and confirm the Tokyo hotel will accept a
             delivery.
           </p>
           <p className={styles.bodyText}>

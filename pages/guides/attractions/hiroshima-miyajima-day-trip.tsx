@@ -29,7 +29,7 @@ const compareRows = [
   },
   {
     option: "Guided bus tour",
-    cost: "One booking; the listing we checked runs 7 hr 40 min with an okonomiyaki lunch",
+    cost: "One booking; the listing shown runs 7 hr 40 min with an okonomiyaki lunch",
     flexibility: "Fixed route & timings",
     effort: "Very low — the coach, the guide and the ferry are all arranged",
   },
@@ -61,7 +61,7 @@ const whoFor = [
   },
   {
     title: "Take a guided tour if…",
-    desc: `You'd rather not manage the coach, the ferry and the tides. The listing we checked runs 7 hours 40 minutes with an English-speaking guide, a scenic ferry route for the torii photograph and a Hiroshima okonomiyaki lunch, and offers departures from Hiroshima, Osaka, Kyoto or Fukuoka — so if you are coming from Kansai, check which departure point you are booking. Checked ${CHECKED}.`,
+    desc: `You'd rather not manage the coach, the ferry and the tides. The listing shown runs 7 hours 40 minutes with an English-speaking guide, a scenic ferry route for the torii photograph and a Hiroshima okonomiyaki lunch, and offers departures from Hiroshima, Osaka, Kyoto or Fukuoka — so if you are coming from Kansai, check which departure point you are booking. Checked ${CHECKED}.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M8 6v12M16 6v12" />
@@ -336,7 +336,7 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Tour duration, inclusions and departure points as the Klook listing described them on {CHECKED}.
-            We do not quote a tour price — Klook blocks automated reads of its product pages, so open the
+            No tour price is quoted here — Klook prices change by date, so open the
             listing for the figure on your date and departure city.
           </p>
         </section>

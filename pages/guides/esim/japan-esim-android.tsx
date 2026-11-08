@@ -109,7 +109,7 @@ const faqItems = [
   },
   {
     q: "Which is the best Japan eSIM for Android?",
-    a: `The same one as on an iPhone, because the plan is identical — what differs is where you tap. Simbye has the lowest list price we track, ${priceAtLeastLabel("simbye", 10)} for 10 GB; eSIM Go is ${priceAtLeastLabel("esimgo", 10)} for 10 GB, or ${priceLabel(ENTRY)} for ${ENTRY?.name}. Airalo costs a little more (from ${priceFrom("airalo")}) and adds live chat and in-app top-up. The one Android-specific point: Airalo's automatic profile install is an iOS feature, so on Android you scan a QR code whichever provider you choose. Prices checked ${pricesCheckedAt}.`,
+    a: `The same one as on an iPhone, because the plan is identical — what differs is where you tap. Simbye has the lowest list price compared here, ${priceAtLeastLabel("simbye", 10)} for 10 GB; eSIM Go is ${priceAtLeastLabel("esimgo", 10)} for 10 GB, or ${priceLabel(ENTRY)} for ${ENTRY?.name}. Airalo costs a little more (from ${priceFrom("airalo")}) and adds live chat and in-app top-up. The one Android-specific point: Airalo's automatic profile install is an iOS feature, so on Android you scan a QR code whichever provider you choose. Prices checked ${pricesCheckedAt}.`,
   },
   {
     q: "Where do I add an eSIM on a Samsung Galaxy?",
@@ -256,7 +256,7 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
           <div className={styles.verdictBody}>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
               <strong>
-                Buy Simbye for the lowest list price we track, {priceAtLeastLabel("simbye", 10)} for 10 GB, eSIM
+                Buy Simbye for the lowest list price compared here, {priceAtLeastLabel("simbye", 10)} for 10 GB, eSIM
                 Go at {priceLabel(ENTRY)} for {ENTRY?.name}, or Airalo from {priceFrom("airalo")} if you
                 would rather have live chat and in-app top-up.
               </strong>{" "}

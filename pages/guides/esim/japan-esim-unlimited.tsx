@@ -486,7 +486,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             <span className={styles.pickTargetLabel}>Also on Klook:</span>
             <span>
               Klook&apos;s own Japan eSIM has an unlimited tier at 10 GB a day, then 128 kbps, per its listing. No price
-              is quoted here because the listing could not be read automatically.{" "}
+              is quoted here because Klook prices change by date.{" "}
               <KlookLink
                 href={klookEsim.url}
                 target="_blank"

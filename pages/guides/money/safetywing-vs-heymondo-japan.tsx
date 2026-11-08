@@ -46,7 +46,7 @@ const faqItems = [
   },
   {
     q: "Is SafetyWing or Heymondo cheaper for Japan?",
-    a: "We cannot say, because only one publishes a price. SafetyWing Essential is US$62.72 per 4 weeks at ages 10–39, and rises with age. Heymondo gives no price without a quote. Get a quote for your exact dates and compare the cover as well as the price. Read on 6 Nov 2026.",
+    a: "There is no way to tell in advance, because only one publishes a price. SafetyWing Essential is US$62.72 per 4 weeks at ages 10–39, and rises with age. Heymondo gives no price without a quote. Get a quote for your exact dates and compare the cover as well as the price. Read on 6 Nov 2026.",
   },
   {
     q: "Does Heymondo or SafetyWing cover skiing in Japan?",

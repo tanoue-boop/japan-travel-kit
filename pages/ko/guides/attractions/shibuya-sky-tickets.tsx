@@ -459,7 +459,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             가격은 {CHECKED}에 확인했으며, 시부야 스크램블 스퀘어가 2025년 2월 27일에 낸 공지 &ldquo;SHIBUYA SKY
             입장 티켓 개정에 대하여(SHIBUYA SKY 入場チケットの改定について)&rdquo;에 따라 2025년 4월 1일 입장분부터
             적용됩니다. 어린이 가격과 창구 전용 규정은 운영사 티켓 페이지 기준입니다. 결제 전에 다시 확인하세요
-            — 이 수치는 저희가 확인한 다른 모든 명소와 함께{" "}
+            — 이 수치는 이 가이드에서 다루는 다른 모든 명소와 함께{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
               일본 명소 티켓 가격 표(영어)
             </Link>
@@ -652,7 +652,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             <li><strong>악천후:</strong> 날씨가 나빠지면 옥상은 예고 없이 닫힐 수 있고 실내 층은 계속 운영됩니다. 예약 전에 본인 티켓의 조건을 확인하세요.</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            운영사 티켓 FAQ의 검색 색인 기준, 2026년 11월 6일 확인. 실제 페이지는 자동으로 읽을 수 없어 당일 규정을 다시 확인하세요.
+            운영사 티켓 FAQ의 검색 색인 기준, 2026년 11월 6일 확인. 규정은 바뀔 수 있으니 당일 실제 페이지에서 다시 확인하세요.
           </p>
         </section>
 

@@ -131,7 +131,7 @@ const numberRows = [
     number: "Yes — the listing states it “also gives you a Japanese phone number”, with domestic calls and SMS",
     card: "No — but in-person ID verification is required, at a select airport counter or the Shinjuku office",
     term: "1 to 90 days, the ceiling on every travel product in Japan; nothing to cancel",
-    price: "Priced separately from the data-only travel eSIM, which is from ¥1,250 (¥1,375 tax incl.) — we quote no figure for the voice version because the company publishes none we could read",
+    price: "Priced separately from the data-only travel eSIM, which is from ¥1,250 (¥1,375 tax incl.) — no figure is quoted for the voice version because the company's pages publish none",
   },
   {
     product: "Sakura Mobile Data Only monthly (resident)",
@@ -159,7 +159,7 @@ const numberRows = [
     number: `${esimSpec("airalo").phoneNumberShort} — all three, on their own pages`,
     card: "No",
     term: "Plan lengths run in days; no contract",
-    price: `From ${CHEAPEST_ESIM_FROM} across the four providers we price`,
+    price: `From ${CHEAPEST_ESIM_FROM} across the four providers compared here`,
   },
 ];
 
@@ -188,7 +188,7 @@ const useRows = [
     published:
       "Sakura Mobile states its numbers are ones “you can use to open your bank account and rent an apartment”.",
     verdict:
-      "Letting agents and guarantor companies in Japan contact applicants by phone, and the application forms have a mobile field. We quote no agency's own rule here because there is no single published one to quote.",
+      "Letting agents and guarantor companies in Japan contact applicants by phone, and the application forms have a mobile field. No agency's own rule is quoted here because there is no single published one to quote.",
   },
   {
     task: "A part-time job application",
@@ -214,7 +214,7 @@ const useRows = [
 const steps = [
   {
     title: "Work out whether you need a number at all, before you buy anything",
-    desc: `If the trip is a holiday and the list is maps, messaging, translation and email, the answer is no, and a data eSIM from ${CHEAPEST_ESIM_FROM} across the providers we price is the cheapest way to have all four working on landing. If anything on your list is a bank, a tenancy, a job, a clinic or a Japanese SMS code, the answer is yes and the rest of these steps apply.`,
+    desc: `If the trip is a holiday and the list is maps, messaging, translation and email, the answer is no, and a data eSIM from ${CHEAPEST_ESIM_FROM} across the providers compared here is the cheapest way to have all four working on landing. If anything on your list is a bank, a tenancy, a job, a clinic or a Japanese SMS code, the answer is yes and the rest of these steps apply.`,
   },
   {
     title: "Check whether you will hold a residence card",
@@ -249,7 +249,7 @@ const faqItems = [
   },
   {
     q: "Does a travel eSIM come with a Japanese phone number?",
-    a: `Almost never, and this is the single most common surprise in Japan travel planning. Every Japan plan from the four providers we track is data only: eSIM Go's plans state "No SMS or voice calls included. Data only."; Airalo's Japan plans are data only; Holafly's Japan page states there is no local phone number; and the Klook Japan eSIM listing states the service type is data only. Sakura Mobile is the exception and only on a specific product — its data-only travel eSIM carries no number, while its separate prepaid Voice + Data travel eSIM does, with domestic calls and SMS and an allowance the listing puts at up to 120 minutes on the shorter plans rising to up to 480 minutes at 61 days and over. That one requires in-person ID verification. Provider clauses read ${SPECS_CHECKED_AT}; Sakura Mobile read ${CHECKED}.`,
+    a: `Almost never, and this is the single most common surprise in Japan travel planning. Every Japan plan from the four providers compared here is data only: eSIM Go's plans state "No SMS or voice calls included. Data only."; Airalo's Japan plans are data only; Holafly's Japan page states there is no local phone number; and the Klook Japan eSIM listing states the service type is data only. Sakura Mobile is the exception and only on a specific product — its data-only travel eSIM carries no number, while its separate prepaid Voice + Data travel eSIM does, with domestic calls and SMS and an allowance the listing puts at up to 120 minutes on the shorter plans rising to up to 480 minutes at 61 days and over. That one requires in-person ID verification. Provider clauses read ${SPECS_CHECKED_AT}; Sakura Mobile read ${CHECKED}.`,
   },
   {
     q: "Do I need a Japanese phone number to open a bank account?",
@@ -418,7 +418,7 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             A <strong>Japan phone number for foreigners</strong> does not come with a traveller&apos;s data
-            eSIM: every Japan plan from the four providers we track is <strong>data only</strong>, and the
+            eSIM: every Japan plan from the four providers compared here is <strong>data only</strong>, and the
             number is a separate product rather than an add-on. Two routes carry one. With a{" "}
             <strong>residence card</strong>, the resident monthly plan — Sakura Mobile&apos;s Voice + Data SIM
             or eSIM from <strong>{VOICE_FROM}/month</strong> (¥3,278 tax incl.) plus a{" "}
@@ -534,7 +534,7 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
           <span className={styles.sectionLabel}>Travel eSIMs</span>
           <h2 className={styles.sectionTitle}>Does a Travel eSIM Come With a Japanese Phone Number?</h2>
           <p className={styles.bodyText}>
-            No, with one narrow exception. The four providers we price publish this plainly on their own
+            No, with one narrow exception. The four providers compared here publish this plainly on their own
             pages: eSIM Go&apos;s Japan plans state{" "}
             <strong>&ldquo;No SMS or voice calls included. Data only.&rdquo;</strong>; Airalo&apos;s Japan
             plans are data only; Holafly&apos;s Japan page states there is no local phone number; and the
@@ -577,7 +577,7 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
           <span className={styles.sectionLabel}>What it unlocks</span>
           <h2 className={styles.sectionTitle}>Do I Need a Japanese Phone Number to Open a Bank Account?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Not according to any condition we could find published. The table separates what an institution
+            Not according to any published condition in the sources checked. The table separates what an institution
             actually states in writing from what is merely difficult without a number, because the two get
             run together everywhere else and they are not the same thing.
           </p>

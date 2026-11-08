@@ -802,8 +802,8 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             Sakura Mobile&apos;s {THIRTY_DAY}, and that gap is the whole argument: Airalo is a data-only eSIM
             marketplace, Sakura Mobile is a Japanese carrier reseller with airport counters, physical SIMs and
             an optional phone number. Klook sells a Japan eSIM of its own, which is worth opening if you are
-            already booking Japan tickets there — we quote no price for it, because its listing blocks
-            automated reads.
+            already booking Japan tickets there — no price is quoted for it here, because Klook prices
+            change by date.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -866,7 +866,7 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             tickets and transport you are already booking there, and nothing to collect on arrival.{" "}
             <strong>Need a Japanese phone number, a physical SIM, or a month or more in Japan?</strong> That is
             Sakura Mobile, and the premium buys something Klook and Airalo do not sell. No Klook price appears
-            here: its listing could not be read automatically on {klookEsim.checkedAt}, so compare it against
+            here: Klook prices change by date (listing checked {klookEsim.checkedAt}), so compare it against
             the figures above on the listing itself.
           </p>
         </section>

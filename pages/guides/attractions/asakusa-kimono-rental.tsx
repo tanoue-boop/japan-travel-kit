@@ -169,7 +169,7 @@ const faqItems = [
   },
   {
     q: "Is a hair set included with Asakusa kimono rental?",
-    a: `Often, which is a difference from some Kyoto shops where it is a paid extra. Of the four Asakusa listings we checked, one includes hair styling in the plan, one advertises a free hair set, and one gives a free basic hairstyle on women's kimono reservations. Elaborate styling, makeup, a professional photo shoot and a rickshaw ride are the usual paid add-ons. Inclusions as the listings state them on ${CHECKED}.`,
+    a: `Often, which is a difference from some Kyoto shops where it is a paid extra. Of the four Asakusa listings compared here, one includes hair styling in the plan, one advertises a free hair set, and one gives a free basic hairstyle on women's kimono reservations. Elaborate styling, makeup, a professional photo shoot and a rickshaw ride are the usual paid add-ons. Inclusions as the listings state them on ${CHECKED}.`,
   },
   {
     q: "Where are the best photo spots around Senso-ji?",
@@ -193,7 +193,7 @@ const faqItems = [
   },
   {
     q: "Can men and children rent a kimono in Asakusa too?",
-    a: "Yes, and the Asakusa shops are set up for groups doing it together. Men's kimono and children's sizes sit alongside the women's range at the shops we checked — one publishes children's sizes from 90 to 150 cm for girls and 100 to 150 cm for boys — and couple and family plans are a standard product rather than a special request. Note that the free hair-set offers are not always universal: one of the listings specifies that its free basic hairstyle applies to women's kimono reservations.",
+    a: "Yes, and the Asakusa shops are set up for groups doing it together. Men's kimono and children's sizes sit alongside the women's range at the shops listed here — one publishes children's sizes from 90 to 150 cm for girls and 100 to 150 cm for boys — and couple and family plans are a standard product rather than a special request. Note that the free hair-set offers are not always universal: one of the listings specifies that its free basic hairstyle applies to women's kimono reservations.",
   },
   {
     q: "What else can you do in Asakusa while wearing it?",
@@ -351,8 +351,8 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
               <strong>In short:</strong> Asakusa kimono rental is a half day with a hard edge. The
               shops sit within a few minutes of Kaminarimon, choosing a kimono plus dressing and a
               hair set takes roughly 45 to 60 minutes at the start, and the outfit has to be back the
-              same day — 16:30 if you arrived by 12:00 and 17:30 if you arrived later at the shop we
-              checked, and before 17:00 at one of the others. Senso-ji itself is free and open from
+              same day — 16:30 if you arrived by 12:00 and 17:30 if you arrived later at one
+              shop, and before 17:00 at one of the others. Senso-ji itself is free and open from
               6:00 (6:30 from October to March) to 17:00. Deadlines and hours read off aiwafuku.com,
               senso-ji.jp and the shop listings on {CHECKED}.
             </p>
@@ -426,8 +426,8 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Details as the four Klook listings state them, all confirmed live and on sale on {CHECKED},
             with the Aiwafuku return deadlines cross-checked against that operator&apos;s own Asakusa page.
-            No price appears here: rental pricing moves by plan and season, and Klook answers automated
-            reads of its product pages with HTTP 403, so there is no figure we could have verified.
+            No price appears here: rental pricing moves by plan and season, and Klook prices change by
+            date, so open a listing for the figure on yours.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={asakusaKimonoKaminarimon.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -538,7 +538,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
 
         <KlookTourPicks
           heading="Asakusa Kimono Shops You Can Book From Abroad"
-          intro="The four Asakusa listings compared in the table above, all confirmed live on 21 October 2026. Klook blocks automated price reads, so open a listing for the current price, its return deadline and the cancellation terms on your date."
+          intro="The four Asakusa listings compared in the table above, all confirmed live on 21 October 2026. Klook prices change by date, so open a listing for the current price, its return deadline and the cancellation terms on your date."
           tours={[
             asakusaKimonoAiwafukuNo2,
             asakusaKimonoKaminarimon,

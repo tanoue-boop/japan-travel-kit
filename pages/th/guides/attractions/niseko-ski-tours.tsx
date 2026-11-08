@@ -604,7 +604,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-ชื่อพื้นที่และวันปิดของ Niseko United ตัวเลขเส้นทาง Grand HIRAFU ของ Grand Hirafu: 22 เส้นทาง (เริ่มต้น 9 กลาง 6 สูง 7) กระเช้า 2 แห่ง เก้าอี้ลิฟต์ 7 แห่ง ความสูงต่าง 940 ม. จากยอด 1,200 ม. ถึงฐาน 260 ม. 135 เฮกตาร์ เส้นทางยาวสุด 5,300 ม. และชันสุด 40° ตรวจสอบทั้งคู่เมื่อ {OWN} Niseko United ระบุว่าที่พักยอดนิยมและช่วงวันหยุดพีกเต็มเร็ว แต่ไม่เผยแพร่ว่าเร็วแค่ไหน เราจึงไม่ระบุเช่นกัน
+ชื่อพื้นที่และวันปิดของ Niseko United ตัวเลขเส้นทาง Grand HIRAFU ของ Grand Hirafu: 22 เส้นทาง (เริ่มต้น 9 กลาง 6 สูง 7) กระเช้า 2 แห่ง เก้าอี้ลิฟต์ 7 แห่ง ความสูงต่าง 940 ม. จากยอด 1,200 ม. ถึงฐาน 260 ม. 135 เฮกตาร์ เส้นทางยาวสุด 5,300 ม. และชันสุด 40° ตรวจสอบทั้งคู่เมื่อ {OWN} Niseko United ระบุว่าที่พักยอดนิยมและช่วงวันหยุดพีกเต็มเร็ว แต่ไม่เผยแพร่ว่าเร็วแค่ไหน ที่นี่จึงไม่ระบุเช่นกัน
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

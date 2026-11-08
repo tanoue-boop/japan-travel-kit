@@ -534,7 +534,7 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Sources, all read {CHECKED}: Wise&apos;s US, UK, Eurozone, Australian and Canadian card-fee pages and its
             UK pricing page; Monzo&apos;s fee information; Starling&apos;s current-account page; the three US issuers&apos;
-            own card pages. Revolut and Charles Schwab both return HTTP 403 to an automated read, so no figure for
+            own card pages. Revolut and Charles Schwab could not be checked on their own pages, so no figure for
             either appears in this table — check their own fees pages before you rely on them.
           </p>
           <a href={WISE_CARD_CTA} className={styles.verdictBtn} target="_blank" rel={WISE_REL} style={{ marginTop: "1.25rem" }}>

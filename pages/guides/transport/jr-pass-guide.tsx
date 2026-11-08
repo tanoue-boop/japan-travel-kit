@@ -288,7 +288,7 @@ const faqItems = [
   },
   {
     q: "Is the JR Pass worth it in 2026?",
-    a: `For most travellers, no — and less often than before October 2026. The 7-day Ordinary pass went from ¥29,650 to ¥50,000 in October 2023 and from ¥50,000 to ¥53,000 in October 2026, so you now need roughly ¥53,000 of covered JR travel in a week to get your money back (¥50,000 if you buy on the official site). On our own JR reference fares, the Golden Route — Tokyo, Kyoto, Osaka and back — is about ¥29,300, and even Tokyo → Kyoto → Hiroshima → Tokyo comes to about ¥44,500, ¥8,500 short. The October rise pushed a route that used to clear the bar below it: adding Kanazawa to that loop reaches about ¥53,300, which beats ¥53,000 by ¥300 rather than ¥50,000 by ¥3,300. The pass wins when a trip strings several regions together — Kyushu plus Tohoku in one week comes to about ¥69,600.`,
+    a: `For most travellers, no — and less often than before October 2026. The 7-day Ordinary pass went from ¥29,650 to ¥50,000 in October 2023 and from ¥50,000 to ¥53,000 in October 2026, so you now need roughly ¥53,000 of covered JR travel in a week to get your money back (¥50,000 if you buy on the official site). On this guide's JR reference fares, the Golden Route — Tokyo, Kyoto, Osaka and back — is about ¥29,300, and even Tokyo → Kyoto → Hiroshima → Tokyo comes to about ¥44,500, ¥8,500 short. The October rise pushed a route that used to clear the bar below it: adding Kanazawa to that loop reaches about ¥53,300, which beats ¥53,000 by ¥300 rather than ¥50,000 by ¥3,300. The pass wins when a trip strings several regions together — Kyushu plus Tohoku in one week comes to about ¥69,600.`,
   },
   {
     q: "How do I work out whether the JR Pass is worth it for my trip?",
@@ -592,7 +592,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Those two links go to Klook, which pays us a commission at no extra cost to you. No Klook price
-            appears on this page: its product pages block automated checks, so every figure above is the JR
+            appears on this page: Klook prices change by date, so every figure above is the JR
             Group&apos;s own.
           </p>
         </section>
@@ -705,7 +705,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             Verdicts are against the ¥53,000 agency price in force since 1 October 2026; buy on the official
             site at ¥50,000 and the Kanazawa loop becomes a clearer yes while nothing else changes. Tokyo–Kyoto
             at ¥13,970 one way is a confirmed fare; the other totals are sums of the rounded reference fares in
-            our own JR dataset, as of September 2026, for covered (Hikari/Sakura) services — not an operator
+            this site&apos;s own JR dataset, as of September 2026, for covered (Hikari/Sakura) services — not an operator
             price table. They will vary by route, season and seat reservations, so confirm current fares before
             deciding. Figures exclude non-covered subways, private rail, and the Nozomi supplement.
           </p>
@@ -850,9 +850,9 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Those three links go to Klook, which pays us a commission at no extra cost to you. We quote the
-            JR companies&apos; own prices above rather than Klook&apos;s, because Klook&apos;s product pages
-            block automated checks.
+            Those three links go to Klook, which pays us a commission at no extra cost to you. The prices above are the
+            JR companies&apos; own rather than Klook&apos;s, because Klook&apos;s prices
+            change by date.
           </p>
         </section>
 
@@ -957,8 +957,8 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Klook sells the nationwide pass as a reseller, which is the agency column above rather than the
-            official-site column — so decide which channel you want before you click. We do not quote
-            Klook&apos;s own figure here: its product pages block automated checks, so the only prices on this
+            official-site column — so decide which channel you want before you click. Klook&apos;s own
+            figure is not quoted here: Klook prices change by date, so the only prices on this
             page are the JR companies&apos;. Both links pay us a commission at no extra cost to you.
           </p>
         </section>

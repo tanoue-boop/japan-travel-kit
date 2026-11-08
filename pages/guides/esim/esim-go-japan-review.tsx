@@ -69,7 +69,7 @@ const cons = [
 const whoFor = [
   {
     title: "Anyone buying on price",
-    desc: `eSIM Go undercuts Airalo, Holafly and Sakura Mobile at the tiers we track: ${priceLabel(ENTRY)} to start, ${TEN_GB} for 10 GB and ${priceLabel(MONTH_20)} for ${dataLabel(MONTH_20)} over 30 days. Simbye is the one provider here that lists lower: ${priceFromLabel("simbye")} to start and ${priceAtLeastLabel("simbye", 10)} at 10 GB.`,
+    desc: `eSIM Go undercuts Airalo, Holafly and Sakura Mobile at the tiers compared here: ${priceLabel(ENTRY)} to start, ${TEN_GB} for 10 GB and ${priceLabel(MONTH_20)} for ${dataLabel(MONTH_20)} over 30 days. Simbye is the one provider here that lists lower: ${priceFromLabel("simbye")} to start and ${priceAtLeastLabel("simbye", 10)} at 10 GB.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -284,7 +284,7 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
                 live chat and in-app top-up.
               </strong>{" "}
               eSIM Go — sold to consumers as Breeze — is under Airalo, Holafly and Sakura Mobile at
-              the tiers we track, though Simbye now lists lower: {priceLabel(ENTRY)} for {ENTRY?.name}, {TEN_GB} for 10 GB and{" "}
+              the tiers compared here, though Simbye now lists lower: {priceLabel(ENTRY)} for {ENTRY?.name}, {TEN_GB} for 10 GB and{" "}
               {priceLabel(MONTH_20)} for {MONTH_20?.name}, against Airalo&apos;s {AIRALO_ENTRY}{" "}
               entry and {AIRALO_20} for 20 GB. It
               runs on {NETWORK}, which is unusual at this price, and tethering is stated on every

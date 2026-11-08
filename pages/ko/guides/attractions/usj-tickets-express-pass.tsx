@@ -535,8 +535,8 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            가격대를 적지 않는 이유: 가격을 보여 줄 두 곳을 읽을 수 없기 때문입니다. USJ 회원 티켓 페이지는{" "}
-            {CHECKED_USJ}에 자동 확인 요청에 HTTP 503으로 응답했고, 공식 WEB 티켓 스토어는 가상 대기실 뒤에
+            가격대를 적지 않는 이유: 가격을 보여 줄 두 곳 모두 이용할 수 없었기 때문입니다. USJ 회원 티켓 페이지는{" "}
+            {CHECKED_USJ}에 서버 오류(HTTP 503)를 반환했고, 공식 WEB 티켓 스토어는 가상 대기실 뒤에
             있습니다. 제3자 페이지의 금액을 옮겨 적는 대신, 이 가이드는 USJ의 가격 규칙을 싣고 그날 결제 화면의
             가격을 확인하도록 안내합니다.
           </p>
@@ -735,7 +735,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <li><strong>싱글 라이더:</strong> 익스프레스 패스와는 별개의 제도로, 일행과 떨어져 빈 좌석을 채웁니다. 운영하지 않는 날과 시간이 있으니 각 어트랙션의 크루에게 문의하세요.</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            USJ의 익스프레스 패스·FAQ 페이지의 검색 색인 기준, 2026년 11월 6일 확인. 실제 페이지는 자동으로 읽을 수 없어 본인 티켓의 시간을 확인하세요.
+            USJ의 익스프레스 패스·FAQ 페이지의 검색 색인 기준, 2026년 11월 6일 확인. 시간은 바뀔 수 있으니 본인 티켓의 시간을 확인하세요.
           </p>
         </section>
 

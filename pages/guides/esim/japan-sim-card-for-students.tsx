@@ -154,8 +154,8 @@ const compareRows = [
   },
   {
     product: "A tourist eSIM (Klook, Airalo, Holafly, eSIM Go)",
-    price: `From ${CHEAPEST_ESIM_FROM} across the four providers we price`,
-    number: "No — every Japan plan we track is data only",
+    price: `From ${CHEAPEST_ESIM_FROM} across the four providers compared here`,
+    number: "No — every Japan plan compared here is data only",
     needs: "An eSIM-capable handset and nothing else",
     term: "Plan lengths run in days; no contract to end",
   },
@@ -182,7 +182,7 @@ const documentRows = [
   {
     route: "No residence card yet at all",
     documents: "Passport only",
-    catch: `A travel product, then: a travel eSIM from ${CHEAPEST_ESIM_FROM} across the providers we price, or Sakura Mobile's own from ¥1,250 (¥1,375 tax incl.). Data only, capped at 90 days, nothing to cancel.`,
+    catch: `A travel product, then: a travel eSIM from ${CHEAPEST_ESIM_FROM} across the providers compared here, or Sakura Mobile's own from ¥1,250 (¥1,375 tax incl.). Data only, capped at 90 days, nothing to cancel.`,
   },
 ];
 
@@ -220,7 +220,7 @@ const timingRows = [
 const steps = [
   {
     title: "Buy a travel eSIM before you fly, and install the profile at home",
-    desc: `This is the only part of the sequence you can finish before leaving, and it is what stops arrival day being spent hunting an airport SSID with two cases. From ${CHEAPEST_ESIM_FROM} across the four providers we price, data only, no contract and nothing to cancel. Install the profile with the line switched off so it starts working when you land.`,
+    desc: `This is the only part of the sequence you can finish before leaving, and it is what stops arrival day being spent hunting an airport SSID with two cases. From ${CHEAPEST_ESIM_FROM} across the four providers compared here, data only, no contract and nothing to cancel. Install the profile with the line switched off so it starts working when you land.`,
   },
   {
     title: "Check what is actually on the back of your residence card",
@@ -259,7 +259,7 @@ const faqItems = [
   },
   {
     q: "Do I need a residence card to get a SIM in Japan?",
-    a: `For a resident monthly plan, in practice yes — for a travel product, no. Sakura Mobile's application page accepts three documents: a Residence Card or a My Number Card, each valid and showing your current address, for an eSIM QR by email or a SIM by delivery; or a passport, where you collect at an airport counter or its Shinjuku office. Its resident plan guide adds the detail that catches people out — the card "must be registered with your current address", and the card handed over at immigration has a blank address field until the ward office prints one on it. A travel eSIM needs nothing at all: Sakura Mobile's own data-only travel eSIM states no ID verification is required, and no tourist eSIM we price asks for a document either. Read on ${CHECKED}.`,
+    a: `For a resident monthly plan, in practice yes — for a travel product, no. Sakura Mobile's application page accepts three documents: a Residence Card or a My Number Card, each valid and showing your current address, for an eSIM QR by email or a SIM by delivery; or a passport, where you collect at an airport counter or its Shinjuku office. Its resident plan guide adds the detail that catches people out — the card "must be registered with your current address", and the card handed over at immigration has a blank address field until the ward office prints one on it. A travel eSIM needs nothing at all: Sakura Mobile's own data-only travel eSIM states no ID verification is required, and no tourist eSIM compared here asks for a document either. Read on ${CHECKED}.`,
   },
   {
     q: "How long does it take to get a SIM after arriving?",
@@ -267,7 +267,7 @@ const faqItems = [
   },
   {
     q: "Can students get a phone number in Japan?",
-    a: `Yes. A student status for a stay of more than 90 days is a mid- to long-term residence, which means a residence card, and a residence card is what a resident plan verifies against. Sakura Mobile's resident Voice + Data product issues what its own page calls "normal Japanese phone numbers (070, 080, 090) that you can use to open your bank account and rent an apartment", published from ${VOICE_FROM}/month (¥3,278 tax included) with a one-month minimum. Two things to know. It is a genuine mobile number rather than an 050 VoIP one, which the company notes is "often rejected for banking and apps". And it is the separate Voice + Data product, not an add-on — the Data Only plan and every tourist eSIM we price carry no number at any price. Read on ${CHECKED}.`,
+    a: `Yes. A student status for a stay of more than 90 days is a mid- to long-term residence, which means a residence card, and a residence card is what a resident plan verifies against. Sakura Mobile's resident Voice + Data product issues what its own page calls "normal Japanese phone numbers (070, 080, 090) that you can use to open your bank account and rent an apartment", published from ${VOICE_FROM}/month (¥3,278 tax included) with a one-month minimum. Two things to know. It is a genuine mobile number rather than an 050 VoIP one, which the company notes is "often rejected for banking and apps". And it is the separate Voice + Data product, not an add-on — the Data Only plan and every tourist eSIM compared here carry no number at any price. Read on ${CHECKED}.`,
   },
   {
     q: "Is there a student discount on a Japanese SIM card?",
@@ -522,8 +522,8 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Every Sakura Mobile figure is the company&apos;s own, read off sakuramobile.jp on {CHECKED}; each
             monthly price is a published &ldquo;from&rdquo; and the tier you pick moves it. Tourist eSIM
-            prices come from our daily feed, checked {PRICES_CHECKED}. No Klook price appears on this page:
-            Klook blocks automated reads of its product pages. Our{" "}
+            prices come from the daily price feed, checked {PRICES_CHECKED}. No Klook price appears on this page:
+            Klook prices change by date, so open a listing for yours. Our{" "}
             <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>
               Sakura Mobile review
             </Link>{" "}

@@ -625,7 +625,7 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
               JR Pass guide
             </Link>
             . ICOCA &amp; HARUKA is left out: JR West&apos;s current English pages did not show a price for it
-            when we checked.
+            on the check date.
           </p>
         </section>
 

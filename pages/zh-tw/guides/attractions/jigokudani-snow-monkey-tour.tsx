@@ -439,7 +439,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-時間出自公苑交通頁（{CHECKED} 查核）；票券內容出自長野電鐵的 Snow Monkey 頁面（2026 年 11 月 3 日查核）。<strong>關於票價：</strong>這裡不列新幹線、長電電車和巴士的日圓票價。JR 東日本官網沒有回傳可讀取的票價頁，長電的票價表只有我們無法讀取的 PDF，第三方對 2026-27 急行巴士的數字又彼此不一致，請在車站或業者官網確認。<Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>JR 東日本周遊券攻略（英文）</Link>算出了周遊券何時比單買到長野划算。
+時間出自公苑交通頁（{CHECKED} 查核）；票券內容出自長野電鐵的 Snow Monkey 頁面（2026 年 11 月 3 日查核）。<strong>關於票價：</strong>這裡不列新幹線、長電電車和巴士的日圓票價。JR 東日本官網沒有可查核的票價頁，長電的票價表只以 PDF 公布，第三方對 2026-27 急行巴士的數字又彼此不一致，請在車站或業者官網確認。<Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>JR 東日本周遊券攻略（英文）</Link>算出了周遊券何時比單買到長野划算。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

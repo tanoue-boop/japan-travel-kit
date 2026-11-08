@@ -309,7 +309,7 @@ const checklistRows = [
   {
     item: "Hotels (Tokyo 3 nights, Kyoto 1)",
     opens: "Book as soon as your flights are fixed",
-    fills: "Cherry-blossom and autumn-leaf weeks in Kyoto are the first to tighten; we print no hotel price",
+    fills: "Cherry-blossom and autumn-leaf weeks in Kyoto are the first to tighten; no hotel price is listed here",
     source: "Klook hotel search, by area",
   },
   {
@@ -352,7 +352,7 @@ const faqItems = [
   },
   {
     q: "How much does a 5-day trip to Japan cost?",
-    a: `The transport and tickets on this plan come to from ${yen(PLAN_TOTAL)} per adult, before hotels and food. That is ${yen(TOKYO_IN_KANSAI_OUT)} of trains and ${yen(TICKETS)} of tickets, each dated in the table on this page. We print no hotel or food average here, because those move by season and party size; our Japan travel budget guide works through them.`,
+    a: `The transport and tickets on this plan come to from ${yen(PLAN_TOTAL)} per adult, before hotels and food. That is ${yen(TOKYO_IN_KANSAI_OUT)} of trains and ${yen(TICKETS)} of tickets, each dated in the table on this page. No hotel or food average is given here, because those move by season and party size; our Japan travel budget guide works through them.`,
   },
   {
     q: "Where should I stay for 5 days in Japan?",

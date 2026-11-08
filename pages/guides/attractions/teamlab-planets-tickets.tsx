@@ -80,7 +80,7 @@ const hoursRows = [
   },
   {
     item: "Time to allow",
-    detail: "Not stated officially. We plan on 1.5–2 hours, including lockers and drying off",
+    detail: "Not stated officially. Plan on 1.5–2 hours, including lockers and drying off",
     source: "Our planning figure",
   },
   {
@@ -173,7 +173,7 @@ const faqItems = [
   },
   {
     q: "How long do you need at teamLab Planets?",
-    a: `teamLab states no visit length. We plan on 1.5 to 2 hours inside, including the lockers and drying off. Add the 30 to 60 minute wait the official store warns about, and do not book anything tight straight afterwards. At busy times the official store says guests who have stayed a long time may be asked to move on. Read on ${CHECKED}.`,
+    a: `teamLab states no visit length. Plan on 1.5 to 2 hours inside, including the lockers and drying off. Add the 30 to 60 minute wait the official store warns about, and do not book anything tight straight afterwards. At busy times the official store says guests who have stayed a long time may be asked to move on. Read on ${CHECKED}.`,
   },
   {
     q: "What are teamLab Planets opening hours, and when is it closed?",
@@ -685,7 +685,7 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             above are untouched. */}
         <KlookTourPicks
           heading="Book It For the Same Day in Toyosu and Odaiba"
-          intro="A Planets slot fills an hour and a half of a day out east, and the Yurikamome line that drops you at the door carries on into Odaiba. The subway pass covers the Metro leg to Toyosu but not the Yurikamome; the other three are all within a short ride of the museum. Klook blocks automated price reads, so open a listing for the figure and the times on your own date."
+          intro="A Planets slot fills an hour and a half of a day out east, and the Yurikamome line that drops you at the door carries on into Odaiba. The subway pass covers the Metro leg to Toyosu but not the Yurikamome; the other three are all within a short ride of the museum. Klook prices change by date, so open a listing for the figure and the times on your own date."
           tours={[tokyoJoypolisPassport, tokyoBaySunsetBoatCruise, tsukijiCultureFoodTour, tokyoSubwayTicket]}
         />
 

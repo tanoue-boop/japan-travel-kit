@@ -206,7 +206,7 @@ const steps = [
 const faqItems = [
   {
     q: "How much is Kyoto kimono rental?",
-    a: "We do not quote a figure, and that is deliberate: rental pricing moves by plan, by grade of kimono and by season, and the booking platforms block automated price reads, so there is no number we could have verified for your date. What we can tell you is what changes it. The grade of the kimono is the main lever; a hair set is included free on several Kyoto listings rather than charged; a photo shoot and Japanese-style makeup are the usual paid extras; summer yukata plans are generally the cheaper end; and couple plans normally beat two separate bookings. Open a shop's listing for the current figure on your date.",
+    a: "No figure is quoted here, and that is deliberate: rental pricing moves by plan, by grade of kimono and by season, and the booking platforms change prices by date, so no single number holds for your date. What can be said is what changes it. The grade of the kimono is the main lever; a hair set is included free on several Kyoto listings rather than charged; a photo shoot and Japanese-style makeup are the usual paid extras; summer yukata plans are generally the cheaper end; and couple plans normally beat two separate bookings. Open a shop's listing for the current figure on your date.",
   },
   {
     q: "What is included in a Kyoto kimono rental?",
@@ -485,8 +485,8 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Shop locations and walking times are as the individual listings state them, read on{" "}
             {CHECKED}. No rental price is quoted on this page: pricing moves by plan, grade and
-            season, and the booking platforms block automated price reads, so there is no figure
-            we could verify for your date.
+            season, and the booking platforms change prices by date, so open a listing for the
+            figure on your date.
           </p>
           <div className={styles.whoForGrid} style={{ marginTop: "1.5rem" }}>
             {whoFor.map((item) => (
@@ -716,7 +716,7 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
 
         <KlookTourPicks
           heading="Kyoto Shops, by Area"
-          intro="The same decision as the table above, as four bookings. The first two are Higashiyama — inside the walking route; the third is Arashiyama; the fourth is the station, for a day that starts and ends on a shinkansen. Klook blocks automated price reads, so open a listing for the current figure, the return deadline and what the plan includes."
+          intro="The same decision as the table above, as four bookings. The first two are Higashiyama — inside the walking route; the third is Arashiyama; the fourth is the station, for a day that starts and ends on a shinkansen. Klook prices change by date, so open a listing for the current figure, the return deadline and what the plan includes."
           tours={[kyotoKimonoAiwafukuGion, kyotoKimonoAiwafukuKiyomizu, kyotoKimonoOokiniArashiyama, kyotoKimonoAiwafukuStation]}
         />
 

@@ -242,7 +242,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="同一趟旅程可以一起訂的行程"
-          intro="兩間美術館都只佔東京一天的一部分。這三項涵蓋地鐵、附導覽的市區一日遊，以及離開東京的一日遊。Klook 會擋自動讀取價格，所以請打開頁面查看你那一天的金額。"
+          intro="兩間美術館都只佔東京一天的一部分。這三項涵蓋地鐵、附導覽的市區一日遊，以及離開東京的一日遊。Klook 價格依日期而變，所以請打開頁面查看你那一天的金額。"
           tours={tours}
         />
 

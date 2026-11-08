@@ -160,7 +160,7 @@ const cashCons = [
 ];
 
 const cardPros = [
-  "Accepted at every chain, department store and hotel we could find a published list for",
+  "Accepted at every chain, department store and hotel with a published list in the sources checked",
   "Opens ticket gates on Tokyo Metro, Toei and eight other Kanto operators, and on Osaka Metro",
   "Settles the large, plannable costs — flights, hotels, passes, tours — before you leave home",
   "A multi-currency card gives you the mid-market rate instead of a desk rate",
@@ -227,7 +227,7 @@ const faqItems = [
   },
   {
     q: "Can I pay temple and shrine admission by card in Japan?",
-    a: `Assume not. We could not find a major temple that publishes card acceptance for admission: Kiyomizu-dera's own FAQ sets out who pays the fee and who is exempt — teachers on school trips, holders of a disability certificate and their companions — and says nothing about payment method, and no equivalent published statement exists for the big Kyoto or Tokyo sites. Offertory boxes are cash by definition. A few hundred yen in coins and one ¥1,000 note per temple is the practical amount, which is why the cash figure on this page is per day rather than per trip. Checked ${CHECKED}.`,
+    a: `Assume not. No major temple in the sources checked publishes card acceptance for admission: Kiyomizu-dera's own FAQ sets out who pays the fee and who is exempt — teachers on school trips, holders of a disability certificate and their companions — and says nothing about payment method, and no equivalent published statement exists for the big Kyoto or Tokyo sites. Offertory boxes are cash by definition. A few hundred yen in coins and one ¥1,000 note per temple is the practical amount, which is why the cash figure on this page is per day rather than per trip. Checked ${CHECKED}.`,
   },
   {
     q: "Do I need cash in Japan?",
@@ -243,7 +243,7 @@ const faqItems = [
   },
   {
     q: "Does Japan prefer Visa or Mastercard?",
-    a: `Neither, in any way that affects you: every published list we checked includes both. Seven Bank's ATM brand list names Visa, PLUS, Mastercard, Maestro and Cirrus together; km Taxi names VISA and Mastercard together; Tokyo Metro's Tap to Ride names Visa and Mastercard together. Where the lists get shorter it is American Express, Diners Club and Discover that drop off first, and Seven Bank adds the caveat that a card carrying an accepted mark may still be declined. JCB is Japan's own network and is accepted everywhere, but few travellers hold one.`,
+    a: `Neither, in any way that affects you: every published list checked for this guide includes both. Seven Bank's ATM brand list names Visa, PLUS, Mastercard, Maestro and Cirrus together; km Taxi names VISA and Mastercard together; Tokyo Metro's Tap to Ride names Visa and Mastercard together. Where the lists get shorter it is American Express, Diners Club and Discover that drop off first, and Seven Bank adds the caveat that a card carrying an accepted mark may still be declined. JCB is Japan's own network and is accepted everywhere, but few travellers hold one.`,
   },
   {
     q: "Do contactless payments work on Japanese trains?",

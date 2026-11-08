@@ -101,7 +101,7 @@ const picks = [
     affiliateUrl: SIMBYE_URL,
     ctaLabel: "Get Simbye Japan eSIM →",
     pros: [
-      "Lowest list price of the plans we track at 1 GB, 5 GB and 10 GB",
+      "Lowest list price of the plans compared here at 1 GB, 5 GB and 10 GB",
       "NTT docomo, KDDI/au, SoftBank and Rakuten Mobile",
       "Tethering allowed on every Japan plan",
       "Top-up without changing the eSIM on fixed plans",
@@ -213,7 +213,7 @@ const dealTips = [
   {
     trip: "Short trip (up to 7 days)",
     pick: simbyeCheapest ? `Simbye ${simbyeCheapest.name} — ${priceOf(simbyeCheapest)}` : "Simbye 1 GB",
-    why: "Covers light tourist data use (maps, messaging) for the lowest outlay we track.",
+    why: "Covers light tourist data use (maps, messaging) for the lowest outlay in this comparison.",
     url: SIMBYE_URL,
   },
   {
@@ -243,11 +243,11 @@ const faqItems = [
   },
   {
     q: "Is an eSIM cheaper than a physical SIM in Japan?",
-    a: `Yes, on published prices. Sakura Mobile's Travel SIM starts at ¥3,850 with tax and its Travel eSIM at ¥1,375 (read on sakuramobile.jp on 6 Nov 2026), and the cheapest eSIM we track is ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "under $2"}. A physical SIM makes sense when your phone cannot take an eSIM; our airport SIM card guide lists where to buy one on arrival.`,
+    a: `Yes, on published prices. Sakura Mobile's Travel SIM starts at ¥3,850 with tax and its Travel eSIM at ¥1,375 (read on sakuramobile.jp on 6 Nov 2026), and the cheapest eSIM compared here is ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "under $2"}. A physical SIM makes sense when your phone cannot take an eSIM; our airport SIM card guide lists where to buy one on arrival.`,
   },
   {
     q: "What is the cheapest eSIM for Japan?",
-    a: `As of ${pricesCheckedAt}, ${cheapestOverall ? `${cheapestOverall.provider} is the cheapest Japan eSIM we track, at ${priceOf(cheapestOverall)} for ${cheapestOverall.name}` : "Simbye is usually the cheapest Japan eSIM"}. eSIM Go starts at ${p(esimgoCheapest)} and Airalo at ${p(airaloCheapest)}. All three are data-only eSIMs installed from a QR code or link. Prices on this page are re-checked every day.`,
+    a: `As of ${pricesCheckedAt}, ${cheapestOverall ? `${cheapestOverall.provider} is the cheapest Japan eSIM compared here, at ${priceOf(cheapestOverall)} for ${cheapestOverall.name}` : "Simbye is usually the cheapest Japan eSIM"}. eSIM Go starts at ${p(esimgoCheapest)} and Airalo at ${p(airaloCheapest)}. All three are data-only eSIMs installed from a QR code or link. Prices on this page are re-checked every day.`,
   },
   {
     q: "Is a cheap eSIM reliable in Japan?",
@@ -274,7 +274,7 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/es
 const FROM = cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99";
 const TITLE = `Cheapest eSIM for Japan 2026: From ${FROM}, Ranked by Price`;
 const H1 = "Cheapest eSIM for Japan 2026: Lowest Price at Every Data Size";
-const DESCRIPTION = `The cheapest Japan eSIM plan we can confirm is ${FROM}, checked daily. Lowest price at 1, 3, 5, 10, 20 and 50 GB, plus price per GB by trip length.`;
+const DESCRIPTION = `The cheapest confirmed Japan eSIM plan is ${FROM}, checked daily. Lowest price at 1, 3, 5, 10, 20 and 50 GB, plus price per GB by trip length.`;
 
 export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -322,7 +322,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
               __html: productOfferJsonLd({
                 route: "/guides/esim/cheapest-esim-japan",
                 name: "Simbye Japan eSIM",
-                description: "Data-only Japan eSIM on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile, the lowest list price we track.",
+                description: "Data-only Japan eSIM on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile, the lowest list price in this comparison.",
                 brand: "Simbye",
                 currency: "USD",
                 lowPrice: Math.min(...SIMBYE_FIXED.map((plan) => plan.priceUsd)),
@@ -504,8 +504,8 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             Each cell is the provider&apos;s cheapest plan with <em>at least</em> that much data, in USD, read from the provider&apos;s
             official site on {pricesCheckedAt}. All plans are eSIM-only. Klook&apos;s listing shows
             from US$1.05 (read {klookEsim.specsCheckedAt}) before you choose days and data and does not say
-            which plan that is, so its row has no per-plan prices, it is not ranked here, and we make no
-            claim about whether a given plan undercuts the five above.{" "}
+            which plan that is, so its row has no per-plan prices, it is not ranked here, and no claim
+            is made about whether a given plan undercuts the five above.{" "}
             <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan sorted by price per GB →</Link>
           </p>
         </section>

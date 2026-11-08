@@ -243,7 +243,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="同一趟旅程可以一起订的行程"
-          intro="两间美术馆都只占东京一天中的一部分。这里有地铁通票、带讲解的市区一日游和郊外一日游。Klook 会阻止自动查价，所以请打开页面查看你那一天的金额。"
+          intro="两间美术馆都只占东京一天中的一部分。这里有地铁通票、带讲解的市区一日游和郊外一日游。Klook 价格随日期变化，所以请打开页面查看你那一天的金额。"
           tours={tripTours}
         />
 

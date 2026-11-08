@@ -124,7 +124,7 @@ const faqItems = [
   },
   {
     q: "Is the Peace Memorial Museum suitable for children?",
-    a: "We found no official age limit, and junior high students and younger enter free. Some exhibits show injured and dead people, and one Klook listing warns the imagery may disturb young children. Parents can decide by looking at the museum's site first. It also runs a peace education website for children.",
+    a: "The official sources checked give no age limit, and junior high students and younger enter free. Some exhibits show injured and dead people, and one Klook listing warns the imagery may disturb young children. Parents can decide by looking at the museum's site first. It also runs a peace education website for children.",
   },
   {
     q: "Can you bring a stroller to the Peace Memorial Museum?",
@@ -310,7 +310,7 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
           <p className={styles.bodyText}>
             The volunteer tours do not run from July to September, on heat stroke alert days, on 1–3 January,
             on 6 August or on 29 December, and tours inside the museum are suspended. Confirm at the museum,
-            as we read this schedule through a search index on {CHECKED}.
+            as this is the schedule as read on {CHECKED}.
           </p>
         </section>
 
@@ -494,7 +494,7 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
           <span className={styles.sectionLabel}>Children</span>
           <h2 className={styles.sectionTitle}>Can You Visit the Museum with Children?</h2>
           <p className={styles.bodyText}>
-            Yes. We found no official age limit, and the museum provides for young families. It does show the
+            Yes. The official sources checked give no age limit, and the museum provides for young families. It does show the
             effects of the bombing directly, however: survivors&apos; drawings on its site include injured and
             dead people, and one Klook listing warns that some imagery may disturb young children.
           </p>

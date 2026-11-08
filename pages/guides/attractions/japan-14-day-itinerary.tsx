@@ -446,7 +446,7 @@ const legs: Leg[] = [
             <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo">Kawaguchiko guide</Link>{" "}
             carries the bus and ropeway fares read off Fujikyu&apos;s own site, and our{" "}
             <Link href="/guides/attractions/mt-fuji-day-trip-tokyo">Mt. Fuji day trip guide</Link>{" "}
-            covers the Mt. Fuji Pass, which is {PRICES.mtFujiPass.adult} for one day on the figures we
+            covers the Mt. Fuji Pass, which is {PRICES.mtFujiPass.adult} for one day on the figures
             checked. For Hakone, the Freepass runs {PRICES.hakoneFreepass.adult} for two days from
             Shinjuku and there is no one-day version at all —{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo">the Hakone guide</Link>{" "}
@@ -725,7 +725,7 @@ const legs: Leg[] = [
         intro:
           "A short hop and then a day that a single pass covers almost entirely. The Osaka Amazing Pass is " +
           PRICES.osakaAmazingPass.adult +
-          " for one day and ¥3,300 for two on the figures we checked, and it bundles unlimited Osaka Metro and city buses with more than 40 free admissions — which is a genuinely different proposition from a Tokyo subway ticket.",
+          " for one day and ¥3,300 for two on the figures checked, and it bundles unlimited Osaka Metro and city buses with more than 40 free admissions — which is a genuinely different proposition from a Tokyo subway ticket.",
         stops: [
           {
             time: "Morning",
@@ -1091,11 +1091,11 @@ const faqItems = [
   },
   {
     q: "Is the JR Pass worth it for 2 weeks in Japan?",
-    a: `Not on this route. The 14-day Ordinary JAPAN RAIL PASS is ¥80,000 bought online and ¥84,000 as an overseas Exchange Order on the official prices we checked ${OWN}. This itinerary's long-distance travel is one Tokyo–Kyoto run, a short Kyoto–Osaka hop and — optionally — a return to Hiroshima, which does not come close to that figure. A pass earns its price when you are moving between regions every second or third day, not when you are living in four cities. Our JR Pass guide works the break-even through properly, and it is also worth knowing that the pass does not cover the Nozomi without a supplementary ticket issued only to pass holders, so a pass would push you onto the slower Hikari for the Day 7 leg.`,
+    a: `Not on this route. The 14-day Ordinary JAPAN RAIL PASS is ¥80,000 bought online and ¥84,000 as an overseas Exchange Order on the official prices checked ${OWN}. This itinerary's long-distance travel is one Tokyo–Kyoto run, a short Kyoto–Osaka hop and — optionally — a return to Hiroshima, which does not come close to that figure. A pass earns its price when you are moving between regions every second or third day, not when you are living in four cities. Our JR Pass guide works the break-even through properly, and it is also worth knowing that the pass does not cover the Nozomi without a supplementary ticket issued only to pass holders, so a pass would push you onto the slower Hikari for the Day 7 leg.`,
   },
   {
     q: "How do you get from Tokyo to Kyoto?",
-    a: `The Tokaido Shinkansen from Tokyo or Shinagawa Station. On JR Central's own figures, checked ${OWN}, the Nozomi reaches Kyoto in about 2 hours 15 minutes, the Hikari in about 2 hours 40 and the all-stops Kodama in about 3 hours 40. We do not print a single fare here: JR Central publishes its fare tables as PDFs we could not read on that date, and the figure moves with train type and season — so check your own date on Smart EX, on Klook's Tokyo-to-Kyoto rail page, or read the fare comparison in our Tokyo to Kyoto guide. Book a reserved seat rather than turning up, especially if you are carrying a large case: oversized baggage rows are limited and are reserved separately.`,
+    a: `The Tokaido Shinkansen from Tokyo or Shinagawa Station. On JR Central's own figures, checked ${OWN}, the Nozomi reaches Kyoto in about 2 hours 15 minutes, the Hikari in about 2 hours 40 and the all-stops Kodama in about 3 hours 40. No single fare is printed here: JR Central publishes its fare tables as PDFs, and the figure moves with train type and season — so check your own date on Smart EX, on Klook's Tokyo-to-Kyoto rail page, or read the fare comparison in our Tokyo to Kyoto guide. Book a reserved seat rather than turning up, especially if you are carrying a large case: oversized baggage rows are limited and are reserved separately.`,
   },
   {
     q: "How many days should you spend in Tokyo, Kyoto and Osaka?",
@@ -1111,7 +1111,7 @@ const faqItems = [
   },
   {
     q: "How much does 2 weeks in Japan cost in tickets and transport?",
-    a: `On the official prices in the table above, the city passes and admissions this plan actually uses — the 72-hour Tokyo Subway Ticket, Shibuya Sky (online, in the 15:00-onward band the sunset slot falls in), Skytree, teamLab Planets, Tokyo Tower, Kinkaku-ji, Todai-ji and a one-day Osaka Amazing Pass — come to ${ADMISSIONS_TOTAL_LABEL} for one adult. That excludes long-distance rail, the Day 6 pass, the optional Day 13 trip, and anything to do with hotels or food, none of which we quote figures for. Every row in that table is the operator's own published price with the date we read it.`,
+    a: `On the official prices in the table above, the city passes and admissions this plan actually uses — the 72-hour Tokyo Subway Ticket, Shibuya Sky (online, in the 15:00-onward band the sunset slot falls in), Skytree, teamLab Planets, Tokyo Tower, Kinkaku-ji, Todai-ji and a one-day Osaka Amazing Pass — come to ${ADMISSIONS_TOTAL_LABEL} for one adult. That excludes long-distance rail, the Day 6 pass, the optional Day 13 trip, and anything to do with hotels or food, none of which has a figure here. Every row in that table is the operator's own published price with the date it was read.`,
   },
   {
     q: "Should you fly home from Kansai or go back to Tokyo?",
@@ -1436,9 +1436,8 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             <strong>On the train itself.</strong> On JR Central&apos;s own figures, checked {OWN}, Tokyo
             to Kyoto is about <strong>2 hours 15 minutes</strong> on the Nozomi,{" "}
             <strong>2 hours 40 minutes</strong> on the Hikari and about{" "}
-            <strong>3 hours 40 minutes</strong> on the all-stops Kodama. We deliberately do not print a
-            single fare: JR Central publishes its fare tables only as PDF price lists that could not be
-            read on that date, and the figure moves with the train type and the season in any case.
+            <strong>3 hours 40 minutes</strong> on the all-stops Kodama. No single fare is printed here,
+            on purpose: JR Central publishes its fare tables only as PDF price lists, and the figure moves with the train type and the season in any case.
             Check your own date on the official Smart EX site, or on Klook&apos;s Tokyo-to-Kyoto rail
             page, and read the fare-by-fare comparison in our{" "}
             <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link>. The full
@@ -1568,7 +1567,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             on the timed tickets specifically: it checks out in English, takes foreign cards that the
             official Shibuya Sky site has rejected since July 2024, and keeps all fourteen days on one
             account. Read the cancellation terms on each listing before the date is fixed; they differ
-            by product, and we do not restate them here because they change.
+            by product, and they are not restated here because they change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -1585,7 +1584,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
 
         <KlookTourPicks
           heading="If You Would Rather Hand a Day to Somebody Else"
-          intro="Four of the fourteen days above work as a guided coach instead of a plan of your own — the Fuji or Hakone day, either Kyoto day, and the Nara day. Klook blocks automated price reads, so open a listing for the figure on your own date."
+          intro="Four of the fourteen days above work as a guided coach instead of a plan of your own — the Fuji or Hakone day, either Kyoto day, and the Nara day. Klook prices change by date, so open a listing for the figure on your own date."
           tours={[kyotoHighlightBusTour, kawaguchikoYamanakakoBusTour, kyotoNaraKiyomizuTour, osakaAmazingPass]}
         />
 

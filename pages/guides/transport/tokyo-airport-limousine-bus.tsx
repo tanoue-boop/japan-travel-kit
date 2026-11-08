@@ -521,7 +521,7 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off limousinebus.co.jp on {CHECKED}. A dash means the figure is not published on the
-            line page we read, not that the fare does not exist. Haneda lines also serve Toyosu,
+            line page checked, not that the fare does not exist. Haneda lines also serve Toyosu,
             Kichijoji, Shakujii-koen/Wakoshi, Takao/Hachioji/Hino and the
             Kameari/Koiwa/Ichinoe/Kasai route. For moving around once you are in town, our{" "}
             <Link href="/guides/transport/tokyo-transportation">getting around Tokyo guide</Link>{" "}
@@ -716,7 +716,7 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
 
         <KlookTourPicks
           heading="For the Day After You Land"
-          intro="Two Tokyo days booked on the same account as the bus ticket, for a first morning when the jet lag has not worn off and you would rather be driven. Klook blocks automated price reads, so open a listing for the current figure and the pick-up point."
+          intro="Two Tokyo days booked on the same account as the bus ticket, for a first morning when the jet lag has not worn off and you would rather be driven. Klook prices change by date, so open a listing for the current figure and the pick-up point."
           tours={[tokyoSightseeingBusTour, fujiHakoneDayTour]}
         />
 

@@ -224,7 +224,7 @@ const altRows = [
     option: "Flight, Haneda to Itami or Kansai",
     time: "No figure printed",
     cost: "Varies by date and airline",
-    verdict: "We could not read a published flight time on ANA's or JAL's own pages, so we do not print one. Add airport transfers at both ends before comparing it with the train.",
+    verdict: "ANA's and JAL's own pages checked do not give a published flight time, so none is printed here. Add airport transfers at both ends before comparing it with the train.",
     source: `ana.co.jp and jal.co.jp, ${OWN}`,
   },
 ];
@@ -550,7 +550,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             October 2026, the window Hikari figure from JR Tokai Tours&apos; station guide, and smartEX figures
             from smart-ex.jp&apos;s price tables dated 1 April 2025. On smartEX, peak dates add ¥200, the top
             season adds ¥400 and off-peak takes off ¥200. No Klook price appears here because Klook&apos;s
-            product pages block automated checks.
+            prices change by date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

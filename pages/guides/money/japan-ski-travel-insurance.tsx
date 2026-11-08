@@ -90,7 +90,7 @@ const skiRows = [
   {
     provider: "Heymondo",
     skiing: "Its published standard cover names sledding in ski resorts; its Adventure sports add-on list does not name downhill skiing either way.",
-    offPiste: "Not addressed on the published pages we could read, so treat it as unconfirmed rather than covered.",
+    offPiste: "Not addressed on the published pages checked, so treat it as unconfirmed rather than covered.",
     rescue: "The only one of the three with a named search-and-rescue benefit: up to US$10,000 if you are lost during the trip.",
     gear: "Baggage cover, with an electronic-equipment add-on; no named ski-equipment benefit.",
   },
@@ -507,10 +507,10 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             later.
           </p>
           <p className={styles.bodyText}>
-            <strong>Heymondo</strong> we cannot resolve from its published pages: its standard cover names
+            <strong>Heymondo</strong> is not resolved by its published pages: its standard cover names
             sledding in ski resorts and its Adventure sports add-on list names rafting, canyoning, diving
             under 20 m, bouldering to 8 m and trekking to 5,000 m, but not downhill skiing in either
-            direction. That is not the same as an exclusion, and we are not going to report it as one — but
+            direction. That is not the same as an exclusion, and it is not reported as one here — but
             it does mean a Japan ski trip is a case to get confirmed before you pay. Our{" "}
             <Link href="/guides/money/safetywing-vs-heymondo-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               SafetyWing vs Heymondo comparison

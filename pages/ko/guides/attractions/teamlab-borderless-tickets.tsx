@@ -157,14 +157,14 @@ const buyingRows = [
     factor: "해외 발급 카드",
     official: "보통 되지만 보장되지는 않습니다",
     klook: "해외 카드와 모바일 결제를 전제로 설계",
-    gyg: "확인하지 못함 — 결제 시 확인",
+    gyg: "확인되지 않음 — 결제 시 확인",
     door: "현장 카드 결제 가능",
   },
   {
     factor: "날짜 변경",
     official: "최대 3회까지 날짜 변경 가능",
     klook: "고른 클룩 옵션에 따라 다릅니다 — 결제 전에 확인하세요",
-    gyg: "확인하지 못함 — 옵션마다 다르니 결제 전에 읽으세요",
+    gyg: "확인되지 않음 — 옵션마다 다르니 결제 전에 읽으세요",
     door: "해당 없음",
   },
   {
@@ -542,7 +542,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             클룩은 팀랩의 공식 티켓 판매 파트너이므로 어느 창구를 거쳐도 입장권은 같습니다. 다른 것은 결제
             과정, 유연성, 그리고 당일까지 미뤘을 때의 가격입니다. GetYourGuide에서도 팀랩 보더리스를 팔지만 아래
-            열은 일부러 비워 두었습니다. 무엇을 확인했고 무엇을 확인하지 못했는지는 표 아래 주석을 보세요.
+            열은 일부러 비워 두었습니다. 무엇이 확인되었고 무엇이 확인되지 않았는지는 표 아래 주석을 보세요.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -571,8 +571,8 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             현장 추가 요금과 날짜 변경 횟수는 팀랩 공식 사이트 {CHECKED} 공지 기준입니다. 판매 플랫폼의 취소・변경
             조건은 옵션마다 다르므로 결제 전에 예약 페이지에서 확인하세요. GetYourGuide 열은 일부러 짧게
-            두었습니다. 팀랩 보더리스 상품 페이지가 있다는 것은 {GYG_CHECKED}에 확인했지만, GetYourGuide는 자동
-            조회를 차단하기 때문에 가격, 카드 처리, 변경 조건은 확인하지 못했습니다. 해당 칸에는 추측 대신
+            두었습니다. 팀랩 보더리스 상품 페이지가 있다는 것은 {GYG_CHECKED}에 확인했지만, 가격, 카드 처리,
+            변경 조건은 여기서 확인된 내용이 아니니 상품 페이지에서 확인하세요. 해당 칸에는 추측 대신
             그렇게 적었습니다.
           </p>
         </section>

@@ -86,7 +86,7 @@ const japanAtms = [
     atm: "AEON Bank, Lawson, E-net and other convenience-store machines",
     takes: "No claim made here",
     limit: "—",
-    fee: "Not published anywhere we could read it",
+    fee: "Not published in the official sources checked",
   },
 ];
 
@@ -484,8 +484,8 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
               Tokyo Subway Ticket
             </KlookLink>{" "}
             covers Tokyo Metro and Toei travel without an IC card balance to top up in cash. Both go to Klook,
-            which pays us a commission at no extra cost to you; prices are Klook&apos;s and we do not quote them
-            here, because its product pages block automated checks.
+            which pays us a commission at no extra cost to you; prices are Klook&apos;s and are not quoted
+            here, because Klook prices change by date.
           </p>
           <a href={WISE_URL} className={styles.pickCta} target="_blank" rel={WISE_REL} style={{ marginTop: "0.5rem", display: "inline-block" }}>
             Visit Wise →

@@ -603,7 +603,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
           <h2 className={styles.sectionTitle}>Is the JR Tokyo Wide Pass Worth It?</h2>
           <p className={styles.bodyText}>
             The honest way to answer this is to add up the journeys you would buy anyway. Every fare below is one the
-            operator publishes — we have left out Tokyo–Nikko, Tokyo–Karuizawa and Tokyo–Echigo-Yuzawa singles, because
+            operator publishes — Tokyo–Nikko, Tokyo–Karuizawa and Tokyo–Echigo-Yuzawa singles are left out, because
             JR East does not publish a readable English fare table for them and a guessed shinkansen fare would make the
             whole table worthless. What JR East does publish for those routes is a worked example, and it is the last row.
           </p>

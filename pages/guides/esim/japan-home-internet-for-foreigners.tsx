@@ -224,7 +224,7 @@ const steps = [
   },
   {
     title: "Keep a mobile fallback for the first fortnight",
-    desc: `A travel eSIM costs from ${CHEAPEST_ESIM_FROM} across the four providers we price and needs no contract, which is the cheapest way to have the flat online on the night you get the keys. If several devices need it at once, an airport-counter pocket WiFi rental covers up to ${AIRPORT_WIFI.maxDevices} and the hotel-delivery one up to ${HOTEL_WIFI.maxDevices}.`,
+    desc: `A travel eSIM costs from ${CHEAPEST_ESIM_FROM} across the four providers compared on this site and needs no contract, which is the cheapest way to have the flat online on the night you get the keys. If several devices need it at once, an airport-counter pocket WiFi rental covers up to ${AIRPORT_WIFI.maxDevices} and the hotel-delivery one up to ${HOTEL_WIFI.maxDevices}.`,
   },
 ];
 
@@ -259,7 +259,7 @@ const faqItems = [
   },
   {
     q: "What do I use while I wait for the line?",
-    a: `A bridge rental is offered by the provider itself while a fibre installation is pending, and that is the first thing to ask for. Beyond it, two options need nothing from anyone: a travel eSIM, from ${CHEAPEST_ESIM_FROM} across the four providers we price, installed before you fly and working the moment you land; or a pocket WiFi rental, which is the better answer when a laptop, a TV stick and two phones all need the same connection — the airport-counter rental covers up to ${AIRPORT_WIFI.maxDevices} devices and the hotel-delivery one up to ${HOTEL_WIFI.maxDevices}, posted back in a prepaid envelope. eSIM prices checked ${PRICES_CHECKED}; rental specs read ${specsCheckedAt} and daily rates ${ratesCheckedAt}.`,
+    a: `A bridge rental is offered by the provider itself while a fibre installation is pending, and that is the first thing to ask for. Beyond it, two options need nothing from anyone: a travel eSIM, from ${CHEAPEST_ESIM_FROM} across the four providers compared on this site, installed before you fly and working the moment you land; or a pocket WiFi rental, which is the better answer when a laptop, a TV stick and two phones all need the same connection — the airport-counter rental covers up to ${AIRPORT_WIFI.maxDevices} devices and the hotel-delivery one up to ${HOTEL_WIFI.maxDevices}, posted back in a prepaid envelope. eSIM prices checked ${PRICES_CHECKED}; rental specs read ${specsCheckedAt} and daily rates ${ratesCheckedAt}.`,
   },
   {
     q: "Is the unlimited home internet really unlimited?",

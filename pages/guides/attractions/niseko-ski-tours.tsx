@@ -717,8 +717,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             <strong>not sold online</strong> on Niseko United&apos;s own note. So the cheapest skiing of
             the season is a counter purchase on arrival, which is fine, but it is not something you can
             lock in from home. Multi-day passes run to seven days and a 50-hour online-only ticket exists;
-            we quote only the one-day figures here, because those are the ones on the resort&apos;s own
-            table we could read in full. All prices read {SEASON}.
+            only the one-day figures are quoted here, because those are the ones the resort&apos;s own
+            table gives in full. All prices read {SEASON}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -813,7 +813,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             gondolas and 7 chairlifts, 940 m of vertical from a 1,200 m top to a 260 m base, 135 hectares,
             a 5,300 m longest run and 40° at the steepest. Both read {OWN}. Niseko United says in its own
             words that the most popular properties and the peak holiday periods sell out early; it
-            publishes no figure for how early, so neither do we.
+            publishes no figure for how early, so none is given here.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={japanWinterStayAreas[7].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

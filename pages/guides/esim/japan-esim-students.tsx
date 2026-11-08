@@ -90,7 +90,7 @@ const stayOptions = [
   },
   {
     title: "Longer than that (6+ months)",
-    desc: "Past the point where you hold a residence card, a domestic MVNO contract is where the cost comparison ends up — those carriers sell to residents, not visitors, so no tourist eSIM competes. We quote no price for them: they are not in our daily tracker, and a figure we cannot check is worse than none.",
+    desc: "Past the point where you hold a residence card, a domestic MVNO contract is where the cost comparison ends up — those carriers sell to residents, not visitors, so no tourist eSIM competes. No price is quoted for them: they are not in this site's daily price check, and an unchecked figure is worse than none.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -567,8 +567,8 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Data guide</span>
           <h2 className={styles.sectionTitle}>How Much Data Does a Student Need per Month?</h2>
           <p className={styles.bodyText}>
-            A planning estimate rather than a measurement: these are the per-day figures we use to
-            size a plan, assuming campus WiFi carries the lectures and downloads and the eSIM
+            A planning estimate rather than a measurement: these are the per-day figures this guide uses
+            to size a plan, assuming campus WiFi carries the lectures and downloads and the eSIM
             carries everything off campus.
           </p>
           <div className={styles.tableWrap}>

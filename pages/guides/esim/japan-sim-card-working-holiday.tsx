@@ -187,7 +187,7 @@ const documentRows = [
   {
     route: "Travel eSIM, bought before you fly",
     documents: "Nothing but an eSIM-capable handset",
-    catch: `From ${CHEAPEST_ESIM_FROM} across the four providers we price, installed at home, working the moment you land. Data only, and capped at 90 days — the bridge, not the plan.`,
+    catch: `From ${CHEAPEST_ESIM_FROM} across the four providers compared on this site, installed at home, working the moment you land. Data only, and capped at 90 days — the bridge, not the plan.`,
   },
   {
     route: "Monthly Pocket WiFi",
@@ -223,7 +223,7 @@ const paymentRows = [
 const steps = [
   {
     title: "Buy a travel eSIM before you fly, and install it at home",
-    desc: `Install the profile with the line switched off so you land with working data rather than hunting an airport SSID with two cases. It costs from ${CHEAPEST_ESIM_FROM} across the four providers we price, there is no contract and nothing to cancel. This is the only part of the whole sequence you can finish before leaving.`,
+    desc: `Install the profile with the line switched off so you land with working data rather than hunting an airport SSID with two cases. It costs from ${CHEAPEST_ESIM_FROM} across the four providers compared on this site, there is no contract and nothing to cancel. This is the only part of the whole sequence you can finish before leaving.`,
   },
   {
     title: "Collect the residence card at immigration, and check what is on it",
@@ -250,7 +250,7 @@ const steps = [
 const faqItems = [
   {
     q: "What SIM card should I get for a working holiday in Japan?",
-    a: `A resident monthly plan with a Japanese phone number, not a tourist eSIM — and of the English-language options the one we link is Sakura Mobile, whose Voice + Data SIM or eSIM is published from ${VOICE_FROM}/month (¥3,278 tax included) for 5 GB, rising through 15 GB at ¥3,480, 30 GB at ¥3,980, 40 GB at ¥4,980, 60 GB at ¥6,980 and 80 GB at ¥8,980 to 100 GB at ¥10,980, with a ${ACTIVATION} activation fee on every tier and a minimum use of one month. The reason a travel eSIM is the wrong answer here is not price: a working holiday is a stay of a year or close to it, every travel product in Japan is sold up to 90 days, and the plans we price carry no number — so nothing a travel eSIM gives you can receive the call from the bar you applied to. Prices read off sakuramobile.jp on ${CHECKED}.`,
+    a: `A resident monthly plan with a Japanese phone number, not a tourist eSIM — and of the English-language options the one we link is Sakura Mobile, whose Voice + Data SIM or eSIM is published from ${VOICE_FROM}/month (¥3,278 tax included) for 5 GB, rising through 15 GB at ¥3,480, 30 GB at ¥3,980, 40 GB at ¥4,980, 60 GB at ¥6,980 and 80 GB at ¥8,980 to 100 GB at ¥10,980, with a ${ACTIVATION} activation fee on every tier and a minimum use of one month. The reason a travel eSIM is the wrong answer here is not price: a working holiday is a stay of a year or close to it, every travel product in Japan is sold up to 90 days, and the plans compared here carry no number — so nothing a travel eSIM gives you can receive the call from the bar you applied to. Prices read off sakuramobile.jp on ${CHECKED}.`,
   },
   {
     q: "Can I get a Japanese phone number on a working holiday visa?",
@@ -262,7 +262,7 @@ const faqItems = [
   },
   {
     q: "What can I use before I have a residence card address?",
-    a: `Three things, in order of how much they cost you. A travel eSIM is the cheapest and the only one you can finish before you fly — from ${CHEAPEST_ESIM_FROM} across the four providers we price, no contract, no collection, data only. The monthly Pocket WiFi is published from ¥4,980/month for 100 GB and is collected on a passport at an airport counter, which is the answer if your handset cannot take an eSIM. And the resident plan itself has a second route: Sakura Mobile's Voice + Data page offers "Verify with your passport" for anyone without a registered Japanese address, collected at an airport counter or its Shinjuku office. What you cannot do is wait — the Immigration Services Agency gives you 14 days from deciding on an address to register it, and the fortnight before that is the gap every working-holiday arrival has to cover. eSIM prices checked ${PRICES_CHECKED}; everything else read ${CHECKED}.`,
+    a: `Three things, in order of how much they cost you. A travel eSIM is the cheapest and the only one you can finish before you fly — from ${CHEAPEST_ESIM_FROM} across the four providers compared on this site, no contract, no collection, data only. The monthly Pocket WiFi is published from ¥4,980/month for 100 GB and is collected on a passport at an airport counter, which is the answer if your handset cannot take an eSIM. And the resident plan itself has a second route: Sakura Mobile's Voice + Data page offers "Verify with your passport" for anyone without a registered Japanese address, collected at an airport counter or its Shinjuku office. What you cannot do is wait — the Immigration Services Agency gives you 14 days from deciding on an address to register it, and the fortnight before that is the gap every working-holiday arrival has to cover. eSIM prices checked ${PRICES_CHECKED}; everything else read ${CHECKED}.`,
   },
   {
     q: "How long does it take to get a Japanese phone number after I land?",

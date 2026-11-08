@@ -103,7 +103,7 @@ const whoFor = [
   },
   {
     title: "Book the Symphony if…",
-    desc: `You want a fixed timetable and a real dining room, or you want to sail without committing to a full dinner. It runs four sailings a day out of Hinode Pier — 11:50, 15:00, 16:20 and 19:00 — and sells a boarding-only ticket on each one, from ¥1,800 for an adult on the 50-minute afternoon sailing. That is the cheapest seat on a dedicated Tokyo Bay cruise we could verify anywhere. Prices read off symphony-cruise.co.jp on ${CHECKED}.`,
+    desc: `You want a fixed timetable and a real dining room, or you want to sail without committing to a full dinner. It runs four sailings a day out of Hinode Pier — 11:50, 15:00, 16:20 and 19:00 — and sells a boarding-only ticket on each one, from ¥1,800 for an adult on the 50-minute afternoon sailing. That is the cheapest verified seat on a dedicated Tokyo Bay cruise anywhere. Prices read off symphony-cruise.co.jp on ${CHECKED}.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 18h20l-2 3H4z" />
@@ -456,8 +456,8 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off symphony-cruise.co.jp on {CHECKED} and subject to change — the operator also notes
             that sailing times can shift with sea conditions. Higher plans run well above these figures,
-            and Christmas and New Year sailings are priced as separate itineraries. For the admissions we
-            track across the rest of Japan, each with its own check date, see our{" "}
+            and Christmas and New Year sailings are priced as separate itineraries. For the admissions in this
+            guide across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>.
@@ -532,7 +532,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="Tokyo Bay Cruises You Can Book From Abroad"
-          intro="Four bookable bay cruises — the Symphony, two yakatabune formats and the one-hour small boat — all confirmed live on 21 October 2026. Klook blocks automated price reads, so open a listing for the current figure, the boarding point and the cancellation terms on your date."
+          intro="Four bookable bay cruises — the Symphony, two yakatabune formats and the one-hour small boat — all confirmed live on 21 October 2026. Klook prices change by date, so open a listing for the current figure, the boarding point and the cancellation terms on your date."
           tours={[
             tokyoBayDinnerCruiseSymphony,
             tokyoBayYakatabuneDinnerCruise,

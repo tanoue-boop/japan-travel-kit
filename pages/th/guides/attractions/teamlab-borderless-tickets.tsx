@@ -537,7 +537,7 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Klook เป็นพาร์ตเนอร์ขายตั๋วทางการของ teamLab สิทธิ์เข้าชมจึงเหมือนกันไม่ว่าคุณจะใช้เคาน์เตอร์ไหน
             สิ่งที่ต่างคือขั้นตอนชำระเงิน ความยืดหยุ่น และ — ถ้าปล่อยไว้ถึงวันนั้น — ราคา GetYourGuide ก็ขาย
-            Borderless เช่นกัน และคอลัมน์ด้านล่างตั้งใจให้บาง ดูหมายเหตุใต้ตารางว่าเรายืนยันอะไรได้และไม่ได้
+            Borderless เช่นกัน และคอลัมน์ด้านล่างตั้งใจให้บาง ดูหมายเหตุใต้ตารางว่าข้อมูลใดยืนยันแล้วและข้อมูลใดยังไม่ได้ยืนยัน
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -567,7 +567,7 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             ส่วนต่างราคาหน้างานและจำนวนครั้งที่เปลี่ยนวันได้ อ้างตามเว็บไซต์ทางการของ teamLab เมื่อ {CHECKED}{" "}
             เงื่อนไขการยกเลิกและเปลี่ยนแปลงของตัวแทนต่างกันไปตามแพ็กเกจ — อ่านบนหน้าจองก่อนชำระเงิน
             คอลัมน์ GetYourGuide ตั้งใจให้สั้น: ยืนยันได้ว่าหน้าสินค้า Borderless ยังเปิดอยู่เมื่อ {GYG_CHECKED}{" "}
-            แต่ GetYourGuide บล็อกการอ่านหน้าเว็บแบบอัตโนมัติ เราจึงตรวจสอบราคา การรับบัตร และเงื่อนไขการเปลี่ยนไม่ได้
+            แต่ราคา การรับบัตร และเงื่อนไขการเปลี่ยนยังไม่ได้ตรวจสอบในหน้านี้ โปรดดูบนหน้าสินค้า
             ช่องเหล่านั้นจึงระบุตามนั้นแทนการเดา
           </p>
         </section>
@@ -620,7 +620,7 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             หน้าของพิพิธภัณฑ์เองคือ <strong>teamlab.art/e/tokyo</strong> — ภาษาอังกฤษ ส่วนฉบับภาษาญี่ปุ่นอยู่ที่
             teamlab.art/jp/e/tokyo — และปฏิทินตั๋วกับการชำระเงินเปิดจากที่นั่น ถ้าคุณบันทึกลิงก์เก่าไว้{" "}
             <strong>borderless.teamlab.art</strong> ไม่ใช่ร้านค้าแยกอีกต่อไป ทั้งที่อยู่ภาษาอังกฤษและภาษาญี่ปุ่น
-            ตอนนี้พาไปที่หน้า teamlab.art ข้างต้น ซึ่งเรายืนยันแล้วเมื่อ {ADDRESS_CHECKED}
+            ตอนนี้พาไปที่หน้า teamlab.art ข้างต้น ซึ่งยืนยันแล้วเมื่อ {ADDRESS_CHECKED}
           </p>
           <ul className={styles.bodyList}>
             <li><strong>ทำไม &ldquo;ทางการ&rdquo; จึงสำคัญที่นี่:</strong> ราคาพื้นฐานอยู่บนปฏิทินของ teamLab เอง และสิทธิ์เปลี่ยนวันฟรีสามครั้งมีเฉพาะตั๋วที่ซื้อตรง ตัวแทนขายสิทธิ์เข้าชมเดียวกันภายใต้เงื่อนไขของตัวเอง</li>

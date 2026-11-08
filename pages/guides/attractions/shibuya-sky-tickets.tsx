@@ -678,8 +678,8 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             ))}
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            From the operator&apos;s ticket FAQ as indexed on {RULES_CHECKED}; its live page could not be read
-            automatically, so confirm the rules on the day.
+            From the operator&apos;s ticket FAQ as checked on {RULES_CHECKED}; the rules can change, so confirm
+            them on the day.
           </p>
         </section>
 

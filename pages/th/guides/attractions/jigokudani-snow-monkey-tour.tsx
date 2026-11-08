@@ -439,7 +439,7 @@ Jigokudani Yaen-koen เป็นสวนลิงป่าในหุบเ�
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-เวลาจากหน้าการเดินทางของสวน ตรวจสอบเมื่อ {CHECKED} เนื้อหาพาสจากหน้า Snow Monkey ของ Nagano Electric Railway ตรวจสอบเมื่อ 3 พฤศจิกายน 2026 <strong>เรื่องค่าโดยสาร:</strong> เราไม่แสดงค่าโดยสารเป็นเยนสำหรับชินคันเซ็น รถไฟ Nagaden หรือรถบัส เว็บไซต์ JR East ไม่ให้หน้าค่าโดยสารที่อ่านได้ Nagaden เผยแพร่ตารางค่าโดยสารเป็น PDF ที่เราอ่านไม่ได้ และตัวเลขรถบัสด่วน 2026-27 จากแหล่งภายนอกไม่ตรงกัน จึงควรเช็กที่สถานีหรือเว็บไซต์ผู้ให้บริการ <Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>คู่มือ JR East Pass(ภาษาอังกฤษ)</Link> คำนวณว่าพาสคุ้มกว่าตั๋วเดี่ยวไปนากาโนะเมื่อใด
+เวลาจากหน้าการเดินทางของสวน ตรวจสอบเมื่อ {CHECKED} เนื้อหาพาสจากหน้า Snow Monkey ของ Nagano Electric Railway ตรวจสอบเมื่อ 3 พฤศจิกายน 2026 <strong>เรื่องค่าโดยสาร:</strong> ที่นี่ไม่แสดงค่าโดยสารเป็นเยนสำหรับชินคันเซ็น รถไฟ Nagaden หรือรถบัส เว็บไซต์ JR East ไม่มีหน้าค่าโดยสารที่ตรวจสอบได้ Nagaden เผยแพร่ตารางค่าโดยสารเป็น PDF เท่านั้น และตัวเลขรถบัสด่วน 2026-27 จากแหล่งภายนอกไม่ตรงกัน จึงควรเช็กที่สถานีหรือเว็บไซต์ผู้ให้บริการ <Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>คู่มือ JR East Pass(ภาษาอังกฤษ)</Link> คำนวณว่าพาสคุ้มกว่าตั๋วเดี่ยวไปนากาโนะเมื่อใด
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

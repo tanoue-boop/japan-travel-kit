@@ -612,8 +612,8 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Why no price band is quoted: the two surfaces that would show one cannot be read. USJ&apos;s
-            member ticket pages answered an automated read with HTTP 503 on {CHECKED_USJ}, and the official
+            Why no price band is quoted: neither of the two surfaces that would show one was available. USJ&apos;s
+            member ticket pages returned a server error (HTTP 503) on {CHECKED_USJ}, and the official
             WEB Ticket Store sits behind a virtual waiting room. Rather than repeat a figure from a
             third-party page, this guide prints USJ&apos;s pricing rules and sends you to the day&apos;s own
             checkout price.
@@ -827,8 +827,8 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             ))}
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            From USJ&apos;s own Express Pass and FAQ pages as indexed on {USE_CHECKED}; its live pages could not be
-            read automatically, so check the times on your own ticket.
+            From USJ&apos;s own Express Pass and FAQ pages as checked on {USE_CHECKED}; times can change, so
+            check the times on your own ticket.
           </p>
         </section>
 
@@ -899,7 +899,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             Station as the park&apos;s nearest station, and the Osaka Convention &amp; Tourism Bureau puts the
             gates at approximately five minutes on foot from it and the park at about 20 minutes from Osaka
             Station. Both read on {CHECKED}. JR West does not publish a door-to-door time for the Yumesaki
-            run on its English site, so we do not print one.
+            run on its English site, so none is printed here.
           </p>
           <p className={styles.bodyText}>
             From <strong>Kansai Airport</strong> there are two sensible ways into the city, and neither of

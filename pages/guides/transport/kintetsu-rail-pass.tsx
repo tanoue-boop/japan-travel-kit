@@ -624,7 +624,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>The pattern:</strong> one out-and-back rarely pays, and two connected journeys usually do. Facility
-            benefits and buses can tip a close call, but we could not read the bus fares, so they are not in these sums.
+            benefits and buses can tip a close call, but the bus fares are not confirmed here, so they are not in these sums.
             That also means the <strong>5day Plus</strong> has no row here. Its ¥1,800 on top of the 5day is worth paying
             only if you will ride the Ise, Toba and Shima buses several times, so price your bus days first.
           </p>
@@ -670,7 +670,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Kyoto–Nara journey times are from Nara&apos;s official travel guide, as read for our{" "}
+            Kyoto–Nara journey times are from Nara&apos;s official travel guide, as used in the{" "}
             <Link href="/guides/attractions/japan-first-time-itinerary" style={{ color: "var(--text)", fontWeight: 600 }}>
               first-time Japan itinerary
             </Link>

@@ -99,7 +99,7 @@ const tourRows = [
     route: "North",
     hours: "Full day",
     from: "Named hotel pick-ups, such as LOISIR HOTEL NAHA at 8:20",
-    includes: "Coach; Churaumi and Nago Pineapple Park admission on the listing we read; departs from one person",
+    includes: "Coach; Churaumi and Nago Pineapple Park admission on the listing shown; departs from one person",
     guide: "Check the option you pick",
   },
   {
@@ -185,7 +185,7 @@ const faqItems = [
   },
   {
     q: "How long is an Okinawa north day tour?",
-    a: `About 10 to 11.5 hours on the listings we read on ${CHECKED}: 9 hours 35 minutes to 11 hours 30 minutes on one, about 10 on another and 11 on a third. One lists an 8:20 hotel pick-up in Naha, and the aquarium is about two hours from Naha Airport by car, so plan on an evening return.`,
+    a: `About 10 to 11.5 hours on the listings as shown on ${CHECKED}: 9 hours 35 minutes to 11 hours 30 minutes on one, about 10 on another and 11 on a third. One lists an 8:20 hotel pick-up in Naha, and the aquarium is about two hours from Naha Airport by car, so plan on an evening return.`,
   },
   {
     q: "How long is a southern Okinawa day tour?",
@@ -379,7 +379,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
           <h2 className={styles.sectionTitle}>Which Okinawa Day Tours Can You Book From Naha?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Seven worth comparing, and the differences that matter are the guide&apos;s language, the pick-up and
-            what the price covers. Prices move by date, so we do not print them.
+            what the price covers. Prices move by date, so they are not printed here.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -411,8 +411,8 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read from Klook&apos;s listings through the klook.com search index on {CHECKED}, because the product
-            pages block automated reads, so confirm the details on the listing at checkout. Options within a
+            From Klook&apos;s listings as shown on {CHECKED}. Details can change by date, so confirm them
+            on the listing at checkout. Options within a
             listing can differ.
           </p>
         </section>

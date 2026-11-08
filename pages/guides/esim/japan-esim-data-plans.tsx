@@ -314,7 +314,7 @@ const faqItems = [
   },
   {
     q: "Should I get an unlimited eSIM for Japan?",
-    a: `Only if you genuinely cannot predict your usage, because no "unlimited" Japan plan is unmetered at full speed. ${cheapestUnlimitedAny ? `The cheapest unlimited plan we track for a week or longer is ${cheapestUnlimitedAny.provider}'s ${cheapestUnlimitedAny.name} at ${formatUsd(cheapestUnlimitedAny.priceUsd)} (checked ${checkedLabel}).` : "Compare the unlimited plans in the table above."} Each one publishes a threshold: Simbye gives 2 GB a day at full speed and then 1 Mbps; Airalo runs full speed to 3 GB a day then 1 Mbps until the 24-hour reset; eSIM Go's Premium Unlimited gives 30 GB over 5 days, 60 GB over 10 or 90 GB over 15 before the speed is reduced; Sakura Mobile's unlimited plan is unlimited on the device but caps the hotspot at 2–30 GB depending on plan length; the Klook listing's unlimited tier runs 10 GB a day then 128 kbps. Provider terms checked ${SPECS_CHECKED}; the Klook figures come from its listing data of ${klookEsim.specsCheckedAt}.`,
+    a: `Only if you genuinely cannot predict your usage, because no "unlimited" Japan plan is unmetered at full speed. ${cheapestUnlimitedAny ? `The cheapest unlimited plan compared here for a week or longer is ${cheapestUnlimitedAny.provider}'s ${cheapestUnlimitedAny.name} at ${formatUsd(cheapestUnlimitedAny.priceUsd)} (checked ${checkedLabel}).` : "Compare the unlimited plans in the table above."} Each one publishes a threshold: Simbye gives 2 GB a day at full speed and then 1 Mbps; Airalo runs full speed to 3 GB a day then 1 Mbps until the 24-hour reset; eSIM Go's Premium Unlimited gives 30 GB over 5 days, 60 GB over 10 or 90 GB over 15 before the speed is reduced; Sakura Mobile's unlimited plan is unlimited on the device but caps the hotspot at 2–30 GB depending on plan length; the Klook listing's unlimited tier runs 10 GB a day then 128 kbps. Provider terms checked ${SPECS_CHECKED}; the Klook figures come from its listing data of ${klookEsim.specsCheckedAt}.`,
   },
   {
     q: "When should I install and activate my Japan eSIM?",
@@ -331,13 +331,13 @@ const faqItems = [
   {
     q: "Which Japan eSIM has the best value per GB?",
     a: bestValue
-      ? `As of ${checkedLabel}, the lowest cost per GB among fixed-allowance plans is ${bestValue.provider}'s ${bestValue.name} at ${formatUsd(bestValue.priceUsd)} — about ${formatUsd(bestValue.perGb ?? 0)} per GB. (Sakura Mobile's 3 GB/day plans show an even lower nominal $/GB, but a daily cap can't be saved up, so we don't count them here.) Big plans always win on per-GB price, but only buy what you'll actually use: a plan that matches your trip is better value than a huge one you use a third of.`
+      ? `As of ${checkedLabel}, the lowest cost per GB among fixed-allowance plans is ${bestValue.provider}'s ${bestValue.name} at ${formatUsd(bestValue.priceUsd)} — about ${formatUsd(bestValue.perGb ?? 0)} per GB. (Sakura Mobile's 3 GB/day plans show an even lower nominal $/GB, but a daily cap can't be saved up, so they are not counted here.) Big plans always win on per-GB price, but only buy what you'll actually use: a plan that matches your trip is better value than a huge one you use a third of.`
       : "Sort the comparison table above by Price / GB to see the current best-value plan.",
   },
   {
     q: "What is the cheapest Japan eSIM right now?",
     a: cheapestOverall
-      ? `The cheapest plan we track is ${cheapestOverall.provider}'s ${cheapestOverall.name} at ${formatUsd(cheapestOverall.priceUsd)} (checked ${checkedLabel}). ${cheapest5gb ? `If you need more data, the cheapest 5 GB+ plan is ${label(cheapest5gb)}` : ""}${cheapest10gb ? ` and the cheapest 10 GB+ plan is ${label(cheapest10gb)}.` : "."}`
+      ? `The cheapest plan compared here is ${cheapestOverall.provider}'s ${cheapestOverall.name} at ${formatUsd(cheapestOverall.priceUsd)} (checked ${checkedLabel}). ${cheapest5gb ? `If you need more data, the cheapest 5 GB+ plan is ${label(cheapest5gb)}` : ""}${cheapest10gb ? ` and the cheapest 10 GB+ plan is ${label(cheapest10gb)}.` : "."}`
       : "Use the comparison table above, sorted by price, to see the cheapest current plan.",
   },
   {
@@ -346,7 +346,7 @@ const faqItems = [
   },
   {
     q: "How often are these prices updated?",
-    a: `Every day. A script fetches the current Japan plans from each provider's official website or price feed (Simbye, Airalo, Holafly, eSIM Go/Breeze and Sakura Mobile) and updates this page automatically. If a provider's site can't be read on a given day, we keep the last verified prices and show the date they were last checked, so you can always see how fresh each number is. Last successful check: ${checkedLabel}.`,
+    a: `Every day. A script fetches the current Japan plans from each provider's official website or price feed (Simbye, Airalo, Holafly, eSIM Go/Breeze and Sakura Mobile) and updates this page automatically. If a provider's site can't be read on a given day, the last verified prices stay up with the date they were last checked, so you can always see how fresh each number is. Last successful check: ${checkedLabel}.`,
   },
 ];
 
@@ -519,7 +519,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             Prices read off each provider&apos;s own site on {checkedLabel} by the job that re-reads them daily.
             Fair-use thresholds, speed caps and start rules read on {SPECS_CHECKED}; tethering and phone-number
             clauses on {SPECS_CHECKED_AT}; the Klook rows come from its own listing data of{" "}
-            {klookEsim.specsCheckedAt}, because Klook answers automated reads of the product page with HTTP 403.
+            {klookEsim.specsCheckedAt}; Klook prices change by date, so open the listing for yours.
           </p>
         </section>
 
@@ -687,7 +687,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             Data, validity and network come from the daily price feed, read {checkedLabel}. Speed limits are each
             provider&apos;s own published threshold, read on {SPECS_CHECKED}; tethering and phone-number clauses were
             read off the same providers&apos; pages and help centres on {SPECS_CHECKED_AT}. The Klook row carries no
-            price and no validity: Klook answers automated reads of its listing with HTTP 403, so its figures come
+            price and no validity: Klook prices and options change by date, so its figures come
             from its own listing data of {klookEsim.specsCheckedAt} and nothing beyond that is claimed here. Holafly
             is priced in the sortable table below but absent from this one — there is no link to it on this site, and
             none of its fine print was re-read on {SPECS_CHECKED}.
@@ -735,8 +735,8 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Freshness</span>
           <h2 className={styles.sectionTitle}>When Was Each Price Last Verified?</h2>
           <p className={styles.bodyText}>
-            A script reads each provider&apos;s official pricing page once a day. If a page can&apos;t be read, we keep the last
-            verified numbers rather than guessing — so the &ldquo;checked&rdquo; date below tells you exactly how fresh each row is.
+            A script reads each provider&apos;s official pricing page once a day. If a page can&apos;t be read, the last verified
+            numbers stay rather than a guess — so the &ldquo;checked&rdquo; date below tells you exactly how fresh each row is.
           </p>
           <EsimPriceStatus />
         </section>
@@ -814,8 +814,8 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Klook&apos;s own Japan eSIM is listed last and without figures: the five providers above are read
-            automatically from their pricing pages every day, and Klook&apos;s listing could not be read on{" "}
+            Klook&apos;s own Japan eSIM is listed last and without figures: the five providers above are checked
+            on their own pricing pages every day, and Klook&apos;s listing had no verified price on{" "}
             {klookEsim.checkedAt}. It is therefore absent from the sortable table and the plan finder, which
             only work on verified prices.
           </p>
@@ -829,7 +829,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             Only if you genuinely cannot predict your usage — because no &ldquo;unlimited&rdquo; Japan plan is
             unmetered at full speed.{" "}
             {cheapestUnlimitedAny
-              ? `The cheapest one we track for a week or longer is ${cheapestUnlimitedAny.provider}'s ${cheapestUnlimitedAny.name} at ${formatUsd(cheapestUnlimitedAny.priceUsd)} (checked ${checkedLabel}),`
+              ? `The cheapest one compared here for a week or longer is ${cheapestUnlimitedAny.provider}'s ${cheapestUnlimitedAny.name} at ${formatUsd(cheapestUnlimitedAny.priceUsd)} (checked ${checkedLabel}),`
               : "Compare the unlimited plans in the sortable table above,"}{" "}
             against {planName(TEN_DAY_PICK)} at {planPrice(TEN_DAY_PICK)} for ten days at a gigabyte a day. On the
             numbers the allowance usually wins.

@@ -299,7 +299,7 @@ const faqItems = [
   },
   {
     q: "How much does a Tokyo illumination evening cost?",
-    a: `Nothing for the lights themselves in eight cases out of ten, and the real cost is getting between them. The only admissions on this page are Tokyo Mega Illumi, from ¥800 for an adult and ¥400 for a school-age child with preschool free, and Yomiuriland, where what you buy is a park ticket. Both read off the operators' own sites on ${OWN}. Against that, a 24-hour Tokyo Subway Ticket is ${PRICES.tokyoSubwayTicket.adult} and the 72-hour version ¥2,000, which covers Roppongi, Nijubashimae and Korakuen but not the JR Yamanote Line to Ebisu. The optional extras — a guided evening, an open-top bus, a bay cruise, a deck ticket — are what actually move the figure, and none of them is required to see a single light. We publish no food or hotel estimate for the evening, on purpose.`,
+    a: `Nothing for the lights themselves in eight cases out of ten, and the real cost is getting between them. The only admissions on this page are Tokyo Mega Illumi, from ¥800 for an adult and ¥400 for a school-age child with preschool free, and Yomiuriland, where what you buy is a park ticket. Both read off the operators' own sites on ${OWN}. Against that, a 24-hour Tokyo Subway Ticket is ${PRICES.tokyoSubwayTicket.adult} and the 72-hour version ¥2,000, which covers Roppongi, Nijubashimae and Korakuen but not the JR Yamanote Line to Ebisu. The optional extras — a guided evening, an open-top bus, a bay cruise, a deck ticket — are what actually move the figure, and none of them is required to see a single light. There is no food or hotel estimate for the evening here, on purpose.`,
   },
 ];
 
@@ -528,7 +528,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             Between 29 October and 26 November, and then they end in stages &mdash; 25 December for
             the Christmas displays, 10 January for the Mega Illumi, mid to late February or later for
             the rest. Every row below is the operator&apos;s own announcement for the 2026&ndash;27
-            season, with the date we read it. Nothing here is carried over from last winter: a display whose operator has not announced this
+            season, with the date it was read. Nothing here is carried over from last winter: a display whose operator has not announced this
             season is not in the table at all.
           </p>
           <div className={styles.tableWrap}>
@@ -564,10 +564,10 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             The Mega Illumi&apos;s own pages differ on late December: its homepage closes 24 December
             to 1 January, while its FAQ names race days plus 26 and 27 December and 1 January, so check
             its calendar for any date in that week. Third-party guides report that Yomiuriland&apos;s
-            display pauses on weekdays from 1 to 12 March 2027; that is reported, not something we
-            could read on the operator&apos;s site. Two displays Tokyo visitors often search for
-            &mdash; the Blue Grotto in Shibuya and Caretta Shiodome &mdash; are absent because we found
-            no 2026&ndash;27 season from either organiser as at {OWN}, so both are awaiting an official
+            display pauses on weekdays from 1 to 12 March 2027; that is reported, not something confirmed
+            on the operator&apos;s site. Two displays Tokyo visitors often search for
+            &mdash; the Blue Grotto in Shibuya and Caretta Shiodome &mdash; are absent because no
+            2026&ndash;27 season had appeared from either organiser as at {OWN}, so both are awaiting an official
             announcement and there is nothing to print.
           </p>
         </section>
@@ -633,7 +633,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             the lights: the bay cruises on the weekend evenings in December, the guided night tours,
             and a dated Mega Illumi ticket on a Saturday. Those also differ on cancellation, which is
             worth reading on the listing before the date is fixed rather than after &mdash; terms
-            vary by product, and we do not restate them here because they change. For the two
+            vary by product, and they are not restated here because they change. For the two
             ticketed venues the practical argument for a reseller is the same as elsewhere in Japan:
             an English checkout, a foreign card accepted, and a QR code rather than a Japanese
             ticket page.
@@ -815,7 +815,7 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
 
         <KlookTourPicks
           heading="The Evenings Around the Lights"
-          intro="An illumination fills an hour or two of an evening and most of them are free, which leaves the rest of the night open and unpaid for. These are the things that are actually booked on a Tokyo winter evening — a boat, a bus, a guided few hours. Klook blocks automated price reads, so beyond the indexed from-prices at the top of this page, open a listing for the figure on your own date."
+          intro="An illumination fills an hour or two of an evening and most of them are free, which leaves the rest of the night open and unpaid for. These are the things that are actually booked on a Tokyo winter evening — a boat, a bus, a guided few hours. Klook prices change by date, so beyond the indexed from-prices at the top of this page, open a listing for the figure on your own date."
           tours={[
             tokyoNightTourAkihabaraShibuya,
             tokyoOpenTopBusSightseeing,

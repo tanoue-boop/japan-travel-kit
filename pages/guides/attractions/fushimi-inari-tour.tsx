@@ -58,7 +58,7 @@ import { checkedLabel } from "../../../lib/attraction-prices";
  */
 const CHECKED = checkedLabel("2026-11-05");
 const ROUTE = "/guides/attractions/fushimi-inari-tour";
-const NOT_SHOWN = "Not in the listing text we could read";
+const NOT_SHOWN = "Not in the listing text";
 
 /** The shrine's own hours and costs, with who publishes each. */
 const visitRows = [
@@ -100,7 +100,7 @@ const tourRows = [
     tour: "Fushimi Inari Taisha Small Group Walking Tour",
     url: kyotoFushimiInariWalkingTour.url,
     length: "3 hr",
-    meet: "Meet with guide; exact point not in the text we read",
+    meet: "Meet with guide; exact point not in the listing text",
     covers: "Small group, the red torii gates and a guide on their history",
     mountain: "Optional hike up Mount Inari",
   },
@@ -140,7 +140,7 @@ const dayTourRows = [
     tour: "Kyoto One Day Highlight Bus Tour",
     url: kyotoHighlightBusTour.url,
     length: "8 hr 30",
-    meet: "Meet at location; address not in the text we read",
+    meet: "Meet at location; address not in the listing text",
   },
 ];
 
@@ -178,7 +178,7 @@ const compareRows = [
   { what: "Explanation", tour: "History, foxes and what the gates mean", solo: "The signs, and this page" },
   { what: "Route", tour: "Set by the guide; the hiking tour leaves the main path", solo: "Yours; turn back whenever you like" },
   { what: "Being late", tour: "On the hiking tour you cannot join and are not refunded", solo: "No penalty" },
-  { what: "Reaching the top", tour: "Check the listing: none of the text we read promises the summit", solo: "Your choice; allow 2–3 hours" },
+  { what: "Reaching the top", tour: "Check the listing: none of the listing text promises the summit", solo: "Your choice; allow 2–3 hours" },
 ];
 
 /** The shrine's own list, dated 1 January 2022: the ones a visitor is likely to break. */
@@ -225,11 +225,11 @@ const faqItems = [
   },
   {
     q: "What should I wear to Fushimi Inari?",
-    a: "Shoes with good grip, above anything else. The way up is a mountain path with stone stairs, and Klook's hiking tour warns the ground can be slippery. We found no official step count. The shrine bans wedding dresses and clothing unsuited to worship in the grounds, and in a rental kimono it is sensible to stay on the lower gates.",
+    a: "Shoes with good grip, above anything else. The way up is a mountain path with stone stairs, and Klook's hiking tour warns the ground can be slippery. The official sources checked give no step count. The shrine bans wedding dresses and clothing unsuited to worship in the grounds, and in a rental kimono it is sensible to stay on the lower gates.",
   },
   {
     q: "Can you visit Fushimi Inari in the rain?",
-    a: "Yes. The grounds do not close, but wet stone stairs are slippery, so think twice about the full mountain round. Kyoto's comfort map has a rain setting, because the weather changes the forecast crowd. Check a tour's weather rule at checkout, since the listing text we read did not state one.",
+    a: "Yes. The grounds do not close, but wet stone stairs are slippery, so think twice about the full mountain round. Kyoto's comfort map has a rain setting, because the weather changes the forecast crowd. Check a tour's weather rule at checkout, since the listing text does not state one.",
   },
   {
     q: "Is Fushimi Inari OK for kids and strollers?",
@@ -443,8 +443,8 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Read on {CHECKED} from search-index copies of the Klook listings, because the live pages block
-            automated reads. Where a cell says the detail was not in the text we could read, Klook shows it on
+            Read on {CHECKED} from the Klook listings as they appear in search results. Where a cell says the
+            detail was not in the listing text, Klook shows it on
             the listing or at checkout. Inclusions and cancellation terms were mostly not in that text, so check
             them before paying. Current prices are on Klook.
           </p>
@@ -493,8 +493,8 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Want a guide at dawn? Klook also sells a Kyoto Early Morning Tour covering Fushimi Inari, Arashiyama
-            and the Golden Temple, and its travel blog says that tour reaches the shrine at 7:00. We could not
-            read the listing itself, so confirm the start and the meeting point on{" "}
+            and the Golden Temple, and its travel blog says that tour reaches the shrine at 7:00. The listing
+            itself is not quoted here, so confirm the start and the meeting point on{" "}
             <KlookLink href={fushimiInariToursListUrl} target="_blank" rel="sponsored noopener" style={linkStyle}>
               Klook&apos;s Fushimi Inari page
             </KlookLink>
@@ -546,7 +546,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>How Long Does It Take to Hike Fushimi Inari?</h2>
           <p className={styles.bodyText}>
             Two to three hours for the mountain, on Japan&apos;s national tourism site; Kyoto&apos;s listing allows
-            120 minutes for a visit that includes it. Those are the only official figures we found, so use the
+            120 minutes for a visit that includes it. Those are the only official figures given, so use the
             longer one if you are not a regular walker. The shrine counts about 10,000 torii along the mountain
             paths, so the gates do not stop at the famous stretch.
           </p>
@@ -686,7 +686,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>What Should You Wear to Fushimi Inari?</h2>
           <p className={styles.bodyText}>
             Wear shoes with good grip. The route up is a mountain path with long runs of stone stairs, and
-            Klook&apos;s hiking tour says the ground can be slippery; we found no official step count. Its older
+            Klook&apos;s hiking tour says the ground can be slippery; the official sources checked give no step count. Its older
             regional listing adds a cap and sunglasses for summer, and long sleeves and trousers against mosquitoes.
             The shrine&apos;s only dress rule bars wedding dresses and clothing unsuited to worship in the grounds.
           </p>
@@ -704,7 +704,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             Yes. The grounds stay open, and the wet stone is the thing to plan around, so a rainy day is a case for
             turning back at the Okusha prayer hall rather than doing the whole mountain. Kyoto&apos;s comfort map has
-            rain and heavy-rain settings, because weather moves the forecast crowd. The listing text we read gave no
+            rain and heavy-rain settings, because weather moves the forecast crowd. The listing text gives no
             weather rule for tours, so check it at checkout.
           </p>
         </section>

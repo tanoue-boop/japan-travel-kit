@@ -487,7 +487,7 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Every journey time above is Himeji City&apos;s own figure from visit-himeji.com, read on {CHECKED}.
             No single-ticket rail fare appears in this table on purpose: neither JR West nor Sanyo publishes a
-            route-by-route fare table we could read on {CHECKED}, only a live search tool, so the cost anchors
+            route-by-route fare table as of {CHECKED}, only a live search tool, so the cost anchors
             on this page are the published pass prices instead. For the city end of the journey, see{" "}
             <Link href="/guides/transport/osaka-transportation" style={{ color: "var(--text)", fontWeight: 600 }}>
               getting around Osaka

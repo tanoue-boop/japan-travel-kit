@@ -200,7 +200,7 @@ const day3: Stop[] = [
     time: "Sunset",
     place: "Tokyo Bay boat cruise",
     allow: "1 hour",
-    getting: "The small-boat listing we link boards at Shibaura, near Tamachi",
+    getting: "The small-boat listing linked here boards at Shibaura, near Tamachi",
     booking: "Yes — a fixed sailing time, and sunset sailings go first",
   },
   {
@@ -261,7 +261,7 @@ const day5: Stop[] = [
   {
     time: "Early morning",
     place: "JR Yokosuka Line, Tokyo Station to Kamakura",
-    allow: "59 minutes on the weekday service we read",
+    allow: "59 minutes on the weekday service checked",
     getting: "Direct, no change — the same trains run through from Chiba and Narita",
     booking: "No — an IC card opens the gate, and a JR pass covers it",
   },
@@ -325,7 +325,7 @@ const ticketRows = [
   {
     stop: "TOKYO SKYTREE, Floor 350 (Day 2, optional)",
     price: `${PRICES.tokyoSkytree.adult} adult, ${PRICES.tokyoSkytree.child} child`,
-    hours: "10:00–22:00 with last admission 21:00 on the date we checked; the calendar varies by day",
+    hours: "10:00–22:00 with last admission 21:00 on the date checked; the calendar varies by day",
     booking: PRICES.tokyoSkytree.booking,
     note: PRICES.tokyoSkytree.bookingNote,
     checked: PRICES.tokyoSkytree.checked,
@@ -509,7 +509,7 @@ const faqItems = [
   },
   {
     q: "What does a 5 day Tokyo itinerary cost in tickets?",
-    a: "Less than most people expect, because most of these five days are free to walk into. The paid items are the three observation and art tickets, two temple admissions in Kamakura of ¥300 and ¥400, a ¥1,000 museum, a ¥300 garden, the subway pass and the Fuji bus. Every figure, with the operator's site and the date it was read, is in the table above — we do not publish hotel or food estimates, because those are guesses rather than prices.",
+    a: "Less than most people expect, because most of these five days are free to walk into. The paid items are the three observation and art tickets, two temple admissions in Kamakura of ¥300 and ¥400, a ¥1,000 museum, a ¥300 garden, the subway pass and the Fuji bus. Every figure, with the operator's site and the date it was read, is in the table above — hotel and food estimates are left out, because those are guesses rather than prices.",
   },
   {
     q: "Where should you stay for 5 days in Tokyo?",
@@ -971,8 +971,8 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>Day 5 — Day Trip: Kamakura, and a Last Tokyo Evening</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The easy one, and the right day trip to put last because it comes back early. The JR
-            Yokosuka Line runs direct from Tokyo Station with no change — on the weekday timetable we
-            read, the 07:02 out of Kamakura reaches Tokyo at 08:01, which is 59 minutes. Checked on
+            Yokosuka Line runs direct from Tokyo Station with no change — on the weekday timetable
+            checked, the 07:02 out of Kamakura reaches Tokyo at 08:01, which is 59 minutes. Checked on
             JR East&apos;s own timetable site, {CHECKED}. That means a full morning and afternoon in
             Kamakura and still an evening in the city.
           </p>
@@ -1024,7 +1024,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
 
         <KlookTourPicks
           heading="If You Would Rather Swap a Day Trip"
-          intro="Hakone instead of Kawaguchiko, a coach day instead of a bus timetable, or the Fuji-area pass if you are staying out there longer. Klook blocks automated price reads, so open a listing for the figure on your date."
+          intro="Hakone instead of Kawaguchiko, a coach day instead of a bus timetable, or the Fuji-area pass if you are staying out there longer. Klook prices change by date, so open a listing for the figure on your date."
           tours={[hakoneFreepass, kawaguchikoYamanakakoBusTour, mtFujiPass]}
         />
 

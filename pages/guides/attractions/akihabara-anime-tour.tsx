@@ -178,7 +178,7 @@ const maidCafeRows = [
 const whoFor = [
   {
     title: "Book a guided tour if…",
-    desc: "You want the maid café without the awkwardness, or you have one afternoon and no appetite for working out which of six floors holds the thing you came for. A guide also unlocks the part you cannot buy separately: the listing we checked states that maid-café seating is guaranteed on the tour, and it runs with an English- or Japanese-speaking guide for a group of between 1 and 10.",
+    desc: "You want the maid café without the awkwardness, or you have one afternoon and no appetite for working out which of six floors holds the thing you came for. A guide also unlocks the part you cannot buy separately: the listing states that maid-café seating is guaranteed on the tour, and it runs with an English- or Japanese-speaking guide for a group of between 1 and 10.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z" />
@@ -215,11 +215,11 @@ const steps = [
   },
   {
     title: "Match the length to the rest of your day",
-    desc: `The guided options we checked on ${CHECKED} split cleanly: 3 hours for the join-in walk, a listed half day for either private tour, 5 hours for the private-group otaku tour, and 4 hours 50 minutes for the evening run that treats Akihabara as one stop between Ueno and Shibuya. Only the five-hour one eats a whole afternoon.`,
+    desc: `The guided options listed on ${CHECKED} split cleanly: 3 hours for the join-in walk, a listed half day for either private tour, 5 hours for the private-group otaku tour, and 4 hours 50 minutes for the evening run that treats Akihabara as one stop between Ueno and Shibuya. Only the five-hour one eats a whole afternoon.`,
   },
   {
     title: "Check the departure time before anything else",
-    desc: "This is the detail that decides the day. The best-booked listing we checked runs at 14:00 and 18:00 — there is no morning option on it, so a plan that has you in Akihabara at 10:00 means either a different listing or a different day. The shops open from 10:00 and the latest of the four closes at 20:00, so an 18:00 start is a shopping tour with two hours of shops left in it.",
+    desc: "This is the detail that decides the day. The best-booked listing runs at 14:00 and 18:00 — there is no morning option on it, so a plan that has you in Akihabara at 10:00 means either a different listing or a different day. The shops open from 10:00 and the latest of the four closes at 20:00, so an 18:00 start is a shopping tour with two hours of shops left in it.",
   },
   {
     title: "Book ahead — the inventory here is small",
@@ -234,7 +234,7 @@ const steps = [
 const faqItems = [
   {
     q: "Is an Akihabara anime tour worth it?",
-    a: "It depends on what you came for. If you are shopping, no — the shops are free to enter, four of the big ones sit within a few minutes of JR Akihabara's Electric Town Exit, and a guide cannot help you buy. If you want the maid café, the context and the parts of the district you would walk past, yes: the best-booked listing we checked states that maid-café seating is guaranteed and that it runs with an English- or Japanese-speaking guide for a group of 1 to 10, and both of those are genuinely hard to arrange on your own. Listings checked " + CHECKED + ".",
+    a: "It depends on what you came for. If you are shopping, no — the shops are free to enter, four of the big ones sit within a few minutes of JR Akihabara's Electric Town Exit, and a guide cannot help you buy. If you want the maid café, the context and the parts of the district you would walk past, yes: the best-booked listing states that maid-café seating is guaranteed and that it runs with an English- or Japanese-speaking guide for a group of 1 to 10, and both of those are genuinely hard to arrange on your own. Listings checked " + CHECKED + ".",
   },
   {
     q: "How long do you need in Akihabara?",
@@ -432,13 +432,13 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
             JR Akihabara Station&apos;s Electric Town Exit, and every shop they enter is free to walk
             into on your own — animate, Akihabara Radio Kaikan, Super Potato and Mandarake Complex are
             all within a few minutes of that exit and all open by 12:00. What the tour adds is narrower
-            and more specific than the listings imply: the one we checked on {CHECKED} states that
+            and more specific than the listings imply: the one checked on {CHECKED} states that
             maid-café seating is guaranteed and that the guide speaks English or Japanese for a group
             of between 1 and 10 — which covers the two parts of Akihabara that a first-time visitor
             genuinely cannot arrange from outside Japan.
           </p>
           <p className={styles.bodyText}>
-            That makes this an unusual page in this category. Most of the attractions we write about
+            That makes this an unusual page in this category. Most of the attractions on this site
             cannot be done without a ticket; Akihabara can be done entirely for free, and done well.
             So the sections below give you the solo version properly — the shops&apos; own published
             hours, the station exits, what a maid café charges if you simply walk in — and then set the
@@ -475,8 +475,8 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Lengths, departure times and group sizes as the Klook listings state them, checked {CHECKED}.
-            No prices appear here: Klook answers automated reads of its product pages with HTTP 403, so
-            there is no figure we could have verified — open a listing for the price on your date.
+            No prices appear here: Klook prices change by date, so open a listing for the price on
+            your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -542,7 +542,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Every time above is from the operator&apos;s own site, read on {CHECKED}. Only these five are
-            listed because only these five publish their hours in a form we could check — Kanda Myojin
+            listed because only these five publish their hours in a form that can be checked — Kanda Myojin
             shrine, which two of the private tours route through, publishes an address and a phone number
             and no visiting hours, so none are quoted for it here.
           </p>
@@ -651,7 +651,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText}>
             Which is why the tours put the maid café at the centre of their pitch rather than the shops.
-            The listing we checked states that seating is guaranteed, and on a Saturday evening in a
+            The listing states that seating is guaranteed, and on a Saturday evening in a
             28-seat room up three flights of stairs, that is the part worth paying for.
           </p>
         </section>
@@ -765,7 +765,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
         </section>
 
         <KlookTourPicks
-          heading="Every Akihabara Tour We Could Confirm"
+          heading="Every Akihabara Tour Confirmed Live"
           intro={`The six listings behind the comparison table, in the order the table uses them, plus the evening run that treats Akihabara as one stop of three. All confirmed live and on sale on ${CHECKED}; open a listing for the price and the dates still open on yours.`}
           tours={[
             akihabaraAnimeMangaMaidCafeTour,

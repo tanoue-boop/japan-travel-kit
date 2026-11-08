@@ -569,7 +569,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Prices read on {CHECKED} from the operator&apos;s own site (skybldg.co.jp), with the pass
             conditions matching the Osaka Amazing Pass operator&apos;s facility list the same day.
-            Subject to change — confirm before you buy. For the admissions we track
+            Subject to change — confirm before you buy. For the admissions in this guide
             across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
@@ -882,7 +882,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
 
         <KlookTourPicks
           heading="The Rest of an Osaka Day"
-          intro="An hour or two on the roof leaves most of a day unspent, and Umeda is the far north of the city from Dotonbori and the castle. The first of these covers the castle and the deck together; the second is the walking version. Klook blocks automated price reads, so open a listing for the current figure and the meeting point."
+          intro="An hour or two on the roof leaves most of a day unspent, and Umeda is the far north of the city from Dotonbori and the castle. The first of these covers the castle and the deck together; the second is the walking version. Klook prices change by date, so open a listing for the current figure and the meeting point."
           tours={[osakaCastleUmedaTonboriDayTour, osakaPrivateWalkingTour]}
         />
 

@@ -339,8 +339,8 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka" style={{ color: "var(--red)", fontWeight: 600 }}>
               Kyoto and Nara day tour comparison
             </Link>{" "}
-            puts four of those itineraries side by side. We do not quote tour prices here, because Klook
-            blocks automated reads of its product pages — open a listing for the figure on your date.
+            puts four of those itineraries side by side. No tour prices are quoted here, because Klook
+            prices change by date — open a listing for the figure on your date.
           </p>
         </section>
 

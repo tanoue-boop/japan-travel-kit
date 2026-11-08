@@ -328,7 +328,7 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Sizing the plan</span>
           <h2 className={styles.sectionTitle}>How Much Data Does a Working Day Need?</h2>
           <p className={styles.bodyText}>
-            Planning estimates rather than measurements — the figures we use to size a plan. The
+            Planning estimates rather than measurements — the figures this guide uses to size a plan. The
             line that matters is the last one: a tethered laptop roughly triples a tourist day,
             which is why a 5 GB trip plan is the wrong purchase for a business week.
           </p>

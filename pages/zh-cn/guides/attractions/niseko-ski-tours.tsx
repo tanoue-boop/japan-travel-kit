@@ -529,7 +529,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-<strong>一个会改变计划的实务细节。</strong>早季票是冬季最便宜的一周（2026 年 11 月 28 日到 12 月 11 日），但 Niseko United 注明<strong>不在网上销售</strong>。所以全季最便宜的滑雪要到达后在柜台买，这没问题，只是无法在家先锁定。多日票最长七天，另有仅限网上的 50 小时票；这里只列一日票，因为那是我们能完整读到的度假村票价表。所有价格核查日期：{SEASON}。
+<strong>一个会改变计划的实务细节。</strong>早季票是冬季最便宜的一周（2026 年 11 月 28 日到 12 月 11 日），但 Niseko United 注明<strong>不在网上销售</strong>。所以全季最便宜的滑雪要到达后在柜台买，这没问题，只是无法在家先锁定。多日票最长七天，另有仅限网上的 50 小时票；这里只列一日票，因为那是度假村票价表中可以完整核查的部分。所有价格核查日期：{SEASON}。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -604,7 +604,7 @@ Rhythm 私人课 →
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-区域名称和关闭日期出自 Niseko United，Grand HIRAFU 雪道数字出自 Grand Hirafu：22 条雪道（初级 9、中级 6、高级 7）、2 座缆车和 7 座吊椅、垂直落差 940 米（山顶 1,200 米、山脚 260 米）、135 公顷、最长雪道 5,300 米、最陡 40°。均于 {OWN} 核查。Niseko United 表示最热门的住宿和旺季假期很早订满，但没有公布多早，所以我们也不写。
+区域名称和关闭日期出自 Niseko United，Grand HIRAFU 雪道数字出自 Grand Hirafu：22 条雪道（初级 9、中级 6、高级 7）、2 座缆车和 7 座吊椅、垂直落差 940 米（山顶 1,200 米、山脚 260 米）、135 公顷、最长雪道 5,300 米、最陡 40°。均于 {OWN} 核查。Niseko United 表示最热门的住宿和旺季假期很早订满，但没有公布多早，所以这里也不写。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

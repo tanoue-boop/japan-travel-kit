@@ -744,8 +744,8 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           </KlookLink>
           <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
             Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;. No price or data allowance
-            is quoted here because the listing could not be read automatically on{" "}
-            {klookEsim.checkedAt}, so it is not ranked against the four above.
+            is quoted here because Klook prices change by date (listing checked{" "}
+            {klookEsim.checkedAt}), so it is not ranked against the four above.
           </p>
         </section>
 

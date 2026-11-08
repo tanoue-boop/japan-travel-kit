@@ -146,7 +146,7 @@ const faqItems = [
   },
   {
     q: "How early should I book a Tokyo hotel?",
-    a: `We do not publish a number here, because nobody publishes one: availability and price are per-hotel and per-date, and any "book X weeks ahead" figure would be invented. What is a published fact is the calendar you are booking against. Japan's Cabinet Office lists Showa Day on 29 April, Constitution Memorial Day on 3 May, Greenery Day on 4 May and Children's Day on 5 May — the Golden Week cluster — plus Mountain Day on 11 August, read on ${OWN}. Those weeks, the New Year period and the cherry-blossom and autumn-leaf weeks are when domestic demand is added to yours. The practical move is the opposite of guessing: open the hotel search for your actual dates, in two or three of the areas above, and compare what is left.`,
+    a: `There is no number here, because nobody publishes one: availability and price are per-hotel and per-date, and any "book X weeks ahead" figure would be invented. What is a published fact is the calendar you are booking against. Japan's Cabinet Office lists Showa Day on 29 April, Constitution Memorial Day on 3 May, Greenery Day on 4 May and Children's Day on 5 May — the Golden Week cluster — plus Mountain Day on 11 August, read on ${OWN}. Those weeks, the New Year period and the cherry-blossom and autumn-leaf weeks are when domestic demand is added to yours. The practical move is the opposite of guessing: open the hotel search for your actual dates, in two or three of the areas above, and compare what is left.`,
   },
   {
     q: "Should I stay in one area for a whole Tokyo trip or move?",
@@ -154,7 +154,7 @@ const faqItems = [
   },
   {
     q: "Is it cheaper to stay outside central Tokyo?",
-    a: "Often, and the question is whether the fares and the time eat the saving. An area one or two stops off the Yamanote loop — Ikebukuro, Shinagawa, Nippori, Kinshicho — still has the loop or a through-running subway at the door, and that is the test worth applying: not how far out it is, but whether it is on a line you will actually use. We print no rates here because we cannot verify them; the area searches below show what is available on your dates.",
+    a: "Often, and the question is whether the fares and the time eat the saving. An area one or two stops off the Yamanote loop — Ikebukuro, Shinagawa, Nippori, Kinshicho — still has the loop or a through-running subway at the door, and that is the test worth applying: not how far out it is, but whether it is on a line you will actually use. No rates are printed here because they cannot be verified; the area searches below show what is available on your dates.",
   },
   {
     q: "Which Tokyo area is best for food and nightlife?",
@@ -343,9 +343,9 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText}>
             What follows is the comparison behind that, and what it deliberately leaves out. There are no
-            hotel names, no room impressions and no nightly rates on this page: we cannot verify any of the
-            three from here, and two of them change with your dates. Every journey time below carries the
-            operator who published it and the date we read it.
+            hotel names, no room impressions and no nightly rates on this page: none of the three can be
+            verified here, and two of them change with your dates. Every journey time below carries the
+            operator who published it and the date it was read.
           </p>
         </section>
 
@@ -500,7 +500,7 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Booking</span>
           <h2 className={styles.sectionTitle}>How Early Should You Book a Tokyo Hotel?</h2>
           <p className={styles.bodyText}>
-            <strong>We do not publish a number, because nobody publishes one.</strong> Availability and
+            <strong>There is no number here, because nobody publishes one.</strong> Availability and
             price are per-hotel and per-date, so any &ldquo;book X weeks ahead&rdquo; figure would be
             invented. What is a published fact is the calendar you are booking against.
           </p>

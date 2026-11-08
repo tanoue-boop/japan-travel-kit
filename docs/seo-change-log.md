@@ -2,6 +2,12 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-08：作業メモ型の一人称の一掃と本番 dateModified の修正（task-jtk-20261108-05）
+
+- 2026-11-08 全ページ（en・ko・zh-tw・zh-cn・th）と共有部品の読者向け文言から「we could not read / we track / Klook blocks automated reads」型の作業メモを第三者視点に置換（約160ファイル）。数値・title・見出し・構成は変更なし（11/20 効果測定中のページも文言の置き換えのみ）。
+- 更新日の方式：`prebuild` 先頭の `scripts/ensure-git-history.js` が Vercel の shallow clone を unshallow し、`lib/page-dates.js` が git の最終 commit 日を読む。失敗時は data/page-dates.json にフォールバック。日次タスクは page-dates.json をコミットしない運用のまま（詳細は docs/page-dates-operation.md）。
+- 修正前の本番：tokyo-go-kart の dateModified 2026-11-01、amanohashidate-ine-day-trip 2026-11-06（いずれも最終 commit 2026-11-07 より古い）。
+
 ## 2026-11-07：/guides/attractions/amanohashidate-ine-day-trip の冒頭回答（task-jtk-20261107-05）
 
 - 2026-11-07 title 変更なし（「Amanohashidate Day Trip (2026): Ine Funaya, Tours & Trains」のまま）。Quick Answer の回答段落を差し替えて箱の先頭へ移し、直後に Klook CTA（activity 218014／154563）を配置。5ページと KlookTripPrep（en）の一人称の調査メモを第三者視点に変更。

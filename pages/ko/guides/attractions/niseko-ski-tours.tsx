@@ -604,7 +604,7 @@ Rhythm 개인 강습 →
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-지역 이름과 폐장일은 니세코 유나이티드, 그랜드 히라후 코스 수치는 그랜드 히라후 공식입니다. 코스 22개(초급 9, 중급 6, 상급 7), 곤돌라 2기와 체어리프트 7기, 표고차 940 m(정상 1,200 m, 베이스 260 m), 135 ha, 최장 코스 5,300 m, 최대 경사 40°입니다. 둘 다 {OWN}에 확인했습니다. 니세코 유나이티드는 인기 숙소와 성수기 연휴가 일찍 매진된다고 밝히지만 얼마나 일찍인지는 공개하지 않아 저희도 싣지 않습니다.
+지역 이름과 폐장일은 니세코 유나이티드, 그랜드 히라후 코스 수치는 그랜드 히라후 공식입니다. 코스 22개(초급 9, 중급 6, 상급 7), 곤돌라 2기와 체어리프트 7기, 표고차 940 m(정상 1,200 m, 베이스 260 m), 135 ha, 최장 코스 5,300 m, 최대 경사 40°입니다. 둘 다 {OWN}에 확인했습니다. 니세코 유나이티드는 인기 숙소와 성수기 연휴가 일찍 매진된다고 밝히지만 얼마나 일찍인지는 공개하지 않아 여기에도 싣지 않습니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

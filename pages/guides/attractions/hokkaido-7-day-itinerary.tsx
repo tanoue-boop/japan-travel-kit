@@ -621,8 +621,8 @@ const days: Day[] = [
         bus, a taxi course, or a guided day out of Sapporo that covers the lot and gives up the early light.
         If your trip is in the lavender weeks, book that in some form well ahead: this is the single
         most-booked day in Hokkaido, and the listings differ on exactly the thing that matters — whether the
-        Blue Pond is in the itinerary, whether Farm Tomita is, and whether lunch is inside the price. We do
-        not publish a bloom window, because Farm Tomita&apos;s own page does not state one.
+        Blue Pond is in the itinerary, whether Farm Tomita is, and whether lunch is inside the price. No bloom
+        window is given here, because Farm Tomita&apos;s own page does not state one.
       </>
     ),
     picks: [
@@ -796,7 +796,7 @@ const faqItems = [
   },
   {
     q: "How long does it take to fly to Hokkaido from Tokyo or Osaka?",
-    a: `Haneda to New Chitose is ${HND_FLIGHT} with sixteen flights a day, on JAL's own domestic route list read ${OWN} — which makes it one of the busiest air routes in the world and, in practice, a turn-up-and-fly leg if you hold a flexible fare. For Osaka we are not going to print a number: no carrier page we could read on that date published a duration for Itami or Kansai to New Chitose, and the aggregator figures are not an operator's own, so check the airline's timetable for your date. What matters for planning is the same either way. Add the ${AIRPORT_FARE} and 36 to 43 minutes from New Chitose into Sapporo on top of whatever the flight is, give a February departure more slack than you would give a shinkansen, and do not book the first flight out on your last morning. The train alternative exists — the Hokkaido Shinkansen reaches Shin-Hakodate-Hokuto, not Sapporo — but on a seven-day trip it spends a day of the week on each direction.`,
+    a: `Haneda to New Chitose is ${HND_FLIGHT} with sixteen flights a day, on JAL's own domestic route list read ${OWN} — which makes it one of the busiest air routes in the world and, in practice, a turn-up-and-fly leg if you hold a flexible fare. For Osaka no number is printed here: no carrier page checked on that date published a duration for Itami or Kansai to New Chitose, and the aggregator figures are not an operator's own, so check the airline's timetable for your date. What matters for planning is the same either way. Add the ${AIRPORT_FARE} and 36 to 43 minutes from New Chitose into Sapporo on top of whatever the flight is, give a February departure more slack than you would give a shinkansen, and do not book the first flight out on your last morning. The train alternative exists — the Hokkaido Shinkansen reaches Shin-Hakodate-Hokuto, not Sapporo — but on a seven-day trip it spends a day of the week on each direction.`,
   },
   {
     q: "What does a 7-day Hokkaido trip cost in transport?",
@@ -1025,7 +1025,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
         <KlookTripPrep
           label="Book on the same trip"
           heading="What to Book With a Hokkaido Week"
-          intro="Three things sit outside the seven days: the data that carries every weather and timetable notice, the airport leg, and the rail pass that pays on this route. Klook blocks automated price reads, so open a listing for the figure on your own dates."
+          intro="Three things sit outside the seven days: the data that carries every weather and timetable notice, the airport leg, and the rail pass that pays on this route. Klook prices change by date, so open a listing for the figure on your own dates."
           items={hokkaidoSameTrip}
         />
 
@@ -1272,7 +1272,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           One timing note that applies to all four. The February week this island is busiest in is a set of
           fixed dates announced a year ahead — the Snow Festival committee published the 2027 dates on 11
           February 2026 — so rooms for the first fortnight of February are the booking with no fallback,
-          and Otaru is the standard answer when Sapporo is full. We publish no occupancy figure, because
+          and Otaru is the standard answer when Sapporo is full. No occupancy figure is given here, because
           none is published.
         </p>
 

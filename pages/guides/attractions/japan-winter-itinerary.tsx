@@ -883,7 +883,7 @@ const datedRows = [
   {
     event: "Lake Shikotsu Ice Festival",
     when: "30 January–23 February 2027, daily 10:00–20:00, lit 16:30–20:00",
-    rule: "An admission fee applies, free for elementary school age and younger. Hokkaido's official tourism site does not print the adult figure, so we do not either",
+    rule: "An admission fee applies, free for elementary school age and younger. Hokkaido's official tourism site does not print the adult figure, so none is given here",
     source: "Hokkaido's official tourism site",
   },
   {

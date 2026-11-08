@@ -526,7 +526,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             All five read off those operators&apos; own sites on {CHECKED}, and subject to change. The
             ropeway fare above is the figure its operator published as taking effect on 1 November 2026;
-            check the current one before you go. For the admissions we track across the rest of Japan,
+            check the current one before you go. For admissions across the rest of Japan,
             each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
@@ -628,7 +628,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
 
         <KlookTourPicks
           heading="The Guided Versions of This Day"
-          intro="Three Kawaguchiko-area day tours out of Tokyo and the seat-only bus, for when the connections are the part you would rather not own. Klook blocks automated price reads, so open a listing for the figure and the departure point on your date."
+          intro="Three Kawaguchiko-area day tours out of Tokyo and the seat-only bus, for when the connections are the part you would rather not own. Klook prices change by date, so open a listing for the figure and the departure point on your date."
           tours={[kawaguchikoYamanakakoBusTour, fujiPhotographyDayTour, kawaguchikoPrivateDayTour, tokyoMtFujiHighwayBus]}
         />
 

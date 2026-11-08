@@ -530,7 +530,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            为什么不列价格区间：能显示价格的两个地方都无法读取。USJ 的会员购票页在{CHECKED_USJ}对自动读取返回 HTTP 503，官方 WEB Ticket Store
+            为什么不列价格区间：能显示价格的两个地方都无法使用。USJ 的会员购票页在{CHECKED_USJ}返回服务器错误（HTTP 503），官方 WEB Ticket Store
             则设有虚拟排队室。与其照搬第三方网页的数字，本攻略列出 USJ 的定价规则，并请你以当天结账时的价格为准。
           </p>
         </section>
@@ -716,7 +716,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <li><strong>单人乘坐:</strong> 与快速通行证无关的另一套制度：与同行者分开，填补空位。部分日期与时段不能使用，请询问各设施的工作人员。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            依 USJ 快速通行证与 FAQ 页面的搜索索引内容，2026 年 11 月 6 日查阅。实际页面无法自动读取，请以你票上的时间为准。
+            依 USJ 快速通行证与 FAQ 页面的搜索索引内容，2026 年 11 月 6 日查阅。时间可能变动，请以你票上的时间为准。
           </p>
         </section>
 
@@ -768,7 +768,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             USJ 在大阪西侧的此花区，车站是 JR 梦咲线（樱岛线）的环球城站——通常在西九条换乘。JR
             西日本把环球城站列为乐园最近的车站，大阪观光局则说从该站步行到大门约五分钟、从大阪站到乐园约 20 分钟。两者均于{CHECKED}查阅。JR
-            西日本的英文网站没有公布梦咲线段的门到门时间，所以我们不列。
+            西日本的英文网站没有公布梦咲线段的门到门时间，所以这里不列。
           </p>
           <p className={styles.bodyText}>
             从<strong>关西机场</strong>进市区有两个合理的选择，但都不会直达乐园。JR 西日本的 HARUKA 从机场无需换乘直达天王寺、大阪、新大阪和京都；它的优惠单程票——只卖给以短期滞在身份入境的外国护照持有人——截至2026年10月31日，到天王寺

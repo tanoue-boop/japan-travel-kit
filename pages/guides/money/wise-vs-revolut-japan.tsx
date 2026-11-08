@@ -135,7 +135,7 @@ const faqItems = [
   },
   {
     q: "Can I use Wise or Revolut with Suica or Apple Pay in Japan?",
-    a: `Apple Pay, yes: Wise lists it for cards issued in the UK, US, Japan, Australia and several other countries, and Revolut lists Japan among its Apple Pay countries. Suica is less certain. Wise's Australian Suica guide says you can use Apple Pay to top up a digital Suica but warns not every card will work, and we found no Revolut statement either way. Apple does not name eligible cards, so keep yen cash for a station ticket machine. Checked ${CHECKED}.`,
+    a: `Apple Pay, yes: Wise lists it for cards issued in the UK, US, Japan, Australia and several other countries, and Revolut lists Japan among its Apple Pay countries. Suica is less certain. Wise's Australian Suica guide says you can use Apple Pay to top up a digital Suica but warns not every card will work, and the sources checked show no Revolut statement either way. Apple does not name eligible cards, so keep yen cash for a station ticket machine. Checked ${CHECKED}.`,
   },
   {
     q: "Do I need both Wise and Revolut for Japan?",
@@ -353,8 +353,8 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
             <a href={REVOLUT_JP_PLANS_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Japan plans</a>,{" "}
             <a href={REVOLUT_JP_FX_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>exchange fees</a> and{" "}
             <a href={REVOLUT_JP_CARD_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>card order fees</a>.
-            Revolut blocks automated page reads, so its figures were read from those pages&apos; search-index entries on{" "}
-            {CHECKED}, not from the live pages. Plus adds 0.5% at weekends; Premium, Metal and Ultra add nothing.
+            Its figures were read from those pages&apos; search-index entries on{" "}
+            {CHECKED}, not from the live pages, so check them on Revolut&apos;s site. Plus adds 0.5% at weekends; Premium, Metal and Ultra add nothing.
           </p>
         </section>
 
@@ -435,7 +435,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
             On Suica,{" "}
             <a href={WISE_SUICA_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Wise&apos;s Australian Suica guide</a>{" "}
             says you can add the card to Apple Pay &ldquo;to top up your digital Suica&rdquo;, then warns that &ldquo;Not
-            every Australian-issued payment card will necessarily work&rdquo;. We found no Revolut statement either way.{" "}
+            every Australian-issued payment card will necessarily work&rdquo;. The sources checked show no Revolut statement either way.{" "}
             <a href={APPLE_TRANSIT_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Apple&apos;s transit card page</a>{" "}
             describes topping up through Apple Pay but does not name eligible cards. Plan to top up with yen cash at a
             station ticket machine; our{" "}

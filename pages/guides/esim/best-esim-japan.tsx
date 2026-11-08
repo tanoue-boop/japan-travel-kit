@@ -333,7 +333,7 @@ const networkRows = [
   {
     provider: klookEsim.name,
     carriers: klookEsim.specNetwork,
-    how: `${klookEsim.specPhoneNumber}. Tethering: ${klookEsim.specTethering.toLowerCase()}. From Klook's own listing, not from the page itself — it answers automated reads with HTTP 403.`,
+    how: `${klookEsim.specPhoneNumber}. Tethering: ${klookEsim.specTethering.toLowerCase()}. From Klook's own listing data, not from the product page itself — check the listing for your date.`,
     checked: klookEsim.specsCheckedAt,
   },
 ];
@@ -530,7 +530,7 @@ const faqItems = [
   },
   {
     q: "Can I get a refund if I never use my Japan eSIM?",
-    a: `It depends on the provider. Simbye's refund policy gives a full refund on an eSIM never installed or activated with no data used, if requested within 30 days of purchase. eSIM Go states that "if you haven't used any data, you're entitled to a full refund — no questions asked", processed within 3 business days. Airalo lets you raise a refund request from your account, and notes that expired or fully used eSIMs are not eligible. Sakura Mobile publishes no refund terms on its travel eSIM page, and the Klook listing's terms could not be read. The related trap is timing rather than money: eSIM Go's validity "starts on first data use in Japan, not at purchase", but Sakura Mobile's 3 GB/day plans start "once you install the eSIM" — so install those on arrival, not at home. Checked ${SPECS_CHECKED}.`,
+    a: `It depends on the provider. Simbye's refund policy gives a full refund on an eSIM never installed or activated with no data used, if requested within 30 days of purchase. eSIM Go states that "if you haven't used any data, you're entitled to a full refund — no questions asked", processed within 3 business days. Airalo lets you raise a refund request from your account, and notes that expired or fully used eSIMs are not eligible. Sakura Mobile publishes no refund terms on its travel eSIM page, and the Klook listing's terms are not listed here, so check them at checkout. The related trap is timing rather than money: eSIM Go's validity "starts on first data use in Japan, not at purchase", but Sakura Mobile's 3 GB/day plans start "once you install the eSIM" — so install those on arrival, not at home. Checked ${SPECS_CHECKED}.`,
   },
   {
     q: "Why is my Japan eSIM speed slow?",
@@ -712,7 +712,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText}>
             For a trip of <strong>10 days or less</strong> with ordinary tourist use, the pick is{" "}
             <strong>Simbye&apos;s {planLabel(SHORT_TRIP_PLAN)}</strong> — 10 GB is a gigabyte a day with room
-            left over, at the lowest list price we track, and its feed lists NTT docomo, KDDI/au, SoftBank
+            left over, at the lowest list price in this comparison, and its feed lists NTT docomo, KDDI/au, SoftBank
             and Rakuten Mobile; for <strong>two to four weeks</strong>, the same provider&apos;s{" "}
             <strong>{planLabel(LONG_TRIP_PLAN)}</strong> covers 20 days at the same rate. If you want{" "}
             <strong>unlimited</strong> rather than an allowance, Simbye&apos;s{" "}
@@ -730,8 +730,8 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             daily. Networks, fair-use thresholds, hotspot caps, phone-number availability and refund rules
             read on {SPECS_CHECKED} (Simbye: {SIMBYE_SPECS_CHECKED_AT}, from simbye.com and its price feed);
             the Klook rows are from its own listing data of{" "}
-            {klookEsim.specsCheckedAt}, because Klook answers automated reads of the product page with
-            HTTP 403.
+            {klookEsim.specsCheckedAt}; Klook prices change by date, so open the listing for
+            yours.
           </p>
         </section>
 
@@ -814,8 +814,8 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
             The Klook row sits outside the ranking on purpose. The five providers above are ranked on
-            prices read off their own sites every day; Klook&apos;s eSIM listing could not be read
-            automatically on the last attempt ({klookEsim.checkedAt}), so there is no price or data tier to
+            prices read off their own sites every day; Klook&apos;s eSIM listing had no verified
+            price on the last check ({klookEsim.checkedAt}), so there is no price or data tier to
             place it against them. Open the listing to see the current options.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
@@ -1274,7 +1274,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
               </div>
               <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                 Listed on Klook as &ldquo;{klookEsim.listingTitle}&rdquo;. No price or data allowance is quoted
-                here because the listing could not be read automatically on {klookEsim.checkedAt}.
+                here because Klook prices change by date (listing checked {klookEsim.checkedAt}).
               </p>
             </div>
           </article>

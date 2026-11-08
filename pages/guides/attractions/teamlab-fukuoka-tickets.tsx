@@ -517,7 +517,7 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
             Every tier read on {CHECKED} from teamLab&apos;s own page for the venue and from BOSS E・ZO
             FUKUOKA, the operator of the building it sits in. Which dates count as peak is published on the
             official ticket calendar rather than as a rule, so confirm your own date before you budget for it.
-            These figures sit alongside every other attraction we have checked in our{" "}
+            These figures sit alongside every other attraction checked in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>, which carries the check date for each one.
@@ -749,7 +749,7 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
         {/* Klook tours in the same city */}
         <KlookTourPicks
           heading="Days Out From the Same City"
-          intro="A teamLab slot fills an hour, which leaves most of a Fukuoka day open. All three of these leave and return to Hakata Station, which is a direct Airport Line ride from Tojinmachi — so a late-afternoon museum slot joins onto the end of any of them without a transfer. Klook blocks automated price reads, so open a listing for the figure on your dates."
+          intro="A teamLab slot fills an hour, which leaves most of a Fukuoka day open. All three of these leave and return to Hakata Station, which is a direct Airport Line ride from Tojinmachi — so a late-afternoon museum slot joins onto the end of any of them without a transfer. Klook prices change by date, so open a listing for the figure on your dates."
           tours={[fukuokaTeamlabBusTour, dazaifuYanagawaDayTour, yanagawaItoshimaDayTour, klookPassFukuoka]}
         />
 

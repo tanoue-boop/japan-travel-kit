@@ -620,7 +620,7 @@ const faqItems = [
   },
   {
     q: "How much is a taxi from Narita or Haneda to Tokyo?",
-    a: `From Narita there is a published flat fare in six zones, set by the airport: ¥23,500–¥26,500 for Edogawa, Katsushika and Adachi; ¥28,000 for Koto, Sumida, Odaiba and Higashi-yashio; ¥29,000–¥31,000 for Chuo, Chiyoda, Taito, Bunkyo and Arakawa; ¥31,500–¥32,500 for Shinjuku, Toshima, Nakano, Shibuya, Meguro, Minato, Shinagawa and Ota; ¥34,000–¥36,000 for Itabashi, Kita and Nerima; and ¥35,500–¥38,500 for Setagaya, Suginami, Mitaka and Musashino. The two figures in each range are the two expressway routings, expressway tolls are charged on top, and a surcharge applies between 22:00 and 05:00. From Haneda the airport confirms a flat-fare scheme covering Tokyo and Kanagawa with tolls extra but publishes no amount, so we do not print one. Read on ${CHECKED_TAXI}.`,
+    a: `From Narita there is a published flat fare in six zones, set by the airport: ¥23,500–¥26,500 for Edogawa, Katsushika and Adachi; ¥28,000 for Koto, Sumida, Odaiba and Higashi-yashio; ¥29,000–¥31,000 for Chuo, Chiyoda, Taito, Bunkyo and Arakawa; ¥31,500–¥32,500 for Shinjuku, Toshima, Nakano, Shibuya, Meguro, Minato, Shinagawa and Ota; ¥34,000–¥36,000 for Itabashi, Kita and Nerima; and ¥35,500–¥38,500 for Setagaya, Suginami, Mitaka and Musashino. The two figures in each range are the two expressway routings, expressway tolls are charged on top, and a surcharge applies between 22:00 and 05:00. From Haneda the airport confirms a flat-fare scheme covering Tokyo and Kanagawa with tolls extra but publishes no amount, so none is printed here. Read on ${CHECKED_TAXI}.`,
   },
   {
     q: "Is a private transfer worth it for 4 people?",
@@ -896,8 +896,8 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook listings open in a new tab, and we print no Klook price: Klook blocks automated reads of its
-            product pages, so no figure here could be verified. The railway fares above are the counter fares —
+            Klook listings open in a new tab, and no Klook price is printed: Klook prices change by date,
+            so check the listing for yours. The railway fares above are the counter fares —
             both operators sell a cheaper visitor ticket, which is the{" "}
             <a href="#prebuy" style={{ color: "var(--text)", fontWeight: 600 }}>pre-buy table</a> further down.
           </p>
@@ -1303,7 +1303,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             Shibuya are zone D at <strong>¥31,500 or ¥32,500</strong>. From <strong>Haneda</strong> there is no
             published answer: the airport confirms a flat-fare scheme covering Tokyo and Kanagawa with tolls extra,
             but states that passengers should ask the taxi company for the figure, and the Tokyo Hire-Taxi
-            Association&apos;s own fare pages were offline when we checked, so no Haneda number appears here.
+            Association&apos;s own fare pages were offline when checked, so no Haneda number appears here.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1407,9 +1407,9 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Both listings open on Klook in a new tab and were confirmed live and on sale on {CHECKED}. We print no
-            Klook price — the private transfer is quoted per area and per vehicle size, so one figure would be
-            wrong for most bookings even if Klook&apos;s product pages could be read automatically.
+            Both listings open on Klook in a new tab and were confirmed live and on sale on {CHECKED}. No Klook
+            price is printed — the private transfer is quoted per area and per vehicle size, so one figure would be
+            wrong for most bookings.
           </p>
         </section>
 
@@ -1480,8 +1480,8 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook listings open in a new tab. We do not print Klook prices: Klook blocks automated reads of its
-            product pages, so no figure here could be verified — check the current price and the cancellation terms
+            Klook listings open in a new tab. Klook prices are not printed here: they change by date,
+            so check the current price and the cancellation terms
             for your own date at checkout. The{" "}
             <KlookLink href={naritaBusSubwayCombo.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--text)", fontWeight: 600 }}>
               bus + Tokyo Subway Ticket combination

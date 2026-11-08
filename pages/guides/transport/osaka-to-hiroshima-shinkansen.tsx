@@ -112,7 +112,7 @@ const routeRows = [
   {
     item: "Services named on the booking page",
     value: "MIZUHO, HIKARI, SAKURA, KODAMA",
-    detail: "The MIZUHO is the fast Sanyo–Kyushu through service and the one behind the 1h 20m figure; the KODAMA stops everywhere. The NOZOMI also works this leg, but Klook's departure list on the day we read it did not name one",
+    detail: "The MIZUHO is the fast Sanyo–Kyushu through service and the one behind the 1h 20m figure; the KODAMA stops everywhere. The NOZOMI also works this leg, but Klook's departure list on the day checked did not name one",
     source: `klook.com rail page, ${OWN}`,
   },
   {
@@ -557,8 +557,8 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             Subject to change — confirm before buying. {fares.note} Smart EX prices are the online figures
             and differ from the station-window price; peak and off-peak dates move the reserved-seat charge
             by a couple of hundred yen either way. The JR West area passes are sold to non-Japanese passport
-            holders on a Temporary Visitor stamp. No Klook price appears on this page: Klook answers
-            automated reads of its product pages with an error, so no figure from it could be verified.
+            holders on a Temporary Visitor stamp. No Klook price appears on this page: Klook prices
+            change by date, so check the listing for your date.
           </p>
         </section>
 

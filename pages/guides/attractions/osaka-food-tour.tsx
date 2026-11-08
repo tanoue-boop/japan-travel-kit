@@ -111,7 +111,7 @@ const placeRows = [
 const whoFor = [
   {
     title: "Book the Shinsekai night tour if…",
-    desc: "You want dinner and a district in one booking. The listing we checked runs 17:30–20:30 for 2 to 9 people through five Shinsekai eateries with 15 dishes and 3 drinks — kushikatsu and doteyaki first, because both started in these streets. It is the only Osaka food tour listing that publishes its clock, its group size and its dish count together, which makes it the easiest one to plan a day around.",
+    desc: "You want dinner and a district in one booking. The listing shown runs 17:30–20:30 for 2 to 9 people through five Shinsekai eateries with 15 dishes and 3 drinks — kushikatsu and doteyaki first, because both started in these streets. It is the only Osaka food tour listing that publishes its clock, its group size and its dish count together, which makes it the easiest one to plan a day around.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 3v8a6 6 0 0 0 12 0V3" />
@@ -149,7 +149,7 @@ const steps = [
   },
   {
     title: "Check the group size and the departure count, not just the price",
-    desc: "The Osaka food tours we checked are small-group join-ins — 2 to 9 people on the Shinsekai evening, 2 to 10 on the Dotonbori daytime walk. A listing that caps at nine seats has nine seats, so a Friday or Saturday evening in cherry-blossom or autumn-leaf season can be gone while weekday slots on the same week are wide open. If your dates are fixed, open the listing early and look at which days still show a departure.",
+    desc: "The Osaka food tours listed here are small-group join-ins — 2 to 9 people on the Shinsekai evening, 2 to 10 on the Dotonbori daytime walk. A listing that caps at nine seats has nine seats, so a Friday or Saturday evening in cherry-blossom or autumn-leaf season can be gone while weekday slots on the same week are wide open. If your dates are fixed, open the listing early and look at which days still show a departure.",
   },
   {
     title: "Pick the district you have not already walked",
@@ -168,11 +168,11 @@ const steps = [
 const faqItems = [
   {
     q: "What food is Osaka famous for?",
-    a: "Takoyaki (octopus dumplings), okonomiyaki (a savoury pancake), and kushikatsu (deep-fried skewers) are the three dishes every Osaka food tour is built on, with doteyaki — beef tendon simmered in miso — close behind. Kushikatsu and doteyaki are specifically Shinsekai dishes: the Shinsekai night tour we checked opens with both because they started in those streets. The Shinsekai listing names 15 dishes in all, including takoyaki, oden, yakitori, gyoza, tonpeiyaki, karaage and a taiyaki dessert. Osaka's nickname for itself, tenka no daidokoro, means the nation's kitchen.",
+    a: "Takoyaki (octopus dumplings), okonomiyaki (a savoury pancake), and kushikatsu (deep-fried skewers) are the three dishes every Osaka food tour is built on, with doteyaki — beef tendon simmered in miso — close behind. Kushikatsu and doteyaki are specifically Shinsekai dishes: the Shinsekai night tour listed here opens with both because they started in those streets. The Shinsekai listing names 15 dishes in all, including takoyaki, oden, yakitori, gyoza, tonpeiyaki, karaage and a taiyaki dessert. Osaka's nickname for itself, tenka no daidokoro, means the nation's kitchen.",
   },
   {
     q: "Is an Osaka food tour worth it?",
-    a: `It is worth it for the places you would not walk into, and it is not worth it for the places you would. Dotonbori is right outside Namba Station and you will walk it anyway for free. Shinsekai is a different matter: a 3-minute walk from Dobutsuenmae Station, mostly counters with handwritten Japanese menus, and the tour we checked gets you into five of them with 15 dishes and 3 drinks and someone explaining what doteyaki is. Kuromon Ichiba is about 150 shops along 580 m of arcade on the market's own figures — easy to walk and hard to order from. What you are paying for is access and ordering, not food. Checked ${CHECKED}.`,
+    a: `It is worth it for the places you would not walk into, and it is not worth it for the places you would. Dotonbori is right outside Namba Station and you will walk it anyway for free. Shinsekai is a different matter: a 3-minute walk from Dobutsuenmae Station, mostly counters with handwritten Japanese menus, and the tour listed here gets you into five of them with 15 dishes and 3 drinks and someone explaining what doteyaki is. Kuromon Ichiba is about 150 shops along 580 m of arcade on the market's own figures — easy to walk and hard to order from. What you are paying for is access and ordering, not food. Checked ${CHECKED}.`,
   },
   {
     q: "Which Osaka food tour should I book?",
@@ -192,7 +192,7 @@ const faqItems = [
   },
   {
     q: "How much does an Osaka food tour cost?",
-    a: `We do not print a figure, and the reason is not coyness — Klook blocks automated reads of its product pages, so we have no verified price to quote, and the headline number is the least useful part of the comparison anyway. Compare these instead: how many dishes are included (the Shinsekai listing says 15), how many drinks (3 on the same listing), how many venues, the group cap, and whether a full meal is included or you are grazing between stops. A three-hour tour with 15 dishes and a drinks allowance is a different product from a walk that stops outside places. Open the listing for the current price on your date. Checked ${CHECKED}.`,
+    a: `No figure is printed here, and the reason is not coyness — Klook prices change by date, so there is no single price to quote, and the headline number is the least useful part of the comparison anyway. Compare these instead: how many dishes are included (the Shinsekai listing says 15), how many drinks (3 on the same listing), how many venues, the group cap, and whether a full meal is included or you are grazing between stops. A three-hour tour with 15 dishes and a drinks allowance is a different product from a walk that stops outside places. Open the listing for the current price on your date. Checked ${CHECKED}.`,
   },
   {
     q: "Can children join an Osaka food tour?",
@@ -388,8 +388,8 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <caption style={{ captionSide: "bottom", textAlign: "left", fontSize: "0.8rem", color: "var(--text-muted)", paddingTop: "0.6rem" }}>
-                  Osaka food tour formats as listed on Klook, checked {CHECKED}. No prices: Klook blocks automated
-                  reads of its product pages, so we have no verified figure for any of these.
+                  Osaka food tour formats as listed on Klook, checked {CHECKED}. No prices: Klook prices change
+                  by date, so open a listing for the figure on yours.
                 </caption>
                 <thead>
                   <tr>
@@ -521,8 +521,8 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
         </section>
 
         <KlookTourPicks
-          heading="Osaka Food Tours and Classes We Checked"
-          intro={`Every listing here was confirmed live and on sale on ${CHECKED}. We do not print prices — Klook blocks automated reads of its product pages — so open a listing for the current figure on your date.`}
+          heading="Osaka Food Tours and Classes Compared"
+          intro={`Every listing here was confirmed live and on sale on ${CHECKED}. Prices are not printed — Klook prices change by date — so open a listing for the current figure on your date.`}
           tours={[
             shinsekaiNightFoodTour,
             dotonboriDaytimeFoodTour,

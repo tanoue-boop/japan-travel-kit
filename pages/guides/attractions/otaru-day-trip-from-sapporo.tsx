@@ -188,13 +188,13 @@ const transportRows = [
   {
     leg: "Otaru → Yoichi (for the Nikka distillery)",
     time: "About 30 minutes on the JR Hakodate Main Line, or about 40 minutes by bus from Otaru Station's bus terminal",
-    fare: "Check at the gate — we publish no figure we could not read off an operator page",
+    fare: "Check at the gate — the operator pages checked do not give a fare for this leg",
     note: `Nikka's own access page carries the warning that matters here: "there are few trains operating between Otaru Station and Yoichi Station". The distillery is a 5-minute walk from Yoichi Station. Read ${OWN}.`,
   },
   {
     leg: "Guided day trip from Sapporo",
     time: "A full day, pick-up in Sapporo",
-    fare: "Per seat, by date — Klook blocks automated price reads, so open the listing",
+    fare: "Per seat, by date — Klook prices change by date, so open the listing",
     note: "What you are buying is not the Otaru leg, which is trivial, but the parts of the day that are not: Yoichi, Cape Kamui, a ski hill or a snow park, each of which is awkward by train.",
   },
 ];
@@ -226,7 +226,7 @@ const stopRows = [
     stop: "Sushi — Sushiya-dori and the street stalls",
     where: "A few blocks back from the canal, towards the station",
     allow: "1 hour for lunch",
-    cost: "Restaurant prices; we quote none",
+    cost: "Restaurant prices; none quoted here",
     note: "Otaru is a fishing port and the sushi is the one thing here people travel for rather than photograph. Worth booking at the better counters on a weekend, which is the only reservation this day really needs.",
   },
   {
@@ -650,8 +650,8 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>The &ldquo;time to allow&rdquo; column is our own planning allowance</strong>, not an
             operator figure. Everything in the cost column is the operator&apos;s or the tourism
-            association&apos;s own published price, read {OWN}, except the restaurant line — we quote no
-            meal prices. The canal cruise is the one booking worth holding in advance on a busy date, and
+            association&apos;s own published price, read {OWN}, except the restaurant line — no meal
+            prices are quoted. The canal cruise is the one booking worth holding in advance on a busy date, and
             it is also the one thing on the list that weather can take away: cancellation for weather is
             the operator&apos;s own stated policy.
           </p>
@@ -714,7 +714,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             {SEASON}. The association publishes the dates and then adds
             「詳細は決まり次第お知らせいたします」 — details to follow as they are confirmed — so the dates
             are the only part of the 2027 edition that is announced, and they are the only part stated here.
-            We are not going to guess at hours or venues.
+            Hours and venues are not estimated here.
           </p>
           <p className={styles.bodyText}>
             Those dates sit almost exactly on top of the{" "}

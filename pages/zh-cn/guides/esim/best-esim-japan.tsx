@@ -318,7 +318,7 @@ const networkRows = [
   {
     provider: cnKlookEsim.label,
     carriers: "SoftBank 5G（按天计套餐）／IIJ（Docomo）4G LTE（总流量套餐）",
-    how: "没有电话号码——纯数据。热点共享：支持。资料来自 Klook 自己的商品数据，而不是商品页本身——该页会以 HTTP 403 拒绝自动读取。",
+    how: "没有电话号码——纯数据。热点共享：支持。资料来自 Klook 自己的商品数据，而不是商品页本身。",
     checked: KLOOK_SPECS_CHECKED,
   },
 ];
@@ -494,7 +494,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "日本 eSIM 完全没用，可以退款吗？",
-    a: `要看服务商。根据 Simbye 的退款政策，从未安装或启用且未使用任何数据的 eSIM，在购买后 30 天内申请可全额退款。eSIM Go 写明“如果你还没有使用任何数据，可以获得全额退款——无需理由”，3 个工作日内处理。Airalo 可以从账户提交退款申请，并注明已过期或已用完的 eSIM 不符合条件。Sakura Mobile 的旅游 eSIM 页面没有公布退款条款，Klook 商品的条款则无法读取。相关的坑在于时间而不是钱：eSIM Go 的有效期“从在日本首次使用数据开始，而不是从购买时开始”，但 Sakura Mobile 的每日 3 GB 套餐“安装 eSIM 后开始计算”——所以这些套餐要抵达后再安装，不要在家装。核查时间 ${SPECS_CHECKED}。`,
+    a: `要看服务商。根据 Simbye 的退款政策，从未安装或启用且未使用任何数据的 eSIM，在购买后 30 天内申请可全额退款。eSIM Go 写明“如果你还没有使用任何数据，可以获得全额退款——无需理由”，3 个工作日内处理。Airalo 可以从账户提交退款申请，并注明已过期或已用完的 eSIM 不符合条件。Sakura Mobile 的旅游 eSIM 页面没有公布退款条款，Klook 商品的条款未列于此，请在商品页确认。相关的坑在于时间而不是钱：eSIM Go 的有效期“从在日本首次使用数据开始，而不是从购买时开始”，但 Sakura Mobile 的每日 3 GB 套餐“安装 eSIM 后开始计算”——所以这些套餐要抵达后再安装，不要在家装。核查时间 ${SPECS_CHECKED}。`,
   },
   {
     q: "为什么我的日本 eSIM 速度很慢？",
@@ -581,7 +581,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>10 天以内</strong>、一般观光用量的行程，首选是
-            <strong>Simbye 的 {planLabel(SHORT_TRIP_PLAN)}</strong>——10 GB 等于每天 1 GB 还有富余，是我们跟踪的套餐中定价最低的，其价格数据列出
+            <strong>Simbye 的 {planLabel(SHORT_TRIP_PLAN)}</strong>——10 GB 等于每天 1 GB 还有富余，是本页比较的套餐中定价最低的，其价格数据列出
             NTT docomo、KDDI/au、SoftBank 与 Rakuten Mobile；<strong>两到四周</strong>的话，同一家的
             <strong>{planLabel(LONG_TRIP_PLAN)}</strong> 按同样的用量可用 20 天。如果你要的是<strong>无限流量</strong>而不是固定流量，Simbye 的
             <strong>{planLabel(SIMBYE_UNLIMITED)}</strong> 是一周套餐中最便宜的，但每天前 2 GB 全速，之后 1 Mbps；eSIM Go 的
@@ -592,7 +592,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             价格由每天重新读取的程序于 {pricesCheckedAt} 从各服务商自己的网站读取。网络、合理使用门槛、热点上限、是否提供电话号码与退款规定的读取时间为
-            {SPECS_CHECKED}（Simbye 为 {SIMBYE_CHECKED}，来自 simbye.com 与其价格数据）；Klook 的资料来自其 {KLOOK_SPECS_CHECKED} 的商品数据，因为 Klook 的产品页会以 HTTP 403 拒绝自动读取。
+            {SPECS_CHECKED}（Simbye 为 {SIMBYE_CHECKED}，来自 simbye.com 与其价格数据）；Klook 的资料来自其 {KLOOK_SPECS_CHECKED} 的商品数据。
           </p>
         </section>
 
@@ -673,7 +673,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-            Klook 这一行特意放在排名之外。上面五家是按每天从它们自己网站读取的价格排名；Klook 的 eSIM 商品页在最近一次尝试（{KLOOK_CHECKED}）时无法自动读取，
+            Klook 这一行特意放在排名之外。上面五家是按每天从它们自己网站读取的价格排名；Klook 的 eSIM 价格随日期变化（核查日 {KLOOK_CHECKED}），
             所以没有价格或流量档位可以拿来和它们比较。请打开商品页查看当前的套餐。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
@@ -1067,8 +1067,8 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
             <div className={styles.pickCardBody}>
               <p className={styles.pickSummary}>
-                Klook 自己也卖日本 eSIM，如果你已经在那里订门票或交通，值得一看——一次结账、一个账号。我们不把它列入排名：Klook 的产品页拦截自动读取价格，
-                所以我们没有经过核查的价格可以拿来排名。请打开商品页查看当前的套餐。
+                Klook 自己也卖日本 eSIM，如果你已经在那里订门票或交通，值得一看——一次结账、一个账号。它不列入排名：Klook 的价格随日期变化，
+                所以没有经过核查的价格可以拿来排名。请打开商品页查看当前的套餐。
               </p>
               <div className={styles.pickTarget}>
                 <span className={styles.pickTargetLabel}>最适合：</span>

@@ -579,8 +579,8 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             톤보리의 숫자는 오사카시 공식 관광 사이트와 패스 운영사의 시설 목록에서, 원더 크루즈 두 줄은
             같은 관광 기관의 WONDER CRUISE・PIRATES 안내에서 가져왔습니다. 마지막 세 줄은 각 클룩 상품
-            페이지가 스스로 적고 있는 내용입니다. 모두 확인일 {CHECKED}. 클룩은 자동 가격 조회에 오류로
-            응답하므로 여기에 클룩 요금은 적지 않습니다. 현재 금액과 취소 기한은 상품 페이지에서 확인하세요.
+            페이지가 스스로 적고 있는 내용입니다. 모두 확인일 {CHECKED}. 클룩 가격은 날짜에 따라
+            달라지므로 여기에 클룩 요금은 적지 않습니다. 현재 금액과 취소 기한은 상품 페이지에서 확인하세요.
             취소 기한은 운항사가 아니라 상품별로 정해집니다. 변경될 수 있습니다.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
@@ -656,7 +656,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
 
         <KlookTourPicks
           heading="배를 타기 전과 후의 시간"
-          intro="물 위의 20분이 끝나도 저녁은 많이 남고, 선착장 주변 거리는 일본에서 음식점이 가장 빽빽한 곳입니다. 첫 번째는 낮의 워킹 투어, 두 번째는 해가 진 뒤의 투어입니다. 클룩은 자동 가격 조회를 막고 있으니 현재 요금과 집합 장소는 상품 페이지에서 확인하세요."
+          intro="물 위의 20분이 끝나도 저녁은 많이 남고, 선착장 주변 거리는 일본에서 음식점이 가장 빽빽한 곳입니다. 첫 번째는 낮의 워킹 투어, 두 번째는 해가 진 뒤의 투어입니다. 클룩 가격은 날짜에 따라 달라지니 현재 요금과 집합 장소는 상품 페이지에서 확인하세요."
           tours={tourPicks}
         />
 

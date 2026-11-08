@@ -81,7 +81,7 @@ const steps = [
   },
   {
     title: "Check the operating hours for your date",
-    desc: `Hours move around: the English site showed 9:00 to 19:00 on the day we checked and publishes a per-date park-hours page alongside a live operating status for the rides. Both are worth a look the morning you go, because a coaster can be down on the day. Checked ${CHECKED}.`,
+    desc: `Hours move around: the English site showed 9:00 to 19:00 on the check date and publishes a per-date park-hours page alongside a live operating status for the rides. Both are worth a look the morning you go, because a coaster can be down on the day. Checked ${CHECKED}.`,
   },
 ];
 

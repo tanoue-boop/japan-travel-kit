@@ -531,7 +531,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            為什麼不列價格區間：能顯示價格的兩個地方都無法讀取。USJ 的會員購票頁在{CHECKED_USJ}對自動讀取回應 HTTP 503，官方 WEB Ticket Store
+            為什麼不列價格區間：能顯示價格的兩個地方都無法使用。USJ 的會員購票頁在{CHECKED_USJ}回應伺服器錯誤（HTTP 503），官方 WEB Ticket Store
             則設有虛擬排隊室。與其照抄第三方網頁的數字，本指南列出 USJ 的定價規則，並請你以當天結帳時的價格為準。
           </p>
         </section>
@@ -717,7 +717,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <li><strong>單人搭乘:</strong> 與快速通關無關的另一套制度：與同行者分開，填補空位。部分日期與時段不能使用，請洽各設施的工作人員。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            依 USJ 快速通關與 FAQ 頁面的搜尋索引內容，2026 年 11 月 6 日查閱。實際頁面無法自動讀取，請以你票上的時間為準。
+            依 USJ 快速通關與 FAQ 頁面的搜尋索引內容，2026 年 11 月 6 日查閱。時間可能變動，請以你票上的時間為準。
           </p>
         </section>
 
@@ -769,7 +769,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             USJ 在大阪西側的此花區，車站是 JR 夢咲線（櫻島線）的環球城站——通常在西九條轉車。JR
             西日本把環球城站列為樂園最近的車站，大阪觀光局則說從該站步行到大門約五分鐘、從大阪站到樂園約 20 分鐘。兩者皆於{CHECKED}查閱。JR
-            西日本的英文網站沒有公布夢咲線段的門到門時間，所以我們不列。
+            西日本的英文網站沒有公布夢咲線段的門到門時間，所以這裡不列。
           </p>
           <p className={styles.bodyText}>
             從<strong>關西機場</strong>進市區有兩個合理的選擇，但都不會直達樂園。JR 西日本的 HARUKA 從機場不必轉車直達天王寺、大阪、新大阪與京都；它的優惠單程票——只賣給以短期滯在身分入境的外國護照持有人——到2026年10月31日為止，到天王寺

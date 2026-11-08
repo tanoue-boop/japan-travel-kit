@@ -319,7 +319,7 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Coverage read off the official Osaka Amazing Pass site on {CHECKED}; the full list runs to more
-            than 40 facilities. We do not print standalone admissions for the included venues, because several
+            than 40 facilities. Standalone admissions are not printed here for the included venues, because several
             of them — Kaiyukan in particular — price by date from a calendar rather than at a fixed rate, so
             any figure here would be wrong as often as right. Check the venue on your date if you want to do
             the arithmetic precisely.

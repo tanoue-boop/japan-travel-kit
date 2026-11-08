@@ -87,7 +87,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     },
     notStated: "Not stated officially",
     phoneLabel: "Before you buy",
-    guideChecked: "Airalo, Holafly and Sakura Mobile read on 6 Nov 2026. Simbye, eSIM Go and Klook could not be read that day, so check their pages before you buy.",
+    guideChecked: "Airalo, Holafly and Sakura Mobile read on 6 Nov 2026. Simbye, eSIM Go and Klook are not confirmed for that date, so check their pages before you buy.",
     stepsLabel: "From purchase to connected",
     stepsHeading: "How to buy and activate a Japan eSIM",
     steps: [
@@ -146,7 +146,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     },
     notStated: "공식 안내 없음",
     phoneLabel: "구매 전 확인",
-    guideChecked: "Airalo, Holafly, Sakura Mobile은 2026년 11월 6일에 확인했습니다. Simbye, eSIM Go, 클룩은 이날 페이지를 읽지 못했으니 구매 전에 각 페이지를 확인하세요.",
+    guideChecked: "Airalo, Holafly, Sakura Mobile은 2026년 11월 6일에 확인했습니다. Simbye, eSIM Go, 클룩은 이날 기준으로 확인된 내용이 아니니 구매 전에 각 페이지를 확인하세요.",
     stepsLabel: "구매부터 개통까지",
     stepsHeading: "일본 eSIM 구매와 개통 순서",
     steps: [
@@ -205,7 +205,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     },
     notStated: "官方未載明",
     phoneLabel: "購買前確認",
-    guideChecked: "Airalo、Holafly、Sakura Mobile 於 2026年11月6日確認。Simbye、eSIM Go、Klook 當日無法讀取頁面，購買前請至各頁確認。",
+    guideChecked: "Airalo、Holafly、Sakura Mobile 於 2026年11月6日確認。Simbye、eSIM Go、Klook 未經當日確認，購買前請至各頁確認。",
     stepsLabel: "從購買到開通",
     stepsHeading: "日本 eSIM 的購買與開通步驟",
     steps: [
@@ -264,7 +264,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     },
     notStated: "官方未说明",
     phoneLabel: "购买前确认",
-    guideChecked: "Airalo、Holafly、Sakura Mobile 于 2026年11月6日确认。Simbye、eSIM Go、Klook 当日无法读取页面，购买前请到各页确认。",
+    guideChecked: "Airalo、Holafly、Sakura Mobile 于 2026年11月6日确认。Simbye、eSIM Go、Klook 未经当日确认，购买前请到各页确认。",
     stepsLabel: "从购买到开通",
     stepsHeading: "日本 eSIM 的购买与开通步骤",
     steps: [
@@ -323,7 +323,7 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     },
     notStated: "ไม่ได้ระบุอย่างเป็นทางการ",
     phoneLabel: "ก่อนซื้อ",
-    guideChecked: "ตรวจสอบ Airalo, Holafly และ Sakura Mobile เมื่อ 6 พ.ย. 2026 ส่วน Simbye, eSIM Go และ Klook อ่านหน้าไม่ได้ในวันนั้น โปรดตรวจสอบหน้าของแต่ละรายก่อนซื้อ",
+    guideChecked: "ตรวจสอบ Airalo, Holafly และ Sakura Mobile เมื่อ 6 พ.ย. 2026 ส่วน Simbye, eSIM Go และ Klook ยังไม่ได้ยืนยันในวันนั้น โปรดตรวจสอบหน้าของแต่ละรายก่อนซื้อ",
     stepsLabel: "ตั้งแต่ซื้อจนใช้งานได้",
     stepsHeading: "ขั้นตอนซื้อและเปิดใช้ eSIM ญี่ปุ่น",
     steps: [

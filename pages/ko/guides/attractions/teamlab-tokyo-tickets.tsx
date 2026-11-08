@@ -240,7 +240,7 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="같은 여행에 함께 예약하기"
-          intro="두 미술관 모두 도쿄 하루의 일부를 차지합니다. 지하철, 가이드 동반 시내 관광, 당일 여행을 준비했습니다. 클룩은 자동 가격 조회를 막아 두었으니, 본인 날짜의 금액은 상품 페이지를 열어 확인하세요."
+          intro="두 미술관 모두 도쿄 하루의 일부를 차지합니다. 지하철, 가이드 동반 시내 관광, 당일 여행을 준비했습니다. 클룩 가격은 날짜에 따라 달라지니, 본인 날짜의 금액은 상품 페이지를 열어 확인하세요."
           tours={tours}
         />
 

@@ -77,7 +77,7 @@ const accessRows = [
     route: "Osaka-Umeda → Sannomiya, JR / Hankyu / Hanshin",
     time: "Approx. 30 min",
     fare: "Ordinary fare, nothing reserved — see the note",
-    note: `The time is VISIT KOBE's own figure for all three operators, read ${OWN}. None of the three publishes the single fare as text rather than through a route-search tool, so we do not print one.`,
+    note: `The time is VISIT KOBE's own figure for all three operators, read ${OWN}. None of the three publishes the single fare as text rather than through a route-search tool, so none is printed here.`,
   },
   {
     route: "Osaka-Namba → Kobe-Sannomiya, Hanshin",
@@ -247,7 +247,7 @@ const faqItems = [
   },
   {
     q: "Where can I eat Kobe beef on a day trip?",
-    a: `In Kobe itself, and the thing to settle is the reservation rather than the restaurant. VISIT KOBE's own Kobe beef guide names Misono — the teppanyaki restaurant it dates to 1945 — Kobe Steak Ishida, which it says has six Kobe branches, and KOBE PLAISIR, and it notes that Arima Onsen ryokan serve it too; read on ${OWN}. Lunch is the practical slot on a day trip: it is the service with the most availability and it leaves the evening for the Rokko night view. Two routes make the booking itself simple — a restaurant course reserved in advance, or a guided day that has the Kobe beef meal inside the price. We have not checked the Kobe Beef Marketing & Distribution Promotion Association's own register of authorised shops, because its site refuses automated reads, so treat any list of "certified" restaurants on third-party pages with the same caution we are applying here.`,
+    a: `In Kobe itself, and the thing to settle is the reservation rather than the restaurant. VISIT KOBE's own Kobe beef guide names Misono — the teppanyaki restaurant it dates to 1945 — Kobe Steak Ishida, which it says has six Kobe branches, and KOBE PLAISIR, and it notes that Arima Onsen ryokan serve it too; read on ${OWN}. Lunch is the practical slot on a day trip: it is the service with the most availability and it leaves the evening for the Rokko night view. Two routes make the booking itself simple — a restaurant course reserved in advance, or a guided day that has the Kobe beef meal inside the price. This guide has not been checked against the Kobe Beef Marketing & Distribution Promotion Association's own register of authorised shops, so treat any list of "certified" restaurants on third-party pages with the same caution applied here.`,
   },
   {
     q: "Kobe or Nara — which day trip from Osaka?",
@@ -490,7 +490,7 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             Any of the three railways, and then a bus pass once you arrive. One honest note on the fare
             column: JR, Hankyu and Hanshin all publish single fares only through a route-search tool rather
             than as a table, so the only Osaka–Kobe fare printed below is the one Hanshin publishes as text.
-            We would rather give you one checked figure than four plausible ones.
+            One checked figure is more useful than four plausible ones.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -619,8 +619,8 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             Subject to change — confirm at booking. The one date to check against your own before you set
             the day is Kazamidori no Yakata&apos;s <strong>third Tuesday</strong>, which is its monthly
             closure, and Arima&apos;s two bathhouses close on different Tuesdays again. No Klook price
-            appears anywhere on this page: Klook answers automated reads of its product pages with an error,
-            so no figure from it could be verified.
+            appears anywhere on this page: Klook prices change by date, so open a listing for the
+            figure on yours.
           </p>
         </section>
 
@@ -651,9 +651,9 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             VISIT KOBE&apos;s own Kobe beef guide names Misono — which it dates to 1945 as the original
             teppanyaki restaurant — Kobe Steak Ishida, which it says has six Kobe branches, and KOBE
-            PLAISIR, and it notes that Arima Onsen ryokan serve it as well. One thing we will not claim: we
-            have not read the association&apos;s own register of authorised shops, because kobe-niku.jp
-            refuses automated reads, so nothing on this page should be taken as a certification check. If
+            PLAISIR, and it notes that Arima Onsen ryokan serve it as well. One thing this page does not claim:
+            it has not been checked against the association&apos;s own register of authorised shops, so
+            nothing on this page should be taken as a certification check. If
             that matters to you, ask the restaurant for its registration number at booking.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

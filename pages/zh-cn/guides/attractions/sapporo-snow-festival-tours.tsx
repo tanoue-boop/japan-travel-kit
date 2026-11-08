@@ -140,7 +140,7 @@ const transportRows = [
   {
     leg: "新千岁机场 → 札幌，预约接送",
     time: "走公路，2 月受天气影响",
-    fare: "按车型和日期。Klook 拦截自动查价，请打开页面查看",
+    fare: "按车型和日期。Klook 价格随日期变化，请打开页面查看",
     note: "Klook 的新千岁机场接送页，条款按车型而定，所以要在出发前预订。",
   },
   {
@@ -172,7 +172,7 @@ const transportRows = [
 const bookingWindow = [
   {
     title: "现在就订，如果你 2027 年 2 月要去：酒店",
-    desc: "执行委员会在 2026 年 2 月 11 日第 76 届闭幕公告中就公布了日期。同一座城市八个固定的夜晚，一年前就知道，自然人人都提前订。官方没有公布入住率，所以我们也不写，但这是雪祭旅行中唯一没有备选的部分。",
+    desc: "执行委员会在 2026 年 2 月 11 日第 76 届闭幕公告中就公布了日期。同一座城市八个固定的夜晚，一年前就知道，自然人人都提前订。官方没有公布入住率，所以这里也不写，但这是雪祭旅行中唯一没有备选的部分。",
   },
   {
     title: "出发前：机场交通与北海道周游券",
@@ -456,7 +456,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 免费，也不需要跟团。执行委员会的常见问题用一句话回答票价：<strong>「全会場無料です」</strong>，所有会场免费，雪祭没有任何部分需要门票。大通会场是八天内随时能进入的公园，薄野会场是公共街道。Tsudome 会场免费入场，内部部分活动另收费，委员会也提醒人多时受理可能在 16:00 前截止。核查日期：{OWN}。
 </p>
           <p className={styles.bodyText}>
-这让它在本站介绍的活动中很特别：没有队伍可跳过、没有分时段入场，所以也不存在靠谱的「免排队」商品。我们找不到销售札幌雪祭本身的 Klook 商品，也不应该有。雪祭旅行真正要花钱预订的是<strong>每天的另一半</strong>。会场全在户外，日本气象厅平年值的平均最高气温是 <strong>{FEB_MAX}</strong>，雪雕又以天黑后最美，所以理想的雪祭日是上午去郊外或下午待室内，晚上再看大通和薄野的亮灯。下面的商品就是前半段。
+这让它在本站介绍的活动中很特别：没有队伍可跳过、没有分时段入场，所以也不存在靠谱的「免排队」商品。Klook 上没有销售札幌雪祭本身的商品，也不应该有。雪祭旅行真正要花钱预订的是<strong>每天的另一半</strong>。会场全在户外，日本气象厅平年值的平均最高气温是 <strong>{FEB_MAX}</strong>，雪雕又以天黑后最美，所以理想的雪祭日是上午去郊外或下午待室内，晚上再看大通和薄野的亮灯。下面的商品就是前半段。
 </p>
           <p className={styles.bodyText}>
 有一张票因为位置值得一提：<strong>札幌电视塔</strong>展望台位于西 1 丁目，正是大通会场十一个街区雪雕的起点，也是雪祭唯一能看到步行看不到画面的收费项目：整个会场亮灯后连成一条直线。<KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看电视塔与藻岩山套票 →</KlookLink>
@@ -471,7 +471,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 雪祭周哪些行程值得订？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-只有这个季节才卖的，以及能让户外的一天有室内中段的。下列商品都于 {SEASON} 用 Klook 搜索索引重新确认；没有一个是雪祭团，每一行都写明它实际增加什么、适合怎样的一天。表格不列价格，因为 Klook 会对自动读取商品页返回错误。本页最上方的起价是索引显示的数字，你的日期请打开商品页查看。
+只有这个季节才卖的，以及能让户外的一天有室内中段的。下列商品都于 {SEASON} 用 Klook 搜索索引重新确认；没有一个是雪祭团，每一行都写明它实际增加什么、适合怎样的一天。表格不列价格，因为 Klook 价格随日期变化。本页最上方的起价是索引显示的数字，你的日期请打开商品页查看。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -526,7 +526,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 <strong>札幌站或薄野</strong>，取决于你看重晚上的哪一段。札幌站距离大通一站地铁，大多可走地下，新千岁来的快速 Airport 也停这里；八天户外、平均最高气温 {FEB_MAX}，能在会场之间回到室内比景观更有价值。<strong>薄野</strong>门外就是冰雕会场，亮灯到 23:00，晚场看完走回去就好。<strong>小樽</strong>坐 JR 函馆本线快速 Airport 往西 33 到 41 分钟，是札幌订满时的备选，同时期还有小樽雪灯之路。
 </p>
           <p className={styles.bodyText}>
-关于时间，我们会清楚区分已确认和未确认的部分。<strong>日期从 2026 年 2 月 11 日就公开了</strong>，执行委员会在第 76 届闭幕公告中公布 2027 年日期，所以同一座城市八个固定夜晚已知八个月，这是提前预订最有力的理由。我们刻意不写入住率或售罄数字：官方没有公布，我们也不会编造。把酒店当成没有备选的预订，其他都可以灵活调整。
+关于时间，以下清楚区分已确认和未确认的部分。<strong>日期从 2026 年 2 月 11 日就公开了</strong>，执行委员会在第 76 届闭幕公告中公布 2027 年日期，所以同一座城市八个固定夜晚已知八个月，这是提前预订最有力的理由。这里刻意不写入住率或售罄数字：官方没有公布，因此不做推估。把酒店当成没有备选的预订，其他都可以灵活调整。
 </p>
         </section>
 

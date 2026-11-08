@@ -344,7 +344,7 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Fuji Excursion journey time and frequency as listed on Klook&apos;s Fuji Excursion rail page on{" "}
             {CHECKED}; the highway bus duration is as the Klook listing describes it. Fares are deliberately
-            absent — Klook blocks automated reads of its product pages, so open a listing for the price on
+            absent — Klook prices change by date, so open a listing for the price on
             your date. For how the Tokyo end of the journey works, see our{" "}
             <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--red)", fontWeight: 600 }}>
               Getting Around Tokyo guide

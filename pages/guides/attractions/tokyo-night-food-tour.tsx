@@ -107,7 +107,7 @@ const alleyRows = [
 const whoFor = [
   {
     title: "Book the food walk if…",
-    desc: "You want to eat, and the bars are the setting rather than the point. The three-hour Shinjuku walk we checked covers Omoide Yokocho, Kabukicho and Golden Gai with tastings at three local food spots and one drink at a Golden Gai izakaya at the end — so you see the same alleys as a bar crawl, on a full stomach.",
+    desc: "You want to eat, and the bars are the setting rather than the point. The three-hour Shinjuku walk compared here covers Omoide Yokocho, Kabukicho and Golden Gai with tastings at three local food spots and one drink at a Golden Gai izakaya at the end — so you see the same alleys as a bar crawl, on a full stomach.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 7h16l-1.5 12.5a1 1 0 0 1-1 .9H6.5a1 1 0 0 1-1-.9z" />
@@ -117,7 +117,7 @@ const whoFor = [
   },
   {
     title: "Book the bar hop if…",
-    desc: "Getting inside a Golden Gai bar is the whole ambition. Most of those roughly 280 bars seat under ten people, many charge their own cover, and a few do not welcome walk-ins who cannot read the sign. The three-bar Shinjuku crawl we checked includes all food and drinks and states Japan's drinking age of 20 on its own listing, with ID required.",
+    desc: "Getting inside a Golden Gai bar is the whole ambition. Most of those roughly 280 bars seat under ten people, many charge their own cover, and a few do not welcome walk-ins who cannot read the sign. The three-bar Shinjuku crawl compared here includes all food and drinks and states Japan's drinking age of 20 on its own listing, with ID required.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M5 3h14l-1 9a6 6 0 0 1-12 0z" />
@@ -142,7 +142,7 @@ const whoFor = [
 const steps = [
   {
     title: "Check the age rule before anything else",
-    desc: "Japan's legal drinking age is 20, and the Shinjuku bar-hopping listing we checked states it in those words and asks for valid photo ID as proof of age. That is not the operator being cautious — it is the law, and a 19-year-old on a family trip will be turned away at the first bar. If the group includes under-20s, the food-led walks and the daytime market tours are the alternative, not a quiet word with the guide.",
+    desc: "Japan's legal drinking age is 20, and the Shinjuku bar-hopping listing compared here states it in those words and asks for valid photo ID as proof of age. That is not the operator being cautious — it is the law, and a 19-year-old on a family trip will be turned away at the first bar. If the group includes under-20s, the food-led walks and the daytime market tours are the alternative, not a quiet word with the guide.",
   },
   {
     title: "Pick the alley, then the format",
@@ -165,7 +165,7 @@ const steps = [
 const faqItems = [
   {
     q: "What is a Tokyo night food tour?",
-    a: "A two- to three-hour small-group walk after dark through Tokyo's izakaya alleys with an English-speaking guide, eating and drinking at three or more venues rather than sitting down at one. In Shinjuku, the standard route is Omoide Yokocho, then Kabukicho, then Golden Gai. The format splits into two: food-led walks, where you eat at three local spots and have one drink at the end, and bar hops, where all food and drinks across three bars are included and the drinking is the point. Both run about three hours on the listings we checked.",
+    a: "A two- to three-hour small-group walk after dark through Tokyo's izakaya alleys with an English-speaking guide, eating and drinking at three or more venues rather than sitting down at one. In Shinjuku, the standard route is Omoide Yokocho, then Kabukicho, then Golden Gai. The format splits into two: food-led walks, where you eat at three local spots and have one drink at the end, and bar hops, where all food and drinks across three bars are included and the drinking is the point. Both run about three hours on the listings compared here.",
   },
   {
     q: "How is this different from a daytime Tokyo food tour?",
@@ -177,7 +177,7 @@ const faqItems = [
   },
   {
     q: "Which area is best for a night food tour in Tokyo?",
-    a: "Shinjuku, for a first night. Omoide Yokocho sits by the West Exit of Shinjuku Station and Golden Gai is five minutes from the East Exit, so the three districts a tour covers are within a short walk of one another and of the station you will leave from. Shibuya is the alternative if your evening already starts on that side of the loop — a rooftop slot, say — and there is a listing that runs across both Shinjuku and Shibuya for exactly that case. Yurakucho's gado-shita, the izakaya under the Yamanote tracks, is a genuine fourth option, but we could not confirm an English-language tour of it on Klook, so it is a walk rather than a booking.",
+    a: "Shinjuku, for a first night. Omoide Yokocho sits by the West Exit of Shinjuku Station and Golden Gai is five minutes from the East Exit, so the three districts a tour covers are within a short walk of one another and of the station you will leave from. Shibuya is the alternative if your evening already starts on that side of the loop — a rooftop slot, say — and there is a listing that runs across both Shinjuku and Shibuya for exactly that case. Yurakucho's gado-shita, the izakaya under the Yamanote tracks, is a genuine fourth option, but no English-language tour of it is confirmed on Klook, so it is a walk rather than a booking.",
   },
   {
     q: "Do I need to book a Tokyo night food tour in advance?",
@@ -185,7 +185,7 @@ const faqItems = [
   },
   {
     q: "Can kids join a Tokyo night food tour?",
-    a: "Not the alcohol-inclusive ones. Japan's legal drinking age is 20, and the Shinjuku bar-hopping listing we checked says so on its own page and asks for valid ID — so under-20s cannot join, with or without a parent. The food-led evening walks sometimes set their own lower minimum age, but they still end with a drink in Golden Gai, so read the age line on the specific listing rather than assuming. For a family evening, the Tsukiji street-food walk and the guided night tour through Ueno, Akihabara and Shibuya are the two formats that are not built around drinking.",
+    a: "Not the alcohol-inclusive ones. Japan's legal drinking age is 20, and the Shinjuku bar-hopping listing compared here says so on its own page and asks for valid ID — so under-20s cannot join, with or without a parent. The food-led evening walks sometimes set their own lower minimum age, but they still end with a drink in Golden Gai, so read the age line on the specific listing rather than assuming. For a family evening, the Tsukiji street-food walk and the guided night tour through Ueno, Akihabara and Shibuya are the two formats that are not built around drinking.",
   },
   {
     q: "What will I eat on a Tokyo night food tour?",
@@ -193,7 +193,7 @@ const faqItems = [
   },
   {
     q: "How much does a Tokyo night food tour cost?",
-    a: `We do not quote a figure: Klook blocks automated reads of its product pages, so we have no verified price, and the headline number is the least comparable part of these listings anyway. Compare what moves it — how many venues, whether all drinks are included or only one, whether a sit-down course is part of it, and the group cap. A crawl with all food and drinks across three bars is a different product from a walk with three tastings and a nightcap. Open a listing for the current price on your date. Checked ${CHECKED}.`,
+    a: `No figure is quoted here: Klook prices change by date, and the headline number is the least comparable part of these listings anyway. Compare what moves it — how many venues, whether all drinks are included or only one, whether a sit-down course is part of it, and the group cap. A crawl with all food and drinks across three bars is a different product from a walk with three tastings and a nightcap. Open a listing for the current price on your date. Checked ${CHECKED}.`,
   },
   {
     q: "Do I need cash on a Tokyo night food tour?",
@@ -396,8 +396,8 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <caption style={{ captionSide: "bottom", textAlign: "left", fontSize: "0.8rem", color: "var(--text-muted)", paddingTop: "0.6rem" }}>
-                  Tokyo evening tour formats as listed on Klook, checked {CHECKED}. No prices: Klook blocks
-                  automated reads of its product pages, so we have no verified figure for any of these.
+                  Tokyo evening tour formats as listed on Klook, checked {CHECKED}. No prices: Klook prices
+                  change by date, so open a listing for the figure on any of these.
                 </caption>
                 <thead>
                   <tr>
@@ -543,8 +543,8 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
         </section>
 
         <KlookTourPicks
-          heading="Tokyo Night Food Tours We Checked"
-          intro={`Every listing here was confirmed live and on sale on ${CHECKED}. We do not print prices — Klook blocks automated reads of its product pages — so open a listing for the current figure on your date.`}
+          heading="Tokyo Night Food Tours Compared"
+          intro={`Every listing here was confirmed live and on sale on ${CHECKED}. No prices are printed — Klook prices change by date — so open a listing for the current figure on your date.`}
           tours={[
             shinjukuNightFoodWalkingTour,
             shinjukuBarHoppingNightTour,

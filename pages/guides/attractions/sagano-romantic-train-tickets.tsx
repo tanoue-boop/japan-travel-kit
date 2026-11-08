@@ -169,7 +169,7 @@ const carRows = [
   {
     car: "Cars 1 to 4 — new train (from 1 Mar 2027)",
     what: "Side glass down to foot level, a high glass ceiling, wood-finish seats and floors, and a covered semi-outdoor deck at the doors of each car. Car 4 also holds the Rankyo cabin, with a tatami-style bench and a forward view.",
-    pick: `A seat is ${ADULT_2027} for an adult. The deck is ${ADULT} and the cabin is ¥9,000 a room plus fares. The release we read does not include a seat map for the new cars.`,
+    pick: `A seat is ${ADULT_2027} for an adult. The deck is ${ADULT} and the cabin is ¥9,000 a room plus fares. The release does not include a seat map for the new cars.`,
   },
 ];
 

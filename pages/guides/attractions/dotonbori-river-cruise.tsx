@@ -534,7 +534,7 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             Amazing Pass operator&apos;s own free-admission list, which print the same three
             figures. The boat company&apos;s own site was offline for maintenance on the check
             date, so those are the sources behind every number here. Subject to change —
-            confirm before you pay. For the admissions we track across the rest of Japan, each
+            confirm before you pay. For admissions across the rest of Japan, each
             with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
@@ -630,7 +630,7 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             <strong>during the daytime</strong>, because <strong>the evening cruises sell
             out quickly</strong>. Read straight, that makes the sailings after dark — the
             19:00 to 21:00 run of departures, and more so at a weekend — the scarce ones, and
-            a weekday afternoon the turn-up-and-ride window. We have no published occupancy
+            a weekday afternoon the turn-up-and-ride window. There are no published occupancy
             figures beyond that, so treat anything more precise as guesswork rather than a
             number. Guidance read on {CHECKED}.
           </p>
@@ -723,8 +723,8 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             Tombori figures from Osaka&apos;s official tourism site and the pass operator&apos;s
             facility list; the two Wonder Cruise rows from the same tourism body&apos;s own
             WONDER CRUISE・PIRATES listing; the last three rows describe what each Klook
-            listing itself states. All read on {CHECKED}. Klook answers automated price reads
-            with an error, so no Klook fare is quoted here — open a listing for the current
+            listing itself states. All read on {CHECKED}. Klook prices change by date, so
+            no Klook fare is quoted here — open a listing for the current
             figure and the cancellation window, which is set per listing rather than per
             operator. Subject to change.
           </p>
@@ -827,7 +827,7 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
 
         <KlookTourPicks
           heading="The Hours Either Side of the Boat"
-          intro="Twenty minutes on the water leaves the rest of the evening open, and the streets around the pier are the densest eating in Japan. The first of these is the daytime walk, the second the after-dark one. Klook blocks automated price reads, so open a listing for the current figure and the meeting point."
+          intro="Twenty minutes on the water leaves the rest of the evening open, and the streets around the pier are the densest eating in Japan. The first of these is the daytime walk, the second the after-dark one. Klook prices change by date, so open a listing for the current figure and the meeting point."
           tours={[dotonboriDaytimeFoodTour, nambaBarHoppingNightTour]}
         />
 

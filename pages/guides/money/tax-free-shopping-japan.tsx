@@ -277,7 +277,7 @@ const taxFreeStores = [
     type: "Homeware",
     examples: "MUJI",
     howToCheck:
-      "MUJI's branch pages and the symbol mark at the entrance. Its tax-free page could not be read on " +
+      "MUJI's branch pages and the symbol mark at the entrance. Its tax-free page was not confirmed on " +
       OFFICIAL_CHECKED +
       ", so nothing about a particular branch is stated here — ask at the register, which is where the sale is rung up in most MUJI stores.",
   },
@@ -807,7 +807,7 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             Beyond the mark, the big chains publish their own terms, and they are not all
             equally current. The table says where to look for each, and names the two chain
-            pages we could read on {OFFICIAL_CHECKED} as well as the ones we could not.
+            pages confirmed on {OFFICIAL_CHECKED} as well as the ones that were not.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1142,7 +1142,7 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             checked-baggage and per-receipt rules, <strong>JNTO</strong> (japan.travel) for the
             English statement of the {REFUND_START} system, and the{" "}
             <strong>Ministry of Finance&apos;s FY2025 tax reform outline</strong> for what the
-            switch abolishes. Anything we could not confirm on one of those is not on this
+            switch abolishes. Anything not confirmed on one of those is not on this
             page, and where the official sources are silent — the payout timing above all —
             this page says so. Shop-level details, including whether a particular branch is
             licensed and how it pays a refund out, are the shop&apos;s to state, not ours.

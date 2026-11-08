@@ -18,7 +18,7 @@ import { SIMBYE_DISCOUNT_CODE } from "./simbye";
 const simbyeDeal = (plan: EsimPlan | null) =>
   plan
     ? `Simbye's ${plan.name} is ${formatUsd(plan.priceUsd)}, or ${formatUsd(plan.discountedUsd ?? plan.priceUsd)} with code ${SIMBYE_DISCOUNT_CODE}`
-    : "Simbye has the lowest list prices we track";
+    : "Simbye has the lowest list prices compared here";
 
 const price = (plan: EsimPlan | null) => (plan ? formatUsd(plan.priceUsd) : "—");
 const week = (id: EsimProviderId) => cheapestUnlimited(id, 7);
@@ -36,7 +36,7 @@ export const esimPageAnswers: Record<string, string> = {
   "/guides/esim/best-pocket-wifi-japan": `Rent a router if several devices will share it; the rentals are compared below. For one phone an eSIM is simpler and cheaper: ${simbyeDeal(S10)}.`,
   "/guides/esim/does-esim-work-in-japan": `Yes. A travel eSIM works in Japan if your phone supports eSIM and is carrier-unlocked. Once that is checked, ${simbyeDeal(S10)}.`,
   "/guides/esim/esim-go-japan-review": `eSIM Go is a good budget eSIM at ${price(cheapestAtLeastGb("esimgo", 10))} for 10 GB, and it sells the largest allowances here. For that same 10 GB, ${simbyeDeal(S10)}.`,
-  "/guides/esim/holafly-japan-review": `Holafly sells unlimited only, ${price(week("holafly"))} for 7 days, with the hotspot capped at 1 GB a day, and we have no link to it. The cheapest week of unlimited we track: ${simbyeDeal(S_UNL)}.`,
+  "/guides/esim/holafly-japan-review": `Holafly sells unlimited only, ${price(week("holafly"))} for 7 days, with the hotspot capped at 1 GB a day, and we have no link to it. The cheapest week of unlimited compared here:${simbyeDeal(S_UNL)}.`,
   "/guides/esim/how-to-set-up-esim-japan": `Check your phone is unlocked, buy before you fly, install on Wi-Fi, and switch the eSIM on when you land. If you have not bought one yet, ${simbyeDeal(S10)}.`,
   "/guides/esim/japan-esim-2-weeks": `Two weeks at 1 GB a day needs about 14 GB on a plan that lasts 14 days or more. ${simbyeDeal(S20)}.`,
   "/guides/esim/japan-esim-android": `Any unlocked Android with an EID under About phone can take a Japan eSIM, and no plan is Android-only. ${simbyeDeal(S10)}.`,
@@ -51,5 +51,5 @@ export const esimPageAnswers: Record<string, string> = {
   "/guides/esim/japan-sim-card-vs-esim-2026": `Buy an eSIM unless you need a Japanese number or your phone cannot take one. ${simbyeDeal(S10)}.`,
   "/guides/esim/japan-sim-card-working-holiday": `Working holiday visitors should get a resident voice plan once they have an address, as below. For data on arrival, ${simbyeDeal(S20)}.`,
   "/guides/esim/pocket-wifi-vs-esim-japan": `An eSIM suits one or two phones: nothing to collect, carry or return. A router suits a group sharing one connection. ${simbyeDeal(S10)}.`,
-  "/guides/esim/simbye-japan-review": `Simbye has the lowest list prices we track, from ${price(S1)}, and it is data only. ${simbyeDeal(S10)}.`,
+  "/guides/esim/simbye-japan-review": `Simbye has the lowest list prices compared here, from ${price(S1)}, and it is data only. ${simbyeDeal(S10)}.`,
 };

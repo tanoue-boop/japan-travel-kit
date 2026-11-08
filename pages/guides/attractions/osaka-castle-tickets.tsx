@@ -483,7 +483,7 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off osakacastle.net and Osaka&apos;s official tourism site on {CHECKED}. Subject to
-            change — confirm before you buy. For the admissions we track across the rest of Japan,
+            change — confirm before you buy. For admissions across the rest of Japan,
             each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
@@ -554,7 +554,7 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Fees and hours read off the Osaka Amazing Pass operator&apos;s own facility list on{" "}
             {CHECKED}, with the Gozabune fare bands and the garden&apos;s closed days from Osaka&apos;s
-            official tourism site the same day. One caveat we would rather state than hide: the
+            official tourism site the same day. One caveat is worth stating plainly: the
             Nishinomaru Garden is <strong>¥300</strong> on the pass operator&apos;s current list and
             still <strong>¥200</strong> on an older city tourism page, so treat the garden fee as
             ¥200–300 and confirm at the gate. Everything else in the park — the moats, the Otemon
@@ -699,7 +699,7 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
 
         <KlookTourPicks
           heading="Guided, or the Rest of the City"
-          intro="An hour in the keep and an hour on the walls is half a day, and the castle sits awkwardly between Umeda and Dotonbori. The first of these is the guided version of the grounds and the garden; the second covers the castle, the Umeda deck and the river cruise in one day. Klook blocks automated price reads, so open a listing for the current figure and the meeting point."
+          intro="An hour in the keep and an hour on the walls is half a day, and the castle sits awkwardly between Umeda and Dotonbori. The first of these is the guided version of the grounds and the garden; the second covers the castle, the Umeda deck and the river cruise in one day. Klook prices change by date, so open a listing for the current figure and the meeting point."
           tours={[osakaCastleNishinomaruWalkingTour, osakaCastleUmedaTonboriDayTour, osakaSkyVistaHalfDayBusTour]}
         />
 

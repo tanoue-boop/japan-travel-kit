@@ -60,7 +60,7 @@ const DESCRIPTION =
   `Data only, no Japanese number. Plans, code and limits.`;
 
 const pros = [
-  "Lowest list price we track on fixed Japan plans",
+  "Lowest list price compared here on fixed Japan plans",
   "Tethering allowed on every Japan plan in its feed",
   "A 50 GB plan valid for 180 days",
   "Fixed plans can be topped up without changing the eSIM",
@@ -132,7 +132,7 @@ const faqItems = [
   },
   {
     q: "Does Simbye give you a Japanese phone number?",
-    a: `No. The Japan eSIM is data only: its page says "Calls and texts: Not included" and that SMS verification codes will not reach it. Simbye does sell separate virtual numbers, but they are US, UK, Dutch and Australian numbers, not Japanese ones. If you need a Japanese number, Sakura Mobile's Voice + Data eSIM is the route among the providers we compare.`,
+    a: `No. The Japan eSIM is data only: its page says "Calls and texts: Not included" and that SMS verification codes will not reach it. Simbye does sell separate virtual numbers, but they are US, UK, Dutch and Australian numbers, not Japanese ones. If you need a Japanese number, Sakura Mobile's Voice + Data eSIM is the route among the providers compared here.`,
   },
   {
     q: "What are Simbye's virtual phone numbers for?",
@@ -148,7 +148,7 @@ const faqItems = [
   },
   {
     q: "Is Simbye cheaper than Airalo and eSIM Go in Japan?",
-    a: `On list price, yes at the tiers we track: 10 GB is ${priceAtLeastLabel("simbye", 10)} on Simbye, ${priceAtLeastLabel("esimgo", 10)} on eSIM Go and ${priceAtLeastLabel("airalo", 10)} on Airalo, checked ${pricesCheckedAt}. Airalo's plans come with live chat and shorter validity options, and eSIM Go sells larger allowances.`,
+    a: `On list price, yes at the tiers compared here: 10 GB is ${priceAtLeastLabel("simbye", 10)} on Simbye, ${priceAtLeastLabel("esimgo", 10)} on eSIM Go and ${priceAtLeastLabel("airalo", 10)} on Airalo, checked ${pricesCheckedAt}. Airalo's plans come with live chat and shorter validity options, and eSIM Go sells larger allowances.`,
   },
 ];
 
@@ -244,7 +244,7 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
             Simbye Japan Review (2026):<br />Prices, Networks and Discount Code
           </h1>
           <p className={styles.heroSubtitle}>
-            The lowest list prices we track for a Japan eSIM, what they buy, and what they do not.
+            The lowest list prices in this comparison for a Japan eSIM, what they buy, and what they do not.
           </p>
           <div className={styles.heroBadges}>
             {[`From ${priceLabel(ENTRY)}`, "Prices checked daily", "Tethering allowed"].map((t) => (
@@ -281,7 +281,7 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
                 Buy it if you only need data and price decides this for you; buy Sakura Mobile instead
                 if you need a Japanese phone number.
               </strong>{" "}
-              Simbye has the lowest list prices we track on fixed Japan plans: {priceLabel(ENTRY)} for{" "}
+              Simbye has the lowest list prices compared here on fixed Japan plans: {priceLabel(ENTRY)} for{" "}
               {ENTRY?.name} and {priceLabel(TEN_GB)} for {TEN_GB?.name}, with tethering allowed. Its feed
               lists {NETWORK}. Unlimited starts at {unlimitedFromLabel("simbye", 7)} but is capped at 2 GB
               a day of full speed. It is data only, with no Japanese number, calls or SMS. Prices checked{" "}

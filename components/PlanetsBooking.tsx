@@ -52,7 +52,7 @@ const COPY: Record<Locale, Copy> = {
       { title: "Tsukiji food tour", why: "A guided morning at the Outer Market, a short trip from Toyosu.", cta: "Check the Tsukiji tour →" },
       { title: "Tokyo Subway Ticket", why: "Covers the Yurakucho Line to Toyosu Station. It does not cover the Yurikamome.", cta: "Check the subway pass →" },
     ],
-    sameNote: "Affiliate links: Klook pays us a commission at no extra cost to you. Klook blocks automated price checks, so no Klook price is shown here.",
+    sameNote: "Affiliate links: Klook pays us a commission at no extra cost to you. Klook prices change by date, so no Klook price is shown here.",
   },
   "zh-tw": {
     label: "快速解答",
@@ -76,7 +76,7 @@ const COPY: Record<Locale, Copy> = {
       { title: "築地美食導覽", why: "上午逛築地場外市場的導覽行程，從豐洲過去不遠。", cta: "查看築地導覽 →" },
       { title: "東京地鐵票", why: "可搭有樂町線到豐洲站，但不含百合海鷗線。", cta: "查看地鐵票 →" },
     ],
-    sameNote: "以上為聯盟連結，您支付的價格不變，Klook 會支付我們分潤。Klook 會阻擋自動查價，因此這裡不列 Klook 價格。",
+    sameNote: "以上為聯盟連結，您支付的價格不變，Klook 會支付我們分潤。Klook 價格依日期而變，因此這裡不列 Klook 價格。",
   },
   "zh-cn": {
     label: "快速解答",
@@ -100,7 +100,7 @@ const COPY: Record<Locale, Copy> = {
       { title: "筑地美食导览", why: "上午逛筑地场外市场的导览行程，从丰洲过去不远。", cta: "查看筑地导览 →" },
       { title: "东京地铁票", why: "可乘有乐町线到丰洲站，但不含百合海鸥线。", cta: "查看地铁票 →" },
     ],
-    sameNote: "以上为联盟链接，您支付的价格不变，Klook 会支付我们分成。Klook 会阻止自动查价，因此这里不列 Klook 价格。",
+    sameNote: "以上为联盟链接，您支付的价格不变，Klook 会支付我们分成。Klook 价格随日期变化，因此这里不列 Klook 价格。",
   },
   ko: {
     label: "핵심 요약",
@@ -124,7 +124,7 @@ const COPY: Record<Locale, Copy> = {
       { title: "쓰키지 푸드 투어", why: "오전에 쓰키지 장외시장을 도는 가이드 투어로, 도요스에서 가깝습니다.", cta: "쓰키지 투어 보기 →" },
       { title: "도쿄 서브웨이 티켓", why: "유라쿠초선으로 도요스역까지 갈 수 있지만 유리카모메선은 포함되지 않습니다.", cta: "서브웨이 티켓 보기 →" },
     ],
-    sameNote: "제휴 링크이며, 추가 비용 없이 클룩이 저희에게 수수료를 지급합니다. 클룩은 자동 요금 확인을 막고 있어 여기에 클룩 요금을 적지 않습니다.",
+    sameNote: "제휴 링크이며, 추가 비용 없이 클룩이 저희에게 수수료를 지급합니다. 클룩 요금은 날짜에 따라 달라져 여기에 클룩 요금을 적지 않습니다.",
   },
   th: {
     label: "คำตอบสั้น ๆ",
@@ -148,7 +148,7 @@ const COPY: Record<Locale, Copy> = {
       { title: "ทัวร์อาหารสึกิจิ", why: "ทัวร์พร้อมไกด์ช่วงเช้าที่ตลาดนอกสึกิจิ เดินทางจากโทโยสุไม่ไกล", cta: "ดูทัวร์สึกิจิ →" },
       { title: "Tokyo Subway Ticket", why: "ใช้สาย Yurakucho ไปสถานี Toyosu ได้ แต่ไม่รวมสาย Yurikamome", cta: "ดูพาสรถไฟใต้ดิน →" },
     ],
-    sameNote: "เป็นลิงก์พันธมิตร Klook จ่ายค่าคอมมิชชันให้เราโดยคุณไม่ต้องจ่ายเพิ่ม Klook บล็อกการตรวจสอบราคาอัตโนมัติ เราจึงไม่ระบุราคา Klook ไว้ที่นี่",
+    sameNote: "เป็นลิงก์พันธมิตร Klook จ่ายค่าคอมมิชชันให้เราโดยคุณไม่ต้องจ่ายเพิ่ม ราคาของ Klook เปลี่ยนตามวันที่ จึงไม่ได้ระบุราคา Klook ไว้ที่นี่",
   },
 };
 

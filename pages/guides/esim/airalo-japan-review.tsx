@@ -406,7 +406,7 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Does Airalo work in Japan?</span>
           <h2 className={styles.sectionTitle}>Does Airalo Work in Japan? Coverage, Speed &amp; Fixes</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Short answer: yes, nationwide. Here&apos;s what we found on coverage and speed, plus the quickest fixes for the
+            Short answer: yes, nationwide. Here&apos;s what the sources show on coverage and speed, plus the quickest fixes for the
             handful of issues travellers run into.
           </p>
           <div className={styles.faqList}>

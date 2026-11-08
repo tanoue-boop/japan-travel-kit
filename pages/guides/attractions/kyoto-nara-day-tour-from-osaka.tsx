@@ -106,7 +106,7 @@ const steps = [
   },
   {
     title: "Confirm the departure point and the length of the day",
-    desc: "These are long days — one of the listings we checked runs 8 hr 55 min to 9 hr 05 min — and most depart from central Osaka in the morning. Several also allow a Kyoto departure, which is worth taking if you are already staying there.",
+    desc: "These are long days — one of the listings here runs 8 hr 55 min to 9 hr 05 min — and most depart from central Osaka in the morning. Several also allow a Kyoto departure, which is worth taking if you are already staying there.",
   },
   {
     title: "Book in English on a card that works",
@@ -121,7 +121,7 @@ const faqItems = [
   },
   {
     q: "How long is a Kyoto and Nara day tour from Osaka?",
-    a: `Expect a full day. One of the listings we checked is given as 8 hr 55 min to 9 hr 05 min, and the others describe a full-day itinerary departing central Osaka in the morning. Several offer a Kyoto departure as an alternative, which saves an hour or so if you are already staying in Kyoto. Durations as listed on ${CHECKED}.`,
+    a: `Expect a full day. One of the listings here is given as 8 hr 55 min to 9 hr 05 min, and the others describe a full-day itinerary departing central Osaka in the morning. Several offer a Kyoto departure as an alternative, which saves an hour or so if you are already staying in Kyoto. Durations as listed on ${CHECKED}.`,
   },
   {
     q: "How much is admission to Todai-ji in Nara?",
@@ -359,9 +359,8 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Contents and durations are as the Klook listings described them on {CHECKED}. We do not quote prices
-            here: Klook blocks automated reads of its product pages, so there is no figure we could have
-            verified — open a listing for the current price on your date.
+            Contents and durations are as the Klook listings described them on {CHECKED}. No prices are quoted
+            here: Klook prices change by date, so open a listing for the current price on your date.
           </p>
         </section>
 

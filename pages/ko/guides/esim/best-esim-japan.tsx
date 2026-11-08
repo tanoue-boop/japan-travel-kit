@@ -325,7 +325,7 @@ const networkRows = [
   {
     provider: koKlookEsim.label,
     carriers: "SoftBank 5G(1일 단위 요금제) / IIJ(Docomo) 4G LTE(총량형 요금제)",
-    how: "전화번호 없음 — 데이터 전용. 테더링: 지원. 상품 페이지 자체가 아니라 클룩 자체 상품 데이터 기준입니다 — 상품 페이지는 자동 조회에 HTTP 403으로 응답합니다.",
+    how: "전화번호 없음 — 데이터 전용. 테더링: 지원. 상품 페이지 자체가 아니라 클룩 자체 상품 데이터 기준입니다.",
     checked: KLOOK_SPECS_CHECKED,
   },
 ];
@@ -589,7 +589,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             일반적인 관광으로 <strong>10일 이하</strong> 머문다면 추천은{" "}
             <strong>Simbye의 {planLabel(SHORT_TRIP_PLAN)}</strong>입니다 — 10 GB면 하루 1 GB씩 쓰고도 남고,
-            저희가 확인하는 요금 중 정가가 가장 낮으며, 가격 피드에는 NTT docomo, KDDI/au, SoftBank, Rakuten Mobile이
+            이 페이지에서 비교한 요금 중 정가가 가장 낮으며, 가격 피드에는 NTT docomo, KDDI/au, SoftBank, Rakuten Mobile이
             올라 있습니다.{" "}
             <strong>2~4주</strong>라면 같은 사업자의 <strong>{planLabel(LONG_TRIP_PLAN)}</strong>가 같은 속도로
             20일을 커버합니다. 용량제가 아니라 <strong>무제한</strong>을 원한다면 Simbye의{" "}
@@ -605,8 +605,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             가격은 매일 다시 읽어 오는 작업이 {pricesCheckedAt}에 각 사업자 공식 사이트에서 읽은 값입니다.
             통신망, 공정 사용 기준, 핫스팟 한도, 전화번호 제공 여부, 환불 규정은 {SPECS_CHECKED}에 확인했습니다(Simbye는 {SIMBYE_CHECKED}, simbye.com과 가격 피드 기준).
-            클룩 항목은 {KLOOK_SPECS_CHECKED} 클룩 자체 상품 데이터 기준인데, 클룩 상품 페이지가 자동 조회에
-            HTTP 403으로 응답하기 때문입니다.
+            클룩 항목은 {KLOOK_SPECS_CHECKED} 클룩 자체 상품 데이터 기준입니다.
           </p>
         </section>
 
@@ -688,7 +687,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
             클룩 행은 일부러 순위 밖에 두었습니다. 위의 다섯 곳은 매일 각 사 사이트에서 읽어 오는 가격으로 순위를
-            매기는데, 클룩의 eSIM 상품은 마지막 시도({KLOOK_CHECKED}) 때 자동으로 읽을 수 없었기 때문에 이들과
+            매기는데, 클룩의 eSIM 가격은 날짜에 따라 달라지기 때문에({KLOOK_CHECKED} 확인) 이들과
             나란히 둘 가격이나 용량 단계가 없습니다. 상품 페이지를 열어 현재 요금제를 확인하세요.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
@@ -1108,7 +1107,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             <div className={styles.pickCardBody}>
               <p className={styles.pickSummary}>
                 클룩도 자체 일본 eSIM을 판매합니다. 이미 클룩에서 티켓이나 교통편을 예약하고 있다면 살펴볼 만합니다
-                — 하나의 계정에서 한 번에 결제할 수 있습니다. 순위에는 넣지 않았습니다: 클룩 상품 페이지가 자동 가격 조회를 막아, 순위를
+                — 하나의 계정에서 한 번에 결제할 수 있습니다. 순위에는 넣지 않았습니다: 클룩 가격은 날짜에 따라 달라져, 순위를
                 매길 확인된 가격이 없기 때문입니다. 현재 요금제는 상품 페이지에서 확인하세요.
               </p>
               <div className={styles.pickTarget}>

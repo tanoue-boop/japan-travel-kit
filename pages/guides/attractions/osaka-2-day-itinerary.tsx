@@ -764,8 +764,8 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             operator&apos;s own site. The same figures appear with the same dates in the{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
-            </Link>. No Klook price appears anywhere on this page: Klook answers automated reads of its
-            product pages with an error, so no figure from it could be verified.
+            </Link>. No Klook price appears anywhere on this page: Klook prices change by date, so
+            open a listing for the figure on yours.
           </p>
         </section>
 
@@ -876,7 +876,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            We publish no room rates, because none can be verified — availability and price are per-hotel and
+            No room rates are published here, because none can be verified — availability and price are per-hotel and
             per-date. The Universal City walking and journey figures are the Osaka Convention &amp; Tourism
             Bureau&apos;s own. Our{" "}
             <Link href="/guides/attractions/where-to-stay-in-osaka" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -977,7 +977,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText}>
             Three practical points if you do. The <strong>1-Day Studio Pass is online-only</strong> and
-            tiered by date, so there is no gate price for us to quote — and 2026 is the park&apos;s
+            tiered by date, so there is no gate price to quote — and 2026 is the park&apos;s
             25th-anniversary season, which is why the quieter dates go early.{" "}
             <strong>Super Nintendo World needs an area timed-entry ticket</strong>, which is free through
             the park&apos;s own app on the day and is a separate thing from the Express Pass. And{" "}
@@ -995,7 +995,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
         {/* The two Klook tour slots */}
         <KlookTourPicks
           heading="If You Would Rather Not Route Either Day Yourself"
-          intro="The first listing is the closest thing to this whole guide in one booking — the castle, the Umeda deck and the Dotonbori river cruise in a single guided day. The other three are the food and boat hours either side of it. Klook blocks automated price reads, so open a listing for the figure on your dates."
+          intro="The first listing is the closest thing to this whole guide in one booking — the castle, the Umeda deck and the Dotonbori river cruise in a single guided day. The other three are the food and boat hours either side of it. Klook prices change by date, so open a listing for the figure on your dates."
           tours={[osakaCastleUmedaTonboriDayTour, dotonboriDaytimeFoodTour, kuromonMarketFoodTour, dotonboriNaniwaSightseeingBoat]}
         />
 

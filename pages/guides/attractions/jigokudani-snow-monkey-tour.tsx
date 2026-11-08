@@ -542,9 +542,9 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Times from the park&apos;s own access page, read on {CHECKED}; the pass contents from
             Nagano Electric Railway&apos;s own Snow Monkey page, read on 3 November 2026.{" "}
-            <strong>On fares:</strong> we print no yen figure for the shinkansen, the Nagaden train or
-            the buses. JR East&apos;s site did not return a readable fare page, Nagaden publishes its
-            fare table only as a PDF we could not read, and the third-party figures for the 2026-27
+            <strong>On fares:</strong> no yen figure is printed here for the shinkansen, the Nagaden train or
+            the buses. JR East&apos;s fare page is not quoted here, Nagaden publishes its
+            fare table only as a PDF, and the third-party figures for the 2026-27
             express bus disagree with each other — so check them at the station or on the
             operators&apos; own sites. Our{" "}
             <Link href="/guides/transport/jr-east-pass" style={{ color: "var(--text)", fontWeight: 600 }}>

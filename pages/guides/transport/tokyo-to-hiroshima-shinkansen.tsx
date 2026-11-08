@@ -550,8 +550,8 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Subject to change — confirm before buying. {fares.note} Smart EX prices are the online figures
             and differ from the station-window price; peak and off-peak dates move the reserved-seat charge
-            by a couple of hundred yen either way. No Klook price appears on this page: Klook answers
-            automated reads of its product pages with an error, so no figure from it could be verified.
+            by a couple of hundred yen either way. No Klook price appears on this page: Klook prices
+            change by date, so check the listing for your date.
           </p>
         </section>
 

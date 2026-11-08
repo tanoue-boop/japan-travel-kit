@@ -165,7 +165,7 @@ const days: Day[] = [
         that is not beside a station, and the bus specifically is covered in our{" "}
         <Link href="/guides/transport/tokyo-airport-limousine-bus">Tokyo airport limousine bus guide</Link>.
         The Tokyo Subway Ticket is {PRICES.tokyoSubwayTicket.adult} for 24 hours, ¥1,500 for 48 and
-        ¥2,000 for 72 on the official prices we checked — it covers Tokyo Metro and Toei but not JR,
+        ¥2,000 for 72 on the official prices checked — it covers Tokyo Metro and Toei but not JR,
         which is the one thing people get wrong about it.
       </>
     ),
@@ -231,7 +231,7 @@ const days: Day[] = [
       <>
         The Shibuya Sky slot, and only the slot — the rest of this day sells no tickets at all.
         Online was {PRICES.shibuyaSky.adult} against {PRICES.shibuyaSky.atDoor} at the door on the
-        official prices we checked, and the route you book through matters as much as the price here:
+        official prices checked, and the route you book through matters as much as the price here:
         the official site has rejected many foreign-issued cards since July 2024, which our{" "}
         <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets guide</Link> covers
         in full. If the sunset window has gone, the free Metropolitan Government Building decks in
@@ -300,7 +300,7 @@ const days: Day[] = [
       <>
         teamLab Planets, without exception: entry is a 30-minute slot, the official store states that
         nothing is sold on site, and the adult price moves with the date — {PRICES.teamlabPlanets.adult}{" "}
-        on the figures we checked. Our{" "}
+        on the figures checked. Our{" "}
         <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
         also covers what to wear, because parts of it are walked barefoot through water. The kimono
         appointment is the booking that shapes this day rather than decorating it — the Klook listing
@@ -461,7 +461,7 @@ const days: Day[] = [
       <>
         Almost nothing — and that is the single most useful fact about a Kyoto day. The temples are
         walk-up: Kinkaku-ji was ¥500 for an adult and ¥300 for elementary and junior-high children on
-        the figures we read on {KINKAKUJI_CHECKED}. The two things that do run on a booking are the
+        the figures read on {KINKAKUJI_CHECKED}. The two things that do run on a booking are the
         Sagano scenic railway in peak colour and a kimono fitting, which has a dressing slot and a
         return deadline in the shop&apos;s calendar rather than yours — our{" "}
         <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental guide</Link> splits
@@ -537,7 +537,7 @@ const days: Day[] = [
       <>
         The pass, if your Osaka day looks like this one, and the cruise if you want it. The Osaka
         Amazing Pass is {PRICES.osakaAmazingPass.adult} for one day and ¥3,300 for two on the figures
-        we checked, and it bundles unlimited Osaka Metro and city buses with more than 40 free
+        checked, and it bundles unlimited Osaka Metro and city buses with more than 40 free
         admissions — a genuinely different proposition from a Tokyo subway ticket, and our{" "}
         <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link> works
         the break-even. Two things everyone assumes it covers and it does not: Universal Studios Japan
@@ -842,7 +842,7 @@ const faqItems = [
   },
   {
     q: "How do you get from Tokyo to Kyoto?",
-    a: `The Tokaido Shinkansen from Tokyo or Shinagawa Station — about 130 minutes on JR Central's own figure, and about 170 minutes on the slower Hikari, both checked ${OWN}. JR Central's own Tokaido Shinkansen page puts the line at a maximum of 18 trains an hour, so there is no need to plan your day around a departure; what is worth reserving is the seat, and the oversized-baggage row separately if you have a large case, because those are limited and are booked apart from the seat. We do not print a single fare: JR Central publishes its fare tables as PDFs rather than pages and the figure moves with train type and season, so check your date on the official Smart EX site or Klook's Tokyo-to-Kyoto rail page, and read the comparison in our Tokyo to Kyoto guide.`,
+    a: `The Tokaido Shinkansen from Tokyo or Shinagawa Station — about 130 minutes on JR Central's own figure, and about 170 minutes on the slower Hikari, both checked ${OWN}. JR Central's own Tokaido Shinkansen page puts the line at a maximum of 18 trains an hour, so there is no need to plan your day around a departure; what is worth reserving is the seat, and the oversized-baggage row separately if you have a large case, because those are limited and are booked apart from the seat. No single fare is printed here: JR Central publishes its fare tables as PDFs rather than pages and the figure moves with train type and season, so check your date on the official Smart EX site or Klook's Tokyo-to-Kyoto rail page, and read the comparison in our Tokyo to Kyoto guide.`,
   },
   {
     q: "How do you get from Kyoto to Osaka?",
@@ -866,7 +866,7 @@ const faqItems = [
   },
   {
     q: "How much does 7 days in Japan cost in tickets and transport?",
-    a: "Less than most people expect for the sightseeing, because most of Kyoto and much of Tokyo is free to walk into. The paid items on this plan are a 72-hour subway ticket, two Tokyo observation or art tickets, one temple admission in Kyoto, a city pass and a castle in Osaka, the two inter-city trains and the run to the airport. Every figure is in the dated table above with the operator's site and the date it was read. We publish no hotel or food estimates on purpose: those move by season, city and party size, and an invented average is worse than none.",
+    a: "Less than most people expect for the sightseeing, because most of Kyoto and much of Tokyo is free to walk into. The paid items on this plan are a 72-hour subway ticket, two Tokyo observation or art tickets, one temple admission in Kyoto, a city pass and a castle in Osaka, the two inter-city trains and the run to the airport. Every figure is in the dated table above with the operator's site and the date it was read. Hotel and food estimates are left out on purpose: those move by season, city and party size, and an invented average is worse than none.",
   },
   {
     q: "What do you do on a rainy day in Tokyo, Kyoto or Osaka?",
@@ -1318,7 +1318,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             practical argument for Klook on the timed tickets specifically: it checks out in English,
             takes foreign cards the official Shibuya Sky site has rejected since July 2024, and keeps
             all seven days on one account. Read the cancellation terms on each listing before the date
-            is fixed; they differ by product, and we do not restate them here because they change.
+            is fixed; they differ by product, and they are not restated here because they change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -1336,7 +1336,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
 
         <KlookTourPicks
           heading="If You Would Rather Hand a Day to Somebody Else"
-          intro="Three of the seven days work as a guided day instead of a plan of your own — the Kyoto full day, the Nara swap for it, and the Osaka city day, which a pass covers almost entirely. Klook blocks automated price reads, so open a listing for the figure on your own date."
+          intro="Three of the seven days work as a guided day instead of a plan of your own — the Kyoto full day, the Nara swap for it, and the Osaka city day, which a pass covers almost entirely. Klook prices change by date, so open a listing for the figure on your own date."
           tours={[kyotoHighlightBusTour, kyotoNaraKiyomizuTour, osakaAmazingPass, dotonboriCityCruise]}
         />
 

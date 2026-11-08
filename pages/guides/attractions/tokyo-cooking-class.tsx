@@ -97,7 +97,7 @@ const steps = [
 const faqItems = [
   {
     q: "How much does a Tokyo cooking class cost?",
-    a: "We do not print a price band for Tokyo cooking classes, because the formats are too different for one to mean anything — a 90-minute single-dish group class and a three-hour combo with a market tour and sake pairing are not the same product. What drives the figure is the number of dishes, the session length, the group size and the extras. Open a listing for the price on your date; Klook blocks automated reads of its product pages, so there is no figure here we could have verified.",
+    a: "There is no price band here for Tokyo cooking classes, because the formats are too different for one to mean anything — a 90-minute single-dish group class and a three-hour combo with a market tour and sake pairing are not the same product. What drives the figure is the number of dishes, the session length, the group size and the extras. Open a listing for the price on your date; Klook prices change by date, so no figure is quoted here.",
   },
   {
     q: "Are Tokyo cooking classes in English?",
@@ -261,7 +261,7 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
             </div>
             <p className={styles.verdictText}>
               <strong>In short:</strong> the useful thing a class gives you is a skill you can repeat at home,
-              which is why the dish matters more than the venue. The sushi-making listing we checked sits in
+              which is why the dish matters more than the venue. The sushi-making listing compared here sits in
               Shinbashi in central Tokyo, runs 1 hour 30 minutes as a join-in group with English-speaking
               staff, and offers two courses — maki and temari sushi, or maki and nigiri. Longer formats pair
               sushi with ramen or add a market shop first. Most are beginner-friendly and many welcome
@@ -288,10 +288,10 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
           </p>
           <p className={styles.bodyText}>
             Length varies more than people expect, and it is the clearest signal of what you are buying. The
-            sushi-only listing we checked, in Shinbashi, runs 1 hour 30 minutes; a sushi-and-ramen combo
-            typically runs two and a half to three; a market-tour class adds the shopping on top. We do not
-            print prices here — Klook blocks automated reads of its product pages, so there is no figure we
-            could have verified, and the range across formats is wide enough that a quoted band would mislead
+            sushi-only listing compared here, in Shinbashi, runs 1 hour 30 minutes; a sushi-and-ramen combo
+            typically runs two and a half to three; a market-tour class adds the shopping on top. No prices
+            are printed here — Klook prices change by date, so open a listing for the figure on yours,
+            and the range across formats is wide enough that a quoted band would mislead
             more than it helps. Most classes are beginner-friendly, many are taught in English, and a good
             number welcome children. Checked {CHECKED}.
           </p>

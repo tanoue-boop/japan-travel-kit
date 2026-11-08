@@ -49,7 +49,7 @@ import { checkedLabel } from "../../../lib/attraction-prices";
  */
 const CHECKED = checkedLabel("2026-11-04");
 const ROUTE = "/guides/attractions/gion-night-walking-tour";
-const NOT_SHOWN = "Not in the listing text we could read";
+const NOT_SHOWN = "Not in the listing text";
 
 /** Klook listing facts only; no prices. */
 const tourRows = [
@@ -189,7 +189,7 @@ const compareRows = [
 const faqItems = [
   {
     q: "What do you see on a Gion night walking tour?",
-    a: `The listings we could read name Hanamikoji Street after dark, teahouse architecture, and backstreets, alleys and small temples away from the main road, and the private tour adds Gion Corner and the Kamo River. Shirakawa, Tatsumi Bridge and Yasaka Shrine are the other official sights in the same area, but no listing text we read names them all, so check the itinerary if one matters to you. Read on ${CHECKED}.`,
+    a: `The listings name Hanamikoji Street after dark, teahouse architecture, and backstreets, alleys and small temples away from the main road, and the private tour adds Gion Corner and the Kamo River. Shirakawa, Tatsumi Bridge and Yasaka Shrine are the other official sights in the same area, but no listing text names them all, so check the itinerary if one matters to you. Read on ${CHECKED}.`,
   },
   {
     q: "How long is a Gion night walking tour?",
@@ -229,7 +229,7 @@ const faqItems = [
   },
   {
     q: "Are Gion night tours suitable for wheelchairs or children?",
-    a: "The Gion Night Tour listing states it is not wheelchair accessible. On the private tour, children aged 2–12 count toward your group size. Other listings did not show a rule in the text we could read, so ask at checkout before booking with a pram or a wheelchair.",
+    a: "The Gion Night Tour listing states it is not wheelchair accessible. On the private tour, children aged 2–12 count toward your group size. Other listings do not show a rule in their listing text, so ask at checkout before booking with a pram or a wheelchair.",
   },
 ];
 
@@ -435,8 +435,8 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Read on {CHECKED} from search-index copies of the Klook listings, because the live pages block
-            automated reads. Where a cell says the detail was not in the text we could read, Klook shows it on
+            Read on {CHECKED} from the Klook listings as they appear in search results. Where a cell says the
+            detail was not in the listing text, Klook shows it on
             the listing or at checkout. Times and terms can change by date, so the checkout is the final word.
             Current prices are on Klook.
           </p>
@@ -458,7 +458,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             Hanamikoji Street is the one fixture: it is the stop the listings name, along with teahouse
             architecture and quiet alleys and temples off the main road. The private tour also lists Gion Corner
             and the Kamo River. If Tatsumi Bridge or Shirakawa is the reason you are going, confirm it on the
-            itinerary, because the listing text we read does not name either.
+            itinerary, because the listing text does not name either.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -518,8 +518,8 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            The Kyoto City Tourism Association&apos;s guidance does not mention private roads or a fine, and we
-            found no city notice or council text to link to, so those rows rest on Kansai TV (18 March 2024), The
+            The Kyoto City Tourism Association&apos;s guidance does not mention private roads or a fine, and no
+            city notice or council text is linked here, so those rows rest on Kansai TV (18 March 2024), The
             Star (1 June 2024) and Time Out (12 March 2024), each reporting the council. Reports from after 2024
             were not found, so follow any sign you see on the day.
           </p>
@@ -542,7 +542,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Timing</span>
           <h2 className={styles.sectionTitle}>What Time Should You Go to Gion at Night?</h2>
           <p className={styles.bodyText}>
-            Aim for dusk in your month, then stay on. We found no official best hour, but the tours cluster
+            Aim for dusk in your month, then stay on. The official sources checked give no best hour, but the tours cluster
             there: departures at 16:00, 17:00 and 18:00 on the private walk, 17:00 on the kaiseki tour and from
             18:00 on the student-led walk. For a seasonal reason to stay later, Kyoto&apos;s official calendar
             lists Kodai-ji&apos;s night viewing from 23 October to 13 December 2026, Shoren-in&apos;s evening

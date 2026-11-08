@@ -26,7 +26,7 @@ const areaRows = [
     backdrops: "Senso-ji temple, Nakamise shopping street, Tokyo Skytree views",
     vibe: "Lively, easy big-city day out",
     when: "You're already on a Tokyo trip and want a half-day add-on",
-    booking: "Shops cluster within a few minutes of the station; the listing we checked returns by 16:30",
+    booking: "Shops cluster within a few minutes of the station; the listing shown returns by 16:30",
   },
   {
     area: "Kyoto",
@@ -88,22 +88,22 @@ const steps = [
   },
   {
     title: "Explore — then get back before the cut-off",
-    desc: `This is the step that shapes your day, so read it before you book a morning slot. Same-day return is standard and the deadline is earlier than people assume: the Asakusa listing we checked asks for the outfit back by 16:30, and the Kyoto one by 17:30, with next-day return or return by post available for an additional fee. That means a rental is realistically a half-day, and the walk back to the shop has to be in the plan. Deadlines as listed on ${CHECKED}.`,
+    desc: `This is the step that shapes your day, so read it before you book a morning slot. Same-day return is standard and the deadline is earlier than people assume: the Asakusa listing here asks for the outfit back by 16:30, and the Kyoto one by 17:30, with next-day return or return by post available for an additional fee. That means a rental is realistically a half-day, and the walk back to the shop has to be in the plan. Deadlines as listed on ${CHECKED}.`,
   },
 ];
 
 const faqItems = [
   {
     q: "How much does kimono rental cost in Japan?",
-    a: "Prices vary widely by area, plan, and season, so we don't quote a single fixed figure. A basic same-day plan typically starts from a few thousand yen, with premium or antique kimono, hair-set, and photo add-ons costing more. Summer yukata plans are often a little cheaper. Prices are variable in 2026 — confirm the exact figure for your shop and date at booking.",
+    a: "Prices vary widely by area, plan, and season, so no single fixed figure is quoted here. A basic same-day plan typically starts from a few thousand yen, with premium or antique kimono, hair-set, and photo add-ons costing more. Summer yukata plans are often a little cheaper. Prices are variable in 2026 — confirm the exact figure for your shop and date at booking.",
   },
   {
     q: "What's included in a kimono rental plan?",
-    a: `More than people expect, which is why the price is not just for the garment. The Asakusa listing we checked includes the kimono, obi, sandals, tabi socks, an undergarment, a Japanese handbag and basic hairstyling, plus free storage for your own clothes and bags while you are out — that last one matters more than it sounds if you are carrying a day pack. Professional dressing (kitsuke) by trained staff is standard. Photo shoots, premium or antique kimono and rickshaw rides are the usual paid add-ons. Inclusions as listed on ${CHECKED}.`,
+    a: `More than people expect, which is why the price is not just for the garment. The Asakusa listing here includes the kimono, obi, sandals, tabi socks, an undergarment, a Japanese handbag and basic hairstyling, plus free storage for your own clothes and bags while you are out — that last one matters more than it sounds if you are carrying a day pack. Professional dressing (kitsuke) by trained staff is standard. Photo shoots, premium or antique kimono and rickshaw rides are the usual paid add-ons. Inclusions as listed on ${CHECKED}.`,
   },
   {
     q: "Will they have my size?",
-    a: `Usually, and the better listings say so explicitly rather than leaving you to hope. The Kyoto shop we checked quotes a range from S to 4LW for women and 5S to 5L for men, with professionally trained dressers — which is the thing to look for on a listing if sizing is a worry. If a shop does not publish a size range, ask before you book rather than on the day, because a dressing appointment is a fixed slot and there is no time to switch shops. Ranges as listed on ${CHECKED}.`,
+    a: `Usually, and the better listings say so explicitly rather than leaving you to hope. The Kyoto shop listed here quotes a range from S to 4LW for women and 5S to 5L for men, with professionally trained dressers — which is the thing to look for on a listing if sizing is a worry. If a shop does not publish a size range, ask before you book rather than on the day, because a dressing appointment is a fixed slot and there is no time to switch shops. Ranges as listed on ${CHECKED}.`,
   },
   {
     q: "Do I need to book kimono rental in advance?",
@@ -115,7 +115,7 @@ const faqItems = [
   },
   {
     q: "What time do I have to return the kimono?",
-    a: `Earlier than most people expect, and this is the detail worth checking before you book anything else. Same-day return is standard: the Asakusa shop on the listing we checked asks for the outfit back by 16:30, and the Kyoto one by 17:30. Kyoto shops more often offer next-day return between 9:00 and 17:00 for an additional fee, or return by post for a fee. Treat a rental as a half-day with a hard deadline rather than a full day's costume, and build the walk back into your route. Deadlines as listed on ${CHECKED}.`,
+    a: `Earlier than most people expect, and this is the detail worth checking before you book anything else. Same-day return is standard: the Asakusa shop on the listing here asks for the outfit back by 16:30, and the Kyoto one by 17:30. Kyoto shops more often offer next-day return between 9:00 and 17:00 for an additional fee, or return by post for a fee. Treat a rental as a half-day with a hard deadline rather than a full day's costume, and build the walk back into your route. Deadlines as listed on ${CHECKED}.`,
   },
   {
     q: "Can men and children rent kimono too?",
@@ -264,7 +264,7 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
             <p className={styles.verdictText}>
               <strong>In short:</strong> this is a booked appointment with a deadline at both ends, not a
               costume you pick up. You arrive at a fixed time, a trained dresser spends 20 to 30 minutes
-              putting the outfit on, and the shops we checked want it back by 16:30 in Asakusa and 17:30 in
+              putting the outfit on, and the listed shops want it back by 16:30 in Asakusa and 17:30 in
               Kyoto — so plan a half-day whose route ends where it started. Choose{" "}
               <strong>Asakusa</strong> for an easy Tokyo add-on or <strong>Kyoto</strong> for the old-town
               scenery, and book ahead in spring and autumn when the slots and the good designs go. Details as

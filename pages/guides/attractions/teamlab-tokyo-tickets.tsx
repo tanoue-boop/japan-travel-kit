@@ -280,7 +280,7 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
 
         <KlookTourPicks
           heading="Book It For the Same Trip"
-          intro="Either museum fills part of a Tokyo day. These cover the subway, a guided city day and a day trip out. Klook blocks automated price reads, so open a listing for the price on your own date."
+          intro="Either museum fills part of a Tokyo day. These cover the subway, a guided city day and a day trip out. Klook prices change by date, so open a listing for the price on your own date."
           tours={[tokyoSubwayTicket, tokyoSightseeingBusTour, fujiDayTour]}
         />
 

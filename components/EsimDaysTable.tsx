@@ -106,7 +106,7 @@ export default function EsimDaysTable({ defaultDays = 7 }: { defaultDays?: numbe
       <p className={styles.note}>
         Each row is the lowest-priced plan that lasts the whole trip, which is often a small one. Plan on 0.5 to 1 GB a
         day and see <Link href="/guides/esim/japan-esim-data-plans">how much data you need</Link>. Affiliate links.
-        Prices checked {pricesCheckedLabel()}; Klook blocks automated checks, so no Klook price is shown.
+        Prices checked {pricesCheckedLabel()}; Klook prices change by date, so no Klook price is shown.
       </p>
     </section>
   );

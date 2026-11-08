@@ -246,7 +246,7 @@ const faqItems = [
   },
   {
     q: "Can you buy teamLab Borderless tickets at the door?",
-    a: `Yes, but only while slots remain and at a surcharge: the official site listed on-site tickets at ¥200 more for adults and ¥100 more for children and disability tickets when we checked on ${CHECKED}. That makes the door a fallback rather than a plan — on weekends, holidays and evening slots the times most visitors want are gone before the day, and a sold-out calendar cannot be rescued at the counter. It is also the clearest difference from teamLab Planets in Toyosu, where the official store states nothing is sold on site at all.`,
+    a: `Yes, but only while slots remain and at a surcharge: the official site listed on-site tickets at ¥200 more for adults and ¥100 more for children and disability tickets when checked on ${CHECKED}. That makes the door a fallback rather than a plan — on weekends, holidays and evening slots the times most visitors want are gone before the day, and a sold-out calendar cannot be rescued at the counter. It is also the clearest difference from teamLab Planets in Toyosu, where the official store states nothing is sold on site at all.`,
   },
   {
     q: "Can I change the date on a teamLab Borderless ticket?",
@@ -262,7 +262,7 @@ const faqItems = [
   },
   {
     q: "What are teamLab Borderless opening hours?",
-    a: `Hours vary by date. When we checked the official site on ${CHECKED}, the museum was listed as open 08:30–21:00, with some dates closing earlier (17:00 on 17 November 2026) and some later (22:00 on selected dates). Last entry is one hour before closing. It is also closed on scattered Tuesdays — 20 October, 24 November and 8 December 2026 among them. Always open the official calendar for your own date before you book a slot.`,
+    a: `Hours vary by date. When the official site was checked on ${CHECKED}, the museum was listed as open 08:30–21:00, with some dates closing earlier (17:00 on 17 November 2026) and some later (22:00 on selected dates). Last entry is one hour before closing. It is also closed on scattered Tuesdays — 20 October, 24 November and 8 December 2026 among them. Always open the official calendar for your own date before you book a slot.`,
   },
   {
     q: "How long do you need at teamLab Borderless?",
@@ -636,7 +636,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             Klook is an official teamLab ticketing partner, so the admission is identical whichever counter you
             use. What differs is the checkout, the flexibility, and — if you leave it to the day — the price.
             GetYourGuide sells Borderless too, and the column below is thin on purpose: see the note under the
-            table for what we could and could not confirm about it.
+            table for what is and is not confirmed about it.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -666,8 +666,8 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             On-site surcharge and date-change allowance as listed on the official teamLab site on {CHECKED}.
             Cancellation and change terms on resellers vary by option — read them on the booking page before paying.
             The GetYourGuide column is deliberately short: its Borderless listing was confirmed live on{" "}
-            {GYG_CHECKED_AT}, but GetYourGuide blocks automated reads of its pages, so we could not verify its
-            price, its card handling or its change terms. Those cells say so instead of guessing.
+            {GYG_CHECKED_AT}, but its price, its card handling and its change terms are not verified here, so
+            check them on the listing. Those cells say so instead of guessing.
           </p>
         </section>
 
@@ -723,7 +723,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             The museum&apos;s own page is <strong>teamlab.art/e/tokyo</strong> — in English, with the Japanese
             edition at teamlab.art/jp/e/tokyo — and the ticket calendar and checkout open from there. If you
             have an older link saved, <strong>borderless.teamlab.art</strong> is no longer a separate store:
-            both its English and Japanese addresses now redirect to the teamlab.art page above, which we
+            both its English and Japanese addresses now redirect to the teamlab.art page above, as
             confirmed on {ADDRESS_CHECKED}.
           </p>
           <ul className={styles.bodyList}>

@@ -158,7 +158,7 @@ export const esimArticles: GuideArticle[] = [
     href: "/guides/esim/esim-go-japan-review",
     badge: "Review",
     title: "eSIM Go Japan Review 2026: Prices, Networks and Tethering",
-    desc: "The cheapest Japan eSIM at every tier we track, on docomo and SoftBank, with tethering stated on every plan at no extra cost. What you give up: no phone number, no in-app top-up, email support only.",
+    desc: "The cheapest Japan eSIM at every tier compared, on docomo and SoftBank, with tethering stated on every plan at no extra cost. What you give up: no phone number, no in-app top-up, email support only.",
     group: "reviews",
     city: "other",
   },

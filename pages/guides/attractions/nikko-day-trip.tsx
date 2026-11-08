@@ -27,7 +27,7 @@ const compareRows = [
   },
   {
     option: "Guided day tour",
-    cost: "One booking from Tokyo; the listing we checked runs 10 hours door to door",
+    cost: "One booking from Tokyo; the listing shown runs 10 hours door to door",
     flexibility: "Fixed route & timings",
     effort: "Very low — transport, guide and the main stops handled",
   },
@@ -77,7 +77,7 @@ const whoFor = [
 const steps = [
   {
     title: "Travel from Tokyo to Nikko",
-    desc: `The classic route is the Tobu Nikko Line from Asakusa, with limited express trains reaching Tobu-Nikko Station in roughly two hours. JR also runs to Nikko via the Tohoku Shinkansen and a local connection, which is the route a Japan Rail Pass helps with — Tobu is a private railway and a rail pass buys nothing on it. A guided coach removes the planning entirely; the listing we checked runs about 10 hours door to door. Checked ${CHECKED}.`,
+    desc: `The classic route is the Tobu Nikko Line from Asakusa, with limited express trains reaching Tobu-Nikko Station in roughly two hours. JR also runs to Nikko via the Tohoku Shinkansen and a local connection, which is the route a Japan Rail Pass helps with — Tobu is a private railway and a rail pass buys nothing on it. A guided coach removes the planning entirely; the listing shown runs about 10 hours door to door. Checked ${CHECKED}.`,
   },
   {
     title: "Visit Toshogu Shrine — and budget for the ticket",
@@ -96,7 +96,7 @@ const steps = [
 const faqItems = [
   {
     q: "How do I get to Nikko from Tokyo?",
-    a: "The most popular route is the Tobu Nikko Line from Asakusa Station in Tokyo, with limited express services reaching Tobu-Nikko in about two hours. You can also go via JR, combining the Tohoku Shinkansen with a local line. Alternatively, a guided coach from central Tokyo handles all the connections — the listing we checked runs about 10 hours in total and takes in Toshogu, Kegon Falls and Lake Chuzenji.",
+    a: "The most popular route is the Tobu Nikko Line from Asakusa Station in Tokyo, with limited express services reaching Tobu-Nikko in about two hours. You can also go via JR, combining the Tohoku Shinkansen with a local line. Alternatively, a guided coach from central Tokyo handles all the connections — the listing shown runs about 10 hours in total and takes in Toshogu, Kegon Falls and Lake Chuzenji.",
   },
   {
     q: "What does a Nikko day trip cost?",
@@ -326,8 +326,8 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Tour duration as the Klook listing described it on {CHECKED}; we do not quote a tour price here
-            because Klook blocks automated reads of its product pages, so open the listing for the figure on
+            Tour duration as the Klook listing described it on {CHECKED}; no tour price is quoted here
+            because Klook prices change by date, so open the listing for the figure on
             your date.
           </p>
         </section>

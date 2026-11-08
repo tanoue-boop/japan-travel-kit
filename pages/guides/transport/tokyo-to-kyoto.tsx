@@ -391,7 +391,7 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             Tickets from a station window cost a little more. On Tokyo–Shin-Osaka, JR gives ¥14,720 for a
             reserved Nozomi seat against ¥14,520 on smartEX, so allow about ¥200 extra for Kyoto. JR does not
-            publish a Tokyo–Kyoto window fare in a table we could read, so we do not print one.
+            publish a Tokyo–Kyoto window fare in a readable table, so none is printed here.
           </p>
           <p className={styles.bodyText}>
             <strong>Prices change in 2027.</strong> JR Central and JR West announced on 16 October 2026 that

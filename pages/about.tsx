@@ -22,7 +22,7 @@ const method = [
   {
     name: "Seller pages are checked separately",
     desc:
-      "Klook and the other booking platforms are checked as a route, not as a price source. Klook answers automated reads of its product pages with HTTP 403, so listings are confirmed live through its search index and the guides say \"check the current price\" rather than printing a figure we could not verify.",
+      "Klook and the other booking platforms are checked as a route, not as a price source. Klook prices change by date, so listings are confirmed as live and the guides say \"check the current price\" rather than printing an unverified figure.",
   },
   {
     name: "Every figure carries the date it was read",

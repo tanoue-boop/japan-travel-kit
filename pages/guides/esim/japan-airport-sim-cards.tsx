@@ -80,7 +80,7 @@ const faqItems = [
   },
   {
     q: "How much is a SIM card at a Japanese airport?",
-    a: `It depends on the seller, and none of the airport pages print a price. As a published reference, Sakura Mobile's Travel SIM starts at ¥3,850 with tax and its Travel eSIM at ¥1,375, read on sakuramobile.jp on ${CHECKED}. The cheapest eSIM we track is ${ESIM_FROM} (checked ${pricesCheckedAt}), so a SIM bought on arrival is rarely the low-cost option.`,
+    a: `It depends on the seller, and none of the airport pages print a price. As a published reference, Sakura Mobile's Travel SIM starts at ¥3,850 with tax and its Travel eSIM at ¥1,375, read on sakuramobile.jp on ${CHECKED}. The cheapest eSIM in this site's comparison is ${ESIM_FROM} (checked ${pricesCheckedAt}), so a SIM bought on arrival is rarely the low-cost option.`,
   },
   {
     q: FAQ_Q_LATE,

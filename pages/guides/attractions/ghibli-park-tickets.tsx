@@ -104,7 +104,7 @@ const accessRows = [
     detail:
       "Nagoya Station to Fujigaoka, the eastern terminus of the Higashiyama subway line, then the Linimo (Aichi Rapid Transit Tobu Kyuryo Line) to Ai-Chikyuhaku Kinen Koen. Linimo's own fare for that leg is ¥400 for an adult and ¥200 for a child",
     catch:
-      "The park is immediately outside the station at Exit 2. Neither Linimo's Japanese nor its English station pages publish a journey time for the leg, so we do not state one",
+      "The park is immediately outside the station at Exit 2. Neither Linimo's Japanese nor its English station pages publish a journey time for the leg, so none is stated here",
   },
   {
     route: "From Tokyo or Osaka",
@@ -153,7 +153,7 @@ const faqItems = [
   },
   {
     q: "How do I get to Ghibli Park from Nagoya or Tokyo?",
-    a: `From Nagoya there are two routes. Meitetsu runs a direct bus from the Meitetsu Bus Center at Nagoya Station to Ai-Chikyuhaku Kinen Koen in 40 minutes for ¥1,200 for an adult and ¥600 for a child — but only on days the park is open. The rail route is the Higashiyama subway line to its eastern terminus at Fujigaoka, then the Linimo to Ai-Chikyuhaku Kinen Koen, where the park is immediately outside Exit 2; Linimo's fare for that leg is ¥400 for an adult and ¥200 for a child. From Tokyo or Osaka, take the Tokaido Shinkansen to Nagoya and then one of those two — the bus terminal and the subway are both in the Nagoya Station complex. Operator figures read on ${OWN}; neither Linimo page publishes a journey time, so we do not quote one.`,
+    a: `From Nagoya there are two routes. Meitetsu runs a direct bus from the Meitetsu Bus Center at Nagoya Station to Ai-Chikyuhaku Kinen Koen in 40 minutes for ¥1,200 for an adult and ¥600 for a child — but only on days the park is open. The rail route is the Higashiyama subway line to its eastern terminus at Fujigaoka, then the Linimo to Ai-Chikyuhaku Kinen Koen, where the park is immediately outside Exit 2; Linimo's fare for that leg is ¥400 for an adult and ¥200 for a child. From Tokyo or Osaka, take the Tokaido Shinkansen to Nagoya and then one of those two — the bus terminal and the subway are both in the Nagoya Station complex. Operator figures read on ${OWN}; neither Linimo page publishes a journey time, so none is quoted here.`,
   },
   {
     q: "How much are Ghibli Park tickets?",
@@ -395,7 +395,7 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             weekday price and the higher one the weekend and public-holiday price. Children aged 0 to 3 are
             free on both passes. The park states that no refunds and no changes to dates, times, ticket types
             or quantities are accepted, and that reselling is prohibited. These sit alongside every other
-            attraction we have checked in our{" "}
+            attraction checked in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices">
               Japan attraction ticket prices table
             </Link>

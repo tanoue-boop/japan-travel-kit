@@ -771,7 +771,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook 页面会在新标签页打开。本页不列 Klook 价格：Klook 会屏蔽自动读取商品页，所以这里无法验证任何数字。
+            Klook 页面会在新标签页打开。本页不列 Klook 价格：Klook 价格随日期变化，请在商品页查看你那天的金额。
             上面的铁路票价是柜台价——两家运营商都有卖更便宜的旅客票，请见下方的{" "}
             <a href="#prebuy" style={{ color: "var(--text)", fontWeight: 600 }}>预购票一览表</a>。
           </p>
@@ -1232,7 +1232,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
             两个商品都会在新标签页打开 Klook，并于 {CHECKED} 确认仍在销售。本页不列 Klook 价格——专车接送按区域与车型报价，
-            就算 Klook 的商品页能被自动读取，单一数字对大多数订单来说也是错的。
+            单一数字对大多数订单来说都会是错的。
           </p>
         </section>
 
@@ -1297,7 +1297,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook 页面会在新标签页打开。本页不列 Klook 价格：Klook 会屏蔽自动读取商品页，所以这里无法验证任何数字——
+            Klook 页面会在新标签页打开。本页不列 Klook 价格：Klook 价格随日期变化——
             请在结账时确认你那天的现价与取消规定。如果你在市区的日子以地铁为主，可以看看{" "}
             <KlookLink href={busSubwayComboUrl} target="_blank" rel={KLOOK_REL} style={{ color: "var(--text)", fontWeight: 600 }}>
               巴士＋东京地铁通票组合

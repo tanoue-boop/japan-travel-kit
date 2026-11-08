@@ -191,7 +191,7 @@ const faqItems = [
   },
   {
     q: "How long is a Furano Biei day tour from Sapporo?",
-    a: "About 10 to 11.6 hours on the Klook listings we read. One winter tour runs from 08:55 to around 20:30. One listing gives the drive to Furano as about 2.5 hours each way, so expect at least 5 hours on the coach. Snow can make the return later.",
+    a: "About 10 to 11.6 hours on the Klook listings. One winter tour runs from 08:55 to around 20:30. One listing gives the drive to Furano as about 2.5 hours each way, so expect at least 5 hours on the coach. Snow can make the return later.",
   },
   {
     q: "Can you see the Blue Pond in winter?",
@@ -215,7 +215,7 @@ const faqItems = [
   },
   {
     q: "Can you do this tour with children?",
-    a: "Yes, but plan for 10 hours or more, mostly on a coach, and a return after dark on winter light-up tours. We could not read the age bands on every listing, so check them before you pay. A tour with snow play at Shikisai-no-oka gives children more to do than a light-up tour.",
+    a: "Yes, but plan for 10 hours or more, mostly on a coach, and a return after dark on winter light-up tours. Age bands differ by listing, so check them before you pay. A tour with snow play at Shikisai-no-oka gives children more to do than a light-up tour.",
   },
 ];
 
@@ -526,8 +526,8 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook blocks automated reads of its product pages, so these rows come from the listings as they
-            appear in search results, and we could not read every field. Stops can change with the date, so open
+            These rows come from the listings as they appear in search results, so not every field is
+            filled in. Stops can change with the date, so open
             the listing for the current price, the meeting point and what your package includes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -548,7 +548,7 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>The day</span>
           <h2 className={styles.sectionTitle}>How Long Is a Furano Biei Day Tour From Sapporo?</h2>
           <p className={styles.bodyText}>
-            About 10 to 11.6 hours on the listings we read. One gives the drive to Furano as about 2.5 hours
+            About 10 to 11.6 hours on the listings. One gives the drive to Furano as about 2.5 hours
             each way, so at least 5 hours of the day is on the coach. A late start suits the light-up routes,
             because the Blue Pond lights do not come on until 16:30 to 18:30 depending on the month.
           </p>
@@ -588,8 +588,8 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <strong>Going by train in winter?</strong> Trains are few, at about one an hour by day on the summer timetable, and we could not find a Furano Line
-            timetable for this winter, so check JR Hokkaido&apos;s before you plan. The Furano Lavender Express is
+            <strong>Going by train in winter?</strong> Trains are few, at about one an hour by day on the summer timetable, and this winter&apos;s Furano Line
+            timetable is not listed here, so check JR Hokkaido&apos;s before you plan. The Furano Lavender Express is
             a summer train, and the Norokko sightseeing train made its last run in September 2026. JR
             Hokkaido says Biei-bound locals are usually one car. Last winter it reported crowding on evening
             trains from Biei, and added a train and extra cars through February.
@@ -654,7 +654,7 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Families</span>
           <h2 className={styles.sectionTitle}>Can You Do a Furano Biei Tour With Children?</h2>
           <p className={styles.bodyText}>
-            Yes, if they cope with 10 hours or more, mostly on a coach. We could not read the age bands on every
+            Yes, if they cope with 10 hours or more, mostly on a coach. Age bands differ from listing to
             listing, so check them before you pay. For younger children, a route with Shikisai-no-oka gives them
             snow to play in, while a light-up tour means a late return in the cold. Shikisai-no-oka&apos;s snow
             activities are paid on site.
@@ -666,10 +666,10 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Booking</span>
           <h2 className={styles.sectionTitle}>When Should You Book a Furano Biei Tour?</h2>
           <p className={styles.bodyText}>
-            Book once your Sapporo dates are fixed, and pick the date first, because stops change by season. We
-            cannot give a sell-out date, as availability is per tour and per day. Tours can also miss a minimum:
-            one needs 12 people, and if it falls short you can move to another date or take a full refund. We
-            could not read every cancellation policy, so read yours before you pay. Terms read {OWN}.
+            Book once your Sapporo dates are fixed, and pick the date first, because stops change by season. There
+            is no fixed sell-out date, because availability is per tour and per day. Tours can also miss a minimum:
+            one needs 12 people, and if it falls short you can move to another date or take a full refund.
+            Cancellation policies differ by listing, so read yours before you pay. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

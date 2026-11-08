@@ -439,7 +439,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-시간은 공원의 교통 안내({CHECKED} 확인), 패스 내용은 나가노 전철의 스노 몽키 페이지(2026년 11월 3일 확인) 기준입니다. <strong>요금에 대해:</strong> 신칸센, 나가덴 전철, 버스의 엔화 요금은 싣지 않습니다. JR 동일본 사이트에서 읽을 수 있는 요금 페이지를 얻지 못했고, 나가덴은 요금표를 읽을 수 없는 PDF로만 공개하며, 2026-27 급행버스의 제3자 수치는 서로 다릅니다. 역이나 운영사 사이트에서 확인하세요. <Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>JR 동일본 패스 가이드(영어)</Link>에서 나가노행 개별 티켓보다 패스가 유리한 경우를 계산해 두었습니다.
+시간은 공원의 교통 안내({CHECKED} 확인), 패스 내용은 나가노 전철의 스노 몽키 페이지(2026년 11월 3일 확인) 기준입니다. <strong>요금에 대해:</strong> 신칸센, 나가덴 전철, 버스의 엔화 요금은 싣지 않습니다. JR 동일본 사이트에서는 확인할 수 있는 요금 페이지가 없었고, 나가덴은 요금표를 PDF로만 공개하며, 2026-27 급행버스의 제3자 수치는 서로 다릅니다. 역이나 운영사 사이트에서 확인하세요. <Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>JR 동일본 패스 가이드(영어)</Link>에서 나가노행 개별 티켓보다 패스가 유리한 경우를 계산해 두었습니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

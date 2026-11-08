@@ -249,8 +249,8 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
             </div>
             <p className={styles.verdictText}>
               <strong>In short:</strong> three fairly different things are sold under one name, so decide which
-              you actually want. A museum visit with hands-on extras is the family option — the listing we
-              checked sits in Nishi-Asakusa, opens 09:00 to 18:00, suggests about an hour, and covers armour
+              you actually want. A museum visit with hands-on extras is the family option — the listing
+              shown sits in Nishi-Asakusa, opens 09:00 to 18:00, suggests about an hour, and covers armour
               dress-up, throwing a ninja star and posing with replica swords, guided in English and Japanese.
               A sword lesson in the kenbu or iaido tradition teaches actual form and usually sets a higher
               minimum age. Both are indoors and run year-round, which makes either a reliable wet-weather

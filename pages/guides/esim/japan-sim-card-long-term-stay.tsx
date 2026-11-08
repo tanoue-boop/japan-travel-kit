@@ -125,14 +125,14 @@ const compareRows = [
   {
     product: "Sakura Mobile Travel SIM or eSIM",
     price: `Travel SIM from ¥3,500 (¥3,850 tax incl.); Travel eSIM from ¥1,250 (¥1,375 tax incl.)`,
-    number: "The Travel eSIM listing states a Japanese phone number is included; the data plans we price are data only",
+    number: "The Travel eSIM listing states a Japanese phone number is included; the data plans compared here are data only",
     term: 'Sold as "Up to 90 Days" — the company\'s own ceiling',
     needs: "Nothing but a passport",
     exit: "It simply expires",
   },
   {
     product: "A tourist eSIM (Klook, Airalo, Holafly, eSIM Go)",
-    price: `From ${CHEAPEST_ESIM_FROM} across the four providers we price`,
+    price: `From ${CHEAPEST_ESIM_FROM} across the four providers compared here`,
     number: `${esimSpec("airalo").phoneNumberShort} — and the same is true of every tourist eSIM in our comparison`,
     term: "No contract at all; plan lengths run in days",
     needs: "Nothing but an eSIM-capable handset",
@@ -153,7 +153,7 @@ const residentRows = [
   {
     item: "A Japanese phone number",
     detail:
-      "Sakura Mobile's Voice + Data resident plan carries a Japanese 070, 080 or 090 number. No tourist eSIM we price sells voice or SMS at any price.",
+      "Sakura Mobile's Voice + Data resident plan carries a Japanese 070, 080 or 090 number. No tourist eSIM compared here sells voice or SMS at any price.",
     why: "This is the line a bank, a landlord, a clinic, a delivery company and most online checkouts will ask for. It is the single reason a long stay is a different problem from a holiday.",
   },
   {
@@ -205,7 +205,7 @@ const steps = [
   },
   {
     title: "Cover the gap with a travel product, not a contract",
-    desc: `Buy a travel eSIM before you fly and activate it on landing. It costs from ${CHEAPEST_ESIM_FROM} across the four providers we price, there is nothing to collect and nothing to cancel, and it carries you through the days between arrival and a registered address. Klook's own Japan eSIM is one option if you are already booking transport there.`,
+    desc: `Buy a travel eSIM before you fly and activate it on landing. It costs from ${CHEAPEST_ESIM_FROM} across the four providers compared here, there is nothing to collect and nothing to cancel, and it carries you through the days between arrival and a registered address. Klook's own Japan eSIM is one option if you are already booking transport there.`,
   },
   {
     title: "Decide whether you need a Japanese number",
@@ -228,7 +228,7 @@ const steps = [
 const faqItems = [
   {
     q: "What is the best SIM card for a long stay in Japan?",
-    a: `A resident monthly plan rather than a tourist SIM, and of the English-language options the one we link is Sakura Mobile: its Voice + Data resident SIM or eSIM is published from ${VOICE_MONTH}/month (${VOICE_MONTH_TAX} tax included) with a Japanese 070, 080 or 090 number, data tiers from 5 GB to 100 GB, and a minimum use of just one month. The data-only version is from ${DATA_MONTH}/month (${DATA_MONTH_TAX} tax included). The reason it is not simply "buy the cheapest eSIM" is that every travel product in Japan — including Sakura Mobile's own — is sold up to 90 days and, on the plans we price, carries no phone number. For three months or more you are not buying data, you are buying a line that institutions can call. Prices and rules read off sakuramobile.jp on ${SAKURA_CHECKED}.`,
+    a: `A resident monthly plan rather than a tourist SIM, and of the English-language options the one we link is Sakura Mobile: its Voice + Data resident SIM or eSIM is published from ${VOICE_MONTH}/month (${VOICE_MONTH_TAX} tax included) with a Japanese 070, 080 or 090 number, data tiers from 5 GB to 100 GB, and a minimum use of just one month. The data-only version is from ${DATA_MONTH}/month (${DATA_MONTH_TAX} tax included). The reason it is not simply "buy the cheapest eSIM" is that every travel product in Japan — including Sakura Mobile's own — is sold up to 90 days and, on the plans compared here, carries no phone number. For three months or more you are not buying data, you are buying a line that institutions can call. Prices and rules read off sakuramobile.jp on ${SAKURA_CHECKED}.`,
   },
   {
     q: "Can foreigners get a phone number in Japan?",
@@ -240,7 +240,7 @@ const faqItems = [
   },
   {
     q: "Is a tourist eSIM enough for 3 months?",
-    a: `For data alone, just about — and for a life in Japan, no. The ceiling is the first problem: Sakura Mobile sells its travel products as "Up to 90 Days", which is the same 90-day line the immigration categories use, so a stay of "three months or more" runs out of travel product at exactly the point it becomes a long stay. The second is the number. Every tourist eSIM we price is data only — Sakura Mobile's own position is that a Japanese number comes only on its separate Voice + Data product — which rules out most of what a resident has to do: a bank, a lease, a delivery slot, a clinic, a two-factor code from a Japanese service. The third is cost. On a strict data basis a tourist eSIM can be cheaper for a single month, but renewing one three times is not cheaper than ${DATA_MONTH}/month with no cap on how long you keep it. Use the eSIM for the first fortnight; move to a resident plan for the rest. eSIM prices checked ${PRICES_CHECKED}; phone-number clauses ${SPECS_CHECKED_AT}.`,
+    a: `For data alone, just about — and for a life in Japan, no. The ceiling is the first problem: Sakura Mobile sells its travel products as "Up to 90 Days", which is the same 90-day line the immigration categories use, so a stay of "three months or more" runs out of travel product at exactly the point it becomes a long stay. The second is the number. Every tourist eSIM compared here is data only — Sakura Mobile's own position is that a Japanese number comes only on its separate Voice + Data product — which rules out most of what a resident has to do: a bank, a lease, a delivery slot, a clinic, a two-factor code from a Japanese service. The third is cost. On a strict data basis a tourist eSIM can be cheaper for a single month, but renewing one three times is not cheaper than ${DATA_MONTH}/month with no cap on how long you keep it. Use the eSIM for the first fortnight; move to a resident plan for the rest. eSIM prices checked ${PRICES_CHECKED}; phone-number clauses ${SPECS_CHECKED_AT}.`,
   },
   {
     q: "What is the minimum contract for a Japanese SIM?",
@@ -252,7 +252,7 @@ const faqItems = [
   },
   {
     q: "Which is cheaper over six months — a resident plan or renewing travel eSIMs?",
-    a: `The resident plan, in almost every shape of that question. Data-only resident service is published from ${DATA_MONTH}/month (${DATA_MONTH_TAX} tax included), which is ¥14,880 over six months before tax; the cheapest tourist eSIM we price starts at ${CHEAPEST_ESIM_FROM} but that is an entry tier measured in days, and Sakura Mobile's own travel eSIM — ${SAKURA_ESIM_FROM} at its cheapest in our feed — stops at 90 days whatever you pay. There is one case where the arithmetic flips: a stay of three months or less where you genuinely need nothing but data and will tolerate renewing. Outside that, the comparison is not really about price, it is about whether the line can receive a call. eSIM prices checked ${PRICES_CHECKED}.`,
+    a: `The resident plan, in almost every shape of that question. Data-only resident service is published from ${DATA_MONTH}/month (${DATA_MONTH_TAX} tax included), which is ¥14,880 over six months before tax; the cheapest tourist eSIM compared here starts at ${CHEAPEST_ESIM_FROM} but that is an entry tier measured in days, and Sakura Mobile's own travel eSIM — ${SAKURA_ESIM_FROM} at its cheapest in our feed — stops at 90 days whatever you pay. There is one case where the arithmetic flips: a stay of three months or less where you genuinely need nothing but data and will tolerate renewing. Outside that, the comparison is not really about price, it is about whether the line can receive a call. eSIM prices checked ${PRICES_CHECKED}.`,
   },
   {
     q: "Can I get home internet for a short lease?",
@@ -413,7 +413,7 @@ export default function JapanSimCardLongTermStayPage({ updated }: { updated: Pag
             current address</strong> — no Japanese bank account, though: an international card is accepted.
             Cancelling is a form, and the deadline is the <strong>25th of the month</strong>. The reason none
             of this can be solved with a tourist eSIM: every travel product in Japan, Sakura Mobile&apos;s own
-            included, is sold <strong>&ldquo;Up to 90 Days&rdquo;</strong> and the ones we price carry no
+            included, is sold <strong>&ldquo;Up to 90 Days&rdquo;</strong> and the ones compared here carry no
             number at all. All Sakura Mobile figures read off sakuramobile.jp on {SAKURA_CHECKED}.
           </p>
         </section>
@@ -496,10 +496,10 @@ export default function JapanSimCardLongTermStayPage({ updated }: { updated: Pag
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Every Sakura Mobile figure and rule is the company&apos;s own, read off sakuramobile.jp on{" "}
             {SAKURA_CHECKED}; each is a published &ldquo;from&rdquo; price rather than a quote, and the data
-            tier you pick moves it. Tourist eSIM prices come from our daily feed, checked {PRICES_CHECKED}, and
+            tier you pick moves it. Tourist eSIM prices come from the daily price feed, checked {PRICES_CHECKED}, and
             the phone-number clauses from the providers&apos; own pages, {SPECS_CHECKED_AT}. Pocket WiFi specs
             read {specsCheckedAt} and daily rates {ratesCheckedAt}. No Klook price appears on this page: Klook
-            blocks automated reads of its product pages. Our{" "}
+            prices change by date, so open a listing for yours. Our{" "}
             <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>
               Sakura Mobile review
             </Link>{" "}
@@ -618,7 +618,7 @@ export default function JapanSimCardLongTermStayPage({ updated }: { updated: Pag
             at precisely the moment it becomes a long stay.
           </p>
           <p className={styles.bodyText}>
-            The second problem is the one the price comparison hides. Every tourist eSIM we price is{" "}
+            The second problem is the one the price comparison hides. Every tourist eSIM compared here is{" "}
             <strong>data only</strong> — Sakura Mobile states a Japanese number comes only on its separate
             Voice + Data product — so three months on a travel eSIM means three months in which no Japanese
             institution can reach you by phone. The

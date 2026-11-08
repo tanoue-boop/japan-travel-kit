@@ -135,7 +135,7 @@ const faqItems = [
   },
   {
     q: "How early should I book an Osaka hotel?",
-    a: `We publish no number, because no operator publishes one — availability and price are per-hotel and per-date. What is published is the calendar. Japan's Cabinet Office lists Showa Day on 29 April, Constitution Memorial Day on 3 May, Greenery Day on 4 May and Children's Day on 5 May — Golden Week — plus Mountain Day on 11 August, read on ${OWN}; those weeks, the New Year period and the cherry-blossom and autumn-leaf weeks are when domestic demand is added to yours. Osaka has one local pressure on top of that: Universal Studios Japan draws a domestic crowd that books the Universal City hotels first, so if that area is your choice it is the one to check earliest. The practical step is to open the area searches for your real dates and compare two or three.`,
+    a: `There is no number here, because no operator publishes one — availability and price are per-hotel and per-date. What is published is the calendar. Japan's Cabinet Office lists Showa Day on 29 April, Constitution Memorial Day on 3 May, Greenery Day on 4 May and Children's Day on 5 May — Golden Week — plus Mountain Day on 11 August, read on ${OWN}; those weeks, the New Year period and the cherry-blossom and autumn-leaf weeks are when domestic demand is added to yours. Osaka has one local pressure on top of that: Universal Studios Japan draws a domestic crowd that books the Universal City hotels first, so if that area is your choice it is the one to check earliest. The practical step is to open the area searches for your real dates and compare two or three.`,
   },
   {
     q: "Is it better to stay in Osaka or Kyoto for a Kansai trip?",
@@ -143,7 +143,7 @@ const faqItems = [
   },
   {
     q: "Which Osaka area is cheapest to stay in?",
-    a: "We cannot verify rates, so we will not rank the areas by price — but the structural point is that Tennoji is the southern end of the useful Midosuji stretch and the furthest from the nightlife, which is usually where the saving sits, and it is also the shortest Haruka leg from the airport. Shin-Imamiya and Dobutsuenmae, one stop further, are cheaper again and on the same line. Whether that saving survives contact with your dates is a question for the searches below.",
+    a: "Rates cannot be verified, so the areas are not ranked by price here — but the structural point is that Tennoji is the southern end of the useful Midosuji stretch and the furthest from the nightlife, which is usually where the saving sits, and it is also the shortest Haruka leg from the airport. Shin-Imamiya and Dobutsuenmae, one stop further, are cheaper again and on the same line. Whether that saving survives contact with your dates is a question for the searches below.",
   },
   {
     q: "Do you need the Osaka Amazing Pass if you stay centrally?",
@@ -331,9 +331,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText}>
             What follows is the comparison behind that, and what it leaves out on purpose. There are no hotel
-            names, no room impressions and no nightly rates on this page: we cannot verify any of the three
-            from here, and two of them change with your dates. Every journey time below carries the operator
-            or official body that published it and the date we read it.
+            names, no room impressions and no nightly rates on this page: none of the three can be verified
+            here, and two of them change with your dates. Every journey time below carries the operator
+            or official body that published it and the date it was read.
           </p>
         </section>
 
@@ -489,7 +489,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Booking</span>
           <h2 className={styles.sectionTitle}>How Early Should You Book an Osaka Hotel?</h2>
           <p className={styles.bodyText}>
-            <strong>We publish no number, because no operator publishes one.</strong> Availability and price
+            <strong>There is no number here, because no operator publishes one.</strong> Availability and price
             are per-hotel and per-date, so a &ldquo;book X weeks ahead&rdquo; figure would be invented. What
             is published is the calendar.
           </p>

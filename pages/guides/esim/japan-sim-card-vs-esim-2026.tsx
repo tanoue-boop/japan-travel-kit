@@ -55,7 +55,7 @@ const comparisonRows = [
   { feature: "Phone requirement", esim: "An eSIM-capable, unlocked handset", physicalSim: "Any unlocked phone, however old" },
   { feature: "Japanese phone number", esim: "No — every Japan travel eSIM is data only", physicalSim: "Only on Sakura Mobile's Voice + Data product" },
   { feature: "Voice calls and SMS", esim: "No", physicalSim: "On the Voice + Data plan" },
-  { feature: "Cheapest we can price", esim: `${ESIM_FROM} — ${ESIM_FROM_PLAN?.name}`, physicalSim: `${SAKURA_ENTRY} — Sakura Mobile, ${SAKURA_ENTRY_PLAN?.name}` },
+  { feature: "Cheapest confirmed price", esim: `${ESIM_FROM} — ${ESIM_FROM_PLAN?.name}`, physicalSim: `${SAKURA_ENTRY} — Sakura Mobile, ${SAKURA_ENTRY_PLAN?.name}` },
   { feature: "Plan lengths sold", esim: "1 to 30 days across the four providers", physicalSim: "4 to 93 days (Sakura Mobile's own SIM pages)" },
   { feature: "Your home SIM", esim: "Stays in the phone and keeps working", physicalSim: "Comes out while the Japan card is in" },
   { feature: "Best for", esim: "Almost every visitor", physicalSim: "A Japanese number, or a pre-2018 handset" },
@@ -168,7 +168,7 @@ const faqItems = [
   },
   {
     q: "Which is cheaper for Japan, an eSIM or a SIM card?",
-    a: `An eSIM, clearly, at the short end. The cheapest Japan eSIM is ${ESIM_FROM} for ${ESIM_FROM_PLAN?.name}; the cheapest physical travel plan we can price is ${SAKURA_ENTRY} from Sakura Mobile, and that buys ${SAKURA_ENTRY_PLAN?.name} rather than a week. The gap closes on a long stay, because Sakura Mobile sells a single plan up to 93 days while an eSIM month has to be re-bought and re-installed each time. We quote no figure for a generic "tourist SIM" — there is no publisher to check one against.`,
+    a: `An eSIM, clearly, at the short end. The cheapest Japan eSIM is ${ESIM_FROM} for ${ESIM_FROM_PLAN?.name}; the cheapest physical travel plan with a confirmed price is ${SAKURA_ENTRY} from Sakura Mobile, and that buys ${SAKURA_ENTRY_PLAN?.name} rather than a week. The gap closes on a long stay, because Sakura Mobile sells a single plan up to 93 days while an eSIM month has to be re-bought and re-installed each time. No figure is quoted here for a generic "tourist SIM" — there is no publisher to check one against.`,
   },
   {
     q: "Can I get a Japanese phone number with an eSIM?",
@@ -310,7 +310,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
             <p className={styles.verdictText}>
               <strong>Buy an eSIM unless one of two things is true.</strong> On price it is not
               close: the cheapest Japan eSIM is {ESIM_FROM} for {ESIM_FROM_PLAN?.name}, against{" "}
-              {SAKURA_ENTRY} for the cheapest physical travel plan we can price, and
+              {SAKURA_ENTRY} for the cheapest physical travel plan with a confirmed price, and
               the eSIM installs before you fly with nothing to collect at the airport. But cost is
               not what decides this. There are exactly two situations where the price comparison is
               irrelevant and a physical SIM is the only option: <strong>you need a Japanese phone

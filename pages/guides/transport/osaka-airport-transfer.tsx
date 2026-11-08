@@ -184,7 +184,7 @@ const tips = [
 const faqItems = [
   {
     q: "What is the cheapest way from KIX to Osaka city?",
-    a: "Of the fares we could confirm with an operator, the limousine bus to Namba (OCAT) is ¥1,400 for an adult. The Nankai Airport Express needs only the ordinary train fare and no seat ticket, and takes about 45 minutes to Namba; check the current fare on Nankai's fare search. If you hold a JR Pass, the Haruka is covered.",
+    a: "Of the fares confirmed with an operator, the limousine bus to Namba (OCAT) is ¥1,400 for an adult. The Nankai Airport Express needs only the ordinary train fare and no seat ticket, and takes about 45 minutes to Namba; check the current fare on Nankai's fare search. If you hold a JR Pass, the Haruka is covered.",
   },
   {
     q: "Can I use the JR Pass from Kansai Airport?",
@@ -701,8 +701,8 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Kansai Airport and Kansai Airport Transportation, checked {CHECKED}. We could not confirm Nankai&apos;s last
-            train from an operator page, so check Nankai&apos;s timetable search for your date.
+            Kansai Airport and Kansai Airport Transportation, checked {CHECKED}. Nankai&apos;s last train is not confirmed
+            here from an operator page, so check Nankai&apos;s timetable search for your date.
           </p>
         </section>
 

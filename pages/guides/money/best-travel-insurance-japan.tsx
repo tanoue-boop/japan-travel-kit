@@ -155,7 +155,7 @@ const faqItems = [
   },
   {
     q: "How much is travel insurance to Japan?",
-    a: `SafetyWing Essential is US$62.72 per 4 weeks for ages 10–39, and SafetyWing says prices increase with age. Prices for older ages and shorter fixed dates appear in its calculator, which we could not read, so we do not quote them. Heymondo and World Nomads publish no price. Read on ${CHECKED}.`,
+    a: `SafetyWing Essential is US$62.72 per 4 weeks for ages 10–39, and SafetyWing says prices increase with age. Prices for older ages and shorter fixed dates appear in its calculator, so they are not quoted here. Heymondo and World Nomads publish no price. Read on ${CHECKED}.`,
   },
   {
     q: "What is the best travel insurance for Japan?",
@@ -372,7 +372,7 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           <h2 className={styles.sectionTitle}>How Much Is Travel Insurance to Japan?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             SafetyWing Essential costs US$62.72 per 4 weeks at ages 10–39, and SafetyWing says prices increase
-            with age. These are the published prices for each age and length we could confirm.
+            with age. These are the published prices for each age and length confirmed on its site.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -399,8 +399,8 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Conditions: SafetyWing&apos;s published prices, in US dollars, read on {CHECKED}. They exclude add-ons
-            and US cover, and are not a personal quote. We could not read its calculator, so rows marked
-            &ldquo;Official calculator only&rdquo; have no figure. We do not estimate them.
+            and US cover, and are not a personal quote. Its calculator figures are not listed here, so rows marked
+            &ldquo;Official calculator only&rdquo; have no figure. They are not estimated here.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <SafetyWingButton label="Get your price from SafetyWing →" className={styles.verdictBtn} />

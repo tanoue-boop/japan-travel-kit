@@ -50,7 +50,7 @@ const COPY: Record<Locale, Copy> = {
     guideEyebrow: "Mobile data for Japan",
     guideIntro:
       "Set it up by QR code before you leave and it works as soon as you land, so maps and train times are on your phone from the airport.",
-    lowest: "Lowest plan price we could confirm",
+    lowest: "Lowest confirmed plan price",
     simbyeFrom: "From {price} ({plan})",
     simbyeCode: "{discounted} with code {code}, {percent}% off",
     simbyeCta: "Get Simbye from {price} →",

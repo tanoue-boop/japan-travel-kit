@@ -74,7 +74,7 @@ const comparisonRows = [
   { provider: "Holafly", price: `From ${priceFrom("holafly")}`, data: "Unlimited only", network: getProvider("holafly").network, verdict: "No longer the cheapest unlimited" },
   { provider: "eSIM Go", price: `From ${priceFrom("esimgo")}`, data: "1–100 GB, plus unlimited", network: getProvider("esimgo").network, verdict: "Cheapest of Reddit's usual four" },
   { provider: "Sakura Mobile", price: `From ${priceFrom("sakura")}`, data: "9–90 GB, plus unlimited", network: getProvider("sakura").network, verdict: "Right for long stays, as advised" },
-  { provider: "Simbye", price: `From ${priceFrom("simbye")}`, data: esimSpec("simbye").dataRange, network: getProvider("simbye").network, verdict: "Outside Reddit's usual four; lowest entry price we track" },
+  { provider: "Simbye", price: `From ${priceFrom("simbye")}`, data: esimSpec("simbye").dataRange, network: getProvider("simbye").network, verdict: "Outside Reddit's usual four; lowest entry price in this comparison" },
 ];
 
 /**
@@ -300,7 +300,7 @@ const faqItems = [
   },
   {
     q: "Does Klook sell a Japan eSIM?",
-    a: `Yes — it is listed as "${klookEsim.listingTitle}". The listing names ${klookEsim.specData.toLowerCase()}, ${klookEsim.specNetwork}, tethering supported and no phone number (confirmed through Klook's search index on ${klookEsim.specsCheckedAt}). We quote no price for it: the product page blocks automated reads, so open the listing to see the current options.`,
+    a: `Yes — it is listed as "${klookEsim.listingTitle}". The listing names ${klookEsim.specData.toLowerCase()}, ${klookEsim.specNetwork}, tethering supported and no phone number (listing checked on ${klookEsim.specsCheckedAt}). No price is quoted for it here: Klook prices change by date, so open the listing to see the current options.`,
   },
 ];
 
@@ -396,8 +396,8 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </h1>
           <p className={styles.heroSubtitle}>
             The same four recommendations come up in every r/JapanTravel eSIM thread.
-            We checked each one against this month&apos;s actual prices and plan terms,
-            and added the parts the threads leave out: networks, plans by trip length,
+            Each one is checked here against this month&apos;s actual prices and plan terms,
+            with the parts the threads leave out added: networks, plans by trip length,
             and whether your phone can take an eSIM at all.
           </p>
           <div className={styles.heroBadges}>
@@ -523,8 +523,8 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               full Japan eSIM comparison
             </Link>{" "}
             already does that. It takes the four claims you will actually meet in those threads
-            and checks each against the current catalogue, which we re-read daily. Where a
-            recommendation still stands, we say so; where it has drifted, we show the gap.
+            and checks each against the current catalogue, which is re-read daily. Where a
+            recommendation still stands, this page says so; where it has drifted, it shows the gap.
           </p>
         </section>
 
@@ -646,9 +646,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               <strong>One more place to buy it:</strong> Klook sells a Japan eSIM of its own, listed as{" "}
               &ldquo;{klookEsim.listingTitle}&rdquo;. Its listing names {klookEsim.specData.toLowerCase()},
               running on {klookEsim.specNetwork}, with tethering supported and no phone number — so it
-              covers the same tiers as the table above (search index, {klookEsim.specsCheckedAt}). We quote
-              no price for it, because the product page blocks automated reads and we will not print a
-              figure we cannot verify.
+              covers the same tiers as the table above (listing checked {klookEsim.specsCheckedAt}). No price
+              is quoted for it, because Klook prices change by date and an unverified figure is not
+              printed here.
             </p>
             <KlookLink
               href={klookEsim.url}
@@ -931,7 +931,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <p className={styles.verdictText}>
             And if the rest of your trip is already in a Klook basket — tickets, passes, airport
             transfers — buying the eSIM in the same checkout is the shortest route to being online
-            when you land. Its listing covers the same tiers as the providers above; we just have no
+            when you land. Its listing covers the same tiers as the providers above; there is just no
             verified price to rank it on.
           </p>
           <div className={styles.pickCtaRow}>
@@ -1000,9 +1000,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Prices are each provider&apos;s cheapest plan, read from its official site on {pricesCheckedAt}.
             The Klook row shows only the from-price on its listing (read {klookEsim.specsCheckedAt}), which
-            comes before you choose days and data and names no plan, so it is not ranked here and we make no
-            claim about whether a given plan undercuts the four above. Its data tiers and networks are what the listing itself states, confirmed
-            through Klook&apos;s search index on {klookEsim.specsCheckedAt}.
+            comes before you choose days and data and names no plan, so it is not ranked here and no claim
+            is made about whether a given plan undercuts the four above. Its data tiers and networks are what the listing itself states, checked
+            on {klookEsim.specsCheckedAt}.
           </p>
         </section>
 

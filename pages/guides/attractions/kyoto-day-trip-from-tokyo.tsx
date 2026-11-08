@@ -83,7 +83,7 @@ const planRows = [
 ];
 
 const compareRows = [
-  { what: "Train", self: "You book it", tour: "You book it. We found no Klook tour that includes the Tokyo train" },
+  { what: "Train", self: "You book it", tour: "You book it. No Klook tour found for this guide includes the Tokyo train" },
   { what: "Getting around Kyoto", self: "JR, city buses and walking", tour: "Coach or guide, from Kyoto Station" },
   { what: "Length in Kyoto", self: "Your choice, about 6–8 hours", tour: "About 8 hours (walking) to 8 hours 30 minutes (bus)" },
   { what: "Sights covered", self: "Usually two sides of the city", tour: "Up to three or four sides, with less time at each" },
@@ -133,7 +133,7 @@ const faqItems = [
   },
   {
     q: "What is the last train from Kyoto to Tokyo?",
-    a: `Klook's rail page shows Nozomi 64 at 21:38 as the latest departure on its sample date of 11 November 2026. We could not read JR Central's own timetable, so check your date before relying on it, and plan on an earlier train. Read ${CHECKED}.`,
+    a: `Klook's rail page shows Nozomi 64 at 21:38 as the latest departure on its sample date of 11 November 2026. JR Central's own timetable is not reproduced here, so check your date before relying on it, and plan on an earlier train. Read ${CHECKED}.`,
   },
   {
     q: "Should you book the shinkansen in advance?",
@@ -149,7 +149,7 @@ const faqItems = [
   },
   {
     q: "What if it rains on your Kyoto day trip?",
-    a: "Fushimi Inari, Kiyomizu-dera and Gion are mostly outdoors, and we found no official rule that closes them for ordinary rain. Check your tour's weather terms: one Fushimi Inari walking tour on Klook says it runs in rain and may cancel in stormy weather.",
+    a: "Fushimi Inari, Kiyomizu-dera and Gion are mostly outdoors, and the official sources checked give no rule that closes them for ordinary rain. Check your tour's weather terms: one Fushimi Inari walking tour on Klook says it runs in rain and may cancel in stormy weather.",
   },
   {
     q: "Do you need to bring luggage on a day trip?",
@@ -341,7 +341,7 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
           <p className={styles.bodyText}>
             For the way back, JR Central&apos;s Kyoto departure board showed Nozomi 60 at 21:02 and Nozomi 62
             at 21:21, and Klook&apos;s page shows Nozomi 64 at 21:38 as the latest departure, arriving 23:38.
-            Treat these as a guide: we could not read JR Central&apos;s timetable PDF, and evening times can
+            Treat these as a guide: check JR Central&apos;s own timetable for your date, as evening times can
             change by date.
           </p>
         </section>
@@ -376,8 +376,8 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Fare from JR Central&apos;s smartEX price table, read through a search index on {CHECKED} because
-            the PDF cannot be read automatically. Confirm yours at checkout. JR Central and JR West announced
+            Fare from JR Central&apos;s smartEX price table, checked on {CHECKED}. Prices can change, so
+            confirm yours at checkout. JR Central and JR West announced
             on 16 October 2026 that reserved Nozomi prices will rise for purchases from 1 July 2027.
           </p>
         </section>
@@ -431,7 +431,7 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
           <h2 className={styles.sectionTitle}>Should You Take a Tour or Go on Your Own?</h2>
           <p className={styles.bodyText}>
             Go on your own for two sides of the city at your own pace. Join a tour from Kyoto Station to see
-            more without planning buses. We found no Klook tour that includes the train from Tokyo, so either
+            more without planning buses. No Klook tour found for this guide includes the train from Tokyo, so either
             way you book the shinkansen yourself and need a train that reaches Kyoto before the meeting time.
           </p>
           <div className={styles.tableWrap}>

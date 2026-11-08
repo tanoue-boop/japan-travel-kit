@@ -448,7 +448,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             to change — confirm when you buy. Four groups are admitted free: pre-school children under
             110 cm, visitors aged 60 and over with proof of age, pregnant visitors showing a maternal
             health handbook, and disability certificate holders with up to two companions. For the
-            admissions we track across the rest of Japan, each with its own check date, see our{" "}
+            admissions in this guide across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>.
@@ -628,7 +628,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
 
         <KlookTourPicks
           heading="The Rest of an Odaiba Day"
-          intro="Two bay-cruise listings that sail from the Odaiba and Hinode side of the water, plus the city bus tour, for the hours either side of a Joypolis visit. Klook blocks automated price reads, so open a listing for the figure and the boarding point on your date."
+          intro="Two bay-cruise listings that sail from the Odaiba and Hinode side of the water, plus the city bus tour, for the hours either side of a Joypolis visit. Klook prices change by date, so open a listing for the figure and the boarding point on your date."
           tours={[tokyoBaySunsetBoatCruise, tokyoBayYakatabuneDinnerShow, tokyoSightseeingBusTour]}
         />
 

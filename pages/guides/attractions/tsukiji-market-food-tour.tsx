@@ -528,8 +528,8 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Durations, meeting points and inclusions as the four Klook listings state them, all
-            confirmed live and on sale on {CHECKED}. No price appears here: Klook answers automated
-            reads of its product pages with HTTP 403, so there is no figure we could have verified —
+            confirmed live and on sale on {CHECKED}. No price appears here: Klook prices change
+            by date, so there is no fixed figure to quote —
             open a listing for the current price and its cancellation terms on your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -587,7 +587,7 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
 
         <KlookTourPicks
           heading="Tsukiji Food Tours You Can Book From Abroad"
-          intro="The four Tsukiji listings compared in the table above, all confirmed live on 21 October 2026. Klook blocks automated price reads, so open a listing for the current figure, the departure time on your date and its cancellation terms."
+          intro="The four Tsukiji listings compared in the table above, all confirmed live on 21 October 2026. Klook prices change by date, so open a listing for the current figure, the departure time on your date and its cancellation terms."
           tours={[
             tsukijiStreetFoodTour,
             tsukijiFoodCultureWalkingTour,

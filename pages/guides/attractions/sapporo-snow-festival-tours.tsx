@@ -230,7 +230,7 @@ const transportRows = [
   {
     leg: "New Chitose Airport → Sapporo, booked transfer",
     time: "By road, so weather-dependent in February",
-    fare: "By vehicle and date — Klook blocks automated price reads, so open the page",
+    fare: "By vehicle and date — Klook prices change by date, so open the page",
     note: "Klook's airport-transfer page for New Chitose, with the terms set per vehicle, so it is a before-you-fly booking.",
   },
   {
@@ -262,7 +262,7 @@ const transportRows = [
 const bookingWindow = [
   {
     title: "Now, if your trip is February 2027 — the room",
-    desc: "The dates have been public since 11 February 2026, when the committee announced them in the same notice that closed the 76th festival. Eight fixed nights in one city, known a year ahead, is the definition of a date everyone books early. We publish no occupancy figure because none is published — but this is the only part of a festival trip with no fallback.",
+    desc: "The dates have been public since 11 February 2026, when the committee announced them in the same notice that closed the 76th festival. Eight fixed nights in one city, known a year ahead, is the definition of a date everyone books early. There is no occupancy figure here because none is published — but this is the only part of a festival trip with no fallback.",
   },
   {
     title: "Before you fly — the airport leg and the island pass",
@@ -630,7 +630,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           </p>
           <p className={styles.bodyText}>
             That makes this unusual among the events on this site: there is no queue to skip, no timed entry,
-            and so no honest version of a &ldquo;skip the line&rdquo; product. We could find no Klook listing
+            and so no honest version of a &ldquo;skip the line&rdquo; product. No Klook listing turned up
             that sells the Sapporo Snow Festival itself, and there should not be one. What a booking genuinely
             buys on a festival trip is the <strong>other half of each day</strong>. The sites are entirely
             outdoors in a month whose mean daily maximum is <strong>{FEB_MAX}</strong> on the JMA normals, and
@@ -655,10 +655,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           <h2 className={styles.sectionTitle}>Which Tours Are Worth Booking in Festival Week?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The ones that are only sold in this season, and the ones that give an outdoor day an indoor
-            middle. Every listing below was re-checked against Klook&apos;s search index on {SEASON}; none of
+            middle. Every listing below was re-checked on Klook on {SEASON}; none of
             them is a Snow Festival tour, and each row says what it actually adds and what shape of day it
-            fits. The table carries no prices, because Klook answers automated reads of its product pages
-            with an error. The from-prices at the top of this page are the ones its index showed; open a
+            fits. The table carries no prices, because Klook prices change by date and by
+            departure. The from-prices at the top of this page are the ones its index showed; open a
             listing for the figure on your dates.
           </p>
           <div className={styles.tableWrap}>
@@ -725,12 +725,12 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             Light Path in the same weeks.
           </p>
           <p className={styles.bodyText}>
-            On timing, we will be precise about what is and is not verified. The{" "}
+            On timing, here is precisely what is and is not verified. The{" "}
             <strong>dates have been public since 11 February 2026</strong>, when the committee announced the
             2027 edition in the same notice that closed the 76th — so eight fixed nights in one city have been
-            known for eight months, which is the strongest argument there is for booking early. What we
-            deliberately do not publish is an occupancy or sell-out figure: none is published, and we are not
-            going to invent one. Treat the room as the booking with no fallback and everything else as
+            known for eight months, which is the strongest argument there is for booking early. What this
+            guide deliberately does not publish is an occupancy or sell-out figure: none is published, and
+            none is invented here. Treat the room as the booking with no fallback and everything else as
             flexible.
           </p>
         </section>
