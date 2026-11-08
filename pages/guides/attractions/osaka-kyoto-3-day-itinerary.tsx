@@ -893,7 +893,9 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             two months ahead — see the section below, because this is the one booking in the trip with no
             flexibility in it at all. If it is <strong>Nara or Kyoto&apos;s west side</strong>, either nothing
             or one guided coach day, which is the version that does the routing for you. If it is{" "}
-            <strong>Kaiyukan</strong>, a 15-minute entry slot, bookable from 30 days out. Our{" "}
+            <strong>Kaiyukan</strong>, a 15-minute entry slot, bookable from 30 days out — our{" "}
+            <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Osaka Aquarium Kaiyukan tickets
+            guide</Link> has the dated price bands and the re-entry rule. Our{" "}
             <Link href="/guides/attractions/nara-day-trip">Nara day trip guide</Link> covers what fits in a
             day there, and our{" "}
             <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka">Kyoto and Nara day tour

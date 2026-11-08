@@ -6943,3 +6943,34 @@ export const warnerBrosStudioTourSameDayPrep: KlookTripPrepItem[] = [
     why: "Entry has to be within 30 minutes of your slot, and a Klook ticket arrives as an e-ticket on your phone — data from the airport onwards keeps the voucher and the route to Toshimaen on hand.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kaiyukan same-day block, added 8 Nov 2026 (task-jtk-20261108-R03)
+//
+// No new URLs: every slot reuses an existing constant. The Kaiyukan admission is
+// in the 6.5% band; these are the things booked around it — the Osaka pass at 5%,
+// a food tour and a Universal City hotel search at 6.5%, the eSIM at 20%.
+// ---------------------------------------------------------------------------
+
+export const kaiyukanSameDayPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Kaiyukan is not on the pass, so the pass belongs to the other day of the trip: Osaka Castle, the Umeda Sky Building and the river cruises, with unlimited Osaka Metro rides on top.",
+  },
+  {
+    label: dotonboriDaytimeFoodTour.title,
+    ctaLabel: "Check the food tour →",
+    url: dotonboriDaytimeFoodTour.url,
+    why: "Listed at 11:00 to 14:00, so it fits before a late-afternoon aquarium slot, which is the half of the day the price calendar steers you towards on its busiest dates.",
+  },
+  {
+    label: "Hotels near Universal Studios Japan (Universal City)",
+    ctaLabel: "Check Universal City hotels on Klook →",
+    url: usjStayAreas[0].url,
+    why: "The Captain Line shuttle boat crosses from Universal City Port to the aquarium's door, so a Universal City room puts the park and Kaiyukan either side of one short crossing.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The date-and-time e-ticket and the price calendar both live on your phone, so data from the airport onwards keeps the voucher and the route to Osakako on hand.",
+  },
+];

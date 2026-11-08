@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-08：/guides/attractions/osaka-aquarium-kaiyukan-tickets の順位改善（task-jtk-20261108-R03）
+
+- 2026-11-08 title 変更：「Osaka Aquarium Kaiyukan Tickets (2026): Prices and Slots」→「Osaka Aquarium Kaiyukan Tickets (2026): Price, Hours, Slots」。meta に「Kaiyukan ticket price」「Osaka aquarium tickets」。冒頭回答段落・料金帯を 2026-11-08 公式再確認・公式ルール表（出典URL・確認日付き）・質問見出し4つ・FAQ 2問追加・同日ブロック（KlookTripPrep）。逆リンク：osaka-kyoto-3-day-itinerary、where-to-stay-in-osaka。
+
 ## 2026-11-08：/guides/attractions/warner-bros-studio-tour-tokyo-tickets の順位改善（task-jtk-20261108-R02）
 
 - 2026-11-08 title 変更：「Warner Bros. Studio Tour Tokyo Tickets (2026): Prices」→「Harry Potter Studio Tour Tokyo Tickets 2026: Price & Booking」。冒頭回答・公式規定表（払い戻し不可・変更 ¥1,500・年齢区分・入場30分以内・所要3〜4時間、2026-11-08 公式確認）・質問見出し・FAQ 3問追加・同日ブロック（KlookTripPrep）・GetYourGuide 比較ボタンを追加。逆リンク：tokyo-5-day-itinerary、tokyo-itinerary-with-kids。

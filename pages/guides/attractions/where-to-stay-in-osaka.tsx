@@ -438,7 +438,10 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             Osaka Metro pass. The tickets themselves are the bigger constraint — USJ sells date-specified
             Studio Passes online and Super Nintendo World needs timed entry on top, which our{" "}
             <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets and Express Pass guide</Link>{" "}
-            works through.
+            works through. A Universal City base also puts the aquarium within reach: the Captain Line shuttle
+            boat crosses from Universal City Port to Kaiyukan in about ten minutes, and our{" "}
+            <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Osaka Aquarium Kaiyukan tickets
+            guide</Link> covers its date-based prices and entry slots.
           </p>
         </section>
 
