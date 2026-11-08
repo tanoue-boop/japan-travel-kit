@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-08：/guides/transport/haruka-vs-nankai-rapit の現行運賃・比較表・予約ブロック（task-jtk-20261108-03）
+
+- 2026-11-08 title 変更：「Haruka vs Nankai Rapi:t 2026: Which from Kansai Airport?」→「Haruka vs Nankai Rapit 2026: Price, Time, Which to Take」（H1・meta も「Haruka vs Nankai Rapit」完全一致）。旧数値（Rapi:t ¥1,880・約40分、はるか ¥3,060・¥3,640・新大阪60分）を公式現行値（Rapi:t Digital Ticket ¥1,410／最短34分、HARUKA One-way ¥1,600／¥1,900／¥2,700、天王寺30・大阪45・新大阪50・京都75分）に置換。冒頭回答段落・行き先別比較表（確認日付き）・質問見出し5つ・FAQ 8問・KlookTripPrep（はるか・ラピート・関西エリアパス・難波/梅田/京都駅ホテル・eSIM）＋BookingEsimCard。本文リンク：kansai-area-pass、osaka-metro-pass、where-to-stay-in-osaka、where-to-stay-in-kyoto、osaka-kyoto-3-day-itinerary。逆リンク：osaka-metro-pass、where-to-stay-in-kyoto。
+
 ## 2026-11-08：/guides/attractions/tokyo-tower-tickets の順位改善（task-jtk-20261108-R04）
 
 - 2026-11-08 title 変更：「Tokyo Tower Tickets (2026): Prices and Which Deck to Buy」→「Tokyo Tower Tickets 2026: Price, Main Deck vs Top Deck」。冒頭回答段落・公式時間/高さ/予約ルール表・日の入り表（NAOJ）・質問見出し化・FAQ 3問追加・予約手順直後に Klook CTA＋GetYourGuide 比較・同日ブロック（KlookTripPrep：ベイ夕日クルーズ・夜ツアー・バス1日ツアー・Subway Ticket・eSIM）。本文リンク：tokyo-illumination-tours、tokyo-bay-cruise、tokyo-3-day-itinerary、tokyo-skytree-tickets、shibuya-sky-tickets。逆リンク：tokyo-bay-cruise（関連カード）。

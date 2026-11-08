@@ -568,6 +568,11 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
           intro="The pass sorts out the rides inside the city. These are what the rest of the day needs: lunch, a bed on the Midosuji Line, the airport train the pass does not cover, and data on your phone."
           items={osakaMetroPassTripPrep}
         />
+        <p className={styles.bodyText}>
+          No Osaka Metro pass covers the train in from Kansai Airport. To choose between the two airport trains by
+          hotel station, see{" "}
+          <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Nankai Rapit</Link>.
+        </p>
 
         {/* Osaka Metro Pass / 30h */}
         <section className={styles.installSection}>

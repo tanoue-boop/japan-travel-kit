@@ -348,8 +348,9 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             <strong>Where to stay in Kyoto</strong> comes down to four areas, and the answer depends on how
             many nights you have. <strong>Kyoto Station</strong> is the two-night default: the Tokaido
-            Shinkansen and the airport Haruka arrive there, the 100 and 101 sightseeing buses start there,
-            and it is the point the city&apos;s own travel guide measures the four headline sights from —
+            Shinkansen and the airport{" "}
+            <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka</Link> arrive there, the 100 and 101
+            sightseeing buses start there, and it is the point the city&apos;s own travel guide measures the four headline sights from —
             Fushimi Inari <strong>10 minutes</strong>, Saga/Arashiyama <strong>25</strong>, Higashiyama for
             Kiyomizu-dera <strong>35</strong> and Kinkaku-ji <strong>40</strong>, read on {OWN}. At three
             nights or more, <strong>Karasuma Oike / Shijo</strong> wins: it is the one point the Karasuma and
