@@ -31,10 +31,13 @@ const PLAIN_REL = "noopener noreferrer nofollow";
  *   jnto.go.jp/emergency/eng/mi_guide.html        the two cost cases, entry warning, hotline.
  *   mhlw.go.jp/stf/newpage_46516.html             the recommendation and the screening warning.
  *
- * Prices for ages 40–69 and for trips under 4 weeks appear only in SafetyWing's calculator,
- * which could not be read, so the table says so instead of estimating them. Add them once they
- * have been read off a real quote.
+ * Read on 9 Nov 2026 off SafetyWing's own pricing calculator (safetywing.com/nomad-insurance,
+ * Essential, no add-ons, no US cover):
+ *   4-week subscription: 40–49 US$102.76, 50–59 US$161.28, 60–69 US$218.96.
+ *   Fixed dates, paid upfront: 7 days at 10–39 US$15.68; 14 days at 10–39 US$31.36,
+ *   40–49 US$51.38, 50–59 US$80.64, 60–69 US$109.48.
  */
+const CALC_CHECKED = checkedLabel("2026-11-09");
 const CHECKED = checkedLabel("2026-11-06");
 
 type Row = { who: string; pick: string; why: string; button: boolean };
@@ -92,12 +95,16 @@ const answerRows: Row[] = [
 ];
 
 const priceRows = [
+  { plan: "SafetyWing Essential, fixed dates", age: "10–39", period: "7 days", price: "US$15.68" },
+  { plan: "SafetyWing Essential, fixed dates", age: "10–39", period: "14 days", price: "US$31.36" },
+  { plan: "SafetyWing Essential, fixed dates", age: "40–49", period: "14 days", price: "US$51.38" },
+  { plan: "SafetyWing Essential, fixed dates", age: "50–59", period: "14 days", price: "US$80.64" },
+  { plan: "SafetyWing Essential, fixed dates", age: "60–69", period: "14 days", price: "US$109.48" },
   { plan: "SafetyWing Essential, subscription", age: "10–39", period: "4 weeks", price: "US$62.72" },
+  { plan: "SafetyWing Essential, subscription", age: "40–49", period: "4 weeks", price: "US$102.76" },
+  { plan: "SafetyWing Essential, subscription", age: "50–59", period: "4 weeks", price: "US$161.28" },
+  { plan: "SafetyWing Essential, subscription", age: "60–69", period: "4 weeks", price: "US$218.96" },
   { plan: "SafetyWing Essential", age: "Under 10", period: "4 weeks", price: "Free with an adult, up to two per adult" },
-  { plan: "SafetyWing Essential", age: "40–49", period: "4 weeks", price: "Official calculator only. Not confirmed here" },
-  { plan: "SafetyWing Essential", age: "50–59", period: "4 weeks", price: "Official calculator only. Not confirmed here" },
-  { plan: "SafetyWing Essential", age: "60–69", period: "4 weeks", price: "Official calculator only. Not confirmed here" },
-  { plan: "SafetyWing Essential, fixed dates", age: "Any", period: "5 to 27 days", price: "Official calculator only. Not confirmed here" },
   { plan: "SafetyWing Complete", age: "18–39", period: "Month, 12-month commitment", price: "US$177.50" },
   { plan: "Adventure sports add-on", age: "Any", period: "4 weeks, subscriptions only", price: "+US$10" },
   { plan: "Heymondo", age: "Any", period: "Any", price: "No published price. Quote only" },
@@ -155,7 +162,7 @@ const faqItems = [
   },
   {
     q: "How much is travel insurance to Japan?",
-    a: `SafetyWing Essential is US$62.72 per 4 weeks for ages 10–39, and SafetyWing says prices increase with age. Prices for older ages and shorter fixed dates appear in its calculator, so they are not quoted here. Heymondo and World Nomads publish no price. Read on ${CHECKED}.`,
+    a: `For a typical two-week trip, SafetyWing Essential with fixed dates costs US$31.36 at ages 10–39, US$51.38 at 40–49, US$80.64 at 50–59 and US$109.48 at 60–69; one week at 10–39 is US$15.68. As a 4-week subscription it is US$62.72 at 10–39, rising to US$218.96 at 60–69. Heymondo and World Nomads publish no price. Read off SafetyWing's calculator on ${CALC_CHECKED}.`,
   },
   {
     q: "What is the best travel insurance for Japan?",
@@ -185,7 +192,7 @@ const faqItems = [
 
 const TITLE = "Best Travel Insurance for Japan 2026: Who Needs What, Cost";
 const DESCRIPTION =
-  "Japan travel insurance in 2026: which policy suits your trip, what it costs from US$62.72 per 4 weeks, when you need it, and what ski cover includes.";
+  "Japan travel insurance in 2026: which policy suits your trip, what it costs (two weeks from US$31.36), when you need it, and what ski cover includes.";
 const ROUTE = "/guides/money/best-travel-insurance-japan";
 const PAGE_URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -371,8 +378,8 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>Cost</span>
           <h2 className={styles.sectionTitle}>How Much Is Travel Insurance to Japan?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            SafetyWing Essential costs US$62.72 per 4 weeks at ages 10–39, and SafetyWing says prices increase
-            with age. These are the published prices for each age and length confirmed on its site.
+            A two-week Japan trip on SafetyWing Essential costs US$31.36 at ages 10–39 and US$109.48 at 60–69 with
+            fixed dates paid upfront. The 4-week subscription is US$62.72 at 10–39. Prices rise with age.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -398,9 +405,9 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Conditions: SafetyWing&apos;s published prices, in US dollars, read on {CHECKED}. They exclude add-ons
-            and US cover, and are not a personal quote. Its calculator figures are not listed here, so rows marked
-            &ldquo;Official calculator only&rdquo; have no figure. They are not estimated here.
+            Conditions: SafetyWing&apos;s own pricing calculator, in US dollars, read on {CALC_CHECKED}, Essential plan
+            without add-ons or US cover. Fixed-date prices are for the length shown; other lengths and your exact
+            quote come from SafetyWing&apos;s calculator. Not a personal quote.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <SafetyWingButton label="Get your price from SafetyWing →" className={styles.verdictBtn} />
