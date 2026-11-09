@@ -7423,3 +7423,67 @@ export const sumoTokyoTripPrep: KlookTripPrepItem[] = [
     why: "Ryogoku's subway station is on the Toei Oedo Line, so a 24, 48 or 72-hour Metro and Toei ticket covers the arena trip and the rest of the day.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo 2 day itinerary, added 9 Nov 2026 (task-jtk-20261109-01).
+//
+// No new Klook listing: every product reuses a constant above. On 9 Nov 2026 the
+// www.klook.com search index showed each en-US listing live (the /activity/ pages
+// answer automated reads with HTTP 403): 1552 Tokyo Subway Ticket, 5672 Tokyo Amazing
+// Sightseeing Bus Day Tour, 102521 Shinjuku food join-in walking tour, 70672 SHIBUYA
+// SKY, 25300 teamLab Planets TOKYO and 41352 TOKYO SKYTREE. No price appears on the page.
+// ---------------------------------------------------------------------------
+
+/** Three bases for two nights: the west side, the centre, the east side. */
+export const tokyoTwoDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Shinjuku or Shibuya",
+    why: "Day 1 starts and ends here, and the Fukutoshin Line joins Shibuya, Meiji-jingumae and Shinjuku-sanchome, so the whole west-side day runs on one subway line.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Tokyo Station / Ginza",
+    why: "Halfway between the two days, with the Marunouchi, Ginza and Hibiya lines and direct trains to both airports. The easiest base if you arrive or leave by shinkansen.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Ueno / Asakusa",
+    why: "Day 2 starts at the door, the Ginza Line runs from here to Shibuya for Day 1, and the Keisei Skyliner from Narita ends at Keisei-Ueno.",
+    url: tokyoStayAreas[2].url,
+  },
+];
+
+/** Before-you-go block: the pass, the airport leg, two guided slots, a hotel, data. */
+export const tokyoTwoDayTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.subway,
+    label: "Tokyo Subway Ticket (48 hours)",
+    why: "Both days in this plan are routed on Tokyo Metro and Toei lines, so one 48-hour ticket covers every leg except the JR Yamanote Line.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "Landing at Narita with two days, the Skyliner to Keisei-Ueno puts you on the Day 2 side of the city on arrival.",
+  },
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the Tokyo day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "The east side (the Imperial Palace gardens, Asakusa and Skytree) in one guided loop, if you would rather not route Day 2 yourself.",
+  },
+  {
+    label: shinjukuNightFoodWalkingTour.title,
+    ctaLabel: "Check the Shinjuku food tour →",
+    url: shinjukuNightFoodWalkingTour.url,
+    why: "The Day 1 evening with a guide through Omoide Yokocho, Kabukicho and Golden Gai. Listed at three hours.",
+  },
+  {
+    label: "Hotels around Shinjuku Station",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoTwoDayStayAreas[0].url,
+    why: "Two nights leave no room for a long ride back each evening, so the hotel is the first thing to fix once the dates are set.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The SHIBUYA SKY QR code, the subway route between stations and a long-layover train time all live on your phone.",
+  },
+];

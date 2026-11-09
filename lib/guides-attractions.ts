@@ -533,6 +533,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-2-day-itinerary",
+    badge: "Itinerary",
+    title: "Tokyo 2 Day Itinerary (2026): Day by Day, and What to Book",
+    desc: "The west side on Day 1 and the east side on Day 2, both on one ¥1,500 48-hour subway ticket, with where to stay for two nights, a long-layover version and the three things to book ahead.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-3-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order",
