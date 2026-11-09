@@ -54,8 +54,8 @@ const publisher = {
 /**
  * Organization and WebSite, as one graph. Emitted on every page.
  *
- * `sameAs` is deliberately an empty array: the site has no verified profile anywhere
- * else yet, and listing an unverified one is worse than listing none.
+ * `sameAs` lists the site's own social profiles (X and Pinterest, both opened 2026-11-09;
+ * Pinterest has the domain verified). Keep in step with SOCIAL_LINKS in components/Footer.tsx.
  */
 export function siteJsonLd(): string {
   return JSON.stringify({
@@ -76,7 +76,7 @@ export function siteJsonLd(): string {
         image: `${SITE_URL}/og-image.png`,
         description: SITE_DESCRIPTION,
         email: "info@japan-travel-kit.com",
-        sameAs: [],
+        sameAs: ["https://x.com/jtk_japan", "https://www.pinterest.com/japantravelkitcom/"],
         parentOrganization: {
           "@type": "Organization",
           name: OPERATOR_NAME,
