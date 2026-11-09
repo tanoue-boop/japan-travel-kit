@@ -134,7 +134,7 @@ export default function BookingEsimCard({ lead }: { lead?: string }) {
   const checked = locale !== "en" && checkedAt ? dateLabel(checkedAt, locale) : pricesCheckedLabel();
 
   return (
-    <aside className={styles.card} data-placement={ESIM_PLACEMENT.bookingCard}>
+    <aside className={styles.card} data-placement={ESIM_PLACEMENT.bookingCard} data-cta="booking-esim-card">
       <span className={styles.label}>{lead ? copy.guideEyebrow : copy.eyebrow}</span>
       <p className={styles.cardTitle}>{lead ?? copy.title}</p>
       <p className={styles.cardIntro}>{lead ? copy.guideIntro : copy.intro}</p>

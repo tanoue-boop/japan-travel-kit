@@ -6,6 +6,8 @@ export const pageview = (url: string) => {
 
 export type AffiliateClickParams = {
   partner: string;
+  /** "esim" (any eSIM provider, a Klook eSIM listing, or any link inside BookingEsimCard), "klook" (other Klook) or "other". */
+  product_type: "esim" | "klook" | "other";
   link_url: string;
   page_path: string;
   link_text: string;

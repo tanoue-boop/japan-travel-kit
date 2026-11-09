@@ -8,7 +8,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import LanguageNotice from "../components/LanguageNotice";
 import EsimStickyCta from "../components/EsimStickyCta";
-import { GA_MEASUREMENT_ID, pageview, trackAffiliateClick } from "../lib/gtag";
+import { GA_MEASUREMENT_ID, pageview, trackAffiliateClick, type AffiliateClickParams } from "../lib/gtag";
 
 // アフィリエイト/比較対象ASPの判定表。未承認ASPの素URLも需要把握のため計測対象に含める。
 const AFFILIATE_PARTNERS: { partner: string; hosts: string[] }[] = [
@@ -37,6 +37,21 @@ const resolvePartner = (hostname: string): string | null => {
     if (hosts.some((h) => host.includes(h))) return partner;
   }
   return null;
+};
+
+// eSIM 送客を GA4 だけで数えるための区分。管理画面にログインできない週でも週次の eSIM 送客数を出せるようにする。
+const ESIM_PARTNERS = new Set(["simbye", "airalo", "sakura", "breeze", "holafly", "esimgo"]);
+const ESIM_CARD_SELECTOR = '[data-cta="booking-esim-card"], [data-placement="booking-esim-card"]';
+
+const resolveProductType = (partner: string, url: URL, anchor: Element): AffiliateClickParams["product_type"] => {
+  if (ESIM_PARTNERS.has(partner)) return "esim";
+  if (anchor.closest(ESIM_CARD_SELECTOR)) return "esim";
+  if (partner === "klook") {
+    // Klook のリンクは affiliate.klook.com/redirect?k_site=<商品URL>。商品URL（無ければリンク自体）に esim を含めば eSIM 商品。
+    const product = url.searchParams.get("k_site") ?? url.href;
+    return product.toLowerCase().includes("esim") ? "esim" : "klook";
+  }
+  return "other";
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -72,6 +87,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       trackAffiliateClick({
         partner,
+        product_type: resolveProductType(partner, url, anchor),
         link_url: anchor.href.slice(0, 200),
         page_path: window.location.pathname,
         link_text: (anchor.innerText || anchor.textContent || "").trim().slice(0, 80),
