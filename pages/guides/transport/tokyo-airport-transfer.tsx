@@ -1656,7 +1656,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Airport Limousine Bus (2026): Narita &amp; Haneda Fares, Times and Stops</p>
+                <p className={styles.relatedTitle}>Airport Limousine Bus Tokyo (2026): Narita &amp; Haneda Fares, Times and Stops</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

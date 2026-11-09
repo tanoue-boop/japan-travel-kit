@@ -839,7 +839,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Our <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link> has
             every route from both airports with fares. The Skyliner and the Haneda limousine bus can both be
-            booked before you fly.
+            booked before you fly; the{" "}
+            <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus guide</Link>{" "}
+            has the bus fare and timetable time for each route.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

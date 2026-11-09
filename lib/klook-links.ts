@@ -7603,3 +7603,37 @@ export const zaoSnowMonstersTripPrep: KlookTripPrepItem[] = [
     why: "The ropeway runs or stops on the day's wind, and the tour operator's messages, the ropeway status page and the bus times are all on your phone.",
   },
 ];
+
+/**
+ * "Before you land" block for tokyo-airport-limousine-bus (task-jtk-20261109-03).
+ *
+ * No new Klook id. The two buses are `naritaLimousineBus` (2274) and
+ * `hanedaLimousineBus` (150434), re-confirmed as en-US listings through the
+ * www.klook.com search index on 9 Nov 2026; the subway ticket, the hotel search
+ * (`whereToStayTokyoAreas[0]`, the Shinjuku search on where-to-stay-in-tokyo) and
+ * the eSIM read out of constants declared above.
+ */
+export const limousineBusTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "A seat on a named departure, bought in English before you fly and boarded with a QR code instead of a queue at the arrivals counter.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "The same operator from Haneda's three terminals, for Shinjuku, Tokyo Station or the Disney resort without a change.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The bus gets you to the hotel; after that most of Tokyo is on the Metro and Toei lines, which a 24, 48 or 72-hour ticket covers.",
+  },
+  {
+    label: `Hotels around ${whereToStayTokyoAreas[0].area}`,
+    ctaLabel: "Check Tokyo hotels on Klook →",
+    url: whereToStayTokyoAreas[0].url,
+    why: "The Shinjuku line stops at individual hotels, so a hotel on the route is the one that puts the bus at your door.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Departure times, your stop and the QR code are all on your phone, and data that works at the kerb is the one thing the bus cannot give you.",
+  },
+];

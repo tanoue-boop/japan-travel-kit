@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-09：/guides/transport/tokyo-airport-limousine-bus の冒頭回答・路線別運賃表・Klook 予約ブロック（task-jtk-20261109-03）
+
+- 2026-11-09 title 変更：「Tokyo Airport Limousine Bus (2026): Fares and Times」→「Airport Limousine Bus Tokyo 2026: Narita & Haneda Fares」（H1「Airport Limousine Bus Tokyo (2026): Narita & Haneda Fares, Times and Stops」）。冒頭回答段落・路線別運賃/所要時間表（確認日付き、2026-11-09 limousinebus.co.jp 再確認）・リムジンバス vs N'EX/スカイライナー/京急/モノレール比較表・質問見出し6つ・FAQ 3問追加・KlookTripPrep（成田/羽田リムジンバス・Subway Ticket・新宿ホテル・eSIM）を比較表直後とページ末に＋BookingEsimCard。逆リンク：where-to-stay-in-tokyo、tokyo-2-day-itinerary、tokyo-disney-tickets。関連カード題名を7ページ＋guides-transport・llms.txt で更新。
+
 ## 2026-11-09：/guides/attractions/hakone-day-trip-from-tokyo の順位改善（task-jtk-20261109-R02）
 
 - 2026-11-09 title 変更：「Hakone Day Trip From Tokyo (2026): Freepass vs a Day Tour」→「Hakone Day Trip From Tokyo 2026: Itinerary, Cost, Tours」（H1「Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours」、meta も完全一致）。冒頭回答・時刻入りの行程表・始発/終電とロープウェイ営業時間の表・日帰り費用の合計表（大人 ¥11,500）・質問見出し6つ（冬・JR Pass 含む）・FAQ 3問追加。Freepass の料金表と対象交通一覧は削除し hakone-free-pass への文脈リンクに集約（hakone-free-pass は無変更）。主CTA を箱根日帰りツアー（hakoneLoopBusTour）、次に Freepass、続けて KlookTripPrep（hakoneHotels）＋BookingEsimCard。lib/attraction-prices.ts の hakoneFreepass は確認日 2026-11-09・リンク先を hakone-free-pass に変更。関連カード題名を9ページ＋guides-attractions・llms.txt で更新。

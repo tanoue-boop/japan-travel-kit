@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -10,6 +12,8 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import {
   fujiHakoneDayTour,
   hanedaLimousineBus,
+  limousineBusTripPrep,
+  naritaBusSubwayCombo,
   naritaHanedaLimousineBus,
   naritaLimousineBus,
   tokyoSightseeingBusTour,
@@ -48,6 +52,50 @@ import {
 /** Everything on this page was read off limousinebus.co.jp on this date. */
 const CHECKED_ISO = "2026-10-22";
 const CHECKED = checkedLabel(CHECKED_ISO);
+
+/**
+ * Re-read on 9 Nov 2026 (task-jtk-20261109-03), again from the operator's indexed
+ * line and timetable pages on limousinebus.co.jp: the Narita fares to Shinjuku,
+ * Tokyo Station, Ikebukuro/Mejiro, Ikebukuro (LCB), the Ginza area and the Disney
+ * resort; the Haneda fares to Shinjuku/Nakano, Tokyo Station and the Disney resort;
+ * the Narita → Shinjuku and Narita → Tokyo Station timetable pairs; the access-bus
+ * fare and Terminal 3 departures; the child-fare rule and the end of the youth and
+ * senior discounts. Anything not in that list keeps the 22 Oct date.
+ */
+const RECHECKED_ISO = "2026-11-09";
+const RECHECKED = checkedLabel(RECHECKED_ISO);
+
+/** The train figures come from the sister guides, with the dates they were read there. */
+const TRAIN_CHECKED = checkedLabel("2026-11-03"); // skyliner-vs-nex: keisei.co.jp, jreast.co.jp
+const HANEDA_TRAIN_CHECKED = checkedLabel("2026-10-25"); // tokyo-airport-transfer: Keikyu, Tokyo Monorail
+
+/** Route-by-route summary: the answer to "how much and how long" in one table. */
+const routeRows = [
+  { route: "Narita → Shinjuku Station / Keio Dept. Store", adult: "¥3,600", child: "¥1,800", time: "1 h 45 min (T1 10:35 → 12:20)", checked: RECHECKED },
+  { route: "Narita → Shinjuku Tokyu Kabukicho Tower", adult: "¥3,600", child: "¥1,800", time: "1 h 40 – 1 h 55 min (T1 19:40 → 21:20, 10:20 → 12:15)", checked: RECHECKED },
+  { route: "Narita → Tokyo Station (Yaesu North)", adult: "¥3,100", child: "¥1,550", time: "1 h 40 min (T1 7:25 → 9:05)", checked: RECHECKED },
+  { route: "Narita → Shibuya", adult: "¥3,600", child: "¥1,800", time: "See the line timetable", checked: CHECKED },
+  { route: "Narita → Ikebukuro / Mejiro", adult: "¥3,100–3,600", child: "¥1,550–1,800", time: "See the line timetable", checked: RECHECKED },
+  { route: "Narita → Ikebukuro (LCB line)", adult: "¥2,300", child: "¥1,150", time: "See the line timetable", checked: RECHECKED },
+  { route: "Narita → Ginza / Hibiya area", adult: "¥3,100–3,600", child: "¥1,550–1,800", time: "See the line timetable", checked: RECHECKED },
+  { route: "Narita → Tokyo Disney Resort", adult: "¥2,900", child: "¥1,450", time: "About 1 h 05 min (T3 7:50 → Tokyo Disneyland 8:56)", checked: `Fare ${RECHECKED}; time ${CHECKED}` },
+  { route: "Haneda → Shinjuku / Nakano area", adult: "¥1,400", child: "¥700", time: "40 min (T1 11:35 → Shinjuku Station 12:15)", checked: `Fare ${RECHECKED}; time ${CHECKED}` },
+  { route: "Haneda → Tokyo Station (Yaesu North)", adult: "¥1,200", child: "¥600", time: "See the line timetable", checked: RECHECKED },
+  { route: "Haneda → Shibuya area", adult: "¥1,300", child: "¥650", time: "See the line timetable", checked: CHECKED },
+  { route: "Haneda → Tokyo Disney Resort", adult: "¥1,300", child: "¥650", time: "See the line timetable", checked: RECHECKED },
+  { route: "Haneda late-night access bus → Shinjuku / Ikebukuro", adult: "¥2,800", child: "¥1,400", time: "28 min to Shinjuku west exit (T3 0:20 → 0:48)", checked: `Fare ${RECHECKED}; time ${CHECKED}` },
+];
+
+/** Bus against the airport trains — train figures reused from the sister guides. */
+const compareRows = [
+  { option: "Airport Limousine Bus", leg: "Narita → Shinjuku", time: "1 h 45 min on the timetable", fare: "¥3,600", change: "None — hotel and station stops", checked: `limousinebus.co.jp, ${RECHECKED}` },
+  { option: "Airport Limousine Bus", leg: "Narita → Tokyo Station", time: "1 h 40 min on the timetable", fare: "¥3,100", change: "None", checked: `limousinebus.co.jp, ${RECHECKED}` },
+  { option: "Narita Express (N'EX)", leg: "Narita → Tokyo Station / Shinjuku", time: "From 53 min to Tokyo Station; no single Shinjuku time published", fare: "¥3,140 Tokyo; ¥3,330 Shinjuku", change: "None to its stops", checked: `jreast.co.jp, ${TRAIN_CHECKED}` },
+  { option: "Keisei Skyliner", leg: "Narita T2·3 → Nippori / Ueno", time: "36 min to Nippori, 41 to Ueno", fare: "¥2,580 (¥2,310 online)", change: "JR or subway change for the west side", checked: `keisei.co.jp, ${TRAIN_CHECKED}` },
+  { option: "Airport Limousine Bus", leg: "Haneda → Shinjuku", time: "40 min on the timetable", fare: "¥1,400", change: "None", checked: `limousinebus.co.jp, fare ${RECHECKED}, time ${CHECKED}` },
+  { option: "Keikyu Airport Line", leg: "Haneda T3 → Shinagawa / Shinjuku", time: "11 min to Shinagawa; 30 min to Shinjuku", fare: "¥330 to Shinagawa", change: "One change for Shinjuku", checked: `Keikyu, ${HANEDA_TRAIN_CHECKED}` },
+  { option: "Tokyo Monorail", leg: "Haneda → Hamamatsucho", time: "13 min", fare: "¥520", change: "Change to the Yamanote Line", checked: `Tokyo Monorail, ${HANEDA_TRAIN_CHECKED}` },
+];
 
 const naritaRows = [
   {
@@ -122,8 +170,8 @@ const hanedaRows = [
   {
     route: "Tokyo Station (Yaesu North exit, Tekko Building)",
     adult: "¥1,200",
-    child: "—",
-    note: "The shortest run into the middle of the city",
+    child: "¥600",
+    note: "The shortest run into the middle of the city (child fare read on 9 Nov 2026)",
   },
   {
     route: "Tokyo City Air Terminal (T-CAT / Nihonbashi Hakozaki)",
@@ -134,8 +182,8 @@ const hanedaRows = [
   {
     route: "Late-night / early-morning access bus",
     adult: "¥2,800",
-    child: "—",
-    note: "A separate product from the daytime bus, at exactly double the Shinjuku fare",
+    child: "¥1,400",
+    note: "A separate product from the daytime bus, at exactly double the Shinjuku fare (child fare read on 9 Nov 2026)",
   },
 ];
 
@@ -251,15 +299,27 @@ const faqItems = [
     q: "How do you pay for the limousine bus?",
     a: "At the airport you can buy from a counter or an automatic ticket machine, entering your boarding date and time, destination and number of passengers; cash, credit cards and transport IC cards are all accepted. Online you can register on the operator's Limousine Web and pay by card. A reseller is the third route and the one that solves the two problems travellers actually hit — an English checkout and a foreign card that is accepted — and hands you a QR code instead of a counter visit.",
   },
+  {
+    q: "Is there a limousine bus between Narita and Haneda?",
+    a: `Yes. The Airport Limousine runs a direct Narita Airport ⇔ Haneda Airport line at ¥3,600 for an adult and ¥1,800 for a child, for a trip that lands at one Tokyo airport and leaves from the other (fare read off limousinebus.co.jp on ${CHECKED}). Klook sells the same airport-to-airport coach as a separate listing; check the listing for your date for the price and the cancellation window.`,
+  },
+  {
+    q: "Is there a cheaper bus than the limousine from Narita to Ikebukuro?",
+    a: `On the same operator's site, yes: the Ikebukuro (LCB) line from Narita is ¥2,300 for an adult and ¥1,150 for a child, against ¥3,100–3,600 on the regular Ikebukuro/Mejiro line, whose fare depends on the stop. The LCB line serves fewer stops, so check that it reaches the one you need. Fares read off limousinebus.co.jp on ${RECHECKED}.`,
+  },
+  {
+    q: "Are there youth or senior discounts on the limousine bus?",
+    a: `No longer. The operator's Narita–Shinjuku line page states that youth and senior discounts ended on 30 June 2022. What remains is the child fare — half the adult fare, for children aged 6 to under 12 — and a discounted fare for passengers with a disability certificate. A preschool child held on your lap rides free; one in their own seat needs a child ticket. Read on limousinebus.co.jp on ${RECHECKED}.`,
+  },
 ];
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/transport/tokyo-airport-limousine-bus") },
 });
 
-const TITLE = "Tokyo Airport Limousine Bus (2026): Fares and Times";
+const TITLE = "Airport Limousine Bus Tokyo 2026: Narita & Haneda Fares";
 const DESC =
-  "Tokyo airport limousine bus fares in 2026: ¥3,600 Narita to Shinjuku, ¥2,900 to the Disney resort and ¥1,400 from Haneda — with times and the bag rule.";
+  "Airport Limousine Bus 2026: Narita to Shinjuku ¥3,600 in about 1h45, Haneda to Shinjuku ¥1,400 in about 40 min. Every route, night buses and how to book.";
 
 export default function TokyoAirportLimousineBusPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -349,7 +409,7 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Airport Limousine Bus (2026):<br />Narita &amp; Haneda Fares, Times and Stops
+            Airport Limousine Bus Tokyo (2026):<br />Narita &amp; Haneda Fares, Times and Stops
           </h1>
           <p className={styles.heroSubtitle}>
             The bus that takes your suitcases off you and stops at the hotel door. Every
@@ -375,6 +435,18 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Answer first: the fare and time question, settled in one paragraph. */}
+        <p className={styles.bodyText} style={{ fontSize: "1.05rem" }}>
+          The <strong>Airport Limousine Bus</strong> runs from Narita and Haneda to the main hotels
+          and stations of central Tokyo. <strong>Narita → Shinjuku</strong> takes about{" "}
+          <strong>1 hour 45 minutes</strong> on the timetable and costs <strong>¥3,600</strong> for
+          an adult; <strong>Haneda → Shinjuku</strong> takes about <strong>40 minutes</strong> and
+          costs <strong>¥1,400</strong> (official limousinebus.co.jp: fares and the Narita time
+          checked {RECHECKED}, the Haneda time {CHECKED}). Traffic on the expressway can make
+          either ride longer. Tickets are sold at the airport counters and ticket machines, online
+          on the operator&apos;s reservation site, and in advance on Klook.
+        </p>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -445,6 +517,110 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
             which compares all of them including the Skyliner and the Narita Express.
           </p>
         </section>
+
+        {/* Route-by-route fare and time */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Fares and times</span>
+          <h2 className={styles.sectionTitle}>How Much Is the Limousine Bus from Narita to Shinjuku?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>¥3,600 for an adult and ¥1,800 for a child, one way</strong>, and the timetable
+            books Narita Terminal 1 at 10:35 into Shinjuku Station at 12:20 — 1 hour 45 minutes. The
+            other main routes, from the operator&apos;s own line and timetable pages:
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Route", "Adult", "Child", "Timetable time", "Checked"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {routeRows.map((row) => (
+                    <tr key={row.route}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.route}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.adult}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.child}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.8rem", whiteSpace: "nowrap" }}>{row.checked}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Source: limousinebus.co.jp line and timetable pages. The times are single scheduled
+            departures, which the operator calls estimates for reference only — the same route can
+            run longer in the morning and evening expressway peaks. &quot;See the line timetable&quot;
+            means the official pages checked do not give one representative time for that route.
+            Late-night service is Haneda only: four access buses leave Terminal 3 at 0:20, 1:00, 1:40
+            and 2:20 ({RECHECKED}), and the early buses to the airport leave Ikebukuro east exit at
+            3:35. The official sources checked do not show a late-night limousine from Narita. Going
+            to the parks first? The{" "}
+            <Link href="/guides/attractions/tokyo-disney-tickets">Tokyo Disney tickets guide</Link>{" "}
+            covers the dated park tickets the Disney resort bus drops you next to.
+          </p>
+        </section>
+
+        {/* Bus vs trains */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Bus vs train</span>
+          <h2 className={styles.sectionTitle}>Is the Limousine Bus Better than the Narita Express?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>Only if your bags or your hotel decide it.</strong> The N&apos;EX reaches Tokyo
+            Station in as little as 53 minutes for ¥3,140 against the bus&apos;s 1 hour 40 for
+            ¥3,100, but the bus takes two cases each into the hold and stops at named hotels with no
+            change. Side by side with the airport trains:
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Option", "Route", "Time", "Adult fare", "Change", "Source, checked"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareRows.map((row) => (
+                    <tr key={`${row.option}-${row.leg}`}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.option}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.leg}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.time}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.85rem" }}>{row.fare}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.change}</td>
+                      <td style={{ fontSize: "0.8rem" }}>{row.checked}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            The bus suits you if you have <strong>large luggage</strong> (two pieces of up to 30 kg
+            each go in the hold), if your <strong>hotel is a named stop</strong> on the Shinjuku,
+            Ikebukuro or Ginza routes, or if you want <strong>no change</strong> between the terminal
+            and the door — with a pushchair, children or after a long-haul flight. A train suits you
+            if you travel light and the arrival time matters, because it is not in road traffic. The{" "}
+            <Link href="/guides/transport/skyliner-vs-nex">Skyliner vs N&apos;EX guide</Link> settles
+            which train, and the{" "}
+            <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link>{" "}
+            adds the taxi and the door-to-door options. If you have not booked a room yet,{" "}
+            <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link>{" "}
+            compares the areas the bus serves.
+          </p>
+        </section>
+
+        <KlookTripPrep
+          label="Before you land"
+          heading="What Should You Book Before You Land?"
+          intro="The bus seat, the subway pass for the days after, a hotel on the route and data that works at the kerb. Klook prices change by date, so check the listing for your date."
+          items={limousineBusTripPrep}
+        />
 
         {/* Narita fares */}
         <section className={styles.comparisonSection}>
@@ -532,9 +708,12 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
         {/* Journey time */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Journey time</span>
-          <h2 className={styles.sectionTitle}>How Long Does the Bus Actually Take?</h2>
+          <h2 className={styles.sectionTitle}>How Long Does the Airport Limousine Bus Take?</h2>
           <p className={styles.bodyText}>
-            Long enough that it is worth being specific rather than quoting a range. Three pairs
+            <strong>About 1 hour 40 minutes to 1 hour 55 minutes from Narita to Tokyo Station or
+            Shinjuku, and about 40 minutes from Haneda to Shinjuku</strong>, on the published
+            timetable and before traffic. On {RECHECKED} the Narita Terminal 1 timetable showed 10:35
+            → Shinjuku Station 12:20 and 7:25 → Tokyo Station 9:05. Three pairs
             straight off the operator&apos;s published timetables, read on {CHECKED}:
             Narita Terminal 1 departing 7:25 is booked into Tokyo Station Yaesu North at{" "}
             <strong>9:05 — one hour forty</strong>. Narita Terminal 3 at 7:50 reaches Tokyo
@@ -561,7 +740,7 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
         {/* Who it is for */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Bus or train</span>
-          <h2 className={styles.sectionTitle}>Should You Take the Bus or the Train?</h2>
+          <h2 className={styles.sectionTitle}>Who Should Take the Bus Instead of the Train?</h2>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.desc} className={styles.whoForCard}>
@@ -602,7 +781,13 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
         {/* Booking */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Book the Tokyo Airport Limousine Bus</h2>
+          <h2 className={styles.sectionTitle}>Do You Need to Book the Limousine Bus in Advance?</h2>
+          <p className={styles.bodyText}>
+            <strong>Only on reserved routes, and booking is worth it at peak times.</strong> Some
+            routes are reserved and some are not, and it can differ by direction; reserved seats open
+            one month ahead and can be booked up to five minutes before departure (read on{" "}
+            {RECHECKED}). How to do it:
+          </p>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -627,10 +812,41 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
           </div>
         </section>
 
+        {/* Klook */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Klook</span>
+          <h2 className={styles.sectionTitle}>Can You Buy Limousine Bus Tickets with Klook?</h2>
+          <p className={styles.bodyText}>
+            <strong>Yes — Klook sells the Narita and Haneda limousine buses as separate listings</strong>,
+            plus the direct Narita ⇔ Haneda coach, each delivered as a QR code you show when you
+            board. That is the part that is worth settling before you fly: a seat on a named
+            departure, an English checkout on a foreign card, and no queue at the arrivals counter
+            after a long flight. Klook also lists a Narita bus sold together with either a Tokyo
+            Subway 24-hour ticket or a Hakone Freepass. Prices and the cancellation window are set
+            per listing, so check the listing for your date before you pay.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={naritaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Narita bus on Klook →
+            </KlookLink>
+            <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Haneda bus on Klook →
+            </KlookLink>
+            <KlookLink href={naritaBusSubwayCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Narita bus + subway or Hakone pass →
+            </KlookLink>
+          </div>
+        </section>
+
         {/* Late night */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Late arrivals</span>
-          <h2 className={styles.sectionTitle}>What If You Land After the Trains Stop?</h2>
+          <h2 className={styles.sectionTitle}>Does the Limousine Bus Run at Night?</h2>
+          <p className={styles.bodyText}>
+            <strong>From Haneda, yes — a separate access bus leaves Terminal 3 between 0:20 and 2:20
+            for Shinjuku and Ikebukuro at ¥2,800 (re-read {RECHECKED}).</strong> The official sources
+            checked show no late-night limousine from Narita.
+          </p>
           <p className={styles.bodyText}>
             Haneda has a separate answer for this, and it is cheap enough to be worth planning
             around. The <strong>late-night and early-morning access bus</strong> is its own product at{" "}
@@ -693,6 +909,12 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
             Suica or Pasmo does that the subway ticket does not. Pass prices read off
             limousinebus.co.jp on {CHECKED}.
           </p>
+          <p className={styles.bodyText}>
+            A short stay is where the 48-hour bundle fits best: the{" "}
+            <Link href="/guides/attractions/tokyo-2-day-itinerary">2-day Tokyo itinerary</Link>{" "}
+            routes both days on Metro and Toei lines, so the bus in and a 48-hour ticket cover
+            almost all of it.
+          </p>
         </section>
 
         {/* FAQ */}
@@ -719,6 +941,15 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
           intro="Two Tokyo days booked on the same account as the bus ticket, for a first morning when the jet lag has not worn off and you would rather be driven. Klook prices change by date, so open a listing for the current figure and the pick-up point."
           tours={[tokyoSightseeingBusTour, fujiHakoneDayTour]}
         />
+
+        {/* Booking block again at the end, for readers who skipped straight to the FAQ. */}
+        <KlookTripPrep
+          label="Before you land"
+          heading="Ready to Book? What to Settle Before Your Flight"
+          intro="The airport bus, the subway pass, the hotel and data, in the order you will need them. Klook prices change by date, so check the listing for your date."
+          items={limousineBusTripPrep}
+        />
+        <BookingEsimCard lead="Bus departure times, your stop and the QR code are easiest to check on your phone at the airport." />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

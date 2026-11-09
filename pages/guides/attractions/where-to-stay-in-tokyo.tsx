@@ -492,7 +492,10 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
             Station, Shibuya and Shinjuku without a transfer — &ldquo;as fast as 53 minutes&rdquo; to Tokyo
             Station at ¥3,140, and ¥3,330 to Shibuya or Shinjuku, read on {JR_CHECKED}. Our{" "}
             <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link> compares
-            every route and fare, including what to do after the last train.
+            every route and fare, including what to do after the last train. With heavy cases, a hotel
+            that is a named stop on the{" "}
+            <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus</Link>{" "}
+            routes (Shinjuku, Ikebukuro, Ginza) saves the station transfer altogether.
           </p>
         </section>
 

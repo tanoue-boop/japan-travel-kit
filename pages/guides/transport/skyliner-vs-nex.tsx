@@ -671,7 +671,7 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/transport/tokyo-airport-transfer", title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City" },
-              { href: "/guides/transport/tokyo-airport-limousine-bus", title: "Tokyo Airport Limousine Bus (2026): Narita & Haneda Fares, Times and Stops" },
+              { href: "/guides/transport/tokyo-airport-limousine-bus", title: "Airport Limousine Bus Tokyo (2026): Narita & Haneda Fares, Times and Stops" },
               { href: "/guides/transport/jr-pass-guide", title: "JR Pass Guide 2026: Is It Worth It for Your Japan Trip?" },
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas Compared" },
               { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary (2026): What to Book, in What Order" },

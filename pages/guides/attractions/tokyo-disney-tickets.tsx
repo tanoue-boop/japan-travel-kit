@@ -680,6 +680,12 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           intro="If your date is a weekend or an anniversary date, yes — the resort is 15 to 20 minutes out of Tokyo Station on the JR Keiyo Line, which is a commute to make before the gates open and again after the night parade. Staying at Maihama or one stop out buys back both ends of the day."
           items={tokyoDisneyTripPrep}
         />
+        <p className={styles.bodyText}>
+          Flying straight in? The Airport Limousine Bus runs direct from Narita (¥2,900 adult) and
+          Haneda (¥1,300) to the Disney resort hotels and parks, with your cases in the hold — fares
+          read off limousinebus.co.jp on 9 Nov 2026; routes and timetables are in the{" "}
+          <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus guide</Link>.
+        </p>
 
         {/* Foreign card / Klook explainer */}
         <section className={styles.bodySection}>
@@ -802,7 +808,7 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Airport Limousine Bus (2026): Narita &amp; Haneda Fares, Times and Stops</p>
+                <p className={styles.relatedTitle}>Airport Limousine Bus Tokyo (2026): Narita &amp; Haneda Fares, Times and Stops</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
