@@ -191,8 +191,32 @@ const thCols: FooterCol[] = [
   },
 ];
 
+// Official social profiles (added 2026-11-09). Same list feeds Organization.sameAs in
+// lib/structured-data.ts, so keep the two in step.
+export const SOCIAL_LINKS = [
+  { href: "https://x.com/jtk_japan", label: "X (@jtk_japan)", icon: "x" },
+  { href: "https://www.pinterest.com/japantravelkitcom/", label: "Pinterest", icon: "pinterest" },
+] as const;
+
+function SocialIcon({ name }: { name: "x" | "pinterest" }) {
+  if (name === "x") {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    );
+  }
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+    </svg>
+  );
+}
+
 type Copy = {
   desc: string;
+  /** Heading of the social row — "Follow" / 追蹤 / 关注 / 팔로우 / ติดตาม. */
+  followLabel: string;
   rights: string;
   affiliate: string;
   homeHref: string;
@@ -206,6 +230,7 @@ type Copy = {
 const COPY: Record<Locale, Copy> = {
   en: {
     desc: "Practical, unbiased travel info for foreign visitors to Japan. Prepared before you land.",
+    followLabel: "Follow",
     rights: "All rights reserved.",
     affiliate: "This site contains affiliate links. We may earn a commission at no extra cost to you.",
     homeHref: "/",
@@ -216,6 +241,7 @@ const COPY: Record<Locale, Copy> = {
   },
   "zh-tw": {
     desc: "為外國旅客整理的日本旅遊實用資訊，出發前先看一遍。",
+    followLabel: "追蹤我們",
     rights: "版權所有。",
     affiliate: "本站包含聯盟行銷連結。透過連結預訂，我們可能獲得少許分潤，不影響您支付的價格。",
     homeHref: LOCALE_HOME["zh-tw"],
@@ -225,6 +251,7 @@ const COPY: Record<Locale, Copy> = {
   },
   "zh-cn": {
     desc: "为外国旅客整理的日本旅游实用信息，出发前先看一遍。",
+    followLabel: "关注我们",
     rights: "版权所有。",
     affiliate: "本站包含推广联盟链接。如果你通过这些链接预订，我们可能获得少量推广佣金，你无需支付额外费用。",
     homeHref: LOCALE_HOME["zh-cn"],
@@ -234,6 +261,7 @@ const COPY: Record<Locale, Copy> = {
   },
   ko: {
     desc: "일본을 찾는 외국인 여행자를 위한 실용 정보. 여행 출발 전에 필요한 정보를 미리 확인해 보세요.",
+    followLabel: "팔로우",
     rights: "All rights reserved.",
     affiliate: "이 사이트에는 제휴 링크가 포함됩니다. 링크로 예약하면 저희가 수수료를 받을 수 있으며, 고객님이 지불하는 금액은 달라지지 않습니다.",
     homeHref: LOCALE_HOME.ko,
@@ -243,6 +271,7 @@ const COPY: Record<Locale, Copy> = {
   },
   th: {
     desc: "ข้อมูลเที่ยวญี่ปุ่นที่เป็นประโยชน์สำหรับนักท่องเที่ยวต่างชาติ เพื่อช่วยให้คุณเตรียมตัวก่อนออกเดินทาง",
+    followLabel: "ติดตามเรา",
     rights: "All rights reserved.",
     affiliate: "เว็บไซต์นี้มีลิงก์พันธมิตร หากคุณจองผ่านลิงก์ เราอาจได้รับค่าตอบแทน โดยราคาที่คุณจ่ายไม่เพิ่มขึ้น",
     homeHref: LOCALE_HOME.th,
@@ -303,6 +332,25 @@ export default function Footer() {
               >
                 {LOCALE_NAME[target]}
               </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.langRow}>
+          <p className={styles.langRowLabel}>{copy.followLabel}</p>
+          <div className={styles.langLinks}>
+            {SOCIAL_LINKS.map((sl) => (
+              <a
+                key={sl.href}
+                href={sl.href}
+                target="_blank"
+                rel="me noopener"
+                className={styles.langLink}
+                style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}
+              >
+                <SocialIcon name={sl.icon} />
+                {sl.label}
+              </a>
             ))}
           </div>
         </div>
