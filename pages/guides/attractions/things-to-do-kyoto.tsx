@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import CityGuideIndex from "../../../components/CityGuideIndex";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -194,6 +195,8 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/transport/kyoto-transportation" style={linkStyle}>getting around Kyoto</Link>.
           </p>
         </section>
+
+        <BookingEsimCard lead="Kyoto day planned? Get mobile data before you land." />
 
         {/* Shrines & temples */}
         <section className={styles.bodySection}>

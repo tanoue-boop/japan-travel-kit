@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import CityGuideIndex from "../../../components/CityGuideIndex";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { osakaAmazingPass, kyotoNaraArashiyamaTour } from "../../../lib/klook-links";
@@ -240,6 +241,8 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             is about 90 minutes by shinkansen — a long day, but a single one.
           </p>
         </section>
+
+        <BookingEsimCard lead="Osaka pass booked? Get mobile data before you land." />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

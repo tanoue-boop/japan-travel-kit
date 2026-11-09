@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import {
@@ -695,6 +696,8 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
             </Fragment>
           );
         })}
+
+        <BookingEsimCard lead="Tickets booked? Get mobile data before you land." />
 
         {/* What is not here */}
         <section className={styles.bodySection}>
