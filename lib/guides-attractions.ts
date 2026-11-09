@@ -351,6 +351,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/zao-snow-monsters-tour",
+    badge: "Day trip",
+    title: "Zao Snow Monsters Tour (2026–27): Season, Ropeway and Tours",
+    desc: "Zao's frozen trees stand from December to early March, peaking in February, at the top of the ¥4,400 round-trip ropeway — with the routes from Tokyo and Sendai and a day tour, a night light-up tour and two-day tours compared.",
+    group: "daytrips",
+    // Yamagata: the day is spent at Zao Onsen, same call as the snow monkey tour.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/japan-14-day-itinerary",
     badge: "Itinerary",
     title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day",

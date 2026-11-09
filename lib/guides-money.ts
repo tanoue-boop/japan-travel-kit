@@ -85,10 +85,18 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/japan-travel-budget",
     badge: "Guide",
-    title: "Japan Travel Budget 2026: Trip to Tokyo Japan Cost & How Much Things Cost",
-    desc: "What a trip to Tokyo costs and how much things cost in Japan, built only out of published prices: a ¥178 subway ride, a ¥420 bowl of ramen, official admissions, the three cities' lodging-tax bands, and 3 to 14-day totals.",
+    title: "Japan Travel Budget 2026: Cost per Day, Rail and the JR Pass",
+    desc: "How much things cost in Japan, built only out of published prices: a ¥178 subway ride, a ¥420 bowl of ramen, official admissions, the three cities' lodging-tax bands, what the shinkansen adds, when a JR Pass pays off, and 3 to 14-day totals.",
     group: "planning",
     city: "other",
+  },
+  {
+    href: "/guides/money/tokyo-trip-cost",
+    badge: "Guide",
+    title: "Trip to Tokyo Cost (2026): Per Day, 5-Day and 7-Day Totals",
+    desc: "About ¥19,500–¥21,400 per person per day at the 2025 average for room, food and transport plus one deck, on the Tokyo government's own visitor survey, with saving and top-end tiers, 3, 5 and 7-day totals and the fixed airport and ticket costs.",
+    group: "planning",
+    city: "tokyo",
   },
   {
     href: "/guides/money/best-travel-insurance-japan",

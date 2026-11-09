@@ -7487,3 +7487,119 @@ export const tokyoTwoDayTripPrep: KlookTripPrepItem[] = [
     why: "The SHIBUYA SKY QR code, the subway route between stations and a long-layover train time all live on your phone.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo trip cost, added 9 Nov 2026 (task-jtk-20261109-02).
+//
+// No new Klook listing: every product reuses a constant above (hotel searches from
+// whereToStayTokyoAreas, the Tokyo Subway Ticket, the Skyliner, N'EX, the Haneda
+// limousine bus, the Tokyo sightseeing bus day tour and the eSIM), each already
+// confirmed live in en-US through the www.klook.com search index. No price appears.
+// ---------------------------------------------------------------------------
+
+/** The fixed costs a Tokyo trip pays before the first day starts, in booking order. */
+export const tokyoTripCostPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Tokyo Station / Marunouchi",
+    ctaLabel: "Check Tokyo hotel prices on Klook →",
+    url: whereToStayTokyoAreas[1].url,
+    why: "The room is the largest line in a Tokyo budget and the only one that moves with the date, so price it first, on your own dates.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "A 72-hour ticket is ¥2,000, or ¥667 a day, for every Tokyo Metro and Toei line. It is the cheapest way to fix the transport line in advance.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "Landing at Narita, the airport leg is a fixed cost you can pay before you fly: ¥2,580 one way on Keisei's own fare table.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "From Haneda, the limousine bus to Tokyo Station or Shinjuku is a fixed fare and drops you at the hotel side of the city.",
+  },
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the Tokyo day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "One guided day around the Imperial Palace gardens, Asakusa and Skytree, paid in advance, so one day of the budget is already fixed.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Data is the one line that costs the same at every budget level, and it is cheaper bought before you land than at an airport counter.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Zao snow monsters tour, added 9 Nov 2026 (task-jtk-20261109-02).
+//
+// Klook answers automated reads of /activity/ pages with HTTP 403, so each listing
+// below was confirmed as a live en-US page through the www.klook.com search index on
+// 9 Nov 2026:
+//   178500  [Tohoku One-Day Tour] Ginzan Onsen & Zao Snow Monsters & Special Lunch,
+//           from Sendai. The listing states that if the ropeway is suspended, the plan
+//           changes to a footbath at Zao Onsen and the ¥3,000 ropeway fee is refunded,
+//           and that the Zao Chuo Ropeway is used if the Zao Ropeway cannot be booked.
+//   184587  Zao Snow Monster Trees Illumination Tour from Sendai Station (6 hours,
+//           round-trip transfer, Nightcruiser snow vehicle; no English-speaking guide).
+//   167311  Ginzan Onsen & Zao Snow Monsters & Zao Fox Village 2-Day Tour (stay at an
+//           onsen hotel, breakfast and dinner included).
+//   227766  2-Day Authentic Japan Tour from Tokyo: Ginzan Onsen, Zao Snow Monsters,
+//           Yamadera & Fox Village (operator LION TRAVEL JAPAN).
+//   p60271215-mount-zao  the Mount Zao destination page.
+// Considered and dropped: 128152 and 128385 (Sendai day tours) appeared in the index
+// only as en-SG / en-HK / en-AU / en-IN pages, not en-US; 131427 only without a locale.
+// All tours are the 6.5% band. No price appears on the page.
+// ---------------------------------------------------------------------------
+
+export const zaoGinzanDayTourFromSendai: KlookTour = {
+  title: "Ginzan Onsen & Zao Snow Monsters day tour from Sendai",
+  desc: "A one-day coach tour from Sendai: the Zao Ropeway to the snow monsters, then the old hot-spring street of Ginzan Onsen, with a lunch named in the title",
+  url: klookLink("https://www.klook.com/en-US/activity/178500-ginzan-onsen-zao-ropeway-snow-monsters-day-tour-from-sendai/"),
+};
+
+export const zaoSnowMonsterIlluminationTour: KlookTour = {
+  title: "Zao snow monster illumination tour from Sendai Station",
+  desc: "An evening trip from Sendai Station with the round-trip transfer included, riding the heated Nightcruiser snow vehicle among the lit-up snow monsters. Listed at 6 hours",
+  url: klookLink("https://www.klook.com/en-US/activity/184587-zao-snow-monster-nightcruiser-tour-with-private-transfer-from-sendai/"),
+};
+
+export const zaoGinzanTwoDayOnsenTour: KlookTour = {
+  title: "Ginzan Onsen, Zao Snow Monsters & Fox Village 2-day tour (onsen hotel)",
+  desc: "Two days with a night at an onsen hotel, breakfast and dinner included: the snow monsters, Ginzan Onsen and the Zao Fox Village",
+  url: klookLink("https://www.klook.com/en-US/activity/167311-2d1n-ginzan-onsen-zao-snow-monsters-miyagi-zao-fox-village-tour/"),
+};
+
+export const zaoTwoDayTourFromTokyo: KlookTour = {
+  title: "2-day tour from Tokyo: Ginzan Onsen, Zao Snow Monsters, Yamadera & Fox Village",
+  desc: "A two-day tour departing from Tokyo, adding the Yamadera mountain temple and the Zao Fox Village to the snow monsters and Ginzan Onsen",
+  url: klookLink("https://www.klook.com/en-US/activity/227766-tohoku-2-day-ginzan-onsen-zao-ropeway-tour/"),
+};
+
+/** Klook's Mount Zao destination page: every Zao tour and ticket on one list. */
+export const mountZaoDestinationUrl = klookLink("https://www.klook.com/en-US/destination/p60271215-mount-zao/");
+
+/** Before-you-go block for the Zao page: the tour, the pass for doing it yourself, a Tokyo bed, data. */
+export const zaoSnowMonstersTripPrep: KlookTripPrepItem[] = [
+  {
+    label: zaoTwoDayTourFromTokyo.title,
+    ctaLabel: "Check the 2-day tour from Tokyo →",
+    url: zaoTwoDayTourFromTokyo.url,
+    why: "From Tokyo, a day trip leaves too little time at the ropeway, so the two-day tour with Ginzan Onsen is the version that fits.",
+  },
+  {
+    label: jrEastPass.title,
+    ctaLabel: "Check the JR EAST PASS →",
+    url: jrEastPass.url,
+    why: "Doing it yourself, the Yamagata Shinkansen from Tokyo and the Tohoku Shinkansen to Sendai are both JR East lines.",
+  },
+  {
+    label: "Hotels around Tokyo Station / Marunouchi",
+    ctaLabel: "Check Tokyo Station hotels on Klook →",
+    url: whereToStayTokyoAreas[1].url,
+    why: "Both shinkansen to Yamagata and Sendai leave from Tokyo Station, so the night before an early train is easiest here.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The ropeway runs or stops on the day's wind, and the tour operator's messages, the ropeway status page and the bus times are all on your phone.",
+  },
+];

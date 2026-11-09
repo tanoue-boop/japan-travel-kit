@@ -1307,6 +1307,19 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 9 Nov 2026: the other winter trip north: Zao's snow monsters. */}
+            <Link href="/guides/attractions/zao-snow-monsters-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Zao Snow Monsters Tour (2026–27): Season, Ropeway and Tours</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 7 Nov 2026: the inland day as one coach booking from Sapporo. */}
             <Link href="/guides/attractions/furano-biei-tour" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

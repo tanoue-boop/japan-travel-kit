@@ -555,6 +555,19 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 9 Nov 2026: what the room averages per night, and the rest of the budget. */}
+            <Link href="/guides/money/tokyo-trip-cost" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Trip to Tokyo Cost (2026): Per Day, 5-Day and 7-Day Totals</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 9 Nov 2026: which base suits a two-night stay. */}
             <Link href="/guides/attractions/tokyo-2-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

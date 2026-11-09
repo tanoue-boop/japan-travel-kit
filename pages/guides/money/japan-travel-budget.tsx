@@ -509,9 +509,11 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Japan Travel Budget 2026: Trip to Tokyo Cost, Day by Day";
+// Title, meta, H1 and the opening re-aimed at Japan as a whole on 9 Nov 2026
+// (task-jtk-20261109-02): the Tokyo-only queries now have /guides/money/tokyo-trip-cost.
+const TITLE = "Japan Travel Budget 2026: Cost per Day, Rail and the JR Pass";
 const META =
-  "Japan travel budget 2026: what a trip to Tokyo costs and how much things cost in Japan — official subway, ramen, pass and admission prices, 3 to 14 days.";
+  "Japan travel budget 2026: how much things cost in Japan per day, what the shinkansen adds and when a JR Pass pays off, from official prices, 3 to 14 days.";
 const ROUTE = "/guides/money/japan-travel-budget";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
@@ -599,7 +601,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Japan Travel Budget 2026:<br />Trip to Tokyo Japan Cost &amp; How Much Do Things Cost in Japan
+            Japan Travel Budget 2026:<br />How Much Do Things Cost in Japan, Rail and JR Pass Included
           </h1>
           <p className={styles.heroSubtitle}>
             Every yen figure on this page is a published price — an operator&apos;s own fare, an
@@ -621,7 +623,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              On published prices, a day in Tokyo costs {yen(round10(DAY_SAVE_LOW))}–{yen(round10(DAY_SAVE_HIGH))} before
+              On published prices, a city day in Japan costs {yen(round10(DAY_SAVE_LOW))}–{yen(round10(DAY_SAVE_HIGH))} before
               the room if you eat at the chains and ride the subway on an IC card, about{" "}
               {yen(round10(DAY_MID_LOW))}–{yen(round10(DAY_MID_HIGH))} at a standard level, and{" "}
               {yen(round10(DAY_TREAT_LOW))}–{yen(round10(DAY_TREAT_HIGH))} if one meal a day is a hotel restaurant
@@ -634,10 +636,13 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             lodging tax at all under ¥10,000 per person per night, ¥100 from ¥10,000 to ¥15,000, ¥200 above it.
           </p>
           <p className={styles.bodyText}>
-            Put the two together and <strong>seven nights in Tokyo is roughly {yen(WEEK_MID_LOW)}–{yen(WEEK_MID_HIGH)} all
+            Put the two together and <strong>seven nights is roughly {yen(WEEK_MID_LOW)}–{yen(WEEK_MID_HIGH)} all
             in at the standard tier</strong>, or under about {yen(WEEK_SAVE_CEILING)} if the room stays inside the
             untaxed band — before international flights and before any long-distance rail, which is a separate line
-            rather than a daily one. For a reality check on all of it: the Japan Tourism Agency&apos;s own inbound
+            rather than a daily one: a {yen(tokyoKyoto.fareYen)} shinkansen to Kyoto, and a 7-day JR Pass at{" "}
+            {yen(JR_PASS_7_ONLINE)} that only pays off on a route busier than the Golden Route loop. If you are
+            staying in Tokyo only, our <Link href="/guides/money/tokyo-trip-cost">Tokyo trip cost guide</Link> prices
+            that on the city&apos;s own visitor survey instead. For a reality check on all of it: the Japan Tourism Agency&apos;s own inbound
             consumption survey put travel expenditure at <strong>¥234,000 per visitor</strong> for July–September
             2026 (1st preliminary), across a total of ¥2,207.6 billion. Read on mlit.go.jp, {OWN}.
           </p>
@@ -659,7 +664,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
                 <p className={styles.verdictStatValue}>{yen(round10(DAY_MID_LOW))}–{yen(round10(DAY_MID_HIGH))}</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Tokyo, 7 nights, all in</p>
+                <p className={styles.verdictStatLabel}>7 nights, all in</p>
                 <p className={styles.verdictStatValue}>{yen(WEEK_MID_LOW)}–{yen(WEEK_MID_HIGH)}</p>
               </div>
             </div>
@@ -674,7 +679,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
         {/* Q1 — "trip to tokyo japan cost", with the trip-length totals. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Trip totals</span>
-          <h2 className={styles.sectionTitle}>How much does a trip to Tokyo, Japan cost?</h2>
+          <h2 className={styles.sectionTitle}>How much does a trip to Japan cost?</h2>
           <p className={styles.bodyText}>
             Three nights is {yen(round100(DAY_MID_LOW * 3))}–{yen(round100(DAY_MID_HIGH * 3))} before the room at a
             standard level and seven nights is {yen(round100(DAY_MID_LOW * 7))}–{yen(round100(DAY_MID_HIGH * 7))}, on
