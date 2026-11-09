@@ -389,7 +389,7 @@ const passMath = [
   },
   {
     pass: PRICES.osakaAmazingPass.name,
-    price: `${PRICES.osakaAmazingPass.adult} for one day, ¥3,300 for two`,
+    price: `${PRICES.osakaAmazingPass.adult} for one day, ¥5,000 for two`,
     without: "Osaka Metro and city-bus fares, plus every admission separately",
     verdict: PRICES.osakaAmazingPass.bookingNote,
   },

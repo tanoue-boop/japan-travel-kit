@@ -70,7 +70,8 @@ const CRUISE_CHECKED = checkedLabel("2026-10-23");
 const KAIYUKAN_CHECKED = checkedLabel("2026-10-22");
 
 const PASS_1_DAY = PRICES.osakaAmazingPass.adult;
-const PASS_2_DAY = "¥3,300";
+// Official 2-day price, read 9 Nov 2026 on osaka-amazing-pass.com/en/info.html (was ¥3,300 here, out of date).
+const PASS_2_DAY = "¥5,000";
 const PASS_CHECKED = checkedLabel(PRICES.osakaAmazingPass.checked);
 
 const CASTLE_ADULT = "¥1,200";
@@ -230,10 +231,10 @@ const ticketRows = [
   {
     stop: "Osaka Amazing Pass",
     price: `${PASS_1_DAY} for 1 day, ${PASS_2_DAY} for 2 days`,
-    hours: "Valid on the calendar day, or two consecutive days on the 2-day version",
+    hours: "A pass day runs 3:00 to 2:59 the next morning; the 2-day version is two consecutive days",
     booking: "Not needed",
-    note: "Unlimited Osaka Metro and city buses plus 40-plus free admissions. Not Universal Studios Japan, and not the Kaiyukan",
-    source: `osp.osaka-info.jp/en, ${PASS_CHECKED}`,
+    note: "Unlimited Osaka Metro, city buses and the private railways within the city, plus about 40 free admissions. Not Universal Studios Japan, and not the Kaiyukan",
+    source: `osaka-amazing-pass.com/en, ${PASS_CHECKED}`,
   },
   {
     stop: "Enjoy Eco Card (the transport-only alternative)",
@@ -355,7 +356,7 @@ const faqItems = [
   },
   {
     q: "Is the Osaka Amazing Pass worth it for 2 days?",
-    a: `For this itinerary, on Day 1, yes — and the 2-day version is the one to think twice about. The pass is ${PASS_1_DAY} for one day and ${PASS_2_DAY} for two, read on ${PASS_CHECKED}. Day 1 alone puts the castle tower (${CASTLE_ADULT}), the Nishinomaru Garden (¥300) and the Tombori cruise (${CRUISE_ADULT}) on it, which is ¥3,500 of gate prices against a ${PASS_1_DAY} pass, before a single subway ride. Day 2 is the problem: the Kaiyukan is not an Amazing Pass facility at all, and the Umeda deck is only free before 15:00. If Day 2 is the aquarium, buy a 1-day pass for Day 1 and an ${ECO_CARD_WEEKDAY} Enjoy Eco Card — ${ECO_CARD_WEEKEND} at the weekend — for Day 2, which is transport only and was read off Osaka Metro's own site on ${OWN}.`,
+    a: `For this itinerary, on Day 1, yes — and the 2-day version is the one to think twice about. The pass is ${PASS_1_DAY} for one day and ${PASS_2_DAY} for two, read on ${PASS_CHECKED}. Day 1 alone puts the castle tower (${CASTLE_ADULT}), the Nishinomaru Garden (¥300) and the Tombori cruise (${CRUISE_ADULT}) on it, which is ¥3,500 of gate prices — exactly the ${PASS_1_DAY} pass, so the day's subway rides are what puts it ahead. Day 2 is the problem: the Kaiyukan is not an Amazing Pass facility at all, and the Umeda deck is only free before 15:00. If Day 2 is the aquarium, buy a 1-day pass for Day 1 and an ${ECO_CARD_WEEKDAY} Enjoy Eco Card — ${ECO_CARD_WEEKEND} at the weekend — for Day 2, which is transport only and was read off Osaka Metro's own site on ${OWN}.`,
   },
   {
     q: "Where should I stay in Osaka for 2 days?",
@@ -533,7 +534,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Day 1 admissions</p>
-                <p className={styles.verdictStatValue}>¥3,500, or {PASS_1_DAY} on the pass</p>
+                <p className={styles.verdictStatValue}>¥3,500 — the same as a {PASS_1_DAY} pass</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Must book ahead</p>
@@ -726,7 +727,8 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Prices &amp; hours</span>
           <h2 className={styles.sectionTitle}>What Does an Osaka 2 Day Itinerary Cost in Tickets?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Day 1 is ¥3,500 of admissions for one adult, or nothing beyond a {PASS_1_DAY} pass. Day 2 is the
+            Day 1 is ¥3,500 of admissions for one adult — the same as a {PASS_1_DAY} 1-day pass, which then
+            adds the subway rides for free. Day 2 is the
             expensive day, and the reason is that neither of its two paid stops is fully covered by any
             Osaka pass. Every figure below is the operator&apos;s own published price, with the site it came
             from and the date it was read.
@@ -807,11 +809,13 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>The pass</span>
           <h2 className={styles.sectionTitle}>Is the Osaka Amazing Pass Worth It for 2 Days?</h2>
           <p className={styles.bodyText}>
-            For Day 1, comfortably. For Day 2, usually not — and that asymmetry is the most useful thing on
+            For Day 1, yes, narrowly. For Day 2, usually not — and that asymmetry is the most useful thing on
             this page. The pass is <strong>{PASS_1_DAY} for one day</strong> and{" "}
-            <strong>{PASS_2_DAY} for two</strong>, read on {PASS_CHECKED}. Day 1 puts the castle tower
-            ({CASTLE_ADULT}), the Nishinomaru Garden (¥300) and the Tombori River Cruise ({CRUISE_ADULT}) on
-            it — <strong>¥3,500 of gate prices</strong> — before you count a single Midosuji ride.
+            <strong>{PASS_2_DAY} for two</strong>, read off the official site on {PASS_CHECKED}. Day 1 puts the
+            castle tower ({CASTLE_ADULT}), the Nishinomaru Garden (¥300) and the Tombori River Cruise
+            ({CRUISE_ADULT}) on it — <strong>¥3,500 of gate prices</strong>, exactly the pass price — so the
+            Midosuji rides between them are the saving. Add the Gozabune moat boat (¥1,800) and Day 1 is
+            clearly ahead.
           </p>
           <p className={styles.bodyText}>
             Day 2 breaks it twice. The <strong>Kaiyukan is not an Amazing Pass facility</strong>, which
@@ -830,7 +834,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             exception is a second day that stays inside the pass&apos;s own facility list: the HEP FIVE
             Ferris wheel, Tsutenkaku, the Santa Maria harbour cruise and the Umeda deck before 15:00 are all
             on it, and a day built from those does justify the longer version. Our{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link> runs the
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass price and break-even table</Link> runs the
             break-even across the whole city, and our{" "}
             <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link> compares the
             transport-only options.
@@ -1168,7 +1172,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -147,7 +147,7 @@ const faqItems = [
   },
   {
     q: "Do you need the Osaka Amazing Pass if you stay centrally?",
-    a: `It depends on how many rides your day has in it rather than where you sleep. The pass is ${PRICES.osakaAmazingPass.adult} for one day and ¥3,300 for two, and it bundles unlimited Osaka Metro and city buses with more than 40 free admissions — read on ${PASS_CHECKED}. If your base is Namba or Umeda and you are walking most of the day, an IC card is cheaper; if you are hopping between the castle, the Umeda deck and the bay, the pass wins. Two things it does not cover, and both catch people out: Universal Studios Japan and the Kaiyukan.`,
+    a: `It depends on how many rides your day has in it rather than where you sleep. The pass is ${PRICES.osakaAmazingPass.adult} for one day and ¥5,000 for two, and it bundles unlimited Osaka Metro, city buses and the private railways within the city with about 40 free admissions — read off the official site on ${PASS_CHECKED}. If your base is Namba or Umeda and you are walking most of the day, an IC card is cheaper; if you are hopping between the castle, the Umeda deck and the bay, the pass wins. Two things it does not cover, and both catch people out: Universal Studios Japan and the Kaiyukan.`,
   },
   {
     q: "Is Osaka a good base for the whole Kansai region?",
@@ -706,7 +706,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

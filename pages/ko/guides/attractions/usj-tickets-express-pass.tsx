@@ -859,7 +859,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             { href: "/guides/attractions/where-to-stay-in-osaka", title: "오사카 숙소 추천 지역(2026): 노선과 공항 접근으로 비교(영어)" },
             { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "오사카 해유관 티켓(2026): 가격, 운영 시간, 입장 시간대(영어)" },
             { href: "/guides/attractions/things-to-do-osaka", title: "오사카 가볼 만한 곳(2026): 패스가 이득인 곳과 아닌 곳(영어)" },
-            { href: "/guides/attractions/osaka-attractions-pass", title: "오사카 주유패스(2026): 하루 ¥2,500, 살 만할까(영어)" },
+            { href: "/guides/attractions/osaka-attractions-pass", title: "오사카 주유패스(2026): 하루 ¥3,500, 살 만할까(영어)" },
             { href: "/guides/attractions/kyoto-nara-day-tour-from-osaka", title: "오사카 출발 교토·나라 당일 투어(2026): 어떤 일정을 예약할까(영어)" },
             { href: "/guides/transport/osaka-airport-transfer", title: "오사카 공항 교통 가이드(2026): 간사이·이타미 공항에서 시내로(영어)" },
             { href: "/guides/attractions/osaka-2-day-itinerary", title: "오사카 2일 일정(2026): 날짜별 동선과 예약할 것(영어)" },

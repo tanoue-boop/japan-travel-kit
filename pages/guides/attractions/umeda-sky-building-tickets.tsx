@@ -273,7 +273,7 @@ const faqItems = [
   },
   {
     q: "Is Umeda Sky Building free with the Osaka Amazing Pass?",
-    a: `Only from 9:30 to 15:00, and this is the detail most guides skip. The pass is ${PASS_1_DAY} for one day and the Umeda deck is one of its 40-plus free admissions — but only until 15:00. From 15:00 the pass becomes a 10% discount, so an evening visit still costs about ¥1,800 on top of the pass. The arithmetic that works: a pass day with the Umeda deck before 15:00 (¥2,000) plus Osaka Castle (¥1,200) is ¥3,200 of admissions against a ${PASS_1_DAY} pass, before you count a single subway ride. The arithmetic that does not: buying the pass for a sunset trip up this one building.`,
+    a: `Only from 9:30 to 15:00, and this is the detail most guides skip. The pass is ${PASS_1_DAY} for one day and the Umeda deck is one of its 40-plus free admissions — but only until 15:00. From 15:00 the pass becomes a 10% discount, so an evening visit still costs about ¥1,800 on top of the pass. The arithmetic that works: a pass day with the Umeda deck before 15:00 (¥2,000), Osaka Castle (¥1,200) and the HEP FIVE Ferris wheel (¥1,000) is ¥4,200 of admissions against a ${PASS_1_DAY} pass (official price, checked 9 November 2026), before you count a single subway ride. Two stops alone, at ¥3,200, only clear it once the day's subway rides are added. The arithmetic that does not: buying the pass for a sunset trip up this one building.`,
   },
   {
     q: "Umeda Sky Building or Harukas 300 — which should you pick?",
@@ -838,15 +838,15 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             deck mentions it.
           </p>
           <p className={styles.bodyText}>
-            The arithmetic, with the pass at {PASS_1_DAY} for one day. A morning-and-afternoon pass
-            day that takes in <strong>this deck before 15:00 (¥2,000)</strong> and{" "}
-            <strong>Osaka Castle&apos;s main tower (¥1,200)</strong> is already ¥3,200 of admissions
-            against a {PASS_1_DAY} pass, before a single subway ride is counted — and adding the{" "}
-            <strong>HEP FIVE Ferris wheel (¥1,000)</strong>, five minutes from Umeda, or the{" "}
-            <strong>Nishinomaru Garden (¥300)</strong> next to the castle widens the gap. A pass
-            bought for an evening trip up this one building loses money outright. Our{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link>{" "}
-            has the full inclusion list, the two-day price and the exclusions, and our{" "}
+            The arithmetic, with the pass at {PASS_1_DAY} for one day (official price, checked 9
+            November 2026). <strong>This deck before 15:00 (¥2,000)</strong> and{" "}
+            <strong>Osaka Castle&apos;s main tower (¥1,200)</strong> are ¥3,200 of admissions — just
+            under the pass, so they need the day&apos;s subway rides to come out ahead. Add the{" "}
+            <strong>HEP FIVE Ferris wheel (¥1,000)</strong>, five minutes from Umeda, and it is ¥4,200,
+            clear of the pass before a single ride is counted. A pass bought for an evening trip up
+            this one building loses money outright. Our{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass price and break-even table</Link>{" "}
+            has the full inclusion list, the 2-day price and the exclusions, and our{" "}
             <Link href="/guides/attractions/osaka-castle-tickets">Osaka Castle tickets guide</Link>{" "}
             does the same arithmetic from the castle end, where three paid things sit inside one set
             of walls. Facility conditions read on {CHECKED}.
@@ -924,7 +924,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

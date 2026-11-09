@@ -823,7 +823,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             { href: "/guides/attractions/where-to-stay-in-osaka", title: "大阪住宿区域推荐（2026）：按线路和机场交通比较（英文）" },
             { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "大阪海游馆门票（2026）：票价、开放时间和入场时段（英文）" },
             { href: "/guides/attractions/things-to-do-osaka", title: "大阪必玩清单（2026）：周游卡划算与不划算的地方（英文）" },
-            { href: "/guides/attractions/osaka-attractions-pass", title: "大阪周游卡（2026）：一天 ¥2,500 值得吗？（英文）" },
+            { href: "/guides/attractions/osaka-attractions-pass", title: "大阪周游卡（2026）：一天 ¥3,500 值得吗？（英文）" },
             { href: "/guides/attractions/kyoto-nara-day-tour-from-osaka", title: "大阪出发京都奈良一日游（2026）：该订哪个行程（英文）" },
             { href: "/guides/transport/osaka-airport-transfer", title: "大阪机场交通攻略（2026）：关西机场和伊丹机场到市区（英文）" },
             { href: "/guides/attractions/osaka-2-day-itinerary", title: "大阪两天行程（2026）：每日安排和要预订的项目（英文）" },

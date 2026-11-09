@@ -12,14 +12,15 @@ import { articleJsonLd } from "../../../lib/structured-data";
 // Osaka Amazing Pass prices read off the official site, osp.osaka-info.jp, on 19 Oct 2026.
 // Individual attraction admissions are deliberately absent — most of the included venues
 // price by date, so a fixed figure would be wrong as often as right.
-const CHECKED = "19 October 2026";
+// Osaka Amazing Pass prices: re-read 9 Nov 2026 on osaka-amazing-pass.com/en (¥3,500 / ¥5,000).
+const CHECKED = "9 November 2026";
 
 const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 
 const faqItems = [
   {
     q: "Is the Osaka Amazing Pass worth it?",
-    a: `For a day of city sightseeing, usually yes — Osaka rewards a pass more than most Japanese cities, because its attractions are cheap individually and spread across a subway network you will use heavily. The pass is ¥2,500 for one day and ¥3,300 for two, and it bundles unlimited Osaka Metro and city buses with free admission to more than 40 facilities, including Osaka Castle, the Umeda Sky Building observatory, Tsutenkaku and the river cruises. Three or four of those in a day, plus the transport, clears ¥2,500 comfortably. Prices read off the official site on ${CHECKED}.`,
+    a: `For a day of city sightseeing, usually yes — Osaka rewards a pass more than most Japanese cities, because its attractions are cheap individually and spread across a subway network you will use heavily. The pass is ¥3,500 for one day and ¥5,000 for two, and it bundles unlimited Osaka Metro, city buses and the private railways within the city with free admission to about 40 facilities, including Osaka Castle, the Umeda Sky Building observatory, Tsutenkaku and the Tombori River Cruise. Three paid stops in a day clear it — Osaka Castle (¥1,200), the Umeda deck before 15:00 (¥2,000) and the cruise (¥2,000) come to ¥5,200 — while one or two usually do not. Prices read off the official site on ${CHECKED}.`,
   },
   {
     q: "What does the Osaka Amazing Pass not cover?",
@@ -48,18 +49,18 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
         <title>Things to Do in Osaka (2026): Where the Pass Pays</title>
         <meta
           name="description"
-          content="Things to do in Osaka in 2026: the ¥2,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan."
+          content="Things to do in Osaka in 2026: the ¥3,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-osaka" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Things to Do in Osaka (2026): Where the Pass Pays" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/things-to-do-osaka" />
-        <meta property="og:description" content="Things to do in Osaka in 2026: the ¥2,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan." />
+        <meta property="og:description" content="Things to do in Osaka in 2026: the ¥3,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Things to Do in Osaka (2026): Where the Pass Pays" />
-        <meta name="twitter:description" content="Things to do in Osaka in 2026: the ¥2,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan." />
+        <meta name="twitter:description" content="Things to do in Osaka in 2026: the ¥3,500-a-day Amazing Pass covers Osaka Castle, the Umeda Sky deck and the river cruise — but not USJ or the Kaiyukan." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -160,9 +161,9 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             Osaka is unusual among Japanese cities in that a sightseeing pass genuinely pays. Its attractions
             are individually cheap, there are a lot of them, and they are scattered across a subway network
-            you will ride all day — which is exactly the shape the Osaka Amazing Pass is built for. At ¥2,500
-            for one day it covers the transport plus free entry to more than 40 facilities, and three or four
-            stops gets you there. Prices checked {CHECKED}.
+            you will ride all day — which is exactly the shape the Osaka Amazing Pass is built for. At ¥3,500
+            for one day (¥5,000 for two) it covers the transport plus free entry to about 40 facilities, and
+            three paid stops gets you there. Prices checked {CHECKED} on the official site.
           </p>
           <p className={styles.bodyText}>
             The exception is the reason most people come. Universal Studios Japan is not on the pass, and
@@ -221,8 +222,8 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           <h2 className={styles.sectionTitle}>The Pass, and Three Days Out</h2>
           <p className={styles.bodyText}>
             Our{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>Osaka Amazing Pass guide</Link>{" "}
-            works through the ¥2,500 and ¥3,300 prices against what the 40-plus inclusions are individually
+            <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>Osaka Amazing Pass price and break-even guide</Link>{" "}
+            works through the ¥3,500 and ¥5,000 prices against what the inclusions are individually
             worth, and lists the exclusions in full. If the pass does not suit your days, our{" "}
             <Link href="/guides/transport/osaka-metro-pass" style={linkStyle}>Osaka Metro pass guide</Link>{" "}
             covers the transport-only options and{" "}
@@ -502,7 +503,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

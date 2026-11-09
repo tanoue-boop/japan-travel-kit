@@ -631,8 +631,8 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             而不是 19:20 才到，然后发现下一班可免费乘坐的船是 21:00。
           </p>
           <p className={styles.bodyText}>
-            算下来很划算。一日卡 {PASS_1_DAY}，游船（¥2,000）加上大阪城天守阁（¥1,200）就是 ¥3,200 的
-            门票，这还没算任何一趟地铁；15:00 之前的梅田观景台再加 ¥2,000。完整的免费设施清单、
+            要去第三个设施才划算。一日卡 {PASS_1_DAY}（官方价格，2026 年 11 月 9 日核查），游船（¥2,000）加上大阪城天守阁（¥1,200）是 ¥3,200 的
+            门票，略低于通票价格；再加上 15:00 之前的梅田观景台就是 ¥5,200。完整的免费设施清单、
             两日卡价格与不含项目，请见我们的{" "}
             <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>大阪周游卡攻略（英文）</Link>；
             在大阪游玩一天，哪些项目包含在通票中、哪些不包含，请见{" "}
@@ -661,7 +661,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           items={[
             { href: "/guides/attractions/osaka-food-tour", title: "大阪美食之旅（2026）：该订哪一个、时间与吃什么（英文）" },
             { href: "/guides/attractions/osaka-2-day-itinerary", title: "大阪两日游行程（2026）：每日安排与该订什么（英文）" },
-            { href: "/guides/attractions/osaka-attractions-pass", title: "大阪周游卡（2026）：一日 ¥2,500 值得买吗？（英文）" },
+            { href: "/guides/attractions/osaka-attractions-pass", title: "大阪周游卡（2026）：一日 ¥3,500 值得买吗？（英文）" },
             { href: "/guides/attractions/things-to-do-osaka", title: "大阪景点（2026）：通票划算与不划算的地方（英文）" },
             { href: "/guides/attractions/umeda-sky-building-tickets", title: "梅田蓝天大厦门票（2026）：票价、开放时间与最佳时段（英文）" },
             { href: "/guides/attractions/osaka-castle-tickets", title: "大阪城门票（2026）：票价、开放时间与通票涵盖范围（英文）" },

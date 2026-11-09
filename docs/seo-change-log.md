@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-09：/guides/attractions/osaka-attractions-pass の順位改善と Osaka Amazing Pass 旧価格の一掃（task-jtk-20261109-R01）
+
+- 2026-11-09 title 変更：「Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?」→「Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?」。料金を公式現行値（1日 ¥3,500／2日 ¥5,000、伊丹版 ¥3,800／¥5,400、関空28時間券 ¥5,300、osaka-amazing-pass.com 2026-11-09 確認）に修正し、lib/attraction-prices.ts の osakaAmazingPass を更新。冒頭回答・料金表・元が取れる表（5パターン）・1日/2日/Enjoy Eco/ICOCA 比較表・対象施設の通常料金表・空港版・有効化時刻・買い方・対象外施設・FAQ 3問追加・KlookTripPrep（フードツアー・京都奈良ツアー・難波ホテル・ラピート・はるか）＋BookingEsimCard。旧価格（¥2,500／¥3,300）を直したページ：osaka-castle-tickets、umeda-sky-building-tickets、dotonbori-river-cruise（en・ko・zh-tw・zh-cn・th）、things-to-do-osaka、osaka-2-day-itinerary、osaka-kyoto-3-day-itinerary、japan-attraction-ticket-prices、where-to-stay-in-osaka、japan-travel-budget、ic-cards-japan、japan-10-day/14-day、tokyo-kyoto-osaka-7-day、tokyo-to-osaka-shinkansen、関連カード題名（14ページ＋翻訳 usj 4本）。
+
 ## 2026-11-08：/guides/transport/haruka-vs-nankai-rapit の現行運賃・比較表・予約ブロック（task-jtk-20261108-03）
 
 - 2026-11-08 title 変更：「Haruka vs Nankai Rapi:t 2026: Which from Kansai Airport?」→「Haruka vs Nankai Rapit 2026: Price, Time, Which to Take」（H1・meta も「Haruka vs Nankai Rapit」完全一致）。旧数値（Rapi:t ¥1,880・約40分、はるか ¥3,060・¥3,640・新大阪60分）を公式現行値（Rapi:t Digital Ticket ¥1,410／最短34分、HARUKA One-way ¥1,600／¥1,900／¥2,700、天王寺30・大阪45・新大阪50・京都75分）に置換。冒頭回答段落・行き先別比較表（確認日付き）・質問見出し5つ・FAQ 8問・KlookTripPrep（はるか・ラピート・関西エリアパス・難波/梅田/京都駅ホテル・eSIM）＋BookingEsimCard。本文リンク：kansai-area-pass、osaka-metro-pass、where-to-stay-in-osaka、where-to-stay-in-kyoto、osaka-kyoto-3-day-itinerary。逆リンク：osaka-metro-pass、where-to-stay-in-kyoto。

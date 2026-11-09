@@ -772,7 +772,7 @@ const days: Day[] = [
     book: (
       <>
         The pass if this is a city day, the park ticket if it is not. The Osaka Amazing Pass is{" "}
-        {PRICES.osakaAmazingPass.adult} for one day and ¥3,300 for two, and it bundles unlimited
+        {PRICES.osakaAmazingPass.adult} for one day and ¥5,000 for two, and it bundles unlimited
         Osaka Metro and city buses with more than 40 free admissions — a genuinely different
         proposition from a Tokyo subway ticket, and our{" "}
         <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link> works
@@ -1102,7 +1102,7 @@ const budgetRows = [
   },
   {
     item: "Osaka Amazing Pass",
-    price: `${PRICES.osakaAmazingPass.adult} for 1 day (2-day ¥3,300)`,
+    price: `${PRICES.osakaAmazingPass.adult} for 1 day (2-day ¥5,000)`,
     used: "Day 9. Unlimited Osaka Metro and city buses plus 40-plus admissions; not USJ and not the Kaiyukan.",
     source: PRICES.osakaAmazingPass.source,
     checked: PRICES.osakaAmazingPass.checked,

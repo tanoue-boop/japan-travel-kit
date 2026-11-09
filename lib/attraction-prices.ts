@@ -266,18 +266,22 @@ export const PRICES = {
   },
   osakaAmazingPass: {
     name: "Osaka Amazing Pass",
-    ticket: "1-day pass (2-day ¥3,300)",
+    ticket: "1-day pass (2-day ¥5,000)",
     href: "/guides/attractions/osaka-attractions-pass",
     city: "osaka",
     group: "passes",
-    adult: "¥2,500",
+    // Corrected 9 Nov 2026 from osaka-amazing-pass.com/en/info.html and howto_about_1day.html.
+    // The ¥2,500 / ¥3,300 carried here since 19 Oct was out of date: the 2026 edition
+    // (on sale 25 Mar 2026 – 31 Mar 2027) is ¥3,500 / ¥5,000, the same as the 2025 edition.
+    // One price for all ages: no child pass is sold (official FAQ).
+    adult: "¥3,500",
     child: null,
     childAges: null,
     booking: "Not needed",
     bookingNote:
-      "Unlimited Osaka Metro and city buses plus 40-plus free admissions. Universal Studios Japan and Kaiyukan are not on it.",
-    source: "osp.osaka-info.jp/en",
-    checked: "2026-10-19",
+      "Unlimited Osaka Metro, city buses and the private railways within the city, plus about 40 free admissions. Universal Studios Japan and Kaiyukan are not on it.",
+    source: "osaka-amazing-pass.com/en",
+    checked: "2026-11-09",
     klook: klook("Klook: Osaka Amazing Pass (1-day / 2-day)", osakaAmazingPassUrl),
   },
   hakoneFreepass: {

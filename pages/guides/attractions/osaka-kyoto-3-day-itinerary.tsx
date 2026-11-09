@@ -80,8 +80,9 @@ import { gygOsaka, gygUsj, gygUsjExpressPass } from "../../../lib/gyg-links";
  *     (22–27 Oct)                17:30; the Kuchu Teien Observatory ¥2,000 and
  *                                9:30–22:30 with last admission 22:00; the
  *                                Tombori River Cruise ¥2,000; Kaiyukan ¥2,700 to
- *                                ¥3,200 by date; the Osaka Amazing Pass ¥2,500
- *                                for one day and ¥3,300 for two; the Enjoy Eco
+ *                                ¥3,200 by date; the Osaka Amazing Pass ¥3,500
+ *                                for one day and ¥5,000 for two (official site,
+ *                                re-read 9 Nov 2026); the Enjoy Eco
  *                                Card ¥820 weekday and ¥620 weekend.
  *   our Kyoto guides (26–29 Oct) Kiyomizu-dera ¥500 and open from 6:00; Nijo
  *                                Castle ¥1,300 with the Ninomaru-goten Palace;
@@ -106,7 +107,7 @@ const USJ_ACCESS_CHECKED = checkedLabel("2026-10-26");
 const OSAKA_TICKETS_CHECKED = checkedLabel("2026-10-27");
 const CASTLE_CHECKED = checkedLabel("2026-10-23");
 const KAIYUKAN_CHECKED = checkedLabel("2026-10-22");
-const PASS_CHECKED = checkedLabel("2026-10-19");
+const PASS_CHECKED = checkedLabel("2026-11-09");
 const KYOTO_CITY_CHECKED = checkedLabel("2026-10-26");
 
 const CASTLE_ADULT = "¥1,200";
@@ -114,8 +115,9 @@ const UMEDA_ADULT = "¥2,000";
 const CRUISE_ADULT = "¥2,000";
 const KIYOMIZU_ADULT = "¥500";
 const NIJO_ADULT = "¥1,300";
-const OSAKA_PASS_1_DAY = "¥2,500";
-const OSAKA_PASS_2_DAY = "¥3,300";
+// Corrected 9 Nov 2026 off osaka-amazing-pass.com/en/info.html (was ¥2,500 / ¥3,300, out of date).
+const OSAKA_PASS_1_DAY = "¥3,500";
+const OSAKA_PASS_2_DAY = "¥5,000";
 const KANSAI_PASS_3_DAY = "¥5,500";
 const KYOTO_PASS_ADULT = "¥1,100";
 const KYOTO_BUS_FARE = "¥230";
@@ -286,10 +288,10 @@ const ticketRows = [
   {
     stop: "Osaka Amazing Pass (Day 1)",
     price: `${OSAKA_PASS_1_DAY} for one day, ${OSAKA_PASS_2_DAY} for two`,
-    hours: "One or two calendar days",
+    hours: "A pass day runs 3:00 to 2:59 the next morning; the 2-day version is two consecutive days",
     booking: "Not needed",
-    note: "Day 1 alone is about ¥5,200 of admissions plus metro rides, so the one-day pass pays on that day and does nothing on the Kyoto day — it covers no JR at all. The Umeda deck is free on it only before 15:00",
-    source: `our Osaka Amazing Pass guide, ${PASS_CHECKED}`,
+    note: "Day 1 alone is about ¥5,200 of admissions plus metro rides, so the one-day pass pays on that day and does nothing on the Kyoto day — JR is not on its list of lines. The Umeda deck is free on it only before 15:00",
+    source: `osaka-amazing-pass.com/en, ${PASS_CHECKED}`,
   },
   {
     stop: "Fushimi Inari Taisha (Day 2)",
@@ -444,7 +446,7 @@ const passRows = [
   {
     item: "Osaka Amazing Pass, 1 day",
     price: `${OSAKA_PASS_1_DAY}`,
-    covers: "Osaka Metro and city buses plus admission to more than 40 facilities, including the castle, the Umeda deck and the Tombori cruise",
+    covers: "Osaka Metro, city buses and the private railways within Osaka city, plus about 40 free admissions, including the castle, the Umeda deck and the Tombori cruise",
     verdict: "A different product, not a competitor: buy it for Day 1 and nothing else. It touches no JR and so is useless on the Kyoto day",
   },
 ];
@@ -1428,7 +1430,7 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

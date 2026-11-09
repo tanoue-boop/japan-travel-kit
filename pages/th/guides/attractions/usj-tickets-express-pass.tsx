@@ -858,7 +858,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             { href: "/guides/attractions/where-to-stay-in-osaka", title: "พักที่ไหนในโอซาก้า (2026): ย่านที่ดีที่สุด เทียบตามสายรถไฟและสนามบิน (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "ตั๋วพิพิธภัณฑ์สัตว์น้ำไคยูคังโอซาก้า (2026): ราคา เวลาเปิด และรอบเข้าชม (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/things-to-do-osaka", title: "เที่ยวโอซาก้าทำอะไรดี (2026): ที่ไหนพาสคุ้ม ที่ไหนไม่คุ้ม (ภาษาอังกฤษ)" },
-            { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass (2026): วันละ ¥2,500 คุ้มไหม (ภาษาอังกฤษ)" },
+            { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass (2026): วันละ ¥3,500 คุ้มไหม (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/kyoto-nara-day-tour-from-osaka", title: "ทัวร์วันเดียวเกียวโตและนาราจากโอซาก้า (2026): ควรจองแผนไหน (ภาษาอังกฤษ)" },
             { href: "/guides/transport/osaka-airport-transfer", title: "ไกด์เดินทางจากสนามบินโอซาก้า (2026): KIX และ ITM เข้าเมือง (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/osaka-2-day-itinerary", title: "แผนเที่ยวโอซาก้า 2 วัน (2026): วันต่อวัน และสิ่งที่ควรจอง (ภาษาอังกฤษ)" },

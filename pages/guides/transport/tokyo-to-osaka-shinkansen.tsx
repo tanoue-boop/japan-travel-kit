@@ -747,9 +747,12 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           <p className={styles.bodyText}>
             Change to the Midosuji Line at Shin-Osaka, which runs through Umeda to Namba and Tennoji. The
             shinkansen does not reach Osaka Station, so this last leg is part of every trip. If you arrive by
-            lunchtime, an Osaka Amazing Pass at {PRICES.osakaAmazingPass.adult} for one day covers the subway
-            and the sights that afternoon (operator price, read{" "}
-            {checkedLabel(PRICES.osakaAmazingPass.checked)}). Our{" "}
+            mid-morning, an Osaka Amazing Pass at {PRICES.osakaAmazingPass.adult} for one day covers the subway
+            and the sights that day (operator price, read{" "}
+            {checkedLabel(PRICES.osakaAmazingPass.checked)}); arriving later, it rarely pays, because the
+            Umeda Sky Building is free on it only until 15:00. The{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass break-even table</Link>{" "}
+            has the sums. Our{" "}
             <Link href="/guides/attractions/osaka-2-day-itinerary">Osaka 2-day itinerary</Link> plans what
             follows, and <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>{" "}
             compares the neighbourhoods in full.

@@ -634,8 +634,9 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
             무료 배가 21:00이라는 걸 알게 되는 것보다 낫습니다.
           </p>
           <p className={styles.bodyText}>
-            계산은 넉넉합니다. 1일권이 {PASS_1_DAY}이고, 크루즈(¥2,000)에 오사카성 천수각(¥1,200)을 더하면
-            지하철을 한 번도 세기 전에 입장료만 ¥3,200이며, 15:00 전의 우메다 전망대가 ¥2,000을 더 얹습니다.
+            세 번째 시설이 있어야 남습니다. 1일권은 {PASS_1_DAY}(공식 가격, 2026년 11월 9일 확인)이고, 크루즈(¥2,000)에
+            오사카성 천수각(¥1,200)을 더한 입장료 ¥3,200은 패스 가격에 조금 못 미칩니다. 15:00 전의 우메다 전망대를
+            더하면 ¥5,200이 됩니다.
             포함 시설 전체 목록, 2일권 가격, 제외 항목은{" "}
             <Link href="/guides/attractions/osaka-attractions-pass">오사카 주유패스 가이드(영어)</Link>에,
             오사카에서의 하루 중 패스가 내 주는 부분과 그렇지 않은 부분은{" "}
@@ -664,7 +665,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
           items={[
             { href: "/guides/attractions/osaka-food-tour", title: "오사카 음식 투어(2026): 어떤 투어를 예약할까, 시간과 메뉴(영어)" },
             { href: "/guides/attractions/osaka-2-day-itinerary", title: "오사카 2일 일정(2026): 날짜별 동선과 예약할 것(영어)" },
-            { href: "/guides/attractions/osaka-attractions-pass", title: "오사카 주유패스(2026): 1일 ¥2,500, 본전을 뽑을까(영어)" },
+            { href: "/guides/attractions/osaka-attractions-pass", title: "오사카 주유패스(2026): 1일 ¥3,500, 본전을 뽑을까(영어)" },
             { href: "/guides/attractions/things-to-do-osaka", title: "오사카에서 할 일(2026): 패스가 이득인 곳과 아닌 곳(영어)" },
             { href: "/guides/attractions/umeda-sky-building-tickets", title: "우메다 스카이빌딩 티켓(2026): 요금, 운영 시간, 추천 시간대(영어)" },
             { href: "/guides/attractions/osaka-castle-tickets", title: "오사카성 티켓(2026): 요금, 운영 시간, 패스 적용 범위(영어)" },

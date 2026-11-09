@@ -179,7 +179,7 @@ const whoFor = [
   },
   {
     title: "Buy the pass if…",
-    desc: `You are doing more than the keep. The five paid facilities inside Osaka Castle Park add up to ¥5,200 at the gate for one adult — and all five are free on the Osaka Amazing Pass at ${PASS_1_DAY} a day, with the subway thrown in. Two of them clear the pass price on their own. Facility list read on ${CHECKED}.`,
+    desc: `You are doing more than the keep. The five paid facilities inside Osaka Castle Park add up to ¥5,200 at the gate for one adult — and all five are free on the Osaka Amazing Pass at ${PASS_1_DAY} a day, with the subway thrown in. The keep, the boat and the figure museum (¥4,000) clear the pass price on their own. Facility list read on ${CHECKED}; pass price checked 9 November 2026.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 6h16v5a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z" />
@@ -195,8 +195,8 @@ const steps = [
     desc: `The main tower is ¥1,200, and that is where most people stop reading. Inside the same walls there are four more paid facilities — the Nishinomaru Garden, the Gozabune boat, the Yagura turrets and the KAIYODO Figure Museum at Miraiza — totalling ¥5,200 for one adult. Whether you want two of those or all five is the decision that sets your ticket, not the keep. Read on ${CHECKED}.`,
   },
   {
-    title: "If it is two or more, the pass wins outright",
-    desc: `All five are free admissions on the Osaka Amazing Pass, which is ${PASS_1_DAY} for a day. The keep plus the boat is ¥3,000 at the gate; the keep plus the garden plus the boat is ¥3,300. Either clears the pass price inside one set of walls, with unlimited Osaka Metro and city buses left over for the rest of the day.`,
+    title: "If it is three or more, the pass wins",
+    desc: `All five are free admissions on the Osaka Amazing Pass, which is ${PASS_1_DAY} for a day (official price, checked 9 November 2026). The keep plus the boat is ¥3,000 at the gate and the keep plus the garden plus the boat is ¥3,300 — both just under the pass, so they only come out ahead once you add the subway rides of the day. The keep, the boat and the KAIYODO Figure Museum are ¥4,000, which clears it inside one set of walls.`,
   },
   {
     title: "If it is just the keep, buy the single ticket ahead",
@@ -235,7 +235,7 @@ const faqItems = [
   },
   {
     q: "Is the Osaka Amazing Pass worth it just for Osaka Castle?",
-    a: `For two facilities, yes — and that is a low bar. The keep (¥1,200) plus the Gozabune boat (¥1,800) is ¥3,000 at the gate against a ${PASS_1_DAY} pass; the keep plus the garden plus the boat is ¥3,300. Either way you are ahead before a single train, and the pass also carries unlimited Osaka Metro and city buses on the day. For the keep alone it loses: ¥1,200 against ${PASS_1_DAY} only comes back if you ride enough subway to cover the gap, which a single castle trip will not. Our Osaka Amazing Pass guide works the same arithmetic across the whole city.`,
+    a: `Only if you do three of the paid facilities, or two plus a full day of subway. The pass is ${PASS_1_DAY} (official price, checked 9 November 2026). The keep (¥1,200) plus the Gozabune boat (¥1,800) is ¥3,000 at the gate, and adding the garden makes ¥3,300 — both short of the pass until you count the Osaka Metro rides it also covers. The keep, the boat and the KAIYODO Figure Museum (¥1,000) come to ¥4,000, which clears it outright. For the keep alone it loses. Our Osaka Amazing Pass guide works the same arithmetic across the whole city.`,
   },
   {
     q: "How do you get to Osaka Castle?",
@@ -578,19 +578,22 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>The pass question</span>
           <h2 className={styles.sectionTitle}>Does the Osaka Amazing Pass Pay for Itself at the Castle?</h2>
           <p className={styles.bodyText}>
-            <strong>On two facilities, yes.</strong> The pass operator&apos;s list covers all five
+            <strong>On three facilities, yes.</strong> The pass operator&apos;s list covers all five
             paid places inside Osaka Castle Park — the museum, the Nishinomaru Garden, the Yagura
             turrets, the KAIYODO Figure Museum and the Gozabune boat. That is <strong>¥5,200</strong>{" "}
             of gate prices for one adult against a <strong>{PASS_1_DAY}</strong> one-day pass, and
             unlike the Umeda Sky Building there is no time-of-day cut-off on any of them.
           </p>
           <p className={styles.bodyText}>
-            The arithmetic is short. The keep plus the Gozabune is <strong>¥3,000</strong>. The keep
-            plus the garden plus the boat is <strong>¥3,300</strong>. Either clears a {PASS_1_DAY}{" "}
-            pass without leaving the castle grounds, with unlimited Osaka Metro and city buses left
-            over for the rest of the day. For the keep alone the pass loses — ¥1,200 against{" "}
-            {PASS_1_DAY} needs a lot of subway to make up — so the honest rule is: one facility, buy
-            the ticket; two or more, buy the pass.
+            The arithmetic is short. The pass is {PASS_1_DAY} for one day (official price, checked
+            9 November 2026). The keep plus the Gozabune is <strong>¥3,000</strong> and the keep plus
+            the garden plus the boat is <strong>¥3,300</strong> — both just under the pass, so they
+            only win once the day&apos;s subway rides are counted. The keep, the boat and the KAIYODO
+            Figure Museum are <strong>¥4,000</strong>, which clears it without leaving the castle
+            grounds. For the keep alone the pass loses, so the rule is: one facility, buy the ticket;
+            three or more, buy the pass. Our{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass price and break-even table</Link>{" "}
+            runs the same sums for whole-city days.
           </p>
           <p className={styles.bodyText}>
             The one trap worth knowing before you build a pass day around the castle is on the other
@@ -754,7 +757,7 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

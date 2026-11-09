@@ -725,7 +725,7 @@ const legs: Leg[] = [
         intro:
           "A short hop and then a day that a single pass covers almost entirely. The Osaka Amazing Pass is " +
           PRICES.osakaAmazingPass.adult +
-          " for one day and ¥3,300 for two on the figures checked, and it bundles unlimited Osaka Metro and city buses with more than 40 free admissions — which is a genuinely different proposition from a Tokyo subway ticket.",
+          " for one day and ¥5,000 for two on the figures checked, and it bundles unlimited Osaka Metro and city buses with more than 40 free admissions — which is a genuinely different proposition from a Tokyo subway ticket.",
         stops: [
           {
             time: "Morning",
@@ -988,7 +988,7 @@ const budgetRows = [
   },
   {
     item: "Osaka Amazing Pass",
-    price: `${PRICES.osakaAmazingPass.adult} for 1 day (2-day ¥3,300)`,
+    price: `${PRICES.osakaAmazingPass.adult} for 1 day (2-day ¥5,000)`,
     used: "Day 11. Unlimited Osaka Metro and city buses plus 40-plus admissions; not USJ or Kaiyukan.",
     source: PRICES.osakaAmazingPass.source,
     checked: PRICES.osakaAmazingPass.checked,

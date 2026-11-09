@@ -2619,6 +2619,41 @@ export const osakaMetroPassTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * Osaka Amazing Pass, added 9 Nov 2026 — what the same Osaka trip still needs booking
+ * once the pass day is planned. No new URLs: the food tour, the Kyoto and Nara day tour
+ * and the Namba hotel search (6.5%), and the two airport trains (5%). The eSIM sits
+ * below this block as the page's BookingEsimCard.
+ */
+export const osakaAmazingPassTripPrep: KlookTripPrepItem[] = [
+  {
+    label: dotonboriDaytimeFoodTour.title,
+    why: "Listed at 11:00 to 14:00 in Dotonbori, a short walk from the Tombori River Cruise pier, so it fits between the castle morning and the boat.",
+    ctaLabel: "Check the food tour →",
+    url: dotonboriDaytimeFoodTour.url,
+  },
+  {
+    label: kyotoNaraArashiyamaTour.title,
+    why: "The pass stops at the edge of Osaka city, so the Kyoto and Nara day is a separate booking — this one departs from Osaka.",
+    ctaLabel: "Check the Kyoto & Nara tour →",
+    url: kyotoNaraArashiyamaTour.url,
+  },
+  {
+    label: "Hotels in Namba",
+    why: "On the Midosuji Line, on foot from Dotonbori, and the Nankai terminus for Kansai Airport — so a pass day can start and end at the door.",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: osakaStayAreas[1].url,
+  },
+  {
+    ...tripPrepProducts.rapit,
+    why: "The standard pass does not reach Kansai Airport. The Rapi:t runs from the airport to Namba, and its reserved seat is extra even on the airport version of the pass.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "The JR route from Kansai Airport to Tennoji, Osaka and Shin-Osaka. JR is not on the pass's list of participating lines.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // USJ and the JR Pass, added 26 Oct 2026 — the two highest-traffic pages on this
 // site whose only Klook links were in the bands that pay least.

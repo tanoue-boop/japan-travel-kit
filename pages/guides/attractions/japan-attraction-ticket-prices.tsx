@@ -101,11 +101,11 @@ const PASS_ROWS = [
     pass: "Osaka Amazing Pass",
     href: "/guides/attractions/osaka-attractions-pass",
     covers:
-      "Unlimited Osaka Metro and city buses plus free admission to more than 40 facilities — Osaka Castle, the Umeda Sky Building observatory, Tsutenkaku, the HEP FIVE wheel and the river cruises. Universal Studios Japan and the Kaiyukan are not on it.",
+      "Unlimited Osaka Metro, city buses and the private railways within Osaka city, plus free admission to about 40 facilities — Osaka Castle, the Umeda Sky Building observatory, Tsutenkaku, the HEP FIVE wheel and the river cruises. Universal Studios Japan and the Kaiyukan are not on it.",
     breakEven:
-      "Two paid facilities usually do it. The Osaka Castle keep is ¥1,200 and the Gozabune boat ¥1,800 at the gate — ¥3,000 against a ¥2,500 pass. The Umeda Sky Building is ¥2,000, but the pass only admits you free before 15:00.",
-    price: "¥2,500 (1 day) / ¥3,300 (2 day) adult",
-    source: "osp.osaka-info.jp/en, read 19 October 2026",
+      "Three paid facilities do it. Osaka Castle (¥1,200), the Umeda Sky Building before 15:00 (¥2,000) and the Tombori River Cruise (¥2,000) are ¥5,200 at the gate against a ¥3,500 pass. Two cheap ones, such as the castle keep and the Gozabune boat (¥3,000), fall just short until the subway rides are counted.",
+    price: "¥3,500 (1 day) / ¥5,000 (2 day), one price for all ages",
+    source: "osaka-amazing-pass.com/en, read 9 November 2026",
     url: osakaAmazingPass.url,
     cta: "Check the Osaka pass →",
   },
@@ -234,7 +234,7 @@ const faqItems = [
   },
   {
     q: "Is it cheaper to buy a pass or individual attraction tickets in Japan?",
-    a: "It depends on the pass, and three of the four in the table above have a clear break-even. The Tokyo Subway Ticket is transport only — against Tokyo Metro fares of ¥178 to ¥324 a ride, the ¥1,000 24-hour tier needs five or six rides in one window, while the ¥2,000 72-hour tier at about ¥667 a day needs roughly four a day. The ¥2,500 Osaka Amazing Pass is the one that competes with admissions directly: the Osaka Castle keep (¥1,200) plus the Gozabune boat (¥1,800) is ¥3,000 at the gate, so two facilities clear it, though Universal Studios Japan and the Kaiyukan are not included and the Umeda Sky Building is only free before 15:00. The ¥7,100 two-day Hakone Freepass pays for itself if you ride the whole loop, where the ropeway alone is ¥2,000 and the lake cruise ¥1,200, and Odakyu's own comparison puts the same route at ¥9,200 via JR. The WEST QR Kansai Area Pass is decided by the airport run: from 1 November 2026 the discounted HARUKA single to Kyoto is ¥2,700, identical to a 1-day pass. What makes a pass the wrong buy is a short day — one or two admissions and a couple of rides almost never adds up.",
+    a: "It depends on the pass, and three of the four in the table above have a clear break-even. The Tokyo Subway Ticket is transport only — against Tokyo Metro fares of ¥178 to ¥324 a ride, the ¥1,000 24-hour tier needs five or six rides in one window, while the ¥2,000 72-hour tier at about ¥667 a day needs roughly four a day. The ¥3,500 Osaka Amazing Pass (official price, checked 9 November 2026) is the one that competes with admissions directly: Osaka Castle (¥1,200), the Umeda Sky Building (¥2,000) and the Tombori River Cruise (¥2,000) are ¥5,200 at the gate, so three facilities clear it, though Universal Studios Japan and the Kaiyukan are not included and the Umeda Sky Building is only free before 15:00. The ¥7,100 two-day Hakone Freepass pays for itself if you ride the whole loop, where the ropeway alone is ¥2,000 and the lake cruise ¥1,200, and Odakyu's own comparison puts the same route at ¥9,200 via JR. The WEST QR Kansai Area Pass is decided by the airport run: from 1 November 2026 the discounted HARUKA single to Kyoto is ¥2,700, identical to a 1-day pass. What makes a pass the wrong buy is a short day — one or two admissions and a couple of rides almost never adds up.",
   },
   {
     q: "Why does the same Japanese ticket show different prices?",
@@ -242,7 +242,7 @@ const faqItems = [
   },
   {
     q: "Do Japanese attractions charge a child price?",
-    a: "Almost all of them, but the age bands differ by venue and are worth checking against your children's ages rather than assumed. The table's child column names the band for each one. Broadly: temples and museums use ages 6–12, observation decks start charging around age 4 to 6, and theme parks treat anyone up to 17 as a child. Under-3s and under-4s are usually free, and the Hiroshima Peace Memorial Museum is free for junior high school age and below. The Osaka Amazing Pass is the exception that publishes no child rate at all.",
+    a: "Almost all of them, but the age bands differ by venue and are worth checking against your children's ages rather than assumed. The table's child column names the band for each one. Broadly: temples and museums use ages 6–12, observation decks start charging around age 4 to 6, and theme parks treat anyone up to 17 as a child. Under-3s and under-4s are usually free, and the Hiroshima Peace Memorial Museum is free for junior high school age and below. The Osaka Amazing Pass is the exception: no child pass is sold, and children pay the same price as adults.",
   },
   {
     q: "Can I pay for Japanese attraction tickets with a foreign card?",
@@ -769,7 +769,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
               },
               {
                 href: "/guides/attractions/osaka-attractions-pass",
-                title: "Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?",
+                title: "Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?",
               },
               { href: "/about", title: "How we check the prices on this site" },
             ].map((link) => (

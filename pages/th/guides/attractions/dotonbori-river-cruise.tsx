@@ -642,9 +642,9 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
             แล้วรับรอบ 19:30 ไว้เลย ดีกว่าไปถึง 19:20 แล้วพบว่าเรือฟรีลำถัดไปคือ 21:00
           </p>
           <p className={styles.bodyText}>
-            ตัวเลขออกมาสบาย ๆ ด้วยบัตรหนึ่งวันราคา {PASS_1_DAY} ล่องเรือ (¥2,000) บวกหอหลักปราสาท
-            โอซาก้า (¥1,200) เท่ากับค่าเข้า ¥3,200 ก่อนจะนับรถไฟใต้ดินแม้แต่เที่ยวเดียว และจุดชมวิว
-            อูเมดะก่อน 15:00 เพิ่มอีก ¥2,000{" "}
+            ต้องมีจุดที่สามถึงจะคุ้ม บัตรหนึ่งวันราคา {PASS_1_DAY} (ราคาทางการ ตรวจสอบ 9 พฤศจิกายน 2026)
+            ล่องเรือ (¥2,000) บวกหอหลักปราสาทโอซาก้า (¥1,200) เท่ากับค่าเข้า ¥3,200 ซึ่งยังต่ำกว่าราคาพาสเล็กน้อย
+            และเมื่อเพิ่มจุดชมวิวอูเมดะก่อน 15:00 จะรวมเป็น ¥5,200{" "}
             <Link href="/guides/attractions/osaka-attractions-pass">คู่มือ Osaka Amazing Pass (ภาษาอังกฤษ)</Link>{" "}
             มีรายการสถานที่ทั้งหมด ราคาบัตรสองวัน และข้อยกเว้น และ{" "}
             <Link href="/guides/attractions/things-to-do-osaka">คู่มือเที่ยวโอซาก้า (ภาษาอังกฤษ)</Link>{" "}
@@ -672,7 +672,7 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
           items={[
             { href: "/guides/attractions/osaka-food-tour", title: "ทัวร์อาหารโอซาก้า (2026): ควรจองทัวร์ไหน เวลา และได้กินอะไร (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/osaka-2-day-itinerary", title: "เที่ยวโอซาก้า 2 วัน (2026): แผนรายวัน และสิ่งที่ต้องจอง (ภาษาอังกฤษ)" },
-            { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass (2026): วันละ ¥2,500 คุ้มไหม (ภาษาอังกฤษ)" },
+            { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass (2026): วันละ ¥3,500 คุ้มไหม (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/things-to-do-osaka", title: "เที่ยวโอซาก้า (2026): ที่ไหนบัตรพาสคุ้ม ที่ไหนไม่คุ้ม (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/umeda-sky-building-tickets", title: "ตั๋ว Umeda Sky Building (2026): ราคา เวลาเปิด และช่วงเวลาที่ควรไป (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/osaka-castle-tickets", title: "ตั๋วปราสาทโอซาก้า (2026): ราคา เวลาเปิด และสิ่งที่บัตรพาสครอบคลุม (ภาษาอังกฤษ)" },

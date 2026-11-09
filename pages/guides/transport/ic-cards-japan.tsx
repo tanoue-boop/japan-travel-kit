@@ -178,9 +178,9 @@ const passRows = [
   },
   {
     option: "Osaka Amazing Pass, 1 day",
-    price: "¥2,500 (2-day ¥3,300)",
+    price: "¥3,500 (2-day ¥5,000)",
     breakeven: "Not on rides alone — it needs three or more paid sights",
-    note: "Travel plus more than 40 free admissions. Checked " + OSAKA_CHECKED,
+    note: "Travel plus about 40 free admissions. Price checked 9 November 2026 on osaka-amazing-pass.com",
   },
 ];
 
