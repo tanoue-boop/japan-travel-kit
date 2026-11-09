@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-09：/guides/esim/sakura-mobile-review の CTR 改善（task-jtk-20261109-C01）
+
+- 2026-11-09 title 変更：「Sakura Mobile Review 2026: 3 Days ¥2,750 vs Cheaper eSIMs」→「Sakura Mobile Review 2026: Prices, Plans & Is It Worth It?」（H1「Sakura Mobile Review 2026: Prices, Plans and Is It Worth It?」）。meta を最安 ¥2,750/3日・¥9,900/30日（3 GB/day）＋電話番号オプション・SIMカード・90日プランに。Quick Verdict を hero 直下へ移動し、3 GB/day・Unlimited の円料金（3/7/30日）・向いている人・申し込みボタン（id=486 そのまま）を最初の画面に。円料金は sakuramobile.jp で 2026-11-09 再確認（比較記事と /travel/esim/ の税込表が 7/10/30 日で一致、15日は比較記事に「7,1650」と誤植ありと注記）。GSC 基準：「sakura mobile」表示1,076・平均7.4位・CTR 0.2%（直近28日）。関連カード題名を10ページ＋guides-esim・llms.txt で更新。効果測定は 11/23 以降。
+
 ## 2026-11-09：/guides/attractions/japan-10-day-itinerary の順位改善（task-jtk-20261109-R03）
 
 - 2026-11-09 title 変更：「Japan 10 Day Itinerary (2026): 10 Days, Day by Day」→「Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day」（H1 同文、meta も「Japan itinerary 10 days」「10 days in Japan」完全一致）。冒頭回答段落・目次・10日間一覧表・先に押さえる予約（KlookTripPrep：新宿/京都駅/難波ホテル、東京→京都新幹線、成田リムジンバス、富士箱根ツアー、eSIM）・費用の合計表（大人 from ¥39,970）・ルート別案表（広島・金沢・北海道冬）・季節表（紅葉・のぞみ全席指定・年末年始休業）・FAQ 2問追加。JR Pass 価格を 2026-11-09 公式再確認。逆リンク：tokyo-kyoto-osaka-7-day-itinerary、japan-14-day-itinerary、where-to-stay-in-kyoto、where-to-stay-in-osaka。関連カード題名を19ページ＋guides-attractions・llms.txt で更新（tokyo-5-day-itinerary は指示により未変更）。

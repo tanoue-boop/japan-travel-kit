@@ -109,7 +109,7 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/sakura-mobile-review",
     badge: "Review",
-    title: "Sakura Mobile Review 2026: eSIM & SIM Card Plans and Prices",
+    title: "Sakura Mobile Review 2026: Prices, Plans & Is It Worth It?",
     desc: "Unlimited on au or 3 GB a day on docomo, as an eSIM or a SIM card you collect at the airport. Plan prices in yen, the hotspot limit, and the one plan that comes with a Japanese phone number.",
     group: "reviews",
     city: "other",

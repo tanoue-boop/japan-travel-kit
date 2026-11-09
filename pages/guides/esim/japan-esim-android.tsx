@@ -540,7 +540,7 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
               How to Set Up an eSIM in Japan (Step-by-Step)
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/sakura-mobile-review">
-              Sakura Mobile Review 2026: eSIM &amp; SIM Card Plans and Prices
+              Sakura Mobile Review 2026: Prices, Plans &amp; Is It Worth It?
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/esim-go-japan-review">
               eSIM Go Japan Review 2026: Prices, Networks and Tethering

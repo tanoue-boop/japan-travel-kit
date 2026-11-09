@@ -926,7 +926,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sakura Mobile Review 2026: eSIM &amp; SIM Card Plans and Prices</p>
+                <p className={styles.relatedTitle}>Sakura Mobile Review 2026: Prices, Plans &amp; Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

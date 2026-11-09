@@ -715,7 +715,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
               Best eSIM for Japan 2026: Top 4 Picks Compared
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/sakura-mobile-review">
-              Sakura Mobile Review 2026: eSIM &amp; SIM Card Plans and Prices
+              Sakura Mobile Review 2026: Prices, Plans &amp; Is It Worth It?
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/esim-go-japan-review">
               eSIM Go Japan Review 2026: Prices, Networks and Tethering

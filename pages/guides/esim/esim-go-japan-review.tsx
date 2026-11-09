@@ -537,7 +537,7 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
               Simbye Japan Review 2026: Prices, Networks and Discount Code
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/sakura-mobile-review">
-              Sakura Mobile Review 2026: eSIM &amp; SIM Card Plans and Prices
+              Sakura Mobile Review 2026: Prices, Plans &amp; Is It Worth It?
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/japan-sim-card-vs-esim-2026">
               Japan SIM Card vs eSIM (2026): Which Should You Choose?

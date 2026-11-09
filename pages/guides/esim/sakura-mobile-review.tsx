@@ -35,6 +35,10 @@ import { esimProductJsonLd } from "../../../lib/esim-picks";
 // on one of those pages.
 const pricesCheckedAt = pricesCheckedLabel();
 const OFFICIAL_CHECKED = "25 October 2026";
+// The yen price table (and the summary box at the top) was re-read on this date,
+// against the comparison post and the /travel/esim/ price table, which agree on
+// every length both of them list (7, 10 and 30 days).
+const YEN_PRICES_CHECKED = "9 November 2026";
 
 const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
 
@@ -274,9 +278,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/sakura-mobile-review") } });
 
-const TITLE = "Sakura Mobile Review 2026: 3 Days ¥2,750 vs Cheaper eSIMs";
+const TITLE = "Sakura Mobile Review 2026: Prices, Plans & Is It Worth It?";
 const DESCRIPTION =
-  "Sakura Mobile review 2026: 3 GB/day is ¥2,750 for 3 days, unlimited ¥14,575 for 30. See au vs docomo, a Japanese number and cheaper eSIMs, then compare.";
+  "Sakura Mobile review: eSIM from ¥2,750 for 3 days, ¥9,900 for 30 (3 GB/day). Unlike data-only eSIMs: a Japanese number option, SIM cards and 90-day plans.";
 
 export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -352,11 +356,11 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Sakura Mobile Review 2026:<br />eSIM &amp; SIM Card Plans and Prices
+            Sakura Mobile Review 2026:<br />Prices, Plans and Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
-            Unlimited on au, 3 GB a day on docomo, or a physical SIM card you collect at the airport —
-            and the rare option of a Japanese phone number. Here is what each one costs.
+            From ¥2,750 for 3 days or ¥9,900 for 30 on 3 GB a day (docomo), ¥3,245 and ¥14,575 unlimited
+            (au). Worth it for long stays, rural Japan or a Japanese phone number; not for a cheap week of data.
           </p>
           <div className={styles.heroBadges}>
             {["Prices checked daily", "Independently Reviewed", "Physical SIM & eSIM"].map((t) => (
@@ -379,23 +383,9 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           </p>
         </div>
 
-        <EsimBrandCompare brand="sakura" />
-
-        {/* Answer first. The hero subtitle above sells the page; this paragraph answers it. */}
-        <p className={styles.bodyText}>
-          <strong>Sakura Mobile</strong> is a Japanese company that sells prepaid data to visitors — as an
-          eSIM, as a physical SIM card, or as a pocket WiFi rental — and it sells that data in two shapes:{" "}
-          <strong>Unlimited</strong> on au (KDDI) 5G, or <strong>3 GB a day</strong> on docomo 5G, both of them
-          data only, with a separate <strong>3 GB/day Voice+Data eSIM</strong> if you need an actual Japanese
-          phone number. Budget roughly <strong>¥2,750 for 3 days</strong> and <strong>¥9,900 for 30</strong> on
-          the 3 GB/day plan, or <strong>¥3,245</strong> and <strong>¥14,575</strong> for the same two lengths
-          unlimited. That price makes it the right call for a long stay, for rural Japan, for a phone that
-          cannot take an eSIM, and for anyone who needs a number to give a restaurant — and the wrong call if
-          you want a week of data as cheaply as possible. Plan details read from sakuramobile.jp on{" "}
-          {OFFICIAL_CHECKED}; USD prices tracked daily, last checked {pricesCheckedAt}.
-        </p>
-
-        {/* Quick Verdict */}
+        {/* Quick Verdict — first thing under the hero, because the "sakura mobile" searcher
+            wants three things before anything else: what it costs, whether it suits them,
+            and where to sign up. */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
             <span className={styles.verdictLabel}>Quick Verdict</span>
@@ -413,18 +403,23 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>3 GB/day eSIM (docomo)</p>
+                <p className={styles.verdictStatValue}>¥2,750 / 3 days · ¥4,620 / 7 · ¥9,900 / 30</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Unlimited eSIM (au)</p>
+                <p className={styles.verdictStatValue}>¥3,245 / 3 days · ¥5,775 / 7 · ¥14,575 / 30</p>
+              </div>
+              <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Best For</p>
                 <p className={styles.verdictStatValue}>Long stays, rural Japan, a Japanese number</p>
               </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Price From</p>
-                <p className={styles.verdictStatValue}>{FROM}</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Network</p>
-                <p className={styles.verdictStatValue}>{getProvider("sakura").network}</p>
-              </div>
             </div>
+            <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", margin: "0 0 0.9rem", lineHeight: 1.6 }}>
+              Data only on these two plans; a separate Voice+Data eSIM adds a Japanese number. Not the pick
+              for the cheapest week of data. Yen prices from sakuramobile.jp, checked {YEN_PRICES_CHECKED};
+              USD equivalents last refreshed {pricesCheckedAt}.
+            </p>
             <a href={SAKURA_AFFILIATE} className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
               Get Sakura Mobile →
             </a>
@@ -445,6 +440,23 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             ) : null}
           </div>
         </div>
+
+        <EsimBrandCompare brand="sakura" />
+
+        {/* Answer first. The hero subtitle above sells the page; this paragraph answers it. */}
+        <p className={styles.bodyText}>
+          <strong>Sakura Mobile</strong> is a Japanese company that sells prepaid data to visitors — as an
+          eSIM, as a physical SIM card, or as a pocket WiFi rental — and it sells that data in two shapes:{" "}
+          <strong>Unlimited</strong> on au (KDDI) 5G, or <strong>3 GB a day</strong> on docomo 5G, both of them
+          data only, with a separate <strong>3 GB/day Voice+Data eSIM</strong> if you need an actual Japanese
+          phone number. Budget roughly <strong>¥2,750 for 3 days</strong> and <strong>¥9,900 for 30</strong> on
+          the 3 GB/day plan, or <strong>¥3,245</strong> and <strong>¥14,575</strong> for the same two lengths
+          unlimited. That price makes it the right call for a long stay, for rural Japan, for a phone that
+          cannot take an eSIM, and for anyone who needs a number to give a restaurant — and the wrong call if
+          you want a week of data as cheaply as possible. Plan details read from sakuramobile.jp on{" "}
+          {OFFICIAL_CHECKED}; yen prices re-checked {YEN_PRICES_CHECKED}; USD prices tracked daily, last
+          checked {pricesCheckedAt}.
+        </p>
 
         {/* What is Sakura Mobile */}
         <section className={styles.bodySection}>
@@ -518,7 +530,8 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             A week costs <strong>¥4,620</strong> on 3 GB/day or <strong>¥5,775</strong> unlimited; a month is{" "}
             <strong>¥9,900</strong> and <strong>¥14,575</strong>. The yen figures below are Sakura Mobile&apos;s
-            own, from the comparison table it publishes, read on {OFFICIAL_CHECKED}; the USD column is the same
+            own, from the comparison table it publishes, re-read on {YEN_PRICES_CHECKED} and matching the
+            tax-included figures on its eSIM plan page for 7, 10 and 30 days; the USD column is the same
             plan in our daily tracker, last refreshed {pricesCheckedAt}. Buying two or more eSIMs or SIM cards
             in one order takes 10% off automatically.
           </p>
@@ -554,9 +567,11 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             On tax: Sakura Mobile&apos;s comparison table prints one yen figure per plan with no tax label,
             while its product pages quote their headline prices both ways — the travel eSIM as
             &ldquo;from 1,250 JPY (1,375 JPY, tax incl.)&rdquo;, the travel SIM card as
-            &ldquo;from 3,500 JPY (3,850 JPY, tax incl.)&rdquo;. Every figure in the table above is exactly
-            1.1× a round yen amount, which is what a tax-included total looks like, so read them as totals and
-            confirm yours at checkout. Sakura Mobile also notes that payment is processed in yen only and
+            &ldquo;from 3,500 JPY (3,850 JPY, tax incl.)&rdquo;. The 7, 10 and 30-day figures match the
+            eSIM plan page&apos;s tax-included prices exactly (¥4,200, ¥5,100 and ¥9,000 before tax), so read
+            the table as totals and confirm yours at checkout. The 15-day 3 GB/day figure is printed as
+            &ldquo;7,1650&rdquo; in the comparison post on {YEN_PRICES_CHECKED} — shown here as ¥7,165, but
+            check it at checkout. Sakura Mobile also notes that payment is processed in yen only and
             prices shown in other currencies are for reference.
           </p>
           <div style={{ marginTop: "1.75rem" }}>
