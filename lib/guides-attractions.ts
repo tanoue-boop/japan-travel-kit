@@ -218,8 +218,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/hakone-day-trip-from-tokyo",
     badge: "Day tour",
-    title: "Hakone Day Trip From Tokyo (2026): Freepass Prices vs a Day Tour",
-    desc: "Odakyu's official Freepass prices, the eight modes of transport it covers, the Romancecar surcharge it does not — and why there is no 1-day version of the pass.",
+    title: "Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours",
+    desc: "The Hakone loop from Shinjuku in one day: official ride times, the day's total cost, the first and last Romancecar, and when a day tour is the easier choice.",
     group: "daytrips",
     city: "tokyo",
   },

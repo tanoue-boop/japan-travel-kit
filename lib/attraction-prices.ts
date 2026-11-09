@@ -287,7 +287,7 @@ export const PRICES = {
   hakoneFreepass: {
     name: "Hakone Freepass",
     ticket: "2-day from Shinjuku (3-day ¥7,500)",
-    href: "/guides/attractions/hakone-day-trip-from-tokyo",
+    href: "/guides/attractions/hakone-free-pass",
     city: "tokyo",
     group: "passes",
     adult: "¥7,100",
@@ -297,7 +297,8 @@ export const PRICES = {
     bookingNote:
       "Covers eight modes of transport around the loop but not the Romancecar surcharge, and there is no 1-day version.",
     source: "odakyu-global.com",
-    checked: "2026-10-19",
+    // Re-read on odakyu-global.com/passes/hakone-freepass/ on 9 Nov 2026: unchanged.
+    checked: "2026-11-09",
     klook: klook("Klook: Hakone Freepass (2-day / 3-day)", hakoneFreepass.url),
   },
   mtFujiPass: {

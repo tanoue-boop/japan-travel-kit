@@ -723,7 +723,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Hakone Day Trip From Tokyo (2026): Freepass Prices vs a Day Tour</p>
+                <p className={styles.relatedTitle}>Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

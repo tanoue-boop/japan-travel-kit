@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-09：/guides/attractions/hakone-day-trip-from-tokyo の順位改善（task-jtk-20261109-R02）
+
+- 2026-11-09 title 変更：「Hakone Day Trip From Tokyo (2026): Freepass vs a Day Tour」→「Hakone Day Trip From Tokyo 2026: Itinerary, Cost, Tours」（H1「Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours」、meta も完全一致）。冒頭回答・時刻入りの行程表・始発/終電とロープウェイ営業時間の表・日帰り費用の合計表（大人 ¥11,500）・質問見出し6つ（冬・JR Pass 含む）・FAQ 3問追加。Freepass の料金表と対象交通一覧は削除し hakone-free-pass への文脈リンクに集約（hakone-free-pass は無変更）。主CTA を箱根日帰りツアー（hakoneLoopBusTour）、次に Freepass、続けて KlookTripPrep（hakoneHotels）＋BookingEsimCard。lib/attraction-prices.ts の hakoneFreepass は確認日 2026-11-09・リンク先を hakone-free-pass に変更。関連カード題名を9ページ＋guides-attractions・llms.txt で更新。
+
 ## 2026-11-09：/guides/attractions/osaka-attractions-pass の順位改善と Osaka Amazing Pass 旧価格の一掃（task-jtk-20261109-R01）
 
 - 2026-11-09 title 変更：「Osaka Amazing Pass (2026): ¥2,500 a Day — Is It Worth It?」→「Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?」。料金を公式現行値（1日 ¥3,500／2日 ¥5,000、伊丹版 ¥3,800／¥5,400、関空28時間券 ¥5,300、osaka-amazing-pass.com 2026-11-09 確認）に修正し、lib/attraction-prices.ts の osakaAmazingPass を更新。冒頭回答・料金表・元が取れる表（5パターン）・1日/2日/Enjoy Eco/ICOCA 比較表・対象施設の通常料金表・空港版・有効化時刻・買い方・対象外施設・FAQ 3問追加・KlookTripPrep（フードツアー・京都奈良ツアー・難波ホテル・ラピート・はるか）＋BookingEsimCard。旧価格（¥2,500／¥3,300）を直したページ：osaka-castle-tickets、umeda-sky-building-tickets、dotonbori-river-cruise（en・ko・zh-tw・zh-cn・th）、things-to-do-osaka、osaka-2-day-itinerary、osaka-kyoto-3-day-itinerary、japan-attraction-ticket-prices、where-to-stay-in-osaka、japan-travel-budget、ic-cards-japan、japan-10-day/14-day、tokyo-kyoto-osaka-7-day、tokyo-to-osaka-shinkansen、関連カード題名（14ページ＋翻訳 usj 4本）。
