@@ -15,6 +15,7 @@ export default function MyDocument({ lang }: Props) {
       <Head>
         <meta name="theme-color" content="#23211f" />
         <meta name="google-site-verification" content="RzJ62Gbm4Ng2tGuEyIW1CV4-UjWKOpZRkskuAGP52Gc" />
+        <meta name="p:domain_verify" content="b19b8412b9f4b81b3f13cce113b3df3f" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
