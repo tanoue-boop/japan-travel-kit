@@ -161,6 +161,10 @@
 .table td:lang(zh),
 .table td:lang(th) { min-width: 7.5em; }
 .table td:lang(ko) { word-break: keep-all; }
+/* 先頭列（ツアー名など）が4〜5文字幅に潰れないよう広めに取る。はみ出す分は .tableScroll で横スクロール */
+.table td:first-child:lang(ko),
+.table td:first-child:lang(zh),
+.table td:first-child:lang(th) { min-width: 10em; }
 
 .tdProvider,
 .ftFeature { font-weight: 600; color: var(--text); font-size: 0.88rem; }
