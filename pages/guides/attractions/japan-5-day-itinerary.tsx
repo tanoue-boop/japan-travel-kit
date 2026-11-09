@@ -806,7 +806,7 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
               { href: "/guides/attractions/japan-first-time-itinerary", title: "First Time Japan Itinerary (2026): 9 Days, Day by Day" },
               { href: "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary", title: "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan, Day by Day" },
-              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day" },
+              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
               { href: "/guides/attractions/where-to-stay-in-kyoto", title: "Where to Stay in Kyoto" },
               { href: "/guides/money/japan-travel-budget", title: "Japan Travel Budget" },
             ].map((r) => (

@@ -1910,7 +1910,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day</p>
+                <p className={styles.relatedTitle}>Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

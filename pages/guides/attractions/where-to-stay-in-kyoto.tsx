@@ -520,7 +520,9 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">
               Tokyo–Kyoto–Osaka seven-day itinerary
             </Link>{" "}
-            sets out how the nights divide.
+            sets out how the nights divide. On a ten-day trip, our{" "}
+            <Link href="/guides/attractions/japan-10-day-itinerary">10 days in Japan itinerary</Link>{" "}
+            gives Kyoto three nights, which is the length at which Gion becomes worth its price.
           </p>
         </section>
 

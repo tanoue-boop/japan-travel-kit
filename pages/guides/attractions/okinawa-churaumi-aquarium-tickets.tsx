@@ -589,7 +589,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
               { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "Osaka Aquarium Kaiyukan Tickets (2026): Prices, Hours and Time Slots" },
               { href: "/guides/attractions/japan-attraction-ticket-prices", title: "Japan Attraction Ticket Prices 2026: Official Prices and Booking Rules" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
-              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day" },
+              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
               { href: "/guides/attractions/tokyo-itinerary-with-kids", title: "Tokyo Itinerary with Kids: 5 Days, Day by Day (2026)" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },
             ].map((r) => (

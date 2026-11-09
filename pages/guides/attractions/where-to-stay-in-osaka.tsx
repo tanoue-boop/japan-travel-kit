@@ -484,7 +484,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer guide</Link> compares
             every route, and our{" "}
             <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Nankai Rapi:t comparison</Link>{" "}
-            takes the two head to head.
+            takes the two head to head. Our{" "}
+            <Link href="/guides/attractions/japan-10-day-itinerary">10 days in Japan itinerary</Link>{" "}
+            ends on exactly this run: two Osaka nights in Namba and the flight home from Kansai on Day 10.
           </p>
         </section>
 

@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-09：/guides/attractions/japan-10-day-itinerary の順位改善（task-jtk-20261109-R03）
+
+- 2026-11-09 title 変更：「Japan 10 Day Itinerary (2026): 10 Days, Day by Day」→「Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day」（H1 同文、meta も「Japan itinerary 10 days」「10 days in Japan」完全一致）。冒頭回答段落・目次・10日間一覧表・先に押さえる予約（KlookTripPrep：新宿/京都駅/難波ホテル、東京→京都新幹線、成田リムジンバス、富士箱根ツアー、eSIM）・費用の合計表（大人 from ¥39,970）・ルート別案表（広島・金沢・北海道冬）・季節表（紅葉・のぞみ全席指定・年末年始休業）・FAQ 2問追加。JR Pass 価格を 2026-11-09 公式再確認。逆リンク：tokyo-kyoto-osaka-7-day-itinerary、japan-14-day-itinerary、where-to-stay-in-kyoto、where-to-stay-in-osaka。関連カード題名を19ページ＋guides-attractions・llms.txt で更新（tokyo-5-day-itinerary は指示により未変更）。
+
 ## 2026-11-09：/guides/transport/tokyo-airport-limousine-bus の冒頭回答・路線別運賃表・Klook 予約ブロック（task-jtk-20261109-03）
 
 - 2026-11-09 title 変更：「Tokyo Airport Limousine Bus (2026): Fares and Times」→「Airport Limousine Bus Tokyo 2026: Narita & Haneda Fares」（H1「Airport Limousine Bus Tokyo (2026): Narita & Haneda Fares, Times and Stops」）。冒頭回答段落・路線別運賃/所要時間表（確認日付き、2026-11-09 limousinebus.co.jp 再確認）・リムジンバス vs N'EX/スカイライナー/京急/モノレール比較表・質問見出し6つ・FAQ 3問追加・KlookTripPrep（成田/羽田リムジンバス・Subway Ticket・新宿ホテル・eSIM）を比較表直後とページ末に＋BookingEsimCard。逆リンク：where-to-stay-in-tokyo、tokyo-2-day-itinerary、tokyo-disney-tickets。関連カード題名を7ページ＋guides-transport・llms.txt で更新。

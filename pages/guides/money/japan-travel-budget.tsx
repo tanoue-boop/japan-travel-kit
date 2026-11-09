@@ -1369,7 +1369,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan 10-Day Itinerary (2026): Tokyo, Kyoto, Osaka and One More City</p>
+                <p className={styles.relatedTitle}>Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

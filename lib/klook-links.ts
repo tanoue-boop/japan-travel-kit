@@ -2355,7 +2355,7 @@ export const japanTenDayStayAreas: KlookStayArea[] = [
   },
   {
     area: "Tokyo Station / Marunouchi, Tokyo",
-    why: "The base that costs you least on the Day 6 move: the Tokaido Shinkansen to Kyoto leaves from beneath it, so the morning you change cities is a lift rather than a cross-town journey with the cases.",
+    why: "The base that costs you least on the Day 5 move if you skip Hakone: the Tokaido Shinkansen to Kyoto leaves from beneath it, so the morning you change cities is a lift rather than a cross-town journey with the cases.",
     url: tokyoStayAreas[1].url,
   },
   {

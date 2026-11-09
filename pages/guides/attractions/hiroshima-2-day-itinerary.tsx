@@ -916,7 +916,7 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
               { href: "/guides/transport/tokyo-to-hiroshima-shinkansen", title: "Tokyo to Hiroshima Shinkansen: Times, Fares, JR Pass" },
               { href: "/guides/transport/osaka-to-hiroshima-shinkansen", title: "Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
-              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day" },
+              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>

@@ -371,7 +371,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/japan-10-day-itinerary",
     badge: "Itinerary",
-    title: "Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day",
+    title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day",
     desc: "Nine nights on three hotel bills — Tokyo 4, Kyoto 3, Osaka 2 — with a Hakone day that ends on a westbound train and a Nara day trip, plus a table for each of the ten days and the JR Pass worked against what this route actually uses.",
     group: "cities",
     // Nationwide: the ten days run Tokyo → Hakone → Kyoto → Nara → Osaka, out from Kansai.

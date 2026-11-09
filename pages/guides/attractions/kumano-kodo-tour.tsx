@@ -320,7 +320,7 @@ const relatedGuides = [
   { href: "/guides/attractions/kansai-area-pass", title: "Kansai Area Pass (2026): Prices, What It Covers & Is It Worth It?" },
   { href: "/guides/attractions/arima-onsen-day-trip", title: "Arima Onsen Day Trip (2026): From Osaka or Kobe, and What the Baths Cost" },
   { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
-  { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day" },
+  { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });

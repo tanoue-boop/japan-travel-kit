@@ -1341,7 +1341,10 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             If your trip is shorter, our{" "}
             <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3 day itinerary</Link> is the
-            first five days of this plan compressed into three, and the city round-ups for{" "}
+            first five days of this plan compressed into three. With ten days rather than fourteen, our{" "}
+            <Link href="/guides/attractions/japan-10-day-itinerary">Japan itinerary for 10 days</Link>{" "}
+            keeps Tokyo, Hakone, Kyoto, Nara and Osaka on three hotel bases and drops the mountain
+            night and Hiroshima. The city round-ups for{" "}
             <Link href="/guides/attractions/things-to-do-tokyo">Tokyo</Link>,{" "}
             <Link href="/guides/attractions/things-to-do-kyoto">Kyoto</Link> and{" "}
             <Link href="/guides/attractions/things-to-do-osaka">Osaka</Link> each list what to book
@@ -1893,7 +1896,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan 10 Day Itinerary (2026): 10 Days in Japan, Day by Day</p>
+                <p className={styles.relatedTitle}>Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

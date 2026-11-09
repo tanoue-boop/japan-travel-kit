@@ -796,7 +796,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
               { href: "/guides/attractions/karuizawa-day-trip-from-tokyo", title: "Karuizawa Day Trip From Tokyo" },
               { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa (2026)" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026)" },
-              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan 10-Day Itinerary (2026)" },
+              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
               { href: "/guides/esim/best-esim-japan", title: "Best eSIM for Japan (2026)" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>
