@@ -45,6 +45,13 @@ export type EsimPicksCopy = {
   failLabel: string;
   failHeading: string;
   fails: { title: string; desc: string }[];
+  /**
+   * Hidden text after a section label and after a step number. Both are separated from
+   * what follows only by layout, so extracted text ran them together ("4落地后开启").
+   * Set for 简体 only (proofreading 2026-11-09); omitted elsewhere, which renders nothing.
+   */
+  labelSep?: string;
+  numSep?: string;
 };
 
 export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimPicksCopy> = {
@@ -228,28 +235,28 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
   "zh-cn": {
     sectionLabel: "按需求的结论",
     heading: "按需求选日本 eSIM",
-    intro: "找到符合的一行，点按钮即可。Simbye 价格已含下方优惠码。",
-    pricesChecked: "价格确认日 {date}",
+    intro: "找到符合自己需求的选项，点击对应按钮即可。Simbye 价格已含下方优惠码。",
+    pricesChecked: "价格核查日期 {date}",
     cols: { need: "你想要", pick: "推荐", plan: "套餐", price: "价格", buy: "" },
     rows: {
-      cheapest: { need: "已确认套餐中的最低价", why: "我们价格数据中最便宜的套餐。" },
+      cheapest: { need: "已核实套餐中的最低价", why: "我们价格数据中最便宜的套餐。" },
       short: { need: "短途旅行", why: "十天每天约 0.5 GB，30 天内用完即可。" },
-      unlimited: { need: "不限流量", why: "每天 2 GB 全速，之后以 1 Mbps 不限量使用。" },
+      unlimited: { need: "无限流量", why: "每天 2 GB 全速，之后以 1 Mbps 不限量使用。" },
       heavy: { need: "更多流量", why: "固定 20 GB，20 天旅行约每天 1 GB。" },
       long: { need: "长期停留", why: "有效期 180 天。Simbye 表示此套餐仅使用 NTT Docomo。" },
       klook: { need: "与 Klook 订单一起结账", why: "以二维码凭证销售，商品说明标注支持热点共享。" },
-      iphone: { need: "iPhone 第一次用 eSIM", why: "用 Airalo 自家 App 安装，遇到问题可在线客服。" },
-      tether: { need: "连笔记本用的不限流量", why: "每天 3 GB 全速，之后 1 Mbps。热点共享无上限。" },
-      number: { need: "日本电话号码", why: "只有语音＋数据套餐有号码，须在日本当面核验身份。" },
+      iphone: { need: "iPhone 第一次用 eSIM", why: "用 Airalo 自家 App 安装，遇到问题可以联系在线客服。" },
+      tether: { need: "适合笔记本电脑共享网络的无限流量套餐", why: "每天 3 GB 全速，之后 1 Mbps。热点共享无上限。" },
+      number: { need: "日本电话号码", why: "只有语音＋数据套餐有号码，需要在日本现场完成身份核验。" },
     },
     cta: { simbye: "查看 Simbye →", klook: "查看 Klook eSIM →", airalo: "查看 Airalo →", sakura: "查看 Sakura Mobile →" },
     noPrice: { klook: "见商品页", sakura: "见套餐" },
     withCode: "使用优惠码",
     codeHeading: "Simbye 优惠码",
     codeText: "所有 Simbye eSIM 套餐享 {percent}% 折扣。点本页按钮会自动使用，也可在结账时输入。",
-    codeNote: "优惠码不适用于 Simbye 的电话号码商品。",
+    codeNote: "此优惠码不适用于 Simbye 的电话号码类产品。",
     tableNote:
-      "Holafly 在下方比较，但因没有合作链接，所以没有按钮。链接为联盟链接，你无需多付费用，我们可能获得佣金。",
+      "Holafly 在下方比较，但因没有合作链接，所以没有按钮。以上部分链接为推广联盟链接，你无需支付额外费用，我们可能获得佣金。",
     phoneHeading: "如何确认手机支持 eSIM",
     phoneIntro:
       "手机必须支持 eSIM 且未被运营商锁定。任何机型都可在“设置 → 关于手机”查找 EID。商家若提供检查工具，也请一并使用。",
@@ -265,24 +272,26 @@ export const esimPicksCopy: Record<"en" | "ko" | "zh-tw" | "zh-cn" | "th", EsimP
     notStated: "官方未说明",
     phoneLabel: "购买前确认",
     guideChecked: "Airalo、Holafly、Sakura Mobile 于 2026年11月6日确认。Simbye、eSIM Go、Klook 未经当日确认，购买前请到各页确认。",
-    stepsLabel: "从购买到开通",
-    stepsHeading: "日本 eSIM 的购买与开通步骤",
+    stepsLabel: "开通步骤",
+    stepsHeading: "日本 eSIM 从购买到开通的步骤",
     steps: [
       { title: "确认手机", desc: "确认 EID 以及手机是否解锁。如需运营商解锁，可能要一两天，请先处理。" },
-      { title: "购买并获取二维码", desc: "Airalo 使用 App。Sakura Mobile 会通过邮件发送 My Page 链接，在那里生成二维码。其他商家在购买后提供。" },
-      { title: "出发前用 Wi-Fi 安装", desc: "在稳定的网络下扫描二维码。例外是 Sakura Mobile 每日 3 GB 套餐，安装即开始计算使用期，请到达后再安装。" },
-      { title: "落地后开启", desc: "开启 eSIM 线路，允许数据漫游，并设为移动数据线路。Sakura Mobile 另将 APN 设置列为步骤之一。" },
+      { title: "购买并获取二维码", desc: "Airalo 使用 App。Sakura Mobile 会通过邮件发送 My Page 链接，在该页面生成二维码。其他商家在购买后提供。" },
+      { title: "出发前用 Wi-Fi 安装", desc: "在稳定的网络下扫描二维码。例外是 Sakura Mobile 每日 3 GB 套餐，安装即开始计算使用期，请抵达日本后再安装。" },
+      { title: "抵达日本后启用", desc: "开启 eSIM 线路，允许数据漫游，并设为移动数据线路。Sakura Mobile 另将 APN 设置列为步骤之一。" },
     ],
     failLabel: "常见失误",
     failHeading: "日本 eSIM 无法使用的原因与预防",
     fails: [
       { title: "手机被运营商锁定", desc: "这是最常见的原因。即使能看到 EID，锁定的手机仍可能拒绝 eSIM，购买前请先向运营商确认。" },
-      { title: "数据漫游未开启", desc: "旅行 eSIM 以漫游方式连接。落地后没有信号时，请开启 eSIM 线路的漫游并切换飞行模式。" },
-      { title: "eSIM 不是数据线路", desc: "手机可能仍用原 SIM 上网，可能产生漫游费。请将移动数据设为 eSIM，并关闭原线路的漫游。" },
+      { title: "数据漫游未开启", desc: "旅行 eSIM 以漫游方式连接。抵达日本后没有信号时，请开启 eSIM 线路的数据漫游，并开关一次飞行模式。" },
+      { title: "未将 eSIM 设为移动数据线路", desc: "手机可能仍用原 SIM 上网，可能产生漫游费。请将移动数据设为 eSIM，并关闭原线路的漫游。" },
       { title: "在家安装 Sakura 每日 3 GB 套餐", desc: "Sakura Mobile 表示此套餐自安装起计算使用期，出发前天数就会减少。" },
-      { title: "以为不限流量全天都是全速", desc: "多数不限流量套餐超过每日额度后会降速。如要用于工作，请先看上方的速度表。" },
-      { title: "以为有电话号码", desc: "旅行 eSIM 多为纯数据，没有日本号码和短信。需要收银行验证码时，请保持原 SIM 开启。" },
+      { title: "以为无限流量全天都是全速", desc: "多数无限流量套餐超过每日额度后会降速。如要用于工作，请先看上方的速度表。" },
+      { title: "以为套餐附带日本电话号码", desc: "旅行 eSIM 多为纯数据，没有日本号码和短信。需要收银行验证码时，请保持原 SIM 开启。" },
     ],
+    labelSep: "：",
+    numSep: ". ",
   },
   th: {
     sectionLabel: "สรุปตามการใช้งาน",

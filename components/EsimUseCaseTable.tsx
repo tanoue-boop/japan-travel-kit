@@ -69,7 +69,10 @@ export default function EsimUseCaseTable({
 }) {
   return (
     <section className={styles.section} data-placement="esim-use-case-table">
-      <span className={styles.label}>{copy.sectionLabel}</span>
+      <span className={styles.label}>
+        {copy.sectionLabel}
+        {copy.labelSep && <span className="sr-only">{copy.labelSep}</span>}
+      </span>
       <h2 className={styles.heading}>{copy.heading}</h2>
       <p className={styles.intro}>
         {copy.intro} <strong>{copy.pricesChecked.replace("{date}", checkedLabel)}</strong>

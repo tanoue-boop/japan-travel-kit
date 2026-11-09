@@ -104,3 +104,19 @@ img { display: block; max-width: 100%; }
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* Text that is read (screen readers, copy-paste, text extraction) but not seen.
+   Added 2026-11-09 for the 简体 edition: the separators between a breadcrumb's
+   crumbs and between a section's eyebrow label and its heading are drawn (chevron,
+   line break), so extracted text ran them together — "日本景点门票道顿堀游船". */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -108,7 +108,7 @@ const cnCols: FooterCol[] = [
   {
     title: "热门门票",
     links: [
-      { href: "/zh-cn/guides/attractions/shibuya-sky-tickets",       label: "涩谷SKY 门票"         },
+      { href: "/zh-cn/guides/attractions/shibuya-sky-tickets",       label: "SHIBUYA SKY 门票"     },
       { href: "/zh-cn/guides/attractions/teamlab-planets-tickets",     label: "teamLab Planets 门票" },
       { href: "/zh-cn/guides/attractions/tokyo-disney-tickets",      label: "东京迪士尼门票"        },
       { href: "/zh-cn/guides/attractions/usj-tickets-express-pass",  label: "日本环球影城门票"      },
@@ -226,7 +226,7 @@ const COPY: Record<Locale, Copy> = {
   "zh-cn": {
     desc: "为外国旅客整理的日本旅游实用信息，出发前先看一遍。",
     rights: "版权所有。",
-    affiliate: "本站包含推广联盟链接。通过链接预订，我们可能获得少量分成，不影响您支付的价格。",
+    affiliate: "本站包含推广联盟链接。如果你通过这些链接预订，我们可能获得少量推广佣金，你无需支付额外费用。",
     homeHref: LOCALE_HOME["zh-cn"],
     langLabel: "语言",
     cols: cnCols,

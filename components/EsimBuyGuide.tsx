@@ -19,7 +19,7 @@ export default function EsimBuyGuide({ copy }: { copy: EsimPicksCopy }) {
   return (
     <>
       <section className={styles.bodySection}>
-        <span className={styles.sectionLabel}>{copy.phoneLabel}</span>
+        <span className={styles.sectionLabel}>{copy.phoneLabel}{copy.labelSep && <span className="sr-only">{copy.labelSep}</span>}</span>
         <h2 className={styles.sectionTitle}>{copy.phoneHeading}</h2>
         <p className={styles.bodyText}>{copy.phoneIntro}</p>
         <div className={styles.tableWrap}>
@@ -50,12 +50,12 @@ export default function EsimBuyGuide({ copy }: { copy: EsimPicksCopy }) {
       </section>
 
       <section className={styles.installSection}>
-        <span className={styles.sectionLabel}>{copy.stepsLabel}</span>
+        <span className={styles.sectionLabel}>{copy.stepsLabel}{copy.labelSep && <span className="sr-only">{copy.labelSep}</span>}</span>
         <h2 className={styles.sectionTitle}>{copy.stepsHeading}</h2>
         <div className={styles.stepsList}>
           {copy.steps.map((step, i) => (
             <div key={step.title} className={styles.stepCard}>
-              <span className={styles.stepNum}>{i + 1}</span>
+              <span className={styles.stepNum}>{i + 1}{copy.numSep && <span className="sr-only">{copy.numSep}</span>}</span>
               <div className={styles.stepBody}>
                 <p className={styles.stepTitle}>{step.title}</p>
                 <p className={styles.stepDesc}>{step.desc}</p>
@@ -66,12 +66,12 @@ export default function EsimBuyGuide({ copy }: { copy: EsimPicksCopy }) {
       </section>
 
       <section className={styles.bodySection}>
-        <span className={styles.sectionLabel}>{copy.failLabel}</span>
+        <span className={styles.sectionLabel}>{copy.failLabel}{copy.labelSep && <span className="sr-only">{copy.labelSep}</span>}</span>
         <h2 className={styles.sectionTitle}>{copy.failHeading}</h2>
         <div className={styles.stepsList}>
           {copy.fails.map((fail, i) => (
             <div key={fail.title} className={styles.stepCard}>
-              <span className={styles.stepNum}>{i + 1}</span>
+              <span className={styles.stepNum}>{i + 1}{copy.numSep && <span className="sr-only">{copy.numSep}</span>}</span>
               <div className={styles.stepBody}>
                 <p className={styles.stepTitle}>{fail.title}</p>
                 <p className={styles.stepDesc}>{fail.desc}</p>

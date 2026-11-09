@@ -39,14 +39,14 @@ const BORDERLESS_ADULT = priceLabel(B.adult, LOCALE);
 const CHILD_AGES = "4～12 岁；未满 4 岁免费";
 
 const ROUTE = "/zh-cn/guides/attractions/teamlab-tokyo-tickets";
-const TITLE = "teamLab Planets 无界 比较：东京该去哪一馆（2026）";
+const TITLE = "teamLab Planets 无界 比较（2026）：两馆怎么选";
 const DESC =
-  "东京有两间 teamLab 美术馆，门票各自分开。从票价、开放时间、地点和适合人群比较 Planets 与无界，再决定订哪一间。";
+  "东京有两座 teamLab 美术馆，门票需分别购买。从票价、开放时间、地点和适合人群对比 Planets 与无界，再决定选哪一座。";
 
 const compareRows = [
   { factor: "地点", planets: "丰洲（江东区）", borderless: "麻布台之丘（港区）" },
-  { factor: "形式", planets: "赤脚，走进水里", borderless: "50 多件作品组成的无地图迷宫" },
-  { factor: "适合", planets: "亲子、第一次来、想要身体体验", borderless: "艺术爱好者、慢慢逛、摄影" },
+  { factor: "形式", planets: "赤脚涉水", borderless: "由 50 多件作品构成、没有固定路线的艺术空间" },
+  { factor: "适合", planets: "亲子游客、首次参观者、喜欢身体互动体验的人", borderless: "艺术爱好者、喜欢慢慢逛和摄影的游客" },
   { factor: "成人票", planets: PLANETS_ADULT, borderless: BORDERLESS_ADULT },
   {
     factor: "儿童票",
@@ -55,45 +55,45 @@ const compareRows = [
   },
   { factor: "开放时间", planets: "08:00–22:00（12/31–1/2 为 08:00–20:00）", borderless: "公告 08:30–21:00，按日期变动" },
   { factor: "入场", planets: "指定日期与入场时间", borderless: "指定时段，或不指定时间的 Flexible Pass" },
-  { factor: "现场购票", planets: "现场不售票", borderless: "现场购票贵 ¥200" },
-  { factor: "展期", planets: "至 2027 年底", borderless: "常设" },
+  { factor: "现场购票", planets: "现场不售票", borderless: "现场购票需加收 ¥200" },
+  { factor: "开放期限", planets: "开放至 2027 年底", borderless: "常设" },
 ];
 
 const whoFor = [
   {
     title: "选 Planets 的话…",
-    desc: "你带着孩子、想要身体体验，也不介意脚湿。你会赤脚走过水深及成人膝盖的水。",
+    desc: "如果带孩子同行、喜欢身体互动体验，也不介意赤脚涉水。你会赤脚走过水深及成人膝盖的水。",
   },
   {
     title: "选无界的话…",
-    desc: "你更想看艺术，而不是蹚水。这里没有固定路线，作品在房间之间移动，你可以按自己的节奏游走。",
+    desc: "如果更想欣赏艺术，而不是涉水。这里没有固定路线，作品会在不同展览空间之间移动，你可以按自己的节奏游览。",
   },
   {
-    title: "两间都去，如果…",
-    desc: "你有两个空闲的半天，又喜欢 teamLab。两间在城市的不同区域，要分别买指定时间的门票，所以请把时间错开。",
+    title: "两座都去，如果…",
+    desc: "如果行程中能安排出两个半天，又喜欢 teamLab。两座美术馆位于城市的不同区域，要分别购买指定时间的门票，所以请把时间错开。",
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
     q: "东京的 teamLab，Planets 和无界哪个更好？",
-    a: "没有绝对的好坏。Planets 适合亲子和第一次来、想要身体体验的人，你会赤脚走进水里。无界适合想慢慢探索的艺术爱好者，没有地图，也没有固定路线。如果只能去一间，又带着孩子，就选 Planets。",
+    a: "没有绝对的好坏。Planets 适合亲子游客、首次参观者和喜欢身体互动体验的人，你会赤脚涉水。无界适合想慢慢探索的艺术爱好者，没有地图，也没有固定路线。如果只能去一座，又带着孩子，就选 Planets。",
   },
   {
     q: "teamLab Planets 和无界是同一张门票吗？",
-    a: "不是。它们是两间独立的美术馆，门票分开，位于东京不同区域。Planets 的门票不能进无界，反过来也一样。",
+    a: "不是。它们是两座独立的美术馆，门票需分别购买，位于东京不同区域。Planets 的门票不能用于进入无界，反之亦然。",
   },
   {
     q: "东京 teamLab 门票多少钱？",
-    a: `Planets 成人票 ${PLANETS_ADULT}，${PLANETS_CHECKED} 查阅。无界成人票 ${BORDERLESS_ADULT}，${BORDERLESS_CHECKED} 查阅。两间都按日期与时段定价，请确认你自己日期的金额。`,
+    a: `Planets 成人票 ${PLANETS_ADULT}，${PLANETS_CHECKED} 查阅。无界成人票 ${BORDERLESS_ADULT}，${BORDERLESS_CHECKED} 查阅。两座都按日期与时段定价，请确认所选日期的实际票价。`,
   },
   {
     q: "Planets 和无界可以同一天去吗？",
-    a: "可以，因为每张票都有各自的日期和时间，但两间在城市的不同区域，每一间都要花不少时间。分成两个半天更轻松。",
+    a: "可以，因为每张票都有各自的日期和时间，但两座美术馆位于城市的不同区域，每一座都要花不少时间。分成两个半天更轻松。",
   },
   {
-    q: "哪一间 teamLab 更适合带孩子？",
-    a: "Planets。两间都是未满 4 岁免费，但 Planets 时间较短、偏身体体验，孩子容易跟上。请带替换衣物，因为涉水区大家都会湿；另外婴儿车不能进场。",
+    q: "哪一座 teamLab 更适合带孩子？",
+    a: "Planets。两座都是未满 4 岁免费，但 Planets 参观时间较短、偏重身体互动体验，孩子容易跟上。请带替换衣物，因为在涉水区每个人都会弄湿；另外婴儿车不可带入馆内。",
   },
 ];
 
@@ -114,7 +114,7 @@ const tripTours = [
 
 const trail: Crumb[] = [
   { href: "/zh-cn/guides/attractions", label: "日本景点门票" },
-  { label: "teamLab Planets 无界 比较" },
+  { label: "teamLab Planets 与无界对比" },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
@@ -148,10 +148,10 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 无界 比较（2026）：<br />东京该去哪一馆
+            teamLab Planets 与无界对比（2026）：<br />东京两馆怎么选？
           </h1>
           <p className={styles.heroSubtitle}>
-            东京有两间 teamLab 美术馆，门票各自分开。这里说明两者的区别，以及该订哪一间。
+            东京有两座 teamLab 美术馆，门票需分别购买。这里说明两者的区别，以及该选哪一座。
           </p>
           <div className={styles.heroBadges}>
             {[`更新于 ${updatedLabel}`, "官方票价", "并排比较"].map((t) => (
@@ -172,8 +172,8 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>东京 teamLab 门票</strong>要先在两间美术馆之间做选择。带孩子或想走进水里，
-              <strong>就订 Planets</strong>；想慢慢探索艺术，<strong>就订无界</strong>。两间门票分开：
+              <strong>东京 teamLab 门票</strong>要先在两座美术馆之间做选择。带孩子或想体验涉水，
+              <strong>选 Planets</strong>；想慢慢探索数字艺术，<strong>选无界</strong>。两座门票需分别购买：
               成人票 Planets {PLANETS_ADULT}，无界 {BORDERLESS_ADULT}。
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -196,8 +196,8 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <BookingEsimCard />
 
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>并排比较</span>
-          <h2 className={styles.sectionTitle}>teamLab Planets 和无界，该订哪一间？</h2>
+          <span className={styles.sectionLabel}>两馆对比<span className="sr-only">：</span></span>
+          <h2 className={styles.sectionTitle}>teamLab Planets 和无界，该选哪一座？</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -222,13 +222,13 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Planets 的信息于 {PLANETS_CHECKED} 查阅 teamlab.art 与官方售票网站；无界的信息于 {BORDERLESS_CHECKED}{" "}
-            查阅 teamlab.art。两间的成人票都按日期与时段定价，请确认你自己日期的金额。
+            查阅 teamlab.art。两座的成人票都按日期与时段定价，请确认所选日期的实际票价。
           </p>
         </section>
 
         <section className={styles.whoForSection}>
-          <span className={styles.sectionLabel}>哪一间适合你</span>
-          <h2 className={styles.sectionTitle}>该选哪一间 teamLab？</h2>
+          <span className={styles.sectionLabel}>选择指南<span className="sr-only">：</span></span>
+          <h2 className={styles.sectionTitle}>哪一座 teamLab 适合你？</h2>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -243,17 +243,17 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="同一趟旅程可以一起订的行程"
-          intro="两间美术馆都只占东京一天中的一部分。这里有地铁通票、带讲解的市区一日游和郊外一日游。Klook 价格随日期变化，所以请打开页面查看你那一天的金额。"
+          intro="参观任何一座美术馆都只占东京一天中的一部分时间。这里有地铁通票、带讲解的市区一日游和郊外一日游。Klook 价格随日期变化，所以请打开页面查看所选日期的实际价格。"
           tours={tripTours}
         />
 
         <Related
           items={[
-            { href: "/zh-cn/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets 门票 2026：票价、时间与预约方式" },
-            { href: "/zh-cn/guides/attractions/teamlab-borderless-tickets", title: "teamLab 无界 门票（2026）：票价、时段预约与购票渠道" },
-            { href: "/guides/attractions/teamlab-kyoto-tickets", title: "teamLab Kyoto Tickets: Prices, Hours & Booking（英文）" },
-            { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking（英文）" },
-            { href: "/guides/transport/tokyo-transportation", title: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained（英文）" },
+            { href: "/zh-cn/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets 门票（2026）：票价、时间与预约方式" },
+            { href: "/zh-cn/guides/attractions/teamlab-borderless-tickets", title: "teamLab Borderless（无界美术馆）门票（2026）：票价、时段预约与购票渠道" },
+            { href: "/guides/attractions/teamlab-kyoto-tickets", title: "teamLab 京都门票：票价、营业时间与预订（英文）" },
+            { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab 福冈门票（2026）：票价、营业时间与预订（英文）" },
+            { href: "/guides/transport/tokyo-transportation", title: "东京交通攻略（2026）：电车、地铁与交通卡（英文）" },
           ]}
         />
       </div>

@@ -235,10 +235,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
   "zh-cn": {
     eyebrow: "简体中文版",
     titleLines: ["日本旅游实用指南（2026）：", "门票、交通、流量卡"],
-    subtitle: "哪几张票一定要先订、从海外行得通的购票渠道，以及落地那天的交通与上网。",
+    subtitle: "哪些门票需要提前预订、境外游客可以使用哪些购票渠道，以及抵达日本当天的交通与上网安排。",
     desc:
       "Japan Travel Kit 简体中文版：日本景点门票、东京迪士尼与日本环球影城预约规则、" +
-      "富士山一日游、机场交通与日本eSIM。票价读自官网并标示核查日期。",
+      "富士山一日游、机场交通与日本eSIM。票价来自官网并标示核查日期。",
     groups: [
       {
         key: "winter",
@@ -267,7 +267,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "parks",
         label: "主题乐园",
-        desc: "东京迪士尼与日本环球影城：票种、快速通行证，以及从海外怎么买。",
+        desc: "东京迪士尼与日本环球影城：票种、快速通行证，以及境外游客怎么买。",
         routes: [
           "/zh-cn/guides/attractions/tokyo-disney-tickets",
           "/zh-cn/guides/attractions/usj-tickets-express-pass",
@@ -276,13 +276,13 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "daytrips",
         label: "一日游",
-        desc: "整天出城的行程，要选的是哪一条路线，而不是哪一张票。",
+        desc: "安排一整天的郊外游时，要比较的是行程路线，而不是门票。",
         routes: ["/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo"],
       },
       {
         key: "cities",
         label: "城市与总览",
-        desc: "东京哪些要先订票、哪些可以直接去，以及简体中文版的门票总览。",
+        desc: "东京哪些景点要先订票、哪些可以直接去，以及简体中文版的门票总览。",
         routes: [
           "/zh-cn/guides/attractions/things-to-do-tokyo",
           "/zh-cn/guides/attractions",
@@ -291,7 +291,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "行前准备",
-        desc: "落地那天就会用到的两件事：机场到市区的交通，以及手机上网。",
+        desc: "抵达日本当天就会用到的两件事：机场到市区的交通，以及手机上网。",
         routes: [
           "/zh-cn/guides/transport/tokyo-airport-transfer",
           "/zh-cn/guides/esim/best-esim-japan",
@@ -304,43 +304,43 @@ const COPY: Record<TranslatedLocale, Copy> = {
       "/zh-cn/guides/attractions/niseko-ski-tours":
         "新千岁机场接送、教练课、四大雪场怎么选，以及从札幌出发的滑雪行程。",
       "/zh-cn/guides/attractions/hokkaido-7-day-itinerary":
-        "7 天逐日路线，含周游券的算法，以及冬季要怎么调整。",
+        "7 天逐日路线，含周游券费用的计算方法，以及冬季要怎么调整。",
       "/zh-cn/guides/attractions/japan-winter-itinerary":
         "12 天的冬季路线：东京、金泽、京都、大阪，以及 2 月的北海道版本。",
       "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour":
         "从东京出发看泡汤雪猴：一日游、自行前往的交通与入苑信息。",
       "/zh-cn/guides/attractions/shibuya-sky-tickets":
-        "官方票价、为什么日落场最先卖完，以及海外信用卡刷不过时怎么订。",
+        "官方票价、为什么日落时段最先售罄，以及境外信用卡支付失败时怎么订。",
       "/zh-cn/guides/attractions/tokyo-skytree-tickets":
-        "350 楼与 450 楼怎么选、套票为什么比现场加购便宜，以及当天购票多 ¥500。",
+        "350 米与 450 米观景台怎么选、套票为什么比现场加购便宜，以及当天购票多 ¥500。",
       "/zh-cn/guides/attractions/dotonbori-river-cruise":
-        "とんぼり游船的票价与班次、大阪周游卡怎么换票，以及同一条河上五艘船的比较。",
+        "Tombori River Cruise 的票价与发船时间、大阪周游卡怎么换票，以及同一河道上五种游船的比较。",
       "/zh-cn/guides/attractions/teamlab-planets-tickets":
         "丰洲 Planets 的票价、30 分钟入场时段、涉水区该穿什么，以及和无界的比较。",
       "/zh-cn/guides/attractions/teamlab-borderless-tickets":
         "麻布台之丘的无界：浮动定价怎么算、指定时段与 Flexible Pass 的差别。",
       "/zh-cn/guides/attractions/tokyo-disney-tickets":
-        "每张票都指定日期、门口完全不卖票。怎么买，以及乐园与海洋怎么选。",
+        "门票均需指定入园日期，园区入口不设现场售票。怎么买，以及迪士尼乐园与迪士尼海洋怎么选。",
       "/zh-cn/guides/attractions/usj-tickets-express-pass":
         "一律在线购票，超级任天堂世界需要指定入园时间。快速通行证 4／7／8 怎么挑。",
       "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo":
-        "四种行程比较：只跑富士山还是加箱根、五合目是什么，以及一天要多久。",
+        "四种行程比较：富士山周边游还是加箱根、五合目是什么，以及行程总时长。",
       "/zh-cn/guides/attractions/things-to-do-tokyo":
-        "真正会卖完的只有四、五样。哪些要提前订，哪些可以当天再决定。",
+        "真正容易售罄的只有四、五个项目。哪些要提前订，哪些可以当天再决定。",
       "/zh-cn/guides/attractions":
         "简体中文版的景点门票总览：官方票价、预约方式与一日游，按类别整理。",
       "/zh-cn/guides/transport/tokyo-airport-transfer":
-        "成田与羽田进市区的每个选项，比价格、时间与方便度，附 2026 年票价。",
+        "从成田机场和羽田机场前往市区的各种交通方式，比较价格、时间与方便度，附 2026 年票价。",
       "/zh-cn/guides/esim/best-esim-japan":
         "Klook 日本 eSIM，加上 Airalo、Holafly、eSIM Go、Sakura Mobile 的价格比较。",
     },
-    englishTitle: "还没翻译的部分",
+    englishTitle: "尚未推出中文版的内容",
     englishIntro:
       "京都与大阪的城市攻略、其他的一日游、铁路周游券、IC 卡、支付与货币，以及完整的门票价格总表，目前只有英文版。以下链接都是英文页：",
     faq: [
       {
         q: "这个网站有简体中文版吗？",
-        a: `有，但不是全站。目前简体中文版共 ${editionPageCount("zh-cn")} 页（本页、门票总览与 ${editionGuideCount("zh-cn")} 篇攻略），挑的是销售与点击实绩最高、也最需要提前订票的那几个入口。其余的攻略只有英文版，链接到那些页面时我们会标示「（英文）」。`,
+        a: `有，但不是全站。目前简体中文版共 ${editionPageCount("zh-cn")} 页（本页、门票总览与 ${editionGuideCount("zh-cn")} 篇攻略），优先翻译了销售和点击表现最好、且最需要提前预订的攻略。其余的攻略只有英文版，链接到那些页面时我们会标示「（英文）」。`,
       },
       {
         q: "怎么从英文页切换到简体中文？",
@@ -348,7 +348,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
       {
         q: "中文页的票价和英文页一样吗？",
-        a: "一样。所有价格都读自业者自己的网站，中文版与英文版共用同一组数据与同一个核查日期，中文页不会出现英文页没有的数字。",
+        a: "一样。所有价格均来自相关商家的网站，中文版与英文版共用同一组数据与同一个核查日期，中文页面不会出现英文原版中没有的数字。",
       },
     ],
     itemListName: "日本旅游实用指南 — Japan Travel Kit 简体中文版",
@@ -689,51 +689,51 @@ const HOME: Record<TranslatedLocale, HomeCopy> = {
     secondaryLabel: "规划行程",
     book: {
       eyebrow: "出发前先订",
-      title: "值得在家先搞定的四件事",
-      desc: "日本旅行大部分的事都可以当天再安排，这四件是例外：上网、住宿、铁路，以及一个会按日期卖完的一日游。每张卡片都附上讲解它的攻略，以及预订的地方。",
+      title: "出发前值得提前安排的四件事",
+      desc: "日本旅行大部分的事都可以当天再安排，但有四项建议提前安排：上网、住宿、铁路交通，以及可能按日期售罄的一日游。每个项目都附有相关攻略和预订渠道。",
       cards: {
         esim: {
           kicker: "上网",
           title: "日本 eSIM，走出航站楼前就能用",
-          desc: "落地那一刻最值得已经能用的东西：乘车 App、酒店入住和你的门票，全都在手机上。Klook 自己也卖日本 eSIM，以二维码凭证发送。",
+          desc: "抵达日本时，最好已经能正常使用手机网络：乘车 App、酒店入住和电子门票，全都在手机上。Klook 也销售日本 eSIM，购买后提供二维码电子凭证。",
           ctas: ["在 Klook 看 eSIM 方案 →"],
           guide: "阅读：日本 eSIM 推荐",
         },
         stay: {
           kicker: "住宿",
-          title: "住在你真正会坐的线路上",
-          desc: "在东京、京都和大阪，区域比房间更重要。住在山手线环线上、京都站前，或御堂筋线沿线，整趟旅程每天都能少换乘一次。",
+          title: "住宿尽量选在实际会乘坐的交通线路附近",
+          desc: "在东京、京都和大阪，区域比房间更重要。选择山手线沿线、京都站附近或御堂筋线沿线的住宿，整趟旅程每天都能少换乘一次。",
           ctas: ["东京酒店（Klook）→", "京都酒店（Klook）→", "大阪酒店（Klook）→"],
           guide: "阅读：东京住哪里",
         },
         rail: {
           kicker: "铁路",
-          title: "JR Pass，拿你自己的路线来算",
-          desc: "全国版周游券在长途移动时划算，只玩一个城市就亏，所以唯一诚实的买法，是拿你打算坐的车来比价。有 7、14、21 天版本，分普通车厢与绿色车厢。",
+          title: "JR Pass 是否划算，要根据自己的行程计算",
+          desc: "全国版 JR Pass 更适合长途跨城市旅行，如果只在一个城市游玩，就不划算。因此，应该根据计划乘坐的列车，比较单独购票与购买周游券的费用。有 7、14、21 天版本，分普通车厢与绿色车厢。",
           ctas: ["在 Klook 查 JR Pass 价格 →"],
           guide: "阅读：JR Pass 值不值得买",
         },
         daytrip: {
           kicker: "一日游",
           title: "富士山与箱根，从东京出发一天往返",
-          desc: "最难自己拼起来的一日游：富士山五合目搭配箱根火山区与芦之湖，当天傍晚回到东京的大巴行程。",
+          desc: "自行安排起来最麻烦的一日游：富士山五合目搭配箱根火山区与芦之湖，当天傍晚回到东京的大巴行程。",
           ctas: ["在 Klook 看一日游 →"],
           guide: "阅读：富士山一日游怎么选",
         },
       },
-      note: "上方的预订链接是联盟链接：如果你通过这些链接预订，我们可能会获得小额佣金，你不需要多付任何费用。价格与库存以卖家为准。",
+      note: "上方的预订链接是联盟链接：如果你通过这些链接预订，我们可能会获得小额佣金，你不需要多付任何费用。价格及预订名额以商家公布的信息为准。",
       disclaimer: "完整声明（英文）→",
     },
     stats: { translated: "篇简体中文攻略", prices: "项官方票价已核查", total: "篇攻略（英文版全站）", checked: "最近一次核查票价" },
     guides: {
       eyebrow: "规划行程",
       title: "旅游攻略",
-      desc: "先处理需要预订的，再整理其他的——以下是已有简体中文版的攻略，按类别整理。",
+      desc: "先预订需要提前安排的项目，再规划其他行程——以下是已有简体中文版的攻略，按类别整理。",
     },
     hubs: {
       "/guides/attractions": {
         title: "日本景点与门票",
-        desc: "门票、行程、主题乐园与一日游——哪些要先订、官方票价多少，以及从海外行得通的购票渠道。",
+        desc: "门票、行程、主题乐园与一日游——哪些要先订、官方票价多少，以及境外游客可以使用的购票渠道。",
       },
       "/guides/transport": { title: "交通", desc: "新干线周游券、IC 卡、机场铁路，以及各城市的交通攻略。" },
       "/guides/esim": { title: "eSIM 与 SIM 卡", desc: "该买哪张 eSIM、怎么安装、网络覆盖范围，以及实在的套餐比较。" },
@@ -742,26 +742,26 @@ const HOME: Record<TranslatedLocale, HomeCopy> = {
     cities: {
       eyebrow: "目的地",
       title: "按城市浏览",
-      desc: "大多数行程都是一个城市一个城市规划的。每个城市页列出我们为它写的所有攻略。",
+      desc: "大多数日本旅行行程都是按城市分别规划的。每个城市页面都汇总了本站发布的相关攻略。",
       items: {
         tokyo: { title: "东京", desc: "观景台、teamLab 的入场时段、迪士尼、片场导览——以及从东京出发的四个一日游。" },
-        kyoto: { title: "京都", desc: "大多是可以直接走进去的寺院，这会改变你安排一天的方式——另外还有和服租赁与巴士票的算法。" },
-        osaka: { title: "大阪", desc: "城市周游卡真正划算的地方、没有任何周游卡覆盖的那一个景点，以及关西的一日游。" },
+        kyoto: { title: "京都", desc: "大多是可以直接走进去的寺院，这会改变你安排一天的方式——另外还有和服租赁与巴士车票费用的计算方法。" },
+        osaka: { title: "大阪", desc: "城市周游卡真正划算的地方、不包含在任何周游卡中的那个景点，以及关西的一日游。" },
         daytrips: { title: "一日游与行程", desc: "富士山、箱根、日光、镰仓、奈良、广岛——该订哪一种行程，以及什么时候自己去更便宜。" },
       },
       footLink: (n) => `浏览全部 ${n} 篇攻略（英文）→`,
     },
-    popular: { eyebrow: "最多人看", title: "热门攻略", desc: "旅客出发前最常打开的攻略中，已有简体中文版的几篇。" },
+    popular: { eyebrow: "浏览量最高", title: "热门攻略", desc: "旅客出发前最常打开的攻略中，已有简体中文版的几篇。" },
     trust: {
       eyebrow: "我们怎么做",
       title: "独立、诚实、持续更新。",
-      desc: "我们推荐的每项产品都做过研究，并拿商家自己公布的价格核对。我们的评测从不接受赞助——只有你通过我们的链接购买时，我们才会获得小额联盟佣金，你不需要多付任何费用。",
+      desc: "我们对每项推荐产品都进行了调查，并对照商家公布的价格进行核实。我们的评测从不接受赞助——只有你通过我们的链接购买时，我们才会获得小额联盟佣金，你不需要多付任何费用。",
       checks: ["没有付费推广", "价格经过核对", "每月更新"],
     },
     cta: {
       eyebrow: "从这里开始",
-      title: "准备好规划日本行程了吗？",
-      desc: "从预订开始——指定时段的门票与行程，是日本旅行中唯一可能在你抵达前就卖完的部分。",
+      title: "准备开始规划日本之旅了吗？",
+      desc: "从预订开始——指定时段的门票与行程，是日本旅行中唯一可能在你抵达前就售罄的部分。",
     },
     englishMeta: "英文页 · English",
     englishSuffix: "（英文）",

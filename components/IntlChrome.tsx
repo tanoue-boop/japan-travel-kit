@@ -33,6 +33,14 @@ type Copy = {
   relatedLabel: string;
   relatedTitle: string;
   relatedArrow: string;
+  /**
+   * Hidden text between crumbs. The visible separator is a chevron SVG, so copied or
+   * extracted text ran the crumbs together ("日本景点门票道顿堀游船"). "" renders nothing,
+   * which keeps the other editions' markup unchanged.
+   */
+  crumbSep: string;
+  /** Hidden text after a section's eyebrow label, for the same reason. */
+  labelSep: string;
 };
 
 const COPY: Record<TranslatedLocale, Copy> = {
@@ -45,16 +53,20 @@ const COPY: Record<TranslatedLocale, Copy> = {
     relatedLabel: "延伸閱讀",
     relatedTitle: "其他攻略",
     relatedArrow: "看攻略 →",
+    crumbSep: "",
+    labelSep: "",
   },
   "zh-cn": {
     disclosureLabel: "推广链接声明：",
     disclosureText:
-      "本页部分链接为推广联盟链接。若您通过这些链接预订，我们可能获得少量分成，您支付的价格不会因此增加。",
+      "本页部分链接为推广联盟链接。如果你通过这些链接预订，我们可能获得少量推广佣金，你无需支付额外费用。",
     disclosureLink: "完整声明（英文）→",
     faqHeading: "常见问题",
     relatedLabel: "延伸阅读",
     relatedTitle: "其他攻略",
     relatedArrow: "看攻略 →",
+    crumbSep: " / ",
+    labelSep: "：",
   },
   ko: {
     disclosureLabel: "제휴 링크 안내: ",
@@ -65,6 +77,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     relatedLabel: "함께 읽기",
     relatedTitle: "다른 가이드",
     relatedArrow: "가이드 보기 →",
+    crumbSep: "",
+    labelSep: "",
   },
   th: {
     disclosureLabel: "การเปิดเผยลิงก์พันธมิตร: ",
@@ -75,6 +89,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     relatedLabel: "อ่านต่อ",
     relatedTitle: "ไกด์อื่น ๆ",
     relatedArrow: "ดูไกด์ →",
+    crumbSep: "",
+    labelSep: "",
   },
 };
 
@@ -116,6 +132,7 @@ export const TRAIL_BASE: Record<TranslatedLocale, Crumb[]> = {
 };
 
 export function Breadcrumb({ trail }: { trail: Crumb[] }) {
+  const { crumbSep } = useCopy();
   return (
     <div className={styles.breadcrumb}>
       <div className={styles.breadcrumbInner}>
@@ -124,6 +141,7 @@ export function Breadcrumb({ trail }: { trail: Crumb[] }) {
           // directly, so an extra box between it and the links would break the row.
           <Fragment key={crumb.label}>
             {i > 0 && <BreadSep />}
+            {i > 0 && crumbSep && <span className="sr-only">{crumbSep}</span>}
             {crumb.href ? (
               <Link href={crumb.href} className={styles.breadLink}>{crumb.label}</Link>
             ) : (
@@ -175,7 +193,7 @@ export function FaqList({ items, heading }: { items: FaqItem[]; heading?: string
   const copy = useCopy();
   return (
     <section className={styles.faqSection}>
-      <span className={styles.sectionLabel}>FAQ</span>
+      <span className={styles.sectionLabel}>FAQ{copy.labelSep && <span className="sr-only">{copy.labelSep}</span>}</span>
       <h2 className={styles.sectionTitle}>{heading ?? copy.faqHeading}</h2>
       <div className={styles.faqList}>
         {items.map((item, i) => (
@@ -220,7 +238,7 @@ export function Related({ items }: { items: RelatedItem[] }) {
   const copy = useCopy();
   return (
     <section className={styles.relatedSection}>
-      <span className={styles.sectionLabel}>{copy.relatedLabel}</span>
+      <span className={styles.sectionLabel}>{copy.relatedLabel}{copy.labelSep && <span className="sr-only">{copy.labelSep}</span>}</span>
       <h2 className={styles.sectionTitle}>{copy.relatedTitle}</h2>
       <div className={styles.relatedGrid}>
         {items.map((item) => (

@@ -41,7 +41,7 @@ const product = (label: string, path: string): ZhCnKlookProduct => ({ label, url
 
 // ── Attraction tickets ──────────────────────────────────────────────────────
 // en-US counterpart: shibuyaSkyTicketUrl (aff_adid 1299140); zh-TW: zhShibuyaSky
-export const cnShibuyaSky = product("涩谷SKY 门票", "activity/70672-shibuya-sky-tokyo/");
+export const cnShibuyaSky = product("SHIBUYA SKY 门票","activity/70672-shibuya-sky-tokyo/");
 
 // en-US counterpart: teamlabPlanetsTicketUrl (aff_adid 1299131); zh-TW: zhTeamlabPlanets
 export const cnTeamlabPlanets = product(
