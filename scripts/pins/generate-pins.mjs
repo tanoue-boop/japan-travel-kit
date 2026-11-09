@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 /**
- * Pinterest pin generator.
+ * Pinterest pin generator (A27b design, matches the site brand).
  *
  * Reads scripts/pins/pins.json and, for each entry:
  *   - downloads the Pexels photo (cached in node_modules/.cache/pins),
- *   - crops it to 1000x1500 and overlays a translucent band with the headline,
- *     a one-line sub-heading and the site name at the foot,
+ *   - lays it out 1000x1500: photo on the top 60%, a white panel below with a
+ *     brick-red kicker (diamond + caps), a Noto Serif headline (max 3 lines), a
+ *     short brick-red rule, a one-line Noto Sans sub-heading and
+ *     "japan-travel-kit.com" at the foot,
+ *   - renders it in Playwright/Chromium so the Google Fonts (Noto Serif /
+ *     Noto Sans, same as the site) are used with real text metrics,
  *   - writes public/pins/<slug>.jpg (kept under 400 KB).
  * Then writes docs/pinterest-photo-sources.tsv and docs/pinterest-pins.csv
  * (Pinterest bulk-create format).
@@ -16,19 +20,27 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { chromium } from 'playwright';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const SITE = 'https://www.japan-travel-kit.com';
 const W = 1000;
 const H = 1500;
+const PHOTO_H = 900; // top 60%
+const PAD_X = 72;
 const MAX_BYTES = 400 * 1024;
 const CACHE = path.join(ROOT, 'node_modules/.cache/pins');
 const OUT = path.join(ROOT, 'public/pins');
 
+// Site brand (production, 2026-11-09)
+const BRAND = { ink: '#23211F', muted: '#5A5550', brick: '#9B3D2E', paper: '#FFFFFF', soft: '#F6F3EE' };
+const FONTS_CSS =
+  'https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600&family=Noto+Sans:wght@400;600;700&display=block';
+
 const THEMES = {
-  winter: { band: '#14254a', accent: '#9cc4ff', board: 'Japan Winter Travel' },
-  attr: { band: '#c8341c', accent: '#ffd9a8', board: 'Tokyo & Osaka Attractions' },
-  money: { band: '#14503a', accent: '#b8f0cf', board: 'Japan Travel Tips: eSIM, Money & Insurance' },
+  winter: { kicker: 'Japan in Winter', board: 'Japan Winter Travel' },
+  attr: { kicker: 'Tickets & Tours', board: 'Tokyo & Osaka Attractions' },
+  money: { kicker: 'Trip Prep', board: 'Japan Travel Tips: eSIM, Money & Insurance' },
 };
 
 const args = process.argv.slice(2);
@@ -42,40 +54,6 @@ fs.mkdirSync(OUT, { recursive: true });
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-// Rough advance widths (em) for a bold sans; good enough to wrap without a text-metrics lib.
-function textWidth(s, size) {
-  let w = 0;
-  for (const ch of s) {
-    if (ch === ' ') w += 0.28;
-    else if ('il.,:;\'!|'.includes(ch)) w += 0.3;
-    else if ('fjrtI-'.includes(ch)) w += 0.38;
-    else if ('mwMW'.includes(ch)) w += 0.9;
-    else if (/[A-Z&]/.test(ch)) w += 0.72;
-    else w += 0.6;
-  }
-  return w * size;
-}
-
-function wrap(text, size, maxW) {
-  const words = text.split(' ');
-  const lines = [];
-  let cur = '';
-  for (const word of words) {
-    const next = cur ? `${cur} ${word}` : word;
-    if (cur && textWidth(next, size) > maxW) { lines.push(cur); cur = word; } else cur = next;
-  }
-  if (cur) lines.push(cur);
-  return lines;
-}
-
-function fitHeadline(text, maxW) {
-  for (let size = 96; size >= 60; size -= 4) {
-    const lines = wrap(text, size, maxW);
-    if (lines.length <= 3 && lines.every((l) => textWidth(l, size) <= maxW)) return { size, lines };
-  }
-  throw new Error(`headline does not fit in 3 lines: ${text}`);
-}
-
 async function photo(pin) {
   const file = path.join(CACHE, `${pin.pexelsId}.jpg`);
   if (!fs.existsSync(file)) {
@@ -87,52 +65,75 @@ async function photo(pin) {
   return file;
 }
 
-function overlay(pin) {
-  const t = THEMES[pin.theme];
-  const padX = 60;
-  const bandX = 50;
-  const bandW = W - bandX * 2;
-  const { size, lines } = fitHeadline(pin.headline, bandW - padX * 2);
-  const lh = Math.round(size * 1.12);
-  const subSize = 44;
-  const bandTop = 120;
-  const firstBase = bandTop + 56 + size * 0.8;
-  const lastBase = firstBase + lh * (lines.length - 1);
-  const subY = lastBase + size * 0.25 + 22 + subSize;
-  const bandH = subY - bandTop + 44;
-  const head = lines.map((l, i) =>
-    `<text x="${W / 2}" y="${firstBase + i * lh}" text-anchor="middle" font-size="${size}" font-weight="800" fill="#ffffff">${esc(l)}</text>`).join('');
-  return Buffer.from(`<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="foot" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#000" stop-opacity="0"/>
-      <stop offset="1" stop-color="#000" stop-opacity="0.78"/>
-    </linearGradient>
-  </defs>
-  <g font-family="'Segoe UI', Arial, Helvetica, sans-serif">
-    <rect x="${bandX}" y="${bandTop}" width="${bandW}" height="${bandH}" rx="18" fill="${t.band}" fill-opacity="0.88"/>
-    <rect x="${W / 2 - 60}" y="${bandTop + 26}" width="120" height="6" rx="3" fill="${t.accent}"/>
-    ${head}
-    <text x="${W / 2}" y="${subY}" text-anchor="middle" font-size="${subSize}" font-weight="600" fill="${t.accent}">${esc(pin.sub)}</text>
-    <rect x="0" y="${H - 260}" width="${W}" height="260" fill="url(#foot)"/>
-    <text x="${W / 2}" y="${H - 70}" text-anchor="middle" font-size="48" font-weight="700" fill="#ffffff" letter-spacing="1">japan-travel-kit.com</text>
-  </g>
-</svg>`);
+function html(pin, photoUri) {
+  const kicker = pin.kicker || THEMES[pin.theme].kicker;
+  return `<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="${FONTS_CSS}">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:${W}px;height:${H}px;background:${BRAND.paper};overflow:hidden}
+  .photo{position:absolute;left:0;top:0;width:${W}px;height:${PHOTO_H}px;background:url(${photoUri}) center/cover}
+  .panel{position:absolute;left:0;top:${PHOTO_H}px;width:${W}px;height:${H - PHOTO_H}px;padding:58px ${PAD_X}px 0}
+  .kicker{font:600 25px/1 'Noto Sans',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:${BRAND.brick};display:flex;align-items:center;gap:16px}
+  .kicker i{display:block;width:12px;height:12px;background:${BRAND.brick};transform:rotate(45deg)}
+  h1{margin-top:28px;font-family:'Noto Serif',serif;font-weight:600;color:${BRAND.ink};line-height:1.16;text-wrap:balance}
+  .rule{margin-top:30px;width:72px;height:4px;background:${BRAND.brick}}
+  .sub{margin-top:26px;font:400 31px/1.3 'Noto Sans',sans-serif;color:${BRAND.muted};white-space:nowrap;display:inline-block}
+  .site{position:absolute;left:${PAD_X}px;bottom:54px;font:700 28px/1 'Noto Sans',sans-serif;color:${BRAND.ink};letter-spacing:.02em}
+</style></head><body>
+<div class="photo"></div>
+<div class="panel">
+  <div class="kicker"><i></i>${esc(kicker)}</div>
+  <h1 id="h">${esc(pin.headline)}</h1>
+  <div class="rule"></div>
+  <div class="sub" id="s">${esc(pin.sub)}</div>
+</div>
+<div class="site" id="site">japan-travel-kit.com</div>
+</body></html>`;
 }
 
-async function render(pin) {
+async function render(page, pin) {
   const src = await photo(pin);
-  const base = await sharp(src).rotate().resize(W, H, { fit: 'cover', position: pin.focus || 'centre' }).toBuffer();
-  const composed = await sharp(base).composite([{ input: overlay(pin) }]).toBuffer();
-  let q = 84;
+  const jpg = await sharp(src).rotate()
+    .resize(W, PHOTO_H, { fit: 'cover', position: pin.focus || 'centre' })
+    .jpeg({ quality: 92 }).toBuffer();
+  await page.setContent(html(pin, `data:image/jpeg;base64,${jpg.toString('base64')}`), { waitUntil: 'networkidle' });
+  const fit = await page.evaluate(async (maxW) => {
+    await document.fonts.ready;
+    const h = document.getElementById('h');
+    const s = document.getElementById('s');
+    const loaded = ['600 20px "Noto Serif"', '400 20px "Noto Sans"', '700 20px "Noto Sans"']
+      .every((f) => [...document.fonts].some((ff) => ff.status === 'loaded' && f.includes(ff.family)));
+    const countLines = (size) => Math.round(h.getBoundingClientRect().height / (size * 1.16));
+    let size = 74;
+    for (; size > 50; size -= 2) {
+      h.style.fontSize = `${size}px`;
+      if (countLines(size) <= 3) break;
+    }
+    h.style.fontSize = `${size}px`;
+    return {
+      loaded,
+      size,
+      lines: countLines(size),
+      subW: s.getBoundingClientRect().width,
+      maxW,
+      gap: document.getElementById('site').getBoundingClientRect().top - s.getBoundingClientRect().bottom,
+    };
+  }, W - PAD_X * 2);
+  if (!fit.loaded) throw new Error(`${pin.slug}: Google Fonts not loaded`);
+  if (fit.lines > 3) throw new Error(`${pin.slug}: headline over 3 lines`);
+  if (fit.subW > fit.maxW) throw new Error(`${pin.slug}: sub-heading wider than the panel (${fit.subW}px)`);
+  if (fit.gap < 24) throw new Error(`${pin.slug}: text runs into the footer (${fit.gap}px)`);
+  const png = await page.screenshot({ type: 'png' });
+  let q = 86;
   let out;
   do {
-    out = await sharp(composed).jpeg({ quality: q, mozjpeg: true, progressive: true }).toBuffer();
+    out = await sharp(png).jpeg({ quality: q, mozjpeg: true, progressive: true }).toBuffer();
     q -= 6;
   } while (out.length > MAX_BYTES && q > 40);
   if (out.length > MAX_BYTES) throw new Error(`${pin.slug}: ${out.length} bytes`);
   fs.writeFileSync(path.join(OUT, `${pin.slug}.jpg`), out);
-  return out.length;
+  return { bytes: out.length, size: fit.size, lines: fit.lines };
 }
 
 const csvCell = (s) => `"${String(s ?? '').replace(/"/g, '""')}"`;
@@ -165,14 +166,20 @@ async function contactSheet(file) {
     left: gap + (i % cols) * (tw + gap),
     top: gap + Math.floor(i / cols) * (th + gap),
   })));
-  await sharp({ create: { width: gap + cols * (tw + gap), height: gap + rows * (th + gap), channels: 3, background: '#f2f0ec' } })
-    .composite(tiles).jpeg({ quality: 82, mozjpeg: true }).toFile(file);
+  await sharp({ create: { width: gap + cols * (tw + gap), height: gap + rows * (th + gap), channels: 3, background: BRAND.soft } })
+    .composite(tiles).jpeg({ quality: 84, mozjpeg: true }).toFile(file);
 }
 
-for (const p of pins) {
-  if (only && !only.includes(p.slug)) continue;
-  const bytes = await render(p);
-  console.log(`${p.slug}.jpg  ${(bytes / 1024).toFixed(0)} KB`);
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
+try {
+  for (const p of pins) {
+    if (only && !only.includes(p.slug)) continue;
+    const r = await render(page, p);
+    console.log(`${p.slug}.jpg  ${(r.bytes / 1024).toFixed(0)} KB  headline ${r.size}px x${r.lines}`);
+  }
+} finally {
+  await browser.close();
 }
 writeDocs();
 if (contactPath) { await contactSheet(contactPath); console.log(`contact sheet: ${contactPath}`); }
