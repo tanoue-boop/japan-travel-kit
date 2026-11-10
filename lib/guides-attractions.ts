@@ -360,6 +360,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/ginzan-onsen-tour",
+    badge: "Day trip",
+    title: "Ginzan Onsen Tour (2026–27): Day Trip, Winter and Gas Lamps",
+    desc: "Snow and gas lamps from December to February, about 3 hours from Tokyo plus a 35–40 minute bus, and the 2026–27 winter shuttle from ¥700 — with Sendai day tours, two-day tours and a night in the street compared.",
+    group: "daytrips",
+    // Yamagata, same call as zao-snow-monsters-tour.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/japan-14-day-itinerary",
     badge: "Itinerary",
     title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day",
@@ -636,6 +645,15 @@ export const attractionArticles: GuideArticle[] = [
     desc: "2.5 hours and ¥6,000 from New Chitose by booked coach, four linked areas on one pass, ¥13,500 a day at peak — and the resort school only takes advance bookings for full days between 24 Dec and 28 Feb.",
     group: "experiences",
     // Hokkaido sits outside the three city hubs, like the other Hokkaido pages.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/sapporo-ski-day-trip",
+    badge: "Ski",
+    title: "Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu",
+    desc: "Teine is about 40 minutes from central Sapporo with a ¥9,800 day at the window and night skiing to 20:00; Kiroro and Rusutsu are the longer days — with all-inclusive, lesson and lift-and-bus tours compared.",
+    group: "experiences",
+    // Hokkaido, same group and city as niseko-ski-tours.
     city: "other",
   },
   {

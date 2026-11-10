@@ -482,7 +482,8 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
             <strong>From Sendai, yes</strong>, on a tour: the Ginzan Onsen &amp; Zao Snow Monsters day tour does
             the ropeway and the old hot-spring street in one day. On your own it is harder, because Ginzan Onsen and
             Zao Onsen are far apart and each is reached by its own bus. <strong>From Tokyo</strong>, the
-            tours on Klook that combine the two are two-day tours, with a night at an onsen hotel in between.
+            tours on Klook that combine the two are two-day tours, with a night at an onsen hotel in between. For the onsen street itself, its winter shuttle and staying the night, see the{" "}
+            <Link href="/guides/attractions/ginzan-onsen-tour">Ginzan Onsen tour guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={zaoGinzanDayTourFromSendai.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -590,6 +591,7 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
+              { href: "/guides/attractions/ginzan-onsen-tour", title: "Ginzan Onsen Tour (2026–27): Day Trip, Winter and Gas Lamps" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary" },
               { href: "/guides/attractions/jigokudani-snow-monkey-tour", title: "Jigokudani Snow Monkey Tour" },
               { href: "/guides/transport/jr-east-pass", title: "JR East Pass (2026): Price, Coverage and Is It Worth It?" },

@@ -1775,6 +1775,32 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 10 Nov 2026: Ginzan Onsen's snow and gas lamps, on the Yamagata Shinkansen. */}
+            <Link href="/guides/attractions/ginzan-onsen-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Ginzan Onsen Tour (2026–27): Day Trip, Winter and Gas Lamps</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            {/* Added 10 Nov 2026: a ski day out of a Sapporo hotel — Teine, Kiroro or Rusutsu. */}
+            <Link href="/guides/attractions/sapporo-ski-day-trip" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 9 Nov 2026: the snow monsters of Yamagata, peak in February. */}
             <Link href="/guides/attractions/zao-snow-monsters-tour" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

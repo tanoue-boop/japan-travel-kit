@@ -919,6 +919,19 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 10 Nov 2026: a ski day out of a Sapporo hotel — Teine, Kiroro or Rusutsu. */}
+            <Link href="/guides/attractions/sapporo-ski-day-trip" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 7 Nov 2026: the winter light-up day inland from Sapporo. */}
             <Link href="/guides/attractions/furano-biei-tour" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

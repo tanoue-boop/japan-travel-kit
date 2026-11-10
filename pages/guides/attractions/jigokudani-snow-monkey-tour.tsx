@@ -784,6 +784,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/zao-snow-monsters-tour", title: "Zao Snow Monsters Tour (2026–27): Season, Ropeway and Tours" },
+              { href: "/guides/attractions/ginzan-onsen-tour", title: "Ginzan Onsen Tour (2026–27): Day Trip, Winter and Gas Lamps" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary" },
               { href: "/guides/transport/jr-east-pass", title: "JR East Pass (2026): Price, Coverage and Is It Worth It?" },
               { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Gala Yuzawa Ski Day Trip from Tokyo" },

@@ -7697,3 +7697,174 @@ export const limousineBusTripPrep: KlookTripPrepItem[] = [
     why: "Departure times, your stop and the QR code are all on your phone, and data that works at the kerb is the one thing the bus cannot give you.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Ginzan Onsen tour, added 10 Nov 2026 (task-jtk-20261110-02).
+//
+// Confirmed as live en-US listings through the www.klook.com search index on
+// 10 Nov 2026:
+//   80347   From Sendai: Ginzan Onsen & Zao Frost-Covered Trees & Fox Village Tour
+//           (one day; the listing says the Ginzan shuttle bus and the Zao Ropeway
+//           are paid on the day, and the Chuo Ropeway replaces the Zao Ropeway
+//           when it is unavailable).
+//   127781  One-day trip to Tateishiji (Risshakuji / Yamadera) Temple & Ginzan Hot
+//           Spring from Sendai (8 h 50 min, shared, minimum two people).
+//   131427  2-Day Ginzan Onsen Tour: Yamagata Winery, Ginzan Onsen, Fox Village and
+//           Zao Snow Monsters, hot-spring hotel with breakfast and dinner, from Tokyo.
+//   131990  Ginzan Onsen, Zao Juhyo Ropeway, Nikko Toshogu and Ouchijuku 2-Day Tour
+//           from Shinjuku.
+//   hotels/detail/1263365  Ginzan Onsen Ryokan Matsumoto (a Klook hotel listing in
+//           the onsen street, the 6.5% hotel slot).
+//   p50303618-ginzan-onsen  the Ginzan Onsen destination page.
+// Reused: 178500, 167311 and 227766 from the Zao block above, and jrEastPass.
+// Dropped: 128152 (no en-US page in the index), 161668 (en-GB only), 184850 (no
+// locale only). All tours and the ryokan are 6.5%. No price appears on the page.
+// ---------------------------------------------------------------------------
+
+export const ginzanZaoFoxVillageTourFromSendai: KlookTour = {
+  title: "Ginzan Onsen, Zao frost-covered trees & Fox Village tour from Sendai",
+  desc: "A one-day coach tour from Sendai with the Zao Ropeway, the Zao Fox Village and time in Ginzan Onsen. The listing says the Ginzan shuttle and the ropeway are paid on the day",
+  url: klookLink("https://www.klook.com/en-US/activity/80347-2-day-ginzan-onsen-zaos-frost-covered-trees-bus-tour/"),
+};
+
+export const yamaderaGinzanDayTourFromSendai: KlookTour = {
+  title: "Yamadera (Risshakuji) & Ginzan Onsen day trip from Sendai",
+  desc: "The mountain temple of Yamadera and the Ginzan Onsen street in one shared day from Sendai, listed at 8 hours 50 minutes, with lunch on your own",
+  url: klookLink("https://www.klook.com/en-US/activity/127781-rissyakuji-temple-ginzan-onsen-one-day-tour-from-sendai/"),
+};
+
+export const ginzanWineryTwoDayTourFromTokyo: KlookTour = {
+  title: "2-day Ginzan Onsen tour from Tokyo with Zao, a winery & Fox Village",
+  desc: "Two days from Tokyo with a night at a hot-spring hotel, breakfast and dinner included: Ginzan Onsen, the Zao snow monsters, a Yamagata winery and the Fox Village",
+  url: klookLink("https://www.klook.com/en-US/activity/131427-yamagata-2-day-tour-winery-ginzan-onsen-tokyo-departure/"),
+};
+
+export const ginzanNikkoTwoDayTourFromShinjuku: KlookTour = {
+  title: "Ginzan Onsen, Zao, Nikko & Ouchijuku 2-day tour from Shinjuku",
+  desc: "Two days from Shinjuku that pair Ginzan Onsen and the Zao ropeway with Nikko Toshogu and the thatched post town of Ouchijuku",
+  url: klookLink("https://www.klook.com/en-US/activity/131990-2-day-tour-ginzan-onsen-nikko-toshogu-temple-from-shinjuku/"),
+};
+
+/** A ryokan in the onsen street itself — the way to be there after the day visitors leave. */
+export const ginzanOnsenRyokanMatsumoto = {
+  title: "Ginzan Onsen Ryokan Matsumoto",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/1263365-ginzan-onsen-ryokan-matsumoto/"),
+};
+
+/** Klook's Ginzan Onsen destination page: every Ginzan tour on one list. */
+export const ginzanOnsenDestinationUrl = klookLink("https://www.klook.com/en-US/destination/p50303618-ginzan-onsen/");
+
+export const ginzanOnsenTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "A ryokan in Ginzan Onsen (Ryokan Matsumoto)",
+    ctaLabel: "Check the ryokan on Klook →",
+    url: ginzanOnsenRyokanMatsumoto.url,
+    why: "A winter night in Ginzan itself is the one booking that keeps you under the gas lamps after the last shuttle back at 19:30, without the evening queue for a time slot.",
+  },
+  {
+    label: jrEastPass.title,
+    ctaLabel: "Check the JR EAST PASS →",
+    url: jrEastPass.url,
+    why: "Going on your own, the Yamagata Shinkansen to Oishida is a JR East line; the bus from Oishida to the onsen is not covered.",
+  },
+  {
+    label: "Hotels around Tokyo Station / Marunouchi",
+    ctaLabel: "Check Tokyo Station hotels on Klook →",
+    url: whereToStayTokyoAreas[1].url,
+    why: "The Yamagata Shinkansen leaves from Tokyo Station, so the night before an early train is easiest here.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The winter shuttle runs on timed tickets with a priority return slot printed on the ticket, and the booking, the bus status and the train times are all on your phone.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Sapporo ski day trip, added 10 Nov 2026 (task-jtk-20261110-02).
+//
+// Confirmed as live en-US listings through the www.klook.com search index on
+// 10 Nov 2026:
+//   127051  Sapporo Teine Ski Resort all-inclusive ski/snowboard day trip from
+//           Sapporo (ski wear, gear, lift, transfer; the most-reviewed Teine day).
+//   127286  Teine night skiing tour from Sapporo (rental and lift ticket included).
+//   81509   Sapporo Teine all-inclusive private ski lesson with transfer.
+//   94587   Sapporo Teine private ski lessons (Teine, Moiwa or Bankei; rental is
+//           arranged separately, accident insurance required before the lesson).
+//   103774  Kiroro 6-hour lift pass & round-trip shuttle from Sapporo.
+//   16909   Shared one-way bus between Sapporo and Sapporo Teine.
+//   p50239480-sapporo-teine-ski-resort  the Teine destination page.
+//   experiences/list/sapporo-ski-snowboard/c133938-cate18  the Sapporo ski list.
+//   133006  Sapporo Teine one-day ski/snowboard tour with a Chinese-speaking
+//           instructor, shuttle and equipment (en-US page found on a second search).
+// Dropped: 98771 Rusutsu lift + bus (en-AU only), 187374 (en-PH only).
+// Reused: otaruAsarigawaSkiDayTour,
+// sapporoKokusaiSkiOtaruAquariumDayTour, nisekoHirafuLiftPassBusTour,
+// rusutsuResortShuttleBus and the Sapporo Station hotel search.
+// ---------------------------------------------------------------------------
+
+export const teineAllInclusiveSkiDayTrip: KlookTour = {
+  title: "Sapporo Teine all-inclusive ski or snowboard day trip",
+  desc: "The hands-free Teine day from Sapporo: transfer, lift ticket, ski or board, boots and ski wear in one booking, sold as beginner-friendly",
+  url: klookLink("https://www.klook.com/en-US/activity/127051-hokkaido-sapporo-teine-ski-resort-all-inclusive-one-day-tour/"),
+};
+
+export const teineNightSkiingTour: KlookTour = {
+  title: "Sapporo Teine night skiing tour from Sapporo",
+  desc: "An evening at Teine with the transfer, rental and lift ticket included, for a day spent in the city first",
+  url: klookLink("https://www.klook.com/en-US/activity/127286-hokkaido-sapporo-teine-ski-resort-night-skiing-day-tour/"),
+};
+
+export const teinePrivateSkiDayWithTransfer: KlookTour = {
+  title: "Sapporo Teine private ski day with transfer",
+  desc: "A private instructor for the day at Teine with the transfer from Sapporo, for a first day on skis or a family",
+  url: klookLink("https://www.klook.com/en-US/activity/81509-1-day-private-skiing-sapporo/"),
+};
+
+export const teinePrivateSkiLessons: KlookTour = {
+  title: "Sapporo Teine private ski lessons (Chinese or English)",
+  desc: "A private lesson with a registered ski school at Teine, Mt Moiwa or Bankei. You get there yourself and arrange rental separately",
+  url: klookLink("https://www.klook.com/en-US/activity/94587-hokkaido-sapporo-teine-private-ski-lessons/"),
+};
+
+export const teineChineseLessonDayTour: KlookTour = {
+  title: "Sapporo Teine one-day ski tour with a Chinese-speaking instructor",
+  desc: "Shuttle, ski equipment, lift ticket and a group lesson in Chinese at Teine, in one booking",
+  url: klookLink("https://www.klook.com/en-US/activity/133006-sapporo-teine-ski-one-day-tour-chinese-instruction-shuttle-included/"),
+};
+
+export const kiroroLiftPassShuttleFromSapporo: KlookTour = {
+  title: "Kiroro 6-hour lift pass & round-trip shuttle from Sapporo",
+  desc: "The Kiroro powder day out of Sapporo: the ski bus both ways and a 6-hour lift pass in one booking",
+  url: klookLink("https://www.klook.com/en-US/activity/103774-6-hour-join-kiroro-ski-resort-lift-pass-round-trip-shuttle-sapporo-hokkaido/"),
+};
+
+export const teineSharedBusTransfer: KlookTour = {
+  title: "Shared bus between Sapporo and Sapporo Teine (one way)",
+  desc: "A seat on the ski bus only, for a skier with their own gear and lift plan",
+  url: klookLink("https://www.klook.com/en-US/activity/16909-shared-one-way-bus-transfer-sapporo-teine-ski-resort/"),
+};
+
+/** Klook's Sapporo Teine destination page. */
+export const sapporoTeineDestinationUrl = klookLink("https://www.klook.com/en-US/destination/p50239480-sapporo-teine-ski-resort/");
+
+/** Klook's list of every ski and snowboard product out of Sapporo. */
+export const sapporoSkiSnowboardListUrl = klookLink("https://www.klook.com/en-US/experiences/list/sapporo-ski-snowboard/c133938-cate18/");
+
+export const sapporoSkiDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo hotels on Klook →",
+    url: japanWinterStayAreas[6].url,
+    why: "Every ski tour and bus on this page starts in central Sapporo in the early morning, so a bed near the pick-up is the one that makes a 7:00 or 8:00 departure easy.",
+  },
+  {
+    label: newChitoseSapporoSharedTransfer.title,
+    ctaLabel: "Check the airport transfer →",
+    url: newChitoseSapporoSharedTransfer.url,
+    why: "A booked seat from New Chitose to the city with luggage, bought before you fly rather than at the arrivals hall.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Lifts stop for wind and buses run late in snow; the tour operator's messages and the resort's lift status reach your phone, not a noticeboard.",
+  },
+];
