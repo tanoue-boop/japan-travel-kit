@@ -432,6 +432,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/osaka-3-day-itinerary",
+    badge: "Itinerary",
+    title: "Osaka 3 Day Itinerary (2026): Day by Day, and What to Book",
+    desc: "The castle and Minami on Day 1, Universal Studios Japan on Day 2, and the Kaiyukan, Nara or Kobe on Day 3 — with a table for each day, the one day the ¥3,500 Amazing Pass pays, and where to stay.",
+    group: "cities",
+    city: "osaka",
+  },
+  {
     href: "/guides/attractions/osaka-kyoto-3-day-itinerary",
     badge: "Itinerary",
     title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings",

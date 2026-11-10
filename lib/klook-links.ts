@@ -2800,6 +2800,66 @@ export const osakaTwoDayStayAreas: KlookStayArea[] = [
   },
 ];
 
+/**
+ * Where to stay for three days in Osaka, added 10 Nov 2026 for osaka-3-day-itinerary.
+ *
+ * No new URLs: Namba, Umeda and Universal City read their destination pages out of
+ * `whereToStayOsakaAreas` (indices 1, 0 and 3). A three-day plan has a USJ day in
+ * the middle and a day trip or the bay at the end, so the order and the whys
+ * differ from the two-day list.
+ */
+export const osakaThreeDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Namba",
+    why: "The default for three days: Dotonbori and Kuromon Market are on foot for the Day 1 evening, Kintetsu leaves Osaka-Namba for Nara and Hanshin for Kobe on Day 3, and Nankai's Rapi:t runs from here to Kansai Airport.",
+    url: whereToStayOsakaAreas[1].url,
+  },
+  {
+    area: "Umeda / Osaka Station",
+    why: "The pick if you arrive or leave by shinkansen, or if Day 3 is Kobe by JR or Hankyu — and the JR ride out to Universal City for the USJ day starts here.",
+    url: whereToStayOsakaAreas[0].url,
+  },
+  {
+    area: "Universal City",
+    why: "Only for a trip built around the park: the gates are a short walk from the hotel, but every other day of this plan starts with a JR ride and a change.",
+    url: whereToStayOsakaAreas[3].url,
+  },
+];
+
+/**
+ * Osaka 3-day itinerary, added 10 Nov 2026 — what to book on the same day as the USJ
+ * ticket (0% / 2%). No new URLs: the Amazing Pass and the airport trains (5%), the
+ * Kyoto and Nara day tour and the Namba hotel search (6.5%), the eSIM (20%).
+ */
+export const osakaThreeDayTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "For Day 1, not the USJ day: the castle, the Nishinomaru Garden and the Tombori cruise are all free on it, while the park and the JR ride to Universal City are not covered.",
+  },
+  {
+    label: "Hotels in Namba",
+    why: "On foot from Dotonbori, on the Kintetsu line to Nara and the Hanshin line to Kobe for Day 3, and the Nankai terminus for the airport.",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: whereToStayOsakaAreas[1].url,
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "If Day 3 is a day trip and you would rather not route it yourself: Nara Park, Kiyomizu-dera and Fushimi Inari in one booking, departing from Osaka.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    why: "Kansai Airport to Namba with no transfer — Nankai gives a minimum of 34 minutes.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Kansai Airport to Tennoji, Osaka and Shin-Osaka direct, if your hotel is at the Umeda end.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "USJ's Super Nintendo World area timed entry runs through the park's own app on the day, and the Kaiyukan ticket is a QR code — both need data.",
+  },
+];
+
 /** The Kobe day that matches this guide's three stops — harbour, Kitano, the mountain. */
 export const kobeFerrisKitanoArimaRokkoDayTour: KlookTour = {
   title: "Kobe day trip from Osaka: Mosaic Ferris wheel, Kitano Ijinkan, Arima Onsen & the Mt. Rokko night view",
