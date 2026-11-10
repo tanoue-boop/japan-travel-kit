@@ -284,10 +284,10 @@ A trial edition of 14 guides in Korean, under /ko/ (hreflang ko-KR), with its ow
 - [도톤보리 리버크루즈(2026): 요금, 운항 시간, 선착장](https://www.japan-travel-kit.com/ko/guides/attractions/dotonbori-river-cruise): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/dotonbori-river-cruise
 - [일본 이심 추천(2026): eSIM 요금제 비교와 클룩 일본 eSIM](https://www.japan-travel-kit.com/ko/guides/esim/best-esim-japan): 한국어 version of https://www.japan-travel-kit.com/guides/esim/best-esim-japan
 - [지고쿠다니 원숭이 공원(2027): 도쿄 출발 투어](https://www.japan-travel-kit.com/ko/guides/attractions/jigokudani-snow-monkey-tour): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/jigokudani-snow-monkey-tour
-- [삿포로 눈축제(2027): 2월 4~11일, 무료 회장](https://www.japan-travel-kit.com/ko/guides/attractions/sapporo-snow-festival-tours): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours
+- [삿포로 눈축제(2027): 2월 4~11일, 무료 행사장](https://www.japan-travel-kit.com/ko/guides/attractions/sapporo-snow-festival-tours): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/sapporo-snow-festival-tours
 - [니세코 스키 투어(2027): 셔틀, 강습, 4개 스키장](https://www.japan-travel-kit.com/ko/guides/attractions/niseko-ski-tours): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/niseko-ski-tours
-- [홋카이도 7일 여행(2027): 날짜별 일정과 패스 계산](https://www.japan-travel-kit.com/ko/guides/attractions/hokkaido-7-day-itinerary): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/hokkaido-7-day-itinerary
-- [일본 겨울 여행 12일 일정(2027): 날짜별 코스](https://www.japan-travel-kit.com/ko/guides/attractions/japan-winter-itinerary): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/japan-winter-itinerary
+- [홋카이도 7일 여행(2027): 일자별 일정과 패스 계산](https://www.japan-travel-kit.com/ko/guides/attractions/hokkaido-7-day-itinerary): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/hokkaido-7-day-itinerary
+- [일본 겨울 여행 12일 일정(2027): 일자별 코스](https://www.japan-travel-kit.com/ko/guides/attractions/japan-winter-itinerary): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/japan-winter-itinerary
 
 ## ไทย (Thai edition)
 
@@ -318,4 +318,4 @@ The same 14 guides in Thai, under /th/ (hreflang th-TH), with its own entry page
 - [sitemap.xml](https://www.japan-travel-kit.com/sitemap.xml)
 - Contact: info@japan-travel-kit.com
 
-Generated 2026-11-09 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.
+Generated 2026-11-10 by scripts/generate-llms-txt.js from lib/guides-*.ts — do not edit by hand.
