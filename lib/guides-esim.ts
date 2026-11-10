@@ -181,7 +181,7 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-android",
     badge: "Guide",
-    title: "Best eSIM for Japan on Android (2026): Picks and Setup",
+    title: "Japan eSIM for Android Phones and Tablets (2026): Picks and Setup",
     desc: "Which plan to buy, whether your handset can take it — the EID row settles it, not the model name — and the exact menu to open on Samsung, Pixel, Xperia and OnePlus.",
     group: "setup",
     city: "other",

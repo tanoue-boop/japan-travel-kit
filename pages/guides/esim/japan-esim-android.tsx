@@ -40,7 +40,11 @@ const ENTRY = cheapestPlan("esimgo");
 const weekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 5)) ?? null;
 
-const TITLE = "Best eSIM for Japan on Android 2026: Setup & Picks";
+// Title changed 10 Nov 2026: it opened with the same four words as best-esim-japan
+// ("Best eSIM for Japan"), and the page had no Google impressions while the redirected
+// /guides/esim/japan-esim-android-tablet still did — so it now leads with "Japan eSIM
+// for Android" and names tablets, which this page covers.
+const TITLE = "Japan eSIM for Android & Tablets (2026): Setup and Picks";
 const DESCRIPTION =
   `Pixel 3 and Galaxy S20 and later take an eSIM. The cheapest Japan plan is ` +
   `${priceLabel(ENTRY)} for ${ENTRY?.name} on eSIM Go, plus where to tap on Pixel and Samsung.`;
@@ -170,7 +174,7 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/japan-esim-android",
-              headline: "Best eSIM for Japan on Android (2026): Picks and Setup",
+              headline: TITLE,
               description: DESCRIPTION,
               updated,
             }),
@@ -217,11 +221,11 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan on Android (2026):<br />Picks and Setup
+            Japan eSIM for Android Phones and Tablets (2026):<br />Picks and Setup
           </h1>
           <p className={styles.heroSubtitle}>
-            Which plan to buy, whether your handset can take it, and the exact menu to open on
-            Samsung, Pixel and Xperia.
+            Which Japan eSIM to buy for an Android phone or tablet, whether your handset can take it,
+            and the exact menu to open on Samsung, Pixel and Xperia.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, `From ${priceLabel(ENTRY)}`, "Per-make menu paths"].map((t) => (

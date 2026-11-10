@@ -153,7 +153,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kyoto-nara-day-tour-from-osaka") },
 });
 
-const TITLE = "Kyoto and Nara Day Tour from Osaka (2026): Routes and Times";
+// Positioning (10 Nov 2026): this page compares guided tours. Doing Nara alone by train is
+// /guides/attractions/nara-day-trip — keep the two titles and openings apart.
+const TITLE = "Kyoto and Nara Day Tour from Osaka (2026): 4 Tours Compared";
 const DESC =
   "Kyoto and Nara day tour from Osaka: about 9 hours on Klook listings, with Fushimi Inari, Nara Park and Arashiyama or Kiyomizu-dera. How to pick the route.";
 
@@ -245,10 +247,10 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Kyoto and Nara Day Tour from Osaka (2026):<br />Routes and Times
+            Kyoto and Nara Day Tour from Osaka (2026):<br />Four Guided Tours Compared
           </h1>
           <p className={styles.heroSubtitle}>
-            A typical Kyoto and Nara day tour leaves central Osaka in the morning, takes in Arashiyama or
+            Four guided coach tours that do Kyoto and Nara in one day from Osaka, compared. A typical one leaves central Osaka in the morning, takes in Arashiyama or
             Kiyomizu-dera in Kyoto, the deer at Nara Park and usually finishes at Fushimi Inari. Expect a full
             day: one Klook listing gives 8 hr 55 min to 9 hr 05 min (as listed on {CHECKED}).
           </p>

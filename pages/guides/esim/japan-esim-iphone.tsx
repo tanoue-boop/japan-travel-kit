@@ -767,7 +767,10 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               multi-device setup guide
             </Link>{" "}
-            instead.
+            instead, and for which plan to buy on a Pixel or Galaxy, the{" "}
+            <Link href="/guides/esim/japan-esim-android" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM for Android guide
+            </Link>.
           </p>
           <div className={styles.stepsList}>
             {setupSteps.map((step, i) => (

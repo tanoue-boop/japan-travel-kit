@@ -641,7 +641,10 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
             <Link href="/guides/attractions/osaka-attractions-pass">오사카 주유패스 가이드(영어)</Link>에,
             오사카에서의 하루 중 패스가 내 주는 부분과 그렇지 않은 부분은{" "}
             <Link href="/guides/attractions/things-to-do-osaka">오사카 여행 가이드(영어)</Link>에 정리되어
-            있습니다. 조건 확인일 {CHECKED}.
+            있습니다. 조건 확인일 {CHECKED}. 유니버설 스튜디오 재팬은 주유패스에 포함되지 않아 입장권을 따로
+            사야 하며, 날짜 지정 티켓과 익스프레스 패스 선택은{" "}
+            <Link href="/ko/guides/attractions/usj-tickets-express-pass">유니버설 스튜디오 재팬 익스프레스 패스 가이드</Link>에
+            있습니다.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -670,6 +673,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
             { href: "/guides/attractions/umeda-sky-building-tickets", title: "우메다 스카이빌딩 티켓(2026): 요금, 운영 시간, 추천 시간대(영어)" },
             { href: "/guides/attractions/osaka-castle-tickets", title: "오사카성 티켓(2026): 요금, 운영 시간, 패스 적용 범위(영어)" },
             { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "가이유칸 티켓(2026): 요금, 운영 시간, 입장 시간대(영어)" },
+            { href: "/ko/guides/attractions/usj-tickets-express-pass", title: "유니버설 스튜디오 재팬 익스프레스 패스(2026): 티켓은 어떤 것을 살까" },
             { href: "/guides/attractions/tokyo-bay-cruise", title: "도쿄만 크루즈(2026): 야카타부네 vs 심포니, 시간과 요금(영어)" },
             { href: "/guides/transport/osaka-transportation", title: "오사카 시내 교통(2026): 지하철, 전철, IC 카드 정리(영어)" },
             { href: "/guides/attractions/japan-attraction-ticket-prices", title: "일본 명소 티켓 가격 2026: 공식 요금과 예약 규칙(영어)" },

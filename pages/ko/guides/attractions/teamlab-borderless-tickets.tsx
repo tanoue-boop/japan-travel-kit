@@ -678,7 +678,9 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             두 곳 모두 갈 시간이 있다면 다른 날로 나누세요. 오후 한나절에 디지털 아트를 네 시간 보면 어느
-            것도 눈에 들어오지 않게 되고, 두 곳은 도시 반대편에 30분 거리로 떨어져 있습니다.
+            것도 눈에 들어오지 않게 되고, 두 곳은 도시 반대편에 30분 거리로 떨어져 있습니다. 한 곳만 고른다면
+            어울리는 동행, 입장 방식, 운영 기간을 나란히 정리한{" "}
+            <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 보더리스 비교</Link>를 보세요.
           </p>
         </section>
 
@@ -710,6 +712,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/teamlab-botanical-garden-osaka-tickets", title: "팀랩 보태니컬 가든 오사카 티켓: 가격과 운영 시간(영어)" },
             { href: "/guides/attractions/tokyo-joypolis-tickets", title: "도쿄 조이폴리스 티켓(2026): 패스포트 가격, 운영 시간, 키 제한(영어)" },
             { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
+            { href: "/ko/guides/attractions/teamlab-tokyo-tickets", title: "팀랩 플래닛 보더리스 비교 2026: 도쿄에서 어디로 갈까" },
             { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법" },
             { href: "/guides/transport/tokyo-transportation", title: "도쿄 교통 가이드(2026): 전철, 지하철, IC 카드(영어)" },
             { href: "/guides/attractions", title: "일본의 더 많은 즐길 거리(영어) →" },

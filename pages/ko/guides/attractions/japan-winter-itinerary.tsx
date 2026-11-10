@@ -322,7 +322,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-시간 지정 티켓 두 장이고 전망대가 마감이 있습니다. SHIBUYA SKY는 일본 시간 0시 정각에 2주 뒤 날짜가 판매되며, 인기 있는 겨울 날짜의 일몰 시간대가 가장 먼저 나갑니다. <Link href="/guides/attractions/shibuya-sky-tickets" hrefLang="en">시부야 스카이 티켓 가이드(영어)</Link>에 두 가격대와 예약 시기를 정리했습니다. teamLab Planets는 현장 판매 없는 30분 단위 입장이며 <Link href="/ko/guides/attractions/teamlab-planets-tickets">teamLab Planets 가이드</Link>에서 다룹니다. 둘 다 실내이거나 지붕이 있어, 3일차가 눈으로 막히면 옮기기 좋은 날입니다.
+시간 지정 티켓 두 장이고 전망대가 마감이 있습니다. SHIBUYA SKY는 일본 시간 0시 정각에 2주 뒤 날짜가 판매되며, 인기 있는 겨울 날짜의 일몰 시간대가 가장 먼저 나갑니다. <Link href="/guides/attractions/shibuya-sky-tickets" hrefLang="en">시부야 스카이 티켓 가이드(영어)</Link>에 두 가격대와 예약 시기를 정리했습니다. teamLab Planets는 현장 판매 없는 30분 단위 입장이며 <Link href="/ko/guides/attractions/teamlab-planets-tickets">teamLab Planets 가이드</Link>에서 다룹니다. 아자부다이힐스의 보더리스와 어느 쪽이 맞는지는 <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 보더리스 비교</Link>를 보세요. 둘 다 실내이거나 지붕이 있어, 3일차가 눈으로 막히면 옮기기 좋은 날입니다.
 </>
     ),
     picks: [
@@ -647,7 +647,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-두 가지이고, 패스 하나가 첫 번째의 필요 여부를 정합니다. 오사카 주유패스는 40곳 이상의 시설과 그 사이 메트로를 포함해 오사카의 빡빡한 하루에 매우 유리합니다. teamLab 정원은 포함되지 않으며 별도 티켓입니다. teamLab 공식 요금은 성인 ¥1,800, 6~15세 ¥500이고 현장은 ¥2,000, ¥600입니다. <Link href="/guides/attractions/teamlab-botanical-garden-osaka-tickets" hrefLang="en">teamLab 식물원 오사카 가이드(영어)</Link>에 날짜별 시간, 우천 규칙, 공식 티켓의 날짜 변경 3회를 정리했습니다. 숙소는 미도스지선이 좋습니다. 나가이에서 21:00에 끝나도 열차 한 번이면 돌아옵니다. 비교는 <Link href="/guides/attractions/where-to-stay-in-osaka" hrefLang="en">오사카 숙소 가이드(영어)</Link>에 있습니다.
+두 가지이고, 패스 하나가 첫 번째의 필요 여부를 정합니다. 오사카 주유패스는 40곳 이상의 시설과 그 사이 메트로를 포함해 오사카의 빡빡한 하루에 매우 유리합니다. teamLab 정원은 포함되지 않으며 별도 티켓입니다. teamLab 공식 요금은 성인 ¥1,800, 6~15세 ¥500이고 현장은 ¥2,000, ¥600입니다. <Link href="/guides/attractions/teamlab-botanical-garden-osaka-tickets" hrefLang="en">teamLab 식물원 오사카 가이드(영어)</Link>에 날짜별 시간, 우천 규칙, 공식 티켓의 날짜 변경 3회를 정리했습니다. 숙소는 미도스지선이 좋습니다. 나가이에서 21:00에 끝나도 열차 한 번이면 돌아옵니다. 비교는 <Link href="/guides/attractions/where-to-stay-in-osaka" hrefLang="en">오사카 숙소 가이드(영어)</Link>에 있습니다. 오사카에 하루를 더 쓸 수 있다면 유니버설 스튜디오 재팬도 후보입니다. 주유패스에 포함되지 않고 티켓은 날짜 지정 온라인 판매이며, 익스프레스 패스 종류까지 <Link href="/ko/guides/attractions/usj-tickets-express-pass">유니버설 스튜디오 재팬 익스프레스 패스 가이드</Link>에 정리했습니다.
 </>
     ),
     picks: [

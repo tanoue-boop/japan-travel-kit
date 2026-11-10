@@ -460,6 +460,11 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Android</span>
           <h2 className={styles.sectionTitle}>How to Set Up eSIM on Android</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Still choosing a plan? The{" "}
+            <Link href="/guides/esim/japan-esim-android">Japan eSIM for Android guide</Link> lists which
+            Pixel and Galaxy models take an eSIM and the cheapest plans that install on them.
+          </p>
           <div className={styles.stepsList}>
             {androidSteps.map((step, i) => (
               <div key={i} className={styles.stepCard}>

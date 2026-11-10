@@ -384,6 +384,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/ko/guides/attractions/tokyo-skytree-tickets",
           "/ko/guides/attractions/teamlab-planets-tickets",
           "/ko/guides/attractions/teamlab-borderless-tickets",
+          "/ko/guides/attractions/teamlab-tokyo-tickets",
           "/ko/guides/attractions/dotonbori-river-cruise",
         ],
       },
@@ -422,6 +423,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "도요스 플래닛의 요금과 30분 단위 입장 시간, 물에 들어가는 구역 복장, 보더리스와 비교.",
       "/ko/guides/attractions/teamlab-borderless-tickets":
         "아자부다이힐스 보더리스: 변동 요금제, 지정 시간 입장과 Flexible Pass의 차이.",
+      "/ko/guides/attractions/teamlab-tokyo-tickets":
+        "플래닛과 보더리스는 별개의 티켓입니다. 아이와 함께라면 플래닛, 작품 감상이 목적이면 보더리스.",
       "/ko/guides/attractions/dotonbori-river-cruise":
         "톤보리 리버크루즈의 요금과 운항 시간, 오사카 주유패스 교환 규칙, 배 5종 비교.",
       "/ko/guides/attractions/tokyo-disney-tickets":

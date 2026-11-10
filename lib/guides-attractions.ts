@@ -266,8 +266,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/nara-day-trip",
     badge: "Day trip",
-    title: "Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs",
-    desc: "Nara is the short day trip in Kansai — well under an hour from either city. The deer park is free; the Great Buddha Hall is ¥800, and that is the fee tours differ on.",
+    title: "Nara Day Trip on Your Own (2026): Trains, Times and What Todai-ji Costs",
+    desc: "Nara on your own: Kintetsu from Namba or Kyoto in about 34 minutes, JR from Kyoto in about 41. The deer park is free; the Great Buddha Hall is ¥800.",
     group: "daytrips",
     city: "osaka",
   },

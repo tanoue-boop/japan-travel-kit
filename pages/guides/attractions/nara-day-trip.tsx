@@ -27,6 +27,26 @@ const NARA_TOUR_URL = naraDayTourUrl;
 const P = PRICES.todaiji;
 const CHECKED = checkedLabel(P.checked);
 
+// Positioning (10 Nov 2026): this page is the do-it-yourself guide — trains, times,
+// walking order. The coach-tour comparison is /guides/attractions/kyoto-nara-day-tour-from-osaka;
+// keep the two titles and openings apart so they do not compete for the same query.
+const TITLE = "Nara Day Trip on Your Own (2026): Trains, Times and Costs";
+const DESC =
+  "Nara day trip on your own: Kintetsu from Osaka-Namba or Kyoto in about 34 min, JR from Kyoto in about 41, a free deer park, and Todai-ji at ¥800.";
+
+// Journey times: Nara Prefecture's official travel guide (visitnara.jp), read 26 Oct 2026 —
+// the same reading used by where-to-stay-in-osaka and japan-10-day-itinerary.
+// Kintetsu fares: Kintetsu's own fare tables, read 4 Nov 2026 — see kintetsu-rail-pass.
+const TIMES_CHECKED = checkedLabel("2026-10-26");
+const FARES_CHECKED = checkedLabel("2026-11-04");
+const trainRows = [
+  { from: "Osaka-Namba", train: "Kintetsu Express (no reserved seat)", to: "Kintetsu-Nara", time: "Approx. 34 min", fare: "¥680" },
+  { from: "Kyoto", train: "Kintetsu Limited Express", to: "Kintetsu-Nara", time: "Approx. 34 min", fare: "¥760 + ¥520 limited express ticket" },
+  { from: "Kyoto", train: "JR Nara Line Rapid", to: "JR Nara", time: "Approx. 41 min", fare: "JR fare; JR Pass and Kansai Area Pass valid" },
+  { from: "Tennoji (Osaka)", train: "JR Yamatoji Line Rapid", to: "JR Nara", time: "Approx. 36 min", fare: "JR fare; JR Pass and Kansai Area Pass valid" },
+  { from: "Osaka Station", train: "JR, via the Loop Line", to: "JR Nara", time: "Approx. 52 min", fare: "JR fare; JR Pass and Kansai Area Pass valid" },
+];
+
 const compareRows = [
   {
     option: "DIY by train",
@@ -87,7 +107,7 @@ const whoFor = [
 const steps = [
   {
     title: "Pick your base — Kyoto or Osaka",
-    desc: "Both sit roughly an hour from Nara, so you can day-trip from either. From Kyoto and Osaka there are direct train lines that drop you a short walk from the park, which keeps the trip simple even without a tour.",
+    desc: "Both are under an hour from Nara with no change of train. From Osaka-Namba, take the Kintetsu Express to Kintetsu-Nara (approx. 34 min); from Tennoji, the JR Yamatoji Line Rapid to JR Nara (approx. 36 min). From Kyoto, the Kintetsu Limited Express (approx. 34 min) or the JR Nara Line Rapid (approx. 41 min). Kintetsu-Nara is the closer of the two stations to the park.",
   },
   {
     title: "Head straight for Nara Park and the deer",
@@ -106,7 +126,7 @@ const steps = [
 const faqItems = [
   {
     q: "How do I get to Nara from Kyoto or Osaka?",
-    a: "Nara is about an hour from both cities by train, with direct lines that drop you a short walk from Nara Park. That proximity is exactly why it's such a popular day trip — you can go independently with a simple train ride, or join a guided tour that handles the transport for you.",
+    a: "By a direct train, with nothing to reserve. From Osaka-Namba the Kintetsu Express reaches Kintetsu-Nara in approx. 34 minutes for ¥680; from Tennoji the JR Yamatoji Line Rapid reaches JR Nara in approx. 36 minutes, and from Osaka Station it is approx. 52. From Kyoto, the Kintetsu Limited Express takes approx. 34 minutes (¥760 fare plus a ¥520 limited express ticket) and the JR Nara Line Rapid approx. 41. Kintetsu-Nara is the closer station to Nara Park; the JR trains are the ones a JR Pass or Kansai Area Pass covers. Times from Nara Prefecture's official travel guide, read 26 Oct 2026; Kintetsu fares read 4 Nov 2026.",
   },
   {
     q: "Is Nara worth a day trip?",
@@ -140,21 +160,18 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Nara Day Trip (2026): From Osaka or Kyoto, and the Costs</title>
-        <meta
-          name="description"
-          content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/nara-day-trip" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Nara Day Trip (2026): From Osaka or Kyoto, and the Costs" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/nara-day-trip" />
-        <meta property="og:description" content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Nara Day Trip (2026): From Osaka or Kyoto, and the Costs" />
-        <meta name="twitter:description" content="Nara day trip in 2026: under an hour by train from Osaka or Kyoto, a free deer park, and Todai-ji's official ¥800 Great Buddha Hall admission." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -174,7 +191,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/nara-day-trip",
-              headline: "Nara Day Trip (2026): From Osaka or Kyoto, and the Costs",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -222,14 +239,14 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Nara Day Trip (2026):<br />From Osaka or Kyoto, and What Todai-ji Costs
+            Nara Day Trip on Your Own (2026):<br />Trains, Times and What Todai-ji Costs
           </h1>
           <p className={styles.heroSubtitle}>
-            An hour from Kyoto or Osaka: 1,200-plus bowing deer, the Great Buddha at Todai-ji, and lantern-lined
-            Kasuga Taisha. Here&apos;s how to do it by train — or by guided tour — and what to expect.
+            How to do Nara on your own from Osaka or Kyoto: which train to take, how long the ride is, and the
+            order to walk the park in. The deer are free, and Todai-ji&apos;s Great Buddha Hall is the one ticket.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Train or Tour", "Half or Full Day"].map((t) => (
+            {[`Updated ${updated.label}`, "Trains and Times", "Half or Full Day"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -301,9 +318,53 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
           </p>
           <p className={styles.bodyText}>
             That compactness means you don&apos;t have to choose between Nara and everything else — many visitors
-            fold it into a Kansai itinerary as a half-day, or give it a full day to slow right down. Below we
-            compare doing it independently versus on a guided tour, then walk through the route and the practical
-            details.
+            fold it into a Kansai itinerary as a half-day, or give it a full day to slow right down. Below are
+            the trains from each city and how long they take, what it costs once you arrive, and the order to
+            walk the sights in.
+          </p>
+        </section>
+
+        {/* Trains */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Getting there</span>
+          <h2 className={styles.sectionTitle}>Which Train to Nara, and How Long It Takes</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>From Osaka, Kintetsu from Namba; from Kyoto, either line works.</strong> Every train below
+            runs direct, so there is no change to make, and only the Kintetsu Limited Express from Kyoto asks
+            for an extra ticket. Arrive at Kintetsu-Nara if you can: it is the closer station to Nara Park on
+            foot, and JR Nara is a little further away.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["From", "Train", "Arrives", "Time", "Adult fare"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {trainRows.map((row) => (
+                    <tr key={`${row.from}-${row.train}`}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.from}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.train}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.to}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.fare}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Journey times from Nara Prefecture&apos;s official travel guide, read {TIMES_CHECKED}; Kintetsu fares
+            from Kintetsu&apos;s fare tables, read {FARES_CHECKED}. Kintetsu is a private railway, so the JR Pass
+            does not cover it — whether the Kintetsu Rail Pass ever pays for a Nara-only trip is worked out in
+            our <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass guide</Link>. Choosing a
+            base for this and the Kyoto day trips is covered in{" "}
+            <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>.
           </p>
         </section>
 
