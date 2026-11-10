@@ -12,14 +12,21 @@ const WISE_CARD_CTA = wiseLink("best-travel-card-japan", WISE_CARD_URL);
 
 /**
  * Every fee, allowance, limit and annual fee in the tables below was read off the
- * company's or the bank's own site on this date — Wise's five country card-fee
- * pages, Monzo's fee information, Starling's current-account page, Seven Bank's
- * and Japan Post Bank's overseas-card pages, and the three US issuers' own card
- * pages. Two names on this page answer an automated read with HTTP 403 — Revolut
- * and Charles Schwab — so no figure for either appears in any table. The prose
- * about them carries no numbers for the same reason.
+ * company's or the bank's own site on this date — Wise's seven country card-fee
+ * pages (us, gb, de, au, ca, sg, my) and its UK pricing page, Monzo's travel-fees
+ * help page, Starling's current-account and travel pages, Seven Bank's and Japan
+ * Post Bank's overseas-card pages, and the three US issuers' own card pages.
+ * Revolut, Charles Schwab and AEON Bank answer an automated read with HTTP 403, so
+ * no figure for any of them appears in a table or in the prose.
+ * Re-read in full on 10 Nov 2026 (task-jtk-20261110-R02).
  */
-const CHECKED = "26 October 2026";
+const CHECKED = "10 November 2026";
+
+/** "2026-11-10" -> "10 November 2026": a full visible date, matching dateModified. */
+function fullDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+}
 
 /**
  * Requirement (1) of the rewrite: the type-by-type table the pages ranking above
@@ -40,17 +47,17 @@ const cardTypeRows = [
     type: "App bank debit card (UK)",
     example: "Monzo",
     cost: "No card fee on the free current account.",
-    purchase: "“Debit card payment in foreign currency: £0”.",
-    rate: "“We use a third-party exchange rate which is usually the mid-market rate”.",
-    atm: "“£0 up to £200 in a rolling 30-day period, then 3% of the total amount withdrawn after that”, outside the UK and EEA.",
+    purchase: "“You can pay anywhere in any currency using your Monzo card, fee-free.”",
+    rate: "“We pass Mastercard’s exchange rate directly onto you”.",
+    atm: "Outside the EEA: “£200 fee-free every 30 days (3% afterwards)”. The Japanese operator’s own fee still applies.",
   },
   {
     type: "App bank debit card (UK)",
     example: "Starling",
     cost: "No card fee on the personal current account.",
     purchase: "“Spend and withdraw abroad with no fees from us”.",
-    rate: "Not published as a figure on the current-account page.",
-    atm: "No Starling fee stated. The Japanese operator’s own fee still applies.",
+    rate: "“We use Mastercard’s exchange rate”.",
+    atm: "No Starling fee, up to a daily withdrawal limit of £300 in the local-currency equivalent. The Japanese operator’s own fee still applies.",
   },
   {
     type: "Prepaid travel-money card",
@@ -82,7 +89,7 @@ const cardTypeRows = [
  * Requirement (3), the numbers half: Wise's allowance is set by the country your
  * account is registered in, not the country you are standing in, and the spread
  * between them is wide enough to change the advice — 400 AUD against 100 CAD.
- * Sources: wise.com/{us,gb,de,au,ca}/pricing/card-fees, read on CHECKED.
+ * Sources: wise.com/{us,gb,de,au,ca,sg,my}/pricing/card-fees, read on CHECKED.
  */
 const wiseByCountry = [
   { country: "United States", card: "9 USD", free: "250 USD per month", over: "1.95 USD + 1.95% on each withdrawal past 250 USD" },
@@ -90,6 +97,8 @@ const wiseByCountry = [
   { country: "Eurozone", card: "7 EUR", free: "250 EUR per month", over: "2.69% of the amount over 250 EUR" },
   { country: "Australia", card: "10 AUD", free: "400 AUD per month", over: "2.69% of the amount over 400 AUD" },
   { country: "Canada", card: "Free", free: "100 CAD per month", over: "2.69 CAD + 2.69% of the amount over 100 CAD" },
+  { country: "Singapore", card: "8.50 SGD", free: "100 SGD per month", over: "1.75% of the amount over 100 SGD" },
+  { country: "Malaysia", card: "13.70 MYR", free: "2 withdrawals a month, up to 1,000 MYR", over: "5 MYR per withdrawal after the second; 1.75% of the amount over 1,000 MYR" },
 ];
 
 /** Requirement (3), the advice half: which card to reach for first, by where you bank. */
@@ -103,7 +112,7 @@ const countryPicks = [
   {
     country: "United Kingdom",
     first: "Monzo or Starling",
-    why: "Monzo states £0 on foreign-currency card payments and £0 on cash to £200 per rolling 30 days; Starling states no fees of its own on spending or withdrawing abroad.",
+    why: "Monzo states card payments abroad are fee-free and cash outside the EEA is free to £200 every 30 days (3% after); Starling states no fees of its own on spending or withdrawing abroad, up to £300 a day in cash.",
     second: "Wise, for the 250 GBP monthly ATM allowance on top of the app bank’s.",
   },
   {
@@ -124,6 +133,18 @@ const countryPicks = [
     why: "250 EUR a month free, 2.69% above it, card 7 EUR.",
     second: "A second card on the other network — a Visa and a Mastercard rather than two of one.",
   },
+  {
+    country: "Singapore",
+    first: "Wise, for card payments more than cash",
+    why: "Card 8.50 SGD; cash is free only to 100 SGD a month, then 1.75% of the excess.",
+    second: "A Singapore card with no foreign-currency fee for large bookings — check your own card’s terms.",
+  },
+  {
+    country: "Malaysia",
+    first: "Wise, with two large withdrawals",
+    why: "Card 13.70 MYR; 2 free withdrawals a month up to 1,000 MYR, then 5 MYR each — so fewer, larger withdrawals suit it best.",
+    second: "A second card on the other network as a spare.",
+  },
 ];
 
 /**
@@ -134,7 +155,7 @@ const countryPicks = [
 const usCreditCards = [
   {
     card: "Capital One VentureOne Rewards",
-    fee: "$0 Annual Fee",
+    fee: "$0",
     fx: "“You won’t pay a transaction fee when making purchases outside of the United States.”",
   },
   {
@@ -145,7 +166,7 @@ const usCreditCards = [
   {
     card: "Chase Sapphire Preferred",
     fee: "$95 annual fee",
-    fx: "No foreign transaction fees on purchases made outside the United States.",
+    fx: "“You will pay no foreign transaction fees when you use your card for purchases made outside the United States.”",
   },
 ];
 
@@ -160,133 +181,113 @@ const japanAtmRows = [
     takes: "Visa (incl. PLUS), Mastercard (incl. Maestro and Cirrus), UnionPay, American Express, JCB, Discover, Diners Club",
     fee: "No figure published. Seven Bank states only that “Fees for cards issued overseas vary by the card brand”, charged per transaction.",
     limit: "¥100,000 per withdrawal, or ¥30,000 if the machine reads the magnetic stripe rather than the chip",
-    hours: "00:00–24:00 for Visa and Mastercard",
+    hours: "00:00–24:00 for Visa and Mastercard; 00:10–23:50 for UnionPay, JCB and Discover; 00:05–23:50 for American Express",
   },
   {
     atm: "Japan Post Bank — post offices, branches, some FamilyMart stores",
     takes: "VISA, PLUS, Mastercard, Maestro, Cirrus, JCB, China UnionPay, DISCOVER",
     fee: "“When using certain cards issued abroad, an ATM usage fee (¥220 (tax included) per use) may apply.”",
     limit: "¥50,000 per transaction",
-    hours: "Post offices and branches Mon–Sat 7:00–23:00; convenience-store machines 0:05–23:55",
+    hours: "Post offices and branches Mon–Sat 7:00–23:00, Sundays and holidays 7:00–21:00; FamilyMart machines 0:05–23:55",
   },
 ];
 
 const whatToLookFor = [
   {
     rank: 1,
-    name: "No foreign transaction fees",
-    desc: "Many standard credit and debit cards charge 1–3% on every purchase abroad. Over a two-week trip, this adds up fast. Only use cards that waive foreign transaction fees entirely.",
+    name: "No foreign transaction fee",
+    desc: "A standard card can add a percentage to every purchase made in yen. Check your own card’s terms for the words “foreign transaction fee” before you fly; the cards in the tables on this page state that they charge none, or publish the conversion fee they do charge.",
   },
   {
     rank: 2,
-    name: "Real exchange rates (interbank or mid-market)",
-    desc: "Banks and currency exchange desks typically mark up the exchange rate by 2–4%. The best travel cards use the mid-market rate — the rate you see on Google — so you always know exactly what you're paying.",
+    name: "The mid-market or card-network rate",
+    desc: "Wise converts at the mid-market rate; Monzo and Starling pass on Mastercard’s rate. A card that adds its own margin on top of the network rate costs more on every yen, even with no fee line on the statement.",
   },
   {
     rank: 3,
-    name: "ATM access without surcharges",
-    desc: "Japan is still heavily cash-based. Your card needs to work at Japanese ATMs (7-Eleven, Japan Post, AEON) without charging extra. Some cards also reimburse third-party ATM fees — a significant bonus.",
+    name: "A free ATM allowance that fits your trip",
+    desc: "Japan still runs on cash in small restaurants, shrines and rural buses. Look at your card’s free monthly ATM allowance in your own currency, then at the Japanese machine’s own per-use fee, which is separate.",
   },
   {
     rank: 4,
-    name: "Chip-and-PIN and contactless support",
-    desc: "Japanese card terminals overwhelmingly use chip-and-PIN. Magstripe-only cards are often declined. Ensure your card has an EMV chip. Contactless (Visa/Mastercard tap) is growing but not yet universal.",
+    name: "Chip, PIN and a second network",
+    desc: "Seven Bank limits a magnetic-stripe withdrawal to ¥30,000 against ¥100,000 by chip, so a chip card matters. Carry a Visa and a Mastercard rather than two of one network, so one decline does not leave you without a card.",
   },
 ];
 
-const bestCards = [
+/**
+ * The six cards the title counts. Rewritten 10 Nov 2026 from a "best overall /
+ * our verdict" pros-and-cons layout to a who-it-suits layout: every figure here is
+ * from the tables above (issuer's own pages, read CHECKED); Revolut and Charles
+ * Schwab carry no figures because their own pages refuse an automated read.
+ */
+const sixCards = [
   {
-    name: "Wise (formerly TransferWise)",
-    badge: "Best Overall",
-    badgeColor: "var(--accent)",
-    pros: [
-      "Mid-market exchange rate with a small conversion fee (from ~0.4%, varies by currency)",
-      "Fee-free ATM withdrawals up to a monthly allowance set by your account's country (≈¥30,000/mo on a Japan account)",
-      "Holds multiple currencies — convert before you travel to lock in a rate",
-      "Works at all major Japanese ATM networks (7-Eleven, Japan Post, AEON)",
-    ],
-    cons: [
-      "ATM fee (~1.75–2.69%) applies above the monthly free allowance",
-      "Requires a smartphone app for setup and management",
-      "Not a credit card — no purchase protection or rewards points",
-    ],
-    verdict: "Wise is our top pick for most travellers. The exchange rate is consistently better than any high-street bank, ATM access is reliable across Japan, and the app makes it easy to track spending in real time.",
+    name: "Wise",
+    q: "Does the Wise card work in Japan?",
+    suits: "Most visitors, especially from the US, Eurozone and Australia",
+    a: "Yes — at Seven Bank and Japan Post Bank ATMs and at shop terminals that take card payments. It converts at the mid-market rate with a conversion fee from 0.24%, and ATM withdrawals are free up to your account country’s allowance: 250 USD, 250 GBP or 250 EUR a month, 400 AUD in Australia, 100 CAD in Canada, 100 SGD in Singapore.",
+    link: { href: "/guides/money/wise-card-japan", text: "Wise card in Japan: ATM fees and free limits" },
   },
   {
     name: "Revolut",
-    badge: "Best for Frequent Travellers",
-    badgeColor: "var(--sumi)",
-    pros: [
-      "Mid-market rate on weekdays (a small markup applies on weekends)",
-      "Free ATM withdrawals up to a monthly limit (varies by plan and account country)",
-      "Instant spend notifications and easy card freeze via the app",
-      "Premium and Metal plans offer higher ATM limits and travel insurance",
-    ],
-    cons: [
-      "Weekend conversion is marked up ~1% on the Standard plan",
-      "Free plan has a lower ATM allowance than Wise",
-      "Some users report occasional card declines in rural Japan",
-    ],
-    verdict: "Revolut is a strong alternative — particularly the paid plans, which offer higher ATM limits and additional travel perks. The weekend markup is a minor trade-off for most trips.",
+    q: "Does Revolut work in Japan?",
+    suits: "Travellers who already hold a Revolut plan and know its allowance",
+    a: "Yes, as a debit card at ATMs and terminals that accept its network. Its free ATM allowance and exchange fair-usage limits depend on the plan and the account country, and Revolut’s own fees pages refuse an automated read, so no figure is given here — the plan screen in the app shows yours.",
+    link: { href: "/guides/money/revolut-card-japan", text: "Revolut card in Japan: plans, weekends and ATMs" },
   },
   {
-    name: "Charles Schwab Investor Checking (US only)",
-    badge: "Best for US Travellers",
-    badgeColor: "var(--sumi)",
-    pros: [
-      "Unlimited ATM fee reimbursements worldwide, including Japan",
-      "No foreign transaction fees on any purchase",
-      "No monthly fees, no minimum balance requirement",
-      "Uses the Visa exchange rate — competitive and consistent",
-    ],
-    cons: [
-      "Available to US residents only",
-      "No physical branches outside the US — app-based management",
-      "Linked to a brokerage account (minor setup step)",
-    ],
-    verdict: "For US travellers, Charles Schwab is the gold standard. Unlimited ATM fee reimbursements mean you never pay an extra yen at a 7-Eleven ATM — a significant advantage in a cash-heavy country like Japan.",
+    name: "Monzo",
+    q: "Does Monzo work in Japan?",
+    suits: "UK residents who want fee-free card payments",
+    a: "Yes. Monzo states that you can pay “in any currency using your Monzo card, fee-free” at Mastercard’s rate. Cash outside the EEA is free to £200 every 30 days, then 3%.",
+    link: null,
   },
   {
-    name: "Starling Bank / Monzo (UK only)",
-    badge: "Best for UK Travellers",
-    badgeColor: "var(--sumi)",
-    pros: [
-      "Both use the Mastercard exchange rate with no additional markup",
-      "No foreign transaction fees on purchases",
-      "Fee-free ATM withdrawals abroad up to monthly limits",
-      "User-friendly apps with instant spend notifications",
-    ],
-    cons: [
-      "Monthly ATM allowance applies — check your plan before you go",
-      "UK residents only",
-      "No ATM fee reimbursements for third-party charges",
-    ],
-    verdict: "UK travellers should hold either Starling or Monzo as their primary Japan card. Both offer genuinely fee-free spending abroad. Starling has a slight edge on ATM limits; Monzo has a better budgeting interface.",
+    name: "Starling",
+    q: "Does Starling work in Japan?",
+    suits: "UK residents who want fee-free cash as well as card payments",
+    a: "Yes. Starling states “no fees from us” on spending and withdrawing abroad and uses Mastercard’s exchange rate. Cash withdrawals are capped at £300 a day in the local-currency equivalent; the Japanese ATM’s own fee is separate.",
+    link: null,
+  },
+  {
+    name: "Charles Schwab Investor Checking",
+    q: "Does Charles Schwab work in Japan?",
+    suits: "US residents who already bank with Schwab",
+    a: "It is a US debit card; match the network logo on the card against the brands Seven Bank and Japan Post Bank list in the ATM table below. Schwab’s own pages refuse an automated read, so its ATM-fee terms are not quoted here — confirm them on schwab.com before relying on them abroad.",
+    link: null,
+  },
+  {
+    name: "A US credit card with no foreign transaction fee",
+    q: "Which US credit card works best in Japan?",
+    suits: "US visitors paying for hotels, rail passes and large bookings",
+    a: "Capital One VentureOne ($0 annual fee), Capital One Venture ($95) and Chase Sapphire Preferred ($95) all state no foreign transaction fee on purchases outside the United States. Use one for purchases, not cash: an ATM withdrawal on a credit card is a cash advance.",
+    link: null,
   },
 ];
 
 const cardsToAvoid = [
-  { card: "Standard high-street bank cards", reason: "Typically charge 1.5–3% foreign transaction fees plus unfavourable exchange rates. Fine as a backup, not as a primary card." },
-  { card: "Pre-paid travel money cards (e.g. Caxton, Travelex)", reason: "Often lock in poor exchange rates when you load the card. Wise and Revolut offer better rates with more flexibility." },
-  { card: "Airport currency exchange desks", reason: "Not a card, but frequently used as an alternative. Rates are consistently 5–10% worse than mid-market. Avoid entirely." },
+  { card: "A card with a foreign transaction fee", reason: "The fee applies to every yen purchase and often to ATM cash too. Fine as a backup, not as the card you use every day." },
+  { card: "Prepaid travel-money cards", reason: "The rate is fixed when you load the card, not when you spend, and fees are set by each issuer — compare against a mid-market-rate card before buying." },
+  { card: "Paying in your home currency (DCC)", reason: "Not a card, but the most common avoidable cost: the terminal’s or ATM’s rate replaces your card’s. Always choose yen." },
 ];
 
 const howToUseSteps = [
   {
     title: "Set up and fund your card before you fly",
-    desc: "Don't wait until the airport — app-based cards can take 3–7 business days to arrive by post. Top up your card before departing; Wise lets you hold and convert at the mid-market rate before you travel.",
+    desc: "App-based cards arrive by post, so order well before departure and add money to it before you leave. Wise lets you hold yen in the account and convert at the mid-market rate in advance.",
   },
   {
     title: "Always pay in Japanese yen (JPY)",
-    desc: "At payment terminals, you may be offered a choice between paying in yen or your home currency (Dynamic Currency Conversion). Always choose yen. DCC rates are set by the merchant and are typically 3–5% worse than your card's rate.",
+    desc: "At payment terminals and ATMs you may be offered a choice between yen and your home currency (Dynamic Currency Conversion). Always choose yen: the DCC rate is set by the merchant or ATM operator, not your card.",
   },
   {
     title: "Use 7-Eleven or Japan Post ATMs for cash",
-    desc: "These are the most reliable ATM networks for foreign cards in Japan. 7-Eleven ATMs are available 24 hours a day. Japan Post Bank ATMs work during post office hours and some have extended evening access. Both accept Visa, Mastercard, and Maestro.",
+    desc: "Seven Bank ATMs inside 7-Eleven stores run 24 hours for Visa and Mastercard and allow ¥100,000 per withdrawal by chip. Japan Post Bank ATMs run Mon–Sat 7:00–23:00 at post offices and allow ¥50,000 per transaction.",
   },
   {
     title: "Keep a backup card and some emergency cash",
-    desc: "Even the best travel cards occasionally experience technical issues or unexpected blocks. Carry a second card from a different network (e.g. a Visa and a Mastercard), plus ¥10,000–¥20,000 in cash for areas where cards are not accepted.",
+    desc: "Carry a second card from a different network (a Visa and a Mastercard), plus some yen in cash for places where cards are not accepted.",
   },
 ];
 
@@ -297,11 +298,11 @@ const faqItems = [
   },
   {
     q: "Which is better for Japan — Wise or Revolut?",
-    a: "Wise is slightly better for most travellers: it uses the mid-market rate every day of the week (Revolut adds a small markup on weekends) and offers a more generous free ATM allowance by default. However, Revolut's paid plans can match or exceed Wise for heavy ATM users. Both are significantly better than a standard bank card.",
+    a: "It depends on which allowance you will use more. Wise publishes its free ATM allowance and fees by account country (250 USD, 250 GBP or 250 EUR a month, 400 AUD, 100 CAD, 100 SGD) and converts at the mid-market rate; Revolut's allowance and exchange limits depend on the plan you pay for. The side-by-side, with each company's own figures, is in the Wise vs Revolut for Japan guide on this site.",
   },
   {
     q: "Do I need to notify my bank before travelling to Japan?",
-    a: "For dedicated travel cards (Wise, Revolut, Starling, Monzo), no notification is needed — they're designed for international use. For standard bank cards, it's worth checking with your bank, as some institutions block overseas transactions without advance notice. A travel notification usually takes 2–3 minutes via your bank's app or phone line.",
+    a: "Check your own bank's app or terms. App-based cards such as Wise, Revolut, Starling and Monzo are built for use abroad and show each payment in the app as it happens; some standard bank cards can block an unexpected overseas payment until you confirm it, so a second card on another network is the simplest safeguard.",
   },
   {
     q: "Is it safe to use contactless cards in Japan?",
@@ -309,25 +310,37 @@ const faqItems = [
   },
   {
     q: "How much yen should I withdraw at a Japanese ATM?",
-    a: "A useful rule of thumb: budget ¥5,000–¥10,000 per day in cash for meals, transport, and small purchases, then top up as needed. Withdrawing larger amounts reduces the impact of per-transaction fees. Most Japanese ATMs have a single withdrawal limit of around ¥50,000–¥100,000.",
+    a: "Fewer, larger withdrawals keep per-use ATM fees down, within the per-withdrawal limits the operators publish: ¥100,000 at Seven Bank by chip (¥30,000 by magnetic stripe) and ¥50,000 per transaction at Japan Post Bank. How much cash a trip needs depends on how and where you travel — the How Much Yen to Bring guide on this site works through it by trip length.",
   },
   {
     q: "How much does a Japanese ATM charge a foreign card?",
-    a: "It depends on the machine, and only one of the two main operators publishes a number. Japan Post Bank states that “when using certain cards issued abroad, an ATM usage fee (¥220 (tax included) per use) may apply”, with a ¥50,000 limit per transaction. Seven Bank, inside 7-Eleven stores, says only that “fees for cards issued overseas vary by the card brand” and charges per transaction; its limit is ¥100,000 per withdrawal, or ¥30,000 if the machine has to read a magnetic stripe. Whatever the machine charges is separate from anything your own card charges. Checked 26 October 2026.",
+    a: "It depends on the machine, and only one of the two main operators publishes a number. Japan Post Bank states that “when using certain cards issued abroad, an ATM usage fee (¥220 (tax included) per use) may apply”, with a ¥50,000 limit per transaction. Seven Bank, inside 7-Eleven stores, says only that “fees for cards issued overseas vary by the card brand” and charges per transaction; its limit is ¥100,000 per withdrawal, or ¥30,000 if the machine has to read a magnetic stripe. Whatever the machine charges is separate from anything your own card charges. Checked " + CHECKED + ".",
   },
   {
     q: "Does Wise charge for ATM withdrawals in Japan?",
-    a: "Nothing up to your monthly allowance, and the allowance is set by the country your account is registered in rather than the country you are standing in: 250 USD on a US account, 250 GBP in the UK, 250 EUR in the Eurozone, 400 AUD in Australia and 100 CAD in Canada. Above that, Wise charges 2.69% of the excess in the UK, the Eurozone and Australia; 1.95 USD + 1.95% on each withdrawal on a US account; and 2.69 CAD + 2.69% on a Canadian one. The Japanese ATM operator may add a fee of its own on top. Read off Wise’s own country card-fee pages on 26 October 2026.",
+    a: "Nothing up to your monthly allowance, and the allowance is set by the country your account is registered in rather than the country you are standing in: 250 USD on a US account, 250 GBP in the UK, 250 EUR in the Eurozone, 400 AUD in Australia and 100 CAD in Canada and 100 SGD in Singapore. Above that, Wise charges 2.69% of the excess in the UK, the Eurozone and Australia; 1.95 USD + 1.95% on each withdrawal on a US account; 2.69 CAD + 2.69% on a Canadian one; and 1.75% of the excess in Singapore. The Japanese ATM operator may add a fee of its own on top. Read off Wise’s own country card-fee pages on " + CHECKED + ".",
   },
   {
     q: "Is there a US credit card with no foreign transaction fee worth taking to Japan?",
-    a: "Several, and the fee-free part is stated by the issuers themselves. Capital One’s VentureOne Rewards card carries a “$0 Annual Fee” and states “you won’t pay a transaction fee when making purchases outside of the United States”; Capital One Venture Rewards and Chase Sapphire Preferred both carry a $95 annual fee and both state no foreign transaction fees. Use a card like this for hotels, rail passes and large bookings, and a debit card for cash: taking yen out of an ATM on a credit card is a cash advance, which normally means a fee and interest from day one. Annual fees and fee wording checked on the issuers’ own pages, 26 October 2026.",
+    a: "Several, and the fee-free part is stated by the issuers themselves. Capital One’s VentureOne Rewards card carries a $0 annual fee and states “you won’t pay a transaction fee when making purchases outside of the United States”; Capital One Venture Rewards and Chase Sapphire Preferred both carry a $95 annual fee and both state no foreign transaction fees. Use a card like this for hotels, rail passes and large bookings, and a debit card for cash: taking yen out of an ATM on a credit card is a cash advance, which normally means a fee and interest from day one. Annual fees and fee wording checked on the issuers’ own pages, " + CHECKED + ".",
+  },
+  {
+    q: "Does Starling work in Japan?",
+    a: "Yes. Starling Bank states “spend and withdraw abroad with no fees from us” on its personal current account and uses Mastercard’s exchange rate, with cash withdrawals capped at a daily limit of £300 in the local-currency equivalent. The Japanese ATM can still charge its own fee — Japan Post Bank publishes ¥220 including tax per use for certain overseas cards — and you should choose yen, not pounds, when the terminal asks. Checked on starlingbank.com, " + CHECKED + ".",
+  },
+  {
+    q: "Does Monzo work in Japan?",
+    a: "Yes. Monzo states that card payments abroad are fee-free at Mastercard’s exchange rate. Cash outside the EEA, which includes Japan, is free up to £200 every 30 days, then 3%. If you will take out more than that, a second card with its own allowance (Starling or Wise) keeps the cash side free. Checked on Monzo’s travel-fees help page, " + CHECKED + ".",
+  },
+  {
+    q: "What is the best forex card for Japan?",
+    a: "If by forex card you mean a card that holds or converts foreign currency, the useful test is when the rate is set. A multi-currency card such as Wise converts at the mid-market rate when you pay or when you choose to convert, and can hold yen in advance; a prepaid forex card fixes its rate on the day you load it, whatever the yen does afterwards. Either way, compare the free ATM allowance in your own currency with the Japanese machine’s own per-use fee, and pay in yen at every terminal.",
   },
 ];
 
-const TITLE = "Best Travel Card for Japan (2026): Fees and ATM Limits";
+const TITLE = "Best Travel Card for Japan 2026: 6 Cards Compared by Fees";
 const META =
-  "Best travel card for Japan, fees compared: Wise's free ATM allowance by country, the ¥220 Japan Post Bank adds per use, and the best US and UK picks.";
+  "Best travel card for Japan 2026: Wise, Revolut, Monzo, Starling, Schwab and US no-FX cards compared by fee, free ATM allowance by country and ATM limits.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/best-travel-card-japan") } });
 
@@ -343,6 +356,7 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/best-travel-card-japan" />
         <meta property="og:description" content={META} />
         <meta property="og:type" content="article" />
+        <meta property="article:modified_time" content={updated.iso} />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={TITLE} />
@@ -411,18 +425,18 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>
-            Updated {updated.label}
+            Updated <time dateTime={updated.iso}>{fullDate(updated.iso)}</time>
           </p>
           <h1 className={styles.heroTitle}>
-            Best Travel Card for Japan (2026):<br />Fees and ATM Limits Compared
+            Best Travel Card for Japan 2026:<br />6 Cards Compared by Fees
           </h1>
           <p className={styles.heroSubtitle}>
-            Japan is still heavily cash-based — so the card that wins is the one with the
-            real exchange rate and the largest free ATM allowance. Every fee below is from
+            Japan still runs partly on cash — so the card that suits a trip here is the one with the
+            real exchange rate and a free ATM allowance that fits. Every fee below is from
             the issuer&apos;s or the bank&apos;s own page, checked {CHECKED}.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Fees Compared by Country", `Figures checked ${CHECKED}`].map((t) => (
+            {[`Updated ${fullDate(updated.iso)}`, "US · UK · AU · CA · SG · MY", `Figures checked ${CHECKED}`].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -430,7 +444,6 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
           </div>
         </div>
       </section>
-
       <div className={styles.content}>
         {/* Disclaimer */}
         <div className={styles.disclosure}>
@@ -449,17 +462,24 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              For most visitors the best travel card for Japan is Wise: it converts at the mid-market
-              rate — &ldquo;the one you can check on Google&rdquo;, in Wise&apos;s own words — and charges nothing
-              on ATM withdrawals up to your account country&apos;s monthly allowance, which is 250 USD, 250 GBP
-              or 250 EUR, 400 AUD in Australia and 100 CAD in Canada, then 2.69% of the excess.
+              The best travel card for Japan, for most visitors, is a multi-currency debit card such as Wise:
+              it converts at the mid-market rate with a conversion fee from 0.24%, and Japanese ATMs
+              (Seven Bank in 7-Eleven, Japan Post Bank) take it, free up to your account country&apos;s monthly
+              allowance. From the US, Wise (250 USD a month free) plus a no-foreign-transaction-fee credit card;
+              from the UK, Monzo or Starling, which state no fees of their own on card payments abroad; from
+              Australia, Wise, whose 400 AUD allowance is the largest it publishes. At every terminal and ATM,
+              choose to pay in yen (JPY).
             </strong>{" "}
-            If you would rather put the trip on a credit card, the rule is simpler than any ranking: carry one
-            with no foreign transaction fee on the Visa or Mastercard network, plus a second card on the other
-            network as a spare, because a decline in Japan is almost always the issuer or the terminal rather
-            than the brand. Either way the Japanese machine can add a fee of its own — Japan Post Bank publishes
-            ¥220 including tax per use — so take cash out in large amounts and rarely, not small amounts and
-            often. All figures checked {CHECKED}.
+            The Japanese machine can add a fee of its own — Japan Post Bank publishes ¥220 including tax per
+            use for certain overseas cards — so take cash out in larger amounts and less often. Which card
+            suits you depends on where your account is and how much cash you will use; the tables below set
+            out each condition. All figures checked {CHECKED}. For the detail on one card, see the{" "}
+            <Link href="/guides/money/wise-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Wise card in Japan</Link>{" "}
+            and{" "}
+            <Link href="/guides/money/revolut-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Revolut card in Japan</Link>{" "}
+            guides, or{" "}
+            <Link href="/guides/money/wise-vs-revolut-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Wise vs Revolut for Japan</Link>{" "}
+            for the two side by side.
           </p>
           <a href={WISE_CARD_CTA} className={styles.verdictBtn} target="_blank" rel={WISE_REL}>
             Get a Wise card before you fly →
@@ -474,16 +494,16 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best Overall</p>
+                <p className={styles.verdictStatLabel}>Suits most visitors</p>
                 <p className={styles.verdictStatValue}>Wise</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best for US Travellers</p>
-                <p className={styles.verdictStatValue}>Charles Schwab</p>
+                <p className={styles.verdictStatLabel}>From the US</p>
+                <p className={styles.verdictStatValue}>Wise + no-FX credit card</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best for UK Travellers</p>
-                <p className={styles.verdictStatValue}>Starling / Monzo</p>
+                <p className={styles.verdictStatLabel}>From the UK</p>
+                <p className={styles.verdictStatValue}>Monzo / Starling</p>
               </div>
             </div>
             <p className={styles.verdictText}>
@@ -493,7 +513,6 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             </p>
           </div>
         </div>
-
         {/* Q1 — the comparison table the pages ranking above this one lead with. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Types compared</span>
@@ -559,42 +578,31 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
           </div>
         </section>
 
-        {/* Best Cards */}
+        {/* The six cards — one short answer per brand, the shape "Does Starling work in Japan?" already ranks with. */}
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Our picks</span>
-          <h2 className={styles.sectionTitle}>Best Travel Cards for Japan</h2>
-
-          {bestCards.map((card) => (
+          <span className={styles.sectionLabel}>6 cards compared</span>
+          <h2 className={styles.sectionTitle}>Which travel cards work in Japan, and who does each one suit?</h2>
+          <p className={styles.bodyText}>
+            All six work in Japan; what separates them is the condition each one suits. Figures are from each
+            issuer&apos;s own page, read {CHECKED}.
+          </p>
+          {sixCards.map((card) => (
             <div key={card.name} className={styles.providerBlock}>
               <div className={styles.providerHeader}>
-                <h3 className={styles.providerName}>{card.name}</h3>
-                <span
-                  className={styles.providerBadge}
-                  style={{ background: card.badgeColor }}
-                >
-                  {card.badge}
+                <h3 className={styles.providerName}>{card.q}</h3>
+                <span className={styles.providerBadge} style={{ background: "var(--sumi)" }}>
+                  {card.name}
                 </span>
               </div>
-              <div className={styles.pickGrid}>
-                <div className={styles.pickPros}>
-                  <p className={styles.pickListLabel}>Pros</p>
-                  <ul className={styles.pickList}>
-                    {card.pros.map((p) => (
-                      <li key={p}><span className={styles.proIcon}>+</span>{p}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className={styles.pickCons}>
-                  <p className={styles.pickListLabel}>Cons</p>
-                  <ul className={styles.pickList}>
-                    {card.cons.map((c) => (
-                      <li key={c}><span className={styles.conIcon}>−</span>{c}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <p className={styles.bodyText} style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid var(--border)" }}>
-                <strong>Our verdict:</strong> {card.verdict}
+              <p className={styles.bodyText}>{card.a}</p>
+              <p className={styles.bodyText} style={{ fontSize: "0.88rem" }}>
+                <strong>Suits:</strong> {card.suits}.
+                {card.link ? (
+                  <>
+                    {" "}More:{" "}
+                    <Link href={card.link.href} style={{ color: "var(--red)", fontWeight: 600 }}>{card.link.text}</Link>.
+                  </>
+                ) : null}
               </p>
             </div>
           ))}
@@ -603,17 +611,18 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
         {/* Q2 — country picks, the question asked as "best travel card for Japan from the US / UK". */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>By country</span>
-          <h2 className={styles.sectionTitle}>Which travel card is best for Japan from the US / UK / Australia?</h2>
+          <h2 className={styles.sectionTitle}>Which travel card is best for Japan from the US, UK, Australia, Canada, Singapore or Malaysia?</h2>
           <p className={styles.bodyText}>
             From the US and Australia, Wise — the allowance is 250 USD and 400 AUD a month respectively, and
             the Australian one is the largest Wise publishes. From the UK the answer is a UK app bank first,
-            Monzo or Starling, with Wise as a second card, because Monzo states £0 on foreign-currency card
-            payments and Starling states no fees of its own on spending or withdrawing abroad.
+            Monzo or Starling, with Wise as a second card, because Monzo states card payments abroad are
+            fee-free and Starling states no fees of its own on spending or withdrawing abroad.
           </p>
           <p className={styles.bodyText}>
             The reason the answer changes with the country is that Wise&apos;s free ATM allowance follows the
             country your account is registered in, not the country you are standing in. A Canadian account gets
-            100 CAD a month; an Australian one gets four times that.
+            100 CAD a month; an Australian one gets four times that. Singapore accounts get 100 SGD, and a
+            Malaysian account counts withdrawals rather than only the amount: 2 free a month up to 1,000 MYR.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -639,7 +648,7 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            wise.com/us, /gb, /de, /au and /ca pricing/card-fees, read {CHECKED}. The Japanese ATM operator&apos;s
+            wise.com/us, /gb, /de, /au, /ca, /sg and /my pricing/card-fees, read {CHECKED}. The Japanese ATM operator&apos;s
             fee is separate from every figure above.
           </p>
 
@@ -705,6 +714,13 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             confirm on the issuer&apos;s page before you apply.
           </p>
         </section>
+
+        {/* Klook: the costs that can be settled before the card ever sees a yen terminal */}
+        <KlookTripPrep
+          heading="What Can You Book With Your Card Before You Fly?"
+          intro="Anything with a fixed yen price and a date: data, transport passes, airport trains, day tours. Every one of them you prepay in your own currency is one fewer conversion on the trip — and one fewer chance to be handed a dynamic-currency-conversion prompt at a counter."
+          items={bestTravelCardTripPrep}
+        />
 
         {/* Q3 — the "visa vs mastercard in japan" query, answered from the ATM operators' own brand lists. */}
         <section className={styles.bodySection}>
@@ -792,6 +808,14 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             <li>Make few, large ATM withdrawals, and keep the total inside your monthly free allowance</li>
             <li>Prepay what you can in your own currency before you fly, so it never becomes a yen conversion at all</li>
           </ul>
+          <p className={styles.bodyText}>
+            To size those withdrawals, the{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              how much yen to bring to Japan
+            </Link>{" "}
+            guide works out a cash budget by trip length, so you can plan the number of ATM visits against
+            your card&apos;s free allowance.
+          </p>
         </section>
 
         {/* Q6 — Japanese-side ATM fees, the half of the question most card pages leave out. */}
@@ -828,7 +852,9 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            sevenbank.co.jp and jp-bank.japanpost.jp overseas-card pages, read {CHECKED}. For the full picture
+            sevenbank.co.jp and jp-bank.japanpost.jp overseas-card pages, read {CHECKED}. AEON Bank&apos;s ATMs
+            in AEON malls are a third network; its English pages refused an automated read on {CHECKED}, so no
+            fee or limit is listed for it here. For the full picture
             of where the machines are, see the{" "}
             <Link href="/guides/money/atms-in-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               ATMs in Japan guide
@@ -851,6 +877,20 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             before it dispenses: decline the conversion, take the yen, and let your card do the converting at the
             rate you picked the card for in the first place.
           </p>
+          <p className={styles.bodyText}>
+            <strong>A worked example (illustrative numbers, not a quoted rate):</strong> a ¥10,000 bill. The yen
+            button charges ¥10,000, and your card converts it at its own rate — the mid-market rate on Wise,
+            Mastercard&apos;s rate on Monzo or Starling. The home-currency button shows a fixed amount, say 70.00
+            in dollars or pounds, converted at a rate the terminal&apos;s operator chose. If your card app would
+            have converted the same ¥10,000 to 67.00, the 3.00 difference — about 4.5% — is what accepting
+            the conversion costs. You cannot see your card&apos;s figure at the till, so the safe rule is the
+            same every time: press the yen button. The same applies to tapping a card at a contactless
+            terminal — see{" "}
+            <Link href="/guides/money/contactless-payment-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              contactless payment in Japan
+            </Link>{" "}
+            for where tapping works.
+          </p>
         </section>
 
         {/* How to Use */}
@@ -869,13 +909,6 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             ))}
           </div>
         </section>
-
-        {/* Klook: the costs that can be settled before the card ever sees a yen terminal */}
-        <KlookTripPrep
-          heading="What Can You Book With Your Card Before You Fly?"
-          intro="Anything with a fixed yen price and a date: data, transport passes, airport trains, day tours. Every one of them you prepay in your own currency is one fewer conversion on the trip — and one fewer chance to be handed a dynamic-currency-conversion prompt at a counter."
-          items={bestTravelCardTripPrep}
-        />
 
         {/* Do I Still Need Cash? */}
         <section className={styles.bodySection}>
