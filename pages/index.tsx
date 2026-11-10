@@ -1,11 +1,11 @@
 import Head from "next/head";
+import { attractionPrices, latestChecked } from "../lib/attraction-prices";
 import Link from "next/link";
 import { esimArticles } from "../lib/guides-esim";
 import { transportArticles } from "../lib/guides-transport";
 import { moneyArticles } from "../lib/guides-money";
 import { attractionArticles } from "../lib/guides-attractions";
 import { articlesForCity } from "../lib/guide-hub";
-import { pageUpdated } from "../lib/page-dates";
 import { hreflangLinks } from "../components/Hreflang";
 import {
   BOOK_CARDS,
@@ -166,15 +166,12 @@ const DESC =
   "Which Japan attractions, tours and day trips need booking ahead — with official prices and the booking route that works from abroad, checked at source.";
 
 /**
- * "Prices checked" stat. Taken from the most recently updated Things to Do guide rather than
- * the build date, so the number on the homepage is a date we actually re-checked prices on.
+ * "Prices last checked" stat. Read from the official price table (lib/attraction-prices.ts),
+ * the same source the translated home pages use, so every edition shows the same month and
+ * the same count of checked prices (unified 2026-11-10).
  */
 export const getStaticProps = () => {
-  const latest = attractionArticles
-    .map((a) => pageUpdated(a.href).iso)
-    .sort()
-    .reverse()[0];
-  const [y, m] = latest.split("-").map(Number);
+  const [y, m] = latestChecked().split("-").map(Number);
   return {
     props: {
       pricesChecked: new Date(Date.UTC(y, m - 1, 1)).toLocaleDateString("en-US", {
@@ -190,7 +187,7 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
   // Counts and dates, not claims: nothing here asserts we have been anywhere or tried anything.
   const stats = [
     { value: `${attractionArticles.length}`, label: "Ticket & tour guides" },
-    { value: "3",                            label: "City hubs: Tokyo, Kyoto, Osaka" },
+    { value: `${attractionPrices.length}`,   label: "Official prices checked" },
     { value: `${totalGuides}`,               label: "Guides in total" },
     { value: pricesChecked,                  label: "Prices last checked" },
   ];
