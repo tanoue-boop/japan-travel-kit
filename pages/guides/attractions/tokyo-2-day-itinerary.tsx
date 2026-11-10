@@ -289,7 +289,7 @@ const bookingWindow = [
   },
   {
     title: "A few days out: Skytree, and any guided tour",
-    desc: "Skytree rarely sells out, but booking ahead avoids the ¥500 same-day counter fee. Tours list their own cancellation window, so read it for your date.",
+    desc: "Skytree's on-site availability depends on the day, and booking ahead avoids the ¥500 on-site fee. Tours list their own cancellation window, so read it for your date.",
   },
 ];
 
@@ -596,7 +596,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>What to book for Day 2.</strong> The Skytree ticket ahead (it avoids the ¥500 same-day
-            fee), and the teamLab Planets slot if you are going. If you would rather hand the east side to a
+            fee; the{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets guide</Link> has the
+            350 m and 450 m prices), and the teamLab Planets slot if you are going. If you would rather hand the east side to a
             guide, the sightseeing bus day tour covers the Imperial Palace gardens, Asakusa and Skytree; the
             Tsukiji street-food walk is a two-hour version of lunch.
           </p>

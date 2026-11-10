@@ -120,7 +120,9 @@ export const PRICES = {
     bookingNote: "The same-day counter adds a ¥500 service fee per ticket, so booking ahead is simply cheaper.",
     source: "tokyo-skytree.jp",
     // Re-read 6 Nov 2026 on en.tokyo-skytree.jp/ticket: every tier unchanged.
-    checked: "2026-11-06",
+    // Re-read 10 Nov 2026 on en.tokyo-skytree.jp/ticket: every tier unchanged; the
+    // ¥500 on-site fee is now worded as applying at the 4F counter and ticket machines.
+    checked: "2026-11-10",
     klook: klook("Klook: TOKYO SKYTREE ticket", skytreeTicket.url),
   },
   tokyoTower: {

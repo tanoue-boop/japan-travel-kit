@@ -19,20 +19,34 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 
-// Prices, tiers and hours below were read off tokyo-skytree.jp on 19 Oct 2026. The
+// Prices, tiers and hours below were read off tokyo-skytree.jp on 19 Oct 2026 and
+// re-read on 10 Nov 2026 (prices unchanged; hours, cancellation and access added). The
 // Floor 350 adult and child figures and that date are owned by lib/attraction-prices.ts,
 // which also feeds /guides/attractions/japan-attraction-ticket-prices.
 const P = PRICES.tokyoSkytree;
 const CHECKED = checkedLabel(P.checked);
 
 const priceRows = [
-  { ticket: "Floor 350 — adult (15+)", advance: P.adult, sameDay: "+¥500 service fee" },
-  { ticket: "Floor 350 — child (6–14)", advance: P.child, sameDay: "+¥500 service fee" },
-  { ticket: "Combo, Floor 350 + 450 — adult", advance: "from ¥3,000", sameDay: "+¥500 service fee" },
-  { ticket: "Combo, Floor 350 + 450 — child", advance: "from ¥1,500", sameDay: "+¥500 service fee" },
-  { ticket: "Floor 450 added on site — adult", advance: "Not sold online", sameDay: "¥1,400" },
-  { ticket: "Floor 450 added on site — child", advance: "Not sold online", sameDay: "¥700" },
+  { ticket: "Tembo Deck (350 m) — adult (15+)", advance: P.adult, sameDay: "Date price + ¥500 fee" },
+  { ticket: "Tembo Deck (350 m) — child (6–14)", advance: P.child, sameDay: "Date price + ¥500 fee" },
+  { ticket: "Combo, 350 m + 450 m — adult", advance: "from ¥3,000", sameDay: "Date price + ¥500 fee" },
+  { ticket: "Combo, 350 m + 450 m — child", advance: "from ¥1,500", sameDay: "Date price + ¥500 fee" },
+  { ticket: "Tembo Galleria (450 m) added on site — adult", advance: "Not sold on its own", sameDay: "¥1,400 (no fee)" },
+  { ticket: "Tembo Galleria (450 m) added on site — child", advance: "Not sold on its own", sameDay: "¥700 (no fee)" },
   { ticket: "Age 5 and under", advance: "Free", sameDay: "Free" },
+];
+
+// Hours, change and cancellation rules and access, read off en.tokyo-skytree.jp
+// (/, /open-hours/, /ticket/cancel/, /ticket/web-purchase/, /ticket/congestion/,
+// /access/public-transport/, /floor/tembogalleria/) on 10 Nov 2026.
+const visitRows = [
+  { item: "Opening hours (10 Nov 2026)", detail: "10:00–22:00, last admission 21:00. Hours are set per date and \"may change without prior notice\"; last admission is always one hour before closing." },
+  { item: "Changing the date or time", detail: "Not possible. Cancel the ticket and buy a new one; the same applies to switching between the combo and the Tembo Deck ticket." },
+  { item: "Cancellation fee (official online tickets)", detail: "0% up to 31 days before the visit, 20% from 30 days before until the entry time, 100% after it. No fee within 59 minutes of purchase." },
+  { item: "Buying on the day", detail: "4th-floor counter and ticket machines, +¥500 per ticket. Availability of times \"depends on the day\" and there may be a queue." },
+  { item: "Tembo Galleria (450 m)", detail: "445–450 m, highest point 451.2 m (Sorakara Point). Reached by the Tembo Shuttle from Floor 350; on-day add-on sale may be suspended for capacity." },
+  { item: "Quieter times", detail: "Weekday afternoons, first thing in the morning, and the late hours before closing, per the official crowd forecast page." },
+  { item: "Nearest stations", detail: "Tokyo Skytree Station (Tobu Skytree Line) and Oshiage (Skytree-mae) Station (Hanzomon Line and others). About a 5-minute ride from Asakusa; about 20 minutes from Tokyo Station." },
 ];
 
 const whoFor = [
@@ -106,7 +120,7 @@ const steps = [
   },
   {
     title: "Book a date-specified ticket online",
-    desc: `The official site sells date-specified tickets from the "from" prices above, and the figure for your actual date can be higher. Buying same-day at the 4th-floor counter or a convenience store adds a ¥500 service fee per ticket — the single clearest reason to book ahead. Checked ${CHECKED}.`,
+    desc: `The official site sells date- and time-specified tickets from the "from" prices above, and the figure for your actual date can be higher. Buying on the day at the 4th-floor counter or the ticket machines adds a ¥500 service fee per ticket — the single clearest reason to book ahead. Checked ${CHECKED}.`,
   },
   {
     title: "Use a reseller if your card is issued abroad",
@@ -125,7 +139,7 @@ const faqItems = [
   },
   {
     q: "Is it cheaper to buy Tokyo Skytree tickets in advance?",
-    a: `Yes, and the saving is explicit rather than a matter of fluctuating demand. Buying on the day at the 4th-floor ticket counter — or at a convenience store — adds a ¥500 service fee per ticket on top of the admission price. For a family of four that is ¥2,000 of avoidable cost. Booking a date-specified ticket online, either on the official site or through a reseller, skips the fee and the counter queue. Checked ${CHECKED}.`,
+    a: `Yes, and the saving is explicit rather than a matter of fluctuating demand. Buying on the day at the 4th-floor ticket counter or the ticket machines adds a ¥500 service fee per ticket on top of the admission price. For a family of four that is ¥2,000 of avoidable cost. Booking a date-specified ticket online, either on the official site or through a reseller, skips the fee and the counter queue. Checked ${CHECKED}.`,
   },
   {
     q: "What is the difference between Floor 350 and Floor 450?",
@@ -151,13 +165,25 @@ const faqItems = [
     q: "How do I get to Tokyo Skytree?",
     a: "The tower sits above Tokyo Skytree Station on the Tobu Skytree Line and Oshiage Station, which is served by the Tokyo Metro Hanzomon Line, the Toei Asakusa Line and the Keisei Oshiage Line. Oshiage is covered by the Tokyo Subway Ticket, so if you are already carrying that pass the trip there costs nothing extra. Asakusa is two stops away on the Asakusa Line, which makes the two easy to pair in one afternoon.",
   },
+  {
+    q: "Can I change the date or time of a Tokyo Skytree ticket?",
+    a: `No. The official site says purchased admission tickets cannot be changed, so a new date, time or ticket type means cancelling and buying again. For tickets bought on the official online shop, cancelling is free up to 31 days before the visit, costs 20% from 30 days before until the entry time, and is not possible after it; there is no fee within 59 minutes of purchase. Tickets bought through a travel agency or reseller follow that seller's own terms. Checked ${CHECKED}.`,
+  },
+  {
+    q: "What age counts as a child for Tokyo Skytree tickets?",
+    a: `Child prices apply from age 6 to 14 — junior high school students and younger. From 15, which includes senior high school students, the adult price applies. Children aged 5 and under enter free. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Can the Tembo Galleria (450 m) sell out on the day?",
+    a: `It can be paused. The Tembo Galleria add-on is sold at ticket machines inside the Tembo Deck on the day, and the official site warns that it may have to suspend that sale because of capacity limits. A combo ticket bought online holds the 450 m entry with your time slot instead. Checked ${CHECKED}.`,
+  },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-skytree-tickets") } });
 
-const TITLE = "Tokyo Skytree Tickets (2026): Prices and Floor 350 vs 450";
+const TITLE = "Tokyo Skytree Tickets 2026: Price, 350 vs 450 and Booking";
 const DESC =
-  "Tokyo Skytree ticket prices for 2026: Floor 350 from ¥1,800, the Floor 450 combo from ¥3,000, and the ¥500 same-day fee that rewards booking ahead.";
+  "Tokyo Skytree tickets price, checked 10 Nov 2026: Tembo Deck (350 m) from ¥1,800, 350 m + 450 m combo from ¥3,000, +¥500 a ticket on the day.";
 
 export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -243,14 +269,17 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Skytree Tickets (2026):<br />Prices, Floor 350 vs 450 &amp; How to Book
+            Tokyo Skytree Tickets 2026:<br />Price, 350 vs 450 and How to Book
           </h1>
           <p className={styles.heroSubtitle}>
-            The highest decks in Tokyo, and the one attraction where buying on the day has a published
-            penalty. Here are the official prices, what Floor 450 actually adds, and how to book from abroad.
+            Tokyo Skytree tickets cost from ¥1,800 for an adult for the Tembo Deck (350 m) and from ¥3,000 for
+            the combo with the Tembo Galleria (450 m), on the official site checked {CHECKED}; the price is set
+            per date, so yours can be higher. A date- and time-specified ticket booked online skips the ¥500
+            per-ticket fee charged at the on-site counter and machines, and on-site availability depends on the
+            day — so book the slot you want, especially an evening one, before you go.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official prices", "Floor 350 vs Floor 450"].map((t) => (
+            {[`Updated ${updated.label}`, "Official prices", "350 m vs 450 m"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -313,9 +342,12 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What You Are Buying</h2>
+          <h2 className={styles.sectionTitle}>What Does a Tokyo Skytree Ticket Include?</h2>
           <p className={styles.bodyText}>
-            Tokyo Skytree sells admission to two separate levels. <strong>Floor 350</strong> is the Tembo Deck,
+            This page covers Skytree tickets, prices and booking; if you are still deciding which tower to climb,
+            the <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks comparison</Link>{" "}
+            sets Skytree against Shibuya Sky, Tokyo Tower and the free Tocho deck. Tokyo Skytree sells admission
+            to two separate levels. <strong>Floor 350</strong> is the Tembo Deck,
             a three-storey observation level and the one included in every ticket. <strong>Floor 450</strong> is
             the Tembo Galleria, a sloping glass-walled skywalk that spirals up to the tower&apos;s highest
             accessible point — and it cannot be visited on its own.
@@ -330,10 +362,19 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>Tokyo Skytree Ticket Prices</h2>
+          <h2 className={styles.sectionTitle}>How Much Are Tokyo Skytree Tickets in 2026?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            An adult pays from ¥1,800 for the Tembo Deck (350 m) and from ¥3,000 for the combo that adds the
+            Tembo Galleria (450 m); a child aged 6–14 pays from ¥900 or from ¥1,500. Buying at the tower adds ¥500
+            per ticket. For how this compares with every other major ticket in Japan, see the{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices">Japan attraction ticket prices table</Link>.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", fontSize: "0.8rem", color: "var(--text-muted)", paddingTop: "0.5rem" }}>
+                  Official prices, en.tokyo-skytree.jp/ticket, checked {CHECKED}.
+                </caption>
                 <thead>
                   <tr>
                     {["Ticket", "Date-specified online", "On the day"].map((h) => (
@@ -356,24 +397,22 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off the official Tokyo Skytree site on {CHECKED}. The official page lists these as
             &ldquo;from&rdquo; prices, so the figure for a specific date can be higher — confirm at booking. The
-            ¥500 same-day service fee applies per ticket at the 4th-floor counter and at convenience stores.
+            official sources checked do not publish a separate weekday and weekend table; the price shown for
+            your date at checkout is the one that applies. The ¥500 on-site service fee applies per ticket at
+            the 4th-floor counter and the ticket machines; the Tembo Galleria add-on carries no fee.
           </p>
         </section>
-
-        {/* The rest of the afternoon — the Asakusa-side bookings around the ticket above.
-            Sits directly after the price table because that is where a reader has just
-            decided which Skytree ticket to buy and has the rest of the day still open. */}
-        <KlookTripPrep
-          label="Around the tower"
-          heading="What Else the Oshiage Side of the Day Needs Booked"
-          intro="A deck slot takes an hour or two, and the ticket above is the only part of it that has to be timed. These are the bookings the rest of that afternoon runs on — all on the same side of the river as the tower, and all on the same account as the ticket."
-          items={skytreeTripPrep}
-        />
 
         {/* Which ticket */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Which ticket</span>
-          <h2 className={styles.sectionTitle}>Floor 350, the Combo, or a Late Slot?</h2>
+          <h2 className={styles.sectionTitle}>Is the 450 m Tembo Galleria Worth It Over the 350 m Deck?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Only if height itself is the point: the combo costs ¥1,200 more than the Tembo Deck alone for an adult
+            (from ¥3,000 against from ¥1,800) and lifts you from 350 m to a glass ramp running 445–450 m, with the
+            highest point at 451.2 m. If you are unsure, buy the combo online — adding 450 m on the day costs
+            ¥1,400 and the official site says that sale can be suspended for capacity.
+          </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -385,10 +424,90 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           </div>
         </section>
 
+        {/* Booking CTA — directly after the price table and the which-ticket choice */}
+        <div className={styles.verdictBox}>
+          <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>
+              <strong>Picked your ticket?</strong> Klook sells the TOKYO SKYTREE timed admission with the 350 m +
+              450 m combo on the same listing, with an English checkout and an e-ticket. Check the listing for
+              your date&apos;s price and slots.
+            </p>
+            <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+              <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+                Check TOKYO SKYTREE tickets on Klook →
+              </KlookLink>
+            </div>
+          </div>
+        </div>
+
+        {/* The rest of the afternoon — the Asakusa-side bookings around the ticket above.
+            Sits directly after the price table, the ticket choice and the Skytree CTA, because
+            that is where a reader has just decided which ticket to buy and has the rest of
+            the day still open. */}
+        <KlookTripPrep
+          label="Around the tower"
+          heading="What Else the Oshiage Side of the Day Needs Booked"
+          intro="A deck slot takes an hour or two, and the ticket above is the only part of it that has to be timed. These are the bookings the rest of that afternoon runs on — all on the same side of the river as the tower, and all on the same account as the ticket."
+          items={skytreeTripPrep}
+        />
+
+        {/* At the door */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>On the day</span>
+          <h2 className={styles.sectionTitle}>Can You Buy Tokyo Skytree Tickets at the Door?</h2>
+          <p className={styles.bodyText}>
+            Yes — at the 4th-floor ticket counter and the ticket machines — but each ticket costs ¥500 more than
+            online, the official site says the times available on the day depend on the day, and there may be a
+            queue to buy. The Tembo Galleria add-on is sold at machines inside the Tembo Deck, with no fee, and
+            its sale can be suspended when the galleria is at capacity.
+          </p>
+        </section>
+
+        {/* Best time */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Timing</span>
+          <h2 className={styles.sectionTitle}>What Is the Best Time to Visit Tokyo Skytree?</h2>
+          <p className={styles.bodyText}>
+            For a quiet deck, a weekday afternoon or the first slot of the morning; for the night view, the hour
+            or two before closing. Those are the three windows the official crowd forecast page singles out, and
+            it warns that New Year, Golden Week and spring break run busier. Sunset changes through the year, so
+            match an evening slot to the sunset time for your date. If Skytree is one stop in a short stay, the{" "}
+            <Link href="/guides/attractions/tokyo-2-day-itinerary">Tokyo 2-day itinerary</Link> pairs it with
+            Asakusa on the same day, and{" "}
+            <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link> lists what else
+            needs a timed ticket.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", fontSize: "0.8rem", color: "var(--text-muted)", paddingTop: "0.5rem" }}>
+                  Official TOKYO SKYTREE site (en.tokyo-skytree.jp: hours, ticket cancellation, crowd forecast,
+                  access and floor pages), checked {CHECKED}.
+                </caption>
+                <thead>
+                  <tr>
+                    {["Item", "Official detail"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {visitRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
         {/* vs other decks */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Skytree vs Tokyo&apos;s Other Observation Decks</h2>
+          <h2 className={styles.sectionTitle}>How Does Skytree Compare With Tokyo&apos;s Other Decks?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Skytree is the altitude pick. If what you actually want is the Scramble Crossing photograph,{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky</Link> is the better buy, and if you
@@ -428,7 +547,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
         {/* How to book */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Book Tokyo Skytree Tickets</h2>
+          <h2 className={styles.sectionTitle}>How Do You Book Tokyo Skytree Tickets?</h2>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -452,7 +571,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Tokyo Skytree Tickets: Common Questions</h2>
           <div className={styles.faqList}>
             {faqItems.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>

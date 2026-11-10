@@ -38,9 +38,12 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/zh-tw/guides/attractions/tokyo-skytree-tickets";
-const TITLE = "東京晴空塔門票（2026）：票價與樓層選擇";
+// Re-synced with the English guide on 2026-11-10 (answer-first opening, question headings,
+// hours and cancellation table, three FAQs). Figures from lib/attraction-prices.ts and
+// en.tokyo-skytree.jp, read 10 Nov 2026.
+const TITLE = "東京晴空塔門票價格 2026：350 樓 vs 450 樓與購票";
 const DESC =
-  "東京晴空塔門票 2026：350 樓展望台 ¥1,800 起、350＋450 套票 ¥3,000 起，當天購票每張多 ¥500。";
+  "東京晴空塔門票價格（2026/11 官網查核）：350 樓天望甲板 ¥1,800 起、350 樓＋450 樓聯票 ¥3,000 起，現場購票每張加 ¥500。";
 
 const LOCALE = "zh-tw" as const;
 const P = PRICES.tokyoSkytree;
@@ -54,11 +57,22 @@ const SKYTREE_URL = klookFor(skytreeTicket.url, LOCALE);
 const priceRows = [
   { ticket: "350 樓 — 成人（15 歲以上）", advance: ADULT, sameDay: "另加服務費 ¥500" },
   { ticket: "350 樓 — 兒童（6～14 歲）", advance: CHILD, sameDay: "另加服務費 ¥500" },
-  { ticket: "350＋450 樓套票 — 成人", advance: "¥3,000 起", sameDay: "另加服務費 ¥500" },
-  { ticket: "350＋450 樓套票 — 兒童", advance: "¥1,500 起", sameDay: "另加服務費 ¥500" },
-  { ticket: "現場加購 450 樓 — 成人", advance: "線上不販售", sameDay: "¥1,400" },
-  { ticket: "現場加購 450 樓 — 兒童", advance: "線上不販售", sameDay: "¥700" },
+  { ticket: "350 樓＋450 樓聯票 —成人", advance: "¥3,000 起", sameDay: "另加服務費 ¥500" },
+  { ticket: "350 樓＋450 樓聯票 —兒童", advance: "¥1,500 起", sameDay: "另加服務費 ¥500" },
+  { ticket: "現場加購 450 樓 — 成人", advance: "不單獨販售", sameDay: "¥1,400（無服務費）" },
+  { ticket: "現場加購 450 樓 — 兒童", advance: "不單獨販售", sameDay: "¥700（無服務費）" },
   { ticket: "5 歲以下", advance: FREE, sameDay: FREE },
+];
+
+// Same rows as the English guide's visitRows, read off en.tokyo-skytree.jp on 10 Nov 2026.
+const visitRows = [
+  { item: "營業時間（2026 年 11 月 10 日）", detail: "10:00–22:00，最後入場 21:00。營業時間按日期公布，可能未經通知變更；最後入場一律為關門前 1 小時。" },
+  { item: "更改日期或時段", detail: "不行。須取消後重新購買；聯票與 350 樓門票之間互換也一樣。" },
+  { item: "取消手續費（官方線上票）", detail: "參觀日 31 天前以前 0%，30 天前起至入場時間 20%，入場時間後 100%。購買後 59 分鐘內取消免手續費。" },
+  { item: "當天現場購票", detail: "4 樓售票櫃檯與售票機，每張加 ¥500。可買到的時段依當天而定，可能需要排隊。" },
+  { item: "天望迴廊（450 樓）", detail: "445–450 公尺，最高點 451.2 公尺（Sorakara Point）。由 350 樓搭天望迴廊專用電梯上去；當天加購可能因人數限制暫停販售。" },
+  { item: "人較少的時段", detail: "平日下午、早上剛開門、關門前的晚間時段（依官方擁擠預測頁）。" },
+  { item: "最近車站", detail: "東京晴空塔站（東武晴空塔線）、押上站（半藏門線等）。從淺草約 5 分鐘，從東京站約 20 分鐘。" },
 ];
 
 const whoFor = [
@@ -75,7 +89,7 @@ const whoFor = [
   },
   {
     title: "加買 450 樓，如果…",
-    desc: "高度本身就是這趟的目的。450 樓是 Tembo Galleria，一條斜斜往上繞的玻璃空中迴廊，通到塔內可抵達的最高點。線上套票 ¥3,000 起；當天在 350 樓票上加購，要再付 ¥1,400。",
+    desc: "高度本身就是這趟的目的。450 樓是 Tembo Galleria（天望迴廊），沿著玻璃牆面向上延伸的空中迴廊，通往塔內最高的參觀樓層。線上聯票 ¥3,000 起；當天在 350 樓票上加購，要再付 ¥1,400。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 20l8-16 8 16" />
@@ -98,14 +112,14 @@ const deckRows = [
   {
     deck: "東京晴空塔",
     height: "350 樓與 450 樓",
-    price: "¥1,800 起（350 樓）・套票 ¥3,000 起",
-    highlight: "東京最高的展望台，也是唯一的玻璃空中迴廊",
+    price: "¥1,800 起（350 樓）・聯票 ¥3,000 起",
+    highlight: "東京最高的觀景設施，也是唯一的玻璃空中迴廊",
     area: "押上／東京晴空塔站",
   },
   {
     deck: "澀谷SKY",
     height: "約 229 公尺屋頂",
-    price: "線上預購 ¥2,500",
+    price: "線上 ¥2,700（15:00 前）／¥3,400（15:00 後）",
     highlight: "澀谷十字路口正上方的露天屋頂——重點是那張照片，不是高度",
     area: "澀谷站",
   },
@@ -127,16 +141,16 @@ const deckRows = [
 
 const steps = [
   {
-    title: "訂票前先決定只買 350 樓還是買套票",
-    desc: "450 樓用線上套票買（成人 ¥3,000 起），比當天在 350 樓票上加購（多 ¥1,400）便宜。只要有一點可能想上空中迴廊，就一開始買套票。",
+    title: "訂票前先決定只買 350 樓還是買聯票",
+    desc: "450 樓用線上聯票買（成人 ¥3,000 起），比當天在 350 樓票上加購（多 ¥1,400）便宜。只要有一點可能想上空中迴廊，就一開始買聯票。",
   },
   {
     title: "線上訂指定日期的票",
-    desc: `官方網站以上面的「起」價販售指定日期票，你那天的實際金額可能更高。當天在 4 樓售票櫃台或便利商店購買，每張票要另加 ¥500 服務費——這是提前訂票最明確的理由。查核日 ${CHECKED}。`,
+    desc: `官方網站以上面的「起」價販售指定日期票，你那天的實際金額可能更高。當天在 4 樓售票櫃檯或售票機購票，每張票需額外支付 ¥500 服務費——這就是提前購票最直接的好處。查核日 ${CHECKED}。`,
   },
   {
     title: "信用卡是海外發行的，就透過售票平台買",
-    desc: "Klook 賣的是同一張指定時段入場券，結帳介面有中文、拿到的是電子票，可以避開不少旅客在日本景點官網遇到的刷卡與語言問題。同一個商品頁也有 450 樓套票。",
+    desc: "Klook 賣的是同一張指定時段入場券，結帳介面有中文、拿到的是電子票，可以避開不少旅客在日本景點官網遇到的刷卡與語言問題。同一個商品頁也有 350 樓＋450 樓聯票。",
   },
   {
     title: "查你那一天的營業時間，不要看一般時間",
@@ -147,19 +161,19 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "東京晴空塔門票多少錢？",
-    a: `官方網站的指定日期票，主展望台 350 樓成人（15 歲以上）${ADULT}，6～14 歲兒童 ${CHILD}。涵蓋 350 樓與 450 樓的套票成人 ¥3,000 起、兒童 ¥1,500 起。5 歲以下免費。這些都是「起」價，特定日期的金額可能更高。官方網站查核日 ${CHECKED}。`,
+    a: `官方網站的指定日期票，主展望台 350 樓成人（15 歲以上）${ADULT}，6～14 歲兒童 ${CHILD}。涵蓋 350 樓與 450 樓的聯票成人 ¥3,000 起、兒童 ¥1,500 起。5 歲以下免費。這些都是「起」價，特定日期的金額可能更高。官方網站查核日 ${CHECKED}。`,
   },
   {
     q: "東京晴空塔門票提前買比較便宜嗎？",
-    a: `是，而且便宜多少是寫明的，不是看當天需求浮動。當天在 4 樓售票櫃台——或便利商店——購買，入場費之外每張票要再加 ¥500 服務費。一家四口就是 ¥2,000 本來可以省下的錢。線上訂指定日期票，不論官網或售票平台，都能同時省掉這筆費用和櫃台排隊。查核日 ${CHECKED}。`,
+    a: `是，而且便宜多少是寫明的，不是看當天需求浮動。當天在 4 樓售票櫃檯或售票機購票，入場費之外每張票需額外支付 ¥500 服務費。一家四口就是 ¥2,000 本來可以省下的錢。線上訂指定日期票，不論官網或售票平台，都能同時省掉這筆費用和櫃檯排隊。查核日 ${CHECKED}。`,
   },
   {
     q: "350 樓和 450 樓差在哪裡？",
-    a: "350 樓是 Tembo Deck（天望甲板），三層樓的主展望層，每一張票都含。450 樓是 Tembo Galleria（天望迴廊），一條玻璃牆面、斜斜往上繞的空中迴廊，通到塔內可抵達的最高點。450 樓不能單獨參觀：你必須先有 350 樓的票，要嘛買線上套票，要嘛在現場售票機加購（成人 ¥1,400）。",
+    a: "350 樓是 Tembo Deck（天望甲板），共有三層的主要觀景區，每一張票都含。450 樓是 Tembo Galleria（天望迴廊），沿著玻璃牆面向上延伸的空中迴廊，通往塔內最高的參觀樓層。450 樓不能單獨參觀：你必須先有 350 樓的票，要嘛買線上聯票，要嘛在現場售票機加購（成人 ¥1,400）。",
   },
   {
     q: "450 樓的票可以線上買嗎？",
-    a: `不能單買。官方網站只把 450 樓放在套票裡賣；如果你拿著 350 樓的票到現場才改變主意，就在館內售票機加購，成人 ¥1,400、6～14 歲兒童 ¥700。線上買套票是比較便宜的那條路——成人 ¥3,000 起，分兩次買則是 ¥1,800 再加 ¥1,400。查核日 ${CHECKED}。`,
+    a: `不能單買。官方網站只把 450 樓放在聯票裡賣；如果已購買 350 樓門票，到現場才決定加購 450 樓，就在館內售票機加購，成人 ¥1,400、6～14 歲兒童 ¥700。線上買聯票是比較便宜的那條路——成人 ¥3,000 起，分兩次買則是 ¥1,800 再加 ¥1,400。查核日 ${CHECKED}。`,
   },
   {
     q: "東京晴空塔的營業時間是？",
@@ -167,15 +181,27 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "東京晴空塔和澀谷SKY 該選哪一個？",
-    a: "它們回答的是不同問題。晴空塔講的是高度與視野範圍：350 樓和 450 樓是東京最高的展望台，視野涵蓋整片關東平原，天氣好的時候富士山也在裡面。澀谷SKY 講的是照片：約 229 公尺高的露天屋頂，就在澀谷十字路口正上方，日落時最好看，氣氛大於高度。只能選一個的話，要全景選晴空塔，要那張大家都認得的照片選澀谷SKY。",
+    a: "它們回答的是不同問題。晴空塔講的是高度與視野範圍：350 樓和 450 樓是東京最高的觀景設施，視野涵蓋整片關東平原，天氣好的時候富士山也在裡面。澀谷SKY 講的是照片：約 229 公尺高的露天屋頂，就在澀谷十字路口正上方，日落時最好看，氣氛大於高度。只能選一個的話，要全景選晴空塔，要那張大家都認得的照片選澀谷SKY。",
   },
   {
     q: "在東京晴空塔看得到富士山嗎？",
-    a: "天氣好的時候看得到——而且憑著高度，它的機率是東京各展望台裡最高的。能見度完全看天氣，涼爽乾燥的月份和一天中較早的時段通常比較好。任何一天都沒有保證，如果你是專為富士山視野才付套票價，這點值得先記住。",
+    a: "天氣好的時候看得到——而且憑著高度，在東京各展望台中，看到富士山的機率最高。能見度完全看天氣，涼爽乾燥的月份和一天中較早的時段通常比較好。任何一天都沒有保證，如果你是專為富士山視野才付聯票價，這點值得先記住。",
   },
   {
     q: "東京晴空塔怎麼去？",
     a: "塔就蓋在東武晴空塔線的「東京晴空塔站」和「押上站」上方；押上站有東京地下鐵半藏門線、都營淺草線與京成押上線。押上在東京地鐵通票的範圍內，所以如果你已經帶著這張票，過去不用多花錢。搭淺草線到淺草只有兩站，兩個地方很容易排在同一個下午。",
+  },
+  {
+    q: "東京晴空塔門票可以改日期或時段嗎？",
+    a: `不行。官網說明已購買的門票無法更改，要換日期、時段或票種，必須取消後重新購買。官方線上票在參觀日 31 天前以前取消免手續費，30 天前起至入場時間收 20%，入場時間後無法取消；購買後 59 分鐘內取消也不收費。透過旅行社或售票平台買的票，依該賣家的規定處理。查核日 ${CHECKED}。`,
+  },
+  {
+    q: "東京晴空塔兒童票適用幾歲？",
+    a: `兒童票適用 6～14 歲（國中生以下）。15 歲起（含高中生）為成人票，5 歲以下免費。查核日 ${CHECKED}。`,
+  },
+  {
+    q: "450 樓天望迴廊當天會賣完嗎？",
+    a: `可能暫停販售。天望迴廊加購票在當天於 350 樓天望甲板內的售票機販售，官網提醒可能因人數限制而暫停販售。線上買的聯票，已在你預約的時段含 450 樓入場。查核日 ${CHECKED}。`,
   },
 ];
 
@@ -252,11 +278,12 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            東京晴空塔門票（2026）：<br />票價、350 與 450 樓怎麼選、怎麼訂
+            東京晴空塔門票價格 2026：<br />350 樓 vs 450 樓與購票方式
           </h1>
           <p className={styles.heroSubtitle}>
-            東京最高的展望台，也是少數「當天才買」有明文代價的景點。這裡整理官方票價、450 樓實際多給你什麼，
-            以及從海外怎麼訂。
+            東京晴空塔門票：350 樓天望甲板成人 ¥1,800 起，加上 450 樓天望迴廊的聯票 ¥3,000 起（官網查核日
+            {CHECKED}；票價按日期而定，你那天可能更高）。線上指定日期與時段的票不用付現場櫃檯與售票機每張 ¥500
+            的服務費，而現場能買到的時段依當天而定——想要的時段，尤其是傍晚，最好先訂。
           </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${updatedLabel}`, "官方票價", "350 樓 vs 450 樓"].map((t) => (
@@ -283,12 +310,12 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
                 <p className={styles.verdictStatValue}>¥1,800 起</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>350＋450 套票</p>
+                <p className={styles.verdictStatLabel}>350 樓＋450 樓聯票</p>
                 <p className={styles.verdictStatValue}>¥3,000 起</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>當天購票</p>
-                <p className={styles.verdictStatValue}>每張多 ¥500</p>
+                <p className={styles.verdictStatValue}>每張需額外支付 ¥500</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>5 歲以下</p>
@@ -296,9 +323,9 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>結論：</strong>線上訂指定日期的票。晴空塔在當天售票櫃台每張票收 ¥500 服務費，
+              <strong>結論：</strong>線上訂指定日期的票。晴空塔在當天售票櫃檯每張票收 ¥500 服務費，
               所以提前訂票省下的是一個公告的金額，不是靠運氣。如果你有可能想上 450 樓空中迴廊，
-              一開始就買套票——之後到現場再加購要多付 ¥1,400。票價讀自官方網站，查核日 {CHECKED}。
+              一開始就買聯票——之後到現場再加購要多付 ¥1,400。票價讀自官方網站，查核日 {CHECKED}。
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={SKYTREE_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -314,11 +341,13 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>概覽</span>
-          <h2 className={styles.sectionTitle}>你買到的是什麼</h2>
+          <h2 className={styles.sectionTitle}>東京晴空塔門票包含什麼？</h2>
           <p className={styles.bodyText}>
-            東京晴空塔賣的是兩個不同樓層的入場。<strong>350 樓</strong>是 Tembo Deck（天望甲板），三層樓的展望層，
-            每一張票都含。<strong>450 樓</strong>是 Tembo Galleria（天望迴廊），一條斜斜往上繞的玻璃牆面空中迴廊，
-            通到塔內可抵達的最高點——而且它不能單獨參觀。
+            這一頁講晴空塔的門票、票價與購票；如果還在決定要上哪一座展望台，
+            <Link href="/guides/attractions/tokyo-observation-decks">東京展望台比較（英文）</Link>
+            把晴空塔和澀谷SKY、東京鐵塔、免費的都廳展望室並排比較。東京晴空塔賣的是兩個不同樓層的入場。<strong>350 樓</strong>是 Tembo Deck（天望甲板），共有三層的主要觀景區，
+            每一張票都含。<strong>450 樓</strong>是 Tembo Galleria（天望迴廊），沿著玻璃牆面向上延伸的空中迴廊，
+            通往塔內最高的參觀樓層——而且它不能單獨參觀。
           </p>
           <p className={styles.bodyText}>
             大部分的困惑都來自這個兩層結構：兩層的價格取決於你是線上一起買，還是當天分開買。
@@ -329,10 +358,17 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>票價</span>
-          <h2 className={styles.sectionTitle}>東京晴空塔門票價格</h2>
+          <h2 className={styles.sectionTitle}>2026 年東京晴空塔門票多少錢？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            成人 350 樓天望甲板 ¥1,800 起、加上 450 樓天望迴廊的聯票 ¥3,000 起；6～14 歲兒童分別為 ¥900 起與
+            ¥1,500 起。在塔內現場購票每張加 ¥500。
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", fontSize: "0.8rem", color: "var(--text-muted)", paddingTop: "0.5rem" }}>
+                  官方票價（en.tokyo-skytree.jp/ticket），查核日 {CHECKED}。
+                </caption>
                 <thead>
                   <tr>
                     {["票種", "線上指定日期", "當天現場"].map((h) => (
@@ -354,22 +390,20 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             讀自東京晴空塔官方網站，查核日 {CHECKED}。官方頁面把這些標為「起」價，所以特定日期的金額可能更高，
-            請在訂票時確認。¥500 當天服務費按每張票計算，4 樓售票櫃台與便利商店都適用。
+            請在訂票時確認。查核的官方資料沒有另列平日與假日票價表，結帳時顯示的當日金額就是實際票價。¥500
+            現場服務費按每張票計算，4 樓售票櫃檯與售票機都適用；450 樓加購票不收服務費。
           </p>
         </section>
-
-        {/* Around the tower */}
-        <KlookTripPrep
-          label="晴空塔周邊"
-          heading="押上這一側的行程，還有哪些要先訂"
-          intro="一個展望台時段大約一到兩小時，上面那張票是其中唯一需要指定時間的部分。下面這些是那個下午其餘行程要靠的預訂——全都和晴空塔在河的同一側，也都和門票在同一個帳號裡。"
-          items={tripPrepItems}
-        />
 
         {/* Which ticket */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>哪一種票</span>
-          <h2 className={styles.sectionTitle}>350 樓、套票，還是晚場？</h2>
+          <h2 className={styles.sectionTitle}>450 樓天望迴廊值得比 350 樓多花錢嗎？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            只有在「高度」本身就是目的時才值得。成人聯票比只買 350 樓多 ¥1,200（¥3,000 起 vs ¥1,800 起），
+            從 350 公尺再往上到 445–450 公尺的玻璃迴廊，最高點 451.2 公尺。拿不定主意就線上買聯票——當天再加購
+            450 樓要 ¥1,400，而且官網表示人多時可能暫停販售。
+          </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -381,10 +415,80 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </div>
         </section>
 
+        {/* Booking CTA — after the price table and the which-ticket choice */}
+        <div className={styles.verdictBox}>
+          <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>
+              <strong>選好票了嗎？</strong>Klook 的 TOKYO SKYTREE 商品頁同時有指定時段入場券與 350 樓＋450 樓聯票，
+              中文結帳、電子票。你那天的價格與時段，請在商品頁確認。
+            </p>
+            <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+              <KlookLink href={SKYTREE_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+                在 Klook 查看 TOKYO SKYTREE 門票 →
+              </KlookLink>
+            </div>
+          </div>
+        </div>
+
+        {/* Around the tower */}
+        <KlookTripPrep
+          label="晴空塔周邊"
+          heading="押上這一側的行程，還有哪些要先訂"
+          intro="一個展望台時段大約一到兩小時，上面那張票是其中唯一需要指定時間的部分。下面這些是那個下午其餘行程要靠的預訂——全都和晴空塔在河的同一側，也都和門票在同一個帳號裡。"
+          items={tripPrepItems}
+        />
+
+        {/* At the door */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>當天</span>
+          <h2 className={styles.sectionTitle}>東京晴空塔門票可以現場買嗎？</h2>
+          <p className={styles.bodyText}>
+            可以，在 4 樓售票櫃檯與售票機買，但每張比線上貴 ¥500；官網也說明當天能買到的時段依當天而定，
+            購票可能要排隊。450 樓天望迴廊加購票在 350 樓天望甲板內的售票機販售、不收服務費，但人多時可能暫停販售。
+          </p>
+        </section>
+
+        {/* Best time */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>時段</span>
+          <h2 className={styles.sectionTitle}>什麼時候去東京晴空塔最好？</h2>
+          <p className={styles.bodyText}>
+            想要人少，選平日下午或早上第一個時段；想看夜景，選關門前的一兩個小時。這是官方擁擠預測頁點名的三個時段，
+            並提醒新年、黃金週與春假期間人更多。日落時間隨季節改變，傍晚時段請對照你那天的日落時間。
+            想把晴空塔排進東京行程，可以看{" "}
+            <Link href="/zh-tw/guides/attractions/things-to-do-tokyo">東京必做清單</Link>{" "}
+            裡還有哪些需要預約時段的景點。
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <caption style={{ captionSide: "bottom", fontSize: "0.8rem", color: "var(--text-muted)", paddingTop: "0.5rem" }}>
+                  TOKYO SKYTREE 官方網站（營業時間、取消、擁擠預測、交通與樓層介紹頁），查核日 {CHECKED}。
+                </caption>
+                <thead>
+                  <tr>
+                    {["項目", "官方資訊"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {visitRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
         {/* vs other decks */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>比較</span>
-          <h2 className={styles.sectionTitle}>晴空塔 vs 東京其他展望台</h2>
+          <h2 className={styles.sectionTitle}>晴空塔和東京其他展望台有什麼不同？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             晴空塔是「高度」的選擇。如果你真正想要的是澀谷十字路口那張照片，
             <Link href="/zh-tw/guides/attractions/shibuya-sky-tickets">澀谷SKY</Link>{" "}
@@ -422,7 +526,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
         {/* How to book */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>步驟</span>
-          <h2 className={styles.sectionTitle}>東京晴空塔門票怎麼訂</h2>
+          <h2 className={styles.sectionTitle}>東京晴空塔門票怎麼訂？</h2>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -468,7 +572,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
         {/* CTA Banner */}
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>在櫃台多收你錢之前先訂好</h2>
+            <h2 className={styles.ctaBannerTitle}>在櫃檯多收你錢之前先訂好</h2>
             <p className={styles.ctaBannerDesc}>
               當天購票每人要另加 ¥500 服務費。線上訂的指定日期票同時省掉這筆費用和排隊——
               而 Klook 的結帳介面有中文，用海外發行的信用卡也能付款。
