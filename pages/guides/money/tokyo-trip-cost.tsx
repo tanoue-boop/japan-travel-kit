@@ -523,7 +523,9 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText}>
             Most of that can go on a card, and the subway pass and timed tickets can be paid before you fly. The
             part that has to be cash (some temples, market stalls, coin lockers) is smaller; our{" "}
-            <Link href="/guides/money/how-much-yen-to-bring-japan">how much yen to bring guide</Link> sizes it.
+            <Link href="/guides/money/how-much-yen-to-bring-japan">how much yen to bring guide</Link> sizes it, and
+            our <Link href="/guides/money/currency-exchange-japan">currency exchange guide</Link> compares the
+            airport counters, city bureaux and ATMs for getting that cash.
           </p>
         </section>
 

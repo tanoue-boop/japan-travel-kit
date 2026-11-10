@@ -12,6 +12,69 @@ import { wiseLink, WISE_REL, WISE_PRICING_URL, WISE_CARD_URL, WISE_VERIFIED } fr
 const WISE_URL = wiseLink("currency-exchange-japan", WISE_CARD_URL);
 const WISE_FEES_URL = wiseLink("currency-exchange-japan", WISE_PRICING_URL);
 
+const TITLE = "Currency Exchange in Japan 2026: Airport, City or ATM?";
+const DESCRIPTION =
+  "Where to exchange money in Japan: airport counters, city bureaux or 7-Eleven and Japan Post ATMs, with limits and fees from official pages (Nov 2026).";
+
+/**
+ * Date the official pages behind the options table were read: narita-airport.jp
+ * (service/exchange/currency), tokyo-haneda.com (service/facilities/exchange.html),
+ * sevenbank.co.jp/intlcard/ and /intlcard/service.html, jp-bank.japanpost.jp
+ * (en_ias_index.html) and wise.com/gb/card/. Revolut's figures are the ones the
+ * Revolut guide on this site carries, with that guide's own date.
+ */
+const CHECKED = "10 November 2026";
+const REVOLUT_CHECKED = "4 November 2026";
+
+const NARITA_EXCHANGE_URL = "https://www.narita-airport.jp/en/service/exchange/currency";
+const HANEDA_EXCHANGE_URL = "https://www.tokyo-haneda.com/en/service/facilities/exchange.html";
+const SEVEN_BANK_URL = "https://www.sevenbank.co.jp/intlcard/service.html";
+const JAPAN_POST_URL = "https://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html";
+
+/**
+ * The options table. Only figures the operator publishes are printed; where an
+ * operator posts no rate or fee, the "How the cost works" column says how the
+ * cost is charged instead of guessing a number.
+ */
+const optionRows = [
+  {
+    option: "Airport exchange counter",
+    who: "Narita: GPA Currency Exchange, Chiba Bank, Keiyo Bank, Travelex. Haneda: Japan Airport Terminal Foreign Currency Exchange, Travelex, Shinhan Bank Japan. Both also have automatic exchange machines.",
+    limits: "Neither airport's page lists a rate or a fee. Narita's states: \"Exchange rates vary from store to store.\"",
+    cost: "The margin is built into the rate on the board, so there is no separate fee to see. Typical spread 5–7% (tool below, September 2026).",
+  },
+  {
+    option: "City exchange bureau",
+    who: "Street bureaux in Tokyo and Osaka shopping districts, and some bank branches.",
+    limits: "No single published fee; each shop posts its own buy and sell rates.",
+    cost: "Also a margin inside the rate, usually narrower than at the airport. Typical spread 2–3% (tool below, September 2026).",
+  },
+  {
+    option: "Seven Bank ATM (7-Eleven)",
+    who: "More than 28,000 ATMs across Japan, per Seven Bank.",
+    limits: "Overseas-issued card: ¥100,000 per withdrawal (¥30,000 for a magnetic-stripe transaction). Visa and Mastercard 00:00–24:00.",
+    cost: "Seven Bank charges a usage fee per transaction where one applies but publishes no single figure. Your card network sets the rate; your card issuer may add its own fee.",
+  },
+  {
+    option: "Japan Post Bank ATM",
+    who: "Post offices nationwide.",
+    limits: "Overseas-issued card: ¥50,000 per transaction. Accepts Visa, PLUS, Mastercard, Maestro, Cirrus, JCB, China UnionPay and Discover.",
+    cost: "An ATM usage fee of ¥220 (tax included) per use may apply, and your card issuer may also charge.",
+  },
+  {
+    option: "Wise card at a Japanese ATM",
+    who: "Wise multi-currency card, used at the Seven Bank or Japan Post ATMs above.",
+    limits: "UK account: free withdrawals up to 250 GBP a month; a 2.69% fee on the amount above that. The allowance differs by the country the account is registered in.",
+    cost: "Converts at the mid-market rate plus a small, upfront fee. The ATM operator's own fee still applies on top.",
+  },
+  {
+    option: "Revolut card at a Japanese ATM",
+    who: "Revolut card, used at the same ATMs.",
+    limits: `UK Standard plan: £200 or 5 withdrawals a month, whichever comes first, then 2%. Japan-registered Standard account: ¥25,000 (Revolut's figures, ${REVOLUT_CHECKED}).`,
+    cost: "Interbank rate on weekdays within the plan's exchange allowance; a weekend markup applies on Standard. The ATM's own fee is separate.",
+  },
+];
+
 const bestWays = [
   {
     rank: 1,
@@ -133,6 +196,18 @@ const faqItems = [
     a: "We recommend bringing a small amount of yen (¥10,000–¥20,000) for immediate needs on arrival — transport from the airport, vending machines, or small purchases before you find an ATM. For the bulk of your spending, withdraw yen from a 7-Eleven or Japan Post ATM on arrival for a much better rate than you'll get at a foreign exchange counter.",
   },
   {
+    q: "Which companies run the currency exchange counters at Narita and Haneda?",
+    a: "Narita Airport's own page lists GPA Currency Exchange, Chiba Bank, Keiyo Bank and Travelex, plus Pocket Change coin machines and automatic exchange machines. Haneda's lists Japan Airport Terminal Foreign Currency Exchange, Travelex and Shinhan Bank Japan, plus Pocket Change. Neither page lists a rate; Narita's states that exchange rates vary from store to store and to check the rate at the store. Both pages checked 10 November 2026.",
+  },
+  {
+    q: "How much can I withdraw at a 7-Eleven ATM in Japan with a foreign card?",
+    a: "Seven Bank states the limit per withdrawal for an overseas-issued card is ¥100,000, or ¥30,000 for a magnetic-stripe transaction, and that Visa and Mastercard can be used 00:00–24:00. A fee is charged per transaction where one applies, with no single figure published. At a Japan Post Bank ATM the single-transaction limit is ¥50,000 and a ¥220 (tax included) fee per use may apply. Both checked 10 November 2026; your card issuer's own daily limit and fees apply as well.",
+  },
+  {
+    q: "Can I exchange money at a Japanese bank?",
+    a: "At some branches and at the airport bank counters, but not at every branch. Narita Airport's page lists Chiba Bank and Keiyo Bank exchange counters, and Haneda's lists Shinhan Bank Japan (checked 10 November 2026). In the city, check the bank's branch list before going. For withdrawing yen with a foreign card, the banks to use are Seven Bank (in 7-Eleven) and Japan Post Bank.",
+  },
+  {
     q: "Is it better to use card or cash in Japan?",
     a: "Both. Japan remains more cash-reliant than most developed countries — many restaurants, smaller shops, temples, and vending machines are cash-only. That said, card acceptance has improved significantly, especially in cities and at convenience stores. The practical approach: carry ¥10,000–¥20,000 in cash at all times and use your card where accepted to minimise ATM trips.",
   },
@@ -168,21 +243,18 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
   return (
     <>
       <Head>
-        <title>Currency Exchange in Japan 2026 | Japan Travel Kit</title>
-        <meta
-          name="description"
-          content="Where should you exchange money in Japan? We rank the best options from ATMs to airport counters — and explain which to avoid to get the best yen rate."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/currency-exchange-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Currency Exchange in Japan 2026: Best Ways to Get Yen" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/currency-exchange-japan" />
-        <meta property="og:description" content="Where should you exchange money in Japan? We rank the best options from ATMs to airport counters — and explain which to avoid to get the best yen rate." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Currency Exchange in Japan 2026: Best Ways to Get Yen" />
-        <meta name="twitter:description" content="Where should you exchange money in Japan? We rank the best options from ATMs to airport counters — and explain which to avoid to get the best yen rate." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -217,7 +289,7 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/currency-exchange-japan",
-              headline: "Currency Exchange in Japan (2026): Best Ways to Get Yen",
+              headline: "Currency Exchange in Japan (2026): Airport Counter, City Bureau or ATM?",
               updated,
             }),
           }}
@@ -250,13 +322,14 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Currency Exchange in Japan (2026):<br />Best Ways to Get Yen
+            Currency Exchange in Japan (2026):<br />Airport Counter, City Bureau or ATM?
           </h1>
           <p className={styles.heroSubtitle}>
-            Where you exchange your money makes a big difference. Here&apos;s how to get the best yen rate — and what to avoid.
+            The options side by side, with the ATM limits and fees the banks themselves publish — and what to pay
+            for before you land so you need less yen at all.
           </p>
           <div className={styles.heroBadges}>
-            {["Fee Comparison Tool", "Best Rates", "How Much Yen to Bring"].map((t) => (
+            {[`Checked ${CHECKED}`, "Options Compared", "Fee Comparison Tool"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -283,24 +356,89 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
         <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
           <p className={styles.bodyText}>
             <strong>
-              The cheapest way to get yen is not an exchange desk at all — it is a card that converts at the
-              mid-market rate, used to pay directly or to withdraw from a 7-Eleven or Japan Post ATM.
+              To get yen in Japan, a 7-Eleven (Seven Bank) or Japan Post ATM used with a card that charges no
+              foreign transaction fee, such as Wise, beats the airport exchange counter; a city exchange bureau is
+              the better counter if you want to hand over cash.
             </strong>{" "}
-            On the published-fee data behind the tool below (September 2026), a Wise card costs roughly
-            0.45–0.55% of the amount converted and Revolut is fee-free on weekdays up to its plan allowance,
-            against a spread of about 2–3% at a city exchange bureau and 5–7% at an airport counter.
-            On $1,000 at ¥147 to the dollar, that is about ¥146,200 on the card versus about ¥138,200 at the
-            airport — roughly ¥8,000 for the convenience of changing cash in the arrivals hall.
+            The Narita and Haneda airport pages list their exchange operators but no rates (checked {CHECKED}), so
+            on the typical published fees behind the tool below (September 2026) the cost is roughly ¥600 per
+            ¥10,000 at an airport counter, ¥250 at a city bureau and ¥50 on a Wise card. Cash is needed mainly for
+            small restaurants, temples, coin lockers and IC card top-ups, so pay for airport transport, entry
+            tickets and an eSIM by card before you fly.
           </p>
           <p className={styles.bodyText}>
-            The second half of the answer is the part a rate comparison cannot give you: how much yen you need
-            at all. Airport trains, transport passes, tickets, mobile data and most hotel rooms can be paid for
-            in your own currency before you leave, which shrinks the amount the exchange rate applies to.{" "}
+            How much cash that leaves you needing is in our{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              how much yen to bring guide
+            </Link>
+            , and the full list of what can be prepaid is{" "}
             <a href="#prepay" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Jump to what you can prepay ↓
+              further down ↓
             </a>
           </p>
         </section>
+
+        {/* Options compared — official figures only, dated */}
+        <section className={styles.comparisonSection} id="options">
+          <span className={styles.sectionLabel}>Options compared</span>
+          <h2 className={styles.sectionTitle}>Airport, City Bureau or ATM: How Do the Ways to Get Yen Compare?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
+            The ATMs publish their limits and fees; the counters publish neither, and charge through the rate
+            instead. Figures below are from each operator&apos;s own page, checked {CHECKED} unless marked.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Option", "Who runs it", "Limits and fees (official)", "How the cost works"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {optionRows.map((row) => (
+                    <tr key={row.option}>
+                      <td className={styles.tdProvider}>{row.option}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.who}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.limits}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.cost}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Sources, checked {CHECKED}:{" "}
+            <a href={NARITA_EXCHANGE_URL} target="_blank" rel="noopener noreferrer nofollow">Narita Airport</a>,{" "}
+            <a href={HANEDA_EXCHANGE_URL} target="_blank" rel="noopener noreferrer nofollow">Haneda Airport</a>,{" "}
+            <a href={SEVEN_BANK_URL} target="_blank" rel="noopener noreferrer nofollow">Seven Bank</a>,{" "}
+            <a href={JAPAN_POST_URL} target="_blank" rel="noopener noreferrer nofollow">Japan Post Bank</a> and{" "}
+            <a href={WISE_URL} target="_blank" rel={WISE_REL}>Wise</a>. Revolut&apos;s figures are from{" "}
+            <Link href="/guides/money/revolut-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              our Revolut guide
+            </Link>{" "}
+            ({REVOLUT_CHECKED}). Kansai Airport also has exchange counters and automatic machines; compare the
+            board at the counter. Which ATMs take a foreign card, and where they are, is in our{" "}
+            <Link href="/guides/money/atms-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              ATMs in Japan guide
+            </Link>
+            ; which card to carry is in{" "}
+            <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best travel card for Japan
+            </Link>
+            .
+          </p>
+        </section>
+
+        {/* Pay before you change money — directly after the table, eSIM first */}
+        <BookingEsimCard lead="Exchange plan sorted? Get mobile data before you land." />
+        <KlookTripPrep
+          heading="Pay for These Before You Change Money"
+          intro="Each of these can be settled in your own currency before you leave, which shrinks the amount the arrival-day exchange rate applies to. Airport transport first, then city passes, then a day tour:"
+          items={currencyExchangeTripPrep}
+        />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -370,10 +508,12 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
         {/* Where NOT to Exchange */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>What to avoid</span>
-          <h2 className={styles.sectionTitle}>Which Places Should You Avoid Exchanging Money?</h2>
+          <h2 className={styles.sectionTitle}>Are Airport Exchange Rates Bad in Japan?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            Airport counters, hotel front desks and &ldquo;no commission&rdquo; booths — all three bury their
-            margin in the rate they quote, so you never see what you paid.
+            They are among the worst you will be offered: an airport counter prices its convenience into the rate
+            (a typical spread of 5–7%), and neither Narita&apos;s nor Haneda&apos;s airport page lists a rate to
+            compare in advance. Hotel front desks and &ldquo;no commission&rdquo; booths work the same way — the
+            margin is in the rate they quote, so you never see what you paid.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -440,7 +580,12 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             Bring ¥10,000–¥20,000 in hand for the first day and plan on roughly ¥5,500 per day at the budget
             end, ¥17,500 mid-range and ¥36,000 comfortably — then top up from ATMs rather than carrying the
             whole trip in cash. Japan is still a heavily cash-reliant country, especially outside major cities.
-            Here&apos;s the daily breakdown by travel style, followed by totals per trip length.
+            Here&apos;s the daily breakdown by travel style, followed by totals per trip length. For Tokyo
+            specifically, our{" "}
+            <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Tokyo trip cost guide
+            </Link>{" "}
+            prices the days line by line.
           </p>
           <div className={styles.tableWrap} style={{ marginBottom: "1.25rem" }}>
             <div className={styles.tableScroll}>
@@ -525,10 +670,14 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
         {/* Before or After */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Strategy</span>
-          <h2 className={styles.sectionTitle}>Should I Exchange Money Before Going to Japan?</h2>
+          <h2 className={styles.sectionTitle}>Is It Better to Exchange Money Before Going to Japan?</h2>
           <p className={styles.bodyText}>
             Only a small float — ¥10,000 to ¥20,000 — and only so you are not hunting for an ATM in the first
-            hour. Changing the bulk of your money before you fly costs you several percent for nothing.
+            hour. Changing the bulk of your money before you fly costs you several percent for nothing. Our{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              how much yen to bring guide
+            </Link>{" "}
+            sizes that float by trip length.
           </p>
           <p className={styles.bodyText}>
             That float covers your airport transfer, any immediate purchases, and gives you breathing room before you find an ATM. The rate at a bank or post office in your home country is rarely great, but it&apos;s usually better than a dedicated airport exchange counter.
@@ -541,7 +690,22 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
           </p>
         </section>
 
-        <BookingEsimCard lead="Exchange plan sorted? Get mobile data before you land." />
+        {/* Banks */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Banks</span>
+          <h2 className={styles.sectionTitle}>Can I Exchange Money at a Japanese Bank?</h2>
+          <p className={styles.bodyText}>
+            At some, but a bank counter is not the easy option it is in many countries. The clearest place to find
+            one is the airport: Narita&apos;s page lists Chiba Bank and Keiyo Bank exchange counters alongside GPA
+            and Travelex, and Haneda&apos;s lists Shinhan Bank Japan (checked {CHECKED}). In the city, not every
+            branch handles foreign cash, so check the bank&apos;s branch list before going.
+          </p>
+          <p className={styles.bodyText}>
+            For withdrawing rather than exchanging, the bank that matters is Seven Bank, inside 7-Eleven, plus
+            Japan Post Bank at post offices — those are the two networks the table above lists for overseas-issued
+            cards.
+          </p>
+        </section>
 
         {/* Card vs cash, and the prepay table — the part a rate comparison can't answer */}
         <section className={styles.bodySection} id="prepay">
@@ -550,7 +714,11 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
           <p className={styles.bodyText}>
             For a growing share of your spending, yes — convenience stores, chain restaurants, department
             stores, hotels and most transport tickets take cards. What stays stubbornly cash-only is the small
-            end: independent restaurants, temple entries, market stalls, coin lockers and some local buses.
+            end: independent restaurants, temple entries, market stalls, coin lockers and some local buses. Our{" "}
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              cash vs card guide
+            </Link>{" "}
+            goes through it place by place.
           </p>
           <p className={styles.bodyText}>
             That split is what decides how much the exchange rate matters to you. Everything marked
@@ -599,13 +767,6 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             some small inns still take payment on site.
           </p>
         </section>
-
-        {/* Klook: things better paid for before the exchange desk */}
-        <KlookTripPrep
-          heading="Pay for These Before You Change Money"
-          intro="These are the rows above you can settle in your own currency, booked before you leave. Each one shrinks the amount the arrival-day exchange rate applies to:"
-          items={currencyExchangeTripPrep}
-        />
 
         {/* FAQ */}
         <section className={styles.faqSection}>
@@ -679,6 +840,18 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>ATMs in Japan (2026): Which Accept Foreign Cards &amp; What the Fees Are</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/money/tokyo-trip-cost" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="6" width="20" height="12" rx="2" />
+                  <path d="M6 10h12M6 14h8" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Trip to Tokyo Cost (2026): Per Day, 5-Day and 7-Day Totals</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -1727,17 +1727,35 @@ export const taxFreeAirportRunPrep: KlookTripPrepItem[] = [
  * item of the trip and the one most clearly removable from the exchange question.
  */
 export const currencyExchangeTripPrep: KlookTripPrepItem[] = [
+  // Reordered 10 Nov 2026: the eSIM now sits above this list as the BookingEsimCard,
+  // so the order runs airport access (5%) → passes (5%) → tour (6.5%) → hotel.
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "The airport train is the first thing most people would otherwise pay for out of an arrival-hall exchange; a round trip booked ahead takes it off the yen you need on landing.",
+  },
   {
     ...tripPrepProducts.skyliner,
     why: "If you only want to change a small float at the airport, book the train out in advance — the Skyliner reaches Nippori in 36 minutes and Keisei Ueno in about 41.",
+  },
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "The coach alternative to the train, which drops at central Tokyo hotels and stations; paid ahead, it is another fare that does not come out of the cash you change.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    why: "The Kansai Airport version: a reserved seat from KIX to Namba, booked in your own currency instead of at the ticket counter after the exchange desk.",
   },
   {
     ...tripPrepProducts.subway,
     why: "A subway ticket bought before you fly is one fare you do not have to cover out of the yen you exchange on arrival.",
   },
   {
-    ...tripPrepProducts.esim,
-    why: "Checking a counter's rate against the mid-market rate takes seconds online, so it helps to have data before you walk past the first exchange desk in the arrivals hall.",
+    ...tripPrepProducts.osakaPass,
+    why: "The Osaka counterpart: the pass covers the city's subway lines and a set of admissions, all paid before you land rather than in cash at each gate.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A day tour is one of the larger single spends of a Tokyo trip, and booking it ahead keeps it on a card rather than in the cash budget.",
   },
   {
     ...tripPrepProducts.hotelTokyoStation,

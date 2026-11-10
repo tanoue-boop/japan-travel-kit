@@ -858,6 +858,9 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             of where the machines are, see the{" "}
             <Link href="/guides/money/atms-in-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               ATMs in Japan guide
+            </Link>; for how an ATM withdrawal compares with the airport and city exchange counters, see the{" "}
+            <Link href="/guides/money/currency-exchange-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              currency exchange guide
             </Link>.
           </p>
         </section>
