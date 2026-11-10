@@ -50,9 +50,9 @@ import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
  */
 
 const ROUTE = "/ko/guides/esim/best-esim-japan";
-const TITLE = "일본 이심 추천(2026): eSIM 요금제와 클룩 비교";
+const TITLE = "일본 이심 추천 2026: eSIM 6곳 가격·통신사 비교";
 const DESC =
-  "일본 이심 추천 2026: 클룩 일본 eSIM과 Simbye, Airalo 등 6곳의 가격·통신망 비교. 가격은 매일 공식 사이트 확인.";
+  "일본 이심 추천: 6곳의 1일 요금제, 통신사(도코모/소프트뱅크/KDDI), 무제한 여부 비교. 클룩 eSIM 버튼에서 바로 확인.";
 
 const LOCALE = "ko" as const;
 
@@ -561,13 +561,15 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <p className={styles.eyebrow}>가격 확인 {pricesCheckedAt}｜{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            일본 eSIM(이심) 추천(2026):<br />가격과 통신망으로 비교
+            일본 이심 추천 2026:<br />eSIM 6곳 가격·통신사 비교
           </h1>
           <p className={styles.heroSubtitle}>
-            주요 일본 eSIM을 한 페이지에 모아, 여행 유형별 추천과 각 요금제가 실제로 어느 통신망을 쓰는지까지
-            정리했습니다.
+            추천 1순위는 Simbye입니다. 10 GB가 {tenGb("simbye")}로 이 페이지에서 비교한 정가 중 가장 싸고, NTT
+            docomo, KDDI/au, SoftBank, Rakuten Mobile 네 통신망을 쓰며 테더링도 됩니다.
+          </p>
+          <p style={{ fontSize: "0.78rem", opacity: 0.75, margin: "0.25rem 0 0.75rem" }}>
+            가격 확인 {pricesCheckedAt} · {updatedLabel} 업데이트
           </p>
           <div className={styles.heroBadges}>
             {["가격 매일 확인", "eSIM 6곳 비교", "독립 평가"].map((t) => (

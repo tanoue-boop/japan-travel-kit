@@ -62,27 +62,29 @@ const faqItems = [
   },
 ];
 
+const TITLE = "SafetyWing vs Heymondo for Japan (2026): Price and Cover";
+// "Heymondo vs SafetyWing" is the order the searches arrive in, so the description leads with it.
+const DESC =
+  "Heymondo vs SafetyWing for Japan: SafetyWing costs US$62.72 per 4 weeks at ages 10–39 (6 Nov 2026), Heymondo is quote only. Which fits which trip.";
+
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/safetywing-vs-heymondo-japan") } });
 
 export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>SafetyWing vs Heymondo for Japan (2026): Which to Pick</title>
-        <meta
-          name="description"
-          content="SafetyWing vs Heymondo for Japan in 2026: subscription against trip cover, medical limits, app support, ski cover and the 2 waiting periods compared."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/safetywing-vs-heymondo-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="SafetyWing vs Heymondo for Japan (2026): Which to Pick" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/safetywing-vs-heymondo-japan" />
-        <meta property="og:description" content="SafetyWing vs Heymondo for Japan in 2026: subscription against trip cover, medical limits, app support, ski cover and the 2 waiting periods compared." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SafetyWing vs Heymondo for Japan (2026): Which to Pick" />
-        <meta name="twitter:description" content="SafetyWing vs Heymondo for Japan in 2026: subscription against trip cover, medical limits, app support, ski cover and the 2 waiting periods compared." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -102,7 +104,8 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/safetywing-vs-heymondo-japan",
-              headline: "SafetyWing vs Heymondo for Japan (2026): Which to Pick",
+              headline: TITLE,
+              description: DESC,
               updated,
             }),
           }}
@@ -150,11 +153,13 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            SafetyWing vs Heymondo for Japan (2026):<br />Which Should You Pick?
+            SafetyWing vs Heymondo for Japan (2026):<br />Price and Cover
           </h1>
           <p className={styles.heroSubtitle}>
-            One is a flexible monthly subscription; the other is comprehensive trip cover with in-app medical
-            support. We break down which wins for your Japan trip — and why.
+            SafetyWing Essential costs US$62.72 per 4 weeks at ages 10–39 and can stop when you leave, which
+            suits a long or undated stay in Japan; Heymondo publishes no price, only a quote, but lists up to
+            US$10,000,000 in medical cover and trip cancellation, which suits a fixed-date trip. Both read on
+            the insurers&apos; own sites on 6 Nov 2026.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Subscription vs Trip Cover", "Head-to-Head"].map((t) => (
@@ -209,6 +214,11 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
               publishes its price and suits long or undated stays. Get a quote for your exact dates before
               deciding.
             </p>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <a href={SAFETYWING_URL} target="_blank" rel="sponsored noopener noreferrer" className={styles.verdictBtn}>
+                See SafetyWing prices for your age →
+              </a>
+            </div>
           </div>
         </div>
 

@@ -2,6 +2,20 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-10：1ページ目（4〜10位）なのに CTR 1%未満の10ページの title・description・H1・冒頭（task-jtk-20261110-C01）
+
+- 基準：GSC 28日（10/12〜11/08）。効果測定は 11/24 以降（日次PDCA）。本文の表・節は変更なし（cooking-class の質問 H2 1節、safetywing・teamlab-botanical のボタン各1つは追加）。
+- 2026-11-10 /ko/guides/esim/best-esim-japan：「일본 이심 추천(2026): eSIM 요금제와 클룩 비교」→「일본 이심 추천 2026: eSIM 6곳 가격·통신사 비교」（H1 同語順。「가격 확인…업데이트」バッジを h1 の前から subtitle の後ろへ小さく移動）
+- 2026-11-10 /guides/esim/japan-home-internet-for-foreigners：「Japan Home Internet for Foreigners: Prices & Setup」→「WiFi Cost in Japan per Month (2026): ¥6,980 Home Internet」
+- 2026-11-10 /guides/esim/japan-sim-card-for-students：「Japan SIM Card for Students: Plans & Residence Card」→「Japan SIM Card for Students 2026: Monthly Plans From ¥2,980」
+- 2026-11-10 /guides/esim/japan-esim-2-weeks：「Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks」→「Japan eSIM for 2 Weeks (2026): How Many GB for 14 Days?」
+- 2026-11-10 /guides/esim/japan-phone-number-for-foreigners：「Japan Phone Number for Foreigners: 070/080/090 Plans」→「Japanese Phone Number for Foreigners (2026): Voice SIM Plans」
+- 2026-11-10 /guides/money/safetywing-vs-heymondo-japan：「SafetyWing vs Heymondo for Japan (2026): Which to Pick」→「SafetyWing vs Heymondo for Japan (2026): Price and Cover」
+- 2026-11-10 /guides/attractions/kyoto-nara-day-tour-from-osaka：「Kyoto and Nara Day Tour From Osaka (2026): Which to Book」→「Kyoto and Nara Day Tour from Osaka (2026): Routes and Times」
+- 2026-11-10 /guides/attractions/tokyo-cooking-class：「Tokyo Cooking Class (2026): Sushi and Ramen Making」→「Tokyo Cooking Class (2026): Beginner-Friendly Sushi & Ramen」
+- 2026-11-10 /guides/attractions/teamlab-botanical-garden-osaka-tickets：「teamLab Botanical Garden Osaka Tickets: Prices & Hours」→「teamLab Botanical Garden Osaka Tickets 2026: Price & Hours」
+- 2026-11-10 /guides/attractions/tokyo-bay-cruise：「Tokyo Bay Cruise (2026): Yakatabune vs the Symphony」→「Tokyo Bay Cruise 2026: Prices, Night Cruises, Dinner Boats」
+
 ## 2026-11-09：/guides/esim/sakura-mobile-review の CTR 改善（task-jtk-20261109-C01）
 
 - 2026-11-09 title 変更：「Sakura Mobile Review 2026: 3 Days ¥2,750 vs Cheaper eSIMs」→「Sakura Mobile Review 2026: Prices, Plans & Is It Worth It?」（H1「Sakura Mobile Review 2026: Prices, Plans and Is It Worth It?」）。meta を最安 ¥2,750/3日・¥9,900/30日（3 GB/day）＋電話番号オプション・SIMカード・90日プランに。Quick Verdict を hero 直下へ移動し、3 GB/day・Unlimited の円料金（3/7/30日）・向いている人・申し込みボタン（id=486 そのまま）を最初の画面に。円料金は sakuramobile.jp で 2026-11-09 再確認（比較記事と /travel/esim/ の税込表が 7/10/30 日で一致、15日は比較記事に「7,1650」と誤植ありと注記）。GSC 基準：「sakura mobile」表示1,076・平均7.4位・CTR 0.2%（直近28日）。関連カード題名を10ページ＋guides-esim・llms.txt で更新。効果測定は 11/23 以降。

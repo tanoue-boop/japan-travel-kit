@@ -97,6 +97,8 @@ import { wiseLink, WISE_REL, WISE_VERIFIED } from "../../../lib/wise-links";
 
 /** The date every figure and rule on this page was read off its own source. */
 const CHECKED = "30 Oct 2026";
+/** The voice-plan price and activation fee quoted in the hero, re-read on sakuramobile.jp/monthly/price/ for task jtk-20261110-C01. */
+const RECHECKED = "10 Nov 2026";
 
 /** Sakura Mobile's own affiliate link — the same one the review page uses. */
 const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
@@ -285,9 +287,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Japan Phone Number for Foreigners: 070/080/090 Plans";
+const TITLE = "Japanese Phone Number for Foreigners (2026): Voice SIM Plans";
 const DESCRIPTION =
-  "Japan Phone Number for Foreigners: travel eSIMs carry none. A Sakura Mobile voice plan from ¥2,980 a month gives a 070, 080 or 090 number in 1–3 days.";
+  "Japanese phone number for foreigners: Sakura Mobile voice SIM from ¥2,980/month (Nov 2026), residence card or passport check. Travel eSIMs are data only.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim/japan-phone-number-for-foreigners") },
@@ -385,11 +387,13 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan Phone Number for Foreigners:<br />Which Plans Actually Carry One
+            Japanese Phone Number for Foreigners (2026):<br />Voice SIM Options
           </h1>
           <p className={styles.heroSubtitle}>
-            Almost every Japan eSIM sold to travellers is data only, and no amount of paying more adds a
-            number to it. There are exactly two routes that do — and one of them needs a residence card.
+            A Japanese 070, 080 or 090 number costs from {VOICE_FROM} a month on Sakura Mobile&apos;s Voice + Data
+            SIM or eSIM, plus a {ACTIVATION} activation fee (sakuramobile.jp, checked {RECHECKED}). You need a
+            residence card showing your address, or a passport check in person at an airport counter or the
+            Shinjuku office; a travel eSIM is data only and has no number.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "070 / 080 / 090 explained", "Official rules, dated", "Residence card or passport"].map((t) => (

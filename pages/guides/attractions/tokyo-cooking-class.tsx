@@ -17,6 +17,14 @@ const TOKYO_COOKING_CLASS_URL = "https://affiliate.klook.com/redirect?aid=119070
 // product pages with HTTP 403, and class pricing varies too widely by format to generalise.
 const CHECKED = "19 October 2026";
 
+// Booking terms for the same Klook activity (122869), read on 10 Nov 2026 off its Klook-powered
+// listing on LIVE JAPAN (livejapan.com, ac0122869): klook.com itself answers automated reads with 403.
+const TERMS_CHECKED = "10 November 2026";
+
+const TITLE = "Tokyo Cooking Class (2026): Beginner-Friendly Sushi & Ramen";
+const DESC =
+  "Tokyo cooking class for beginners: sushi classes run 1.5 hours, sushi and ramen combos 2.5–3, often in English. Read the cancellation terms, then book.";
+
 const typeRows = [
   {
     type: "Sushi + ramen combo",
@@ -127,21 +135,18 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>Tokyo Cooking Class (2026): Sushi and Ramen Making</title>
-        <meta
-          name="description"
-          content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, and the English and kid-friendly ones."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-cooking-class" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Cooking Class (2026): Sushi and Ramen Making" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-cooking-class" />
-        <meta property="og:description" content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, and the English and kid-friendly ones." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Cooking Class (2026): Sushi and Ramen Making" />
-        <meta name="twitter:description" content="Tokyo cooking classes in 2026: what sushi, ramen and wagashi sessions actually cover, how long each format runs, and the English and kid-friendly ones." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -161,7 +166,8 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-cooking-class",
-              headline: "Tokyo Cooking Class (2026): Sushi and Ramen Making",
+              headline: TITLE,
+              description: DESC,
               updated,
             }),
           }}
@@ -209,11 +215,12 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Cooking Class (2026):<br />Sushi &amp; Ramen Making — What to Expect &amp; How to Book
+            Tokyo Cooking Class (2026):<br />Beginner-Friendly Sushi &amp; Ramen
           </h1>
           <p className={styles.heroSubtitle}>
-            Make sushi and ramen from scratch with a local instructor, then eat what you cook. Here&apos;s what
-            the classes cover, what they cost, and how to pick and book the right one.
+            Most Tokyo cooking classes are built for beginners: you cook from scratch with a local instructor,
+            then eat what you made. A sushi class runs about 1 hour 30 minutes and a
+            sushi-and-ramen combo two and a half to three hours, many with English-speaking staff.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Hands-On & Beginner-Friendly", "English Classes"].map((t) => (
@@ -234,6 +241,17 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* The question this page is most often found for, answered before anything else. */}
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>Are Cooking Classes in Tokyo Suitable for Beginners?</h2>
+          <p className={styles.bodyText}>
+            Yes. The common formats assume no cooking experience: the sushi-making listing compared here is a
+            join-in group class with English-speaking staff, and its two courses are maki with temari sushi or
+            maki with nigiri. Confirm the language and minimum age on the listing for
+            your date. Details as listed on {CHECKED}.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -266,6 +284,12 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
               staff, and offers two courses — maki and temari sushi, or maki and nigiri. Longer formats pair
               sushi with ramen or add a market shop first. Most are beginner-friendly and many welcome
               children; confirm the language and minimum age when you book. Details as listed on {CHECKED}.
+            </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              <strong>Before you book:</strong> the Klook listing for this Shinbashi sushi class shows
+              &ldquo;Instant Confirmation&rdquo; and &ldquo;No cancellation&rdquo;, so pick the date you are
+              sure of. Terms read on {TERMS_CHECKED}; check the terms shown at checkout, which apply to your
+              booking.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>

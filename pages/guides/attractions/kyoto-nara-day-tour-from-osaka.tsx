@@ -153,9 +153,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kyoto-nara-day-tour-from-osaka") },
 });
 
-const TITLE = "Kyoto and Nara Day Tour From Osaka (2026): Which to Book";
+const TITLE = "Kyoto and Nara Day Tour from Osaka (2026): Routes and Times";
 const DESC =
-  "Comparing Kyoto and Nara day tours from Osaka for 2026: what each itinerary covers, how long the day runs, and Todai-ji's official ¥800 admission.";
+  "Kyoto and Nara day tour from Osaka: about 9 hours on Klook listings, with Fushimi Inari, Nara Park and Arashiyama or Kiyomizu-dera. How to pick the route.";
 
 export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -245,11 +245,12 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Kyoto and Nara Day Tour From Osaka (2026):<br />Which Itinerary to Book
+            Kyoto and Nara Day Tour from Osaka (2026):<br />Routes and Times
           </h1>
           <p className={styles.heroSubtitle}>
-            Osaka sits between both cities, which is why the day works at all. The tours differ on which half
-            of Kyoto you get — and on whether the temple admissions are in the price.
+            A typical Kyoto and Nara day tour leaves central Osaka in the morning, takes in Arashiyama or
+            Kiyomizu-dera in Kyoto, the deer at Nara Park and usually finishes at Fushimi Inari. Expect a full
+            day: one Klook listing gives 8 hr 55 min to 9 hr 05 min (as listed on {CHECKED}).
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Four itineraries compared", "Official Todai-ji prices"].map((t) => (

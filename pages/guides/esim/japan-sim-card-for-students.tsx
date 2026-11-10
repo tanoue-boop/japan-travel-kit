@@ -92,6 +92,8 @@ import { siteCheapestFrom, pricesCheckedLabel } from "../../../lib/esim-prices";
 
 /** The date every figure and rule on this page was read off its own source. */
 const CHECKED = "30 Oct 2026";
+/** The two starting prices quoted in the hero, re-read on sakuramobile.jp/monthly/price/ for task jtk-20261110-C01. */
+const RECHECKED = "10 Nov 2026";
 
 /** Sakura Mobile's own affiliate link — the same one the review page uses. */
 const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
@@ -291,9 +293,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Japan SIM Card for Students: Plans & Residence Card";
+const TITLE = "Japan SIM Card for Students 2026: Monthly Plans From ¥2,980";
 const DESCRIPTION =
-  "Japan SIM Card for Students: Sakura Mobile's resident plans from ¥2,980 a month with a Japanese number, a ¥1,100 student discount and a 1–3 day start.";
+  "Japan SIM card for students: data from ¥2,480/month, a number from ¥2,980 (Nov 2026), one-month minimum. No residence card yet? Use a travel eSIM first.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim/japan-sim-card-for-students") },
@@ -391,11 +393,13 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan SIM Card for Students:<br />Monthly Plans and the Residence Card
+            Japan SIM Card for Students (2026):<br />Monthly Plans From {VOICE_FROM}, No Lock-In
           </h1>
           <p className={styles.heroSubtitle}>
-            For a student status longer than three months, the product is a resident monthly plan — and the
-            one thing that gates it is an address printed on the back of a card you land without.
+            A student SIM in Japan costs from {DATA_FROM} a month for data only, or {VOICE_FROM} with a Japanese
+            phone number, on Sakura Mobile&apos;s month-to-month plans (sakuramobile.jp, checked {RECHECKED}).
+            The plan needs a residence card showing your address, so until that is registered you use a travel
+            eSIM.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices, dated", "¥1,100 student discount", "One-month minimum"].map((t) => (

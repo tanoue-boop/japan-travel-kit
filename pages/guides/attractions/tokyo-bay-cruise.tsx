@@ -199,9 +199,11 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-bay-cruise") },
 });
 
-const TITLE = "Tokyo Bay Cruise (2026): Yakatabune vs the Symphony";
+const TITLE = "Tokyo Bay Cruise 2026: Prices, Night Cruises, Dinner Boats";
 const DESC =
-  "A Tokyo Bay cruise in 2026: the Symphony sails from Hinode Pier 4 times a day with tickets from ¥1,800, and a yakatabune runs 2 hours from ¥13,000.";
+  "Tokyo Bay cruise prices: water bus from ¥600, Symphony from ¥1,800 boarding only, yakatabune dinner boats from ¥13,000 (operators, Oct–Nov 2026).";
+/** The water-bus fares in the hero, re-read on suijobus.co.jp/en/price/ for task jtk-20261110-C01. */
+const WATER_BUS_CHECKED = checkedLabel("2026-11-10");
 
 export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }) {
   return (
@@ -291,11 +293,14 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Bay Cruise (2026):<br />Yakatabune vs the Symphony, Times and Prices
+            Tokyo Bay Cruise (2026):<br />Prices, Night Cruises and Dinner Boats
           </h1>
           <p className={styles.heroSubtitle}>
-            Two very different boats are sold under the same search term. Here is what each
-            one costs, how long it takes and which pier it leaves from.
+            To ride cheaply, take the Tokyo Cruise water bus (Hinode Pier to Odaiba Seaside Park, ¥600, about
+            20 minutes, read {WATER_BUS_CHECKED}) or the Symphony&apos;s 50-minute afternoon sailing at ¥1,800
+            boarding only. For the night view with dinner, book the Symphony&apos;s 19:00 dinner cruise (course
+            from ¥14,000 on weekdays) or a yakatabune houseboat from ¥13,000 with drinks included (both read on
+            the operators&apos; sites on {CHECKED}).
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Operator prices, dated", "Four sailings compared"].map((t) => (

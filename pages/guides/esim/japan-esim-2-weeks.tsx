@@ -43,6 +43,12 @@ const sakuraPick = pick("sakura");
 const tooShort = allEsimPlans.filter((p) => !p.unlimited && (p.gb ?? 0) >= TARGET_GB && p.days < TRIP_DAYS).length;
 const planLabel = (p?: EsimPlanRow) => (p ? `${p.name} — ${formatUsd(p.priceUsd)}` : "—");
 
+const TITLE = "Japan eSIM for 2 Weeks (2026): How Many GB for 14 Days?";
+// The Simbye figure comes from the daily feed, so the description cannot outlive the plan it names.
+const DESC = `Japan eSIM for 2 weeks: about 4–9 GB for 14 days, so 10 GB covers most trips; daily video, go unlimited. ${
+  simbyePick ? `Simbye ${simbyePick.name} is ${formatUsd(simbyePick.priceUsd)}` : "See Simbye 10 GB plans"
+}, or Klook eSIM.`;
+
 const dataTable = [
   { usageType: "Light",             perDay: "~300MB", total: "~4.2GB"  },
   { usageType: "Moderate",          perDay: "~600MB", total: "~8.4GB"  },
@@ -78,21 +84,18 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks</title>
-        <meta
-          name="description"
-          content="Visiting Japan for 2 weeks? Most travellers need 5–10GB. We compare the best eSIM plans for a 14-day trip — with data estimates and honest recommendations."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESC} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-2-weeks" />
-        <meta property="og:title" content="Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-2-weeks" />
-        <meta property="og:description" content="Visiting Japan for 2 weeks? Most travellers need 5–10GB. We compare the best eSIM plans for a 14-day trip — with data estimates and honest recommendations." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Japan eSIM for 2 Weeks 2026: 14-Day Trip Picks" />
-        <meta name="twitter:description" content="Visiting Japan for 2 weeks? Most travellers need 5–10GB. We compare the best eSIM plans for a 14-day trip — with data estimates and honest recommendations." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -113,7 +116,8 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/japan-esim-2-weeks",
-              headline: "Best Japan eSIM for 2 Weeks (2026): Top Picks for Longer Stays",
+              headline: TITLE,
+              description: DESC,
               updated,
             }),
           }}
@@ -160,11 +164,13 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Best Japan eSIM for 2 Weeks (2026):<br />Top Picks for Longer Stays
+            Japan eSIM for 2 Weeks (2026):<br />How Many GB for 14 Days?
           </h1>
           <p className={styles.heroSubtitle}>
-            The catch on a 14-day trip isn&apos;t how much data you buy —
-            it&apos;s how many days the plan stays valid.
+            Fourteen days in Japan takes about 4–9 GB, so a 10 GB plan covers most trips; daily video
+            streaming pushes you past 14 GB, which is where an unlimited plan makes sense. Buy a plan valid
+            for at least 14 days: the cheapest {TARGET_GB} GB plan that lasts the trip is{" "}
+            {bestValue?.provider} {planLabel(bestValue)} (prices checked {pricesCheckedAt}).
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Validity checked, not just GB", "14-day plans only"].map((t) => (

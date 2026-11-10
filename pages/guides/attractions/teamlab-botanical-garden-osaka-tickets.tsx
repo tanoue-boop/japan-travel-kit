@@ -190,9 +190,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "teamLab Botanical Garden Osaka Tickets: Prices & Hours";
+const TITLE = "teamLab Botanical Garden Osaka Tickets 2026: Price & Hours";
 const DESCRIPTION =
-  "teamLab Botanical Garden Osaka tickets are ¥1,800 adult and ¥500 for ages 6–15, ¥200 more on site. Night-only hours, the rain rule and getting to Nagai.";
+  "teamLab Botanical Garden Osaka tickets: adult ¥1,800, ages 6–15 ¥500; open 18:00–21:30, last entry 20:30, to 31 Jan 2027 (teamLab, 28 Oct 2026).";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/teamlab-botanical-garden-osaka-tickets") },
@@ -296,11 +296,13 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Botanical Garden Osaka Tickets:<br />Prices, Hours and the Rain Rule
+            teamLab Botanical Garden Osaka Tickets (2026):<br />Price, Hours and the Rain Rule
           </h1>
           <p className={styles.heroSubtitle}>
-            The cheapest teamLab in Japan, and the only one that is outdoors and opens only after dark — in a
-            working botanical garden ten minutes from Nagai Station.
+            Tickets are ¥1,800 for an adult and ¥500 for ages 6–15 when bought in advance, and the garden is open
+            18:00–21:30 (last entry 20:30) from 9 November 2026 to 31 January 2027. The nearest station is
+            Nagai on the Osaka Metro Midosuji Line, about ten minutes on foot from Exit 3 (teamLab and Osaka
+            Metro, read on {CHECKED}).
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices, checked", "Night-only hours", "vs Planets & Borderless"].map((t) => (
@@ -337,6 +339,11 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
             read on {CHECKED} off teamLab&apos;s own exhibition page and FAQ, with the access figure from Osaka
             Metro&apos;s official listing.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Book teamLab Botanical Garden tickets on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Quick Answer Box */}

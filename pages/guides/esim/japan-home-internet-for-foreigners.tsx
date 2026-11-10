@@ -72,6 +72,8 @@ import { siteCheapestFrom, pricesCheckedLabel } from "../../../lib/esim-prices";
 
 /** The date every Sakura Mobile figure and rule on this page was read. */
 const CHECKED = "29 Oct 2026";
+/** The monthly price, initial fee and lead times quoted in the hero, re-read on sakuramobile.jp for task jtk-20261110-C01. */
+const RECHECKED = "10 Nov 2026";
 
 /** Sakura Mobile's own affiliate link — the same one the review page uses. */
 const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
@@ -271,9 +273,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Japan Home Internet for Foreigners: Prices & Setup";
+const TITLE = "WiFi Cost in Japan per Month (2026): ¥6,980 Home Internet";
 const DESCRIPTION =
-  "Japan Home Internet for Foreigners: Sakura Mobile's home router from ¥6,980/month with no installation, or fibre at the same price with a 1-month wait.";
+  "WiFi cost in Japan per month: home WiFi ¥6,980 (¥7,678 tax incl.) at Sakura Mobile, Nov 2026. No Japanese card, English support. Order via the button.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim/japan-home-internet-for-foreigners") },
@@ -371,11 +373,13 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan Home Internet for Foreigners:<br />Router, Fibre or Pocket WiFi
+            WiFi Cost in Japan per Month (2026):<br />Home Internet for Foreigners
           </h1>
           <p className={styles.heroSubtitle}>
-            The monthly prices are almost identical. What separates these three is the initial fee, the wait
-            before it works and whether your landlord has to say yes.
+            Home WiFi in Japan costs {HOME_WIFI} a month ({HOME_WIFI_TAX} tax included) on Sakura Mobile&apos;s
+            plug-in router or 1 Gbps fibre, plus a ¥5,500 initial fee. The router is listed as working
+            &ldquo;right away&rdquo; once it arrives, while fibre takes 1 week to 1 month to install
+            (sakuramobile.jp, checked {RECHECKED}).
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices, dated", "Installation lead times", "No annual contract"].map((t) => (
