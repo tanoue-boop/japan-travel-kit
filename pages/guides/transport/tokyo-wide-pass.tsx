@@ -3,8 +3,10 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
+  galaNaebaSkiDayTripTokyo,
   jrTokyoWidePass,
   karuizawaShinkansenDayTrip,
   kawaguchikoYamanakakoBusTour,
@@ -50,28 +52,45 @@ import { articleJsonLd } from "../../../lib/structured-data";
  * Klook: listing 49927 is the pass (5% band), new in lib/klook-links.ts. The
  * Kawaguchiko, Nikko and Karuizawa day tours and the N'EX round trip are links
  * other guides already use, reused rather than re-minted. No Klook price appears.
+ *
+ * Rank fix, 10 Nov 2026 (task-jtk-20261110-R01). Re-checked that day: the pass
+ * price (¥16,000 / ¥8,000 since 14 March 2026, jreast.co.jp pass page and the
+ * 28 Jan 2026 press release, through the same jreast.co.jp search index), JR
+ * East's ¥21,500 model route, the N'EX round trip (¥5,200 / ¥2,600) and
+ * Fujikyu's own Fuji Kaiyu page (¥2,580 + ¥1,620 = ¥4,200, 4 round trips a day,
+ * fastest 1 hr 53 min). ¥15,000 survives only as the pre-revision price and
+ * ¥13,600 is a sum of two fares, not a price. Tokyo–Nikko / –Karuizawa /
+ * –Echigo-Yuzawa singles still could not be read off an official page, so the
+ * two-stage table and the itinerary table leave them unpriced on purpose. The
+ * Tobu NIKKO PASS ALL AREA figure is carried from nikko-day-trip.tsx (Tobu,
+ * read 19 Oct 2026).
  * ---------------------------------------------------------------------------
  */
 
 const CHECKED_ISO = "2026-10-30";
 const CHECKED = checkedLabel(CHECKED_ISO);
+/** Pass price, the ¥21,500 model route, the N'EX round trip and the Fuji Excursion fare — re-read 10 Nov 2026. */
+const PRICE_CHECKED_ISO = "2026-11-10";
+const PRICE_CHECKED = checkedLabel(PRICE_CHECKED_ISO);
 /** The date tokyo-airport-transfer.tsx read the Tokyo Monorail fare. */
 const MONORAIL_CHECKED = checkedLabel("2026-10-25");
+/** The date nikko-day-trip.tsx read Tobu's NIKKO PASS ALL AREA price. */
+const TOBU_CHECKED = checkedLabel("2026-10-19");
 
 const ADULT = "¥16,000";
 const CHILD = "¥8,000";
 const MODEL_ROUTE = "¥21,500";
 
-const TITLE = "JR Tokyo Wide Pass (2026): Price and Is It Worth It?";
+const TITLE = "JR Tokyo Wide Pass Price (2026): ¥16,000 — Is It Worth It?";
 const DESCRIPTION =
-  "JR Tokyo Wide Pass price for 2026: ¥16,000 adult, ¥8,000 child for 3 consecutive days of JR East trains around Tokyo — and the routes that pay it back.";
+  "JR Tokyo Wide Pass price: ¥16,000 adult, ¥8,000 child for 3 days of JR East trains to Fuji, Nikko and Karuizawa — the break-even test and when to skip it.";
 
 /** Table 1 — what you pay and who is allowed to buy it. Figures from JR East. */
 const priceRows = [
   {
     item: "Adult (12 and over)",
     value: ADULT,
-    note: `Raised from ¥15,000 on 14 March 2026. A page still quoting ¥15,000 is out of date. Checked ${CHECKED}.`,
+    note: `Raised from ¥15,000 on 14 March 2026. A page still quoting ¥15,000 is out of date. Checked ${PRICE_CHECKED}.`,
   },
   {
     item: "Child (6 to 11)",
@@ -154,7 +173,7 @@ const fareRows = [
   {
     journey: "Narita Airport ⇄ Tokyo Station, N'EX round-trip ticket",
     fare: "¥5,200 adult, ¥2,600 child",
-    source: `JR East, checked ${CHECKED}`,
+    source: `JR East, checked ${PRICE_CHECKED}`,
     note: "Valid 14 days for one out and one back in a reserved ordinary-car seat. Two singles to Shinjuku would be ¥6,660.",
   },
   {
@@ -166,7 +185,7 @@ const fareRows = [
   {
     journey: "Shinjuku ⇄ Kawaguchiko, Fuji Excursion (Fuji Kaiyu)",
     fare: "¥4,200 each way, ¥8,400 return",
-    source: `Fujikyu Railway, checked ${CHECKED}`,
+    source: `Fujikyu Railway, checked ${PRICE_CHECKED}`,
     note: "¥2,580 basic fare plus a ¥1,620 limited express ticket, 1 hr 53 min at the fastest. Four round trips a day, and the train has no non-reserved car.",
   },
   {
@@ -178,7 +197,7 @@ const fareRows = [
   {
     journey: "JR East's own example: Tokyo → GALA Yuzawa → Omiya → Tobu-Nikko → Shinjuku, reserved seats",
     fare: `About ${MODEL_ROUTE}`,
-    source: `JR East, checked ${CHECKED}`,
+    source: `JR East, checked ${PRICE_CHECKED}`,
     note: "The Joetsu Shinkansen both ways to GALA Yuzawa plus the Nikko limited express out and back. Against a ¥16,000 pass that is roughly ¥5,500 saved on two days of travel.",
   },
 ];
@@ -222,7 +241,7 @@ const passRows = [
 /** Where the pass pays and where it does not — the judgement table. */
 const worthRows = [
   {
-    plan: "Three days in Tokyo with a Kawaguchiko day and an airport run",
+    plan: "Three days with a Kawaguchiko day, a second day trip and a Narita airport run",
     verdict: "✓ Buy it",
     why: "The N'EX round trip is ¥5,200 and the Fuji Excursion return is ¥8,400 — ¥13,600 of the ¥16,000 in two journeys, before a single Yamanote ride. One more day trip clears it.",
   },
@@ -232,24 +251,108 @@ const worthRows = [
     why: `JR East's own worked example prices exactly this pair in reserved seats at about ${MODEL_ROUTE}, against ${ADULT} for the pass.`,
   },
   {
-    plan: "Three days inside Tokyo, sightseeing on the subway",
-    verdict: "✗ Skip it",
-    why: "The pass covers no Tokyo Metro or Toei line and no city bus. A Suica plus the Tokyo Subway Ticket costs a fraction of ¥16,000 and goes to more of the places you actually want.",
-  },
-  {
-    plan: "One day trip and nothing else",
-    verdict: "✗ Probably not",
-    why: "A single Kawaguchiko return at ¥8,400 is barely half the pass. Buy the ticket, keep the ¥7,600, and read the day-trip guide instead.",
-  },
-  {
-    plan: "Tokyo plus Kyoto or Osaka",
-    verdict: "✗ Wrong pass",
-    why: "The Tokaido Shinkansen is not on it at any length, and the valid area stops well short of Kansai. Price a nationwide pass or buy the shinkansen leg separately.",
-  },
-  {
     plan: "You hold a Japanese passport",
     verdict: "✗ Not eligible",
     why: "JR East sells it only to holders of a non-Japanese passport, and the original has to be shown at purchase and at collection.",
+  },
+];
+
+/**
+ * Stage 2 of the break-even test — add the journeys up against the ¥16,000 pass.
+ * Built only from the fares in fareRows; nothing here is estimated.
+ */
+const breakEvenRows = [
+  {
+    combo: "One Fuji Excursion return to Kawaguchiko",
+    total: "¥8,400",
+    diff: "−¥7,600",
+    verdict: "✗ Buy the ticket",
+  },
+  {
+    combo: "N'EX round trip only (Narita ⇄ Tokyo)",
+    total: "¥5,200",
+    diff: "−¥10,800",
+    verdict: "✗ Buy the N'EX round trip",
+  },
+  {
+    combo: "N'EX round trip + Fuji Excursion return",
+    total: "¥13,600",
+    diff: "−¥2,400",
+    verdict: "Almost — one more long trip in the same 3 days tips it",
+  },
+  {
+    combo: "JR East's example: GALA Yuzawa + Nikko, reserved seats",
+    total: `About ${MODEL_ROUTE}`,
+    diff: "About +¥5,500",
+    verdict: "✓ Buy the pass",
+  },
+  {
+    combo: "JR East's example + a Fuji Excursion return (all 3 days used)",
+    total: "About ¥29,900",
+    diff: "About +¥13,900",
+    verdict: "✓ Buy the pass",
+  },
+];
+
+/**
+ * Three-day patterns. Only the legs with an operator-published fare are priced;
+ * the Nikko and Karuizawa returns are named but deliberately left unpriced.
+ */
+const itineraryRows = [
+  {
+    pattern: "Fuji, Nikko and the airport",
+    day1: "Land at Narita, N'EX into Tokyo (¥3,140)",
+    day2: "Fuji Excursion to Kawaguchiko and back (¥8,400)",
+    day3: "Nikko limited express through to Tobu-Nikko and back",
+    sum: "¥11,540 on the priced legs; the Nikko return has to cover the other ¥4,460",
+  },
+  {
+    pattern: "Snow and shrines (winter to spring)",
+    day1: "Joetsu Shinkansen to GALA Yuzawa for a ski day",
+    day2: "Nikko limited express to Tobu-Nikko and back",
+    day3: "Fuji Excursion to Kawaguchiko and back (¥8,400)",
+    sum: `About ¥29,900 with JR East's ${MODEL_ROUTE} GALA–Nikko example — clearly ahead`,
+  },
+  {
+    pattern: "Karuizawa, Fuji and departure",
+    day1: "Hokuriku Shinkansen to Karuizawa and back",
+    day2: "Fuji Excursion to Kawaguchiko and back (¥8,400)",
+    day3: "Tokyo to Narita on the N'EX (¥3,140) and fly out",
+    sum: "¥11,540 on the priced legs; the Karuizawa return has to cover the other ¥4,460",
+  },
+];
+
+/** Plan B — the trips where the pass loses, and what to buy instead. */
+const planBRows = [
+  {
+    trip: "One Kawaguchiko day and nothing else",
+    instead: "Fuji Excursion tickets, ¥4,200 each way",
+    why: `¥8,400 return against a ${ADULT} pass. Fujikyu, checked ${PRICE_CHECKED}. A coach tour is the other option if the day is about the view.`,
+  },
+  {
+    trip: "The airport run is the only long journey",
+    instead: "N'EX round-trip ticket, ¥5,200",
+    why: `One out and one back within 14 days, reserved seat included. JR East, checked ${PRICE_CHECKED}.`,
+  },
+  {
+    trip: "Nikko is the only day trip",
+    instead: "Tobu's NIKKO PASS ALL AREA, ¥8,000 adult",
+    why: `Tobu's own pass from Asakusa: four days, one Asakusa–Shimo-Imaichi round trip plus Tobu lines and Nikko buses, with the limited express seat charged on top. Tobu, read ${TOBU_CHECKED}.`,
+  },
+  {
+    trip: "Most days are spent inside Tokyo",
+    instead: "An IC card or the Tokyo Subway Ticket",
+    why: "The pass opens no Tokyo Metro or Toei gate and no city bus, so it does nothing for Shibuya, Asakusa or Ginza days.",
+  },
+  {
+    trip: "Kyoto or Osaka is on the trip",
+    instead: "A separate Tokaido Shinkansen ticket, or the nationwide JR Pass",
+    why: "The Tokaido Shinkansen is never on a JR East pass, and the valid area stops well short of Kansai.",
+  },
+  {
+    trip: "Your day trips are not on consecutive days",
+    instead: "Individual tickets for each trip",
+    why: "The three days are consecutive and printed on the pass. A dead day in the middle is a day you have paid for.",
   },
 ];
 
@@ -279,11 +382,23 @@ const buySteps = [
 const faqItems = [
   {
     q: "How much is the JR Tokyo Wide Pass?",
-    a: "It is ¥16,000 for an adult aged 12 or over and ¥8,000 for a child aged 6 to 11, for three consecutive days. Those are the prices JR East has charged since 14 March 2026, when the pass went up from ¥15,000 and ¥7,500 under the same price revision that introduced the new JR EAST PASS — so a page quoting ¥15,000 for 2026 travel is out of date. Children aged 0 to 5 need no ticket unless they occupy a separate seat. Prices read off jreast.co.jp on 30 October 2026.",
+    a: "It is ¥16,000 for an adult aged 12 or over and ¥8,000 for a child aged 6 to 11, for three consecutive days. Those are the prices JR East has charged since 14 March 2026, when the pass went up from ¥15,000 and ¥7,500 under the same price revision that introduced the new JR EAST PASS — so a page quoting ¥15,000 for 2026 travel is out of date. Children aged 0 to 5 need no ticket unless they occupy a separate seat. Prices re-checked on jreast.co.jp on 10 November 2026.",
+  },
+  {
+    q: "How much is the JR Tokyo Wide Pass for children?",
+    a: "¥8,000 for a child aged 6 to 11 — exactly half the ¥16,000 adult price, for the same three consecutive days and the same trains. It was ¥7,500 before the 14 March 2026 revision. Children aged 12 and over pay the adult price. Under-sixes need no pass of their own: Klook's listing states they travel free provided they do not occupy a separate seat, and a child pass is needed if they do. The same rule applies to reserved seats, so a toddler who needs their own shinkansen seat needs their own pass. JR East price re-checked on 10 November 2026.",
+  },
+  {
+    q: "Is the JR Tokyo Wide Pass worth it for a Mt Fuji day trip?",
+    a: "Not on its own. A Fuji Excursion return from Shinjuku to Kawaguchiko is ¥8,400 on Fujikyu's own fares (¥2,580 basic fare plus ¥1,620 limited express each way), which is barely half the ¥16,000 pass — so for a single Fuji day, buy the train tickets or a coach tour. The pass becomes worth it when the same three consecutive days hold a second long trip: add the ¥5,200 N'EX round trip and you are at ¥13,600, and a Nikko or GALA Yuzawa day on top takes it past ¥16,000. The pass also stops at Kawaguchiko station; the buses up to the Fifth Station are not on it. Fares checked 10 November 2026.",
+  },
+  {
+    q: "What is a good 3-day JR Tokyo Wide Pass itinerary?",
+    a: "Three consecutive days, each with one long trip out of Tokyo. Three patterns that use the pass properly: Fuji, Nikko and the airport (N'EX in from Narita on day one, Kawaguchiko on day two, Nikko on day three); snow and shrines in winter and spring (GALA Yuzawa, Nikko, Kawaguchiko — JR East prices its GALA Yuzawa and Nikko pair alone at about ¥21,500 bought separately); and Karuizawa, Fuji and departure (Karuizawa by shinkansen, Kawaguchiko, then the N'EX out to Narita). Reserve the Fuji Excursion before boarding — it has no non-reserved car — and keep the pass days away from any Kyoto or Osaka leg, which it does not cover.",
   },
   {
     q: "Is the JR Tokyo Wide Pass worth it?",
-    a: "It is worth it on a Tokyo trip with two or three real day trips in it, and a waste on a trip spent inside the city. The clearest case for: JR East's own published example — the Joetsu Shinkansen to GALA Yuzawa and back, plus the Nikko limited express out to Tobu-Nikko and back to Shinjuku, all in reserved seats — comes to about ¥21,500 bought separately, against ¥16,000 for the pass. A simpler version gets you most of the way too: a ¥5,200 N'EX round trip from Narita plus a ¥8,400 Fuji Excursion return to Kawaguchiko is ¥13,600 of the ¥16,000 in two journeys. The clearest case against: the pass covers no Tokyo Metro line, no Toei line and no city bus, so three days of Shibuya, Shinjuku and Asakusa get nothing from it. Figures checked 30 October 2026.",
+    a: "It is worth it on a Tokyo trip with two or three real day trips in it, and a waste on a trip spent inside the city. The clearest case for: JR East's own published example — the Joetsu Shinkansen to GALA Yuzawa and back, plus the Nikko limited express out to Tobu-Nikko and back to Shinjuku, all in reserved seats — comes to about ¥21,500 bought separately, against ¥16,000 for the pass. A simpler version gets you most of the way too: a ¥5,200 N'EX round trip from Narita plus a ¥8,400 Fuji Excursion return to Kawaguchiko is ¥13,600 of the ¥16,000 in two journeys. The clearest case against: the pass covers no Tokyo Metro line, no Toei line and no city bus, so three days of Shibuya, Shinjuku and Asakusa get nothing from it. Figures checked 10 November 2026.",
   },
   {
     q: "Does the Tokyo Wide Pass cover the shinkansen?",
@@ -291,7 +406,7 @@ const faqItems = [
   },
   {
     q: "Can I use the Tokyo Wide Pass to Mt Fuji or Kawaguchiko?",
-    a: "Yes. The whole of the Fujikyu Railway is on the pass, and JR East names Lake Kawaguchiko among the destinations it reaches, so the Fuji Excursion limited express from Shinjuku through to Kawaguchiko is covered end to end in a reserved ordinary-car seat. Bought separately that journey is ¥4,200 each way on Fujikyu's own figures — ¥2,580 basic fare plus a ¥1,620 limited express ticket — and the fastest run is 1 hour 53 minutes. Two things to note: the Fuji Excursion runs only four round trips a day and has no non-reserved car, so reserve before you board; and reserved seats on the Fujisan Express, Fujisan View Express and Fuji Tozan Densha carry an extra fee. The pass does not cover the buses up to the Fifth Station. Checked 30 October 2026.",
+    a: "Yes. The whole of the Fujikyu Railway is on the pass, and JR East names Lake Kawaguchiko among the destinations it reaches, so the Fuji Excursion limited express from Shinjuku through to Kawaguchiko is covered end to end in a reserved ordinary-car seat. Bought separately that journey is ¥4,200 each way on Fujikyu's own figures — ¥2,580 basic fare plus a ¥1,620 limited express ticket — and the fastest run is 1 hour 53 minutes. Two things to note: the Fuji Excursion runs only four round trips a day and has no non-reserved car, so reserve before you board; and reserved seats on the Fujisan Express, Fujisan View Express and Fuji Tozan Densha carry an extra fee. The pass does not cover the buses up to the Fifth Station. Fares checked 10 November 2026.",
   },
   {
     q: "Where do I buy and pick up the Tokyo Wide Pass?",
@@ -416,14 +531,14 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            JR Tokyo Wide Pass (2026):<br />Price, What It Covers &amp; Is It Worth It?
+            JR Tokyo Wide Pass Price (2026):<br />¥16,000 for 3 Days — Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             Three consecutive days of JR East trains around Tokyo, the Fuji Excursion to Kawaguchiko included.
             Here is what JR East charges, where the pass stops, and the routes that pay it back.
           </p>
           <div className={styles.heroBadges}>
-            {[`Prices checked ${CHECKED}`, "Official JR East figures", "Break-even arithmetic"].map((t) => (
+            {[`Prices checked ${PRICE_CHECKED}`, "Official JR East figures", "Break-even arithmetic"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -468,19 +583,23 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             </div>
             {/* Answer-first: this is the article's first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              The <strong>JR Tokyo Wide Pass</strong> is JR East&apos;s <strong>{ADULT}</strong> ticket
-              ({CHILD} for children aged 6 to 11) for <strong>three consecutive days</strong> of unlimited travel in
-              reserved or non-reserved ordinary-car seats on JR East local, rapid, express, limited express and{" "}
-              <strong>shinkansen</strong> services inside its Kanto-area map — plus <strong>all of the Fujikyu
-              Railway</strong> (so the Fuji Excursion runs straight through to <strong>Kawaguchiko</strong>), all of
-              Izu Kyuko, the <strong>Tokyo Monorail</strong> to Haneda, the Rinkai Line, Joshin Dentetsu, the New
-              Shuttle between Omiya and the Railway Museum, and the <strong>JR–Tobu through limited expresses to
-              Tobu-Nikko</strong>. It reaches Karuizawa on the Hokuriku Shinkansen and GALA Yuzawa on the Joetsu
-              Shinkansen, and it never covers the Tokaido Shinkansen, the Tokyo Metro or a city bus. JR East&apos;s own
-              worked example — Tokyo to GALA Yuzawa and back to Omiya, then the Nikko limited express out to Tobu-Nikko
-              and back to Shinjuku, all reserved — comes to about <strong>{MODEL_ROUTE}</strong> bought separately, so
-              the pass saves roughly ¥5,500 on that pair of days. Sold only to holders of a non-Japanese passport, and
-              collected in Japan on that passport. Prices read off jreast.co.jp on {CHECKED}.
+              The <strong>JR Tokyo Wide Pass price</strong> is <strong>{ADULT}</strong> for an adult and {CHILD} for a
+              child aged 6 to 11 (JR East, checked {PRICE_CHECKED}), for <strong>three consecutive days</strong> of
+              unlimited JR East trains around Tokyo and the Kanto area — <strong>shinkansen included</strong> — plus all
+              of the <strong>Fujikyu Railway</strong> to Kawaguchiko, the <strong>Tokyo Monorail</strong> to Haneda and
+              the JR–Tobu through limited expresses to Nikko. It pays off when you take <strong>two or more long trips
+              </strong> in those three days: JR East&apos;s own example of a GALA Yuzawa return plus a Nikko return
+              comes to about <strong>{MODEL_ROUTE}</strong> bought separately. For a <strong>single day trip</strong> it
+              loses — one Fuji Excursion return to Kawaguchiko is ¥8,400, so ordinary tickets are cheaper.
+            </p>
+            <p className={styles.verdictText}>
+              It never covers the Tokaido Shinkansen, the Tokyo Metro or a city bus, and it is sold only to holders of a
+              non-Japanese passport, collected in Japan on that passport. This page is the three-day Kanto pass; for
+              Tohoku, Niigata, Nagano and five or ten days of long-distance travel, see the{" "}
+              <Link href="/guides/transport/jr-east-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+                JR EAST PASS guide
+              </Link>
+              .
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink
@@ -537,7 +656,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Prices, validity and eligibility read off JR East&apos;s own pass pages on {CHECKED}; the ¥15,000 to{" "}
+            Prices re-checked on JR East&apos;s own pass page on {PRICE_CHECKED}; validity and eligibility read on {CHECKED}; the ¥15,000 to{" "}
             {ADULT} change comes from its 28 January 2026 press release on new and revised passes. The under-six rule is
             as Klook&apos;s listing states it. For the nationwide pass and its break-even calculator, see our{" "}
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -606,7 +725,11 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             operator publishes — Tokyo–Nikko, Tokyo–Karuizawa and Tokyo–Echigo-Yuzawa singles are left out, because
             JR East does not publish a readable English fare table for them and a guessed shinkansen fare would make the
             whole table worthless. What JR East does publish for those routes is a worked example, and it is the last row.
+            The test runs in two stages: price each journey, then add up your three days.
           </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>
+            Stage 1: What Does Each Journey Cost Without the Pass?
+          </h3>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -637,6 +760,40 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             monorail at ¥520 each way if you fly out of the other airport, and a second day trip finishes the job. The
             pass therefore wins on a three-day stay with two excursions in it, and loses on a three-day stay spent inside
             Tokyo — where it covers no subway line at all.
+          </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>
+            Stage 2: Do Your Three Days Add Up to More Than {ADULT}?
+          </h3>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Journeys in your 3 days", "Bought separately", `vs the ${ADULT} pass`, "What to do"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {breakEvenRows.map((row) => (
+                    <tr key={row.combo}>
+                      <td className={styles.tdProvider}>{row.combo}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.total}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.diff}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.verdict}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Adult fares from Stage 1: JR East and Fujikyu, checked {PRICE_CHECKED}. The GALA Yuzawa half of JR
+            East&apos;s example is the ski day in our{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
+              GALA Yuzawa ski day trip guide
+            </Link>
+            , which runs the same pass arithmetic from the slope end.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1.5rem" }}>
             <div className={styles.tableScroll}>
@@ -677,6 +834,93 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
           </div>
         </section>
 
+        {/* Itinerary patterns — added 10 Nov 2026 */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Itineraries</span>
+          <h2 className={styles.sectionTitle}>What Does a Good 3-Day JR Tokyo Wide Pass Itinerary Look Like?</h2>
+          <p className={styles.bodyText}>
+            One long trip a day, three days in a row, from a Tokyo base. Only the legs with an operator-published fare
+            are priced; the Nikko and Karuizawa returns are named without a figure because the official sources checked
+            do not give a readable single fare for them — check JR East&apos;s fare search for your date.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Pattern", "Day 1", "Day 2", "Day 3", "Priced legs vs the pass"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {itineraryRows.map((row) => (
+                    <tr key={row.pattern}>
+                      <td className={styles.tdProvider}>{row.pattern}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.day1}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.day2}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.day3}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.sum}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Fares: N&apos;EX single and Fuji Excursion return from JR East and Fujikyu, and JR East&apos;s {MODEL_ROUTE}{" "}
+            example, all checked {PRICE_CHECKED}. GALA Yuzawa station opens only in winter and spring, and the Fuji
+            Excursion has no non-reserved car, so reserve that seat before the day.
+          </p>
+        </section>
+
+        {/* Plan B — added 10 Nov 2026 */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Plan B</span>
+          <h2 className={styles.sectionTitle}>When Is the JR Tokyo Wide Pass Not Worth It?</h2>
+          <p className={styles.bodyText}>
+            When the trip has fewer than two long journeys in three consecutive days, something cheaper does the same
+            job. These are the cases, and what to buy instead.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Your trip", "Buy this instead", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {planBRows.map((row) => (
+                    <tr key={row.trip}>
+                      <td className={styles.tdProvider}>{row.trip}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.instead}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.why}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            For the alternatives in full: the{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo Subway Ticket
+            </Link>{" "}
+            for city days, the{" "}
+            <Link href="/guides/transport/tokyo-airport-transfer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo airport transfer guide
+            </Link>{" "}
+            for the N&apos;EX and the other airport routes, and the rest of our{" "}
+            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Japan transport guides
+            </Link>{" "}
+            for the other regional passes.
+          </p>
+        </section>
+
         {/* Mt Fuji / Kawaguchiko */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Mt Fuji</span>
@@ -686,7 +930,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             are on the pass, the <strong>Fuji Excursion</strong> — Fuji Kaiyu on Fujikyu&apos;s own signage — runs
             through from Shinjuku onto the Fujikyu line and into Kawaguchiko without you buying anything extra. Fujikyu
             prices that journey at <strong>¥4,200</strong> one way (¥2,580 basic fare plus a ¥1,620 limited express
-            ticket) and puts the fastest run at <strong>1 hour 53 minutes</strong>. Read on {CHECKED}.
+            ticket) and puts the fastest run at <strong>1 hour 53 minutes</strong>. Read on {PRICE_CHECKED}.
           </p>
           <p className={styles.bodyText}>
             Two practical catches. The Fuji Excursion runs <strong>four round trips a day</strong>, with one more in
@@ -770,7 +1014,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
         {/* Pass comparison */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>JR Tokyo Wide Pass vs JR EAST PASS vs the JR Pass</h2>
+          <h2 className={styles.sectionTitle}>Should I Get the Tokyo Wide Pass, the JR EAST PASS or the JR Pass?</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -854,6 +1098,33 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
           </p>
         </section>
 
+        {/* Same-trip bookings — added 10 Nov 2026 */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Same trip</span>
+          <h2 className={styles.sectionTitle}>What Else Should I Book for the Same Trip?</h2>
+          <p className={styles.bodyText}>
+            The pass is the train. The days at the other end, and the airport leg if your three pass days do not
+            cover it, are separate bookings — and on a Kawaguchiko or Nikko day a tour is sometimes simpler than the
+            pass plus local buses. Check the listing for your date; prices change by season.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Kawaguchiko Day Tour from Tokyo →
+            </KlookLink>
+            <KlookLink href={nikkoCulturalDayTourUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Nikko Day Tour from Tokyo →
+            </KlookLink>
+            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              GALA Yuzawa Ski Day Trip →
+            </KlookLink>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Narita Express (N&apos;EX) Round Trip →
+            </KlookLink>
+          </div>
+        </section>
+
+        <BookingEsimCard lead="Seat reservations and your pass voucher both need data on arrival." />
+
         {/* Seat reservations */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Reservations</span>
@@ -877,7 +1148,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>What Else Do Travellers Ask About the JR Tokyo Wide Pass?</h2>
           <div className={styles.faqList}>
             {faqItems.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>

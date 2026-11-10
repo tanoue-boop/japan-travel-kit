@@ -822,7 +822,12 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
               Kansai Area Pass guide
             </Link>{" "}
-            works that break-even through. Second, the passes most tourists actually need in a city are not
+            works that break-even through, and the Tokyo-side equivalent, JR East&apos;s three-day pass for Kanto
+            day trips, has its own in our{" "}
+            <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR Tokyo Wide Pass guide
+            </Link>
+            . Second, the passes most tourists actually need in a city are not
             JR products at all, so no JR Pass ever covers them: the{" "}
             <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
               Hakone Freepass

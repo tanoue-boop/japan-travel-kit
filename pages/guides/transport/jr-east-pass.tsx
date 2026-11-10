@@ -435,8 +435,12 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
               <strong>Hokuriku Shinkansen as far as Joetsumyoko</strong> (so Karuizawa and Nagano, not Kanazawa) —
               plus the Narita Express, Tokyo Monorail and six partner railways. It does not cover the Tokaido or Hokkaido
               shinkansen. JR East&apos;s own example, the N&apos;EX plus the Tohoku Shinkansen to Aomori via Sendai,
-              costs about <strong>{MODEL_ROUTE}</strong> bought separately. For Tokyo day trips only, the ¥16,000
-              3-day <strong>JR TOKYO Wide Pass</strong> is cheaper; for a Japan-wide trip, the ¥53,000 7-day JR Pass.
+              costs about <strong>{MODEL_ROUTE}</strong> bought separately. This pass is the one for Tohoku and the long
+              distances; for three days of Kanto day trips from Tokyo, the ¥16,000{" "}
+              <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+                JR Tokyo Wide Pass
+              </Link>{" "}
+              is cheaper; for a Japan-wide trip, the ¥53,000 7-day JR Pass.
               Checked {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
