@@ -145,10 +145,10 @@ const relatedLinks = [
   { href: "/guides/attractions/kansai-area-pass", title: "Kansai Area Pass" },
 ];
 
-const TITLE = "Hiroshima Peace Memorial Tour: Guides, Museum & Tickets";
-const H1 = "Hiroshima Peace Memorial Tour";
+const TITLE = "Hiroshima Peace Memorial Tours (2026): Guides and Booking";
+const H1 = "Hiroshima Peace Memorial Tours";
 const DESCRIPTION =
-  "A Hiroshima Peace Memorial tour takes 2–5 hours on Klook; the museum is ¥200 for adults and opens at 7:30. Hours, crowds, booking and tour vs going alone.";
+  "Hiroshima Peace Memorial tours take 2–5 hours with English-speaking guides. The ¥200 museum needs booking only for early and late entry. Tours on Klook.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -225,7 +225,7 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
-          <h1 className={styles.heroTitle}>{H1}: Guides, Museum Hours &amp; Tickets</h1>
+          <h1 className={styles.heroTitle}>{H1} (2026): Guides, Booking and Museum Hours</h1>
           <p className={styles.heroSubtitle}>
             How to visit the Peace Memorial Park, the Atomic Bomb Dome and the museum, with or without a guide.
           </p>
@@ -250,11 +250,19 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Hiroshima Peace Memorial tour</strong> covers the Peace Memorial Park, the Atomic Bomb
-            Dome and usually the museum, and guided tours on Klook run from <strong>2 to 5 hours</strong>.
+            <strong>Hiroshima Peace Memorial tours</strong> cover the Peace Memorial Park, the Atomic Bomb
+            Dome and usually the museum, and guided tours on Klook run from <strong>2 to 5 hours</strong>,
+            in English (some also in Japanese).
             Museum admission is <strong>¥200 for adults</strong>, it opens at 7:30, and it is busiest from
             about 11:00 to 15:00, so a morning start is easiest. Everything is in central Hiroshima, about 25
             minutes by tram from Hiroshima Station. Museum details read on hpmmuseum.jp on {CHECKED}.
+          </p>
+          <h2 className={styles.sectionTitle}>Which Hiroshima Memorial Sites Require Advance Booking?</h2>
+          <p className={styles.bodyText}>
+            Only the Peace Memorial Museum, and only for its extended slots: entry from 7:30 to 8:30, and in
+            the evening (17:30 onward from March to November), needs an online reservation on hpmmuseum.jp.
+            In regular hours you can buy at the door, and the Peace Memorial Park and the Atomic Bomb Dome are
+            open-air and free with no booking (museum notice re-read on 11 November 2026).
           </p>
         </section>
 

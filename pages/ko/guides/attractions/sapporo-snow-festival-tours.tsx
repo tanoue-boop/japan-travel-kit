@@ -262,9 +262,9 @@ const festivalSameTrip: KlookTripPrepItem[] = [
   },
 ];
 
-const TITLE = "삿포로 눈축제(2027): 2월 4~11일, 무료 행사장";
+const TITLE = "삿포로 눈축제 2027 일정: 2월 4~11일, 투어·숙소";
 const DESC =
-  "삿포로 눈축제 투어와 준비: 제77회 축제는 2027년 2월 4~11일, 행사장 3곳 모두 무료. 예약할 것은 숙소와 주변 당일 여행입니다.";
+  "삿포로 눈축제 2027은 2월 4~11일, 행사장 3곳 모두 무료. 숙소는 지금, 당일 투어는 12월 31일까지 Klook에서 예약하세요.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -293,7 +293,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 업데이트 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-삿포로 눈축제 투어(2027):<br />개최 일정, 무료 행사장, 예약할 것
+삿포로 눈축제 2027 투어:<br />일정(2월 4~11일), 무료 행사장, 예약할 것
 </h1>
           <p className={styles.heroSubtitle}>
 8일간, 행사장 3곳, 입장권 없음. 예약할 만한 투어는 축제 전후의 당일 여행이고, 대체할 수 없는 예약은 숙소뿐입니다.
@@ -386,7 +386,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
               </div>
             </div>
                         <p className={styles.verdictText}>
-<strong>삿포로 눈축제 투어</strong>를 찾고 있다면 먼저 알아 둘 점은 투어가 필요 없다는 것입니다. <strong>제77회 삿포로 눈축제는 2027년 2월 4일부터 11일까지</strong> 8일간 행사장 3곳에서 열립니다. <strong>오도리 공원 니시 1초메~11초메</strong>, <strong>스스키노 에키마에도리 미나미 4조~6조</strong>, 그리고 <strong>쓰도무</strong> 시 스포츠 시설이며, 위원회 FAQ에 따르면 모두 <strong>무료</strong>입니다. 오도리는 언제든 볼 수 있고 조각 조명은 <strong>22:00</strong>까지, 스스키노는 <strong>23:00</strong>까지(마지막 날 22:00), 쓰도무는 <strong>10:00–16:00</strong>이며 내부 일부 체험은 유료입니다. 입장권도, 시간 지정도, 건너뛸 대기 줄도 없습니다. 예약할 만한 것은 축제 기간 전후의 일정입니다. 대체할 수 없는 숙소, 그리고 이 시기에만 운영되는 시외 당일 여행인 오타루, 아사히야마 동물원, 시코쓰호 얼음 축제, 조잔케이 온천입니다. 2월 삿포로의 일 최고기온 평균은 <strong>{FEB_MAX}</strong>이므로 축제 날에는 낮 시간을 실내 일정으로 잡아야 합니다. 축제 정보 확인일 {OWN}, 기온 평년값 확인일 {JMA_CHECKED}.
+<strong>삿포로 눈축제 2027</strong>은 2월 4~11일에 열리고(공식 사이트 snowfes.com, 2026년 11월 11일 확인) 행사장 3곳 모두 무료라 <strong>삿포로 눈축제 투어</strong>는 필수가 아닙니다. 숙소는 지금, 당일 투어는 12월 31일까지 예약해 두세요. <strong>제77회 삿포로 눈축제는 2027년 2월 4일부터 11일까지</strong> 8일간 행사장 3곳에서 열립니다. <strong>오도리 공원 니시 1초메~11초메</strong>, <strong>스스키노 에키마에도리 미나미 4조~6조</strong>, 그리고 <strong>쓰도무</strong> 시 스포츠 시설이며, 위원회 FAQ에 따르면 모두 <strong>무료</strong>입니다. 오도리는 언제든 볼 수 있고 조각 조명은 <strong>22:00</strong>까지, 스스키노는 <strong>23:00</strong>까지(마지막 날 22:00), 쓰도무는 <strong>10:00–16:00</strong>이며 내부 일부 체험은 유료입니다. 입장권도, 시간 지정도, 건너뛸 대기 줄도 없습니다. 예약할 만한 것은 축제 기간 전후의 일정입니다. 대체할 수 없는 숙소, 그리고 이 시기에만 운영되는 시외 당일 여행인 오타루, 아사히야마 동물원, 시코쓰호 얼음 축제, 조잔케이 온천입니다. 2월 삿포로의 일 최고기온 평균은 <strong>{FEB_MAX}</strong>이므로 축제 날에는 낮 시간을 실내 일정으로 잡아야 합니다. 축제 정보 확인일 {OWN}, 기온 평년값 확인일 {JMA_CHECKED}.
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>

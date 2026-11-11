@@ -376,9 +376,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Japan 5 Day Itinerary: Tokyo and Kyoto, Day by Day (2026)";
+const TITLE = "Japan Itinerary 5 Days (2026): Tokyo and Kyoto Plan";
 const DESCRIPTION =
-  "Japan 5 Day Itinerary for a first trip: Tokyo on Days 1–3, Kyoto on Days 4–5, with a table for each day, what to book, where to stay and JR Pass maths.";
+  "Japan itinerary 5 days: Tokyo on Days 1–3, shinkansen to Kyoto on Day 4, Fushimi Inari on Day 5. Skip the ¥50,000 JR Pass and buy single tickets.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -459,7 +459,7 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan 5 Day Itinerary:<br />Tokyo and Kyoto, Day by Day
+            Japan Itinerary 5 Days (2026):<br />Tokyo and Kyoto Plan, Day by Day
           </h1>
           <p className={styles.heroSubtitle}>
             Three nights in Tokyo, one in Kyoto, out from Kansai: what to do each day and what to book for it.
@@ -485,11 +485,16 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            This <strong>Japan 5 day itinerary</strong> is Tokyo and Kyoto, not one city: Days 1 to 3 in Tokyo
-            on three hotel nights, then the <strong>130-minute</strong> Tokaido Shinkansen on Day 4 and Days 4
-            and 5 in Kyoto on one night, flying home from Kansai Airport, about 80 minutes from Kyoto Station
-            by Haruka. Transport and tickets come to <strong>from {yen(PLAN_TOTAL)}</strong> per adult before
-            hotels and food, and a JR Pass does not pay for itself. If you want five days in one city, read
+            <strong>
+              Japan itinerary, 5 days: Tokyo on Days 1 to 3 (Harajuku and Shibuya, then Senso-ji and teamLab),
+              the Tokaido Shinkansen to Kyoto on Day 4, and Fushimi Inari and Arashiyama on Day 5 before you
+              fly home from Kansai.
+            </strong>{" "}
+            Skip the JR Pass: the 7-day pass is ¥50,000 online (japanrailpass.net, read on 11 November 2026),
+            and this plan&apos;s three JR rides come to about {yen(TOKYO_IN_KANSAI_OUT)}. That is three hotel
+            nights in Tokyo and one in Kyoto, one <strong>130-minute</strong> shinkansen ride, and about 80
+            minutes from Kyoto Station to Kansai Airport by Haruka. Transport and tickets come to{" "}
+            <strong>from {yen(PLAN_TOTAL)}</strong> per adult before hotels and food. If you want five days in one city, read
             our{" "}
             <Link href="/guides/attractions/tokyo-5-day-itinerary" style={linkStyle}>Tokyo 5-day itinerary</Link>;
             if you have nine, our{" "}

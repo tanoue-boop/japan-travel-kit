@@ -283,9 +283,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "teamLab Fukuoka Tickets 2026: Price, Hours & Booking";
+const TITLE = "teamLab Fukuoka Tickets (2026): Forest Price and Hours";
 const DESCRIPTION =
-  "teamLab Fukuoka tickets are ¥2,400 for an adult on a regular date and ¥2,700 on a peak one, ¥1,000 for ages 4–15. Hours, last entry, access and booking.";
+  "teamLab Forest Fukuoka tickets: ¥2,400 adult (¥2,700 peak), ¥1,000 ages 4–15. Open 11:00–19:00, weekends from 10:00, BOSS E・ZO FUKUOKA 5F. Book on Klook.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/teamlab-fukuoka-tickets") },
@@ -378,7 +378,7 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Fukuoka Tickets 2026:<br />Price, Hours &amp; How to Book
+            teamLab Fukuoka Tickets (2026):<br />teamLab Forest Price and Hours
           </h1>
           <p className={styles.heroSubtitle}>
             The cheapest of the five teamLab venues in Japan, and the only one you move through rather than
@@ -406,6 +406,23 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
 
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>
+              teamLab Fukuoka tickets are for teamLab Forest Fukuoka: {ADULT_REGULAR} for an adult
+              ({ADULT_PEAK} on peak dates) and {CHILD_REGULAR} for ages 4–15, open 11:00–19:00 on weekdays
+              and 10:00–19:00 at weekends and on holidays.
+            </strong>{" "}
+            It is on the 5th floor of BOSS E・ZO FUKUOKA beside Fukuoka PayPay Dome, and weekend and
+            dome-event dates are the ones worth booking ahead (prices and hours read on {CHECKED} from
+            teamlab.art and the venue operator&apos;s site). The separate night show at the castle,{" "}
+            <em>teamLab: Digitized Fukuoka Castle Ruins 2026-2027</em>, runs at Maizuru Park from 30 October
+            2026 to 11 January 2027 on its own ticket (dates from teamlab.art, read on 11 November 2026).
+          </p>
+          <div className={styles.pickCtaRow} style={{ margin: "0 0 1.25rem" }}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Check teamLab Forest Fukuoka Tickets →
+            </KlookLink>
+          </div>
           <p className={styles.bodyText}>
             <strong>teamLab Fukuoka tickets</strong> — for{" "}
             <em>teamLab Forest Fukuoka – SBI SECURITIES</em>, the permanent museum on the{" "}

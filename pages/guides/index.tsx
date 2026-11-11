@@ -32,7 +32,10 @@ const categories: { category: GuideCategory; blurb: string }[] = [
 
 const totalGuides = categories.reduce((n, c) => n + c.category.articles.length, 0);
 
-const DESC = `All ${totalGuides} Japan travel guides in one index: eSIM and SIM cards, transport and rail passes, money and payment, and attraction tickets.`;
+// A single string: JSX children inside <title> render as "All <!-- -->173<!-- --> Guides".
+const TITLE = "Japan Travel Guides 2026: eSIM, Money, Transport, Tickets";
+const DESC =
+  "Japan travel guides 2026: eSIM (Simbye for most trips), cash (¥10,000–¥20,000 a day), transport and rail passes, and attraction tickets to book ahead.";
 
 // ItemList of every guide, in the order this page renders them, so an AI crawler reading
 // one page gets the whole site's contents rather than four hub links.
@@ -44,16 +47,16 @@ export default function GuidesIndexPage() {
   return (
     <>
       <Head>
-        <title>Japan Travel Guides 2026: All {totalGuides} Guides by Topic</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides" />
-        <meta property="og:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides" />
         <meta property="og:description" content={DESC} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan Travel Guides 2026 | Japan Travel Kit" />
+        <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESC} />
         <meta name="robots" content="index, follow" />
         <script
@@ -97,11 +100,17 @@ export default function GuidesIndexPage() {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Travel Guides</p>
-          <h1 className={styles.heroTitle}>Japan Travel Guides</h1>
+          <h1 className={styles.heroTitle}>Japan Travel Guides 2026: eSIM, Money, Transport and Tickets</h1>
           <div className={styles.heroRule} />
           <p className={styles.heroDesc}>
-            Practical, independent guides for foreign visitors to Japan.
-            Everything you need to know — prepared before you land.
+            All {totalGuides} guides sit in four topics below: <Link href="/guides/esim" style={{ color: "inherit", textDecoration: "underline" }}>eSIM</Link>,{" "}
+            <Link href="/guides/money" style={{ color: "inherit", textDecoration: "underline" }}>money</Link>,{" "}
+            <Link href="/guides/transport" style={{ color: "inherit", textDecoration: "underline" }}>transport</Link> and{" "}
+            <Link href="/guides/attractions" style={{ color: "inherit", textDecoration: "underline" }}>tickets and things to do</Link>.
+            The short answers: Simbye is the{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "inherit", textDecoration: "underline" }}>eSIM for most trips</Link>, carry{" "}
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "inherit", textDecoration: "underline" }}>¥10,000–¥20,000 in cash a day</Link>, and
+            book teamLab, SHIBUYA SKY and Universal Studios tickets before you fly.
           </p>
         </div>
       </section>

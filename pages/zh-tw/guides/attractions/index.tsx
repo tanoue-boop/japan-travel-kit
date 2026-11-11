@@ -20,9 +20,9 @@ import { itemListJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, TRANSLATED_PAGES, editionGuideCount, editionPageCount, zhDateLabel, zhMonthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/zh-tw/guides/attractions";
-const TITLE = "日本景點門票攻略（2026）：官方票價、預約方式與一日遊";
+const TITLE = "日本景點門票價格 2026｜澀谷SKY、teamLab、迪士尼預約指南";
 const DESC =
-  "日本景點門票 2026：澀谷SKY、teamLab、東京迪士尼、日本環球影城的官方票價與預約規則，加上富士山一日遊與機場交通。票價讀自官網並標示查核日期。";
+  "日本景點門票價格 2026：澀谷SKY ¥2,700 起、teamLab ¥3,400 起、東京迪士尼 ¥8,900 起，哪些必須提前訂、在哪裡訂。";
 
 // The hub is the entry point for the ten-page 繁體中文 trial, so it lists exactly
 // those ten and nothing else — a hub that links mostly to English pages is not a
@@ -172,7 +172,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>繁體中文版</p>
           <h1 className={styles.heroTitle}>
-            日本景點門票攻略（2026）：<br />官方票價、預約方式與一日遊
+            日本景點門票價格 2026：<br />預約指南、官方票價與一日遊
           </h1>
           <p className={styles.heroSubtitle}>
             會賣完的那幾張票、海外旅客可用的購票管道，以及每一個價格的查核日期。
@@ -189,6 +189,16 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
 
       <div className={styles.content}>
         <Disclosure />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>日本景點門票價格（2026）</strong>：澀谷SKY 網路購票 ¥2,700（15:00 前入場）／¥3,400（15:00
+            起），teamLab Planets ¥3,800 起，teamLab 無界 ¥3,400 起，東京迪士尼一日護照 ¥8,900 起；日本環球影城依日期定價，結帳時才顯示當天價格。
+            <strong>必須提前在網路上訂的</strong>是兩間 teamLab（指定時段）、東京迪士尼（現場不賣票）與日本環球影城（當天現場不售票），澀谷SKY
+            只有日落時段需要早訂。票價讀自各官網：澀谷SKY 與 teamLab Planets 於 2026 年 11 月 6 日、東京迪士尼於 10 月 28 日、teamLab
+            無界於 10 月 9 日查核。
+          </p>
+        </section>
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>先看這個</span>

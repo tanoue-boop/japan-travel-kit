@@ -145,9 +145,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Okinawa Churaumi Aquarium Tickets 2026: Price, Hours, Access";
+const TITLE = "Okinawa Churaumi Aquarium Tickets: ¥2,180, Open 8:30–18:30";
 const DESCRIPTION =
-  "Okinawa Churaumi Aquarium tickets are ¥2,180 adult, ¥710 for kids, under 6 free. Hours 8:30–18:30, 2 hours by car from Naha, tours vs renting a car.";
+  "Churaumi Aquarium tickets: ¥2,180 adult, ¥710 child, open 8:30–18:30 (last entry 17:30). From Naha about 2 hours by car or 3 by bus, or a tour on Klook.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -233,7 +233,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Okinawa Churaumi Aquarium Tickets:<br />Price, Hours &amp; Getting There
+            Okinawa Churaumi Aquarium Tickets (2026):<br />¥2,180, Open 8:30–18:30 &amp; Getting There
           </h1>
           <p className={styles.heroSubtitle}>
             Okinawa&apos;s whale shark tank, two hours north of Naha. The official prices, the season hours, the
@@ -266,7 +266,8 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             <strong>¥1,440</strong> for a high-school student, <strong>¥710</strong> for elementary and
             junior-high students and free for children under 6, sold at the gate and online. The aquarium opens{" "}
             <strong>8:30–18:30</strong> (last entry 17:30) for most of the year, with later closing over Golden
-            Week, late July and August, and has no scheduled closing days until 31 March 2027. It sits in Ocean
+            Week, late July and August, and has no scheduled closing days until 31 March 2027 (prices and hours
+            re-read on churaumi.okinawa on 11 November 2026). It sits in Ocean
             Expo Park on the Motobu Peninsula, <strong>about two hours by car from Naha Airport</strong> on the
             Okinawa Expressway or about three hours by express bus — which is why most visitors either rent a
             car or book a northern day tour from Naha that adds Kouri Island. Allow two to three and a half hours

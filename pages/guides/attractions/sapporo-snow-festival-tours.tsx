@@ -353,9 +353,9 @@ const festivalSameTrip: KlookTripPrepItem[] = [
   },
 ];
 
-const TITLE = "Sapporo Snow Festival Tours (2027): 4–11 Feb, Free Sites";
+const TITLE = "Sapporo Snow Festival 2027 Tours: Dates 4–11 Feb, Hotels";
 const DESCRIPTION =
-  "Sapporo Snow Festival tours, and what you need: the 77th festival runs 4–11 February 2027 across three free sites, so the tours are the days around it.";
+  "Sapporo Snow Festival 2027 runs 4–11 February at three free sites. Book hotels now and day tours by 31 December: Otaru, Asahiyama Zoo and more on Klook.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/sapporo-snow-festival-tours") },
@@ -449,7 +449,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Sapporo Snow Festival Tours (2027):<br />the Dates, the Free Sites and What to Book
+            Sapporo Snow Festival 2027 Tours:<br />Dates (4–11 Feb), Free Sites and What to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Eight days, three sites, no ticket. The tours worth booking are the days around the festival —
@@ -536,9 +536,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              Looking for <strong>Sapporo Snow Festival tours</strong>, the first thing to know is that you do
-              not need one. The <strong>77th Sapporo Snow Festival runs 4 to 11 February 2027</strong>, eight
-              days, across three sites — <strong>Odori Park from West 1 to West 11</strong>,{" "}
+              The <strong>Sapporo Snow Festival 2027</strong>, the 77th, runs <strong>4 to 11 February 2027</strong>{" "}
+              (dates on snowfes.com, re-read on 11 November 2026), and all three sites are free, so{" "}
+              <strong>Sapporo Snow Festival tours</strong> are optional. Book the hotel now and any day tour by
+              31 December. The eight days run across three sites — <strong>Odori Park from West 1 to West 11</strong>,{" "}
               <strong>Susukino on Ekimae-dori between South 4 and South 6</strong>, and the{" "}
               <strong>Tsudome</strong> city sports facility — and the organising committee&apos;s own FAQ says
               all of them are <strong>free</strong>. Odori is viewable at any hour with the sculptures lit

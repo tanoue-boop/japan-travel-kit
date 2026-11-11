@@ -262,9 +262,9 @@ const festivalSameTrip: KlookTripPrepItem[] = [
   },
 ];
 
-const TITLE = "札幌雪祭（2027）：2/4–11 三會場免費，該訂什麼";
+const TITLE = "札幌雪祭 2027 日期：2/4–11，行程與訂房";
 const DESC =
-  "札幌雪祭行程怎麼排：第 77 屆於 2027 年 2 月 4–11 日舉行，三個會場都免費，值得預訂的是住宿與周邊一日遊。";
+  "札幌雪祭 2027 於 2 月 4–11 日舉行，三個會場都免費。住宿現在就訂，小樽等一日遊在 12 月 31 日前於 Klook 預訂。";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -293,7 +293,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 更新於 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-札幌雪祭行程（2027）：<br />日期、免費會場與該訂什麼
+札幌雪祭 2027 行程：<br />日期（2/4–11）、免費會場與該訂什麼
 </h1>
           <p className={styles.heroSubtitle}>
 八天、三個會場、不用門票。值得訂的是雪祭前後的行程，而住宿是唯一沒有備案的部分。
@@ -386,7 +386,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
               </div>
             </div>
                         <p className={styles.verdictText}>
-想找<strong>札幌雪祭行程</strong>的話，首先要知道你並不需要跟團。<strong>第 77 屆札幌雪祭於 2027 年 2 月 4 日到 11 日舉行</strong>，共八天，分三個會場：<strong>大通公園西 1 到西 11 丁目</strong>、<strong>薄野站前通南 4 到南 6 條</strong>，以及 <strong>Tsudome</strong> 市立體育設施，執行委員會的常見問題寫明全部<strong>免費</strong>。大通隨時可看，雪雕點燈到 <strong>22:00</strong>；薄野到 <strong>23:00</strong>（最後一天 22:00）；Tsudome <strong>10:00–16:00</strong>開放，內部部分活動收費。沒有門票、沒有時段，也沒有隊伍要跳過。值得預訂的是雪祭前後這一週：唯一沒有備案的住宿，以及只有這個季節才有的郊外行程，例如小樽、旭山動物園、支笏湖冰濤祭和定山溪溫泉的下午。2 月札幌平均最高溫 <strong>{FEB_MAX}</strong>，所以每個雪祭日的中段都要待在室內。雪祭資訊查核日：{OWN}；氣溫平年值：{JMA_CHECKED}。
+<strong>札幌雪祭 2027</strong>於 2 月 4–11 日舉行（日期讀自官網 snowfes.com，2026 年 11 月 11 日查核），三個會場都免費，所以<strong>札幌雪祭行程</strong>不必跟團。住宿現在就訂，一日遊在 12 月 31 日前訂好。<strong>第 77 屆札幌雪祭於 2027 年 2 月 4 日到 11 日舉行</strong>，共八天，分三個會場：<strong>大通公園西 1 到西 11 丁目</strong>、<strong>薄野站前通南 4 到南 6 條</strong>，以及 <strong>Tsudome</strong> 市立體育設施，執行委員會的常見問題寫明全部<strong>免費</strong>。大通隨時可看，雪雕點燈到 <strong>22:00</strong>；薄野到 <strong>23:00</strong>（最後一天 22:00）；Tsudome <strong>10:00–16:00</strong>開放，內部部分活動收費。沒有門票、沒有時段，也沒有隊伍要跳過。值得預訂的是雪祭前後這一週：唯一沒有備案的住宿，以及只有這個季節才有的郊外行程，例如小樽、旭山動物園、支笏湖冰濤祭和定山溪溫泉的下午。2 月札幌平均最高溫 <strong>{FEB_MAX}</strong>，所以每個雪祭日的中段都要待在室內。雪祭資訊查核日：{OWN}；氣溫平年值：{JMA_CHECKED}。
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>

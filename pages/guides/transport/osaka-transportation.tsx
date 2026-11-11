@@ -124,27 +124,28 @@ const faqItems = [
   },
 ];
 
+const TITLE = "Osaka Transportation (2026): Metro, JR and ¥820 Day Pass";
+const DESCRIPTION =
+  "Osaka transportation: an ICOCA or Suica for a few rides, the ¥820 Enjoy Eco Card (¥620 weekends) for 4+ rides, the ¥3,500 Amazing Pass for paid sights.";
+
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/osaka-transportation") } });
 
 export default function OsakaTransportationPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Getting Around Osaka 2026: Subway, Trains &amp; IC Cards</title>
-        <meta
-          name="description"
-          content="How to get around Osaka in 2026. We explain the Midosuji Line, Osaka Metro day passes, IC cards, and key routes to top attractions — with 2026 fares."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/osaka-transportation" />
-        <meta property="og:title" content="Getting Around Osaka 2026: Subway, Trains & IC Cards" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/osaka-transportation" />
-        <meta property="og:description" content="How to get around Osaka in 2026. We explain the Midosuji Line, Osaka Metro day passes, IC cards, and key routes to top attractions — with 2026 fares." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Getting Around Osaka 2026: Subway, Trains & IC Cards" />
-        <meta name="twitter:description" content="How to get around Osaka in 2026. We explain the Midosuji Line, Osaka Metro day passes, IC cards, and key routes to top attractions — with 2026 fares." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -164,7 +165,8 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/transport/osaka-transportation",
-              headline: "Getting Around Osaka (2026): Subway, Trains & IC Cards Explained",
+              headline: TITLE,
+              description: DESCRIPTION,
               updated,
             }),
           }}
@@ -212,7 +214,7 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Getting Around Osaka (2026):<br />Subway, Trains &amp; IC Cards Explained
+            Osaka Transportation (2026):<br />Metro, JR, IC Cards and Day Passes
           </h1>
           <p className={styles.heroSubtitle}>
             Osaka&apos;s subway system is one of the easiest in Japan to navigate. Here&apos;s everything you need to get around the city like a local.
@@ -228,6 +230,19 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
       </section>
 
       <div className={styles.content}>
+        {/* Answer first */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>Osaka transportation</strong> is the Osaka Metro — the Midosuji Line links Shin-Osaka,
+            Umeda, Namba and Tennoji — plus JR for Universal Studios and day trips, all paid by tapping an
+            ICOCA or Suica. For four or more subway rides in a day, the Enjoy Eco Card is{" "}
+            <strong>¥820 on weekdays and ¥620 at weekends</strong>; the <strong>¥3,500 Osaka Amazing Pass</strong>{" "}
+            only pays off if the admissions you will use come to more than the ¥2,680 difference (prices from
+            our <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link>, checked on 4
+            November 2026).
+          </p>
+        </section>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>

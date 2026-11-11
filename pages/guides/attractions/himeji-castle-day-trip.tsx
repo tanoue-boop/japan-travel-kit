@@ -263,9 +263,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Himeji Castle Day Trip (2026): ¥2,500 Admission and Times";
+const TITLE = "Himeji Castle Day Trip (2026): From Osaka and Kyoto, ¥2,500";
 const DESCRIPTION =
-  "A Himeji Castle day trip is 1 hr 1 min from Osaka by JR rapid and 28 minutes by shinkansen. Admission is ¥2,500, free under 18, or ¥2,600 with Koko-en.";
+  "Himeji Castle day trip: 1 hr 1 min from Osaka by JR rapid, 28 min by shinkansen, 44 min from Kyoto. Admission ¥2,500 (checked 11 Nov 2026), free under 18.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/himeji-castle-day-trip") },
@@ -358,7 +358,7 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Himeji Castle Day Trip (2026):<br />¥2,500 Admission, and Times From Osaka &amp; Kyoto
+            Himeji Castle Day Trip (2026):<br />From Osaka and Kyoto, ¥2,500 Admission
           </h1>
           <p className={styles.heroSubtitle}>
             Japan&apos;s one surviving original hilltop castle, an hour from Osaka — and two and a half times
@@ -420,7 +420,9 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
               <strong>last admission is 16:00</strong>, it closes on 29 and 30 December, and the keep itself
               admits <strong>1,000 people an hour</strong>, so the queue is the thing to plan around: arrive at
               opening, allow <strong>1.5–2 hours</strong> inside, and expect up to an hour of waiting in peak
-              season. All figures read off Himeji City&apos;s and the castle&apos;s own pages on {CHECKED}.
+              season. All figures read off Himeji City&apos;s and the castle&apos;s own pages on {CHECKED}; the
+              {" "}{ADULT} adult fee, free entry under 18 and the 09:00–17:00 hours were re-read on
+              himejicastle.jp on 11 November 2026.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
