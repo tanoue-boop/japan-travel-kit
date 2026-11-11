@@ -43,7 +43,7 @@ const GYG_SLUG = "zh-cn-teamlab-planets-tickets";
 // teamLab Planets TOKYO（丰洲）门票 — the same Klook product as the English page, on zh-CN.
 const PLANETS_URL = cnTeamlabPlanets.url;
 
-// 所有内容均于同一天查阅：票价、开放时间、闭馆日与交通读自 teamlab.art，订票规则读自官方售票网站。
+// 所有内容均于同一天查阅：票价、开放时间、闭馆日与交通资料取自 teamlab.art，订票规则取自官方售票网站。
 // 官方没有公布人流高峰时段和参观时长，这两项写「官方未公布」，建议预留时间标明是本站的估算。
 const P = PRICES.teamlabPlanets;
 const CHECKED = dateLabel(P.checked, LOCALE);
@@ -59,7 +59,7 @@ const priceRows = [
     ticket: "成人（18 岁以上）",
     price: ADULT,
     varies: "会——随日期与入场时间变动",
-    note: "这是最低价，不是定价：官方售票网站对每个日期与时段分别定价",
+    note: "这是最低起售价，并非固定票价：官方售票网站对每个日期与时段分别定价",
   },
   { ticket: "初高中生", price: "¥2,800", varies: "不会——固定价", note: "请携带学生证" },
   { ticket: "儿童（4～12 岁）", price: CHILD, varies: "不会——固定价", note: "未满 4 岁不需购票" },
@@ -67,7 +67,7 @@ const priceRows = [
     ticket: "3 岁及以下",
     price: priceLabel("Free", LOCALE),
     varies: "不会——免费",
-    note: "记得带替换衣物——涉水区大家都会湿",
+    note: "记得带上换洗衣物，经过涉水区每个人都会弄湿",
   },
   {
     ticket: "残障人士",
@@ -90,7 +90,7 @@ const hoursRows = [
   { item: "展期", detail: "2018 年 7 月 7 日至 2027 年底", source: `teamlab.art，${CHECKED}` },
   {
     item: "入场时间",
-    detail: "票面时间就是入场时间；从那一刻起的 30 分钟是入场准备时间",
+    detail: "票面时间就是入场时间；从预约时间开始，有 30 分钟的入场准备时间",
     source: `官方售票网站，${CHECKED}`,
   },
   { item: "入场等候", detail: "可能要等 30 到 60 分钟", source: `官方售票网站，${CHECKED}` },
@@ -102,11 +102,11 @@ const hoursRows = [
   },
   {
     item: "建议预留时间",
-    detail: "官方未公布。我们按 1.5–2 小时规划，含存物柜与擦干双脚的时间",
+    detail: "官方未公布。我们按 1.5–2 小时规划，含使用储物柜与擦干双脚的时间",
     source: "本站的规划估算",
   },
   {
-    item: "存物柜",
+    item: "储物柜",
     detail: "免费，宽 23 × 深 34 × 高 37 厘米；更大的物品没有寄存处",
     source: `官方售票网站，${CHECKED}`,
   },
@@ -130,10 +130,10 @@ const ticketChoice = [
 const prepRows = [
   { item: "穿着", detail: "短裤或可卷到膝盖以上的长裤。水深可到成人膝盖，部分地板是镜面，不建议穿超短裙。现场有免费租借短裤，尺码 XS 到 6L，离场前归还。" },
   { item: "门票", detail: "手机或平板上的二维码电子票，或打印出来。一个二维码涵盖同一订单的所有人。入场前 2 天会收到提醒邮件，二维码在入场当天 00:00 起才会显示。" },
-  { item: "证件", detail: "初高中生票需学生证或官方年龄证明，残障票需经认可的证明文件。" },
-  { item: "包", detail: "入场闸门后有免费存物柜，尺寸 23 × 34 × 37 厘米。更大的行李只能用钢缆锁固定在馆外的婴儿车停放区。" },
+  { item: "证件", detail: "初高中生票需学生证或官方年龄证明，残障人士票需经认可的证明文件。" },
+  { item: "包", detail: "入场闸门后有免费储物柜，尺寸 23 × 34 × 37 厘米。更大的行李只能用钢缆锁固定在馆外的婴儿车停放区。" },
   { item: "毛巾", detail: "不必带。水中作品的出口提供毛巾。" },
-  { item: "带孩子", detail: "每 3 名儿童至少要有 1 名成人陪同，免费入场的儿童也要计入。请带替换衣物。背带可以入内，婴儿车需停在馆外。" },
+  { item: "带孩子", detail: "每 3 名儿童至少要有 1 名成人陪同，免费入场的儿童也要计入。请带换洗衣物。背带可以入内，婴儿车需停在馆外。" },
   { item: "再次入场", detail: "所有票种都不可以，包括 Premium Pass。入场后不可退票。" },
 ];
 
@@ -144,7 +144,7 @@ const steps = [
   },
   {
     title: "选入场时间，因为那就是你的预约",
-    desc: "票面时间就是你的入场时间，从那一刻起的 30 分钟是入场准备时间。美术馆现场没有售票柜台可以补救，所以你选的时段就是你的参观——当天也一样，那时日历可能已经满了。",
+    desc: "票面时间就是你的入场时间，从预约时间开始，有 30 分钟的入场准备时间。美术馆现场没有售票柜台可以补买，所以你选的时段就是你的参观——当天也一样，那时日历可能已经满了。",
   },
   {
     title: "决定 Entrance Pass 还是 Premium Pass",
@@ -167,23 +167,23 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab Planets 需要提前订票吗？",
-    a: `需要。门票对应指定的日期和入场时间，官方售票网站也写明现场不售票，所以某一天满了就无法在门口补救。teamLab 没有公布售罄数据，日期会提前多久订满，官方未公布。行程一确定就订。${CHECKED} 查阅。`,
+    a: `需要。门票对应指定的日期和入场时间，官方售票网站也写明现场不售票，所以某一天满了就无法在门口补买。teamLab 没有公布售罄数据，日期会提前多久订满，官方未公布。行程一确定就订。${CHECKED} 查阅。`,
   },
   {
     q: "teamLab Planets 可以现场买票吗？",
-    a: `不行。官方售票网站的说明页写明，现场的售票柜台与售票机都不销售门票，并列出有售票的渠道：官方售票网站、Lawson Ticket、Seven Ticket 与 Klook。如果你的日期已满，没有现场窗口可以补救——这是 Planets 和东京多数景点最大的不同。${CHECKED} 查阅。`,
+    a: `不行。官方售票网站的说明页写明，现场的售票柜台与售票机都不销售门票，并列出有售票的渠道：官方售票网站、Lawson Ticket、Seven Ticket 与 Klook。如果你的日期已满，现场也没有售票窗口可以补买——这是 Planets 和东京多数景点最大的不同。${CHECKED} 查阅。`,
   },
   {
     q: "teamLab Planets 哪个时段最便宜？",
     a: `就是官方日历在你那一天标价最低的那一个——teamLab 没有公布各时段的价目表，所以这是唯一实在的答案。官方确认的是：成人 Entrance Pass ${ADULT}，而且不同日期价格不同——说明页写着预约可以更改「即使是价格不同的日期」。所以请打开官方日历，把你行程能接受的日期与入场时间逐一点开，付款前就比较，而不是付款后。${CHECKED} 查阅。`,
   },
   {
-    q: "teamLab Planets 有存物柜吗？",
-    a: `有，而且免费。官方说明页写的尺寸是宽 23 厘米、深 34 厘米、高 37 厘米——放得下双肩包，放不下行李箱。现场没有寄存处：更大的物品要由你自己用钢缆锁锁在馆外的婴儿车停放区。鞋子、袜子与裤袜也在存物柜这里脱掉，因为从这里开始全程赤脚。${CHECKED} 查阅。`,
+    q: "teamLab Planets 有储物柜吗？",
+    a: `有，而且免费。官方说明页写的尺寸是宽 23 厘米、深 34 厘米、高 37 厘米——放得下双肩包，放不下行李箱。现场没有寄存处：更大的物品需自行用钢缆锁固定在馆外的婴儿车停放区。鞋子、袜子和连裤袜也在储物柜区域脱下，因为从这里开始全程赤脚。${CHECKED} 查阅。`,
   },
   {
     q: "去 teamLab Planets 该穿什么？",
-    a: "短裤，或可以卷到膝盖以上的长裤。部分作品是水空间，水深可达成人膝盖高，而且整间美术馆都是赤脚体验——入场时会在存物柜区脱掉鞋子、袜子与裤袜。部分地板是镜面的，所以裙子与阔腿裤不是好主意；现场有 XS 到 6L 的免费短裤可借。带小孩的话请准备替换衣物，另外婴儿车不能进场（有婴儿车停放区，背带可以）。",
+    a: "短裤，或可以卷到膝盖以上的长裤。部分作品是水空间，水深可达成人膝盖高，而且整间美术馆都是赤脚体验——入场时会在储物柜区域脱下鞋子、袜子和连裤袜。部分地板是镜面的，所以穿裙子或阔腿裤会不方便；现场有 XS 到 6L 的免费短裤可借。带小孩的话请准备换洗衣物，另外婴儿车不能进场（有婴儿车停放区，背带可以）。",
   },
   {
     q: "teamLab Planets 的二维码门票什么时候会收到？",
@@ -191,7 +191,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab Planets 要逛多久？",
-    a: `官方未公布参观时长。我们按馆内 1.5–2 小时规划，含存物柜与擦干双脚的时间。还要加上官方售票网站提醒的 30–60 分钟等候，结束后不要紧接着排其他行程。官方售票网站也写明，人多时停留较久的游客可能会被请求离场。${CHECKED} 查阅。`,
+    a: `官方未公布参观时长。我们按馆内 1.5–2 小时规划，含使用储物柜与擦干双脚的时间。还要加上官方售票网站提醒的 30–60 分钟等候，结束后不要紧接着排其他行程。官方售票网站也写明，人多时停留较久的游客可能会被请求离场。${CHECKED} 查阅。`,
   },
   {
     q: "teamLab Planets 的开放时间？什么时候闭馆？",
@@ -211,18 +211,18 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab Planets 和无界有什么区别？",
-    a: "丰洲的 Planets 是赤脚走进水里的美术馆。麻布台之丘的无界是无地图迷宫，作品在房间之间移动。两间是独立的美术馆，门票分开。我们的 teamLab Planets 与无界比较页把两者并排列出。",
+    a: "丰洲的 Planets 是赤脚走进水里的美术馆。麻布台之丘的无界是没有固定参观路线的迷宫式空间，作品在房间之间移动。两间是独立的美术馆，门票分开。我们的 teamLab Planets 与无界比较页把两者并排列出。",
   },
 ];
 
 const sameDayTours = [
   withKlookLocale(tokyoJoypolisPassport, LOCALE, {
     title: "东京 Joypolis 通行护照",
-    desc: "台场 DECKS 室内乐园的入场加无限次游玩护照，手机二维码入场，页面上建议游玩 2 到 4 小时",
+    desc: "台场 DECKS 室内乐园入场及设施无限次游玩通行证，手机二维码入场，页面上建议游玩 2 到 4 小时",
   }),
   withKlookLocale(tokyoBaySunsetBoatCruise, LOCALE, {
     title: "东京湾白天与日落游船",
-    desc: "从芝浦出发、船上有讲解员的一小时小船游船——不含晚餐的东京湾游船",
+    desc: "从芝浦出发、配有讲解员的一小时小型游船——不含晚餐的东京湾游船",
   }),
   withKlookLocale(tsukijiCultureFoodTour, LOCALE, {
     title: "筑地文化美食之旅",
@@ -299,7 +299,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             丰洲 teamLab Planets 的门票多少钱、什么时候开放、怎么预约，以及从新丰洲站或丰洲站怎么走。
           </p>
           <div className={styles.heroBadges}>
-            {[`更新于 ${updatedLabel}`, "官方票价与开放时间", "查阅 teamlab.art"].map((t) => (
+            {[`更新于 ${updatedLabel}`, "官网票价与开放时间", "查阅 teamlab.art"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -326,8 +326,8 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>2026 年 teamLab Planets 门票多少钱？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             成人 <strong>{ADULT}</strong>，初高中生 ¥2,800，4～12 岁儿童 {CHILD}，未满 4 岁完全免费。
-            会变动的只有成人票与残障票：官方售票网站对每个日期、每个入场时间分别定价，所以官方的金额后面带着
-            波浪号，也因此你这趟旅程最便宜的门票是日历的问题，而不是从哪里买的问题。
+            只有成人票和残障人士票的价格会变动：官方售票网站对每个日期、每个入场时间分别定价，所以官方标示的金额后面带有
+            波浪号（～）；能否买到低价票，取决于日期，而不是购票渠道。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -359,8 +359,8 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>成人票价会变动多少，官方没有公布。</strong>teamLab 只给出起价和一份日历，而不是价目表；
             说明页也只确认价格有差异——预约可以更改「即使是价格不同的日期」。所以请把 {ADULT.replace(" 起", "")}{" "}
-            当成最低价，打开官方日历查看你行程能接受的日期，付款前比较每一天的各个入场时间。在这里真正有用的是把
-            Planets 往前或往后挪一天；找更便宜的卖家则没有用，因为价格是日期决定的。
+            当成最低价，打开官方日历查看你行程能接受的日期，付款前比较每一天的各个入场时间。更有效的办法是把
+            参观日期提前或推后一天；找更便宜的卖家则没有用，因为价格是日期决定的。
           </p>
         </section>
 
@@ -397,11 +397,11 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             Planets 对你的要求也比一般美术馆门票多——要赤脚进场，而且路线的一部分是水：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>赤脚：</strong>鞋子、袜子与裤袜在存物柜脱掉，全程赤脚体验。</li>
+            <li><strong>赤脚：</strong>在储物柜区域脱下鞋子、袜子和连裤袜，全程赤脚体验。</li>
             <li><strong>水：</strong>部分作品是水空间，水深可达成人膝盖高。请穿短裤或可以卷起的长裤。</li>
-            <li><strong>镜面地板：</strong>裙子与阔腿裤会有问题——官方 FAQ 写着内衣裤可能会被看见。现场有 XS 到 6L 的免费短裤可借。</li>
-            <li><strong>带小孩：</strong>请准备替换衣物。婴儿车不能进场——馆外有婴儿车停放区，背带可以。</li>
-            <li><strong>行李：</strong>免费存物柜的尺寸是 23 × 34 × 37 厘米。没有寄存处，所以行李箱要由你自己用钢缆锁锁在婴儿车停放区。</li>
+            <li><strong>镜面地板：</strong>穿裙子或阔腿裤会不方便——官方 FAQ 提醒，镜面地板可能映出内衣裤。现场有 XS 到 6L 的免费短裤可借。</li>
+            <li><strong>带小孩：</strong>请准备换洗衣物。婴儿车不能进场——馆外有婴儿车停放区，背带可以。</li>
+            <li><strong>行李：</strong>免费储物柜的尺寸是 23 × 34 × 37 厘米。没有寄存处，所以行李箱需自行用钢缆锁固定在婴儿车停放区。</li>
             <li><strong>水质卫生：</strong>官方 FAQ 写着水会持续过滤、每小时检测氯浓度，出口备有消毒过的毛巾。</li>
             <li><strong>轮椅：</strong>可以入场，工作人员会讲解路线；有些作品无法到达，涉水区需要在同行者陪同下换乘专用轮椅。</li>
           </ul>
@@ -415,9 +415,9 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <span className={styles.sectionLabel}>你买到的是什么</span>
           <h2 className={styles.sectionTitle}>teamLab Planets 究竟是什么</h2>
           <p className={styles.bodyText}>
-            teamLab 是以东京为据点的艺术团体，以「走进去」而不是「看着」的大型数字装置闻名。丰洲的 Planets
+            teamLab 是以东京为据点的艺术团体，以让观众走进作品、亲身体验的大型数字艺术装置闻名。丰洲的 Planets
             是身体感受最强的那一间：你赤脚、涉水，走过会对你的存在产生反应的作品——镜面无限空间、漂浮光球的
-            大厅、活的花园。它是东京两间 teamLab 当中带孩子更容易玩得开心的一间，也是如果你从没见过这种规模的
+            大厅、充满生机的花园。它是东京两间 teamLab 当中带孩子更容易玩得开心的一间，也是如果你从没见过这种规模的
             数字艺术、冲击最大的一间。
           </p>
           <p className={styles.bodyText}>
@@ -430,14 +430,14 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>teamLab Planets 值得去吗？</h2>
           <p className={styles.bodyText}>
             对多数第一次来东京的人来说，值得——但它是一个 1.5 到 2 小时、每人 {ADULT}的景点，
-            价格像半天行程，花的时间却像一顿悠闲的午饭。与其直接给结论，不如把账摊开算：
+            票价相当于半天行程，参观时间却只有一顿悠闲午餐那么长。以下列出计算方式，方便自行比较：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>每小时的花费很高。</strong>1.5–2 小时 {ADULT}，是东京塔主展望台 ¥1,500 的两倍以上，也明显高于涩谷SKY 白天网上票的 {PRICES.shibuyaSky.adult.split(" / ")[0]}，而这两处你都可以多待一会儿。你付的是别处看不到的东西，不是时长——数字可以对照我们的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景点门票价格总表（英文）</Link>。</li>
+            <li><strong>每小时的花费很高。</strong>1.5–2 小时 {ADULT}，是东京塔主展望台 ¥1,500 的两倍以上，也明显高于涩谷 SKY 白天网上票的 {PRICES.shibuyaSky.adult.split(" / ")[0]}，而这两处你都可以多待一会儿。你付的是别处看不到的东西，不是时长——数字可以对照我们的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景点门票价格总表（英文）</Link>。</li>
             <li><strong>入场的成本是时间，不只是钱。</strong>官方售票网站提醒入场可能要等 30 到 60 分钟，还要加上赤脚换装的时间。</li>
-            <li><strong>它是东京体力消耗最大的美术馆。</strong>全程赤脚、水深及成人膝盖、镜面地板。如果这听起来像折腾而不是体验，麻布台的无界是同一个团体、但没有水。</li>
+            <li><strong>它是东京体力消耗最大的美术馆。</strong>全程赤脚、水深及成人膝盖、镜面地板。如果你不喜欢赤脚或涉水，麻布台的无界是同一个团体、但没有水。</li>
             <li><strong>不怕下雨，也适合小孩。</strong>室内、未满 4 岁免费，而且常常是孩子在整趟旅行中比寺庙记得更清楚的地方。</li>
-            <li><strong>当天无法补救。</strong>现场不卖票，日历满了就是满了。出错的代价是那一整个下午的计划，这才是应该最先订它的真正理由。</li>
+            <li><strong>当天无法在现场补买。</strong>现场不卖票，日历满了就是满了。出错的代价是那一整个下午的计划，这才是应该最先订它的真正理由。</li>
           </ul>
           <p className={styles.bodyText}>
             如果你在东京的日程已经很紧、30 分钟的固定时段会打乱你想随性安排的一天，或者同行的人没人想卷起
@@ -449,7 +449,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <span className={styles.sectionLabel}>余票</span>
           <h2 className={styles.sectionTitle}>teamLab Planets 门票会售罄吗？</h2>
           <p className={styles.bodyText}>
-            个别入场时间会售罄，而且你的日期一满就没有柜台可以补救：官方售票网站明确写着，现场的售票柜台与
+            个别入场时间会售罄，而且指定日期售罄后，现场也没有售票柜台可以补买：官方售票网站明确写着，现场的售票柜台与
             售票机都不卖票。所以 Planets 应该是东京一周行程里第一个订的，而不是最后一个。
           </p>
           <ul className={styles.bodyList}>
@@ -457,10 +457,10 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             <li><strong>没有现场票：</strong>官方信息，{CHECKED} 查阅。只在网上销售，渠道为官方售票网站、Lawson Ticket、Seven Ticket 或 Klook。</li>
             <li><strong>一次最多十张：</strong>官方售票网站单次购买上限 10 张，库存不足时会更少。20 人以上的团体要走单独的团体申请流程。</li>
             <li><strong>订错时段？</strong>改期就好，不必重新订。Entrance Pass 可在入场时间两小时前更改，最多三次；Premium Pass 可改到当天 08:30。一律不能退款，用优惠券购买的票完全不能改。</li>
-            <li><strong>迟到还有救，错过当天就没有：</strong>官方 FAQ 写着当天开放时间内晚一点仍可入场，前提是在闭馆前 1 小时的最后入场之前。</li>
+            <li><strong>迟到仍可入场，错过当天则无法使用：</strong>官方 FAQ 写着当天开放时间内晚一点仍可入场，前提是在闭馆前 1 小时的最后入场之前。</li>
           </ul>
           <p className={styles.bodyText}>
-            实际的结论：先选日期，再选入场时间，最后才选卖家。三者之中有两个决定你到底能不能进去。
+            实际的结论：先选日期，再选入场时间，最后才选卖家。其中日期与入场时间决定你能否入场。
           </p>
         </section>
 
@@ -470,7 +470,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             除了一种情况，都是 Entrance Pass。唯一的另一个选项是 ¥12,000 的 Premium Pass，而官方售票网站
             说它唯一的好处是不用排入口队伍——所以如果 30 到 60 分钟的等候会打乱你一整天，它就值得；
-            如果不会，那就是白花 ¥8,000。
+            如果不会，多付的 ¥8,000 就没有意义。
           </p>
           <div className={styles.stepsList}>
             {ticketChoice.map((item, i) => (
@@ -495,7 +495,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Klook 是官方售票网站列出的代理商之一；GetYourGuide 则是时段没了时的第二个查询渠道。两者都按日期
-            定价，所以请打开日历，而不要相信任何标题上的金额——包括本页的。
+            定价，所以请以预订页面日历显示的实际票价为准，包括本页标题中的价格。
           </p>
         </section>
 
@@ -514,7 +514,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            准备好锁定时段了吗？{" "}
+            准备好预订入场时段了吗？{" "}
             <KlookLink href={PLANETS_URL} target="_blank" rel={KLOOK_REL}>
               在 Klook 查看 Planets 的余票与价格 →
             </KlookLink>
@@ -527,18 +527,18 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             美术馆自己的页面是 <strong>teamlab.art/e/planets</strong>，门票则是通过
             <strong>teamLab Planets TOKYO Official Ticket Store</strong>（
-            <strong>teamlabplanets.dmm.com</strong>）销售——官方结账是那个网站，而不是搜索结果。本页所有订票
+            <strong>teamlabplanets.dmm.com</strong>）销售——官方购票请前往上述网站，而不是搜索结果中的其他页面。本页所有订票
             规则也都出自它的说明页，{CHECKED} 查阅。
           </p>
           <ul className={styles.bodyList}>
             <li><strong>官方列出的其他渠道：</strong>官方售票网站列出了 Lawson Ticket、Seven Ticket 与 Klook。不在这份名单上的都是转卖商，没有理由去用。</li>
-            <li><strong>支付方式：</strong>通过 DMM 使用信用卡、PayPay 与银联。如果你的卡被拒——这通常就是游客改去别处买的原因——有国际结账的卖家就能解决。</li>
+            <li><strong>支付方式：</strong>通过 DMM 使用信用卡、PayPay 与银联。如果你的卡被拒——这通常就是游客改去别处买的原因——可改用支持国际信用卡付款的售票平台。</li>
             <li><strong>门票怎么发送：</strong>入场两天前会收到附有二维码门票链接的邮件，二维码本身从入场当天 00:00 起显示。</li>
             <li><strong>直购不会更便宜：</strong>价格由日期与入场时间决定，不论走哪个官方列出的渠道，都是同一份日历定价。</li>
           </ul>
           <p className={styles.bodyText}>
             换句话说：如果你的卡能用、看日文或英文网站没问题，就直接在官方买；如果你想用自己的语言和货币结账，
-            就从官方列出的卖家买。两者都是官方认可的渠道，都不是旁门左道。
+            就从官方列出的卖家买。两者都是官方认可的正规购票渠道。
           </p>
         </section>
 
@@ -546,17 +546,17 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <span className={styles.sectionLabel}>带小孩</span>
           <h2 className={styles.sectionTitle}>teamLab Planets 适合带小孩吗？</h2>
           <p className={styles.bodyText}>
-            它是东京最适合亲子的美术馆，也是规定最多的一间。未满 4 岁免费，4～12 岁 {CHILD}，水深有些地方及
+            它是东京最适合亲子的美术馆，也是规定最多的一间。未满 4 岁免费，4～12 岁 {CHILD}，部分区域水深可达
             成人膝盖——对孩子来说就更高——而且婴儿车完全不能进场。以下都是官方的写法，{CHECKED} 查阅。
           </p>
           <ul className={styles.bodyList}>
             <li><strong>年龄与票价：</strong>3 岁及以下免票；4～12 岁 {CHILD}；初高中生 ¥2,800。Premium Pass 从 4 岁起销售。</li>
             <li><strong>陪同：</strong>每三名儿童需有一名成人陪同。一位家长带四个小孩，官方售票网站不会受理。</li>
             <li><strong>婴儿车：</strong>不能进入馆内。馆外有婴儿车停放区，要自己用钢缆锁上锁；馆内可以使用背带。</li>
-            <li><strong>纸尿裤：</strong>尿布台在女卫生间内。</li>
-            <li><strong>水：</strong>深及成人膝盖，而且全程赤脚。请带替换衣物，做好每个人都会湿的准备，不只是小孩。</li>
+            <li><strong>纸尿裤：</strong>女卫生间内设有尿布台。</li>
+            <li><strong>水：</strong>深及成人膝盖，而且全程赤脚。请带换洗衣物，不论大人或小孩，都要做好衣物弄湿的准备。</li>
             <li><strong>衣着：</strong>每个人都穿短裤或可卷起的长裤；有些地方的地板是镜面的。免费短裤从 XS 到 6L，所以孩子穿连衣裙来也不是问题。</li>
-            <li><strong>寄存：</strong>免费存物柜是 23 × 34 × 37 厘米——放得下妈咪包，放不下行李箱，过大的物品要放到婴儿车停放区。</li>
+            <li><strong>寄存：</strong>免费储物柜是 23 × 34 × 37 厘米——放得下妈妈包，放不下行李箱，过大的物品要放到婴儿车停放区。</li>
           </ul>
           <p className={styles.bodyText}>
             实际做法：订早一点的时段，先让孩子吃饱，下午的行程保持宽松。考验小孩子的是入口 30 到 60 分钟的
@@ -568,7 +568,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <span className={styles.sectionLabel}>Planets 还是无界</span>
           <h2 className={styles.sectionTitle}>该订 Planets 还是无界？</h2>
           <p className={styles.bodyText}>
-            它们是两间独立的美术馆，门票分开。Planets 是赤脚走进水里的那一间；无界是麻布台之丘的无地图迷宫。
+            它们是两间独立的美术馆，门票分开。Planets 是赤脚走进水里的那一间；无界是位于麻布台之丘、没有固定参观路线的迷宫式空间。
             票价、开放时间和各自适合谁，请看我们的{" "}
             <Link href="/zh-cn/guides/attractions/teamlab-tokyo-tickets">teamLab Planets 与无界比较</Link>；
             无界的预订方式请看{" "}
@@ -628,14 +628,14 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
         <Related
           items={[
-            { href: "/zh-cn/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 无界 比较：东京该去哪一馆（2026）" },
+            { href: "/zh-cn/guides/attractions/teamlab-tokyo-tickets", title: "teamLab Planets 与无界对比：东京该去哪一馆（2026）" },
             { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking（英文）" },
             { href: "/guides/attractions/teamlab-kyoto-tickets", title: "teamLab Kyoto Tickets: Prices, Hours & Booking（英文）" },
             { href: "/guides/attractions/teamlab-botanical-garden-osaka-tickets", title: "teamLab Botanical Garden Osaka Tickets: Prices & Hours（英文）" },
-            { href: "/zh-cn/guides/attractions/tokyo-skytree-tickets", title: "东京晴空塔门票（2026）：票价、350 与 450 楼怎么选" },
+            { href: "/zh-cn/guides/attractions/tokyo-skytree-tickets", title: "东京晴空塔门票（2026）：票价、350 米与 450 米怎么选" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "Warner Bros. Studio Tour Tokyo Tickets (2026): Prices & How to Book（英文）" },
             { href: "/zh-cn/guides/attractions/teamlab-borderless-tickets", title: "teamLab 无界 门票（2026）：票价、时段预约与购票渠道" },
-            { href: "/zh-cn/guides/attractions/shibuya-sky-tickets", title: "涩谷SKY 门票（2026）：票价、最佳时段与预约方式" },
+            { href: "/zh-cn/guides/attractions/shibuya-sky-tickets", title: "涩谷 SKY 门票（2026）：票价、最佳时段与预约方式" },
             { href: "/guides/transport/tokyo-transportation", title: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained（英文）" },
             { href: "/guides/transport/ic-cards-japan", title: "IC Cards in Japan 2026: Suica, Pasmo & How to Use Them（英文）" },
           ]}

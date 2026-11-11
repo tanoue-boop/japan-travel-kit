@@ -23,10 +23,10 @@ type Props = {
 
 const COPY: Record<Locale, { label: string; cta: string }> = {
   en: { label: "Same trip, same city", cta: "View on Klook →" },
-  "zh-tw": { label: "同一趟旅程・同一座城市", cta: "在 Klook 查看 →" },
-  "zh-cn": { label: "同一趟旅程・同一座城市", cta: "在 Klook 查看 →" },
+  "zh-tw": { label: "同城行程推薦", cta: "在 Klook 查看 →" },
+  "zh-cn": { label: "同城行程推荐", cta: "在 Klook 查看 →" },
   ko: { label: "같은 여행, 같은 도시", cta: "클룩에서 보기 →" },
-  th: { label: "ทริปเดียวกัน เมืองเดียวกัน", cta: "ดูบน Klook →" },
+  th: { label: "เที่ยวเมืองเดียวกันในทริปเดียว", cta: "ดูบน Klook →" },
 };
 
 export default function KlookTourPicks({ heading, intro, tours, locale }: Props) {
