@@ -33,9 +33,13 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
  */
 
 const ROUTE = "/zh-tw/guides/attractions/tokyo-disney-tickets";
-const TITLE = "東京迪士尼門票（2026）：樂園與海洋怎麼買、怎麼選";
+const TITLE = "東京迪士尼門票（2026）：價格、在哪買、樂園與海洋怎麼選";
 const DESC =
-  "東京迪士尼門票 2026：每張票都指定日期、現場完全不賣票。海外信用卡刷不過時怎麼買，以及迪士尼樂園與迪士尼海洋該選哪一個。";
+  "東京迪士尼門票 2026：成人一日護照 ¥8,900 起、依日期浮動，現場不賣票，兩個月前 14:00 開賣。官網還是 Klook、有效期多久，一頁看懂。";
+// 11 Nov 2026 (R08): mirrors the English page's where-to-buy, validity, Premier Access and Happy Entry
+// additions — same official FAQ sources and check dates; no figure added beyond the English page.
+const LAST_CHECKED_PRICES = "2026-10-28";
+const LAST_CHECKED_RULES = "2026-11-11";
 
 const LOCALE = "zh-tw" as const;
 const CHECKED = dateLabel("2026-10-28", LOCALE);
@@ -97,6 +101,62 @@ const hoursRows = [
   {
     what: "這對買票代表什麼",
     detail: "你的日期大約在兩個月前開賣，那時當天的營運時間早已公布好幾個月——所以請在買票前看行事曆，而不是買完才看。在 20:00 閉園的日期用 After 5 護照，就只有三小時。",
+  },
+  {
+    what: "提前入園（Happy Entry）",
+    detail: "僅限迪士尼飯店房客。東京迪士尼樂園比一般遊客早 15 分鐘開始入園；東京迪士尼海洋則限夢幻泉鄉飯店與觀海景飯店（MiraCosta）房客，早 5 到 15 分鐘。住宿期間每天（含退房日）可用，入住當天不可用；每人需要園區門票加一張專用入園券（Special Entrance Pass）。",
+  },
+];
+
+/** Where to buy — first row is the recommendation. Validity from the resort's FAQ. */
+const sellerRows = [
+  {
+    where: "推薦：官網或官方 App（tokyodisneyresort.jp）",
+    best: "官網刷得過你的卡的人",
+    validity: "購買日一年後的同一天",
+    note: "可線上變更日期與年齡區分，不收手續費、次數不限（有效期間內）——每次以新日期的價格結算。",
+  },
+  {
+    where: "授權的海外線上旅行平台（如 Klook）",
+    best: "官網刷不過海外信用卡的旅客",
+    validity: "入園日一個月後的同一天",
+    note: "接受海外卡、介面看得懂。官網顯示賣完時值得再查一次。注意有效期間較短。",
+  },
+  {
+    where: "日本國內旅行社與便利商店",
+    best: "日本居民與已在日本的旅客",
+    validity: "入園日一個月後的同一天",
+    note: "以預約兌換券形式販售。錯過日期時，請在兌換券到期前聯絡發券處。",
+  },
+  {
+    where: "園區門口",
+    best: "無——不賣票",
+    validity: "—",
+    note: "東京迪士尼樂園與東京迪士尼海洋現場不販售園區門票。只有迪士尼飯店房客能在飯店買當天的票。",
+  },
+];
+
+/** In-park app services — first row is the recommendation. */
+const accessRows = [
+  {
+    service: "我們的建議：先用免費的預約排隊卡（Standby Pass）與入場抽選（Entry Request）",
+    cost: "免費",
+    what: "預約排隊卡為需要它的設施提供回來的時間；入場抽選每天每個場館可試一次，適用於指定的遊行、表演與角色見面。付費前先用這兩項。",
+  },
+  {
+    service: "迪士尼尊享卡（Disney Premier Access）",
+    cost: "付費，按次計費，另加園區門票",
+    what: "為指定設施預約時段（縮短排隊），或為指定遊行與表演預約觀賞區。入園後在官方 App 購買，數量有限，可能賣完。",
+  },
+  {
+    service: "一般排隊",
+    cost: "門票已含",
+    what: "所有設施都可以排隊體驗。",
+  },
+  {
+    service: "40 週年優先卡（Priority Pass）",
+    cost: "—",
+    what: "免費的優先卡已於 2026 年 8 月 31 日結束。",
   },
 ];
 
@@ -210,40 +270,32 @@ const faqItems: FaqItem[] = [
     a: `沒有單一價格：東京迪士尼度假區明確表示，園區門票依入園日期定價。官方公布的是一日護照的最低價——成人（18 歲以上）¥8,900 起、青少年（12–17 歲）¥7,400 起、兒童（4–11 歲）¥5,300 起、3 歲以下免費——實際金額在你選好日期後才會顯示。查閱於 ${CHECKED}。熱門日期，特別是迪士尼海洋 25 週年期間的日期，會明顯高於最低價。`,
   },
   {
-    q: "東京迪士尼門票一定要提前買嗎？",
-    a: `實際上是的。度假區自己的 FAQ 表示，東京迪士尼樂園與東京迪士尼海洋現場不販售園區門票，所以沒有門口可以買。當天購買只能在官網或官方 App、而且那天還有名額時才行，FAQ 對後果說得很直接：如果賣完了，就無法入園。查閱於 ${CHECKED}。`,
+    q: "東京迪士尼樂園門票應該在哪裡買？",
+    a: "官網刷得過你的卡的話，就在東京迪士尼度假區官網或官方 App 買：在那裡買的票有效期到購買日一年後的同一天，並可線上免手續費改日期。如果官網拒絕海外信用卡，Klook 這類授權的海外線上旅行平台也賣同樣的指定日期一日護照，但度假區 FAQ 規定這類票的有效期間較短——到入園日一個月後的同一天。兩座園區門口都不賣票。最後確認：2026-11-11。",
+  },
+  {
+    q: "東京迪士尼樂園門票的有效期限多久？",
+    a: "在官網或官方 App 購買的園區門票，有效期到購買日一年後的同一天——不是入園日一年後。透過旅行社、便利商店或海外線上旅行平台購買的票，有效期到入園日一個月後的同一天。有效期間內可以改日期；過期的票即失效。最後確認：2026-11-11。",
+  },
+  {
+    q: "迪士尼尊享卡（Premier Access）是什麼？需要買嗎？",
+    a: "迪士尼尊享卡是園區門票以外的付費服務，可為指定設施預約時段，或為指定表演預約觀賞區。入園後在東京迪士尼度假區官方 App 購買，數量有限，可能賣完。不買也可以：所有設施都能排隊體驗，免費的預約排隊卡與入場抽選也仍然可用。免費的 40 週年優先卡已於 2026 年 8 月 31 日結束。最後確認：2026-11-11。",
   },
   {
     q: "東京迪士尼門票什麼時候開賣？",
     a: `每天日本時間 14:00 起，開賣兩個月後同一天的票——3 月 1 日入園的票在 1 月 1 日 14:00 開賣——若那個月沒有對應的日期，則在下個月 1 日 14:00 開賣。每筆訂單最多十張，當天張數達到上限後，該日期的販售可能不經預告就停止。查閱於 ${CHECKED}。`,
   },
   {
-    q: "東京迪士尼該買哪一種票？",
-    a: "想在一座園區玩一整天就買一日護照；想要便宜的平日晚上就買 After 5 護照；假日傍晚 15:00 起就買 After 3 護照。兩座園區都想去，就每座各買一張——一日雙園護照目前沒有販售。多日護照也不販售，所以兩座園區的行程就是兩張指定日期的票。",
-  },
-  {
-    q: "東京迪士尼的營業時間是幾點到幾點？",
-    a: `時間依日期而定，沒有固定的營業時間；度假區約在五個月前於官網公布，購票畫面也會顯示你所選日期的時間。買票前請先在營運行事曆上確認你那天的時間——那決定了晚間護照省下的錢值不值得。查閱於 ${CHECKED}。`,
-  },
-  {
-    q: "東京迪士尼門票可以改日期或退款嗎？",
-    a: `不能退款，但可以改日期。因個人因素取消與退款都不受理——關於惡劣天氣、地震或其他原因無法在指定日期入園的 FAQ，也指向同一條規定。線上購買的票可以在有效期間內變更日期，指定日之前或之後都行，次數不限，每次以新日期的價格結算，透過官網或 App 操作，而不是在園區。查閱於 ${CHECKED}。`,
+    q: "東京迪士尼樂園門票的日期可以改嗎？",
+    a: `日期在購買時固定，但可以變更；不能退款。因個人因素取消與退款都不受理——關於惡劣天氣、地震或其他原因無法在指定日期入園的 FAQ，也指向同一條規定。線上購買的票可以在有效期間內變更日期，指定日之前或之後都行，次數不限，每次以新日期的價格結算，透過官網或 App 操作，而不是在園區。查閱於 ${CHECKED}。`,
   },
   {
     q: "我的日期賣完了——還進得去嗎？",
-    a: `有可能。度假區的 FAQ 表示，賣完的票種可能不經預告重新開賣；而當遊客把票改到其他日期，他們空出的名額會回到原本的販售池，再次在線上販售。所以回頭查官網與 App 是值得的——另一個售票通路也值得查，因為名額除了按日分配，也按售票通路分配。查閱於 ${CHECKED}。`,
-  },
-  {
-    q: "可以用海外信用卡買東京迪士尼門票嗎？",
-    a: "在東京迪士尼度假區官網上，常常不行——官網經常拒絕或封鎖海外發行的信用卡，這是海外旅客長年的困擾。常見的解法是 Klook：它是官方授權的售票通路，接受海外卡、介面看得懂，並發送可以登錄到東京迪士尼度假區官方 App 的電子票 QR Code。",
+    a: "現場買不到——賣完的日期無法入園。但度假區 FAQ 表示，賣完的園區門票可能不經預告重新開賣；而當遊客把票改到其他日期，原本的名額會在官網與官方 App 重新開放線上購買。回頭再查是值得的，授權售票通路也值得查一查。最後確認：2026-11-11。",
   },
   {
     q: "東京迪士尼樂園和迪士尼海洋該選哪一個？",
     a: "一日護照只含一座園區，所以要選。東京迪士尼樂園是經典的城堡式園區——遊行與闔家同樂的設施，適合第一次來的人與帶小小孩的家庭。東京迪士尼海洋是航海主題，更具東京獨有性，風格偏成人，園內供酒，並正在慶祝 2026 年 4 月到 2027 年 3 月的 25 週年。第一次帶小孩去，選樂園；想要與眾不同，選海洋。",
-  },
-  {
-    q: "怎麼去東京迪士尼度假區？",
-    a: "搭 JR 京葉線到舞濱站，從東京站出發約 15 到 20 分鐘，再轉迪士尼度假區線單軌電車，或走一小段路到樂園門口。開園前要通勤一次、夜間表演後再通勤一次，所以如果你的日期是週末或週年期間，就有理由住在舞濱或再遠一站。",
   },
 ];
 
@@ -324,11 +376,11 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            東京迪士尼門票（2026）：<br />樂園與海洋怎麼買、怎麼選
+            東京迪士尼門票（2026）：<br />價格、在哪買、樂園與海洋怎麼選
           </h1>
           <p className={styles.heroSubtitle}>
-            指定日期的票、浮動定價、現場不賣票、不能退款。這頁說明一張護照多少錢、你的日期什麼時候開賣，
-            以及該買哪一種票。
+            指定日期的票、浮動定價、現場不賣票、不能退款。這頁說明一張護照多少錢、在哪裡買、你的日期什麼時候開賣，
+            以及該選哪一座園區。
           </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${updatedLabel}`, "官方票價與規定", "兩個月前開賣", "海外卡可走 Klook"].map((t) => (
@@ -346,13 +398,23 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            2026 年的<strong>東京迪士尼樂園門票</strong>，就是指定日期、進一座園區的一日護照：成人
-            <strong>¥8,900</strong> 起、12–17 歲的青少年 <strong>¥7,400</strong> 起、4–11 歲的兒童
-            <strong>¥5,300</strong> 起，3 歲以下免費——這些都是公布的最低價，因為度假區每張票都依入園日期定價，
-            選好日期才會顯示當天的金額。購買管道是東京迪士尼度假區官網或官方 App，或是 Klook 這類授權售票通路：
-            <strong>兩座園區門口都不賣票</strong>，而你的日期會在<strong>兩個月前、每天日本時間 14:00</strong>
-            開賣——所以真正的期限是那一刻，不是出發那一週；賣完的日期就是進不去。因個人因素取消不行，改日期可以。
-            所有規定與數字都是度假區自己的，查閱於 {CHECKED}。
+            2026 年<strong>東京迪士尼門票</strong>的成人一日護照 <strong>¥8,900</strong> 起，12–17 歲
+            <strong>¥7,400</strong> 起，4–11 歲 <strong>¥5,300</strong> 起（3 歲以下免費），實際金額依入園日期而定。
+            兩座園區門口都不賣票，所以要在東京迪士尼度假區官網或官方 App 購買——官網刷不過你的卡時，可走 Klook 這類授權售票通路——
+            門票在<strong>兩個月前、每天日本時間 14:00</strong>開賣。
+            一張票只含一個日期、一座園區：東京迪士尼樂園適合第一次去與帶小小孩的旅客，東京迪士尼海洋適合成人，並正值 25 週年（2026 年 4 月～2027 年 3 月）。
+          </p>
+          <p className={styles.bodyText}>
+            賣完的日期無法入園，不能退款，有效期間內可以不限次數改日期。票價與年齡區分查閱自度假區門票頁（{CHECKED}）；有效期限與園內規定查閱自官方
+            FAQ（2026 年 11 月 11 日）。還在安排東京其他行程？可以比較我們的{" "}
+            <Link href="/zh-tw/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              東京 teamLab 門票比較
+            </Link>
+            與{" "}
+            <Link href="/zh-tw/guides/attractions/things-to-do-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
+              東京必玩攻略
+            </Link>
+            。
           </p>
         </section>
 
@@ -425,6 +487,8 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最後確認：{LAST_CHECKED_PRICES}</strong> · 出處：https://www.tokyodisneyresort.jp/en/ticket/index.html（票價）、
+            https://faq-en.tokyodisneyresort.jp/（規定）。{" "}
             公布的最低價與年齡區分取自官方園區門票頁，查閱於 {CHECKED}；浮動定價的規定是度假區自己 FAQ 的說法。
             這裡不列上限，因為度假區沒有公布固定的上限——週末或迪士尼海洋 25 週年期間的日期，會明顯比最低價貴。
             東京其他指定日期的門票（每項都附查閱日期）請見我們的{" "}
@@ -500,6 +564,53 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
                 </tbody>
               </table>
             </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最後確認：{LAST_CHECKED_RULES}</strong> · 出處：https://faq-en.tokyodisneyresort.jp/（營運時間）、
+            https://www.tokyodisneyresort.jp/en/hotel/topics/info/happy_entry.html（Happy Entry）。Happy Entry 並不保證能多玩 15 分鐘：
+            度假區說明，人多時飯店專用入口的入園可能需要時間。
+          </p>
+        </section>
+
+        {/* Where to buy — added 11 Nov 2026 (R08). First row is the recommendation. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>購買管道</span>
+          <h2 className={styles.sectionTitle}>東京迪士尼樂園門票應該在哪裡買？</h2>
+          <p className={styles.bodyText}>
+            官網刷得過你的卡，就在東京迪士尼度假區官網或官方 App 買——在那裡買的票從購買日起有效一年。官網拒絕海外信用卡的話，
+            Klook 這類授權的海外售票通路也賣同樣的指定日期門票，有效期到入園日一個月後。
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["購買管道", "適合誰", "有效期至", "備註"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sellerRows.map((row) => (
+                    <tr key={row.where}>
+                      <td className={styles.tdProvider}>{row.where}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.best}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.validity}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最後確認：{LAST_CHECKED_RULES}</strong> · 出處：
+            https://faq-en.tokyodisneyresort.jp/answer/680ba03d01fdf7431bafb1d5/（有效期限）及度假區關於園區門票的 FAQ（現場不賣票、當天購買、迪士尼飯店例外）。
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={DISNEY_TICKET_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              官網刷不過你的卡？在 Klook 查看 →
+            </KlookLink>
           </div>
         </section>
 
@@ -605,6 +716,44 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               東京交通攻略（英文）
             </Link>{" "}
             整理了去那裡會用到的電車、地鐵與 IC 卡。
+          </p>
+        </section>
+
+        {/* Premier Access — added 11 Nov 2026 (R08). First row is the recommendation. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>縮短排隊</span>
+          <h2 className={styles.sectionTitle}>需要買迪士尼尊享卡（Premier Access）嗎？</h2>
+          <p className={styles.bodyText}>
+            不需要。迪士尼尊享卡是入園後在官方 App 購買的付費服務，所有設施都仍然可以排隊體驗。免費的 40 週年優先卡已於 2026 年 8 月 31 日結束；
+            免費的預約排隊卡與入場抽選仍然可用。
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["服務", "費用", "用途"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {accessRows.map((row) => (
+                    <tr key={row.service}>
+                      <td className={styles.tdProvider}>{row.service}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.cost}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最後確認：{LAST_CHECKED_RULES}</strong> · 出處：
+            https://faq-en.tokyodisneyresort.jp/answer/680ba05101fdf7431bafb6b0/、
+            https://faq-en.tokyodisneyresort.jp/answer/680ba05101fdf7431bafb6b8/。迪士尼尊享卡的價格依設施或表演而定，顯示在 App 中；
+            我們沒能在度假區官方頁面上讀到的數字，就不寫出來。
           </p>
         </section>
 

@@ -367,6 +367,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets ticket guide</Link>; for
             Borderless closed days and the Flexible Pass, see the{" "}
             <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless ticket guide</Link>.
+            Pairing teamLab with a park day? Tokyo Disney tickets are dated too, can sell out by date and have
+            no gate sales — see our{" "}
+            <Link href="/guides/attractions/tokyo-disney-tickets">Tokyo Disneyland tickets guide</Link>.
           </p>
         </section>
 
