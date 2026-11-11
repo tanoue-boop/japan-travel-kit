@@ -212,6 +212,14 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             ข้อมูล Planets ตรวจสอบจาก teamlab.art และเว็บขายตั๋วทางการเมื่อ {PLANETS_CHECKED} ข้อมูล Borderless ตรวจสอบจาก teamlab.art เมื่อ {BORDERLESS_CHECKED} ทั้งสองแห่งตั้งราคาตั๋วผู้ใหญ่ตามวันและเวลา จึงควรยืนยันด้วยวันที่คุณจะไป
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={PLANETS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              ดูตั๋ว Planets ของวันที่คุณจะไป →
+            </KlookLink>
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              ดูตั๋ว Borderless ของวันที่คุณจะไป →
+            </KlookLink>
+          </div>
         </section>
 
         <section className={styles.whoForSection}>

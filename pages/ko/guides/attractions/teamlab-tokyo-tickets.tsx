@@ -221,6 +221,14 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             teamlab.art에서 읽었습니다. 두 곳 모두 성인 티켓 금액이 날짜와 시간에 따라 달라지므로 본인 날짜로
             확인하세요.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={koTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              내 날짜의 플래닛 티켓 보기 →
+            </KlookLink>
+            <KlookLink href={koTeamlabBorderless.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              내 날짜의 보더리스 티켓 보기 →
+            </KlookLink>
+          </div>
         </section>
 
         <section className={styles.whoForSection}>

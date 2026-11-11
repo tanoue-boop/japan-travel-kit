@@ -783,7 +783,9 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             If you have time for both, do them on different days: four hours of digital art in one afternoon is
             the fastest way to stop seeing any of it, and the two venues are 30 minutes apart on opposite sides
-            of the city.
+            of the city. Still choosing between them? Our{" "}
+            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo tickets comparison</Link> sets out
+            the cost of one museum or both, ticket by ticket.
           </p>
         </section>
 

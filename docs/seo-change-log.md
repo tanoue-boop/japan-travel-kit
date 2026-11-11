@@ -2,6 +2,10 @@
 
 新しい記録を上に追記する。
 
+## 2026-11-11：teamlab-tokyo-tickets の順位改善（task-jtk-20261111-R05）
+
+- 2026-11-11 /guides/attractions/teamlab-tokyo-tickets（改善前 GSC 28日 10/14〜11/10：2,703表示・7クリック・CTR0.26%・16.2位。teamlab planets tickets 392表示22.9位、teamlab borderless tickets 245表示22.8位、teamlab tokyo tickets 138表示20.2位）：「teamLab Tokyo Tickets 2026: Planets or Borderless?」→「teamLab Tokyo Tickets 2026: Planets vs Borderless Prices」。H1「…Planets or Borderless, Which to Book」→「…Planets vs Borderless, Which to Book」、meta を大人料金先頭（Planets ¥3,800~／Borderless ¥3,400~）に。冒頭3文で2館別券・大人料金・子ども料金・当日券の可否、比較表1行目「Our pick for」＋最寄駅・最終入場・所要時間（自サイト目安）行、1館／2館の料金表（2館で大人 ¥7,200~、子ども ¥3,000）、両表直下に Last checked＋公式URL（Planets 料金は teamlabplanets.dmm.com/en で 11/11 再確認、Planets 時間は 11/06、Borderless は 10/09 の値のまま）、質問 H3 3本（At the door / How long / How far in advance。H2 数は翻訳版と同じ5のまま）、FAQ 5問（FAQPage）。料金表直後に Klook Planets・Borderless ボタン（ko・zh-cn・th も比較表直後に同ボタン。zh-tw は他タスクの未コミット変更があるため未変更）。things-to-do-tokyo（リンク先を planets→本ページに修正）・/guides/attractions ハブ・teamlab-borderless-tickets から本文内リンク。各館ページの title はチケット・時間軸のまま（変更なし）。効果測定は 11/25 以降（日次PDCA）。
+
 ## 2026-11-11：1ページ目（8〜11位）で表示が多く CTR が低い8ページの title・meta・H1・冒頭・表・FAQ（task-jtk-20261111-C02）
 
 - 基準：GSC 28日（10/14〜11/10、data-jtk-gsc-qp/page-28d-20261111.tsv）。本人指示で 11/6 一括改修の「11/20 まで対象外」を本8ページは解除。効果測定は 11/25 以降（日次PDCA）、本日付で区切る。

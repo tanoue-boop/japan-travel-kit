@@ -224,6 +224,14 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             Planets 的信息于 {PLANETS_CHECKED} 查阅 teamlab.art 与官方售票网站；无界的信息于 {BORDERLESS_CHECKED}{" "}
             查阅 teamlab.art。两座的成人票都按日期与时段定价，请确认所选日期的实际票价。
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={cnTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              查看所选日期的 Planets 门票 →
+            </KlookLink>
+            <KlookLink href={cnTeamlabBorderless.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              查看所选日期的无界门票 →
+            </KlookLink>
+          </div>
         </section>
 
         <section className={styles.whoForSection}>

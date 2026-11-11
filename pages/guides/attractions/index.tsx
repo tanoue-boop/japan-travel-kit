@@ -69,7 +69,9 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             Fuji Fifth Station, Lake Kawaguchi and Oshino Hakkai and returns the same evening. In the city itself, the{" "}
             <PartnerTextLink href={tokyoSightseeingBusTour.url}>Tokyo sightseeing bus day tour</PartnerTextLink> is a
             guided loop of the Imperial Palace gardens, Asakusa and Tokyo Skytree. The tickets that sell out by date are{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Planets</Link>,{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Planets</Link>{" "}
+            (not sure which teamLab? see our{" "}
+            <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Tokyo tickets comparison</Link>),{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>Shibuya Sky</Link> and the{" "}
             <Link href="/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--text)", fontWeight: 600 }}>USJ Express Pass</Link>; the passes
             that pay back fastest are the{" "}

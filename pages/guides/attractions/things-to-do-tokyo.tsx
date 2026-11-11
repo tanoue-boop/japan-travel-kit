@@ -665,8 +665,11 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             Tokyo has two teamLab digital-art museums — Planets in Toyosu and Borderless in Azabudai — both
             immersive, walk-through experiences that use timed entry and sell out fast. Our{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab tickets guide</Link>{" "}
-            compares the two and explains which suits your trip and how to book before they&apos;re gone.
+            <Link href="/guides/attractions/teamlab-tokyo-tickets" style={linkStyle}>teamLab Tokyo tickets comparison</Link>{" "}
+            sets the two side by side on price, hours and who each suits, then sends you to the{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets" style={linkStyle}>Planets</Link> or{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets" style={linkStyle}>Borderless</Link> ticket guide
+            to book before they&apos;re gone.
           </p>
         </section>
 
