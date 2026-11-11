@@ -1,0 +1,2782 @@
+{
+  "_note": "Official admission prices. One record per attraction; figures read off the operator's own site on the date in `checked`, link in `sourceUrl`. Null = not published / not readable — never guessed. Monthly: re-read each sourceUrl on the 1st; if a figure moved, push the old {checked, adult, child} onto `history` first. `revised` = a fee revision the operator itself announces. Read by lib/attraction-prices-core.js (page, guides, home page and public/data/japan-attraction-prices.csv).",
+  "updatePolicy": "Every row is re-read on the operator's official site on the 1st of each month, and whenever an operator announces a fee change.",
+  "attractions": [
+    {
+      "id": "shibuyaSky",
+      "name": "Shibuya Sky",
+      "ticket": "Rooftop deck, advance online — priced by entry time, before or from 15:00",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "views",
+      "href": "/guides/attractions/shibuya-sky-tickets",
+      "adult": "¥2,700 / ¥3,400",
+      "adultMinYen": 2700,
+      "adultMaxYen": 3400,
+      "child": "¥1,200",
+      "childAges": "ages 6–12, counter only; preschool free",
+      "atDoor": "¥3,000 / ¥3,700",
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "Online is ¥300 cheaper than the counter and the only way to hold a sunset slot — those sell out, the rest of the day usually does not. A date opens at 00:00 JST two weeks ahead.",
+      "sameDay": null,
+      "hours": null,
+      "revised": null,
+      "source": "Shibuya Scramble Square release, 27 Feb 2025",
+      "sourceUrl": "https://www.shibuya-scramble-square.com/sky/ticket/",
+      "checked": "2026-10-28",
+      "klook": {
+        "label": "Klook: Shibuya Sky ticket",
+        "ref": "shibuyaSkyTicketUrl"
+      },
+      "history": [],
+      "note": "The official ticket page builds its prices in the browser and the price-revision PDF is an image, so the figures could not be re-read on 11 November 2026; this is the reading of 28 October 2026.",
+      "unverified": [
+        "adult/child/atDoor/hours/bookingNote/sameDay: the operator's /sky/ and /sky/ticket/ pages are client-rendered and returned only navigation when fetched today; the /en/sky/ticket/ URL is a 404",
+        "revised: the 27 Feb 2025 release (20250227scsq.pdf / 20250325scsq.pdf) is an image-font PDF and could not be read as text today, so the 1 Apr 2025 revision (¥2,700 / ¥3,400 web, ¥3,000 / ¥3,700 counter) currently in lib/attraction-prices.ts was not re-confirmed",
+        "booking: 'Advised' carried over from the existing record, not re-read"
+      ],
+      "extraSources": [
+        "https://www.shibuya-scramble-square.com/sky/",
+        "https://www.shibuya-scramble-square.com/assets/pdf/about/20250227scsq.pdf",
+        "https://www.shibuya-scramble-square.com/assets/pdf/about/20250325scsq.pdf"
+      ]
+    },
+    {
+      "id": "tokyoSkytree",
+      "name": "Tokyo Skytree",
+      "ticket": "Floor 350 observation deck",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "views",
+      "href": "/guides/attractions/tokyo-skytree-tickets",
+      "adult": "from ¥1,800",
+      "adultMinYen": 1800,
+      "adultMaxYen": null,
+      "child": "from ¥900",
+      "childAges": "ages 6–14; free under 6",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "The same-day counter adds a ¥500 service fee per ticket, so booking ahead is simply cheaper.",
+      "sameDay": "Yes",
+      "hours": "10:00–22:00 (last admission 21:00) on 11 Nov 2026; hours vary by date",
+      "revised": null,
+      "source": "tokyo-skytree.jp",
+      "sourceUrl": "https://en.tokyo-skytree.jp/ticket/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: TOKYO SKYTREE ticket",
+        "ref": "skytreeTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-11-10",
+          "adult": "from ¥1,800",
+          "child": "from ¥900"
+        }
+      ],
+      "unverified": [
+        "adultMaxYen: the ticket page shows only 'From' prices and refers to the online reservation page for each day's price; no top price or weekday/holiday split is published on it",
+        "Combo (Floor 350 + 450) also confirmed: from ¥3,000 adult, from ¥1,500 child"
+      ],
+      "extraSources": [
+        "https://en.tokyo-skytree.jp/open-hours/day_hours/"
+      ]
+    },
+    {
+      "id": "tokyoTower",
+      "name": "Tokyo Tower",
+      "ticket": "Main Deck (150 m)",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "views",
+      "href": "/guides/attractions/tokyo-tower-tickets",
+      "adult": "¥1,500",
+      "adultMinYen": 1500,
+      "adultMaxYen": 1500,
+      "child": "¥600",
+      "childAges": "ages 4 and over",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "The Main Deck costs the same at the door, and runs to 23:00. Only the ¥3,300 Top Deck Tour is cheaper online, and it is timed.",
+      "sameDay": "Yes",
+      "hours": "Main Deck 09:00–23:00 (last entry 22:30; may be brought forward when crowded)",
+      "revised": null,
+      "source": "tokyotower.co.jp",
+      "sourceUrl": "https://www.tokyotower.co.jp/fee/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Tokyo Tower Main Observatory ticket",
+        "ref": "tokyoTowerTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-11-06",
+          "adult": "¥1,500",
+          "child": "¥600"
+        }
+      ]
+    },
+    {
+      "id": "tochoDeck",
+      "name": "Tokyo Metropolitan Government Building",
+      "ticket": "45th-floor observation decks (202 m)",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "views",
+      "href": "/guides/attractions/tokyo-observation-decks",
+      "adult": "Free",
+      "adultMinYen": 0,
+      "adultMaxYen": 0,
+      "child": "Free",
+      "childAges": "all ages",
+      "atDoor": null,
+      "pricing": "free",
+      "booking": "Not needed",
+      "bookingNote": "No ticket of any kind. Hours and which of the two decks is open vary, so check the day before.",
+      "sameDay": null,
+      "hours": "South 09:30–22:00, North 09:30–17:30 (last entry 30 min before closing)",
+      "revised": null,
+      "source": "metro.tokyo.lg.jp",
+      "sourceUrl": "https://www.zaimu.metro.tokyo.lg.jp/tochousha/goannai/tenbou",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [
+        {
+          "checked": "2026-11-06",
+          "adult": "Free",
+          "child": "Free"
+        }
+      ],
+      "unverified": [
+        "sameDay: not applicable (no ticket)"
+      ]
+    },
+    {
+      "id": "tokyoCityView",
+      "name": "Tokyo City View",
+      "ticket": "Indoor observation deck (52F), Roppongi Hills; rates for 13 Nov 2026 – 14 Feb 2027",
+      "area": "Tokyo",
+      "city": null,
+      "group": "views",
+      "href": "/guides/attractions/tokyo-observation-decks",
+      "adult": "¥2,200",
+      "adultMinYen": 2200,
+      "adultMaxYen": 2400,
+      "child": "¥1,000",
+      "childAges": "age 4 through junior high (¥1,100 on site); free 3 and under",
+      "atDoor": "¥2,400",
+      "pricing": "variable",
+      "booking": "Not needed",
+      "bookingNote": "Online tickets are ¥200 cheaper for adults and can be bought until the last admission time on the day; on-site tickets are sold at the 3F Museum & Observatory Tickets / Information counter.",
+      "sameDay": "Yes",
+      "hours": "10:00–22:00 (last admission 21:30); closed 10–12 Nov 2026",
+      "revised": null,
+      "source": "art-view.roppongihills.com",
+      "sourceUrl": "https://art-view.roppongihills.com/en/info/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Tokyo Subway 24h + Tokyo City View",
+        "ref": "subwayCityViewCombo"
+      },
+      "history": [
+        {
+          "checked": "2026-11-06",
+          "adult": "¥2,200",
+          "adultMinYen": 2200,
+          "adultMaxYen": null,
+          "via": "tokyo-observation-decks.tsx"
+        }
+      ],
+      "unverified": [
+        "Prices are published per period (this set applies 13 Nov 2026 – 14 Feb 2027) and the page says fees may vary with exhibitions/events; no figures for other periods were shown",
+        "Students (university/high school) ¥1,600 online / ¥1,700 on site; seniors 65+ ¥1,900 / ¥2,100"
+      ]
+    },
+    {
+      "id": "sunshine60",
+      "name": "SUNSHINE 60 Observatory TENBOU-PARK",
+      "ticket": "Observatory admission (60F), Ikebukuro",
+      "area": "Tokyo",
+      "city": null,
+      "group": "views",
+      "href": null,
+      "adult": "¥700 – ¥1,200",
+      "adultMinYen": 700,
+      "adultMaxYen": 1200,
+      "child": "¥500 – ¥800",
+      "childAges": "elementary and junior high; preschool free",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Not needed",
+      "bookingNote": "Price depends on the date: weekday ¥700, weekends/holidays and busy season ¥900, peak season ¥1,200 (adult, high school and over); peak dates include 21–23 Nov and 19–21 and 24–31 Dec 2026.",
+      "sameDay": "Limited",
+      "hours": "11:00–21:00 (last entry 20:30)",
+      "revised": null,
+      "source": "sunshinecity.jp",
+      "sourceUrl": "https://sunshinecity.jp/observatory/ticket/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "sameDay: page indicates same-day tickets at the 60F counter on weekdays; weekend counter sales not clearly stated, hence 'Limited'",
+        "booking: no booking requirement stated; dated WEB tickets are optional"
+      ],
+      "extraSources": [
+        "https://sunshinecity.jp/observatory/",
+        "https://sunshinecity.jp/information/opening_hour.html"
+      ]
+    },
+    {
+      "id": "umedaSky",
+      "name": "Umeda Sky Building Kuchu Teien Observatory",
+      "ticket": "Observatory admission",
+      "area": "Osaka",
+      "city": null,
+      "group": "views",
+      "href": "/guides/attractions/umeda-sky-building-tickets",
+      "adult": "¥2,000",
+      "adultMinYen": 2000,
+      "adultMaxYen": 2000,
+      "child": "¥500",
+      "childAges": "ages 4–12; free under 4",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "No time-band pricing for regular tickets; the only time-based rule is for Osaka Amazing Pass / e-Pass holders, who get in free 9:30–15:00 and 10% off 15:00–22:00.",
+      "sameDay": null,
+      "hours": "09:30–22:30 (last entry 22:00)",
+      "revised": null,
+      "source": "skybldg.co.jp",
+      "sourceUrl": "https://www.skybldg.co.jp/en/observatory/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Umeda Sky Building ticket",
+        "ref": "umedaSkyBuildingTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-11-03",
+          "adult": "¥2,000",
+          "adultMinYen": 2000,
+          "adultMaxYen": null,
+          "via": "umeda-sky-building-tickets.tsx"
+        }
+      ],
+      "unverified": [
+        "sameDay: the page does not explicitly state that general walk-in tickets are sold at the counter (online tickets link to Klook)"
+      ],
+      "extraSources": [
+        "https://www.skybldg.co.jp/en/"
+      ]
+    },
+    {
+      "id": "abenoHarukas",
+      "name": "HARUKAS 300 (Observatory), Abeno Harukas",
+      "ticket": "Observatory admission",
+      "area": "Osaka",
+      "city": null,
+      "group": "views",
+      "href": "/guides/attractions/umeda-sky-building-tickets",
+      "adult": "¥1,980",
+      "adultMinYen": 1980,
+      "adultMaxYen": 2200,
+      "child": "¥810 (¥900 same day)",
+      "childAges": "ages 6–14; free 5 and under",
+      "atDoor": "¥2,200",
+      "pricing": "fixed",
+      "booking": "Advised",
+      "bookingNote": "The ¥1,980 / ¥810 WEB advance ticket must be bought by the day before the visit; same-day tickets (counter or web) are ¥2,200 / ¥900.",
+      "sameDay": "Yes",
+      "hours": "09:00–22:00 (last entry 21:30); open all year",
+      "revised": null,
+      "source": "abenoharukas-300.jp",
+      "sourceUrl": "https://www.abenoharukas-300.jp/observatory/ticket/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "revised: an official notice PDF titled '2026.04.01 「ハルカス３００（展望台）」入場料金改定のお知らせ' exists (abenoharukas-300.jp/observatory/upload/pdf/upPdf/20260330193243_1.1.pdf) but its text could not be extracted and the news page returned HTTP 500, so the effective date and old fees are unconfirmed; current pages use 2 categories (15+ / 6–14)",
+        "Conan collaboration ticket (24 Jul – 29 Nov 2026) ¥2,400 / ¥1,100 is a limited event ticket, not counted in min/max"
+      ],
+      "extraSources": [
+        "https://www.abenoharukas-300.jp/observatory/information.html",
+        "https://www.abenoharukas-300.jp/en/observatory/ticket.html",
+        "https://www.abenoharukas-300.jp/en/observatory/information.html"
+      ]
+    },
+    {
+      "id": "tsutenkaku",
+      "name": "Tsutenkaku",
+      "ticket": "General observatory",
+      "area": "Osaka",
+      "city": null,
+      "group": "views",
+      "href": "/guides/attractions/things-to-do-osaka",
+      "adult": "¥1,500 (¥1,800 30 Dec – 3 Jan)",
+      "adultMinYen": 1500,
+      "adultMaxYen": 1800,
+      "child": "¥800 (¥900 30 Dec – 3 Jan)",
+      "childAges": "ages 5–14",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Not needed",
+      "bookingNote": "A higher year-end price applies from 30 Dec 2026 to 3 Jan 2027, and hour changes or temporary closures are announced on Tsutenkaku's official X account.",
+      "sameDay": null,
+      "hours": "09:00–21:45 (last entry 21:15); shorter hours 31 Dec and 1 Jan",
+      "revised": null,
+      "source": "tsutenkaku.co.jp",
+      "sourceUrl": "https://www.tsutenkaku.co.jp/annai/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "under-5 price not listed on the page",
+        "sameDay/booking rules not stated on the page"
+      ]
+    },
+    {
+      "id": "kobePortTower",
+      "name": "Kobe Port Tower",
+      "ticket": "Observation floor + rooftop deck (floor only ¥1,000)",
+      "area": "Hyogo",
+      "city": null,
+      "group": "views",
+      "href": "/guides/attractions/kobe-day-trip-from-osaka",
+      "adult": "¥1,200",
+      "adultMinYen": 1200,
+      "adultMaxYen": 1200,
+      "child": "¥500",
+      "childAges": "elementary and junior high (floor only ¥400); preschoolers free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Advised",
+      "bookingNote": "Entry to the observation floor and rooftop deck needs a date-and-time ticket; the 1F counter sells same-day tickets only for slots with space, and the rooftop may close without notice in rain or strong wind.",
+      "sameDay": "Limited",
+      "hours": "09:00–23:00 (last entry 22:30); open year-round",
+      "revised": null,
+      "source": "kobe-port-tower.com",
+      "sourceUrl": "https://www.kobe-port-tower.com/ticket/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [
+        {
+          "checked": "2026-10-27",
+          "adult": "¥1,200",
+          "adultMinYen": 1200,
+          "adultMaxYen": null,
+          "via": "kobe-day-trip-from-osaka.tsx"
+        }
+      ],
+      "extraSources": [
+        "https://www.kobe-port-tower.com/"
+      ]
+    },
+    {
+      "id": "kyotoTower",
+      "name": "Nidec Kyoto Tower (Observation Deck)",
+      "ticket": "Observation deck admission",
+      "area": "Kyoto",
+      "city": null,
+      "group": "views",
+      "href": null,
+      "adult": "¥1,000",
+      "adultMinYen": 1000,
+      "adultMaxYen": 1000,
+      "child": "¥800 (high school) / ¥700 (elementary & junior high) / ¥300 (age 3+)",
+      "childAges": "high school; elementary & junior high; infants 3+ (under 3 free)",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Same-day tickets are sold at the 1F ticket counter of Kyoto Tower Building (cash, cards, mobile payment), and online tickets are also available.",
+      "sameDay": "Yes",
+      "hours": "10:00–21:00 (last entry 20:30)",
+      "revised": {
+        "date": "2026-10-01",
+        "note": "Observation deck fees revised from 2026-10-01 (before/after amounts shown only as images on the notice; current adult ¥1,000)"
+      },
+      "source": "kyoto-tower.jp",
+      "sourceUrl": "https://www.kyoto-tower.jp/fee/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "revised: pre-revision adult price not readable (image only)"
+      ],
+      "extraSources": [
+        "https://www.kyoto-tower.jp/post-7990/",
+        "https://www.kyoto-tower.jp/"
+      ]
+    },
+    {
+      "id": "sapporoTvTower",
+      "name": "Sapporo TV Tower",
+      "ticket": "Observation deck admission",
+      "area": "Hokkaido",
+      "city": null,
+      "group": "views",
+      "href": "/guides/attractions/hokkaido-7-day-itinerary",
+      "adult": "¥1,200",
+      "adultMinYen": 1200,
+      "adultMaxYen": 1200,
+      "child": "¥600",
+      "childAges": "elementary and junior high; under school age free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "General, group (15+) and Sapporo-resident rates are listed; the tower is closed all day on 11 Nov 2026 and 1 Jan 2027.",
+      "sameDay": null,
+      "hours": null,
+      "revised": null,
+      "source": "tv-tower.co.jp",
+      "sourceUrl": "https://www.tv-tower.co.jp/pricetime.html",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Sapporo TV Tower + Mt. Moiwa set ticket",
+        "ref": "sapporoTvTowerMoiwaSetTicket"
+      },
+      "history": [],
+      "unverified": [
+        "hours: the official hours section did not render readable times (closed today, 11 Nov)",
+        "sameDay: sales method not stated on the fee page"
+      ],
+      "extraSources": [
+        "https://www.tv-tower.co.jp/"
+      ]
+    },
+    {
+      "id": "teamlabPlanets",
+      "name": "teamLab Planets TOKYO",
+      "ticket": "Admission, Toyosu",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "museums",
+      "href": "/guides/attractions/teamlab-planets-tickets",
+      "adult": "from ¥3,800",
+      "adultMinYen": 3800,
+      "adultMaxYen": null,
+      "child": "¥1,500",
+      "childAges": "ages 4–12; free under 4",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Required",
+      "bookingNote": "Entry is a 30-minute slot, the official store states that nothing is sold on site, and the adult price moves with the date — so the slot is the booking.",
+      "sameDay": null,
+      "hours": null,
+      "revised": null,
+      "source": "official teamLab Planets ticket store (teamlabplanets.dmm.com)",
+      "sourceUrl": "https://teamlabplanets.dmm.com/en",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: teamLab Planets Toyosu ticket",
+        "ref": "teamlabPlanetsTicketUrl"
+      },
+      "history": [
+        {
+          "checked": "2026-11-06",
+          "adult": "from ¥3,800",
+          "child": "¥1,500"
+        }
+      ],
+      "unverified": [
+        "adultMaxYen: store shows only '3,800 JPY ~', no top price",
+        "sameDay / on-site sales: not stated on the store page fetched today (teamlab.art/e/planets and FAQ are client-rendered); 'Required' carried over from the existing record",
+        "hours: not on the store page; teamlab.art pages render client-side",
+        "free age wording: store says 'Under 3 years' free while child band starts at 4 (existing record says free under 4)"
+      ]
+    },
+    {
+      "id": "teamlabBorderless",
+      "name": "teamLab Borderless",
+      "ticket": "Admission, Azabudai Hills",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "museums",
+      "href": "/guides/attractions/teamlab-borderless-tickets",
+      "adult": "from ¥3,400",
+      "adultMinYen": 3400,
+      "adultMaxYen": null,
+      "child": "¥1,500",
+      "childAges": "ages 4–12; free under 4",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Required",
+      "bookingNote": "Timed slot or a Flexible Pass, and buying on site costs ¥200 more per adult ticket.",
+      "sameDay": null,
+      "hours": null,
+      "revised": null,
+      "source": "teamlab.art",
+      "sourceUrl": "https://www.teamlab.art/e/tokyo/",
+      "checked": "2026-10-09",
+      "klook": {
+        "label": "Klook: teamLab Borderless admission ticket",
+        "ref": "teamlabBorderlessTicketUrl"
+      },
+      "history": [],
+      "note": "teamlab.art builds its prices in the browser, so the figures could not be re-read on 11 November 2026; this is the reading of 9 October 2026.",
+      "unverified": [
+        "adult/child/atDoor/hours/bookingNote/sameDay: every official teamlab.art page (EN, JP, FAQ) renders client-side and returned only the page title; ticket.teamlab.art did not resolve. Search snippets showed figures but were not used",
+        "booking: 'Required' carried over from the existing record, not re-read"
+      ],
+      "extraSources": [
+        "https://www.teamlab.art/e/borderless-azabudai/",
+        "https://www.teamlab.art/jp/e/borderless-azabudai/",
+        "https://www.teamlab.art/faq/Tokyo/"
+      ]
+    },
+    {
+      "id": "sunshineAquarium",
+      "name": "Sunshine Aquarium",
+      "ticket": "Aquarium admission, Sunshine City Ikebukuro",
+      "area": "Tokyo",
+      "city": null,
+      "group": "museums",
+      "href": null,
+      "adult": "¥2,600 – ¥3,200",
+      "adultMinYen": 2600,
+      "adultMaxYen": 3200,
+      "child": "¥1,300",
+      "childAges": "elementary and junior high; ages 4+ (preschool) ¥800",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "Adult price depends on the entry date (price calendar PDF), and entry may be restricted on weekends, holidays and certain dates, so the site recommends booking a timed slot in advance.",
+      "sameDay": "Yes",
+      "hours": "Autumn/winter: weekdays 10:00–18:00, weekends/holidays 09:30–18:00 (spring/summer to 19:00/20:00); last entry 30 min before closing; closed 12 Nov 2026 and 14 Jan 2027",
+      "revised": null,
+      "source": "sunshinecity.jp",
+      "sourceUrl": "https://sunshinecity.jp/aquarium/ticket/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "free age not stated on the ticket page",
+        "season changeover dates for hours not stated"
+      ],
+      "extraSources": [
+        "https://sunshinecity.jp/aquarium/",
+        "https://sunshinecity.jp/information/opening_hour.html"
+      ]
+    },
+    {
+      "id": "sumidaAquarium",
+      "name": "Sumida Aquarium",
+      "ticket": "General admission, Tokyo Skytree Town (Solamachi 5F–6F)",
+      "area": "Tokyo",
+      "city": null,
+      "group": "museums",
+      "href": null,
+      "adult": "¥2,700",
+      "adultMinYen": 2700,
+      "adultMaxYen": 2700,
+      "child": "¥1,400",
+      "childAges": "elementary and junior high; high school ¥2,000; ages 3+ (preschool) ¥900",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Advised",
+      "bookingNote": "The site recommends buying online tickets in advance to avoid waiting in line; admission and ticket sales end one hour before closing.",
+      "sameDay": "Yes",
+      "hours": "Open all year; hours vary by day (see calendar); last admission 1 hour before closing",
+      "revised": null,
+      "source": "en.sumida-aquarium.com",
+      "sourceUrl": "https://en.sumida-aquarium.com/about/price/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Skytree + Sumida Aquarium combo",
+        "ref": "skytreeAquariumCombo"
+      },
+      "history": [],
+      "unverified": [
+        "hours: daily times are shown only in a calendar that did not render",
+        "free age under 3 not stated explicitly for general admission"
+      ],
+      "extraSources": [
+        "https://en.sumida-aquarium.com/?stt_lang=en",
+        "https://en.sumida-aquarium.com/about/access/"
+      ]
+    },
+    {
+      "id": "ghibliMuseum",
+      "name": "Ghibli Museum, Mitaka",
+      "ticket": "Admission (date and entry-time reserved ticket)",
+      "area": "Tokyo",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/japan-first-time-itinerary",
+      "adult": "¥1,000",
+      "adultMinYen": 1000,
+      "adultMaxYen": 1000,
+      "child": "¥400",
+      "childAges": "ages 7–12; ages 13–18 ¥700; ages 4–6 ¥100; 3 and under free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Required",
+      "bookingNote": "No reservation or ticket purchase can be made at the Museum; overseas visitors buy via Lawson Ticket, with the following month released at 10:00 JST on the 10th.",
+      "sameDay": "No",
+      "hours": "10:00–18:00",
+      "revised": null,
+      "source": "ghibli-museum.jp",
+      "sourceUrl": "https://www.ghibli-museum.jp/en/tickets/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "closed days: not stated on the hours page (ticket calendar only)"
+      ],
+      "extraSources": [
+        "https://www.ghibli-museum.jp/en/",
+        "https://www.ghibli-museum.jp/en/hours-and-directions/"
+      ]
+    },
+    {
+      "id": "tokyoNationalMuseum",
+      "name": "Tokyo National Museum",
+      "ticket": "Collection (regular) exhibitions",
+      "area": "Tokyo",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/tokyo-5-day-itinerary",
+      "adult": "¥1,000",
+      "adultMinYen": 1000,
+      "adultMaxYen": 1000,
+      "child": "Free",
+      "childAges": "under 18 (and high school and younger) free with proof of age; also over 70; university students ¥500",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Under-18s and over-70s are admitted free but must present proof of age at entry.",
+      "sameDay": null,
+      "hours": "09:30–17:00; to 20:00 on Fridays, Saturdays and Sundays before a Monday holiday (last admission 30 min before); closed Mondays (Tuesday if Monday is a holiday), 26–31 Dec 2026",
+      "revised": null,
+      "source": "tnm.jp",
+      "sourceUrl": "https://www.tnm.jp/modules/r_free_page/index.php?id=113&lang=en",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "sameDay / booking: the page does not describe ticket sales channels; 'Not needed' is not stated explicitly"
+      ]
+    },
+    {
+      "id": "uenoZoo",
+      "name": "Ueno Zoological Gardens",
+      "ticket": "Zoo admission",
+      "area": "Tokyo",
+      "city": null,
+      "group": "museums",
+      "href": null,
+      "adult": "¥600",
+      "adultMinYen": 600,
+      "adultMaxYen": 600,
+      "child": "Free",
+      "childAges": "elementary school and younger (and Tokyo-resident/student junior high); other junior high ¥200; 65+ ¥300",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Tickets are sold at the gate (dated online tickets are optional), but admission and ticket sales stop one hour before closing.",
+      "sameDay": "Yes",
+      "hours": "09:30–17:00 (last entry 16:00); closed Mondays (next day if a holiday) and 29 Dec–1 Jan",
+      "revised": null,
+      "source": "tokyo-zoo.net",
+      "sourceUrl": "https://www.tokyo-zoo.net/ueno/visitor-info/tickets/index.html",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "extraSources": [
+        "https://www.tokyo-zoo.net/zoo/ueno/"
+      ]
+    },
+    {
+      "id": "edoTokyoMuseum",
+      "name": "Edo-Tokyo Museum",
+      "ticket": "Permanent exhibition (museum has reopened)",
+      "area": "Tokyo",
+      "city": null,
+      "group": "museums",
+      "href": null,
+      "adult": "¥800",
+      "adultMinYen": 800,
+      "adultMaxYen": 800,
+      "child": "Free",
+      "childAges": "junior high and younger; high school ¥300, university ¥480, 65+ ¥400",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Tickets can be bought online (Webket) or at the 1F counter on the day, and purchased tickets cannot be refunded or changed.",
+      "sameDay": "Yes",
+      "hours": "09:30–17:30 (Sat to 19:30; Fridays 6/13/20/27 Nov 2026 to 20:00); last admission 30 min before; closed Mondays (next weekday if a holiday) and year-end/New Year",
+      "revised": null,
+      "source": "edo-tokyo-museum.or.jp",
+      "sourceUrl": "https://www.edo-tokyo-museum.or.jp/en/information/guide/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "reopening date: the site confirms it has reopened (open today; 1 million permanent-exhibition visitors since reopening) but the pages read do not state the date"
+      ],
+      "extraSources": [
+        "https://www.edo-tokyo-museum.or.jp/en/",
+        "https://www.edo-tokyo-museum.or.jp/en/information/hours/",
+        "https://www.edo-tokyo-museum.or.jp/en/news/one-million-ceremony.html"
+      ]
+    },
+    {
+      "id": "cupNoodlesYokohama",
+      "name": "CUPNOODLES MUSEUM YOKOHAMA",
+      "ticket": "Museum admission (factory workshops extra)",
+      "area": "Kanagawa",
+      "city": null,
+      "group": "museums",
+      "href": null,
+      "adult": "¥500",
+      "adultMinYen": 500,
+      "adultMaxYen": 500,
+      "child": "Free",
+      "childAges": "high school age and younger free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Admission-only tickets are not sold in advance; the Chicken Ramen Factory needs a paid reservation and My CUPNOODLES Factory is paid and needs a numbered ticket.",
+      "sameDay": "Yes",
+      "hours": "10:00–18:00 (last entry 17:00); closed Tuesdays (next day if Tuesday is a holiday) and over New Year; closed 23 Nov 2026 for a private event",
+      "revised": null,
+      "source": "cupnoodles-museum.jp",
+      "sourceUrl": "https://www.cupnoodles-museum.jp/en/yokohama/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": []
+    },
+    {
+      "id": "hakoneOpenAirMuseum",
+      "name": "The Hakone Open-Air Museum",
+      "ticket": "Museum admission",
+      "area": "Kanagawa",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/hakone-day-trip-from-tokyo",
+      "adult": "¥1,800 online / ¥2,000 at the door",
+      "adultMinYen": 1800,
+      "adultMaxYen": 2000,
+      "child": "¥600 online / ¥800 at the door",
+      "childAges": "elementary and middle school; university and high school ¥1,400 / ¥1,600; preschool free",
+      "atDoor": "¥2,000",
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Online tickets are ¥200 cheaper than buying on the day; the museum is open every day of the year.",
+      "sameDay": "Yes",
+      "hours": "09:00–17:00 (last entry 16:30); open 365 days",
+      "revised": null,
+      "source": "hakone-oam.or.jp",
+      "sourceUrl": "https://www.hakone-oam.or.jp/en/info",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": []
+    },
+    {
+      "id": "kaiyukan",
+      "name": "Osaka Aquarium Kaiyukan",
+      "ticket": "Aquarium admission (dated, price set per day)",
+      "area": "Osaka",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+      "adult": "¥2,700 – ¥3,200",
+      "adultMinYen": 2700,
+      "adultMaxYen": 3200,
+      "child": "¥1,400 – ¥1,650",
+      "childAges": "elementary and junior high school; infants (3+) ¥700 – ¥800; 2 and under free",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "Admission is priced by date; the operator also lists a ¥3,200 adult tier that takes reservations only from 15:00 and a ¥3,500 adult tier that takes no reservations, and same-day tickets may not get your preferred entry time.",
+      "sameDay": "Yes",
+      "hours": null,
+      "revised": null,
+      "source": "kaiyukan.com",
+      "sourceUrl": "https://www.kaiyukan.com/info/group/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Osaka Aquarium Kaiyukan ticket",
+        "ref": "osakaAquariumKaiyukanTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-11-08",
+          "adult": "¥2,700–3,200",
+          "adultMinYen": 2700,
+          "adultMaxYen": 3200,
+          "via": "osaka-aquarium-kaiyukan-tickets.tsx"
+        }
+      ],
+      "unverified": [
+        "hours: kaiyukan.com/info/hours/ calendar is client-rendered and came back empty",
+        "price bands are printed only on the group page (which states group visitors pay the same variable admission, no group discount); the individual ticket page shows prices only in a client-rendered calendar",
+        "adultMaxYen: kept at the printed band top ¥3,200; the same page mentions a ¥3,500 adult tier on some dates"
+      ],
+      "extraSources": [
+        "https://www.kaiyukan.com/info/ticket/kaiyukan/"
+      ]
+    },
+    {
+      "id": "teamlabBotanicalOsaka",
+      "name": "teamLab Botanical Garden Osaka",
+      "ticket": "Admission (night-time, Nagai Botanical Garden), dynamic pricing",
+      "area": "Osaka",
+      "adult": "¥1,800",
+      "adultMinYen": 1800,
+      "adultMaxYen": null,
+      "child": "¥500",
+      "childAges": "ages 6–15; preschool free",
+      "atDoor": "¥2,000",
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "Same-day tickets are sold on site for ¥200 more per adult, and the official page warns they may sell out.",
+      "sameDay": "Limited",
+      "hours": null,
+      "revised": null,
+      "sourceUrl": "https://www.teamlab.art/e/botanicalgarden/",
+      "checked": "2026-10-28",
+      "group": "museums",
+      "href": "/guides/attractions/teamlab-botanical-garden-osaka-tickets",
+      "city": null,
+      "source": "teamlab.art",
+      "klook": {
+        "label": "Klook: teamLab Botanical Garden Osaka ticket",
+        "ref": "teamlabBotanicalGardenOsakaTicket"
+      },
+      "history": [],
+      "note": "teamlab.art builds its prices in the browser, so the figures could not be re-read on 11 November 2026; this is the reading of 28 October 2026 used by our guide.",
+      "unverified": [
+        "adult/child/atDoor/hours/bookingNote: teamlab.art pages are client-rendered (only the title came back, EN and JP); the Nagai Botanical Garden official page covers only the daytime garden (adult ¥300) and says nothing about teamLab",
+        "pricing 'variable' and booking 'Advised' carried from the guide (teamLab dynamic pricing), not re-read today"
+      ],
+      "extraSources": [
+        "https://www.teamlab.art/e/botanicalgarden/",
+        "https://www.teamlab.art/jp/e/botanicalgarden/",
+        "https://botanical-garden.nagai-park.jp/guide/information/"
+      ]
+    },
+    {
+      "id": "nintendoMuseum",
+      "name": "Nintendo Museum",
+      "ticket": "Date- and time-specified admission (lottery)",
+      "area": "Kyoto",
+      "city": null,
+      "group": "museums",
+      "href": null,
+      "adult": "¥3,300",
+      "adultMinYen": 3300,
+      "adultMaxYen": 3300,
+      "child": "¥2,200 / ¥1,100",
+      "childAges": "¥2,200 ages 12–17; ¥1,100 ages 6–11; free 0–5",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Required",
+      "bookingNote": "Tickets are sold in advance by random drawing for a specific date and time; entering needs a Nintendo Account and every visitor's full name and phone number, and payment is by credit card only.",
+      "sameDay": null,
+      "hours": "10:00–20:00; closed Tuesdays (open on holiday Tuesdays, then closed Wednesday) and 30 Dec – 3 Jan",
+      "revised": null,
+      "source": "museum.nintendo.com",
+      "sourceUrl": "https://museum.nintendo.com/en/guide/index.html",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "sameDay: pages do not say whether same-day general admission is sold (drawing open for February 2027 dates at check)"
+      ],
+      "extraSources": [
+        "https://museum.nintendo.com/en/"
+      ]
+    },
+    {
+      "id": "kyotoRailwayMuseum",
+      "name": "Kyoto Railway Museum",
+      "ticket": "Museum admission",
+      "area": "Kyoto",
+      "city": null,
+      "group": "museums",
+      "href": null,
+      "adult": "¥1,500",
+      "adultMinYen": 1500,
+      "adultMaxYen": 1500,
+      "child": "¥500 (elementary & junior high) / ¥200 (age 3+)",
+      "childAges": "elementary & junior high; infants 3+ ¥200; university & high school ¥1,300",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "",
+      "sameDay": null,
+      "hours": null,
+      "revised": {
+        "date": "2023-03-01",
+        "note": "Adult ¥1,200 → ¥1,500; university & high school ¥1,000 → ¥1,300; elementary/junior high and infant fees unchanged"
+      },
+      "source": "kyotorailwaymuseum.jp",
+      "sourceUrl": "https://www.kyotorailwaymuseum.jp/pdf/museum_admission.pdf",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "adult/child are from the museum's official news release dated 2022-11-04 (fees effective 2023-03-01); the live guide page (kyotorailwaymuseum.jp/guide/) is client-rendered and returned no text, so the current table and any 'valid until end Feb 2027' note could not be read directly",
+        "hours, bookingNote, sameDay: guide page not readable (release footer states closed on Wednesdays, open on public holidays)"
+      ],
+      "note": "Figures are from the museum’s own fee notice (effective 1 March 2023); the live fee page renders in the browser and could not be read on 11 November 2026."
+    },
+    {
+      "id": "teamlabKyoto",
+      "name": "teamLab Biovortex Kyoto",
+      "ticket": "Entrance Pass (date & time-specific); Flexible Pass ¥12,000",
+      "area": "Kyoto",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/teamlab-kyoto-tickets",
+      "adult": "¥3,800 (variable)",
+      "adultMinYen": 3800,
+      "adultMaxYen": null,
+      "child": "¥2,800 (ages 13–17) / ¥1,800 (ages 4–12)",
+      "childAges": "ages 13–17; ages 4–12 (3 and under free)",
+      "atDoor": "+¥200 on the online price",
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "Tickets are date and time-specific and may sell out, especially on weekends and holidays; sales open around the 1st of the month two months ahead.",
+      "sameDay": "Limited",
+      "hours": "09:00–21:00 (last entry 19:30)",
+      "revised": null,
+      "source": "art.team-lab.cn",
+      "sourceUrl": "https://art.team-lab.cn/en/e/kyoto",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: teamLab Biovortex Kyoto ticket",
+        "ref": "teamlabBiovortexKyotoTicket"
+      },
+      "history": [],
+      "unverified": [
+        "www.teamlab.art/e/kyoto/ is client-rendered and returned no text; figures read on teamLab's own server-rendered mirror art.team-lab.cn",
+        "adultMaxYen: adult price is variable by date/time and no maximum is published",
+        "adultMinYen: ¥3,800 is the published figure; the page does not say it is the floor"
+      ],
+      "extraSources": [
+        "https://art.team-lab.cn/en/faq/kyoto",
+        "https://www.teamlab.art/e/kyoto/"
+      ]
+    },
+    {
+      "id": "peaceMuseum",
+      "name": "Hiroshima Peace Memorial Museum",
+      "ticket": "Museum admission",
+      "area": "Hiroshima",
+      "city": "osaka",
+      "group": "museums",
+      "href": "/guides/attractions/hiroshima-miyajima-day-trip",
+      "adult": "¥200",
+      "adultMinYen": 200,
+      "adultMaxYen": 200,
+      "child": "Free",
+      "childAges": "junior high and younger; ¥100 high school",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Pay at the entrance. The surrounding Peace Memorial Park and the Dome cost nothing.",
+      "sameDay": "Yes",
+      "hours": "07:30–19:00 Sep–Nov and Mar–Jul; 07:30–18:00 Dec–Feb; 07:30–20:00 Aug",
+      "revised": null,
+      "source": "hpmmuseum.jp",
+      "sourceUrl": "https://hpmmuseum.jp/modules/info/index.php?action=PageView&page_id=47&lang=eng",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Hiroshima & Miyajima bus tour",
+        "ref": "hiroshimaMiyajimaBusTourUrl"
+      },
+      "history": [
+        {
+          "checked": "2026-10-19",
+          "adult": "¥200",
+          "child": "Free"
+        }
+      ],
+      "unverified": [
+        "hours: last-entry time not stated on the page"
+      ]
+    },
+    {
+      "id": "churaumi",
+      "name": "Okinawa Churaumi Aquarium",
+      "ticket": "General admission",
+      "area": "Okinawa",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/okinawa-churaumi-aquarium-tickets",
+      "adult": "¥2,180",
+      "adultMinYen": 2180,
+      "adultMaxYen": 2180,
+      "child": "¥710",
+      "childAges": "elementary and junior high; ¥1,440 high school; under 6 free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Group tickets (20+) are sold on the day of admission only; a WEB Ticket link to asoview is offered but no web price is stated.",
+      "sameDay": "Yes",
+      "hours": "08:30–18:30 (last entry 17:30); longer in peak periods (to 20:00 / 21:00 in Aug)",
+      "revised": null,
+      "source": "churaumi.okinawa",
+      "sourceUrl": "https://churaumi.okinawa/en/guide/info/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Okinawa Churaumi Aquarium ticket",
+        "ref": "churaumiAquariumTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-11-03",
+          "adult": "¥2,180",
+          "adultMinYen": 2180,
+          "adultMaxYen": null,
+          "via": "pages/guides/attractions/okinawa-churaumi-aquarium-tickets.tsx"
+        }
+      ],
+      "unverified": [
+        "No after-16:00 discount appears on the official fee pages (EN or JP)"
+      ],
+      "extraSources": [
+        "https://churaumi.okinawa/en/guide/hour/",
+        "https://churaumi.okinawa/guide/info/"
+      ]
+    },
+    {
+      "id": "asahiyamaZoo",
+      "name": "Asahiyama Zoo",
+      "ticket": "1-day admission",
+      "area": "Hokkaido",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/hokkaido-7-day-itinerary",
+      "adult": "¥1,000",
+      "adultMinYen": 1000,
+      "adultMaxYen": 1000,
+      "child": "Free",
+      "childAges": "junior high and younger",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Web tickets (regular adult ¥1,000 only) are sold via KKday and 7-Eleven/Lawson, alongside the zoo ticket window.",
+      "sameDay": "Yes",
+      "hours": "Winter 11 Nov 2026–7 Apr 2027: 10:30–15:30 (last entry 15:00); closed 30 Dec–1 Jan",
+      "revised": {
+        "date": "2027-04-29",
+        "note": "Adult ¥1,000 → ¥1,400 (announced 1 Jul 2026)"
+      },
+      "source": "city.asahikawa.hokkaido.jp",
+      "sourceUrl": "https://www.city.asahikawa.hokkaido.jp/asahiyamazoo/generalinformation/d052849.html",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Asahiyama Zoo winter day trip (tour)",
+        "ref": "asahiyamaZooWinterDayTour"
+      },
+      "history": [],
+      "extraSources": [
+        "https://www.city.asahikawa.hokkaido.jp/asahiyamazoo/news-blog/osirase/d084291.html",
+        "https://www.city.asahikawa.hokkaido.jp/asahiyamazoo/news-blog/osirase/d082799.html"
+      ]
+    },
+    {
+      "id": "jigokudaniMonkeyPark",
+      "name": "Jigokudani Yaen-koen (Snow Monkey Park)",
+      "ticket": "Park admission",
+      "area": "Nagano",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/jigokudani-snow-monkey-tour",
+      "adult": "¥800",
+      "adultMinYen": 800,
+      "adultMaxYen": 800,
+      "child": "¥400",
+      "childAges": "elementary to high school; under 6 free with a guardian",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Advised",
+      "bookingNote": "In winter (December–April) visitors holding WEB tickets get priority entry, and buyers choose their entry date before purchase.",
+      "sameDay": "Yes",
+      "hours": "09:00–16:00 Nov–Mar; 08:30–17:00 Apr–Oct; open year-round",
+      "revised": {
+        "date": "2026-12-01",
+        "note": "Adult ¥800 → ¥1,000 (web ticket ¥880); child ¥400 → ¥500 (web ¥440)"
+      },
+      "source": "jigokudani-yaenkoen.co.jp",
+      "sourceUrl": "https://jigokudani-yaenkoen.co.jp/guide/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Jigokudani & Zenko-ji day tour",
+        "ref": "jigokudaniZenkojiSukiyakiTour"
+      },
+      "history": [
+        {
+          "checked": "2026-11-06",
+          "adult": "¥1,000 from 1 Dec 2026 (¥880 web; ¥800 until 30 Nov)",
+          "adultMinYen": 800,
+          "adultMaxYen": null,
+          "via": "pages/guides/attractions/jigokudani-snow-monkey-tour.tsx"
+        }
+      ],
+      "extraSources": [
+        "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
+        "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg",
+        "https://jigokudani-yaenkoen.co.jp/webticket/"
+      ]
+    },
+    {
+      "id": "teamlabFukuoka",
+      "name": "teamLab Forest Fukuoka",
+      "ticket": "Admission, BOSS E・ZO FUKUOKA (regular date; ¥2,700 peak)",
+      "area": "Fukuoka",
+      "adult": "from ¥2,400",
+      "adultMinYen": 2400,
+      "adultMaxYen": 2700,
+      "child": "¥1,000",
+      "childAges": "ages 4–15 (¥1,200 peak); free 3 and under",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "Children 12 and under need a ticketed guardian, one adult per three children.",
+      "sameDay": null,
+      "hours": null,
+      "revised": null,
+      "sourceUrl": "https://www.teamlab.art/e/forest/",
+      "checked": "2026-10-29",
+      "group": "museums",
+      "href": "/guides/attractions/teamlab-fukuoka-tickets",
+      "city": null,
+      "source": "teamlab.art",
+      "klook": {
+        "label": "Klook: teamLab Forest Fukuoka ticket",
+        "ref": "teamlabForestFukuokaTicket"
+      },
+      "history": [],
+      "note": "teamlab.art builds its prices in the browser, so the figures could not be re-read on 11 November 2026; this is the reading of 29 October 2026 used by our guide.",
+      "unverified": [
+        "adult/child/hours/bookingNote/sameDay: teamlab.art /e/forest/ and /faq/forest/ (EN and JP) render client-side and returned only the page title; BOSS E・ZO pages also returned only navigation — no figure readable today",
+        "pricing 'variable' and booking 'Advised' carried from the guide's 2026-10-29 reading (regular/peak tiers), not re-read today"
+      ],
+      "extraSources": [
+        "https://www.teamlab.art/faq/forest/",
+        "https://e-zofukuoka.com/ticket/how/",
+        "https://e-zofukuoka.com/teamlabforest/"
+      ]
+    },
+    {
+      "id": "kanazawa21",
+      "name": "21st Century Museum of Contemporary Art, Kanazawa",
+      "ticket": "Exhibition admission — no collection exhibition running; current paid show is 'From Today to Tomorrow' (special exhibition, 31 Oct 2026–18 Apr 2027)",
+      "area": "Ishikawa",
+      "city": null,
+      "group": "museums",
+      "href": "/guides/attractions/japan-winter-itinerary",
+      "adult": "¥1,200 (web ¥1,000)",
+      "adultMinYen": 1000,
+      "adultMaxYen": 1200,
+      "child": "¥400",
+      "childAges": "elementary, junior high and high school (web ¥300)",
+      "atDoor": "¥1,200",
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Date-specified web tickets are sold online, and same-day counter sales end 30 minutes before closing.",
+      "sameDay": "Yes",
+      "hours": "10:00–18:00 (Fri–Sat to 20:00); closed Mondays",
+      "revised": null,
+      "source": "kanazawa21.jp",
+      "sourceUrl": "https://www.kanazawa21.jp/data_list.php?g=65&d=1853",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "Collection exhibition price: none running now; the last one ('Walking, Staying', 23 May–18 Oct 2026) was ¥450 adult, ¥310 university, under-18 free — figures above are for the current special exhibition",
+        "Museum announces closure 6 May 2027 – March 2028 (planned)"
+      ],
+      "extraSources": [
+        "https://www.kanazawa21.jp/data_list.php?g=65&d=1854",
+        "https://www.kanazawa21.jp/data_list.php?g=7&d=5",
+        "https://www.kanazawa21.jp/"
+      ],
+      "note": "No collection exhibition was running on 11 November 2026; the figure is the current special exhibition’s."
+    },
+    {
+      "id": "tokyoDisney",
+      "name": "Tokyo Disneyland / Tokyo DisneySea",
+      "ticket": "1-Day Passport (one park), priced by date",
+      "area": "Chiba",
+      "adult": "from ¥8,900",
+      "adultMinYen": 8900,
+      "adultMaxYen": null,
+      "child": "from ¥5,300",
+      "childAges": "ages 4–11 (junior 12–17 from ¥7,400); free 3 and under",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Required",
+      "bookingNote": "Every ticket is date-specified and priced by date, with the figure for your day shown at checkout; there are no gate sales.",
+      "sameDay": "No",
+      "hours": null,
+      "revised": null,
+      "sourceUrl": "https://www.tokyodisneyresort.jp/en/ticket/index.html",
+      "checked": "2026-10-28",
+      "group": "parks",
+      "href": "/guides/attractions/tokyo-disney-tickets",
+      "city": null,
+      "source": "tokyodisneyresort.jp",
+      "klook": {
+        "label": "Klook: Tokyo Disney Resort 1-Day Passport",
+        "ref": "tokyoDisneyOneDayPassport"
+      },
+      "history": [],
+      "note": "tokyodisneyresort.jp timed out on 11 November 2026; this is the reading of 28 October 2026 used by our Tokyo Disney guide.",
+      "unverified": [
+        "adult/child/booking/sameDay/hours: every fetch of tokyodisneyresort.jp (/en/tdr/ticket/, /en/ticket/index.htm, /en/tdl/ticket/index, /en/ticket/index/202611/, /ticket/index.html) timed out after 60 s on 2026-11-11",
+        "faq-en.tokyodisneyresort.jp category pages loaded but contained no price figures",
+        "pricing set to 'variable' only because the resort's own ticket pages are titled as date-priced in search results; not read today"
+      ]
+    },
+    {
+      "id": "sanrioPuroland",
+      "name": "Sanrio Puroland",
+      "ticket": "Day Passport",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "parks",
+      "href": "/guides/attractions/sanrio-puroland-tickets",
+      "adult": "¥3,900 – ¥6,900",
+      "adultMinYen": 3900,
+      "adultMaxYen": 6900,
+      "child": "¥2,800 – ¥5,800",
+      "childAges": "ages 3–17 and seniors 65+; free under 3",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Required",
+      "bookingNote": "Priced by date, and the park also wants a separate arrival reservation — two bookings, not one. Shifting the date saves more than shopping for a seller.",
+      "sameDay": "Limited",
+      "hours": null,
+      "revised": {
+        "date": "2026-08-01",
+        "note": "Adult ¥3,900–¥5,900 → ¥3,900–¥6,900; child/senior ¥2,800–¥4,800 → ¥2,800–¥5,800 (announced 2026-05-13)"
+      },
+      "source": "puroland.jp",
+      "sourceUrl": "https://www.puroland.jp/news/passport_information_2026/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Sanrio Puroland ticket",
+        "ref": "sanrioPurolandTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-10-20",
+          "adult": "¥3,900 – ¥6,900",
+          "child": "¥2,800 – ¥5,800"
+        }
+      ],
+      "unverified": [
+        "atDoor: puroland.jp/ticket/ says the e-passport is cheaper than the same-day window, but the window prices render client-side and could not be read",
+        "hours: schedule calendar renders client-side; not read",
+        "price range taken from the official revision notice (effective 2026-08-01); the live calendar prices did not render"
+      ],
+      "extraSources": [
+        "https://www.puroland.jp/ticket/"
+      ]
+    },
+    {
+      "id": "wbStudioTour",
+      "name": "Warner Bros. Studio Tour Tokyo",
+      "ticket": "Standard entry",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "parks",
+      "href": "/guides/attractions/warner-bros-studio-tour-tokyo-tickets",
+      "adult": "¥6,600~",
+      "adultMinYen": 6600,
+      "adultMaxYen": null,
+      "child": "¥4,000~",
+      "childAges": "child rate; ¥5,500~ for junior",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "Tickets are for a set date and entry time and are also sold at the onsite ticket office, but the official site warns your preferred slot may sell out — and the tour takes about four hours, so the slot decides the rest of your day.",
+      "sameDay": "Limited",
+      "hours": null,
+      "revised": null,
+      "source": "wbstudiotour.jp",
+      "sourceUrl": "https://www.wbstudiotour.jp/en/tickets/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Warner Bros. Studio Tour Tokyo ticket",
+        "ref": "warnerBrosStudioTourTokyo"
+      },
+      "history": [
+        {
+          "checked": "2026-11-08",
+          "adult": "¥6,600~",
+          "child": "¥4,000~"
+        }
+      ],
+      "unverified": [
+        "adultMaxYen: the official price-list page (/en/ticket-information/price/) shows standard tickets as ¥6,300〜¥7,300 / ¥5,200〜¥6,000 / ¥3,800〜¥4,400, which conflicts with the ¥6,600~ / ¥5,500~ / ¥4,000~ on /en/tickets/ (which carries Dec 2026 events, so looks current); max left null until resolved",
+        "hours: on a separate opening-times calendar, not read",
+        "booking set to 'Advised' (not 'Required') because the official FAQ says tickets are sold at the onsite ticket office; the FAQ also says a time slot must be booked ahead due to limited numbers"
+      ],
+      "extraSources": [
+        "https://www.wbstudiotour.jp/en/faqs/tickets/",
+        "https://www.wbstudiotour.jp/en/ticket-information/price/"
+      ]
+    },
+    {
+      "id": "fujiQHighland",
+      "name": "Fuji-Q Highland",
+      "ticket": "1-Day Pass (unlimited rides)",
+      "area": "Yamanashi",
+      "city": "other",
+      "group": "parks",
+      "href": "/guides/attractions/fuji-q-highland-tickets",
+      "adult": "¥6,000 – ¥7,900",
+      "adultMinYen": 6000,
+      "adultMaxYen": 7900,
+      "child": "¥4,400 – ¥5,100",
+      "childAges": "elementary school; ¥2,100–¥2,600 for toddlers and seniors",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Not needed",
+      "bookingNote": "Park entry is free and ride tickets are sold inside, so the pass is a choice rather than a requirement. The Q Pack bundles it with the round-trip bus from Tokyo.",
+      "sameDay": null,
+      "hours": "09:00–19:00 on 11 Nov 2026; varies by day (see schedule)",
+      "revised": null,
+      "source": "fujiq.jp",
+      "sourceUrl": "https://www.fujiq.jp/ticket/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Fuji-Q Highland Q Pack (pass + highway bus)",
+        "ref": "fujiQHighlandQPack"
+      },
+      "history": [
+        {
+          "checked": "2026-10-20",
+          "adult": "¥6,000 – ¥7,900",
+          "child": "¥4,400 – ¥5,100"
+        }
+      ],
+      "unverified": [
+        "sameDay: ticket page confirms on-site sales for some passes (Sunset Night Pass, toddler afternoon pass) but does not state it for the regular 1-Day Pass",
+        "hours: only today's hours read from the home page; schedule page not read"
+      ],
+      "extraSources": [
+        "https://www.fujiq.jp/",
+        "https://www.fujiq.jp/schedule/index.html"
+      ]
+    },
+    {
+      "id": "tokyoJoypolis",
+      "name": "Tokyo Joypolis",
+      "ticket": "Passport Ticket (admission + unlimited rides), Odaiba",
+      "area": "Tokyo",
+      "city": null,
+      "group": "parks",
+      "href": "/guides/attractions/tokyo-joypolis-tickets",
+      "adult": "¥6,000",
+      "adultMinYen": 6000,
+      "adultMaxYen": 6000,
+      "child": "¥5,000",
+      "childAges": "ages 7–17; adults 18–59; 60+ ¥4,300; under 7 free admission",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Admission alone (¥1,700 adult) does not include rides, and the cheaper Evening Passport (¥5,000 adult) only goes on sale at 15:00 (16:00 on days closing at 22:00).",
+      "sameDay": "Yes",
+      "hours": null,
+      "revised": null,
+      "source": "tokyo-joypolis.com",
+      "sourceUrl": "https://tokyo-joypolis.com/language/english",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Tokyo Joypolis Passport",
+        "ref": "tokyoJoypolisPassport"
+      },
+      "history": [
+        {
+          "checked": "2026-10-22",
+          "adult": "¥6,000",
+          "adultMinYen": 6000,
+          "adultMaxYen": null,
+          "via": "tokyo-joypolis-tickets.tsx"
+        }
+      ],
+      "unverified": [
+        "hours: the English page gives no daily times, only that last entry is 45 min before closing",
+        "free-age wording conflicts on the page: ticket table says 'Under 7 years old: Free', notes say children under 6 are admitted free"
+      ]
+    },
+    {
+      "id": "ghibliPark",
+      "name": "Ghibli Park",
+      "ticket": "O-Sanpo Day Pass Standard, weekday / weekend & holiday (Premium ¥7,300 / ¥7,800)",
+      "area": "Aichi",
+      "city": null,
+      "group": "parks",
+      "href": "/guides/attractions/ghibli-park-tickets",
+      "adult": "¥3,300 / ¥3,800",
+      "adultMinYen": 3300,
+      "adultMaxYen": 3800,
+      "child": "¥1,650 / ¥1,900",
+      "childAges": "ages 4–12; free 0–3",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Required",
+      "bookingNote": "Advance reservation is required for every entry date and park tickets cannot be bought anywhere in the park; Ghibli's Grand Warehouse entry is by hourly time slot.",
+      "sameDay": "No",
+      "hours": "Closes 17:00 (final entry 16:30); opening times and closed days on the Park Calendar",
+      "revised": null,
+      "source": "ghibli-park.jp",
+      "sourceUrl": "https://ghibli-park.jp/en/ticket/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Ghibli Park ticket",
+        "ref": "ghibliParkTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-10-26",
+          "adult": "¥3,300 weekday / ¥3,800 weekend & holiday",
+          "adultMinYen": 3300,
+          "adultMaxYen": 3800,
+          "via": "ghibli-park-tickets.tsx"
+        }
+      ],
+      "unverified": [
+        "system/service fee amount: page says a service charge applies on issue but gives no figure",
+        "opening time and closed days: on the Park Calendar, not read"
+      ]
+    },
+    {
+      "id": "legolandJapan",
+      "name": "LEGOLAND Japan",
+      "ticket": "1-Day Passport (LEGOLAND only), advance purchase",
+      "area": "Aichi",
+      "city": null,
+      "group": "parks",
+      "href": "/guides/attractions/legoland-japan-tickets",
+      "adult": "¥4,900 – ¥7,100",
+      "adultMinYen": 4900,
+      "adultMaxYen": 7100,
+      "child": "¥3,700 – ¥4,700",
+      "childAges": "ages 3–18",
+      "atDoor": "¥5,400 – ¥7,800 on the day (plus ¥500 issuance fee per ticket at the counter)",
+      "pricing": "variable",
+      "booking": "Advised",
+      "bookingNote": "Buying by the day before saves ¥500–¥700 per adult against the on-the-day price, and the counter adds a ¥500 issuance fee per ticket; the SEA LIFE combo is +¥800.",
+      "sameDay": "Yes",
+      "hours": "10:00–17:00 (SEA LIFE Nagoya 11:00–18:00)",
+      "revised": null,
+      "source": "legoland.jp",
+      "sourceUrl": "https://www.legoland.jp/media/khff2q1d/1day-calendar-202610-202704_release20261001_reconfig.pdf",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: LEGOLAND Japan ticket",
+        "ref": "legolandJapanTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-10-26",
+          "adult": "¥4,900~ (19+)",
+          "adultMinYen": 4900,
+          "adultMaxYen": null,
+          "via": "legoland-japan-tickets.tsx"
+        }
+      ],
+      "unverified": [
+        "under-3 free not stated on the pages read (child rate defined as ages 3–18)",
+        "range covers the Oct 2026 – Apr 2027 price calendar (bands D–W)"
+      ],
+      "extraSources": [
+        "https://legoland.jp/en/tickets/1daypass/"
+      ]
+    },
+    {
+      "id": "toeiKyotoStudioPark",
+      "name": "Toei Kyoto Studio Park (Uzumasa Eigamura)",
+      "ticket": "1DAY admission 10:00–21:00 (Night Time 17:00–21:00 ¥2,000)",
+      "area": "Kyoto",
+      "city": null,
+      "group": "parks",
+      "href": null,
+      "adult": "¥2,800 (1DAY); ¥2,000 Night Time",
+      "adultMinYen": 2000,
+      "adultMaxYen": 2800,
+      "child": "¥1,600 (1DAY) / ¥1,300 (Night Time)",
+      "childAges": "age 3 to elementary (adult = junior high and older)",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Not needed",
+      "bookingNote": "Toei states online ticket sales began on 19 Feb 2026 and that prices may differ depending on the visit date; the listed prices apply until the Phase 2 opening in spring 2027.",
+      "sameDay": null,
+      "hours": "10:00–21:00",
+      "revised": null,
+      "source": "toei.co.jp",
+      "sourceUrl": "https://www.toei.co.jp/entertainment/news/detail/1247914_3483.html",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "toei-eigamura.com could not be fetched (self-signed certificate error); figures come from parent operator Toei Co.'s official news release on the Phase 1 renewal (opened 2026-03-28)",
+        "revised: a 2025-04-01 fee revision notice (toei-eigamura.com/news/detail/487) exists but could not be fetched, so it is not recorded",
+        "booking/sameDay: not stated on the page read; adultMaxYen may be exceeded on some dates since prices 'may differ depending on the visit date'"
+      ]
+    },
+    {
+      "id": "shiroiKoibitoPark",
+      "name": "Shiroi Koibito Park",
+      "ticket": "Paid-area admission",
+      "area": "Hokkaido",
+      "city": null,
+      "group": "parks",
+      "href": "/guides/attractions/hokkaido-7-day-itinerary",
+      "adult": "¥1,200",
+      "adultMinYen": 1200,
+      "adultMaxYen": 1200,
+      "child": "¥600",
+      "childAges": "ages 4 to junior high; 3 and under free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Advised",
+      "bookingNote": "Tickets bought in advance online get priority entry, and walk-up purchases are also accepted at the ticket center.",
+      "sameDay": "Yes",
+      "hours": "10:00–18:00 (paid area last admission 16:30)",
+      "revised": null,
+      "source": "shiroikoibitopark.jp",
+      "sourceUrl": "https://www.shiroikoibitopark.jp/facility/counter.html",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "extraSources": [
+        "https://www.shiroikoibitopark.jp/"
+      ]
+    },
+    {
+      "id": "kotokuin",
+      "name": "Kotoku-in, Kamakura",
+      "ticket": "Temple grounds (Great Buddha)",
+      "area": "Kanagawa",
+      "city": "tokyo",
+      "group": "heritage",
+      "href": "/guides/attractions/kamakura-day-trip",
+      "adult": "¥300",
+      "adultMinYen": 300,
+      "adultMaxYen": 300,
+      "child": "¥150",
+      "childAges": "ages 6–12; free under 6",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Pay at the gate. Stepping inside the bronze statue itself is another ¥50.",
+      "sameDay": "Yes",
+      "hours": "08:00–17:30 Apr–Sep, 08:00–17:00 Oct–Mar (last entry 15 min before closing); statue interior 08:00–16:30",
+      "revised": null,
+      "source": "kotoku-in.jp",
+      "sourceUrl": "https://www.kotoku-in.jp/en/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Kamakura & Enoshima day tour",
+        "ref": "kamakuraEnoshimaDayTourUrl"
+      },
+      "history": [
+        {
+          "checked": "2026-10-19",
+          "adult": "¥300",
+          "child": "¥150"
+        }
+      ]
+    },
+    {
+      "id": "hasedera",
+      "name": "Hase-dera, Kamakura",
+      "ticket": "Temple admission",
+      "area": "Kanagawa",
+      "city": "tokyo",
+      "group": "heritage",
+      "href": "/guides/attractions/kamakura-day-trip",
+      "adult": "¥400",
+      "adultMinYen": 400,
+      "adultMaxYen": 400,
+      "child": "¥200",
+      "childAges": "ages 6–11",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Pay at the gate. Open 08:00–17:00, later April to June, with last entry 30 minutes before close.",
+      "sameDay": "Yes",
+      "hours": "08:00–17:00 Jul–Mar (last entry 16:30); 08:00–17:30 Apr–Jun (last entry 17:00)",
+      "revised": null,
+      "source": "hasedera.jp",
+      "sourceUrl": "https://www.hasedera.jp/en/guide/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Kamakura & Enoshima day tour",
+        "ref": "kamakuraEnoshimaDayTourUrl"
+      },
+      "history": [
+        {
+          "checked": "2026-10-19",
+          "adult": "¥400",
+          "child": "¥200"
+        }
+      ],
+      "unverified": [
+        "booking/sameDay: page gives fees and hours only; 'Not needed' / 'Yes' inferred from the absence of any reservation system"
+      ]
+    },
+    {
+      "id": "nikkoToshogu",
+      "name": "Nikko Toshogu Shrine",
+      "ticket": "Shrine admission (Toshogu only)",
+      "area": "Tochigi",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/nikko-day-trip",
+      "adult": "¥1,600",
+      "adultMinYen": 1600,
+      "adultMaxYen": 1600,
+      "child": "¥550",
+      "childAges": "elementary and junior high school; adult rate applies from high school",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Reception closes 30 minutes before the gates close, which is 16:00 from November to March.",
+      "sameDay": "Yes",
+      "hours": "09:00–17:00 Apr–Oct, 09:00–16:00 Nov–Mar (reception ends 30 min before closing)",
+      "revised": null,
+      "source": "toshogu.jp",
+      "sourceUrl": "https://www.toshogu.jp/pages/25/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Nikko cultural day tour from Tokyo",
+        "ref": "nikkoCulturalDayTourUrl"
+      },
+      "history": [
+        {
+          "checked": "2026-10-19",
+          "adult": "¥1,600",
+          "adultMinYen": 1600,
+          "adultMaxYen": null,
+          "via": "nikko-day-trip.tsx"
+        }
+      ],
+      "unverified": [
+        "closed days not listed on the official page",
+        "booking/sameDay inferred: the official site links an advance-purchase option on KKday but does not require it"
+      ],
+      "extraSources": [
+        "https://www.toshogu.jp/"
+      ]
+    },
+    {
+      "id": "shinjukuGyoen",
+      "name": "Shinjuku Gyoen National Garden",
+      "ticket": "Garden admission",
+      "area": "Tokyo",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/tokyo-3-day-itinerary",
+      "adult": "¥500",
+      "adultMinYen": 500,
+      "adultMaxYen": 500,
+      "child": "Free",
+      "childAges": "junior high and younger; students (high school and up) and 65+ ¥250",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Closed Mondays (next weekday if a holiday) except during cherry-blossom season (25 Mar–24 Apr) and the chrysanthemum display (1–15 Nov), and weekend/holiday entry may switch to advance reservation at peak blossom.",
+      "sameDay": "Yes",
+      "hours": "1 Oct–14 Mar 09:00–16:30 (last entry 16:00); 15 Mar–30 Sep 09:00–18:00 (to 19:00 from 11 Jun–31 Jul); closed Mondays and 29 Dec–3 Jan",
+      "revised": null,
+      "source": "policies.env.go.jp",
+      "sourceUrl": "https://policies.env.go.jp/national-garden/shinjukugyoen/guide/information/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "extraSources": [
+        "https://policies.env.go.jp/national-garden/shinjukugyoen/index.html"
+      ]
+    },
+    {
+      "id": "osakaCastle",
+      "name": "Osaka Castle Main Tower",
+      "ticket": "Main Tower (Tenshukaku) admission",
+      "area": "Osaka",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/osaka-castle-tickets",
+      "adult": "¥1,200",
+      "adultMinYen": 1200,
+      "adultMaxYen": 1200,
+      "child": "¥600",
+      "childAges": "university and high school students (ID required); junior high and under free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Last entry is 17:30, but the ticket line may be closed earlier depending on crowds.",
+      "sameDay": "Yes",
+      "hours": "09:00–18:00 (last entry 17:30); closed 28 Dec – 1 Jan",
+      "revised": {
+        "date": "2025-04-01",
+        "note": "Admission changed from 1 Apr 2025 (old figure not stated on the page) → Adult ¥1,200"
+      },
+      "source": "osakacastle.net",
+      "sourceUrl": "https://www.osakacastle.net/guide/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Osaka Castle ticket",
+        "ref": "osakaCastleTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-10-23",
+          "adult": "¥1,200",
+          "adultMinYen": 1200,
+          "adultMaxYen": null,
+          "via": "osaka-castle-tickets.tsx"
+        }
+      ],
+      "unverified": [
+        "revised.note: the page says fees changed on 1 Apr 2025 but does not print the previous amount",
+        "web ticket price on ars-osakacastle.triplabo.jp could not be read (client-rendered)"
+      ],
+      "extraSources": [
+        "https://www.osakacastle.net/english/"
+      ]
+    },
+    {
+      "id": "expo70Park",
+      "name": "Expo '70 Commemorative Park",
+      "ticket": "Natural and Cultural Gardens + Japanese Garden (common admission)",
+      "area": "Osaka",
+      "city": null,
+      "group": "heritage",
+      "href": null,
+      "adult": "¥450",
+      "adultMinYen": 450,
+      "adultMaxYen": 450,
+      "child": "Free",
+      "childAges": "elementary and junior high school (15 and under)",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "One ticket covers both the Natural and Cultural Gardens and the Japanese Garden; the park is closed on Wednesdays unless the Wednesday is a holiday.",
+      "sameDay": null,
+      "hours": "09:30–17:00 (last entry 16:30); closed Wednesdays (open on holiday Wednesdays)",
+      "revised": {
+        "date": "2026-04-01",
+        "note": "Adult ¥260 → ¥450; child ¥80 → free"
+      },
+      "source": "expo70-park.jp",
+      "sourceUrl": "https://www.expo70-park.jp/guide/fee/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "sameDay: fee page does not explicitly state gate sales of admission tickets"
+      ],
+      "extraSources": [
+        "https://www.expo70-park.jp/info/74225/",
+        "https://www.expo70-park.jp/languages/english/facilities/"
+      ]
+    },
+    {
+      "id": "himejiCastle",
+      "name": "Himeji Castle",
+      "ticket": "Castle admission (non-resident, 18+)",
+      "area": "Hyogo",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/himeji-castle-day-trip",
+      "adult": "¥2,500",
+      "adultMinYen": 2500,
+      "adultMaxYen": 2500,
+      "child": "Free",
+      "childAges": "under 18 (including those who turned 18 until the following 31 March)",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Advised",
+      "bookingNote": "Himeji City recommends the time-slot 'Shirasagi' digital ticket (on sale up to 90 days ahead) in busy seasons, but says it does not guarantee priority viewing when the castle is crowded; Himeji residents pay ¥1,000.",
+      "sameDay": null,
+      "hours": "09:00–17:00 (last entry 16:00); closed 29–30 Dec",
+      "revised": {
+        "date": "2026-03-01",
+        "note": "Adult ¥1,000 → ¥2,500 (Himeji residents stay ¥1,000); child ¥300 → free under 18"
+      },
+      "source": "city.himeji.lg.jp",
+      "sourceUrl": "https://www.city.himeji.lg.jp/castle/0000007671.html",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Himeji Castle day tour from Osaka",
+        "ref": "himejiCastleOsakaBusTour"
+      },
+      "history": [
+        {
+          "checked": "2026-10-25",
+          "adult": "¥2,500",
+          "adultMinYen": 2500,
+          "adultMaxYen": null,
+          "via": "himeji-castle-day-trip.tsx"
+        }
+      ],
+      "unverified": [
+        "sameDay: pages do not explicitly state that tickets are sold at the gate on the day"
+      ],
+      "extraSources": [
+        "https://www.city.himeji.lg.jp/castle/0000030746.html",
+        "https://www.himejicastle.jp/en/",
+        "https://www.himejicastle.jp/en/faq"
+      ]
+    },
+    {
+      "id": "todaiji",
+      "name": "Todai-ji, Nara",
+      "ticket": "Daibutsuden (Great Buddha Hall)",
+      "area": "Nara",
+      "city": "osaka",
+      "group": "heritage",
+      "href": "/guides/attractions/nara-day-trip",
+      "adult": "¥800",
+      "adultMinYen": 800,
+      "adultMaxYen": 800,
+      "child": "¥400",
+      "childAges": "ages 6–12",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Walk up and pay at the gate. Nara Park and the deer are free; this is the fee that guided tours differ on including.",
+      "sameDay": "Yes",
+      "hours": "07:30–17:30 Apr–Oct; 08:00–17:00 Nov–Mar; open daily",
+      "revised": null,
+      "source": "todaiji.or.jp",
+      "sourceUrl": "https://www.todaiji.or.jp/information/haikan/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Arashiyama, Kinkaku-ji & Nara Todai-ji day tour",
+        "ref": "arashiyamaNaraTodaijiTour"
+      },
+      "history": [
+        {
+          "checked": "2026-10-19",
+          "adult": "¥800",
+          "child": "¥400"
+        }
+      ],
+      "extraSources": [
+        "https://www.todaiji.or.jp/information/"
+      ]
+    },
+    {
+      "id": "kasugaTaisha",
+      "name": "Kasuga Taisha",
+      "ticket": "Special Worship of Main Sanctuary",
+      "area": "Nara",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/nara-day-trip",
+      "adult": "¥700",
+      "adultMinYen": 700,
+      "adultMaxYen": 700,
+      "child": null,
+      "childAges": null,
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "The outer grounds are open 6:30–17:30 (Mar–Oct) / 7:00–17:00 (Nov–Feb), but the paid special worship area runs only 9:00–16:00 and is closed, or closed until noon, on certain dates.",
+      "sameDay": null,
+      "hours": "Special worship 09:00–16:00 (closed or morning-closed on some dates)",
+      "revised": {
+        "date": "2024-10-01",
+        "note": "Adult ¥500 → ¥700"
+      },
+      "source": "kasugataisha.or.jp",
+      "sourceUrl": "https://www.kasugataisha.or.jp/en/about_en/basic/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Kyoto & Nara day tour",
+        "ref": "naraDayTourUrl"
+      },
+      "history": [],
+      "unverified": [
+        "child: neither the English info page nor the revision notice gives a child fee for the special worship area"
+      ],
+      "extraSources": [
+        "https://www.kasugataisha.or.jp/news/2024/13583/"
+      ]
+    },
+    {
+      "id": "kinkakuji",
+      "name": "Kinkaku-ji (Rokuon-ji)",
+      "ticket": "Temple grounds admission (sanpai shinoryo)",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/things-to-do-kyoto",
+      "adult": "¥500",
+      "adultMinYen": 500,
+      "adultMaxYen": 500,
+      "child": "¥300",
+      "childAges": "elementary & junior high",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "The official access page lists the fee and daily hours (open every day of the year) with no advance-booking requirement for individual visitors.",
+      "sameDay": null,
+      "hours": "09:00–17:00 (open daily)",
+      "revised": null,
+      "source": "shokoku-ji.jp",
+      "sourceUrl": "https://www.shokoku-ji.jp/kinkakuji/access/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Kyoto highlights day tour",
+        "ref": "kyotoHighlightBusTour"
+      },
+      "history": [],
+      "unverified": [
+        "revised: the only revision notice found is dated 2023-01-06 (effective 2023-04-01) and its fee table is an image, so before/after amounts could not be read; no 2025–2026 revision found for Kinkaku-ji (unlike Ginkaku-ji)",
+        "sameDay: not stated"
+      ],
+      "extraSources": [
+        "https://www.shokoku-ji.jp/kinkakuji/",
+        "https://www.shokoku-ji.jp/kinkakuji/news/%E3%80%90%E9%87%8D%E8%A6%81%E3%81%AA%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B%E3%80%91%E5%8F%82%E6%8B%9D%E5%BF%97%E7%B4%8D%E6%96%99%E6%94%B9%E5%AE%9A%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/"
+      ]
+    },
+    {
+      "id": "ginkakuji",
+      "name": "Ginkaku-ji (Jisho-ji)",
+      "ticket": "Temple grounds admission (sanpai shinoryo)",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/kyoto-2-day-itinerary",
+      "adult": "¥1,000",
+      "adultMinYen": 1000,
+      "adultMaxYen": 1000,
+      "child": "¥500",
+      "childAges": "elementary & junior high",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "The official access page lists the fee and seasonal hours (open every day of the year) with no advance-booking requirement for individual visitors.",
+      "sameDay": null,
+      "hours": "Mar 1–Nov 30 08:30–17:00; Dec 1–end Feb 09:00–16:30",
+      "revised": {
+        "date": "2026-04-01",
+        "note": "Adult ¥500 → ¥1,000; child (elementary & junior high) ¥300 → ¥500"
+      },
+      "source": "shokoku-ji.jp",
+      "sourceUrl": "https://www.shokoku-ji.jp/ginkakuji/access/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "sameDay: not stated"
+      ],
+      "extraSources": [
+        "https://www.shokoku-ji.jp/ginkakuji/news/%e3%80%90%e9%87%8d%e8%a6%81%e3%80%91%e3%80%80%e5%8f%82%e6%8b%9d%e5%bf%97%e7%b4%8d%e6%96%99%e6%94%b9%e5%ae%9a%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b2026%e5%b9%b44%e6%9c%881%e6%97%a5%e3%82%88/",
+        "https://www.shokoku-ji.jp/ginkakuji/"
+      ]
+    },
+    {
+      "id": "nijoCastle",
+      "name": "Nijo Castle (Former Imperial Villa Nijo-jo)",
+      "ticket": "Castle admission ¥800; admission + Ninomaru-goten Palace ¥1,300",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/kyoto-2-day-itinerary",
+      "adult": "¥1,300 (incl. Ninomaru Palace); grounds only ¥800",
+      "adultMinYen": 800,
+      "adultMaxYen": 1300,
+      "child": "¥400 (junior & senior high) / ¥300 (elementary) — castle admission ticket",
+      "childAges": "junior & senior high; elementary (under elementary age free)",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Castle admission and the Ninomaru Palace need no reservation; only the Honmaru Palace (¥1,000 adult, separate) is reservation-based, sold online from 30 days before.",
+      "sameDay": "Yes",
+      "hours": "08:45–16:00 last entry (closes 17:00); Ninomaru Palace viewing until 16:10; closed Dec 29–31",
+      "revised": null,
+      "source": "nijo-jocastle.city.kyoto.lg.jp",
+      "sourceUrl": "https://nijo-jocastle.city.kyoto.lg.jp/admission/fee/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "child: fee page text gives junior/senior high ¥400 and elementary ¥300 for the castle admission ticket; the student cells for the admission + Ninomaru combined ticket are blank in the page text, so whether student tickets include Ninomaru is not confirmed",
+        "revised: no 2025/2026 fee revision notice found on the official fee pages (Honmaru Palace fee was added by 2024 ordinance per search results only, not read on an official page)"
+      ],
+      "extraSources": [
+        "https://nijo-jocastle.city.kyoto.lg.jp/admission/fee/?lang=en",
+        "https://nijo-jocastle.city.kyoto.lg.jp/admission/ticket/",
+        "https://nijo-jocastle.city.kyoto.lg.jp/guide/annai/"
+      ]
+    },
+    {
+      "id": "tenryuji",
+      "name": "Tenryu-ji",
+      "ticket": "Garden (Sogenchi & Hyakkaen); main buildings +¥300; Cloud Dragon (Hatto) ¥500 separate",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/arashiyama-bamboo-forest-tour",
+      "adult": "¥500",
+      "adultMinYen": 500,
+      "adultMaxYen": 500,
+      "child": "¥300",
+      "childAges": "elementary & junior high (preschool free)",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "The official visit page lists fees and reception times with no advance booking for admission (only parking is noted as first come, first served).",
+      "sameDay": null,
+      "hours": "Garden 08:30–17:00 (last entry 16:50); main buildings 08:30–16:45 (last entry 16:30); early 07:30 garden opening Nov 14–30, 2026",
+      "revised": null,
+      "source": "tenryuji.com",
+      "sourceUrl": "https://www.tenryuji.com/visit/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Arashiyama, Kinkaku-ji & Nara day tour",
+        "ref": "arashiyamaNaraTodaijiTour"
+      },
+      "history": [],
+      "unverified": [
+        "sameDay: not stated; revised: no revision notice on the page"
+      ],
+      "extraSources": [
+        "https://www.tenryuji.com/info/"
+      ]
+    },
+    {
+      "id": "toji",
+      "name": "To-ji",
+      "ticket": "Kondo & Kodo halls (special periods add Five-storey Pagoda first floor)",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": null,
+      "adult": "¥800 (regular) / ¥1,200 (special openings)",
+      "adultMinYen": 800,
+      "adultMaxYen": 1200,
+      "child": "¥400 high school, ¥300 junior high & under (regular); ¥700 / ¥500 (special openings)",
+      "childAges": "high school; junior high & under",
+      "atDoor": null,
+      "pricing": "variable",
+      "booking": "Not needed",
+      "bookingNote": "The official admission page lists period-based fees (e.g. Oct 31–Nov 25, 2026 autumn special opening ¥1,200 adult) with no reservation requirement stated.",
+      "sameDay": null,
+      "hours": "Kondo/Kodo 08:00–17:00 (last entry 16:30); autumn light-up Oct 31–Dec 13, 2026 (night fee ¥1,000 adult)",
+      "revised": {
+        "date": "2025-03-20",
+        "note": "Admission fees revised from 2025-03-20 (official notice does not state the before/after amounts; current regular adult Kondo/Kodo ¥800)"
+      },
+      "source": "toji.or.jp",
+      "sourceUrl": "https://toji.or.jp/admission/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "revised: pre-revision amounts not stated on the notice page",
+        "sameDay: not stated"
+      ],
+      "extraSources": [
+        "https://toji.or.jp/smp/2025/02/18/%E6%8B%9D%E8%A6%B3%E6%96%99%E6%94%B9%E5%AE%9A%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/"
+      ]
+    },
+    {
+      "id": "byodoin",
+      "name": "Byodo-in",
+      "ticket": "Garden + Hoshokan Museum (Phoenix Hall interior ¥300 extra, timed groups)",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/kyoto-3-day-itinerary",
+      "adult": "¥700",
+      "adultMinYen": 700,
+      "adultMaxYen": 700,
+      "child": "¥400 (junior & senior high) / ¥300 (elementary)",
+      "childAges": "junior & senior high; elementary",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Phoenix Hall interior tours (35 people each, ¥300) are sold first come, first served at the interior reception from 09:10 until gone.",
+      "sameDay": "Yes",
+      "hours": "Garden 08:45–17:30 (last entry 17:15); Hoshokan 09:00–17:00 (last entry 16:45); Phoenix Hall interior 09:30–16:10",
+      "revised": null,
+      "source": "byodoin.or.jp",
+      "sourceUrl": "https://www.byodoin.or.jp/guide/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Kyoto, Nara & Uji day tour",
+        "ref": "kyotoNaraUjiTour"
+      },
+      "history": [],
+      "unverified": [
+        "revised: no fee revision notice found"
+      ],
+      "extraSources": [
+        "https://www.byodoin.or.jp/faq/public/"
+      ]
+    },
+    {
+      "id": "kyotoImperialPalace",
+      "name": "Kyoto Imperial Palace",
+      "ticket": "Walk-in public visit (Seishomon Gate)",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": null,
+      "adult": "Free",
+      "adultMinYen": 0,
+      "adultMaxYen": 0,
+      "child": "Free",
+      "childAges": null,
+      "atDoor": null,
+      "pricing": "free",
+      "booking": "Not needed",
+      "bookingNote": "Admission is free and no registration or prior arrangement is required; groups should contact the office in advance.",
+      "sameDay": "Yes",
+      "hours": null,
+      "revised": null,
+      "source": "kyoto-gosho.kunaicho.go.jp",
+      "sourceUrl": "https://kyoto-gosho.kunaicho.go.jp/visit",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "hours: the visit page refers to a calendar and does not list seasonal hours/last entry in text; closed Mondays (next day if holiday) and Dec 28–Jan 4"
+      ],
+      "extraSources": [
+        "https://kyoto-gosho.kunaicho.go.jp/en/visit",
+        "https://kyoto-gosho.kunaicho.go.jp/"
+      ]
+    },
+    {
+      "id": "fushimiInari",
+      "name": "Fushimi Inari Taisha",
+      "ticket": "Shrine grounds and Mt. Inari torii paths",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/fushimi-inari-tour",
+      "adult": "Free",
+      "adultMinYen": 0,
+      "adultMaxYen": 0,
+      "child": "Free",
+      "childAges": null,
+      "atDoor": null,
+      "pricing": "free",
+      "booking": "Not needed",
+      "bookingNote": "Kyoto City's official tourism page lists the shrine as having no closing time, open year-round, with day and night visits possible.",
+      "sameDay": null,
+      "hours": "No closing time (open 24 hours); amulet office 08:00–18:00; prayers 08:30–16:30",
+      "revised": null,
+      "source": "ja.kyoto.travel",
+      "sourceUrl": "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=448",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Fushimi Inari small-group walking tour",
+        "ref": "kyotoFushimiInariWalkingTour"
+      },
+      "history": [],
+      "unverified": [
+        "adult 'Free': the shrine's own site (inari.jp) pages fetched do not state an admission fee or free entry; kyoto.travel shows no fee and tags the page '#無料' (free) — free status relies on kyoto.travel",
+        "hours: from kyoto.travel, not inari.jp"
+      ],
+      "extraSources": [
+        "https://inari.jp/sp/request/",
+        "https://inari.jp/access/",
+        "https://inari.jp/about/faq/"
+      ],
+      "note": "The shrine’s own site states no fee; free entry is as listed by Kyoto City’s official tourism site."
+    },
+    {
+      "id": "kodaiji",
+      "name": "Kodai-ji",
+      "ticket": "Temple admission (Kodai-ji & Entoku-in combined ¥1,200)",
+      "area": "Kyoto",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/kyoto-kimono-rental",
+      "adult": "¥800",
+      "adultMinYen": 800,
+      "adultMaxYen": 800,
+      "child": "¥400",
+      "childAges": "junior & senior high (elementary and younger free with a guardian)",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Night special viewing is not timed-entry (入替制ではございません); no advance booking is stated for individual visitors.",
+      "sameDay": null,
+      "hours": "09:00–17:30 (last entry 17:00); night viewing lights on 17:00, last entry 21:30, closes 22:00",
+      "revised": {
+        "date": "2026-04-01",
+        "note": "Adult → ¥800, junior/senior high → ¥400, combined Kodai-ji + Entoku-in → ¥1,200 (first revision in about 30 years; the notice does not state previous amounts — the temple's older English fee page still shows adult ¥600)"
+      },
+      "source": "kodaiji.com",
+      "sourceUrl": "https://www.kodaiji.com/haikan.html",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "revised: pre-revision amounts not stated in the notice; kodaiji.com/h_fee.html (English/Korean) is outdated and still lists adult ¥600, junior/senior high ¥250",
+        "sameDay: not stated"
+      ],
+      "extraSources": [
+        "https://www.kodaiji.com/topi_ryokinkaitei.html",
+        "https://www.kodaiji.com/h_fee.html"
+      ]
+    },
+    {
+      "id": "itsukushima",
+      "name": "Itsukushima Shrine, Miyajima",
+      "ticket": "Shrine admission",
+      "area": "Hiroshima",
+      "city": "osaka",
+      "group": "heritage",
+      "href": "/guides/attractions/hiroshima-miyajima-day-trip",
+      "adult": "¥300",
+      "adultMinYen": 300,
+      "adultMaxYen": 300,
+      "child": "¥100",
+      "childAges": "elementary and middle school; ¥200 high school",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Pay at the entrance. The famous floating torii is best at high tide, so the tide table matters more than the ticket.",
+      "sameDay": "Yes",
+      "hours": "06:30–17:30 (15 Oct–30 Nov); 06:30–17:00 Dec; 06:30–18:00 1 Mar–14 Oct",
+      "revised": null,
+      "source": "itsukushimajinja.jp",
+      "sourceUrl": "https://www.itsukushimajinja.jp/jp/admission.html",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Hiroshima & Miyajima bus tour",
+        "ref": "hiroshimaMiyajimaBusTourUrl"
+      },
+      "history": [
+        {
+          "checked": "2026-10-19",
+          "adult": "¥300",
+          "child": "¥100"
+        }
+      ]
+    },
+    {
+      "id": "shurijo",
+      "name": "Shurijo Castle Park (paid area)",
+      "ticket": "Paid-area admission",
+      "area": "Okinawa",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/okinawa-day-tours",
+      "adult": "¥400",
+      "adultMinYen": 400,
+      "adultMaxYen": 400,
+      "child": "¥160",
+      "childAges": "elementary and junior high; ¥300 high school; under 6 free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Same-day tickets are sold at the Kofukumon ticket booth and online, with e-tickets recommended for smoother entry; the whole park closes 22 Nov 2026 and the paid area opens at 12:00 on 23 Nov 2026.",
+      "sameDay": "Yes",
+      "hours": "08:30–19:00 Apr–Nov (last entry 18:30); 08:30–18:00 Dec–Mar (last entry 17:30)",
+      "revised": {
+        "date": "2026-11-23",
+        "note": "Adult ¥400 → ¥1,000 (high school ¥300 → ¥760, elementary/junior high ¥160 → ¥370), with the main hall opening"
+      },
+      "source": "oki-park.jp",
+      "sourceUrl": "https://oki-park.jp/shurijo/info/14/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Shuri Castle walking tour",
+        "ref": "shuriCastlePeaceWalkingTour"
+      },
+      "history": [],
+      "extraSources": [
+        "https://oki-park.jp/shurijo/info/15/"
+      ]
+    },
+    {
+      "id": "kenrokuen",
+      "name": "Kenrokuen Garden",
+      "ticket": "Garden admission",
+      "area": "Ishikawa",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/japan-winter-itinerary",
+      "adult": "¥320",
+      "adultMinYen": 320,
+      "adultMaxYen": 320,
+      "child": "¥100",
+      "childAges": "ages 6–17; 65+ free with proof of age",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Pay at the ticket counter by cash or card on entry; an official online ticket is also sold via asoview.",
+      "sameDay": "Yes",
+      "hours": "08:00–17:00 16 Oct–end Feb (last entry 16:30); 07:00–18:00 1 Mar–15 Oct (last entry 17:30)",
+      "revised": null,
+      "source": "shiro-niwa.pref.ishikawa.lg.jp",
+      "sourceUrl": "https://shiro-niwa.pref.ishikawa.lg.jp/kenrokuen-garden/info.html",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Kenroku-en & Higashi Chaya day tour",
+        "ref": "kanazawaKenrokuenHigashiChayaDayTour"
+      },
+      "history": [],
+      "unverified": [
+        "revised: no 2025/2026 fee revision found on the official info page"
+      ],
+      "extraSources": [
+        "https://shiro-niwa.pref.ishikawa.lg.jp/kenrokuen-garden/"
+      ]
+    },
+    {
+      "id": "matsumotoCastle",
+      "name": "Matsumoto Castle",
+      "ticket": "Castle admission incl. main keep",
+      "area": "Nagano",
+      "city": null,
+      "group": "heritage",
+      "href": null,
+      "adult": "¥1,200 e-ticket / ¥1,300 paper",
+      "adultMinYen": 1200,
+      "adultMaxYen": 1300,
+      "child": "¥400",
+      "childAges": "elementary and junior high; preschoolers free",
+      "atDoor": "¥1,300",
+      "pricing": "fixed",
+      "booking": "Advised",
+      "bookingNote": "Timed-entry tickets are sold as e-tickets and paper tickets, and e-tickets cannot be cancelled or changed after purchase.",
+      "sameDay": "Yes",
+      "hours": "08:30–17:00 (last entry 16:30); closed 29–31 Dec",
+      "revised": {
+        "date": "2025-04",
+        "note": "Adult ¥700 → ¥1,200 e-ticket / ¥1,300 paper"
+      },
+      "source": "matsumoto-castle.jp",
+      "sourceUrl": "https://www.matsumoto-castle.jp/info",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "unverified": [
+        "revised.date: the mayor's 25 Nov 2024 press conference says the revision took effect 'next April' (April 2025) and the city info page is dated 2025-04-01; the day of month is not stated explicitly",
+        "revised.note: old ¥700 is from the official site's merchandise PDF (search listing) and city press conference, not a single official before/after table",
+        "sameDay price: a 当日券 (non-timed) is listed but its separate price was not readable; Nov 2026 free-entry campaign for Matsumoto/Himeji citizens noted on homepage"
+      ],
+      "extraSources": [
+        "https://www.matsumoto-castle.jp/",
+        "https://www.city.matsumoto.nagano.jp/soshiki/135/4118.html",
+        "https://www.city.matsumoto.nagano.jp/site/yokosomayorsoffice/156544.html",
+        "https://www.matsumoto-castle.jp/img/common/side/marchandising.pdf",
+        "https://www.matsumoto-castle.jp/topics/10080.html"
+      ]
+    },
+    {
+      "id": "nagoyaCastle",
+      "name": "Nagoya Castle",
+      "ticket": "Castle grounds admission (keep closed for wooden reconstruction)",
+      "area": "Aichi",
+      "city": null,
+      "group": "heritage",
+      "href": null,
+      "adult": "¥1,000",
+      "adultMinYen": 1000,
+      "adultMaxYen": 1000,
+      "child": "Free",
+      "childAges": "junior high and younger",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Tickets are sold at the ticket counter (cash or cashless) and as WEB tickets via asoview; the main keep cannot be entered.",
+      "sameDay": "Yes",
+      "hours": "09:00–16:30 (Honmaru Palace last entry 16:00); closed 29 Dec–1 Jan",
+      "revised": {
+        "date": "2026-10-01",
+        "note": "Adult ¥500 → ¥1,000"
+      },
+      "source": "nagoyajo.city.nagoya.jp",
+      "sourceUrl": "https://www.nagoyajo.city.nagoya.jp/info/fee/",
+      "checked": "2026-11-11",
+      "klook": null,
+      "history": [],
+      "extraSources": [
+        "https://www.nagoyajo.city.nagoya.jp/topics/2026/06/20260601_4849.html",
+        "https://www.nagoyajo.city.nagoya.jp/"
+      ]
+    },
+    {
+      "id": "kumamotoCastle",
+      "name": "Kumamoto Castle",
+      "ticket": "Castle admission",
+      "area": "Kumamoto",
+      "city": null,
+      "group": "heritage",
+      "href": "/guides/attractions/kyushu-5-day-itinerary",
+      "adult": "¥800",
+      "adultMinYen": 800,
+      "adultMaxYen": 800,
+      "child": "¥300",
+      "childAges": "elementary and junior high; high school pays adult; preschoolers free",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "QR e-tickets can be bought in advance online, and purchases cannot be cancelled, changed or refunded.",
+      "sameDay": "Yes",
+      "hours": "09:00–17:00 Sep–Jun (last entry 16:00); 09:00–19:00 Jul–Aug (last entry 18:00)",
+      "revised": null,
+      "source": "castle.kumamoto-guide.jp",
+      "sourceUrl": "https://castle.kumamoto-guide.jp/info/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Kumamoto Castle & Takachiho tour",
+        "ref": "kumamotoCastleTakachihoTour"
+      },
+      "history": [],
+      "extraSources": [
+        "https://castle.kumamoto-guide.jp/"
+      ]
+    },
+    {
+      "id": "tokyoSubwayTicket",
+      "name": "Tokyo Subway Ticket",
+      "ticket": "24-hour pass (48 h ¥1,500 / 72 h ¥2,000)",
+      "area": "Tokyo",
+      "city": "tokyo",
+      "group": "passes",
+      "href": "/guides/attractions/tokyo-subway-ticket",
+      "adult": "¥1,000",
+      "adultMinYen": 1000,
+      "adultMaxYen": 1000,
+      "child": "¥500",
+      "childAges": "child rate, half the adult price at every length",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Sold to visitors only, at airports and designated counters. It covers Tokyo Metro and Toei but not JR — including the Yamanote Line.",
+      "sameDay": null,
+      "hours": null,
+      "revised": null,
+      "source": "tokyometro.jp",
+      "sourceUrl": "https://www.tokyometro.jp/en/ticket/value/travel/index.html",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Tokyo Subway Ticket (24 / 48 / 72 hour)",
+        "ref": "tokyoSubwayTicket"
+      },
+      "history": [
+        {
+          "checked": "2026-11-07",
+          "adult": "¥1,000",
+          "child": "¥500"
+        }
+      ],
+      "unverified": [
+        "childAges: page gives no child age cutoff",
+        "sameDay/sales points: page read today lists only online purchase links; physical sales points not stated there"
+      ]
+    },
+    {
+      "id": "osakaAmazingPass",
+      "name": "Osaka Amazing Pass",
+      "ticket": "1-day pass (2-day ¥5,000)",
+      "area": "Osaka",
+      "city": "osaka",
+      "group": "passes",
+      "href": "/guides/attractions/osaka-attractions-pass",
+      "adult": "¥3,500",
+      "adultMinYen": 3500,
+      "adultMaxYen": 3500,
+      "child": null,
+      "childAges": null,
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Unlimited Osaka Metro, city buses and the private railways within the city, plus about 40 free admissions. Universal Studios Japan and Kaiyukan are not on it.",
+      "sameDay": null,
+      "hours": null,
+      "revised": null,
+      "source": "osaka-amazing-pass.com/en",
+      "sourceUrl": "https://osaka-amazing-pass.com/en/info.html",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Osaka Amazing Pass (1-day / 2-day)",
+        "ref": "osakaAmazingPassUrl"
+      },
+      "history": [
+        {
+          "checked": "2026-11-09",
+          "adult": "¥3,500",
+          "child": null
+        }
+      ],
+      "unverified": [
+        "child: no child fare listed on the page (the existing record cites the official FAQ for 'no child pass')",
+        "sameDay: not stated"
+      ]
+    },
+    {
+      "id": "hakoneFreepass",
+      "name": "Hakone Freepass",
+      "ticket": "2-day from Shinjuku (3-day ¥7,500)",
+      "area": "Kanagawa",
+      "city": "tokyo",
+      "group": "passes",
+      "href": "/guides/attractions/hakone-free-pass",
+      "adult": "¥7,100",
+      "adultMinYen": 7100,
+      "adultMaxYen": 7100,
+      "child": "¥1,600",
+      "childAges": "child rate",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Covers eight modes of transport around the loop but not the Romancecar surcharge, and there is no 1-day version.",
+      "sameDay": "Yes",
+      "hours": null,
+      "revised": null,
+      "source": "odakyu-global.com",
+      "sourceUrl": "https://odakyu-global.com/passes/hakone-freepass/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Hakone Freepass (2-day / 3-day)",
+        "ref": "hakoneFreepass"
+      },
+      "history": [
+        {
+          "checked": "2026-11-09",
+          "adult": "¥7,100",
+          "child": "¥1,600"
+        }
+      ],
+      "unverified": [
+        "hours: not applicable / not stated"
+      ]
+    },
+    {
+      "id": "mtFujiPass",
+      "name": "Mt. Fuji Pass",
+      "ticket": "1 day (2 day ¥10,200 / 3 day ¥12,400)",
+      "area": "Yamanashi / Shizuoka",
+      "city": "other",
+      "group": "passes",
+      "href": "/guides/attractions/mt-fuji-day-trip-tokyo",
+      "adult": "¥7,500",
+      "adultMinYen": 7500,
+      "adultMaxYen": 7500,
+      "child": "¥3,750",
+      "childAges": "child rate, half the adult price at every length",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Unlimited buses and trains around the Fuji Five Lakes once you are there, with the ropeway and lake cruise included. It does not cover getting out of Tokyo.",
+      "sameDay": "Yes",
+      "hours": null,
+      "revised": null,
+      "source": "bus.fujikyu.co.jp/mtpass/en",
+      "sourceUrl": "https://bus.fujikyu.co.jp/mtpass/en",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Mt. Fuji Pass (1, 2 or 3 day)",
+        "ref": "mtFujiPass"
+      },
+      "history": [
+        {
+          "checked": "2026-10-19",
+          "adult": "¥7,500",
+          "child": "¥3,750"
+        }
+      ],
+      "unverified": [
+        "page states its details are 'as of November 2024' and subject to change; no newer revision notice found",
+        "hours: counter hours not stated"
+      ]
+    },
+    {
+      "id": "hakoneRopeway",
+      "name": "Hakone Ropeway",
+      "ticket": "One way, any section incl. Sounzan–Togendai (round trip ¥3,000)",
+      "area": "Kanagawa",
+      "city": null,
+      "group": "passes",
+      "href": "/guides/attractions/hakone-day-trip-from-tokyo",
+      "adult": "¥2,000",
+      "adultMinYen": 2000,
+      "adultMaxYen": 2000,
+      "child": "¥700",
+      "childAges": null,
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Flat fare between any two stations; tickets are sold at Sounzan, Owakudani, Ubako and Togendai stations, and a round trip (¥3,000 / child ¥1,000) is valid 2 days.",
+      "sameDay": "Yes",
+      "hours": null,
+      "revised": {
+        "date": "2025-10-01",
+        "note": "Adult one way ¥1,500 → ¥2,000, round trip ¥2,500 → ¥3,000; child one way ¥500 → ¥700, round trip ¥800 → ¥1,000"
+      },
+      "source": "hakonenavi.jp",
+      "sourceUrl": "https://www.hakonenavi.jp/transportation/ticket/ropeway/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Hakone loop day tour (ropeway included)",
+        "ref": "hakoneLoopBusTour"
+      },
+      "history": [],
+      "unverified": [
+        "sourceUrl is Hakone Navi, the official site of the operator's group (Odakyu Hakone); hakoneropeway.co.jp did not resolve (DNS ENOTFOUND)",
+        "childAges: not stated on the fare page",
+        "hours: not stated on the fare page"
+      ]
+    },
+    {
+      "id": "miyajimaRopeway",
+      "name": "Miyajima Ropeway",
+      "ticket": "Round trip to Mt. Misen",
+      "area": "Hiroshima",
+      "city": "osaka",
+      "group": "passes",
+      "href": "/guides/attractions/hiroshima-miyajima-day-trip",
+      "adult": "¥2,000",
+      "adultMinYen": 2000,
+      "adultMaxYen": 2000,
+      "child": "¥1,000",
+      "childAges": "ages 6–11",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Buy at the lower station. It is the single most expensive item on a Miyajima day, and optional.",
+      "sameDay": null,
+      "hours": "Up 09:00–16:00, down 09:20–16:30 (as of 11 Nov 2026)",
+      "revised": null,
+      "source": "miyajima-ropeway.info",
+      "sourceUrl": "https://miyajima-ropeway.info/fare",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Hiroshima & Miyajima bus tour",
+        "ref": "hiroshimaMiyajimaBusTourUrl"
+      },
+      "history": [
+        {
+          "checked": "2026-10-19",
+          "adult": "¥2,000",
+          "child": "¥1,000"
+        }
+      ],
+      "unverified": [
+        "sameDay: fare page does not state where tickets are sold"
+      ],
+      "extraSources": [
+        "https://miyajima-ropeway.info/"
+      ]
+    },
+    {
+      "id": "moiwaRopeway",
+      "name": "Mt. Moiwa Ropeway",
+      "ticket": "Ropeway + mini cable car round trip",
+      "area": "Hokkaido",
+      "city": null,
+      "group": "passes",
+      "href": "/guides/attractions/hokkaido-7-day-itinerary",
+      "adult": "¥2,100",
+      "adultMinYen": 2100,
+      "adultMaxYen": 2100,
+      "child": "¥1,050",
+      "childAges": "elementary and younger (2 preschoolers free per paying adult)",
+      "atDoor": null,
+      "pricing": "fixed",
+      "booking": "Not needed",
+      "bookingNote": "Tickets are sold at the 4th-floor counter of the foothill station; KKday web tickets are exchanged there for paper tickets.",
+      "sameDay": "Yes",
+      "hours": "Ropeway 10:30–22:00 Apr–Nov, 11:00–22:00 Dec–Mar (last ascent 21:30); closed 31 Dec–1 Jan",
+      "revised": null,
+      "source": "mt-moiwa.jp",
+      "sourceUrl": "https://mt-moiwa.jp/guide/",
+      "checked": "2026-11-11",
+      "klook": {
+        "label": "Klook: Sapporo TV Tower + Mt. Moiwa set ticket",
+        "ref": "sapporoTvTowerMoiwaSetTicket"
+      },
+      "history": [],
+      "extraSources": [
+        "https://mt-moiwa.jp/"
+      ]
+    }
+  ],
+  "unpriced": [
+    {
+      "id": "usj",
+      "name": "Universal Studios Japan",
+      "area": "Osaka",
+      "href": "/guides/attractions/usj-tickets-express-pass",
+      "status": "unreadable",
+      "reason": "Studio Pass prices are set per date on a calendar that renders only in the browser, and the online store sits behind a waiting room, so no figure could be read on 11 November 2026. Our USJ guide covers how the date tiers work.",
+      "sourceUrl": "https://www.usj.co.jp/web/en/us/tickets",
+      "checked": "2026-11-11"
+    },
+    {
+      "id": "horyuji",
+      "name": "Horyu-ji",
+      "area": "Nara",
+      "href": null,
+      "status": "unreadable",
+      "reason": "The official site (horyuji.or.jp) failed its security certificate on every page on 11 November 2026.",
+      "sourceUrl": "https://www.horyuji.or.jp/",
+      "checked": "2026-11-11"
+    },
+    {
+      "id": "kiyomizudera",
+      "name": "Kiyomizu-dera",
+      "area": "Kyoto",
+      "href": "/guides/attractions/things-to-do-kyoto",
+      "status": "unreadable",
+      "reason": "No official page states the regular admission fee as text (the fee table is an image), so no figure is recorded.",
+      "sourceUrl": "https://www.kiyomizudera.or.jp/news/open-hour.php",
+      "checked": "2026-11-11"
+    },
+    {
+      "id": "sanjusangendo",
+      "name": "Sanjusangendo (Rengeo-in)",
+      "area": "Kyoto",
+      "href": null,
+      "status": "unreadable",
+      "reason": "The official site (sanjusangendo.jp) failed its security certificate on every page on 11 November 2026.",
+      "sourceUrl": "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=488",
+      "checked": "2026-11-11"
+    },
+    {
+      "id": "ryoanji",
+      "name": "Ryoan-ji",
+      "area": "Kyoto",
+      "href": null,
+      "status": "unreadable",
+      "reason": "The official site (ryoanji.jp) could not be reached over a secure connection on 11 November 2026.",
+      "sourceUrl": "http://www.ryoanji.jp/",
+      "checked": "2026-11-11"
+    },
+    {
+      "id": "hiroshimaCastle",
+      "name": "Hiroshima Castle (main keep)",
+      "area": "Hiroshima",
+      "href": "/guides/attractions/hiroshima-2-day-itinerary",
+      "status": "closed",
+      "reason": "The main keep has been closed since 22 March 2026 (Hiroshima City), so there is no admission to quote.",
+      "sourceUrl": "https://www.city.hiroshima.lg.jp/tourism-culture/history/1026883/1026891/1044406.html",
+      "checked": "2026-11-11"
+    },
+    {
+      "id": "yokohamaLandmarkSkyGarden",
+      "name": "Yokohama Landmark Tower Sky Garden",
+      "area": "Kanagawa",
+      "href": null,
+      "status": "closed",
+      "reason": "Closed for renovation until 2028 or later (official site); no fee is published.",
+      "sourceUrl": "https://www.yokohama-landmark.jp/skygarden/",
+      "checked": "2026-11-11"
+    }
+  ]
+}

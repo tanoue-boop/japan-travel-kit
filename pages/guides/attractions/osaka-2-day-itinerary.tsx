@@ -7,7 +7,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
-import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { priceById, checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import {
   dotonboriCityCruise,
   dotonboriDaytimeFoodTour,
@@ -74,9 +74,11 @@ const PASS_1_DAY = PRICES.osakaAmazingPass.adult;
 const PASS_2_DAY = "¥5,000";
 const PASS_CHECKED = checkedLabel(PRICES.osakaAmazingPass.checked);
 
-const CASTLE_ADULT = "¥1,200";
+/** Official adult price, from data/attraction-prices.json (osakaCastle). */
+const CASTLE_ADULT = priceById("osakaCastle").adult;
 const CRUISE_ADULT = "¥2,000";
-const UMEDA_ADULT = "¥2,000";
+/** Official adult price, from data/attraction-prices.json (umedaSky). */
+const UMEDA_ADULT = priceById("umedaSky").adult;
 const ECO_CARD_WEEKDAY = "¥820";
 const ECO_CARD_WEEKEND = "¥620";
 

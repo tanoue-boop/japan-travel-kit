@@ -211,9 +211,10 @@ const lines = [
   "## Start here",
   "",
   `- [All guides, indexed by topic](${url("/guides")}): every guide on the site, grouped by the question it answers.`,
-  `- [Japan Attraction Ticket Prices 2026](${url(PRICE_TABLE_ROUTE)}): one table of official adult and child` +
-    ` admission, advance-booking rules, operator sources and check dates for ${attractionPrices.length} Japanese` +
-    ` attractions, theme parks, passes and day-trip sites. Most recent check: ${checkedLabel(latestChecked())}.`,
+  `- [Japan Attraction Ticket Prices 2026](${url(PRICE_TABLE_ROUTE)}): official adult and child` +
+    ` admission, advance-booking rules, 2026 fee revisions, operator source URLs and check dates for ${attractionPrices.length}` +
+    ` Japanese attractions — decks, museums, theme parks, temples, castles and passes. Free CSV (CC BY 4.0):` +
+    ` ${url("/data/japan-attraction-prices.csv")}. Most recent check: ${checkedLabel(latestChecked())}.`,
   `- [${oneLine(esimCategory.name)} hub](${url(esimCategory.href)}): ${oneLine(esimCategory.intro[0])}`,
   `- [${oneLine(transportCategory.name)} hub](${url(transportCategory.href)}): ${oneLine(transportCategory.intro[0])}`,
   `- [${oneLine(moneyCategory.name)} hub](${url(moneyCategory.href)}): ${oneLine(moneyCategory.intro[0])}`,

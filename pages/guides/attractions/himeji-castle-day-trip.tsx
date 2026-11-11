@@ -13,7 +13,7 @@ import {
   jrKansaiAreaPass,
   jrKansaiWideAreaPass,
 } from "../../../lib/klook-links";
-import { checkedLabel } from "../../../lib/attraction-prices";
+import { priceById, checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 
 // CTA links. The headline CTA is the castle-first coach day out of Osaka (6.5%
@@ -40,7 +40,8 @@ const WIDE_PASS_URL = jrKansaiWideAreaPass.url;
 //    our own kansai-area-pass guide, which was built from the same page today.
 const CHECKED = checkedLabel("2026-10-25");
 
-const ADULT = "¥2,500";
+/** Official adult price, from data/attraction-prices.json (himejiCastle). */
+const ADULT = priceById("himejiCastle").adult;
 const COMBO = "¥2,600";
 const KOKOEN = "¥400";
 

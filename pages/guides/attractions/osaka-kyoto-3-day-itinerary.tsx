@@ -8,7 +8,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
-import { checkedLabel } from "../../../lib/attraction-prices";
+import { priceById, checkedLabel } from "../../../lib/attraction-prices";
 import {
   dotonboriCityCruise,
   jrHarukaUrl,
@@ -110,8 +110,10 @@ const KAIYUKAN_CHECKED = checkedLabel("2026-10-22");
 const PASS_CHECKED = checkedLabel("2026-11-09");
 const KYOTO_CITY_CHECKED = checkedLabel("2026-10-26");
 
-const CASTLE_ADULT = "¥1,200";
-const UMEDA_ADULT = "¥2,000";
+/** Official adult price, from data/attraction-prices.json (osakaCastle). */
+const CASTLE_ADULT = priceById("osakaCastle").adult;
+/** Official adult price, from data/attraction-prices.json (umedaSky). */
+const UMEDA_ADULT = priceById("umedaSky").adult;
 const CRUISE_ADULT = "¥2,000";
 const KIYOMIZU_ADULT = "¥500";
 const NIJO_ADULT = "¥1,300";

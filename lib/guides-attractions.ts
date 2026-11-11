@@ -5,10 +5,10 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/japan-attraction-ticket-prices",
     badge: "Prices",
-    title: "Japan Attraction Ticket Prices 2026: Official Prices and Booking Rules",
-    desc: "Official adult and child admission for every ticketed attraction, park, pass and day-trip site we have verified — in one table, each row dated and sourced to the operator's own site.",
+    title: "Japan Attraction Ticket Prices 2026: 70+ Official Prices (Updated Monthly)",
+    desc: "Official adult and child admission for 70+ Japanese attractions — decks, museums, theme parks, temples, castles and passes — with the 2026 fee rises, booking rules and a free CSV, each row dated and sourced.",
     group: "tickets",
-    // Nationwide: the table spans Tokyo, Osaka, Nara, Kamakura, Miyajima and the Fuji area.
+    // Nationwide since 2026-11-11 (D02): Tokyo, Kansai, Hiroshima, Okinawa, Hokkaido, Kanazawa and more.
     city: "other",
   },
   {

@@ -9,7 +9,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
-import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { priceById, checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import {
   hakoneFreepass,
   hiroshimaMiyajimaJoinDayTour,
@@ -90,8 +90,10 @@ const KANSAI_HIROSHIMA_PASS = 17000;
 
 const BUS_KANAZAWA_SHIRAKAWAGO = "¥2,900";
 const BUS_SHIRAKAWAGO_TAKAYAMA = "¥2,900";
-const TOSHOGU_ADULT = "¥1,600";
-const KINKAKUJI_ADULT = "¥500";
+/** Official adult price, from data/attraction-prices.json (nikkoToshogu). */
+const TOSHOGU_ADULT = priceById("nikkoToshogu").adult;
+/** Official adult price, from data/attraction-prices.json (kinkakuji). */
+const KINKAKUJI_ADULT = priceById("kinkakuji").adult;
 
 const ROUTE = "/guides/attractions/japan-3-week-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;

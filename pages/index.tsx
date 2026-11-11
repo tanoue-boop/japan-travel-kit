@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { attractionPrices, latestChecked } from "../lib/attraction-prices";
+import { attractionPrices, latestChecked, priceSummary, PRICE_TABLE_ROUTE } from "../lib/attraction-prices";
 import Link from "next/link";
 import { esimArticles } from "../lib/guides-esim";
 import { transportArticles } from "../lib/guides-transport";
@@ -249,6 +249,24 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
       />
 
       <StatsBand stats={stats} />
+
+      {/* The official-price database behind the "Official prices checked" count above
+          (jtk-20261111-D02). Numbers come from data/attraction-prices.json. */}
+      <HomeSection
+        tone="paper"
+        eyebrow="Official prices"
+        title="What Japan's Attractions Cost in 2026"
+        desc="Every figure read on the operator's own site, dated and sourced."
+      >
+        <p style={{ color: "var(--text-muted)", lineHeight: 1.75 }}>
+          The <Link href={PRICE_TABLE_ROUTE}>Japan attraction ticket prices table</Link> lists the official adult and
+          child admission of {attractionPrices.length} attractions — observation decks, museums, theme parks, temples,
+          castles and passes. The median adult ticket is ¥{priceSummary.medianAdultYen?.toLocaleString("en-US")},
+          only {priceSummary.mustBook.length} have to be booked before you arrive, and{" "}
+          {priceSummary.revisedIn(2026).length} raised their fees in 2026. The full table is a free CSV, re-checked on
+          the 1st of every month.
+        </p>
+      </HomeSection>
 
       {/* Winter, December to February. Added 6 Nov 2026 (jtk-20261106-A21): the booking
           window for these trips opens now, and the guides had no route from this page. */}

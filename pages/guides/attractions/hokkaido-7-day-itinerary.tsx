@@ -10,7 +10,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
-import { checkedLabel } from "../../../lib/attraction-prices";
+import { priceById, checkedLabel } from "../../../lib/attraction-prices";
 import {
   bieiFuranoLavenderDayTour,
   furanoBieiBluePondDayTour,
@@ -206,7 +206,8 @@ const PASS_5 = "¥22,000";
 const PASS_10 = "¥37,000";
 const AREA_FURANO = "¥11,000";
 const AREA_NOBORIBETSU = "¥10,000";
-const ZOO_ADULT = "¥1,000";
+/** Official adult price, from data/attraction-prices.json (asahiyamaZoo). */
+const ZOO_ADULT = priceById("asahiyamaZoo").adult;
 const CRUISE_DAY = "¥1,800";
 const SUBWAY_DAY_PASS = "¥830";
 const DONICHIKA = "¥520";

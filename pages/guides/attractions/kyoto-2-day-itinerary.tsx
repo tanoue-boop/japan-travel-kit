@@ -7,7 +7,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
-import { checkedLabel } from "../../../lib/attraction-prices";
+import { priceById, checkedLabel } from "../../../lib/attraction-prices";
 import {
   jrKansaiAreaPass,
   klookEsim,
@@ -109,7 +109,8 @@ const SAGANO_CHECKED = checkedLabel("2026-11-07");
 
 const KIYOMIZU_ADULT = "¥500";
 const NIJO_ADULT = "¥1,300";
-const GINKAKU_ADULT = "¥1,000";
+/** Official adult price, from data/attraction-prices.json (ginkakuji). */
+const GINKAKU_ADULT = priceById("ginkakuji").adult;
 const PASS_ADULT = "¥1,100";
 const BUS_FARE = "¥230";
 

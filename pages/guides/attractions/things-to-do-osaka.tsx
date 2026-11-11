@@ -9,6 +9,7 @@ import { osakaAmazingPass, kyotoNaraArashiyamaTour } from "../../../lib/klook-li
 import GygCompare from "../../../components/GygCompare";
 import { gygNaraFromOsaka, gygOsaka } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { priceById } from "../../../lib/attraction-prices";
 
 // Osaka Amazing Pass prices read off the official site, osp.osaka-info.jp, on 19 Oct 2026.
 // Individual attraction admissions are deliberately absent — most of the included venues
@@ -204,6 +205,14 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             around a giant central tank with whale sharks — a superb option for families or a rainy day. Both
             of these are the attractions the Amazing Pass excludes, and both sell their own tickets, so treat
             whichever you choose as its own day and its own budget line.
+          </p>
+          <p className={styles.bodyText}>
+            For the budget line itself: the Kaiyukan&apos;s own site prices an adult at {priceById("kaiyukan").adult}{" "}
+            depending on the date, against {priceById("osakaCastle").adult} for Osaka Castle&apos;s main tower and{" "}
+            {priceById("abenoHarukas").adult} for the Harukas 300 deck booked online. Those and the rest of Kansai —
+            Himeji Castle, Nara, Kobe — are in our{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>Japan attraction ticket prices table</Link>,
+            each with the date it was read.
           </p>
         </section>
 

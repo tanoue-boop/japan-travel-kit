@@ -3,6 +3,7 @@ import Link from "next/link";
 import GuideHub from "../../../components/GuideHub";
 import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import { attractionArticles, attractionsCategory } from "../../../lib/guides-attractions";
+import { attractionPrices } from "../../../lib/attraction-prices";
 import { fujiDayTour, jrHokkaidoRailPass, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { articleDates } from "../../../lib/page-dates";
 import { hubItemListJsonLd } from "../../../lib/structured-data";
@@ -81,7 +82,9 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>JR Kansai Area Pass</Link>.
             For Tokyo alone, our{" "}
             <Link href="/guides/attractions/things-to-do-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>things to do in Tokyo guide</Link>{" "}
-            lists ticket prices and what to book ahead. For a first night in Tokyo, a 3-hour{" "}
+            lists ticket prices and what to book ahead; for the whole country, the{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={L}>Japan attraction ticket prices table</Link>{" "}
+            has the official admission of {attractionPrices.length} sights, the 2026 fee rises and a free CSV. For a first night in Tokyo, a 3-hour{" "}
             <Link href="/guides/attractions/tokyo-food-tour" style={L}>Tokyo food tour through Shinjuku&apos;s izakaya and Golden Gai</Link>{" "}
             is the easy booking; in Osaka, the{" "}
             <Link href="/guides/attractions/dotonbori-river-cruise" style={L}>Dotonbori River Cruise</Link> is ¥2,000

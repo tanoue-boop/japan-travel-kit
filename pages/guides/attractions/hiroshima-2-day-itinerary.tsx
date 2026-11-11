@@ -7,7 +7,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
-import { checkedLabel } from "../../../lib/attraction-prices";
+import { priceById, checkedLabel } from "../../../lib/attraction-prices";
 import {
   hiroshimaMiyajimaFullDayPrivateTour,
   hiroshimaMiyajimaJoinDayTour,
@@ -77,8 +77,10 @@ const OWN = checkedLabel("2026-11-08");
 const MUSEUM_NOTICES = checkedLabel("2026-11-05");
 const RAIL = checkedLabel("2026-10-28");
 
-const MUSEUM_ADULT = "¥200";
-const SHRINE_ADULT = "¥300";
+/** Official adult price, from data/attraction-prices.json (peaceMuseum). */
+const MUSEUM_ADULT = priceById("peaceMuseum").adult;
+/** Official adult price, from data/attraction-prices.json (itsukushima). */
+const SHRINE_ADULT = priceById("itsukushima").adult;
 const ROPEWAY_RETURN = "¥2,000";
 const FERRY_ONE_WAY = "¥200";
 const VISITOR_TAX = "¥100";

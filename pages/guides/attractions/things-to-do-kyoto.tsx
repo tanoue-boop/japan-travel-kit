@@ -6,6 +6,7 @@ import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel, priceById } from "../../../lib/attraction-prices";
 import {
   kyotoHighlightBusTour,
   kyotoNaraArashiyamaTour,
@@ -15,9 +16,13 @@ import GygCompare from "../../../components/GygCompare";
 import { gygKyoto, gygKyotoDayTrips } from "../../../lib/gyg-links";
 
 // Kyoto pass and single-fare figures are the ones our Kyoto Subway & Bus Pass guide verified
-// against the city's own tables. Temple admissions are deliberately absent: Kinkaku-ji has a
-// price revision posted on its own site as of this date, so no figure here would be reliable.
+// against the city's own tables. Temple admissions come from data/attraction-prices.json
+// (read on the temples' own sites, task D02), never typed in here.
 const CHECKED = "19 October 2026";
+const KINKAKU = priceById("kinkakuji");
+const GINKAKU = priceById("ginkakuji");
+const KODAI = priceById("kodaiji");
+const NIJO = priceById("nijoCastle");
 
 const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 
@@ -258,6 +263,13 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             the train and what the admission actually buys, and our{" "}
             <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka" style={linkStyle}>Kyoto and Nara day tour comparison</Link>{" "}
             sorts the guided itineraries if you would rather have both in one booking.
+          </p>
+          <p className={styles.bodyText}>
+            Kyoto&apos;s temple gates are walk-up, but several went up in 2026. On the temples&apos; own sites,
+            Kinkaku-ji is {KINKAKU.adult}, Ginkaku-ji {GINKAKU.adult} (doubled on 1 April 2026), Kodai-ji{" "}
+            {KODAI.adult} and Nijo Castle {NIJO.adult} — read on {checkedLabel(GINKAKU.checked)}. Every one, with
+            the child rates and the source page, is in our{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>Japan attraction ticket prices table</Link>.
           </p>
           <p className={styles.bodyText}>
             The ambitious option is{" "}

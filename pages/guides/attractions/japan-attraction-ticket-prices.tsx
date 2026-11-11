@@ -2,16 +2,23 @@ import { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import tools from "../../../styles/Tools.module.css";
 import KlookLink from "../../../components/KlookLink";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { articleJsonLd } from "../../../lib/structured-data";
+import { ORGANIZATION_ID, SITE_NAME, SITE_URL, articleJsonLd } from "../../../lib/structured-data";
 import {
   attractionPrices,
   checkedLabel,
-  latestChecked,
   pricesInGroup,
+  priceRows,
+  priceSummary,
+  PRICE_CSV_PATH,
   PRICE_GROUP_LABELS,
+  PRICE_TABLE_ROUTE,
+  PRICE_UPDATE_POLICY,
+  PRICES,
+  unpricedAttractions,
   type AttractionPrice,
   type PriceGroup,
 } from "../../../lib/attraction-prices";
@@ -32,41 +39,36 @@ import {
   whereToStayTokyoAreas,
 } from "../../../lib/klook-links";
 
-const TITLE = "Japan Attraction Ticket Prices 2026: Official Prices";
-const DESC =
-  "Official adult and child admission for every ticketed Japanese attraction, park and pass in 1 table — each row dated and sourced to the operator.";
-
-const GROUP_ORDER: PriceGroup[] = ["tickets", "parks", "passes", "daytrips"];
-
-const ROW_COUNT = attractionPrices.length;
-const FREE_COUNT = attractionPrices.filter((p) => p.adult === "Free").length;
-const MUST_BOOK = attractionPrices.filter((p) => p.booking === "Required");
-const NO_BOOKING = attractionPrices.filter((p) => p.booking === "Not needed");
-const DATE_PRICED = attractionPrices.filter((p) => p.adult.includes("–") || p.adult.includes("from"));
-const AS_OF = checkedLabel(latestChecked());
-
 /**
- * What is deliberately not in the table, and why. Both operators price by date from a
- * calendar and publish no standing adult figure, so a cell here would be a guess —
- * and neither guide carries a verified check date to attach to one.
+ * Japan attraction ticket prices — the site's official-price database, laid out to be
+ * cited. Every number on this page is computed from data/attraction-prices.json through
+ * lib/attraction-prices.ts and lib/attraction-prices-core.js; the same core writes
+ * public/data/japan-attraction-prices.csv in prebuild, and the home page and the guides
+ * read the same records. The monthly update edits the JSON only.
  */
-const EXCLUDED = [
-  {
-    name: "Tokyo Disneyland and DisneySea",
-    href: "/guides/attractions/tokyo-disney-tickets",
-    why: "Every ticket is date-specified with variable pricing and there are no gate sales at all, so the only real answer is the price shown for your date at checkout. What matters instead is booking early — popular dates sell out weeks ahead.",
-  },
-  {
-    name: "Universal Studios Japan",
-    href: "/guides/attractions/usj-tickets-express-pass",
-    why: "Studio Pass prices are tiered by date, and since May 2025 USJ has not sold same-day tickets at the gate. The Express Pass is a separate variable add-on on top. The guide covers which tier to buy rather than a figure that changes weekly.",
-  },
-  {
-    name: "Grand Sumo tournament tickets",
-    href: "/guides/attractions/sumo-tokyo-tickets",
-    why: "Seat prices vary by tier and by tournament day, and the official sale opens on a schedule rather than at a fixed price. Around 400 same-day tickets go on sale each day at roughly ¥2,200.",
-  },
-];
+
+const ROUTE = PRICE_TABLE_ROUTE;
+const PAGE_URL = `${SITE_URL}${ROUTE}`;
+const S = priceSummary;
+const GROUP_ORDER: PriceGroup[] = ["views", "museums", "parks", "heritage", "passes"];
+
+const yen = (n: number | null) => (n === null ? "—" : `¥${n.toLocaleString("en-US")}`);
+const d = (iso: string | null) => (iso ? checkedLabel(iso) : "—");
+const names = (list: { name: string }[]) => list.map((p) => p.name).join(", ");
+
+const ROW_COUNT = S.count;
+const FRESH = attractionPrices.filter((p) => p.checked === S.lastChecked).length;
+const REVISED_2026 = S.revisedIn(2026).sort((a, b) => (a.revisedOn! < b.revisedOn! ? -1 : 1));
+const WITH_HISTORY = priceRows.filter((r) => r.previousChecked);
+const AS_OF = d(S.lastChecked);
+
+const TITLE = `Japan Attraction Ticket Prices 2026: ${ROW_COUNT} Official Prices`;
+const H1 = `Japan Attraction Ticket Prices 2026: ${ROW_COUNT} Official Prices, Updated Monthly`;
+const DESC = `Official adult and child prices for ${ROW_COUNT} Japan attractions: median ${yen(S.medianAdultYen)}, ${S.mustBook.length} need booking, 2026 increases. Free CSV, checked monthly.`;
+
+/** The answer-first sentence, also the short form under "Cite this data". */
+const ANSWER = `We read the official admission prices of ${ROW_COUNT} Japanese attractions on each operator's own website (${FRESH} of them on ${AS_OF}). Across the ${S.paidCount} that charge, the median lowest adult ticket is ${yen(S.medianAdultYen)}; ${S.mustBook.length} must be booked before you arrive and ${S.freeCount} are free.`;
+const CITE = `${SITE_NAME}, "Japan Attraction Ticket Prices 2026", ${PAGE_URL} (official prices checked ${d(S.firstChecked)}–${AS_OF}).`;
 
 /**
  * The four passes in the table above, set against the single tickets — added
@@ -139,7 +141,7 @@ const PASS_ROWS = [
 /**
  * Day tours against the day-trip admissions in the table above — added
  * 28 Oct 2026. The comparison is deliberately not a price one: the admissions
- * here are ¥200 to ¥2,000 and a guided day never undercuts them, so what each
+ * here are a few hundred yen to ¥2,500 and a guided day never undercuts them, so what each
  * line states instead is the transport and the entries the listing itself covers.
  * Nothing below is first-hand, and no tour price appears — Klook's product pages
  * answer automated reads with HTTP 403.
@@ -176,7 +178,7 @@ const TOUR_ROWS = [
   {
     title: "Nikko cultural day tour from Tokyo",
     covers:
-      "Toshogu Shrine, Kegon Falls and Lake Chuzenji in a single day. Nikko has no row in the table above because its admissions sit in a different guide — Toshogu is ¥1,600 for an adult, read off toshogu.jp on 19 October 2026 — and the Irohazaka bus climb is the part a tour removes.",
+      "Toshogu Shrine, Kegon Falls and Lake Chuzenji in a single day. Toshogu's own ¥1,600 adult admission is in the temple and shrine table above; the Irohazaka bus climb is the part a tour removes.",
     url: nikkoCulturalDayTourUrl,
     cta: "Check the Nikko day →",
   },
@@ -220,86 +222,110 @@ const BEFORE_BOOKING = [
   },
 ];
 
+/** "¥300–¥1,000 (median ¥500)" for one table group, from the lowest adult price of each paid row. */
+function groupRange(group: PriceGroup): string {
+  const mins = priceRows.filter((r) => r.group === group && r.adultMinYen).map((r) => r.adultMinYen as number);
+  if (!mins.length) return "free";
+  const sorted = [...mins].sort((a, b) => a - b);
+  const mid = sorted.length % 2 ? sorted[(sorted.length - 1) / 2] : Math.round((sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2);
+  return `${yen(sorted[0])}–${yen(sorted[sorted.length - 1])} (median ${yen(mid)})`;
+}
+
 const faqItems = [
   {
     q: "How much do attraction tickets cost in Japan?",
-    a: `Across the ${ROW_COUNT} tickets in the table on this page, adult admission runs from free to about ¥7,900. Tokyo's observation decks are the cheapest paid tier — Tokyo Tower's Main Deck is ¥1,500 and Tokyo Skytree's Floor 350 starts at ¥1,800 — while the Tokyo Metropolitan Government Building deck in Shinjuku charges nothing at all. Timed-entry museums sit higher: teamLab Borderless starts at ¥3,400 and teamLab Planets at ¥3,800. Theme parks are the most expensive, from ¥3,900 for a Sanrio Puroland Day Passport to ¥7,900 for a Fuji-Q Highland 1-Day Pass on a peak date. Temple and shrine admissions on the day trips are in a different league entirely: ¥300 for Kotoku-in in Kamakura, ¥300 for Itsukushima Shrine, ¥800 for the Great Buddha Hall at Todai-ji.`,
+    a: `Across the ${S.paidCount} paid attractions in the table on this page, the median lowest adult ticket is ${yen(S.medianAdultYen)}, read off each operator's own site (most recently on ${AS_OF}). The cheapest is ${names(S.cheapestPaid)} at ${yen(S.minPaidYen)}; the highest starting price is ${names(S.dearest)} at ${yen(S.maxPaidYen)}${S.dearest[0]?.pricing === "variable" ? " and up, priced by date" : ""}. By type: ${GROUP_ORDER.map((g) => `${PRICE_GROUP_LABELS[g].label.toLowerCase()} ${groupRange(g)}`).join("; ")}. ${S.freeCount} attractions here charge nothing at all, and many public museums, zoos, gardens and castles let children in free.`,
   },
   {
     q: "Which Japanese attractions have to be booked in advance?",
-    a: `${MUST_BOOK.length} of the ${ROW_COUNT} tickets here genuinely require a booking before you arrive: ${MUST_BOOK.map((p) => p.name).join(", ")}. All of them sell a specific date, and most sell a specific entry slot within that date. Tokyo Disney and Universal Studios Japan also require advance tickets, which is why they are discussed separately below rather than given a price here. Everything else in the table can be bought on the day, though two cases are worth booking anyway: Shibuya Sky is ¥300 cheaper online, and Tokyo Skytree's same-day counter adds a ¥500 service fee.`,
+    a: `${S.mustBook.length} of the ${ROW_COUNT} here sell only a date- or time-specified ticket that has to be bought before you arrive: ${names(S.mustBook)}. ${S.noSameDay.length ? `${names(S.noSameDay)} sell no same-day tickets at the gate at all. ` : ""}Another ${attractionPrices.filter((p) => p.booking === "Advised").length} are worth booking — slots sell out or online is cheaper — and the other ${S.noBooking.length} are walk-up. Universal Studios Japan also sells date-specified Studio Passes only; it is listed below the table because its official price calendar could not be read.`,
+  },
+  {
+    q: "Which Japanese attractions raised prices in 2026?",
+    a: `${REVISED_2026.length} in this table have a 2026 fee revision announced on their own official site: ${REVISED_2026.map((r) => `${r.name} (${r.revisionNote}, from ${d(r.revisedOn)})`).join("; ")}. The table lists only revisions the operator itself publishes.`,
   },
   {
     q: "Are tickets cheaper online than at the gate in Japan?",
-    a: "Sometimes, and the difference is smaller than people expect. Shibuya Sky is ¥2,700 online against ¥3,000 at the counter for an entry before 15:00, and ¥3,400 against ¥3,700 from 15:00 — ¥300 either way. Tokyo Skytree's same-day window adds a ¥500 service fee. teamLab Borderless costs ¥200 more per adult bought on site. But Tokyo Tower's Main Deck is ¥1,500 either way, and most temple and museum admissions have no online price at all. Online booking is usually about securing a slot and paying in your own currency, not about saving money.",
+    a: `Sometimes, and the difference is smaller than people expect. Shibuya Sky is ${PRICES.shibuyaSky.adult} online against ${PRICES.shibuyaSky.atDoor} at the counter (before / from 15:00). Tokyo Skytree's same-day counter adds a ¥500 fee, the Hakone Open-Air Museum is ¥200 cheaper online, and Matsumoto Castle's e-ticket is ¥100 below paper. But Tokyo Tower's Main Deck is ${PRICES.tokyoTower.adult} either way, and most temple and museum admissions have no online price at all. Online booking is usually about securing a slot, not saving money.`,
   },
   {
     q: "Is it cheaper to buy a pass or individual attraction tickets in Japan?",
-    a: "It depends on the pass, and three of the four in the table above have a clear break-even. The Tokyo Subway Ticket is transport only — against Tokyo Metro fares of ¥178 to ¥324 a ride, the ¥1,000 24-hour tier needs five or six rides in one window, while the ¥2,000 72-hour tier at about ¥667 a day needs roughly four a day. The ¥3,500 Osaka Amazing Pass (official price, checked 9 November 2026) is the one that competes with admissions directly: Osaka Castle (¥1,200), the Umeda Sky Building (¥2,000) and the Tombori River Cruise (¥2,000) are ¥5,200 at the gate, so three facilities clear it, though Universal Studios Japan and the Kaiyukan are not included and the Umeda Sky Building is only free before 15:00. The ¥7,100 two-day Hakone Freepass pays for itself if you ride the whole loop, where the ropeway alone is ¥2,000 and the lake cruise ¥1,200, and Odakyu's own comparison puts the same route at ¥9,200 via JR. The WEST QR Kansai Area Pass is decided by the airport run: from 1 November 2026 the discounted HARUKA single to Kyoto is ¥2,700, identical to a 1-day pass. What makes a pass the wrong buy is a short day — one or two admissions and a couple of rides almost never adds up.",
+    a: "It depends on the pass, and the four in the pass comparison have a clear break-even. The Tokyo Subway Ticket is transport only — against Tokyo Metro fares of ¥178 to ¥324 a ride, the ¥1,000 24-hour tier needs five or six rides in one window. The ¥3,500 Osaka Amazing Pass competes with admissions directly: Osaka Castle (¥1,200), the Umeda Sky Building (¥2,000) and the Tombori River Cruise (¥2,000) are ¥5,200 at the gate, though Universal Studios Japan and the Kaiyukan are not included. The ¥7,100 two-day Hakone Freepass pays for itself if you ride the whole loop, where the ropeway alone is ¥2,000 one way. The WEST QR Kansai Area Pass is decided by the airport run. A pass bought for a light day almost never adds up.",
   },
   {
     q: "Why does the same Japanese ticket show different prices?",
-    a: `Because several operators now price by the date you visit rather than at a flat rate. ${DATE_PRICED.length} of the tickets in this table publish a range or a "from" price for exactly that reason: a Sanrio Puroland Day Passport is ¥3,900 on the quietest dates and ¥6,900 on the busiest, and a Fuji-Q Highland 1-Day Pass runs ¥6,000 to ¥7,900. On those tickets, moving your visit by a day saves far more than shopping around between sellers.`,
+    a: `Because ${S.variable.length} of the ${ROW_COUNT} attractions here price by date or time of day rather than at a flat rate — the table publishes a range or a "from" price for those. A Sanrio Puroland Day Passport is ${PRICES.sanrioPuroland.adult}, LEGOLAND Japan and Fuji-Q Highland move by thousands of yen across their calendars, and Shibuya Sky costs more from 15:00. On those tickets, moving your visit by a day saves more than shopping around between sellers.`,
   },
   {
     q: "Do Japanese attractions charge a child price?",
-    a: "Almost all of them, but the age bands differ by venue and are worth checking against your children's ages rather than assumed. The table's child column names the band for each one. Broadly: temples and museums use ages 6–12, observation decks start charging around age 4 to 6, and theme parks treat anyone up to 17 as a child. Under-3s and under-4s are usually free, and the Hiroshima Peace Memorial Museum is free for junior high school age and below. The Osaka Amazing Pass is the exception: no child pass is sold, and children pay the same price as adults.",
+    a: "Almost all of them, but the age bands differ by venue — the table's child column names the band for each one. Temples and museums typically use elementary and junior high school age, observation decks start charging around age 4 to 6, and theme parks treat teenagers as juniors. Many public sites are free for children of junior high age and younger — Shinjuku Gyoen, the Edo-Tokyo Museum, the Peace Memorial Museum, Nagoya Castle and Asahiyama Zoo among them — and the Tokyo National Museum and, since March 2026, Himeji Castle are free for everyone under 18. The Osaka Amazing Pass sells no child pass at all.",
   },
   {
-    q: "Can I pay for Japanese attraction tickets with a foreign card?",
-    a: "At the venue, yes — cards are widely accepted at ticket windows in Tokyo, Osaka and Kyoto. Online is where it breaks: the official Shibuya Sky site has rejected many foreign-issued cards since July 2024, and the Tokyo Disney site is known to block them too. That is the specific problem a reseller solves — an English checkout that takes a foreign card and issues an e-ticket. It is not about price.",
-  },
-  {
-    q: "How current are the prices on this page?",
-    a: `Every row carries the date its figures were read off the operator's own site, and the most recent check here was ${AS_OF}. Nothing on this page is an estimate: where an operator publishes no figure — a child rate, a standing adult price — the cell says so instead of filling the gap. Japanese ticket prices move, and several of these operators changed their pricing structure during 2026, so confirm the current figure at checkout before you travel.`,
+    q: "How current are the prices on this page, and can I reuse them?",
+    a: `Every row carries the date its figures were read and a link to the official page. ${FRESH} of ${ROW_COUNT} were read on ${AS_OF}; the rest keep their last official reading because the operator's page could not be read that day, and say so. ${PRICE_UPDATE_POLICY} The full table is a free CSV under CC BY 4.0 — cite the page URL and check date.`,
   },
 ];
 
-export const getStaticProps = () => ({
-  props: { updated: pageUpdated("/guides/attractions/japan-attraction-ticket-prices") },
-});
+export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
-/** One table row. `child` and `klook` are nullable by design — the cell says so. */
+const muted = { display: "block", fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: 400 } as const;
+
+/** One table row. Null fields print as a blank cell — never a guess. */
 function PriceRow({ price }: { price: AttractionPrice }) {
+  const row = priceRows.find((r) => r.id === price.id)!;
   return (
     <tr>
       <td className={styles.tdProvider}>
-        <Link href={price.href} style={{ color: "var(--text)", fontWeight: 600 }}>
-          {price.name}
-        </Link>
-        <span style={{ display: "block", fontSize: "0.78rem", color: "var(--text-muted)", fontWeight: 400 }}>
-          {price.ticket}
+        {price.href ? (
+          <Link href={price.href} style={{ color: "var(--text)", fontWeight: 600 }}>
+            {price.name}
+          </Link>
+        ) : (
+          <strong>{price.name}</strong>
+        )}
+        <span style={{ ...muted, fontSize: "0.78rem" }}>
+          {price.ticket} · {price.area}
         </span>
       </td>
       <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
         {price.adult}
-        {price.atDoor && (
-          <span style={{ display: "block", fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: 400 }}>
-            {price.atDoor} at the door
-          </span>
-        )}
+        {price.atDoor && <span style={muted}>{price.atDoor} at the door</span>}
+        {price.pricing === "variable" && <span style={muted}>priced by date/time</span>}
       </td>
       <td className={styles.tdPrice} style={{ fontWeight: 500 }}>
-        {price.child ?? <span style={{ color: "var(--text-muted)", fontWeight: 400 }}>No child rate published</span>}
-        {price.childAges && (
-          <span style={{ display: "block", fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: 400 }}>
-            {price.childAges}
+        {price.child ?? ""}
+        {price.childAges && <span style={muted}>{price.childAges}</span>}
+      </td>
+      <td style={{ fontSize: "0.86rem" }}>
+        <strong>{price.booking}</strong>
+        {price.sameDay && <span style={muted}>Same-day tickets: {price.sameDay}</span>}
+        {price.bookingNote && <span style={{ ...muted, fontSize: "0.78rem" }}>{price.bookingNote}</span>}
+      </td>
+      <td style={{ fontSize: "0.8rem" }}>{price.hours ?? ""}</td>
+      <td style={{ fontSize: "0.8rem" }}>
+        <span style={{ whiteSpace: "nowrap" }}>{d(price.checked)}</span>
+        <a href={price.sourceUrl} target="_blank" rel="nofollow noopener noreferrer" style={{ ...muted, textDecoration: "underline" }}>
+          {price.source}
+        </a>
+        {price.revised && (
+          <span style={{ ...muted, color: "var(--accent)" }}>
+            Fee revised {d(price.revised.date)}: {price.revised.note}
           </span>
         )}
-      </td>
-      <td style={{ fontSize: "0.88rem" }}>
-        <strong>{price.booking}</strong>
-        <span style={{ display: "block", fontSize: "0.78rem", color: "var(--text-muted)" }}>{price.bookingNote}</span>
-      </td>
-      <td style={{ fontSize: "0.82rem", whiteSpace: "nowrap" }}>
-        {checkedLabel(price.checked)}
-        <span style={{ display: "block", fontSize: "0.75rem", color: "var(--text-muted)" }}>{price.source}</span>
+        {row.changedOn && (
+          <span style={{ ...muted, color: "var(--accent)" }}>
+            Changed since {d(row.previousChecked)} ({row.previousAdult})
+          </span>
+        )}
+        {price.note && <span style={muted}>{price.note}</span>}
       </td>
       <td style={{ fontSize: "0.8rem" }}>
-        <Link href={price.href} style={{ color: "var(--text)", fontWeight: 600, display: "block" }}>
-          Full guide →
-        </Link>
-        {price.klook ? (
+        {price.href && (
+          <Link href={price.href} style={{ color: "var(--text)", fontWeight: 600, display: "block" }}>
+            Our guide →
+          </Link>
+        )}
+        {price.klook && (
           <KlookLink
             href={price.klook.url}
             target="_blank"
@@ -308,8 +334,6 @@ function PriceRow({ price }: { price: AttractionPrice }) {
           >
             {price.klook.label} →
           </KlookLink>
-        ) : (
-          <span style={{ color: "var(--text-muted)", display: "block", marginTop: "0.3rem" }}>No ticket to buy</span>
         )}
       </td>
     </tr>
@@ -383,7 +407,7 @@ function PassComparison() {
 }
 
 /**
- * The day-tour question, under the day-trip admissions table. Deliberately not a
+ * The day-tour question, under the temple, shrine and castle table. Deliberately not a
  * price comparison — see the TOUR_ROWS comment.
  */
 function DayTours() {
@@ -392,8 +416,8 @@ function DayTours() {
       <span className={styles.sectionLabel}>Tour or tickets</span>
       <h2 className={styles.sectionTitle}>Is a day tour cheaper than buying tickets yourself?</h2>
       <p className={styles.bodyText}>
-        On the admissions alone, no — and that is the wrong comparison. The fees in the table above run from ¥200 to
-        ¥2,000, so no guided day undercuts them. What a day tour replaces is everything around them: the coach seat
+        On the admissions alone, no — and that is the wrong comparison. The gate fees in the table above run from ¥300 to
+        ¥2,500, so no guided day undercuts them. What a day tour replaces is everything around them: the coach seat
         out of Tokyo, the ferry or the mountain bus, and the ordering of a day that otherwise needs four changes and
         a timetable.
       </p>
@@ -431,37 +455,51 @@ function DayTours() {
   );
 }
 
+const MUST_BOOK_NAMES = names(S.mustBook);
+
 export default function JapanAttractionTicketPricesPage({ updated }: { updated: PageUpdated }) {
+  const datasetJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Japan Attraction Ticket Prices 2026",
+    description: `Official admission prices of ${ROW_COUNT} Japanese attractions — observation decks, museums, aquariums, theme parks, temples, shrines, castles, gardens, passes and ropeways — read from each operator's own website, with adult and child price, child age band, price at the door, fixed or date-based pricing, advance-booking rule, same-day ticket sales, opening hours, announced fee revisions, the previous reading, check date and source URL for every row.`,
+    url: PAGE_URL,
+    keywords: ["Japan attraction prices", "admission fees", "ticket prices", "Japan travel", "official prices", "price increases 2026"],
+    dateModified: S.lastChecked,
+    temporalCoverage: `${S.firstChecked}/${S.lastChecked}`,
+    spatialCoverage: { "@type": "Place", name: "Japan" },
+    isAccessibleForFree: true,
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    creator: { "@type": "Organization", "@id": ORGANIZATION_ID, name: SITE_NAME, url: SITE_URL },
+    publisher: { "@id": ORGANIZATION_ID },
+    variableMeasured: [
+      "adult_price", "adult_min_jpy", "adult_max_jpy", "child_price", "child_ages", "price_at_door", "pricing",
+      "advance_booking", "same_day_tickets", "hours", "price_revised_on", "price_revision", "previous_adult_price",
+      "checked_on", "source_url",
+    ],
+    distribution: [{ "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${SITE_URL}${PRICE_CSV_PATH}` }],
+  };
+
   return (
     <>
       <Head>
         <title>{TITLE}</title>
         <meta name="description" content={DESC} />
-        <link
-          rel="canonical"
-          href="https://www.japan-travel-kit.com/guides/attractions/japan-attraction-ticket-prices"
-        />
+        <link rel="canonical" href={PAGE_URL} />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
-        <meta
-          property="og:url"
-          content="https://www.japan-travel-kit.com/guides/attractions/japan-attraction-ticket-prices"
-        />
+        <meta property="og:url" content={PAGE_URL} />
         <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESC} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetJsonLd) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: articleJsonLd({
-              route: "/guides/attractions/japan-attraction-ticket-prices",
-              headline: TITLE,
-              description: DESC,
-              updated,
-            }),
+            __html: articleJsonLd({ route: ROUTE, headline: H1, description: DESC, updated }),
           }}
         />
         <script
@@ -493,12 +531,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
                   name: "Things to Do",
                   item: "https://www.japan-travel-kit.com/guides/attractions",
                 },
-                {
-                  "@type": "ListItem",
-                  position: 4,
-                  name: "Attraction Ticket Prices",
-                  item: "https://www.japan-travel-kit.com/guides/attractions/japan-attraction-ticket-prices",
-                },
+                { "@type": "ListItem", position: 4, name: "Attraction Ticket Prices", item: PAGE_URL },
               ],
             }),
           }}
@@ -528,15 +561,10 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
-          <h1 className={styles.heroTitle}>
-            Japan Attraction Ticket Prices 2026:<br />Official Prices and Booking Rules
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Every verified official adult and child admission price, in one table — with whether the ticket
-            has to be booked before you arrive, and the date each figure was read off the operator&apos;s own site.
-          </p>
+          <h1 className={styles.heroTitle}>{H1}</h1>
+          <p className={styles.heroSubtitle}>{ANSWER}</p>
           <div className={styles.heroBadges}>
-            {[`${ROW_COUNT} tickets`, "Official prices only", `Checked to ${AS_OF}`].map((t) => (
+            {[`${ROW_COUNT} attractions`, "Official prices only", `Checked to ${AS_OF}`, "Free CSV"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -565,31 +593,89 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Tickets in this table</p>
+                <p className={styles.verdictStatLabel}>Official prices checked</p>
                 <p className={styles.verdictStatValue}>{ROW_COUNT}</p>
               </div>
               <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Median adult ticket ({S.paidCount} paid)</p>
+                <p className={styles.verdictStatValue}>{yen(S.medianAdultYen)}</p>
+              </div>
+              <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Must be booked ahead</p>
-                <p className={styles.verdictStatValue}>{MUST_BOOK.length}</p>
+                <p className={styles.verdictStatValue}>{S.mustBook.length}</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Walk up and pay</p>
-                <p className={styles.verdictStatValue}>{NO_BOOKING.length}</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Free</p>
-                <p className={styles.verdictStatValue}>{FREE_COUNT}</p>
+                <p className={styles.verdictStatLabel}>Official fee rises in 2026</p>
+                <p className={styles.verdictStatValue}>{REVISED_2026.length}</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>The short version:</strong> most of Japan is walk-up. Only {MUST_BOOK.length} of the{" "}
-              {ROW_COUNT} tickets below actually require a booking before you arrive — the two teamLab museums,
-              Sanrio Puroland and the Warner Bros. studio tour — plus Tokyo Disney and Universal Studios Japan,
-              which price by date and so have no figure here. Everything else you can buy on the day. Put your
-              booking effort where the slot can run out, and spend the rest of your planning time elsewhere.
+              <strong>The short version:</strong> most of Japan is walk-up. Only {S.mustBook.length} of the {ROW_COUNT}{" "}
+              attractions below sell nothing but a date- or time-specified ticket bought in advance — {MUST_BOOK_NAMES}.{" "}
+              {S.variable.length} price by date or time of day, so the figure here is a floor or a range. The cheapest
+              paid ticket is {names(S.cheapestPaid)} at {yen(S.minPaidYen)}; the highest starting price is{" "}
+              {names(S.dearest)} at {yen(S.maxPaidYen)}.
             </p>
           </div>
         </div>
+
+        {/* 2026 increases */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Price changes</span>
+          <h2 className={styles.sectionTitle}>Japan Attraction Price Increases in 2026</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            {REVISED_2026.length} attractions in this table have a 2026 fee revision announced on their own official
+            site. Only revisions the operator publishes are listed — where the notice gives no old figure, the row says
+            so rather than reconstructing it. Dates after {AS_OF} are announced but not yet in force.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Attraction", "From", "What changed", "Adult now", "Source"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {REVISED_2026.map((r) => (
+                    <tr key={r.id}>
+                      <td className={styles.tdProvider}>
+                        {r.href ? (
+                          <Link href={r.href} style={{ color: "var(--text)", fontWeight: 600 }}>{r.name}</Link>
+                        ) : (
+                          <strong>{r.name}</strong>
+                        )}
+                        <span style={muted}>{r.area}</span>
+                      </td>
+                      <td style={{ fontSize: "0.85rem", whiteSpace: "nowrap" }}>
+                        {d(r.revisedOn)}
+                        {r.revisedOn! > S.lastChecked! && <span style={muted}>announced, not yet in force</span>}
+                      </td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.revisionNote}</td>
+                      <td className={styles.tdPrice}>{r.adult}</td>
+                      <td style={{ fontSize: "0.8rem" }}>
+                        <a href={r.sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+                          {r.source}
+                        </a>
+                        <span style={muted}>checked {d(r.checked)}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem" }}>
+            Against our previous readings: {WITH_HISTORY.length} rows have an earlier check on this site, and{" "}
+            {S.changed.length === 0
+              ? `none of them changed by the ${AS_OF} check — the increases above were already in our guides or take effect later.`
+              : `${S.changed.length} changed (${names(S.changed)}) — marked "Changed since" in the tables.`}{" "}
+            Revisions from earlier years that the operators still publish (Hakone Ropeway October 2025, Osaka Castle and
+            Matsumoto Castle April 2025, Kasuga Taisha October 2024) are shown on their rows below.
+          </p>
+        </section>
 
         {/* Before you book — the trip decisions a ticket depends on */}
         <div className={styles.verdictBox} style={{ marginTop: "1.5rem" }}>
@@ -636,27 +722,22 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           </div>
         </div>
 
-        {/* Why this page exists */}
+        {/* How to read */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>How to read this</span>
           <h2 className={styles.sectionTitle}>Official Prices, and the Date Each Was Read</h2>
           <p className={styles.bodyText}>
-            Japanese attraction prices are harder to pin down than they look. Several operators moved to date-based
-            pricing during 2026, so there is no single adult figure to quote —{" "}
-            {DATE_PRICED.length} of the {ROW_COUNT} tickets below publish a range or a &quot;from&quot; price for
-            that reason. Resale listings rank well in search and are often invalid for entry. And a price copied
-            from a blog post two years ago can be out by thousands of yen.
+            Every figure is the operator&apos;s own, read off its official website — the venue, the temple or shrine,
+            the city or prefecture that runs a public site — never a reseller&apos;s. Every row states the date it was
+            read and links the exact page. Where an operator publishes nothing, or its page could not be read, the cell
+            is left blank instead of guessed; {ROW_COUNT - FRESH} rows whose page could not be re-read on {AS_OF} keep
+            their last official reading and say so.
           </p>
           <p className={styles.bodyText}>
-            So this table has three rules. Every figure is the operator&apos;s own, read off their site rather than
-            a reseller&apos;s. Every row states the date it was read, because a Japanese ticket price without a date
-            is not usable information. And where an operator publishes nothing — no child rate, no standing adult
-            price — the cell says so instead of guessing.
-          </p>
-          <p className={styles.bodyText}>
-            The prices come from the individual guides on this site, which is where the rest of the detail lives:
-            the tiers not shown here, opening hours, how to reach each venue, and whether a foreign card works at
-            checkout. Each row links to its guide.
+            &quot;Adult&quot; is the standard adult admission. For the {S.variable.length} date-priced attractions it is
+            the range or the &quot;from&quot; figure the operator publishes; the median above uses the lowest adult price
+            of each paid row. &quot;Must be booked&quot; means the operator sells only date- or time-specified tickets in
+            advance; &quot;Advised&quot; means slots can sell out or the online price is lower.
           </p>
         </section>
 
@@ -668,59 +749,135 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           return (
             <Fragment key={group}>
               <section className={styles.comparisonSection}>
-                <span className={styles.sectionLabel}>{rows.length} tickets</span>
+                <span className={styles.sectionLabel}>{rows.length} attractions</span>
                 <h2 className={styles.sectionTitle}>{meta.label}</h2>
-                <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>{meta.desc}</p>
+                <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+                  {meta.desc} Lowest adult price {groupRange(group)}.
+                </p>
                 <div className={styles.tableWrap}>
                   <div className={styles.tableScroll}>
                     <table className={styles.table}>
                       <thead>
                         <tr>
-                          {["Attraction", "Adult", "Child", "Advance booking", "Checked", "Links"].map((h) => (
+                          {["Attraction", "Adult", "Child", "Advance booking", "Hours", "Checked / source", "Links"].map((h) => (
                             <th key={h}>{h}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
                         {rows.map((price) => (
-                          <PriceRow key={`${price.href}-${price.name}`} price={price} />
+                          <PriceRow key={price.id} price={price} />
                         ))}
                       </tbody>
                     </table>
                   </div>
                 </div>
               </section>
-              {/* Each group's own follow-on question, directly under the rows it is about. */}
               {group === "passes" && <PassComparison />}
-              {group === "daytrips" && <DayTours />}
+              {group === "heritage" && <DayTours />}
             </Fragment>
           );
         })}
+
+        <p className={styles.bodyText} style={{ fontSize: "0.85rem" }}>
+          <strong>Last checked: {AS_OF}.</strong> {PRICE_UPDATE_POLICY} When an operator changes a price between checks,
+          its site is right and this table is out of date — the date and link on every row are there so you can tell.
+        </p>
 
         <BookingEsimCard lead="Tickets booked? Get mobile data before you land." />
 
         {/* What is not here */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Not in the table</span>
-          <h2 className={styles.sectionTitle}>Three Tickets With No Official Price to Quote</h2>
+          <h2 className={styles.sectionTitle}>Checked, but No Official Price to Record</h2>
           <p className={styles.bodyText}>
-            Japan&apos;s three biggest ticketed attractions are missing from the table above, and it is for the same
-            reason in each case: they publish no standing adult price, only the figure shown for your date at
-            checkout. Printing an average would be worse than printing nothing.
+            These were checked on their official sites on {AS_OF} and left out of the table rather than filled with a
+            figure from somewhere else.
           </p>
           <div className={styles.stepsList}>
-            {EXCLUDED.map((item, i) => (
-              <div key={item.name} className={styles.stepCard}>
+            {unpricedAttractions.map((item, i) => (
+              <div key={item.id} className={styles.stepCard}>
                 <span className={styles.stepNum}>{i + 1}</span>
                 <div className={styles.stepBody}>
                   <p className={styles.stepTitle}>
-                    <Link href={item.href} style={{ color: "var(--text)" }}>{item.name} →</Link>
+                    {item.href ? (
+                      <Link href={item.href} style={{ color: "var(--text)" }}>{item.name} →</Link>
+                    ) : (
+                      item.name
+                    )}{" "}
+                    <span style={{ fontWeight: 400, color: "var(--text-muted)", fontSize: "0.85rem" }}>
+                      ({item.area}, {item.status === "closed" ? "closed" : "page unreadable"})
+                    </span>
                   </p>
-                  <p className={styles.stepDesc}>{item.why}</p>
+                  <p className={styles.stepDesc}>
+                    {item.reason}{" "}
+                    <a href={item.sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+                      Official page
+                    </a>
+                  </p>
                 </div>
               </div>
             ))}
+            <div className={styles.stepCard}>
+              <span className={styles.stepNum}>{unpricedAttractions.length + 1}</span>
+              <div className={styles.stepBody}>
+                <p className={styles.stepTitle}>
+                  <Link href="/guides/attractions/sumo-tokyo-tickets" style={{ color: "var(--text)" }}>
+                    Grand Sumo tournament tickets →
+                  </Link>
+                </p>
+                <p className={styles.stepDesc}>
+                  Seat prices vary by tier and by tournament day, and the official sale opens on a schedule rather than
+                  at a fixed price, so there is no single admission to list. The guide covers the tiers.
+                </p>
+              </div>
+            </div>
           </div>
+        </section>
+
+        {/* Data */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Data</span>
+          <h2 className={styles.sectionTitle}>Download and Cite This Data</h2>
+          <p className={styles.bodyText}>
+            The full table — every attraction, adult and child price, age band, door price, pricing type, booking
+            rule, same-day sales, hours, announced revisions, previous reading, check date and source URL — is a free
+            CSV:{" "}
+            <a href={PRICE_CSV_PATH} className={tools.inlineLink} download>
+              japan-attraction-prices.csv
+            </a>{" "}
+            ({ROW_COUNT} rows). You may reuse it under{" "}
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer license" className={tools.inlineLink}>
+              CC BY 4.0
+            </a>{" "}
+            with a link back to this page.
+          </p>
+          <p className={styles.bodyText} style={{ marginBottom: "0.4rem" }}>
+            <strong>Cite this data</strong>
+          </p>
+          <pre
+            style={{
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+              background: "var(--paper-alt, #f6f5f2)",
+              border: "1px solid var(--rule)",
+              borderRadius: "var(--radius-sm)",
+              padding: "0.8rem 1rem",
+              fontSize: "0.85rem",
+              userSelect: "all",
+            }}
+          >
+            {CITE}
+          </pre>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Short form: {ANSWER}
+          </p>
+          <p className={styles.bodyText}>
+            <strong>Last checked: {AS_OF}.</strong> {PRICE_UPDATE_POLICY} Rows whose figures move get the old reading
+            kept as history, so the CSV&apos;s previous_adult_price and changed_since_previous_check columns show what
+            changed and when. For mobile data prices on the same terms, see our{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>.
+          </p>
         </section>
 
         {/* FAQ */}
@@ -749,7 +906,10 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions", title: "Things to Do in Japan: Tickets & Experiences (2026)" },
-              // Added 3 Nov 2026: the first Okinawa admission, priced off the aquarium's own fee page.
+              {
+                href: "/guides/attractions/himeji-castle-day-trip",
+                title: "Himeji Castle Day Trip (2026): ¥2,500 Admission, and Times From Osaka & Kyoto",
+              },
               {
                 href: "/guides/attractions/okinawa-churaumi-aquarium-tickets",
                 title: "Okinawa Churaumi Aquarium Tickets 2026: Price, Hours, Access",
@@ -763,12 +923,8 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
                 title: "Tokyo Observation Decks (2026): Shibuya Sky vs Skytree vs Tokyo Tower",
               },
               {
-                href: "/guides/attractions/shibuya-sky-tickets",
-                title: "Shibuya Sky Tickets (2026): Price, Best Time & How to Book",
-              },
-              {
-                href: "/guides/attractions/tokyo-subway-ticket",
-                title: "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?",
+                href: "/guides/attractions/tokyo-disney-tickets",
+                title: "Tokyo Disneyland Tickets 2026: Prices, Rules & DisneySea",
               },
               {
                 href: "/guides/attractions/osaka-attractions-pass",
