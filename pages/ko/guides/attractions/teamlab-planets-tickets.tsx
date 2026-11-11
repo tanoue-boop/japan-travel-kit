@@ -37,6 +37,7 @@ import { PLANETS_FACTS, PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/ko/guides/attractions/teamlab-planets-tickets";
 const TITLE = "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법";
@@ -313,6 +314,8 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 보더리스 비교</Link>에서 두 곳을
           나란히 볼 수 있습니다.
         </p>
+
+        <EsimCtaTop />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>가격</span>
@@ -618,6 +621,8 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             <Link href="/guides/transport/tokyo-transportation">도쿄 교통 가이드(영어)</Link>에서 노선을 설명합니다.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

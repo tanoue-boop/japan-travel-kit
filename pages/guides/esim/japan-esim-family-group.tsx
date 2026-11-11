@@ -20,6 +20,7 @@ import { esimLink, HOLAFLY_ALT_LABEL, HOLAFLY_ALT_NOTE, SPECS_CHECKED_AT } from 
 import { cheapestPerDay, ratesCheckedAt, rentalCost, specsCheckedAt } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Three sources, three dates.
 //
@@ -200,6 +201,8 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
         </div>
 
         <EsimPageAnswer route="/guides/esim/japan-esim-family-group" />
+
+        <EsimCtaTop />
 
         {/* Quick Answer — the whole answer, first */}
         <section className={styles.choiceSection}>

@@ -20,6 +20,7 @@ import { klookEsim } from "../../../lib/klook-links";
 import { SIMBYE_DISCOUNT_CODE } from "../../../lib/simbye";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Written 28 Oct 2026 for the "japan esim business" searches, which had no page of their
 // own: the existing guides price a tourist week, and a business trip turns on two
@@ -261,6 +262,8 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
             </p>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* The table */}
         <section className={styles.comparisonSection}>

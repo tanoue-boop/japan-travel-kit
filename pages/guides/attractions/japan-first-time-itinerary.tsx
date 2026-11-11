@@ -38,6 +38,7 @@ import {
   tokyoSubwayTicket,
   usjStudioPassUrl,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * The first-time Japan page, added 4 Nov 2026. It starts from the questions a
@@ -503,6 +504,8 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* How many days */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>How long</span>
@@ -735,6 +738,8 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             shows what a policy costs for a trip like this one and which to pick.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

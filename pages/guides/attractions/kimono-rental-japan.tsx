@@ -9,6 +9,7 @@ import { kyotoHighlightBusTour, tokyoSightseeingBusTour } from "../../../lib/klo
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygKyotoKimono, gygTokyoKimono } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links — Klook affiliate redirects (tracking links, both listings confirmed live
 // 19 Oct 2026).
@@ -289,6 +290,8 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -430,6 +433,8 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           intro="A rental shop has a finite number of outfits and dressers, which is exactly why spring and autumn book out — and why a second list of shops is worth having. GetYourGuide covers both cities, Kyoto more deeply than Tokyo. Check the return deadline wherever you book: it is the detail that decides how much of the day you actually get."
           listings={[gygKyotoKimono, gygTokyoKimono]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

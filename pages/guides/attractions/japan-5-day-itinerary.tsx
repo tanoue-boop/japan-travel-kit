@@ -33,6 +33,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { PRICES, checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan 5 Day Itinerary, written for the exact phrase. Added 5 Nov 2026 (task
@@ -538,6 +539,8 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>At a glance</span>
           <h2 className={styles.sectionTitle}>What Does a 5-Day Japan Itinerary Look Like?</h2>
@@ -778,6 +781,8 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
           intro="Three nights at one Tokyo address, then one beside Kyoto Station. Four nights on two hotel bills is what makes five days feel unhurried. Pick the Tokyo base by the day it helps most; in Kyoto, the single night settles it."
           areas={japanFiveDayStayAreas}
         />
+
+        <EsimCtaBottom />
 
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

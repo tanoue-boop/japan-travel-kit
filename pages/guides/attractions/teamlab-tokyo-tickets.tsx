@@ -15,6 +15,7 @@ import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Since 6 Nov 2026 (task jtk-20261106-A24) this URL answers one question: which of Tokyo's
 // two teamLab museums to book. Planets tickets, hours and access have their own page at
@@ -257,6 +258,8 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Side by side</span>
           <h2 className={styles.sectionTitle}>teamLab Planets vs Borderless: which should I book?</h2>
@@ -372,6 +375,8 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/tokyo-disney-tickets">Tokyo Disneyland tickets guide</Link>.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

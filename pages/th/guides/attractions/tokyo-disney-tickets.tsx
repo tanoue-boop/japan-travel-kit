@@ -25,6 +25,7 @@ import { gygTokyoDisneyResort, gygTokyoDisneySea } from "../../../../lib/gyg-lin
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/th/guides/attractions/tokyo-disney-tickets";
 const TITLE = "ตั๋วดิสนีย์แลนด์โตเกียว 2026: ราคาและที่ซื้อ";
@@ -454,6 +455,8 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>ราคา</span>
@@ -807,6 +810,8 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             {" "}ของเราพูดถึงอีกการจองแบบระบุวันที่ทำผ่านผู้ขายแล้วง่ายกว่า
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <FaqList items={faqItems} />

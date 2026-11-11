@@ -27,6 +27,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
@@ -184,6 +185,8 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           ตัดสินใจแล้ว? ดู<Link href="/th/guides/attractions/teamlab-planets-tickets">ไกด์ตั๋ว teamLab Planets</Link> สำหรับเวลาเปิด การจอง และการเดินทาง หรือ<Link href="/th/guides/attractions/teamlab-borderless-tickets">ไกด์ตั๋ว teamLab Borderless</Link>
         </p>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>เทียบกันข้าง ๆ</span>
           <h2 className={styles.sectionTitle}>teamLab Planets หรือ Borderless: ควรจองแห่งไหน?</h2>
@@ -234,6 +237,8 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

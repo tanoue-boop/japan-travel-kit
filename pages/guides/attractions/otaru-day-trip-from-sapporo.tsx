@@ -26,6 +26,7 @@ import {
   sapporoKokusaiOtaruDayTour,
   yoichiOtaruWalkingTour,
 } from "../../../lib/klook-links-winter-hokkaido";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Otaru as a day out of Sapporo, written for the reader searching "Otaru Day
@@ -567,6 +568,8 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           items={otaruSameTrip}
         />
 
+        <EsimCtaTop />
+
         {/* Getting there */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
@@ -902,6 +905,8 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             winter lights at the other end of the flight.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

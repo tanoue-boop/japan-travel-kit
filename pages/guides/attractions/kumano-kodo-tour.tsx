@@ -23,6 +23,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * The Kumano Kodo as a tour or an overnight walk. Added 6 Nov 2026.
@@ -479,6 +480,8 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* One day */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The day</span>
@@ -888,6 +891,8 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           intro="The tour or the walk is only part of it. These are the pieces that decide your start time. Open a listing for the price on your dates."
           items={kumanoKodoTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

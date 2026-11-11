@@ -33,6 +33,7 @@ import {
   teamlabPlanetsTicketUrl,
   usjStudioPassUrl,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Three weeks in Japan, added 11 Nov 2026 (task-jtk-20261111-01).
@@ -487,6 +488,8 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>How Should I Spend 3 Weeks in Japan?</h2>
@@ -800,6 +803,8 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             hiroshimaMiyajimaJoinDayTour,
           ]}
         />
+
+        <EsimCtaBottom />
 
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

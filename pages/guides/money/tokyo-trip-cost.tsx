@@ -18,6 +18,7 @@ import {
   tokyoTripCostPrep,
   whereToStayTokyoAreas,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Trip to Tokyo cost. Added 9 Nov 2026 (task-jtk-20261109-02).
@@ -405,6 +406,8 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Scope */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>What this page covers</span>
@@ -706,6 +709,8 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             not give a per-child figure for food or rooms, so price the room for the whole family on your dates.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

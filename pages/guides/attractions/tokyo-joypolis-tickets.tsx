@@ -17,6 +17,7 @@ import {
   tokyoJoypolisTripPrep,
   tokyoSightseeingBusTour,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo Joypolis — Sega's indoor park on floors 3 to 5 of DECKS Tokyo Beach in Odaiba.
@@ -394,6 +395,8 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -618,6 +621,8 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
           intro="Two to four hours inside leaves the evening open, and the bay is the obvious way to spend it."
           items={tokyoJoypolisTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

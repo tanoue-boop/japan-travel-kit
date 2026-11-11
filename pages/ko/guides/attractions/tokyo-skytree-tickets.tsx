@@ -32,6 +32,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (/guides/attractions/tokyo-skytree-tickets) block for block as of
 // 2026-11-01, re-synced 2026-11-10 (answer-first opening, question headings, hours and
@@ -335,6 +336,8 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>개요</span>
           <h2 className={styles.sectionTitle}>도쿄 스카이트리 입장권에는 무엇이 포함되나요?</h2>
@@ -542,6 +545,8 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             <Link href="/guides/transport/tokyo-transportation">도쿄 교통 가이드(영어)</Link>에서 다룹니다.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

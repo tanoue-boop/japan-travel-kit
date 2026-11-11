@@ -6,6 +6,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { esimProviders, priceFromLabel, unlimitedFromLabel, type EsimProviderId } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => esimProviders.find((p) => p.id === id)?.affiliateUrl ?? "#";
@@ -375,6 +376,8 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
         <EsimPageAnswer route="/guides/esim/how-to-set-up-esim-japan" />
 
         <EsimDaysTable />
+
+        <EsimCtaTop />
 
         {/* Before You Start */}
         <section className={styles.prosConsSection}>

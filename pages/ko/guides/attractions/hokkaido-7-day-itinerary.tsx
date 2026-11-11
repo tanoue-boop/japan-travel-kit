@@ -49,6 +49,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/hokkaido-7-day-itinerary.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -771,6 +772,8 @@ JR 홋카이도 패스 보기 →
           items={hokkaidoSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 일주일의 구성
@@ -960,6 +963,8 @@ JR 홋카이도 패스 보기 →
         <p className={styles.bodyText} style={{ marginTop: "-1.5rem", marginBottom: "3rem" }}>
 네 곳 모두에 해당하는 시기 참고입니다. 이 섬이 가장 붐비는 2월 주는 1년 전에 발표되는 고정 날짜입니다. 눈축제 실행위원회는 2026년 2월 11일에 2027년 날짜를 공개했습니다. 그래서 2월 첫 2주의 숙소는 다른 선택지가 없는 예약이고, 삿포로가 차면 오타루가 일반적인 답입니다. 객실 점유율 수치는 공개된 것이 없어 싣지 않습니다.
 </p>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

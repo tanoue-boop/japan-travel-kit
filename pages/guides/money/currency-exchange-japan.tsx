@@ -8,6 +8,7 @@ import { currencyExchangeTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_PRICING_URL, WISE_CARD_URL, WISE_VERIFIED } from "../../../lib/wise-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const WISE_URL = wiseLink("currency-exchange-japan", WISE_CARD_URL);
 const WISE_FEES_URL = wiseLink("currency-exchange-japan", WISE_PRICING_URL);
@@ -377,6 +378,8 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             </a>
           </p>
         </section>
+
+        <EsimCtaTop />
 
         {/* Options compared — official figures only, dated */}
         <section className={styles.comparisonSection} id="options">
@@ -767,6 +770,8 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             some small inns still take payment on site.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -16,6 +16,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Pass price bands, the free-entry rule, the coaster names and the rail/bus access
 // below were read off fujiq.jp (/en/, /en/ticket/ and /en/access/) on 20 Oct 2026.
@@ -274,6 +275,8 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -419,6 +422,8 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
           intro="If you already have a pass, or you want the Fuji Five Lakes rather than the coasters, these two cover the journey on their own — the highway bus serves Fuji-Q Highland and Kawaguchiko, and the area pass covers the local buses and trains once you are there."
           tours={[tokyoMtFujiHighwayBus, mtFujiPass]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

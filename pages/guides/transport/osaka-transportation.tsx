@@ -6,6 +6,7 @@ import KlookLink from "../../../components/KlookLink";
 import { osakaStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const attractionRoutes = [
   { dest: "Dotonbori",        from: "Namba",         line: "Walk",             time: "5 min",  price: "Free" },
@@ -274,6 +275,8 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Osaka Network Basics */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -531,6 +534,8 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -32,6 +32,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (/guides/attractions/tokyo-skytree-tickets) block for block as of
 // 2026-11-01, re-synced 2026-11-10 (answer-first opening, question headings, hours and
@@ -333,6 +334,8 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>ภาพรวม</span>
           <h2 className={styles.sectionTitle}>ตั๋ว Tokyo Skytree รวมอะไรบ้าง?</h2>
@@ -538,6 +541,8 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
             อธิบายว่าเครือข่าย Metro และ Toei เชื่อมกันอย่างไร
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

@@ -9,6 +9,7 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { whereToStayOsakaAreas, whereToStayOsakaTripPrep } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Where to Stay in Osaka — four areas compared on the lines that serve them and
@@ -313,6 +314,8 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Answer-first intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The short answer</span>
@@ -544,6 +547,8 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

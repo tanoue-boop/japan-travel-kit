@@ -16,6 +16,7 @@ import {
 } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * ---------------------------------------------------------------------------
@@ -624,6 +625,8 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
@@ -1144,6 +1147,8 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             all.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

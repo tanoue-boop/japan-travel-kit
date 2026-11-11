@@ -24,6 +24,7 @@ import {
   shinkansenOsakaHiroshima,
   shinkansenTokyoHiroshima,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Two days in Hiroshima and Miyajima, written as a routing-and-booking plan. Added
@@ -484,6 +485,8 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -881,6 +884,8 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
           intro="The train in, a pass to price against your route, the Miyajima day, the island hotel and data. Klook prices change by date, so open a listing for the figure on your dates."
           items={hiroshimaTwoDayTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

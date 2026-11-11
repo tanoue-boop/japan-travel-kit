@@ -16,6 +16,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // This page is the day itself: the timed loop, the day's cost and the trains in and
 // out. The Freepass's own price table, coverage and break-even live on
@@ -345,6 +346,8 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Day trip or overnight */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Day trip or overnight</span>
@@ -583,6 +586,8 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
             the <Link href="/guides/attractions">things to do in Japan hub</Link>.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

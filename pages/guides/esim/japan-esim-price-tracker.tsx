@@ -9,6 +9,7 @@ import { formatDate, getProvider } from "../../../lib/esim-prices";
 import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { ORGANIZATION_ID, SITE_NAME, SITE_URL, articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan eSIM price tracker — the site's primary price data, laid out to be cited.
@@ -310,6 +311,8 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>By plan</span>

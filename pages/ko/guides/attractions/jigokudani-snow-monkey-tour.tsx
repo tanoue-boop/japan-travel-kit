@@ -36,6 +36,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/jigokudani-snow-monkey-tour.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -356,6 +357,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>
 개요
@@ -593,6 +596,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 네, 다른 여행보다 더 필요합니다. 웹 티켓, 유다나카와 나가노의 버스 시간, 공원의 원숭이 출현 예보를 모두 휴대폰으로 확인해야 하고, 산길이나 버스 정류장에서는 호텔 Wi-Fi를 쓸 수 없습니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> 또는 <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 비교해 보세요.
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

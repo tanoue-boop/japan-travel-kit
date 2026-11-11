@@ -38,6 +38,7 @@ import {
   furanoBieiWinterIlluminationTour,
   yoichiOtaruWalkingTour,
 } from "../../../lib/klook-links-winter-hokkaido";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * A seven-day Hokkaido route, written for the reader searching "Hokkaido 7 Day
@@ -1030,6 +1031,8 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           items={hokkaidoSameTrip}
         />
 
+        <EsimCtaTop />
+
         {/* Bases */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The shape of the week</span>
@@ -1276,6 +1279,8 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           and Otaru is the standard answer when Sapporo is full. No occupancy figure is given here, because
           none is published.
         </p>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

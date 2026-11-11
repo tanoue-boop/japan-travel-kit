@@ -41,6 +41,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaTop } from "../../../../components/EsimCta";
 
 /**
  * Thai edition of /guides/esim/best-esim-japan. Mirrors the English page block by
@@ -604,6 +605,8 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
             {SPECS_CHECKED} (Simbye อ่านเมื่อ {SIMBYE_CHECKED} จาก simbye.com และฟีดราคาของ Simbye) ส่วนแถวของ Klook มาจากข้อมูลสินค้าของ Klook เองวันที่ {KLOOK_SPECS_CHECKED}
           </p>
         </section>
+
+        <EsimCtaTop />
 
         {/* Quick Comparison Table */}
         <section className={styles.comparisonSection}>

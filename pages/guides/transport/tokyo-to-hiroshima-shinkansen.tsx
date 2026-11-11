@@ -19,6 +19,7 @@ import {
   klookEsim,
   shinkansenTokyoHiroshima,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo to Hiroshima on the Tokaido and Sanyo Shinkansen. Added 28 Oct 2026.
@@ -438,6 +439,8 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -718,6 +721,8 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           intro="Two areas, and the choice is the same one the day-trip argument above turns on: the station, if Hiroshima is one stop inside a longer rail itinerary, or the park, if the reason you came is the thing you can walk to before the coaches arrive."
           areas={hiroshimaStayAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

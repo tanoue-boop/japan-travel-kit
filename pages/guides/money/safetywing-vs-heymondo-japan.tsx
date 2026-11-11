@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA / provider links — SafetyWing is an affiliate link; the rest are normal links for now.
 const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614156&utm_source=26614156&utm_medium=Ambassador";
@@ -222,6 +223,8 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* The core difference */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The core difference</span>
@@ -334,6 +337,8 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             </Link>.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

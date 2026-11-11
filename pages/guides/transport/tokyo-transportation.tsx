@@ -6,6 +6,7 @@ import KlookLink from "../../../components/KlookLink";
 import { tokyoStayAreas } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const keyRoutes = [
   { from: "Shinjuku", to: "Shibuya",    line: "Yamanote Line",  time: "5 min",  price: "¥160" },
@@ -258,6 +259,8 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Tokyo Network Basics */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -498,6 +501,8 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

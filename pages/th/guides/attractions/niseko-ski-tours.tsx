@@ -36,6 +36,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/niseko-ski-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -408,6 +409,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           items={nisekoSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 การเดินทาง
@@ -717,6 +720,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 ผ่านโตเกียว? ถ้ายังไม่เคยเล่นสกีและอยากลองก่อนตัดสินใจมาฮอกไกโด <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">เล่นสกีวันเดียวที่ GALA Yuzawa จากโตเกียว (ภาษาอังกฤษ)</Link>คือแบบที่ผูกมัดน้อย สำหรับคนในกลุ่มที่ไม่เล่นสกี <Link href="/th/guides/attractions/jigokudani-snow-monkey-tour">ทัวร์ลิงหิมะจิโกกุดานิ</Link>และ<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">ทัวร์ทาคายามะและชิราคาวาโกะ (ภาษาอังกฤษ)</Link>คือวันหิมะที่ไม่ต้องใช้สกี และคู่มือ<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">ไฟประดับโตเกียว (ภาษาอังกฤษ)</Link>ครอบคลุมค่ำก่อนหรือหลังเที่ยวบิน
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

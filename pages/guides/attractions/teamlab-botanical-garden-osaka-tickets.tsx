@@ -16,6 +16,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * teamLab Botanical Garden Osaka — written 28 Oct 2026 for the exact phrase
@@ -388,6 +389,8 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
@@ -656,6 +659,8 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

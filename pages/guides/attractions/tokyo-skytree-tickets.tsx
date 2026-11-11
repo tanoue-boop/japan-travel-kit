@@ -18,6 +18,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Prices, tiers and hours below were read off tokyo-skytree.jp on 19 Oct 2026 and
 // re-read on 10 Nov 2026 (prices unchanged; hours, cancellation and access added). The
@@ -339,6 +340,8 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -567,6 +570,8 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             covers how the Metro and Toei networks fit together.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -17,6 +17,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_CARD_URL, WISE_VERIFIED } from "../../../lib/wise-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const WISE_URL = wiseLink("tax-free-shopping-japan", WISE_CARD_URL);
 
@@ -671,6 +672,8 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* (1) The before / after comparison */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The 2026 change</span>
@@ -1227,6 +1230,8 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

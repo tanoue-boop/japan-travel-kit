@@ -4,6 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const PASS_URL =
   "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1266287&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F118071-kyoto-city-subway-and-bus-ticket%2F";
@@ -225,6 +226,8 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Pricing */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
@@ -364,6 +367,8 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
             Book Kyoto Subway &amp; Bus Pass on Klook →
           </KlookLink>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

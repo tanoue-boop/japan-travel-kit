@@ -20,6 +20,7 @@ import {
   usjStayAreas,
   usjTripPrep,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links — Klook affiliate redirects.
 const STUDIO_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
@@ -533,6 +534,8 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — what it is */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The pass itself</span>
@@ -958,6 +961,8 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           intro="A park day is one day. These three are what the same trip usually needs around it, and the first one is on the list mainly so you do not buy it for the wrong reason."
           items={usjTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

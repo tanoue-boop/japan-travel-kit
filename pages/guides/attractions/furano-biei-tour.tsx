@@ -18,6 +18,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Furano and Biei as a day out of Sapporo. Added 7 Nov 2026, so that it is live before
@@ -391,6 +392,8 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Season */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Season</span>
@@ -684,6 +687,8 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
           intro="Your tour starts and ends in Sapporo, so the hotel matters as much as the tour. Open a listing for the price on your dates."
           items={furanoBieiTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

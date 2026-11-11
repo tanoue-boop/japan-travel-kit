@@ -24,6 +24,7 @@ import {
   ujiTeaCeremonyKyotoDayTourFromOsaka,
   wazukaMatchaPickingTasting,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Matcha experiences in Japan — the leaf rather than the ritual.
@@ -391,6 +392,8 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -611,6 +614,8 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             ujiTeaCeremonyKyotoDayTourFromOsaka,
           ]}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

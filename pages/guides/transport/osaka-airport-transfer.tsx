@@ -10,6 +10,7 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import { pocketWifi } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Rebuilt 6 Nov 2026 around the answer (task jtk-20261106-05): the page lands on
@@ -365,6 +366,8 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* KIX Options */}
         <section className={styles.comparisonSection}>
@@ -820,6 +823,8 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
           intro="Kansai Airport splits neatly by hotel: the Rapi:t serves one side of Osaka and the Haruka the other, and whichever one stops near your hotel is usually the right answer. If the booking is still open, choosing one of these areas settles both the arrival and the trip back out."
           areas={osakaAirportStayAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

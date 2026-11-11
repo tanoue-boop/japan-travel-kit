@@ -9,6 +9,7 @@ import { getProvider, priceFrom, pricesCheckedLabel, siteCheapestFrom } from "..
 import { cheapestPerDay, pocketWifi, pocketWifis, ratesCheckedAt, specsCheckedAt } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // eSIM prices on this page are read from data/esim-prices.json (refreshed daily);
 // the Pocket WiFi rentals come from lib/pocket-wifi.ts. The two rental comparison
@@ -161,6 +162,8 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
         </div>
 
         <EsimPageAnswer route="/guides/esim/pocket-wifi-vs-esim-japan" />
+
+        <EsimCtaTop />
 
         {/* Quick Answer */}
         <section className={styles.choiceSection}>

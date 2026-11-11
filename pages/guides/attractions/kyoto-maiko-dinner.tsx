@@ -17,6 +17,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Kyoto maiko dinner — entry page for "kyoto maiko dinner", "dinner with maiko in
@@ -318,6 +319,8 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* How */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>How it works</span>
@@ -547,6 +550,8 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
           intro="A maiko dinner fills the evening. These cover the daytime, the ride to Gion and the map on your phone. Open a listing for the price on your dates."
           items={kyotoMaikoDinnerTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

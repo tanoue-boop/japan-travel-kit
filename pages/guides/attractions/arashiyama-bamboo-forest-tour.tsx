@@ -22,6 +22,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Arashiyama Bamboo Forest Tour. Added 6 Nov 2026. The role against
@@ -391,6 +392,8 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Free */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Cost</span>
@@ -649,6 +652,8 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
           intro="The grove itself needs no booking, so the plan depends on where you sleep and what you add to the morning. Open a listing for the price on your dates."
           items={arashiyamaTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

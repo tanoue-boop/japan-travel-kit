@@ -24,6 +24,7 @@ import {
   type EsimPlanRow,
   type EsimProviderId,
 } from "../../../lib/esim-prices";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Rank pass, 30 Oct 2026.
@@ -555,6 +556,8 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             </a>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Q: How much data do I need in Japan per day? */}
         <section className={styles.comparisonSection}>

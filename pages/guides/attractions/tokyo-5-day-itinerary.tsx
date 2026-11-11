@@ -31,6 +31,7 @@ import {
 } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygFujiFromTokyo, gygShibuyaSky, gygTeamlabPlanets, gygTokyo } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * A five-day Tokyo itinerary: three city days plus two day trips, written as a
@@ -705,6 +706,8 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
 
         <BookingEsimCard lead="Five days of maps and train times. Get mobile data before you land." />
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -1306,6 +1309,8 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             against the alternatives.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

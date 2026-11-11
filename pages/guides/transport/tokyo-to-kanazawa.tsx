@@ -18,6 +18,7 @@ import {
   shirakawagoKanazawaDayTour,
   shirakawagoTakayamaKanazawaDayTour,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo to Kanazawa on the Hokuriku Shinkansen. Added 27 Oct 2026; rewritten
@@ -399,6 +400,8 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -659,6 +662,8 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             kanazawaGeishaKenrokuenCastleDayTour,
           ]}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

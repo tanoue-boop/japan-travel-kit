@@ -27,6 +27,7 @@ import {
   usjStudioPassUrl,
 } from "../../../lib/klook-links";
 import { gygOsaka, gygUsj, gygUsjExpressPass } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Two days in Osaka, written as an order-and-booking plan rather than a list of
@@ -569,6 +570,8 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -1012,6 +1015,8 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
           intro="The one ticket in this itinerary that cannot simply be moved to the other day is the Studio Pass — it is date-specified, and the Express Pass is capped per day on top. Both are sold on GetYourGuide as well, with the same caveat as everywhere else: the Express Pass does not include park admission. The wider Osaka catalogue is there too if you are rebuilding a day from scratch."
           listings={[gygUsj, gygUsjExpressPass, gygOsaka]}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

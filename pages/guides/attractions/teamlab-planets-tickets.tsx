@@ -19,6 +19,7 @@ import { checkedLabel, PLANETS_FACTS, PRICES } from "../../../lib/attraction-pri
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (teamLab Planets Toyosu ticket), shared with the
 // ticket price table.
@@ -335,6 +336,8 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
           <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo comparison of Planets and Borderless</Link>{" "}
           sets them side by side.
         </p>
+
+        <EsimCtaTop />
 
         {/* Prices — the heading is the search query, and the first sentence is the answer. */}
         <section className={styles.comparisonSection}>
@@ -659,6 +662,8 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             explains the lines if Toyosu is new territory.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -13,6 +13,7 @@ import {
   tokyoBayYakatabuneDinnerCruise,
   tokyoBayYakatabuneDinnerShow,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * The Tokyo Bay cruise entry guide. Two completely different products are sold under
@@ -367,6 +368,8 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -545,6 +548,8 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
             tokyoBaySunsetBoatCruise,
           ]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

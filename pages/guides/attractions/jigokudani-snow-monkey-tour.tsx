@@ -25,6 +25,7 @@ import {
   snowMonkeySukiyakiTourTokyo,
   snowMonkeysZenkojiSakeNaganoTour,
 } from "../../../lib/klook-links-winter-honshu";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Jigokudani Yaen-koen (the Snow Monkey Park) as a day from Tokyo — a winter page that has to be
@@ -455,6 +456,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -745,6 +748,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             or compare providers in our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link>.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

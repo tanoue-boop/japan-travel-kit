@@ -14,6 +14,7 @@ import { gygFujiBusTours, gygFujiFromTokyo } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Tour contents and durations below are as the Klook listings describe them, checked 19 Oct 2026.
 // Klook answers automated requests to its product pages with HTTP 403, so no price is quoted here.
@@ -302,6 +303,8 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -438,6 +441,8 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
           intro="A join-in coach has a fixed number of seats on a fixed date, so the useful question on a Fuji day is not which tour is best but which one still has your date. GetYourGuide runs a different set of operators — if the four above are full, start here rather than giving up on the mountain."
           listings={[gygFujiFromTokyo, gygFujiBusTours]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

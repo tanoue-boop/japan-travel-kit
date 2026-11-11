@@ -31,6 +31,7 @@ import { gygFujiBusTours, gygFujiFromTokyo } from "../../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-tw" as const;
 const ROUTE = "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo";
@@ -273,6 +274,8 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>概要</span>
           <h2 className={styles.sectionTitle}>為什麼幾乎每個人都參加一日遊</h2>
@@ -365,6 +368,8 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/transport/tokyo-transportation">東京交通攻略（英文）</Link>。
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

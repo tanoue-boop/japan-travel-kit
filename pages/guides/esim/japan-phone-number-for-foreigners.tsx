@@ -10,6 +10,7 @@ import { klookEsim, phoneNumberDataPrep } from "../../../lib/klook-links";
 import { siteCheapestFrom, pricesCheckedLabel } from "../../../lib/esim-prices";
 import { esimSpec, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { wiseLink, WISE_REL, WISE_VERIFIED } from "../../../lib/wise-links";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan Phone Number for Foreigners — written 30 Oct 2026 for the exact phrase.
@@ -478,6 +479,8 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Q1 — the table the page exists for */}
         <section className={styles.comparisonSection}>

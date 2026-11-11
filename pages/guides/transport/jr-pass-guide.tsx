@@ -15,6 +15,7 @@ import {
   jrPassTripPrep,
   jrPassWholeJapan,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Merged 2026-10-09 with /guides/transport/jr-pass-worth-it. Both pages answered "is the JR
 // Pass worth it" — the same query, with the same break-even arithmetic — and both sat outside
@@ -497,6 +498,8 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           else and before the calculator, with both channels' prices and the before/after table.
           Added 30 Oct 2026 with the price revision.
         */}
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The price</span>
           <h2 className={styles.sectionTitle}>How Much Is the JR Pass in 2026?</h2>
@@ -996,6 +999,8 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           intro="A pass covers trains and nothing else, which makes the rest of a rail trip predictable: you need a bed at the station the shinkansen stops at, and you need data, because every reservation and delay notice lives on a web page."
           items={jrPassTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

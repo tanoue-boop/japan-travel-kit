@@ -15,6 +15,7 @@ import {
 } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // The same SafetyWing ambassador link the other two insurance guides use — it is
 // the only approved insurance affiliate on this site. Heymondo and World Nomads
@@ -402,6 +403,8 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* The core question */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The one distinction</span>
@@ -679,6 +682,8 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

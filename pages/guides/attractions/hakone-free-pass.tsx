@@ -11,6 +11,7 @@ import {
 } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links — the two Klook listings this page uses. Both are existing constants in
 // lib/klook-links.ts rather than new ones: listing 821 (the pass, Klook's 5%
@@ -414,6 +415,8 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -679,6 +682,8 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             show where the Hakone night sits.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

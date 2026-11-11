@@ -6,6 +6,7 @@ import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { nikkoCulturalDayTourUrl, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../lib/klook-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 // The URL itself now lives in lib/klook-links.ts, so the attraction ticket price
@@ -280,6 +281,8 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -421,6 +424,8 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
             card and the ride out to Asakusa.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

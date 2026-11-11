@@ -16,6 +16,7 @@ import {
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Rebuilt 8 Nov 2026 (task jtk-20261108-03) on the figures osaka-airport-transfer
@@ -335,6 +336,8 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Comparison table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>By destination</span>
@@ -448,6 +451,8 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
             <strong>JR Haruka</strong> runs there in one seat. Match the train to your hotel station.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

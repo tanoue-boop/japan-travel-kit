@@ -24,6 +24,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Okinawa Day Tours, written for the exact phrase. Added 5 Nov 2026 (task
@@ -374,6 +375,8 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
           <h2 className={styles.sectionTitle}>Which Okinawa Day Tours Can You Book From Naha?</h2>
@@ -673,6 +676,8 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
           intro="In Naha, near the monorail, because that is where pick-ups are and where the tours bring you back. A night by the aquarium only makes sense if you are driving."
           areas={okinawaChuraumiStayAreas}
         />
+
+        <EsimCtaBottom />
 
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

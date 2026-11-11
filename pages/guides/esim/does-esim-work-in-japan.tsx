@@ -18,6 +18,7 @@ import { klookEsim } from "../../../lib/klook-links";
 import { cheapestPerDay, ratesCheckedAt as wifiRatesCheckedAt } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Networks, prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => getProvider(id).affiliateUrl;
@@ -369,6 +370,8 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             </a>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Yes, eSIM works */}
         <section className={styles.bodySection}>

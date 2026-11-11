@@ -57,6 +57,7 @@ import { jrPassWholeJapanCurrent, shirakawagoLightUp2027NagoyaTour } from "../..
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan in winter, as a twelve-day route — written 28 Oct 2026 for the exact phrase
@@ -1239,6 +1240,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
         {/* How the days split */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The shape of it</span>
@@ -1743,6 +1746,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

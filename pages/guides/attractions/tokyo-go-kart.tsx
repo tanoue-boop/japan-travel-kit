@@ -13,6 +13,7 @@ import {
   tokyoSubwayTicket,
 } from "../../../lib/klook-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 const GOKART_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304902&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F116875-shibuya-go-karting-experience-by-akiba-kart-shibuya%2F";
@@ -344,6 +345,8 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             </KlookLink>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Intro */}
         <section className={styles.bodySection}>
@@ -704,6 +707,8 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             explains the train, subway and IC card basics.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

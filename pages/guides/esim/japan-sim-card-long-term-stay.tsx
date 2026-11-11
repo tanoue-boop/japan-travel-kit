@@ -10,6 +10,7 @@ import { klookEsim, longStaySimPrep } from "../../../lib/klook-links";
 import { pocketWifi, ratesCheckedAt, specsCheckedAt } from "../../../lib/pocket-wifi";
 import { priceFrom, pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
 import { esimSpec, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan SIM Card for Long Term Stay — written 28 Oct 2026 for the exact phrase,
@@ -458,6 +459,8 @@ export default function JapanSimCardLongTermStayPage({ updated }: { updated: Pag
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Q1 — the comparison */}
         <section className={styles.comparisonSection}>

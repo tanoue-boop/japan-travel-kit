@@ -9,6 +9,7 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { whereToStayKyotoAreas, whereToStayKyotoTripPrep } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Where to Stay in Kyoto — four areas compared on the lines that serve them and
@@ -341,6 +342,8 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Answer-first intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The short answer</span>
@@ -615,6 +618,8 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
           intro="Each of these follows from the area rather than the other way round: the airport train you want depends on whether your base is Kyoto Station, and whether a guided day is worth it depends on how far your base is from the sight you most want to see early."
           items={whereToStayKyotoTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

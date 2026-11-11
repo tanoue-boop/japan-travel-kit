@@ -9,6 +9,7 @@ import { jrKansaiAreaPass, kyotoStayAreas, kyotoTransportTripPrep } from "../../
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Sources for this page, read on 5 November 2026 unless a date is given. Every
@@ -401,6 +402,8 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             </KlookLink>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Fare table */}
         <section className={styles.comparisonSection}>
@@ -805,6 +808,8 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

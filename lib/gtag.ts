@@ -13,6 +13,8 @@ export type AffiliateClickParams = {
   link_text: string;
   /** Which block on the page the link sits in, where that block declares one. */
   placement?: string;
+  /** "top" or "bottom": where on the page the block sits, where it declares one (components/EsimCta.tsx). */
+  position?: string;
 };
 
 export const trackAffiliateClick = (params: AffiliateClickParams) => {

@@ -15,6 +15,7 @@ import {
   type EsimPlan,
   type EsimProviderId,
 } from "../../../lib/esim-prices";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Every price on this page is read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -236,6 +237,8 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Side-by-Side Comparison */}
         <section className={styles.comparisonSection}>

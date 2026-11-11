@@ -15,6 +15,7 @@ import {
   karuizawaSkiSnowDayTour,
   shinkansenTokyoKaruizawa,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Karuizawa as a day trip from Tokyo — the Hokuriku Shinkansen resort town, as distinct from
@@ -416,6 +417,8 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro / scope */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -655,6 +658,8 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -8,6 +8,7 @@ import { tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-l
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygTokyoCookingClasses, gygTokyoRamenClasses } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 const TOKYO_COOKING_CLASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1309224&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F122869-tokyo-sushi-making-experience-japanese-cooking-class%2F";
@@ -242,6 +243,8 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
           </p>
         </div>
 
+        <EsimCtaTop />
+
         {/* The question this page is most often found for, answered before anything else. */}
         <section className={styles.bodySection}>
           <h2 className={styles.sectionTitle}>Are Cooking Classes in Tokyo Suitable for Beginners?</h2>
@@ -418,6 +421,8 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
           intro="A class has a kitchen's worth of seats, so popular slots go early and the language you need is not always the one on offer. GetYourGuide lists its own set of Tokyo kitchens, and separates the ramen classes from the sushi ones — handy if you have already decided which of the two you came for."
           listings={[gygTokyoCookingClasses, gygTokyoRamenClasses]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

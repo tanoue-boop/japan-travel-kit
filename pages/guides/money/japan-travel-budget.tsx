@@ -17,6 +17,7 @@ import {
   budgetTransportPrep,
   klookEsim,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan travel budget. Rewritten 27 October 2026 to answer "trip to Tokyo Japan
@@ -676,6 +677,8 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — "trip to tokyo japan cost", with the trip-length totals. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Trip totals</span>
@@ -1233,6 +1236,8 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             </div>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

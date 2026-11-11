@@ -8,6 +8,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { klookEsim, workingHolidayArrivalPrep } from "../../../lib/klook-links";
 import { siteCheapestFrom, pricesCheckedLabel } from "../../../lib/esim-prices";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan SIM Card for Working Holiday — written 29 Oct 2026 for the exact phrase.
@@ -481,6 +482,8 @@ export default function JapanSimCardWorkingHolidayPage({ updated }: { updated: P
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Q1 — the plan, with the full grid */}
         <section className={styles.comparisonSection}>

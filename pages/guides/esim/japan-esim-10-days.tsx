@@ -26,6 +26,7 @@ import {
   type EsimPlanRow,
   type EsimProviderId,
 } from "../../../lib/esim-prices";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Restored 1 Nov 2026 from 5fab7fa (the page as it stood before the September
@@ -561,6 +562,8 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Sizing */}
         <section className={styles.comparisonSection}>

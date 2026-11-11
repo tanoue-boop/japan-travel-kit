@@ -35,6 +35,7 @@ import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/usj-tickets-express-pass.tsx) as of
 // 2026-11-01: same sections, tables, FAQ and Klook / GetYourGuide blocks in the same order.
@@ -463,6 +464,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>通行证介绍<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>日本环球影城快速通行证是什么？</h2>
@@ -815,6 +818,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="乐园只是其中一天。以下三项是同一趟旅行通常还需要的，第一项放在这里，主要是为了避免你因为错误的理由买它。"
           items={tripPrep}
         />
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

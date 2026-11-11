@@ -36,6 +36,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/niseko-ski-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -408,6 +409,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           items={nisekoSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 交通方式
@@ -717,6 +720,8 @@ Rhythm 私人课 →
 会经过东京？如果没滑过雪，想在决定去北海道前试试，<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">东京出发 GALA 汤泽滑雪（英文）</Link>是负担较小的版本。同行不滑雪的人可以选<Link href="/zh-cn/guides/attractions/jigokudani-snow-monkey-tour">地狱谷雪猴行程</Link>和<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山与白川乡行程（英文）</Link>，都是不用滑雪的雪地之旅，<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">东京灯饰（英文）</Link>攻略则适合航班前后的夜晚。
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

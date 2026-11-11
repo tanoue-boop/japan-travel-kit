@@ -18,6 +18,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Staying the night in Hakone, for the reader searching for a private onsen. Added
@@ -334,6 +335,8 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Inns */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare inns</span>
@@ -566,6 +569,8 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           intro="Once the room is settled, these cover the rest of the trip. Open a listing for the price on your dates."
           items={hakoneRyokanTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

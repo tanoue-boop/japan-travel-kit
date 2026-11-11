@@ -31,6 +31,7 @@ import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 /**
  * 東京機場交通（繁體中文版）— mirrors pages/guides/transport/tokyo-airport-transfer.tsx
@@ -683,6 +684,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             </p>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Hotel area against airport */}
         <section className={styles.comparisonSection}>
@@ -1394,6 +1397,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           intro="機場票只送你到第一個車站。這兩項負責它的前後："
           items={tripPrep}
         />
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

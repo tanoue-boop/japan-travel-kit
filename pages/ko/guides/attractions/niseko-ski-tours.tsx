@@ -36,6 +36,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/niseko-ski-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -408,6 +409,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           items={nisekoSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 가는 방법
@@ -717,6 +720,8 @@ Rhythm 개인 강습 →
 도쿄를 거치나요? 스키가 처음이라 홋카이도에 가기 전에 시험해 보고 싶다면 <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">도쿄 출발 갈라 유자와 스키(영어)</Link>가 부담 없는 방법입니다. 일행 중 스키를 타지 않는 사람에게는 <Link href="/ko/guides/attractions/jigokudani-snow-monkey-tour">지고쿠다니 원숭이 공원 투어</Link>와 <Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">다카야마와 시라카와고 투어(영어)</Link>가 스키 없는 눈 여행이 되고, <Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">도쿄 일루미네이션(영어)</Link> 가이드는 비행 전후의 저녁을 다룹니다.
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

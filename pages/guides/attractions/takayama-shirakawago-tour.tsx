@@ -27,6 +27,7 @@ import {
   shirakawagoFairytale2027NagoyaTour,
   shirakawagoIllumination2027NagoyaTour,
 } from "../../../lib/klook-links-winter-honshu";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * A Takayama and Shirakawa-go tour, written as a which-departure guide.
@@ -485,6 +486,8 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -829,6 +832,8 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             shirakawagoFairytale2027NagoyaTour,
           ]}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

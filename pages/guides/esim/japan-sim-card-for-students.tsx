@@ -8,6 +8,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { klookEsim, studentSimArrivalPrep } from "../../../lib/klook-links";
 import { siteCheapestFrom, pricesCheckedLabel } from "../../../lib/esim-prices";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan SIM Card for Students — written 30 Oct 2026 for the exact phrase.
@@ -488,6 +489,8 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Q1 — the comparison */}
         <section className={styles.comparisonSection}>

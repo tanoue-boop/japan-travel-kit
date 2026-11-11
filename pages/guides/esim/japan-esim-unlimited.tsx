@@ -21,6 +21,7 @@ import { SIMBYE_SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Every price on this page is read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -468,6 +469,8 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
         <div data-placement="esim-page-answer">
           <EsimAltLinks />
         </div>
+
+        <EsimCtaTop />
 
         {/* Answer table: price by trip length, then what each "unlimited" slows to. */}
         <section className={styles.comparisonSection}>

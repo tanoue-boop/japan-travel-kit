@@ -18,6 +18,7 @@ import {
   shoryudoHighwayBusPass,
 } from "../../../lib/klook-links";
 import { gygLegolandJapan, gygNagoyaEntryTickets } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * LEGOLAND Japan Tickets — the second of the two Nagoya-area guides added
@@ -290,6 +291,8 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Answer-first intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The short answer</span>
@@ -496,6 +499,8 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
           intro="The ticket is the easy part — it is on sale for any date. What actually decides the day is whether you have one 10:00-to-17:00 window or two, and where you sleep the night before."
           items={legolandJapanTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -93,6 +93,8 @@ export default function App({ Component, pageProps }: AppProps) {
         link_text: (anchor.innerText || anchor.textContent || "").trim().slice(0, 80),
         // Set by a wrapping element where a block needs its own line in the report.
         placement: anchor.closest("[data-placement]")?.getAttribute("data-placement") ?? undefined,
+        // "top" / "bottom", set by the site-wide eSIM blocks (components/EsimCta.tsx).
+        position: anchor.closest("[data-position]")?.getAttribute("data-position") ?? undefined,
       });
     };
 

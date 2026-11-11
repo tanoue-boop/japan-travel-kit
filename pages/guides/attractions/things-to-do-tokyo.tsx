@@ -25,6 +25,7 @@ import {
 import GygCompare from "../../../components/GygCompare";
 import { gygTokyo, gygTokyoEntryTickets } from "../../../lib/gyg-links";
 import { PRICES, TOKYO_GUIDE_PRICES, checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Every yen figure on this page comes from lib/attraction-prices.ts, so it cannot drift from
 // the guide that verified it. (It did once: until 1 Nov 2026 this page still printed Shibuya
@@ -405,6 +406,8 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           </p>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -778,6 +781,8 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           intro="Nothing on this page depends on one seller. If you are filling in dates and something above is sold out — a Shibuya Sky slot, a Fuji coach, a teamLab entry — GetYourGuide's Tokyo catalogue is the other place to search by date, and it carries operators Klook does not."
           listings={[gygTokyo, gygTokyoEntryTickets]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

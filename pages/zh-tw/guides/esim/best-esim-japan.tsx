@@ -37,6 +37,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel } from "../../../../lib/i18n";
+import { EsimCtaTop } from "../../../../components/EsimCta";
 
 /**
  * Traditional Chinese edition of /guides/esim/best-esim-japan. Mirrors the English page
@@ -595,6 +596,8 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             {SPECS_CHECKED}（Simbye 為 {SIMBYE_CHECKED}，來自 simbye.com 與其價格資料）；Klook 的資料來自其 {KLOOK_SPECS_CHECKED} 的商品資料。
           </p>
         </section>
+
+        <EsimCtaTop />
 
         {/* Quick Comparison Table */}
         <section className={styles.comparisonSection}>

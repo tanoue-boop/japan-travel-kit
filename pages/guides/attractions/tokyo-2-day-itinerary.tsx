@@ -23,6 +23,7 @@ import {
   tokyoTwoDayTripPrep,
   tsukijiStreetFoodTour,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Two days in Tokyo, written as a routing-and-booking plan. Added 9 Nov 2026
@@ -485,6 +486,8 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -893,6 +896,8 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             alternatives.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -21,6 +21,7 @@ import {
   yuzawaIwapparaSkiDayTourTokyo,
   type KlookTripPrepItem,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * GALA Yuzawa as a day out of Tokyo, written for the reader searching "Gala
@@ -594,6 +595,8 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
         {/* Getting there */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
@@ -982,6 +985,8 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             resort at all.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

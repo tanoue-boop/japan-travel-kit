@@ -18,6 +18,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Kyoto Day Trip from Tokyo, written for the exact phrase. Added 5 Nov 2026 (task
@@ -317,6 +318,8 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Yes or no</span>
           <h2 className={styles.sectionTitle}>Can You Do a Day Trip to Kyoto from Tokyo?</h2>
@@ -568,6 +571,8 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

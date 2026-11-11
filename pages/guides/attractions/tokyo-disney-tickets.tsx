@@ -12,6 +12,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const DISNEY_TICKET_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304885&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F695-tokyo-disney-resort-1-day-pass-tokyo%2F";
 
@@ -509,6 +510,8 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
@@ -884,6 +887,8 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             covers another dated booking that is easier through a reseller.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

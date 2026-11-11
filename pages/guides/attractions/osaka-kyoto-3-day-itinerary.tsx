@@ -27,6 +27,7 @@ import {
   usjStudioPassUrl,
 } from "../../../lib/klook-links";
 import { gygOsaka, gygUsj, gygUsjExpressPass } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Three days across Osaka and Kyoto, written as a routing-and-booking plan.
@@ -701,6 +702,8 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -1220,6 +1223,8 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
           intro="Six bookings happen before the itinerary starts: the regional pass, the two airport trains it is priced against, the city pass for Day 1, one guided day if Day 2 or Day 3 should be someone else's routing problem, and data. Klook prices change by date, so open a listing for the figure on your own dates."
           items={osakaKyotoThreeDayTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -15,6 +15,7 @@ import {
 import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => getProvider(id).affiliateUrl;
@@ -425,6 +426,8 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             </a>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Compatibility — question heading, answer in the first two sentences. */}
         <section className={styles.comparisonSection}>

@@ -13,6 +13,7 @@ import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygKyotoDayTrips, gygNaraFromOsaka } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Tour contents and durations are as the Klook listings describe them; Todai-ji figures are from
 // todaiji.or.jp. Both checked 19 Oct 2026.
@@ -313,6 +314,8 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -485,6 +488,8 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
           intro="This is a seat on a coach on a particular morning, which means the itinerary you picked above may simply be full on your date. GetYourGuide runs a different set of operators over the same ground — including private cars with a driver, if a fixed timetable is the part you did not want."
           listings={[gygNaraFromOsaka, gygKyotoDayTrips]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

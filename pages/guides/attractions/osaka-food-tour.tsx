@@ -22,6 +22,7 @@ import {
   osakaTwoDayStayAreas,
 } from "../../../lib/klook-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Osaka Food Tour — the entry page for the search term, in the 6.5% Klook
@@ -318,6 +319,8 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
           </p>
         </div>
 
+        <EsimCtaTop />
+
         {/* Answer-first body paragraph */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The short answer</span>
@@ -579,6 +582,8 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
           intro="Every food tour in this guide meets in Minami or at Umeda, so the area you sleep in decides whether a 20:30 finish is a ten-minute walk or a train ride. Namba is the default: Dotonbori and Kuromon are on foot and Shinsekai is three Midosuji stops away."
           areas={osakaTwoDayStayAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

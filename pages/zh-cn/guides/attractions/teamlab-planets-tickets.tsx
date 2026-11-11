@@ -36,6 +36,7 @@ import { PLANETS_FACTS, PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-cn" as const;
 const GYG_SLUG = "zh-cn-teamlab-planets-tickets";
@@ -320,6 +321,8 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <Link href="/zh-cn/guides/attractions/teamlab-tokyo-tickets">teamLab Planets 与无界比较</Link>{" "}
           把两者并排列出。
         </p>
+
+        <EsimCtaTop />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>票价</span>
@@ -611,6 +614,8 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             有各线路的说明。
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

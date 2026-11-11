@@ -17,6 +17,7 @@ import {
   osakaPrivateWalkingTour,
   osakaSkyVistaHalfDayBusTour,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Osaka Aquarium Kaiyukan — the Tempozan aquarium, and the one major Osaka attraction
@@ -463,6 +464,8 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -813,6 +816,8 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -16,6 +16,7 @@ import {
   umedaSkyBuildingTicket,
   umedaSkySameDayPrep,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Umeda Sky Building — the Kuchu Teien Observatory, and the one Osaka admission where
@@ -465,6 +466,8 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -860,6 +863,8 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -19,6 +19,7 @@ import {
   osakaHiroshimaMiyajimaPrivateDayTour,
   shinkansenOsakaHiroshima,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Osaka to Hiroshima on the Sanyo Shinkansen. Added 28 Oct 2026. Sister page to
@@ -447,6 +448,8 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -733,6 +736,8 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             hiroshimaMiyajimaMultiCityDayTour,
           ]}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

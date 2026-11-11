@@ -17,6 +17,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Okinawa Churaumi Aquarium tickets — written for the exact phrase "Okinawa Churaumi
@@ -315,6 +316,8 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
@@ -560,6 +563,8 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           intro="Naha if the aquarium is one day of a longer Okinawa trip; the Motobu Peninsula if you want the 8:30 opening and the north to yourself the next morning."
           areas={okinawaChuraumiStayAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

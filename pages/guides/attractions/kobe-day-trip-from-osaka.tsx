@@ -19,6 +19,7 @@ import {
   osakaStayAreas,
   rokkosanTouristPass,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * A Kobe day trip out of Osaka, written as a routes-and-reservations guide.
@@ -455,6 +456,8 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -782,6 +785,8 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             kobePrivateHalfDayWalkingTour,
           ]}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

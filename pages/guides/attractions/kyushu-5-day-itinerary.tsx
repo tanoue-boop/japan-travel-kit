@@ -25,6 +25,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Five days in northern Kyushu, based in Fukuoka. Added 7 Nov 2026.
@@ -606,6 +607,8 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Enough time */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The route</span>
@@ -962,6 +965,8 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
           intro="Five days, two hotels and two long tours. Open a listing for the price on your dates."
           items={kyushuItineraryTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

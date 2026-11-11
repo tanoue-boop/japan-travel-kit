@@ -42,6 +42,7 @@ import {
   gygKyoto,
   type GygListing,
 } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * A seven-day Tokyo–Kyoto–Osaka itinerary: the first-visit route, written as a
@@ -1047,6 +1048,8 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Route overview */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -1471,6 +1474,8 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

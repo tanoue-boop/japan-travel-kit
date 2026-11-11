@@ -36,6 +36,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/jigokudani-snow-monkey-tour.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -356,6 +357,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>
 概况
@@ -593,6 +596,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 需要，这趟比多数行程更需要。网上票、汤田中与长野的巴士时刻和公苑的猴子预报都在手机上，而步道和巴士站没有酒店 Wi-Fi。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> 或到<Link href="/zh-cn/guides/esim/best-esim-japan">日本流量卡推荐攻略</Link>比较各家运营商。
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

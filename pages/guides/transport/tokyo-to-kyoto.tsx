@@ -7,6 +7,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { shinkansenTokyoKyoto, tokyoToKyotoTripPrep } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo to Kyoto: how to make the journey, and what to book around it. Rebuilt on
@@ -308,6 +309,8 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Comparison */}
         <section className={styles.comparisonSection}>
@@ -620,6 +623,8 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

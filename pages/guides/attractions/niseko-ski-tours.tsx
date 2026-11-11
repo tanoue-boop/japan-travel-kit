@@ -25,6 +25,7 @@ import {
   rhythmNisekoPrivateSkiLesson,
   type KlookTripPrepItem,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Niseko as the thing you book rather than the place you read about, written
@@ -584,6 +585,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           items={nisekoSameTrip}
         />
 
+        <EsimCtaTop />
+
         {/* Getting there */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
@@ -956,6 +959,8 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             evenings at the start or end of the flight.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

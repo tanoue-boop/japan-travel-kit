@@ -9,6 +9,7 @@ import { klookEsim } from "../../../lib/klook-links";
 import { pocketWifi } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Restored 6 Nov 2026 (jtk-20261106-A20). The URL had 301'd to best-esim-japan since the
@@ -263,6 +264,8 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
         </div>
 
         <SimbyeOffer />
+
+        <EsimCtaTop />
 
         {/* By airport */}
         <section className={styles.comparisonSection}>

@@ -23,6 +23,7 @@ import {
 } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygShibuyaSky, gygTeamlabPlanets, gygTokyo } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * A three-day Tokyo itinerary, written as a booking plan rather than a list of sights.
@@ -471,6 +472,8 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* How many days */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -855,6 +858,8 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

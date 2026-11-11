@@ -4,6 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // SafetyWing is the only approved insurance affiliate. Heymondo and World Nomads stay plain.
 const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614156&utm_source=26614156&utm_medium=Ambassador";
@@ -385,6 +386,8 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* 1. Conclusion, by traveller. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The answer</span>
@@ -600,6 +603,8 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
             days this cover would run for.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

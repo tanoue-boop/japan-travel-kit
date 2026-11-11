@@ -19,6 +19,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * teamLab Fukuoka Tickets — written 29 Oct 2026 for the exact phrase
@@ -497,6 +498,8 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
@@ -746,6 +749,8 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
           intro="Three areas, and the choice comes down to whether the museum is the reason you are in Fukuoka or one evening of a wider trip. Which rooms are left and at what price is a per-date question, so each area links into Klook's own hotel search for it."
           areas={fukuokaStayAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

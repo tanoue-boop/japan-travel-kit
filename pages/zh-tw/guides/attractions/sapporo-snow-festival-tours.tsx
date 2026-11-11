@@ -41,6 +41,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/sapporo-snow-festival-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -406,6 +407,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           items={festivalSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 日期與會場
@@ -640,6 +643,8 @@ JR 北海道周遊券 →
 如果經東京進出，本州的冬天值得再加一站。<Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷雪猴行程</Link>和<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉行程（英文）</Link>不用飛往北方就能看到深雪；只想滑一天雪的話，<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">東京出發 GALA 湯澤滑雪（英文）</Link>更省時。北海道前後的晚上，可以看<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">東京燈飾（英文）</Link>攻略，了解哪些到 2 月還有展出。
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

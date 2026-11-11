@@ -7,6 +7,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { kamakuraEnoshimaDayTourUrl, tokyoSubwayTicket, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026),
 // shared with the ticket price table.
@@ -281,6 +282,8 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -423,6 +426,8 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
             easy days out of Tokyo.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

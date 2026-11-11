@@ -21,6 +21,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/teamlab-borderless-tickets.tsx) as of
 // 2026-11-01, section by section; every figure is the English page's or comes from
@@ -378,6 +379,8 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>门票价格<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>2026 年 teamLab 无界门票多少钱？</h2>
@@ -680,6 +683,8 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
             <Link href="/guides/transport/tokyo-transportation">东京交通攻略（英文）</Link>有更详细的线路说明。
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

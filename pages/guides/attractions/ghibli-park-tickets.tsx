@@ -18,6 +18,7 @@ import {
   shoryudoHighwayBusPass,
 } from "../../../lib/klook-links";
 import { gygGhibliPark, gygNagoyaEntryTickets } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Ghibli Park Tickets — the first Nagoya-area guide on this site.
@@ -340,6 +341,8 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Answer-first intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The short answer</span>
@@ -566,6 +569,8 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
           intro="The ticket is only one of the bookings this day takes, and the other two are decided by your entry time: a 9 a.m. Grand Warehouse slot is a different morning from a 2 p.m. one, and the direct bus does not run on the days the park is shut."
           items={ghibliParkTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

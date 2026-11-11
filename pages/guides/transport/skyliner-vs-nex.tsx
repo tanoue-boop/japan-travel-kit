@@ -12,6 +12,7 @@ import {
   naritaExpressRoundTripUrl,
   skylinerVsNexSameDayPrep,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Skyliner vs N'EX — restored 3 Nov 2026 (task jtk-20261103-05).
@@ -407,6 +408,8 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
           </p>
         </div>
 
+        <EsimCtaTop />
+
         {/* Is the Skyliner or N'EX better? */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The decision</span>
@@ -671,6 +674,8 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
             starts from either side of the city.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

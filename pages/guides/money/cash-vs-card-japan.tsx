@@ -7,6 +7,7 @@ import { cashVsCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_CARD_URL, WISE_VERIFIED } from "../../../lib/wise-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /** One tracked Wise link, placed after the "which card" answer. */
 const WISE_CARD_CTA = wiseLink("cash-vs-card-japan", WISE_CARD_URL);
@@ -424,6 +425,8 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
 
         {/* Q1 — rule (3): the search query verbatim as the heading, answered in the first sentence.
             Rule (2): the by-place table, with the date every cell was checked. */}
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>At a glance</span>
           <h2 className={styles.sectionTitle}>Is Japan more cash or card?</h2>
@@ -832,6 +835,8 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             value this far more than money.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

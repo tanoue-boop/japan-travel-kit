@@ -25,6 +25,7 @@ import { gygTokyoDisneyResort, gygTokyoDisneySea } from "../../../../lib/gyg-lin
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/ko/guides/attractions/tokyo-disney-tickets";
 const TITLE = "도쿄 디즈니랜드 티켓(2026): 가격, 구매처, 랜드·씨 선택";
@@ -455,6 +456,8 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>가격</span>
@@ -812,6 +815,8 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             에서 판매처를 통하는 편이 더 쉬운 또 하나의 날짜 지정 예약을 다룹니다.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <FaqList items={faqItems} />

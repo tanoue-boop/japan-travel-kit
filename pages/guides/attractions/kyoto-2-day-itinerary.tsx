@@ -23,6 +23,7 @@ import {
   saganoRomanticTrainTicket,
   shinkansenTokyoKyoto,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Two days in Kyoto, written as a routing-and-booking plan rather than a list of
@@ -618,6 +619,8 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -1028,6 +1031,8 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
           intro="Five bookings sit outside the two days themselves: how you arrive, the regional pass to price against your route, the one experience that is an appointment rather than a ticket, the reserved-seat ride on Day 2, and data. Klook prices change by date, so open a listing for the figure on your dates."
           items={kyotoTwoDayTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

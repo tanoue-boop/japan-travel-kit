@@ -16,6 +16,7 @@ import {
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Answer-first pass, 28 Oct 2026.
@@ -674,6 +675,8 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* The card-by-card table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>At a glance</span>
@@ -1086,6 +1089,8 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             new card or take a refund of the balance less the fee, with the ¥500 on top. Checked {CHECKED}.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

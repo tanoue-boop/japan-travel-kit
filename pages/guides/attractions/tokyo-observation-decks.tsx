@@ -10,6 +10,7 @@ import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygShibuyaSky, gygTokyoEntryTickets, gygTokyoSkytree, gygTokyoTower } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links — Klook affiliate redirects (tracking links, all three listings confirmed live
 // 19 Oct 2026).
@@ -362,6 +363,8 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimCtaTop />
 
         {/* Lead: answers the query before anything else on the page. */}
         <section className={styles.bodySection}>
@@ -782,6 +785,8 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           </Link>{" "}
           compares them.
         </p>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

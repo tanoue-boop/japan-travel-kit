@@ -18,6 +18,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { PRICES, checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect, shared with the ticket price table.
 const SHIBUYA_SKY_URL = shibuyaSkyTicketUrl;
@@ -485,6 +486,8 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
@@ -816,6 +819,8 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

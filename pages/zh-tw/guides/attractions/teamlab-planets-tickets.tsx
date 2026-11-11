@@ -36,6 +36,7 @@ import { PLANETS_FACTS, PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-tw" as const;
 const GYG_SLUG = "zh-tw-teamlab-planets-tickets";
@@ -313,6 +314,8 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           還在兩間東京美術館之間猶豫？請看我們的{" "}
           <Link href="/zh-tw/guides/attractions/teamlab-tokyo-tickets">teamLab Planets 與無界比較</Link>。
         </p>
+
+        <EsimCtaTop />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>票價</span>
@@ -608,6 +611,8 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             有各路線的說明。
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

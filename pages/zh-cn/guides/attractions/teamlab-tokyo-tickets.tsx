@@ -27,6 +27,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-cn" as const;
 
@@ -195,6 +196,8 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>两馆对比<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>teamLab Planets 和无界，该选哪一座？</h2>
@@ -246,6 +249,8 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

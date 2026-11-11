@@ -10,6 +10,7 @@ import GygCompare from "../../../components/GygCompare";
 import { gygNaraFromOsaka, gygOsaka } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { priceById } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Osaka Amazing Pass prices read off the official site, osp.osaka-info.jp, on 19 Oct 2026.
 // Individual attraction admissions are deliberately absent — most of the included venues
@@ -156,6 +157,8 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           </p>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -289,6 +292,8 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           intro="Two things on an Osaka trip genuinely sell out: a USJ date, and a seat on the Kyoto-and-Nara coach. GetYourGuide carries both, along with the Dotonbori cruises and the city walking tours — worth searching if a date above has gone. The Amazing Pass is an official city product and stays where it is."
           listings={[gygOsaka, gygNaraFromOsaka]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

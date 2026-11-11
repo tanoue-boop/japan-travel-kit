@@ -17,6 +17,7 @@ import {
   osakaCastleUmedaTonboriDayTour,
   osakaSkyVistaHalfDayBusTour,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Osaka Castle — the main tower, and the four other paid things inside the same walls
@@ -431,6 +432,8 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -692,6 +695,8 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
           intro="The keep and the walls take about half a day, and the castle sits between Umeda and Namba, so where you stay and how the evening goes are the bookings left to make."
           items={osakaCastleTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

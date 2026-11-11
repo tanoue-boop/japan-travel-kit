@@ -8,6 +8,7 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_CARD_URL } from "../../../lib/wise-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /** The one tracked Wise link on this page, placed after the "where do I get yen" answer. */
 const WISE_CARD_CTA = wiseLink("how-much-yen-to-bring-japan", WISE_CARD_URL);
@@ -468,6 +469,8 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
           intro="The figures above assume the big items are already paid for. These are yen costs normally settled out of the cash you carry — the airport train, city subway rides and mobile data first — that can be put on a card in your own currency before you leave:"
           items={howMuchYenTripPrep}
         />
+
+        <EsimCtaTop />
 
         {/* Short answers to the question forms search engines send here. */}
         <section className={styles.bodySection}>
@@ -932,6 +935,8 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
             ))}
           </ul>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

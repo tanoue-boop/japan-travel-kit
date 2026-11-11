@@ -36,6 +36,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/jigokudani-snow-monkey-tour.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -356,6 +357,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>
 ภาพรวม
@@ -593,6 +596,8 @@ Jigokudani Yaen-koen เป็นสวนลิงป่าในหุบเ�
 ต้องมี และทริปนี้จำเป็นกว่าทริปส่วนใหญ่ ตั๋วออนไลน์ เวลารถบัสที่ยุดะนากะและนากาโนะ และพยากรณ์ลิงของสวนอยู่ในมือถือทั้งหมด และบริเวณทางเดินและป้ายรถบัสไม่มี Wi-Fi แบบในโรงแรม <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดู Klook eSIM →</KlookLink> หรือเปรียบเทียบผู้ให้บริการใน<Link href="/th/guides/esim/best-esim-japan">คู่มือ eSIM ญี่ปุ่น</Link>
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

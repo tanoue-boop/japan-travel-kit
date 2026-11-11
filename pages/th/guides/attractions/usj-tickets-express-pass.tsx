@@ -36,6 +36,7 @@ import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English page (/guides/attractions/usj-tickets-express-pass) section by
 // section as of 2026-11-01: same sections, tables, FAQ and Klook/GetYourGuide CTAs in
@@ -460,6 +461,8 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>ตัวพาส</span>
           <h2 className={styles.sectionTitle}>Express Pass ของยูนิเวอร์แซล สตูดิโอ เจแปน คืออะไร?</h2>
@@ -850,6 +853,8 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="วันไปสวนคือหนึ่งวัน สามรายการนี้คือสิ่งที่ทริปเดียวกันมักต้องใช้รอบ ๆ วันนั้น และรายการแรกอยู่ในลิสต์เพื่อไม่ให้คุณซื้อมันด้วยเหตุผลที่ผิด"
           items={tripPrep}
         />
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

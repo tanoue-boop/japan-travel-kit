@@ -36,6 +36,7 @@ import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English page (/guides/attractions/usj-tickets-express-pass) section by
 // section as of 2026-11-01: same sections, tables, FAQ and Klook/GetYourGuide CTAs in
@@ -459,6 +460,8 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>패스 자체</span>
           <h2 className={styles.sectionTitle}>유니버설 스튜디오 재팬 익스프레스 패스란?</h2>
@@ -851,6 +854,8 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="파크는 하루입니다. 아래 세 가지는 같은 여행에서 보통 그 앞뒤로 필요한 것들이고, 첫 번째는 잘못된 이유로 사지 않도록 목록에 넣었습니다."
           items={tripPrep}
         />
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

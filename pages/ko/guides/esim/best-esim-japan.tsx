@@ -41,6 +41,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaTop } from "../../../../components/EsimCta";
 
 /**
  * Korean edition of /guides/esim/best-esim-japan. Mirrors the English page block by
@@ -610,6 +611,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             클룩 항목은 {KLOOK_SPECS_CHECKED} 클룩 자체 상품 데이터 기준입니다.
           </p>
         </section>
+
+        <EsimCtaTop />
 
         {/* Quick Comparison Table */}
         <section className={styles.comparisonSection}>

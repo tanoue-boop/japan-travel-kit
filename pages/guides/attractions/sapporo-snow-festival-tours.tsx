@@ -30,6 +30,7 @@ import {
   asahiyamaBieiHighlightsTour,
   lakeShikotsuTomamuIceVillageDayTour,
 } from "../../../lib/klook-links-winter-hokkaido";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * The Sapporo Snow Festival, written for the reader searching "Sapporo Snow
@@ -571,6 +572,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           items={festivalSameTrip}
         />
 
+        <EsimCtaTop />
+
         {/* Dates and sites */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Dates &amp; sites</span>
@@ -888,6 +891,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             displays are still running in February.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

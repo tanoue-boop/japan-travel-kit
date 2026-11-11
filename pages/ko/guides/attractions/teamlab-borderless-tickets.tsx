@@ -22,6 +22,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English page (pages/guides/attractions/teamlab-borderless-tickets.tsx) section
 // by section as of 2026-11-01. Figures come from lib/attraction-prices.ts and the English
@@ -378,6 +379,8 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>가격</span>
           <h2 className={styles.sectionTitle}>2026년 팀랩 보더리스 티켓 가격은 얼마인가요?</h2>
@@ -702,6 +705,8 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             <Link href="/guides/transport/tokyo-transportation">도쿄 교통 가이드(영어)</Link>에 있습니다.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

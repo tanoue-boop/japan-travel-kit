@@ -26,6 +26,7 @@ import {
   usjExpressPassUrl,
   usjStudioPassUrl,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Three days in Osaka, added 10 Nov 2026.
@@ -548,6 +549,8 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>How Should I Spend 3 Days in Osaka?</h2>
@@ -889,6 +892,8 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
           intro="A food walk for Day 1 or Day 3, and guided versions of the Nara and Kobe days. Klook prices change by date, so open a listing for the figure on your dates."
           tours={[kuromonMarketFoodTour, osakaWalkingFoodTour, kyotoNaraKiyomizuTour, kobeFerrisKitanoArimaRokkoDayTour]}
         />
+
+        <EsimCtaBottom />
 
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

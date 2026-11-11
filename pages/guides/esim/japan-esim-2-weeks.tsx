@@ -17,6 +17,7 @@ import {
 } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => getProvider(id).affiliateUrl;
@@ -258,6 +259,8 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Plans that actually last 14 days */}
         <section className={styles.comparisonSection}>

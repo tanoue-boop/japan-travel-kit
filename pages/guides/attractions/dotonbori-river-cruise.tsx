@@ -17,6 +17,7 @@ import {
   osakaCastleUmedaTonboriDayTour,
   osakaWonderCruise,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Dotonbori river cruise — the Tombori River Cruise, and the three other boats
@@ -472,6 +473,8 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -852,6 +855,8 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

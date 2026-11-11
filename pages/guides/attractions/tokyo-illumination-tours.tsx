@@ -32,6 +32,7 @@ import {
   yomiurilandTicket,
 } from "../../../lib/klook-links";
 import { gygTokyo, gygTokyoEntryTickets, gygTokyoSkytree } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo Illuminations 2026-27 — the winter season, as a dated table rather than a
@@ -520,6 +521,8 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
         {/* The table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The 2026&ndash;27 season</span>
@@ -795,6 +798,8 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           intro={stayIntro}
           areas={tokyoStayAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

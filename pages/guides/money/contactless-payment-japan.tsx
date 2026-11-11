@@ -6,6 +6,7 @@ import KlookLink from "../../../components/KlookLink";
 import { contactlessTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Klook's Suica listing — the purchase that was already on this page, URL unchanged.
 const SUICA_URL =
@@ -313,6 +314,8 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
           </p>
         </div>
 
+        <EsimCtaTop />
+
         {/* Answer first */}
         <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
           <h2 className={styles.sectionTitle}>Can You Use Contactless Payment in Japan?</h2>
@@ -610,6 +613,8 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>JR Kansai Area Pass</Link> is a QR ticket, not a tap-and-go fare.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

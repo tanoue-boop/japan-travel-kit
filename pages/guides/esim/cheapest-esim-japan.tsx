@@ -23,6 +23,7 @@ import {
   type EsimPlan,
   type EsimPlanRow,
 } from "../../../lib/esim-prices";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 const AIRALO_URL = "https://airalo.pxf.io/c/7213504/1268485/15608";
 const SAKURA_URL = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
@@ -454,6 +455,8 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
         <div data-placement="esim-page-answer">
           <EsimAltLinks />
         </div>
+
+        <EsimCtaTop />
 
         {/* Price Comparison Table */}
         <section className={styles.comparisonSection}>

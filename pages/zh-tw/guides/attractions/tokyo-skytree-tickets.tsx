@@ -36,6 +36,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/zh-tw/guides/attractions/tokyo-skytree-tickets";
 // Re-synced with the English guide on 2026-11-10 (answer-first opening, question headings,
@@ -338,6 +339,8 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>概覽</span>
@@ -545,6 +548,8 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
             <Link href="/guides/transport/tokyo-transportation">東京交通指南（英文）</Link>。
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

@@ -8,6 +8,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { jrHarukaUrl, jrKansaiAreaPass, jrKansaiMiniPass, kansaiAreaPassSameDayPrep } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links — both in Klook's 5% passes-and-transport band. The pass listing (1107)
 // is a new constant in lib/klook-links.ts, confirmed live through the www.klook.com
@@ -436,6 +437,8 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -791,6 +794,8 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             card pays each fare, the pass replaces them. Checked {CHECKED}.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -22,6 +22,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Fushimi Inari tour, added 5 Nov 2026 for the exact phrase. The page sells the 6.5%
@@ -408,6 +409,8 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Tours */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Tours</span>
@@ -766,6 +769,8 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           intro="The shrine is free, so the bookings around it decide how the day goes: a bed close to the train, the kimono, the pass and the data."
           items={fushimiInariSameDayPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

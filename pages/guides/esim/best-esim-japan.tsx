@@ -29,6 +29,7 @@ import tools from "../../../styles/Tools.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, itemListJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Rank pass, 29 Oct 2026.
@@ -734,6 +735,8 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             yours.
           </p>
         </section>
+
+        <EsimCtaTop />
 
         {/* Quick Comparison Table */}
         <section className={styles.comparisonSection}>

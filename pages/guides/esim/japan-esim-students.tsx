@@ -19,6 +19,7 @@ import {
 import { esimLink, esimSpec, HOLAFLY_ALT_LABEL, HOLAFLY_ALT_NOTE, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Three sources, three dates.
 //
@@ -304,6 +305,8 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* The table */}
         <section className={styles.comparisonSection}>

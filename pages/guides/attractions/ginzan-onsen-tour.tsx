@@ -21,6 +21,7 @@ import {
   zaoGinzanTwoDayOnsenTour,
   zaoTwoDayTourFromTokyo,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Ginzan Onsen tour. Added 10 Nov 2026 (task-jtk-20261110-02), a winter page for the
@@ -313,6 +314,8 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Access */}
         <section className={styles.comparisonSection}>
@@ -607,6 +610,8 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
         </section>
 
         <BookingEsimCard lead="Timed shuttle tickets, bus times and tour messages all live on your phone. Get mobile data before you land." />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

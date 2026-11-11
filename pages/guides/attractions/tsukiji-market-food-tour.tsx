@@ -13,6 +13,7 @@ import {
   tsukijiFoodDrinkHalfDayTour,
   tsukijiStreetFoodTour,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * The Tsukiji-only food guide. It deliberately does not overlap
@@ -383,6 +384,8 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro / scope */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -565,6 +568,8 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
             out whether the 24, 48 or 72-hour pass pays for itself.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

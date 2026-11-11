@@ -6,6 +6,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { osakaAmazingPass, osakaMetroPassTripPrep } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const METRO_URL =
   "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1267428&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F11515-osaka-metro-1-2-day-pass-osaka%2F";
@@ -371,6 +372,8 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             </p>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Price table */}
         <section className={styles.comparisonSection}>
@@ -781,6 +784,8 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             Check Osaka Metro Pass prices on Klook →
           </KlookLink>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

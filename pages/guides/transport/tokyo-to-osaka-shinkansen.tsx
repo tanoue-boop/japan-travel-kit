@@ -19,6 +19,7 @@ import {
   tokyoOsakaArrivalPrep,
   tokyoOsakaArrivalStayAreas,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo to Osaka on the Tokaido Shinkansen, added 4 Nov 2026. The site's other
@@ -445,6 +446,8 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         {/* Times */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The train</span>
@@ -788,6 +791,8 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           intro="If you arrive by lunchtime, these two fill the day. Open a listing for availability and the current price on your dates."
           tours={[dotonboriDaytimeFoodTour, osakaAmazingPass]}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

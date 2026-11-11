@@ -24,6 +24,7 @@ import {
 } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, itemListJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Every price quoted on this page is read from data/esim-prices.json (refreshed daily),
 // so the figures the threads argue over are always checked against today's catalogue.
@@ -490,6 +491,8 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
 
         {/* Price-checked shortlist, up top, our pick first. No Reddit-frequency claims: Reddit
             cannot be read automatically, so nothing here is attributed to it. */}
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Shortlist</span>
           <h2 className={styles.sectionTitle}>Which eSIM should you get for Japan?</h2>

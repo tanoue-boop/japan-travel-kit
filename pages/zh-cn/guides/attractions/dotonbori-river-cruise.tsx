@@ -31,6 +31,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/dotonbori-river-cruise.tsx) as of
 // 2026-11-01: same sections, tables, FAQ and Klook CTAs in the same order. Every figure
@@ -355,6 +356,8 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>游船介绍<span className="sr-only">：</span></span>
@@ -648,6 +651,8 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

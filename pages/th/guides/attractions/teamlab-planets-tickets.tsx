@@ -37,6 +37,7 @@ import { PLANETS_FACTS, PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const P = PRICES.teamlabPlanets;
 const CHECKED = dateLabel(P.checked, "th");
@@ -306,6 +307,8 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <p className={styles.bodyText}>
           กำลังเลือกระหว่างสองพิพิธภัณฑ์ในโตเกียว? <Link href="/th/guides/attractions/teamlab-tokyo-tickets">หน้าเปรียบเทียบ teamLab Planets หรือ Borderless</Link> ของเรารวบรวมทั้งสองแห่งไว้ให้เทียบกัน
         </p>
+
+        <EsimCtaTop />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>ราคา</span>
@@ -600,6 +603,8 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             อธิบายสายรถไฟถ้าคุณยังไม่คุ้นกับโทโยสุ
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

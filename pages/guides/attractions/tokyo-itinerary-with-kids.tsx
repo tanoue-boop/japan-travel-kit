@@ -26,6 +26,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { PRICES, checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * A five-day Tokyo route for a family, written for the exact phrase "Tokyo Itinerary
@@ -530,6 +531,8 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The plan</span>
@@ -850,6 +853,8 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             break-even calculator.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

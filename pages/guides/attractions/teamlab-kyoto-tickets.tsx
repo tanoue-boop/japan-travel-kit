@@ -20,6 +20,7 @@ import { gygKyotoEntryTickets, gygTeamlabBiovortexKyoto } from "../../../lib/gyg
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * teamLab Kyoto Tickets — written 28 Oct 2026 for the exact phrase
@@ -477,6 +478,8 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
@@ -745,6 +748,8 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             <GygCompareButton slug={SLUG} listing={gygTeamlabBiovortexKyoto} />
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

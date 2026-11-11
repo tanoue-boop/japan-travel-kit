@@ -28,6 +28,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/ko/guides/attractions/teamlab-tokyo-tickets";
 const TITLE = "팀랩 플래닛 보더리스 비교 2026: 도쿄에서 어디로 갈까";
@@ -191,6 +192,8 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>나란히 비교</span>
           <h2 className={styles.sectionTitle}>팀랩 플래닛과 보더리스, 어디를 예약할까?</h2>
@@ -243,6 +246,8 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

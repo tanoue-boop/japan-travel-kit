@@ -14,6 +14,7 @@ import {
 } from "../../../lib/klook-links";
 import GygCompare from "../../../components/GygCompare";
 import { gygFujiBusTours, gygFujiFromTokyo } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Mt. Fuji Pass prices and conditions read off bus.fujikyu.co.jp/mtpass/en on 19 Oct 2026.
 // Fuji Excursion journey time and frequency from Klook's own Fuji Excursion rail page the
@@ -296,6 +297,8 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -463,6 +466,8 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
           intro="If you have read this far and decided the Fifth Station is worth a coach after all — it is the one part of the mountain public transport cannot reach — GetYourGuide lists its own set of Tokyo-to-Fuji day tours. The highway bus and the Mt. Fuji Pass above have no equivalent there, so those stay where they are."
           listings={[gygFujiFromTokyo, gygFujiBusTours]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

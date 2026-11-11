@@ -19,6 +19,7 @@ import {
   tokyoPrivateAirportTransfer,
   tokyoSharedAirportTransfer,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Kyoto to Tokyo on the Tokaido Shinkansen. Added 29 Oct 2026 as the eastbound
@@ -622,6 +623,8 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -1076,6 +1079,8 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
           intro="Ranked for the twenty minutes after a shinkansen arrives rather than for a whole Tokyo trip — which is a different list. Marunouchi leads because the Tokaido platforms are inside the building; Shibuya is on it at all because the train calls at Shinagawa before the terminus."
           areas={kyotoToTokyoArrivalStayAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

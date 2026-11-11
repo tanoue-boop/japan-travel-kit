@@ -49,6 +49,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/hokkaido-7-day-itinerary.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -771,6 +772,8 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           items={hokkaidoSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 一周的架构
@@ -960,6 +963,8 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
         <p className={styles.bodyText} style={{ marginTop: "-1.5rem", marginBottom: "3rem" }}>
 有一个时间提醒适用于这四处。北海道 2 月最繁忙的那一周是一年前就公布的固定日期，雪祭执行委员会在 2026 年 2 月 11 日公布了 2027 年日期，所以 2 月上旬的住宿没有替代方案，务必先订；札幌客满时，首选是改住小樽。官方没有公布入住率，所以这里也不写。
 </p>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

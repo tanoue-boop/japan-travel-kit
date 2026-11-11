@@ -16,6 +16,7 @@ import {
   zaoSnowMonstersTripPrep,
   zaoTwoDayTourFromTokyo,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Zao snow monsters tour. Added 9 Nov 2026 (task-jtk-20261109-02), a winter page
@@ -318,6 +319,8 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Season */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Season</span>
@@ -559,6 +562,8 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
             check the listing before booking.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -19,6 +19,7 @@ import {
 import { gygArashiyama, gygHozugawaKudari } from "../../../lib/gyg-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links. The headline CTA is the guided train-and-boat day (112332), not the
 // bare torokko seat: a one-way rail ticket cannot be assumed to pay Klook's 6.5%
@@ -457,6 +458,8 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -866,6 +869,8 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

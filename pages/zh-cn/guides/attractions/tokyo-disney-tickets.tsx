@@ -24,6 +24,7 @@ import { gygTokyoDisneyResort, gygTokyoDisneySea } from "../../../../lib/gyg-lin
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 /**
  * Mirrors the English page (pages/guides/attractions/tokyo-disney-tickets.tsx) as of
@@ -456,6 +457,8 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>门票价格<span className="sr-only">：</span></span>
@@ -800,6 +803,8 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             讲的是另一个指定日期、通过第三方平台更好订的预约。
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

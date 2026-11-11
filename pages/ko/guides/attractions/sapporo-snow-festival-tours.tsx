@@ -41,6 +41,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/sapporo-snow-festival-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -406,6 +407,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           items={festivalSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 날짜와 행사장
@@ -640,6 +643,8 @@ JR 홋카이도 레일 패스 →
 도쿄로 들어온다면 혼슈의 겨울을 한 곳 더 넣을 만합니다. <Link href="/ko/guides/attractions/jigokudani-snow-monkey-tour">지고쿠다니 원숭이 공원 투어</Link>와 <Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">다카야마와 시라카와고 투어(영어)</Link>는 북쪽으로 비행하지 않고도 깊은 눈을 볼 수 있고, 스키를 하루만 타고 싶다면 <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">도쿄 출발 갈라 유자와 스키(영어)</Link>가 더 짧은 답입니다. 홋카이도 앞뒤의 저녁에는 <Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">도쿄 일루미네이션(영어)</Link> 가이드에서 2월에도 하는 곳을 확인하세요.
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

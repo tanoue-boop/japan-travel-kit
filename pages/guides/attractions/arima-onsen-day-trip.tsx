@@ -15,6 +15,7 @@ import {
 } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links. The headline CTA is the guided day out of Osaka (6.5% tours band);
 // the Rokkosan Tourist Pass is the 5% passes band and the independent-traveller
@@ -392,6 +393,8 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -635,6 +638,8 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

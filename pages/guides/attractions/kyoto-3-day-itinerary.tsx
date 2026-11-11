@@ -24,6 +24,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Three full days based in Kyoto. Added 6 Nov 2026.
@@ -432,6 +433,8 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -728,6 +731,8 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
           intro="The arrival, the appointment and the data. Open a listing for the price on your dates."
           items={kyotoThreeDayTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

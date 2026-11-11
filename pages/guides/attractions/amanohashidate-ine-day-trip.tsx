@@ -17,6 +17,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Amanohashidate and Ine as a day out of Kyoto or Osaka. Added 6 Nov 2026, after
@@ -364,6 +365,8 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Worth it */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -617,6 +620,8 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           intro="A 7:30 departure means the night before is part of the trip. These are the bookings around the tour itself. Open a listing for the price on your dates."
           items={amanohashidateTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

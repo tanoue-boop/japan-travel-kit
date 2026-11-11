@@ -24,6 +24,7 @@ import { simbyeLink, SIMBYE_DISCOUNT_CODE, SIMBYE_DISCOUNT_PERCENT } from "../..
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { esimProductJsonLd } from "../../../lib/esim-picks";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Review written from published facts only, 5 Nov 2026. Nothing here is first-hand:
@@ -306,6 +307,8 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
             </a>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Plans table */}
         <section className={styles.comparisonSection}>

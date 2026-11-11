@@ -17,6 +17,7 @@ import {
   osakaGoKartTripPrep,
   osakaGoKartingListUrl,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Osaka go-kart. Added 11 Nov 2026 (task-jtk-20261111-02), the Osaka version of
@@ -321,6 +322,8 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
           items={osakaGoKartTripPrep}
         />
 
+        <EsimCtaTop />
+
         {/* IDP */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Documents</span>
@@ -548,6 +551,8 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
         </section>
 
         <BookingEsimCard lead="Shop maps, your booking QR code and the operator's messages all live on your phone. Get mobile data before you land." />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

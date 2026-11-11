@@ -38,6 +38,7 @@ import {
   tokyoSubwayTicket,
   whereToStayTokyoAreas,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan attraction ticket prices — the site's official-price database, laid out to be
@@ -619,6 +620,8 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* 2026 increases */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price changes</span>
@@ -879,6 +882,8 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
             <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

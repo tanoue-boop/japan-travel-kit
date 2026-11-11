@@ -21,6 +21,7 @@ import {
   whereToStayTokyoAreas,
 } from "../../../lib/klook-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo Night Food Tour — the after-dark entry page, in the 6.5% Klook
@@ -315,6 +316,8 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
           </p>
         </div>
 
+        <EsimCtaTop />
+
         {/* Answer-first body paragraph */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The short answer</span>
@@ -569,6 +572,8 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
           intro="Every tour in this guide meets within a few minutes of Shinjuku or Shibuya Station, and the evening ends near where it started. Sleeping on the west side of the Yamanote loop turns the walk home into a walk rather than a last-train calculation."
           areas={whereToStayTokyoAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

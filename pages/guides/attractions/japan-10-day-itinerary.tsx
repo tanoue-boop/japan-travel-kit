@@ -53,6 +53,7 @@ import {
   gygUsjExpressPass,
   type GygListing,
 } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan 10 Day Itinerary — ten days as 4 / 3 / 2 nights, with one mountain day
@@ -1572,6 +1573,8 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
           </ol>
         </nav>
 
+        <EsimCtaTop />
+
         {/* The ten days, one row each */}
         <section id="ten-days-at-a-glance" className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>At a glance</span>
@@ -2210,6 +2213,8 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             <Link href="/guides/esim/best-pocket-wifi-japan">best pocket WiFi in Japan</Link>.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section id="faq" className={styles.faqSection}>

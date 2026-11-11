@@ -6,6 +6,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { bestTravelCardTripPrep } from "../../../lib/klook-links";
 import { wiseLink, WISE_REL, WISE_PRICING_URL, WISE_CARD_URL } from "../../../lib/wise-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const WISE_FEES_URL = wiseLink("best-travel-card-japan", WISE_PRICING_URL);
 const WISE_CARD_CTA = wiseLink("best-travel-card-japan", WISE_CARD_URL);
@@ -514,6 +515,8 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             </p>
           </div>
         </div>
+        <EsimCtaTop />
+
         {/* Q1 — the comparison table the pages ranking above this one lead with. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Types compared</span>
@@ -953,6 +956,8 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--accent)", fontWeight: 600 }}>teamLab Planets tickets</Link> in Tokyo and the <Link href="/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>USJ Express Pass</Link> in Osaka.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

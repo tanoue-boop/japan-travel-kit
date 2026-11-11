@@ -7,6 +7,7 @@ import BookingEsimCard from "../../../components/BookingEsimCard";
 import { sumoTokyoTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Klook affiliate redirect — Tokyo Grand Sumo Tournament tour (Ryogoku Kokugikan), activity 1432.
 // Uses the account-level aid; add an aff_adid from the Klook affiliate dashboard for per-link tracking.
@@ -270,6 +271,8 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -406,6 +409,8 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
           intro="A tournament day or a morning practice fixes the start of the day on the east side of Tokyo. Where you stay and what fills the rest of it are the bookings left to make."
           items={sumoTokyoTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

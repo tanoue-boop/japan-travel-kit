@@ -49,6 +49,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/hokkaido-7-day-itinerary.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -771,6 +772,8 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           items={hokkaidoSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 รูปแบบของสัปดาห์
@@ -960,6 +963,8 @@ Hokkaido Rail Pass คุ้มสำหรับ 7 วันไหม?
         <p className={styles.bodyText} style={{ marginTop: "-1.5rem", marginBottom: "3rem" }}>
 ข้อควรรู้เรื่องเวลาที่ใช้กับทั้งสี่แห่ง สัปดาห์กุมภาพันธ์ที่เกาะนี้คนเยอะที่สุดคือวันแน่นอนที่ประกาศล่วงหน้าหนึ่งปี คณะกรรมการเทศกาลหิมะเผยแพร่วันปี 2027 เมื่อ 11 กุมภาพันธ์ 2026 ห้องในครึ่งแรกของกุมภาพันธ์จึงเป็นการจองที่ไม่มีตัวเลือกสำรอง และโอตารุคือคำตอบเมื่อซัปโปโรเต็ม ที่นี่ไม่แสดงอัตราการเข้าพักเพราะไม่มีการเผยแพร่
 </p>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

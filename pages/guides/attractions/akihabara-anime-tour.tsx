@@ -17,6 +17,7 @@ import {
   tokyoNightTourAkihabaraShibuya,
   tokyoSubwayTicket,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Akihabara as a booking decision rather than a district write-up, for the
@@ -422,6 +423,8 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Worth it? — the answer-first body paragraph */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The honest version</span>
@@ -744,6 +747,8 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

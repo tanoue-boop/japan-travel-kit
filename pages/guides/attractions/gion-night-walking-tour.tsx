@@ -22,6 +22,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Gion night walking tour, added 4 Nov 2026 for the exact phrase. The page sells the
@@ -399,6 +400,8 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Tour types */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Tour types</span>
@@ -684,6 +687,8 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
           intro="The tour covers three hours. These cover the rest of the day: the bed, the kimono and the data you need to find a meeting point in the dark."
           items={gionNightSameDayPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

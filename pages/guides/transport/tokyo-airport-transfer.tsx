@@ -19,6 +19,7 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo Airport Transfer — answer-first rebuild, 25 Oct 2026.
@@ -806,6 +807,8 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
 
         {/* Hotel area against airport — the question a reader with a booking has,
             and the one thing every page ranking above this one leaves out. */}
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>By hotel area</span>
           <h2 className={styles.sectionTitle}>Which Tokyo airport transfer is best for my hotel area?</h2>
@@ -1594,6 +1597,8 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           intro="The airport ticket gets you as far as your first station. These two cover what happens either side of it:"
           items={tokyoAirportTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

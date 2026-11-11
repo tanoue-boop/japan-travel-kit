@@ -22,6 +22,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English page (pages/guides/attractions/teamlab-borderless-tickets.tsx) section
 // by section as of 2026-11-01. Figures come from lib/attraction-prices.ts and the English
@@ -378,6 +379,8 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>ราคา</span>
           <h2 className={styles.sectionTitle}>ตั๋ว teamLab Borderless ปี 2026 ราคาเท่าไร?</h2>
@@ -698,6 +701,8 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             อธิบายสายรถไฟอย่างละเอียดกว่า
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

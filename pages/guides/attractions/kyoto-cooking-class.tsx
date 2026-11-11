@@ -18,6 +18,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Kyoto cooking class — entry page for "kyoto cooking class" and "cooking class in
@@ -298,6 +299,8 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Compare */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare classes</span>
@@ -466,6 +469,8 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
           intro="A class takes 1 to 2.5 hours of the day. These cover the rest of it, the city buses and the map on your phone. Open a listing for the price on your dates."
           items={kyotoCookingClassTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

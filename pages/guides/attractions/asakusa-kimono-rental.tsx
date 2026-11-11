@@ -13,6 +13,7 @@ import {
   asakusaKimonoKaminarimon,
   asakusaKimonoYae,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Asakusa-only kimono rental. /guides/attractions/kimono-rental-japan is the
@@ -368,6 +369,8 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro / scope */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -516,6 +519,8 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             the Asakusa half day where it belongs in a short trip.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

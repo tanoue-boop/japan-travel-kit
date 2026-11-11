@@ -14,6 +14,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Passport price bands, the 1 Aug 2026 revision, the arrival-reservation rule and
 // the access routes below were read off puroland.jp (/passport/list/, /fee/,
@@ -273,6 +274,8 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -412,6 +415,8 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
           intro="Puroland runs 3 to 5 hours by its own listing's estimate, which leaves most of a day free — and both of these are booked on the same Klook account as the passport. If the trip is built around character parks rather than temples, the Harry Potter studio tour in Nerima is the closest thing Tokyo has to a second one."
           tours={[tokyoSightseeingBusTour, warnerBrosStudioTourTokyo]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

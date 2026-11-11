@@ -9,6 +9,7 @@ import { gygTokyoTower } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Sources, all re-read on 8 Nov 2026:
 // - tokyotower.co.jp/fee/ — Main Deck and Top Deck Tour prices (WEB vs 窓口),
@@ -360,6 +361,8 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -638,6 +641,8 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
           intro="An observation deck fills an hour or two. These book on the same Klook account as the ticket — an evening on the bay or in the city, a daytime bus loop, the subway pass for the five Metro and Toei stations around the tower, and data for the day."
           items={tokyoTowerTripPrep()}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -14,6 +14,7 @@ import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygNara, gygNaraFromOsaka } from "../../../lib/gyg-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 const NARA_TOUR_URL = naraDayTourUrl;
@@ -306,6 +307,8 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -473,6 +476,8 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

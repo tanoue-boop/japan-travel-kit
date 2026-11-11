@@ -68,6 +68,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/japan-winter-itinerary.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -1005,6 +1006,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           items={sameTripItems}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 รูปแบบ
@@ -1409,6 +1412,8 @@ JR East–South Hokkaido Pass →
             </div>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

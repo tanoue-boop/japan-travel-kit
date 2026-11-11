@@ -24,6 +24,7 @@ import { esimLink, esimSpec, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { esimProductJsonLd } from "../../../lib/esim-picks";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Two sources, two dates. Every USD figure comes from data/esim-prices.json, refreshed
 // daily from each provider's own site (`pricesCheckedAt`). The tethering and
@@ -309,6 +310,8 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* The table */}
         <section className={styles.comparisonSection}>

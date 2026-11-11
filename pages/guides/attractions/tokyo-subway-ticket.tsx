@@ -15,6 +15,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Every price, fare and rule on this page was read off tokyometro.jp on 8 November 2026:
 //   /en/ticket/travel/   Tokyo Subway Ticket prices, validity, lines, who can buy, QR version
@@ -309,6 +310,8 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
@@ -579,6 +582,8 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             covers the routes into town, several of which are bundled with this pass.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

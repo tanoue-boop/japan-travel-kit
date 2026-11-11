@@ -9,6 +9,7 @@ import { pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
 import { pocketWifi, pocketWifis, specsCheckedAt } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Rental specs for the two Klook products come from lib/pocket-wifi.ts (what each Klook
 // listing states). Klook prices are deliberately NOT shown on this page (site rule since
@@ -281,6 +282,8 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
         </div>
 
         <EsimPageAnswer route="/guides/esim/best-pocket-wifi-japan" />
+
+        <EsimCtaTop />
 
         {/* Main comparison — first row is the recommendation */}
         <section className={styles.comparisonSection}>

@@ -8,6 +8,7 @@ import { klookEsim, naritaExpressRoundTripUrl, tokyoSubwayTicket, wiseCardTripPr
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_PRICING_URL } from "../../../lib/wise-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Tracked Wise links. pubref is this article's slug; the fees-page link deep-links
 // to Wise's own pricing page, the CTAs land on the localised home page.
@@ -306,6 +307,8 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimCtaTop />
 
         {/* Answer first — the paragraph that has to settle the search before the reader scrolls */}
         <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
@@ -690,6 +693,8 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             purchase: see our <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best travel insurance for Japan</Link> guide.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

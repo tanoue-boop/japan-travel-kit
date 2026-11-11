@@ -17,6 +17,7 @@ import {
   kyotoKimonoOokiniArashiyama,
   kyotoKimonoYumeyakata,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Kyoto kimono rental — the city-specific guide, sitting under the nationwide
@@ -422,6 +423,8 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -694,6 +697,8 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
             shows where a Kyoto day of this shape usually lands in a longer trip.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -41,6 +41,7 @@ import {
 } from "../../../../components/IntlChrome";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/sapporo-snow-festival-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -406,6 +407,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           items={festivalSameTrip}
         />
 
+        <EsimCtaTop />
+
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
 วันที่และสถานที่
@@ -640,6 +643,8 @@ JR Hokkaido Rail Pass →
 ถ้าบินผ่านโตเกียว หน้าหนาวบนเกาะหลักคุ้มแวะอีกจุด <Link href="/th/guides/attractions/jigokudani-snow-monkey-tour">ทัวร์ลิงหิมะจิโกกุดานิ</Link>และ<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">ทัวร์ทาคายามะและชิราคาวาโกะ (ภาษาอังกฤษ)</Link>ให้หิมะหนาโดยไม่ต้องบินขึ้นเหนือ และ<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">เล่นสกีวันเดียวที่ GALA Yuzawa จากโตเกียว (ภาษาอังกฤษ)</Link>เป็นคำตอบที่สั้นกว่าถ้าอยากเล่นสกีแค่วันเดียว สำหรับค่ำก่อนหรือหลังฮอกไกโด คู่มือ<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">ไฟประดับโตเกียว (ภาษาอังกฤษ)</Link>บอกว่างานไหนยังมีในเดือนกุมภาพันธ์
 </p>
         </section>
+
+        <EsimCtaBottom />
 
                 <FaqList items={faqItems} />
 

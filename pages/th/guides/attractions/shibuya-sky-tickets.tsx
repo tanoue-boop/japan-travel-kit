@@ -33,6 +33,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Thai edition of /guides/attractions/shibuya-sky-tickets. Mirrors the English page as of
 // 2026-11-01 block by block — same sections, tables, FAQ, Klook and GetYourGuide CTAs —
@@ -453,6 +454,8 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>ราคา</span>
@@ -769,6 +772,8 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

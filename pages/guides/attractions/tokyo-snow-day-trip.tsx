@@ -18,6 +18,7 @@ import {
   yetiSkiDayTrip,
   yetiSnowDayTripFromTokyo,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo snow day trip. Added 11 Nov 2026 (task-jtk-20261111-02), a winter entry page
@@ -291,6 +292,8 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
           items={tokyoSnowDayTripPrep}
         />
 
+        <EsimCtaTop />
+
         {/* Places */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Where to go</span>
@@ -558,6 +561,8 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
         </section>
 
         <BookingEsimCard lead="Tour pick-up messages, resort hours and road closures all reach your phone. Get mobile data before you land." />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

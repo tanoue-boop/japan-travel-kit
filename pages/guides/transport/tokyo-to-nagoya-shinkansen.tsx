@@ -21,6 +21,7 @@ import {
   takayamaShirakawagoNagoyaDayTrip,
   shirakawagoTakayamaOldTownDayTour,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo to Nagoya on the Tokaido Shinkansen. Added 28 Oct 2026, and the first
@@ -487,6 +488,8 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -820,6 +823,8 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
           intro="Two areas, and the choice follows straight from the table above: the station, if Nagoya is one stop inside a longer rail itinerary and the parks are day trips from it, or out by the Linimo, if the thing that brought you here is a 9 a.m. entry time at Ghibli's Grand Warehouse."
           areas={nagoyaParkStayAreas}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

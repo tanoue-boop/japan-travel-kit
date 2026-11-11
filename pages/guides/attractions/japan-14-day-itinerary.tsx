@@ -46,6 +46,7 @@ import {
 } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygShibuyaSky, gygTeamlabPlanets, gygUsjExpressPass } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * A fourteen-day Japan itinerary, written as a booking plan: fourteen dated day
@@ -1297,6 +1298,8 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Route overview */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -1653,6 +1656,8 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

@@ -27,6 +27,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/zh-tw/guides/attractions/teamlab-tokyo-tickets";
 const LOCALE = "zh-tw" as const;
@@ -194,6 +195,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>並排比較</span>
           <h2 className={styles.sectionTitle}>teamLab Planets vs 無界：該訂哪一間？</h2>
@@ -237,6 +240,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

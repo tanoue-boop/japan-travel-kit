@@ -20,6 +20,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { esimProductJsonLd } from "../../../lib/esim-picks";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Two sources, two dates, deliberately.
 //
@@ -472,6 +473,8 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           {OFFICIAL_CHECKED}; yen prices re-checked {YEN_PRICES_CHECKED}; USD prices tracked daily, last
           checked {pricesCheckedAt}.
         </p>
+
+        <EsimCtaTop />
 
         {/* What is Sakura Mobile */}
         <section className={styles.bodySection}>

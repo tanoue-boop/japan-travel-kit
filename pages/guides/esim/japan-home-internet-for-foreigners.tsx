@@ -9,6 +9,7 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { klookEsim, homeInternetGapPrep } from "../../../lib/klook-links";
 import { pocketWifi, ratesCheckedAt, specsCheckedAt } from "../../../lib/pocket-wifi";
 import { siteCheapestFrom, pricesCheckedLabel } from "../../../lib/esim-prices";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Japan Home Internet for Foreigners — written 29 Oct 2026 for the exact phrase.
@@ -466,6 +467,8 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Q1 — the comparison */}
         <section className={styles.comparisonSection}>

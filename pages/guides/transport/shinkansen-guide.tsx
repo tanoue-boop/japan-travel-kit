@@ -4,6 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const shinkansenLines = [
   { line: "Tokaido", route: "Tokyo – Osaka", speed: "285 km/h" },
@@ -269,6 +270,8 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* What Is the Shinkansen? */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -486,6 +489,8 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             ))}
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

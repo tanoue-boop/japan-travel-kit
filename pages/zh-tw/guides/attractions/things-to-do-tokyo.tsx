@@ -37,6 +37,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { PRICES, TOKYO_GUIDE_PRICES } from "../../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English page (pages/guides/attractions/things-to-do-tokyo.tsx) as of
 // 2026-11-07, section for section and block for block; no figures added beyond it.
@@ -343,6 +344,8 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
 
       <div className={styles.content}>
         <Disclosure />
+
+        <EsimCtaTop />
 
         {/* Intro */}
         <section className={styles.bodySection}>
@@ -672,6 +675,8 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             是溫泉的替代方案，一張周遊券涵蓋整個環線。
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

@@ -6,6 +6,7 @@ import { atmsTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_CARD_URL } from "../../../lib/wise-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const WISE_CARD_CTA = wiseLink("atms-in-japan", WISE_CARD_URL);
 
@@ -304,6 +305,8 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Q1 — requirement (c): the network-by-network table. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Comparison</span>
@@ -548,6 +551,8 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             ))}
           </ul>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

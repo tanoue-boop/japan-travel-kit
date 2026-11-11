@@ -18,6 +18,7 @@ import {
 import { esimLink, esimSpec, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // Written 28 Oct 2026 for the "japan esim android" searches, which until now landed on
 // the iPhone guide or on the generic setup walkthrough. The counterpart page is
@@ -291,6 +292,8 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* The table */}
         <section className={styles.comparisonSection}>

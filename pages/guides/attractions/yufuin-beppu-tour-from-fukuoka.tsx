@@ -19,6 +19,7 @@ import {
 } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Yufuin and Beppu as a day out of Fukuoka. Added 6 Nov 2026.
@@ -379,6 +380,8 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* One day */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The day</span>
@@ -632,6 +635,8 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           intro="A day of 10 hours or more starts and ends at your hotel, so the base matters as much as the tour. Open a listing for the price on your dates."
           items={yufuinBeppuTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

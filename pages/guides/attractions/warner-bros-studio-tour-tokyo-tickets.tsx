@@ -9,6 +9,7 @@ import { gygWarnerBrosStudioTourTokyo } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Sources, all on wbstudiotour.jp:
 // - /en/tickets/ — standard entry from ¥6,600 / ¥5,500 / ¥4,000, prices vary through the
@@ -345,6 +346,8 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Rules table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The rules</span>
@@ -638,6 +641,8 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             Address and journey times from the official site&apos;s location page, checked {CHECKED}.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

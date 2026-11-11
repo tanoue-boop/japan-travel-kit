@@ -14,6 +14,7 @@ import {
   mtFujiPass,
   tokyoMtFujiHighwayBus,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * The Kawaguchiko-only day trip, as distinct from the two Fuji guides either side of it:
@@ -409,6 +410,8 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro / scope */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -606,6 +609,8 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             same bus route.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

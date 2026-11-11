@@ -8,6 +8,7 @@ import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unl
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { esimProductJsonLd } from "../../../lib/esim-picks";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // All Airalo prices below are read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -291,6 +292,8 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
             </a>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* What is Airalo */}
         <section className={styles.bodySection}>

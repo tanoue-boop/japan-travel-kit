@@ -18,6 +18,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Hiroshima Peace Memorial Tour, written for the exact phrase. Added 5 Nov 2026 (task
@@ -247,6 +248,8 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimCtaTop />
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
@@ -553,6 +556,8 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

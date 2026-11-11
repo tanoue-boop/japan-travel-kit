@@ -7,6 +7,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import { klookEsim, revolutCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // NOTE: Revolut affiliate programme not yet approved — plain link for now.
 // TODO: replace with approved affiliate link once accepted.
@@ -328,6 +329,8 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Can I use it */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -545,6 +548,8 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
           intro="Once you know how much cash you need, the rest of the trip is a question of when each payment is made. Bookings you make on a weekday before you leave stay out of Revolut's weekend window, and anything already paid for does not have to come out of your free ATM allowance."
           items={revolutCardTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -7,6 +7,7 @@ import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaTop } from "../../../components/EsimCta";
 
 // All prices below are read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -286,6 +287,8 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
             <p style={altNoteStyle}>{ALT_NOTE}</p>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* What is Holafly */}
         <section className={styles.bodySection}>

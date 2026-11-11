@@ -10,6 +10,7 @@ import { teamlabBorderlessTicketUrl } from "../../../lib/klook-links";
 import { GygCompareButton } from "../../../components/GygCompare";
 import { gygTeamlabBorderless, GYG_CHECKED_AT } from "../../../lib/gyg-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (teamLab Borderless admission ticket), shared with
 // the ticket price table.
@@ -457,6 +458,8 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
 
         <BookingEsimCard />
 
+        <EsimCtaTop />
+
         {/* Prices — the heading is the search query, and the first sentence is the answer. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
@@ -811,6 +814,8 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             covers the lines in more detail.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

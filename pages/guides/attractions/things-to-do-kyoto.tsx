@@ -14,6 +14,7 @@ import {
 } from "../../../lib/klook-links";
 import GygCompare from "../../../components/GygCompare";
 import { gygKyoto, gygKyotoDayTrips } from "../../../lib/gyg-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Kyoto pass and single-fare figures are the ones our Kyoto Subway & Bus Pass guide verified
 // against the city's own tables. Temple admissions come from data/attraction-prices.json
@@ -162,6 +163,8 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <EsimCtaTop />
 
         {/* Intro */}
         <section className={styles.bodySection}>
@@ -315,6 +318,8 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
           intro="Kyoto is the city where the thing you want is most likely to be full — tea ceremonies seat a handful at a time, kimono shops run out of dressers, and the Arashiyama coaches fill in autumn. GetYourGuide's Kyoto catalogue is the other place to search your dates."
           listings={[gygKyoto, gygKyotoDayTrips]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

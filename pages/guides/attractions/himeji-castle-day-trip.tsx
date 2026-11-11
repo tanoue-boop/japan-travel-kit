@@ -15,6 +15,7 @@ import {
 } from "../../../lib/klook-links";
 import { priceById, checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links. The headline CTA is the castle-first coach day out of Osaka (6.5%
 // tours band); the rail passes are the 5% passes band and the independent
@@ -436,6 +437,8 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>What changed</span>
@@ -710,6 +713,8 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             flights around it rather than assuming the same fortnight.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

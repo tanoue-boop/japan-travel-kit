@@ -23,6 +23,7 @@ import {
   teinePrivateSkiLessons,
   teineSharedBusTransfer,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Sapporo ski day trip. Added 10 Nov 2026 (task-jtk-20261110-02). niseko-ski-tours is the
@@ -295,6 +296,8 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Closest */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Resorts</span>
@@ -538,6 +541,8 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
         </section>
 
         <BookingEsimCard lead="Pick-up messages, lift status and bus times all reach your phone. Get mobile data before you land." />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

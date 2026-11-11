@@ -18,6 +18,7 @@ import {
   naritaLimousineBus,
   tokyoSightseeingBusTour,
 } from "../../../lib/klook-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Tokyo Airport Limousine Bus — restored 22 Oct 2026.
@@ -496,6 +497,8 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -916,6 +919,8 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
             almost all of it.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

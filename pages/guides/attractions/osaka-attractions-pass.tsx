@@ -15,6 +15,7 @@ import {
 } from "../../../lib/klook-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links — Klook affiliate redirects (tracking links, both listings confirmed live
 // 19 Oct 2026). The pass link is shared with the ticket price table.
@@ -349,6 +350,8 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
@@ -647,6 +650,8 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             has the other cities.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

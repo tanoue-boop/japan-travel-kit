@@ -7,6 +7,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { hiroshimaMiyajimaBusTourUrl, osakaAmazingPass, kyotoHighlightBusTour } from "../../../lib/klook-links";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026),
 // shared with the ticket price table.
@@ -285,6 +286,8 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -464,6 +467,8 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
             kyotoHighlightBusTour,
           ]}
         />
+
+        <EsimCtaBottom />
 
         {/* Related articles */}
         <section className={styles.relatedSection}>

@@ -31,6 +31,7 @@ import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/dotonbori-river-cruise.tsx) as of
 // 1 November 2026, section for section and CTA for CTA. Every figure comes from that page,
@@ -355,6 +356,8 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <EsimCtaTop />
+
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>ภาพรวม</span>
           <h2 className={styles.sectionTitle}>ล่องเรือโดทงโบริคืออะไร?</h2>
@@ -659,6 +662,8 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
             </KlookLink>
           </div>
         </section>
+
+        <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 

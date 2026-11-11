@@ -8,6 +8,7 @@ import { klookEsim, wiseVsRevolutTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_PRICING_URL } from "../../../lib/wise-links";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // Wise is tracked (see lib/wise-links.ts). The Revolut programme is still
 // unapproved, so that one stays a plain link.
@@ -315,6 +316,8 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
 
         <BookingEsimCard lead="Both cards live in an app. Get mobile data before you land." />
 
+        <EsimCtaTop />
+
         {/* Head-to-head table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Head-to-head</span>
@@ -518,6 +521,8 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
           intro="Whichever card you pick, some of the trip does not have to wait until you land. Paying for these before you leave keeps them off the weekend and out of your ATM allowance:"
           items={wiseVsRevolutTripPrep}
         />
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

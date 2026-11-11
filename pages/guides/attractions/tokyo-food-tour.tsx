@@ -16,6 +16,7 @@ import {
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygTokyoFoodTours, gygTokyoStreetFood } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 const TOKYO_FOOD_TOUR_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307856&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F94282-shinjuku-area-join-half-day-drinks-tour-3-hour-tokyo-local-bar-izakaya-crawl%2F";
@@ -353,6 +354,8 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
           </div>
         </div>
 
+        <EsimCtaTop />
+
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
@@ -560,6 +563,8 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             pairs well — a sunset view before dinner makes an easy lead-in to a Shinjuku food crawl.
           </p>
         </section>
+
+        <EsimCtaBottom />
 
         {/* FAQ */}
         <section className={styles.faqSection}>
