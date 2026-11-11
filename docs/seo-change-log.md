@@ -2,6 +2,8 @@
 
 新しい記録を上に追記する。
 
+- 2026-11-11 /guides/transport/kyoto-to-tokyo-shinkansen（task-jtk-20261111-R03）：「Kyoto to Tokyo Shinkansen: Times, Fares, JR Pass」→「Kyoto to Tokyo Train (2026): Shinkansen Time and Price」。改善前：Google 28日（10/12〜11/08）199表示・1クリック・20.3位（kyoto to tokyo train 22表示30.5位、kyoto to tokyo 10・48.1位、kyoto to tokyo jr pass 6・9.3位、kyoto to tokyo shinkansen time 5・10.0位、kyoto shinkansen jp 3・27.0位、kyoto to tokyo shinkansen 3・24.0位、shinkansen tokyo kyoto 2・53.5位、shinkansen tokyo to kyoto 2・84.0位、train from kyoto to tokyo 2・33.5位）、Bing 上位25ページ外。冒頭を「のぞみ2時間11分・指定席¥13,970（smartEX）・JR Pass はひかり/こだま無料、のぞみ+¥4,960・11/12番線・最終21:38」に、表3本（のぞみ/ひかり/こだま比較、京都駅の乗り場と改札、予約のタイミングと特大荷物）、質問見出し5本と FAQ 名の変更、Tokyo 側のホテル・地下鉄パス・eSIM ボタン。運賃を自前の参考値から smartEX 公式値に、京都駅の東京方面のりばを 11・13番→11・12番（JR西日本時刻表）に訂正。tokyo-to-kyoto は「東京発」、本ページは「京都発」と冒頭で明示し相互リンク。
+
 - 2026-11-11 /guides/transport/ic-cards-japan（task-jtk-20261111-R02）：「IC Cards Japan 2026: Suica, PASMO & ICOCA Compared」→「IC Cards in Japan (2026): Suica vs PASMO vs ICOCA」。改善前：Google 28日（10/12〜11/08）159表示・0クリック・41.5位（ic cards 16表示66.1位、ic card 13・64.3位、travel cards japan 9・68.8位、contactless ic card 5・62.2位）、Bing（11/04〜11/08）20表示・1クリック・CTR5.0%・6.70位。冒頭を「どれを・どこで・いくらで」に、カード比較表に iPhone/Android 列と Welcome Suica Mobile・TOURIST PASMO（PASMO PASSPORT 廃止）を追加、使える場所の表、1日の交通費とパスの損得表＋直後に Klook ボタン（地下鉄パス・Osaka Amazing Pass・N'EX・Haruka・eSIM）、質問見出し5本と FAQ 4問。best-travel-card-japan とは「交通系IC／クレジット・デビット」で分け、相互に1文リンク。
 
 ## 2026-11-10：1ページ目（4〜10位）なのに CTR 1%未満の10ページの title・description・H1・冒頭（task-jtk-20261110-C01）

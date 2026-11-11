@@ -761,7 +761,11 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             and our{" "}
             <Link href="/guides/transport/tokyo-to-kyoto" style={{ color: "var(--red)", fontWeight: 600 }}>
               Tokyo to Kyoto comparison
-            </Link>.
+            </Link>; for the trip back, our{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Kyoto to Tokyo train guide
+            </Link>{" "}
+            shows which trains the pass covers leaving Kyoto and what the Nozomi ticket costs.
           </p>
         </section>
 

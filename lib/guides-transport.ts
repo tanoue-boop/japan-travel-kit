@@ -69,8 +69,8 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/kyoto-to-tokyo-shinkansen",
     badge: "Guide",
-    title: "Kyoto to Tokyo Shinkansen: Times, Fares, JR Pass",
-    desc: "About 2 hours direct and 352 eastbound trains a day, the last at 21:38. The questions only this direction asks: Kyoto Station's Hachijo-side platforms 11–14, Mt Fuji on your left in seat E, and whether to get off at Tokyo, Shinagawa or Shin-Yokohama.",
+    title: "Kyoto to Tokyo Train (2026): Shinkansen Time and Price",
+    desc: "Leaving Kyoto: 2h11 on a Nozomi at ¥13,970 reserved on smartEX, Hikari and Kodama compared, the JR Pass Nozomi ticket, Kyoto Station's Hachijo-side gates and platforms 11 and 12, and the last train to Tokyo at 21:38.",
     group: "passes",
     city: "kyoto",
   },

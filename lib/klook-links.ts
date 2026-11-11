@@ -4333,6 +4333,27 @@ export const kyotoToTokyoArrivalStayAreas: KlookStayArea[] = [
   },
 ];
 
+/**
+ * The Tokyo end of a Kyoto → Tokyo travel day (added 11 Nov 2026, task R03):
+ * hotel 6.5% → subway ticket 5% → eSIM 20%, placed next to the booking-timing
+ * table on kyoto-to-tokyo-shinkansen. No new Klook ids — all three products are
+ * the shared `tripPrepProducts` entries.
+ */
+export const kyotoToTokyoTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "The Tokaido Shinkansen terminates inside Tokyo Station, so a Marunouchi room is a short walk from the platform rather than a cross-city ride with the cases at the end of the day.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The shinkansen ticket ends at the gate. This one covers every Tokyo Metro and Toei Subway line for 24, 48 or 72 hours, for the days after you arrive.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Your seat is a QR code or a reservation on your phone, and choosing between Shinagawa and Tokyo Station happens while the train is moving — both need data before you leave Kyoto.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // The working-holiday arrival and the foreigner's home line — added 29 Oct 2026
 // for japan-sim-card-working-holiday and japan-home-internet-for-foreigners.

@@ -674,6 +674,9 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             West&apos;s HARUKA ticket is for foreign passport holders entering as temporary visitors. Compare
             the trains in our <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link> and
             our <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Nankai Rapi:t guide</Link>.
+            If Tokyo comes after Kyoto, our{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train guide</Link> covers
+            the Kyoto Station shinkansen gates, the train times and the large-luggage seats for that last morning.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
