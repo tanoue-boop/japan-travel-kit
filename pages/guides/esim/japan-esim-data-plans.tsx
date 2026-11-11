@@ -726,7 +726,9 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
             Prices in USD as listed on each provider&apos;s official site, checked automatically every day. All plans are data-only.
             Sakura Mobile&apos;s 3 GB/day plans are shown with their total high-speed allowance (3 GB × days). Prices at
-            checkout can differ slightly due to your local currency or promotions.
+            checkout can differ slightly due to your local currency or promotions. All providers&apos; prices — these five plus
+            nine more, filtered by 7, 15 and 30 days — are in the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>, updated monthly.
           </p>
         </section>
 

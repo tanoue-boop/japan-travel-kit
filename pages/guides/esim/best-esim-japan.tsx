@@ -822,7 +822,9 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             <span className={tools.liveBadge}><span className={tools.liveDot} /> Prices checked daily</span>
             <span>
               &ldquo;Price From&rdquo; is each provider&apos;s cheapest Japan plan as of {pricesCheckedAt}.{" "}
-              <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan, sorted by price per GB →</Link>
+              <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan, sorted by price per GB →</Link>{" "}
+              All providers&apos; prices, including nine more not ranked here, are in the{" "}
+              <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>, updated monthly.
             </span>
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>

@@ -508,7 +508,10 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
                 <a href={s.href} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)" }}>{s.label}</a>
                 {i < TERMS_SOURCES.length - 1 ? ", " : "."}
               </span>
-            ))}
+            ))}{" "}
+            Unlimited plans from more providers — Maya Mobile, Ubigi, Nomad, Jetpac, aloSIM, Mobal and Japan Wireless — are
+            in the <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--accent)" }}>Japan eSIM price tracker</Link>,
+            sorted by price per day and updated monthly.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
             <a href={getProvider("simbye").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">

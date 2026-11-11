@@ -72,6 +72,8 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             We leave it out of our rankings because its US$1.05 from-price names no plan, so compare it with
             the prices in{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>our eSIM comparison</Link>{" "}
+            or every provider&apos;s price per GB in the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--text)", fontWeight: 600 }}>Japan eSIM price tracker</Link>{" "}
             before you buy. Then pick by what matters most: the{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link>, an{" "}
             <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--text)", fontWeight: 600 }}>unlimited eSIM</Link>, a{" "}

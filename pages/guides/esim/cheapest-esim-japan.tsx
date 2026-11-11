@@ -506,7 +506,10 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             from US$1.05 (read {klookEsim.specsCheckedAt}) before you choose days and data and does not say
             which plan that is, so its row has no per-plan prices, it is not ranked here, and no claim
             is made about whether a given plan undercuts the five above.{" "}
-            <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan sorted by price per GB →</Link>
+            <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan sorted by price per GB →</Link>{" "}
+            All providers&apos; prices — the five here plus Ubigi, Nomad, Jetpac, aloSIM, Yesim, Maya Mobile, Mobal, Japan
+            Wireless and eSIM.net — are in our{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>, updated monthly.
           </p>
         </section>
 

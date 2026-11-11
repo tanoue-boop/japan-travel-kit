@@ -667,5 +667,1464 @@
         }
       ]
     }
+  },
+  "tracker": {
+    "_note": "Japan eSIM price tracker (/guides/esim/japan-esim-price-tracker, public/data/japan-esim-prices.csv). lib/esim-tracker-core.js reads this block. autoFacts: non-price facts for the five providers in `providers` above, whose prices scripts/fetch-esim-prices.mjs re-reads daily (their checked date is fetchedAt). providers: read by hand on each provider's own Japan page, re-checked on the 1st of every month; prices in the currency the site shows, converted to USD with fx. unpriced: providers checked but with no per-plan price we could read. A fact a provider does not publish is null — never guessed.",
+    "updatePolicy": "Manual rows are re-checked on the 1st of every month; the five automated rows are re-read daily.",
+    "fx": {
+      "date": "2026-11-10",
+      "source": "European Central Bank euro foreign exchange reference rates, via the Frankfurter API",
+      "sourceUrl": "https://api.frankfurter.app/2026-11-10?from=USD",
+      "perUsd": {
+        "JPY": 158.18,
+        "EUR": 0.89174,
+        "GBP": 0.74501
+      }
+    },
+    "autoFacts": {
+      "airalo": {
+        "name": "Airalo",
+        "tethering": "Yes, where the device allows",
+        "phoneNumber": "No (data only)",
+        "factsCheckedOn": "2026-10-22"
+      },
+      "holafly": {
+        "name": "Holafly",
+        "tethering": "Capped at 1 GB/day",
+        "phoneNumber": "No (data only)",
+        "factsCheckedOn": "2026-10-22"
+      },
+      "esimgo": {
+        "name": "eSIM Go (Breeze)",
+        "tethering": "Yes, no extra cost",
+        "phoneNumber": "No (data only)",
+        "factsCheckedOn": "2026-10-22"
+      },
+      "sakura": {
+        "name": "Sakura Mobile",
+        "tethering": "Yes, allowance by plan length",
+        "phoneNumber": "Only on its separate Voice + Data eSIM",
+        "factsCheckedOn": "2026-10-22"
+      },
+      "simbye": {
+        "name": "Simbye",
+        "tethering": "Yes, every Japan plan",
+        "phoneNumber": "No (data only)",
+        "factsCheckedOn": "2026-11-05"
+      }
+    },
+    "providers": [
+      {
+        "id": "ubigi",
+        "name": "Ubigi",
+        "officialUrl": "https://cellulardata.ubigi.com/destinations/japan/",
+        "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-10gb-30-days/?wmc-currency=USD",
+        "checkedOn": "2026-11-11",
+        "currency": "USD",
+        "carriers": "KDDI, NTT Docomo, SoftBank",
+        "tethering": "Yes (\"Data sharing allowed\")",
+        "phoneNumber": "No (data only)",
+        "plans": [
+          {
+            "gb": 1,
+            "days": 3,
+            "price": 3,
+            "unlimited": false,
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-1gb-3-days/?wmc-currency=USD"
+          },
+          {
+            "gb": 10,
+            "days": 7,
+            "price": 14,
+            "unlimited": false,
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-10gb-7-days/?wmc-currency=USD"
+          },
+          {
+            "gb": 5,
+            "days": 15,
+            "price": 10,
+            "unlimited": false,
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-5gb-15-days/?wmc-currency=USD"
+          },
+          {
+            "gb": 10,
+            "days": 30,
+            "price": 16,
+            "unlimited": false,
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-10gb-30-days/?wmc-currency=USD"
+          },
+          {
+            "gb": 25,
+            "days": 30,
+            "price": 32,
+            "unlimited": false,
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-25gb-30-days/?wmc-currency=USD"
+          },
+          {
+            "gb": 50,
+            "days": 30,
+            "price": 55,
+            "unlimited": false,
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-50gb-30-days/?wmc-currency=USD"
+          },
+          {
+            "gb": null,
+            "days": 8,
+            "price": 25,
+            "unlimited": true,
+            "note": "5 GB/day at full speed, then 2 Mbps (fair use)",
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-unlimited-8-days/?wmc-currency=USD"
+          },
+          {
+            "gb": null,
+            "days": 15,
+            "price": 39,
+            "unlimited": true,
+            "note": "30 GB at full speed, then 2 Mbps (fair use)",
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-unlimited-15-days/?wmc-currency=USD"
+          },
+          {
+            "gb": null,
+            "days": 30,
+            "price": 65,
+            "unlimited": true,
+            "note": "60 GB at full speed, then 2 Mbps (fair use)",
+            "sourceUrl": "https://cellulardata.ubigi.com/rates-and-coverage/japan-data-plans/japan-unlimited-30-days/?wmc-currency=USD"
+          }
+        ]
+      },
+      {
+        "id": "nomad",
+        "name": "Nomad",
+        "officialUrl": "https://www.nomadesim.com/japan-esim",
+        "sourceUrl": "https://www.nomadesim.com/japan-esim",
+        "checkedOn": "2026-11-11",
+        "currency": "JPY",
+        "carriers": "KDDI au, SoftBank",
+        "tethering": "Yes",
+        "phoneNumber": "Not stated for the Japan plans",
+        "plans": [
+          {
+            "gb": 1,
+            "days": 7,
+            "price": 633,
+            "unlimited": false
+          },
+          {
+            "gb": 3,
+            "days": 30,
+            "price": 1109,
+            "unlimited": false
+          },
+          {
+            "gb": 5,
+            "days": 30,
+            "price": 1584,
+            "unlimited": false
+          },
+          {
+            "gb": 10,
+            "days": 30,
+            "price": 2534,
+            "unlimited": false,
+            "note": "Sale price (was JPY 2,851)"
+          },
+          {
+            "gb": 20,
+            "days": 30,
+            "price": 3642,
+            "unlimited": false,
+            "note": "Sale price (was JPY 4,118)"
+          },
+          {
+            "gb": 50,
+            "days": 30,
+            "price": 5543,
+            "unlimited": false
+          },
+          {
+            "gb": null,
+            "days": 3,
+            "price": 1742,
+            "unlimited": true,
+            "note": "Speed after fair use not stated on the page"
+          },
+          {
+            "gb": null,
+            "days": 5,
+            "price": 2851,
+            "unlimited": true,
+            "note": "Speed after fair use not stated on the page"
+          },
+          {
+            "gb": null,
+            "days": 7,
+            "price": 3959,
+            "unlimited": true,
+            "note": "Speed after fair use not stated on the page"
+          },
+          {
+            "gb": null,
+            "days": 10,
+            "price": 5226,
+            "unlimited": true,
+            "note": "Speed after fair use not stated on the page"
+          }
+        ]
+      },
+      {
+        "id": "jetpac",
+        "name": "Jetpac",
+        "officialUrl": "https://www.jetpacglobal.com/product-details/japan-esim",
+        "sourceUrl": "https://www.jetpacglobal.com/product-details/japan-esim",
+        "checkedOn": "2026-11-11",
+        "currency": "USD",
+        "carriers": null,
+        "tethering": "Yes, no data cap on tethering",
+        "phoneNumber": "No (data only; in-app calling sold separately)",
+        "plans": [
+          {
+            "gb": 5,
+            "days": 30,
+            "price": 10,
+            "unlimited": false
+          },
+          {
+            "gb": 10,
+            "days": 30,
+            "price": 16,
+            "unlimited": false,
+            "note": "Sale price (was USD 23)"
+          },
+          {
+            "gb": 15,
+            "days": 30,
+            "price": 21,
+            "unlimited": false,
+            "note": "Sale price (was USD 30)"
+          },
+          {
+            "gb": 20,
+            "days": 30,
+            "price": 40,
+            "unlimited": false
+          },
+          {
+            "gb": 30,
+            "days": 30,
+            "price": 29.99,
+            "unlimited": false,
+            "note": "Sale price (was USD 60)"
+          },
+          {
+            "gb": 40,
+            "days": 30,
+            "price": 34.99,
+            "unlimited": false,
+            "note": "Sale price (was USD 80)"
+          },
+          {
+            "gb": null,
+            "days": 30,
+            "price": 65.99,
+            "unlimited": true,
+            "note": "3 GB every 24 hours at standard speed, then up to 1 Mbps; sale price (was USD 150)"
+          }
+        ]
+      },
+      {
+        "id": "alosim",
+        "name": "aloSIM",
+        "officialUrl": "https://alosim.com/japan-esim/",
+        "sourceUrl": "https://alosim.com/japan-esim/",
+        "checkedOn": "2026-11-11",
+        "currency": "USD",
+        "carriers": "KDDI",
+        "tethering": null,
+        "phoneNumber": "No Japanese number (a free Hushed international number is included)",
+        "plans": [
+          {
+            "gb": 1,
+            "days": 1,
+            "price": 3.5,
+            "unlimited": false
+          },
+          {
+            "gb": 3,
+            "days": 1,
+            "price": 4.5,
+            "unlimited": false
+          },
+          {
+            "gb": null,
+            "days": 1,
+            "price": 5,
+            "unlimited": true,
+            "note": "Limitations apply (\"*See limitations\" on the page)"
+          },
+          {
+            "gb": 1,
+            "days": 3,
+            "price": 4,
+            "unlimited": false
+          },
+          {
+            "gb": 5,
+            "days": 3,
+            "price": 7,
+            "unlimited": false
+          },
+          {
+            "gb": null,
+            "days": 3,
+            "price": 11.5,
+            "unlimited": true,
+            "note": "Limitations apply (\"*See limitations\" on the page)"
+          },
+          {
+            "gb": 1,
+            "days": 5,
+            "price": 4.5,
+            "unlimited": false
+          },
+          {
+            "gb": 5,
+            "days": 5,
+            "price": 7,
+            "unlimited": false
+          },
+          {
+            "gb": 10,
+            "days": 5,
+            "price": 15,
+            "unlimited": false
+          },
+          {
+            "gb": null,
+            "days": 5,
+            "price": 19.5,
+            "unlimited": true,
+            "note": "Limitations apply (\"*See limitations\" on the page)"
+          },
+          {
+            "gb": 1,
+            "days": 7,
+            "price": 4.5,
+            "unlimited": false
+          },
+          {
+            "gb": 5,
+            "days": 7,
+            "price": 9.5,
+            "unlimited": false
+          },
+          {
+            "gb": 10,
+            "days": 7,
+            "price": 17,
+            "unlimited": false
+          },
+          {
+            "gb": 20,
+            "days": 7,
+            "price": 22,
+            "unlimited": false
+          },
+          {
+            "gb": null,
+            "days": 7,
+            "price": 27,
+            "unlimited": true,
+            "note": "Limitations apply (\"*See limitations\" on the page)"
+          },
+          {
+            "gb": 5,
+            "days": 10,
+            "price": 10,
+            "unlimited": false
+          },
+          {
+            "gb": 10,
+            "days": 10,
+            "price": 17.5,
+            "unlimited": false
+          },
+          {
+            "gb": 20,
+            "days": 10,
+            "price": 23,
+            "unlimited": false
+          },
+          {
+            "gb": 50,
+            "days": 10,
+            "price": 27.5,
+            "unlimited": false
+          },
+          {
+            "gb": 5,
+            "days": 15,
+            "price": 10.5,
+            "unlimited": false
+          },
+          {
+            "gb": 10,
+            "days": 15,
+            "price": 18,
+            "unlimited": false
+          },
+          {
+            "gb": 20,
+            "days": 15,
+            "price": 24,
+            "unlimited": false
+          },
+          {
+            "gb": 50,
+            "days": 15,
+            "price": 30,
+            "unlimited": false
+          },
+          {
+            "gb": null,
+            "days": 15,
+            "price": 49,
+            "unlimited": true,
+            "note": "Limitations apply (\"*See limitations\" on the page)"
+          },
+          {
+            "gb": 3,
+            "days": 30,
+            "price": 8,
+            "unlimited": false
+          },
+          {
+            "gb": 5,
+            "days": 30,
+            "price": 11,
+            "unlimited": false
+          },
+          {
+            "gb": 10,
+            "days": 30,
+            "price": 18,
+            "unlimited": false
+          },
+          {
+            "gb": 20,
+            "days": 30,
+            "price": 25,
+            "unlimited": false
+          },
+          {
+            "gb": 50,
+            "days": 30,
+            "price": 34.5,
+            "unlimited": false
+          },
+          {
+            "gb": null,
+            "days": 30,
+            "price": 74,
+            "unlimited": true,
+            "note": "Limitations apply (\"*See limitations\" on the page)"
+          }
+        ]
+      },
+      {
+        "id": "yesim",
+        "name": "Yesim",
+        "officialUrl": "https://yesim.app/country/japan/",
+        "sourceUrl": "https://yesim.app/country/japan/",
+        "checkedOn": "2026-11-11",
+        "currency": "USD",
+        "carriers": null,
+        "tethering": "Yes (\"Hotspot: Available\")",
+        "phoneNumber": "No (data only)",
+        "plans": [
+          {
+            "gb": 1,
+            "days": 30,
+            "price": 4.44,
+            "unlimited": false
+          },
+          {
+            "gb": 5,
+            "days": 30,
+            "price": 10.56,
+            "unlimited": false,
+            "note": "Sale price (was USD 22.20)"
+          },
+          {
+            "gb": 10,
+            "days": 30,
+            "price": 19.2,
+            "unlimited": false,
+            "note": "Sale price (was USD 44.40)"
+          },
+          {
+            "gb": 20,
+            "days": 30,
+            "price": 29.76,
+            "unlimited": false,
+            "note": "Sale price (was USD 88.80)"
+          },
+          {
+            "gb": 30,
+            "days": 30,
+            "price": 39.6,
+            "unlimited": false,
+            "note": "Sale price (was USD 133.20)"
+          }
+        ]
+      },
+      {
+        "id": "maya",
+        "name": "Maya Mobile",
+        "officialUrl": "https://maya.net/esim/japan",
+        "sourceUrl": "https://maya.net/esim/japan",
+        "checkedOn": "2026-11-11",
+        "currency": "USD",
+        "carriers": null,
+        "tethering": "Yes (\"Hotspot included\")",
+        "phoneNumber": "Not stated",
+        "plans": [
+          {
+            "gb": null,
+            "days": 3,
+            "price": 9.99,
+            "unlimited": true,
+            "note": "Global plan (165+ countries) sold on Maya's Japan page; acceptable-use policy applies"
+          },
+          {
+            "gb": null,
+            "days": 7,
+            "price": 19.99,
+            "unlimited": true,
+            "note": "Global plan (165+ countries) sold on Maya's Japan page; acceptable-use policy applies"
+          },
+          {
+            "gb": null,
+            "days": 14,
+            "price": 27.99,
+            "unlimited": true,
+            "note": "Global plan (165+ countries) sold on Maya's Japan page; acceptable-use policy applies"
+          },
+          {
+            "gb": null,
+            "days": 30,
+            "price": 49.99,
+            "unlimited": true,
+            "note": "Global plan (165+ countries) sold on Maya's Japan page; acceptable-use policy applies"
+          }
+        ]
+      },
+      {
+        "id": "mobal",
+        "name": "Mobal",
+        "officialUrl": "https://www.mobal.com/japan-esims/",
+        "sourceUrl": "https://www.mobal.com/japan-esims/",
+        "checkedOn": "2026-11-11",
+        "currency": "JPY",
+        "carriers": "Docomo",
+        "tethering": "Unlimited plan lists 15 GB of hotspot data",
+        "phoneNumber": "Not on data-only eSIMs; its separate monthly Voice + Data eSIM has a 070/080/090 number",
+        "plans": [
+          {
+            "gb": null,
+            "days": 3,
+            "price": 1650,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 4,
+            "price": 2200,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 5,
+            "price": 2750,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 6,
+            "price": 3300,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 7,
+            "price": 3850,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 8,
+            "price": 4400,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 9,
+            "price": 4950,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 10,
+            "price": 5400,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 11,
+            "price": 5700,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 12,
+            "price": 6000,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 13,
+            "price": 6300,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 14,
+            "price": 6600,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 15,
+            "price": 7000,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 16,
+            "price": 7400,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 17,
+            "price": 7800,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 18,
+            "price": 8200,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 19,
+            "price": 8500,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 20,
+            "price": 8800,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 21,
+            "price": 9100,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 26,
+            "price": 11000,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": null,
+            "days": 31,
+            "price": 12300,
+            "unlimited": true,
+            "note": "Data-only 5G unlimited; prices include tax"
+          },
+          {
+            "gb": 10,
+            "days": 16,
+            "price": 4620,
+            "unlimited": false,
+            "note": "Data-only 5G; prices include tax"
+          },
+          {
+            "gb": 50,
+            "days": 16,
+            "price": 5170,
+            "unlimited": false,
+            "note": "Data-only 5G; prices include tax"
+          },
+          {
+            "gb": 10,
+            "days": 31,
+            "price": 5950,
+            "unlimited": false,
+            "note": "Data-only 5G; prices include tax"
+          },
+          {
+            "gb": 50,
+            "days": 31,
+            "price": 6600,
+            "unlimited": false,
+            "note": "Data-only 5G; prices include tax"
+          }
+        ]
+      },
+      {
+        "id": "japanwireless",
+        "name": "Japan Wireless",
+        "officialUrl": "https://www.japan-wireless.com/esim",
+        "sourceUrl": "https://www.japan-wireless.com/esim/choosePlan",
+        "checkedOn": "2026-11-11",
+        "currency": "USD",
+        "carriers": "KDDI (5G plans); IIJmio network (4G plans)",
+        "tethering": "Yes on 5G Unlimited (high-speed allowance by plan length); not stated for other plans",
+        "phoneNumber": "No (calls via apps only, no SMS)",
+        "plans": [
+          {
+            "gb": null,
+            "days": 2,
+            "price": 16.63,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 3,
+            "price": 20.79,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 4,
+            "price": 24.95,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 5,
+            "price": 28.07,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 6,
+            "price": 31.19,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 7,
+            "price": 35.35,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 8,
+            "price": 38.47,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 9,
+            "price": 41.59,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 10,
+            "price": 45.75,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 11,
+            "price": 48.87,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 12,
+            "price": 51.99,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 13,
+            "price": 57.19,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 14,
+            "price": 62.39,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 15,
+            "price": 65.51,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 16,
+            "price": 67.59,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 17,
+            "price": 69.67,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 18,
+            "price": 72.79,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 19,
+            "price": 75.91,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 20,
+            "price": 77.99,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 25,
+            "price": 80.07,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 30,
+            "price": 83.19,
+            "unlimited": true,
+            "note": "5G Unlimited on KDDI; fair-use speed management for extreme use; a 20% coupon at checkout is not included in this price",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": 12,
+            "days": 4,
+            "price": 16.3,
+            "unlimited": false,
+            "note": "5G fixed data",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": 21,
+            "days": 7,
+            "price": 27.16,
+            "unlimited": false,
+            "note": "5G fixed data",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": 30,
+            "days": 10,
+            "price": 33.64,
+            "unlimited": false,
+            "note": "5G fixed data",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": 20,
+            "days": 20,
+            "price": 50.28,
+            "unlimited": false,
+            "note": "5G fixed data",
+            "carriers": "KDDI"
+          },
+          {
+            "gb": null,
+            "days": 1,
+            "price": 5.2,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 2,
+            "price": 9.36,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 3,
+            "price": 12.48,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 4,
+            "price": 15.6,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 5,
+            "price": 20.8,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 6,
+            "price": 24.96,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 7,
+            "price": 29.12,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 8,
+            "price": 31.2,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 9,
+            "price": 35.36,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 10,
+            "price": 37.44,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 11,
+            "price": 39.52,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 12,
+            "price": 42.64,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 13,
+            "price": 44.72,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 14,
+            "price": 47.84,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 15,
+            "price": 50.96,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 16,
+            "price": 53.04,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 17,
+            "price": 54.08,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 18,
+            "price": 56.16,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 19,
+            "price": 59.28,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 20,
+            "price": 62.4,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 21,
+            "price": 63.44,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 22,
+            "price": 64.48,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 23,
+            "price": 65.52,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 24,
+            "price": 66.56,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 25,
+            "price": 67.6,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 26,
+            "price": 68.64,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 27,
+            "price": 69.68,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 28,
+            "price": 70.72,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 29,
+            "price": 71.76,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": null,
+            "days": 30,
+            "price": 74.88,
+            "unlimited": true,
+            "note": "4G LTE Unlimited on IIJmio's network; no fair-use terms stated",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 1,
+            "days": 3,
+            "price": 5.39,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 5,
+            "days": 3,
+            "price": 8.86,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 10,
+            "days": 3,
+            "price": 11.36,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 1,
+            "days": 5,
+            "price": 5.64,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 3,
+            "days": 5,
+            "price": 6.76,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 5,
+            "days": 5,
+            "price": 9.32,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 10,
+            "days": 5,
+            "price": 12.23,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 1,
+            "days": 7,
+            "price": 5.89,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 3,
+            "days": 7,
+            "price": 7.7,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 5,
+            "days": 7,
+            "price": 10.3,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 20,
+            "days": 7,
+            "price": 21.94,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 30,
+            "days": 7,
+            "price": 20.03,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 10,
+            "days": 10,
+            "price": 13.09,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 20,
+            "days": 10,
+            "price": 26.94,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 3,
+            "days": 15,
+            "price": 8.53,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 5,
+            "days": 15,
+            "price": 10.92,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 10,
+            "days": 15,
+            "price": 14.04,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 10,
+            "days": 20,
+            "price": 16.11,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 3,
+            "days": 30,
+            "price": 9.32,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 5,
+            "days": 30,
+            "price": 10.19,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 10,
+            "days": 30,
+            "price": 16.33,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 20,
+            "days": 30,
+            "price": 37.43,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 30,
+            "days": 30,
+            "price": 38.17,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          },
+          {
+            "gb": 50,
+            "days": 30,
+            "price": 58.14,
+            "unlimited": false,
+            "note": "4G LTE fixed data",
+            "carriers": "IIJmio network"
+          }
+        ]
+      },
+      {
+        "id": "esimnet",
+        "name": "eSIM.net",
+        "officialUrl": "https://www.esim.net/japan",
+        "sourceUrl": "https://www.esim.net/japan",
+        "checkedOn": "2026-11-11",
+        "currency": "USD",
+        "carriers": "Three networks (not named)",
+        "tethering": "Yes (\"Hotspot included\")",
+        "phoneNumber": "Not stated",
+        "plans": [
+          {
+            "gb": 5,
+            "days": 10,
+            "price": 9,
+            "unlimited": false
+          },
+          {
+            "gb": 10,
+            "days": 15,
+            "price": 15,
+            "unlimited": false
+          },
+          {
+            "gb": 15,
+            "days": 30,
+            "price": 22,
+            "unlimited": false
+          }
+        ]
+      }
+    ],
+    "unpriced": [
+      {
+        "id": "klook",
+        "name": "Klook Japan eSIM",
+        "officialUrl": "https://www.klook.com/en-US/activity/109393-japan-esim-high-speed-internet-qr-code-voucher/",
+        "checkedOn": "2026-11-11",
+        "carriers": "SoftBank 5G / IIJ (Docomo) 4G LTE",
+        "tethering": "Yes (listing says supported)",
+        "phoneNumber": "No (data only)",
+        "reason": "Klook answers automated reads with HTTP 403, and its listing shows only a from-price (US$1.05, read in a browser on 6 Nov 2026) before days and data are chosen, so no per-plan price can be recorded."
+      },
+      {
+        "id": "saily",
+        "name": "Saily",
+        "officialUrl": "https://saily.com/esim-japan/",
+        "checkedOn": "2026-11-11",
+        "carriers": null,
+        "tethering": null,
+        "phoneNumber": null,
+        "reason": "saily.com/esim-japan/ returned a bot challenge (HTTP 403) on 11 Nov 2026, so no price could be read from the official page."
+      },
+      {
+        "id": "gigsky",
+        "name": "GigSky",
+        "officialUrl": "https://www.gigsky.com/country/esim-in-japan",
+        "checkedOn": "2026-11-11",
+        "carriers": null,
+        "tethering": null,
+        "phoneNumber": null,
+        "reason": "The Japan page loads its plan list with JavaScript; no plan prices were present in the page we could read on 11 Nov 2026."
+      },
+      {
+        "id": "iij",
+        "name": "IIJ Japan Travel SIM (eSIM)",
+        "officialUrl": "https://tr.iijmio.jp/select/",
+        "checkedOn": "2026-11-11",
+        "carriers": "Docomo",
+        "tethering": null,
+        "phoneNumber": "No (cannot add voice or SMS)",
+        "reason": "IIJ's product page lists the eSIM's 3–55 GB / 30-day tiers but gives the price as an open price set by the retailer, so there is no official price to record."
+      }
+    ]
   }
 }

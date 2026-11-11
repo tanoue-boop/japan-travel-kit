@@ -162,7 +162,8 @@ function PrimaryButton({ href, label }: ButtonLink) {
 export type BookCard = {
   kicker: string;
   title: string;
-  desc: string;
+  /** Plain text, or text with an inline link (the English home links the eSIM price tracker). */
+  desc: ReactNode;
   ctas: { label: string; url: string }[];
   guide: { href: string; label: string; hrefLang?: string };
 };

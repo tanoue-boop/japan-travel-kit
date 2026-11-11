@@ -19,6 +19,14 @@ export const esimArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/esim/japan-esim-price-tracker",
+    badge: "Data",
+    title: "Japan eSIM Price Tracker: Every Provider's Price per GB",
+    desc: "Every Japan eSIM plan we could price on official sites, sortable by 7, 15 and 30 days or unlimited, with price per GB, sources and a free CSV.",
+    group: "compare",
+    city: "other",
+  },
+  {
     href: "/guides/esim/japan-airport-sim-cards",
     badge: "Comparison",
     title: "Japan Airport SIM Cards 2026: Where to Buy, Hours and Prices",

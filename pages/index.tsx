@@ -126,8 +126,13 @@ const bookBeforeYouFly: BookCard[] = [
   {
     kicker: "Data",
     title: "A Japan eSIM, working before you leave the terminal",
-    desc:
-      "The one thing worth having live the minute you land: train apps, hotel check-in and your tickets all run off the phone. Klook sells a Japan eSIM of its own as a QR voucher.",
+    desc: (
+      <>
+        The one thing worth having live the minute you land: train apps, hotel check-in and your tickets all run off the
+        phone. Klook sells a Japan eSIM of its own as a QR voucher; to compare it with other providers, our{" "}
+        <Link href="/guides/esim/japan-esim-price-tracker">Japan eSIM price tracker</Link> lists every provider&apos;s price per GB.
+      </>
+    ),
     ctas: [{ label: "See eSIM options on Klook →", url: BOOK_CARDS.esim.urls[0] }],
     guide: { href: BOOK_CARDS.esim.guide, label: "Read: the best eSIM for Japan" },
   },
