@@ -1101,6 +1101,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "Otaru Day Trip from Sapporo (2027)" },
               { href: "/guides/attractions/hokkaido-7-day-itinerary", title: "Hokkaido 7 Day Itinerary: 7 Days in Hokkaido, Day by Day" },
               { href: "/guides/attractions/tokyo-illumination-tours", title: "Tokyo Illuminations: Dates, Hours and the Free Ones" },
+              { href: "/guides/attractions/tokyo-snow-day-trip", title: "Tokyo Snow Day Trip (2026–27): Yeti, Fujiten or Gala" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>
                 <div className={styles.relatedIcon}>

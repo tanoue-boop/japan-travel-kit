@@ -400,6 +400,7 @@ const related = [
   { href: "/guides/attractions/kyoto-nara-day-tour-from-osaka", title: "Kyoto and Nara Day Tour from Osaka" },
   { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka (2026): Best Areas Compared" },
   { href: "/guides/attractions/things-to-do-osaka", title: "Things to Do in Osaka (2026)" },
+  { href: "/guides/attractions/osaka-go-kart", title: "Osaka Go Kart 2026: IDP Rules, Routes and Which Tour to Book" },
   { href: "/guides/transport/haruka-vs-nankai-rapit", title: "HARUKA vs Nankai Rapi:t: Kansai Airport to Osaka" },
   { href: "/guides/attractions", title: "More Things to Do in Japan →" },
 ];

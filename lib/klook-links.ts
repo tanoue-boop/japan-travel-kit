@@ -7995,3 +7995,159 @@ export const japanThreeWeekTripPrep: KlookTripPrepItem[] = [
     why: "Twenty-one days of maps, QR tickets and seat reservations across seven bases.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo snow day trip, added 11 Nov 2026 (task-jtk-20261111-02).
+//
+// Confirmed as live en-US listings through the www.klook.com search index on
+// 11 Nov 2026:
+//   181777  With Mt. Fuji View: Snow Fun at Fujiten & Oishi Park Sightseeing Tour
+//           (11 hours from Tokyo; Oishi Park, then snow play at Fujiten).
+//   138801  Mt. Fuji - Fujiyama Snow Ski Resort Yeti Day Trip from Tokyo (11 hours,
+//           Tokyo Station and Shinjuku; ski, snowboard, sledding or shuttle-only
+//           packages; the listing says it is not cancelled for rain).
+//   16298   Fujiyama Snow Resort Yeti Day Trip from Tokyo (beginner lesson & snow
+//           fun; transport, rental and instructor, lift ticket not in the beginner
+//           package; helmets and goggles not included).
+//   166076  Fuji Snow Resort Yeti & Onsen Full-Day Tour (07:30–18:30, ages 3 to
+//           under 70, Konohana no Yu hot spring, free cancellation 24 h ahead).
+//   101175  Mt. Fuji 2nd Station Yeti Snow Resort Day Ski Trip (lift ticket, gear,
+//           group ski lessons only).
+//   p50054824-fujiyama-snow-resort-yeti  the Yeti destination page.
+// Dropped: 34708 (en-SG only in the index), 129291 (no-locale page only).
+// All tours are 6.5%. No Klook price appears on the page.
+// ---------------------------------------------------------------------------
+
+export const fujitenSnowFunOishiParkTour: KlookTour = {
+  title: "Snow fun at Fujiten & Oishi Park with a Mt. Fuji view",
+  desc: "An 11-hour day from Tokyo: the Mt. Fuji view over Lake Kawaguchiko from Oishi Park, then snow play at Fujiten Snow Resort",
+  url: klookLink("https://www.klook.com/en-US/activity/181777-with-mt-fuji-view-snow-fun-at-fujiten-oishi-park-sightseeing-tou/"),
+};
+
+export const yetiSnowDayTripFromTokyo: KlookTour = {
+  title: "Fujiyama Snow Resort Yeti day trip from Tokyo",
+  desc: "An 11-hour coach day from Tokyo Station or Shinjuku, sold as a ski, snowboard, sledding or shuttle-only package",
+  url: klookLink("https://www.klook.com/en-US/activity/138801-mt-fuji-fujiyama-snow-ski-resort-yeti-day-trip-from-tokyo/"),
+};
+
+export const yetiBeginnerLessonSnowFunTour: KlookTour = {
+  title: "Yeti beginner lesson & snow fun from Tokyo",
+  desc: "Transport, ski or board rental with a jacket and pants, and an instructor for a first day on snow; the beginner package leaves out the lift ticket",
+  url: klookLink("https://www.klook.com/en-US/activity/16298-fujiyama-resort-yeti-tour-tokyo/"),
+};
+
+export const yetiOnsenFullDayTour: KlookTour = {
+  title: "Fuji Snow Resort Yeti & onsen full-day tour",
+  desc: "Snow play or skiing at Yeti, then the Konohana no Yu hot spring, 07:30 to 18:30 from Tokyo, for ages 3 to 69",
+  url: klookLink("https://www.klook.com/en-US/activity/166076-fujiyama-snow-resort-yeti-ski-snow-play-onsen-one-day-tour/"),
+};
+
+export const yetiSkiDayTrip: KlookTour = {
+  title: "Mt. Fuji 2nd Station Yeti ski day trip",
+  desc: "Lift ticket, ski gear and the coach from Tokyo in one booking, with group ski lessons (no snowboard lessons)",
+  url: klookLink("https://www.klook.com/en-US/activity/101175-fujiyama-snow-resort-yeti-skiing-day-tour-tokyo/"),
+};
+
+/** Klook's Fujiyama Snow Resort Yeti destination page: every Yeti product on one list. */
+export const yetiDestinationUrl = klookLink("https://www.klook.com/en-US/destination/p50054824-fujiyama-snow-resort-yeti/");
+
+/**
+ * Tokyo snow day trip — what to book on the same day: a Shinjuku hotel (6.5%,
+ * the Yeti coaches and the liner bus leave from Shinjuku), the Haneda bus (5%)
+ * and the eSIM (20%). No new URLs.
+ */
+export const tokyoSnowDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "Snow tours and Yeti's own liner bus leave from Shinjuku in the morning, so a bed near the station is the one that makes an early departure easy with children.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "Shinjuku is among the destinations on the Haneda limousine bus listing, so the arrival day ends at the same station the snow coach leaves from.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Mountain roads close for snow, and a delay message from the tour or a change to the resort's hours reaches your phone, not a noticeboard.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Osaka go-kart, added 11 Nov 2026 (task-jtk-20261111-02).
+//
+// Confirmed as live en-US listings through the www.klook.com search index on
+// 11 Nov 2026:
+//   8590    Osaka Go Karting Experience by Akiba Kart (Japanese licence, SOFA
+//           licence or IDP; 4.8 from about 2.3K reviews; free cancellation shown).
+//   91213   Osaka Kart by Akiba Kart Shinsekai.
+//   119916  Go Kart Experience in Osaka by JAPANKART (1–2 hours, lead car and a
+//           second car behind, licence valid in Japan required).
+//   163321  Osaka Go Kart Adventure in Costume (Monkey Kart; private group, 1 hour,
+//           paper 1949 Geneva IDP, Japanese translation or SOFA licence).
+//   152539  Osaka: Electric Go-Kart by Future Kart (EV karts, Bluetooth speakers,
+//           free costumes, custom routes on request).
+//   experiences/list/osaka-go-karting/c29-cate178  the Osaka go-karting list.
+// Dropped: 112246 (Street Kart Osaka; only en-HK, en-GB and no-locale pages in the
+// index). Experiences are 6.5%. No Klook price appears on the page.
+// ---------------------------------------------------------------------------
+
+export const akibaKartOsakaGoKart: KlookTour = {
+  title: "Osaka go karting by Akiba Kart",
+  desc: "The most-reviewed Osaka street kart on Klook: a guided drive in costume past Dotonbori, Namba and Osaka Castle, on a Japanese licence, SOFA licence or IDP",
+  url: klookLink("https://www.klook.com/en-US/activity/8590-osaka-go-karting-experience-akiba-kart-nipponbashi/"),
+};
+
+export const akibaKartShinsekaiGoKart: KlookTour = {
+  title: "Osaka kart by Akiba Kart Shinsekai",
+  desc: "The Shinsekai shop's own listing, for starting the drive at the Tsutenkaku end of the city",
+  url: klookLink("https://www.klook.com/en-US/activity/91213-osaka-kart-akiba-kart-shinsekai/"),
+};
+
+export const japanKartOsakaGoKart: KlookTour = {
+  title: "Go kart experience in Osaka by JAPANKART",
+  desc: "A 1 to 2 hour guided drive through central Osaka with a lead car in front and a second car behind; a licence valid in Japan is required",
+  url: klookLink("https://www.klook.com/en-US/activity/119916-go-kart-experience-in-osaka-by-japankart/"),
+};
+
+export const monkeyKartOsakaCostumeTour: KlookTour = {
+  title: "Osaka go kart adventure in costume (private group)",
+  desc: "A one-hour private-group drive past Dotonbori, Shinsaibashi and Tsutenkaku, with costumes as an add-on",
+  url: klookLink("https://www.klook.com/en-US/activity/163321-osaka-go-kart-adventure-drive-past-famous-landmarks-in-costume/"),
+};
+
+export const futureKartOsakaElectricGoKart: KlookTour = {
+  title: "Osaka electric go-kart by Future Kart",
+  desc: "EV karts with Bluetooth speakers, free costumes and custom routes on request",
+  url: klookLink("https://www.klook.com/en-US/activity/152539-osaka-electric-go-kart-by-future-kart/"),
+};
+
+/** Klook's list of every Osaka go-karting product. */
+export const osakaGoKartingListUrl = klookLink("https://www.klook.com/en-US/experiences/list/osaka-go-karting/c29-cate178/");
+
+/**
+ * Osaka go-kart — what to book on the same day. No new URLs: the Amazing Pass (5%),
+ * the Dotonbori daytime food walk and the Namba hotel search (6.5%), the eSIM (20%).
+ */
+export const osakaGoKartTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "The kart is an hour; the pass is the rest of the day — the castle and the Tombori river cruise on one ticket, neither of which needs a licence.",
+  },
+  {
+    label: dotonboriDaytimeFoodTour.title,
+    ctaLabel: "Check the food walk →",
+    url: dotonboriDaytimeFoodTour.url,
+    why: "Listed at 11:00–14:00 in the same streets the karts drive through, so it fits before an afternoon or evening slot.",
+  },
+  {
+    label: "Hotels in Namba",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: whereToStayOsakaAreas[1].url,
+    why: "The Osaka kart routes run through Namba, Dotonbori and Shinsaibashi, and an evening slot ends after dark — a bed in Namba is a short walk back.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Kart shops ask you to arrive early and a late arrival can lose the slot without a refund; live maps to a side-street shop are what stop that.",
+  },
+];

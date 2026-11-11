@@ -300,6 +300,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-snow-day-trip",
+    badge: "Snow day trip",
+    title: "Tokyo Snow Day Trip (2026–27): Yeti, Fujiten or Gala",
+    desc: "Sledding and snow play on Mt. Fuji without skiing: Yeti's liner bus is 2 h 30 min from Shinjuku, Fujiten opens mid-December, and the snow play areas open in December — with tours, kids and what to wear.",
+    group: "daytrips",
+    // A day out from Tokyo, same group and city as gala-yuzawa-ski-day-trip-from-tokyo.
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/hiroshima-miyajima-day-trip",
     badge: "Day trip",
     title: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?",
@@ -688,6 +697,15 @@ export const attractionArticles: GuideArticle[] = [
     desc: "A Tokyo go kart tour costs about ¥5,000 to ¥25,000 and needs a Japanese licence or a valid International Driving Permit, which has to be issued before you leave home.",
     group: "experiences",
     city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/osaka-go-kart",
+    badge: "Experience",
+    title: "Osaka Go Kart 2026: IDP Rules, Routes and Which Tour to Book",
+    desc: "About an hour through Dotonbori, Namba and Shinsaibashi, on a Japanese licence or a 1949 Geneva IDP issued before you fly — five operators compared on route, length, costume and cancellation.",
+    group: "experiences",
+    // The Osaka version of tokyo-go-kart, same group.
+    city: "osaka",
   },
   {
     href: "/guides/attractions/tokyo-food-tour",

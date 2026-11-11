@@ -1226,6 +1226,18 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            <Link href="/guides/attractions/osaka-go-kart" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 12h2l1-3h12l1 3h2" />
+                  <path d="M5 12v5h14v-5" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Osaka Go Kart 2026: IDP Rules, Routes and Which Tour to Book</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/dotonbori-river-cruise" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

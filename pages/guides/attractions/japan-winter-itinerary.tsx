@@ -1867,6 +1867,17 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               </div>
             </Link>
             {/* Added 1 Nov 2026: the snow day this route puts on the Joetsu Shinkansen, in full. */}
+            <Link href="/guides/attractions/tokyo-snow-day-trip" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v20M4.9 6l14.2 12M4.9 18L19.1 6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Snow Day Trip (2026–27): Yeti, Fujiten or Gala</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">

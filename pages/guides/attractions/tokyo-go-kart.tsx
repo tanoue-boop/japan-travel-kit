@@ -408,7 +408,11 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Booking through Klook has its own price, so open the listing to see the figure for your date. For
             comparison, Street Kart&apos;s Osaka shop lists about an hour from ¥7,000 in the same month, and it
-            also has a shop in Okinawa.
+            also has a shop in Okinawa. You can drive in Osaka on the same documents; the{" "}
+            <Link href="/guides/attractions/osaka-go-kart" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Osaka go kart guide
+            </Link>{" "}
+            compares the routes through Dotonbori and Namba.
           </p>
         </section>
 
