@@ -101,7 +101,7 @@ const hoursRows = [
   },
   {
     what: "这对买票意味着什么",
-    detail: "计划入园日期的门票大约在两个月前开售，那时当天的运营时间早已公布好几个月——所以请在买票前先看运营日历，而不是买完才看。在 20:00 闭园的日期用 After 5 票，就只有三小时。",
+    detail: "计划入园日期的门票大约在两个月前开售，那时当天的运营时间早已公布好几个月——所以请在买票前先看运营日历，而不是买完才看。如果当天 20:00 闭园，After 5 票就只能玩三小时。",
   },
   {
     what: "提前入园（Happy Entry）",
@@ -119,7 +119,7 @@ const sellerRows = [
   },
   {
     where: "授权的境外在线旅行平台（如 Klook）",
-    best: "官网拒绝境外信用卡的游客",
+    best: "无法在官网使用境外信用卡付款的游客",
     validity: "入园日一个月后的同一天",
     note: "支持境外银行卡、购票页面易于操作。官网显示售罄时值得再查一次。注意有效期较短。",
   },
@@ -142,7 +142,7 @@ const accessRows = [
   {
     service: "我们的建议：先用免费的预约排队卡（Standby Pass）与入场抽选（Entry Request）",
     cost: "免费",
-    what: "预约排队卡为需要它的设施提供返回时间；入场抽选每天每个场馆可尝试一次，适用于指定的巡游、表演与角色见面。付费前先用这两项。",
+    what: "预约排队卡为指定游乐设施分配返回时段；入场抽选每天每个场馆可尝试一次，适用于指定的巡游、表演与角色见面。付费前先用这两项。",
   },
   {
     service: "迪士尼尊享卡（Disney Premier Access）",
@@ -185,7 +185,7 @@ const buyingRows = [
   },
   {
     q: "那可以改日期吗？",
-    a: "可以，这就是现有的灵活性。线上购买的票可以在有效期内变更日期，指定入园日之前或之后都行，次数不限——每次变更都按新日期的价格结算。变更在官网或 App 上操作，不是在园区。",
+    a: "可以，这是唯一可以灵活调整的地方。线上购买的票可以在有效期内变更日期，指定入园日之前或之后都行，次数不限——每次变更都按新日期的价格结算。变更在官网或 App 上操作，不是在园区。",
   },
   {
     q: "所选日期售罄了，就没机会了吗？",
@@ -198,11 +198,11 @@ const parkRows = [
     park: "东京迪士尼乐园",
     style: "经典的迪士尼城堡式园区：巡游、烟花、合家同乐的设施",
     suits: "首次到访者、带年幼孩子的家庭、经典迪士尼爱好者",
-    note: "去过其他迪士尼的话，动线会很熟悉",
+    note: "去过其他迪士尼的话，园区布局会让你觉得熟悉",
   },
   {
     park: "东京迪士尼海洋",
-    style: "航海与水主题；更具东京独有性、风格偏成人；园内供酒",
+    style: "航海与水主题；更有东京独有的特色、风格偏成人；园内供酒",
     suits: "成人、情侣、想要不一样体验的回访者",
     note: "正在庆祝 25 周年（2026 年 4 月～2027 年 3 月）",
   },
@@ -249,7 +249,7 @@ const steps = [
   },
   {
     title: "在运营日历上确认那天的时间",
-    desc: "运营时间按日期而定，约五个月前公布。它决定了 After 5 票是一整个晚上还是只有一小段，也决定烟花是否在你的入园时间内。",
+    desc: "运营时间按日期而定，约五个月前公布。它决定了 After 5 票能玩一整个晚上，还是只能玩一小会儿，也决定烟花是否在你的入园时间内。",
   },
   {
     title: "两个月前的日本时间 14:00，在购票页面等候开售",
@@ -272,7 +272,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "东京迪士尼乐园门票应该在哪里买？",
-    a: "官网能用你的银行卡支付的话，就在东京迪士尼度假区官网或官方 App 买：在那里买的票有效期到购买日一年后的同一天，并可在线免手续费改日期。如果官网拒绝境外信用卡，Klook 这类授权的境外在线旅行平台也卖同样的指定日期一日票，但度假区 FAQ 规定这类票的有效期较短——到入园日一个月后的同一天。两座园区入口都不售票。最后确认：2026-11-11。",
+    a: "官网能用你的银行卡支付的话，就在东京迪士尼度假区官网或官方 App 买：在那里买的票有效期到购买日一年后的同一天，并可在线免手续费改日期。如果无法在官网使用境外信用卡付款，Klook 这类授权的境外在线旅行平台也卖同样的指定日期一日票，但度假区 FAQ 规定这类票的有效期较短——到入园日一个月后的同一天。两座园区入口都不售票。最后确认：2026-11-11。",
   },
   {
     q: "东京迪士尼乐园门票的有效期多久？",
@@ -296,7 +296,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "东京迪士尼乐园和迪士尼海洋该选哪一个？",
-    a: "一日票只含一座园区，所以要选。东京迪士尼乐园是经典的城堡式园区——巡游与合家同乐的设施，适合首次到访者与带年幼孩子的家庭。东京迪士尼海洋是航海主题，更具东京独有性，风格偏成人，园内供酒，并正在庆祝 2026 年 4 月到 2027 年 3 月的 25 周年。第一次带孩子去，选迪士尼乐园；想要与众不同，选迪士尼海洋。",
+    a: "一日票只含一座园区，所以要选。东京迪士尼乐园是经典的城堡式园区——巡游与合家同乐的设施，适合首次到访者与带年幼孩子的家庭。东京迪士尼海洋是航海主题，更有东京独有的特色，风格偏成人，园内供酒，并正在庆祝 2026 年 4 月到 2027 年 3 月的 25 周年。第一次带孩子去，选迪士尼乐园；想要与众不同，选迪士尼海洋。",
   },
 ];
 
@@ -401,7 +401,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             2026 年<strong>东京迪士尼门票</strong>的成人一日票 <strong>¥8,900</strong> 起，12–17 岁
             <strong>¥7,400</strong> 起，4–11 岁 <strong>¥5,300</strong> 起（3 岁及以下免费），实际票价按入园日期而定。
-            两座园区入口都不售票，所以要在东京迪士尼度假区官网或官方 App 购买——官网拒绝你的银行卡时，可通过 Klook 这类授权销售渠道——
+            两座园区入口都不售票，需要通过东京迪士尼度假区官网或官方 App 购票。如果官网无法使用你的银行卡付款，也可以通过 Klook 等授权渠道购买。
             门票在<strong>两个月前、每天日本时间 14:00</strong>开售。
             一张票只含一个日期、一座园区：东京迪士尼乐园适合第一次去和带年幼孩子的游客，东京迪士尼海洋适合成人，并正值 25 周年（2026 年 4 月～2027 年 3 月）。
           </p>
@@ -465,7 +465,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>2026 年东京迪士尼乐园门票多少钱？</h2>
           <p className={styles.bodyText}>
             成人 ¥8,900 起——而这个“起”字很关键。东京迪士尼度假区表示园区门票采用浮动定价、费用按入园日期而不同，
-            所以公布的数字是最低价，不是定价。当天的实际票价，要在官方购票页选好日期后才会出现。
+            所以公布的数字只是最低票价，并非固定票价。当天的实际票价，要在官方购票页选好日期后才会出现。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -535,7 +535,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             票种、入园时间与一日双园票目前的状态，均来自度假区官方 FAQ 的说明，查阅于 {CHECKED}。计划入园当天有哪些票种
-            在售，要看日期——期间限定的票会随度假区的活动推出或结束——所以上表是票种的大致样貌，而不是固定的清单。
+            在售，要看日期——期间限定的票会随度假区的活动推出或结束——所以上表是票种的大致情况，而不是固定的清单。
           </p>
         </section>
 
@@ -580,7 +580,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>购买渠道<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>东京迪士尼乐园门票应该在哪里买？</h2>
           <p className={styles.bodyText}>
-            官网能用你的银行卡支付，就在东京迪士尼度假区官网或官方 App 买——在那里买的票从购买日起有效一年。官网拒绝境外信用卡的话，
+            官网能用你的银行卡支付，就在东京迪士尼度假区官网或官方 App 买——在那里买的票从购买日起有效一年。无法在官网使用境外信用卡付款的话，
             Klook 这类授权的境外销售渠道也卖同样的指定日期门票，有效期到入园日一个月后。
           </p>
           <div className={styles.tableWrap}>
@@ -624,7 +624,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             是的，而且度假区已取消现场售票等其他购票方式：东京迪士尼乐园与东京迪士尼海洋现场完全不售园区门票。计划入园日期的门票会在
             <strong>两个月前、每天日本时间 14:00</strong> 开售——也就是北京时间 13:00——每天的名额有上限，售罄后
-            销售可能不经预告就停止。遇到周末、日本法定节假日或迪士尼海洋 25 周年期间的日期，能否买到，就看开售那一刻。
+            销售可能不经预告就停止。遇到周末、日本法定节假日或迪士尼海洋 25 周年期间的日期，要在开售时立即购票。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -664,8 +664,8 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>乐园与海洋对比<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>迪士尼乐园还是迪士尼海洋？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            一张票、一座园区——而一日双园票没有销售，所以这是真正需要做的选择，而不是先去哪座的顺序问题。
-            喜欢经典城堡主题或带年幼的孩子，选迪士尼乐园；想去别处没有的园区，又正好赶上 25 周年，选迪士尼海洋。
+            一张票、一座园区——而一日双园票没有销售，所以只能选其中一座，而不是决定先去哪一座。
+            喜欢经典城堡主题或带年幼的孩子，选迪士尼乐园；想体验其他地方没有的迪士尼园区，又正好赶上 25 周年，选迪士尼海洋。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -714,7 +714,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            不管选哪一座，都请先规划路线——度假区离东京市中心要坐一段电车。我们的{" "}
+            不管选哪一座，都请先规划路线——从东京市中心前往度假区需要乘坐一段电车。我们的{" "}
             <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--red)", fontWeight: 600 }}>
               东京交通攻略（英文）
             </Link>{" "}
@@ -781,7 +781,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         <KlookTripPrep
           label="园区日的前后"
           heading="要住在东京迪士尼度假区附近吗？"
-          intro="如果入园日期是周末或周年期间，答案是要——度假区从东京站坐 JR 京叶线约 15 到 20 分钟，开园前要通勤一次、夜间巡游后再通勤一次。住在舞滨或再远一站，就省下了当天往返的时间。"
+          intro="如果入园日期是周末或周年活动期间，值得住在度假区附近——度假区从东京站坐 JR 京叶线约 15 到 20 分钟，开园前要通勤一次、夜间巡游后再通勤一次。住在舞滨或再远一站，就省下了当天往返的时间。"
           items={tripPrepItems}
         />
 
@@ -790,13 +790,13 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>境外信用卡<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>可以用境外信用卡买东京迪士尼门票吗？</h2>
           <p className={styles.bodyText}>
-            在官网上常常不行。东京迪士尼度假区官网是主要的购票渠道，但它经常拒绝或拦截境外发行的信用卡——这是国际游客
-            反复遇到的头疼问题；而当你要买的东西只在两个月前的某一刻开售时，问题就更严重。
+            在官网上常常不行。东京迪士尼度假区官网是主要的购票渠道，但它经常拒绝或拦截境外发行的信用卡——这是境外游客
+            经常遇到的麻烦；而当你要买的东西只在两个月前的某一刻开售时，问题就更严重。
           </p>
           <p className={styles.bodyText}>
             <strong>Klook 是东京迪士尼度假区官方授权的销售渠道。</strong>它支持境外银行卡支付、购票页面易于操作，并发送可以
             绑定到东京迪士尼度假区官方 App 的电子票二维码。这个组合——支持境外卡，加上可以绑进 App 的二维码——就是它成为
-            境外游客标准解决办法的原因。如果你同时在安排东京其他行程，我们的{" "}
+            境外游客常用的购票方式的原因。如果你同时在安排东京其他行程，我们的{" "}
             <Link href="/zh-cn/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
               SHIBUYA SKY 门票攻略
             </Link>{" "}

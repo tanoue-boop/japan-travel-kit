@@ -62,7 +62,7 @@ const groups: CnHubGroup[] = [
     // and the English hub uses the same key for the same group.
     key: "daytrips",
     label: "一日游",
-    desc: "整天出城的行程，要选的是哪一条路线，而不是哪一张票。",
+    desc: "需要一整天的郊游行程，要选的是哪一条路线，而不是哪一张票。",
     routes: ["/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo"],
   },
   {
@@ -74,7 +74,7 @@ const groups: CnHubGroup[] = [
   {
     key: "prep",
     label: "行前准备",
-    desc: "落地那天就会用到的两件事：机场到市区的交通，以及手机上网。",
+    desc: "抵达日本当天就会用到的两样东西：机场到市区的交通，以及手机上网。",
     routes: [
       "/zh-cn/guides/transport/tokyo-airport-transfer",
       "/zh-cn/guides/esim/best-esim-japan",
@@ -85,7 +85,7 @@ const groups: CnHubGroup[] = [
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
   "/zh-cn/guides/attractions/shibuya-sky-tickets":
-    "涩谷十字路口上方的开放式屋顶。官方票价、为什么日落场最先售罄，以及海外信用卡刷不过时怎么订。",
+    "涩谷十字路口上方的开放式屋顶。官方票价、为什么日落时段最先售罄，以及海外信用卡无法付款时怎么订。",
   "/zh-cn/guides/attractions/teamlab-planets-tickets":
     "丰洲的 Planets：官方票价、30 分钟入场时段、赤脚涉水区该穿什么，以及和无界的完整比较。",
   "/zh-cn/guides/attractions/teamlab-borderless-tickets":
@@ -95,7 +95,7 @@ const BLURBS: Record<string, string> = {
   "/zh-cn/guides/attractions/usj-tickets-express-pass":
     "现在一律网上购票，超级任天堂世界需要指定时间入园。Studio Pass 的分级、快速通行证 4／7／8 怎么挑。",
   "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo":
-    "四种行程比较：只跑富士山还是加箱根、Subaru Line 五合目是什么，以及一天要多久。",
+    "四种行程比较：只去富士山，还是连箱根一起玩、Subaru Line 五合目是什么，以及一天要多久。",
   "/zh-cn/guides/attractions/things-to-do-tokyo":
     "真正会售罄的只有四、五样。这份短名单说哪些要提前多久订，哪些可以吃早餐时再决定。",
   "/zh-cn/guides/transport/tokyo-airport-transfer":
@@ -112,15 +112,15 @@ const hubRoutes = groups.flatMap((g) => g.routes);
 const faqItems: FaqItem[] = [
   {
     q: "日本哪些景点门票一定要提前订？",
-    a: "会售罄的是指定日期与时段的那几个：东京迪士尼（指定日期，门口完全不卖票）、两间 teamLab 美术馆（指定时段）、涩谷SKY 的日落场，以及日本环球影城（2025 年 5 月起当天门口不再售票）。其他大部分的景点与神社，当天再决定都来得及。",
+    a: "会售罄的是指定日期与时段的那几个：东京迪士尼（指定日期，门口完全不卖票）、两座 teamLab 美术馆（指定时段）、SHIBUYA SKY 的日落时段，以及日本环球影城（2025 年 5 月起当天门口不再售票）。其他大部分的景点与神社，当天再决定都来得及。",
   },
   {
-    q: "为什么日本官方售票网站刷不过我的海外信用卡？",
-    a: "好几个日本景点的付款页对海外发行的信用卡处理得不干净——涩谷SKY 自 2024 年 7 月起就是如此，东京迪士尼也经常拒绝。这就是为什么从海外订票时走售票平台常常比较顺：它给你的是看得懂、海外卡刷得过的结账流程，而不是更便宜的票。",
+    q: "为什么我的海外信用卡无法在日本官方售票网站付款？",
+    a: "好几个日本景点的购票网站的支付系统对境外发行的信用卡兼容性不佳——SHIBUYA SKY 自 2024 年 7 月起就是如此，东京迪士尼也经常拒绝。这就是为什么从海外订票时，通过第三方售票平台预订往往更顺利：付款流程易于操作，也支持境外信用卡，而不是票价更便宜。",
   },
   {
     q: "这些攻略上的票价是哪里来的？",
-    a: `每一个价格都读自场馆自己的网站——铁路公司、场馆、售票网站——并且每一页都标示读取的日期。本站目前已核查 ${attractionPrices.length} 项日本景点、主题乐园、通票与一日游景点的入场费用，最近一次核查是 ${zhDateLabel(latestChecked())}。简体中文版与英文版用的是同一组数据、同一个核查日期，中文页不会出现英文页没有的数字。`,
+    a: `每项票价均来自相关运营方的官方网站——铁路公司、场馆、售票网站——并且每一页都标示读取的日期。本站目前已核查 ${attractionPrices.length} 项日本景点、主题乐园、通票与一日游景点的入场费用，最近一次核查是 ${zhDateLabel(latestChecked())}。简体中文版与英文版用的是同一组数据、同一个核查日期，中文页不会出现英文页没有的数字。`,
   },
   {
     q: "简体中文版只有这几页吗？",
@@ -175,7 +175,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
             日本景点门票价格 2026：<br />预约指南、官方票价与一日游
           </h1>
           <p className={styles.heroSubtitle}>
-            会售罄的那几张票、从海外行得通的购票渠道，以及每一个价格的核查日期。
+            哪些门票容易售罄、哪些渠道支持境外购票，以及每一个价格的核查日期。
           </p>
           <div className={styles.heroBadges}>
             {["官方票价", "附核查日期", `${editionGuideCount("zh-cn")} 篇简体中文攻略`].map((t) => (
@@ -192,10 +192,10 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>日本景点门票价格（2026）</strong>：涩谷SKY 网上购票 ¥2,700（15:00 前入场）／¥3,400（15:00
+            <strong>日本景点门票价格（2026）</strong>：SHIBUYA SKY 网上购票 ¥2,700（15:00 前入场）／¥3,400（15:00
             起），teamLab Planets ¥3,800 起，teamLab 无界 ¥3,400 起，东京迪士尼一日护照 ¥8,900 起；日本环球影城按日期定价，结账时才显示当天价格。
-            <strong>必须提前在网上订的</strong>是两间 teamLab（指定时段）、东京迪士尼（门口不卖票）与日本环球影城（当天门口不售票），涩谷SKY
-            只有日落时段需要早订。票价读自各官网：涩谷SKY 与 teamLab Planets 于 2026 年 11 月 6 日、东京迪士尼于 10 月 28 日、teamLab
+            <strong>必须提前在网上预订的</strong>是两座 teamLab 美术馆（指定时段）、东京迪士尼（门口不卖票）与日本环球影城（当天门口不售票），SHIBUYA SKY
+            只有日落时段需要早订。票价均来自各官方网站：SHIBUYA SKY 与 teamLab Planets 于 2026 年 11 月 6 日、东京迪士尼于 10 月 28 日、teamLab
             无界于 10 月 9 日核查。
           </p>
         </section>
@@ -204,12 +204,12 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
           <span className={styles.sectionLabel}>先看这个</span>
           <h2 className={styles.sectionTitle}>日本的门票，问题不在价格</h2>
           <p className={styles.bodyText}>
-            日本几个最有名的景点，门口是买不到票的。teamLab、东京迪士尼、日本环球影城与涩谷SKY 的日落场，
-            全都在网上销售指定日期与时段的票，热门时段数周前就没了——迪士尼的情况更极端，完全没有当日票。
+            日本几个最有名的景点，到了现场也买不到门票。teamLab、东京迪士尼、日本环球影城与 SHIBUYA SKY 的日落时段，
+            全都在网上销售指定日期与时段的票，热门时段的门票提前数周就会售罄——迪士尼的情况更极端，完全没有当日票。
           </p>
           <p className={styles.bodyText}>
-            有两件事特别容易让旅客踩坑：官方网站有时刷不过海外发行的信用卡，而搜索结果里排名很前面的转售页面，
-            常常是入场时无效的票。这些攻略写的是官方票价、从海外行得通的购票渠道，以及该什么时候订。
+            有两件事特别容易让旅客踩坑：官方网站有时无法使用海外发行的信用卡付款，而搜索结果里排名很前面的转售页面，
+            常常是入场时无效的票。这些攻略写的是官方票价、支持境外购票的渠道，以及该什么时候订。
           </p>
           <p className={styles.bodyText}>
             日本也有很多地方完全不需要这些。京都多数知名寺院可以直接走进去，奈良公园免费，
@@ -268,8 +268,8 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
         </section>
 
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>落地那天</span>
-          <h2 className={styles.sectionTitle}>两件先放进口袋的事</h2>
+          <span className={styles.sectionLabel}>抵达日本当天</span>
+          <h2 className={styles.sectionTitle}>出发前先准备好的两样东西</h2>
           <p className={styles.bodyText}>
             过海关之后最先用到的两样东西：手机上网，以及市区交通。打开商品页看目前的方案与价格。
           </p>

@@ -146,7 +146,7 @@ const COPY: Record<Locale, Copy> = {
     hotspot: "所有日本方案皆可分享熱點。",
     from: "{price} 起（{plan}）。",
     orderNote:
-      "排序理由：{simbye}；Klook eSIM 與你的其他 Klook 訂單放在同一個帳號；Airalo 用自家 App 安裝並提供線上客服；Sakura Mobile 有附日本電話號碼的方案可選。價格來自每日價格查核，最近一次為 {date}。",
+      "排序理由：{simbye}；Klook eSIM 可與你的其他 Klook 訂單在同一個帳號中管理；Airalo 可透過自家 App 安裝，並提供線上客服；Sakura Mobile 有附日本電話號碼的方案可選。價格來自每日價格查核，最近一次為 {date}。",
     orderLowest: "Simbye 是我們價格資料中方案價格最低的",
     orderNetworks: "Simbye 標示涵蓋日本四家電信線路",
     insuranceName: "旅遊保險",

@@ -194,7 +194,7 @@ const steps = [
   },
   {
     title: "先定票价档位，再选时段",
-    desc: "15 点前入场 ¥2,700，15 点起入场 ¥3,400。日落和夜景都在较贵的那一档，所以没有便宜的日落时段。先决定想看日景、日落还是夜景，再选时间。",
+    desc: "15 点前入场 ¥2,700，15 点起入场 ¥3,400。日落和夜景都在较贵的那一档，所以没有便宜的日落时段。先决定想看白天的景色、日落还是夜景，再选时间。",
   },
   {
     title: "网上预订，不要到窗口购买",
@@ -202,11 +202,11 @@ const steps = [
   },
   {
     title: "持境外信用卡的话，可使用第三方平台",
-    desc: "自 2024 年 7 月起，SHIBUYA SKY 官网对许多境外发行的信用卡支付不成功。Klook 支持境外信用卡，购票和支付流程容易理解，并标明入场前 24 小时可免费取消，面对东京多变的天气，这是很实用的保障。",
+    desc: "自 2024 年 7 月起，许多境外发行的信用卡无法在 SHIBUYA SKY 官网成功付款。Klook 支持境外信用卡，购票和支付流程容易理解，并标明入场前 24 小时可免费取消，面对东京多变的天气，这是很实用的保障。",
   },
   {
-    title: "日落时段请提前 30～60 分钟到",
-    desc: "留出时间过入口、把随身物品放进储物柜（屋顶是开放式的，风很大），在光线变化之前先站好位置。",
+    title: "请比预约的日落时段提前 30～60 分钟到达",
+    desc: "留出时间完成入场手续，并将随身物品存入储物柜（屋顶是开放式的，风很大），在光线变化之前先站好位置。",
   },
 ];
 
@@ -233,7 +233,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "SHIBUYA SKY 哪个时段最先售罄？",
-    a: "日落时段，而且远远领先：这是唯一能一次看到白天、黄金时刻与夜景的时段；东京的日落时间从 12 月中旬的 16:29 到 6 月中旬的 18:58（日本国立天文台，2026 年），所以最抢手的时段每个月都不一样。白天时段最从容。夜间时段则是常见的备选：同样是 ¥3,400，竞争少得多，看到的是亮灯的城市而不是地平线。",
+    a: "日落时段，而且远远领先：这是唯一能一次看到白天、黄金时刻与夜景的时段；东京的日落时间从 12 月中旬的 16:29 到 6 月中旬的 18:58（日本国立天文台，2026 年），所以最抢手的时段每个月都不一样。白天时段最容易订到。夜间时段则是常见的备选：同样是 ¥3,400，竞争少得多，看到的是亮灯的城市而不是地平线。",
   },
   {
     q: "SHIBUYA SKY 门票可以退改吗？",
@@ -241,7 +241,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "可以用境外信用卡买 SHIBUYA SKY 门票吗？",
-    a: "在 SHIBUYA SKY 官网上经常无法支付：自 2024 年 7 月起，官网对许多境外发行的信用卡支付不成功。可靠的替代方案是 Klook 这类第三方平台：支持境外信用卡，购票和支付流程容易理解，提供电子票，并标明入场前 24 小时可免费取消。",
+    a: "在 SHIBUYA SKY 官网上经常无法支付：自 2024 年 7 月起，许多境外发行的信用卡无法在官网成功付款。可靠的替代方案是 Klook 这类第三方平台：支持境外信用卡，购票和支付流程容易理解，提供电子票，并标明入场前 24 小时可免费取消。",
   },
   {
     q: "SHIBUYA SKY 有多高？能看到什么？",
@@ -309,7 +309,7 @@ const dayTripPrep: KlookTripPrepItem[] = [
   withKlookLocale(shibuyaSkyDayTripPrep[2], LOCALE, {
     label: "东京夜间酒吧巡游导览（新宿／涩谷）",
     ctaLabel: "查看夜间导览 →",
-    why: "连新宿一起逛的版本，适合夜间场：观景台夜间时段最容易订到，看完之后这个晚上还有地方可去。",
+    why: "还能顺道逛新宿的路线，适合夜间时段：观景台夜间时段最容易订到，看完之后这个晚上还有地方可去。",
   }),
   withKlookLocale(shibuyaSkyDayTripPrep[3], LOCALE, {
     label: "涩谷美食与文化半日步行导览",
@@ -378,8 +378,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             SHIBUYA SKY（涩谷天空）门票（2026）：<br />票价、开放时间与日落时段
           </h1>
           <p className={styles.heroSubtitle}>
-            东京最好的露天观景体验，位于涩谷十字路口上方 229 米。两档票价，提前两周开放预订，
-            以及一个确实会售罄的时段。
+            东京最好的露天观景体验，位于涩谷十字路口上方 229 米。票价分为两档，提前两周开放预订，
+            还有一个真的会售罄的热门时段。
           </p>
           <div className={styles.heroBadges}>
             {[`更新于 ${updatedLabel}`, "官方票价已核查", "日落时段开售时间", "与晴空塔、东京铁塔比较"].map((t) => (
@@ -404,7 +404,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             6～12 岁儿童票 ¥1,200，仅在窗口售票；学龄前儿童免费入场。可以在运营方官网或 Klook 这类第三方平台购买——自
-            2024 年 7 月起，官网对许多境外发行的信用卡支付不成功。票价依据涩谷 Scramble Square 2025 年 2 月 27 日发布的票价调整公告
+            2024 年 7 月起，许多境外发行的信用卡无法在官网成功付款。票价依据涩谷 Scramble Square 2025 年 2 月 27 日发布的票价调整公告
             （核查日期 {CHECKED}）；票价、开放时间与停留规定已于 {LAST_CHECKED} 对照运营方官网与东京都官方旅游网站重新核查。
           </p>
         </section>
@@ -508,7 +508,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="同一天要订的"
           heading="和 SHIBUYA SKY 门票一起预订的项目"
-          intro="SHIBUYA SKY 的参观大约只占一天中的一小时。同一天通常还需要这五项：看完之后的夜晚、之前的白天、中间的交通、手机流量，以及从机场进市区。"
+          intro="参观 SHIBUYA SKY 大约只需要一小时。同一天通常还需要这五项：看完之后的夜晚、之前的白天、中间的交通、手机流量，以及从机场进市区。"
           items={sameDayPrep}
         />
 
@@ -563,7 +563,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>SHIBUYA SKY 需要提前预约吗？</h2>
           <p className={styles.bodyText}>
             想看日落的话，需要，而且热门时段售罄的时间比多数人以为的更早。每个日期在
-            <strong>整整两周前的日本时间 00:00</strong> 开售，也就是北京时间前一天晚上 23:00。热门日期的日落时段就是最先售罄的场次，
+            <strong>整整两周前的日本时间 00:00</strong> 开售，也就是北京时间前一天晚上 23:00。热门日期的日落时段总是最先售罄，
             所以实用的原则是：在目标日期开售时尽早进入购票页面下单，而不是出发前一周才订。白天或夜间时段的选择余地大得多，
             但网上预订每人仍省 ¥300。
           </p>
@@ -590,7 +590,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             列出两个购票渠道，是因为一边售罄的时段，另一边不一定也售罄；也因为自 2024 年 7 月起，
-            官网对许多境外发行的信用卡支付不成功：
+            许多境外发行的信用卡无法在官网成功付款：
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -605,7 +605,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>选择时段<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>SHIBUYA SKY 该订哪个时段？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            能订到就选日落时段；价格是关键就选 15 点前；日落时段售罄就选夜间时段。东京的日落时间从 12 月中旬的 16:29
+            能订到就选日落时段；更看重价格就选 15 点前；日落时段售罄就选夜间时段。东京的日落时间从 12 月中旬的 16:29
             到 6 月中旬的 18:58，所以最抢手的时段并不是一整年都一样，但它始终在 ¥3,400 那一档。
           </p>
           <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
@@ -649,7 +649,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
             <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
-              查看你的日期的日落时段 →
+              查看目标日期的日落时段 →
             </KlookLink>
             <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
           </div>
@@ -767,7 +767,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         {/* Klook tours in the same city */}
         <KlookTourPicks
           heading="同一座城市出发的一日游"
-          intro="SHIBUYA SKY 的参观只占一个晚上中的一小时，一天里其他时间都还空着。如果东京的某一天还没排好，这两个行程都能用你订门票的同一个 Klook 账号预订。"
+          intro="参观 SHIBUYA SKY 只需要晚上的一小时左右，一天里其他时间都还空着。如果东京的某一天还没排好，这两个行程都能用你订门票的同一个 Klook 账号预订。"
           tours={tourPicks}
         />
 

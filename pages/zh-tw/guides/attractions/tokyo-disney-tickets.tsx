@@ -49,9 +49,9 @@ const GYG_SLUG = "zh-tw-tokyo-disney-tickets";
 
 /** The published minimums, by the resort's own age bands. */
 const priceRows = [
-  { band: "成人（大人）", who: "18 歲以上", price: priceLabel("From ¥8,900", LOCALE) },
-  { band: "青少年（中人）", who: "12–17 歲——國中、高中年齡", price: priceLabel("From ¥7,400", LOCALE) },
-  { band: "兒童（小人）", who: "4–11 歲——學齡前與國小年齡", price: priceLabel("From ¥5,300", LOCALE) },
+  { band: "成人", who: "18 歲以上", price: priceLabel("From ¥8,900", LOCALE) },
+  { band: "青少年", who: "12–17 歲——國中、高中年齡", price: priceLabel("From ¥7,400", LOCALE) },
+  { band: "兒童", who: "4–11 歲——幼兒園及國小年齡層", price: priceLabel("From ¥5,300", LOCALE) },
   { band: "幼兒", who: "3 歲以下", price: priceLabel("Free", LOCALE) },
 ];
 
@@ -73,7 +73,7 @@ const ticketRows = [
     ticket: "After 5 護照（平日限定）",
     entry: "17:00 起",
     dates: "平日",
-    note: "時間最短、最便宜的入園方式，適合平日晚上去。",
+    note: "可遊玩時間最短、票價最低的選擇，適合平日晚上去。",
   },
   {
     ticket: "一日雙園護照（1-Day Park Hopper，期間限定）",
@@ -85,7 +85,7 @@ const ticketRows = [
     ticket: "多日護照",
     entry: "—",
     dates: "不販售",
-    note: "票種相關的 FAQ 表示，不販售涵蓋連續兩天以上的護照。",
+    note: "票種相關的 FAQ 表示，不販售涵蓋連續兩天以上的門票。",
   },
 ];
 
@@ -93,7 +93,7 @@ const ticketRows = [
 const hoursRows = [
   {
     what: "開園與閉園時間",
-    detail: "依日期而定。度假區把時間公布在自家的營運行事曆上，而不是固定的營業時間；購票畫面也會顯示你所選日期的時間。",
+    detail: "依日期而定。度假區把時間公布在自家的園區營運時間表上，而不是固定的營業時間；購票畫面也會顯示你所選日期的時間。",
   },
   {
     what: "時間提前多久公布",
@@ -101,7 +101,7 @@ const hoursRows = [
   },
   {
     what: "這對買票代表什麼",
-    detail: "你的日期大約在兩個月前開賣，那時當天的營運時間早已公布好幾個月——所以請在買票前看行事曆，而不是買完才看。在 20:00 閉園的日期用 After 5 護照，就只有三小時。",
+    detail: "你要的日期大約在兩個月前開賣，那時當天的營運時間早已公布好幾個月——所以請在買票前看園區營運時間表，而不是買完才看。如果當天 20:00 閉園，After 5 護照就只能玩三小時。",
   },
   {
     what: "提前入園（Happy Entry）",
@@ -113,15 +113,15 @@ const hoursRows = [
 const sellerRows = [
   {
     where: "推薦：官網或官方 App（tokyodisneyresort.jp）",
-    best: "官網刷得過你的卡的人",
+    best: "信用卡能在官網付款的人",
     validity: "購買日一年後的同一天",
     note: "可線上變更日期與年齡區分，不收手續費、次數不限（有效期間內）——每次以新日期的價格結算。",
   },
   {
     where: "授權的海外線上旅行平台（如 Klook）",
-    best: "官網刷不過海外信用卡的旅客",
+    best: "海外信用卡無法在官網付款的旅客",
     validity: "入園日一個月後的同一天",
-    note: "接受海外卡、介面看得懂。官網顯示賣完時值得再查一次。注意有效期間較短。",
+    note: "接受海外信用卡、介面容易操作。官網顯示售罄時值得再查一次。注意有效期間較短。",
   },
   {
     where: "日本國內旅行社與便利商店",
@@ -142,7 +142,7 @@ const accessRows = [
   {
     service: "我們的建議：先用免費的預約排隊卡（Standby Pass）與入場抽選（Entry Request）",
     cost: "免費",
-    what: "預約排隊卡為需要它的設施提供回來的時間；入場抽選每天每個場館可試一次，適用於指定的遊行、表演與角色見面。付費前先用這兩項。",
+    what: "預約排隊卡為指定遊樂設施分配返回時段；入場抽選每天每個場館可試一次，適用於指定的遊行、表演與角色見面。付費前先用這兩項。",
   },
   {
     service: "迪士尼尊享卡（Disney Premier Access）",
@@ -164,7 +164,7 @@ const accessRows = [
 /** The buying window, the sell-outs and what you can and cannot undo. */
 const buyingRows = [
   {
-    q: "我的日期什麼時候開賣？",
+    q: "我要的日期什麼時候開賣？",
     a: "每天日本時間 14:00 起，開賣兩個月後同一天的票——所以 3 月 1 日入園的票，在 1 月 1 日 14:00 開賣。若那個月沒有對應的日期，則在下個月 1 日 14:00 開賣。",
   },
   {
@@ -185,11 +185,11 @@ const buyingRows = [
   },
   {
     q: "那可以改日期嗎？",
-    a: "可以，這就是現有的彈性。線上購買的票可以在有效期間內變更日期，指定入園日之前或之後都行，次數不限——每次變更都以新日期的價格結算。變更在官網或 App 上操作，不是在園區。",
+    a: "可以，能彈性調整的就只有日期。線上購買的票可以在有效期間內變更日期，指定入園日之前或之後都行，次數不限——每次變更都以新日期的價格結算。變更在官網或 App 上操作，不是在園區。",
   },
   {
-    q: "我的日期賣完了——就沒機會了嗎？",
-    a: "不一定。FAQ 表示賣完的票種可能不經預告重新開賣；而當其他遊客把票改到別的日期，他們空出來的名額會回到販售池，再次在線上販售。回頭再查一次，比想像中值得。",
+    q: "你想去的日期已售罄——就沒機會了嗎？",
+    a: "不一定。FAQ 表示賣完的票種可能不經預告重新開賣；而當其他遊客把票改到別的日期，他們釋出的名額會重新開放販售，可以再次在線上購買。回頭再查一次，比想像中值得。",
   },
 ];
 
@@ -198,11 +198,11 @@ const parkRows = [
     park: "東京迪士尼樂園",
     style: "經典的迪士尼城堡式園區：遊行、煙火、闔家同樂的設施",
     suits: "第一次來、帶年紀小的孩子、經典迪士尼迷",
-    note: "去過其他迪士尼的話，動線會很熟悉",
+    note: "去過其他迪士尼的話，園區配置會讓你感到熟悉",
   },
   {
     park: "東京迪士尼海洋",
-    style: "航海與水主題；更具東京獨有性、風格偏成人；園內供酒",
+    style: "航海與水主題；更有東京獨有的特色、風格偏成人；園內供酒",
     suits: "成人、情侶、想要不一樣體驗的回訪者",
     note: "正在慶祝 25 週年（2026 年 4 月～2027 年 3 月）",
   },
@@ -233,7 +233,7 @@ const whoFor = [
   },
   {
     title: "2026 年去？注意週年活動",
-    desc: "東京迪士尼海洋正在慶祝 25 週年，期間為 2026 年 4 月到 2027 年 3 月。週年期間的熱門日期人潮更多，而在浮動定價下，那些日期也正是貴的日期——所以你的日期在兩個月前一開賣就訂下來。",
+    desc: "東京迪士尼海洋正在慶祝 25 週年，期間為 2026 年 4 月到 2027 年 3 月。週年期間的熱門日期人潮更多，而在浮動定價下，那些日期也正是貴的日期——所以請在你要的日期於兩個月前一開賣時就購票。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2l2.4 5.4 5.6.5-4.2 3.8 1.3 5.7L12 14.8 6.9 17.4l1.3-5.7L4 7.9l5.6-.5z" />
@@ -245,22 +245,22 @@ const whoFor = [
 const steps = [
   {
     title: "先把日期與園區定下來",
-    desc: "東京迪士尼的每張票都指定日期與園區，而能在一天內兩座都去的一日雙園護照目前沒有販售。兩座園區就是兩天、兩張票。",
+    desc: "東京迪士尼的每張票都指定日期與園區，而能在一天內兩座都去的一日雙園護照目前沒有販售。若要參觀兩座園區，就必須安排兩天並分別購票。",
   },
   {
-    title: "在營運行事曆上確認那天的時間",
-    desc: "營運時間依日期而定，約五個月前公布。它決定了 After 5 護照是一整個晚上還是只有一小段，也決定煙火是否落在你的入園時間內。",
+    title: "在園區營運時間表上確認那天的時間",
+    desc: "營運時間依日期而定，約五個月前公布。它決定了 After 5 護照能玩一整個晚上，還是只能玩一小會兒，也決定煙火是否落在你的入園時間內。",
   },
   {
-    title: "兩個月前的日本時間 14:00，守在結帳畫面",
-    desc: "那就是你的日期開賣的時刻。用你自己的時區記進行事曆——東京 14:00 是台北 13:00——因為每天的名額有上限，販售可能不經預告就停止。",
+    title: "兩個月前的日本時間 14:00，準備好立刻購票",
+    desc: "那就是你要的日期開賣的時刻。用你自己的時區記進行事曆——東京 14:00 是台北 13:00——因為每天的名額有上限，販售可能不經預告就停止。",
   },
   {
     title: "海外信用卡有問題就用 Klook",
-    desc: "東京迪士尼度假區官網經常拒絕或封鎖海外發行的信用卡。Klook 是官方授權的售票通路，接受海外卡、介面看得懂，這也是許多海外旅客選它的原因。",
+    desc: "東京迪士尼度假區官網經常拒絕或封鎖海外發行的信用卡。Klook 是官方授權的售票通路，接受海外信用卡、介面容易操作，這也是許多海外旅客選它的原因。",
   },
   {
-    title: "把電子票 QR Code 綁進官方 App",
+    title: "將電子票 QR Code 綁定至官方 App",
     desc: "購票後你會拿到電子票 QR Code，可以登錄到東京迪士尼度假區官方 App——當天的園內功能也在那裡操作。出發前先設定好。",
   },
 ];
@@ -272,7 +272,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "東京迪士尼樂園門票應該在哪裡買？",
-    a: "官網刷得過你的卡的話，就在東京迪士尼度假區官網或官方 App 買：在那裡買的票有效期到購買日一年後的同一天，並可線上免手續費改日期。如果官網拒絕海外信用卡，Klook 這類授權的海外線上旅行平台也賣同樣的指定日期一日護照，但度假區 FAQ 規定這類票的有效期間較短——到入園日一個月後的同一天。兩座園區門口都不賣票。最後確認：2026-11-11。",
+    a: "如果你的信用卡能在官網付款，就在東京迪士尼度假區官網或官方 App 買：在那裡買的票有效期到購買日一年後的同一天，並可線上免手續費改日期。如果官網拒絕海外信用卡，Klook 這類授權的海外線上旅行平台也賣同樣的指定日期一日護照，但度假區 FAQ 規定這類票的有效期間較短——到入園日一個月後的同一天。兩座園區門口都不賣票。最後確認：2026-11-11。",
   },
   {
     q: "東京迪士尼樂園門票的有效期限多久？",
@@ -291,12 +291,12 @@ const faqItems: FaqItem[] = [
     a: `日期在購買時固定，但可以變更；不能退款。因個人因素取消與退款都不受理——關於惡劣天氣、地震或其他原因無法在指定日期入園的 FAQ，也指向同一條規定。線上購買的票可以在有效期間內變更日期，指定日之前或之後都行，次數不限，每次以新日期的價格結算，透過官網或 App 操作，而不是在園區。查閱於 ${CHECKED}。`,
   },
   {
-    q: "我的日期賣完了——還進得去嗎？",
+    q: "我想去的日期已售罄——還進得去嗎？",
     a: "現場買不到——賣完的日期無法入園。但度假區 FAQ 表示，賣完的園區門票可能不經預告重新開賣；而當遊客把票改到其他日期，原本的名額會在官網與官方 App 重新開放線上購買。回頭再查是值得的，授權售票通路也值得查一查。最後確認：2026-11-11。",
   },
   {
     q: "東京迪士尼樂園和迪士尼海洋該選哪一個？",
-    a: "一日護照只含一座園區，所以要選。東京迪士尼樂園是經典的城堡式園區——遊行與闔家同樂的設施，適合第一次來的人與帶小小孩的家庭。東京迪士尼海洋是航海主題，更具東京獨有性，風格偏成人，園內供酒，並正在慶祝 2026 年 4 月到 2027 年 3 月的 25 週年。第一次帶小孩去，選樂園；想要與眾不同，選海洋。",
+    a: "一日護照只含一座園區，所以要選。東京迪士尼樂園是經典的城堡式園區——遊行與闔家同樂的設施，適合第一次來的人與帶小小孩的家庭。東京迪士尼海洋是航海主題，更有東京獨有的特色，風格偏成人，園內供酒，並正在慶祝 2026 年 4 月到 2027 年 3 月的 25 週年。第一次帶小孩去，選擇迪士尼樂園；想體驗較具特色的園區，選擇迪士尼海洋。",
   },
 ];
 
@@ -325,7 +325,7 @@ const tripPrepItems = [
   withKlookLocale(tokyoDisneyTripPrep[4], LOCALE, {
     label: "Klook 日本網卡（eSIM）",
     ctaLabel: "在 Klook 查看網卡方案 →",
-    why: "你的護照是綁進東京迪士尼度假區官方 App 的 QR Code，當天的園內功能也在 App 裡操作——這些在只能等飯店 Wi-Fi 的手機上都用不了。",
+    why: "你的一日入園票（一日護照）是登錄在東京迪士尼度假區官方 App 的 QR Code，當天的園內功能也在 App 裡操作——如果只靠飯店 Wi-Fi，在園區內就無法使用這些功能。",
   }),
 ];
 
@@ -380,11 +380,11 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             東京迪士尼門票（2026）：<br />價格、在哪買、樂園與海洋怎麼選
           </h1>
           <p className={styles.heroSubtitle}>
-            指定日期的票、浮動定價、現場不賣票、不能退款。這頁說明一張護照多少錢、在哪裡買、你的日期什麼時候開賣，
+            指定日期入園、浮動票價、現場不售票、恕不退款。本頁整理一日入園票（一日護照）的票價、購買管道、你要的日期什麼時候開賣，
             以及該選哪一座園區。
           </p>
           <div className={styles.heroBadges}>
-            {[`更新於 ${updatedLabel}`, "官方票價與規定", "兩個月前開賣", "海外卡可走 Klook"].map((t) => (
+            {[`更新於 ${updatedLabel}`, "官方票價與規定", "兩個月前開賣", "海外信用卡可透過 Klook 購票"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -401,7 +401,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             2026 年<strong>東京迪士尼門票</strong>的成人一日護照 <strong>¥8,900</strong> 起，12–17 歲
             <strong>¥7,400</strong> 起，4–11 歲 <strong>¥5,300</strong> 起（3 歲以下免費），實際金額依入園日期而定。
-            兩座園區門口都不賣票，所以要在東京迪士尼度假區官網或官方 App 購買——官網刷不過你的卡時，可走 Klook 這類授權售票通路——
+            兩座園區門口都不賣票，所以要在東京迪士尼度假區官網或官方 App 購買——如果信用卡無法在官網付款，可透過 Klook 等授權售票平台購買——
             門票在<strong>兩個月前、每天日本時間 14:00</strong>開賣。
             一張票只含一個日期、一座園區：東京迪士尼樂園適合第一次去與帶小小孩的旅客，東京迪士尼海洋適合成人，並正值 25 週年（2026 年 4 月～2027 年 3 月）。
           </p>
@@ -444,7 +444,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>結論：</strong>選好園區與日期，在營運行事曆上確認那天的時間，然後在兩個月前開賣時買下。
+              <strong>結論：</strong>選好園區與日期，在園區營運時間表上確認那天的時間，然後在兩個月前開賣時買下。
               沒有退款，但線上購買的票可以不限次數改日期。如果官網拒絕你的海外信用卡，Klook 是官方授權的售票通路，
               接受海外卡，並發送可以綁進官方 App 的 QR Code。
             </p>
@@ -465,7 +465,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>2026 年東京迪士尼樂園門票多少錢？</h2>
           <p className={styles.bodyText}>
             成人 ¥8,900 起——而這個「起」字很關鍵。東京迪士尼度假區表示園區門票採浮動定價、費用依入園日期而不同，
-            所以公布的數字是最低價，不是定價。當天的實際金額，要在官方購票頁選好日期後才會出現。
+            所以公布的價格是最低票價，而非固定票價。當天的實際金額，要在官方購票頁選好日期後才會出現。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -534,8 +534,8 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            票種、入園時間與一日雙園護照目前的狀態，都是度假區自己的 FAQ 回答，查閱於 {CHECKED}。你那天有哪些護照
-            在賣，要看日期——期間限定的票會隨度假區的活動推出或結束——所以上表是票種的大致樣貌，而不是固定的清單。
+            票種、入園時間與一日雙園護照目前的狀態，都是度假區自己的 FAQ 回答，查閱於 {CHECKED}。你那天有哪些票種
+            在賣，要看日期——期間限定的票會隨度假區的活動推出或結束——所以上表是目前販售票種的概況，而不是固定的清單。
           </p>
         </section>
 
@@ -544,8 +544,8 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>營業時間</span>
           <h2 className={styles.sectionTitle}>東京迪士尼的營業時間是幾點到幾點？</h2>
           <p className={styles.bodyText}>
-            沒有固定的營業時間可以列：度假區依日期設定，並約在五個月前公布在自家的營運行事曆上。這比門票開賣還早，
-            這正是有用的地方——等你的日期開賣時，你已經能看到園區那天開多久。
+            沒有固定的營業時間可以列：度假區依日期設定，並約在五個月前公布在自家的園區營運時間表上。這比門票開賣還早，
+            這正是有用的地方——等你要的日期開賣時，你已經能看到園區那天開多久。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -580,7 +580,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>購買管道</span>
           <h2 className={styles.sectionTitle}>東京迪士尼樂園門票應該在哪裡買？</h2>
           <p className={styles.bodyText}>
-            官網刷得過你的卡，就在東京迪士尼度假區官網或官方 App 買——在那裡買的票從購買日起有效一年。官網拒絕海外信用卡的話，
+            如果你的信用卡能在官網付款，就在東京迪士尼度假區官網或官方 App 買——在那裡買的票從購買日起有效一年。官網拒絕海外信用卡的話，
             Klook 這類授權的海外售票通路也賣同樣的指定日期門票，有效期到入園日一個月後。
           </p>
           <div className={styles.tableWrap}>
@@ -612,7 +612,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={DISNEY_TICKET_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
-              官網刷不過你的卡？在 Klook 查看 →
+              信用卡無法在官網付款？在 Klook 查看 →
             </KlookLink>
           </div>
         </section>
@@ -622,9 +622,9 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>開賣時間</span>
           <h2 className={styles.sectionTitle}>東京迪士尼門票一定要提前買嗎？</h2>
           <p className={styles.bodyText}>
-            是的，而且度假區直接拿掉了其他選項：東京迪士尼樂園與東京迪士尼海洋現場完全不賣園區門票。你的日期會在
-            <strong>兩個月前、每天日本時間 14:00</strong> 開賣——也就是台北時間 13:00——每天的名額有上限，賣完後
-            販售可能不經預告就停止。遇到週末、日本國定假日或迪士尼海洋 25 週年期間的日期，那一刻就是全部。
+            是的，度假區沒有提供其他購買方式：東京迪士尼樂園與東京迪士尼海洋現場完全不賣園區門票。入園日前兩個月的
+            <strong>日本時間 14:00</strong> 開放購票——也就是台北時間 13:00——每天的名額有上限，賣完後
+            販售可能不經預告就停止。遇到週末、日本國定假日或迪士尼海洋 25 週年期間的日期，開賣那一刻就是搶票的關鍵。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -648,8 +648,8 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            因為名額除了按日分配、也按售票通路分配，在一個管道賣完的日期，值得到另一個管道查查看——而官方結帳拒絕
-            海外信用卡時，售票平台也是解法：
+            因為名額除了按日分配、也按售票通路分配，在一個管道賣完的日期，值得到另一個管道查查看——而官網無法使用
+            海外信用卡付款時，也可以改用售票平台：
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={DISNEY_TICKET_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -664,8 +664,8 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>樂園 vs 海洋</span>
           <h2 className={styles.sectionTitle}>迪士尼樂園還是迪士尼海洋——該選哪一座？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            一張票、一座園區——而一日雙園護照沒有販售，所以這是真正的選擇，不是先後順序。經典城堡式園區與年紀小的孩子，
-            選樂園；想去別處沒有的園區、又碰上它的 25 週年，選海洋。
+            一張票、一座園區——而一日雙園護照沒有販售，因此只能選其中一座，而不是決定先去哪一座。經典城堡式園區與年紀小的孩子，
+            選樂園；想體驗其他地方沒有的迪士尼園區、又碰上它的 25 週年，選海洋。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -714,7 +714,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            不管選哪一座，都請先規劃路線——度假區離東京市中心要搭一段電車。我們的{" "}
+            不管選哪一座，都請先規劃路線——從東京市中心前往度假區需要搭一段電車。我們的{" "}
             <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--red)", fontWeight: 600 }}>
               東京交通攻略（英文）
             </Link>{" "}
@@ -781,7 +781,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         <KlookTripPrep
           label="園區日的前後"
           heading="要住在東京迪士尼度假區附近嗎？"
-          intro="如果你的日期是週末或週年期間，答案是要——度假區從東京站搭 JR 京葉線約 15 到 20 分鐘，開園前要通勤一次、夜間遊行後再通勤一次。住在舞濱或再遠一站，就把一天的頭尾都省回來了。"
+          intro="如果入園日期是週末或週年活動期間，值得住在度假區附近——度假區從東京站搭 JR 京葉線約 15 到 20 分鐘，開園前要通勤一次、夜間遊行後再通勤一次。住在舞濱或鄰近一站，就能省下早晚往返的時間。"
           items={tripPrepItems}
         />
 
@@ -791,16 +791,16 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>可以用海外信用卡買東京迪士尼門票嗎？</h2>
           <p className={styles.bodyText}>
             在官網上常常不行。東京迪士尼度假區官網是主要的購票管道，但它經常拒絕或封鎖海外發行的信用卡——這是國際旅客
-            反覆遇到的頭痛問題；而當你要買的東西只在兩個月前的某一刻開賣時，問題就更嚴重。
+            經常遇到的棘手問題；而當你要買的東西只在兩個月前的某一刻開賣時，問題就更嚴重。
           </p>
           <p className={styles.bodyText}>
-            <strong>Klook 是東京迪士尼度假區官方授權的售票通路。</strong>它接受海外卡、介面看得懂，並發送可以
-            登錄到東京迪士尼度假區官方 App 的電子票 QR Code。這個組合——支援海外卡，加上可以綁進 App 的 QR——就是它成為
-            海外旅客標準解法的原因。如果你同時在安排東京其他行程，我們的{" "}
+            <strong>Klook 是東京迪士尼度假區官方授權的售票通路。</strong>它接受海外信用卡、介面容易操作，並發送可以
+            登錄到東京迪士尼度假區官方 App 的電子票 QR Code。正因為這個組合——支援海外卡，加上可以綁進 App 的 QR——它成了
+            海外旅客常用的解決方式。如果你同時在安排東京其他行程，我們的{" "}
             <Link href="/zh-tw/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
               澀谷SKY 門票攻略
             </Link>{" "}
-            講的是另一個指定日期、透過售票平台比較好訂的預約。
+            介紹的是另一種指定日期、透過售票平台比較容易購買的門票。
           </p>
         </section>
 
@@ -811,15 +811,15 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         {/* Klook tours in the same city. */}
         <KlookTourPicks
           heading="同一座城市出發的一日遊"
-          intro="去園區就是一整天，所以多數人是把迪士尼排進東京這一週，而不是把一週排進迪士尼。下面兩個行程可以填掉其中一個非園區日，而且和門票在同一個 Klook 帳號裡結帳。"
+          intro="去園區就是一整天，所以多數人會把迪士尼安排在東京行程中的其中一天。下面兩個行程可以填掉其中一個非園區日，而且和門票在同一個 Klook 帳號裡結帳。"
           tours={tourItems}
         />
 
         {/* A second authorized-reseller route. */}
         <GygCompare
           slug={GYG_SLUG}
-          heading="GetYourGuide 上的同款護照"
-          intro="東京迪士尼現場不賣票，賣完的日期就進不去，所以在一個售票平台賣完的日期是真正的死路。GetYourGuide 也有販售一日護照，迪士尼樂園與迪士尼海洋都有——決定日期前，值得多開一個分頁查查看。"
+          heading="GetYourGuide 上的同款一日護照"
+          intro="東京迪士尼現場不賣票，賣完的日期就進不去，所以在某個售票平台已售罄的日期，就無法再從該平台購得。GetYourGuide 也有販售一日護照，迪士尼樂園與迪士尼海洋都有——決定日期前，值得多開一個分頁查查看。"
           listings={[gygTokyoDisneyResort, gygTokyoDisneySea]}
         />
 
@@ -844,9 +844,9 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         {/* CTA Banner */}
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>先把東京迪士尼的日期鎖住</h2>
+            <h2 className={styles.ctaBannerTitle}>先買好東京迪士尼的入園門票</h2>
             <p className={styles.ctaBannerDesc}>
-              現場不賣票，賣完的日期就進不去，而你的日期在兩個月前的日本時間 14:00 開賣。Klook 是官方授權的售票通路，
+              現場不賣票，賣完的日期就進不去，而你要的日期在兩個月前的日本時間 14:00 開賣。Klook 是官方授權的售票通路，
               接受海外信用卡，並發送可以登錄到官方 App 的 QR Code。
             </p>
             <div className={styles.pickCtaRow}>

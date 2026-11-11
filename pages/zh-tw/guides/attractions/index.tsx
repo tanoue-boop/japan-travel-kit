@@ -22,7 +22,7 @@ import { JSONLD_LANG, TRANSLATED_PAGES, editionGuideCount, editionPageCount, zhD
 const ROUTE = "/zh-tw/guides/attractions";
 const TITLE = "日本景點門票價格 2026｜澀谷SKY、teamLab、迪士尼預約指南";
 const DESC =
-  "日本景點門票價格 2026：澀谷SKY ¥2,700 起、teamLab ¥3,400 起、東京迪士尼 ¥8,900 起，哪些必須提前訂、在哪裡訂。";
+  "日本景點門票價格 2026：澀谷SKY ¥2,700 起、teamLab ¥3,400 起、東京迪士尼 ¥8,900 起，哪些必須提前購票、在哪裡購票。";
 
 // The hub is the entry point for the ten-page 繁體中文 trial, so it lists exactly
 // those ten and nothing else — a hub that links mostly to English pages is not a
@@ -62,19 +62,19 @@ const groups: ZhHubGroup[] = [
     // and the English hub uses the same key for the same group.
     key: "daytrips",
     label: "一日遊",
-    desc: "整天出城的行程，要選的是哪一條路線，而不是哪一張票。",
+    desc: "離開市區一整天的行程，要選的是哪一條路線，而不是哪一張票。",
     routes: ["/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo"],
   },
   {
     key: "cities",
     label: "城市攻略",
-    desc: "東京哪些要先訂票、哪些可以直接去。",
+    desc: "東京哪些要先購票、哪些可以直接去。",
     routes: ["/zh-tw/guides/attractions/things-to-do-tokyo"],
   },
   {
     key: "prep",
     label: "行前準備",
-    desc: "落地那天就會用到的兩件事：機場到市區的交通，以及手機上網。",
+    desc: "抵達日本當天就會用到的兩樣東西：機場到市區的交通，以及手機上網。",
     routes: [
       "/zh-tw/guides/transport/tokyo-airport-transfer",
       "/zh-tw/guides/esim/best-esim-japan",
@@ -85,7 +85,7 @@ const groups: ZhHubGroup[] = [
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
   "/zh-tw/guides/attractions/shibuya-sky-tickets":
-    "澀谷十字路口上方的開放式屋頂。官方票價、為什麼日落場最先賣完，以及海外信用卡刷不過時怎麼訂。",
+    "澀谷十字路口上方的開放式屋頂。官方票價、為什麼日落時段最先售罄，以及海外信用卡無法在官網付款時怎麼購票。",
   "/zh-tw/guides/attractions/teamlab-planets-tickets":
     "豐洲的 Planets：官方票價、30 分鐘入場時段、赤腳涉水區該穿什麼，以及和無界的完整比較。",
   "/zh-tw/guides/attractions/teamlab-borderless-tickets":
@@ -95,9 +95,9 @@ const BLURBS: Record<string, string> = {
   "/zh-tw/guides/attractions/usj-tickets-express-pass":
     "現在一律線上購票，超級任天堂世界需要指定時間入園。Studio Pass 的分級、快速通關 4／7／8 怎麼挑。",
   "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo":
-    "四種行程比較：只跑富士山還是加箱根、Subaru Line 五合目是什麼，以及一天要多久。",
+    "四種行程比較：只去富士山，還是連箱根一起玩、Subaru Line 五合目是什麼，以及一天要多久。",
   "/zh-tw/guides/attractions/things-to-do-tokyo":
-    "真正會賣完的只有四、五樣。這份短名單說哪些要提前多久訂，哪些可以吃早餐時再決定。",
+    "真正會賣完的只有四、五樣。這份短名單說哪些要提前多久購票，哪些可以吃早餐時再決定。",
   "/zh-tw/guides/transport/tokyo-airport-transfer":
     "成田與羽田進市區的每個選項，比價格、時間與方便度，附 2026 年車資與依飯店位置的建議。",
   "/zh-tw/guides/esim/best-esim-japan":
@@ -111,16 +111,16 @@ const hubRoutes = groups.flatMap((g) => g.routes);
 
 const faqItems: FaqItem[] = [
   {
-    q: "日本哪些景點門票一定要提前訂？",
-    a: "會賣完的是指定日期與時段的那幾個：東京迪士尼（指定日期，門口完全不賣票）、兩間 teamLab 美術館（指定時段）、澀谷SKY 的日落場，以及日本環球影城（2025 年 5 月起當天門口不再售票）。其他大部分的景點與神社，當天再決定都來得及。",
+    q: "日本哪些景點門票一定要提前購買？",
+    a: "會賣完的是指定日期與時段的那幾個：東京迪士尼（指定日期，門口完全不賣票）、兩間 teamLab 美術館（指定時段）、澀谷SKY 的日落時段，以及日本環球影城（2025 年 5 月起當天門口不再售票）。其他大部分的景點與神社，當天再決定都來得及。",
   },
   {
-    q: "為什麼日本官方售票網站刷不過我的海外信用卡？",
-    a: "好幾個日本景點的付款頁對海外發行的信用卡處理得不乾淨——澀谷SKY 自 2024 年 7 月起就是如此，東京迪士尼也經常拒絕。這就是為什麼從海外訂票時走售票平台常常比較順：它給你的是看得懂、海外卡刷得過的結帳流程，而不是更便宜的票。",
+    q: "為什麼我的海外信用卡無法在日本官方售票網站付款？",
+    a: "好幾個日本景點的付款系統無法正常處理海外發行的信用卡——澀谷SKY 自 2024 年 7 月起就是如此，東京迪士尼也經常拒絕。這就是為什麼從海外購票時，透過售票平台往往比較順利：這些平台提供容易操作、也能使用海外信用卡付款的結帳流程，而不是更便宜的票。",
   },
   {
     q: "這些攻略上的票價是哪裡來的？",
-    a: `每一個價格都讀自業者自己的網站——鐵道公司、場館、售票網站——並且每一頁都標示讀取的日期。本站目前已查核 ${attractionPrices.length} 項日本景點、主題樂園、通票與一日遊景點的入場費用，最近一次查核是 ${zhDateLabel(latestChecked())}。繁體中文版與英文版用的是同一組資料、同一個查核日，中文頁不會出現英文頁沒有的數字。`,
+    a: `每項價格均取自業者官方網站——鐵道公司、場館、售票網站——並且每一頁都標示查核日期。本站目前已查核 ${attractionPrices.length} 項日本景點、主題樂園、通票與一日遊景點的入場費用，最近一次查核是 ${zhDateLabel(latestChecked())}。繁體中文版與英文版用的是同一組資料、同一個查核日，中文頁不會出現英文頁沒有的數字。`,
   },
   {
     q: "繁體中文版只有這幾頁嗎？",
@@ -175,7 +175,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
             日本景點門票價格 2026：<br />預約指南、官方票價與一日遊
           </h1>
           <p className={styles.heroSubtitle}>
-            會賣完的那幾張票、海外旅客可用的購票管道，以及每一個價格的查核日期。
+            容易售罄的熱門門票、海外旅客可用的購票管道，以及每一個價格的查核日期。
           </p>
           <div className={styles.heroBadges}>
             {["官方票價", "附查核日期", `${editionGuideCount("zh-tw")} 篇繁體中文攻略`].map((t) => (
@@ -194,8 +194,8 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
           <p className={styles.bodyText}>
             <strong>日本景點門票價格（2026）</strong>：澀谷SKY 網路購票 ¥2,700（15:00 前入場）／¥3,400（15:00
             起），teamLab Planets ¥3,800 起，teamLab 無界 ¥3,400 起，東京迪士尼一日護照 ¥8,900 起；日本環球影城依日期定價，結帳時才顯示當天價格。
-            <strong>必須提前在網路上訂的</strong>是兩間 teamLab（指定時段）、東京迪士尼（現場不賣票）與日本環球影城（當天現場不售票），澀谷SKY
-            只有日落時段需要早訂。票價讀自各官網：澀谷SKY 與 teamLab Planets 於 2026 年 11 月 6 日、東京迪士尼於 10 月 28 日、teamLab
+            <strong>必須提前在網路上購票的</strong>是兩間 teamLab（指定時段）、東京迪士尼（現場不賣票）與日本環球影城（當天現場不售票），澀谷SKY
+            只有日落時段需要提早購票。票價資料取自各官方網站：澀谷SKY 與 teamLab Planets 於 2026 年 11 月 6 日、東京迪士尼於 10 月 28 日、teamLab
             無界於 10 月 9 日查核。
           </p>
         </section>
@@ -204,12 +204,12 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
           <span className={styles.sectionLabel}>先看這個</span>
           <h2 className={styles.sectionTitle}>日本景點門票：重點不在價格</h2>
           <p className={styles.bodyText}>
-            日本幾個最熱門的景點不提供現場售票。teamLab、東京迪士尼、日本環球影城與澀谷SKY 的日落場，
+            日本幾個最熱門的景點不提供現場售票。teamLab、東京迪士尼、日本環球影城與澀谷SKY 的日落時段，
             全都在線上販售指定日期與時段的票，熱門時段往往數週前就會售罄——迪士尼的情況更極端，完全沒有當日票。
           </p>
           <p className={styles.bodyText}>
             有兩件事特別容易讓旅客踩雷：日本官方售票網站有時無法使用海外發行的信用卡付款，而搜尋結果裡排名很前面的轉售頁面，
-            常常是入場時無效的票。這些攻略寫的是官方票價、海外旅客可用的購票管道，以及該什麼時候訂。
+            常常是入場時無效的票。這些攻略寫的是官方票價、海外旅客可用的購票管道，以及該什麼時候購票。
           </p>
           <p className={styles.bodyText}>
             日本也有很多地方完全不需要這些。京都多數知名寺院可直接入內參觀，奈良公園免費，
@@ -264,8 +264,8 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
         </section>
 
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>落地那天</span>
-          <h2 className={styles.sectionTitle}>兩件先放進口袋的事</h2>
+          <span className={styles.sectionLabel}>抵達當天</span>
+          <h2 className={styles.sectionTitle}>出發前先準備好的兩樣東西</h2>
           <p className={styles.bodyText}>
             通關之後最先用到的兩樣東西：手機上網，以及市區交通。打開商品頁看目前的方案與價格。
           </p>
