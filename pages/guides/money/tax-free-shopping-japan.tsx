@@ -39,6 +39,15 @@ const WISE_URL = wiseLink("tax-free-shopping-japan", WISE_CARD_URL);
  */
 const OFFICIAL_CHECKED = "28 Oct 2026";
 
+/**
+ * The day the traveller-facing refund rules were re-read for the November 2026 rewrite:
+ * the Japan Tourism Agency's traveller special page (page01_000001_00028) and its
+ * refund-method FAQ for shops (page01_000001_00024 — Q15 on unclaimed refunds, Q17 on
+ * fees, Q19 on refund methods), plus its departure-procedure page (page01_000001_00050)
+ * for seaports and cruises.
+ */
+const REFUND_RECHECKED = "11 Nov 2026";
+
 /** The day the refund method starts applying — by purchase date, not travel date. */
 const REFUND_START = "1 November 2026";
 
@@ -139,31 +148,37 @@ const airportSteps = [
   {
     when: "1 · On arrival at the terminal, before the airline desk",
     where: "International departure lobby",
+    need: "Every tax-free item from each receipt, in your hand luggage",
     what: "Keep the tax-free goods with you in hand luggage. The Japan Tourism Agency's FAQ is explicit that checked baggage cannot be retrieved once you have handed it over, so this has to happen first.",
   },
   {
     when: "2 · The scan",
     where: "A tax-free procedure terminal (kiosk or electronic terminal) in the lobby",
+    need: "Your original passport — the same one shown in the shop",
     what: "Present your passport at the terminal. It reads your purchase records from the national system — nothing is stamped or stapled, and no paper form is filled in.",
   },
   {
     when: "3 · The result on screen",
     where: "Same terminal",
+    need: "Nothing further",
     what: "Green means no customs inspection is required and the procedure ends there. Red means an inspection is required.",
   },
   {
     when: "4 · Only if the screen is red",
     where: "The customs inspection area",
+    need: "The goods, unopened and unused, and your passport",
     what: "Show the goods to a customs officer. This is the step with no predictable length, which is the reason to be at the airport earlier than usual on a shopping-heavy departure.",
   },
   {
     when: "5 · Then, and not before",
-    where: "Airline check-in desk",
+    where: "Airline check-in desk (or the ship's embarkation desk at a seaport)",
+    need: "Your bags, now free to check in",
     what: "Check your bags. The confirmation has to be complete before the boarding or embarkation process, so there is no going back for it after security either.",
   },
   {
     when: "6 · The refund",
     where: "From the shop, or a refund operator it has contracted",
+    need: "The refund method you registered in the shop when you paid",
     what: "Paid after the customs confirmation establishes the tax-free sale. The method is the shop's choice; see the table below.",
   },
 ];
@@ -198,6 +213,35 @@ const refundMethods = [
   {
     method: "When it arrives",
     detail: "Not officially published. The FAQ says the refund follows the customs confirmation, and Japan's consumption tax law sets no deadline for the payout — which is why the wait varies from shop to shop.",
+  },
+];
+
+/**
+ * (4b) Fees and timing — the two questions the official pages answer only in part.
+ * Every row is what the Japan Tourism Agency's refund-method FAQ for shops states
+ * (Q15, Q17, Q19), re-read on REFUND_RECHECKED; where it leaves a point to the shop,
+ * the row says so instead of quoting a retailer's own promise.
+ */
+const refundFeeRows = [
+  {
+    who: "The government",
+    fee: "None",
+    detail: "The FAQ states that the government does not collect any fee for the refund procedure (Q17).",
+  },
+  {
+    who: "A refund operator the shop has contracted",
+    fee: "Possible — set by the shop and operator",
+    detail: "The FAQ states there is no rule on whether the operator's refund fee is borne by the traveller or by the shop (Q17). Ask at the counter whether anything is deducted before you pay.",
+  },
+  {
+    who: "The tax-free shop itself",
+    fee: "Its own decision",
+    detail: "Refund methods are not fixed by rule either (Q19), so the method, and whether a fee comes with it, is the shop's to state at the point of sale.",
+  },
+  {
+    who: "How long the refund takes",
+    fee: "No official time limit",
+    detail: "The refund follows the customs confirmation at departure. No legal deadline sets how fast it is paid, and a shop may set its own cut-off after which an unclaimed refund is no longer paid (Q15) — so claim through the method you registered promptly.",
   },
 ];
 
@@ -401,6 +445,22 @@ const faqItems = [
     a: `Spend ¥5,000 or more before tax in one shop on one day and show your original passport, and Japan's consumption tax — 10%, or 8% on food and non-alcoholic drink — is refunded on that purchase. For anything bought from ${REFUND_START} you pay the tax-inclusive price in the shop, then present your passport at a tax-free procedure terminal in the international departure lobby, before you check your bags, and the shop pays the refund once customs has confirmed the goods are leaving Japan — within 90 days of the purchase date. (National Tax Agency and Japan Tourism Agency, checked ${OFFICIAL_CHECKED}.)`,
   },
   {
+    q: "Do you still get tax-free at the register after November 2026?",
+    a: `No. For anything bought from ${REFUND_START} you pay the same tax-inclusive price as a Japanese shopper at the register, and the consumption tax is refunded only after customs confirms the goods at your departure, which is why the new system is called the refund method. The purchase date decides it, not your travel date: something bought on 31 October 2026 still came off at the till, and something bought the next morning does not. (Japan Tourism Agency traveller page, checked ${REFUND_RECHECKED}.)`,
+  },
+  {
+    q: "How long does the tax refund take?",
+    a: `There is no official answer in days. The Japan Tourism Agency states that the refund is paid after the customs confirmation at departure, by the shop or a refund operator it has contracted, and its FAQ for shops confirms there is no legal deadline for how quickly it is paid out — a shop may even set its own cut-off after which an unclaimed refund lapses. So the wait depends on the method the shop offers: cash, where a shop offers it, is handed over inside the departure airport or port after the confirmation, while a card, bank or app refund follows the shop's own processing. Ask the shop for its timing when you register the refund method. (Checked ${REFUND_RECHECKED}.)`,
+  },
+  {
+    q: "Is there a fee for the tax refund?",
+    a: `The government charges none — the Japan Tourism Agency's FAQ states it collects no fee for the refund procedure. Whether a refund operator's fee is passed on to you is not fixed by rule: the same FAQ says it is up to the shop whether the traveller or the shop bears it, so it differs from shop to shop. Ask at the counter whether anything is deducted before you pay. (Checked ${REFUND_RECHECKED}.)`,
+  },
+  {
+    q: "Can I get the refund if I leave Japan by ferry?",
+    a: `Yes, the procedure is not limited to airports. The Japan Tourism Agency's traveller page places the tax-free procedure terminals in departure areas before baggage check-in at airports and seaports, and the confirmation has to be completed before the boarding or embarkation procedure, within 90 days of the purchase date. For a cruise that leaves from and returns to overseas, the Agency says the procedure is done at the last Japanese port, at a location that depends on the port. Arrive early, because the confirmation has to be finished before you hand over luggage. (Checked ${REFUND_RECHECKED}.)`,
+  },
+  {
     q: "Is Japan still tax free for tourists?",
     a: `Yes. Nothing about who qualifies or how much you get back has changed: non-residents still get the full 10% consumption tax, or 8% on food and non-alcoholic drink, on purchases of ¥5,000 or more before tax in one shop on one day. What changed on ${REFUND_START} is only where the money comes off — the shop charges the tax-inclusive price and refunds it after a customs confirmation at the airport, instead of discounting it at the till. The date that decides which version applies to you is the purchase date, not your travel date.`,
   },
@@ -409,7 +469,7 @@ const faqItems = [
     a: `¥5,000 before tax, per shop, per day. The Japan Tourism Agency states the threshold as purchases totalling 5,000 yen or more excluding tax at a single store on a single day, so two ¥3,000 purchases in two different shops do not qualify and neither do two ¥3,000 days in the same shop. There is no upper limit for purchases made from ${REFUND_START}: the ¥500,000 per-shop-per-day cap on consumables is abolished on that date, along with the general-goods and consumables split itself. (Checked ${OFFICIAL_CHECKED}.)`,
   },
   {
-    q: "How do I get my tax refund at the airport in Japan?",
+    q: "How do you get the tax refund at the airport?",
     a: `Before you check your bags, present your passport at a tax-free procedure terminal in the international departure lobby with the goods still with you. The terminal reads your purchase records and shows a result: green means no customs inspection is required, red means taking the goods to the customs inspection area. The shop — or a refund operator it has contracted — pays the refund after that confirmation, by bank transfer, credit-card refund, app transfer, or cash inside the departure airport or port, depending on the shop. At ${VJW_AIRPORTS} the same confirmation can be done online through Visit Japan Web instead, inside the departure lobby's dedicated wireless area before security. (Japan Tourism Agency, checked ${OFFICIAL_CHECKED}.)`,
   },
   {
@@ -433,10 +493,6 @@ const faqItems = [
     a: `Non-residents. In practice that means a foreign national in Japan on short-stay, diplomatic or official status, or a Japanese national who has lived outside Japan continuously for two years or more and can document it with a residence certificate, a family-register attachment or a My Number card showing the move abroad. Anything bought for business or for resale does not qualify, whoever buys it. (National Tax Agency No.6559, checked ${OFFICIAL_CHECKED}.)`,
   },
   {
-    q: "Do I still pay the consumption tax in the shop from November 2026?",
-    a: `Yes. From ${REFUND_START} you pay the same tax-inclusive price as a Japanese shopper and get the tax back afterwards, which is why the change is called the refund method. The date that matters is the purchase date, not your travel date: something bought on 31 October 2026 still comes off at the till, and something bought the next morning does not.`,
-  },
-  {
     q: "Can I open or use tax-free purchases in Japan?",
     a: `No. The exemption is conditional on the goods leaving Japan, and from ${REFUND_START} the check happens at the airport with the goods in front of you. Consumables no longer have to be sealed in the shop's special packaging from that date, but using them here still voids the refund — and because the confirmation is judged per purchase record, one opened item disqualifies everything on that receipt. If you have used something, say so to a customs officer rather than putting the purchase through a terminal.`,
   },
@@ -456,21 +512,21 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>Japan Tax Free Shopping 2026: Tax Free Japan Refund Rules</title>
+        <title>Japan Tax Free Shopping (Nov 2026): New Refund System</title>
         <meta
           name="description"
-          content="Japan tax free shopping from 1 Nov 2026: you pay the tax, then get 10% back at an airport terminal. Tax free Japan rules: ¥5,000, 90 days, passport."
+          content="Japan tax free shopping from 1 Nov 2026: pay the tax in the shop, get it refunded after a customs check at departure. How to claim, timing and fees."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/money/tax-free-shopping-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Japan Tax Free Shopping 2026: Tax Free Japan Refund Rules" />
+        <meta property="og:title" content="Japan Tax Free Shopping (Nov 2026): New Refund System" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/money/tax-free-shopping-japan" />
-        <meta property="og:description" content="Japan tax free shopping from 1 Nov 2026: you pay the tax, then get 10% back at an airport terminal. Tax free Japan rules: ¥5,000, 90 days, passport." />
+        <meta property="og:description" content="Japan tax free shopping from 1 Nov 2026: pay the tax in the shop, get it refunded after a customs check at departure. How to claim, timing and fees." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Japan Tax Free Shopping 2026: Tax Free Japan Refund Rules" />
-        <meta name="twitter:description" content="Japan tax free shopping from 1 Nov 2026: you pay the tax, then get 10% back at an airport terminal. Tax free Japan rules: ¥5,000, 90 days, passport." />
+        <meta name="twitter:title" content="Japan Tax Free Shopping (Nov 2026): New Refund System" />
+        <meta name="twitter:description" content="Japan tax free shopping from 1 Nov 2026: pay the tax in the shop, get it refunded after a customs check at departure. How to claim, timing and fees." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -490,9 +546,9 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/tax-free-shopping-japan",
-              headline: "Japan Tax Free Shopping 2026: How Tax Free Japan Works Under the Refund System",
+              headline: "Japan Tax Free Shopping (Nov 2026): How the New Refund System Works",
               description:
-                "Japan tax free shopping under the refund system that applies from 1 November 2026: the ¥5,000-per-shop minimum, the 90-day deadline, the airport terminal steps in order, and how the refund is paid.",
+                "Japan tax free shopping under the refund system that applies from 1 November 2026: you pay the tax in the shop, claim it after a customs check at departure, and the shop decides how, when and with what fee it is refunded.",
               updated,
             }),
           }}
@@ -540,12 +596,12 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Japan Tax Free Shopping 2026:<br />How Tax Free Japan Works Under the Refund System
+            Japan Tax Free Shopping (Nov 2026):<br />How the New Refund System Works
           </h1>
           <p className={styles.heroSubtitle}>
-            ¥5,000 before tax in one shop on one day, a non-resident passport, and the 10%
-            consumption tax comes back. From {REFUND_START} it comes back at the airport
-            rather than at the till.
+            From {REFUND_START} you pay the 10% consumption tax in the shop and get it back
+            after a customs check at departure. Here is the refund flow, how long it takes,
+            and what the fees are.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official sources only", `The ${REFUND_START} refund system`].map((t) => (
@@ -578,19 +634,21 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
           <div className={styles.verdictBody}>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
               <strong>
-                Japan tax free shopping is a refund, not a discount at the till, for anything
-                bought from {REFUND_START}.
+                Japan tax free shopping is a refund from {REFUND_START}: you pay the full
+                tax-inclusive price at the register and register how you want the tax back.
               </strong>{" "}
-              You pay the full tax-inclusive price in the shop, then scan your passport at a
-              tax-free procedure terminal in the international departure lobby — before you
-              check your bags — and the amount equivalent to the consumption tax, 10% or 8% on
-              food and non-alcoholic drink, is refunded once customs has confirmed the goods
-              are leaving Japan. Two conditions decide whether you qualify: ¥5,000 or more
-              before tax in a single shop on a single day, and that customs confirmation
-              happening within 90 days of the purchase date (Japan Tourism Agency and National
-              Tax Agency, checked {OFFICIAL_CHECKED}). Purchases made up to 31 October 2026
-              are the exception and still come off at the till, so a trip that straddles the
-              date has both systems running in it.
+              On departure, before you check your bags, you scan your passport at a tax-free
+              procedure terminal at the airport or seaport with the goods in hand, within 90
+              days of the purchase date. The shop or its refund operator then pays the 10% (8%
+              on food and drink) by card, bank transfer, app or cash at the port, on its own
+              timetable and fee terms — there is no official time limit, and the government
+              charges no fee (Japan Tourism Agency, checked {REFUND_RECHECKED}).
+            </p>
+            <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+              To qualify at all you need ¥5,000 or more before tax in a single shop on a single
+              day and a non-resident passport (National Tax Agency, checked {OFFICIAL_CHECKED}).
+              Purchases made up to 31 October 2026 are the exception and still came off at the
+              till, so a trip that straddles the date has both systems running in it.
             </p>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
@@ -944,7 +1002,7 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
         {/* (2) The airport procedure, in order */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>At the airport</span>
-          <h2 className={styles.sectionTitle}>How Do I Get My Tax Refund at the Airport in Japan?</h2>
+          <h2 className={styles.sectionTitle}>How Do You Get the Tax Refund at the Airport?</h2>
           <p className={styles.bodyText}>
             <strong>Scan your passport at a tax-free procedure terminal in the international
             departure lobby before you check your bags, and go to the customs inspection area
@@ -960,6 +1018,7 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
                   <tr>
                     <th>When</th>
                     <th>Where</th>
+                    <th>What you need</th>
                     <th>What happens</th>
                   </tr>
                 </thead>
@@ -968,6 +1027,7 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
                     <tr key={row.when}>
                       <td className={styles.tdProvider}>{row.when}</td>
                       <td style={{ fontSize: "0.83rem" }}>{row.where}</td>
+                      <td style={{ fontSize: "0.83rem" }}>{row.need}</td>
                       <td style={{ fontSize: "0.83rem" }}>{row.what}</td>
                     </tr>
                   ))}
@@ -975,6 +1035,15 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
               </table>
             </div>
           </div>
+
+          {/* Book before departure — airport runs (5%) and Klook eSIM (20%), right after the procedure table */}
+          <KlookTripPrep
+            label="Book before you leave"
+            heading="Book Before Departure Day: a Seat to the Airport and Data for the Terminal"
+            intro="The procedure needs you at the airport early, with the goods in hand luggage — a booked seat out to Narita, Haneda or Kansai makes that time, and mobile data covers the Visit Japan Web route:"
+            items={taxFreeAirportRunPrep}
+          />
+
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             At {VJW_AIRPORTS} there is an alternative to the queue: the same confirmation can
             be done online through Visit Japan Web, from inside the departure lobby&apos;s
@@ -985,6 +1054,18 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             One route that used to exist no longer does: posting your own tax-free purchases
             home as mail or a parcel was abolished on 31 March 2025. Shipping arranged by the
             shop itself may still be available — ask in the shop, not at the airport.
+          </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "2.5rem" }}>
+            Can I Get the Refund if I Leave Japan by Ferry?
+          </h3>
+          <p className={styles.bodyText}>
+            <strong>Yes — the same confirmation is done at the seaport.</strong> The Japan
+            Tourism Agency&apos;s traveller page places the tax-free procedure terminals before
+            baggage check-in at airports and seaports alike, and the deadline is the same: before
+            the boarding or embarkation procedure, within 90 days of the purchase date. On a
+            cruise that starts and ends overseas, the Agency says the procedure is done at the
+            last Japanese port of call, at a spot that depends on the port (checked{" "}
+            {REFUND_RECHECKED}).
           </p>
         </section>
 
@@ -1024,6 +1105,51 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             page: how long a shop has to pay a refund out, and which individual shops or
             airports hand over cash. Any page quoting a number of days for either is not
             quoting the Japan Tourism Agency.
+          </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "2.5rem" }}>
+            How Long Does the Tax Refund Take, and Is There a Fee?
+          </h3>
+          <p className={styles.bodyText}>
+            <strong>There is no official time limit, and the government charges no fee — the rest
+            is up to the shop.</strong> The Japan Tourism Agency&apos;s refund-method FAQ for shops
+            leaves both the payout timing and whether a refund operator&apos;s fee is passed on to
+            the traveller to each shop, so the only reliable answer for a given purchase is the
+            one the shop gives you when you register the refund method. The table is what the FAQ
+            does say, re-read {REFUND_RECHECKED}.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>&nbsp;</th>
+                    <th>Fee / limit</th>
+                    <th>What the official FAQ says</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {refundFeeRows.map((row) => (
+                    <tr key={row.who}>
+                      <td className={styles.tdProvider}>{row.who}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.fee}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            Because you now front the tax on the card, a card that charges no foreign-transaction
+            fee keeps the refund whole — the{" "}
+            <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              best travel card for Japan
+            </Link>{" "}
+            comparison sets the options side by side, and{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              how much yen to bring
+            </Link>{" "}
+            covers what still needs cash.
           </p>
         </section>
 
@@ -1082,16 +1208,10 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             <Link href="/guides/transport/osaka-airport-transfer" style={{ color: "var(--red)", fontWeight: 600 }}>
               Kansai and Itami
             </Link>{" "}
-            — and the options below are the ones that come with a seat and a place for the bags.
+            — and the bookable seats listed under the airport procedure above are the ones that
+            come with a place for the bags.
           </p>
         </section>
-
-        <KlookTripPrep
-          label="Departure day"
-          heading="Booked Seats Out to the Airport, Early Enough for the Terminal"
-          intro="Narita, Haneda and Kansai runs from the two cities this guide's shopping districts sit in, as a seat you have already paid for rather than a rush-hour local — which is how you make the time the refund procedure needs:"
-          items={taxFreeAirportRunPrep}
-        />
 
         {/* Important Rules */}
         <section className={styles.whoForSection}>

@@ -776,6 +776,14 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             with direct routes to Osaka Station, Namba (OCAT), Uehommachi and Kyoto. Airport departures to the city take no
             reservations, so seats are first come, first served.
           </p>
+          <p className={styles.bodyText}>
+            On the way back out, allow extra time if you shopped tax-free: from 1 November 2026{" "}
+            <Link href="/guides/money/tax-free-shopping-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan tax free shopping is a refund
+            </Link>{" "}
+            that needs a customs check at a terminal in the Kansai Airport departure lobby before you check your
+            bags, with the goods still in your hand luggage.
+          </p>
           <KlookLink
             href={kixLimousineUrl}
             className={styles.pickCta}

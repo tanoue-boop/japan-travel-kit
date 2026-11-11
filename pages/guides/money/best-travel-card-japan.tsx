@@ -894,6 +894,14 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             </Link>{" "}
             for where tapping works.
           </p>
+          <p className={styles.bodyText}>
+            Paying in yen matters more on a shopping day from 1 November 2026, because{" "}
+            <Link href="/guides/money/tax-free-shopping-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan tax free shopping is now a refund
+            </Link>
+            : you pay the 10% consumption tax up front at the register and get it back only after a customs
+            check at departure — by a refund to the card you paid with, if that is the method the shop offers.
+          </p>
         </section>
 
         {/* How to Use */}

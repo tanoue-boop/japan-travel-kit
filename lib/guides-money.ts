@@ -77,8 +77,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/tax-free-shopping-japan",
     badge: "Guide",
-    title: "Tax-Free Shopping in Japan (2026): The ¥5,000 Rule and the New Airport Refund",
-    desc: "¥5,000 before tax per shop per day, on a non-resident passport. From 1 November 2026 the 10% comes back at an airport customs terminal instead of at the till — here is the official procedure.",
+    title: "Japan Tax Free Shopping (Nov 2026): New Refund System",
+    desc: "From 1 November 2026 you pay the tax in the shop and get it back after a customs check at departure — the ¥5,000 rule, the airport steps, refund timing and fees.",
     group: "paying",
     city: "other",
   },

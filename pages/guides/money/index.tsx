@@ -73,7 +73,9 @@ export default function GuidesMoneyPage({ dates }: { dates: Record<string, strin
             settles the transport cost that is hardest to put on a foreign card once you arrive. Outside Tokyo, the{" "}
             <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Hakone Free Pass</Link> and the{" "}
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>JR Kansai Area Pass</Link> do the same job, and the{" "}
-            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link> keeps your banking apps online.
+            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link> keeps your banking apps online. If the trip includes a shopping day, note that from 1 November 2026{" "}
+            <Link href="/guides/money/tax-free-shopping-japan" style={{ color: "var(--text)", fontWeight: 600 }}>Japan tax free shopping</Link>{" "}
+            works as a refund after a customs check at departure, so you pay the 10% up front on your card.
           </PartnerPick>
         }
       />

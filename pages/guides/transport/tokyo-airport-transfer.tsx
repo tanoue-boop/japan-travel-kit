@@ -1229,6 +1229,14 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             concourse. It is worse in rush hour, when the bus sits in the same expressway traffic as everyone else.
             There is no single fare per airport — the operator prices each route.
           </p>
+          <p className={styles.bodyText}>
+            The bags argument is stronger on the way out if you shopped tax-free. From 1 November 2026{" "}
+            <Link href="/guides/money/tax-free-shopping-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan tax free shopping is a refund
+            </Link>{" "}
+            that needs a customs check at Narita or Haneda before you check in, with the goods in your hand
+            luggage — so leave extra time before the airline desk.
+          </p>
           <div className={styles.tableWrap} style={{ marginBottom: "1.25rem", marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>

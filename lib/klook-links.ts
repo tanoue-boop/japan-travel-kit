@@ -1718,6 +1718,14 @@ export const taxFreeAirportRunPrep: KlookTripPrepItem[] = [
     ...tripPrepProducts.rapit,
     why: "The Namba and Shinsaibashi version of the same thing — a reserved seat from Namba out to Kansai Airport, which matters more on the way out than it did on the way in.",
   },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "The Haneda side: a limousine bus with the cases in the hold rather than on your lap. Check that the listing's direction and stops match your hotel and flight before booking.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "At Narita, Haneda, Kansai and four other airports the customs confirmation can be done online through Visit Japan Web instead of at a terminal, which needs a working connection on your phone in the departure lobby.",
+  },
 ];
 
 /**
