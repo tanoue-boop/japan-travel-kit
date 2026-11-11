@@ -914,7 +914,7 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
               { href: "/guides/attractions/hiroshima-miyajima-day-trip", title: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?" },
               { href: "/guides/attractions/hiroshima-peace-memorial-tours", title: "Hiroshima Peace Memorial Tour: Guides, Museum & Tickets" },
               { href: "/guides/transport/tokyo-to-hiroshima-shinkansen", title: "Tokyo to Hiroshima Shinkansen: Times, Fares, JR Pass" },
-              { href: "/guides/transport/osaka-to-hiroshima-shinkansen", title: "Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip" },
+              { href: "/guides/transport/osaka-to-hiroshima-shinkansen", title: "Osaka to Hiroshima Shinkansen (2026): Time and Price" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
               { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },

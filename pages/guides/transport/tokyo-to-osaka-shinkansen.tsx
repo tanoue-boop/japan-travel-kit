@@ -833,7 +833,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
               { href: "/guides/transport/shinkansen-guide", title: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers" },
               { href: "/guides/transport/tokyo-to-kyoto", title: "Tokyo to Kyoto (2026): Cheapest & Fastest Ways to Get There" },
               { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "Tokyo to Nagoya Shinkansen: Times, Fares, JR Pass" },
-              { href: "/guides/transport/osaka-to-hiroshima-shinkansen", title: "Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip" },
+              { href: "/guides/transport/osaka-to-hiroshima-shinkansen", title: "Osaka to Hiroshima Shinkansen (2026): Time and Price" },
               { href: "/guides/transport/jr-pass-guide", title: "JR Pass Cost 2026: New Prices & Is It Worth It?" },
             ].map((card) => (
               <Link key={card.href} href={card.href} className={styles.relatedCard}>

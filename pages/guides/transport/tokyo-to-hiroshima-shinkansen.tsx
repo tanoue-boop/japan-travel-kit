@@ -798,7 +798,7 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip</p>
+                <p className={styles.relatedTitle}>Osaka to Hiroshima Shinkansen (2026): Time and Price</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

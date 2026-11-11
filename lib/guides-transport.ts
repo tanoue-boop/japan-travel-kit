@@ -109,7 +109,7 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/osaka-to-hiroshima-shinkansen",
     badge: "Guide",
-    title: "Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip",
+    title: "Osaka to Hiroshima Shinkansen (2026): Time and Price",
     desc: "1h20m at the fastest and 181 trains a day, so Hiroshima is a real day trip from Kansai. JR's own ¥10,750 reserved fare, the ¥17,000 Kansai-Hiroshima Area Pass against the ¥50,000 national one, and the Miyajima ferry rules.",
     group: "passes",
     city: "osaka",

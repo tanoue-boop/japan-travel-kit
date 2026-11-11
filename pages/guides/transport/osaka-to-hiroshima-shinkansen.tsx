@@ -266,9 +266,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip";
+const TITLE = "Osaka to Hiroshima Shinkansen (2026): Time and Price";
 const DESCRIPTION =
-  "Osaka to Hiroshima Shinkansen: 1h20m at the fastest, ¥10,750 reserved on Smart EX, and an easy day trip. JR Pass rules and the Miyajima ferry explained.";
+  "Shin-Osaka to Hiroshima by Shinkansen: 1h20m on Nozomi or Mizuho, ¥10,750 reserved. Which trains the JR Pass covers, and the ¥17,000 Kansai-Hiroshima pass.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/transport/osaka-to-hiroshima-shinkansen") },
@@ -366,7 +366,7 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Osaka to Hiroshima Shinkansen:<br />Times, Fares and Whether It Works as a Day Trip
+            Osaka to Hiroshima Shinkansen (2026):<br />Time and Price From Shin-Osaka
           </h1>
           <p className={styles.heroSubtitle}>
             Eighty minutes on the fast train, 181 departures a day — and a ¥17,000 JR West pass that is
@@ -418,9 +418,11 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              The <strong>Osaka to Hiroshima Shinkansen</strong> takes{" "}
-              <strong>1 hour 20 minutes</strong> at the fastest, direct: Klook&apos;s own rail page for the
-              route gives that as the shortest departure, puts the all-day average at{" "}
+              The <strong>Osaka to Hiroshima Shinkansen</strong> leaves from{" "}
+              <strong>Shin-Osaka</strong> and takes <strong>1 hour 20 minutes</strong> at the fastest, direct,
+              on a <strong>NOZOMI or MIZUHO</strong>; the <strong>SAKURA</strong>, the fast train a JAPAN
+              RAIL PASS covers without a supplement, takes roughly an hour and a half. Klook&apos;s own rail
+              page for the route gives 1h 20m as the shortest departure, puts the all-day average at{" "}
               <strong>2 hours 15 minutes</strong>, and counts <strong>181 trains</strong> from{" "}
               <strong>06:00</strong> with <strong>&ldquo;0 transfer(s)&rdquo;</strong>. A reserved Ordinary
               seat is <strong>{SMART_EX_OSAKA}</strong> one way on JR&apos;s own Smart EX price — about
@@ -512,7 +514,8 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima</Link> is the
             same destination with a very different answer; and{" "}
             <Link href="/guides/transport/osaka-transportation">getting around Osaka</Link> covers the
-            subway ride to Shin-Osaka before any of this starts.
+            subway ride to Shin-Osaka before any of this starts. Other routes are in the{" "}
+            <Link href="/guides/transport">transport guides</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -644,7 +647,11 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             than a vague one: they put the Shinkansen leg and the ferry inside one booking and schedule the
             island around the tide. Our{" "}
             <Link href="/guides/attractions/hiroshima-miyajima-day-trip">Hiroshima and Miyajima day trip guide</Link>{" "}
-            has the admissions and the ferry detail, and our{" "}
+            has the admissions and the ferry detail, our{" "}
+            <Link href="/guides/attractions/hiroshima-2-day-itinerary">Hiroshima 2 day itinerary</Link>{" "}
+            splits the park and the island across two days if you stay the night, and our{" "}
+            <Link href="/guides/attractions/osaka-3-day-itinerary">Osaka 3 day itinerary</Link> shows
+            where a Hiroshima day fits in a Kansai base. The{" "}
             <Link href="/guides/attractions/things-to-do-osaka">things to do in Osaka guide</Link> covers
             what the day is competing with.
           </p>

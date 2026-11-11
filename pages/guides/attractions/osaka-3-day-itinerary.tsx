@@ -648,6 +648,13 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             streets and a Kobe beef meal; see the{" "}
             <Link href="/guides/attractions/kobe-day-trip-from-osaka">Kobe day trip guide</Link>.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Further afield: Hiroshima.</strong> From Shin-Osaka the fastest Sanyo Shinkansen
+            reaches Hiroshima in about 1 hour 20 minutes with no change, so the Peace Memorial Park
+            works as a long Day 3 rather than an overnight trip. The fares, the trains a JR Pass
+            covers and the JR West pass that fits this trip are in the{" "}
+            <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima Shinkansen guide</Link>.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Kyoto &amp; Nara day tour from Osaka →

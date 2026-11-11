@@ -302,7 +302,11 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             </Link>{" "}
             is around 90 minutes from Osaka and 100 to 120 from Kyoto, which makes both UNESCO sites
             reachable and back in a single day — with the Nozomi exclusion below deciding which train you
-            board.
+            board. The{" "}
+            <Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Osaka to Hiroshima Shinkansen guide
+            </Link>{" "}
+            has the Shin-Osaka fares and the JR West pass that covers that leg.
           </p>
         </section>
 
@@ -545,7 +549,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka to Hiroshima Shinkansen: Times, Fares, Day Trip</p>
+                <p className={styles.relatedTitle}>Osaka to Hiroshima Shinkansen (2026): Time and Price</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

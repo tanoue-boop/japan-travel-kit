@@ -624,7 +624,11 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>
               JR Pass guide
             </Link>
-            . ICOCA &amp; HARUKA is left out: JR West&apos;s current English pages did not show a price for it
+            ; for Hiroshima, which no Kansai pass reaches, the{" "}
+            <Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Osaka to Hiroshima Shinkansen guide
+            </Link>{" "}
+            compares the JR West Kansai-Hiroshima Area Pass with single tickets. ICOCA &amp; HARUKA is left out: JR West&apos;s current English pages did not show a price for it
             on the check date.
           </p>
         </section>
