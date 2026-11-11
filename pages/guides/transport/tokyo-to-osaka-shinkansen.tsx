@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -441,6 +442,8 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Times */}
         <section className={styles.comparisonSection}>

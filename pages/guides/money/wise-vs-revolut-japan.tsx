@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import { klookEsim, wiseVsRevolutTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -311,6 +312,8 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
             </p>
           </div>
         </div>
+
+        <BookingEsimCard lead="Both cards live in an app. Get mobile data before you land." />
 
         {/* Head-to-head table */}
         <section className={styles.comparisonSection}>

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -285,6 +286,8 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Intro */}
         <section className={styles.bodySection}>

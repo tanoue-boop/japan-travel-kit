@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { fujiDayTour, tokyoDisneyTripPrep, tokyoSightseeingBusTour } from "../../../lib/klook-links";
@@ -425,6 +426,8 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             </div>
           </div>
         </div>
+
+        <BookingEsimCard />
 
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -701,6 +702,8 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             </KlookLink>
           </div>
         </div>
+
+        <BookingEsimCard lead="Five days of maps and train times. Get mobile data before you land." />
 
         {/* Overview */}
         <section className={styles.bodySection}>
