@@ -494,6 +494,13 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             guide.
           </p>
           <p className={styles.bodyText}>
+            Its unlimited travel eSIM runs on au (KDDI) 5G and is sold with no daily speed cap, but the hotspot has
+            an allowance set by plan length, from 2 GB on a 1–3 day plan to 30 GB on a 27–31 day plan (read
+            2026-11-11). How that compares with Simbye, Airalo, eSIM Go and Holafly on price and fair-use limits is in
+            our{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited eSIM Japan comparison</Link>.
+          </p>
+          <p className={styles.bodyText}>
             The thing worth knowing before you compare it to anything else: the standard eSIM and SIM plans are
             data only. Sakura Mobile marks them &ldquo;No phone number, data only&rdquo;, the same as Airalo or
             Holafly. What it has that they do not is a separate <strong>Voice+Data eSIM</strong>, which does

@@ -302,6 +302,14 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
             Plans run from 1 to 90 days, priced from {FROM}; prices below were checked on {pricesCheckedAt}.
           </p>
           <p className={styles.bodyText}>
+            &ldquo;Unlimited&rdquo; has two limits here: hotspot sharing is capped at 1 GB a day, and Holafly&apos;s
+            Japan page says a Fair Usage Policy can restrict speed for no more than one day (read 11 Nov 2026). How
+            that compares with Simbye, Airalo, eSIM Go and Sakura Mobile, plan by plan, is in our{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM unlimited data comparison
+            </Link>.
+          </p>
+          <p className={styles.bodyText}>
             With 8,700+ customer reviews and a 4.3 average rating, Holafly has a strong track record
             among American and European travellers who prioritize convenience over cost per gigabyte.
           </p>

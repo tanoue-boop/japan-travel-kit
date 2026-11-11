@@ -8,6 +8,7 @@ import {
   cheapestUnlimited,
   formatUsd,
   getProvider,
+  latestCheckedAt,
   plansFor,
   priceAtLeastLabel,
   priceFromLabel,
@@ -23,9 +24,22 @@ import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data"
 
 // Every price on this page is read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
-// Daily thresholds, hotspot rules and networks were read off each provider's own site on
-// this date, the same read best-esim-japan's unlimited table is built from.
-const TERMS_CHECKED = "29 Oct 2026";
+const PRICES_CHECKED_ISO = (latestCheckedAt() ?? "").slice(0, 10) || "not yet checked";
+// Daily thresholds, hotspot rules and networks were read off each provider's own site.
+// Airalo, Holafly and Sakura Mobile were re-read on 11 Nov 2026 (R10). Simbye's and eSIM Go's
+// product pages refused automated reads that day (HTTP 429), so their last reads stand:
+// Simbye 5 Nov 2026 (SIMBYE_SPECS_CHECKED_AT), eSIM Go 29 Oct 2026.
+const TERMS_CHECKED = "11 Nov 2026";
+const TERMS_CHECKED_ISO = "2026-11-11";
+const ESIMGO_TERMS_ISO = "2026-10-29";
+const SIMBYE_TERMS_ISO = "2026-11-05";
+const TERMS_SOURCES = [
+  { label: "Simbye", href: "https://simbye.com/products/esim-japan", checked: SIMBYE_TERMS_ISO },
+  { label: "eSIM Go (Breeze)", href: "https://breezesim.com/products/esim-japan", checked: ESIMGO_TERMS_ISO },
+  { label: "Airalo fair use policy", href: "https://www.airalo.com/m/resources/unlimited-data-plans-fair-use-policy", checked: TERMS_CHECKED_ISO },
+  { label: "Holafly Japan", href: "https://esim.holafly.com/esim-japan/", checked: TERMS_CHECKED_ISO },
+  { label: "Sakura Mobile travel eSIM", href: "https://www.sakuramobile.jp/travel/esim/", checked: TERMS_CHECKED_ISO },
+];
 const SIMBYE_UNL_PLAN = cheapestUnlimited("simbye", 7);
 const SIMBYE_UNL_PLANS = plansFor("simbye").filter((p) => p.unlimited);
 const HOLAFLY_FROM = priceFromLabel("holafly");
@@ -76,13 +90,14 @@ const unlimitedRows: {
   full: string;
   after: string;
   hotspot: string;
+  network: string;
   linked: boolean;
 }[] = [
-  { id: "simbye", name: "Simbye Unlimited", full: "2 GB a day", after: "1 Mbps", hotspot: "Allowed", linked: true },
-  { id: "esimgo", name: "eSIM Go Premium Unlimited", full: "30 GB / 5 days, 60 GB / 10, 90 GB / 15", after: "Reduced, stated as fit for 720p video", hotspot: "Allowed on every plan", linked: true },
-  { id: "airalo", name: "Airalo Unlimited", full: "3 GB a day", after: "1 Mbps until the 24-hour reset", hotspot: "No limit stated on tethering or devices", linked: true },
-  { id: "holafly", name: "Holafly", full: "No daily threshold on the phone", after: "Not applicable on the phone", hotspot: "Capped at 1 GB a day", linked: false },
-  { id: "sakura", name: "Sakura Mobile Unlimited", full: "No on-device threshold on the page read", after: "Not published", hotspot: "2–30 GB by plan length", linked: true },
+  { id: "simbye", name: "Simbye Unlimited — our pick", full: "2 GB a day", after: "1 Mbps", hotspot: "Allowed", network: getProvider("simbye").network, linked: true },
+  { id: "esimgo", name: "eSIM Go Premium Unlimited", full: "30 GB / 5 days, 60 GB / 10, 90 GB / 15", after: "Reduced, stated as fit for 720p video", hotspot: "Allowed on every plan", network: getProvider("esimgo").network, linked: true },
+  { id: "airalo", name: "Airalo Unlimited", full: "3 GB a day (24 h from activation)", after: "1 Mbps until the 24-hour reset", hotspot: "Allowed, no device limit; counts toward the 3 GB", network: getProvider("airalo").network, linked: true },
+  { id: "holafly", name: "Holafly", full: "No published daily threshold", after: "Fair Usage Policy may slow it for up to 1 day", hotspot: "Capped at 1 GB a day", network: getProvider("holafly").network, linked: false },
+  { id: "sakura", name: "Sakura Mobile Unlimited", full: "No daily speed cap stated", after: "None published", hotspot: "2 GB (1–3 days) to 30 GB (27–31 days)", network: "au (KDDI) 5G", linked: true },
 ];
 
 const dataUsageTable = [
@@ -150,7 +165,7 @@ const topPicks = [
     name: "Holafly",
     badge: "No Daily Threshold",
     badgeClass: "pickBadgeOrange" as const,
-    summary: `The best-known unlimited eSIM for Japan, with no daily threshold on the phone itself, though hotspot use is capped at 1 GB a day. Runs on ${getProvider("holafly").network}, from ${HOLAFLY_FROM} for a short trip to ${HOLAFLY_30} for a month (checked ${pricesCheckedAt}). Ranked here because it costs more than the three above and we have no link to it.`,
+    summary: `The best-known unlimited eSIM for Japan, with no published daily threshold on the phone itself (its Fair Usage Policy can slow it for up to a day), though hotspot use is capped at 1 GB a day. Runs on ${getProvider("holafly").network}, from ${HOLAFLY_FROM} for a short trip to ${HOLAFLY_30} for a month (checked ${pricesCheckedAt}). Ranked here because it costs more than the three above and we have no link to it.`,
     bestFor: "Heavy phone-only use, with no laptop to tether",
     pros: ["No daily threshold on the phone", "1 to 30-day plans", "Buy before you fly — instant QR delivery"],
     cons: ["Hotspot capped at 1 GB a day", "Dearer than the three above", "Data-only — no voice calls"],
@@ -174,7 +189,7 @@ const topPicks = [
 
 const comparisonRows = [
   { feature: "Data allowance",   holafly: "Unlimited",     simbye: "Unlimited", sakura: "Unlimited or 3 GB/day", airalo: "10 GB (fixed plan)" },
-  { feature: "Throttling",       holafly: "Hotspot 1 GB/day", simbye: SIMBYE_FAIR_USE, sakura: "Hotspot allowance by plan", airalo: "Data stops at cap" },
+  { feature: "Throttling",       holafly: "Fair Usage Policy, up to 1 day; hotspot 1 GB/day", simbye: SIMBYE_FAIR_USE, sakura: "No daily speed cap stated; hotspot by plan", airalo: "Data stops at cap" },
   { feature: "Network",         holafly: getProvider("holafly").network, simbye: getProvider("simbye").network, sakura: getProvider("sakura").network, airalo: getProvider("airalo").network },
   { feature: "Voice calls",      holafly: "✗",             simbye: "✗", sakura: "SIM plans only", airalo: "✗" },
   { feature: "Min. duration",    holafly: "1 day",         simbye: "7 days", sakura: "3 days",         airalo: "3 days" },
@@ -185,7 +200,7 @@ const comparisonRows = [
 const faqItems = [
   {
     q: "Is Holafly really unlimited in Japan?",
-    a: `Holafly's Japan plan has no stated data cap on the phone, but hotspot use is limited to 1 GB a day, so it is not unlimited for a tethered laptop. It runs on ${getProvider("holafly").network}, not Docomo, which matters only well away from the main cities and tourist routes. We have no link to Holafly; Simbye, eSIM Go and Airalo are the unlimited plans sold through this site.`,
+    a: `Holafly's Japan plan publishes no daily data threshold on the phone, but its Japan page says a Fair Usage Policy can restrict speed for no more than one day, and hotspot use is limited to 1 GB a day, so it is not unlimited for a tethered laptop (read ${TERMS_CHECKED}). It runs on ${getProvider("holafly").network}, not Docomo, which matters only well away from the main cities and tourist routes. We have no link to Holafly; Simbye, eSIM Go and Airalo are the unlimited plans sold through this site.`,
   },
   {
     q: "Do most travellers actually need unlimited data in Japan?",
@@ -217,11 +232,11 @@ const faqItems = [
   },
   {
     q: "Does unlimited data in Japan really mean unlimited?",
-    a: `Not at full speed. Simbye gives 2 GB a day and then 1 Mbps, Airalo 3 GB a day and then 1 Mbps until the 24-hour reset, and eSIM Go Premium pools 30 GB over 5 days, 60 GB over 10 or 90 GB over 15 before speed is reduced. Holafly and Sakura Mobile's unlimited plan publish no threshold on the phone, but both cap the hotspot. Terms read on each provider's site on ${TERMS_CHECKED}.`,
+    a: `Mostly not at full speed. Simbye gives 2 GB a day and then 1 Mbps, Airalo 3 GB a day and then 1 Mbps until the reset 24 hours after activation, and eSIM Go Premium pools 30 GB over 5 days, 60 GB over 10 or 90 GB over 15 before speed is reduced. Holafly publishes no daily threshold but says a Fair Usage Policy can slow it for up to a day, and Sakura Mobile's au plan states no daily speed cap; both cap the hotspot. Airalo, Holafly and Sakura terms read ${TERMS_CHECKED_ISO}, Simbye ${SIMBYE_TERMS_ISO}, eSIM Go ${ESIMGO_TERMS_ISO}.`,
   },
   {
     q: "Which unlimited eSIM is best for tethering a laptop in Japan?",
-    a: `Airalo or eSIM Go. Airalo states no limit on tethering or on the number of devices, and eSIM Go allows it on every plan; Simbye allows it too, within its 2 GB a day at full speed. Holafly caps the hotspot at 1 GB a day, which rules it out for a laptop, and Sakura Mobile allows 2–30 GB depending on plan length. Read on ${TERMS_CHECKED}.`,
+    a: `Airalo or eSIM Go. Airalo's fair use policy states no limit on tethering or on the number of devices, though tethered data counts toward its 3 GB a day at full speed, and eSIM Go allows tethering on every plan; Simbye allows it too, within its 2 GB a day at full speed. Holafly caps the hotspot at 1 GB a day, which rules it out for a laptop, and Sakura Mobile allows 2 GB on a 1–3 day plan up to 30 GB on a 27–31 day plan. Read on ${TERMS_CHECKED_ISO}.`,
   },
 ];
 
@@ -264,9 +279,11 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/es
 
 // Owns "unlimited eSIM Japan". "Best" is left to best-esim-japan and "cheapest" to
 // cheapest-esim-japan, so the three do not compete for one another's term.
-const TITLE = `Unlimited eSIM for Japan 2026: From ${SIMBYE_UNL} for 7 Days`;
-const H1 = "Unlimited eSIM for Japan (2026): Prices, Daily Limits & Tethering";
-const DESCRIPTION = `Unlimited eSIM for Japan from ${SIMBYE_UNL} for 7 days, checked daily. Simbye, eSIM Go, Airalo, Holafly and Sakura on price, daily limit and tethering.`;
+// R10 (11 Nov 2026): the title carries "japan esim unlimited data" and the H1 "unlimited esim
+// japan", the two largest query shapes landing here in GSC.
+const TITLE = `Japan eSIM Unlimited Data 2026: From ${SIMBYE_UNL} for 7 Days`;
+const H1 = "Unlimited eSIM Japan (2026): Prices, Fair-Use Limits & Tethering";
+const DESCRIPTION = `Unlimited eSIM Japan: Simbye is ${SIMBYE_UNL} for 7 days with 2 GB a day at full speed. Fair-use limits, hotspot rules and networks for 5 plans, then buy.`;
 
 export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -368,10 +385,10 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Unlimited eSIM for Japan (2026):<br />Prices, Daily Limits &amp; Tethering
+            Unlimited eSIM Japan (2026):<br />Prices, Fair-Use Limits &amp; Tethering
           </h1>
           <p className={styles.heroSubtitle}>
-            What each unlimited Japan plan costs for 7, 15 and 30 days, how much data runs at full speed, and which one you can tether a laptop to.
+            What each Japan eSIM with unlimited data costs for 7, 15 and 30 days, how much runs at full speed, which network it uses, and which one you can tether a laptop to.
           </p>
           <div className={styles.heroBadges}>
             {["Prices checked daily", "Daily limits compared", `Terms read ${TERMS_CHECKED}`].map((t) => (
@@ -396,12 +413,23 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
         {/* The answer: a pick in the first sentence, then the table the query is asking for. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            The cheapest <strong>unlimited eSIM for Japan</strong> is <strong>Simbye Unlimited at {SIMBYE_UNL} for
-            7 days</strong> (checked {pricesCheckedAt}), with 2 GB a day at full speed and then 1 Mbps. If you use
-            more than that in a day, <strong>eSIM Go Premium</strong> ({ESIMGO_UNL}) pools its full-speed data
-            across the plan, and for a tethered laptop <strong>Airalo</strong> ({AIRALO_UNL}) states no limit on
-            tethering. No Japan plan is unlimited at full speed on every device, and most tourists do not need one:
-            Simbye&apos;s 10 GB plan at {SIMBYE_10} covers a typical trip.
+            Our pick for a <strong>Japan eSIM with unlimited data</strong> is <strong>Simbye Unlimited at{" "}
+            {SIMBYE_UNL} for 7 days</strong> ({unlimitedAt("simbye", 15)} for 15 days, {unlimitedAt("simbye", 30)} for
+            30; checked {pricesCheckedAt}), because it has the lowest unlimited list price at 7 days or more, allows
+            tethering and gives 2 GB a day at full speed, then 1 Mbps.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>You need unlimited data in Japan</strong> only if you use more than about 1 GB a day: an hour of
+            HD video a day, hours of video calls, or a laptop on your hotspot. <strong>You do not need it</strong> for
+            Maps, messaging and social media, which come to about 1–3 GB a week, so Simbye&apos;s 10 GB plan at{" "}
+            {SIMBYE_10} covers a typical trip.
+          </p>
+          <p className={styles.bodyText}>
+            No &ldquo;unlimited&rdquo; Japan eSIM is unlimited at full speed on every device: Airalo slows to 1 Mbps
+            after 3 GB a day, Holafly caps its hotspot at 1 GB a day, and Sakura Mobile&apos;s au plan states no daily
+            speed cap but limits the hotspot by plan length (terms read {TERMS_CHECKED}). If you burn several GB in
+            one day, <strong>eSIM Go Premium</strong> ({ESIMGO_UNL} for 7 days) pools its full-speed data across the
+            plan instead.
           </p>
         </section>
 
@@ -450,7 +478,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Plan", ...UNLIMITED_DAYS.map((d) => `${d} days`), "Full speed up to", "After that", "Hotspot"].map((h) => (
+                    {["Plan", ...UNLIMITED_DAYS.map((d) => `${d} days`), "Full speed up to", "After that", "Hotspot", "Network"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -465,6 +493,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
                       <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "130px" }}>{row.full}</td>
                       <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "120px" }}>{row.after}</td>
                       <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "130px" }}>{row.hotspot}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "130px" }}>{row.network}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -472,10 +501,28 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {PRICES_CHECKED_ISO}</strong> (prices) and {TERMS_CHECKED_ISO} (Airalo, Holafly and
+            Sakura Mobile terms; Simbye {SIMBYE_TERMS_ISO}, eSIM Go {ESIMGO_TERMS_ISO}). Sources:{" "}
+            {TERMS_SOURCES.map((s, i) => (
+              <span key={s.href}>
+                <a href={s.href} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)" }}>{s.label}</a>
+                {i < TERMS_SOURCES.length - 1 ? ", " : "."}
+              </span>
+            ))}
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+            <a href={getProvider("simbye").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+              Get Simbye Unlimited — {SIMBYE_UNL} / 7 days →
+            </a>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Prices are each provider&apos;s list price in USD, read {pricesCheckedAt} by the job that re-reads them
-            daily; &ldquo;—&rdquo; means no plan of that length is on sale. Thresholds and hotspot rules were read on
-            each provider&apos;s own site on {TERMS_CHECKED} (Simbye: {SIMBYE_SPECS_CHECKED_AT}). Holafly has no link
-            on this site. The wider comparison, fixed plans included, is in our{" "}
+            daily; &ldquo;—&rdquo; means no plan of that length is on sale. Simbye&apos;s terms come from its Japan
+            page as read on {SIMBYE_SPECS_CHECKED_AT}. Holafly has no link on this site; our{" "}
+            <Link href="/guides/esim/holafly-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>Holafly Japan review</Link>{" "}
+            covers it in full, and Sakura Mobile&apos;s Japan-based support and voice SIM are in our{" "}
+            <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--accent)", fontWeight: 600 }}>Sakura Mobile review</Link>.
+            The wider comparison, fixed plans included, is in our{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best eSIM for Japan guide</Link>, and if a fixed
             plan is enough, our{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM ranking</Link>{" "}
@@ -496,6 +543,52 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
                 {klookEsim.ctaLabel}
               </KlookLink>
             </span>
+          </div>
+        </section>
+
+        {/* Fair use: the question most "unlimited" searches are really asking. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Fair use</span>
+          <h2 className={styles.sectionTitle}>Is an Unlimited eSIM in Japan Really Unlimited?</h2>
+          <p className={styles.bodyText}>
+            The data never stops on these plans, but the full speed usually does. Simbye slows to 1 Mbps after 2 GB a
+            day and Airalo after 3 GB a day, Airalo&apos;s day being the 24 hours counted from when you activated the
+            eSIM, not midnight.
+          </p>
+          <p className={styles.bodyText}>
+            Holafly publishes no threshold, but its Japan page says a Fair Usage Policy can restrict speed for no more
+            than one day to manage network traffic. Sakura Mobile&apos;s unlimited eSIM on au (KDDI) is sold as having
+            no daily speed cap. Airalo also says its host networks may manage traffic at busy times, separately from
+            the 3 GB rule.
+          </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>
+            Can You Tether a Laptop on an Unlimited Japan eSIM?
+          </h3>
+          <p className={styles.bodyText}>
+            Yes on all five, with different limits. Airalo sets no limit on tethering or devices but counts hotspot
+            data toward its 3 GB a day; Simbye and eSIM Go allow it; Holafly caps it at 1 GB a day; and Sakura Mobile
+            allows 2 GB on a 1–3 day plan, 6 GB on 7 days and 30 GB on 27–31 days.
+          </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>
+            Which Network Does Each Unlimited eSIM Use?
+          </h3>
+          <p className={styles.bodyText}>
+            Simbye lists {getProvider("simbye").network}; eSIM Go lists {getProvider("esimgo").network}; Holafly lists{" "}
+            {getProvider("holafly").network}; Airalo lists {getProvider("airalo").network}; and Sakura Mobile&apos;s
+            unlimited plan runs on au (KDDI) 5G, with its 3 GB-a-day plan on Docomo. All five are data only, with no
+            Japanese phone number, except Sakura Mobile&apos;s separate Voice + Data eSIM.
+          </p>
+          <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {TERMS_CHECKED_ISO} (Simbye {SIMBYE_TERMS_ISO}, eSIM Go {ESIMGO_TERMS_ISO}), on each
+            provider&apos;s own page listed under the price table.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem", flexWrap: "wrap", gap: "0.6rem" }}>
+            <a href={getProvider("simbye").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+              Get Simbye Unlimited →
+            </a>
+            <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+              {klookEsim.ctaLabel}
+            </KlookLink>
           </div>
         </section>
 
@@ -714,7 +807,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Honest answer</span>
           <h2 className={styles.sectionTitle}>Is Holafly Really Unlimited in Japan?</h2>
           <p className={styles.bodyText}>
-            On the phone, yes: its published terms set no daily threshold. Through a hotspot, no: tethering is capped at 1 GB a day, so a laptop is the case it does not cover.
+            On the phone, largely yes: it publishes no daily threshold, though its Japan page says a Fair Usage Policy can restrict speed for no more than one day. Through a hotspot, no: tethering is capped at 1 GB a day, so a laptop is the case it does not cover (read {TERMS_CHECKED}).
           </p>
           <p className={styles.bodyText}>
             The network caveat: Holafly lists {getProvider("holafly").network} in Japan, not Docomo. Both cover cities, tourist areas and major train routes well, while Docomo has broader reach in rural areas. For popular tourist destinations (Tokyo, Kyoto, Osaka, Hiroshima, Hokkaido cities), this makes no practical difference.
