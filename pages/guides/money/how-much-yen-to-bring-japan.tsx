@@ -909,6 +909,15 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
             </Link>{" "}
             compares the fee structures that decide the cost of every withdrawal in the table above.
           </p>
+          <p className={styles.bodyText}>
+            One cost cash will not cover is a hospital. JNTO notes that clinics generally accept cash only and
+            card payment is accepted only at major hospitals, and lists treatment cases of ¥7.5 million and ¥10
+            million. What a policy costs and which one to pick is in{" "}
+            <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              best travel insurance for Japan
+            </Link>
+            .
+          </p>
         </section>
 
         <BookingEsimCard lead="Yen sorted? Get mobile data before you land." />

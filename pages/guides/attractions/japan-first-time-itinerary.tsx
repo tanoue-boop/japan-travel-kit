@@ -729,6 +729,11 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             limits, read {CASH}, and <Link href="/guides/money/japan-travel-budget">our budget guide</Link>{" "}
             prices the whole trip.
           </p>
+          <p className={styles.bodyText}>
+            Japan&apos;s health ministry strongly recommends private health insurance for visitors; our{" "}
+            <Link href="/guides/money/best-travel-insurance-japan">best travel insurance for Japan</Link> guide
+            shows what a policy costs for a trip like this one and which to pick.
+          </p>
         </section>
 
         {/* FAQ */}
