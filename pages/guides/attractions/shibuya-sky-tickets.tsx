@@ -56,13 +56,43 @@ const P = PRICES.shibuyaSky;
  * navigation and nothing else — which is why the price rows cite the release that set
  * them and the government listing that still carries them, rather than the ticket page.
  * Nothing here is first-hand, and no Klook price appears anywhere.
+ *
+ * 11 Nov 2026 (task R09): answer-first lead, "Last checked" + source under every table,
+ * the stay-length rule and a month-by-month sunset table. Re-read that day:
+ *   shibuya-scramble-square.com/en/   "10:00-22:30 (Final admission: 21:20)"
+ *   gotokyo.org/en/spot/1749          the same two-band prices, "There is no time limit, you
+ *                                     can stay as long as you like", "People usually spend
+ *                                     90 minutes", "directly connected to Shibuya Station",
+ *                                     "No refunds will be given after entry"
+ *   eco.mtk.nao.ac.jp/koyomi (NAOJ)   Tokyo sunset on the 15th of each month of 2026
  */
 const CHECKED = checkedLabel(P.checked);
+const LAST_CHECKED = "2026-11-11";
+const OFFICIAL_URL = "https://www.shibuya-scramble-square.com/sky/ticket/";
+const GOTOKYO_URL = "https://www.gotokyo.org/en/spot/1749/index.html";
+const NAOJ_URL = "https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1311.html";
+const sourceLink = { color: "var(--text)", fontWeight: 600 } as const;
+
+/** Tokyo sunset on the 15th of each month, 2026 (NAOJ). Every one falls in the ¥3,400 band. */
+const sunsetRows = [
+  { month: "January", sunset: "16:50" },
+  { month: "February", sunset: "17:22" },
+  { month: "March", sunset: "17:48" },
+  { month: "April", sunset: "18:14" },
+  { month: "May", sunset: "18:39" },
+  { month: "June", sunset: "18:58" },
+  { month: "July", sunset: "18:57" },
+  { month: "August", sunset: "18:31" },
+  { month: "September", sunset: "17:49" },
+  { month: "October", sunset: "17:06" },
+  { month: "November", sunset: "16:35" },
+  { month: "December", sunset: "16:29" },
+];
 
 /** What each ticket costs, by entry time and by where you buy it. */
 const priceRows = [
-  { ticket: "Adult, entering 10:00–14:59", online: "¥2,700", counter: "¥3,000" },
-  { ticket: "Adult, entering 15:00–21:20", online: "¥3,400", counter: "¥3,700" },
+  { ticket: "Adult, entering 10:00–14:59 — best value, book online", online: "¥2,700", counter: "¥3,000" },
+  { ticket: "Adult, entering 15:00–21:20 — every sunset slot", online: "¥3,400", counter: "¥3,700" },
   {
     ticket: "Child, ages 6–12 (including 12-year-olds still in elementary school)",
     online: "Not sold online",
@@ -75,6 +105,8 @@ const priceRows = [
 const hoursRows = [
   { what: "Opening hours", detail: "10:00–22:30" },
   { what: "Last admission", detail: "21:20" },
+  { what: "Time limit", detail: "None — stay as long as you like; most visitors spend about 90 minutes" },
+  { what: "Getting there", detail: "Directly connected to Shibuya Station" },
   { what: "Cheaper band", detail: "Entry from 10:00 to 14:59" },
   { what: "Dearer band", detail: "Entry from 15:00 to 21:20 — the band every sunset slot falls in" },
   {
@@ -217,6 +249,10 @@ const faqItems = [
     a: `Shibuya Sky is open 10:00 to 22:30 with last admission at 21:20, on the Tokyo Metropolitan Government's official tourism listing read on ${CHECKED}. It closes on New Year's Day and may close temporarily or run shortened hours on other days. The hours matter for the price as well as the plan: the ¥2,700 band ends at 14:59 and everything from 15:00 to the 21:20 cut-off is ¥3,400.`,
   },
   {
+    q: "How long can you stay at Shibuya Sky?",
+    a: `As long as you like: Shibuya Sky has no time limit once you are inside, and most visitors spend about 90 minutes there, according to the Tokyo Metropolitan Government's official tourism listing read on ${LAST_CHECKED}. Your ticket fixes only the time you enter, and the deck closes at 22:30. No refund is given after entry, and the open-air rooftop can close in bad weather.`,
+  },
+  {
     q: "Do you need to book Shibuya Sky in advance?",
     a: "For sunset, yes — treat it as the whole decision. For a daytime or late slot, usually not, but booking still saves ¥300 a head against the counter and removes the risk that your preferred time has gone. The counter on the 14th floor does sell on the day, so a visit is not impossible without a booking; what you cannot do on the day is choose when you go up.",
   },
@@ -226,7 +262,7 @@ const faqItems = [
   },
   {
     q: "Which Shibuya Sky time slot sells out first?",
-    a: "Sunset, and by a wide margin — it is the one slot that delivers daylight, golden hour and the night cityscape in a single visit, and in Tokyo it moves from around 16:30 in December to past 19:00 in June, so the slot in demand changes month by month. Daytime bands are the most relaxed. Late evening is the usual fallback: same ¥3,400 band, far less competition, and the city lit up instead of the horizon.",
+    a: "Sunset, and by a wide margin — it is the one slot that delivers daylight, golden hour and the night cityscape in a single visit, and in Tokyo it moves from 16:29 in mid-December to 18:58 in mid-June (NAOJ, 2026), so the slot in demand changes month by month. Daytime bands are the most relaxed. Late evening is the usual fallback: same ¥3,400 band, far less competition, and the city lit up instead of the horizon.",
   },
   {
     q: "Can I cancel or change a Shibuya Sky ticket?",
@@ -258,9 +294,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Shibuya Sky Tickets 2026: From ¥2,700, Hours & Sunset Slots";
+const TITLE = "Shibuya Sky Tickets 2026: ¥2,700 Price, Sunset Slots & Hours";
 const DESCRIPTION =
-  "Shibuya Sky tickets are ¥2,700 online for entry before 15:00 and ¥3,400 from 15:00, ¥300 more at the counter. Hours, the booking window and sunset slots.";
+  "Shibuya Sky tickets cost ¥2,700 online before 15:00 and ¥3,400 from 15:00 (¥300 more at the counter). Sunset sells out first: book it 2 weeks ahead here.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/shibuya-sky-tickets") } });
 
@@ -392,16 +428,19 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Shibuya Sky tickets</strong> are priced by the time you go up: an adult web ticket is{" "}
-            <strong>¥2,700</strong> for an entry between 10:00 and 14:59 and <strong>¥3,400</strong> for an
-            entry from 15:00 to 21:20, while the same two tickets at the 14th-floor counter are ¥3,000 and
-            ¥3,700 — so booking online saves ¥300 whichever band you pick, and children aged 6–12 are ¥1,200
-            at the counter only. Buy them from the operator&apos;s own site or a reseller such as Klook, and
-            buy them early: a date goes on sale at <strong>00:00 Japan time exactly two weeks ahead</strong>,
-            and the sunset slots are the ones that go, which is why the practical deadline is the moment your
-            date opens rather than the week of your trip. The deck is open 10:00–22:30 with last admission
-            21:20. All figures read on {CHECKED} — prices from Shibuya Scramble Square&apos;s own ticket
-            revision of 27 February 2025, hours from the Tokyo Metropolitan Government&apos;s tourism listing.
+            <strong>Shibuya Sky tickets cost ¥2,700 online for an adult entering 10:00–14:59 and ¥3,400 for an
+            entry from 15:00 to 21:20</strong>; the 14th-floor counter charges ¥300 more (¥3,000 / ¥3,700).
+            Each date goes on sale at <strong>00:00 Japan time two weeks ahead</strong>, and the sunset slots
+            sell out first, so book sunset the moment your date opens. Shibuya Sky is open 10:00–22:30 (last
+            admission 21:20), has no time limit inside, and most visitors spend about 90 minutes.
+          </p>
+          <p className={styles.bodyText}>
+            Children aged 6–12 are ¥1,200 at the counter only, and preschool children enter free. Buy from the
+            operator&apos;s own site or a reseller such as Klook — the official site has rejected many
+            foreign-issued cards since July 2024. Prices are Shibuya Scramble Square&apos;s own ticket revision of
+            27 February 2025 (read {CHECKED}); prices, hours and the stay rule were re-checked on{" "}
+            {LAST_CHECKED} against the operator&apos;s site and the Tokyo Metropolitan Government&apos;s
+            tourism listing.
           </p>
         </section>
 
@@ -488,6 +527,18 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             </Link>
             , which carries the check date for each one.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED}</strong> · Sources:{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={sourceLink}>shibuya-scramble-square.com/sky/ticket/</a>
+            {" "}(operator) and{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={sourceLink}>gotokyo.org</a>
+            {" "}(Tokyo Metropolitan Government), which carries the same prices.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
+              Check Shibuya Sky ticket slots →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Klook, directly under the price table: what the same day needs booking. The
@@ -513,7 +564,7 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", `Shibuya Sky (read ${CHECKED})`].map((h) => (
+                    {["", "Shibuya Sky"].map((h) => (
                       <th key={h || "blank"}>{h}</th>
                     ))}
                   </tr>
@@ -530,10 +581,21 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Hours, last admission and the New Year&apos;s Day closure are the Tokyo Metropolitan
-            Government&apos;s own listing for SHIBUYA SKY on gotokyo.org, which carries the same wording in
-            English and Japanese, read on {CHECKED}. The rooftop is open-air, so it can close on the day in
-            high wind, lightning or heavy rain while the indoor floors stay open.
+            <strong>Last checked: {LAST_CHECKED}</strong> · Hours and last admission:{" "}
+            <a href="https://www.shibuya-scramble-square.com/en/" target="_blank" rel="noopener" style={sourceLink}>shibuya-scramble-square.com</a>
+            {" "}(operator). Time limit, typical stay, access and the New Year&apos;s Day closure:{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={sourceLink}>gotokyo.org</a>
+            {" "}(Tokyo Metropolitan Government). The rooftop is open-air, so it can close on the day in high
+            wind, lightning or heavy rain while the indoor floors stay open.
+          </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            How Long Should You Spend at Shibuya Sky?
+          </h3>
+          <p className={styles.bodyText}>
+            Plan on about 90 minutes: Shibuya Sky has no time limit once you are in, and that is how long most
+            visitors stay, per the Tokyo Metropolitan Government&apos;s listing. Your ticket fixes only when you
+            enter, so a sunset entry 30–60 minutes before sundown lets you stay on for the city lights, as long
+            as you are out by 22:30. No refund is given after entry.
           </p>
         </section>
 
@@ -589,9 +651,56 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>Which Shibuya Sky Time Slot Should You Book?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Sunset if you can get it, before 15:00 if price is the deciding factor, late evening if sunset has
-            gone. Sunset in Tokyo moves from around 16:30 in December to past 19:00 in June, so the slot in
-            demand is not the same slot all year — but it always falls inside the ¥3,400 band.
+            gone. Sunset in Tokyo moves from 16:29 in mid-December to 18:58 in mid-June, so the slot in demand
+            is not the same slot all year — but it always falls inside the ¥3,400 band.
           </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
+            When Is the Shibuya Sky Sunset Slot Each Month?
+          </h3>
+          <p className={styles.bodyText}>
+            Book an entry 30–60 minutes before the sunset time below. That slot is the first to sell out, so book
+            it when your date opens at 00:00 Japan time two weeks ahead.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Month (15th)", "Sunset in Tokyo", "Book an entry around"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sunsetRows.map((row) => {
+                    const [h, m] = row.sunset.split(":").map(Number);
+                    const start = h * 60 + m - 60;
+                    const end = h * 60 + m - 30;
+                    const fmt = (t: number) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
+                    return (
+                      <tr key={row.month}>
+                        <td className={styles.tdProvider}>{row.month}</td>
+                        <td className={styles.tdPrice}>{row.sunset}</td>
+                        <td style={{ fontSize: "0.88rem" }}>{fmt(start)}–{fmt(end)} (¥3,400 band)</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED}</strong> · Source: Tokyo sunset times for 2026 from the{" "}
+            <a href={NAOJ_URL} target="_blank" rel="noopener" style={sourceLink}>National Astronomical Observatory of Japan</a>
+            ; other years differ by a minute or two. &ldquo;Book an entry around&rdquo; is 30–60 minutes before
+            sunset, our suggestion rather than an operator rule.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
+              Check sunset slots for your date →
+            </KlookLink>
+            <GygCompareButton slug="shibuya-sky-tickets" listing={gygShibuyaSky} />
+          </div>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -610,7 +719,15 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             and on the shortlist in{" "}
             <Link href="/guides/attractions/things-to-do-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
               things to do in Tokyo
-            </Link>.
+            </Link>. If you are staying on into the evening, the{" "}
+            <Link href="/guides/attractions/tokyo-night-food-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo night food tours
+            </Link>{" "}
+            and the winter{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours" style={{ color: "var(--red)", fontWeight: 600 }}>
+              illumination tours
+            </Link>{" "}
+            are two ways to fill the rest of the night.
           </p>
         </section>
 

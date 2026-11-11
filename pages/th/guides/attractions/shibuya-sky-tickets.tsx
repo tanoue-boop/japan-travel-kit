@@ -37,6 +37,7 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // Thai edition of /guides/attractions/shibuya-sky-tickets. Mirrors the English page as of
 // 2026-11-01 block by block — same sections, tables, FAQ, Klook and GetYourGuide CTAs —
 // with every figure taken from the English page or lib/attraction-prices.ts; nothing added.
+// 2026-11-11 (R09): synced with English — answer-first lead, Last checked lines, stay rule, sunset table.
 
 const ROUTE = "/th/guides/attractions/shibuya-sky-tickets";
 const TITLE = "ตั๋ว Shibuya Sky 2026: ราคาและวิธีจอง";
@@ -48,6 +49,26 @@ const P = PRICES.shibuyaSky;
 const CHECKED = dateLabel(P.checked, LOCALE);
 const ADULT = priceLabel(P.adult, LOCALE);
 const AT_DOOR = priceLabel(P.atDoor, LOCALE);
+const LAST_CHECKED = dateLabel("2026-11-11", LOCALE);
+const OFFICIAL_URL = "https://www.shibuya-scramble-square.com/sky/ticket/";
+const GOTOKYO_URL = "https://www.gotokyo.org/en/spot/1749/index.html";
+const NAOJ_URL = "https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1311.html";
+
+/** Tokyo sunset on the 15th of each month, 2026 (NAOJ). Every one falls in the ¥3,400 band. */
+const sunsetRows = [
+  { month: "มกราคม", sunset: "16:50" },
+  { month: "กุมภาพันธ์", sunset: "17:22" },
+  { month: "มีนาคม", sunset: "17:48" },
+  { month: "เมษายน", sunset: "18:14" },
+  { month: "พฤษภาคม", sunset: "18:39" },
+  { month: "มิถุนายน", sunset: "18:58" },
+  { month: "กรกฎาคม", sunset: "18:57" },
+  { month: "สิงหาคม", sunset: "18:31" },
+  { month: "กันยายน", sunset: "17:49" },
+  { month: "ตุลาคม", sunset: "17:06" },
+  { month: "พฤศจิกายน", sunset: "16:35" },
+  { month: "ธันวาคม", sunset: "16:29" },
+];
 
 // The same Klook listing as the English CTA, on Klook's Thai locale path.
 const SHIBUYA_SKY_URL = klookFor(shibuyaSkyTicketUrl, LOCALE);
@@ -55,8 +76,8 @@ const GYG_SLUG = "th-shibuya-sky-tickets";
 
 /** What each ticket costs, by entry time and by where you buy it. */
 const priceRows = [
-  { ticket: "ผู้ใหญ่ เข้า 10:00–14:59", online: "¥2,700", counter: "¥3,000" },
-  { ticket: "ผู้ใหญ่ เข้า 15:00–21:20", online: "¥3,400", counter: "¥3,700" },
+  { ticket: "ผู้ใหญ่ เข้า 10:00–14:59 — คุ้มที่สุด จองออนไลน์", online: "¥2,700", counter: "¥3,000" },
+  { ticket: "ผู้ใหญ่ เข้า 15:00–21:20 — รอบพระอาทิตย์ตกทุกรอบ", online: "¥3,400", counter: "¥3,700" },
   {
     ticket: "เด็กอายุ 6–12 ปี (รวมเด็ก 12 ปีที่ยังเรียนประถม)",
     online: "ไม่ขายออนไลน์",
@@ -69,6 +90,8 @@ const priceRows = [
 const hoursRows = [
   { what: "เวลาเปิด", detail: "10:00–22:30" },
   { what: "เข้ารอบสุดท้าย", detail: "21:20" },
+  { what: "จำกัดเวลา", detail: "ไม่มี — อยู่ได้นานเท่าที่ต้องการ ผู้เข้าชมส่วนใหญ่ใช้เวลาราว 90 นาที" },
+  { what: "การเดินทาง", detail: "เชื่อมต่อกับสถานี Shibuya โดยตรง" },
   { what: "ช่วงราคาถูกกว่า", detail: "เข้าระหว่าง 10:00 ถึง 14:59" },
   { what: "ช่วงราคาแพงกว่า", detail: "เข้าระหว่าง 15:00 ถึง 21:20 — รอบพระอาทิตย์ตกทุกรอบอยู่ในช่วงนี้" },
   {
@@ -198,6 +221,10 @@ const faqItems: FaqItem[] = [
     a: `Shibuya Sky เปิด 10:00 ถึง 22:30 เข้ารอบสุดท้าย 21:20 ตามข้อมูลบนเว็บไซต์ท่องเที่ยวทางการของรัฐบาลกรุงโตเกียว ตรวจสอบเมื่อ ${CHECKED} ปิดวันขึ้นปีใหม่ และวันอื่นอาจปิดชั่วคราวหรือลดเวลาเปิด เวลาเปิดมีผลทั้งต่อแผนและต่อราคา: ช่วงราคา ¥2,700 สิ้นสุดที่ 14:59 และตั้งแต่ 15:00 ถึงเส้นตาย 21:20 เป็น ¥3,400 ทั้งหมด`,
   },
   {
+    q: "อยู่ที่ Shibuya Sky ได้นานแค่ไหน?",
+    a: `นานเท่าที่ต้องการ: Shibuya Sky ไม่จำกัดเวลาเมื่อเข้าไปแล้ว และผู้เข้าชมส่วนใหญ่ใช้เวลาราว 90 นาที ตามข้อมูลบนเว็บไซต์ท่องเที่ยวทางการของรัฐบาลกรุงโตเกียว ตรวจสอบเมื่อ ${LAST_CHECKED} ตั๋วกำหนดแค่เวลาเข้า และจุดชมวิวปิด 22:30 ไม่มีการคืนเงินหลังเข้าชมแล้ว และดาดฟ้ากลางแจ้งอาจปิดเมื่ออากาศไม่ดี`,
+  },
+  {
     q: "ต้องจอง Shibuya Sky ล่วงหน้าไหม?",
     a: "ถ้าจะไปรอบพระอาทิตย์ตก ต้อง — และนั่นคือทั้งหมดของการตัดสินใจ รอบกลางวันหรือรอบดึกส่วนใหญ่ไม่จำเป็น แต่การจองยังประหยัดคนละ ¥300 เมื่อเทียบกับเคาน์เตอร์ และตัดความเสี่ยงที่รอบที่อยากได้จะหมด เคาน์เตอร์ชั้น 14 ขายตั๋ววันนั้นได้ จึงไม่ใช่ว่าไม่จองแล้วจะขึ้นไม่ได้ สิ่งที่ทำไม่ได้ในวันนั้นคือเลือกว่าจะขึ้นตอนไหน",
   },
@@ -207,7 +234,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "รอบไหนของ Shibuya Sky ขายหมดก่อน?",
-    a: "รอบพระอาทิตย์ตก ทิ้งห่างรอบอื่นมาก — เป็นรอบเดียวที่ได้ทั้งกลางวัน ช่วงแสงทอง และวิวกลางคืนในการขึ้นครั้งเดียว และพระอาทิตย์ตกในโตเกียวขยับจากราว 16:30 ในเดือนธันวาคมไปจนเลย 19:00 ในเดือนมิถุนายน รอบที่คนแย่งกันจึงเปลี่ยนไปทุกเดือน รอบกลางวันสบายที่สุด รอบค่ำดึกคือทางเลือกสำรองที่นิยม: ช่วงราคา ¥3,400 เดียวกัน คู่แข่งน้อยกว่ามาก และได้เห็นเมืองเปิดไฟแทนเส้นขอบฟ้า",
+    a: "รอบพระอาทิตย์ตก ทิ้งห่างรอบอื่นมาก — เป็นรอบเดียวที่ได้ทั้งกลางวัน ช่วงแสงทอง และวิวกลางคืนในการขึ้นครั้งเดียว และพระอาทิตย์ตกในโตเกียวขยับจาก 16:29 ในกลางเดือนธันวาคมไปจนถึง 18:58 ในกลางเดือนมิถุนายน (NAOJ, 2026) รอบที่คนแย่งกันจึงเปลี่ยนไปทุกเดือน รอบกลางวันสบายที่สุด รอบค่ำดึกคือทางเลือกสำรองที่นิยม: ช่วงราคา ¥3,400 เดียวกัน คู่แข่งน้อยกว่ามาก และได้เห็นเมืองเปิดไฟแทนเส้นขอบฟ้า",
   },
   {
     q: "ยกเลิกหรือเปลี่ยนตั๋ว Shibuya Sky ได้ไหม?",
@@ -372,14 +399,17 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>ตั๋ว Shibuya Sky</strong> คิดราคาตามเวลาที่คุณขึ้น: ตั๋วเว็บผู้ใหญ่ราคา <strong>¥2,700</strong>{" "}
-            สำหรับเข้าระหว่าง 10:00 ถึง 14:59 และ <strong>¥3,400</strong> สำหรับเข้าระหว่าง 15:00 ถึง 21:20 ส่วนตั๋ว
-            สองแบบเดียวกันที่เคาน์เตอร์ชั้น 14 ราคา ¥3,000 และ ¥3,700 — จองออนไลน์จึงประหยัด ¥300 ไม่ว่าเลือกช่วงไหน
-            และเด็กอายุ 6–12 ปีราคา ¥1,200 ขายที่เคาน์เตอร์เท่านั้น ซื้อได้จากเว็บไซต์ของผู้ให้บริการเองหรือแพลตฟอร์ม
-            ตัวแทนอย่าง Klook และควรซื้อเร็ว: แต่ละวันเปิดขาย<strong>เวลา 00:00 ตามเวลาญี่ปุ่น ล่วงหน้าสองสัปดาห์พอดี</strong>{" "}
-            และรอบที่หมดคือรอบพระอาทิตย์ตก เส้นตายที่แท้จริงจึงเป็นตอนที่วันของคุณเปิดขาย ไม่ใช่สัปดาห์ที่เดินทาง
-            จุดชมวิวเปิด 10:00–22:30 เข้ารอบสุดท้าย 21:20 ตัวเลขทั้งหมดตรวจสอบเมื่อ {CHECKED} — ราคาจากประกาศปรับ
-            ตั๋วของ Shibuya Scramble Square วันที่ 27 กุมภาพันธ์ 2025 เวลาเปิดจากเว็บไซต์ท่องเที่ยวของรัฐบาลกรุงโตเกียว
+            <strong>ตั๋ว Shibuya Sky ราคาออนไลน์ ¥2,700 สำหรับผู้ใหญ่ที่เข้า 10:00–14:59 และ ¥3,400 สำหรับเข้า
+            15:00–21:20</strong> ส่วนเคาน์เตอร์ชั้น 14 แพงกว่า ¥300 (¥3,000 / ¥3,700) ตั๋ว Shibuya Sky แต่ละวันเปิดขาย
+            <strong>เวลา 00:00 ตามเวลาญี่ปุ่น ล่วงหน้าสองสัปดาห์</strong> และรอบพระอาทิตย์ตกหมดก่อน จึงควรจองรอบพระอาทิตย์ตก
+            ทันทีที่วันของคุณเปิดขาย Shibuya Sky เปิด 10:00–22:30 (เข้ารอบสุดท้าย 21:20) ไม่จำกัดเวลาเมื่อเข้าไปแล้ว
+            และผู้เข้าชมส่วนใหญ่ใช้เวลาราว 90 นาที
+          </p>
+          <p className={styles.bodyText}>
+            เด็กอายุ 6–12 ปีราคา ¥1,200 ขายที่เคาน์เตอร์เท่านั้น และเด็กก่อนวัยเรียนเข้าฟรี ซื้อได้จากเว็บไซต์ของผู้ให้บริการเอง
+            หรือแพลตฟอร์มตัวแทนอย่าง Klook — เว็บไซต์ทางการปฏิเสธบัตรที่ออกนอกญี่ปุ่นจำนวนมากมาตั้งแต่กรกฎาคม 2024
+            ราคามาจากประกาศปรับตั๋วของ Shibuya Scramble Square วันที่ 27 กุมภาพันธ์ 2025 (ตรวจสอบเมื่อ {CHECKED}) ส่วนราคา
+            เวลาเปิด และกฎการอยู่ ตรวจสอบซ้ำเมื่อ {LAST_CHECKED} กับเว็บไซต์ของผู้ให้บริการและเว็บไซต์ท่องเที่ยวของรัฐบาลกรุงโตเกียว
           </p>
         </section>
 
@@ -464,6 +494,18 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </Link>
             {" "}ซึ่งระบุวันที่ตรวจสอบของแต่ละรายการ
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>ตรวจสอบล่าสุด: {LAST_CHECKED}</strong> · แหล่งที่มา:{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={linkStyle}>shibuya-scramble-square.com/sky/ticket/</a>
+            {" "}(ผู้ให้บริการ) และ{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={linkStyle}>gotokyo.org</a>
+            {" "}(รัฐบาลกรุงโตเกียว) ซึ่งแสดงราคาเดียวกัน
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              ดูรอบเวลาตั๋ว Shibuya Sky →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Klook, directly under the price table */}
@@ -488,7 +530,7 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", `Shibuya Sky (ตรวจสอบ ${CHECKED})`].map((h) => (
+                    {["", "Shibuya Sky"].map((h) => (
                       <th key={h || "blank"}>{h}</th>
                     ))}
                   </tr>
@@ -505,9 +547,20 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            เวลาเปิด เวลาเข้ารอบสุดท้าย และการปิดวันขึ้นปีใหม่ มาจากข้อมูล SHIBUYA SKY ของรัฐบาลกรุงโตเกียวบน
-            gotokyo.org ซึ่งเขียนตรงกันทั้งภาษาอังกฤษและภาษาญี่ปุ่น ตรวจสอบเมื่อ {CHECKED} ดาดฟ้าเป็นพื้นที่กลางแจ้ง
-            จึงอาจปิดในวันนั้นเมื่อลมแรง ฟ้าผ่า หรือฝนตกหนัก ขณะที่ชั้นในอาคารยังเปิดอยู่
+            <strong>ตรวจสอบล่าสุด: {LAST_CHECKED}</strong> · เวลาเปิดและเวลาเข้ารอบสุดท้าย:{" "}
+            <a href="https://www.shibuya-scramble-square.com/en/" target="_blank" rel="noopener" style={linkStyle}>shibuya-scramble-square.com</a>
+            {" "}(ผู้ให้บริการ) การจำกัดเวลา เวลาที่ใช้โดยทั่วไป การเดินทาง และการปิดวันขึ้นปีใหม่:{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={linkStyle}>gotokyo.org</a>
+            {" "}(รัฐบาลกรุงโตเกียว) ดาดฟ้าเป็นพื้นที่กลางแจ้ง จึงอาจปิดในวันนั้นเมื่อลมแรง ฟ้าผ่า หรือฝนตกหนัก
+            ขณะที่ชั้นในอาคารยังเปิดอยู่
+          </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            ควรใช้เวลาที่ Shibuya Sky นานแค่ไหน?
+          </h3>
+          <p className={styles.bodyText}>
+            เผื่อเวลาไว้ราว 90 นาที: Shibuya Sky ไม่จำกัดเวลาเมื่อเข้าไปแล้ว และนั่นคือเวลาที่ผู้เข้าชมส่วนใหญ่ใช้
+            ตามข้อมูลของรัฐบาลกรุงโตเกียว ตั๋วกำหนดแค่เวลาเข้า ดังนั้นการเข้ารอบ 30–60 นาทีก่อนพระอาทิตย์ตก
+            ทำให้อยู่ต่อจนเห็นเมืองเปิดไฟได้ ตราบใดที่ออกก่อน 22:30 ไม่มีการคืนเงินหลังเข้าชมแล้ว
           </p>
         </section>
 
@@ -561,9 +614,56 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>ควรจองรอบเวลาไหนของ Shibuya Sky?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             พระอาทิตย์ตกถ้าจองได้ ก่อน 15:00 ถ้าราคาเป็นตัวตัดสิน และค่ำดึกถ้ารอบพระอาทิตย์ตกหมดแล้ว พระอาทิตย์ตก
-            ในโตเกียวขยับจากราว 16:30 ในเดือนธันวาคมไปจนเลย 19:00 ในเดือนมิถุนายน รอบที่คนแย่งกันจึงไม่ใช่รอบเดิม
+            ในโตเกียวขยับจาก 16:29 ในกลางเดือนธันวาคมไปจนถึง 18:58 ในกลางเดือนมิถุนายน รอบที่คนแย่งกันจึงไม่ใช่รอบเดิม
             ตลอดปี — แต่อยู่ในช่วงราคา ¥3,400 เสมอ
           </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
+            รอบพระอาทิตย์ตกของ Shibuya Sky แต่ละเดือนคือกี่โมง?
+          </h3>
+          <p className={styles.bodyText}>
+            จองเวลาเข้า 30–60 นาทีก่อนเวลาพระอาทิตย์ตกในตารางด้านล่าง รอบนั้นหมดก่อนรอบอื่น จึงควรจองทันทีที่วันของคุณ
+            เปิดขายเวลา 00:00 ตามเวลาญี่ปุ่น ล่วงหน้าสองสัปดาห์
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["เดือน (วันที่ 15)", "พระอาทิตย์ตกในโตเกียว", "ควรจองเวลาเข้าราว"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sunsetRows.map((row) => {
+                    const [h, m] = row.sunset.split(":").map(Number);
+                    const start = h * 60 + m - 60;
+                    const end = h * 60 + m - 30;
+                    const fmt = (t: number) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
+                    return (
+                      <tr key={row.month}>
+                        <td className={styles.tdProvider}>{row.month}</td>
+                        <td className={styles.tdPrice}>{row.sunset}</td>
+                        <td style={{ fontSize: "0.88rem" }}>{fmt(start)}–{fmt(end)} (ช่วงราคา ¥3,400)</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>ตรวจสอบล่าสุด: {LAST_CHECKED}</strong> · แหล่งที่มา: เวลาพระอาทิตย์ตกในโตเกียวปี 2026 จาก{" "}
+            <a href={NAOJ_URL} target="_blank" rel="noopener" style={linkStyle}>หอดูดาวแห่งชาติญี่ปุ่น (NAOJ)</a>
+            {" "}ปีอื่นต่างกันหนึ่งถึงสองนาที &ldquo;ควรจองเวลาเข้าราว&rdquo; คือ 30–60 นาทีก่อนพระอาทิตย์ตก
+            เป็นคำแนะนำของคู่มือนี้ ไม่ใช่กฎของผู้ให้บริการ
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              ดูรอบพระอาทิตย์ตกสำหรับวันของคุณ →
+            </KlookLink>
+            <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
+          </div>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>

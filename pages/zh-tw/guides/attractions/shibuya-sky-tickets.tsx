@@ -37,6 +37,7 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // Mirrors the English guide (/guides/attractions/shibuya-sky-tickets) block for block as of
 // 2026-11-01: same sections, tables, Klook and GetYourGuide CTAs in the same places. Every
 // figure is the English page's own or read from lib/attraction-prices.ts; nothing is added.
+// 2026-11-11 (R09): synced with English — answer-first lead, Last checked lines, stay rule, sunset table.
 
 const LOCALE = "zh-tw" as const;
 const ROUTE = "/zh-tw/guides/attractions/shibuya-sky-tickets";
@@ -49,11 +50,32 @@ const GYG_SLUG = "zh-tw-shibuya-sky-tickets";
 
 const P = PRICES.shibuyaSky;
 const CHECKED = dateLabel(P.checked, LOCALE);
+const LAST_CHECKED = dateLabel("2026-11-11", LOCALE);
+const OFFICIAL_URL = "https://www.shibuya-scramble-square.com/sky/ticket/";
+const GOTOKYO_URL = "https://www.gotokyo.org/en/spot/1749/index.html";
+const NAOJ_URL = "https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1311.html";
+const sourceLink = { color: "var(--text)", fontWeight: 600 } as const;
+
+/** 2026 年每月 15 日的東京日落時間（日本國立天文台）。全部落在 ¥3,400 那一段。 */
+const sunsetRows = [
+  { month: "1 月", sunset: "16:50" },
+  { month: "2 月", sunset: "17:22" },
+  { month: "3 月", sunset: "17:48" },
+  { month: "4 月", sunset: "18:14" },
+  { month: "5 月", sunset: "18:39" },
+  { month: "6 月", sunset: "18:58" },
+  { month: "7 月", sunset: "18:57" },
+  { month: "8 月", sunset: "18:31" },
+  { month: "9 月", sunset: "17:49" },
+  { month: "10 月", sunset: "17:06" },
+  { month: "11 月", sunset: "16:35" },
+  { month: "12 月", sunset: "16:29" },
+];
 
 /** 依入場時段與購買管道區分的票價。 */
 const priceRows = [
-  { ticket: "成人，10:00～14:59 入場", online: "¥2,700", counter: "¥3,000" },
-  { ticket: "成人，15:00～21:20 入場", online: "¥3,400", counter: "¥3,700" },
+  { ticket: "成人，10:00～14:59 入場——最划算，建議線上預訂", online: "¥2,700", counter: "¥3,000" },
+  { ticket: "成人，15:00～21:20 入場——所有日落場次", online: "¥3,400", counter: "¥3,700" },
   {
     ticket: "兒童，6～12 歲（含仍就讀小學的 12 歲兒童）",
     online: "不在線上販售",
@@ -66,6 +88,8 @@ const priceRows = [
 const hoursRows = [
   { what: "開放時間", detail: "10:00～22:30" },
   { what: "最後入場", detail: "21:20" },
+  { what: "停留時間限制", detail: "無——想待多久都可以；多數遊客停留約 90 分鐘" },
+  { what: "交通", detail: "與澀谷站直通" },
   { what: "較便宜的時段", detail: "10:00～14:59 入場" },
   { what: "較貴的時段", detail: "15:00～21:20 入場——所有日落場次都落在這一段" },
   {
@@ -195,6 +219,10 @@ const faqItems: FaqItem[] = [
     a: `根據東京都官方觀光網站的資料（查核日 ${CHECKED}），澀谷SKY 開放時間為 10:00～22:30，最後入場 21:20。元旦休館，其他日子也可能臨時休館或縮短開放時間。開放時間不只影響行程，也影響票價：¥2,700 那一段到 14:59 為止，15:00 到 21:20 截止前一律 ¥3,400。`,
   },
   {
+    q: "澀谷SKY 可以待多久？",
+    a: `想待多久都可以：根據東京都官方觀光網站的資料（查核日 ${LAST_CHECKED}），澀谷SKY 入場後沒有停留時間限制，多數遊客停留約 90 分鐘。門票只固定入場時間，展望台 22:30 關閉。入場後不予退款，開放式屋頂遇惡劣天氣可能關閉。`,
+  },
+  {
     q: "澀谷SKY 需要事先預約嗎？",
     a: "想看日落的話，需要——而且這就是整件事的關鍵。白天或晚場通常不必急，但事先預訂每人仍比窗口省 ¥300，也免去想要的時段被訂走的風險。14 樓窗口當天確實有賣票，所以沒預約也不是進不去；當天做不到的，是自己決定什麼時候上去。",
   },
@@ -204,7 +232,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "澀谷SKY 哪個時段最先賣完？",
-    a: "日落場，而且遙遙領先——這是唯一一個能一次看到白天、黃金時刻與夜景的時段；東京的日落時間從 12 月的 16:30 左右到 6 月的 19:00 之後，所以最搶手的場次每個月都不一樣。白天時段最從容。晚場則是常見的備案：同樣是 ¥3,400，競爭少得多，看到的是亮燈的城市而不是地平線。",
+    a: "日落場，而且遙遙領先——這是唯一一個能一次看到白天、黃金時刻與夜景的時段；東京的日落時間從 12 月中旬的 16:29 到 6 月中旬的 18:58（日本國立天文台，2026 年），所以最搶手的場次每個月都不一樣。白天時段最從容。晚場則是常見的備案：同樣是 ¥3,400，競爭少得多，看到的是亮燈的城市而不是地平線。",
   },
   {
     q: "澀谷SKY 門票可以取消或更改嗎？",
@@ -368,13 +396,15 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>澀谷SKY 門票</strong>依上去的時間定價：官網成人票 10:00～14:59 入場為{" "}
-            <strong>¥2,700</strong>，15:00～21:20 入場為 <strong>¥3,400</strong>；同樣兩種票在 14 樓窗口買是
-            ¥3,000 與 ¥3,700——所以不論選哪一段，線上預訂都省 ¥300；6～12 歲兒童票 ¥1,200，只在窗口販售。
-            可以向營運方官網或 Klook 這類售票平台購買，而且要早點買：每個日期在
-            <strong>剛好兩週前的日本時間 00:00</strong> 開賣，賣完的就是日落場，所以實際的截止時間是你的日期開賣那一刻，
-            而不是出發那一週。展望台開放時間 10:00～22:30，最後入場 21:20。所有數字查核日 {CHECKED}——票價出自澀谷
-            Scramble Square 2025 年 2 月 27 日自己的票價改定，開放時間出自東京都的官方觀光網站。
+            <strong>澀谷SKY 門票線上購買，成人 10:00～14:59 入場 ¥2,700，15:00～21:20 入場 ¥3,400</strong>；14 樓窗口每段貴
+            ¥300（¥3,000／¥3,700）。澀谷SKY 每個日期在<strong>兩週前的日本時間 00:00</strong> 開賣，日落場最先賣完，
+            所以日落場要在你的日期開賣那一刻立刻訂。澀谷SKY 開放時間 10:00～22:30（最後入場 21:20），入場後沒有停留時間限制，
+            多數遊客停留約 90 分鐘。
+          </p>
+          <p className={styles.bodyText}>
+            6～12 歲兒童票 ¥1,200，只在窗口販售；學齡前兒童免費入場。可以向營運方官網或 Klook 這類售票平台購買——自
+            2024 年 7 月起，官網對許多海外發行的信用卡刷不過。票價出自澀谷 Scramble Square 2025 年 2 月 27 日自己的票價改定
+            （查核日 {CHECKED}）；票價、開放時間與停留規定已於 {LAST_CHECKED} 對照營運方官網與東京都官方觀光網站重新查核。
           </p>
         </section>
 
@@ -457,6 +487,18 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </Link>
             ，每一項都附上查核日期。
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最後查核：{LAST_CHECKED}</strong> · 來源：
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={sourceLink}>shibuya-scramble-square.com/sky/ticket/</a>
+            （營運方）與
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={sourceLink}>gotokyo.org</a>
+            （東京都，刊載相同票價）。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              查看澀谷SKY 可訂時段 →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Klook, directly under the price table: what the same day needs booking. */}
@@ -480,7 +522,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", `澀谷SKY（查核日 ${CHECKED}）`].map((h) => (
+                    {["", "澀谷SKY"].map((h) => (
                       <th key={h || "blank"}>{h}</th>
                     ))}
                   </tr>
@@ -497,8 +539,18 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            開放時間、最後入場與元旦休館，出自東京都官方觀光網站 gotokyo.org 上 SHIBUYA SKY 的資料，英文與日文版內容相同，
-            查核日 {CHECKED}。屋頂是開放式的，所以遇到強風、打雷或大雨時，屋頂可能當天關閉，室內樓層則照常開放。
+            <strong>最後查核：{LAST_CHECKED}</strong> · 開放時間與最後入場：
+            <a href="https://www.shibuya-scramble-square.com/en/" target="_blank" rel="noopener" style={sourceLink}>shibuya-scramble-square.com</a>
+            （營運方）。停留時間限制、一般停留時間、交通與元旦休館：
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={sourceLink}>gotokyo.org</a>
+            （東京都）。屋頂是開放式的，所以遇到強風、打雷或大雨時，屋頂可能當天關閉，室內樓層則照常開放。
+          </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            澀谷SKY 要待多久？
+          </h3>
+          <p className={styles.bodyText}>
+            預留約 90 分鐘：澀谷SKY 入場後沒有停留時間限制，根據東京都官方觀光網站，多數遊客就是停留這麼久。
+            門票只固定入場時間，所以在日落前 30～60 分鐘入場，就能一路待到城市亮燈，只要在 22:30 前離開即可。入場後不予退款。
           </p>
         </section>
 
@@ -550,9 +602,55 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>選時段</span>
           <h2 className={styles.sectionTitle}>澀谷SKY 該訂哪個時段？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            訂得到就選日落場；價格是關鍵就選 15 點前；日落場沒了就選晚場。東京的日落時間從 12 月的 16:30 左右
-            到 6 月的 19:00 之後，所以最搶手的場次並不是一整年都同一個——但它永遠落在 ¥3,400 那一段。
+            訂得到就選日落場；價格是關鍵就選 15 點前；日落場沒了就選晚場。東京的日落時間從 12 月中旬的 16:29
+            到 6 月中旬的 18:58，所以最搶手的場次並不是一整年都同一個——但它永遠落在 ¥3,400 那一段。
           </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
+            澀谷SKY 每個月的日落時段是幾點？
+          </h3>
+          <p className={styles.bodyText}>
+            請預訂比下表日落時間早 30～60 分鐘的入場時段。這個時段最先賣完，所以請在你的日期於兩週前日本時間 00:00
+            開賣時立刻訂。
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["月份（15 日）", "東京日落時間", "建議入場時間"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sunsetRows.map((row) => {
+                    const [h, m] = row.sunset.split(":").map(Number);
+                    const start = h * 60 + m - 60;
+                    const end = h * 60 + m - 30;
+                    const fmt = (t: number) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
+                    return (
+                      <tr key={row.month}>
+                        <td className={styles.tdProvider}>{row.month}</td>
+                        <td className={styles.tdPrice}>{row.sunset}</td>
+                        <td style={{ fontSize: "0.88rem" }}>{fmt(start)}～{fmt(end)}（¥3,400 那一段）</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最後查核：{LAST_CHECKED}</strong> · 來源：2026 年東京日落時間，出自
+            <a href={NAOJ_URL} target="_blank" rel="noopener" style={sourceLink}>日本國立天文台</a>
+            ；其他年份相差一兩分鐘。「建議入場時間」為日落前 30～60 分鐘，是本指南的建議，並非營運方規定。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              查看你的日期的日落時段 →
+            </KlookLink>
+            <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
+          </div>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>

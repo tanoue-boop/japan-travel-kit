@@ -37,6 +37,7 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 // Korean edition of /guides/attractions/shibuya-sky-tickets. Mirrors the English page as
 // of 2026-11-01 block by block — same sections, tables, FAQ, Klook and GetYourGuide CTAs —
 // with every figure taken from the English page or lib/attraction-prices.ts; nothing added.
+// 2026-11-11 (R09): synced with English — answer-first lead, Last checked lines, stay rule, sunset table.
 
 const ROUTE = "/ko/guides/attractions/shibuya-sky-tickets";
 const TITLE = "시부야 스카이 예약(2026): 티켓 가격과 예약 방법";
@@ -48,6 +49,26 @@ const P = PRICES.shibuyaSky;
 const CHECKED = dateLabel(P.checked, LOCALE);
 const ADULT = priceLabel(P.adult, LOCALE);
 const AT_DOOR = priceLabel(P.atDoor, LOCALE);
+const LAST_CHECKED = dateLabel("2026-11-11", LOCALE);
+const OFFICIAL_URL = "https://www.shibuya-scramble-square.com/sky/ticket/";
+const GOTOKYO_URL = "https://www.gotokyo.org/en/spot/1749/index.html";
+const NAOJ_URL = "https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1311.html";
+
+/** Tokyo sunset on the 15th of each month, 2026 (NAOJ). Every one falls in the ¥3,400 band. */
+const sunsetRows = [
+  { month: "1월", sunset: "16:50" },
+  { month: "2월", sunset: "17:22" },
+  { month: "3월", sunset: "17:48" },
+  { month: "4월", sunset: "18:14" },
+  { month: "5월", sunset: "18:39" },
+  { month: "6월", sunset: "18:58" },
+  { month: "7월", sunset: "18:57" },
+  { month: "8월", sunset: "18:31" },
+  { month: "9월", sunset: "17:49" },
+  { month: "10월", sunset: "17:06" },
+  { month: "11월", sunset: "16:35" },
+  { month: "12월", sunset: "16:29" },
+];
 
 // The same Klook listing as the English CTA, on Klook's Korean locale path.
 const SHIBUYA_SKY_URL = klookFor(shibuyaSkyTicketUrl, LOCALE);
@@ -55,8 +76,8 @@ const GYG_SLUG = "ko-shibuya-sky-tickets";
 
 /** What each ticket costs, by entry time and by where you buy it. */
 const priceRows = [
-  { ticket: "성인, 10:00~14:59 입장", online: "¥2,700", counter: "¥3,000" },
-  { ticket: "성인, 15:00~21:20 입장", online: "¥3,400", counter: "¥3,700" },
+  { ticket: "성인, 10:00~14:59 입장 — 가장 저렴, 온라인 예약", online: "¥2,700", counter: "¥3,000" },
+  { ticket: "성인, 15:00~21:20 입장 — 일몰 회차 전부", online: "¥3,400", counter: "¥3,700" },
   {
     ticket: "어린이, 만 6~12세(초등학생인 12세 포함)",
     online: "온라인 판매 없음",
@@ -69,6 +90,8 @@ const priceRows = [
 const hoursRows = [
   { what: "운영 시간", detail: "10:00~22:30" },
   { what: "마지막 입장", detail: "21:20" },
+  { what: "체류 시간 제한", detail: "없음 — 원하는 만큼 머물 수 있고, 대부분은 약 90분 머뭅니다" },
+  { what: "가는 법", detail: "시부야역과 바로 연결" },
   { what: "저렴한 시간대", detail: "10:00~14:59 입장" },
   { what: "비싼 시간대", detail: "15:00~21:20 입장 — 일몰 회차는 모두 이 시간대에 들어갑니다" },
   {
@@ -198,6 +221,10 @@ const faqItems: FaqItem[] = [
     a: `${CHECKED}에 확인한 도쿄도 공식 관광 사이트 기준으로 10:00~22:30 운영, 마지막 입장 21:20입니다. 1월 1일은 휴무이고, 그 밖의 날에도 임시 휴무나 단축 운영이 있을 수 있습니다. 운영 시간은 일정뿐 아니라 가격도 좌우합니다. ¥2,700 시간대는 14:59에 끝나고, 15:00부터 마감 21:20까지는 모두 ¥3,400입니다.`,
   },
   {
+    q: "시부야 스카이에는 얼마나 머물 수 있나요?",
+    a: `원하는 만큼 머물 수 있습니다. ${LAST_CHECKED}에 확인한 도쿄도 공식 관광 사이트에 따르면 시부야 스카이는 입장 후 체류 시간 제한이 없고, 대부분의 방문객은 약 90분 머뭅니다. 티켓이 정하는 것은 입장 시간뿐이며, 전망대는 22:30에 닫습니다. 입장 후에는 환불되지 않고, 야외 루프톱은 악천후 시 닫힐 수 있습니다.`,
+  },
+  {
     q: "시부야 스카이는 미리 예약해야 하나요?",
     a: "일몰이라면 네 — 사실상 그것이 전부입니다. 낮이나 늦은 회차는 보통 꼭 그렇지는 않지만, 예약하면 창구보다 1인당 ¥300 아끼고 원하는 시간이 사라질 위험도 없앨 수 있습니다. 14층 창구는 당일 판매를 하므로 예약 없이도 올라갈 수는 있습니다. 당일에 할 수 없는 것은 언제 올라갈지를 고르는 일입니다.",
   },
@@ -207,7 +234,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "시부야 스카이에서 가장 먼저 매진되는 회차는?",
-    a: "단연 일몰입니다. 낮, 골든아워, 야경을 한 번에 볼 수 있는 유일한 회차이고, 도쿄의 일몰은 12월 16:30 무렵부터 6월 19:00 이후까지 움직이므로 인기 회차도 달마다 바뀝니다. 낮 시간대가 가장 여유롭습니다. 늦은 저녁이 흔히 쓰는 대안입니다. 같은 ¥3,400 시간대에 경쟁은 훨씬 적고, 지평선 대신 불 켜진 도시를 봅니다.",
+    a: "단연 일몰입니다. 낮, 골든아워, 야경을 한 번에 볼 수 있는 유일한 회차이고, 도쿄의 일몰은 12월 중순 16:29부터 6월 중순 18:58까지 움직이므로(일본 국립천문대, 2026년) 인기 회차도 달마다 바뀝니다. 낮 시간대가 가장 여유롭습니다. 늦은 저녁이 흔히 쓰는 대안입니다. 같은 ¥3,400 시간대에 경쟁은 훨씬 적고, 지평선 대신 불 켜진 도시를 봅니다.",
   },
   {
     q: "시부야 스카이 티켓을 취소하거나 변경할 수 있나요?",
@@ -372,15 +399,18 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>시부야 스카이 티켓</strong>은 올라가는 시간에 따라 가격이 정해집니다. 성인 웹 티켓은
-            10:00~14:59 입장이 <strong>¥2,700</strong>, 15:00~21:20 입장이 <strong>¥3,400</strong>이고, 같은 두
-            티켓을 14층 창구에서 사면 ¥3,000과 ¥3,700입니다. 어느 시간대든 온라인 예약이 ¥300 저렴하며, 만
-            6~12세 어린이는 창구에서만 ¥1,200에 판매합니다. 운영사 공식 사이트나 클룩 같은 예약 플랫폼에서
-            살 수 있고, 일찍 사는 것이 중요합니다. 각 날짜는 <strong>정확히 2주 전 일본 시간 00:00</strong>에
-            판매가 시작되고 매진되는 것은 일몰 회차이므로, 실제 마감은 여행 주간이 아니라 그 날짜가 열리는
-            순간입니다. 운영 시간은 10:00~22:30, 마지막 입장은 21:20입니다. 모든 수치는 {CHECKED}에 확인했습니다
-            — 가격은 시부야 스크램블 스퀘어가 2025년 2월 27일에 발표한 입장권 개정, 운영 시간은 도쿄도의 관광
-            사이트 기준입니다.
+            <strong>시부야 스카이 티켓은 온라인 기준 성인 10:00~14:59 입장이 ¥2,700, 15:00~21:20 입장이
+            ¥3,400입니다</strong>. 14층 창구에서는 각각 ¥300 더 비쌉니다(¥3,000 / ¥3,700). 시부야 스카이
+            티켓은 각 날짜가 <strong>2주 전 일본 시간 00:00</strong>에 판매가 시작되고 일몰 회차가 가장 먼저
+            매진되므로, 일몰은 날짜가 열리는 순간에 예약하세요. 시부야 스카이는 10:00~22:30 운영(마지막 입장
+            21:20)이며, 입장 후 체류 시간 제한이 없고 대부분의 방문객은 약 90분 머뭅니다.
+          </p>
+          <p className={styles.bodyText}>
+            만 6~12세 어린이는 창구에서만 ¥1,200에 판매하고, 미취학 아동은 무료입니다. 운영사 공식 사이트나
+            클룩 같은 예약 플랫폼에서 살 수 있습니다 — 공식 사이트는 2024년 7월부터 해외 발급 카드를 상당수
+            거부하고 있습니다. 가격은 시부야 스크램블 스퀘어가 2025년 2월 27일에 발표한 입장권 개정 기준이며
+            ({CHECKED} 확인), 가격・운영 시간・체류 규정은 {LAST_CHECKED}에 운영사 사이트와 도쿄도 관광
+            사이트에서 다시 확인했습니다.
           </p>
         </section>
 
@@ -465,6 +495,18 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </Link>
             에 정리되어 있으며, 항목마다 확인 날짜가 붙어 있습니다.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>최종 확인: {LAST_CHECKED}</strong> · 출처:{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={linkStyle}>shibuya-scramble-square.com/sky/ticket/</a>
+            {" "}(운영사),{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={linkStyle}>gotokyo.org</a>
+            {" "}(도쿄도 — 같은 가격 게재).
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              시부야 스카이 티켓 회차 보기 →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Klook, directly under the price table */}
@@ -489,7 +531,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", `시부야 스카이(${CHECKED} 확인)`].map((h) => (
+                    {["", "시부야 스카이"].map((h) => (
                       <th key={h || "blank"}>{h}</th>
                     ))}
                   </tr>
@@ -506,9 +548,20 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            운영 시간, 마지막 입장, 1월 1일 휴무는 도쿄도가 gotokyo.org에 게재한 SHIBUYA SKY 정보 기준이며, 영어와
-            일본어 페이지 내용이 같습니다. 확인일은 {CHECKED}입니다. 루프톱은 야외이므로 강풍, 낙뢰, 폭우가 있는
-            날에는 당일에 닫힐 수 있고, 그때도 실내 층은 운영합니다.
+            <strong>최종 확인: {LAST_CHECKED}</strong> · 운영 시간과 마지막 입장:{" "}
+            <a href="https://www.shibuya-scramble-square.com/en/" target="_blank" rel="noopener" style={linkStyle}>shibuya-scramble-square.com</a>
+            {" "}(운영사). 체류 시간 제한, 평균 체류 시간, 가는 법, 1월 1일 휴무:{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={linkStyle}>gotokyo.org</a>
+            {" "}(도쿄도). 루프톱은 야외이므로 강풍, 낙뢰, 폭우가 있는 날에는 당일에 닫힐 수 있고, 그때도 실내
+            층은 운영합니다.
+          </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            시부야 스카이에서는 얼마나 머물면 될까?
+          </h3>
+          <p className={styles.bodyText}>
+            약 90분을 잡으세요. 시부야 스카이는 입장 후 체류 시간 제한이 없고, 도쿄도 관광 사이트에 따르면
+            대부분의 방문객이 그 정도 머뭅니다. 티켓이 정하는 것은 입장 시간뿐이므로, 일몰 30~60분 전에
+            입장하면 22:30 폐장 전까지 그대로 남아 야경까지 볼 수 있습니다. 입장 후에는 환불되지 않습니다.
           </p>
         </section>
 
@@ -562,9 +615,56 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>시부야 스카이는 어느 회차를 예약해야 할까?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             잡을 수 있다면 일몰, 가격이 우선이라면 15시 전, 일몰이 이미 없다면 늦은 저녁입니다. 도쿄의 일몰은
-            12월 16:30 무렵부터 6월 19:00 이후까지 움직이므로 인기 회차는 1년 내내 같은 시간이 아닙니다 — 하지만
+            12월 중순 16:29부터 6월 중순 18:58까지 움직이므로 인기 회차는 1년 내내 같은 시간이 아닙니다 — 하지만
             언제나 ¥3,400 시간대 안에 있습니다.
           </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
+            시부야 스카이 일몰 회차는 달마다 언제일까?
+          </h3>
+          <p className={styles.bodyText}>
+            아래 일몰 시각보다 30~60분 이른 입장을 예약하세요. 그 회차가 가장 먼저 매진되므로, 2주 전 일본 시간
+            00:00에 날짜가 열리면 바로 예약하세요.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["월(15일 기준)", "도쿄 일몰", "추천 입장 시간"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sunsetRows.map((row) => {
+                    const [h, m] = row.sunset.split(":").map(Number);
+                    const start = h * 60 + m - 60;
+                    const end = h * 60 + m - 30;
+                    const fmt = (t: number) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
+                    return (
+                      <tr key={row.month}>
+                        <td className={styles.tdProvider}>{row.month}</td>
+                        <td className={styles.tdPrice}>{row.sunset}</td>
+                        <td style={{ fontSize: "0.88rem" }}>{fmt(start)}~{fmt(end)}(¥3,400 시간대)</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>최종 확인: {LAST_CHECKED}</strong> · 출처: 2026년 도쿄 일몰 시각,{" "}
+            <a href={NAOJ_URL} target="_blank" rel="noopener" style={linkStyle}>일본 국립천문대</a>
+            . 다른 해는 1~2분 차이가 납니다. &ldquo;추천 입장 시간&rdquo;은 일몰 30~60분 전으로, 운영사 규정이
+            아니라 이 가이드의 제안입니다.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              내 날짜의 일몰 회차 보기 →
+            </KlookLink>
+            <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
+          </div>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>

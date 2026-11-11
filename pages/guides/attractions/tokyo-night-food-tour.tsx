@@ -531,6 +531,11 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
             </Link>{" "}
             — and the guided night tour from Ueno through Akihabara to the Shibuya crossing, which is a
             lights-and-streets evening with the train fares between stops included rather than a bar crawl.
+            A Shibuya evening can also start on the rooftop: our{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Shibuya Sky tickets guide
+            </Link>{" "}
+            lists the sunset slot for each month and the ¥3,400 band it falls in.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoNightTourAkihabaraShibuya.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>

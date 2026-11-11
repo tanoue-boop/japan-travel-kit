@@ -605,7 +605,9 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-observation-decks">observation deck</Link> or a{" "}
             <Link href="/guides/attractions/tokyo-bay-cruise">Tokyo Bay cruise</Link> gives you the
             city as a whole &mdash; Rainbow Bridge, Tokyo Tower, the Odaiba waterfront &mdash; which
-            no street-level display does.
+            no street-level display does. For the open-air version above the Scramble Crossing, our{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets</Link> guide has the
+            ¥3,400 evening band and the month-by-month sunset slot.
           </p>
         </section>
 
