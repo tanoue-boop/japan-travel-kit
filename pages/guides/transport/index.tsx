@@ -67,7 +67,9 @@ export default function GuidesTransportPage({ dates }: { dates: Record<string, s
             <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> covers all Tokyo Metro
             and Toei Subway lines for 24, 48 or 72 hours;{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--text)", fontWeight: 600 }}>how many rides make the Tokyo Subway Ticket worth it</Link>{" "}
-            is worked out against the official fares.
+            is worked out against the official fares. On a day of only a few rides, tapping{" "}
+            <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--text)", fontWeight: 600 }}>an IC card such as Suica, PASMO or ICOCA</Link>{" "}
+            usually comes out cheaper than a pass.
           </PartnerPick>
         }
       />

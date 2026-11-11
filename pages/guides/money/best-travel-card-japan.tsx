@@ -479,7 +479,8 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             <Link href="/guides/money/revolut-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Revolut card in Japan</Link>{" "}
             guides, or{" "}
             <Link href="/guides/money/wise-vs-revolut-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Wise vs Revolut for Japan</Link>{" "}
-            for the two side by side.
+            for the two side by side. For the transit IC cards that pay train and bus fares (Suica, PASMO, ICOCA), see{" "}
+            <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--red)", fontWeight: 600 }}>IC cards in Japan</Link>.
           </p>
           <a href={WISE_CARD_CTA} className={styles.verdictBtn} target="_blank" rel={WISE_REL}>
             Get a Wise card before you fly →

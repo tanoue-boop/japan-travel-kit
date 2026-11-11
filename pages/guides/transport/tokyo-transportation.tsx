@@ -333,9 +333,14 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             convenience stores, vending machines, and some restaurants.
           </p>
           <p className={styles.bodyText}>
-            The easiest way to get a Suica is through the <strong>Wallet app on iPhone</strong> or <strong>Google Pay on Android</strong>
-            — no physical card required. Alternatively, buy a physical Suica or Pasmo at any major station, or pre-order
-            a Suica on Klook before you travel to have it ready to use when you land.
+            The easiest way to get a Suica is through the <strong>Wallet app on iPhone</strong> — no physical card
+            required. Alternatively, buy a physical Suica or Pasmo at any major station, or pre-order a Suica on Klook
+            before you travel to have it ready to use when you land. Android phones bought outside Japan generally cannot
+            run the mobile versions, and the no-deposit Welcome Suica and TOURIST PASMO expire after 28 days — our{" "}
+            <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              IC cards in Japan guide
+            </Link>{" "}
+            compares Suica, PASMO and ICOCA with their deposits and refunds.
           </p>
           <div style={{ margin: "1.5rem 0" }}>
             <KlookLink

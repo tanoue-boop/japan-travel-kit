@@ -2,6 +2,8 @@
 
 新しい記録を上に追記する。
 
+- 2026-11-11 /guides/transport/ic-cards-japan（task-jtk-20261111-R02）：「IC Cards Japan 2026: Suica, PASMO & ICOCA Compared」→「IC Cards in Japan (2026): Suica vs PASMO vs ICOCA」。改善前：Google 28日（10/12〜11/08）159表示・0クリック・41.5位（ic cards 16表示66.1位、ic card 13・64.3位、travel cards japan 9・68.8位、contactless ic card 5・62.2位）、Bing（11/04〜11/08）20表示・1クリック・CTR5.0%・6.70位。冒頭を「どれを・どこで・いくらで」に、カード比較表に iPhone/Android 列と Welcome Suica Mobile・TOURIST PASMO（PASMO PASSPORT 廃止）を追加、使える場所の表、1日の交通費とパスの損得表＋直後に Klook ボタン（地下鉄パス・Osaka Amazing Pass・N'EX・Haruka・eSIM）、質問見出し5本と FAQ 4問。best-travel-card-japan とは「交通系IC／クレジット・デビット」で分け、相互に1文リンク。
+
 ## 2026-11-10：1ページ目（4〜10位）なのに CTR 1%未満の10ページの title・description・H1・冒頭（task-jtk-20261110-C01）
 
 - 基準：GSC 28日（10/12〜11/08）。効果測定は 11/24 以降（日次PDCA）。本文の表・節は変更なし（cooking-class の質問 H2 1節、safetywing・teamlab-botanical のボタン各1つは追加）。

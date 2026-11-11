@@ -50,9 +50,36 @@ import { articleJsonLd } from "../../../lib/structured-data";
  *      are each sold in their own denominations.
  */
 
+/*
+ * Rank-fix pass, 11 Nov 2026 (task-jtk-20261111-R02).
+ *
+ * Google, 28 days to 8 Nov: 159 impressions, 0 clicks, position 41.5, spread over
+ * "ic cards", "ic card", "travel cards japan" and "contactless ic card" at 59–71.
+ * Bing showed it at 6.70 with one click; its words were "new ic card in japan" and
+ * "pasmo card japan". "travel cards japan" also lands on best-travel-card-japan, so
+ * this page now says in its title and opening that it is about transit IC cards
+ * (Suica, PASMO, ICOCA) and hands credit and debit cards to that page.
+ *
+ * Re-read on 11 Nov 2026: TOURIST PASMO (pasmo.co.jp/tourist-pasmo — Narita sells
+ * ¥2,000 at the Skyliner & Keisei Information Centers, Haneda ¥1,000–¥10,000 from
+ * Keikyu machines, 28 days, no deposit, no refund), PASMO's visitor page (the
+ * PASMO PASSPORT rules abolished 4 Oct 2024; Android handsets bought abroad
+ * generally not supported), JR West's English ICOCA page (¥2,000 including ¥500 at
+ * the Kansai-Airport office, ICOCA on Apple Pay) and the App Store listing for
+ * Welcome Suica Mobile (iPhone, iOS 17.2+, 180 days, no deposit, no refund). JR
+ * East's own pages refused the fetch that day, so the Welcome Suica card figures
+ * keep their 28 Oct reading and say so.
+ */
+
 /** The day every operator figure on this page was read. */
 const CHECKED_ISO = "2026-10-28";
 const CHECKED = checkedLabel(CHECKED_ISO);
+
+/** The figures re-read on 11 Nov 2026 (TOURIST PASMO, ICOCA, Welcome Suica Mobile, PASMO mobile). */
+const RECHECKED = checkedLabel("2026-11-11");
+
+/** Kyoto fares and pass price, from our Kyoto subway and bus pass guide. */
+const KYOTO_NOTE = "Kyoto fares from our Kyoto pass guide";
 
 /**
  * JR Pass prices come from our own JR Pass guide, which read the JR Group's price
@@ -74,62 +101,74 @@ const OSAKA_CHECKED = checkedLabel("2026-10-20");
  * JR West's ICOCA page (¥2,000 including the ¥500 deposit, the ¥220 commission, the
  * ¥20,000 cap); JR East's Welcome Suica pages (no deposit, 28 days, no refund); and
  * the PASMO Committee's 17 April 2026 press release for TOURIST PASMO. The Apple
- * Wallet row is Apple's own support documentation.
+ * Wallet lines are Apple's own support documentation. Re-read on 11 November 2026:
+ * the TOURIST PASMO, ICOCA, Welcome Suica Mobile and Mobile PASMO cells, each of
+ * which says which date it carries.
  */
-const cardRows = [
-  {
-    card: "Suica",
-    sub: "JR East",
-    buy: "Ticket machines at JR East stations in the Suica area. Unregistered and registered (My Suica) cards both went back on sale on 1 March 2025 after the chip shortage.",
-    deposit: "¥500, inside the purchase price",
-    refund: "Deposit back plus the balance less a ¥220 handling fee at a JR East ticket office; with a balance under ¥220 you still get the ¥500 back",
-    valid: "No expiry date, but a card unused for 10 years becomes invalid",
-    where: "Every area of the ten mutually usable transit IC cards",
-  },
-  {
-    card: "PASMO",
-    sub: "PASMO Co. — Tokyo Metro, Toei, private rail and bus",
-    buy: "Ticket machines and ticket counters of PASMO Committee operators; sale points differ by operator. Unregistered cards resumed on 1 March 2025.",
-    deposit: "¥500 — the sale price is ¥1,000 including it",
-    refund: "¥220 handling fee per card (or the balance, if it is smaller), and the ¥500 deposit back",
-    valid: "No expiry published on the pages read",
-    where: "Same nationwide network; top-ups stop at ¥20,000 (¥10,001 on a bus)",
-  },
-  {
-    card: "ICOCA",
-    sub: "JR West",
-    buy: "JR West ticket machines and Midori-no-madoguchi offices in the ICOCA area — JR West names the Kansai-Airport Station office for arrivals",
-    deposit: "¥500, inside a ¥2,000 purchase that leaves ¥1,500 to spend",
-    refund: "¥500 deposit back at a JR ticket office in the area; any balance comes back too, less a ¥220 commission",
-    valid: "No expiry published on the pages read",
-    where: "“All across Japan on railways and buses, and at stores displaying the IC or ICOCA mark”",
-  },
+type CardRow = {
+  card: string;
+  sub: string;
+  buy: string;
+  deposit: string;
+  refund: string;
+  valid: string;
+  phone: string;
+};
+
+const cardRows: CardRow[] = [
   {
     card: "Welcome Suica",
-    sub: "JR East, visitors only",
-    buy: "Welcome Suica vending machines at Narita Terminal 1, Narita Terminal 2·3 and Haneda Terminal 3 stations, and JR EAST Travel Service Centers, JAPAN RAIL CAFÉ TOKYO and the TAKANAWA GATEWAY Travel Service Center",
+    sub: "JR East, visitors only — plastic card",
+    buy: "Welcome Suica vending machines at Narita Terminal 1, Narita Terminal 2·3 and Haneda Terminal 3 stations, and JR EAST Travel Service Centers, JAPAN RAIL CAFÉ TOKYO and the TAKANAWA GATEWAY Travel Service Center. ¥1,000–¥10,000 denominations. Read 28 October 2026",
     deposit: "None",
     refund: "None — the balance is not refunded, faulty cards aside",
-    valid: "28 days including the day you buy it; invalid on the 29th",
-    where: "As Suica. Sold at ¥1,000, ¥2,000, ¥3,000, ¥4,000, ¥5,000 and ¥10,000; top-ups stop at ¥20,000",
+    valid: "28 days including the day you buy it",
+    phone: "Plastic card only — no phone version of this product",
+  },
+  {
+    card: "Welcome Suica Mobile",
+    sub: "JR East app, visitors only",
+    buy: "Download the app from the App Store and issue the Suica in it, then top up in the app; no machine involved. Read 11 November 2026",
+    deposit: "None — “No deposit or issuance fee is required”",
+    refund: "None — “Refunds are not available”, so spend the balance before you leave",
+    valid: "180 days from issue; a new one can be issued in the same app",
+    phone: "iPhone on iOS 17.2 or later, Apple Watch Series 3 or later. No Android yet: JR East's 21 April 2026 release plans Samsung Galaxy phones sold overseas for the first half of 2027",
   },
   {
     card: "TOURIST PASMO",
-    sub: "PASMO Committee, visitors only — launched May 2026",
-    buy: "Ticket windows and ticket machines at stations and other locations at Narita and Haneda airports",
-    deposit: "None",
-    refund: "None, “including unused funds”",
-    valid: "28 days from the date of issue",
-    where: "As PASMO. ¥2,000 at Narita; ¥1,000–¥10,000 denominations at Haneda, each holding its own purchase price in value",
+    sub: "PASMO, visitors only — replaced PASMO PASSPORT",
+    buy: "Narita: ¥2,000 at the SKYLINER & KEISEI INFORMATION CENTER in Terminal 1 and Terminal 2 stations. Haneda: ¥1,000, ¥2,000, ¥3,000, ¥4,000, ¥5,000 or ¥10,000 from Keikyu ticket machines at Terminal 1·2 and Terminal 3, credit cards accepted. PASMO PASSPORT is no longer sold — PASMO lists its rules as abolished on 4 October 2024. Read 11 November 2026",
+    deposit: "None — the price you pay is the value on the card",
+    refund: "None — “Value added to TOURIST PASMO will not be refunded”",
+    valid: "28 days from the date of purchase",
+    phone: "Plastic card only",
   },
   {
-    card: "Suica / PASMO / ICOCA in Apple Wallet",
-    sub: "Mobile Suica and Apple Pay PASMO",
-    buy: "The Wallet app: Add → Transit Card → Add New Card creates a brand-new card with no physical card involved",
-    deposit: "None — the ¥500 deposit exists to get a plastic card back",
-    refund: "Nothing to return, so the deposit question does not arise",
-    valid: "No expiry published; the visitor-only Welcome Suica Mobile app issues a Suica valid 180 days",
-    where: "As the plastic version, with Express Mode for one card at a time",
+    card: "ICOCA",
+    sub: "JR West — Osaka, Kyoto, Kansai Airport",
+    buy: "JR West ticket machines with the ICOCA mark (cash only) and Midori-no-madoguchi offices; JR West names the Kansai-Airport Station office for arrivals, where a visitor-design ICOCA is sold one per person on a foreign passport. Read 11 November 2026",
+    deposit: "¥500, inside a ¥2,000 purchase that leaves ¥1,500 to spend",
+    refund: "¥500 back at a JR ticket office in the area, plus any balance less a ¥220 commission. Read 28 October 2026",
+    valid: "No expiry published on the pages read",
+    phone: "ICOCA on Apple Pay (iPhone) — JR West names nothing for Android",
+  },
+  {
+    card: "Suica",
+    sub: "JR East — Tokyo and eastern Japan",
+    buy: "Ticket machines at JR East stations in the Suica area; unregistered cards back on sale since 1 March 2025 after the chip shortage. Read 28 October 2026",
+    deposit: "¥500, inside the purchase price",
+    refund: "Deposit back plus the balance less a ¥220 handling fee at a JR East ticket office; with under ¥220 left you still get the ¥500",
+    valid: "No expiry date, but a card unused for 10 years becomes invalid",
+    phone: "iPhone and Apple Watch: add a new Suica in Apple Wallet, no deposit",
+  },
+  {
+    card: "PASMO",
+    sub: "Tokyo Metro, Toei, private rail and bus",
+    buy: "Ticket machines and counters of PASMO operators; ¥1,000 including the deposit. Read 28 October 2026",
+    deposit: "¥500 — inside the ¥1,000 sale price",
+    refund: "¥220 handling fee (or the balance, if smaller), and the ¥500 deposit back",
+    valid: "No expiry published on the pages read",
+    phone: "iPhone and Apple Watch in Wallet; Android only on phones bought in Japan — PASMO says handsets bought abroad are generally not supported. Read 11 November 2026",
   },
 ];
 
@@ -184,13 +223,82 @@ const passRows = [
   },
 ];
 
-/** Where a tap works, with the operator or ministry page behind each line. */
-const worksOn = [
-  "Trains and buses across the areas of the ten mutually usable transit IC cards — Kitaca, PASMO, Suica, TOICA, manaca, ICOCA, PiTaPa, SUGOCA, nimoca and Hayakaken, interoperable since 23 March 2013",
-  "Tokyo Metro and Toei Subway, and the JR East lines a JR Pass does not cover",
-  "Convenience stores: 7-Eleven lists transit IC money alongside credit, debit and the code-payment apps",
-  "Vending machines carrying the IC mark — Coca-Cola's multi-money machines list all ten cards",
-  "Taxis in the big cities: km Taxi in Tokyo lists Suica, PASMO, ICOCA and seven more",
+/**
+ * What a day of moving around costs on the card, against the pass that competes with
+ * it. Pure arithmetic on the fares in passRows above and the Kyoto pass guide: no
+ * figure here that is not already sourced on this page or the guide it links to.
+ */
+const dayRows = [
+  {
+    day: "Tokyo, light day — 3 short Metro rides",
+    ic: "¥534 at ¥178 a ride (1–6 km)",
+    pass: "Tokyo Subway Ticket 24 h, ¥1,000",
+    winner: "IC card, by about ¥466",
+  },
+  {
+    day: "Tokyo, busy day — 6 Metro rides",
+    ic: "¥1,068 at ¥178 a ride; more on longer rides (up to ¥324)",
+    pass: "Tokyo Subway Ticket 24 h, ¥1,000",
+    winner: "Pass, narrowly — and more so on longer rides",
+  },
+  {
+    day: "Tokyo, 3 days × 4 Metro rides",
+    ic: "¥2,136 at ¥178 a ride",
+    pass: "Tokyo Subway Ticket 72 h, ¥2,000",
+    winner: "Pass, by ¥136 or more",
+  },
+  {
+    day: "Osaka, weekday — 4 rides at the ¥240 fare",
+    ic: "¥960",
+    pass: "Enjoy Eco Card, ¥820 weekday (¥620 weekend)",
+    winner: "Pass, by ¥140 (¥340 at the weekend)",
+  },
+  {
+    day: "Osaka, 2 rides",
+    ic: "¥480",
+    pass: "Enjoy Eco Card, ¥620–¥820",
+    winner: "IC card",
+  },
+  {
+    day: "Kyoto, temple day — 5 city-bus rides at ¥230",
+    ic: "¥1,150",
+    pass: "Subway & Bus 1-Day Pass, ¥1,100",
+    winner: "Pass, by ¥50 — IC card below five rides",
+  },
+];
+
+/** Where a tap works, with the operator page behind each row. */
+const whereRows = [
+  {
+    place: "Trains and subways",
+    works: "Yes",
+    note: "JR, Tokyo Metro, Toei, Osaka Metro, Kyoto subway and the private railways, across the areas of the ten mutually usable cards (Kitaca, PASMO, Suica, TOICA, manaca, ICOCA, PiTaPa, SUGOCA, nimoca, Hayakaken) since 23 March 2013",
+  },
+  {
+    place: "Buses",
+    works: "Yes, in IC areas",
+    note: "City buses in Tokyo, Osaka and Kyoto; a top-up made on a bus stops at ¥10,001",
+  },
+  {
+    place: "Convenience stores",
+    works: "Yes",
+    note: "7-Eleven lists transit IC money alongside credit, debit and the code-payment apps",
+  },
+  {
+    place: "Vending machines",
+    works: "Where the IC mark is shown",
+    note: "Coca-Cola's multi-money machines list all ten cards; what one machine takes differs machine by machine",
+  },
+  {
+    place: "Taxis",
+    works: "Many, in big cities",
+    note: "km Taxi in Tokyo lists Suica, PASMO, ICOCA and seven more",
+  },
+  {
+    place: "Shinkansen and reserved expresses",
+    works: "Fare only",
+    note: "The limited-express or seat ticket is a separate purchase, so a bare tap does not buy a seat",
+  },
 ];
 
 const doesNotWork = [
@@ -249,7 +357,7 @@ const mobileSections = [
   },
   {
     title: "Welcome Suica Mobile, for visitors",
-    desc: "JR East released an iOS-only app for overseas visitors on 6 March 2025 that issues and tops up a Suica, valid for 180 days from issue, and sells ticketless express seats on the Narita Express and other limited expresses. Some countries' rules mean you may not be able to set it up until you have landed.",
+    desc: "JR East released an iOS-only app for overseas visitors on 6 March 2025 that issues and tops up a Suica, valid for 180 days from issue, with no deposit or issuance fee and no refund of the balance, and sells ticketless express seats on the Narita Express and other limited expresses. It needs iOS 17.2 or later; JR East's 21 April 2026 release plans a version for Samsung Galaxy phones sold overseas in the first half of 2027. Some countries' rules mean you may not be able to set it up until you have landed.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.18 12 19.79 19.79 0 0 1 1.07 3.4 2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z" />
@@ -279,6 +387,19 @@ const passPaths: KlookPath[] = [
     cta: "Check the Osaka pass →",
     url: osakaAmazingPass.url,
   },
+];
+
+/**
+ * The buttons straight after the cost tables (11 Nov 2026): the two city passes and
+ * the two airport trains at 5%, and the Klook eSIM at 20%. Existing constants only —
+ * no new links or ad ids.
+ */
+const costButtons: { label: string; url: string }[] = [
+  { label: "Tokyo Subway Ticket on Klook →", url: tokyoSubwayTicket.url },
+  { label: "Osaka Amazing Pass on Klook →", url: osakaAmazingPass.url },
+  { label: "Narita Express round trip →", url: naritaExpressRoundTripUrl },
+  { label: "JR Haruka from Kansai Airport →", url: jrHarukaUrl },
+  { label: "Klook Japan eSIM →", url: klookEsim.url },
 ];
 
 const jrPassPaths: KlookPath[] = [
@@ -329,16 +450,20 @@ const faqItems = [
     a: `An IC card is a rechargeable contactless smart card that pays train, subway and bus fares and works as electronic money in shops. You touch it to the reader going in and coming out, and the fare is taken off the balance. Ten of them — Kitaca, PASMO, Suica, TOICA, manaca, ICOCA, PiTaPa, SUGOCA, nimoca and Hayakaken — have been mutually usable since 23 March 2013, so one card covers trains and buses in every participating area from Hokkaido to Kyushu. A visitor normally ends up with Suica, PASMO or ICOCA, or the 28-day Welcome Suica or TOURIST PASMO. Checked ${CHECKED}.`,
   },
   {
-    q: "What is the best IC card for tourists in Japan?",
-    a: `Whichever one the machine in front of you sells. Suica, PASMO and ICOCA carry the same ¥500 deposit, the same ¥220 refund fee and the same national coverage, so there is no card to hunt for — only a machine. Suica comes from JR East machines, PASMO from Tokyo Metro, Toei, private rail and bus operators, ICOCA from JR West. If your trip is under four weeks and you would rather not deal with a refund at all, the no-deposit Welcome Suica and TOURIST PASMO do the same job for 28 days. Checked ${CHECKED}.`,
+    q: "Which IC card should tourists buy in 2026?",
+    a: `On an iPhone, add a Suica, PASMO or ICOCA in Apple Wallet, or install Welcome Suica Mobile (valid 180 days, no deposit, no refund) — no machine, no deposit. With a plastic card in Tokyo, a trip under four weeks suits a Welcome Suica (Narita and Haneda Terminal 3 stations) or a TOURIST PASMO (¥2,000 at Narita, ¥1,000–¥10,000 at Haneda): no deposit, 28 days, the balance not refunded. Arriving at Kansai Airport, or coming back to Japan later, buy an ICOCA at ¥2,000 including a ¥500 deposit you get back. All of them work on the same national network. Checked ${RECHECKED}.`,
   },
   {
-    q: "How much does a Suica or PASMO card cost, and do I get the deposit back?",
-    a: `PASMO's own sale price is ¥1,000, of which ¥500 is a deposit that cannot be spent on fares or shopping. Suica works the same way, with the ¥500 deposit inside the purchase price. You get that ¥500 back when you hand the card in: JR East and PASMO both deduct a ¥220 handling fee from the remaining balance — or the whole balance if it is less than ¥220 — and return the ¥500 regardless. A card with ¥1,000 on it therefore refunds ¥1,280. ICOCA is priced at ¥2,000 including the ¥500 deposit, leaving ¥1,500 to spend, and JR West charges the same ¥220 commission. Checked ${CHECKED}.`,
+    q: "Is PASMO PASSPORT still sold?",
+    a: `No. PASMO's visitor page lists the rules for PASMO PASSPORT as abolished on 4 October 2024. Its successor is TOURIST PASMO, sold only at Narita (¥2,000, at the Skyliner & Keisei Information Centers in Terminal 1 and Terminal 2 stations) and Haneda (¥1,000 to ¥10,000 from Keikyu ticket machines), valid 28 days from purchase, with no deposit and no refund of the value on it. Checked ${RECHECKED}.`,
   },
   {
-    q: "Can I use Suica on my iPhone?",
-    a: `Yes, and you can create one without ever touching a plastic card. Apple's documentation covers Suica, PASMO, ICOCA and TOICA in Wallet: Add → Transit Card → Add New Card → choose an amount. It needs an iPhone 8 or 8 Plus or later, or an iPhone 7 or later for Suica specifically, or an Apple Watch Series 3 or later — Series 2 or later if bought in Japan — plus an Apple Account with two-factor authentication and an eligible payment card in Wallet. There is no ¥500 deposit, and Express Mode lets you tap through a gate without unlocking the phone, for one transit card at a time. Checked ${CHECKED}.`,
+    q: "Do I get my deposit back?",
+    a: `On Suica, PASMO and ICOCA, yes. PASMO's own sale price is ¥1,000, of which ¥500 is a deposit that cannot be spent on fares or shopping, and Suica works the same way. You get that ¥500 back when you hand the card in: JR East and PASMO both deduct a ¥220 handling fee from the remaining balance — or the whole balance if it is less than ¥220 — and return the ¥500 regardless. A card with ¥1,000 on it therefore refunds ¥1,280. ICOCA is priced at ¥2,000 including the ¥500 deposit, and JR West charges the same ¥220 commission. Welcome Suica, Welcome Suica Mobile and TOURIST PASMO take no deposit and refund nothing. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Can I add Suica to iPhone or Android?",
+    a: `iPhone, yes; Android, usually not. Apple's documentation covers Suica, PASMO, ICOCA and TOICA in Wallet: Add → Transit Card → Add New Card → choose an amount, with no ¥500 deposit, on an iPhone 8 or later (iPhone 7 or later for Suica) or an Apple Watch Series 3 or later. JR East's Welcome Suica Mobile app is iPhone-only (iOS 17.2 or later); JR East's 21 April 2026 release plans it for Samsung Galaxy phones sold overseas in the first half of 2027. PASMO states that Android handsets bought outside Japan are generally not compatible with Mobile PASMO, so on such a phone the answer is a plastic card. Checked ${RECHECKED}.`,
   },
   {
     q: "Do I need an IC card if I have a JR Pass?",
@@ -349,8 +474,8 @@ const faqItems = [
     a: `It depends on how much you move. Tokyo Metro's adult IC fares run from ¥178 for 1–6 km to ¥324 for 28–40 km, so a day of three or four short hops costs roughly ¥550–¥700 on the card. The Tokyo Subway Ticket is ¥1,000 for 24 hours, ¥1,500 for 48 and ¥2,000 for 72 — the 24-hour tier needs about five or six rides to break even, while the 72-hour tier only needs about four a day. In Osaka the Enjoy Eco Card is ¥820 on a weekday and ¥620 at weekends against a ¥240 two-zone fare, so three or four rides cover it. Pass prices and Metro fares checked ${CHECKED}; Osaka prices ${OSAKA_CHECKED}.`,
   },
   {
-    q: "Can I use Suica outside Tokyo?",
-    a: `Yes. Suica is one of the ten cards in the nationwide mutual-use scheme that began on 23 March 2013, so it is accepted on trains and buses in the Kitaca, PASMO, manaca, TOICA, PiTaPa, ICOCA, SUGOCA, nimoca and Hayakaken areas as well as its own. The one rule to know is that a single journey may not cross from one area into another — tap out before the boundary and start again. Checked ${CHECKED}.`,
+    q: "Can I use Suica in Osaka and Kyoto?",
+    a: `Yes. Suica is one of the ten cards in the nationwide mutual-use scheme that began on 23 March 2013, so it is accepted on trains and buses in the ICOCA area — Osaka Metro, the Kyoto subway and city buses, JR West — as well as in the Kitaca, PASMO, manaca, TOICA, PiTaPa, SUGOCA, nimoca and Hayakaken areas. The one rule to know is that a single journey may not cross from one area into another, so a Tokyo-to-Osaka trip is a shinkansen ticket, not a tap. Checked ${CHECKED}.`,
   },
   {
     q: "How do I charge my IC card in Japan?",
@@ -365,15 +490,15 @@ const faqItems = [
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/ic-cards-japan") } });
 
 /**
- * The search terms stay verbatim in the title, the H1 and the description. "IC cards"
- * and "Suica" are the two phrases this page takes impressions for; "PASMO" and "ICOCA"
- * are the comparison the ranking pages carry and this one did not. 50 characters, well
- * inside the 60 the en budget allows, because Bing truncates earlier than Google and
- * this page was taking impressions there at position 6.81 for no clicks at all.
+ * The search terms stay verbatim in the title, the H1 and the description. "IC cards
+ * in Japan" leads, then the Suica vs PASMO vs ICOCA comparison the ranking pages use.
+ * 49 characters, inside the 60 the en budget allows. "Transit IC card" in the
+ * opening keeps "travel cards japan" readers who want a credit card heading to
+ * best-travel-card-japan instead (11 Nov 2026).
  */
-const TITLE = "IC Cards Japan 2026: Suica, PASMO & ICOCA Compared";
+const TITLE = "IC Cards in Japan (2026): Suica vs PASMO vs ICOCA";
 const DESCRIPTION =
-  "IC cards in Japan explained: what Suica, PASMO, ICOCA, Welcome Suica and Mobile Suica cost, where to buy each, and which one to get. Checked Oct 2026.";
+  "IC cards in Japan for tourists: Welcome Suica or TOURIST PASMO at the airport, ICOCA in Kansai, Suica on iPhone. Deposits, refunds, and when a pass wins.";
 
 /** One Klook slot — same shape as components/KlookTripPrep.tsx, inline so it can sit behind a specific answer. */
 function KlookPicks({ items }: { items: KlookPath[] }) {
@@ -456,7 +581,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>IC Cards Japan</span>
+          <span className={styles.breadCurrent}>IC Cards in Japan</span>
         </div>
       </div>
 
@@ -467,10 +592,11 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            IC Cards Japan 2026:<br />Suica, PASMO &amp; ICOCA Compared
+            IC Cards in Japan (2026):<br />Suica vs PASMO vs ICOCA
           </h1>
           <p className={styles.heroSubtitle}>
-            Six cards, one network. What each one costs to get, what it costs to give back, and which to buy at the airport.
+            Transit IC cards for tourists: Welcome Suica, Welcome Suica Mobile, TOURIST PASMO, ICOCA and the regular
+            cards — where to buy each, the deposit, the expiry and the refund.
           </p>
           <div className={styles.heroBadges}>
             {[`Checked ${CHECKED}`, "Operator prices only", "Six cards compared"].map((t) => (
@@ -495,17 +621,26 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
         {/* The answer, in the first paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            An <strong>IC card</strong> is a rechargeable contactless card that pays train, subway and bus fares in Japan
-            and doubles as electronic money in shops — you touch it to the reader going in and out, and the fare comes off
-            the balance. A visitor can use <strong>Suica</strong> (JR East), <strong>PASMO</strong> (Tokyo Metro, Toei and
-            the private operators) or <strong>ICOCA</strong> (JR West), all three of which carry a refundable{" "}
-            <strong>¥500 deposit</strong> inside the purchase price and work on the same national network; the 28-day,
-            no-deposit <strong>Welcome Suica</strong> and <strong>TOURIST PASMO</strong>, sold at Narita and Haneda; or a
-            card made straight in the <strong>Apple Wallet</strong> app on an iPhone, with no deposit and no machine. You
-            buy the plastic ones at station ticket machines and offices — PASMO prices a new card at ¥1,000 including the
-            deposit, JR West prices a new ICOCA at ¥2,000 with ¥1,500 of it spendable — and you get the ¥500 back on
-            return, less a ¥220 handling fee taken out of whatever balance is left. Figures read on the operators&apos; own
-            pages on {CHECKED}.
+            <strong>
+              Which IC card to buy in Japan: on an iPhone, add a Suica, PASMO or ICOCA in Apple Wallet (no deposit), or
+              use the Welcome Suica Mobile app (180 days, no deposit, no refund). Landing at Narita or Haneda with a
+              plastic card in mind, buy a Welcome Suica or a TOURIST PASMO — no deposit, valid 28 days, the leftover
+              balance not refunded; TOURIST PASMO is ¥2,000 at Narita and ¥1,000–¥10,000 at Haneda.
+            </strong>{" "}
+            At Kansai Airport, or if you will come back to Japan, buy an <strong>ICOCA</strong> at ¥2,000 including a
+            refundable ¥500 deposit, or a regular Suica or PASMO (PASMO is ¥1,000 including the deposit); the ¥500 comes
+            back on return, less a ¥220 fee from the balance, and the balance does not expire. All of them pay trains,
+            subways, buses and convenience stores on one national network. TOURIST PASMO, ICOCA and Welcome Suica Mobile
+            figures read on the operators&apos; pages {RECHECKED}; Suica, PASMO and Welcome Suica card figures{" "}
+            {CHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            This page is about <strong>transit IC cards</strong> (Suica, PASMO, ICOCA). For the credit or debit card to
+            bring for shops, hotels and ATMs, see{" "}
+            <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              the best travel card for Japan
+            </Link>
+            .
           </p>
         </section>
 
@@ -542,11 +677,11 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
         {/* The card-by-card table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>At a glance</span>
-          <h2 className={styles.sectionTitle}>Every IC card a visitor can buy, compared</h2>
+          <h2 className={styles.sectionTitle}>Welcome Suica vs TOURIST PASMO vs ICOCA vs Suica and PASMO</h2>
           <p className={styles.bodyText}>
-            Six products, each with its own deposit, its own refund rule and its own expiry. Every cell below is the
-            operator&apos;s own published wording, read on {CHECKED}; where nobody publishes a figure, the cell says so
-            rather than estimating one.
+            Six products, each with its own deposit, its own refund rule, its own expiry and its own phone story. Every
+            cell is the operator&apos;s own published wording, with the date it was read; where nobody publishes a figure,
+            the cell says so rather than estimating one.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -558,7 +693,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
                     <th>Deposit</th>
                     <th>Refund</th>
                     <th>Valid for</th>
-                    <th>Where it works</th>
+                    <th>iPhone / Android</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -572,7 +707,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
                       <td style={{ fontSize: "0.82rem", color: "var(--text)" }}>{row.deposit}</td>
                       <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "200px" }}>{row.refund}</td>
                       <td style={{ fontSize: "0.82rem", color: "var(--text)" }}>{row.valid}</td>
-                      <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "200px" }}>{row.where}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "200px" }}>{row.phone}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -580,10 +715,11 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            Sources, all read {CHECKED}: JR East for Suica and Welcome Suica; the PASMO agreement and visitor pages, and
-            the PASMO Committee&apos;s 17 April 2026 TOURIST PASMO release; JR West for ICOCA; Apple&apos;s own support
-            documentation for the Wallet row. Suica, PASMO and the unregistered versions of both returned to sale on
-            1 March 2025 after the chip shortage that suspended them in 2023.
+            Sources: JR East for Suica and Welcome Suica ({CHECKED}); pasmo.co.jp/tourist-pasmo and PASMO&apos;s visitor
+            page for TOURIST PASMO, PASMO PASSPORT and Mobile PASMO ({RECHECKED}); westjr.co.jp for ICOCA ({RECHECKED});
+            the App Store listing published by East Japan Railway Company for Welcome Suica Mobile ({RECHECKED});
+            Apple&apos;s own support documentation for Wallet. All six cards work on the same mutual-use network; the
+            regular Suica and PASMO returned to sale on 1 March 2025 after the chip shortage that suspended them in 2023.
           </p>
         </section>
 
@@ -618,9 +754,16 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
         {/* Q: Suica or PASMO */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The comparison</span>
-          <h2 className={styles.sectionTitle}>Suica or PASMO: which should I get?</h2>
+          <h2 className={styles.sectionTitle}>Which IC Card Should Tourists Buy in 2026?</h2>
           <p className={styles.bodyText}>
-            Buy whichever the machine in front of you sells. On the operators&apos; own terms the two are the same product:
+            Decide first between a card that expires and a card you hand back. Under four weeks in Tokyo and no plans to
+            return: a no-deposit <strong>Welcome Suica</strong> or <strong>TOURIST PASMO</strong> (28 days, nothing
+            refunded), or on an iPhone the <strong>Welcome Suica Mobile</strong> app (180 days). Arriving in Kansai,
+            staying longer, or coming back: an <strong>ICOCA</strong>, <strong>Suica</strong> or <strong>PASMO</strong>{" "}
+            with the ¥500 deposit, whose balance does not expire. Between Suica and PASMO, buy whichever the machine in
+            front of you sells.
+          </p>
+          <p className={styles.bodyText}> On the operators&apos; own terms the two are the same product:
             a ¥500 deposit inside the purchase price, a ¥220 handling fee deducted from the balance on refund with the
             ¥500 returned regardless, a ¥20,000 ceiling on the balance, and the same national acceptance. PASMO prices a
             new card at ¥1,000 including the deposit; Suica is sold the same way at JR East machines.
@@ -637,21 +780,49 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             One thing that has changed and is still wrong on most pages: unregistered Suica and PASMO cards were suspended
             in June 2023 and registered ones in July 2023 in a semiconductor shortage. Registered cards came back on
             1 September 2024 and unregistered ones on 1 March 2025, so a walk-up purchase is possible again. In the
-            meantime PASMO PASSPORT sold out and was discontinued; its replacement, <strong>TOURIST PASMO</strong>,
-            launched in May 2026 at Narita and Haneda. Checked {CHECKED}.
+            meantime PASMO PASSPORT was discontinued — PASMO lists its rules as abolished on 4 October 2024 — and its
+            replacement, <strong>TOURIST PASMO</strong>, launched in May 2026: ¥2,000 at the Skyliner &amp; Keisei
+            Information Centers in Narita&apos;s Terminal 1 and Terminal 2 stations, ¥1,000 to ¥10,000 from Keikyu ticket
+            machines at Haneda. Checked {RECHECKED}.
+          </p>
+        </section>
+
+        {/* Q: Can I use Suica in Osaka and Kyoto? */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Outside Tokyo</span>
+          <h2 className={styles.sectionTitle}>Can I Use Suica in Osaka and Kyoto?</h2>
+          <p className={styles.bodyText}>
+            Yes. Suica, PASMO and ICOCA are three of the ten cards in the mutual-use scheme that began on 23 March 2013,
+            so a Suica bought at Narita taps through Osaka Metro, the Kyoto subway, Kyoto city buses and JR West, and an
+            ICOCA bought at Kansai Airport does the same in Tokyo. The one limit is that a single journey may not cross
+            from one IC area into another, so Tokyo to Osaka is a shinkansen ticket rather than a tap. Checked {CHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            In Kyoto the card is often the cheaper way round: a city-bus ride is ¥230 and the Subway &amp; Bus 1-Day Pass
+            is ¥1,100, so the pass only pays from the fifth ride — our{" "}
+            <Link href="/guides/transport/kyoto-subway-bus-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Kyoto subway and bus pass guide
+            </Link>{" "}
+            works through a temple day. For Osaka, the{" "}
+            <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Osaka Metro pass guide
+            </Link>{" "}
+            does the same against the ¥240 fare.
           </p>
         </section>
 
         {/* Q: Can I use Suica on my iPhone? */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Phones</span>
-          <h2 className={styles.sectionTitle}>Can I use Suica on my iPhone?</h2>
+          <h2 className={styles.sectionTitle}>Can I Add Suica to iPhone or Android?</h2>
           <p className={styles.bodyText}>
             Yes — and you can create a brand-new card in the Wallet app without owning a plastic one. Apple&apos;s own
             instructions are Add → Transit Card → pick <strong>Suica, PASMO, ICOCA or TOICA</strong> → Add New Card →
             choose an amount. There is no ¥500 deposit, because there is no card to hand back, and Express Mode — tapping
             through a gate without unlocking the phone — is turned on automatically for your first transit card, one card
-            at a time. Android is the case to check before you fly, not after. Checked {CHECKED}.
+            at a time. Android is the case to check before you fly, not after: PASMO says handsets bought outside Japan
+            are generally not compatible, and Welcome Suica Mobile is iPhone-only until the Samsung Galaxy version JR
+            East plans for the first half of 2027. Checked {RECHECKED}.
           </p>
           <div className={styles.whoForGrid}>
             {mobileSections.map((item) => (
@@ -689,13 +860,43 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
         {/* Q: Is an IC card cheaper than a subway pass? */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The maths</span>
-          <h2 className={styles.sectionTitle}>Is an IC card cheaper than a subway pass?</h2>
+          <h2 className={styles.sectionTitle}>Is an IC Card Cheaper Than a Subway Pass?</h2>
           <p className={styles.bodyText}>
             For most days, yes — and the exception is specific enough to name. Tokyo Metro&apos;s adult IC fares run from
             ¥178 for 1–6 km to ¥324 for 28–40 km, so three or four short hops cost roughly ¥550–¥700 on a tapped card.
             A pass only wins once the ride count passes its break-even, which is about five or six rides in a day for the
             ¥1,000 24-hour ticket, and about four rides a day for the ¥2,000 72-hour one.
           </p>
+          <h3 className={styles.stepTitle} style={{ marginTop: "1.25rem" }}>What a day costs on the card, against the pass</h3>
+          <div className={styles.tableWrap} style={{ marginTop: "0.75rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>On an IC card</th>
+                    <th>The pass</th>
+                    <th>Cheaper</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {dayRows.map((row) => (
+                    <tr key={row.day}>
+                      <td className={styles.tdProvider} style={{ minWidth: "200px" }}>{row.day}</td>
+                      <td style={{ fontSize: "0.84rem", color: "var(--text)", minWidth: "160px" }}>{row.ic}</td>
+                      <td style={{ fontSize: "0.84rem", color: "var(--text)", minWidth: "180px" }}>{row.pass}</td>
+                      <td style={{ fontSize: "0.84rem", color: "var(--text)" }}>{row.winner}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Tokyo fares {CHECKED}; Osaka {OSAKA_CHECKED}; {KYOTO_NOTE}. The arithmetic assumes the shortest fare band, so
+            longer rides tip each row further toward the pass.
+          </p>
+          <h3 className={styles.stepTitle} style={{ marginTop: "1.25rem" }}>Every pass against tapping</h3>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -720,6 +921,19 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
               </table>
             </div>
           </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginTop: "1rem" }}>
+            {costButtons.map((b) => (
+              <KlookLink
+                key={b.url}
+                href={b.url}
+                className={styles.verdictBtn}
+                target="_blank"
+                rel="sponsored noopener"
+              >
+                {b.label}
+              </KlookLink>
+            ))}
+          </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Two catches the price alone does not show. The Tokyo Subway Ticket covers Tokyo Metro and Toei but{" "}
             <strong>not JR</strong>, so the Yamanote Line is not on it and an IC card is still needed; and it is sold to
@@ -732,7 +946,15 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Osaka Metro Pass guide
             </Link>{" "}
-            do the break-even in full.
+            do the break-even in full; the{" "}
+            <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              getting around Tokyo guide
+            </Link>{" "}
+            shows which lines are Metro, Toei or JR, and{" "}
+            <Link href="/guides/transport" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              all our Japan transport guides
+            </Link>{" "}
+            cover the rail passes and airport trains.
           </p>
           <KlookPicks items={passPaths} />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
@@ -750,9 +972,10 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             <strong>Narita and Haneda.</strong> JR East sells the Welcome Suica from dedicated vending machines at Narita
             Terminal 1, Narita Terminal 2·3 and Haneda Terminal 3 stations, and over a counter at the JR EAST Travel
             Service Centers there and at Tokyo, Shibuya, Shinjuku, Ikebukuro, Ueno, Yokohama and Sendai, plus JAPAN RAIL
-            CAFÉ TOKYO and the TAKANAWA GATEWAY Travel Service Center. On the PASMO side, TOURIST PASMO is sold at ticket
-            windows and ticket machines at stations and other locations at both airports — ¥2,000 at Narita, and in
-            ¥1,000 to ¥10,000 denominations at Haneda. Neither takes a deposit; neither refunds what is left.
+            CAFÉ TOKYO and the TAKANAWA GATEWAY Travel Service Center. On the PASMO side, TOURIST PASMO is ¥2,000 at the SKYLINER
+            &amp; KEISEI INFORMATION CENTER in Narita&apos;s Terminal 1 and Terminal 2 stations, and ¥1,000 to ¥10,000
+            from Keikyu ticket machines at Haneda Terminal 1·2 and Terminal 3, where credit cards are accepted (read{" "}
+            {RECHECKED}). Neither takes a deposit; neither refunds what is left.
           </p>
           <p className={styles.bodyText}>
             <strong>Kansai.</strong> JR West points arrivals at the Midori-no-madoguchi at Kansai-Airport Station, where a
@@ -798,15 +1021,29 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
         <section className={styles.prosConsSection}>
           <span className={styles.sectionLabel}>Coverage</span>
           <h2 className={styles.sectionTitle}>Where can I use an IC card?</h2>
-          <div className={styles.pickGrid}>
-            <div className={styles.pickPros}>
-              <p className={styles.pickListLabel}>Works here</p>
-              <ul className={styles.pickList}>
-                {worksOn.map((item) => (
-                  <li key={item}><span className={styles.proIcon}>✓</span>{item}</li>
-                ))}
-              </ul>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Where</th>
+                    <th>IC card?</th>
+                    <th>Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {whereRows.map((row) => (
+                    <tr key={row.place}>
+                      <td className={styles.tdProvider} style={{ minWidth: "160px" }}>{row.place}</td>
+                      <td style={{ fontSize: "0.84rem", color: "var(--text)", minWidth: "120px" }}>{row.works}</td>
+                      <td style={{ fontSize: "0.84rem", color: "var(--text)", minWidth: "260px" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
+          </div>
+          <div className={styles.pickGrid} style={{ marginTop: "1rem", gridTemplateColumns: "1fr" }}>
             <div className={styles.pickCons}>
               <p className={styles.pickListLabel}>Does not work for</p>
               <ul className={styles.pickList}>
@@ -829,7 +1066,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
         {/* Returning Your IC Card */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Before you leave</span>
-          <h2 className={styles.sectionTitle}>Getting the ¥500 deposit back</h2>
+          <h2 className={styles.sectionTitle}>Do I Get My Deposit Back?</h2>
           <p className={styles.bodyText}>
             Hand a Suica back at a JR East ticket office, an ICOCA at a JR West Midori-no-madoguchi inside the ICOCA area,
             or a PASMO at a PASMO operator&apos;s counter. You get the ¥500 deposit plus whatever is on the card, less a
@@ -838,8 +1075,9 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             still refunds ¥500. Checked {CHECKED}.
           </p>
           <p className={styles.bodyText}>
-            A Welcome Suica or a TOURIST PASMO has nothing to hand back — no deposit was taken, and neither issuer refunds
-            the remaining value. Both expire 28 days after purchase, so anything you load on day 27 is money you have
+            A Welcome Suica, a Welcome Suica Mobile or a TOURIST PASMO has nothing to hand back — no deposit was taken,
+            and none of them refunds the remaining value. The two plastic ones expire 28 days after purchase (the app
+            version after 180 days), so anything you load on day 27 is money you have
             decided to spend. That is the trade for not queuing at a refund counter on your last morning.
           </p>
           <p className={styles.bodyText}>
