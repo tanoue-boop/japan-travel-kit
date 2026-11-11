@@ -2205,7 +2205,9 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             <Link href="/guides/esim/japan-esim-data-plans">Japan eSIM data plans guide</Link> works
             out how much data ten days of maps, tickets and messaging actually needs, and our{" "}
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the
-            providers in full.
+            providers in full. Travelling as a family or group with tablets and laptops? One router
+            can be cheaper than an eSIM each — see{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan">best pocket WiFi in Japan</Link>.
           </p>
         </section>
 

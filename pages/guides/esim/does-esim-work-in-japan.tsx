@@ -559,7 +559,12 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             and{" "}
             <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               pocket WiFi vs eSIM
-            </Link>.
+            </Link>
+            ; if a group will share one connection instead, the{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best pocket WiFi in Japan
+            </Link>{" "}
+            compares the rentals on devices, battery and pickup.
           </p>
 
           <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>How Do eSIMs Work in Japan?</h2>
