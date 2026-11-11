@@ -1877,6 +1877,8 @@ export const atmsTripPrep: KlookTripPrepItem[] = [
  * the eSIM at 20% — so the page is not one product repeated.
  */
 export const howMuchYenTripPrep: KlookTripPrepItem[] = [
+  // 11 Nov 2026: airport access, city transit and data first — the three yen costs
+  // that land on the first day — then the larger prepaid items.
   {
     ...tripPrepProducts.naritaExpress,
     why: "The first fare of the trip, and the one most often paid out of the notes you just exchanged at the airport — book the Narita round trip before you fly and the arrival-day float does not have to cover it.",
@@ -1884,6 +1886,14 @@ export const howMuchYenTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.skyliner,
     why: "The Ueno and Asakusa side of the same decision: a reserved seat bought in your own currency instead of ¥2,000-odd out of your opening cash.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Short subway hops are the fares a foreign card cannot always pay at the gate, and the IC top-up machine wants notes and coins — a 24, 48 or 72-hour ticket bought before you fly takes Tokyo's city rides off the float altogether.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Working data is what stops the float being guesswork — checking whether a restaurant takes cards, or finding the nearest 7-Eleven ATM, is a map lookup rather than a hunt for station Wi-Fi.",
   },
   {
     ...tripPrepProducts.jrPass,
@@ -1900,10 +1910,6 @@ export const howMuchYenTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.skytree,
     why: "Observation decks and museums are the admissions you can prepay; temple and shrine gates are not, which is why the float below is sized around the gates rather than the towers.",
-  },
-  {
-    ...tripPrepProducts.esim,
-    why: "Working data is what stops the float being guesswork — checking whether a restaurant takes cards, or finding the nearest 7-Eleven ATM, is a map lookup rather than a hunt for station Wi-Fi.",
   },
 ];
 

@@ -50,6 +50,65 @@ const PRICES_CHECKED = checkedLabel("2026-10-27");
 const TAXFREE_CHECKED = checkedLabel("2026-10-28");
 
 /**
+ * Seven Bank (sevenbank.co.jp/intlcard/service.html) and Japan Post Bank
+ * (jp-bank.japanpost.jp/en/ias/en_ias_index.html) re-read on this date for the
+ * ATM table. E-net and Lawson Bank carry the ATMs guide's own check date.
+ */
+const ATM_CHECKED = checkedLabel("2026-11-11");
+const ATM_GUIDE_CHECKED = checkedLabel("2026-10-26");
+
+/** The Wise card guide's check date for the monthly allowance. */
+const WISE_CHECKED = checkedLabel("2026-10-26");
+
+/**
+ * Fee, cap and hours per network — the same figures as /guides/money/atms-in-japan,
+ * so the two pages cannot disagree. Where the operator publishes no amount, the
+ * cell says so instead of estimating one.
+ */
+const atmRows = [
+  {
+    name: "Seven Bank (7-Eleven)",
+    fee: "No amount published; Seven Bank states a fee is charged per transaction where one applies, and it is shown on screen before you confirm.",
+    cap: "¥100,000 per withdrawal; ¥30,000 on a magnetic-stripe read.",
+    hours: "Visa and Mastercard 00:00–24:00.",
+    checked: ATM_CHECKED,
+  },
+  {
+    name: "Japan Post Bank (post offices)",
+    fee: "“An ATM usage fee (¥220 (tax included) per use) may apply” on certain cards issued abroad.",
+    cap: "“Single transaction withdrawal limit is 50,000 yen”.",
+    hours: "Post-office ATMs Mon–Sat 7:00–23:00; Sundays, holidays, 1–3 Jan and 31 Dec 7:00–21:00.",
+    checked: ATM_CHECKED,
+  },
+  {
+    name: "E-net (FamilyMart, Don Quijote)",
+    fee: "No amount published; set by the handling bank, and the card issuer may add its own.",
+    cap: "¥100,000 by IC chip; ¥40,000 by magnetic stripe.",
+    hours: "24 hours, 365 days.",
+    checked: ATM_GUIDE_CHECKED,
+  },
+  {
+    name: "Lawson Bank (Lawson)",
+    fee: "Not confirmed on the official site.",
+    cap: "¥50,000 per withdrawal.",
+    hours: "Not confirmed on the official site.",
+    checked: ATM_GUIDE_CHECKED,
+  },
+];
+
+/** At a glance: the two tables further down, reduced to one line per situation. */
+const glanceRows = [
+  { where: "Temple and shrine gates", cash: "Yes — cash by default", card: "Not published" },
+  { where: "Coin lockers", cash: "Coins, ¥300–¥600", card: "Often an IC card (JNTO)" },
+  { where: "Local city buses", cash: "Exact coins (¥230 flat in Kyoto)", card: "IC card; a foreign contactless card generally not" },
+  { where: "Short subway and train hops", cash: "Ticket machine or IC top-up", card: "IC card; payment cards not always (JNTO)" },
+  { where: "Street stalls, small counter restaurants", cash: "Often", card: "Shop by shop" },
+  { where: "Hotels, convenience stores, department stores", cash: "Not needed", card: "Card (published by the operators and JNTO)" },
+  { where: "Shinkansen and Narita Express", cash: "Not needed", card: "Card (JNTO)" },
+  { where: "City taxis", cash: "Not needed", card: "Card, IC and code payments (km Taxi, Tokyo)" },
+];
+
+/**
  * The float, per day and per trip. These are not spending budgets — they are how
  * much yen to have in your pocket, on the assumption that the room, the
  * long-distance travel and the pre-booked tickets are already paid for and a card
@@ -111,7 +170,7 @@ const cashOnlyRows = [
     where: "Temple and shrine gates",
     sub: "Admission, paid at the gate",
     amount:
-      "¥200–¥800 at the sites we have checked: Todai-ji in Nara ¥800, Hase-dera in Kamakura ¥400, Kotoku-in ¥300, Itsukushima Shrine ¥300, the Hiroshima Peace Memorial Museum ¥200.",
+      "¥200–¥800 at the sites listed here: Todai-ji in Nara ¥800, Hase-dera in Kamakura ¥400, Kotoku-in ¥300, Itsukushima Shrine ¥300, the Hiroshima Peace Memorial Museum ¥200.",
     instead:
       "Nothing. No major temple or shrine publishes card or IC acceptance at the gate, so this is the one line that is cash by default rather than by statement. Admissions read off each site's own pages on " +
       ADMISSIONS_CHECKED +
@@ -220,7 +279,7 @@ const faqItems = [
   },
   {
     q: "Do I need cash in Japan?",
-    a: `Yes, some. JNTO's own advice is to “always have some cash on hand” because “there are still many places where cash is required”. The places that matter to a visitor are specific and small in number: temple and shrine gates (¥200–¥800 at the sites we have checked, paid at the gate), coin lockers (¥300–¥600, JNTO's range), local city buses (a flat ¥230 in Kyoto), street stalls and small counter restaurants. Hotels, convenience stores, department stores, city taxis and shinkansen tickets all take cards. Official statements checked ${OFFICIAL}.`,
+    a: `Yes, some. JNTO's own advice is to “always have some cash on hand” because “there are still many places where cash is required”. The places that matter to a visitor are specific and small in number: temple and shrine gates (¥200–¥800 at the sites listed below, paid at the gate), coin lockers (¥300–¥600, JNTO's range), local city buses (a flat ¥230 in Kyoto), street stalls and small counter restaurants. Hotels, convenience stores, department stores, city taxis and shinkansen tickets all take cards. Official statements checked ${OFFICIAL}.`,
   },
   {
     q: "Is Japan more cash or card?",
@@ -246,6 +305,18 @@ const faqItems = [
     q: "Does tax-free shopping change how much cash I need?",
     a: `From 1 November 2026, yes — upwards on the day you shop. Under the new system you pay the full tax-inclusive price at the till like a Japanese shopper and the 10% comes back after customs confirms the goods are leaving Japan, instead of coming off the price in the shop. The ¥5,000-before-tax minimum per shop per day on a non-resident passport is unchanged. So a shopping day needs about 10% more at the till than it used to, and the refund arrives later. Official rules read ${TAXFREE_CHECKED}.`,
   },
+  {
+    q: "Can I use Wise to withdraw money in Japan?",
+    a: `Yes. A Wise card withdraws yen at Seven Bank ATMs in 7-Eleven and at Japan Post Bank ATMs. Wise charges nothing up to a monthly allowance set by the country your card was issued in — 250 USD, GBP or EUR, or 400 AUD — and 2.69% of the excess above it (1.95 USD + 1.95% per withdrawal on a US card), checked ${WISE_CHECKED}. The Japanese operator's own fee applies on top: ¥220 at Japan Post Bank on certain overseas cards, checked ${ATM_CHECKED}.`,
+  },
+  {
+    q: "How much yen does a tourist spend in a day in Japan?",
+    a: `Spending and cash are different numbers. A budget day in Tokyo on published prices is about ¥1,570–¥1,850 before the room — convenience-store and chain-noodle meals, two or three ¥178 subway rides and a free observation deck — and most of it can go on a card (prices read ${PRICES_CHECKED}). The cash share is ${DAILY.budget} a day on a budget trip, ${DAILY.mid} mid-range and ${DAILY.eatOut} eating out properly.`,
+  },
+  {
+    q: "How much can I withdraw from an ATM in Japan at once?",
+    a: `¥100,000 per withdrawal at Seven Bank (¥30,000 if the machine reads the magnetic stripe) and 50,000 yen at Japan Post Bank, both checked ${ATM_CHECKED}; ¥100,000 by IC chip at E-net and ¥50,000 at Lawson Bank, checked ${ATM_GUIDE_CHECKED}. Your own bank's daily limit applies on top, so a week's float is normally one Seven Bank withdrawal.`,
+  },
 ];
 
 const tips = [
@@ -260,11 +331,13 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/money/how-much-yen-to-bring-japan") },
 });
 
-const TITLE = "How Much Yen to Bring to Japan 2026: Cash per Day";
+const TITLE = "How Much Yen to Bring to Japan (2026): Cash per Day & ATMs";
 const DESCRIPTION =
-  "How Much Yen to Bring to Japan: carry ¥2,000–¥3,000 a day on a budget trip, ¥5,000–¥8,000 eating out — a float, not a budget. 3, 7 and 14-day totals.";
+  "How Much Yen to Bring to Japan: ¥10,000–¥20,000 on arrival, then ¥2,000–¥8,000 a day in cash from a 7-Eleven ATM. Where cash is needed, ATM fees and caps.";
 const CANONICAL = "https://www.japan-travel-kit.com/guides/money/how-much-yen-to-bring-japan";
 const H1 = "How Much Yen to Bring to Japan (2026): The Cash Float, Day by Day";
+
+const H3_STYLE = { fontSize: "1.05rem", fontWeight: 700, margin: "1.25rem 0 0.4rem" } as const;
 
 export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -379,12 +452,67 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              Carry about {DAILY.budget} a day on a budget trip, {DAILY.mid} mid-range and{" "}
+              Carry about {DAILY.budget} in cash a day on a budget trip, {DAILY.mid} mid-range and{" "}
               {DAILY.eatOut} if you are eating out properly — a float, not a budget, because a card
-              covers the room, the convenience stores and the chain restaurants. Bring ¥10,000–¥20,000
-              in cash for the flight and the first day, then withdraw the rest from a 7-Eleven or
-              post-office ATM.
-            </strong>{" "}
+              covers the room, the convenience stores and the chain restaurants. For the whole trip,
+              bring ¥10,000–¥20,000 in cash for the flight and the first day, then withdraw the rest
+              from a 7-Eleven ATM (¥100,000 per withdrawal) or a post-office ATM (50,000 yen), caps
+              checked {ATM_CHECKED}.
+            </strong>
+          </p>
+        </section>
+
+        {/* Klook — directly after the answer, because every item on it shrinks the float. */}
+        <KlookTripPrep
+          heading="What You Can Pay for Before You Fly — and Take Off the Float"
+          intro="The figures above assume the big items are already paid for. These are yen costs normally settled out of the cash you carry — the airport train, city subway rides and mobile data first — that can be put on a card in your own currency before you leave:"
+          items={howMuchYenTripPrep}
+        />
+
+        {/* Short answers to the question forms search engines send here. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Short answers</span>
+          <h2 className={styles.sectionTitle}>How much yen do you need when you travel to Japan?</h2>
+          <p className={styles.bodyText}>
+            ¥10,000–¥20,000 in hand on arrival, then {DAILY.budget} a day on a budget trip up to{" "}
+            {DAILY.eatOut} eating out — about ¥14,000–¥56,000 over a week, withdrawn in Japan rather than
+            exchanged at home. The full 3, 7 and 14-day table is below.
+          </p>
+          <h3 style={H3_STYLE}>How much cash should I bring to Japan?</h3>
+          <p className={styles.bodyText}>
+            Only the arrival float — ¥10,000–¥20,000 covers the flight, the train in and the first day if a
+            card or an ATM misbehaves. Everything after that is cheaper from a Japanese ATM than from an
+            exchange counter at home, as{" "}
+            <Link href="/guides/money/currency-exchange-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              currency exchange in Japan
+            </Link>{" "}
+            sets out counter by counter.
+          </p>
+          <h3 style={H3_STYLE}>How much yen does a tourist in Japan spend in a day?</h3>
+          <p className={styles.bodyText}>
+            A budget day in Tokyo on published prices is about ¥1,570–¥1,850 before the room, and most of
+            it can go on a card (prices read {PRICES_CHECKED}); the cash share is {DAILY.budget}. The whole
+            Tokyo budget — room, transport and food by tier — is in{" "}
+            <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--red)", fontWeight: 600 }}>
+              trip to Tokyo cost
+            </Link>
+            .
+          </p>
+          <h3 style={H3_STYLE}>Can I use Wise to withdraw money in Japan?</h3>
+          <p className={styles.bodyText}>
+            Yes — a Wise card withdraws yen at Seven Bank ATMs in 7-Eleven and at Japan Post Bank, free up to
+            a monthly allowance (250 USD, GBP or EUR, or 400 AUD by card country) and 2.69% of the excess,
+            checked {WISE_CHECKED}; the allowance by country is in{" "}
+            <Link href="/guides/money/wise-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Wise card in Japan
+            </Link>
+            . The Japanese machine&apos;s own fee comes on top — see the ATM table below.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Where yen is needed</span>
+          <p className={styles.bodyText}>
             Yen is the only option at temple and shrine gates (¥800 at Todai-ji in Nara, ¥400 at
             Hase-dera, ¥300 at Kotoku-in and at Itsukushima Shrine, all walk-up and paid at the gate),
             and it is the fallback at coin lockers (¥300–¥600, JNTO&apos;s own range), on local city buses (a
@@ -480,13 +608,6 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
           </p>
         </section>
 
-        {/* Klook — directly after the "how much to carry" decision, which is what it shrinks. */}
-        <KlookTripPrep
-          heading="What You Can Pay for Before You Fly — and Take Off the Float"
-          intro="Every figure above assumes the big items are already paid for. These are the yen costs that are normally settled out of the cash you carry and can be put on a card in your own currency instead, before you leave:"
-          items={howMuchYenTripPrep}
-        />
-
         {/* Q2 + table 2 */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Cash only</span>
@@ -494,8 +615,33 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
           <p className={styles.bodyText}>
             Yes, but less than the reputation suggests and in specific places. JNTO&apos;s own advice is
             to &ldquo;always have some cash on hand&rdquo; because &ldquo;there are still many places
-            where cash is required&rdquo;. Those places are the ones below — and the second column is
-            the point of the table, because about half of them have an alternative and the rest do not.
+            where cash is required&rdquo;. At a glance, where you need cash and where a card is enough:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Situation", "Cash", "Card or IC card"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {glanceRows.map((row) => (
+                    <tr key={row.where}>
+                      <td className={styles.tdProvider} style={{ minWidth: "160px" }}>{row.where}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.cash}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.card}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            The detail behind the cash rows, with the published amounts — the second column is the point
+            of the table, because about half of them have an alternative and the rest do not:
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -527,7 +673,7 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
             short-distance fare caveat and the rural-cash advice, all read {OFFICIAL}; the temple and
             museum admissions from each site&apos;s own pages, {ADMISSIONS_CHECKED}; the Tsukiji and
             chain-restaurant figures {PRICES_CHECKED}. The temple row carries no alternative because
-            none is published — not because we did not look.
+            none is published.
           </p>
         </section>
 
@@ -607,7 +753,40 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
             the only one of the networks that publishes a price: &ldquo;an ATM usage fee (¥220 (tax
             included) per use) may apply&rdquo;, with a &ldquo;single transaction withdrawal limit
             is 50,000 yen&rdquo; and post-office machines open Monday to Saturday 7:00–23:00 and
-            7:00–21:00 on Sundays and holidays. Both read {OFFICIAL}.
+            7:00–21:00 on Sundays and holidays. Both re-read on the operators&apos; own pages {ATM_CHECKED}.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["ATM network", "Operator fee for overseas cards", "Per-withdrawal cap", "Hours", "Checked"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {atmRows.map((row) => (
+                    <tr key={row.name}>
+                      <td className={styles.tdProvider} style={{ minWidth: "150px" }}>{row.name}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.fee}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.82rem" }}>{row.cap}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.hours}</td>
+                      <td style={{ fontSize: "0.82rem", whiteSpace: "nowrap" }}>{row.checked}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Sources: sevenbank.co.jp/intlcard/service.html and jp-bank.japanpost.jp/en/ias/ ({ATM_CHECKED});
+            E-net and Lawson Bank as read for{" "}
+            <Link href="/guides/money/atms-in-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              ATMs in Japan
+            </Link>{" "}
+            ({ATM_GUIDE_CHECKED}), which also covers brands accepted and the AEON Bank gap. Your own
+            bank&apos;s daily limit and fee apply on top of the machine&apos;s.
           </p>
           <p className={styles.bodyText}>
             JNTO adds the warning worth planning around: &ldquo;ATMs often charge for withdrawals and
