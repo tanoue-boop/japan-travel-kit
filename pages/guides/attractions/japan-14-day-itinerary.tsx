@@ -1616,7 +1616,9 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             Alps and Kyushu are all genuinely good and all genuinely far, and adding one means dropping
             either the Fuji night or Osaka&apos;s third night plus the Day 13 trip. If you are tempted,
             make it a swap rather than an addition — and price the rail for it honestly first, because
-            that is the scenario where a pass starts to make sense and this one does not.
+            that is the scenario where a pass starts to make sense and this one does not. For Kanazawa, our{" "}
+            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa shinkansen guide</Link> has the
+            two-and-a-half-hour Kagayaki, its fare and the Hokuriku Arch Pass against the JR Pass.
           </p>
           <p className={styles.bodyText}>
             One last thing that is not a sight: data. Fourteen days of it is cheap, every timed ticket

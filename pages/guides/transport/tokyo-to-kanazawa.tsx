@@ -11,6 +11,7 @@ import {
   hokurikuArchPass,
   jrPassWholeJapan,
   kanazawaGeishaKenrokuenCastleDayTour,
+  kanazawaHotels,
   kanazawaKenrokuenHigashiChayaDayTour,
   klookEsim,
   shinkansenTokyoKanazawa,
@@ -19,44 +20,50 @@ import {
 } from "../../../lib/klook-links";
 
 /**
- * Tokyo to Kanazawa on the Hokuriku Shinkansen. Added 27 Oct 2026.
+ * Tokyo to Kanazawa on the Hokuriku Shinkansen. Added 27 Oct 2026; rewritten
+ * 11 Nov 2026 (task-jtk-20261111-R04) around the search "tokyo to kanazawa
+ * shinkansen", with the fare moved from our own reference value to JR West's.
  *
- * What is printed here and where it came from, all read on 27 October 2026:
- *  - the 2 hour 28 minute Kanazawa–Tokyo and 2 hour 8 minute Toyama–Tokyo
- *    journey times, the KAGAYAKI / HAKUTAKA / TSURUGI service names, the
- *    260 km/h maximum speed and the 924-seat capacity, from JR West's own
- *    English Hokuriku Shinkansen page on westjr.co.jp;
- *  - 「かがやき号（全車指定席）」 — the Kagayaki as an all-reserved train — quoted
- *    from JR West's own ticket-rules page on jr-odekake.net;
- *  - the Hakutaka non-reserved car numbers (1–4, and 1–5 on the 551, 571, 573,
- *    575 and 577 with car 5 switched to reserved on some days) from JR West's
- *    E7/W7 series page on jr-odekake.net;
- *  - the Hokuriku Arch Pass price, validity, coverage and exclusions from JR
- *    West's own pass page;
- *  - the HOKURIKU One-way Ticket prices from Osaka and Kyoto, and the fact that
- *    its shinkansen leg is valid "Between Tsuruga and Toyama", from JR West's
- *    own ticket page — which is the cleanest official evidence that the
- *    Kanazawa–Kansai journey now changes at Tsuruga;
- *  - the Kagayaki and Hakutaka names, the four seat classes, the 2h 20m fastest
- *    time and "0 transfer(s)" from Klook's own Tokyo–Kanazawa rail page, which
- *    unlike its /activity/ pages answers automated reads.
+ * Read on 11 November 2026:
+ *  - the Tokyo–Kanazawa prices — ¥14,400 reserved Ordinary, ¥14,070
+ *    non-reserved, ¥20,860 Green, ¥31,860 Gran Class, regular season, "2026年3月
+ *    14日購入分から" — from JR West's own 「新幹線eチケット」 (e5489) product page on
+ *    tickets.jr-odekake.net (shnId=125000391). That is the online eTicket price;
+ *    JR West does not print the paper-ticket total for the pair as a static table;
+ *  - the season rule (peak +¥200, peak-peak +¥400, off-peak −¥200 on the
+ *    reserved charge) and the season calendar that applies to the Hokuriku
+ *    Shinkansen (the JR East table, not the JR West 2026-year table, which
+ *    excludes this line) from JR West's 「きっぷのルール」 e-book, December 2026
+ *    issue, p.52; the "1 month before, 10:00" reserved-seat sale from the same
+ *    e-book (October 2026 issue);
+ *  - the Kagayaki 513 (Tokyo 17:24 → Kanazawa 19:55, stops Ueno, Omiya, Nagano,
+ *    Toyama; 全車指定席) and Hakutaka 559 (Tokyo 10:33 → Kanazawa 13:36, twelve
+ *    intermediate stops listed; 普通車一部指定席) from JR West's own train
+ *    timetable pages on timetable.jr-odekake.net;
+ *  - the Hokuriku Arch Pass (¥35,000 / ¥17,500, 7 consecutive days, Tokyo–Tsuruga
+ *    reserved seats, Tokaido and Sanyo Shinkansen excluded, GranClass extra) from
+ *    JR West's own pass page, which states its information is current as of
+ *    28 January 2026.
  *
- * One deliberate gap, stated in the body rather than hidden. Neither JR East
- * nor JR West publishes the Tokyo–Kanazawa single fare as a static table — both
- * put it behind a route-search tool, and JR East revised its fares on
- * 14 March 2026 — so the only fare figure on this page is our own rounded
- * reference value from data/jr-fares.json, labelled as such in the table and
- * dated to its own "as of". No Klook price appears anywhere: Klook answers
- * automated reads of its product pages with HTTP 403.
+ * Carried over from the 27 Oct 2026 read: JR West's 2h28m fastest
+ * Kanazawa–Tokyo figure, the Hakutaka non-reserved car numbers, the HOKURIKU
+ * One-way Ticket prices, and the Klook route page's "0 transfer(s)".
+ * The JAPAN RAIL PASS prices are the JR Group's, read for our JR Pass guide on
+ * 30 Oct 2026; the JR EAST PASS limit at Joetsumyoko is from our JR East Pass
+ * guide (3 Nov 2026); the Kanazawa–Shirakawa-go bus is from our Takayama and
+ * Shirakawa-go guide (6 Nov 2026). No Klook price appears anywhere.
  */
 
-const OWN_ISO = "2026-10-27";
+const OWN_ISO = "2026-11-11";
 const OWN = checkedLabel(OWN_ISO);
+/** The first read of this route, for the figures not re-read on 11 Nov. */
+const FIRST = checkedLabel("2026-10-27");
 /** The date our JR Pass guide read the pass prices it prints. */
-const PASS_CHECKED = checkedLabel("2026-10-26");
+const PASS_CHECKED = checkedLabel("2026-10-30");
+const EAST_CHECKED = checkedLabel("2026-11-03");
+const BUS_CHECKED = checkedLabel("2026-11-06");
 
 const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
-const tokyoKanazawa = fares.segments.find((s) => s.id === "tokyo-kanazawa")!;
 const kanazawaKyoto = fares.segments.find((s) => s.id === "kanazawa-kyoto")!;
 /** "2026-09" -> "September 2026", for the one non-operator figure on the page. */
 const FARE_AS_OF = new Date(`${fares.asOf}-01T00:00:00Z`).toLocaleDateString("en-GB", {
@@ -65,188 +72,164 @@ const FARE_AS_OF = new Date(`${fares.asOf}-01T00:00:00Z`).toLocaleDateString("en
   timeZone: "UTC",
 });
 
-const ARCH_PASS = "¥35,000";
-const JR_PASS_7 = "¥50,000";
+/** JR West's e5489 Shinkansen eTicket, Kanazawa ⇄ Tokyo, regular season. */
+const FARE_RESERVED = 14400;
+const FARE_FREE = 14070;
+const FARE_GREEN = 20860;
+const FARE_GRAN = 31860;
 
-/** The route, as the operators and the booking page state it. */
-const routeRows = [
+const ARCH_PASS = "¥35,000";
+const JR_PASS_7 = "¥53,000";
+const JR_PASS_7_ONLINE = "¥50,000";
+
+/** Table (a): the two services that run Tokyo to Kanazawa. */
+const serviceRows = [
   {
-    item: "Fastest Tokyo ⇄ Kanazawa journey",
-    value: "2 hours 28 minutes",
-    detail: "JR West's own figure for the E7/W7 on the Hokuriku Shinkansen, given as Kanazawa to Tokyo",
-    source: `westjr.co.jp, ${OWN}`,
+    item: "Fastest journey",
+    kagayaki: "About 2h30 — JR West gives 2h28m as the fastest; Kagayaki 513 is 2h31m (17:24 → 19:55)",
+    hakutaka: "About 3 hours — Hakutaka 559 is 3h03m (10:33 → 13:36)",
   },
   {
-    item: "Fastest time on the booking page",
-    value: "2 hours 20 minutes",
-    detail: 'Klook\'s Tokyo–Kanazawa rail page, which also states the route "features 0 transfer(s)"',
-    source: `klook.com rail page, ${OWN}`,
+    item: "Stops between Tokyo and Kanazawa",
+    kagayaki: "Few: Kagayaki 513 calls only at Ueno, Omiya, Nagano and Toyama",
+    hakutaka: "Many: Hakutaka 559 calls at Ueno, Omiya, Takasaki, Karuizawa, Ueda, Nagano, Iiyama, Joetsumyoko, Itoigawa, Kurobe-Unazukionsen, Toyama and Shin-Takaoka",
   },
   {
-    item: "Tokyo ⇄ Toyama, for comparison",
-    value: "2 hours 8 minutes",
-    detail: "The stop before Kanazawa coming from Tokyo — useful if Toyama or the Tateyama route is your actual target",
-    source: `westjr.co.jp, ${OWN}`,
+    item: "Non-reserved seats",
+    kagayaki: "None — 全車指定席, every car reserved",
+    hakutaka: "Yes — cars 1–4 on most trains, 1–5 on the 551, 571, 573, 575 and 577 (car 5 reserved on some days)",
   },
   {
-    item: "Services on the line",
-    value: "Kagayaki, Hakutaka, Tsurugi",
-    detail: "The three E7/W7 services JR West names. The Kagayaki is the fast one and makes the fewest stops; the Tsurugi is the Hokuriku-only shuttle",
-    source: `westjr.co.jp, ${OWN}`,
+    item: "Seat classes",
+    kagayaki: "Reserved Ordinary, Green, Gran Class",
+    hakutaka: "Non-reserved and reserved Ordinary, Green, Gran Class (no at-seat service on Hakutaka 559)",
   },
   {
-    item: "Kagayaki seating",
-    value: "All cars reserved",
-    detail: 'JR West writes it as 「かがやき号（全車指定席）」 — there is no non-reserved car on a Kagayaki at all',
-    source: `jr-odekake.net, ${OWN}`,
+    item: "How often",
+    kagayaki: "Through the day; Kagayaki and Hakutaka alternate on JR West's Tokyo departures timetable, which runs from 06:16 to 22:08 for the whole line",
+    hakutaka: "Through the day, including the first departure to Kanazawa (Hakutaka 551, 06:28) and late evening trains",
   },
   {
-    item: "Hakutaka non-reserved cars",
-    value: "Cars 1–4 (1–5 on some services)",
-    detail: "JR West lists cars 1–5 as non-reserved on the Hakutaka 551, 571, 573, 575 and 577, with car 5 switched to reserved on some days; cars 1–4 on the others",
-    source: `jr-odekake.net, ${OWN}`,
-  },
-  {
-    item: "Seat classes sold for the route",
-    value: "Reserved Ordinary, Reserved Green, Gran Class, Non-reserved Ordinary",
-    detail: "The four ticket types Klook's route page lists for Tokyo to Kanazawa — Gran Class is the Hokuriku line's first class, above Green",
-    source: `klook.com rail page, ${OWN}`,
-  },
-  {
-    item: "Train specification",
-    value: "260 km/h, 924 seats",
-    detail: "JR West's published maximum operating speed and capacity for the E7/W7 sets that work this route",
-    source: `westjr.co.jp, ${OWN}`,
+    item: "Covered by JR Pass / Hokuriku Arch Pass",
+    kagayaki: "Yes, with a free seat reservation (Gran Class is extra on the Arch Pass)",
+    hakutaka: "Yes, reserved or non-reserved",
   },
 ];
 
-/** What it costs — and the one figure here that is not an operator's own. */
-const priceRows = [
+/** Table (b): what the trip costs, and what each pass does with it. */
+const fareRows = [
   {
-    item: "Tokyo → Kanazawa, one way, reserved Ordinary",
-    price: `About ${yen(tokyoKanazawa.fareYen)}`,
-    covers: "Basic fare plus the reserved-seat limited express charge, regular season",
-    source: `Our own JR fare dataset, as of ${FARE_AS_OF} — a rounded reference value, not an operator table. See the note below`,
+    item: "Single ticket, reserved Ordinary",
+    price: yen(FARE_RESERVED),
+    covers: `One way, regular season. Non-reserved ${yen(FARE_FREE)}, Green ${yen(FARE_GREEN)}, Gran Class ${yen(FARE_GRAN)}`,
+    verdict: "The default for a one-way trip or a there-and-back",
+    source: `JR West e5489 Shinkansen eTicket, Kanazawa–Tokyo, for tickets bought from 14 March 2026; read ${OWN}`,
   },
   {
-    item: "JR Hokuriku Arch Pass, 7 consecutive days",
-    price: `${ARCH_PASS} adult, ¥17,500 child (ages 6–11)`,
-    covers:
-      "Reserved seats on the Hokuriku Shinkansen between Tsuruga and Tokyo, plus the Kansai area and Toyama, Ishikawa and Fukui. Not the Tokaido Shinkansen (Tokyo ⇄ Shin-Osaka) and not the Sanyo Shinkansen",
-    source: `JR West's own pass page, ${OWN}`,
+    item: "Return trip, reserved Ordinary",
+    price: yen(FARE_RESERVED * 2),
+    covers: "Two of the above, Tokyo → Kanazawa → Tokyo",
+    verdict: "Still well below every pass on this table",
+    source: `Calculated from JR West's price, ${OWN}`,
+  },
+  {
+    item: "Peak and off-peak dates",
+    price: "+¥200 / +¥400 / −¥200",
+    covers: "Added to or taken off the reserved-seat charge on peak, peak-peak and off-peak days. Non-reserved is the same all year",
+    verdict: "Small enough not to change any decision below",
+    source: `JR West「きっぷのルール」December 2026 issue, read ${OWN}`,
   },
   {
     item: "JAPAN RAIL PASS, 7-day Ordinary",
-    price: `${JR_PASS_7} bought online, ¥53,000 as an Exchange Order from an overseas agency`,
-    covers: "The whole JR network including the Hokuriku Shinkansen; the 14- and 21-day versions are ¥80,000 and ¥100,000 online",
-    source: `The JR Group's own price table, read for our JR Pass guide ${PASS_CHECKED}`,
+    price: JR_PASS_7,
+    covers: `Since 1 October 2026 through an overseas agency (${JR_PASS_7_ONLINE} on the official site). Every JR line, Kagayaki included`,
+    verdict: `Not for this trip alone: the return is ${yen(FARE_RESERVED * 2)}, ${yen(53000 - FARE_RESERVED * 2)} short of the pass`,
+    source: `JR Group price table, read for our JR Pass guide ${PASS_CHECKED}`,
   },
   {
-    item: "HOKURIKU One-way Ticket, Osaka city → Kanazawa",
-    price: "¥8,000 adult, ¥4,000 child",
-    covers: "The Thunderbird to Tsuruga plus the Hokuriku Shinkansen on to Kanazawa, Ordinary reserved or non-reserved",
-    source: `JR West's own ticket page, ${OWN}`,
+    item: "JR Hokuriku Arch Pass, 7 days",
+    price: `${ARCH_PASS} (child ¥17,500)`,
+    covers: "Reserved seats on the Hokuriku Shinkansen Tokyo–Tsuruga, the Thunderbird to Kyoto and Osaka, Kansai airport trains. Not the Tokaido or Sanyo Shinkansen",
+    verdict: `Only for a loop: Tokyo → Kanazawa (${yen(FARE_RESERVED)}) plus Kanazawa → Kyoto on the ¥6,500 one-way ticket is ${yen(FARE_RESERVED + 6500)}, so the pass needs about ${yen(35000 - FARE_RESERVED - 6500)} more travel in the week`,
+    source: `JR West's own pass page, read ${OWN}`,
   },
   {
-    item: "HOKURIKU One-way Ticket, Kyoto city → Kanazawa",
-    price: "¥6,500 adult, ¥3,250 child",
-    covers: "The same combination from Kyoto — the cheapest official way to join the two halves of a Tokyo–Kanazawa–Kyoto loop",
-    source: `JR West's own ticket page, ${OWN}`,
-  },
-  {
-    item: "Kanazawa → Kyoto, one way, via Tsuruga",
-    price: `About ${yen(kanazawaKyoto.fareYen)}`,
-    covers: `Hokuriku Shinkansen to Tsuruga then the Thunderbird, about ${Math.floor(kanazawaKyoto.minutes / 60)} hours ${kanazawaKyoto.minutes % 60} minutes`,
-    source: `Our own JR fare dataset, as of ${FARE_AS_OF} — a rounded reference value`,
+    item: "JR EAST PASS",
+    price: "¥35,000 (5 days)",
+    covers: "The Hokuriku Shinkansen only as far as Joetsumyoko — Karuizawa and Nagano, not Toyama or Kanazawa",
+    verdict: "Does not reach Kanazawa. Useful only if the trip is Tohoku and Nagano",
+    source: `Our JR East Pass guide, ${EAST_CHECKED}`,
   },
 ];
 
-/** Which ticket, for which trip. */
-const compareRows = [
+/** Table (c): when to book, and the dates that fill. */
+const bookingRows = [
   {
-    option: "A single reserved ticket each way",
-    cost: `About ${yen(tokyoKanazawa.fareYen)} one way on our reference figure`,
-    gets: "A seat on a Kagayaki, the fastest service, with nothing else bought and nothing else to plan.",
-    pick: "The default. If Kanazawa is a there-and-back trip or one leg of a route that does not loop, individual tickets beat every pass on this page.",
+    when: "When seats go on sale",
+    what: "10:00, one month before the day of travel",
+    detail: "The same rule at ticket offices and online. A pass holder reserves on the same timetable, free of charge",
   },
   {
-    option: "JR Hokuriku Arch Pass, 7 days",
-    cost: `${ARCH_PASS} adult, ¥17,500 child`,
-    gets: "Tokyo in, Kanazawa in the middle, Kansai out — plus the airport runs at both ends and the local JR West lines in Hokuriku.",
-    pick: "The one pass actually shaped like this trip: Tokyo → Kanazawa → Kyoto/Osaka in a week, flying out of a different airport from the one you flew into.",
+    when: "Year-end and New Year (peak-peak)",
+    what: "28–31 December and 1–6 January",
+    detail: "The Hokuriku line's busiest window. Book the day sales open if your dates are fixed",
   },
   {
-    option: "JAPAN RAIL PASS, 7-day Ordinary",
-    cost: `${JR_PASS_7} online`,
-    gets: "Every JR line in the country, so Hiroshima or Tohoku as well as Hokuriku.",
-    pick: "Only if your week has several more long legs in it. A Tokyo–Kanazawa–Kyoto loop alone does not reach the break-even.",
+    when: "Golden Week (peak-peak)",
+    what: "27 April – 6 May",
+    detail: "The other window that sells out the Kagayaki early; Obon, 10–19 August, is the third",
   },
   {
-    option: "HOKURIKU One-way Ticket from Kyoto or Osaka",
-    cost: "¥6,500 from Kyoto city, ¥8,000 from Osaka city",
-    gets: "The Thunderbird and the shinkansen through Tsuruga as one ticket, in one direction.",
-    pick: "For the second half of the loop, if you are not buying a pass. It is a JR West product, so it does nothing for the Tokyo leg.",
+    when: "Autumn leaves (November)",
+    what: "Off-peak Mon–Thu; peak on three-day weekends",
+    detail: "November is an off-peak month on weekdays. A public holiday that makes a three-day weekend is peak, with the day before — in 2026, 20–23 November",
   },
   {
-    option: "Non-reserved on a Hakutaka",
-    cost: "Less than a reserved ticket; the saving is the reserved-seat charge",
-    gets: "Cars 1–4 on most Hakutaka services, first come first served, on a slower train with more stops.",
-    pick: "If you are travelling light outside peak season and would rather not commit to a train. There is no such option on a Kagayaki.",
+    when: "Spring break",
+    what: "Peak, 21 March – 5 April",
+    detail: "Also the cherry blossom fortnight in Kanazawa and Kyoto, so the return leg fills as well",
   },
   {
-    option: "The day sold as a tour out of Kanazawa",
-    cost: "Check the listing for your date",
-    gets: "Kenroku-en, the Higashi Chaya teahouse district and the castle in a guided day, or Shirakawa-go and Takayama as a round trip south.",
-    pick: "Once the rail is settled. Kanazawa is a two-day city and the Shirakawa-go bus is the part of the trip that genuinely rewards a booking.",
+    when: "Gran Class",
+    what: "As early as possible, any season",
+    detail: "One small car per train, and the one seat class that sells out outside the holidays",
   },
 ];
 
 const faqItems = [
   {
-    q: "How long is the train from Tokyo to Kanazawa?",
-    a: `About two and a half hours, direct, with no changes. JR West's own page for the E7/W7 sets that work the Hokuriku Shinkansen gives Kanazawa to Tokyo as 2 hours 28 minutes, and Toyama — the stop before it — as 2 hours 8 minutes; read on ${OWN}. Klook's booking page for the route puts the fastest departure at 2 hours 20 minutes and states the route "features 0 transfer(s)", read the same day. The spread between those two figures is the difference between a Kagayaki, which makes the fewest stops, and a Hakutaka, which calls at most of the Nagano and Joetsu stations on the way. Either way, there is no transfer and no reason to break the journey.`,
+    q: "How long is the Shinkansen from Tokyo to Kanazawa?",
+    a: `About 2 hours 30 minutes on a Kagayaki, and about 3 hours on a Hakutaka, with no change of train. JR West gives 2 hours 28 minutes as the fastest Kanazawa–Tokyo time; on its own timetable, Kagayaki 513 leaves Tokyo at 17:24 and reaches Kanazawa at 19:55 (2h31m) with stops only at Ueno, Omiya, Nagano and Toyama, while Hakutaka 559 leaves at 10:33 and arrives at 13:36 (3h03m) after twelve stops. Read on ${OWN}.`,
   },
   {
-    q: "How much is the Shinkansen from Tokyo to Kanazawa?",
-    a: `Roughly ${yen(tokyoKanazawa.fareYen)} one way for a reserved Ordinary seat, on our own rounded reference figure as of ${FARE_AS_OF} — no operator price is quoted here, deliberately. Neither JR East nor JR West publishes the Tokyo–Kanazawa fare as a static table: both put it behind a route-search tool, and JR East revised its fares on 14 March 2026, so any figure you find reprinted on a travel site is likely to predate that. The honest way to get the exact number for your date is the booking page, which prices the four classes — reserved Ordinary, reserved Green, Gran Class and non-reserved Ordinary — against the train you actually pick. What an operator's own page does give are the alternatives: the Hokuriku Arch Pass at ${ARCH_PASS} for seven days, and the HOKURIKU One-way Ticket at ¥6,500 from Kyoto city or ¥8,000 from Osaka city for the other half of a loop.`,
+    q: "How much is the train from Tokyo to Kanazawa?",
+    a: `${yen(FARE_RESERVED)} one way for a reserved Ordinary seat in regular season, on JR West's e5489 Shinkansen eTicket for tickets bought from 14 March 2026 (read ${OWN}). Non-reserved is ${yen(FARE_FREE)}, Green ${yen(FARE_GREEN)} and Gran Class ${yen(FARE_GRAN)}. A return is ${yen(FARE_RESERVED * 2)}. On peak days the reserved seat costs ¥200 more, on peak-peak days ¥400 more, and on off-peak days ¥200 less.`,
+  },
+  {
+    q: "Do I need to reserve the Kagayaki?",
+    a: `Yes. Every car on a Kagayaki is reserved (JR West: 「全車指定席」), so you cannot board on a non-reserved ticket or on a rail pass without a seat reservation. Pass holders reserve for free. If you want to walk on without a reservation, take a Hakutaka: cars 1–4 are non-reserved on most services, 1–5 on the 551, 571, 573, 575 and 577.`,
   },
   {
     q: "Is the JR Pass worth it for Tokyo to Kanazawa?",
-    a: `Not the nationwide one, usually — and quite often the Hokuriku Arch Pass is. A 7-day nationwide Ordinary JAPAN RAIL PASS is ${JR_PASS_7} bought online (${PASS_CHECKED}), which is roughly three and a half single Tokyo–Kanazawa fares on our reference figure, so a there-and-back trip to Kanazawa does not come close to paying for it. The Hokuriku Arch Pass is ${ARCH_PASS} for seven consecutive days on JR West's own page and covers reserved seats on the Hokuriku Shinkansen between Tsuruga and Tokyo plus the Kansai area, Toyama, Ishikawa and Fukui — which is exactly the shape of a Tokyo → Kanazawa → Kyoto or Osaka trip. The catch is printed on the same page: it does not cover the Tokaido Shinkansen between Tokyo and Shin-Osaka, so it only works if you go out one way and back the other. Our JR Pass guide has the break-even calculator for your own legs.`,
+    a: `Not for this trip alone. A 7-day JAPAN RAIL PASS is ${JR_PASS_7} through an overseas agency since 1 October 2026 (${JR_PASS_7_ONLINE} on the official site, ${PASS_CHECKED}), against ${yen(FARE_RESERVED * 2)} for a Tokyo–Kanazawa return. The Hokuriku Arch Pass, ${ARCH_PASS} for 7 days on JR West's own page, suits a Tokyo → Kanazawa → Kyoto or Osaka loop, but it still needs more travel than those two legs to pay. The JR EAST PASS stops at Joetsumyoko and does not reach Kanazawa.`,
   },
   {
-    q: "Do I need to reserve seats on the Kagayaki?",
-    a: `Yes — there is no choice. JR West writes the service as 「かがやき号（全車指定席）」, all cars reserved, on its own ticket-rules page; read on ${OWN}. A Kagayaki has no non-reserved car, so you cannot board one on a basic fare and an express ticket alone. The Hakutaka is the service that does have non-reserved seating: JR West lists cars 1 to 5 as non-reserved on the Hakutaka 551, 571, 573, 575 and 577 — with car 5 switched to reserved on some days — and cars 1 to 4 on the others. If you are holding a rail pass, reserving is free and takes a minute at a ticket office or machine; if you are holding a Kagayaki ticket, the reservation is the ticket.`,
-  },
-  {
-    q: "Kagayaki or Hakutaka — which should you take?",
-    a: `Kagayaki if the time matters, Hakutaka if flexibility does. The Kagayaki is the limited-stop service and the one that gets you there in about two and a half hours, but every seat on it is reserved, so you are committed to a departure. The Hakutaka stops more often, takes longer, and has non-reserved cars at the front — cars 1 to 4 on most services, 1 to 5 on five named ones — which means you can walk up and board. Both are E7 or W7 sets with the same seats, the same Green Car and the same Gran Class, at JR West's published 260 km/h and 924 seats, so the difference is stops and commitment rather than comfort. The third name on the line, the Tsurugi, is the Hokuriku-only shuttle and does not run through to Tokyo.`,
+    q: "Can I go to Shirakawa-go from Kanazawa on the same day?",
+    a: `Yes, as a day trip from Kanazawa. The bus from Kanazawa Station West Exit takes 1 hour 15 minutes and is reserved-seat only; Nohi Bus lists ¥2,900 one way from 1 December 2026 (¥2,800 until 30 November), read for our Takayama and Shirakawa-go guide on ${BUS_CHECKED}. On the day you arrive from Tokyo it only works with an early train, so most itineraries spend the first night in Kanazawa and do Shirakawa-go the next morning, by bus or on a guided day tour.`,
   },
   {
     q: "Can you get from Kanazawa to Kyoto or Osaka without changing?",
-    a: `Not since the line was extended to Tsuruga. The Hokuriku Shinkansen now runs Tokyo–Kanazawa–Tsuruga, and from Tsuruga you change across the platform onto the Limited Express Thunderbird for Kyoto and Osaka. JR West's own HOKURIKU One-way Ticket page makes the split explicit: the ticket covers "Limited Express THUNDERBIRD & Hokuriku Shinkansen", with the shinkansen leg valid "Between Tsuruga and Toyama". Read on ${OWN}. In practice it is one timed cross-platform change rather than a journey broken in two, and the official one-way tickets price the whole thing — ¥6,500 adult and ¥3,250 child from Kyoto city, ¥8,000 and ¥4,000 from Osaka city. Our own reference figure for Kanazawa to Kyoto bought as ordinary tickets is about ${yen(kanazawaKyoto.fareYen)}.`,
-  },
-  {
-    q: "Is there a cheaper way from Tokyo to Kanazawa than the Shinkansen?",
-    a: `Yes, and it costs you the evening. Overnight and daytime highway coaches run Tokyo to Kanazawa for a fraction of a shinkansen ticket, and the budget airlines serve Komatsu, Kanazawa's airport, from Haneda. Neither is covered by any JR pass and neither is faster — the coach is roughly three times the journey time. The reason most visitors still take the train is that two and a half hours door to door is short enough to make Kanazawa a two-night stop rather than a logistics exercise, and the Hokuriku Shinkansen's cheap seat is the non-reserved Hakutaka car rather than a different mode of transport. If price is the binding constraint, compare the coach against the non-reserved Hakutaka fare, not against the Kagayaki.`,
+    a: `No. Since the line was extended to Tsuruga, you change there from the Hokuriku Shinkansen to the Limited Express Thunderbird. JR West's HOKURIKU One-way Ticket covers both, at ¥6,500 adult from Kyoto city and ¥8,000 from Osaka city (read ${FIRST}). Bought as ordinary tickets, Kanazawa to Kyoto is about ${yen(kanazawaKyoto.fareYen)} on our own reference figure as of ${FARE_AS_OF}.`,
   },
   {
     q: "Should you stop at Karuizawa or Nagano on the way?",
-    a: `Only if you are not in a hurry, because the fast train does not. The Hokuriku Shinkansen runs Tokyo–Ueno–Omiya and then up through Karuizawa, Nagano, Joetsumyoko and Toyama to Kanazawa, but the Kagayaki skips most of that; the Hakutaka is the service that calls at them. Both Karuizawa and Nagano make sensible breaks on a route you are travelling once — Karuizawa in particular is close enough to Tokyo to be a day trip in its own right, which our Karuizawa guide covers. The practical point is the ticket: a journey broken for a few hours is normally still one ticket, but a journey broken overnight is two, and on an all-reserved Kagayaki each leg needs its own seat.`,
-  },
-  {
-    q: "What is there to do in Kanazawa when you arrive?",
-    a: `Three things within a bus ride of the station, and one bus ride out of it. Kenroku-en, one of Japan's three great gardens, sits next to the Kanazawa Castle grounds; the Higashi Chaya district is the preserved teahouse quarter where the geisha houses were; and Omicho Market is the covered fish market in between. A guided day joins all three, sometimes with a temarizushi-making session attached. The bus ride out is the one that needs planning: Shirakawa-go is 1 hour 15 minutes and ¥2,800 from the Kanazawa Station West Exit on a reserved-seat service that Hokuriku Railroad says must be booked before boarding — our Takayama and Shirakawa-go tour guide has the fares both ways and the four reservation-only 2027 light-up dates.`,
-  },
-  {
-    q: "How far ahead should you book Tokyo to Kanazawa?",
-    a: `Reserved seats open 30 days ahead and most of the year a few days is plenty — with four exceptions that are not negotiable. Golden Week in late April and early May, the mid-August Obon week, the New Year period, and the four January evenings of the Shirakawa-go light-up, which pull every seat on the Hokuriku line towards Kanazawa and Takayama. Gran Class, which is the small first-class car and the one thing on this train that genuinely sells out, is worth booking as early as you can in any season. If you are holding a pass, the reservation costs nothing, so there is no reason to leave it — and if you are buying a single ticket for a Kagayaki, remember that the reservation is not optional on that service.`,
+    a: `Only on a Hakutaka. The Kagayaki passes Karuizawa and most other stations; the Hakutaka calls at Karuizawa, Ueda and Nagano. A stop of a few hours is normally still one ticket, but an overnight break is two, and on a Kagayaki each leg needs its own seat reservation.`,
   },
 ];
 
-const TITLE = "Tokyo to Kanazawa (2026): Kagayaki Times and Passes";
+const TITLE = "Tokyo to Kanazawa Shinkansen (2026): Time, Price, Passes";
 const DESCRIPTION =
-  "Tokyo to Kanazawa is 2h28m direct on the Hokuriku Shinkansen. The Kagayaki is all-reserved; the Hakutaka has non-reserved cars 1–4. Passes compared.";
+  "Tokyo to Kanazawa shinkansen: about 2h30 on the all-reserved Kagayaki, ¥14,400 reserved (JR West, Nov 2026). JR Pass vs Hokuriku Arch Pass compared.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/transport/tokyo-to-kanazawa") },
@@ -311,7 +294,7 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
                 {
                   "@type": "ListItem",
                   position: 4,
-                  name: "Tokyo to Kanazawa",
+                  name: "Tokyo to Kanazawa Shinkansen",
                   item: "https://www.japan-travel-kit.com/guides/transport/tokyo-to-kanazawa",
                 },
               ],
@@ -335,7 +318,7 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>Tokyo to Kanazawa</span>
+          <span className={styles.breadCurrent}>Tokyo to Kanazawa Shinkansen</span>
         </div>
       </div>
 
@@ -344,14 +327,14 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo to Kanazawa (2026):<br />Kagayaki Times, Seats and Whether a Pass Pays
+            Tokyo to Kanazawa Shinkansen (2026):<br />Time, Price, Passes
           </h1>
           <p className={styles.heroSubtitle}>
-            Two and a half hours, no transfer, and one decision that is made for you: the fast train
-            has no non-reserved car at all.
+            The Hokuriku Shinkansen trip in numbers: Kagayaki against Hakutaka, the fare from JR West, and
+            what the JR Pass and the Hokuriku Arch Pass do with it.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "JR East & JR West figures, dated", "Pass break-even included"].map((t) => (
+            {[`Updated ${updated.label}`, "Fares from JR West, dated", "Pass break-even included"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -378,38 +361,32 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Journey time</p>
-                <p className={styles.verdictStatValue}>2h 28m, no transfer</p>
+                <p className={styles.verdictStatLabel}>Kagayaki</p>
+                <p className={styles.verdictStatValue}>About 2h30, no change</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Reserved seat, one way</p>
+                <p className={styles.verdictStatValue}>{yen(FARE_RESERVED)}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Kagayaki seating</p>
                 <p className={styles.verdictStatValue}>All reserved</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Hokuriku Arch Pass</p>
-                <p className={styles.verdictStatValue}>{ARCH_PASS} / 7 days</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>On to Kyoto / Osaka</p>
-                <p className={styles.verdictStatValue}>Change at Tsuruga</p>
+                <p className={styles.verdictStatLabel}>Passes that cover it</p>
+                <p className={styles.verdictStatValue}>JR Pass, Hokuriku Arch Pass</p>
               </div>
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              <strong>Tokyo to Kanazawa</strong> is one direct train on the{" "}
-              <strong>Hokuriku Shinkansen</strong>: JR West gives the fastest journey as{" "}
-              <strong>2 hours 28 minutes</strong>, and the booking page lists a{" "}
-              <strong>2 hour 20 minute</strong> departure with <strong>&ldquo;0 transfer(s)&rdquo;</strong>.
-              The service to want is the <strong>Kagayaki</strong>, which makes the fewest stops — and which
-              JR West writes as <strong>全車指定席</strong>, every car reserved, so the reservation is not
-              optional. The <strong>Hakutaka</strong> is the slower service with{" "}
-              <strong>non-reserved cars 1–4</strong> (1–5 on five named trains). Tickets come in four classes:
-              reserved Ordinary, reserved Green, <strong>Gran Class</strong> and non-reserved Ordinary. On
-              passes, the one shaped like this trip is the <strong>Hokuriku Arch Pass</strong> at{" "}
-              <strong>{ARCH_PASS}</strong> for seven days — it covers Tokyo to Tsuruga but{" "}
-              <strong>not the Tokaido Shinkansen</strong>, so it only pays if you come back the other way.
-              And since the line reached Tsuruga, <strong>Kanazawa to Kyoto or Osaka means one change at
-              Tsuruga</strong> onto the Thunderbird. All operator figures read on {OWN}.
+              The <strong>Tokyo to Kanazawa shinkansen</strong> takes <strong>about 2 hours 30 minutes</strong> on
+              a <strong>Kagayaki</strong> (JR West&apos;s fastest is 2h28m) and about 3 hours on a Hakutaka, with no
+              change, and a reserved Ordinary seat is <strong>{yen(FARE_RESERVED)}</strong> one way in regular
+              season on JR West&apos;s e5489 eTicket. The Kagayaki is <strong>all reserved</strong>, so you need a
+              seat reservation before boarding; the Hakutaka has non-reserved cars. The{" "}
+              <strong>JAPAN RAIL PASS</strong> and the <strong>Hokuriku Arch Pass</strong> ({ARCH_PASS} for 7 days)
+              cover the whole trip with free reservations, but the <strong>JR EAST PASS</strong> stops at
+              Joetsumyoko and does not reach Kanazawa. Fares and pass rules read on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -425,56 +402,47 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>Why This Route Is Simpler Than Tokyo to Kyoto</h2>
+          <h2 className={styles.sectionTitle}>What This Guide Covers, and What It Leaves to the Others</h2>
           <p className={styles.bodyText}>
-            Because there is only one line and one operator pairing on it. The Hokuriku Shinkansen runs north
-            out of Tokyo through Omiya, climbs over the mountains past Karuizawa and Nagano, and comes down the
-            Sea of Japan coast to Toyama and Kanazawa — then on to Tsuruga since the extension opened. There is
-            no competing route, no highway bus worth comparing on time, and no equivalent of the Nozomi
-            problem that makes Tokyo to Kyoto a pass question before it is a train question.
+            This page is the train itself: which service, how long, what it costs and whether a pass pays. The
+            pass on its own — every line it covers, the airport trains, how to collect it — is in our{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass guide</Link>, and the day out
+            of Kanazawa to the thatched villages is in our{" "}
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour guide</Link>.
           </p>
           <p className={styles.bodyText}>
-            What there is instead is one unusual rule. The fast service, the <strong>Kagayaki</strong>, is{" "}
-            <em>全車指定席</em> — every car reserved. On most shinkansen lines you can buy a basic fare and a
-            non-reserved express ticket and get on whatever comes; on a Kagayaki you cannot. JR West publishes
-            that in exactly those words on its own ticket-rules page, and it is the single most useful thing
-            to know before you turn up at Tokyo Station with a rail pass and no reservation.
-          </p>
-          <p className={styles.bodyText}>
-            The second thing to know is what happens at the far end. Kanazawa used to be a dead end for the
-            shinkansen; now the line continues to <strong>Tsuruga</strong>, and the Kansai leg — Kyoto, Osaka
-            — is a cross-platform change there onto the <strong>Limited Express Thunderbird</strong>. That
-            change is what makes a Tokyo → Kanazawa → Kyoto loop sensible, and it is also what makes the
-            Hokuriku Arch Pass the right pass for this trip rather than the national one.
+            The Hokuriku Shinkansen runs north out of Tokyo through Omiya, over the mountains past Karuizawa and
+            Nagano, and down the Sea of Japan coast to Toyama and Kanazawa — then on to Tsuruga since the
+            extension opened. JR East runs the line as far as Joetsumyoko and JR West beyond it, which is why
+            one pass covers it and another does not.
           </p>
         </section>
 
-        {/* Route table */}
+        {/* Table (a): Kagayaki vs Hakutaka */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The train</span>
-          <h2 className={styles.sectionTitle}>How Long Is the Train From Tokyo to Kanazawa?</h2>
+          <h2 className={styles.sectionTitle}>How Long Is the Shinkansen from Tokyo to Kanazawa?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Two and a half hours, direct. Every figure below is JR West&apos;s own or the booking page&apos;s
-            own, with the source and the date it was read — including the two that decide whether you can
-            board without a reservation.
+            About 2 hours 30 minutes on a Kagayaki and about 3 hours on a Hakutaka, both direct. The difference
+            is the number of stops. Train times below are from JR West&apos;s own timetable pages, read on {OWN};
+            the non-reserved car numbers are from JR West&apos;s E7/W7 page, read {FIRST}.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Item", "Value", "What it means", "Source & date checked"].map((h) => (
-                      <th key={h}>{h}</th>
+                    {["", "Kagayaki", "Hakutaka"].map((h) => (
+                      <th key={h || "item"}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {routeRows.map((row) => (
+                  {serviceRows.map((row) => (
                     <tr key={row.item}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.item}</td>
-                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.value}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.detail}</td>
-                      <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.kagayaki}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.hakutaka}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -482,11 +450,11 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            For how shinkansen tickets work in general — the two-part fare, the seat classes, what a pass does
-            and does not open — our{" "}
-            <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> covers the mechanics, and{" "}
-            <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto</Link> is the same question on the
-            busier line.
+            Both are the same E7/W7 trains with the same seats, so the choice is time against flexibility. The
+            Kagayaki is the one to book; the Hakutaka is the one to take if you want to stop at Karuizawa or
+            Nagano, or to board without a reservation. The third name on the line, the Tsurugi, runs only within
+            Hokuriku. For how shinkansen tickets work in general, see our{" "}
+            <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -495,34 +463,33 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
           </div>
         </section>
 
-        {/* Prices */}
+        {/* Table (b): fares and passes */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Prices</span>
-          <h2 className={styles.sectionTitle}>How Much Is the Shinkansen From Tokyo to Kanazawa?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is the Train from Tokyo to Kanazawa?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            One honest note before the table. Neither JR East nor JR West publishes the Tokyo–Kanazawa single
-            fare as a static price list — both put it behind a route-search tool — and JR East revised its
-            fares on <strong>14 March 2026</strong>, which means most of the figures circulating on travel
-            sites are out of date. So the single-ticket row below is our own rounded reference value, marked
-            as such and dated; every pass and official one-way-ticket price beside it is the operator&apos;s
-            own.
+            {yen(FARE_RESERVED)} one way for a reserved Ordinary seat, regular season — JR West&apos;s e5489
+            Shinkansen eTicket price for tickets bought from 14 March 2026, the date JR East revised its fares.
+            The table puts it against the three passes people ask about, with the 7-day JAPAN RAIL PASS at its
+            price since 1 October 2026.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Ticket", "Price", "What it covers", "Source & date checked"].map((h) => (
+                    {["Ticket or pass", "Price", "What it covers", "For Tokyo–Kanazawa", "Source & date checked"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {priceRows.map((row) => (
+                  {fareRows.map((row) => (
                     <tr key={row.item}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.item}</td>
                       <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.price}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.covers}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.verdict}</td>
                       <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
                     </tr>
                   ))}
@@ -531,69 +498,63 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Subject to change — confirm before buying. {fares.note} The Hokuriku Arch Pass also requires a
-            passport at collection and, on JR West&apos;s own page, lets a pass holder take up to two children
-            aged 1 to 5 free. No Klook price appears on this page: Klook prices change by date, so check the
-            listing for your date.
+            Subject to change — confirm before buying. The single-ticket prices are JR West&apos;s online eTicket
+            prices; a paper ticket from a ticket office is priced separately. The Hokuriku Arch Pass requires a
+            passport and is for visitors on temporary-visitor status. No Klook price appears on this page: Klook
+            prices change by date, so check the listing for your date.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Hokuriku Arch Pass (7 days) →
+            </KlookLink>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              JAPAN RAIL PASS (7/14/21 days) →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Reservations */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Reservations</span>
-          <h2 className={styles.sectionTitle}>Do I Need to Reserve Seats on the Kagayaki?</h2>
+          <h2 className={styles.sectionTitle}>Do I Need to Reserve the Kagayaki?</h2>
           <p className={styles.bodyText}>
-            Yes, and there is no way around it. JR West&apos;s own ticket-rules page refers to the service as{" "}
-            <strong>「かがやき号（全車指定席）」</strong> — the Kagayaki, all cars reserved. A Kagayaki has no
-            non-reserved car, which means a basic fare plus a non-reserved express ticket will not get you on
-            board, and neither will a rail pass on its own. Read on {OWN}.
+            Yes. JR West&apos;s timetable lists the Kagayaki as <strong>全車指定席</strong> — every car reserved —
+            so there is no non-reserved car to stand in. A non-reserved ticket will not get you on board, and
+            neither will a rail pass without a seat reservation. With a JR Pass or the Hokuriku Arch Pass the
+            reservation is free; with a single ticket, the reservation is the ticket.
           </p>
           <p className={styles.bodyText}>
-            The <strong>Hakutaka</strong> is the service that still has walk-up seating, and JR West is
-            specific about where: cars <strong>1 to 5</strong> are non-reserved on the Hakutaka{" "}
-            <strong>551, 571, 573, 575 and 577</strong>, with car 5 switched to reserved on some days, and
-            cars <strong>1 to 4</strong> on the rest. That is the fallback if your plans are loose — at the
-            cost of a slower train with more stops.
+            The <strong>Hakutaka</strong> is the service with walk-up seats: cars <strong>1 to 4</strong> on most
+            trains, and <strong>1 to 5</strong> on the Hakutaka 551, 571, 573, 575 and 577 (car 5 is reserved on
+            some days). That is the fallback if your plans are loose, at the cost of about half an hour.
           </p>
-          <p className={styles.bodyText}>
-            Three practical consequences. If you hold a <strong>JR Pass or the Hokuriku Arch Pass</strong>,
-            the seat reservation is free, so make it: there is no upside to arriving at the gate without one.
-            If you are buying a single ticket for a Kagayaki, the reservation <em>is</em> the ticket. And if
-            you want <strong>Gran Class</strong> — the small first-class car that only the Hokuriku and Tohoku
-            lines have — book it as far ahead as you can, because it is the one part of this train that
-            reliably sells out. Reserved seats open 30 days before departure.
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Pick a train and seat class →
-            </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              JAPAN RAIL PASS →
-            </KlookLink>
-          </div>
         </section>
 
-        {/* Which ticket */}
+        {/* Table (c): booking timing */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It for Tokyo to Kanazawa?</h2>
+          <span className={styles.sectionLabel}>Booking</span>
+          <h2 className={styles.sectionTitle}>When Should You Book Tokyo to Kanazawa?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Reserved seats go on sale at 10:00 one month before the day of travel. Most of the year a few days
+            ahead is enough; the dates below are the exceptions. Season dates are from the table JR West prints
+            for the Hokuriku Shinkansen in its December 2026 ticket rules, read on {OWN}.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Option", "What it costs", "What it gets you", "When to pick it"].map((h) => (
+                    {["When", "Dates or rule", "What it means"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {compareRows.map((row) => (
-                    <tr key={row.option}>
-                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.option}</td>
-                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.cost}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.gets}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.pick}</td>
+                  {bookingRows.map((row) => (
+                    <tr key={row.when}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.when}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.detail}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -601,23 +562,51 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            The short version: a there-and-back trip to Kanazawa does not justify any pass, a Tokyo →
-            Kanazawa → Kansai loop usually justifies the <strong>Hokuriku Arch Pass</strong>, and only a week
-            with Hiroshima or Tohoku in it as well justifies the nationwide one. Our{" "}
-            <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> has a calculator that settles it
-            against your own legs, and our{" "}
-            <Link href="/guides/transport/kyoto-transportation">getting around Kyoto guide</Link> covers the
-            city at the other end of the loop. One thing no pass covers: the highway buses onward to
-            Shirakawa-go, which are private operators — see our{" "}
-            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour guide</Link>{" "}
-            for those fares.
+            Once the train is booked, the next two things to settle are the night in Kanazawa — the city is
+            usually a two-night stop — and mobile data, because the seat, the Tsuruga connection and the
+            Shirakawa-go bus are all managed on a phone.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Pick a train and seat class →
+            </KlookLink>
+            <KlookLink href={kanazawaHotels.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Hotels in Kanazawa →
+            </KlookLink>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Klook eSIM for Japan →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* JR Pass */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Passes</span>
+          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It for Tokyo to Kanazawa?</h2>
+          <p className={styles.bodyText}>
+            Not on its own. A Tokyo–Kanazawa return is {yen(FARE_RESERVED * 2)}; the 7-day JAPAN RAIL PASS is{" "}
+            {JR_PASS_7} through an overseas agency since 1 October 2026, or {JR_PASS_7_ONLINE} on the official
+            site. It pays when the week also has Kyoto, Osaka and Hiroshima in it — our{" "}
+            <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> has the calculator, and our{" "}
+            <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14-day itinerary</Link> shows where a
+            Kanazawa detour fits a two-week route.
+          </p>
+          <p className={styles.bodyText}>
+            The <strong>Hokuriku Arch Pass</strong> ({ARCH_PASS}, 7 days) is shaped for Tokyo → Kanazawa → Kyoto
+            or Osaka, flying in to Tokyo and out of Kansai. It excludes the Tokaido Shinkansen, so it does nothing
+            for a there-and-back. The <strong>JR EAST PASS</strong> covers the Hokuriku Shinkansen only to
+            Joetsumyoko — see our{" "}
+            <Link href="/guides/transport/jr-east-pass">JR East Pass guide</Link> for where it does pay. For a
+            10-day first trip with Kanazawa between Tokyo and Kyoto, our{" "}
+            <Link href="/guides/attractions/japan-10-day-itinerary">Japan 10-day itinerary</Link> shows the
+            order.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              Hokuriku Arch Pass (7 day) →
+              Hokuriku Arch Pass →
             </KlookLink>
             <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-              JAPAN RAIL PASS (7/14/21 day) →
+              JAPAN RAIL PASS →
             </KlookLink>
           </div>
         </section>
@@ -625,71 +614,56 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
         {/* Onward to Kansai */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Onward</span>
-          <h2 className={styles.sectionTitle}>After Kanazawa: Kyoto and Osaka Since the Tsuruga Extension</h2>
+          <h2 className={styles.sectionTitle}>Can You Go On from Kanazawa to Kyoto or Osaka?</h2>
           <p className={styles.bodyText}>
-            The Hokuriku Shinkansen no longer stops at Kanazawa. It carries on to{" "}
-            <strong>Tsuruga</strong>, and that is where the Kansai leg begins: you change at Tsuruga onto the{" "}
-            <strong>Limited Express Thunderbird</strong> for Kyoto and Osaka. JR West&apos;s own{" "}
-            <strong>HOKURIKU One-way Ticket</strong> page states the combination in those terms — &ldquo;Limited
-            Express THUNDERBIRD &amp; Hokuriku Shinkansen&rdquo;, with the shinkansen portion valid
-            &ldquo;Between Tsuruga and Toyama&rdquo;. Read on {OWN}.
+            Yes, with one change. The Hokuriku Shinkansen continues to <strong>Tsuruga</strong>, where you change
+            onto the <strong>Limited Express Thunderbird</strong> for Kyoto and Osaka. JR West&apos;s{" "}
+            <strong>HOKURIKU One-way Ticket</strong> covers both trains — &ldquo;Limited Express THUNDERBIRD &amp;
+            Hokuriku Shinkansen&rdquo;, with the shinkansen part valid &ldquo;Between Tsuruga and Toyama&rdquo; — at{" "}
+            <strong>¥6,500</strong> adult from Kyoto city and <strong>¥8,000</strong> from Osaka city (read {FIRST}).
           </p>
           <p className={styles.bodyText}>
-            The official one-way prices for that combination, from the same page: <strong>¥6,500</strong> adult
-            and ¥3,250 child from Kyoto city to Kanazawa, <strong>¥8,000</strong> and ¥4,000 from Osaka city,
-            with Fukui at ¥5,000 and ¥6,000 and Toyama at ¥7,500 and ¥8,500. Ordinary reserved and
-            non-reserved seating are both included; first class is not. Those are one-direction tickets, which
-            makes them the natural partner to a Tokyo-side single rather than an alternative to a pass.
-          </p>
-          <p className={styles.bodyText}>
-            Why this matters for the pass decision: the Hokuriku Arch Pass covers precisely this shape —
-            Tokyo in, Kanazawa in the middle, Kansai out — and explicitly <strong>excludes</strong> the
-            Tokaido Shinkansen between Tokyo and Shin-Osaka. So it rewards a loop and punishes a there-and-back.
-            If your trip flies into Haneda or Narita and out of Kansai, this is the pass; if you are coming
-            back to Tokyo the way you came, buy singles.
+            Coming back to Tokyo the same way you came? Buy singles. Leaving Japan from Kansai instead? That loop
+            is what the Hokuriku Arch Pass is built for, and our{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass guide</Link> works out how much
+            extra travel it needs to beat the tickets.
           </p>
         </section>
 
-        {/* At the far end */}
+        {/* Shirakawa-go */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>At the far end</span>
-          <h2 className={styles.sectionTitle}>What Do You Do With Two Days in Kanazawa?</h2>
+          <h2 className={styles.sectionTitle}>Can I Go to Shirakawa-go from Kanazawa on the Same Day?</h2>
           <p className={styles.bodyText}>
-            Kanazawa is a small, dense city and the three things it is known for are within a short bus ride
-            of the station: <strong>Kenroku-en</strong>, counted as one of Japan&apos;s three great gardens,
-            with the <strong>Kanazawa Castle</strong> grounds next to it; the{" "}
-            <strong>Higashi Chaya</strong> district, the preserved teahouse quarter; and{" "}
-            <strong>Omicho Market</strong>, the covered fish market between them. A guided day joins the
-            three, and one listing adds a temarizushi-making session — which is the sort of thing a city
-            with its own gold-leaf and lacquer crafts does well.
+            Yes, as a day trip from Kanazawa. The bus from Kanazawa Station West Exit takes{" "}
+            <strong>1 hour 15 minutes</strong>, is reserved-seat only, and Nohi Bus lists <strong>¥2,900</strong>{" "}
+            one way from 1 December 2026 (¥2,800 until 30 November), as read for our{" "}
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour guide</Link>{" "}
+            on {BUS_CHECKED}. On the day you arrive from Tokyo it only works with an early train, so most plans
+            spend the first night in Kanazawa and go the next morning — by bus, or on a guided day that can end
+            in Takayama instead of bringing you back.
           </p>
           <p className={styles.bodyText}>
-            The day that actually needs booking is the one <em>out</em> of Kanazawa. Shirakawa-go is{" "}
-            <strong>1 hour 15 minutes</strong> and <strong>¥2,800</strong> from the Kanazawa Station West Exit
-            on a Hokuriku Railroad service that is reserved-seating and must be booked before boarding, and
-            the guided day that takes in both the village and the Takayama old town can be bought as a
-            one-way drop-off in Takayama rather than a round trip — which turns a day trip into the next leg
-            of the journey. Our{" "}
-            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour guide</Link>{" "}
-            has the fares in both directions and the four reservation-only 2027 light-up evenings.
+            In Kanazawa itself, Kenroku-en and the castle grounds, the Higashi Chaya teahouse district and Omicho
+            Market are within a short bus ride of the station, and a guided day joins the three.
           </p>
         </section>
 
         <KlookTourPicks
-          heading="Kanazawa and What Lies South of It"
-          intro="Two guided days in the city itself — the garden, the teahouse district and the castle, one of them with a temarizushi session — and two that use Kanazawa as the start of the Shirakawa-go run, including the version that drops you in Takayama instead of bringing you back. Open a listing for availability and the current price on your dates."
+          heading="Kanazawa and Shirakawa-go Day Tours"
+          intro="Two guided days in Kanazawa — the garden, the teahouse district and the castle, one with a temarizushi session — and two that use Kanazawa as the start of the Shirakawa-go run, including the version that drops you in Takayama. Open a listing for availability and the current price on your dates."
           tours={[
-            kanazawaKenrokuenHigashiChayaDayTour,
-            kanazawaGeishaKenrokuenCastleDayTour,
             shirakawagoTakayamaKanazawaDayTour,
             shirakawagoKanazawaDayTour,
+            kanazawaKenrokuenHigashiChayaDayTour,
+            kanazawaGeishaKenrokuenCastleDayTour,
           ]}
         />
 
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Tokyo to Kanazawa Shinkansen: Common Questions</h2>
           <div className={styles.faqList}>
             {faqItems.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
@@ -710,19 +684,18 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>Before you go</span>
           <h2 className={styles.sectionTitle}>One Thing to Sort Before You Board</h2>
           <p className={styles.bodyText}>
-            Data, because every decision on this route is made on a phone. Reserved seats open 30 days out and
-            the apps are where you change them; the Tsuruga connection is a timed cross-platform change you
-            will want to check against your actual arrival; and the onward bus to Shirakawa-go is a
-            Japanese-language reservation system on a road that closes in heavy snow. An eSIM activated before
-            you fly means all of that is something you can look up from a platform rather than guess at.{" "}
+            Data. Seat changes happen in an app, the Tsuruga connection is a timed change you will want to check
+            against your actual arrival, and the Shirakawa-go bus is a reservation you may need to look up from a
+            platform. An eSIM activated before you fly covers all three.{" "}
             <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it against the
             alternatives, and our{" "}
-            <Link href="/guides/transport/ic-cards-japan">IC card guide</Link> covers tapping through the
-            local gates once you are off the shinkansen.
+            <Link href="/guides/transport/ic-cards-japan">IC card guide</Link> covers tapping through the local
+            gates once you are off the shinkansen. All our rail guides are on the{" "}
+            <Link href="/guides/transport">transport hub</Link>.
           </p>
         </section>
 

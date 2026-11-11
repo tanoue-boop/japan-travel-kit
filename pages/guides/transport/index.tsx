@@ -64,7 +64,9 @@ export default function GuidesTransportPage({ dates }: { dates: Record<string, s
             has shown the pass pays off on your route, Klook sells the{" "}
             <PartnerTextLink href={jrPassWholeJapan.url}>7, 14 or 21 day JAPAN RAIL PASS</PartnerTextLink>. Our{" "}
             <Link href="/guides/transport/kyoto-to-tokyo-shinkansen" style={{ color: "var(--text)", fontWeight: 600 }}>Kyoto to Tokyo train guide</Link>{" "}
-            shows what the pass covers on the busiest single leg, with the Nozomi ticket priced. For a stay
+            shows what the pass covers on the busiest single leg, with the Nozomi ticket priced, and our{" "}
+            <Link href="/guides/transport/tokyo-to-kanazawa" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo to Kanazawa shinkansen guide</Link>{" "}
+            weighs it against the Hokuriku Arch Pass on the Kagayaki. For a stay
             based in the capital, the{" "}
             <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> covers all Tokyo Metro
             and Toei Subway lines for 24, 48 or 72 hours;{" "}

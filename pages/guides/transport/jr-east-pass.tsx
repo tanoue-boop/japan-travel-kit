@@ -584,9 +584,9 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
           <p className={styles.bodyText}>
             For Kanazawa, the Hokuriku Arch Pass (¥35,000, read {ARCH_CHECKED}) covers Tokyo–Kanazawa–Osaka. Our{" "}
             <Link href="/guides/transport/tokyo-to-kanazawa" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Tokyo to Kanazawa guide
+              Tokyo to Kanazawa shinkansen guide
             </Link>{" "}
-            compares it with single tickets.
+            compares it with single tickets and the JR Pass.
           </p>
         </section>
 
@@ -845,7 +845,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             {[
               { href: "/guides/transport/tokyo-wide-pass", title: "JR Tokyo Wide Pass (2026): Price and Is It Worth It?" },
               { href: "/guides/transport/jr-pass-guide", title: "JR Pass Cost 2026: New Prices & Is It Worth It?" },
-              { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa (2026): Kagayaki Times, Seats and Whether a Pass Pays" },
+              { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa Shinkansen (2026): Time, Price, Passes" },
               { href: "/guides/transport/hokkaido-rail-pass", title: "Hokkaido Rail Pass (2026): Price and Is It Worth It?" },
               { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Gala Yuzawa Ski Day Trip from Tokyo" },
               { href: "/guides/attractions/karuizawa-day-trip-from-tokyo", title: "Karuizawa Day Trip From Tokyo" },

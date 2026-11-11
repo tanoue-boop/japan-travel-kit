@@ -1713,7 +1713,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             and{" "}
             <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima shinkansen guide</Link>{" "}
             cover the day and the train; for Kanazawa, our{" "}
-            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link>; for a
+            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa shinkansen guide</Link>; for a
             winter trip north, our{" "}
             <Link href="/guides/attractions/hokkaido-7-day-itinerary">Hokkaido 7 day itinerary</Link>.
             With fewer days, our{" "}

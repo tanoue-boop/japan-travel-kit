@@ -747,8 +747,8 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             on this site. Whether the lunch is included or an upgrade, which differs between the two Nagoya
             listings. And whether the observation-deck access is in the price, because on some listings it is
             an option. For the rail that gets you to any of these three cities, our{" "}
-            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link> covers the
-            Hokuriku Shinkansen end and our{" "}
+            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa shinkansen guide</Link> covers the
+            Hokuriku Shinkansen end — the Kagayaki time and fare, and which pass covers it — and our{" "}
             <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> the rest.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

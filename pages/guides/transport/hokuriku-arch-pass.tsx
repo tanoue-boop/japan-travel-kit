@@ -760,9 +760,9 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             </Link>
             . The arch only makes sense with Kanazawa in the middle. See{" "}
             <Link href="/guides/transport/tokyo-to-kanazawa" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Tokyo to Kanazawa
+              Tokyo to Kanazawa shinkansen
             </Link>{" "}
-            for the first half of that trip.
+            for the first half of that trip: Kagayaki against Hakutaka, and the single fare this pass has to beat.
           </p>
         </section>
 
