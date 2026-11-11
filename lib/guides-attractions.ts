@@ -378,6 +378,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/japan-3-week-itinerary",
+    badge: "Itinerary",
+    title: "Japan 3 Week Itinerary (2026): 21 Days, JR Pass & Bookings",
+    desc: "Seven bases in twenty nights — Tokyo, Nikko or Hakone, Kanazawa, Takayama via Shirakawa-go, Kyoto, Osaka and Hiroshima — with a table for all 21 days, the 21-day JR Pass worked against the official fares, and what to book before you fly.",
+    group: "cities",
+    // Nationwide: Tokyo → Kanazawa → Takayama → Kyoto → Osaka → Hiroshima → Tokyo.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/japan-10-day-itinerary",
     badge: "Itinerary",
     title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day",

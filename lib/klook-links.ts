@@ -7915,3 +7915,83 @@ export const sapporoSkiDayTripPrep: KlookTripPrepItem[] = [
     why: "Lifts stop for wind and buses run late in snow; the tour operator's messages and the resort's lift status reach your phone, not a noticeboard.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Japan 3 week itinerary (added 11 Nov 2026, task-jtk-20261111-01).
+// ---------------------------------------------------------------------------
+
+/**
+ * Takayama hotel search (6.5%). The only new Klook URL for the page: the c9316
+ * Takayama destination hotel page was confirmed as a live en-US page through the
+ * www.klook.com search index on 11 Nov 2026. Every other entry below reads a URL
+ * out of an existing constant, so the destination ids have one source of truth.
+ */
+export const takayamaHotelsUrl = klookLink("https://www.klook.com/en-US/destination/c9316-takayama/3-hotel/");
+
+/** One hotel search per base on the 21-day route, in the order the route reaches them. */
+export const japanThreeWeekStayAreas: KlookStayArea[] = [
+  {
+    area: "Tokyo Station / Marunouchi (Days 1–5 and Day 20)",
+    why: "The Hokuriku Shinkansen to Kanazawa leaves from here on Day 7 and the train back from Hiroshima ends here on Day 20, so the first and last Tokyo nights both start at the station you need.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Kanazawa (Days 7–8)",
+    why: "The Shirakawa-go buses and the join-in tours on Day 9 leave from Kanazawa Station, so a hotel near the station saves the morning.",
+    url: kanazawaHotels.url,
+  },
+  {
+    area: "Takayama (Days 9–10)",
+    why: "The Hida limited express towards Nagoya on Day 11 and the Nohi buses to Shirakawa-go both start beside Takayama Station, and the old town is a walk away.",
+    url: takayamaHotelsUrl,
+  },
+  {
+    area: "Kyoto Station (Days 11–14)",
+    why: "The shinkansen from Nagoya arrives under it on Day 11, and the JR lines to Fushimi Inari and Nara leave from it on Days 12 and 14.",
+    url: kyotoStayAreas[0].url,
+  },
+  {
+    area: "Umeda (Days 15–17)",
+    why: "Shin-Osaka, where the Day 18 shinkansen to Hiroshima leaves, is a short Midosuji Line ride away, and JR to Universal City starts at Osaka Station next door.",
+    url: osakaStayAreas[0].url,
+  },
+  {
+    area: "Hiroshima Station (Days 18–19)",
+    why: "The shinkansen arrives and leaves here, and the JR local to Miyajimaguchi for Day 19 starts here too.",
+    url: hiroshimaStayAreas[0].url,
+  },
+];
+
+/** "Book these on the same visit" for the 21-day route: 6.5% hotels and tours, 5% passes, 20% eSIM. */
+export const japanThreeWeekTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "The base for the first five nights and the last one, beside the Hokuriku Shinkansen on Day 7 and the train in from Hiroshima on Day 20.",
+  },
+  {
+    label: shirakawagoTakayamaKanazawaDayTour.title,
+    ctaLabel: "Check the Kanazawa → Takayama tour →",
+    url: shirakawagoTakayamaKanazawaDayTour.url,
+    why: "Day 9 as one booking: the listing offers a one-way drop-off in Takayama, so Shirakawa-go and the move to your next hotel happen on the same bus.",
+  },
+  {
+    label: "Hotels in Takayama",
+    ctaLabel: "Check Takayama hotels on Klook →",
+    url: takayamaHotelsUrl,
+    why: "Takayama is a small town with two nights on this route; book it with the rest of the hotels rather than last.",
+  },
+  {
+    label: hakoneFreepass.title,
+    ctaLabel: "Check the Hakone Freepass →",
+    url: hakoneFreepass.url,
+    why: "For the Day 6 night if you choose Hakone over Nikko: the Odakyu side of the trip, which a JR Pass does not cover.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Day 1 into Tokyo and Day 21 back to Narita on one round-trip ticket.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Twenty-one days of maps, QR tickets and seat reservations across seven bases.",
+  },
+];

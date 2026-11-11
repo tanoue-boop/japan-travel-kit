@@ -760,6 +760,7 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
               { href: "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary", title: "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan, Day by Day" },
               { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
+              { href: "/guides/attractions/japan-3-week-itinerary", title: "Japan 3 Week Itinerary (2026): 21 Days, JR Pass & Bookings" },
               { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order" },
               { href: "/guides/transport/tokyo-to-osaka-shinkansen", title: "Tokyo to Osaka Shinkansen: Times, Fares, JR Pass" },
               { href: "/guides/money/cash-vs-card-japan", title: "Cash vs Card in Japan (2026): Where Cards Work and Where You Need Yen" },
