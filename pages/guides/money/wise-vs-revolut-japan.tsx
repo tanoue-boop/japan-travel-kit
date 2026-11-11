@@ -410,7 +410,9 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
             <Link href="/guides/money/atms-in-japan" style={{ fontWeight: 600 }}>ATMs in Japan guide</Link> covers which
             networks take foreign cards, and{" "}
             <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ fontWeight: 600 }}>how much yen to bring</Link>{" "}
-            helps you size the withdrawal against your allowance.
+            helps you size the withdrawal against your allowance. For Wise&apos;s allowance on US, Australian and
+            Japan-issued cards as well, see our{" "}
+            <Link href="/guides/money/wise-card-japan" style={{ fontWeight: 600 }}>Wise card Japan guide</Link>.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>
             Sources:{" "}

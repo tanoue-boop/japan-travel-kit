@@ -133,7 +133,7 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/skyliner-vs-nex",
     badge: "Comparison",
-    title: "Skyliner vs N'EX (2026): Which Narita Train Is Better?",
+    title: "Skyliner vs N'EX (NEX) 2026: Which Narita Train for Your Hotel?",
     desc: "Skyliner ¥2,580 and 36 minutes to Nippori, or N'EX ¥3,140 and 53 minutes to Tokyo Station with a ¥5,200 round trip. Pick by the station you need without a change — with a destination table and JR Pass rules.",
     group: "airports",
     city: "tokyo",
@@ -189,7 +189,7 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/osaka-metro-pass",
     badge: "Comparison",
-    title: "Osaka Metro Pass 2026: Price, 1-Day vs 2-Day & Enjoy Eco Card Compared",
+    title: "Osaka Metro Pass 2026: Enjoy Eco Card ¥820/¥620, Is It Worth It?",
     desc: "The 1-day Osaka Metro Pass is ¥820, or ¥620 at weekends and ¥310 for children. The two-day option is now a ¥1,200 30-hour pass. With pick-up points and the buses it skips.",
     group: "fares",
     city: "osaka",

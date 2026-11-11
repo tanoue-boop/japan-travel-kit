@@ -24,18 +24,21 @@ const WISE_FEES_URL = wiseLink("wise-card-japan", WISE_PRICING_URL);
 const CHECKED = "26 October 2026";
 
 /**
+ * Re-read on this date: the five country card-fee pages behind atmAllowances
+ * (wise.com/{us,gb,de,au,jp}/pricing/card-fees) and the two Japanese ATM operators'
+ * overseas-card pages behind japanAtms (limits, fee wording, Visa/Mastercard hours).
+ */
+const LAST_CHECKED = "2026-11-11";
+const SEVEN_BANK_URL = "https://www.sevenbank.co.jp/intlcard/service.html";
+const JAPAN_POST_URL = "https://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html";
+
+/**
  * The table this page exists for. There is no single answer to "how much does Wise
  * charge at a Japanese ATM" — the allowance follows the country where your latest
  * card was issued. Each row is that country's own Wise card-fees page, read on
  * CHECKED: wise.com/{us,gb,de,au}/pricing/card-fees and wise.com/en-jp/pricing/card-fees.
  */
 const atmAllowances = [
-  {
-    country: "United States",
-    free: "250 USD per month",
-    over: "1.95 USD + 1.95% on each withdrawal once you pass 250 USD in the month",
-    card: "9 USD",
-  },
   {
     country: "United Kingdom",
     free: "250 GBP per month",
@@ -47,6 +50,12 @@ const atmAllowances = [
     free: "250 EUR per month",
     over: "2.69% of the amount over 250 EUR",
     card: "7 EUR",
+  },
+  {
+    country: "United States",
+    free: "250 USD per month",
+    over: "1.95 USD + 1.95% on each withdrawal once you pass 250 USD in the month",
+    card: "9 USD",
   },
   {
     country: "Australia",
@@ -71,7 +80,7 @@ const atmAllowances = [
  */
 const japanAtms = [
   {
-    atm: "Seven Bank — inside 7-Eleven stores",
+    atm: "Seven Bank — inside 7-Eleven stores (recommended)",
     takes: "Yes: Visa, Mastercard (incl. Maestro and Cirrus), UnionPay, American Express, JCB, Discover, Diners Club",
     limit: "¥100,000 per withdrawal, or ¥30,000 if the machine reads the magnetic stripe rather than the chip",
     fee: "Not published as a figure — Seven Bank states only that the fee differs by card brand and is charged per transaction",
@@ -157,44 +166,32 @@ const cons = [
 
 const faqItems = [
   {
-    q: "Does the Wise card work in Japan?",
+    q: "Can I use my Wise card in Japan?",
     a: "Yes. Wise's UK card page says to use the physical card \"wherever they accept Visa\", and Wise's own Japan guide names Seven Bank ATMs inside 7-Eleven stores and Japan Post Bank ATMs for withdrawing yen. Japan is still partly a cash country, so use the card for hotels, chain stores and convenience stores and keep some cash for smaller venues. Checked 26 October 2026.",
   },
   {
     q: "How much does Wise charge for ATM withdrawals in Japan?",
-    a: "Nothing up to your monthly allowance, which is set by the country your card was issued in: 250 USD on a US card, 250 GBP on a UK one, 250 EUR in the Eurozone, 400 AUD in Australia and 25,000 JPY on a Japan-issued card. Above that, Wise charges 2.69% of the excess in the UK, the Eurozone and Australia; 1.95 USD + 1.95% on each withdrawal on a US card; and 100 JPY + 1.75% on a Japanese one. The Japanese ATM operator may add a fee of its own on top. All figures read off Wise's own country card-fee pages on 26 October 2026.",
+    a: "Nothing up to your monthly allowance, which is set by the country your card was issued in: 250 GBP on a UK card, 250 EUR in the Eurozone, 250 USD on a US card, 400 AUD in Australia and 25,000 JPY on a Japan-issued card. Above that, Wise charges 2.69% of the excess in the UK, the Eurozone and Australia; 1.95 USD + 1.95% on each withdrawal on a US card; and 100 JPY + 1.75% on a Japanese one. The Japanese ATM operator may add a fee of its own on top. All figures read off Wise's own country card-fee pages on 11 November 2026.",
+  },
+  {
+    q: "Which ATMs in Japan work with the Wise card?",
+    a: "Use a Seven Bank ATM inside 7-Eleven first. Seven Bank lists Visa, Mastercard (including Maestro and Cirrus), UnionPay, American Express, JCB, Discover and Diners Club for cards issued abroad, allows ¥100,000 per withdrawal (¥30,000 on a magnetic-stripe read) and runs Visa and Mastercard withdrawals 00:00–24:00. Japan Post Bank ATMs at post offices also take Visa and Mastercard cards issued abroad, up to ¥50,000 per withdrawal. Checked 11 November 2026.",
   },
   {
     q: "Do Japanese ATMs add their own fee on top of Wise?",
-    a: "They can, and it is separate from anything Wise charges. Japan Post Bank states an ATM usage fee of ¥220 including tax per use for overseas-issued cards. Seven Bank says its fee differs by card brand and is charged per transaction, but does not publish the amount on its overseas-card page, so no figure for it appears on this page. Wise's own Japan guide confirms the principle: if you see an operator fee, \"it's charged by the ATM owner, not Wise\". Checked 26 October 2026.",
-  },
-  {
-    q: "Does Wise work at 7-Eleven ATMs in Japan?",
-    a: "Yes. Seven Bank states that its ATMs dispense yen to cards issued outside Japan on the Visa, Mastercard (including Maestro and Cirrus), UnionPay, American Express, JCB, Discover and Diners Club networks. The limit is ¥100,000 per withdrawal, or ¥30,000 if the machine has to read a magnetic stripe rather than the chip, and the Visa and Mastercard service runs 00:00–24:00. Checked 26 October 2026.",
-  },
-  {
-    q: "Can I add my Wise card to Apple Pay or Google Pay for Japan?",
-    a: "In most cases yes. Wise's help centre states you can add the card to Apple Pay if it was issued in Australia, Brazil, Canada, an EEA country where it is supported, Israel, Japan, Malaysia, New Zealand, Singapore, the US or the UK. Google Pay covers a similar list including the UK, the US, Australia and most of the EEA, but Wise states it \"is not currently available if your card was issued in Japan\". Checked 26 October 2026.",
+    a: "They can, and it is separate from anything Wise charges. Japan Post Bank states an ATM usage fee of ¥220 including tax per use may apply to cards issued abroad. Seven Bank says a fee is charged per transaction where one applies, but does not publish the amount on its overseas-card page, so no figure for it appears on this page. Wise's own Japan guide confirms the principle: if you see an operator fee, \"it's charged by the ATM owner, not Wise\". Operator pages checked 11 November 2026.",
   },
   {
     q: "How do I avoid fees with Wise at Japanese ATMs?",
-    a: "Two habits. First, always choose to pay in yen rather than your home currency — declining Dynamic Currency Conversion keeps the conversion with Wise at the mid-market rate. Second, withdraw larger amounts less often: that keeps you inside the monthly free allowance (250 USD, GBP or EUR, or 400 AUD) and spreads the Japanese operator's per-transaction fee across more cash. Seven Bank allows up to ¥100,000 in one withdrawal.",
-  },
-  {
-    q: "Should I hold yen in Wise before I travel?",
-    a: "It's optional but useful. Converting to yen in advance lets you lock in the mid-market rate at a moment of your choosing, so currency movements during your trip don't affect what you've already converted. Alternatively, leave the money in your home currency and let Wise auto-convert at the point of payment — its UK card page states it converts at its best rate if you don't hold the currency.",
-  },
-  {
-    q: "Is Wise better than a normal bank card for Japan?",
-    a: "For most travellers, yes. A typical home-bank debit or credit card charges a foreign transaction fee plus a marked-up exchange rate. Wise uses the mid-market rate with a conversion fee it headlines as \"From 0.23%\" (US) or \"From 0.24%\" (UK), so on a two-week trip the difference is meaningful. It is still a debit product, so carry a backup card and some cash too.",
+    a: "Two habits. First, always choose to pay in yen rather than your home currency — declining Dynamic Currency Conversion keeps the conversion with Wise at the mid-market rate. Second, withdraw larger amounts less often: that keeps you inside the monthly free allowance (250 GBP, EUR or USD, or 400 AUD) and spreads the Japanese operator's per-transaction fee across more cash. Seven Bank allows up to ¥100,000 in one withdrawal.",
   },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/wise-card-japan") } });
 
-const TITLE = "Wise Card in Japan 2026: Free ATM to 250/mo, Then 2.69%";
+const TITLE = "Wise Card Japan 2026: Free ATM to 250/mo, Then 2.69%";
 const DESCRIPTION =
-  "Yes, the Wise card works in Japan. ATMs are free to 250 USD/GBP/EUR or 400 AUD a month, then 2.69%; Japan Post Bank adds ¥220. Order one before you fly.";
+  "Yes, the Wise card works in Japan: no Wise fee on the first 250 GBP/EUR/USD of ATM cash a month, then 2.69% (UK/EU); Japan Post adds ¥220. Order now.";
 
 export default function WiseCardJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -280,7 +277,7 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Wise Card in Japan (2026):<br />ATM Fees, Free Limits &amp; Which ATMs Take It
+            Wise Card Japan (2026):<br />ATM Fees, Free Limits &amp; Which ATMs Take It
           </h1>
           <p className={styles.heroSubtitle}>
             Free withdrawals to 250 USD, GBP or EUR a month, 2.69% above that, and a separate fee from the
@@ -312,25 +309,38 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
 
         {/* Answer first — the paragraph that has to settle the search before the reader scrolls */}
         <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
-          <h2 className={styles.sectionTitle}>Does the Wise Card Work in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Can I Use My Wise Card in Japan?</h2>
           <p className={styles.bodyText}>
             <strong>
-              Yes — a Wise card withdraws yen at Seven Bank ATMs inside 7-Eleven and at Japan Post Bank ATMs, and
-              spends anywhere Visa is accepted.
+              Yes — the Wise card works in Japan: it pays wherever Visa is accepted and withdraws yen at Seven Bank
+              ATMs inside 7-Eleven and at Japan Post Bank ATMs.
             </strong>{" "}
-            Wise takes nothing on withdrawals up to 250 USD, 250 GBP, 250 EUR or 400 AUD a month depending on where
-            your card was issued, then 2.69% of the excess — or 1.95 USD + 1.95% per withdrawal on a US card, and
-            ¥100 + 1.75% on a Japan-issued one — while the Japanese machine charges separately, with Japan Post Bank
-            publishing ¥220 including tax per use and Seven Bank stating only that its fee varies by card brand.
-            That makes it a strong card for a visitor who wants the mid-market rate on card payments and two or
-            three large cash withdrawals, and a poor one for anyone planning to take out ¥10,000 at a time.
+            Wise charges no ATM fee on the first 250 GBP a month on a UK card, 250 EUR on a Eurozone card, 250 USD
+            on a US card or 400 AUD on an Australian card, then 2.69% of the excess (1.95 USD + 1.95% per withdrawal
+            on a US card), according to Wise&apos;s own card-fee pages checked {LAST_CHECKED}. The Japanese machine
+            charges separately: Japan Post Bank publishes ¥220 including tax per use, and Seven Bank does not publish
+            an amount.
           </p>
           <a href={WISE_URL} className={styles.verdictBtn} target="_blank" rel={WISE_REL} style={{ display: "inline-block", marginTop: "0.5rem" }}>
             Order a Wise card →
           </a>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            That makes it a strong card for a visitor who wants the mid-market rate on card payments and two or
+            three large cash withdrawals, and a poor one for anyone planning to take out ¥10,000 at a time. To size
+            those withdrawals, see{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              how much yen to bring to Japan
+            </Link>
+            ; to compare Wise with the other cards, see our{" "}
+            <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best travel card for Japan
+            </Link>{" "}
+            ranking or the full{" "}
+            <Link href="/guides/money" style={{ color: "var(--accent)", fontWeight: 600 }}>Japan money guides</Link>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Every Wise figure on this page was read off Wise&apos;s own country card-fee pages on {CHECKED}, and every
-            Japanese figure off the ATM operator&apos;s own site on the same day. Where an operator does not publish a
+            The ATM allowances and the Japanese ATM limits and fees were re-read on Wise&apos;s and the operators&apos; own
+            pages on {LAST_CHECKED}; the other Wise lines (conversion fee, phone wallets) were read on {CHECKED}. Where an operator does not publish a
             number, this page says so rather than guessing one.{" "}
             <a href="#atm-fees" style={{ color: "var(--accent)", fontWeight: 600 }}>Jump to the fee table ↓</a>
           </p>
@@ -403,7 +413,8 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Read off each country&apos;s own Wise card-fees page on {CHECKED}. Wise revised this structure on
+            <strong>Last checked: {LAST_CHECKED}.</strong> Source: Wise&apos;s own card-fees page for each country
+            (wise.com/gb, /de, /us, /au and /jp, under pricing/card-fees). Wise revised this structure on
             1 May 2026 and ties it to where your latest card was issued, which is normally the registered address
             on your account — so an older guide quoting a flat 1.75% or a ¥30,000 allowance is describing the
             previous scheme. The allowance resets monthly, not per trip.{" "}
@@ -446,10 +457,13 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Hours differ too. Seven Bank runs its Visa and Mastercard service 00:00–24:00, with JCB and UnionPay
-            00:10–23:50 and American Express 00:05–23:50. Japan Post Bank machines run 07:00–23:00 Monday to
-            Saturday and 07:00–21:00 on Sundays and holidays, while its machines in FamilyMart stores run
-            00:05–23:55. Both operators&apos; own pages, read {CHECKED}. For the wider picture — which machines are
+            <strong>Last checked: {LAST_CHECKED}.</strong> Sources:{" "}
+            <a href={SEVEN_BANK_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Seven Bank overseas cards</a>{" "}
+            and{" "}
+            <a href={JAPAN_POST_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Japan Post Bank overseas cards</a>.
+            Hours differ too. Seven Bank runs its Visa and Mastercard service 00:00–24:00. Japan Post Bank machines
+            run 07:00–23:00 Monday to Saturday and 07:00–21:00 on Sundays and holidays, while its machines in
+            FamilyMart stores run 00:05–23:55. For the wider picture — which machines are
             where, and what to do when one rejects a card — see our{" "}
             <Link href="/guides/money/atms-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>ATMs in Japan guide</Link>.
           </p>

@@ -184,7 +184,10 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             Amazing Pass, so on a pass day it costs you nothing extra. After dark, head to{" "}
             <strong>Dotonbori</strong>, the neon-soaked canal district famous for the running Glico sign and
             wall-to-wall street food. The Tombori River Cruise that runs through it is on the pass too, which
-            is the kind of thing that quietly makes the maths work.
+            is the kind of thing that quietly makes the maths work: without a pass it is ¥2,000 for about 20
+            minutes, with boats every half hour from 11:00 to 21:00 — fares, the pier and the cheaper rival
+            boat are in our{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise" style={linkStyle}>Dotonbori River Cruise guide</Link>.
           </p>
         </section>
 

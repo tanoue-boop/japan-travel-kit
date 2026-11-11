@@ -70,11 +70,11 @@ const tripRows = TRIP_LENGTHS.map((t) => ({
 }));
 
 const comparisonRows = [
-  { provider: "Airalo", price: `From ${priceFrom("airalo")}`, data: "1–20 GB, plus unlimited", network: getProvider("airalo").network, verdict: "The default reply — and it holds up" },
+  { provider: "Airalo", price: `From ${priceFrom("airalo")}`, data: "1–20 GB, plus unlimited", network: getProvider("airalo").network, verdict: "Easy default; not the cheapest" },
   { provider: "Holafly", price: `From ${priceFrom("holafly")}`, data: "Unlimited only", network: getProvider("holafly").network, verdict: "No longer the cheapest unlimited" },
-  { provider: "eSIM Go", price: `From ${priceFrom("esimgo")}`, data: "1–100 GB, plus unlimited", network: getProvider("esimgo").network, verdict: "Cheapest of Reddit's usual four" },
-  { provider: "Sakura Mobile", price: `From ${priceFrom("sakura")}`, data: "9–90 GB, plus unlimited", network: getProvider("sakura").network, verdict: "Right for long stays, as advised" },
-  { provider: "Simbye", price: `From ${priceFrom("simbye")}`, data: esimSpec("simbye").dataRange, network: getProvider("simbye").network, verdict: "Outside Reddit's usual four; lowest entry price in this comparison" },
+  { provider: "eSIM Go", price: `From ${priceFrom("esimgo")}`, data: "1–100 GB, plus unlimited", network: getProvider("esimgo").network, verdict: "Starts below Airalo and Holafly" },
+  { provider: "Sakura Mobile", price: `From ${priceFrom("sakura")}`, data: "9–90 GB, plus unlimited", network: getProvider("sakura").network, verdict: "Long stays or a Japanese number" },
+  { provider: "Simbye", price: `From ${priceFrom("simbye")}`, data: esimSpec("simbye").dataRange, network: getProvider("simbye").network, verdict: "Our pick; lowest entry price in this comparison" },
 ];
 
 /**
@@ -85,7 +85,7 @@ const comparisonRows = [
 const networkCards = [
   {
     carrier: "docomo",
-    what: "The widest reach outside the cities, which is why the countryside advice in the threads points here.",
+    what: "The widest reach outside the cities, which is why it is the network to look for on a rural itinerary.",
     who: [
       "eSIM Go / Breeze — breezesim.com's Japan page names NTT docomo among the networks it covers.",
       "Sakura Mobile — the 3 GB/day data plans are docomo.",
@@ -162,28 +162,50 @@ const specRows = [
  * go on this page until someone has opened it. We summarise opinion and quote no comment.
  */
 const redditSearches = [
+  { label: "r/JapanTravelTips: top eSIM threads", href: "https://www.reddit.com/r/JapanTravelTips/search/?q=esim&restrict_sr=1&sort=top" },
   { label: "r/JapanTravel: top eSIM threads", href: "https://www.reddit.com/r/JapanTravel/search/?q=esim&restrict_sr=1&sort=top" },
   { label: "r/JapanTravel: pocket WiFi or eSIM", href: "https://www.reddit.com/r/JapanTravel/search/?q=pocket%20wifi%20esim&restrict_sr=1&sort=top" },
   { label: "r/eSIM: Japan threads", href: "https://www.reddit.com/r/eSIM/search/?q=japan&restrict_sr=1&sort=top" },
 ];
 
-// The four claims that recur most in Japan eSIM threads, each checked against current pricing.
+/**
+ * The price-checked shortlist shown at the top: the five eSIMs this page covers, our pick
+ * first. Reddit refuses automated reads (re-tried 11 Nov 2026), so nothing here says what
+ * Reddit recommends or mentions most. Prices and networks come from data/esim-prices.json,
+ * which is read from each provider's own page (sourceUrl) daily.
+ */
+const SHORTLIST: { id: EsimProviderId; label: string; verdict: string }[] = [
+  { id: "simbye", label: "Simbye (our pick)", verdict: "Lowest entry price on the shortlist; data only" },
+  { id: "airalo", label: "Airalo", verdict: "Easy app install; not the cheapest" },
+  { id: "esimgo", label: "eSIM Go", verdict: "Starts below Airalo; docomo among its networks" },
+  { id: "holafly", label: "Holafly", verdict: "Unlimited only; costs more than Airalo or eSIM Go for unlimited" },
+  { id: "sakura", label: "Sakura Mobile", verdict: "The only one here with a Japanese-number plan" },
+];
+const shortlistRows = SHORTLIST.map((s) => ({
+  ...s,
+  priceFrom: priceFrom(s.id),
+  network: getProvider(s.id).network,
+  sourceUrl: getProvider(s.id).sourceUrl,
+  name: getProvider(s.id).name,
+}));
+
+// Four common pieces of Japan eSIM advice, each checked against current pricing.
 const redditQAs = [
   {
-    q: '"Just buy Airalo before you go" — still the right default?',
-    a: `Yes, with one correction. Airalo runs on SoftBank as its primary network and installs from its own iOS app, which is why it gets recommended so often. But the threads usually present it as the cheap option too, and that has not been true for a while: Airalo starts at ${priceFrom("airalo")} while eSIM Go starts at ${priceFrom("esimgo")}. Pick Airalo for the app and the support, not for the price.`,
+    q: "Claim: buy Airalo before you go. Still the right default?",
+    a: `Yes, with one correction. Airalo runs on SoftBank as its primary network and installs from its own iOS app. It is not the cheap option, though: Airalo starts at ${priceFrom("airalo")} while eSIM Go starts at ${priceFrom("esimgo")} and Simbye at ${priceFrom("simbye")}. Pick Airalo for the app and the support, not for the price.`,
   },
   {
-    q: '"Holafly is the one to get for unlimited" — does the price still justify it?',
-    a: `Less often than the threads suggest. Holafly's cheapest unlimited plan is ${unlimitedFromLabel("holafly")} against ${unlimitedFromLabel("airalo")} from Airalo and ${unlimitedFromLabel("esimgo")} from eSIM Go. The recommendation dates from a period when Holafly was one of very few unlimited sellers. The hotspot cap of 1 GB/day is also rarely mentioned in those comments and matters if you tether.`,
+    q: "Claim: Holafly is the one for unlimited. Does the price still justify it?",
+    a: `Not on price. Holafly's cheapest unlimited plan is ${unlimitedFromLabel("holafly")} against ${unlimitedFromLabel("airalo")} from Airalo and ${unlimitedFromLabel("esimgo")} from eSIM Go. Its hotspot is also capped at 1 GB/day, which matters if you tether.`,
   },
   {
-    q: '"Unlimited means unlimited" — what does the fine print actually say?',
-    a: "No hard cap, but no provider sells genuinely unmetered full-speed data. Holafly caps hotspot use at 1 GB/day. eSIM Go's unlimited tier is \"Unlimited Essential\" and drops speed after a daily high-speed allowance. Airalo applies a fair-use policy. Sakura Mobile is unlimited on-device but limits hotspot by plan length. If a thread tells you one of these is uncapped, it is the fine print that is out of date, not the price.",
+    q: "Claim: unlimited means unlimited. What does the fine print say?",
+    a: "No hard cap, but no provider sells genuinely unmetered full-speed data. Holafly caps hotspot use at 1 GB/day. eSIM Go's unlimited tier is \"Unlimited Essential\" and drops speed after a daily high-speed allowance. Airalo applies a fair-use policy. Sakura Mobile is unlimited on-device but limits hotspot by plan length. Read the fine print of the plan you buy, not the word unlimited.",
   },
   {
-    q: '"Get Docomo for the countryside" — does the network choice matter?',
-    a: "It matters less than it used to, but the advice is sound in direction. Docomo still has the broadest rural reach, and eSIM Go and Sakura Mobile both ride it. Holafly runs on SoftBank/KDDI and Airalo on SoftBank as its primary network (plus two others its Japan page does not name), which is excellent in cities and along the main tourist corridors. In genuinely remote mountains or on small islands, coverage thins out whoever you buy from.",
+    q: "Claim: get docomo for the countryside. Does the network choice matter?",
+    a: "The advice is sound in direction. Docomo has the broadest rural reach, and eSIM Go and Sakura Mobile both ride it. Holafly runs on SoftBank/KDDI and Airalo on SoftBank as its primary network (plus two others its Japan page does not name), which is excellent in cities and along the main tourist corridors. In genuinely remote mountains or on small islands, coverage thins out whoever you buy from.",
   },
 ];
 
@@ -193,13 +215,13 @@ const redditQAs = [
  */
 const askedQuestions = [
   {
-    q: "What are people on Reddit saying about the best travel eSIMs?",
+    q: "Can this page tell me what Reddit recommends?",
     a: (
       <>
-        Across r/JapanTravel, r/eSIM and r/travel the shortlist barely moves: Airalo as the safe default,
-        Holafly for unlimited, eSIM Go for a tight budget, Sakura Mobile for long stays or a phone number.
-        What has moved is the prices attached to those names — which is what the{" "}
-        <Link href="#claim-check" className={tools.inlineLink}>claim check below</Link> is for.
+        Not directly: Reddit blocks automated reads, so no thread is quoted or counted here. What this page
+        does is check common Japan eSIM advice against current prices — see the{" "}
+        <Link href="#claim-check" className={tools.inlineLink}>claim check below</Link> — and link the
+        Reddit searches so you can read the threads yourself.
       </>
     ),
   },
@@ -207,9 +229,9 @@ const askedQuestions = [
     q: "What is the best eSIM for Japan?",
     a: (
       <>
-        For most travellers, Airalo — from {priceFrom("airalo")}, on SoftBank as its primary network, with its own app for
-        installation. If price is the deciding factor, Simbye at {priceFrom("simbye")} and eSIM Go at{" "}
-        {priceFrom("esimgo")} both undercut it; if you want a Japanese phone number, Sakura Mobile is the
+        Our pick is Simbye, from {priceFrom("simbye")}, data only. eSIM Go starts at {priceFrom("esimgo")};
+        Airalo starts at {priceFrom("airalo")}, on SoftBank as its primary
+        network, with its own app for installation. If you want a Japanese phone number, Sakura Mobile is the
         only provider here that sells one. Our{" "}
         <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>full Japan eSIM comparison</Link>{" "}
         ranks all five on current prices.
@@ -271,32 +293,20 @@ const askedQuestions = [
 
 const faqItems = [
   {
-    q: "What eSIM do most travellers use for Japan?",
-    a: "Airalo is the name that comes up most often in r/JapanTravel, r/eSIM and r/travel threads, cited for reliability and app-based setup. The 'competitive pricing' part of that reputation no longer holds, though — eSIM Go is cheaper at entry level on current pricing.",
+    q: "What is the best eSIM for Japan according to Reddit?",
+    a: `Reddit threads cannot be read or quoted here (Reddit blocks automated reads), so this is our price-checked answer instead: Simbye, from ${priceFrom("simbye")}, data only. eSIM Go starts at ${priceFrom("esimgo")} and Airalo at ${priceFrom("airalo")}; Sakura Mobile is the one to look at for a Japanese phone number or a long stay. Prices from each provider's own site, checked ${pricesCheckedAt}.`,
   },
   {
-    q: "Is Airalo recommended on Reddit for Japan?",
-    a: "Yes — Airalo is frequently recommended on r/JapanTravel as a reliable and affordable option. Its Japan page shows SoftBank as the primary network plus two others it does not name (checked 1 Nov 2026). The main criticism is that it's data-only, with no voice calls or SMS.",
+    q: "Is Airalo good for Japan?",
+    a: `Yes as an easy default, not as the cheapest. Its Japan page shows SoftBank as the primary network plus two others it does not name (checked 1 Nov 2026), and it installs from its own app. It is data-only, with no voice calls or Japanese number, and it starts at ${priceFrom("airalo")}, above Simbye (${priceFrom("simbye")}) and eSIM Go (${priceFrom("esimgo")}).`,
   },
   {
-    q: "What do Reddit users say about Holafly Japan?",
-    a: `Holafly gets positive reviews for its unlimited data plan, which appeals to heavy users who don't want to track usage, and sentiment on its Japan coverage is generally good. Two things those comments tend to miss: the 1 GB/day hotspot cap, and the fact that it is now the most expensive unlimited option of the four at ${unlimitedFromLabel("holafly")}.`,
-  },
-  {
-    q: "Is eSIM Go popular on Reddit?",
-    a: `eSIM Go is gaining traction as the budget alternative to Airalo. It's frequently recommended for short trips where basic, reliable Docomo coverage is needed without spending much. Its low entry price (${priceFrom("esimgo")}) is the main attraction, and it is the one budget claim in these threads that current pricing still backs up.`,
-  },
-  {
-    q: "What's the consensus on Japan eSIMs on Reddit?",
-    a: "The standing advice is: (1) buy before you fly — don't rely on airport SIMs; (2) Airalo for most travellers; (3) Holafly if you want unlimited data; (4) eSIM Go if budget is the priority; (5) Sakura Mobile for voice calls or longer stays. Points 1, 2, 4 and 5 still check out against current pricing. Point 3 does not — Airalo and eSIM Go both sell unlimited Japan data for less than Holafly today.",
+    q: "Is Holafly good for Japan?",
+    a: `Holafly sells unlimited plans only, from ${unlimitedFromLabel("holafly")}, on KDDI / SoftBank per its Japan page. Two things to check before buying: the 1 GB/day hotspot cap, and that Airalo (${unlimitedFromLabel("airalo")}) and eSIM Go (${unlimitedFromLabel("esimgo")}) both sell unlimited Japan data for less.`,
   },
   {
     q: "Which Japan eSIM runs on docomo?",
     a: `eSIM Go (sold to consumers as Breeze), whose Japan page names NTT docomo among its networks, and Sakura Mobile's 3 GB/day data plans. Klook's Japan eSIM listing also states docomo 4G LTE for its total-data plans. Holafly runs on SoftBank/KDDI instead, and Airalo's Japan page names SoftBank as the primary network with two unnamed others. Checked against each provider's own site on 22 Oct 2026 (Airalo re-read 1 Nov 2026).`,
-  },
-  {
-    q: "Can I use a Japan eSIM as a hotspot?",
-    a: `Yes on all of them, but the allowances differ and this is the detail the threads skip. Breeze states tethering on every Japan plan at no extra cost; Holafly allows 1 GB of shareable data per day; Sakura Mobile caps the hotspot by plan length; Airalo's help centre says the personal hotspot works where your device and the network support it; Klook's listing states hotspot and tethering are supported. Checked 22 Oct 2026.`,
   },
   {
     q: "Does Klook sell a Japan eSIM?",
@@ -306,10 +316,10 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/best-esim-japan-reddit") } });
 
-const TITLE = `Best eSIM for Japan Reddit 2026: Picks Checked, From ${priceFrom("simbye")}`;
+const TITLE = `Best eSIM for Japan Reddit 2026: What Holds Up, From ${priceFrom("simbye")}`;
 const META_DESCRIPTION =
-  `Best eSIM for Japan Reddit advice, fact-checked for 2026: Airalo from ${priceFrom("airalo")}, ` +
-  `eSIM Go from ${priceFrom("esimgo")}, Simbye from ${priceFrom("simbye")}. Compare plans by trip length, then buy.`;
+  `Best eSIM for Japan Reddit advice, price-checked: our pick is Simbye from ${priceFrom("simbye")}; ` +
+  `eSIM Go from ${priceFrom("esimgo")}, Airalo from ${priceFrom("airalo")}. Compare, then buy.`;
 
 export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -395,13 +405,12 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             Best eSIM for Japan Reddit 2026:<br />Which Advice Still Holds
           </h1>
           <p className={styles.heroSubtitle}>
-            The same four recommendations come up in every r/JapanTravel eSIM thread.
-            Each one is checked here against this month&apos;s actual prices and plan terms,
-            with the parts the threads leave out added: networks, plans by trip length,
+            Our pick is Simbye, from {priceFrom("simbye")}. Common Japan eSIM advice is checked here against
+            this month&apos;s actual prices and plan terms, plus networks, plans by trip length,
             and whether your phone can take an eSIM at all.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Claims checked against live prices", "Where the threads are out of date"].map((t) => (
+            {[`Updated ${updated.label}`, "Claims checked against live prices", "Official prices, checked daily"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -416,7 +425,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links.
             We may earn a small commission if you buy through them, at no extra cost to you.
-            This doesn&apos;t influence which services we cover or how we summarise Reddit opinion.{" "}
+            This doesn&apos;t influence which services we cover or how we check them.{" "}
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
@@ -428,29 +437,25 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              The Japan eSIM r/JapanTravel recommends most often is <strong>Airalo</strong>, from{" "}
-              {priceFrom("airalo")}. If you want unlimited data for a week, the cheapest on current
-              prices is{" "}
+              Our pick for the best eSIM for Japan is <strong>Simbye</strong>, from {priceFrom("simbye")}, data
+              only. The cheapest unlimited week on current prices is{" "}
               <strong>
                 {weekUnlimited
                   ? `${weekUnlimited.provider} at ${formatUsd(weekUnlimited.plan.priceUsd)} (${weekUnlimited.plan.name})`
                   : "listed in the table below"}
               </strong>
-              , not Holafly. And the cheapest Japan eSIM of any size is{" "}
+              , and the cheapest Japan eSIM of any size is{" "}
               <strong>
                 {siteCheapestPlan
                   ? `${siteCheapestPlan.provider}'s ${siteCheapestPlan.name} at ${formatUsd(siteCheapestPlan.priceUsd)}`
                   : "listed in the table below"}
               </strong>
-              . Every figure here is read from the providers&apos; own sites, last checked {pricesCheckedAt}.
+              . Every price is read from the providers&apos; own sites, last checked {pricesCheckedAt}.
             </p>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              Three of Reddit&apos;s four standing recommendations survive that price check;
-              one does not. Airalo is still the safe default, but not because
-              it is cheap — <strong>eSIM Go</strong> undercuts it, as the budget threads say.
-              The claim that has aged worst is <strong>&ldquo;get Holafly for
-              unlimited&rdquo;</strong>: it is now the most expensive of the four unlimited
-              options, not the obvious one.
+              <strong>eSIM Go</strong> starts at {priceFrom("esimgo")} and <strong>Airalo</strong> at{" "}
+              {priceFrom("airalo")}: Airalo is an easy default, but not the cheap one. If you need a Japanese
+              phone number, <strong>Sakura Mobile</strong> is the only provider here that sells one.
             </p>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
@@ -474,7 +479,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 {klookEsim.ctaLabel}
               </KlookLink>{" "}
-              — one checkout for the eSIM and the rest of the trip. Want Reddit&apos;s default instead?{" "}
+              — one checkout for the eSIM and the rest of the trip. Prefer Airalo&apos;s app?{" "}
               <a href={link("airalo")} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 Get Airalo Japan eSIM
               </a>
@@ -483,15 +488,66 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        {/* Price-checked shortlist, up top, our pick first. No Reddit-frequency claims: Reddit
+            cannot be read automatically, so nothing here is attributed to it. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Shortlist</span>
+          <h2 className={styles.sectionTitle}>Which eSIM should you get for Japan?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Simbye, for a data-only trip: it has the lowest entry price of the five eSIMs this page covers.
+            Pick Sakura Mobile instead if you need a Japanese phone number.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Provider", "Price from", "Network", "Verdict"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {shortlistRows.map((row) => (
+                    <tr key={row.id}>
+                      <td className={styles.tdProvider}>{row.label}</td>
+                      <td className={styles.tdPrice}>{row.priceFrom}</td>
+                      <td className={styles.tdNetwork}>{row.network}</td>
+                      <td>{row.verdict}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {pricesCheckedAt}, from each provider&apos;s own Japan page:{" "}
+            {shortlistRows.map((row, i) => (
+              <span key={row.id}>
+                <a href={row.sourceUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" className={tools.inlineLink}>
+                  {row.name}
+                </a>
+                {i < shortlistRows.length - 1 ? ", " : "."}
+              </span>
+            ))}{" "}
+            Reddit blocks automated reads, so no thread is quoted or counted here; open the threads yourself
+            from the searches in the{" "}
+            <Link href="#read-it-yourself" className={tools.inlineLink}>section below</Link>.
+          </p>
+          <a href={link("simbye")} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            Get Simbye Japan eSIM from {priceFrom("simbye")} →
+          </a>
+        </section>
+
         <EsimUseCaseTable copy={esimPicksCopy.en} checkedLabel={pricesCheckedAt} />
 
         {/* Where the opinions come from */}
-        <section className={styles.bodySection}>
+        <section className={styles.bodySection} id="read-it-yourself">
           <span className={styles.sectionLabel}>Read it yourself</span>
-          <h2 className={styles.sectionTitle}>What Reddit Says About Japan eSIMs: the Summary</h2>
+          <h2 className={styles.sectionTitle}>Where to Read the Reddit Threads Yourself</h2>
           <p className={styles.bodyText}>
-            This page summarises the opinions that keep coming up, in our own words, and quotes no one.
-            The claims are checked <Link href="#claim-check" className={tools.inlineLink}>further down</Link>. To
+            This page quotes no one and does not report what Reddit recommends; it checks common Japan eSIM
+            advice against current prices <Link href="#claim-check" className={tools.inlineLink}>further down</Link>. To
             read the threads themselves, these searches open on Reddit:
           </p>
           <ul className={styles.bodyList}>
@@ -507,24 +563,21 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
 
         {/* How to read the threads */}
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Why the threads drift</span>
-          <h2 className={styles.sectionTitle}>Reddit Is Right About Providers, Wrong About Prices</h2>
+          <span className={styles.sectionLabel}>Why prices drift</span>
+          <h2 className={styles.sectionTitle}>Why Old eSIM Advice Can Be Wrong About Prices</h2>
           <p className={styles.bodyText}>
-            Japan eSIM threads on <strong>r/JapanTravel</strong>, <strong>r/eSIM</strong> and{" "}
-            <strong>r/travel</strong> have an unusual property: the shortlist of providers has
-            been stable for years, while the numbers attached to them have not. A comment
-            recommending a provider &ldquo;from about $4&rdquo; keeps collecting upvotes long
-            after that tier was repriced, and nobody goes back to edit it. The result is advice
-            that is directionally sound and numerically stale.
+            Forum advice stays online long after the plan it describes has been repriced, and a price in
+            an old comment is rarely edited. Before acting on any figure you read in a thread, check it
+            against the provider&apos;s own page.
           </p>
           <p className={styles.bodyText}>
             So this page does not re-rank the providers — our{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               full Japan eSIM comparison
             </Link>{" "}
-            already does that. It takes the four claims you will actually meet in those threads
-            and checks each against the current catalogue, which is re-read daily. Where a
-            recommendation still stands, this page says so; where it has drifted, it shows the gap.
+            already does that. It takes four common pieces of Japan eSIM advice and checks each against
+            the current catalogue, which is re-read daily. Where the advice still stands, this page says
+            so; where the price has moved, it shows the gap.
           </p>
         </section>
 
@@ -581,7 +634,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>By trip length</span>
           <h2 className={styles.sectionTitle}>Which Plan to Buy for 5, 7 or 14 Days</h2>
           <p className={styles.bodyText}>
-            This is the decision the threads rarely make for you. Budget roughly <strong>1 GB a day</strong>{" "}
+            This is the decision that settles what you actually pay. Budget roughly <strong>1 GB a day</strong>{" "}
             for maps, trains, messaging and the occasional video, and double it if you stream or tether a
             laptop. The two right-hand columns are the cheapest plan on the whole site that covers each
             trip, read from the providers&apos; own sites on {pricesCheckedAt}.
@@ -666,8 +719,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>How to choose</span>
           <h2 className={styles.sectionTitle}>Unlimited or an Allowance? Phone Number? Tethering?</h2>
           <p className={styles.bodyText}>
-            Three questions settle almost every Japan eSIM choice, and the AI summaries of these threads
-            tend to stop before reaching them. Everything in the table is what each provider&apos;s own
+            Three questions settle almost every Japan eSIM choice. Everything in the table is what each provider&apos;s own
             site or help centre states, checked 22 Oct 2026 — no prices here, because the terms are what
             differ.
           </p>
@@ -703,19 +755,18 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             <strong>Do you need a phone number?</strong> Only if something will send you a Japanese SMS or
-            you need to be called — a restaurant confirming a booking, a clinic, a landlord. Of the four
-            providers in the threads, only Sakura Mobile sells a Voice + Data eSIM with a Japanese number
+            you need to be called — a restaurant confirming a booking, a clinic, a landlord. Of the
+            providers on this page, only Sakura Mobile sells a Voice + Data eSIM with a Japanese number
             and domestic call minutes; everything else, Klook included, is data only, and you keep your home
             number on your other SIM.
           </p>
           <p className={styles.bodyText}>
             <strong>Will you tether?</strong> If a laptop or a travel companion will be sharing the
             connection, the hotspot terms matter more than the headline price — Holafly&apos;s 1 GB/day
-            shareable cap is the one that catches people out, and it is almost never mentioned in the
-            threads that recommend it.
+            shareable cap is the one to check first.
           </p>
           <p className={styles.bodyText}>
-            This page checks what Reddit says. For every unlimited plan by price and daily limit, see our{" "}
+            This page checks common advice against prices. For every unlimited plan by price and daily limit, see our{" "}
             <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>unlimited eSIM comparison</Link>; for
             the lowest price at each size, our{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM ranking</Link>; and for a
@@ -774,26 +825,17 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
 
         {/* Airalo section */}
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Most recommended</span>
-          <h2 className={styles.sectionTitle}>Most Recommended: Airalo</h2>
+          <span className={styles.sectionLabel}>Easy default</span>
+          <h2 className={styles.sectionTitle}>Is Airalo good for Japan?</h2>
           <p className={styles.bodyText}>
-            On r/JapanTravel, Airalo is the single most recommended eSIM for Japan. Threads asking
-            &ldquo;which eSIM should I use?&rdquo; regularly attract top-voted comments recommending Airalo
-            specifically for its reliable Docomo and SoftBank network access, competitive pricing,
-            and the ease of its app-based setup.
+            Yes as an easy default, not as the cheapest. For Japan, it installs from its own app before you fly and switches on when you land, and its
+            Japan page names SoftBank as the primary network. Its entry tier is {priceFromLabel("airalo")},
+            which keeps it accessible even though it is no longer the cheapest on the list.
           </p>
           <p className={styles.bodyText}>
-            Common Reddit praise: &ldquo;Just buy Airalo before you go&rdquo; has become almost the default reply
-            on r/JapanTravel. Users cite the hassle-free setup (QR code scan before departure,
-            activate on landing) as the key advantage over airport SIMs. That part is accurate —
-            and Airalo&apos;s entry tier is {priceFromLabel("airalo")}, which keeps it accessible
-            even if it is no longer the cheapest on the list.
-          </p>
-          <p className={styles.bodyText}>
-            Reddit criticisms: The most frequent complaint is that Airalo is data-only — no voice
-            calls and no Japanese phone number. Users who need a local number are usually pointed
-            toward Sakura Mobile instead. A small number of users report slower customer support response times,
-            though most say the service worked without needing support.
+            The limit to know: Airalo is data-only — no voice calls and no Japanese phone number. If you need
+            a local number, Sakura Mobile&apos;s Voice + Data eSIM is the plan that sells one; see our{" "}
+            <Link href="/guides/esim/sakura-mobile-review" className={tools.inlineLink}>Sakura Mobile review</Link>.
           </p>
           <a
             href={link("airalo")}
@@ -810,21 +852,14 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>For unlimited data</span>
           <h2 className={styles.sectionTitle}>For Unlimited Data: Holafly</h2>
           <p className={styles.bodyText}>
-            Holafly is Reddit&apos;s go-to recommendation for travellers who want unlimited data
-            without tracking usage. On r/JapanTravel and r/eSIM, it&apos;s frequently recommended
-            for people who plan to navigate constantly, stream video, or use hotspots throughout
-            the day.
+            Holafly sells unlimited plans only, which is its appeal: a
+            flat price, and no GB counter to watch during a busy travel day.
           </p>
           <p className={styles.bodyText}>
-            The appeal is simple: a flat price for unlimited data removes the anxiety of watching
-            your GB count during a busy travel day. For a two-week trip with heavy navigation use,
-            Reddit users often suggest Holafly as the most stress-free option.
-          </p>
-          <p className={styles.bodyText}>
-            Where the advice has drifted: Holafly is no longer the cheapest way to buy unlimited
-            Japan data, and on current pricing it is the dearest of the four. Its entry unlimited
+            Where the price has moved: Holafly is no longer the cheapest way to buy unlimited
+            Japan data. Its entry unlimited
             plan is {unlimitedFromLabel("holafly")}, against {unlimitedFromLabel("esimgo")} from
-            eSIM Go and {unlimitedFromLabel("airalo")} from Airalo. The threads also rarely mention
+            eSIM Go and {unlimitedFromLabel("airalo")} from Airalo. Also check
             the 1 GB/day hotspot cap, which is the detail that matters if you planned to tether a
             laptop or share with travel companions. SoftBank — Holafly&apos;s network here — is
             also slightly thinner than Docomo outside the cities.
@@ -851,21 +886,15 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Best budget option</span>
           <h2 className={styles.sectionTitle}>Best Budget Option: eSIM Go</h2>
           <p className={styles.bodyText}>
-            eSIM Go (sold to consumers as Breeze) has gained visibility on Reddit over the past
-            year, particularly among budget travellers and those on short trips. Its entry tier is{" "}
-            {priceFromLabel("esimgo")} — still the cheapest among the established providers, which
-            is the one budget claim the threads get exactly right.
+            eSIM Go (sold to consumers as Breeze) has an entry tier of{" "}
+            {priceFromLabel("esimgo")}, below Airalo&apos;s, and breezesim.com&apos;s Japan page names NTT
+            docomo among its networks (checked 22 Oct 2026) — the network with the widest reach outside the
+            cities.
           </p>
           <p className={styles.bodyText}>
-            Reddit sentiment: Users praise eSIM Go for using Docomo — Japan&apos;s most extensive
-            network — at a lower price than Airalo. Setup is straightforward, and the service
-            works reliably in cities and popular tourist areas. For a 1–2 week trip where you
-            just need maps and messaging, several threads recommend eSIM Go as the clear budget winner.
-          </p>
-          <p className={styles.bodyText}>
-            Reddit criticisms: Fewer reviews than Airalo mean less data on edge cases. Some users
-            note that customer support response can be slower. For longer trips or heavier data
-            needs, the consensus shifts back toward Airalo or Holafly.
+            For a 1–2 week trip where you mainly need maps and messaging, that combination of a low entry
+            price and docomo coverage is the case for it. For a Japanese phone number or a month-plus stay,
+            look at Sakura Mobile instead.
           </p>
           <a
             href={link("esimgo")}
@@ -877,13 +906,12 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </a>
         </section>
 
-        {/* Simbye is not one of Reddit's usual four, so this section quotes no sentiment at all. */}
+        {/* Simbye: our pick on price. No sentiment is reported for any provider on this page. */}
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Outside the usual four</span>
-          <h2 className={styles.sectionTitle}>The Cheaper Option the Threads Don&apos;t List: Simbye</h2>
+          <span className={styles.sectionLabel}>Our pick</span>
+          <h2 className={styles.sectionTitle}>Why is Simbye our pick for Japan?</h2>
           <p className={styles.bodyText}>
-            Simbye is not one of the four names this page checks, so there is no Reddit sentiment to report
-            here. It is included because of the price check itself: its entry tier is{" "}
+            Because of the price check itself: its entry tier is{" "}
             {priceFromLabel("simbye")}, under eSIM Go&apos;s {priceFromLabel("esimgo")}, and its feed lists{" "}
             {getProvider("simbye").network}. It is data only, with no Japanese number.{" "}
             <Link href="/guides/esim/simbye-japan-review" className={tools.inlineLink}>Simbye in detail →</Link>
@@ -891,10 +919,10 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <SimbyeOffer />
         </section>
 
-        {/* Common Reddit Q&A */}
+        {/* Common advice, checked */}
         <section className={styles.bodySection} id="claim-check">
           <span className={styles.sectionLabel}>Claim check</span>
-          <h2 className={styles.sectionTitle}>The Four Recurring Claims, Checked</h2>
+          <h2 className={styles.sectionTitle}>Four Common Pieces of Advice, Checked</h2>
           <div className={styles.stepsList}>
             {redditQAs.map((qa, i) => (
               <div key={i} className={styles.stepCard}>
@@ -913,20 +941,19 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Bottom line</span>
           <h2 className={styles.sectionTitle}>Our Verdict</h2>
           <p className={styles.verdictText}>
-            Reddit&apos;s collective wisdom on Japan eSIMs is clear and consistent: <strong>Airalo is
-            the default recommendation</strong> for most travellers. It&apos;s affordable, reliable, and
-            easy to set up — which is exactly what most travellers need.
+            <strong>Simbye is our pick</strong> for a data-only Japan trip, from {priceFrom("simbye")}.{" "}
+            <strong>Airalo</strong> remains a sound, easy-to-install default — just not the cheapest one.
           </p>
           <p className={styles.verdictText}>
             The nuance is in the edge cases, and in one correction. Travellers on tight budgets or
             short trips will find eSIM Go hard to beat at {priceFrom("esimgo")}. Those staying
             longer than a month or needing a Japanese phone number should look at Sakura Mobile.
-            But if a thread tells you Holafly is the obvious unlimited pick, check the price before
+            And if you read that Holafly is the obvious unlimited pick, check the price before
             you act on it — Airalo and eSIM Go both sell unlimited for less today.
           </p>
           <p className={styles.verdictText}>
-            The one thing Reddit unanimously agrees on: <strong>buy before you fly</strong>.
-            Airport SIMs cost more, require queuing, and may be closed when you arrive.
+            Whichever you pick, <strong>buy before you fly</strong>: an eSIM installs at home on your own
+            Wi-Fi, while an airport counter means a queue and opening hours to match your flight.
           </p>
           <p className={styles.verdictText}>
             And if the rest of your trip is already in a Klook basket — tickets, passes, airport
@@ -963,7 +990,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Provider", "Price from", "Data", "Network", "Reddit Verdict"].map((h) => (
+                    {["Provider", "Price from", "Data", "Network", "Verdict"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -1111,10 +1138,10 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
         {/* CTA Banner */}
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>Go with Reddit&apos;s top pick</h2>
+            <h2 className={styles.ctaBannerTitle}>Prefer the easy-install default?</h2>
             <p className={styles.ctaBannerDesc}>
-              Airalo is the recommendation that survives the price check — easy setup,
-              24/7 support, from {priceFromLabel("airalo")}.
+              Airalo installs from its own app before you fly, from {priceFromLabel("airalo")}.
+              Not the cheapest — Simbye starts at {priceFrom("simbye")}.
             </p>
             <a
               href={link("airalo")}

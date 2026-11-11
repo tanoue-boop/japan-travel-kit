@@ -1144,7 +1144,10 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>Which train should I take for my hotel?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Pick the row that matches your hotel, not the fastest train. A transfer with two suitcases costs more
-            time than the twelve minutes between the Skyliner and the N&apos;EX.
+            time than the twelve minutes between the Skyliner and the N&apos;EX. If it is only those two trains
+            you are choosing between, our{" "}
+            <Link href="/guides/transport/skyliner-vs-nex">Skyliner vs N&apos;EX comparison</Link> sets fares,
+            times and JR Pass rules side by side, station by station.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

@@ -828,7 +828,12 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
             Only Sakura Mobile sells a voice plan or a physical SIM — the other four are
             data-only eSIMs. If you need a Japanese phone number, or your handset cannot take an
-            eSIM at all, that narrows the choice to one before price enters into it. See{" "}
+            eSIM at all, that narrows the choice to one before price enters into it — prices, plans and who
+            should skip it are in our{" "}
+            <Link href="/guides/esim/sakura-mobile-review" className={tools.inlineLink}>
+              Sakura Mobile review
+            </Link>
+            . See{" "}
             <Link href="/guides/esim/japan-sim-card-vs-esim-2026" className={tools.inlineLink}>
               SIM card vs eSIM for Japan →
             </Link>
@@ -1453,7 +1458,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sakura Mobile Review 2026: Best SIM for Long Stays?</p>
+                <p className={styles.relatedTitle}>Sakura Mobile Review 2026: eSIM &amp; SIM Card Prices, Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

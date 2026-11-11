@@ -69,9 +69,19 @@ import {
  * No Klook price appears anywhere: the product pages cannot be read.
  */
 
-/** Every figure on this page was read on this date. */
-const CHECKED_ISO = "2026-11-01";
+/**
+ * Re-checked 11 Nov 2026 (task-jtk-20261111-C02): osaka-info.jp/en/spot/tombori-river-cruise/
+ * (fares ¥2,000 / ¥1,000 / ¥500, "11:00-21:00 Departs every hour on the hour and half hour",
+ * 20 minutes, Tazaemonbashi Pier, Don Quijote 1F reception, web booking to 10 min before,
+ * no phone bookings), osaka-amazing-pass.com/en/service_free.html (same fares and schedule,
+ * Jul. 13, 24 and 25 closures, voucher-exchange rules) and osaka-info.jp/experience/en/osaka/spot/396
+ * (Wonder Cruise ¥1,000 / ¥500 and ¥1,800 / ¥900). Nothing changed. ipponmatsu.co.jp still shows
+ * the same maintenance notice. The suito-osaka.jp no-roof line was not re-read and keeps its
+ * 1 Nov 2026 date in the rain answer.
+ */
+const CHECKED_ISO = "2026-11-11";
 const CHECKED = checkedLabel(CHECKED_ISO);
+const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
 
 /** The pass price is owned by lib/attraction-prices.ts, shared with the ticket price table. */
 const PASS_1_DAY = PRICES.osakaAmazingPass.adult;
@@ -267,7 +277,7 @@ const faqItems = [
   },
   {
     q: "Does the Dotonbori River Cruise run in the rain?",
-    a: `Usually yes, but bring a layer and a hood: the boat is listed as having no roof on the Aqua Metropolis Osaka cruise portal, read on ${CHECKED}, which is what lets it pass under the low Dotonbori bridges. The published cancellation trigger is not rain as such — the pass operator's facility list says the service can be suspended because of river conditions or vessel maintenance. Treat heavy rain and high water as the risk rather than a shower, and if the weather is marginal, the covered alternative in the same few streets is a food walk rather than a boat.`,
+    a: `Usually yes, but bring a layer and a hood: the boat is listed as having no roof on the Aqua Metropolis Osaka cruise portal, read on 1 November 2026, which is what lets it pass under the low Dotonbori bridges. The published cancellation trigger is not rain as such — the pass operator's facility list says the service can be suspended because of river conditions or vessel maintenance. Treat heavy rain and high water as the risk rather than a shower, and if the weather is marginal, the covered alternative in the same few streets is a food walk rather than a boat.`,
   },
   {
     q: "Which Dotonbori cruise should you pick?",
@@ -287,9 +297,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/dotonbori-river-cruise") },
 });
 
-const TITLE = "Dotonbori River Cruise 2026: ¥2,000, 20 Min, Tombori Times";
+const TITLE = "Dotonbori River Cruise 2026: ¥2,000, 20 Min, 11:00–21:00";
 const DESC =
-  "Dotonbori River Cruise price and times: the Tombori boat is ¥2,000, runs 20 minutes and leaves every half hour, 11:00–21:00. Compare the boats and book.";
+  "Dotonbori River Cruise price and hours: the Tombori boat (Ipponmatsu Kaiun) is ¥2,000, 20 min, every 30 min 11:00–21:00 from Tazaemonbashi Pier. Book.";
 
 export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpdated }) {
   return (
@@ -379,7 +389,7 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Dotonbori River Cruise 2026:<br />Price, Times and the Tombori Boat
+            Dotonbori River Cruise 2026:<br />Price, Hours and the Tombori Boat
           </h1>
           <p className={styles.heroSubtitle}>
             ¥2,000 for an adult, about 20 minutes, and a departure from Tazaemonbashi Pier
@@ -530,22 +540,40 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Fares read on {CHECKED} from Osaka&apos;s official tourism site and the Osaka
-            Amazing Pass operator&apos;s own free-admission list, which print the same three
-            figures. The boat company&apos;s own site was offline for maintenance on the check
-            date, so those are the sources behind every number here. Subject to change —
-            confirm before you pay. For admissions across the rest of Japan, each
-            with its own check date, see our{" "}
+            <strong>Last checked: {CHECKED_ISO}</strong> — source:{" "}
+            <a href={OSAKA_INFO_URL} target="_blank" rel="noopener">
+              Osaka Convention &amp; Tourism Bureau, Tombori River Cruise
+            </a>
+            , cross-checked against the{" "}
+            <a href="https://osaka-amazing-pass.com/en/service_free.html" target="_blank" rel="noopener">
+              Osaka Amazing Pass free-facility list
+            </a>
+            , which prints the same three fares. The boat company&apos;s own site,
+            ipponmatsu.co.jp, was still showing a maintenance notice on the check date, so those
+            are the sources behind every number here. Subject to change — confirm before you
+            pay. For admissions across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>.
+          </p>
+
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            Who Runs the Dotonbori River Cruise?
+          </h3>
+          <p className={styles.bodyText}>
+            <strong>Ipponmatsu Kaiun</strong>, under the product name{" "}
+            <strong>Tombori River Cruise</strong> (とんぼりリバークルーズ) — the ¥2,000, 20-minute
+            boat from Tazaemonbashi Pier. &ldquo;Dotonbori boat ride&rdquo;, &ldquo;Dotonbori
+            cruise&rdquo; and &ldquo;Tombori River Cruise&rdquo; all point at this one boat; the
+            Wonder Cruise from Nipponbashi Pier is a different operator with its own fares,
+            compared further down. Operator name as listed on Osaka&apos;s city cruise portal.
           </p>
         </section>
 
         {/* Schedule */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Times &amp; pier</span>
-          <h2 className={styles.sectionTitle}>What Time Does the Dotonbori River Cruise Run?</h2>
+          <h2 className={styles.sectionTitle}>Dotonbori River Cruise Hours: What Time Does It Run?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>From 11:00 to 21:00, every 30 minutes</strong> — on the hour and on the
             half hour, every day except 13, 24 and 25 July in 2026. The ticket office by the
@@ -572,11 +600,30 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {CHECKED_ISO}</strong> — source:{" "}
+            <a href={OSAKA_INFO_URL} target="_blank" rel="noopener">
+              osaka-info.jp, Tombori River Cruise
+            </a>{" "}
+            (&ldquo;11:00-21:00 Departs every hour on the hour and half hour&rdquo;); the July
+            closures are from the Osaka Amazing Pass facility list, which adds that first and
+            last departures are subject to change and that extra sailings may run in season.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Twenty-one sailings a day is the useful figure. It means the cruise is something
             you fit around the rest of the evening rather than something the evening is built
             around, and the <strong>21:00 last boat</strong> is late enough that it still works
             after dinner in any season. Schedule read on {CHECKED}.
+          </p>
+
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            What Time Is the Last Dotonbori Boat Ride?
+          </h3>
+          <p className={styles.bodyText}>
+            <strong>21:00.</strong> The first boat leaves at 11:00 and the ticket office opens at
+            10:00, so the Dotonbori boat ride runs a ten-hour window with the same ¥2,000 fare at
+            every departure. The pass operator states that evening cruises sell out quickly, so a
+            late slot is the one to secure during the day.
           </p>
 
           <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>

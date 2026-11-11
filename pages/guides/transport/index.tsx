@@ -73,7 +73,11 @@ export default function GuidesTransportPage({ dates }: { dates: Record<string, s
             <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--text)", fontWeight: 600 }}>how many rides make the Tokyo Subway Ticket worth it</Link>{" "}
             is worked out against the official fares. On a day of only a few rides, tapping{" "}
             <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--text)", fontWeight: 600 }}>an IC card such as Suica, PASMO or ICOCA</Link>{" "}
-            usually comes out cheaper than a pass.
+            usually comes out cheaper than a pass. Landing at Narita, our{" "}
+            <Link href="/guides/transport/skyliner-vs-nex" style={{ color: "var(--text)", fontWeight: 600 }}>Skyliner vs N&apos;EX comparison</Link>{" "}
+            picks the airport train by the area your hotel is in; in Osaka, our{" "}
+            <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Osaka Metro Pass and Enjoy Eco Card guide</Link>{" "}
+            works out how many subway rides the 1-day pass needs to pay off.
           </PartnerPick>
         }
       />

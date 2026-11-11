@@ -651,7 +651,17 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Best eSIM for Japan
             </Link>{" "}
-            names the provider to buy if you land on that side of it.
+            names the provider to buy if you land on that side of it. If the handset that cannot take
+            an eSIM belongs to you, our{" "}
+            <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Sakura Mobile review
+            </Link>{" "}
+            covers a company that sells a physical travel SIM card, an eSIM and a pocket WiFi
+            rental side by side; for common eSIM advice checked against current prices, see the{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best eSIM for Japan Reddit check
+            </Link>
+            .
           </p>
           <p className={styles.bodyText}>
             There is also a middle option nobody advertises, because it sells two products instead

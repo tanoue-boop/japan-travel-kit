@@ -239,6 +239,12 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/tea-ceremony-japan" style={linkStyle}>Japanese tea ceremony</Link>{" "}
             built around Uji matcha.
           </p>
+          <p className={styles.bodyText}>
+            For a wet afternoon or an arrival day, the modern alternative is seven minutes on foot from Kyoto
+            Station: teamLab Biovortex Kyoto is from ¥3,800 for an adult, open 9:00–21:00 with last entry at 19:30,
+            and ¥200 cheaper booked online than at the door — slots and the Flexible Pass are in our{" "}
+            <Link href="/guides/attractions/teamlab-kyoto-tickets" style={linkStyle}>teamLab Kyoto tickets guide</Link>.
+          </p>
         </section>
 
         {/* Day trips */}

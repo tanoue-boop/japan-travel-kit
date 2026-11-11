@@ -39,6 +39,14 @@ const OFFICIAL_CHECKED = "25 October 2026";
 // against the comparison post and the /travel/esim/ price table, which agree on
 // every length both of them list (7, 10 and 30 days).
 const YEN_PRICES_CHECKED = "9 November 2026";
+// The 7, 10, 14 and 30-day tax-included prices in the opening were re-read on
+// /travel/esim/ on this date (¥4,620 / ¥5,775 for 7 days, ¥9,900 / ¥14,575 for 30).
+const OPENING_PRICES_CHECKED = "11 November 2026";
+const OPENING_PRICES_CHECKED_ISO = "2026-11-11";
+const SAKURA_ESIM_URL = "https://www.sakuramobile.jp/travel/esim/";
+// Trustpilot's own page for sakuramobile.jp, read 2026-11-11: TrustScore 4.8, 1,586 reviews.
+const TRUSTPILOT_URL = "https://www.trustpilot.com/review/sakuramobile.jp";
+const TRUSTPILOT_CHECKED = "11 November 2026";
 
 const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
 
@@ -243,6 +251,10 @@ const setupSteps = [
 
 const faqItems = [
   {
+    q: "Is Sakura Mobile worth it?",
+    a: "For long stays, rural routes, phones that need a physical SIM card, or travellers who need a Japanese phone number, yes. For a short data-only trip, no: a 7-day Sakura Mobile eSIM is ¥4,620 on 3 GB/day (docomo) or ¥5,775 unlimited (au), tax included, which is more than data-only travel eSIMs charge for a week. Prices read from sakuramobile.jp/travel/esim/ on 11 November 2026. On Trustpilot it holds a 4.8 TrustScore from 1,586 reviews (read the same day).",
+  },
+  {
     q: "Can I use Sakura Mobile for hotspot/tethering?",
     a: "Yes. Every travel eSIM and SIM card plan lists hotspot as available. The catch is on the Unlimited plan, where the on-device data is unlimited but the hotspot is not: you get one hotspot allowance for the whole trip, sized by plan length — 2 GB on 1–3 day plans, 3 GB on 4 days, 6 GB on 7 days, 9 GB on 10 days, 15 GB on 15 days and 30 GB on 27–31 day plans. The 3 GB/day plan lists hotspot as available without a separate figure. Read from Sakura Mobile's eSIM plan page on 25 October 2026.",
   },
@@ -278,9 +290,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/sakura-mobile-review") } });
 
-const TITLE = "Sakura Mobile Review 2026: Prices, Plans & Is It Worth It?";
+const TITLE = "Sakura Mobile Review 2026: eSIM & SIM Card Prices, Worth It?";
 const DESCRIPTION =
-  "Sakura Mobile review: eSIM from ¥2,750 for 3 days, ¥9,900 for 30 (3 GB/day). Unlike data-only eSIMs: a Japanese number option, SIM cards and 90-day plans.";
+  "Sakura Mobile review: eSIM ¥4,620/week on 3 GB/day (docomo) or ¥5,775 unlimited (au). Worth it for long stays or a Japanese number, not a cheap week.";
 
 export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -356,11 +368,14 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Sakura Mobile Review 2026:<br />Prices, Plans and Is It Worth It?
+            Sakura Mobile Review 2026:<br />eSIM &amp; SIM Card Prices, Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
-            From ¥2,750 for 3 days or ¥9,900 for 30 on 3 GB a day (docomo), ¥3,245 and ¥14,575 unlimited
-            (au). Worth it for long stays, rural Japan or a Japanese phone number; not for a cheap week of data.
+            Sakura Mobile&apos;s eSIM costs ¥4,620 for 7 days on 3 GB a day (docomo) or ¥5,775 unlimited (au),
+            and ¥9,900 or ¥14,575 for 30 days, tax included on sakuramobile.jp as of {OPENING_PRICES_CHECKED}.
+            It is worth it for stays of a month or more, rural routes, phones that need a physical SIM card,
+            and anyone who needs a Japanese phone number. It is not worth it for a short, data-only city trip,
+            where a data-only eSIM such as Simbye costs less.
           </p>
           <div className={styles.heroBadges}>
             {["Prices checked daily", "Independently Reviewed", "Physical SIM & eSIM"].map((t) => (
@@ -473,7 +488,10 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             days. The <strong>travel SIM card</strong> is a physical SIM you collect at an airport or have
             posted to a hotel, sold in fixed lengths up to 93 days. The <strong>pocket WiFi</strong> rental is
             the fallback for a phone that can take neither — Sakura Mobile lists it from 299 JPY/day
-            (329 JPY/day, tax incl.), read on {OFFICIAL_CHECKED}.
+            (329 JPY/day, tax incl.), read on {OFFICIAL_CHECKED}. How that rental compares with the other
+            Japan pocket WiFi companies is in our{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" className={tools.inlineLink}>best pocket WiFi for Japan</Link>{" "}
+            guide.
           </p>
           <p className={styles.bodyText}>
             The thing worth knowing before you compare it to anything else: the standard eSIM and SIM plans are
@@ -563,8 +581,16 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {OPENING_PRICES_CHECKED_ISO} (7, 10 and 30 days; also 14 days at ¥6,930 on 3 GB/day
+            and ¥9,240 unlimited) —{" "}
+            <a href={SAKURA_ESIM_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>
+              Sakura Mobile travel eSIM page
+            </a>
+            . The 3, 5 and 15-day rows are from Sakura Mobile&apos;s comparison post, read {YEN_PRICES_CHECKED}.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            On tax: Sakura Mobile&apos;s comparison table prints one yen figure per plan with no tax label,
+            On tax:Sakura Mobile&apos;s comparison table prints one yen figure per plan with no tax label,
             while its product pages quote their headline prices both ways — the travel eSIM as
             &ldquo;from 1,250 JPY (1,375 JPY, tax incl.)&rdquo;, the travel SIM card as
             &ldquo;from 3,500 JPY (3,850 JPY, tax incl.)&rdquo;. The 7, 10 and 30-day figures match the
@@ -792,10 +818,33 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           </div>
         </section>
 
+        {/* Third-party reputation, from the review site itself. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Reputation</span>
+          <h2 className={styles.sectionTitle}>What do Sakura Mobile reviews say?</h2>
+          <p className={styles.bodyText}>
+            Sakura Mobile has a TrustScore of 4.8 out of 5 from 1,586 reviews on Trustpilot, read on{" "}
+            {TRUSTPILOT_CHECKED}. The score rates the service; it does not change the price gap against
+            data-only eSIMs shown in the comparison below, which is the main reason to look elsewhere.{" "}
+            <a href={TRUSTPILOT_URL} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+              Read the Trustpilot reviews →
+            </a>
+          </p>
+        </section>
+
         {/* Who is it for */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Fit</span>
-          <h2 className={styles.sectionTitle}>Who Is Sakura Mobile Best For?</h2>
+          <h2 className={styles.sectionTitle}>Is Sakura Mobile worth it, and who should skip it?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Sakura Mobile is worth it for the four travellers below, because each needs something a data-only
+            eSIM marketplace does not sell. Skip it if your trip is a week or two in the big cities, your
+            phone takes an eSIM and you only need data: the{" "}
+            <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best Japan eSIM comparison</Link>{" "}
+            and the{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit eSIM advice check</Link>{" "}
+            both list cheaper options for that trip.
+          </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>

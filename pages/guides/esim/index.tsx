@@ -77,7 +77,11 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--text)", fontWeight: 600 }}>unlimited eSIM</Link>, a{" "}
             <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--text)", fontWeight: 600 }}>pocket WiFi rental</Link> for a group, or a{" "}
             <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--text)", fontWeight: 600 }}>SIM card at the airport</Link> if your
-            phone cannot take an eSIM.
+            phone cannot take an eSIM. Staying a month or more, or need a Japanese phone number? Read our{" "}
+            <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>Sakura Mobile review</Link>.
+            Read advice on a forum? The{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--text)", fontWeight: 600 }}>best eSIM for Japan Reddit check</Link>{" "}
+            tests common Japan eSIM advice against today&apos;s prices.
           </PartnerPick>
           </>
         }

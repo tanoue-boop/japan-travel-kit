@@ -761,7 +761,11 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             the two airport legs alone. The remaining ¥2,100 has to come from four days of intercity hops —
             Kyoto to Nara, Osaka to Kobe, Osaka to Himeji — which it comfortably does if you use JR for them.
             It does <em>not</em> if those days are spent inside one city on the subway, because none of that is
-            on the pass.
+            on the pass. For an Osaka-only day, the{" "}
+            <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Osaka Metro Pass (the Enjoy Eco Card)
+            </Link>{" "}
+            covers the subway and city buses for one calendar day instead.
           </p>
           <p className={styles.bodyText}>
             <strong>Where it fails.</strong> A trip with a gap day in the middle of the pass window, or one

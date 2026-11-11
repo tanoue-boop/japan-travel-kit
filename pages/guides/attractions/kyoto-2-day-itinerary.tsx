@@ -755,6 +755,12 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train guide</Link>,
             which covers the season, the 2027 changes and what to do when the train is not running.
           </p>
+          <p className={styles.bodyText}>
+            If the Day 2 evening ends back at Kyoto Station, teamLab Biovortex Kyoto is seven minutes&apos; walk
+            from the Hachijo East Gate and takes its last entry at 19:30 — adult tickets from ¥3,800, ¥200
+            cheaper online than at the door. Slots, hours and closed days are in our{" "}
+            <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Kyoto tickets guide</Link>.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Sagano train &amp; river boat day →
