@@ -136,8 +136,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/sanrio-puroland-tickets",
     badge: "Tickets",
-    title: "Sanrio Puroland Tickets (2026): Prices, Variable Pricing & How to Book",
-    desc: "An adult Day Passport runs ¥3,900 to ¥6,900 depending on the date, so choosing the day saves more than choosing the seller — and the park also requires a separate arrival reservation.",
+    title: "Sanrio Puroland Tickets 2026: Prices by Date & How to Book",
+    desc: "An adult Day Passport runs ¥3,900 to ¥6,900 depending on the date, about 30 minutes from Shinjuku on the Keio Line — and the park also requires a separate arrival reservation.",
     group: "parks",
     city: "tokyo",
   },

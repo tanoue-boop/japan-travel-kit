@@ -485,7 +485,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             A <strong>Tokyo itinerary with kids</strong> works best over <strong>five days</strong>: an easy
             arrival day, <strong>Tokyo Disneyland or DisneySea</strong> on Day 2 (about 15–20 minutes from
             Tokyo Station on the JR Keiyo Line), <strong>LEGOLAND Discovery Center</strong> in Odaiba on Day 3
-            (2–3 hours), <strong>Sanrio Puroland</strong> at Tama Center on Day 4 (3–5 hours), and a day out to
+            (2–3 hours),{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sanrio Puroland
+            </Link>{" "}
+            at Tama Center on Day 4 (3–5 hours), and a day out to
             Kamakura (about an hour by JR) or Hakone on Day 5. Book Disney first — dates open two months ahead
             at 14:00 Japan time and are not sold at the gate — then Puroland and LEGOLAND, which both price by
             date. Under-6s ride Tokyo Metro and JR free (up to two per adult) and 6 to 11-year-olds pay half.
@@ -888,7 +892,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Rules & DisneySea" },
-              { href: "/guides/attractions/sanrio-puroland-tickets", title: "Sanrio Puroland Tickets (2026): Prices, Variable Pricing & How to Book" },
+              { href: "/guides/attractions/sanrio-puroland-tickets", title: "Sanrio Puroland Tickets 2026: Prices by Date & How to Book" },
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
               { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order" },

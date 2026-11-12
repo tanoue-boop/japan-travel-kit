@@ -415,7 +415,11 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             Only a handful of things to do in Tokyo need booking ahead: Shibuya Sky (adult from {SKY_ONLINE_DAY}),
             teamLab Planets ({PRICES.teamlabPlanets.adult}), Tokyo Disney ({TOKYO_GUIDE_PRICES.tokyoDisney.adult}),
-            the Warner Bros. Studio Tour ({WB_FROM}) and Sanrio Puroland&apos;s visit reservation. Everything else
+            the Warner Bros. Studio Tour ({WB_FROM}) and{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sanrio Puroland tickets
+            </Link>
+            , which need a visit reservation on top of the dated passport. Everything else
             can wait for the day, and the best free view is the Tokyo Metropolitan Government Building, whose
             observation rooms sit at 202 metres. These are official prices, with the date each was checked in
             the table below.
@@ -1009,7 +1013,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sanrio Puroland Tickets (2026): Prices, Variable Pricing &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Sanrio Puroland Tickets 2026: Prices by Date &amp; How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

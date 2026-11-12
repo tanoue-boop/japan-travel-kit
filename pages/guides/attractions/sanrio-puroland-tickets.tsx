@@ -16,25 +16,130 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
-// Passport price bands, the 1 Aug 2026 revision, the arrival-reservation rule and
-// the access routes below were read off puroland.jp (/passport/list/, /fee/,
-// /news/passport_information_2026/, /ticket/guidance/ and /access/) on 20 Oct 2026.
-// The Klook listing was confirmed live through the www.klook.com search index the
-// same day; Klook answers automated reads of its product pages with HTTP 403, so no
-// Klook price appears on this page.
-// The Day Passport adult and child bands and the check date are owned by
-// lib/attraction-prices.ts, shared with the ticket price table.
+/**
+ * Rebuilt 12 Nov 2026 (task jtk-20261112-R03) around the searches that land here:
+ * "sanrio puroland", "sanrio puroland tickets", "puroland ticket price", "puropass".
+ *
+ * Sources, each checked on 12 Nov 2026:
+ *  - puroland.jp/news/passport_information_2026/: Day Passport ¥3,900–¥6,900 adult
+ *    (18–64), ¥2,800–¥5,800 child (3–17) and senior (65+); Afternoon Passport (from
+ *    14:00) ¥2,800–¥4,600 and ¥2,500–¥4,300; effective 1 Aug 2026; under-3s free;
+ *  - puroland.jp/passport/list/: passport names, annual passport prices, price by visit
+ *    date, e-passport cheaper than the same-day window, window open from 30 minutes
+ *    before opening to 90 minutes before closing, age bands;
+ *  - puroland.jp/ticket/guidance/: arrival reservation required on top of a passport,
+ *    same-day reservations only while slots remain, no refund on a passport if entry is
+ *    refused for lack of a reservation;
+ *  - puroland.jp/puropass/: PUROPASS is a priority pass, not admission; ¥1,500 priority
+ *    entry, ¥2,500 pair, parade seats ¥1,000–¥3,000; limited numbers; no refunds;
+ *  - puroland.jp/access/ and puroland.jp/language/: about 30 minutes from Shinjuku on the
+ *    Keio Line limited express to Keio Tama Center, about 23 minutes from Tachikawa on
+ *    the Tama Monorail, 5 minutes' walk from Tama Center;
+ *  - puroland.jp home page: 9:30–17:00 shown for 12 Nov 2026. Hours vary by date and are
+ *    printed for that date only.
+ * No Klook price appears on this page.
+ */
 const P = PRICES.sanrioPuroland;
 const CHECKED = checkedLabel(P.checked);
+const CHECKED_ISO = "2026-11-12";
+const OPEN_TODAY = "9:30 to 17:00";
 
+const officialLink = { color: "var(--text)", fontWeight: 600 } as const;
+
+function LastChecked({ sources }: { sources: { label: string; href: string }[] }) {
+  return (
+    <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+      Last checked: {CHECKED_ISO}. Official source{sources.length > 1 ? "s" : ""}:{" "}
+      {sources.map((s, i) => (
+        <span key={s.href}>
+          {i > 0 ? ", " : ""}
+          <a href={s.href} target="_blank" rel="noopener" style={officialLink}>
+            {s.label}
+          </a>
+        </span>
+      ))}
+      .
+    </p>
+  );
+}
+
+/** Table 1: the answer row first. */
 const priceRows = [
-  { ticket: "Day Passport — adult (18–64)", price: P.adult },
-  { ticket: "Day Passport — child (3–17) / senior (65+)", price: P.child },
-  { ticket: "Afternoon Passport (from 14:00) — adult", price: "¥2,800 – ¥4,600" },
-  { ticket: "Afternoon Passport (from 14:00) — child / senior", price: "¥2,500 – ¥4,300" },
-  { ticket: "Under 3", price: "Free" },
-  { ticket: "Annual passport — adult (digital / card)", price: "¥23,000 / ¥25,000" },
-  { ticket: "Annual passport — child (digital / card)", price: "¥12,000 / ¥14,000" },
+  { ticket: "Day Passport — adult (18–64)", price: P.adult, note: "Open to close. The price is set by your visit date" },
+  { ticket: "Day Passport — child (3–17) / senior (65+)", price: P.child, note: "Child includes high-school students" },
+  { ticket: "Afternoon Passport — adult", price: "¥2,800 – ¥4,600", note: "Entry from 14:00" },
+  { ticket: "Afternoon Passport — child / senior", price: "¥2,500 – ¥4,300", note: "Entry from 14:00" },
+  { ticket: "Under 3", price: "Free", note: "Ages 3 and up need a passport" },
+  { ticket: "Annual Passport — adult 18+ (digital / card)", price: "¥23,000 / ¥25,000", note: "Some dates excluded" },
+  { ticket: "Annual Passport — child (digital / card)", price: "¥12,000 / ¥14,000", note: "Some dates excluded" },
+  { ticket: "PUROPASS (priority entry, add-on)", price: "¥1,500", note: "Not admission: you still need a passport" },
+];
+
+/** Table 2: the answer row first. */
+const bookingRows = [
+  {
+    route: "Official e-Passport + arrival reservation — the default",
+    when: "Before your date. The park calls it cheaper than the same-day window",
+    rule: "Without an arrival reservation you are refused entry, and the passport is not refunded",
+  },
+  {
+    route: "Klook voucher + arrival reservation",
+    when: "Before you fly, with an English checkout and an overseas card",
+    rule: "Klook's own cancellation terms, shown before you pay. Check the voucher for how to register the reservation",
+  },
+  {
+    route: "Same-day window",
+    when: "From 30 minutes before opening to 90 minutes before closing",
+    rule: "Still needs an arrival reservation, which on the day exists only while slots remain",
+  },
+  {
+    route: "PUROPASS priority passes",
+    when: "Priority entry sold in advance; show and ride passes mostly in the park on the day",
+    rule: "Limited numbers and no refunds after purchase",
+  },
+];
+
+/** Table 3: the answer row first. */
+const busyRows = [
+  {
+    signal: "A date near the top of the price band",
+    meaning: "Puroland prices by expected demand, and widened the bands on 1 August 2026 to spread visitors out",
+    action: "Book the passport and the arrival reservation before you fly",
+  },
+  {
+    signal: "A date near ¥3,900 (adult Day Passport)",
+    meaning: "The park expects fewer visitors that day",
+    action: "The cheapest day to go, and the best pick if your dates are flexible",
+  },
+  {
+    signal: "Busy times at the window",
+    meaning: "The official overseas page warns you may have to wait",
+    action: "Arrive with an e-ticket rather than queueing to buy one",
+  },
+  {
+    signal: "Closed days",
+    meaning: "The park has days with no operation, shown on its schedule",
+    action: "Check puroland.jp/schedule/ before you fix the date",
+  },
+];
+
+/** Table 4: the answer row first. */
+const accessRows = [
+  {
+    from: "Shinjuku",
+    route: "Keio Line limited express (bound for Hashimoto) to Keio Tama Center",
+    time: "About 30 minutes, then a 5-minute walk",
+  },
+  {
+    from: "Odakyu Line",
+    route: "To Odakyu Tama Center, then the west ticket gate and turn left",
+    time: "5-minute walk from the station",
+  },
+  {
+    from: "Tachikawa",
+    route: "Tama Monorail to Tama Center",
+    time: "About 23 minutes, then a 5-minute walk",
+  },
 ];
 
 const whoFor = [
@@ -59,7 +164,7 @@ const whoFor = [
   },
   {
     title: "Shift your date if…",
-    desc: "Your schedule has any slack in it. Puroland prices by expected demand and added more price tiers on 1 August 2026 specifically to spread visitors out, so moving a visit off a weekend or a holiday is the single biggest saving available on this ticket.",
+    desc: "Your schedule has any slack in it. Puroland prices by expected demand and added more price tiers on 1 August 2026 specifically to spread visitors out, so moving a visit to a cheaper date is the single biggest saving available on this ticket.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="17" rx="2" />
@@ -71,63 +176,51 @@ const whoFor = [
 
 const steps = [
   {
-    title: "Check the price for your date before you commit to one",
-    desc: `Puroland publishes a calendar with a price per date rather than one list price, and the official wording is plain about it: passport fees differ depending on your visit date. An adult Day Passport ranges from ¥3,900 to ¥6,900, so the calendar is worth opening before the ticket page. Checked ${CHECKED}.`,
+    title: "Check the price for your date",
+    desc: `Puroland publishes a calendar with a price per date rather than one list price: an adult Day Passport ranges from ¥3,900 to ¥6,900, and some lower prices are not offered at all in busy periods. Open the calendar before the ticket page. Checked ${CHECKED}.`,
   },
   {
-    title: "Make the arrival reservation — it is separate from the ticket",
-    desc: `This is the step that catches people out. The official site states that visitors without an arrival reservation will be refused entry, and that a reservation on its own is not enough either — you need both the reservation and a passport ticket. Whichever way you buy the ticket, check your voucher for how to register the reservation for your date. Checked ${CHECKED}.`,
+    title: "Buy the passport: official e-Passport or Klook",
+    desc: "The park recommends its own e-Passport as cheaper than the window. Klook sells the same admission with an English checkout and an e-ticket, which helps if a Japanese site refuses an overseas card.",
   },
   {
-    title: "Buy online rather than at the window",
-    desc: `Puroland promotes its own e-passport as the cheaper route, and the window is only open from 30 minutes before the park opens until 90 minutes before it closes — so a late arrival can find it shut. A reseller voucher is the other way to hold a ticket before you travel.`,
+    title: "Register the arrival reservation for the same date",
+    desc: `This is the step that catches people out. The official ticket guidance says visitors without an arrival reservation are refused entry and the passport is not refunded, and that a reservation on its own does not admit you either. Checked ${CHECKED}.`,
   },
   {
-    title: "Use a reseller if your card is issued abroad",
-    desc: "Klook sells Sanrio Puroland admission with an English checkout and an e-ticket, which sidesteps the card and language friction that several Japanese attraction sites cause for overseas visitors — and the listing has been running long enough to have a six-figure booking count.",
+    title: "Add a PUROPASS only if a show or parade seat matters",
+    desc: "Priority entry is ¥1,500 and parade seats run from ¥1,000 to ¥3,000. They sell in limited numbers and cannot be refunded, so buy them after the date is fixed.",
   },
 ];
 
 const faqItems = [
   {
     q: "How much are Sanrio Puroland tickets?",
-    a: `A Day Passport is ¥3,900 to ¥6,900 for an adult aged 18–64 and ¥2,800 to ¥5,800 for a child aged 3–17 or a senior aged 65 and over. The Afternoon Passport, which admits you from 14:00, is ¥2,800 to ¥4,600 for an adult and ¥2,500 to ¥4,300 for a child or senior. Children under 3 are free. The range is real, not a rounding — the price depends on the date you pick. Figures read off puroland.jp on ${CHECKED}.`,
+    a: `A Day Passport is ¥3,900 to ¥6,900 for an adult aged 18–64 and ¥2,800 to ¥5,800 for a child aged 3–17 or a senior aged 65 and over, depending on the date. The Afternoon Passport, entry from 14:00, is ¥2,800 to ¥4,600 for an adult and ¥2,500 to ¥4,300 for a child or senior. Children under 3 are free. Checked on puroland.jp, ${CHECKED}.`,
   },
   {
-    q: "Why do Sanrio Puroland ticket prices change?",
-    a: `Puroland uses variable pricing tied to expected demand, and on 1 August 2026 it revised the bands and added more tiers, stating the aim was to level out the difference between busy and quiet days. In practice that means a weekday outside the school holidays sits near the bottom of the range and a weekend or a Japanese public holiday near the top. For an adult Day Passport the spread is ¥3,900 to ¥6,900 — ¥3,000 of difference for the same park. Checked ${CHECKED}.`,
+    q: "Do you need to book Sanrio Puroland in advance?",
+    a: `You need an arrival reservation for your date as well as a passport, and without one you are refused entry. The window still sells passports on the day, from 30 minutes before opening to 90 minutes before closing, but same-day reservations exist only while slots remain, so booking both before you travel is the safe order. Checked ${CHECKED}.`,
   },
   {
-    q: "Do I need a reservation for Sanrio Puroland?",
-    a: `Yes, and it is a second thing on top of the ticket. The official ticket guidance says that visitors arriving without an arrival reservation will be refused entry, and that an arrival reservation by itself does not admit you — you must also hold a passport ticket. So the order is: pick the date, get the ticket, register the arrival reservation for that date. Checked ${CHECKED}.`,
+    q: "How do I get to Sanrio Puroland from Shinjuku?",
+    a: `Take the Keio Line limited express bound for Hashimoto to Keio Tama Center, about 30 minutes, then walk about 5 minutes to the park. The Odakyu Line to Odakyu Tama Center also works. Neither line is Tokyo Metro or Toei, so a Tokyo Subway Ticket does not cover the trip. Checked on puroland.jp, ${CHECKED}.`,
   },
   {
-    q: "Is the Afternoon Passport worth it?",
-    a: "It depends on what you came for. Puroland's draw is its theatre shows and parades rather than its rides, and a 14:00 start still leaves a full afternoon and evening of the schedule. At ¥2,800 to ¥4,600 for an adult it undercuts the cheapest full day on most dates. If you are travelling with a toddler, or pairing Puroland with something in central Tokyo in the morning, it is the better buy. If you want to see everything in the day's programme, pay for the full day.",
+    q: "Is Sanrio Puroland worth it for adults?",
+    a: "Yes, if you like the Sanrio characters: the day is theatre shows, parades and character greetings rather than thrill rides, all indoors. An adult pays the same ¥3,900 to ¥6,900 Day Passport as any visitor aged 18–64, so a cheaper date or the Afternoon Passport from ¥2,800 is the way to keep the cost down.",
   },
   {
-    q: "How do I get to Sanrio Puroland?",
-    a: `The park is at Tama Center, west of central Tokyo, and three railways reach it: the Keio Line to Keio Tama Center, the Odakyu Line to Odakyu Tama Center, and the Tama Monorail to Tama Center from Tachikawa. The official access page walks you from the Keio central ticket gate straight ahead past Okano Plaza to the park. Note that none of those three lines is Tokyo Metro or Toei, so a Tokyo Subway Ticket does not cover the journey. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Is Sanrio Puroland indoors?",
-    a: "Yes — it is an indoor theme park, which is the practical reason to keep it on the list. It is the obvious thing to move a rained-out day to, and it works in the height of summer and in winter without the weather deciding how the day goes. That also means it fills up on bad-weather weekends, which the variable pricing does not predict in advance.",
-  },
-  {
-    q: "How long do you need at Sanrio Puroland?",
-    a: "Klook's listing suggests 3 to 5 hours, which matches the shape of the place: it is compact, the time goes on sitting down for shows and parades rather than queuing for rides, and the schedule repeats. That is also why the Afternoon Passport is a genuine option here in a way it would not be at a larger park.",
-  },
-  {
-    q: "Puroland or Tokyo Disney — which is better for a short trip?",
-    a: "They are not really competing. Tokyo Disney is a full, hard day on your feet with date-specified tickets that sell out weeks ahead and no gate sales at all. Puroland is a half-day indoor park that you can book much closer to the date, and the Sanrio characters are the draw. On a short trip with one free day, Disney will eat it; Puroland will not.",
+    q: "What is PUROPASS at Sanrio Puroland?",
+    a: `PUROPASS is Puroland's priority pass, not an admission ticket: priority entry is ¥1,500 (¥2,500 for a pair) and parade seats are ¥1,000 to ¥3,000, on top of a passport. Numbers are limited and PUROPASS cannot be refunded once bought. Checked on puroland.jp, ${CHECKED}.`,
   },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/sanrio-puroland-tickets") } });
 
-const TITLE = "Sanrio Puroland Tickets (2026): Prices and How to Book";
+const TITLE = "Sanrio Puroland Tickets 2026: Prices by Date & How to Book";
 const DESCRIPTION =
-  "Sanrio Puroland tickets in 2026: official passport prices from ¥3,900 to ¥6,900 for an adult, why the price moves by date, and the arrival reservation.";
+  "Sanrio Puroland tickets: Day Passport ¥3,900–¥6,900 adult, ¥2,800–¥5,800 child, priced by date. 30 min from Shinjuku. Arrival reservation and how to book.";
 
 export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -210,12 +303,11 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Sanrio Puroland Tickets (2026):<br />Prices, Variable Pricing &amp; How to Book
+            Sanrio Puroland Tickets 2026:<br />Prices by Date, Hours &amp; How to Book
           </h1>
           <p className={styles.heroSubtitle}>
-            An adult Day Passport is ¥3,900 to ¥6,900 depending on the date, so picking the day matters more
-            than picking where to buy. The Afternoon Passport starts at ¥2,800 and admits you from 14:00 —
-            and whichever ticket you hold, Puroland also requires a separate arrival reservation.
+            Day Passport, Afternoon Passport and PUROPASS prices from the official site, the arrival
+            reservation you also need, and the train from Shinjuku.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices", "Indoor park"].map((t) => (
@@ -228,6 +320,18 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
       </section>
 
       <div className={styles.content}>
+        {/* Answer first */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Sanrio Puroland tickets are priced by date: an adult Day Passport costs ¥3,900 to ¥6,900 and a
+            child (3–17) or senior (65+) Day Passport ¥2,800 to ¥5,800, with the Afternoon Passport (entry
+            from 14:00) from ¥2,800 for an adult. The park was open {OPEN_TODAY} on 12 November 2026, with
+            hours that change by date. It is about 30 minutes from Shinjuku on the Keio Line limited express
+            to Keio Tama Center, then a 5-minute walk, and every visitor also needs an arrival reservation
+            for the same date. Official figures, checked {CHECKED}.
+          </p>
+        </section>
+
         {/* Disclosure */}
         <div className={styles.disclosure}>
           <p className={styles.disclosureText}>
@@ -257,16 +361,15 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
                 <p className={styles.verdictStatValue}>Arrival reservation</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Where</p>
-                <p className={styles.verdictStatValue}>Tama Center (Keio / Odakyu)</p>
+                <p className={styles.verdictStatLabel}>From Shinjuku</p>
+                <p className={styles.verdictStatValue}>About 30 min (Keio Line)</p>
               </div>
             </div>
             <p className={styles.verdictText}>
               <strong>In short:</strong> the price is set by the date, not by the seller, so open Puroland&apos;s
-              calendar and shift the visit to a quieter day if you can — that is worth up to ¥3,000 per adult.
-              Buy the passport online rather than at the window, and register the arrival reservation for the
-              same date, because the official site refuses entry without one. Prices read off puroland.jp on{" "}
-              {CHECKED}.
+              calendar and shift the visit to a cheaper day if you can — that is worth up to ¥3,000 per adult.
+              Buy the passport before you go and register the arrival reservation for the same date, because
+              the park refuses entry without one. Checked on puroland.jp, {CHECKED}.
             </p>
             <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Sanrio Puroland tickets on Klook →
@@ -274,36 +377,21 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
           </div>
         </div>
 
-        <EsimCtaTop />
-
-        {/* Intro */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What Sanrio Puroland Actually Is</h2>
-          <p className={styles.bodyText}>
-            Sanrio Puroland is the indoor Hello Kitty park at Tama Center, on the western edge of Tokyo. It is
-            a theatre park rather than a ride park: the day is built around stage shows, parades and character
-            greetings, with a handful of gentle attractions in between. Being entirely indoors makes it the
-            obvious place to move a rained-out day to.
-          </p>
-          <p className={styles.bodyText}>
-            Two things about the ticket are worth knowing before you plan around it. The price is set per date
-            rather than published as one figure, with a ¥3,000 spread on an adult Day Passport. And the ticket
-            is not the only thing you need — the park also requires a date-specified arrival reservation, and
-            says plainly that it will turn away visitors who do not have one.
-          </p>
-        </section>
-
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>Sanrio Puroland Passport Prices</h2>
+          <h2 className={styles.sectionTitle}>How much are Sanrio Puroland tickets?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            An adult Day Passport is ¥3,900 to ¥6,900 and a child or senior Day Passport ¥2,800 to ¥5,800,
+            set by the date you visit. The bands below took effect on 1 August 2026, and on some dates the
+            lowest prices are not offered.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Ticket", "Price"].map((h) => (
+                    {["Ticket", "Price", "Note"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -313,18 +401,127 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
                     <tr key={row.ticket}>
                       <td className={styles.tdProvider}>{row.ticket}</td>
                       <td className={styles.tdPrice}>{row.price}</td>
+                      <td>{row.note}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off puroland.jp on {CHECKED} and subject to change — confirm the figure for your own date on
-            the official calendar. The child tier covers ages 3 to 17, including high-school students, and
-            applies to seniors aged 65 and over as well. The bands above are the ones that took effect on
-            1 August 2026.
+          <LastChecked
+            sources={[
+              { label: "puroland.jp passport prices (revised 1 Aug 2026)", href: "https://www.puroland.jp/news/passport_information_2026/" },
+              { label: "puroland.jp passport list", href: "https://www.puroland.jp/passport/list/" },
+              { label: "puroland.jp PUROPASS", href: "https://www.puroland.jp/puropass/" },
+            ]}
+          />
+        </section>
+
+        <EsimCtaTop />
+
+        {/* Booking */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Booking</span>
+          <h2 className={styles.sectionTitle}>Do you need to book Sanrio Puroland in advance?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Yes for the arrival reservation: without one for your date you are refused entry, even with a
+            passport. The window does sell passports on the day, but same-day reservations exist only while
+            slots remain, so the safe order is passport first, reservation straight after.
           </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Way to book", "When", "Cancellation and entry rules"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {bookingRows.map((row) => (
+                    <tr key={row.route}>
+                      <td className={styles.tdProvider}>{row.route}</td>
+                      <td>{row.when}</td>
+                      <td>{row.rule}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked
+            sources={[
+              { label: "puroland.jp ticket guidance", href: "https://www.puroland.jp/ticket/guidance/" },
+              { label: "puroland.jp passport list", href: "https://www.puroland.jp/passport/list/" },
+            ]}
+          />
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Which to choose:</strong> the official e-Passport if the Japanese checkout accepts your
+            card; a Klook voucher if it does not, or if you want the cancellation terms in English before you
+            pay. Either way, the arrival reservation is the step that decides whether you get in.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check Sanrio Puroland dates on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* How to book */}
+        <section className={styles.installSection}>
+          <span className={styles.sectionLabel}>Step-by-step</span>
+          <h2 className={styles.sectionTitle}>How do you book Sanrio Puroland tickets?</h2>
+          <div className={styles.stepsList}>
+            {steps.map((step, i) => (
+              <div key={i} className={styles.stepCard}>
+                <span className={styles.stepNum}>{i + 1}</span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{step.title}</p>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Busy days */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Crowds</span>
+          <h2 className={styles.sectionTitle}>When is Sanrio Puroland busiest?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The price calendar is the best guide: Puroland sets each date&apos;s price by expected demand, so
+            the dates at the top of the band are the ones it expects to be fullest.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Signal", "What it means", "What to do"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {busyRows.map((row) => (
+                    <tr key={row.signal}>
+                      <td className={styles.tdProvider}>{row.signal}</td>
+                      <td>{row.meaning}</td>
+                      <td>{row.action}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked
+            sources={[
+              { label: "puroland.jp price revision notice", href: "https://www.puroland.jp/news/passport_information_2026/" },
+              { label: "puroland.jp overseas visitors page", href: "https://www.puroland.jp/language/" },
+              { label: "puroland.jp schedule", href: "https://www.puroland.jp/schedule/" },
+            ]}
+          />
         </section>
 
         {/* Which passport */}
@@ -342,43 +539,55 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
           </div>
         </section>
 
-        {/* How to book */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Book Sanrio Puroland Tickets</h2>
-          <div className={styles.stepsList}>
-            {steps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <BookingEsimCard lead="Puroland booked? Get mobile data before you land." />
 
         {/* Getting there */}
-        <section className={styles.bodySection}>
+        <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>Tama Center, and Why Your Subway Pass Will Not Help</h2>
-          <p className={styles.bodyText}>
-            Puroland is at Tama Center, reached by three railways: the Keio Line to Keio Tama Center, the
-            Odakyu Line to Odakyu Tama Center, and the Tama Monorail to Tama Center from Tachikawa. From the
-            Keio central ticket gate the official directions are straight ahead, past Okano Plaza and on to
-            the park.
+          <h2 className={styles.sectionTitle}>How do I get to Sanrio Puroland from Shinjuku?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Take the Keio Line limited express bound for Hashimoto from Shinjuku to Keio Tama Center, about
+            30 minutes, and walk about 5 minutes to the park. The Odakyu Line and the Tama Monorail also stop
+            at Tama Center.
           </p>
-          <p className={styles.bodyText}>
-            None of those three is a Tokyo Metro or Toei line, which means a{" "}
-            <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--text)", fontWeight: 600 }}>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["From", "Route", "Time"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {accessRows.map((row) => (
+                    <tr key={row.from}>
+                      <td className={styles.tdProvider}>{row.from}</td>
+                      <td>{row.route}</td>
+                      <td>{row.time}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked
+            sources={[
+              { label: "puroland.jp access", href: "https://www.puroland.jp/access/" },
+              { label: "puroland.jp overseas visitors page", href: "https://www.puroland.jp/language/" },
+            ]}
+          />
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            None of those lines is Tokyo Metro or Toei, which means a{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket" style={officialLink}>
               Tokyo Subway Ticket
             </Link>{" "}
-            does not cover the trip out here — a detail worth knowing if you bought one on the assumption that
-            it covers everything. Budget a separate return fare on Keio or Odakyu, or pay with an IC card.
-            Checked {CHECKED}.
+            does not cover the trip out here. Pay the Keio or Odakyu fare with an IC card; our{" "}
+            <Link href="/guides/transport/tokyo-transportation" style={officialLink}>
+              guide to getting around Tokyo
+            </Link>{" "}
+            covers which card to use.
           </p>
         </section>
 
@@ -388,6 +597,29 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
           intro="Puroland is a half day indoors at Tama Center, so the base you sleep in and the other half of the day are the bookings left to make."
           items={sanrioPurolandTripPrep}
         />
+
+        {/* Adults */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>For adults</span>
+          <h2 className={styles.sectionTitle}>Is Sanrio Puroland worth it for adults?</h2>
+          <p className={styles.bodyText}>
+            Yes, if you like the Sanrio characters: the day is theatre shows, parades and character greetings
+            rather than thrill rides, and it is all indoors. Adults aged 18–64 pay the full ¥3,900 to ¥6,900
+            Day Passport, so a cheaper date or the Afternoon Passport is the way to keep the cost down.
+          </p>
+          <p className={styles.bodyText}>
+            Being indoors also makes it the obvious day to move a rained-out plan to. If the trip is built
+            around one Tokyo park day, our{" "}
+            <Link href="/guides/attractions/things-to-do-tokyo" style={officialLink}>
+              things to do in Tokyo
+            </Link>{" "}
+            guide compares it with Disney and the other bookable sights, and the{" "}
+            <Link href="/guides/attractions/tokyo-itinerary-with-kids" style={officialLink}>
+              Tokyo itinerary with kids
+            </Link>{" "}
+            gives it a full day of its own.
+          </p>
+        </section>
 
         {/* FAQ */}
         <section className={styles.faqSection}>

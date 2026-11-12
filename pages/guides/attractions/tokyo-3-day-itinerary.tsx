@@ -539,6 +539,10 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             puts the four side by side. Drivers with an International Driving Permit can add a street
             kart tour from Shibuya, and our{" "}
             <Link href="/guides/attractions/tokyo-go-kart">Tokyo go kart guide</Link> has the price and rules.
+            If rain washes out the west side, Sanrio Puroland is an indoor park about 30 minutes from
+            Shinjuku on the Keio Line limited express; our{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets">Sanrio Puroland tickets guide</Link>{" "}
+            has the dated passport prices and the arrival reservation it also needs.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
