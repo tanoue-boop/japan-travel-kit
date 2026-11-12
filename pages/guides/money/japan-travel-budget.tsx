@@ -14,6 +14,7 @@ import {
   budgetDataPrep,
   budgetSightseeingPrep,
   budgetStayAreas,
+  budgetTopPrep,
   budgetTransportPrep,
   klookEsim,
 } from "../../../lib/klook-links";
@@ -676,6 +677,35 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             </p>
           </div>
         </div>
+
+        {/* Tokyo-only readers ("trip to tokyo cost" on Bing) go straight to the Tokyo page. */}
+        <aside className={styles.verdictBox} data-placement="tokyo-only-box">
+          <div className={styles.verdictHeader}>
+            <span className={styles.verdictLabel}>Only going to Tokyo?</span>
+          </div>
+          <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>
+              This page prices a trip across Japan, long-distance rail included. A Tokyo-only stay is priced on its own,
+              per day and for 3, 5 and 7 days, from the Tokyo Metropolitan Government&apos;s survey of what foreign
+              visitors spent in the city in 2025.
+            </p>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <Link href="/guides/money/tokyo-trip-cost" className={styles.verdictBtn}>
+                Tokyo trip cost: per day and for 5 days →
+              </Link>
+            </div>
+          </div>
+        </aside>
+
+        {/* Klook, all four bands, for a reader who has the number and wants to book. */}
+        <KlookTripPrep
+          label="Budget set? Book these first"
+          heading="The Lines You Can Pay for Before You Fly"
+          intro="The room, the subway pass, the airport leg and data, in that order. Klook prices change by date, so open each listing for the figure on your dates."
+          items={budgetTopPrep}
+          adPlacement="budget-top"
+          headingLevel={3}
+        />
 
         <EsimCtaTop />
 

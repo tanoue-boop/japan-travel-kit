@@ -32,6 +32,16 @@ type Props = {
   note?: string;
   /** Defaults to the locale of the route the block renders on. */
   locale?: Locale;
+  /**
+   * Gives the block's Klook links their own ad id (key `<page>#<placement>` in
+   * data/klook-adids.json); without it they carry the page's id.
+   */
+  adPlacement?: string;
+  /**
+   * 3 for a block placed above a page's first H2 (12 Nov 2026), so the page's first
+   * H2 is still its first answer section. Defaults to 2.
+   */
+  headingLevel?: 2 | 3;
 };
 
 const COPY: Record<Locale, { label: string; note: string }> = {
@@ -57,12 +67,13 @@ const COPY: Record<Locale, { label: string; note: string }> = {
   },
 };
 
-export default function KlookTripPrep({ heading, intro, items, label, note, locale }: Props) {
+export default function KlookTripPrep({ heading, intro, items, label, note, locale, adPlacement, headingLevel = 2 }: Props) {
   const copy = COPY[useComponentLocale(locale)];
+  const Heading = headingLevel === 3 ? "h3" : "h2";
   return (
     <section className={styles.bodySection}>
       <span className={styles.sectionLabel}>{label ?? copy.label}</span>
-      <h2 className={styles.sectionTitle}>{heading}</h2>
+      <Heading className={styles.sectionTitle}>{heading}</Heading>
       <p className={styles.bodyText}>{intro}</p>
       <ul className={styles.pickList}>
         {items.map((item) => (
@@ -72,6 +83,7 @@ export default function KlookTripPrep({ heading, intro, items, label, note, loca
               <strong>{item.label}</strong> — {item.why}{" "}
               <KlookLink
                 href={item.url}
+                adPlacement={adPlacement}
                 target="_blank"
                 rel="sponsored noopener"
                 style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}

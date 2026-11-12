@@ -16,6 +16,7 @@ import {
   tokyoSightseeingBusTour,
   tokyoSubwayTicket,
   tokyoTripCostPrep,
+  tokyoTripCostTopPrep,
   whereToStayTokyoAreas,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
@@ -405,6 +406,16 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
         </div>
+
+        {/* Klook, all four bands, above the first H2 for a reader who has the number. */}
+        <KlookTripPrep
+          label="Budget set? Book these first"
+          heading="The Lines You Can Pay for Before You Fly"
+          intro="The room, the subway pass, the airport leg and data. Klook prices change by date, so open each listing for the figure on your dates."
+          items={tokyoTripCostTopPrep}
+          adPlacement="budget-top"
+          headingLevel={3}
+        />
 
         <EsimCtaTop />
 

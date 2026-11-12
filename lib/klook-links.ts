@@ -3521,6 +3521,35 @@ export const budgetDataPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * The top-of-page booking list for japan-travel-budget (12 Nov 2026, task-jtk-20261112-P01):
+ * the four lines a reader who has set a budget can pay for first — the room (6.5%), the
+ * subway pass and the airport leg (5%) and data (20%). Every figure is one the page
+ * already shows; no Klook price.
+ */
+export const budgetTopPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "The room is the one line of the budget that moves with the date, so price it first, on your own dates. Tokyo Station puts the Yamanote loop and the shinkansen under the hotel.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "¥2,000 for 72 hours against ¥178 an IC ride: from the twelfth ride the rest are free, and a foreign contactless card does not open Metro or Toei gates.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Landing at Narita, the airport train is a fixed cost you can settle before you fly rather than at a ticket machine after the flight.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "Landing at Haneda, the limousine bus to Tokyo Station or Shinjuku is a fixed fare that drops you on the hotel side of the city.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The smallest line in the budget and the easiest to overpay for: an arrivals-hall counter prices data in yen at its own rate.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // The Oshiage side of a Skytree afternoon, added 27 Oct 2026 for
 // tokyo-skytree-tickets.
@@ -7641,6 +7670,14 @@ export const tokyoTripCostPrep: KlookTripPrepItem[] = [
     why: "Data is the one line that costs the same at every budget level, and it is cheaper bought before you land than at an airport counter.",
   },
 ];
+
+/**
+ * The same list above the first H2 (12 Nov 2026, task-jtk-20261112-P01): the room, the
+ * subway pass, the airport leg and data, without the guided day.
+ */
+export const tokyoTripCostTopPrep: KlookTripPrepItem[] = tokyoTripCostPrep.filter(
+  (item) => item.url !== tokyoSightseeingBusTour.url,
+);
 
 // ---------------------------------------------------------------------------
 // Zao snow monsters tour, added 9 Nov 2026 (task-jtk-20261109-02).

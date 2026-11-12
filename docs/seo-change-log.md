@@ -2,6 +2,8 @@
 
 新しい記録を上に追記する。
 
+- 2026-11-12（task-jtk-20261112-P01、送客対策）/guides/money/japan-travel-budget（Bing 11/05–11/08：479表示・1クリック・CTR0.21%、着地語の多くが「trip to tokyo cost」309表示・「trip to tokyo japan cost」103表示）：Quick Answer の直後・最初の H2「How much does a trip to Japan cost?」の前に、案内ボックス「Only going to Tokyo?」（tokyo-trip-cost へ内部リンク、アンカー「Tokyo trip cost: per day and for 5 days →」）と、予約ブロック（KlookTripPrep、H3「The Lines You Can Pay for Before You Fly」：Tokyo Station のホテル 6.5%・Tokyo Subway Ticket 5%・N'EX／羽田リムジンバス 5%・Klook eSIM 20%）を追加。広告ID 1554714（/guides/money/japan-travel-budget#budget-top）。/guides/money/tokyo-trip-cost にも Quick Answer の直後・最初の H2 の前に同じ予約ブロック（ホテル・Subway Ticket・Skyliner・羽田バス・eSIM）を追加、広告ID 1554715（#budget-top）。既存の下部ブロックはそのまま。KlookTripPrep に adPlacement と headingLevel（上部用 H3）を追加。title・meta・H1 は変更なし（japan-travel-budget は 11/9 の title 変更の比較中）。料金は各ページ本文の既存値のみ。効果測定は 11/19 以降（Bing の japan-travel-budget CTR、GA4 affiliate_click の2ページ、Klook Top performing ads の 1554714・1554715）。
+
 - 2026-11-11（task-jtk-20261111-E01、収益導線）サイト共通の eSIM 部品 components/EsimCta.tsx を新設し、attractions（旅程含む）・transport・money の英語147ページと翻訳58ページで「最初の H2 の前」に小枠（EsimCtaTop）、FAQ／関連記事の前に詳細枠「What to have ready before you fly」（EsimCtaBottom）を表示。/guides/esim/ は英語30＋翻訳4ページに冒頭枠のみ。並びは Simbye → Klook eSIM → Airalo → Sakura Mobile（理由は価格データ〔data/esim-prices.json、確認日表示〕・Klook 掲載情報〔11/6〕・各社公式の記載のみ）。旅程・スキー・アクティビティ系の詳細枠に SafetyWing 1行（referenceID=26614156、条件は 11/6 読み）。GA4 affiliate_click に position（top／bottom）を追加、placement は esim-top／esim-bottom。Klook eSIM リンクがついた保険2ページに spare 広告ID 1554712・1554713 を割当。効果測定は 11/18（日次PDCA：Simbye・Klook eSIM・Airalo・Sakura の送客と成約を前週比）。
 
 ## 2026-11-11：best-pocket-wifi-japan の順位改善（task-jtk-20261111-R07）
