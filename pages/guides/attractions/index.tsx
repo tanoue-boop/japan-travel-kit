@@ -88,7 +88,9 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             <Link href="/guides/attractions/tokyo-food-tour" style={L}>Tokyo food tour through Shinjuku&apos;s izakaya and Golden Gai</Link>{" "}
             is the easy booking; in Osaka, the{" "}
             <Link href="/guides/attractions/dotonbori-river-cruise" style={L}>Dotonbori River Cruise</Link> is ¥2,000
-            for 20 minutes, every half hour from 11:00 to 21:00; and in Kyoto,{" "}
+            for 20 minutes, every half hour from 11:00 to 21:00, and{" "}
+            <Link href="/guides/attractions/umeda-sky-building-tickets" style={L}>Umeda Sky Building tickets</Link> are
+            ¥2,000 for the open-air rooftop, open until 22:30; and in Kyoto,{" "}
             <Link href="/guides/attractions/teamlab-kyoto-tickets" style={L}>teamLab Kyoto tickets</Link> start at
             ¥3,800, seven minutes&apos; walk from Kyoto Station.
           </PartnerPick>

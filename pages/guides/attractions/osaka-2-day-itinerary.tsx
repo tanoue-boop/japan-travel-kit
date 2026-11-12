@@ -554,7 +554,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
               and Shinsekai after dark. <strong>Day 2</strong> is the bay and Umeda: the{" "}
               <strong>Osaka Aquarium Kaiyukan</strong> from opening (¥2,700–3,200 by date, about 2 hours, and
               no re-entry since 15 June 2026), Tempozan Harbor Village for lunch, then the{" "}
-              <strong>Umeda Sky Building</strong> rooftop ({UMEDA_ADULT}, open to 22:30). Umeda to Namba is
+              <Link href="/guides/attractions/umeda-sky-building-tickets"><strong>Umeda Sky Building</strong> rooftop</Link> ({UMEDA_ADULT}, open to 22:30). Umeda to Namba is
               about 20 minutes on the Midosuji Line, so neither day has a long journey in it. Exactly one
               stop needs booking: the Kaiyukan&apos;s 15-minute entry slot. Prices read off the operators&apos;
               own sites on the dates in the table below.

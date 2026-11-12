@@ -421,7 +421,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             services towards Universal City — plus Hankyu and Hanshin, and Shin-Osaka two stops up for the
             shinkansen. On the official Kyoto travel guide&apos;s figures, read on {OWN}, Osaka Station to
             Kyoto Station is approximately 30 minutes on the JR Special Rapid, which is the strongest single
-            argument for the northern base.
+            argument for the northern base. An Umeda base also puts the{" "}
+            <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building observation deck</Link>{" "}
+            a short walk from Osaka Station, and it stays open until 22:30.
           </p>
         </section>
 

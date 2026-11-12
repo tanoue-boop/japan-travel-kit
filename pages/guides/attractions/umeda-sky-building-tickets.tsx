@@ -68,9 +68,37 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * No Klook price appears: the product page cannot be read, so no figure could be verified.
  */
 
-/** Every figure on this page was read on this date. */
+/**
+ * Re-checked on 12 Nov 2026 (task jtk-20261112-R01):
+ *
+ * - skybldg.co.jp/en/observatory/: ¥2,000 / ¥500 (4–12) / under-4 free, ¥1,000 / ¥250 with a
+ *   disability certificate, groups of 10+ ¥1,800 / ¥450; 9:30–22:30, last admission 22:00;
+ *   no regular closing day printed; rooftop may close in heavy rain; Amazing Pass / e-Pass
+ *   free 9:30–15:00, 10% off 15:00–22:00; online tickets linked to Klook.
+ * - abenoharukas-300.jp/observatory/ and /observatory/ticket/: 9:00–22:00, last entry 21:30;
+ *   counter ¥2,200 adult / ¥900 child (6–14), web advance ¥1,980 / ¥810, 5 and under free.
+ * - eco.mtk.nao.ac.jp/koyomi/dni/2026/s2811, s2812, s2801, s2802 (Osaka, 34.6833°N
+ *   135.4833°E): the November–February sunset rows below.
+ */
+const LAST_CHECKED_ISO = "2026-11-12";
+const LAST_CHECKED = checkedLabel(LAST_CHECKED_ISO);
+const OFFICIAL_URL = "https://www.skybldg.co.jp/en/observatory/";
+const HARUKAS_URL = "https://www.abenoharukas-300.jp/observatory/ticket/";
+const NAOJ_URL = "https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s2811.html";
+
+/** Figures not re-read on 12 Nov (floor list, asoview web ticket, walking times) were read on this date. */
 const CHECKED_ISO = "2026-11-03";
 const CHECKED = checkedLabel(CHECKED_ISO);
+
+/** "Last checked" line printed directly under each table. */
+function LastChecked({ url, label }: { url: string; label: string }) {
+  return (
+    <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+      Last checked: {LAST_CHECKED_ISO} · Source:{" "}
+      <a href={url} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>{label}</a>
+    </p>
+  );
+}
 
 /** The pass price is owned by lib/attraction-prices.ts, shared with the ticket price table. */
 const PASS_1_DAY = PRICES.osakaAmazingPass.adult;
@@ -137,13 +165,41 @@ const hoursRows = [
  * bracket the year: 1 December is the earliest sunset of the year, 1 July the latest.
  */
 const sunsetRows = [
-  { date: "1 March", sunset: "17:54", note: "Deck still daylight at 17:00; a 17:15 entry gets the whole transition" },
+  { date: "November – February", sunset: "16:47 – 17:53", note: "Winter answer: enter between about 16:00 and 17:15, depending on the date below" },
+  { date: "1 November", sunset: "17:05", note: "Enter by about 16:30" },
+  { date: "15 November", sunset: "16:54", note: "Enter by about 16:15" },
+  { date: "30 November", sunset: "16:47", note: "The earliest sunsets of the year fall either side of the turn of the month" },
+  { date: "1 December", sunset: "16:47", note: "Golden hour is mid-afternoon — inside the 15:00 Amazing Pass window" },
+  { date: "15 December", sunset: "16:49", note: "Enter by about 16:10" },
+  { date: "31 December", sunset: "16:57", note: "Dark by about 17:30, with five hours of night view left before closing" },
+  { date: "1 January", sunset: "16:58", note: "Enter by about 16:15 (2026 table)" },
+  { date: "15 January", sunset: "17:10", note: "Enter by about 16:30 (2026 table)" },
+  { date: "1 February", sunset: "17:27", note: "Enter by about 16:45 (2026 table)" },
+  { date: "15 February", sunset: "17:41", note: "Enter by about 17:00 (2026 table)" },
+  { date: "28 February", sunset: "17:53", note: "Enter by about 17:10 (2026 table)" },
   { date: "31 March", sunset: "18:18", note: "Cherry season — the busiest fortnight of the Osaka year" },
   { date: "1 July", sunset: "19:15", note: "Latest sunset of the year. Enter by 18:30" },
   { date: "1 September", sunset: "18:25", note: "Warm rooftop, long twilight — the easiest sunset to plan" },
   { date: "30 September", sunset: "17:44", note: "Sunset is already before 18:00 and dropping fast" },
-  { date: "1 December", sunset: "16:47", note: "Earliest sunset of the year. Golden hour is mid-afternoon" },
-  { date: "31 December", sunset: "16:57", note: "Still dark by 17:30 — six hours of night view left before closing" },
+];
+
+/** Which ticket fits which visit — the decision an AI summary does not make for you. */
+const choiceRows = [
+  {
+    situation: "Daytime visit plus at least two other paid Osaka sights the same day",
+    pick: "Osaka Amazing Pass, entering the deck before 15:00",
+    why: "The deck (¥2,000), Osaka Castle (¥1,200) and the HEP FIVE wheel (¥1,000) add up to more than the pass; after 15:00 the pass is only 10% off here",
+  },
+  {
+    situation: "Sunset or night view, nothing else paid that day",
+    pick: "A single observatory ticket — counter or online",
+    why: "No time slots and nothing sells out, so online booking buys an English checkout and a foreign card, not a guaranteed slot",
+  },
+  {
+    situation: "First day in Osaka, want the castle, the deck and Dotonbori without planning the route",
+    pick: "A guided day tour that includes Umeda",
+    why: "One meeting point and one booking; check the stops and the cancellation window on the listing before paying",
+  },
 ];
 
 const deckRows = [
@@ -234,63 +290,23 @@ const steps = [
 const faqItems = [
   {
     q: "How much is the Umeda Sky Building entrance fee?",
-    a: `The Umeda Sky Building entrance fee is ¥2,000 for an adult and ¥500 for a child aged 4 to 12, with under-4s free — the operator's own published prices for the Kuchu Teien Observatory. Visitors with a disability certificate pay ¥1,000 / ¥250, and groups of 10 or more ¥1,800 / ¥450. An Osaka Amazing Pass gets you in free from 9:30 to 15:00 and gives 10% off from 15:00 to 22:00. All read on ${CHECKED}.`,
+    a: `The Umeda Sky Building entrance fee is ¥2,000 for an adult and ¥500 for a child aged 4 to 12, with under-4s free. Visitors with a disability certificate pay ¥1,000 / ¥250, and groups of 10 or more ¥1,800 / ¥450. The Osaka Amazing Pass gets you in free from 9:30 to 15:00 and gives 10% off from 15:00 to 22:00. Official prices from skybldg.co.jp, last checked ${LAST_CHECKED}.`,
   },
   {
-    q: "What is the Umeda Sky Building ticket price for kids?",
-    a: `¥500 for a child aged 4 to 12, and free under 4 — a quarter of the ¥2,000 adult price. A child with a disability certificate pays ¥250, and in a group of 10 or more a child ticket is ¥450. From 13 the adult price applies. Prices from the operator's site, read on ${CHECKED}.`,
+    q: "What are the Umeda Sky Building opening hours, and how long do you need?",
+    a: `The Kuchu Teien Observatory is open 9:30 to 22:30 with last admission at 22:00, and no regular closing day is printed on the operator's site. Allow one to two hours (Klook's estimate for its listing). Special event days such as the Yodogawa fireworks run on special tickets and hours, and the open-air rooftop may close in heavy rain. Hours last checked ${LAST_CHECKED}.`,
   },
   {
-    q: "What are the Umeda Sky Building opening hours?",
-    a: `The Kuchu Teien Observatory is open 9:30 to 22:30 with last admission at 22:00. The operator's site prints no regular closing day, but it does run special event days — the Yodogawa fireworks evening, for example — on special tickets and hours, so check the site before a date that clashes with a big event. The 22:30 close is later than Harukas 300 (22:00, last entry 21:30) and Tsutenkaku's general deck (21:45, last entry 21:15). Read on ${CHECKED}.`,
+    q: "Do I need to book Umeda Sky Building in advance?",
+    a: "No. There is no timed-entry slot and tickets are sold on the day at the 39th-floor counter. Booking ahead is about convenience: an English checkout on a foreign card through Klook, which the operator's English site links to. The busy hours are the one before sunset and the run-up to the 15:00 pass cut-off; the quietest are mid-morning and after 21:00. If you hold an Osaka Amazing Pass and arrive before 15:00, you do not buy a ticket at all.",
   },
   {
-    q: "Can you pay by card, and are there cheaper tickets online?",
-    a: `Yes to both. The operator lists cash and credit cards (and certain contract coupons) at the 39th-floor counter. Its Japanese site also sells a date-specific web-only ticket through asoview that it describes as a better deal than the counter, without printing the amount, and its English site links to a Klook ticket. On the Osaka Amazing Pass you do not buy a ticket at all before 15:00. Read on ${CHECKED}.`,
+    q: "What time is sunset at Umeda Sky Building?",
+    a: "From November to February, sunset in Osaka falls between 16:47 and 17:53, according to the National Astronomical Observatory of Japan's 2026 table for Osaka: 17:05 on 1 November, 16:54 on 15 November, 16:47 on 30 November and 1 December, 16:57 on 31 December, 17:10 on 15 January and 17:41 on 15 February. In summer it is as late as 19:15 (1 July). Enter 30 to 45 minutes before sunset to see daylight, golden hour and the night view on one ticket.",
   },
   {
-    q: "What is on the rooftop and in the basement of the Umeda Sky Building?",
-    a: `The rooftop (RF) is a 360-degree open-air observation floor, and the operator's Japanese site lists a feature called Lumi Sky Walk on that level. Below it, 40F has cafe SKY 40 with counter seats, and 39F has the ticket counter, a gallery shop, the Chinese restaurant Sangu and Sky Lounge Stardust. At street level and below, B1F–1F is Takimi Koji, a Showa-retro street of restaurants and shops that you can walk into without a ticket. Floor list read on ${CHECKED}.`,
-  },
-  {
-    q: "What is the best time to visit the Umeda Sky Building?",
-    a: "Thirty to forty-five minutes before sunset, if you only go once. The rooftop is a genuinely open-air ring with no glass and no roof, so the light matters more here than at a glazed deck — and one entry gets you daylight, golden hour and the lit city in sequence. The catch is the pass: free entry with the Osaka Amazing Pass ends at 15:00, which in December is already after golden hour has started. If you are on the pass, go in the morning and accept the daylight view; if you are buying a single ticket, go at sunset.",
-  },
-  {
-    q: "What time is sunset in Osaka?",
-    a: `It swings by about two and a half hours across the year, which is why a generic “go at sunset” is useless without a date. The National Astronomical Observatory of Japan's published times for Osaka in 2026: 16:47 on 1 December, which is the earliest sunset of the year; 17:54 on 1 March; 18:18 on 31 March; 19:15 on 1 July, the latest of the year; 18:25 on 1 September; and 17:44 by 30 September. Enter 30 to 45 minutes before whichever of those matches your trip.`,
-  },
-  {
-    q: "How long do you need at the Umeda Sky Building?",
-    a: "Klook's own listing allows one to two hours, and that fits the building: three observatory levels — the 39th floor where you ticket, the indoor 40th floor with its 35-metre glass counter, and the open-air rooftop above it — plus the see-through escalator up from the 35th. An hour is enough if you are only there for the view. Two hours is the honest figure if you want to sit with a drink at the glass counter or wait out the light changing on the roof.",
-  },
-  {
-    q: "How do I get to Umeda Sky Building from Osaka Station?",
-    a: `On foot: Osaka's official tourism site gives 7 minutes from JR Osaka Station and 9 minutes from Hankyu Osaka-Umeda or Osaka Metro Umeda (a sister page on the same site says about 10). Head north-west from the station complex; the building sits on the far side of the rail lines, and the operator's route from each station includes a 40-metre underground walkway under the tracks, which is why the walk feels longer than the distance. No bus, no transfer and nothing to book. Read on ${CHECKED}.`,
-  },
-  {
-    q: "Do you need to book Umeda Sky Building tickets in advance?",
-    a: "No. There is no timed-entry slot, and the counter on the 39th floor sells tickets for cash or credit card. Booking ahead buys you convenience instead: an English checkout and a card issued abroad that works on Klook, or the cheaper date-specific web ticket the operator sells through asoview in Japanese. If you are on the Amazing Pass and arriving before 15:00, you do not buy a ticket at all.",
-  },
-  {
-    q: "Is Umeda Sky Building free with the Osaka Amazing Pass?",
-    a: `Only from 9:30 to 15:00, and this is the detail most guides skip. The pass is ${PASS_1_DAY} for one day and the Umeda deck is one of its 40-plus free admissions — but only until 15:00. From 15:00 the pass becomes a 10% discount, so an evening visit still costs about ¥1,800 on top of the pass. The arithmetic that works: a pass day with the Umeda deck before 15:00 (¥2,000), Osaka Castle (¥1,200) and the HEP FIVE Ferris wheel (¥1,000) is ¥4,200 of admissions against a ${PASS_1_DAY} pass (official price, checked 9 November 2026), before you count a single subway ride. Two stops alone, at ¥3,200, only clear it once the day's subway rides are added. The arithmetic that does not: buying the pass for a sunset trip up this one building.`,
-  },
-  {
-    q: "Umeda Sky Building or Harukas 300 — which should you pick?",
-    a: `Different products at a similar price, and the choice is open air against altitude. The Umeda deck is an unroofed 360-degree rooftop ring, ¥2,000, open until 22:30, seven minutes from JR Osaka Station, and free on the Amazing Pass before 15:00. Harukas 300 sits on top of what its operator calls Japan's tallest building, in Tennoji, at ¥2,200 at the counter or ¥1,980 as a web advance ticket, open 9:00 to 22:00 with last entry at 21:30 — and it is not on the Amazing Pass facility list. Pick Umeda for the open rooftop, the late close and the location; pick Harukas for the sheer height. Both read on ${CHECKED}.`,
-  },
-  {
-    q: "Is the Umeda Sky Building good with children?",
-    a: "Yes, and the pricing is the reason: ¥500 for ages 4 to 12 and free below that, which is a quarter of the adult rate and cheaper per head than almost anything else in central Osaka. The practical notes are the escalator, which small children either love or do not, and the rooftop, which is open to the sky and the wind at 173 metres — hold hands and bring a layer. There is no timed slot to work around and no minimum stay, so it folds into an afternoon easily.",
-  },
-  {
-    q: "What happens if it rains, and is the rooftop ever closed?",
-    a: "Two of the three observatory levels are indoors — the 39th floor where you ticket and the 40th with its glass counter — so a wet day still buys you the view from behind glass. The top level is the one that suffers: it is an open-air ring with no cover, so rain lands on you and strong wind is felt at full strength, and the operator states that the rooftop may be closed in heavy rain. If the roof is the reason you are going, watch the forecast and keep the date flexible rather than booking a fixed one.",
-  },
-  {
-    q: "Is there a free observation deck in Osaka instead?",
-    a: `Not a 173-metre one. The lower part of the Umeda Sky Building — the atrium and the Takimi Koji basement — costs nothing to walk into, and the building's exterior with the gap between the towers is the famous shot anyway, so you can see the architecture for free and skip the deck. If the ¥2,000 is the sticking point, the better move is a pass day: the Amazing Pass at ${PASS_1_DAY} covers this deck before 15:00, Osaka Castle, the Nishinomaru Garden, the HEP FIVE Ferris wheel at ¥1,000 and the river cruises, plus the subway in between.`,
+    q: "Is Umeda Sky Building worth it vs Abeno Harukas?",
+    a: `They are different products at a similar price. Umeda is ¥2,000, an open-air 360-degree rooftop, open until 22:30 (last entry 22:00), seven minutes from JR Osaka Station and free on the Amazing Pass before 15:00. Harukas 300 at Abeno Harukas is ¥2,200 at the counter or ¥1,980 as a web advance ticket, open 9:00 to 22:00 (last entry 21:30), higher, and not on the Amazing Pass list. Pick Umeda for the open rooftop, the late close and the Osaka Station location; pick Harukas for height. Both operators' prices last checked ${LAST_CHECKED}.`,
   },
 ];
 
@@ -298,9 +314,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/umeda-sky-building-tickets") },
 });
 
-const TITLE = "Umeda Sky Building Tickets 2026: Price, Hours & Entrance Fee";
+const TITLE = "Umeda Sky Building Tickets 2026: Price, Hours & Sunset Times";
 const DESC =
-  "Umeda Sky Building tickets: entrance fee ¥2,000 adult, ¥500 ages 4–12. Open 9:30–22:30, last entry 22:00; allow 1–2 hours. Free on Amazing Pass to 15:00.";
+  "Umeda Sky Building tickets: entrance fee ¥2,000 adult, ¥500 ages 4–12. Open 9:30–22:30, last entry 22:00. Sunset times by month, plus a Klook ticket link.";
 
 export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -390,7 +406,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Umeda Sky Building Tickets 2026:<br />Price, Hours and Entrance Fee
+            Umeda Sky Building Tickets 2026:<br />Price, Hours &amp; Sunset Times
           </h1>
           <p className={styles.heroSubtitle}>
             The open-air rooftop ring 173 metres above Umeda, seven minutes from Osaka Station.
@@ -442,18 +458,12 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> Umeda Sky Building tickets are <strong>¥2,000</strong> for an
-              adult and <strong>¥500</strong> for a child aged 4 to 12, with under-4s free. The
-              Kuchu Teien Observatory — three levels at <strong>173 metres</strong>, topped by a
-              360-degree open-air rooftop — is open{" "}
-              <strong>9:30 to 22:30 with last entry at 22:00</strong>, and Klook&apos;s own listing
-              allows <strong>one to two hours</strong>. It is a{" "}
-              <strong>7-minute walk from JR Osaka Station</strong> and 9 minutes from Hankyu
-              Osaka-Umeda or Osaka Metro Umeda. There are no timed slots and the counter sells
-              tickets on the day, so the only real decision is the hour: the{" "}
-              <strong>Osaka Amazing Pass covers this deck free only until 15:00</strong>, and from
-              15:00 it is 10% off — which means the pass and the sunset view rarely overlap. All
-              read on {CHECKED}.
+              The Umeda Sky Building entrance fee is <strong>¥2,000 for an adult</strong> and{" "}
+              <strong>¥500 for a child aged 4 to 12</strong>, with under-4s free. The Kuchu Teien
+              Observatory is open <strong>9:30 to 22:30, last entry 22:00</strong>, and a visit
+              takes <strong>1 to 2 hours</strong>. Tickets are sold on the day with no time slots,
+              and the <strong>Osaka Amazing Pass gets you in free only from 9:30 to 15:00</strong>.
+              Official figures last checked {LAST_CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -473,15 +483,23 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>Umeda Sky Building Tickets: Price, Hours and How to Buy</h2>
           <p className={styles.bodyText}>
-            The Kuchu Teien Observatory at the Umeda Sky Building costs{" "}
-            <strong>¥2,000 for an adult and ¥500 for a child aged 4 to 12</strong> (under-4s free),
-            and it is open <strong>9:30 to 22:30 with last admission at 22:00</strong> — the
-            operator&apos;s own figures, read on {CHECKED}. You can buy a ticket{" "}
-            <strong>on the day at the 39th-floor counter</strong> (cash or credit card) or{" "}
-            <strong>in advance online</strong> — Klook in English, or the operator&apos;s cheaper
-            date-specific web ticket on asoview in Japanese. The{" "}
+            An Umeda Sky Building ticket costs <strong>¥2,000 for an adult and ¥500 for a child
+            aged 4 to 12</strong>, and under-4s go free. The observatory is open{" "}
+            <strong>9:30 to 22:30 with last admission at 22:00</strong>, and one to two hours is
+            enough for all three levels. In winter (November to February) Osaka sunset falls
+            between <strong>16:47 and 17:53</strong>, so a sunset visit means entering between
+            about 16:00 and 17:15.
+          </p>
+          <p className={styles.bodyText}>
+            You can buy a ticket <strong>on the day at the 39th-floor counter</strong> or{" "}
+            <strong>in advance online</strong> — Klook in English, which the operator&apos;s English
+            site links to, or the operator&apos;s date-specific web ticket on asoview in Japanese
+            (read on {CHECKED}). The{" "}
             <strong>Osaka Amazing Pass gets you in free from 9:30 to 15:00</strong> and gives 10%
-            off from 15:00 to 22:00, so it covers a daytime visit but not a sunset one.
+            off from 15:00 to 22:00, so it covers a daytime visit but not a sunset one — our{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass break-even table</Link>{" "}
+            shows when the pass pays. Prices and hours last checked {LAST_CHECKED} on the
+            operator&apos;s site.
           </p>
           <p className={styles.bodyText}>
             Two 40-storey towers, 173 metres high, joined at the top by a ring — that is the whole
@@ -543,8 +561,8 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
           <h2 className={styles.sectionTitle}>How Much Is the Umeda Sky Building Entrance Fee?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The entrance fee is <strong>¥2,000 for an adult</strong> and{" "}
-            <strong>¥500 for a child aged 4 to 12</strong>, read off the operator&apos;s site on{" "}
-            {CHECKED}. One flat price per age band, with no premium slots; the only variable is the
+            <strong>¥500 for a child aged 4 to 12</strong>, the operator&apos;s official counter
+            price. One flat price per age band, with no premium slots; the only variable is the
             pass, and the pass has a clock on it:
           </p>
           <div className={styles.tableWrap}>
@@ -569,10 +587,10 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Prices read on {CHECKED} from the operator&apos;s own site (skybldg.co.jp), with the pass
-            conditions matching the Osaka Amazing Pass operator&apos;s facility list the same day.
-            Subject to change — confirm before you buy. For the admissions in this guide
+          <LastChecked url={OFFICIAL_URL} label="skybldg.co.jp/en/observatory/ (official)" />
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            The pass rows match the Osaka Amazing Pass operator&apos;s facility list, read on{" "}
+            {CHECKED}. Subject to change — confirm before you buy. For the admissions in this guide
             across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
@@ -594,6 +612,10 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Hours</span>
           <h2 className={styles.sectionTitle}>What Are the Umeda Sky Building Opening Hours?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The observatory is open <strong>9:30 to 22:30, with last entry at 22:00</strong>, and
+            the operator prints no regular closing day. Allow one to two hours.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -615,12 +637,13 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               </table>
             </div>
           </div>
+          <LastChecked url={OFFICIAL_URL} label="skybldg.co.jp/en/observatory/ (official)" />
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             That <strong>22:30 close</strong> is the deck&apos;s quiet advantage. It is later than
             Harukas 300 (22:00) and Tsutenkaku&apos;s general deck (21:45), and it is still three
             hours past sunset in midsummer, when sunset in Osaka is as late as 19:15. If your day is
-            already full, this is the attraction you can do after dinner. Hours read off the
-            operator&apos;s site on {CHECKED}; it runs special event days on separate tickets, so
+            already full, this is the attraction you can do after dinner. The operator runs
+            special event days on separate tickets, so
             check the site before a date with a big event such as the Yodogawa fireworks.
           </p>
         </section>
@@ -628,14 +651,14 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         {/* Best time / sunset */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Best time to go</span>
-          <h2 className={styles.sectionTitle}>What Time Is Best for Sunset at Umeda Sky Building?</h2>
+          <h2 className={styles.sectionTitle}>What Time Is Sunset at Umeda Sky Building?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            <strong>Enter 30 to 45 minutes before sunset</strong> — between about 16:00 in early
-            December and about 18:30 in early July — and one ticket gets you daylight, golden hour
-            and the night view from the open rooftop. &quot;Go at sunset&quot; is useless advice without a date, because Osaka sunset moves by
-            about <strong>two and a half hours</strong> across the year. These are the published
-            times from the National Astronomical Observatory of Japan&apos;s own ephemeris for Osaka
-            in 2026 — enter 30 to 45 minutes before the one that matches your trip:
+            From November to February, sunset in Osaka is between <strong>16:47 and 17:53</strong>;
+            in early July it is as late as 19:15. <strong>Enter 30 to 45 minutes before
+            sunset</strong> and one ticket gets you daylight, golden hour and the night view from
+            the open rooftop. These are the published times from the National Astronomical
+            Observatory of Japan&apos;s 2026 table for Osaka — for a 2027 date, open the same
+            NAOJ page for that year:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -659,6 +682,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               </table>
             </div>
           </div>
+          <LastChecked url={NAOJ_URL} label="National Astronomical Observatory of Japan, Osaka sunrise/sunset table (official)" />
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Two consequences worth spelling out. First, <strong>in winter the sunset is inside the
             pass window and in summer it is not</strong>: on 1 December golden hour has begun before
@@ -712,9 +736,12 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         {/* Compare */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Umeda Sky Building vs Harukas 300 vs Tsutenkaku</h2>
+          <h2 className={styles.sectionTitle}>Is Umeda Sky Building Worth It vs Abeno Harukas?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Osaka has three paid decks and they are genuinely different purchases — one is the
+            <strong>Yes, if you want an open-air rooftop, a late close and a deck next to Osaka
+            Station:</strong> Umeda is ¥2,000 against ¥2,200 at the Harukas 300 counter (¥1,980 web
+            advance), and it stays open half an hour later. Pick Abeno Harukas if sheer height
+            matters more than open air. Osaka has three paid decks and they are genuinely different purchases — one is the
             tallest, one is open to the sky, one is the cheapest and sits in the old Shinsekai
             quarter. The pass column is the one most comparisons leave out, and it is where the
             money is:
@@ -744,10 +771,11 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Every row re-read on {CHECKED} from the operator&apos;s own site — skybldg.co.jp,
-            abenoharukas-300.jp and tsutenkaku.co.jp — with the pass column from the Osaka Amazing
-            Pass operator&apos;s facility list. Umeda&apos;s 173 m height is from Osaka&apos;s official
+          <LastChecked url={HARUKAS_URL} label="abenoharukas-300.jp (official), with skybldg.co.jp for Umeda" />
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            The Umeda and Harukas 300 rows were re-read on {LAST_CHECKED}; the Tsutenkaku row
+            (tsutenkaku.co.jp) and the pass column (the Osaka Amazing Pass operator&apos;s facility
+            list) on {CHECKED}. Umeda&apos;s 173 m height is from Osaka&apos;s official
             tourism site. Note the two asymmetries: <strong>Harukas 300 is not on the Amazing Pass
             facility list</strong>, so its price is payable on any pass day, and <strong>Tsutenkaku asks you to book a time
             slot at the facility</strong> even with a pass, which the other two do not. Subject to
@@ -784,7 +812,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         {/* Booking */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>Do You Need to Book Umeda Sky Building Tickets in Advance?</h2>
+          <h2 className={styles.sectionTitle}>Do I Need to Book Umeda Sky Building in Advance?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>No.</strong> There is no timed-entry slot, and the 39th-floor counter sells
             tickets on the day for cash or credit card. Book ahead only for convenience: Klook for
@@ -803,6 +831,42 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               </div>
             ))}
           </div>
+          <h3 className={styles.pickName} style={{ marginTop: "1.5rem", marginBottom: "0.6rem" }}>
+            Which Umeda Sky Building ticket should you choose?
+          </h3>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>Choose by the hour you go.</strong> Same-day tickets are sold at the counter
+            and nothing sells out, but the hour before sunset and the run-up to 15:00 are the
+            crowded times, and any online booking carries its own cancellation window — check it on
+            the listing before you pay.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Your visit", "Best pick", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {choiceRows.map((row) => (
+                    <tr key={row.situation}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.86rem" }}>{row.situation}</td>
+                      <td style={{ fontSize: "0.86rem", fontWeight: 600 }}>{row.pick}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.why}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked url={OFFICIAL_URL} label="skybldg.co.jp/en/observatory/ (official)" />
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem" }}>
+            For the full list of what the pass covers and the 1-day versus 2-day arithmetic, see the{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link>.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check Umeda Sky Building tickets on Klook →

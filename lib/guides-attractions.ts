@@ -112,8 +112,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/umeda-sky-building-tickets",
     badge: "Tickets",
-    title: "Umeda Sky Building Tickets 2026: Price, Hours and Entrance Fee",
-    desc: "¥2,000 for an adult and ¥500 for a child aged 4 to 12, with the 173 m rooftop open 9:30–22:30 and last entry at 22:00. Plus Osaka sunset times by season and the 15:00 cut-off on the Amazing Pass.",
+    title: "Umeda Sky Building Tickets 2026: Price, Hours & Sunset Times",
+    desc: "¥2,000 for an adult and ¥500 for a child aged 4 to 12, with the 173 m rooftop open 9:30–22:30 and last entry at 22:00. Plus Osaka sunset times by month and the 15:00 cut-off on the Amazing Pass.",
     group: "tickets",
     city: "osaka",
   },

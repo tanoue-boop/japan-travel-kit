@@ -225,7 +225,9 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           <h2 className={styles.sectionTitle}>Umeda Sky Building &amp; Shinsekai</h2>
           <p className={styles.bodyText}>
             For the view, the <strong>Umeda Sky Building</strong>&apos;s Floating Garden Observatory links two
-            towers with an open-air rooftop ring high above the north of the city. For a complete change of mood,
+            towers with an open-air rooftop ring high above the north of the city — our{" "}
+            <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets guide</Link>{" "}
+            has the entrance fee, the hours and the winter sunset times. For a complete change of mood,
             <strong> Shinsekai</strong> is a retro, slightly ramshackle quarter around the <strong>Tsutenkaku</strong>{" "}
             tower, packed with kushikatsu (deep-fried skewer) joints and a nostalgic, mid-century atmosphere. Round
             it off at the <strong>Kuromon Ichiba</strong> market and the buzzing streets of Namba.
