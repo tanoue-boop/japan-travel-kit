@@ -851,7 +851,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/where-to-stay-in-osaka",
     badge: "Where to stay",
-    title: "Where to Stay in Osaka (2026): Best Areas, Compared by Line and Airport",
+    title: "Where to Stay in Osaka 2026: Namba vs Umeda vs USJ, the Best Areas Compared",
     desc: "Namba, Umeda, Tennoji and Universal City compared on the lines under them — the Rapi:t's 34-minute minimum from Kansai, 30 minutes to Kyoto on the JR Special Rapid, 36 to JR Nara from Tennoji, and a five-minute walk to the USJ gates.",
     group: "cities",
     city: "osaka",

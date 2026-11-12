@@ -75,7 +75,12 @@ export default function GuidesTransportPage({ dates }: { dates: Record<string, s
             <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--text)", fontWeight: 600 }}>an IC card such as Suica, PASMO or ICOCA</Link>{" "}
             usually comes out cheaper than a pass. Landing at Narita, our{" "}
             <Link href="/guides/transport/skyliner-vs-nex" style={{ color: "var(--text)", fontWeight: 600 }}>Skyliner vs N&apos;EX comparison</Link>{" "}
-            picks the airport train by the area your hotel is in; in Osaka, our{" "}
+            picks the airport train by the area your hotel is in, and landing at Kansai, our{" "}
+            <Link href="/guides/transport/haruka-vs-nankai-rapit" style={{ color: "var(--text)", fontWeight: 600 }}>Haruka vs Nankai Rapi:t comparison</Link>{" "}
+            does the same — the Rapi:t to Namba in a minimum of 34 minutes, the Haruka to Tennoji, Osaka,
+            Shin-Osaka and Kyoto. For the train out to Nara, the{" "}
+            <Link href="/guides/attractions/nara-day-trip" style={{ color: "var(--text)", fontWeight: 600 }}>Nara day trip guide</Link>{" "}
+            compares the Kintetsu and JR runs from Osaka and Kyoto. In Osaka, our{" "}
             <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Osaka Metro Pass and Enjoy Eco Card guide</Link>{" "}
             works out how many subway rides the 1-day pass needs to pay off.
           </PartnerPick>

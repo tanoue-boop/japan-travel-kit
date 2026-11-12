@@ -687,7 +687,16 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/things-to-do-tokyo" style={redLinkStyle}>
               도쿄에서 할 일(영어)
             </Link>
-            의 추천 목록에도 올라 있습니다.
+            의 추천 목록에도 올라 있습니다. 같은 도쿄 일정에서 날짜가 먼저 마감되는 예약은 두 가지가 더 있습니다.
+            팀랩은 플래닛과 보더리스가 별개의 티켓이라{" "}
+            <Link href="/ko/guides/attractions/teamlab-tokyo-tickets" style={redLinkStyle}>
+              팀랩 플래닛 보더리스 비교
+            </Link>
+            에서 어느 쪽을 예약할지 먼저 정하고, 도쿄 디즈니랜드는 모든 티켓이 날짜 지정이고 현장 판매가 없으므로{" "}
+            <Link href="/ko/guides/attractions/tokyo-disney-tickets" style={redLinkStyle}>
+              도쿄 디즈니랜드 티켓 가이드
+            </Link>
+            에서 구매처를 확인하세요.
           </p>
         </section>
 

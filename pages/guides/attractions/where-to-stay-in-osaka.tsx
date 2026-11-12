@@ -7,7 +7,7 @@ import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
-import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { checkedLabel } from "../../../lib/attraction-prices";
 import { whereToStayOsakaAreas, whereToStayOsakaTripPrep } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
@@ -42,8 +42,9 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 /** The date this page's own figures were read off the operators' and official sites. */
 const OWN = checkedLabel("2026-10-26");
 
-/** The pass price's own check date, from lib/attraction-prices.ts. */
-const PASS_CHECKED = checkedLabel(PRICES.osakaAmazingPass.checked);
+/** Rapi:t minimum time and HARUKA fares re-read on nankai.co.jp and westjr.co.jp. */
+const TODAY = checkedLabel("2026-11-12");
+
 
 type Area = {
   area: string;
@@ -80,7 +81,7 @@ const areas: Area[] = [
     times:
       "Kyoto Station approx. 30 min on the JR Special Rapid; Kyoto-Kawaramachi approx. 45 min on the Hankyu; JR Nara approx. 52 min on the JR Rapid; Universal City about 20 min",
     airport:
-      "JR Haruka direct to Osaka and Shin-Osaka — the discounted one-way for foreign passport holders is ¥1,800 for an adult through 31 Oct 2026 and ¥1,900 from 1 Nov 2026",
+      "JR Haruka direct to Osaka and Shin-Osaka — the discounted one-way for foreign passport holders is ¥1,900 for an adult (prices changed for tickets sold from 1 Nov 2026)",
   },
   {
     area: "Tennoji",
@@ -90,7 +91,7 @@ const areas: Area[] = [
     times:
       "JR Nara approx. 36 min on the JR Rapid — the fastest of the three Osaka bases to Nara; Namba and Umeda are up the same Midosuji Line",
     airport:
-      "JR Haruka direct, and the first city stop on it — the discounted one-way is ¥1,300 for an adult through 31 Oct 2026 and ¥1,600 from 1 Nov 2026",
+      "JR Haruka direct, and the first city stop on it — the discounted one-way is ¥1,600 for an adult",
   },
   {
     area: "Universal City",
@@ -104,10 +105,52 @@ const areas: Area[] = [
   },
 ];
 
+/** Haruka journey times: kansai-airport.or.jp, the same reading haruka-vs-nankai-rapit uses. */
+const HARUKA_TIMES = checkedLabel("2026-11-06");
+
+/**
+ * The at-a-glance table (added 12 Nov 2026). Only times an operator or official
+ * guide publishes; "—" where there is no direct train and no published time.
+ */
+const quickRows = [
+  {
+    area: "Namba",
+    bestFor: "A first trip, Dotonbori evenings, flying out of Kansai",
+    kix: "Nankai Rapi:t, direct, min. 34 min",
+    kyoto: "—",
+    nara: "Kintetsu Express approx. 34 min",
+    usj: "—",
+  },
+  {
+    area: "Umeda / Osaka Station",
+    bestFor: "Getting around by JR: Kyoto days, the shinkansen",
+    kix: "JR Haruka, direct, about 45 min",
+    kyoto: "JR Special Rapid approx. 30 min",
+    nara: "JR Rapid approx. 52 min",
+    usj: "About 20 min by JR",
+  },
+  {
+    area: "Tennoji",
+    bestFor: "Haruka arrivals, Nara days, a quieter base",
+    kix: "JR Haruka, direct, about 30 min",
+    kyoto: "—",
+    nara: "JR Rapid approx. 36 min",
+    usj: "—",
+  },
+  {
+    area: "Universal City (USJ)",
+    bestFor: "A USJ day, at the gates at opening",
+    kix: "No direct train",
+    kyoto: "—",
+    nara: "—",
+    usj: "Approx. 5 min on foot",
+  },
+];
+
 /** Sources for the table, printed under it so every number is attributable. */
 const sourceNote = [
   `The Rapi:t time and surcharge are Nankai's own, read on ${OWN} — an extra ¥300 applies if you buy the limited express ticket onboard, and the ticketless service is ¥150 less.`,
-  `HARUKA prices are JR West's discounted one-way ticket for holders of a foreign passport entering Japan as a temporary visitor, read on ${OWN}; the 1 November 2026 increase is JR West's own published change.`,
+  `HARUKA prices are JR West's discounted one-way ticket for holders of a foreign passport entering Japan as a temporary visitor, re-read on ${TODAY}; JR West notes the prices changed for tickets sold on or after 1 November 2026.`,
   `Osaka–Kyoto times are from kyoto.travel, the official Kyoto travel guide, read on ${OWN}.`,
   `Osaka–Nara and Tennoji–Nara times are from visitnara.jp, Nara Prefecture's official travel guide, read on ${OWN}.`,
   `The Universal City figures are from the Osaka Convention & Tourism Bureau's own site, read on ${OWN}.`,
@@ -127,38 +170,21 @@ const faqItems = [
     a: `Either Universal City itself, or Umeda. The park is approximately five minutes on foot from Universal City Station on the JR Yumesaki Line, and about 20 minutes from Osaka Station — both on the Osaka Convention & Tourism Bureau's own figures, read on ${OWN}. Staying at Universal City buys you the walk rather than the train on a day you want to be at the gates at opening; staying at Umeda keeps you on the main network for the rest of the trip and costs you that 20 minutes twice. One thing to settle first either way: Universal Studios Japan is not on the Osaka Amazing Pass, and the JR fare to Universal City is not covered by any Osaka Metro pass.`,
   },
   {
-    q: "Where to stay in Osaka for day trips to Kyoto and Nara?",
-    a: `Umeda for Kyoto, Tennoji or Namba for Nara. On the official Kyoto travel guide, read on ${OWN}, Osaka Station to Kyoto Station is approximately 30 minutes on the JR Special Rapid, Osaka-umeda to Kyoto-Kawaramachi approximately 45 minutes on the Hankyu, and Yodoyabashi to Gion-Shijo approximately 48 minutes on the Keihan limited express. For Nara, Nara Prefecture's own travel guide gives Tennoji to JR Nara at approximately 36 minutes on the JR Rapid and Osaka-Namba to Kintetsu-Nara at approximately 34 minutes on the Kintetsu Express, against approximately 52 minutes from Osaka Station — read on ${OWN}. None of those four trains is reserved, so there is nothing to book.`,
-  },
-  {
     q: "Which area is best from Kansai Airport?",
-    a: `It depends on which train you would rather take, and the two go to different places. The Nankai Rapi:t runs to Namba in a minimum of 34 minutes with no transfer, with a ¥700 adult limited express ticket on top of the ordinary fare. The JR Haruka runs direct to Tennoji, Osaka, Shin-Osaka and Kyoto; JR West's discounted one-way for foreign passport holders is ¥1,300 to Tennoji and ¥1,800 to Osaka or Shin-Osaka through 31 October 2026, rising to ¥1,600 and ¥1,900 on 1 November 2026. Both read on ${OWN}. So: Namba if you are flying in and out of Kansai, Tennoji if you want the shortest Haruka leg, Umeda if you are continuing by shinkansen.`,
+    a: `It depends on which train you would rather take, and the two go to different places. The Nankai Rapi:t runs to Namba in a minimum of 34 minutes with no transfer, with a ¥700 adult limited express ticket on top of the ordinary fare. The JR Haruka runs direct to Tennoji, Osaka, Shin-Osaka and Kyoto; JR West's discounted one-way for foreign passport holders is ¥1,600 to Tennoji and ¥1,900 to Osaka or Shin-Osaka for an adult (prices changed for tickets sold from 1 November 2026). Both re-read on ${TODAY}. So: Namba if you are flying in and out of Kansai, Tennoji if you want the shortest Haruka leg, Umeda if you are continuing by shinkansen.`,
   },
   {
     q: "How early should I book an Osaka hotel?",
     a: `There is no number here, because no operator publishes one — availability and price are per-hotel and per-date. What is published is the calendar. Japan's Cabinet Office lists Showa Day on 29 April, Constitution Memorial Day on 3 May, Greenery Day on 4 May and Children's Day on 5 May — Golden Week — plus Mountain Day on 11 August, read on ${OWN}; those weeks, the New Year period and the cherry-blossom and autumn-leaf weeks are when domestic demand is added to yours. Osaka has one local pressure on top of that: Universal Studios Japan draws a domestic crowd that books the Universal City hotels first, so if that area is your choice it is the one to check earliest. The practical step is to open the area searches for your real dates and compare two or three.`,
   },
-  {
-    q: "Is it better to stay in Osaka or Kyoto for a Kansai trip?",
-    a: `If you are flying out of Kansai, Osaka — and the reason is the last morning rather than the sightseeing. On the official Kyoto travel guide's figures, read on ${OWN}, the Haruka takes approximately 80 minutes from Kansai Airport to Kyoto, against a minimum of 34 minutes to Namba on the Rapi:t. Osaka is also cheaper to eat in and has the later evenings; Kyoto has the temples and the earlier mornings. A common split is two or three Kyoto nights and one or two Osaka nights at the end, which is how our seven and ten-day itineraries are built.`,
-  },
-  {
-    q: "Which Osaka area is cheapest to stay in?",
-    a: "Rates cannot be verified, so the areas are not ranked by price here — but the structural point is that Tennoji is the southern end of the useful Midosuji stretch and the furthest from the nightlife, which is usually where the saving sits, and it is also the shortest Haruka leg from the airport. Shin-Imamiya and Dobutsuenmae, one stop further, are cheaper again and on the same line. Whether that saving survives contact with your dates is a question for the searches below.",
-  },
-  {
-    q: "Do you need the Osaka Amazing Pass if you stay centrally?",
-    a: `It depends on how many rides your day has in it rather than where you sleep. The pass is ${PRICES.osakaAmazingPass.adult} for one day and ¥5,000 for two, and it bundles unlimited Osaka Metro, city buses and the private railways within the city with about 40 free admissions — read off the official site on ${PASS_CHECKED}. If your base is Namba or Umeda and you are walking most of the day, an IC card is cheaper; if you are hopping between the castle, the Umeda deck and the bay, the pass wins. Two things it does not cover, and both catch people out: Universal Studios Japan and the Kaiyukan.`,
-  },
-  {
-    q: "Is Osaka a good base for the whole Kansai region?",
-    a: "Yes, better than most people expect, and it is the cheapest way to see Kansai on one hotel bill. From the three Midosuji hubs you can reach Kyoto in about half an hour by JR, Nara in about 35 minutes, and Kobe, Himeji and Arima on day trips west — all without moving hotels. The limit is Kyoto's mornings: the famous temples are quietest before the day-trippers arrive, which is the one thing a Kyoto base buys that an Osaka base cannot.",
-  },
 ];
 
-const TITLE = "Where to Stay in Osaka (2026): Best Areas Compared";
+// Title rebuilt 12 Nov 2026 (task jtk-20261112-I01): the requested
+// "Where to Stay in Osaka 2026: Namba vs Umeda vs USJ (Best Areas)" is 63 characters,
+// so the three areas go in brackets to keep the whole <title> under 60.
+const TITLE = "Where to Stay in Osaka 2026: Best Areas (Namba, Umeda, USJ)";
 const DESCRIPTION =
-  "Where to stay in Osaka in 2026: 4 areas compared on the lines that serve them, the Kansai Airport route to each, and the Kyoto and Nara day trips.";
+  "Where to stay in Osaka: Namba for a first trip, Umeda for JR and Kyoto days, Universal City for USJ. Official train times by area, then hotel search.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/where-to-stay-in-osaka") } });
 
@@ -198,7 +224,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/where-to-stay-in-osaka",
-              headline: "Where to Stay in Osaka (2026): Best Areas Compared",
+              headline: TITLE,
               description: DESCRIPTION,
               updated,
             }),
@@ -250,14 +276,14 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Where to Stay in Osaka (2026):<br />Best Areas, Compared by Line and Airport
+            Where to Stay in Osaka 2026:<br />Namba vs Umeda vs USJ, the Best Areas Compared
           </h1>
           <p className={styles.heroSubtitle}>
-            Four areas, compared on the lines that serve them rather than on hotels — because in Osaka the
-            station decides your airport run and your day trips.
+            Namba, Umeda, Tennoji and Universal City, compared on the lines that serve them rather than on
+            hotels — because in Osaka the station decides your airport run and your day trips.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "4 areas compared", "Operator journey times"].map((t) => (
+            {[`Updated ${updated.label}`, "Namba vs Umeda vs USJ", "Official journey times"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -288,23 +314,24 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
                 <p className={styles.verdictStatValue}>Namba</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Kyoto day trips</p>
-                <p className={styles.verdictStatValue}>Umeda — 30 min by JR</p>
+                <p className={styles.verdictStatLabel}>Getting around by JR</p>
+                <p className={styles.verdictStatValue}>Umeda — Kyoto approx. 30 min</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Universal Studios Japan</p>
+                <p className={styles.verdictStatValue}>Universal City — 5 min walk</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Kansai Airport</p>
                 <p className={styles.verdictStatValue}>Namba — Rapi:t, min 34 min</p>
               </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Universal Studios</p>
-                <p className={styles.verdictStatValue}>Universal City — 5 min walk</p>
-              </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> pick Namba for a first trip and for flying out of Kansai, Umeda if
-              your trip runs on JR or includes Kyoto days, Tennoji for the shortest Haruka leg and a quieter
-              base, and Universal City if a USJ day is the fixed point. Then do the part an answer cannot do
-              — check what is left on your dates.
+              For a first trip, stay in <strong>Namba</strong>: Dotonbori is on foot and the Nankai Rapi:t
+              reaches Kansai Airport in a minimum of 34 minutes with no change. If you will be moving around
+              by JR — Kyoto days, the shinkansen — stay in <strong>Umeda</strong>, approximately 30 minutes from
+              Kyoto Station on the JR Special Rapid; if Universal Studios Japan is the point of the trip, stay
+              at <strong>Universal City</strong>, about 5 minutes on foot from the gates.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -321,16 +348,14 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>The short answer</span>
           <h2 className={styles.sectionTitle}>Where Should You Stay in Osaka?</h2>
           <p className={styles.bodyText}>
-            <strong>Where to stay in Osaka</strong> comes down to four areas, and for a first trip the answer
-            is <strong>Namba</strong>: it is on the Midosuji Line, Dotonbori and Kuromon Market are on foot,
-            and it is the Nankai terminus — Nankai puts the Rapi:t at a{" "}
-            <strong>minimum of 34 minutes</strong> from Kansai Airport with no transfer. Choose{" "}
-            <strong>Umeda / Osaka Station</strong> if your trip runs on JR or has Kyoto days in it, where the
-            JR Special Rapid reaches Kyoto Station in <strong>approximately 30 minutes</strong>;{" "}
-            <strong>Tennoji</strong> for the shortest Haruka leg from the airport and the fastest run to Nara
-            (<strong>approximately 36 minutes</strong> to JR Nara); and{" "}
-            <strong>Universal City</strong> if a Universal Studios Japan day is the fixed point of the trip —
-            the gates are <strong>about five minutes</strong> on foot from the station.
+            <strong>Where to stay in Osaka</strong>: Namba if it is your first trip, Umeda if getting around
+            by JR matters most, and Universal City if USJ is the reason you are going. Namba is the Nankai
+            terminus — Nankai puts the Rapi:t at a <strong>minimum of 34 minutes</strong> from Kansai Airport
+            with no transfer — while from Umeda the JR Special Rapid reaches Kyoto Station in{" "}
+            <strong>approximately 30 minutes</strong>, and from Universal City Station the USJ gates are{" "}
+            <strong>about 5 minutes</strong> on foot. The fourth option, <strong>Tennoji</strong>, is the
+            shortest Haruka leg from the airport and the fastest run to Nara (
+            <strong>approximately 36 minutes</strong> to JR Nara).
           </p>
           <p className={styles.bodyText}>
             What follows is the comparison behind that, and what it leaves out on purpose. There are no hotel
@@ -343,8 +368,55 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
         {/* Area comparison table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Osaka Areas Compared</h2>
-          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+          <h2 className={styles.sectionTitle}>Namba vs Umeda vs USJ: Which Osaka Area Is Best?</h2>
+          <p className={styles.bodyText}>
+            <strong>Namba wins for a first trip, Umeda for JR travel, Universal City for a USJ day.</strong>{" "}
+            The table puts the official journey time from each area to the four places most trips are built
+            around side by side; a dash means there is no direct train and no published time.
+          </p>
+          <div className={styles.tableWrap} style={{ marginBottom: "0.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Area", "Best for", "Kansai Airport", "Kyoto Station", "Nara", "USJ gates"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Verdict</td>
+                    <td colSpan={5} style={{ fontSize: "0.9rem" }}>
+                      <strong>First trip → Namba · Getting around by JR → Umeda · USJ → Universal City</strong>
+                    </td>
+                  </tr>
+                  {quickRows.map((r) => (
+                    <tr key={r.area}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{r.area}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{r.bestFor}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.kix}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.kyoto}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.nara}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.usj}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-12 —{" "}
+            <a href="https://www.nankai.co.jp/en_railway/rapit" target="_blank" rel="noopener noreferrer">nankai.co.jp</a>{" "}
+            (Rapi:t, minimum 34 min) and{" "}
+            <a href="https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/" target="_blank" rel="noopener noreferrer">westjr.co.jp</a>{" "}
+            (HARUKA routes). Haruka journey times are Kansai Airport&apos;s own, read on {HARUKA_TIMES}; the
+            Kyoto, Nara and USJ times are from{" "}
+            <a href="https://kyoto.travel/en/" target="_blank" rel="noopener noreferrer">kyoto.travel</a>,{" "}
+            <a href="https://www.visitnara.jp/" target="_blank" rel="noopener noreferrer">visitnara.jp</a> and{" "}
+            <a href="https://osaka-info.jp/en/" target="_blank" rel="noopener noreferrer">osaka-info.jp</a>, read on {OWN}.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
             Osaka is simpler than Tokyo in one respect: three of the four areas below are stops on the same
             subway line, the Midosuji, so the choice between them is mostly a choice of which{" "}
             <em>other</em> network is at the door — Nankai, JR or Kintetsu. The fourth is not on the subway
@@ -482,8 +554,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText}>
             JR West&apos;s discounted one-way Haruka ticket — sold only to holders of a foreign passport
-            entering as a temporary visitor — is ¥1,300 to Tennoji and ¥1,800 to Osaka or Shin-Osaka through
-            31 October 2026, rising to ¥1,600 and ¥1,900 on 1 November 2026. Both operators read on {OWN}.
+            entering as a temporary visitor — is ¥1,600 to Tennoji and ¥1,900 to Osaka or Shin-Osaka for an
+            adult; JR West notes the prices changed for tickets sold on or after 1 November 2026. Both
+            operators re-read on {TODAY}.
             So: Namba if you are flying in and out of Kansai, Tennoji if you want the shortest Haruka leg,
             Umeda if you are continuing by shinkansen. Our{" "}
             <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer guide</Link> compares

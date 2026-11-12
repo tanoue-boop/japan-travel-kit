@@ -977,7 +977,15 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             아닙니다 — 일본 입국에 eSIM이 필요한 것은 아니고, 호텔, 편의점, 역, 대부분의 카페에 와이파이가
             있습니다. eSIM이 해결해 주는 것은 그 사이의 순간들입니다: 시간표가 바뀐 기차 승강장, 지도가 필요한 버스
-            정류장, QR 메뉴를 요구하는 식당 대기 줄. 이 페이지에서 가장 싼 일본 요금제는 Simbye의{" "}
+            정류장, QR 메뉴를 요구하는 식당 대기 줄, 그리고 예약 내역을 휴대폰으로 열어야 하는 입장 — 날짜 지정 티켓만 파는{" "}
+            <Link href="/ko/guides/attractions/tokyo-disney-tickets" className={tools.inlineLink}>
+              도쿄 디즈니랜드 티켓
+            </Link>
+            이나 지정 시간에 입장하는{" "}
+            <Link href="/ko/guides/attractions/teamlab-tokyo-tickets" className={tools.inlineLink}>
+              팀랩 플래닛·보더리스
+            </Link>
+            처럼 미리 예약해 두는 날이 그렇습니다. 이 페이지에서 가장 싼 일본 요금제는 Simbye의{" "}
             {planLabel(cheapestPlan("simbye"))}로, 대부분의 통신사가 받는 로밍 하루 요금보다 쌉니다.
           </p>
           <p className={styles.bodyText}>

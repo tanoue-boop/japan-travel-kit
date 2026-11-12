@@ -92,7 +92,14 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             <Link href="/guides/attractions/umeda-sky-building-tickets" style={L}>Umeda Sky Building tickets</Link> are
             ¥2,000 for the open-air rooftop, open until 22:30; and in Kyoto,{" "}
             <Link href="/guides/attractions/teamlab-kyoto-tickets" style={L}>teamLab Kyoto tickets</Link> start at
-            ¥3,800, seven minutes&apos; walk from Kyoto Station.
+            ¥3,800, seven minutes&apos; walk from Kyoto Station. For a day out on your own, the{" "}
+            <Link href="/guides/attractions/nara-day-trip" style={L}>Nara day trip guide</Link> has the trains from
+            Osaka and Kyoto (about 34 minutes on the Kintetsu from Osaka-Namba) and Todai-ji at ¥800, and the{" "}
+            <Link href="/guides/attractions/fuji-q-highland-tickets" style={L}>Fuji-Q Highland tickets guide</Link>{" "}
+            explains the free entry, the date-priced 1-Day Pass and the Q Pack with the highway bus from Tokyo. Picking
+            a base in the Kansai? Our{" "}
+            <Link href="/guides/attractions/where-to-stay-in-osaka" style={L}>where to stay in Osaka guide</Link>{" "}
+            compares Namba, Umeda and Universal City.
           </PartnerPick>
           {/* Winter route, added 6 Nov 2026 (jtk-20261106-A21). */}
           <PartnerPick

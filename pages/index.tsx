@@ -131,6 +131,8 @@ const bookBeforeYouFly: BookCard[] = [
         The one thing worth having live the minute you land: train apps, hotel check-in and your tickets all run off the
         phone. Klook sells a Japan eSIM of its own as a QR voucher; to compare it with other providers, our{" "}
         <Link href="/guides/esim/japan-esim-price-tracker">Japan eSIM price tracker</Link> lists every provider&apos;s price per GB.
+        On Android, the <Link href="/guides/esim/japan-esim-android">Japan eSIM for Android guide</Link> checks your
+        model first — Pixel 3 and Galaxy S20 and later take one.
       </>
     ),
     ctas: [{ label: "See eSIM options on Klook →", url: BOOK_CARDS.esim.urls[0] }],
@@ -139,8 +141,14 @@ const bookBeforeYouFly: BookCard[] = [
   {
     kicker: "Where to stay",
     title: "A hotel on the line you will actually ride",
-    desc:
-      "In Tokyo, Kyoto and Osaka the area does more work than the room. A base on the Yamanote loop, on the Kyoto Station forecourt or on the Midosuji Line saves a transfer every day of the trip.",
+    desc: (
+      <>
+        In Tokyo, Kyoto and Osaka the area does more work than the room. A base on the Yamanote loop, on the Kyoto
+        Station forecourt or on the Midosuji Line saves a transfer every day of the trip. In Osaka that means Namba for
+        a first trip, Umeda for JR and Universal City for USJ — the{" "}
+        <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka guide</Link> compares the three.
+      </>
+    ),
     ctas: [
       { label: "Tokyo hotels on Klook →", url: BOOK_CARDS.stay.urls[0] },
       { label: "Kyoto hotels on Klook →", url: BOOK_CARDS.stay.urls[1] },
@@ -289,6 +297,26 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
           <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tours</Link>. If
           you are staying in the city, the <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo
           illuminations</Link> run through the season.
+        </p>
+      </HomeSection>
+
+      {/* Day trips and the Kansai airport run. Added 12 Nov 2026 (jtk-20261112-I01): these
+          guides had no impressions and no link from this page. */}
+      <HomeSection
+        tone="white"
+        eyebrow="Day trips and arrivals"
+        title="Which Day Trip, and Which Airport Train?"
+        desc="Three questions with a one-line answer each, and a guide behind it."
+      >
+        <p style={{ color: "var(--text-muted)", lineHeight: 1.75 }}>
+          From Osaka or Kyoto, Nara needs no tour: the{" "}
+          <Link href="/guides/attractions/nara-day-trip">Nara day trip guide</Link> has the Kintetsu and JR trains
+          (about 34 minutes from Osaka-Namba), the free deer park and Todai-ji at ¥800. From Tokyo, the{" "}
+          <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets guide</Link> explains why
+          entry is free and the 1-Day Pass is what you buy, and when the Q Pack with the highway bus makes it one
+          booking. Landing at Kansai Airport, the{" "}
+          <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Nankai Rapi:t comparison</Link> picks the
+          train by your hotel: the Rapi:t to Namba, the Haruka to Tennoji, Osaka, Shin-Osaka and Kyoto.
         </p>
       </HomeSection>
 

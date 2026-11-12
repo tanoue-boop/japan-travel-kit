@@ -753,7 +753,9 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             covers the direct train and the Mt. Fuji Pass; if you want the Subaru Line Fifth Station on the
             mountain, that needs a coach, and our{" "}
             <Link href="/guides/attractions/mt-fuji-day-tour-from-tokyo" style={linkStyle}>tour comparison</Link>{" "}
-            sorts the itineraries.{" "}
+            sorts the itineraries. For roller coasters at the foot of the mountain, our{" "}
+            <Link href="/guides/attractions/fuji-q-highland-tickets" style={linkStyle}>Fuji-Q Highland tickets guide</Link>{" "}
+            explains the free entry and the 1-Day Pass priced by date.{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={linkStyle}>Hakone</Link> is the
             hot-spring alternative, where one pass covers the entire loop.
           </p>

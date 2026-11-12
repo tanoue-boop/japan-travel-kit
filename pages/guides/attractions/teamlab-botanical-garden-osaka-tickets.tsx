@@ -780,7 +780,7 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Where to Stay in Osaka (2026): Best Areas, Compared by Line and Airport</p>
+                <p className={styles.relatedTitle}>Where to Stay in Osaka 2026: Namba vs Umeda vs USJ, the Best Areas Compared</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

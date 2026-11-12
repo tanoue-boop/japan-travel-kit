@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { seoTags } from "./IntlSeo";
 import { FaqList, breadcrumbJsonLd, faqJsonLd, type Crumb, type FaqItem } from "./IntlChrome";
 import {
@@ -991,9 +992,12 @@ export function localeHomeRoutes(locale: TranslatedLocale): string[] {
 export default function LocaleHome({
   locale,
   dates,
+  lead,
 }: {
   locale: TranslatedLocale;
   dates: Record<string, string>;
+  /** Optional in-body paragraph with contextual links (added 2026-11-12, jtk-20261112-I01). */
+  lead?: { eyebrow: string; title: string; desc: string; body: ReactNode };
 }) {
   const copy = COPY[locale];
   const home = HOME[locale];
@@ -1118,6 +1122,12 @@ export default function LocaleHome({
       />
 
       <StatsBand stats={stats} />
+
+      {lead && (
+        <HomeSection tone="paper" eyebrow={lead.eyebrow} title={lead.title} desc={lead.desc}>
+          <p style={{ color: "var(--text-muted)", lineHeight: 1.75 }}>{lead.body}</p>
+        </HomeSection>
+      )}
 
       {/* Travel Guides — this edition's pages by group, then the English hubs it
           has no page for. The groups are what keeps the page usable as editions grow. */}
