@@ -41,14 +41,26 @@ const THEMES = {
   winter: { kicker: 'Japan in Winter', board: 'Japan Winter Travel' },
   attr: { kicker: 'Tickets & Tours', board: 'Tokyo & Osaka Attractions' },
   money: { kicker: 'Trip Prep', board: 'Japan Travel Tips: eSIM, Money & Insurance' },
+  // PIN1 (2026-11-12) boards
+  tokyo: { kicker: 'Tokyo Guide', board: 'Tokyo Travel Guide' },
+  kansai: { kicker: 'Kyoto & Osaka', board: 'Kyoto & Osaka Travel' },
+  itin: { kicker: 'Itinerary', board: 'Japan Itineraries' },
+  esim: { kicker: 'eSIM & Money', board: 'Japan eSIM & Money Tips' },
+  hokkaido: { kicker: 'Hokkaido', board: 'Hokkaido Travel' },
 };
 
 const args = process.argv.slice(2);
 const argVal = (k) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : undefined; };
 const contactPath = argVal('--contact');
 const only = argVal('--only')?.split(',');
+// --batch 20261116: render / contact-sheet only the pins of that batch
+const batch = argVal('--batch');
 
-const pins = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/pins/pins.json'), 'utf8'));
+const allPins = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/pins/pins.json'), 'utf8'));
+// Each pin has an image id (file name) — the slug for the first pin of a page,
+// "<slug>-2" etc. for later pins of the same page (field "variant").
+for (const p of allPins) p.id = p.variant ? `${p.slug}-${p.variant}` : p.slug;
+const pins = batch ? allPins.filter((p) => p.batch === batch) : allPins;
 fs.mkdirSync(CACHE, { recursive: true });
 fs.mkdirSync(OUT, { recursive: true });
 
@@ -132,27 +144,38 @@ async function render(page, pin) {
     q -= 6;
   } while (out.length > MAX_BYTES && q > 40);
   if (out.length > MAX_BYTES) throw new Error(`${pin.slug}: ${out.length} bytes`);
-  fs.writeFileSync(path.join(OUT, `${pin.slug}.jpg`), out);
+  fs.writeFileSync(path.join(OUT, `${pin.id}.jpg`), out);
   return { bytes: out.length, size: fit.size, lines: fit.lines };
 }
 
 const csvCell = (s) => `"${String(s ?? '').replace(/"/g, '""')}"`;
 
 function writeDocs() {
+  // Photo sources for every pin; one bulk-create CSV per batch (the first, unbatched
+  // 30 pins stay in docs/pinterest-pins.csv).
   const tsv = ['slug\tphoto_page_url\tphotographer\tlicense'];
-  const csv = ['Title,Media URL,Pinterest board,Thumbnail,Description,Link,Publish date,Keywords'];
-  for (const p of pins) {
-    if (p.title.length > 100) throw new Error(`title > 100: ${p.slug}`);
-    if (p.description.length > 500) throw new Error(`description > 500: ${p.slug}`);
-    if (p.description.includes('#')) throw new Error(`hashtag in description: ${p.slug}`);
+  const csvs = new Map();
+  const ids = new Set();
+  for (const p of allPins) {
+    if (ids.has(p.id)) throw new Error(`duplicate pin id: ${p.id}`);
+    ids.add(p.id);
+    if (p.title.length > 100) throw new Error(`title > 100: ${p.id}`);
+    const maxDesc = p.batch ? 450 : 500;
+    if (p.description.length > maxDesc) throw new Error(`description > ${maxDesc}: ${p.id}`);
+    if (p.description.includes('#')) throw new Error(`hashtag in description: ${p.id}`);
     const kw = p.keywords.split(',').map((k) => k.trim());
-    if (kw.length < 3 || kw.length > 5) throw new Error(`keywords 3-5: ${p.slug}`);
-    tsv.push([p.slug, p.photoPage, p.photographer, 'Pexels License'].join('\t'));
-    const link = `${SITE}/guides/${p.cat}/${p.slug}?utm_source=pinterest&utm_medium=social&utm_campaign=pin_${p.slug}`;
-    csv.push([p.title, `${SITE}/pins/${p.slug}.jpg`, THEMES[p.theme].board, '', p.description, link, '', kw.join(', ')].map(csvCell).join(','));
+    const [kMin, kMax] = p.batch ? [5, 8] : [3, 5];
+    if (kw.length < kMin || kw.length > kMax) throw new Error(`keywords ${kMin}-${kMax}: ${p.id}`);
+    tsv.push([p.id, p.photoPage, p.photographer, 'Pexels License'].join('\t'));
+    const campaign = p.variant ? `pin_${p.slug}_${p.variant}` : `pin_${p.slug}`;
+    const link = `${SITE}/guides/${p.cat}/${p.slug}?utm_source=pinterest&utm_medium=social&utm_campaign=${campaign}`;
+    const board = p.board || THEMES[p.theme].board;
+    const file = p.batch ? `docs/pinterest-pins-${p.batch}.csv` : 'docs/pinterest-pins.csv';
+    if (!csvs.has(file)) csvs.set(file, ['Title,Media URL,Pinterest board,Thumbnail,Description,Link,Publish date,Keywords']);
+    csvs.get(file).push([p.title, `${SITE}/pins/${p.id}.jpg`, board, '', p.description, link, '', kw.join(', ')].map(csvCell).join(','));
   }
   fs.writeFileSync(path.join(ROOT, 'docs/pinterest-photo-sources.tsv'), tsv.join('\n') + '\n');
-  fs.writeFileSync(path.join(ROOT, 'docs/pinterest-pins.csv'), csv.join('\n') + '\n');
+  for (const [file, rows] of csvs) fs.writeFileSync(path.join(ROOT, file), rows.join('\n') + '\n');
 }
 
 async function contactSheet(file) {
@@ -162,7 +185,7 @@ async function contactSheet(file) {
   const gap = 10;
   const rows = Math.ceil(pins.length / cols);
   const tiles = await Promise.all(pins.map(async (p, i) => ({
-    input: await sharp(path.join(OUT, `${p.slug}.jpg`)).resize(tw, th).toBuffer(),
+    input: await sharp(path.join(OUT, `${p.id}.jpg`)).resize(tw, th).toBuffer(),
     left: gap + (i % cols) * (tw + gap),
     top: gap + Math.floor(i / cols) * (th + gap),
   })));
@@ -174,9 +197,9 @@ const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
 try {
   for (const p of pins) {
-    if (only && !only.includes(p.slug)) continue;
+    if (only && !only.includes(p.id)) continue;
     const r = await render(page, p);
-    console.log(`${p.slug}.jpg  ${(r.bytes / 1024).toFixed(0)} KB  headline ${r.size}px x${r.lines}`);
+    console.log(`${p.id}.jpg  ${(r.bytes / 1024).toFixed(0)} KB  headline ${r.size}px x${r.lines}`);
   }
 } finally {
   await browser.close();
