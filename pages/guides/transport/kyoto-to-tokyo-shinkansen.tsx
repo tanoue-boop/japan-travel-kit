@@ -720,7 +720,9 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             opens and what it does not — our{" "}
             <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> covers the mechanics, and{" "}
             <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto</Link> is the westbound version of
-            this trip, with the night bus priced against the train.
+            this trip, with the night bus priced against the train. Starting from Osaka instead, the{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen price and time guide</Link>{" "}
+            has the Shin-Osaka fares for every seat class.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

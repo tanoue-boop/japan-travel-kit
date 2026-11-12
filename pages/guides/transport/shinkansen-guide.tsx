@@ -392,6 +392,11 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             Prices are for Nozomi services on the Tokaido Shinkansen (ordinary class).
             Fares include the base fare and express surcharge. Green Car and Gran Class cost significantly more.
             JR Pass holders travel at no additional charge on most services except Nozomi and Mizuho.
+            For the busiest route, the{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo to Osaka shinkansen price and time guide
+            </Link>{" "}
+            lists every seat class on the Nozomi, Hikari and Kodama and where to book.
           </p>
         </section>
 

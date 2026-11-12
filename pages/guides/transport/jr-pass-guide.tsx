@@ -156,7 +156,9 @@ const passTypes = [
  * not an operator price table — the one exception is Tokyo ⇄ Kyoto at ¥13,970 each way,
  * which is a confirmed figure. The arithmetic, so the table can be checked:
  *
- *   Golden Route     13,970 + 580 + 14,720                  = ¥29,270
+ *   Golden Route     13,970 + 580 + 14,400                  = ¥28,950
+ *   (Tokyo–Shin-Osaka corrected 14,720 → 14,400 on 12 Nov 2026: 14,720 is the Nozomi
+ *   price; jr-group.jp/hikari-ryokin/ gives ¥14,400 for the Hikari, as of Oct 2026.)
  *   Kyoto+Hiroshima  13,970 + 11,400 + 19,080               = ¥44,450
  *   Big loop         14,380 + 8,420 + 11,400 + 19,080       = ¥53,280
  *   Kyushu + Tohoku  23,390 ×2 + 11,410 ×2                  = ¥69,600
@@ -164,7 +166,7 @@ const passTypes = [
 const itineraries = [
   { route: "Tokyo only", fares: "~¥0 intercity JR", verdict: "Skip", win: false },
   { route: "Kansai only (Kyoto / Osaka / Nara / Kobe)", fares: "~¥3,000–¥6,000", verdict: "Skip", win: false },
-  { route: "Golden Route round trip (Tokyo → Kyoto → Osaka → Tokyo)", fares: "~¥29,300", verdict: "Skip — ¥23,700 cheaper individually", win: false },
+  { route: "Golden Route round trip (Tokyo → Kyoto → Osaka → Tokyo)", fares: "~¥29,000", verdict: "Skip — ¥24,000 cheaper individually", win: false },
   { route: "Tokyo → Kyoto → Hiroshima → Tokyo (one loop)", fares: "~¥44,500", verdict: "Skip — ¥8,500 short of the pass", win: false },
   { route: "Tokyo → Kanazawa → Kyoto → Hiroshima → Tokyo", fares: "~¥53,300", verdict: "Borderline — clears ¥53,000 by ¥300", win: false },
   { route: "Tokyo ⇄ Hakata (Fukuoka) plus Tokyo ⇄ Sendai", fares: "~¥69,600", verdict: "✓ Worth it", win: true },
@@ -289,7 +291,7 @@ const faqItems = [
   },
   {
     q: "Is the JR Pass worth it in 2026?",
-    a: `For most travellers, no — and less often than before October 2026. The 7-day Ordinary pass went from ¥29,650 to ¥50,000 in October 2023 and from ¥50,000 to ¥53,000 in October 2026, so you now need roughly ¥53,000 of covered JR travel in a week to get your money back (¥50,000 if you buy on the official site). On this guide's JR reference fares, the Golden Route — Tokyo, Kyoto, Osaka and back — is about ¥29,300, and even Tokyo → Kyoto → Hiroshima → Tokyo comes to about ¥44,500, ¥8,500 short. The October rise pushed a route that used to clear the bar below it: adding Kanazawa to that loop reaches about ¥53,300, which beats ¥53,000 by ¥300 rather than ¥50,000 by ¥3,300. The pass wins when a trip strings several regions together — Kyushu plus Tohoku in one week comes to about ¥69,600.`,
+    a: `For most travellers, no — and less often than before October 2026. The 7-day Ordinary pass went from ¥29,650 to ¥50,000 in October 2023 and from ¥50,000 to ¥53,000 in October 2026, so you now need roughly ¥53,000 of covered JR travel in a week to get your money back (¥50,000 if you buy on the official site). On this guide's JR reference fares, the Golden Route — Tokyo, Kyoto, Osaka and back — is about ¥29,000, and even Tokyo → Kyoto → Hiroshima → Tokyo comes to about ¥44,500, ¥8,500 short. The October rise pushed a route that used to clear the bar below it: adding Kanazawa to that loop reaches about ¥53,300, which beats ¥53,000 by ¥300 rather than ¥50,000 by ¥3,300. The pass wins when a trip strings several regions together — Kyushu plus Tohoku in one week comes to about ¥69,600.`,
   },
   {
     q: "How do I work out whether the JR Pass is worth it for my trip?",
@@ -301,7 +303,7 @@ const faqItems = [
   },
   {
     q: "Does the JR Pass cover the Tokyo–Kyoto bullet train?",
-    a: "Yes — on the Hikari and Kodama services (about ¥13,970 one-way, ¥27,940 round trip). It does not cover the faster Nozomi without paying a separate supplement (around ¥4,960 each way Tokyo–Kyoto). A single Golden Route round trip on covered trains costs roughly ¥29,300, well under the ¥53,000 a 7-day pass costs from an agency and under the ¥50,000 it costs online — so the pass does not pay off for that trip alone either way.",
+    a: "Yes — on the Hikari and Kodama services (about ¥13,970 one-way, ¥27,940 round trip). It does not cover the faster Nozomi without paying a separate supplement (around ¥4,960 each way Tokyo–Kyoto). A single Golden Route round trip on covered trains costs roughly ¥29,000, well under the ¥53,000 a 7-day pass costs from an agency and under the ¥50,000 it costs online — so the pass does not pay off for that trip alone either way.",
   },
   {
     q: "Where can I buy the JR Pass?",
@@ -636,8 +638,10 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             <strong>For most travellers, no — and for slightly fewer than before October 2026.</strong> To earn
             a 7-day pass back you need about <strong>¥53,000 of covered JR travel</strong> in a week if you buy
             from an agency, ¥50,000 if you buy on the official site. The classic Golden Route — Tokyo, Kyoto and
-            Osaka and back — adds up to roughly ¥29,300 in covered Shinkansen fares, so buying those tickets
-            individually saves you well over ¥20,000.
+            Osaka and back — adds up to roughly ¥29,000 in covered Shinkansen fares, so buying those tickets
+            individually saves you well over ¥20,000. The{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen price guide</Link>{" "}
+            runs the same sum for a single Tokyo–Osaka return.
           </p>
           <p className={styles.bodyText}>
             The JR Pass used to be a near-automatic buy. That changed in <strong>October 2023</strong>, when the
