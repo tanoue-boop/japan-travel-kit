@@ -386,6 +386,14 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             </Link>{" "}
             sets out what each type charges. Figures checked {CHECKED}.
           </p>
+          <p className={styles.bodyText}>
+            The fewer withdrawals you make, the fewer times that second fee repeats — and a tap of the same
+            card now settles most chain-store bills and, on Tokyo Metro and Toei, the fare at the gate.{" "}
+            <Link href="/guides/money/contactless-payment-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Where contactless payment works in Japan
+            </Link>{" "}
+            shows which places still need the cash you withdraw here.
+          </p>
         </section>
 
         {/* Q3 */}

@@ -7,6 +7,8 @@ import { contactlessTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
+import { wiseLink, WISE_CARD_URL, WISE_REL, WISE_VERIFIED } from "../../../lib/wise-links";
 
 // Klook's Suica listing — the purchase that was already on this page, URL unchanged.
 const SUICA_URL =
@@ -21,34 +23,75 @@ const SUICA_URL =
 const CHECKED = "23 October 2026";
 
 /**
- * Which tap works where. The "trains" column is the one that changed: a contactless
- * Visa now opens a gate on most of Tokyo's private and subway network but still not
- * on JR East, so neither "✓" nor "✗" is honest and the cell says what it is.
+ * The second pass (12 Nov 2026, task F): the Tokyo Metro announcement, Welcome Suica,
+ * TOURIST PASMO, 7-Eleven's in-store payment page, Sumitomo Mitsui Card's stera
+ * transit operator list and JNTO's FAQ were re-read on this date. Shown as ISO in the
+ * "Last checked" line under each table.
  */
-const paymentMethods = [
+const CHECKED_NOV = "12 November 2026";
+const LAST_CHECKED_ISO = "2026-11-12";
+
+/** Official sources for the payment table, all read on CHECKED_NOV. */
+const SOURCES = {
+  sevenEleven: "https://www.sej.co.jp/in/en/payment/",
+  tokyoMetro: "https://www.tokyometro.jp/lang_en/news/223896.html",
+  stera: "https://www.smbc-card.com/kamei/stera/transit/index.jsp",
+  welcomeSuica: "https://www.jreast.co.jp/multi/en/welcomesuica/purchase.html",
+  touristPasmo: "https://www.pasmo.co.jp/en/tourist-pasmo/",
+  pasmoNotices: "https://www.pasmo.co.jp/visitors/en/",
+  jntoFaq: "https://www.japan.travel/en/plan/faq/",
+  jntoBudget: "https://www.japan.travel/en/plan/tips-for-budget-travels/",
+} as const;
+
+/**
+ * Payment method × place. The first row is the conclusion, so a reader (or a
+ * summary) that stops after one line still leaves with the right answer. Every
+ * other cell is either an official statement from SOURCES or says "check".
+ */
+const placeColumns = ["Convenience stores", "Chains & department stores", "Trains", "Buses", "Temples & shrines", "Street stalls & small restaurants"];
+
+const paymentPlaces: { method: string; cells: string[]; conclusion?: boolean }[] = [
   {
-    method: "IC card (Suica / Pasmo / ICOCA)",
-    trains: "Everywhere",
-    convenience: "✓",
-    restaurants: "Partial",
-    taxis: "Partial",
-    stores: "Partial",
+    method: "Bottom line",
+    conclusion: true,
+    cells: [
+      "Tap a card or IC card",
+      "Tap a card",
+      "IC card works on every operator; a card works on 11 Kanto operators, not JR East",
+      "IC card; card only on some routes",
+      "Carry yen",
+      "Carry yen",
+    ],
   },
   {
-    method: "Contactless Visa / Mastercard",
-    trains: "Most private & subway, not JR East",
-    convenience: "✓",
-    restaurants: "✓",
-    taxis: "Partial",
-    stores: "✓",
+    method: "Contactless card (Visa, Mastercard, JCB, Amex) or Apple Pay / Google Pay with that card",
+    cells: [
+      "Yes — 7-Eleven lists Visa, Mastercard, JCB, Amex, Diners Club, Discover, Apple Pay and Google Pay",
+      "Usually",
+      "Tokyo Metro, Toei and 9 other Kanto operators (729 stations), Osaka Metro, Nankai, Fukuoka City Subway — not JR East",
+      "Some routes — check the operator in the stera transit list",
+      "Not a given — check at the gate",
+      "Often not — JNTO: smaller shops may take only yen in cash",
+    ],
   },
   {
-    method: "QR pay (PayPay etc.)",
-    trains: "✗",
-    convenience: "✓",
-    restaurants: "✓",
-    taxis: "✗",
-    stores: "✓",
+    method: "IC card: Suica, PASMO, Welcome Suica, TOURIST PASMO (card or in Apple / Google Wallet)",
+    cells: [
+      "Yes — 7-Eleven lists Suica, PASMO and 7 other IC brands",
+      "Where the IC mark is shown",
+      "Yes, including JR East, across the nationwide IC network",
+      "Yes, on IC-area buses",
+      "Not a given — check at the gate",
+      "Sometimes",
+    ],
+  },
+  {
+    method: "Cash (yen)",
+    cells: ["Yes (not at fully self-service tills — 7-Eleven)", "Yes", "Yes, at ticket machines", "Yes", "Yes — fees are generally a couple of hundred yen (JNTO)", "Yes"],
+  },
+  {
+    method: "QR / scan-to-pay (Alipay+, WeChat Pay, PayPay)",
+    cells: ["Yes at 7-Eleven", "Varies by chain", "No", "No", "Not a given", "Varies"],
   },
 ];
 
@@ -66,7 +109,7 @@ const tapNetworks = [
       "Both are among the eleven Kanto railway operators that began mutual use of the Tap to Ride service on Wednesday 25 March 2026, covering 54 lines at 729 stations. Tokyo Metro had separately announced the service for all of its own lines from spring 2026.",
   },
   {
-    network: "Tokyu, Keio, Keikyu, Odakyu, Seibu, Tobu, Sotetsu, Yokohama Minatomirai",
+    network: "Tokyu, Keio, Keikyu, Odakyu, Odakyu Hakone, Seibu, Tobu, Sotetsu, Yokohama Minatomirai",
     tap: "Yes",
     detail:
       "The rest of the same eleven. Tokyo Metro's announcement states that the lines and stations covered vary with the operator and that stations not covered at launch will be added later — so a tap is not yet guaranteed at every gate on every one of them.",
@@ -117,8 +160,8 @@ const tapNetworks = [
 const prepayRows = [
   {
     item: "Airport access: Keisei Skyliner, Narita Express, limousine bus, JR Haruka",
-    tap: "No — these are reserved seats and coach tickets, not gate fares",
-    how: "Buy the ticket or seat online before you fly and collect or scan it on arrival. A tap at a gate cannot reserve you a seat with luggage space.",
+    tap: "Not for a reserved seat on an airport limited express — that is a ticket, not a gate fare",
+    how: "Buy the ticket or seat online before you fly and collect or scan it on arrival. A tap at a gate settles a fare; it cannot reserve you a seat with luggage space.",
   },
   {
     item: "Subway passes: Tokyo Subway Ticket, Osaka Amazing Pass",
@@ -154,7 +197,7 @@ const suicaSteps = [
   },
   {
     title: "Load credit at a ticket machine",
-    desc: "Top up at any JR station machine. Most accept Visa and Mastercard. Add ¥2,000–¥5,000 for a full day of transit and convenience store shopping.",
+    desc: "Top up with yen at a station ticket machine or a Seven Bank ATM. JR East states a Welcome Suica cannot be topped up with a credit card, and PASMO's TOURIST PASMO page lists cash top-ups at station machines.",
   },
   {
     title: "Tap to ride trains and buses",
@@ -168,32 +211,24 @@ const suicaSteps = [
 
 const faqItems = [
   {
-    q: "Can I use a Visa card to ride the subway in Tokyo?",
-    a: `Yes, on both subway operators. Tokyo Metro's own announcement states that eleven Kanto railway operators — including Tokyo Metro and the Bureau of Transportation of the Tokyo Metropolitan Government, which runs Toei Subway — began mutual use of the Tap to Ride contactless service on Wednesday 25 March 2026, covering 54 lines at 729 stations, and that cards supporting tap payment (credit, debit or prepaid) and smartphones with such a card registered are eligible. Two conditions come with it. Tobu, one of the eleven, states that contactless may be used only when both the departure and arrival stations support the service, that only adult fares apply — there is no child fare — and that one card may not be used to pay for more than one passenger. And Tokyo Metro states the lines and stations covered vary with the operator, with more to be added. JR East is not among the eleven, so a Visa card will not open a Yamanote Line gate. Operator pages checked ${CHECKED}.`,
+    q: "Can I use contactless cards in Japan?",
+    a: `Yes. Convenience stores and large chains take contactless Visa, Mastercard, JCB and American Express — 7-Eleven's own payment page lists those four plus Diners Club and Discover, and Apple Pay and Google Pay for contactless. The gaps are transport and small places: a card opens ticket gates on Tokyo Metro, Toei and nine other Kanto operators but not on JR East, and JNTO notes that smaller shops may accept only yen in cash. Checked ${CHECKED_NOV}.`,
   },
   {
-    q: "Is an IC card still sold to tourists in Japan?",
-    a: `Yes. PASMO's official site describes TOURIST PASMO as a PASMO for international visitors, priced from ¥1,000 to ¥10,000 depending on where you buy it, valid for 28 days from the date of purchase, with no deposit charged and value added to the card not refunded. It lists sales at Haneda Airport (Keikyu) and Narita Airport (Keisei), at ticket machines and information centres. JR East sells the equivalent Welcome Suica through its JR EAST Travel Service Centers and dedicated machines at both Narita terminals and Haneda Terminal 3 — check its site for the current price and validity before you rely on a figure. Checked ${CHECKED}.`,
+    q: "Can I tap my credit card on Tokyo trains?",
+    a: `On the subway and most private railways, yes; on JR East, no. Tokyo Metro states that eleven Kanto operators — Tokyo Metro, Toei, Tokyu, Keio, Keikyu, Odakyu, Odakyu Hakone, Seibu, Tobu, Sotetsu and Yokohama Minatomirai — began mutual use of the Tap to Ride service on 25 March 2026 on 54 lines at 729 stations, with lines and stations varying by operator. JR East, which runs the Yamanote Line and the Narita Express, is not among them. Tobu publishes the conditions (read ${CHECKED}): both stations must support the service, adult fares only, one card per passenger. Tokyo Metro announcement checked ${CHECKED_NOV}.`,
   },
   {
-    q: "Do contactless payments work on Japanese trains?",
-    a: `It depends on the operator, and the answer changed in March 2026. A contactless Visa, Mastercard, JCB, American Express, Diners Club, Discover or UnionPay card now opens ticket gates on Tokyo Metro, Toei Subway and eight other Kanto operators (from 25 March 2026, 54 lines and 729 stations on Tokyo Metro's figures), on Osaka Metro (all stations since 29 October 2024), on 97 of Nankai's 105 stations, at all 36 Fukuoka City Subway stations and at 92 JR Kyushu stations in its Fukuoka area. It does not work on JR East, which is not part of the Kanto scheme, nor on most local buses and regional lines. An IC card — Suica, Pasmo or ICOCA — is still the only tap that works on all of them. Operator pages checked ${CHECKED}.`,
+    q: "Do I still need a Suica card?",
+    a: `For JR East trains and most buses, yes — an IC card is the only tap accepted on every operator. Visitors can buy a Welcome Suica (¥1,000–¥10,000, valid 28 days including the day of purchase, no refunds, and JR East states it cannot be topped up by credit card) or a TOURIST PASMO (¥1,000–¥10,000 at Haneda, ¥2,000 at Narita, valid 28 days, no deposit, no refunds), or add Suica or PASMO to Apple Wallet. PASMO PASSPORT is no longer sold: PASMO lists its rules as abolished on 4 October 2024. Checked ${CHECKED_NOV}.`,
   },
   {
-    q: "Do I need a Suica card if I have Apple Pay?",
-    a: "Not a physical one, no — but you do need the Suica itself. Add Suica or Pasmo to Apple Wallet (Wallet app → + → Transit Card → Suica) and your phone taps the same IC readers a plastic card does, on every railway, bus and convenience store that takes IC. Tapping Apple Pay with an ordinary credit card set as the default is a different transaction: that is a contactless card payment, so it works at the retail terminals and at the gates of the operators listed above, and not on JR East. If you want one tap that works everywhere, it has to be the Suica, not the credit card.",
+    q: "Which payments do temples and small restaurants accept?",
+    a: `Plan on cash. JNTO's FAQ says smaller shops and remote ryokan may accept only yen in cash, and its budget page puts most temple and shrine fees at a couple of hundred yen where one is charged. Some take IC cards, cards or QR payment, but there is no rule to rely on, so check at the gate or the counter. Checked ${CHECKED_NOV}.`,
   },
   {
-    q: "What's the difference between Suica and Pasmo?",
-    a: "Suica is issued by JR East; Pasmo is issued by Tokyo Metro and private railways. In practice, both are accepted interchangeably on all trains and buses across Japan and at all IC card payment terminals. The brand doesn't matter — either works everywhere.",
-  },
-  {
-    q: "Can tourists use PayPay or LINE Pay in Japan?",
-    a: "It's possible, but not straightforward. PayPay requires a Japanese phone number and bank account for full top-up functionality, though limited tourist support launched in 2024. LINE Pay has similar restrictions. For most tourists, a Suica IC card and a contactless Visa or Mastercard will cover everything you need — skip QR pay entirely.",
-  },
-  {
-    q: "Where is contactless not accepted in Japan?",
-    a: "Four places, reliably: small independent restaurants and izakaya, temple and shrine admissions, market stalls and street food, and coin lockers and some local buses. Add JR East ticket gates for credit cards specifically. None of these take a card of any kind in many cases, which is why the practical answer is still a contactless card for the large transactions, an IC card for transit and small purchases, and ¥10,000–¥20,000 in cash for the rest.",
+    q: "Does a contactless card work on trains outside Tokyo?",
+    a: `On several big city networks, yes. Osaka Metro states it has taken contactless cards at all stations since 29 October 2024, Nankai at 97 of its 105 stations, Fukuoka City Subway at all 36 stations with a published daily maximum of ¥640, and JR Kyushu at 92 stations in its Fukuoka area. Beyond those, Sumitomo Mitsui Card's stera transit page counts 236 announced rail, bus and ferry schemes in 46 prefectures (end of September 2026) and lists the operators. Rural lines and many buses still expect an IC card or cash. Operator figures read ${CHECKED}; stera transit list checked ${CHECKED_NOV}.`,
   },
 ];
 
@@ -205,21 +240,21 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
   return (
     <>
       <Head>
-        <title>Contactless Payment in Japan (2026) | Japan Travel Kit</title>
+        <title>Contactless Payment in Japan (2026): Tap to Pay &amp; Trains</title>
         <meta
           name="description"
-          content="Can you use contactless payment in Japan? Yes — and since March 2026 a credit card opens most Tokyo subway gates, but not JR East. Operator by operator."
+          content="Contactless payment in Japan: Visa, Mastercard, JCB and Amex tap at konbini, chains and Tokyo subways, not JR East. Yen for temples; prebook airport rides."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Contactless Payment in Japan (2026): What Actually Works" />
+        <meta property="og:title" content="Contactless Payment in Japan (2026): Tap to Pay & Trains" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:description" content="Can you use contactless payment in Japan? Yes — and since March 2026 a credit card also opens most Tokyo subway and private railway gates, but not JR East." />
+        <meta property="og:description" content="Contactless payment in Japan: Visa, Mastercard, JCB and Amex tap at konbini, chains and Tokyo subways, not JR East. Yen for temples; prebook airport rides." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contactless Payment in Japan (2026): What Actually Works" />
-        <meta name="twitter:description" content="Can you use contactless payment in Japan? Yes — and since March 2026 a credit card also opens most Tokyo subway and private railway gates, but not JR East." />
+        <meta name="twitter:title" content="Contactless Payment in Japan (2026): Tap to Pay & Trains" />
+        <meta name="twitter:description" content="Contactless payment in Japan: Visa, Mastercard, JCB and Amex tap at konbini, chains and Tokyo subways, not JR East. Yen for temples; prebook airport rides." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -239,7 +274,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/contactless-payment-japan",
-              headline: "Contactless Payment in Japan (2026): IC Cards, QR Pay & Tap-to-Pay Explained",
+              headline: "Contactless Payment in Japan (2026): Where Tap to Pay Works",
               updated,
             }),
           }}
@@ -287,11 +322,11 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Contactless Payment in Japan (2026):<br />What Actually Works
+            Contactless Payment in Japan (2026):<br />Where Tap to Pay Works
           </h1>
           <p className={styles.heroSubtitle}>
-            Your contactless Visa now opens most Tokyo subway gates — but not a JR
-            East one. Here is which tap works on which network.
+            Cards, Suica, trains, temples — which tap works where, where you still
+            need yen, and what to book before you land.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Operator by operator", "For Foreign Visitors"].map((t) => (
@@ -318,47 +353,92 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
 
         {/* Answer first */}
         <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
-          <h2 className={styles.sectionTitle}>Can You Use Contactless Payment in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Can I Use Contactless Cards in Japan?</h2>
           <p className={styles.bodyText}>
             <strong>
-              Yes — a contactless Visa or Mastercard is accepted at convenience stores, chains, department
-              stores, hotels and most city restaurants, and since 25 March 2026 it also opens ticket gates on
-              Tokyo Metro, Toei Subway and eight other Kanto railway operators.
+              Yes: contactless Visa, Mastercard, JCB and American Express work at Japan&apos;s convenience
+              stores and big chains — 7-Eleven lists all four, plus Apple Pay and Google Pay.
             </strong>{" "}
-            Tokyo Metro states those eleven operators began mutual use of the Tap to Ride service that day,
-            covering 54 lines at 729 stations. Osaka Metro has taken contactless cards at every station since
-            29 October 2024, Nankai at 97 of its 105 stations, and Fukuoka City Subway at all 36 of its
-            stations with a published daily maximum of ¥640.
+            For trains, an IC card (Suica or PASMO; visitors can buy a Welcome Suica or TOURIST PASMO, as PASMO
+            PASSPORT is no longer sold) works on every operator, while a contactless card opens the gates of 11
+            Kanto operators including Tokyo Metro and Toei — 729 stations from 25 March 2026 — but not JR East.
+            Cash still matters: JNTO notes that smaller shops may accept only yen in cash.
           </p>
           <p className={styles.bodyText}>
-            The exception is the one most visitors ride first: <strong>JR East</strong> — the Yamanote, Chuo and
-            Narita Express — is not among the eleven, so a credit card tap does nothing at a JR gate. That is
-            what a Japanese <strong>IC card</strong> (Suica, Pasmo, ICOCA) is still for: it is the only tap
-            accepted on every railway and bus in the country. QR pay apps are the third system, and tourists
-            can skip them.
+            So the working kit is a contactless card for shops and most of Tokyo&apos;s subway, an IC card for
+            JR East and buses, and some yen for temples, stalls and small restaurants. The table below sets
+            it out place by place, and the{" "}
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              cash vs card guide
+            </Link>{" "}
+            covers how much yen that means.
           </p>
-          <p className={styles.bodyText}>
-            Which leaves the question a yes-or-no answer cannot settle, and the reason this page has a table in
-            it: given that you can now tap for most journeys, what is still worth buying before you fly?{" "}
-            <a href="#prepay" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Jump to what to prepay instead of tapping ↓
-            </a>
-          </p>
-          <p className={styles.bodyText} style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Every station count, cap and date on this page was read off the operator&apos;s own site on{" "}
-            {CHECKED}. Coverage is still expanding, so check the operator before a journey you cannot afford to
-            get wrong.
+          <div className={styles.tableWrap} style={{ marginTop: "1.25rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Payment</th>
+                    {placeColumns.map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {paymentPlaces.map((row) => (
+                    <tr key={row.method}>
+                      <td className={styles.tdProvider}>{row.conclusion ? <strong>{row.method}</strong> : row.method}</td>
+                      {row.cells.map((c, i) => (
+                        <td key={i} style={{ fontSize: "0.85rem" }}>
+                          {row.conclusion ? <strong>{c}</strong> : c}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED_ISO}. Sources:{" "}
+            <a href={SOURCES.sevenEleven} target="_blank" rel="noopener">7-Eleven in-store payment</a>,{" "}
+            <a href={SOURCES.tokyoMetro} target="_blank" rel="noopener">Tokyo Metro (Tap to Ride, 11 operators)</a>,{" "}
+            <a href={SOURCES.stera} target="_blank" rel="noopener">stera transit operator list (Sumitomo Mitsui Card)</a>,{" "}
+            <a href={SOURCES.welcomeSuica} target="_blank" rel="noopener">JR East Welcome Suica</a>,{" "}
+            <a href={SOURCES.touristPasmo} target="_blank" rel="noopener">TOURIST PASMO</a>,{" "}
+            <a href={SOURCES.jntoFaq} target="_blank" rel="noopener">JNTO FAQ</a>,{" "}
+            <a href={SOURCES.jntoBudget} target="_blank" rel="noopener">JNTO budget tips</a>. Station counts for
+            Osaka, Nankai and Fukuoka were read on {CHECKED}.
           </p>
         </section>
+
+        {/* Pre-arrival bookings — moved up under the first table (12 Nov 2026) */}
+        <div id="before-you-land" />
+        <KlookTripPrep
+          heading="What Can I Pay For Before I Land?"
+          intro="Contactless settles a fare or a shop bill on the day. It cannot hold a reserved seat, a timed entry slot or a coach seat on a day tour — and those are the things that sell out. Pay for these in your own currency before you fly: airport transfers for Narita, Haneda and Kansai, the Tokyo Subway Ticket, popular timed tickets and a day tour."
+          items={contactlessTripPrep}
+        />
+        <BookingEsimCard lead="Tapping a phone to pay needs the phone online for maps, tickets and fare history. Get data before you land." />
+        <p className={styles.bodyText} style={{ fontSize: "0.88rem" }}>
+          Which to book first: the airport transfer, because it is the first ride of the trip; then any timed
+          ticket on a date you cannot move, because those are the slots that go. Tokyo Subway Ticket or
+          per-ride taps is a decision you can make on the{" "}
+          <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            Tokyo Subway Ticket
+          </Link>{" "}
+          page once you know how many rides a day you will take.
+        </p>
 
         {/* The operator table — the part an AI summary of "can you tap in Japan" leaves out */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Network by network</span>
-          <h2 className={styles.sectionTitle}>Can I Tap My Credit Card on Trains in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Can I Tap My Credit Card on Tokyo Trains?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            On most private railways and city subways, yes; on JR East, no. The split does not follow any rule
-            you could guess from the station, so it is worth knowing which operator you are about to ride
-            before you leave your IC card in the hotel.
+            On Tokyo Metro, Toei and nine other Kanto railways, yes — 54 lines at 729 stations from 25 March
+            2026, on Tokyo Metro&apos;s figures; on JR East (Yamanote Line, Chuo Line, Narita Express), no. The
+            split does not follow any rule you could guess from the station, so check which operator you are
+            about to ride before you leave your IC card in the hotel.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -388,52 +468,32 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             cannot travel this way; and one card cannot pay for more than one passenger. Operator pages checked{" "}
             {CHECKED}.
           </p>
-        </section>
-
-        {/* Comparison table */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Comparison</span>
-          <h2 className={styles.sectionTitle}>Which Contactless Method Works Where?</h2>
-          <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            An IC card is the only one of the three that works on every railway and bus; a contactless credit
-            card is the better tap for shops, restaurants and hotels. Carry both and use each for what it is
-            good at.
+          <p className={styles.bodyText} style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED_ISO} for the Kanto list (
+            <a href={SOURCES.tokyoMetro} target="_blank" rel="noopener">Tokyo Metro announcement</a>). For every
+            other railway, bus and ferry that takes a Visa tap, the official list is Sumitomo Mitsui Card&apos;s{" "}
+            <a href={SOURCES.stera} target="_blank" rel="noopener">stera transit operator list</a> — 236
+            announced schemes in 46 prefectures at the end of September 2026, checked {LAST_CHECKED_ISO}.
           </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Method", "Trains & Subways", "Convenience Stores", "Restaurants", "Taxis", "Department Stores"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {paymentMethods.map((m) => (
-                    <tr key={m.method}>
-                      <td className={styles.tdProvider}>{m.method}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{m.trains}</td>
-                      <td>{m.convenience}</td>
-                      <td>{m.restaurants}</td>
-                      <td>{m.taxis}</td>
-                      <td>{m.stores}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
         </section>
 
         {/* IC Card section */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Method 1</span>
-          <h2 className={styles.sectionTitle}>Do I Need a Suica Card If I Have Apple Pay?</h2>
+          <h2 className={styles.sectionTitle}>Do I Still Need a Suica Card?</h2>
           <p className={styles.bodyText}>
-            Not a physical card — but you do need the Suica itself, loaded into Apple Wallet or Google Pay.
-            Tapping Apple Pay with an ordinary credit card as the default is a card payment, not an IC
-            transaction, and the two are accepted in different places.
+            Yes, if you will ride JR East or local buses — an IC card is the only tap every operator accepts.
+            It does not have to be plastic: Suica or PASMO in Apple Wallet works the same way, while Apple Pay
+            with an ordinary credit card is a card payment and is accepted in different places.
+          </p>
+          <p className={styles.bodyText}>
+            Two details a quick answer leaves out. JR East&apos;s Welcome Suica (¥1,000–¥10,000, valid 28 days
+            including the day of purchase) cannot be topped up with a credit card — only yen, at machines or
+            Seven Bank ATMs — and it gives no refund of the balance. TOURIST PASMO (¥1,000–¥10,000 at Haneda,
+            ¥2,000 at Narita, 28 days, no deposit) is also non-refundable. Both checked {CHECKED_NOV} on the{" "}
+            <a href={SOURCES.welcomeSuica} target="_blank" rel="noopener">JR East</a> and{" "}
+            <a href={SOURCES.touristPasmo} target="_blank" rel="noopener">PASMO</a> sites, so load only what you
+            will spend.
           </p>
           <p className={styles.bodyText}>
             An IC card is a rechargeable contactless card that works as both a transit pass and a small-value
@@ -479,6 +539,22 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             Mastercard, though it is on the accepted list for the rail schemes above. If your wallet has both,
             lead with Visa.
           </p>
+          <p className={styles.bodyText}>
+            The card you tap matters more than the terminal: every tap is a foreign-currency transaction, and
+            your issuer&apos;s exchange margin repeats on each one. A multi-currency card such as{" "}
+            <a href={wiseLink("contactless-payment-japan", WISE_CARD_URL)} target="_blank" rel={WISE_REL} style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Wise
+            </a>{" "}
+            states it charges {WISE_VERIFIED.rateClaim} (read {WISE_VERIFIED.checkedAt}); the{" "}
+            <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best travel card for Japan
+            </Link>{" "}
+            comparison sets the options side by side, and{" "}
+            <Link href="/guides/money/atms-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              ATMs in Japan
+            </Link>{" "}
+            covers where the same card withdraws the yen you still need.
+          </p>
         </section>
 
         {/* QR Pay section */}
@@ -503,16 +579,21 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
         {/* Where contactless fails */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The gaps</span>
-          <h2 className={styles.sectionTitle}>Where Is Contactless Not Accepted in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Which Payments Do Temples and Small Restaurants Accept?</h2>
           <p className={styles.bodyText}>
-            At JR East ticket gates for credit cards specifically, and — for every kind of card — at small
-            independent restaurants, temple and shrine admissions, market and street-food stalls, coin lockers
-            and many local buses.
+            Plan on yen. JNTO&apos;s FAQ says smaller shops and remote ryokan may accept only cash, and its
+            budget page puts most temple and shrine fees, where one is charged, at a couple of hundred yen
+            (both checked {CHECKED_NOV}).
           </p>
           <p className={styles.bodyText}>
-            Two of those are worth planning around rather than discovering. Coin lockers are the one that
-            catches people on arrival day with luggage; and temple entries are usually a few hundred yen each,
-            which adds up over a Kyoto itinerary. Both want coins, not a card.
+            Some temples and small restaurants do take IC cards, cards or QR payment, but nothing official says
+            which ones, so treat a card as a bonus there rather than the plan. Beyond those, the other places a
+            contactless card will not get you through are JR East ticket gates and many local buses.
+          </p>
+          <p className={styles.bodyText}>
+            Coin lockers are the one that catches people on arrival day with luggage. JR East states that
+            lockers showing the IC option take a Welcome Suica as both payment and key, so an IC card covers
+            those; a locker without that option needs cash.
           </p>
           <p className={styles.bodyText}>
             There is also a quieter gap inside the new rail schemes. Tobu publishes the conditions the whole
@@ -576,16 +657,13 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Tokyo Subway Ticket
             </Link>{" "}
-            for working out whether a pass beats tapping per journey on your own itinerary.
+            for working out whether a pass beats tapping per journey on your own itinerary. The bookings
+            themselves are in the{" "}
+            <a href="#before-you-land" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              pay-before-you-land block near the top
+            </a>.
           </p>
         </section>
-
-        {/* Klook: the things a tap at a gate cannot buy */}
-        <KlookTripPrep
-          heading="Book These Before You Fly"
-          intro="These are the rows above that a ticket gate cannot sell you — a reserved seat, a timed entry, a pass that stops counting. Each one is bought in your own currency before you leave:"
-          items={contactlessTripPrep}
-        />
 
         {/* How to get Suica steps */}
         <section className={styles.installSection}>
@@ -593,7 +671,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
           <h2 className={styles.sectionTitle}>How Do You Get and Top Up an IC Card?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
             Either load Suica onto your phone before you fly, or buy a card on arrival — then top it up with
-            cash or a card at any station machine. Four steps, start to finish.
+            yen at a station machine. Four steps, start to finish.
           </p>
           <div className={styles.stepsList}>
             {suicaSteps.map((step, i) => (
@@ -614,7 +692,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
           </p>
         </section>
 
-        <EsimCtaBottom />
+        <EsimCtaBottom insurance />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

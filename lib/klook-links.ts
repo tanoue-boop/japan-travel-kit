@@ -1781,14 +1781,28 @@ export const currencyExchangeTripPrep: KlookTripPrepItem[] = [
  * at 5% (limousine bus, Skyliner, subway ticket, Osaka pass), tours and tickets at
  * 6.5% (Fuji–Hakone day tour, Skytree), eSIM at 20%, hotels at 6.5%.
  */
+//
+// Reworked 12 Nov 2026 (task F): the block moved up to sit under the page's first
+// table, and gained the Haneda bus and Kansai Airport's Rapi:t so all three main
+// airports are covered (5%), plus Shibuya Sky next to Skytree (6.5%). The eSIM
+// line left this list because the page now renders BookingEsimCard (20%) directly
+// under the block. No new Klook URL: every entry reuses an existing constant.
 export const contactlessTripPrep: KlookTripPrepItem[] = [
   {
-    ...tripPrepProducts.naritaLimousine,
-    why: "Tap-to-ride is a railway service, so it does nothing for the airport coach — and the limousine bus takes hold luggage, which a rush-hour train does not.",
+    ...tripPrepProducts.skyliner,
+    why: "Narita: Keisei's Skyliner is a reserved-seat limited express, and the seat is a separate purchase from the fare — a tap at the gate cannot book it for you.",
   },
   {
-    ...tripPrepProducts.skyliner,
-    why: "Keisei's Skyliner is a reserved-seat limited express: the seat is a separate purchase from the fare, so there is no gate to tap your way onto it.",
+    ...tripPrepProducts.naritaLimousine,
+    why: "Narita, by coach: the limousine bus runs to central hotels and stations with your luggage in the hold, and a seat booked ahead is one less thing to sort out in the arrivals hall.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "Haneda: the same coach service from all three terminals, for a first ride that does not involve a transfer with suitcases.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    why: "Kansai Airport: the Rapi:t to Namba is a reserved-seat limited express, so like the Skyliner it is a ticket to buy, not a fare to tap.",
   },
   {
     ...tripPrepProducts.subway,
@@ -1796,19 +1810,21 @@ export const contactlessTripPrep: KlookTripPrepItem[] = [
   },
   {
     ...tripPrepProducts.osakaPass,
-    why: "Osaka Metro has taken contactless cards at every station since October 2024, so the reason to buy this pass is the 40-plus admissions bundled with the rides — not the rides.",
+    why: "Osaka Metro has taken contactless cards at every station since October 2024, so the reason to buy this pass is the admissions bundled with the rides — not the rides.",
   },
   {
-    ...tripPrepProducts.fujiHakoneTour,
-    why: "A day out to Fuji or Hakone is the one trip no ticket gate can sell you: it is a coach seat on a fixed departure, booked before you are in Japan.",
+    label: "SHIBUYA SKY ticket",
+    ctaLabel: "Check the Shibuya Sky ticket →",
+    url: shibuyaSkyTicketUrl,
+    why: "Timed entry: the sunset slots are the scarce thing, not the payment — a card terminal at the door cannot sell you a slot that has already gone.",
   },
   {
     ...tripPrepProducts.skytree,
     why: "Popular attractions sell timed entry, and the slot is the scarce thing rather than the payment — an observation deck can be sold out while its card terminal works perfectly.",
   },
   {
-    ...tripPrepProducts.esim,
-    why: "Tap-to-ride only tells you the fare was charged, not what it was: the history lives on a web page, which needs working data rather than a hunt for station Wi-Fi.",
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A day out to Fuji or Hakone is the one trip no ticket gate can sell you: it is a coach seat on a fixed departure, booked before you are in Japan.",
   },
   {
     ...tripPrepProducts.hotelTokyoStation,
