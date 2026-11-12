@@ -205,7 +205,7 @@ const faqItems = [
     a: "Possibly, but never on demand. Kyoto's tourism association says Gion is well known as an area where you can encounter maiko, and Klook's main listing offers a chance of seeing a geiko or maiko rather than a promise. If you do see one, she is on her way to an engagement and in a hurry, so step aside and do not stop her or photograph her without permission.",
   },
   {
-    q: "Can you take photos in Gion?",
+    q: "What is the etiquette in Gion at night, and can you take photos?",
     a: `Yes on public roads such as Hanamikoji, with limits. Photographing maiko without permission is prohibited on Kyoto's official tourism site, tripods are discouraged, and filming on Gion's private roads has been banned in principle by the local council since 2019. The ¥10,000 warning is on a private lane, Kosode-koji. Read on ${CHECKED}.`,
   },
   {
@@ -217,7 +217,7 @@ const faqItems = [
     a: "Worth it if you want the street explained and a route that stays out of trouble, or if the kaiseki version saves you finding dinner. Not needed if you only want the look of Hanamikoji and Shirakawa at night: both are free to walk, and the official etiquette fits on one screen of this page. A guide does not exempt you from the rules, because the Kosode-koji warning names guided tours too.",
   },
   {
-    q: "Do you need to book a Gion tour in advance?",
+    q: "Do you need to book a Gion night walking tour in advance?",
     a: "Yes for the kaiseki tour, which cancels for a full refund only 72 hours out and takes 2–10 people, and for any private date you care about. The main Night Guided Walking Tour lists last-minute bookings as accepted, so it is the fallback for a free evening. Walking Gion on your own needs no booking at all.",
   },
   {
@@ -234,9 +234,18 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Gion Night Walking Tour 2026: Times, Types & Photo Rules";
+const TITLE = "Gion Night Walking Tour (2026): Times, Booking & Etiquette";
 const DESCRIPTION =
-  "A Gion night walking tour runs about 3 hours, starting 16:00–20:00 by listing. Compare small-group, private and kaiseki tours, plus Gion's photo rules.";
+  "A Gion night walking tour lasts about 3 hours and starts 16:00–20:00. Compare small-group, private and kaiseki tours on Klook, plus Gion's etiquette rules.";
+
+/** The tour types in one table; the first row is the answer. */
+const glanceRows = [
+  { type: "Answer: small-group walk", start: "Evening, by listing", length: "About 3 hours", cancel: "Check the listing; late arrivals may lose the booking" },
+  { type: "Kaiseki dinner tour", start: "17:00", length: "3 hours (17:00–20:00), 2–10 people", cancel: "Full refund at least 72 hours before" },
+  { type: "Private walk", start: "16:00, 17:00 or 18:00", length: "3 hours", cancel: "Free with 24 hours' notice" },
+  { type: "Student-led small group", start: "From 18:00", length: "Not in the listing text; up to 6 people", cancel: "Deadline shown at checkout" },
+  { type: "On your own", start: "Any time; Yasaka Shrine is open 24 hours", length: "As long as you like", cancel: "No booking" },
+];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -323,7 +332,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Gion Night Walking Tour:<br />Times, Tour Types &amp; the Photo Rules
+            Gion Night Walking Tour (2026):<br />Times, Booking &amp; Etiquette
           </h1>
           <p className={styles.heroSubtitle}>
             Five Klook tours side by side, and the rules that apply in Gion after dark, each with who actually
@@ -353,13 +362,51 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             A <strong>Gion night walking tour</strong> on Klook lasts <strong>about 3 hours</strong> and starts
-            between <strong>16:00 and 20:00</strong> depending on the listing: a private walk leaves at 16:00,
-            17:00 or 18:00, a small-group tour with kaiseki dinner runs 17:00–20:00 for 2–10 people, and a
-            student-led walk for up to six leaves from 18:00. Expect Hanamikoji Street after dark, teahouse
-            architecture and quiet backstreets; Shirakawa, Tatsumi Bridge and Yasaka Shrine are in the same area
-            and open to you on foot. The difference from going alone is the route and the explanation, not the
-            rules: photographing maiko without permission is prohibited, and on Kosode-koji, a private lane off
-            Hanamikoji, a sign warns of a fine of up to ¥10,000, tour groups included. Read on {CHECKED}.
+            between <strong>16:00 and 20:00</strong> depending on the listing. Book the small-group walk for the
+            evening explained, the 17:00–20:00 kaiseki tour (2–10 people, full refund up to 72 hours before) if
+            you also need dinner, or the private walk at 16:00, 17:00 or 18:00 for your own start time. The
+            etiquette is the same with or without a guide: photographing maiko without permission is prohibited,
+            and a sign on Kosode-koji, a private lane off Hanamikoji, warns of a fine of up to ¥10,000. Read on{" "}
+            {CHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            Expect Hanamikoji Street after dark, teahouse architecture and quiet backstreets; Shirakawa, Tatsumi
+            Bridge and Yasaka Shrine are in the same area and open to you on foot. If Gion is one evening of a
+            longer stay, our{" "}
+            <Link href="/guides/attractions/kyoto-3-day-itinerary" style={linkStyle}>Kyoto 3 day itinerary</Link>{" "}
+            puts it on the right night, and the{" "}
+            <Link href="/guides/attractions" style={linkStyle}>Things to Do in Japan hub</Link> has the other
+            guided tours we compare.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Tour type", "Start", "Length", "Cancellation"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {glanceRows.map((row) => (
+                    <tr key={row.type}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.type}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.start}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.length}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.cancel}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={noteStyle}>
+            Last checked: 2026-11-04. Tour times from Klook&apos;s listings; etiquette from Kyoto City&apos;s
+            official tourism site,{" "}
+            <a href="https://kyoto.travel/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>kyoto.travel</a>
+            , and Yasaka Shrine&apos;s hours from{" "}
+            <a href="https://www.yasaka-jinja.or.jp/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>yasaka-jinja.or.jp</a>.
           </p>
         </section>
 

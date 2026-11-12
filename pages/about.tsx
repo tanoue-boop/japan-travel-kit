@@ -5,8 +5,37 @@ import PartnerPick, { PartnerTextLink } from "../components/PartnerPick";
 import { klookEsim } from "../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../lib/page-dates";
 
+const TITLE = "About Japan Travel Kit: Who Writes It, How We Check Prices";
 const DESC =
-  "Japan Travel Kit is an independent planning site for visitors to Japan, run by mjo Inc. in Tokyo: how we source prices, and our affiliate disclosure.";
+  "Japan Travel Kit is written by mjo Inc. in Tokyo. Every price is read off the official site and shown with its check date; affiliate links are disclosed.";
+
+/** What is checked, where and how often; the first row is the answer. */
+const checkRows = [
+  { what: "Answer: every price on the site", source: "The operator's official site", often: "Re-read when a page is revised", shown: "A check date beside the figure" },
+  { what: "eSIM plan prices", source: "Each provider's own site", often: "Daily, by a scheduled job", shown: "Date of the last successful check" },
+  { what: "Tickets, fares and passes", source: "The venue, railway or pass operator", often: "When a page is revised", shown: "\"Read on\" date in the table" },
+  { what: "Klook and other booking links", source: "Checked as live listings, not as a price source", often: "When a page is revised", shown: "No Klook price is printed" },
+  { what: "The page's \"Updated\" date", source: "The commit that last changed the page", often: "Every change", shown: "Top of each guide and in its structured data" },
+];
+
+const faqItems = [
+  {
+    q: "Who runs Japan Travel Kit?",
+    a: "mjo Inc., a company based in Tokyo working in inbound tourism and e-commerce consulting. The site has no paid placements or sponsored posts, and no provider sees a guide before it is published. Corrections go to info@japan-travel-kit.com.",
+  },
+  {
+    q: "How does Japan Travel Kit check prices?",
+    a: "Every admission price, fare and opening time is read off the operator's own site, and the Japanese page wins where it disagrees with the English one. Each price table shows the date it was read. eSIM prices are re-fetched from each provider daily; Klook prices are never printed because they change by date.",
+  },
+  {
+    q: "Does Japan Travel Kit earn commission?",
+    a: "Yes, from some links, mostly to Klook and to the eSIM, travel-card and travel-insurance providers the guides compare. You pay the same price as going direct. Commission does not decide rankings: where the best option pays nothing, such as a free observation deck, the guide recommends it anyway.",
+  },
+  {
+    q: "What are the alternatives to japan-travel-kit.com?",
+    a: "For the official figure itself, go to the operator: the venue, JR or the pass issuer, which is where this site reads its prices. For general Japan travel information, the Japan National Tourism Organization's site, japan.travel, is the official source. This site's role is to put those figures side by side with the date each one was read.",
+  },
+];
 
 /**
  * How a figure gets onto this site. Written out in full because it is the part an
@@ -54,11 +83,11 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>About Japan Travel Kit | Who We Are and How We Check Prices</title>
+        <title>{TITLE}</title>
         <meta name="description" content={DESC} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/about" />
-        <meta property="og:title" content="About Japan Travel Kit | Who We Are and How We Check Prices" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:description" content={DESC} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/about" />
         <meta property="og:type" content="website" />
@@ -78,6 +107,20 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: faqItems.map((item) => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: { "@type": "Answer", text: item.a },
+              })),
+            }),
+          }}
+        />
       </Head>
 
       <div className={styles.breadcrumb}>
@@ -93,19 +136,60 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>About</span>
-          <h1 className={styles.title}>About Japan Travel Kit</h1>
+          <h1 className={styles.title}>About Japan Travel Kit: Who Writes It and How We Check Prices</h1>
         </div>
       </section>
 
       <div className={styles.body}>
         <div className={styles.highlight}>
           <p className={styles.text}>
-            <strong>In short:</strong> Japan Travel Kit is published by <strong>mjo Inc.</strong>, a company based in
-            Tokyo. Every price on the site is read off the operator&apos;s own site and dated. Some links are
-            affiliate links, marked as such on the page that carries them. Nothing here is written as a first-hand
-            trip report.
+            <strong>In short:</strong> Japan Travel Kit is written and published by <strong>mjo Inc.</strong>, a
+            company based in Tokyo, and every price in its guides is read off the operator&apos;s official site and
+            shown with the date it was checked. eSIM prices are re-fetched <strong>daily</strong>; ticket, fare and
+            pass prices are re-read whenever a page is revised. Some links are affiliate links, mostly to Klook and
+            eSIM providers, and commission does not decide rankings.
           </p>
         </div>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>How are prices checked, and how often?</h2>
+          <p className={styles.text}>
+            Against the operator&apos;s own site, and each figure carries its own check date. The table sets out
+            the rule for each kind of figure.
+          </p>
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem" }}>
+              <thead>
+                <tr>
+                  {["What", "Source", "How often", "Shown on the page"].map((h) => (
+                    <th key={h} style={{ textAlign: "left", borderBottom: "2px solid var(--border, #ddd)", padding: "0.5rem" }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {checkRows.map((row) => (
+                  <tr key={row.what}>
+                    <td style={{ borderBottom: "1px solid var(--border, #eee)", padding: "0.5rem", fontWeight: 600 }}>{row.what}</td>
+                    <td style={{ borderBottom: "1px solid var(--border, #eee)", padding: "0.5rem" }}>{row.source}</td>
+                    <td style={{ borderBottom: "1px solid var(--border, #eee)", padding: "0.5rem" }}>{row.often}</td>
+                    <td style={{ borderBottom: "1px solid var(--border, #eee)", padding: "0.5rem" }}>{row.shown}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className={styles.text} style={{ fontSize: "0.85rem" }}>
+            Last checked: 2026-11-12 (this policy). Dated examples: the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Japan eSIM price tracker
+            </Link>{" "}
+            (daily) and the{" "}
+            <Link href="/guides/attractions" style={{ color: "var(--text)", fontWeight: 600 }}>Things to Do in Japan</Link>{" "}
+            and{" "}
+            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>transport</Link>{" "}
+            guides, each with the operator&apos;s site and the date it was read.
+          </p>
+        </section>
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>What this site is</h2>
@@ -209,6 +293,16 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
             price without a date is the thing most likely to send someone to a ticket window with the wrong amount
             of money.
           </p>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Common questions about Japan Travel Kit</h2>
+          {faqItems.map((item) => (
+            <div key={item.q} style={{ marginBottom: "1rem" }}>
+              <p className={styles.text} style={{ fontWeight: 700, marginBottom: "0.25rem" }}>{item.q}</p>
+              <p className={styles.text}>{item.a}</p>
+            </div>
+          ))}
         </section>
 
         <PartnerPick

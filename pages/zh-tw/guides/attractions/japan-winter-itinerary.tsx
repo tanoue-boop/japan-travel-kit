@@ -821,11 +821,11 @@ const faqItems = [
     a: `通常不是東京、京都或大阪，這三座太平洋側城市下雪是新聞，不是季節。雪在日本海側和山區，離東京最近又可靠的是新潟湯澤：GALA 湯澤從東京站搭上越新幹線不用轉車，車站和纜車站是同一棟建築，所以不用滑雪假期也能滑一天。長野白馬也能當天往返，雪質更好。把雪當風景而不是運動的話，1、2 月的白川鄉和高山就是這份行程的核心。北海道當然有雪：札幌 1 月降雪平年值 137 公分。`,
   },
   {
-    q: "冬季行程要提前預訂嗎？",
+    q: "日本冬季行程要提前預訂什麼？",
     a: `這份行程有兩件事絕對要，其他比你想的少。白川鄉點燈 2027 年只有四個晚上（1 月 11、17、24、31 日，每晚 17:30–19:30），完全事前預約，協會公告寫明當天不售入場券。金澤到白川鄉高速巴士全車對號，北陸鐵道要求上車前預訂，沒有現場備案。此外，北陸新幹線 Kagayaki 完全沒有自由座，滑雪租借最先缺你的尺寸，SHIBUYA SKY 日落時段在開賣瞬間就賣完。其他幾乎都能直接去：京都寺院、兼六園、東京免費燈飾、雪祭會場。`,
   },
   {
-    q: "冬天去日本要幾天？",
+    q: "日本冬季行程要排幾天？",
     a: "本頁路線最少 10 天，不趕要 12 天，想加北海道和北陸兩邊要 14 天。冬天對短程特別不利，原因有二：白天短，同樣的一天比 5 月能做的少；天氣風險真實存在，沒有餘裕的計畫就沒地方移動因雪取消的一天。只有一週的話，刪高山和金澤而不是東京，改走東京、京都、大阪的一週，晚上加燈飾。有 10 天的話，10 天行程是同一路線，也放得下冬季計畫。",
   },
   {
@@ -846,9 +846,18 @@ const faqItems = [
   },
 ];
 
-const TITLE = "日本冬季行程（2027）：12 天路線逐日安排";
+const TITLE = "日本冬季行程 2026–27：12 天逐日路線、點燈與雪祭";
 const DESC =
-  "日本冬季行程 12 天怎麼排：東京、金澤、白川鄉、高山、京都與大阪，每天一張表，並附冬季活動日期、氣溫與該先預訂的項目。";
+  "日本冬季行程 2026–27 怎麼排？12 天走東京、金澤、白川鄉、高山、京都與大阪。白川鄉點燈只有 4 晚且當天不售票，附每日表格與 Klook 預訂。";
+
+/** 一張表看完 12 天；第一列就是答案。 */
+const glanceRows = [
+  { base: "答案：12 天、5 個據點", nights: "東京 4、金澤 2、高山 2、京都 2、大阪 1", key: "東京 → 金澤 北陸新幹線 2 小時 28 分鐘", book: "白川鄉點燈最先訂" },
+  { base: "東京", nights: "4 晚", key: "燈飾、展望台、可加滑雪一日遊", book: "SHIBUYA SKY 日落時段、teamLab" },
+  { base: "金澤", nights: "2 晚", key: "兼六園、東茶屋街；往白川鄉巴士 1 小時 15 分鐘", book: "全車對號的 Kagayaki 和預約制巴士" },
+  { base: "高山", nights: "2 晚", key: "白川鄉點燈：2027 年 1 月 11、17、24、31 日，17:30–19:30", book: "點燈巴士，當天不售票" },
+  { base: "京都、大阪", nights: "2 晚 + 1 晚", key: "京都寺院大多可直接入內", book: "住宿；其他幾乎不用預訂" },
+];
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -877,7 +886,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 更新於 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-日本冬季行程：<br />12 天逐日安排
+日本冬季行程 2026–27：<br />12 天逐日安排
 </h1>
           <p className={styles.heroSubtitle}>
 東京、金澤、白川鄉、高山、京都與大阪，加上日期固定的兩個冬季活動，以及現場完全不賣票的那一個。
@@ -930,7 +939,36 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 
                 <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-這份<strong>日本冬季行程</strong>共<strong>十二天、五個據點</strong>（東京 4 晚、金澤 2 晚、高山 2 晚、京都 2 晚、大阪 1 晚），圍繞冬天改變的三件事，而不是景點清單。主軸是依 JR 西日本 <strong>2 小時 28 分鐘</strong>的北陸新幹線東京到金澤，再搭預約高速巴士進山，然後走東海道線下到關西。有兩個日期固定不能改：<strong>白川鄉冬季點燈只有 2027 年 1 月 11、17、24、31 日四個晚上，每晚 17:30–19:30，主辦單位當天完全不售票</strong>；<strong>第 77 屆札幌雪祭是 2027 年 2 月 4–11 日</strong>，免費入場。白天很短，12 月下午四點半左右就天黑，依日本氣象廳 1991–2020 年平年值，1 月均溫東京 5.4°C、札幌 −3.2°C。下面的活動日期、氣溫和票價都附出處：活動日期和巴士票價於 {REREAD} 重新查核，氣候平年值於 {CHECKED} 查核。
+這份 2026–27 年冬的<strong>日本冬季行程</strong>共<strong>12 天、5 個據點</strong>：東京 4 晚、金澤 2 晚、高山 2 晚、京都 2 晚、大阪 1 晚，東京到金澤搭北陸新幹線約 <strong>2 小時 28 分鐘</strong>（JR 西日本）。最先要訂的是<strong>白川鄉冬季點燈</strong>，2027 年只有 1 月 11、17、24、31 日四個晚上（17:30–19:30），主辦單位當天完全不售票；<strong>第 77 屆札幌雪祭</strong>是 2027 年 2 月 4–11 日，免費入場。
+</p>
+          <p className={styles.bodyText}>
+這份行程圍繞冬天改變的三件事，而不是景點清單：搭預約高速巴士進山，然後走東海道線下到關西。白天很短，12 月下午四點半左右就天黑，依日本氣象廳 1991–2020 年平年值，1 月均溫東京 5.4°C、札幌 −3.2°C。想把雪祭排進去，請看<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--red)", fontWeight: 600 }}>札幌雪祭行程攻略</Link>和<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>北海道 7 天行程</Link>；其他景點門票在<Link href="/zh-tw/guides/attractions" style={{ color: "var(--red)", fontWeight: 600 }}>日本景點攻略總覽</Link>。下面的活動日期、氣溫和票價都附出處：活動日期和巴士票價於 {REREAD} 重新查核，氣候平年值於 {CHECKED} 查核。
+</p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["據點", "住宿", "重點與交通", "要先訂的"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {glanceRows.map((row) => (
+                    <tr key={row.base}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.base}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.nights}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.key}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.book}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+最後查核：2026-11-06。官方出處：<a href="https://shirakawa-go.gr.jp/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>shirakawa-go.gr.jp</a>（點燈）、<a href="https://www.snowfes.com/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>snowfes.com</a>（雪祭）、<a href="https://www.westjr.co.jp/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>westjr.co.jp</a>（北陸新幹線）。
 </p>
         </section>
 

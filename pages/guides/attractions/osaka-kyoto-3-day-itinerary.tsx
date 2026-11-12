@@ -528,9 +528,17 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings";
+const TITLE = "Osaka and Kyoto 3 Day Itinerary (2026): Day-by-Day Plan";
 const DESCRIPTION =
-  "An Osaka Kyoto 3 day itinerary from Kansai Airport: the castle and Dotonbori on Day 1, Fushimi Inari and Kiyomizu-dera on Day 2, Nara or USJ on Day 3.";
+  "An Osaka and Kyoto 3 day itinerary: Osaka on Day 1, Kyoto 30 minutes away on Day 2, Nara or USJ on Day 3. Dated admissions, plus passes and tours on Klook.";
+
+/** The three days in one table; the first row is the answer. */
+const glanceRows = [
+  { day: "Answer", where: "Sleep in Osaka 3 nights", plan: "1 day Osaka, 1 day Kyoto, 1 day of your choice", move: "Osaka ↔ Kyoto about 30 min on the JR Special Rapid" },
+  { day: "Day 1", where: "Osaka", plan: `Osaka Castle from 9:00 (${CASTLE_ADULT}), Kuromon, Tombori River Cruise (${CRUISE_ADULT}), Umeda Sky (${UMEDA_ADULT}, last admission 22:00), Dotonbori`, move: "Metro; the Osaka Amazing Pass covers all three tickets" },
+  { day: "Day 2", where: "Kyoto", plan: `Fushimi Inari before 7:00 (free), Kiyomizu-dera from 6:00 (${KIYOMIZU_ADULT}), Nijo Castle (${NIJO_ADULT}), Gion at dusk`, move: "About 30 min each way; Fushimi Inari about 10 min from Kyoto Station" },
+  { day: "Day 3", where: "Your choice", plan: "Nara, Arashiyama and Kinkaku-ji, Universal Studios Japan, or Kaiyukan if it rains", move: "Nara about 45 min; USJ about 20 min from Osaka Station" },
+];
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/osaka-kyoto-3-day-itinerary") },
@@ -623,7 +631,7 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Osaka Kyoto 3 Day Itinerary (2026):<br />Day by Day, and What to Book
+            Osaka and Kyoto 3 Day Itinerary (2026):<br />Day-by-Day Plan, and What to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Two cities thirty minutes apart, in and out of Kansai Airport. The plan is decided by two
@@ -648,6 +656,49 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Opening answer: the first body paragraph, then the three days as a table. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            An <strong>Osaka and Kyoto 3 day itinerary</strong> gives one day to each city and keeps the third
+            free: <strong>Day 1 in Osaka</strong>, <strong>Day 2 in Kyoto</strong>, about{" "}
+            <strong>30 minutes</strong> away on the JR Special Rapid, and <strong>Day 3</strong> for Nara,
+            Arashiyama or Universal Studios Japan. Sleep in Osaka all three nights unless two of your days are
+            Kyoto and Nara, and book USJ, which sells by date, before you fly. Kansai&apos;s other day plans are
+            in the{" "}
+            <Link href="/guides/attractions" style={{ color: "var(--red)", fontWeight: 600 }}>Things to Do in Japan hub</Link>,
+            and the train choices in our{" "}
+            <Link href="/guides/transport/kyoto-transportation" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto transportation guide</Link>.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Day", "Where", "Plan (adult admission)", "Getting there"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {glanceRows.map((row) => (
+                    <tr key={row.day}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.day}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.where}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.plan}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.move}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-10-30 (HARUKA fares) and 2026-10-29 (train times). Official sources:{" "}
+            <a href="https://kyoto.travel/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>kyoto.travel</a>,{" "}
+            <a href="https://www.westjr.co.jp/global/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>westjr.co.jp</a>; admission dates are in the cost table below.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

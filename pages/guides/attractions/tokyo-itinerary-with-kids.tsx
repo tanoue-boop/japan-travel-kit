@@ -365,9 +365,43 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Tokyo Itinerary with Kids: 5 Days, Day by Day (2026)";
+const TITLE = "Tokyo Itinerary with Kids (2026): 4–5 Days by Age";
 const DESCRIPTION =
-  "A Tokyo itinerary with kids over 5 days: Disney, LEGOLAND Discovery, Sanrio Puroland and a day out, plus child train fares, strollers and family hotels.";
+  "A Tokyo itinerary with kids over 4–5 days: Disney first, LEGOLAND and Sanrio Puroland indoors, a day out by age, and child train fares. Tickets on Klook.";
+
+/** What changes by age, from the operators' own rules; the first row is the answer. */
+const ageRows = [
+  {
+    age: "Answer: any age",
+    plan: "4–5 days; book the Disney date first",
+    tickets: "Disney, Puroland and LEGOLAND all sell by date",
+    trains: "Under 6 free (up to two per adult); 6–11 half fare",
+  },
+  {
+    age: "Under 3",
+    plan: "Disneyland rather than DisneySea; Kamakura rather than Hakone",
+    tickets: "Free at Disney (3 and under), LEGOLAND and Puroland",
+    trains: "Free",
+  },
+  {
+    age: "3–5",
+    plan: "Disneyland, Puroland and LEGOLAND; keep evenings short",
+    tickets: "Disney free at 3, child price from 4; Puroland child price from 3",
+    trains: "Free (up to two per adult)",
+  },
+  {
+    age: "6–11",
+    plan: "All five days as written; Hakone works for the day out",
+    tickets: "Disney ages 4–11 price; Puroland ages 3–17 price",
+    trains: "Half fare",
+  },
+  {
+    age: "12–17",
+    plan: "Swap a character day for DisneySea or a second day out",
+    tickets: "Disney ages 12–17 price; Puroland ages 3–17 price",
+    trains: "Adult fare (a 12-year-old in elementary school still pays child fare on Tokyo Metro)",
+  },
+];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -453,7 +487,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Itinerary with Kids:<br />5 Days, Day by Day
+            Tokyo Itinerary with Kids (2026):<br />4–5 Days, Planned by Age
           </h1>
           <p className={styles.heroSubtitle}>
             One Disney day, two indoor character days, one day out of the city — with the tickets that
@@ -482,19 +516,59 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
         {/* Lead — the whole answer first. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Tokyo itinerary with kids</strong> works best over <strong>five days</strong>: an easy
-            arrival day, <strong>Tokyo Disneyland or DisneySea</strong> on Day 2 (about 15–20 minutes from
-            Tokyo Station on the JR Keiyo Line), <strong>LEGOLAND Discovery Center</strong> in Odaiba on Day 3
-            (2–3 hours),{" "}
+            A <strong>Tokyo itinerary with kids</strong> works best over <strong>4 to 5 days</strong>: an easy
+            arrival day, <strong>Tokyo Disneyland or DisneySea</strong> on Day 2, two indoor days at{" "}
+            <strong>LEGOLAND Discovery Center</strong> (2–3 hours) and{" "}
             <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
               Sanrio Puroland
             </Link>{" "}
-            at Tama Center on Day 4 (3–5 hours), and a day out to
-            Kamakura (about an hour by JR) or Hakone on Day 5. Book Disney first — dates open two months ahead
-            at 14:00 Japan time and are not sold at the gate — then Puroland and LEGOLAND, which both price by
-            date. Under-6s ride Tokyo Metro and JR free (up to two per adult) and 6 to 11-year-olds pay half.
-            Base yourselves at Tokyo Station, with a night in Maihama if your children need a nap break on the
-            Disney day. Child fares read on {CHECKED}; ticket prices carried with their own check dates below.
+            (3–5 hours), and a day out to Kamakura or Hakone chosen by age. Book Disney first, because dates open
+            two months ahead at 14:00 Japan time and are not sold at the gate. Under-6s ride Tokyo Metro and JR
+            free (up to two per adult) and 6 to 11-year-olds pay half; child fares read on {CHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            Disney is about 15–20 minutes from Tokyo Station on the JR Keiyo Line, and Kamakura about an hour by
+            JR. Base yourselves at Tokyo Station, with a night in Maihama if your children need a nap break on the
+            Disney day: our{" "}
+            <Link href="/guides/attractions/tokyo-disney-hotels" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo Disney hotels guide
+            </Link>{" "}
+            compares them, and the{" "}
+            <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo transportation guide
+            </Link>{" "}
+            covers the trains between the days.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Child's age", "Plan", "Park tickets", "Trains"].map((h) => (
+                      <th key={h} style={thStyle}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {ageRows.map((row) => (
+                    <tr key={row.age}>
+                      <td className={styles.tdProvider} style={tdSmall}>{row.age}</td>
+                      <td style={tdSmall}>{row.plan}</td>
+                      <td style={tdSmall}>{row.tickets}</td>
+                      <td style={tdSmall}>{row.trains}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-03 (child fares, LEGOLAND, Puroland) and 2026-10-28 (Disney age bands). Official
+            sources:{" "}
+            <a href="https://www.tokyometro.jp/lang_en/ticket/guide/age/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>tokyometro.jp</a>,{" "}
+            <a href="https://www.tokyodisneyresort.jp/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>tokyodisneyresort.jp</a>,{" "}
+            <a href="https://www.legolanddiscoverycenter.com/tokyo/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>legolanddiscoverycenter.com/tokyo</a>,{" "}
+            <a href="https://www.puroland.jp/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>puroland.jp</a>.
           </p>
         </section>
 

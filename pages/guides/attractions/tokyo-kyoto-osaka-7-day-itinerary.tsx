@@ -834,7 +834,7 @@ const bookingWindow = [
 
 const faqItems = [
   {
-    q: "How do you spend 7 days in Japan?",
+    q: "What is the best Tokyo Kyoto Osaka 7 day itinerary?",
     a: `Three cities and nothing else: three days in Tokyo, two in Kyoto and two in Osaka, which is three nights, two nights and one — flying out of Kansai on the evening of Day 7. Each extra base in a seven-day trip costs a morning of packing and an afternoon of travelling, and at this length that is the difference between a trip and a transfer. The two moving days are short: Tokyo to Kyoto is about 130 minutes on the Tokaido Shinkansen, and Kyoto to Osaka about 30 minutes on the JR Special Rapid. Both times are the operators' own, checked ${OWN}.`,
   },
   {
@@ -850,7 +850,7 @@ const faqItems = [
     a: `Three ways, none of them reserved and none needing a booking. On the official Kyoto travel guide's figures, checked ${OWN}: the JR Special Rapid is about 30 minutes from Kyoto Station to Osaka Station, the Hankyu Kyoto Line about 45 minutes from Kyoto-Kawaramachi to Osaka-umeda, and the Keihan limited express about 48 minutes from Yodoyabashi — Keihan's own site describes it as "about 50 minutes with no transfer". Pick by where you are staying rather than by speed: JR if your hotel is at Kyoto Station, Hankyu or Keihan if it is around Shijo and Kawaramachi. The shinkansen also runs Kyoto to Shin-Osaka, but it is the wrong tool for this hop — it lands you north of the city centre and costs a supplement for about a quarter of an hour.`,
   },
   {
-    q: "Is the JR Pass worth it for 7 days in Japan?",
+    q: "Is the JR Pass worth it for a 7 day Tokyo Kyoto Osaka itinerary?",
     a: `Almost certainly not on this route. The 7-day Ordinary JAPAN RAIL PASS is ¥50,000 bought online and ¥53,000 as an overseas Exchange Order for an adult, with the Green car versions at ¥70,000 and ¥74,000 and child prices half the adult ones — read off japanrailpass.net on ${OWN}. Set that against what this itinerary actually spends on long-distance rail: one Tokyo–Kyoto run and one Kyoto–Osaka hop. A whole-country pass is built for a trip that crosses regions every second or third day, and three cities in a week is the opposite shape. There is a second catch for exactly this leg: the pass does not cover the Nozomi without a supplementary ticket issued only to pass holders, so a pass would put you on the slower Hikari on Day 4. Our JR Pass guide works the break-even properly.`,
   },
   {
@@ -887,9 +887,18 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary") },
 });
 
-const TITLE = "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan";
+const TITLE = "Tokyo Kyoto Osaka 7 Day Itinerary (2026): JR Pass & Hotels";
 const DESC =
-  "A Tokyo Kyoto Osaka itinerary for 7 days in Japan: Tokyo 3 nights, Kyoto 2, Osaka 1, flying out of Kansai — a table per day with times and dated prices.";
+  "Tokyo Kyoto Osaka 7 day itinerary: 3 nights Tokyo, 2 Kyoto, 1 Osaka, 130 min by shinkansen. Why the JR Pass rarely pays; trains and hotels on Klook.";
+
+/** The week in one table; the first row is the answer. */
+const glanceRows = [
+  { days: "Answer", base: "Tokyo 3 nights → Kyoto 2 → Osaka 1", move: "Tokyo → Kyoto about 130 min; Kyoto → Osaka about 30 min", book: "teamLab Planets, SHIBUYA SKY sunset, the Day 4 seat, 3 hotels" },
+  { days: "Days 1–3", base: "Tokyo", move: "Subway and JR", book: "teamLab Planets (timed entry), SHIBUYA SKY sunset slot" },
+  { days: "Days 4–5", base: "Kyoto", move: "Tokaido Shinkansen on Day 4", book: "The shinkansen seat (and the oversized-baggage row)" },
+  { days: "Days 6–7", base: "Osaka", move: "JR Special Rapid from Kyoto; Rapi:t to Kansai Airport on Day 7, 34 min minimum", book: "USJ only if Day 6 is a park day" },
+  { days: "JR Pass?", base: "7-day Ordinary ¥50,000 online", move: "Only two long rail legs on this route", book: "Usually not worth it: buy single tickets" },
+];
 const ROUTE = "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -976,7 +985,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Kyoto Osaka Itinerary (2026):<br />7 Days in Japan, Day by Day
+            Tokyo Kyoto Osaka 7 Day Itinerary (2026):<br />Route, JR Pass &amp; Hotels, Day by Day
           </h1>
           <p className={styles.heroSubtitle}>
             The first-visit route, planned around the two travel days and the four bookings that
@@ -1001,6 +1010,52 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Opening answer: the first body paragraph, then the week as a table. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            A <strong>Tokyo Kyoto Osaka 7 day itinerary</strong> works as <strong>3 nights in Tokyo, 2 in Kyoto
+            and 1 in Osaka</strong>, flying home from Kansai on Day 7. Tokyo to Kyoto is about{" "}
+            <strong>130 minutes</strong> on the Tokaido Shinkansen and Kyoto to Osaka about{" "}
+            <strong>30 minutes</strong> on the JR Special Rapid, so the 7-day JR Pass at{" "}
+            <strong>¥50,000</strong> rarely pays on this route. Book the shinkansen seat in our{" "}
+            <Link href="/guides/transport/tokyo-to-kyoto" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo to Kyoto guide</Link>{" "}
+            and compare the pass in the{" "}
+            <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--red)", fontWeight: 600 }}>JR Pass guide</Link>.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Days", "Base", "Getting there", "Book before you fly"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {glanceRows.map((row) => (
+                    <tr key={row.days}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.days}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.base}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.move}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.book}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-10-25. Official sources:{" "}
+            <a href="https://global.jr-central.co.jp/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>jr-central.co.jp</a>{" "}
+            (shinkansen times),{" "}
+            <a href="https://kyoto.travel/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>kyoto.travel</a>{" "}
+            (Kyoto–Osaka) and{" "}
+            <a href="https://japanrailpass.net/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>japanrailpass.net</a>{" "}
+            (pass prices).
+          </p>
+        </section>
 
         {/* Quick Answer Box — the answer, before anything else */}
         <div className={styles.verdictBox}>

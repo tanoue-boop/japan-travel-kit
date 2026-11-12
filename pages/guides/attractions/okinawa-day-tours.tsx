@@ -181,11 +181,11 @@ const typhoonRows = [
 
 const faqItems = [
   {
-    q: "What is the best day tour in Okinawa?",
+    q: "What are the best Okinawa day tours from Naha?",
     a: `For a first visit, a northern tour from Naha with Churaumi Aquarium, Kouri Island and Cape Manzamo: it covers the most of what is hard to reach without a car. Choose by language first, because several run in Chinese only. Churashima lists an English option; the 134350 northern tour has English commentary on some dates only. Listings read on ${CHECKED}.`,
   },
   {
-    q: "How long is an Okinawa north day tour?",
+    q: "How long are Okinawa day tours to Churaumi and Kouri Island?",
     a: `About 10 to 11.5 hours on the listings as shown on ${CHECKED}: 9 hours 35 minutes to 11 hours 30 minutes on one, about 10 on another and 11 on a third. One lists an 8:20 hotel pick-up in Naha, and the aquarium is about two hours from Naha Airport by car, so plan on an evening return.`,
   },
   {
@@ -218,9 +218,17 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Okinawa Day Tours from Naha: North vs South Compared (2026)";
+const TITLE = "Okinawa Day Tours (2026): Churaumi, Kouri & Which to Book";
 const DESCRIPTION =
-  "Okinawa Day Tours from Naha run north to Churaumi and Kouri Island or south to Okinawa World, about 8 to 11 hours. Compare routes, inclusions and rules.";
+  "Okinawa day tours from Naha: the north route to Churaumi and Kouri Island takes about 10–11.5 hours, the south 8–9. Compare 7 tours and book on Klook.";
+
+/** Route summary for the table under the opening answer; the first row is the answer. */
+const glanceRows = [
+  { route: "Answer: book a northern tour first", stops: "Churaumi Aquarium, Kouri Island, Cape Manzamo", hours: "About 10–11.5 hours", best: "A first visit without a car" },
+  { route: "North", stops: "Churaumi (3–3.5 hours on 134350), Kouri Island, Cape Manzamo; some add American Village or Nago Pineapple Park", hours: "About 10–11.5 hours", best: "The aquarium; an evening return to Naha" },
+  { route: "South", stops: "Cape Chinen, the Nirai Kanai Bridge, Okinawa World's Gyokusendo Cave", hours: "About 8–9 hours", best: "A shorter day; small children; rain" },
+  { route: "Shuri Castle (Naha)", stops: "Shurijo Castle and Tamaudun on foot", hours: "About 4 hours", best: "The Seiden main hall from 23 November 2026" },
+];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -301,7 +309,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Okinawa Day Tours from Naha:<br />North vs South Compared
+            Okinawa Day Tours (2026):<br />Churaumi, Kouri Island &amp; Which to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Two routes, seven tours side by side, and the rules that decide your day: language, pick-up and typhoons.
@@ -327,13 +335,49 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Okinawa day tours</strong> from Naha follow two routes. Northern tours go to Churaumi
-            Aquarium, Kouri Island and Cape Manzamo, some adding American Village or Nago Pineapple Park, and
-            run <strong>about 10 to 11.5 hours</strong>. Southern tours cover Cape Chinen, the Nirai Kanai
-            Bridge and Okinawa World&apos;s Gyokusendo Cave and run <strong>about 8 to 9 hours</strong>, and
-            Shuri Castle is sold separately, as a half-day walk or a Shuri Castle and Okinawa World bus course. Pick the north for a first visit, and
-            check the guide&apos;s language before anything else, because several of these tours run in Chinese
-            only. All durations are from Klook&apos;s listings, read on {CHECKED}.
+            <strong>Okinawa day tours</strong> from Naha follow two routes: northern tours to Churaumi Aquarium,
+            Kouri Island and Cape Manzamo take <strong>about 10 to 11.5 hours</strong>, and southern tours to Cape
+            Chinen, the Nirai Kanai Bridge and Okinawa World take <strong>about 8 to 9 hours</strong>. For a first
+            visit, book a northern tour, which gives <strong>about 3 to 3.5 hours</strong> at the aquarium on the
+            134350 listing. Check the guide&apos;s language before anything else, because several of these tours
+            run in Chinese only; durations are from Klook&apos;s listings, read on {CHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            Shuri Castle is sold separately, as a half-day walk or a Shuri Castle and Okinawa World bus course. If
+            Okinawa is one stop on a longer trip, our{" "}
+            <Link href="/guides/attractions/japan-14-day-itinerary" style={linkStyle}>14-day Japan itinerary</Link>{" "}
+            shows where a Naha flight fits, and the{" "}
+            <Link href="/guides/attractions" style={linkStyle}>Things to Do in Japan hub</Link> lists the other
+            day tours we compare.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Route", "Main stops", "Duration", "Best for"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {glanceRows.map((row) => (
+                    <tr key={row.route}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.route}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.stops}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.hours}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.best}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-05. Durations from Klook&apos;s listings; Shuri Castle from the official site,{" "}
+            <a href="https://oki-park.jp/shurijo/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>oki-park.jp/shurijo</a>
+            ; the aquarium&apos;s own page is{" "}
+            <a href="https://churaumi.okinawa/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>churaumi.okinawa</a>.
           </p>
         </section>
 
