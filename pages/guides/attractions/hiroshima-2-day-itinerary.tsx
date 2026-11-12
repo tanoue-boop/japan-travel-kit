@@ -741,7 +741,9 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             ticket is <strong>¥19,560</strong> one way. The 7-day Ordinary Japan Rail Pass is{" "}
             <strong>¥50,000</strong> on the official site, ¥53,000 through overseas agents, and on the fastest
             Nozomi and Mizuho trains a pass holder still pays a <strong>¥6,500</strong> supplement between Tokyo
-            and Hiroshima. A pass pays when Hiroshima is one stop on a longer rail trip. The pass does cover the
+            and Hiroshima. A pass pays when Hiroshima is one stop on a longer rail trip; the{" "}
+            <Link href="/guides/transport/jr-pass-guide">JR Pass price and break-even table</Link> shows which
+            weeks clear ¥53,000. The pass does cover the
             JR train to Miyajimaguchi and the JR ferry.
           </p>
           <p className={styles.bodyText}>

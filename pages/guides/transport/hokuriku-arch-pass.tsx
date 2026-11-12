@@ -495,7 +495,8 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
               with no separate advance and station rate on JR West&apos;s page. It also covers the{" "}
               <strong>Haruka</strong> to Kansai Airport, the Tokyo Monorail to Haneda and the Narita Express, but not
               the Tokaido or Sanyo Shinkansen. It is ¥15,000 to ¥18,000 cheaper than a 7-day{" "}
-              <strong>JR Pass</strong> (¥50,000 or ¥53,000 after the October 2026 change), but on a single run from
+              <strong>JR Pass</strong> (¥50,000 or ¥53,000 after the October 2026 change; see the{" "}
+              <Link href="/guides/transport/jr-pass-guide">JR Pass price table</Link>), but on a single run from
               Narita through Kanazawa to Kansai Airport, confirmed single fares total about ¥25,940, so it only pays
               if you add long side trips. Read off JR West&apos;s pages on {CHECKED}.
             </p>

@@ -9,6 +9,8 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
+  hokurikuArchPass,
+  jrTokyoWidePass,
   jrKansaiAreaPass,
   jrKansaiMiniPass,
   jrKansaiWideAreaPass,
@@ -84,7 +86,87 @@ const PASS_CHECKED = checkedLabel("2026-10-26");
  * pre-revision prices as what the official website still charges. The "before" column is JNTO's
  * record of the announcement, labelled as such in the table footnote.
  */
-const PRICE_CHECKED = checkedLabel("2026-10-30");
+// First read 30 Oct 2026; re-read unchanged on 12 Nov 2026 (R05), which is the date shown.
+const PRICE_CHECKED = checkedLabel("2026-11-12");
+
+/**
+ * 12 Nov 2026 (task-jtk-20261112-R05, rank fix for "jr pass price" / "jr rail pass price").
+ * Read on 12 November 2026:
+ *   japanrailpass.net/en/purchase/price/        both price tables unchanged from 30 Oct: online
+ *                                               ¥50,000 / ¥80,000 / ¥100,000 (Green ¥70,000 /
+ *                                               ¥110,000 / ¥140,000); Exchange Order ¥53,000 /
+ *                                               ¥84,000 / ¥105,000 (Green ¥74,000 / ¥116,000 /
+ *                                               ¥147,000); "Prices are subject to change"
+ *   japanrailpass.net/en/use/special-ticket/    NOZOMI MIZUHO Ticket: Tokyo–Nagoya ¥4,180,
+ *                                               Tokyo–Kyoto ¥4,960, Tokyo–Shin-Osaka ¥4,960,
+ *                                               Tokyo–Hiroshima ¥6,500, Shin-Osaka–Hakata ¥4,960;
+ *                                               sold from one month before boarding at JR
+ *                                               stations; seat limits; refund fee ¥340 / ¥220
+ *   jr-group.jp/hikari-ryokin/                  Hikari/Kodama fares "as of October 2026", regular
+ *                                               season, reserved: Tokyo–Kyoto ¥13,850, Tokyo–
+ *                                               Shin-Osaka ¥14,400, Shin-Osaka–Hiroshima ¥10,420
+ *   japan.travel (JNTO news, 2026 price rise)   the 1 October 2026 rise and the official site
+ *                                               keeping the old prices "for a limited time"
+ * Carried with their own dates: Tokyo–Hiroshima ¥19,560 (Nozomi, Smart EX, JR West, read
+ * 28 Oct 2026 for our Tokyo to Hiroshima guide — JR publishes no Hikari/Sakura through fare
+ * table for this pair) and Tokyo–Kanazawa ¥14,400 (Kagayaki e-ticket, JR West, read 11 Nov
+ * 2026 for our Tokyo to Kanazawa guide).
+ * data/jr-fares.json still carries 13970 for Tokyo–Kyoto (the smartEX Nozomi figure) and is
+ * left alone because ten other pages read it; the calculator labels its fares as reference
+ * values, and the break-even table below uses the operator figures instead.
+ */
+const TODAY_ISO = "2026-11-12";
+const TODAY = checkedLabel(TODAY_ISO);
+
+function LastChecked({ date = TODAY_ISO, sources }: { date?: string; sources: { label: string; href: string }[] }) {
+  return (
+    <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+      Last checked: {date}. Official source{sources.length > 1 ? "s" : ""}:{" "}
+      {sources.map((s, i) => (
+        <span key={s.href}>
+          {i > 0 ? "; " : ""}
+          <a href={s.href} target="_blank" rel="noopener" style={{ color: "var(--text)", fontWeight: 600 }}>
+            {s.label}
+          </a>
+        </span>
+      ))}
+      .
+    </p>
+  );
+}
+
+const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
+const PASS_7 = 53000;
+
+/** Official one-way fares used in the break-even table (see the R05 note above). */
+const F = { kyoto: 13850, osaka: 14400, hiroshima: 19560, kanazawa: 14400 };
+
+const breakEvenRows = [
+  { trip: "Tokyo ⇄ Kyoto (Hikari, reserved)", fares: F.kyoto * 2, calc: `${yen(F.kyoto)} × 2` },
+  { trip: "Tokyo ⇄ Osaka (Shin-Osaka, Hikari, reserved)", fares: F.osaka * 2, calc: `${yen(F.osaka)} × 2` },
+  { trip: "Golden Route: Tokyo → Kyoto, Shin-Osaka → Tokyo", fares: F.kyoto + F.osaka, calc: `${yen(F.kyoto)} + ${yen(F.osaka)}` },
+  { trip: "Tokyo ⇄ Hiroshima (Nozomi on Smart EX)", fares: F.hiroshima * 2, calc: `${yen(F.hiroshima)} × 2` },
+  { trip: "Tokyo ⇄ Kanazawa (Kagayaki e-ticket)", fares: F.kanazawa * 2, calc: `${yen(F.kanazawa)} × 2` },
+  { trip: "Tokyo ⇄ Kyoto and Tokyo ⇄ Kanazawa in one week", fares: F.kyoto * 2 + F.kanazawa * 2, calc: "the two returns above" },
+  { trip: "Tokyo ⇄ Hiroshima and Tokyo ⇄ Kanazawa in one week", fares: F.hiroshima * 2 + F.kanazawa * 2, calc: "the two returns above" },
+].map((r) => {
+  const diff = r.fares - PASS_7;
+  return {
+    ...r,
+    vs: diff >= 0 ? `${yen(diff)} more than the pass` : `${yen(-diff)} less than the pass`,
+    verdict: diff >= 10000 ? "Buy the pass" : diff >= 0 ? "Borderline: pass by a little" : "Buy single tickets",
+    win: diff >= 0,
+  };
+});
+
+/** NOZOMI MIZUHO Ticket prices, japanrailpass.net, read TODAY. */
+const nozomiRows = [
+  { section: "Tokyo – Kyoto", price: "¥4,960" },
+  { section: "Tokyo – Shin-Osaka", price: "¥4,960" },
+  { section: "Tokyo – Hiroshima", price: "¥6,500" },
+  { section: "Shin-Osaka – Hakata (Mizuho/Nozomi)", price: "¥4,960" },
+  { section: "Tokyo – Nagoya", price: "¥4,180" },
+];
 
 /**
  * Before and after the 1 October 2026 revision. "Before" is the price both channels charged;
@@ -149,29 +231,8 @@ const passTypes = [
   { type: "Green (1st class)", duration: "21 days", agency: "¥147,000 (¥74,000)", online: "¥140,000 (¥70,000)" },
 ];
 
-/**
- * Recalculated 30 Oct 2026 against ¥53,000 rather than ¥50,000, and the rise moves two
- * rows. Every total is the sum of the one-way reference fares in data/jr-fares.json, which
- * is our own JR dataset of rounded Hikari/Sakura reserved-seat fares as of September 2026,
- * not an operator price table — the one exception is Tokyo ⇄ Kyoto at ¥13,970 each way,
- * which is a confirmed figure. The arithmetic, so the table can be checked:
- *
- *   Golden Route     13,970 + 580 + 14,400                  = ¥28,950
- *   (Tokyo–Shin-Osaka corrected 14,720 → 14,400 on 12 Nov 2026: 14,720 is the Nozomi
- *   price; jr-group.jp/hikari-ryokin/ gives ¥14,400 for the Hikari, as of Oct 2026.)
- *   Kyoto+Hiroshima  13,970 + 11,400 + 19,080               = ¥44,450
- *   Big loop         14,380 + 8,420 + 11,400 + 19,080       = ¥53,280
- *   Kyushu + Tohoku  23,390 ×2 + 11,410 ×2                  = ¥69,600
- */
-const itineraries = [
-  { route: "Tokyo only", fares: "~¥0 intercity JR", verdict: "Skip", win: false },
-  { route: "Kansai only (Kyoto / Osaka / Nara / Kobe)", fares: "~¥3,000–¥6,000", verdict: "Skip", win: false },
-  { route: "Golden Route round trip (Tokyo → Kyoto → Osaka → Tokyo)", fares: "~¥29,000", verdict: "Skip — ¥24,000 cheaper individually", win: false },
-  { route: "Tokyo → Kyoto → Hiroshima → Tokyo (one loop)", fares: "~¥44,500", verdict: "Skip — ¥8,500 short of the pass", win: false },
-  { route: "Tokyo → Kanazawa → Kyoto → Hiroshima → Tokyo", fares: "~¥53,300", verdict: "Borderline — clears ¥53,000 by ¥300", win: false },
-  { route: "Tokyo ⇄ Hakata (Fukuoka) plus Tokyo ⇄ Sendai", fares: "~¥69,600", verdict: "✓ Worth it", win: true },
-  { route: "Multi-region (Tokyo + Tohoku / Hokkaido / Kyushu)", fares: "~¥70,000+", verdict: "✓ Worth it", win: true },
-];
+// The 30 Oct 2026 itinerary table (sums of data/jr-fares.json reference fares) was replaced
+// on 12 Nov 2026 by breakEvenRows above, which uses operator fares only.
 
 const buyIt = [
   "You're compressing several long-distance legs into one week (e.g. Tokyo–Hiroshima–Kanazawa)",
@@ -191,7 +252,7 @@ const alternatives = [
   {
     name: "Individual Shinkansen tickets",
     bestFor: "1–2 intercity trips, including the Golden Route",
-    desc: "Buy at station machines, ticket counters, or via Smart EX/EkiNet. For a single Tokyo–Kyoto round trip (~¥27,940 on the Hikari) you pay less than half the ¥53,000 a 7-day pass now costs from an agency. You can also pay the Nozomi supplement (~¥4,960 each way Tokyo–Kyoto) for the fastest service.",
+    desc: "Buy at station machines, ticket counters, or via Smart EX/EkiNet. A Tokyo–Kyoto round trip on the Hikari is ¥27,700 at the window (¥13,850 each way, JR Group, as of October 2026), barely half the ¥53,000 a 7-day pass costs from an agency — and without a pass you can take the Nozomi on an ordinary ticket.",
   },
   {
     name: "Regional JR passes",
@@ -275,65 +336,29 @@ const tips = [
 const faqItems = [
   {
     q: "How much is the JR Pass in 2026?",
-    a: `Since 1 October 2026 the nationwide adult Ordinary pass is ¥53,000 for 7 days, ¥84,000 for 14 days and ¥105,000 for 21 days as an Exchange Order from a JR-designated agency outside Japan — the channel every reseller sells through. Green Car is ¥74,000, ¥116,000 and ¥147,000. Children aged 6 to 11 pay half. The JR Group's own price page still lists the pre-revision prices for a pass bought on the official website — ¥50,000, ¥80,000 and ¥100,000 Ordinary, ¥70,000, ¥110,000 and ¥140,000 Green — and publishes no closing date for them. Read on japanrailpass.net, ${PRICE_CHECKED}.`,
+    a: `The adult Ordinary JR Pass costs ¥53,000 for 7 days, ¥84,000 for 14 days and ¥105,000 for 21 days when bought from a JR-designated agency outside Japan, the prices in force since 1 October 2026. The Green Car pass is ¥74,000, ¥116,000 and ¥147,000, and children aged 6 to 11 pay about half. The JR Group's own site, japanrailpass.net, still sells the same passes for ¥50,000, ¥80,000 and ¥100,000 (Green ¥70,000, ¥110,000 and ¥140,000) and publishes no end date for that. Read on japanrailpass.net, ${TODAY}.`,
   },
   {
-    q: "How much does the JR Pass cost after the October 2026 price increase?",
-    a: `¥3,000 to ¥7,000 more, depending on the pass. On JNTO's record of the JR Group announcement, the adult Ordinary pass went from ¥50,000 to ¥53,000 (7 days), ¥80,000 to ¥84,000 (14 days) and ¥100,000 to ¥105,000 (21 days); Green Car from ¥70,000 to ¥74,000, ¥110,000 to ¥116,000 and ¥140,000 to ¥147,000; child prices from ¥25,000 to ¥27,000, ¥40,000 to ¥42,000 and ¥50,000 to ¥53,000. The rise took effect on 1 October 2026, local time where you buy. On the JR Group's own price page, read ${PRICE_CHECKED}, those revised figures appear in the overseas-agency table only — the online table still shows the old prices.`,
+    q: "Is the JR Pass worth it for Tokyo, Kyoto and Osaka?",
+    a: `No. Tokyo to Kyoto on the Hikari is ¥13,850 one way and Shin-Osaka to Tokyo ¥14,400 (JR Group, as of October 2026), so the whole Golden Route is about ¥28,250 in shinkansen fares, ¥24,750 less than a ¥53,000 7-day pass. A 7-day pass starts to pay off only when the covered JR fares in that week pass ¥53,000 (¥50,000 if you buy on the official site), for example Tokyo ⇄ Hiroshima plus Tokyo ⇄ Kanazawa at about ¥67,920.`,
   },
   {
-    q: "Can I still buy the JR Pass at the old price?",
-    a: `On the JR Group's own site, yes — as things stand. Read on ${PRICE_CHECKED}, japanrailpass.net still lists ¥50,000, ¥80,000 and ¥100,000 for the 7-, 14- and 21-day adult Ordinary pass bought online, the pre-revision prices, against ¥53,000, ¥84,000 and ¥105,000 for an Exchange Order from an overseas agency. JNTO describes this as the official website keeping the pre-October prices "for a limited time". No closing date appears on the official page, and the page's own caveat is that "prices are subject to change", in which case "the price indicated as of purchasing online or issuing the Exchange Order will apply" — so the old price is the price on the day you pay, not a reservation you can hold. If the ¥3,000 matters to your break-even, it is not a decision to leave for later.`,
+    q: "Can I use the JR Pass on the Nozomi?",
+    a: `Only with an extra ticket. The JR Pass covers the Hikari, Kodama and Sakura but not the Nozomi or Mizuho; for those you buy a NOZOMI MIZUHO Ticket for each ride, ¥4,960 Tokyo–Kyoto or Tokyo–Shin-Osaka and ¥6,500 Tokyo–Hiroshima. It is sold at JR stations in Japan from one month before boarding, seats are limited, and refunds before travel cost ¥340 (reserved) or ¥220 (non-reserved). Read on japanrailpass.net, ${TODAY}.`,
   },
   {
-    q: "Is the JR Pass cheaper online?",
-    a: `Yes, by ¥3,000 to ¥7,000. The JR Group's own price table gives ¥50,000, ¥80,000 and ¥100,000 for the 7-, 14- and 21-day adult Ordinary pass bought online, against ¥53,000, ¥84,000 and ¥105,000 for an Exchange Order issued by an overseas JR-designated agency. Green Car follows the same pattern: ¥70,000 online against ¥74,000 for 7 days, ¥140,000 against ¥147,000 for 21. Read on ${PRICE_CHECKED}. Prices are set by JR in both channels, so no reseller is undercutting another — the agency channel is simply the more expensive of the two since the October revision, and a reseller is worth its premium only for its own checkout, currency or support.`,
+    q: "Where should I buy the JR Pass?",
+    a: `On the official site if price is all that matters: japanrailpass.net sells the 7-day Ordinary pass for ¥50,000 against ¥53,000 from an overseas agency or reseller, a ¥3,000 to ¥7,000 difference across the range. JR sets both prices, so no reseller undercuts another. Buy from a reseller such as Klook only if you want its checkout, currency or support, or want to add a regional pass in the same basket. Either way the price is the one shown on the day you pay, and you collect the pass in Japan on your passport.`,
   },
-  {
-    q: "Is the JR Pass worth it in 2026?",
-    a: `For most travellers, no — and less often than before October 2026. The 7-day Ordinary pass went from ¥29,650 to ¥50,000 in October 2023 and from ¥50,000 to ¥53,000 in October 2026, so you now need roughly ¥53,000 of covered JR travel in a week to get your money back (¥50,000 if you buy on the official site). On this guide's JR reference fares, the Golden Route — Tokyo, Kyoto, Osaka and back — is about ¥29,000, and even Tokyo → Kyoto → Hiroshima → Tokyo comes to about ¥44,500, ¥8,500 short. The October rise pushed a route that used to clear the bar below it: adding Kanazawa to that loop reaches about ¥53,300, which beats ¥53,000 by ¥300 rather than ¥50,000 by ¥3,300. The pass wins when a trip strings several regions together — Kyushu plus Tohoku in one week comes to about ¥69,600.`,
-  },
-  {
-    q: "How do I work out whether the JR Pass is worth it for my trip?",
-    a: "Add up the individual reserved-seat fares for the JR-covered trains you will actually ride and compare the total with the pass price (¥53,000 for 7 days, ¥84,000 for 14, ¥105,000 for 21 from an agency; ¥50,000, ¥80,000 and ¥100,000 on the official site). The calculator on this page does it for you: tick your legs — for example Tokyo–Kyoto ¥13,970 one-way, Tokyo–Hiroshima ¥19,080, Tokyo–Kanazawa ¥14,380 — mark any round trips, and it shows the saving or the shortfall against the agency price. Only JR-operated trains, JR buses and the Miyajima ferry count; subways and private railways don't.",
-  },
-  {
-    q: "Can I use the JR Pass on the Shinkansen?",
-    a: "Yes — but not on the Nozomi or Mizuho (the fastest services on the Tokaido and Sanyo lines). The next-fastest options — Hikari and Sakura — are fully covered and add only 10–15 minutes on most journeys. On the Tohoku, Hokuriku, and Kyushu Shinkansen lines, almost all services are covered.",
-  },
-  {
-    q: "Does the JR Pass cover the Tokyo–Kyoto bullet train?",
-    a: "Yes — on the Hikari and Kodama services (about ¥13,970 one-way, ¥27,940 round trip). It does not cover the faster Nozomi without paying a separate supplement (around ¥4,960 each way Tokyo–Kyoto). A single Golden Route round trip on covered trains costs roughly ¥29,000, well under the ¥53,000 a 7-day pass costs from an agency and under the ¥50,000 it costs online — so the pass does not pay off for that trip alone either way.",
-  },
-  {
-    q: "Where can I buy the JR Pass?",
-    a: "You must purchase the JR Pass outside Japan — either on the JR Group's own site at japanrailpass.net or through an authorised reseller. Prices are set by JR, so no reseller is cheaper than another, but since 1 October 2026 the reseller channel is ¥3,000 to ¥7,000 dearer than the official site. After purchase you receive an Exchange Order, which you redeem at a JR Travel Service Center in Japan, available at major airports and stations.",
-  },
-  {
-    q: "Who is allowed to buy the JR Pass?",
-    a: "The JR Pass is for foreign tourists visiting Japan on a short-term \"Temporary Visitor\" entry status. It is not available to residents or long-stay visa holders. You'll need to show your passport with the Temporary Visitor stamp when you exchange your voucher for the pass in Japan.",
-  },
-  {
-    q: "Can I use the JR Pass on the Tokyo subway?",
-    a: "No. The JR Pass only covers JR-operated lines. Tokyo Metro and Toei Subway are separate operators and are not covered. Load an IC card (Suica or Pasmo) with cash for all subway, city bus, and private rail travel.",
-  },
-  {
-    q: "What's the difference between Ordinary and Green (1st class)?",
-    a: "Green class offers wider seats with a deeper recline and quieter carriages — equivalent to business class. Ordinary class is already comfortable by international standards and is the right choice for most tourists. Green is worth considering for very long journeys or if you plan many long-distance Shinkansen trips.",
-  },
-  // Added 26 Oct 2026 with the regional-pass section, so the FAQPage markup carries the
-  // question that section answers. Its pair, "Should I buy the JR Pass online or from an
-  // agency?", was folded into "Is the JR Pass cheaper online?" above on 30 Oct 2026 — same
-  // answer, and the shorter form is the one readers actually type.
   {
     q: "Is a regional pass cheaper than the JR Pass?",
-    a: `Almost always, if your trip stays in one region. On the operators' own prices, read on ${PASS_CHECKED}: JR West's WEST QR Kansai Area Pass is ¥2,700 for one day and ¥6,700 for four, the WEST QR Kansai Mini Pass is ¥3,000 for three consecutive days, and the Kansai WIDE Area Pass is ¥12,000 for five. A 7-day nationwide Ordinary JR Pass is ¥53,000 from an agency since 1 October 2026, or ¥50,000 online, so the four-day Kansai pass is roughly an eighth of it. The catch is coverage, not price: the Kansai Area Pass includes unlimited non-reserved HARUKA seats but no shinkansen at any length, the Mini Pass cannot be used on any limited express including the HARUKA, and only the WIDE pass adds reserved Sanyo Shinkansen seats between Shin-Osaka and Okayama. Price the cheaper pass against the places you are actually going before you look at the national one.`,
+    a: `Almost always, if your trip stays in one region. On JR West's own prices, read ${PASS_CHECKED}, the WEST QR Kansai Area Pass is ¥2,700 for one day and ¥6,700 for four, and the Kansai WIDE Area Pass is ¥12,000 for five days; JR West's Hokuriku Arch Pass, Tokyo to Kanazawa and Tsuruga for seven consecutive days, is ¥35,000. A 7-day nationwide pass is ¥53,000 from an agency. Check that the cheaper pass reaches the places you are going: the Kansai Area Pass covers no shinkansen, and the Hokuriku Arch Pass excludes the Tokaido Shinkansen.`,
   },
 ];
 
-const TITLE = "JR Pass Cost 2026: New Prices & Is It Worth It?";
+const TITLE = "JR Pass Price 2026: 7, 14 & 21-Day Costs and Is It Worth It?";
 const DESC =
-  "JR Pass cost after the October 2026 price increase: ¥53,000 for 7 days, ¥84,000 for 14, ¥105,000 for 21 — plus a break-even calculator for your route.";
+  "JR Pass price 2026: ¥53,000 for 7 days, ¥84,000 for 14, ¥105,000 for 21 (Green from ¥74,000). A Tokyo–Kyoto return is ¥27,700, so see which routes pay off.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/jr-pass-guide") } });
 
@@ -420,15 +445,14 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            JR Pass Cost 2026: New Prices<br />After the October Increase
+            JR Pass Price 2026: 7, 14 &amp; 21-Day Costs<br />and Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
-            The 7-day Ordinary pass went to ¥53,000 on 1 October 2026 — and the official JR site is still
-            selling it for ¥50,000. Here are both prices, confirmed, then the honest maths on whether
-            either one beats buying tickets.
+            Both JR Pass prices after the 1 October 2026 revision, the official fares they have to beat, and
+            the Nozomi ticket the pass does not include.
           </p>
           <div className={styles.heroBadges}>
-            {["October 2026 Prices", "Break-Even Calculator", "Cheaper Alternatives"].map((t) => (
+            {["October 2026 Prices", "Break-Even Table", "Nozomi Supplement"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -438,6 +462,21 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
       </section>
 
       <div className={styles.content}>
+        {/* Answer first (12 Nov 2026, R05): the first body paragraph is the complete answer. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>
+              The JR Pass price in 2026 is ¥53,000 for 7 days, ¥84,000 for 14 days and ¥105,000 for 21 days
+              for an adult Ordinary car pass bought from an overseas agency, the prices JR set on 1 October 2026;
+              the JR Group&apos;s own website still sells the same passes for ¥50,000, ¥80,000 and ¥100,000.
+            </strong>{" "}
+            The Green Car pass costs ¥74,000, ¥116,000 and ¥147,000. A Tokyo ⇄ Kyoto round trip on the Hikari
+            costs ¥27,700, so that trip alone does not earn the pass back; a 7-day pass pays off only when the JR
+            fares in that week pass ¥53,000, as Tokyo ⇄ Hiroshima plus Tokyo ⇄ Kanazawa (about ¥67,920) does.
+            Prices from japanrailpass.net and fares from the JR Group, checked {TODAY}.
+          </p>
+        </section>
+
         {/* Disclosure */}
         <div className={styles.disclosure}>
           <p className={styles.disclosureText}>
@@ -460,9 +499,9 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
               </strong>{" "}
               as an Exchange Order from an overseas agency — the channel every reseller sells through. The JR
               Group&apos;s own site is still charging the pre-revision ¥50,000 / ¥80,000 / ¥100,000, read on{" "}
-              {PRICE_CHECKED}. A Tokyo ⇄ Kyoto round trip alone does not come close to earning either price
-              back (about ¥27,940 against ¥53,000); a week that strings several regions together — Kyushu plus
-              Tohoku, say, at about ¥69,600 of covered fares — does.
+              {TODAY}. A Tokyo ⇄ Kyoto round trip alone does not come close to earning either price
+              back (¥27,700 on the Hikari against ¥53,000); a week with two long returns — Tokyo ⇄ Hiroshima
+              and Tokyo ⇄ Kanazawa, about ¥67,920 — does.
             </p>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
@@ -485,9 +524,8 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             <p className={styles.verdictText}>
               <strong>Bottom line:</strong> for the typical first-timer doing Tokyo, Kyoto and Osaka, the JR
               Pass costs <em>more</em> than buying tickets individually, and ¥3,000 more than it did in
-              September. The October rise also pushed one route that used to pay off below the line — Tokyo →
-              Kanazawa → Kyoto → Hiroshima → Tokyo now clears ¥53,000 by about ¥300. Run your own route through
-              the calculator before you decide.
+              September. Check your own route in the break-even table and the calculator below before you
+              decide.
             </p>
             <a href="#jr-pass-calculator" className={styles.verdictBtn}>
               Run the numbers for my route ↓
@@ -504,21 +542,59 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The price</span>
-          <h2 className={styles.sectionTitle}>How Much Is the JR Pass in 2026?</h2>
+          <h2 className={styles.sectionTitle}>How much is the JR Pass in 2026?</h2>
           <p className={styles.bodyText}>
             <strong>
               ¥53,000 for 7 days, ¥84,000 for 14 and ¥105,000 for 21, adult Ordinary car, bought as an
               Exchange Order from a JR-designated agency outside Japan.
             </strong>{" "}
-            Green Car is ¥74,000, ¥116,000 and ¥147,000. Children aged 6 to 11 pay half. Those are the prices
-            in force since the revision on 1 October 2026, and they are what Klook and every other reseller
-            charges, because JR sets the figure and no seller can discount it.
+            Green Car is ¥74,000, ¥116,000 and ¥147,000. Children aged 6 to 11 pay about half. Those are the
+            prices in force since the revision on 1 October 2026, and they are what every reseller charges,
+            because JR sets the figure and no seller can discount it.
           </p>
           <p className={styles.bodyText}>
             There is a second, cheaper price, and the JR Group publishes it on the same page: a pass bought on
             the official site is still <strong>¥50,000 / ¥80,000 / ¥100,000</strong> Ordinary and ¥70,000 /
-            ¥110,000 / ¥140,000 Green — the pre-revision figures. Both tables were read on {PRICE_CHECKED}.
+            ¥110,000 / ¥140,000 Green — the pre-revision figures. Both tables were read on {TODAY}.
           </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Pass (adult)", "Overseas agency / reseller", "Official site (japanrailpass.net)"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Answer: cheapest JR Pass</td>
+                    <td colSpan={2} style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>
+                      7-day Ordinary: ¥53,000 from an agency, ¥50,000 on the official site. It pays off only if
+                      your JR fares in that week top the price.
+                    </td>
+                  </tr>
+                  {passTypes.map((p) => (
+                    <tr key={`${p.type}-${p.duration}`}>
+                      <td className={styles.tdProvider}>{p.type}, {p.duration}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>{p.agency}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--accent)" }}>{p.online}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Child price (6–11) in brackets.
+          </p>
+          <LastChecked
+            sources={[
+              { label: "JAPAN RAIL PASS prices (JR Group)", href: "https://japanrailpass.net/en/purchase/price/" },
+              { label: "JNTO: 2026 price increase", href: "https://www.japan.travel/en/ca/news/price-increases-are-coming-to-the-nationwide-japan-rail-pass-2026/" },
+            ]}
+          />
 
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.75rem" }}>
             How much does the JR Pass cost after the October 2026 price increase?
@@ -576,16 +652,29 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           </p>
 
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.75rem" }}>
-            Is the JR Pass cheaper online?
+            Where should I buy the JR Pass?
           </h3>
           <p className={styles.bodyText}>
-            <strong>Yes, by ¥3,000 on the 7-day pass and up to ¥7,000 on a 21-day Green.</strong> That is the
+            <strong>
+              On the official site, japanrailpass.net, if price is all that matters: it is cheaper by ¥3,000 on
+              the 7-day pass and up to ¥7,000 on a 21-day Green.
+            </strong>{" "}
+            That is the
             whole of the difference between the two columns, and it is the only saving on offer anywhere: the
             price is JR&apos;s in both channels, so no reseller undercuts another. What a reseller sells you
             instead is its own checkout — your currency, your payment method, its support if something goes
             wrong, and in Klook&apos;s case the regional passes and the shinkansen seats in the same basket.
             That is worth ¥3,000 to some readers and nothing at all to others. If it is worth nothing to you,
             buy direct.
+          </p>
+          <p className={styles.bodyText}>
+            Three things no price table tells you. The official site&apos;s old price has no published end date
+            and applies only on the day you pay, so it cannot be held. The Nozomi ticket a pass holder needs is
+            sold only in Japan, from one month before the train, with a limited number of seats per train. And
+            if your trip stays in one region, the cheaper pass is usually a regional one: the{" "}
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> for Kyoto, Osaka and Nara,
+            the <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass</Link> for Kanto day trips, or
+            the <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> for Tokyo to Kanazawa.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -594,9 +683,15 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Or the Kansai WIDE pass →
             </KlookLink>
+            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              JR Tokyo Wide Pass →
+            </KlookLink>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Hokuriku Arch Pass →
+            </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Those two links go to Klook, which pays us a commission at no extra cost to you. No Klook price
+            Those links go to Klook, which pays us a commission at no extra cost to you. No Klook price
             appears on this page: Klook prices change by date, so every figure above is the JR
             Group&apos;s own.
           </p>
@@ -630,95 +725,134 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           <JrPassCalculator />
         </section>
 
-        {/* Conclusion first */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Start here</span>
-          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It in 2026?</h2>
-          <p className={styles.bodyText}>
-            <strong>For most travellers, no — and for slightly fewer than before October 2026.</strong> To earn
-            a 7-day pass back you need about <strong>¥53,000 of covered JR travel</strong> in a week if you buy
-            from an agency, ¥50,000 if you buy on the official site. The classic Golden Route — Tokyo, Kyoto and
-            Osaka and back — adds up to roughly ¥29,000 in covered Shinkansen fares, so buying those tickets
-            individually saves you well over ¥20,000. The{" "}
-            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen price guide</Link>{" "}
-            runs the same sum for a single Tokyo–Osaka return.
-          </p>
-          <p className={styles.bodyText}>
-            The JR Pass used to be a near-automatic buy. That changed in <strong>October 2023</strong>, when the
-            7-day Ordinary pass jumped from <strong>¥29,650 to ¥50,000</strong> — a roughly 70% increase
-            overnight — and it tightened again on <strong>1 October 2026</strong>, when the agency price went to
-            ¥53,000. The second rise is small next to the first, but it is enough to move a real itinerary:
-            Tokyo → Kanazawa → Kyoto → Hiroshima → Tokyo came to about ¥53,300 of covered fares, which used to
-            clear ¥50,000 by ¥3,300 and now clears ¥53,000 by ¥300. A route that was a comfortable yes is a
-            coin toss.
-          </p>
-          <p className={styles.bodyText}>
-            The pass still wins for one specific traveller: someone covering long distances and several regions in
-            a short window. The sections below show exactly where the line falls — then, if your route clears it,
-            how to buy and use a pass.
-          </p>
-        </section>
-
-        {/* Break-even thinking */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>The math</span>
-          <h2 className={styles.sectionTitle}>How to Work Out Your Own Break-Even</h2>
-          <p className={styles.bodyText}>
-            Forget rules of thumb and do the only calculation that matters: add up the individual fares for
-            the JR trips you&apos;d actually take, then compare to the pass price. The pass is worth it only if
-            your total exceeds it.
-          </p>
-          <ul className={styles.bodyList}>
-            <li>Tokyo ⇄ Kyoto on the Hikari: about <strong>¥13,970 one-way</strong>, <strong>¥27,940 round trip</strong>.</li>
-            <li>The faster Nozomi isn&apos;t covered — it needs a supplement (about <strong>¥4,960 each way</strong> Tokyo–Kyoto), so the pass forces you onto the slightly slower Hikari anyway.</li>
-            <li>City subways, private railways, and most buses are <strong>never</strong> covered, so they don&apos;t count toward your total.</li>
-            <li>From an agency the 7-day pass is <strong>¥53,000</strong>; 14-day <strong>¥84,000</strong>; 21-day <strong>¥105,000</strong> (Green Car ¥74,000 / ¥116,000 / ¥147,000).</li>
-            <li>On the official site the same passes are still <strong>¥50,000 / ¥80,000 / ¥100,000</strong>, so pick your target before you add anything up — the bar moves by ¥3,000 to ¥5,000 depending on where you buy.</li>
-          </ul>
-          <p className={styles.bodyText}>
-            Both sets of figures were read on japanrailpass.net on {PRICE_CHECKED}. The calculator below works
-            against the agency price, because that is the one most readers are quoted; if you buy direct, your
-            break-even is the lower number and anything within ¥3,000 of the bar flips in your favour.
-          </p>
-        </section>
-
-        {/* Itinerary table */}
+        {/* Worth it — rebuilt 12 Nov 2026 (R05) on operator fares only. */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Real itineraries</span>
-          <h2 className={styles.sectionTitle}>Does Your Itinerary Pay Off? (7-day pass, ¥53,000)</h2>
+          <span className={styles.sectionLabel}>Break-even</span>
+          <h2 className={styles.sectionTitle}>Is the JR Pass worth it for Tokyo, Kyoto and Osaka?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>No: the whole Tokyo → Kyoto → Osaka → Tokyo route costs about ¥28,250 in Hikari fares, ¥24,750
+            less than a ¥53,000 7-day pass.</strong> The pass pays off only when the JR fares you would otherwise
+            buy in one week pass ¥53,000 (¥50,000 if you buy on the official site), which in practice means two
+            long returns from Tokyo, such as Hiroshima and Kanazawa.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Itinerary", "Covered JR fares", "Verdict"].map((h) => (
+                    {["Trip in one week", "Fares without a pass", "Against a ¥53,000 7-day pass", "Verdict"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {itineraries.map((row) => (
-                    <tr key={row.route}>
-                      <td className={styles.tdProvider}>{row.route}</td>
-                      <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{row.fares}</td>
-                      <td style={{ fontWeight: 700, color: row.win ? "var(--accent)" : "var(--text)" }}>{row.verdict}</td>
+                  <tr>
+                    <td className={styles.tdProvider}>Answer</td>
+                    <td colSpan={3} style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>
+                      Buy the 7-day pass only for two or more long returns in a week (e.g. Hiroshima + Kanazawa,
+                      ¥67,920). Tokyo, Kyoto and Osaka alone: buy single tickets.
+                    </td>
+                  </tr>
+                  {breakEvenRows.map((row) => (
+                    <tr key={row.trip}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.trip}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>
+                        {yen(row.fares)}
+                        <span style={{ display: "block", fontWeight: 400, color: "var(--text-faint)", fontSize: "0.78rem" }}>
+                          {row.calc}
+                        </span>
+                      </td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.vs}</td>
+                      <td style={{ fontSize: "0.86rem", fontWeight: 700, color: row.win ? "var(--accent)" : "var(--text)" }}>
+                        {row.verdict}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Verdicts are against the ¥53,000 agency price in force since 1 October 2026; buy on the official
-            site at ¥50,000 and the Kanazawa loop becomes a clearer yes while nothing else changes. Tokyo–Kyoto
-            at ¥13,970 one way is a confirmed fare; the other totals are sums of the rounded reference fares in
-            this site&apos;s own JR dataset, as of September 2026, for covered (Hikari/Sakura) services — not an operator
-            price table. They will vary by route, season and seat reservations, so confirm current fares before
-            deciding. Figures exclude non-covered subways, private rail, and the Nozomi supplement.
+          <LastChecked
+            sources={[
+              { label: "JR Group Hikari/Kodama fares (as of Oct 2026)", href: "https://jr-group.jp/hikari-ryokin/" },
+              { label: "JAPAN RAIL PASS prices", href: "https://japanrailpass.net/en/purchase/price/" },
+            ]}
+          />
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            One adult, one way, regular season, reserved Ordinary seat; reserved seats cost ¥200 more in the
+            busy season and ¥400 more in the busiest. Tokyo–Kyoto ¥13,850 and Tokyo–Shin-Osaka ¥14,400 are the
+            JR Group&apos;s Hikari window fares, read {TODAY}. Tokyo–Hiroshima ¥19,560 is JR West&apos;s Smart EX
+            Nozomi fare, read {checkedLabel("2026-10-28")} for our{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen guide</Link>,
+            because JR publishes no Hikari/Sakura through-fare table for that pair. Tokyo–Kanazawa ¥14,400 is JR
+            West&apos;s Kagayaki e-ticket fare, read {checkedLabel("2026-11-11")} for our{" "}
+            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link>. The local JR hop
+            between Kyoto and Osaka is not included.
+          </p>
+          <p className={styles.bodyText}>
+            The table answers the price question only. For how those legs fit into a real trip, day by day, see
+            the <Link href="/guides/attractions/japan-10-day-itinerary">10-day Japan itinerary</Link>, the{" "}
+            <Link href="/guides/attractions/japan-14-day-itinerary">14-day itinerary</Link> and the{" "}
+            <Link href="/guides/attractions/japan-3-week-itinerary">3-week itinerary</Link>, each of which says
+            whether its route earns the pass back; for a single Tokyo–Osaka trip, the{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen guide</Link> has
+            every fare and train. On a 14-day pass the bar is ¥84,000 and on a 21-day pass ¥105,000.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Route clears ¥53,000? JR Pass on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Nozomi — the supplement the pass does not include. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Nozomi</span>
+          <h2 className={styles.sectionTitle}>Can I use the JR Pass on the Nozomi?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>Only with a separate NOZOMI MIZUHO Ticket, ¥4,960 Tokyo–Kyoto or Tokyo–Shin-Osaka and ¥6,500
+            Tokyo–Hiroshima, bought for every ride.</strong> The pass itself covers the Hikari, Kodama and Sakura,
+            which take a little longer on the same line, so most pass holders simply ride those.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Section (one way)", "NOZOMI MIZUHO Ticket"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Answer</td>
+                    <td style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>
+                      A Nozomi round trip Tokyo ⇄ Kyoto on a pass costs ¥9,920 extra; on the Hikari it costs nothing.
+                    </td>
+                  </tr>
+                  {nozomiRows.map((row) => (
+                    <tr key={row.section}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.section}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>{row.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked
+            sources={[{ label: "japanrailpass.net NOZOMI MIZUHO Ticket", href: "https://japanrailpass.net/en/use/special-ticket/" }]}
+          />
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Same price for Green, reserved and non-reserved seats. It is sold only to pass holders, at JR ticket
+            machines and offices in Japan, from one month before the day of travel; seats are limited per train,
+            so it can sell out when the train itself still has space. Refunds before travel cost ¥340 (reserved
+            or Green) or ¥220 (non-reserved), and a lost ticket is not refunded.
           </p>
         </section>
 
-        {/* Buy / Skip */}
+{/* Buy / Skip */}
         <section className={styles.prosConsSection}>
           <span className={styles.sectionLabel}>The verdict</span>
           <h2 className={styles.sectionTitle}>When to Buy It — and When to Skip It</h2>
@@ -872,47 +1006,9 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           </p>
         </section>
 
-        {/* JR Pass Types & Prices */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>JR Pass Types &amp; Prices</h2>
-          <p className={styles.bodyText}>
-            Six passes, two prices each. This is the same JR Group price page as the table above, laid out by
-            pass rather than by the revision — the figure you will actually be quoted, in both channels, with
-            the child price alongside it.
-          </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Pass Type", "Duration", "Overseas agency", "Official site"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {passTypes.map((p, i) => (
-                    <tr key={i}>
-                      <td className={styles.tdProvider}>{p.type}</td>
-                      <td className={styles.tdNetwork}>{p.duration}</td>
-                      <td className={styles.tdPrice}>{p.agency}</td>
-                      <td className={styles.tdPrice} style={{ color: "var(--accent)" }}>{p.online}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Adult price first, child in brackets; JR defines a child as 6 to 11 at the time of use, with
-            elementary-school pupils of 12 or over counted as adults. Both columns are the JR Group&apos;s own
-            price tables on japanrailpass.net, read {PRICE_CHECKED}. No reseller discounts either figure — JR
-            sets them — so the only choice that changes what you pay is which of the two columns you buy from.
-          </p>
-        </section>
+        {/* The "JR Pass Types & Prices" table moved into the price section on 12 Nov 2026. */}
 
-        {/* What Does the JR Pass Cover? */}
+{/* What Does the JR Pass Cover? */}
         <section className={styles.prosConsSection}>
           <span className={styles.sectionLabel}>Coverage</span>
           <h2 className={styles.sectionTitle}>What Does the JR Pass Cover?</h2>
