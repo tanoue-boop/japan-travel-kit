@@ -642,6 +642,19 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 12 Nov 2026: a night at Lake Kawaguchi for the Mt Fuji view. */}
+            <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21h18M5 21V10l7-5 7 5v11" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kawaguchiko Ryokan with Mt Fuji View (2026): 6 Inns</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 30 Oct 2026: the pass that covers the Fuji Excursion into Kawaguchiko end to end. */}
             <Link href="/guides/transport/tokyo-wide-pass" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

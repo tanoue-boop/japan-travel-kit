@@ -892,6 +892,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Rules & DisneySea" },
+              { href: "/guides/attractions/tokyo-disney-hotels", title: "Tokyo Disney Hotels (2026): Closest, Official & Budget" },
               { href: "/guides/attractions/sanrio-puroland-tickets", title: "Sanrio Puroland Tickets 2026: Prices by Date & How to Book" },
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },

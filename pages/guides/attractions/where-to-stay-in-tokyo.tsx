@@ -563,6 +563,19 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 12 Nov 2026: where to sleep for the park day. */}
+            <Link href="/guides/attractions/tokyo-disney-hotels" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21h18M5 21V10l7-5 7 5v11" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Disney Hotels (2026): Closest, Official &amp; Budget</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 9 Nov 2026: what the room averages per night, and the rest of the budget. */}
             <Link href="/guides/money/tokyo-trip-cost" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

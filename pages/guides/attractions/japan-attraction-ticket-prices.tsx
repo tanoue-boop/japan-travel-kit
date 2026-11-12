@@ -68,7 +68,7 @@ const H1 = `Japan Attraction Ticket Prices 2026: ${ROW_COUNT} Official Prices, U
 const DESC = `Official adult and child prices for ${ROW_COUNT} Japan attractions: median ${yen(S.medianAdultYen)}, ${S.mustBook.length} need booking, 2026 increases. Free CSV, checked monthly.`;
 
 /** The answer-first sentence, also the short form under "Cite this data". */
-const ANSWER = `We read the official admission prices of ${ROW_COUNT} Japanese attractions on each operator's own website (${FRESH} of them on ${AS_OF}). Across the ${S.paidCount} that charge, the median lowest adult ticket is ${yen(S.medianAdultYen)}; ${S.mustBook.length} must be booked before you arrive and ${S.freeCount} are free.`;
+const ANSWER = `The official admission prices of ${ROW_COUNT} Japanese attractions were checked on each operator's own website (${FRESH} of them on ${AS_OF}). Across the ${S.paidCount} that charge, the median lowest adult ticket is ${yen(S.medianAdultYen)}; ${S.mustBook.length} must be booked before you arrive and ${S.freeCount} are free.`;
 const CITE = `${SITE_NAME}, "Japan Attraction Ticket Prices 2026", ${PAGE_URL} (official prices checked ${d(S.firstChecked)}–${AS_OF}).`;
 
 /**

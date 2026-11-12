@@ -784,6 +784,14 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           intro="如果入園日期是週末或週年活動期間，值得住在度假區附近——度假區從東京站搭 JR 京葉線約 15 到 20 分鐘，開園前要通勤一次、夜間遊行後再通勤一次。住在舞濱或鄰近一站，就能省下早晚往返的時間。"
           items={tripPrepItems}
         />
+        {/* Added 12 Nov 2026: link to the English hotel guide (no translation yet). */}
+        <p className={styles.bodyText}>
+          正在挑飯店的話，
+          <Link href="/guides/attractions/tokyo-disney-hotels" style={{ color: "var(--red)", fontWeight: 600 }}>
+            東京迪士尼飯店指南（英文）
+          </Link>
+          比較了迪士尼飯店、官方飯店和合作飯店前往園區的方式、「歡樂入園」，以及開放訂房的時間（迪士尼飯店為 4 個月前）。
+        </p>
 
         {/* Foreign card / Klook explainer */}
         <section className={styles.bodySection}>

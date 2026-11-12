@@ -267,8 +267,8 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
         {/* The answer and the method, in the first two sentences. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            We read the Japan eSIM prices of <strong>{providersListed} providers</strong> on their own official sites between{" "}
-            {d(sum.firstChecked)} and {d(sum.lastChecked)} and could record per-plan prices for{" "}
+            The Japan eSIM prices of <strong>{providersListed} providers</strong> were checked on their own official sites between{" "}
+            {d(sum.firstChecked)} and {d(sum.lastChecked)}, with per-plan prices recorded for{" "}
             <strong>{sum.providers} of them ({sum.plans} plans)</strong>. The lowest price per GB is{" "}
             <strong>
               {perGbTop ? `${perGbTop.provider} ${perGbTop.plan} at ${usd(perGbTop.perGbUsd)}/GB` : "—"}
@@ -411,8 +411,8 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Ordered by each provider&apos;s lowest price per GB; providers that sell only unlimited plans follow, by 7-day price.
-            A blank cell means the provider does not publish that fact on the page we read — we leave it blank rather than
-            guess. Network, tethering and phone-number facts for Airalo, Holafly, eSIM Go, Sakura Mobile and Simbye were read
+            A blank cell means the provider does not publish that fact on the page checked — it is left blank rather than
+            guessed. Network, tethering and phone-number facts for Airalo, Holafly, eSIM Go, Sakura Mobile and Simbye were read
             on {d(data.tracker.autoFacts.airalo.factsCheckedOn)} ({d(data.tracker.autoFacts.simbye.factsCheckedOn)} for Simbye);
             their prices are re-read every day.
           </p>

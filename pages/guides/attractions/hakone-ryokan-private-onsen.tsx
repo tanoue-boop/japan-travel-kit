@@ -172,6 +172,7 @@ const ROUTE = "/guides/attractions/hakone-ryokan-private-onsen";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
+  { href: "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view", title: "Kawaguchiko Ryokan with Mt Fuji View (2026): 6 Inns" },
   { href: "/guides/attractions/hakone-free-pass", title: "Hakone Free Pass (2026): Prices, What It Covers & Is It Worth It?" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },

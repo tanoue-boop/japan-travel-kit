@@ -8286,3 +8286,177 @@ export const tokyoSevenDayTripPrep: KlookTripPrepItem[] = [
     why: "Seven days of maps, timed QR tickets and day-trip meeting points — the tour pickups are the mornings when live data matters most.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo Disney hotels — added 12 Nov 2026 (task-jtk-20261112-02).
+//
+// Every hotel and hotel-search page below was confirmed in its en-US form through
+// the www.klook.com search index on 12 Nov 2026. Hotels pay the 6.5% band. The
+// category each hotel belongs to (Disney Hotel / Official Hotel) and what that
+// category gives comes from tokyodisneyresort.jp, not from Klook. The Toy Story
+// Hotel and Fantasy Springs Hotel are left out: no en-US Klook form was indexed.
+// No prices: Klook's rates move by date.
+// ---------------------------------------------------------------------------
+
+export const tokyoDisneylandHotelKlook: KlookTour = {
+  title: "Tokyo Disneyland Hotel",
+  desc: "A Disney Hotel, the closest hotel to the Tokyo Disneyland entrance on the resort's own site",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/284084-tokyo-disneyland-hotel/"),
+};
+
+export const tokyoDisneySeaMiraCostaKlook: KlookTour = {
+  title: "Tokyo DisneySea Hotel MiraCosta",
+  desc: "A Disney Hotel built inside Tokyo DisneySea, with Happy Entry to DisneySea as well as Disneyland",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/911192-tokyo-disneysea-hotel-miracosta/"),
+};
+
+export const disneyAmbassadorHotelKlook: KlookTour = {
+  title: "Disney Ambassador Hotel",
+  desc: "A Disney Hotel with a free non-stop Disney Resort Cruiser shuttle to both parks",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/275567-disney-ambassador-hotel/"),
+};
+
+export const tokyoDisneyCelebrationHotelKlook: KlookTour = {
+  title: "Tokyo Disney Celebration Hotel",
+  desc: "The Value type Disney Hotel in Shin-Urayasu, about 20 minutes to the parks by free shuttle bus",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/252721-tokyo-disney-celebration-hotel/"),
+};
+
+export const hiltonTokyoBayKlook: KlookTour = {
+  title: "Hilton Tokyo Bay",
+  desc: "One of the six Official Hotels inside the resort, on the free shuttle to Bayside Station",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/287260-hilton-tokyo-bay/"),
+};
+
+export const sheratonGrandeTokyoBayKlook: KlookTour = {
+  title: "Sheraton Grande Tokyo Bay Hotel",
+  desc: "One of the six Official Hotels inside the resort, on the free shuttle to Bayside Station",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/395747-sheraton-grande-tokyo-bay-hotel/"),
+};
+
+/** Klook's hotel search around Tokyo Disney Resort. */
+export const tokyoDisneyResortHotels: KlookTour = {
+  title: "Hotels near Tokyo Disney Resort",
+  desc: "Klook's hotel page for the resort area, to compare every hotel on your dates",
+  url: klookLink("https://www.klook.com/en-US/destination/p50014798-tokyo-disney-resort/3-hotel/"),
+};
+
+/** Klook's hotel search around Tokyo DisneySea. */
+export const tokyoDisneySeaHotels: KlookTour = {
+  title: "Hotels near Tokyo DisneySea",
+  desc: "Klook's hotel page centred on DisneySea, for a stay built around that park",
+  url: klookLink("https://www.klook.com/en-US/destination/p50062012-tokyo-disneysea/3-hotel/"),
+};
+
+/** What a Disney stay books around the room: ticket (2%) next to 6.5 / 5 / 20%. */
+export const tokyoDisneyHotelsTripPrep: KlookTripPrepItem[] = [
+  {
+    label: tokyoDisneyResortHotels.title,
+    ctaLabel: "Check Disney-area hotels →",
+    url: tokyoDisneyResortHotels.url,
+    why: "If the hotels above are full on your dates, this lists the rest of the resort area, Official and Partner Hotels included.",
+  },
+  {
+    label: tokyoDisneyOneDayPassport.title,
+    ctaLabel: "Check the 1-Day Passport →",
+    url: tokyoDisneyOneDayPassport.url,
+    why: "A room does not include a park ticket, and every ticket is for one park on one date, so book it as soon as your date opens.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "The Haneda listing names Tokyo Disney Resort among its destinations, so the luggage goes under the bus straight to the resort.",
+  },
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "From Narita, the same operator runs with hold luggage. Check the stop list for your date, because destinations differ by route.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Your ticket QR code, Disney Premier Access and the shuttle times are all on your phone in the official app, so data matters from the first morning.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Kawaguchiko ryokan with a Mt Fuji view — added 12 Nov 2026 (task-jtk-20261112-02).
+//
+// Each hotel below was confirmed as a live en-US Klook page through the www.klook.com
+// search index on 12 Nov 2026. Hotels pay the 6.5% band. View, bath and shuttle
+// claims on the page come from each inn's own site (Fufu: its operator's booking
+// page), not from Klook. Fuji Lake Hotel (340544) is left out: only the no-locale
+// and en-HK/en-AU forms were indexed. No prices.
+// ---------------------------------------------------------------------------
+
+export const kawaguchikoAsafuji: KlookTour = {
+  title: "Fujikawaguchiko Onsen Hotel Asafuji",
+  desc: "A 13-room hot spring inn whose own site says every room looks out on Mt Fuji and Lake Kawaguchi",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/338018-fujikawaguchiko-onsen-hotel-asafuji/"),
+};
+
+export const kawaguchikoMifujien: KlookTour = {
+  title: "Hotel Mifujien",
+  desc: "Every room type lists a Mt Fuji and lake view, with a natural hot spring bath on the 7th floor",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/248006-hotel-mifujien/"),
+};
+
+export const kawaguchikoFufu: KlookTour = {
+  title: "Fufu Kawaguchiko",
+  desc: "All-suite inn: every room has a Mt Fuji view and its own open-air hot spring bath",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/840799-fufu-kawaguchiko/"),
+};
+
+export const kawaguchikoLaVista: KlookTour = {
+  title: "La Vista Fujikawaguchiko",
+  desc: "Mt Fuji and lake views from all but one room type, plus four private baths that are free when open",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/563607-la-vista-fujikawaguchiko/"),
+};
+
+export const kawaguchikoRoyalHotel: KlookTour = {
+  title: "Royal Hotel Kawaguchiko",
+  desc: "On the lakeshore by Oike Park, with indoor and outdoor hot spring baths. Some rooms have no Fuji view",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/434358-royal-hotel-kawaguchiko/"),
+};
+
+export const kawaguchikoHotel: KlookTour = {
+  title: "Kawaguchiko Hotel",
+  desc: "A lakeside inn in Funatsu with a large observation bath that looks out on Mt Fuji",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/231048-kawaguchiko-hotel/"),
+};
+
+export const fujikawaguchikoResortHotel: KlookTour = {
+  title: "Fujikawaguchiko Resort Hotel",
+  desc: "A 120-room hotel about 11 minutes on foot from Kawaguchiko Station, as its Klook listing describes it",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/361704-fujikawaguchiko-resort-hotel/"),
+};
+
+/** Klook's Fujikawaguchiko hotel page, for other inns or dates. */
+export const fujikawaguchikoHotels: KlookTour = {
+  title: "All hotels in Fujikawaguchiko",
+  desc: "Klook's hotel page for Fujikawaguchiko, to compare other inns on your dates",
+  url: klookLink("https://www.klook.com/en-US/destination/p50274308-fujikawaguchiko/3-hotel/"),
+};
+
+/** What a night at Lake Kawaguchi books around the room. */
+export const kawaguchikoRyokanTripPrep: KlookTripPrepItem[] = [
+  {
+    label: fujikawaguchikoHotels.title,
+    ctaLabel: "Check Fujikawaguchiko hotels →",
+    url: fujikawaguchikoHotels.url,
+    why: "If the inns here are full on your dates, this is the quickest way to compare others. Check the room type for its view.",
+  },
+  {
+    label: tokyoMtFujiHighwayBus.title,
+    ctaLabel: "Check the Fuji highway bus →",
+    url: tokyoMtFujiHighwayBus.url,
+    why: "The direct coach to Kawaguchiko Station, where the inns' shuttles start. Every seat is reserved, so book it with the room.",
+  },
+  {
+    label: mtFujiPass.title,
+    ctaLabel: "Check the Mt. Fuji Pass →",
+    url: mtFujiPass.url,
+    why: "Buses and trains around the lakes for the day after your night, when you are already there.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Most inns ask you to phone or book the shuttle from the station, and the morning weather decides where you go for the view.",
+  },
+];

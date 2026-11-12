@@ -93,6 +93,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-disney-hotels",
+    badge: "Where to stay",
+    title: "Tokyo Disney Hotels (2026): Closest, Official & Budget",
+    desc: "The resort's Disney, Official, Partner and Good Neighbor hotels compared on how you reach the gates, Happy Entry and buying tickets at the hotel, plus Tokyo Station as a base and when rooms open.",
+    group: "parks",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets",
     badge: "Tickets",
     title: "Osaka Aquarium Kaiyukan Tickets (2026): Prices, Hours and Time Slots",
@@ -438,6 +446,15 @@ export const attractionArticles: GuideArticle[] = [
     desc: "Four inns confirmed on their own sites, compared on the bath in the room, reserved baths, meals and check-in, with six areas of Hakone, tattoo rules by inn and how far ahead to book.",
     group: "cities",
     // Hakone is outside the three city hubs, and a night there is not a Tokyo stay.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view",
+    badge: "Where to stay",
+    title: "Kawaguchiko Ryokan with Mt Fuji View (2026): 6 Inns",
+    desc: "Six inns at Lake Kawaguchi compared on what their own sites say about the Mt Fuji view, hot spring baths and station shuttles, with bus and train fares from Shinjuku and the clearest season.",
+    // Same key as hakone-ryokan-private-onsen: an overnight stay outside the city hubs.
+    group: "cities",
     city: "other",
   },
   {

@@ -789,6 +789,14 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           intro="ถ้าวันที่คุณจะไปเป็นวันหยุดสุดสัปดาห์หรือวันในช่วงครบรอบ ควร — รีสอร์ทอยู่ห่างจากสถานีโตเกียว 15 ถึง 20 นาทีด้วยสาย JR Keiyo ซึ่งเป็นการเดินทางที่ต้องทำก่อนประตูเปิดและอีกครั้งหลังพาเหรดกลางคืน การพักที่ไมฮามะหรือห่างออกไปหนึ่งสถานีช่วยประหยัดเวลาเดินทางทั้งตอนเช้าและตอนกลับ"
           items={thTripPrep}
         />
+        {/* Added 12 Nov 2026: link to the English hotel guide (no translation yet). */}
+        <p className={styles.bodyText}>
+          ถ้ากำลังเลือกโรงแรม{" "}
+          <Link href="/guides/attractions/tokyo-disney-hotels" style={{ color: "var(--red)", fontWeight: 600 }}>
+            คู่มือโรงแรมโตเกียวดิสนีย์ (ภาษาอังกฤษ)
+          </Link>
+           เปรียบเทียบโรงแรมดิสนีย์ โรงแรมออฟฟิเชียล และโรงแรมพาร์ตเนอร์ ทั้งวิธีไปสวนสนุก สิทธิ์ Happy Entry และวันที่เปิดจองห้อง (โรงแรมดิสนีย์เปิดจองล่วงหน้า 4 เดือน)
+        </p>
 
         {/* Foreign card / Klook explainer */}
         <section className={styles.bodySection}>

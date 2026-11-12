@@ -794,6 +794,14 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           intro="주말이나 기념 기간의 날짜라면 그렇습니다. 리조트는 도쿄역에서 JR 게이요선으로 15~20분 거리라서, 게이트가 열리기 전에 한 번, 밤 퍼레이드가 끝난 뒤 또 한 번 오가야 합니다. 마이하마나 한 정거장 떨어진 곳에 묵으면 아침과 밤의 이동 시간을 줄일 수 있습니다."
           items={koTripPrep}
         />
+        {/* Added 12 Nov 2026: link to the English hotel guide (no translation yet). */}
+        <p className={styles.bodyText}>
+          호텔 자체를 고르고 있다면{" "}
+          <Link href="/guides/attractions/tokyo-disney-hotels" style={{ color: "var(--red)", fontWeight: 600 }}>
+            도쿄 디즈니 호텔 가이드(영어)
+          </Link>
+          에서 디즈니 호텔, 오피셜 호텔, 파트너 호텔을 파크까지 가는 방법, 해피 엔트리, 예약 시작 시기(디즈니 호텔은 4개월 전)로 비교합니다.
+        </p>
 
         {/* Foreign card / Klook explainer */}
         <section className={styles.bodySection}>

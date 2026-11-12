@@ -829,8 +829,8 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             <strong>Last checked: {LAST_CHECKED_RULES}</strong> · Source:
             https://faq-en.tokyodisneyresort.jp/answer/680ba05101fdf7431bafb6b0/ and
             https://faq-en.tokyodisneyresort.jp/answer/680ba05101fdf7431bafb6b8/. Premier Access prices are set
-            per attraction or show and shown in the app; we do not print a figure we could not read on the
-            resort&apos;s own page.
+            per attraction or show and shown in the app, so no figure is printed here that the resort&apos;s
+            own page does not show.
           </p>
         </section>
 
@@ -863,6 +863,13 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           Haneda (¥1,300) to the Disney resort hotels and parks, with your cases in the hold — fares
           read off limousinebus.co.jp on 9 Nov 2026; routes and timetables are in the{" "}
           <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus guide</Link>.
+        </p>
+        {/* Added 12 Nov 2026: the hotel half of the park day. */}
+        <p className={styles.bodyText}>
+          Choosing the hotel itself? Our{" "}
+          <Link href="/guides/attractions/tokyo-disney-hotels">Tokyo Disney hotels guide</Link> compares the
+          Disney Hotels, Official Hotels and Partner Hotels on how you reach the gates, which ones get Happy
+          Entry, and when rooms open — four months ahead for Disney Hotels, before your ticket date opens.
         </p>
 
         {/* Foreign card / Klook explainer */}
