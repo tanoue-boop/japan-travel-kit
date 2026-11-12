@@ -577,6 +577,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-7-day-itinerary",
+    badge: "Itinerary",
+    title: "Tokyo 7 Day Itinerary (2026): Day Trips, Passes & Bookings",
+    desc: "One week from one Tokyo hotel: four city days plus Hakone, Nikko and Kamakura or Kawaguchiko, with official journey times and fares for each day trip, the passes that pay, and what to book first.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-2-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 2 Day Itinerary (2026): Day by Day, and What to Book",

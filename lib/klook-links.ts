@@ -8194,3 +8194,95 @@ export const osakaGoKartTripPrep: KlookTripPrepItem[] = [
     why: "Kart shops ask you to arrive early and a late arrival can lose the slot without a refund; live maps to a side-street shop are what stop that.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo 7 day itinerary, added 12 Nov 2026 (task-jtk-20261112-01).
+//
+// Confirmed as live en-US listings through the www.klook.com search index on
+// 12 Nov 2026:
+//   5618    Nikko World Heritage Day Tour from Tokyo (group tour, about 12 hours,
+//           meets at the Keio Plaza Hotel in Shinjuku; Toshogu and Kegon Falls).
+//   44580   Nikko Customized Private One Day Tour from Tokyo (10 hours, private,
+//           with a guide; Toshogu, Taiyu-in, Rinno-ji, Kegon Falls).
+//   44652   Hakone Customized Private One Day Tour from Tokyo (10 hours, private,
+//           with a guide; Romancecar, Lake Ashi, the ropeway, the pirate ship).
+//   124861  Kamakura & Hakone One-Day Customized Private Tour (10-hour chartered
+//           car with hotel pickup in central Tokyo; the driver may not speak English).
+// Dropped: 207258 (Nikko private, no-locale page only in the index) and the Tokyo
+// day-trips list c28-tokyo/1002-day-trips (no-locale and other-locale pages only —
+// no en-US form found).
+// All tours are 6.5%. No Klook price appears on the page.
+// ---------------------------------------------------------------------------
+
+export const nikkoWorldHeritageDayTour: KlookTour = {
+  title: "Nikko World Heritage day tour from Tokyo",
+  desc: "A guided group day from Shinjuku to Toshogu Shrine and Kegon Falls, listed at about 12 hours",
+  url: klookLink("https://www.klook.com/en-US/activity/5618-nikko-world-heritage-day-tour-tokyo/"),
+};
+
+export const nikkoPrivateDayTour: KlookTour = {
+  title: "Nikko customised private day tour from Tokyo",
+  desc: "A private, guided 10-hour day: Toshogu, Taiyu-in, Rinno-ji and Kegon Falls at your own pace",
+  url: klookLink("https://www.klook.com/en-US/activity/44580-nikko-private-day-tour-tokyo/"),
+};
+
+export const hakonePrivateDayTour: KlookTour = {
+  title: "Hakone customised private day tour from Tokyo",
+  desc: "A private, guided 10-hour day with the Romancecar, the Hakone Ropeway and the Lake Ashi boat",
+  url: klookLink("https://www.klook.com/en-US/activity/44652-hakone-private-day-tour-tokyo/"),
+};
+
+export const kamakuraHakonePrivateCarTour: KlookTour = {
+  title: "Kamakura & Hakone private chartered-car day tour",
+  desc: "A 10-hour car and driver from a central Tokyo hotel, with the route set by you — Kamakura's Great Buddha and Hakone in one day",
+  url: klookLink("https://www.klook.com/en-US/activity/124861-kamakura-hakone-one-day-tour-customized-chartered-car/"),
+};
+
+/** Hotels for a week based in Tokyo: the existing Shinjuku / Tokyo Station / Ueno searches, no new ids. */
+export const tokyoSevenDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Shinjuku",
+    why: "The Romancecar to Hakone and the highway bus to Kawaguchiko both leave from Shinjuku, and the Nikko group tour meets there too — most of the day trips start a short walk away.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Tokyo Station / Marunouchi",
+    why: "The JR Yokosuka Line runs direct to Kamakura, the shinkansen towards Utsunomiya for Nikko leaves from here, and the Narita Express stops underneath.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Ueno / Asakusa",
+    why: "Tobu trains to Nikko leave from Asakusa, and Ueno has the Keisei Skyliner to Narita — the east-side base for the Nikko day.",
+    url: tokyoStayAreas[2].url,
+  },
+];
+
+/** "Book these on the same visit" for a week in Tokyo: 6.5% hotels and tours, 5% passes, 20% eSIM. */
+export const tokyoSevenDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "Six nights in one hotel: Shinjuku is where the Hakone train and the Kawaguchiko bus start, so the early day-trip mornings begin on foot.",
+  },
+  {
+    label: nikkoWorldHeritageDayTour.title,
+    ctaLabel: "Check the Nikko day tour →",
+    url: nikkoWorldHeritageDayTour.url,
+    why: "The Nikko day as one booking: the listing meets in Shinjuku and covers Toshogu and Kegon Falls, which are a bus ride apart if you go on your own.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "For the city days: Asakusa, Ueno, Toyosu and Ginza are all on Tokyo Metro or Toei lines, which the ticket covers. It does not cover JR or the Yurikamome.",
+  },
+  {
+    label: hakoneFreepass.title,
+    ctaLabel: "Check the Hakone Freepass →",
+    url: hakoneFreepass.url,
+    why: "The Hakone day's Odakyu train from Shinjuku plus the ropeway, the Lake Ashi boat and the buses around the loop on one pass.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Seven days of maps, timed QR tickets and day-trip meeting points — the tour pickups are the mornings when live data matters most.",
+  },
+];
