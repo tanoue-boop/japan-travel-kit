@@ -501,7 +501,7 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works</p>
+                <p className={styles.relatedTitle}>Kimono Rental in Japan 2026: Prices, Where to Rent &amp; How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

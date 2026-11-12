@@ -5,10 +5,20 @@ import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { kyotoHighlightBusTour, tokyoSightseeingBusTour } from "../../../lib/klook-links";
+import {
+  asakusaKimonoAiwafukuNo2,
+  asakusaKimonoTeaCeremony,
+  asakusaKimonoYae,
+  kyotoGionKimonoTeaCeremony,
+  kyotoHighlightBusTour,
+  kyotoKimonoAiwafukuGion,
+  kyotoKimonoOokiniArashiyama,
+  tokyoSightseeingBusTour,
+} from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygKyotoKimono, gygTokyoKimono } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
+import { checkedLabel } from "../../../lib/attraction-prices";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA links — Klook affiliate redirects (tracking links, both listings confirmed live
@@ -16,112 +26,149 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const KIMONO_ASAKUSA_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304896&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F100721-kimono-rental-experience-asakusa-kimono-mitsuki-tokyo%2F";
 const KIMONO_KYOTO_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1304900&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F1079-one-day-kimono-rental-kyoto%2F";
 
-// Inclusions, return deadlines, sizing and shop locations below are as the two Klook listings
-// describe them, checked 19 Oct 2026. No price is quoted anywhere on this page: rental pricing
-// moves by season and plan, and Klook answers automated reads of its product pages with HTTP
-// 403, so there is no figure we could have verified.
-const CHECKED = "19 October 2026";
+/**
+ * 12 Nov 2026 (task-jtk-20261112-R06). This page is the Japan-wide comparison hub for
+ * "kimono rental japan"; asakusa-kimono-rental and kyoto-kimono-rental keep the city terms.
+ * Read on the shops' own websites on 12 November 2026:
+ *   ewha-yifu.com (Rikawafuku, Asakusa)   Basic Plan ¥4,500 tax incl.; no hair service; 45–70
+ *                                         minutes reception to departure; final return 17:30;
+ *                                         last dressing reception 16:00; online booking up to 10
+ *                                         minutes before; free online cancellation to the day
+ *                                         before, 100% fee on the day; Kyoto peak seasons
+ *                                         (cherry blossom, autumn foliage, New Year): reserve
+ *   aiwafuku.com/en                       women's one-day plan ¥4,300 Asakusa / ¥5,500 Kyoto
+ *                                         with easy hair set; next-day return before 15:00 for
+ *                                         ¥2,200 Asakusa / ¥1,100 Kyoto; peak-season prices vary
+ *   waraku-kimono.jp (Kyoto)              All-Inclusive Plan with Hair Styling ¥3,980 + tax from
+ *                                         1 Oct; dressing about 15 minutes, 45–60 minutes in
+ *                                         the shop; return by 17:30, last appointment 16:00;
+ *                                         bookings open 20 days to 1 month ahead; no fee if
+ *                                         cancelled by the day before; Gion, Kiyomizu,
+ *                                         Arashiyama, Kyoto Station stores
+ *   kyokomachi-kimono.com (Kyoto)         Kyokomachi Plan ¥5,500 (¥4,400 online), Set Plan ¥3,300,
+ *                                         Silk Homongi ¥17,600 (¥16,500 online), Luxurious Silk
+ *                                         Furisode ¥55,000 (¥33,000 online); hair set +¥1,100
+ * Aiwafuku's Asakusa 16:30 / 17:30 return split was read on aiwafuku.com on 21 Oct 2026 for
+ * the Asakusa guide. No Klook price is quoted anywhere on this page.
+ */
+const TODAY_ISO = "2026-11-12";
+const CHECKED = checkedLabel(TODAY_ISO);
 
-const areaRows = [
+const TITLE = "Kimono Rental in Japan 2026: Prices, Where & How to Book";
+const H1 = "Kimono Rental in Japan 2026: Prices, Where to Rent & How to Book";
+const DESC =
+  "Kimono rental in Japan costs ¥3,300–¥5,500 at official Tokyo and Kyoto shops. Allow 45–70 minutes to dress and return by 17:30. Compare areas and book.";
+
+const SRC = {
+  rikawafuku: { label: "Rikawafuku Asakusa basic plan", href: "https://ewha-yifu.com/en/shops/asakusa/kimono-planlist/basic-plan" },
+  rikawafukuFaq: { label: "Rikawafuku FAQ", href: "https://ewha-yifu.com/en/faq" },
+  aiwafuku: { label: "Aiwafuku plans", href: "https://www.aiwafuku.com/en/" },
+  waraku: { label: "Waraku Kyoto all-inclusive plan", href: "https://waraku-kimono.jp/en/?p=5899" },
+  warakuFaq: { label: "Waraku FAQ", href: "https://waraku-kimono.jp/en/faq/" },
+  kyokomachi: { label: "Kyokomachi plans", href: "https://www.kyokomachi-kimono.com/e/plan/" },
+};
+
+function LastChecked({ sources }: { sources: { label: string; href: string }[] }) {
+  return (
+    <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+      Last checked: {TODAY_ISO}. Official source{sources.length > 1 ? "s" : ""}:{" "}
+      {sources.map((s, i) => (
+        <span key={s.href}>
+          {i > 0 ? "; " : ""}
+          <a href={s.href} target="_blank" rel="noopener" style={{ color: "var(--text)", fontWeight: 600 }}>
+            {s.label}
+          </a>
+        </span>
+      ))}
+      .
+    </p>
+  );
+}
+
+const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
+
+const priceRows = [
+  { shop: "Rikawafuku, Asakusa (Tokyo)", plan: "Basic Plan (kimono, obi, sandals, bag, dressing, bag storage; no hair)", price: "¥4,500" },
+  { shop: "Aiwafuku, Asakusa (Tokyo)", plan: "Women's one-day plan with easy hair set", price: "¥4,300" },
+  { shop: "Aiwafuku, Kyoto", plan: "Women's one-day plan with easy hair set", price: "¥5,500" },
+  { shop: "Waraku, Kyoto (Gion, Kiyomizu, Arashiyama, Kyoto Station)", plan: "All-Inclusive Plan with Hair Styling", price: "¥3,980 + tax" },
+  { shop: "Kyokomachi, Kyoto", plan: "Set Plan / Kyokomachi Plan (booked online; hair set +¥1,100)", price: "¥3,300 / ¥4,400" },
+  { shop: "Kyokomachi, Kyoto", plan: "Silk Homongi / Luxurious Silk Furisode (booked online)", price: "¥16,500 / ¥33,000" },
+];
+
+const cityRows = [
   {
-    area: "Asakusa (Tokyo)",
-    backdrops: "Senso-ji temple, Nakamise shopping street, Tokyo Skytree views",
-    vibe: "Lively, easy big-city day out",
-    when: "You're already on a Tokyo trip and want a half-day add-on",
-    booking: "Shops cluster within a few minutes of the station; the listing shown returns by 16:30",
+    city: "Tokyo — Asakusa",
+    backdrops: "Kaminarimon, Nakamise-dori, Senso-ji, Skytree views",
+    prices: "¥4,300–¥4,500 standard plan",
+    returnBy: "17:30 (Aiwafuku: 16:30 if you arrive by 12:00)",
+    best: "An easy half-day inside a Tokyo trip",
+    guide: { href: "/guides/attractions/asakusa-kimono-rental", label: "Asakusa kimono rental guide" },
   },
   {
-    area: "Kyoto",
-    backdrops: "Kiyomizu-dera, Gion's old streets, Fushimi Inari's torii gates",
-    vibe: "Classic, atmospheric, postcard old-town",
-    when: "You want the most photogenic, traditional setting",
-    booking: "Sells out fast in cherry-blossom and autumn seasons; next-day and postal return often available for a fee",
+    city: "Kyoto — Gion & Kiyomizu",
+    backdrops: "Hanamikoji, Yasaka Pagoda, Ninenzaka, Kiyomizu-dera",
+    prices: "¥3,300–¥5,500 standard plan",
+    returnBy: "17:30; next-day return for a fee at Aiwafuku",
+    best: "The classic old-town photographs",
+    guide: { href: "/guides/attractions/kyoto-kimono-rental", label: "Kyoto kimono rental guide" },
+  },
+  {
+    city: "Kyoto — Arashiyama",
+    backdrops: "Bamboo grove, Togetsukyo bridge",
+    prices: "Waraku Arashiyama: same Kyoto price list",
+    returnBy: "17:30",
+    best: "A self-contained day on the west side of Kyoto",
+    guide: { href: "/guides/attractions/kyoto-kimono-rental", label: "Kyoto areas compared" },
   },
 ];
 
-const whoFor = [
-  {
-    title: "Choose Asakusa if…",
-    desc: "You're basing yourself in Tokyo and want kimono as an easy half-day add-on. Shops cluster near Asakusa Station, so you can be dressed and walking toward Senso-ji within the hour — a low-effort way to fit the experience into a packed Tokyo itinerary.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 21h18" />
-        <path d="M5 21V8l7-5 7 5v13" />
-        <path d="M9 21v-6h6v6" />
-      </svg>
-    ),
-  },
-  {
-    title: "Choose Kyoto if…",
-    desc: "You want the picture-perfect version. Kyoto's preserved streets, wooden machiya houses, and shrines make every photo look like a postcard — the lanes around Kiyomizu-dera and Gion were practically made for kimono. It's the classic, most atmospheric choice.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 21V10l8-6 8 6v11" />
-        <path d="M4 21h16" />
-        <path d="M12 4v17" />
-        <path d="M8 21v-5M16 21v-5" />
-      </svg>
-    ),
-  },
-  {
-    title: "Going in summer?",
-    desc: "From roughly June through September, most shops offer the lighter, cooler yukata instead of a full kimono. It's the comfortable choice in the heat and humidity, looks great at summer festivals and fireworks, and is often a touch cheaper too.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="4" />
-        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
-      </svg>
-    ),
-  },
+const bookingRows = [
+  { when: "Any off-peak weekday", advice: "A few days ahead is enough; same-day online booking is possible at Rikawafuku up to 10 minutes before the slot" },
+  { when: "Weekends and Japanese holidays", advice: "Book once your day is fixed, especially if you want a morning start and the longest time in the kimono" },
+  { when: "Cherry blossom, autumn leaves, New Year (Kyoto)", advice: "Reserve as soon as you can; Rikawafuku recommends reserving for these seasons, and Waraku opens bookings 20 days to 1 month ahead" },
+  { when: "Children's plans", advice: "Book early — Kyokomachi marks its kids' plan as limited availability" },
 ];
 
 const steps = [
   {
     title: "Book online and pick your area",
-    desc: "Reserve a shop in Asakusa or Kyoto in advance, especially in spring and autumn when slots and the best designs sell out. Online booking locks in your time, confirms what's included, and usually offers an English-friendly checkout.",
+    desc: "Reserve a shop in Asakusa or one of Kyoto's areas, and choose a morning slot if you want the full day. Online booking locks in your time and, at several shops, a lower price than at the counter.",
   },
   {
     title: "Arrive and choose your kimono",
-    desc: "At the shop you'll browse hundreds of patterns and colours, then pick an obi (sash) and accessories to match. Many shops have multilingual staff to help you coordinate a look you're happy with.",
+    desc: "At the shop you browse hundreds of patterns and colours, then pick an obi (sash) and accessories to match. Many shops have multilingual staff to help you coordinate a look.",
   },
   {
     title: "Get dressed — and add a hair-set",
-    desc: "A professional dresser (kitsuke) puts the kimono on for you; it only takes around 20–30 minutes. Most shops offer an optional hair-set, which finishes the look and photographs especially well.",
+    desc: `A professional dresser (kitsuke) puts the kimono on for you. Waraku puts the dressing itself at about 15 minutes, but the whole visit from check-in to walking out is 45 to 60 minutes there and 45 to 70 minutes at Rikawafuku in Asakusa, as listed on ${CHECKED}.`,
   },
   {
     title: "Explore — then get back before the cut-off",
-    desc: `This is the step that shapes your day, so read it before you book a morning slot. Same-day return is standard and the deadline is earlier than people assume: the Asakusa listing here asks for the outfit back by 16:30, and the Kyoto one by 17:30, with next-day return or return by post available for an additional fee. That means a rental is realistically a half-day, and the walk back to the shop has to be in the plan. Deadlines as listed on ${CHECKED}.`,
+    desc: `Same-day return is standard and the deadline is earlier than people assume: 17:30 at Rikawafuku and Waraku, and 16:30 at Aiwafuku in Asakusa if you arrived by 12:00. Next-day return is an add-on at some shops — Aiwafuku charges ¥2,200 in Asakusa and ¥1,100 in Kyoto for a return before 15:00 the next day (${CHECKED}).`,
   },
 ];
 
 const faqItems = [
   {
     q: "How much does kimono rental cost in Japan?",
-    a: "Prices vary widely by area, plan, and season, so no single fixed figure is quoted here. A basic same-day plan typically starts from a few thousand yen, with premium or antique kimono, hair-set, and photo add-ons costing more. Summer yukata plans are often a little cheaper. Prices are variable in 2026 — confirm the exact figure for your shop and date at booking.",
+    a: `A standard one-day plan costs ¥3,300 to ¥5,500 at the official shops checked in Tokyo and Kyoto on ${CHECKED}: Rikawafuku's Asakusa basic plan is ¥4,500, Aiwafuku's women's plan with an easy hair set is ¥4,300 in Asakusa and ¥5,500 in Kyoto, Waraku's Kyoto all-inclusive plan with hair styling is ¥3,980 plus tax, and Kyokomachi's Kyoto plans start at ¥3,300. Silk visiting kimono and furisode plans cost more — ¥16,500 and ¥33,000 online at Kyokomachi. Aiwafuku notes that peak-season prices may vary.`,
   },
   {
-    q: "What's included in a kimono rental plan?",
-    a: `More than people expect, which is why the price is not just for the garment. The Asakusa listing here includes the kimono, obi, sandals, tabi socks, an undergarment, a Japanese handbag and basic hairstyling, plus free storage for your own clothes and bags while you are out — that last one matters more than it sounds if you are carrying a day pack. Professional dressing (kitsuke) by trained staff is standard. Photo shoots, premium or antique kimono and rickshaw rides are the usual paid add-ons. Inclusions as listed on ${CHECKED}.`,
+    q: "How far ahead should I book a kimono rental?",
+    a: "A few days ahead is enough on most dates, and Rikawafuku in Asakusa takes online bookings up to 10 minutes before the slot. For Kyoto's cherry-blossom, autumn-foliage and New Year seasons, book as soon as your dates are fixed: Rikawafuku recommends reserving for those seasons, and Waraku opens bookings 20 days to 1 month ahead. Both shops let you cancel free of charge up to the day before.",
   },
   {
-    q: "Will they have my size?",
-    a: `Usually, and the better listings say so explicitly rather than leaving you to hope. The Kyoto shop listed here quotes a range from S to 4LW for women and 5S to 5L for men, with professionally trained dressers — which is the thing to look for on a listing if sizing is a worry. If a shop does not publish a size range, ask before you book rather than on the day, because a dressing appointment is a fixed slot and there is no time to switch shops. Ranges as listed on ${CHECKED}.`,
+    q: "Is Kyoto or Tokyo better for kimono rental?",
+    a: "Kyoto if the photographs are the point of the trip, Tokyo's Asakusa if the rental is a half-day inside a Tokyo itinerary. Kyoto's Gion, Kiyomizu and Arashiyama streets are the classic setting and more shops offer next-day return there; Asakusa puts the shops minutes from Kaminarimon and Senso-ji. Standard plan prices overlap — ¥4,300 to ¥4,500 in Asakusa and ¥3,300 to ¥5,500 in Kyoto at the shops checked.",
   },
   {
-    q: "Do I need to book kimono rental in advance?",
-    a: "It's strongly recommended, and during peak seasons it's essential. In cherry-blossom (spring) and autumn-foliage seasons, popular shops, time slots, and the best designs sell out — sometimes well ahead. Booking online secures your slot, confirms what's included, and saves you queuing on the day. Off-peak weekdays are more relaxed, but advance booking is still the safer bet.",
+    q: "What is included in a kimono rental plan?",
+    a: `The kimono, undergarments, obi, sandals, tabi socks, a small bag and professional dressing are standard. Rikawafuku's Asakusa basic plan also stores your bags but has no hair service; Aiwafuku and Waraku include a simple hair set; Kyokomachi charges ¥1,100 for one. Photo shoots, premium silk kimono and rickshaw rides are the usual paid extras. As listed on ${CHECKED}.`,
   },
   {
-    q: "Should I rent a kimono in Asakusa or Kyoto?",
-    a: "Both are excellent — it depends on your trip. Asakusa in Tokyo is the easy add-on: shops sit near the station, and Senso-ji temple and Nakamise street make a lively, photogenic backdrop without leaving the city. Kyoto is the classic, more atmospheric choice, with preserved old-town streets around Gion, Kiyomizu-dera, and Fushimi Inari's torii gates — the most postcard-perfect setting. Choose Asakusa for convenience on a Tokyo trip, Kyoto for the traditional scenery.",
-  },
-  {
-    q: "What time do I have to return the kimono?",
-    a: `Earlier than most people expect, and this is the detail worth checking before you book anything else. Same-day return is standard: the Asakusa shop on the listing here asks for the outfit back by 16:30, and the Kyoto one by 17:30. Kyoto shops more often offer next-day return between 9:00 and 17:00 for an additional fee, or return by post for a fee. Treat a rental as a half-day with a hard deadline rather than a full day's costume, and build the walk back into your route. Deadlines as listed on ${CHECKED}.`,
-  },
-  {
-    q: "Can men and children rent kimono too?",
-    a: "Yes. Most rental shops offer men's kimono and children's sizes alongside women's, so couples, families, and groups can all dress up together. Children's plans are often cheaper, and many shops have couple or group packages. If you have a specific size or a men's plan in mind, check the shop's options when booking.",
+    q: "What happens if I cancel or it rains?",
+    a: `Cancel by the day before and there is no fee at Rikawafuku or Waraku; Rikawafuku charges 100% for a same-day cancellation. Rain does not cancel the rental: Rikawafuku says getting wet from rain is not treated as damage, and Waraku offers protection cover for stains or damage. As stated on the shops' FAQ pages on ${CHECKED}.`,
   },
 ];
 
@@ -131,21 +178,18 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
   return (
     <>
       <Head>
-        <title>Kimono Rental in Japan (2026): Kyoto vs Asakusa</title>
-        <meta
-          name="description"
-          content="Kimono rental in Japan for 2026: what a rental includes, the fixed return time nobody mentions, and whether to do it in Kyoto or in Asakusa."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kimono-rental-japan" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Kimono Rental in Japan (2026): Kyoto vs Asakusa" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/kimono-rental-japan" />
-        <meta property="og:description" content="Kimono rental in Japan for 2026: what a rental includes, the fixed return time nobody mentions, and whether to do it in Kyoto or in Asakusa." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kimono Rental in Japan (2026): Kyoto vs Asakusa" />
-        <meta name="twitter:description" content="Kimono rental in Japan for 2026: what a rental includes, the fixed return time nobody mentions, and whether to do it in Kyoto or in Asakusa." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -165,7 +209,7 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/kimono-rental-japan",
-              headline: "Kimono Rental in Japan (2026): Kyoto vs Asakusa",
+              headline: H1,
               updated,
             }),
           }}
@@ -212,15 +256,13 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           <p className={styles.eyebrow}>
             Updated {updated.label}
           </p>
-          <h1 className={styles.heroTitle}>
-            Kimono Rental in Japan (2026):<br />Kyoto vs Asakusa and How Booking Works
-          </h1>
+          <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            Dress up and wander Japan&apos;s most beautiful streets — but understand first that you are
-            booking a dressing appointment with a return deadline, not hiring a costume.
+            Prices from the shops&apos; own websites, Tokyo against Kyoto, and the return deadline that decides
+            how much of the day you actually get.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Kyoto vs Asakusa", "Same-Day Return"].map((t) => (
+            {[`Updated ${updated.label}`, "Tokyo & Kyoto compared", "Official shop prices"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -230,6 +272,20 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
       </section>
 
       <div className={styles.content}>
+        {/* Answer first */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>
+              Kimono rental in Japan costs ¥3,300 to ¥5,500 for a standard one-day plan at the official shops
+              checked in Tokyo and Kyoto on {CHECKED}, with silk visiting-kimono and furisode plans from
+              ¥16,500.
+            </strong>{" "}
+            Allow 45 to 70 minutes in the shop from check-in to walking out, and plan to have the outfit back by
+            17:30 the same day. A few days&apos; notice is enough on most dates, but book as soon as your dates
+            are fixed for Kyoto&apos;s cherry-blossom, autumn-leaf and New Year seasons.
+          </p>
+        </section>
+
         {/* Disclosure */}
         <div className={styles.disclosure}>
           <p className={styles.disclosureText}>
@@ -247,30 +303,26 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>What it really is</p>
-                <p className={styles.verdictStatValue}>A dressing appointment</p>
+                <p className={styles.verdictStatLabel}>Standard plan</p>
+                <p className={styles.verdictStatValue}>¥3,300–¥5,500</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Includes</p>
-                <p className={styles.verdictStatValue}>Outfit, accessories, dressing, storage</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Where</p>
-                <p className={styles.verdictStatValue}>Asakusa (Tokyo) or Kyoto</p>
+                <p className={styles.verdictStatLabel}>Time in the shop</p>
+                <p className={styles.verdictStatValue}>45–70 minutes</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Return by</p>
-                <p className={styles.verdictStatValue}>16:30 Asakusa · 17:30 Kyoto</p>
+                <p className={styles.verdictStatValue}>17:30 same day</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Free cancellation</p>
+                <p className={styles.verdictStatValue}>Up to the day before</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> this is a booked appointment with a deadline at both ends, not a
-              costume you pick up. You arrive at a fixed time, a trained dresser spends 20 to 30 minutes
-              putting the outfit on, and the listed shops want it back by 16:30 in Asakusa and 17:30 in
-              Kyoto — so plan a half-day whose route ends where it started. Choose{" "}
-              <strong>Asakusa</strong> for an easy Tokyo add-on or <strong>Kyoto</strong> for the old-town
-              scenery, and book ahead in spring and autumn when the slots and the good designs go. Details as
-              listed on {CHECKED}.
+              <strong>In short:</strong> choose <strong>Kyoto</strong> for the old-town photographs or{" "}
+              <strong>Asakusa</strong> for an easy half-day inside a Tokyo trip, take a morning slot, and build
+              the walk back to the shop into your route. Details from the shops&apos; websites, {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -280,7 +332,6 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
                 Kimono Rental — Kyoto →
               </KlookLink>
             </div>
-            {/* Both Klook shops above are unchanged; these open the same two cities elsewhere. */}
             <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
               <GygCompareButton slug="kimono-rental-japan" listing={gygTokyoKimono} label="Tokyo on GetYourGuide →" />
               <GygCompareButton slug="kimono-rental-japan" listing={gygKyotoKimono} label="Kyoto on GetYourGuide →" />
@@ -290,103 +341,197 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
 
         <BookingEsimCard />
 
-        <EsimCtaTop />
-
-        {/* Intro */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What Is a Kimono Rental?</h2>
-          <p className={styles.bodyText}>
-            Renting a kimono for the day is one of the most popular ways for visitors to experience traditional
-            Japan. For a single fee, a shop kits you out in a full outfit — the kimono, an <strong>obi</strong>{" "}
-            (sash), and the accessories that complete the look — and a trained dresser puts it all on for you.
-            You then keep it for the day, wander the sights, and bring it back the same evening.
-          </p>
-          <p className={styles.bodyText}>
-            Two areas dominate: <strong>Asakusa</strong> in Tokyo, near the famous Senso-ji temple, and{" "}
-            <strong>Kyoto</strong>, with its atmospheric old streets and shrines. Both have dozens of shops, often
-            with multilingual staff and hundreds of designs to choose from. The main decisions are simply{" "}
-            <em>which area</em> suits your trip and <em>which add-ons</em> — hair-set, photo shoot, rickshaw ride
-            — you want.
-          </p>
-        </section>
-
-        {/* Area comparison table */}
+        {/* Price table */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Where to rent</span>
-          <h2 className={styles.sectionTitle}>Asakusa vs Kyoto at a Glance</h2>
+          <span className={styles.sectionLabel}>Prices</span>
+          <h2 className={styles.sectionTitle}>How much does kimono rental cost in Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>¥3,300 to ¥5,500 for a standard one-day plan, tax included unless marked.</strong> Silk
+            visiting kimono (homongi) and furisode are a different price tier, from ¥16,500 at the Kyoto shop
+            that lists them.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Area", "Best backdrops", "Vibe", "When to choose", "Booking notes"].map((h) => (
+                    {["Shop", "Plan", "Price (official site)"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {areaRows.map((row) => (
-                    <tr key={row.area}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.area}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.backdrops}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.vibe}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.when}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.booking}</td>
+                  <tr>
+                    <td className={styles.tdProvider}>Answer</td>
+                    <td colSpan={2} style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>
+                      Standard plan ¥3,300–¥5,500 in Tokyo and Kyoto; silk plans from ¥16,500
+                    </td>
+                  </tr>
+                  {priceRows.map((r) => (
+                    <tr key={`${r.shop}-${r.plan}`}>
+                      <td className={styles.tdProvider}>{r.shop}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{r.plan}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)", whiteSpace: "nowrap" }}>{r.price}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Prices and inclusions vary by shop, plan, and season (2026, variable — confirm at booking). In both
-            areas, spring cherry-blossom and autumn-foliage seasons are the busiest, so reserve early.
+          <LastChecked sources={[SRC.rikawafuku, SRC.aiwafuku, SRC.waraku, SRC.kyokomachi]} />
+          <p className={styles.bodyText}>
+            Booking online is often the cheaper route: Kyokomachi&apos;s online prices are ¥1,100 below its
+            counter prices on most plans, and Aiwafuku notes that prices may vary in peak seasons. Prices on the
+            booking sites below change by date, so open a listing to see the figure for your day.
           </p>
         </section>
 
-        {/* Which area suits whom */}
-        <section className={styles.whoForSection}>
-          <span className={styles.sectionLabel}>Which area suits you</span>
-          <h2 className={styles.sectionTitle}>Asakusa, Kyoto, or Summer Yukata?</h2>
-          <div className={styles.whoForGrid}>
-            {whoFor.map((item) => (
-              <div key={item.title} className={styles.whoForCard}>
-                <div className={styles.whoForIcon}>{item.icon}</div>
-                <p className={styles.whoForTitle}>{item.title}</p>
-                <p className={styles.whoForDesc}>{item.desc}</p>
-              </div>
-            ))}
+        {/* City comparison */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Where to rent</span>
+          <h2 className={styles.sectionTitle}>Kyoto or Tokyo for kimono rental?</h2>
+          <p className={styles.bodyText}>
+            Kyoto if the photographs are the trip, Tokyo&apos;s Asakusa if the rental is a half-day inside a
+            Tokyo itinerary. Prices overlap, so the backdrop and your base decide it.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Area", "Backdrops", "Standard plan (shops checked)", "Return by", "Best for", "Area guide"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Answer</td>
+                    <td colSpan={5} style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>
+                      Kyoto (Gion and Kiyomizu) for the classic setting; Asakusa for convenience on a Tokyo trip
+                    </td>
+                  </tr>
+                  {cityRows.map((r) => (
+                    <tr key={r.city}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{r.city}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{r.backdrops}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{r.prices}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{r.returnBy}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{r.best}</td>
+                      <td style={{ fontSize: "0.88rem" }}>
+                        <Link href={r.guide.href} style={linkStyle}>{r.guide.label}</Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked sources={[SRC.rikawafuku, SRC.aiwafuku, SRC.waraku, SRC.kyokomachi]} />
+          <p className={styles.bodyText}>
+            For shop-by-shop detail, the{" "}
+            <Link href="/guides/attractions/asakusa-kimono-rental" style={linkStyle}>Asakusa kimono rental</Link>{" "}
+            guide covers the four Asakusa listings, their return times and the photo spots around Senso-ji, and
+            the{" "}
+            <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>Kyoto kimono rental</Link>{" "}
+            guide splits Kyoto by area — Gion and Kiyomizu, Arashiyama, and Kyoto Station. To plan the rest of
+            the day, see{" "}
+            <Link href="/guides/attractions/things-to-do-kyoto" style={linkStyle}>things to do in Kyoto</Link>{" "}
+            and{" "}
+            <Link href="/guides/transport/kyoto-transportation" style={linkStyle}>getting around Kyoto</Link>.
+          </p>
+        </section>
+
+        <KlookTourPicks
+          heading="Kimono Rental Shops by City"
+          intro="One shop per area, so the choice is the backdrop rather than the brand. Open a listing for the current price and return time on your date."
+          tours={[asakusaKimonoYae, asakusaKimonoAiwafukuNo2, kyotoKimonoAiwafukuGion, kyotoKimonoOokiniArashiyama]}
+        />
+
+        {/* Booking timing */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Booking</span>
+          <h2 className={styles.sectionTitle}>How far ahead should I book a kimono rental?</h2>
+          <p className={styles.bodyText}>
+            A few days ahead on most dates; as soon as your dates are fixed for Kyoto&apos;s peak seasons.
+            Cancellation is free up to the day before at the shops checked, so booking early costs nothing.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["When you go", "How far ahead to book"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Answer</td>
+                    <td style={{ fontSize: "0.88rem", fontWeight: 700, color: "var(--sumi)" }}>
+                      Days ahead normally; weeks ahead for cherry blossom, autumn leaves and New Year — free
+                      cancellation to the day before
+                    </td>
+                  </tr>
+                  {bookingRows.map((r) => (
+                    <tr key={r.when}>
+                      <td className={styles.tdProvider}>{r.when}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{r.advice}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked sources={[SRC.rikawafukuFaq, SRC.warakuFaq, SRC.kyokomachi]} />
+          <p className={styles.bodyText}>
+            Check the cancellation rule before you pay: at Rikawafuku a same-day cancellation
+            costs 100% of the plan, while cancelling online by the day before is free; Waraku also charges only
+            for same-day cancellations. Rain does not cancel the booking at either shop. Book the Asakusa or Kyoto
+            shop below with that in mind.
+          </p>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
+            <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              Check Asakusa availability →
+            </KlookLink>
+            <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              Check Kyoto availability →
+            </KlookLink>
           </div>
         </section>
+
+        <EsimCtaTop />
 
         {/* What's included */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>What you get</span>
-          <h2 className={styles.sectionTitle}>What&apos;s Included &amp; Common Add-Ons</h2>
+          <h2 className={styles.sectionTitle}>What is included in a kimono rental plan?</h2>
           <p className={styles.bodyText}>
-            A standard plan covers the <strong>kimono, obi, and accessories</strong>, plus professional dressing
-            (<em>kitsuke</em>) — staff dress you properly in about 20–30 minutes, since a kimono is tricky to put
-            on yourself. You&apos;ll choose from hundreds of patterns, and most shops also include footwear and a
-            small bag. A <strong>hair-set</strong> is the most common optional extra and really finishes the look.
+            The kimono, undergarments, obi, sandals, tabi socks, a small bag and professional dressing are
+            standard; whether a hair set is included depends on the shop. Rikawafuku&apos;s Asakusa basic plan
+            stores your bags but has no hair service, Aiwafuku and Waraku include a simple hair set, and
+            Kyokomachi adds one for ¥1,100 ({CHECKED}).
           </p>
           <p className={styles.bodyText}>
-            Popular add-ons include a <strong>professional photo shoot</strong>, a <strong>rickshaw</strong>{" "}
-            (<em>jinrikisha</em>) ride through the old streets, and premium or antique kimono for a more refined
-            outfit. In summer (roughly June–September), most shops switch to the lighter{" "}
-            <strong>yukata</strong>, which is cooler in the heat and perfect for festivals and fireworks. If
-            you&apos;re planning your Tokyo days around an Asakusa rental, our{" "}
-            <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Tokyo transport guide
-            </Link>{" "}
-            helps you get there easily.
+            Paid extras are usually a professional photo shoot, a rickshaw (<em>jinrikisha</em>) ride and premium
+            silk kimono. In summer most shops switch to the lighter <strong>yukata</strong>. If the rental is
+            part of a Tokyo day, our{" "}
+            <Link href="/guides/transport/tokyo-transportation" style={linkStyle}>Tokyo transport guide</Link>{" "}
+            covers getting to Asakusa, and the{" "}
+            <Link href="/guides/attractions" style={linkStyle}>things to do in Japan</Link> hub has the other
+            half-day experiences.
           </p>
+          <LastChecked sources={[SRC.rikawafuku, SRC.aiwafuku, SRC.waraku, SRC.kyokomachi]} />
         </section>
 
         {/* How it works */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How Kimono Rental Works</h2>
+          <h2 className={styles.sectionTitle}>How does kimono rental work on the day?</h2>
+          <p className={styles.bodyText}>
+            You book a slot, spend 45 to 70 minutes being dressed, and have the outfit back by 17:30 — four steps.
+          </p>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -400,10 +545,20 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           </div>
         </section>
 
+        <KlookTourPicks
+          heading="Kimono and Tea Ceremony in One Booking"
+          intro="If you only want the kimono for an hour, a tea ceremony that includes dressing avoids the 17:30 return altogether. One in Kyoto's Gion, one in Asakusa."
+          tours={[kyotoGionKimonoTeaCeremony, asakusaKimonoTeaCeremony]}
+        />
+        <p className={styles.bodyText}>
+          More options are compared in our{" "}
+          <Link href="/guides/attractions/tea-ceremony-japan" style={linkStyle}>tea ceremony in Japan</Link> guide.
+        </p>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Kimono Rental in Japan: FAQ</h2>
           <div className={styles.faqList}>
             {faqItems.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
@@ -425,12 +580,11 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           tours={[kyotoHighlightBusTour, tokyoSightseeingBusTour]}
         />
 
-        {/* Both cities, second platform. The two Klook shops and their return times are
-            unchanged. */}
+        {/* Both cities, second platform. The two Klook shops above are unchanged. */}
         <GygCompare
           slug="kimono-rental-japan"
           heading="Kimono Rentals on GetYourGuide"
-          intro="A rental shop has a finite number of outfits and dressers, which is exactly why spring and autumn book out — and why a second list of shops is worth having. GetYourGuide covers both cities, Kyoto more deeply than Tokyo. Check the return deadline wherever you book: it is the detail that decides how much of the day you actually get."
+          intro="A rental shop has a finite number of outfits and dressers, which is why spring and autumn book out — and why a second list of shops is worth having. GetYourGuide covers both cities, Kyoto more deeply than Tokyo. Check the return deadline wherever you book: it decides how much of the day you actually get."
           listings={[gygKyotoKimono, gygTokyoKimono]}
         />
 
@@ -537,8 +691,8 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Dress up for the day</h2>
             <p className={styles.ctaBannerDesc}>
-              Book a kimono rental in Asakusa or Kyoto — full outfit, professional dressing, and an optional
-              hair-set. Reserve ahead in spring and autumn, when the best slots and designs sell out fast.
+              Book a kimono rental in Asakusa or Kyoto — full outfit and professional dressing, with a hair set at
+              many shops. Reserve ahead in spring and autumn, and remember the 17:30 return.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
               <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>

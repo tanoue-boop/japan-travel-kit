@@ -575,7 +575,9 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             naturally with a kimono and with the temples you are already walking between — our{" "}
             <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental guide</Link> and{" "}
             <Link href="/guides/attractions/things-to-do-kyoto">things to do in Kyoto guide</Link> cover that
-            side of a Kyoto day.
+            side of a Kyoto day, and the{" "}
+            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan</Link> comparison sets
+            Kyoto&apos;s shop prices against Tokyo&apos;s.
           </p>
           <p className={styles.bodyText}>
             <strong>Tokyo</strong> wins on choice and convenience. There are more formats and more time slots:
@@ -730,7 +732,7 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works</p>
+                <p className={styles.relatedTitle}>Kimono Rental in Japan 2026: Prices, Where to Rent &amp; How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

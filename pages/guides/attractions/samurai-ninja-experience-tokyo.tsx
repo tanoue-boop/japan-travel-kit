@@ -276,7 +276,9 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
             Tokyo&apos;s samurai and ninja experiences let you step into Japan&apos;s warrior past for an hour or
             two: putting on armour, throwing shuriken, and trying the basic movements of the sword. They&apos;re
             indoors, run year-round, and sit in easy-to-reach central districts — a dependable plan in any
-            weather and a natural add-on around Asakusa.
+            weather and a natural add-on around Asakusa. If the rest of your Asakusa day is in costume too, our{" "}
+            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan</Link> guide compares
+            prices, dressing time and return deadlines in Tokyo and Kyoto.
           </p>
           <p className={styles.bodyText}>
             There are two broad formats. A museum-style venue — such as the Samurai &amp; Ninja Museum in the
@@ -473,7 +475,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kimono Rental in Japan (2026): Kyoto vs Asakusa and How Booking Works</p>
+                <p className={styles.relatedTitle}>Kimono Rental in Japan 2026: Prices, Where to Rent &amp; How to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
