@@ -867,8 +867,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/ghibli-park-tickets",
     badge: "Tickets",
-    title: "Ghibli Park Tickets (2026): Prices, When They Go On Sale and How to Buy From Overseas",
-    desc: "The Standard O-Sanpo Day Pass is ¥3,300 on a weekday and the Premium ¥7,300, with no gate sales at all — tickets open two months ahead on the 10th at 2 p.m. Japan time, from the only two sellers the park names.",
+    title: "Ghibli Park Tickets 2026: How to Book, Prices & Sale Dates",
+    desc: "Tickets go on sale on the 10th at 14:00 JST, two months ahead, from LAWSON TICKET or Klook overseas, with no gate sales. Standard ¥3,300–¥3,800, Premium ¥7,300–¥7,800; 40 minutes by direct bus from Nagoya Station.",
     group: "parks",
     // Nagakute, Aichi — east of Nagoya, so none of the three city buckets.
     city: "other",

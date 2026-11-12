@@ -892,7 +892,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Ghibli Park Tickets (2026): Prices, the Sale Date and How to Buy</p>
+                <p className={styles.relatedTitle}>Ghibli Park Tickets 2026: How to Book, Prices &amp; Sale Dates</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

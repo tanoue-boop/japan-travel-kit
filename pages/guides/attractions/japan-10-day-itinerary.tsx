@@ -494,6 +494,15 @@ const days: Day[] = [
         set out both routes. The third option is to let a coach do it: a join-in Fuji-and-Hakone day
         collects you in Tokyo and returns you there, which removes the luggage problem and the
         timetable at the cost of the westbound train.
+        <br />
+        <br />
+        <strong>If Studio Ghibli matters more than the mountains,</strong> the same westbound
+        Tokaido Shinkansen stops at Nagoya, the gateway to Ghibli Park — our{" "}
+        <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link>{" "}
+        covers the train, and our{" "}
+        <Link href="/guides/attractions/ghibli-park-tickets">Ghibli Park tickets guide</Link> covers the
+        pass, which goes on sale two months ahead and is never sold at the gate. The park is closed on
+        Tuesdays, so check the day before you swap.
       </>
     ),
     picks: [

@@ -1427,11 +1427,11 @@
       "booking": "Required",
       "bookingNote": "Advance reservation is required for every entry date and park tickets cannot be bought anywhere in the park; Ghibli's Grand Warehouse entry is by hourly time slot.",
       "sameDay": "No",
-      "hours": "Closes 17:00 (final entry 16:30); opening times and closed days on the Park Calendar",
+      "hours": "10:00–17:00 weekdays, 9:00–17:00 weekends and holidays (final entry 16:30); closed Tuesdays, New Year and maintenance days",
       "revised": null,
       "source": "ghibli-park.jp",
       "sourceUrl": "https://ghibli-park.jp/en/ticket/",
-      "checked": "2026-11-11",
+      "checked": "2026-11-12",
       "klook": {
         "label": "Klook: Ghibli Park ticket",
         "ref": "ghibliParkTicket"
@@ -1446,8 +1446,7 @@
         }
       ],
       "unverified": [
-        "system/service fee amount: page says a service charge applies on issue but gives no figure",
-        "opening time and closed days: on the Park Calendar, not read"
+        "system/service fee amount: page says a service charge applies on issue but gives no figure"
       ]
     },
     {
