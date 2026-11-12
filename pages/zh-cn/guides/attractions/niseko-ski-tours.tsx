@@ -70,14 +70,14 @@ const accessRows = [
     time: AIRPORT_BUS,
     cost: AIRPORT_BUS_FARE,
     booking: "需预约",
-    note: `第一次去的默认选择，也是能放雪具的方式。数字出自 Niseko United。因为要预约，所以要在出发前决定，没有现场购票的版本。核查日期：${OWN}。`,
+    note: `首次前往时的首选，也是能放雪具的方式。数字出自 Niseko United。因为要预约，所以要在出发前决定，没有现场购票的版本。核查日期：${OWN}。`,
   },
   {
-    option: "电车加公交巴士",
+    option: "JR 列车加公交车",
     time: AIRPORT_TRAIN,
     cost: AIRPORT_TRAIN_FARE,
     booking: "不需预约",
-    note: "比巴士慢半小时、贵 ¥200，但这是唯一不用预约就能去的方式。不选它的原因是行李：带着雪具在冬天的站台换车，没有人会提前想到。",
+    note: "比巴士慢半小时、贵 ¥200，但这是唯一不用预约就能去的方式。不选它的原因是行李：冬天带着雪具在站台换车有多辛苦，出发前往往想不到。",
   },
   {
     option: "季节滑雪巴士",
@@ -91,14 +91,14 @@ const accessRows = [
     time: "2 小时",
     cost: "每天 ¥8,000 起",
     booking: "需预约",
-    note: "官方列出最快的方式，但有条件：这是北海道冬季道路，没开过冰雪路的话，两小时这个数字没有意义。",
+    note: "官方列出的最快交通方式，但有条件：这是北海道冬季道路，没开过冰雪路的话，两小时的预估车程就没有参考价值。",
   },
   {
     option: "包车接送",
     time: "2 小时",
     cost: "¥25,000 起",
     booking: "需预约",
-    note: "按车计价而不是按人计价，所以对家庭或四人以上团体很合理。也是唯一配合航班实际到达时间出发的方式。",
+    note: "按车收费而不是按人数收费，因此很适合家庭或四人以上团体。也是唯一配合航班实际到达时间出发的方式。",
   },
 ];
 
@@ -127,14 +127,14 @@ const areaRows = [
   {
     area: "Grand HIRAFU",
     what: "四区中最大，也有村镇：餐厅、酒吧、租赁店和度假村滑雪学校都在这里",
-    stay: "默认的住宿区，也是唯一晚上出门步行、不用坐接驳车的区域",
+    stay: "默认的住宿区，也是唯一晚上外出可以步行、不必坐接驳车的区域",
     note: "Grand Hirafu 官方数字：22 条雪道（初级 9、中级 6、高级 7），2 座缆车和 7 座吊椅，垂直落差 940 米（山顶 1,200 米、山脚 260 米），最长雪道 5,300 米。",
   },
   {
     area: "Hanazono",
     what: "山上最安静的一侧，也是度假村直营 Niseko International Snowsports School 的所在地",
     stay: "适合家庭或新手：初级雪道人少，课程从这里开始",
-    note: "官方的教练课规定也出自这里：旺季只能预约全天课程。想在圣诞节上半天课之前，请先看清楚。",
+    note: "官方的滑雪课程规定也出自这里：旺季只能预约全天课程。如果想在圣诞节期间上半天课程，请先看清楚这一点。",
   },
   {
     area: "Niseko Village",
@@ -159,7 +159,7 @@ const monthRows = [
   },
   {
     month: "1 月",
-    snow: "累积 620 厘米，是该季雪量远超其他月份的月份",
+    snow: "累积降雪量达 620 厘米，远高于该季其他月份",
     crowds: "人多，度假村自己也用「拥挤」形容",
     verdict: `「Japanuary」，Niseko United 说这里是「全世界降雪最稳定的地方之一」。代价是整个月都是旺季价，每天 ${PEAK_DAY}。`,
   },
@@ -173,28 +173,28 @@ const monthRows = [
     month: "3 月",
     snow: "累积 75 厘米，但山顶仍有 380 厘米",
     crowds: "第一周后人变少",
-    verdict: "最划算的月份，度假村自己也这么说：晴天较多、气温较暖、教练课和租赁有春季优惠，还是「最适合野雪探索的月份」。3 月 22 日前是普通价，之后春季价 ¥8,800。",
+    verdict: "最划算的月份，度假村自己也这么说：晴天较多、气温较暖、滑雪课程和租赁有春季优惠，还是「最适合野雪探索的月份」。3 月 22 日前是普通价，之后春季价 ¥8,800。",
   },
   {
     month: "4 月到 5 月初",
     snow: "度假村资料：山顶积雪 4 月 315 厘米、5 月 170 厘米",
     crowds: "黄金周以外人少",
-    verdict: "全年最便宜的雪票，4 月 5 日起每天 ¥6,300。这个时候只有 Grand HIRAFU 和 Annupuri 开放，Niseko Village 4 月 4 日、Hanazono 4 月 11 日关闭。",
+    verdict: "全年最便宜的缆车票，4 月 5 日起每天 ¥6,300。这个时候只有 Grand HIRAFU 和 Annupuri 开放，Niseko Village 4 月 4 日、Hanazono 4 月 11 日关闭。",
   },
 ];
 
 const faqItems = [
   {
     q: "新千岁机场怎么到二世谷？",
-    a: `Niseko United 列出五种方式，默认是直达巴士：根据其交通页（核查日期：${OWN}）为 ${AIRPORT_BUS}、${AIRPORT_BUS_FARE}，需预约。其他选择同一来源：电车加公交巴士 ${AIRPORT_TRAIN}、${AIRPORT_TRAIN_FARE}，不需预约；季节滑雪巴士 3 到 3.5 小时、${AIRPORT_BUS_FARE}，仅 12 月至 3 月；租车 2 小时，每天 ¥8,000 起；包车 2 小时，¥25,000 起。多数人由两件事决定。第一是行李：巴士商品可放雪具加每人一件行李，1 月在北海道站台带雪具换车没有人会提前想到。第二是预约：只有电车加巴士不用预约，其他都要在出发前决定。自驾的话，两小时的前提是你习惯冰雪路。`,
+    a: `Niseko United 列出五种方式，默认是直达巴士：根据其交通页（核查日期：${OWN}）为 ${AIRPORT_BUS}、${AIRPORT_BUS_FARE}，需预约。其他选择同一来源：JR 列车加公交车 ${AIRPORT_TRAIN}、${AIRPORT_TRAIN_FARE}，不需预约；季节滑雪巴士 3 到 3.5 小时、${AIRPORT_BUS_FARE}，仅 12 月至 3 月；租车 2 小时，每天 ¥8,000 起；包车 2 小时，¥25,000 起。多数人由两件事决定。第一是行李：巴士接驳服务可携带雪具，另外每人可带一件行李；1 月在北海道的站台带着雪具换车有多辛苦，出发前往往想不到。第二是预约：只有 JR 列车加公交车不用预约，其他都要在出发前决定。自驾的话，两小时的前提是你习惯冰雪路。`,
   },
   {
     q: "二世谷什么时候滑雪最好？",
-    a: `要雪选 1 月，要划算选 3 月，要安静选 12 月。Grand Hirafu 最近完整雪季在约 850 米的白桦雪道测得的累积降雪（核查日期：${OWN}）为 12 月 386 厘米、1 月 620 厘米、2 月 263 厘米、3 月 75 厘米，1 月遥遥领先，Niseko United 形容这里是「全世界降雪最稳定的地方之一」。代价是人潮和旺季价：整个 1 月都在 ${PEAK_FROM} 到 ${PEAK_TO} 的旺季区间，每天 ${PEAK_DAY}。2 月粉雪持续，加上春节人潮，山顶积雪达当季最深的 400 厘米。3 月是度假村主打划算的月份：晴天多、气温暖、教练课和租赁有春季优惠，也是「最适合野雪探索的月份」，山顶仍有 380 厘米，3 月 23 日起雪票降到 ${EARLY_DAY}。假期前的 12 月是当地人的选择：缆车人少、旺季前价格，雪票是冬季最低的 ${EARLY_DAY}。`,
+    a: `要雪选 1 月，要划算选 3 月，要安静选 12 月。Grand Hirafu 最近完整雪季在海拔约 850 米的白桦雪道测得的累积降雪（核查日期：${OWN}）为 12 月 386 厘米、1 月 620 厘米、2 月 263 厘米、3 月 75 厘米，1 月遥遥领先，Niseko United 形容这里是「全世界降雪最稳定的地方之一」。代价是人潮和旺季价：整个 1 月都在 ${PEAK_FROM} 到 ${PEAK_TO} 的旺季区间，每天 ${PEAK_DAY}。2 月粉雪持续，加上春节人潮，山顶积雪达当季最深的 400 厘米。3 月是度假村主打划算的月份：晴天多、气温暖、滑雪课程和租赁有春季优惠，也是「最适合野雪探索的月份」，山顶仍有 380 厘米，3 月 23 日起缆车票降到 ${EARLY_DAY}。假期前的 12 月是当地人的选择：缆车人少、旺季前价格，缆车票是冬季最低的 ${EARLY_DAY}。`,
   },
   {
     q: "二世谷滑雪课要提前预约吗？",
-    a: `要，而且这不只是建议，而是官方规定。度假村直营的 Niseko International Snowsports School 在官网写明（核查日期：${SEASON}）「旺季仅可预约全天课程」，其教学旺季是 ${LESSON_PEAK}。这和缆车票的旺季不同：1 月下旬的半天课可以预约，12 月 20 日或 2 月 8 日的半天课只能现场询问。如果那几周你或孩子只适合上半天，请订全天提前结束，或改日期。学校暂定 2026 年 11 月 28 日到 2027 年 4 月 11 日开课，有团体、私人和定制课程，2026-27 已开放预约。经销商的私人课是另一批名额，可用海外信用卡付款，度假村学校满员时很有用。`,
+    a: `要，而且这不只是建议，而是官方规定。度假村直营的 Niseko International Snowsports School 在官网写明（核查日期：${SEASON}）「旺季仅可预约全天课程」，其教学旺季是 ${LESSON_PEAK}。这和缆车票的旺季不同：1 月下旬的半天课可以预约，12 月 20 日或 2 月 8 日的半天课只能现场询问。如果那几周你或孩子只适合上半天，请预订全天课程并提前结束，或改日期。学校暂定 2026 年 11 月 28 日到 2027 年 4 月 11 日开课，有团体、私人和定制课程，2026-27 已开放预约。第三方预订平台的私人课是另一批名额，可用海外信用卡付款，度假村学校满员时很有用。`,
   },
   {
     q: "二世谷适合新手吗？",
@@ -210,19 +210,19 @@ const faqItems = [
   },
   {
     q: "二世谷要跟团，还是可以自己去？",
-    a: `完全看你住哪里，这正是这个搜索词没说出来的问题。住在二世谷就不用跟团：订好机场巴士、教练课、装备和雪票，日子自然过得去。住在札幌的话（不少人如此，因为酒店和餐厅都在市区），导览一日游是滑二世谷唯一合理的方式，因为根据 Niseko United 的数字，从机场这侧单程要 2 到 3.5 小时，自己安排的话大部分白天都花在巴士上。这就是札幌出发的雪票加巴士行程的用途：Grand Hirafu 固定六小时，交通和雪票一次订好。第三种情况是同行者有人滑、有人不滑，这时包车最合适，因为是按车计价而不是按滑雪人数计价。`,
+    a: `完全看你住哪里，这正是搜索这个词的人真正想问的问题。住在二世谷就不用跟团：订好机场巴士、滑雪课程、装备和缆车票，其余行程就能自行安排。住在札幌的话（不少人如此，因为酒店和餐厅都在市区），导览一日游是滑二世谷唯一合理的方式，因为根据 Niseko United 的数字，从机场这侧单程要 2 到 3.5 小时，自己安排的话大部分白天都花在巴士上。这就是札幌出发的缆车票加巴士行程的用途：Grand Hirafu 固定六小时，交通和缆车票一次订好。第三种情况是同行者有人滑、有人不滑，这时包车最合适，因为是按车收费，而不是按滑雪人数收费。`,
   },
   {
     q: "可以从札幌当天往返二世谷吗？",
-    a: `可以，但要是预订好的行程，不能临时凑。限制在距离：Niseko United 的交通页写新千岁到二世谷预约巴士 ${AIRPORT_BUS}、电车加公交巴士 ${AIRPORT_TRAIN}，札幌也在同一侧，所以自己安排的一日游大部分白天都在路上。解决这个问题的商品是把巴士包进价格、销售固定的滑雪时段，通常是 Grand Hirafu 约六小时含雪票，在札幌市区多个地点上车。想在城市旅行中滑上一天，这最合适。想滑两天的话，算法就变了，含住宿的两三天行程不再是奢侈。如果山因强风关闭（这会发生，上方缆车尤其常见），走同一巴士网的登别与洞爷湖一日游就是备选。`,
+    a: `可以，但要是预订好的行程，不能临时凑。限制在距离：Niseko United 的交通页写新千岁到二世谷预约巴士 ${AIRPORT_BUS}、JR 列车加公交车 ${AIRPORT_TRAIN}，札幌也在同一侧，所以自己安排的一日游大部分白天都在路上。解决这个问题的商品是把巴士包进价格、销售固定的滑雪时段，通常是 Grand Hirafu 约六小时含缆车票，在札幌市区多个地点上车。想在城市旅行中滑上一天，这最合适。想滑两天的话，算法就变了，含住宿的两三天行程不再是奢侈。如果山因强风关闭（这会发生，上方缆车尤其常见），走同一巴士网的登别与洞爷湖一日游就是备选。`,
   },
   {
     q: "二世谷有夜间滑雪吗？",
-    a: `有，根据 Niseko United 日期为 2026 年 12 月 12 日到 2027 年 3 月 22 日（核查日期：${OWN}）。这是选二世谷而不是本州雪场的实际理由之一：在白天最短的纬度，灯光雪道延长了冬天短短的一天，而且正好是雪最多的那几周。有两点要注意。日期不覆盖整季：${SEASON_OPEN} 开业后的前两周没有夜滑，3 月 22 日后的春季和末季也没有，如果选了便宜的 4 月就要留意。夜间运营也和这里的一切一样看天气：上方缆车因风暂停，暴风雪的夜晚灯就不开。请看度假村每日的运营信息，不要只看攻略，包括这一篇。`,
+    a: `有，根据 Niseko United 日期为 2026 年 12 月 12 日到 2027 年 3 月 22 日（核查日期：${OWN}）。这是选二世谷而不是本州雪场的实际理由之一：在冬季日照短的北海道，夜间开放的雪道延长了每天能滑雪的时间，而且正好是雪最多的那几周。有两点要注意。日期不覆盖整季：${SEASON_OPEN} 开业后的前两周没有夜滑，3 月 22 日后的春季和末季也没有，如果选了便宜的 4 月就要留意。夜间运营也和这里的一切一样看天气：上方缆车因风暂停，暴风雪的夜晚灯就不开。请看度假村每日的运营信息，不要只看攻略，包括这一篇。`,
   },
   {
     q: "二世谷要玩几天？",
-    a: `为了雪而来的话至少三晚，原因在交通而不是山。根据 Niseko United 的数字，机场单程预约巴士 ${AIRPORT_BUS}，两晚的行程有相当部分在车上，一晚不值得。三晚有两个完整的滑雪日，加上到达当天下午或离开当天早上。五到七晚才开始值回票价，因为二世谷最有名的稳定、反复的粉雪是统计上的论点，不是一天的事，Grand Hirafu 1 月 620 厘米代表的是很多个早晨。反过来说，如果旅行以城市为主、只想滑一天，就不要把据点搬到二世谷，订札幌出发的导览一日游、留在市区酒店就好。`,
+    a: `为了雪而来的话至少三晚，原因在交通而不是山。根据 Niseko United 的数字，机场单程预约巴士 ${AIRPORT_BUS}，两晚的行程有相当部分在车上，一晚不值得。三晚有两个完整的滑雪日，加上到达当天下午或离开当天早上。住上五到七晚，才能充分享受这趟滑雪旅行，因为二世谷最有名的粉雪是否稳定、反复降下，要看一整季的记录，而不是某一天，Grand Hirafu 1 月 620 厘米代表的是很多个早晨。反过来说，如果旅行以城市为主、只想滑一天，就不要把住宿地点搬到二世谷，订札幌出发的导览一日游、留在市区酒店就好。`,
   },
 ];
 
@@ -231,37 +231,37 @@ const nisekoSameTrip: KlookTripPrepItem[] = [
     label: "Klook 日本 eSIM",
     ctaLabel: "在 Klook 查看 eSIM →",
     url: klookFor(klookEsim.url, LOCALE),
-    why: "二世谷的一天由天气决定：上方缆车因风暂停，暴风雪中各区关闭又重开，这些公告都发到手机，不会出现在山脚的公告栏。",
+    why: "二世谷的一天由天气决定：上方缆车因风暂停，暴风雪中各区关闭又重开，这些公告都会通过手机发布，而不是张贴在山脚下的公告栏。",
   },
   {
     label: "二世谷接驳巴士（新千岁机场与札幌）",
     ctaLabel: "查看二世谷接驳 →",
     url: klookFor(nisekoResortShuttleBus.url, LOCALE),
-    why: "根据 Niseko United 的数字，新千岁直达巴士 2.5 小时、¥6,000，电车加巴士 3 小时、¥6,200。这款商品可放雪具加每人一件行李，并要求国内线到达后 45 分钟、国际线到达后 90 分钟，请配合航班。",
+    why: "根据 Niseko United 的数字，新千岁直达巴士 2.5 小时、¥6,000，JR 列车加巴士 3 小时、¥6,200。这项接驳服务可携带雪具，另外每人可带一件行李，并要求预订国内线到达 45 分钟后、国际线到达 90 分钟后的班次，请配合航班。",
   },
   {
     label: "JR 北海道周游券",
     ctaLabel: "查看 JR 北海道周游券 →",
     url: klookFor(jrHokkaidoRailPass.url, LOCALE),
-    why: "只有二世谷是环岛长途旅行的一站才需要。根据 JR 北海道页面 5 天 ¥22,000 起，不含巴士，所以机场到度假村往返的旅行不用买。",
+    why: "只有当二世谷是北海道长途环岛旅行中的一站时才需要。根据 JR 北海道页面 5 天 ¥22,000 起，不含巴士，所以机场到度假村往返的旅行不用买。",
   },
   {
-    label: "二世谷 Grand Hirafu 英语滑雪与单板课（4 或 6 小时）",
-    ctaLabel: "查看二世谷教练课 →",
+    label: "二世谷 Grand Hirafu 英语双板与单板滑雪课程（4 或 6 小时）",
+    ctaLabel: "查看二世谷滑雪课程 →",
     url: klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE),
-    why: `这项预订背后有官方规定：度假村学校在其旺季 ${LESSON_PEAK} 只接受全天课预约，所以那几周的半天课要通过经销商或现场询问。`,
+    why: `这项课程预订受官方规定限制：度假村学校在其旺季 ${LESSON_PEAK} 只接受全天课预约，所以那几周如果想上半天课，需要通过第三方预订平台预约或到现场咨询。`,
   },
   {
     label: "二世谷雪具租赁（Rhythm，比罗夫）",
     ctaLabel: "查看二世谷雪具租赁 →",
     url: klookFor(nisekoSkiSnowboardRental.url, LOCALE),
-    why: "出发前先预约装备，在缆车脚下的比罗夫领取，差别在于第一个早晨是在滑雪还是在排队。",
+    why: "出发前先预约装备，在比罗夫的缆车站旁领取，差别在于第一个早晨是在滑雪还是在排队。",
   },
   {
     label: "二世谷酒店",
     ctaLabel: "在 Klook 查看二世谷酒店 →",
     url: klookFor(japanWinterStayAreas[7].url, LOCALE),
-    why: "决定其他一切的预订。住在四区中的哪一区，决定缆车是步行还是坐接驳车，Niseko United 也说旺季假期很早就订满。",
+    why: "这项预订会决定其他所有安排。住在四区中的哪一区，决定了前往缆车是步行还是坐接驳车，Niseko United 也说旺季假期很早就订满。",
   },
 ];
 
@@ -296,13 +296,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 更新于 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-二世谷滑雪：<br />交通、教练课与四大区域
+二世谷滑雪：<br />交通、滑雪课程与四大区域
 </h1>
           <p className={styles.heroSubtitle}>
-四座相连雪场，新千岁预约巴士 {AIRPORT_BUS}，还有一条常让人措手不及的官方期限：旺季教练课规定。
+四座相连的滑雪场，从新千岁机场坐预约制巴士约 {AIRPORT_BUS}，还有一条常让人措手不及的官方规定：旺季滑雪课程的预约限制。
 </p>
           <div className={styles.heroBadges}>
-            {[`更新于 ${monthLabel(updated.iso, LOCALE)}`, "2026-27 官方日期", "All Mountain Pass 票价", "旺季教练课规定，附出处"].map((t) => (
+            {[`更新于 ${monthLabel(updated.iso, LOCALE)}`, "2026-27 官方日期", "All Mountain Pass 票价", "旺季滑雪课程规定，附出处"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -319,19 +319,19 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           checkedIso={SEASON_ISO}
           deadline={
             <>
-圣诞或新年期间，请在缆车开放的 11 月 28 日前订好教练课和机场巴士：学校的教学旺季从 12 月 14 日开始，期间只能预约全天课。1、2 月的话，请在 12 月 31 日前订好，赶在学校第二个旺季 2 月 6 到 12 日之前。
+圣诞节或跨年期间，请在缆车开放的 11 月 28 日前订好滑雪课程和机场巴士：学校的教学旺季从 12 月 14 日开始，期间只能预约全天课。如果打算 1、2 月前往，请在 12 月 31 日前完成预订，赶在学校第二个旺季 2 月 6 到 12 日之前。
 </>
           }
           tours={[
             {
-              title: "札幌出发二世谷 Grand Hirafu 滑雪行程（6 小时雪票加巴士）",
+              title: "札幌出发二世谷 Grand Hirafu 滑雪行程（含 6 小时缆车票及巴士接送）",
               url: klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE),
               price: null,
-              duration: "当天往返，6 小时雪票",
+              duration: "当天往返，6 小时缆车票",
               departs: "札幌市区 10 个上车点",
             },
             {
-              title: "二世谷 Grand Hirafu 英语滑雪与单板课（4 或 6 小时）",
+              title: "二世谷 Grand Hirafu 英语双板与单板滑雪课程（4 或 6 小时）",
               url: klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE),
               price: null,
               duration: "4 或 6 小时",
@@ -373,7 +373,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>
-一日雪票
+一日缆车票
 </p>
                 <p className={styles.verdictStatValue}>
 旺季 {PEAK_DAY}／早季 {EARLY_DAY}
@@ -384,12 +384,12 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 要提前订吗？
 </p>
                 <p className={styles.verdictStatValue}>
-教练课和接送要
+滑雪课程和接送要
 </p>
               </div>
             </div>
                         <p className={styles.verdictText}>
-<strong>二世谷滑雪</strong>要先从交通想起，因为这是最长的部分：Niseko United 的交通页写明<strong>新千岁机场到二世谷，预约直达巴士 {AIRPORT_BUS}、{AIRPORT_BUS_FARE}</strong>，不需预约的电车加公交巴士 {AIRPORT_TRAIN}、{AIRPORT_TRAIN_FARE}，租车或包车 2 小时。到达的是<strong>一张雪票通用的四座相连雪场</strong>：<strong>Grand HIRAFU</strong>（最大，有村镇）、<strong>Hanazono</strong>（最安静，有度假村滑雪学校）、<strong>Niseko Village</strong>（ski-in, ski-out 酒店）和 <strong>Annupuri</strong>（最宽最缓）。四区都在 <strong>{SEASON_OPEN}</strong>开放，Grand HIRAFU 和 Annupuri 营业到 <strong>2027 年 5 月 5 日</strong>。All Mountain Pass 一日票在 <strong>{PEAK_FROM} 到 {PEAK_TO}</strong>的旺季是 <strong>{PEAK_DAY}</strong>，早季或春季 <strong>{EARLY_DAY}</strong>。唯一要预约而不是当天买的是<strong>教练课</strong>：度假村学校表示其旺季 {LESSON_PEAK} 只能预约全天课。所有数字均出自运营方官方，{SEASON} 重新核查。
+规划<strong>二世谷滑雪</strong>，要先考虑交通，因为交通最花时间：Niseko United 的交通页写明<strong>新千岁机场到二世谷，预约直达巴士 {AIRPORT_BUS}、{AIRPORT_BUS_FARE}</strong>，不需预约的 JR 列车加公交车 {AIRPORT_TRAIN}、{AIRPORT_TRAIN_FARE}，租车或包车 2 小时。到达的是<strong>一张缆车票通用的四座相连雪场</strong>：<strong>Grand HIRAFU</strong>（最大，有村镇）、<strong>Hanazono</strong>（最安静，有度假村滑雪学校）、<strong>Niseko Village</strong>（ski-in, ski-out 酒店）和 <strong>Annupuri</strong>（最宽最缓）。四区都在 <strong>{SEASON_OPEN}</strong>开放，Grand HIRAFU 和 Annupuri 营业到 <strong>2027 年 5 月 5 日</strong>。All Mountain Pass 一日票在 <strong>{PEAK_FROM} 到 {PEAK_TO}</strong>的旺季是 <strong>{PEAK_DAY}</strong>，早季或春季 <strong>{EARLY_DAY}</strong>。唯一需要提前预约、不能当天购买的是<strong>滑雪课程</strong>：度假村学校表示其旺季 {LESSON_PEAK} 只能预约全天课。所有数字均出自运营方官方，{SEASON} 重新核查。
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -405,7 +405,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
                 <KlookTripPrep
           label={"同一趟旅行要订的"}
           heading={"二世谷之旅实际要订什么"}
-          intro={"先订流量和机场巴士，因为这份清单上其他项目当天出错都不致命。Niseko United 的交通页标出了差距：预约巴士 2.5 小时，不预约的电车加巴士 3 小时。"}
+          intro={"先准备好上网套餐和机场巴士，因为这份清单上的其他项目即使当天出了问题，也不至于影响整趟行程。Niseko United 的交通页标出了差距：预约巴士 2.5 小时，不预约的 JR 列车加巴士 3 小时。"}
           items={nisekoSameTrip}
         />
 
@@ -446,7 +446,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-表中时间和票价都出自 Niseko United 的「Getting to Niseko」页面，{SEASON} 重新核查；备注栏是我们写的。有一件事表格看不出来，商品页才有：这班巴士能不能放雪具、每人可带多少行李。度假村接驳巴士的商品写明一件行李加雪具，这正是它和电车不同的地方。
+表中时间和票价都出自 Niseko United 的「Getting to Niseko」页面，{SEASON} 重新核查；备注栏是我们写的。有一件事表格看不出来，商品页才有：这班巴士能不能放雪具、每人可带多少行李。度假村接驳巴士的商品写明一件行李加雪具，这正是它和 JR 列车不同的地方。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -499,7 +499,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
-雪票
+缆车票
 </span>
           <h2 className={styles.sectionTitle}>
 二世谷缆车票多少钱？
@@ -532,11 +532,11 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-<strong>一个会改变计划的实务细节。</strong>早季票是冬季最便宜的一周（2026 年 11 月 28 日到 12 月 11 日），但 Niseko United 注明<strong>不在网上销售</strong>。所以全季最便宜的滑雪要到达后在柜台买，这没问题，只是无法在家先锁定。多日票最长七天，另有仅限网上的 50 小时票；这里只列一日票，因为那是度假村票价表中可以完整核查的部分。所有价格核查日期：{SEASON}。
+<strong>有一个会影响行程安排的实际细节。</strong>早季票是冬季最便宜的一周（2026 年 11 月 28 日到 12 月 11 日），但 Niseko United 注明<strong>不在网上销售</strong>。所以全季最便宜的滑雪要到达后在柜台买，这没问题，只是无法在家先锁定。多日票最长七天，另有仅限网上的 50 小时票；这里只列一日票，因为那是度假村票价表中可以完整核查的部分。所有价格核查日期：{SEASON}。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-比罗夫雪票加巴士行程 →
+比罗夫缆车票＋巴士行程 →
 </KlookLink>
             <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
 预约二世谷雪具 →
@@ -546,7 +546,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 
                 <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>
-教练课
+滑雪课程
 </span>
           <h2 className={styles.sectionTitle}>
 二世谷滑雪课要提前预约吗？
@@ -555,10 +555,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 <strong>要，而且这是官方规定，不只是建议。</strong>度假村直营的 <strong>Niseko International Snowsports School</strong> 在官网写明（核查日期：{SEASON}）：<em>「旺季仅可预约全天课程。」</em>学校的旺季是 <strong>{LESSON_PEAK}</strong>，和缆车票的旺季 {PEAK_FROM} 到 {PEAK_TO} 不同。所以圣诞新年那几周和 2 月 6 到 12 日那周，半天课要现场询问，而不是提前预约。
 </p>
           <p className={styles.bodyText}>
-对家庭或新手来说，这是本页最重要的一句话，因为它颠覆了平常的计划。如果那几周你或孩子的体力只适合半天，有三个选择：订全天、午餐时结束；改到学校的普通周（12 月 8 到 13 日、1 月 4 日到 2 月 5 日、2 月 13 到 28 日）；或通过经销商预订，那是另一批名额，用你的货币计价，页面也是英文。学校暂定 <strong>{SEASON_OPEN}到 2027 年 4 月 11 日</strong>开课，有团体、私人和定制课程，2026-27 已开放预约。
+对家庭或新手来说，这是本页最重要的一句话，因为这项规定会打乱一般的安排。如果那几周你或孩子的体力只适合半天，有三个选择：预订全天课程，在午餐时间提前结束；改到学校的普通周（12 月 8 到 13 日、1 月 4 日到 2 月 5 日、2 月 13 到 28 日）；或通过第三方预订平台预约，那里有另一批名额，用你的货币计价，页面也是英文。学校暂定 <strong>{SEASON_OPEN}到 2027 年 4 月 11 日</strong>开课，有团体、私人和定制课程，2026-27 已开放预约。
 </p>
           <p className={styles.bodyText}>
-学校的私人课最多六人一组，根据官网（核查日期：{SEASON}）：六小时 Niseko Classic 旺季 <strong>¥120,000</strong>、普通周 ¥93,000、早季和春季 ¥87,000；上午课 ¥93,000、¥71,000、¥59,000；下午课 ¥55,000、¥43,000、¥43,000。团体课另有票价，11 月 28 日到 12 月 7 日不开课。经销商的价格请打开商品页按日期查看。
+学校的私人课最多六人一组，根据官网（核查日期：{SEASON}）：六小时 Niseko Classic 旺季 <strong>¥120,000</strong>、普通周 ¥93,000、早季和春季 ¥87,000；上午课 ¥93,000、¥71,000、¥59,000；下午课 ¥55,000、¥43,000、¥43,000。团体课另有票价，11 月 28 日到 12 月 7 日不开课。第三方预订平台的价格请打开商品页按日期查看。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -627,7 +627,7 @@ Rhythm 私人课 →
 二世谷什么时候滑雪最好？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-<strong>要雪选 1 月，要划算选 3 月，要安静选 12 月。</strong>降雪栏是 Grand Hirafu 最近完整雪季在约 850 米白桦雪道测得的每月累积量；人潮和评语栏根据 Niseko United 的逐月说明和公布的票价时段。
+<strong>要雪选 1 月，要划算选 3 月，要安静选 12 月。</strong>降雪栏是 Grand Hirafu 最近完整雪季在海拔约 850 米的白桦雪道测得的每月累积降雪量；人潮和评语栏根据 Niseko United 的逐月说明和公布的票价时段。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -653,7 +653,7 @@ Rhythm 私人课 →
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-降雪数字是单一雪季而非平均，也是度假村在山上单一地点的测量，请当作冬天的轮廓，不要当成预报。表中所有内容于 {OWN} 核查。<strong>夜间滑雪</strong>为 2026 年 12 月 12 日到 2027 年 3 月 22 日，所以开业的前两周和便宜的 4 月都没有。
+降雪数字是单一雪季而非平均，也是度假村在山上单一地点的测量，可用来了解冬季降雪的大致情况，但不要当成天气预报。表中所有内容于 {OWN} 核查。<strong>夜间滑雪</strong>为 2026 年 12 月 12 日到 2027 年 3 月 22 日，所以开业的前两周和便宜的 4 月都没有。
 </p>
         </section>
 
@@ -665,7 +665,7 @@ Rhythm 私人课 →
 二世谷要跟团，还是可以自己去？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-完全看你住哪里，这才是「二世谷滑雪行程」这个词背后的问题。四种情况，要四种不同的预订。
+完全看你住哪里，这才是搜索「二世谷滑雪行程」这个词的人真正想问的问题。四种情况，要四种不同的预订。
 </p>
           <div className={styles.whoForGrid}>
             <div className={styles.whoForCard}>
@@ -673,7 +673,7 @@ Rhythm 私人课 →
 住二世谷？不用跟团
 </p>
               <p className={styles.whoForDesc}>
-订好机场巴士和装备，想上课就订教练课，买雪票，其他自然就好，四区一张票通用。有期限的预订只有接送、旺季教练课和住宿。
+订好机场巴士和装备，想上课就订滑雪课程，再买缆车票，其余行程就能自行安排，四区一张票通用。有期限的预订只有接送、旺季滑雪课程和住宿。
 </p>
             </div>
             <div className={styles.whoForCard}>
@@ -681,15 +681,15 @@ Rhythm 私人课 →
 住札幌？订一日行程
 </p>
               <p className={styles.whoForDesc}>
-这才是真正需要导览行程的情况。根据 Niseko United 的数字单程 2 到 3.5 小时，自己安排的话白天都在巴士上。雪票加巴士商品销售 Grand Hirafu 的固定时段，交通和雪票一个价。
+这种情况才真正需要预订滑雪一日游。根据 Niseko United 的数字单程 2 到 3.5 小时，自己安排的话白天都在巴士上。缆车票加巴士商品销售 Grand Hirafu 的固定时段，交通与缆车票包含在同一个价格内。
 </p>
             </div>
             <div className={styles.whoForCard}>
               <p className={styles.whoForTitle}>
-同行有人不滑？按车计价
+同行有人不滑？选按车收费
 </p>
               <p className={styles.whoForDesc}>
-有人滑、有人不滑是二世谷最难安排的旅行，按座位计价在这里行不通。包车按车计价，所以四人以上时很合理。
+有人滑、有人不滑是二世谷最难安排的旅行，按座位收费在这里行不通。包车按车收费，所以四人以上时很合理。
 </p>
             </div>
             <div className={styles.whoForCard}>
@@ -702,7 +702,7 @@ Rhythm 私人课 →
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-有一项预订不属于以上任何一类：<strong>流量</strong>。二世谷的一天比日本其他滑雪旅行更受天气左右：缆车在暴风雪中暂停又重开、区域关闭、公路接送延误，这些公告都发到手机，不会出现在山脚的公告栏。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> <Link href="/zh-cn/guides/esim/best-esim-japan">日本流量卡推荐攻略</Link>比较了其他选择，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">日本滑雪旅行保险攻略（英文）</Link>则说明买雪票前要处理的另一件事：你的保单是否覆盖雪上运动，以及有什么条件。
+还有一项准备不属于以上任何一类：<strong>上网</strong>。二世谷的一天比日本其他滑雪旅行更受天气左右：缆车在暴风雪中暂停又重开、区域关闭、公路接送延误，这些公告都会通过手机发布，而不是张贴在山脚下的公告栏。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> <Link href="/zh-cn/guides/esim/best-esim-japan">日本上网卡推荐攻略</Link>比较了其他选择，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">日本滑雪旅行保险攻略（英文）</Link>则说明买缆车票前要处理的另一件事：你的保单是否覆盖雪上运动，以及有什么条件。
 </p>
         </section>
 
@@ -727,8 +727,8 @@ Rhythm 私人课 →
 
                 <KlookTourPicks
           heading={"实际可以预订的二世谷行程"}
-          intro={"同一趟旅行的四种形式：札幌出发的 Grand Hirafu 六小时含雪票、含住宿的两三晚、同行有人不滑时的包车，以及上方缆车因风暂停那天早上的非滑雪北海道一日游。"}
-          tours={[withKlookLocale(nisekoHirafuLiftPassBusTour, LOCALE, { title: "札幌出发二世谷 Grand Hirafu 滑雪行程（6 小时雪票加巴士）", desc: "Grand Hirafu 六小时，札幌市区往返巴士和雪票一次订好，在市区多个地点上车" }), withKlookLocale(nisekoSkiHotSpringTourFromSapporo, LOCALE, { title: "札幌出发二世谷滑雪与温泉行程（2 天 1 晚／3 天 2 晚）", desc: "适合旅途中才发现一天不够的游客：小团、别墅住宿、札幌出发" }), withKlookLocale(hokkaidoPrivateCarCharterNiseko, LOCALE, { title: "北海道包车（札幌／新千岁到二世谷）", desc: "7 到 14 座含司机，往返札幌或机场与二世谷、留寿都、洞爷湖或富良野，按你的时间出发，不受时刻表限制" }), withKlookLocale(noboribetsuToyaNisekoDayTour, LOCALE, { title: "札幌出发登别、洞爷湖与二世谷一日游", desc: "地狱谷、洞爷湖和二世谷一侧的全天导览，是滑雪周的休息日，也是山因风关闭时可用的方案" })]}
+          intro={"同一趟旅行的四种形式：札幌出发的 Grand Hirafu 六小时含缆车票、含住宿的两三晚、同行有人不滑时的包车，以及上方缆车因风暂停那天早上的非滑雪北海道一日游。"}
+          tours={[withKlookLocale(nisekoHirafuLiftPassBusTour, LOCALE, { title: "札幌出发二世谷 Grand Hirafu 滑雪行程（含 6 小时缆车票及巴士接送）", desc: "Grand Hirafu 六小时，札幌市区往返巴士和缆车票一次订好，在市区多个地点上车" }), withKlookLocale(nisekoSkiHotSpringTourFromSapporo, LOCALE, { title: "札幌出发二世谷滑雪与温泉行程（2 天 1 晚／3 天 2 晚）", desc: "适合旅途中才发现一天不够的游客：小团、别墅住宿、札幌出发" }), withKlookLocale(hokkaidoPrivateCarCharterNiseko, LOCALE, { title: "北海道包车（札幌／新千岁到二世谷）", desc: "7 到 14 座车型，含司机，往返札幌或机场与二世谷、留寿都、洞爷湖或富良野，按你的时间出发，不受时刻表限制" }), withKlookLocale(noboribetsuToyaNisekoDayTour, LOCALE, { title: "札幌出发登别、洞爷湖与二世谷一日游", desc: "地狱谷、洞爷湖和二世谷周边的全天游览，是滑雪周的休息日，也是山因风关闭时可用的方案" })]}
         />
 
                 <Related items={[{ href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "东京出发 GALA 汤泽滑雪一日游：71 分钟，缆车 ¥8,000 （英文）" }, { href: "/guides/money/best-travel-insurance-japan", title: "日本旅行保险推荐 2026：谁需要什么 （英文）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅行保险：普通保单不保什么 （英文）" }, { href: "/zh-cn/guides/attractions/hokkaido-7-day-itinerary", title: "北海道 7 日游：每日路线" }, { href: "/zh-cn/guides/attractions/sapporo-snow-festival-tours", title: "札幌雪祭（2027）：2/4–11 三会场免费，该订什么" }, { href: "/zh-cn/guides/attractions/japan-winter-itinerary", title: "日本冬季行程（2027）：12 天路线逐日安排" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出发小樽一日游（2027）：¥800，JR 33 分钟 （英文）" }, { href: "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour", title: "东京出发雪猴行程：地狱谷野猿公苑攻略（2027）" }, { href: "/guides/attractions/takayama-shirakawago-tour", title: "高山与白川乡行程（2027）：该从哪里出发 （英文）" }, { href: "/guides/attractions/tokyo-illumination-tours", title: "东京灯饰：日期、时间与免费景点 （英文）" }, { href: "/zh-cn/guides/esim/best-esim-japan", title: "日本 eSIM 推荐（2026）：运营商、价格与怎么选" }, { href: "/zh-cn/guides/attractions", title: "更多日本景点 →" }]} />
@@ -739,14 +739,14 @@ Rhythm 私人课 →
 四区、一张票、一个期限
 </h2>
             <p className={styles.ctaBannerDesc}>
-缆车 {SEASON_OPEN}开放，旺季价 {PEAK_FROM}开始。接送和教练课是有日期的两项预订：12 月 14 日到 1 月 3 日和 2 月 6 到 12 日，度假村学校只接受全天课预约。
+缆车 {SEASON_OPEN}开放，旺季价 {PEAK_FROM}开始。接送和滑雪课程是有日期的两项预订：12 月 14 日到 1 月 3 日和 2 月 6 到 12 日，度假村学校只接受全天课预约。
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
               <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
 查看二世谷滑雪行程 →
 </KlookLink>
               <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
-预约二世谷教练课 →
+预约二世谷滑雪课程 →
 </KlookLink>
             </div>
           </div>

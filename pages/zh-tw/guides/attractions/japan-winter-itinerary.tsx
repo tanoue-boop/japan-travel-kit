@@ -85,7 +85,7 @@ const sameTripItems: KlookTripPrepItem[] = [
     label: "Klook 日本 eSIM",
     ctaLabel: "在 Klook 查看 eSIM →",
     url: klookFor(klookEsim.url, LOCALE),
-    why: "冬天是計畫會當天改變的季節：電車因雪暫停、纜車因風關閉，這些通知都傳到手機，不會傳到櫃台。",
+    why: "冬天的行程可能當天就需要調整：列車因雪暫停、纜車因強風停駛，這些通知都會發送到手機，不會透過櫃台通知旅客。",
   },
   {
     label: "成田機場利木津巴士",
@@ -103,7 +103,7 @@ const sameTripItems: KlookTripPrepItem[] = [
     label: "JR 北陸拱型周遊券（7 天）",
     ctaLabel: "查看北陸拱型周遊券 →",
     url: klookFor(hokurikuArchPass.url, LOCALE),
-    why: "真正符合這份行程形狀的票券：連續七天涵蓋東京出發的北陸新幹線和終點的關西地區。不含東海道新幹線，所以只適合去程和回程走不同路線。",
+    why: "真正符合這條行程路線的票券：連續七天涵蓋東京出發的北陸新幹線和終點的關西地區。不含東海道新幹線，所以只適合去程和回程走不同路線。",
   },
   {
     label: "JAPAN RAIL PASS（7、14 或 21 天）",
@@ -143,9 +143,9 @@ const days: Day[] = [
   {
     n: 1,
     label: "第 1 天",
-    heading: "第 1 天：東京，在黑暗中從機場進市區",
+    heading: "第 1 天：東京，天黑後從機場前往市區",
     intro:
-      "冬天讓這一天有一個具體的改變：下午四點半左右就天黑了，多數行程排在抵達日的觀光根本做不到。請規劃交通、入住，再走走一個點燈的街區。這不算妥協，東京的燈飾季 11 月初就開始了，而燈光最美的時段正好是你抵達的時間。",
+      "冬天讓這一天有一個具體的改變：下午四點半左右就天黑了，多數安排在抵達當天的觀光行程根本無法完成。先安排好交通與入住，再到有燈飾的街區走走。這不算妥協，東京的燈飾季 11 月初就開始了，而燈光最美的時段正好是您抵達的時間。",
     stops: [
       {
         time: "抵達後",
@@ -156,8 +156,8 @@ const days: Day[] = [
       },
       {
         time: "下午或傍晚",
-        place: "機場到東京據點",
-        allow: "依機場和據點 40 分鐘到 1.5 小時",
+        place: "機場到東京的住宿據點",
+        allow: "依機場和住宿據點 40 分鐘到 1.5 小時",
         getting: "成田特快、京成 Skyliner 或利木津巴士；羽田搭京急或單軌電車",
         booking: "值得預訂：有行李空間的對號座，而且很暖",
       },
@@ -165,7 +165,7 @@ const days: Day[] = [
         time: "傍晚前",
         place: "辦入住、放行李",
         allow: "1 小時",
-        getting: "選對據點的話從車站步行",
+        getting: "選對住宿據點的話從車站步行",
         booking: "東京四晚，提前訂好",
       },
       {
@@ -178,7 +178,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-機場交通、網路，以及接下來三天東京的地鐵票。成田路線完全看你住在城市哪一側，<Link href="/zh-tw/guides/transport/tokyo-airport-transfer">東京機場交通攻略</Link>都有介紹；行李大或飯店不在車站旁時選利木津巴士，N&apos;EX 來回票只有從東京回國的版本才用得到回程。東京地鐵票有個冬季特點：燈飾路線丸之內、六本木、惠比壽在東京地鐵和都營線上，不是山手線，所以 12 月比其他月份更適合，此票不含 JR 和山手線。
+機場交通、網路，以及接下來三天東京的地鐵票。成田路線完全看您住在城市哪一側，<Link href="/zh-tw/guides/transport/tokyo-airport-transfer">東京機場交通攻略</Link>都有介紹；行李大或飯店不在車站旁時選利木津巴士，N&apos;EX 來回票只有從東京回國的版本才用得到回程。東京地鐵票有個冬季特點：燈飾路線丸之內、六本木、惠比壽在東京地鐵和都營線上，不是山手線，所以 12 月比其他月份更適合，此票不含 JR 和山手線。
 </>
     ),
     picks: [
@@ -194,7 +194,7 @@ const days: Day[] = [
     label: "第 2 天",
     heading: "第 2 天：白天東京東側，晚上看燈飾",
     intro:
-      "東京冬天唯一勝過夏天的是傍晚，所以從傍晚往回排一天。趁這個季節清爽乾燥的空氣逛淺草寺、仲見世和隅田川一帶，天黑後看一處燈飾。免費的街頭燈飾最讓人難忘，而兩處收費的則要提前決定。",
+      "東京的冬天唯一比夏天好的，是傍晚，所以從傍晚往回安排這一天。趁這個季節清爽乾燥的空氣逛淺草寺、仲見世和隅田川一帶，天黑後看一處燈飾。免費的街頭燈飾最讓人難忘，而兩處收費的則要提前決定。",
     stops: [
       {
         time: "上午",
@@ -219,7 +219,7 @@ const days: Day[] = [
       },
       {
         time: "晚上",
-        place: "如果想看單一場地而不是散步，選收費燈飾：大井賽馬場的東京 Mega Illumi，或讀賣樂園 Jewellumination",
+        place: "如果不想沿街散步，而想集中看一處燈光秀，就選收費燈飾景點：大井賽馬場的東京 Mega Illumi，或讀賣樂園 Jewellumination",
         allow: "2–3 小時",
         getting: "東京單軌電車到大井競馬場前；讀賣樂園搭京王線加巴士",
         booking: "建議，這些是門票，不是街道",
@@ -240,7 +240,7 @@ const days: Day[] = [
   {
     n: 3,
     label: "第 3 天",
-    heading: "第 3 天：雪之日，GALA 湯澤或白馬當天來回",
+    heading: "第 3 天：玩雪日，GALA 湯澤或白馬當天來回",
     intro:
       "這是只有冬天才有的一天，排在第 3 天是因為有天氣風險：放在前面，取消了還有三天可以移動。日本特別的是不需要滑雪假期也能滑一天：GALA 湯澤從東京站搭上越新幹線不用轉車，車站和纜車站是同一棟建築。",
     stops: [
@@ -253,10 +253,10 @@ const days: Day[] = [
       },
       {
         time: "上午後段到下午中段",
-        place: "在雪道上，或只是看看也好",
+        place: "到雪道滑雪，或單純欣賞雪景",
         allow: "4–5 小時",
         getting: "GALA 從車站大樓搭纜車；白馬從村內搭接駁車",
-        booking: "租借和雪票比電車還快賣完",
+        booking: "雪具租借和纜車票比火車票更早售罄",
       },
       {
         time: "下午中段",
@@ -275,14 +275,14 @@ const days: Day[] = [
     ],
     book: (
       <>
-先決定是要滑雪還是看雪，因為預訂完全不同。要滑雪的話，巴士、雪票和裝備的套裝比分開買值得，否則要用看不懂的語言排三次隊。不滑雪或團體同行，包車一日涵蓋 GALA 湯澤、苗場或白馬，以車計價，只買 GALA 雪票也能玩半天雪橇再慢慢吃午餐。GALA 官方行事曆為 2026 年 12 月 19 日到 2027 年 5 月 5 日開放雪道，12 月 12 到 18 日僅觀光運行，南區整季關閉；電車和雪票價格請看 <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">GALA 湯澤滑雪一日遊攻略（英文）</Link>。如果想看雪而不是滑雪，<Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷雪猴行程攻略</Link>介紹長野一側的冬季一日遊，正好放在這個時段。出發前有件事要確認：旅遊保險對雪道內和雪道外的處理完全不同，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">滑雪旅遊保險比較（英文）</Link>依公開條款說明。
+先決定是要滑雪還是看雪，因為預訂完全不同。要滑雪的話，巴士、纜車票和裝備的套裝比分開買划算，否則可能得在語言不通的情況下排三次隊。不滑雪或團體同行，包車一日涵蓋 GALA 湯澤、苗場或白馬，以車計價，只買 GALA 纜車票也能玩半天雪橇再慢慢吃午餐。GALA 官方行事曆為 2026 年 12 月 19 日到 2027 年 5 月 5 日開放雪道，12 月 12 到 18 日僅觀光運行，南區整季關閉；車票和纜車票價格請看 <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">GALA 湯澤滑雪一日遊攻略（英文）</Link>。如果想看雪而不是滑雪，<Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷雪猴行程攻略</Link>介紹長野一側的冬季一日遊，正好放在這個時段。出發前有件事要確認：旅遊保險對雪道內和雪道外的處理完全不同，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">滑雪旅遊保險比較（英文）</Link>依公開條款說明。
 </>
     ),
     picks: [
       { label: "GALA 湯澤／苗場包車 →", url: klookFor(galaNaebaSkiDayTripTokyo.url, LOCALE) },
       { label: "東京出發白馬一日遊 →", url: klookFor(hakubaSkiResortDayTourTokyo.url, LOCALE) },
-      { label: "八方尾根巴士加雪票加租借 →", url: klookFor(hakubaHapponeBusLiftRental.url, LOCALE) },
-      { label: "GALA 湯澤雪票 →", url: klookFor(galaYuzawaLiftTicket.url, LOCALE) },
+      { label: "八方尾根巴士加纜車票加租借 →", url: klookFor(hakubaHapponeBusLiftRental.url, LOCALE) },
+      { label: "GALA 湯澤纜車票 →", url: klookFor(galaYuzawaLiftTicket.url, LOCALE) },
     ],
   },
   {
@@ -290,7 +290,7 @@ const days: Day[] = [
     label: "第 4 天",
     heading: "第 4 天：東京西側，明治神宮、澀谷與一年中最清澈的夕陽",
     intro:
-      "冬天是東京展望台真正值回票價的季節，因為寒冷乾燥的空氣才看得到富士山。這也是夕陽早到能排進一天之中而不是結尾的季節：12 月太陽四點半前就下山，所以可以看完夕陽再吃晚餐，不用二選一。",
+      "冬天是最值得登上東京展望台的季節，因為寒冷乾燥的空氣才看得到富士山。這也是夕陽早到能排進一天之中而不是結尾的季節：12 月太陽四點半前就下山，所以可以看完夕陽再吃晚餐，不用二選一。",
     stops: [
       {
         time: "上午",
@@ -384,7 +384,7 @@ const days: Day[] = [
     label: "第 6 天",
     heading: "第 6 天：金澤，庭園、茶屋街與市場",
     intro:
-      "整天待在一座小城是奢侈，這份行程負擔得起，因為兩晚已經訂好。金澤小巧，幾乎都能直接入內參觀，所以這是預訂最少的一天，也最適合吸收其他地方因雪失去的一天。",
+      "在一座小城悠閒待上一整天是一種奢侈，這份行程留出了這樣的時間，因為兩晚已經訂好。金澤小巧，幾乎都能直接入內參觀，所以這是預訂最少的一天，也最適合用來彌補其他地方因降雪而失去的一天。",
     stops: [
       {
         time: "上午",
@@ -417,7 +417,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-只有兩件事，其中一件是明天的。金澤導覽一日把兼六園、東茶屋街和近江町市場併成一次預訂，冬天下午很短，省下三段巴士很值得。重要的是明天出城的巴士：北陸鐵道說明金澤到白川鄉是全車對號，上車前必須預訂，從金澤站西口出發 1 小時 15 分鐘，乘車日一個月前開放訂位。共同經營的濃飛巴士列出成人票價 2026 年 11 月 30 日前 ¥2,800、12 月 1 日起 ¥2,900；北陸鐵道頁面在 {REREAD} 查核時仍是 ¥2,800。這一側沒有現場搭乘的備案，<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉攻略（英文）</Link>有說明。
+只有兩件事，其中一件是明天的。金澤導覽一日將兼六園、東茶屋街和近江町市場安排在同一趟行程中，冬天下午很短，省下三段巴士很值得。重要的是明天出城的巴士：北陸鐵道說明金澤到白川鄉是全車對號，上車前必須預訂，從金澤站西口出發 1 小時 15 分鐘，乘車日一個月前開放訂位。共同經營的濃飛巴士列出成人票價 2026 年 11 月 30 日前 ¥2,800、12 月 1 日起 ¥2,900；北陸鐵道頁面在 {REREAD} 查核時仍是 ¥2,800。這一側沒有現場搭乘的備案，<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉攻略（英文）</Link>有說明。
 </>
     ),
     picks: [
@@ -463,7 +463,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-一個幫你完成移動的導覽行程，或兩張巴士票。金澤出發的商品是唯一能把你送到高山而不是送回金澤的，正好符合這段需要，時間 8 到 10 小時，有英語持證導遊。自己走的話，上面是業者官方票價，2026 年 12 月 1 日調漲：金澤 → 白川鄉 ¥2,900，再到高山約 50 分鐘 ¥2,900，各由 ¥2,800 調高。兩段都是民營高速巴士，任何 JR 周遊券都不適用。
+一個幫您完成移動的導覽行程，或兩張巴士票。金澤出發的商品是唯一能把您送到高山而不是送回金澤的，正好符合這段需要，時間 8 到 10 小時，有英語持證導遊。自己走的話，上面是業者官方票價，2026 年 12 月 1 日調漲：金澤 → 白川鄉 ¥2,900，再到高山約 50 分鐘 ¥2,900，各由 ¥2,800 調高。兩段都是民營高速巴士，任何 JR 周遊券都不適用。
 </>
     ),
     picks: [
@@ -476,7 +476,7 @@ const days: Day[] = [
     label: "第 8 天",
     heading: "第 8 天：高山，若碰上四個日期之一就去白川鄉點燈",
     intro:
-      "這是行程中唯一不能臨時決定的晚上。白川鄉冬季點燈只有四個晚上：2027 年 1 月 11、17、24、31 日，每晚 17:30 到 19:30，由白川鄉觀光協會以完全事前預約加入場券的方式舉辦。公告說得很清楚：當天不售票，沒票到現場也進不去。如果旅程不在這四天，這天就是高山之日，也很好。",
+      "這是行程中唯一不能臨時決定的晚上。白川鄉冬季點燈只有四個晚上：2027 年 1 月 11、17、24、31 日，每晚 17:30 到 19:30，由白川鄉觀光協會主辦，採完全預約制，須事先取得入場券。公告說得很清楚：當天不售票，沒票到現場也進不去。如果旅程不在這四天，這天就留在高山遊覽，一樣很值得。",
     stops: [
       {
         time: "上午",
@@ -487,7 +487,7 @@ const days: Day[] = [
       },
       {
         time: "中午",
-        place: "飛驒民俗村（飛驒之里），不用搭巴士就能看雪屋頂村落",
+        place: "飛驒民俗村（飛驒之里），不必搭巴士去白川鄉，也能看到積雪屋頂的合掌造村落",
         allow: "2 小時",
         getting: "從車站搭路線巴士",
         booking: "不用",
@@ -509,7 +509,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-如果日期是這四天之一，請比旅程其他項目都先訂。協會公布五種參加方式，{REREAD} 查核時有兩種幾乎已無法使用：村內住宿抽籤已於 10 月 31 日截止，第一輪停車場預約售罄，第二輪 12 月 1 日 13:00 開放，五人以內 ¥7,000。旅行社行程 12 月 2 日 13:00 公布。不需要車也不需要住村內的方式是濃飛巴士從高山出發的點燈巴士，11 月 2 日起四晚都開賣：含戶外博物館 ¥13,000、含溫泉 ¥14,000、含展望台 ¥16,000（唯一能到展望台的路線），只能透過日文網路系統預訂。Klook 高山出發的點燈一日遊時間 5 到 5.5 小時，同樣可選博物館或展望台，但索引尚未顯示 2027 年的日期，請在商品頁確認你的日期。如果不是這四天，就改走五箇山一日遊，加上相倉和民家園，<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉攻略（英文）</Link>依出發地逐一說明。
+如果日期是這四天之一，請比旅程其他項目都先訂。協會公布五種參加方式，{REREAD} 查核時有兩種幾乎已無法使用：村內住宿抽籤已於 10 月 31 日截止，第一輪停車場預約售罄，第二輪 12 月 1 日 13:00 開放，五人以內 ¥7,000。旅行社行程 12 月 2 日 13:00 公布。不需要車也不需要住村內的方式是濃飛巴士從高山出發的點燈巴士，11 月 2 日起四晚都開賣：含戶外博物館 ¥13,000、含溫泉 ¥14,000、含展望台 ¥16,000（唯一能到展望台的路線），只能透過日文網路系統預訂。Klook 高山出發的點燈一日遊時間 5 到 5.5 小時，同樣可選博物館或展望台，但索引尚未顯示 2027 年的日期，請在商品頁確認您的日期。如果不是這四天，就改走五箇山一日遊，加上相倉和民家園，<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉攻略（英文）</Link>依出發地逐一說明。
 </>
     ),
     picks: [
@@ -522,7 +522,7 @@ const days: Day[] = [
     label: "第 9 天",
     heading: "第 9 天：高山到京都，漫長的下山路",
     intro:
-      "這是移動日，也是這條路線唯一真的花掉大半天的日子。高山本線特急沿河谷下到名古屋，再轉東海道新幹線，雪中很美，任何天氣都慢。抵達京都後看一座點燈的寺院就好，不要想看三座。",
+      "這是移動日，也是這條路線唯一真的花掉大半天的日子。高山本線特急沿河谷下到名古屋，再轉東海道新幹線，雪景很美，但無論天氣如何車程都很長。抵達京都後看一座點燈的寺院就好，不要想看三座。",
     stops: [
       {
         time: "上午",
@@ -555,7 +555,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-這天沒有什麼需要透過我們購買，這正是要特別說明的：鐵路就是一整天。如果持周遊券，飛驒特急和東海道新幹線 Hikari 都可搭，Nozomi 不行，到京都差約半小時，<Link href="/guides/transport/tokyo-to-kyoto" hrefLang="en">東京到京都攻略（英文）</Link>用同一條線說明。值得做的是訂飛驒的座位：單線鐵路班次少，在車廂連接處站兩小時太浪費行程最美的風景。
+這天沒有什麼需要透過我們購買，這正是要特別說明的：鐵路就是一整天。如果持周遊券，飛驒特急和東海道新幹線 Hikari 都可搭，Nozomi 不行，到京都差約半小時，<Link href="/guides/transport/tokyo-to-kyoto" hrefLang="en">東京到京都攻略（英文）</Link>用同一條線說明。值得做的是訂飛驒的座位：單線鐵路班次少，在車廂連接處站上兩小時，就浪費了行程中最美的沿途風景。
 </>
     ),
     picks: [
@@ -601,7 +601,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-京都幾乎不用訂什麼，城市攻略也這麼說。預訂換來的是解決巴士問題：一個導覽一日連起金閣寺、伏見稻荷和嵐山，省下三段市區巴士，在冬天短短的下午，這就是三個景點和兩個的差別。和服租借也值得預約而不是現場去，冬季方案有羽織。住哪裡比訂什麼更重要：<Link href="/guides/attractions/where-to-stay-in-kyoto" hrefLang="en">京都住宿攻略（英文）</Link>用交通時間而不是氣氛比較車站、市中心和嵐山。
+京都幾乎不用訂什麼，城市攻略也這麼說。預訂導覽行程的好處，是省去自行轉乘巴士的麻煩：一個導覽一日連起金閣寺、伏見稻荷和嵐山，省下三段市區巴士，在冬天短短的下午，這就是三個景點和兩個的差別。和服租借也值得預約而不是現場去，冬季方案有羽織。住哪裡比訂什麼更重要：<Link href="/guides/attractions/where-to-stay-in-kyoto" hrefLang="en">京都住宿攻略（英文）</Link>用交通時間而不是氣氛比較車站、市中心和嵐山。
 </>
     ),
     picks: [
@@ -615,7 +615,7 @@ const days: Day[] = [
     label: "第 11 天",
     heading: "第 11 天：京都到大阪，以及夜間點亮的庭園",
     intro:
-      "JR 新快速三十分鐘，旅程的氣氛就變了：冬天的大阪是室內和夜晚的城市，很適合這個季節。要記下的是 teamLab 植物園大阪，因為它是只在夜間開放的戶外場地，這段期間最後入場 20:30，要為它安排晚上，而不是硬塞進去。",
+      "JR 新快速三十分鐘，旅程的氣氛就變了：冬天的大阪是室內和夜晚的城市，很適合這個季節。值得記下的是 teamLab 植物園大阪，因為它是只在夜間開放的戶外場地，這段期間最後入場 20:30，要為它安排晚上，而不是硬塞進去。",
     stops: [
       {
         time: "上午",
@@ -648,7 +648,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-兩件事，以及一張決定第一件要不要買的票。大阪周遊卡涵蓋 40 多處設施和其間的地鐵，對排得滿滿的大阪一天很划算，但不含 teamLab 庭園，那是另一張票。teamLab 官方票價成人 ¥1,800、6 到 15 歲 ¥500，現場 ¥2,000 和 ¥600；<Link href="/guides/attractions/teamlab-botanical-garden-osaka-tickets" hrefLang="en">teamLab 植物園大阪攻略（英文）</Link>有依日期的時間、雨天規定和官方票可改期三次的說明。住宿方面，住在御堂筋線上，21:00 在長居結束也只要一班車，<Link href="/guides/attractions/where-to-stay-in-osaka" hrefLang="en">大阪住宿攻略（英文）</Link>有比較。
+需要預訂的有兩項，另有一張周遊卡會決定第一項是否需要購買。大阪周遊卡涵蓋 40 多處設施和其間的地鐵，對排得滿滿的大阪一天很划算，但不含 teamLab 庭園，那是另一張票。teamLab 官方票價成人 ¥1,800、6 到 15 歲 ¥500，現場 ¥2,000 和 ¥600；<Link href="/guides/attractions/teamlab-botanical-garden-osaka-tickets" hrefLang="en">teamLab 植物園大阪攻略（英文）</Link>有依日期的時間、雨天規定和官方票可改期三次的說明。住宿方面，住在御堂筋線上，21:00 在長居結束也只要一班車，<Link href="/guides/attractions/where-to-stay-in-osaka" hrefLang="en">大阪住宿攻略（英文）</Link>有比較。
 </>
     ),
     picks: [
@@ -666,7 +666,7 @@ const days: Day[] = [
     stops: [
       {
         time: "上午",
-        place: "飯店一站之內剩下想去的地方",
+        place: "飯店一站之內其餘想去的地方",
         allow: "1–2 小時",
         getting: "步行",
         booking: "不用",
@@ -688,7 +688,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-只有機場交通。選哪一個看你住哪裡：HARUKA 從天王寺和新大阪出發，Rapi:t 從難波出發，<Link href="/guides/transport/haruka-vs-nankai-rapit" hrefLang="en">HARUKA 與南海 Rapi:t 比較（英文）</Link>把時間和價格並列。巴士和伊丹機場請看<Link href="/guides/transport/osaka-airport-transfer" hrefLang="en">大阪機場交通攻略（英文）</Link>。
+只有機場交通。選哪一個看您住哪裡：HARUKA 從天王寺和新大阪出發，Rapi:t 從難波出發，<Link href="/guides/transport/haruka-vs-nankai-rapit" hrefLang="en">HARUKA 與南海 Rapi:t 比較（英文）</Link>把時間和價格並列。巴士和伊丹機場請看<Link href="/guides/transport/osaka-airport-transfer" hrefLang="en">大阪機場交通攻略（英文）</Link>。
 </>
     ),
     picks: [
@@ -700,8 +700,8 @@ const days: Day[] = [
 
 const baseRows = [
   { base: "東京", nights: "4", why: "兩個城市日、一個雪地來回和燈飾夜晚，這是冬天勝過夏天的真正優勢" },
-  { base: "金澤", nights: "2", why: "雪中的兼六園，也是這一側唯一有預約制白川鄉巴士出發的據點" },
-  { base: "高山", nights: "2", why: "老街，也是 1 月四個晚上濃飛巴士點燈巴士的據點，不需要車也不需要住村內" },
+  { base: "金澤", nights: "2", why: "雪中的兼六園，也是這一側唯一有預約制巴士前往白川鄉的住宿據點" },
+  { base: "高山", nights: "2", why: "老街，也是 1 月四個晚上濃飛巴士點燈巴士出發的住宿據點，不需要車也不需要住村內" },
   { base: "京都", nights: "2", why: "可直接入內參觀的景點一年中人最少，幾乎不用預訂" },
   { base: "大阪", nights: "1", why: "室內與夜晚的城市，加上夜間限定的 teamLab 庭園，飯店樓下就是往關西機場的車" },
 ];
@@ -717,7 +717,7 @@ const datedRows = [
   {
     event: "白川鄉冬季點燈（第 41 屆）",
     when: "2027 年 1 月 11、17、24、31 日，每晚 17:30–19:30",
-    rule: "完全事前預約加入場券。協會明確表示當天不售票，沒預約到現場也進不去，並公布五種參加方式。村內住宿抽籤已於 10 月 31 日截止，第二輪停車場 12 月 1 日 13:00 開放，濃飛巴士高山點燈巴士四晚都開賣中",
+    rule: "採完全預約制，須事先取得入場券。協會明確表示當天不售票，沒預約到現場也進不去，並公布五種參加方式。村內住宿抽籤已於 10 月 31 日截止，第二輪停車位預約 12 月 1 日 13:00 開放，濃飛巴士高山點燈巴士四晚都開賣中",
     source: "白川鄉觀光協會；濃飛巴士",
   },
   {
@@ -741,7 +741,7 @@ const datedRows = [
   {
     event: "滑雪與租借",
     when: "二世谷預定 2026 年 11 月 28 日；GALA 湯澤雪道 2026 年 12 月 19 日起；白馬開幕日期待官方公布",
-    rule: "巴士加雪票加裝備的套裝按日期販售。租借值得提早確定：當天早上店裡沒有你的鞋碼就沒有其他選擇，不過 Klook 的八方尾根套裝是當天在度假村店取用裝備",
+    rule: "巴士加纜車票加裝備的套裝按日期販售。租借值得提早確定：當天早上店裡沒有您的鞋碼就沒有其他選擇，不過 Klook 的八方尾根套裝是當天在度假村店取用裝備",
     source: "Niseko United；GALA 湯澤；Hakuba Valley；Klook 商品",
   },
   {
@@ -757,12 +757,12 @@ const snowRows = [
     place: "湯澤與苗場（新潟）",
     getting: "東京站搭上越新幹線，不用轉車，GALA 湯澤的車站和纜車站是同一棟建築",
     season: "依 GALA 官方行事曆雪道 2026 年 12 月 19 日到 2027 年 5 月 5 日；12 月 12–18 日僅觀光運行",
-    forWhom: "不用多住一晚，在東京行程中加入一個雪日",
+    forWhom: "不用多住一晚，在東京行程中加入一天玩雪日",
   },
   {
     place: "白馬（長野）",
     getting: "東京搭巴士，或北陸新幹線到長野再轉巴士",
-    season: "依 Hakuba Valley 季票預定 2026 年 12 月到 2027 年 5 月初；各雪場開幕日期待官方公布",
+    season: "依 Hakuba Valley 季票資訊，雪季預計 2026 年 12 月到 2027 年 5 月初；各雪場開幕日期待官方公布",
     forWhom: "真正的滑雪，一張山谷通票玩四座雪場",
   },
   {
@@ -786,16 +786,16 @@ const snowRows = [
 ];
 
 const packRows = [
-  { item: "真正的外套，而不是厚毛衣", why: "依氣象廳平年值，1 月平均最低東京 1.2°C、札幌 −6.4°C。每棟建築和每班電車暖氣都很強，所以防風外殼加多層穿搭勝過一件厚重衣物" },
+  { item: "防風保暖的外套，而不只是厚毛衣", why: "依氣象廳平年值，1 月平均最低東京 1.2°C、札幌 −6.4°C。每棟建築和每班電車暖氣都很強，所以防風外殼加多層穿搭勝過一件厚重衣物" },
   { item: "有抓地力的鞋和備用襪子", why: "高山人行道或寺院小路上壓實的雪，是這份行程唯一的危險，白川鄉展望台還要爬坡" },
   { item: "手套和能蓋住耳朵的東西", why: "這份計畫的戶外部分都在天黑後：燈飾、點燈、teamLab 庭園，這時氣溫接近最低，而不是平均" },
-  { item: "比你想的更少的衣服，加上投幣洗衣計畫", why: "冬裝體積大，這條路線要換五次據點，對號座又有行李限制。日本飯店幾乎都有投幣洗衣機" },
+  { item: "衣服帶得比預想少一些，並安排使用投幣式洗衣機", why: "冬裝體積大，這條路線要換五次住宿據點，對號座又有行李限制。日本飯店幾乎都有投幣洗衣機" },
   { item: "護唇膏和護手霜", why: "太平洋側的冬天又冷又乾，這正是東京展望台看得到富士山的原因，也是第 4 天手開始乾裂的原因" },
   { item: "雪地本身不用帶什麼", why: "要滑雪就在度假村租。裝備可在出發前預訂，自帶雪靴很少值得付行李費" },
 ];
 
 const hokkaidoRows = [
-  { leg: "第 1–4 天", plan: "東京，和上面完全相同，燈飾夜晚和雪日不變" },
+  { leg: "第 1–4 天", plan: "東京，和上面完全相同，燈飾夜晚和玩雪日不變" },
   { leg: "第 5 天", plan: "羽田飛新千歲，或持 JR 東日本南北海道周遊券搭東北與北海道新幹線。預約接送進札幌" },
   { leg: "第 6–7 天", plan: "雪祭會場：大通西 1 到西 11 丁目、薄野站前通和 Tsudome 會場。全部免費入場，全在戶外，平均最高 0.4°C" },
   { leg: "第 8 天", plan: "一日遊：小樽和雪上樂園（小樽雪燈之路 2027 年 2 月 6–13 日），或在企鵝散步的季節去旭山動物園，或支笏湖冰濤祭半日（2027 年 1 月 30 日–2 月 23 日）" },
@@ -810,7 +810,7 @@ const faqItems = [
   },
   {
     q: "冬天去日本要帶什麼？",
-    a: `防風外殼加多層穿搭、有抓地力的鞋、手套，以及比你想的少得多的行李。重要數字是日本氣象廳 1991–2020 年平年值（查核日：${CHECKED}）：1 月平均最低東京 1.2°C，月均溫京都 4.8°C、大阪 6.2°C，平均最低札幌 −6.4°C。所以本州是穿大衣的天氣，還不到遠征等級，北海道則真的很冷。有三個實用重點：電車、商店和餐廳暖氣都很強，一件脫不掉的厚衣服比三件薄的差。冬季旅程的戶外部分幾乎都在天黑後，氣溫接近最低。要滑雪就在度假村租，出發前就能預訂。`,
+    a: `防風外殼加多層穿搭、有抓地力的鞋、手套，以及比您想的少得多的行李。重要數字是日本氣象廳 1991–2020 年平年值（查核日：${CHECKED}）：1 月平均最低東京 1.2°C，月均溫京都 4.8°C、大阪 6.2°C，平均最低札幌 −6.4°C。所以本州穿大衣就能應對，還不需要專業戶外裝備，北海道則真的很冷。有三個實用重點：電車、商店和餐廳暖氣都很強，一件脫不掉的厚衣服比三件薄的差。冬季旅程的戶外部分幾乎都在天黑後，氣溫接近最低。要滑雪就在度假村租，出發前就能預訂。`,
   },
   {
     q: "日本 12 月、1 月、2 月有多冷？",
@@ -818,15 +818,15 @@ const faqItems = [
   },
   {
     q: "在日本哪裡看得到雪？",
-    a: `通常不是東京、京都或大阪，這三座太平洋側城市下雪是新聞，不是季節。雪在日本海側和山區，離東京最近又可靠的是新潟湯澤：GALA 湯澤從東京站搭上越新幹線不用轉車，車站和纜車站是同一棟建築，所以不用滑雪假期也能滑一天。長野白馬也能當天往返，雪質更好。把雪當風景而不是運動的話，1、2 月的白川鄉和高山就是這份行程的核心。北海道當然有雪：札幌 1 月降雪平年值 137 公分。`,
+    a: `通常不是東京、京都或大阪，這三座太平洋側城市下雪會上新聞，而不是每年冬天的常態。雪在日本海側和山區，離東京最近又可靠的是新潟湯澤：GALA 湯澤從東京站搭上越新幹線不用轉車，車站和纜車站是同一棟建築，所以不用滑雪假期也能滑一天。長野白馬也能當天往返，雪質更好。把雪當風景而不是運動的話，1、2 月的白川鄉和高山就是這份行程的核心。北海道當然有雪：札幌 1 月降雪平年值 137 公分。`,
   },
   {
     q: "日本冬季行程要提前預訂什麼？",
-    a: `這份行程有兩件事絕對要，其他比你想的少。白川鄉點燈 2027 年只有四個晚上（1 月 11、17、24、31 日，每晚 17:30–19:30），完全事前預約，協會公告寫明當天不售入場券。金澤到白川鄉高速巴士全車對號，北陸鐵道要求上車前預訂，沒有現場備案。此外，北陸新幹線 Kagayaki 完全沒有自由座，滑雪租借最先缺你的尺寸，SHIBUYA SKY 日落時段在開賣瞬間就賣完。其他幾乎都能直接去：京都寺院、兼六園、東京免費燈飾、雪祭會場。`,
+    a: `這份行程有兩件事絕對要，其他比您想的少。白川鄉點燈 2027 年只有四個晚上（1 月 11、17、24、31 日，每晚 17:30–19:30），完全事前預約，協會公告寫明當天不售入場券。金澤到白川鄉高速巴士全車對號，北陸鐵道要求上車前預訂，沒有現場備案。此外，北陸新幹線 Kagayaki 完全沒有自由座，滑雪租借最先缺您的尺寸，SHIBUYA SKY 日落時段在開賣瞬間就賣完。其他幾乎都能直接去：京都寺院、兼六園、東京免費燈飾、雪祭會場。`,
   },
   {
     q: "日本冬季行程要排幾天？",
-    a: "本頁路線最少 10 天，不趕要 12 天，想加北海道和北陸兩邊要 14 天。冬天對短程特別不利，原因有二：白天短，同樣的一天比 5 月能做的少；天氣風險真實存在，沒有餘裕的計畫就沒地方移動因雪取消的一天。只有一週的話，刪高山和金澤而不是東京，改走東京、京都、大阪的一週，晚上加燈飾。有 10 天的話，10 天行程是同一路線，也放得下冬季計畫。",
+    a: "本頁路線最少 10 天，不趕要 12 天，想加北海道和北陸兩邊要 14 天。冬天對短程特別不利，原因有二：白天短，同樣的一天比 5 月能做的少；天氣風險真實存在，行程排得太滿，就沒有空檔調整因雪取消的一天。只有一週的話，刪高山和金澤而不是東京，改走東京、京都、大阪的一週，晚上加燈飾。有 10 天的話，10 天行程是同一路線，也放得下冬季計畫。",
   },
   {
     q: "新幹線下雪時會開嗎？",
@@ -834,7 +834,7 @@ const faqItems = [
   },
   {
     q: "新年期間不適合去嗎？",
-    a: `這是冬天唯一要繞開而不是排進去的一週。約 12 月 29 日到 1 月 3 日，博物館和許多餐廳休息，電車和新幹線是全年最滿，這份行程每座城市的房價都到最高。神社是例外，也是有人還是去的原因：初詣，也就是新年第一次參拜，在明治神宮和伏見稻荷很壯觀，都免費。如果日期只能在這週，請在 30 天前開放預訂時立刻訂鐵路座位，並把可直接入內的景點當成要預訂的來看待。`,
+    a: `這是冬天唯一要繞開而不是排進去的一週。約 12 月 29 日到 1 月 3 日，博物館和許多餐廳休息，電車和新幹線是全年最滿，這份行程每座城市的房價都到最高。神社是例外，也是有人還是去的原因：初詣，也就是新年第一次參拜，在明治神宮和伏見稻荷很壯觀，都免費。如果只能在這一週出發，請在 30 天前開放預訂時立刻訂鐵路座位，並把可直接入內的景點當成要預訂的來看待。`,
   },
   {
     q: "這條冬季路線值得買 JR Pass 嗎？",
@@ -842,7 +842,7 @@ const faqItems = [
   },
   {
     q: "冬天可以帶小孩走這份行程嗎？",
-    a: `大部分可以，要調整兩處。第一是晚上：燈飾、白川鄉點燈和 teamLab 庭園都是天黑後的寒冷外出，濃飛巴士點燈巴士最早 20:20 才回到高山，對小小孩太晚。第二是第 9 天的移動日，大半天都在兩班車上，孩子小的話值得拆開或刪掉。適合的是雪日，玩雪不需技術也不用雪票，北海道的雪上樂園半日就是為此設計。teamLab 植物園大阪也是全線最便宜的親子票，6 到 15 歲 ¥500、學齡前免費，但商品說明提醒有閃光和大聲響。`,
+    a: `大部分可以，要調整兩處。第一是晚上：燈飾、白川鄉點燈和 teamLab 庭園都是天黑後的寒冷外出，濃飛巴士點燈巴士最早 20:20 才回到高山，對年紀較小的孩子來說太晚。第二是第 9 天的移動日，大半天都在兩班車上，孩子小的話值得拆開或刪掉。適合的是玩雪日，玩雪不需技術也不用纜車票，北海道的雪上樂園半日就是為此設計。teamLab 植物園大阪也是全線最便宜的親子票，6 到 15 歲 ¥500、學齡前免費，但商品說明提醒有閃光和大聲響。`,
   },
 ];
 
@@ -852,7 +852,7 @@ const DESC =
 
 /** 一張表看完 12 天；第一列就是答案。 */
 const glanceRows = [
-  { base: "答案：12 天、5 個據點", nights: "東京 4、金澤 2、高山 2、京都 2、大阪 1", key: "東京 → 金澤 北陸新幹線 2 小時 28 分鐘", book: "白川鄉點燈最先訂" },
+  { base: "答案：12 天、5 個住宿據點", nights: "東京 4、金澤 2、高山 2、京都 2、大阪 1", key: "東京 → 金澤 北陸新幹線 2 小時 28 分鐘", book: "白川鄉點燈最先訂" },
   { base: "東京", nights: "4 晚", key: "燈飾、展望台、可加滑雪一日遊", book: "SHIBUYA SKY 日落時段、teamLab" },
   { base: "金澤", nights: "2 晚", key: "兼六園、東茶屋街；往白川鄉巴士 1 小時 15 分鐘", book: "全車對號的 Kagayaki 和預約制巴士" },
   { base: "高山", nights: "2 晚", key: "白川鄉點燈：2027 年 1 月 11、17、24、31 日，17:30–19:30", book: "點燈巴士，當天不售票" },
@@ -889,7 +889,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 日本冬季行程 2026–27：<br />12 天逐日安排
 </h1>
           <p className={styles.heroSubtitle}>
-東京、金澤、白川鄉、高山、京都與大阪，加上日期固定的兩個冬季活動，以及現場完全不賣票的那一個。
+東京、金澤、白川鄉、高山、京都與大阪，加上日期固定的兩個冬季活動，其中一個完全不販售當日票。
 </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${monthLabel(updated.iso, LOCALE)}`, "12 天每天一張表", "2027 年冬季活動日期", "官方氣溫"].map((t) => (
@@ -909,7 +909,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           checkedIso="2026-11-06"
           deadline={
             <>
-先訂 1 月的點燈：濃飛巴士高山出發四晚都開賣了，當天不售票，下一輪停車場 12 月 1 日開放，請在 <strong>11 月 30 日</strong>前訂好座位。如果旅程圍繞 2 月 4–11 日的雪祭，住宿和機票也請同一天前確定。
+先預訂 1 月的白川鄉點燈：濃飛巴士高山出發四晚都開賣了，當天不售票，下一輪停車位預約將於 12 月 1 日開放，請在 <strong>11 月 30 日</strong>前訂好座位。如果行程安排在 2 月 4–11 日雪祭期間，住宿和機票也請同一天前確定。
 </>
           }
           tours={[
@@ -939,17 +939,17 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 
                 <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-這份 2026–27 年冬的<strong>日本冬季行程</strong>共<strong>12 天、5 個據點</strong>：東京 4 晚、金澤 2 晚、高山 2 晚、京都 2 晚、大阪 1 晚，東京到金澤搭北陸新幹線約 <strong>2 小時 28 分鐘</strong>（JR 西日本）。最先要訂的是<strong>白川鄉冬季點燈</strong>，2027 年只有 1 月 11、17、24、31 日四個晚上（17:30–19:30），主辦單位當天完全不售票；<strong>第 77 屆札幌雪祭</strong>是 2027 年 2 月 4–11 日，免費入場。
+這份 2026–27 年冬的<strong>日本冬季行程</strong>共<strong>12 天、5 個住宿據點</strong>：東京 4 晚、金澤 2 晚、高山 2 晚、京都 2 晚、大阪 1 晚，東京到金澤搭北陸新幹線約 <strong>2 小時 28 分鐘</strong>（JR 西日本）。最先要訂的是<strong>白川鄉冬季點燈</strong>，2027 年只有 1 月 11、17、24、31 日四個晚上（17:30–19:30），主辦單位當天完全不售票；<strong>第 77 屆札幌雪祭</strong>是 2027 年 2 月 4–11 日，免費入場。
 </p>
           <p className={styles.bodyText}>
-這份行程圍繞冬天改變的三件事，而不是景點清單：搭預約高速巴士進山，然後走東海道線下到關西。白天很短，12 月下午四點半左右就天黑，依日本氣象廳 1991–2020 年平年值，1 月均溫東京 5.4°C、札幌 −3.2°C。想把雪祭排進去，請看<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--red)", fontWeight: 600 }}>札幌雪祭行程攻略</Link>和<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>北海道 7 天行程</Link>；其他景點門票在<Link href="/zh-tw/guides/attractions" style={{ color: "var(--red)", fontWeight: 600 }}>日本景點攻略總覽</Link>。下面的活動日期、氣溫和票價都附出處：活動日期和巴士票價於 {REREAD} 重新查核，氣候平年值於 {CHECKED} 查核。
+這份行程不是單純羅列景點，而是依冬季旅行的三項變化來安排：搭北陸新幹線到金澤後，搭乘須預約的高速巴士進入山區，再經東海道線前往關西。白天很短，12 月下午四點半左右就天黑，依日本氣象廳 1991–2020 年平年值，1 月均溫東京 5.4°C、札幌 −3.2°C。想把雪祭排進去，請看<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--red)", fontWeight: 600 }}>札幌雪祭行程攻略</Link>和<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>北海道 7 天行程</Link>；其他景點門票在<Link href="/zh-tw/guides/attractions" style={{ color: "var(--red)", fontWeight: 600 }}>日本景點攻略總覽</Link>。下面的活動日期、氣溫和票價都附出處：活動日期和巴士票價於 {REREAD} 重新查核，氣候平年值於 {CHECKED} 查核。
 </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["據點", "住宿", "重點與交通", "要先訂的"].map((h) => (
+                    {["住宿據點", "住宿", "重點與交通", "要先訂的"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -985,7 +985,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 天數
 </p>
                 <p className={styles.verdictStatValue}>
-12 天，5 個據點
+12 天，5 個住宿據點
 </p>
               </div>
               <div className={styles.verdictStat}>
@@ -1014,7 +1014,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               </div>
             </div>
             <p className={styles.verdictText}>
-<strong>重點：</strong>先確定有日期的：點燈的晚上、金澤預約巴士、全車對號的 Kagayaki 和住宿；京都幾乎不用訂，旺季也大多可直接入內。
+<strong>重點：</strong>先確定日期固定的項目：點燈的晚上、金澤預約巴士、全車對號的 Kagayaki 和住宿；京都幾乎不用訂，旺季也大多可直接入內。
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink
@@ -1040,7 +1040,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                 <KlookTripPrep
           label={"同一趟旅程要訂的"}
           heading={"出發前要訂什麼？"}
-          intro={"依冬季旅程的重要順序列出：傳遞天氣通知的網路、東京兩座機場的單程交通、真正符合這條路線的周遊券、周遊券的比較，以及燈飾路線所在的東京地鐵票。"}
+          intro={"依冬季旅程的重要順序列出：接收天氣及交通異動通知所需的網路、東京兩座機場的單程交通、真正符合這條路線的周遊券、周遊券的比較，以及燈飾路線所在的東京地鐵票。"}
           items={sameTripItems}
         />
 
@@ -1054,14 +1054,14 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 日本冬天 12 天怎麼分配？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-五個據點，不是八個，因為冬天白天短，1 月的移動日比 5 月代價更高。特別的選擇是高山兩晚，這正是讓計畫可行的關鍵：濃飛巴士在 1 月四個點燈晚上從那裡自營巴士，所以不需要車，也不需要住村內。
+安排五個住宿據點，而不是八個，因為冬天白天短，1 月移動一天所花的時間與精力比 5 月更多。特別的選擇是高山兩晚，這正是讓計畫可行的關鍵：濃飛巴士在 1 月四個點燈晚上從那裡自營巴士，所以不需要車，也不需要住村內。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["據點", "晚數", "為什麼列入"].map((h) => (
+                    {["住宿據點", "晚數", "為什麼列入"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -1142,8 +1142,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 
                 <KlookStayAreas
           heading={"日本冬季旅行住哪裡好？"}
-          intro={"十二天五個據點，冬天比平常多一個條件：天黑後拖行李從車站要走多遠。下面每項都是該區域的 Klook 飯店搜尋，依計畫實際使用的路線或巴士總站挑選。住宿攻略對東京、京都和大阪內部有更詳細的比較。"}
-          areas={japanWinterStayAreas.map((item, i) => withKlookLocale(item, LOCALE, ([{ why: "雪日最省事的冬季據點：滑雪巴士和往箱根的小田急線從這座車站下方出發，山手線就在門口，方便燈飾夜晚。", area: "東京新宿" }, { why: "適合兩次搭新幹線離開東京的計畫：往 GALA 湯澤的上越線和往金澤的北陸線都從下方出發，走出大樓就是丸之內燈飾。", area: "東京站／丸之內" }, { why: "北陸新幹線終點的兩晚，兼六園巴士和預約制白川鄉巴士都從站前出發，這是旅程中最沒有餘裕的一段。", area: "金澤" }, { why: "這條路線在山區過夜的地方，也是 1 月白川鄉點燈巴士的據點：濃飛巴士總站就在車站旁，19:30 結束後走回去就好，不用轉車。", area: "高山站" }, { why: "飛驒和東海道列車抵達的地方，也是 100 和 101 觀光巴士的起點，還是離開當天清晨搭機場 HARUKA 的月台。", area: "京都站" }, { why: "御堂筋線、步行可到道頓堀和黑門市場，樓下是往關西機場的南海總站，也能直達南邊的長居，那裡的 teamLab 庭園 18:00 後才開放。", area: "大阪難波" }, { why: "2 月替換版的城市據點：到大通公園一站地鐵或走一小段，雪祭會場在戶外、2 月平均最高 0.4°C 時正需要這樣。", area: "札幌站" }, { why: "只有以雪而不是城市為主的旅程才值得單獨當據點：纜車就在門口，能放雪具的機場巴士從新千歲直達。", area: "二世谷" }] as Partial<typeof item>[])[i]))}
+          intro={"規劃十二天、五個住宿據點時，冬天還得多考慮一件事：天黑後拖行李從車站要走多遠。下面每項都是該區域的 Klook 飯店搜尋，依計畫實際使用的路線或巴士總站挑選。住宿攻略對東京、京都和大阪內部有更詳細的比較。"}
+          areas={japanWinterStayAreas.map((item, i) => withKlookLocale(item, LOCALE, ([{ why: "玩雪日最省事的冬季住宿據點：滑雪巴士和往箱根的小田急線從這座車站下方出發，山手線就在門口，方便燈飾夜晚。", area: "東京新宿" }, { why: "適合兩次搭新幹線離開東京的計畫：往 GALA 湯澤的上越線和往金澤的北陸線都從下方出發，走出大樓就是丸之內燈飾。", area: "東京站／丸之內" }, { why: "北陸新幹線終點的兩晚，兼六園巴士和預約制白川鄉巴士都從站前出發，這是旅程中轉乘時間最緊湊的一段。", area: "金澤" }, { why: "這條路線在山區過夜的地方，也是 1 月白川鄉點燈巴士出發的住宿據點：濃飛巴士總站就在車站旁，19:30 結束後走回去就好，不用轉車。", area: "高山站" }, { why: "飛驒和東海道列車抵達的地方，也是 100 和 101 觀光巴士的起點，還是離開當天清晨搭機場 HARUKA 的月台。", area: "京都站" }, { why: "御堂筋線、步行可到道頓堀和黑門市場，樓下是往關西機場的南海總站，也能直達南邊的長居，那裡的 teamLab 庭園 18:00 後才開放。", area: "大阪難波" }, { why: "2 月替換版的城市住宿據點：到大通公園一站地鐵或走一小段，雪祭會場在戶外、2 月平均最高 0.4°C 時正需要這樣。", area: "札幌站" }, { why: "只有以雪而不是城市為主的旅程才值得單獨當住宿據點：纜車就在門口，能放雪具的機場巴士從新千歲直達。", area: "二世谷" }] as Partial<typeof item>[])[i]))}
         />
 
         <p className={styles.bodyText} style={{ marginTop: "-1.5rem", marginBottom: "3rem" }}>
@@ -1152,13 +1152,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
-據點之間的移動
+住宿據點之間的移動
 </span>
           <h2 className={styles.sectionTitle}>
-據點之間怎麼移動，周遊券划算嗎？
+住宿據點之間怎麼移動，周遊券划算嗎？
 </h2>
           <p className={styles.bodyText}>
-兩段長途鐵路、兩段預約高速巴士和一個移動日。容易出錯的不是長度，這裡沒有超過約三小時的路段，而是預約：北陸快車完全沒有自由座，金澤側往白川鄉的巴士沒預約上不了車。
+兩段長途鐵路、兩段預約高速巴士和一個移動日。容易出錯的不是長度，這裡沒有超過約三小時的路段，而是預約：北陸新幹線的 Kagayaki 全車都是指定席，沒有自由座，金澤側往白川鄉的巴士沒預約上不了車。
 </p>
           <ul className={styles.pickList}>
             <li>
@@ -1193,7 +1193,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             </li>
           </ul>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-周遊券方面，全國版 JR Pass 要靠長途回本，這條路線只有兩段，所以請實際計算，不要憑感覺。<strong>北陸拱型周遊券</strong>才符合這趟旅程的形狀：連續七天涵蓋東京到敦賀的北陸新幹線和關西地區，刻意不含東海道新幹線，所以只適合去回走不同路線。兩者都不含民營的白川鄉巴士。<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>有依自己路段計算的工具，<Link href="/guides/transport/shinkansen-guide" hrefLang="en">新幹線攻略（英文）</Link>說明座位等級和預訂。
+周遊券方面，全國版 JR Pass 要靠長途回本，這條路線只有兩段，所以請實際計算，不要憑感覺。<strong>北陸拱型周遊券</strong>才符合這趟旅程的路線：連續七天涵蓋東京到敦賀的北陸新幹線和關西地區，刻意不含東海道新幹線，所以只適合去回走不同路線。兩者都不含民營的白川鄉巴士。<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>有依自己路段計算的工具，<Link href="/guides/transport/shinkansen-guide" hrefLang="en">新幹線攻略（英文）</Link>說明座位等級和預訂。
 </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -1216,7 +1216,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 日本 12 月、1 月、2 月有多冷？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-本州是穿大衣的天氣，北海道則真的冷；1 月到處都是最冷的月份，2 月略暖而不是更糟。下面是日本氣象廳 1991–2020 年氣候平年值：先列月均溫，影響穿著的地方在括號內列平均最高和最低。
+本州穿大衣就能應對，北海道則真的冷；1 月到處都是最冷的月份，2 月略暖而不是更糟。下面是日本氣象廳 1991–2020 年氣候平年值：先列月均溫，影響穿著的地方在括號內列平均最高和最低。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1242,7 +1242,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-月平均氣溫，括號內為平均最高和最低，出自日本氣象廳 1991–2020 年東京、京都、大阪和札幌平年值，查核日：{CHECKED}。同一表中札幌月降雪為 12 月 113 公分、1 月 137 公分、2 月 116 公分。這些數字沒顯示兩件事：本州日本海側的金澤、高山、白川鄉雪量遠超過氣溫給人的印象；你在這份行程待在戶外的時間大多在天黑後，更接近最低而非平均。
+月平均氣溫，括號內為平均最高和最低，出自日本氣象廳 1991–2020 年東京、京都、大阪和札幌平年值，查核日：{CHECKED}。同一表中札幌月降雪為 12 月 113 公分、1 月 137 公分、2 月 116 公分。這些數字沒顯示兩件事：本州日本海側的金澤、高山、白川鄉雪量遠超過氣溫給人的印象；您在這份行程待在戶外的時間大多在天黑後，更接近最低而非平均。
 </p>
         </section>
 
@@ -1254,7 +1254,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 在日本哪裡看得到雪？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-通常不是東京、京都或大阪，這三座太平洋側城市下雪是新聞，不是季節。雪在山區和日本海側，有用的問題不是哪裡最深，而是哪種雪適合你實際的旅程。
+通常不是東京、京都或大阪，這三座太平洋側城市下雪會上新聞，而不是每年冬天的常態。雪在山區和日本海側，有用的問題不是哪裡最深，而是哪種雪適合您實際的旅程。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1280,14 +1280,14 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-唯一不用多住一晚的是湯澤這邊，所以放在這份計畫的第 3 天。要滑雪而不只是看的話，最該先訂的是裝備而不是雪票，出發前也請確定保險，雪道內和雪道外在條款中完全不同，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">滑雪旅遊保險比較（英文）</Link>有說明。如果雪是旅程的全部，請跳過城市，看<Link href="/zh-tw/guides/attractions/niseko-ski-tours">二世谷滑雪攻略</Link>，內容涵蓋接送、教練課和四大區域，依 Niseko United 票價表 2026 年 12 月 24 日到 2027 年 2 月 28 日成人 All Mountain 一日票 ¥13,500。
+唯一不用多住一晚的是湯澤這邊，所以放在這份計畫的第 3 天。要滑雪而不只是看的話，最該先訂的是裝備而不是纜車票，出發前也請確定保險，雪道內和雪道外在條款中完全不同，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">滑雪旅遊保險比較（英文）</Link>有說明。如果雪是旅程的全部，請跳過城市，看<Link href="/zh-tw/guides/attractions/niseko-ski-tours">二世谷滑雪攻略</Link>，內容涵蓋接送、滑雪課程（雙板與單板）和四大區域，依 Niseko United 票價表 2026 年 12 月 24 日到 2027 年 2 月 28 日成人 All Mountain 一日票 ¥13,500。
 </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={klookFor(galaNaebaSkiDayTripTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
 GALA 湯澤／苗場包車 →
 </KlookLink>
             <KlookLink href={klookFor(hakubaHapponeBusLiftRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
-白馬巴士加雪票加租借 →
+白馬巴士加纜車票加租借 →
 </KlookLink>
             <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
 二世谷雪具租借 →
@@ -1426,7 +1426,7 @@ JR 東日本南北海道周遊券 →
 冬天去日本要帶什麼？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-比你想的少，而且要多層而不是厚重。原因不是戶外氣溫，而是室內：這份行程的電車、商店和餐廳暖氣都很強，一件脫不掉的厚衣服比三件能脫的薄衣服差。
+比您想的少，而且要多層而不是厚重。原因不是戶外氣溫，而是室內：這份行程的電車、商店和餐廳暖氣都很強，一件脫不掉的厚衣服比三件能脫的薄衣服差。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1457,7 +1457,7 @@ JR 東日本南北海道周遊券 →
 
                 <KlookTourPicks
           heading={"如果加上北海道的冬季一日遊"}
-          intro={"四個札幌出發的冬季行程，用於這趟旅程的 2 月版本。全部是季節商品而不是全年商品，所以值得提早打開，不要等到當天。"}
+          intro={"四個札幌出發的冬季行程，適合安排在這趟旅程的 2 月版行程中。這些都是季節性商品，並非全年販售，建議提前查看，不要等到當天。"}
           tours={[withKlookLocale(otaruSnowParkDayTour, LOCALE, { title: "小樽、白色戀人公園與雪上樂園一日遊", desc: "結合小樽運河、蒸汽時鐘、白色戀人公園和玩雪的北海道一日遊" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "札幌出發旭山動物園、美瑛青池與精靈露台一日遊", desc: "從札幌前往旭川動物園、美瑛青池和精靈露台的一日巴士，有多條路線，冬季可加購雪上摩托車" }), withKlookLocale(lakeShikotsuIceFestivalHalfDayTour, LOCALE, { title: "札幌出發支笏湖冰濤祭半日遊", desc: "冬季限定的支笏湖冰濤祭，從札幌出發的導覽半日，是北海道這一側另一個 2 月活動" }), withKlookLocale(sapporoSnowParkHalfDayTour, LOCALE, { title: "Wonderland Sapporo 雪上樂園半日遊", desc: "市郊雪上樂園半日，含飯店接送和成吉思汗烤肉，是為不帶雪具的旅客設計的版本" })]}
         />
 
@@ -1466,7 +1466,7 @@ JR 東日本南北海道周遊券 →
                 <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>
-先確定有日期的項目
+先確定日期固定的項目
 </h2>
             <p className={styles.ctaBannerDesc}>
 白川鄉點燈只有 2027 年 1 月的四個晚上，現場什麼都不賣；金澤巴士沒預約上不了車；Kagayaki 沒有自由座。這份行程其他都可以等。

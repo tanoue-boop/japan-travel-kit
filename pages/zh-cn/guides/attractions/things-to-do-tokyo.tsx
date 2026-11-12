@@ -63,9 +63,9 @@ const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 const priceRows = [
   {
     name: "涩谷SKY",
-    adult: `15 点前 ${SKY_ONLINE_DAY}、15 点起 ${SKY_ONLINE_LATE}（线上）`,
+    adult: `15 点前 ${SKY_ONLINE_DAY}、15 点起 ${SKY_ONLINE_LATE}（网上购票）`,
     book: "建议：日落场会售罄",
-    sameDay: `有，14 层柜台：${SKY_DOOR_DAY}／${SKY_DOOR_LATE}`,
+    sameDay: `有，可在 14 楼售票柜台购买：${SKY_DOOR_DAY}／${SKY_DOOR_LATE}`,
     change: "官网线上票：入场日前可免费取消",
     checked: SKY.checked,
     href: "/zh-cn/guides/attractions/shibuya-sky-tickets",
@@ -122,11 +122,11 @@ const priceRows = [
     klook: PRICES.sanrioPuroland.klook.url,
   },
   {
-    name: "东京晴空塔（350 层）",
+    name: "东京晴空塔（350 米）",
     adult: zhPrice(PRICES.tokyoSkytree.adult),
     book: "建议：比柜台便宜",
     sameDay: "有，柜台每张加收 ¥500",
-    change: "官网线上票：31 天前免费，之后 20%；不可改期",
+    change: "官网购票：提前 31 天取消免费，之后取消收取 20%；不可改期",
     checked: PRICES.tokyoSkytree.checked,
     href: "/zh-cn/guides/attractions/tokyo-skytree-tickets",
     klook: PRICES.tokyoSkytree.klook.url,
@@ -222,7 +222,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "为什么东京的官方售票网站刷不了我的卡？",
-    a: "好几个日本景点的支付页面对境外发行的信用卡处理得不顺畅，东京迪士尼是最有名的例子。这就是为什么从海外订票时，走第三方平台常常更顺利——即使官网理论上对你开放。它给你的是看得懂、境外卡能支付的结账流程，而不是更便宜的票。我们每一篇景点攻略都会说明那个场馆适合走哪条渠道。",
+    a: "部分日本景点的支付系统无法顺利处理境外发行的信用卡，东京迪士尼是最有名的例子。这就是为什么从海外订票时，走第三方平台常常更顺利——即使官网理论上对你开放。这些平台提供易于操作、支持境外银行卡付款的结算流程，而不是更便宜的票。我们每一篇景点攻略都会说明那个场馆适合走哪条渠道。",
   },
   {
     q: "东京的景点需要几天？",
@@ -230,11 +230,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "从东京出发有哪些值得的一日游？",
-    a: "四个特别突出，而且是真正不同的四天。镰仓最轻松——一条 JR 线不到一小时，有露天大佛与海边寺院。日光是 UNESCO 世界遗产的神社加山景，往北两小时。箱根是温泉与火山谷，一张周游券涵盖整个环线。河口湖是去看富士山的地方。每一个在下面都有单独的攻略。",
+    a: "其中四个尤其值得考虑，而且四天的体验各不相同。镰仓最轻松——一条 JR 线不到一小时，有露天大佛与海边寺院。日光是 UNESCO 世界遗产的神社加山景，往北两小时。箱根是温泉与火山谷，一张周游券涵盖整个环线。河口湖是去看富士山的地方。每一个在下面都有单独的攻略。",
   },
   {
     q: "涩谷SKY 和东京晴空塔选哪一个？",
-    a: `想要涩谷十字路口上方的露天屋顶就选涩谷SKY，想要高度就选东京晴空塔。涩谷SKY 线上购票 15 点前 ${SKY_ONLINE_DAY}、15 点起 ${SKY_ONLINE_LATE}，会售罄的是日落时段。晴空塔 350 层 ${zhPrice(PRICES.tokyoSkytree.adult)}，在柜台购票每张加收 ¥500。官方票价，核查日期 ${SKY_CHECKED} 与 ${label(PRICES.tokyoSkytree.checked)}。`,
+    a: `想要涩谷十字路口上方的露天屋顶就选涩谷SKY，想要高度就选东京晴空塔。涩谷SKY 线上购票 15 点前 ${SKY_ONLINE_DAY}、15 点起 ${SKY_ONLINE_LATE}，会售罄的是日落时段。晴空塔 350 米观景台 ${zhPrice(PRICES.tokyoSkytree.adult)}，在柜台购票每张加收 ¥500。官方票价，核查日期 ${SKY_CHECKED} 与 ${label(PRICES.tokyoSkytree.checked)}。`,
   },
   {
     q: "东京迪士尼两座园区可以一天逛完吗？",
@@ -249,11 +249,11 @@ const faqItems: FaqItem[] = [
 const tours = [
   withKlookLocale(tokyoSubwayTicket, "zh-cn", {
     title: "东京地铁通票（24／48／72 小时）",
-    desc: "东京Metro与都营地铁全线不限次乘坐，抵达后领取，不必排队现场买",
+    desc: "东京 Metro 与都营地铁全线不限次乘坐，抵达后领取，不必排队现场买",
   }),
   withKlookLocale(skytreeTicket, "zh-cn", {
     title: "东京晴空塔门票",
-    desc: "350 层天望甲板的指定时段门票，同一个商品页也能加购 450 层套票",
+    desc: "350 米天望甲板的指定时段门票，同一个商品页也能加购 450 米观景台套票",
   }),
   withKlookLocale(tokyoSightseeingBusTour, "zh-cn", {
     title: "东京市区观光巴士一日游",
@@ -330,7 +330,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           </h1>
           <p className={styles.heroSubtitle}>
             东京热门景点的官方门票价格、哪些要先订、哪些免费，
-            以及其他可以吃早饭时再决定的行程。
+            以及哪些行程可以当天吃早饭时再决定。
           </p>
           <div className={styles.heroBadges}>
             {[`更新于 ${updatedLabel}`, "附核查日期的官方票价", "按紧迫性排序"].map((t) => (
@@ -450,7 +450,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>必去清单</span>
           <h2 className={styles.sectionTitle}>东京必去景点有哪些？</h2>
           <p className={styles.bodyText}>
-            东京必去的是日落时的观景台、一家 teamLab 美术馆、一天主题乐园，以及一个吃小店的夜晚。
+            东京必去的体验包括在观景台看日落、参观一家 teamLab 美术馆、花一天玩主题乐园，以及晚上去小店吃喝。
             再加上神社、庭园与一趟一日游，第一次去东京就排满了。
           </p>
           <ul className={styles.bodyList}>
@@ -531,11 +531,11 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>交通</span>
           <h2 className={styles.sectionTitle}>东京地铁通票划算吗？</h2>
           <p className={styles.bodyText}>
-            72 小时票通常划算，24 小时票要跑得多才划算。24 小时 {PRICES.tokyoSubwayTicket.adult}、48 小时 ¥1,500、
+            72 小时票通常划算，24 小时票则需要乘坐较多次地铁才划算。24 小时 {PRICES.tokyoSubwayTicket.adult}、48 小时 ¥1,500、
             72 小时 ¥2,000，最长的票平均每天约 ¥667；用 IC 卡每趟 ¥178 到 ¥324，大约四趟短程就回本。24 小时票则要五到六趟。
           </p>
           <p className={styles.bodyText}>
-            它涵盖东京Metro与都营地铁，但不含 JR，所以山手线不能坐。完整的回本计算请看{" "}
+            它涵盖东京 Metro 与都营地铁，但不含 JR，所以山手线不能坐。完整的回本计算请看{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket" style={linkStyle}>东京地铁通票攻略（英文）</Link>。
             票价与车费读自 tokyometro.jp，核查日期 {SUBWAY_CHECKED}。
           </p>
@@ -576,13 +576,13 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>高处的视野</span>
           <h2 className={styles.sectionTitle}>东京观景台选哪一个？</h2>
           <p className={styles.bodyText}>
-            <strong>涩谷SKY</strong> 是涩谷十字路口上方的露天屋顶，也是唯一一个“时段比门票重要”的观景台：
-            成人网上预订 15 点前入场 {SKY_ONLINE_DAY}、15 点起 {SKY_ONLINE_LATE}；14 层售票柜台则是 {SKY_DOOR_DAY} 与{" "}
+            <strong>涩谷SKY</strong> 是涩谷十字路口上方的露天屋顶，也是唯一一个“入场时段比门票本身更重要”的观景台：
+            成人网上预订 15 点前入场 {SKY_ONLINE_DAY}、15 点起 {SKY_ONLINE_LATE}；14 楼售票柜台则是 {SKY_DOOR_DAY} 与{" "}
             {SKY_DOOR_LATE}（官方票价，核查日期 {SKY_CHECKED}）。日落一定落在较晚的时段，而会售罄的正是这些时段。详见我们的{" "}
             <Link href="/zh-cn/guides/attractions/shibuya-sky-tickets" style={linkStyle}>涩谷SKY 门票攻略</Link>。{" "}
-            <strong>东京晴空塔</strong>是走高度的选项，350 层天望甲板 {priceLabel(PRICES.tokyoSkytree.adult, "zh-cn")}——
+            想从更高处俯瞰东京，就选<strong>东京晴空塔</strong>，350 米天望甲板 {priceLabel(PRICES.tokyoSkytree.adult, "zh-cn")}——
             <Link href="/zh-cn/guides/attractions/tokyo-skytree-tickets" style={linkStyle}>我们的晴空塔门票攻略</Link>
-            解释了为什么一开始就加购 450 层，比到现场再加购便宜。
+            解释了为什么一开始就加购 450 米观景台，比到现场再加购便宜。
           </p>
           <p className={styles.bodyText}>
             在为任何一个付钱之前，先看看我们的{" "}
@@ -597,7 +597,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>teamLab 美术馆订哪一家？</h2>
           <p className={styles.bodyText}>
             东京有两家 teamLab 数字艺术美术馆——丰洲的 Planets 与麻布台的无界——
-            两家都是走进去的沉浸式体验，都采用指定时段入场，而且很快售罄。我们的{" "}
+            两家都提供可步入其中的沉浸式体验，实行分时段入场，门票也很快售罄。我们的{" "}
             <Link href="/zh-cn/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab 门票攻略</Link>{" "}
             对比了两家，说明哪一家适合你的行程，以及怎么在售罄之前订到。
           </p>
@@ -659,8 +659,8 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>出城</span>
           <h2 className={styles.sectionTitle}>从东京出发有哪些值得的一日游？</h2>
           <p className={styles.bodyText}>
-            <Link href="/guides/attractions/kamakura-day-trip" style={linkStyle}>镰仓（英文）</Link>{" "}
-            是你只想花一个早上做攻略时该去的：一条 JR 线不到一小时、JR Pass 本来就涵盖，
+            如果只想花一个早上做攻略，就选{" "}
+            <Link href="/guides/attractions/kamakura-day-trip" style={linkStyle}>镰仓（英文）</Link>：一条 JR 线不到一小时、JR Pass 本来就涵盖，
             露天大佛与长谷寺相隔几分钟。{" "}
             <Link href="/guides/attractions/nikko-day-trip" style={linkStyle}>日光（英文）</Link>{" "}
             往北两小时，看 UNESCO 世界遗产的神社与山中瀑布，两者之间的巴士是要提前规划的部分。
@@ -668,11 +668,11 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             富士山其实是两个不同的问题。想去河口湖一带的观景点，我们的{" "}
             <Link href="/guides/attractions/mt-fuji-day-trip-tokyo" style={linkStyle}>富士山一日游交通攻略（英文）</Link>{" "}
-            介绍直达列车与 Mt. Fuji Pass；想登上山上的富士斯巴鲁线五合目，那需要大巴，我们的{" "}
+            介绍直达列车与 Mt. Fuji Pass；想登上山上的富士斯巴鲁线五合目，则需要乘坐大巴，我们的{" "}
             <Link href="/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo" style={linkStyle}>富士山一日游行程对比</Link>{" "}
-            把各种行程整理清楚。{" "}
-            <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={linkStyle}>箱根（英文）</Link>{" "}
-            是泡温泉的替代方案，一张周游券涵盖整个环线。
+            把各种行程整理清楚。想泡温泉的话，可以改去{" "}
+            <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={linkStyle}>箱根（英文）</Link>，
+            一张周游券涵盖整个环线。
           </p>
         </section>
 
@@ -682,8 +682,8 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
 
         <GygCompare
           slug="zh-cn-things-to-do-tokyo"
-          heading="同一座城市的第二个商品目录"
-          intro="这一页没有任何东西只依赖单一卖家。如果你在排日期时，上面某样已经售罄——涩谷SKY 的时段、富士山大巴、teamLab 的入场——GetYourGuide 的东京商品目录是另一个可以按日期搜索的地方，而且有 Klook 没有的运营商。"
+          heading="同一城市的另一个旅游产品预订平台"
+          intro="这一页没有任何东西只依赖单一卖家。如果你在排日期时，上面某样已经售罄——涩谷SKY 的时段、富士山大巴、teamLab 的入场——GetYourGuide 的东京商品目录是另一个可以按日期搜索的地方，而且有部分 Klook 上没有的旅游项目。"
           listings={[gygTokyo, gygTokyoEntryTickets]}
         />
 

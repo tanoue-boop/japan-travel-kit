@@ -83,7 +83,7 @@ const tripPrep = [
   }),
   withKlookLocale(tokyoAirportTripPrep[1], LOCALE, {
     label: "东京地铁通票（24／48／72 小时）",
-    why: "上面任何一张机场票都不包括进城之后的出行；地铁通票包括，东京地铁与都营全线、24、48 或 72 小时。",
+    why: "上述机场车票均不包含进城后的市内交通；地铁通票可在 24、48 或 72 小时内乘坐东京 Metro 和都营地铁全线。",
     ctaLabel: "查看地铁通票 →",
   }),
 ];
@@ -148,7 +148,7 @@ const hanedaMasterRows = [
     option: "京急机场线",
     time: "3 号航站楼到品川 11 分钟（1·2 号航站楼 14 分钟）",
     fare: "到品川 ¥330（IC ¥327）",
-    often: "随到随坐",
+    often: "无需预约，直接乘车",
     lands: "品川，并直通新桥、银座、浅草",
     source: "京急",
   },
@@ -418,7 +418,7 @@ const familyRows = [
 const nexGuidePoints = [
   {
     title: "JR Pass 可以坐",
-    desc: "N'EX 是 JR 的列车，所以持 JR Pass 免费乘坐，指定席也包括在内。如果你持有 7 日或 14 日周游券，这就是从成田出发第一天最明显的选择。请在机场的 JR 售票处（绿色窗口）订座。",
+    desc: "N'EX 是 JR 的列车，所以持 JR Pass 免费乘坐，指定席也包括在内。如果你持有 7 日或 14 日周游券，这就是抵达成田当天最直接的选择。请在机场的 JR 售票处（绿色窗口／みどりの窓口）订座。",
   },
   {
     title: "直达主要车站",
@@ -437,7 +437,7 @@ const nexGuidePoints = [
 const skylinerPoints = [
   {
     title: "京成进城最快的列车",
-    desc: `京成公布 Skyliner 从成田机场 2·3 号航站楼到上野 41 分钟，并称到东京市中心「最快只要 36 分钟」。从日暮里再换一小段 JR 或地铁，就能到东京大部分区域。查询于 ${CHECKED}。`,
+    desc: `京成公布 Skyliner 从机场 2·3 号航站楼站到京成上野站需 41 分钟，并称到东京市中心「最快只要 36 分钟」。在日暮里换乘 JR 或地铁，就能到东京大部分区域。查询于 ${CHECKED}。`,
   },
   {
     title: "¥2,580，分成两部分",
@@ -469,9 +469,9 @@ const skylinerVsNexRows = [
 ];
 
 const destinationRows = [
-  { dest: "日暮里", pick: "Skyliner", note: "到东京市中心最快的铁路，并可同站台换乘山手线。" },
+  { dest: "日暮里", pick: "Skyliner", note: "前往东京市中心最快的轨道交通方式，并可同站台换乘山手线。" },
   { dest: "京成上野", pick: "Skyliner", note: "Skyliner 终点站，按京成自家数字从 2·3 号航站楼 41 分钟。" },
-  { dest: "浅草／秋叶原", pick: "Skyliner 或 Access 特急", note: "坐 Skyliner 到上野／日暮里再换一小段，或坐 Access 特急 50 分钟直通浅草。" },
+  { dest: "浅草／秋叶原", pick: "Skyliner 或 Access 特急", note: "坐 Skyliner 到上野／日暮里再换乘，或坐 Access 特急 50 分钟直通浅草。" },
   { dest: "东京站", pick: "N'EX", note: "最快 53 分钟直达，不用换乘，¥3,140。" },
   { dest: "涩谷", pick: "N'EX", note: "同一班车直达，¥3,330。" },
   { dest: "新宿", pick: "N'EX", note: "直达——不用拖着行李换乘——¥3,330。" },
@@ -485,7 +485,7 @@ const busFareRows = [
 
 const busPoints = [
   {
-    title: "行李很重或很大时最理想",
+    title: "携带大型或沉重行李时最适合",
     desc: "机场利木津巴士把行李放进车底行李舱——你不必把包拖过车厢、扛上扶梯。带家人、带滑雪装备，或拉大型行李箱的人特别有用。",
   },
   {
@@ -493,12 +493,12 @@ const busPoints = [
     desc: "很多利木津巴士线路直接停在主要酒店区：新宿、涩谷、东京站、赤坂、池袋，部分线路停在个别酒店。线路请查 T-CAT（东京城市航空总站）的时刻表。",
   },
   {
-    title: "零换乘——而且收车更晚",
+    title: "无需换乘，而且末班车更晚",
     desc: "许多线路直达主要酒店与区域，所以你上一次车、下车就在门口附近——带小小孩、长辈或大量装备时很理想。机场巴士的运营时间也比大多数机场电车更晚，所以如果你在电车末班之后才落地，巴士通常是打车之前最便宜的选项。请确认你那条线路的末班时间。",
   },
   {
     title: "会受路况影响",
-    desc: "东京高速公路在高峰时段（早上 7～9 点、傍晚 5～8 点）可能严重拥堵。如果你在高峰时段出行，请多留时间，或考虑坐电车、把重行李用宅急便（行李寄送）送到酒店。",
+    desc: "东京高速公路在高峰时段（早上 7～9 点、傍晚 5～8 点）可能严重拥堵。如果你在高峰时段出行，请预留更多交通时间，或考虑改坐电车，并用宅急便（行李寄送）把大件行李寄到酒店。",
   },
   {
     title: "旺季请提前订",
@@ -509,7 +509,7 @@ const busPoints = [
 const transferTips = [
   {
     title: "落地前先把 IC 卡准备好",
-    desc: "通过 Suica App 开好的 IC 卡（Suica 或 PASMO）让你一抵达就能直接刷闸机，不用在售票机前排队。如果你没有，成田与羽田的 IC 卡机器都有英文界面。京成提醒一点：IC 卡只能支付 Skyliner 的 ¥1,280 乘车券部分，¥1,300 的 Liner 券要另外购买。",
+    desc: "提前在手机上（Suica 或 PASMO App）设置好的交通 IC 卡，让你一抵达就能直接刷闸机，不用在售票机前排队。如果你没有，成田与羽田的 IC 卡机器都有英文界面。京成提醒一点：IC 卡只能支付 Skyliner 的 ¥1,280 乘车券部分，¥1,300 的 Liner 券要另外购买。",
   },
   {
     title: "深夜抵达的选项有限",
@@ -540,7 +540,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "机场交通需要提前预订吗？",
-    a: `电车方面，提前预订是为了价格而不是座位：Skyliner 优惠票单程 ¥2,310 而不是 ¥2,580，N'EX 东京往返车票 ¥5,200，而到新宿买两张单程要 ¥6,660，Skyliner ＋东京地铁通票组合从 ¥2,840 起。这些都要在机场领取，所以还是要预留柜台的时间。真正需要预订的是车辆固定的选项：旺季的利木津巴士指定线路，以及任何专车或拼车接送，尤其是末班车之后才落地的航班。查询于 ${CHECKED}。`,
+    a: `电车方面，提前预订是为了价格而不是座位：Skyliner 优惠票单程 ¥2,310 而不是 ¥2,580，N'EX 东京往返车票 ¥5,200，而到新宿买两张单程要 ¥6,660，Skyliner ＋东京地铁通票组合从 ¥2,840 起。这些都要在机场领取，所以还是要预留柜台的时间。真正需要预订的是需要提前预约车辆的交通方式：旺季的利木津巴士指定线路，以及任何专车或拼车接送，尤其是末班车之后才落地的航班。查询于 ${CHECKED}。`,
   },
   {
     q: "末班车之后才落地怎么办？",
@@ -580,7 +580,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "4 个人包车接送值得吗？",
-    a: `单看价格不值得。把成田到新宿的公布票价乘以四位成人：利木津巴士 ¥14,400，每人 ¥3,600，行李放车底；N'EX ¥13,320，每人 ¥3,330；定额出租车 ¥31,500～¥32,500 加高速费，每人 ¥7,875～¥8,125。从羽田差距更大，因为京急到品川这段每人只要 ¥330。包车值得的时候，问题不在价格——末班车之后才落地（羽田 00:08、成田 23:00 或 22:40）、酒店没有任何巴士线路停靠、行李比手还多，或是 5 人以上同行，这时 7 座或 10 座车是按车计价而不是按座位。票价查询于 ${CHECKED}，出租车分区查询于 ${CHECKED_TAXI}。`,
+    a: `单看价格不值得。把成田到新宿的公布票价乘以四位成人：利木津巴士 ¥14,400，每人 ¥3,600，行李放车底；N'EX ¥13,320，每人 ¥3,330；定额出租车 ¥31,500～¥32,500 加高速费，每人 ¥7,875～¥8,125。从羽田差距更大，因为京急到品川这段每人只要 ¥330。包车值得的时候，问题不在价格——末班车之后才落地（羽田 00:08、成田 23:00 或 22:40）、酒店没有任何巴士线路停靠、行李多到双手都拿不下，或是 5 人以上同行，这时 7 座或 10 座车是按车计价而不是按座位。票价查询于 ${CHECKED}，出租车分区查询于 ${CHECKED_TAXI}。`,
   },
   {
     q: "成田与羽田的利木津巴士多少钱？",
@@ -628,7 +628,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
             东京机场交通 2026：<br />成田与羽田到东京市区，N&apos;EX vs Skyliner
           </h1>
           <p className={styles.heroSubtitle}>
-            以下每一项票价与车程都来自各运营商的官方网站，查询于 {CHECKED}；出租车定额价格与 Skyliner
+            以下所有票价和车程信息均来自各运营商官网，查询于 {CHECKED}；出租车定额价格与 Skyliner
             首末班车查询于 {CHECKED_TAXI}。
           </p>
           <div className={styles.heroBadges}>
@@ -646,14 +646,14 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
 
         {/* The answer first. */}
         <p className={styles.bodyText}>
-          从<strong>成田</strong>出发，最快的<strong>东京机场交通</strong>是<strong>京成 Skyliner</strong>——
+          从<strong>成田</strong>机场进入东京市区，最快的<strong>东京机场交通</strong>方式是乘坐<strong>京成 Skyliner</strong>——
           <strong>41 分钟</strong>到京成上野、<strong>¥2,580</strong>；最便宜的是
           <strong>京成本线特急，¥1,060</strong>。去<strong>东京站</strong>的话，
           <strong>成田特快 N&apos;EX</strong> 是 <strong>¥3,140</strong>、<strong>最快 53 分钟</strong>，持 JR Pass
-          免费。从<strong>羽田</strong>出发，最快和最便宜是同一班车：<strong>京急机场线</strong>
+          免费。从<strong>羽田</strong>出发，最快和最便宜的选择都是<strong>京急机场线</strong>：
           <strong>11 分钟到品川、¥330</strong>，<strong>东京单轨电车</strong>则是
           <strong>13 分钟到滨松町、¥520</strong>。以上是成人单程票价，于 {CHECKED} 查询自 JR 东日本、京成、京急、
-          东京单轨电车与利木津巴士；成田的定额出租车按区域为 <strong>¥23,500～¥38,500</strong>，高速费另计，
+          东京单轨电车与机场利木津巴士（Airport Limousine Bus）；成田的定额出租车按区域为 <strong>¥23,500～¥38,500</strong>，高速费另计，
           于 {CHECKED_TAXI} 查询自成田机场。
         </p>
 
@@ -678,9 +678,9 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>原则：</strong>持 JR Pass，或要去东京西侧（新宿、涩谷、横滨），坐
+              <strong>选择原则：</strong>如果持有 JR Pass，或者要前往东京西侧（新宿、涩谷、横滨），就坐
               <strong>成田特快 N&apos;EX</strong>。要去上野或东京东侧，坐<strong>京成 Skyliner</strong>。
-              从<strong>羽田</strong>出发就坐京急线——快、便宜、好懂。
+              从<strong>羽田</strong>出发就坐京急线——速度快、价格低，乘坐也方便。
             </p>
           </div>
         </div>
@@ -692,9 +692,9 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>按酒店区域</span>
           <h2 className={styles.sectionTitle}>我的酒店区域适合哪一种东京机场交通？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            如果你已经知道要住哪里，这是你唯一需要的一张表。找到你的区域往右看：最快的选项、最便宜的选项，
-            以及有没有不必拖着行李箱换乘就能到的方式。从成田出发，东京西侧是 N&apos;EX 的地盘，东侧属于京成；
-            从羽田出发，京急线五个区域都到得了。
+            如果你已经知道要住哪里，看这张表就能掌握各区域的交通选择。找到你的区域往右看：最快的选项、最便宜的选项，
+            以及有没有不必拖着行李箱换乘就能到的方式。从成田出发，前往东京西侧适合坐 N&apos;EX，前往东侧则适合坐京成电铁；
+            从羽田出发，坐京急线都能前往这五个区域。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -735,8 +735,8 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>价格与时间</span>
           <h2 className={styles.sectionTitle}>东京机场交通要多少钱、要多久？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            两座机场共十一个选项，成人单程票价对照运营商自家公布的车程，各机场内由便宜到贵排列。差距本身就说明了
-            一切：从成田出发，价格范围是 <strong>¥1,060 到 ¥38,500</strong>；从羽田出发，最便宜的进城方式只要{" "}
+            两座机场共十一个选项，成人单程票价对照运营商官方公布的车程，各机场内由便宜到贵排列。光看票价差距就很清楚：
+            从成田出发，价格范围是 <strong>¥1,060 到 ¥38,500</strong>；从羽田出发，最便宜的进城方式只要{" "}
             <strong>¥330</strong>。运营商没有公布数字的地方，表格会直接注明。
           </p>
           <div className={styles.tableWrap}>
@@ -785,8 +785,8 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>成田机场（NRT）</span>
           <h2 className={styles.sectionTitle}>成田机场到东京市中心怎么走？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            共有六种方式，老实说该按你住哪里来排名，而不是按速度。成田在东京市区以东约 60～70 公里，所以每个选项
-            都不是小事：最快的电车 41 分钟，最便宜的 ¥1,060。票价为成人单程；运营商没有公布数字的地方，表格直接注明，
+            共有六种方式，老实说该按你住哪里来排名，而不是按速度。成田在东京市区以东约 60～70 公里，因此选择哪种
+            交通方式都值得仔细考虑：最快的电车 41 分钟，最便宜的 ¥1,060。票价为成人单程；运营商没有公布数字的地方，表格直接注明，
             不做猜测。
           </p>
           <div className={styles.tableWrap}>
@@ -866,17 +866,17 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <h2 className={styles.sectionTitle}>成田机场到东京最便宜的方式是什么？</h2>
           <p className={styles.bodyText}>
             <strong>京成本线特急，¥1,060</strong> 到京成上野（IC ¥1,052）。它是普通通勤用的特急，不是高级列车，
-            所以虽然叫「特急」，却不收特急费、也不用订座——直接上车。京成没有公布它的统一车程，这是你除了行李空间之外
-            唯一放弃的东西。
+            所以虽然叫「特急」，却不收特急费、也不用订座——直接上车。京成未公布这班列车的固定车程；除了行李空间，
+            这是选择它时唯一需要取舍的地方。
           </p>
           <ul className={styles.bodyList}>
             <li><strong>¥1,060——京成本线特急</strong>到京成上野，经京成成田与船桥。从机场出发最便宜的电车，没有之一。</li>
             <li><strong>¥1,280——京成 Access 特急</strong>到日暮里或京成上野（IC ¥1,267），走较快的成田 Sky Access 线。京成公布直通浅草 50 分钟，并且不用换乘继续开往日本桥、新桥与品川。</li>
-            <li><strong>¥2,580——京成 Skyliner</strong>，用京成自家优惠票是 ¥2,310。你多付的 ¥1,300 Liner 券买到的是指定席、行李架与 41 分钟。</li>
-            <li><strong>¥0——持 JR Pass 坐 N&apos;EX。</strong>指定席也包括在内，对持周游券的人来说，这是遥遥领先的最便宜舒适选项。</li>
+            <li><strong>¥2,580——京成 Skyliner</strong>，用京成自家优惠票是 ¥2,310。多付 ¥1,300 购买 Liner 券，换来的是指定座位、行李架和 41 分钟的车程。</li>
+            <li><strong>¥0——持 JR Pass 坐 N&apos;EX。</strong>指定席也包括在内，对持周游券的人来说，这是遥遥领先、最便宜又舒适的选择。</li>
           </ul>
           <p className={styles.bodyText}>
-            整个阶梯就是这样：¥1,060 买到最慢的车，¥2,580 买到最快的车，而如果你在乎钱、不在乎指定席，¥1,280 的
+            各种交通方式的价格差异就是如此：¥1,060 买到最慢的车，¥2,580 买到最快的车，而如果你在乎钱、不在乎指定席，¥1,280 的
             Access 特急是大多数人该坐的那一班。票价于 {CHECKED} 查询自京成；本线的数字是京成车站票价表上印的数字。
           </p>
         </section>
@@ -889,7 +889,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
             <strong>羽田</strong>，而且差距很大，运营商自家的数字就看得出有多大。京急公布
             <strong>羽田 3 号航站楼到品川 11 分钟、¥330</strong>；<strong>成田</strong>公布最快的电车是 Skyliner，
             <strong>到京成上野 41 分钟、¥2,580</strong>，到东京站最快的是 N&apos;EX，
-            <strong>「最快 53 分钟」、¥3,140</strong>。所以在羽田落地，还没离开机场就大约省下半小时、每人约
+            <strong>「最快 53 分钟」、¥3,140</strong>。因此选择在羽田降落，光是进城交通就能省下约半小时，每人约
             <strong>¥2,250</strong>。成田在市区以东约 60～70 公里；羽田在市区以南 15～20 公里——所以一个是长途出行，
             另一个只是市内坐电车。
           </p>
@@ -956,10 +956,10 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>正面对决</span>
           <h2 className={styles.sectionTitle}>成田特快和 Skyliner 哪个快？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            <strong>Skyliner</strong> 车更快、票也更便宜——按京成自家数字，<strong>41 分钟</strong>到京成上野、
+            <strong>Skyliner</strong> 车程更短，票价也更便宜——按京成自家数字，<strong>41 分钟</strong>到京成上野、
             <strong>¥2,580</strong>，N&apos;EX 则是 <strong>¥3,140</strong>、到东京站<strong>「最快 53 分钟」</strong>。
             但它只到两个车站。如果你的酒店在新宿、涩谷、品川或横滨，<strong>N&apos;EX</strong> <em>到酒店</em>反而更快，
-            因为它不用换乘就到——而且持 JR Pass 免费，对持周游券的人来说直接定案。
+            因为它不用换乘就到——而且持 JR Pass 免费，对持有 JR Pass 的旅客来说，就不用再犹豫了。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -998,7 +998,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
         {/* By destination */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>按目的地</span>
-          <h2 className={styles.sectionTitle}>你的酒店该坐哪一班？</h2>
+          <h2 className={styles.sectionTitle}>去你住的酒店该坐哪趟车？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             选和你酒店相符的那一行，而不是最快的那班车。拖着两个行李箱换乘一次，花掉的时间比 Skyliner 与 N&apos;EX
             之间的 12 分钟还多。
@@ -1026,7 +1026,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            还没订酒店？那这张表就反过来用：最轻松的抵达方式，是在订房之前就选好的那一种——进城后各条线路怎么衔接，
+            还没订酒店？那这张表就反过来用：想让抵达过程更轻松，订房前就先决定机场交通方式——进城后各条线路怎么衔接，
             请看{" "}
             <Link href="/guides/transport/tokyo-transportation">东京交通攻略（英文）</Link>；短天数的行程实际上多半在
             山手线的哪一侧，请看{" "}
@@ -1077,8 +1077,8 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>机场巴士</span>
           <h2 className={styles.sectionTitle}>机场利木津巴士比电车好吗？</h2>
           <p className={styles.bodyText}>
-            当问题是行李而不是分钟数时，巴士更好。每人两件托运行李放进车底，直到你下车前都不用再碰，而且很多线路
-            的终点是酒店门口，而不是车站大厅。高峰时段它更差，因为巴士和大家堵在同一条高速公路上。每座机场没有统一
+            如果比起车程，更在意搬运行李是否方便，巴士会更合适。每人可将两件行李放入巴士下方的行李舱，直到你下车前都不用再碰，而且很多线路
+            的终点是酒店门口，而不是车站大厅。高峰时段巴士就比较吃亏，因为同样会受到高速公路拥堵的影响。每座机场没有统一
             票价——运营商按线路定价。
           </p>
           <div className={styles.tableWrap} style={{ marginBottom: "1.25rem", marginTop: "1rem" }}>
@@ -1135,7 +1135,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>出租车</span>
           <h2 className={styles.sectionTitle}>从成田或羽田打车到东京要多少钱？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            <strong>成田</strong>有公布的答案，而且是定额而不是打表：成田机场定了
+            <strong>成田</strong>有公布的答案，而且是定额而不是按打表计费：成田机场定了
             <strong>六个区域，¥23,500 到 ¥38,500</strong>，<strong>高速费另计</strong>，
             <strong>22:00～05:00 另有加价</strong>。东京市中心——中央区、千代田区、台东区、文京区、荒川区——是 C 区，
             按司机走哪条高速公路为 <strong>¥29,000 或 ¥31,000</strong>；新宿与涩谷是 D 区，
@@ -1218,11 +1218,11 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <ul className={styles.bodyList}>
             <li><strong>你在末班车之后落地。</strong>羽田是 00:08 之后；成田的 Skyliner 末班车工作日 23:00、周末 22:40 从机场发车。在那之后，只有车能把你送到地址，而不是站点。</li>
             <li><strong>你的酒店不在巴士线路上。</strong>巴士每人 ¥3,600 的前提是它停在你门口附近；否则你付的是巴士加出租车。</li>
-            <li><strong>行李比手还多。</strong>两大两小、四个行李箱加一辆婴儿车，在日暮里根本换乘不了，而 ¥1,280 的 Access 特急省下的钱，在第一次有人扛着行李箱爬楼梯时就没了。</li>
+            <li><strong>行李多到双手都拿不下。</strong>两大两小、四个行李箱加一辆婴儿车，在日暮里换乘会非常吃力，而 ¥1,280 的 Access 特急省下的钱，在第一次有人扛着行李箱爬楼梯时就没了。</li>
             <li><strong>你们有 5 人以上。</strong>巴士与电车按座位计价、人数一多就线性增加；7 座或 10 座车按车计价，所以每人分摊的金额会持续下降，车票则不会。</li>
           </ul>
           <p className={styles.bodyText}>
-            要在出发前订，而不是到候车点才叫：预约接送的重点是司机会跟踪你的航班号，这在到达大厅是安排不了的。请拿你们
+            要在出发前订，而不是到候车点才叫：预约接送的重点是司机会根据你的航班号关注航班动态，这在到达大厅是安排不了的。请拿你们
             人数的报价和上表的「每人」栏比较——如果没有比巴士便宜，就坐巴士。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
@@ -1245,8 +1245,8 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <h2 className={styles.sectionTitle}>机场交通需要提前预订吗？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             电车方面，提前预订买到的是更低的价格，而不是一个否则会被抢光的座位：两家运营商都卖比柜台价便宜的旅客票，
-            而且两者都还是要到机场领取。真正需要预订的是车辆固定的选项——旺季的巴士指定线路，或是电车收车后才落地的
-            航班要用的车。以下是每一种的价格，以及实际上怎么拿到手。
+            而且两者都还是要到机场领取。真正需要预订的是需要提前预约车辆的交通方式——旺季的巴士指定线路，或是电车收车后才落地的
+            航班要用的车。以下整理各种票券的价格与领取方式。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1278,8 +1278,8 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             <strong>付款前先确认三件事。</strong>第一，是电子票还是要兑换的凭证：Skyliner 与巴士都可以是直接扫描的
-            二维码，而 N&apos;EX 往返车票必须带护照到机场车站领取，长途飞行后还要再排一次队。第二，取消期限——在分销平台上
-            是按各商品而定，不是铁路公司定的，请确认你那天日期显示的规定。第三，你几点落地：23:40 抵达羽田，离末班车只剩
+            二维码，而 N&apos;EX 往返车票必须带护照到机场车站领取，长途飞行后还要再排一次队。第二，取消期限——在第三方预订平台上，
+            取消规则因商品而异，不是铁路公司定的，请确认你那天日期显示的规定。第三，你几点落地：23:40 抵达羽田，离末班车只剩
             28 分钟（3 号航站楼 00:08 发车，依京急深夜时段信息页，核查日期 2026年11月1日），提前买什么都改变不了这一点，除了一辆车。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
@@ -1315,8 +1315,8 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>深夜与清晨</span>
           <h2 className={styles.sectionTitle}>深夜落地或清晨起飞怎么办？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            这是值得在出发前就决定的事，因为它有一条硬边界。羽田的末班车 <strong>00:08</strong> 从 3 号航站楼发车、首班车
-            <strong>05:26</strong>；在两者之间，唯一有固定班次的公共交通是深夜接驳巴士，只停少数指定站点。成田的 Skyliner
+            这是值得在出发前就决定的事，因为末班车和首班车之间有一段固定的空档。羽田的末班车 <strong>00:08</strong> 从 3 号航站楼发车、首班车
+            <strong>05:26</strong>；这段时间唯一有固定班次的公共交通是深夜接驳巴士，只停少数指定站点。成田的 Skyliner
             末班车工作日 <strong>23:00</strong>、周末 <strong>22:40</strong> 从机场发车，首班车 <strong>07:23</strong>。
             06:40 起飞的航班，意味着你得在首班车都还没开之前就到航站楼。
           </p>
@@ -1345,13 +1345,13 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           <ul className={styles.bodyList} style={{ marginTop: "1.25rem" }}>
             <li><strong>午夜前在羽田落地：</strong>坐电车。¥330 到品川，胜过本页其他所有选项。</li>
             <li><strong>00:10 到大约 02:00 之间在羽田落地：</strong>如果接驳巴士有站点靠近你的酒店就坐它——东京、银座、浅草或秋叶原 ¥1,900，新宿或池袋 ¥2,800。否则就用车。</li>
-            <li><strong>02:00 到 05:26 之间在羽田落地：</strong>预约的车，或待在航站楼。羽田的隔离区是开着的，电车则没有。</li>
+            <li><strong>02:00 到 05:26 之间在羽田落地：</strong>预约的车，或待在航站楼。羽田机场航站楼仍开放，但电车已经停运。</li>
             <li><strong>工作日 23:00 以后、或周末 22:40 以后在成田落地：</strong>当天的 Skyliner 已经收车。先查你那条线路的巴士，如果酒店不在线路上就订车——定额出租车不含高速费就从 ¥23,500 起。</li>
             <li><strong>07:00 前起飞：</strong>羽田从 05:26 往回推、市区首班巴士约 04:00 往回推，或住在机场附近。清晨接驳巴士 03:35 从池袋、04:00 从新宿高速巴士总站（Busta 新宿）发车。</li>
           </ul>
           <p className={styles.bodyText}>
             这些选项中只有车能送你到地址而不是站点，这正是为什么它在凌晨 1 点值得花钱、在下午 2 点则是浪费。请在出发前
-            预订——司机会跟踪你的航班号才是重点，这在到达大厅是安排不了的。
+            预订——司机会根据你的航班号关注航班动态，这才是重点，这在到达大厅是安排不了的。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={privateTransferUrl} className={styles.verdictBtn} target="_blank" rel={KLOOK_REL}>
@@ -1408,7 +1408,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
             { href: "/guides/transport/tokyo-airport-limousine-bus", title: "东京机场利木津巴士（2026）：成田与羽田的票价、时间与站点（英文）" },
             { href: "/guides/transport/tokyo-transportation", title: "东京交通攻略 2026：电车、地铁与 IC 卡（英文）" },
             { href: "/guides/attractions/tokyo-subway-ticket", title: "东京地铁通票（2026）：24、48 或 72 小时，值得买吗？（英文）" },
-            { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略 2026：日本行值得买吗？（英文）" },
+            { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略 2026：去日本旅游值得买吗？（英文）" },
             { href: "/guides/transport/ic-cards-japan", title: "日本 IC 卡 2026：Suica、PASMO 与使用方法（英文）" },
             { href: "/guides/attractions/tokyo-3-day-itinerary", title: "东京 3 天行程（2026）：要订什么、按什么顺序（英文）" },
             { href: "/guides/attractions/tokyo-5-day-itinerary", title: "东京 5 天行程（2026）：五天行程与每天要订的票（英文）" },

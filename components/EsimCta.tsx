@@ -150,7 +150,7 @@ const COPY: Record<Locale, Copy> = {
     orderLowest: "Simbye 是我們價格資料中方案價格最低的",
     orderNetworks: "Simbye 標示涵蓋日本四家電信線路",
     insuranceName: "旅遊保險",
-    insuranceText: "SafetyWing Nomad Insurance 為訂閱制，出發前或旅途中都能開始投保，兩種方案都沒有自負額。",
+    insuranceText: "SafetyWing Nomad Insurance 為訂閱制，出發前或旅途中都能開始投保，兩種方案都不需負擔自負額。",
     insuranceSki: "在正規雪道並戴安全帽滑雪、單板滑雪在保障範圍內，非雪道（off-piste）不保。",
     insuranceCta: "查看 SafetyWing 報價 →",
     note: "以上為聯盟連結，您支付的價格不變，我們可能獲得分潤。購買前請在賣家頁面確認方案與條款。",
@@ -172,7 +172,7 @@ const COPY: Record<Locale, Copy> = {
     hotspot: "所有日本套餐均可共享热点。",
     from: "{price} 起（{plan}）。",
     orderNote:
-      "排序理由：{simbye}；Klook eSIM 与你的其他 Klook 订单在同一个账户中管理；Airalo 用自家 App 安装并提供在线客服；Sakura Mobile 有带日本电话号码的套餐可选。价格来自每日价格核查，最近一次为 {date}。",
+      "排序理由：{simbye}；Klook eSIM 可以和其他 Klook 订单在同一个账户中管理；Airalo 用自家 App 安装并提供在线客服；Sakura Mobile 有带日本电话号码的套餐可选。价格来自每日价格核查，最近一次为 {date}。",
     orderLowest: "Simbye 是我们价格数据中套餐价格最低的",
     orderNetworks: "Simbye 标注覆盖日本四家运营商网络",
     insuranceName: "旅行保险",
