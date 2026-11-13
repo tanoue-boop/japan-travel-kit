@@ -46,9 +46,9 @@ const AREA_CHECKED_ISO = "2026-11-11";
 const GOLDEN_GAI_URL = "https://www.gotokyo.org/en/spot/62/index.html";
 const OMOIDE_URL = "https://www.gotokyo.org/en/spot/63/index.html";
 
-const TITLE = "Tokyo Food Tour 2026: Shinjuku Izakaya & Golden Gai, 3 Hrs";
+const TITLE = "Tokyo Food Tour 2026: Shinjuku Izakaya, Golden Gai & Tsukiji";
 const DESC =
-  "Which Tokyo food tour to book: a 3-hour Shinjuku izakaya night via Omoide Yokocho and Golden Gai (20+), a yakitori walk, or a daytime Tsukiji graze.";
+  "Tokyo food tours by area: a 3-hour Shinjuku izakaya and Golden Gai walk (20+) or a 2-hour daytime Tsukiji market tour. Compare formats and book on Klook.";
 
 /** Which tour to book — the first row is the default answer. */
 const compareRows = [
@@ -159,16 +159,16 @@ const steps = [
 
 const faqItems = [
   {
-    q: "Which Tokyo food tour should I book?",
-    a: "For a first night in Tokyo, a 3-hour Shinjuku izakaya and bar-hopping tour: it starts in Omoide Yokocho's yakitori alley (2 minutes from Shinjuku Station) or Kabukicho and ends in Golden Gai, where around 280 bars sit in six narrow alleys. Pick a food-led Shinjuku walk if you want more eating than drinking, a Golden Gai bars-only crawl if you have already had dinner, and a daytime Tsukiji street-food walk if anyone in the group is under 20. Area facts from GO TOKYO, read on 11 November 2026.",
+    q: "Which Tokyo food tour should I book: Shinjuku izakaya, Golden Gai or Tsukiji?",
+    a: "Choose by area and time of day. The best-known Shinjuku izakaya food tour is about 3 hours in the evening, starting in Omoide Yokocho's yakitori alley (2 minutes from Shinjuku Station) or Kabukicho and ending in Golden Gai, where around 280 bars sit in six narrow alleys; it includes alcohol, so it is 20+. Pick a food-led Shinjuku walk if you want more eating than drinking, and the roughly 2-hour daytime Tsukiji street-food walk if anyone in the group is under 20. Area facts from GO TOKYO, last checked 2026-11-11.",
   },
   {
     q: "Is there a Golden Gai food tour?",
     a: "Yes. Klook lists a three-hour Golden Gai food tasting built around yakitori and a bowl of ramen that ends with a drink inside Golden Gai, and a Golden Gai bar-hopping experience with no meal attached. Most Shinjuku izakaya tours also finish in Golden Gai. Golden Gai bars typically open around 20:00 and many seat only five or six people, which is why a guide who knows which doors welcome visitors is useful. GO TOKYO also notes photography is not allowed without permission. Read on 11 November 2026.",
   },
   {
-    q: "What happens on a Tokyo food or izakaya tour?",
-    a: "A typical evening tour gathers a small group and an English-speaking guide, then moves between several izakaya and tiny bars — often in Shinjuku's Omoide Yokocho and Golden Gai — sampling dishes like yakitori, gyoza, and fried tofu with sake or beer along the way. Tours usually last around three hours and include the food and drinks, so you taste a range of places in one night.",
+    q: "Is there a yakitori and izakaya food tour in Tokyo?",
+    a: "Yes: the Shinjuku izakaya tours start in Omoide Yokocho, an alley of yakitori stalls serving skewers and beer. A typical evening tour gathers a small group and an English-speaking guide, then moves between several izakaya and tiny bars — often in Shinjuku's Omoide Yokocho and Golden Gai — sampling dishes like yakitori, gyoza, and fried tofu with sake or beer along the way. Tours usually last around three hours and include the food and drinks, so you taste a range of places in one night.",
   },
   {
     q: "How much does a Tokyo food tour cost?",
@@ -179,8 +179,8 @@ const faqItems = [
     a: "Yes. Because izakaya and bar-hopping tours include alcoholic drinks, they're generally limited to ages 20 and over, in line with Japan's legal drinking age. If you're travelling with younger members of your group, look instead at a daytime market food tour (such as Tsukiji), which is family-friendly and lighter on alcohol.",
   },
   {
-    q: "Where do Tokyo food tours usually go?",
-    a: "Evening tours centre on Shinjuku — the lantern-lit yakitori alley of Omoide Yokocho, the tiny themed bars of Golden Gai, and the Kabukicho entertainment district around them. For a daytime option, the Tsukiji Outer Market is the classic choice, with stalls and shops selling fresh seafood and street snacks to graze through.",
+    q: "What are the alternatives to Ninja Food Tours in Tokyo?",
+    a: "If you are comparing food tour operators, the same Shinjuku and Tsukiji routes are sold on Klook and GetYourGuide by different local guides: a 3-hour Shinjuku izakaya walk through Omoide Yokocho and Golden Gai, a Golden Gai food tasting built around yakitori and ramen, and a roughly 2-hour daytime Tsukiji street-food walk. Compare them on the number of stops, which food and drinks are included, the group size and the meeting point, then open the listing for the price on your date.",
   },
   {
     q: "What food will I try on a Tokyo izakaya tour?",
@@ -278,7 +278,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Food Tour 2026:<br />Shinjuku Izakaya, Golden Gai &amp; Yakitori Nights
+            Tokyo Food Tour 2026:<br />Shinjuku Izakaya, Golden Gai &amp; Tsukiji Market
           </h1>
           <p className={styles.heroSubtitle}>
             Which tour to book by area, time of day and length — from the 3-hour Shinjuku izakaya crawl
@@ -329,12 +329,16 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>The Tokyo food tour to book first is a 3-hour Shinjuku izakaya night</strong>: an
-              evening join-in crawl that starts at an izakaya in Omoide Yokocho (the yakitori alley 2 minutes
-              from Shinjuku Station) or Kabukicho and ends in <strong>Golden Gai</strong>, where around 280 bars, many with five or
-              six seats, open from about 20:00. If you want Golden Gai itself rather than a route through it,
-              book a Golden Gai food tasting (yakitori and ramen, then a drink in the alley); if anyone is under
-              20, book a 2-hour daytime Tsukiji street-food walk instead.
+              <strong>A Tokyo food tour runs about 3 hours in Shinjuku</strong> (Omoide Yokocho&apos;s yakitori
+              alley, 2 minutes from Shinjuku Station, then Golden Gai&apos;s around 280 bars, ages 20+) or{" "}
+              <strong>about 2 hours in the daytime at Tsukiji Outer Market</strong>, both in small join-in
+              groups with an English-speaking guide. Choose by area: Shinjuku for izakaya, yakitori and Golden
+              Gai; Tsukiji for seafood, tamagoyaki and an all-ages group. For a late bar-hopping night rather
+              than a food tour, see the{" "}
+              <Link href="/guides/attractions/tokyo-night-food-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
+                Tokyo night food tour guide
+              </Link>
+              .
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -424,7 +428,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Formats as each Klook listing describes them (listings confirmed live on 27 October 2026). No tour
+            <strong>Last checked: 2026-10-27</strong> — formats as each Klook listing describes them. No tour
             price is quoted: Klook prices change by date and with the number of tastings included, so open a
             listing for your date. Alcohol-inclusive tours are restricted to ages 20 and over.
           </p>

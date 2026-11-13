@@ -40,9 +40,13 @@ import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/ko/guides/attractions/teamlab-planets-tickets";
-const TITLE = "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법";
+const TITLE = "팀랩 플래닛 예약 2026: 티켓 공식 가격·입장 시간";
 const DESC =
-  "팀랩 플래닛 티켓은 날짜와 시간에 따라 ¥3,800부터. 운영 시간, 휴관일, 예약 방법, 신토요스역과 도요스역에서 가는 길을 정리했습니다.";
+  "팀랩 플래닛 티켓은 공식 스토어 기준 성인 ¥3,800부터, 날짜·입장 시간 지정제이며 현장 판매는 없습니다. 클룩에서 회차 예약.";
+// 2026-11-13 (task-jtk-20261113-C01): teamLab's mirror art.team-lab.cn/en/e/planets re-read —
+// prices, hours, closed days and the knee-height water line unchanged. See the English page.
+const RECHECKED_ISO = "2026-11-13";
+const OFFICIAL_URL = "https://www.teamlab.art/e/planets/";
 
 const PLANETS_URL = koTeamlabPlanets.url;
 const GYG_SLUG = "ko-teamlab-planets-tickets";
@@ -161,52 +165,20 @@ const faqItems: FaqItem[] = [
     a: `팀랩 플래닛 공식 티켓 스토어 기준(확인일 ${CHECKED}), 성인은 ¥3,800부터, 중・고등학생 ¥2,800, 만 4~12세 어린이 ${CHILD}, 만 3세 이하는 무료입니다. 장애인 방문객은 ¥1,900부터이고, 만 4세 이상 대상 Premium Pass가 ¥12,000에 판매됩니다. 성인 가격은 날짜와 회차에 따라 달라지므로 결제 전에 본인 회차의 금액을 확인하세요. 할인 티켓은 자격 증빙이 필요합니다. 학생증, 여권, 장애인 증명서를 챙기세요.`,
   },
   {
-    q: "팀랩 플래닛은 미리 예약해야 하나요?",
-    a: `네. 티켓은 날짜와 입장 시간을 지정해 사고, 공식 스토어가 현장 판매가 없다고 적고 있어 날짜가 차면 현장에서 해결할 수 없습니다. 팀랩은 매진 현황을 공개하지 않으므로 얼마나 일찍 차는지는 공식 안내가 없습니다. 날짜가 정해지면 바로 예약하세요. 확인일 ${CHECKED}.`,
+    q: "팀랩 플래닛 공식 홈페이지(티켓 스토어)는 어디인가요?",
+    a: `팀랩 플래닛 공식 티켓 스토어는 teamlabplanets.dmm.com이며, 미술관 공식 페이지 teamlab.art/e/planets에서 연결됩니다. 스토어 도움말 페이지는 현장 창구나 자동판매기에서 티켓을 팔지 않는다고 적고, 판매 경로로 공식 Ticket Store, Lawson Ticket, Seven Ticket, 클룩을 명시합니다. 어느 공식 경로든 날짜와 입장 시간을 지정한 QR 티켓이고, 가격은 날짜와 시간이 정합니다. 확인일 ${CHECKED}.`,
   },
   {
-    q: "팀랩 플래닛 티켓을 현장에서 살 수 있나요?",
-    a: `아니요. 공식 티켓 스토어 도움말 페이지는 현장 매표 창구나 자동판매기에서 티켓을 구매할 수 없다고 적고, 판매 경로로 공식 Ticket Store, Lawson Ticket, Seven Ticket, 클룩을 명시합니다. 해당 날짜가 매진되면 현장 매표소도 없다는 점이 플래닛과 도쿄 대부분의 명소 사이의 가장 큰 차이입니다. 확인일 ${CHECKED}.`,
-  },
-  {
-    q: "팀랩 플래닛은 어느 회차가 가장 저렴한가요?",
-    a: `본인 날짜의 공식 달력에서 가장 낮게 책정된 회차입니다. 팀랩은 회차별 가격표를 공개하지 않으므로 그것이 유일하게 정직한 답입니다. 공식 스토어가 확인해 주는 것은 성인 Entrance Pass가 ¥3,800부터이고 날짜마다 요금이 다르다는 점입니다. 도움말 페이지는 예약을 "요금이 다른 날짜로도" 옮길 수 있다고 적고 있습니다. 그러니 스토어 달력을 열어 여행 일정에 넣을 수 있는 날짜와 입장 시간을 넘겨 보고, 결제하기 전에 금액을 비교하세요. 확인일 ${CHECKED}.`,
-  },
-  {
-    q: "팀랩 플래닛에 보관함이 있나요?",
-    a: `네, 무료입니다. 공식 도움말 페이지 기준 크기는 가로 23cm, 깊이 34cm, 높이 37cm로, 작은 배낭은 들어가지만 캐리어는 들어가지 않습니다. 짐 맡기는 곳은 없어서, 더 큰 짐은 건물 밖 유모차 보관 공간에 직접 와이어 자물쇠로 고정해야 합니다. 신발, 양말, 스타킹도 보관함에서 벗습니다. 거기서부터는 맨발로 관람하기 때문입니다. 확인일 ${CHECKED}.`,
+    q: "팀랩 플래닛 입장 회차(시간 지정)는 어떻게 되나요?",
+    a: `티켓에 적힌 시간이 입장 시간이고, 지정 시간부터 30분이 입장 준비 시간입니다. 공식 스토어는 입장까지 30~60분 기다릴 수 있다고 안내합니다. 늦게 도착해도 당일 운영 시간(08:00–22:00, 마지막 입장은 폐관 1시간 전) 안이라면 입장할 수 있습니다. Entrance Pass는 입장 시간 2시간 전까지 최대 3회 변경할 수 있고 환불은 되지 않습니다. 확인일 ${CHECKED}.`,
   },
   {
     q: "팀랩 플래닛에 무엇을 입고 가야 하나요?",
     a: "반바지, 또는 무릎 위까지 걷어 올릴 수 있는 바지입니다. 일부 작품은 물속을 걸으며 체험하는 공간이고 수심이 성인 무릎까지 올라올 수 있으며, 관람하는 동안 계속 맨발로 이동합니다. 입장할 때 보관함 공간에서 신발, 양말, 스타킹을 벗습니다. 바닥 일부가 거울이라 치마나 통이 넓은 바지는 피하는 것이 좋고, XS~6L 무료 대여 반바지가 있습니다. 아이와 함께라면 여벌 옷을 챙기세요. 유모차는 들어갈 수 없습니다(유모차 보관 공간이 있고 아기띠는 괜찮습니다).",
   },
   {
-    q: "팀랩 플래닛 QR 티켓은 언제 받나요?",
-    a: `티켓은 QR 전자 티켓뿐입니다. 구매 확인 메일에 링크가 있고, 입장일 2일 전에 안내 메일이 오며, QR 코드는 입장일 00:00부터 표시됩니다. QR 하나로 구매 인원 전체가 입장하고, 휴대폰이나 태블릿으로 보여 주거나 인쇄해도 됩니다. 확인일 ${CHECKED}.`,
-  },
-  {
     q: "팀랩 플래닛은 얼마나 걸리나요?",
     a: `소요 시간은 공식 안내가 없습니다. 저희는 보관함과 물기 닦는 시간까지 관내 1.5~2시간으로 잡습니다. 여기에 공식 스토어가 안내하는 30~60분 대기를 더하고, 끝난 직후에 빠듯한 일정을 넣지 마세요. 공식 스토어는 붐빌 때 오래 머문 관람객에게 이동을 요청할 수 있다고도 적고 있습니다. 확인일 ${CHECKED}.`,
-  },
-  {
-    q: "팀랩 플래닛 운영 시간과 휴관일은 어떻게 되나요?",
-    a: `teamlab.art 기준 운영 시간은 08:00–22:00이고, 12월 31일부터 1월 2일까지는 08:00–20:00이며, 마지막 입장은 폐관 1시간 전입니다. 공지된 휴관일은 2026년 12월 3일(목)과 2027년 1월 14일(목)입니다. 확인일 ${CHECKED}. 예약 전에 본인 날짜를 공식 사이트에서 확인하세요.`,
-  },
-  {
-    q: "예약한 팀랩 플래닛 회차를 놓치면 어떻게 되나요?",
-    a: "그래도 들어갈 수 있습니다. 공식 도움말 페이지는 티켓에 적힌 시간이 기준이며, 늦게 도착해도 당일 운영 시간 안에는 입장할 수 있다고 적고 있습니다. 마지막 입장은 폐관 1시간 전입니다.",
-  },
-  {
-    q: "팀랩 플래닛은 어디에 있고 어떻게 가나요?",
-    a: `주소는 도쿄도 고토구 도요스 6-1-16입니다. teamlab.art 기준으로 유리카모메선 신토요스역 1A 출구에서 도보 3분, 시조마에역과 도요스 시장에서 도보 5분, 도쿄 메트로 유라쿠초선 도요스역 7번 출구에서 도보 10분입니다. 도쿄역에서 택시로 15분, 하네다 공항에서 고속도로로 15분입니다. 확인일 ${CHECKED}.`,
-  },
-  {
-    q: "팀랩 플래닛은 곧 문을 닫나요?",
-    a: `teamlab.art는 운영 기간을 2018년 7월 7일부터 2027년 말까지로 적고 있습니다. 확인일 ${CHECKED}. 아자부다이힐스의 팀랩 보더리스는 별개의 미술관이고 티켓도 따로입니다.`,
-  },
-  {
-    q: "팀랩 플래닛과 보더리스는 무엇이 다른가요?",
-    a: "도요스의 플래닛은 맨발로 물속을 걷는 미술관이고, 아자부다이힐스의 보더리스는 작품이 방 사이를 옮겨 다니는, 정해진 관람 동선이 없는 미로 같은 공간입니다. 별개의 미술관이고 티켓도 따로입니다. 팀랩 플래닛 보더리스 비교 페이지에서 두 곳을 나란히 볼 수 있습니다.",
   },
 ];
 
@@ -286,7 +258,7 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            팀랩 플래닛 예약(2026):<br />티켓 가격, 운영 시간, 예약 방법
+            팀랩 플래닛 티켓 예약 2026:<br />공식 가격, 입장 시간, 예약 방법
           </h1>
           <p className={styles.heroSubtitle}>
             도요스 팀랩 플래닛의 입장권 가격과 운영 시간, 예약 방법, 신토요스역과 도요스역에서 가는 방법을
@@ -304,6 +276,17 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
       <div className={styles.content}>
         <Disclosure />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>팀랩 플래닛 티켓</strong>은 공식 티켓 스토어 기준 성인 <strong>¥3,800부터</strong>, 중・고등학생
+            ¥2,800, 만 4~12세 <strong>¥1,500</strong>이며 만 3세 이하는 무료입니다. 모든 티켓은 날짜와 입장 시간을
+            지정해 사고 미술관 현장에서는 팔지 않으며, 팀랩은 소요 시간을 공개하지 않으므로 관내{" "}
+            <strong>1.5~2시간</strong>에 공식 스토어가 안내하는 30~60분 입장 대기를 더해 잡으세요. 맨발로 관람하고 물
+            작품에서는 수심이 <strong>성인 무릎 높이</strong>까지 올라오므로 무릎 위로 걷을 수 있는 반바지나 바지를
+            입으세요.
+          </p>
+        </section>
 
         <PlanetsAnswer />
 
@@ -350,7 +333,10 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            {CHECKED}에 팀랩 플래닛 공식 티켓 스토어의 영어판과 일본어판에서 읽었습니다. 할인 티켓은 자격 증빙이
+            <strong>최종 확인: {RECHECKED_ISO}</strong>{" "}
+            (<a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Planets 공식 페이지</a>, 가격 변동 없음).
+            처음에는 {CHECKED}에 팀랩 플래닛 공식 티켓 스토어(teamlabplanets.dmm.com)의 영어판과 일본어판에서
+            읽었습니다. 할인 티켓은 자격 증빙이
             필요하니 학생증, 여권, 장애인 증명서를 챙기세요. 티켓은 휴대폰의 QR 코드로 발급됩니다.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -391,6 +377,11 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>최종 확인: {RECHECKED_ISO}</strong> — 운영 시간, 마지막 입장, 휴관일, 운영 기간은{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Planets 공식 페이지</a>에서 다시
+            확인했고, 공식 티켓 스토어 항목은 {CHECKED} 기준입니다.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             플래닛은 일반적인 미술관보다 관람 전에 준비할 것이 많습니다. 맨발로 들어가고 경로의 일부가 물입니다.
           </p>

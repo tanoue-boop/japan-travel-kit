@@ -493,7 +493,9 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
             For Narita the answer flips east. Keisei puts the Skyliner at 41 minutes from Terminal 2·3 to
             Keisei-Ueno, which no other route into the city matches, while the Narita Express reaches Tokyo
             Station, Shibuya and Shinjuku without a transfer — &ldquo;as fast as 53 minutes&rdquo; to Tokyo
-            Station at ¥3,140, and ¥3,330 to Shibuya or Shinjuku, read on {JR_CHECKED}. Our{" "}
+            Station at ¥3,140, and ¥3,330 to Shibuya or Shinjuku, read on {JR_CHECKED}. The{" "}
+            <Link href="/guides/transport/skyliner-vs-nex">Skyliner vs N&apos;EX comparison</Link> matches
+            each train to the hotel areas above. Our{" "}
             <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link> compares
             every route and fare, including what to do after the last train. With heavy cases, a hotel
             that is a named stop on the{" "}

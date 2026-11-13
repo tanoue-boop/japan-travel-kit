@@ -75,6 +75,16 @@ import { EsimCtaTop } from "../../../components/EsimCta";
 const CHECKED = "29 Oct 2026";
 /** The monthly price, initial fee and lead times quoted in the hero, re-read on sakuramobile.jp for task jtk-20261110-C01. */
 const RECHECKED = "10 Nov 2026";
+/**
+ * Re-read for task jtk-20261113-C01 on sakuramobile.jp/monthly/home-internet/, /monthly/wifi/
+ * and /monthly/price/: Home WiFi and 1 Gbps fibre 6,980 JPY (7,678 tax incl.), 10 Gbps
+ * 9,480 JPY (10,428), Home WiFi initial fee 5,500 JPY, lead times "Right away" / "1 week to
+ * 1 month" / "2 weeks to 1 month", Pocket WiFi 4,980 / 6,480 JPY, Data Only 100 GB 10,480 JPY.
+ * All unchanged. The fibre initial fee now shows 5,500 JPY with a range of 3,300–25,300 JPY,
+ * so the opening paragraph does not quote a fibre initial fee.
+ */
+const LAST_CHECKED = "13 Nov 2026";
+const LAST_CHECKED_ISO = "2026-11-13";
 
 /** Sakura Mobile's own affiliate link — the same one the review page uses. */
 const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
@@ -111,7 +121,7 @@ const optionRows = [
   {
     option: "Fiber Internet, 1 Gbps",
     price: `${HOME_WIFI}/month (${HOME_WIFI_TAX} tax incl.)`,
-    upfront: "¥5,500–25,300 initial fee, depending on the property",
+    upfront: "¥3,300–25,300 initial fee, depending on the property",
     wait: '"1 week to 1 month"',
     install: "Remote or physical, depending on the building; some properties skip it entirely",
     suits: "Two years or more in one flat, or a household where several people work from it at once",
@@ -119,7 +129,7 @@ const optionRows = [
   {
     option: "Fiber Internet, 10 Gbps",
     price: `${FIBRE_10G}/month (${FIBRE_10G_TAX} tax incl.)`,
-    upfront: "¥5,500–25,300 initial fee",
+    upfront: "¥3,300–25,300 initial fee",
     wait: '"2 weeks to 1 month"',
     install: "As above, and not available in every building",
     suits: "Large uploads, multiple 4K streams, a home office that bills by the hour",
@@ -211,7 +221,7 @@ const steps = [
   },
   {
     title: "Count the months you will live there",
-    desc: `Under a year with any chance of a move, the no-installation options win on arithmetic alone: Home WiFi at ${HOME_WIFI}/month with a ¥5,500 initial fee, or the monthly Pocket WiFi at ${WIFI_100GB} for 100 GB. Two years or more in the same flat, and fibre's installation fee — ¥5,500 to ¥25,300 depending on the property — amortises away.`,
+    desc: `Under a year with any chance of a move, the no-installation options win on arithmetic alone: Home WiFi at ${HOME_WIFI}/month with a ¥5,500 initial fee, or the monthly Pocket WiFi at ${WIFI_100GB} for 100 GB. Two years or more in the same flat, and fibre's installation fee — ¥3,300 to ¥25,300 depending on the property — amortises away.`,
   },
   {
     title: "Order before you move in, not after",
@@ -233,8 +243,8 @@ const steps = [
 
 const faqItems = [
   {
-    q: "How can a foreigner get home internet in Japan?",
-    a: `Through an English-language provider that sells the line and the internet service as one monthly contract, rather than through the usual Japanese route of a fibre carrier plus a separate ISP on a two-year tie-in. The option we link is Sakura Mobile, which publishes three: Home WiFi, a plug-in rental router at ${HOME_WIFI}/month (${HOME_WIFI_TAX} tax included) with a ¥5,500 initial fee and installation stated as "Right away"; Fiber Internet 1 Gbps at the same ${HOME_WIFI}/month with an initial fee of ¥5,500 to ¥25,300 and a wait of "1 week to 1 month"; and Fiber Internet 10 Gbps at ${FIBRE_10G}/month (${FIBRE_10G_TAX} tax included) with a wait of "2 weeks to 1 month". All three are published with "No annual contract", the fibre package includes the router, the modem and the ISP, and no Japanese bank account or Japanese credit card is needed — international cards are accepted. Read off sakuramobile.jp on ${CHECKED}.`,
+    q: "How much does home internet cost per month in Japan for a foreigner?",
+    a: `${HOME_WIFI} a month (${HOME_WIFI_TAX} tax included) for a plug-in Home WiFi router or 1 Gbps fibre on Sakura Mobile, re-read on ${LAST_CHECKED}. The route is an English-language provider that sells the line and the internet service as one monthly contract, rather than through the usual Japanese route of a fibre carrier plus a separate ISP on a two-year tie-in. The option we link is Sakura Mobile, which publishes three: Home WiFi, a plug-in rental router at ${HOME_WIFI}/month (${HOME_WIFI_TAX} tax included) with a ¥5,500 initial fee and installation stated as "Right away"; Fiber Internet 1 Gbps at the same ${HOME_WIFI}/month with an initial fee of ¥3,300 to ¥25,300 and a wait of "1 week to 1 month"; and Fiber Internet 10 Gbps at ${FIBRE_10G}/month (${FIBRE_10G_TAX} tax included) with a wait of "2 weeks to 1 month". All three are published with "No annual contract", the fibre package includes the router, the modem and the ISP, and no Japanese bank account or Japanese credit card is needed — international cards are accepted. Read off sakuramobile.jp on ${CHECKED}.`,
   },
   {
     q: "How long does fiber installation take in Japan?",
@@ -242,7 +252,7 @@ const faqItems = [
   },
   {
     q: "Is a home router better than fiber for a 1-year stay?",
-    a: `For most one-year stays, yes — and the reason is the initial fee and the wait rather than the monthly price, which is identical. Home WiFi and Fiber Internet 1 Gbps are both published at ${HOME_WIFI}/month (${HOME_WIFI_TAX} tax included). What differs is that Home WiFi carries a flat ¥5,500 initial fee, needs no installation and is working from the moment the device arrives, while the fibre order carries ¥5,500 to ¥25,300 depending on the property, a one-week-to-one-month wait and, in some buildings, a landlord conversation about drilling. Over twelve months that is up to about ¥20,000 and three weeks of your tenancy for a line that is faster on paper. Fibre wins where you will stay two years or more, where several people work from the flat at once, or where you upload large files for a living. Read on ${CHECKED}.`,
+    a: `For most one-year stays, yes — and the reason is the initial fee and the wait rather than the monthly price, which is identical. Home WiFi and Fiber Internet 1 Gbps are both published at ${HOME_WIFI}/month (${HOME_WIFI_TAX} tax included). What differs is that Home WiFi carries a flat ¥5,500 initial fee, needs no installation and is working from the moment the device arrives, while the fibre order carries ¥3,300 to ¥25,300 depending on the property, a one-week-to-one-month wait and, in some buildings, a landlord conversation about drilling. Over twelve months that is up to about ¥20,000 and three weeks of your tenancy for a line that is faster on paper. Fibre wins where you will stay two years or more, where several people work from the flat at once, or where you upload large files for a living. Read on ${CHECKED}.`,
   },
   {
     q: "Can I get internet in Japan without a Japanese credit card?",
@@ -269,14 +279,14 @@ const faqItems = [
     a: 'Sakura Mobile publishes its Home Internet as an unlimited service and its fibre tiers with maximum speeds of 1 Gbps and 10 Gbps, adding its own caveat that "actual customer speeds are not guaranteed". That caveat is the honest part and it is worth reading literally: a published maximum on a shared building line is a ceiling, not a rate, and the figure you measure in the evening on a fibre tier in a busy block will be lower. What the unlimited label does rule out is the thing that makes a mobile plan unusable as a home line — a monthly allowance you can exhaust in a fortnight of video calls. Read on ' + CHECKED + ".",
   },
   {
-    q: "What does the first month actually cost?",
-    a: `Add the initial fee to the first monthly charge, because that is the number that surprises people. Home WiFi: ¥5,500 plus ${HOME_WIFI_TAX} tax included, so about ¥13,200 to be connected and running. Fiber 1 Gbps: ¥5,500 to ¥25,300 plus ${HOME_WIFI_TAX}, so anywhere from about ¥13,200 to ¥33,000 depending on what the building needs. Fiber 10 Gbps: the same initial-fee range plus ${FIBRE_10G_TAX}. Monthly Pocket WiFi: ¥5,500 activation plus ¥5,478 for 100 GB. After that it is the monthly figure alone, with no annual contract and, on Home WiFi, no early-termination penalty. All figures published by Sakura Mobile and read on ${CHECKED}; the fibre range is the company's own, because the work a property needs is what moves it.`,
+    q: "What does WiFi in Japan cost in the first month, with the initial fee?",
+    a: `Add the initial fee to the first monthly charge, because that is the number that surprises people. Home WiFi: ¥5,500 plus ${HOME_WIFI_TAX} tax included, so about ¥13,200 to be connected and running. Fiber 1 Gbps: ¥3,300 to ¥25,300 plus ${HOME_WIFI_TAX}, so anywhere from about ¥13,200 to ¥33,000 depending on what the building needs. Fiber 10 Gbps: the same initial-fee range plus ${FIBRE_10G_TAX}. Monthly Pocket WiFi: ¥5,500 activation plus ¥5,478 for 100 GB. After that it is the monthly figure alone, with no annual contract and, on Home WiFi, no early-termination penalty. All figures published by Sakura Mobile and read on ${CHECKED}; the fibre range is the company's own, because the work a property needs is what moves it.`,
   },
 ];
 
-const TITLE = "WiFi Cost in Japan per Month (2026): ¥6,980 Home Internet";
+const TITLE = "Home Internet in Japan for Foreigners (2026): ¥6,980/Month";
 const DESCRIPTION =
-  "WiFi cost in Japan per month: home WiFi ¥6,980 (¥7,678 tax incl.) at Sakura Mobile, Nov 2026. No Japanese card, English support. Order via the button.";
+  "WiFi cost in Japan per month: home WiFi ¥6,980 (¥7,678 tax incl.), fibre 1 week to 1 month to install, no annual contract. Order via Sakura Mobile.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim/japan-home-internet-for-foreigners") },
@@ -374,7 +384,7 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            WiFi Cost in Japan per Month (2026):<br />Home Internet for Foreigners
+            Home Internet in Japan for Foreigners (2026): Monthly Cost and No-Contract Plans
           </h1>
           <p className={styles.heroSubtitle}>
             Home WiFi in Japan costs {HOME_WIFI} a month ({HOME_WIFI_TAX} tax included) on Sakura Mobile&apos;s
@@ -408,21 +418,20 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Japan home internet for foreigners</strong> comes down to three products, and the
-            English-language provider we link is <strong>Sakura Mobile</strong>: a plug-in{" "}
-            <strong>Home WiFi</strong> router at <strong>{HOME_WIFI}/month</strong> ({HOME_WIFI_TAX} tax
-            included) with a <strong>¥5,500</strong> initial fee and installation stated as{" "}
-            <strong>&ldquo;Right away&rdquo;</strong>; <strong>Fiber Internet 1 Gbps</strong> at the same{" "}
-            {HOME_WIFI}/month but with a <strong>¥5,500–25,300</strong> initial fee and a wait of{" "}
-            <strong>&ldquo;1 week to 1 month&rdquo;</strong>; and <strong>Fiber Internet 10 Gbps</strong> at{" "}
-            <strong>{FIBRE_10G}/month</strong> ({FIBRE_10G_TAX} tax included), <strong>
-            &ldquo;2 weeks to 1 month&rdquo;</strong>. All three are published with{" "}
-            <strong>&ldquo;No annual contract&rdquo;</strong> — which is the clause that matters, because the
-            standard Japanese fixed-line offer is a two-year tie-in. For a stay of a year or less, or a
-            building that will not take a line, the monthly <strong>Pocket WiFi</strong> is{" "}
-            {WIFI_100GB}/month for 100 GB and {WIFI_200GB} for 200 GB. No Japanese bank account and no
-            Japanese credit card are needed for any of them, and the provider offers a bridge rental while a
-            fibre installation is pending. All figures read off sakuramobile.jp on {CHECKED}.
+            <strong>
+              Home internet in Japan costs {HOME_WIFI} a month ({HOME_WIFI_TAX} tax included) on Sakura
+              Mobile&apos;s plug-in Home WiFi router, with a ¥5,500 initial fee and no annual contract.
+            </strong>{" "}
+            The router is listed as working <strong>&ldquo;Right away&rdquo;</strong> once it arrives, while
+            Fiber Internet 1 Gbps costs the same {HOME_WIFI} a month but takes{" "}
+            <strong>&ldquo;1 week to 1 month&rdquo;</strong> to activate, and 10 Gbps fibre is{" "}
+            <strong>{FIBRE_10G}/month</strong> ({FIBRE_10G_TAX} tax included) with{" "}
+            <strong>&ldquo;2 weeks to 1 month&rdquo;</strong>. For a stay of a year or less, or a building
+            that will not take a line, the monthly <strong>Pocket WiFi</strong> is {WIFI_100GB}/month for
+            100 GB and {WIFI_200GB} for 200 GB. All of these are published with no annual contract — the
+            clause that matters, because the standard Japanese fixed-line offer is a two-year tie-in — and
+            none needs a Japanese bank account or credit card. Figures read off sakuramobile.jp on{" "}
+            {LAST_CHECKED}.
           </p>
         </section>
 
@@ -518,6 +527,10 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
               best pocket WiFi for Japan
             </Link>{" "}
             compares the two short-term rentals we link.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.4rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED_ISO}. Official pages: www.sakuramobile.jp/monthly/home-internet/,
+            www.sakuramobile.jp/monthly/wifi/ and www.sakuramobile.jp/monthly/price/.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.pickCta}>
@@ -617,7 +630,7 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
             For most one-year stays, <strong>yes</strong> — and not because of the monthly price, which is
             identical. Home WiFi and Fiber Internet 1 Gbps are both published at {HOME_WIFI}/month (
             {HOME_WIFI_TAX} tax included). The difference is everything around it: a flat{" "}
-            <strong>¥5,500</strong> initial fee against <strong>¥5,500 to ¥25,300</strong>, nothing to install
+            <strong>¥5,500</strong> initial fee against <strong>¥3,300 to ¥25,300</strong>, nothing to install
             against a one-week-to-one-month wait, and no landlord conversation against a possible one.
           </p>
           <p className={styles.bodyText}>

@@ -655,7 +655,10 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             <strong>Option C: Kobe.</strong> About 30 minutes from Umeda by JR, Hankyu or Hanshin, or{" "}
             {HANSHIN_KOBE} direct from Namba on the Hanshin line. The day covers the harbour, the Kitano
             streets and a Kobe beef meal; see the{" "}
-            <Link href="/guides/attractions/kobe-day-trip-from-osaka">Kobe day trip guide</Link>.
+            <Link href="/guides/attractions/kobe-day-trip-from-osaka">Kobe day trip guide</Link>. For a
+            hot-spring day instead, Arima Onsen is about 30 minutes by coach from Sannomiya; the{" "}
+            <Link href="/guides/attractions/arima-onsen-day-trip">Arima Onsen day trip guide</Link> has the
+            access from Osaka and the Kin no Yu and Gin no Yu prices.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Further afield: Hiroshima.</strong> From Shin-Osaka the fastest Sanyo Shinkansen

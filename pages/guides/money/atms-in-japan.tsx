@@ -26,6 +26,16 @@ const WISE_CARD_CTA = wiseLink("atms-in-japan", WISE_CARD_URL);
  * Bank and E-net fee amounts — are reported as not published, not estimated.
  */
 const CHECKED = "26 October 2026";
+/**
+ * 13 Nov 2026 re-read (task jtk-20261113-C01): sevenbank.co.jp/intlcard/ (brands, 28,000+ ATMs),
+ * /intlcard/card.html (fee differs by brand, no amount; hours per brand), /intlcard/service.html
+ * (¥100,000, ¥30,000 magnetic stripe); jp-bank.japanpost.jp/en/ias/en_ias_index.html (brands, ¥220,
+ * ¥50,000, hours). All unchanged. E-net, Lawson Bank and AEON Bank keep the 26 Oct date.
+ */
+const RECHECKED = "13 November 2026";
+const RECHECKED_ISO = "2026-11-13";
+const SEVEN_BANK_URL = "https://www.sevenbank.co.jp/intlcard/";
+const JP_BANK_URL = "https://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html";
 
 /** Requirement (c): one row per ATM network, every cell from the operator's own page. */
 const atmNetworks = [
@@ -103,13 +113,20 @@ const howToUseSteps = [
   },
 ];
 
+/** The first FAQ_SCHEMA_COUNT questions go into FAQPage; the rest stay visible only. */
+const FAQ_SCHEMA_COUNT = 5;
+
 const faqItems = [
+  {
+    q: "Do 7-Eleven ATMs in Japan accept foreign cards?",
+    a: `Yes. The ATMs in 7-Eleven stores are Seven Bank machines, and Seven Bank lists Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, Discover and Diners Club for cards issued abroad, noting that some cards with those marks may still not work. The limit is ¥100,000 per withdrawal, or ¥30,000 if the magnetic stripe is read, and Visa and Mastercard cards can be used 00:00–24:00. Seven Bank publishes no fee amount — it states only that the fee differs by card brand — so the figure on screen before you confirm is the one to read. Checked on sevenbank.co.jp on ${RECHECKED}.`,
+  },
   {
     q: "Which ATMs in Japan accept foreign cards?",
     a: `Five networks, all of them outside the big commercial banks: Seven Bank in 7-Eleven stores (Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, DISCOVER and Diners Club), Japan Post Bank at post offices (“VISA, PLUS, Mastercard, Maestro, Cirrus, JCB, China Unionpay and DISCOVER”), E-net in FamilyMart and Don Quijote (Visa, Mastercard, UnionPay and JCB), part of the Lawson Bank estate (Visa, Mastercard, JCB and UnionPay), and AEON Bank in its malls. Brand lists read off each operator's own pages on ${CHECKED}; AEON Bank's figures are not confirmed on its own site, so no figure for it is quoted here.`,
   },
   {
-    q: "How much do ATMs in Japan charge foreign cards?",
+    q: "What are the ATM fees in Japan for foreign cards?",
     a: `Only one of the five operators publishes an amount. Japan Post Bank states that “when using certain cards issued abroad, an ATM usage fee (¥220 (tax included) per use) may apply”. Seven Bank says only that the fee differs by the brand of the overseas card, and E-net that it is set by the handling bank, with the card issuer possibly adding its own — neither prints a figure. Whatever the machine charges is separate from what your own bank charges, and the machine shows it on screen before you confirm. Checked ${CHECKED}.`,
   },
   {
@@ -147,9 +164,9 @@ const tips = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/atms-in-japan") } });
 
-const TITLE = "ATMs in Japan 2026: 5 Accept Foreign Cards, Fees Compared";
+const TITLE = "ATMs in Japan (2026): 7-Eleven, Fees & Foreign Cards";
 const DESCRIPTION =
-  "Which ATMs in Japan accept foreign cards: Seven Bank, Japan Post Bank (¥220), E-net, Lawson Bank and AEON on fees, hours and limits. Compare and pick one.";
+  "ATMs in Japan for foreign cards: 7-Eleven allows ¥100,000 a withdrawal, Japan Post Bank ¥50,000 with a ¥220 fee. Compare all 5, then get a Wise card.";
 
 export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -173,7 +190,7 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, FAQ_SCHEMA_COUNT).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -186,7 +203,7 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/atms-in-japan",
-              headline: "ATMs in Japan (2026): Which Accept Foreign Cards & What the Fees Are",
+              headline: "ATMs in Japan (2026): 7-Eleven, Fees & Which Accept Foreign Cards",
               updated,
             }),
           }}
@@ -234,7 +251,7 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            ATMs in Japan (2026):<br />Which Accept Foreign Cards &amp; What the Fees Are
+            ATMs in Japan (2026):<br />7-Eleven, Fees &amp; Which Accept Foreign Cards
           </h1>
           <p className={styles.heroSubtitle}>
             Five ATM networks take a card issued abroad, and only one of them publishes what it
@@ -256,17 +273,17 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              Foreign cards work at Japan&apos;s convenience-store ATM networks rather than at the big
-              banks: Seven Bank inside 7-Eleven, Japan Post Bank at post offices, E-net in FamilyMart
-              and Don Quijote, part of the Lawson Bank estate, and AEON Bank in its own malls.
+              Seven Bank ATMs in 7-Eleven take Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American
+              Express, JCB, Discover and Diners Club cards issued abroad, allow ¥100,000 per withdrawal
+              (¥30,000 on a magnetic-stripe read) and run 00:00–24:00 for Visa and Mastercard; Seven Bank
+              publishes no fee amount, only that it differs by card brand.
             </strong>{" "}
-            Of those, only Japan Post Bank publishes what it charges a card issued abroad — &ldquo;an ATM
-            usage fee (¥220 (tax included) per use) may apply&rdquo; — while Seven Bank says the fee depends
-            on the card brand and E-net that it depends on the handling bank, and whatever the machine
-            takes is separate from what your own bank charges. E-net states a flat 24 hours a day, 365 days
-            a year and Seven Bank runs 00:00–24:00 for Visa and Mastercard, but Japan Post Bank ATMs close
-            overnight (Mon–Sat 7:00–23:00), so an overnight withdrawal means a convenience store.
-            All figures below were read off each operator&apos;s own pages on {CHECKED}.
+            Japan Post Bank (Yucho) ATMs take Visa, PLUS, Mastercard, Maestro, Cirrus, JCB, UnionPay and
+            Discover, cap a withdrawal at ¥50,000 and state that &ldquo;an ATM usage fee (¥220 (tax included)
+            per use) may apply&rdquo; to certain cards issued abroad, with post-office machines open Mon–Sat
+            7:00–23:00. E-net (FamilyMart), Lawson Bank and AEON Bank also take foreign cards, and whatever
+            the machine charges is separate from your own bank&apos;s fee — Seven Bank and Japan Post Bank
+            figures checked on their own sites on {RECHECKED}, the rest on {CHECKED}.
           </p>
         </section>
 
@@ -344,8 +361,14 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            Sources, all read {CHECKED}: Seven Bank&apos;s overseas-card pages (brands and service hours,
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem" }}>
+            Last checked: {RECHECKED_ISO} (Seven Bank and Japan Post Bank rows). Official pages:{" "}
+            <a href={SEVEN_BANK_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>Seven Bank overseas cards</a>{" "}
+            and{" "}
+            <a href={JP_BANK_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>Japan Post Bank international ATM service</a>.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Sources, first read {CHECKED}: Seven Bank&apos;s overseas-card pages (brands and service hours,
             and its ATM-usage page for the limits), Japan Post Bank&apos;s international ATM service page,
             E-net&apos;s overseas-card page plus its own notice of the limit change, and Lawson Bank&apos;s
             FAQ. The two gaps are deliberate: the official sources checked do not give them — neither

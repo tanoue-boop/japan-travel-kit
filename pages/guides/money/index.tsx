@@ -66,7 +66,9 @@ export default function GuidesMoneyPage({ dates }: { dates: Record<string, strin
             The <PartnerTextLink href={WISE_CARD_CTA}>Wise card</PartnerTextLink> is the one to order early, because the
             physical card has to reach you before you leave; our{" "}
             <Link href="/guides/money/wise-card-japan" style={{ color: "var(--text)", fontWeight: 600 }}>Wise card Japan guide</Link>{" "}
-            lists the free ATM allowance for each card-issuing country and which Japanese ATMs take it. For medical cover,{" "}
+            lists the free ATM allowance for each card-issuing country and which Japanese ATMs take it, and the{" "}
+            <Link href="/guides/money/atms-in-japan" style={{ color: "var(--text)", fontWeight: 600 }}>ATMs in Japan guide</Link>{" "}
+            sets out the 7-Eleven and Japan Post Bank fees, hours and limits for foreign cards. For medical cover,{" "}
             <PartnerTextLink href={SAFETYWING_URL}>SafetyWing</PartnerTextLink> publishes its price and can be bought
             before you leave or while already abroad; our{" "}
             <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--text)", fontWeight: 600 }}>travel insurance comparison</Link> sets it against

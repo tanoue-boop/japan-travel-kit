@@ -672,7 +672,11 @@ export default function JapanSimCardLongTermStayPage({ updated }: { updated: Pag
             tax included) with speeds up to 10 Gbps and, explicitly, &ldquo;No Annual Contract&rdquo; — which
             is the clause to compare against any Japanese fixed-line offer, since the standard one is a
             two-year tie-in. The monthly Pocket WiFi at {WIFI_MONTH}/month is the no-installation alternative
-            for a short let. All read on {SAKURA_CHECKED}.
+            for a short let. All read on {SAKURA_CHECKED}. The{" "}
+            <Link href="/guides/esim/japan-home-internet-for-foreigners" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              home internet in Japan for foreigners
+            </Link>{" "}
+            guide sets the monthly cost against the wait before each line is live.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.pickCta}>

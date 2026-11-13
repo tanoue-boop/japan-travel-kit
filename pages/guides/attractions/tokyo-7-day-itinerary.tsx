@@ -497,7 +497,10 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             The hour-by-hour version of these days, with every admission dated, is in the{" "}
             <Link href="/guides/attractions/tokyo-5-day-itinerary">Tokyo 5 day itinerary</Link> and the{" "}
-            <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link> guide.
+            <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link> guide. If you
+            would rather eat Omoide Yokocho or Tsukiji Outer Market with a guide, the{" "}
+            <Link href="/guides/attractions/tokyo-food-tour">Tokyo food tour guide</Link> compares the
+            Shinjuku izakaya and daytime Tsukiji options.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

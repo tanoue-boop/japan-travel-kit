@@ -573,7 +573,11 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             Yes on all five, with different limits. Airalo sets no limit on tethering or devices but counts hotspot
             data toward its 3 GB a day; Simbye and eSIM Go allow it; Holafly caps it at 1 GB a day; and Sakura Mobile
-            allows 2 GB on a 1–3 day plan, 6 GB on 7 days and 30 GB on 27–31 days.
+            allows 2 GB on a 1–3 day plan, 6 GB on 7 days and 30 GB on 27–31 days. If the laptop is for work, the{" "}
+            <Link href="/guides/esim/japan-esim-business" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best eSIM for a business trip to Japan
+            </Link>{" "}
+            sizes a working week at 3–4 GB a day and covers the Japanese-number question.
           </p>
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>
             Which Network Does Each Unlimited eSIM Use?

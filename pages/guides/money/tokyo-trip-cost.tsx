@@ -539,7 +539,9 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             part that has to be cash (some temples, market stalls, coin lockers) is smaller; our{" "}
             <Link href="/guides/money/how-much-yen-to-bring-japan">how much yen to bring guide</Link> sizes it, and
             our <Link href="/guides/money/currency-exchange-japan">currency exchange guide</Link> compares the
-            airport counters, city bureaux and ATMs for getting that cash.
+            airport counters, city bureaux and ATMs for getting that cash. Which machines take a foreign card,
+            from 7-Eleven to Japan Post Bank, is in our{" "}
+            <Link href="/guides/money/atms-in-japan">ATMs in Japan guide</Link>.
           </p>
         </section>
 

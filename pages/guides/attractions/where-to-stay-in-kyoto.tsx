@@ -469,7 +469,10 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
             Kyoto Station wins short trips because it removes transfers from both ends of them: the shinkansen
             and the Haruka from Kansai Airport arrive there, the 100 and 101 sightseeing bus routes start
             there, and the Nara Line to Fushimi Inari and the Sagano Line to Arashiyama leave from the same
-            building.
+            building. teamLab Biovortex Kyoto is a 7-minute walk from the station&apos;s Hachijo East Gate on
+            teamLab&apos;s own figure, with last entry at 19:30 — our{" "}
+            <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Kyoto tickets guide</Link> has the
+            price and hours.
           </p>
           <p className={styles.bodyText}>
             Once you have more nights, that advantage stops mattering and a different one starts. Karasuma

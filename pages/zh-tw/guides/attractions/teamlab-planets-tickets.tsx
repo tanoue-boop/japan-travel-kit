@@ -52,8 +52,12 @@ const ADULT = priceLabel(P.adult, LOCALE);
 const CHILD = priceLabel(P.child, LOCALE);
 
 const ROUTE = "/zh-tw/guides/attractions/teamlab-planets-tickets";
-const TITLE = "teamLab Planets 門票 2026：票價、時間與預約方式";
-const DESC = `teamLab Planets（豐洲）門票 2026：成人 ${ADULT}，依日期與時段變動。整理營業時間、休館日、預約方式，以及從新豐洲站與豐洲站怎麼走。`;
+const TITLE = "teamLab Planets 門票 2026：豐洲官網票價與入場時段";
+const DESC = `teamLab Planets 門票官網價：成人 ${ADULT}，需指定日期與入場時段，現場不售票；水深可達膝蓋。可在 Klook 預約時段。`;
+// 2026-11-13（task-jtk-20261113-C01）：以 teamLab 的鏡像頁 art.team-lab.cn/en/e/planets 重新查核，
+// 票價、營業時間、休館日與「水深可達成人膝蓋」皆未變動。詳見英文版。
+const RECHECKED_ISO = "2026-11-13";
+const OFFICIAL_URL = "https://www.teamlab.art/e/planets/";
 
 const priceRows = [
   {
@@ -161,52 +165,20 @@ const faqItems: FaqItem[] = [
     a: `依 teamLab Planets 官方售票網站（查核日 ${CHECKED}）：成人票 ¥3,800 起，國中與高中生 ¥2,800，4～12 歲兒童 ¥1,500，3 歲以下免費。身心障礙人士 ¥1,900 起，另有 ¥12,000 的 Premium Pass（4 歲以上）。成人票價依日期與時段變動，付款前請確認所選時段的金額。優惠票需要出示資格證明——請帶學生證、護照或身心障礙證明。`,
   },
   {
-    q: "teamLab Planets 需要提前訂票嗎？",
-    a: `需要。門票要指定日期與入場時間，官方售票網站也寫明現場不售票，所以日期售罄後就無法在現場補買。teamLab 沒有公布售罄資料，要提前多久官方未公布。日期一確定就訂。查核日 ${CHECKED}。`,
+    q: "teamLab Planets 官網購票網站在哪裡？",
+    a: `teamLab Planets TOKYO 官方售票網站是 teamlabplanets.dmm.com，可從美術館官方頁面 teamlab.art/e/planets 進入。售票網站的說明頁寫明，現場的售票櫃台與售票機都不販售門票，並列出有販售的通路：官方 Ticket Store、Lawson Ticket、Seven Ticket 與 Klook。不論哪個官方通路，都是指定日期與入場時間的 QR 票，價格由日期與時段決定。查核日 ${CHECKED}。`,
   },
   {
-    q: "teamLab Planets 可以現場買票嗎？",
-    a: `不行。官方售票網站的說明頁寫明，現場的售票櫃台與售票機都不販售門票，並列出有販售的通路：官方 Ticket Store、Lawson Ticket、Seven Ticket 與 Klook。如果你的日期已滿，現場也沒有售票窗口可以補買——這是 Planets 和東京多數景點最大的不同。查核日 ${CHECKED}。`,
-  },
-  {
-    q: "teamLab Planets 哪個時段最便宜？",
-    a: `就是官方預約日曆在造訪當天標價最低的那一個——teamLab 沒有公布各時段的價目表，實際仍以官方訂票日曆顯示的價格為準。官方確認的是：成人 Entrance Pass 從 ¥3,800 起，而且不同日期價格不同——說明頁寫著預約可以更改「即使是價格不同的日期」。所以請打開官方預約日曆，把你行程可以接受的日期與入場時間一一點過，付款前就比較，而不是付款後。查核日 ${CHECKED}。`,
-  },
-  {
-    q: "teamLab Planets 有置物櫃嗎？",
-    a: `有，而且免費。官方說明頁寫的尺寸是寬 23 公分、深 34 公分、高 37 公分——放得下後背包，放不下行李箱。現場沒有寄物處：更大的物品需自行用鋼索鎖固定在館外的嬰兒車停放區。鞋子、襪子與褲襪也在置物櫃這裡脫掉，因為從這裡開始全程赤腳。查核日 ${CHECKED}。`,
+    q: "teamLab Planets 的入場時段怎麼運作？",
+    a: `票面時間是入場時間，從該時間起 30 分鐘為入場準備時間；官方售票網站提醒入場可能需等候 30～60 分鐘。遲到的話，仍可在當天營業時間（08:00–22:00，閉館前一小時停止入場）內入場。Entrance Pass 最晚可在入場時間 2 小時前更改，最多 3 次，購買後不退款。查核日 ${CHECKED}。`,
   },
   {
     q: "去 teamLab Planets 該穿什麼？",
     a: "短褲，或可以捲到膝蓋以上的長褲。部分作品是水空間，水深可達成人膝蓋高，而且整間美術館都是赤腳體驗——入場時會在置物間脫掉鞋子、襪子與褲襪。部分地板是鏡面的，所以穿裙子或寬褲會不方便；現場有 XS 到 6L 的免費短褲可借。帶小孩的話請準備替換衣物，另外嬰兒車不能進場（有嬰兒車停放區，背巾可以）。",
   },
   {
-    q: "teamLab Planets 的 QR 票什麼時候會收到？",
-    a: `門票一律是 QR 電子票。購票確認信裡有票券連結，入場前 2 天會收到提醒信，QR 碼在入場當天 00:00 起才會顯示。一個 QR 涵蓋同筆訂單的所有人，可以用手機、平板出示或列印。查核日 ${CHECKED}。`,
-  },
-  {
     q: "teamLab Planets 要逛多久？",
     a: `官方未公布參觀時間。本站建議館內預留 1.5 到 2 小時，含置物櫃與擦乾的時間。另外要加上官方售票網站提醒的 30 到 60 分鐘等候，結束後也不要緊接著排其他行程。官方售票網站也寫明，忙碌時段可能會請停留較久的旅客移動。查核日 ${CHECKED}。`,
-  },
-  {
-    q: "teamLab Planets 的營業時間？什麼時候休館？",
-    a: `teamlab.art 列出的營業時間是 08:00–22:00，12 月 31 日至 1 月 2 日為 08:00–20:00，閉館前一小時停止入場。列出的休館日是 2026 年 12 月 3 日（週四）與 2027 年 1 月 14 日（週四）。查核日 ${CHECKED}。訂票前請依造訪日期查詢官方網站。`,
-  },
-  {
-    q: "錯過 teamLab Planets 的時段怎麼辦？",
-    a: "還是可以入場。官方說明頁寫的是：票面時間是參考值，如果你遲到，仍可在當天營業時間內入場。最後入場是閉館前一小時。",
-  },
-  {
-    q: "teamLab Planets 在哪裡？怎麼去？",
-    a: `地址是東京都江東區豐洲 6-1-16。teamlab.art 列出的交通方式：百合海鷗線新豐洲站 1A 出口步行 3 分鐘，市場前站與豐洲市場步行 5 分鐘，東京地鐵有樂町線豐洲站 7 號出口步行 10 分鐘。另外，從東京車站搭計程車 15 分鐘，從羽田機場走高速公路 15 分鐘。查核日 ${CHECKED}。`,
-  },
-  {
-    q: "teamLab Planets 要結束了嗎？",
-    a: `teamlab.art 列出的展期是 2018 年 7 月 7 日至 2027 年底。查核日 ${CHECKED}。麻布台之丘的 teamLab 無界是另一間獨立的美術館，門票分開。`,
-  },
-  {
-    q: "teamLab Planets 和無界差在哪？",
-    a: "豐洲的 Planets 要赤腳走過水中。位於麻布台之丘的無界，是沒有固定參觀路線的迷宮式空間，作品在房間之間移動。兩間是獨立的美術館，門票分開。詳細比較請看我們的 teamLab Planets 與無界比較。",
   },
 ];
 
@@ -288,7 +260,7 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 門票（2026）：<br />票價、時間與預約方式
+            teamLab Planets 豐洲門票 2026：<br />官網票價、入場時段與預約方式
           </h1>
           <p className={styles.heroSubtitle}>
             豐洲的 teamLab Planets 門票多少錢、什麼時候開放、怎麼預約，以及從新豐洲站或豐洲站怎麼走。
@@ -305,6 +277,15 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
       <div className={styles.content}>
         <Disclosure />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>teamLab Planets 門票</strong>在官方售票網站的價格是成人 <strong>¥3,800 起</strong>、國高中生
+            ¥2,800、4～12 歲 <strong>¥1,500</strong>，3 歲以下免費。每張票都要指定日期與入場時間，美術館現場不售票；
+            官方未公布參觀時間，建議館內預留 <strong>1.5～2 小時</strong>，再加上官方售票網站提醒的 30～60 分鐘入場等候。
+            全程赤腳，水作品的水深可達<strong>成人膝蓋高</strong>，請穿可以捲到膝蓋以上的短褲或長褲。
+          </p>
+        </section>
 
         <PlanetsAnswer />
 
@@ -349,7 +330,9 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            資料取自 teamLab Planets 官方售票網站的英文版與日文版，查核日 {CHECKED}。優惠票需要出示資格證明，
+            <strong>最後確認：{RECHECKED_ISO}</strong>（
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Planets 官方頁面</a>，票價未變動）。
+            最初取自 teamLab Planets 官方售票網站（teamlabplanets.dmm.com）的英文版與日文版，查核日 {CHECKED}。優惠票需要出示資格證明，
             請帶學生證、護照或身心障礙證明。門票以手機 QR Code 形式發送。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -389,6 +372,10 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最後確認：{RECHECKED_ISO}</strong>——營業時間、最後入場、休館日與展期已在{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Planets 官方頁面</a>重新確認；官方售票網站的項目以 {CHECKED} 為準。
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Planets 對你的要求也比一般美術館門票多——要赤腳進場，而且路線的一部分是水：
           </p>

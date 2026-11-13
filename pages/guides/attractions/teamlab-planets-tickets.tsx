@@ -143,67 +143,45 @@ const steps = [
   },
 ];
 
+// Re-read 13 Nov 2026 (task-jtk-20261113-C01) on art.team-lab.cn/en/e/planets, teamLab's
+// server-rendered mirror of teamlab.art/e/planets: ¥3,800 / ¥2,800 / ¥1,500 / free / ¥1,900 /
+// Premium Pass ¥12,000 (dynamic pricing), 8:00–22:00 (8:00–20:00 on 31 Dec–2 Jan), last entry
+// one hour before closing, closed Thu 3 Dec and Thu 14 Jan, open to the end of 2027, 3 / 5 / 10
+// minutes on foot from Shin-Toyosu Exit 1A / Shijomae / Toyosu Exit 7, and "Water levels can rise
+// to knee height even for adults" — all unchanged. The ticket-store Help-page facts keep CHECKED.
+const RECHECKED_ISO = "2026-11-13";
+const OFFICIAL_URL = "https://www.teamlab.art/e/planets/";
+const STORE_URL = "https://teamlabplanets.dmm.com/en/ticket";
+
 const faqItems = [
   {
     q: "How much are teamLab Planets tickets in 2026?",
     a: `On the official teamLab Planets ticket store, checked on ${CHECKED}, adult tickets start from ¥3,800, junior and senior high school students pay ¥2,800, children aged 4–12 pay ¥1,500, and children 3 and under enter free. Visitors with a disability pay from ¥1,900, and a Premium Pass is sold at ¥12,000 for ages 4 and over. The adult price varies by date and time slot, so confirm the figure for your own slot before you pay. Discounted tickets need proof of eligibility — bring student ID, a passport or a disability certificate.`,
   },
   {
-    q: "Do I need to book teamLab Planets in advance?",
-    a: `Yes. Tickets are for a set date and admission time, and the official store states that nothing is sold on site, so a full date cannot be rescued at the door. teamLab publishes no sell-out data, so how far ahead a date fills is not stated officially. Book as soon as your dates are fixed. Read on ${CHECKED}.`,
+    q: "Where is the official teamLab Planets ticket store?",
+    a: `The teamLab Planets TOKYO Official Ticket Store is teamlabplanets.dmm.com, linked from the museum's own page at teamlab.art/e/planets. Its Help pages state that tickets are not sold on site at ticket counters or vending machines, and name the channels that do sell them: the official Ticket Store, Lawson Ticket, Seven Ticket and Klook. All of them sell a QR ticket for a set date and admission time, and the date and time set the price whichever official channel you use. Read on ${CHECKED}.`,
   },
   {
-    q: "Can you buy teamLab Planets tickets at the door?",
-    a: `No. The official ticket store's Help pages state that tickets are not available for purchase on-site at ticket counters or vending machines, and name the channels that do sell them: the official Ticket Store, Lawson Ticket, Seven Ticket and Klook. There is no walk-up window to fall back on if your date is full, which is the single biggest difference between Planets and most Tokyo attractions. Read on ${CHECKED}.`,
-  },
-  {
-    q: "What time slot is cheapest at teamLab Planets?",
-    a: `Whichever one the official calendar prices lowest on your own date — teamLab publishes no price-per-slot list, so that is the only honest answer. What the official store does confirm is that the adult Entrance Pass starts at ¥3,800~ and that rates differ between dates: its Help pages tell you a booking can be moved "even for dates with different rates". So open the store's calendar, step through the dates and admission times your trip could absorb, and compare the figures before you pay rather than after. Read on ${CHECKED}.`,
-  },
-  {
-    q: "Are there lockers at teamLab Planets?",
-    a: `Yes, and they are free. The official Help pages give the size as 23 cm wide by 34 cm deep by 37 cm high — a daypack fits, a suitcase does not. There is no cloakroom: anything larger has to be secured by you with a wire lock at the stroller parking outside the building. Shoes, socks and tights come off at the lockers too, because the museum is walked barefoot from that point on. Read on ${CHECKED}.`,
+    q: "How do teamLab Planets time slots work?",
+    a: `The time on your ticket is the admission time, and 30 minutes from it is the entry preparing time; the official store warns you may wait 30 to 60 minutes to be admitted. If you arrive late you can still enter the same day within opening hours — 08:00–22:00, last entry one hour before closing. An Entrance Pass can be moved up to 2 hours before its admission time, three changes at most, and nothing is refundable. Read on ${CHECKED}.`,
   },
   {
     q: "What should I wear to teamLab Planets?",
     a: "Shorts, or trousers you can roll up above the knee. Some of the artworks are water spaces and the water can rise to adult knee height, and the whole museum is experienced barefoot — you take off shoes, socks and tights in the locker room on the way in. Parts of the floor are mirrored, so skirts and wide-leg trousers are a bad idea; free rental shorts are available in sizes XS to 6L. If you're bringing children, pack a change of clothes, and note that strollers can't go inside (there's stroller parking, and baby carriers are fine).",
   },
   {
-    q: "When do I get my teamLab Planets QR ticket?",
-    a: `Tickets are QR e-tickets only. The purchase confirmation email carries the link, a reminder is sent 2 days before your date, and the QR code itself displays from 00:00 on the day of admission. One QR covers everyone on the purchase, and you can show it on a phone or tablet or print it. Read on ${PREP_CHECKED}.`,
-  },
-  {
     q: "How long do you need at teamLab Planets?",
     a: `teamLab states no visit length. Plan on 1.5 to 2 hours inside, including the lockers and drying off. Add the 30 to 60 minute wait the official store warns about, and do not book anything tight straight afterwards. At busy times the official store says guests who have stayed a long time may be asked to move on. Read on ${CHECKED}.`,
-  },
-  {
-    q: "What are teamLab Planets opening hours, and when is it closed?",
-    a: `teamlab.art lists 08:00–22:00, with 08:00–20:00 from 31 December to 2 January, and last entry one hour before closing. The closed days it lists are Thursday 3 December 2026 and Thursday 14 January 2027. Read on ${CHECKED}. Check the official site for your own dates before you book.`,
-  },
-  {
-    q: "What if I miss my teamLab Planets time slot?",
-    a: "You can still get in. The official help pages say the printed time is a reference and that you can enter on the same day, within opening hours, if you arrive late. Last admission is one hour before closing.",
-  },
-  {
-    q: "Where is teamLab Planets and how do I get there?",
-    a: `It is at 6-1-16 Toyosu, Koto-ku. teamlab.art lists 3 minutes on foot from Exit 1A of Shin-Toyosu Station on the Yurikamome line, 5 minutes from Shijomae Station and Toyosu Market, and 10 minutes from Exit 7 of Toyosu Station on the Tokyo Metro Yurakucho Line. It also lists 15 minutes by taxi from Tokyo Station and 15 minutes by highway from Haneda Airport. Read on ${CHECKED}.`,
-  },
-  {
-    q: "Is teamLab Planets closing?",
-    a: `teamlab.art lists its run as 7 July 2018 to the end of 2027. Read on ${CHECKED}. teamLab Borderless in Azabudai Hills is a separate museum with its own tickets.`,
-  },
-  {
-    q: "What's the difference between teamLab Planets and Borderless?",
-    a: "Planets, in Toyosu, is a museum where you walk barefoot through water. Borderless, in Azabudai Hills, is a map-less maze of artworks that move between rooms. They are separate museums with separate tickets. Our teamLab Tokyo comparison sets them side by side.",
   },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/teamlab-planets-tickets") } });
 
 const ROUTE = "/guides/attractions/teamlab-planets-tickets";
-const TITLE = "teamLab Planets Tickets 2026: ¥3,800~, Hours, How to Book";
+const TITLE = "teamLab Planets Tickets 2026: Official Price & Time Slots";
 const DESC =
-  "teamLab Planets tickets from ¥3,800 by date and time. Hours, closed days, how to book, busy times and the walk from Shin-Toyosu and Toyosu stations.";
+  "teamLab Planets tickets: from ¥3,800 on the official store, for a set date and time slot; none sold at the door. Open 8:00–22:00. Book a slot on Klook.";
 
 export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -300,7 +278,7 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets Tickets (2026):<br />Price, Hours and How to Book
+            teamLab Planets Tickets 2026:<br />Official Price, Time Slots &amp; Booking
           </h1>
           <p className={styles.heroSubtitle}>
             What a ticket to teamLab Planets in Toyosu costs, when it is open, how to book and how to get
@@ -325,6 +303,19 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Lead paragraph — the answer in plain sentences before the answer table. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>teamLab Planets tickets</strong> cost from <strong>¥3,800</strong> for an adult on the
+            official teamLab Planets ticket store, with ¥2,800 for junior and senior high school students,{" "}
+            <strong>¥1,500</strong> for ages 4–12 and free entry for children 3 and under. Every ticket is for a
+            set date and admission time, nothing is sold at the museum, and teamLab publishes no visit length —
+            plan on about <strong>1.5–2 hours</strong> plus the 30–60 minute entry wait the official store warns
+            of. You walk barefoot, and in the water artworks the water can reach{" "}
+            <strong>adult knee height</strong>, so wear shorts or trousers that roll above the knee.
+          </p>
+        </section>
 
         {/* The answer first: the table and the Klook button, then the same-day block. */}
         <PlanetsAnswer />
@@ -374,8 +365,11 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read from the official teamLab Planets ticket store on {CHECKED}, in both its English and Japanese
-            editions. Discounted tickets need proof of eligibility, so bring student ID, a passport or a
+            <strong>Last checked: {RECHECKED_ISO}</strong> on the{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Planets official page</a> (prices
+            unchanged, subject to dynamic pricing); first read from the{" "}
+            <a href={STORE_URL} target="_blank" rel="noopener">official teamLab Planets ticket store</a> on{" "}
+            {CHECKED}, in both its English and Japanese editions. Discounted tickets need proof of eligibility, so bring student ID, a passport or a
             disability certificate. Tickets are issued as a QR code on your phone.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -418,6 +412,12 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {RECHECKED_ISO}</strong> — hours, last entry, closed days and run re-read on
+            the <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Planets official page</a>; the
+            ticket-store rows are as read on the{" "}
+            <a href={STORE_URL} target="_blank" rel="noopener">official ticket store</a> on {CHECKED}.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Planets also asks more of you than a normal museum ticket — you go in barefoot and part of the
             route is water:

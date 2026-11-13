@@ -543,6 +543,9 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             <Link href="/guides/attractions/tokyo-subway-ticket">도쿄 서브웨이 티켓(영어)</Link>을 갖고 있다면
             그대로 쓸 수 있습니다. 도쿄메트로와 도에이 노선이 어떻게 연결되는지는{" "}
             <Link href="/guides/transport/tokyo-transportation">도쿄 교통 가이드(영어)</Link>에서 다룹니다.
+            이동 중 지도와 환승 검색에 쓸 데이터는{" "}
+            <Link href="/ko/guides/esim/best-esim-japan">일본 이심 추천</Link>에서 eSIM 6곳의 가격과 통신사를
+            비교해 고를 수 있습니다.
           </p>
         </section>
 

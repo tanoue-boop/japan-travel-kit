@@ -40,31 +40,49 @@ const TAIKO_URL = arimaTaikoNoYuSpa.url;
 //    Arima Onsen Tourist Association's own transportation page.
 const CHECKED = checkedLabel("2026-10-25");
 
+// Re-checked 13 Nov 2026 (task-jtk-20261113-C01):
+//  - arimaspa-kingin.jp/kin-01.htm and gin-01.htm: Kin no Yu adult ¥800 (¥650 on
+//    weekdays, peak periods excepted), Gin no Yu ¥700 (¥550 on weekdays), 2-Spa
+//    Ticket ¥1,200; hours and closed Tuesdays unchanged.
+//  - nishinihonjrbus.co.jp/trans/lp/arima/: "当面の間、大阪エリア発着の便は全便運休",
+//    i.e. every Arima Express run to and from Osaka Station, JR Namba and
+//    Shin-Osaka is suspended for now; the Kobe runs (Sannomiya/Shin-Kobe, ¥780,
+//    ¥700 bought 7+ days ahead, 08:50 → 09:20) run daily.
+//  - feel-kobe.jp/en/stories/arimaonsen (VISIT KOBE, Kobe Tourism Bureau):
+//    Osaka (Umeda) by Hankyu Bus about 60 min; central Kobe by JR Bus about 30 min.
+//  - taikounoyu.com/howto: Taiko no Yu admissions and hours unchanged.
+const RECHECKED_ISO = "2026-11-13";
+const JRBUS_URL = "https://www.nishinihonjrbus.co.jp/trans/lp/arima/";
+const KINGIN_URL = "https://arimaspa-kingin.jp/kin-01.htm";
+const VISIT_KOBE_URL = "https://www.feel-kobe.jp/en/stories/arimaonsen";
+
 const KIN_ADULT = "¥800";
 const GIN_ADULT = "¥700";
+const KIN_WEEKDAY = "¥650";
+const GIN_WEEKDAY = "¥550";
 const TWO_SPA = "¥1,200";
 
 const accessRows = [
   {
-    route: "Osaka Station → Arima Onsen, coach",
-    operator: "West JR Bus, Arima Express",
-    fare: "¥1,400 (¥1,000 on the advance fare)",
-    time: "About 65 min — 08:50 departure arrives 09:55",
-    note: "From the JR Highway Bus Terminal at Osaka Station. One vehicle, no changes: the simplest way to do this as a day trip.",
-  },
-  {
-    route: "Shin-Osaka → Arima Onsen, coach",
-    operator: "West JR Bus, Arima Express",
-    fare: "¥1,250 (¥1,000 on the advance fare)",
-    time: "Under an hour",
-    note: "The stop to use if you are arriving on the shinkansen and not going into central Osaka first.",
-  },
-  {
     route: "Sannomiya or Shin-Kobe → Arima Onsen, coach",
     operator: "West JR Bus, Arima Express",
-    fare: "¥780 (¥700 on the advance fare)",
+    fare: "¥780 (¥700 bought 7+ days ahead)",
     time: "About 30 min — 08:50 departure arrives 09:20",
-    note: "The cheapest and fastest run of all. Arima is administratively part of Kobe, and this is the ride that proves it.",
+    note: "Runs daily and is the cheapest and fastest run of all. From Osaka, take a JR train to Sannomiya and board here.",
+  },
+  {
+    route: "Osaka (Umeda) → Arima Onsen, coach",
+    operator: "Hankyu Bus",
+    fare: "Not quoted — check Hankyu Bus for your date",
+    time: "About 60 min (VISIT KOBE's figure)",
+    note: "The direct coach from Osaka while the West JR Osaka runs are suspended.",
+  },
+  {
+    route: "Osaka Station / Shin-Osaka → Arima Onsen, coach",
+    operator: "West JR Bus, Arima Express",
+    fare: "¥1,400 / ¥1,250 when running",
+    time: "Suspended for now",
+    note: "West JR Bus states that every Osaka-area run is suspended until further notice. Use Sannomiya or the Hankyu coach instead.",
   },
   {
     route: "Sannomiya → Arima Onsen, train",
@@ -92,14 +110,14 @@ const accessRows = [
 const bathRows = [
   {
     bath: "Kin no Yu (the gold bath)",
-    adult: KIN_ADULT,
+    adult: `${KIN_ADULT} (${KIN_WEEKDAY} on weekdays)`,
     child: "¥350",
     hours: "08:00–22:00, last entry 21:30",
     closed: "Every 2nd and 4th Tuesday — open if that is a national holiday, closed the next day — and 1 January",
   },
   {
     bath: "Gin no Yu (the silver bath)",
-    adult: GIN_ADULT,
+    adult: `${GIN_ADULT} (${GIN_WEEKDAY} on weekdays)`,
     child: "¥300",
     hours: "09:00–21:00, last entry 20:30",
     closed: "The 1st and 3rd Tuesday of every month, and 1 January",
@@ -129,7 +147,7 @@ const planRows = [
   },
   {
     plan: "Full day from Osaka",
-    shape: "08:50 coach from Osaka Station, arrive 09:55; last coaches back in the evening",
+    shape: "JR train to Sannomiya, then the 08:50 coach, arriving 09:20; or the Hankyu coach from Umeda (about 60 min)",
     what: `Kin no Yu first (it opens at 08:00, earliest of the three), lunch in the town, then Gin no Yu on the ${TWO_SPA} 2-Spa Ticket, and the Rokko-Arima ropeway up to the Rokko summit for the view over Osaka Bay before coming back down.`,
     verdict: "The version worth the travel time, and the only one that uses the mountain as well as the town.",
   },
@@ -150,7 +168,7 @@ const planRows = [
 const compareRows = [
   {
     option: "Coach + 2-Spa Ticket, arranged yourself",
-    cost: `From Sannomiya: ¥780 each way plus ${TWO_SPA}. From Osaka Station: ¥1,400 each way, or ¥1,000 on the advance fare`,
+    cost: `From Sannomiya: ¥780 each way (¥700 bought 7+ days ahead) plus ${TWO_SPA}. The West JR Osaka runs are suspended for now`,
     gets: "Both municipal bathhouses and complete control of the timings. Nothing is reserved, so nothing can be sold out.",
     pick: "The default, and comfortably the cheapest. Check the closed Tuesdays before you set the date.",
   },
@@ -183,15 +201,15 @@ const compareRows = [
 const faqItems = [
   {
     q: "How do you do an Arima Onsen day trip from Osaka?",
-    a: `Take the West JR Bus Arima Express from the JR Highway Bus Terminal at Osaka Station. It is ¥1,400 one way, or ¥1,000 on the operator's advance fare, and the 08:50 departure reaches Arima Onsen at 09:55 — about 65 minutes with no changes. From Shin-Osaka the same service is ¥1,250. The Arima Onsen Tourist Association gives about 60 minutes from Osaka door to door, which matches. Fares and times checked ${CHECKED}.`,
+    a: `Arima Onsen is about 60 minutes from Osaka (Umeda) on the Hankyu Bus coach, on VISIT KOBE's figure. The West JR Bus Arima Express from Osaka Station and Shin-Osaka is suspended for now, so the other reliable route is a JR train to Sannomiya and the Arima Express from there: ¥780, about 30 minutes, with the 08:50 departure arriving at 09:20. The Arima Onsen Tourist Association also gives about 60 minutes from Osaka. Checked ${RECHECKED_ISO}.`,
   },
   {
     q: "How long does it take to get to Arima Onsen from Kobe?",
-    a: "About 30 minutes, and it is the cheapest approach: the Arima Express from Sannomiya Bus Terminal or Shin-Kobe is ¥780 one way, ¥700 on the advance fare, and the 08:50 departure arrives at 09:20. The train alternative — Kobe Municipal Subway to Tanigami (¥280), then a Kobe Electric Railway train towards Sanda with a change at Arimaguchi — is more interesting and no faster. If you are staying in Kobe rather than Osaka, this is barely a day trip at all.",
+    a: "About 30 minutes, and it is the cheapest approach: the Arima Express from Sannomiya Bus Terminal or Shin-Kobe is ¥780 one way, ¥700 if bought at least 7 days ahead, and the 08:50 departure arrives at 09:20. The train alternative — Kobe Municipal Subway to Tanigami (¥280), then a Kobe Electric Railway train towards Sanda with a change at Arimaguchi — is more interesting and no faster. If you are staying in Kobe rather than Osaka, this is barely a day trip at all.",
   },
   {
     q: "How much are Kin no Yu and Gin no Yu?",
-    a: `Kin no Yu, the iron-rich gold bath, is ${KIN_ADULT} for an adult and ¥350 for a child; Gin no Yu, the clear silver bath, is ${GIN_ADULT} and ¥300. The 2-Spa Ticket covering both is ${TWO_SPA}, which is ¥300 less than buying them separately. The operator also publishes a ¥650 Kin no Yu adult rate and a ¥550 Gin no Yu one; its Japanese page presents these as group rates and its English page labels the Kin no Yu figure a weekday price, so confirm which applies at the counter. All read off arimaspa-kingin.jp on ${CHECKED}.`,
+    a: `Kin no Yu, the iron-rich gold bath, is ${KIN_ADULT} for an adult (${KIN_WEEKDAY} on weekdays) and ¥350 for a child; Gin no Yu, the clear silver bath, is ${GIN_ADULT} (${GIN_WEEKDAY} on weekdays) and ¥300. The weekday rates do not apply over New Year, Golden Week and Obon. The 2-Spa Ticket covering both is ${TWO_SPA}. Read off arimaspa-kingin.jp on ${RECHECKED_ISO}.`,
   },
   {
     q: "What are Kin no Yu and Gin no Yu's opening hours and closed days?",
@@ -210,8 +228,8 @@ const faqItems = [
     a: "They are two different waters, not two temperatures of the same one. Kinsen, the gold spring, is heavily iron-bearing and salty — it oxidises reddish-brown on contact with air, which is where the colour and the name come from. Ginsen, the silver spring, is clear. Kin no Yu is built on the gold spring and Gin no Yu on the silver, which is why the ¥1,200 2-Spa Ticket exists at all: the two bathhouses are not substitutes for each other.",
   },
   {
-    q: "Do you need to book anything in advance for Arima Onsen?",
-    a: "For the bathhouses, no — Kin no Yu and Gin no Yu are walk-in and sell tickets at the counter. What is worth booking ahead is the coach, where the advance fare is cheaper (¥1,000 instead of ¥1,400 from Osaka, ¥700 instead of ¥780 from Sannomiya), and anything guided, because a coach day with Himeji or the Rokko night view in it runs on fixed departures with limited seats. If you want the town on a Tuesday, the thing to check is not availability but which bathhouse is shut.",
+    q: "Is there an Arima Onsen package with transport, or a pass that covers it?",
+    a: "Klook sells a Kin no Yu and Gin no Yu package bundled with the round-trip express coach from Kobe, valid for three days including the boarding date, and a separate Taiko no Yu day spa ticket. West JR Bus's own coach-plus-baths ticket (the Arima Onsen Yokubari Kippu) is paused on its site. The Kansai Area Pass covers JR trains as far as Sannomiya but not the Arima coach or the Kobe subway. The bathhouses themselves are walk-in, so the only things worth booking ahead are the coach (¥700 instead of ¥780 if bought 7+ days before) and any guided day. Checked 2026-11-13.",
   },
   {
     q: "Is Arima Onsen worth it as a day trip?",
@@ -223,9 +241,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Arima Onsen Day Trip 2026: 65 Min, ¥1,400 From Osaka, Kobe";
+const TITLE = "Arima Onsen Day Trip from Osaka 2026: Access, Baths & Passes";
 const DESCRIPTION =
-  "An Arima Onsen day trip is 65 minutes and ¥1,400 by coach from Osaka, or 30 minutes from Sannomiya. Kin no Yu is ¥800, Gin no Yu ¥700. Compare and book.";
+  "Arima Onsen is about 60 min from Osaka by coach, 30 min (¥780) from Sannomiya. Kin no Yu ¥800, Gin no Yu ¥700. Book a baths + coach set or a guided day.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/arima-onsen-day-trip") },
@@ -318,7 +336,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Arima Onsen Day Trip (2026):<br />From Osaka or Kobe, and What the Baths Cost
+            Arima Onsen Day Trip from Osaka (2026):<br />Access, Kin no Yu &amp; Gin no Yu Prices, Passes
           </h1>
           <p className={styles.heroSubtitle}>
             A 1,300-year-old hot spring town inside the Kobe city limits, an hour from Osaka by coach. Two
@@ -352,8 +370,8 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>From Osaka Station</p>
-                <p className={styles.verdictStatValue}>¥1,400, ~65 min</p>
+                <p className={styles.verdictStatLabel}>From Osaka (Umeda)</p>
+                <p className={styles.verdictStatValue}>~60 min by coach</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>From Sannomiya</p>
@@ -370,17 +388,18 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              An <strong>Arima Onsen day trip</strong> takes about <strong>65 minutes and ¥1,400</strong> on
-              the West JR Bus Arima Express from <strong>Osaka Station</strong> (the 08:50 arrives 09:55), or
-              about <strong>30 minutes and ¥780</strong> from <strong>Sannomiya</strong> in Kobe — one coach,
-              no changes, either way. In the town, the two municipal bathhouses are walk-in:{" "}
-              <strong>Kin no Yu</strong>, the iron-rich gold bath, is {KIN_ADULT} and opens{" "}
-              <strong>08:00–22:00</strong>; <strong>Gin no Yu</strong>, the clear silver bath, is {GIN_ADULT}{" "}
-              and opens <strong>09:00–21:00</strong>; a <strong>{TWO_SPA} 2-Spa Ticket</strong> covers both.
-              The one trap is the day of the week — Kin no Yu shuts on the <strong>2nd and 4th
-              Tuesday</strong> and Gin no Yu on the <strong>1st and 3rd</strong>. Half a day is enough for the
-              town; a full day is worth it only if you add Mt. Rokko above it. Fares and admissions read off
-              the operators&apos; own sites on {CHECKED}.
+              Arima Onsen is about <strong>60 minutes from Osaka (Umeda)</strong> by Hankyu coach and about{" "}
+              <strong>30 minutes and ¥780 from Sannomiya</strong> in Kobe on the West JR Bus Arima Express
+              (the 08:50 arrives 09:20), whose Osaka Station runs are suspended for now. In the town,{" "}
+              <strong>Kin no Yu</strong> (the gold bath, 08:00–22:00) costs <strong>{KIN_ADULT}</strong> for an
+              adult and <strong>Gin no Yu</strong> (the silver bath, 09:00–21:00) costs{" "}
+              <strong>{GIN_ADULT}</strong>, or {KIN_WEEKDAY} and {GIN_WEEKDAY} on weekdays, and a{" "}
+              <strong>{TWO_SPA} 2-Spa Ticket</strong> covers both. Check the day first: Kin no Yu closes on the{" "}
+              <strong>2nd and 4th Tuesday</strong> and Gin no Yu on the <strong>1st and 3rd</strong>. Last
+              checked: {RECHECKED_ISO} on the{" "}
+              <a href={JRBUS_URL} target="_blank" rel="noopener">West JR Bus</a>,{" "}
+              <a href={KINGIN_URL} target="_blank" rel="noopener">Kin no Yu / Gin no Yu</a> and{" "}
+              <a href={VISIT_KOBE_URL} target="_blank" rel="noopener">VISIT KOBE</a> sites.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -448,9 +467,12 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Coach fares and the sample departures read off West JR Bus&apos;s own Arima Express page on{" "}
-            {CHECKED}; the ¥280 subway leg from Kobe City&apos;s page on the municipalised Hokushin line, and
-            the Arimaguchi change from Kobe Electric Railway. The door-to-door times for Osaka, Itami and
+            <strong>Last checked: {RECHECKED_ISO}</strong> —{" "}
+            <a href={JRBUS_URL} target="_blank" rel="noopener">West JR Bus Arima Express</a> (fares, the
+            08:50 Sannomiya departure and the suspension of every Osaka-area run) and{" "}
+            <a href={VISIT_KOBE_URL} target="_blank" rel="noopener">VISIT KOBE</a> (about 60 min from Osaka
+            Umeda by Hankyu Bus, about 30 min from central Kobe). The ¥280 subway leg is from Kobe City&apos;s page on the municipalised Hokushin line, and
+            the Arimaguchi change from Kobe Electric Railway ({CHECKED}). The door-to-door times for Osaka, Itami and
             Kansai Airport are the Arima Onsen Tourist Association&apos;s own figures. For the city end of
             either journey, see{" "}
             <Link href="/guides/transport/osaka-transportation" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -497,14 +519,14 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             Tuesday</strong> of the month and <strong>Gin no Yu on the 1st and 3rd</strong> — so on any given
             Tuesday one of the two is open, and the {TWO_SPA} 2-Spa Ticket is the one thing you should not buy
             that day. Both also close on 1 January. Kin no Yu opens earliest, at 08:00, which is what makes an
-            early coach out of Osaka worth taking.
+            early start worth making.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Admissions, hours and closed days read off arimaspa-kingin.jp and the Arima Onsen Tourist
-            Association&apos;s own English directory on {CHECKED}; Taiko no Yu&apos;s from taikounoyu.com the
-            same day. One ambiguity worth flagging rather than hiding: the operator also publishes a ¥650
-            adult rate for Kin no Yu and ¥550 for Gin no Yu, presented as group rates on its Japanese pages
-            and the Kin no Yu figure as a weekday price on its English one. Ask at the counter which applies.
+            <strong>Last checked: {RECHECKED_ISO}</strong> —{" "}
+            <a href={KINGIN_URL} target="_blank" rel="noopener">arimaspa-kingin.jp</a> (Kin no Yu and Gin no
+            Yu) and <a href="https://www.taikounoyu.com/howto" target="_blank" rel="noopener">taikounoyu.com</a>{" "}
+            (Taiko no Yu). The {KIN_WEEKDAY} and {GIN_WEEKDAY} weekday adult rates exclude New Year, Golden
+            Week and Obon. Taiko no Yu adds the ¥75 Kobe bathing tax on top of the admission.
           </p>
         </section>
 

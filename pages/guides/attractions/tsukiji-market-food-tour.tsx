@@ -481,6 +481,13 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
             Toyosu observation-deck lottery is applied for online in advance, in groups of up to five,
             with one entry per group — it is not first come, first served.
           </p>
+          <p className={styles.bodyText}>
+            If your morning ends at Toyosu, teamLab Planets is about 5 minutes on foot from Shijomae Station
+            and Toyosu Market on teamLab&apos;s own figure and opens at 8:00. Its tickets are sold online only,
+            for a set date and time slot — our{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link> has the
+            official price and how to book.
+          </p>
         </section>
 
         {/* Timing */}

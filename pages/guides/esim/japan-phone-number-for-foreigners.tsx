@@ -566,7 +566,9 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> ranks them on today&apos;s
             prices, and{" "}
             <Link href="/guides/esim/does-esim-work-in-japan">does eSIM work in Japan</Link> covers the
-            handset checks to make before buying one. Provider clauses read {SPECS_CHECKED_AT}; Sakura Mobile
+            handset checks to make before buying one. On a work trip, the{" "}
+            <Link href="/guides/esim/japan-esim-business">best eSIM for a business trip to Japan</Link> weighs
+            laptop tethering against the Voice + Data number. Provider clauses read {SPECS_CHECKED_AT}; Sakura Mobile
             read {CHECKED}; prices checked {PRICES_CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

@@ -36,15 +36,20 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // Mirrors the English guide (pages/guides/attractions/dotonbori-river-cruise.tsx) as of
 // 2026-11-01: same sections, tables, FAQ and Klook CTAs in the same order. Every figure
 // is the English page's (osaka-info.jp, the Osaka Amazing Pass operator's free-admission
-// list and suito-osaka.jp, read 1 November 2026); nothing was added for this edition.
+// list and suito-osaka.jp, read 1 November 2026). Re-checked 13 Nov 2026 (task-jtk-20261113-C01):
+// osaka-info.jp Tombori spot page, the Osaka Amazing Pass free list and the Wonder Cruise spot/396
+// page — unchanged. The suito-osaka.jp no-roof line keeps its 1 Nov 2026 date.
 
 const ROUTE = "/zh-cn/guides/attractions/dotonbori-river-cruise";
-const TITLE = "道顿堀游船（2026）：¥2,000、20 分钟、班次与乘船地点";
+const TITLE = "道顿堀游船2026：票价¥2,000、开船时间与太左卫门桥码头";
 const DESC =
-  "道顿堀游船票价与时间：Tombori River Cruise 成人 ¥2,000、约 20 分钟，11:00–21:00 每半小时一班，持大阪周游卡免费。";
+  "道顿堀游船票价：成人¥2,000、儿童¥500，约20分钟，11:00–21:00每半小时一班，太左卫门桥码头出发，持大阪周游卡免费，可在Klook购买。";
 
 const L = "zh-cn" as const;
-const CHECKED = dateLabel("2026-11-01", L);
+const CHECKED_ISO = "2026-11-13";
+const CHECKED = dateLabel(CHECKED_ISO, L);
+const ROOF_CHECKED = dateLabel("2026-11-01", L);
+const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
 // The pass price is owned by lib/attraction-prices.ts, shared with the English pages.
 const PASS_1_DAY = priceLabel(PRICES.osakaAmazingPass.adult, L);
 
@@ -186,28 +191,28 @@ const steps = [
 
 const faqItems: FaqItem[] = [
   {
-    q: "道顿堀游船票价多少？",
+    q: "道顿堀游船票价（价格）多少？",
     a: `成人 ¥2,000。Tombori River Cruise（运营方从太左卫门桥码头发船的游船）成人 ¥2,000，初中及以上学生 ¥1,000，小学生 ¥500，每位付费成人可带一位学龄前儿童免费。大阪官方旅游机构与大阪周游卡运营方发布的设施清单，列出的是同样这三个价格。持大阪周游卡或大阪 e-Pass 均可免费乘坐，但都要先在换票柜台兑换成注明发船时间的船票。这条河上的其他游船各自定价：日本桥码头的 Wonder Cruise 20 分钟道顿堀航线是 ¥1,000，Klook 上销售的几种游船则以各自商品页的标价为准。全部核查日 ${CHECKED}。`,
   },
   {
-    q: "Tombori River Cruise 要坐多久？",
+    q: "道顿堀游船的开船时间是几点到几点？",
+    a: `从 11:00 到 21:00，每 30 分钟一班（整点与半点），每天 21 个班次，2026 年除 7 月 13、24、25 日外每天运营。码头旁的售票处在首班前一小时开门，也就是 10:00。安排行程时真正重要的是 21:00 的末班：无论哪个季节，晚餐后都还能安排一趟夜游，也正因如此，稀缺的是傍晚的时段，而不是白天。时刻核查日 ${CHECKED}；可能因河川状况与船只维修变动。`,
+  },
+  {
+    q: "太左卫门桥码头在哪里？道顿堀游船在哪里坐？",
+    a: "在太左卫门桥码头，位于道顿堀川北岸的 Tombori River Walk 河滨步道上，从戎桥往东步行约一分钟。换票柜台在码头正对面的唐吉诃德道顿堀店一楼，请先找这个地标，而不是码头本身。从难波、心斋桥或日本桥站步行 5 到 10 分钟，从这三个车站出来都会先到格力高广告牌所在的南岸，所以要从戎桥或太左卫门桥过河才能到达登船处。另外，Wonder Cruise 是另一家运营方，在日本桥码头登船；走去浮动码头之前，请先确认自己的船票属于哪种游船。",
+  },
+  {
+    q: "道顿堀游船要坐多久？",
     a: `航程约 20 分钟，沿着穿过南区核心地带的道顿堀川往返。以游船来说算短，但这个长度正合适：这段河道两岸只有几百米的霓虹店面，航程再长也只是多绕一圈。算上换票、走到浮动码头和登船的时间，从头到尾请预留约 40 分钟。航程长度按大阪官方旅游网站与「水都大阪」游船门户网站，核查日 ${CHECKED}。`,
   },
   {
-    q: "道顿堀游船几点开船？",
-    a: `从 11:00 到 21:00，每 30 分钟一班（整点与半点），每天 21 个班次，2026 年除 7 月 13、24、25 日外每天运营。码头旁的售票处在首班前一小时开门，也就是 10:00。安排行程时真正重要的是 21:00 的末班：无论哪个季节，晚餐后都还能安排一趟夜游，也正因如此，稀缺的是傍晚的时段，而不是白天。时刻核查日 ${CHECKED}；可能因河川状况与船只维修变动。`,
+    q: "一本松海运的 Tombori River Cruise 和道顿堀游船是同一种游船吗？",
+    a: `是同一种游船，只是有两个名字。Tombori River Cruise（とんぼりリバークルーズ）是官方商品名，由一本松海运运营，也是船票、码头和大阪周游卡免费设施清单上出现的名字。「道顿堀游船」是大多数游客搜索时使用的说法，也常被笼统地用来指这条河上的任何游船，包括日本桥码头的 Wonder Cruise，以及 Klook 上销售的 City Cruise、浪花观光游船与 TONBORIRAVE DJ 船，这些属于不同运营方，票价也不同。如果是为了用通票乘船，其中只有 Tombori River Cruise 包含在通票内。名称与运营方核查日 ${CHECKED}。`,
   },
   {
     q: "道顿堀游船的末班是几点？",
     a: `所有运营日的末班都是 21:00。因为每个班次票价相同，乘坐末班船，是以同样票价欣赏霓虹全部亮起的道顿堀的最划算方式。但它也属于通票运营方所说最先售罄的时段，所以这是唯一值得提前确定、而不是到现场碰运气的班次。使用通票的话，白天就去兑换 20:30 或 21:00 的船票；自费的话，运营方的线上订票开放到开船前 10 分钟。末班时间按大阪官方旅游网站与通票运营方的设施清单，两者一致，核查日 ${CHECKED}。`,
-  },
-  {
-    q: "道顿堀游船在哪里坐？",
-    a: "在太左卫门桥码头，位于道顿堀川北岸的 Tombori River Walk 河滨步道上，从戎桥往东步行约一分钟。换票柜台在码头正对面的唐吉诃德道顿堀店一楼，请先找这个地标，而不是码头本身。从难波、心斋桥或日本桥站步行 5 到 10 分钟，从这三个车站出来都会先到格力高广告牌所在的南岸，所以要从戎桥或太左卫门桥过河才能到达登船处。另外，Wonder Cruise 是另一家运营方，在日本桥码头登船；走去浮动码头之前，请先确认自己的船票属于哪种游船。",
-  },
-  {
-    q: "道顿堀游船和 Tombori River Cruise 是同一种游船吗？",
-    a: `是同一种游船，只是有两个名字。Tombori River Cruise（とんぼりリバークルーズ）是官方商品名，由一本松海运运营，也是船票、码头和大阪周游卡免费设施清单上出现的名字。「道顿堀游船」是大多数游客搜索时使用的说法，也常被笼统地用来指这条河上的任何游船，包括日本桥码头的 Wonder Cruise，以及 Klook 上销售的 City Cruise、浪花观光游船与 TONBORIRAVE DJ 船，这些属于不同运营方，票价也不同。如果是为了用通票乘船，其中只有 Tombori River Cruise 包含在通票内。名称与运营方核查日 ${CHECKED}。`,
   },
   {
     q: "有比 ¥2,000 的 Tombori River Cruise 更便宜的游船吗？",
@@ -227,7 +232,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "下雨还会开船吗？",
-    a: `通常会，但请带件外套和帽子：这艘船在「水都大阪」游船门户网站上被列为没有顶棚（核查日 ${CHECKED}），正因为没有顶棚，它才能从道顿堀那些低矮的桥下通过。公布的停航条件并不是下雨本身：通票运营方的设施清单写的是可能因河川状况或船只维修停止运营。真正的风险是大雨和水位上涨，而不是阵雨；天气不稳定的话，在同一片街区不用淋雨的替代方案是美食漫步，而不是坐船。`,
+    a: `通常会，但请带件外套和帽子：这艘船在「水都大阪」游船门户网站上被列为没有顶棚（核查日 ${ROOF_CHECKED}），正因为没有顶棚，它才能从道顿堀那些低矮的桥下通过。公布的停航条件并不是下雨本身：通票运营方的设施清单写的是可能因河川状况或船只维修停止运营。真正的风险是大雨和水位上涨，而不是阵雨；天气不稳定的话，在同一片街区不用淋雨的替代方案是美食漫步，而不是坐船。`,
   },
   {
     q: "道顿堀的游船该选哪一艘？",
@@ -287,7 +292,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            道顿堀游船（2026）：<br />票价、发船时间与 Tombori River Cruise
+            道顿堀游船 2026：<br />票价、开船时间与太左卫门桥码头
           </h1>
           <p className={styles.heroSubtitle}>
             成人 ¥2,000、约 20 分钟，11:00 到 21:00 之间从太左卫门桥码头每半小时一班。持大阪周游卡可免费乘船，
@@ -331,14 +336,14 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>道顿堀游船</strong>的官方名称是 <strong>Tombori River Cruise（とんぼりリバークルーズ）</strong>，
-              由<strong>一本松海运</strong>运营，成人<strong>¥2,000</strong>，
-              航程<strong>约 20 分钟</strong>，从离戎桥步行一分钟、位于 Tombori River Walk（とんぼりリバーウォーク）河滨步道上的
-              <strong>太左卫门桥码头</strong>发船，<strong>11:00 到 21:00 每 30 分钟一班</strong>。
-              持<strong>大阪周游卡可免费乘坐</strong>。
+              <strong>道顿堀游船</strong>（官方名称 <strong>Tombori River Cruise（とんぼりリバークルーズ）</strong>，
+              由<strong>一本松海运</strong>运营）票价为成人<strong>¥2,000</strong>、学生<strong>¥1,000</strong>、
+              儿童<strong>¥500</strong>，航程<strong>约 20 分钟</strong>。游船从离戎桥步行一分钟的
+              <strong>太左卫门桥码头</strong>出发，<strong>11:00 到 21:00 每 30 分钟一班</strong>，售票处 10:00 开门。
+              把通票兑换成指定时间的船票后，持<strong>大阪周游卡可免费乘坐</strong>。
             </p>
             <p className={styles.verdictText}>
-              其余细节：初中及以上学生 <strong>¥1,000</strong>，小学生 <strong>¥500</strong>，
+              其余细节：学生票适用于初中及以上，儿童票适用于小学生，
               每位付费成人可带一位学龄前儿童免费。换票柜台位于码头正对面的唐吉诃德道顿堀店 1 楼。
               持<strong>大阪 e-Pass</strong> 也可免费乘坐，两种通票都没有下午时间限制。但仅凭通票不能直接登船：
               你需要在换票柜台兑换成注明发船时间的船票，而通票运营方提醒傍晚的班次最先售罄。当天票从首班前
@@ -417,7 +422,11 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            票价来自大阪官方旅游网站与大阪周游卡运营方发布的免费设施清单，核查日 {CHECKED}，两者列出的是同样
+            <strong>Last checked: {CHECKED_ISO}</strong> — 来源：{" "}
+            <a href={OSAKA_INFO_URL} target="_blank" rel="noopener">
+              大阪观光局官方网站，Tombori River Cruise
+            </a>
+            。票价来自大阪官方旅游网站与大阪周游卡运营方发布的免费设施清单，核查日 {CHECKED}，两者列出的是同样
             三个价格。船公司官方网站在核查当天因维护无法访问，所以本页所有数字都来自上述两个来源。
             可能变动，付款前请确认。本站整理的日本其他景点门票（各自附核查日），请见{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
@@ -455,6 +464,17 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {CHECKED_ISO}</strong> — 来源：{" "}
+            <a href={OSAKA_INFO_URL} target="_blank" rel="noopener">
+              osaka-info.jp，Tombori River Cruise
+            </a>
+            （&ldquo;11:00-21:00 Departs every hour on the hour and half hour&rdquo;）；7 月停航日来自{" "}
+            <a href="https://osaka-amazing-pass.com/en/service_free.html" target="_blank" rel="noopener">
+              大阪周游卡免费设施清单
+            </a>
+            。
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             每天 21 个班次，是安排行程时有用的信息。这意味着游船可以安排在晚间行程中，无需为此占用整个晚上；
             而 <strong>21:00 的末班</strong>足够晚，无论哪个季节，晚餐后都还能乘坐。时刻核查日 {CHECKED}。

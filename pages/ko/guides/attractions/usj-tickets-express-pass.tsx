@@ -623,7 +623,11 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             그리고 날짜가 정해지면 세 가지 예약이 뒤따릅니다. 게이트 옆 숙소, 간사이 공항에서 들어오는 교통,
-            그리고 당일 파크 공식 앱에 필요한 데이터입니다.
+            그리고 당일 파크 공식 앱에 필요한 데이터입니다. 데이터용 eSIM은{" "}
+            <Link href="/ko/guides/esim/best-esim-japan" style={linkStyle}>
+              일본 이심 추천 비교
+            </Link>
+            에서 6곳의 가격과 통신사를 나란히 볼 수 있습니다.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={klookFor(usjStayAreas[0].url, LOCALE)} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>

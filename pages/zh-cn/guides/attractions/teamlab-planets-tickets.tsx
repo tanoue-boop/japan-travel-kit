@@ -52,8 +52,12 @@ const ADULT = priceLabel(P.adult, LOCALE);
 const CHILD = priceLabel(P.child, LOCALE);
 
 const ROUTE = "/zh-cn/guides/attractions/teamlab-planets-tickets";
-const TITLE = "teamLab Planets 门票 2026：票价、时间与预约方式";
-const DESC = `teamLab Planets（丰洲）门票成人 ${ADULT}，随日期与时段变动。这里整理开放时间、闭馆日、预约方式，以及从新丰洲站和丰洲站怎么走。`;
+const TITLE = "teamLab Planets 门票 2026：丰洲官网票价与入场时段";
+const DESC = `teamLab Planets 门票官网价：成人 ${ADULT}，需指定日期与入场时段，现场不售票；水深可达膝盖。可在 Klook 预约时段。`;
+// 2026-11-13（task-jtk-20261113-C01）：用 teamLab 的镜像页 art.team-lab.cn/en/e/planets 重新查阅，
+// 票价、开放时间、闭馆日与「水深可达成人膝盖」均未变动。详见英文版。
+const RECHECKED_ISO = "2026-11-13";
+const OFFICIAL_URL = "https://www.teamlab.art/e/planets/";
 
 const priceRows = [
   {
@@ -167,52 +171,20 @@ const faqItems: FaqItem[] = [
     a: `按 teamLab Planets 官方售票网站（${CHECKED} 查阅）：成人票 ${ADULT}，初高中生 ¥2,800，4～12 岁儿童 ${CHILD}，3 岁及以下免费。残障人士 ¥1,900 起，另有 ¥12,000 的 Premium Pass（4 岁以上）。成人票价随日期与时段变动，付款前请确认你自己时段的金额。优惠票需要出示资格证明——请带学生证、护照或残障证明。`,
   },
   {
-    q: "teamLab Planets 需要提前订票吗？",
-    a: `需要。门票对应指定的日期和入场时间，官方售票网站也写明现场不售票，所以某一天满了就无法在门口补买。teamLab 没有公布售罄数据，日期会提前多久订满，官方未公布。行程一确定就订。${CHECKED} 查阅。`,
+    q: "teamLab Planets 官网购票网站在哪里？",
+    a: `teamLab Planets TOKYO 官方售票网站是 teamlabplanets.dmm.com，可从美术馆官方页面 teamlab.art/e/planets 进入。售票网站的说明页写明，现场的售票柜台与售票机都不销售门票，并列出有售票的渠道：官方售票网站、Lawson Ticket、Seven Ticket 与 Klook。无论哪个官方渠道，都是指定日期与入场时间的二维码门票，价格由日期与时段决定。${CHECKED} 查阅。`,
   },
   {
-    q: "teamLab Planets 可以现场买票吗？",
-    a: `不行。官方售票网站的说明页写明，现场的售票柜台与售票机都不销售门票，并列出有售票的渠道：官方售票网站、Lawson Ticket、Seven Ticket 与 Klook。如果你的日期已满，现场也没有售票窗口可以补买——这是 Planets 和东京多数景点最大的不同。${CHECKED} 查阅。`,
-  },
-  {
-    q: "teamLab Planets 哪个时段最便宜？",
-    a: `就是官方日历在你那一天标价最低的那一个——teamLab 没有公布各时段的价目表，所以这是唯一实在的答案。官方确认的是：成人 Entrance Pass ${ADULT}，而且不同日期价格不同——说明页写着预约可以更改「即使是价格不同的日期」。所以请打开官方日历，把你行程能接受的日期与入场时间逐一点开，付款前就比较，而不是付款后。${CHECKED} 查阅。`,
-  },
-  {
-    q: "teamLab Planets 有储物柜吗？",
-    a: `有，而且免费。官方说明页写的尺寸是宽 23 厘米、深 34 厘米、高 37 厘米——放得下双肩包，放不下行李箱。现场没有寄存处：更大的物品需自行用钢缆锁固定在馆外的婴儿车停放区。鞋子、袜子和连裤袜也在储物柜区域脱下，因为从这里开始全程赤脚。${CHECKED} 查阅。`,
+    q: "teamLab Planets 的入场时段怎么运作？",
+    a: `票面时间是入场时间，从该时间起 30 分钟为入场准备时间；官方售票网站提醒入场可能需等候 30–60 分钟。迟到的话，仍可在当天开放时间（08:00–22:00，闭馆前 1 小时停止入场）内入场。Entrance Pass 最晚可在入场时间 2 小时前更改，最多 3 次，购买后不退款。${CHECKED} 查阅。`,
   },
   {
     q: "去 teamLab Planets 该穿什么？",
     a: "短裤，或可以卷到膝盖以上的长裤。部分作品是水空间，水深可达成人膝盖高，而且整间美术馆都是赤脚体验——入场时会在储物柜区域脱下鞋子、袜子和连裤袜。部分地板是镜面的，所以穿裙子或阔腿裤会不方便；现场有 XS 到 6L 的免费短裤可借。带小孩的话请准备换洗衣物，另外婴儿车不能进场（有婴儿车停放区，背带可以）。",
   },
   {
-    q: "teamLab Planets 的二维码门票什么时候会收到？",
-    a: `门票一律是二维码电子票。购票确认邮件里有票券链接，入场前 2 天会收到提醒邮件，二维码在入场当天 00:00 起才会显示。一个二维码涵盖同一订单的所有人，可以用手机、平板出示或打印。${CHECKED} 查阅。`,
-  },
-  {
     q: "teamLab Planets 要逛多久？",
     a: `官方未公布参观时长。我们按馆内 1.5–2 小时规划，含使用储物柜与擦干双脚的时间。还要加上官方售票网站提醒的 30–60 分钟等候，结束后不要紧接着排其他行程。官方售票网站也写明，人多时停留较久的游客可能会被请求离场。${CHECKED} 查阅。`,
-  },
-  {
-    q: "teamLab Planets 的开放时间？什么时候闭馆？",
-    a: `teamlab.art 公布的开放时间是 08:00–22:00，12 月 31 日至 1 月 2 日为 08:00–20:00，闭馆前 1 小时停止入场。闭馆日为 2026 年 12 月 3 日（周四）和 2027 年 1 月 14 日（周四）。${CHECKED} 查阅。预订前请在官方网站确认你自己的日期。`,
-  },
-  {
-    q: "错过 teamLab Planets 的时段怎么办？",
-    a: "你仍然可以入场。官方说明页写的是：票面时间是参考值，如果你迟到，仍可在当天开放时间内入场。最后入场是闭馆前 1 小时。",
-  },
-  {
-    q: "teamLab Planets 在哪里？怎么去？",
-    a: `地址是东京都江东区丰洲 6-1-16。teamlab.art 公布的走法：百合海鸥线新丰洲站 1A 出口步行 3 分钟，市场前站与丰洲市场步行 5 分钟，东京地铁有乐町线丰洲站 7 号出口步行 10 分钟。从东京站打车 15 分钟，从羽田机场走高速公路 15 分钟。${CHECKED} 查阅。`,
-  },
-  {
-    q: "teamLab Planets 要关闭了吗？",
-    a: `teamlab.art 公布的展期是 2018 年 7 月 7 日至 2027 年底。${CHECKED} 查阅。麻布台之丘的 teamLab 无界是另一间独立的美术馆，门票分开。`,
-  },
-  {
-    q: "teamLab Planets 和无界有什么区别？",
-    a: "丰洲的 Planets 是赤脚走进水里的美术馆。麻布台之丘的无界是没有固定参观路线的迷宫式空间，作品在房间之间移动。两间是独立的美术馆，门票分开。我们的 teamLab Planets 与无界比较页把两者并排列出。",
   },
 ];
 
@@ -294,7 +266,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 门票（2026）：<br />票价、时间与预约方式
+            teamLab Planets 丰洲门票 2026：<br />官网票价、入场时段与预约方式
           </h1>
           <p className={styles.heroSubtitle}>
             丰洲 teamLab Planets 的门票多少钱、什么时候开放、怎么预约，以及从新丰洲站或丰洲站怎么走。
@@ -311,6 +283,15 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
       <div className={styles.content}>
         <Disclosure />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>teamLab Planets 门票</strong>在官方售票网站的价格是成人 <strong>¥3,800 起</strong>、初高中生
+            ¥2,800、4～12 岁 <strong>¥1,500</strong>，3 岁及以下免费。每张票都要指定日期与入场时间，美术馆现场不售票；
+            官方未公布参观时长，建议馆内预留 <strong>1.5～2 小时</strong>，再加上官方售票网站提醒的 30～60 分钟入场等候。
+            全程赤脚，水作品的水深可达<strong>成人膝盖高</strong>，请穿可以卷到膝盖以上的短裤或长裤。
+          </p>
+        </section>
 
         <PlanetsAnswer />
 
@@ -356,7 +337,9 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            {CHECKED} 查阅 teamLab Planets 官方售票网站的英文版与日文版。优惠票需要出示资格证明，
+            <strong>最后确认：{RECHECKED_ISO}</strong>（
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Planets 官方页面</a>，票价未变动）。
+            最初于 {CHECKED} 查阅 teamLab Planets 官方售票网站（teamlabplanets.dmm.com）的英文版与日文版。优惠票需要出示资格证明，
             请带学生证、护照或残障证明。门票以手机二维码形式发送。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -396,6 +379,10 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最后确认：{RECHECKED_ISO}</strong>——开放时间、最后入场、闭馆日与展期已在{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Planets 官方页面</a>重新确认；官方售票网站的项目以 {CHECKED} 为准。
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Planets 对你的要求也比一般美术馆门票多——要赤脚进场，而且路线的一部分是水：
           </p>

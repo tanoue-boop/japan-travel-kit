@@ -466,7 +466,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             <strong>Namba</strong>, for most trips. It is on the Midosuji Line, it puts Dotonbori and Kuromon
             Market within walking distance, and it is the Nankai terminus — so the run to Kansai Airport
-            starts under your hotel rather than after a change with the cases.
+            starts under your hotel rather than after a change with the cases. From a Namba hotel the{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise">Dotonbori River Cruise at Tazaemonbashi Pier</Link>{" "}
+            is a 5 to 10 minute walk, with boats every 30 minutes until 21:00.
           </p>
           <p className={styles.bodyText}>
             The counter-argument is JR. If you are arriving from Kyoto, connecting to the shinkansen at

@@ -843,7 +843,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Our <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link> has
-            every route from both airports with fares. The Skyliner and the Haneda limousine bus can both be
+            every route from both airports with fares, and the{" "}
+            <Link href="/guides/transport/skyliner-vs-nex">Skyliner vs N&apos;EX comparison</Link> picks
+            between the two Narita trains by hotel station. The Skyliner and the Haneda limousine bus can both be
             booked before you fly; the{" "}
             <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus guide</Link>{" "}
             has the bus fare and timetable time for each route.

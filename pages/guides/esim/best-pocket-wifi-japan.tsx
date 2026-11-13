@@ -705,7 +705,12 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             across any number of devices; an eSIM is a per-person cost with no hardware at all.
             Japan eSIM plans start from {ESIM_FROM} (checked {pricesCheckedAt}), which undercuts
             even a short rental for one person — and a solo traveller gets nothing from a limit of{" "}
-            {HOTEL.maxDevices} devices.
+            {HOTEL.maxDevices} devices. Moving into a flat rather than touring? The monthly cost of a
+            home router or fibre line is in{" "}
+            <Link href="/guides/esim/japan-home-internet-for-foreigners" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              home internet in Japan for foreigners
+            </Link>
+            .
           </p>
           <p className={styles.bodyText}>
             Rent the router when the cost is genuinely shared — three or more people, a family with

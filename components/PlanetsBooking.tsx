@@ -152,6 +152,16 @@ const COPY: Record<Locale, Copy> = {
   },
 };
 
+/** "Last checked: YYYY-MM-DD" label under the answer table (task jtk-20261113-C01). */
+const LAST_CHECKED: Record<Locale, string> = {
+  en: "Last checked",
+  "zh-tw": "最後確認",
+  "zh-cn": "最后确认",
+  ko: "최종 확인",
+  th: "ตรวจสอบล่าสุด",
+};
+const OFFICIAL_URL = "https://www.teamlab.art/e/planets/";
+
 const localized = (url: string, locale: Locale) => (locale === "en" ? url : klookFor(url, locale));
 
 export function PlanetsAnswer() {
@@ -184,7 +194,8 @@ export function PlanetsAnswer() {
           </KlookLink>
         </div>
         <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-          {copy.source.replace("{date}", date)}
+          <strong>{LAST_CHECKED[locale]}: {P.checked}</strong> — {copy.source.replace("{date}", date)}{" "}
+          <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamlab.art/e/planets</a>
         </p>
       </div>
     </div>

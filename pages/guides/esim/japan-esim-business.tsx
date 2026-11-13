@@ -8,6 +8,7 @@ import {
   cheapestAtLeastGb,
   formatUsd,
   getProvider,
+  latestCheckedAt,
   plansFor,
   priceFrom,
   pricesCheckedLabel,
@@ -46,10 +47,15 @@ const SIMBYE_MONTH = cheapestAtLeastGb("simbye", 20);
 const workWeekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 10)) ?? null;
 
-const TITLE = `Best eSIM for Japan Business Travel 2026: 20 GB From ${priceLabel(SIMBYE_MONTH)}`;
+// Retitled 13 Nov 2026 (task jtk-20261113-C01) for the "reliable esim for a business trip
+// to japan" questions. "Invoices" was proposed for the title but none of the provider pages
+// read that day publishes an invoice process, so it stays out.
+const TITLE = "Best eSIM for a Business Trip to Japan (2026): Data & Calls";
 const DESCRIPTION =
-  `Best eSIM for Japan business travel: compare tethering terms. Simbye 20 GB is ${priceLabel(SIMBYE_MONTH)}, ` +
-  `eSIM Go ${priceLabel(WORK_MONTH)}; Holafly caps hotspot at 1 GB/day. Compare, then buy.`;
+  `Best eSIM for a business trip to Japan: Simbye 20 GB ${priceLabel(SIMBYE_MONTH)} or eSIM Go ${priceLabel(WORK_MONTH)}, ` +
+  `both allow tethering. Japanese number: Sakura Mobile. Buy links inside.`;
+/** ISO date of the latest daily price read, for the "Last checked" line under the table. */
+const PRICES_CHECKED_ISO = latestCheckedAt()?.slice(0, 10) ?? "";
 
 const dataEstimates = [
   { activity: "Email, calendar, messaging", perDay: "~200 MB" },
@@ -62,8 +68,8 @@ const dataEstimates = [
 
 const faqItems = [
   {
-    q: "Which eSIM is best for business travel in Japan?",
-    a: `eSIM Go, on the one spec business travel turns on: tethering is stated on every one of its Japan plans at no extra cost and with no separate hotspot allowance, so a tethered laptop draws on the same pool as the phone. A working week is ${priceLabel(WORK_WEEK)} for ${WORK_WEEK?.name} and a month ${priceLabel(WORK_MONTH)} for ${WORK_MONTH?.name}. Airalo from ${priceFrom("airalo")} is the alternative if 24/7 live chat matters more than price. Prices checked ${pricesCheckedAt}; tethering clauses ${SPECS_CHECKED_AT}.`,
+    q: "Can you recommend a reliable eSIM for a business trip to Japan?",
+    a: `Simbye's ${SIMBYE_MONTH?.name} at ${priceLabel(SIMBYE_MONTH)} is the lowest-priced plan here whose Japan page allows hotspot use for a laptop. eSIM Go is the pick on the one spec business travel turns on: tethering is stated on every one of its Japan plans at no extra cost and with no separate hotspot allowance, so a tethered laptop draws on the same pool as the phone. A working week is ${priceLabel(WORK_WEEK)} for ${WORK_WEEK?.name} and a month ${priceLabel(WORK_MONTH)} for ${WORK_MONTH?.name}. Airalo from ${priceFrom("airalo")} is the alternative if 24/7 live chat matters more than price. Prices checked ${pricesCheckedAt}; tethering clauses ${SPECS_CHECKED_AT}.`,
   },
   {
     q: "Can I tether a laptop to a Japan eSIM?",
@@ -74,7 +80,7 @@ const faqItems = [
     a: `Budget 3–4 GB a day if you are tethering a laptop and taking video calls, against roughly 1 GB a day for tourist use — those are planning estimates, not measurements. That puts a five-day trip at 15–20 GB, so the plan to buy is ${WORK_MONTH?.name} at ${priceLabel(WORK_MONTH)} rather than a 5 GB tourist plan. An unlimited week is ${unlimitedFromLabel("esimgo", 7)} on eSIM Go if the schedule is unpredictable.`,
   },
   {
-    q: "Can I get a Japanese phone number for business calls?",
+    q: "Do I need a Japanese phone number for business calls in Japan?",
     a: "Not from a travel eSIM — every Japan travel eSIM from these four providers is data only, with no voice and no SMS. Sakura Mobile's separate Voice + Data eSIM adds a Japanese number and domestic calls, and it is the only route among the four. It matters more than people expect on a business trip: restaurant reservations, a courier, a taxi dispatcher and a hotel front desk all want a domestic number to call back on.",
   },
   {
@@ -128,7 +134,7 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/japan-esim-business",
-              headline: "Best eSIM for Japan for Business Travel (2026)",
+              headline: TITLE,
               description: DESCRIPTION,
               updated,
             }),
@@ -175,7 +181,7 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan for Business Travel (2026)
+            Best eSIM for a Business Trip to Japan (2026): Data &amp; Calls
           </h1>
           <p className={styles.heroSubtitle}>
             Priced for a tethered laptop and a week of video calls, not a tourist&apos;s maps —
@@ -214,21 +220,19 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
           <div className={styles.verdictBody}>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
               <strong>
-                Buy eSIM Go&apos;s {dataLabel(WORK_MONTH)} / 30-day plan at{" "}
-                {priceLabel(WORK_MONTH)} — tethering is stated on every one of its Japan plans at
-                no extra cost, and {dataLabel(WORK_MONTH)} covers a working week with a laptop.
+                For a business trip to Japan, buy a {dataLabel(SIMBYE_MONTH)} / 30-day data eSIM that
+                allows laptop tethering: Simbye&apos;s is {priceLabel(SIMBYE_MONTH)} and eSIM Go&apos;s is{" "}
+                {priceLabel(WORK_MONTH)}, and both state hotspot use on every Japan plan.
               </strong>{" "}
-              A business trip is not a tourist week scaled up; it turns on two clauses a tourist
-              never reads. <strong>The hotspot allowance</strong>: budget 3–4 GB a day with a
-              tethered laptop and video calls rather than the tourist&apos;s 1 GB, and note that
-              Holafly caps shareable data at 1 GB a day while Sakura Mobile sets a hotspot
-              allowance by plan length — eSIM Go is the only one of the four with neither limit.
-              <strong> A Japanese phone number</strong>: no travel eSIM carries one, and
-              restaurant reservations, couriers, taxi dispatchers and hotel desks all want a
-              domestic number, so Sakura Mobile&apos;s Voice + Data eSIM is the only product here
-              that answers it. If you would rather have 24/7 live chat than the lowest price,
-              Airalo from {priceFrom("airalo")} is the alternative. Prices checked{" "}
-              {pricesCheckedAt}; tethering and phone-number clauses {SPECS_CHECKED_AT}.
+              A working day with a tethered laptop and video calls uses about 3–4 GB (a planning
+              estimate), so a five-day trip needs 15–20 GB rather than a 5 GB tourist plan.{" "}
+              <strong>Neither includes a Japanese phone number</strong> — calls run over data apps
+              such as WhatsApp or LINE, and Sakura Mobile&apos;s Voice + Data eSIM is the only product
+              here that adds a domestic number for restaurants, couriers and hotel desks that want one.
+              Avoid Holafly if the laptop is the point: it caps shareable data at 1 GB a day. If you
+              would rather have 24/7 live chat than the lowest price, Airalo from{" "}
+              {priceFrom("airalo")} is the alternative. Prices checked {pricesCheckedAt}; tethering
+              and phone-number clauses {SPECS_CHECKED_AT}.
             </p>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
@@ -278,6 +282,11 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
             pick={workWeekPlan}
             note="The cheapest plan each provider sells with at least 7 days' validity and 10 GB or more; Holafly sells unlimited only."
           />
+          <p className={styles.bodyText} style={{ marginTop: "0.4rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PRICES_CHECKED_ISO}. Official plan pages: simbye.com/products/esim-japan,
+            breezesim.com/products/esim-japan, www.airalo.com/japan-esim, esim.holafly.com/esim-japan/,
+            www.sakuramobile.jp/travel/esim/.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.2rem" }}>
             <a href={esimLink("esimgo")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
               Get eSIM Go — {priceLabel(WORK_MONTH)} / {dataLabel(WORK_MONTH)} →

@@ -452,7 +452,10 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Yes. You do not need a car in Kyoto: every sight on this page has a train or bus route from Kyoto Station, and
             driving puts you in the same traffic as the buses. The harder part is getting the order right, which is why
-            the route table below starts with the train.
+            the route table below starts with the train. One major ticketed sight needs no transport at all: teamLab
+            Biovortex Kyoto is a 7-minute walk from the Hachijo East Gate of Kyoto Station on teamLab&apos;s own figure,
+            and our <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Kyoto tickets and hours guide</Link>{" "}
+            covers booking it.
           </p>
         </section>
 

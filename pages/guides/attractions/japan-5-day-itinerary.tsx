@@ -158,7 +158,9 @@ const days: Day[] = [
         <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets guide</Link> covers the
         bands. The night is the part a phone will not plan for you, so the guided Shinjuku food walk is the
         one tour worth adding here: Klook lists it at three hours, with three food stops and a Golden Gai
-        drink.
+        drink. The{" "}
+        <Link href="/guides/attractions/tokyo-food-tour">Tokyo food tour guide</Link> compares it with the
+        Shinjuku izakaya and Golden Gai alternatives.
       </>
     ),
     picks: [

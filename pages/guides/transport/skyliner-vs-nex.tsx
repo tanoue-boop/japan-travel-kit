@@ -57,8 +57,17 @@ const CHECKED = checkedLabel(CHECKED_ISO);
  * child ¥1,290, 36 min to Nippori), us/skyliner/ (41 min Ueno–T2·3, three an hour). All unchanged.
  * jreast.co.jp returned 403 to every fetch that day, so the N'EX figures keep the 3 Nov date.
  */
-const SKYLINER_CHECKED_ISO = "2026-11-11";
+/**
+ * 13 Nov 2026 re-read (task jtk-20261113-C01): keisei.co.jp us/tickets/coupon.php (¥2,580 standard,
+ * ¥2,310 / ¥4,500 discount, child ¥1,290, 36 min to Nippori), us/skyliner/ (41 min Ueno–T2·3, three an
+ * hour), jp/skyliner/ticket.php (IC ¥1,267 + ¥1,300). jreast.co.jp en/multi/nex/tickets/ (¥3,140 Tokyo,
+ * ¥3,330 Shinagawa/Shibuya/Shinjuku, ¥4,480 Yokohama), multi/en/nex/ (53 min to Tokyo), multi/pass/nex.html
+ * (¥5,200 / ¥2,600, 14 days). All unchanged. JR Pass, Access Express and missed-train figures keep 3 Nov.
+ */
+const SKYLINER_CHECKED_ISO = "2026-11-13";
 const SKYLINER_CHECKED = checkedLabel(SKYLINER_CHECKED_ISO);
+const NEX_CHECKED_ISO = "2026-11-13";
+const NEX_CHECKED = checkedLabel(NEX_CHECKED_ISO);
 const KEISEI_TICKET_URL = "https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/skyliner/ticket.php";
 const KEISEI_DISCOUNT_URL = "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/tickets/coupon.php";
 const JR_NEX_TICKETS_URL = "https://www.jreast.co.jp/en/multi/nex/tickets/";
@@ -192,13 +201,16 @@ const destinationRows = [
   },
 ];
 
+/** The first FAQ_SCHEMA_COUNT questions (the search-query ones) go into FAQPage; the rest stay visible only. */
+const FAQ_SCHEMA_COUNT = 5;
+
 const faqItems = [
   {
-    q: "NEX vs Skyliner: which is better?",
-    a: `Neither in general — the better one is the one that reaches your hotel's station without a change. The Keisei Skyliner is ¥2,580 (¥2,310 online) and runs non-stop to Nippori in as little as 36 minutes and Keisei-Ueno in 41, so it wins for Ueno, Asakusa and the east side. The JR Narita Express (N'EX, often typed NEX) is ¥3,140 to Tokyo Station in as little as 53 minutes and ¥3,330 to Shinagawa, Shibuya and Shinjuku with no change, and some trains continue to Yokohama, so it wins for the west side, and outright if you hold a JR Pass. Skyliner fares read off keisei.co.jp on ${SKYLINER_CHECKED}; N'EX fares off jreast.co.jp on ${CHECKED}.`,
+    q: "NEX vs Skyliner: which is faster to Tokyo?",
+    a: `To its own two stops, the Skyliner: Keisei puts it at 36 minutes from Narita Terminal 2·3 to Nippori and 41 minutes to Keisei-Ueno, against JR East's 53 minutes from Narita Airport to Tokyo Station on the Narita Express (N'EX, often typed NEX). For Tokyo Station, Shinjuku, Shibuya or Yokohama the N'EX arrives with no change, while the Skyliner needs a transfer to JR at Nippori — Keisei's own Skyliner + JR figure to Tokyo Station is 47 minutes, excluding the change. JR East publishes no single N'EX time to Shinjuku or Shibuya. The 36-, 41- and 53-minute figures checked on keisei.co.jp and jreast.co.jp on ${NEX_CHECKED}; the Skyliner + JR figure on Keisei's route page on ${CHECKED}.`,
   },
   {
-    q: "Which is cheaper, Skyliner or Narita Express?",
+    q: "NEX vs Keisei Skyliner: which is cheaper?",
     a: `One way, the Skyliner: ¥2,580 to Ueno or Nippori, or ¥2,310 with Keisei's online discount, against ¥3,140 for the N'EX to Tokyo Station and ¥3,330 to Shinjuku or Shibuya. For a round trip by a foreign passport holder the gap closes: Keisei's online return is ¥4,500, and JR East's N'EX TOKYO Round Trip Ticket is ¥5,200 for one ride in and one ride out within 14 days, to or from any JR station in its Tokyo area. If your hotel is on the west side, the Skyliner plus a JR or subway ride from Nippori adds a fare the N'EX ticket already includes. Read on ${CHECKED}.`,
   },
   {
@@ -233,9 +245,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
-const TITLE = "Skyliner vs N'EX (NEX) 2026: ¥2,580/41 min vs ¥3,140/53 min";
+const TITLE = "NEX vs Skyliner (2026): Which Is Faster & Cheaper to Tokyo?";
 const DESC =
-  "NEX vs Skyliner from Narita: Skyliner ¥2,580, 41 min to Ueno; N'EX ¥3,140, 53 min to Tokyo Station, ¥3,330 to Shinjuku. Pick by hotel area, then book.";
+  "NEX vs Skyliner from Narita: Skyliner ¥2,580, 41 min to Ueno; N'EX ¥3,140, 53 min to Tokyo Station. Ueno → Skyliner, Shinjuku → N'EX. Book on Klook.";
 
 export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -260,7 +272,7 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, FAQ_SCHEMA_COUNT).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -315,7 +327,7 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Skyliner vs N&apos;EX (2026):<br />Which Narita Airport Train Should You Take?
+            Skyliner vs N&apos;EX (NEX) 2026:<br />Which Is Faster and Cheaper to Tokyo?
           </h1>
           <p className={styles.heroSubtitle}>
             NEX vs Skyliner, settled by hotel area: one runs to Ueno, the other to Tokyo Station, Shinjuku, Shibuya and Yokohama. The
@@ -349,15 +361,13 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>Staying in Ueno, Nippori or Asakusa, take the Keisei Skyliner:</strong> ¥2,580
-              (¥2,310 bought online) and as little as <strong>41 minutes from Narita Terminal 2·3 to
-              Ueno</strong>, 36 to Nippori.{" "}
-              <strong>Staying near Tokyo Station, Shinjuku, Shibuya or Yokohama, take the N&apos;EX:</strong>{" "}
-              <strong>¥3,140 and about 53 minutes to Tokyo Station</strong>, ¥3,330 to Shinjuku or
-              Shibuya with no change, or <strong>¥5,200 for a 14-day round trip</strong> on a foreign
-              passport. A JR Pass covers the N&apos;EX but not the Skyliner. Skyliner fares and times
-              read off keisei.co.jp on {SKYLINER_CHECKED}; N&apos;EX fares and times off jreast.co.jp
-              on {CHECKED}.
+              <strong>The Keisei Skyliner costs ¥2,580 (¥2,310 bought online) and takes as little as
+              41 minutes from Narita Terminal 2·3 to Ueno, while the JR Narita Express (N&apos;EX, often
+              written NEX) costs ¥3,140 and takes 53 minutes to Tokyo Station</strong>, or ¥3,330 to
+              Shinjuku and Shibuya with no change.{" "}
+              <strong>Ueno/Nippori → Skyliner; Tokyo/Shinjuku/Shibuya → N&apos;EX</strong> — and a JR
+              Pass covers the N&apos;EX but not the Skyliner. Skyliner figures from keisei.co.jp, N&apos;EX
+              figures from jreast.co.jp, both checked on {NEX_CHECKED}.
             </p>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)", marginTop: "1rem" }}>
               <div className={styles.verdictStat}>
@@ -458,14 +468,14 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem" }}>
-            Last checked: {SKYLINER_CHECKED_ISO} (Skyliner) and {CHECKED_ISO} (N&apos;EX). Sources:{" "}
+            Last checked: {SKYLINER_CHECKED_ISO} (Skyliner) and {NEX_CHECKED_ISO} (N&apos;EX fares and times). Sources:{" "}
             <a href={KEISEI_TICKET_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>Keisei Skyliner fares</a>,{" "}
             <a href={KEISEI_DISCOUNT_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>Skyliner Discount Ticket</a>{" "}
             and{" "}
             <a href={JR_NEX_TICKETS_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>JR East N&apos;EX tickets</a>.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read on {CHECKED} and re-read for the Skyliner on {SKYLINER_CHECKED}: Skyliner fares, seats and sales from Keisei&apos;s Japanese ticket
+            Read on {CHECKED} and re-read for both trains&apos; fares and times on {NEX_CHECKED}: Skyliner fares, seats and sales from Keisei&apos;s Japanese ticket
             page and English FAQ, the discount and the 36-minute figure from its Skyliner Discount
             Ticket page, frequency and the 41-minute Ueno figure from its Skyliner Overview, Wi-Fi
             from its KEISEI FREE Wi-Fi page. N&apos;EX fares from JR East&apos;s N&apos;EX ticket

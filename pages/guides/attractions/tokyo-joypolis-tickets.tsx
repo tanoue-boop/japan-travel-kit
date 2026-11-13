@@ -599,7 +599,11 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             reopened at Azabudai Hills, so a Joypolis-and-teamLab day now means two separate districts
             and two separate train journeys — our{" "}
             <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless ticket guide</Link>{" "}
-            has the current location, timed slots and prices. In the same vein, Madame Tussauds Tokyo
+            has the current location, timed slots and prices. The other Tokyo teamLab, Planets, is on the
+            Yurikamome line you ride to Odaiba — 3 minutes on foot from Exit 1A of Shin-Toyosu Station, on
+            teamLab&apos;s own figure — and our{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link> covers
+            its time slots and the official ticket store. In the same vein, Madame Tussauds Tokyo
             shared the DECKS building with Joypolis and was commonly sold in a combo ticket with it;
             its own site states that it ceased operations on 30 September 2026, so that combination no
             longer exists.

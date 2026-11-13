@@ -584,7 +584,11 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             Starting late in the day costs money too. The Gozabune boat stops at 16:30, Nishinomaru Garden at 17:00, and the
             Umeda Sky Building is free only until 15:00, so a pass started at lunchtime loses the stops that make it pay. The
-            evening options — the Tombori River Cruise to 21:00, Tsutenkaku to 21:45, the HEP FIVE wheel to 22:45 — are the
+            evening options — the{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise" style={officialLink}>
+              Tombori River Cruise from Tazaemonbashi Pier
+            </Link>{" "}
+            to 21:00, Tsutenkaku to 21:45, the HEP FIVE wheel to 22:45 — are the
             ones to leave until last. Times from the official attraction list and the venues, {CHECKED}. The{" "}
             <Link href="/guides/attractions/osaka-2-day-itinerary" style={officialLink}>
               Osaka 2-day itinerary
