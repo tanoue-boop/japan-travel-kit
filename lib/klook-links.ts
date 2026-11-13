@@ -7141,6 +7141,30 @@ export const hakoneRyokanTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * hakone-free-pass, "book on the same trip" (13 Nov 2026, task-jtk-20261113-R06). Every
+ * url reads out of an existing constant: the guided loop (6.5%), the Hakone hotel page
+ * the ryokan guide already uses (6.5%) and the Klook eSIM (20%). No Klook price.
+ */
+export const hakoneFreepassTripPrep: KlookTripPrepItem[] = [
+  {
+    label: hakoneLoopBusTour.title,
+    ctaLabel: "Check the Hakone day tour →",
+    url: hakoneLoopBusTour.url,
+    why: "The pass has no 1-day version. For a single day out of Tokyo, a guided coach covers Owakudani and Lake Ashi on one ticket.",
+  },
+  {
+    label: hakoneHotels.title,
+    ctaLabel: "Check Hakone hotels →",
+    url: hakoneHotels.url,
+    why: "A 2-day pass runs to the last service on day two, so one night in Hakone uses the day you have already paid for.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The digital Freepass is a QR code on your phone, and the ropeway and cruise status is easiest to check on the morning you ride.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Tokyo to Kyoto — added 7 Nov 2026 (task-jtk-20261107-03).
 //

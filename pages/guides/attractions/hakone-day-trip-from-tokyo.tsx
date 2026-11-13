@@ -313,7 +313,9 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
               <strong>Yes, you can do Hakone as a day trip from Tokyo.</strong> The Romancecar from Shinjuku to
               Hakone-Yumoto takes about 80 minutes (Odakyu), and the Hakone loop — Tozan Train, cable car, ropeway
               over Owakudani, Lake Ashi cruise and the bus back — is about 2½ hours of riding, or 5–7 hours with
-              stops. For transport, the Hakone Freepass is {P.adult} for 2 days from Shinjuku; there is no 1-day
+              stops. For transport, the{" "}
+              <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> is {P.adult} for 2 days
+              from Shinjuku; there is no 1-day
               version (Odakyu, checked {CHECKED}). If you would rather not change five times, take a Hakone day
               tour from Tokyo instead.
             </p>

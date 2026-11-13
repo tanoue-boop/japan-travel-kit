@@ -173,7 +173,7 @@ const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
   { href: "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view", title: "Kawaguchiko Ryokan with Mt Fuji View (2026): 6 Inns" },
-  { href: "/guides/attractions/hakone-free-pass", title: "Hakone Free Pass (2026): Prices, What It Covers & Is It Worth It?" },
+  { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass (Free Pass) 2026: Price & Where to Buy" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
   { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
@@ -526,10 +526,10 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           <p className={styles.bodyText}>
             Stay if the bath is the point. A night gives you 19 to 20 hours at the inn, with dinner and breakfast,
             while a day trip usually means a public bath and a train home. It also makes the transport simpler: the
-            Hakone Freepass has no 1-day version, and the 2-day pass from Shinjuku is ¥7,100, with the ¥1,200
-            Romancecar surcharge on top (read {PASS_DATE}). For the day-out version, see our{" "}
-            <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link> and our{" "}
-            <Link href="/guides/attractions/hakone-free-pass">Hakone Free Pass guide</Link>.
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> has no 1-day version, and
+            the 2-day pass from Shinjuku is ¥7,100, with the ¥1,200 Romancecar surcharge on top (read{" "}
+            {PASS_DATE}). For the day-out version, see our{" "}
+            <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

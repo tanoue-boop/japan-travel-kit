@@ -815,8 +815,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/hakone-free-pass",
     badge: "Pass",
-    title: "Hakone Free Pass (2026): Prices, What It Covers & Is It Worth It?",
-    desc: "Odakyu's official prices — ¥7,100 for 2 days from Shinjuku, ¥6,000 from Odawara — the eight modes of transport it covers, the ¥1,200 Romancecar surcharge it does not, and why there is no 1-day version.",
+    title: "Hakone Freepass (Free Pass) 2026: Price & Where to Buy",
+    desc: "Odakyu's official prices — ¥7,100 for 2 days from Shinjuku, ¥6,000 from Odawara — the 8 kinds of transport it covers, the ¥1,200 Romancecar seat it does not, and where to buy it: EMot, stations, 7-Eleven or Klook.",
     group: "passes",
     // Hakone is Kanagawa, and the Odawara version of the pass starts outside Tokyo entirely —
     // same reasoning as kawaguchiko-day-trip-from-tokyo.

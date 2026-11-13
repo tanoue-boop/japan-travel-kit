@@ -1,12 +1,15 @@
+import type { ReactNode } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   hakoneCruiseCableCarTour,
   hakoneFreepass,
+  hakoneFreepassTripPrep,
   hakoneLoopBusTour,
 } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -21,218 +24,225 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const HAKONE_PASS_URL = hakoneFreepass.url;
 const HAKONE_TOUR_URL = hakoneLoopBusTour.url;
 
-// Every figure on this page was read off the operators' own sites on 25 October 2026:
-// the pass prices, the eight covered modes, the Romancecar surcharge and the journey
-// time from odakyu-global.com; the ropeway and cruise fares and the retail list from
-// hakonenavi.jp. Legs whose fare tables could not be read on an official page are
-// deliberately absent from the break-even table rather than estimated.
-const CHECKED = checkedLabel("2026-10-25");
+// Every figure on this page was re-read on 13 November 2026 (task-jtk-20261113-R06):
+//   - pass prices for Shinjuku, Machida, Fujisawa and Odawara, the 8 covered modes, the
+//     one Odakyu Line return, Izu-Hakone Bus not covered, where to buy, the one-month
+//     advance sale and the same-day-only machines: hakonenavi.jp free_pass page
+//   - the Romancecar seat (+¥1,200 / +¥600 from Shinjuku, +¥200 / +¥100 from Odawara),
+//     about 80 minutes, EMot ¥50 cheaper, ¥910 Odawara–Shinjuku regular fare, Odakyu's
+//     ¥9,500 worked example, "worth it even for a day trip", For Group up to 4 phones,
+//     machine payment methods, the calendar-day validity rule: odakyu.jp/english/passes/hakone/
+//   - ropeway ¥2,000 / ¥700 one way and cruise ¥1,700 / ¥850 one way, in force since
+//     1 Oct 2025: Odakyu Hakone's fare notice PDF on hakonenavi.jp, and the
+//     hakonetrip.odakyu-global.com spot pages (cruise premium cabin +¥800 / +¥400)
+// The Tozan Train, cable car and bus fares had no official English fare table to quote,
+// so the break-even table leaves them out rather than estimating them.
+const CHECKED_ISO = "2026-11-13";
+const CHECKED = checkedLabel(CHECKED_ISO);
+const NAVI_URL = "https://www.hakonenavi.jp/international/en/discount_passes/free_pass";
+const ODAKYU_URL = "https://www.odakyu.jp/english/passes/hakone/";
+const FARE_NOTICE_URL = "https://www.hakonenavi.jp/international/en/wp-content/uploads/sites/2/2025/09/re_price202510.pdf";
 
 const PASS_2_DAY_SHINJUKU = "¥7,100";
 const PASS_3_DAY_SHINJUKU = "¥7,500";
 const PASS_2_DAY_ODAWARA = "¥6,000";
+const PASS_3_DAY_ODAWARA = "¥6,400";
 const ROMANCECAR = "¥1,200";
+const ROPEWAY = "¥2,000";
+const CRUISE = "¥1,700";
 
+const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
+const noteStyle = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" } as const;
+
+// First row is the answer most readers came for.
 const priceRows = [
-  { pass: "2-day, from Shinjuku", adult: PASS_2_DAY_SHINJUKU, child: "¥1,600" },
-  { pass: "3-day, from Shinjuku", adult: PASS_3_DAY_SHINJUKU, child: "¥1,850" },
-  { pass: "2-day, from Odawara (Hakone area only)", adult: PASS_2_DAY_ODAWARA, child: "¥1,500" },
-  { pass: "3-day, from Odawara (Hakone area only)", adult: "¥6,400", child: "¥1,750" },
-  { pass: "Romancecar surcharge, Shinjuku → Hakone-Yumoto (not included)", adult: ROMANCECAR, child: "¥600" },
+  { pass: "Most Tokyo visitors: 2 days from Shinjuku", d2a: PASS_2_DAY_SHINJUKU, d2c: "¥1,600", d3a: PASS_3_DAY_SHINJUKU, d3c: "¥1,850" },
+  { pass: "From Shinjuku (Odakyu Line return included)", d2a: PASS_2_DAY_SHINJUKU, d2c: "¥1,600", d3a: PASS_3_DAY_SHINJUKU, d3c: "¥1,850" },
+  { pass: "From Odawara (Hakone area only)", d2a: PASS_2_DAY_ODAWARA, d2c: "¥1,500", d3a: PASS_3_DAY_ODAWARA, d3c: "¥1,750" },
+  { pass: "From Machida", d2a: "¥6,820", d2c: "¥1,600", d3a: "¥7,220", d3c: "¥1,850" },
+  { pass: "From Fujisawa", d2a: "¥7,050", d2c: "¥1,600", d3a: "¥7,450", d3c: "¥1,850" },
+];
+
+const buyRows = [
+  {
+    where: "Short answer",
+    ticket: "Buy online before you go if everyone has a smartphone",
+    when: "Paper at an Odakyu station if a child has no phone of their own",
+    note: "The digital pass is one ticket per phone; a paper pass works for anyone.",
+  },
+  {
+    where: "EMot Online Tickets (Odakyu's own site)",
+    ticket: "Digital QR code, smartphones only",
+    when: "Online, before you travel",
+    note: "Up to 4 tickets on one phone with the For Group option, travelling together. A Romancecar seat booked here is ¥50 cheaper than at the station. Refunds only where the ticket shows a Refund button.",
+  },
+  {
+    where: "Odakyu Line stations (ticket machines) and Odakyu Sightseeing Service Center",
+    ticket: "Paper ticket",
+    when: "From one month before at Odakyu Line stations; machines only sell passes valid from the same day",
+    note: "Machines take cash, PASMO/Suica and American Express, Diners Club, JCB, Mastercard and Visa.",
+  },
+  {
+    where: "7-Eleven (7-Ticket)",
+    ticket: "Paper ticket from the store's multifunction copier",
+    when: "Before you travel",
+    note: "No issuance fee. The version with the Odakyu Line return is sold as a Shinjuku departure only.",
+  },
+  {
+    where: "In Hakone: Hakone Tozan Railway machines and Hakone Tozan Bus information centres",
+    ticket: "Paper ticket",
+    when: "On the day",
+    note: "Machines at Hakone-Yumoto, Gora, Sounzan and other Tozan stations; bus offices at Odawara station, Hakone-Yumoto, Moto-Hakone, Hakone-machi, Sengoku, Togendai and Miyagino.",
+  },
+  {
+    where: "Klook",
+    ticket: "A Klook booking for the same Odakyu pass",
+    when: "Online, before you travel",
+    note: "English checkout for a card issued abroad. Read the listing for how the voucher is redeemed and its cancellation terms.",
+  },
 ];
 
 const coverageRows = [
   {
-    mode: "Odakyu Line (Shinjuku ⇄ Odawara ⇄ Hakone-Yumoto)",
-    included: "✓ Unlimited rides",
-    note: "On the Shinjuku version only. The Odawara pass starts at Odawara and leaves you to reach it yourself.",
+    mode: "Odakyu Line (Shinjuku ⇄ Odawara)",
+    included: "✓ One return trip",
+    note: "Shinjuku version only, with stop-overs allowed on the way. The Odawara version does not include it.",
   },
-  {
-    mode: "Hakone Tozan Train (Hakone-Yumoto ⇄ Gora)",
-    included: "✓ Unlimited rides",
-    note: "The switchback mountain railway — the first leg of the loop from Hakone-Yumoto.",
-  },
-  {
-    mode: "Hakone Tozan Cable Car (Gora ⇄ Sounzan)",
-    included: "✓ Unlimited rides",
-    note: "A funicular, not a ropeway: it climbs the ridge from Gora to the ropeway's lower station.",
-  },
-  {
-    mode: "Hakone Ropeway (Sounzan ⇄ Owakudani ⇄ Togendai)",
-    included: "✓ Unlimited rides",
-    note: "The Owakudani volcanic valley leg, and the most expensive single ride on the loop.",
-  },
-  {
-    mode: "Hakone Sightseeing Cruise (Lake Ashi pirate ships)",
-    included: "✓ Unlimited rides",
-    note: "Togendai to Hakone-machi-ko or Moto-Hakone-ko across Lake Ashi.",
-  },
-  {
-    mode: "Hakone Tozan Bus (designated areas)",
-    included: "✓ Unlimited rides",
-    note: "How you close the loop back to Hakone-Yumoto or Odawara without retracing the whole route.",
-  },
-  {
-    mode: "Odakyu Highway Bus",
-    included: "✓ Unlimited rides",
-    note: "Within the designated Hakone sections — one of the eight modes Odakyu lists.",
-  },
-  {
-    mode: "Tokai Bus (designated areas)",
-    included: "✓ Unlimited rides",
-    note: "The eighth mode, covering the designated sections on the far side of the lake.",
-  },
-  {
-    mode: "Limited Express Romancecar",
-    included: "✗ Not included",
-    note: `A separate reserved-seat charge: ${ROMANCECAR} adult, ¥600 child, Shinjuku to Hakone-Yumoto.`,
-  },
-  {
-    mode: "Shinkansen to Odawara",
-    included: "✗ Not included",
-    note: "Odawara is a shinkansen stop, but the pass is an Odakyu product — buy the Odawara version if you arrive that way.",
-  },
+  { mode: "Hakone Tozan Train (Odawara / Hakone-Yumoto ⇄ Gora)", included: "✓ Unlimited", note: "The switchback mountain railway — the first leg of the loop from Hakone-Yumoto." },
+  { mode: "Hakone Tozan Cable Car (Gora ⇄ Sounzan)", included: "✓ Unlimited", note: "A funicular up to the ropeway's lower station." },
+  { mode: "Hakone Ropeway (Sounzan ⇄ Owakudani ⇄ Togendai)", included: "✓ Unlimited", note: `The Owakudani leg, and the most expensive single ride on the loop at ${ROPEWAY} one way.` },
+  { mode: "Hakone Sightseeing Cruise (Lake Ashi pirate ships)", included: "✓ Unlimited", note: `Togendai to Hakone-machi or Moto-Hakone, ${CRUISE} one way without the pass. The premium cabin is extra.` },
+  { mode: "Hakone Tozan Bus (designated areas)", included: "✓ Unlimited", note: "How you close the loop back to Hakone-Yumoto or Odawara." },
+  { mode: "\"KANKO SHISETSU-MEGURI\" sightseeing bus", included: "✓ Unlimited", note: "Run by Hakone Tozan Bus and Odakyu Highway Bus between the sightseeing spots." },
+  { mode: "Odakyu Highway Bus (designated areas)", included: "✓ Unlimited", note: "Reserved-ticket holders board first, so a bus can be full." },
+  { mode: "Tokai Bus (designated areas)", included: "✓ Unlimited", note: "Within the designated sections only." },
+  { mode: "Limited Express Romancecar", included: "✗ Not included", note: `A separate seat ticket: ${ROMANCECAR} adult, ¥600 child, Shinjuku to Hakone-Yumoto.` },
+  { mode: "Izu-Hakone Bus", included: "✗ Not included", note: "A different operator. Check the bus company before you board." },
 ];
 
+// Only legs with an official fare are listed; the total is a floor.
 const legRows = [
   {
-    leg: "Hakone Ropeway, Sounzan ⇄ Togendai (full route)",
-    adult: "¥2,000 one way / ¥3,000 return",
-    child: "¥700 one way / ¥1,000 return",
-    source: "hakonenavi.jp fare notice, in force since 1 October 2025",
+    leg: "Fares that can be checked add up to ¥5,520 of the ¥7,100 pass",
+    adult: "¥5,520",
+    child: "—",
+    source: "The Tozan Train, cable car and closing bus make up the rest",
   },
-  {
-    leg: "Hakone Sightseeing Cruise, Togendai ⇄ Hakone-machi / Moto-Hakone",
-    adult: "¥1,200 one way (+¥600 special cabin)",
-    child: "¥600 one way (+¥300 special cabin)",
-    source: "hakonenavi.jp",
-  },
-  {
-    leg: "Romancecar surcharge, Shinjuku → Hakone-Yumoto",
-    adult: `${ROMANCECAR} (not covered by the pass)`,
-    child: "¥600 (not covered by the pass)",
-    source: "odakyu-global.com",
-  },
+  { leg: "Odakyu Line, Shinjuku → Odawara (regular fare)", adult: "¥910", child: "—", source: "odakyu.jp" },
+  { leg: "Hakone Ropeway, Sounzan → Togendai (one way)", adult: ROPEWAY, child: "¥700", source: "Odakyu Hakone fare notice, from 1 Oct 2025" },
+  { leg: "Hakone Sightseeing Cruise, Togendai → Hakone-machi / Moto-Hakone (one way)", adult: CRUISE, child: "¥850", source: "Odakyu Hakone fare notice, from 1 Oct 2025" },
+  { leg: "Odakyu Line, Odawara → Shinjuku (regular fare)", adult: "¥910", child: "—", source: "odakyu.jp" },
+  { leg: "Not counted: Hakone Tozan Train, cable car, Tozan Bus", adult: "Not priced here", child: "—", source: "No official English fare table to quote" },
 ];
 
 const worthRows = [
   {
     plan: "Two days in Hakone, one night in an onsen inn",
     verdict: "✓ Buy the 2-day pass",
-    why: `The pass is priced for exactly this. ${PASS_2_DAY_SHINJUKU} from Shinjuku covers the trains out and back plus every leg of the loop, and Odakyu's own published comparison puts the same Hakone route at ¥9,200 via JR against ${PASS_2_DAY_SHINJUKU} via Odakyu with the pass — ¥2,100 saved for an adult.`,
+    why: `The pass is priced for this. ${PASS_2_DAY_SHINJUKU} from Shinjuku covers the Odakyu return and every leg of the loop on both days.`,
+  },
+  {
+    plan: "A single day trip from Tokyo, riding the whole loop",
+    verdict: "✓ Still worth it",
+    why: `The ropeway (${ROPEWAY}), the cruise (${CRUISE}) and the Odakyu return (¥1,820) are ¥5,520 before the Tozan Train, cable car and bus. Odakyu says it is "worth it even for a day trip".`,
   },
   {
     plan: "Arriving by shinkansen at Odawara, or already staying in Hakone",
     verdict: "✓ Buy the Odawara version",
-    why: `${PASS_2_DAY_ODAWARA} instead of ${PASS_2_DAY_SHINJUKU}, because it drops the Odakyu Line leg from Shinjuku you are not going to use. Same eight modes inside Hakone.`,
+    why: `${PASS_2_DAY_ODAWARA} instead of ${PASS_2_DAY_SHINJUKU}, because it drops the Odakyu Line return you will not use. Same 8 modes inside Hakone.`,
   },
   {
-    plan: "A single day trip from Tokyo, back the same night",
-    verdict: "~ Only if you ride the whole loop",
-    why: "There is no 1-day version, so you pay for a second day you will not use. The full loop is still worth more than the pass price — the ropeway alone is ¥2,000 and the lake cruise ¥1,200 — but if you are only going as far as Hakone-Yumoto for an onsen and lunch, buy singles.",
-  },
-  {
-    plan: "One or two stops only — Hakone-Yumoto, or just Owakudani",
+    plan: "Hakone-Yumoto only, for an onsen and lunch",
     verdict: "✗ Skip it",
-    why: "Two short legs do not come close to the pass price, and the second day of validity is dead money. Pay per ride, or take a guided coach day tour where the whole day is priced as one ticket.",
+    why: "Without the ropeway and the cruise, the pass does not pay for itself. Pay per ride.",
   },
   {
     plan: "You want the loop done for you, with no timetables",
     verdict: "✗ Take a day tour instead",
-    why: "A guided coach covers Owakudani, Lake Ashi and Hakone Shrine on a fixed departure and gets you back to Tokyo the same evening, which is a different purchase from a transport pass. It is also the only version that works if you have one day and no appetite for five changes.",
+    why: "A guided coach covers Owakudani and Lake Ashi on a fixed departure and gets you back to Tokyo the same evening — a different purchase from a transport pass.",
   },
 ];
 
-const steps = [
-  {
-    title: "Decide where your pass should start — Shinjuku or Odawara",
-    desc: `This is the only decision that changes the price by more than ¥400. From Shinjuku the 2-day pass is ${PASS_2_DAY_SHINJUKU} and includes the Odakyu Line out and back; from Odawara it is ${PASS_2_DAY_ODAWARA} and covers Hakone only. Buy the Odawara version if you are arriving by shinkansen, coming from Kyoto or Osaka, or already sleeping in Hakone. Prices checked ${CHECKED}.`,
-  },
-  {
-    title: "Pick 2-day or 3-day — there is no 1-day pass",
-    desc: `The third day costs ¥400 from Shinjuku (${PASS_2_DAY_SHINJUKU} to ${PASS_3_DAY_SHINJUKU}) and ¥400 from Odawara, which makes it the cheapest extension on this page. There is no 1-day Hakone Free Pass at all, so a day trip means buying two days of validity.`,
-  },
-  {
-    title: "Add the Romancecar seat if you are doing Hakone in a day",
-    desc: `The pass covers the Odakyu Line but not the Limited Express Romancecar, which is ${ROMANCECAR} extra for an adult and ¥600 for a child from Shinjuku to Hakone-Yumoto — about 80 minutes, all seats reserved. Buying the limited express ticket through Odakyu's EMot Online Tickets is ¥50 cheaper than the station price.`,
-  },
-  {
-    title: "Buy it before you are standing at a machine",
-    desc: "Odakyu sells the pass through EMot Online Tickets, at Odakyu Line stations, at 7-Eleven (7-Ticket), at Odakyu Travel stores, at Hakone Tozan Railway ticket machines and at information centres around Hakone. Klook sells it as a digital voucher with an English checkout, which is the route that works if your card is issued abroad.",
-  },
-  {
-    title: "Watch the validity rule — it is calendar days, not 48 hours",
-    desc: "Odakyu counts the date of purchase as day one regardless of the time you bought it, so a 2-day pass bought at 18:00 expires after the last service the following day. Buy it on the morning you travel, not the night before.",
-  },
-];
-
-/** Digital against paper, read off odakyu-global.com on 6 Nov 2026. */
-const FORMAT_CHECKED = "6 Nov 2026";
 const formatRows = [
   { item: "Where you get it", digital: "EMot Online Tickets, on a smartphone only", paper: "Odakyu Sightseeing Service Center or a station ticket machine" },
-  { item: "Paying", digital: "Online", paper: "Machines take cash, PASMO/Suica and several major credit cards" },
+  { item: "Paying", digital: "Online", paper: "Machines take cash, PASMO/Suica and American Express, Diners Club, JCB, Mastercard, Visa" },
   { item: "A group", digital: "Up to 4 tickets on one phone with the For Group option; you must travel together, and at the gate scan companions first and your own last", paper: "One paper pass each" },
   { item: "Children", digital: "6–11 pay the child fare, under 6 need no ticket. Japanese Kids Phones are not accepted", paper: "6–11 pay the child fare, under 6 need no ticket" },
-  { item: "Romancecar seat", digital: "Adds ¥1,200 from Shinjuku, and booking it online saves ¥50", paper: "Adds ¥1,200 from Shinjuku" },
-  { item: "Refund", digital: "Only where the ticket shows a Refund button", paper: "Not stated on the page read" },
+  { item: "Refund", digital: "Only where the ticket shows a Refund button; a leg suspended by weather is refunded through the EMot support desk", paper: "If a service is suspended, refunded at the last station you travel to, only for transport not used" },
 ];
 
 const faqItems = [
   {
-    q: "Can I use the Hakone Free Pass on my phone?",
-    a: `Yes. The digital pass is bought through EMot Online Tickets and works on smartphones only. One phone can hold up to 4 tickets with the For Group option, as long as the group stays together; at the gate, scan companions' codes first and your own last. A paper pass is sold at Odakyu Sightseeing Service Centers and station ticket machines. Read on odakyu-global.com on ${FORMAT_CHECKED}.`,
+    q: "How much is the Hakone Freepass in 2026?",
+    a: `${PASS_2_DAY_SHINJUKU} for an adult and ¥1,600 for a child (6–11) for 2 days from Shinjuku, and ${PASS_3_DAY_SHINJUKU} / ¥1,850 for 3 days. The Hakone-area-only version from Odawara is ${PASS_2_DAY_ODAWARA} / ¥1,500 for 2 days and ${PASS_3_DAY_ODAWARA} / ¥1,750 for 3. These prices have applied since 1 October 2025. Checked on hakonenavi.jp and odakyu.jp on ${CHECKED}.`,
   },
   {
-    q: "What discounts does the Hakone Free Pass give?",
-    a: `Odakyu says about 70 hot springs, museums and restaurants give a discount when you show the pass; the Hakone Museum of Art is one example, and the full list is on Hakone Navi. Read on ${FORMAT_CHECKED}.`,
+    q: "Where can I buy the Hakone Freepass?",
+    a: `Online through Odakyu's EMot Online Tickets (a digital QR pass, smartphones only), at Odakyu Line station ticket machines and the Odakyu Sightseeing Service Center (paper), at 7-Eleven through 7-Ticket, at Odakyu Travel stores, and in Hakone at Hakone Tozan Railway machines and Hakone Tozan Bus information centres. Odakyu stations sell it from one month before; ticket machines only sell passes valid from the same day. Klook also sells it with an English checkout. Checked ${CHECKED}.`,
   },
   {
-    q: "How much is the Hakone Free Pass?",
-    a: `From Odakyu's own site: the 2-day pass from Shinjuku is ${PASS_2_DAY_SHINJUKU} for an adult and ¥1,600 for a child, and the 3-day is ${PASS_3_DAY_SHINJUKU} / ¥1,850. The Hakone-area-only version bought from Odawara is ${PASS_2_DAY_ODAWARA} / ¥1,500 for 2 days and ¥6,400 / ¥1,750 for 3. The Limited Express Romancecar is not included and costs ${ROMANCECAR} for an adult or ¥600 for a child extra from Shinjuku to Hakone-Yumoto. Prices checked ${CHECKED}.`,
+    q: "Is the Hakone Freepass worth it for a day trip?",
+    a: `Yes, if you ride the full loop. There is no 1-day version, but the ropeway (${ROPEWAY} one way) and the Lake Ashi cruise (${CRUISE} one way) plus the Odakyu Line return (¥910 each way) already come to ¥5,520 before the Tozan Train, cable car and bus, and Odakyu itself says the pass is worth it even for a day trip. It does not pay for a visit to Hakone-Yumoto only. Fares checked ${CHECKED}.`,
   },
   {
-    q: "Is there a 1-day Hakone pass?",
-    a: `Not from Odakyu. The Hakone Free Pass is sold as a 2-day or a 3-day ticket only, which is the single most useful thing to know before planning Hakone as a day trip — a one-day visit means paying for a day of validity you will not use. The two sensible answers are to stay the night, since Hakone is an onsen town and the second day is already paid for, or to take a guided coach day tour, where the whole day is priced as one ticket. Checked ${CHECKED}.`,
+    q: "Does the Hakone Freepass include the Romancecar?",
+    a: `No. The Shinjuku version includes one Odakyu Line return, but the Limited Express Romancecar needs a separate seat ticket: ${ROMANCECAR} for an adult and ¥600 for a child each way between Shinjuku and Hakone-Yumoto, or ¥200 / ¥100 from Odawara. It takes about 80 minutes direct, and booking the seat through EMot Online Tickets is ¥50 cheaper. Odakyu's own example: pass ${PASS_2_DAY_SHINJUKU} + Romancecar both ways ¥2,400 = ¥9,500. Checked ${CHECKED}.`,
   },
   {
-    q: "What does the Hakone Free Pass cover?",
-    a: `Unlimited rides on eight modes of transport, as Odakyu lists them: the Odakyu Line, the Hakone Tozan Train, the Hakone Tozan Cable Car, the Hakone Ropeway, the Hakone Sightseeing Cruise on Lake Ashi, the Hakone Tozan Bus in designated areas, the Odakyu Highway Bus and Tokai Bus in designated areas. It also carries discounts at facilities around the loop. The Limited Express Romancecar and the shinkansen to Odawara are not covered. Coverage read off odakyu-global.com on ${CHECKED}.`,
-  },
-  {
-    q: "Is the Hakone Free Pass worth it?",
-    a: `Yes if you ride the loop, no if you do one or two legs. The two most expensive rides alone — the Hakone Ropeway at ¥2,000 one way and the Lake Ashi cruise at ¥1,200 one way for an adult — come to ¥3,200 before the trains out of Tokyo, so a full loop over two days clears ${PASS_2_DAY_SHINJUKU} without effort. Odakyu's own published comparison puts the Hakone route at ¥9,200 using JR against ${PASS_2_DAY_SHINJUKU} using Odakyu with the 2-day pass, a ¥2,100 saving for an adult. Where it stops paying is a short visit: Hakone-Yumoto for an onsen and lunch does not justify two days of validity. Fares checked ${CHECKED}.`,
-  },
-  {
-    q: "Does the Hakone Free Pass include the Romancecar?",
-    a: `No. The pass covers travel on the Odakyu Line, but the Romancecar is a limited express with a separate reserved-seat charge — ${ROMANCECAR} for an adult and ¥600 for a child from Shinjuku to Hakone-Yumoto. On a tight day trip it is usually money well spent: it is the fastest route out of Tokyo at about 80 minutes direct, and every seat is reserved, so you are not standing with luggage. Buying it through EMot Online Tickets is ¥50 cheaper than at the station. Checked ${CHECKED}.`,
-  },
-  {
-    q: "How long does it take from Shinjuku to Hakone-Yumoto?",
-    a: "About 80 minutes direct on the Limited Express Romancecar, according to Odakyu. That is the fast version, and it needs the separate limited express ticket. On the ordinary Odakyu Line services the pass covers in full, the same trip takes longer and usually involves a change at Odawara — fine on a two-day trip, less fine if you are trying to ride the whole loop and be back in Tokyo the same night.",
-  },
-  {
-    q: "Where do you buy the Hakone Free Pass, and do you need to collect anything?",
-    a: "Odakyu sells it through EMot Online Tickets, at Odakyu Line stations, at 7-Eleven (7-Ticket), at Odakyu Travel stores, at Hakone Tozan Railway ticket machines and at information centres in the Hakone area. Resellers such as Klook issue it as a digital voucher with an English checkout, which is the practical route if the Japanese payment pages reject your card. Either way there is nothing to post and nothing to queue for on arrival if you buy online.",
-  },
-  {
-    q: "Shinjuku version or Odawara version — which should I buy?",
-    a: `Buy the Shinjuku version if you are travelling out from Tokyo on the Odakyu Line, because it includes that leg both ways. Buy the Odawara version — ${PASS_2_DAY_ODAWARA} for 2 days instead of ${PASS_2_DAY_SHINJUKU} — if you are arriving at Odawara by shinkansen, coming up from Kyoto or Osaka, or already staying in Hakone. The two versions cover the same eight modes once you are inside Hakone; the ¥1,100 difference is the Shinjuku–Odawara leg and nothing else.`,
-  },
-  {
-    q: "Is 2 days of validity really 48 hours?",
-    a: "No, and this catches people out. Odakyu counts the date of purchase as the first day of validity regardless of what time you bought it, so a 2-day pass bought on a Saturday evening expires after the last train or bus on Sunday, not on Monday evening. Buy it on the morning you actually start travelling.",
-  },
-  {
-    q: "What happens if the ropeway or the cruise is not running?",
-    a: "Both are weather-dependent, and the ropeway in particular can be suspended at short notice because of wind or volcanic-gas conditions at Owakudani. Hakone Navi publishes a transport status page for exactly this, so check it the morning you travel rather than on arrival at Sounzan — and remember that a pass does not entitle you to a refund for a leg you chose not to ride.",
+    q: "Is a 2-day Hakone Freepass valid for 48 hours?",
+    a: `No. Odakyu counts the date of purchase as the first day of validity regardless of the time you buy it, so a 2-day pass ends after the last train or bus on the following day. Buy it on the morning you start travelling. Checked on odakyu.jp on ${CHECKED}.`,
   },
 ];
 
-const TITLE = "Hakone Free Pass 2026: ¥7,100 From Shinjuku, Is It Worth It?";
+const TITLE = "Hakone Freepass (Free Pass) 2026: Price & Where to Buy";
 const DESCRIPTION =
-  "Hakone Free Pass prices for 2026 from Odakyu: ¥7,100 for 2 days from Shinjuku, ¥6,000 from Odawara, the 8 modes it covers and the ¥1,200 it does not.";
+  "Hakone Freepass (Hakone Free Pass) 2026: ¥7,100 for 2 days from Shinjuku, ¥6,000 from Odawara, 8 rides covered, Romancecar ¥1,200 extra. Where to buy it.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/hakone-free-pass") } });
+
+function Table({ head, rows }: { head: string[]; rows: ReactNode[][] }) {
+  return (
+    <div className={styles.tableWrap}>
+      <div className={styles.tableScroll}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {head.map((h, i) => (
+                <th key={h || `blank-${i}`}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, r) => (
+              <tr key={r}>
+                {row.map((cell, c) => (
+                  <td
+                    key={c}
+                    className={c === 0 ? styles.tdProvider : undefined}
+                    style={c === 0 ? (r === 0 ? { fontWeight: 700 } : undefined) : { fontSize: "0.88rem", fontWeight: r === 0 ? 700 : undefined }}
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+function LastChecked({ children }: { children?: ReactNode }) {
+  return (
+    <p className={styles.bodyText} style={noteStyle}>
+      Last checked: {CHECKED_ISO} —{" "}
+      <a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp (Hakone Freepass)</a>,{" "}
+      <a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp (Hakone Freepass)</a>
+      {children}
+    </p>
+  );
+}
 
 export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -285,7 +295,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
-                { "@type": "ListItem", position: 4, name: "Hakone Free Pass", item: "https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass" },
+                { "@type": "ListItem", position: 4, name: "Hakone Freepass", item: "https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass" },
               ],
             }),
           }}
@@ -322,7 +332,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>Hakone Free Pass</span>
+          <span className={styles.breadCurrent}>Hakone Freepass</span>
         </div>
       </div>
 
@@ -331,11 +341,11 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Hakone Free Pass (2026):<br />Prices, What It Covers &amp; Is It Worth It?
+            Hakone Freepass (Hakone Free Pass) 2026:<br />Price, 8 Rides Covered &amp; Where to Buy
           </h1>
           <p className={styles.heroSubtitle}>
-            One ticket for eight modes of transport around the Hakone loop — and two things it does not
-            cover, one of which is the train most visitors want to take.
+            Odakyu&apos;s own prices from Shinjuku and Odawara, the 8 kinds of transport it covers, the
+            Romancecar seat it does not, and where to buy it before you go.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official Odakyu prices", "No 1-day version"].map((t) => (
@@ -360,11 +370,13 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
         {/* The answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            The <strong>Hakone Free Pass</strong> costs <strong>¥7,100 for 2 days from Shinjuku</strong> and ¥6,000
-            from Odawara, or ¥7,500 and ¥6,400 for 3 days, and children aged 6–11 pay ¥1,600 from Shinjuku. It
-            covers eight modes of transport around the Hakone loop plus the Odakyu trip from Shinjuku, but not the
-            ¥1,200 Romancecar seat. It is worth buying if you ride the whole loop; there is no 1-day version.
-            Prices read off odakyu-global.com on {FORMAT_CHECKED}.
+            The <strong>Hakone Freepass</strong> costs <strong>{PASS_2_DAY_SHINJUKU} for an adult and ¥1,600
+            for a child for 2 days from Shinjuku</strong>, or {PASS_2_DAY_ODAWARA} / ¥1,500 from Odawara, and the
+            3-day versions are {PASS_3_DAY_SHINJUKU} and {PASS_3_DAY_ODAWARA}. It gives unlimited rides on{" "}
+            <strong>8 kinds of transport</strong> in Hakone — the Hakone Tozan Train, the cable car, the Hakone
+            Ropeway, the Lake Ashi pirate-ship cruise and four bus services — plus one Odakyu Line return from
+            Shinjuku. The <strong>Romancecar is not included</strong>: its seat is {ROMANCECAR} extra per adult
+            each way from Shinjuku to Hakone-Yumoto. Prices checked on hakonenavi.jp and odakyu.jp on {CHECKED}.
           </p>
         </section>
 
@@ -384,25 +396,18 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
                 <p className={styles.verdictStatValue}>{PASS_2_DAY_ODAWARA}</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>1-day version?</p>
-                <p className={styles.verdictStatValue}>Does not exist</p>
+                <p className={styles.verdictStatLabel}>Covered</p>
+                <p className={styles.verdictStatValue}>8 kinds of transport</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Romancecar</p>
                 <p className={styles.verdictStatValue}>+{ROMANCECAR}, not included</p>
               </div>
             </div>
-            {/* Answer-first: the first body paragraph on the page, not the hero line above. */}
             <p className={styles.verdictText}>
-              The <strong>Hakone Free Pass</strong> — Odakyu spells it Freepass — costs{" "}
-              <strong>{PASS_2_DAY_SHINJUKU}</strong> for an adult for 2 days from Shinjuku and{" "}
-              <strong>{PASS_2_DAY_ODAWARA}</strong> for 2 days from Odawara, with 3-day versions at{" "}
-              {PASS_3_DAY_SHINJUKU} and ¥6,400. It buys unlimited rides on <strong>eight modes of
-              transport</strong> around the Hakone loop — the Odakyu Line, the Hakone Tozan mountain train,
-              the cable car, the Owakudani ropeway, the Lake Ashi pirate-ship cruise and three bus operators
-              — and <strong>there is no 1-day version</strong>. The Limited Express Romancecar is not
-              included: that is {ROMANCECAR} extra for an adult on top of the pass, Shinjuku to
-              Hakone-Yumoto, about 80 minutes direct. Prices read off odakyu-global.com on {CHECKED}.
+              Odakyu spells it <strong>Freepass</strong>; most people search for Hakone Free Pass. It is the same
+              ticket. There is no 1-day version, buying online (EMot or Klook) avoids the station queue, and the
+              Odawara version is the one to buy if a shinkansen is bringing you in.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -417,182 +422,102 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
 
         <EsimCtaTop />
 
-        {/* Intro */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What Is the Hakone Free Pass?</h2>
-          <p className={styles.bodyText}>
-            Hakone is not one attraction but a circuit. The classic route climbs out of Hakone-Yumoto on a
-            switchback mountain railway, changes to a funicular, crosses the Owakudani volcanic valley by
-            ropeway, sails Lake Ashi on a replica pirate ship and comes back by bus — five operators in one
-            afternoon. Buying that leg by leg is both expensive and fiddly, which is the problem the{" "}
-            <strong>Hakone Free Pass</strong> exists to solve: one ticket, unlimited rides, eight modes of
-            transport.
-          </p>
-          <p className={styles.bodyText}>
-            It comes in two shapes. The Shinjuku version includes the Odakyu Line out of Tokyo and back; the
-            Odawara version covers Hakone only and costs ¥1,100 less, which is the right buy if you arrive by
-            shinkansen or are already staying in the area. Both are sold as 2-day or 3-day tickets — Odakyu
-            publishes no 1-day Hakone Free Pass, so a day trip means buying a day of validity you will not
-            use. If you want Hakone in a single day without that, the alternative is a guided coach tour, which
-            our{" "}
-            <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Hakone day trip guide
-            </Link>{" "}
-            compares against the pass in detail.
-          </p>
-        </section>
-
-        {/* Price table */}
+        {/* Price table — question heading, answer first, conclusion in row 1. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How Much Is the Hakone Free Pass?</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Pass", "Adult", "Child"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {priceRows.map((row) => (
-                    <tr key={row.pass}>
-                      <td className={styles.tdProvider}>{row.pass}</td>
-                      <td className={styles.tdPrice}>{row.adult}</td>
-                      <td className={styles.tdPrice}>{row.child}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Prices read off Odakyu&apos;s own site, odakyu-global.com, on {CHECKED}. Two things stand out. The
-            third day costs only ¥400 more than the second at either start point, so if there is any chance of
-            staying on, take the 3-day. And the Odawara version is ¥1,100 cheaper because it drops the
-            Shinjuku–Odawara leg — buy it if a shinkansen, not the Odakyu Line, is bringing you in. Every
-            figure on this page sits alongside the other passes checked in our{" "}
-            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
+          <h2 className={styles.sectionTitle}>How Much Is the Hakone Freepass in 2026?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            {PASS_2_DAY_SHINJUKU} for an adult for 2 days from Shinjuku, which is the version most Tokyo visitors
+            need. The price depends on the station the pass starts from, and the third day costs only ¥400 more.
+          </p>
+          <Table
+            head={["Departure station", "2 days, adult", "2 days, child", "3 days, adult", "3 days, child"]}
+            rows={priceRows.map((r) => [r.pass, r.d2a, r.d2c, r.d3a, r.d3c])}
+          />
+          <LastChecked>
+            . Child fares are for ages 6–11; under 6 ride free. These prices have applied since 1 October 2025. The
+            Romancecar seat is extra: {ROMANCECAR} / ¥600 from Shinjuku, ¥200 / ¥100 from Odawara, to Hakone-Yumoto.
+          </LastChecked>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            Shinjuku or Odawara? The ¥1,100 difference is the Odakyu Line return between Shinjuku and Odawara and
+            nothing else — both versions cover the same 8 kinds of transport inside Hakone. Every pass on this site
+            sits alongside the others in our{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
               Japan attraction ticket prices table
             </Link>
-            , which carries the check date for each one.
+            .
           </p>
+          {/* Directly under the price table: the pass, then what to book on the same trip. */}
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Check the Hakone Freepass on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What else should you book with the Hakone Freepass?"
+          headingLevel={3}
+          intro="The pass covers the transport. These three book on the same Klook account: a guided Hakone day if you only have one day, a room in Hakone for the second day of the pass, and data for the digital ticket."
+          items={hakoneFreepassTripPrep}
+        />
+
+        {/* Where to buy */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Where to buy</span>
+          <h2 className={styles.sectionTitle}>Where Can I Buy the Hakone Freepass?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Online through Odakyu&apos;s EMot Online Tickets or Klook, or on paper at any Odakyu Line station,
+            7-Eleven or in Hakone itself. What changes is the ticket you get and how early you can buy it.
+          </p>
+          <Table
+            head={["Where", "What you get", "When you can buy", "Worth knowing"]}
+            rows={buyRows.map((r) => [r.where, r.ticket, r.when, r.note])}
+          />
+          <LastChecked>. Klook row: no official source; the listing itself has the current terms.</LastChecked>
         </section>
 
         {/* Coverage table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Included vs not</span>
-          <h2 className={styles.sectionTitle}>What Does the Hakone Free Pass Cover?</h2>
+          <h2 className={styles.sectionTitle}>What Does the Hakone Freepass Cover?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Odakyu counts eight modes of transport. The useful way to read the list is as the loop itself:
-            rows two to six are the circuit, in the order you ride them.
+            Unlimited rides on 8 kinds of transport inside Hakone, plus one Odakyu Line return on the Shinjuku
+            version. The Romancecar seat and the Izu-Hakone Bus are not covered.
           </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Transport", "On the pass?", "What that means"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {coverageRows.map((row) => (
-                    <tr key={row.mode}>
-                      <td className={styles.tdProvider}>{row.mode}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.included}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Coverage list read off odakyu-global.com on {CHECKED}. The pass also carries discounts at
-            facilities around the loop — museums, ropeway-side attractions and hot-spring baths — which are
-            not priced here because the participating list and the discount both change.
-          </p>
+          <Table head={["Transport", "On the pass?", "What that means"]} rows={coverageRows.map((r) => [r.mode, r.included, r.note])} />
+          <LastChecked>
+            . The pass also gives discounts at around 70 spots in Hakone; the list changes, so it is not priced here.
+          </LastChecked>
         </section>
 
-        {/* Break-even */}
+        {/* Break-even and worth it */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Break-even</span>
-          <h2 className={styles.sectionTitle}>Does the Loop Cost More Than the Pass?</h2>
+          <span className={styles.sectionLabel}>Is it worth it?</span>
+          <h2 className={styles.sectionTitle}>Is the Hakone Freepass Worth It for a Day Trip?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Short answer: yes, if you ride all of it. Below are the loop fares published on the
-            operators&apos; own sites. The legs without an official fare table to quote are
-            deliberately missing rather than estimated, which means the total below is a floor, not the real
-            cost of doing the loop piecemeal.
+            Yes, if you ride the whole loop. The fares below — the only legs with an official published fare —
+            already reach ¥5,520 of the {PASS_2_DAY_SHINJUKU} pass before the Tozan Train, the cable car and the
+            closing bus, and Odakyu says the pass is &ldquo;worth it even for a day trip&rdquo;.
           </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Leg", "Adult", "Child", "Source"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {legRows.map((row) => (
-                    <tr key={row.leg}>
-                      <td className={styles.tdProvider}>{row.leg}</td>
-                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.adult}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.child}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.source}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            The ropeway and the cruise alone are <strong>¥3,200 one way for an adult</strong>, before the
-            mountain train, the cable car, the closing bus or either Odakyu Line leg out of Tokyo. Odakyu
-            publishes its own version of this sum: the Hakone route from Shinjuku at <strong>¥9,200 using
-            JR</strong> against <strong>{PASS_2_DAY_SHINJUKU} using Odakyu with the 2-day pass</strong> — a
-            ¥2,100 saving for an adult. Fares checked {CHECKED}.
+          <Table head={["Leg (adult, without the pass)", "Adult", "Child", "Source"]} rows={legRows.map((r) => [r.leg, r.adult, r.child, r.source])} />
+          <p className={styles.bodyText} style={noteStyle}>
+            Last checked: {CHECKED_ISO} —{" "}
+            <a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">Odakyu Hakone fare notice (PDF)</a>,{" "}
+            <a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp</a>. The premium cabin on the
+            cruise is another ¥800 / ¥400 one way.
           </p>
-        </section>
-
-        {/* Is the pass worth it — judgement table, with the CTA directly after it */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Is the pass worth it?</span>
-          <h2 className={styles.sectionTitle}>Is the Hakone Free Pass Worth It for Your Trip?</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Your plan", "Verdict", "Why"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {worthRows.map((row) => (
-                    <tr key={row.plan}>
-                      <td className={styles.tdProvider}>{row.plan}</td>
-                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.verdict}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.why}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <Table head={["Your plan", "Verdict", "Why"]} rows={worthRows.map((r) => [r.plan, r.verdict, r.why])} />
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Whichever row you landed on, the booking is the same two choices. The pass is a digital voucher
-            with an English checkout — worth knowing if the Japanese retail pages reject a foreign card — and
-            the guided loop is a fixed departure with a seat, which is the version that fits a single day.
-            Check the cancellation terms and the departure date on the listing before you commit; a pass has a
-            validity window and a coach has a timetable, and neither waits for a late flight.
+            Both the ropeway and the cruise stop in bad weather, and the ropeway can close at short notice at
+            Owakudani. If a leg is suspended and you did not ride it, the paper pass is refunded at the last
+            station you travel to. The day-by-day route — what to see at each stop and when to leave Tokyo — is
+            in our{" "}
+            <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={linkStyle}>
+              Hakone day trip from Tokyo
+            </Link>{" "}
+            guide; this page covers the pass itself.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -604,83 +529,54 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
           </div>
         </section>
 
-        {/* Buying and using */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Choose and Buy the Pass</h2>
-          <div className={styles.stepsList}>
-            {steps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Romancecar */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Getting there</span>
+          <h2 className={styles.sectionTitle}>Does the Hakone Freepass Include the Romancecar?</h2>
+          <p className={styles.bodyText}>
+            No. The Shinjuku version covers one Odakyu Line return, but the Limited Express Romancecar needs a
+            separate seat ticket: <strong>{ROMANCECAR} for an adult and ¥600 for a child each way</strong> from
+            Shinjuku to Hakone-Yumoto. It takes about <strong>80 minutes direct</strong>, all seats reserved, and
+            booking the seat on EMot Online Tickets is ¥50 cheaper than at the station. Odakyu&apos;s own worked
+            example for a return trip from Shinjuku is the pass at {PASS_2_DAY_SHINJUKU} plus the Romancecar both
+            ways at ¥2,400, ¥9,500 in total. The ordinary Odakyu trains the pass covers take longer and usually
+            mean a change at Odawara.
+          </p>
+          <p className={styles.bodyText}>
+            Hakone also pairs with the Fuji Five Lakes, a separate pass and region — our{" "}
+            <Link href="/guides/attractions/mt-fuji-day-trip-tokyo" style={linkStyle}>
+              Mt. Fuji day trip guide
+            </Link>{" "}
+            covers it. If Hakone is one night inside a longer route, the{" "}
+            <Link href="/guides/attractions/tokyo-7-day-itinerary" style={linkStyle}>
+              7-day Tokyo itinerary
+            </Link>
+            , the{" "}
+            <Link href="/guides/attractions/tokyo-5-day-itinerary" style={linkStyle}>
+              5-day Tokyo itinerary
+            </Link>{" "}
+            and the{" "}
+            <Link href="/guides/attractions/japan-14-day-itinerary" style={linkStyle}>
+              14-day Japan itinerary
+            </Link>{" "}
+            show where the Hakone day sits, and our{" "}
+            <Link href="/guides/attractions/hakone-ryokan-private-onsen" style={linkStyle}>
+              Hakone ryokan with private onsen
+            </Link>{" "}
+            guide covers the night.
+          </p>
         </section>
 
         {/* Digital or paper */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The ticket itself</span>
-          <h2 className={styles.sectionTitle}>Digital or Paper: Which Hakone Free Pass Should You Get?</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["", "Digital (EMot)", "Paper"].map((h) => (
-                      <th key={h || "blank"}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {formatRows.map((row) => (
-                    <tr key={row.item}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.item}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.digital}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.paper}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off odakyu-global.com on {FORMAT_CHECKED}. Go digital if everyone in your group stays together
-            with one phone; go paper if a child has their own Kids Phone or you would rather not depend on a battery.
-          </p>
-        </section>
-
-        {/* Getting there */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>How Long Does Shinjuku to Hakone Take?</h2>
-          <p className={styles.bodyText}>
-            About <strong>80 minutes direct</strong> from Shinjuku to Hakone-Yumoto on the Limited Express
-            Romancecar, per Odakyu — all seats reserved, and the {ROMANCECAR} adult surcharge the pass does not
-            include. The ordinary Odakyu Line services the pass covers in full take longer and usually mean a
-            change at Odawara. On a two-day trip that difference barely matters; on a single day it decides
-            whether you finish the loop before the last boat.
-          </p>
-          <p className={styles.bodyText}>
-            Hakone also pairs naturally with the Fuji Five Lakes, which is a separate pass and a separate
-            region — our{" "}
-            <Link href="/guides/attractions/mt-fuji-day-trip-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Mt. Fuji day trip guide
-            </Link>{" "}
-            covers the Mt. Fuji Pass and why it does not get you out of Tokyo. If Hakone is one night inside a
-            longer route, both our{" "}
-            <Link href="/guides/attractions/tokyo-5-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
-              5-day Tokyo itinerary
-            </Link>{" "}
-            and the{" "}
-            <Link href="/guides/attractions/japan-14-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
-              14-day Japan itinerary
-            </Link>{" "}
-            show where the Hakone night sits.
-          </p>
+          <h2 className={styles.sectionTitle}>Digital or Paper: Which Hakone Freepass Should You Get?</h2>
+          <Table head={["", "Digital (EMot)", "Paper"]} rows={formatRows.map((r) => [r.item, r.digital, r.paper])} />
+          <LastChecked>
+            . Go digital if your group stays together on one phone; go paper if a child has a Kids Phone or you would
+            rather not depend on a battery. Validity is by calendar day: a 2-day pass ends after the last service on
+            the day after purchase, not 48 hours later.
+          </LastChecked>
         </section>
 
         <EsimCtaBottom />
@@ -688,7 +584,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Hakone Freepass FAQ</h2>
           <div className={styles.faqList}>
             {faqItems.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
@@ -706,7 +602,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="If One Day Is All You Have"
-          intro="A pass is the right buy for two days in Hakone. For a single day out of Tokyo, these are the guided versions of the same loop — one coach, one fixed departure, back in the city the same evening. Open a listing for the current price on your date."
+          intro="A pass is the right buy for doing the loop yourself. For a single day out of Tokyo without timetables, these are the guided versions of the same loop — one coach, one fixed departure, back in the city the same evening. Open a listing for the current price on your date."
           tours={[hakoneLoopBusTour, hakoneCruiseCableCarTour]}
         />
 
@@ -862,8 +758,8 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Ride the whole Hakone loop on one ticket</h2>
             <p className={styles.ctaBannerDesc}>
-              Eight modes of transport, two or three days, and an English checkout that takes a foreign card.
-              If you only have one day, the guided coach version of the same loop is the better buy.
+              8 kinds of transport, two or three days, and an English checkout that takes a foreign card. If you
+              only have one day and want no timetables, the guided coach version of the same loop is the better buy.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
               <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>

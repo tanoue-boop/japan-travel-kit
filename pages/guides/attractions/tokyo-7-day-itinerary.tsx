@@ -274,7 +274,7 @@ const related = [
   { href: "/guides/attractions/kamakura-day-trip", title: "Kamakura Day Trip From Tokyo (2026): Temples and Fares" },
   { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "Kawaguchiko Day Trip From Tokyo 2026: ¥2,200 Bus or Tour" },
   { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket 2026: 24/48/72-Hour Price, Worth It?" },
-  { href: "/guides/attractions/hakone-free-pass", title: "Hakone Free Pass 2026: ¥7,100 From Shinjuku, Is It Worth It?" },
+  { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass (Free Pass) 2026: Price & Where to Buy" },
   { href: "/guides/transport/tokyo-wide-pass", title: "JR Tokyo Wide Pass Price (2026): ¥16,000 — Is It Worth It?" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas Compared" },
   { href: "/guides/money/tokyo-trip-cost", title: "Trip to Tokyo Cost (2026): Per Day, 5-Day and 7-Day Totals" },
@@ -433,7 +433,9 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
               2 hours from Asakusa) and <strong>Kamakura</strong> (50–60 minutes from Tokyo Station) or{" "}
               <strong>Kawaguchiko</strong> for Mt. Fuji (1 hour 45 minutes from Shinjuku). Use 24-hour{" "}
               <strong>Tokyo Subway Tickets</strong> ({PRICES.tokyoSubwayTicket.adult} each) on the subway-heavy
-              city days and the <strong>Hakone Freepass</strong> ({PRICES.hakoneFreepass.adult} from Shinjuku)
+              city days and the{" "}
+              <strong><Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link></strong>{" "}
+              ({PRICES.hakoneFreepass.adult} from Shinjuku)
               for Hakone; a JR Pass does not pay. Book the hotel, the SHIBUYA SKY sunset slot and teamLab Planets
               first.
             </p>
@@ -600,7 +602,7 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             ); NIKKO PASS {NIKKO_PASS_CHECKED} (tobu.co.jp); JR Tokyo Wide Pass {WIDE_PASS_CHECKED} (jreast.co.jp).
             The break-even for the subway ticket is worked out in the{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket guide</Link>, the Hakone
-            arithmetic in the <Link href="/guides/attractions/hakone-free-pass">Hakone Free Pass guide</Link>,
+            arithmetic in the <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass guide</Link>,
             and the JR option in the <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
