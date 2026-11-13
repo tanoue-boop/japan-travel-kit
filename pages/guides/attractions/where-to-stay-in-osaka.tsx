@@ -520,7 +520,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             works through. A Universal City base also puts the aquarium within reach: the Captain Line shuttle
             boat crosses from Universal City Port to Kaiyukan in about ten minutes, and our{" "}
             <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Osaka Aquarium Kaiyukan tickets
-            guide</Link> covers its date-based prices and entry slots.
+            guide</Link> covers its date-based prices and entry slots. Our{" "}
+            <Link href="/guides/attractions/usj-hotels">USJ hotels guide</Link> compares the official hotels
+            around Universal City Station one by one.
           </p>
         </section>
 
@@ -632,6 +634,19 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 13 Nov 2026: the official hotels by the USJ gates. */}
+            <Link href="/guides/attractions/usj-hotels" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21h18M5 21V8l7-5 7 5v13" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>USJ Hotels (2026): Official Hotels Near Universal Studios Japan</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 10 Nov 2026: three days in Osaka, with USJ and a Nara or Kobe day. */}
             <Link href="/guides/attractions/osaka-3-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

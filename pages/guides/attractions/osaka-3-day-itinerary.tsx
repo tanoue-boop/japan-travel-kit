@@ -396,6 +396,7 @@ const related = [
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },
   { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?" },
   { href: "/guides/attractions/usj-tickets-express-pass", title: "Universal Studios Japan Tickets and Express Pass" },
+  { href: "/guides/attractions/usj-hotels", title: "USJ Hotels (2026): Official Hotels Near Universal Studios Japan" },
   { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "Osaka Aquarium Kaiyukan Tickets" },
   { href: "/guides/attractions/osaka-castle-tickets", title: "Osaka Castle Tickets" },
   { href: "/guides/attractions/nara-day-trip", title: "Nara Day Trip on Your Own (2026): Trains, Times and Todai-ji" },
@@ -610,6 +611,8 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             Express Pass is optional and limited per day; it does not include park admission. The full
             breakdown is in the{" "}
             <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets and Express Pass guide</Link>.
+            To sleep by the gates the night before, our{" "}
+            <Link href="/guides/attractions/usj-hotels">USJ hotels guide</Link> compares the official hotels.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

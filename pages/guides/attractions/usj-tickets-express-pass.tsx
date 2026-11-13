@@ -882,7 +882,11 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             <Link href="/guides/attractions/osaka-2-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
               two days in Osaka itinerary
             </Link>{" "}
-            shows where a park day fits around the rest of the city.
+            shows where a park day fits around the rest of the city. For the official hotels by the gates
+            compared one by one, see our{" "}
+            <Link href="/guides/attractions/usj-hotels" style={{ color: "var(--red)", fontWeight: 600 }}>
+              USJ hotels guide
+            </Link>.
           </p>
         </section>
 
@@ -988,6 +992,19 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 13 Nov 2026: the official hotels by the gates. */}
+            <Link href="/guides/attractions/usj-hotels" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21h18M5 21V8l7-5 7 5v13" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>USJ Hotels (2026): Official Hotels Near Universal Studios Japan</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 10 Nov 2026: three days in Osaka, with USJ and a Nara or Kobe day. */}
             <Link href="/guides/attractions/osaka-3-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

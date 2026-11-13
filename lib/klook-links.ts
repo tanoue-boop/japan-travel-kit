@@ -8747,3 +8747,173 @@ export const kanazawaTwoDayTripPrep: KlookTripPrepItem[] = [
     why: "The bus seat, the light-up rules and any snow notice all reach you on your phone on these two days.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// USJ hotels and Kinosaki Onsen, added 13 Nov 2026 (task-jtk-20261113-02).
+//
+// Klook answers automated reads of its product pages with HTTP 403, so every new
+// listing below was confirmed as a live en-US page through the www.klook.com
+// search index on 13 Nov 2026. Hotels and tours are the 6.5% band; the Kansai
+// Airport limousine bus and the Konotori rail page are 5%. The Singulari Hotel was
+// left out (the index only carried it without an en-US path), and so was Oriental
+// Hotel Universal City (no Klook detail page found); both go to the hotel search.
+// No price anywhere.
+// ---------------------------------------------------------------------------
+
+/** The four official USJ hotels the index carries in en-US form. */
+export const parkFrontHotelUsjKlook: KlookTour = {
+  title: "The Park Front Hotel at Universal Studios Japan",
+  desc: "The official hotel facing the park's entrance plaza at Universal City",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/277481-the-park-front-hotel-at-universal-studios-japan/"),
+};
+
+export const hotelUniversalPortKlook: KlookTour = {
+  title: "Hotel Universal Port",
+  desc: "The official hotel on the bay side of Universal City, known for its themed rooms",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/266222-hotel-universal-port/"),
+};
+
+export const hotelKintetsuUniversalCityKlook: KlookTour = {
+  title: "Hotel Kintetsu Universal City",
+  desc: "The official hotel beside Universal City Station, with an airport bus stop listed in front",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/484480-hotel-kintetsu-universal-city/"),
+};
+
+export const hotelKeihanUniversalTowerKlook: KlookTour = {
+  title: "Hotel Keihan Universal Tower",
+  desc: "The official tower hotel at Universal City, with a top-floor spa listed as an extra",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/248762-hotel-keihan-universal-tower/"),
+};
+
+export const hotelUniversalPortVitaKlook: KlookTour = {
+  title: "Hotel Universal Port Vita",
+  desc: "The smaller sister of Hotel Universal Port, also on USJ's Official Hotel list",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/283594-hotel-universal-port-vita/"),
+};
+
+/** Kansai Airport ⇄ Osaka limousine bus; the listing carries a USJ timetable. */
+export const kansaiAirportLimousineBus: KlookTour = {
+  title: "Kansai Airport limousine bus (one way)",
+  desc: "The Kansai Airport Limousine one-way ticket, whose listing includes the Kansai Airport ⇄ Universal Studios Japan route alongside Osaka Station, Namba and Kyoto",
+  url: klookLink("https://www.klook.com/en-US/activity/18203-kansai-airport-one-way-transfer-osaka/"),
+};
+
+/** Kinosaki: two join-in bus days out of Osaka, the Konotori rail page and the hotel search. */
+export const kinosakiCrabLunchDayTour: KlookTour = {
+  title: "Kinosaki Onsen & Kasumi crab lunch day tour from Osaka",
+  desc: "A join-in coach day with a crab course lunch and free time in the Kinosaki Onsen town; the listing notes the guide speaks Japanese with translation-device support and that bath entry is paid separately",
+  url: klookLink("https://www.klook.com/en-US/activity/141803-visit-kinosaki-onsen-and-kasumi-crab-lunch-1-day-tour-from-osaka/"),
+};
+
+export const kinosakiHamasakaDayTour: KlookTour = {
+  title: "Kinosaki Onsen town one-day bus tour from Osaka (with Hamasaka seafood)",
+  desc: "A join-in coach day with about two hours in Kinosaki Onsen and a seafood set menu in Hamasaka on the Sea of Japan coast",
+  url: klookLink("https://www.klook.com/en-US/activity/93340-kinosaki-onsen-hamasaka-watanabe-fisheries-mahoroba-roadside-station-tajima-join-day-bus-tour-osaka/"),
+};
+
+export const konotoriTrainKlook: KlookTour = {
+  title: "Limited Express Konotori tickets (Osaka ⇄ Kinosaki Onsen)",
+  desc: "Klook's Japan Rail booking page for the Konotori, the JR limited express from Osaka Station to Kinosaki Onsen",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/kounotori/"),
+};
+
+export const kinosakiHotels: KlookTour = {
+  title: "Hotels and ryokan in Kinosaki Onsen",
+  desc: "Klook's hotel search for Kinosaki Onsen, for picking a ryokan on your own dates",
+  url: klookLink("https://www.klook.com/en-US/destination/p50293911-kinosaki-onsen/3-hotel/"),
+};
+
+export const kinosakiAkaishiyaKlook: KlookTour = {
+  title: "Kinosaki Onsen Ryokan Akaishiya",
+  desc: "A small ryokan listed about five minutes on foot from JR Kinosaki Onsen Station, with yukata and its own baths",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/1263016-kinosaki-onsen-ryokan-akaishiya/"),
+};
+
+export const kinosakiOyadoHakusanKlook: KlookTour = {
+  title: "Oyado Hakusan, Kinosaki Onsen",
+  desc: "A 15-room ryokan listed about 500 m from Kinosaki Onsen Station",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/1110063-kinosaki-onsen-ryokan-oyado-hakusan/"),
+};
+
+/** Where to sleep for a Kinosaki night. */
+export const kinosakiStayAreas: KlookStayArea[] = [
+  {
+    area: "Kinosaki Onsen town (all ryokan)",
+    why: "The tourism association says most inns hand guests a free public-bath pass at check-in, valid until 13:00 on the day you leave — the evening and the morning bath are what a day trip cannot have.",
+    url: kinosakiHotels.url,
+  },
+  {
+    area: "Near the station (Kinosaki Onsen Ryokan Akaishiya)",
+    why: "Listed on Klook about five minutes on foot from JR Kinosaki Onsen Station, so the Konotori arrival is a short walk with bags.",
+    url: kinosakiAkaishiyaKlook.url,
+  },
+  {
+    area: "Small ryokan (Oyado Hakusan)",
+    why: "A 15-room inn listed about 500 m from the station, for a quieter night in the same town.",
+    url: kinosakiOyadoHakusanKlook.url,
+  },
+];
+
+/** Book these on the same trip: 6.5% tour and ryokan, 5% rail and pass, 20% eSIM. */
+export const kinosakiTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kinosakiCrabLunchDayTour.title,
+    ctaLabel: "Check the Kinosaki crab-lunch tour →",
+    url: kinosakiCrabLunchDayTour.url,
+    why: "The day trip as one booking: coach from Osaka, a crab course lunch in season and free time in the town. Bath entry is paid separately on this listing.",
+  },
+  {
+    label: kinosakiHotels.title,
+    ctaLabel: "Check Kinosaki ryokan on Klook →",
+    url: kinosakiHotels.url,
+    why: "One night turns it from 2h40m each way in a day into an evening of walking between baths — and most inns include the bath pass.",
+  },
+  {
+    label: konotoriTrainKlook.title,
+    ctaLabel: "Check Konotori tickets →",
+    url: konotoriTrainKlook.url,
+    why: "Every seat on the Konotori is reserved, so the seat is the first thing to fix if you go on your own.",
+  },
+  {
+    label: jrKansaiWideAreaPass.title,
+    ctaLabel: "Check the Kansai WIDE Area Pass →",
+    url: jrKansaiWideAreaPass.url,
+    why: "JR West names Kinosaki Onsen as a WIDE pass excursion and includes Konotori reserved seats. The ordinary Kansai Area Pass does not cover limited expresses.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Seat reservations, the bath closing days and any snow notice on the line reach you on your phone.",
+  },
+];
+
+/** USJ hotels: the room, the park ticket, the airport bus, data. */
+export const usjHotelsTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels near Universal Studios Japan (Universal City)",
+    ctaLabel: "Check Universal City hotels on Klook →",
+    url: usjStayAreas[0].url,
+    why: "Every official hotel on one search, so you can compare the ones still open on your date.",
+  },
+  {
+    label: "Universal Studios Japan e-ticket (Studio Pass)",
+    ctaLabel: "Check the Studio Pass →",
+    url: usjStudioPassUrl,
+    why: "The hotel does not include park entry. Studio Pass prices change by date, so fix the date and the room together.",
+  },
+  {
+    label: "Universal Express Pass",
+    ctaLabel: "Check Express Pass →",
+    url: usjExpressPassUrl,
+    why: "Optional and limited per day; on busy dates it sells out before the rooms do.",
+  },
+  {
+    label: kansaiAirportLimousineBus.title,
+    ctaLabel: "Check the airport limousine bus →",
+    url: kansaiAirportLimousineBus.url,
+    why: "The listing includes the Kansai Airport ⇄ Universal Studios Japan route — no train change with luggage. The operator runs it first come, first served, about 50 to 70 minutes.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Studio Pass QR codes, the official app's wait times and timed-entry notices all run on your phone in the park.",
+  },
+];

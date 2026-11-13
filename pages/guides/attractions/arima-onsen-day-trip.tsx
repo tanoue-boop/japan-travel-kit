@@ -432,6 +432,12 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             picture Arima — private baths, a kaiseki dinner, the streets after the last coach — belongs to
             people who are staying the night. Get the day of the week right and the rest is easy.
           </p>
+          <p className={styles.bodyText}>
+            If you want the Sea of Japan side instead — public baths to walk between and
+            snow crab in winter — that is a longer trip; our{" "}
+            <Link href="/guides/attractions/kinosaki-onsen-day-trip">Kinosaki Onsen day trip guide</Link>{" "}
+            has the train times from Osaka and the bath pass.
+          </p>
         </section>
 
         {/* Access table */}
@@ -693,6 +699,19 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 13 Nov 2026: the Sea of Japan onsen town, its seven public baths and the crab season. */}
+            <Link href="/guides/attractions/kinosaki-onsen-day-trip" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 21h18M5 21V10l7-5 7 5v11" />
+                  <path d="M9 21v-6h6v6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kinosaki Onsen Day Trip (2026): From Osaka, Bath Pass and Ryokan</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 6 Nov 2026: the Kii Mountains pilgrimage road, as a day from Osaka or a two-day walk. */}
             <Link href="/guides/attractions/kumano-kodo-tour" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

@@ -134,6 +134,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/usj-hotels",
+    badge: "Where to stay",
+    title: "USJ Hotels: Official Hotels Near Universal Studios Japan",
+    desc: "The seven Official Hotels at Universal City by walking time to the gates (1–4 min), what USJ's perk list does and does not include, Umeda and Namba as bases (about 11 and 13 min), and when rooms open.",
+    group: "parks",
+    city: "osaka",
+  },
+  {
     href: "/guides/attractions/usj-tickets-express-pass",
     badge: "Tickets",
     title: "Universal Studios Japan Express Pass 2026: Types, Prices & Do You Need One",
@@ -856,6 +864,15 @@ export const attractionArticles: GuideArticle[] = [
     // Arima is inside Kobe, but the day is almost always sold and planned out of
     // Osaka — same rule as kyoto-nara-day-tour-from-osaka: the departure point wins.
     city: "osaka",
+  },
+  {
+    href: "/guides/attractions/kinosaki-onsen-day-trip",
+    badge: "Day trip",
+    title: "Kinosaki Onsen Day Trip: From Osaka, Bath Pass & Ryokan",
+    desc: "About 2h40m from Osaka on the reserved-only Konotori, the ¥1,500 Yumepa bath pass, which of the seven baths are open and when they close, tattoos allowed, the November–March crab season, and a day trip against one ryokan night.",
+    group: "daytrips",
+    // Kinosaki sits outside the three city hubs (task definition: city other).
+    city: "other",
   },
   {
     href: "/guides/attractions/himeji-castle-day-trip",
