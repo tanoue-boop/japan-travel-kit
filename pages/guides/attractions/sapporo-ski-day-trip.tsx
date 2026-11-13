@@ -516,9 +516,9 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
           </p>
           <p className={styles.bodyText}>
             <strong>Insurance:</strong> some lesson listings require accident insurance, and a standard travel
-            policy may exclude skiing. The{" "}
-            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance guide</Link> covers
-            what to check.
+            policy may exclude skiing. Our guide to{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance">travel insurance for skiing in Japan</Link> covers
+            what to check, including what a family ski trip to Hokkaido needs.
           </p>
         </section>
 

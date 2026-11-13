@@ -522,7 +522,10 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             <strong>The tours usually still run.</strong> The Yeti day trip listing says it is not cancelled for rain,
             and that pick-up and drop-off times can change with traffic and weather. The Yeti &amp; onsen tour lists
             free cancellation up to 24 hours before. Each listing sets its own cancellation window, so read it
-            before you pay.
+            before you pay. If you plan to ski or snowboard rather than just play in the snow, check that your
+            policy names it first: our guide to{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance">travel insurance for skiing and snowboarding in Japan</Link>{" "}
+            covers on-piste cover, helmets and rescue.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={yetiOnsenFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

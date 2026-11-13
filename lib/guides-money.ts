@@ -117,8 +117,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/japan-ski-travel-insurance",
     badge: "Comparison",
-    title: "Best Travel Insurance for Skiing and Snowboarding in Japan (2026)",
-    desc: "On-piste cover, off-piste limits and rescue bills, compared on published wording, with the pick for a family ski trip to Hokkaido.",
+    title: "Travel Insurance for Skiing & Snowboarding in Japan (2026)",
+    desc: "On-piste vs off-piste cover, helicopter rescue, gear and lift-pass refunds, compared on published policy wording, with the pick for a family ski trip to Hokkaido.",
     group: "planning",
     city: "other",
   },
