@@ -488,7 +488,12 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             sells its Japan plan online to anyone, anywhere, and delivers it as a QR code or an
             in-app install, so the usual answer is that you buy it at home a few days before
             departure. Buying after you land works too: the purchase needs an internet
-            connection, not a Japanese one, so airport or hotel WiFi is enough.
+            connection, not a Japanese one, so airport or hotel WiFi is enough. For what the
+            counters and vending machines at Narita, Haneda and Kansai sell, and their hours, see
+            our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              guide to buying a SIM card or eSIM at a Japanese airport
+            </Link>.
           </p>
           <p className={styles.bodyText}>
             What is <em>not</em> freely available is a Japanese phone number. Sakura

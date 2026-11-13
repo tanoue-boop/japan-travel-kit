@@ -594,7 +594,12 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Within a few seconds you&apos;ll see your carrier name (Docomo, SoftBank, or au) appear in
             the status bar and your data connection will be live. You&apos;ll have 4G before you
-            reach baggage claim — no airport SIM vending machines required.
+            reach baggage claim — no airport SIM vending machines required. (If your phone cannot
+            take an eSIM, our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan airport SIM card guide
+            </Link>{" "}
+            lists the counters and their hours at Narita, Haneda and Kansai.)
           </p>
           <p className={styles.bodyText}>
             If you want to keep your home SIM active for calls and texts, leave it enabled alongside

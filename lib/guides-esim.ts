@@ -29,8 +29,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-airport-sim-cards",
     badge: "Comparison",
-    title: "Japan Airport SIM Cards 2026: Where to Buy, Hours and Prices",
-    desc: "SIM counters and vending machines at Narita, Haneda and Kansai, from each airport's own listing, and what to do if you land after they close.",
+    title: "Japan Airport SIM Cards & eSIM (2026): Narita, Haneda, KIX",
+    desc: "SIM counters and vending machines at Narita, Haneda and Kansai by terminal and opening hours, and why an eSIM bought before you fly beats the airport queue.",
     group: "compare",
     city: "other",
   },
