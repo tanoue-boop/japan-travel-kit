@@ -2,6 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
+import { kyotoArrivalShinkansenPrep, osakaArrivalShinkansenPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
@@ -269,6 +272,21 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             </KlookLink>
           </div>
         </div>
+
+        <KlookTripPrep
+          headingLevel={3}
+          label="Book with the train"
+          heading="What to Book in Kyoto or Osaka With Your Seat"
+          intro="The Tokaido Shinkansen from Tokyo stops at Kyoto and ends at Shin-Osaka. The hotel at the other end, a city pass and a guided day are the bookings to settle in the same sitting."
+          items={[
+            kyotoArrivalShinkansenPrep[0],
+            kyotoArrivalShinkansenPrep[2],
+            osakaArrivalShinkansenPrep[0],
+            osakaArrivalShinkansenPrep[1],
+          ]}
+        />
+
+        <BookingEsimCard />
 
         <EsimCtaTop />
 

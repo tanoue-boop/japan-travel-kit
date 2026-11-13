@@ -17,7 +17,10 @@ import {
   shinkansenTokyoKanazawa,
   shirakawagoKanazawaDayTour,
   shirakawagoTakayamaKanazawaDayTour,
+  kanazawaArrivalShinkansenPrep,
 } from "../../../lib/klook-links";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
@@ -399,6 +402,16 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
         </div>
+
+        <KlookTripPrep
+          headingLevel={3}
+          label="Book with the train"
+          heading="What to Book in Kanazawa With Your Seat"
+          intro="The train ends at Kanazawa Station. Shirakawa-go, the pass for the onward leg and the night itself are the bookings to settle in the same sitting."
+          items={kanazawaArrivalShinkansenPrep}
+        />
+
+        <BookingEsimCard />
 
         <EsimCtaTop />
 

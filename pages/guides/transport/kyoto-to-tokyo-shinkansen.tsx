@@ -8,12 +8,14 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import {
   hanedaLimousineBus,
   jrPassWholeJapan,
   klookEsim,
   kyotoToTokyoArrivalStayAreas,
   kyotoToTokyoTripPrep,
+  tokyoArrivalShinkansenPrep,
   naritaLimousineBus,
   shinkansenKyotoTokyo,
   tokyoPrivateAirportTransfer,
@@ -622,6 +624,16 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             </div>
           </div>
         </div>
+
+        <KlookTripPrep
+          headingLevel={3}
+          label="Book with the train"
+          heading="What to Book in Tokyo With Your Seat"
+          intro="The train ends inside Tokyo Station. A room near it and a subway ticket for the days after are the two bookings the shinkansen ticket does not cover."
+          items={tokyoArrivalShinkansenPrep}
+        />
+
+        <BookingEsimCard />
 
         <EsimCtaTop />
 

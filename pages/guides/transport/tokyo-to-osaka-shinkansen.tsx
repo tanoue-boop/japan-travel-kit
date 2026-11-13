@@ -17,6 +17,7 @@ import {
   osakaAmazingPass,
   shinkansenTokyoOsaka,
   tokyoOsakaArrivalPrep,
+  osakaArrivalShinkansenPrep,
   tokyoOsakaArrivalStayAreas,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
@@ -419,6 +420,14 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           </div>
         </div>
 
+        <KlookTripPrep
+          headingLevel={3}
+          label="Book with the train"
+          heading="What to Book in Osaka With Your Seat"
+          intro="The Nozomi ends at Shin-Osaka. The bed, the city pass and a park date are the parts of the same trip that are easiest to settle while the train is open in the next tab."
+          items={osakaArrivalShinkansenPrep}
+        />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -623,6 +632,22 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             train for that leg, and the{" "}
             <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo shinkansen guide</Link> covers
             the ride back.
+          </p>
+
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.5rem" }}>
+            Can I Stop in Nagoya on the Way From Tokyo to Osaka?
+          </h3>
+          <p className={styles.bodyText}>
+            Yes, on a basic fare ticket for more than 100 km: JR Central allows a stopover (leaving the gates
+            and coming back in) at a station between origin and destination, with no backtracking. The
+            shinkansen&apos;s limited express ticket cannot be used for a stopover, so buy one for Tokyo →
+            Nagoya and another for Nagoya → Shin-Osaka; on smartEX no stopover is allowed and the unridden
+            section becomes invalid once you get off. Rules read on JR Central&apos;s{" "}
+            <a href="https://global.jr-central.co.jp/en/tickets/type/stopovers.html" target="_blank" rel="noopener">
+              stopovers page
+            </a>{" "}
+            and smart-ex.jp, 13 Nov 2026. What to do with the day there is in our{" "}
+            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link>.
           </p>
         </section>
 

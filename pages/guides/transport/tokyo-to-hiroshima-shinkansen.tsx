@@ -18,7 +18,10 @@ import {
   jrSanyoSaninAreaPass,
   klookEsim,
   shinkansenTokyoHiroshima,
+  hiroshimaArrivalShinkansenPrep,
 } from "../../../lib/klook-links";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
@@ -438,6 +441,16 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             </div>
           </div>
         </div>
+
+        <KlookTripPrep
+          headingLevel={3}
+          label="Book with the train"
+          heading="What to Book in Hiroshima With Your Seat"
+          intro="The train ends at Hiroshima Station. A guided Miyajima day with the ferry included, and a room by the station the Miyajimaguchi trains leave from, are the bookings to settle in the same sitting."
+          items={hiroshimaArrivalShinkansenPrep}
+        />
+
+        <BookingEsimCard />
 
         <EsimCtaTop />
 

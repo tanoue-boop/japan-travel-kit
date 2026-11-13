@@ -3,10 +3,11 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
-import { shinkansenTokyoKyoto, tokyoToKyotoTripPrep } from "../../../lib/klook-links";
+import { kyotoArrivalShinkansenPrep, shinkansenTokyoKyoto, tokyoToKyotoTripPrep } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
@@ -310,6 +311,16 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
           </div>
         </div>
 
+        <KlookTripPrep
+          headingLevel={3}
+          label="Book with the train"
+          heading="What to Book in Kyoto With Your Seat"
+          intro="The train ends at Kyoto Station. The hotel at the other end and a guided day for the sights spread across the city are the bookings to settle in the same sitting."
+          items={kyotoArrivalShinkansenPrep}
+        />
+
+        <BookingEsimCard />
+
         <EsimCtaTop />
 
         {/* Comparison */}
@@ -350,13 +361,6 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             no operator figure for this route could be confirmed.
           </p>
         </section>
-
-        <KlookTripPrep
-          label="Book ahead"
-          heading="What to Book for Tokyo to Kyoto"
-          intro="Start with the train, then the hotel at the other end. The tours and eSIM are the bookings that shape your first days in Kyoto."
-          items={tokyoToKyotoTripPrep}
-        />
 
         {/* Shinkansen fares */}
         <section className={styles.bodySection}>

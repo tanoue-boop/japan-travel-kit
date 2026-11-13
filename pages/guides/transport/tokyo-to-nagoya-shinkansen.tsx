@@ -4,6 +4,8 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -15,6 +17,7 @@ import {
   klookEsim,
   legolandJapanHotelPackage,
   legolandJapanTicket,
+  nagoyaArrivalShinkansenPrep,
   nagoyaParkStayAreas,
   shinkansenTokyoNagoya,
   shoryudoHighwayBusPass,
@@ -488,6 +491,16 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
           </div>
         </div>
 
+        <KlookTripPrep
+          headingLevel={3}
+          label="Book with the train"
+          heading="What to Book in Nagoya With Your Seat"
+          intro="The train gets you to Nagoya Station. The rest of the trip is a bed near it and the timed park entries that sell by date, so they are worth settling in the same sitting."
+          items={nagoyaArrivalShinkansenPrep}
+        />
+
+        <BookingEsimCard />
+
         <EsimCtaTop />
 
         {/* Overview */}
@@ -757,6 +770,22 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
               LEGOLAND® Japan tickets →
             </KlookLink>
           </div>
+
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.5rem" }}>
+            Can I Stop in Nagoya on the Way From Tokyo to Osaka?
+          </h3>
+          <p className={styles.bodyText}>
+            Yes, on a basic fare ticket for more than 100 km: JR Central allows a stopover (leaving the gates
+            and coming back in) at a station between origin and destination, with no backtracking. The
+            shinkansen&apos;s limited express ticket cannot be used for a stopover, so buy one for Tokyo →
+            Nagoya and another for Nagoya → Shin-Osaka; on smartEX no stopover is allowed and the unridden
+            section becomes invalid once you get off. Rules read on JR Central&apos;s{" "}
+            <a href="https://global.jr-central.co.jp/en/tickets/type/stopovers.html" target="_blank" rel="noopener">
+              stopovers page
+            </a>{" "}
+            and smart-ex.jp, 13 Nov 2026. Through fares to Shin-Osaka are in our{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen guide</Link>.
+          </p>
         </section>
 
         {/* Luggage */}

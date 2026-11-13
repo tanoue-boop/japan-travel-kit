@@ -8544,3 +8544,132 @@ export const kawaguchikoRyokanTripPrep: KlookTripPrepItem[] = [
     why: "Most inns ask you to phone or book the shuttle from the station, and the morning weather decides where you go for the view.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Same-day blocks under the shinkansen ticket button — added 13 Nov 2026 (task
+// jtk-20261113-04, daily PDCA Act). Klook pays 2% on a shinkansen ticket, so each
+// route page now shows the bookings at the arrival end — hotels and tours 6.5%,
+// passes 5% — directly under its first ticket button, with BookingEsimCard
+// (Klook eSIM 20%) right after. No eSIM line here for that reason, and no new
+// Klook ids: every url reads out of an existing constant.
+// ---------------------------------------------------------------------------
+
+/** Arriving in Nagoya (tokyo-to-nagoya-shinkansen). */
+export const nagoyaArrivalShinkansenPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelNagoya,
+    why: "The shinkansen and the subway both leave from Nagoya Station, so a room there is the base for a park day or a Takayama day without a cross-city transfer.",
+  },
+  {
+    label: ghibliParkTicket.title,
+    ctaLabel: "Check the Ghibli Park ticket →",
+    url: ghibliParkTicket.url,
+    why: "The Grand Warehouse entry time is chosen at checkout, so settle it with the train rather than on the day.",
+  },
+  {
+    label: legolandJapanTicket.title,
+    ctaLabel: "Check the LEGOLAND ticket →",
+    url: legolandJapanTicket.url,
+    why: "The 1-Day Pass is a mobile QR code, with the SEA LIFE Nagoya combo and the Skip Pass on the same listing.",
+  },
+  {
+    ...tripPrepProducts.ghibliBusTour,
+    why: "A join-in coach day out of Nagoya, if you would rather not plan the Linimo connection yourself.",
+  },
+];
+
+/** Arriving in Osaka (tokyo-to-osaka-shinkansen, shinkansen-guide). */
+export const osakaArrivalShinkansenPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "Umeda is two Midosuji Line stops from Shin-Osaka, so the room is a short ride from the platform.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Osaka Metro and city buses from the moment you leave Shin-Osaka, plus the castle and the river cruises on the same day.",
+  },
+  {
+    label: "Universal Studios Japan e-ticket",
+    ctaLabel: "Check USJ tickets →",
+    url: usjStudioPassUrl,
+    why: "If the park is the reason for the Osaka leg: a dated e-ticket with QR code direct entry, so there is no ticket queue at the gate.",
+  },
+];
+
+/** Arriving in Kyoto (tokyo-to-kyoto, shinkansen-guide). */
+export const kyotoArrivalShinkansenPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "The shinkansen stops here, so your bags are off your hands within minutes of the platform.",
+  },
+  {
+    label: "Hotels around Shijo-Kawaramachi",
+    ctaLabel: "Check Shijo-Kawaramachi hotels on Klook →",
+    url: kyotoStayAreas[1].url,
+    why: "The better base if your evenings are for restaurants and Gion rather than an early train out.",
+  },
+  {
+    ...tripPrepProducts.kyotoHighlightTour,
+    why: "Kinkaku-ji, Fushimi Inari and Arashiyama sit on different sides of the city, so a guided day saves working out each transfer.",
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "Kiyomizu-dera, Fushimi Inari and Nara Park in one guided booking, for the first full day after the train.",
+  },
+];
+
+/** Arriving in Hiroshima (tokyo-to-hiroshima-shinkansen, osaka-to-hiroshima-shinkansen). */
+export const hiroshimaArrivalShinkansenPrep: KlookTripPrepItem[] = [
+  {
+    label: hiroshimaMiyajimaFerryDayTour.title,
+    ctaLabel: "Check the Miyajima day tour →",
+    url: hiroshimaMiyajimaFerryDayTour.url,
+    why: "The guided day that puts the Miyajima crossing inside the booking rather than leaving it to you at Miyajimaguchi.",
+  },
+  {
+    label: hiroshimaMiyajimaJoinDayTour.title,
+    ctaLabel: "Check the join-in day tour →",
+    url: hiroshimaMiyajimaJoinDayTour.url,
+    why: "Itsukushima Shrine and the Peace Memorial Park in one English-guided day starting in Hiroshima.",
+  },
+  {
+    label: "Hotels around Hiroshima Station",
+    ctaLabel: "Check Hiroshima Station hotels on Klook →",
+    url: hiroshimaStayAreas[0].url,
+    why: "Where the Sanyo Shinkansen puts you down and where the Miyajimaguchi local trains leave from, so the island is an easy start the next morning.",
+  },
+];
+
+/** Arriving in Kanazawa (tokyo-to-kanazawa). */
+export const kanazawaArrivalShinkansenPrep: KlookTripPrepItem[] = [
+  {
+    label: shirakawagoKanazawaDayTour.title,
+    ctaLabel: "Check the Shirakawa-go day tour →",
+    url: shirakawagoKanazawaDayTour.url,
+    why: "Shirakawa-go and Kanazawa in one guided booking, so the bus to the village is not a separate thing to arrange.",
+  },
+  {
+    label: hokurikuArchPass.title,
+    ctaLabel: "Check the Hokuriku Arch Pass →",
+    url: hokurikuArchPass.url,
+    why: "If Kanazawa is the middle of a Tokyo–Kansai trip: seven consecutive days on the Hokuriku Shinkansen between Tokyo and Tsuruga, instead of single tickets.",
+  },
+  {
+    label: kanazawaHotels.title,
+    ctaLabel: "Check Kanazawa hotels on Klook →",
+    url: kanazawaHotels.url,
+    why: "For the night that splits the Tokyo and Kansai halves of the trip.",
+  },
+];
+
+/** Arriving in Tokyo (kyoto-to-tokyo-shinkansen). */
+export const tokyoArrivalShinkansenPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "The Tokaido Shinkansen terminates inside Tokyo Station, so a Marunouchi room is a short walk from the platform.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The shinkansen ticket ends at the gate. This one covers every Tokyo Metro and Toei Subway line for 24, 48 or 72 hours.",
+  },
+];
