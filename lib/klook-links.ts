@@ -627,6 +627,42 @@ export const tokyoTowerTripPrep = (): KlookTripPrepItem[] => [
   },
 ];
 
+/**
+ * Hotels around Roppongi Station (6.5%) — added 13 Nov 2026 (task-jtk-20261113-R01)
+ * for the teamLab Borderless "book the same day" slot. Klook has no Azabudai Hills
+ * hotel destination page; the Roppongi Station one (p50048776) was confirmed as a
+ * live en-US page through the www.klook.com search index on 13 Nov 2026.
+ * Roppongi-itchome, one of the museum's two connected stations, is next door.
+ */
+export const roppongiHotels: KlookTour = {
+  title: "Hotels near Roppongi Station",
+  desc: "Klook's hotel search around Roppongi, the district next to Azabudai Hills",
+  url: klookLink("https://www.klook.com/en-US/destination/p50048776-roppongi/3-hotel/"),
+};
+
+/**
+ * teamLab Borderless — the three things to book alongside a timed slot: a bed
+ * near Azabudai Hills (6.5%), the subway pass for Kamiyacho / Roppongi-itchome
+ * (5%) and the eSIM (20%). The ticket constant itself stays where it is.
+ * The `why` lines are English; translated pages pass their own.
+ */
+export const teamlabBorderlessTripPrep = (): KlookTripPrepItem[] => [
+  {
+    label: roppongiHotels.title,
+    ctaLabel: "Check Roppongi hotels on Klook →",
+    url: roppongiHotels.url,
+    why: "Roppongi-itchome connects to the museum underground, so a room in this district turns an 08:30 first slot or a 20:00 last entry into a short walk rather than a cross-city ride.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Both access stations — Kamiyacho on the Hibiya line and Roppongi-itchome on the Namboku line — are Tokyo Metro stops, so a 24, 48 or 72-hour ticket covers the trip there and the rest of the day.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "An official ticket is a screen you open from the link in the confirmation email and show at the entrance, and a date change has to be made online at least 2 hours before your slot — both need data on the street, not only hotel Wi-Fi.",
+  },
+];
+
 export const sanrioPurolandTicket: KlookTour = {
   title: "Sanrio Puroland ticket",
   desc: "A date-specified passport for the indoor Hello Kitty park at Tama Center, bookable in English",

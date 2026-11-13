@@ -649,6 +649,13 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             coach ties the Imperial Palace gardens, Asakusa and Skytree together with commentary, which
             is the version to pick if three days of navigating sounds like work.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            Want a timed indoor stop for the Day 3 evening instead? teamLab Borderless is in Azabudai Hills, 2
+            minutes from Kamiyacho Station on the Hibiya Line — the line this plan leaves Tokyo Tower on — and is
+            usually open until 21:00. Its slots go on sale about two months ahead; our{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide
+            covers the price, the release date and how to book.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             The &ldquo;time to allow&rdquo; column in all three tables is our own planning allowance, not
             an operator figure. Opening hours and prices are in the dated table below, each against the

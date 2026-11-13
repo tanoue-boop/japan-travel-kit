@@ -30,8 +30,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/teamlab-borderless-tickets",
     badge: "Tickets",
-    title: "teamLab Borderless Tickets (2026): Price, How to Book and Time Slots",
-    desc: "Adult admission from ¥3,400 on the official site and priced by date and slot, how the timed Entrance Pass and the Flexible Pass differ, hours and closed days, and whether to book direct or through Klook.",
+    title: "teamLab Borderless Tickets 2026: Price, Time Slots & How to Book",
+    desc: "Adult admission from ¥3,400 on the official site and priced by date and slot, sales opening around the 1st of the month two months ahead, 1.5–2 hours inside, the Flexible Pass, and whether to book direct or through Klook.",
     group: "tickets",
     city: "tokyo",
   },

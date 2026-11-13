@@ -334,6 +334,12 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             Adult and disability prices are floors that rise on some dates; the &quot;Both museums&quot; column adds
             the two floors together.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Booking Borderless only? Its tickets go on sale around the 1st of the month, two months before the
+            visit date, and an official ticket cannot be cancelled — the release timing, the Flexible Pass and
+            how to book a slot are in our{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
               Check Planets tickets for your date →
