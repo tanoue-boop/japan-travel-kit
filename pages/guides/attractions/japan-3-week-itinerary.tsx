@@ -307,6 +307,7 @@ const related = [
   { href: "/guides/attractions/japan-first-time-itinerary", title: "Japan First-Time Itinerary" },
   { href: "/guides/transport/jr-pass-guide", title: "JR Pass Guide: Prices After October 2026 and the Break-Even" },
   { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa Shinkansen" },
+  { href: "/guides/attractions/kanazawa-2-day-itinerary", title: "Kanazawa 2 Day Itinerary: Kanazawa and Shirakawa-go" },
   { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tours and Buses" },
   { href: "/guides/attractions/kyoto-3-day-itinerary", title: "Kyoto 3 Day Itinerary" },
   { href: "/guides/attractions/osaka-3-day-itinerary", title: "Osaka 3 Day Itinerary (2026): Day by Day, and What to Book" },
@@ -583,7 +584,9 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             town and the Hida Folk Village. <strong>Day 11:</strong> the Limited Express Hida to Nagoya, then
             the Tokaido Shinkansen to Kyoto. Full details are in the{" "}
             <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link> and the{" "}
-            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go guide</Link>.
+            <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go guide</Link>;
+            the Kanazawa days are planned hour by hour in our{" "}
+            <Link href="/guides/attractions/kanazawa-2-day-itinerary">Kanazawa 2 day itinerary</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

@@ -549,6 +549,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/kanazawa-2-day-itinerary",
+    badge: "Itinerary",
+    title: "Kanazawa 2 Day Itinerary (2026): Kanazawa and Shirakawa-go",
+    desc: "Kenroku-en (¥320), the castle, Omicho and Higashi Chaya by loop bus on Day 1; Shirakawa-go by the 1h15m reserved bus or a tour that adds Takayama on Day 2 — with the January light-up rules, the Hokuriku Arch Pass sums and where to stay.",
+    group: "cities",
+    // Kanazawa sits outside the three city hubs, same call as hiroshima-2-day-itinerary.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/kobe-day-trip-from-osaka",
     badge: "Day trip",
     title: "Kobe Day Trip from Osaka (2026): Routes, the Beef and What Fits in a Day",

@@ -8673,3 +8673,77 @@ export const tokyoArrivalShinkansenPrep: KlookTripPrepItem[] = [
     why: "The shinkansen ticket ends at the gate. This one covers every Tokyo Metro and Toei Subway line for 24, 48 or 72 hours.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kanazawa 2 day itinerary, added 13 Nov 2026 (task-jtk-20261113-01).
+//
+// Klook answers automated reads of its product pages with HTTP 403, so the
+// three new listings below were confirmed as live en-US pages through the
+// www.klook.com search index on 13 Nov 2026. Everything else on the page reuses
+// the Kanazawa, Shirakawa-go and Hokuriku constants above. Hotels and the
+// kimono rental are the 6.5% band; the pass and rail page are 5%. No price.
+// ---------------------------------------------------------------------------
+
+/** Kimono rental for Day 1 — VASARA lists branches by Kanazawa Castle and Kenroku-en. */
+export const vasaraKimonoKanazawa: KlookTour = {
+  title: "VASARA kimono rental in Kanazawa",
+  desc: "A one-day kimono or yukata rental with branches listed near Kanazawa Castle and Kenroku-en, so Day 1's garden and teahouse walk can be done in it",
+  url: klookLink("https://www.klook.com/en-US/activity/21954-vasara-kimono-rental-kanazawa/"),
+};
+
+/** The station hotel: listed with an underground passage to Kanazawa Station. */
+export const hotelVistaKanazawaUrl = klookLink("https://www.klook.com/en-US/hotels/detail/436419-hotel-vista-kanazawa/");
+
+/** The Omicho end of town, about 18 minutes on foot from the station on the listing. */
+export const onyadoNonoKanazawaUrl = klookLink("https://www.klook.com/en-US/hotels/detail/680963-onyado-nono-kanazawa/");
+
+/** Where to sleep for two days in Kanazawa with a Shirakawa-go day. */
+export const kanazawaTwoDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Kanazawa Station",
+    why: "The shinkansen arrives here and the reserved Shirakawa-go buses leave from the West Exit on Day 2, so the early start is a walk, not a bus ride.",
+    url: kanazawaHotels.url,
+  },
+  {
+    area: "Hotel Vista Kanazawa (by the station)",
+    why: "Listed on Klook with an underground passage to Kanazawa Station — the shortest walk to the morning Shirakawa-go departures from the West Exit.",
+    url: hotelVistaKanazawaUrl,
+  },
+  {
+    area: "Omicho Market / Musashigatsuji (Onyado Nono Kanazawa)",
+    why: "Between the station and the sights: Omicho Market for breakfast on Day 1, and the loop bus to Higashi Chaya and Kenroku-en stops at Musashigatsuji.",
+    url: onyadoNonoKanazawaUrl,
+  },
+];
+
+/** Book these on the same trip: 6.5% tour and hotel, 5% pass and rail, 20% eSIM. */
+export const kanazawaTwoDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: shirakawagoTakayamaKanazawaDayTour.title,
+    ctaLabel: "Check the Shirakawa-go & Takayama tour →",
+    url: shirakawagoTakayamaKanazawaDayTour.url,
+    why: "Day 2 as one booking with an English-speaking guide — and the only listing that can drop you in Takayama instead of bringing you back.",
+  },
+  {
+    label: kanazawaHotels.title,
+    ctaLabel: "Check Kanazawa hotels on Klook →",
+    url: kanazawaHotels.url,
+    why: "Two nights by the station make both the shinkansen arrival and the Day 2 bus a walk.",
+  },
+  {
+    label: hokurikuArchPass.title,
+    ctaLabel: "Check the Hokuriku Arch Pass →",
+    url: hokurikuArchPass.url,
+    why: "Only if Kanazawa sits between Tokyo and Kyoto or Osaka on one trip: seven days on the Hokuriku Shinkansen from Tokyo and the Kansai end, not the Tokaido Shinkansen.",
+  },
+  {
+    label: shinkansenTokyoKanazawa.title,
+    ctaLabel: "Check Tokyo → Kanazawa shinkansen →",
+    url: shinkansenTokyoKanazawa.url,
+    why: "For a Tokyo–Kanazawa return without a pass: the Kagayaki is all-reserved, so the seat is the thing to fix first.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The bus seat, the light-up rules and any snow notice all reach you on your phone on these two days.",
+  },
+];

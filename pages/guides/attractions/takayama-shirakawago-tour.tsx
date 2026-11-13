@@ -752,7 +752,10 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             an option. For the rail that gets you to any of these three cities, our{" "}
             <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa shinkansen guide</Link> covers the
             Hokuriku Shinkansen end — the Kagayaki time and fare, and which pass covers it — and our{" "}
-            <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> the rest.
+            <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> the rest. If the tour is one
+            day of two in Kanazawa, our{" "}
+            <Link href="/guides/attractions/kanazawa-2-day-itinerary">Kanazawa 2 day itinerary</Link> plans the
+            city day around it.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -881,6 +884,8 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           <div className={styles.relatedGrid}>
             {/* Added 6 Nov 2026: the rest of the nine winter guides. */}
             {[
+              // Added 13 Nov 2026: the two-day Kanazawa plan this tour fits into.
+              { href: "/guides/attractions/kanazawa-2-day-itinerary", title: "Kanazawa 2 Day Itinerary (2026): Kanazawa and Shirakawa-go" },
               { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Gala Yuzawa Ski Day Trip from Tokyo" },
               { href: "/guides/attractions/jigokudani-snow-monkey-tour", title: "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2027" },
               { href: "/guides/attractions/sapporo-snow-festival-tours", title: "Sapporo Snow Festival Tours (2027)" },

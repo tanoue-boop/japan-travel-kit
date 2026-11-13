@@ -862,6 +862,7 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa by Shinkansen" },
+              { href: "/guides/attractions/kanazawa-2-day-itinerary", title: "Kanazawa 2 Day Itinerary: Kanazawa and Shirakawa-go" },
               { href: "/guides/transport/jr-east-pass", title: "JR East Pass (2026): Price, Coverage and Is It Worth It?" },
               { href: "/guides/transport/jr-pass-guide", title: "JR Pass Guide 2026: Prices, Is It Worth It and How to Buy" },
               { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tours" },
