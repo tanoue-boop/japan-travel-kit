@@ -593,7 +593,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             대신 판단할 숫자를 앞에 놓겠습니다.
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>시간당 비용은 높습니다.</strong> 1.5~2시간에 ¥3,400은 ¥1,500인 도쿄타워 메인 데크의 두 배가 넘고 시부야 스카이의 낮 시간 온라인 티켓 {PRICES.shibuyaSky.adult.split(" / ")[0]}보다도 비쌉니다. 두 곳 모두 오래 머물 수 있는 곳입니다. 금액 비교는 <Link href="/guides/attractions/japan-attraction-ticket-prices">일본 관광지 티켓 가격표(영어)</Link>에서 볼 수 있습니다. 길이가 아니라 다른 곳에서 볼 수 없는 것에 돈을 내는 셈입니다.</li>
+            <li><strong>시간당 비용은 높습니다.</strong> 1.5~2시간에 ¥3,400은 ¥1,500인 도쿄타워 메인 데크의 두 배가 넘고 <Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이 티켓</Link>의 낮 시간 웹 예매 {PRICES.shibuyaSky.adult.split(" / ")[0]}보다도 비쌉니다. 두 곳 모두 오래 머물 수 있는 곳입니다. 금액 비교는 <Link href="/guides/attractions/japan-attraction-ticket-prices">일본 관광지 티켓 가격표(영어)</Link>에서 볼 수 있습니다. 길이가 아니라 다른 곳에서 볼 수 없는 것에 돈을 내는 셈입니다.</li>
             <li><strong>지도 없는 설계는 가치이자 위험입니다.</strong> 경로도 번호도 없는 약 70점의 작품이란, 서두른 한 시간으로는 유명한 전시실만 보고 끝난다는 뜻입니다. 한 시간밖에 없다면 이 티켓은 줄어든 좋은 경험이 아니라 손해 보는 경험입니다.</li>
             <li><strong>두 곳 중 몸을 덜 쓰는 곳입니다.</strong> 신발을 신은 채이고, 물을 건널 일도 갈아입을 옷을 챙길 일도 없습니다. 플래닛 방식이 체험이 아니라 고생처럼 들린다면, 이곳은 그것을 뺀 같은 팀랩입니다.</li>
             <li><strong>날씨에 강하고 도심에 있습니다.</strong> 아자부다이힐스는 가미야초역에서 지하로 2분이라, 비 오는 오후에도 이동에서 잃는 것이 없습니다. 도쿄의 비 오는 날 계획 대부분은 그렇지 못합니다.</li>
@@ -844,7 +844,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/tokyo-joypolis-tickets", title: "도쿄 조이폴리스 티켓(2026): 패스포트 가격, 운영 시간, 키 제한(영어)" },
             { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
             { href: "/ko/guides/attractions/teamlab-tokyo-tickets", title: "팀랩 플래닛 보더리스 비교 2026: 도쿄에서 어디로 갈까" },
-            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법" },
+            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 티켓 예약 2026: 가격·예약 오픈·일몰 시간" },
             { href: "/guides/transport/tokyo-transportation", title: "도쿄 교통 가이드(2026): 전철, 지하철, IC 카드(영어)" },
             { href: "/guides/attractions", title: "일본의 더 많은 즐길 거리(영어) →" },
           ]}

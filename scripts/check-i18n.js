@@ -13,7 +13,7 @@
  *      that are Chinese-only must not claim ko-KR or th-TH;
  *   2. the translated <title> contains the search term that edition targets, in its
  *      own language — 澀谷SKY 門票 on /zh-tw, 涩谷SKY 门票 on /zh-cn,
- *      시부야 스카이 예약 on /ko, ตั๋ว Shibuya Sky on /th;
+ *      시부야 스카이 티켓 on /ko, ตั๋ว Shibuya Sky on /th;
  *   3. <html lang> and the canonical point at the page itself;
  *   4. every Klook link on a translated page sells a www.klook.com product in that
  *      edition's own locale path (/zh-TW/, /zh-CN/, /ko/ or /th/) with aid=119070,
@@ -72,7 +72,9 @@ const SEARCH_TERMS = {
   "/guides/attractions/shibuya-sky-tickets": {
     "zh-tw": "澀谷SKY 門票",
     "zh-cn": "涩谷SKY 门票",
-    ko: "시부야 스카이 예약",
+    // 2026-11-13 (R02): "시부야 스카이 티켓" is the top Korean query (130 impressions in
+    // GSC 10/14~11/10, ahead of 시부야 스카이 예약 at 91); the title now leads with it.
+    ko: "시부야 스카이 티켓",
     th: "ตั๋ว Shibuya Sky",
   },
   "/guides/attractions/teamlab-borderless-tickets": {

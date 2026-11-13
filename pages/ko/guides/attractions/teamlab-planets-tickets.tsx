@@ -435,7 +435,7 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             정리했습니다.
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>시간당 가격이 높습니다.</strong> 1.5~2시간에 ¥3,800부터는 ¥1,500인 도쿄타워 메인 데크의 두 배가 넘고 시부야 스카이의 낮 시간 온라인 티켓 {PRICES.shibuyaSky.adult.split(" / ")[0]}보다도 훨씬 비쌉니다. 두 곳 모두 오래 머물 수 있습니다. 길이가 아니라 다른 곳에서는 볼 수 없는 것에 돈을 내는 것입니다 — 금액은 <Link href="/guides/attractions/japan-attraction-ticket-prices">일본 명소 티켓 가격(영어)</Link> 표에서 비교해 보세요.</li>
+            <li><strong>시간당 가격이 높습니다.</strong> 1.5~2시간에 ¥3,800부터는 ¥1,500인 도쿄타워 메인 데크의 두 배가 넘고 <Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이 티켓</Link>의 낮 시간 웹 예매 {PRICES.shibuyaSky.adult.split(" / ")[0]}보다도 훨씬 비쌉니다. 두 곳 모두 오래 머물 수 있습니다. 길이가 아니라 다른 곳에서는 볼 수 없는 것에 돈을 내는 것입니다 — 금액은 <Link href="/guides/attractions/japan-attraction-ticket-prices">일본 명소 티켓 가격(영어)</Link> 표에서 비교해 보세요.</li>
             <li><strong>입장에는 돈뿐 아니라 시간도 듭니다.</strong> 공식 스토어는 입장까지 30~60분 기다릴 수 있다고 안내하고, 그 위에 맨발 준비가 더해집니다.</li>
             <li><strong>도쿄에서 몸을 가장 많이 움직이며 체험하는 미술관입니다.</strong> 관람 내내 맨발, 성인 무릎 높이의 물, 거울 바닥. 그게 체험이 아니라 고생처럼 들린다면, 물이 없는 같은 팀랩 작품을 보려면 아자부다이의 보더리스로 가세요.</li>
             <li><strong>날씨와 상관없고 아이에게 맞습니다.</strong> 실내이고, 만 4세 미만은 무료이며, 아이들이 여행에서 사찰보다 더 자주 기억하는 곳입니다.</li>
@@ -647,7 +647,7 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             { href: "/ko/guides/attractions/tokyo-skytree-tickets", title: "도쿄 스카이트리 티켓(2026): 요금과 플로어 350·450 선택" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "워너 브라더스 스튜디오 투어 도쿄 티켓(2026): 가격과 예약(영어)" },
             { href: "/ko/guides/attractions/teamlab-borderless-tickets", title: "팀랩 보더리스 티켓(2026): 가격, 지정 시간 입장, 구매 경로" },
-            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법" },
+            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 티켓 예약 2026: 가격·예약 오픈·일몰 시간" },
             { href: "/guides/transport/tokyo-transportation", title: "도쿄 교통 가이드(2026): 전철, 지하철, IC 카드(영어)" },
             { href: "/guides/transport/ic-cards-japan", title: "일본 IC 카드 2026: 스이카, 파스모 사용법(영어)" },
           ]}

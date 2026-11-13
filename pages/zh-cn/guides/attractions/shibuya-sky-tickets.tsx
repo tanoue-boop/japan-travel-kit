@@ -368,12 +368,11 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         />
       </Head>
 
-      <Breadcrumb trail={trail} />
-
-      {/* Hero */}
+      {/* Hero — the H1 is the first text on the page. Google was showing the breadcrumb
+          label glued to the last crumb ("日本景点门票涩谷SKY 门票") as the title (2026-11-13, R02),
+          so the breadcrumb and the update line now sit below the H1. */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
             SHIBUYA SKY（涩谷天空）门票（2026）：<br />票价、开放时间与日落时段
           </h1>
@@ -390,6 +389,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </div>
         </div>
       </section>
+
+      <Breadcrumb trail={trail} />
 
       <div className={styles.content}>
         <Disclosure />

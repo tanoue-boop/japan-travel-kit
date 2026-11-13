@@ -562,7 +562,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             { href: "/guides/attractions/asakusa-kimono-rental", title: "아사쿠사 기모노 대여(2026): 반납 시간, 헤어 세트, 촬영 장소(영어)" },
             { href: "/guides/attractions/tokyo-3-day-itinerary", title: "도쿄 3일 일정(2026): 무엇을 어떤 순서로 예약할까(영어)" },
             { href: "/guides/attractions/tokyo-tower-tickets", title: "도쿄 타워 티켓(2026): 요금, 메인 데크 vs 톱 데크, 예약 방법(영어)" },
-            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법" },
+            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 티켓 예약 2026: 가격·예약 오픈·일몰 시간" },
             { href: "/guides/attractions/tokyo-subway-ticket", title: "도쿄 서브웨이 티켓(2026): 24/48/72시간, 살 만한가(영어)" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "워너 브라더스 스튜디오 투어 도쿄 티켓(2026): 요금과 예약 방법(영어)" },
             { href: "/guides/attractions/mt-fuji-day-tour-from-tokyo", title: "도쿄 출발 후지산 1일 투어(2026): 어떤 투어로, 실제로 무엇을 보나(영어)" },
