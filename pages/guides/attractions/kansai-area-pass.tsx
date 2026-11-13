@@ -33,17 +33,45 @@ const HARUKA_URL = jrHarukaUrl;
 //     press PDF) — KANSAI ONE PASS sales end.
 // The Kansai WIDE Area Pass figure was read on 25 October 2026; JR West's page for it
 // returned 404 on 3 November, so it carries its own date.
-const CHECKED = checkedLabel("2026-11-03");
+//
+// Re-read on 13 November 2026 (task jtk-20261113-R04): the WEST QR Kansai Area Pass,
+// old Kansai Area Pass, WEST QR HARUKA One-way Ticket and WEST QR Kansai Mini Pass
+// pages on westjr.co.jp; westjr.co.jp/global/en/ticket/pass/kansai_hiroshima/
+// (Kansai-Hiroshima Area Pass, 5 days ¥17,000 / ¥8,500); and
+// kintetsu.co.jp/foreign/english/ticket/ (KINTETSU RAIL PASS ¥1,900 / ¥3,700 /
+// ¥4,900 / ¥6,700). The nationwide JR Pass, OSAKA AMAZING PASS and KANSAI ONE PASS
+// figures were not re-read and keep their 3 November date (PREV_CHECKED).
+// Ordinary JR fares between Osaka and Kyoto / Nara / Himeji are deliberately not
+// printed: no current official fare table for those pairs could be pinned down on
+// 13 Nov, so the break-even table uses only the official HARUKA One-way fares.
+const CHECKED = checkedLabel("2026-11-13");
+const PREV_CHECKED = checkedLabel("2026-11-03");
 const WIDE_CHECKED = checkedLabel("2026-10-25");
+const CHECKED_ISO = "2026-11-13";
+const OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/westqr/kansaiarea/";
+const HARUKA_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/westqr/haruka/";
 
 const QR_1_DAY = "¥2,700";
 const QR_4_DAY = "¥6,700";
 
 const priceRows = [
-  { days: "1 day", qrAdult: QR_1_DAY, qrChild: "¥1,350", oldAdult: "¥2,800", oldChild: "¥1,400" },
-  { days: "2 days", qrAdult: "¥4,700", qrChild: "¥2,350", oldAdult: "¥4,800", oldChild: "¥2,400" },
-  { days: "3 days", qrAdult: "¥5,500", qrChild: "¥2,750", oldAdult: "¥5,800", oldChild: "¥2,900" },
-  { days: "4 days", qrAdult: QR_4_DAY, qrChild: "¥3,350", oldAdult: "¥7,000", oldChild: "¥3,500" },
+  { days: "1 day", qrAdult: QR_1_DAY, qrChild: "¥1,350", perDay: "¥2,700", oldAdult: "¥2,800" },
+  { days: "2 days", qrAdult: "¥4,700", qrChild: "¥2,350", perDay: "¥2,350", oldAdult: "¥4,800" },
+  { days: "3 days", qrAdult: "¥5,500", qrChild: "¥2,750", perDay: "¥1,833", oldAdult: "¥5,800" },
+  { days: "4 days", qrAdult: QR_4_DAY, qrChild: "¥3,350", perDay: "¥1,675", oldAdult: "¥7,000" },
+];
+
+// Break-even on JR West's own HARUKA One-way Ticket fares (tickets sold from
+// 1 Nov 2026) against the WEST QR pass. Only officially published fares are used.
+const breakEvenRows = [
+  { trip: "Kansai Airport → Kyoto, 1 day", singles: "¥2,700", pass: `${QR_1_DAY} (1-day)`, result: "Same price — every other JR ride that day is free" },
+  { trip: "Kansai Airport → Kobe, 1 day", singles: "¥2,300", pass: `${QR_1_DAY} (1-day)`, result: "Pass needs ¥400 of other JR rides that day" },
+  { trip: "Kansai Airport → Nara, 1 day", singles: "¥2,200", pass: `${QR_1_DAY} (1-day)`, result: "Pass needs ¥500 of other JR rides that day" },
+  { trip: "Kansai Airport → Osaka / Shin-Osaka, 1 day", singles: "¥1,900", pass: `${QR_1_DAY} (1-day)`, result: "Pass needs ¥800 of other JR rides that day" },
+  { trip: "Kansai Airport → Tennoji only", singles: "¥1,600", pass: `${QR_1_DAY} (1-day)`, result: "Single is ¥1,100 cheaper — skip the pass" },
+  { trip: "Kyoto in and Kyoto out, 2-day stay", singles: "¥2,700 + ¥2,700 = ¥5,400", pass: "¥4,700 (2-day)", result: "Pass is ¥700 cheaper before any other ride" },
+  { trip: "Kyoto in, Osaka out, 3 days", singles: "¥2,700 + ¥1,900 = ¥4,600", pass: "¥5,500 (3-day)", result: "Pass needs ¥900 of other JR rides over 3 days" },
+  { trip: "Kyoto in and Kyoto out, 4 days", singles: "¥2,700 + ¥2,700 = ¥5,400", pass: `${QR_4_DAY} (4-day)`, result: "Pass needs ¥1,300 of other JR rides over 4 days" },
 ];
 
 const lineRows = [
@@ -96,6 +124,12 @@ const lineRows = [
 
 const compareRows = [
   {
+    option: "Bottom line",
+    price: "—",
+    covers: "Kansai-only trip on JR with the HARUKA → Kansai Area Pass. Nara on the Kintetsu → Kintetsu Rail Pass. Hiroshima on the same trip → Kansai-Hiroshima Area Pass",
+    pick: "The KANSAI ONE PASS is an IC card, not an alternative pass",
+  },
+  {
     option: "WEST QR Kansai Area Pass",
     price: `${QR_1_DAY} (1 day) to ${QR_4_DAY} (4 days), adult`,
     covers: "JR West ordinary trains around Osaka, Kyoto, Kobe, Nara, Himeji, Wakayama, Otsu, Tsuruga and Iga-Ueno, plus unlimited HARUKA non-reserved and two reserved HARUKA seats",
@@ -114,6 +148,24 @@ const compareRows = [
     pick: "Only if the airport run is the single JR ride of your whole trip",
   },
   {
+    option: "KINTETSU RAIL PASS",
+    price: "¥1,900 (1 day), ¥3,700 (2 days), ¥4,900 (5 days), ¥6,700 (5day plus)",
+    covers: "Kintetsu lines only — Osaka-Namba to Kintetsu-Nara and Kyoto, and on the 5-day versions Ise-Shima and Nagoya. No JR, no HARUKA",
+    pick: "If Nara Park is the main day trip and you are staying near Namba, where Kintetsu, not JR, runs to Nara",
+  },
+  {
+    option: "Kansai-Hiroshima Area Pass",
+    price: "¥17,000 for 5 consecutive days, adult (¥8,500 child)",
+    covers: "JR West in Kansai plus reserved Sanyo Shinkansen seats Shin-Osaka ⇄ Hiroshima, limited expresses including the HARUKA, and the JR Miyajima Ferry",
+    pick: "If Hiroshima and Miyajima are on the same trip — the Kansai Area Pass has no shinkansen at all",
+  },
+  {
+    option: "KANSAI ONE PASS",
+    price: "Not a pass price — a rechargeable IC card that pays each fare",
+    covers: "Pay-as-you-go on JR, private railways, subways and buses; sales being wound down by March 2027",
+    pick: "Not an alternative to the rail pass. For pay-as-you-go, any IC card such as ICOCA does the same job",
+  },
+  {
     option: "Kansai WIDE Area Pass",
     price: `¥12,000 for 5 consecutive days, adult (¥6,000 child) — read ${WIDE_CHECKED}`,
     covers: "Everything above plus reserved Sanyo Shinkansen seats Shin-Osaka ⇄ Okayama, and Takamatsu, Kinosaki Onsen, Amanohashidate, Tottori and Shirahama",
@@ -121,13 +173,13 @@ const compareRows = [
   },
   {
     option: "OSAKA AMAZING PASS",
-    price: "¥3,500 for 1 day, ¥5,000 for 2 days",
+    price: `¥3,500 for 1 day, ¥5,000 for 2 days (read ${PREV_CHECKED})`,
     covers: "Free rides on the buses and trains on its Osaka network map plus entry to its listed attractions — a city pass, not a regional rail pass",
     pick: "For a day spent inside Osaka. It does not replace the Kansai pass's airport run or the Kyoto and Nara hops",
   },
   {
     option: "JAPAN RAIL PASS (nationwide, after the 1 October 2026 revision)",
-    price: "7 days, Ordinary Car: ¥50,000 on the official website, ¥53,000 as an Exchange Order from an overseas agency",
+    price: `7 days, Ordinary Car: ¥50,000 on the official website, ¥53,000 as an Exchange Order from an overseas agency (read ${PREV_CHECKED})`,
     covers: "Nationwide JR including most shinkansen — far more than Kansai, at over seven times the 4-day Kansai price",
     pick: "Only once Tokyo is in the itinerary; see our JR Pass guide for the break-even",
   },
@@ -189,68 +241,33 @@ const steps = [
   },
 ];
 
+// Five questions, matching the question headings in the body (FAQPage).
 const faqItems = [
   {
-    q: "What if I already bought a paper Kansai Area Pass?",
-    a: `It stays valid. JR West states sales ended on 30 September 2026 and that passes bought by that date remain valid for their full validity period. To refund one, JR West asks for the pass plus its three vouchers (Kyoto City Subway, Keihan and Hankyu), charges a 10% handling fee with a ¥220 minimum per pass, and refunds nothing after use has started or the pass has expired. Exchanged passes are refunded at JR West station ticket counters only. Read on westjr.co.jp on 6 Nov 2026.`,
-  },
-  {
     q: "How much is the JR Kansai Area Pass in 2026?",
-    a: `JR West's current version, the WEST QR Kansai Area Pass, is ${QR_1_DAY} for 1 day, ¥4,700 for 2 days, ¥5,500 for 3 days and ${QR_4_DAY} for 4 days for an adult, with children aged 6 to 11 at ¥1,350 / ¥2,350 / ¥2,750 / ¥3,350. The older paper Kansai Area Pass it replaced was ¥2,800 / ¥4,800 / ¥5,800 / ¥7,000. All prices read off westjr.co.jp on ${CHECKED}.`,
-  },
-  {
-    q: "Can I buy the Kansai Area Pass at the station or online in Japan?",
-    a: `No. JR West states the WEST QR Kansai Area Pass is sold as a voucher by overseas travel agencies only — it cannot be bought at travel agencies in Japan or through JR-WEST Online Train Reservation, and JR West lists no station sale. You register the voucher on the WEST-QR website and press "Use ticket" after 04:00 on your first day; the QR code on your phone is the ticket. JR West does not publish different prices by sales channel. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Is the HARUKA single cheaper than the 1-day Kansai Area Pass now?",
-    a: `Not to Kyoto. For tickets sold from 1 November 2026 the HARUKA One-way Ticket from Kansai Airport is ¥2,700 to Kyoto — the same as a 1-day pass — so the pass is the better buy for a Kyoto arrival. To Tennoji (¥1,600) or Osaka / Shin-Osaka (¥1,900) the single is cheaper, and the 1-day pass only wins if you take more JR rides the same day. Fares read off westjr.co.jp on ${CHECKED}.`,
-  },
-  {
-    q: "Is the Kansai One Pass discontinued?",
-    a: `Yes, it is being withdrawn — and it is a different product from the Kansai Area Pass. KANSAI ONE PASS is a rechargeable IC card for visitors, not a JR pass. In a joint notice dated 23 December 2024, JR West and nine other operators said sales would end operator by operator from 1 November 2025 as stock runs out, with all sales due to end by the end of fiscal 2026 (March 2027), when its shop and attraction perks also end. Cards already bought stay usable as a rechargeable IC card. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Is the Kansai Area Pass discontinued?",
-    a: `The old version is. JR West's own page states that sales of the Kansai Area Pass "ended as of September 30, 2026", and that passes bought by that date stay valid for their full validity period. What replaced it is the WEST QR Kansai Area Pass — the same 1-to-4-day product, slightly cheaper, delivered as a QR code you scan at the ticket gate instead of a paper pass. So the pass still exists; the thing that changed is how you buy and carry it. Checked ${CHECKED}.`,
+    a: `${QR_1_DAY} for 1 day, ¥4,700 for 2 days, ¥5,500 for 3 days and ${QR_4_DAY} for 4 consecutive days for an adult; a child aged 6 to 11 pays half (¥1,350 / ¥2,350 / ¥2,750 / ¥3,350). These are the prices of the WEST QR Kansai Area Pass, the version JR West sells now. The old paper Kansai Area Pass (¥2,800 / ¥4,800 / ¥5,800 / ¥7,000) stopped selling on 30 September 2026. Read off westjr.co.jp on ${CHECKED}.`,
   },
   {
     q: "Is the Kansai Area Pass worth it?",
-    a: `It usually is for a trip that flies into Kansai Airport and moves between Kansai cities by JR, and it usually is not for a trip spent inside one city. The clearest case: the discounted HARUKA One-way Ticket from Kansai Airport to Kyoto is ¥2,700 for tickets sold from 1 November 2026 — identical to a 1-day pass — so the pass is the same money with every other JR ride that day thrown in. The clearest case against: the pass covers no subway, no city bus and no private railway, so a Kyoto trip built around the Keihan and Hankyu lines gets almost nothing from it. Figures checked ${CHECKED}.`,
+    a: `Yes if you land at Kansai Airport and move between Kansai cities by JR; no if you stay in one city on the subway. The HARUKA One-way Ticket from Kansai Airport to Kyoto is ¥2,700 for tickets sold from 1 November 2026 — the same as a 1-day pass — and two Kyoto singles (¥5,400) cost more than the 2-day pass (¥4,700). Into Osaka (¥1,900) or Tennoji (¥1,600), the pass only wins with other JR rides on the same days. It never helps on the subway, city buses or the Kintetsu, Hankyu, Keihan and Nankai lines. Fares read off westjr.co.jp on ${CHECKED}.`,
   },
   {
-    q: "Can you use the Kansai Area Pass on the Haruka from Kansai Airport?",
-    a: `Yes, and this is the point of it. The pass allows unlimited rides on non-reserved seats on the Limited Express HARUKA, plus an ordinary-car reserved seat on the HARUKA twice at no extra charge; the Green Car needs separate tickets. The HARUKA runs from Kansai Airport to Tennoji, Shin-Osaka and Kyoto. Book the two reserved seats on the WEST-QR website from 30 days before boarding — JR West says they cannot be booked on the train, at ticket machines or at ticket counters. Checked ${CHECKED}.`,
+    q: "Does the Kansai Area Pass cover the HARUKA and the shinkansen?",
+    a: `The HARUKA yes, the shinkansen no. JR West's WEST QR page allows unlimited rides in non-reserved seats on the Limited Express HARUKA and an ordinary-car reserved seat twice, booked on the WEST-QR website from 30 days before boarding; the Green Car needs separate tickets. The pass "cannot be used on the Shinkansen", even with an extra fare, and no limited express other than the HARUKA is covered. For a Kansai pass with a shinkansen section, the 5-day Kansai-Hiroshima Area Pass (¥17,000) includes reserved Sanyo Shinkansen seats Shin-Osaka to Hiroshima. Checked ${CHECKED}.`,
   },
   {
-    q: "Does the Kansai Area Pass cover the Shinkansen?",
-    a: `No. The Kansai Area Pass does not cover the Tokaido or Sanyo Shinkansen at any length, so Shin-Osaka to Kyoto by bullet train is a separate ticket even on a day your pass is valid. The HARUKA is the only limited express it covers; every other limited express needs its own ticket. If you want a Kansai pass with a shinkansen section, that is the 5-day Kansai WIDE Area Pass, ¥12,000 when read on ${WIDE_CHECKED}, which includes reserved Sanyo Shinkansen seats between Shin-Osaka and Okayama.`,
+    q: "Was the KANSAI ONE PASS discontinued?",
+    a: `Yes, sales are being wound down — and it is a different product from the Kansai Area Pass. KANSAI ONE PASS is a rechargeable IC card for visitors, not a rail pass. In a joint notice dated 23 December 2024, JR West and nine other operators said each would stop selling it from 1 November 2025 as stock runs out, with all sales ending by the end of fiscal 2026 (March 2027), when its shop and attraction perks also end. Cards already bought keep working as a rechargeable IC card. Checked ${PREV_CHECKED}.`,
   },
   {
-    q: "Does it work on the Osaka Metro, the Kyoto subway or city buses?",
-    a: "No. This is a JR West product and it stops at JR gates. Inside Osaka you will still want an IC card or the Osaka Metro pass; inside Kyoto, the subway and bus day pass. The practical pattern for most Kansai trips is a rail pass for the days you move between cities and a city pass or IC card for the days you do not.",
-  },
-  {
-    q: "Kansai Area Pass or Kansai Mini Pass?",
-    a: "The difference is the HARUKA. The Kansai Mini Pass is ¥3,000 for 3 consecutive days and covers rapid and local JR West trains plus the Kansai-Airport Rapid Service, but a separate limited express ticket is required for the HARUKA. The 3-day Kansai Area Pass is ¥5,500 and includes the HARUKA outright. If you are happy riding the slower Kansai-Airport Rapid into Osaka and do not need the direct Kyoto run, the Mini Pass is ¥2,500 cheaper. If you are heading straight to Kyoto with luggage, pay for the Area Pass.",
-  },
-  {
-    q: "Kansai Area Pass or a JAPAN RAIL PASS?",
-    a: "They answer different trips. Since the 1 October 2026 revision the nationwide 7-day Ordinary pass is ¥50,000 on the official website or ¥53,000 as an Exchange Order from an overseas agency (japanrailpass.net, read 3 November 2026), and it covers most shinkansen across the country; the 4-day Kansai pass is ¥6,700 and covers ordinary JR trains in one region. If your whole trip is Kansai, the regional pass wins by an order of magnitude. The nationwide pass only starts to make sense once Tokyo, Hiroshima or Kyushu are in the itinerary — our JR Pass guide has the break-even arithmetic for that.",
-  },
-  {
-    q: "How long is the pass valid, and does it have to be consecutive days?",
-    a: "Consecutive days, and the clock is generous at one end only: the WEST QR version is valid from 04:00 on your start day to 24:00 on the last day, Japan time. A gap day in the middle of your Kansai leg is a day you have paid for and not used, which is the main reason a 4-day pass sometimes loses to two singles.",
-  },
-  {
-    q: "Who is allowed to buy it?",
-    a: "Holders of a passport issued by a foreign government, entering Japan with Temporary Visitor status. Japanese nationals cannot use the pass, and nor can non-Japanese passport holders with permanent residence in Japan. Checked on JR West's WEST QR page, 3 November 2026.",
+    q: "Where can I buy and exchange the Kansai Area Pass?",
+    a: `Buy it before you fly. JR West sells the WEST QR Kansai Area Pass as a voucher through overseas travel agencies only — not at stations, not at travel agencies in Japan and not through JR-WEST ONLINE TRAIN RESERVATION. There is nothing to exchange: you register the voucher on the WEST-QR website, press "Use ticket" after 04:00 on your first day, and scan the QR code at the gate. Refunds before "Use ticket" go through the agency you bought from; after it, there is no refund. Eligibility is a foreign passport and Temporary Visitor entry. Checked ${CHECKED}.`,
   },
 ];
 
-const TITLE = "JR Kansai Area Pass 2026: ¥2,700 a Day, HARUKA Included";
+const TITLE = "JR Kansai Area Pass 2026: Price, Coverage & Is It Worth It?";
 const DESCRIPTION =
-  "JR Kansai Area Pass price 2026: ¥2,700 for 1 day, ¥6,700 for 4. Covers the HARUKA from Kansai Airport and JR local trains; no Shinkansen, subway or Hankyu.";
+  "JR Kansai Area Pass 2026: ¥2,700 for 1 day to ¥6,700 for 4, HARUKA from Kansai Airport included, no shinkansen or Kintetsu. Break-even and where to buy.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/kansai-area-pass") } });
 
@@ -351,7 +368,7 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            JR Kansai Area Pass (2026):<br />Price, Coverage &amp; Is It Worth It?
+            JR Kansai Area Pass 2026:<br />Price, Coverage &amp; Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             JR West stopped selling the paper version on 30 September 2026. The replacement is cheaper, it is
@@ -380,11 +397,13 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
         {/* The answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            The <strong>JR Kansai Area Pass</strong> costs <strong>{QR_1_DAY} for 1 day and {QR_4_DAY} for 4 days</strong>{" "}
-            as a WEST QR ticket, the version JR West sells now that the paper pass ended on 30 September 2026. It
-            pays for itself fastest on the airport run: the HARUKA from Kansai Airport is included, then JR trains
-            to Kyoto, Osaka, Kobe, Nara and Himeji. It does not cover the Shinkansen, the subways or private
-            railways such as Hankyu. Prices read off westjr.co.jp on {CHECKED}.
+            The <strong>JR Kansai Area Pass</strong> costs <strong>{QR_1_DAY} for 1 day, ¥4,700 for 2 days, ¥5,500
+            for 3 days and {QR_4_DAY} for 4 days</strong> for an adult, and ¥1,350 / ¥2,350 / ¥2,750 / ¥3,350 for a
+            child aged 6–11 (the WEST QR Kansai Area Pass, read off westjr.co.jp on {CHECKED}). It includes{" "}
+            <strong>unlimited non-reserved seats on the HARUKA</strong> from Kansai Airport plus an ordinary-car{" "}
+            <strong>reserved HARUKA seat twice</strong>, and JR West Special Rapid, Rapid and Local trains around
+            Osaka, Kyoto, Kobe, Nara and Himeji. It does <strong>not</strong> cover the shinkansen or the private
+            railways — Kintetsu, Hankyu, Keihan and Nankai.
           </p>
         </section>
 
@@ -466,29 +485,35 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Pricing</span>
           <h2 className={styles.sectionTitle}>How much is the JR Kansai Area Pass in 2026?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            {QR_1_DAY} for 1 day up to {QR_4_DAY} for 4 consecutive days for an adult, and exactly half for a
-            child aged 6 to 11. JR West sells it only as a WEST QR voucher through overseas travel agencies — not
-            at stations, not at travel agencies in Japan and not through JR-WEST Online Train Reservation — and
-            publishes no separate price by sales channel.
+            {QR_1_DAY} for 1 day, ¥4,700 for 2, ¥5,500 for 3 and {QR_4_DAY} for 4 consecutive days for an adult,
+            and exactly half for a child aged 6 to 11. JR West publishes one price list for the WEST QR pass and
+            no separate price by sales channel.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Length", "WEST QR adult", "WEST QR child", "Old pass, adult", "Old pass, child"].map((h) => (
+                    {["Length", "Adult (WEST QR)", "Child 6–11", "Adult per day", "Old paper pass, adult"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Bottom line</td>
+                    <td className={styles.tdPrice} colSpan={4} style={{ fontSize: "0.88rem" }}>
+                      1 day ({QR_1_DAY}) costs the same as the HARUKA single to Kyoto; 4 days ({QR_4_DAY}) is the
+                      cheapest per day at ¥1,675
+                    </td>
+                  </tr>
                   {priceRows.map((row) => (
                     <tr key={row.days}>
                       <td className={styles.tdProvider}>{row.days}</td>
                       <td className={styles.tdPrice}>{row.qrAdult}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.qrChild}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.perDay}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.oldAdult}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.oldChild}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -496,11 +521,30 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Both columns read off westjr.co.jp on {CHECKED}. The WEST QR prices are the ones in force; the
-            old-pass column is there only so you can recognise a stale quote. The QR version is valid from
-            04:00 on the start day to 24:00 on the last day, Japan time, over consecutive days. Child rates
-            are for ages 6 to 11 and are exactly half the adult figure at every length.
+            Last checked: {CHECKED_ISO} — official source:{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>
+              JR West, WEST QR Kansai Area Pass
+            </a>
+            . The old-pass column (JR West: &quot;Sales ended as of September 30, 2026&quot;) is there only so you
+            can recognise a stale quote. Per-day figures are the adult price divided by the days. The pass is
+            valid from 04:00 on the start day to 24:00 on the last day, Japan time, over consecutive days.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
+            <KlookLink href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Kansai Area Pass on Klook →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={{ fontSize: "0.88rem" }}>
+            Before you buy, check two things on the listing that no fare table answers: the redemption window
+            of the voucher against your flight dates, and the agency&apos;s refund terms — JR West refunds
+            nothing once &quot;Use ticket&quot; has been pressed.
+          </p>
+          <KlookTripPrep
+            label="Book on the same trip"
+            heading="What to Book Alongside the Kansai Area Pass"
+            intro="The pass moves you between cities; the rest of the trip is a bed near the JR lines it covers, a guided day to Nara or Himeji, and data for the QR code. No prices are quoted — open each listing for the current figure."
+            items={kansaiAreaPassSameDayPrep}
+          />
         </section>
 
         {/* Lines table */}
@@ -555,12 +599,18 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
         {/* Airport use */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>From the airport</span>
-          <h2 className={styles.sectionTitle}>Can I use the Kansai Area Pass on the Haruka from Kansai Airport?</h2>
+          <h2 className={styles.sectionTitle}>Does the Kansai Area Pass cover the HARUKA and the shinkansen?</h2>
           <p className={styles.bodyText}>
-            Yes — non-reserved seats on the HARUKA without limit, plus an ordinary-car reserved seat twice; the
-            Green Car is extra. Press &quot;Use ticket&quot; on your arrival day (after 04:00), scan the QR code
-            at the JR gate at Kansai Airport and board the HARUKA to <strong>Tennoji</strong>,{" "}
-            <strong>Shin-Osaka</strong> or <strong>Kyoto</strong>.
+            The HARUKA yes, the shinkansen no. Non-reserved seats on the HARUKA are unlimited and an
+            ordinary-car reserved seat is included twice (the Green Car is extra), but JR West states the pass
+            &quot;cannot be used on the Shinkansen, even if you pay an additional fare&quot;.
+          </p>
+          <p className={styles.bodyText}>
+            On arrival day, press &quot;Use ticket&quot; (after 04:00), scan the QR code at the JR gate at Kansai
+            Airport and board the HARUKA to <strong>Tennoji</strong>, <strong>Shin-Osaka</strong> or{" "}
+            <strong>Kyoto</strong>. Shin-Osaka to Kyoto by bullet train is a separate ticket even on a day the
+            pass is valid; if a shinkansen leg to Hiroshima is in the plan, the Kansai-Hiroshima Area Pass in the
+            comparison table below is the one that includes it.
           </p>
           <p className={styles.bodyText}>
             The two reserved seats are what you want on the day you are carrying cases. JR West states they are
@@ -593,7 +643,12 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
         {/* Comparison table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Kansai Area Pass vs the Haruka Ticket, Mini Pass and JR Pass</h2>
+          <h2 className={styles.sectionTitle}>Kansai Area Pass vs KANSAI ONE PASS, Kintetsu Rail Pass and Kansai-Hiroshima Area Pass</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            For a Kansai-only trip that uses JR and the HARUKA, the Kansai Area Pass is the one to buy. The
+            Kintetsu Rail Pass is for Nara on the Kintetsu, the Kansai-Hiroshima Area Pass is for a shinkansen
+            leg west, and the KANSAI ONE PASS is an IC card, not a pass.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -618,9 +673,19 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            JR West figures read off westjr.co.jp on {CHECKED} (the Kansai WIDE Area Pass on {WIDE_CHECKED});
-            the nationwide pass off japanrailpass.net and the OSAKA AMAZING PASS off its official site, both on{" "}
-            {CHECKED}. The HARUKA One-way Ticket is the discounted single for foreign passport holders entering
+            Last checked: {CHECKED_ISO} for JR West (westjr.co.jp — Kansai Area, Kansai Mini, HARUKA One-way and
+            Kansai-Hiroshima Area Pass pages) and Kintetsu (kintetsu.co.jp/foreign/english/ticket/); the Kansai
+            WIDE Area Pass on {WIDE_CHECKED}; the nationwide pass off japanrailpass.net, the OSAKA AMAZING PASS
+            off its official site and the KANSAI ONE PASS notice on {PREV_CHECKED}. If Nara is your main day out,
+            our{" "}
+            <Link href="/guides/transport/kintetsu-rail-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Kintetsu Rail Pass guide
+            </Link>{" "}
+            works out when the Kintetsu pass beats singles; for a day inside Osaka, the{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Osaka Amazing Pass guide
+            </Link>{" "}
+            covers the city pass the Kansai Area Pass does not replace. The HARUKA One-way Ticket is the discounted single for foreign passport holders entering
             as temporary visitors; the fares shown apply to tickets sold from 1 November 2026, when JR West
             raised them — the Kyoto single now equals the 1-day pass. For the nationwide pass break-even, see
             our{" "}
@@ -642,52 +707,52 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
           <h2 className={styles.sectionTitle}>Is the Kansai Area Pass worth it?</h2>
           <p className={styles.bodyText}>
             Yes if you fly into Kansai Airport and travel between Kansai cities by JR; no if you stay in one
-            city on the subway. The test is simple: add up the HARUKA singles and JR fares you would otherwise
-            buy, and compare.
+            city on the subway. A Kyoto arrival is the clearest win: the HARUKA single to Kyoto is ¥2,700, the
+            same as the 1-day pass, and a 2-day stay with both airport runs to Kyoto is ¥700 cheaper on the pass.
           </p>
           <div className={styles.tableWrap} style={{ marginBottom: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Round trip on HARUKA singles", "Singles total", "Pass for the same days", "Difference"].map((h) => (
+                    {["Trip", "HARUKA One-way singles", "Pass for the same days", "Result"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className={styles.tdProvider}>Kansai Airport → Kyoto, then Osaka → Kansai Airport, 3 days</td>
-                    <td>¥2,700 + ¥1,900 = ¥4,600</td>
-                    <td className={styles.tdPrice}>¥5,500 (3-day)</td>
-                    <td style={{ fontSize: "0.88rem" }}>Pass needs ¥900 of other JR rides over 3 days</td>
+                    <td className={styles.tdProvider}>Bottom line</td>
+                    <td colSpan={3} className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>
+                      Buy the pass for a Kyoto arrival or when both airport runs fall inside it; skip it if the
+                      airport run to Tennoji or Osaka is your only JR ride
+                    </td>
                   </tr>
-                  <tr>
-                    <td className={styles.tdProvider}>Kansai Airport → Kyoto, then Kyoto → Kansai Airport, 4 days</td>
-                    <td>¥2,700 + ¥2,700 = ¥5,400</td>
-                    <td className={styles.tdPrice}>{QR_4_DAY} (4-day)</td>
-                    <td style={{ fontSize: "0.88rem" }}>Pass needs ¥1,300 of other JR rides over 4 days</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.tdProvider}>Kansai Airport → Kyoto only, same-day JR hops</td>
-                    <td>¥2,700</td>
-                    <td className={styles.tdPrice}>{QR_1_DAY} (1-day)</td>
-                    <td style={{ fontSize: "0.88rem" }}>Same price — every other JR ride that day is free</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.tdProvider}>Kansai Airport → Tennoji only, nothing else</td>
-                    <td>¥1,600</td>
-                    <td className={styles.tdPrice}>{QR_1_DAY} (1-day)</td>
-                    <td style={{ fontSize: "0.88rem" }}>Single is ¥1,100 cheaper — skip the pass</td>
-                  </tr>
+                  {breakEvenRows.map((row) => (
+                    <tr key={row.trip}>
+                      <td className={styles.tdProvider}>{row.trip}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.singles}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.pass}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.result}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
           </div>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            HARUKA One-way Ticket fares (tickets sold from 1 November 2026) and pass prices read off
-            westjr.co.jp on {CHECKED}, adult. The single is a one-way product, so a round trip is two singles.
-            The pass covers the return only if both airport runs fall inside its consecutive days.
+            Last checked: {CHECKED_ISO} — official sources:{" "}
+            <a href={HARUKA_OFFICIAL_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>
+              JR West, WEST QR HARUKA One-way Ticket
+            </a>{" "}
+            (adult fares for tickets sold from 1 November 2026) and{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>
+              WEST QR Kansai Area Pass
+            </a>
+            . The single is one-way, so a round trip is two singles, and the pass covers the return only if
+            both airport runs fall inside its consecutive days. For the Kyoto–Osaka, Osaka–Nara or
+            Osaka–Himeji hops that make up the rest, check the fare for your own stations on JR West&apos;s fare
+            search — those ordinary fares are not printed here.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
             <KlookLink href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -697,12 +762,6 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
               The single wins — check the Haruka ticket →
             </KlookLink>
           </div>
-          <KlookTripPrep
-            label="Book for the same days"
-            heading="What to Book Alongside the Kansai Area Pass"
-            intro="The pass moves you between cities; the rest of those days is a guided day where the JR lines stop short, a bed on the JR lines the pass covers and data for the QR code. No prices are quoted — open each listing for the current figure."
-            items={kansaiAreaPassSameDayPrep}
-          />
           <div className={styles.tableWrap} style={{ marginTop: "1.5rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -780,7 +839,7 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
         {/* Kansai One Pass — a different product people search alongside this one */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Not the same product</span>
-          <h2 className={styles.sectionTitle}>Is the Kansai One Pass discontinued?</h2>
+          <h2 className={styles.sectionTitle}>Was the KANSAI ONE PASS discontinued?</h2>
           <p className={styles.bodyText}>
             Yes — sales are being wound down, and it was never a JR rail pass. KANSAI ONE PASS is a
             rechargeable transit IC card for visitors. In a joint notice dated 23 December 2024, JR West, Hankyu,
@@ -791,8 +850,42 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             The same notice says cards already bought keep working as a rechargeable IC card, while the shop and
             attraction perks end with fiscal 2026. The card was never a substitute for the Kansai Area Pass: an IC
-            card pays each fare, the pass replaces them. Checked {CHECKED}.
+            card pays each fare, the pass replaces them. Checked {PREV_CHECKED}.
           </p>
+        </section>
+
+        {/* Where to buy — WEST QR has no exchange step */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Buying it</span>
+          <h2 className={styles.sectionTitle}>Where can I buy and exchange the Kansai Area Pass?</h2>
+          <p className={styles.bodyText}>
+            Buy it as a WEST-QR voucher from an overseas travel agency before you fly; there is nothing to
+            exchange in Japan. JR West states the pass cannot be bought at travel agencies in Japan or via
+            JR-WEST ONLINE TRAIN RESERVATION, and lists no station sale.
+          </p>
+          <ol className={styles.bodyText} style={{ paddingLeft: "1.25rem" }}>
+            <li>Buy the voucher from an overseas travel agency (Klook is one).</li>
+            <li>Register the voucher details on the WEST-QR usage website printed on it.</li>
+            <li>Book your two HARUKA reserved seats there, from 30 days before boarding.</li>
+            <li>On your first day, press &quot;Use ticket&quot; after 04:00 and scan the QR code at the gate.</li>
+          </ol>
+          <p className={styles.bodyText}>
+            Changes and refunds before &quot;Use ticket&quot; go through the agency you bought from, which may
+            charge its own fee; after &quot;Use ticket&quot; JR West gives no refund, including for delays or
+            suspensions. A smartphone with internet is required (a companion&apos;s phone can display it).
+            Eligibility is a passport issued by a foreign government and Temporary Visitor entry status —
+            Japanese nationals cannot use it. The old paper pass, sold until 30 September 2026, was the one
+            with an exchange order to swap at a JR West station. Checked {CHECKED} on{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>
+              westjr.co.jp
+            </a>
+            .
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={KANSAI_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Buy the Kansai Area Pass voucher →
+            </KlookLink>
+          </div>
         </section>
 
         <EsimCtaBottom />

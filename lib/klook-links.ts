@@ -5835,20 +5835,28 @@ export const skylinerVsNexSameDayPrep: KlookTripPrepItem[] = [
 // bookings made for the same days: a Kyoto–Nara day tour (6.5%), a hotel at either
 // end of the Haruka (6.5%) and the eSIM (20%). Every entry reuses an existing
 // constant; no price is quoted for any listing.
+// 13 Nov 2026 (R04): reordered hotels first, and a Himeji day tour added — it reuses
+// the existing `himejiCastleOsakaBusTour` constant (6.5%), so no new Klook URL.
 // ---------------------------------------------------------------------------
 
 export const kansaiAreaPassSameDayPrep: KlookTripPrepItem[] = [
   {
-    ...tripPrepProducts.kyotoNaraTour,
-    why: "The pass covers JR to Kyoto and Nara but not the Keihan to Fushimi Inari or the Kintetsu into Nara Park; a coach day covers all three stops in one booking.",
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "Osaka Station is a JR West hub for the special rapids to Kyoto, Kobe and Himeji — the intercity hops the multi-day pass is paid back on.",
   },
   {
     ...tripPrepProducts.hotelKyotoStation,
     why: "Kyoto Station is the Haruka's terminus from Kansai Airport, so a hotel here turns the pass's airport run into a door-to-door ride with no change.",
   },
   {
-    ...tripPrepProducts.hotelOsakaUmeda,
-    why: "Osaka Station is a JR West hub for the special rapids to Kyoto, Kobe and Himeji — the intercity hops the multi-day pass is paid back on.",
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "The pass covers JR to Kyoto and Nara but not the Keihan to Fushimi Inari or the Kintetsu into Nara Park; a coach day covers all three stops in one booking.",
+  },
+  {
+    label: himejiCastleOsakaBusTour.title,
+    ctaLabel: "Check the Himeji day tour →",
+    url: himejiCastleOsakaBusTour.url,
+    why: "Himeji is inside the pass area by JR, but a join-in coach day from Osaka is the alternative if you would rather not plan the castle day yourself.",
   },
   {
     ...tripPrepProducts.esim,

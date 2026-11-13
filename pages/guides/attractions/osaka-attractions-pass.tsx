@@ -564,6 +564,13 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             </Link>
             . Checked {CHECKED}.
           </p>
+          <p className={styles.bodyText}>
+            The pass does not cover JR. For JR day trips to Kyoto, Nara or Himeji and the HARUKA from the airport, the{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={officialLink}>
+              JR Kansai Area Pass
+            </Link>{" "}
+            is the regional pass to pair with it.
+          </p>
         </section>
 
         {/* Activation */}

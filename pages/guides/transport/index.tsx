@@ -78,7 +78,9 @@ export default function GuidesTransportPage({ dates }: { dates: Record<string, s
             picks the airport train by the area your hotel is in, and landing at Kansai, our{" "}
             <Link href="/guides/transport/haruka-vs-nankai-rapit" style={{ color: "var(--text)", fontWeight: 600 }}>Haruka vs Nankai Rapi:t comparison</Link>{" "}
             does the same — the Rapi:t to Namba in a minimum of 34 minutes, the Haruka to Tennoji, Osaka,
-            Shin-Osaka and Kyoto. For the train out to Nara, the{" "}
+            Shin-Osaka and Kyoto. If you will ride JR between Kansai cities too, our{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>JR Kansai Area Pass guide</Link>{" "}
+            prices the 1-to-4-day pass, HARUKA included, against the singles. For the train out to Nara, the{" "}
             <Link href="/guides/attractions/nara-day-trip" style={{ color: "var(--text)", fontWeight: 600 }}>Nara day trip guide</Link>{" "}
             compares the Kintetsu and JR runs from Osaka and Kyoto. In Osaka, our{" "}
             <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Osaka Metro Pass and Enjoy Eco Card guide</Link>{" "}

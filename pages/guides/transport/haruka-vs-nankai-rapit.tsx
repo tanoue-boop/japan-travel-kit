@@ -416,7 +416,9 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
                 <Link href="/guides/attractions/where-to-stay-in-kyoto">where to stay in Kyoto</Link> starts with the
                 station area for a short stay. Splitting a trip between the two cities? Our{" "}
                 <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">3-day Osaka and Kyoto itinerary</Link>{" "}
-                lays out the days between them.
+                lays out the days between them. For a Kyoto arrival, the 1-day{" "}
+                <Link href="/guides/attractions/kansai-area-pass">JR Kansai Area Pass</Link> is the same ¥2,700 as the
+                HARUKA single to Kyoto and includes the Haruka.
               </p>
             )}
             {s.id === "faster" && (

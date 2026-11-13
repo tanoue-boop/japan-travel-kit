@@ -599,6 +599,11 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             JR West, Kansai Airport and Kansai Airport Transportation, checked {CHECKED}. Only buses towards the airport
             require a reservation.
           </p>
+          <p className={styles.bodyText}>
+            Heading to Kyoto? The 1-day{" "}
+            <Link href="/guides/attractions/kansai-area-pass">JR Kansai Area Pass</Link> costs the same ¥2,700 as the
+            HARUKA One-way Ticket to Kyoto, and covers every other JR ride that day too.
+          </p>
         </section>
 
         {/* KIX to ITM */}

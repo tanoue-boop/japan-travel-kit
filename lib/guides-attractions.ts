@@ -825,8 +825,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/kansai-area-pass",
     badge: "Pass",
-    title: "Kansai Area Pass (2026): Prices, What It Covers & Is It Worth It?",
-    desc: "JR West ended sales of the old pass on 30 September 2026; the WEST QR version is ¥2,700 for 1 day to ¥6,700 for 4. What it covers, the Haruka rules, and the itineraries that pay it back.",
+    title: "JR Kansai Area Pass 2026: Price, Coverage & Is It Worth It?",
+    desc: "¥2,700 for 1 day to ¥6,700 for 4 (WEST QR). Unlimited HARUKA non-reserved plus two reserved seats, no shinkansen or Kintetsu, and a break-even table on JR West's HARUKA single fares.",
     group: "passes",
     city: "osaka",
   },
