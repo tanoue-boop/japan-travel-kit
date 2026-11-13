@@ -89,6 +89,7 @@ export default function App({ Component, pageProps }: AppProps) {
         partner,
         product_type: resolveProductType(partner, url, anchor),
         link_url: anchor.href.slice(0, 200),
+        link_domain: url.hostname,
         page_path: window.location.pathname,
         link_text: (anchor.innerText || anchor.textContent || "").trim().slice(0, 80),
         // Set by a wrapping element where a block needs its own line in the report.
