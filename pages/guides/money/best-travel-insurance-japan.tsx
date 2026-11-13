@@ -53,8 +53,9 @@ const PLAIN_REL = "noopener noreferrer nofollow";
  *                                       only; no payment needed with cash-free insurance.
  *   hokeniryo.metro.tokyo.lg.jp (medical_info_eng/insurance)  "medical expenses can become
  *                                       extremely high"; sufficient private cover "essential".
- * /guides/money/japan-travel-insurance (the old URL) has been a 301 to this page since before 6 Nov; the
- * Search Console rows under it are the old URL fading out. Ski cover is the ski page's query.
+ * /guides/money/japan-travel-insurance was a 301 to this page until 13 Nov 2026, when it was restored
+ * (task-jtk-20261113-03) as the requirements-and-cost page: "do I need it, is it mandatory, what
+ * does care cost". This page keeps "which policy". Ski cover is the ski page's query.
  */
 const CALC_CHECKED = checkedLabel("2026-11-09");
 const CHECKED = checkedLabel("2026-11-06");
@@ -480,7 +481,9 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             JNTO publishes two real cases: ¥7.5 million after a bicycle collision and ¥10 million after a heart
             attack, each including the flight home. Without cash-free insurance you pay the hospital yourself, and
-            clinics generally take cash only.
+            clinics generally take cash only. Whether a policy is required for entry, and what it should cover, is
+            answered in{" "}
+            <Link href="/guides/money/japan-travel-insurance">Do you need travel insurance for Japan?</Link>
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

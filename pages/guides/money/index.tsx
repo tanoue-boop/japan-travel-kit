@@ -70,7 +70,9 @@ export default function GuidesMoneyPage({ dates }: { dates: Record<string, strin
             <Link href="/guides/money/atms-in-japan" style={{ color: "var(--text)", fontWeight: 600 }}>ATMs in Japan guide</Link>{" "}
             sets out the 7-Eleven and Japan Post Bank fees, hours and limits for foreign cards. For medical cover,{" "}
             <PartnerTextLink href={SAFETYWING_URL}>SafetyWing</PartnerTextLink> publishes its price and can be bought
-            before you leave or while already abroad; our{" "}
+            before you leave or while already abroad. Japan does not make it an entry requirement for tourists, and{" "}
+            <Link href="/guides/money/japan-travel-insurance" style={{ color: "var(--text)", fontWeight: 600 }}>do you need travel insurance for Japan</Link>{" "}
+            sets out what an uninsured hospital bill can reach; our{" "}
             <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--text)", fontWeight: 600 }}>travel insurance comparison</Link> sets it against
             the alternatives. And buying the{" "}
             <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> up front on Klook

@@ -99,6 +99,14 @@ export const moneyArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/money/japan-travel-insurance",
+    badge: "Guide",
+    title: "Japan Travel Insurance (2026): Is It Required, What to Cover & Cost",
+    desc: "Not an entry requirement for tourists, but JNTO lists hospital cases of ¥7.5 million and ¥10 million and uninsured visitors may be charged the full amount. What to cover, and what it costs.",
+    group: "planning",
+    city: "other",
+  },
+  {
     href: "/guides/money/best-travel-insurance-japan",
     badge: "Comparison",
     title: "Best Travel Insurance for Japan 2026: Who Needs What, Cost",

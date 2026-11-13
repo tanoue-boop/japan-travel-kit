@@ -1765,6 +1765,30 @@ export const taxFreeAirportRunPrep: KlookTripPrepItem[] = [
 ];
 
 /**
+ * Japan Travel Insurance (restored 13 Nov 2026, task-jtk-20261113-03) — the reader is
+ * sorting the things to settle before the flight. Airport trains (5% band) and the
+ * Klook eSIM (20%); every URL is an existing tracking link, none is new.
+ */
+export const japanTravelInsuranceTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Landing at Narita: a reserved seat into Tokyo, Shinjuku or Yokohama, settled before the flight along with the policy.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "The faster Narita train if your hotel is on the Ueno and Asakusa side.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Landing at Kansai Airport: the JR train to Kyoto, Shin-Osaka and Tennoji. Klook's listing states it is sold only to non-Japanese passport holders with a Temporary Visitor stamp.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Calling an insurer's assistance line, finding a hospital on JNTO's search and sending claim photos all need data on your phone from the moment you land.",
+  },
+];
+
+/**
  * Currency Exchange — the reader is deciding where to change money, so each line is
  * a cost that can be settled in their own currency instead of out of the yen they
  * exchange on arrival. Hotels were added 22 Oct 2026: the room is the largest line

@@ -334,7 +334,11 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             </Link>. Ski trips have their own guide: the{" "}
             <Link href="/guides/money/japan-ski-travel-insurance" style={{ color: "var(--red)", fontWeight: 600 }}>
               best travel insurance for skiing in Japan
-            </Link>.
+            </Link>. Still deciding whether you need a policy at all? Our{" "}
+            <Link href="/guides/money/japan-travel-insurance" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan travel insurance requirements and cost
+            </Link>{" "}
+            guide covers whether it is mandatory, what a hospital bill can reach and what the cover should include.
           </p>
         </section>
 

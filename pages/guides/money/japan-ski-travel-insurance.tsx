@@ -513,7 +513,11 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               best travel insurance for Japan
             </Link>{" "}
-            guide. Heading out from Tokyo for a day? See the{" "}
+            guide, and for whether Japan requires a policy at all, our{" "}
+            <Link href="/guides/money/japan-travel-insurance" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan travel insurance requirements
+            </Link>{" "}
+            page. Heading out from Tokyo for a day? See the{" "}
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
               Gala Yuzawa ski day trip from Tokyo
             </Link>{" "}
