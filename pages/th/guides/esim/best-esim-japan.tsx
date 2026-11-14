@@ -42,6 +42,7 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 import { EsimCtaTop } from "../../../../components/EsimCta";
+import BookingEsimCard from "../../../../components/BookingEsimCard";
 
 /**
  * Thai edition of /guides/esim/best-esim-japan. Mirrors the English page block by
@@ -51,11 +52,16 @@ import { EsimCtaTop } from "../../../../components/EsimCta";
  */
 
 const ROUTE = "/th/guides/esim/best-esim-japan";
-const TITLE = "eSIM ญี่ปุ่น 2026: เทียบแพ็กเกจและ Klook";
-const DESC =
-  "eSIM ญี่ปุ่น 2026: เทียบราคา เครือข่าย และการโทรของ 5 ผู้ให้บริการ กับ eSIM ของ Klook";
+// 14 Nov 2026 (R02): same direction as the English page — year, the count compared and
+// "ตารางราคา" in the title, the answer by use in the description.
+const TITLE = "eSIM ญี่ปุ่น 2026: เทียบ 6 เจ้า ตารางราคา";
+const DESC = `eSIM ญี่ปุ่น 2026: เทียบ 6 เจ้า ทั่วไปเลือก Simbye 10 GB ${
+  cheapestAtLeastGb("simbye", 10) ? formatUsd(cheapestAtLeastGb("simbye", 10)!.priceUsd) : ""
+} ต้องการเบอร์เลือก Sakura`;
 
 const LOCALE = "th" as const;
+/** The day the Sakura Mobile and Holafly phone-number and hotspot terms were re-read (English COMPARE_CHECKED_ISO). */
+const COMPARE_CHECKED = dateLabel("2026-11-14", LOCALE);
 
 const EN_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 /** "19 Oct 2026" (the English constants' format) -> "2026-10-19", so dateLabel can read it. */
@@ -119,7 +125,7 @@ const topPicks: TopPick[] = [
     id: "simbye-japan",
     esimId: "simbye",
     rank: 1,
-    bestFor: "ราคาต่ำสุดในแพ็กเกจที่ยืนยันได้",
+    bestFor: "สรุป: ทริปส่วนใหญ่เลือกเจ้านี้ 10 GB ถูกที่สุด",
     badgeCls: styles.pickBadgeGreen,
     target: "นักท่องเที่ยวส่วนใหญ่ที่ต้องการแค่เน็ต ไม่ว่าจะเที่ยวแบบไหน",
     ctaLabel: "ดู eSIM ของ Simbye →",
@@ -276,7 +282,7 @@ const itineraryPicks = [
     trip: "คุณต้องมีเบอร์โทรญี่ปุ่น",
     pick: "eSIM Voice + Data ของ Sakura Mobile",
     detail: () =>
-      "แพ็กเกจเดียวในหกรายที่มีเบอร์ญี่ปุ่น โทรและ SMS ได้: au (KDDI) 5G วันละ 3 GB และนาทีโทร 120 นาทีสำหรับแพ็ก 1–10 วัน 240 นาทีสำหรับ 11–60 วัน และ 360 นาทีสำหรับ 61 วันขึ้นไป ต้องยืนยันตัวตนแบบพบหน้าในญี่ปุ่น และระยะเวลาใช้งานเริ่มหลังการยืนยันนั้น ไม่ใช่ตอนเดินทางถึง",
+      "แพ็กเกจเดียวในหกรายที่มีเบอร์ญี่ปุ่น โทรและ SMS ได้: au (KDDI) 5G วันละ 3 GB และนาทีโทร 120 นาทีสำหรับแพ็ก 1–10 วัน 240 นาทีสำหรับ 11–30 วัน 360 นาทีสำหรับ 31–60 วัน และ 480 นาทีสำหรับ 61–90 วัน ต้องยืนยันตัวตนแบบพบหน้าในญี่ปุ่น และระยะเวลาใช้งานเริ่มหลังการยืนยันนั้น ไม่ใช่ตอนเดินทางถึง",
   },
   {
     trip: "ญี่ปุ่นพร้อมเกาหลีใต้หรือไต้หวันในทริปเดียว",
@@ -494,7 +500,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "ใช้ eSIM แล้วได้เบอร์โทรญี่ปุ่นไหม?",
-    a: `ได้จาก Sakura Mobile เท่านั้น eSIM Voice + Data ของที่นี่ใช้ au (KDDI) 5G มีเน็ตความเร็วสูงวันละ 3 GB พร้อมเบอร์ญี่ปุ่น การโทร และ SMS — นาทีโทร 120 นาทีสำหรับแพ็ก 1–10 วัน 240 นาทีสำหรับ 11–60 วัน และ 360 นาทีสำหรับ 61 วันขึ้นไป — แต่ต้องยืนยันตัวตนแบบพบหน้าในญี่ปุ่น และระยะเวลาใช้งานเริ่มหลังการยืนยันนั้น Simbye, Airalo, eSIM Go และสินค้าของ Klook เป็นเน็ตอย่างเดียวทั้งหมดในแพ็กญี่ปุ่น: ไม่มีเบอร์ญี่ปุ่น ไม่มี SMS ไม่มีการโทร ถ้าคุณแค่ต้องรับ SMS รหัสยืนยัน ให้เปิดซิมไทยไว้ในอีกช่องแล้วให้ eSIM รับหน้าที่เน็ต ตรวจสอบ ${SPECS_CHECKED}`,
+    a: `ได้จาก Sakura Mobile เท่านั้น eSIM Voice + Data ของที่นี่ใช้ au (KDDI) 5G มีเน็ตความเร็วสูงวันละ 3 GB พร้อมเบอร์ญี่ปุ่น การโทร และ SMS — นาทีโทร 120 นาทีสำหรับแพ็ก 1–10 วัน 240 นาทีสำหรับ 11–30 วัน 360 นาทีสำหรับ 31–60 วัน และ 480 นาทีสำหรับ 61–90 วัน — แต่ต้องยืนยันตัวตนแบบพบหน้าในญี่ปุ่น และระยะเวลาใช้งานเริ่มหลังการยืนยันนั้น Simbye, Airalo, eSIM Go และสินค้าของ Klook เป็นเน็ตอย่างเดียวทั้งหมดในแพ็กญี่ปุ่น: ไม่มีเบอร์ญี่ปุ่น ไม่มี SMS ไม่มีการโทร ถ้าคุณแค่ต้องรับ SMS รหัสยืนยัน ให้เปิดซิมไทยไว้ในอีกช่องแล้วให้ eSIM รับหน้าที่เน็ต ตรวจสอบ ${SPECS_CHECKED}`,
   },
   {
     q: "เน็ตไม่จำกัดจะช้าลงไหม?",
@@ -564,10 +570,10 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>ตรวจสอบราคา {pricesCheckedAt}｜อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            eSIM ญี่ปุ่น 2026:<br />เทียบตามราคาและเครือข่าย
+            eSIM ญี่ปุ่น 2026:<br />เทียบ 6 เจ้า (ตารางราคา)
           </h1>
           <p className={styles.heroSubtitle}>
-            รวมผู้ให้บริการ eSIM ญี่ปุ่นรายหลักไว้ในหน้าเดียว พร้อมตัวเลือกสำหรับทริปแต่ละแบบ — และแต่ละแพ็กใช้เครือข่ายค่ายไหนจริง ๆ
+            เทียบเครือข่าย ราคา 10 GB เน็ตไม่จำกัด เบอร์โทรญี่ปุ่น และการแชร์เน็ตของ eSIM ญี่ปุ่น 6 เจ้า พร้อมบอกว่าทริปแบบไหนควรเลือกเจ้าไหน
           </p>
           <div className={styles.heroBadges}>
             {["ตรวจสอบราคาทุกวัน", "เทียบ eSIM 6 รายการ", "ประเมินอย่างเป็นอิสระ"].map((t) => (
@@ -582,36 +588,31 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         <Disclosure />
 
-        <EsimUseCaseTable copy={esimPicksCopy["th"]} checkedLabel={pricesCheckedAt} formatPlan={planName} klookLocale="th" />
-
-        {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
+        {/* The answer first: one sentence per use, with the price and the date in it (14 Nov 2026). */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            สำหรับทริป<strong>ไม่เกิน 10 วัน</strong>ที่ใช้งานแบบนักท่องเที่ยวทั่วไป ตัวเลือกคือ{" "}
-            <strong>{planLabel(SHORT_TRIP_PLAN)} ของ Simbye</strong> — 10 GB คือวันละ 1 GB แล้วยังเหลือ
-            ในราคาปกติต่ำสุดที่เปรียบเทียบในหน้านี้ และฟีดราคาระบุ NTT docomo, KDDI/au, SoftBank และ Rakuten Mobile ถ้าเป็น{" "}
-            <strong>2 ถึง 4 สัปดาห์</strong> แพ็ก <strong>{planLabel(LONG_TRIP_PLAN)}</strong> ของผู้ให้บริการเดียวกัน
-            ครอบคลุม 20 วันในอัตราเดียวกัน ถ้าอยากได้<strong>เน็ตไม่จำกัด</strong>แทนแบบกำหนดปริมาณ{" "}
-            <strong>{planLabel(SIMBYE_UNLIMITED)}</strong> ของ Simbye ถูกที่สุดเมื่อเทียบที่หนึ่งสัปดาห์ แต่เร็วเต็มที่วันละ 2 GB
-            จากนั้น 1 Mbps ส่วน <strong>{planLabel(ESIMGO_UNLIMITED)}</strong> ของ eSIM Go เร็วเต็มที่ 30 GB ใน 5 วัน หรือ 60 GB ใน 10 วัน
-            ก่อนลดลงเป็นความเร็วที่ยังดูวิดีโอ 720p ได้ ส่วน <strong>{planLabel(AIRALO_UNLIMITED)}</strong> ของ Airalo
-            เร็วเต็มที่ถึงวันละ 3 GB จากนั้น 1 Mbps จนรีเซ็ตทุก 24 ชั่วโมง และไม่จำกัดการแชร์เน็ต มีเพียง{" "}
-            <strong>Sakura Mobile</strong> ที่ขาย<strong>เบอร์โทรญี่ปุ่น</strong>: eSIM Voice + Data บน au (KDDI) 5G
-            วันละ 3 GB พร้อมนาทีโทร 120–360 นาทีตามระยะเวลาแพ็ก และต้องยืนยันตัวตนแบบพบหน้าหลังเครื่องลง
+            <strong>eSIM ญี่ปุ่น</strong>ที่เหมาะกับทริปส่วนใหญ่คือ <strong>Simbye</strong>: แพ็ก{" "}
+            <strong>{planLabel(SHORT_TRIP_PLAN)}</strong> เป็นราคา 10 GB ที่ถูกที่สุดใน 6 เจ้าที่เทียบในหน้านี้ ใช้เครือข่าย NTT docomo, KDDI/au,
+            SoftBank และ Rakuten Mobile (ตรวจราคาเมื่อ {pricesCheckedAt}) ถ้าต้องการ<strong>เบอร์โทรญี่ปุ่น</strong> ใน 6 เจ้ามีเพียง{" "}
+            <strong>eSIM Voice + Data ของ Sakura Mobile</strong> — au 5G วันละไม่เกิน 3 GB และต้องยืนยันตัวตนแบบพบหน้าในญี่ปุ่น
+            ถ้าต้องการ<strong>เน็ตไม่จำกัด</strong> แพ็ก 1 สัปดาห์ที่ถูกที่สุดคือ <strong>{planLabel(SIMBYE_UNLIMITED)}</strong> ของ Simbye
+            และถ้าจะแชร์เน็ตให้แล็ปท็อป เลือก <strong>{planLabel(AIRALO_UNLIMITED)}</strong> ของ Airalo ซึ่งไม่ได้ระบุขีดจำกัดการแชร์เน็ต
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            ราคาอ่านจากเว็บไซต์ของผู้ให้บริการแต่ละรายเมื่อ {pricesCheckedAt} โดยระบบที่อ่านซ้ำทุกวัน
-            เครือข่าย เกณฑ์การใช้งานที่เป็นธรรม ขีดจำกัดฮอตสปอต การมีเบอร์โทร และกฎการคืนเงิน อ่านเมื่อ{" "}
+            ราคาอ่านจากเว็บไซต์ของผู้ให้บริการแต่ละรายเมื่อ {pricesCheckedAt} โดยระบบที่อ่านซ้ำทุกวัน เงื่อนไขเบอร์โทร เครือข่าย และฮอตสปอตของ
+            Sakura Mobile และ Holafly ตรวจเมื่อ {COMPARE_CHECKED} ส่วนเครือข่าย เกณฑ์การใช้งานที่เป็นธรรม และกฎการคืนเงินของรายอื่นอ่านเมื่อ{" "}
             {SPECS_CHECKED} (Simbye อ่านเมื่อ {SIMBYE_CHECKED} จาก simbye.com และฟีดราคาของ Simbye) ส่วนแถวของ Klook มาจากข้อมูลสินค้าของ Klook เองวันที่ {KLOOK_SPECS_CHECKED}
           </p>
         </section>
 
+        <BookingEsimCard lead="เลือกได้แล้ว? ติดตั้ง eSIM ก่อนออกเดินทาง" />
+
         <EsimCtaTop />
 
-        {/* Quick Comparison Table */}
+        {/* Japan eSIM comparison — the conclusion in the first row. */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>ภาพรวม</span>
-          <h2 className={styles.sectionTitle}>เทียบเร็ว</h2>
+          <span className={styles.sectionLabel}>เทียบ eSIM ญี่ปุ่น</span>
+          <h2 className={styles.sectionTitle}>ตารางเทียบ eSIM ญี่ปุ่น: สรุปคือทริปส่วนใหญ่เลือก Simbye</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -703,7 +704,14 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
               ซิมการ์ด vs eSIM สำหรับญี่ปุ่น (ภาษาอังกฤษ) →
             </Link>
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {(latestCheckedAt() ?? "").slice(0, 10)} (ราคา) / 2026-11-14 (เงื่อนไข Sakura Mobile และ Holafly) หน้าเว็บทางการ:
+            simbye.com/products/esim-japan · airalo.com/japan-esim · breezesim.com/products/esim-japan · sakuramobile.jp/travel/esim ·
+            esim.holafly.com/esim-japan
+          </p>
         </section>
+
+        <EsimUseCaseTable copy={esimPicksCopy["th"]} checkedLabel={pricesCheckedAt} formatPlan={planName} klookLocale="th" />
 
         {/* Q: What is the best eSIM for Japan? — the pick-by-itinerary table */}
         <section className={styles.comparisonSection}>
@@ -911,7 +919,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             ข้อยกเว้นคือ <strong>eSIM Voice + Data ของ Sakura Mobile</strong>: au (KDDI) 5G เน็ตความเร็วสูงวันละ 3 GB
             เบอร์ญี่ปุ่นที่โทรและส่ง SMS ได้ และนาทีโทรที่เพิ่มตามแพ็ก — 120 นาทีสำหรับแพ็ก 1–10 วัน 240 นาทีสำหรับ
-            11–60 วัน และ 360 นาทีสำหรับ 61 วันขึ้นไป มีเงื่อนไขหนึ่งที่แพ็กเน็ตอย่างเดียวไม่มี: ต้องยืนยันตัวตนแบบพบหน้าใน
+            11–30 วัน 360 นาทีสำหรับ 31–60 วัน และ 480 นาทีสำหรับ 61–90 วัน (ตรวจเมื่อ {COMPARE_CHECKED}) มีเงื่อนไขหนึ่งที่แพ็กเน็ตอย่างเดียวไม่มี: ต้องยืนยันตัวตนแบบพบหน้าใน
             ญี่ปุ่น และระยะเวลาใช้งานเริ่มหลังการยืนยันนั้น ไม่ใช่ตอนเครื่องลง อ่านจาก sakuramobile.jp เมื่อ {SPECS_CHECKED}
           </p>
           <p className={styles.bodyText}>

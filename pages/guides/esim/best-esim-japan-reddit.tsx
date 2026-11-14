@@ -233,9 +233,10 @@ const askedQuestions = [
         Our pick is Simbye, from {priceFrom("simbye")}, data only. eSIM Go starts at {priceFrom("esimgo")};
         Airalo starts at {priceFrom("airalo")}, on SoftBank as its primary
         network, with its own app for installation. If you want a Japanese phone number, Sakura Mobile is the
-        only provider here that sells one. Our{" "}
-        <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>full Japan eSIM comparison</Link>{" "}
-        ranks all five on current prices.
+        only provider here that sells one. This page is about what Reddit says; which one to pick for your
+        trip, with network, tethering and phone number side by side, is on our{" "}
+        <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan</Link>{" "}
+        comparison.
       </>
     ),
   },

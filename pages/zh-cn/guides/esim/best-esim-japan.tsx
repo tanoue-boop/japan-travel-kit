@@ -38,6 +38,7 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel } from "../../../../lib/i18n";
 import { EsimCtaTop } from "../../../../components/EsimCta";
+import BookingEsimCard from "../../../../components/BookingEsimCard";
 
 /**
  * Simplified Chinese edition of /guides/esim/best-esim-japan. Mirrors the English page
@@ -48,9 +49,14 @@ import { EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-cn" as const;
 const ROUTE = "/zh-cn/guides/esim/best-esim-japan";
-const TITLE = "日本eSIM推荐（2026）：流量卡方案比较与 Klook";
-const DESC =
-  "日本eSIM推荐 2026：Klook 日本 eSIM，以及 Simbye、Airalo、Holafly、eSIM Go 等五家的价格比较，每天更新。";
+// 14 Nov 2026 (R02): same direction as the English page — year, the count compared and
+// "价格表" in the title, the answer by use in the description.
+const TITLE = "日本eSIM推荐 2026：6 家流量卡对比（价格表）";
+const DESC = `日本eSIM推荐 2026：6 家 eSIM 对比，多数行程选 Simbye（10 GB ${
+  cheapestAtLeastGb("simbye", 10) ? formatUsd(cheapestAtLeastGb("simbye", 10)!.priceUsd) : ""
+}），要日本号码选 Sakura Mobile。`;
+/** The day the Sakura Mobile and Holafly phone-number and hotspot terms were re-read (English COMPARE_CHECKED_ISO). */
+const COMPARE_CHECKED = dateLabel("2026-11-14", LOCALE);
 
 const EN_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -131,7 +137,7 @@ const topPicks: TopPick[] = [
     esimId: "simbye",
     rank: 1,
     name: "Simbye 日本 eSIM",
-    bestFor: "最低价套餐",
+    bestFor: "结论：多数行程首选，10 GB 最便宜",
     badgeCls: styles.pickBadgeGreen,
     target: "只需要数据的大多数旅客，任何行程都适用。",
     summary: "纯数据的日本 eSIM，使用 NTT docomo、KDDI/au、SoftBank 与 Rakuten Mobile 网络，固定流量套餐从 1 GB 到 50 GB，无限流量套餐每天前 2 GB 全速。价格数据中的每个套餐都允许开热点。",
@@ -268,7 +274,7 @@ const itineraryPicks = [
     trip: "需要日本电话号码",
     pick: "Sakura Mobile 语音＋数据 eSIM",
     detail: () =>
-      "六家里唯一带日本号码、通话与短信的套餐：au（KDDI）5G、每天 3 GB，1～10 天套餐含 120 分钟通话、11～60 天含 240 分钟、61 天以上含 360 分钟。它需要在日本现场完成身份证件核验，使用期在核验之后才开始，而不是抵达日本就开始。",
+      "六家里唯一带日本号码、通话与短信的套餐：au（KDDI）5G、每天 3 GB，1～10 天套餐含 120 分钟通话、11～30 天含 240 分钟、31～60 天含 360 分钟、61～90 天含 480 分钟。它需要在日本现场完成身份证件核验，使用期在核验之后才开始，而不是抵达日本就开始。",
   },
   {
     trip: "一次旅行同时前往日本和韩国或台湾",
@@ -487,7 +493,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "用 eSIM 可以拿到日本电话号码吗？",
-    a: `只有 Sakura Mobile 可以。它的语音＋数据 eSIM 使用 au（KDDI）5G 网络，每天 3 GB 高速数据，带日本号码、语音通话与短信——1～10 天套餐含 120 分钟通话、11～60 天含 240 分钟、61 天以上含 360 分钟——但需要在日本现场完成身份核验，使用期在核验之后才开始。Simbye、Airalo、eSIM Go 与 Klook 的商品，日本套餐都是纯数据：没有日本号码、没有短信、没有语音。如果你只是需要接收验证码短信，把原本的 SIM 留在另一个卡槽开着，让 eSIM 负责数据就好。核查时间 ${SPECS_CHECKED}。`,
+    a: `只有 Sakura Mobile 可以。它的语音＋数据 eSIM 使用 au（KDDI）5G 网络，每天 3 GB 高速数据，带日本号码、语音通话与短信——1～10 天套餐含 120 分钟通话、11～30 天含 240 分钟、31～60 天含 360 分钟、61～90 天含 480 分钟——但需要在日本现场完成身份核验，使用期在核验之后才开始。Simbye、Airalo、eSIM Go 与 Klook 的商品，日本套餐都是纯数据：没有日本号码、没有短信、没有语音。如果你只是需要接收验证码短信，把原本的 SIM 留在另一个卡槽开着，让 eSIM 负责数据就好。核查时间 ${SPECS_CHECKED}。`,
   },
   {
     q: "无限流量会限速吗？",
@@ -558,10 +564,10 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>价格核查时间 {pricesCheckedAt}</p>
           <h1 className={styles.heroTitle}>
-            日本eSIM推荐 2026：<br />按价格与网络比较流量卡
+            日本eSIM推荐 2026：<br />6 家流量卡对比（价格表）
           </h1>
           <p className={styles.heroSubtitle}>
-            一文汇总主流日本旅游 eSIM，根据不同旅行需求推荐合适的套餐，并说明各套餐实际使用的日本运营商网络。
+            6 家日本 eSIM 的网络、10 GB 价格、无限流量、电话号码与热点共享一次对比，并告诉你哪种行程该选哪一家。
           </p>
           <div className={styles.heroBadges}>
             {["价格每天核查", "6 款 eSIM 比较", "独立评测"].map((t) => (
@@ -576,33 +582,29 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         <Disclosure />
 
-        <EsimUseCaseTable copy={esimPicksCopy["zh-cn"]} checkedLabel={pricesCheckedAt} formatPlan={planName} klookLocale="zh-cn" />
-
-        {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
+        {/* The answer first: one sentence per use, with the price and the date in it (14 Nov 2026). */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>10 天以内</strong>、一般观光用量的行程，首选是
-            <strong>Simbye 的 {planLabel(SHORT_TRIP_PLAN)}</strong>——10 GB 等于每天 1 GB 还有富余，是本页比较的套餐中定价最低的，其价格数据列出
-            NTT docomo、KDDI/au、SoftBank 与 Rakuten Mobile；<strong>两到四周</strong>的话，同一家的
-            <strong>{planLabel(LONG_TRIP_PLAN)}</strong> 按同样的用量可用 20 天。如果你要的是<strong>无限流量</strong>而不是固定流量，Simbye 的
-            <strong>{planLabel(SIMBYE_UNLIMITED)}</strong> 是一周套餐中最便宜的，但每天前 2 GB 全速，之后 1 Mbps；eSIM Go 的
-            <strong>{planLabel(ESIMGO_UNLIMITED)}</strong> 全速可用 5 天 30 GB 或 10 天 60 GB，之后降到仍可看 720p 的速度；Airalo 的
-            <strong>{planLabel(AIRALO_UNLIMITED)}</strong> 每天前 3 GB 全速，之后以 1 Mbps 使用到 24 小时重置，热点共享没有上限。只有
-            <strong>Sakura Mobile</strong> 提供<strong>日本电话号码</strong>：它的语音＋数据 eSIM 使用 au（KDDI）5G 网络，每天 3 GB，根据套餐时长含
-            120～360 分钟通话，抵达日本后需要现场完成身份核验。
+            <strong>日本eSIM推荐</strong>：多数行程选 <strong>Simbye</strong>，它的 <strong>{planLabel(SHORT_TRIP_PLAN)}</strong>{" "}
+            是本页 6 家中 10 GB 最便宜的套餐，使用 NTT docomo、KDDI/au、SoftBank 与 Rakuten Mobile 网络（价格核查 {pricesCheckedAt}）。
+            需要<strong>日本电话号码</strong>的话，6 家中只有 <strong>Sakura Mobile 的语音＋数据 eSIM</strong> 提供——au 5G、每天最多 3 GB，需在日本现场完成身份核验。
+            要<strong>无限流量</strong>，一周套餐最便宜的是 Simbye 的 <strong>{planLabel(SIMBYE_UNLIMITED)}</strong>；要给笔记本电脑开热点，选 Airalo 的{" "}
+            <strong>{planLabel(AIRALO_UNLIMITED)}</strong>，官方未设热点共享上限。
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            价格由每天重新读取的程序于 {pricesCheckedAt} 从各服务商官网读取。网络、合理使用门槛、热点上限、是否提供电话号码与退款规定的读取时间为
-            {SPECS_CHECKED}（Simbye 为 {SIMBYE_CHECKED}，来自 simbye.com 与其价格数据）；Klook 的资料来自其 {KLOOK_SPECS_CHECKED} 的商品数据。
+            价格由每天重新读取的程序于 {pricesCheckedAt} 从各服务商官网读取。Sakura Mobile 与 Holafly 的电话号码、网络与热点条件核查日为 {COMPARE_CHECKED}；
+            其他服务商的网络、合理使用门槛与退款规定的读取时间为 {SPECS_CHECKED}（Simbye 为 {SIMBYE_CHECKED}，来自 simbye.com 与其价格数据）；Klook 的资料来自其 {KLOOK_SPECS_CHECKED} 的商品数据。
           </p>
         </section>
 
+        <BookingEsimCard lead="选好了吗？出发前先安装 eSIM。" />
+
         <EsimCtaTop />
 
-        {/* Quick Comparison Table */}
+        {/* Japan eSIM comparison — the conclusion in the first row. */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>一览<span className="sr-only">：</span></span>
-          <h2 className={styles.sectionTitle}>各服务商快速对比</h2>
+          <span className={styles.sectionLabel}>日本 eSIM 对比<span className="sr-only">：</span></span>
+          <h2 className={styles.sectionTitle}>日本 eSIM 对比表：结论是多数行程选 Simbye</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -693,7 +695,13 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
               日本 SIM 卡 vs eSIM（英文）→
             </Link>
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {(latestCheckedAt() ?? "").slice(0, 10)}（价格）／2026-11-14（Sakura Mobile、Holafly 条件）。官方页面：simbye.com/products/esim-japan ·
+            airalo.com/japan-esim · breezesim.com/products/esim-japan · sakuramobile.jp/travel/esim · esim.holafly.com/esim-japan
+          </p>
         </section>
+
+        <EsimUseCaseTable copy={esimPicksCopy["zh-cn"]} checkedLabel={pricesCheckedAt} formatPlan={planName} klookLocale="zh-cn" />
 
         {/* Q: What is the best eSIM for Japan? — the pick-by-itinerary table */}
         <section className={styles.comparisonSection}>
@@ -887,7 +895,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </p>
           <p className={styles.bodyText}>
             例外是 <strong>Sakura Mobile 的语音＋数据 eSIM</strong>：au（KDDI）5G、每天 3 GB 高速数据、带日本号码可通话与收发短信，所含通话分钟数随套餐增加——
-            1～10 天套餐 120 分钟、11～60 天 240 分钟、61 天以上 360 分钟。它有一个纯数据套餐没有的条件：需要在日本现场完成身份核验，使用期在核验之后才开始，
+            1～10 天套餐 120 分钟、11～30 天 240 分钟、31～60 天 360 分钟、61～90 天 480 分钟（{COMPARE_CHECKED} 核查）。它有一个纯数据套餐没有的条件：需要在日本现场完成身份核验，使用期在核验之后才开始，
             而不是抵达日本就开始。信息于 {SPECS_CHECKED} 查阅自 sakuramobile.jp。
           </p>
           <p className={styles.bodyText}>

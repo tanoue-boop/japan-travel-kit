@@ -70,9 +70,9 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             If you are already booking tickets or transport on Klook, its{" "}
             <PartnerTextLink href={klookEsim.url}>{klookEsim.name}</PartnerTextLink> keeps everything in one account.
             We leave it out of our rankings because its US$1.05 from-price names no plan, so compare it with
-            the prices in{" "}
-            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>our eSIM comparison</Link>{" "}
-            or every provider&apos;s price per GB in the{" "}
+            the prices in our{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>best eSIM for Japan</Link>{" "}
+            comparison (which one to pick for each kind of trip) or every provider&apos;s price per GB in the{" "}
             <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--text)", fontWeight: 600 }}>Japan eSIM price tracker</Link>{" "}
             before you buy. Then pick by what matters most: the{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link>, an{" "}

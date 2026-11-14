@@ -30,6 +30,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, itemListJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 
 /**
  * Rank pass, 29 Oct 2026.
@@ -58,6 +59,18 @@ import { EsimCtaTop } from "../../../components/EsimCta";
  * now the answer by need with a button on each row and the Simbye code, from the shared
  * EsimUseCaseTable, and the install section became EsimBuyGuide (phone check, steps,
  * common mistakes). Both are shared with the four translated editions.
+ *
+ * Rank pass, 14 Nov 2026 (jtk-20261114-R02). 239 impressions, 1 click, average 16.3 over
+ * the 28 days to 10 Nov: the comparison queries ("japan esim comparison" 2.4, "japan travel
+ * sim comparison" 1.6, "japan esim with phone number" 5.3) sit on page one with no clicks,
+ * and "best esim japan 2026" sits at 23. The pages above it all carry the year, a count and
+ * a price table in the title. So: title in that shape, a three-sentence answer by use, the
+ * comparison table rebuilt around network / ~10 GB price / unlimited / phone number /
+ * tethering with the conclusion in its first row, a five-row use-case table, and the four
+ * question headings the queries ask. Intent split with the neighbouring pages: this page =
+ * which one to pick (overall comparison); best-esim-japan-reddit = what Reddit says;
+ * cheapest-esim-japan = price order and cost per GB; japan-esim-price-tracker = daily price
+ * history; /guides/esim = the index.
  */
 
 // "Price From" / "Cheapest Plan" in the quick comparison come from data/esim-prices.json,
@@ -79,12 +92,18 @@ const pricesCheckedAt = formatDate(latestCheckedAt());
  */
 const SPECS_CHECKED = "29 Oct 2026";
 
-// Owns "best eSIM Japan": a pick per trip. Lowest price lives on cheapest-esim-japan, the
-// unlimited term on japan-esim-unlimited and traveller advice on best-esim-japan-reddit.
-const TITLE = "Best eSIM for Japan 2026: Picks by Trip, Network and Data";
-const DESCRIPTION =
-  "Best eSIM for Japan by trip: Simbye for most visits, plus the pick for long stays, rural travel, tethering or a Japanese number. Terms checked Nov 2026.";
+// Owns "best eSIM Japan" and "Japan eSIM comparison": which one to pick, by use. Lowest price
+// lives on cheapest-esim-japan, the unlimited term on japan-esim-unlimited, traveller advice
+// on best-esim-japan-reddit and the day-by-day price history on japan-esim-price-tracker.
+// "6" is the count actually compared: Simbye, Airalo, Holafly, eSIM Go, Sakura Mobile, Klook.
+const TITLE = "Best eSIM for Japan 2026: 6 eSIMs Compared (Price Table)";
+const DESCRIPTION = `Best eSIM for Japan 2026, in a Japan eSIM comparison of 6: Simbye ${
+  cheapestAtLeastGb("simbye", 10) ? formatUsd(cheapestAtLeastGb("simbye", 10)!.priceUsd) : ""
+} for 10 GB, Sakura Mobile for a phone number, Airalo for unlimited tethering.`;
 const OG_TITLE = TITLE;
+
+/** The day the phone-number, network and hotspot terms in the comparison table were re-read. */
+const COMPARE_CHECKED_ISO = "2026-11-14";
 
 // Where a CTA goes when we have no affiliate link for a provider. Was /sim-cards until that
 // page was merged into this one (2026-10-09); the plan table is the closest equivalent.
@@ -262,7 +281,7 @@ const itineraryPicks = [
     trip: "You need a Japanese phone number",
     pick: "Sakura Mobile Voice + Data eSIM",
     detail: () =>
-      "The only plan of the six with a Japanese number, calls and SMS: au (KDDI) 5G, 3 GB a day, and 120 call minutes on 1–10 day plans, 240 on 11–60 and 360 on 61 days or more. It needs an in-person ID check in Japan, and the usage period starts after that check rather than on arrival.",
+      "The only plan of the six with a Japanese number, calls and SMS: au (KDDI) 5G, 3 GB a day, and 120 call minutes on 1–10 day plans, 240 on 11–30, 360 on 31–60 and 480 on 61–90 days. It needs an in-person ID check in Japan, and the usage period starts after that check rather than on arrival.",
   },
   {
     trip: "Japan plus South Korea or Taiwan on one trip",
@@ -336,6 +355,131 @@ const networkRows = [
     carriers: klookEsim.specNetwork,
     how: `${klookEsim.specPhoneNumber}. Tethering: ${klookEsim.specTethering.toLowerCase()}. From Klook's own listing data, not from the product page itself — check the listing for your date.`,
     checked: klookEsim.specsCheckedAt,
+  },
+];
+
+/**
+ * The comparison table (14 Nov 2026 R02): the five columns the comparison queries ask about,
+ * with the conclusion in the first row. Prices interpolate from data/esim-prices.json; the
+ * Sakura Mobile and Holafly phone-number, network and hotspot cells were re-read on their own
+ * sites on COMPARE_CHECKED_ISO, the rest on the dates in the network and unlimited tables below.
+ * Klook carries no price here — its from-price names no plan.
+ */
+type CompareCta = { kind: "provider"; esimId: EsimProviderId; label: string } | { kind: "klook" } | { kind: "holafly" };
+type CompareRow = {
+  provider: string;
+  verdict: string;
+  network: string;
+  tenGb: string;
+  unlimited: string;
+  number: string;
+  tethering: string;
+  cta: CompareCta;
+};
+
+const compareRows: CompareRow[] = [
+  {
+    provider: "Simbye",
+    verdict: "Best for most trips — lowest 10 GB price",
+    network: getProvider("simbye").network,
+    tenGb: planLabel(SHORT_TRIP_PLAN),
+    unlimited: `Yes — ${planLabel(SIMBYE_UNLIMITED)}; 2 GB/day full speed, then 1 Mbps`,
+    number: "No — data only",
+    tethering: "Allowed",
+    cta: { kind: "provider", esimId: "simbye" as EsimProviderId, label: "Get Simbye eSIM →" },
+  },
+  {
+    provider: klookEsim.name,
+    verdict: "Already booking tickets on Klook",
+    network: klookEsim.specNetwork,
+    tenGb: "Not quoted — the from-price names no plan",
+    unlimited: "Yes — 10 GB/day at high speed, then 128 kbps",
+    number: klookEsim.specPhoneNumber,
+    tethering: klookEsim.specTethering,
+    cta: { kind: "klook" },
+  },
+  {
+    provider: "Airalo",
+    verdict: "Unlimited with no tethering limit",
+    network: "SoftBank (primary), plus two others the page does not name",
+    tenGb: planLabel(cheapestAtLeastGb("airalo", 10)),
+    unlimited: `Yes — ${planLabel(AIRALO_UNLIMITED)}; 3 GB/day full speed, then 1 Mbps`,
+    number: "No — data only",
+    tethering: "No limit stated on its unlimited plans",
+    cta: { kind: "provider", esimId: "airalo" as EsimProviderId, label: "Get Airalo eSIM →" },
+  },
+  {
+    provider: "eSIM Go (Breeze)",
+    verdict: "Largest allowances (100 GB, 200 GB)",
+    network: "NTT Docomo, KDDI, Rakuten Mobile, SoftBank",
+    tenGb: planLabel(cheapestAtLeastGb("esimgo", 10)),
+    unlimited: `Yes — ${planLabel(ESIMGO_UNLIMITED)}; 30 GB over 5 days at full speed`,
+    number: "No — data only",
+    tethering: "On every plan",
+    cta: { kind: "provider", esimId: "esimgo" as EsimProviderId, label: "Get eSIM Go →" },
+  },
+  {
+    provider: "Sakura Mobile",
+    verdict: "The only one with a Japanese phone number",
+    network: "docomo 5G (3 GB/day plans); au 5G (Unlimited and Voice + Data)",
+    tenGb: `${planLabel(cheapestAtLeastGb("sakura", 10))} — 3 GB a day`,
+    unlimited: "Yes — au 5G, no daily speed cap on the phone",
+    number: "Yes — Voice + Data eSIM, in-person ID check in Japan",
+    tethering: "Yes; on Unlimited, capped by plan length (2 GB on 1–3 day plans)",
+    cta: { kind: "provider", esimId: "sakura" as EsimProviderId, label: "Get Sakura Mobile →" },
+  },
+  {
+    provider: "Holafly",
+    verdict: "Unlimited only — no link from this site",
+    network: "KDDI / SoftBank",
+    tenGb: "No fixed-GB plans",
+    unlimited: `Yes — from ${unlimitedFromLabel("holafly")}`,
+    number: "No — data only",
+    tethering: "1 GB of shareable data a day",
+    cta: { kind: "holafly" },
+  },
+];
+
+const USE_CASE_CTA: Partial<Record<EsimProviderId, string>> = {
+  simbye: "Get Simbye eSIM →",
+  airalo: "Get Airalo eSIM →",
+  sakura: "Get Sakura Mobile →",
+};
+
+/** Five ways readers describe their trip, each with the one to buy (task R02, 14 Nov 2026). */
+const useCaseRows = [
+  {
+    use: "Short trip (up to 10 days)",
+    pick: "Simbye",
+    why: () => `${planLabel(SHORT_TRIP_PLAN)} — a gigabyte a day for ten days, tethering allowed.`,
+    esimId: "simbye" as EsimProviderId,
+  },
+  {
+    use: "Long stay (a month or more)",
+    pick: "Simbye for data; Sakura Mobile with a number",
+    why: () =>
+      `${planLabel(cheapestAtLeastGb("simbye", 50))} on Simbye for data only; Sakura Mobile's Voice + Data eSIM runs to 90 days with up to 480 call minutes.`,
+    esimId: "simbye" as EsimProviderId,
+  },
+  {
+    use: "You need a Japanese phone number",
+    pick: "Sakura Mobile Voice + Data",
+    why: () => "The only plan of the six with a Japanese number; in-person ID check in Japan before use.",
+    esimId: "sakura" as EsimProviderId,
+  },
+  {
+    use: "Family or group",
+    pick: "One eSIM each, or Airalo unlimited as a shared hotspot",
+    why: () =>
+      `Airalo states no limit on tethering on its unlimited plans — ${planLabel(AIRALO_UNLIMITED)}. Holafly caps the hotspot at 1 GB a day.`,
+    esimId: "airalo" as EsimProviderId,
+  },
+  {
+    use: "iPhone",
+    pick: "Any of them — Simbye on price",
+    why: () =>
+      "All six install as a standard eSIM profile on iPhone XS or later; the handset must be carrier-unlocked.",
+    esimId: "simbye" as EsimProviderId,
   },
 ];
 
@@ -447,7 +591,33 @@ const timingRows = [
 
 const SIMBYE_PLANS = allEsimPlans.filter((p) => p.providerId === "simbye" && !p.unlimited);
 
+/**
+ * The first five go into FAQPage (14 Nov 2026 R02): the four question headings on the page in
+ * the form the queries take, plus the price question. The rest stay visible on the page only.
+ */
+const FAQ_SCHEMA_COUNT = 5;
+
 const faqItems = [
+  {
+    q: "Which eSIM is best for Japan?",
+    a: `For most trips, Simbye: ${planLabel(SHORT_TRIP_PLAN)} is the lowest list price for 10 GB of the six compared here (prices checked ${pricesCheckedAt}), on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile with tethering allowed. If you need a Japanese phone number, the only choice is Sakura Mobile's Voice + Data eSIM. For unlimited data with a tethered laptop, Airalo's unlimited plan runs at full speed to 3 GB a day and states no limit on tethering.`,
+  },
+  {
+    q: "Which Japan eSIM comes with a phone number?",
+    a: `Of the six compared here, only Sakura Mobile's Voice + Data eSIM: au (KDDI) 5G, up to 3 GB a day at high speed, a Japanese phone number with domestic calls — up to 120 minutes on 1–10 day plans, 240 on 11–30, 360 on 31–60 and 480 on 61–90 days — and an in-person ID check in Japan. Simbye, Airalo, eSIM Go, Holafly and the Klook listing are data only. Checked on sakuramobile.jp and esim.holafly.com on ${COMPARE_CHECKED_ISO}.`,
+  },
+  {
+    q: "Airalo vs Sakura Mobile vs Holafly for Japan — which is better?",
+    a: `Airalo for most trips: fixed-data plans from ${priceFromLabel("airalo")} and an unlimited plan at full speed to 3 GB a day with no limit on tethering. Sakura Mobile if you need a Japanese phone number or a physical SIM. Holafly sells unlimited only, from ${unlimitedFromLabel("holafly")}, on KDDI and SoftBank, with 1 GB of shareable hotspot data a day and no phone number. Prices checked ${pricesCheckedAt}; Holafly and Sakura Mobile terms checked ${COMPARE_CHECKED_ISO}.`,
+  },
+  {
+    q: "Is a Japan SIM card better than an eSIM for tourists?",
+    a: "Only if your phone cannot take an eSIM or is carrier-locked. An eSIM installs from a QR code before you fly and connects when you land; a physical SIM has to be posted to you, collected at the airport or bought at a counter after arrival. Of the six compared here, Sakura Mobile is the only one that also sells a physical SIM.",
+  },
+  {
+    q: "How much does a Japan eSIM cost?",
+    a: `Japan eSIM prices vary by provider and plan size (checked ${pricesCheckedAt}). Budget options: Simbye from ${priceFromLabel("simbye")}, eSIM Go from ${priceFromLabel("esimgo")}, Airalo from ${priceFromLabel("airalo")}. Mid-range: a 5 GB plan is ${priceAtLeastLabel("simbye", 5)} from Simbye, ${priceAtLeastLabel("esimgo", 5)} from eSIM Go or ${priceAtLeastLabel("airalo", 5)} from Airalo. Unlimited: Holafly from ${unlimitedFromLabel("holafly")}. Japan-based with English phone support: Sakura Mobile from ${priceFromLabel("sakura")}.`,
+  },
   {
     q: "What is an eSIM and do I need one for Japan?",
     a: "An eSIM is a digital SIM built into your phone — no physical card needed. You download a profile via QR code and it works instantly. You don't need an eSIM to visit Japan, but it's by far the most convenient option: buy and install before you fly, activate on landing.",
@@ -459,10 +629,6 @@ const faqItems = [
   {
     q: "Can I keep my home SIM active while using a Japan eSIM?",
     a: "Yes — this is one of the biggest advantages of eSIM. Most dual-SIM phones let you use both SIMs simultaneously. Keep your home SIM active for calls and texts while your Japan eSIM handles data.",
-  },
-  {
-    q: "Is Airalo or Holafly better for Japan?",
-    a: "Airalo is better for most people — it's cheaper, has flexible data caps, and runs on SoftBank as its primary network on Airalo's own Japan page (checked 1 Nov 2026). Holafly wins if you genuinely need unlimited data (remote work, heavy streaming) and the premium price is justified for your trip.",
   },
   {
     q: "What if my eSIM doesn't work after landing in Japan?",
@@ -487,10 +653,6 @@ const faqItems = [
   {
     q: "How much data do I need for Japan?",
     a: "For typical tourist use — Google Maps, messaging, light browsing, and a few photos — 1 GB per day is a reasonable estimate. A 10-day trip would use around 8–10 GB. If you use maps heavily for driving, stream video, or work remotely, budget 2 GB+ per day. Most travellers find a 3–5 GB plan sufficient for a week-long trip to Japan.",
-  },
-  {
-    q: "How much does a Japan eSIM cost?",
-    a: `Japan eSIM prices vary by provider and plan size (checked ${pricesCheckedAt}). Budget options: Simbye from ${priceFromLabel("simbye")}, eSIM Go from ${priceFromLabel("esimgo")}, Airalo from ${priceFromLabel("airalo")}. Mid-range: a 5 GB plan is ${priceAtLeastLabel("simbye", 5)} from Simbye, ${priceAtLeastLabel("esimgo", 5)} from eSIM Go or ${priceAtLeastLabel("airalo", 5)} from Airalo. Unlimited: Holafly from ${unlimitedFromLabel("holafly")}. Japan-based with English phone support: Sakura Mobile from ${priceFromLabel("sakura")}. For a typical tourist week, expect to pay $10–20.`,
   },
   {
     q: "Is unlimited data worth it for a Japan trip?",
@@ -519,13 +681,8 @@ const faqItems = [
     a: "Buy an eSIM before you leave home and activate it the moment your plane lands — there is no reason to wait, and nothing sells out. A physical SIM is different: airport counters and vending machines do run out of popular options in peak season, and pre-ordering a Sakura Mobile SIM for airport or hotel collection is both cheaper than buying on arrival and safer than hoping.",
   },
   {
-    // Added 29 Oct 2026 — the three questions the new body sections answer, in the
-    // short form an answer engine can lift. Every figure read on the provider's own
-    // site on the date named.
-    q: "Can I get a Japanese phone number with an eSIM?",
-    a: `Only from Sakura Mobile. Its Voice + Data eSIM runs on au (KDDI) 5G with 3 GB of high-speed data a day and includes a Japanese number, voice calls and SMS — 120 call minutes on 1–10 day plans, 240 on 11–60 days and 360 on 61 days or more — but it requires an in-person ID check in Japan, and the usage period starts after that check. Simbye, Airalo, eSIM Go and the Klook listing are all data only on their Japan plans: no Japanese number, no SMS, no voice. If you only need SMS to receive verification codes, keep your home SIM active in the other slot and let the eSIM carry data. Checked ${SPECS_CHECKED}.`,
-  },
-  {
+    // Added 29 Oct 2026 — questions the body sections answer, in the short form an answer
+    // engine can lift. (The phone-number one moved to the top of the list on 14 Nov 2026.)
     q: "Does unlimited data slow down?",
     a: `Yes — every "unlimited" Japan plan has a published threshold. Simbye gives 2 GB a day at full speed, then 1 Mbps. Airalo slows to 1 Mbps for the rest of the day once you pass 3 GB, and the allowance "resets every 24 hours, counted from the time you activated your eSIM". eSIM Go's Premium Unlimited gives 30 GB over 5 days, 60 GB over 10 or 90 GB over 15 at full speed, after which "your data speed will be reduced (but is still suitable for streaming 720p video)". Sakura Mobile's unlimited plan is unlimited on the device but caps the hotspot at 2–30 GB depending on plan length, and its 3 GB/day plans drop to 200 kbps after 3 GB in a day. The Klook listing's unlimited tier runs 10 GB a day at full speed, then 128 kbps. Airalo and eSIM Go figures checked ${SPECS_CHECKED}; the Klook figures come from its listing data of ${klookEsim.specsCheckedAt}.`,
   },
@@ -565,6 +722,41 @@ function KlookEsimSlot({ why }: { why: string }) {
   );
 }
 
+/**
+ * The button in a comparison-table row. Same links and rel values as the pick cards: Simbye
+ * and the Holafly→Airalo alternative are sponsored, the other provider links nofollow, Klook
+ * through KlookLink.
+ */
+function CompareCtaLink({ cta }: { cta: CompareCta }) {
+  if (cta.kind === "klook") {
+    return (
+      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+        {klookEsim.ctaLabel}
+      </KlookLink>
+    );
+  }
+  const esimId = cta.kind === "holafly" ? HOLAFLY_ALT.esimId : cta.esimId;
+  const label = cta.kind === "holafly" ? HOLAFLY_ALT.ctaLabel : cta.label;
+  const url = getProvider(esimId).affiliateUrl;
+  if (url === "#") {
+    return (
+      <Link href={PLANS_HREF} className={styles.tdLink}>
+        {label}
+      </Link>
+    );
+  }
+  return (
+    <a
+      href={url}
+      className={styles.tdLink}
+      target="_blank"
+      rel={cta.kind === "holafly" || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
+    >
+      {label}
+    </a>
+  );
+}
+
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/best-esim-japan") } });
 
 export default function BestEsimJapanPage({ updated }: { updated: PageUpdated }) {
@@ -589,7 +781,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, FAQ_SCHEMA_COUNT).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -679,11 +871,11 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan 2026:<br />Picks by Trip, Network &amp; Data
+            Best eSIM for Japan 2026:<br />Japan eSIM Comparison of 6 (Price Table)
           </h1>
           <p className={styles.heroSubtitle}>
-            Every major Japan eSIM on one page, with a pick for each kind of trip —
-            and which carrier each plan actually rides.
+            Network, 10 GB price, unlimited, phone number and tethering for six Japan eSIMs,
+            and which one to pick for your trip.
           </p>
           <div className={styles.heroBadges}>
             {["Prices checked daily", "6 eSIMs Compared", "Independent Review"].map((t) => (
@@ -706,128 +898,85 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           </p>
         </div>
 
-        <EsimUseCaseTable copy={esimPicksCopy.en} checkedLabel={pricesCheckedAt} />
-
-        {/* The answer, before the table — a pick per kind of trip, with the numbers in it. */}
+        {/* The answer first: one sentence per use, with the price and the date in it. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            For a trip of <strong>10 days or less</strong> with ordinary tourist use, the pick is{" "}
-            <strong>Simbye&apos;s {planLabel(SHORT_TRIP_PLAN)}</strong> — 10 GB is a gigabyte a day with room
-            left over, at the lowest list price in this comparison, and its feed lists NTT docomo, KDDI/au, SoftBank
-            and Rakuten Mobile; for <strong>two to four weeks</strong>, the same provider&apos;s{" "}
-            <strong>{planLabel(LONG_TRIP_PLAN)}</strong> covers 20 days at the same rate. If you want{" "}
-            <strong>unlimited</strong> rather than an allowance, Simbye&apos;s{" "}
-            <strong>{planLabel(SIMBYE_UNLIMITED)}</strong> is the cheapest at a week but runs 2 GB a day at
-            full speed and then 1 Mbps; eSIM Go&apos;s{" "}
-            <strong>{planLabel(ESIMGO_UNLIMITED)}</strong> runs 30 GB over 5 days or 60 GB over 10 at full
-            speed before it drops to a 720p-capable rate, and Airalo&apos;s{" "}
-            <strong>{planLabel(AIRALO_UNLIMITED)}</strong> runs full speed to 3 GB a day, then 1 Mbps until
-            the 24-hour reset, with no cap on tethering. Only <strong>Sakura Mobile</strong> sells a{" "}
-            <strong>Japanese phone number</strong>: its Voice + Data eSIM on au (KDDI) 5G, 3 GB a day with
-            120–360 call minutes depending on plan length, and an in-person ID check after you land.
+            The <strong>best eSIM for Japan</strong> for most trips is <strong>Simbye</strong>: its{" "}
+            <strong>{planLabel(SHORT_TRIP_PLAN)}</strong> is the lowest 10 GB price of the six in this Japan
+            eSIM comparison, on NTT docomo, KDDI/au, SoftBank and Rakuten Mobile (prices checked{" "}
+            {pricesCheckedAt}). If you need a <strong>Japanese phone number</strong>, the only one of the six
+            that sells it is <strong>Sakura Mobile&apos;s Voice + Data eSIM</strong> — au 5G, up to 3 GB a day,
+            with an in-person ID check in Japan. For <strong>unlimited</strong> data, Simbye&apos;s{" "}
+            <strong>{planLabel(SIMBYE_UNLIMITED)}</strong> is the lowest price at a week, and Airalo&apos;s{" "}
+            <strong>{planLabel(AIRALO_UNLIMITED)}</strong> is the one to tether a laptop to, with no
+            tethering limit stated.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Prices read off each provider&apos;s own site on {pricesCheckedAt} by the job that re-reads them
-            daily. Networks, fair-use thresholds, hotspot caps, phone-number availability and refund rules
-            read on {SPECS_CHECKED} (Simbye: {SIMBYE_SPECS_CHECKED_AT}, from simbye.com and its price feed);
-            the Klook rows are from its own listing data of{" "}
-            {klookEsim.specsCheckedAt}; Klook prices change by date, so open the listing for
-            yours.
+            daily. Sakura Mobile and Holafly phone-number, network and hotspot terms read on{" "}
+            {COMPARE_CHECKED_ISO}; the other providers&apos; networks, fair-use thresholds and refund rules on{" "}
+            {SPECS_CHECKED} (Simbye: {SIMBYE_SPECS_CHECKED_AT}); the Klook rows are from its own listing data
+            of {klookEsim.specsCheckedAt}, and Klook prices change by date, so open the listing for yours.
           </p>
         </section>
 
-        <EsimCtaTop />
+        <BookingEsimCard lead="Picked one? Install it before you fly." />
 
-        {/* Quick Comparison Table */}
+        {/* Japan eSIM comparison — the conclusion in the first row, a button on every row. */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>At a glance</span>
-          <h2 className={styles.sectionTitle}>Quick Comparison</h2>
-          <div className={styles.tableWrap}>
+          <span className={styles.sectionLabel}>Japan eSIM comparison</span>
+          <h2 className={styles.sectionTitle}>Japan eSIM comparison: 6 eSIMs side by side</h2>
+          <p className={styles.bodyText}>
+            Simbye is the pick for most trips on price; the other five rows are there for one reason each — a
+            Klook basket, unrestricted tethering, very large allowances, a Japanese number, or unlimited only.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Provider", "Best For", "Price From", "Cheapest Plan", "Network", "Voice / SMS", "Physical SIM", "Rating", ""].map((h) => (
+                    {["eSIM", "Pick it for", "Network in Japan", "About 10 GB", "Unlimited plan", "Japanese phone number", "Tethering", ""].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {topPicks.map(({ id, esimId, bestFor, ctaLabel, ctaAlt }) => {
-                    const sim = simCards.find((s) => s.id === id)!;
-                    const cheapest = cheapestPlan(esimId);
-                    const affiliateUrl = getProvider(ctaAlt?.esimId ?? esimId).affiliateUrl;
-                    const url = affiliateUrl === "#" ? PLANS_HREF : affiliateUrl;
-                    const isExternal = affiliateUrl !== "#";
-                    const label = ctaAlt?.ctaLabel ?? ctaLabel;
-                    return (
-                      <tr key={id}>
-                        <td className={styles.tdProvider}>{sim.provider}</td>
-                        <td className={styles.tdBestFor}>{bestFor}</td>
-                        <td className={styles.tdPrice}>{cheapest ? formatUsd(cheapest.priceUsd) : "—"}</td>
-                        <td className={styles.tdNetwork}>{cheapest ? cheapest.name : "—"}</td>
-                        <td className={styles.tdNetwork}>{getProvider(esimId).network}</td>
-                        <td>{sim.voiceCall ? <span className={styles.yes}>✓</span> : <span className={styles.no}>✗</span>}</td>
-                        <td>{sim.physicalSim ? <span className={styles.yes}>✓</span> : <span className={styles.no}>✗</span>}</td>
-                        <td>
-                          <span className={styles.tdRating}>
-                            {sim.rating !== null && <span style={{ color: "var(--accent)" }}>★</span>}
-                            {sim.rating ?? "—"}
-                          </span>
-                        </td>
-                        <td>
-                          {isExternal ? (
-                            <a
-                              href={url}
-                              className={styles.tdLink}
-                              target="_blank"
-                              rel={ctaAlt || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
-                            >
-                              {label}
-                            </a>
-                          ) : (
-                            <Link href={PLANS_HREF} className={styles.tdLink}>
-                              {label}
-                            </Link>
-                          )}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                  {/* Unranked extra: Klook sells a Japan eSIM of its own, but its product page
-                      blocks automated price reads, so there is no verified figure to rank it on. */}
-                  <tr>
-                    <td className={styles.tdProvider}>{klookEsim.name}</td>
-                    <td className={styles.tdBestFor}>Booking tickets on Klook already</td>
-                    <td className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
-                    <td className={tools.tdMuted}>—</td>
-                    <td className={tools.tdMuted}>Not stated on the listing</td>
-                    <td><span className={styles.no}>✗</span></td>
-                    <td><span className={styles.no}>✗</span></td>
-                    <td className={tools.tdMuted}>Unranked</td>
-                    <td>
-                      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored noopener">
-                        {klookEsim.ctaLabel}
-                      </KlookLink>
-                    </td>
-                  </tr>
+                  {compareRows.map((row) => (
+                    <tr key={row.provider}>
+                      <td className={styles.tdProvider} style={{ minWidth: "120px" }}>{row.provider}</td>
+                      <td className={styles.tdBestFor} style={{ minWidth: "160px" }}>{row.verdict}</td>
+                      <td className={styles.tdNetwork} style={{ minWidth: "170px" }}>{row.network}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "150px" }}>{row.tenGb}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "190px" }}>{row.unlimited}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "150px" }}>{row.number}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "150px" }}>{row.tethering}</td>
+                      <td>
+                        <CompareCtaLink cta={row.cta} />
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-            The Klook row sits outside the ranking on purpose. The five providers above are ranked on
-            prices read off their own sites every day; Klook&apos;s eSIM listing had no verified
-            price on the last check ({klookEsim.checkedAt}), so there is no price or data tier to
-            place it against them. Open the listing to see the current options.
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {COMPARE_CHECKED_ISO} (Sakura Mobile and Holafly terms); prices{" "}
+            {(latestCheckedAt() ?? "").slice(0, 10)}. Official pages: simbye.com/products/esim-japan ·
+            airalo.com/japan-esim · breezesim.com/products/esim-japan · sakuramobile.jp/travel/esim ·
+            esim.holafly.com/esim-japan · the Klook listing &ldquo;{klookEsim.listingTitle}&rdquo;. Holafly runs
+            no affiliate programme this site can join, so its row links to Airalo&apos;s unlimited plans instead.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
             <span className={tools.liveBadge}><span className={tools.liveDot} /> Prices checked daily</span>
             <span>
-              &ldquo;Price From&rdquo; is each provider&apos;s cheapest Japan plan as of {pricesCheckedAt}.{" "}
-              <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan, sorted by price per GB →</Link>{" "}
-              All providers&apos; prices, including nine more not ranked here, are in the{" "}
-              <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>, updated monthly.
+              This page answers which one to pick. For the same plans in price order, see the{" "}
+              <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan, ranked by price and cost per GB</Link>;
+              for how each provider&apos;s price has moved day by day, the{" "}
+              <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>{" "}
+              (nine more providers included); for what travellers recommend, the{" "}
+              <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Japan eSIMs Reddit recommends</Link>; and for every
+              eSIM and SIM guide on this site, the{" "}
+              <Link href="/guides/esim" className={tools.inlineLink}>Japan eSIM and SIM card guides</Link>.
             </span>
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
@@ -845,15 +994,61 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           </p>
         </section>
 
-        {/* Q: What is the best eSIM for Japan? — the pick-by-itinerary table */}
+        <EsimCtaTop />
+
+        {/* Q: Which eSIM is best for Japan? — the use-case table, then the pick-by-itinerary table */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>The short answer</span>
-          <h2 className={styles.sectionTitle}>What is the best eSIM for Japan?</h2>
+          <span className={styles.sectionLabel}>How to choose</span>
+          <h2 className={styles.sectionTitle}>Which eSIM is best for Japan?</h2>
           <p className={styles.bodyText}>
-            There is no single best one, because the five providers are not competing for the same trip.
-            Simbye has the lowest list prices on fixed plans; eSIM Go has the largest allowances; Airalo is
-            the one to pick for unlimited with unrestricted tethering; Sakura Mobile is the only route to a
-            Japanese phone number. Find your row:
+            Simbye for most trips, because it has the lowest 10 GB price of the six; Sakura Mobile if you need a
+            Japanese phone number; Airalo if a laptop or a family shares one unlimited hotspot. Pick by use:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Your use</th>
+                    <th>Pick</th>
+                    <th>Why</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {useCaseRows.map((row) => (
+                    <tr key={row.use}>
+                      <td className={styles.tdProvider} style={{ minWidth: "160px" }}>{row.use}</td>
+                      <td className={styles.tdBestFor} style={{ minWidth: "170px" }}>{row.pick}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "260px" }}>{row.why()}</td>
+                      <td>
+                        <CompareCtaLink cta={{ kind: "provider", esimId: row.esimId, label: USE_CASE_CTA[row.esimId] ?? "See plans →" }} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {(latestCheckedAt() ?? "").slice(0, 10)} (prices); Sakura Mobile call minutes and
+            Holafly hotspot on {COMPARE_CHECKED_ISO}, sakuramobile.jp/travel/esim and esim.holafly.com/esim-japan.
+            For iPhone setup, see{" "}
+            <Link href="/guides/esim/japan-esim-iphone" className={tools.inlineLink}>Japan eSIM on iPhone</Link>; for
+            groups, <Link href="/guides/esim/japan-esim-family-group" className={tools.inlineLink}>eSIMs for families and groups</Link>.
+          </p>
+        </section>
+
+        <EsimUseCaseTable copy={esimPicksCopy.en} checkedLabel={pricesCheckedAt} />
+
+        {/* The pick-by-itinerary table — the same question by the shape of the trip. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By itinerary</span>
+          <h2 className={styles.sectionTitle}>Which eSIM for which Japan itinerary?</h2>
+          <p className={styles.bodyText}>
+            The five ranked providers are not competing for the same trip. Simbye has the lowest list prices on
+            fixed plans; eSIM Go has the largest allowances; Airalo is the one to pick for unlimited with
+            unrestricted tethering; Sakura Mobile is the only route to a Japanese phone number. Find your row:
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -1061,9 +1256,14 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
         {/* Phone numbers, SMS and voice */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Calls and SMS</span>
-          <h2 className={styles.sectionTitle}>Japanese phone numbers, SMS and voice</h2>
+          <h2 className={styles.sectionTitle}>Which Japan eSIM comes with a phone number?</h2>
           <p className={styles.bodyText}>
-            Five of the six are data only — no Japanese number, no SMS, no voice. eSIM Go states it
+            Only <strong>Sakura Mobile&apos;s Voice + Data eSIM</strong>, of the six compared here: a Japanese
+            number with domestic calls on au 5G, after an in-person ID check in Japan.
+          </p>
+          <p className={styles.bodyText}>
+            The other five are data only — no Japanese number, no SMS, no voice. Holafly&apos;s Japan page says
+            its eSIM &ldquo;does not include a local phone number&rdquo; (read {COMPARE_CHECKED_ISO}); eSIM Go states it
             outright (&ldquo;No SMS or voice calls included. Data only.&rdquo;), Simbye&apos;s Japan page says
             &ldquo;Calls and texts: Not included&rdquo;, Airalo&apos;s Japan packages
             are data-only with no number, and the Klook listing describes its service type as{" "}
@@ -1072,10 +1272,10 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText}>
             The exception is <strong>Sakura Mobile&apos;s Voice + Data eSIM</strong>: au (KDDI) 5G, 3 GB of
             high-speed data a day, a Japanese number with calls and SMS, and included call minutes that scale
-            with the plan — 120 minutes on 1–10 day plans, 240 on 11–60 days and 360 on 61 days or more. It
-            carries one condition the data-only plans do not: an in-person ID check in Japan, and the usage
-            period starts after that check rather than when you land. Read on sakuramobile.jp on{" "}
-            {SPECS_CHECKED}.
+            with the plan — 120 minutes on 1–10 day plans, 240 on 11–30 days, 360 on 31–60 days and 480 on
+            61–90 days. It carries one condition the data-only plans do not: an in-person ID check in Japan,
+            and the usage period starts after that check rather than when you land. Read on
+            sakuramobile.jp/travel/esim on {COMPARE_CHECKED_ISO}.
           </p>
           <p className={styles.bodyText}>
             If what you actually need is SMS to receive verification codes from your bank, you do not need a
@@ -1084,6 +1284,104 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             <Link href="/guides/esim/japan-sim-card-long-term-stay" className={tools.inlineLink}>
               Long-stay plans with a number →
             </Link>
+          </p>
+          <div className={styles.pickCtaRow}>
+            <CompareCtaLink cta={{ kind: "provider", esimId: "sakura" as EsimProviderId, label: "Get Sakura Mobile Voice + Data →" }} />
+            <Link href="/guides/esim/japan-phone-number-for-foreigners" className={styles.pickCtaInternal}>
+              Japanese phone numbers for visitors
+            </Link>
+          </div>
+        </section>
+
+        {/* Q: Airalo vs Sakura Mobile vs Holafly — facts only for Holafly, which has no link here. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Three names people compare</span>
+          <h2 className={styles.sectionTitle}>Airalo vs Sakura Mobile vs Holafly for Japan — which is better?</h2>
+          <p className={styles.bodyText}>
+            Airalo for most trips, because it sells both fixed-data plans (from {priceFromLabel("airalo")}) and an
+            unlimited plan with no tethering limit stated. Sakura Mobile if you need a Japanese phone number or a
+            physical SIM. Holafly sells unlimited data only, with 1 GB of shareable hotspot data a day.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Airalo</th>
+                    <th>Sakura Mobile</th>
+                    <th>Holafly</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Pick it if</td>
+                    <td className={styles.tdBestFor}>You want fixed data or unlimited with a tethered laptop</td>
+                    <td className={styles.tdBestFor}>You need a Japanese number or a physical SIM</td>
+                    <td className={styles.tdBestFor}>You want unlimited on the phone only</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Network</td>
+                    <td>SoftBank (primary) + two unnamed</td>
+                    <td>docomo 5G or au 5G, by plan</td>
+                    <td>KDDI / SoftBank</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>From</td>
+                    <td>{priceFromLabel("airalo")}</td>
+                    <td>{priceFromLabel("sakura")}</td>
+                    <td>{unlimitedFromLabel("holafly")}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Unlimited</td>
+                    <td>3 GB/day full speed, then 1 Mbps</td>
+                    <td>au 5G, no daily speed cap</td>
+                    <td>Unlimited only</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Hotspot</td>
+                    <td>No limit stated (unlimited)</td>
+                    <td>Capped by plan length on Unlimited</td>
+                    <td>1 GB a day</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Japanese number</td>
+                    <td>No</td>
+                    <td>Yes — Voice + Data eSIM</td>
+                    <td>No</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><CompareCtaLink cta={{ kind: "provider", esimId: "airalo" as EsimProviderId, label: "Get Airalo eSIM →" }} /></td>
+                    <td><CompareCtaLink cta={{ kind: "provider", esimId: "sakura" as EsimProviderId, label: "Get Sakura Mobile →" }} /></td>
+                    <td className={tools.tdMuted}>No link from this site</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {COMPARE_CHECKED_ISO} (sakuramobile.jp/travel/esim, esim.holafly.com/esim-japan,
+            airalo.com/japan-esim); prices {(latestCheckedAt() ?? "").slice(0, 10)}. Holafly runs no affiliate
+            programme this site can join, so it has no button.{" "}
+            <Link href="/guides/esim/airalo-vs-holafly-japan" className={tools.inlineLink}>Airalo vs Holafly in detail →</Link>
+          </p>
+        </section>
+
+        {/* Q: SIM card or eSIM? */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>SIM card or eSIM</span>
+          <h2 className={styles.sectionTitle}>Is a Japan SIM card better than an eSIM for tourists?</h2>
+          <p className={styles.bodyText}>
+            Only if your phone cannot take an eSIM or is carrier-locked. An eSIM installs from a QR code before
+            you fly and connects when you land; a physical SIM has to be posted to you, collected at the airport
+            or bought at a counter after arrival.
+          </p>
+          <p className={styles.bodyText}>
+            Of the six compared here, Sakura Mobile is the only one that also sells a physical SIM. If your phone
+            takes an eSIM, the comparison table above is the shorter route.{" "}
+            <Link href="/guides/esim/japan-sim-card-vs-esim-2026" className={tools.inlineLink}>Japan SIM card vs eSIM →</Link>{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" className={tools.inlineLink}>Airport SIM cards →</Link>
           </p>
         </section>
 

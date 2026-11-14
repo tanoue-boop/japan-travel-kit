@@ -411,7 +411,8 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             (list prices in USD, checked {pricesCheckedAt}). The lowest headline price is not always the lowest cost
             per gigabyte, so both are below. Cheap here does not mean a weaker network: the
             same Japanese carriers sit behind every plan. For picks by trip type rather than by price, see our{" "}
-            <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan guide</Link>; for
+            <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan</Link> comparison
+            (network, unlimited, phone number and tethering side by side); for
             what travellers say, our{" "}
             <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit advice check</Link>; and if
             you need no cap at all, the{" "}
