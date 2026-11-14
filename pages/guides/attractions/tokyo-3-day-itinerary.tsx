@@ -535,8 +535,8 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets guide</Link>. The
             Metropolitan Government Building decks in Shinjuku are the free alternative if the slot has
             gone; our{" "}
-            <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks comparison</Link>{" "}
-            puts the four side by side. Drivers with an International Driving Permit can add a street
+            <Link href="/guides/attractions/tokyo-observation-decks">best observation deck in Tokyo</Link>{" "}
+            guide puts the four side by side. Drivers with an International Driving Permit can add a street
             kart tour from Shibuya, and our{" "}
             <Link href="/guides/attractions/tokyo-go-kart">Tokyo go kart guide</Link> has the price and rules.
             If rain washes out the west side, Sanrio Puroland is an indoor park about 30 minutes from

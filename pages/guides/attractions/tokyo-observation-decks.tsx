@@ -5,7 +5,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
-import { observationDecksSameDayPrep, skytreeAquariumCombo, subwayCityViewCombo, tokyoSubwayTicket } from "../../../lib/klook-links";
+import { observationDecksDayExtras, observationDecksSameDayPrep, skytreeAquariumCombo, subwayCityViewCombo, tokyoSubwayTicket } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygShibuyaSky, gygTokyoEntryTickets, gygTokyoSkytree, gygTokyoTower } from "../../../lib/gyg-links";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -37,14 +37,96 @@ const SHIBUYA_SKY_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adi
 // PRICES.shibuyaSky.checked. Headline figures still come from lib/attraction-prices.ts.
 const CHECKED = checkedLabel(PRICES.tochoDeck.checked);
 
-const priceRows = [
-  { deck: "Shibuya Sky", ticket: "Adult, rooftop", online: "¥2,700 before 15:00 · ¥3,400 from 15:00", counter: "¥3,000 before 15:00 · ¥3,700 from 15:00" },
-  { deck: "Tokyo Skytree", ticket: "Adult, Floor 350", online: "From ¥1,800", counter: "Online price + ¥500 service fee" },
-  { deck: "Tokyo Skytree", ticket: "Adult, Floor 350 + 450", online: "From ¥3,000", counter: "Online price + ¥500 service fee" },
-  { deck: "Tokyo Tower", ticket: "Adult, Main Deck", online: "¥1,500", counter: "¥1,500" },
-  { deck: "Tokyo Tower", ticket: "Adult, Top Deck Tour", online: "¥3,300", counter: "¥3,500" },
-  { deck: "Tocho (South and North)", ticket: "Everyone", online: "Free", counter: "Free" },
-  { deck: "Tokyo City View", ticket: "Adult, 13 Nov 2026 – 14 Feb 2027", online: "¥2,200", counter: "¥2,400" },
+// Re-read 14 Nov 2026 for the comparison rebuild (task-jtk-20261114-R06): the search terms
+// landing here are "vs", "instead of" and "alternatives", so the page now leads with the
+// choice and leaves the buying detail to the three ticket guides. Read that day:
+//   Skytree         en.tokyo-skytree.jp/ticket/ (from ¥1,800 / from ¥3,000, +¥500 at the
+//                   counter, Floor 450 add-on ¥1,400), /open-hours/day_hours/ (9:00–22:00 on
+//                   Sat 14 Nov), /inquiry/faq/ (cancellation fee inside 30 days).
+//   SHIBUYA SKY     gotokyo.org/en/spot/1749 (229 m, ¥2,700 / ¥3,400 online, ¥3,000 / ¥3,700
+//                   counter, 10:00–22:30, last 21:20, sold out online = sold out at counter).
+//   Tokyo Tower     tokyotower.co.jp/fee/ (333 m tower, Main Deck 150 m ¥1,500, 9:00–23:00,
+//                   last 22:30; Top Deck Tour 150 m + 250 m ¥3,300 web / ¥3,500 counter).
+//   Tocho           zaimu.metro.tokyo.lg.jp/tochousha/goannai/tenbou (202 m, free, hours,
+//                   closing days, no advance or group reservations).
+//   Ebisu           gardenplace.jp/special/sp/top_of_yebisu/ (free view space on the
+//                   38th–39th-floor TOP of YEBISU level; no hours given on that page).
+//   Bunkyo          city.bunkyo.lg.jp/b014/p003985.html (25th-floor lounge, about 105 m, free,
+//                   closed for works since 1 Mar 2025, reopening planned early Dec 2026).
+//   Tokyo City View art-view.roppongihills.com/en/info (10:00–22:00, last 21:30).
+const RECHECKED = checkedLabel("2026-11-14");
+const SHIBUYA_ON_SALE_CHECKED = checkedLabel(PRICES.shibuyaSky.checked);
+
+/** The comparison table. Row order follows the verdict line above it. */
+const compareRows = [
+  {
+    deck: "Tokyo Skytree",
+    pick: "Highest",
+    height: "350 m and 450 m decks",
+    open: "No — indoors behind glass",
+    price: "From ¥1,800 (Floor 350); from ¥3,000 (350 + 450). +¥500 at the counter; price varies by date",
+    hours: "Varies by date; 9:00–22:00 on 14 Nov 2026",
+    book: "Advised: timed tickets online; a cancellation fee applies inside 30 days",
+    sunset: "Good, and indoors if the weather turns",
+    url: SKYTREE_URL,
+    cta: "Skytree tickets →",
+  },
+  {
+    deck: "SHIBUYA SKY",
+    pick: "Open-air sunset",
+    height: "229 m rooftop",
+    open: "Yes — rooftop can close in bad weather",
+    price: "¥2,700 before 15:00 / ¥3,400 from 15:00 online; ¥3,000 / ¥3,700 at the counter",
+    hours: "10:00–22:30, last entry 21:20",
+    book: "Yes for sunset: dates go on sale two weeks ahead at 00:00 JST; sold out online means sold out at the counter",
+    sunset: "Best of the four — but sunset slots are in the ¥3,400 band",
+    url: SHIBUYA_SKY_URL,
+    cta: "SHIBUYA SKY tickets →",
+  },
+  {
+    deck: "Tokyo Tower",
+    pick: "Cheapest paid, open latest",
+    height: "Main Deck 150 m; Top Deck 250 m",
+    open: "No — indoor decks",
+    price: "¥1,500 Main Deck; Top Deck Tour ¥3,300 online / ¥3,500 at the counter",
+    hours: "Main Deck 9:00–23:00, last entry 22:30",
+    book: "Main Deck: no — same price on the day. Top Deck: online is ¥200 cheaper",
+    sunset: "Better for night views; open latest",
+    url: TOKYO_TOWER_URL,
+    cta: "Tokyo Tower tickets →",
+  },
+  {
+    deck: "Tokyo Metropolitan Government Building (Tocho)",
+    pick: "Free",
+    height: "202 m, 45th floor",
+    open: "No — indoors",
+    price: "Free",
+    hours: "South room 9:30–22:00 (last 21:30); North room 9:30–17:30",
+    book: "No — reservations are not accepted",
+    sunset: "Yes, from the South room, which stays open after dark",
+    url: "",
+    cta: "",
+  },
+];
+
+/** "Where to go instead of Shibuya Sky" — free or cheaper decks, each read off its own official page. */
+const alternativeRows = [
+  ["Tokyo Metropolitan Government Building (Shinjuku)", "202 m, 45th floor", "Free", "South room 9:30–22:00, last entry 21:30; closed 1st and 3rd Tuesday", "Skytree, Tokyo Bay and, on clear days, Mt. Fuji"],
+  ["Ebisu Garden Place Tower — SKY LOUNGE (TOP of YEBISU)", "38th–39th floor", "Free", "Not stated on the official page", "Tokyo Tower, Skytree and Rainbow Bridge"],
+  ["Bunkyo Civic Center observation lounge", "About 105 m, 25th floor", "Free", "Closed for works since 1 Mar 2025; reopening planned for early December 2026 (then 9:00–20:30)", "Skytree to the east; Shinjuku and Mt. Fuji to the west"],
+  ["Tokyo Tower Main Deck", "150 m", "¥1,500", "9:00–23:00, last entry 22:30", "The cheapest paid deck, and the latest entry"],
+  ["Tokyo City View (Roppongi Hills, 52nd floor)", "52nd floor", "¥2,200 online / ¥2,400 on site (13 Nov 2026 – 14 Feb 2027)", "10:00–22:00, last entry 21:30", "Indoor; Tokyo Tower close by"],
+];
+
+/** Which deck for which kind of visit. */
+const purposeRows = [
+  { who: "First time in Tokyo", pick: "SHIBUYA SKY", why: "The open-air rooftop above the Scramble Crossing is the view most people come for. Book the date as soon as it opens.", url: SHIBUYA_SKY_URL, cta: "SHIBUYA SKY →" },
+  { who: "Sunset", pick: "SHIBUYA SKY", why: "Enter 30 to 60 minutes before sunset (16:35 on 15 November). Sunset slots go first, so book on the day sales open.", url: SHIBUYA_SKY_URL, cta: "SHIBUYA SKY →" },
+  { who: "Rainy or windy day", pick: "Tokyo Skytree", why: "Indoors, so the deck stays open; buying at the counter on the day (+¥500) keeps the decision open until you see the sky. No refund for poor visibility.", url: SKYTREE_URL, cta: "Skytree →" },
+  { who: "With children", pick: "Tokyo Tower or Skytree", why: "Tokyo Tower's Main Deck is ¥900 for elementary and middle-school children and ¥600 from age 4; Skytree is from ¥900 for ages 6–14 and free for 5 and under.", url: TOKYO_TOWER_URL, cta: "Tokyo Tower →" },
+  { who: "Mt. Fuji", pick: "Skytree or Tocho, December–February", why: "Clear, cold air gives the best odds; Tocho names December to February as the season with the most days. No deck can promise it.", url: SKYTREE_URL, cta: "Skytree →" },
+  { who: "On a budget", pick: "Tocho", why: "Free, 202 m, with Skytree and Tokyo Tower both in view. Check which room is open on your date.", url: "", cta: "" },
+  { who: "Late at night", pick: "Tokyo Tower", why: "Main Deck last entry is 22:30, against 21:20 at SHIBUYA SKY and 21:00 at Skytree.", url: TOKYO_TOWER_URL, cta: "Tokyo Tower →" },
 ];
 
 const hoursRows = [
@@ -113,37 +195,6 @@ function DeckTable({ head, rows }: { head: string[]; rows: string[][] }) {
   );
 }
 
-const deckRows = [
-  {
-    deck: "Shibuya Sky",
-    height: "~229 m rooftop",
-    highlight: "Open-air rooftop directly above the Scramble Crossing — the iconic Tokyo shot",
-    price: `${PRICES.shibuyaSky.adult} online · ${PRICES.shibuyaSky.atDoor} at the door`,
-    area: "Shibuya Station",
-  },
-  {
-    deck: "Tokyo Skytree",
-    height: "Floor 350 and Floor 450 (634 m tower)",
-    highlight: "The highest decks in Tokyo and the only glass skywalk; Mt. Fuji on clear days",
-    price: `${PRICES.tokyoSkytree.adult} (Floor 350) · from ¥3,000 combo`,
-    area: "Oshiage, near Asakusa",
-  },
-  {
-    deck: "Tokyo Tower",
-    height: "Main Deck ~150 m, Top Deck ~250 m (332 m tower)",
-    highlight: "The retro 1958 landmark; the Top Deck is a guided tour rather than a free wander",
-    price: `${PRICES.tokyoTower.adult} Main Deck · ¥3,300 Top Deck online`,
-    area: "Shiba-koen / Akabanebashi",
-  },
-  {
-    deck: "Metropolitan Gov. Building (Tocho)",
-    height: "202 m, 45th floor",
-    highlight: "A full city panorama with the Skytree and Tokyo Tower both in view",
-    price: PRICES.tochoDeck.adult,
-    area: "Shinjuku",
-  },
-];
-
 const whoFor = [
   {
     title: "Choose Shibuya Sky if…",
@@ -211,11 +262,32 @@ const steps = [
   },
 ];
 
+/** The five in FAQPage — the comparison questions people actually search. */
 const faqItems = [
   {
-    q: "Which Tokyo observation deck is best?",
-    a: `There is no single answer, but there is a cheapest one: the Tokyo Metropolitan Government Building in Shinjuku, which is free and reaches 202 metres. Of the paid decks, Shibuya Sky at ¥2,700 online for an entry before 15:00 — ¥3,400 from 15:00 — buys the open-air rooftop above the Scramble Crossing and the most recognisable view in the city; Tokyo Skytree from ¥1,800 buys the most altitude and the only glass skywalk; Tokyo Tower's Main Deck at ¥1,500 buys the retro landmark and the latest closing time. Checked ${CHECKED}.`,
+    q: "Which is the best observation deck in Tokyo?",
+    a: `It depends on what you want. Tokyo Skytree is the highest, with decks at 350 m and 450 m from ¥1,800; SHIBUYA SKY is the open-air rooftop at 229 m and the best for sunset, at ¥2,700 online before 15:00 or ¥3,400 from 15:00; Tokyo Tower's Main Deck is the cheapest paid deck at ¥1,500 and admits until 22:30; and the Tokyo Metropolitan Government Building in Shinjuku is free at 202 m. Checked ${RECHECKED}.`,
   },
+  {
+    q: "Tokyo Skytree vs Shibuya Sky: which is better?",
+    a: `SHIBUYA SKY is better for an open-air view and sunset: a rooftop 229 m above the Scramble Crossing, ¥2,700–¥3,400 online. Tokyo Skytree is better for height and for bad weather: indoor decks at 350 m and 450 m, from ¥1,800 for Floor 350 or from ¥3,000 for both. Sunset slots at SHIBUYA SKY sell out first, so book those as soon as the date opens. Checked ${RECHECKED}.`,
+  },
+  {
+    q: "Tokyo Tower or Skytree: which should I visit?",
+    a: `Choose Skytree for the higher view — its decks are at 350 m and 450 m, against Tokyo Tower's 150 m Main Deck and 250 m Top Deck. Choose Tokyo Tower for the lower price and a late visit: the Main Deck is ¥1,500 with last entry at 22:30, while Skytree starts at ¥1,800 and its last entry is 21:00. Checked ${RECHECKED}.`,
+  },
+  {
+    q: "Where can I go instead of Shibuya Sky?",
+    a: `If SHIBUYA SKY is sold out or too dear, the Tokyo Metropolitan Government Building in Shinjuku is free, 202 m up, with the South room open to 22:00. Ebisu Garden Place Tower has a free view space on its 38th–39th-floor restaurant level, facing Tokyo Tower. For a paid alternative, Tokyo Tower's Main Deck is ¥1,500 and Tokyo City View in Roppongi is ¥2,200 online. Checked ${RECHECKED}.`,
+  },
+  {
+    q: "Are there free observation decks in Tokyo?",
+    a: `Yes. The Tokyo Metropolitan Government Building (Tocho) in Shinjuku has two free 45th-floor observation rooms at 202 m: the South room runs 9:30–22:00 (last entry 21:30, closed the 1st and 3rd Tuesday) and the North room 9:30–17:30 (closed the 2nd and 4th Monday). Ebisu Garden Place Tower's SKY LOUNGE is also free. The Bunkyo Civic Center lounge (about 105 m, free) is closed for works, with reopening planned for early December 2026. Checked ${RECHECKED}.`,
+  },
+];
+
+/** Shown on the page under the five above, but not in FAQPage. */
+const moreFaqItems = [
   {
     q: "Which is the cheapest Tokyo observation deck?",
     a: `The free one — the Tokyo Metropolitan Government Building in Shinjuku, at 202 metres on the 45th floor, with no ticket involved. Among the paid decks, Tokyo Tower's Main Deck is the cheapest at ¥1,500 for an adult, then Tokyo Skytree's Floor 350 from ¥1,800, then Shibuya Sky at ¥2,700 booked online for an entry before 15:00. The dearest single ticket is now a 15:00-or-later Shibuya Sky entry at ¥3,400, just above Tokyo Tower's ¥3,300 Top Deck tour. Checked ${CHECKED}.`,
@@ -223,14 +295,6 @@ const faqItems = [
   {
     q: "Which Tokyo observation deck is the highest?",
     a: "Tokyo Skytree, by a wide margin. The tower stands 634 m tall, with observation decks at 350 m (the Tembo Deck) and 450 m (the Tembo Galleria). That's well above Shibuya Sky's ~229 m rooftop and Tokyo Tower's decks at roughly 150 m and 250 m, so Skytree offers the highest and furthest-reaching views in Tokyo.",
-  },
-  {
-    q: "Are there any free observation decks in Tokyo?",
-    a: `Yes — one, and it is good enough to change the decision. The Tokyo Metropolitan Government Building (Tocho) in Shinjuku has an observation room on the 45th floor at 202 metres, free to enter, with both the Skytree and Tokyo Tower visible from it. The South room is open 9:30–22:00 with last entry at 21:30 and closes on the first and third Tuesday of each month; the North room runs 9:30–17:30 with last entry at 17:00 and closes on the second and fourth Monday. Read off the Tokyo government's site on ${CHECKED}; confirm the room is open on your date before travelling across town for it.`,
-  },
-  {
-    q: "Shibuya Sky vs Skytree — which should I pick?",
-    a: `Shibuya Sky is about the experience and the photo: an open-air rooftop 229 m above the Scramble Crossing, ¥2,700 before 15:00 or ¥3,400 from 15:00 online. Tokyo Skytree is about altitude and reach: decks at 350 m and 450 m from ¥1,800, with a glass-floor section. Choose Shibuya Sky for the crossing shot and open air; choose Skytree for the highest panorama and the lower price. Checked ${CHECKED}.`,
   },
   {
     q: "Can you see Mt. Fuji from a Tokyo observation deck?",
@@ -250,27 +314,29 @@ const faqItems = [
   },
 ];
 
+const TITLE = "Best Observation Deck in Tokyo 2026: Skytree vs Shibuya Sky";
+const H1 = "Tokyo Skytree vs Shibuya Sky vs Tokyo Tower: Which Should You Visit?";
+const DESC =
+  "Best observation deck in Tokyo: Skytree is highest (450 m), Shibuya Sky is the open-air sunset pick, Tokyo Tower ¥1,500, Tocho free. Compare, then book.";
+
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-observation-decks") } });
 
 export default function TokyoObservationDecksPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Tokyo Observation Decks 2026: Best Views, Prices and Hours</title>
-        <meta
-          name="description"
-          content="Tokyo Observation Decks compared: Shibuya Sky vs Skytree on price, hours and sunset. Shibuya Sky ¥2,700~, Skytree ¥1,800~, Tokyo Tower ¥1,500, Tocho free."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Observation Decks 2026: Best Views, Prices and Hours" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-observation-decks" />
-        <meta property="og:description" content="Tokyo Observation Decks compared: Shibuya Sky vs Skytree on price, hours and sunset. Shibuya Sky ¥2,700~, Skytree ¥1,800~, Tokyo Tower ¥1,500, Tocho free." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Observation Decks 2026: Best Views, Prices and Hours" />
-        <meta name="twitter:description" content="Tokyo Observation Decks compared: Shibuya Sky vs Skytree on price, hours and sunset. Shibuya Sky ¥2,700~, Skytree ¥1,800~, Tokyo Tower ¥1,500, Tocho free." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -290,7 +356,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-observation-decks",
-              headline: "Tokyo Observation Decks 2026: Best Views, Prices and Hours",
+              headline: H1,
               updated,
             }),
           }}
@@ -337,15 +403,13 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <p className={styles.eyebrow}>
             Updated {updated.label}
           </p>
-          <h1 className={styles.heroTitle}>
-            Best Observation Decks in Tokyo (2026):<br />Skytree, Shibuya Sky, Tokyo Tower and Tocho Compared
-          </h1>
+          <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            Four ways to look down on Tokyo, compared on official prices — the iconic rooftop, the tallest
-            tower, the retro landmark, and the one in Shinjuku that charges nothing at all.
+            The best observation deck in Tokyo, chosen by what you want from it — height, an open-air
+            sunset, a late night or a free view — with the free alternatives to Shibuya Sky.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official prices", "One is free"].map((t) => (
+            {[`Updated ${updated.label}`, "Official prices", "Free alternatives"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -364,95 +428,77 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           </p>
         </div>
 
-        <EsimCtaTop />
-
         {/* Lead: answers the query before anything else on the page. */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The short answer</span>
-          <h2 className={styles.sectionTitle}>What is the best observation deck in Tokyo?</h2>
+          <h2 className={styles.sectionTitle}>Which is the best observation deck in Tokyo?</h2>
           <p className={styles.bodyText}>
-            For most first-time visitors the best observation deck in Tokyo is the open-air{" "}
-            <strong>Shibuya Sky</strong> (229 m, from ¥2,700 online). The highest is{" "}
-            <strong>Tokyo Skytree</strong> (350 m and 450 m, from ¥1,800), and the free one is the{" "}
-            <strong>Tokyo Metropolitan Government Building</strong>, or Tocho (202 m). For sunset, book a slot
-            about an hour before sunset as early as you can. Checked {CHECKED}.
+            The highest observation deck in Tokyo is <strong>Tokyo Skytree</strong>, whose Tembo Galleria is
+            450 m up, with adult tickets from ¥1,800 for Floor 350 or from ¥3,000 for both floors. The best
+            for an open-air sunset is <strong>SHIBUYA SKY</strong>, a rooftop 229 m above the Scramble
+            Crossing at ¥2,700 online before 15:00 or ¥3,400 from 15:00. The free one is the{" "}
+            <strong>Tokyo Metropolitan Government Building</strong> (Tocho) in Shinjuku, whose 45th-floor
+            observation rooms are 202 m up, and <strong>Tokyo Tower</strong>&apos;s ¥1,500 Main Deck is the
+            cheapest paid deck and the last to stop admitting, at 22:30. Checked on each official site on{" "}
+            {RECHECKED}.
           </p>
           <p className={styles.bodyText}>
-            Beyond that, each deck trades on something different: Shibuya Sky on atmosphere and the photo,
-            Skytree on height and distance, Tokyo Tower on nostalgia and late hours, and Tocho on a good view
-            for nothing. Figures below come from each operator&apos;s own site, or from the Tokyo government&apos;s
-            tourism site in the case of Shibuya Sky. All are subject to
-            change, so confirm at booking.
+            This page is for choosing. Once you have picked, the{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo Skytree tickets guide
+            </Link>
+            , the{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Shibuya Sky tickets guide
+            </Link>{" "}
+            and the{" "}
+            <Link href="/guides/attractions/tokyo-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo Tower tickets guide
+            </Link>{" "}
+            have every ticket tier and how to book each one.
           </p>
         </section>
 
-        {/* Quick Answer Box */}
-        <div className={styles.verdictBox}>
-          <div className={styles.verdictHeader}>
-            <span className={styles.verdictLabel}>Quick Answer</span>
-          </div>
-          <div className={styles.verdictBody}>
-            <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Most iconic view</p>
-                <p className={styles.verdictStatValue}>Shibuya Sky (~229 m rooftop)</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Highest & furthest</p>
-                <p className={styles.verdictStatValue}>Skytree (350 m / 450 m)</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Cheapest paid deck</p>
-                <p className={styles.verdictStatValue}>Tokyo Tower Main, ¥1,500</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best free option</p>
-                <p className={styles.verdictStatValue}>Tocho, Shinjuku — 202 m</p>
-              </div>
-            </div>
-            <p className={styles.verdictText}>
-              <strong>In short:</strong> go up the free one first. The Metropolitan Government Building in
-              Shinjuku puts you 202 metres above the city for nothing, with the Skytree and Tokyo Tower both
-              in the frame — which tells you quickly whether a paid deck is worth it to you. If it is, pick by
-              what you want rather than by height: <strong>Shibuya Sky</strong> at ¥2,700 before 15:00 or
-              ¥3,400 after for the open-air rooftop above the Scramble Crossing, <strong>Skytree</strong> from
-              ¥1,800 for the altitude and the glass skywalk, <strong>Tokyo Tower</strong> at ¥1,500 for the
-              1958 landmark and the latest closing time. Note that Tokyo Tower&apos;s ¥3,300 Top Deck tour
-              costs less than a 15:00 entry to Shibuya Sky. Checked {CHECKED}.
-            </p>
-            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
-                Shibuya Sky Tickets →
-              </KlookLink>
-              <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
-                Tokyo Skytree Tickets →
-              </KlookLink>
-            </div>
-          </div>
-        </div>
-
-        {/* Comparison table */}
+        {/* Comparison table — the verdict is the first row. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Side by side</span>
-          <h2 className={styles.sectionTitle}>How do Tokyo&apos;s observation decks compare on price and height?</h2>
+          <h2 className={styles.sectionTitle}>How do Skytree, Shibuya Sky, Tokyo Tower and Tocho compare?</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Deck", "Height", "Highlight", "Adult price", "Area / nearest"].map((h) => (
-                      <th key={h}>{h}</th>
+                    {["Deck", "Pick it for", "Height", "Open-air?", "Adult ticket (official)", "Hours", "Book ahead?", "Sunset?", ""].map((h, i) => (
+                      <th key={`${h}-${i}`}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {deckRows.map((row) => (
+                  <tr>
+                    <td colSpan={9} style={{ fontSize: "0.9rem" }}>
+                      <strong>Verdict:</strong> highest = Tokyo Skytree (450 m) · open-air sunset = SHIBUYA SKY ·
+                      cheapest paid and latest entry = Tokyo Tower (¥1,500, last entry 22:30) · free = Tocho (202 m).
+                    </td>
+                  </tr>
+                  {compareRows.map((row) => (
                     <tr key={row.deck}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.deck}</td>
+                      <td className={styles.tdProvider}>{row.deck}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 600 }}>{row.pick}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.height}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.highlight}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.open}</td>
                       <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.price}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.area}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.hours}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.book}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.sunset}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>
+                        {row.url ? (
+                          <KlookLink href={row.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                            {row.cta}
+                          </KlookLink>
+                        ) : (
+                          "Free — no ticket"
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -460,36 +506,151 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Adult prices checked {CHECKED}. Skytree is from ¥1,800 for Floor
-            350 and from ¥3,000 for the Floor 350 + 450 combo booked online; adding Floor 450 on the day costs
-            ¥1,400 on top, so the combo is the cheaper route if you want both — see our{" "}
-            <Link href="/guides/attractions/tokyo-skytree-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Tokyo Skytree tickets guide
-            </Link>{" "}
-            for the ¥500 same-day service fee as well. Tokyo Tower&apos;s Top Deck is ¥3,300 online and ¥3,500
-            at the counter. Subject to change — confirm at booking.
+            Last checked: 2026-11-14 —{" "}
+            <a href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener noreferrer">Tokyo Skytree tickets</a>,{" "}
+            <a href="https://en.tokyo-skytree.jp/open-hours/day_hours/" target="_blank" rel="noopener noreferrer">Skytree hours</a>,{" "}
+            <a href="https://www.gotokyo.org/en/spot/1749/index.html" target="_blank" rel="noopener noreferrer">SHIBUYA SKY (Tokyo government tourism site)</a>,{" "}
+            <a href="https://www.tokyotower.co.jp/fee/" target="_blank" rel="noopener noreferrer">Tokyo Tower prices and hours</a>,{" "}
+            <a href="https://www.zaimu.metro.tokyo.lg.jp/tochousha/goannai/tenbou" target="_blank" rel="noopener noreferrer">Tocho observation rooms</a>.
+            SHIBUYA SKY&apos;s two-week on-sale rule is from the operator&apos;s release, read on {SHIBUYA_ON_SALE_CHECKED}.
+            Skytree&apos;s last entry (21:00) and its no-refund rule for poor visibility were read on {CHECKED}. Prices
+            change by date; confirm at booking.
           </p>
         </section>
 
-        {/* Prices */}
+        {/* Same-day bookings, directly under the decision. The deck tickets pay the low
+            bands, so the 6.5% hotels, the 5% subway ticket and the 20% eSIM go here. */}
+        <KlookTripPrep
+          label="Book for the same day"
+          heading="What should I book for the same day as a Tokyo observation deck?"
+          intro="A sunset or night slot ends after dark, so the bed near the deck matters more than it looks. These five cover the night, the rides between decks and data for the e-ticket."
+          items={observationDecksSameDayPrep}
+        />
+
+        <EsimCtaTop />
+
+        {/* Alternatives — "where to go instead of Shibuya Sky" */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Prices</span>
-          <h2 className={styles.sectionTitle}>How much are Tokyo observation deck tickets?</h2>
+          <span className={styles.sectionLabel}>Alternatives</span>
+          <h2 className={styles.sectionTitle}>Where to go instead of Shibuya Sky?</h2>
           <p className={styles.bodyText}>
-            Adult tickets run from free at Tocho to ¥3,700 for a Shibuya Sky entry from 15:00 bought at the
-            counter. Skytree starts at ¥1,800 and Tokyo Tower&apos;s Main Deck is ¥1,500.
+            If SHIBUYA SKY is sold out or costs more than you want to pay, go up the Tokyo Metropolitan
+            Government Building in Shinjuku: it is free, 202 m up, and the South room is open until 22:00. Ebisu
+            Garden Place Tower&apos;s SKY LOUNGE is a second free option, facing Tokyo Tower.
           </p>
           <DeckTable
-            head={["Deck", "Ticket", "Online", "Counter"]}
-            rows={priceRows.map((r) => [r.deck, r.ticket, r.online, r.counter])}
+            head={["Alternative", "Height / floor", "Adult price", "Hours", "What you see"]}
+            rows={alternativeRows}
           />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Official prices, checked {CHECKED}. Skytree&apos;s &ldquo;from&rdquo; prices rise on some dates. Other
-            Japan attractions are in our{" "}
-            <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Japan attraction ticket prices table
-            </Link>.
+            Last checked: 2026-11-14 —{" "}
+            <a href="https://www.zaimu.metro.tokyo.lg.jp/tochousha/goannai/tenbou" target="_blank" rel="noopener noreferrer">Tocho</a>,{" "}
+            <a href="https://www.gotokyo.org/en/spot/74/index.html" target="_blank" rel="noopener noreferrer">Tocho on the Tokyo tourism site</a>,{" "}
+            <a href="https://gardenplace.jp/special/sp/top_of_yebisu/" target="_blank" rel="noopener noreferrer">Ebisu Garden Place (TOP of YEBISU)</a>,{" "}
+            <a href="https://www.city.bunkyo.lg.jp/b014/p003985.html" target="_blank" rel="noopener noreferrer">Bunkyo Civic Center lounge</a>,{" "}
+            <a href="https://www.tokyotower.co.jp/fee/" target="_blank" rel="noopener noreferrer">Tokyo Tower</a>,{" "}
+            <a href="https://art-view.roppongihills.com/en/info/index.html" target="_blank" rel="noopener noreferrer">Tokyo City View</a>.
+            Only places whose own site says entry is free are listed as free.
           </p>
+        </section>
+
+        {/* Which for which trip */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By trip</span>
+          <h2 className={styles.sectionTitle}>Which Tokyo observation deck should I choose for my trip?</h2>
+          <p className={styles.bodyText}>
+            First visit or sunset: SHIBUYA SKY. Rain, height or Mt. Fuji: Tokyo Skytree. Late night or a
+            cheaper ticket: Tokyo Tower. No budget at all: Tocho.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["If you want…", "Go to", "Why", ""].map((h, i) => (
+                      <th key={`${h}-${i}`}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {purposeRows.map((row) => (
+                    <tr key={row.who}>
+                      <td className={styles.tdProvider}>{row.who}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 600 }}>{row.pick}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.why}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>
+                        {row.url ? (
+                          <KlookLink href={row.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                            {row.cta}
+                          </KlookLink>
+                        ) : (
+                          "Free"
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-14 for prices, hours and child fares (official sites above). Sunset time is the
+            National Astronomical Observatory of Japan&apos;s 2026 table; the Mt. Fuji season is from Tocho and
+            Skytree, read on {CHECKED}.
+          </p>
+        </section>
+
+        {/* Versus */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Head to head</span>
+          <h2 className={styles.sectionTitle}>Tokyo Skytree vs Shibuya Sky: which is better?</h2>
+          <p className={styles.bodyText}>
+            SHIBUYA SKY is better for an open-air view and sunset photos over the Scramble Crossing. Tokyo
+            Skytree is better for height, for a cheaper ticket and for a day when the weather is doubtful, because
+            its decks are indoors.
+          </p>
+          <DeckTable
+            head={["", "SHIBUYA SKY", "Tokyo Skytree"]}
+            rows={versusRows.map((r) => [r.what, r.shibuya, r.skytree])}
+          />
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-14 for height, prices and hours (
+            <a href="https://www.gotokyo.org/en/spot/1749/index.html" target="_blank" rel="noopener noreferrer">SHIBUYA SKY</a>,{" "}
+            <a href="https://en.tokyo-skytree.jp/ticket/" target="_blank" rel="noopener noreferrer">Tokyo Skytree</a>); visit
+            length, Mt. Fuji and refund rules read on {CHECKED}.
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check SHIBUYA SKY dates on Klook →
+            </KlookLink>
+            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check Tokyo Skytree dates on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Tokyo Tower or Skytree */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Tower vs tower</span>
+          <h2 className={styles.sectionTitle}>Tokyo Tower or Skytree?</h2>
+          <p className={styles.bodyText}>
+            Pick Skytree for height: its decks are at 350 m and 450 m, against Tokyo Tower&apos;s 150 m Main Deck
+            and 250 m Top Deck. Pick Tokyo Tower for price and a late evening: the Main Deck is ¥1,500 with last
+            entry at 22:30, while Skytree starts at ¥1,800 and its last entry is 21:00. Checked {RECHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            Skytree, at 634 m, is the taller structure; Tokyo Tower is 333 m, and from Skytree&apos;s decks or
+            Tocho it is one of the landmarks you are looking at. Skytree pairs with an Asakusa day, Tokyo
+            Tower with Shiba Park and Roppongi.
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check Tokyo Skytree tickets on Klook →
+            </KlookLink>
+            <KlookLink href={TOKYO_TOWER_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check Tokyo Tower tickets on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Hours */}
@@ -581,7 +742,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <span className={styles.sectionLabel}>Tokyo Tower</span>
           <h2 className={styles.sectionTitle}>Is Tokyo Tower worth it?</h2>
           <p className={styles.bodyText}>
-            Opened in 1958 and standing 332 metres tall, Tokyo Tower is the nostalgic icon of the skyline —
+            Opened in 1958 and standing 333 metres tall by its operator&apos;s own figure, Tokyo Tower is the nostalgic icon of the skyline —
             an orange-and-white lattice that glows over central Tokyo at night. The Main Deck is ¥1,500 for an
             adult, ¥1,200 for a high-school student, ¥900 for elementary and middle-school children and ¥600
             for ages four and up, and it stays open until 23:00 with last entry at 22:30. The higher level is
@@ -592,16 +753,17 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             That pricing is worth pausing on. The Top Deck tour costs more than a daytime Shibuya Sky ticket
             and puts you only about 20 metres higher, so it makes most sense if the tower itself is the draw.
             The Main Deck, on the other hand, is the cheapest paid deck in the city and the last one still letting
-            people in late at night. Read off tokyotower.co.jp on {CHECKED}.
+            people in late at night. Read off tokyotower.co.jp on {RECHECKED}.
           </p>
         </section>
 
         {/* Tocho / free detail */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Free option</span>
-          <h2 className={styles.sectionTitle}>Is the free Tocho observation deck worth it?</h2>
+          <h2 className={styles.sectionTitle}>Are there free observation decks in Tokyo?</h2>
           <p className={styles.bodyText}>
-            The Tokyo Metropolitan Government Building (Tocho) in Shinjuku has an observation room on the 45th
+            Yes: the Tokyo Metropolitan Government Building in Shinjuku is free and 202 m up, and Ebisu Garden
+            Place Tower&apos;s SKY LOUNGE is free too (checked {RECHECKED}). The Tokyo Metropolitan Government Building (Tocho) in Shinjuku has an observation room on the 45th
             floor at 202 metres, and admission is free. From it you can see both the Skytree and Tokyo Tower,
             which is the point: it gives you the whole skyline including the two things you might otherwise
             pay to stand on top of. The panorama over western Tokyo is good, and on clear days Mt. Fuji is in
@@ -620,41 +782,18 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <span className={styles.sectionLabel}>Other decks</span>
           <h2 className={styles.sectionTitle}>Are there other observation decks in Tokyo?</h2>
           <p className={styles.bodyText}>
-            Yes. <strong>Tokyo City View</strong>, on the 52nd floor at Roppongi Hills, is the main paid
-            alternative. From 13 November 2026 to 14 February 2027 an adult ticket is ¥2,200 online or ¥2,400 on site, with hours of 10:00–22:00 and last
-            admission at 21:30. It is closed 10–12 November 2026, and until 9 November the ticket is ¥1,800
-            online or ¥2,000 on site because access to the area facing Mt. Fuji is restricted.
-          </p>
-          <p className={styles.bodyText}>
-            <strong>Azabudai Hills</strong> has no confirmed ticketed deck. Its official listing
+            Yes. <strong>Azabudai Hills</strong> has no confirmed ticketed deck. Its official listing
             shows the Hills House Sky Room Cafe &amp; Bar on the 34th floor of Mori JP Tower, open 9:00–21:00 with
             no reservations and a view of Tokyo Tower. Treat it as a cafe with a view. Kamiyacho Station Exit 5
-            connects directly. Checked {CHECKED}.
-          </p>
-        </section>
-
-        {/* Versus */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Head to head</span>
-          <h2 className={styles.sectionTitle}>Shibuya Sky vs Skytree: which is better?</h2>
-          <p className={styles.bodyText}>
-            Shibuya Sky is better for the open-air rooftop and the crossing below it; Skytree is better for
-            height and costs less to enter. If you can only do one and you want sunset photos, take Shibuya
-            Sky. If you want the furthest view for the lowest ticket, take Skytree.
-          </p>
-          <DeckTable
-            head={["", "Shibuya Sky", "Tokyo Skytree"]}
-            rows={versusRows.map((r) => [r.what, r.shibuya, r.skytree])}
-          />
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Checked {CHECKED}.
+            connects directly. Checked {CHECKED}. Tokyo City View, Ebisu and the Bunkyo Civic Center are in the
+            alternatives table above.
           </p>
         </section>
 
         {/* Who it's for / which to choose */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Which to choose</span>
-          <h2 className={styles.sectionTitle}>Shibuya Sky vs Skytree: which should I choose?</h2>
+          <h2 className={styles.sectionTitle}>Who is each Tokyo observation deck for?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Pick by what you want from the view, not by height alone. Here is how all four decks divide up.
           </p>
@@ -770,13 +909,13 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           </div>
         </section>
 
-        {/* Klook, directly under the booking decision. The deck tickets pay the low bands,
-            so this is where the 6.5 / 5 / 20% products go. Ticket CTAs are unchanged. */}
+        {/* The rest of the day around a deck. The hotels, subway ticket and eSIM moved up
+            under the comparison table (14 Nov 2026); the tours and transfer stay here. */}
         <KlookTripPrep
-          label="Book for the same day"
-          heading="What should I book for the same day as a Tokyo observation deck?"
-          intro="A deck is one or two hours of one day. These six cover the rest of it: the daytime, the evening, a bed nearby, the rides between, the trip in from the airport and data on your phone."
-          items={observationDecksSameDayPrep}
+          label="The rest of the day"
+          heading="What else fits around a Tokyo observation deck?"
+          intro="A deck is one or two hours of one day. These three cover the daytime, the evening after a sunset slot, and the trip in from the airport."
+          items={observationDecksDayExtras}
         />
         <p className={styles.bodyText}>
           Still choosing an area? Our{" "}
@@ -793,7 +932,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <span className={styles.sectionLabel}>FAQ</span>
           <h2 className={styles.sectionTitle}>Tokyo observation decks: common questions</h2>
           <div className={styles.faqList}>
-            {faqItems.map((item, i) => (
+            {[...faqItems, ...moreFaqItems].map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>

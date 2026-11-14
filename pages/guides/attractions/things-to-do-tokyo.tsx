@@ -429,8 +429,8 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
               Japan attraction ticket prices table
             </Link>{" "}
-            lists the official figures nationwide. To compare the decks in detail, use our{" "}
-            <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>Tokyo observation decks comparison</Link>.
+            lists the official figures nationwide. To pick one, see{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>the best observation deck in Tokyo</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={SKY.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -660,7 +660,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           </p>
           <p className={styles.bodyText}>
             Before paying for any of them, read our{" "}
-            <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>observation decks comparison</Link>,
+            <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>Skytree vs Shibuya Sky comparison</Link>,
             which puts all four side by side — including the Tokyo Metropolitan Government Building in
             Shinjuku, whose 202-metre deck is free.
           </p>

@@ -583,9 +583,9 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Tokyo Tower figures read off the official site on {CHECKED}; the other three are the official
-            prices covered in the{" "}
+            prices covered in our guide to the{" "}
             <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>
-              Tokyo observation decks comparison
+              best observation deck in Tokyo
             </Link>
             . All are approximate and subject to change.
           </p>

@@ -5428,7 +5428,49 @@ export const shibuyaSkySameDayPrep: KlookTripPrepItem[] = [
  * decks are the low bands (SHIBUYA SKY 2%, the others 2-5%). Reuses the products above
  * and adds no URL. Tours and hotels 6.5%, passes and transfers 5%, the eSIM 20%.
  */
+/**
+ * Hotel searches (6.5%) beside the two towers — added 14 Nov 2026 for the
+ * observation-deck comparison (task-jtk-20261114-R06). Both destination ids were
+ * confirmed as live en-US pages through the www.klook.com search index that day:
+ * "Tokyo Skytree Town" (p50218997) and "Tokyo Tower" (p50001692). Klook has no
+ * Oshiage or Hamamatsucho station page, so the landmark ids are the ones used.
+ */
+export const oshiageSkytreeHotelsUrl = klookLink(
+  "https://www.klook.com/en-US/destination/p50218997-tokyo-skytree-town/3-hotel/",
+);
+export const tokyoTowerHotelsUrl = klookLink(
+  "https://www.klook.com/en-US/destination/p50001692-tokyo-tower/3-hotel/",
+);
+
 export const observationDecksSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Tokyo Skytree (Oshiage)",
+    ctaLabel: "Check Oshiage hotels on Klook →",
+    url: oshiageSkytreeHotelsUrl,
+    why: "Skytree is a minute from Oshiage Station, so a bed in Oshiage or neighbouring Asakusa turns an evening deck slot into a short walk back.",
+  },
+  {
+    ...tripPrepProducts.hotelShibuya,
+    why: "SHIBUYA SKY sits on Shibuya Station and its sunset slots end after dark, so staying in Shibuya keeps the trip back to a few minutes.",
+  },
+  {
+    label: "Hotels around Tokyo Tower (Hamamatsucho / Shiba-koen)",
+    ctaLabel: "Check Tokyo Tower hotels on Klook →",
+    url: tokyoTowerHotelsUrl,
+    why: "Tokyo Tower's Main Deck admits until 22:30, the latest of the three, and Hamamatsucho is also the monorail stop for Haneda.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Shibuya, Oshiage, Akabanebashi and Tochomae are all subway stations, so a 24, 48 or 72-hour ticket covers two decks in a day. It does not cover JR lines such as the Yamanote.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A Klook ticket arrives as an e-ticket on your phone, and every deck here depends on the weather — data from the airport onwards means the voucher, the map and the forecast are all there on the day.",
+  },
+];
+
+/** The rest of the day around a deck — tours and the airport run (moved out of the list above). */
+export const observationDecksDayExtras: KlookTripPrepItem[] = [
   {
     label: tokyoSightseeingBusTour.title,
     ctaLabel: "Check the Tokyo day tour →",
@@ -5442,22 +5484,10 @@ export const observationDecksSameDayPrep: KlookTripPrepItem[] = [
     why: "The evening after a sunset deck: a three-hour join-in walk through Omoide Yokocho, Kabukicho and Golden Gai, ending with a drink at a Golden Gai izakaya.",
   },
   {
-    ...tripPrepProducts.hotelShibuya,
-    why: "A sunset slot ends after dark, so staying near the deck makes the trip back a short one. Our Tokyo stay guide, linked below, compares the other areas.",
-  },
-  {
-    ...tripPrepProducts.subway,
-    why: "Shibuya, Oshiage, Akabanebashi and Tochomae are all subway stations, so a 24, 48 or 72-hour ticket covers two decks in a day. It does not cover JR lines such as the Yamanote.",
-  },
-  {
     label: tokyoPrivateAirportTransfer.title,
     ctaLabel: "Check the airport transfer →",
     url: tokyoPrivateAirportTransfer.url,
     why: "Booked to your hotel address rather than a station, from either Narita or Haneda, with the driver tracking your flight — useful when you land the same day as a late slot.",
-  },
-  {
-    ...tripPrepProducts.esim,
-    why: "A Klook ticket arrives as an e-ticket on your phone, and every deck here depends on the weather — data from the airport onwards means the voucher, the map and the forecast are all there on the day.",
   },
 ];
 

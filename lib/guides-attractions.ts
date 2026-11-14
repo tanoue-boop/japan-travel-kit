@@ -250,8 +250,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/tokyo-observation-decks",
     badge: "Compare",
-    title: "Best Observation Decks in Tokyo (2026): Skytree, Shibuya Sky, Tokyo Tower and Tocho",
-    desc: "Four decks compared on height, official price and what you actually see from each — including the Metropolitan Government Building, which charges nothing at all.",
+    title: "Best Observation Deck in Tokyo: Skytree vs Shibuya Sky vs Tokyo Tower",
+    desc: "Which deck to pick for height, an open-air sunset, rain or a late night, with official prices — and the free decks to go to instead of Shibuya Sky.",
     group: "tickets",
     city: "tokyo",
   },

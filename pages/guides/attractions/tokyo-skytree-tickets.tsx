@@ -348,7 +348,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>What Does a Tokyo Skytree Ticket Include?</h2>
           <p className={styles.bodyText}>
             This page covers Skytree tickets, prices and booking; if you are still deciding which tower to climb,
-            the <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks comparison</Link>{" "}
+            our guide to the <Link href="/guides/attractions/tokyo-observation-decks">best observation deck in Tokyo</Link>{" "}
             sets Skytree against Shibuya Sky, Tokyo Tower and the free Tocho deck. Tokyo Skytree sells admission
             to two separate levels. <strong>Floor 350</strong> is the Tembo Deck,
             a three-storey observation level and the one included in every ticket. <strong>Floor 450</strong> is

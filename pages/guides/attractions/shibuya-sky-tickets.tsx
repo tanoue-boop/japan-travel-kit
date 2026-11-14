@@ -781,10 +781,11 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               our ticket price table
             </Link>{" "}
-            with its own check date per row. The four are compared in full, slot by slot, in our{" "}
+            with its own check date per row. Still deciding between them? Our{" "}
             <Link href="/guides/attractions/tokyo-observation-decks" style={{ color: "var(--text)", fontWeight: 600 }}>
-              Tokyo observation decks guide
-            </Link>.
+              Skytree vs Shibuya Sky comparison
+            </Link>{" "}
+            sets all four side by side, with the free decks to go to instead.
           </p>
         </section>
 
