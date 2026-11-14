@@ -686,7 +686,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             carrier that sold the phone. Which plan suits an iPhone, and the screens to tap, are
             in{" "}
             <Link href="/guides/esim/japan-esim-iphone" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Japan eSIM for iPhone
+              eSIM for Japan on iPhone
             </Link>.
           </p>
 

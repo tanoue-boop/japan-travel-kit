@@ -181,8 +181,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-iphone",
     badge: "Guide",
-    title: "Best eSIM for Japan on iPhone (2026): Japan eSIM iPhone Setup & Picks",
-    desc: "Which Japan eSIM installs cleanly on an iPhone, and exactly where to tap in iOS. Covers iPhone XS to 18 Pro, the carrier-lock check, dual-SIM roaming traps, and Suica in Apple Wallet.",
+    title: "Best eSIM for Japan on iPhone (2026): Setup & Compatible Models",
+    desc: "Apple's eSIM model list (iPhone XS/XR and later; US iPhone 14 and later are eSIM only), the Carrier Lock check, which Japan eSIM to buy for an iPhone, and the iOS setup steps in order.",
     group: "setup",
     city: "other",
   },

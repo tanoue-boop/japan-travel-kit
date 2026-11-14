@@ -1033,8 +1033,8 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Last checked: {(latestCheckedAt() ?? "").slice(0, 10)} (prices); Sakura Mobile call minutes and
             Holafly hotspot on {COMPARE_CHECKED_ISO}, sakuramobile.jp/travel/esim and esim.holafly.com/esim-japan.
-            For iPhone setup, see{" "}
-            <Link href="/guides/esim/japan-esim-iphone" className={tools.inlineLink}>Japan eSIM on iPhone</Link>; for
+            For the best eSIM for Japan on iPhone, with models and setup, see{" "}
+            <Link href="/guides/esim/japan-esim-iphone" className={tools.inlineLink}>eSIM for Japan on iPhone</Link>; for
             groups, <Link href="/guides/esim/japan-esim-family-group" className={tools.inlineLink}>eSIMs for families and groups</Link>.
           </p>
         </section>

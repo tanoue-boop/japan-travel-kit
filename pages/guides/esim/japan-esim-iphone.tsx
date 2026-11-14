@@ -5,7 +5,10 @@ import EsimDaysTable from "../../../components/EsimDaysTable";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
+  cheapestAtLeastGb,
+  formatUsd,
   getProvider,
+  priceAtLeastLabel,
   priceFrom,
   priceFromLabel,
   pricesCheckedLabel,
@@ -16,22 +19,39 @@ import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
+import SimbyeOffer from "../../../components/SimbyeOffer";
+import { esimSpec } from "../../../lib/esim-specs";
 
 // Prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => getProvider(id).affiliateUrl;
 const pricesCheckedAt = pricesCheckedLabel();
 
 /**
- * The date every iOS fact on this page was read off Apple's own support pages:
- * the SIM-type list by model, "Using Dual SIM with an eSIM", "Set up eSIM on iPhone",
- * "Use eSIM while traveling internationally", "How to unlock your iPhone for use with
- * a different carrier", the China mainland eSIM note, the data-roaming options page and
- * "Add a transit card to Apple Wallet in Japan". Nothing in the tables or the step list
- * below comes from anywhere else — where Apple does not state a figure (how many eSIM
- * profiles a device can store, for instance), this page does not print one. Prices have
- * their own check date from data/esim-prices.json.
+ * The date the Apple facts in the three tables and the opening answer were re-read off
+ * Apple's own support pages (SIM type by model, Using Dual SIM with an eSIM, Set up eSIM
+ * on iPhone, Use eSIM while traveling internationally, unlock your iPhone), and the
+ * install methods off Airalo's, Simbye's and Sakura Mobile's own help pages.
+ */
+const CHECKED = "14 Nov 2026";
+const CHECKED_ISO = "2026-11-14";
+
+const APPLE_URLS = [
+  "https://support.apple.com/en-us/118569",
+  "https://support.apple.com/en-us/109317",
+  "https://support.apple.com/en-us/118227",
+  "https://support.apple.com/en-us/109316",
+];
+
+/**
+ * The date the remaining iOS facts (EID row, Apple Wallet transit cards, the "can't set
+ * up eSIM" troubleshooting order, the iPad eSIM list) were last read off Apple support.
  */
 const FACTS_CHECKED = "26 Oct 2026";
+
+const TITLE = "Best eSIM for Japan iPhone (2026): Setup & Compatible Models";
+const DESCRIPTION =
+  "Best eSIM for Japan iPhone: any unlocked iPhone XS/XR or later works. iPhone eSIM Japan setup in 5 steps, Apple model list, and which eSIM to buy.";
 
 // Holafly runs no affiliate programme we can join (impact: Airalo only — checked 9 Oct 2026),
 // so its purchase CTA points at Airalo's unlimited plans, the closest approved alternative.
@@ -39,89 +59,159 @@ const HOLAFLY_ALT_LABEL = "Get Airalo unlimited eSIM →";
 const HOLAFLY_ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
 
 /**
- * Apple's SIM-type list is organised by what the hardware takes, not by year, and the
- * newer rows differ by the market the handset was sold in — which is the part travellers
- * get wrong. iPhone SE is deliberately absent: Apple files the SE generations in a
- * different part of that list and we could not read one unambiguous answer for them.
+ * Apple's "Learn which type SIM your iPhone uses" list (118569), with the active-eSIM
+ * count from "Using Dual SIM with an eSIM" (109317): a physical SIM plus an eSIM on any
+ * iPhone XS or later, and two eSIMs on iPhone 13 models and later. The newer rows differ
+ * by the market the handset was sold in, which is the part travellers get wrong.
  */
 const iphoneModels = [
   {
     model: "iPhone XS, XS Max, XR",
-    esim: "eSIM + nano-SIM",
-    lines: "One eSIM active",
+    esim: "Yes — eSIM + nano-SIM",
+    lines: "1 eSIM (plus a physical SIM)",
+    note: "XS Max and XR bought in China mainland, Hong Kong or Macao: two nano-SIM slots instead",
   },
   {
-    model: "iPhone 11 and 12 series",
-    esim: "eSIM + nano-SIM",
-    lines: "One eSIM active",
+    model: "iPhone 11 and 12 series; iPhone SE (3rd gen)",
+    esim: "Yes — eSIM + nano-SIM",
+    lines: "1 eSIM (plus a physical SIM)",
+    note: "Some models bought in China mainland, Hong Kong or Macao have two nano-SIM slots instead",
   },
   {
     model: "iPhone 13 series",
-    esim: "eSIM + nano-SIM",
-    lines: "Two eSIMs active",
+    esim: "Yes — eSIM + nano-SIM",
+    lines: "2 eSIMs",
+    note: "First generation Apple lists for two eSIMs at once",
   },
   {
-    model: "iPhone 14, 15 and 16 series",
-    esim: "eSIM only if bought in the US — eSIM + nano-SIM elsewhere",
-    lines: "Two eSIMs active",
+    model: "iPhone 14, 15, 16 series and 16e",
+    esim: "Yes — eSIM only if bought in the US; eSIM + nano-SIM elsewhere",
+    lines: "2 eSIMs",
+    note: "US models have no SIM tray, so a physical SIM is not an option",
   },
   {
     model: "iPhone 17, 17e, 17 Pro, 17 Pro Max, 18 Pro, 18 Pro Max",
-    esim: "eSIM only in 12 markets incl. US, Canada, Mexico, Japan — eSIM + nano-SIM elsewhere",
-    lines: "Two eSIMs active",
+    esim: "Yes — eSIM only if bought in the US, USVI, Canada, Mexico, Japan, Guam, UAE, Saudi Arabia, Bahrain, Kuwait, Qatar or Oman; eSIM + nano-SIM elsewhere",
+    lines: "2 eSIMs",
+    note: "Bought in China mainland: only 17e, 18 Pro and 18 Pro Max support eSIM",
   },
   {
     model: "iPhone Air, iPhone Duo",
-    esim: "eSIM only",
-    lines: "Two eSIMs active",
+    esim: "Yes — eSIM only",
+    lines: "2 eSIMs",
+    note: "No SIM tray in any market",
   },
   {
-    model: "iPhone X, 8, 8 Plus and earlier",
-    esim: "No eSIM — nano-SIM only",
-    lines: "Cannot take a Japan eSIM",
+    model: "iPhone X, 8, SE (2nd gen) and earlier",
+    esim: "No — nano-SIM only",
+    lines: "0",
+    note: "Cannot take a Japan eSIM; use a physical SIM",
   },
 ];
 
 /**
- * The tap-order checklist. Every Settings path here is one Apple documents; the
- * "what you should see" column is what Apple says the screen reports, which is the
- * only way a reader can confirm a step without buying anything first.
+ * The iOS setup in order, as a numbered table. Settings paths are Apple's (118669,
+ * 109317); the Data Roaming step for the travel line is stated by Airalo and Simbye in
+ * their own iPhone install guides.
  */
-const checklist = [
+const iosSteps = [
   {
-    todo: "Confirm the iPhone has eSIM hardware",
-    where: "Settings → General → About → scroll to EID",
-    see: "An EID row is listed",
+    step: "Buy",
+    where: "Provider's website or app",
+    what: "Check Settings → General → About → Carrier Lock reads “No SIM restrictions” first, then buy the Japan eSIM before you fly.",
   },
   {
-    todo: "Confirm it is not locked to a carrier",
-    where: "Settings → General → About → Carrier Lock",
-    see: "“No SIM restrictions”",
+    step: "Install",
+    where: "Settings → Cellular → Add eSIM → Use QR Code (or the provider's app)",
+    what: "On Wi-Fi, scan the QR code, or on iOS 17.4 or later touch and hold the QR code in the email and tap Add eSIM. Apple requires Wi-Fi or a hotspot to activate.",
   },
   {
-    todo: "Install the profile at home, on WiFi",
-    where: "Settings → Cellular → Add eSIM",
-    see: "Apple requires a WiFi network or hotspot to activate",
+    step: "Name the line",
+    where: "Settings → Cellular → tap the plan → Cellular Plan Label",
+    what: "Label it “Japan” so it is not confused with your home line.",
   },
   {
-    todo: "Label the new plan",
-    where: "Settings → Cellular → tap the plan, then set its label",
-    see: "A label you will recognise at 30,000 feet — “Japan”",
-  },
-  {
-    todo: "Leave the Japan line off until you land",
-    where: "Settings → Cellular → tap the Japan plan",
-    see: "The line shows as turned off",
-  },
-  {
-    todo: "Point data at the Japan line after landing",
+    step: "Switch mobile data",
     where: "Settings → Cellular → Cellular Data",
-    see: "“Japan” selected, not your home line",
+    what: "After landing, select the Japan line, and turn off Allow Cellular Data Switching so data stays on it.",
   },
   {
-    todo: "Stop the home line using data",
-    where: "Settings → Cellular → home line → Cellular Data Options",
-    see: "Data Roaming off",
+    step: "Data Roaming ON",
+    where: "Settings → Cellular → Japan line → Data Roaming",
+    what: "Turn it on for the Japan line (travel eSIMs connect as roaming; the plan is prepaid). Keep Data Roaming off on your home line.",
+  },
+];
+
+type IphoneEsimRow = {
+  provider: string;
+  install: string;
+  price: string;
+  number: string;
+};
+
+/** Table 2. Install methods: each provider's own iPhone help page, read on CHECKED. */
+const iphoneEsimRows: (IphoneEsimRow & { cta: "simbye" | "klook" | "airalo" | "esimgo" | "sakura" })[] = [
+  {
+    provider: "Simbye",
+    install: "QR code by email; on iOS 17.4+ touch and hold it → Add eSIM; or enter details manually",
+    price: (() => {
+      const p = cheapestAtLeastGb("simbye", 10);
+      return p ? `${formatUsd(p.priceUsd)} (${p.name})${p.discountedUsd ? `; ${formatUsd(p.discountedUsd)} with code` : ""}` : "—";
+    })(),
+    number: esimSpec("simbye").phoneNumberShort,
+    cta: "simbye",
+  },
+  {
+    provider: "Klook eSIM",
+    install: "QR-code voucher",
+    price: "Not quoted — Klook prices change by date",
+    number: klookEsim.specPhoneNumber,
+    cta: "klook",
+  },
+  {
+    provider: "Airalo",
+    install: "Airalo iOS app installs it directly; QR code or manual entry also offered",
+    price: priceAtLeastLabel("airalo", 10),
+    number: esimSpec("airalo").phoneNumberShort,
+    cta: "airalo",
+  },
+  {
+    provider: "eSIM Go",
+    install: "QR code (no iOS app)",
+    price: priceAtLeastLabel("esimgo", 10),
+    number: esimSpec("esimgo").phoneNumberShort,
+    cta: "esimgo",
+  },
+  {
+    provider: "Sakura Mobile",
+    install: "QR code (scan or touch and hold); the 3GB/day plan is installed only after you arrive in Japan",
+    price: `${priceAtLeastLabel("sakura", 10)} — smallest plan of 10 GB+`,
+    number: esimSpec("sakura").phoneNumberShort,
+    cta: "sakura",
+  },
+];
+
+/** The five questions that go into FAQPage; they lead the on-page FAQ too. */
+const faqSchemaItems = [
+  {
+    q: "What is the best eSIM for Japan on iPhone?",
+    a: `For a short trip with data only, a travel eSIM that installs by QR code is enough on any unlocked iPhone XS or later: Simbye has the lowest 10 GB price compared here (${(() => { const p = cheapestAtLeastGb("simbye", 10); return p ? `${formatUsd(p.priceUsd)} for ${p.name}` : "see the table"; })()}, prices checked ${pricesCheckedAt}), Airalo installs from its own iOS app, and Klook eSIM keeps it in one checkout with Klook bookings. If you need a Japanese phone number, Sakura Mobile's Voice + Data eSIM is the one that includes it.`,
+  },
+  {
+    q: "Is my iPhone eSIM compatible in Japan?",
+    a: `Yes if it is an iPhone XS, XS Max, XR or later and not carrier-locked. Apple lists iPhone 14 and later bought in the US as eSIM only, and iPhone 13 and later can keep two eSIMs active. iPhone X, 8, SE (2nd gen) and earlier take a nano-SIM only. Check Carrier Lock under Settings → General → About: “No SIM restrictions” means unlocked (Apple Support, checked ${CHECKED}).`,
+  },
+  {
+    q: "How do I set up a Japan eSIM on iPhone?",
+    a: "Before you fly, on Wi-Fi: Settings → Cellular → Add eSIM → Use QR Code (or install from the provider's app), then label the line “Japan”. After landing, select it under Settings → Cellular → Cellular Data, turn off Allow Cellular Data Switching, and turn Data Roaming on for the Japan line only.",
+  },
+  {
+    q: "Can I keep my home number on iPhone while using a Japan eSIM?",
+    a: "Yes. Apple states that with a travel eSIM for data, FaceTime and iMessage keep working on your home line, and Dual SIM lets both lines stay on. Keep Data Roaming off on the home line; your home carrier may still charge for calls or texts received abroad.",
+  },
+  {
+    q: "Should I use an eSIM or a physical SIM on iPhone in Japan?",
+    a: "An eSIM on any iPhone that has one: Apple notes it cannot be lost or removed and you install it before you leave. US iPhone 14 and later have no SIM tray, so eSIM is the only option. A physical SIM is for iPhone X, 8, SE (2nd gen) and earlier, or a model sold without eSIM support.",
   },
 ];
 
@@ -211,49 +301,17 @@ const picks = [
     ],
     cons: [
       "Higher price than data-only eSIMs",
-      "The only provider here needing a manual APN entry on iPhone (plus.4g)",
+      "3GB/day plan: Sakura says install it only after you arrive in Japan",
       "Not ideal for short trips",
     ],
     summary:
-      `For longer stays, Sakura Mobile is the only tourist option with real English phone support and a voice-call option. One iPhone-specific caveat: it is the only provider on this page that may need a manual APN (plus.4g) under Settings → Cellular → Cellular Data Network. Plans from ${priceFromLabel("sakura")}.`,
+      `For longer stays, Sakura Mobile is the only tourist option with real English phone support and a voice-call option. One iPhone-specific caveat from Sakura's own setup page (checked ${CHECKED}): its Unlimited eSIM can be installed before you fly, but the 3GB/day plan starts on installation, so Sakura says to install that one only after you arrive. Plans from ${priceFromLabel("sakura")}.`,
   },
 ];
 
-// iPhone-only install flow, every Settings path as Apple words it. The multi-device
-// walkthrough (Android, iPad, Samsung, Pixel, troubleshooting) lives in
-// how-to-set-up-esim-japan — we link rather than repeat it.
-const setupSteps = [
-  {
-    title: "Check for an EID first (Settings → General → About)",
-    desc: "Scroll to the bottom of the About screen. If an \"EID\" row is listed your iPhone has eSIM hardware; if it is missing, the handset cannot take a Japan eSIM at all and no amount of setup will change that.",
-  },
-  {
-    title: "Check Carrier Lock on the same screen",
-    desc: "Still in Settings → General → About, look for Carrier Lock. Apple's instruction is that it should read \"No SIM restrictions\"; anything else means the handset is tied to your home carrier and only that carrier can unlock it.",
-  },
-  {
-    title: "Install over WiFi at home, not at the airport",
-    desc: "Apple states the iPhone must be connected to a WiFi network or hotspot to activate an eSIM (with a narrow exception for some eSIM-only models in some countries). The one place you will not have WiFi is the arrivals hall, so do this days before you fly.",
-  },
-  {
-    title: "Settings → Cellular → Add eSIM, then pick your install route",
-    desc: "Three routes, all documented by Apple: scan the provider's QR code with the Camera app and tap the \"Cellular Plan Detected\" notification; install from the provider's own iOS app; or tap the \"Carrier Cellular Plan Ready to Be Installed\" notification if the seller pushed the plan to your device. Airalo users can stay in the Airalo app and skip Settings entirely.",
-  },
-  {
-    title: "Label it \"Japan\" when iOS asks",
-    desc: "Apple's own wording is to label your plans once the second one is active. iOS defaults to names like \"Secondary\" or the carrier's own label, which gets confusing once two plans are listed — naming it \"Japan\" makes the arrival-day toggle obvious.",
-  },
-  {
-    title: "Leave the plan toggled OFF until you land",
-    desc: "An installed-but-off profile costs nothing and cannot be charged. Switch it on after the cabin crew clears flight mode, then set it under Settings → Cellular → Cellular Data as the line that carries data.",
-  },
-];
 
 const faqItems = [
-  {
-    q: "Which iPhones can use a Japan eSIM?",
-    a: `Apple puts the cut-off at "an iPhone XS, iPhone XS Max, iPhone XR, or later", so every iPhone from 2018 onwards qualifies. iPhone XS to 12 run one eSIM alongside a physical nano-SIM; iPhone 13 and later support Dual SIM with two eSIMs. The exceptions are about the market the handset was sold in: in China mainland Apple lists only iPhone Duo, iPhone 18 Pro, iPhone 18 Pro Max, iPhone 17e and iPhone Air as supporting eSIM, and in Hong Kong and Macao certain models ship with two nano-SIM slots instead. iPhone X, 8 and earlier have no eSIM at all (Apple support, checked ${FACTS_CHECKED}).`,
-  },
+  ...faqSchemaItems,
   {
     q: "Can I use two eSIMs at once on iPhone?",
     a: "Yes on iPhone 13 and later, which Apple says support Dual SIM with two eSIMs in addition to a physical SIM and an eSIM — so your home eSIM and a Japan eSIM can both be active. iPhone XS through iPhone 12 run one active eSIM plus one physical nano-SIM. In every case only one line carries data at a time, and you choose which under Settings → Cellular → Cellular Data.",
@@ -261,10 +319,6 @@ const faqItems = [
   {
     q: "When should I install the eSIM — before or after landing?",
     a: "Before. Apple's setup instructions require the iPhone to be connected to a WiFi network or hotspot to activate an eSIM, which is exactly what you will not have between the aircraft door and passport control. Install it at home a day or two early, label it, and leave the line switched off; an installed profile that is toggled off cannot be billed, and switching it on after landing takes one tap.",
-  },
-  {
-    q: "Should I keep my home line on the default voice line while in Japan?",
-    a: "Yes, for most travellers. Keep your home number as the default voice line so calls and SMS two-factor codes still arrive — texts ride the carrier network, not your data plan — and set the Japan eSIM under Settings → Cellular → Cellular Data so all data goes through it. Apple confirms FaceTime and iMessage keep working on the home line while a travel eSIM carries the data. Your home carrier may still charge for calls or texts received abroad, so check its roaming terms before you fly.",
   },
   {
     q: "Will my iPhone charge roaming if I forget to switch lines?",
@@ -280,7 +334,7 @@ const faqItems = [
   },
   {
     q: "The eSIM installed but my iPhone says \"No Service\" in Japan — what now?",
-    a: "Work through it in this order: confirm the Japan plan's line is on (Settings → Cellular), confirm it is selected under Cellular Data, then toggle Airplane Mode off and on — Apple's first troubleshooting step too — to force a fresh network search. If it still shows no service, restart the iPhone, then reset network settings via Settings → General → Transfer or Reset iPhone → Reset → Reset Network Settings. Apple's last resort is to contact the issuer with your IMEI or EID. A Sakura Mobile eSIM may additionally need its APN typed in by hand as plus.4g.",
+    a: "Work through it in this order: confirm the Japan plan's line is on (Settings → Cellular), confirm it is selected under Cellular Data, then toggle Airplane Mode off and on — Apple's first troubleshooting step too — to force a fresh network search. If it still shows no service, restart the iPhone, then reset network settings via Settings → General → Transfer or Reset iPhone → Reset → Reset Network Settings. Apple's last resort is to contact the issuer with your IMEI or EID. Also check Data Roaming is on for the Japan line: Airalo and Simbye both say a travel eSIM will not connect without it.",
   },
 ];
 
@@ -290,27 +344,24 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Best eSIM for Japan on iPhone (2026): Setup and Picks</title>
-        <meta
-          name="description"
-          content="Best eSIM for Japan on iPhone: which iPhones take a Japan eSIM, the carrier-lock check, and Japan eSIM iPhone setup tap by tap — plus which plan to buy."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/japan-esim-iphone" />
-        <meta property="og:title" content="Best eSIM for Japan on iPhone (2026): Japan eSIM iPhone Setup &amp; Picks" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/japan-esim-iphone" />
-        <meta property="og:description" content="Best eSIM for Japan on iPhone: which iPhones take a Japan eSIM, the carrier-lock check, and Japan eSIM iPhone setup tap by tap — plus which plan to buy." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best eSIM for Japan on iPhone (2026): Japan eSIM iPhone Setup &amp; Picks" />
-        <meta name="twitter:description" content="Best eSIM for Japan on iPhone: which iPhones take a Japan eSIM, the carrier-lock check, and Japan eSIM iPhone setup tap by tap — plus which plan to buy." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqSchemaItems.map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -323,7 +374,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/japan-esim-iphone",
-              headline: "Best eSIM for Japan on iPhone (2026): Setup and Picks",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -356,13 +407,13 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan on iPhone (2026):<br />Japan eSIM iPhone Setup &amp; Picks
+            Best eSIM for Japan iPhone (2026):<br />iPhone eSIM Japan Setup &amp; Compatible Models
           </h1>
           <p className={styles.heroSubtitle}>
-            Which Japan eSIM installs cleanly on an iPhone, and exactly where to tap in iOS to do it.
+            Apple&apos;s model list, which Japan eSIM to buy for an iPhone, and the iOS screens in order.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "iPhone XS to iPhone 18 Pro", "Steps from Apple support"].map((t) => (
+            {[`Updated ${updated.label}`, "Compatible models table", "5-step iOS setup"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -382,6 +433,27 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           </p>
         </div>
 
+        <p className={styles.bodyText}>
+          <strong>Every iPhone XS, XS Max, XR or later supports eSIM, so it can take a Japan eSIM
+          (Apple Support, checked {CHECKED}).</strong>{" "}
+          iPhone 14 and later models bought in the United States are eSIM only, with no SIM tray,
+          and iPhone 13 and later can keep two eSIMs active at once.{" "}
+          Check the iPhone is unlocked at Settings → General → About: &ldquo;No SIM
+          restrictions&rdquo; next to Carrier Lock means any Japan eSIM will install.{" "}
+          Install the eSIM before you fly, by QR code or the provider&apos;s app over Wi-Fi, then
+          turn Data Roaming on for the Japan line (not your home line) after you land.
+        </p>
+
+        <BookingEsimCard lead="iPhone unlocked? Get your Japan eSIM before you fly" />
+
+        <p className={styles.bodyText} style={{ fontSize: "0.88rem" }}>
+          Need a Japanese phone number or staying a month or more? Sakura Mobile&apos;s Voice +
+          Data eSIM is the one here that includes a number.{" "}
+          <a href={link("sakura")} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            Get Sakura Mobile eSIM →
+          </a>
+        </p>
+
         <EsimPageAnswer route="/guides/esim/japan-esim-iphone" />
 
         <EsimDaysTable />
@@ -400,7 +472,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
               you want its iOS app to do the install, Simbye for the lowest list price compared here, or Klook&apos;s
               own Japan eSIM if you are already booking tickets and transport there. If you need
               a Japanese phone number or you are staying a month or more, Sakura Mobile is the
-              one to look at instead. Apple facts checked {FACTS_CHECKED}; prices
+              one to look at instead. Apple facts checked {CHECKED}; prices
               checked {pricesCheckedAt}.
             </p>
             <div className={styles.verdictGrid}>
@@ -417,8 +489,8 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                 <p className={styles.verdictStatValue}>iPhone 13 and later</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Needs manual APN</p>
-                <p className={styles.verdictStatValue}>Sakura Mobile only (plus.4g)</p>
+                <p className={styles.verdictStatLabel}>Data Roaming</p>
+                <p className={styles.verdictStatValue}>ON for the Japan line only</p>
               </div>
             </div>
             <a href={link("airalo")} className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
@@ -429,40 +501,121 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
 
         <EsimCtaTop />
 
-        {/* Compatibility — question heading, answer in the first two sentences. */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Compatibility</span>
-          <h2 className={styles.sectionTitle}>Does My iPhone Support eSIM in Japan?</h2>
+        {/* Table 2 — which Japan eSIM to buy for an iPhone, conclusion in row 1. */}
+        <section className={styles.comparisonSection} id="best-esim-iphone">
+          <span className={styles.sectionLabel}>Which to buy</span>
+          <h2 className={styles.sectionTitle}>What Is the Best eSIM for Japan on iPhone?</h2>
           <p className={styles.bodyText}>
-            Almost certainly yes. Apple&apos;s cut-off is &ldquo;an iPhone XS, iPhone XS Max,
-            iPhone XR, or later&rdquo;, so every iPhone released since 2018 can take a Japan
-            eSIM — and the exceptions below are about the market the handset was sold in, not
-            about Japan. The right-hand column is the number that matters on an iPhone: how
-            many eSIM profiles can be <em>active at once</em>, which on iPhone 13 and later is
-            two, so your home line and a Japan line can both be live.
+            For a short trip with data only, Simbye has the lowest 10 GB price compared here and
+            Klook eSIM keeps it in one checkout with your Klook bookings; Airalo is the one that
+            installs from its own iOS app. If you need a Japanese phone number, Sakura Mobile&apos;s
+            Voice + Data eSIM is the only one below that includes one.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    <th>iPhone Model</th>
-                    <th>What the hardware takes</th>
-                    <th>Active lines</th>
+                    <th>Japan eSIM</th>
+                    <th>How it installs on iPhone</th>
+                    <th>Around 10 GB</th>
+                    <th>Japanese phone number</th>
+                    <th>Buy</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {iphoneModels.map((row) => (
-                    <tr key={row.model}>
-                      <td className={styles.tdProvider}>{row.model}</td>
-                      <td>{row.esim}</td>
-                      <td style={{ color: "var(--accent)", fontWeight: 700 }}>{row.lines}</td>
+                  <tr>
+                    <td className={styles.tdProvider}>Conclusion</td>
+                    <td colSpan={4} style={{ fontWeight: 700, color: "var(--sumi)" }}>
+                      Data only: Simbye (lowest 10 GB price) or Klook eSIM (one checkout with Klook
+                      bookings). Need a Japanese number: Sakura Mobile Voice + Data.
+                    </td>
+                  </tr>
+                  {iphoneEsimRows.map((row) => (
+                    <tr key={row.provider}>
+                      <td className={styles.tdProvider}>{row.provider}</td>
+                      <td>{row.install}</td>
+                      <td>{row.price}</td>
+                      <td>{row.number}</td>
+                      <td>
+                        {row.cta === "klook" ? (
+                          <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 700 }}>
+                            Check Klook eSIM →
+                          </KlookLink>
+                        ) : (
+                          <a href={link(row.cta)} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 700 }}>
+                            Get {row.provider} →
+                          </a>
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
+            Last checked: {CHECKED_ISO} (install methods, from each provider&apos;s iPhone help
+            page). Prices: data/esim-prices.json, checked {pricesCheckedAt}; the cheapest plan
+            with at least 10 GB. Phone numbers: provider pages, as recorded on this site. Klook
+            listing details confirmed {klookEsim.specsCheckedAt}. Official pages:
+            https://simbye.com/blogs/blog/how-to-install-and-activate-esim-on-iphone-step-guide-2025 ·
+            https://www.airalo.com/help/getting-started-with-airalo ·
+            https://www.sakuramobile.jp/info/setting/travel-esim/
+          </p>
+          <SimbyeOffer />
+        </section>
+
+        {/* Table 1 — compatibility, Apple's own list only. */}
+        <section className={styles.comparisonSection} id="compatible-models">
+          <span className={styles.sectionLabel}>Compatibility</span>
+          <h2 className={styles.sectionTitle}>Is My iPhone eSIM Compatible in Japan?</h2>
+          <p className={styles.bodyText}>
+            Yes if it is an iPhone XS, XS Max, XR or later and not locked to a carrier — that is
+            Apple&apos;s own cut-off. The exceptions below are about the market the handset was
+            sold in, not about Japan; the third column is how many eSIMs can be active at once,
+            which on iPhone 13 and later is two.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>iPhone model</th>
+                    <th>eSIM support</th>
+                    <th>eSIMs active at once</th>
+                    <th>Watch out for</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Conclusion</td>
+                    <td colSpan={3} style={{ fontWeight: 700, color: "var(--sumi)" }}>
+                      iPhone XS / XR and later: yes, if unlocked. iPhone X, 8, SE (2nd gen) and earlier: no.
+                    </td>
+                  </tr>
+                  {iphoneModels.map((row) => (
+                    <tr key={row.model}>
+                      <td className={styles.tdProvider}>{row.model}</td>
+                      <td>{row.esim}</td>
+                      <td style={{ color: "var(--accent)", fontWeight: 700 }}>{row.lines}</td>
+                      <td>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
+            Last checked: {CHECKED_ISO}. Apple Support only — SIM type by model, Dual SIM with an
+            eSIM, and travelling with eSIM. Official pages:{" "}
+            {APPLE_URLS.slice(0, 3).map((u, i) => (
+              <span key={u}>
+                {i > 0 && " · "}
+                <a href={u} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>{u}</a>
+              </span>
+            ))}
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>The twelve eSIM-only markets</strong>, as Apple lists them, are the United
             States, the US Virgin Islands, Canada, Mexico, Japan, Guam, the United Arab Emirates,
@@ -482,7 +635,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
               physical tourist SIM card
             </Link>{" "}
-            is the way round it. All model facts above: Apple support, checked {FACTS_CHECKED}.
+            is the way round it. All model facts above: Apple support, checked {CHECKED}.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Fastest check on your own device: Settings → General → About → scroll to EID. If an
@@ -507,37 +660,8 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             your home carrier to unlock it — Apple is explicit that only the carrier can do this
             and that Apple itself cannot. US iPhone 14 and later, being eSIM-only, ship without a
             tray but are still subject to whatever lock your carrier applied, so check the row
-            rather than assuming (Apple support, checked {FACTS_CHECKED}).
+            rather than assuming (Apple support, checked {CHECKED}).
           </p>
-
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
-            Everything to do, in tap order
-          </h3>
-          <p className={styles.bodyText}>
-            Seven rows, first two before you spend anything, the last two after you land.
-          </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>What to do</th>
-                    <th>Where on iPhone</th>
-                    <th>What you should see</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {checklist.map((row) => (
-                    <tr key={row.todo}>
-                      <td className={styles.tdProvider}>{row.todo}</td>
-                      <td>{row.where}</td>
-                      <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{row.see}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
         </section>
 
         {/* Best eSIMs for iPhone */}
@@ -629,7 +753,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
         {/* Which one — the reader split, then the first Klook CTA. */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Which one</span>
-          <h2 className={styles.sectionTitle}>What Is the Best eSIM for Japan on iPhone?</h2>
+          <h2 className={styles.sectionTitle}>Short Trip or Long Stay: Which Japan eSIM Fits Your iPhone?</h2>
           <p className={styles.bodyText}>
             For a short trip where all you need is data, any data-only eSIM above will do the job
             and the choice comes down to how you want to install it — Airalo for its iOS app,
@@ -652,7 +776,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
               <p className={styles.pickListLabel}>You need a phone number, or a long stay</p>
               <ul className={styles.pickList}>
                 <li><span className={styles.proIcon}>+</span>Sakura Mobile — English phone support, voice option, 1 month+</li>
-                <li><span className={styles.proIcon}>+</span>The only pick here that may need a manual APN (plus.4g)</li>
+                <li><span className={styles.proIcon}>+</span>Voice + Data eSIM adds a Japanese number and domestic calls</li>
                 <li><span className={styles.proIcon}>+</span>Physical SIM available — the fallback for an iPhone with no eSIM</li>
                 <li><span className={styles.proIcon}>+</span>Restaurant bookings and deliveries that demand a local number</li>
               </ul>
@@ -685,7 +809,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
         {/* Dual SIM — keeping the home number, iMessage and SMS codes. */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Dual SIM</span>
-          <h2 className={styles.sectionTitle}>Can I Keep My Home Number and iMessage with a Japan eSIM?</h2>
+          <h2 className={styles.sectionTitle}>Can I Keep My Home Number on iPhone While Using a Japan eSIM?</h2>
           <p className={styles.bodyText}>
             Yes, and it is the normal setup. Apple states that FaceTime and iMessage carry on
             working on your home line while a travel eSIM handles data, so your own number still
@@ -719,7 +843,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             Label the plans while you are in there — Apple suggests doing it as soon as the second
             plan is active, and &ldquo;Japan&rdquo; against &ldquo;Secondary&rdquo; is the
             difference between a confident tap and a guess on arrival. All iOS steps above: Apple
-            support, checked {FACTS_CHECKED}.
+            support, checked {CHECKED}.
           </p>
           <p className={styles.bodyText}>
             The full dual-SIM walkthrough — including the Android equivalents and what to do when
@@ -731,6 +855,26 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
               whether eSIM works in Japan at all
             </Link>, start there: it covers the carrier-lock check, the markets where Apple ships
             iPhones without eSIM, and how a Japan plan compares with roaming and pocket WiFi.
+          </p>
+        </section>
+
+        {/* eSIM or physical SIM — the iPhone-specific answer. */}
+        <section className={styles.bodySection} id="esim-or-physical-sim">
+          <span className={styles.sectionLabel}>eSIM or SIM card</span>
+          <h2 className={styles.sectionTitle}>Should I Use an eSIM or a Physical SIM on iPhone in Japan?</h2>
+          <p className={styles.bodyText}>
+            An eSIM, on any iPhone that has one. Apple points out that an eSIM cannot be removed if
+            the iPhone is lost or stolen and that there is no card to obtain, carry or swap, and
+            US iPhone 14 and later have no SIM tray at all, so for them eSIM is the only option.
+          </p>
+          <p className={styles.bodyText}>
+            A physical SIM card is the answer only when the iPhone cannot take an eSIM: iPhone X,
+            8, SE (2nd gen) and earlier, or a model sold in a market where Apple ships it with two
+            nano-SIM slots. Sakura Mobile sells a prepaid physical SIM for that case (Apple
+            Support, checked {CHECKED}).{" "}
+            <a href={link("sakura")} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              See Sakura Mobile →
+            </a>
           </p>
         </section>
 
@@ -761,31 +905,61 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>Setup guide</span>
           <h2 className={styles.sectionTitle}>How Do I Set Up a Japan eSIM on iPhone?</h2>
           <p className={styles.bodyText}>
-            On WiFi at home, in about two minutes: <strong>Settings → Cellular → Add eSIM</strong>,
-            then install by QR code, from the provider&apos;s app, or by tapping the carrier
-            notification. Apple requires the iPhone to be connected to a WiFi network or hotspot
-            to activate an eSIM, which is the one thing the arrivals hall cannot give you — so
-            this is a job for the sofa, not the airport. These six steps are iPhone-specific; for
-            Android, iPad, Galaxy Tab or Pixel Tablet, use the{" "}
+            In five steps: buy, install over Wi-Fi at <strong>Settings → Cellular → Add
+            eSIM</strong>, name the line, then after landing switch Cellular Data to it and turn
+            Data Roaming on for that line. Apple requires Wi-Fi or a hotspot to activate an eSIM,
+            so do the first three at home. These steps are iPhone-specific; for the setup on any
+            phone and what to do when it fails, use the{" "}
             <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              multi-device setup guide
-            </Link>{" "}
-            instead, and for which plan to buy on a Pixel or Galaxy, the{" "}
+              Japan eSIM setup guide for any phone
+            </Link>
+            , and for which plan to buy on a Pixel or Galaxy, the{" "}
             <Link href="/guides/esim/japan-esim-android" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan eSIM for Android guide
             </Link>.
           </p>
-          <div className={styles.stepsList}>
-            {setupSteps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Step</th>
+                    <th>Where on iPhone</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>—</td>
+                    <td className={styles.tdProvider}>Conclusion</td>
+                    <td colSpan={2} style={{ fontWeight: 700, color: "var(--sumi)" }}>
+                      Steps 1–3 at home on Wi-Fi; steps 4–5 after you land. Data Roaming ON for the
+                      Japan line, OFF for your home line.
+                    </td>
+                  </tr>
+                  {iosSteps.map((row, i) => (
+                    <tr key={row.step}>
+                      <td style={{ fontWeight: 800, color: "var(--accent)" }}>{i + 1}</td>
+                      <td className={styles.tdProvider}>{row.step}</td>
+                      <td>{row.where}</td>
+                      <td>{row.what}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
+            Last checked: {CHECKED_ISO}. Settings paths: Apple Support (Set up eSIM on iPhone;
+            Using Dual SIM with an eSIM). Data Roaming on for the travel line: Airalo and Simbye
+            iPhone install guides. Sakura Mobile&apos;s 3GB/day eSIM is the exception to installing at
+            home: Sakura says to install it after you arrive. Official pages:{" "}
+            <a href="https://support.apple.com/en-us/118669" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>https://support.apple.com/en-us/118669</a>
+            {" · "}
+            <a href={APPLE_URLS[1]} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>{APPLE_URLS[1]}</a>
+          </p>
+          <BookingEsimCard lead="Ready to install? Pick the eSIM first" />
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
             Moving or reinstalling the eSIM later

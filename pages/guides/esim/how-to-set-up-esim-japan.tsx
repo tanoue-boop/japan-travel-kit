@@ -450,11 +450,11 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
             from the Airalo iOS app.
           </p>
           <p className={styles.bodyText}>
-            There is more to say about iPhone specifically — which models run two eSIMs at once,
-            the dual-SIM toggles that prevent surprise roaming charges, and the one provider that
-            needs its APN typed in by hand. We cover all of it in{" "}
+            This page is the setup for any phone and what to do when it fails. Which iPhone
+            models take an eSIM, which Japan eSIM to buy for an iPhone, and the iOS screens in
+            order (including Data Roaming on the travel line) are in{" "}
             <Link href="/guides/esim/japan-esim-iphone" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Best eSIM for Japan on iPhone →
+              eSIM for Japan on iPhone →
             </Link>
           </p>
         </section>

@@ -81,7 +81,9 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--text)", fontWeight: 600 }}>SIM card at the airport</Link> if your
             phone cannot take an eSIM. Not sure it can?{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--text)", fontWeight: 600 }}>Does eSIM work in Japan?</Link>{" "}
-            lists each carrier&apos;s bands, the phones that take an eSIM and how to check yours is unlocked. On a Samsung or Pixel, the{" "}
+            lists each carrier&apos;s bands, the phones that take an eSIM and how to check yours is unlocked. On an iPhone, the{" "}
+            <Link href="/guides/esim/japan-esim-iphone" style={{ color: "var(--text)", fontWeight: 600 }}>eSIM for Japan on iPhone</Link>{" "}
+            guide has Apple&apos;s model list, which plan to buy and the iOS setup screens. On a Samsung or Pixel, the{" "}
             <Link href="/guides/esim/japan-esim-android" style={{ color: "var(--text)", fontWeight: 600 }}>Japan eSIM for Android guide</Link>{" "}
             lists which models take an eSIM (Pixel 3 and Galaxy S20 onward) and the menu to install it from. Staying a month or more, or need a Japanese phone number? Read our{" "}
             <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>Sakura Mobile review</Link>.
