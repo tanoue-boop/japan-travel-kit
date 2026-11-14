@@ -9094,3 +9094,158 @@ export const okinawaThreeDayTripPrep: KlookTripPrepItem[] = [
     why: "The Shuri Castle QR ticket, the ferry notices and the tour's meeting message all reach you on your phone.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Nagoya Castle tickets and the sake tasting tour guide, added 14 Nov 2026
+// (task-jtk-20261114-02).
+//
+// Confirmed as live en-US pages through the www.klook.com search index on
+// 14 Nov 2026: the Hommaru Palace after-hours tour (178831), the Nagoya day tour
+// to Inuyama with samurai swords (149437), the Inuyama Castle + Meiji-Mura +
+// Meitetsu 1-day pass bundle (121510), the en-US Nagoya Castle destination page
+// (p50209954), and for sake: Fushimi (26367, 94448, 160147), Tokyo (142067,
+// 98326) and Kobe Nada (91289, 95625). The castle's own admission ticket on Klook
+// (136815) surfaced only in en-PH / en-AU, so it is not linked; the page sends
+// readers to the official counter / asoview for admission and to tours, the pass
+// and hotels on Klook. Not used: 30952 (en-US page says not available), 86562
+// (en-SG only), 135796 / 138522 (no en-US locale in the index). No price anywhere.
+// Tours and hotels are the 6.5% band; the Meitetsu pass bundle is the 5% band.
+// ---------------------------------------------------------------------------
+
+/** Klook's en-US Nagoya Castle page: tours and tickets that include the castle. */
+export const nagoyaCastleKlookUrl = klookLink("https://www.klook.com/en-US/destination/p50209954-nagoya-castle/");
+
+/** The castle with a guide, after the gates close to day visitors. */
+export const nagoyaCastleAfterHoursTour: KlookTour = {
+  title: "After-hours tour of Nagoya Castle Hommaru Palace",
+  desc: "A guided visit to the rebuilt Hommaru Palace after normal visiting hours — the part of the castle you can go inside while the keep is closed",
+  url: klookLink("https://www.klook.com/en-US/activity/178831-after-hours-tour-of-nagoya-castle-hommaru-palace/"),
+};
+
+/** A guided Nagoya day to Inuyama Castle with a samurai-sword stop. */
+export const nagoyaSamuraiInuyamaDayTour: KlookTour = {
+  title: "1-day tour from Nagoya: samurai swords and Inuyama Castle",
+  desc: "An 8-hour join-in day out of Nagoya: the sword and knife makers of Seki, then Inuyama Castle, whose original keep you can climb",
+  url: klookLink("https://www.klook.com/en-US/activity/149437-1-day-tour-from-nagoya-samurai-swords-and-japan-s-oldest-castle/"),
+};
+
+/** Inuyama Castle and Meiji-Mura entry with a Meitetsu 1-day pass — the pass band. */
+export const inuyamaMeijiMuraMeitetsuPass: KlookTour = {
+  title: "Inuyama Castle, Meiji-Mura and 1-day Meitetsu pass",
+  desc: "Entry to Inuyama Castle and the Meiji-Mura open-air museum with a day of Meitetsu trains and buses (ordinary trains only); not sold to Japanese passport holders, ages 12 and up",
+  url: klookLink("https://www.klook.com/en-US/activity/121510-inuyama-castle-and-meiji-mura-museum-ticket-with-1-day-meitetsu-pass/"),
+};
+
+/**
+ * Klook's rail pages for the two legs on from Nagoya (the 5% transport band).
+ * They answer automated reads: on 14 Nov 2026 they gave a shortest run of 33 min
+ * to Kyoto and 47 min to Shin-Osaka, both with 0 transfers.
+ */
+export const shinkansenNagoyaKyoto: KlookTour = {
+  title: "Nagoya → Kyoto shinkansen tickets",
+  desc: "Klook's Tokaido Shinkansen page for the leg on to Kyoto, with QR boarding and non-reserved, reserved and Green Car seats",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/71-nagoya/30-kyoto/"),
+};
+
+export const shinkansenNagoyaOsaka: KlookTour = {
+  title: "Nagoya → Shin-Osaka shinkansen tickets",
+  desc: "Klook's Tokaido Shinkansen page for the leg on to Osaka, with the same three seat classes",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/71-nagoya/29-osaka/"),
+};
+
+/** Nagoya Castle stop: tours, the Meitetsu pass, hotels and data. */
+export const nagoyaCastleTripPrep: KlookTripPrepItem[] = [
+  {
+    label: nagoyaSamuraiInuyamaDayTour.title,
+    ctaLabel: "Check the Inuyama day tour →",
+    url: nagoyaSamuraiInuyamaDayTour.url,
+    why: "Nagoya Castle's keep is closed, Inuyama's is not: a guided day from Nagoya puts an original keep you can climb into the same stop.",
+  },
+  {
+    label: inuyamaMeijiMuraMeitetsuPass.title,
+    ctaLabel: "Check the Meitetsu pass bundle →",
+    url: inuyamaMeijiMuraMeitetsuPass.url,
+    why: "The do-it-yourself version of the Inuyama day: castle and Meiji-Mura entry with a day of Meitetsu trains from Nagoya.",
+  },
+  {
+    ...tripPrepProducts.hotelNagoya,
+    why: "The shinkansen, the subway to Nagoyajo Station and the Meitetsu trains to Inuyama all leave from Nagoya Station, so one night there turns a stop into a full day.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Subway changes, the castle's cashless counter and a tour's meeting message all run on your phone.",
+  },
+];
+
+/** Fushimi, Kyoto: the brewery tasting that meets at the Gekkeikan Okura Sake Museum. */
+export const kyotoSakeTastingBreweryTour: KlookTour = {
+  title: "Kyoto sake tasting & brewery experience (Fushimi)",
+  desc: "A 3-hour guided tasting in the Fushimi brewing district that meets at the Gekkeikan Okura Sake Museum, with sake styles, label reading and snack pairings",
+  url: klookLink("https://www.klook.com/en-US/activity/26367-kyoto-sake-tasting-brewery-experience/"),
+};
+
+/** Fushimi, Kyoto: the longer tasting walk. */
+export const fushimiEighteenSakeTour: KlookTour = {
+  title: "Kyoto sake tour in Fushimi: 18 sake tastings & historic breweries",
+  desc: "A 3-hour English-guided afternoon walk through the Fushimi breweries, listed with 18 kinds of local sake to taste",
+  url: klookLink("https://www.klook.com/en-US/activity/94448-kyoto-city-gekkeikan-okura-sake-museum-half-day-walking-tour-sake-tasting/"),
+};
+
+/** Fushimi, Kyoto: tasting plus the Jikkokubune canal boat. */
+export const fushimiSakeCanalBoatTour: KlookTour = {
+  title: "Fushimi Kyoto tour with sake tasting & canal boat ride",
+  desc: "A half-day walk of about 3.5 hours with a canal boat ride, a temple visit and a sake tasting",
+  url: klookLink("https://www.klook.com/en-US/activity/160147-fushimi-kyoto-tour-with-sake-tasting-canal-boat-ride/"),
+};
+
+/** Tokyo: the brewery tour out of Sawai Station on the JR Ome Line. */
+export const tokyoOzawaBreweryTour: KlookTour = {
+  title: "Tokyo: sake brewery tour at Tokyo's oldest distillery (Sawai)",
+  desc: "A 2-hour group tour from Sawai Station in western Tokyo with a premium tasting at Ozawa Brewery, in English and Japanese",
+  url: klookLink("https://www.klook.com/en-US/activity/142067-tokyo-sake-brewery-tour-at-tokyo-s-oldest-distillery/"),
+};
+
+/** Tokyo: the private car day with hotel pick-up. */
+export const tokyoSakePrivateCarTour: KlookTour = {
+  title: "Tokyo sake tasting and brewery private tour",
+  desc: "A 6-hour private car day from Tokyo with hotel pick-up, a guided brewery tour, tasting and lunch at the brewery restaurant",
+  url: klookLink("https://www.klook.com/en-US/activity/98326-sake-tasting-brewery-private-one-day-car-tour-tokyo/"),
+};
+
+/** Kobe Nada: the half-day brewery walk with food. */
+export const kobeNadaSakeHalfDayTour: KlookTour = {
+  title: "Kobe Nada sake brewery half-day experience with food",
+  desc: "An English-guided afternoon walk round the Nada breweries in Kobe, listed in a 13:15–16:15 slot",
+  url: klookLink("https://www.klook.com/en-US/activity/91289-kobe-sake-brewery-join-half-day-walking-tour/"),
+};
+
+/** Kobe Nada: the brewery tour with tasting. */
+export const kobeSakeBreweryTastingTour: KlookTour = {
+  title: "Sake brewery tour with tasting experience in Kobe",
+  desc: "A meet-at-location Nada tour of about 3 hours and four stops — a sake shop, a brewery museum and a brewery — with tastings",
+  url: klookLink("https://www.klook.com/en-US/activity/95625-sake-brewery-tour-tasting-kobe/"),
+};
+
+/** Sake tasting trip: tours, a Kyoto base and data. */
+export const sakeTastingTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kyotoSakeTastingBreweryTour.title,
+    ctaLabel: "Check the Fushimi tasting →",
+    url: kyotoSakeTastingBreweryTour.url,
+    why: "The guided version of Fushimi: someone to explain the labels and the styles, and a set tasting rather than three cups at a museum counter.",
+  },
+  {
+    label: tokyoOzawaBreweryTour.title,
+    ctaLabel: "Check the Tokyo brewery tour →",
+    url: tokyoOzawaBreweryTour.url,
+    why: "Tokyo's own brewery day, from Sawai Station in the Okutama valley — for a trip that does not reach Kyoto or Kobe.",
+  },
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "Fushimi is a short train ride south of Kyoto Station, so a bed there covers the brewery afternoon and Fushimi Inari on the same day.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Brewery reservations, tour meeting points and the train home after a tasting all run on your phone.",
+  },
+];

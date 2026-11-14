@@ -1277,6 +1277,9 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             finish in Tokyo, our{" "}
             <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train guide</Link> is
             the same leg eastbound, from the Kyoto Station platforms to where to get off in Tokyo.
+            To break Day 4 in Nagoya for a few hours on separate tickets, our{" "}
+            <Link href="/guides/attractions/nagoya-castle-tickets">Nagoya Castle tickets guide</Link> has the
+            castle&apos;s price, hours and the train on to Kyoto.
           </p>
           <p className={styles.bodyText}>
             <strong>What actually sells out, and what you can change.</strong> Shinkansen seats rarely

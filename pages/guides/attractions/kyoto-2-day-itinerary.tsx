@@ -1116,6 +1116,19 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            {/* Added 14 Nov 2026: Fushimi's sake breweries, next to the Day 1 shrine. */}
+            <Link href="/guides/attractions/japan-sake-tasting-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Sake Tasting Tour Japan 2026: Kyoto, Kobe &amp; Tokyo Breweries</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 5 Nov 2026: the one-day version, from Tokyo. */}
             <Link href="/guides/attractions/kyoto-day-trip-from-tokyo" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

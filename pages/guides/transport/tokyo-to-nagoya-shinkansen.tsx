@@ -784,7 +784,10 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
               stopovers page
             </a>{" "}
             and smart-ex.jp, 13 Nov 2026. Through fares to Shin-Osaka are in our{" "}
-            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen guide</Link>.
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen guide</Link>. For
+            what to do with the half day, our{" "}
+            <Link href="/guides/attractions/nagoya-castle-tickets">Nagoya Castle tickets guide</Link> has the
+            castle&apos;s price, hours and the closed keep.
           </p>
         </section>
 

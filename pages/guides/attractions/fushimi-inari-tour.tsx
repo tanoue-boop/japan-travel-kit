@@ -763,6 +763,15 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           tours={[fushimiInariSakeTour, kyotoEasternWalkingTour]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Fushimi&apos;s breweries are on the same side of the city: Gekkeikan&apos;s sake museum is 5 minutes
+            from Keihan Chushojima. Our{" "}
+            <Link href="/guides/attractions/japan-sake-tasting-tour">sake tasting tour guide</Link> has the
+            museum&apos;s fee and hours, the age rule and the guided tastings.
+          </p>
+        </section>
+
         <KlookTripPrep
           label="Book for the same day"
           heading="What Else to Book for Your Fushimi Inari Day"

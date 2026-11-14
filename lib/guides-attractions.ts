@@ -775,6 +775,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/japan-sake-tasting-tour",
+    badge: "Food",
+    title: "Sake Tasting Tour Japan 2026: Kyoto, Kobe & Tokyo Breweries",
+    desc: "Fushimi in Kyoto (Gekkeikan's museum, ¥600 with three tastings), Nada in Kobe (Hakutsuru's free museum) and Ome in Tokyo (Sawanoi's ¥700 tour) — brewery fees, booking rules, the 20+ age rule and when a guided tour is worth it.",
+    group: "experiences",
+    // Kyoto, Kobe and Tokyo on one page, so none of the single-city buckets.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/osaka-food-tour",
     badge: "Food",
     title: "Osaka Food Tour (2026): Which One to Book, Times and What You Eat",
@@ -940,6 +949,15 @@ export const attractionArticles: GuideArticle[] = [
     desc: "The operator's online rates start at ¥4,900~ for an adult and ¥3,700~ for a child aged 3 to 18 and vary by date, the park is built for ages 2 to 12, and it is 24 minutes and ¥360 from Nagoya Station on the Aonami Line.",
     group: "parks",
     // Minato ward, Nagoya — same reason as Ghibli Park above.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/nagoya-castle-tickets",
+    badge: "Tickets",
+    title: "Nagoya Castle Tickets 2026: Price, Hours & Can You Go Inside",
+    desc: "¥1,000 for adults from 1 Oct 2026 and free up to junior high, 9:00–16:30, 5 minutes from Nagoyajo Station — the keep is closed, the Hommaru Palace is open. Plus a half day in Nagoya and the trains on to Kyoto and Osaka.",
+    group: "tickets",
+    // Nagoya sits outside the three city hubs, same call as ghibli-park-tickets.
     city: "other",
   },
   {
