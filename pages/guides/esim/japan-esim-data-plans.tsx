@@ -962,6 +962,21 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Buying for several people?{" "}
+            <Link href="/guides/esim/japan-esim-family-group" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM for families
+            </Link>{" "}
+            prices four phones against one shared hotspot. The plan that tops most of these tables is covered in
+            the{" "}
+            <Link href="/guides/esim/simbye-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Simbye Japan eSIM review
+            </Link>
+            : networks, tethering and setup.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

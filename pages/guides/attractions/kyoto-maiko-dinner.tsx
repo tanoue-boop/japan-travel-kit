@@ -42,6 +42,8 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  */
 
 const OWN = checkedLabel("2026-11-08");
+/** Gion Corner's times and prices, re-read on ookinizaidan.com/gion_coner/payment/ for task jtk-20261114-C01. */
+const GION_CHECKED = checkedLabel("2026-11-14");
 
 const typeRows = [
   {
@@ -121,6 +123,10 @@ const gionCornerRows = [
 
 const faqItems = [
   {
+    q: "How much is a maiko dinner in Kyoto?",
+    a: `Maiko dinners are priced by date and party size on each listing, so open the listing for your evening rather than relying on a fixed figure. The only fixed official price is Gion Corner's one-hour show with Kyomai by a maiko and no meal: ¥5,500 for an adult (23 and over), ¥3,850 for ages 16 to 22 and ¥3,300 for ages 7 to 15, read on its own site ${GION_CHECKED}.`,
+  },
+  {
     q: "How can I have dinner with a maiko in Kyoto?",
     a: `Book a maiko dinner that is sold as a public tour, the same way you would book any other experience. On Klook these run from 1 hour 30 minutes (a seated lunch or dinner course at AN KYOTO) to 3 hours 30 minutes (a guided Gion walk followed by a Kyoto-cuisine dinner), and a private 7-hour version adds a kimono day before the meal. Pick the length, the meal and the meeting point, then check your date. Listings read ${OWN}.`,
   },
@@ -154,9 +160,11 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Kyoto Maiko Dinner (2026): Types, Gion Rules & Booking";
+// The H1 opens with the title's exact words ("How to Book" spelled out), so the result has one wording.
+const TITLE = "Kyoto Maiko Dinner (2026): Price, Booking & What to Expect";
+const H1 = "Kyoto Maiko Dinner (2026): Price, How to Book & What to Expect";
 const DESCRIPTION =
-  "Kyoto Maiko Dinner options compared: a dinner with maiko in Kyoto runs 1.5 to 3.5 hours. Geisha dinner Kyoto formats, Gion photo rules and cancellation.";
+  "Kyoto maiko dinner: 1.5 to 3.5 hours, priced by date, so book once your Kyoto dates are set. Only want the dance? Gion Corner is ¥5,500. Book on Klook.";
 
 const ROUTE = "/guides/attractions/kyoto-maiko-dinner";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -194,7 +202,7 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -249,7 +257,7 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kyoto Maiko Dinner (2026):<br />Which Format to Book, and the Gion Rules
+            {H1}
           </h1>
           <p className={styles.heroSubtitle}>
             Seven ways to eat or spend an evening with a maiko, compared on length, meal and meeting point,
@@ -283,12 +291,14 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
           <div className={styles.verdictBody}>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              To have a <strong>Kyoto maiko dinner</strong>, book a public maiko dinner online like any other
-              tour: on Klook they run from <strong>1 hour 30 minutes</strong> (a seated lunch or dinner course at
-              AN KYOTO) to <strong>3 hours 30 minutes</strong> (a guided Gion walk, then a Kyoto-cuisine dinner
-              with maiko games). If you only want to watch a maiko dance, <strong>Gion Corner</strong> in Gion
-              holds a show of about one hour daily at <strong>18:00 and 19:00</strong>, adult{" "}
-              <strong>¥5,500</strong> on its official site. Checked {OWN}.
+              A <strong>Kyoto maiko dinner</strong> lasts <strong>1 hour 30 minutes</strong> (a seated lunch or
+              dinner course at AN KYOTO) to <strong>3 hours 30 minutes</strong> (a guided Gion walk, then a
+              Kyoto-cuisine dinner), and each listing prices it by date, so open the listing for yours (listings
+              read {OWN}). Book as soon as your Kyoto dates are fixed, earlier for weekends, cherry blossom and
+              autumn leaves: AN KYOTO refunds in full only up to 7 days before. If you only want to watch a maiko
+              dance, <strong>Gion Corner</strong> holds a one-hour show at <strong>18:00 and 19:00</strong> (Tuesday
+              to Friday only from 1 December to 11 March) for <strong>¥5,500</strong> per adult on its official
+              site, read {GION_CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={kyotoMaikoLunchDinnerAnKyoto.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -451,13 +461,16 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
                     <tr key={row.item}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.item}</td>
                       <td style={{ fontSize: "0.86rem" }}>{row.value}</td>
-                      <td style={{ fontSize: "0.82rem" }}>ookinizaidan.com, {OWN}</td>
+                      <td style={{ fontSize: "0.82rem" }}>ookinizaidan.com, {GION_CHECKED}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-14 · https://www.ookinizaidan.com/gion_coner/payment/
+          </p>
         </section>
 
         {/* Maiko vs geiko */}

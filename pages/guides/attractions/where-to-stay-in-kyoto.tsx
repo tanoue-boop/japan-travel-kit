@@ -624,6 +624,16 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
 
         <EsimCtaBottom />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Staying in or near Gion puts the evening experiences within walking distance: the{" "}
+            <Link href="/guides/attractions/kyoto-maiko-dinner" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Kyoto maiko dinner
+            </Link>{" "}
+            guide compares the formats, how long they take and when to book.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

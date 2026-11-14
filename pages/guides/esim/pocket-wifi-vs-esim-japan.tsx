@@ -489,6 +489,20 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Weighing a physical SIM as the third option? The{" "}
+            <Link href="/guides/esim/japan-sim-card-vs-esim-2026" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan SIM card vs eSIM
+            </Link>{" "}
+            guide compares price, pickup and phone numbers. For one phone on a ten-day trip,{" "}
+            <Link href="/guides/esim/japan-esim-10-days" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM for 10 days
+            </Link>{" "}
+            sizes the data and names the cheapest plan that lasts.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

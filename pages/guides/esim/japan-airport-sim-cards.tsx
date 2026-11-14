@@ -577,6 +577,17 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
             <Link href="/guides/esim/japan-sim-card-vs-esim-2026" style={linkStyle}>SIM card vs eSIM guide</Link>{" "}
             goes through the choice.
           </p>
+          <p className={styles.bodyText}>
+            None of the data-only cards gives you a number: the{" "}
+            <Link href="/guides/esim/japan-phone-number-for-foreigners" style={linkStyle}>
+              Japan phone number for foreigners
+            </Link>{" "}
+            guide covers the voice eSIM sold at airport counters. Arriving to study? The{" "}
+            <Link href="/guides/esim/japan-sim-card-for-students" style={linkStyle}>
+              Japan SIM card for international students
+            </Link>{" "}
+            guide lists what you need for a monthly plan once your residence card has an address.
+          </p>
         </section>
 
         {/* FAQ */}

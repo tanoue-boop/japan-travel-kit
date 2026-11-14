@@ -65,10 +65,9 @@ const pricesCheckedAt = pricesCheckedLabel();
  */
 const SPECS_CHECKED = "29 Oct 2026";
 
-const TITLE = "Japan eSIM 10 Days: How Much Data Do You Need (2026)";
-const DESCRIPTION =
-  "Japan eSIM 10 Days: budget 5GB for maps and messaging, 10GB for normal use, 15GB if you tether. The plans that cover ten days on data and on validity.";
-const H1 = "Japan eSIM 10 Days: How Much Data Do You Need?";
+// Title and H1 are one string, same word order, so the result snippet has nothing else to pick.
+const TITLE = "Japan eSIM for 10 Days (2026): How Many GB & Cheapest Plans";
+const H1 = TITLE;
 const ROUTE = "/guides/esim/japan-esim-10-days";
 
 const TRIP_DAYS = 10;
@@ -118,6 +117,11 @@ function cheapestForTrip(gb: number): EsimPlanRow | null {
 const lightPick = cheapestForTrip(LIGHT_GB);
 const normalPick = cheapestForTrip(NORMAL_GB);
 const heavyPick = cheapestForTrip(HEAVY_GB);
+
+// Read from the daily feed, so the plan named in the snippet is always the one on sale.
+const DESCRIPTION = `Japan eSIM for 10 days: 5 GB light, 10 GB normal, 15 GB if you tether. Cheapest 10 GB that lasts: ${
+  normalPick ? `${normalPick.provider} ${normalPick.name} ${formatUsd(normalPick.priceUsd)}` : "see below"
+}, or Klook eSIM.`;
 
 const planName = (p: EsimPlanRow | null) => (p ? `${p.provider} ${p.name}` : "—");
 const planPrice = (p: EsimPlanRow | null | EsimPlan) => (p ? formatUsd(p.priceUsd) : "—");
@@ -298,6 +302,10 @@ const faqItems = [
     a: `Budget ${LIGHT_GB} GB for ten days if your phone is doing maps, messaging and a few photo uploads, ${NORMAL_GB} GB once you add video calls and some streaming, and ${HEAVY_GB} GB if you tether a laptop or watch video on trains. ${NORMAL_GB} GB is the figure to buy on if you are not sure, and it is what the cheapest ten-day-capable plan on sale carries: ${planName(normalPick)} at ${planPrice(normalPick)} (prices checked ${pricesCheckedAt}). Those per-day figures are planning arithmetic rather than a provider claim, but they sit well inside what the providers treat as heavy use — Airalo's fair-use threshold is 3 GB in a day and Sakura Mobile's daily cap is 3 GB (checked ${SPECS_CHECKED}).`,
   },
   {
+    q: "What is the cheapest Japan eSIM for 10 days?",
+    a: `For ${NORMAL_GB} GB that lasts the whole trip, ${planName(normalPick)} at ${planPrice(normalPick)} is the cheapest plan on sale (prices checked ${pricesCheckedAt}). For light use, ${planName(lightPick)} at ${planPrice(lightPick)} covers ${LIGHT_GB} GB over ten days. Avoid 7-day plans: ${tooShort} plans hold ${NORMAL_GB} GB or more but expire before day 10.`,
+  },
+  {
     q: "Is unlimited eSIM worth it for 10 days?",
     a: `For most ten-day trips, no. ${cheapestUnlimitedRow ? `The cheapest unlimited plan that stays valid for the full ten days is ${getProvider(cheapestUnlimitedRow.id).name}'s ${cheapestUnlimitedRow.plan.name} at ${formatUsd(cheapestUnlimitedRow.plan.priceUsd)}` : "The cheapest unlimited plan that lasts ten days"} — ${unlimitedPremium} more than ${planName(normalPick)} at ${planPrice(normalPick)}, which carries a gigabyte a day (checked ${pricesCheckedAt}). None of the unlimited plans is unmetered at full speed either: Simbye gives 2 GB a day at full speed and then 1 Mbps, Airalo runs full speed to 3 GB a day then 1 Mbps until the 24-hour reset, eSIM Go's cheaper Unlimited Essential tier reduces speed after a daily high-speed allowance and its Premium Unlimited publishes 60 GB over 10 days before the reduction, Holafly caps shareable hotspot data at 1 GB a day, and Sakura Mobile's unlimited plan is unlimited on the device but allows a fixed hotspot total by plan length. Unlimited is worth it for three readers: anyone tethering a laptop all day, anyone streaming video daily, and anyone who would rather not think about it at all.`,
   },
@@ -396,7 +404,8 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              // The five questions searchers ask first; the rest stay on the page as plain text.
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -430,7 +439,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Prices checked {pricesCheckedAt}</p>
           <h1 className={styles.heroTitle}>
-            Japan eSIM 10 Days:<br />How Much Data Do You Need?
+            {H1}
           </h1>
           <p className={styles.heroSubtitle}>
             {LIGHT_GB}–{HEAVY_GB} GB depending on how you travel, and the cheapest plan on sale that
@@ -465,15 +474,14 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
         {/* The answer, first. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            Ten days in Japan needs <strong>{LIGHT_GB} GB</strong> if your phone is doing maps,
-            messaging and a few photo uploads, <strong>{NORMAL_GB} GB</strong> once you add video
-            calls and some streaming, and <strong>{HEAVY_GB} GB</strong> if you tether a laptop or
-            watch video on trains — so <strong>{NORMAL_GB} GB is the figure to buy on</strong> if you
-            are not sure, and it is what the cheapest ten-day-capable plan carries:{" "}
-            <strong>{planName(normalPick)} at {planPrice(normalPick)}</strong>. Those per-day figures
-            are planning arithmetic rather than a provider claim, but they sit well inside what the
-            providers treat as heavy use — Airalo&apos;s fair-use threshold is 3 GB in a day and
-            Sakura Mobile&apos;s daily cap is 3 GB.
+            A 10-day trip to Japan needs about <strong>{NORMAL_GB} GB</strong> of eSIM data:{" "}
+            {LIGHT_GB} GB for maps and messaging only, {NORMAL_GB} GB once you add video calls and
+            some streaming, {HEAVY_GB} GB if you tether a laptop. The cheapest plan with{" "}
+            {NORMAL_GB} GB that stays valid for all ten days is{" "}
+            <strong>{planName(normalPick)} at {planPrice(normalPick)}</strong> (prices checked{" "}
+            {pricesCheckedAt}). Those per-day figures are planning arithmetic rather than a provider
+            claim, and they sit well inside what the providers treat as heavy use — Airalo&apos;s
+            fair-use threshold is 3 GB in a day and Sakura Mobile&apos;s daily cap is 3 GB.
           </p>
           <p className={styles.bodyText}>
             <strong>Unlimited is only needed by three kinds of traveller:</strong> anyone tethering a

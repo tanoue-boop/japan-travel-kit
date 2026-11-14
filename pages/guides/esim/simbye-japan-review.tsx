@@ -55,10 +55,11 @@ const yesNo = (v?: boolean) => (v ? "Yes" : "No");
 const weekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 5)) ?? null;
 
-const TITLE = "Simbye Japan Review 2026: Prices, Networks and Discount Code";
+// Title and H1 are one string, so the result has no second wording to pick from.
+const TITLE = "Simbye Japan eSIM Review (2026): Prices, Network & Setup";
 const DESCRIPTION =
-  `Simbye's Japan eSIM: ${priceLabel(TEN_GB)} for ${TEN_GB?.name}, on ${provider.plans[0]?.networks?.length ?? 4} carriers with tethering. ` +
-  `Data only, no Japanese number. Plans, code and limits.`;
+  `Simbye Japan eSIM review: from ${priceLabel(ENTRY)} (${ENTRY?.name}), 10 GB ${priceLabel(TEN_GB)}, on docomo, au, SoftBank and Rakuten. ` +
+  `Install by QR before you fly. Data only, ${SIMBYE_DISCOUNT_PERCENT}% code.`;
 
 const pros = [
   "Lowest list price compared here on fixed Japan plans",
@@ -128,6 +129,10 @@ const faqItems = [
     a: `Yes. Tethering is marked true on every Japan plan in its feed, and its Japan page says hotspot use is "Allowed — for a laptop, tablet or a travel companion". Read ${SIMBYE_SPECS_CHECKED_AT}.`,
   },
   {
+    q: "How do I install a Simbye Japan eSIM, and when does the plan start?",
+    a: `After checkout Simbye emails an installation link or QR code; install it over Wi-Fi before you fly. "Your plan only starts counting when the eSIM first connects at your destination," according to its Japan page, so installing at home does not use up days. Read ${SIMBYE_SPECS_CHECKED_AT}.`,
+  },
+  {
     q: "Is Simbye's unlimited plan really unlimited in Japan?",
     a: `Not at full speed. The feed states "${FAIR_USE}". You stay connected past the threshold, and Simbye's own FAQ says high-resolution streaming will not work well at that speed.`,
   },
@@ -138,10 +143,6 @@ const faqItems = [
   {
     q: "What are Simbye's virtual phone numbers for?",
     a: `Receiving SMS and verification codes on a US (+1), UK (+44), Dutch (+31) or Australian (+61) number. Simbye says they are "made for receiving: outgoing calls and SMS are not possible", and that compatibility may vary by service. Incoming calls are a paid add-on on the UK, Dutch and Australian numbers. The discount code does not apply to them.`,
-  },
-  {
-    q: "When does a Simbye plan start counting?",
-    a: `"Your plan only starts counting when the eSIM first connects at your destination," according to its Japan page, so you can install at home before you fly. Read ${SIMBYE_SPECS_CHECKED_AT}.`,
   },
   {
     q: "Can you get a refund from Simbye?",
@@ -193,7 +194,7 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -242,7 +243,7 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Prices checked {pricesCheckedAt}</p>
           <h1 className={styles.heroTitle}>
-            Simbye Japan Review (2026):<br />Prices, Networks and Discount Code
+            {TITLE}
           </h1>
           <p className={styles.heroSubtitle}>
             The lowest list prices in this comparison for a Japan eSIM, what they buy, and what they do not.

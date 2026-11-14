@@ -46,10 +46,11 @@ const SAKURA_ENTRY_PLAN = plansFor("sakura")[0];
 const weekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 5)) ?? null;
 
-const TITLE = `Japan SIM Card vs eSIM 2026: eSIM From ${ESIM_FROM}`;
+// Title and H1 are the same string, so the result has one wording to show.
+const TITLE = "Japan SIM Card vs eSIM (2026): Which Is Cheaper & Easier?";
 const DESCRIPTION =
-  `eSIM wins unless you need a Japanese phone number or your phone predates 2018 — from ` +
-  `${ESIM_FROM} for ${ESIM_FROM_PLAN?.name}. Prices checked ${pricesCheckedAt}.`;
+  `Japan SIM card vs eSIM: eSIM from ${ESIM_FROM}, set up before you fly; a SIM is picked up in ` +
+  `Japan. Most travel plans are data only. Get Simbye or Klook eSIM.`;
 
 const comparisonRows = [
   { feature: "How you get it", esim: "QR code by email — install before you fly", physicalSim: "Collected or delivered inside Japan" },
@@ -168,7 +169,7 @@ const faqItems = [
     a: `For almost every visitor, yes. It is cheaper (from ${ESIM_FROM} for ${ESIM_FROM_PLAN?.name} against ${SAKURA_ENTRY} for the cheapest physical travel plan we link), it installs before you fly, and your home SIM stays in the phone. There are exactly two situations where cost is irrelevant and a card is the only option: you need a Japanese phone number, or your handset has no eSIM hardware. Prices checked ${pricesCheckedAt}.`,
   },
   {
-    q: "Which is cheaper for Japan, an eSIM or a SIM card?",
+    q: "Which budget plans are cheaper in Japan: eSIM or a physical SIM card?",
     a: `An eSIM, clearly, at the short end. The cheapest Japan eSIM is ${ESIM_FROM} for ${ESIM_FROM_PLAN?.name}; the cheapest physical travel plan with a confirmed price is ${SAKURA_ENTRY} from Sakura Mobile, and that buys ${SAKURA_ENTRY_PLAN?.name} rather than a week. The gap closes on a long stay, because Sakura Mobile sells a single plan up to 93 days while an eSIM month has to be re-bought and re-installed each time. No figure is quoted here for a generic "tourist SIM" — there is no publisher to check one against.`,
   },
   {
@@ -213,7 +214,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -273,7 +274,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan SIM Card vs eSIM (2026):<br />Which Should You Choose?
+            {TITLE}
           </h1>
           <p className={styles.heroSubtitle}>
             eSIM for almost everyone — unless you need a Japanese phone number,

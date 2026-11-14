@@ -447,6 +447,20 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Comparing on price alone? The{" "}
+            <Link href="/guides/esim/simbye-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Simbye Japan eSIM review
+            </Link>{" "}
+            covers the lowest list prices compared here, and{" "}
+            <Link href="/guides/esim/japan-esim-10-days" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM for 10 days
+            </Link>{" "}
+            shows which Airalo plan lasts a ten-day trip and how many GB it needs.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

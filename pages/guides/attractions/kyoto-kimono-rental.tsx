@@ -700,6 +700,16 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
 
         <EsimCtaBottom />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Want to see a maiko after a day in kimono? The{" "}
+            <Link href="/guides/attractions/kyoto-maiko-dinner" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Kyoto maiko dinner
+            </Link>{" "}
+            guide covers the price, how to book and what to expect, including the one-hour Gion Corner show.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

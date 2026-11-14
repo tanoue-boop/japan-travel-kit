@@ -847,6 +847,21 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Most trips do not need unlimited at all. A fortnight usually fits in 10 GB, and{" "}
+            <Link href="/guides/esim/japan-esim-2-weeks" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM for 2 weeks
+            </Link>{" "}
+            works out how many GB 14 days takes. Travelling as a family, one phone&apos;s hotspot can carry the
+            children&apos;s devices: see{" "}
+            <Link href="/guides/esim/japan-esim-family-group" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM for families
+            </Link>{" "}
+            for shared data against one eSIM each.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

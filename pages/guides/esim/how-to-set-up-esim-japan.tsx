@@ -844,6 +844,21 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            If your phone cannot take an eSIM, the{" "}
+            <Link href="/guides/esim/japan-sim-card-vs-esim-2026" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan SIM card vs eSIM
+            </Link>{" "}
+            guide covers the physical-card route. Setting up for a longer trip, check the validity before you
+            install:{" "}
+            <Link href="/guides/esim/japan-esim-2-weeks" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM for 2 weeks
+            </Link>{" "}
+            lists the plans that last all 14 days.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

@@ -44,11 +44,12 @@ const sakuraPick = pick("sakura");
 const tooShort = allEsimPlans.filter((p) => !p.unlimited && (p.gb ?? 0) >= TARGET_GB && p.days < TRIP_DAYS).length;
 const planLabel = (p?: EsimPlanRow) => (p ? `${p.name} — ${formatUsd(p.priceUsd)}` : "—");
 
-const TITLE = "Japan eSIM for 2 Weeks (2026): How Many GB for 14 Days?";
+// Title and H1 share one string so Google has no reason to swap in the badge row or the slug.
+const TITLE = "Japan eSIM 2 Weeks (2026): How Many GB for 14 Days & Prices";
 // The Simbye figure comes from the daily feed, so the description cannot outlive the plan it names.
-const DESC = `Japan eSIM for 2 weeks: about 4–9 GB for 14 days, so 10 GB covers most trips; daily video, go unlimited. ${
+const DESC = `Japan eSIM for 2 weeks: 14 days uses about 4–9 GB, so 10 GB (not unlimited) covers most trips. ${
   simbyePick ? `Simbye ${simbyePick.name} is ${formatUsd(simbyePick.priceUsd)}` : "See Simbye 10 GB plans"
-}, or Klook eSIM.`;
+}, or buy on Klook eSIM.`;
 
 const dataTable = [
   { usageType: "Light",             perDay: "~300MB", total: "~4.2GB"  },
@@ -70,8 +71,8 @@ const faqItems = [
     a: `${planLabel(bestValue)} from ${bestValue?.provider ?? "eSIM Go"} is the cheapest plan that carries ${TARGET_GB} GB past day 14 without expiring. Airalo's equivalent is ${planLabel(airaloPick)}, which costs more but adds 24/7 live chat. Check the validity, not just the allowance: ${tooShort} plans in the current catalogue have 10 GB or more but run out before a 14-day trip ends.`,
   },
   {
-    q: "Should I get unlimited data for 2 weeks in Japan?",
-    a: `Only if you genuinely use more than ${TARGET_GB} GB. An unlimited plan long enough for the trip runs ${unlimitedFromLabel("simbye", TRIP_DAYS)} on Simbye, ${unlimitedFromLabel("esimgo", TRIP_DAYS)} on eSIM Go or ${unlimitedFromLabel("holafly", TRIP_DAYS)} on Holafly, against ${planLabel(bestValue)} for a capped plan that covers most itineraries. Unlimited is for remote workers, constant streamers, and anyone sharing a hotspot all day.`,
+    q: "Is a 10 GB plan unlimited for 14 days in Japan, or do I need an unlimited eSIM?",
+    a: `A 10 GB plan is a fixed allowance, not unlimited: once the 10 GB is used, you top up or buy more data, even if the 30-day validity has not run out. An unlimited eSIM is only worth it if you genuinely use more than ${TARGET_GB} GB. An unlimited plan long enough for the trip runs ${unlimitedFromLabel("simbye", TRIP_DAYS)} on Simbye, ${unlimitedFromLabel("esimgo", TRIP_DAYS)} on eSIM Go or ${unlimitedFromLabel("holafly", TRIP_DAYS)} on Holafly, against ${planLabel(bestValue)} for a capped plan that covers most itineraries. Unlimited is for remote workers, constant streamers, and anyone sharing a hotspot all day.`,
   },
   {
     q: "Can I use Sakura Mobile as an eSIM for 2 weeks?",
@@ -165,7 +166,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Japan eSIM for 2 Weeks (2026):<br />How Many GB for 14 Days?
+            {TITLE}
           </h1>
           <p className={styles.heroSubtitle}>
             Fourteen days in Japan takes about 4–9 GB, so a 10 GB plan covers most trips; daily video

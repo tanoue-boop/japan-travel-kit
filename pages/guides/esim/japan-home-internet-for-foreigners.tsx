@@ -727,6 +727,20 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The home line is usually the second contract after the phone. Students should start with the{" "}
+            <Link href="/guides/esim/japan-sim-card-for-students" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan SIM card for international students
+            </Link>{" "}
+            guide, and anyone who needs a 070, 080 or 090 number for a lease or bank with the{" "}
+            <Link href="/guides/esim/japan-phone-number-for-foreigners" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan phone number for foreigners
+            </Link>{" "}
+            guide.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

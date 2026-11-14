@@ -547,6 +547,10 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             <Link href="/ko/guides/esim/best-esim-japan">일본 이심 추천</Link>에서 eSIM 6곳의 가격과 통신사를
             비교해 고를 수 있습니다.
           </p>
+          <p className={styles.bodyText}>
+            겨울에 도쿄를 들른다면 여행 전체 동선도 함께 정하세요. 홋카이도와 스키, 일루미네이션까지 넣은 전체 코스는{" "}
+            <Link href="/ko/guides/attractions/japan-winter-itinerary">일본 겨울 여행 일정</Link>에서 12일 기준으로 정리했습니다.
+          </p>
         </section>
 
         <EsimCtaBottom />

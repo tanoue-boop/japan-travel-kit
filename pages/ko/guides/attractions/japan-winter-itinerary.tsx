@@ -805,6 +805,10 @@ const hokkaidoRows = [
 
 const faqItems = [
   {
+    q: "일본 겨울 여행 일정은 며칠이 좋나요?",
+    a: "이 페이지 경로로 최소 10일, 서두르지 않으려면 12일, 호쿠리쿠 쪽과 홋카이도를 모두 원하면 14일입니다. 겨울은 짧은 여행에 특히 불리합니다. 낮 시간이 짧아 같은 하루가 5월보다 적게 담기고, 날씨 위험이 실제라 여유 없는 계획은 눈으로 막힌 날을 옮길 곳이 없습니다. 일주일뿐이라면 도쿄가 아니라 다카야마와 가나자와 구간을 빼고 도쿄, 교토, 오사카 일주일에 저녁 일루미네이션을 더하세요. 10일이라면 10일 일정이 같은 구간이고 겨울 계획을 넉넉히 담습니다.",
+  },
+  {
     q: "일본은 겨울에 가볼 만한가요?",
     a: `네, 다른 계절에는 없는 세 가지 이유가 있습니다. 교토 대부분과 나라 공원처럼 현장 입장인 곳의 인파가 새해 주간과 매화 사이에 가장 적습니다. 태평양 쪽 공기가 건조하고 맑아 도쿄 전망대에서 후지산이 안정적으로 보이는 유일한 시기입니다. 또 여름에는 부차적인 동해 쪽이 주인공이 됩니다. 가나자와 겐로쿠엔과 시라카와고 마을은 눈 속에서 더 좋습니다. 대가는 일조 시간입니다. 12월에는 4시 반쯤 어두워져 관광 시간이 줄어들고, 그래서 이 일정은 도쿄의 모든 날에 저녁 볼거리를 넣었습니다.`,
   },
@@ -825,10 +829,6 @@ const faqItems = [
     a: `이 일정에서 두 가지는 반드시 그렇고, 나머지는 생각보다 덜합니다. 시라카와고 라이트업은 2027년 네 저녁(1월 11, 17, 24, 31일, 각 17:30~19:30)만 완전 사전 예약제로 열리며 협회 공지는 입장권을 당일 판매하지 않는다고 밝힙니다. 가나자와–시라카와고 고속버스는 지정석이고 호쿠리쿠 철도가 승차 전 예약을 요구하며 현장 승차 대안이 없습니다. 그 외에 호쿠리쿠 신칸센 가가야키는 자유석이 전혀 없고, 스키 렌털은 내 사이즈가 먼저 떨어지며, SHIBUYA SKY 일몰 시간대는 2주 전 날짜가 열리는 순간 나갑니다. 교토의 절, 겐로쿠엔, 도쿄 무료 일루미네이션, 눈축제 행사장 등 나머지는 거의 현장 입장입니다.`,
   },
   {
-    q: "겨울 일본 여행은 며칠이 필요한가요?",
-    a: "이 페이지 경로로 최소 10일, 서두르지 않으려면 12일, 호쿠리쿠 쪽과 홋카이도를 모두 원하면 14일입니다. 겨울은 짧은 여행에 특히 불리합니다. 낮 시간이 짧아 같은 하루가 5월보다 적게 담기고, 날씨 위험이 실제라 여유 없는 계획은 눈으로 막힌 날을 옮길 곳이 없습니다. 일주일뿐이라면 도쿄가 아니라 다카야마와 가나자와 구간을 빼고 도쿄, 교토, 오사카 일주일에 저녁 일루미네이션을 더하세요. 10일이라면 10일 일정이 같은 구간이고 겨울 계획을 넉넉히 담습니다.",
-  },
-  {
     q: "신칸센은 눈이 와도 달리나요?",
     a: `네, 2월 일본 여행에서 가장 안심되는 점 중 하나입니다. 조에쓰와 도호쿠 노선은 선진국에서 손꼽히는 폭설 지역을 일상적으로 달리며 살수 설비와 스노 셰드를 갖추고 있습니다. 실제로 생기는 것은 취소보다 지연이고 번져 나갑니다. 니가타나 기후의 눈이 몇 시간 떨어진 도카이도 노선을 잡아 둘 수 있습니다. 실용 규칙은 항공편이 있는 날에는 1시간 여유를 두고, 간사이나 신치토세의 마지막 편을 예약하지 말고, 휴대폰을 온라인으로 유지하는 것입니다. 지연과 대체 운행 공지는 모두 휴대폰으로 옵니다.`,
   },
@@ -846,9 +846,11 @@ const faqItems = [
   },
 ];
 
-const TITLE = "일본 겨울 여행 12일 일정(2027): 일자별 코스";
+// The H1 opens with the title's exact words and adds the trip length.
+const TITLE = "일본 겨울 여행 일정 2026~27: 홋카이도·스키·일루미네이션";
+const H1 = "일본 겨울 여행 일정 2026~27: 홋카이도·스키·일루미네이션, 12일 코스";
 const DESC =
-  "일본 겨울 여행 12일: 도쿄, 가나자와, 시라카와고, 다카야마, 교토, 오사카. 일자별 일정표, 겨울 행사 날짜, 예약할 것.";
+  "일본 겨울 여행 일정 결론: 12일이면 도쿄·가나자와·시라카와고·교토·오사카, 홋카이도 눈축제까지는 14일. 투어는 클룩에서 예약.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -859,7 +861,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -877,7 +879,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 업데이트 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-일본 겨울 여행:<br />12일간의 일자별 일정
+{H1}
 </h1>
           <p className={styles.heroSubtitle}>
 도쿄, 가나자와, 시라카와고, 다카야마, 교토, 오사카. 날짜가 정해진 겨울 행사 두 가지와 현장 판매가 없는 행사 하나까지.
@@ -894,6 +896,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 
       <div className={styles.content}>
                 <Disclosure />
+
+        {/* Answer first: the first body paragraph, ahead of the booking box. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+<strong>일본 겨울 여행 일정은 12일</strong>이 기본입니다. 도쿄 4박, 가나자와 2박, 다카야마 2박, 교토 2박, 오사카 1박이면 눈 덮인 시라카와고 마을과 도쿄의 겨울 일루미네이션을 모두 담을 수 있습니다. 홋카이도의 눈과 스키까지 원하면 <strong>제77회 삿포로 눈축제(2027년 2월 4~11일)</strong>에 맞춰 <strong>14일</strong>로 늘리고, 일주일뿐이라면 도쿄·교토·오사카에 저녁 일루미네이션을 더하세요. 행사 날짜는 {REREAD}에 확인했습니다.
+</p>
+        </section>
 
                 <WinterBookingTop
           heading={"일본 겨울 여행에서 무엇을 먼저 예약해야 할까요?"}

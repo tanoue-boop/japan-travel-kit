@@ -94,7 +94,7 @@ import { EsimCtaTop } from "../../../components/EsimCta";
 /** The date every figure and rule on this page was read off its own source. */
 const CHECKED = "30 Oct 2026";
 /** The two starting prices quoted in the hero, re-read on sakuramobile.jp/monthly/price/ for task jtk-20261110-C01. */
-const RECHECKED = "10 Nov 2026";
+const RECHECKED = "14 Nov 2026";
 
 /** Sakura Mobile's own affiliate link — the same one the review page uses. */
 const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
@@ -257,12 +257,16 @@ const faqItems = [
     a: `For a placement longer than three months, a resident monthly plan rather than a travel eSIM — and of the English-language options the one we link is Sakura Mobile. Its resident Voice + Data SIM or eSIM is published from ${VOICE_FROM}/month (¥3,278 tax included) for 5 GB, rising through 15 GB at ¥3,480, 30 GB at ¥3,980, 40 GB at ¥4,980, 60 GB at ¥6,980 and 80 GB at ¥8,980 to 100 GB at ¥10,980, with a Japanese 070, 080 or 090 number, a ${ACTIVATION} activation fee and a minimum use of one month. Data Only is ¥500 a month cheaper at every tier, from ${DATA_FROM}. Students get ${STUDENT_OFF} off the activation fee with the coupon code "studentdiscount", so ${ACTIVATION_AFTER} rather than ${ACTIVATION}. If your term is shorter than 90 days and you need nothing but data, a travel eSIM is the cheaper answer and our eSIM guide for students prices those instead. All Sakura Mobile figures read off sakuramobile.jp on ${CHECKED}.`,
   },
   {
-    q: "Can I get a SIM card in Japan without a bank account?",
-    a: `Yes, and this is the clause that makes the whole thing possible in your first fortnight rather than your second month. Sakura Mobile's own monthly Voice page states the plan comes "with no Japanese bank account required", and the resident plan guide puts it plainly: "You do not need a Japanese bank account or a local credit card." The dependency actually runs the other way round. Japan Post Bank's page for foreign nationals asks for your residence card to be presented, requests a student ID from students, and states that an account cannot be opened where your period of stay expires within three months of the application date — so the phone tends to come first and the bank follows it. Read on ${CHECKED}.`,
+    q: "What are Sakura Mobile's plans for students in Japan?",
+    a: `Two resident monthly plans, each in seven tiers from 5 GB to 100 GB: Voice + Data from ${VOICE_FROM}/month (¥3,278 tax incl.) with a 070, 080 or 090 number, and Data Only from ${DATA_FROM}/month (¥2,728 tax incl.). The 15 GB tier is ¥3,480 with a number or ¥2,980 without. Both carry a ${ACTIVATION} activation fee, ${STUDENT_OFF} less (${ACTIVATION_AFTER}) with the coupon code "studentdiscount", and run month to month with no lock-in. Sakura Mobile states that no Japanese bank account is needed and any international credit or debit card is accepted. Read on sakuramobile.jp on ${RECHECKED}.`,
   },
   {
-    q: "Do I need a residence card to get a SIM in Japan?",
+    q: "Do I need a residence card to get a SIM in Japan on a student visa?",
     a: `For a resident monthly plan, in practice yes — for a travel product, no. Sakura Mobile's application page accepts three documents: a Residence Card or a My Number Card, each valid and showing your current address, for an eSIM QR by email or a SIM by delivery; or a passport, where you collect at an airport counter or its Shinjuku office. Its resident plan guide adds the detail that catches people out — the card "must be registered with your current address", and the card handed over at immigration has a blank address field until the ward office prints one on it. A travel eSIM needs nothing at all: Sakura Mobile's own data-only travel eSIM states no ID verification is required, and no tourist eSIM compared here asks for a document either. Read on ${CHECKED}.`,
+  },
+  {
+    q: "Can I get a SIM card in Japan without a bank account?",
+    a: `Yes, and this is the clause that makes the whole thing possible in your first fortnight rather than your second month. Sakura Mobile's own monthly Voice page states the plan comes "with no Japanese bank account required", and the resident plan guide puts it plainly: "You do not need a Japanese bank account or a local credit card." The dependency actually runs the other way round. Japan Post Bank's page for foreign nationals asks for your residence card to be presented, requests a student ID from students, and states that an account cannot be opened where your period of stay expires within three months of the application date — so the phone tends to come first and the bank follows it. Read on ${CHECKED}.`,
   },
   {
     q: "How long does it take to get a SIM after arriving?",
@@ -294,9 +298,11 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Japan SIM Card for Students 2026: Monthly Plans From ¥2,980";
+// The H1 starts with the same words (it adds "International"), so the snippet has one wording to choose.
+const TITLE = "Japan SIM Card for Students (2026): Plans & What You Need";
+const H1 = "Japan SIM Card for International Students (2026): Plans & What You Need";
 const DESCRIPTION =
-  "Japan SIM card for students: data from ¥2,480/month, a number from ¥2,980 (Nov 2026), one-month minimum. No residence card yet? Use a travel eSIM first.";
+  "Japan SIM card for international students: a residence card with your address and any international card, no bank account. From ¥2,480/mo at Sakura Mobile.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim/japan-sim-card-for-students") },
@@ -324,7 +330,8 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              // The five questions matching what students search; the rest stay on the page.
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -394,7 +401,7 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan SIM Card for Students (2026):<br />Monthly Plans From {VOICE_FROM}, No Lock-In
+            {H1}
           </h1>
           <p className={styles.heroSubtitle}>
             A student SIM in Japan costs from {DATA_FROM} a month for data only, or {VOICE_FROM} with a Japanese

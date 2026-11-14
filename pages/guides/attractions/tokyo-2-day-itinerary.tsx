@@ -901,6 +901,16 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
 
         <EsimCtaBottom />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Budgeting the two days? The{" "}
+            <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Tokyo trip cost
+            </Link>{" "}
+            guide gives a daily budget per person at three levels, from the city government&apos;s own visitor survey.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

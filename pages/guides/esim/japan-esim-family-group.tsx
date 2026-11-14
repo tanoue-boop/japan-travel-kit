@@ -16,7 +16,7 @@ import {
   type EsimPlan,
   type EsimProviderId,
 } from "../../../lib/esim-prices";
-import { esimLink, HOLAFLY_ALT_LABEL, HOLAFLY_ALT_NOTE, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
+import { esimLink, HOLAFLY_ALT_LABEL, HOLAFLY_ALT_NOTE, SIMBYE_SPECS_CHECKED_AT, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 import { cheapestPerDay, ratesCheckedAt, rentalCost, specsCheckedAt } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -53,20 +53,26 @@ const COUPLE_USD = PER_PERSON_USD * 2;
 const weekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= TRIP_DAYS && (p.unlimited || (p.gb ?? 0) >= 5)) ?? null;
 
-const TITLE = "Japan eSIM for Family & Group Travel 2026: Cost Per Head";
+// Title and H1 are one string. The family-of-four figures come from the daily feed (Simbye).
+const TITLE = "Japan eSIM for Families (2026): Shared Data vs One eSIM Each";
+const FAMILY_EACH = cheapestAtLeastGb("simbye", 5);
+const FAMILY_SHARED = cheapestAtLeastGb("simbye", 20);
 const DESCRIPTION =
-  `An eSIM each is ${formatUsd(PER_PERSON_USD)} a head for ${PER_PERSON_PLAN?.name}; one shared ` +
-  `Pocket WiFi is about ${formatUsd(ROUTER_USD)} for ${TRIP_DAYS} days, unlimited, up to ` +
-  `${ROUTER.maxDevices} devices. Checked ${pricesCheckedAt}.`;
+  `Japan eSIM for families: 4 people, 10 days. An eSIM each is ${FAMILY_EACH ? formatUsd(FAMILY_EACH.priceUsd * 4) : "—"} ` +
+  `(Simbye 5 GB x4); one shared 20 GB hotspot is ${FAMILY_SHARED ? formatUsd(FAMILY_SHARED.priceUsd) : "—"}. Simbye or Klook eSIM.`;
 
 const faqItems = [
+  {
+    q: "How much does a Japan eSIM cost for a family of 4 for 10 days?",
+    a: `About 5 GB per phone covers ten days of maps, messaging and photos, so four Simbye ${FAMILY_EACH?.name ?? "5 GB"} eSIMs come to ${FAMILY_EACH ? formatUsd(FAMILY_EACH.priceUsd * 4) : "—"} in total. Sharing one Simbye ${FAMILY_SHARED?.name ?? "20 GB"} plan from a parent's phone hotspot is ${FAMILY_SHARED ? formatUsd(FAMILY_SHARED.priceUsd) : "—"}, since Simbye allows hotspot use for a travel companion — cheaper, but only while everyone stays near that phone. Prices checked ${pricesCheckedAt}.`,
+  },
   {
     q: "Is it cheaper for a family to buy an eSIM each or share a Pocket WiFi?",
     a: `One shared router, from two people up. A usable week of data is ${formatUsd(PER_PERSON_USD)} a head (${PER_PERSON_PLAN?.name} from eSIM Go), so a couple pays ${formatUsd(COUPLE_USD)} — already more than the ${formatUsd(ROUTER_USD)} a ${TRIP_DAYS}-day rental of the cheaper router costs at its advertised rate, and that router carries unlimited data for up to ${ROUTER.maxDevices} devices however many of you share it. eSIM prices checked ${pricesCheckedAt}; the rental rate ${ratesChecked}, and it is a floor rather than a quote.`,
   },
   {
-    q: "Can a family share one eSIM in Japan?",
-    a: `No, and this is the one hard constraint. An eSIM profile is tied to a single device: four people need four plans. The only way to share one connection is a Pocket WiFi router, which connects up to ${ROUTER.maxDevices} devices at once — or one person's phone acting as a hotspot, which is why the tethering terms matter. eSIM Go states tethering on every Japan plan at no extra cost; Holafly caps shareable data at 1 GB a day. Clauses read ${SPECS_CHECKED_AT}.`,
+    q: "Can a family share one eSIM's data in Japan with a hotspot?",
+    a: `The data, yes; the eSIM itself, no. An eSIM profile is tied to a single device, so four phones need four plans to each have their own connection. One connection can be shared two ways: one person's phone acting as a hotspot, or a Pocket WiFi router, which connects up to ${ROUTER.maxDevices} devices at once. That is why the tethering terms matter. Simbye's Japan page allows hotspot use "for a laptop, tablet or a travel companion" (read ${SIMBYE_SPECS_CHECKED_AT}); eSIM Go states tethering on every Japan plan at no extra cost; Holafly caps shareable data at 1 GB a day (read ${SPECS_CHECKED_AT}). A shared hotspot only works while everyone stays within range of the host phone.`,
   },
   {
     q: "Do children need their own SIM in Japan?",
@@ -109,7 +115,7 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -169,7 +175,7 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan eSIM for Family &amp; Group Travel (2026):<br />Cost Per Head
+            {TITLE}
           </h1>
           <p className={styles.heroSubtitle}>
             {formatUsd(PER_PERSON_USD)} a head for an eSIM each, or {formatUsd(ROUTER_USD)} once

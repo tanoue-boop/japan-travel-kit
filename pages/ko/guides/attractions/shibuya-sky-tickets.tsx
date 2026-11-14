@@ -820,6 +820,14 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            겨울 일몰 시간대를 노린다면 여행 전체 동선도 함께 정하세요.{" "}
+            <Link href="/ko/guides/attractions/japan-winter-itinerary">일본 겨울 여행 일정</Link>에서 도쿄 일루미네이션, 시라카와고,
+            홋카이도 눈축제를 넣은 12~14일 코스를 볼 수 있습니다.
+          </p>
+        </section>
+
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />

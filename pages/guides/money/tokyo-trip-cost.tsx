@@ -221,7 +221,7 @@ const savings = [
 
 const faqItems = [
   {
-    q: "How much does a trip to Tokyo cost?",
+    q: "How much does a trip to Tokyo cost per day?",
     a: `About ${yen(round100(MID_LOW))}–${yen(round100(MID_HIGH))} per person per day for a standard trip, before flights and shopping: the room (${yen(AVG_ROOM)}), food (${yen(AVG_FOOD)}) and transport (${yen(AVG_TRANSPORT)}) that foreign visitors spent per night in Tokyo in 2025, on the Tokyo Metropolitan Government's survey, plus one paid observation deck. A saving trip is about ${yen(round10(SAVE_DAY))} a day plus the room; a top-end one is from about ${yen(round100(TOP_DAY_LOW))}.`,
   },
   {
@@ -233,7 +233,7 @@ const faqItems = [
     a: `Apart from the room: about ${yen(round10(SAVE_DAY))} a day on a tight budget, and about ${yen(round10(AVG_FOOD + AVG_TRANSPORT + TOWER))}–${yen(round10(AVG_FOOD + AVG_TRANSPORT + SKY_LATE))} at the 2025 average for food and transport plus one paid deck. Shopping averaged a further ${yen(AVG_SHOPPING)} a night. Not all of it needs to be cash; our guide to how much yen to bring covers the cash part.`,
   },
   {
-    q: "Is Tokyo expensive for tourists in 2026?",
+    q: "How expensive is Tokyo for tourists in 2026?",
     a: `Less than its reputation on the daily lines. A subway ride is from ¥178, a chain bowl of chuka soba ¥420 and the Tokyo Metropolitan Government Building decks cost nothing. The room is the expensive line: it averaged ${yen(AVG_ROOM)} per person per night in 2025, ${Math.round((TMG_ROOM / TMG_TOTAL) * 100)}% of everything visitors spent in Tokyo, and the largest single category in the Tokyo Metropolitan Government's survey.`,
   },
   {
@@ -254,9 +254,11 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Trip to Tokyo Cost (2026): Per Day, 5-Day and 7-Day Totals";
+// Title and H1 are one string, so the result has nothing else to rewrite it from.
+const TITLE = "Tokyo Trip Cost (2026): Daily Budget for 3, 5 & 7 Days";
 const DESCRIPTION =
-  "Trip to Tokyo cost in 2026: about ¥19,500–¥21,400 a day per person. A Tokyo trip budget by category, 5 and 7-day totals, and how much is a trip to Tokyo.";
+  `Tokyo trip cost 2026: about ${yen(round100(MID_LOW))}–${yen(round100(MID_HIGH))} a day per person standard, ` +
+  `${yen(round10(SAVE_DAY))} plus the room on a budget, from ${yen(round100(TOP_DAY_LOW))} top end. Book Tokyo hotels on Klook.`;
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -284,7 +286,7 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -339,7 +341,7 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Trip to Tokyo Cost (2026):<br />Your Tokyo Trip Budget, per Day and per Trip
+            {TITLE}
           </h1>
           <p className={styles.heroSubtitle}>
             What visitors actually spent in Tokyo in 2025, on the city government&apos;s own survey, next to the
@@ -387,14 +389,16 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             </div>
             {/* Answer-first: the first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              A <strong>trip to Tokyo costs about {yen(round100(MID_LOW))}–{yen(round100(MID_HIGH))} per person per
-              day</strong> at a standard level, excluding flights and shopping: a {yen(AVG_ROOM)} room, {yen(AVG_FOOD)} of food
-              and {yen(AVG_TRANSPORT)} of transport (the 2025 per-night average for foreign visitors to Tokyo, on the
-              Tokyo Metropolitan Government&apos;s survey) plus one paid observation deck. On a tight budget it is about{" "}
-              <strong>{yen(round10(SAVE_DAY))} a day plus the room</strong>; at the top end, from about{" "}
-              {yen(round100(TOP_DAY_LOW))}. <strong>Five days</strong> at the standard level is about{" "}
-              {yen(round100(MID_LOW * 5))}–{yen(round100(MID_HIGH * 5))}; the 3, 5 and 7-day totals are in the table below.
-              Survey read {OWN}.
+              A <strong>Tokyo trip costs about {yen(round100(MID_LOW))}–{yen(round100(MID_HIGH))} per person per
+              day</strong> at a standard level, room included, excluding flights and shopping. On a tight budget it is
+              about <strong>{yen(round10(SAVE_DAY))} a day plus the room</strong>, and at the top end from about{" "}
+              <strong>{yen(round100(TOP_DAY_LOW))} a day</strong>, room included. At the standard level, 3 days is about{" "}
+              {yen(round100(MID_LOW * 3))}–{yen(round100(MID_HIGH * 3))}, 5 days about{" "}
+              {yen(round100(MID_LOW * 5))}–{yen(round100(MID_HIGH * 5))} and 7 days about{" "}
+              {yen(round100(MID_LOW * 7))}–{yen(round100(MID_HIGH * 7))}. The standard day is a {yen(AVG_ROOM)} room,{" "}
+              {yen(AVG_FOOD)} of food and {yen(AVG_TRANSPORT)} of transport (the 2025 per-night average for foreign
+              visitors to Tokyo, on the Tokyo Metropolitan Government&apos;s survey, read {OWN}) plus one paid
+              observation deck.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={whereToStayTokyoAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>

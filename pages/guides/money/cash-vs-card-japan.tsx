@@ -836,6 +836,16 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Splitting a Tokyo budget between cash and card starts with the total: the{" "}
+            <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Tokyo trip cost
+            </Link>{" "}
+            guide gives a daily budget per person for 3, 5 and 7 days.
+          </p>
+        </section>
+
         <EsimCtaBottom />
 
         {/* FAQ */}
