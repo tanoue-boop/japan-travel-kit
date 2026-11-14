@@ -17,14 +17,17 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
 import { GygCompareButton } from "../../../../components/GygCompare";
 import {
   fujiHakoneDayTour,
   shibuyaSkyDayTripPrep,
+  shibuyaSkySameDayCards,
   shibuyaSkySameDayPrep,
   shibuyaSkyTicketUrl,
   tokyoSightseeingBusTour,
   type KlookTour,
+  type KlookSameDayCard,
   type KlookTripPrepItem,
 } from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
@@ -323,6 +326,21 @@ const dayTripPrep: KlookTripPrepItem[] = [
   }),
 ];
 
+// P01 (14 Nov 2026): the same-day cards under the main CTA — Shibuya hotels (6.5%), the Shibuya
+// go-kart (5%) and the Shinjuku night food tour (6.5%). Labels reuse the blocks below; those
+// blocks drop the two items that moved up (see inTopCards).
+const sameDayCards: KlookSameDayCard[] = [
+  { ...withKlookLocale(shibuyaSkySameDayCards[0], LOCALE), label: dayTripPrep[0].label, ctaLabel: dayTripPrep[0].ctaLabel, kind: "住宿", why: "日落時段結束時天已經黑了；住在澀谷，回程走路就到。" },
+  withKlookLocale(shibuyaSkySameDayCards[1], LOCALE, {
+    kind: "體驗",
+    label: "澀谷街頭卡丁車（Street Kart 澀谷 Annex）",
+    ctaLabel: "查看澀谷卡丁車 →",
+    why: "約 1 小時在一般道路上駛過澀谷十字路口。台灣駕照需搭配日文譯本與護照。",
+  }),
+  { ...withKlookLocale(shibuyaSkySameDayCards[2], LOCALE), label: sameDayPrep[0].label, ctaLabel: sameDayPrep[0].ctaLabel, kind: "夜間導覽", why: "看完展望台後的夜晚：3 小時併團步行導覽，從澀谷搭山手線很快就到。" },
+];
+const notInTopCards = (item: KlookTripPrepItem) => !sameDayCards.some((card) => card.url === item.url);
+
 // Klook tours in the same city — the English page's two, on the zh-TW locale path.
 const tourPicks: KlookTour[] = [
   withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
@@ -447,6 +465,9 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
+        <KlookSameDayCards heading="澀谷 SKY 同一天還能預訂什麼？" cards={sameDayCards} />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -509,8 +530,8 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="同一天要訂的"
           heading="和澀谷 SKY 門票一起預訂的項目"
-          intro="參觀澀谷 SKY 大約只需要一小時。同一天通常還需要這五項：看完之後的夜晚、之前的白天、中間的移動、手機網路，以及從機場進市區。"
-          items={sameDayPrep}
+          intro="參觀澀谷 SKY 大約只需要一小時。同一天通常還需要這四項：之前的白天、中間的移動、手機網路，以及從機場進市區。"
+          items={sameDayPrep.filter(notInTopCards)}
         />
 
         {/* Q2 — hours */}
@@ -681,8 +702,8 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="當天其他時間"
           heading="澀谷 SKY 這一天還要訂什麼？"
-          intro="展望台本身大約一小時，所以不論你在上面選了哪個時段，前後都還有大半天或一整個晚上。以下是隨著時段而來的預訂——同一區的住宿、看完之後的去處，以及涵蓋其間移動的票券。"
-          items={dayTripPrep}
+          intro="展望台本身大約一小時，所以不論你在上面選了哪個時段，前後都還有大半天或一整個晚上。以下是隨著時段而來的預訂——看完之後的去處，以及涵蓋其間移動的票券。"
+          items={dayTripPrep.filter(notInTopCards)}
         />
 
         {/* Q5 — vs other decks */}

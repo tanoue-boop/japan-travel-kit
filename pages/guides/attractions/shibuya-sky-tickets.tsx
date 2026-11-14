@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { GygCompareButton } from "../../../components/GygCompare";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
@@ -9,6 +10,7 @@ import KlookLink from "../../../components/KlookLink";
 import {
   fujiHakoneDayTour,
   shibuyaSkyDayTripPrep,
+  shibuyaSkySameDayCards,
   shibuyaSkySameDayPrep,
   shibuyaSkyTicketUrl,
   tokyoSightseeingBusTour,
@@ -22,6 +24,12 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 // CTA link — Klook affiliate redirect, shared with the ticket price table.
 const SHIBUYA_SKY_URL = shibuyaSkyTicketUrl;
+
+// P01 (14 Nov 2026): the Shibuya hotel search and the Shinjuku night food tour moved up into the
+// same-day cards under the main CTA, so the two lower blocks drop them rather than repeat them.
+const inTopCards = (url: string) => shibuyaSkySameDayCards.some((c) => c.url === url);
+const sameDayPrep = shibuyaSkySameDayPrep.filter((item) => !inTopCards(item.url));
+const dayTripPrep = shibuyaSkyDayTripPrep.filter((item) => !inTopCards(item.url));
 
 // The headline figures below are owned by lib/attraction-prices.ts, which is also what
 // /guides/attractions/japan-attraction-ticket-prices reads — one set of prices, two pages.
@@ -484,6 +492,25 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
+        {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
+        <KlookSameDayCards
+          heading="Book the Rest of Your Shibuya Day"
+          cards={shibuyaSkySameDayCards}
+          footnote={
+            <>
+              Before you book the kart, the{" "}
+              <Link href="/guides/attractions/tokyo-go-kart" style={{ color: "var(--text)", fontWeight: 600 }}>
+                Tokyo go-kart guide
+              </Link>{" "}
+              sets out which licences the shops accept; for the bed, see{" "}
+              <Link href="/guides/attractions/where-to-stay-in-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
+                where to stay in Tokyo
+              </Link>
+              .
+            </>
+          }
+        />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -549,8 +576,8 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
         <KlookTripPrep
           label="Book for the same day"
           heading="What to Book Alongside Your Shibuya Sky Ticket"
-          intro="A Shibuya Sky slot is about an hour of one day. These five are what that same day usually needs as well — the evening after it, the daytime before it, the rides in between, data on your phone and the trip in from the airport."
-          items={shibuyaSkySameDayPrep}
+          intro="A Shibuya Sky slot is about an hour of one day. These four are what that same day usually needs as well — the daytime before it, the rides in between, data on your phone and the trip in from the airport."
+          items={sameDayPrep}
         />
 
         {/* Q2 — hours */}
@@ -738,8 +765,8 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
         <KlookTripPrep
           label="The rest of the day"
           heading="What Else Should You Book for Your Shibuya Sky Day?"
-          intro="The deck itself is about an hour, so whichever slot you picked above leaves most of a day or an evening open around it. These are the bookings that follow from that slot — a bed in the same district, somewhere to go afterwards, and the pass that covers the moving between them."
-          items={shibuyaSkyDayTripPrep}
+          intro="The deck itself is about an hour, so whichever slot you picked above leaves most of a day or an evening open around it. These are the bookings that follow from that slot — somewhere to go afterwards, and the pass that covers the moving between them."
+          items={dayTripPrep}
         />
 
         {/* Q5 — vs other decks */}

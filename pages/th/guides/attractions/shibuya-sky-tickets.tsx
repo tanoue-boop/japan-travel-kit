@@ -18,13 +18,16 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
 import { GygCompareButton } from "../../../../components/GygCompare";
 import {
   fujiHakoneDayTour,
   shibuyaSkyDayTripPrep,
+  shibuyaSkySameDayCards,
   shibuyaSkySameDayPrep,
   shibuyaSkyTicketUrl,
   tokyoSightseeingBusTour,
+  type KlookSameDayCard,
   type KlookTripPrepItem,
 } from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
@@ -330,6 +333,21 @@ const dayTripPrep: KlookTripPrepItem[] = shibuyaSkyDayTripPrep.map((item, i) =>
   withKlookLocale(item, LOCALE, dayTripCopy[i]),
 );
 
+// P01 (14 Nov 2026): the same-day cards under the main CTA — Shibuya hotels (6.5%), the Shibuya
+// go-kart (5%) and the Shinjuku night food tour (6.5%). Labels reuse the blocks below; those
+// blocks drop the two items that moved up (see inTopCards).
+const sameDayCards: KlookSameDayCard[] = [
+  { ...withKlookLocale(shibuyaSkySameDayCards[0], LOCALE), label: dayTripPrep[0].label, ctaLabel: dayTripPrep[0].ctaLabel, kind: "ที่พัก", why: "รอบพระอาทิตย์ตกจบหลังฟ้ามืด พักที่ชิบูยะแล้วเดินกลับที่พักได้" },
+  withKlookLocale(shibuyaSkySameDayCards[1], LOCALE, {
+    kind: "กิจกรรม",
+    label: "โกคาร์ทบนถนนชิบูยะ (Street Kart Shibuya Annex)",
+    ctaLabel: "ดูโกคาร์ทชิบูยะ →",
+    why: "ราว 1 ชั่วโมงบนถนนจริงผ่านทางข้ามชิบูยะ ต้องมีใบขับขี่ไทย + ใบขับขี่สากลตามอนุสัญญาเจนีวา 1949",
+  }),
+  { ...withKlookLocale(shibuyaSkySameDayCards[2], LOCALE), label: sameDayPrep[0].label, ctaLabel: sameDayPrep[0].ctaLabel, kind: "ทัวร์ยามค่ำ", why: "ช่วงค่ำหลังชมวิว: ทัวร์เดินแบบกลุ่ม 3 ชั่วโมง นั่งสาย Yamanote จากชิบูยะไม่ไกล" },
+];
+const notInTopCards = (item: KlookTripPrepItem) => !sameDayCards.some((card) => card.url === item.url);
+
 const tours = [
   withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
     title: "ทัวร์รถบัสชมเมืองโตเกียว 1 วัน",
@@ -452,6 +470,9 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
+        <KlookSameDayCards heading="วันเดียวกับ Shibuya Sky ควรจองอะไรอีก?" cards={sameDayCards} />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -515,8 +536,8 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="จองไว้สำหรับวันเดียวกัน"
           heading="สิ่งที่ควรจองคู่กับตั๋ว Shibuya Sky"
-          intro="รอบ Shibuya Sky ใช้เวลาราวหนึ่งชั่วโมงของวัน ห้าอย่างนี้คือสิ่งที่วันเดียวกันนั้นมักต้องใช้ด้วย — ช่วงค่ำหลังขึ้นจุดชมวิว ช่วงกลางวันก่อนหน้า การเดินทางระหว่างนั้น อินเทอร์เน็ตบนมือถือ และการเดินทางจากสนามบินเข้าเมือง"
-          items={sameDayPrep}
+          intro="รอบ Shibuya Sky ใช้เวลาราวหนึ่งชั่วโมงของวัน สี่อย่างนี้คือสิ่งที่วันเดียวกันนั้นมักต้องใช้ด้วย — ช่วงกลางวันก่อนหน้า การเดินทางระหว่างนั้น อินเทอร์เน็ตบนมือถือ และการเดินทางจากสนามบินเข้าเมือง"
+          items={sameDayPrep.filter(notInTopCards)}
         />
 
         {/* Q2 — hours */}
@@ -692,8 +713,8 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="ส่วนที่เหลือของวัน"
           heading="วันไป Shibuya Sky ควรจองอะไรอีก?"
-          intro="ตัวจุดชมวิวใช้เวลาราวหนึ่งชั่วโมง ไม่ว่าคุณเลือกรอบไหนข้างบน วันหรือค่ำคืนส่วนใหญ่รอบ ๆ ก็ยังว่าง นี่คือการจองที่ต่อเนื่องจากรอบนั้น — ที่พักในย่านเดียวกัน ที่ไปต่อหลังจากนั้น และพาสที่ครอบคลุมการเดินทางระหว่างกัน"
-          items={dayTripPrep}
+          intro="ตัวจุดชมวิวใช้เวลาราวหนึ่งชั่วโมง ไม่ว่าคุณเลือกรอบไหนข้างบน วันหรือค่ำคืนส่วนใหญ่รอบ ๆ ก็ยังว่าง นี่คือการจองที่ต่อเนื่องจากรอบนั้น — ที่ไปต่อหลังจากนั้น และพาสที่ครอบคลุมการเดินทางระหว่างกัน"
+          items={dayTripPrep.filter(notInTopCards)}
         />
 
         {/* Q5 — vs other decks */}

@@ -22,6 +22,7 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
 import { GygCompareButton } from "../../../../components/GygCompare";
 import { gygTokyoSkytree } from "../../../../lib/gyg-links";
 import {
@@ -30,6 +31,8 @@ import {
   fujiHakoneDayTour,
   tokyoSightseeingBusTour,
   skytreeTripPrep,
+  skytreeSameDayCards,
+  type KlookSameDayCard,
 } from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { PRICES } from "../../../../lib/attraction-prices";
@@ -230,6 +233,16 @@ const tripPrepItems = [
   }),
 ];
 
+// P01 (14 Nov 2026): the same-day cards under the main CTA, as on the English page — an Asakusa
+// guided walk (6.5%), an Asakusa kimono rental (6.5%) and the Tokyo Subway Ticket (5%). The pass
+// reuses the label below; the Around-the-tower block drops it so it is not listed twice.
+const sameDayCards: KlookSameDayCard[] = [
+  withKlookLocale(skytreeSameDayCards[0], "zh-tw", {"kind":"導覽","label":"淺草・淺草寺半日步行導覽","ctaLabel":"查看淺草步行導覽 →","why":"由英語導遊帶你走雷門、仲見世通與淺草寺；從晴空塔搭淺草線兩站就到。"}),
+  withKlookLocale(skytreeSameDayCards[1], "zh-tw", {"kind":"和服","label":"和服租借＋髮型設計（愛和服 淺草1號店）","ctaLabel":"查看淺草和服租借 →","why":"含髮型設計的 6 小時租借，店在離晴空塔兩站的淺草。"}),
+  { ...withKlookLocale(skytreeSameDayCards[2], "zh-tw"), label: tripPrepItems[3].label, ctaLabel: tripPrepItems[3].ctaLabel, kind: "票券", why: "押上站有半藏門線與都營淺草線，24／48／72 小時票就能往返晴空塔與淺草。" },
+];
+const aroundTowerItems = tripPrepItems.filter((item) => !sameDayCards.some((card) => card.url === item.url));
+
 const tourPicks = [
   withKlookLocale(skytreeAquariumCombo, LOCALE, {
     title: "東京晴空塔＋墨田水族館套票",
@@ -337,6 +350,9 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </div>
         </div>
 
+        {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
+        <KlookSameDayCards heading="晴空塔同一天還能預訂什麼？" cards={sameDayCards} />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -438,7 +454,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
           label="晴空塔周邊"
           heading="押上這一側的行程，還有哪些要先訂"
           intro="一個展望台時段大約一到兩小時，上面那張票是其中唯一需要指定時間的部分。以下是當天下午可一起安排、建議提前預訂的行程——這些行程都和晴空塔在隅田川同一側，也能和門票用同一個帳號預訂。"
-          items={tripPrepItems}
+          items={aroundTowerItems}
         />
 
         {/* At the door */}

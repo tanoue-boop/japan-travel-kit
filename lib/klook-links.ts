@@ -5423,6 +5423,77 @@ export const shibuyaSkySameDayPrep: KlookTripPrepItem[] = [
   },
 ];
 
+// ---------------------------------------------------------------------------
+// Same-day cards directly under the main deck CTA (task-jtk-20261114-P01).
+//
+// shibuya-sky-tickets is the page with the most Klook clicks (ad id 1528118, 144
+// of the 7-day clicks) but what sells there is SHIBUYA SKY at 2%. These three
+// small cards sit right under the main ticket button, in the order of what one
+// booking is usually worth: hotels and tours 6.5%, the go-kart 5%. Rendered by
+// components/KlookSameDayCards.tsx with its own placement id (`#same-day-cards`).
+//
+// Klook listings confirmed live as en-US pages through the www.klook.com search
+// index on 14 Nov 2026: 133849 (Street Kart, Shibuya Annex — "1hr" on the
+// listing), 102521 (Shinjuku food join-in 3 hr walking tour), 2125 (Aiwafuku
+// Asakusa No. 1 kimono rental) and 128022 (Asakusa & Senso-ji half-day walking
+// tour: Kaminarimon, Nakamise-dori and Senso-ji with an English-speaking guide,
+// departures 10:00 and 13:00). No prices, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/** Guided half-day walk of Kaminarimon, Nakamise-dori and Senso-ji (6.5%). */
+export const asakusaSensojiWalkingTour: KlookTour = {
+  title: "Asakusa & Senso-ji half-day walking tour",
+  desc: "A guided half-day walk through Kaminarimon, Nakamise-dori and Senso-ji with an English-speaking guide, departing at 10:00 or 13:00",
+  url: klookLink("https://www.klook.com/en-US/activity/128022-tokyo-city-asakusa-sensoji-walking-tour-with-local-guide/"),
+};
+
+/** One small card: the item plus a short tag naming what kind of booking it is. */
+export type KlookSameDayCard = KlookTripPrepItem & { kind: string };
+
+export const shibuyaSkySameDayCards: KlookSameDayCard[] = [
+  {
+    ...tripPrepProducts.hotelShibuya,
+    kind: "Hotel",
+    why: "A sunset slot ends after dark; a bed in Shibuya makes the trip back a walk.",
+  },
+  {
+    label: shibuyaAnnexGoKartTour.title,
+    kind: "Activity",
+    ctaLabel: "Check the Shibuya go-kart →",
+    url: shibuyaAnnexGoKartTour.url,
+    why: "About an hour on public roads through Shibuya Crossing. Needs your home licence plus a 1949 Geneva IDP.",
+  },
+  {
+    label: shinjukuNightFoodWalkingTour.title,
+    kind: "Night tour",
+    ctaLabel: "Check the Shinjuku night tour →",
+    url: shinjukuNightFoodWalkingTour.url,
+    why: "The evening after the deck: a three-hour join-in walk, a short Yamanote ride from Shibuya.",
+  },
+];
+
+export const skytreeSameDayCards: KlookSameDayCard[] = [
+  {
+    label: asakusaSensojiWalkingTour.title,
+    kind: "Tour",
+    ctaLabel: "Check the Asakusa walking tour →",
+    url: asakusaSensojiWalkingTour.url,
+    why: "Kaminarimon, Nakamise-dori and Senso-ji with a guide, two stops from the tower on the Asakusa Line.",
+  },
+  {
+    label: asakusaKimonoAiwafukuNo1.title,
+    kind: "Kimono",
+    ctaLabel: "Check the Asakusa kimono rental →",
+    url: asakusaKimonoAiwafukuNo1.url,
+    why: "A six-hour rental with hair styling included, at the Asakusa shop two stops from the tower.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    kind: "Pass",
+    why: "Oshiage is on the Hanzomon and Toei Asakusa lines, so a 24, 48 or 72-hour ticket covers the tower and Asakusa.",
+  },
+];
+
 /**
  * Same block for tokyo-observation-decks, added 6 Nov 2026 for the same reason: the
  * decks are the low bands (SHIBUYA SKY 2%, the others 2-5%). Reuses the products above

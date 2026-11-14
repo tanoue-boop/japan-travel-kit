@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { GygCompareButton } from "../../../components/GygCompare";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
@@ -14,7 +15,12 @@ import {
   fujiHakoneDayTour,
   tokyoSightseeingBusTour,
   skytreeTripPrep,
+  skytreeSameDayCards,
 } from "../../../lib/klook-links";
+
+// P01 (14 Nov 2026): the subway ticket moved up into the same-day cards under the main CTA,
+// so the Around-the-tower block drops it rather than list it twice.
+const aroundTowerItems = skytreeTripPrep.filter((item) => !skytreeSameDayCards.some((c) => c.url === item.url));
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
@@ -338,6 +344,25 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
+        <KlookSameDayCards
+          heading="Book the Asakusa Half of Your Skytree Day"
+          cards={skytreeSameDayCards}
+          footnote={
+            <>
+              Comparing kimono shops first? The{" "}
+              <Link href="/guides/attractions/asakusa-kimono-rental" style={{ color: "var(--text)", fontWeight: 600 }}>
+                Asakusa kimono rental guide
+              </Link>{" "}
+              sets the shops side by side, and the{" "}
+              <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--text)", fontWeight: 600 }}>
+                Tokyo Subway Ticket guide
+              </Link>{" "}
+              covers which pass length fits.
+            </>
+          }
+        />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -451,7 +476,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           label="Around the tower"
           heading="What Else the Oshiage Side of the Day Needs Booked"
           intro="A deck slot takes an hour or two, and the ticket above is the only part of it that has to be timed. These are the bookings the rest of that afternoon runs on — all on the same side of the river as the tower, and all on the same account as the ticket."
-          items={skytreeTripPrep}
+          items={aroundTowerItems}
         />
 
         {/* At the door */}

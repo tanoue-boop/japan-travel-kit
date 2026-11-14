@@ -18,13 +18,16 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
 import { GygCompareButton } from "../../../../components/GygCompare";
 import {
   fujiHakoneDayTour,
   shibuyaSkyDayTripPrep,
+  shibuyaSkySameDayCards,
   shibuyaSkySameDayPrep,
   shibuyaSkyTicketUrl,
   tokyoSightseeingBusTour,
+  type KlookSameDayCard,
   type KlookTripPrepItem,
 } from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
@@ -322,10 +325,21 @@ const dayTripPrepAll: KlookTripPrepItem[] = shibuyaSkyDayTripPrep.map((item, i) 
   withKlookLocale(item, LOCALE, dayTripCopy[i]),
 );
 
-// R02: the three highest-rate items (Shibuya hotels 6.5%, Tokyo Subway Ticket 5%, Klook eSIM 20%)
-// sit directly under the main Shibuya Sky CTA; the later blocks keep the rest so nothing repeats.
-const bookFirstPrep: KlookTripPrepItem[] = [dayTripPrepAll[0], sameDayPrepAll[2], sameDayPrepAll[3]];
-const sameDayPrep = sameDayPrepAll.filter((_, i) => i !== 2 && i !== 3);
+// P01 (14 Nov 2026, replaces the R02 list): the same-day cards under the main CTA, as on the
+// English page — Shibuya hotels (6.5%), the Shibuya go-kart (5%) and the Shinjuku night food
+// tour (6.5%). Labels reuse the blocks below; those blocks drop the two items that moved up.
+// The subway ticket and eSIM go back to the same-day list (the eSIM card stays below the CTA).
+const sameDayCards: KlookSameDayCard[] = [
+  { ...withKlookLocale(shibuyaSkySameDayCards[0], LOCALE), label: dayTripPrepAll[0].label, ctaLabel: dayTripPrepAll[0].ctaLabel, kind: "숙소", why: "일몰 시간대는 해가 진 뒤 끝납니다. 시부야에 묵으면 걸어서 돌아갈 수 있습니다." },
+  withKlookLocale(shibuyaSkySameDayCards[1], LOCALE, {
+    kind: "체험",
+    label: "시부야 스트리트 고카트(Street Kart 시부야 Annex)",
+    ctaLabel: "시부야 고카트 보기 →",
+    why: "약 1시간 동안 일반 도로로 시부야 스크램블 교차로를 지납니다. 한국 운전면허증＋1949년 제네바 협약 국제운전면허증이 필요합니다.",
+  }),
+  { ...withKlookLocale(shibuyaSkySameDayCards[2], LOCALE), label: sameDayPrepAll[0].label, ctaLabel: sameDayPrepAll[0].ctaLabel, kind: "야간 투어", why: "전망대 다음의 저녁: 시부야에서 야마노테선으로 금방인 3시간 그룹 워킹 투어." },
+];
+const sameDayPrep = sameDayPrepAll.filter((_, i) => i !== 0);
 const dayTripPrep = dayTripPrepAll.filter((_, i) => i !== 0 && i !== 4);
 
 const tours = [
@@ -443,13 +457,8 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
-        {/* Directly under the main CTA: the three bookings that pay best and are needed the same day */}
-        <KlookTripPrep
-          label="같은 날 예약"
-          heading="같은 날 예약해 두면 좋은 것"
-          intro="시부야 스카이 티켓을 잡았다면 같은 날 필요한 것은 세 가지입니다. 일몰 뒤 붐비는 전철을 피할 시부야 숙소, 전망대 왕복용 지하철 패스, 휴대폰 전자 티켓을 여는 데이터."
-          items={bookFirstPrep}
-        />
+        {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
+        <KlookSameDayCards heading="시부야 스카이와 같은 날 예약해 두면 좋은 것" cards={sameDayCards} />
 
         <BookingEsimCard />
 
@@ -523,7 +532,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="같은 날 예약할 것"
           heading="시부야 스카이 전후로 예약할 것"
-          intro="시부야 스카이 관람에는 약 한 시간이 걸립니다. 같은 날에는 이런 것도 함께 정해 두면 편합니다 — 전망대 다음의 저녁, 그 전의 낮, 그리고 공항에서 시내까지."
+          intro="시부야 스카이 관람에는 약 한 시간이 걸립니다. 같은 날에는 이런 것도 함께 정해 두면 편합니다 — 그 전의 낮, 이동, 휴대폰 데이터, 그리고 공항에서 시내까지."
           items={sameDayPrep}
         />
 

@@ -18,6 +18,7 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
 import { GygCompareButton } from "../../../../components/GygCompare";
 import { gygTokyoSkytree } from "../../../../lib/gyg-links";
 import {
@@ -26,6 +27,8 @@ import {
   fujiHakoneDayTour,
   tokyoSightseeingBusTour,
   skytreeTripPrep,
+  skytreeSameDayCards,
+  type KlookSameDayCard,
 } from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { PRICES } from "../../../../lib/attraction-prices";
@@ -75,6 +78,16 @@ const tripPrepItems = [
     why: "오시아게는 한조몬선과 도에이 아사쿠사선의 지하철역이라, 24/48/72시간 도쿄메트로·도에이 티켓이면 타워까지 가는 지하철도 이미 이용 범위에 포함되고, 그 뒤 센소지까지 두 정거장도 마찬가지입니다.",
   }),
 ];
+
+// P01 (14 Nov 2026): the same-day cards under the main CTA, as on the English page — an Asakusa
+// guided walk (6.5%), an Asakusa kimono rental (6.5%) and the Tokyo Subway Ticket (5%). The pass
+// reuses the label below; the Around-the-tower block drops it so it is not listed twice.
+const sameDayCards: KlookSameDayCard[] = [
+  withKlookLocale(skytreeSameDayCards[0], "ko", {"kind":"투어","label":"아사쿠사・센소지 반나절 워킹 투어","ctaLabel":"아사쿠사 워킹 투어 보기 →","why":"가미나리몬・나카미세도리・센소지를 영어 가이드와 걷습니다. 타워에서 아사쿠사선으로 두 정거장입니다."}),
+  withKlookLocale(skytreeSameDayCards[1], "ko", {"kind":"기모노","label":"기모노 대여＋헤어 스타일링(아이와후쿠 아사쿠사 1호점)","ctaLabel":"아사쿠사 기모노 대여 보기 →","why":"헤어 스타일링이 포함된 6시간 대여로, 가게는 타워에서 두 정거장인 아사쿠사에 있습니다."}),
+  { ...withKlookLocale(skytreeSameDayCards[2], "ko"), label: tripPrepItems[3].label, ctaLabel: tripPrepItems[3].ctaLabel, kind: "패스", why: "오시아게는 한조몬선・도에이 아사쿠사선 역이라 24/48/72시간 티켓으로 타워와 아사쿠사를 오갈 수 있습니다." },
+];
+const aroundTowerItems = tripPrepItems.filter((item) => !sameDayCards.some((card) => card.url === item.url));
 
 const tourPicks = [
   withKlookLocale(skytreeAquariumCombo, "ko", {
@@ -334,6 +347,9 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </div>
         </div>
 
+        {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
+        <KlookSameDayCards heading="스카이트리와 같은 날 예약해 두면 좋은 것" cards={sameDayCards} />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -436,7 +452,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
           label="타워 주변"
           heading="오시아게 쪽 하루에 함께 예약할 것들"
           intro="전망대 관람은 한두 시간이면 끝나고, 시간을 맞춰야 하는 것은 위의 입장권뿐입니다. 아래는 그날 남은 오후 일정에 필요한 예약으로, 모두 타워와 같은 쪽 강변에 있고 입장권과 같은 계정에서 예약할 수 있습니다."
-          items={tripPrepItems}
+          items={aroundTowerItems}
         />
 
         <section className={styles.bodySection}>

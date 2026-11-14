@@ -18,6 +18,7 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
 import { GygCompareButton } from "../../../../components/GygCompare";
 import { gygTokyoSkytree } from "../../../../lib/gyg-links";
 import {
@@ -26,6 +27,8 @@ import {
   fujiHakoneDayTour,
   tokyoSightseeingBusTour,
   skytreeTripPrep,
+  skytreeSameDayCards,
+  type KlookSameDayCard,
 } from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { PRICES } from "../../../../lib/attraction-prices";
@@ -73,6 +76,16 @@ const tripPrepItems = [
     why: "โอชิอาเกะเป็นสถานีรถไฟใต้ดินของสายฮันโซมงและสายโทเออาซากุสะ ตั๋ว Metro และ Toei แบบ 24, 48 หรือ 72 ชั่วโมงจึงครอบคลุมการเดินทางไปหอแล้ว รวมถึงสองสถานีไปวัดเซ็นโซจิหลังจากนั้นด้วย",
   }),
 ];
+
+// P01 (14 Nov 2026): the same-day cards under the main CTA, as on the English page — an Asakusa
+// guided walk (6.5%), an Asakusa kimono rental (6.5%) and the Tokyo Subway Ticket (5%). The pass
+// reuses the label below; the Around-the-tower block drops it so it is not listed twice.
+const sameDayCards: KlookSameDayCard[] = [
+  withKlookLocale(skytreeSameDayCards[0], "th", {"kind":"ทัวร์","label":"ทัวร์เดินเที่ยวอาซากุสะและวัดเซ็นโซจิครึ่งวัน","ctaLabel":"ดูทัวร์เดินอาซากุสะ →","why":"เดินชมคามินาริมง ถนนนากามิเสะ และวัดเซ็นโซจิกับไกด์ภาษาอังกฤษ ห่างจากหอสองสถานีบนสายอาซากุสะ"}),
+  withKlookLocale(skytreeSameDayCards[1], "th", {"kind":"กิโมโน","label":"เช่ากิโมโนพร้อมทำผม (Aiwafuku อาซากุสะ สาขา 1)","ctaLabel":"ดูร้านเช่ากิโมโนอาซากุสะ →","why":"เช่า 6 ชั่วโมงรวมทำผม ร้านอยู่ที่อาซากุสะ ห่างจากหอสองสถานี"}),
+  { ...withKlookLocale(skytreeSameDayCards[2], "th"), label: tripPrepItems[3].label, ctaLabel: tripPrepItems[3].ctaLabel, kind: "พาส", why: "โอชิอาเกะอยู่บนสายฮันโซมงและโทเออาซากุสะ ตั๋ว 24/48/72 ชั่วโมงจึงครอบคลุมทั้งหอและอาซากุสะ" },
+];
+const aroundTowerItems = tripPrepItems.filter((item) => !sameDayCards.some((card) => card.url === item.url));
 
 const tourPicks = [
   withKlookLocale(skytreeAquariumCombo, "th", {
@@ -332,6 +345,9 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </div>
         </div>
 
+        {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
+        <KlookSameDayCards heading="วันเดียวกับ Skytree ควรจองอะไรอีก?" cards={sameDayCards} />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -430,7 +446,7 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
           label="รอบ ๆ หอ"
           heading="สิ่งที่ควรจองไว้สำหรับวันฝั่งโอชิอาเกะ"
           intro="การขึ้นจุดชมวิวใช้เวลาหนึ่งถึงสองชั่วโมง และตั๋วข้างบนเป็นสิ่งเดียวที่ต้องระบุเวลา รายการด้านล่างคือสิ่งที่ควรจองสำหรับช่วงบ่ายที่เหลือของวันนั้น ทั้งหมดอยู่ฝั่งแม่น้ำเดียวกับหอ และจองได้ในบัญชีเดียวกับตั๋ว"
-          items={tripPrepItems}
+          items={aroundTowerItems}
         />
 
         <section className={styles.bodySection}>
