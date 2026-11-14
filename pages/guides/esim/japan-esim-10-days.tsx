@@ -484,7 +484,10 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
               ? `the cheapest unlimited plan still valid on day ten is ${getProvider(cheapestUnlimitedRow.id).name}'s ${cheapestUnlimitedRow.plan.name} at ${formatUsd(cheapestUnlimitedRow.plan.priceUsd)}`
               : "the cheapest unlimited plan that lasts ten days costs considerably more"}
             , against {planPrice(normalPick)} for a gigabyte a day — and none of the unlimited plans
-            is unmetered at full speed anyway.
+            is unmetered at full speed anyway. For the lowest price at every data size regardless of trip
+            length, see the{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link>{" "}
+            ranking.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Prices read off each provider&apos;s own site on {pricesCheckedAt} by the job that

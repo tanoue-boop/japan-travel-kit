@@ -300,7 +300,11 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             list of every plan sorted by price per GB, see{" "}
             <Link href="/guides/esim/japan-esim-data-plans" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan eSIM data plans compared
-            </Link>.
+            </Link>; for the lowest price at each data size whatever the trip length, the{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              cheapest eSIM for Japan
+            </Link>{" "}
+            ranking.
           </p>
         </section>
 

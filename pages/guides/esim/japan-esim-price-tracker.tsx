@@ -122,19 +122,21 @@ const ANSWER = `Lowest price per GB: ${perGbTop ? `${perGbTop.provider} ${perGbT
 } (checked ${d(sum.lastChecked)}).`;
 const CITE = `${SITE_NAME}, "Japan eSIM Price Tracker", ${PAGE_URL} (prices checked ${d(sum.firstChecked)}–${d(sum.lastChecked)}).`;
 
-const TITLE = `Japan eSIM Price Tracker (${monthLabel}): ${sum.providers} Providers per GB`;
-const H1 = "Japan eSIM Price Tracker: Every Provider's Price per GB";
-const DESCRIPTION = `${sum.plans} Japan eSIM plans from ${sum.providers} providers, read on official sites. Cheapest per GB: ${
+// Split from cheapest-esim-japan (R04, 14 Nov 2026): this page owns "price tracker" and the dated
+// price checks; "cheapest eSIM Japan" belongs to the cheapest page, so no "cheapest" here.
+const TITLE = `Japan eSIM Price Tracker (${monthLabel}): Daily Price Checks`;
+const H1 = "Japan eSIM Price Tracker: Daily Price Checks by Provider";
+const DESCRIPTION = `${sum.plans} Japan eSIM plans from ${sum.providers} providers, read on official sites with the date of each check. Lowest per GB: ${
   perGbTop ? `${perGbTop.provider} ${usd(perGbTop.perGbUsd)}` : "—"
-}. Free CSV, re-checked monthly.`;
+}. Free CSV.`;
 
 const faqItems = [
   {
-    q: "Which Japan eSIM is cheapest per GB?",
+    q: "Which Japan eSIM has the lowest price per GB?",
     a: `${perGbTop ? `${perGbTop.provider}'s ${perGbTop.plan} plan, at ${usd(perGbTop.perGbUsd)} per GB (${usd(perGbTop.priceUsd)} in total)` : "—"}, of the ${sum.plans} plans read on ${sum.providers} providers' official sites between ${d(sum.firstChecked)} and ${d(sum.lastChecked)}. The median of each provider's lowest price per GB is ${usd(sum.medianBestPerGbByProvider)}. Large allowances always win on this measure, so check the plan's validity covers your trip.`,
   },
   {
-    q: "What is the cheapest unlimited eSIM for Japan for a week?",
+    q: "Which 7-day unlimited Japan eSIM costs the least?",
     a: `${unl7Top.length ? `${names(unl7Top)}, at ${usd(unl7Top[0].priceUsd)} for 7 days` : "—"}. The median 7-day unlimited plan across the ${sum.unlimited7Count} sold is ${usd(sum.medianUnlimited7)}. "Unlimited" means different things: most providers slow you down after a daily or total high-speed allowance, and the note under each plan in the table says what that provider publishes.`,
   },
   {
@@ -245,7 +247,7 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             and the link for every row. Sort it, filter it, or download the CSV.
           </p>
           <div className={styles.heroBadges}>
-            {[`${sum.providers} providers priced`, `${sum.plans} plans`, "Free CSV download", "Re-checked monthly"].map((t) => (
+            {[`${sum.providers} providers priced`, `${sum.plans} plans`, "Free CSV download", "Re-checked daily or monthly"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -276,7 +278,9 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             against a median of {usd(sum.medianBestPerGbByProvider)} for each provider&apos;s best plan, and the cheapest 7-day
             unlimited plan is{" "}
             <strong>{unl7Top.length ? `${usd(unl7Top[0].priceUsd)} from ${names(unl7Top)}` : "—"}</strong> (median{" "}
-            {usd(sum.medianUnlimited7)} across {sum.unlimited7Count} plans).
+            {usd(sum.medianUnlimited7)} across {sum.unlimited7Count} plans). This page tracks each price and the date it was
+            checked; for the lowest price at each data size and a pick, see the{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link>.
           </p>
         </section>
 

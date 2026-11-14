@@ -773,7 +773,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             This page checks common advice against prices. For every unlimited plan by price and daily limit, see our{" "}
             <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>unlimited eSIM comparison</Link>; for
             the lowest price at each size, our{" "}
-            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM ranking</Link>; and for a
+            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM for Japan</Link> ranking; and for a
             group sharing one connection, our{" "}
             <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>pocket WiFi guide</Link>.
           </p>

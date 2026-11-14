@@ -513,7 +513,10 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             <strong>{planName(TEN_DAY_PICK)} at {planPrice(TEN_DAY_PICK)}</strong> for any trip of ten days or
             less, and <strong>{planName(MONTH_PICK)} at {planPrice(MONTH_PICK)}</strong> for anything up to a
             month. Both are a gigabyte a day or better, both are 30-day plans so validity is not the constraint,
-            and both are the cheapest thing on sale that covers the trip as of {checkedLabel}.
+            and both are the cheapest thing on sale that covers the trip as of {checkedLabel}. This page sizes
+            the plan to the trip; if you already know the size and only want the lowest price at 1, 5, 10 or 50 GB,
+            the <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link>{" "}
+            ranking sorts every plan by price and cost per GB.
           </p>
           <KlookEsimSlot why="Klook sells a Japan eSIM of its own in tiers from 500 MB to 50 GB plus an unlimited option, which covers the same sizing — worth a look if the tickets and transport for this trip are already in a Klook basket, since it goes on the same checkout. It is unranked here because its US$1.05 from-price names no plan." />
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>

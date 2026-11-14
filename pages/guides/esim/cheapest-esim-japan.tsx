@@ -24,6 +24,7 @@ import {
   type EsimPlanRow,
 } from "../../../lib/esim-prices";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 
 const AIRALO_URL = "https://airalo.pxf.io/c/7213504/1268485/15608";
 const SAKURA_URL = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
@@ -74,6 +75,37 @@ function cheapestTwo(gb: number): EsimPlanRow[] {
 }
 
 const SIZE_ROWS = [1, 3, 5, 10, 20, 50].map((gb) => ({ gb, plans: cheapestTwo(gb) }));
+
+/**
+ * "How much does an eSIM cost in Japan?": each provider's cheapest plan at a size, then the
+ * lowest and highest of those — the going rate across the five, not one provider's price list.
+ */
+type CostPoint = { provider: string; name: string; priceUsd: number };
+function spread(points: CostPoint[]) {
+  const sorted = [...points].sort((a, b) => a.priceUsd - b.priceUsd);
+  return { low: sorted[0] ?? null, high: sorted[sorted.length - 1] ?? null, count: sorted.length };
+}
+function fixedSpread(gb: number) {
+  return spread(
+    esimProviders
+      .map((prov) => fixedPlans.filter((row) => row.providerId === prov.id && (row.gb ?? 0) >= gb).sort((a, b) => a.priceUsd - b.priceUsd)[0])
+      .filter((row): row is EsimPlanRow => Boolean(row))
+  );
+}
+/** Cheapest unlimited plan per provider that lasts at least 7 days, cheapest first. */
+const UNLIMITED_ROWS = esimProviders
+  .map((prov) => ({ id: prov.id, provider: prov.name, plan: cheapestUnlimited(prov.id, 7) }))
+  .filter((row): row is { id: typeof row.id; provider: string; plan: EsimPlan } => row.plan !== null)
+  .sort((a, b) => a.plan.priceUsd - b.plan.priceUsd);
+const COST_ROWS = [
+  { label: "1 GB", ...fixedSpread(1) },
+  { label: "10 GB", ...fixedSpread(10) },
+  { label: "Unlimited, 7 days", ...spread(UNLIMITED_ROWS.map((row) => ({ provider: row.provider, name: row.plan.name, priceUsd: row.plan.priceUsd }))) },
+];
+const range = (row: (typeof COST_ROWS)[number]) =>
+  row.low && row.high ? `${formatUsd(row.low.priceUsd)}–${formatUsd(row.high.priceUsd)}` : "—";
+const COST_ANSWER = `An eSIM for Japan costs ${range(COST_ROWS[0])} for 1 GB, ${range(COST_ROWS[1])} for 10 GB and ${range(COST_ROWS[2])} for a 7-day unlimited plan, comparing each provider's cheapest plan at that size; the low end of all three is ${COST_ROWS.map((row) => row.low?.provider).filter((v, i, a) => v && a.indexOf(v) === i).join(" and ")} (list prices in USD, checked ${pricesCheckedAt}).`;
+const LAST_CHECKED_ISO = latestCheckedAt()?.slice(0, 10) ?? "";
 
 /** Lowest price per gigabyte across every fixed plan on sale, best first. */
 const perGbRows = [...fixedPlans].sort((a, b) => (pricePerGb(a) ?? 0) - (pricePerGb(b) ?? 0)).slice(0, 6);
@@ -237,34 +269,30 @@ const dealTips = [
   },
 ];
 
+// Five questions, each a search the page should answer (R04, 14 Nov 2026). Top-ups, roaming and
+// "how much data" were cut: the first two quoted figures with no source, the third is the data-plans page.
 const faqItems = [
-  {
-    q: "What is the cheapest 10 GB eSIM for Japan?",
-    a: `${rowLabel(cheapestTwo(10)[0])} at ${priceOf(cheapestTwo(10)[0] ?? null)}, ahead of ${rowLabel(cheapestTwo(10)[1])} at ${priceOf(cheapestTwo(10)[1] ?? null)}, as of ${pricesCheckedAt}. Both prices are list prices before any discount code, and both are data only.`,
-  },
-  {
-    q: "Is an eSIM cheaper than a physical SIM in Japan?",
-    a: `Yes, on published prices. Sakura Mobile's Travel SIM starts at ¥3,850 with tax and its Travel eSIM at ¥1,375 (read on sakuramobile.jp on 6 Nov 2026), and the cheapest eSIM compared here is ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "under $2"}. A physical SIM makes sense when your phone cannot take an eSIM; our airport SIM card guide lists where to buy one on arrival.`,
-  },
   {
     q: "What is the cheapest eSIM for Japan?",
     a: `As of ${pricesCheckedAt}, ${cheapestOverall ? `${cheapestOverall.provider} is the cheapest Japan eSIM compared here, at ${priceOf(cheapestOverall)} for ${cheapestOverall.name}` : "Simbye is usually the cheapest Japan eSIM"}. eSIM Go starts at ${p(esimgoCheapest)} and Airalo at ${p(airaloCheapest)}. All three are data-only eSIMs installed from a QR code or link. Prices on this page are re-checked every day.`,
   },
   {
-    q: "Is a cheap eSIM reliable in Japan?",
-    a: "Yes. Cheap eSIMs like Simbye (NTT docomo, KDDI/au, SoftBank and Rakuten Mobile in its feed), eSIM Go (Docomo among its networks) and Airalo (SoftBank as the primary network on its Japan page, checked 1 November 2026) run on the same national networks used by expensive plans. Network quality in Japan is world-class regardless of which reseller you buy from — you're paying less for distribution, not for a worse connection.",
+    q: "How much does an eSIM cost in Japan?",
+    a: `${COST_ANSWER} Validity is part of the price, so check the plan lasts your whole trip before you buy the lowest figure.`,
   },
   {
-    q: "How much data do I need for 1 week in Japan?",
-    a: "For typical tourist use — Google Maps, messaging apps, light social media — 1 GB is usually enough for a week. If you plan to stream video, use a hotspot, or navigate heavily, go for 3–5 GB. Heavy users (constant streaming, working remotely) should consider an unlimited plan like Holafly.",
+    q: "What is the cheapest 10 GB eSIM for Japan?",
+    a: `${rowLabel(cheapestTwo(10)[0])} at ${priceOf(cheapestTwo(10)[0] ?? null)}, ahead of ${rowLabel(cheapestTwo(10)[1])} at ${priceOf(cheapestTwo(10)[1] ?? null)}, as of ${pricesCheckedAt}. Both prices are list prices before any discount code, and both are data only.`,
   },
   {
-    q: "Can I top up a cheap eSIM in Japan?",
-    a: "Yes, with Airalo. You can purchase an additional plan from the Airalo app while in Japan and it tops up your existing profile without scanning a new QR code. eSIM Go also allows additional data purchases, though the process varies. Holafly's unlimited plan means you'll never need a top-up.",
+    q: "What is the cheapest unlimited eSIM for Japan?",
+    a: UNLIMITED_ROWS.length
+      ? `${UNLIMITED_ROWS[0].provider} ${UNLIMITED_ROWS[0].plan.name} at ${formatUsd(UNLIMITED_ROWS[0].plan.priceUsd)} is the cheapest unlimited plan of at least 7 days compared here (checked ${pricesCheckedAt})${UNLIMITED_ROWS[1] ? `, ahead of ${UNLIMITED_ROWS[1].provider} at ${formatUsd(UNLIMITED_ROWS[1].plan.priceUsd)}` : ""}. Unlimited plans are not all full speed: Simbye's drop to 1 Mbps after 2 GB a day.`
+      : "See the unlimited table on this page for the current prices.",
   },
   {
-    q: "Is eSIM cheaper than roaming in Japan?",
-    a: `Almost always, yes. Most international roaming plans charge $10–15 per day. Simbye starts at ${p(simbyeCheapest)} — less than a single day of roaming. Even Holafly's unlimited plan at ${p(holaflyCheapest)} works out far cheaper than roaming charges for the same period.`,
+    q: "Is an eSIM cheaper than a physical SIM in Japan?",
+    a: `Yes, on published prices. Sakura Mobile's Travel SIM starts at ¥3,850 with tax and its Travel eSIM at ¥1,375 (read on sakuramobile.jp on 6 Nov 2026), and the cheapest eSIM compared here is ${cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "under $2"}. A physical SIM makes sense when your phone cannot take an eSIM; our airport SIM card guide lists where to buy one on arrival.`,
   },
 ];
 
@@ -273,9 +301,11 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/es
 // Owns "cheapest eSIM Japan": the subject is price, sorted by size and per GB. "Best" belongs
 // to best-esim-japan (a pick per trip) and the Reddit angle to best-esim-japan-reddit.
 const FROM = cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99";
-const TITLE = `Cheapest eSIM for Japan 2026: From ${FROM}, Ranked by Price`;
-const H1 = "Cheapest eSIM for Japan 2026: Lowest Price at Every Data Size";
-const DESCRIPTION = `The cheapest confirmed Japan eSIM plan is ${FROM}, checked daily. Lowest price at 1, 3, 5, 10, 20 and 50 GB, plus price per GB by trip length.`;
+// R04 (14 Nov 2026): exact phrase first, then the price and "cost per GB" for "cost of eSIM in Japan".
+const TITLE = `Cheapest eSIM for Japan (2026): ${FROM} Plans & Cost per GB`;
+const H1 = "Cheapest eSIM for Japan (2026): Lowest Price and Cost per GB";
+const TEN_GB = cheapestTwo(10)[0];
+const DESCRIPTION = `Cheapest eSIM for Japan: ${FROM} for 1 GB${TEN_GB ? `, ${formatUsd(TEN_GB.priceUsd)} for 10 GB` : ""}, checked daily. Cheap Japan eSIM picks and the cost of eSIM in Japan per GB, by size.`;
 
 export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -376,7 +406,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Cheapest eSIM for Japan 2026:<br />Lowest Price at Every Data Size
+            Cheapest eSIM for Japan (2026):<br />Lowest Price and Cost per GB
           </h1>
           <p className={styles.heroSubtitle}>
             Which Japan eSIM is cheapest at 1, 3, 5, 10, 20 and 50 GB, what each costs per gigabyte, and the cheapest plan for your trip length.
@@ -408,9 +438,12 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             The <strong>cheapest eSIM for Japan</strong> is{" "}
             {cheapestOverall ? <strong>{cheapestOverall.provider} {cheapestOverall.name} at {FROM}</strong> : "Simbye"}, and
             at the size most tourists need it is <strong>{rowLabel(cheapestTwo(10)[0])} at {priceOf(cheapestTwo(10)[0] ?? null)}</strong>{" "}
-            (list prices in USD, checked {pricesCheckedAt}). The lowest headline price is not always the lowest cost
-            per gigabyte, so both are below. Cheap here does not mean a weaker network: the
-            same Japanese carriers sit behind every plan. For picks by trip type rather than by price, see our{" "}
+            (list prices in USD, checked {pricesCheckedAt}). {COST_ANSWER} Cheap here does not mean a weaker
+            network: the same Japanese carriers sit behind every plan.
+          </p>
+          <p className={styles.bodyText}>
+            The lowest headline price is not always the lowest cost per gigabyte, so both are below. For picks by
+            trip type rather than by price, see our{" "}
             <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan</Link> comparison
             (network, unlimited, phone number and tethering side by side); for
             what travellers say, our{" "}
@@ -506,14 +539,64 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Each cell is the provider&apos;s cheapest plan with <em>at least</em> that much data, in USD, read from the provider&apos;s
-            official site on {pricesCheckedAt}. All plans are eSIM-only. Klook&apos;s listing shows
-            from US$1.05 (read {klookEsim.specsCheckedAt}) before you choose days and data and does not say
-            which plan that is, so its row has no per-plan prices, it is not ranked here, and no claim
-            is made about whether a given plan undercuts the five above.{" "}
+            official site on {pricesCheckedAt}. All plans are eSIM-only. Klook&apos;s listing shows only a
+            from-price before you choose days and data and does not say which plan that is, so its row has no
+            per-plan prices, it is not ranked here, and no claim is made about whether a given plan undercuts
+            the five above.{" "}
             <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>See every plan sorted by price per GB →</Link>{" "}
             All providers&apos; prices — the five here plus Ubigi, Nomad, Jetpac, aloSIM, Yesim, Maya Mobile, Mobal, Japan
             Wireless and eSIM.net — are in our{" "}
-            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>, updated monthly.
+            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>, with the date each price was checked.
+          </p>
+        </section>
+
+        {/* "cost of esim in japan": the going rate, not just the cheapest plan. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Cost</span>
+          <h2 className={styles.sectionTitle}>How Much Does an eSIM Cost in Japan?</h2>
+          <p className={styles.bodyText}>{COST_ANSWER}</p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["You need", "Cheapest", "Price range across providers", "Providers selling it"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {COST_ROWS.map((row) => (
+                    <tr key={row.label}>
+                      <td className={styles.tdProvider}>{row.label}</td>
+                      <td className={styles.tdPrice}>
+                        {row.low ? `${formatUsd(row.low.priceUsd)}` : "—"}
+                        {row.low && <span className={tools.tdNote}>{row.low.provider} {row.low.name}</span>}
+                      </td>
+                      <td className={styles.tdPrice}>
+                        {range(row)}
+                        {row.high && <span className={tools.tdNote}>dearest: {row.high.provider}</span>}
+                      </td>
+                      <td className={styles.tdNetwork}>{row.count} of {esimProviders.length}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED_ISO}.</strong> Each figure is that provider&apos;s cheapest plan with at least
+            that much data (fixed allowances; unlimited plans of 7 days or more), list price in USD before any discount
+            code. Official pages:{" "}
+            {esimProviders.map((prov, i) => (
+              <span key={prov.id}>
+                {i > 0 && " · "}
+                <a href={prov.sourceUrl} target="_blank" rel={prov.id === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"} className={tools.inlineLink}>
+                  {prov.name}
+                </a>
+              </span>
+            ))}
+            .
           </p>
         </section>
 
@@ -545,6 +628,16 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED_ISO}.</strong> Fixed-allowance plans, list prices in USD read from each
+            provider&apos;s official site (e.g.{" "}
+            <a href={SIMBYE_URL} target="_blank" rel="sponsored noopener" className={tools.inlineLink}>simbye.com</a>).
+          </p>
+          {/* The top row is Simbye at every size checked so far: its button first (25%), then Klook eSIM (20%). */}
+          <a href={SIMBYE_URL} className={styles.pickCta} target="_blank" rel="sponsored noopener" style={{ marginTop: "0.5rem" }}>
+            Get Simbye Japan eSIM{simbyeCheapest ? ` from ${formatUsd(simbyeCheapest.priceUsd)}` : ""} →
+          </a>
+          <BookingEsimCard lead="Buying the cheapest plan? Two ways to check out" />
           <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>Which Japan eSIM Is Cheapest per GB?</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -573,6 +666,61 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             Fixed-allowance plans only, read from each provider&apos;s official site on {pricesCheckedAt}. Unlimited
             plans and Sakura Mobile&apos;s 3 GB/day plans are left out because a daily cap has no comparable price per GB.
             A plan&apos;s validity is part of its price: check it covers your whole trip before you buy the lowest figure.
+          </p>
+        </section>
+
+        {/* Unlimited, priced: the cheapest-page answer to "cheapest unlimited esim japan". */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Unlimited</span>
+          <h2 className={styles.sectionTitle}>What Is the Cheapest Unlimited eSIM for Japan?</h2>
+          <p className={styles.bodyText}>
+            {UNLIMITED_ROWS.length ? (
+              <>
+                <strong>
+                  {UNLIMITED_ROWS[0].provider} {UNLIMITED_ROWS[0].plan.name} at {formatUsd(UNLIMITED_ROWS[0].plan.priceUsd)}
+                </strong>{" "}
+                is the cheapest unlimited Japan eSIM of at least 7 days compared here (checked {pricesCheckedAt}). The cheap
+                end is not full speed all day — Simbye&apos;s unlimited plans drop to 1 Mbps after 2 GB a day — so the
+                note under each plan matters more than the price.
+              </>
+            ) : (
+              "No unlimited plan of 7 days or more was on sale at the last check."
+            )}
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Provider", "Cheapest unlimited (7+ days)", "Price", "What the provider publishes", ""].map((h, i) => (
+                      <th key={`${h}-${i}`}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {UNLIMITED_ROWS.map((row) => (
+                    <tr key={row.id}>
+                      <td className={styles.tdProvider} style={{ fontWeight: 700 }}>{row.provider}</td>
+                      <td className={styles.tdNetwork}>{row.plan.name}</td>
+                      <td className={styles.tdPrice}>{formatUsd(row.plan.priceUsd)}</td>
+                      <td className={styles.tdNetwork}>{row.plan.note ?? "—"}</td>
+                      <td>
+                        {row.id === "holafly" ? (
+                          <ProviderCta providerId="airalo" label="Airalo instead →" />
+                        ) : (
+                          <ProviderCta providerId={row.id} label="Buy →" />
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED_ISO}.</strong> List prices in USD from each provider&apos;s official site.
+            {" "}{HOLAFLY_ALT_NOTE} For fair-use limits and tethering side by side, see the{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited eSIM comparison</Link>.
           </p>
         </section>
 
@@ -680,7 +828,13 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
                 }}>Unranked — price not verified</span>
               </h3>
             </div>
-            <p className={styles.bodyText}>{klookEsim.note}</p>
+            <p className={styles.bodyText}>
+              Klook sells a Japan eSIM of its own, rated 4.6 (50K+ reviews) with 2M+ booked, on SoftBank 5G and IIJ
+              (Docomo), with tethering allowed and unlimited plans at high speed up to 10 GB a day (listing read{" "}
+              {klookEsim.specsCheckedAt}). Its listing shows a from-price that names no plan, so it is not ranked on
+              price here. It is worth a look if your tickets or transport are already in a Klook basket: one checkout,
+              one account.
+            </p>
             <KlookLink
               href={klookEsim.url}
               className={styles.pickCta}
@@ -718,23 +872,19 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
         {/* Are Cheap eSIMs Reliable */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Network quality</span>
-          <h2 className={styles.sectionTitle}>Are Cheap eSIMs Reliable in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Is a Cheap eSIM Worse Than an Expensive One in Japan?</h2>
           <p className={styles.bodyText}>
-            Yes — and here&apos;s why. Japan&apos;s mobile infrastructure is among the best in the world.
-            Docomo and SoftBank — Docomo among eSIM Go&apos;s networks, SoftBank the primary network on
-            Airalo&apos;s Japan page (checked 1 November 2026) — consistently rank among the world&apos;s top 10 for 4G coverage and download speeds.
+            Not on the network: the cheapest plans here run on the same Japanese carriers as the dearest —
+            Simbye lists NTT docomo, KDDI/au, SoftBank and Rakuten Mobile, eSIM Go has Docomo among its networks,
+            and Airalo names SoftBank as the primary network on its Japan page (checked 1 November 2026). What the
+            extra money buys is support, a phone number or a looser speed cap.
           </p>
           <p className={styles.bodyText}>
-            When you buy a cheap eSIM for Japan, you&apos;re not buying a worse network — you&apos;re buying
-            the same Docomo or SoftBank signal at a lower price. The cost savings come from lower
-            distribution overhead (no physical SIM cards, no airport kiosks) and competitive
-            reseller pricing, not from degraded network access.
-          </p>
-          <p className={styles.bodyText}>
-            In practice, Simbye, eSIM Go and Airalo all provide the same download speeds and coverage as
-            plans that cost three times more. The main trade-off at lower price points is customer
-            support quality — eSIM Go offers email-only support, while Airalo has 24/7 live chat.
-            For most travellers who just need their eSIM to work, support rarely comes up.
+            The differences that do matter are on the plan, not the signal. eSIM Go answers by email only, while
+            Airalo has 24/7 live chat. Sakura Mobile costs more but adds English phone support and, on its SIM
+            plans, a Japanese number. On unlimited plans the fair-use rule decides how &ldquo;unlimited&rdquo; it is:
+            Simbye slows to 1 Mbps after 2 GB a day. If none of that matters for your trip, the cheapest plan that
+            covers your days and data is the one to buy.
           </p>
         </section>
 

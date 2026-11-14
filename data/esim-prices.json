@@ -2113,7 +2113,7 @@
         "carriers": null,
         "tethering": null,
         "phoneNumber": null,
-        "reason": "The Japan page loads its plan list with JavaScript; no plan prices were present in the page we could read on 11 Nov 2026."
+        "reason": "The Japan page loads its plan list with JavaScript; no plan prices were present in the page HTML as of 11 Nov 2026."
       },
       {
         "id": "iij",
