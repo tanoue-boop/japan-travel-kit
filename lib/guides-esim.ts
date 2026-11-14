@@ -197,8 +197,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/does-esim-work-in-japan",
     badge: "Guide",
-    title: "Does eSIM Work in Japan? (2026): Everything You Need to Know",
-    desc: "Yes — on Docomo, SoftBank or au/KDDI, with no SIM registration and no ID check. The real risk is your handset: three checks to make before you buy anything, plus eSIM against SIM, pocket WiFi and roaming.",
+    title: "Does eSIM Work in Japan? Yes — Networks, Bands & Phone Check",
+    desc: "Yes — travel eSIMs run on docomo, KDDI (au) and SoftBank. Each carrier's LTE and 5G bands, the iPhone, Pixel and Galaxy models that take an eSIM, and how to check your phone is unlocked.",
     group: "setup",
     city: "other",
   },

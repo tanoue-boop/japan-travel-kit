@@ -19,6 +19,9 @@ import { cheapestPerDay, ratesCheckedAt as wifiRatesCheckedAt } from "../../../l
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
+import SimbyeOffer from "../../../components/SimbyeOffer";
+import { SIMBYE_SPECS_CHECKED_AT } from "../../../lib/esim-specs";
 
 // Networks, prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => getProvider(id).affiliateUrl;
@@ -45,11 +48,81 @@ const FACTS_CHECKED = "21 Oct 2026";
 const HOLAFLY_ALT_LABEL = "Get Airalo unlimited eSIM →";
 const HOLAFLY_ALT_NOTE = "Holafly is not available through our links — Airalo is our recommended alternative.";
 
-const networkRows = [
-  { provider: "Airalo",        network: getProvider("airalo").network,  coverage: "Excellent in cities, good rural" },
-  { provider: "eSIM Go",       network: getProvider("esimgo").network,  coverage: "Excellent — broadest rural reach" },
-  { provider: "Holafly",       network: getProvider("holafly").network, coverage: "Excellent in cities, good rural" },
-  { provider: "Sakura Mobile", network: getProvider("sakura").network,  coverage: "Excellent — broadest rural reach" },
+/**
+ * The date the band lists, the phone lists and the unlock steps below were read off the
+ * carriers', Apple's, Google's and Samsung's own pages.
+ */
+const BANDS_CHECKED = "2026-11-14";
+
+/**
+ * Each carrier's domestic bands, as the carrier itself marks them on a handset's frequency
+ * sheet: docomo's spec page lists only docomo bands in its domestic table (and flags 8, 26
+ * and 41 as "not usable on docomo"); au shades "frequencies au provides"; SoftBank stars
+ * "frequency bands SoftBank provides". au's sheet shades n78 too but footnotes it as not
+ * usable with an au SIM, so it is left out.
+ */
+const bandRows = [
+  {
+    carrier: "NTT docomo",
+    lte: "1, 3, 19, 21, 28, 42",
+    nr: "n1, n28, n78, n79, n257",
+    source: "docomo spec page, Galaxy A54 5G SC-53D (info as of 30 Sep 2024)",
+    url: "https://www.docomo.ne.jp/support/product/sc53d/spec.html",
+  },
+  {
+    carrier: "KDDI (au)",
+    lte: "1, 3, 11, 18, 26, 28, 41, 42",
+    nr: "n3, n28, n41, n77, n257",
+    source: "au frequency sheet, Galaxy S24 Ultra SCG26 (Apr 2024)",
+    url: "https://www.au.com/content/dam/au-com/mobile/product/smartphone/galaxy_s24_ultra/pdf/galaxy_s24_ultra_syuuhasu.pdf",
+  },
+  {
+    carrier: "SoftBank",
+    lte: "1, 3, 8, 11, 28, 41, 42",
+    nr: "n3, n28, n77, n257",
+    source: "SoftBank frequency sheet, AQUOS R8 pro (May 2023)",
+    url: "https://www.softbank.jp/mobile/set/common/pdf/products/aquos-r8-pro/spectrum.pdf",
+  },
+];
+
+/** The eSIM phone lists as Apple, Google and Samsung publish them, plus the unlock check. */
+const deviceRows = [
+  {
+    maker: "Apple iPhone",
+    phones: "iPhone XS, iPhone XS Max, iPhone XR, or later",
+    watch:
+      "Bought in mainland China: only iPhone 18 Pro, 18 Pro Max, iPhone Duo, 17e and iPhone Air support eSIM. Hong Kong and Macao: certain models have two nano-SIM slots instead.",
+    unlock: "Settings → General → About: “No SIM restrictions” next to Carrier Lock means it is unlocked.",
+    source: "https://support.apple.com/en-us/118227",
+  },
+  {
+    maker: "Google Pixel",
+    phones: "Pixel 4 and later — all of them",
+    watch:
+      "Pixel 3a: not if bought with Verizon service or in Japan. Pixel 3: only some US and Canadian carriers' phones, and not if bought in Australia, Taiwan or Japan.",
+    unlock: "Ask the carrier that sold the phone to confirm it is unlocked.",
+    source: "https://support.google.com/pixelphone/answer/7086887?hl=en",
+  },
+  {
+    maker: "Samsung Galaxy",
+    phones: "Galaxy S20, S20+, S20 Ultra and every S series since (S21–S26); Galaxy Fold, Z Flip, Z Fold2 and every Z model since; S23 FE to S26 FE",
+    watch: "Galaxy A models take eSIM only in the regions Samsung names (for example A54: Europe, North America, Korea, Japan).",
+    unlock: "Ask the carrier that sold the phone to confirm it is unlocked.",
+    source: "https://www.samsung.com/uk/support/mobile-devices/galaxy-esim-and-supported-network-carriers/",
+  },
+];
+
+/**
+ * Travel eSIMs by the networks they name. Networks for the five feed providers come from
+ * data/esim-prices.json; Klook's from the listing (lib/klook-esim-facts.ts).
+ */
+const travelEsimNetworks = [
+  { provider: "Simbye", network: getProvider("simbye").network, checked: SIMBYE_SPECS_CHECKED_AT },
+  { provider: "Klook eSIM", network: "SoftBank 5G / IIJ (docomo)", checked: klookEsim.checkedAt },
+  { provider: "Airalo", network: getProvider("airalo").network, checked: pricesCheckedAt },
+  { provider: "eSIM Go", network: getProvider("esimgo").network, checked: pricesCheckedAt },
+  { provider: "Holafly", network: getProvider("holafly").network, checked: pricesCheckedAt },
+  { provider: "Sakura Mobile", network: getProvider("sakura").network, checked: pricesCheckedAt },
 ];
 
 /**
@@ -158,7 +231,32 @@ const whereItWorks = [
   },
 ];
 
+/** The five questions that go into FAQPage; they lead the on-page FAQ too. */
+const faqSchemaItems = [
+  {
+    q: "Is eSIM available in Japan?",
+    a: "Yes. Travel eSIMs for Japan are sold online to anyone and delivered as a QR code or app install, so you can buy one at home before you fly. They connect to NTT docomo, KDDI (au) or SoftBank. No ID check is needed for a data-only plan; only a plan with a Japanese phone number needs in-person ID verification after you land.",
+  },
+  {
+    q: "Do most travel eSIMs work on Japanese networks?",
+    a: `Yes. Every travel eSIM compared on this site names docomo or SoftBank on at least one of its Japan plans: Simbye lists ${getProvider("simbye").network}; Airalo ${getProvider("airalo").network}; eSIM Go ${getProvider("esimgo").network}; Holafly ${getProvider("holafly").network}; Sakura Mobile ${getProvider("sakura").network}; Klook eSIM SoftBank 5G / IIJ (docomo). You do not choose the network yourself.`,
+  },
+  {
+    q: "Do travel eSIMs work on Japan's LTE bands?",
+    a: "Yes, on any phone that supports LTE Bands 1 and 3: both are on docomo's, KDDI's and SoftBank's own band lists. docomo also uses Bands 19, 21, 28 and 42; KDDI 11, 18, 26, 28, 41 and 42; SoftBank 8, 11, 28, 41 and 42 (carrier frequency sheets, checked 14 Nov 2026).",
+  },
+  {
+    q: "Do I need an eSIM for Japan?",
+    a: "You need some way to get data, and an eSIM is the only option you can set up before you leave home. A physical SIM, a pocket WiFi router or your home carrier's roaming also work; roaming keeps your own number but AT&T's International Day Pass is $12 a day per line.",
+  },
+  {
+    q: "Which phones support eSIM in Japan?",
+    a: "iPhone XS, XS Max, XR or later (Apple); Pixel 4 and later (Google, with exceptions for Pixel 3 and 3a); Galaxy S20 and later and the Galaxy Fold and Z series (Samsung). The phone must also be carrier-unlocked: on an iPhone, Settings → General → About shows “No SIM restrictions” next to Carrier Lock.",
+  },
+];
+
 const faqItems = [
+  ...faqSchemaItems,
   {
     q: "Does eSIM work in rural Japan?",
     a: "Generally, yes. eSIM providers in Japan run on Docomo, SoftBank or au/KDDI — all three have strong nationwide coverage, including most rural and tourist areas. Docomo has the broadest reach, especially in mountainous regions. Very remote villages or deep mountains may have weak signal regardless of carrier.",
@@ -189,7 +287,7 @@ const faqItems = [
   },
   {
     q: "Can I keep my own number while using a Japan eSIM?",
-    a: "Yes, and this is the normal setup. Every iPhone from XS onwards and every Pixel from 3a onwards runs one physical SIM plus one eSIM at the same time, per Apple and Google's own support pages; iPhone 13 and later and Pixel 7 and later can run two eSIMs. Leave your home line as the voice line with data roaming switched off, and set the Japan eSIM as the data line. Your number still rings; no data goes through it, which is where the roaming bill comes from.",
+    a: "Yes, and this is the normal setup. Apple's travel eSIM page says an iPhone with a SIM tray can use a physical SIM and an eSIM together, and Apple and Google both state that iPhone 13 and later and Pixel 7 and later can run two eSIMs. Leave your home line as the voice line with data roaming switched off, and set the Japan eSIM as the data line. Your number still rings; no data goes through it, which is where the roaming bill comes from.",
   },
   {
     q: "Should I activate my eSIM before I leave or after I land?",
@@ -197,27 +295,28 @@ const faqItems = [
   },
 ];
 
+const TITLE = "Does eSIM Work in Japan? Yes — Networks, Bands & Phone Check";
+const DESCRIPTION =
+  "Does eSIM work in Japan? Yes: travel eSIMs run on docomo, au and SoftBank. Check your phone takes eSIM and is unlocked, then get Simbye or Klook eSIM.";
+
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/does-esim-work-in-japan") } });
 
 export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Does eSIM Work in Japan? (2026): The Complete Answer</title>
-        <meta
-          name="description"
-          content="Does eSIM work in Japan? Yes — on Docomo, SoftBank and au/KDDI, if your phone is eSIM-capable and unlocked. Buy before you fly, with no ID check."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/does-esim-work-in-japan" />
-        <meta property="og:title" content="Does eSIM Work in Japan? (2026): The Complete Answer" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/does-esim-work-in-japan" />
-        <meta property="og:description" content="Does eSIM work in Japan? Yes — on Docomo, SoftBank and au/KDDI, if your phone is eSIM-capable and carrier-unlocked. Is eSIM available in Japan to buy before you fly? Yes, with no ID check." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Does eSIM Work in Japan? (2026): The Complete Answer" />
-        <meta name="twitter:description" content="Does eSIM work in Japan? Yes — on Docomo, SoftBank and au/KDDI, if your phone is eSIM-capable and carrier-unlocked. Is eSIM available in Japan to buy before you fly? Yes, with no ID check." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -238,7 +337,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/does-esim-work-in-japan",
-              headline: "Does eSIM Work in Japan? (2026): Everything You Need to Know",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -249,7 +348,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqSchemaItems.map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -285,15 +384,14 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Does eSIM Work in Japan? (2026):<br />Everything You Need to Know
+            Does eSIM Work in Japan?<br />Is eSIM Available in Japan? Does Japan Have eSIM? Yes
           </h1>
           <p className={styles.heroSubtitle}>
-            Yes — on Docomo, SoftBank or au/KDDI, with no ID check and no paperwork.
-            The question worth asking is whether <em>your</em> phone will work, which
-            is where Japan eSIMs actually fail.
+            The networks and LTE/5G bands, the phones that take an eSIM, and how to check
+            yours is unlocked — each from the carrier&apos;s or maker&apos;s own page.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Quick Answer", "All Phones"].map((t) => (
+            {[`Updated ${updated.label}`, "Band table", "Phone check"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -312,6 +410,17 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        <p className={styles.bodyText}>
+          <strong>Yes — eSIM works in Japan: travel eSIMs connect to NTT docomo, KDDI (au) and
+          SoftBank, the three carriers whose own band lists are in the table below.</strong>{" "}
+          What you need is a phone that supports eSIM (iPhone XS or XR and later, Pixel 4 and
+          later, Galaxy S20 and later, per Apple, Google and Samsung) and is carrier-unlocked.
+          Buy and install the eSIM at home before you fly, and it connects once you land and
+          turn off airplane mode.
+        </p>
+
+        <BookingEsimCard lead="Is your phone ready? Get the eSIM before you fly" />
 
         <EsimPageAnswer route="/guides/esim/does-esim-work-in-japan" />
 
@@ -399,38 +508,123 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
-        {/* Networks table */}
-        <section className={styles.comparisonSection}>
+        {/* Networks: which carrier each travel eSIM names */}
+        <section className={styles.comparisonSection} id="networks">
           <span className={styles.sectionLabel}>Networks</span>
-          <h2 className={styles.sectionTitle}>Which Networks Do Japan eSIMs Use?</h2>
+          <h2 className={styles.sectionTitle}>Do Most Travel eSIMs Work on Japanese Networks?</h2>
           <p className={styles.bodyText}>
-            Every Japan eSIM runs on one or more of the three tier-one Japanese carriers —
-            Docomo, SoftBank and au/KDDI. All three are excellent; the difference matters most
-            in remote rural areas, where Docomo has a slight edge. The networks below are the
-            ones each provider names on its own plan page, read {pricesCheckedAt}.
+            Yes. All six travel eSIMs below name docomo or SoftBank on at least one Japan plan,
+            so the eSIM connects to the same radio network the people around you are using.
+            Which carrier matters less than whether your phone passes the two checks further
+            down.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    <th>Provider</th>
-                    <th>Network</th>
-                    <th>Coverage</th>
+                    <th>Travel eSIM</th>
+                    <th>Japanese network(s) it names</th>
+                    <th>Checked</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {networkRows.map((row) => (
+                  <tr>
+                    <td className={styles.tdProvider}>Conclusion</td>
+                    <td colSpan={2} style={{ fontWeight: 700, color: "var(--sumi)" }}>
+                      Most travel eSIMs run on docomo or SoftBank; three also name KDDI (au)
+                    </td>
+                  </tr>
+                  {travelEsimNetworks.map((row) => (
                     <tr key={row.provider}>
                       <td className={styles.tdProvider}>{row.provider}</td>
                       <td className={styles.tdNetwork}>{row.network}</td>
-                      <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{row.coverage}</td>
+                      <td>{row.checked}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
+            Last checked: {BANDS_CHECKED} (table compiled); each row&apos;s network is as the
+            provider states it on its own Japan plan page, or on the Klook eSIM listing, on the
+            date shown. Official pages: https://www.airalo.com/japan-esim ·
+            https://esim.holafly.com/esim-japan/ · https://www.sakuramobile.jp/travel/esim/
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Simbye is the one that names all four Japanese networks — {getProvider("simbye").network}{" "}
+            — and its Japan page says you never pick a network by hand. How the six compare on
+            price, data and tethering is in the{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best eSIM for Japan comparison
+            </Link>.
+          </p>
+          <SimbyeOffer />
+        </section>
+
+        {/* Bands: each carrier's own list */}
+        <section className={styles.comparisonSection} id="bands">
+          <span className={styles.sectionLabel}>LTE and 5G bands</span>
+          <h2 className={styles.sectionTitle}>Do Travel eSIMs Work on Japan&apos;s LTE Bands?</h2>
+          <p className={styles.bodyText}>
+            Yes, on any phone with LTE Bands 1 and 3: both appear on docomo&apos;s, KDDI&apos;s
+            and SoftBank&apos;s own band lists. The table is each carrier&apos;s list as it marks
+            it on a handset frequency sheet, so you can hold it against your phone&apos;s spec page.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Carrier</th>
+                    <th>4G LTE bands</th>
+                    <th>5G bands</th>
+                    <th>Carrier source</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Conclusion</td>
+                    <td colSpan={3} style={{ fontWeight: 700, color: "var(--sumi)" }}>
+                      Bands 1 and 3 are on all three lists; most travel eSIMs use docomo or SoftBank
+                    </td>
+                  </tr>
+                  {bandRows.map((row) => (
+                    <tr key={row.carrier}>
+                      <td className={styles.tdProvider}>{row.carrier}</td>
+                      <td>{row.lte}</td>
+                      <td>{row.nr}</td>
+                      <td>
+                        <a href={row.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
+                          {row.source}
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
+            Last checked: {BANDS_CHECKED}. docomo&apos;s domestic table lists docomo bands only
+            (it marks 8, 26 and 41 as not usable on docomo); au shades &ldquo;frequencies au
+            provides&rdquo; and footnotes n78 as not usable with an au SIM; SoftBank stars
+            &ldquo;frequency bands SoftBank provides&rdquo;. Official pages:{" "}
+            {bandRows.map((row, i) => (
+              <span key={row.carrier}>
+                {i > 0 && " · "}
+                <a href={row.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
+                  {row.url}
+                </a>
+              </span>
+            ))}
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            An eSIM changes nothing about bands — it is the phone&apos;s radio that has to
+            support them. Phones sold for one market can miss a band used elsewhere, so check
+            your exact model number on the maker&apos;s spec page if it is a regional variant.
+          </p>
         </section>
 
         {/* Phone compatibility */}
@@ -438,10 +632,69 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Check 1 &amp; 3 — hardware and market</span>
           <h2 className={styles.sectionTitle}>Does My Phone Support eSIM?</h2>
           <p className={styles.bodyText}>
-            Almost every flagship phone made since 2018 supports eSIM. Apple&apos;s own support
-            page puts the cut-off at &ldquo;iPhone XS, iPhone XS Max, iPhone XR, or later&rdquo;,
-            and Google&apos;s at &ldquo;a Pixel 3a or later Pixel phone&rdquo; — both checked{" "}
-            {FACTS_CHECKED}. If your device is on this list, you&apos;re good to go.
+            If it is an iPhone XS or XR or later, a Pixel 4 or later, or a Galaxy S20 or later,
+            yes — those are the cut-offs Apple, Google and Samsung publish. The second check is
+            the carrier lock, and the table gives the place to look.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Maker</th>
+                    <th>Phones with eSIM (maker&apos;s list)</th>
+                    <th>Watch out for</th>
+                    <th>Is it unlocked?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Conclusion</td>
+                    <td colSpan={3} style={{ fontWeight: 700, color: "var(--sumi)" }}>
+                      iPhone XS/XR, Pixel 4 and Galaxy S20 onward take an eSIM — if the phone is unlocked
+                    </td>
+                  </tr>
+                  {deviceRows.map((row) => (
+                    <tr key={row.maker}>
+                      <td className={styles.tdProvider}>{row.maker}</td>
+                      <td>{row.phones}</td>
+                      <td>{row.watch}</td>
+                      <td>{row.unlock}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
+            Last checked: {BANDS_CHECKED}. Official pages:{" "}
+            {deviceRows.map((row, i) => (
+              <span key={row.maker}>
+                {i > 0 && " · "}
+                <a href={row.source} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
+                  {row.source}
+                </a>
+              </span>
+            ))}{" "}
+            · https://support.apple.com/en-us/109316 (iPhone carrier lock)
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>How to check the SIM lock:</strong> on an iPhone, open Settings → General →
+            About and look at Carrier Lock — &ldquo;No SIM restrictions&rdquo; means unlocked.
+            Apple states that only your carrier can unlock an iPhone, and that it can take the
+            carrier a few days, so ask well before the flight. On a Pixel or Galaxy, ask the
+            carrier that sold the phone. Which plan suits an iPhone, and the screens to tap, are
+            in{" "}
+            <Link href="/guides/esim/japan-esim-iphone" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM for iPhone
+            </Link>.
+          </p>
+
+          <BookingEsimCard lead="Phone passes both checks? Pick your Japan eSIM" />
+
+          <p className={styles.bodyText} style={{ marginTop: "1.5rem" }}>
+            The lists below are the same cut-offs in more detail (Apple and Google pages read{" "}
+            {FACTS_CHECKED}, Samsung&apos;s {BANDS_CHECKED}).
           </p>
           <div className={styles.pickGrid} style={{ marginTop: "1rem" }}>
             <div className={styles.pickPros}>
@@ -457,23 +710,22 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             <div className={styles.pickPros} style={{ background: "var(--paper)", borderColor: "var(--rule)" }}>
               <p className={styles.pickListLabel}>Android (major models)</p>
               <ul className={styles.pickList}>
-                <li><span className={styles.proIcon}>+</span>Google Pixel 3a and later (3a, 4–9)</li>
+                <li><span className={styles.proIcon}>+</span>Google Pixel 4 and later (all of them)</li>
+                <li><span className={styles.proIcon}>+</span>Pixel 3a: not if bought with Verizon or in Japan</li>
                 <li><span className={styles.proIcon}>+</span>Pixel 7 and later run two eSIMs at once</li>
-                <li><span className={styles.proIcon}>+</span>Samsung Galaxy S20 and later (S20–S25)</li>
-                <li><span className={styles.proIcon}>+</span>Samsung Galaxy Z Flip / Fold (all models)</li>
-                <li><span className={styles.proIcon}>+</span>Most recent Oppo, OnePlus, Motorola flagships</li>
+                <li><span className={styles.proIcon}>+</span>Samsung Galaxy S20 and later (S20–S26)</li>
+                <li><span className={styles.proIcon}>+</span>Samsung Galaxy Fold, Z Flip and Z Fold2 onward</li>
               </ul>
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>One important caveat, and it is about where the phone was sold, not where
             you are going.</strong> Apple states that in mainland China only the iPhone 18 Pro,
-            18 Pro Max, 17e and iPhone Air support eSIM at all, and that in Hong Kong and Macao
+            18 Pro Max, iPhone Duo, 17e and iPhone Air support eSIM at all, and that in Hong Kong and Macao
             certain models ship with two nano-SIM slots instead of an eSIM. An iPhone bought in
             those markets may therefore have no eSIM hardware whatever its generation — check the
-            model number against Apple&apos;s list before you buy a plan. Nothing comparable
-            applies to iPhones sold in Japan, the US, Europe, Australia or Canada (Apple support,
-            checked {FACTS_CHECKED}). For Android, the equivalent trap is regional variants, so
+            model number against Apple&apos;s list before you buy a plan (Apple support, checked{" "}
+            {BANDS_CHECKED}). For Android, the equivalent trap is regional variants, so
             check your exact model number on the manufacturer&apos;s compatibility page.
           </p>
         </section>
@@ -575,7 +827,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             compares the rentals on devices, battery and pickup.
           </p>
 
-          <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>How Do eSIMs Work in Japan?</h2>
+          <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>How Does an eSIM Work in Japan?</h2>
           <p className={styles.bodyText}>
             An eSIM is a carrier profile downloaded into a chip already soldered into your phone,
             so &ldquo;working in Japan&rdquo; means the profile holds an agreement with a Japanese
@@ -591,8 +843,8 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Because the eSIM sits alongside your existing SIM rather than replacing it, your home
             number keeps ringing throughout. Apple supports one physical SIM plus one eSIM from
-            iPhone XS onwards and two eSIMs from iPhone 13 onwards; Google supports the same
-            pairing from Pixel 3a and two eSIMs from Pixel 7 (both checked {FACTS_CHECKED}).
+            iPhone XS onwards and two eSIMs from iPhone 13 onwards; Google lists eSIM on every
+            Pixel from Pixel 4 and two eSIMs at once from Pixel 7 (checked {BANDS_CHECKED}).
             Step-by-step screens for both platforms are in{" "}
             <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               how to set up an eSIM in Japan

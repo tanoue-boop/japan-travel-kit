@@ -626,8 +626,9 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1.2rem" }}>
             Full walkthroughs:{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              the compatibility checks
-            </Link>
+              Does eSIM work in Japan?
+            </Link>{" "}
+            (the network, band and phone checks)
             ,{" "}
             <Link href="/guides/esim/japan-esim-android" style={{ color: "var(--accent)", fontWeight: 600 }}>
               where to tap on Android
