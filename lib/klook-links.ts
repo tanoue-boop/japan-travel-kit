@@ -9249,3 +9249,55 @@ export const sakeTastingTripPrep: KlookTripPrepItem[] = [
     why: "Brewery reservations, tour meeting points and the train home after a tasting all run on your phone.",
   },
 ];
+
+/**
+ * Tipping in Japan (restored 14 Nov 2026, task-jtk-20261114-03) — "Book before you land".
+ * With no tip to work out on the day, what decides the bill is what was booked: what a
+ * guided tour includes, whether a ryokan plan has dinner, and the airport train. Every url
+ * reads out of an existing constant; none is new. Bands: tours and hotels 6.5%, airport
+ * trains 5%, Klook eSIM 20%.
+ */
+export const tippingTripPrep: KlookTripPrepItem[] = [
+  {
+    label: shinjukuNightFoodWalkingTour.title,
+    ctaLabel: "Check the Shinjuku food tour →",
+    url: shinjukuNightFoodWalkingTour.url,
+    why: "The listing sets out what the price covers: tastings at three food spots and a drink at a Golden Gai izakaya, so the evening is paid before it starts.",
+  },
+  {
+    label: tsukijiStreetFoodTour.title,
+    ctaLabel: "Check the Tsukiji food tour →",
+    url: tsukijiStreetFoodTour.url,
+    why: "The daytime Tokyo version: a two-hour small-group walk into the outer market with the tastings in the booking.",
+  },
+  {
+    label: kyotoGionNightWalkingTour.title,
+    ctaLabel: "Check the Gion night walk →",
+    url: kyotoGionNightWalkingTour.url,
+    why: "Kyoto's evening walk with a guide. JNTO says a tip is not expected even for guides, so the booking price is the cost.",
+  },
+  {
+    label: hakoneHotels.title,
+    ctaLabel: "Check Hakone ryokan →",
+    url: hakoneHotels.url,
+    why: "At a ryokan the plan you book decides the bill, so check the room plan for whether dinner and breakfast are included.",
+  },
+  {
+    label: fujikawaguchikoHotels.title,
+    ctaLabel: "Check Kawaguchiko ryokan →",
+    url: fujikawaguchikoHotels.url,
+    why: "For a night at Lake Kawaguchi below Mt Fuji. The same check: read the plan for meals before you book.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Landing at Narita: a reserved seat into Tokyo, Shinjuku or Yokohama, paid before the flight.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Landing at Kansai Airport: the JR train to Kyoto, Shin-Osaka and Tennoji. Klook's listing states it is sold only to non-Japanese passport holders with a Temporary Visitor stamp.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Tour meeting points, ryokan check-in times and the train from the airport all run on your phone from the moment you land.",
+  },
+];

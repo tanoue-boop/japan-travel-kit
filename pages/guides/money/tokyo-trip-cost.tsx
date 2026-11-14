@@ -547,6 +547,11 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             from 7-Eleven to Japan Post Bank, is in our{" "}
             <Link href="/guides/money/atms-in-japan">ATMs in Japan guide</Link>.
           </p>
+          <p className={styles.bodyText}>
+            Nothing needs adding on top for tips: JNTO says restaurants, taxis and hotels in Japan do not expect
+            one. What can appear instead, such as an izakaya&apos;s seating charge, is in our guide to{" "}
+            <Link href="/guides/money/tipping-in-japan">tipping in Japan</Link>.
+          </p>
         </section>
 
         {/* Survey */}

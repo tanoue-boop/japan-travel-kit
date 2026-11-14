@@ -475,8 +475,8 @@ const hiddenCosts = [
   {
     cost: "Tipping",
     detail:
-      "Not customary in Japan and not expected at restaurants, taxis or hotels. There is no figure to budget for, which is one of the few ways Japan is cheaper than it looks on paper.",
-    source: "—",
+      "Not customary in Japan and not expected at restaurants, taxis or hotels. There is no figure to budget for, which is one of the few ways Japan is cheaper than it looks on paper. What can appear instead is a service charge at first-class hotels and an izakaya seating charge (otoshi).",
+    source: "JNTO, read 14 November 2026",
   },
 ];
 
@@ -1265,6 +1265,12 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Tipping is the one line to leave at zero. Our guide to{" "}
+            <Link href="/guides/money/tipping-in-japan" style={{ color: "var(--red)", fontWeight: 600 }}>tipping in Japan</Link>{" "}
+            goes situation by situation, from restaurant service charges and the izakaya otoshi to the ryokan
+            kokorozuke, on JNTO&apos;s own pages.
+          </p>
         </section>
 
         <EsimCtaBottom />

@@ -83,6 +83,14 @@ export const moneyArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/money/tipping-in-japan",
+    badge: "Guide",
+    title: "Tipping in Japan (2026): Do You Tip at Restaurants, Taxis and Ryokan?",
+    desc: "No tip at restaurants, bars, taxis or hotels, on JNTO's own pages. Situation by situation: the service charge, the izakaya otoshi, the ryokan kokorozuke and private guides.",
+    group: "paying",
+    city: "other",
+  },
+  {
     href: "/guides/money/japan-travel-budget",
     badge: "Guide",
     title: "Japan Travel Budget 2026: Cost per Day, Rail and the JR Pass",

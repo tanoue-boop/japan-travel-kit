@@ -827,7 +827,9 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>The exceptions</strong> are narrow and optional: a <em>kokorozuke</em> envelope (¥1,000–¥3,000 per
             person) for your host at a high-end ryokan, and a small voluntary gratuity for an independent private tour
-            guide. Neither is expected.
+            guide. Neither is expected. For each situation side by side, with the service charges and the izakaya
+            otoshi that appear instead, see our guide to{" "}
+            <Link href="/guides/money/tipping-in-japan" style={{ color: "var(--red)", fontWeight: 600 }}>tipping in Japan</Link>.
           </p>
           <p className={styles.bodyText}>
             <strong>Instead of tipping:</strong> say a clear &ldquo;arigatou gozaimasu&rdquo; with eye contact, bow
