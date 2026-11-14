@@ -413,7 +413,9 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
             <a href="https://www.usj.co.jp/web/ja/jp/tour-hotel/partner-hotel" target="_blank" rel="noopener">usj.co.jp</a>;
             walking times on each hotel&apos;s own access page (parkfront-hotel.com, miyakohotels.ne.jp,
             universalcity.oriental-hotels.com, hotelkeihan.co.jp, candeohotels.com, universalport.orixhotelsandresorts.com).
-            Every Official Hotel sells the 1-Day Studio Pass and the Express Pass. No Klook price appears on this page.
+            Every Official Hotel sells the 1-Day Studio Pass and the Express Pass — which{" "}
+            <Link href="/guides/attractions/usj-tickets-express-pass">Universal Studios Japan Express Pass</Link>{" "}
+            type to pick (4 or 7) is a separate question. No Klook price appears on this page.
           </p>
         </section>
 
@@ -442,7 +444,7 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Which pass and which Express Pass you need is in our{" "}
-            <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets and Express Pass guide</Link>.
+            <Link href="/guides/attractions/usj-tickets-express-pass">Universal Studios Japan Express Pass guide</Link>.
           </p>
         </section>
 
@@ -601,7 +603,7 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
-              { href: "/guides/attractions/usj-tickets-express-pass", title: "Universal Studios Japan Express Pass 2026: Types, Prices & Do You Need One" },
+              { href: "/guides/attractions/usj-tickets-express-pass", title: "Universal Studios Japan Express Pass 2026: Types, Prices & Is It Worth It" },
               { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka 2026: Namba vs Umeda vs USJ" },
               { href: "/guides/attractions/osaka-3-day-itinerary", title: "Osaka 3 Day Itinerary (2026): Day by Day, and What to Book" },
               { href: "/guides/attractions/tokyo-disney-hotels", title: "Tokyo Disney Hotels (2026): Closest, Official & Budget" },

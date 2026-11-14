@@ -992,7 +992,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             the park&apos;s own app on the day and is a separate thing from the Express Pass. And{" "}
             <strong>no Osaka pass helps</strong>: the park is not on the Amazing Pass, and no Osaka Metro
             pass covers the JR ride out to Universal City. The whole of it is in our{" "}
-            <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets and Express Pass guide</Link>.
+            <Link href="/guides/attractions/usj-tickets-express-pass">Universal Studios Japan Express Pass guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

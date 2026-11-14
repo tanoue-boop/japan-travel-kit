@@ -118,11 +118,12 @@ const SEARCH_TERMS = {
     ko: "도쿄 디즈니랜드 티켓",
     th: "ตั๋วดิสนีย์แลนด์",
   },
+  // 14 Nov 2026 (R01): retargeted from "tickets" to the Express Pass query itself.
   "/guides/attractions/usj-tickets-express-pass": {
-    "zh-tw": "日本環球影城門票",
-    "zh-cn": "日本环球影城门票",
+    "zh-tw": "日本環球影城快速通關",
+    "zh-cn": "日本环球影城快速通关",
     ko: "유니버설 스튜디오 재팬 익스프레스 패스",
-    th: "Express Pass USJ",
+    th: "Express Pass ยูนิเวอร์แซล",
   },
   "/guides/attractions/mt-fuji-day-tour-from-tokyo": { "zh-tw": "富士山一日遊", "zh-cn": "富士山一日游" },
   "/guides/transport/tokyo-airport-transfer": { "zh-tw": "成田機場到東京", "zh-cn": "成田机场到东京" },

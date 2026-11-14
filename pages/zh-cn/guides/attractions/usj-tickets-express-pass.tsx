@@ -24,6 +24,8 @@ import {
   jrKansaiMiniPass,
   klookEsim,
   nankaiRapitUrl,
+  parkFrontHotelUsjKlook,
+  usjExpressSameDayPrep,
   usjSameDayPrep,
   usjStayAreas,
   usjTripPrep,
@@ -42,9 +44,11 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // No figure is added here; every fact and date is the English page's own.
 
 const ROUTE = "/zh-cn/guides/attractions/usj-tickets-express-pass";
-const TITLE = "日本环球影城门票与快速通行证（2026）：该买哪一种";
+// 14 Nov 2026 (R01): the query leads the title, H1 and meta, as on the English page.
+const TITLE = "日本环球影城快速通关 2026：种类・价格・值不值得买";
+const H1 = "日本环球影城快速通关 2026：种类、价格与值不值得买";
 const DESC =
-  "USJ 现在一律网上购票，超级任天堂世界需要指定时间入园。Studio Pass 的分级定价、快速通行证值不值得，以及 2026 年该买哪一种。";
+  "USJ 快速通关（fast pass）2026：快速通关 4 和 7 的区别、价格为何按日期变动、何时售罄，以及什么时候该买。";
 
 const LOCALE = "zh-cn" as const;
 const GYG_SLUG = "zh-cn-usj-tickets-express-pass";
@@ -59,6 +63,10 @@ const ESIM_URL = klookFor(klookEsim.url, LOCALE);
 
 const CHECKED = dateLabel("2026-10-26", LOCALE);
 const CHECKED_USJ = dateLabel("2026-10-27", LOCALE);
+const CHECKED_TODAY = dateLabel("2026-11-14", LOCALE);
+const USE_CHECKED = dateLabel("2026-11-06", LOCALE);
+const USJ_EXPRESS_URL = "https://www.usj.co.jp/web/en/us/tickets/express-pass";
+const VARIANT_PRICE = "随入园日期而变——结账时显示";
 
 const ticketRows = [
   { ticket: "一日 Studio Pass", what: "一天的入园资格；一般设施走普通排队", price: "按日期定价——当天价格在结账时显示" },
@@ -67,28 +75,40 @@ const ticketRows = [
 ];
 
 const variantRows = [
+  // First row is the answer (14 Nov 2026, R01), as on the English page.
+  {
+    pass: "拿不定主意？先看这里",
+    covers: "第一次来、只有一个人多的日子，选快速通行证 7；日期较清闲或第二次来，选快速通行证 4；如果超级任天堂世界是这趟旅行的理由，选含区域入场的版本。",
+    snw: "选注明包含区域入场的版本",
+    price: VARIANT_PRICE,
+    bestFor: "周末或节假日第一次来的多数游客：快速通行证 7",
+  },
   {
     pass: "快速通行证 4",
     covers: "包含四个项目。USJ 把这一款描述为玩必玩项目用的通行证；具体是哪四项，按版本和日期固定。",
     snw: "只有注明包含的版本才有",
+    price: VARIANT_PRICE,
     bestFor: "时间短的一天、第二次来，或游客较少时只想体验主要热门项目",
   },
   {
     pass: "快速通行证 7",
     covers: "包含七个项目——多数第一次来的游客在两种数量中会选的较大那一款，包含的项目同样按版本而定。",
     snw: "只有注明包含的版本才有",
+    price: VARIANT_PRICE,
     bestFor: "只有一天、第一次来、人多的日子",
   },
   {
     pass: "其他数量与主题版本",
     covers: "USJ 也卖以单个项目或季节性项目组合为主的快速通行证，包含的项目各不相同，会随乐园活动推出和下架。",
     snw: "因版本而异",
+    price: VARIANT_PRICE,
     bestFor: "有某一项非玩不可的设施，而不是想尽量多玩几个项目",
   },
   {
     pass: "含区域入场的版本",
     covers: "部分快速通行证附带超级任天堂世界的区域指定时间入场券，可以在抵达前就确定入区时段。",
     snw: "有——多花的钱买的就是这个",
+    price: VARIANT_PRICE,
     bestFor: "超级任天堂世界就是这趟旅行理由的人",
   },
 ];
@@ -140,6 +160,12 @@ const windowRows = [
 ];
 
 const needRows = [
+  // First row is the answer (14 Nov 2026, R01), as on the English page.
+  {
+    date: "简短回答",
+    verdict: "周末、节假日和寒假期间买；人少的工作日不买",
+    why: "USJ 每天只卖有限数量，并说经常提前售罄，价格也按日期随需求变动。",
+  },
   {
     date: "日本学校假期以外、人少的工作日",
     verdict: "通常可以不买",
@@ -171,22 +197,37 @@ const buyRows = [
   {
     where: "USJ WEB Ticket Store（官方）",
     what: "入园当天在售的所有版本，按当天价格销售",
-    note: "约两个月前开售。热门开售日请做好线上排队的准备。",
+    opens: "入园日前约 2 个月",
+    change: "只在票面日期有效（USJ）",
+    note: "热门开售日请做好线上排队的准备。",
   },
   {
     where: "Lawson Ticket——网站和 Loppi 机器",
     what: "USJ 指定的另一个官方渠道",
+    opens: "入园日前约 2 个月",
+    change: "只在票面日期有效（USJ）",
     note: "在 USJ 2025年4月21日的购票期间公告中，与 WEB Ticket Store 并列。",
   },
   {
     where: "Klook",
     what: "单独销售的快速通行证，购票页面易于操作、支持境外信用卡支付，并提供电子票",
+    opens: "以商品页显示的日期为准",
+    change: "见商品页自己的取消条款",
     note: "USJ 官方指定时间入场页面注明，区域入场也可以通过特定旅行社提前获得。",
   },
   {
     where: "GetYourGuide",
     what: "单独销售的快速通行证，作为第二个购买渠道",
+    opens: "以商品页显示的日期为准",
+    change: "见商品页自己的取消条款",
     note: "第一个渠道在入园日期已售罄时值得看看——配额除了每天有上限，也是按销售渠道分配的。",
+  },
+  {
+    where: "当天在乐园",
+    what: "入口不售票——USJ 已不在入口销售当日票",
+    opens: "—",
+    change: "—",
+    note: "出发前先在网上买好。",
   },
 ];
 
@@ -214,6 +255,10 @@ const steps = [
 ];
 
 const faqItems: FaqItem[] = [
+  {
+    q: "USJ 快速通关和 fast pass 是一回事吗？",
+    a: `实际上是。日本环球影城付费缩短排队的票叫 Universal Express Pass（快速通行证），很多游客搜索时用的是“USJ fast pass”这个说法；USJ 官方的门票页面没有另外列出名为 Fast Pass 的商品。它主要分为快速通行证 4 和快速通行证 7，只限一个日期使用，同一天还需要 Studio Pass。于${CHECKED_USJ}在 usj.co.jp 查阅。`,
+  },
   {
     q: "USJ 门票一定要提前买吗？",
     a: "要。日本环球影城已停止在园区入口销售当日票，所以要在出发前网上购买。通过 Klook 这类代售平台预订，购票页面易于操作、支持境外信用卡支付，并发送入园时可扫描的电子票。",
@@ -263,6 +308,43 @@ const faqItems: FaqItem[] = [
     a: `乐园本身不在大阪周游卡（Osaka Amazing Pass）的范围内，也没有任何大阪地铁通票包含前往环球城的 JR 路段。铁路方面，JR 西日本官方的关西地区铁路周游券页面把 WEST QR Kansai Mini Pass 描述为“京都、日本环球影城、大阪、难波、神户、奈良 3 日无限乘坐”——成人 ¥3,000、儿童 ¥1,500，连续三天可乘坐普通、快速和新快速列车，但不能乘坐包括 HARUKA 在内的任何特急。WEST QR Kansai Area Pass 则可乘坐 HARUKA，自由席不限次数加两次指定席，一日 ¥2,700 到四日 ¥6,700。于${CHECKED}查阅。以上都不含乐园门票——入园始终需要另外购买 Studio Pass。`,
   },
 ];
+
+// The FAQPage markup carries five questions, as on the English page; the visible list keeps all of them.
+const FAQ_SCHEMA_QS = new Set([
+  "USJ 快速通关和 fast pass 是一回事吗？",
+  "2026 年的 USJ 快速通行证值得买吗？",
+  "快速通行证 4 和快速通行证 7 有什么区别？",
+  "日本环球影城快速通行证多少钱？",
+  "没有 Studio Pass 可以只用快速通行证吗？",
+]);
+const faqSchemaItems = faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q));
+
+// Same products, same order as the English usjExpressSameDayPrep — on Klook's zh-CN path.
+const expressSameDayCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[] = [
+  {
+    label: "The Park Front Hotel（日本环球影城官方酒店）",
+    ctaLabel: "查看 The Park Front Hotel →",
+    why: "就在乐园正门外的 USJ 官方酒店——有快速通行证的那一天，重点是早点过闸。快速通行证售罄的那些人多的日子，大门旁的酒店房间也最先订满。",
+  },
+  {
+    label: "Hotel Kintetsu Universal City",
+    ctaLabel: "查看 Hotel Kintetsu Universal City →",
+    why: "另一家 USJ 官方酒店，在环球城站旁边，适合入园那天 The Park Front Hotel 已订满的时候。",
+  },
+  {
+    label: "关西机场利木津巴士（单程）",
+    ctaLabel: "查看机场利木津巴士 →",
+    why: "商品包含关西机场 ⇄ 日本环球影城的路线，抵达当天不用拖着行李换乘火车。",
+  },
+  {
+    label: "Klook 日本 eSIM 流量卡",
+    ctaLabel: "查看 Klook eSIM 方案 →",
+    why: "快速通行证和 Studio Pass 都是 QR 电子票，超级任天堂世界的区域入场也通过 USJ 官方 App 办理——在园内全都需要流量。",
+  },
+];
+const expressSameDayPrep: KlookTripPrepItem[] = usjExpressSameDayPrep.map((item, i) =>
+  withKlookLocale(item, LOCALE, expressSameDayCopy[i]),
+);
 
 // Same products, same order as the English usjSameDayPrep — on Klook's zh-CN path.
 const sameDayCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[] = [
@@ -349,7 +431,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqSchemaItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -370,9 +452,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
-          <h1 className={styles.heroTitle}>
-            日本环球影城快速通行证（2026）：<br />票种、价格及是否需要购买
-          </h1>
+          <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
             快速通行证 4 和快速通行证 7 分别包含哪些项目、为什么价格随日期变动，以及哪些日子只买 Studio Pass 就够了。
           </p>
@@ -391,11 +471,10 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>日本环球影城快速通行证（Express Pass）</strong>是付费加购项目，可以在指定的几个游乐项目使用更短的快速通道——它不是入园票，同一天你仍然需要
-            Studio Pass（或年卡）。它按包含项目数量分为不同编号的版本——<strong>快速通行证 4</strong> 和<strong>快速通行证 7</strong>
-            是多数人会选的两款，另外还有按主题或项目组合推出的版本，以及附带超级任天堂世界区域入场的版本——每张都限定使用日期，不同版本包含的项目各不相同，价格也按日期而定：USJ
-            官方网站注明，有效快速通行证的种类和价格因日期而异，而且每天只卖有限数量、经常提前售罄。所以“是否需要购买”主要取决于日期：周末、日本法定节假日或
-            25 周年的日子，正是快速通行证最能发挥作用的时候；人少的工作日通常不需要。以上均于{CHECKED_USJ}查阅。
+            <strong>日本环球影城快速通关（Universal Express Pass，USJ 付费的“fast pass”）</strong>主要分为
+            <strong>快速通行证 4</strong>（4 个项目）和<strong>快速通行证 7</strong>（7 个项目），每张只限一个日期使用，而且不是入园票——同一天还需要
+            Studio Pass。USJ 没有固定价格：种类和价格随入园日期而变，约在入园日前 2 个月开售，每天只卖有限数量，经常提前售罄。周末、日本法定节假日或寒假期间的日期就买；人少的工作日，通常只买
+            Studio Pass 就够了。于{CHECKED_USJ}及{CHECKED_TODAY}在 usj.co.jp 查阅。
           </p>
         </section>
 
@@ -436,15 +515,6 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <BookingEsimCard />
 
-        {/* Order on purpose (1 Nov 2026), as on the English page: Studio Pass, then the
-            same-day bookings, then the Express Pass. */}
-        <KlookTripPrep
-          label="同一天要订的"
-          heading="和 USJ 门票（Studio Pass）一起预订的项目"
-          intro="Studio Pass 让你入园；乐园那一天还需要住宿、往返大阪市区的交通和手机流量。以下五项都能用同一个 Klook 账号，和门票一起预订。"
-          items={sameDayPrep}
-        />
-
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
             <span className={styles.verdictLabel}>快速通行证</span>
@@ -463,6 +533,15 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
         </div>
+
+        {/* 14 Nov 2026 (R01), as on the English page: directly under the Express Pass box,
+            the bookings that share its date. */}
+        <KlookTripPrep
+          label="同一天预订"
+          heading="和快速通行证同一天要订的项目"
+          intro="快速通行证决定了你的入园日期。在它会售罄的那些人多的日子，大门旁的官方酒店也会订满——所以房间、从关西机场过来的交通，以及乐园官方 App 要用的流量，都值得同一天订好。"
+          items={expressSameDayPrep}
+        />
 
         <EsimCtaTop />
 
@@ -503,11 +582,41 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           </p>
         </section>
 
+        {/* 14 Nov 2026 (R01), as on the English page: the two questions the search terms ask outright. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>入园<span className="sr-only">：</span></span>
+          <h2 className={styles.sectionTitle}>买了快速通行证还需要 Studio Pass 吗？</h2>
+          <p className={styles.bodyText}>
+            需要。USJ 官方快速通行证页面说，需要另外的乐园入场券，所以每位游客都需要一张与快速通行证同一日期有效的 Studio Pass（或年卡）——快速通行证只是在你入园后缩短排队。于{CHECKED_USJ}查阅。
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={STUDIO_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              USJ 门票（Studio Pass）→
+            </KlookLink>
+          </div>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Fast pass<span className="sr-only">：</span></span>
+          <h2 className={styles.sectionTitle}>快速通行证（Express Pass）和 fast pass 有什么区别？</h2>
+          <p className={styles.bodyText}>
+            在日本环球影城，两者是同一样东西：USJ 付费缩短排队的票叫 <strong>Universal Express Pass</strong>，“USJ fast pass”只是很多游客搜索时用的叫法——USJ
+            官方的门票页面没有另外列出名为 Fast Pass 的商品。USJ 另外两种免费缩短一天排队的方式，又是别的东西：
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>单人乘坐（Single Rider）：</strong>另一条队伍，与同行者分开、填补空位；不是任何时候都开放。</li>
+            <li><strong>区域指定时间入场券（官方 App）：</strong>进入超级任天堂世界的时段，当天在园内领取——它不会缩短游乐项目的排队。</li>
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            出自 USJ 的快速通行证、FAQ 和指定时间入场页面，于{CHECKED_USJ}及{USE_CHECKED}查阅。
+          </p>
+        </section>
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>价格<span className="sr-only">：</span></span>
-          <h2 className={styles.sectionTitle}>日本环球影城快速通行证多少钱？</h2>
+          <h2 className={styles.sectionTitle}>2026 年快速通行证多少钱？</h2>
           <p className={styles.bodyText}>
-            没有单一答案，这是 USJ 官方的做法，并非本站说法含糊：它的快速通行证页面说，有效快速通行证的种类和价格因日期而异；2026年6月30日关于
+            日本环球影城快速通行证没有固定的 2026 年价格：USJ 按入园日期和种类定价，当天的价格在结账时显示。没有单一答案，这是 USJ 官方的做法，并非本站说法含糊：它的快速通行证页面说，有效快速通行证的种类和价格因日期而异；2026年6月30日关于
             Studio Pass 定价的公告也说，快速通行证自 2018 年起采用需求定价制度，目前没有变更计划。你能据此规划的是规则，所以这张表列的就是规则。
           </p>
           <div className={styles.tableWrap}>
@@ -533,14 +642,16 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            为什么不列价格区间：能显示价格的两个地方都无法使用。USJ 的会员购票页在{CHECKED_USJ}返回服务器错误（HTTP 503），官方 WEB Ticket Store
-            则采用线上排队机制。与其照搬第三方网页的数字，本攻略列出 USJ 的定价规则，并请你以当天结账时的价格为准。
+            最后查阅：2026-11-14——{" "}
+            <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 官方 Universal Express Pass 页面</a>。
+            为什么不列价格区间：usj.co.jp 不同门票列表页上的“起价”彼此不一致，WEB Ticket Store 的列表也注明价格因入园日期而异。与其照搬一个未必适用于你那天的数字，本攻略列出
+            USJ 的定价规则，并请你以当天结账时的价格为准。
           </p>
         </section>
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>选哪个版本<span className="sr-only">：</span></span>
-          <h2 className={styles.sectionTitle}>快速通行证 4 还是 7——该买哪一个？</h2>
+          <h2 className={styles.sectionTitle}>USJ 快速通行证该买哪一种（4 还是 7）？</h2>
           <p className={styles.bodyText}>
             人多的日子又是第一次来，选快速通行证 7；日期较清闲、时间短，或是第二次来只想体验几个最热门的项目，选快速通行证
             4。数字代表通行证包含的项目数量，具体项目按版本和日期固定——所以请看入园当天的具体内容，而不是票面上的数字。
@@ -550,17 +661,18 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["版本", "包含项目", "超级任天堂世界", "适用人群"].map((h) => (
+                    {["快速通行证种类", "包含内容", "超级任天堂世界入场", "官方价格", "适合谁"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {variantRows.map((row) => (
-                    <tr key={row.pass}>
+                  {variantRows.map((row, i) => (
+                    <tr key={row.pass} style={i === 0 ? { fontWeight: 600 } : undefined}>
                       <td className={styles.tdProvider}>{row.pass}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.covers}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.snw}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.price}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.bestFor}</td>
                     </tr>
                   ))}
@@ -569,15 +681,26 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            版本名称和区域入场规则于{CHECKED_USJ}在 usj.co.jp 查阅。某一天有哪些版本，要看那一天——项目组合会随乐园活动变动，所以上表描述的是整体情况，而不是固定的商品目录。
+            最后查阅：2026-11-14——{" "}
+            <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 官方 Universal Express Pass 页面</a>。
+            版本名称和区域入场规则于{CHECKED_USJ}在 usj.co.jp 查阅；USJ 官方的快速通行证列表（{CHECKED_TODAY}再次查阅）还列有 Express Pass Premium
+            和几种主题版的快速通行证 4，各自只在指定的入园期间销售。某一天有哪些版本，要看那一天，所以上表描述的是整体情况，而不是固定的商品目录。
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              在 Klook 查看快速通行证日期 →
+            </KlookLink>
+            <KlookLink href={klookFor(parkFrontHotelUsjKlook.url, LOCALE)} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              The Park Front Hotel（USJ 官方酒店）→
+            </KlookLink>
+          </div>
         </section>
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>买还是不买<span className="sr-only">：</span></span>
-          <h2 className={styles.sectionTitle}>去日本环球影城需要快速通行证吗？</h2>
+          <h2 className={styles.sectionTitle}>USJ 快速通行证值得买吗？</h2>
           <p className={styles.bodyText}>
-            几乎完全取决于日期，而不是个人。人少的工作日，通常只买 Studio Pass 就够了；周末、日本法定节假日或 25
+            周末、日本法定节假日或寒假期间，值得；人少的工作日，通常不值得。几乎完全取决于日期，而不是个人。人少的工作日，通常只买 Studio Pass 就够了；周末、日本法定节假日或 25
             周年的日子，快速通行证决定的是你能直接玩到热门项目，还是要排长队。
           </p>
           <div className={styles.tableWrap}>
@@ -602,6 +725,11 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            最后查阅：2026-10-27——{" "}
+            <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 官方 Universal Express Pass 页面</a>
+            （每日限量与售罄）及 USJ 新闻稿（25 周年活动、Holiday Kids Free Pass，于{CHECKED_USJ}查阅）。USJ 没有按日期公布人流预测，所以上表按日期类型划分，而不是按具体哪一天。
+          </p>
 
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -673,7 +801,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["渠道", "能买到什么", "值得知道"].map((h) => (
+                    {["渠道", "能买到什么", "开售时间", "改期／退款", "值得知道"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -683,6 +811,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
                     <tr key={row.where}>
                       <td className={styles.tdProvider}>{row.where}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.opens}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.change}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
                     </tr>
                   ))}
@@ -691,6 +821,10 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            最后查阅：2026-10-27——{" "}
+            <a href="https://www.usj.co.jp/company/company_e/news/2025/0421/" target="_blank" rel="noopener noreferrer">USJ 购票期间公告</a>{" "}
+            及{" "}
+            <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 快速通行证页面</a>。
             销售渠道和购买期间出自 USJ 2025年4月21日的购票期间公告；通过旅行社进入超级任天堂世界的方式出自 USJ 的指定时间入场页面。两者均于{CHECKED_USJ}查阅。
             不管在哪里买，通行证都绑定日期，改期和退款都受限制——定日期之前，请先看下方常见问题中关于取消的那一题。
           </p>
@@ -811,6 +945,14 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             查看上述 JR 通票的完整介绍。
           </p>
         </section>
+
+        {/* Moved here from above the Express Pass box on 14 Nov 2026 (R01), as on the English page; unchanged. */}
+        <KlookTripPrep
+          label="乐园当天前后"
+          heading="和 USJ 门票（Studio Pass）一起预订的项目"
+          intro="Studio Pass 让你入园；乐园那一天还需要住宿、往返大阪市区的交通和手机流量。以下五项都能用同一个 Klook 账号，和门票一起预订。"
+          items={sameDayPrep}
+        />
 
         <KlookTripPrep
           label="一起预订"

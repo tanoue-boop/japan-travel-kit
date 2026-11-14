@@ -516,13 +516,18 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             <em>not</em> on the Osaka Amazing Pass, and the JR fare to Universal City is not covered by any
             Osaka Metro pass. The tickets themselves are the bigger constraint — USJ sells date-specified
             Studio Passes online and Super Nintendo World needs timed entry on top, which our{" "}
-            <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets and Express Pass guide</Link>{" "}
+            <Link href="/guides/attractions/usj-tickets-express-pass">Universal Studios Japan Express Pass guide</Link>{" "}
             works through. A Universal City base also puts the aquarium within reach: the Captain Line shuttle
             boat crosses from Universal City Port to Kaiyukan in about ten minutes, and our{" "}
             <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Osaka Aquarium Kaiyukan tickets
             guide</Link> covers its date-based prices and entry slots. Our{" "}
             <Link href="/guides/attractions/usj-hotels">USJ hotels guide</Link> compares the official hotels
             around Universal City Station one by one.
+          </p>
+          <p className={styles.bodyText}>
+            The Universal City case is strongest on a weekend or a Japanese public holiday — the same dates a{" "}
+            <Link href="/guides/attractions/usj-tickets-express-pass">Universal Studios Japan Express Pass</Link>{" "}
+            is worth buying, since USJ sells a limited number each day and they often sell out in advance.
           </p>
         </section>
 
@@ -794,7 +799,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Universal Studios Japan Tickets &amp; Express Pass (2026): What to Buy</p>
+                <p className={styles.relatedTitle}>Universal Studios Japan Express Pass 2026: Types &amp; Prices</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

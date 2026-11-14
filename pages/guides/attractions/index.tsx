@@ -76,7 +76,7 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>Shibuya Sky</Link>,{" "}
             <Link href="/guides/attractions/tokyo-disney-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo Disneyland tickets</Link>{" "}
             (no gate sales, on sale two months ahead) and the{" "}
-            <Link href="/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--text)", fontWeight: 600 }}>USJ Express Pass</Link>; the passes
+            <Link href="/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Universal Studios Japan Express Pass</Link>; the passes
             that pay back fastest are the{" "}
             <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Hakone Free Pass</Link> and the{" "}
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>JR Kansai Area Pass</Link>.

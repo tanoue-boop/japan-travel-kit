@@ -8910,6 +8910,36 @@ export const kinosakiTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * Express Pass page (task-jtk-20261114-R01): the bookings made on the same day as
+ * the 0% Express Pass, placed directly under its Klook button. Official hotels 6.5%,
+ * the Kansai Airport limousine bus 5%, the eSIM 20%. Existing constants only; no price.
+ */
+export const usjExpressSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: parkFrontHotelUsjKlook.title,
+    ctaLabel: "Check The Park Front Hotel →",
+    url: parkFrontHotelUsjKlook.url,
+    why: "An official USJ hotel right outside the main gate — on an Express Pass day the point is to be through the turnstiles early. Hotel rooms by the gates go first on the same busy dates the Express Pass sells out on.",
+  },
+  {
+    label: hotelKintetsuUniversalCityKlook.title,
+    ctaLabel: "Check Hotel Kintetsu Universal City →",
+    url: hotelKintetsuUniversalCityKlook.url,
+    why: "Another official USJ hotel, beside Universal City Station, for when The Park Front Hotel is full on your date.",
+  },
+  {
+    label: kansaiAirportLimousineBus.title,
+    ctaLabel: "Check the airport limousine bus →",
+    url: kansaiAirportLimousineBus.url,
+    why: "The listing includes the Kansai Airport ⇄ Universal Studios Japan route, so arrival day needs no train change with luggage.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The Express Pass and Studio Pass are QR e-tickets, and Super Nintendo World area entry runs through USJ's official app — all of it needs data in the park.",
+  },
+];
+
 /** USJ hotels: the room, the park ticket, the airport bus, data. */
 export const usjHotelsTripPrep: KlookTripPrepItem[] = [
   {

@@ -203,7 +203,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             <strong>Universal Studios Japan</strong> is the region&apos;s blockbuster theme park, home to Super
             Nintendo World and a roster of major rides — it needs online tickets and, for some areas, timed entry,
             so plan ahead with our{" "}
-            <Link href="/guides/attractions/usj-tickets-express-pass" style={linkStyle}>USJ tickets &amp; Express Pass guide</Link>.
+            <Link href="/guides/attractions/usj-tickets-express-pass" style={linkStyle}>Universal Studios Japan Express Pass guide</Link>.
             On the waterfront, the <strong>Kaiyukan</strong> is one of the world&apos;s great aquariums, built
             around a giant central tank with whale sharks — a superb option for families or a rainy day. Both
             of these are the attractions the Amazing Pass excludes, and both sell their own tickets, so treat
