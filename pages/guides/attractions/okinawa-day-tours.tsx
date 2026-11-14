@@ -343,8 +343,10 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             run in Chinese only; durations are from Klook&apos;s listings, read on {CHECKED}.
           </p>
           <p className={styles.bodyText}>
-            Shuri Castle is sold separately, as a half-day walk or a Shuri Castle and Okinawa World bus course. If
-            Okinawa is one stop on a longer trip, our{" "}
+            Shuri Castle is sold separately, as a half-day walk or a Shuri Castle and Okinawa World bus course. To
+            fit one tour into three days with Naha and the Kerama Islands, see our{" "}
+            <Link href="/guides/attractions/okinawa-3-day-itinerary" style={linkStyle}>Okinawa 3 day itinerary</Link>.
+            If Okinawa is one stop on a longer trip, our{" "}
             <Link href="/guides/attractions/japan-14-day-itinerary" style={linkStyle}>14-day Japan itinerary</Link>{" "}
             shows where a Naha flight fits, and the{" "}
             <Link href="/guides/attractions" style={linkStyle}>Things to Do in Japan hub</Link> lists the other
@@ -753,6 +755,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/okinawa-churaumi-aquarium-tickets", title: "Okinawa Churaumi Aquarium Tickets 2026: Price, Hours, Access" },
+              { href: "/guides/attractions/okinawa-3-day-itinerary", title: "Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
               { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },

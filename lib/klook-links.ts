@@ -9001,3 +9001,96 @@ export const usjHotelsTripPrep: KlookTripPrepItem[] = [
     why: "Studio Pass QR codes, the official app's wait times and timed-entry notices all run on your phone in the park.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Okinawa 3 day itinerary, added 14 Nov 2026 (task-jtk-20261114-01).
+//
+// Klook answers automated reads of its product pages with HTTP 403, so the new
+// listings below were confirmed as live en-US pages through the www.klook.com
+// search index on 14 Nov 2026: the half-day Kerama snorkel with Naha pick-up
+// (149209), the Tokashiki snorkel and dive day (57987), Daiwa Roynet Hotel
+// Naha-Kokusaidori (485688), Hotel Rocore Naha (450751) and the Kokusai Street
+// hotel search (p50200347). The northern tours, the Churaumi ticket, the Naha
+// Airport car-rental search (also re-seen in en-US on 14 Nov) and the Naha hotel
+// search reuse the Okinawa constants above. Tours and hotels are the 6.5% band.
+// Not used: 165892 (Chinese/English dive guide, certified divers), and 13407,
+// 55500, 12454, which surfaced only without an en-US locale. No price anywhere.
+// ---------------------------------------------------------------------------
+
+/** Day 3 by boat: the half-day Kerama snorkel that collects from Naha. */
+export const keramaHalfDaySnorkelNaha: KlookTour = {
+  title: "Kerama Islands half-day snorkeling from Naha",
+  desc: "A 3-hour snorkel in the Kerama Islands with morning and afternoon sessions and free pick-up from designated areas of Naha; the listing takes children from age 6",
+  url: klookLink("https://www.klook.com/en-US/activity/149209-okinawa-kerama-islands-snorkeling-from-naha-with-free-transfer/"),
+};
+
+/** Day 3 on Tokashiki Island, for snorkelling or a first dive. */
+export const keramaTokashikiSnorkelDive: KlookTour = {
+  title: "Kerama Tokashiki Island snorkeling and diving experience",
+  desc: "Snorkelling or a trial dive at Tokashiki, the Kerama island nearest Naha; meeting point, boat and what is included are on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/57987-kerama-tokashiki-island-snorkeling-diving-experience-okinawa/"),
+};
+
+/** Covered skybridge to Makishi Station on the listing. */
+export const daiwaRoynetNahaKokusaidoriUrl = klookLink("https://www.klook.com/en-US/hotels/detail/485688-daiwa-roynet-hotel-nahakokusaidori/");
+
+/** About two minutes on foot from Kencho-mae Station on the listing. */
+export const hotelRocoreNahaUrl = klookLink("https://www.klook.com/en-US/hotels/detail/450751-hotel-rocore-naha/");
+
+export const kokusaiStreetHotelsUrl = klookLink("https://www.klook.com/en-US/destination/p50200347-kokusai-street/3-hotel/");
+
+/** Where to sleep for three days in Okinawa without moving hotel. */
+export const okinawaThreeDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Kokusai-dori (Makishi / Miebashi)",
+    why: "Day 1's street is outside the door, the monorail runs to Shuri, and Tomari Port for the Kerama boats is a short taxi ride. Klook's search for hotels on and around the street.",
+    url: kokusaiStreetHotelsUrl,
+  },
+  {
+    area: "Daiwa Roynet Hotel Naha-Kokusaidori",
+    why: "Listed on Klook with a covered skybridge to Makishi Station — the monorail to the airport and to Shuri without crossing a road.",
+    url: daiwaRoynetNahaKokusaidoriUrl,
+  },
+  {
+    area: "Hotel Rocore Naha (Kencho-mae)",
+    why: "About two minutes from Kencho-mae Station on the listing, at the Kokusai-dori end nearest the airport.",
+    url: hotelRocoreNahaUrl,
+  },
+  {
+    area: "Motobu / near the aquarium",
+    why: "Only if you drive and want Day 2 without the four-hour round trip: a night by the aquarium puts the 8:30 opening and Kouri Island close.",
+    url: okinawaChuraumiStayAreas[1].url,
+  },
+];
+
+/** Book these on the same trip: 6.5% tours and hotels, car rental, 20% eSIM. */
+export const okinawaThreeDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: churaumiKouriNorthernDayTour.title,
+    ctaLabel: "Check the northern day tour →",
+    url: churaumiKouriNorthernDayTour.url,
+    why: "Day 2 in one booking if nobody is driving: the aquarium, Kouri Island and Cape Manzamo from Naha or Chatan. Check whether your option includes the aquarium ticket.",
+  },
+  {
+    label: keramaHalfDaySnorkelNaha.title,
+    ctaLabel: "Check the Kerama snorkel →",
+    url: keramaHalfDaySnorkelNaha.url,
+    why: "Day 3 without working out the ferries: a 3-hour snorkel with pick-up in Naha. Boats depend on the sea, so read the weather terms on the listing.",
+  },
+  {
+    label: "Hotels near Kokusai-dori",
+    ctaLabel: "Check Kokusai-dori hotels →",
+    url: kokusaiStreetHotelsUrl,
+    why: "One base for all three nights: the monorail, the tour pick-ups and Tomari Port are all within reach.",
+  },
+  {
+    label: nahaAirportCarRental.title,
+    ctaLabel: "Check Naha Airport car rentals →",
+    url: nahaAirportCarRental.url,
+    why: "For a self-drive Day 2. Klook's page states non-residents need a passport, their own licence, an international driving permit and a credit card.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The Shuri Castle QR ticket, the ferry notices and the tour's meeting message all reach you on your phone.",
+  },
+];
