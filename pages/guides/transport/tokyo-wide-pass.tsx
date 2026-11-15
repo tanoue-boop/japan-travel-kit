@@ -794,9 +794,9 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             Adult fares from Stage 1: JR East and Fujikyu, checked {PRICE_CHECKED}. The GALA Yuzawa half of JR
             East&apos;s example is the ski day in our{" "}
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
-              GALA Yuzawa ski day trip guide
+              Gala Yuzawa day trip from Tokyo
             </Link>
-            , which runs the same pass arithmetic from the slope end.
+            {" "}guide, which runs the same pass arithmetic from the slope end.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1.5rem" }}>
             <div className={styles.tableScroll}>
@@ -1202,7 +1202,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Gala Yuzawa Ski Day Trip from Tokyo: 71 Min, ¥8,000 Lifts</p>
+                <p className={styles.relatedTitle}>Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

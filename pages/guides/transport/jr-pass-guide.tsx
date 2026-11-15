@@ -908,6 +908,14 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             </Link>{" "}
             shows which trains the pass covers leaving Kyoto and what the Nozomi ticket costs.
           </p>
+          <p className={styles.bodyText}>
+            In winter the JR Pass also covers a ski day out of Tokyo: the Joetsu Shinkansen runs direct
+            from Tokyo Station to the seasonal GALA Yuzawa station inside the ski resort. Our{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Gala Yuzawa day trip from Tokyo
+            </Link>{" "}
+            guide has the train times, the 2026-27 dates and which cheaper JR East passes also cover it.
+          </p>
         </section>
 
         {/* Regional passes — the 5% Klook band, against the 2% the JR Pass itself pays. */}

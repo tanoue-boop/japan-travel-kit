@@ -1034,7 +1034,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Gala Yuzawa Ski Day Trip from Tokyo: 71 Min, ¥8,000 Lifts</p>
+                <p className={styles.relatedTitle}>Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

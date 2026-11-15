@@ -1004,6 +1004,19 @@ export const shinkansenTokyoKaruizawa: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/karuizawa-station/"),
 };
 
+/**
+ * Klook's Tokyo → GALA Yuzawa rail page, added 15 Nov 2026 for
+ * gala-yuzawa-ski-day-trip-from-tokyo. The en-US route page answered 200 with the
+ * title "Tokyo to Gala-Yuzawa Shinkansen Tickets & Schedule" and reviews from both
+ * Tokyo Station and Ueno on 15 Nov 2026. A route page rather than a product id,
+ * for the same reason as `shinkansenTokyoKaruizawa`; rail is the 5% band.
+ */
+export const shinkansenTokyoGalaYuzawa: KlookTour = {
+  title: "Tokyo → GALA Yuzawa shinkansen tickets",
+  desc: "Klook's Joetsu Shinkansen booking page for the seasonal through trains from Tokyo and Ueno to GALA Yuzawa, booked by date with a QR code",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/gala-yuzawa-station/"),
+};
+
 // ---------------------------------------------------------------------------
 // Airport limousine bus and the Osaka Kaiyukan, added 22 Oct 2026
 //
