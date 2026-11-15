@@ -28,6 +28,11 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { teamlabSameDayCards } from "../../../../lib/teamlab-same-day-cards";
+
+// Same-day cards under the main CTA (task-jtk-20261115-P01).
+const SAME_DAY = teamlabSameDayCards("tokyo", "zh-tw");
 
 const ROUTE = "/zh-tw/guides/attractions/teamlab-tokyo-tickets";
 const LOCALE = "zh-tw" as const;
@@ -192,6 +197,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票攻略</Link>，或{" "}
           <Link href="/zh-tw/guides/attractions/teamlab-borderless-tickets">teamLab 無界門票攻略</Link>。
         </p>
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <BookingEsimCard />
 

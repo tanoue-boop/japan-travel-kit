@@ -38,6 +38,12 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { teamlabSameDayCards } from "../../../../lib/teamlab-same-day-cards";
+
+// Same-day cards under the main CTA (task-jtk-20261115-P01).
+const SAME_DAY = teamlabSameDayCards("planets", "th");
+const notInTopCards = (item: { url: string }) => !SAME_DAY.cards.some((c) => c.url === item.url);
 
 const P = PRICES.teamlabPlanets;
 const CHECKED = dateLabel(P.checked, "th");
@@ -284,6 +290,8 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         </section>
 
         <PlanetsAnswer />
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <PlanetsSameDay />
 
@@ -600,8 +608,8 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
         <KlookTourPicks
           heading="จองไว้สำหรับวันเดียวกันที่โทโยสุและโอไดบะ"
-          intro="การชม Planets ใช้เวลาประมาณหนึ่งชั่วโมงครึ่งของวันเที่ยวโตเกียวฝั่งตะวันออก และสายยูริคาโมเมะที่พาคุณถึงหน้าประตูยังวิ่งต่อไปถึงโอไดบะ ตั๋วรถไฟใต้ดินครอบคลุมช่วงเมโทรไปโทโยสุ แต่ไม่ครอบคลุมสายยูริคาโมเมะ อีกสามรายการอยู่ห่างจากพิพิธภัณฑ์แค่นั่งรถไม่นาน ราคาของ Klook เปลี่ยนตามวันที่ จึงควรเปิดหน้าสินค้าเพื่อดูราคาและเวลาในวันของคุณ"
-          tours={sameDayTours}
+          intro="การชม Planets ใช้เวลาประมาณหนึ่งชั่วโมงครึ่งของวันเที่ยวโตเกียวฝั่งตะวันออก และสายยูริคาโมเมะที่พาคุณถึงหน้าประตูยังวิ่งต่อไปถึงโอไดบะ ตั๋วรถไฟใต้ดินครอบคลุมช่วงเมโทรไปโทโยสุ แต่ไม่ครอบคลุมสายยูริคาโมเมะ จอยโปลิสอยู่ที่โอไดบะ นั่งรถจากพิพิธภัณฑ์ไม่นาน ส่วนทัวร์สึกิจิและล่องเรืออ่าวโตเกียวอยู่ในการ์ดด้านบน ราคาของ Klook เปลี่ยนตามวันที่ จึงควรเปิดหน้าสินค้าเพื่อดูราคาและเวลาในวันของคุณ"
+          tours={sameDayTours.filter(notInTopCards)}
         />
 
         <KlookTourPicks

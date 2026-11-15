@@ -29,6 +29,11 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { teamlabSameDayCards } from "../../../../lib/teamlab-same-day-cards";
+
+// Same-day cards under the main CTA (task-jtk-20261115-P01).
+const SAME_DAY = teamlabSameDayCards("tokyo", "ko");
 
 const ROUTE = "/ko/guides/attractions/teamlab-tokyo-tickets";
 const TITLE = "팀랩 플래닛 보더리스 비교 2026: 도쿄에서 어디로 갈까";
@@ -189,6 +194,8 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <Link href="/ko/guides/attractions/teamlab-planets-tickets">팀랩 플래닛 예약 가이드</Link>에서, 보더리스는{" "}
           <Link href="/ko/guides/attractions/teamlab-borderless-tickets">팀랩 보더리스 티켓 가이드</Link>에서 확인하세요.
         </p>
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <BookingEsimCard />
 

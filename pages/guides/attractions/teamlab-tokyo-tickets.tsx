@@ -16,6 +16,11 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
+import { teamlabSameDayCards } from "../../../lib/teamlab-same-day-cards";
+
+// Same-day cards under the main CTA (task-jtk-20261115-P01).
+const SAME_DAY = teamlabSameDayCards("tokyo", "en");
 
 // Since 6 Nov 2026 (task jtk-20261106-A24) this URL answers one question: which of Tokyo's
 // two teamLab museums to book. Planets tickets, hours and access have their own page at
@@ -255,6 +260,8 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets guide</Link> covers
           Borderless time slots, the Flexible Pass and buying at the door.
         </p>
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <BookingEsimCard />
 

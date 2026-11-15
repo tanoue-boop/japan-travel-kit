@@ -37,6 +37,12 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { teamlabSameDayCards } from "../../../../lib/teamlab-same-day-cards";
+
+// Same-day cards under the main CTA (task-jtk-20261115-P01).
+const SAME_DAY = teamlabSameDayCards("planets", "zh-tw");
+const notInTopCards = (item: { url: string }) => !SAME_DAY.cards.some((c) => c.url === item.url);
 
 const LOCALE = "zh-tw" as const;
 const GYG_SLUG = "zh-tw-teamlab-planets-tickets";
@@ -288,6 +294,8 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         </section>
 
         <PlanetsAnswer />
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <PlanetsSameDay />
 
@@ -605,8 +613,8 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
         <KlookTourPicks
           heading="同一天在豐洲與台場就能訂的行程"
-          intro="Planets 的時段只佔東邊這一天的一個半小時，而載你到門口的百合海鷗線會繼續開往台場。地鐵通票涵蓋到豐洲的地下鐵路段，但不含百合海鷗線；另外三個都在美術館附近、搭一小段車就到。Klook 價格依日期而變，請打開頁面查看實際金額與時間。"
-          tours={sameDayTours}
+          intro="Planets 的時段只佔東邊這一天的一個半小時，而載你到門口的百合海鷗線會繼續開往台場。地鐵通票涵蓋到豐洲的地下鐵路段，但不含百合海鷗線；Joypolis 在台場，從美術館搭一小段車就到。築地導覽與東京灣遊船放在頁首的卡片裡。Klook 價格依日期而變，請打開頁面查看實際金額與時間。"
+          tours={sameDayTours.filter(notInTopCards)}
         />
 
         <KlookTourPicks

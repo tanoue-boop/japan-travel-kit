@@ -28,6 +28,11 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { teamlabSameDayCards } from "../../../../lib/teamlab-same-day-cards";
+
+// Same-day cards under the main CTA (task-jtk-20261115-P01).
+const SAME_DAY = teamlabSameDayCards("tokyo", "th");
 
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
@@ -184,6 +189,8 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <p className={styles.bodyText}>
           ตัดสินใจแล้ว? ดู<Link href="/th/guides/attractions/teamlab-planets-tickets">ไกด์ตั๋ว teamLab Planets</Link> สำหรับเวลาเปิด การจอง และการเดินทาง หรือ<Link href="/th/guides/attractions/teamlab-borderless-tickets">ไกด์ตั๋ว teamLab Borderless</Link>
         </p>
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <EsimCtaTop />
 

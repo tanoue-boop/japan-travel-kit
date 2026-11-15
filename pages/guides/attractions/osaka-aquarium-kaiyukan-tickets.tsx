@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -11,6 +12,7 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import {
   kaiyukanLegolandCombo,
   kaiyukanNifrelCombo,
+  kaiyukanSameDayCards,
   kaiyukanSameDayPrep,
   osakaAmazingPassKaiyukanCombo,
   osakaAquariumKaiyukanTicket,
@@ -18,6 +20,10 @@ import {
   osakaSkyVistaHalfDayBusTour,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+
+// The three same-day cards under the main CTA (task-jtk-20261115-P01) leave the lower
+// blocks, so nothing is listed twice.
+const notInTopCards = (item: { url: string }) => !kaiyukanSameDayCards.some((c) => c.url === item.url);
 
 /**
  * Osaka Aquarium Kaiyukan — the Tempozan aquarium, and the one major Osaka attraction
@@ -464,6 +470,8 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
           </div>
         </div>
 
+        <KlookSameDayCards heading="What else to book for a Kaiyukan day" cards={kaiyukanSameDayCards} />
+
         <EsimCtaTop />
 
         {/* Intro */}
@@ -711,7 +719,7 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
           label="Same day, same booking"
           heading="What Else Should You Book for a Kaiyukan Day?"
           intro="Two to three hours at the aquarium leaves the rest of the day open, and the pass that skips Kaiyukan still pays on the other day. These book on the same Klook account as the ticket."
-          items={kaiyukanSameDayPrep}
+          items={kaiyukanSameDayPrep.filter(notInTopCards)}
         />
 
         {/* Combos */}
@@ -840,8 +848,8 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
 
         <KlookTourPicks
           heading="The Rest of an Osaka Day"
-          intro="Kaiyukan takes two to three hours of a day, which leaves the other half open — and Tempozan is a long way from the parts of Osaka most people want to see. Both of these cover the Castle, Dotonbori and Shinsekai end of the city. Klook prices change by date, so open a listing for the current figure and the meeting point."
-          tours={[osakaSkyVistaHalfDayBusTour, osakaPrivateWalkingTour]}
+          intro="Kaiyukan takes two to three hours of a day, which leaves the other half open — and Tempozan is a long way from the parts of Osaka most people want to see. This one covers the Castle, Dotonbori and Shinsekai end of the city. Klook prices change by date, so open a listing for the current figure and the meeting point."
+          tours={[osakaSkyVistaHalfDayBusTour, osakaPrivateWalkingTour].filter(notInTopCards)}
         />
 
         {/* Related articles */}

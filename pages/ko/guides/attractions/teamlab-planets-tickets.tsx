@@ -38,6 +38,12 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { teamlabSameDayCards } from "../../../../lib/teamlab-same-day-cards";
+
+// Same-day cards under the main CTA (task-jtk-20261115-P01).
+const SAME_DAY = teamlabSameDayCards("planets", "ko");
+const notInTopCards = (item: { url: string }) => !SAME_DAY.cards.some((c) => c.url === item.url);
 
 const ROUTE = "/ko/guides/attractions/teamlab-planets-tickets";
 const TITLE = "팀랩 플래닛 예약 2026: 티켓 공식 가격·입장 시간";
@@ -289,6 +295,8 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         </section>
 
         <PlanetsAnswer />
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <PlanetsSameDay />
 
@@ -619,8 +627,8 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
 
         <KlookTourPicks
           heading="도요스・오다이바에서 같은 날 예약하기"
-          intro="플래닛 관람은 도쿄 동부 일정 중 약 1시간 반을 차지하고, 입구까지 데려다주는 유리카모메선은 오다이바까지 이어집니다. 서브웨이 티켓은 도요스까지의 메트로 구간은 되지만 유리카모메선은 되지 않습니다. 나머지 세 가지는 모두 미술관에서 금방 갈 수 있습니다. 클룩 가격은 날짜에 따라 달라지니, 본인 날짜의 금액과 시간은 상품 페이지를 열어 확인하세요."
-          tours={sameDayTours}
+          intro="플래닛 관람은 도쿄 동부 일정 중 약 1시간 반을 차지하고, 입구까지 데려다주는 유리카모메선은 오다이바까지 이어집니다. 서브웨이 티켓은 도요스까지의 메트로 구간은 되지만 유리카모메선은 되지 않습니다. 조이폴리스는 오다이바에 있어 미술관에서 금방 갈 수 있습니다. 쓰키지 투어와 도쿄만 크루즈는 페이지 위쪽 카드에 있습니다. 클룩 가격은 날짜에 따라 달라지니, 본인 날짜의 금액과 시간은 상품 페이지를 열어 확인하세요."
+          tours={sameDayTours.filter(notInTopCards)}
         />
 
         <KlookTourPicks

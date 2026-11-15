@@ -7401,6 +7401,99 @@ export const kaiyukanSameDayPrep: KlookTripPrepItem[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Same-day cards for the next most-clicked ticket pages (task-jtk-20261115-P01).
+//
+// Klook's 7-day report on 15 Nov 2026 put teamlab-planets-tickets (1549819, 36
+// clicks), osaka-aquarium-kaiyukan-tickets (1528111, 23) and teamlab-tokyo-tickets
+// (1528122, 15) right behind shibuya-sky. teamLab sells at Klook's 2% special-
+// activity band and the aquarium ticket paid 0% on 11 Nov, so these cards put the
+// 6.5% tours, experiences and hotels directly under the main ticket button. Same
+// component and placement id as the 14 Nov cards (`#same-day-cards`).
+//
+// No new URL: every card reuses an existing constant. The listings were confirmed
+// live as en-US pages through the www.klook.com search index on 15 Nov 2026:
+// 95949 (Tsukiji culture & food tour, meets at Tsukiji Station Exit 2), 135602
+// (matcha and tea ceremony in Toyosu — the listing places it near teamLab Planets
+// and Toyosu Market), 156402 (one-hour Tokyo Bay boat cruise from Shibaura, under
+// Rainbow Bridge), 25706 (private Osaka walking tour, 4 or 8 hours, Osaka Castle,
+// Den-Den Town and Dotonbori) and 103864 (Dotonbori daytime food tour, 11:00–14:00).
+// No prices, for the usual reason.
+// ---------------------------------------------------------------------------
+
+const tsukijiFoodCard = {
+  label: tsukijiCultureFoodTour.title,
+  kind: "Food tour",
+  ctaLabel: "Check the Tsukiji tour →",
+  url: tsukijiCultureFoodTour.url,
+};
+const toyosuTeaCeremonyCard = {
+  label: tokyoMatchaTeaCeremonyExpert.title,
+  kind: "Experience",
+  ctaLabel: "Check the tea ceremony →",
+  url: tokyoMatchaTeaCeremonyExpert.url,
+};
+const tokyoBayCruiseCard = {
+  label: tokyoBaySunsetBoatCruise.title,
+  kind: "Cruise",
+  ctaLabel: "Check the bay cruise →",
+  url: tokyoBaySunsetBoatCruise.url,
+};
+
+export const planetsSameDayCards: KlookSameDayCard[] = [
+  {
+    ...tsukijiFoodCard,
+    why: "A guided morning at the Outer Market with a sit-down sushi stop, a short trip from Toyosu.",
+  },
+  {
+    ...toyosuTeaCeremonyCard,
+    why: "A private-room matcha session with an Urasenke instructor, in Toyosu itself.",
+  },
+  {
+    ...tokyoBayCruiseCard,
+    why: "One hour on the bay from Shibaura, past Odaiba and under Rainbow Bridge.",
+  },
+];
+
+export const teamlabTokyoSameDayCards: KlookSameDayCard[] = [
+  {
+    ...tsukijiFoodCard,
+    why: "A guided morning at the Outer Market with a sit-down sushi stop, a short trip from Planets in Toyosu.",
+  },
+  {
+    ...toyosuTeaCeremonyCard,
+    why: "If you pick Planets: a private-room matcha session with an Urasenke instructor, in Toyosu itself.",
+  },
+  {
+    ...tokyoBayCruiseCard,
+    why: "One hour on the bay from Shibaura after either museum, past Odaiba and under Rainbow Bridge.",
+  },
+];
+
+export const kaiyukanSameDayCards: KlookSameDayCard[] = [
+  {
+    label: "Hotels near Universal Studios Japan (Universal City)",
+    kind: "Hotel",
+    ctaLabel: "Check Universal City hotels →",
+    url: usjStayAreas[0].url,
+    why: "The Captain Line boat crosses from Universal City Port to the aquarium's door.",
+  },
+  {
+    label: osakaPrivateWalkingTour.title,
+    kind: "Private tour",
+    ctaLabel: "Check the private Osaka tour →",
+    url: osakaPrivateWalkingTour.url,
+    why: "The other half of the day: a private guide for Osaka Castle, Den-Den Town and Dotonbori.",
+  },
+  {
+    label: dotonboriDaytimeFoodTour.title,
+    kind: "Food tour",
+    ctaLabel: "Check the Dotonbori food tour →",
+    url: dotonboriDaytimeFoodTour.url,
+    why: "Listed at 11:00–14:00, so it fits before a late-afternoon aquarium slot.",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Hiroshima 2 day itinerary, added 8 Nov 2026 (task-jtk-20261108-01).
 //
 // Two new tour ids and one new hotel search; everything else on the page reuses the

@@ -20,6 +20,12 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, attractionEventJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
+import { teamlabSameDayCards } from "../../../lib/teamlab-same-day-cards";
+
+// Same-day cards under the main CTA (task-jtk-20261115-P01).
+const SAME_DAY = teamlabSameDayCards("planets", "en");
+const notInTopCards = (item: { url: string }) => !SAME_DAY.cards.some((c) => c.url === item.url);
 
 // CTA link — Klook affiliate redirect (teamLab Planets Toyosu ticket), shared with the
 // ticket price table.
@@ -319,6 +325,8 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
 
         {/* The answer first: the table and the Klook button, then the same-day block. */}
         <PlanetsAnswer />
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <PlanetsSameDay />
 
@@ -690,8 +698,8 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             above are untouched. */}
         <KlookTourPicks
           heading="Book It For the Same Day in Toyosu and Odaiba"
-          intro="A Planets slot fills an hour and a half of a day out east, and the Yurikamome line that drops you at the door carries on into Odaiba. The subway pass covers the Metro leg to Toyosu but not the Yurikamome; the other three are all within a short ride of the museum. Klook prices change by date, so open a listing for the figure and the times on your own date."
-          tours={[tokyoJoypolisPassport, tokyoBaySunsetBoatCruise, tsukijiCultureFoodTour, tokyoSubwayTicket]}
+          intro="A Planets slot fills an hour and a half of a day out east, and the Yurikamome line that drops you at the door carries on into Odaiba. The subway pass covers the Metro leg to Toyosu but not the Yurikamome; Joypolis is a short ride on into Odaiba. The Tsukiji tour and the bay cruise are in the cards at the top. Klook prices change by date, so open a listing for the figure and the times on your own date."
+          tours={[tokyoJoypolisPassport, tokyoBaySunsetBoatCruise, tsukijiCultureFoodTour, tokyoSubwayTicket].filter(notInTopCards)}
         />
 
         {/* Klook tours in the same city — the ticket CTAs above are unchanged. */}

@@ -2,7 +2,7 @@ import KlookLink from "./KlookLink";
 import { useComponentLocale } from "./componentLocale";
 import { dateLabel, type Locale } from "../lib/i18n";
 import { PRICES, checkedLabel } from "../lib/attraction-prices";
-import { klookEsim, teamlabPlanetsTicketUrl, tokyoSubwayTicket, tsukijiCultureFoodTour } from "../lib/klook-links";
+import { klookEsim, teamlabPlanetsTicketUrl, tokyoSubwayTicket } from "../lib/klook-links";
 import { klookFor } from "../lib/klook-locale";
 import styles from "../styles/BestEsimJapan.module.css";
 
@@ -44,12 +44,11 @@ const COPY: Record<Locale, Copy> = {
     ],
     cta: "Check teamLab Planets tickets on Klook →",
     source: "Read on teamlab.art and the official ticket store (teamlabplanets.dmm.com) on {date}.",
-    sameLabel: "Book for the same day",
-    sameTitle: "What to book for the same day",
-    sameIntro: "Three things that make a Toyosu day work, each worth sorting before you travel.",
+    sameLabel: "Before you go",
+    sameTitle: "Data and the subway for a Toyosu day",
+    sameIntro: "Two things to sort before you travel: data for the QR ticket at the door, and the ride to Toyosu.",
     same: [
       { title: "Klook Japan eSIM", why: "Your QR ticket opens on your phone, so you need data at the door.", cta: "Check Klook eSIM →" },
-      { title: "Tsukiji food tour", why: "A guided morning at the Outer Market, a short trip from Toyosu.", cta: "Check the Tsukiji tour →" },
       { title: "Tokyo Subway Ticket", why: "Covers the Yurakucho Line to Toyosu Station. It does not cover the Yurikamome.", cta: "Check the subway pass →" },
     ],
     sameNote: "Affiliate links: Klook pays us a commission at no extra cost to you. Klook prices change by date, so no Klook price is shown here.",
@@ -68,12 +67,11 @@ const COPY: Record<Locale, Copy> = {
     ],
     cta: "在 Klook 查看 teamLab Planets 門票 →",
     source: "{date} 查閱 teamlab.art 與官方售票網站（teamlabplanets.dmm.com）。",
-    sameLabel: "同一天要訂的",
-    sameTitle: "同一天可以一起訂的項目",
-    sameIntro: "這三項能讓豐洲這一天更順利，建議出發前先準備好。",
+    sameLabel: "出發前準備",
+    sameTitle: "豐洲這一天的網路與地鐵",
+    sameIntro: "出發前先準備好兩件事：在入口開啟 QR Code 門票要用的網路，以及前往豐洲的交通。",
     same: [
       { title: "Klook 日本 eSIM", why: "QR Code 門票要用手機開啟，到了入口就需要網路。", cta: "查看 Klook eSIM →" },
-      { title: "築地美食導覽", why: "上午逛築地場外市場的導覽行程，從豐洲過去不遠。", cta: "查看築地導覽 →" },
       { title: "東京地鐵票", why: "可搭有樂町線到豐洲站，但不含百合海鷗線。", cta: "查看地鐵票 →" },
     ],
     sameNote: "以上為聯盟連結，您支付的價格不變，Klook 會支付我們分潤。Klook 價格依日期而變，因此這裡不列 Klook 價格。",
@@ -92,12 +90,11 @@ const COPY: Record<Locale, Copy> = {
     ],
     cta: "在 Klook 查看 teamLab Planets 门票 →",
     source: "{date} 查阅 teamlab.art 与官方售票网站（teamlabplanets.dmm.com）。",
-    sameLabel: "同一天要订的",
-    sameTitle: "同一天可以一起订的项目",
-    sameIntro: "这三项能让丰洲这一天更顺利，建议出发前先准备好。",
+    sameLabel: "出发前准备",
+    sameTitle: "丰洲这一天的网络与地铁",
+    sameIntro: "出发前先准备好两件事：在入口打开二维码门票要用的网络，以及前往丰洲的交通。",
     same: [
       { title: "Klook 日本 eSIM", why: "二维码门票要用手机打开，到了入口就需要网络。", cta: "查看 Klook eSIM →" },
-      { title: "筑地美食导览", why: "上午逛筑地场外市场的导览行程，从丰洲过去不远。", cta: "查看筑地导览 →" },
       { title: "东京地铁票", why: "可乘有乐町线到丰洲站，但不含百合海鸥线。", cta: "查看地铁票 →" },
     ],
     sameNote: "以上部分链接为推广联盟链接，你无需支付额外费用，我们可能获得佣金。Klook 价格随日期变化，因此这里不列 Klook 价格。",
@@ -116,12 +113,11 @@ const COPY: Record<Locale, Copy> = {
     ],
     cta: "클룩에서 팀랩 플래닛 티켓 보기 →",
     source: "{date}에 teamlab.art와 공식 티켓 스토어(teamlabplanets.dmm.com)에서 확인했습니다.",
-    sameLabel: "같은 날 함께 예약",
-    sameTitle: "같은 날 함께 예약하면 좋은 것",
-    sameIntro: "도요스 여행을 편하게 해 줄 세 가지입니다. 출발 전에 준비해 두세요.",
+    sameLabel: "출발 전 준비",
+    sameTitle: "도요스 일정의 데이터와 지하철",
+    sameIntro: "출발 전에 두 가지를 준비해 두세요. 입구에서 QR 티켓을 열 모바일 데이터, 그리고 도요스까지 가는 교통편입니다.",
     same: [
       { title: "클룩 일본 eSIM", why: "QR 티켓을 휴대폰으로 열어야 하므로 입구에서 모바일 데이터가 필요합니다.", cta: "클룩 eSIM 보기 →" },
-      { title: "쓰키지 푸드 투어", why: "오전에 쓰키지 장외시장을 도는 가이드 투어로, 도요스에서 가깝습니다.", cta: "쓰키지 투어 보기 →" },
       { title: "도쿄 서브웨이 티켓", why: "유라쿠초선으로 도요스역까지 갈 수 있지만 유리카모메선은 포함되지 않습니다.", cta: "서브웨이 티켓 보기 →" },
     ],
     sameNote: "제휴 링크이며, 추가 비용 없이 클룩이 저희에게 수수료를 지급합니다. 클룩 요금은 날짜에 따라 달라져 여기에 클룩 요금을 적지 않습니다.",
@@ -140,12 +136,11 @@ const COPY: Record<Locale, Copy> = {
     ],
     cta: "ดูตั๋ว teamLab Planets บน Klook →",
     source: "ตรวจสอบข้อมูลจาก teamlab.art และเว็บไซต์จำหน่ายบัตรอย่างเป็นทางการ (teamlabplanets.dmm.com) เมื่อ {date}",
-    sameLabel: "จองสำหรับวันเดียวกัน",
-    sameTitle: "สิ่งที่ควรจองไว้สำหรับวันเดียวกัน",
-    sameIntro: "สามสิ่งที่ช่วยให้เที่ยวโทโยสุได้ราบรื่น ควรเตรียมไว้ก่อนออกเดินทาง",
+    sameLabel: "เตรียมก่อนออกเดินทาง",
+    sameTitle: "อินเทอร์เน็ตและรถไฟใต้ดินสำหรับวันเที่ยวโทโยสุ",
+    sameIntro: "สองอย่างที่ควรเตรียมก่อนออกเดินทาง: อินเทอร์เน็ตมือถือสำหรับเปิดตั๋ว QR ที่หน้าทางเข้า และการเดินทางไปโทโยสุ",
     same: [
       { title: "Klook eSIM ญี่ปุ่น", why: "ตั๋ว QR ต้องเปิดบนมือถือ จึงต้องมีอินเทอร์เน็ตมือถือที่หน้าทางเข้า", cta: "ดู Klook eSIM →" },
-      { title: "ทัวร์อาหารสึกิจิ", why: "ทัวร์พร้อมไกด์ช่วงเช้าที่ตลาดนอกสึกิจิ เดินทางจากโทโยสุไม่ไกล", cta: "ดูทัวร์สึกิจิ →" },
       { title: "Tokyo Subway Ticket", why: "ใช้สาย Yurakucho ไปสถานี Toyosu ได้ แต่ไม่รวมสาย Yurikamome", cta: "ดูพาสรถไฟใต้ดิน →" },
     ],
     sameNote: "เป็นลิงก์พันธมิตร Klook จ่ายค่าคอมมิชชันให้เราโดยคุณไม่ต้องจ่ายเพิ่ม ราคาของ Klook เปลี่ยนตามวันที่ จึงไม่ได้ระบุราคา Klook ไว้ที่นี่",
@@ -205,7 +200,8 @@ export function PlanetsAnswer() {
 export function PlanetsSameDay() {
   const locale = useComponentLocale();
   const copy = COPY[locale];
-  const urls = [klookEsim.url, tsukijiCultureFoodTour.url, tokyoSubwayTicket.url];
+  // The Tsukiji tour moved up into the same-day cards (task-jtk-20261115-P01).
+  const urls = [klookEsim.url, tokyoSubwayTicket.url];
   return (
     <section className={styles.bodySection}>
       <span className={styles.sectionLabel}>{copy.sameLabel}</span>
