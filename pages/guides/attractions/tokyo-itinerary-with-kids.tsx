@@ -570,6 +570,12 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             <a href="https://www.legolanddiscoverycenter.com/tokyo/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>legolanddiscoverycenter.com/tokyo</a>,{" "}
             <a href="https://www.puroland.jp/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>puroland.jp</a>.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            One thing teenagers ask for that does not work with kids: a{" "}
+            <Link href="/guides/attractions/tokyo-go-kart" style={linkStyle}>Tokyo go kart</Link> tour. The
+            Klook listings set 18 as the minimum age, every driver needs a licence valid in Japan, and the karts
+            are single-seat, so there is no passenger seat for a child.
+          </p>
         </section>
 
         {/* Quick answer */}

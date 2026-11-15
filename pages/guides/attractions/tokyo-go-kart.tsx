@@ -6,9 +6,13 @@ import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   akihabaraGoKartTour,
+  asakusaGoKartTour,
+  asakusaSensojiWalkingTour,
   klookEsim,
   shibuyaAnnexGoKartTour,
   shinjukuNightFoodWalkingTour,
+  tokyoBayGoKartTour,
+  tokyoGoKartingListUrl,
   tokyoSightseeingBusTour,
   tokyoSubwayTicket,
 } from "../../../lib/klook-links";
@@ -23,18 +27,32 @@ const GOKART_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=130
 // Licence rules are cross-checked with the National Police Agency and JAF. Klook prices are never
 // quoted: Klook answers automated reads of its product pages with HTTP 403. The age and height
 // lines come from Klook's search-indexed listing text, because the operator's pages state neither.
-const CHECKED = "7 November 2026";
+// Prices, courses and the licence page re-read on the operator's pages on 15 November 2026
+// (the November tab was unchanged from 7 November). The NPA one-year rule was read on 7 November.
+const CHECKED = "15 November 2026";
+const CHECKED_ISO = "2026-11-15";
 
-// "From" prices per person in the November 2026 tab of each shop's price table.
+// "From" prices per person in the November 2026 tab of each shop's price table. The first row
+// is the pick for a reader who has not decided. `book` is the Klook listing for that start point.
 const priceRows = [
-  { shop: "Asakusa (Samurai-S)", route: "Around Asakusa", time: "45 min to 1 hour", day: "¥5,000", evening: "¥6,000", regular: "¥12,000" },
-  { shop: "Akihabara #1 (A1-S)", route: "Akihabara's main streets", time: "About 1 hour", day: "¥9,000", evening: "¥12,000", regular: "¥15,000" },
-  { shop: "Akihabara #2 (A2-S)", route: "Akihabara, Tokyo Station, Ginza", time: "About 1 hour", day: "¥9,000", evening: "Not listed", regular: "¥15,000" },
-  { shop: "Akihabara #2 (A2-M)", route: "Imperial Palace area, Harajuku, Shibuya Crossing", time: "1.5 to 2 hours", day: "¥12,000", evening: "¥17,500", regular: "¥20,000" },
-  { shop: "Shinagawa (S-S)", route: "Shinagawa to Tokyo Tower", time: "About 1 hour", day: "¥14,000", evening: "¥16,000", regular: "¥20,000" },
-  { shop: "Shibuya (H-S)", route: "Shibuya Crossing, Harajuku, Omotesando", time: "About 1 hour", day: "¥16,000", evening: "¥18,000", regular: "¥20,000" },
-  { shop: "Shibuya Annex (H2-S)", route: "Dogenzaka, Shibuya Crossing, Omotesando, Harajuku", time: "About 1 hour", day: "¥16,000", evening: "¥18,000", regular: "¥20,000" },
-  { shop: "Tokyo Bay (K-M)", route: "Rainbow Bridge and Tokyo Tower", time: "1.5 to 2 hours", day: "¥14,000", evening: "¥22,000", regular: "¥25,000" },
+  { shop: "Pick if unsure: Shibuya Annex (H2-S)", route: "Dogenzaka, Shibuya Crossing, Omotesando, Harajuku", time: "About 1 hour", day: "¥16,000", evening: "¥18,000", regular: "¥20,000", book: shibuyaAnnexGoKartTour.url, bookLabel: "Shibuya Annex on Klook" },
+  { shop: "Shibuya (H-S)", route: "Shibuya Crossing, Harajuku, Omotesando", time: "About 1 hour", day: "¥16,000", evening: "¥18,000", regular: "¥20,000", book: GOKART_URL, bookLabel: "Shibuya on Klook" },
+  { shop: "Akihabara #1 (A1-S)", route: "Akihabara's main streets", time: "About 1 hour", day: "¥9,000", evening: "¥12,000", regular: "¥15,000", book: akihabaraGoKartTour.url, bookLabel: "Akihabara on Klook" },
+  { shop: "Akihabara #2 (A2-S)", route: "Akihabara, Tokyo Station, Ginza", time: "About 1 hour", day: "¥9,000", evening: "Not listed", regular: "¥15,000", book: akihabaraGoKartTour.url, bookLabel: "Akihabara on Klook" },
+  { shop: "Akihabara #2 (A2-M)", route: "Imperial Palace area, Harajuku, Shibuya Crossing", time: "1.5 to 2 hours", day: "¥12,000", evening: "¥17,500", regular: "¥20,000", book: akihabaraGoKartTour.url, bookLabel: "Akihabara on Klook" },
+  { shop: "Tokyo Bay (K-M)", route: "Rainbow Bridge and Tokyo Tower", time: "1.5 to 2 hours", day: "¥14,000", evening: "¥22,000", regular: "¥25,000", book: tokyoBayGoKartTour.url, bookLabel: "Tokyo Bay on Klook" },
+  { shop: "Shinagawa (S-S)", route: "Shinagawa to Tokyo Tower", time: "About 1 hour", day: "¥14,000", evening: "¥16,000", regular: "¥20,000", book: tokyoGoKartingListUrl, bookLabel: "Tokyo go-karts on Klook" },
+  { shop: "Asakusa (Samurai-S)", route: "Around Asakusa", time: "45 min to 1 hour", day: "¥5,000", evening: "¥6,000", regular: "¥12,000", book: asakusaGoKartTour.url, bookLabel: "Asakusa on Klook" },
+];
+
+// Licence quick check. Street Kart's licence page and JAF read on 15 November 2026.
+const licenceRows = [
+  { doc: "Answer for most visitors: paper IDP under the 1949 Geneva Convention + home licence + passport", drive: "Yes", note: "Booklet only, issued in your home country before you fly. Card-type, digital and single-sheet IDPs and photocopies are not valid" },
+  { doc: "IDP under the 1968 Vienna Convention only", drive: "No", note: "JAF: only 1949 Geneva IDPs are valid in Japan. Street Kart asks you to contact it first if your cover says 1968" },
+  { doc: "Japanese driver's licence", drive: "Yes", note: "Listed first on Street Kart's licence page. Moped and motorbike licences do not count" },
+  { doc: "Licence from Switzerland, Germany, France, Taiwan, Belgium or Monaco + authorised Japanese translation", drive: "Yes", note: "The translation replaces the IDP. JAF takes applications online from inside Japan only" },
+  { doc: "SOFA licence (US Forces Japan)", drive: "Yes", note: "Listed on Street Kart's licence page" },
+  { doc: "No licence, or a licence from a country outside the 1949 Geneva list", drive: "No", note: "There is no passenger seat, and the shop cannot issue any document on the day" },
 ];
 
 const includedRows = [
@@ -64,29 +82,6 @@ const startRows = [
   { shop: "Shinagawa", address: "1-23-15 Kitashinagawa, Shinagawa", access: "Keikyu Kita-Shinagawa Station, 5 min; JR Shinagawa, 15 min" },
   { shop: "Asakusa", address: "3-25-31 Nishiasakusa, Taito", access: "Tokyo Metro Asakusa Station, 8 min" },
   { shop: "Tokyo Bay", address: "2-10-8 Shinkiba, Koto", access: "Shinkiba Station, 10 to 13 min" },
-];
-
-const requirementRows = [
-  {
-    group: "Most countries (1949 Geneva IDP)",
-    need: "Your home driver's licence + a paper-booklet International Driving Permit issued under the 1949 Geneva Convention + your passport — all originals",
-    drive: "Yes",
-  },
-  {
-    group: "Switzerland, Germany, France, Taiwan, Belgium, Monaco",
-    need: "Your home driver's licence + an authorised Japanese translation + your passport. JAF charges ¥6,000 plus ¥20 a page to print, and takes applications only from inside Japan",
-    drive: "Yes, for one year from entering Japan",
-  },
-  {
-    group: "Countries outside the 1949 Geneva list (Mexico, Kuwait, Saudi Arabia, China, Indonesia, etc.)",
-    need: "These countries are not on the operator's list of 1949 Geneva signatories, so an IDP from them is not valid in Japan",
-    drive: "No, unless you hold a Japanese licence",
-  },
-  {
-    group: "US military personnel",
-    need: "SOFA (USFJ 4EJ) or military driving licence + US state licence + DoD or military ID",
-    drive: "Yes (with valid SOFA documents)",
-  },
 ];
 
 const whoFor = [
@@ -135,7 +130,7 @@ const steps = [
   },
   {
     title: "Confirm you meet the eligibility rules",
-    desc: `Klook's listings set a minimum age of 18, and your licence must be recognised in Japan for driving (a 1949 Geneva IDP, or the translation route for the listed countries). Moped and motorbike licences do not count. Street Kart also invites you to send photos of your documents after booking so it can check them in advance. Its karts are single-seat, so there is no passenger option. Checked ${CHECKED}.`,
+    desc: `Klook's listings set a minimum age of 18, and your licence must be recognised in Japan for driving (a 1949 Geneva IDP, or the translation route for the listed countries). Moped and motorbike licences do not count. Street Kart also invites you to send photos of your documents after booking so it can check them in advance. Its karts are single-seat, so there is no passenger option. Street Kart rules checked ${CHECKED}; the Klook age limit read 7 November 2026.`,
   },
   {
     title: "Book ahead, then arrive early for the briefing",
@@ -145,40 +140,24 @@ const steps = [
 
 const faqItems = [
   {
-    q: "Do I need an International Driving Permit to drive a street go-kart in Tokyo?",
-    a: "Yes — for most visitors it is mandatory. To drive on Tokyo's public roads you must carry a valid International Driving Permit (IDP) issued under the 1949 Geneva Convention, together with your physical home-country driver's licence and your passport. All three must be originals. Crucially, the IDP can only be obtained in your home country before you travel — it cannot be issued in Japan, so arrange it well in advance.",
+    q: "Do you need a license for go-karting in Tokyo?",
+    a: "Yes. Street karting in Tokyo is on public roads, so you need a Japanese licence, or your home licence plus a paper International Driving Permit issued under the 1949 Geneva Convention and your passport, all as originals. Licences from Switzerland, Germany, France, Taiwan, Belgium and Monaco take an authorised Japanese translation instead of the IDP. The IDP can only be issued in your home country before you travel.",
   },
   {
-    q: "Can I drive without an IDP?",
-    a: "No, not on the standard basis. Without a valid 1949 Geneva IDP (or, for certain countries, an official Japanese translation of your licence) you are not legally permitted to drive on Japanese roads, and operators will not let you take the wheel. Drivers from Switzerland, Germany, France, Taiwan, Belgium and Monaco need an authorised Japanese translation instead of the usual IDP. US military personnel can use SOFA-based documentation. If you have none of these, you cannot drive, and Street Kart's single-seat karts have no passenger option.",
-  },
-  {
-    q: "What is the minimum age to drive?",
-    a: "Klook's listings and its go-kart guide set the minimum at 18, and you also need a valid driver's licence. Street Kart's own pages state the licence rule rather than an age, so a younger driver with no valid licence cannot take part.",
-  },
-  {
-    q: "Are these the costumed karts I've seen online?",
-    a: "These are street go-kart tours. They are not affiliated with, sponsored by, or endorsed by any video game, character, or entertainment brand, and any costumes provided are generic. It's simply a chance to drive a small, street-legal kart along public roads in central Tokyo as part of a guided tour.",
-  },
-  {
-    q: "Which documents do I need to bring on the day?",
-    a: "Bring three originals: (1) your physical home-country driver's licence, (2) your International Driving Permit under the 1949 Geneva Convention — or, for Switzerland, Germany, France, Taiwan, Belgium and Monaco, an authorised Japanese translation — and (3) your passport. US military personnel should bring their SOFA-based driving documentation. Photocopies and phone photos are not accepted.",
-  },
-  {
-    q: "Is it safe, and which side of the road do you drive on?",
-    a: "These are street-legal karts driven on real public roads, so it isn't a closed track — Japan drives on the LEFT, and you'll be in live traffic. Tours are guide-led: you follow a lead driver along a planned route, after a safety briefing. Drive carefully, obey traffic rules and your guide's instructions, and treat it as real driving rather than an amusement-park ride.",
+    q: "How much is street go-karting in Tokyo?",
+    a: `Street Kart's official November 2026 tables start at ¥5,000 per person for a 45-minute to 1-hour Asakusa course, ¥9,000 in Akihabara and ¥16,000 in Shibuya, and at ¥12,000 to ¥14,000 for the 1.5 to 2-hour Akihabara and Tokyo Bay courses. Regular prices run up to ¥25,000. Checked ${CHECKED}.`,
   },
   {
     q: "Does a 1968 Vienna Convention IDP work in Japan?",
     a: "No. JAF states that only IDPs issued under the 1949 Geneva Convention are valid in Japan, and that IDPs under other treaties, such as the 1968 Vienna Convention, are not. Street Kart adds that most valid IDPs show 1949 on the cover, and asks you to contact it first if yours shows 1968.",
   },
   {
-    q: "Can a passenger ride with me in a Tokyo go kart?",
-    a: "No, not on a Street Kart tour. The operator says it has no karts for more than one person, and its terms bar anyone else from driving or riding your kart unless the shop or guide says so. Everyone in your group needs their own booking and their own documents.",
+    q: "Can you go-kart in Tokyo in the rain or winter?",
+    a: "Yes, as a rule. Street Kart says it usually runs its tours despite the weather and asks you to contact the shop if you are unsure, and every Tokyo shop's price table lists slots in all 12 months, including December to February. Its terms still let it suspend, cancel or change a tour.",
   },
   {
-    q: "How early should I arrive, and what happens if I am late?",
-    a: "Street Kart asks you to reach the shop 30 minutes before your reservation, and says that late arrivals cannot join. It has no parking and advises against coming by car or Uber because of traffic, so take public transport and leave a margin.",
+    q: "Is street karting in Tokyo safe and legal?",
+    a: "It is legal when you hold a licence valid in Japan: Street Kart's karts are built for Japanese public roads, and the operator turns away drivers without the right documents. It is real traffic on the left-hand side, guide-led with up to 6 drivers per guide, with standard insurance included and no expressways on the courses.",
   },
 ];
 
@@ -188,21 +167,21 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book</title>
+        <title>Tokyo Go Kart 2026: Street Karting in Japan, Price & IDP</title>
         <meta
           name="description"
-          content="Tokyo go kart price in 2026: about ¥5,000 to ¥25,000 on the operator's own tables, plus the IDP rules by country, rain policy and which tour to book."
+          content="Street karting in Japan: a Tokyo go kart costs ¥5,000–¥25,000 a person on official tables. You need a 1949 Geneva IDP, licence and passport. Book on Klook."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book" />
+        <meta property="og:title" content="Tokyo Go Kart 2026: Street Karting in Japan, Price & IDP" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart" />
-        <meta property="og:description" content="Tokyo go kart price in 2026: about ¥5,000 to ¥25,000 on the operator's own tables, plus the IDP rules by country, rain policy and which tour to book." />
+        <meta property="og:description" content="Street karting in Japan: a Tokyo go kart costs ¥5,000–¥25,000 a person on official tables. You need a 1949 Geneva IDP, licence and passport. Book on Klook." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book" />
-        <meta name="twitter:description" content="Tokyo go kart price in 2026: about ¥5,000 to ¥25,000 on the operator's own tables, plus the IDP rules by country, rain policy and which tour to book." />
+        <meta name="twitter:title" content="Tokyo Go Kart 2026: Street Karting in Japan, Price & IDP" />
+        <meta name="twitter:description" content="Street karting in Japan: a Tokyo go kart costs ¥5,000–¥25,000 a person on official tables. You need a 1949 Geneva IDP, licence and passport. Book on Klook." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -222,7 +201,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/tokyo-go-kart",
-              headline: "Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book",
+              headline: "Tokyo Go Kart 2026: Street Karting in Japan, Price & IDP",
               updated,
             }),
           }}
@@ -270,7 +249,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Go Kart 2026:<br />Price, IDP Rules and Which Tour to Book
+            Tokyo Go Kart 2026:<br />Street Karting in Japan, Price &amp; IDP
           </h1>
           <p className={styles.heroSubtitle}>
             Drive a street-legal go-kart through central Tokyo past landmarks like Tokyo Tower and the
@@ -299,15 +278,20 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
         {/* The answer */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A Tokyo go kart tour is a guided convoy on public roads, starting from a shop in Shibuya,
-            Akihabara, Shinagawa, Asakusa or Tokyo Bay. It lasts about an hour, or up to two on the longer
-            courses, and costs about ¥5,000 to ¥25,000 per person on Street Kart&apos;s own price tables for
-            November 2026, with most one-hour central courses between ¥9,000 and ¥20,000. To drive you need
-            your home licence, a 1949 Geneva Convention International Driving Permit (IDP) and your passport;
-            licences from Switzerland, Germany, France, Belgium, Monaco and Taiwan take an authorised
-            Japanese translation instead of the IDP. If you arrive without the original documents you cannot
-            join, and you get no refund. Checked {CHECKED}.
+            To drive a go kart in Tokyo you need a Japanese licence, or your home licence plus a paper
+            International Driving Permit (IDP) issued under the 1949 Geneva Convention and your passport; an IDP
+            under the 1968 Vienna Convention alone is not accepted. Street Kart&apos;s official November 2026
+            tables price a one-hour course from ¥5,000 (Asakusa), ¥9,000 (Akihabara) or ¥16,000 (Shibuya) per
+            person, and a 1.5 to 2-hour course from ¥12,000 (Akihabara) or ¥14,000 (Tokyo Bay, over the Rainbow
+            Bridge), with regular prices up to ¥25,000. Tours start from shops in Shibuya, Akihabara, Asakusa,
+            Shinagawa and Tokyo Bay (Shinkiba), and a driver without the original documents cannot join and gets
+            no refund. Checked {CHECKED}.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={shibuyaAnnexGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Shibuya go kart on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Quick Answer Box */}
@@ -351,7 +335,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What is a Tokyo go kart tour?</h2>
+          <h2 className={styles.sectionTitle}>What is street karting in Japan, and how does a Tokyo go kart tour work?</h2>
           <p className={styles.bodyText}>
             A Tokyo street go-kart tour lets you drive a small, street-legal kart along the city&apos;s public
             roads as part of a guided convoy. Popular routes weave past well-known sights — areas around the
@@ -370,18 +354,20 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
-          <h2 className={styles.sectionTitle}>How much is a go kart tour in Tokyo?</h2>
+          <h2 className={styles.sectionTitle}>How much is street go-karting in Tokyo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            A Tokyo go kart tour costs about ¥5,000 to ¥25,000 per person on Street Kart&apos;s November 2026
-            tables, and the shop, the course and the time of day set the price. Evening slots cost more than
-            daytime slots at every shop below that lists both.
+            Street go-karting in Tokyo costs about ¥5,000 to ¥25,000 per person on Street Kart&apos;s November
+            2026 tables, and the start point, the course and the time of day set the price. If you are unsure,
+            book the Shibuya Annex hour: it is the one-hour course that drives through Shibuya Crossing,
+            Omotesando and Harajuku. Evening slots cost more than daytime slots at every shop below that lists
+            both.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Shop and course", "Route", "Course length", "Daytime, from", "Evening, from", "Regular price, from"].map((h) => (
+                    {["Start point and course", "Main sights on the route", "Course length", "Daytime, from", "Evening, from", "Regular price, from", "Book"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -395,6 +381,11 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
                       <td style={{ fontSize: "0.88rem" }}>{row.day}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.evening}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.regular}</td>
+                      <td style={{ fontSize: "0.88rem" }}>
+                        <KlookLink href={row.book} target="_blank" rel="sponsored noopener" style={{ color: "var(--red)", fontWeight: 600 }}>
+                          {row.bookLabel} →
+                        </KlookLink>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -406,7 +397,19 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             checked {CHECKED}. Prices change by month and slot, and the operator&apos;s booking calendar has the
             figure for your date. Daytime and evening columns show the Review Price, which online booking
             applies automatically. Under the operator&apos;s terms it does not depend on posting a review; the
-            Regular Price is for guests who ask to keep their visit confidential.
+            Regular Price is for guests who ask to keep their visit confidential. The Book column opens the
+            Klook listing for that start point, which has its own price; Shinagawa has no listing of its own,
+            so that link opens Klook&apos;s Tokyo go-karting list.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {CHECKED_ISO}. Official sources:{" "}
+            <a href="https://akiba-kart.com/en/shibuya2.html" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>Shibuya Annex</a>,{" "}
+            <a href="https://akiba-kart.com/en/shibuya.html" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>Shibuya</a>,{" "}
+            <a href="https://streetkart.tokyo/en/akihabara.html" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>Akihabara #1</a>,{" "}
+            <a href="https://streetkart.tokyo/en/akihabara2.html" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>Akihabara #2</a>,{" "}
+            <a href="https://streetkart.com/en/tokyobay.html" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>Tokyo Bay</a>,{" "}
+            <a href="https://streetkart.com/en/shinagawa.html" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>Shinagawa</a>,{" "}
+            <a href="https://streetkart.com/en/asakusa.html" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>Asakusa</a>.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Booking through Klook has its own price, so open the listing to see the figure for your date. For
@@ -458,10 +461,10 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
         {/* Course choice */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Choosing</span>
-          <h2 className={styles.sectionTitle}>Which Tokyo go kart course should I book: Shibuya or Akihabara?</h2>
+          <h2 className={styles.sectionTitle}>Which go-kart route in Tokyo is best (Shibuya, Akihabara or Tokyo Bay)?</h2>
           <p className={styles.bodyText}>
-            Book Shibuya if driving through Shibuya Crossing is the point, and book Akihabara if you would
-            rather pay less. In the November tables a Shibuya course starts at ¥16,000, against ¥9,000 for a
+            Book Shibuya if driving through Shibuya Crossing is the point, Akihabara if you would rather pay
+            less, and Tokyo Bay if you want the Rainbow Bridge and have 1.5 to 2 hours. In the November tables a Shibuya course starts at ¥16,000, against ¥9,000 for a
             one-hour Akihabara course. The Akihabara #2 shop&apos;s one-hour route also takes in Tokyo Station
             and Ginza.
           </p>
@@ -482,16 +485,19 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             <KlookLink href={akihabaraGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               Check the Akihabara tour →
             </KlookLink>
+            <KlookLink href={tokyoBayGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check the Tokyo Bay tour →
+            </KlookLink>
           </div>
         </section>
 
         {/* Requirements table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Eligibility</span>
-          <h2 className={styles.sectionTitle}>Can I drive a go kart in Tokyo with my licence?</h2>
+          <h2 className={styles.sectionTitle}>Do you need a license for go-karting in Tokyo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            Because these karts run on public roads, you must hold a licence Japan recognises for driving.
-            The single most important rule: an International Driving Permit under the 1949 Geneva Convention
+            Yes: street karting in Japan is on public roads, so you need a licence Japan recognises for driving,
+            and there is no passenger seat for anyone without one. The single most important rule: an International Driving Permit under the 1949 Geneva Convention
             must be obtained in your <strong>home country before you travel</strong> — it cannot be issued in
             Japan. Use the table below to find your situation.
           </p>
@@ -500,17 +506,17 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Your situation", "What you need", "Can you drive?"].map((h) => (
+                    {["What you hold", "Can you drive?", "Detail"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {requirementRows.map((row) => (
-                    <tr key={row.group}>
-                      <td className={styles.tdProvider}>{row.group}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.need}</td>
+                  {licenceRows.map((row) => (
+                    <tr key={row.doc}>
+                      <td className={styles.tdProvider}>{row.doc}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.drive}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -518,9 +524,11 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            From the National Police Agency, JAF and Street Kart&apos;s licence page, checked {CHECKED}. An IDP
-            or foreign licence is valid in Japan for one year from entry or until it expires, whichever comes
-            first, and an IDP itself lasts one year from issue. Rules can change, so confirm your nationality
+            Last checked: {CHECKED_ISO} (Street Kart&apos;s licence page and JAF). An IDP or foreign licence is
+            valid in Japan for one year from entry or until it expires, whichever comes first, and an IDP itself
+            lasts one year from issue (National Police Agency, read 7 November 2026). Official sources:{" "}
+            <a href="https://akiba-kart.com/en/license_shibuya.html" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>Street Kart licence page</a>,{" "}
+            <a href="https://english.jaf.or.jp/driving-in-japan/drive-in-japan/switch-to-japanese-license" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>JAF</a>. Rules can change, so confirm your nationality
             with the operator before booking. All documents must be carried as originals on the day.
           </p>
         </section>
@@ -540,6 +548,26 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             and averages 2 to 3 business days for these six licences. If you use JAF, landing the day before
             the tour leaves too little time, so book the kart for later in the trip.
           </p>
+          <div className={styles.verdictBox} style={{ marginTop: "1.25rem" }}>
+            <div className={styles.verdictBody}>
+              <p className={styles.verdictText}>
+                <strong>No IDP? Book one of these instead.</strong> The same streets without a licence: a guided
+                coach loop of the Imperial Palace gardens, Asakusa and Tokyo Skytree, a three-hour join-in food
+                walk through Shinjuku after dark, or a guided half-day walk around Senso-ji.
+              </p>
+              <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+                <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  Check the Tokyo bus day tour →
+                </KlookLink>
+                <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  Check the Shinjuku night food walk →
+                </KlookLink>
+                <KlookLink href={asakusaSensojiWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  Check the Asakusa walking tour →
+                </KlookLink>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Fit rules */}
@@ -573,22 +601,42 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Checked {CHECKED}. Klook wording read from its search-indexed listing text.
+            Checked 7 November 2026. Klook wording read from its search-indexed listing text.
           </p>
         </section>
 
         {/* Rain */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Weather</span>
-          <h2 className={styles.sectionTitle}>Do Tokyo go kart tours run in the rain?</h2>
+          <h2 className={styles.sectionTitle}>Can you go-kart in Tokyo in the rain or winter?</h2>
           <p className={styles.bodyText}>
             Usually yes. Street Kart says it normally goes ahead despite the weather and asks you to contact
-            the shop if you are unsure, though its terms also let it suspend, cancel or change a tour.
+            the shop if you are unsure, though its terms also let it suspend, cancel or change a tour. Winter
+            is not an off-season: every Tokyo shop&apos;s price table lists slots in all 12 months, including
+            December to February, so dress for an open kart.
           </p>
           <p className={styles.bodyText}>
             On a direct booking you can cancel free up to 7 days before your activity, Japan time. Inside
             those 6 days the operator&apos;s cancellation policy applies, so read it before you pay, and changes
             depend on availability. A Klook booking follows the terms on the Klook listing. Checked {CHECKED}.
+          </p>
+        </section>
+
+        {/* Safe and legal */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Safety</span>
+          <h2 className={styles.sectionTitle}>Is street karting in Tokyo safe and legal?</h2>
+          <p className={styles.bodyText}>
+            It is legal when every driver holds a licence valid in Japan: Street Kart describes its karts as
+            custom made for Japanese public roads, and it turns away anyone without the right original
+            documents. It is still real traffic, on the left-hand side of the road, so treat it as driving
+            rather than a ride.
+          </p>
+          <p className={styles.bodyText}>
+            The tours are guide-led, with one guide for up to 6 drivers, after a safety briefing at the shop.
+            The courses do not use expressways, standard insurance is in the fee, and the karts are single-seat,
+            so nobody rides as a passenger. A damaged kart costs a ¥50,000 deductible unless you add the full
+            coverage option. Checked {CHECKED}.
           </p>
         </section>
 

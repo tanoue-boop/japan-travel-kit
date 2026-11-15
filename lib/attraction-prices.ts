@@ -259,7 +259,7 @@ export const TOKYO_GUIDE_PRICES = {
   tokyoDisney: { adult: PRICES.tokyoDisney.adult, checked: PRICES.tokyoDisney.checked },
   tokyoJoypolis: { adult: PRICES.tokyoJoypolis.adult, checked: PRICES.tokyoJoypolis.checked },
   /** Range across Street Kart's own price tables: pages/guides/attractions/tokyo-go-kart.tsx. */
-  tokyoGoKart: { adult: "¥5,000 – ¥25,000", checked: "2026-11-07" },
+  tokyoGoKart: { adult: "¥5,000 – ¥25,000", checked: "2026-11-15" },
 };
 
 /** Attractions checked on their official site but with no price to record — closed, or unreadable. */

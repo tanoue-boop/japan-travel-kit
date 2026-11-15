@@ -436,6 +436,28 @@ export const akihabaraGoKartTour: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/98308-street-go-kart-experience-akihabara/"),
 };
 
+/*
+ * Two more Tokyo go-kart listings and the Tokyo go-karting list, added 15 Nov 2026
+ * (task-jtk-20261115-R05) for the per-row links in the route table on
+ * /guides/attractions/tokyo-go-kart. All three confirmed as en-US pages in the
+ * www.klook.com search index that day. Shinagawa has no listing of its own, so its
+ * row links the list. Go-kart is 5%. No Klook price is printed.
+ */
+export const tokyoBayGoKartTour: KlookTour = {
+  title: "2-hour street go-kart experience in Tokyo Bay",
+  desc: "A guide-led drive through the Tokyo Bay area, over the Rainbow Bridge and past Tokyo Tower",
+  url: klookLink("https://www.klook.com/en-US/activity/91713-2-hour-street-go-kart-experience-tokyo-bay/"),
+};
+
+export const asakusaGoKartTour: KlookTour = {
+  title: "Street go-kart experience in Asakusa",
+  desc: "A guide-led street kart drive from Asakusa, past Kaminarimon and Tokyo Skytree",
+  url: klookLink("https://www.klook.com/en-US/activity/92775-1-hour-street-go-kart-experience-asakusa/"),
+};
+
+/** Klook's list of every Tokyo go-karting product. */
+export const tokyoGoKartingListUrl = klookLink("https://www.klook.com/en-US/destination/c28-tokyo/1031-go-karting/");
+
 export const fujiSubaruLineHakoneBusTour: KlookTour = {
   title: "Fuji Subaru Line 5th Station, Lake Ashi & Hakone bus tour",
   desc: "A join-in coach day tour from Tokyo pairing the Subaru Line Fifth Station with the Lake Ashi cruise",

@@ -418,6 +418,14 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
             Klook prices change by date and slot. Age, height and weight limits differ by listing, so check yours
             before you pay.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            Driving in Tokyo too? The{" "}
+            <Link href="/guides/attractions/tokyo-go-kart" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo go kart
+            </Link>{" "}
+            route table lists each start point there, from Shibuya and Akihabara to Tokyo Bay, with the official
+            price for each course.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={osakaGoKartingListUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               All Osaka go karting on Klook →
@@ -585,7 +593,7 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
-              { href: "/guides/attractions/tokyo-go-kart", title: "Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book" },
+              { href: "/guides/attractions/tokyo-go-kart", title: "Tokyo Go Kart 2026: Street Karting in Japan, Price & IDP" },
               { href: "/guides/attractions/things-to-do-osaka", title: "Things to Do in Osaka" },
               { href: "/guides/attractions/dotonbori-river-cruise", title: "Dotonbori River Cruise" },
               { href: "/guides/attractions/osaka-3-day-itinerary", title: "Osaka 3-Day Itinerary" },

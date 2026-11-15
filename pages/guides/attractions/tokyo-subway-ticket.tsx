@@ -689,7 +689,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Go Kart 2026: Price, IDP Rules and Which Tour to Book</p>
+                <p className={styles.relatedTitle}>Tokyo Go Kart 2026: Street Karting in Japan, Price &amp; IDP</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

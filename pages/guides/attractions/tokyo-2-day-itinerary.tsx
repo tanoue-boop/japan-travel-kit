@@ -548,7 +548,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             counter and the only way to hold sunset. A guided food walk is the one other booking worth making,
             for the Shinjuku evening. Our{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets">SHIBUYA SKY tickets guide</Link> has the time
-            bands and the release rule.
+            bands and the release rule. If you hold a 1949 Geneva IDP, the one-hour{" "}
+            <Link href="/guides/attractions/tokyo-go-kart">Tokyo go kart</Link> course from the Shibuya shops
+            drives through the Shibuya Crossing, Omotesando and Harajuku, the same streets as this day.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
