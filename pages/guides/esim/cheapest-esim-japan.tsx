@@ -450,6 +450,9 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit advice check</Link>; and if
             you need no cap at all, the{" "}
             <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited eSIM comparison</Link>.
+            New to eSIMs? The{" "}
+            <Link href="/guides/esim" className={tools.inlineLink}>Japan eSIM guide</Link> covers how to get an eSIM in
+            Japan, step by step, with a pick for each kind of trip.
           </p>
         </section>
 

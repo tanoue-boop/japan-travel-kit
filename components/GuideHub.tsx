@@ -24,6 +24,7 @@ export default function GuideHub({
   heroDesc,
   dates,
   picks,
+  lead,
 }: {
   category: GuideCategory;
   /** <h1>. Usually a search-friendly phrasing of category.name. */
@@ -32,6 +33,11 @@ export default function GuideHub({
   dates: Record<string, string>;
   /** The hub's paid-link block (components/PartnerPick), shown after "Read this first". */
   picks?: ReactNode;
+  /**
+   * The hub's answer-first paragraph(s), rendered before the pillar introduction so it is
+   * the first paragraph of the body (the hero copy is not counted as body).
+   */
+  lead?: ReactNode;
 }) {
   const start = startHereArticle(category);
   const groups = groupedArticles(category);
@@ -63,6 +69,8 @@ export default function GuideHub({
         <Link href="/guides" className={styles.backLink}>
           ← All guides
         </Link>
+
+        {lead}
 
         {/* Pillar introduction */}
         <div className={styles.intro}>

@@ -504,7 +504,11 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               full comparison of the four Japan eSIM providers
             </Link>{" "}
-            for which plan to buy. Prices on this page checked {pricesCheckedAt}.
+            for which plan to buy, or the{" "}
+            <Link href="/guides/esim" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM guide
+            </Link>{" "}
+            for how to get an eSIM in Japan and a pick for each kind of trip. Prices on this page checked {pricesCheckedAt}.
           </p>
         </section>
 

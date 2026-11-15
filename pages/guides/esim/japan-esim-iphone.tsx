@@ -854,7 +854,11 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               whether eSIM works in Japan at all
             </Link>, start there: it covers the carrier-lock check, the markets where Apple ships
-            iPhones without eSIM, and how a Japan plan compares with roaming and pocket WiFi.
+            iPhones without eSIM, and how a Japan plan compares with roaming and pocket WiFi. For
+            the whole process on any phone, from buying to switching on at arrival, see the{" "}
+            <Link href="/guides/esim" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM guide: how to get an eSIM in Japan
+            </Link>.
           </p>
         </section>
 

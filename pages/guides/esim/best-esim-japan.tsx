@@ -976,7 +976,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
               (nine more providers included); for what travellers recommend, the{" "}
               <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Japan eSIMs Reddit recommends</Link>; and for every
               eSIM and SIM guide on this site, the{" "}
-              <Link href="/guides/esim" className={tools.inlineLink}>Japan eSIM and SIM card guides</Link>.
+              <Link href="/guides/esim" className={tools.inlineLink}>Japan eSIM guide (how to get an eSIM in Japan)</Link>.
             </span>
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>

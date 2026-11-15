@@ -853,7 +853,9 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best Japan eSIM comparison</Link>{" "}
             and the{" "}
             <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit eSIM advice check</Link>{" "}
-            both list cheaper options for that trip.
+            both list cheaper options for that trip, and the{" "}
+            <Link href="/guides/esim" className={tools.inlineLink}>Japan eSIM guide</Link> shows how to get an eSIM in
+            Japan before you fly.
           </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
