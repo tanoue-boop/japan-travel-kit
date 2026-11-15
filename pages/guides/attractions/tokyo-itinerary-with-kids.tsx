@@ -981,6 +981,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
               { href: "/guides/attractions/tokyo-snow-day-trip", title: "Tokyo Snow Day Trip (2026–27): Yeti, Fujiten or Gala" },
               { href: "/guides/transport/tokyo-airport-transfer", title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City" },
               { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?" },
+              { href: "/guides/attractions/tokyo-sightseeing-bus-tour", title: "Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>
                 <div className={styles.relatedIcon}>

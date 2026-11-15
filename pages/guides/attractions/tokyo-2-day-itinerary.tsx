@@ -950,6 +950,7 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
               { href: "/guides/attractions/things-to-do-tokyo", title: "Things to Do in Tokyo 2026: Top Picks and Ticket Prices" },
               { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?" },
+              { href: "/guides/attractions/tokyo-sightseeing-bus-tour", title: "Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus" },
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
               { href: "/guides/transport/tokyo-airport-transfer", title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },

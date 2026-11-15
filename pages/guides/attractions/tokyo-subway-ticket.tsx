@@ -609,12 +609,32 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
           intro="Klook sells the pass on its own and packaged with an airport transfer or an observation deck. If you were going to buy both anyway, the combos save a checkout."
           tours={[subwayCityViewCombo, naritaBusSubwayCombo, tokyoSightseeingBusTour]}
         />
+        <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.88rem" }}>
+          Pass or bus? A guided half-day costs more than three days of this ticket but needs no route planning — our{" "}
+          <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
+            Tokyo sightseeing bus tour guide
+          </Link>{" "}
+          compares Hato Bus, the Sky Hop Bus and the subway on cost and freedom.
+        </p>
 
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 15 Nov 2026: the guided alternative to the subway for a first half-day. */}
+            <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 5h16v6a3 3 0 0 0 0 6v2H4v-2a3 3 0 0 0 0-6z" />
+                  <path d="M12 7v10" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 9 Nov 2026: two days routed on the 48-hour ticket. */}
             <Link href="/guides/attractions/tokyo-2-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

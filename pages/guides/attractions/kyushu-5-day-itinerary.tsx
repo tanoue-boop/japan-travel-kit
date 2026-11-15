@@ -442,6 +442,7 @@ const ROUTE = "/guides/attractions/kyushu-5-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
+  { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?" },
   { href: "/guides/attractions/fukuoka-2-day-itinerary", title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin" },
   { href: "/guides/attractions/yufuin-beppu-tour-from-fukuoka", title: "Yufuin and Beppu Tour from Fukuoka (2026): Tours vs Train" },
   { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
@@ -778,7 +779,12 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Only if you ride most days. Book tours for Days 2 and 4 and you will not use it enough. Take the Yufuin no
             Mori and Kumamoto by train, and even the cheapest single tickets cost more than the pass. Every train in
-            these tables is inside the Northern pass, so you do not need All Kyushu.
+            these tables is inside the Northern pass, so you do not need All Kyushu. The three passes, their seat
+            limits and the Nagasaki and Kagoshima sums are in our{" "}
+            <Link href="/guides/transport/jr-kyushu-rail-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR Kyushu Rail Pass guide
+            </Link>
+            .
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

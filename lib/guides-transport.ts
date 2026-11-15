@@ -51,6 +51,15 @@ export const transportArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/transport/jr-kyushu-rail-pass",
+    badge: "Pass",
+    title: "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?",
+    desc: "All Kyushu ¥22,000 / ¥24,000 / ¥26,000 for 3, 5 or 7 days, Northern Kyushu ¥15,000 / ¥17,000, Southern ¥12,000. Nagasaki and Yufuin returns from Hakata are ¥25,240 on tickets, so two long trips pay for the Northern pass; one does not.",
+    group: "passes",
+    // Kyushu sits outside the three city hubs, same call as hokkaido-rail-pass.
+    city: "other",
+  },
+  {
     href: "/guides/transport/shinkansen-guide",
     badge: "Guide",
     title: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers",

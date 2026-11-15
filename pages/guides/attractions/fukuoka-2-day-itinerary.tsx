@@ -778,7 +778,9 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             For Yufuin, two Yufuin no Mori tickets at {YUFUIN_FARE} each come to <strong>¥12,260</strong>, below the
             3-day Northern Kyushu pass at <strong>{NORTH_3DAY}</strong> (JR Kyushu, {OWN}; ¥17,000 for 5 days). The
             pass pays when Fukuoka is the start of a longer Kyushu trip with Kumamoto or Nagasaki in it — our{" "}
-            <Link href="/guides/attractions/kyushu-5-day-itinerary">Kyushu 5-day itinerary</Link> works the sums.
+            <Link href="/guides/attractions/kyushu-5-day-itinerary">Kyushu 5-day itinerary</Link> works the sums, and
+            the <Link href="/guides/transport/jr-kyushu-rail-pass">JR Kyushu Rail Pass guide</Link> compares the three
+            passes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -865,6 +867,7 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
               { href: "/guides/attractions/yufuin-beppu-tour-from-fukuoka", title: "Yufuin and Beppu Tour from Fukuoka: Tours, Trains and Onsen Time" },
               { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
               { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
+              { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?" },
               { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "Hiroshima 2 Day Itinerary (2026): Peace Park and Miyajima" },
               { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },

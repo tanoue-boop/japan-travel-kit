@@ -9603,3 +9603,73 @@ export const fukuokaTwoDayTripPrep: KlookTripPrepItem[] = [
     why: "Yatai open and close on the day by weather, the boat queue moves by the half hour, and the tour meeting point is a map pin — all on your phone.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo sightseeing bus tour and JR Kyushu Rail Pass entry pages, added
+// 15 Nov 2026 (task-jtk-20261115-02).
+//
+// Klook answers automated reads of its product pages with HTTP 403, so the two
+// new Hato Bus listings were confirmed as live en-US pages through the
+// www.klook.com search index on 15 Nov 2026: the English half-day join-in tour
+// in its afternoon (102622) and morning (101129) versions. The full-day coach
+// (tokyoSightseeingBusTour, 5672), the Skyhop hop-on hop-off ticket (87165), the
+// 70-minute open-top loop (89277) and the JR Kyushu Rail Pass (2371) were
+// re-confirmed in the same index on the same date. Tours and hotels 6.5%,
+// passes 5%, eSIM 20%. No price.
+// ---------------------------------------------------------------------------
+
+/** Hato Bus's English half-day loop, afternoon departure from Tokyo Station. */
+export const hatoBusAfternoonTour: KlookTour = {
+  title: "Hato Bus English half-day tour (afternoon)",
+  desc: "Hato Bus's English-guided afternoon loop from Tokyo Station: the Imperial Palace, Tokyo Tower and Senso-ji in Asakusa, back at about 18:00",
+  url: klookLink("https://www.klook.com/en-US/activity/102622-tokyo-hato-bus-join-half-day-bus-tour/"),
+};
+
+/** The same loop in the morning, from Tokyo Station or Shinjuku Station. */
+export const hatoBusMorningTour: KlookTour = {
+  title: "Hato Bus English half-day tour (morning)",
+  desc: "The morning version of Hato Bus's English half-day loop, with a choice of Tokyo Station or Shinjuku Station as the start",
+  url: klookLink("https://www.klook.com/en-US/activity/101129-tokyo-hato-bus-join-half-day-bus-tour/"),
+};
+
+/** Book these on the same trip: 6.5% hotel, 5% subway pass, 20% eSIM. */
+export const tokyoBusTourTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "Hato Bus's English tours and the Skyhop Bus both start on the Marunouchi side of Tokyo Station, so a room here makes an 08:20 check-in a short walk.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "A bus tour covers one half-day; the subway pass covers the other days and the evening after the coach drops you back.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The meeting point, the Skyhop timetable and the audio guide by QR code are all on your phone once you leave the hotel.",
+  },
+];
+
+/** Book these on the same trip: 6.5% tour and hotel, 5% pass, 20% eSIM. */
+export const jrKyushuPassTripPrep: KlookTripPrepItem[] = [
+  {
+    label: jrKyushuRailPass.title,
+    ctaLabel: "Check the JR Kyushu pass →",
+    url: jrKyushuRailPass.url,
+    why: "JR Kyushu lists Klook among the overseas sellers of the pass. Buy it once your route shows the pass wins, and read the listing for where the voucher is exchanged.",
+  },
+  {
+    label: "Hotels at Hakata Station",
+    ctaLabel: "Check Hakata hotels →",
+    url: fukuokaStayAreas[1].url,
+    why: "Every JR Kyushu pass trip in the north starts at Hakata: the Kyushu Shinkansen, the Relay Kamome to Nagasaki and the Yufuin no Mori all leave from this station.",
+  },
+  {
+    label: yufuinBeppuNoMoriTour.title,
+    ctaLabel: "Check the Yufuin & Beppu tour →",
+    url: yufuinBeppuNoMoriTour.url,
+    why: "If Yufuin and Beppu are the only trip out of Fukuoka, one coach day can cost less than a 3-day pass — price both before buying.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Seat reservations on JR Kyushu's pass booking site and the exchange-office hours are online, so data from landing at Fukuoka matters.",
+  },
+];

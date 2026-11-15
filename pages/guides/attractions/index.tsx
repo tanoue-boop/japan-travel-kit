@@ -69,7 +69,10 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             <PartnerTextLink href={fujiDayTour.url}>Mt. Fuji day tour from Tokyo</PartnerTextLink> runs by coach to the
             Fuji Fifth Station, Lake Kawaguchi and Oshino Hakkai and returns the same evening. In the city itself, the{" "}
             <PartnerTextLink href={tokyoSightseeingBusTour.url}>Tokyo sightseeing bus day tour</PartnerTextLink> is a
-            guided loop of the Imperial Palace gardens, Asakusa and Tokyo Skytree. The tickets that sell out by date are{" "}
+            guided loop of the Imperial Palace gardens, Asakusa and Tokyo Skytree (compare it with Hato Bus and the Sky
+            Hop Bus in our{" "}
+            <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo sightseeing bus tour guide</Link>
+            ). The tickets that sell out by date are{" "}
             <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Planets</Link>{" "}
             (not sure which teamLab? see our{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Tokyo tickets comparison</Link>),{" "}

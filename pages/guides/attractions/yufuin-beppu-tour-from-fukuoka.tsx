@@ -216,6 +216,7 @@ const ROUTE = "/guides/attractions/yufuin-beppu-tour-from-fukuoka";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
+  { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?" },
   { href: "/guides/attractions/fukuoka-2-day-itinerary", title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin" },
   { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
   { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
@@ -508,6 +509,11 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             The Yufuin no Mori times are on JR Kyushu&apos;s timetable of 14 March 2026. The Sonic figure is the
             shortest on its Oita and Beppu page. The bus operators show different fares, so check yours on the operator&apos;s site.
+            Whether the pass beats two Yufuin no Mori tickets is worked out in our{" "}
+            <Link href="/guides/transport/jr-kyushu-rail-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              JR Kyushu Rail Pass guide
+            </Link>
+            .
           </p>
         </section>
 
