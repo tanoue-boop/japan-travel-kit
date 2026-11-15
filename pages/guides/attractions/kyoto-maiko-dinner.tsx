@@ -171,7 +171,7 @@ const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
   { href: "/guides/attractions/gion-night-walking-tour", title: "Gion Night Walking Tour 2026: Times, Types & Photo Rules" },
-  { href: "/guides/attractions/tea-ceremony-japan", title: "Japanese Tea Ceremony Experience: Price, How Long and Where to Book" },
+  { href: "/guides/attractions/tea-ceremony-japan", title: "Tea Ceremony in Tokyo: Best Experiences, Prices & Kyoto Options" },
   { href: "/guides/attractions/kyoto-kimono-rental", title: "Kyoto Kimono Rental (2026): Which Area, What's Included, When to Return" },
   { href: "/guides/attractions/kyoto-cooking-class", title: "Kyoto Cooking Class (2026): Sushi, Ramen, Wagashi Compared" },
   { href: "/guides/attractions/things-to-do-kyoto", title: "Things to Do in Kyoto (2026): Temples, Timing and What to Book" },

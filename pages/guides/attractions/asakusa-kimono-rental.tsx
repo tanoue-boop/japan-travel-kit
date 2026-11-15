@@ -511,7 +511,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Because the deadline takes your afternoon but not your evening, this slots neatly into a
             wider Tokyo day. A{" "}
-            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony</Link> is the natural
+            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> is the natural
             indoor pairing and runs under an hour;{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree</Link> is across the
             river and stays open long after the kimono is back; and our{" "}
@@ -590,7 +590,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japanese Tea Ceremony Experience: Price, How Long and Where to Book</p>
+                <p className={styles.relatedTitle}>Tea Ceremony in Tokyo: Best Experiences, Prices &amp; Kyoto Options</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

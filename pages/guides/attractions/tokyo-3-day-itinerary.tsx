@@ -596,6 +596,9 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             worth booking for a different reason: the same-day counter adds a service fee per ticket, so
             buying ahead is cheaper rather than safer — the detail is in our{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets guide</Link>.
+            Day 2 is also the day for a{" "}
+            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link>: the kimono
+            sessions are in Asakusa, and one private-room session is in Toyosu near teamLab Planets.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

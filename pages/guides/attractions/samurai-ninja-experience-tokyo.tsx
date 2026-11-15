@@ -488,7 +488,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japanese Tea Ceremony Experience: Price, How Long and Where to Book</p>
+                <p className={styles.relatedTitle}>Tea Ceremony in Tokyo: Best Experiences, Prices &amp; Kyoto Options</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

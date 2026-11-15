@@ -3481,6 +3481,15 @@ export const asakusaTableKimonoTeaCeremony: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/139616-table-style-tea-ceremony-experience-near-senso-ji-and-skytree/"),
 };
 
+// Added 15 Nov 2026 for the Tokyo-first rewrite of tea-ceremony-japan. The en-US URL
+// was confirmed in the www.klook.com search index that day; desc repeats the listing.
+/** Cha An in Shibuya: 40–50 minutes with a stone-mill demonstration. */
+export const shibuyaChaAnTeaCeremony: KlookTour = {
+  title: "Tokyo: tea ceremony at Cha An, Shibuya",
+  desc: "40 to 50 minutes with a tea master: a stone-mill demonstration, the ceremony, nerikiri sweets and a bowl you whisk yourself",
+  url: klookLink("https://www.klook.com/en-US/activity/167196-tea-ceremony-tokyo-chaan-in-shibuya/"),
+};
+
 // ---------------------------------------------------------------------------
 // The budget guide, added 27 Oct 2026 for japan-travel-budget.
 //
@@ -6248,6 +6257,29 @@ export const gionNightSameDayPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.esim,
     why: "Your booking names a meeting point in a district of narrow lanes, and you will want a working map to reach it on time.",
+  },
+];
+
+/**
+ * The rest of a Tokyo tea ceremony day, for tea-ceremony-japan (15 Nov 2026).
+ * No new listing: the kimono is asakusa-kimono-rental's Aiwafuku No. 1 constant.
+ */
+export const teaCeremonyTokyoSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: asakusaKimonoAiwafukuNo1.title,
+    ctaLabel: "Check Asakusa kimono rental →",
+    url: asakusaKimonoAiwafukuNo1.url,
+    why: "For a session with no kimono of its own, such as Shibuya or a hotel tea room; the listing gives a six-hour rental with hair styling, so book the ceremony inside that window.",
+  },
+  {
+    label: "Hotels in Ueno and Asakusa",
+    ctaLabel: "Check Ueno and Asakusa hotels →",
+    url: tokyoStayAreas[2].url,
+    why: "Most of the kimono-and-ceremony sessions are in Asakusa, so a bed a few stops away makes a morning slot easy.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Tea rooms sit on upper floors and back streets, and you will want a working map to reach a booked slot on time.",
   },
 ];
 

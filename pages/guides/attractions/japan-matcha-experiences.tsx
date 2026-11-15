@@ -419,8 +419,8 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             go to a Kyoto or Tokyo tea room for the ritual — and if you only have one free hour, that hour is
             better spent in a city tea room than on two trains. For the ritual itself, the etiquette and the
             seating, our{" "}
-            <Link href="/guides/attractions/tea-ceremony-japan">Japanese tea ceremony guide</Link> is the
-            companion to this one.
+            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> guide, which
+            also covers the Kyoto tea rooms, is the companion to this one.
           </p>
         </section>
 
@@ -673,7 +673,7 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japanese Tea Ceremony Experience: Price, How Long and Where to Book</p>
+                <p className={styles.relatedTitle}>Tea Ceremony in Tokyo: Best Experiences, Prices &amp; Kyoto Options</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

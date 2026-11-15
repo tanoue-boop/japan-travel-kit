@@ -603,7 +603,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets guide</Link> has the
             350 m and 450 m prices), and the teamLab Planets slot if you are going. If you would rather hand the east side to a
             guide, the sightseeing bus day tour covers the Imperial Palace gardens, Asakusa and Skytree; the
-            Tsukiji street-food walk is a two-hour version of lunch.
+            Tsukiji street-food walk is a two-hour version of lunch. For an indoor hour in Asakusa, our{" "}
+            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> guide compares
+            the kimono sessions near Senso-ji, which take about 90 minutes including dressing.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
