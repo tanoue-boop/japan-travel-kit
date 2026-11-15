@@ -673,7 +673,10 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             west, the 5-day Kansai-Hiroshima Area Pass ({yen(KANSAI_HIROSHIMA_PASS)}, JR West, {SANYO_CHECKED})
             covers Shin-Osaka–Hiroshima, JR around Kansai and the Miyajima ferry; Shin-Osaka → Hiroshima alone
             is {yen(FARE_OSAKA_HIROSHIMA)}, so it pays only if you also come back east through Shin-Osaka or
-            add JR day trips inside its five days.
+            add JR day trips inside its five days. The 7-day{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> is the regional pass built
+            for Tokyo → Kanazawa → Kyoto and Osaka, but this route leaves Kanazawa by bus for Takayama, so in its
+            seven days it would cover little more than the Day 7 shinkansen and fall short of single tickets.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

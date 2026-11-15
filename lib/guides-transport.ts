@@ -29,7 +29,7 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/hokuriku-arch-pass",
     badge: "Pass",
-    title: "Hokuriku Arch Pass (2026): Price, Route and Is It Worth It?",
+    title: "JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?",
     desc: "¥35,000 adult, ¥17,500 child for 7 days from Tokyo to Kanazawa and Osaka, Thunderbird and Haruka included, Tokaido Shinkansen not. ¥15,000 to ¥18,000 under the JR Pass, but a single run costs less on tickets.",
     group: "passes",
     city: "other",

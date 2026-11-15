@@ -698,7 +698,11 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>
               JR Pass guide
             </Link>
-            ; for Hiroshima, which no Kansai pass reaches, the{" "}
+            ; for a loop that starts in Tokyo and reaches Kansai through Kanazawa, the 7-day{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Hokuriku Arch Pass
+            </Link>{" "}
+            covers the Thunderbird and the HARUKA as well as the Hokuriku Shinkansen; for Hiroshima, which no Kansai pass reaches, the{" "}
             <Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={{ color: "var(--text)", fontWeight: 600 }}>
               Osaka to Hiroshima Shinkansen guide
             </Link>{" "}

@@ -1751,7 +1751,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Hokuriku Arch Pass (2026): Price, Route and Is It Worth It?</p>
+                <p className={styles.relatedTitle}>JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

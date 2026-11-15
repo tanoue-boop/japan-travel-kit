@@ -608,7 +608,11 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             Kanazawa detour fits a two-week route.
           </p>
           <p className={styles.bodyText}>
-            The <strong>Hokuriku Arch Pass</strong> ({ARCH_PASS}, 7 days) is shaped for Tokyo → Kanazawa → Kyoto
+            The{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">
+              <strong>Hokuriku Arch Pass</strong>
+            </Link>{" "}
+            ({ARCH_PASS}, 7 days) is shaped for Tokyo → Kanazawa → Kyoto
             or Osaka, flying in to Tokyo and out of Kansai. It excludes the Tokaido Shinkansen, so it does nothing
             for a there-and-back. The <strong>JR EAST PASS</strong> covers the Hokuriku Shinkansen only to
             Joetsumyoko — see our{" "}
@@ -744,7 +748,7 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Hokuriku Arch Pass (2026): Price, Route and Is It Worth It?</p>
+                <p className={styles.relatedTitle}>JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

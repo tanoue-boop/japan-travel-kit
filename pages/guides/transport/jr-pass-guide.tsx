@@ -674,7 +674,8 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             if your trip stays in one region, the cheaper pass is usually a regional one: the{" "}
             <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> for Kyoto, Osaka and Nara,
             the <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass</Link> for Kanto day trips, or
-            the <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> for Tokyo to Kanazawa.
+            the <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> ({"¥35,000"}, 7 days) for a Tokyo → Kanazawa → Kyoto and Osaka loop, which
+            skips the Tokaido Shinkansen.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -1160,7 +1161,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Hokuriku Arch Pass (2026): Price, Route and Is It Worth It?</p>
+                <p className={styles.relatedTitle}>JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

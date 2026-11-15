@@ -66,7 +66,9 @@ export default function GuidesTransportPage({ dates }: { dates: Record<string, s
             <Link href="/guides/transport/kyoto-to-tokyo-shinkansen" style={{ color: "var(--text)", fontWeight: 600 }}>Kyoto to Tokyo train guide</Link>{" "}
             shows what the pass covers on the busiest single leg, with the Nozomi ticket priced, and our{" "}
             <Link href="/guides/transport/tokyo-to-kanazawa" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo to Kanazawa shinkansen guide</Link>{" "}
-            weighs it against the Hokuriku Arch Pass on the Kagayaki. For a stay
+            weighs it against the{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Hokuriku Arch Pass</Link>{" "}
+            on the Kagayaki — the 7-day pass for a Tokyo → Kanazawa → Osaka loop. For a stay
             based in the capital, the{" "}
             <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> covers all Tokyo Metro
             and Toei Subway lines for 24, 48 or 72 hours;{" "}

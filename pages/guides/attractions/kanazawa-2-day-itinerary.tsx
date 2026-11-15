@@ -747,11 +747,11 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
           <p className={styles.bodyText}>
             Not for a Tokyo–Kanazawa return alone. JR West&apos;s eTicket price for a reserved seat is{" "}
             <strong>{SHINKANSEN}</strong> one way, and the 7-day Hokuriku Arch Pass is <strong>{ARCH_PASS}</strong>.
-            It pays when Kanazawa is the middle of a Tokyo → Kanazawa → Kyoto/Osaka trip, because it covers the
-            Hokuriku Shinkansen from Tokyo and the run to Kansai — but not the Tokaido Shinkansen back. It does not
-            cover the Shirakawa-go bus. Read {RAIL}. Our{" "}
-            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass guide</Link> has the break-even
-            sums.
+            It is built for a Tokyo → Kanazawa → Kyoto/Osaka trip, because it covers the Hokuriku Shinkansen from
+            Tokyo and the run to Kansai — but not the Tokaido Shinkansen back — and even then it needs side trips
+            on top to beat single tickets. It does not cover the Shirakawa-go bus. Read {RAIL}. Price, coverage
+            and the break-even sums are in our{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -878,7 +878,7 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
             {[
               { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tour: Which Departure to Book" },
               { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa Shinkansen (2026): Time, Price, Passes" },
-              { href: "/guides/transport/hokuriku-arch-pass", title: "Hokuriku Arch Pass (2026): Price, Route and Is It Worth It?" },
+              { href: "/guides/transport/hokuriku-arch-pass", title: "JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: Kanazawa, Shirakawa-go and Takayama" },
               { href: "/guides/attractions/japan-3-week-itinerary", title: "Japan 3 Week Itinerary: 21 Days, Day by Day" },
               { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },

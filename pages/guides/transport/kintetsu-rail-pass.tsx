@@ -812,7 +812,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
               { href: "/guides/attractions/osaka-2-day-itinerary", title: "Osaka 2-Day Itinerary" },
               { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka and Kyoto 3-Day Itinerary" },
               { href: "/guides/transport/osaka-transportation", title: "Getting Around Osaka" },
-              { href: "/guides/transport/hokuriku-arch-pass", title: "Hokuriku Arch Pass (2026): Price, Route and Is It Worth It?" },
+              { href: "/guides/transport/hokuriku-arch-pass", title: "JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?" },
               { href: "/guides/transport", title: "More Transport Guides →" },
             ].map((item) => (
               <Link key={item.href} href={item.href} className={styles.relatedCard}>
