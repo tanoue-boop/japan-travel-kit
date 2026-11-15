@@ -183,15 +183,15 @@ const faqItems = [
   },
   {
     q: "雪猴可以和澀溫泉或善光寺一起玩嗎？",
-    a: "可以，兩者都順路。澀溫泉是公苑下方的溫泉街，住一晚時最適合順遊。善光寺在轉車的長野市區，Klook 有幾款地獄谷一日遊把它和公苑排在一起。自己從東京當天來回時，善光寺最適合排在回程的下午，但前提是您在冬季 16:00 閉園之前早早離開公苑。",
+    a: "可以，兩處都能順路安排。澀溫泉是公苑下方的溫泉街，住一晚時最適合順遊。善光寺在轉車的長野市區，Klook 有幾款地獄谷一日遊把它和公苑排在一起。自己從東京當天來回時，善光寺最適合排在回程的下午，但前提是您在冬季 16:00 閉園之前早早離開公苑。",
   },
   {
     q: "可以帶小孩、嬰兒車或狗去地獄谷嗎？",
-    a: "小孩可以，嬰兒車和狗不行。未滿 6 歲由監護人陪同免費，但步道未鋪裝、有坡道和階梯，公苑表示輪椅與推車無法使用，小小孩請用抱的。狗和貓不得入園，導盲犬等輔助犬也一樣，因為狗是猴子的天敵。",
+    a: "小孩可以，嬰兒車和狗不行。未滿 6 歲由監護人陪同免費，但步道未鋪裝、有坡道和階梯，公苑表示輪椅與推車無法使用，小小孩請抱著或使用嬰兒背帶。狗和貓不得入園，導盲犬等輔助犬也一樣，因為狗是猴子的天敵。",
   },
   {
     q: "野猿公苑有哪些規定？",
-    a: "不要餵食、觸摸或盯著猴子看。公苑的注意事項說，帶食物會讓猴子搶包包、抱住腿，近距離盯著猴子的眼睛是敵意的表現，幼猴靠近時要走開。拍照甚至用閃光燈都沒問題，但禁止無人機和自拍棒，相機也不可靠近猴子或伸進浴池。",
+    a: "不要餵食、觸摸或盯著猴子看。公苑的注意事項說，帶食物會讓猴子搶包包、抱住腿，近距離直視猴子的眼睛，會被視為敵意的表現，幼猴靠近時要走開。拍照甚至用閃光燈都沒問題，但禁止無人機和自拍棒，也不可把相機伸向猴子或伸進浴池。",
   },
   {
     q: "JR Pass 或 JR EAST PASS 能到雪猴那裡嗎？",
@@ -261,7 +261,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 地獄谷野猿公苑 2026：<br />交通・門票・東京出發一日遊
 </h1>
           <p className={styles.heroSubtitle}>
-日本會泡溫泉的猴子住在長野市近郊山上的山谷裡，下新幹線後，還得轉搭電車、巴士，再走一段積雪的山路。這裡整理費用、時間，以及哪些情況適合跟團。
+日本會泡溫泉的猴子棲息在長野市近郊山上的山谷裡，搭完新幹線後，還得轉搭電車和巴士，再走一段積雪的山路。這裡整理費用、時間，以及哪些情況適合跟團。
 </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${monthLabel(updated.iso, LOCALE)}`, "官方票價與時間，附查核日期", "跟團或自助比較"].map((t) => (
@@ -283,11 +283,11 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
         </section>
 
         <WinterBookingTop
-          heading={"今年冬天可以預訂哪些東京出發的雪猴行程？"}
+          heading={"今年冬天有哪些從東京出發的雪猴行程可以預訂？"}
           checkedIso="2026-11-06"
           deadline={
             <>
-聖誕與新年期間請在 11 月 30 日前預訂，1、2 月至少提前三週。泡湯主要在 12 月到 3 月，所有行程都集中在這段短暫的季節裡。如果打算自助前往，日期一確定就買指定日期的網路票：12 月至 4 月持票者優先入園，12 月 1 日起 ¥880，現場 ¥1,000。
+聖誕與新年期間請在 11 月 30 日前預訂，1、2 月至少提前三週預訂。猴子泡湯主要在 12 月到 3 月，所有行程都集中在這段短暫的季節裡。如果打算自助前往，日期一確定就買指定日期的網路票：12 月至 4 月持票者優先入園，12 月 1 日起 ¥880，現場 ¥1,000。
 </>
           }
           tours={[
@@ -347,7 +347,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>
-步行到雪猴
+步行前往野猿公苑
 </p>
                 <p className={styles.verdictStatValue}>
 30–35 分鐘，冬季有雪
@@ -355,7 +355,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
               </div>
             </div>
             <p className={styles.verdictText}>
-<strong>重點：</strong>地獄谷野猿公苑（Snow Monkey Park）2026 年 12 月 1 日起現場票成人 ¥1,000、兒童 ¥500，網路票 ¥880 與 ¥440（11 月 30 日前 ¥800 與 ¥400），11 月至 3 月開放 9:00–16:00（4 月至 10 月 8:30–17:00）。從東京搭北陸新幹線到長野最快 79 分鐘，轉長野電鐵到湯田中 38 分鐘，再搭 15 分鐘巴士（或從長野搭 41 分鐘急行巴士），最後走約 35 分鐘冬季滿是冰雪的未鋪裝步道。雪猴一日遊會處理所有轉乘，也常加上善光寺；自己去比較便宜，但單程將近三小時。所有數字皆出自公苑官網，查核日：{CHECKED}。
+<strong>重點：</strong>地獄谷野猿公苑（Snow Monkey Park）2026 年 12 月 1 日起現場票成人 ¥1,000、兒童 ¥500，網路票 ¥880 與 ¥440（11 月 30 日前 ¥800 與 ¥400），11 月至 3 月開放 9:00–16:00（4 月至 10 月 8:30–17:00）。從東京搭北陸新幹線到長野最快 79 分鐘，轉長野電鐵到湯田中 38 分鐘，再搭 15 分鐘巴士（或從長野搭 41 分鐘急行巴士），最後走約 35 分鐘冬季滿是冰雪的未鋪裝步道。雪猴一日遊會處理所有轉乘，也常加上善光寺；自行前往比較便宜，但單程將近三小時。所有數字皆出自公苑官網，查核日：{CHECKED}。
 </p>
             <KlookLink
               href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)}
@@ -438,7 +438,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 從東京怎麼去看雪猴？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-四段交通加一段步行。第一段很快，後三段才是這趟行程能否順利完成的關鍵。
+要轉乘四段交通，再走一段步道。第一段很快，後三段交通才是這趟行程能否順利完成的關鍵。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -490,7 +490,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 <strong>冬季不論走哪條路，都約 30 到 35 分鐘。</strong>公苑表示從 Snow Monkey Park 巴士站約 35 分鐘；從上林溫泉免費停車場沿約 2 公里的遊步道約 30 分鐘，路況大致平坦、部分有坡。最短的路線是從收費的地獄谷停車場（¥500）走約 15 分鐘，但只有夏季能用：從澀溫泉上來的林道冬季封閉，而且任何季節都太窄，大型車無法通行。
 </p>
           <p className={styles.bodyText}>
-步道未鋪裝，有坡道和階梯，公苑表示輪椅與推車無法使用。冬季步道上有被踩實的積雪，部分路段結冰。來回步行請預留一小時，再加上觀賞時間，並在冬季 16:00 閉園前至少 30 分鐘抵達入口。
+步道未鋪裝，有坡道和階梯，公苑表示輪椅與推車無法使用。冬季步道上的積雪會被踩得很紮實，部分路段結冰。來回步行請預留一小時，再加上觀賞時間，並在冬季 16:00 閉園前至少 30 分鐘抵達入口。
 </p>
         </section>
 
@@ -499,13 +499,13 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 穿著
 </span>
           <h2 className={styles.sectionTitle}>
-冬天看雪猴要穿什麼？
+冬天去看雪猴該怎麼穿？
 </h2>
           <p className={styles.bodyText}>
-<strong>雪靴，最好再加簡易冰爪。</strong>公苑建議冬季穿靴子或雪靴（其他季節穿運動鞋或登山鞋），並事先買好簡易冰爪（套在鞋上的輕便防滑釘）以策安全。請依山谷的氣溫而不是東京來穿著，公苑提到冬季最低 −10°C。可操作觸控螢幕的手套、帽子和能確實關好的包包也不可少。
+<strong>雪靴，最好再加簡易冰爪。</strong>公苑建議冬季穿靴子或雪靴（其他季節穿運動鞋或登山鞋），並事先買好簡易冰爪（套在鞋上的輕便防滑釘）以策安全。請依山谷的氣溫，而不是東京的氣溫來準備衣物，公苑提到冬季最低 −10°C。可操作觸控螢幕的手套、帽子和能確實關好的包包也不可少。
 </p>
           <p className={styles.bodyText}>
-入園後的規定不多，但公苑執行得很嚴格：不餵食、不觸摸、不近距離盯著眼睛（這是敵意的表現），幼猴靠近時要走開。拍照和閃光燈都可以，但禁止無人機和自拍棒，相機也不可伸向猴子或浴池。狗和貓不得入園，輔助犬也一樣。
+入園後的規定不多，但公苑執行得很嚴格：不餵食、不觸摸、不近距離直視猴子的眼睛（這是敵意的表現），幼猴靠近時要走開。拍照和閃光燈都可以，但禁止無人機和自拍棒，也不可把相機伸向猴子或伸進浴池。狗和貓不得入園，輔助犬也一樣。
 </p>
         </section>
 
@@ -539,7 +539,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-判斷方式：<strong>如果從東京當天來回、不在長野過夜，就選擇跟團。</strong>四段交通、兩家小型業者加上 16:00 閉園，一旦錯過巴士，幾乎沒有調整行程的餘裕。<strong>在澀溫泉、湯田中或上林溫泉住一晚，或已有 JR EAST PASS，就自己去。</strong>住得近，步行就成了在一日遊旅客抵達前的晨間散步。
+判斷方式：<strong>如果從東京當天來回、不在長野過夜，就選擇跟團。</strong>四段交通中有兩段由小型業者經營，加上公苑 16:00 閉園，一旦錯過巴士，幾乎沒有調整行程的餘裕。<strong>在澀溫泉、湯田中或上林溫泉住一晚，或已有 JR EAST PASS，就自己去。</strong>住在附近，就能趁一日遊旅客抵達前，以晨間散步的方式走到公苑。
 </p>
           <p className={styles.bodyText}>
 <strong>何時預訂：</strong>跟團行程每天有名額上限，泡湯季只有四個月，日期一確定就訂，假期週優先。付款前請查看商品頁的取消條款，高速公路下雪是冬季行程最常變動的原因。
@@ -562,7 +562,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 什麼時候看雪猴最好？
 </h2>
           <p className={styles.bodyText}>
-<strong>12 月到 3 月的寒冷日子。</strong>公苑表示猴子在這段時間泡湯，最冷、雪最多的日子最常見。這也是公苑讓網路票持有者優先入園的時期（12 月至 4 月），也能看出哪段期間遊客較多。請早點去：冬季 16:00 關門，早上抵達才有餘裕搭晚一點的巴士。
+<strong>12 月到 3 月的寒冷日子。</strong>公苑表示猴子在這段時間泡湯，在最冷、積雪最多的日子最常看到。這也是公苑讓網路票持有者優先入園的時期（12 月至 4 月），也能看出哪段期間遊客較多。請早點去：冬季 16:00 關門，早上抵達，回程才有餘裕搭晚一點的巴士。
 </p>
           <p className={styles.bodyText}>
 冬季以外開放時間較長（4 月至 10 月 8:30–17:00），猴子也都在，但公苑表示溫暖的月份牠們不太願意泡湯，所以不太看得到泡湯畫面。如果是為了這張照片而去，11 月和 4 月要碰運氣，夏天則不適合。
@@ -577,10 +577,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 雪猴可以和澀溫泉或善光寺一起玩嗎？
 </h2>
           <p className={styles.bodyText}>
-<strong>善光寺</strong>在長野市區，也就是所有前往公苑路線的轉車點，Klook 有幾款地獄谷行程會加上它。自己去的話，請排在回程，而且前提是您及早離開公苑；不要排在去程，因為去程要緊的是公苑的閉園時間。
+<strong>善光寺</strong>位於長野市區，而長野正是所有前往公苑路線的轉車點，Klook 有幾款地獄谷行程會加上它。自己去的話，請排在回程，而且前提是您及早離開公苑；不要排在去程，因為去程要緊的是公苑的閉園時間。
 </p>
           <p className={styles.bodyText}>
-<strong>澀溫泉</strong>是公苑下方的老旅館街，<strong>上林溫泉</strong>就在步道起點。兩者都不算一日遊的順遊點，而是值得住一晚的理由。如果您在野澤溫泉滑雪，Klook 也有冬季限定行程，從那裡帶您看雪猴和善光寺。
+<strong>澀溫泉</strong>是公苑下方的老旅館街，<strong>上林溫泉</strong>就在步道起點。兩者都不算一日遊的順遊點，而是值得住一晚的理由。如果您正在野澤溫泉滑雪，Klook 也有冬季限定行程，從那裡帶您看雪猴和善光寺。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -597,7 +597,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 冬季旅行中，雪猴可以和什麼搭配？
 </h2>
           <p className={styles.bodyText}>
-地獄谷最適合排進較長的路線，而不是單獨成行，我們的<Link href="/zh-tw/guides/attractions/japan-winter-itinerary">日本冬季行程</Link>列出了 12 天的版本。以東京為住宿據點時，最搭的是<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">GALA 湯澤滑雪一日遊（英文）</Link>：JR EAST PASS 兩者都涵蓋，兩個長途日可以共用一張票。回到東京的晚上可以留給<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">東京燈飾（英文）</Link>，比起 12 小時的行程輕鬆得多。送您到長野的北陸新幹線繼續開往金澤，那裡是<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉行程（英文）</Link>常見的出發點；1 月的旅程請先確定點燈日，再排雪猴。
+地獄谷最適合排進較長的路線，而不是單獨成行，我們的<Link href="/zh-tw/guides/attractions/japan-winter-itinerary">日本冬季行程</Link>列出了 12 天的版本。以東京為住宿區域時，最搭的是<Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">GALA 湯澤滑雪一日遊（英文）</Link>：JR EAST PASS 兩者都涵蓋，兩個長途日可以共用一張票。回到東京的晚上可以留給<Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">東京燈飾（英文）</Link>，比起 12 小時的行程輕鬆得多。載您到長野的北陸新幹線會繼續開往金澤，金澤是<Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">高山與白川鄉行程（英文）</Link>常見的出發點；1 月的旅程請先確定點燈日，再排雪猴。
 </p>
           <p className={styles.bodyText}>
 再往北就是另一趟旅程，如果目的是雪，這是不錯的替代方案。滑雪客可以把這座山谷和<Link href="/zh-tw/guides/attractions/niseko-ski-tours">二世谷滑雪行程</Link>比較一下。2 月的<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours">札幌雪祭行程</Link>的日期固定在 2027 年 2 月 4–11 日，雪猴要排在前後。從札幌出發，<Link href="/guides/attractions/otaru-day-trip-from-sapporo" hrefLang="en">小樽一日遊（英文）</Link>是最容易加上的行程，<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary">北海道 7 天行程</Link>則呈現完整一週的安排。
@@ -606,8 +606,8 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 
         <KlookStayAreas
           heading={"看雪猴要住哪裡？"}
-          intro={"在公苑附近住一晚，就不用花三小時從東京趕路，早上散步就能到公苑。以下四個住宿據點從步道起點到長野站，都附 Klook 飯店連結。"}
-          areas={jigokudaniStayAreas.map((item, i) => withKlookLocale(item, LOCALE, ([{ why: "步道起點的溫泉鄉：公苑的免費停車場和 2 公里遊步道都從這裡開始，您可以在一日遊人潮抵達前就上路。", area: "上林溫泉（上林飯店仙壽閣）" }, { why: "公苑下方的老旅館街，適合看完猴子、搭車回長野前住一晚。", area: "澀溫泉（和風の宿 MASUYA）" }, { why: "長野電鐵的終點，往 Snow Monkey Park 站牌的 15 分鐘路線巴士從這裡出發。", area: "湯田中（Hotel Tsubakino）" }, { why: "保留所有選項的住宿據點：東京來的新幹線、往湯田中的長電、往公苑的急行巴士和善光寺都從這裡開始。", area: "長野站" }] as Partial<typeof item>[])[i]))}
+          intro={"在公苑附近住一晚，就不用花三小時從東京趕路，早上散步就能到公苑。以下四個住宿區域從步道起點到長野站，都附 Klook 飯店連結。"}
+          areas={jigokudaniStayAreas.map((item, i) => withKlookLocale(item, LOCALE, ([{ why: "步道起點的溫泉鄉：公苑的免費停車場和 2 公里遊步道都從這裡開始，您可以在一日遊人潮抵達前就上路。", area: "上林溫泉（上林飯店仙壽閣）" }, { why: "公苑下方的老旅館街，適合看完猴子、搭車回長野前住一晚。", area: "澀溫泉（和風の宿 MASUYA）" }, { why: "長野電鐵的終點，往 Snow Monkey Park 站牌的 15 分鐘路線巴士從這裡出發。", area: "湯田中（Hotel Tsubakino）" }, { why: "交通選擇最有彈性的住宿區域：東京來的新幹線、往湯田中的長電、往公苑的急行巴士和善光寺都從這裡開始。", area: "長野站" }] as Partial<typeof item>[])[i]))}
         />
 
                 <section className={styles.bodySection}>
@@ -618,7 +618,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 看雪猴需要行動網路嗎？
 </h2>
           <p className={styles.bodyText}>
-需要，而且這趟行程比一般行程更需要穩定的網路。網路票、湯田中與長野的巴士時刻和公苑的猴子預報都在手機上，而步道和巴士站沒有飯店 Wi-Fi。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> 或到<Link href="/zh-tw/guides/esim/best-esim-japan">日本網卡推薦攻略</Link>比較各家業者。
+需要，而且這趟行程對網路穩定度的要求比一般行程更高。網路票、湯田中與長野的巴士時刻和公苑的猴子預報都在手機上，而步道和巴士站沒有飯店 Wi-Fi。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> 或到<Link href="/zh-tw/guides/esim/best-esim-japan">日本網卡推薦攻略</Link>比較各家業者。
 </p>
         </section>
 
@@ -637,10 +637,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
                 <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>
-趁名額還在，先訂好冬季日期
+趁還有名額，先預訂冬季行程
 </h2>
             <p className={styles.ctaBannerDesc}>
-雪猴行程每天有名額上限，泡湯季只有 12 月到 3 月。選好日期，確認商品頁的內容，電車、巴士和步道都交給導遊。Klook 可使用海外信用卡付款。
+雪猴行程每天有名額上限，泡湯季只有 12 月到 3 月。選好日期，確認商品頁的內容，電車、巴士的轉乘和步道路線都交給導遊。Klook 可使用海外信用卡付款。
 </p>
             <div className={styles.pickCtaRow}>
               <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>

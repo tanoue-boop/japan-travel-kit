@@ -31,7 +31,7 @@ const COPY: Record<Locale, { label: string; cta: string; note: string }> = {
   "zh-tw": {
     label: "住哪裡",
     cta: "在 Klook 看飯店 →",
-    note: "飯店連結前往 Klook 該區域的搜尋結果，透過連結預訂我們會獲得分潤，您支付的價格不變。價格與空房以 Klook 為準。",
+    note: "飯店連結將導向 Klook 該區域的搜尋結果，若透過連結預訂，我們會獲得分潤，您支付的價格不變。價格與空房以 Klook 為準。",
   },
   "zh-cn": {
     label: "住哪里",

@@ -93,7 +93,7 @@ const whoFor = [
   },
   {
     title: "加买 450 米天望回廊，如果…",
-    desc: "如果高度本身就是此行的目的。450 米处是 Tembo Galleria（天望回廊），一条沿玻璃幕墙螺旋上升的空中回廊，通往塔内游客能到达的最高点。线上套票 ¥3,000 起；当天在 350 米天望甲板门票基础上加购，成人要再付 ¥1,400。",
+    desc: "如果登高本身就是此行的目的。450 米处是 Tembo Galleria（天望回廊），一条沿玻璃幕墙螺旋上升的空中回廊，通往塔内游客能到达的最高点。线上套票 ¥3,000 起；当天在 350 米天望甲板门票基础上加购，成人要再付 ¥1,400。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 20l8-16 8 16" />
@@ -103,7 +103,7 @@ const whoFor = [
   },
   {
     title: "选晚一点的时段，如果…",
-    desc: "比起远处的地平线，你更想看夜景。在核查当天，观景台营业到 22:00，最后入场 21:00；白天时段售罄之后，往往还有余票的就是晚场。",
+    desc: "比起远处的地平线，你更想看夜景。在核查当天，观景台营业到 22:00，最后入场 21:00；白天时段售罄后，晚场往往仍有余票。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
@@ -146,7 +146,7 @@ const deckRows = [
 const steps = [
   {
     title: "订票前先决定只买 350 米天望甲板还是买套票",
-    desc: "450 米天望回廊请通过线上套票购买（成人 ¥3,000 起），比当天在 350 米天望甲板门票上加购（成人多付 ¥1,400）便宜。只要有一点可能想上天望回廊，就一开始购买套票。",
+    desc: "450 米天望回廊请通过线上套票购买（成人 ¥3,000 起），比当天在 350 米天望甲板门票上加购（成人多付 ¥1,400）便宜。只要你有可能想登上天望回廊，最好一开始就购买套票。",
   },
   {
     title: "线上预订指定日期的门票",
@@ -154,7 +154,7 @@ const steps = [
   },
   {
     title: "用境外信用卡的话，通过票务平台买",
-    desc: "Klook 销售同样的指定时段门票，有中文下单界面、提供电子票，可以避开不少游客在日本景点官网遇到的支付失败和语言问题。同一个商品页里也有 350 米＋450 米观景台套票。",
+    desc: "Klook 销售同样的指定时段门票，有中文下单界面、提供电子票，可以避免不少游客在日本景点官网购票时遇到的支付失败和语言障碍。同一个商品页里也有 350 米＋450 米观景台套票。",
   },
   {
     title: "查询参观当天的营业时间，不要只看通用时间",
@@ -185,19 +185,19 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "东京晴空塔和 SHIBUYA SKY 选哪个？",
-    a: "两者满足的是不同需求。晴空塔的特色是高度和远眺视野：350 米和 450 米观景台是东京最高的观景台，视野覆盖整个关东平原，天气晴朗时还能看到富士山。SHIBUYA SKY 的特色是拍照：约 229 米高的露天屋顶，就在涩谷十字路口正上方，日落时最美，氛围感大于高度。只能选一个的话，看全景选晴空塔，拍那张人人都认识的照片选 SHIBUYA SKY。",
+    a: "两者适合不同的游览需求。晴空塔的特色是高度和远眺视野：350 米和 450 米观景台是东京最高的观景台，视野覆盖整个关东平原，天气晴朗时还能看到富士山。SHIBUYA SKY 的特色是拍照：约 229 米高的露天屋顶，就在涩谷十字路口正上方，日落时最美，胜在氛围而不是高度。只能选一个的话，看全景选晴空塔，拍那张人人都认得出的经典照片选 SHIBUYA SKY。",
   },
   {
     q: "在东京晴空塔能看到富士山吗？",
-    a: "天气晴朗时能看到——而且凭借高度，在东京各观景台中看到富士山的机会最大。能见度完全取决于天气，凉爽干燥的月份和一天中较早的时段通常更好。任何一天都没有保证，如果你专门为了看富士山才付套票的钱，这一点值得先记住。",
+    a: "天气晴朗时能看到——而且凭借高度，在东京各观景台中，这里看到富士山的机会最大。能见度完全取决于天气，凉爽干燥的月份和一天中较早的时段通常更好。但任何一天都无法保证一定能看到，如果你专门为了看富士山才付套票的钱，这一点值得先记住。",
   },
   {
     q: "怎么去东京晴空塔？",
-    a: "塔就建在东武晴空塔线的「东京晴空塔站」和「押上站」上方；押上站有东京地铁半藏门线、都营浅草线和京成押上线。东京地铁通票适用于押上站，所以如果你已经有这张票，过去不用额外花钱。坐浅草线到浅草只有两站，两个地方很容易安排在同一个下午。",
+    a: "塔就建在东武晴空塔线的「东京晴空塔站」和「押上站」上方；押上站有东京地铁半藏门线、都营浅草线和京成押上线。东京地铁通票适用于押上站，所以如果你已经有这张票，坐过去不用额外花钱。坐浅草线到浅草只有两站，两个地方很容易安排在同一个下午。",
   },
   {
     q: "东京晴空塔门票可以改日期或时段吗？",
-    a: `不能。官网说明已购买的门票无法更改，要换日期、时段或票种，必须取消后重新购买。官方线上票在参观日 31 天前及更早取消免手续费，30 天前起至入场时间收 20%，入场时间后不能取消；购买后 59 分钟内取消也不收费。通过旅行社或票务平台购买的门票，按该卖家的规定处理。核查日 ${CHECKED}。`,
+    a: `不能。官网说明，已购买的门票无法更改，要换日期、时段或门票类型，必须取消后重新购买。官方线上票在参观日 31 天前及更早取消免手续费，30 天前起至入场时间收 20%，入场时间后不能取消；购买后 59 分钟内取消也不收费。通过旅行社或票务平台购买的门票，按该卖家的规定处理。核查日 ${CHECKED}。`,
   },
   {
     q: "东京晴空塔儿童票适用几岁？",
@@ -205,7 +205,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "450 米天望回廊当天会卖完吗？",
-    a: `可能暂停销售。天望回廊加购票当天在 350 米天望甲板内的售票机销售，官网提示可能因人数限制而暂停销售。线上购买的套票，已在你预约的时段包含 450 米入场。核查日 ${CHECKED}。`,
+    a: `可能暂停销售。天望回廊加购票于当天在 350 米天望甲板内的售票机购买，官网提示可能因人数限制而暂停销售。线上购买的套票，已在你预约的时段包含 450 米入场。核查日 ${CHECKED}。`,
   },
 ];
 
@@ -224,7 +224,7 @@ const tripPrepItems = [
   withKlookLocale(skytreeTripPrep[2], LOCALE, {
     label: "东京随上随下观光巴士（Skyhop Bus）",
     ctaLabel: "查看露天巴士票 →",
-    why: "露天双层观光巴士的随上随下车票，线路包含浅草——如果这一天既有浅草寺又有晴空塔，比每一段都单独付一次地铁车费更合适。",
+    why: "露天双层观光巴士的随上随下车票，线路包含浅草——如果当天行程既有浅草寺又有晴空塔，比每段都单独买地铁票更合适。",
   }),
   withKlookLocale(skytreeTripPrep[3], LOCALE, {
     label: "东京地铁通票（24／48／72小时）",
@@ -237,9 +237,9 @@ const tripPrepItems = [
 // guided walk (6.5%), an Asakusa kimono rental (6.5%) and the Tokyo Subway Ticket (5%). The pass
 // reuses the label below; the Around-the-tower block drops it so it is not listed twice.
 const sameDayCards: KlookSameDayCard[] = [
-  withKlookLocale(skytreeSameDayCards[0], "zh-cn", {"kind":"导览","label":"浅草・浅草寺半日步行导览","ctaLabel":"查看浅草步行导览 →","why":"由英语导游带你走雷门、仲见世通和浅草寺；从晴空塔坐浅草线两站就到。"}),
+  withKlookLocale(skytreeSameDayCards[0], "zh-cn", {"kind":"导览","label":"浅草・浅草寺半日步行导览","ctaLabel":"查看浅草步行导览 →","why":"由英语导游带你走雷门、仲见世通和浅草寺；从晴空塔所在的押上站坐浅草线，两站就到。"}),
   withKlookLocale(skytreeSameDayCards[1], "zh-cn", {"kind":"和服","label":"和服租赁＋发型设计（爱和服 浅草1号店）","ctaLabel":"查看浅草和服租赁 →","why":"含发型设计的 6 小时租赁，店在离晴空塔两站的浅草。"}),
-  { ...withKlookLocale(skytreeSameDayCards[2], "zh-cn"), label: tripPrepItems[3].label, ctaLabel: tripPrepItems[3].ctaLabel, kind: "票券", why: "押上站有半藏门线和都营浅草线，24／48／72 小时票就能往返晴空塔和浅草。" },
+  { ...withKlookLocale(skytreeSameDayCards[2], "zh-cn"), label: tripPrepItems[3].label, ctaLabel: tripPrepItems[3].ctaLabel, kind: "票券", why: "押上站有半藏门线和都营浅草线，用 24／48／72 小时通票就能往返晴空塔和浅草。" },
 ];
 const aroundTowerItems = tripPrepItems.filter((item) => !sameDayCards.some((card) => card.url === item.url));
 
@@ -250,7 +250,7 @@ const tourPicks = [
   }),
   withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
     title: "东京观光巴士一日游",
-    desc: "带讲解的巴士行程，途经皇居外苑、浅草和东京晴空塔，配多语种语音导览",
+    desc: "巴士观光行程，途经皇居外苑、浅草和东京晴空塔，提供多语种语音导览",
   }),
   withKlookLocale(fujiHakoneDayTour, LOCALE, {
     title: "富士山＋箱根一日游",
@@ -296,7 +296,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </h1>
           <p className={styles.heroSubtitle}>
             东京晴空塔门票：350 米天望甲板成人 ¥1,800 起，加上 450 米天望回廊的套票 ¥3,000 起（官网核查日
-            {CHECKED}；票价因日期而异，实际出行当天的价格可能更高）。提前在线购买指定日期和时段的门票，可免去现场柜台和售票机每张 ¥500
+            {CHECKED}；票价因日期而异，实际出行当天的价格可能更高）。提前在线购买指定日期和时段的门票，可免去在现场柜台或售票机购票时每张 ¥500
             的服务费，而现场能买到的时段视当天情况而定——如果想选特定时段，尤其是傍晚，最好提前预订。
           </p>
           <div className={styles.heroBadges}>
@@ -339,7 +339,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
             <p className={styles.verdictText}>
               <strong>结论：</strong>线上预订指定日期的门票。晴空塔当天售票柜台每张票收 ¥500 服务费，
               所以提前订票可以省下官网明确标明的服务费。如果你可能也想登上 450 米的天望回廊，
-              就一开始购买套票——事后到现场再加购，成人要多付 ¥1,400。票价来自官网，核查日 {CHECKED}。
+              最好一开始就购买套票——事后到现场再加购，成人要多付 ¥1,400。票价来自官网，核查日 {CHECKED}。
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={SKYTREE_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -362,14 +362,14 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>概览<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>东京晴空塔门票包含哪些区域？</h2>
           <p className={styles.bodyText}>
-            本文介绍东京晴空塔的门票种类、价格及预订方式；如果还在决定上哪座观景台，
+            本文介绍东京晴空塔的门票类型、价格及预订方式；如果还在决定上哪座观景台，
             <Link href="/guides/attractions/tokyo-observation-decks">东京观景台对比（英文）</Link>
-            把晴空塔和 SHIBUYA SKY、东京塔、免费的都厅展望室并排对比。东京晴空塔出售两个不同高度观景区域的门票。<strong>350 米</strong>处是 Tembo Deck（天望甲板），由三个楼层组成的观景台，
+            把晴空塔和 SHIBUYA SKY、东京塔、免费的都厅展望室并排对比。东京晴空塔有两个不同高度的观景区域，门票分开出售。<strong>350 米</strong>处是 Tembo Deck（天望甲板），由三个楼层组成的观景台，
             每张门票都包含。<strong>450 米</strong>处是 Tembo Galleria（天望回廊），一条沿玻璃幕墙螺旋上升的空中回廊，
             通往塔内游客能到达的最高点——而且不能单独参观。
           </p>
           <p className={styles.bodyText}>
-            大部分困惑都来自这两个观景区域的购票方式：两者的价格取决于是线上一起买，还是当天分开买。
+            大部分困惑都来自这两个观景区域的购票方式：价格取决于是提前在线购买套票，还是当天分开购买。
             下面把这两种买法并排列出来。
           </p>
         </section>
@@ -390,7 +390,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
                 </caption>
                 <thead>
                   <tr>
-                    {["票种", "线上指定日期", "当天现场"].map((h) => (
+                    {["门票类型", "线上指定日期", "当天现场"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -420,7 +420,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <h2 className={styles.sectionTitle}>450 米天望回廊值得比 350 米多花钱吗？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             只有特别想登上更高处时才值得。成人套票比只买天望甲板贵 ¥1,200（¥3,000 起 vs ¥1,800 起），
-            从 350 米再往上到 445–450 米的玻璃回廊，最高点 451.2 米。拿不定主意就线上买套票——当天再加购 450 米要
+            从 350 米继续登上位于 445–450 米的玻璃回廊，最高点 451.2 米。拿不定主意就线上买套票——当天再加购 450 米要
             ¥1,400，而且官网表示人多时可能暂停销售。
           </p>
           <div className={styles.whoForGrid}>
@@ -453,7 +453,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <KlookTripPrep
           label="晴空塔周边"
           heading="押上一带的行程，还有哪些要提前订"
-          intro="一个观景台时段大约一到两小时，上面那张门票是其中唯一需要选时段的部分。下面这些是当天下午其余行程要用到的预订——这些地点都和晴空塔在隅田川同一侧，也可以和门票用同一个账号预订。"
+          intro="参观观景台大约需要一到两小时，上面那张门票是其中唯一需要选时段的部分。下面这些是当天下午其余行程要用到的预订——这些地点都与晴空塔位于隅田川同一侧，也可以和门票用同一个账号预订。"
           items={aroundTowerItems}
         />
 
@@ -472,10 +472,10 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>时段<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>什么时候去东京晴空塔最好？</h2>
           <p className={styles.bodyText}>
-            想要人少，选工作日下午或早上第一个时段；想看夜景，选闭馆前的一两个小时。这是官方拥挤预测页点名的三个时段，
+            想避开人流，可选择工作日下午或早上第一个时段；想看夜景，选闭馆前的一两个小时。这是官方拥挤预测页点名的三个时段，
             并提醒新年、黄金周和春假期间人更多。日落时间随季节变化，傍晚时段请对照参观当天的日落时间。
             想把晴空塔排进东京行程，可以看{" "}
-            <Link href="/zh-cn/guides/attractions/things-to-do-tokyo">东京必做清单</Link>{" "}
+            <Link href="/zh-cn/guides/attractions/things-to-do-tokyo">东京必玩清单</Link>{" "}
             里还有哪些需要预约时段的景点。
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
@@ -509,7 +509,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>对比<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>晴空塔和东京其他观景台有什么不同？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            晴空塔的优势在于高度。如果你真正想要的是涩谷十字路口那张照片，
+            晴空塔的优势在于高度。如果你真正想拍的是涩谷十字路口那张经典照片，
             <Link href="/zh-cn/guides/attractions/shibuya-sky-tickets">SHIBUYA SKY（涩谷天空）</Link>{" "}
             更值得买；如果想免费欣赏城市全景，新宿的东京都厅展望室是免费的。
           </p>
@@ -560,7 +560,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             交通是最简单的部分：塔就建在东京晴空塔站和押上站上方，而押上是地铁站——所以如果你有
             <Link href="/guides/attractions/tokyo-subway-ticket">东京地铁通票（英文）</Link>，
-            前往晴空塔的地铁也在通票范围内。东京地铁与都营地铁怎么衔接，请看我们的
+            前往晴空塔的地铁线路也在通票适用范围内。东京地铁与都营地铁怎么衔接，请看我们的
             <Link href="/guides/transport/tokyo-transportation">东京交通攻略（英文）</Link>。
           </p>
         </section>
@@ -571,7 +571,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="和当天其他行程一起订"
-          intro="一个晴空塔时段大约一到两小时。下面这些商品和门票在同一个 Klook 账号里，当天其余的行程可以在同一次下单里订好。"
+          intro="参观晴空塔大约需要一到两小时。下面这些商品可以和晴空塔门票在同一个 Klook 账号里一起下单，当天其余行程一次订好。"
           tours={tourPicks}
         />
 
@@ -595,7 +595,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>提前在线订票，避免现场加收费用</h2>
             <p className={styles.ctaBannerDesc}>
-              当天购票每人要另加 ¥500 服务费。线上预订指定日期门票，服务费和排队都能省掉——
+              当天购票每人要另加 ¥500 服务费。在线预订指定日期门票，既省服务费，也不用在现场排队买票——
               而且 Klook 有中文下单界面，支持境外信用卡支付。
             </p>
             <div className={styles.pickCtaRow}>

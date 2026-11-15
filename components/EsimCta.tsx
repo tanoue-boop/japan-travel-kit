@@ -120,7 +120,7 @@ const COPY: Record<Locale, Copy> = {
     hotspot: "모든 일본 요금제에서 테더링 가능.",
     from: "{price}부터 ({plan}).",
     orderNote:
-      "이 순서인 이유: {simbye}. 클룩 eSIM은 클룩의 다른 예약과 같은 계정에서 관리됩니다. Airalo는 자체 앱으로 설치하고 라이브 채팅을 지원합니다. Sakura Mobile은 일본 전화번호가 있는 요금제를 고를 수 있습니다. 가격은 매일 확인하는 요금 데이터 기준이며 마지막 확인일은 {date}입니다.",
+      "이 순서인 이유: {simbye}. 클룩 eSIM은 클룩의 다른 예약과 같은 계정에서 관리됩니다. Airalo는 자체 앱으로 설치하고 라이브 채팅을 지원합니다. Sakura Mobile은 일본 전화번호가 제공되는 요금제를 선택할 수 있습니다. 가격은 매일 확인하는 요금 데이터 기준이며 마지막 확인일은 {date}입니다.",
     orderLowest: "Simbye는 저희 요금 데이터에서 요금제 가격이 가장 낮습니다",
     orderNetworks: "Simbye는 일본 4개 통신사 회선을 모두 표시합니다",
     insuranceName: "여행자 보험",
@@ -146,7 +146,7 @@ const COPY: Record<Locale, Copy> = {
     hotspot: "所有日本方案皆可分享熱點。",
     from: "{price} 起（{plan}）。",
     orderNote:
-      "排序理由：{simbye}；Klook eSIM 可與你的其他 Klook 訂單在同一個帳號中管理；Airalo 可透過自家 App 安裝，並提供線上客服；Sakura Mobile 有附日本電話號碼的方案可選。價格來自每日價格查核，最近一次為 {date}。",
+      "排序理由：{simbye}；Klook eSIM 可與你的其他 Klook 訂單透過同一個帳號管理；Airalo 可透過自家 App 安裝，並提供線上客服；Sakura Mobile 有附日本電話號碼的方案可選。價格來自每日價格查核，最近一次為 {date}。",
     orderLowest: "Simbye 是我們價格資料中方案價格最低的",
     orderNetworks: "Simbye 標示涵蓋日本四家電信線路",
     insuranceName: "旅遊保險",
@@ -191,10 +191,10 @@ const COPY: Record<Locale, Copy> = {
     networks: "เครือข่ายในญี่ปุ่นที่ Simbye ระบุ: {networks}",
     others: "ตัวเลือกอื่น:",
     bottomHeading: "สิ่งที่ต้องเตรียมก่อนออกเดินทาง: อินเทอร์เน็ตมือถือ",
-    bottomIntro: "ตั้งค่า eSIM ด้วย QR Code ก่อนออกเดินทาง แล้วใช้งานได้ทันทีเมื่อถึงญี่ปุ่น ด้านล่างคือสี่ตัวเลือกตามลำดับที่เราแนะนำ พร้อมเหตุผล",
+    bottomIntro: "ตั้งค่า eSIM ด้วย QR Code ก่อนออกเดินทาง แล้วใช้งานได้ทันทีเมื่อถึงญี่ปุ่น ด้านล่างคือตัวเลือก 4 แบบ เรียงตามลำดับที่เราแนะนำ พร้อมเหตุผล",
     simbyeFrom: "เริ่ม {price} ({plan})",
     simbyeCode: "ใส่โค้ด {code} ลด {percent}% เหลือ {discounted}",
-    lowest: "ราคาต่ำสุดในแพ็กเกจที่ยืนยันได้",
+    lowest: "ราคาแพ็กเกจต่ำสุดที่เราตรวจสอบแล้ว",
     hotspot: "แชร์เน็ตได้ทุกแพ็กเกจญี่ปุ่น",
     from: "เริ่ม {price} ({plan})",
     orderNote:

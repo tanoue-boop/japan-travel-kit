@@ -82,7 +82,7 @@ const visitRows = [
 const whoFor = [
   {
     title: "只買 350 公尺就夠了，如果…",
-    desc: `你只想欣賞東京全景，不需要加購。350 公尺是三層樓的主展望台，光是這裡就已經看得到整片關東平原。成人 ${ADULT}，以每公尺高度換算，是東京主要付費展望台裡最便宜的一個。`,
+    desc: `你只想欣賞東京全景，不需要加購。350 公尺是三層樓的主展望台，光是這裡就已經看得到整片關東平原。成人 ${ADULT}，換算成每公尺的票價，是東京主要付費展望台中最便宜的一個。`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2l3 7h-6l3-7z" />
@@ -103,7 +103,7 @@ const whoFor = [
   },
   {
     title: "選晚一點的時段，如果…",
-    desc: "比起遠方的地平線，你更想看夜景。在查核當天，展望台營業到 22:00，最後入場 21:00；白天時段賣完之後，還看得到空位的通常就是晚場。",
+    desc: "比起遠方的地平線，你更想看夜景。在查核當天，展望台營業到 22:00，最後入場 21:00；白天時段售罄後，通常晚場還有空位。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
@@ -146,15 +146,15 @@ const deckRows = [
 const steps = [
   {
     title: "訂票前先決定只買 350 公尺還是買聯票",
-    desc: "450 公尺用線上聯票買（成人 ¥3,000 起），比當天在 350 公尺票上加購（多 ¥1,400）便宜。只要有一點可能想上空中迴廊，就一開始買聯票。",
+    desc: "450 公尺用線上聯票買（成人 ¥3,000 起），比當天在 350 公尺票上加購（多 ¥1,400）便宜。只要有一點可能想上天望迴廊，就一開始買聯票。",
   },
   {
     title: "線上訂指定日期的票",
     desc: `官方網站以上面的「起」價販售指定日期票，實際金額可能更高。當天在 4 樓售票櫃檯或售票機購票，每張票需額外支付 ¥500 服務費——這就是提前購票最直接的好處。查核日 ${CHECKED}。`,
   },
   {
-    title: "使用海外發行的信用卡，就透過售票平台購票",
-    desc: "Klook 賣的是同一張指定時段入場券，結帳介面有中文、拿到的是電子票，可以避開不少旅客在日本景點官網遇到的刷卡與語言問題。同一個商品頁也有 350 公尺＋450 公尺聯票。",
+    title: "如果使用海外發行的信用卡，就透過售票平台購票",
+    desc: "Klook 賣的是同一張指定時段入場券，結帳介面有中文、拿到的是電子票，可以避開不少旅客在日本景點官網遇到的信用卡付款與語言問題。同一個商品頁也有 350 公尺＋450 公尺聯票。",
   },
   {
     title: "查詢造訪當天的營業時間，不要只看一般時間",
@@ -173,7 +173,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "350 公尺和 450 公尺差在哪裡？",
-    a: "350 公尺是 Tembo Deck（天望甲板），共有三層的主要觀景區，每一張票都含。450 公尺是 Tembo Galleria（天望迴廊），沿著玻璃牆面向上延伸的空中迴廊，通往塔內最高的參觀樓層。450 公尺不能單獨參觀：你必須先有 350 公尺的票，要嘛買線上聯票，要嘛在現場售票機加購（成人 ¥1,400）。",
+    a: "350 公尺的 Tembo Deck（天望甲板）是分為三層的主要觀景區，所有門票都包含。450 公尺是 Tembo Galleria（天望迴廊），沿著玻璃牆面向上延伸的空中迴廊，通往塔內最高的參觀樓層。450 公尺不能單獨參觀：你必須先有 350 公尺的票，可以在線上購買聯票，或在現場售票機加購（成人 ¥1,400）。",
   },
   {
     q: "450 公尺的票可以線上買嗎？",
@@ -181,11 +181,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "東京晴空塔的營業時間是？",
-    a: `東京晴空塔的營業時間依日期公布，並非全年固定，官網也註明「營業時間可能未經公告即變更」，最後入場是閉館前一小時。在查核當天，展望台的時間是 10:00–22:00，最後入場 21:00。要把整個晚上排在這裡之前，請先查詢造訪當天的營業時間。查核日 ${CHECKED}。`,
+    a: `東京晴空塔的營業時間依日期公布，並非全年固定，官網也註明「營業時間可能未經公告即變更」，最後入場是閉館前一小時。在查核當天，展望台的時間是 10:00–22:00，最後入場 21:00。打算在這裡待一整晚前，請先查詢造訪當天的營業時間。查核日 ${CHECKED}。`,
   },
   {
     q: "東京晴空塔和澀谷SKY 該選哪一個？",
-    a: "兩座展望台各有不同特色。晴空塔講的是高度與視野範圍：350 公尺和 450 公尺是東京最高的觀景設施，視野涵蓋整片關東平原，天氣好的時候富士山也在裡面。澀谷SKY 講的是照片：約 229 公尺高的露天屋頂，就在澀谷十字路口正上方，日落時最好看，氣氛大於高度。只能選一個的話，想欣賞遼闊全景就選晴空塔；想拍澀谷經典街景就選澀谷SKY。",
+    a: "兩座展望台各有不同特色。晴空塔講的是高度與視野範圍：350 公尺和 450 公尺是東京最高的觀景設施，視野涵蓋整片關東平原，天氣好的時候，連富士山也看得到。澀谷SKY 講的是照片：約 229 公尺高的露天屋頂，就在澀谷十字路口正上方，日落時最好看，氣氛大於高度。只能選一個的話，想欣賞遼闊全景就選晴空塔；想拍澀谷經典街景就選澀谷SKY。",
   },
   {
     q: "在東京晴空塔看得到富士山嗎？",
@@ -214,7 +214,7 @@ const tripPrepItems = [
   withKlookLocale(skytreeTripPrep[0], LOCALE, {
     label: "上野／淺草周邊飯店",
     ctaLabel: "在 Klook 查看上野與淺草的飯店 →",
-    why: "就在晴空塔這一側的河岸：上野在山手線上，銀座線從上野通到淺草，押上再搭淺草線兩站就到——晚場看完夜景，不必橫跨整個東京回飯店。",
+    why: "與晴空塔同在隅田川這一側：上野在山手線上，銀座線從上野通到淺草，押上再搭淺草線兩站就到——晚場看完夜景，不必橫跨整個東京回飯店。",
   }),
   withKlookLocale(skytreeTripPrep[1], LOCALE, {
     label: "淺草 Kimono Yae 和服租借",
@@ -224,7 +224,7 @@ const tripPrepItems = [
   withKlookLocale(skytreeTripPrep[2], LOCALE, {
     label: "東京隨上隨下觀光巴士（Skyhop Bus）",
     ctaLabel: "查看露天巴士票 →",
-    why: "露天雙層的隨上隨下車票，路線包含淺草——如果這一天同時有淺草寺和晴空塔，比每段都各付一次地鐵車資更適合。",
+    why: "露天雙層的隨上隨下車票，路線包含淺草——如果這一天同時安排淺草寺和晴空塔，會比每段路程分別付地鐵車資更划算。",
   }),
   withKlookLocale(skytreeTripPrep[3], LOCALE, {
     label: "東京地鐵通票（24／48／72小時）",
@@ -237,7 +237,7 @@ const tripPrepItems = [
 // guided walk (6.5%), an Asakusa kimono rental (6.5%) and the Tokyo Subway Ticket (5%). The pass
 // reuses the label below; the Around-the-tower block drops it so it is not listed twice.
 const sameDayCards: KlookSameDayCard[] = [
-  withKlookLocale(skytreeSameDayCards[0], "zh-tw", {"kind":"導覽","label":"淺草・淺草寺半日步行導覽","ctaLabel":"查看淺草步行導覽 →","why":"由英語導遊帶你走雷門、仲見世通與淺草寺；從晴空塔搭淺草線兩站就到。"}),
+  withKlookLocale(skytreeSameDayCards[0], "zh-tw", {"kind":"導覽","label":"淺草・淺草寺半日步行導覽","ctaLabel":"查看淺草步行導覽 →","why":"由英語導遊帶你走訪雷門、仲見世商店街與淺草寺；從晴空塔搭淺草線兩站就到。"}),
   withKlookLocale(skytreeSameDayCards[1], "zh-tw", {"kind":"和服","label":"和服租借＋髮型設計（愛和服 淺草1號店）","ctaLabel":"查看淺草和服租借 →","why":"含髮型設計的 6 小時租借，店在離晴空塔兩站的淺草。"}),
   { ...withKlookLocale(skytreeSameDayCards[2], "zh-tw"), label: tripPrepItems[3].label, ctaLabel: tripPrepItems[3].ctaLabel, kind: "票券", why: "押上站有半藏門線與都營淺草線，24／48／72 小時票就能往返晴空塔與淺草。" },
 ];
@@ -296,7 +296,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </h1>
           <p className={styles.heroSubtitle}>
             東京晴空塔門票：350 公尺天望甲板成人 ¥1,800 起，加上 450 公尺天望迴廊的聯票 ¥3,000 起（官網查核日
-            {CHECKED}；票價依日期而異，實際價格可能更高）。線上購買指定日期與時段的門票，可免付現場櫃檯與售票機每張 ¥500
+            {CHECKED}；票價依日期而異，實際價格可能更高）。線上購買指定日期與時段的門票，可省下在現場櫃檯或售票機購票時每張 ¥500
             的服務費，而現場能買到的時段依當天而定——想要的時段，尤其是傍晚，最好先訂。
           </p>
           <div className={styles.heroBadges}>
@@ -338,7 +338,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
             </div>
             <p className={styles.verdictText}>
               <strong>結論：</strong>線上訂指定日期的票。晴空塔在當天售票櫃檯每張票收 ¥500 服務費，
-              因此提前訂票可省下官方明確標示的費用。如果你有可能想上 450 公尺空中迴廊，
+              因此提前訂票可省下官方明確標示的費用。只要你可能想登上 450 公尺的天望迴廊，
               一開始就買聯票——之後到現場再加購要多付 ¥1,400。票價資料取自官方網站，查核日 {CHECKED}。
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -364,12 +364,12 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             這一頁講晴空塔的門票、票價與購票；如果還在決定要上哪一座展望台，
             <Link href="/guides/attractions/tokyo-observation-decks">東京展望台比較（英文）</Link>
-            把晴空塔和澀谷SKY、東京鐵塔、免費的都廳展望室並排比較。東京晴空塔提供兩種不同高度的展望台門票。<strong>350 公尺</strong>是 Tembo Deck（天望甲板），共有三層的主要觀景區，
-            每一張票都含。<strong>450 公尺</strong>是 Tembo Galleria（天望迴廊），沿著玻璃牆面向上延伸的空中迴廊，
+            把晴空塔和澀谷SKY、東京鐵塔、免費的都廳展望室並排比較。東京晴空塔提供兩種不同高度的展望台門票。<strong>350 公尺</strong>的 Tembo Deck（天望甲板）是分為三層的主要觀景區，
+            所有門票都包含。<strong>450 公尺</strong>是 Tembo Galleria（天望迴廊），沿著玻璃牆面向上延伸的空中迴廊，
             通往塔內最高的參觀樓層——而且它不能單獨參觀。
           </p>
           <p className={styles.bodyText}>
-            多數人容易搞混的，就是這兩個展望台的購票方式：兩者的價格取決於你是線上一起買，還是當天分開買。
+            最容易讓人搞混的，就是這兩個展望台的購票方式：兩者的價格取決於你是線上一起買，還是當天分開買。
             下面把這兩種買法並排列出來。
           </p>
         </section>
@@ -452,7 +452,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
         {/* Around the tower */}
         <KlookTripPrep
           label="晴空塔周邊"
-          heading="押上這一側的行程，還有哪些要先訂"
+          heading="押上周邊還有哪些行程要先預訂"
           intro="一個展望台時段大約一到兩小時，上面那張票是其中唯一需要指定時間的部分。以下是當天下午可一起安排、建議提前預訂的行程——這些行程都和晴空塔在隅田川同一側，也能和門票用同一個帳號預訂。"
           items={aroundTowerItems}
         />
@@ -509,7 +509,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>比較</span>
           <h2 className={styles.sectionTitle}>晴空塔和東京其他展望台有什麼不同？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            晴空塔是「高度」的選擇。如果你真正想要的是澀谷十字路口那張照片，
+            晴空塔是「高度」的選擇。如果你真正想拍的是澀谷十字路口那張經典照片，
             <Link href="/zh-tw/guides/attractions/shibuya-sky-tickets">澀谷SKY</Link>{" "}
             會更值得；如果想完全不花錢看城市全景，新宿的東京都廳展望室是免費的。
           </p>
@@ -558,7 +558,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            交通是最簡單的部分：東京晴空塔就位於東京晴空塔站與押上站上方，而押上是地鐵站——所以如果你帶著
+            交通方面最簡單：東京晴空塔就位於東京晴空塔站與押上站上方，而押上是地鐵站——所以如果你帶著
             <Link href="/guides/attractions/tokyo-subway-ticket">東京地鐵通票（英文）</Link>，
             前往晴空塔的地鐵也包含在內。東京地下鐵與都營兩個路網怎麼搭配，請看我們的
             <Link href="/guides/transport/tokyo-transportation">東京交通指南（英文）</Link>。
