@@ -30,6 +30,18 @@ const HOLAFLY_30 = unlimitedFromLabel("holafly", 30);
 // The secondary Holafly buttons therefore link to our review, next to the Airalo affiliate CTA.
 const HOLAFLY_REVIEW = "/guides/esim/holafly-japan-review";
 
+// 2026-11-15 (task-jtk-20261115-R02): this page keeps only the "Airalo vs Holafly" comparison
+// intent. Holafly review / price / "does it work" queries belong to holafly-japan-review, which
+// the old holafly-vs-esim-go-japan URL now 301s to. Title and H1 share the same word order.
+const TITLE = "Airalo vs Holafly Japan 2026: Which eSIM Is Better?";
+const H1 = "Airalo vs Holafly Japan 2026: Which eSIM Is Better for Your Trip?";
+const weekUsd = (id: EsimProviderId) => {
+  const p = plansFor(id).find((x) => x.unlimited && x.days >= 7);
+  return p ? formatUsd(p.priceUsd) : "—";
+};
+// Meta description: the answer, then where the buttons are. 120–155 characters.
+const DESC = `Airalo vs Holafly for Japan: Airalo wins most trips, ${weekUsd("airalo")} vs ${weekUsd("holafly")} for 7 days unlimited, plus small plans. Holafly caps hotspot at 1 GB/day.`;
+
 // Cheapest plan that covers each scenario (enough data AND enough days), and who wins on price.
 const cheapestCovering = (id: EsimProviderId, gb: number | null, days: number): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= days && (gb === null ? p.unlimited : p.unlimited || (p.gb ?? 0) >= gb)) ?? null;
@@ -45,10 +57,11 @@ const comparisonRows = [
   { feature: "Price (7 days)", airalo: priceAtLeastLabel("airalo", 3), holafly: HOLAFLY_7 },
   { feature: "Data", airalo: "1GB–20GB, or unlimited", holafly: "Unlimited" },
   { feature: "Network", airalo: getProvider("airalo").network, holafly: getProvider("holafly").network },
-  { feature: "Speed throttling", airalo: "No", holafly: "Fair use policy" },
+  { feature: "Speed throttling", airalo: "Unlimited plan: full speed to 3 GB a day", holafly: "Fair Usage Policy, up to 1 day" },
+  { feature: "Hotspot", airalo: "Allowed", holafly: "1 GB a day" },
   { feature: "Voice calls", airalo: "No", holafly: "No" },
   { feature: "App quality", airalo: "Excellent", holafly: "Good" },
-  { feature: "Customer support", airalo: "24/7 live chat", holafly: "Email & chat" },
+  { feature: "Customer support", airalo: "24/7 live chat", holafly: "24/7 support" },
   { feature: "Countries", airalo: "190+", holafly: "200+" },
   { feature: "Best for", airalo: "Budget & short trips", holafly: "Heavy users" },
 ];
@@ -72,7 +85,7 @@ const faqItems = [
   },
   {
     q: "Which has better coverage, Airalo or Holafly?",
-    a: "Neither can be called better on the providers' own pages. Airalo's Japan page shows SoftBank as the primary network plus two others it does not name (checked 1 November 2026); Holafly runs on SoftBank. Both cover major cities, tourist routes, and popular areas well. If rural coverage matters for your route, open the network list on Airalo's Japan page before you buy.",
+    a: "Neither can be called better on the providers' own pages. Airalo's Japan page shows SoftBank as the primary network plus two others it does not name (checked 1 November 2026); Holafly's Japan page lists KDDI and SoftBank (checked 15 November 2026). Both cover major cities, tourist routes, and popular areas well. If rural coverage matters for your route, open the network list on Airalo's Japan page before you buy.",
   },
   {
     q: "Can I switch from Airalo to Holafly mid-trip?",
@@ -90,21 +103,21 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>Airalo vs Holafly Japan 2026: Which Is Better?</title>
+        <title>{TITLE}</title>
         <meta
           name="description"
-          content="Airalo or Holafly for Japan? We compare price, data, coverage and support head-to-head — with a clear recommendation for every type of traveller."
+          content={DESC}
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/airalo-vs-holafly-japan" />
-        <meta property="og:title" content="Airalo vs Holafly Japan 2026: Which Is Better?" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/airalo-vs-holafly-japan" />
-        <meta property="og:description" content="Airalo or Holafly for Japan? We compare price, data, coverage and support head-to-head — with a clear recommendation for every type of traveller." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Airalo vs Holafly Japan 2026: Which Is Better?" />
-        <meta name="twitter:description" content="Airalo or Holafly for Japan? We compare price, data, coverage and support head-to-head — with a clear recommendation for every type of traveller." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -125,7 +138,8 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/airalo-vs-holafly-japan",
-              headline: "Airalo vs Holafly for Japan (2026): Which Should You Choose?",
+              headline: H1,
+              description: DESC,
               updated,
             }),
           }}
@@ -172,7 +186,7 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Airalo vs Holafly for Japan (2026):<br />Which Should You Choose?
+            {H1}
           </h1>
           <p className={styles.heroSubtitle}>
             Both are popular Japan eSIMs — but they suit very different travellers.

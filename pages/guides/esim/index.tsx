@@ -407,6 +407,8 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
               <Link href="/guides/esim/cheapest-esim-japan" style={inline}>cheapest eSIM for Japan</Link> ranking, and
               day-by-day prices in the{" "}
               <Link href="/guides/esim/japan-esim-price-tracker" style={inline}>Japan eSIM price tracker</Link>.
+              Holafly is not a partner of this site; its unlimited terms and the cheaper plans for the same days are in
+              the <Link href="/guides/esim/holafly-japan-review" style={inline}>Holafly Japan review</Link>.
             </p>
           </section>
 

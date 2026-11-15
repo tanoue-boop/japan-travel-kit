@@ -807,6 +807,14 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
               {pick.ctaNote && (
                 <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
                   {pick.ctaNote}
+                  {pick.name === "Holafly" && (
+                    <>
+                      {" "}Holafly&apos;s speed, hotspot and price by trip length are in our{" "}
+                      <Link href="/guides/esim/holafly-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        Holafly Japan review
+                      </Link>.
+                    </>
+                  )}
                 </p>
               )}
             </div>

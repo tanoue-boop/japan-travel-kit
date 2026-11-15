@@ -563,7 +563,9 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText}>
             Holafly publishes no threshold, but its Japan page says a Fair Usage Policy can restrict speed for no more
-            than one day to manage network traffic. Sakura Mobile&apos;s unlimited eSIM on au (KDDI) is sold as having
+            than one day to manage network traffic (prices by trip length and the 1 GB-a-day hotspot cap are in the{" "}
+            <Link href="/guides/esim/holafly-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>Holafly Japan review</Link>).
+            Sakura Mobile&apos;s unlimited eSIM on au (KDDI) is sold as having
             no daily speed cap. Airalo also says its host networks may manage traffic at busy times, separately from
             the 3 GB rule.
           </p>

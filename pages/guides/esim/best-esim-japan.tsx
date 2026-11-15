@@ -1300,7 +1300,9 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText}>
             Airalo for most trips, because it sells both fixed-data plans (from {priceFromLabel("airalo")}) and an
             unlimited plan with no tethering limit stated. Sakura Mobile if you need a Japanese phone number or a
-            physical SIM. Holafly sells unlimited data only, with 1 GB of shareable hotspot data a day.
+            physical SIM. Holafly sells unlimited data only, with 1 GB of shareable hotspot data a day; prices by
+            trip length and the cheaper plans for the same days are in our{" "}
+            <Link href="/guides/esim/holafly-japan-review" className={tools.inlineLink}>Holafly Japan review</Link>.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>

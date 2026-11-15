@@ -4,6 +4,7 @@ import {
   cheapestUnlimited,
   formatUsd,
   getProvider,
+  plansFor,
   priceFrom,
   pricesCheckedLabel,
   siteCheapestFrom,
@@ -32,15 +33,19 @@ const S5 = cheapestAtLeastGb("simbye", 5);
 const S10 = cheapestAtLeastGb("simbye", 10);
 const S20 = cheapestAtLeastGb("simbye", 20);
 const S_UNL = week("simbye");
+const fortnight = (id: EsimProviderId) => plansFor(id).find((p) => p.unlimited && p.days === 15) ?? cheapestUnlimited(id, 15);
+const holaflyPlans = plansFor("holafly");
+const holaflyMin = holaflyPlans[0] ?? null;
+const holaflyMax = holaflyPlans[holaflyPlans.length - 1] ?? null;
 
 export const esimPageAnswers: Record<string, string> = {
   "/guides/esim": `Most trips need one data eSIM bought before you fly. ${simbyeDeal(S10)}.`,
   "/guides/esim/airalo-japan-review": `Airalo is worth paying for if you want its app and support: ${price(cheapestAtLeastGb("airalo", 5))} for 5 GB over 7 days. On price alone, ${simbyeDeal(S5)}.`,
-  "/guides/esim/airalo-vs-holafly-japan": `Airalo for most trips: a week of unlimited is ${price(week("airalo"))} against ${price(week("holafly"))} on Holafly, and it also sells small plans. Neither is the cheapest: ${simbyeDeal(S_UNL)}, with 2 GB a day at full speed.`,
+  "/guides/esim/airalo-vs-holafly-japan": `Airalo vs Holafly for Japan: Airalo is the better fit for most trips, at ${price(week("airalo"))} for a week of unlimited against ${price(week("holafly"))} on Holafly, plus fixed-data plans from ${price(cheapestPlan("airalo"))}. Holafly suits one phone that streams all day, with no published daily threshold but a 1 GB-a-day hotspot cap. Neither is the cheapest: ${simbyeDeal(S_UNL)}, with 2 GB a day at full speed.`,
   "/guides/esim/best-pocket-wifi-japan": `Rent a router if several devices will share it; the rentals are compared below. For one phone an eSIM is simpler and cheaper: ${simbyeDeal(S10)}.`,
   "/guides/esim/does-esim-work-in-japan": `Yes. A travel eSIM works in Japan if your phone supports eSIM and is carrier-unlocked. Once that is checked, ${simbyeDeal(S10)}.`,
   "/guides/esim/esim-go-japan-review": `eSIM Go is a good budget eSIM at ${price(cheapestAtLeastGb("esimgo", 10))} for 10 GB, and it sells the largest allowances here. For that same 10 GB, ${simbyeDeal(S10)}.`,
-  "/guides/esim/holafly-japan-review": `Holafly sells unlimited only, ${price(week("holafly"))} for 7 days, with the hotspot capped at 1 GB a day, and we have no link to it. The cheapest week of unlimited compared here:${simbyeDeal(S_UNL)}.`,
+  "/guides/esim/holafly-japan-review": `Yes, Holafly works in Japan: its Japan eSIM is unlimited data only on KDDI and SoftBank (5G where available), with hotspot sharing capped at 1 GB a day, a Fair Usage Policy that can slow it for no more than one day, and no phone number (Holafly's Japan page, checked 15 Nov 2026). It costs ${price(holaflyMin)} for ${holaflyMin?.days ?? 3} days to ${price(holaflyMax)} for ${holaflyMax?.days ?? 30}, ${price(week("holafly"))} for 7 days and ${price(fortnight("holafly"))} for 15. For the same 7 days of unlimited, ${simbyeDeal(S_UNL)}, with 2 GB a day at full speed; Klook eSIM's unlimited plans run at high speed up to 10 GB a day.`,
   "/guides/esim/how-to-set-up-esim-japan": `Check your phone is unlocked, buy before you fly, install on Wi-Fi, and switch the eSIM on when you land. If you have not bought one yet, ${simbyeDeal(S10)}.`,
   "/guides/esim/japan-esim-2-weeks": `A 2-week trip to Japan uses about 4–9 GB, so a 10 GB plan valid for 14 days or more covers most travellers; only daily video streaming pushes 14 days past 14 GB. A 10 GB plan is a fixed allowance, not unlimited. For 14 days, ${simbyeDeal(S10)}.`,
   "/guides/esim/japan-esim-android": `Any unlocked Android with an EID under About phone can take a Japan eSIM, and no plan is Android-only. ${simbyeDeal(S10)}.`,

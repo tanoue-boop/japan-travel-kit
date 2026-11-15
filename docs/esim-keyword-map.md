@@ -24,7 +24,7 @@
 | 設定方法 | データなし | /guides/esim/how-to-set-up-esim-japan | 維持 |
 | ブランド：Sakura | sakura mobile（1,579／7.6）、sakura mobile sim card（139／18.4）、sakura esim（51／19.8） | /guides/esim/sakura-mobile-review | 維持 |
 | ブランド：Airalo | airalo japan esim（24／49.5）、ulasan airalo（63／10.7） | /guides/esim/airalo-japan-review | 維持 |
-| ブランド：Holafly | holafly's digital simcard for japan（55／30.3） | /guides/esim/holafly-japan-review | ボタンは Simbye |
+| ブランド：Holafly（レビュー・使えるか・無制限・価格） | holafly's digital simcard for japan（85／3URL計、11/15）、holafly reviews japan（15／21.5）、holafly esim japan（9／26.3）、holafly unlimited data for japan（6／26.7）、holafly esim no japão ほか葡・独語（約50） | /guides/esim/holafly-japan-review | 11/15 R02 で一本化。ボタンは Simbye・Klook eSIM・Sakura。Holafly へのリンクなし |
 | ブランド：eSIM Go | データなし | /guides/esim/esim-go-japan-review | 維持 |
 | ブランド：Simbye | データなし | /guides/esim/simbye-japan-review | 維持 |
 | ブランド：Ubigi | データなし | 担当なし | 提携が無く、ページも無い。今回は作らない |
@@ -47,7 +47,7 @@
 | 組み合わせ | 判断 | 理由 |
 |---|---|---|
 | japan-esim-unlimited と best-unlimited-esim-japan | 統合済み | 後者は既に301。順位の行は301前の旧URLの残り |
-| airalo-vs-holafly-japan と holafly-vs-esim-go-japan | 統合済み | 後者は既に301 |
+| airalo-vs-holafly-japan と holafly-vs-esim-go-japan | 統合済み | 後者は301。11/15 に301先を holafly-japan-review へ変更（着地語がレビュー型） |
 | holafly-japan-review と does-holafly-work-in-japan | 統合済み | 後者は既に301 |
 | airalo-vs-holafly-japan と holafly-japan-review | 統合しない | 比較とブランド名で意図が違う |
 | /wifi-pocket と best-pocket-wifi-japan | 統合済み | 10/19 から301 |
@@ -63,3 +63,4 @@ lib/redirects.js の記録のとおり、データなしの統合は9月以降�
 |---|---|---|---|
 | /sim-cards | /guides/esim/best-esim-japan | /guides/esim/japan-airport-sim-cards | 検索語が物理SIM向け。A20 で空港SIMページが復活した |
 | /guides/esim/esim-vs-sim-japan | /guides/esim/best-esim-japan | /guides/esim/japan-sim-card-vs-esim-2026 | 同じ問いに答えるページが現存している |
+| /guides/esim/holafly-vs-esim-go-japan | /guides/esim/airalo-vs-holafly-japan | /guides/esim/holafly-japan-review | 2026-11-15 R02。GSC 10/16〜11/12 で旧URLが202表示・21.0位、着地語は holafly reviews japan・holafly's digital simcard for japan などレビュー型 |
