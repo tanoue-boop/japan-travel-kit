@@ -713,7 +713,11 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             澀谷 SKY 的最大優勢，是能拍到經典的十字路口照片，但它既不是東京最高的展望台，也不是最便宜的——而且自 2025 年 4 月票價調整後，
             15:00 入場比東京鐵塔的 Top Deck Tour 還貴。要純粹的高度與富士山視野選晴空塔，要復古地標選東京鐵塔，
-            想免費看全景就去新宿的東京都廳。
+            想免費看全景就去新宿的東京都廳。晴空塔 350 公尺與 450 公尺展望台的票價與購票方式，請看{" "}
+            <Link href="/zh-tw/guides/attractions/tokyo-skytree-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              東京晴空塔門票攻略
+            </Link>
+            。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

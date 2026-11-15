@@ -46,6 +46,7 @@ const groups: ZhHubGroup[] = [
       "/zh-tw/guides/attractions/shibuya-sky-tickets",
       "/zh-tw/guides/attractions/teamlab-planets-tickets",
       "/zh-tw/guides/attractions/teamlab-borderless-tickets",
+      "/zh-tw/guides/attractions/tokyo-skytree-tickets",
     ],
   },
   {
@@ -90,6 +91,8 @@ const BLURBS: Record<string, string> = {
     "豐洲的 Planets：官方票價、30 分鐘入場時段、赤腳涉水區該穿什麼，以及和無界的完整比較。",
   "/zh-tw/guides/attractions/teamlab-borderless-tickets":
     "麻布台之丘的無界：浮動定價怎麼算、指定時段與 Flexible Pass 的差別、營業時間與休館日。",
+  "/zh-tw/guides/attractions/tokyo-skytree-tickets":
+    "晴空塔門票怎麼買：350 公尺天望甲板與 450 公尺天望迴廊的票價比較、線上購票省下現場服務費，以及傍晚時段為什麼要先訂。",
   "/zh-tw/guides/attractions/tokyo-disney-tickets":
     "每張票都指定日期、門口完全不賣票。怎麼買（包括官網封鎖海外卡時），以及樂園與海洋怎麼選。",
   "/zh-tw/guides/attractions/usj-tickets-express-pass":
