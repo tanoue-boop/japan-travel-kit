@@ -900,7 +900,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             reach five bus rides, and neither pass covers JR or the Keifuku Randen, which is a flat ¥220 adult
             and ¥110 child for the whole line. Pass and fare figures read {KYOTO_CITY_CHECKED}; routing advice
             read {OWN}. Our{" "}
-            <Link href="/guides/transport/kyoto-subway-bus-pass">Kyoto Subway &amp; Bus Pass guide</Link>{" "}
+            <Link href="/guides/transport/kyoto-subway-bus-pass">Kyoto subway and bus pass</Link> guide{" "}
             works the break-even through ride by ride.
           </p>
         </section>

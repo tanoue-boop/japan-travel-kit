@@ -9673,3 +9673,41 @@ export const jrKyushuPassTripPrep: KlookTripPrepItem[] = [
     why: "Seat reservations on JR Kyushu's pass booking site and the exchange-office hours are online, so data from landing at Fukuoka matters.",
   },
 ];
+
+/**
+ * Kyoto Subway & Bus Pass (15 Nov 2026, task-jtk-20261115-03) — "Book before you arrive".
+ * The pass covers the subway and city buses, not the JR lines to Fushimi Inari and
+ * Arashiyama, so the block leads with guided days for exactly those two (6.5%), then the
+ * JR-West Kansai pass for the JR side (5%) and the Klook eSIM (20%). Every url reads out
+ * of an existing constant; none is new. No prices.
+ */
+export const kyotoSubwayBusPassTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kyotoCityFushimiArashiyamaTour.title,
+    ctaLabel: "Check the Kyoto day tour →",
+    url: kyotoCityFushimiArashiyamaTour.url,
+    why: "Fushimi Inari and Arashiyama are the two big sights the day pass does not reach by train. A guided day from Kyoto Station covers both with no fares to add up.",
+  },
+  {
+    label: kyotoFushimiInariWalkingTour.title,
+    ctaLabel: "Check the Fushimi Inari walk →",
+    url: kyotoFushimiInariWalkingTour.url,
+    why: "Inari is about 5 minutes from Kyoto Station on the JR Nara Line, outside the pass. The listing runs three hours, so it fits a morning before a bus-and-subway afternoon.",
+  },
+  {
+    label: arashiyamaSaganoOptionalTour.title,
+    ctaLabel: "Check the Arashiyama tour →",
+    url: arashiyamaSaganoOptionalTour.url,
+    why: "The JR Sagano Line to Saga-Arashiyama is not covered by either Kyoto pass, so an Arashiyama day is the one to price as a tour rather than a pass day.",
+  },
+  {
+    label: jrKansaiAreaPass.title,
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass.url,
+    why: "If the trip also takes in Osaka, Nara or Kobe, this JR-only pass covers the JR lines to Inari and Saga-Arashiyama that the Kyoto passes do not.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Bus route searches and the stop-by-stop bus approach screens need data at the bus stop, which is where you will want them.",
+  },
+];

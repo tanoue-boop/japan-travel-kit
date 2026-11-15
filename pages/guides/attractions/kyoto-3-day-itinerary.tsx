@@ -702,6 +702,8 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             <strong>¥230</strong>, so you need about five rides in a day to break even. Day 1 is mostly on foot,
             and Days 2 and 3 rely on JR, which the pass does not cover. Pay as you go unless you plan a
             bus-heavy day. Fares read {FARES_CHECKED}. Our{" "}
+            <Link href="/guides/transport/kyoto-subway-bus-pass">Kyoto subway and bus pass</Link> guide works
+            the break-even ride by ride, and our{" "}
             <Link href="/guides/transport/kyoto-transportation">getting around Kyoto guide</Link> has the
             details.
           </p>

@@ -628,7 +628,9 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>Which Kyoto day pass should I buy?</h2>
           <p className={styles.bodyText}>
             Buy the ¥1,100 Subway &amp; Bus 1-Day Pass for a day of five or more rides, the ¥800 Subway 1-Day Pass only if
-            you will stay on the subway, and neither on a day built around JR. Prices confirmed {CHECKED}.
+            you will stay on the subway, and neither on a day built around JR. Prices confirmed {CHECKED}. The{" "}
+            <Link href="/guides/transport/kyoto-subway-bus-pass" style={{ fontWeight: 600 }}>Kyoto subway and bus pass</Link>{" "}
+            guide has the ride-by-ride break-even table and where to buy each ticket.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
