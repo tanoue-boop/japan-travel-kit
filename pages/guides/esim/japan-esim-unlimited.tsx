@@ -532,7 +532,9 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best eSIM for Japan guide</Link>, and if a fixed
             plan is enough, our{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM for Japan</Link>{" "}
-            ranking sorts them by price per GB and shows what an eSIM costs in Japan at 1 GB, 10 GB and unlimited. Sharing one connection across a group is usually cheaper on a{" "}
+            ranking sorts them by price per GB and shows what an eSIM costs in Japan at 1 GB, 10 GB and unlimited, and the{" "}
+            <Link href="/guides/esim/japan-esim-data-plans" style={{ color: "var(--accent)", fontWeight: 600 }}>Japan eSIM data plans guide</Link>{" "}
+            works out how many GB a fixed plan needs for your trip length. Sharing one connection across a group is usually cheaper on a{" "}
             <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>rented pocket WiFi</Link>.
           </p>
           <div className={styles.pickTarget} style={{ marginTop: "1.25rem", flexWrap: "wrap", gap: "0.6rem" }}>

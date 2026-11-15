@@ -215,6 +215,15 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
             日本也有很多地方完全不需要這些。京都多數知名寺院可直接入內參觀，奈良公園免費，
             和服體驗或料理課前一週訂都還來得及。這些攻略的重點是：把規劃的力氣花在真的會影響結果的地方。
           </p>
+          <p className={styles.bodyText}>
+            冬天的北海道也是這樣：
+            <Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours">札幌雪祭 2027</Link>
+            （2027 年 2 月 4–11 日）三個會場都免費、不用門票，真正要先訂的是住宿和一日遊；想把雪祭放進一整週，
+            <Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary">北海道7天行程</Link>
+            以札幌 4 晚、富良野 2 晚走完札幌、小樽、旭川、美瑛與富良野。不北上也能看雪：
+            <Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷野猿公苑</Link>
+            從東京搭新幹線到長野最快 79 分鐘，再轉車、步行約 35 分鐘就能看到泡湯的雪猴，12 月至 4 月持網路票者優先入園。
+          </p>
           <p className={styles.bodyText} style={{ fontSize: "0.86rem", color: "var(--text-muted)" }}>
             本站目前已查核 {attractionPrices.length} 項日本景點、主題樂園、通票與一日遊景點的官方入場費用，
             最近一次查核是 {zhDateLabel(latestChecked())}（英文版記為 {checkedLabel(latestChecked())}）。

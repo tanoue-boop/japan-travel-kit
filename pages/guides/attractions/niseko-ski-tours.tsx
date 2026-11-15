@@ -894,7 +894,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
                 This is the real case for a guided day. Niseko United&apos;s own access figures make the
                 run 2 to 3.5 hours each way, so a self-assembled day trip spends the daylight on buses.
                 The lift-pass-and-coach listing sells a fixed window on Grand Hirafu with the transport
-                and the pass inside one price.
+                and the pass inside one price. For a shorter ride, the{" "}
+                <Link href="/guides/attractions/sapporo-ski-day-trip">Sapporo ski day trip</Link> guide
+                compares Teine (about 40 minutes from the city), Kiroro and Rusutsu.
               </p>
             </div>
             <div className={styles.whoForCard}>
@@ -1002,7 +1004,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu</p>
+                <p className={styles.relatedTitle}>Sapporo Ski Day Trip 2026-27: Teine, Kiroro &amp; Rusutsu Tours</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -1015,7 +1017,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Furano Biei Tour from Sapporo (2026): Winter vs Summer</p>
+                <p className={styles.relatedTitle}>Furano &amp; Biei Day Tour from Sapporo (2026): Winter Light-Ups</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

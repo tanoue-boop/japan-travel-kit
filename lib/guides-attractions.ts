@@ -441,7 +441,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/furano-biei-tour",
     badge: "Day trip",
-    title: "Furano Biei Tour from Sapporo (2026): Winter Light-Ups or Summer Lavender",
+    title: "Furano & Biei Day Tour from Sapporo (2026): Winter Light-Ups",
     desc: "A coach day of about 10 to 11.6 hours from Sapporo. Six tours compared, the Blue Pond light-up dates to 21 April 2027, why snow hides the blue, the Ningle Terrace closure, and tour against train.",
     group: "daytrips",
     // Hokkaido sits outside the three city hubs, like otaru-day-trip-from-sapporo.
@@ -719,8 +719,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/sapporo-ski-day-trip",
     badge: "Ski",
-    title: "Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu",
-    desc: "Teine is about 40 minutes from central Sapporo with a ¥9,800 day at the window and night skiing to 20:00; Kiroro and Rusutsu are the longer days — with all-inclusive, lesson and lift-and-bus tours compared.",
+    title: "Sapporo Ski Day Trip 2026-27: Teine, Kiroro & Rusutsu Tours",
+    desc: "Teine is about 40 minutes from central Sapporo and opens 21 Nov 2026, with a ¥9,800 day at the window and night skiing to 20:00; Kiroro and Rusutsu (105 min by bus) open 28 Nov — with all-inclusive, lesson and lift-and-bus tours compared.",
     group: "experiences",
     // Hokkaido, same group and city as niseko-ski-tours.
     city: "other",

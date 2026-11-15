@@ -48,9 +48,6 @@ const rows: TrackerRow[] = buildRows(raw);
 const sum = summarize(rows);
 const fx = data.tracker.fx;
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const lastChecked = sum.lastChecked ?? "";
-const monthLabel = lastChecked ? `${MONTHS[Number(lastChecked.slice(5, 7)) - 1]} ${lastChecked.slice(0, 4)}` : "";
 const d = (iso: string | null) => formatDate(iso);
 const usd = (n: number | null | undefined) => (n === null || n === undefined ? "—" : `$${n.toFixed(2)}`);
 const names = (list: TrackerRow[]) => Array.from(new Set(list.map((r) => r.provider))).join(" and ");
@@ -122,15 +119,50 @@ const ANSWER = `Lowest price per GB: ${perGbTop ? `${perGbTop.provider} ${perGbT
 } (checked ${d(sum.lastChecked)}).`;
 const CITE = `${SITE_NAME}, "Japan eSIM Price Tracker", ${PAGE_URL} (prices checked ${d(sum.firstChecked)}–${d(sum.lastChecked)}).`;
 
-// Split from cheapest-esim-japan (R04, 14 Nov 2026): this page owns "price tracker" and the dated
-// price checks; "cheapest eSIM Japan" belongs to the cheapest page, so no "cheapest" here.
-const TITLE = `Japan eSIM Price Tracker (${monthLabel}): Daily Price Checks`;
-const H1 = "Japan eSIM Price Tracker: Daily Price Checks by Provider";
-const DESCRIPTION = `${sum.plans} Japan eSIM plans from ${sum.providers} providers, read on official sites with the date of each check. Lowest per GB: ${
-  perGbTop ? `${perGbTop.provider} ${usd(perGbTop.perGbUsd)}` : "—"
-}. Free CSV.`;
+/**
+ * Today's price by trip length: the lowest price on the tracker's 7, 15 and 30-day tabs
+ * (exact validity, as the tabs filter), each with the date that row was last read.
+ */
+type LengthLine = { days: number; any: TrackerRow | null; tenGb: TrackerRow | null; unl: TrackerRow | null };
+const lengthLines: LengthLine[] = [7, 15, 30].map((days) => {
+  const mine = rows.filter((r) => r.days === days);
+  return {
+    days,
+    any: minBy(mine, (r) => r.priceUsd),
+    tenGb: minBy(mine.filter((r) => !r.unlimited && !r.dailyCapGb && (r.gb ?? 0) >= 10), (r) => r.priceUsd),
+    unl: minBy(mine.filter((r) => r.unlimited), (r) => r.priceUsd),
+  };
+});
+const [len7, len15] = lengthLines;
+const rowLabel = (r: TrackerRow | null) => (r ? `${r.provider} ${r.plan} at ${usd(r.priceUsd)}` : "—");
+/** Distinct official pages behind the price-by-length table, for its source line. */
+const lengthSources = Array.from(
+  new Map(
+    lengthLines
+      .flatMap((l) => [l.any, l.tenGb, l.unl])
+      .filter((r): r is TrackerRow => Boolean(r))
+      .map((r): [string, { name: string; url: string }] => [r.providerId, { name: r.provider, url: r.sourceUrl }])
+  ).values()
+);
+
+// Split from cheapest-esim-japan (R04, 14 Nov 2026): this page owns the dated price checks;
+// "cheapest eSIM Japan" belongs to the cheapest page. CTR pass 15 Nov 2026 (C01): the lead is
+// "Japan eSIM prices today" + the update date, and title and H1 are one string in one order.
+const TITLE = "Japan eSIM Prices Today (2026): Daily Price Tracker";
+const H1 = TITLE;
+const DESCRIPTION = `Japan eSIM prices today: 7 days from ${usd(len7.any?.priceUsd)}, 15 days from ${usd(
+  len15.any?.priceUsd
+)}, 7-day unlimited ${usd(len7.unl?.priceUsd)} (updated ${d(sum.lastChecked)}). ${sum.plans} plans, Simbye or Klook eSIM buttons.`;
 
 const faqItems = [
+  {
+    q: "How much does a Japan eSIM cost?",
+    a: `As of the last update on ${d(sum.lastChecked)}, a 7-day Japan eSIM costs from ${usd(len7.any?.priceUsd)} (${rowLabel(len7.any)}), a 15-day one from ${usd(len15.any?.priceUsd)} (${rowLabel(len15.any)}) and a 30-day one from ${usd(lengthLines[2].any?.priceUsd)}. With 10 GB or more, 7 days starts at ${usd(len7.tenGb?.priceUsd)} and 15 days at ${usd(len15.tenGb?.priceUsd)}; unlimited starts at ${usd(len7.unl?.priceUsd)} for 7 days and ${usd(len15.unl?.priceUsd)} for 15. The median price per GB across all ${sum.plans} plans is ${usd(sum.medianPerGb)}.`,
+  },
+  {
+    q: "When were these Japan eSIM prices last updated?",
+    a: `The latest price check was ${d(sum.lastChecked)}. ${data.tracker.updatePolicy} Each row in the table carries its own check date and a link to the official page it was read from, so a row read on ${d(sum.firstChecked)} shows that date rather than today's.`,
+  },
   {
     q: "Which Japan eSIM has the lowest price per GB?",
     a: `${perGbTop ? `${perGbTop.provider}'s ${perGbTop.plan} plan, at ${usd(perGbTop.perGbUsd)} per GB (${usd(perGbTop.priceUsd)} in total)` : "—"}, of the ${sum.plans} plans read on ${sum.providers} providers' official sites between ${d(sum.firstChecked)} and ${d(sum.lastChecked)}. The median of each provider's lowest price per GB is ${usd(sum.medianBestPerGbByProvider)}. Large allowances always win on this measure, so check the plan's validity covers your trip.`,
@@ -142,10 +174,6 @@ const faqItems = [
   {
     q: "How are prices in yen converted to US dollars?",
     a: `Prices are recorded in the currency the provider's site shows. ${nonUsd.length ? `${nonUsd.join(" and ")} prices are converted at the European Central Bank reference rate of ${fx.date} (1 USD = ${nonUsd.map((c) => `${fx.perUsd[c]} ${c}`).join(", ")}).` : ""} The original price is shown under the USD figure and kept in the CSV.`,
-  },
-  {
-    q: "How often is the tracker updated?",
-    a: `${data.tracker.updatePolicy} Each row carries its own check date and a link to the page it was read from.`,
   },
 ];
 
@@ -269,6 +297,14 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
         {/* The answer and the method, in the first two sentences. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
+            Japan eSIM prices today, as of the last update on <strong>{d(sum.lastChecked)}</strong>: a{" "}
+            <strong>7-day</strong> plan costs from <strong>{usd(len7.any?.priceUsd)}</strong> ({rowLabel(len7.any)}) and
+            a <strong>15-day</strong> plan from <strong>{usd(len15.any?.priceUsd)}</strong> ({rowLabel(len15.any)}). With
+            10 GB or more, 7 days starts at {usd(len7.tenGb?.priceUsd)} and 15 days at {usd(len15.tenGb?.priceUsd)}. The{" "}
+            {Object.keys(data.tracker.autoFacts).length} providers read automatically are re-checked every day and the rest
+            on the 1st of each month, and every row below shows the date its price was last read.
+          </p>
+          <p className={styles.bodyText}>
             The Japan eSIM prices of <strong>{providersListed} providers</strong> were checked on their own official sites between{" "}
             {d(sum.firstChecked)} and {d(sum.lastChecked)}, with per-plan prices recorded for{" "}
             <strong>{sum.providers} of them ({sum.plans} plans)</strong>. The lowest price per GB is{" "}
@@ -281,6 +317,56 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             {usd(sum.medianUnlimited7)} across {sum.unlimited7Count} plans). This page tracks each price and the date it was
             checked; for the lowest price at each data size and a pick, see the{" "}
             <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link>.
+          </p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Today</span>
+          <h2 className={styles.sectionTitle}>What does a Japan eSIM cost today?</h2>
+          <p className={styles.bodyText}>
+            From {usd(len7.any?.priceUsd)} for 7 days and {usd(len15.any?.priceUsd)} for 15 days at the last update; the
+            table gives the lowest price on each trip-length tab and the day that price was read.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Trip length", "Lowest price", "Lowest with 10 GB+", "Lowest unlimited", "Price read on"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {lengthLines.map((l, i) => (
+                    <tr key={l.days} style={i === 0 ? { fontWeight: 700, background: "var(--paper)" } : {}}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{l.days} days</td>
+                      {[l.any, l.tenGb, l.unl].map((r, j) => (
+                        <td key={j} className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
+                          {r ? usd(r.priceUsd) : "—"}
+                          {r && <span className={tools.tdNote}>{`${r.provider} ${r.plan}`}</span>}
+                        </td>
+                      ))}
+                      <td className={styles.tdNetwork} style={{ whiteSpace: "nowrap" }}>
+                        {Array.from(new Set([l.any, l.tenGb, l.unl].map((r) => r?.checkedOn).filter(Boolean))).join(", ")}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {sum.lastChecked}. Source:{" "}
+            {lengthSources.map((s, i) => (
+              <span key={s.url}>
+                {i > 0 ? ", " : ""}
+                <a href={s.url} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+                  {s.name}
+                </a>
+              </span>
+            ))}{" "}
+            official pages. Exact validity only, as on the 7, 15 and 30-day tabs below; list prices before any discount code.
           </p>
         </section>
 

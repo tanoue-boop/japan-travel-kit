@@ -2093,7 +2093,7 @@
         "carriers": "SoftBank 5G / IIJ (Docomo) 4G LTE",
         "tethering": "Yes (listing says supported)",
         "phoneNumber": "No (data only)",
-        "reason": "Klook answers automated reads with HTTP 403, and its listing shows only a from-price (US$1.05, read in a browser on 6 Nov 2026) before days and data are chosen, so no per-plan price can be recorded."
+        "reason": "The listing shows only a from-price before days and data are chosen, with no plan named, so no per-plan price is recorded here; Klook prices change by date, so open the listing for yours."
       },
       {
         "id": "saily",

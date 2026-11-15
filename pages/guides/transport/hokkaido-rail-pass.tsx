@@ -736,7 +736,11 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>Train or Tour for Furano, Biei and Otaru?</h2>
           <p className={styles.bodyText}>
             The pass gets you to Asahikawa, Biei and Furano stations, but the Blue Pond and the flower hills around Biei
-            are a drive from the station. A coach day from Sapporo covers those stops in one booking. Otaru, by
+            are a drive from the station. A coach day from Sapporo covers those stops in one booking; the{" "}
+            <Link href="/guides/attractions/furano-biei-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Furano &amp; Biei day tour from Sapporo
+            </Link>{" "}
+            guide compares the winter light-up and summer lavender routes with the train. Otaru, by
             contrast, is ¥800 and a short ride on the Rapid Airport, and is easy without a tour — see our{" "}
             <Link href="/guides/attractions/otaru-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>
               Otaru day trip guide
@@ -798,7 +802,7 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Furano Biei Tour from Sapporo (2026): Winter vs Summer</p>
+                <p className={styles.relatedTitle}>Furano &amp; Biei Day Tour from Sapporo (2026): Winter Light-Ups</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

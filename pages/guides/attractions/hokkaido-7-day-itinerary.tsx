@@ -676,7 +676,10 @@ const days: Day[] = [
         Whichever of the two afternoons you picked and, in summer, the Lavender Express seat that gets you back
         for it. If you want a ski day instead, our{" "}
         <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link> sets out the same-day
-        lift and coach package from Sapporo. From 30 January to 23 February 2027 the Lake Shikotsu ice
+        lift and coach package from Sapporo, and the{" "}
+        <Link href="/guides/attractions/sapporo-ski-day-trip">Sapporo ski day trip guide</Link> compares the
+        closer resorts: Teine about 40 minutes from the city, Kiroro, and Rusutsu at 105 minutes by bus.
+        From 30 January to 23 February 2027 the Lake Shikotsu ice
         festival is the alternative worth knowing about, and the half-day tour below is the simple way to
         reach it.
         Whatever you book, read the cancellation window. This is the day a Hokkaido snow day takes away — it
@@ -1322,7 +1325,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu</p>
+                <p className={styles.relatedTitle}>Sapporo Ski Day Trip 2026-27: Teine, Kiroro &amp; Rusutsu Tours</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -1348,7 +1351,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Furano Biei Tour from Sapporo (2026): Winter vs Summer</p>
+                <p className={styles.relatedTitle}>Furano &amp; Biei Day Tour from Sapporo (2026): Winter Light-Ups</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

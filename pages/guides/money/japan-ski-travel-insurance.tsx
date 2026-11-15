@@ -891,7 +891,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu</p>
+                <p className={styles.relatedTitle}>Sapporo Ski Day Trip 2026-27: Teine, Kiroro &amp; Rusutsu Tours</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -67,6 +67,10 @@ const SEASON = dateLabel(SEASON_ISO, LOCALE);
 const FESTIVAL_CHECKED = dateLabel("2026-10-30", LOCALE);
 const JMA_CHECKED = dateLabel("2026-10-28", LOCALE);
 
+// 2026-11-15 (C01): pass prices re-read on JR Hokkaido; festival dates re-read on snowfes.com/news/948.html.
+const RECHECK_ISO = "2026-11-15";
+const RECHECK = dateLabel(RECHECK_ISO, LOCALE);
+
 const AIRPORT_FARE = "¥1,230";
 const OTARU_FARE = "¥800";
 const ASAHIKAWA_RT = "¥10,880";
@@ -173,6 +177,11 @@ const seasonRows = [
 ];
 
 const passRows = [
+  {
+    leg: "結論：7 天鐵路合計 vs 7 日北海道周遊券",
+    fare: `${TOTAL_SUMMER}／${TOTAL_WINTER}`,
+    note: `夏季版／冬季版合計都低於 7 日北海道周遊券 ${PASS_7}（抵達前購買），所以不買 7 日券；用 4 日札幌–富良野區域周遊券 ${AREA_FURANO}。`,
+  },
   {
     leg: "新千歲機場 → 札幌（第 1 天）",
     fare: AIRPORT_FARE,
@@ -587,7 +596,7 @@ const hokkaidoSameTrip: KlookTripPrepItem[] = [
 
 const faqItems = [
   {
-    q: "北海道 7 天夠嗎？",
+    q: "北海道7天行程夠玩嗎？",
     a: `足以玩遍半個北海道。7 天 6 晚可以不趕地走完札幌、小樽、旭川、美瑛和富良野，也就是本頁的路線：札幌四晚、富良野兩晚。7 天玩不完整個島。北海道大約和奧地利一樣大，東部的知床、釧路、阿寒湖在旭川之外還要四五小時，南部的函館又是另一個方向。七天行程想再加其中之一，整週都會花在火車上。規劃原則是一個住宿地點住兩到三晚：兩個住宿地點能好好看西部，三個會很趕，四個就變成一路趕交通，而不是度假了。`,
   },
   {
@@ -599,12 +608,12 @@ const faqItems = [
     a: `這條路線不值得，以下列出計算方式。JR 北海道官方價（查核日：${OWN}）：北海道周遊券連續 5 天 ${PASS_5}、7 天 ${PASS_7}、10 天 ${PASS_10}（抵達前購買），車站購買貴 ¥1,000，沒有非連續使用的版本。看路段：機場單程 ${AIRPORT_FARE}。小樽來回 ¥1,600。札幌到旭川對號座單程 ${ASAHIKAWA_OW}，是來回 ${ASAHIKAWA_RT} 除以 2。旭川到富良野普通列車 ${FURANO_LOCAL}。富良野回札幌夏季薰衣草特快 ${FURANO_OW}，是來回 ${FURANO_RT} 除以 2；冬季搭普通列車加 Lilac 或 Kamui ${FURANO_WINTER}。合計夏季 ${TOTAL_SUMMER}、冬季 ${TOTAL_WINTER}，都低於 ¥18,000。和 ${PASS_7} 相比，7 日券虧約 ¥10,000。划算的是 4 日札幌–富良野區域周遊券 ${AREA_FURANO}：旭川和富良野特急段就要 ¥11,720，還涵蓋新千歲、札幌、小樽和美瑛，用在第 3 到第 6 天，再加上小樽來回就划算。札幌–登別區域周遊券 ${AREA_NOBORIBETSU} 是往南而不是往內陸路線的版本。2026 年 10 月 1 日調漲後 7 日 ¥53,000 的全國版 JR Pass，只玩北海道完全不適用。`,
   },
   {
-    q: "北海道住哪裡好？",
+    q: "北海道7天行程住哪裡好？",
     a: `7 天兩個住宿地點：札幌四晚、富良野兩晚。住札幌站是為了交通順暢，而不是為了景色：新千歲來的快速 Airport、往旭川的 Lilac 和 Kamui，以及夏季的薰衣草特快都從札幌站出發，到大通一站地鐵或走有遮蔽的路，在平均最高溫 ${FEB_MAX} 的月份這比什麼都重要。第 4、5 晚的富良野常被跳過，但不該跳過：從札幌當天去美瑛和富良野是十小時巴士，從富良野的房間出發的兩個早晨則是這週最好的部分。有兩個值得的替換：想看點燈的運河，把第 3 晚換到小樽，尤其是 2 月上旬小樽雪燈之路期間，${OTARU_FARE}、約 33 分鐘回札幌，交通費幾乎不會增加。如果是真正的滑雪週，把富良野換成二世谷，因為機場巴士從新千歲直達，也能放雪具。`,
   },
   {
-    q: "什麼時候去北海道最好？",
-    a: `有兩個正確答案，也是兩種不同的假期。2 月是冬季版，有固定日期：依執行委員會公告，札幌雪祭 2027 年 2 月 4 到 11 日在三個免費會場舉行（查核日：${FESTIVAL_CHECKED}）；依小樽觀光協會頁面，小樽雪燈之路 2027 年 2 月 6 到 13 日（查核日：${OWN}）；旭山動物園的企鵝散步需要雪道，開始日期由動物園官方社群公布。代價是天氣：依日本氣象廳 1991–2020 年札幌平年值，2 月平均最高 ${FEB_MAX}、最低 ${FEB_MIN}、降雪 ${FEB_SNOW}（查核日：${JMA_CHECKED}）。7 月是夏季版，完全相反：富良野薰衣草、美瑛山丘、長長的白晝；日本其他地區悶熱時，北海道相對涼爽舒適。兩者之間，5 月有晚開的櫻花和積丹海岸，9 月下旬到 10 月有大雪山紅葉。要三思的是 11 月，換季時景點會休館，旭山動物園也在 11 月 4 到 10 日休園；還有滿地泥濘的 4 月。`,
+    q: "北海道冬季7天行程可以排札幌雪祭嗎？什麼時候去最好？",
+    a: `可以：冬季版把札幌雪祭排在第 2 天，2027 年雪祭是 2 月 4–11 日（第 77 屆，官網 snowfes.com，${RECHECK} 再次查核）。至於什麼時候去最好，有兩個正確答案，也是兩種不同的假期。2 月是冬季版，有固定日期：依執行委員會公告，札幌雪祭 2027 年 2 月 4 到 11 日在三個免費會場舉行（查核日：${FESTIVAL_CHECKED}）；依小樽觀光協會頁面，小樽雪燈之路 2027 年 2 月 6 到 13 日（查核日：${OWN}）；旭山動物園的企鵝散步需要雪道，開始日期由動物園官方社群公布。代價是天氣：依日本氣象廳 1991–2020 年札幌平年值，2 月平均最高 ${FEB_MAX}、最低 ${FEB_MIN}、降雪 ${FEB_SNOW}（查核日：${JMA_CHECKED}）。7 月是夏季版，完全相反：富良野薰衣草、美瑛山丘、長長的白晝；日本其他地區悶熱時，北海道相對涼爽舒適。兩者之間，5 月有晚開的櫻花和積丹海岸，9 月下旬到 10 月有大雪山紅葉。要三思的是 11 月，換季時景點會休館，旭山動物園也在 11 月 4 到 10 日休園；還有滿地泥濘的 4 月。`,
   },
   {
     q: "新千歲機場怎麼到札幌？",
@@ -615,7 +624,7 @@ const faqItems = [
     a: `依 JAL 國內航線資料（查核日：${OWN}），羽田到新千歲 ${HND_FLIGHT}、每天十六班，是世界最繁忙的航線之一，持可改票機票的話，幾乎隨時都能改搭其他班次。大阪的部分這裡不寫數字：查核當天沒有航空公司頁面公布伊丹或關西到新千歲的時間，比價網站的數字也不是業者官方，請查詢出發日期的航空公司時刻表。規劃上的重點一樣：在航程外加上新千歲到札幌的 ${AIRPORT_FARE} 與 36 到 43 分鐘，2 月離開時比新幹線多留緩衝，最後一天早上不要訂第一班。也有鐵路可選：北海道新幹線到新函館北斗，不到札幌，7 天行程裡單程就要花掉一天。`,
   },
   {
-    q: "北海道 7 天交通費要多少？",
+    q: "北海道7天行程交通費要多少？",
     a: `上述路線的鐵路票價每人低於 ¥18,000，多數人對這筆交通費不是高估就是低估。依 JR 北海道數字分項（查核日：${OWN}）：新千歲進札幌 ${AIRPORT_FARE}、小樽來回 ¥1,600、往旭川特急對號座 ${ASAHIKAWA_OW}、旭川到富良野普通列車 ${FURANO_LOCAL}、回程夏季薰衣草特快 ${FURANO_OW} 或冬季經旭川 ${FURANO_WINTER}、回機場 ${AIRPORT_FARE}，合計夏季 ${TOTAL_SUMMER}、冬季 ${TOTAL_WINTER}。札幌市內地鐵單區 ¥210，交通局一日券平日 ${SUBWAY_DAY_PASS}、週末與國定假日 ${DONICHIKA}，搭三四次就划算。這個數字不包含、但真正決定預算的是：來回機票、六晚住宿，以及大眾運輸確實不便的美瑛和余市導覽行程。這三項最值得比較，而且都依日期而定，所以本頁都不標價。`,
   },
   {
@@ -628,9 +637,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "北海道7天行程（2027）：每日路線與周遊券算法";
+const TITLE = "北海道7天行程 2026：札幌・小樽・富良野・冬季雪祭";
 const DESC =
-  "北海道7天行程怎麼排：每天一張表，走札幌、小樽、旭川、美瑛與富良野，並附兩個住宿地點、航班資訊與鐵路周遊券的完整算法說明。";
+  "北海道7天行程：札幌4晚＋富良野2晚，走札幌→小樽→旭川→美瑛・富良野，鐵路每人低於¥18,000。冬季可排2/4–11雪祭，飯店與一日遊在 Klook 查看。";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -641,7 +650,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd([0, 3, 4, 7, 2].map((i) => faqItems[i])) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -659,7 +668,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 更新於 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-北海道7天行程：<br />每日路線安排
+北海道7天行程 2026：<br />札幌・小樽・富良野・冬季雪祭
 </h1>
           <p className={styles.heroSubtitle}>
 以兩個住宿地點安排 6 晚，逐日整理行程表，加上用 JR 北海道票價算的周遊券，以及 2 月和 7 月版本對照。
@@ -752,7 +761,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
               </div>
             </div>
                         <p className={styles.verdictText}>
-這份<strong>北海道7天行程</strong>以<strong>兩個住宿地點安排六晚</strong>：<strong>札幌四晚</strong>、<strong>富良野兩晚</strong>，路線是<strong>札幌 → 小樽 → 旭川 → 美瑛和富良野 → 札幌</strong>。距離短到全程可搭火車，依 JR 北海道數字：新千歲到札幌 <strong>{AIRPORT_FARE}</strong>、<strong>36 到 43 分鐘</strong>；札幌到小樽 <strong>{OTARU_FARE}</strong>、<strong>約 33 分鐘</strong>；札幌到旭川搭對號座 Lilac 或 Kamui <strong>1 小時 25 分鐘</strong>；富良野回札幌夏季搭薰衣草特快<strong>兩小時</strong>，冬季搭普通列車加 Lilac 或 Kamui。加起來全程鐵路交通費每人<strong>低於 ¥18,000</strong>，所以<strong>這條路線買 {PASS_7} 的 7 日北海道周遊券不划算</strong>，4 日<strong>札幌–富良野區域周遊券 {AREA_FURANO}</strong> 才划算。唯一不適合搭大眾運輸的是<strong>美瑛</strong>；<strong>富良野</strong>在 <strong>2 月</strong>和 <strong>7 月</strong>是完全不同的景色。票價與周遊券價格查核日：{OWN}。
+<strong>北海道7天行程的結論是 7 天 6 晚只住兩個地方：札幌 4 晚、富良野 2 晚</strong>，路線是<strong>札幌 → 小樽（JR {OTARU_FARE}、約 33 分鐘）→ 旭川（特急 1 小時 25 分鐘）→ 美瑛・富良野 → 札幌</strong>，全程搭火車、不用開車。這條路線的鐵路交通費每人<strong>低於 ¥18,000</strong>，所以 4 日<strong>札幌–富良野區域周遊券 {AREA_FURANO}</strong> 比 {PASS_7} 的 7 日北海道周遊券划算（周遊券價格 {RECHECK} 再次查核）。冬季版把第 2 天排在 <strong>2027 年 2 月 4–11 日</strong>的<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours">札幌雪祭 2027</Link>（三會場免費），夏季版則以 7 月富良野薰衣草為主。全程距離短到可搭火車，依 JR 北海道數字：新千歲到札幌 <strong>{AIRPORT_FARE}</strong>、<strong>36 到 43 分鐘</strong>；札幌到小樽 <strong>{OTARU_FARE}</strong>、<strong>約 33 分鐘</strong>；札幌到旭川搭對號座 Lilac 或 Kamui <strong>1 小時 25 分鐘</strong>；富良野回札幌夏季搭薰衣草特快<strong>兩小時</strong>，冬季搭普通列車加 Lilac 或 Kamui。唯一不適合搭大眾運輸的是<strong>美瑛</strong>；<strong>富良野</strong>在 <strong>2 月</strong>和 <strong>7 月</strong>是完全不同的景色。票價與周遊券價格查核日：{OWN}。
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -877,6 +886,9 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+<strong>Last checked: {RECHECK_ISO}</strong>（周遊券價格）· 官方：<a href="https://www.jrhokkaido.co.jp/global/english/ticket/railpass/index.html" target="_blank" rel="noopener" style={{ color: "var(--text)" }}>jrhokkaido.co.jp/global/english/ticket/railpass/</a>；各路段票價查核日 {OWN} 或 {SEASON}。
+</p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
 <strong>那該買哪一張？</strong><strong>北海道周遊券</strong>抵達前購買連續 5 天 {PASS_5}、7 天 <strong>{PASS_7}</strong>、10 天 {PASS_10}，車站購買貴 ¥1,000，兒童半價，沒有非連續使用的版本，所以和低於 ¥18,000 的票價相比，7 日券虧約 ¥10,000。連續 4 天 <strong>{AREA_FURANO}</strong> 的<strong>札幌–富良野區域周遊券</strong>才划算：旭川和富良野特急段就要 ¥11,720，還涵蓋新千歲、札幌、小樽和美瑛，用在第 3 到第 6 天，再加上小樽來回就划算（不含 Tomamu）。<strong>札幌–登別區域周遊券</strong> {AREA_NOBORIBETSU} 是往南路線的版本，涵蓋新千歲、札幌、小樽和登別，不含洞爺。全國版 <strong>JR Pass</strong> 在 2026 年 10 月 1 日調漲後 7 天 ¥53,000、14 天 ¥84,000、21 天 ¥105,000，不適合只玩北海道；何時適合請看 <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>。
 </p>
@@ -951,7 +963,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           className={styles.bodyText}
           style={{ marginTop: "-1.5rem", marginBottom: "3.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}
         >
-七張表的「預留時間」是我們的規劃估計，不是業者數字。所有車程和票價都是業者官方：機場、小樽、旭川和富良野段出自 JR 北海道，旭山動物園 {ZOO_ADULT} 門票和冬季時間出自旭川市，運河遊船票價出自業者官網，富田農場時間出自富田農場，余市蒸餾所資訊出自 Nikka，均於 {OWN} 查核。雪祭日期和札幌地鐵一日券出自<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--text)", fontWeight: 600 }}>札幌雪祭攻略</Link>，查核日：{FESTIVAL_CHECKED}。
+七張表的「預留時間」是本頁的規劃估計，不是業者數字。所有車程和票價都是業者官方：機場、小樽、旭川和富良野段出自 JR 北海道，旭山動物園 {ZOO_ADULT} 門票和冬季時間出自旭川市，運河遊船票價出自業者官網，富田農場時間出自富田農場，余市蒸餾所資訊出自 Nikka，均於 {OWN} 查核。雪祭日期和札幌地鐵一日券出自<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--text)", fontWeight: 600 }}>札幌雪祭攻略</Link>，查核日：{FESTIVAL_CHECKED}。
 </p>
 
                 <KlookStayAreas
@@ -974,7 +986,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           tours={[withKlookLocale(furanoBieiBluePondDayTour, LOCALE, { title: "札幌出發富良野、美瑛青池與四季彩之丘一日遊", desc: "包含白金青池和四季彩之丘花田的內陸行程，含拖拉機遊園和薰衣草枕手作" }), withKlookLocale(yoichiOtaruWalkingTour, LOCALE, { title: "札幌出發余市與小樽步行一日遊", desc: "有英語助理的小團電車與巴士一日：Nikka 余市蒸餾所、酒造和小樽運河遊船，步行約 4 公里" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "札幌出發旭山動物園、美瑛青池與精靈露台一日遊", desc: "從札幌前往旭川動物園、美瑛青池和精靈露台的一日巴士，有多條路線，冬季可加購雪上摩托車" }), withKlookLocale(noboribetsuToyaOtaruDayTour, LOCALE, { title: "札幌出發登別、洞爺湖與小樽一日遊", desc: "市區南方和西方的全景跟團行程，適合多一天、又不想在大通度過第四晚的雪祭旅程" })]}
         />
 
-                <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周遊券（2026）：價格與是否划算 （英文）" }, { href: "/zh-tw/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、教練課與四大區域" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出發小樽一日遊（2027）：¥800，JR 33 分鐘 （英文）" }, { href: "/zh-tw/guides/attractions/sapporo-snow-festival-tours", title: "札幌雪祭（2027）：2/4–11 三會場免費，該訂什麼" }, { href: "/zh-tw/guides/attractions/japan-winter-itinerary", title: "日本冬季行程（2027）：12 天路線逐日安排" }, { href: "/guides/money/best-travel-insurance-japan", title: "日本旅遊保險推薦 2026：誰需要什麼 （英文）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅遊保險（2027）：該保什麼 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：價格、範圍與是否划算 （英文）" }, { href: "/zh-tw/guides/esim/best-esim-japan", title: "日本 eSIM 推薦（2026）：業者、價格與怎麼選" }]} />
+                <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周遊券（2026）：價格與是否划算 （英文）" }, { href: "/zh-tw/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、教練課與四大區域" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出發小樽一日遊（2027）：¥800，JR 33 分鐘 （英文）" }, { href: "/zh-tw/guides/attractions/sapporo-snow-festival-tours", title: "札幌雪祭 2027：日期 2/4–11・交通・旅行團" }, { href: "/zh-tw/guides/attractions/japan-winter-itinerary", title: "日本冬季行程（2027）：12 天路線逐日安排" }, { href: "/guides/money/best-travel-insurance-japan", title: "日本旅遊保險推薦 2026：誰需要什麼 （英文）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅遊保險（2027）：該保什麼 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：價格、範圍與是否划算 （英文）" }, { href: "/zh-tw/guides/esim/best-esim-japan", title: "日本 eSIM 推薦（2026）：業者、價格與怎麼選" }]} />
 
                 <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>

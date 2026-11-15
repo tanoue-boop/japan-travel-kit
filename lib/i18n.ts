@@ -407,7 +407,7 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
   {
     en: "/guides/attractions/sapporo-snow-festival-tours",
     zhTw: "/zh-tw/guides/attractions/sapporo-snow-festival-tours",
-    zhTitle: "札幌雪祭（2027）：2/4–11 三會場免費，該訂什麼",
+    zhTitle: "札幌雪祭 2027：日期 2/4–11・交通・旅行團",
     zhLabel: "札幌雪祭",
     zhCn: "/zh-cn/guides/attractions/sapporo-snow-festival-tours",
     zhCnTitle: "札幌雪祭（2027）：2/4–11 三会场免费，该订什么",
@@ -428,7 +428,7 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     zhCnTitle: "二世谷滑雪（2027）：接送、教练课与四大区域",
     zhCnLabel: "二世谷滑雪",
     ko: "/ko/guides/attractions/niseko-ski-tours",
-    koTitle: "니세코 스키 투어(2027): 셔틀, 강습, 4개 스키장",
+    koTitle: "니세코 스키 투어 2026-27: 삿포로 출발·렌탈·리프트권",
     koLabel: "니세코 스키 투어",
     th: "/th/guides/attractions/niseko-ski-tours",
     thTitle: "เล่นสกีนิเซโกะ 2027: รถรับส่ง คลาส 4 พื้นที่",
@@ -437,7 +437,7 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
   {
     en: "/guides/attractions/hokkaido-7-day-itinerary",
     zhTw: "/zh-tw/guides/attractions/hokkaido-7-day-itinerary",
-    zhTitle: "北海道7天行程（2027）：每日路線與周遊券算法",
+    zhTitle: "北海道7天行程 2026：札幌・小樽・富良野・冬季雪祭",
     zhLabel: "北海道7天行程",
     zhCn: "/zh-cn/guides/attractions/hokkaido-7-day-itinerary",
     zhCnTitle: "北海道7日游（2027）：每日路线与周游券算法",

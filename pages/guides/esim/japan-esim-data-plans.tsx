@@ -64,16 +64,17 @@ const checkedLabel = formatDate(checkedAt);
  */
 const SPECS_CHECKED = "29 Oct 2026";
 
-const TITLE = "Japan eSIM Data Plans 2026: How Much Data Do You Need?";
-const DESCRIPTION =
-  "Japan eSIM Data Plans compared: how many GB you need for 3, 5, 7, 10, 14 or 30 days, with data, validity, network, speed caps and tethering per provider.";
+// CTR pass, 15 Nov 2026 (C01): title and H1 are one string in one word order, so the result
+// snippet has no badge or slug text to fall back on. "How many GB" is the query shape.
+const TITLE = "Japan eSIM Data Plans (2026): How Many GB You Need & Prices";
+const H1 = TITLE;
+const ROUTE = "/guides/esim/japan-esim-data-plans";
 
 const cheapestOf = (rows: EsimPlanRow[]) => (rows.length ? rows.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null);
 const cheapestOverall = cheapestOf(allEsimPlans);
 // 7+ days so a 1-day plan can't "win" the unlimited headline.
 const cheapestUnlimitedAny = cheapestOf(allEsimPlans.filter((p) => p.unlimited && p.days >= 7));
 const cheapest5gb = cheapestOf(allEsimPlans.filter((p) => !p.unlimited && (p.gb ?? 0) >= 5));
-const cheapest10gb = cheapestOf(allEsimPlans.filter((p) => !p.unlimited && (p.gb ?? 0) >= 10));
 const bestValue = bestValuePlan();
 
 const label = (p: EsimPlanRow | null) => (p ? `${p.provider} ${p.name} (${formatUsd(p.priceUsd)})` : "—");
@@ -136,8 +137,28 @@ const dayRows = [3, 5, 7, 10, 14, 30].map((days) => ({
 const TEN_DAY_PICK = cheapestForTrip(10, 10);
 const MONTH_PICK = cheapestForTrip(30, 30);
 
+const WEEK_PICK = cheapestForTrip(7, 7);
+const FORTNIGHT_PICK = cheapestForTrip(14, 14);
+
 const planName = (p: EsimPlanRow | null) => (p ? `${p.provider} ${p.name}` : "—");
 const planPrice = (p: EsimPlanRow | null) => (p ? formatUsd(p.priceUsd) : "—");
+
+/** "2026-11-14": the rule-3 "Last checked" line under the tables. */
+const checkedIso = checkedAt ? checkedAt.slice(0, 10) : "—";
+
+/** The providers named in the per-day table's plan column, for its source line. */
+const pickSources = Array.from(
+  new Set(
+    [10, ...dayRows.map((r) => r.days)]
+      .map((days) => cheapestForTrip(days, days * NORMAL_PER_DAY)?.providerId)
+      .filter((id): id is EsimProviderId => Boolean(id))
+  )
+).map((id) => getProvider(id));
+
+// Read from the daily feed, so the plan named in the snippet is the one on sale.
+const DESCRIPTION = `Japan eSIM data plans: 0.5–1 GB a day, so 7 GB a week, 10 GB for 10 days. Cheapest 10 GB: ${planName(
+  TEN_DAY_PICK
+)} ${planPrice(TEN_DAY_PICK)} (${checkedLabel}), or Klook eSIM.`;
 
 const dataUsage = [
   { activity: "Google Maps navigation", perDay: "~50 MB" },
@@ -304,14 +325,25 @@ const timingRows = [
   },
 ];
 
+// The first five go into FAQPage, in the order searchers ask them; the rest stay on the page.
 const faqItems = [
   {
-    q: "How much data do I need in Japan per day?",
-    a: `Budget 0.5 GB a day if your phone is doing maps, messaging and a few photo uploads, 1 GB a day once you add video calls and some streaming, and 1.5 GB a day if you tether a laptop or watch video on trains. In total that is 1.5–4.5 GB for 3 days, 3.5–10.5 GB for a week, 7–21 GB for two weeks and 15–45 GB for a month. Those figures are planning arithmetic, not a provider claim — but they sit well inside what the providers themselves treat as heavy use: Airalo's fair-use threshold is 3 GB in a day and Sakura Mobile's daily cap is 3 GB (checked ${SPECS_CHECKED}).`,
+    q: "How many GB of eSIM data do I need for Japan?",
+    a: `Budget 0.5 GB a day if your phone is doing maps, messaging and a few photo uploads, 1 GB a day once you add video calls and some streaming, and 1.5 GB a day if you tether a laptop or watch video on trains. In total that is 1.5–4.5 GB for 3 days, 3.5–10.5 GB for a week, 5–15 GB for 10 days, 7–21 GB for two weeks and 15–45 GB for a month. Those figures are planning arithmetic, not a provider claim — but they sit well inside what the providers themselves treat as heavy use: Airalo's fair-use threshold is 3 GB in a day and Sakura Mobile's daily cap is 3 GB (checked ${SPECS_CHECKED}).`,
   },
   {
     q: "Is 1GB a day enough in Japan?",
     a: `For almost every tourist, yes. 1 GB a day covers Google Maps navigation (~50 MB a day), messaging, social media (~150 MB) and a video call or two (~300 MB) with headroom left. It stops being enough in three cases: you stream video on the Shinkansen, you tether a laptop for work, or you upload full-resolution photos and video every evening. At 1 GB a day the plan to buy for a ten-day trip is ${planName(TEN_DAY_PICK)} at ${planPrice(TEN_DAY_PICK)}, and for a month ${planName(MONTH_PICK)} at ${planPrice(MONTH_PICK)} (prices checked ${checkedLabel}).`,
+  },
+  {
+    q: "How much does a Japan eSIM data plan cost?",
+    a: cheapestOverall
+      ? `From ${formatUsd(cheapestOverall.priceUsd)} for ${cheapestOverall.provider}'s ${cheapestOverall.name}, the cheapest plan compared here (checked ${checkedLabel}). Sized to the trip at 1 GB a day, a week costs ${planPrice(WEEK_PICK)} (${planName(WEEK_PICK)}), ten days ${planPrice(TEN_DAY_PICK)} (${planName(TEN_DAY_PICK)}) and two weeks ${planPrice(FORTNIGHT_PICK)} (${planName(FORTNIGHT_PICK)}).${cheapestUnlimitedAny ? ` The cheapest unlimited plan for a week or longer is ${label(cheapestUnlimitedAny)}.` : ""} Prices are re-read from each provider's own site every day.`
+      : "Use the comparison table above, sorted by price, to see the cheapest current plan.",
+  },
+  {
+    q: "Is 5 GB enough for 2 weeks in Japan?",
+    a: `Only for light use. 5 GB over 14 days is about 350 MB a day — enough for navigation, messaging, social media and occasional photo uploads, but under the 0.5 GB a day this page budgets for light use (7 GB for two weeks). At 1 GB a day two weeks needs 14 GB, and the cheapest plan on sale that covers it is ${planName(FORTNIGHT_PICK)} at ${planPrice(FORTNIGHT_PICK)} (checked ${checkedLabel}). If you stream video, make frequent video calls or tether a laptop, use the plan finder above with the "Heavy" preset, or pick an unlimited plan.`,
   },
   {
     q: "Should I get an unlimited eSIM for Japan?",
@@ -334,16 +366,6 @@ const faqItems = [
     a: bestValue
       ? `As of ${checkedLabel}, the lowest cost per GB among fixed-allowance plans is ${bestValue.provider}'s ${bestValue.name} at ${formatUsd(bestValue.priceUsd)} — about ${formatUsd(bestValue.perGb ?? 0)} per GB. (Sakura Mobile's 3 GB/day plans show an even lower nominal $/GB, but a daily cap can't be saved up, so they are not counted here.) Big plans always win on per-GB price, but only buy what you'll actually use: a plan that matches your trip is better value than a huge one you use a third of.`
       : "Sort the comparison table above by Price / GB to see the current best-value plan.",
-  },
-  {
-    q: "What is the cheapest Japan eSIM right now?",
-    a: cheapestOverall
-      ? `The cheapest plan compared here is ${cheapestOverall.provider}'s ${cheapestOverall.name} at ${formatUsd(cheapestOverall.priceUsd)} (checked ${checkedLabel}). ${cheapest5gb ? `If you need more data, the cheapest 5 GB+ plan is ${label(cheapest5gb)}` : ""}${cheapest10gb ? ` and the cheapest 10 GB+ plan is ${label(cheapest10gb)}.` : "."}`
-      : "Use the comparison table above, sorted by price, to see the cheapest current plan.",
-  },
-  {
-    q: "Is 5 GB enough for 2 weeks in Japan?",
-    a: "For most travellers, yes. 5 GB over 14 days is about 350 MB per day — enough for navigation, messaging, social media, and occasional photo uploads. If you plan to stream video, make frequent video calls, or use your phone as a hotspot for a laptop, use the plan finder above with the \"Heavy\" preset, or pick an unlimited plan.",
   },
   {
     q: "How often are these prices updated?",
@@ -404,7 +426,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -416,8 +438,8 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
-              route: "/guides/esim/japan-esim-data-plans",
-              headline: "Japan eSIM Data Plans (2026): How Much Data Do You Need?",
+              route: ROUTE,
+              headline: H1,
               updated,
             }),
           }}
@@ -464,9 +486,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           <p className={styles.eyebrow}>
             Prices checked {checkedLabel}
           </p>
-          <h1 className={styles.heroTitle}>
-            Japan eSIM Data Plans (2026):<br />How Much Data Do You Need?
-          </h1>
+          <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
             How many GB a 3, 5, 7, 10, 14 or 30-day trip actually needs — and the cheapest plan on sale that
             covers it, from prices re-read every day.
@@ -500,13 +520,15 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
         {/* The answer, before the tools — the arithmetic and the plan, with the numbers in it. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            Budget <strong>0.5 GB a day</strong> for maps, messaging and a few photos, <strong>1 GB a day</strong>{" "}
-            once you add video calls and some streaming, and <strong>1.5 GB a day</strong> if you tether a laptop
-            — so a <strong>3-day</strong> trip needs 1.5–4.5 GB, <strong>5 days</strong> 2.5–7.5 GB,{" "}
-            <strong>7 days</strong> 3.5–10.5 GB, <strong>10 days</strong> 5–15 GB, <strong>14 days</strong> 7–21 GB
-            and <strong>30 days</strong> 15–45 GB. Those are planning figures, not provider claims, and they sit
-            well inside what the providers treat as heavy use — Airalo&apos;s fair-use threshold is 3 GB in a day
-            and Sakura Mobile&apos;s daily cap is 3 GB.
+            A Japan trip needs about <strong>1 GB of eSIM data a day</strong>: 0.5 GB a day for maps and
+            messaging only, 1 GB with video calls and some streaming, 1.5 GB if you tether a laptop — so{" "}
+            <strong>7 days</strong> needs 3.5–10.5 GB, <strong>10 days</strong> 5–15 GB and{" "}
+            <strong>14 days</strong> 7–21 GB. The cheapest Japan eSIM data plan on sale is{" "}
+            <strong>{label(cheapestOverall)}</strong>, and the cheapest that covers 10 days at 1 GB a day is{" "}
+            <strong>{planName(TEN_DAY_PICK)} at {planPrice(TEN_DAY_PICK)}</strong> (prices checked {checkedLabel}).
+            Those per-day figures are planning arithmetic rather than a provider claim, and they sit well inside
+            what the providers treat as heavy use — Airalo&apos;s fair-use threshold is 3 GB in a day and Sakura
+            Mobile&apos;s daily cap is 3 GB.
           </p>
           <p className={styles.bodyText}>
             <strong>If you don&apos;t want to work it out:</strong> buy{" "}
@@ -518,7 +540,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             the <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link>{" "}
             ranking sorts every plan by price and cost per GB.
           </p>
-          <KlookEsimSlot why="Klook sells a Japan eSIM of its own in tiers from 500 MB to 50 GB plus an unlimited option, which covers the same sizing — worth a look if the tickets and transport for this trip are already in a Klook basket, since it goes on the same checkout. It is unranked here because its US$1.05 from-price names no plan." />
+          <KlookEsimSlot why="Klook sells a Japan eSIM of its own in tiers from 500 MB to 50 GB plus an unlimited option, which covers the same sizing — worth a look if the tickets and transport for this trip are already in a Klook basket, since it goes on the same checkout. It is unranked here because its listing shows a from-price before you choose days and data, with no plan named." />
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Prices read off each provider&apos;s own site on {checkedLabel} by the job that re-reads them daily.
             Fair-use thresholds, speed caps and start rules read on {SPECS_CHECKED}; tethering and phone-number
@@ -585,6 +607,14 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
                   </tr>
                 </thead>
                 <tbody>
+                  {/* Rule-3 answer row: the figure most trips should buy on, first. */}
+                  <tr style={{ fontWeight: 700, background: "var(--paper)" }}>
+                    <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>Answer: 10 days</td>
+                    <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>5 GB</td>
+                    <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>10 GB — buy this</td>
+                    <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>15 GB</td>
+                    <td style={{ fontSize: "0.85rem", minWidth: "220px" }}>{tripLabel(10, 10)}</td>
+                  </tr>
                   {dayRows.map((row) => (
                     <tr key={row.days}>
                       <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.days} days</td>
@@ -606,6 +636,23 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             <Link href="/guides/esim/japan-esim-2-weeks" className={tools.inlineLink}>
               Best Japan eSIM for 2 weeks →
             </Link>
+          </p>
+          <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {checkedIso}. Source:{" "}
+            {pickSources.map((p, i) => (
+              <span key={p.id}>
+                {i > 0 ? ", " : ""}
+                <a
+                  href={p.sourceUrl}
+                  target="_blank"
+                  rel={p.id === "simbye" ? "sponsored noopener" : "nofollow noopener noreferrer"}
+                  className={tools.inlineLink}
+                >
+                  {p.name} official price page
+                </a>
+              </span>
+            ))}
+            .
           </p>
         </section>
 
@@ -734,7 +781,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             Sakura Mobile&apos;s 3 GB/day plans are shown with their total high-speed allowance (3 GB × days). Prices at
             checkout can differ slightly due to your local currency or promotions. All providers&apos; prices — these five plus
             nine more, filtered by 7, 15 and 30 days — are in the{" "}
-            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>, updated monthly.
+            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>, with the date each price was last updated.
           </p>
         </section>
 

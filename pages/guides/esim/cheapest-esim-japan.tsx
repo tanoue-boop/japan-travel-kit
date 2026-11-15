@@ -934,7 +934,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan eSIM Data Plans 2026: How Much Data Do You Need?</p>
+                <p className={styles.relatedTitle}>Japan eSIM Data Plans (2026): How Many GB You Need &amp; Prices</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

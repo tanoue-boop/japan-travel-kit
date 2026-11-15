@@ -40,6 +40,10 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 // Mirrors the English guide (pages/guides/attractions/niseko-ski-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
+// Exception, 15 Nov 2026 (task-jtk-20261115-C01): the Sapporo ski bus (Hokkaido Chuo Bus "Niseko Ski
+// Bus", Sapporo Niseko Line, teikan.chuo-bus.co.jp/en/course/18958): 12 Dec 2026 – 22 Mar 2027,
+// reservation required, Sapporo Station → Niseko Hirafu Welcome Center 3 hr 06 min, adult ¥6,000 one
+// way / ¥10,000 return. Season opening 28 Nov 2026 re-read on niseko.ne.jp/en/lift/ the same day.
 
 const LOCALE = "ko" as const;
 const ROUTE = "/ko/guides/attractions/niseko-ski-tours";
@@ -63,6 +67,19 @@ const PEAK_TO = "2027년 2월 28일";
 const PEAK_DAY = "¥13,500";
 const REGULAR_DAY = "¥12,600";
 const EARLY_DAY = "¥8,800";
+
+const REREAD_ISO = "2026-11-15";
+const REREAD = dateLabel(REREAD_ISO, LOCALE);
+const SAPPORO_BUS = "3시간 6분";
+const SAPPORO_BUS_FARE = "¥6,000";
+const SAPPORO_BUS_PERIOD = "2026년 12월 12일~2027년 3월 22일";
+
+const answerRows = [
+  { item: "4개 스키장 개장(2026-27 시즌)", value: SEASON_OPEN, source: "니세코 유나이티드" },
+  { item: "삿포로역 → 니세코 히라후(스키 버스, 예약제)", value: `${SAPPORO_BUS}, 편도 ${SAPPORO_BUS_FARE}(왕복 ¥10,000), ${SAPPORO_BUS_PERIOD} 운행`, source: "홋카이도 중앙버스" },
+  { item: "신치토세 공항 → 니세코(직행버스, 예약제)", value: `${AIRPORT_BUS}, ${AIRPORT_BUS_FARE}`, source: "니세코 유나이티드" },
+  { item: "올 마운틴 패스 1일권(성인)", value: `성수기 ${PEAK_DAY}, 얼리 ${EARLY_DAY}`, source: "니세코 유나이티드" },
+];
 
 const accessRows = [
   {
@@ -183,7 +200,24 @@ const monthRows = [
   },
 ];
 
+// The first five go into FAQPage; they follow the "니세코 스키 투어" search wording.
 const faqItems = [
+  {
+    q: "니세코 스키 시즌은 언제 개장하나요? (2026-27)",
+    a: `2026-27 시즌은 ${SEASON_OPEN}에 4개 스키장이 모두 개장합니다. 니세코 유나이티드 공식 일정이며 확인일은 ${REREAD}입니다. 폐장일은 니세코 빌리지 2027년 4월 4일, 하나조노 4월 11일, 그랜드 히라후와 안누푸리 5월 5일이고, 야간 스키는 2026년 12월 12일~2027년 3월 22일입니다. 11월 28일~12월 11일 얼리 시즌 패스(성인 ${EARLY_DAY})는 온라인으로 팔지 않아 창구에서 사야 합니다. 리조트는 개장일과 운영 시간이 바뀔 수 있다고 밝힙니다.`,
+  },
+  {
+    q: "삿포로에서 니세코 스키 당일치기가 가능한가요?",
+    a: `네, 즉흥이 아니라 예약한 일정으로요. 홋카이도 중앙버스의 니세코 스키 버스는 삿포로역에서 니세코 히라후 웰컴센터까지 ${SAPPORO_BUS}, 편도 ${SAPPORO_BUS_FARE}(왕복 ¥10,000)이고 ${SAPPORO_BUS_PERIOD}에 예약제로 운행합니다(확인일 ${REREAD}). 왕복 6시간 이상이라 직접 짠 당일치기는 낮 시간 대부분이 이동입니다. 이를 해결하는 상품은 버스가 포함된 고정 활주 시간을 판매하며, 보통 그랜드 히라후 약 6시간에 리프트권이 포함되고 삿포로 시내 여러 곳에서 탑승합니다. 이틀을 원한다면 숙박이 포함된 2~3일 투어가 맞습니다. 바람으로 산이 닫히면(상부 리프트에서 특히 자주 있습니다) 같은 버스망을 쓰는 노보리베쓰·도야호 일정이 대안입니다.`,
+  },
+  {
+    q: "니세코 스키 투어는 예약해야 하나요, 아니면 직접 갈 수 있나요?",
+    a: `전적으로 어디에 묵느냐에 달려 있습니다. 니세코에 묵는다면 투어는 필요 없습니다. 공항 버스, 강습, 장비 렌탈, 패스만 예약하면 나머지는 따로 준비할 것이 거의 없습니다. 호텔과 식당이 많은 삿포로에 묵는다면 가이드 일정이 니세코를 타는 가장 현실적인 방법입니다. 삿포로역에서 히라후까지 스키 버스로 ${SAPPORO_BUS}이라 직접 짠 하루는 낮 시간 대부분을 버스에서 보내기 때문입니다. 삿포로 출발 리프트권 + 버스 상품은 그랜드 히라후 6시간에 교통과 패스를 한 번에 예약합니다. 세 번째는 일행 중 일부만 스키를 타는 경우로, 스키어 수가 아니라 차량당 요금인 전용 차량이 맞습니다.`,
+  },
+  {
+    q: "니세코 리프트권은 얼마인가요?",
+    a: `4개 스키장을 모두 탈 수 있는 올 마운틴 패스 1일권은 성인 기준 성수기 ${PEAK_DAY}, 레귤러 ${REGULAR_DAY}, 얼리·스프링 ${EARLY_DAY}, 파이널 ¥6,300입니다. 니세코 유나이티드 공식 요금이며 확인일은 ${OWN}입니다. 4~12세 어린이는 성수기 ¥8,100, 레귤러 ¥7,600, 얼리·스프링 ¥5,300, 파이널 ¥3,800입니다. 13~15세 청소년과 65세 이상은 같은 요금으로 성수기 ¥11,500, 레귤러 ¥10,700, 얼리·스프링 ¥7,500, 파이널 ¥5,400입니다. 계획의 기준은 가격보다 기간입니다. 성수기는 ${PEAK_FROM}~${PEAK_TO}로 크리스마스, 연말연시, 1월 전체, 2월 전체가 들어갑니다. 2026년 11월 28일~12월 11일 얼리 시즌 패스는 온라인으로 팔지 않으므로, 겨울 중 가장 저렴한 주는 창구에서 사야 합니다.`,
+  },
   {
     q: "신치토세 공항에서 니세코까지 어떻게 가나요?",
     a: `니세코 유나이티드는 다섯 가지 방법을 안내하며 기본은 직행버스입니다. ${OWN}에 확인한 교통 안내 기준 ${AIRPORT_BUS}, ${AIRPORT_BUS_FARE}이고 예약이 필수입니다. 다른 방법은 전철 + 노선버스 ${AIRPORT_TRAIN}, ${AIRPORT_TRAIN_FARE}(예약 불필요), 계절 스키 버스 3~3.5시간, ${AIRPORT_BUS_FARE}(12~3월만), 렌터카 2시간, 하루 ¥8,000부터, 전용 차량 2시간, ¥25,000부터입니다. 대부분은 두 가지로 결정됩니다. 첫째는 짐입니다. 버스 상품은 스키 장비와 1인당 가방 하나를 실을 수 있고, 1월 홋카이도 승강장에서 스키 가방을 들고 환승하는 일은 아무도 계획하지 않습니다. 둘째는 예약입니다. 전철과 버스 경로만 예약 없이 갈 수 있고 나머지는 모두 출국 전에 정해야 합니다. 운전한다면 2시간은 눈길과 빙판에 익숙하다는 전제입니다.`,
@@ -203,18 +237,6 @@ const faqItems = [
   {
     q: "니세코에서는 어디에 묵어야 하나요?",
     a: `특별한 이유가 없다면 그랜드 히라후입니다. 4개 스키장 중 규모가 가장 크고 마을이 형성된 유일한 곳이라 식당, 바, 장비 대여점에 셔틀 없이 걸어갈 수 있고 저녁 외출도 도보로 가능합니다. 공식 수치는 코스 22개, 곤돌라 2기와 체어리프트 7기, 표고차 940 m(정상 1,200 m, 베이스 260 m), 최장 코스 5,300 m입니다. 나머지 세 곳은 각각 얻는 것이 분명합니다. 하나조노는 가장 조용하고 리조트 스키 스쿨이 있어 가족과 초보자에게 맞습니다. 니세코 빌리지는 호텔 중심의 스키인·스키아웃으로 저녁에 나가지 않는 여행에 맞습니다. 안누푸리는 코스가 가장 넓고 완만하며 사람이 적습니다. 놓치기 쉬운 날짜가 있습니다. 4개 스키장은 폐장일이 서로 다릅니다. 니세코 빌리지는 2027년 4월 4일, 하나조노는 4월 11일에 닫고 그랜드 히라후와 안누푸리는 5월 5일까지 운영하므로, 늦은 시즌이나 골든위크에는 두 곳만 열려 있습니다. 모든 날짜는 니세코 유나이티드 공식이며 확인일은 ${OWN}입니다.`,
-  },
-  {
-    q: "니세코 리프트권은 얼마인가요?",
-    a: `4개 스키장을 모두 탈 수 있는 올 마운틴 패스 1일권은 성인 기준 성수기 ${PEAK_DAY}, 레귤러 ${REGULAR_DAY}, 얼리·스프링 ${EARLY_DAY}, 파이널 ¥6,300입니다. 니세코 유나이티드 공식 요금이며 확인일은 ${OWN}입니다. 4~12세 어린이는 성수기 ¥8,100, 레귤러 ¥7,600, 얼리·스프링 ¥5,300, 파이널 ¥3,800입니다. 13~15세 청소년과 65세 이상은 같은 요금으로 성수기 ¥11,500, 레귤러 ¥10,700, 얼리·스프링 ¥7,500, 파이널 ¥5,400입니다. 계획의 기준은 가격보다 기간입니다. 성수기는 ${PEAK_FROM}~${PEAK_TO}로 크리스마스, 연말연시, 1월 전체, 2월 전체가 들어갑니다. 2026년 11월 28일~12월 11일 얼리 시즌 패스는 온라인으로 팔지 않으므로, 겨울 중 가장 저렴한 주는 창구에서 사야 합니다.`,
-  },
-  {
-    q: "니세코는 투어를 예약해야 하나요, 아니면 직접 갈 수 있나요?",
-    a: `전적으로 어디에 묵느냐에 달려 있습니다. 이 검색어로 찾는 사람이 실제로 고민하는 것도 이 문제입니다. 니세코에 묵는다면 투어는 필요 없습니다. 공항 버스, 강습, 장비, 패스만 예약하면 나머지는 따로 준비할 것이 거의 없습니다. 호텔과 식당이 많은 삿포로에 묵는다면 가이드 일정이 니세코를 타는 유일하게 합리적인 방법입니다. 니세코 유나이티드 수치로 공항 쪽에서 편도 2~3.5시간이고, 직접 짠 하루는 낮 시간 대부분을 버스에서 보내기 때문입니다. 삿포로 출발 리프트권 + 버스 상품이 그래서 있습니다. 그랜드 히라후 6시간에 교통과 패스가 한 번에 예약됩니다. 세 번째는 일행 중 일부만 스키를 타는 경우로, 스키어 수가 아니라 차량당 요금인 전용 차량이 맞습니다.`,
-  },
-  {
-    q: "삿포로에서 니세코 당일치기가 가능한가요?",
-    a: `네, 즉흥이 아니라 예약한 일정으로요. 제약은 거리입니다. 니세코 유나이티드 교통 안내는 신치토세에서 니세코까지 예약제 버스 ${AIRPORT_BUS}, 전철 + 노선버스 ${AIRPORT_TRAIN}으로 안내하고, 삿포로도 같은 쪽에 있습니다. 직접 짠 당일치기는 낮 시간 대부분이 이동입니다. 이를 해결하는 상품은 버스가 포함된 고정 활주 시간을 판매하며, 보통 그랜드 히라후 약 6시간에 리프트권이 포함되고 삿포로 시내 여러 곳에서 탑승합니다. 시내에 머물며 제대로 된 스키 하루를 원할 때 맞습니다. 이틀을 원한다면 계산이 달라져 숙박이 포함된 2~3일 투어가 사치가 아니게 됩니다. 바람으로 산이 닫히면(상부 리프트에서 특히 자주 있습니다) 같은 버스망을 쓰는 노보리베쓰·도야호 일정이 대안입니다.`,
   },
   {
     q: "니세코에 야간 스키가 있나요?",
@@ -265,9 +287,11 @@ const nisekoSameTrip: KlookTripPrepItem[] = [
   },
 ];
 
-const TITLE = "니세코 스키 투어(2027): 셔틀, 강습, 4개 스키장";
+// The H1 opens with the title's exact words, so the search result has one wording.
+const TITLE = "니세코 스키 투어 2026-27: 삿포로 출발·렌탈·리프트권";
+const H1 = "니세코 스키 투어 2026-27: 삿포로 출발·렌탈·리프트권, 공항 셔틀";
 const DESC =
-  "니세코 스키 투어·이동: 신치토세에서 예약제 버스 2.5시간, 하나로 연결된 4개 스키장, 성수기 리프트권 ¥13,500. 2026-27 일정.";
+  "니세코 스키 2026년 11월 28일 개장, 삿포로역에서 스키 버스 3시간 6분, 성수기 1일권 ¥13,500. 삿포로 출발 투어는 클룩 예약.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -278,7 +302,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -296,7 +320,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 업데이트 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-니세코 스키 투어:<br />교통편, 스키 강습, 4개 스키장
+{H1}
 </h1>
           <p className={styles.heroSubtitle}>
 하나로 연결된 4개 스키장, 신치토세에서 예약제 버스로 {AIRPORT_BUS}, 그리고 많은 사람이 놓치는 공개된 성수기 강습 사전 예약 규정.
@@ -313,6 +337,46 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 
       <div className={styles.content}>
                 <Disclosure />
+
+        {/* Answer first: the first body paragraph, ahead of the booking box. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+<strong>니세코 스키 시즌은 {SEASON_OPEN}</strong>에 4개 스키장이 모두 개장하며, 삿포로역에서 니세코 히라후까지는 예약제 스키 버스로 <strong>{SAPPORO_BUS}</strong>(편도 {SAPPORO_BUS_FARE}, {SAPPORO_BUS_PERIOD} 운행)이 걸립니다. 신치토세 공항에서는 예약제 직행버스로 {AIRPORT_BUS}이고, 올 마운틴 패스 1일권은 성인 성수기 {PEAK_DAY}입니다. 삿포로에 묵는다면 왕복 버스와 그랜드 히라후 6시간 리프트권을 묶은 당일 투어가, 니세코에 묵는다면 공항 셔틀·렌탈·강습을 따로 예약하는 쪽이 맞습니다.
+</p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["항목", "2026-27 수치", "출처"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {answerRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.value}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {REREAD_ISO} · https://www.niseko.ne.jp/en/lift/ · https://www.niseko.ne.jp/en/getting-to-niseko/ · https://teikan.chuo-bus.co.jp/en/course/18958
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+삿포로 출발 니세코 스키 투어 →
+</KlookLink>
+            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+니세코 렌탈 예약 →
+</KlookLink>
+          </div>
+        </section>
 
         <WinterBookingTop
           heading={"2026-27 겨울 니세코 스키 여행에서는 무엇을 예약해야 할까요?"}
@@ -389,7 +453,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
               </div>
             </div>
                         <p className={styles.verdictText}>
-<strong>니세코 스키 투어</strong>는 이동부터 생각해야 합니다. 가장 시간이 오래 걸리는 구간이기 때문입니다. 니세코 유나이티드 교통 안내에 따르면 <strong>신치토세 공항에서 니세코까지 예약제 직행버스로 {AIRPORT_BUS}, {AIRPORT_BUS_FARE}</strong>, 예약 없는 전철 + 노선버스로 {AIRPORT_TRAIN}, {AIRPORT_TRAIN_FARE}, 렌터카나 전용 차량으로 2시간입니다. 도착하면 <strong>패스 하나로 연결된 4개 스키장</strong>이 있습니다. <strong>그랜드 히라후</strong>(규모가 가장 크고 마을이 형성되어 있음), <strong>하나조노</strong>(가장 조용하고 리조트 스키 스쿨이 있음), <strong>니세코 빌리지</strong>(스키인·스키아웃 호텔), <strong>안누푸리</strong>(가장 넓고 완만함)입니다. 네 곳 모두 <strong>{SEASON_OPEN}</strong>에 개장하고 그랜드 히라후와 안누푸리는 <strong>2027년 5월 5일</strong>까지 운영합니다. 올 마운틴 패스 1일권은 <strong>{PEAK_FROM}~{PEAK_TO}</strong> 성수기에 <strong>{PEAK_DAY}</strong>, 얼리·스프링에 <strong>{EARLY_DAY}</strong>입니다. 현장 구매가 아니라 예약해야 할 것은 <strong>강습</strong>입니다. 리조트 스쿨은 스키 스쿨 성수기인 {LESSON_PEAK}에 종일 강습만 사전 예약할 수 있다고 밝힙니다. 모든 수치는 운영사 공식이며 {SEASON}에 다시 확인했습니다.
+<strong>니세코 스키 투어</strong>는 이동부터 생각해야 합니다. 가장 시간이 오래 걸리는 구간이기 때문입니다. 니세코 유나이티드 교통 안내에 따르면 <strong>신치토세 공항에서 니세코까지 예약제 직행버스로 {AIRPORT_BUS}, {AIRPORT_BUS_FARE}</strong>, 예약 없는 전철 + 노선버스로 {AIRPORT_TRAIN}, {AIRPORT_TRAIN_FARE}, 렌터카나 전용 차량으로 2시간입니다. 도착하면 <strong>패스 하나로 연결된 4개 스키장</strong>이 있습니다. <strong>그랜드 히라후</strong>(규모가 가장 크고 마을이 형성되어 있음), <strong>하나조노</strong>(가장 조용하고 리조트 스키 스쿨이 있음), <strong>니세코 빌리지</strong>(스키인·스키아웃 호텔), <strong>안누푸리</strong>(가장 넓고 완만함)입니다. 네 곳 모두 <strong>{SEASON_OPEN}</strong>에 개장하고 그랜드 히라후와 안누푸리는 <strong>2027년 5월 5일</strong>까지 운영합니다. 올 마운틴 패스 1일권은 <strong>{PEAK_FROM}~{PEAK_TO}</strong> 성수기에 <strong>{PEAK_DAY}</strong>, 얼리·스프링에 <strong>{EARLY_DAY}</strong>입니다. 현장 구매가 아니라 예약해야 할 것은 <strong>강습</strong>입니다. 리조트 스쿨은 스키 스쿨 성수기인 {LESSON_PEAK}에 종일 강습만 사전 예약할 수 있다고 밝힙니다. 모든 수치는 운영사 공식이며 확인일은 {SEASON}입니다.
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -446,8 +510,11 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-표의 시간과 요금은 모두 니세코 유나이티드의 “Getting to Niseko” 페이지 기준이며 {SEASON}에 다시 확인했습니다. 비고는 저희가 썼습니다. 표로 알 수 없고 상품 페이지에서 알 수 있는 것이 하나 있습니다. 해당 버스가 스키 장비와 1인당 짐을 얼마나 실을 수 있는가입니다. 리조트 셔틀 상품은 짐 1개와 장비를 명시하고 있고, 이 점이 전철과 다른 상품인 이유입니다.
+표의 시간과 요금은 모두 니세코 유나이티드의 “Getting to Niseko” 페이지 기준이며 확인일은 {SEASON}입니다. 비고 열은 해설입니다. 표로 알 수 없고 상품 페이지에서 알 수 있는 것이 하나 있습니다. 해당 버스가 스키 장비와 1인당 짐을 얼마나 실을 수 있는가입니다. 리조트 셔틀 상품은 짐 1개와 장비를 명시하고 있고, 이 점이 전철과 다른 상품인 이유입니다.
 </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {REREAD_ISO} · https://www.niseko.ne.jp/en/getting-to-niseko/
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
 니세코 리조트 셔틀 →
@@ -495,6 +562,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
 모든 날짜는 니세코 유나이티드 공식이며 확인일은 {SEASON}입니다. 리조트는 폐장일을 예정으로 설명하며 홋카이도의 봄에 따라 바뀔 수 있습니다. 늦은 시즌 예약 전에 다시 볼 부분은 <strong>니세코 빌리지 4월 4일, 하나조노 4월 11일 폐장</strong>이고 그랜드 히라후와 안누푸리는 5월 5일까지라는 점입니다.
 </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {REREAD_ISO} · https://www.niseko.ne.jp/en/lift/
+          </p>
         </section>
 
                 <section className={styles.comparisonSection}>
@@ -532,7 +602,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-<strong>계획을 바꾸는 운영 정보 하나.</strong> 2026년 11월 28일~12월 11일 얼리 시즌 패스는 겨울 중 가장 저렴하지만 니세코 유나이티드 안내에 따르면 <strong>온라인으로 판매되지 않습니다</strong>. 시즌 최저가는 도착 후 창구에서 사야 하며, 집에서 미리 확보할 수 없습니다. 여러 날 이용 리프트권은 최대 7일권까지 있고 온라인 전용 50시간권도 있지만, 여기서는 리조트 표에서 전부 읽을 수 있었던 1일권만 싣습니다. 모든 가격 확인일 {SEASON}.
+<strong>계획을 바꾸는 운영 정보 하나.</strong> 2026년 11월 28일~12월 11일 얼리 시즌 패스는 겨울 중 가장 저렴하지만 니세코 유나이티드 안내에 따르면 <strong>온라인으로 판매되지 않습니다</strong>. 시즌 최저가는 도착 후 창구에서 사야 하며, 집에서 미리 확보할 수 없습니다. 여러 날 이용 리프트권은 최대 7일권까지 있고 온라인 전용 50시간권도 있지만, 여기서는 1일권만 싣습니다. 모든 가격 확인일 {SEASON}.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -558,7 +628,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 가족이나 초보자에게 이 페이지에서 가장 중요한 문장입니다. 평소 계획이 뒤집히기 때문입니다. 그 주에 체력이나 아이들 상황상 반나절이 맞다면 세 가지 선택이 있습니다. 종일을 예약하고 점심에 끝내거나, 스키 스쿨의 일반 기간(12월 8~13일, 1월 4일~2월 5일, 2월 13~28일)로 옮기거나, 재판매 업체로 예약하세요. 재판매 업체는 별도 예약분이고 내 통화로 표시되며 영어로 읽을 수 있습니다. 스쿨은 잠정 일정으로 <strong>{SEASON_OPEN}~2027년 4월 11일</strong> 운영하며 그룹, 개인, 맞춤 프로그램이 있고 2026-27 예약이 열려 있습니다.
 </p>
           <p className={styles.bodyText}>
-스쿨의 개인 강습은 최대 6명 그룹당 요금이며 {SEASON}에 확인했습니다. 6시간 니세코 클래식은 성수기 <strong>¥120,000</strong>, 레귤러 ¥93,000, 얼리·스프링 ¥87,000입니다. 오전 강습은 ¥93,000, ¥71,000, ¥59,000, 오후 강습은 ¥55,000, ¥43,000, ¥43,000입니다. 그룹 강습은 별도 요금이고 11월 28일~12월 7일에는 운영하지 않습니다. 재판매 업체 가격은 상품 페이지에서 날짜별로 확인하세요.
+스쿨의 개인 강습은 최대 6명 그룹당 요금이며 확인일은 {SEASON}입니다. 6시간 니세코 클래식은 성수기 <strong>¥120,000</strong>, 레귤러 ¥93,000, 얼리·스프링 ¥87,000입니다. 오전 강습은 ¥93,000, ¥71,000, ¥59,000, 오후 강습은 ¥55,000, ¥43,000, ¥43,000입니다. 그룹 강습은 별도 요금이고 11월 28일~12월 7일에는 운영하지 않습니다. 재판매 업체 가격은 상품 페이지에서 날짜별로 확인하세요.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -607,7 +677,7 @@ Rhythm 개인 강습 →
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-스키장 이름과 폐장일은 니세코 유나이티드, 그랜드 히라후 코스 수치는 그랜드 히라후 공식입니다. 코스 22개(초급 9, 중급 6, 상급 7), 곤돌라 2기와 체어리프트 7기, 표고차 940 m(정상 1,200 m, 베이스 260 m), 135 ha, 최장 코스 5,300 m, 최대 경사 40°입니다. 둘 다 {OWN}에 확인했습니다. 니세코 유나이티드는 인기 숙소와 성수기 연휴가 일찍 매진된다고 밝히지만 얼마나 일찍인지는 공개하지 않아 여기에도 싣지 않습니다.
+스키장 이름과 폐장일은 니세코 유나이티드, 그랜드 히라후 코스 수치는 그랜드 히라후 공식입니다. 코스 22개(초급 9, 중급 6, 상급 7), 곤돌라 2기와 체어리프트 7기, 표고차 940 m(정상 1,200 m, 베이스 260 m), 135 ha, 최장 코스 5,300 m, 최대 경사 40°입니다. 확인일은 둘 다 {OWN}입니다. 니세코 유나이티드는 인기 숙소와 성수기 연휴가 일찍 매진된다고 밝히지만 얼마나 일찍인지는 공개하지 않아 여기에도 싣지 않습니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -653,7 +723,7 @@ Rhythm 개인 강습 →
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-강설량은 평균이 아니라 한 시즌 수치이고 산의 한 지점에서 측정한 리조트 자체 값입니다. 예보가 아니라 겨울의 흐름으로 보세요. 이 표의 모든 내용은 {OWN}에 확인했습니다. <strong>야간 스키</strong>는 2026년 12월 12일~2027년 3월 22일이므로 개장 후 첫 2주와 저렴한 4월 주에는 없습니다.
+강설량은 평균이 아니라 한 시즌 수치이고 산의 한 지점에서 측정한 리조트 자체 값입니다. 예보가 아니라 겨울의 흐름으로 보세요. 이 표의 확인일은 {OWN}입니다. <strong>야간 스키</strong>는 2026년 12월 12일~2027년 3월 22일이므로 개장 후 첫 2주와 저렴한 4월 주에는 없습니다.
 </p>
         </section>
 

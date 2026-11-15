@@ -509,6 +509,20 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Not sure which eSIM Go size to buy?{" "}
+            <Link href="/guides/esim/japan-esim-data-plans" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              How many GB a Japan eSIM needs
+            </Link>{" "}
+            works it out by trip length. eSIM Go&apos;s Japan prices are re-read every day in the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM price tracker
+            </Link>
+            , beside every other provider and the date each price was checked.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>

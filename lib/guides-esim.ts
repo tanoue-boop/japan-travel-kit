@@ -21,8 +21,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-price-tracker",
     badge: "Data",
-    title: "Japan eSIM Price Tracker: Daily Price Checks by Provider",
-    desc: "Every Japan eSIM plan priced on official sites, re-checked daily or monthly, sortable by 7, 15 and 30 days or unlimited, with dates, sources and a free CSV.",
+    title: "Japan eSIM Prices Today (2026): Daily Price Tracker",
+    desc: "Today's Japan eSIM prices from every provider's official site, with the date each price was last updated, by 7, 15 and 30 days or unlimited, plus a free CSV.",
     group: "compare",
     city: "other",
   },
@@ -37,7 +37,7 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-data-plans",
     badge: "Comparison",
-    title: "Japan eSIM Data Plans (2026): How Much Data Do You Need?",
+    title: "Japan eSIM Data Plans (2026): How Many GB You Need & Prices",
     desc: "How many GB a 3, 5, 7, 10, 14 or 30-day trip needs, and the cheapest plan on sale that covers it — plus data, validity, network, speed caps and tethering by provider.",
     group: "compare",
     city: "other",

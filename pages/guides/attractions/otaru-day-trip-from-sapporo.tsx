@@ -866,7 +866,10 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             not the right one. JR Hokkaido&apos;s two four-day area passes both include Otaru: the{" "}
             <strong>Sapporo–Noboribetsu Area Pass</strong> at <strong>¥10,000</strong> covers New Chitose,
             Sapporo, Otaru and Noboribetsu, and the <strong>Sapporo–Furano Area Pass</strong> at{" "}
-            <strong>¥11,000</strong> covers New Chitose, Sapporo, Otaru, Biei, Furano and Asahikawa. Those
+            <strong>¥11,000</strong> covers New Chitose, Sapporo, Otaru, Biei, Furano and Asahikawa (the inland day
+            is in our{" "}
+            <Link href="/guides/attractions/furano-biei-tour">Furano &amp; Biei day tour from Sapporo</Link> guide,
+            train or coach). Those
             are the ones a Sapporo-based week should price first, because they are the ones a Sapporo-based
             week actually fills. Our{" "}
             <Link href="/guides/attractions/hokkaido-7-day-itinerary">Hokkaido 7 day itinerary</Link> works
@@ -948,7 +951,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu</p>
+                <p className={styles.relatedTitle}>Sapporo Ski Day Trip 2026-27: Teine, Kiroro &amp; Rusutsu Tours</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -961,7 +964,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Furano Biei Tour from Sapporo (2026): Winter vs Summer</p>
+                <p className={styles.relatedTitle}>Furano &amp; Biei Day Tour from Sapporo (2026): Winter Light-Ups</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

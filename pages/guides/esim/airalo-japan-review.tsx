@@ -457,7 +457,12 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
             <Link href="/guides/esim/japan-esim-10-days" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan eSIM for 10 days
             </Link>{" "}
-            shows which Airalo plan lasts a ten-day trip and how many GB it needs.
+            shows which Airalo plan lasts a ten-day trip and how many GB it needs. Airalo&apos;s price on any day, beside
+            every other provider and the date each price was read, is in the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM prices today tracker
+            </Link>
+            .
           </p>
         </section>
 

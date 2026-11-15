@@ -770,7 +770,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan eSIM Data Plans Compared: Every Plan by Price per GB</p>
+                <p className={styles.relatedTitle}>Japan eSIM Data Plans (2026): How Many GB You Need &amp; Prices</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

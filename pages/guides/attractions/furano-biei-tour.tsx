@@ -46,7 +46,13 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  */
 
 const OWN = checkedLabel("2026-11-07");
-const RAIL_FARES = checkedLabel("2026-11-03");
+// Re-read 15 Nov 2026 (task-jtk-20261115-C01): JR Hokkaido's regular-fare page and Furano model route
+// (Sapporo–Asahikawa 1 hr 25 min, ¥5,440; Asahikawa–Biei ¥680; Lavender Express 2 hr, summer only;
+// Sapporo-Furano Area Pass ¥11,000) and Biei's light-up notice (22 Oct 2026 to 21 Apr 2027), unchanged.
+const RAIL_FARES = checkedLabel("2026-11-15");
+const RECHECKED = checkedLabel("2026-11-15");
+const JR_FARES_URL = "https://www.jrhokkaido.co.jp/global/english/ticket/regular/";
+const BIEI_LIGHTS_URL = "https://www.biei-hokkaido.jp/ja/27188/";
 
 const seasonRows = [
   {
@@ -149,6 +155,13 @@ const tourRows = [
 
 const trainRows = [
   {
+    route: "Sapporo → Biei by JR, in total",
+    time: "About 2 hours on the trains, plus the change at Asahikawa",
+    fare: "¥6,120 each way (¥5,440 + ¥680)",
+    note: "The direct Furano Lavender Express runs in summer only, so in winter you change at Asahikawa",
+    source: `jrhokkaido.co.jp, ${RAIL_FARES}`,
+  },
+  {
     route: "Sapporo → Asahikawa, Ltd. Exp. Lilac or Kamui",
     time: "1 hour 25 minutes",
     fare: "¥5,440 with reserved seat",
@@ -185,22 +198,23 @@ const trainRows = [
   },
 ];
 
+// The first five go into FAQPage, ordered by the searches this page answers.
 const faqItems = [
   {
-    q: "Is a Furano Biei tour worth it in winter?",
-    a: `Yes, if you want snow scenery and light-ups without driving on snow. No, if you want blue water, because snow covers the Blue Pond in winter. The Blue Pond light-up runs from 22 October 2026 to 21 April 2027, Shirahige Falls is lit all year, and Ningle Terrace is open from noon to 20:45 in winter. Read ${OWN}.`,
+    q: "How long is a Furano & Biei day tour from Sapporo?",
+    a: "About 10 to 11.6 hours on the Klook listings. One winter tour runs from 08:55 to around 20:30. One listing gives the drive to Furano as about 2.5 hours each way, so expect at least 5 hours on the coach. Snow can make the return later.",
   },
   {
-    q: "How long is a Furano Biei day tour from Sapporo?",
-    a: "About 10 to 11.6 hours on the Klook listings. One winter tour runs from 08:55 to around 20:30. One listing gives the drive to Furano as about 2.5 hours each way, so expect at least 5 hours on the coach. Snow can make the return later.",
+    q: "Is a Furano & Biei tour from Sapporo worth it in winter?",
+    a: `Yes, if you want snow scenery and light-ups without driving on snow. No, if you want blue water, because snow covers the Blue Pond in winter. The Blue Pond light-up runs from 22 October 2026 to 21 April 2027 (read ${RECHECKED}), Shirahige Falls is lit all year, and Ningle Terrace is open from noon to 20:45 in winter (read ${OWN}).`,
   },
   {
     q: "Can you see the Blue Pond in winter?",
     a: `You can visit, but you will not see the blue. Biei's tourism association says snow covers the water, which is why the pond is lit in winter. Lights run from 22 October 2026 to 21 April 2027, starting between 16:30 and 18:30 by month and ending at 21:00. They can be cancelled in bad weather. Read ${OWN}.`,
   },
   {
-    q: "Should I take a tour or the train to Biei?",
-    a: `For one day with both Biei and Furano, take a tour. The train to Biei is workable: 1 hour 25 minutes to Asahikawa, then about 35 minutes on the local, for ¥6,120 each way. But you still need a bus to the Blue Pond, and the stops are spread out. Take the train if you are staying a night inland. Fares read ${RAIL_FARES}.`,
+    q: "How do you get from Sapporo to Furano and Biei without a tour?",
+    a: `By JR, changing at Asahikawa in winter; for one day with both Biei and Furano, a tour is simpler. The train to Biei is workable: 1 hour 25 minutes to Asahikawa, then about 35 minutes on the local, for ¥6,120 each way. But you still need a bus to the Blue Pond, and the stops are spread out. Take the train if you are staying a night inland. Fares read ${RAIL_FARES}.`,
   },
   {
     q: "When is lavender season in Furano?",
@@ -220,10 +234,12 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Furano Biei Tour from Sapporo (2026): Winter vs Summer";
-const H1_LINE = "Furano Biei Tour from Sapporo (2026):";
+// Title and H1 open with the same words ("Furano & Biei Day Tour from Sapporo (2026): Winter Light-Ups"),
+// the form the top results use, so Google has one wording to show.
+const TITLE = "Furano & Biei Day Tour from Sapporo (2026): Winter Light-Ups";
+const H1_LINE = "Furano & Biei Day Tour from Sapporo (2026):";
 const DESCRIPTION =
-  "Furano Biei Tour guide: a Furano Biei day tour from Sapporo takes about 10 to 11.6 hours. Compare winter light-ups, summer lavender, tours and the train.";
+  "Furano & Biei day tour from Sapporo: 10 to 11.6 hours, 2.5 hours' drive each way. Winter means Blue Pond light-ups to 21 Apr 2027. Book a tour on Klook.";
 
 const ROUTE = "/guides/attractions/furano-biei-tour";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -261,7 +277,7 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -316,7 +332,7 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE}<br />Winter Light-Ups or Summer Lavender
+            {H1_LINE} Winter Light-Ups<br />or Summer Lavender
           </h1>
           <p className={styles.heroSubtitle}>
             The same two towns make two different days. Choose the season first, then the tour.
@@ -344,12 +360,16 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
         {/* Lead paragraph: the whole answer, in the body rather than the hero. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Furano Biei Tour</strong> from Sapporo is a coach day of{" "}
-            <strong>about 10 to 11.6 hours</strong> on Klook&apos;s listings, with a drive of about 2.5 hours each
-            way. From December to March it covers the Blue Pond light-up, Shirahige Falls and Ningle Terrace. In
-            summer it covers the lavender farms and the Shikisai-no-oka flower hills. Snow hides the Blue
-            Pond&apos;s colour in winter, so book for blue water outside the snow season. Read {OWN} from Klook,
-            Biei&apos;s tourism association and JR Hokkaido.
+            A <strong>Furano &amp; Biei day tour from Sapporo</strong> takes{" "}
+            <strong>about 10 to 11.6 hours</strong> on Klook&apos;s listings, with about 2.5 hours on the coach each
+            way; by JR the same trip is <strong>1 hour 25 minutes</strong> to Asahikawa (¥5,440) plus about 35
+            minutes on the local to Biei (¥680). In winter snow covers the Blue Pond, so the day is its light-up
+            (<strong>22 October 2026 to 21 April 2027</strong>), Shirahige Falls and Ningle Terrace; in summer it is
+            the lavender, peaking in mid-July, and the blue water by day. The direct 2-hour Furano Lavender
+            Express runs in summer only, so in winter a tour saves the change at Asahikawa and the bus to the
+            pond. Light-up dates and JR
+            times read {RECHECKED} from Biei&apos;s tourism association and JR Hokkaido; tour lengths {OWN} from
+            Klook.
           </p>
         </section>
 
@@ -487,6 +507,9 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             Driving yourself? The car park next to the pond costs ¥1,000 for a standard car on the
             association&apos;s notice of 21 October 2026.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-15 · {BIEI_LIGHTS_URL}
+          </p>
         </section>
 
         {/* Tours */}
@@ -590,6 +613,9 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-15 · {JR_FARES_URL}
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Going by train in winter?</strong> Trains are few, at about one an hour by day on the summer timetable, and this winter&apos;s Furano Line
             timetable is not listed here, so check JR Hokkaido&apos;s before you plan. The Furano Lavender Express is

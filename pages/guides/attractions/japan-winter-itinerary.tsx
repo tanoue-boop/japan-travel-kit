@@ -1815,7 +1815,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu</p>
+                <p className={styles.relatedTitle}>Sapporo Ski Day Trip 2026-27: Teine, Kiroro &amp; Rusutsu Tours</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
@@ -1841,7 +1841,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Furano Biei Tour from Sapporo (2026): Winter vs Summer</p>
+                <p className={styles.relatedTitle}>Furano &amp; Biei Day Tour from Sapporo (2026): Winter Light-Ups</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

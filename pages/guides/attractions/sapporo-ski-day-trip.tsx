@@ -63,17 +63,25 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * Kiroro's own access page gives no Sapporo journey time; the Klook package's listed
  * schedule (Sapporo Station 7:00, Kiroro 8:15) is used and labelled as such.
  * Not printed: any Klook price, any insurance price.
+ *
+ * Re-read 15 Nov 2026 (task-jtk-20261115-C01): Teine still "11月21日オープン予定" and the
+ * regular 1-day ¥9,800 / ¥8,800; Kiroro early season from 28 Nov 2026, spring season to
+ * 5 May 2027, 1 Day Pass ¥9,200; Rusutsu early season 1 "scheduled for 28/11/2026", 1 Day
+ * ¥16,700 (¥13,200 online); RUSUTSU EXPRESS 28/11/2026–31/03/2027, 105 minutes.
  */
 
 const ROUTE = "/guides/attractions/sapporo-ski-day-trip";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const OWN = checkedLabel("2026-11-10");
+/** Season dates, access times and 1-day prices re-read on the three resort sites. */
+const REREAD = checkedLabel("2026-11-15");
 
 const resortRows = [
   {
     resort: "Sapporo Teine",
     time: "About 40 min by car from central Sapporo; about 45 min by taxi from Sapporo Station",
+    opens: "21 Nov 2026 (scheduled)",
     lift: "¥9,800 at the window, ¥8,800 online (adult, 19 Dec–7 Mar); child 4–12 ¥6,500 / ¥5,500",
     night: "Yes: Olympia zone, 16:00–20:00, 5 Dec 2026 – 28 Mar 2027",
     source: "sapporo-teine.com",
@@ -81,6 +89,7 @@ const resortRows = [
   {
     resort: "Kiroro",
     time: "Klook's 6-hour package lists Sapporo Station 7:00 → Kiroro 8:15",
+    opens: "28 Nov 2026",
     lift: "¥9,200 adult, ¥5,500 child 6–12 (high season, 12 Dec 2026 – 11 Apr 2027)",
     night: "Center Express runs to 19:00 until 31 March",
     source: "kiroro.co.jp; Klook listing",
@@ -88,6 +97,7 @@ const resortRows = [
   {
     resort: "Rusutsu",
     time: "105 min on the RUSUTSU EXPRESS bus (¥3,000 one way)",
+    opens: "28 Nov 2026 (scheduled)",
     lift: "¥16,700 at the counter, ¥13,200 online (adult, 19 Dec 2026 – 14 Mar 2027); child 4–12 ¥8,300 / ¥6,400",
     night: "Yes: 16:00–20:00, mid-December to 30 March 2027",
     source: "rusutsu.com",
@@ -109,30 +119,31 @@ const seasonRows = [
   { resort: "Kiroro", open: "28 November 2026", close: "5 May 2027", note: "High season 12 Dec – 11 Apr" },
   { resort: "Rusutsu", open: "28 November 2026 (scheduled)", close: "31 March 2027", note: "Regular season 19 Dec – 14 Mar" },];
 
+// The first five go into FAQPage; they follow the "sapporo ski day trip" wording.
 const faqItems = [
   {
+    q: "Can you do a ski day trip from Sapporo?",
+    a: `Yes. Sapporo Teine is about 40 minutes by car from central Sapporo, Kiroro about an hour and a quarter on the Klook package's schedule (Sapporo Station 7:00, Kiroro 8:15), and Rusutsu 105 minutes on the RUSUTSU EXPRESS bus. Teine is scheduled to open on 21 November 2026 and Kiroro and Rusutsu on 28 November 2026 (resort sites, checked ${REREAD}). Tours bundle the bus, the lift ticket and, on all-inclusive versions, the rental and ski wear.`,
+  },
+  {
     q: "Which ski resort is closest to Sapporo?",
-    a: `Sapporo Teine, about 40 minutes by car from central Sapporo on the resort's own figure (checked ${OWN}). A 1-day lift ticket in the regular season (19 December 2026 to 7 March 2027) is ¥9,800 at the window or ¥8,800 online for an adult.`,
+    a: `Sapporo Teine, about 40 minutes by car from central Sapporo on the resort's own figure (checked ${REREAD}). A 1-day lift ticket in the regular season (19 December 2026 to 7 March 2027) is ¥9,800 at the window or ¥8,800 online for an adult.`,
   },
   {
-    q: "Can you ski in a day trip from Sapporo?",
-    a: "Yes. Teine is about 40 minutes away, Kiroro about an hour and a quarter on the Klook package's schedule, and Rusutsu 105 minutes on the RUSUTSU EXPRESS. Tours bundle the bus, the lift ticket and, on all-inclusive versions, the rental and ski wear.",
+    q: "When does the ski season start in Sapporo (2026-27)?",
+    a: `Sapporo Teine is scheduled to open on 21 November 2026; Kiroro and Rusutsu open on 28 November 2026 (Rusutsu's date is marked as scheduled). The regular seasons, with the most terrain open, start on 12 December at Kiroro and on 19 December at Teine and Rusutsu. Checked on the resort sites ${REREAD}; opening dates depend on snow.`,
   },
   {
-    q: "Do Sapporo ski tours include rental and lessons?",
-    a: "Some do. All-inclusive Teine tours include the transfer, lift ticket, skis or board, boots and ski wear; others add a group or private lesson. Bus-only and lift-plus-bus packages do not include rental, so check the inclusions on the listing.",
-  },
-  {
-    q: "Teine, Kiroro or Rusutsu: which one?",
+    q: "Teine, Kiroro or Rusutsu: which is best for a day trip?",
     a: "Teine for the shortest trip and night skiing; Kiroro for snow at a resort about an hour and a quarter away with a lift pass and bus on one ticket; Rusutsu for the biggest day, at a higher lift price (¥16,700 at the counter in the regular season) and 105 minutes each way.",
+  },
+  {
+    q: "Do Sapporo ski day tours include rental and lessons?",
+    a: "Some do. All-inclusive Teine tours include the transfer, lift ticket, skis or board, boots and ski wear; others add a group or private lesson. Bus-only and lift-plus-bus packages do not include rental, so check the inclusions on the listing.",
   },
   {
     q: "Is night skiing worth it at Teine?",
     a: "For a day spent in Sapporo first, yes. Teine's night skiing runs 16:00–20:00 in the Olympia zone from 5 December 2026 to 28 March 2027, and a night ticket is ¥3,900 at the window or ¥2,900 online for an adult. It is the lower zone only; the Highland zone does not open at night.",
-  },
-  {
-    q: "When does the ski season start in Sapporo?",
-    a: "Sapporo Teine is scheduled to open on 21 November 2026; Kiroro and Rusutsu open on 28 November 2026. The regular seasons, with the most terrain open, start on 12 December at Kiroro and on 19 December at Teine and Rusutsu.",
   },
   {
     q: "Do you need ski insurance for a day trip?",
@@ -140,9 +151,11 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Sapporo Ski Day Trip (2026–27): Teine, Kiroro or Rusutsu";
+// The H1 opens with the title's exact words, so the search result has one wording.
+const TITLE = "Sapporo Ski Day Trip 2026-27: Teine, Kiroro & Rusutsu Tours";
+const H1 = "Sapporo Ski Day Trip 2026-27: Teine, Kiroro & Rusutsu Tours Compared";
 const DESCRIPTION =
-  "Sapporo ski day trip guide: a ski day trip from Sapporo to Teine (40 min), Kiroro or Rusutsu, lift prices, night skiing, and the Sapporo Teine ski tour.";
+  "Sapporo ski day trip: Teine is 40 min from the city and opens 21 Nov 2026; Kiroro and Rusutsu (105 min by bus) open 28 Nov. Book a ski day tour on Klook.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -170,7 +183,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -225,7 +238,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Sapporo Ski Day Trip (2026–27):<br />Teine, Kiroro or Rusutsu, and Which Tour to Book
+            {H1}
           </h1>
           <p className={styles.heroSubtitle}>
             Three resorts within a day of a Sapporo hotel: the travel time, the official lift prices, night
@@ -272,18 +285,20 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Season opens</p>
-                <p className={styles.verdictStatValue}>Teine 21 Nov 2026 (scheduled)</p>
+                <p className={styles.verdictStatValue}>Teine 21 Nov · Kiroro, Rusutsu 28 Nov 2026</p>
               </div>
             </div>
             {/* Answer-first: the first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              For a <strong>Sapporo ski day trip</strong>, the closest resort is <strong>Sapporo Teine</strong>,
-              about <strong>40 minutes by car</strong> from central Sapporo, with a regular-season 1-day lift ticket
-              of ¥9,800 at the window or ¥8,800 online (sapporo-teine.com, checked {OWN}). An{" "}
-              <strong>all-inclusive Teine tour</strong> covers the transfer, lift, rental and ski wear, so you can
-              go with nothing. For more powder, <strong>Kiroro</strong> (about an hour and a quarter by ski bus) and{" "}
-              <strong>Rusutsu</strong> (105 minutes) are still day trips. Niseko is possible in a day too, but the
-              trip is longer; it has its own guide.
+              For a <strong>Sapporo ski day trip</strong>, <strong>Sapporo Teine</strong> is about{" "}
+              <strong>40 minutes by car</strong> from central Sapporo and is scheduled to open on{" "}
+              <strong>21 November 2026</strong>; <strong>Kiroro</strong> (about an hour and a quarter on the ski
+              package&apos;s schedule) and <strong>Rusutsu</strong> (<strong>105 minutes</strong> on the RUSUTSU
+              EXPRESS bus) open on <strong>28 November 2026</strong>. In the main winter season an adult 1-day lift
+              ticket is ¥9,800 at Teine&apos;s window (¥8,800 online), ¥9,200 at Kiroro and ¥16,700 at Rusutsu&apos;s
+              counter (resort sites, checked {REREAD}). An <strong>all-inclusive Teine tour</strong> covers the transfer, lift,
+              rental and ski wear, so you can go with nothing. Niseko is possible in a day too, but the trip is
+              longer; it has its own guide.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={teineAllInclusiveSkiDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -312,7 +327,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Resort", "From Sapporo", "1-day lift ticket (2026–27)", "Night skiing", "Source"].map((h) => (
+                    {["Resort", "From Sapporo", "Opens (2026-27)", "1-day lift ticket (2026–27)", "Night skiing", "Source"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -322,6 +337,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
                     <tr key={row.resort}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.resort}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.85rem", whiteSpace: "nowrap" }}>{row.opens}</td>
                       <td className={styles.tdPrice} style={{ fontSize: "0.85rem" }}>{row.lift}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.night}</td>
                       <td style={{ fontSize: "0.8rem" }}>{row.source}</td>
@@ -332,11 +348,16 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Each resort&apos;s own lift and access pages, checked {OWN}. Teine&apos;s 1-day ticket is valid until
+            Each resort&apos;s own lift and access pages, checked {REREAD}. Teine&apos;s 1-day ticket is valid until
             night skiing ends. Kiroro&apos;s official access page gives no journey time from Sapporo, so the
             Kiroro time is the schedule on Klook&apos;s package listing; Kiroro&apos;s price table is headed
             2025-26 but carries the 2026–27 dates. Prices for the early and spring seasons are lower; see the
             season table below.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-15 · https://sapporo-teine.com/snow/access · https://sapporo-teine.com/snow/lift-time
+            · https://www.kiroro.co.jp/lift_price/ · https://rusutsu.com/en/winter-lift-tickets/ ·
+            https://rusutsu.com/en/access-shuttle-bus-sapporo/
           </p>
         </section>
 
@@ -495,9 +516,13 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            sapporo-teine.com, kiroro.co.jp and rusutsu.com, checked {OWN}. Opening dates depend on snow. Early
+            sapporo-teine.com, kiroro.co.jp and rusutsu.com, checked {REREAD}. Opening dates depend on snow. Early
             season adult 1-day: Teine ¥9,400 / ¥8,400 online (to 18 Dec), Kiroro ¥5,800 (to 11 Dec), Rusutsu
             ¥7,900 at the ticket office (to 11 Dec).
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-15 · https://sapporo-teine.com/snow/ · https://www.kiroro.co.jp/operating_hours/ ·
+            https://rusutsu.com/en/winter-lift-tickets/
           </p>
         </section>
 
