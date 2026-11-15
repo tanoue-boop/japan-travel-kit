@@ -9532,3 +9532,74 @@ export const tippingTripPrep: KlookTripPrepItem[] = [
     why: "Tour meeting points, ryokan check-in times and the train from the airport all run on your phone from the moment you land.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Fukuoka 2 day itinerary, added 15 Nov 2026 (task-jtk-20261115-01).
+//
+// Klook answers automated reads of its product pages with HTTP 403, so the
+// three new links below were confirmed as live en-US pages through the
+// www.klook.com search index on 15 Nov 2026: the Dazaifu & Yanagawa Travel Pass
+// (152456), the Yanagawa boat + strawberry picking + Dazaifu day (192500) and
+// the Fukuoka Airport transfer search. Everything else reuses the Fukuoka,
+// Yufuin and JR Kyushu constants above. Tours and hotels 6.5%, pass and
+// airport transfer 5%, eSIM 20%. No price.
+// ---------------------------------------------------------------------------
+
+/** Nishitetsu's round trip via Dazaifu and Yanagawa with the boat ticket — the do-it-yourself Day 2. */
+export const dazaifuYanagawaTravelPass: KlookTour = {
+  title: "Dazaifu & Yanagawa Travel Pass (Fukuoka)",
+  desc: "The Nishitetsu round trip from Tenjin via Dazaifu and Yanagawa with a Yanagawa river-cruise ticket, an Umegae mochi voucher and local discounts on one pass",
+  url: klookLink("https://www.klook.com/en-US/activity/152456-dazaifu-yanagawa-excursion-pass-fukuoka/"),
+};
+
+/** The winter-and-spring version of Day 2: boat, strawberries, then Dazaifu. */
+export const yanagawaStrawberryDazaifuTour: KlookTour = {
+  title: "Yanagawa river boat, strawberry picking & Dazaifu day trip from Fukuoka",
+  desc: "A coach day from Fukuoka that adds strawberry picking to the Yanagawa boat ride and Dazaifu Tenmangu; read the listing for the picking season and pick-up point",
+  url: klookLink("https://www.klook.com/en-US/activity/192500-yanagawa-river-boat-strawberry-picking-dazaifu-from-fukuoka/"),
+};
+
+/** Private car or taxi from Fukuoka Airport to a Hakata or Tenjin hotel. */
+export const fukuokaAirportTransfers: KlookTour = {
+  title: "Fukuoka Airport transfers (private car or taxi)",
+  desc: "Klook's private-car search for Fukuoka Airport, priced per car to Hakata Station, Tenjin or your hotel",
+  url: klookLink("https://www.klook.com/en-US/airport-transfers/service/fuk-fukuoka-airport/"),
+};
+
+/** Book these on the same trip: 6.5% tours and hotels, 5% pass and transfer, 20% eSIM. */
+export const fukuokaTwoDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: dazaifuYanagawaDayTour.title,
+    ctaLabel: "Check the Dazaifu & Yanagawa day →",
+    url: dazaifuYanagawaDayTour.url,
+    why: "Day 2 as one booking: a round-trip coach from Hakata Station's Chikushi exit with Dazaifu Tenmangu and the Yanagawa boat on the route.",
+  },
+  {
+    label: "Hotels at Hakata Station",
+    ctaLabel: "Check Hakata hotels →",
+    url: fukuokaStayAreas[1].url,
+    why: "The subway from the airport, the shinkansen and every coach-tour meeting point are at Hakata Station, so two nights here make both mornings a walk.",
+  },
+  {
+    label: "Hotels in Tenjin",
+    ctaLabel: "Check Tenjin hotels →",
+    url: fukuokaStayAreas[2].url,
+    why: "Nishitetsu trains to Dazaifu and Yanagawa start at Fukuoka (Tenjin), and the Nakasu and Tenjin yatai are a walk away at night.",
+  },
+  {
+    label: dazaifuYanagawaTravelPass.title,
+    ctaLabel: "Check the Dazaifu & Yanagawa pass →",
+    url: dazaifuYanagawaTravelPass.url,
+    why: "For Day 2 on your own: the Nishitetsu round trip and the boat ticket on one pass, so there is one thing to show at the station window.",
+  },
+  {
+    label: fukuokaAirportTransfers.title,
+    ctaLabel: "Check Fukuoka Airport transfers →",
+    url: fukuokaAirportTransfers.url,
+    why: "The subway is quickest from the domestic terminal; from the international terminal, with luggage or a family, a car to the hotel door skips the shuttle bus.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Yatai open and close on the day by weather, the boat queue moves by the half hour, and the tour meeting point is a map pin — all on your phone.",
+  },
+];

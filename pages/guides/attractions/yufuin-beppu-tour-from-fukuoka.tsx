@@ -216,6 +216,7 @@ const ROUTE = "/guides/attractions/yufuin-beppu-tour-from-fukuoka";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
+  { href: "/guides/attractions/fukuoka-2-day-itinerary", title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin" },
   { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
   { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
   { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
@@ -394,7 +395,9 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           <p className={styles.bodyText}>
             If Fukuoka is one stop of a longer trip, this fits as a spare day. See our{" "}
             <Link href="/guides/attractions/teamlab-fukuoka-tickets">teamLab Forest Fukuoka guide</Link> for an
-            evening in the city, and our{" "}
+            evening in the city, our{" "}
+            <Link href="/guides/attractions/fukuoka-2-day-itinerary">Fukuoka 2 day itinerary</Link> for this day
+            against Dazaifu and the Yanagawa canals, and our{" "}
             <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14 day itinerary</Link> for how the
             route fits together.
           </p>

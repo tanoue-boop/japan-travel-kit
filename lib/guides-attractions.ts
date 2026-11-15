@@ -566,6 +566,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/fukuoka-2-day-itinerary",
+    badge: "Itinerary",
+    title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin",
+    desc: "Hakata, Canal City, Tenjin and the yatai from 18:00 on Day 1; Yanagawa's 60-minute canal boat (¥2,200) and Dazaifu Tenmangu on one ¥3,620 Nishitetsu ticket on Day 2 — or Yufuin by the Yufuin no Mori or a tour, with where to stay and the JR pass sums.",
+    group: "cities",
+    // Fukuoka sits outside the three city hubs, same call as hiroshima-2-day-itinerary.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/okinawa-3-day-itinerary",
     badge: "Itinerary",
     title: "Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama",

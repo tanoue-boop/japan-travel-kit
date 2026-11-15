@@ -442,6 +442,7 @@ const ROUTE = "/guides/attractions/kyushu-5-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
+  { href: "/guides/attractions/fukuoka-2-day-itinerary", title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin" },
   { href: "/guides/attractions/yufuin-beppu-tour-from-fukuoka", title: "Yufuin and Beppu Tour from Fukuoka (2026): Tours vs Train" },
   { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
   { href: "/guides/attractions/hiroshima-miyajima-day-trip", title: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?" },
@@ -666,6 +667,13 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
               <p className={styles.bodyText} style={smallNote}>
                 See the <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka">Yufuin and Beppu tour guide</Link> before
                 you choose.
+              </p>
+            )}
+            {day.label === "Day 5" && (
+              <p className={styles.bodyText} style={smallNote}>
+                Only two days, all from Fukuoka? Our{" "}
+                <Link href="/guides/attractions/fukuoka-2-day-itinerary">Fukuoka 2 day itinerary</Link> pairs Dazaifu
+                with the Yanagawa canal boat on one Nishitetsu ticket.
               </p>
             )}
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
