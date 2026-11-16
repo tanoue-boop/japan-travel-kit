@@ -810,6 +810,13 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             </Link>{" "}
             介紹的是另一種指定日期、透過售票平台比較容易購買的門票。
           </p>
+          <p className={styles.bodyText}>
+            電子票 QR Code 登錄在官方 App 裡，所以在園區用手機出示時需要網路。哪一張網卡適合東京行程，請看{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              日本eSIM推薦
+            </Link>
+            ——Klook 網卡可以和門票用同一個帳號結帳。
+          </p>
         </section>
 
         <EsimCtaBottom />

@@ -128,7 +128,7 @@ const SEARCH_TERMS = {
   "/guides/attractions/mt-fuji-day-tour-from-tokyo": { "zh-tw": "富士山一日遊", "zh-cn": "富士山一日游" },
   "/guides/transport/tokyo-airport-transfer": { "zh-tw": "成田機場到東京", "zh-cn": "成田机场到东京" },
   "/guides/esim/best-esim-japan": {
-    "zh-tw": "日本網卡推薦",
+    "zh-tw": "日本eSIM推薦", // R04 (16 Nov 2026): GSC's top zh-tw query is "日本 esim 推薦"
     "zh-cn": "日本eSIM推荐",
     ko: "일본 이심",
     th: "eSIM ญี่ปุ่น",

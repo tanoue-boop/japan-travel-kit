@@ -806,6 +806,8 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             <Link href="/guides/transport/ic-cards-japan">Suica 或 Pasmo 等 IC 卡（英文）</Link>{" "}
             刷卡進出，兩站都不需要特別規劃——
             <Link href="/guides/transport/tokyo-transportation">東京交通攻略（英文）</Link>有更詳細的路線說明。
+            入場時出示電子票需要網路，網卡怎麼選請看{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan">日本eSIM推薦</Link>。
           </p>
         </section>
 

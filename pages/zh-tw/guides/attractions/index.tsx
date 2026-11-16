@@ -364,6 +364,8 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
           <h2 className={styles.sectionTitle}>出發前先準備好的兩樣東西</h2>
           <p className={styles.bodyText}>
             通關之後最先用到的兩樣東西：手機上網，以及市區交通。打開商品頁看目前的方案與價格。
+            Klook 網卡和其他 6 家的 7 天／15 天價格與買法，整理在{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan" style={inline}>日本eSIM推薦</Link>。
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
             <KlookLink href={zhKlookEsim.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>

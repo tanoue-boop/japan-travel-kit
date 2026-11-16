@@ -562,6 +562,8 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
             <Link href="/guides/attractions/tokyo-subway-ticket">東京地鐵通票（英文）</Link>，
             前往晴空塔的地鐵也包含在內。東京地下鐵與都營兩個路網怎麼搭配，請看我們的
             <Link href="/guides/transport/tokyo-transportation">東京交通指南（英文）</Link>。
+            在東京搭地鐵、查路線需要手機上網，網卡的選法見{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan">日本eSIM推薦</Link>（Klook 網卡與 6 家價格比較）。
           </p>
         </section>
 
