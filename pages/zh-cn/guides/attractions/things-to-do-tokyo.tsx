@@ -676,6 +676,10 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           </p>
         </section>
 
+        <p className={styles.bodyText}>
+          东京两座 teamLab 门票要分开买，<Link href="/zh-cn/guides/attractions/teamlab-tokyo-tickets">东京teamLab门票比较</Link>对比 Planets 与无界的价格和适合人群。
+        </p>
+
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />

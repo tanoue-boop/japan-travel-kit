@@ -791,6 +791,10 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           listings={[gygTokyo, gygTokyoEntryTickets]}
         />
 
+        <p className={styles.bodyText}>
+          Visiting between December and March? A <Link href="/guides/attractions/tokyo-snow-day-trip">Tokyo snow day trip</Link> to Yeti or Fujiten on Mt. Fuji gives you sledding and snow play without a ski holiday.
+        </p>
+
         <EsimCtaBottom />
 
         {/* Related articles */}

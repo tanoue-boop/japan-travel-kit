@@ -632,6 +632,10 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           </div>
         </section>
 
+        <p className={styles.bodyText}>
+          Walking the Kumano Kodo from Osaka? The Kuroshio to Kii-Tanabe leaves from Shin-Osaka and Tennoji; our <Link href="/guides/attractions/kumano-kodo-tour">Kumano Kodo tour guide</Link> compares the day tours and the two-day walk.
+        </p>
+
         <EsimCtaBottom />
 
         {/* Related articles */}

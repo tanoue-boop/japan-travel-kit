@@ -558,6 +558,10 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </p>
         </section>
 
+        <p className={styles.bodyText}>
+          ถ้ามาช่วงธันวาคมถึงกุมภาพันธ์ ดู<Link href="/th/guides/attractions/japan-winter-itinerary">แผนเที่ยวญี่ปุ่นหน้าหนาว 12 วัน</Link> ที่รวมโตเกียว คานาซาวะ ชิราคาวาโกะ และเทศกาลหิมะซัปโปโร 4–11 ก.พ. 2027
+        </p>
+
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />

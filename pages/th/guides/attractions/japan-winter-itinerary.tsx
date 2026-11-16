@@ -846,9 +846,21 @@ const faqItems = [
   },
 ];
 
-const TITLE = "เที่ยวญี่ปุ่นหน้าหนาว 2027: แผน 12 วัน";
+// 16 Nov 2026 (C01): "แผนเที่ยว" leads the title (2027, not 2026-27, to stay within 35 characters), H1 in the same word order.
+// The task brief suggested "7-10 วัน", but the page is a 12-day plan (its FAQ says 10 days minimum),
+// so the title keeps the number the page delivers.
+const TITLE = "เที่ยวญี่ปุ่นหน้าหนาว 2027: แผนเที่ยว 12 วัน";
 const DESC =
-  "เที่ยวญี่ปุ่นหน้าหนาว 12 วัน โตเกียว คานาซาวะ ชิราคาวาโกะ ทาคายามะ เกียวโต โอซาก้า พร้อมตาราง";
+  "เที่ยวญี่ปุ่นหน้าหนาว 12 วัน โตเกียว คานาซาวะ เกียวโต เทศกาลหิมะ 4–11 ก.พ. 2027 จองใน Klook";
+
+// FAQPage carries the five questions the search terms ask; the visible list keeps all ten.
+const FAQ_SCHEMA_QS = new Set([
+  "ทริปญี่ปุ่นหน้าหนาวควรกี่วัน?",
+  "ญี่ปุ่นน่าเที่ยวในหน้าหนาวไหม?",
+  "ดูหิมะในญี่ปุ่นได้ที่ไหน?",
+  "ญี่ปุ่นหนาวแค่ไหนในธันวาคม มกราคม และกุมภาพันธ์?",
+  "ต้องจองทัวร์หน้าหนาวล่วงหน้าไหม?",
+]);
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -859,7 +871,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q))) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -869,15 +881,12 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-            <Breadcrumb trail={trail} />
-
+      {/* 16 Nov 2026 (C01): Google showed this page's title as the slug "japan winter itinerary";
+          the breadcrumb now sits below the hero so the H1 is the first text on the page. */}
             <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <p className={styles.eyebrow}>
-อัปเดต {monthLabel(updated.iso, LOCALE)}
-</p>
           <h1 className={styles.heroTitle}>
-เที่ยวญี่ปุ่นหน้าหนาว:<br />แผนเที่ยว 12 วันแบบวันต่อวัน
+เที่ยวญี่ปุ่นหน้าหนาว 2027:<br />แผนเที่ยว 12 วันแบบวันต่อวัน
 </h1>
           <p className={styles.heroSubtitle}>
 โตเกียว คานาซาวะ ชิราคาวาโกะ ทาคายามะ เกียวโต และโอซาก้า พร้อมงานหน้าหนาวสองงานที่กำหนดวันแน่นอน และงานที่ไม่มีการขายบัตรหน้างาน
@@ -891,6 +900,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           </div>
         </div>
       </section>
+
+      <Breadcrumb trail={trail} />
 
       <div className={styles.content}>
                 <Disclosure />
@@ -1293,6 +1304,9 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
 วันไลต์อัปและกฎไม่มีตั๋ววันงานจากประกาศครั้งที่ 41 ของสมาคมการท่องเที่ยวชิราคาวาโกะ รถไลต์อัปจากหน้า Nohi Bus วันและงานเทศกาลหิมะจากประกาศครั้งที่ 77 วันโอตารุจากสมาคมการท่องเที่ยวโอตารุและเว็บไซต์ทางการของฮอกไกโด ซึ่งมีเทศกาลชิโกะสึด้วย วันสกีจาก Niseko United, GALA Yuzawa และ Hakuba Valley และตัวเลข teamLab จากหน้านิทรรศการของ teamLab อ่านทั้งหมดเมื่อ {REREAD} ไม่มีการคาดเดาเกินจากวันที่ผู้จัดประกาศ ถ้าทริปอยู่นอกช่วงเหล่านั้น ให้ถือว่าแถวนั้นไม่เกี่ยว ไม่ใช่ใกล้เคียง
 </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            ตรวจสอบล่าสุด: 2026-11-16 (เทศกาลหิมะซัปโปโร 4–11 ก.พ. 2027, GALA Yuzawa 19 ธ.ค. 2026) · https://www.snowfes.com/ · https://gala.co.jp/winter/
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
 ลำดับการจองจริงถ้าเริ่มจากศูนย์: ค่ำไลต์อัปถ้าวันตรง ที่พัก ที่นั่ง Kagayaki รถโค้ชคานาซาวะ เช่าสกี SHIBUYA SKY สองสัปดาห์ล่วงหน้า แล้วอย่างอื่นในสองสัปดาห์สุดท้าย
 </p>

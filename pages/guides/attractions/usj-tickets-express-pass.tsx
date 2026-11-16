@@ -1095,6 +1095,10 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           items={usjTripPrep}
         />
 
+        <p className={styles.bodyText}>
+          Landing at Kansai Airport before the park day? <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Rapi:t</Link> compares the two airport trains by hotel station: the Haruka for Osaka Station and Kyoto, the Rapi:t for Namba.
+        </p>
+
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -31,9 +31,21 @@ const CHECKED = checkedLabel(P.checked);
 // Positioning (10 Nov 2026): this page is the do-it-yourself guide — trains, times,
 // walking order. The coach-tour comparison is /guides/attractions/kyoto-nara-day-tour-from-osaka;
 // keep the two titles and openings apart so they do not compete for the same query.
-const TITLE = "Nara Day Trip on Your Own (2026): Trains, Times and Costs";
+// 16 Nov 2026 (C01): the title leads with the query the page already ranks first for
+// ("nara day trip from kyoto or osaka"); H1 opens with the same words. Still the DIY page.
+const TITLE = "Nara Day Trip from Kyoto or Osaka (2026): Time, Cost & Route";
+const H1_LINE = "Nara Day Trip from Kyoto or Osaka (2026):";
 const DESC =
-  "Nara day trip on your own: Kintetsu from Osaka-Namba or Kyoto in about 34 min, JR from Kyoto in about 41, a free deer park, and Todai-ji at ¥800.";
+  "Nara day trip from Kyoto or Osaka: 34 min by Kintetsu (¥680 from Namba) or 41 min by JR from Kyoto; the deer park is free, Todai-ji ¥800. Tours on Klook.";
+
+// The five questions carried into FAQPage; the visible list keeps all seven.
+const FAQ_SCHEMA_QS = new Set([
+  "How do I get to Nara from Kyoto or Osaka?",
+  "How much does a Nara day trip cost?",
+  "How long do I need in Nara?",
+  "Is Nara worth a day trip?",
+  "Should I do Nara by train or on a guided tour?",
+]);
 
 // Journey times: Nara Prefecture's official travel guide (visitnara.jp), read 26 Oct 2026 —
 // the same reading used by where-to-stay-in-osaka and japan-10-day-itinerary.
@@ -142,8 +154,8 @@ const faqItems = [
     a: "The deer are wild animals that roam freely, and you can feed them special crackers (shika senbei) sold by licensed vendors around the park. Many will bow for food. Keep crackers hidden until you're ready, feed one at a time, and watch loose paper, maps, and bags — they're known to nibble. Supervise young children, as the deer can get pushy at feeding time.",
   },
   {
-    q: "How much does it cost to enter Todai-ji?",
-    a: `The Daibutsuden (Great Buddha Hall) is ¥800 for an adult and ¥400 for ages 6 to 12, and a combined ticket with the Todaiji Museum is ¥1,200 for an adult and ¥600 for a child. Groups of 30 or more pay less. Nara Park and the deer lawns are free to wander, and Kasuga Taisha's grounds are largely free, with charges for certain inner areas — so on a typical day in Nara, Todai-ji is the only admission you actually pay. Read off Todai-ji's official site on ${CHECKED} and subject to change.`,
+    q: "How much does a Nara day trip cost?",
+    a: `From Osaka-Namba the Kintetsu Express is ¥680 each way, and from Kyoto the Kintetsu Limited Express is ¥760 plus a ¥520 limited express ticket (Kintetsu fares read 4 Nov 2026); the JR trains are covered by a JR Pass or Kansai Area Pass. Inside Nara, the Daibutsuden (Great Buddha Hall) is ¥800 for an adult and ¥400 for ages 6 to 12, and a combined ticket with the Todaiji Museum is ¥1,200 for an adult and ¥600 for a child. Groups of 30 or more pay less. Nara Park and the deer lawns are free to wander, and Kasuga Taisha's grounds are largely free, with charges for certain inner areas — so on a typical day in Nara, Todai-ji is the only admission you actually pay. Read off Todai-ji's official site on ${CHECKED} and subject to change.`,
   },
   {
     q: "What are Todai-ji's opening hours?",
@@ -179,7 +191,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q)).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -240,7 +252,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Nara Day Trip on Your Own (2026):<br />Trains, Times and What Todai-ji Costs
+            {H1_LINE}<br />Time, Cost and Route on Your Own
           </h1>
           <p className={styles.heroSubtitle}>
             How to do Nara on your own from Osaka or Kyoto: which train to take, how long the ride is, and the
@@ -265,6 +277,19 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Lead paragraph: the whole answer, in the body rather than the hero (16 Nov 2026, C01). */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            A <strong>Nara day trip from Kyoto or Osaka</strong> takes <strong>about 34 minutes each way</strong> by
+            Kintetsu: the Kintetsu Express from Osaka-Namba is <strong>¥680</strong>, and the Kintetsu Limited Express
+            from Kyoto is ¥760 plus a ¥520 limited express ticket. From Kyoto the JR Nara Line Rapid takes about 41
+            minutes, and from Tennoji the JR Yamatoji Line Rapid about 36, both covered by a JR Pass or Kansai Area
+            Pass. Nara Park and the deer are free and Todai-ji&apos;s Great Buddha Hall is ¥800 for an adult, so a
+            half-day covers the park and Todai-ji and a full day adds Kasuga Taisha. Times from Nara Prefecture&apos;s
+            travel guide ({TIMES_CHECKED}), Kintetsu fares ({FARES_CHECKED}), Todai-ji ({CHECKED}).
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -368,6 +393,10 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             our <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass guide</Link>. Choosing a
             base for this and the Kyoto day trips is covered in{" "}
             <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-04 (Kintetsu fares) and 2026-10-26 (journey times) · https://www.kintetsu.co.jp/ ·
+            https://www.visitnara.jp/
           </p>
         </section>
 

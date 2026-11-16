@@ -565,6 +565,10 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           </p>
         </section>
 
+        <p className={styles.bodyText}>
+          同一天还想看数字艺术？<Link href="/zh-cn/guides/attractions/teamlab-tokyo-tickets">东京teamLab门票比较</Link>说明 Planets 和无界该选哪一座、各自票价多少。
+        </p>
+
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />

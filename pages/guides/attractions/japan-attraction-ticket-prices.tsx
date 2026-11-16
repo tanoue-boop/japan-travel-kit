@@ -886,6 +886,10 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           </p>
         </section>
 
+        <p className={styles.bodyText}>
+          Fuji-Q Highland is priced by date and its entry is free; the full pass table and the bus from Shinjuku are in our <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets guide</Link>.
+        </p>
+
         <EsimCtaBottom />
 
         {/* FAQ */}

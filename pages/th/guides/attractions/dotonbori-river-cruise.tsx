@@ -683,6 +683,10 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
           </div>
         </section>
 
+        <p className={styles.bodyText}>
+          ถ้าเที่ยวโอซาก้าในหน้าหนาว ดู<Link href="/th/guides/attractions/japan-winter-itinerary">แผนเที่ยวญี่ปุ่นหน้าหนาว 12 วัน</Link> ซึ่งจบทริปที่เกียวโตและโอซาก้า
+        </p>
+
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />

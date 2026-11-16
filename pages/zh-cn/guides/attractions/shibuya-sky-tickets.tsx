@@ -45,9 +45,10 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-cn" as const;
 const ROUTE = "/zh-cn/guides/attractions/shibuya-sky-tickets";
-const TITLE = "涩谷SKY 门票（2026）：票价、最佳时段与预约方式";
+// 16 Nov 2026 (C01): the search term 涩谷SKY门票 leads; H1 in the same word order.
+const TITLE = "涩谷SKY门票 2026：价格・预约时间・日落时段";
 const DESC =
-  "涩谷SKY 门票（2026）：官网预订成人 15 点前 ¥2,700、15 点后 ¥3,400，现场各加 ¥300；日落时段最先售罄。";
+  "涩谷SKY门票2026：官网成人15点前¥2,700、15点后¥3,400，入场日两周前日本时间00:00开售，日落时段最先售罄。境外信用卡可在Klook预订。";
 
 const SHIBUYA_SKY_URL = klookFor(shibuyaSkyTicketUrl, LOCALE);
 const GYG_SLUG = "zh-cn-shibuya-sky-tickets";
@@ -215,7 +216,7 @@ const steps = [
 
 const faqItems: FaqItem[] = [
   {
-    q: "2026 年 SHIBUYA SKY 门票多少钱？",
+    q: "2026 年涩谷SKY门票多少钱？",
     a: `官网成人票 10:00～14:59 入场为 ¥2,700，15:00～21:20 入场为 ¥3,400。同样的票在 14 楼窗口买是 ¥3,000 和 ¥3,700，所以不论哪一档，网上预订都省 ¥300。6～12 岁儿童票 ¥1,200，仅在窗口售票；学龄前儿童免费入场。这套票价依据涩谷 Scramble Square 发布的票价调整，自 2025 年 4 月 1 日入场起适用；核查日期 ${CHECKED}。`,
   },
   {
@@ -231,11 +232,11 @@ const faqItems: FaqItem[] = [
     a: "想看日落的话，需要，而且这是最关键的一点。白天或夜间时段通常不必着急，但提前预订每人仍比窗口省 ¥300，也能避免想要的时段被订走。14 楼窗口当天确实有售票，所以没预约也能入场；但当天购票无法自己决定入场时间。",
   },
   {
-    q: "SHIBUYA SKY 门票提前多久开售？",
+    q: "涩谷SKY门票提前多久开售？",
     a: `两周。每个日期在整整十四天前的日本时间 00:00 开售，这是运营方在 2025 年 2 月 27 日的公告中特意定下的，让开售时间可以预期。热门日期的日落时段，请在开售时尽早下单，不要等到当天晚些时候。核查日期 ${CHECKED}。`,
   },
   {
-    q: "SHIBUYA SKY 哪个时段最先售罄？",
+    q: "涩谷SKY哪个时段最先售罄？",
     a: "日落时段，而且远远领先：这是唯一能一次看到白天、黄金时刻与夜景的时段；东京的日落时间从 12 月中旬的 16:29 到 6 月中旬的 18:58（日本国立天文台，2026 年），所以最抢手的时段每个月都不一样。白天时段最容易订到。夜间时段则是常见的备选：同样是 ¥3,400，竞争少得多，看到的是亮灯的城市而不是地平线。",
   },
   {
@@ -267,6 +268,15 @@ const faqItems: FaqItem[] = [
     a: "天气晴朗时能看到，不过高度更高的东京晴空塔机会更大。能见度取决于天气，通常在较凉爽干燥的月份、一天中较早的时候最好；如果你上去就是为了富士山，这也是选 ¥2,700 白天时段的理由。任何一天都没有保证。",
   },
 ];
+
+// 16 Nov 2026 (C01): FAQPage carries the five questions the search terms ask; the visible list keeps all.
+const FAQ_SCHEMA_QS = new Set([
+  "2026 年涩谷SKY门票多少钱？",
+  "涩谷SKY门票提前多久开售？",
+  "涩谷SKY哪个时段最先售罄？",
+  "SHIBUYA SKY 需要提前预约吗？",
+  "SHIBUYA SKY 几点开放？最后入场是几点？",
+]);
 
 // Klook "book for the same day" — the English page's items, on the zh-CN locale path.
 const sameDayPrep: KlookTripPrepItem[] = [
@@ -367,7 +377,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q))) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -392,7 +402,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>
-            SHIBUYA SKY（涩谷天空）门票（2026）：<br />票价、开放时间与日落时段
+            涩谷SKY门票 2026：<br />价格、预约时间与日落时段
           </h1>
           <p className={styles.heroSubtitle}>
             东京最好的露天观景体验，位于涩谷十字路口上方 229 米。票价分为两档，提前两周开放预订，
@@ -415,6 +425,9 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
 
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>涩谷SKY门票 2026 年官网成人票 15 点前 ¥2,700、15 点后 ¥3,400，每个日期在两周前的日本时间 00:00 开售，日落时段最先售罄。</strong>
+          </p>
           <p className={styles.bodyText}>
             <strong>SHIBUYA SKY（涩谷天空）门票网上购买，成人 10:00～14:59 入场 ¥2,700，15:00～21:20 入场
             ¥3,400</strong>；14 楼窗口每档贵 ¥300（¥3,000／¥3,700）。SHIBUYA SKY 每个日期在

@@ -489,6 +489,10 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
           listings={[gygNaraFromOsaka, gygKyotoDayTrips]}
         />
 
+        <p className={styles.bodyText}>
+          Would rather go without a tour? Our <Link href="/guides/attractions/nara-day-trip">Nara day trip from Kyoto or Osaka</Link> guide covers the trains, about 34 minutes on Kintetsu, and what Todai-ji costs.
+        </p>
+
         <EsimCtaBottom />
 
         {/* Related articles */}

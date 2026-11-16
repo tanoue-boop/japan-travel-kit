@@ -743,6 +743,10 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
           </p>
         </section>
 
+        <p className={styles.bodyText}>
+          Flying into Kansai rather than Tokyo? Our <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Rapi:t comparison</Link> picks the airport train by the station nearest your hotel.
+        </p>
+
         <EsimCtaBottom />
 
         {/* FAQ */}

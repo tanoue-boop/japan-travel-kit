@@ -672,6 +672,10 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           </div>
         </section>
 
+        <p className={styles.bodyText}>
+          去大阪还想玩日本环球影城？<Link href="/zh-cn/guides/attractions/usj-tickets-express-pass">日本环球影城快速通关攻略</Link>说明快速通行证 4 和 7 的区别、价格为何随日期变动，以及怎么买。
+        </p>
+
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />

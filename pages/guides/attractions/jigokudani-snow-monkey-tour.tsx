@@ -749,6 +749,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           </p>
         </section>
 
+        <p className={styles.bodyText}>
+          Only have a day for snow from Tokyo? Our <Link href="/guides/attractions/tokyo-snow-day-trip">Tokyo snow day trip guide</Link> compares Yeti, Fujiten and GALA Yuzawa with their 2026-27 opening dates.
+        </p>
+
         <EsimCtaBottom />
 
         {/* FAQ */}

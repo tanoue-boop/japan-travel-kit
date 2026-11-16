@@ -158,7 +158,7 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/haruka-vs-nankai-rapit",
     badge: "Comparison",
-    title: "Haruka vs Nankai Rapi:t (2026): Best Train from Kansai Airport?",
+    title: "Haruka vs Rapi:t 2026: Which Kansai Airport Train?",
     desc: "One runs to Namba, the other to Tennoji, Shin-Osaka and Kyoto — so your hotel decides this, not the fare. A head-to-head on time, price, and JR Pass coverage.",
     group: "airports",
     city: "osaka",

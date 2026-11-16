@@ -810,6 +810,10 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
           ]}
         />
 
+        <p className={styles.bodyText}>
+          With three weeks, the Kii Peninsula fits too: our <Link href="/guides/attractions/kumano-kodo-tour">Kumano Kodo tour guide</Link> covers the 7 km Hosshinmon-oji walk, the day tours from Osaka and sending luggage ahead.
+        </p>
+
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

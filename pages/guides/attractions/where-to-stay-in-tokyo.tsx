@@ -167,9 +167,21 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Where to Stay in Tokyo (2026): Best Areas Compared";
+// 16 Nov 2026 (C01): title and H1 open with the same words. "Budget" is left out of the title on
+// purpose: the page prints no hotel prices, so it sorts areas by trip type instead.
+const TITLE = "Where to Stay in Tokyo 2026: Best Areas by Trip Type";
+const H1_LINE = "Where to Stay in Tokyo 2026:";
 const DESCRIPTION =
-  "Where to stay in Tokyo in 2026: 5 areas compared on the lines that serve them, the airport route to each, and the day trips that leave from the door.";
+  "Where to stay in Tokyo: Shinjuku for a first trip, Tokyo Station for shinkansen day trips, Ueno for Narita, Ginza for Haneda. Compare area hotels on Klook.";
+
+// The five questions carried into FAQPage; the visible list keeps all ten.
+const FAQ_SCHEMA_QS = new Set([
+  "What is the best area to stay in Tokyo for first-timers?",
+  "Is Shinjuku or Shibuya better to stay in?",
+  "Which area is closest to Haneda or Narita?",
+  "Where to stay in Tokyo for day trips to Mt Fuji?",
+  "Where to stay in Tokyo with kids?",
+]);
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/where-to-stay-in-tokyo") } });
 
@@ -196,7 +208,7 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q)).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -209,7 +221,7 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/where-to-stay-in-tokyo",
-              headline: "Where to Stay in Tokyo (2026): Best Areas Compared",
+              headline: TITLE,
               description: DESCRIPTION,
               updated,
             }),
@@ -261,7 +273,7 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Where to Stay in Tokyo (2026):<br />Best Areas, Compared by Line and Airport
+            {H1_LINE}<br />Best Areas by Trip Type, Line and Airport
           </h1>
           <p className={styles.heroSubtitle}>
             Five areas, compared on the lines that serve them rather than on hotels — because in Tokyo
@@ -286,6 +298,19 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Lead paragraph: the one-sentence answer, in the body rather than the hero (16 Nov 2026, C01). */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>Where to stay in Tokyo: on a first trip, Shinjuku or Tokyo Station; for nightlife, Shibuya; if you
+            land at Narita, Ueno or Asakusa; for the shortest Haneda run, Ginza.</strong> Shinjuku is where the Hakone
+            Romancecar (approx. 80 minutes to Hakone-Yumoto) and the Kawaguchiko bus (approx. 1 hr 45 min) leave from,
+            Tokyo Station puts Kyoto about 130 minutes away by shinkansen, the Skyliner reaches Keisei-Ueno 41 minutes
+            from Narita, and Higashi-ginza is 23 minutes from Haneda Terminal 3 with no change. Times are the
+            operators&apos; own, read 21 to 26 October 2026; hotel prices are not printed because they change with
+            your dates.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -388,6 +413,11 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             {sourceNote} Journey times exclude the walk to and from the platform, and none of them is a
             guarantee for a particular departure.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-10-26 (Keikyu, Keisei, Odakyu, gotokyo.org), 2026-10-25 (JR East, JR Central),
+            2026-10-21 (Fujikyu) · https://www.haneda-tokyo-access.com/ · https://www.keisei.co.jp/ ·
+            https://www.odakyu-global.com/
           </p>
         </section>
 

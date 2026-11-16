@@ -1413,6 +1413,10 @@ JR 东日本南北海道周游券 →
           </div>
         </section>
 
+        <p className={styles.bodyText}>
+          大阪那一天如果安排日本环球影城，先看<Link href="/zh-cn/guides/attractions/usj-tickets-express-pass">日本环球影城快速通关攻略</Link>；东京的日落时段，则看<Link href="/zh-cn/guides/attractions/shibuya-sky-tickets">涩谷SKY门票攻略</Link>，两周前开售、日落时段最先售罄。
+        </p>
+
         <EsimCtaBottom />
 
                 <FaqList items={faqItems} />

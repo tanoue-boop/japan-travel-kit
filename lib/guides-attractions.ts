@@ -160,7 +160,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/fuji-q-highland-tickets",
     badge: "Tickets",
-    title: "Fuji-Q Highland Tickets (2026): Free Pass Prices, the Q Pack & How to Get There",
+    title: "Fuji-Q Highland Tickets 2026: Price, Fast Pass & Access",
     desc: "Entry to the coaster park at the foot of Mt. Fuji is free; the 1-Day Pass is ¥6,000 to ¥7,900 by date, and the Q Pack bundles it with the round-trip highway bus from Tokyo.",
     group: "parks",
     city: "other",
@@ -290,7 +290,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/nara-day-trip",
     badge: "Day trip",
-    title: "Nara Day Trip on Your Own (2026): Trains, Times and What Todai-ji Costs",
+    title: "Nara Day Trip from Kyoto or Osaka (2026): Time, Cost & Route",
     desc: "Nara on your own: Kintetsu from Namba or Kyoto in about 34 minutes, JR from Kyoto in about 41. The deer park is free; the Great Buddha Hall is ¥800.",
     group: "daytrips",
     city: "osaka",
@@ -326,7 +326,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/tokyo-snow-day-trip",
     badge: "Snow day trip",
-    title: "Tokyo Snow Day Trip (2026–27): Yeti, Fujiten or Gala",
+    title: "Tokyo Snow Day Trip 2026-27: Fujiten, Yeti & Gala Compared",
     desc: "Sledding and snow play on Mt. Fuji without skiing: Yeti's liner bus is 2 h 30 min from Shinjuku, Fujiten opens mid-December, and the snow play areas open in December — with tours, kids and what to wear.",
     group: "daytrips",
     // A day out from Tokyo, same group and city as gala-yuzawa-ski-day-trip-from-tokyo.
@@ -542,7 +542,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/kumano-kodo-tour",
     badge: "Tour",
-    title: "Kumano Kodo Tour (2026): Day Trips, the Nakahechi and How Far You Walk",
+    title: "Kumano Kodo Tour 2026: Day Trips, Guided Walks & Luggage",
     desc: "About 10 to 12 hours 45 minutes from Osaka, or about 38 km over two days on foot. Five Klook tours compared, every Nakahechi stage by distance and climb, the Kuroshio and buses, gear, seasons and luggage.",
     group: "daytrips",
     city: "other",
@@ -929,7 +929,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/where-to-stay-in-tokyo",
     badge: "Where to stay",
-    title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport",
+    title: "Where to Stay in Tokyo 2026: Best Areas by Trip Type",
     desc: "Shinjuku, Tokyo Station, Ueno/Asakusa, Shibuya and Ginza compared on the lines under them — the Romancecar's 80 minutes to Hakone, the Skyliner's 41 to Keisei-Ueno, 23 minutes from Haneda to Higashi-ginza. No hotel names and no rates, because neither can be verified.",
     group: "cities",
     city: "tokyo",

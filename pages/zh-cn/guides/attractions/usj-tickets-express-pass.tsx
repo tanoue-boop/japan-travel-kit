@@ -45,10 +45,11 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/zh-cn/guides/attractions/usj-tickets-express-pass";
 // 14 Nov 2026 (R01): the query leads the title, H1 and meta, as on the English page.
-const TITLE = "日本环球影城快速通关 2026：种类・价格・值不值得买";
-const H1 = "日本环球影城快速通关 2026：种类、价格与值不值得买";
+// 16 Nov 2026 (C01): 价格・种类・怎么买 order, H1 in the same word order as the title.
+const TITLE = "日本环球影城快速通关 2026：价格・种类・怎么买";
+const H1 = "日本环球影城快速通关 2026：价格、种类与怎么买";
 const DESC =
-  "USJ 快速通关（fast pass）2026：快速通关 4 和 7 的区别、价格为何按日期变动、何时售罄，以及什么时候该买。";
+  "日本环球影城快速通关2026：分快速通行证4和7，价格随入园日期变动、没有固定价，约提前2个月开售且常售罄。人多的日子就买，可在Klook预订。";
 
 const LOCALE = "zh-cn" as const;
 const GYG_SLUG = "zh-cn-usj-tickets-express-pass";
@@ -280,6 +281,10 @@ const faqItems: FaqItem[] = [
     a: `大约在入园日前两个月。USJ 2025年4月21日的官方购票期间公告说，门票——Studio Pass、快速通行证等——约在两个月前于官方 WEB Ticket Store 和 Lawson Ticket 开售；大阪世博会期间（入园日截至2025年10月13日）曾放宽为三个月，之后恢复为约两个月。于${CHECKED_USJ}查阅。`,
   },
   {
+    q: "日本环球影城快速通关怎么买？",
+    a: `网上买，指定日期。USJ 2025年4月21日的官方购票期间公告把官方 WEB Ticket Store 和 Lawson Ticket 列为销售渠道，约在入园日前两个月开售；Klook 等代售平台也单独销售同样绑定日期的快速通行证，支持境外信用卡。乐园入口不售当日票，快速通行证也不是入园票，同一天还要买 Studio Pass。于${CHECKED_USJ}查阅。`,
+  },
+  {
     q: "USJ 快速通行证可以改日期或退款吗？",
     a: `请当作不能改。USJ 官方快速通行证页面写明，提前购买的通行证只在票面日期有效；指定时间的设施如果迟到，不退款，也不能改到其他时段。于${CHECKED_USJ}查阅。`,
   },
@@ -288,7 +293,7 @@ const faqItems: FaqItem[] = [
     a: `有两种方式，都是 USJ 官方的：提前购买含区域指定时间入场券的快速通行证版本，或在入园后通过官方 USJ App 领取。USJ 的指定时间入场页面也说，自2026年1月5日起，必须用官方 App 领取区域指定时间入场券和 Standby Entry Ticket，而且要先在 App 里绑定入园票。于${CHECKED_USJ}查阅。人少的日子也许可以直接走进去，但不该把行程押在这上面。`,
   },
   {
-    q: "日本环球影城快速通行证多少钱？",
+    q: "日本环球影城快速通关多少钱？",
     a: `USJ 没有公布固定价格。其官方快速通行证页面说，有效快速通行证的种类和价格因日期而异；2026年6月30日关于 Studio Pass 定价的公告也说，快速通行证自 2018 年起采用需求定价制度，目前没有变更计划。当天价格会在结账时显示，所以这里不列日元价格——于${CHECKED_USJ}查阅。`,
   },
   {
@@ -311,11 +316,11 @@ const faqItems: FaqItem[] = [
 
 // The FAQPage markup carries five questions, as on the English page; the visible list keeps all of them.
 const FAQ_SCHEMA_QS = new Set([
-  "USJ 快速通关和 fast pass 是一回事吗？",
-  "2026 年的 USJ 快速通行证值得买吗？",
+  "日本环球影城快速通关多少钱？",
   "快速通行证 4 和快速通行证 7 有什么区别？",
-  "日本环球影城快速通行证多少钱？",
-  "没有 Studio Pass 可以只用快速通行证吗？",
+  "日本环球影城快速通关怎么买？",
+  "2026 年的 USJ 快速通行证值得买吗？",
+  "USJ 快速通关和 fast pass 是一回事吗？",
 ]);
 const faqSchemaItems = faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q));
 
@@ -447,8 +452,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-      <Breadcrumb trail={trail} />
-
+      {/* 16 Nov 2026 (C01): breadcrumb below the hero, as on the Shibuya Sky page, so the H1 is the
+          first text Google reads for the title. */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
@@ -466,6 +471,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         </div>
       </section>
 
+      <Breadcrumb trail={trail} />
+
       <div className={styles.content}>
         <Disclosure />
 
@@ -475,6 +482,9 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <strong>快速通行证 4</strong>（4 个项目）和<strong>快速通行证 7</strong>（7 个项目），每张只限一个日期使用，而且不是入园票——同一天还需要
             Studio Pass。USJ 没有固定价格：种类和价格随入园日期而变，约在入园日前 2 个月开售，每天只卖有限数量，经常提前售罄。周末、日本法定节假日或寒假期间的日期就买；人少的工作日，通常只买
             Studio Pass 就够了。于{CHECKED_USJ}及{CHECKED_TODAY}在 usj.co.jp 查阅。
+          </p>
+          <p className={styles.bodyText}>
+            <strong>怎么买：</strong>在 USJ 官方 WEB Ticket Store、Lawson Ticket，或 Klook 等代售平台网上购买指定日期的快速通行证；乐园入口不售当日票，所以要在出发前买好，并另外买同一天的 Studio Pass。
           </p>
         </section>
 
@@ -513,8 +523,6 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           </div>
         </div>
 
-        <BookingEsimCard />
-
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
             <span className={styles.verdictLabel}>快速通行证</span>
@@ -542,6 +550,10 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="快速通行证决定了你的入园日期。在它会售罄的那些人多的日子，大门旁的官方酒店也会订满——所以房间、从关西机场过来的交通，以及乐园官方 App 要用的流量，都值得同一天订好。"
           items={expressSameDayPrep}
         />
+
+        {/* 16 Nov 2026 (C01): moved below the same-day block so the hotel and airport-bus bookings sit
+            directly under the Express Pass box. */}
+        <BookingEsimCard />
 
         <EsimCtaTop />
 

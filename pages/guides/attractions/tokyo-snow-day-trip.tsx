@@ -60,6 +60,12 @@ const ROUTE = "/guides/attractions/tokyo-snow-day-trip";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const OWN = checkedLabel("2026-11-11");
+// Re-read 16 Nov 2026 (task-jtk-20261116-C01): yeti-resort.com top page shows the resort operating
+// that day, 9:00–22:00 with night skiing 15:30–22:00, and the Shinjuku liner bus at 2 h 30 min from
+// 12/5; fujiten.net still says the 2026-27 season is planned to open in mid-December; GALA's season
+// (slopes from 19 Dec 2026 to 5 May 2027, gondola-only 12–18 Dec) via gala.co.jp in the search index,
+// whose site header gives 77 minutes from Tokyo by shinkansen.
+const RECHECKED = checkedLabel("2026-11-16");
 
 const placeRows = [
   {
@@ -67,7 +73,7 @@ const placeRows = [
     where: "Mt. Fuji 2nd Station, Shizuoka (1,300–1,450 m)",
     access: "Yeti's liner bus from Shinjuku, 2 h 30 min (from 5 Dec; fare includes a 1-day lift ticket), or a tour",
     snowPlay: "Sled-only slope (planned early Dec) and snow play area (planned late Dec), kids room next to it",
-    season: "Operating for 2026–27 when checked; 9:00–18:00 on 11 Nov",
+    season: "Open for 2026–27 when checked; 9:00–22:00 with night skiing from 15:30 on 16 Nov",
   },
   {
     place: "Fujiten Snow Resort",
@@ -102,7 +108,12 @@ const gearRows = [
   { item: "ID", yeti: "—", fujiten: "Rental needs ID (licence or a phone number)", tip: "Carry your passport" },
 ];
 
+// The first five go into FAQPage, ordered by the searches this page answers.
 const faqItems = [
+  {
+    q: "When do Yeti, Fujiten and GALA Yuzawa open for 2026-27?",
+    a: `Yeti is open already: it was operating on 16 November 2026, from 9:00 to 22:00 with night skiing from 15:30, though its sled slope is planned for early December and its snow play area for late December. Fujiten plans to open in mid-December 2026. GALA Yuzawa opens its slopes on 19 December 2026 and runs to 5 May 2027, with gondola-only days from 12 to 18 December. Read on the resorts' own sites, ${RECHECKED}.`,
+  },
   {
     q: "Where can you see snow on a day trip from Tokyo?",
     a: `On the slopes of Mt. Fuji. Fujiyama Snow Resort Yeti (Shizuoka) and Fujiten Snow Resort (Yamanashi) are the two snow areas that day tours from Tokyo use, and Yeti's own liner bus from Shinjuku takes 2 hours 30 minutes. For skiing proper, GALA Yuzawa is 71 minutes from Tokyo Station by shinkansen on the fastest train. Checked ${OWN}.`,
@@ -116,10 +127,6 @@ const faqItems = [
     a: "Yeti if you want the earliest season and the simplest transport: it opens in autumn and its liner bus leaves from Shinjuku. Fujiten if you want the Mt. Fuji view and a sightseeing stop in the same day: the Klook tour pairs it with Oishi Park on Lake Kawaguchiko. Fujiten plans to open in mid-December 2026.",
   },
   {
-    q: "When does the snow season start near Tokyo?",
-    a: "Yeti opens first: it was already operating when checked on 11 November 2026, but its sled slope is planned for early December and its snow play area for late December. Fujiten plans to open in mid-December 2026, and GALA Yuzawa opens its slopes on 19 December 2026. For sledding and snow play, plan from late December.",
-  },
-  {
     q: "Is a snow day trip from Tokyo good for kids?",
     a: "Yes, with planning. Yeti has a kids room next to its snow play area and charges children from age 3; Fujiten has the Chibikko Ai Land snow area. The Yeti & onsen tour on Klook takes ages 3 to 69. Neither resort rents gloves or hats, so bring them from home.",
   },
@@ -129,9 +136,11 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Tokyo Snow Day Trip (2026–27): Yeti, Fujiten or Gala";
+// Title and H1 open with the same words (16 Nov 2026, C01).
+const TITLE = "Tokyo Snow Day Trip 2026-27: Fujiten, Yeti & Gala Compared";
+const H1_LINE = "Tokyo Snow Day Trip 2026-27:";
 const DESCRIPTION =
-  "Tokyo snow day trip guide: a snow day trip from Tokyo to Yeti or Fujiten for sledding without skiing, open dates, what to wear and a Fujiten snow day trip.";
+  "Tokyo snow day trip 2026-27: Yeti is open, 2h30 by bus from Shinjuku; Fujiten opens mid-Dec and GALA Yuzawa on 19 Dec. Compare tours, book on Klook.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -159,7 +168,7 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -214,7 +223,7 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Snow Day Trip (2026–27):<br />Sledding and Snow Play at Yeti or Fujiten
+            {H1_LINE}<br />Fujiten, Yeti and Gala Compared
           </h1>
           <p className={styles.heroSubtitle}>
             A snow day trip from Tokyo for people who want snow more than a ski day: sledding, a first try on
@@ -239,6 +248,20 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Lead paragraph: the whole answer, in the body rather than the hero (16 Nov 2026, C01). */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            A <strong>Tokyo snow day trip in 2026-27</strong> means Mt. Fuji or Niigata:{" "}
+            <strong>Fujiyama Snow Resort Yeti is already open</strong> (operating 9:00–22:00 on 16 November 2026)
+            and 2 hours 30 minutes from Shinjuku on its own liner bus from 5 December;{" "}
+            <strong>Fujiten plans to open in mid-December 2026</strong>; and{" "}
+            <strong>GALA Yuzawa opens its slopes on 19 December 2026</strong>, 71 minutes from Tokyo Station on the
+            fastest shinkansen (GALA&apos;s figure, read 1 November; its site header says 77 minutes). For sledding without skiing, Yeti&apos;s sled slope is planned for early December
+            and Fujiten has the Chibikko Ai Land snow area, so a snow-play tour makes most sense from late
+            December. Openings read on the resorts&apos; own sites, {RECHECKED}.
+          </p>
+        </section>
 
         {/* Quick Answer */}
         <div className={styles.verdictBox}>
@@ -332,6 +355,9 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             (top page, hours and fees, FAQ and access), all checked {OWN}. GALA Yuzawa&apos;s season dates and train
             time from gala.co.jp, checked 1 November 2026; its snow play park from gala.co.jp, checked {OWN}.
             Snow and weather can move every date, so check the resort&apos;s page in the week you go.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-16 · https://www.yeti-resort.com/ · https://fujiten.net/ · https://gala.co.jp/winter/
           </p>
         </section>
 
@@ -565,6 +591,10 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
         </section>
 
         <BookingEsimCard lead="Tour pick-up messages, resort hours and road closures all reach your phone. Get mobile data before you land." />
+
+        <p className={styles.bodyText}>
+          Fujiten is reached from Kawaguchiko Station, on the same Fujikyu corridor as the coaster park; to add rides to a Fuji-area day, see our <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets guide</Link>.
+        </p>
 
         <EsimCtaBottom />
 

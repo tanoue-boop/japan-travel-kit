@@ -1398,6 +1398,10 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
           items={tripPrep}
         />
 
+        <p className={styles.bodyText}>
+          抵达当天想去看夜景？<Link href="/zh-cn/guides/attractions/shibuya-sky-tickets">涩谷SKY门票攻略</Link>列出 15 点前后两档票价和两周前开售的预约时间。
+        </p>
+
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />

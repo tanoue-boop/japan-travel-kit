@@ -44,12 +44,20 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  */
 const CHECKED = checkedLabel("2026-11-08");
 const FREQ_CHECKED = checkedLabel("2026-11-06");
+// Fares re-read 16 Nov 2026 (task-jtk-20261116-C01), unchanged: JR West's HARUKA One-way Ticket
+// (Tennoji ¥1,600, Osaka / Shin-Osaka ¥1,900, Kyoto ¥2,700) and Nankai's Rapi:t Digital Ticket
+// (¥1,410 Regular, ¥1,590 Super Seat). Times are still the 8 Nov reads.
+const FARES_RECHECKED = checkedLabel("2026-11-16");
+const HARUKA_URL = "https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/";
+const RAPIT_URL = "https://www.nankai.co.jp/en_railway/ticket/rapit";
 
 const ROUTE = "/guides/transport/haruka-vs-nankai-rapit";
 const PAGE_URL = `https://www.japan-travel-kit.com${ROUTE}`;
-const TITLE = "Haruka vs Nankai Rapit 2026: Price, Time, Which to Take";
+// Title and H1 open with the same words (16 Nov 2026, C01).
+const TITLE = "Haruka vs Rapi:t 2026: Which Kansai Airport Train?";
+const H1_LINE = "Haruka vs Rapi:t 2026:";
 const DESCRIPTION =
-  "Haruka vs Nankai Rapit from Kansai Airport, checked Nov 2026: Rapi:t ¥1,410 to Namba in 34 min; Haruka ¥1,900 to Osaka and ¥2,700 to Kyoto. Which to take.";
+  "Haruka vs Rapi:t from Kansai Airport (2026): for Kyoto take the HARUKA, ¥2,700 in about 75 min; for Namba the Rapi:t, ¥1,410 in 34 min. Book on Klook.";
 
 const destinationRows = [
   {
@@ -236,7 +244,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: ROUTE,
-              headline: "Haruka vs Nankai Rapit (2026): Price, Time and Which to Take",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -247,7 +255,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -283,7 +291,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Haruka vs Nankai Rapit (2026):<br />Price, Time and Which to Take
+            {H1_LINE}<br />Which Kansai Airport Train to Take
           </h1>
           <p className={styles.heroSubtitle}>
             One runs to Namba, the other to Tennoji, Umeda, Shin-Osaka and Kyoto. Your hotel decides the winner.
@@ -301,12 +309,12 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
         {/* The answer, in the first body paragraph */}
         <p className={styles.bodyText}>
-          <strong>From Kansai Airport to Kyoto</strong>, take the JR Haruka: about 75 minutes direct and ¥2,700 on JR
-          West&apos;s HARUKA One-way Ticket. <strong>For Namba and Shinsaibashi</strong>, take the Nankai Rapi:t: a
-          minimum of 34 minutes to Namba and ¥1,410 on Nankai&apos;s Rapi:t Digital Ticket. <strong>For Shin-Osaka
-          and Umeda (Osaka Station)</strong>, take the Haruka again: about 50 and 45 minutes, ¥1,900 to either. A JR
-          Pass covers the Haruka but not the Rapi:t. Adult fares from JR West and Nankai, times from Kansai Airport and
-          Nankai, checked {CHECKED}.
+          <strong>Haruka vs Rapi:t comes down to your hotel: for Kyoto take the HARUKA, for Namba take the
+          Rapi:t.</strong> The JR HARUKA runs direct from Kansai Airport to Kyoto in about 75 minutes for ¥2,700 on JR
+          West&apos;s HARUKA One-way Ticket; the Nankai Rapi:t reaches Namba in a minimum of 34 minutes for ¥1,410 on
+          Nankai&apos;s Rapi:t Digital Ticket. <strong>For Shin-Osaka and Umeda (Osaka Station)</strong>, take the
+          Haruka again: about 50 and 45 minutes, ¥1,900 to either. A JR Pass covers the Haruka but not the Rapi:t.
+          Adult fares re-read on JR West and Nankai {FARES_RECHECKED}; times from Kansai Airport and Nankai, {CHECKED}.
         </p>
 
         {/* Quick Answer */}
@@ -384,6 +392,9 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
             JR West&apos;s ticket pages do not list an ICOCA &amp; HARUKA set; the HARUKA One-way Ticket is its current
             Haruka discount for visitors, and an ICOCA card is bought separately at the station. The regular Haruka fare
             and Nankai&apos;s ordinary fare are left out because neither is published on the pages read.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-16 · {HARUKA_URL} · {RAPIT_URL}
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">

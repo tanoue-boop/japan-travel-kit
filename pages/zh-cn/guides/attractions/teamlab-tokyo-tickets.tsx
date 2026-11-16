@@ -45,9 +45,15 @@ const BORDERLESS_ADULT = priceLabel(B.adult, LOCALE);
 const CHILD_AGES = "4～12 岁；未满 4 岁免费";
 
 const ROUTE = "/zh-cn/guides/attractions/teamlab-tokyo-tickets";
-const TITLE = "teamLab Planets 无界 比较（2026）：两馆怎么选";
+// 16 Nov 2026 (C01): the search term 东京teamLab门票 leads, with the Planets price question it is
+// found for (行星馆票价); H1 in the same word order. Prices re-read on teamlab.art that day.
+const TITLE = "东京teamLab门票 2026：Planets与无界价格比较";
+const H1_LINE = "东京teamLab门票 2026：";
 const DESC =
-  "东京有两座 teamLab 美术馆，门票需分别购买。从票价、开放时间、地点和适合人群对比 Planets 与无界，再决定选哪一座。";
+  "东京teamLab门票2026：Planets成人¥3,800起、无界¥3,400起，按日期浮动，两馆分开买。带孩子选Planets，可在Klook预订。";
+const RECHECKED = dateLabel("2026-11-16", LOCALE);
+const PLANETS_URL = "https://www.teamlab.art/e/planets/";
+const BORDERLESS_URL = "https://www.teamlab.art/e/borderless-azabudai/";
 
 const compareRows = [
   { factor: "地点", planets: "丰洲（江东区）", borderless: "麻布台之丘（港区）" },
@@ -90,8 +96,8 @@ const faqItems: FaqItem[] = [
     a: "不是。它们是两座独立的美术馆，门票需分别购买，位于东京不同区域。Planets 的门票不能用于进入无界，反之亦然。",
   },
   {
-    q: "东京 teamLab 门票多少钱？",
-    a: `Planets 成人票 ${PLANETS_ADULT}，${PLANETS_CHECKED} 查阅。无界成人票 ${BORDERLESS_ADULT}，${BORDERLESS_CHECKED} 查阅。两座都按日期与时段定价，请确认所选日期的实际票价。`,
+    q: "东京teamLab门票多少钱？Planets和无界票价一样吗？",
+    a: `不一样。teamLab Planets 成人（18 岁以上）¥3,800 起、初高中生 ¥2,800、4～12 岁 ¥1,500；teamLab 无界成人 ¥3,400 起、13～17 岁 ¥2,800、4～12 岁 ¥1,500，现场购票加收 ¥200。两座都是 3 岁以下免费，并按日期与时段浮动定价，请以所选日期的实际票价为准。${RECHECKED} 于 teamlab.art 查阅。`,
   },
   {
     q: "Planets 和无界可以同一天去吗？",
@@ -148,13 +154,13 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd(trail, ROUTE) }} />
       </Head>
 
-      <Breadcrumb trail={trail} />
-
+      {/* 16 Nov 2026 (C01): Google showed this page as "日本景点门票teamLab Planets 门票" — the
+          breadcrumb glued to the title — so, as on the Shibuya Sky page, the breadcrumb now sits
+          below the hero and the H1 is the first text on the page. */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 与无界对比（2026）：<br />东京两馆怎么选？
+            {H1_LINE}<br />Planets 与无界价格比较，两馆怎么选
           </h1>
           <p className={styles.heroSubtitle}>
             东京有两座 teamLab 美术馆，门票需分别购买。这里说明两者的区别，以及该选哪一座。
@@ -169,8 +175,20 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         </div>
       </section>
 
+      <Breadcrumb trail={trail} />
+
       <div className={styles.content}>
         <Disclosure />
+
+        {/* Lead paragraph: the answer, in the body rather than the hero (16 Nov 2026, C01). */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>东京teamLab门票分两座美术馆分别购买：teamLab Planets 成人 ¥3,800 起，teamLab 无界成人 ¥3,400 起</strong>，两座的
+            4～12 岁儿童票都是 ¥1,500、3 岁以下免费，并按日期与时段浮动定价。带孩子或想赤脚涉水选 Planets（丰洲），想慢慢逛数字艺术选无界（麻布台之丘）；
+            Planets 现场不售票，无界现场购票加收 ¥200。{RECHECKED} 于 teamlab.art 查阅。只想看 Planets 的开放时间和预约方式，请看{" "}
+            <Link href="/zh-cn/guides/attractions/teamlab-planets-tickets">teamLab Planets 门票</Link>攻略。
+          </p>
+        </section>
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -233,6 +251,9 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Planets 的信息于 {PLANETS_CHECKED} 查阅 teamlab.art 与官方售票网站；无界的信息于 {BORDERLESS_CHECKED}{" "}
             查阅 teamlab.art。两座的成人票都按日期与时段定价，请确认所选日期的实际票价。
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            最后查阅：2026-11-16 · {PLANETS_URL} · {BORDERLESS_URL}
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={cnTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>

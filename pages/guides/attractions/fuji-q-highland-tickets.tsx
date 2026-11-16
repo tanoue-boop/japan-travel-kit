@@ -27,6 +27,14 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 // lib/attraction-prices.ts, shared with the ticket price table.
 const P = PRICES.fujiQHighland;
 const CHECKED = checkedLabel(P.checked);
+// Re-read 16 Nov 2026 (task-jtk-20261116-C01): fujiq.jp/en/ticket/ still lists the adult 1-Day Pass
+// at 6,000–7,900 yen and the Afternoon Pass at 4,100–6,000 yen, free entrance, and separate
+// priority tickets; Fujikyu's Shinjuku route page (bus.fujikyu.co.jp, via the search index) gives
+// about 1 hour 40 minutes from Busta Shinjuku to the Fuji-Q Highland stop, from 2,200 yen
+// (2,000 yen booked online).
+const RECHECKED = checkedLabel("2026-11-16");
+const TICKET_URL = "https://www.fujiq.jp/en/ticket/";
+const BUS_URL = "https://bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/";
 
 const priceRows = [
   { ticket: "Park entry (no rides)", day: "Free", afternoon: "Free" },
@@ -89,10 +97,19 @@ const steps = [
   },
 ];
 
+// The first five go into FAQPage, ordered by the searches this page answers.
 const faqItems = [
   {
-    q: "How much are Fuji-Q Highland tickets?",
-    a: `Entry to Fuji-Q Highland is free. What costs money is riding: the 1-Day Pass is ¥6,000 to ¥7,900 for an adult aged 18–64, ¥5,500 to ¥7,400 for a junior or senior high-school student, ¥4,400 to ¥5,100 for an elementary-school child and ¥2,100 to ¥2,600 for a toddler aged 1 and over or a senior aged 65 and over. The Afternoon Pass, valid from 13:00, is ¥4,100 to ¥6,000 for an adult. Prices vary by date. Figures read off fujiq.jp on ${CHECKED}.`,
+    q: "How much are Fuji-Q Highland tickets in 2026?",
+    a: `Entry to Fuji-Q Highland is free. What costs money is riding: the 1-Day Pass is ¥6,000 to ¥7,900 for an adult aged 18–64, ¥5,500 to ¥7,400 for a junior or senior high-school student, ¥4,400 to ¥5,100 for an elementary-school child and ¥2,100 to ¥2,600 for a toddler aged 1 and over or a senior aged 65 and over. The Afternoon Pass, valid from 13:00, is ¥4,100 to ¥6,000 for an adult. Prices vary by date. Figures read off fujiq.jp on ${RECHECKED}.`,
+  },
+  {
+    q: "Does Fuji-Q Highland have a fast pass?",
+    a: `Yes, under another name. Fuji-Q's official ticket page lists Priority Tickets for individual rides and a One-day Pass with priority admission, sold separately from the plain 1-Day Pass and in limited numbers. The page prices them by date, so check the figure for your day on fujiq.jp before you go. Read ${RECHECKED}.`,
+  },
+  {
+    q: "How do I get to Fuji-Q Highland from Shinjuku?",
+    a: `By the Fujikyu highway bus from Busta Shinjuku, about 1 hour 40 minutes to the Fuji-Q Highland stop, from ¥2,200 for an adult (¥2,000 booked online); traffic can make it longer. Fuji-Q Highland is the stop before Kawaguchiko Station. The Q Pack on Klook bundles a round-trip bus from Shinjuku or Ueno with the 1-Day Pass. Bus times read on Fujikyu's site, ${RECHECKED}.`,
   },
   {
     q: "Is entry to Fuji-Q Highland really free?",
@@ -126,9 +143,10 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/fuji-q-highland-tickets") } });
 
-const TITLE = "Fuji-Q Highland Tickets (2026): Pass Prices and the Q Pack";
+// Title and H1 open with the same words, so Google has one wording to show (16 Nov 2026, C01).
+const TITLE = "Fuji-Q Highland Tickets 2026: Price, Fast Pass & Access";
 const DESCRIPTION =
-  "Fuji-Q Highland tickets in 2026: entry is free, the 1-Day Pass is ¥6,000–¥7,900 for an adult by date, and the Q Pack adds the highway bus from Tokyo.";
+  "Fuji-Q Highland tickets 2026: entry is free, the 1-Day Pass is ¥6,000–¥7,900 by date, and the bus from Shinjuku takes about 1h40. Book the Q Pack on Klook.";
 
 export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -152,7 +170,7 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -211,7 +229,7 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Fuji-Q Highland Tickets (2026):<br />Free Pass Prices, the Q Pack &amp; How to Get There
+            Fuji-Q Highland Tickets 2026:<br />Price, Fast Pass and Access from Shinjuku
           </h1>
           <p className={styles.heroSubtitle}>
             Entry to the park is free — what you are buying is the right to ride. The 1-Day Pass is ¥6,000
@@ -237,6 +255,19 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Lead paragraph: the whole answer, in the body rather than the hero (16 Nov 2026, C01). */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>Fuji-Q Highland tickets</strong> start with free entry: the{" "}
+            <strong>1-Day Pass costs ¥6,000 to ¥7,900</strong> for an adult (18–64) depending on the date, and the
+            Afternoon Pass from 13:00 is ¥4,100 to ¥6,000. From Tokyo, the Fujikyu highway bus from Busta Shinjuku
+            takes <strong>about 1 hour 40 minutes</strong> to the park&apos;s own stop, from ¥2,200 for an adult, and
+            Klook&apos;s Q Pack puts a round-trip bus and the 1-Day Pass on one voucher. Priority tickets, the
+            park&apos;s fast pass, are sold separately and by date. Pass prices read on fujiq.jp and bus times on
+            Fujikyu&apos;s site, {RECHECKED}.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -326,6 +357,9 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
             month-by-month tables, so check the figure for your own date. Entry to the park itself is free
             whether or not you buy a pass; individual ride tickets are sold at machines inside.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-16 · {TICKET_URL}
+          </p>
         </section>
 
         {/* Which ticket */}
@@ -377,7 +411,9 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
             By rail, the route is a JR service to Otsuki and then the Fujikyuko Line, which has a station
             named after the park: Fuji-Q Highland. By road, the highway bus from Tokyo terminates at a bus
             terminal inside the Highland Resort Hotel &amp; Spa car park, which is at the park itself rather
-            than a walk away. Checked {CHECKED}.
+            than a walk away. Checked {CHECKED}. From Busta Shinjuku the Fujikyu bus takes about 1 hour 40
+            minutes to the Fuji-Q Highland stop, from ¥2,200 for an adult (¥2,000 booked online), and more in
+            traffic. Last checked: 2026-11-16 · {BUS_URL}
           </p>
           <p className={styles.bodyText}>
             That difference is why the bus-inclusive Q Pack exists and why it is usually the better buy for a
@@ -422,6 +458,10 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
           intro="If you already have a pass, or you want the Fuji Five Lakes rather than the coasters, these two cover the journey on their own — the highway bus serves Fuji-Q Highland and Kawaguchiko, and the area pass covers the local buses and trains once you are there."
           tours={[tokyoMtFujiHighwayBus, mtFujiPass]}
         />
+
+        <p className={styles.bodyText}>
+          Shinjuku, where the Fuji-Q bus leaves from, is also the first-trip pick in our <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link> guide.
+        </p>
 
         <EsimCtaBottom />
 

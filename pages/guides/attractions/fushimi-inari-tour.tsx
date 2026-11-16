@@ -779,6 +779,10 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           items={fushimiInariSameDayPrep}
         />
 
+        <p className={styles.bodyText}>
+          Pairing Fushimi Inari with Nara? Our <Link href="/guides/attractions/nara-day-trip">Nara day trip guide</Link> has the trains from Kyoto, the walking order and the one ticket you pay for.
+        </p>
+
         <EsimCtaBottom />
 
         {/* FAQ */}

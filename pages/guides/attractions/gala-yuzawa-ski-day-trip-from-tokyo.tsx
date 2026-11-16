@@ -1205,6 +1205,10 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           </p>
         </section>
 
+        <p className={styles.bodyText}>
+          The shinkansen to GALA leaves from Tokyo Station, which is why our <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link> guide suggests the Tokyo Station area for trips built around day trips.
+        </p>
+
         <EsimCtaBottom />
 
         {/* FAQ */}

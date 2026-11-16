@@ -308,10 +308,23 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Kumano Kodo Tour (2026): Day Trips, Routes and Difficulty";
-const H1_LINE = "Kumano Kodo Tour (2026):";
+// 16 Nov 2026 (C01): title and H1 open with the same words. "Cost" is left out of the title on
+// purpose: no tour price can be printed (Klook prices are never quoted), so the title promises
+// what the page does answer.
+const TITLE = "Kumano Kodo Tour 2026: Day Trips, Guided Walks & Luggage";
+const H1_LINE = "Kumano Kodo Tour 2026:";
 const DESCRIPTION =
-  "Kumano Kodo Tour options from Osaka: 10 to 12¾ hour day trips, the 7 km Hosshinmon walk, the 38 km Nakahechi, trains, gear, luggage and when to go.";
+  "Kumano Kodo tour 2026: day tours from Osaka run 10 to 12¾ hours; Hosshinmon-oji to Hongu is 7 km in 2–3 hours. Luggage transfer explained, tours on Klook.";
+const RECHECKED = checkedLabel("2026-11-16");
+
+// The five questions carried into FAQPage; the visible list keeps all ten.
+const FAQ_SCHEMA_QS = new Set([
+  "Can you do the Kumano Kodo in one day?",
+  "Do I need a guide for the Kumano Kodo?",
+  "Can I send my luggage ahead on the Kumano Kodo?",
+  "How do I get to the Kumano Kodo from Osaka?",
+  "How hard is the Kumano Kodo Nakahechi route?",
+]);
 
 const ROUTE = "/guides/attractions/kumano-kodo-tour";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -348,7 +361,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q)).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -403,7 +416,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE}<br />Day Trips, the Nakahechi and How Far You Walk
+            {H1_LINE}<br />Day Trips, Guided Walks and Luggage
           </h1>
           <p className={styles.heroSubtitle}>
             A thousand-year-old pilgrimage road in the Kii Mountains. The choice is a long coach day from Osaka
@@ -432,12 +445,15 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
         {/* Lead paragraph: the whole answer, in the body rather than the hero. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Kumano Kodo Tour</strong> from Osaka is a guided coach day of about{" "}
+            A <strong>Kumano Kodo tour</strong> from Osaka is a guided coach day of about{" "}
             <strong>10 to 12 hours 45 minutes</strong> that visits the grand shrines with a short walk on the old
-            road, which reviews of one tour put at about 7 km. The most popular route is the Nakahechi, from
-            Takijiri-oji to Kumano Hongu Taisha: <strong>about 38 km over two days</strong>, at 6 to 12 hours on
-            foot a day depending on where you sleep. A single day gets you a highlight, not the route. Read{" "}
-            {OWN} from Klook, the Tanabe City Kumano Tourism Bureau and Wakayama&apos;s tourism sites.
+            road. The classic one-day section, <strong>Hosshinmon-oji to Kumano Hongu Taisha, is about 7 km and 2 to
+            3 hours</strong>, mostly downhill (Tanabe City Kumano Tourism Bureau, read {RECHECKED}). A tour takes care
+            of the transport; on your own it is about 2 hours by train from Shin-Osaka to Kii-Tanabe and 2.5 hours by
+            bus to Hosshinmon, too long for a same-day return. The full Nakahechi, Takijiri-oji to Hongu, is{" "}
+            <strong>about 38 km over two days</strong>, and luggage can go ahead by Yamato (¥940 to ¥2,510 by size) or
+            the inn-to-inn shuttle booked through KUMANO TRAVEL. Tour lengths and transport read {OWN} from Klook,
+            the bureau and Wakayama&apos;s tourism sites.
           </p>
         </section>
 
@@ -606,6 +622,10 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             without a pack in good weather, excluding breaks. This guide uses the longer section-page times, which suit
             planning better. Ratings are the bureau&apos;s own subjective estimates. Wakayama&apos;s course page
             also mentions a detour at Iwagami Pass and a recent reopening, so check trail status before you walk.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-16 (Hosshinmon-oji to Hongu, about 7 km and 2 to 3 hours) ·
+            https://www.tb-kumano.jp/en/kumano-kodo/suggested-walks/
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>On the two-day walk,</strong> the prefecture warns of steep ups and downs after Kobiro-oji, and

@@ -71,7 +71,8 @@ const SEARCH_TERMS = {
   "/guides/attractions": { "zh-tw": "日本景點門票", "zh-cn": "日本景点门票" },
   "/guides/attractions/shibuya-sky-tickets": {
     "zh-tw": "澀谷SKY 門票",
-    "zh-cn": "涩谷SKY 门票",
+    // 2026-11-16 (C01): the zh-cn title now writes the term as typed, "涩谷SKY门票" (no space).
+    "zh-cn": "涩谷SKY门票",
     // 2026-11-13 (R02): "시부야 스카이 티켓" is the top Korean query (130 impressions in
     // GSC 10/14~11/10, ahead of 시부야 스카이 예약 at 91); the title now leads with it.
     ko: "시부야 스카이 티켓",
@@ -108,7 +109,9 @@ const SEARCH_TERMS = {
   // From 2026-11-06 the comparison page, so it must not chase the Planets ticket terms.
   "/guides/attractions/teamlab-tokyo-tickets": {
     "zh-tw": "teamLab Planets 無界 比較",
-    "zh-cn": "teamLab Planets 无界 比较",
+    // 2026-11-16 (C01): "东京teamLab门票 2026：Planets与无界价格比较" — still the comparison page
+    // (Planets-only ticket terms go to /zh-cn/…/teamlab-planets-tickets via an in-body link).
+    "zh-cn": "Planets与无界",
     ko: "팀랩 플래닛 보더리스 비교",
     th: "teamLab Planets หรือ Borderless",
   },
