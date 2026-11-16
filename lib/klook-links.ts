@@ -9943,3 +9943,50 @@ export const shirakawagoLightUpTripPrep: KlookTripPrepItem[] = [
     why: "Light-up cancellations for a cold wave, coach delays on snow and your entry details all arrive online, and the village has no station to ask at.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Same-day ski bookings for the winter pages — added 16 Nov 2026 (task
+// jtk-20261116-04, Act). The ski readers were buying the shinkansen (2%) and not
+// the lift, rental or transfer (6.5% / 5%). Rendered by
+// components/WinterSkiSameDayCards.tsx directly under each page's main CTA.
+//
+// Confirmed live as en-US pages through the www.klook.com search index on
+// 16 Nov 2026: 148256 (Echigo Yuzawa ski & snowboard rental, about a minute's walk
+// from the west exit of Echigo-Yuzawa Station, free shuttles to GALA Yuzawa and
+// other resorts), 137087 (Yuzawa Nakazato Snow Resort 1-day lift ticket + rental),
+// 131157 (Niseko Ski Resorts lift ticket & door-to-door gear rental: Hirafu and
+// Hanazono common pass, gear delivered to your Niseko hotel, arranged by calling the
+// shop the day before) and 97862 (Hakuba ski resorts shuttle bus from Narita,
+// Haneda and Tokyo, ski equipment and one piece of luggage per person included).
+// Rental and lift-plus-rental sets are activities (6.5%); the shuttle is transport
+// (5%). 190711 (Naeba from Shinjuku) was left out: its index entry has no en-US
+// URL. No prices.
+// ---------------------------------------------------------------------------
+
+/** A rental shop beside Echigo-Yuzawa Station — the shinkansen reader's gear stop. */
+export const echigoYuzawaStationSkiRental: KlookTour = {
+  title: "Echigo Yuzawa ski & snowboard set rental (by the station)",
+  desc: "Ski and snowboard sets from a shop about a minute's walk from the west exit of Echigo-Yuzawa Station, with free shuttles to GALA Yuzawa and other resorts",
+  url: klookLink("https://www.klook.com/en-US/activity/148256-echigo-yuzawa-ski-gear-rental-inamoto-ski/"),
+};
+
+/** Lift and rental as one booking at a Yuzawa resort on the Joetsu shinkansen side. */
+export const yuzawaNakazatoLiftRental: KlookTour = {
+  title: "Yuzawa Nakazato Snow Resort 1-day lift ticket + rental",
+  desc: "A one-day lift ticket and a rental set in one booking at Yuzawa Nakazato in Niigata",
+  url: klookLink("https://www.klook.com/en-US/activity/137087-yuzawa-nakazato-snow-resort-1-day-lift-ticket-rental-in-niigata/"),
+};
+
+/** Niseko's lift pass with gear brought to the hotel. */
+export const nisekoLiftTicketGearDelivery: KlookTour = {
+  title: "Niseko lift ticket & door-to-door gear rental",
+  desc: "A Hirafu and Hanazono common lift ticket with a ski or snowboard set, the gear delivered to your Niseko hotel after a call to the shop the day before",
+  url: klookLink("https://www.klook.com/en-US/activity/131157-niseko-united-all-mountain-pass/"),
+};
+
+/** The Hakuba coach from the Tokyo airports — the transfer that takes ski bags. */
+export const hakubaAirportShuttleBus: KlookTour = {
+  title: "Hakuba shuttle bus (Narita, Haneda & Tokyo)",
+  desc: "A coach between Narita, Haneda or Tokyo and the main Hakuba resorts, with ski equipment and one piece of luggage per person included",
+  url: klookLink("https://www.klook.com/en-US/activity/97862-hakuba-ski-resorts-shuttle-bus/"),
+};

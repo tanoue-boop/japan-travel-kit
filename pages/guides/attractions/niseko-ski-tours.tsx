@@ -4,6 +4,7 @@ import { hreflangLinks } from "../../../components/Hreflang";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../components/WinterBookingTop";
+import WinterSkiSameDayCards from "../../../components/WinterSkiSameDayCards";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -576,6 +577,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
         </div>
+
+        {/* Same-day bookings under the main CTA (Nov 16 Act): airport coach, lift + rental, rental. */}
+        <WinterSkiSameDayCards page="niseko" />
 
         {/* Same-trip block, moved up from above the FAQ on 6 Nov 2026. */}
         <KlookTripPrep

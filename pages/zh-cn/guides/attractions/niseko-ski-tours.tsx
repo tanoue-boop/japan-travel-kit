@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../../components/WinterBookingTop";
+import WinterSkiSameDayCards from "../../../../components/WinterSkiSameDayCards";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -401,6 +402,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
         </div>
+
+        {/* Same-day ski bookings under the main CTA (Nov 16 Act). */}
+        <WinterSkiSameDayCards page="niseko" />
 
                 <KlookTripPrep
           label={"同一趟旅行要订的"}

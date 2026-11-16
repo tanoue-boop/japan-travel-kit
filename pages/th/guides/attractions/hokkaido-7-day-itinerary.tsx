@@ -5,6 +5,7 @@ import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../../components/WinterBookingTop";
+import WinterSkiSameDayCards from "../../../../components/WinterSkiSameDayCards";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -844,6 +845,9 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 วันเทศกาลหิมะจากประกาศของคณะกรรมการ ตรวจสอบเมื่อ {FESTIVAL_CHECKED} สำหรับ<Link href="/th/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--text)", fontWeight: 600 }}>คู่มือเทศกาลหิมะซัปโปโร</Link> วัน Snow Light Path จากหน้า 2027 ของสมาคมการท่องเที่ยวโอตารุ ตรวจสอบเมื่อ {OWN} ซึ่งระบุวันและแจ้งว่าจะประกาศรายละเอียดเมื่อยืนยัน ค่าปกติอุณหภูมิและหิมะจากกรมอุตุนิยมวิทยาญี่ปุ่น ตรวจสอบเมื่อ {JMA_CHECKED} สองเดือนที่ควรคิดให้ดีคือพฤศจิกายน เมื่อสถานที่ปิดเปลี่ยนฤดู สวนสัตว์อาซาฮิยามะเองปิด 4–10 พฤศจิกายน และเมษายน
 </p>
         </section>
+
+        {/* Same-day bookings for the winter version (Nov 16 Act). */}
+        <WinterSkiSameDayCards page="hokkaido7" />
 
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>

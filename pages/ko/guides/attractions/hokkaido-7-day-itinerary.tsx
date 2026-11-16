@@ -5,6 +5,7 @@ import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../../components/WinterBookingTop";
+import WinterSkiSameDayCards from "../../../../components/WinterSkiSameDayCards";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -844,6 +845,9 @@ JR 홋카이도 패스 보기 →
 눈축제 날짜는 실행위원회 공지 기준으로 <Link href="/ko/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--text)", fontWeight: 600 }}>삿포로 눈축제 가이드</Link>를 위해 {FESTIVAL_CHECKED}에 확인했습니다. 오타루 눈빛 거리 축제는 오타루 관광협회 2027년 페이지 기준({OWN} 확인)으로, 날짜를 밝히고 세부 사항은 확정되는 대로 안내한다고 합니다. 기온과 강설 평년값은 일본 기상청({JMA_CHECKED} 확인) 기준입니다. 다시 고려해야 할 달은 계절 전환으로 일부 시설이 문을 닫는 11월(아사히야마 동물원도 11월 4~10일 휴원)과 4월입니다.
 </p>
         </section>
+
+        {/* Same-day bookings for the winter version (Nov 16 Act). */}
+        <WinterSkiSameDayCards page="hokkaido7" />
 
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>

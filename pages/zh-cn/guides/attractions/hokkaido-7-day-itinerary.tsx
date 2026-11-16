@@ -5,6 +5,7 @@ import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../../components/WinterBookingTop";
+import WinterSkiSameDayCards from "../../../../components/WinterSkiSameDayCards";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -844,6 +845,9 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 雪祭日期出自执行委员会公告，于 {FESTIVAL_CHECKED} 为<Link href="/zh-cn/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--text)", fontWeight: 600 }}>札幌雪祭攻略</Link>核查；小樽雪灯之路日期出自小樽观光协会 2027 年页面（核查日期：{OWN}），页面写明日期，并表示详情确定后公布。气温和降雪平年值出自日本气象厅（核查日期：{JMA_CHECKED}）。要三思的两个月是景点换季闭馆的 11 月（旭山动物园 11 月 4 到 10 日也休园）和 4 月。
 </p>
         </section>
+
+        {/* Same-day bookings for the winter version (Nov 16 Act). */}
+        <WinterSkiSameDayCards page="hokkaido7" />
 
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>

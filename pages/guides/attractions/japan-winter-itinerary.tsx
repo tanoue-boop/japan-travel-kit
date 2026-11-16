@@ -6,6 +6,7 @@ import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../components/WinterBookingTop";
+import WinterSkiSameDayCards from "../../../components/WinterSkiSameDayCards";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import {
@@ -1231,6 +1232,9 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
         </div>
+
+        {/* Same-day ski bookings under the main CTA (Nov 16 Act): lift, rental, airport coach, eSIM. */}
+        <WinterSkiSameDayCards page="winter" />
 
         {/* Klook: what a winter trip buys before it flies. Moved up from below Packing (task A21). */}
         <KlookTripPrep

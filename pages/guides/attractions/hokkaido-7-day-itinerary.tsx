@@ -6,6 +6,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../components/WinterBookingTop";
+import WinterSkiSameDayCards from "../../../components/WinterSkiSameDayCards";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -1120,6 +1121,9 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
             shuts 4 to 10 November — and April.
           </p>
         </section>
+
+        {/* Same-day bookings for the winter version (Nov 16 Act): Asahiyama winter tour, airport transfer, eSIM. */}
+        <WinterSkiSameDayCards page="hokkaido7" />
 
         {/* The pass arithmetic */}
         <section className={styles.comparisonSection}>

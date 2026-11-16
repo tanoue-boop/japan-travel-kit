@@ -5,6 +5,7 @@ import KlookStayAreas from "../../../../components/KlookStayAreas";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import WinterBookingTop from "../../../../components/WinterBookingTop";
+import WinterSkiSameDayCards from "../../../../components/WinterSkiSameDayCards";
 import styles from "../../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../../components/KlookLink";
 import {
@@ -1036,6 +1037,9 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
         </div>
+
+        {/* Same-day ski bookings under the main CTA (Nov 16 Act). */}
+        <WinterSkiSameDayCards page="winter" />
 
                 <KlookTripPrep
           label={"同一趟旅程要訂的"}
