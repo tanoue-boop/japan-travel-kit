@@ -529,7 +529,9 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>What to book for Day 1.</strong> The subway ticket, if your three days look like
-            these; the Shibuya Sky slot, if you want sunset. Shibuya Sky is also the one stop here where
+            these — the 72-hour{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> covers all three
+            days on Metro and Toei, and its break-even is worked out ride by ride; the Shibuya Sky slot, if you want sunset. Shibuya Sky is also the one stop here where
             the booking route matters as much as the ticket — the official site has rejected many
             foreign-issued cards since July 2024, which is covered in full in our{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets guide</Link>. The

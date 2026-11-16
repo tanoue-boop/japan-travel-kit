@@ -539,7 +539,9 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             {yen(AVG_SHOPPING)} a night.
           </p>
           <p className={styles.bodyText}>
-            Most of that can go on a card, and the subway pass and timed tickets can be paid before you fly. The
+            Most of that can go on a card, and the subway pass and timed tickets can be paid before you fly (how
+            many rides make the <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link>{" "}
+            cheaper than single fares is worked out against the official fares). The
             part that has to be cash (some temples, market stalls, coin lockers) is smaller; our{" "}
             <Link href="/guides/money/how-much-yen-to-bring-japan">how much yen to bring guide</Link> sizes it, and
             our <Link href="/guides/money/currency-exchange-japan">currency exchange guide</Link> compares the

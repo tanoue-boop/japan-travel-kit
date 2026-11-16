@@ -2475,6 +2475,28 @@ export const tokyoAirportTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * tokyo-subway-ticket (16 Nov 2026): the bookings that go with the pass on the
+ * same order — a guided Tokyo day, the airport leg the pass does not cover, and
+ * data for the QR version. Existing constants only; no new Klook URL.
+ */
+export const tokyoSubwayTicketSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the Tokyo day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "A guided loop of the Imperial Palace gardens, Asakusa and Skytree for the day you would rather not plan subway changes; it sells by date, so check your date before the pass clock starts.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "The pass does not cover the airport train. The Skyliner runs from Narita to Ueno, where the Ginza and Hibiya lines start your first pass ride.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The QR version of the Tokyo Subway Ticket lives on your phone, so data has to work from the arrivals hall, not from the hotel Wi-Fi.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Ten days in Japan, added 26 Oct 2026 for japan-10-day-itinerary.
 //

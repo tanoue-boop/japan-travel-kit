@@ -673,7 +673,7 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             both {OWN}. &ldquo;Rides to pass&rdquo; is the number of rides at that fare that cost more than the
             48-hour ticket. Toei Subway sets its own fares; the official sources checked do not give a current
             Toei table, so none is printed. Our{" "}
-            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket guide</Link> covers
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> guide covers
             collection and the 24- and 72-hour versions.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

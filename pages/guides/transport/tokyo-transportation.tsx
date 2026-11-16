@@ -321,7 +321,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             for 24 hours from first use. Single Metro rides cost ¥178–¥324 on an IC card depending on distance, so it makes sense if
             you plan four or more Metro rides in that window — for example, a day visiting Asakusa, Ginza, Roppongi,
             and Omotesando. If your day also uses the Toei lines, the{" "}
-            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket (24, 48 or 72 hours)</Link> covers
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> (24, 48 or 72 hours) covers
             both networks. Prices and fares from tokyometro.jp, checked {METRO_CHECKED}.
           </p>
         </section>
@@ -441,7 +441,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             Subway rides for 24, 48 or 72 hours from first use at ¥1,000 / ¥1,500 / ¥2,000, but{" "}
             <strong>not JR lines</strong>, including the Yamanote Line. The ride-by-ride break-even, where to buy
             it and how the QR version works are in our{" "}
-            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket price and break-even guide</Link>.
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> price and break-even guide.
           </p>
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
