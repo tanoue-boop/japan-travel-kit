@@ -119,7 +119,7 @@ const rows: Row[] = [
     city: "Tokyo (Nerima)",
     opens: "Online in advance; the operator recommends pre-booking because dates and times sell out",
     onTheDay: "Yes — at the on-site ticket office, if your date and time are not sold out",
-    guide: <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" style={L}>Warner Bros. Studio Tour tickets</Link>,
+    guide: <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" style={L}>Harry Potter Studio Tour Tokyo</Link>,
     source: { href: "https://www.wbstudiotour.jp/en/tickets/", label: "wbstudiotour.jp" },
   },
 ];

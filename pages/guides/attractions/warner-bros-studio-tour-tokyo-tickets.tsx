@@ -23,24 +23,66 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 //   pushchairs, photography. Read 8 Nov 2026.
 // - /en/authorised-distributors/ — Klook and GetYourGuide both listed. Read 8 Nov 2026.
 // - /en/plan-your-visit/location/ — address and journey times. Read 8 Nov 2026.
+// Re-read 16 Nov 2026 (task jtk-20261116-R03):
+// - /en/news_20251120/ — "Important Notice: Ticket Pricing Update": date-based prices for
+//   admissions from 1 July 2026 (standard ¥6,600–¥7,300 / ¥5,500–¥6,000 / ¥4,000–¥4,400,
+//   package, afternoon tea, group); current prices through 30 June 2026.
+// - /en/notice_20250116/ (?p=14673) — the earlier revision, admissions from 1 April 2025:
+//   standard ¥7,000 / ¥5,800 / ¥4,200 (price table image EN_new-price-list.png).
+// - /en/tickets/ — Dinner at Hogwarts events, tea package availability windows.
+// - /en/dinner-at-hogwarts-magical-winter/ and /en/dinner-at-hogwarts-magical-feast-share/.
+// - /en/plan-your-visit/opening-times/ — tickets on sale until 31 March 2027.
+// - /en/plan-your-visit/location/ — Oedo Line 20 min, Seibu 17 min, limousine bus stop.
 // The standard-entry adult and child figures and the check date are owned by
 // lib/attraction-prices.ts, shared with the ticket price table.
 const P = PRICES.wbStudioTour;
 const CHECKED = checkedLabel(P.checked);
 
+const OFFICIAL = {
+  tickets: "https://www.wbstudiotour.jp/en/tickets/",
+  priceUpdate: "https://www.wbstudiotour.jp/en/news_20251120/",
+  revision2025: "https://www.wbstudiotour.jp/en/notice_20250116/",
+  priceList: "https://www.wbstudiotour.jp/en/ticket-information/price/",
+  openingTimes: "https://www.wbstudiotour.jp/en/plan-your-visit/opening-times/",
+  location: "https://www.wbstudiotour.jp/en/plan-your-visit/location/",
+  dinnerWinter: "https://www.wbstudiotour.jp/en/dinner-at-hogwarts-magical-winter/",
+  dinnerShare: "https://www.wbstudiotour.jp/en/dinner-at-hogwarts-magical-feast-share/",
+};
+
+/** Ticket × price × the date the price applies from, as the official site states it. */
 const priceRows = [
-  { ticket: "Standard entry", adult: P.adult, junior: "¥5,500~", child: P.child },
-  { ticket: "With Afternoon Tea", adult: "¥14,000~", junior: "¥12,900~", child: "¥11,400~" },
-  { ticket: "With Evening High Tea", adult: "¥16,500~", junior: "¥15,300~", child: "¥13,700~" },
-  { ticket: "Group (20+ people)", adult: "¥6,000", junior: "¥5,000", child: "¥3,600" },
-  { ticket: "Nerima residents", adult: "¥5,000", junior: "¥4,150", child: "¥3,000" },
+  { ticket: "Standard entry", adult: "¥6,600–¥7,300", junior: "¥5,500–¥6,000", child: "¥4,000–¥4,400", from: "Admissions from 1 Jul 2026 (price varies by date)" },
+  { ticket: "Package Tickets", adult: "¥10,080–¥10,780", junior: "¥8,980–¥9,480", child: "¥7,480–¥7,880", from: "Admissions from 1 Jul 2026" },
+  { ticket: "Afternoon Tea Package", adult: "¥14,000–¥14,700", junior: "¥12,900–¥13,400", child: "¥11,400–¥11,800", from: "Admissions from 1 Jul 2026; on sale for visits up to 11 Jan 2027" },
+  { ticket: "Evening High Tea Package", adult: "¥16,500–¥16,800", junior: "¥15,300–¥15,500", child: "¥13,700–¥13,900", from: "Price list; on sale for visits up to 10 Jan 2027" },
+  { ticket: "Group (20+ people)", adult: "¥6,000", junior: "¥5,000", child: "¥3,600", from: "Unchanged in the July 2026 update" },
+  { ticket: "Nerima residents (tours after 13:00)", adult: "¥5,000", junior: "¥4,150", child: "¥3,000", from: "Price list" },
+  { ticket: "Standard entry, previous price", adult: "¥7,000", junior: "¥5,800", child: "¥4,200", from: "1 Apr 2025 – 30 Jun 2026 (flat)" },
+];
+
+const accessRows = [
+  { from: "Shinjuku Station", route: "Toei Oedo Line, direct to Toshimaen", time: "20 min", pass: "Yes — Toei subway line" },
+  { from: "Ikebukuro (Seibu-Ikebukuro Station)", route: "Seibu Ikebukuro Line, direct to Toshimaen", time: "17 min", pass: "No — Seibu private railway" },
+  { from: "Tokyo Station", route: "No direct line: ride to Shinjuku or Ikebukuro, then take one of the two routes above", time: "Not given officially", pass: "Only on the Oedo Line leg" },
+  { from: "Haneda Airport", route: "Airport Limousine Bus (Haneda ⇔ Hikarigaoka/Nerima route) to the \"WARNER BROS. STUDIO TOUR TOKYO\" stop, from 1 Mar 2026", time: "Not given on the location page", pass: "No" },
+  { from: "Toshimaen Station", route: "Walk to the entrance", time: "2 min", pass: "—" },
+];
+
+/** What the official site says about availability — nothing beyond it. */
+const sellOutRows = [
+  { item: "Dates on sale now", value: "Visits up to 31 March 2027; later dates are announced on the official X, Instagram, Facebook and TikTok", source: "Opening times page" },
+  { item: "Weekends, holidays, year-end", value: "No day-by-day sell-out guide is published; the site says only that your preferred date and time may sell out, and prices vary by date", source: "Tickets page" },
+  { item: "Magical Winter season", value: "13 November 2026 – 11 January 2027", source: "Dinner at Hogwarts pages" },
+  { item: "Dinner at Hogwarts ~Magical Winter~ (2, 3, 10, 11 Dec 2026)", value: "Newsletter pre-sale sold out; no tickets currently available — more may be released", source: "Magical Winter dinner page" },
+  { item: "Dinner at Hogwarts ~A Magical Feast to Share~ (5, 12 Dec 2026)", value: "No tickets currently available — more may be released", source: "Tickets page" },
+  { item: "On-site ticket office", value: "Sells only slots that have not sold out", source: "Tickets page" },
 ];
 
 /** The rules a booker needs, each read off the official site on the check date. */
 const ruleRows = [
-  { item: "Adult (18 and over)", value: `${P.adult} — varies by date`, source: "Tickets page" },
-  { item: "Junior (12–17)", value: "¥5,500~ — varies by date", source: "Tickets page, price list" },
-  { item: "Child (4–11)", value: `${P.child} — varies by date`, source: "Tickets page, price list" },
+  { item: "Adult (18 and over)", value: "¥6,600–¥7,300 — varies by date", source: "July 2026 price update" },
+  { item: "Junior (12–17)", value: "¥5,500–¥6,000 — varies by date", source: "July 2026 price update" },
+  { item: "Child (4–11)", value: "¥4,000–¥4,400 — varies by date", source: "July 2026 price update" },
   { item: "3 and under", value: "Free — select the free infant ticket", source: "Price list" },
   { item: "Refunds", value: "Non-refundable and non-transferable", source: "Tickets FAQ" },
   { item: "Changing date or time", value: "¥1,500 each time; contact Visitor Services before the original slot", source: "Tickets page" },
@@ -85,12 +127,6 @@ const whoFor = [
   },
 ];
 
-const accessRows = [
-  { from: "Toshimaen Station", route: "2-minute walk to the entrance", time: "2 min" },
-  { from: "Seibu-Ikebukuro Station", route: "Seibu Ikebukuro Line to Toshimaen", time: "17 min" },
-  { from: "Shinjuku Station", route: "Toei Oedo Line to Toshimaen", time: "20 min" },
-];
-
 /** Official site or an authorised reseller — only what each side states. */
 const sellerRows = [
   {
@@ -122,7 +158,7 @@ const steps = [
   },
   {
     title: "Check the price for your actual date",
-    desc: `The official site lists standard entry from ¥6,600 (adult, 18+), ¥5,500 (junior, 12–17) and ¥4,000 (child, 4–11) and states that "ticket prices vary throughout the year". Ages 3 and under go free on an infant ticket. Treat the figures as floors, not fixed prices. Checked ${CHECKED}.`,
+    desc: `For admissions from 1 July 2026 the official site prices standard entry by date: ¥6,600–¥7,300 (adult, 18+), ¥5,500–¥6,000 (junior, 12–17) and ¥4,000–¥4,400 (child, 4–11). Ages 3 and under go free on an infant ticket. The figure for your date is the one shown at checkout. Checked ${CHECKED}.`,
   },
   {
     title: "Decide on a tea package before you check out",
@@ -140,48 +176,24 @@ const steps = [
 
 const faqItems = [
   {
-    q: "How much are Warner Bros. Studio Tour Tokyo tickets?",
-    a: `Standard entry on the official site is listed from ¥6,600 for an adult (18+), ¥5,500 for a junior (12–17) and ¥4,000 for a child (4–11), with the site noting that "ticket prices vary throughout the year" — so these are starting prices rather than fixed ones. Ages 3 and under are free. Group tickets for parties of 20 or more are ¥6,000 / ¥5,000 / ¥3,600, and Nerima residents pay ¥5,000 / ¥4,150 / ¥3,000. Figures checked on ${CHECKED}.`,
+    q: "How much are Harry Potter Studio Tour Tokyo tickets in 2026?",
+    a: `For admissions from 1 July 2026, standard entry costs ¥6,600–¥7,300 for an adult (18+), ¥5,500–¥6,000 for a junior (12–17) and ¥4,000–¥4,400 for a child (4–11), depending on the date; ages 3 and under are free on an infant ticket. From 1 April 2025 to 30 June 2026 the same ticket was a flat ¥7,000 / ¥5,800 / ¥4,200. The Afternoon Tea Package is ¥14,000–¥14,700 for an adult. Figures from the official Warner Bros. Studio Tour Tokyo site, checked ${CHECKED}.`,
   },
   {
-    q: "Can I buy tickets on the day at the studio tour?",
-    a: `The official site says tickets are available at the on-site ticket office, but adds that pre-booking is recommended because your preferred admission date and time may be sold out. That makes walk-up a fallback rather than a plan — the tour runs on timed admission, and turning up without a slot on a busy date risks no entry at all. Checked ${CHECKED}.`,
+    q: "Can you buy Warner Bros Studio Tour Tokyo tickets at the door?",
+    a: `Yes, but only for slots that have not sold out. The official site says tickets are also sold at the on-site ticket office, and recommends pre-booking because your preferred admission date and time may be sold out. Every ticket is for a set date and entry time, tickets are non-refundable, and a date or time change costs ¥1,500. Checked ${CHECKED}.`,
   },
   {
-    q: "How long does the Warner Bros. Studio Tour Tokyo take?",
-    a: `The official FAQ recommends allowing three to four hours, and says there is no set limit on how long you stay once inside. It is self-paced rather than guided, so a morning slot fills the morning and an afternoon slot will run into the evening. Plan one other thing that day, not three. Checked ${CHECKED}.`,
+    q: "How do I get from Shinjuku to the Harry Potter studio?",
+    a: `Take the Toei Oedo Line from Shinjuku direct to Toshimaen — 20 minutes, according to the official location page — then walk two minutes to the entrance. The Oedo Line is a Toei subway line, so the Tokyo Subway Ticket covers it. From Ikebukuro, the Seibu Ikebukuro Line runs direct to Toshimaen in 17 minutes, but it is a private railway and is not covered. Checked ${CHECKED}.`,
   },
   {
-    q: "Is the Afternoon Tea package worth it?",
-    a: "It is a meal upgrade, not extra access to the tour. Afternoon Tea takes an adult ticket from ¥6,600~ to ¥14,000~, and Evening High Tea to ¥16,500~ — so the sitting itself is costing roughly ¥7,400 to ¥9,900 per adult. Nothing in the studio tour is reserved for those tiers. If the meal is the point of the day, it is a fair price for a themed sitting; if the sets are the point, put the money elsewhere.",
+    q: "How long do you need at the Harry Potter Studio Tour Tokyo?",
+    a: `The official FAQ recommends allowing three to four hours, with no time limit once you are inside. You must enter within 30 minutes of the time on your ticket; arrive later and staff offer the next available slot, subject to availability. Add the 20-minute Oedo Line ride each way from Shinjuku, and the visit takes half a day. Checked ${CHECKED}.`,
   },
   {
-    q: "Where is Warner Bros. Studio Tour Tokyo and how do I get there?",
-    a: "It is at 1-1-7 Kasugacho, Nerima-ku, Tokyo 179-0074, on the former Toshimaen amusement park site in north-west Tokyo. Toshimaen Station is a two-minute walk. The official site gives 17 minutes from Seibu-Ikebukuro Station on the Seibu Ikebukuro Line, and 20 minutes from Shinjuku Station on the Toei Oedo Line. The Oedo Line route is covered by the Tokyo Subway Ticket.",
-  },
-  {
-    q: "Is this the same as the Harry Potter studio tour in London?",
-    a: "It is the same concept from the same operator, and Tokyo was the first Warner Bros. Studio Tour in Asia. The core sets — the Great Hall, Diagon Alley, Platform 9¾ — appear in both. Tokyo adds its own, including a Ministry of Magic atrium with the Floo Network fireplaces and a green-screen Quidditch sequence. If you have done London, Tokyo is not a repeat, but the overlap is real.",
-  },
-  {
-    q: "What ages do the junior and child tickets cover?",
-    a: `The official price list sets the bands: adult is 18 and over, junior is 12 to 17, and child is 4 to 11. Children aged 3 and under go free, but the official site asks you to select the free infant ticket when booking, so they still need one. Confirm the band again when you select tickets — the official price list is the source. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Should I visit the studio tour or a Tokyo theme park?",
-    a: "They are different days out. The studio tour is an indoor, self-paced walk through film sets, with no rides and no queues for attractions once you are inside — three to four hours, in Nerima. Tokyo Disney and Universal Studios Japan are full-day parks with ride queues, timed entry systems and considerably more planning. The studio tour is the easier day to slot into an itinerary that already has other things in it.",
-  },
-  {
-    q: "Can I use a ticket bought on an auction or resale site?",
-    a: `No. The official site states that tickets bought from unauthorised third parties, including online auction sites, are not valid for entry, and that tickets are non-transferable. Buy from wbstudiotour.jp or from a seller on the official authorised-distributor list, which includes Klook and GetYourGuide. Checked ${CHECKED}.`,
-  },
-  {
-    q: "What happens if I arrive late for my time slot?",
-    a: `The official FAQ asks you to enter within 30 minutes of your booked time. If you are later than that, staff will offer the next available entry time, subject to availability on the day — and arriving after the final tour start time can mean missing parts of the tour or being refused entry. Allow for the train to Toshimaen when you pick a slot. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Can I take photos inside the studio tour?",
-    a: `Yes, in most areas. The official FAQ allows photos and video on handheld cameras and phones, except in the pre-show cinema and the green-screen areas. Coin lockers are available inside and outside the building, and large suitcases are meant to go in the outdoor ones. Checked ${CHECKED}.`,
+    q: "What is Dinner at Hogwarts?",
+    a: `Dinner at Hogwarts is a limited-date dinner event in the Great Hall at the Tokyo studio tour, with studio tour admission included. In 2026 there are two: ~Magical Winter~ on 2, 3, 10 and 11 December (¥58,000, ages 18 and over, multi-course dinner with free-flow drinks and an after-hours studio tour, 4:45–10:00 PM), and ~A Magical Feast to Share~ on 5 and 12 December (¥29,000 for adults 20+, ¥15,000 from elementary school age to 19, sharing-style dinner, bookings of three to four guests, 5:30–8:00 PM). On ${CHECKED} the official site showed no tickets currently available for either, with more possibly released.`,
   },
 ];
 
@@ -189,9 +201,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/warner-bros-studio-tour-tokyo-tickets") },
 });
 
-const TITLE = "Harry Potter Studio Tour Tokyo Tickets 2026: Price & Booking";
+const TITLE = "Harry Potter Tokyo Tickets 2026: Studio Tour Price & Booking";
 const DESC =
-  "Warner Bros. Studio Tour Tokyo tickets: adult ¥6,600~, child ¥4,000~, timed entry, non-refundable, ¥1,500 to change date, and the walk from Toshimaen.";
+  "Harry Potter Tokyo tickets: Warner Bros Studio Tour Tokyo price ¥6,600–¥7,300 adult, ¥4,000–¥4,400 child from Jul 2026, timed entry, 20 min from Shinjuku.";
 
 export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { updated: PageUpdated }) {
   const muted = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" } as const;
@@ -247,7 +259,7 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
                 {
                   "@type": "ListItem",
                   position: 4,
-                  name: "Warner Bros. Studio Tour Tokyo Tickets",
+                  name: "Harry Potter Tokyo Tickets (Warner Bros. Studio Tour Tokyo)",
                   item: "https://www.japan-travel-kit.com/guides/attractions/warner-bros-studio-tour-tokyo-tickets",
                 },
               ],
@@ -282,14 +294,11 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Harry Potter Studio Tour Tokyo Tickets (2026):<br />Warner Bros. Studio Tour Price &amp; How to Book
+            Harry Potter Tokyo Tickets 2026:<br />Warner Bros. Studio Tour Tokyo Price &amp; How to Book
           </h1>
           <p className={styles.heroSubtitle}>
-            Warner Bros. Studio Tour Tokyo — The Making of Harry Potter, in Nerima on the old Toshimaen site, is
-            sold as date- and time-specified tickets: adult (18+) {P.adult}, junior (12–17) ¥5,500~ and child
-            (4–11) {P.child}, varying by date, with ages 3 and under free. Tickets are non-refundable, and a date
-            or time change costs ¥1,500. Toshimaen Station is a 2-minute walk, and the official advice is to
-            allow three to four hours. Official figures checked {CHECKED}.
+            Official prices after the July 2026 price update, the date-and-time booking rules, the train from
+            Shinjuku or Ikebukuro to Toshimaen, and what is already sold out this winter.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices & rules", "Access from Shinjuku"].map((t) => (
@@ -311,6 +320,19 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
           </p>
         </div>
 
+        {/* Answer first */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Harry Potter Tokyo tickets — officially Warner Bros. Studio Tour Tokyo – The Making of Harry
+            Potter — cost ¥6,600–¥7,300 for an adult (18+), ¥5,500–¥6,000 for a junior (12–17) and
+            ¥4,000–¥4,400 for a child (4–11), under the date-based prices the official site applies to
+            admissions from 1 July 2026; ages 3 and under go free. Every ticket is for a set date and entry
+            time, and the on-site ticket office sells only slots that have not sold out, so book before you go.
+            The official FAQ says to allow three to four hours, and Toshimaen Station, a 2-minute walk away, is
+            20 minutes from Shinjuku on the Toei Oedo Line. Checked {CHECKED}.
+          </p>
+        </section>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -320,11 +342,11 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Adult entry</p>
-                <p className={styles.verdictStatValue}>¥6,600~</p>
+                <p className={styles.verdictStatValue}>¥6,600–¥7,300</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Child entry (4–11)</p>
-                <p className={styles.verdictStatValue}>¥4,000~</p>
+                <p className={styles.verdictStatValue}>¥4,000–¥4,400</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Allow</p>
@@ -346,16 +368,82 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
           </div>
         </div>
 
+        {/* Same-day block sits high: the ticket itself is in Klook's 2% band, so the
+            6.5% hotel and tour rows, the 5% subway pass and the 20% eSIM carry the page. */}
+        <KlookTripPrep
+          label="Same day, same booking"
+          heading="What should you book for the rest of the studio tour day?"
+          intro="Three to four hours in Nerima leaves the rest of the day open, and the Shinjuku route there is a single subway ride. These book on the same Klook account as the ticket."
+          items={warnerBrosStudioTourSameDayPrep}
+        />
+
         <EsimCtaTop />
+
+        {/* Price table with revision dates */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Pricing</span>
+          <h2 className={styles.sectionTitle}>How much are Harry Potter Studio Tour Tokyo tickets in 2026?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Standard entry is ¥6,600–¥7,300 for an adult, depending on the date, for admissions from 1 July
+            2026. Before that, from 1 April 2025 to 30 June 2026, it was a flat ¥7,000.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Ticket", "Adult (18+)", "Junior (12–17)", "Child (4–11)", "Applies to"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Best way to buy</td>
+                    <td colSpan={4} style={{ fontSize: "0.88rem" }}>
+                      <strong>The official site&apos;s date-and-time ticket, or the Klook ticket plus the Tokyo
+                      Subway Ticket for the Oedo Line ride</strong> — both are authorised, both are for a fixed slot.
+                    </td>
+                  </tr>
+                  {priceRows.map((row) => (
+                    <tr key={row.ticket}>
+                      <td className={styles.tdProvider}>{row.ticket}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.adult}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.junior}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.child}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.from}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={muted}>
+            Last checked: {P.checked}. Sources:{" "}
+            <a href={OFFICIAL.priceUpdate} target="_blank" rel="noopener">Ticket Pricing Update notice</a> (July
+            2026 prices),{" "}
+            <a href={OFFICIAL.revision2025} target="_blank" rel="noopener">Notice of Ticket Price Revision</a> (April
+            2025 prices),{" "}
+            <a href={OFFICIAL.tickets} target="_blank" rel="noopener">tickets page</a> and{" "}
+            <a href={OFFICIAL.priceList} target="_blank" rel="noopener">price list</a>, all on wbstudiotour.jp.
+            The price list page shows a lower floor for standard entry (¥6,300 adult, ¥5,200 junior, ¥3,800
+            child) than the July 2026 notice and the tickets page; the price shown for your date at checkout is
+            the one that applies. Ages 3 and under need the free infant ticket.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
+            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check Harry Potter Tokyo tickets on Klook →
+            </KlookLink>
+          </div>
+        </section>
 
         {/* Rules table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The rules</span>
-          <h2 className={styles.sectionTitle}>What do Harry Potter Studio Tour Tokyo tickets cost, and what are the rules?</h2>
+          <h2 className={styles.sectionTitle}>What are the rules for Harry Potter Studio Tour Tokyo tickets?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Every line below is from the official Warner Bros. Studio Tour Tokyo site, read on {CHECKED}. The
-            three prices are starting points: the site says they vary through the year, so the figure for your
-            date is the one shown at booking.
+            Tickets are for a fixed date and entry time, non-refundable, and ¥1,500 to change. Every line below
+            is from the official Warner Bros. Studio Tour Tokyo site, read on {CHECKED}.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -405,31 +493,37 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
           </p>
         </section>
 
-        {/* Price table */}
+        {/* When it sells out */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How much are Warner Bros. Studio Tour Tokyo tickets?</h2>
+          <span className={styles.sectionLabel}>Availability</span>
+          <h2 className={styles.sectionTitle}>When do Harry Potter Studio Tour Tokyo tickets sell out?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Standard entry starts at {P.adult} for an adult, ¥5,500~ for a junior and {P.child} for a child, and
-            ages 3 and under go free on an infant ticket. The tea packages bundle a sitting with the same tour.
+            Book as soon as your date is fixed: tickets are on sale only up to 31 March 2027, the official site
+            warns that preferred dates and times may sell out, and both December Dinner at Hogwarts events
+            show no tickets left. It does not publish which days sell out first.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Ticket", "Adult (18+)", "Junior (12–17)", "Child (4–11)"].map((h) => (
+                    {["What", `Official status (checked ${CHECKED})`, "Where it is stated"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {priceRows.map((row) => (
-                    <tr key={row.ticket}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.ticket}</td>
-                      <td className={styles.tdPrice}>{row.adult}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.junior}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.child}</td>
+                  <tr>
+                    <td className={styles.tdProvider}>Bottom line</td>
+                    <td colSpan={2} style={{ fontSize: "0.88rem" }}>
+                      <strong>Book your slot when the trip dates are set; dates after 31 March 2027 are not on sale yet.</strong>
+                    </td>
+                  </tr>
+                  {sellOutRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.value}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -437,18 +531,39 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             </div>
           </div>
           <p className={styles.bodyText} style={muted}>
-            Read off the official Warner Bros. Studio Tour Tokyo site on {CHECKED}. The tilde (~) is the
-            official site&apos;s own notation, and it states that &ldquo;ticket prices vary throughout the
-            year&rdquo; — so treat these as starting prices. The official price list page gives standard adult
-            entry as a date-by-date range (¥6,300–¥7,300 on {CHECKED}), so confirm the figure for your date at
-            booking. Age bands are from the official price list; children aged 3 and under need the free infant
-            ticket.
+            Last checked: {P.checked}. Sources:{" "}
+            <a href={OFFICIAL.openingTimes} target="_blank" rel="noopener">opening times</a>,{" "}
+            <a href={OFFICIAL.tickets} target="_blank" rel="noopener">tickets</a>,{" "}
+            <a href={OFFICIAL.dinnerWinter} target="_blank" rel="noopener">Dinner at Hogwarts ~Magical Winter~</a>{" "}
+            and{" "}
+            <a href={OFFICIAL.dinnerShare} target="_blank" rel="noopener">Dinner at Hogwarts ~A Magical Feast to Share~</a>{" "}
+            on wbstudiotour.jp.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Travelling with children? The{" "}
             <Link href="/guides/attractions/tokyo-itinerary-with-kids">Tokyo itinerary with kids</Link> sets out
             the other dated family tickets — Disney, LEGOLAND Discovery Center and Sanrio Puroland — so the
             studio tour date can be chosen around them.
+          </p>
+        </section>
+
+        {/* Dinner at Hogwarts */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Special events</span>
+          <h2 className={styles.sectionTitle}>What is Dinner at Hogwarts?</h2>
+          <p className={styles.bodyText}>
+            Dinner at Hogwarts is a limited-date dinner in the Great Hall, sold as its own ticket with studio
+            tour admission included. Two run in December 2026, and on {CHECKED} the official site showed no
+            tickets currently available for either, noting that more may be released.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>~Magical Winter~</strong> (2, 3, 10 and 11 December 2026) is ¥58,000 per person, ages 18 and
+            over only: a multi-course dinner with free-flow beer, wine and soft drinks, a drink in the Gryffindor
+            Common Room and an after-hours studio tour, from 4:45 PM registration to 10:00 PM.{" "}
+            <strong>~A Magical Feast to Share~</strong> (5 and 12 December 2026) is the family version: ¥29,000
+            for adults 20 and over and ¥15,000 from elementary school age to 19, a sharing-style dinner for
+            bookings of three to four guests, 5:30–8:00 PM, with no after-hours tour. Both fall inside the
+            Magical Winter season, 13 November 2026 to 11 January 2027.
           </p>
         </section>
 
@@ -510,13 +625,6 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
           </div>
         </section>
 
-        <KlookTripPrep
-          label="Same day, same booking"
-          heading="What should you book for the rest of the studio tour day?"
-          intro="Three to four hours in Nerima leaves the rest of the day open, and the Shinjuku route there is a subway ride. These book on the same Klook account as the ticket."
-          items={warnerBrosStudioTourSameDayPrep}
-        />
-
         {/* Authorised sellers */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Where to buy</span>
@@ -576,9 +684,9 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
         {/* At the door */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>On the day</span>
-          <h2 className={styles.sectionTitle}>Can you buy tickets at the door?</h2>
+          <h2 className={styles.sectionTitle}>Can you buy Warner Bros Studio Tour Tokyo tickets at the door?</h2>
           <p className={styles.bodyText}>
-            Sometimes. The official site says tickets are also sold at the on-site ticket office, but recommends
+            Only for slots that have not sold out. The official site says tickets are also sold at the on-site ticket office, but recommends
             pre-booking because your preferred date and time may be sold out. Without a booking you get
             whatever slot is left that day, if any. Checked {CHECKED}.
           </p>
@@ -600,34 +708,47 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
         {/* Access */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>How do I get to Warner Bros. Studio Tour Tokyo?</h2>
+          <h2 className={styles.sectionTitle}>How do I get from Shinjuku to the Harry Potter studio?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Take the Toei Oedo Line from Shinjuku (20 minutes) or the Seibu Ikebukuro Line from Ikebukuro (17
-            minutes) to Toshimaen, then walk two minutes. The address is 1-1-7 Kasugacho, Nerima-ku, Tokyo
-            179-0074 — north-west Tokyo, well outside the Yamanote loop.
+            Take the Toei Oedo Line from Shinjuku direct to Toshimaen (20 minutes), then walk two minutes. From
+            Ikebukuro the Seibu Ikebukuro Line takes 17 minutes. The address is 1-1-7 Kasugacho, Nerima-ku,
+            Tokyo 179-0074 — north-west Tokyo, well outside the Yamanote loop.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["From", "Route", `Time (checked ${CHECKED})`].map((h) => (
+                    {["From", "Route", "Journey time (official)", "Tokyo Subway Ticket?"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Best route</td>
+                    <td colSpan={3} style={{ fontSize: "0.88rem" }}>
+                      <strong>Toei Oedo Line from Shinjuku — one train, 20 minutes, covered by the Tokyo Subway Ticket.</strong>
+                    </td>
+                  </tr>
                   {accessRows.map((row) => (
                     <tr key={row.from}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.from}</td>
+                      <td className={styles.tdProvider}>{row.from}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.route}</td>
-                      <td className={styles.tdPrice}>{row.time}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.pass}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={muted}>
+            Last checked: {P.checked}. Journey times, the limousine bus stop and the address from the official{" "}
+            <a href={OFFICIAL.location} target="_blank" rel="noopener">location page</a> on wbstudiotour.jp; the
+            official site gives no time from Tokyo Station or Haneda. Single fares are not listed here — the
+            ticket machine and each operator&apos;s route search show the fare for your card.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             The Shinjuku route runs on the Toei Oedo Line, which is a subway line — so it is covered by the{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> if you are carrying
@@ -636,9 +757,6 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             operator runs what. A hotel on the Oedo Line makes the trip a single ride;{" "}
             <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link> compares the
             main areas, Shinjuku among them.
-          </p>
-          <p className={styles.bodyText} style={muted}>
-            Address and journey times from the official site&apos;s location page, checked {CHECKED}.
           </p>
         </section>
 

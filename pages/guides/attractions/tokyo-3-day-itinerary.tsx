@@ -544,7 +544,11 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             If rain washes out the west side, Sanrio Puroland is an indoor park about 30 minutes from
             Shinjuku on the Keio Line limited express; our{" "}
             <Link href="/guides/attractions/sanrio-puroland-tickets">Sanrio Puroland tickets guide</Link>{" "}
-            has the dated passport prices and the arrival reservation it also needs.
+            has the dated passport prices and the arrival reservation it also needs. The other indoor swap is
+            the{" "}
+            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter Studio Tour Tokyo</Link>{" "}
+            at Toshimaen, 20 minutes from Shinjuku on the Toei Oedo Line, with three to four hours to allow
+            and dated, timed tickets.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

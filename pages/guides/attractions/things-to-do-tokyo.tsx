@@ -694,7 +694,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             explains how to buy and how to choose between the two parks. For Harry Potter fans, the{" "}
             <strong>Warner Bros. Studio Tour Tokyo</strong> is the Harry Potter studio tour in Nerima, with
             timed entry, no re-entry and about four hours to allow — details in our{" "}
-            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" style={linkStyle}>studio tour guide</Link>.
+            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" style={linkStyle}>Harry Potter Studio Tour Tokyo tickets guide</Link>.
           </p>
         </section>
 

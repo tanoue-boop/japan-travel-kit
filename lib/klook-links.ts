@@ -7458,6 +7458,16 @@ export const tokyoToKyotoTripPrep: KlookTripPrepItem[] = [
  * to four hours (wbstudiotour.jp/en/faqs/facilities, read 8 Nov 2026).
  */
 export const warnerBrosStudioTourSameDayPrep: KlookTripPrepItem[] = [
+  // Hotel row added 16 Nov 2026 (task jtk-20261116-R03): the 6.5% hotel band leads,
+  // reusing the existing tokyoStayAreas Shinjuku URL. The official location page
+  // (wbstudiotour.jp/en/plan-your-visit/location, read 16 Nov 2026) gives the Toei
+  // Oedo Line from Shinjuku to Toshimaen as a direct 20-minute ride.
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "The Toei Oedo Line runs direct from Shinjuku to Toshimaen in 20 minutes, so a Shinjuku base makes the studio tour a single ride there and back.",
+  },
   {
     label: shinjukuNightFoodWalkingTour.title,
     ctaLabel: "Check the Shinjuku night tour →",
