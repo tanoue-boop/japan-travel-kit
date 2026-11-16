@@ -371,6 +371,11 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           more rides in a day, buy the <strong>¥1,100 Subway &amp; Bus 1-Day Pass</strong>; below that, pay per ride with
           ICOCA or Suica. Fares confirmed with Kyoto City&apos;s Transportation Bureau on {CHECKED}.
         </p>
+        <p className={styles.bodyText}>
+          Getting to Kyoto in the first place — the shinkansen from Tokyo, the Haruka from Kansai Airport, and whether a
+          JR pass pays — is priced in the{" "}
+          <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>.
+        </p>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

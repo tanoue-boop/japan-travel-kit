@@ -475,6 +475,10 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             fares in that week pass ¥53,000, as Tokyo ⇄ Hiroshima plus Tokyo ⇄ Kanazawa (about ¥67,920) does.
             Prices from japanrailpass.net and fares from the JR Group, checked {TODAY}.
           </p>
+          <p className={styles.bodyText}>
+            For the regional passes and what a subway, bus or airport ride costs alongside the JR Pass, see the{" "}
+            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>.
+          </p>
         </section>
 
         {/* Disclosure */}

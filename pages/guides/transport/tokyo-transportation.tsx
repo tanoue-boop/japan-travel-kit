@@ -276,7 +276,10 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.5rem" }}>
             The good news: you don&apos;t need to memorise all of this. An IC card works across all operators,
-            and Google Maps handles routing automatically. Just tap in, follow the map, and tap out.
+            and Google Maps handles routing automatically. Just tap in, follow the map, and tap out. For the trips
+            beyond Tokyo — the shinkansen, the airport trains and which rail pass to buy — the{" "}
+            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>{" "}
+            puts the fares side by side.
           </p>
         </section>
 

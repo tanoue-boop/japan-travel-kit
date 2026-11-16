@@ -307,6 +307,11 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             it&apos;s a genuinely different experience.
           </p>
           <p className={styles.bodyText}>
+            How a shinkansen fare compares with the subway, the airport trains and the highway bus is in the{" "}
+            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>,
+            with a table of which rail pass suits which route.
+          </p>
+          <p className={styles.bodyText}>
             For most tourist itineraries — Tokyo to Kyoto, Kyoto to Hiroshima, Osaka to Fukuoka —
             the Shinkansen is faster door-to-door than flying, once you factor in airport travel and check-in.
             It also drops you directly into city centres rather than 40 minutes outside them. For the

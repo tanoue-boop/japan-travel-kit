@@ -242,6 +242,11 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             our <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link>, checked on 4
             November 2026).
           </p>
+          <p className={styles.bodyText}>
+            Arriving from Tokyo or flying in? The{" "}
+            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>{" "}
+            sets the shinkansen, the Kansai Airport trains and the regional JR passes against each other.
+          </p>
         </section>
 
         {/* Quick Answer Box */}

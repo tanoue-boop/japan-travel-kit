@@ -954,10 +954,11 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
               getting around Tokyo guide
             </Link>{" "}
             shows which lines are Metro, Toei or JR, and{" "}
+            the{" "}
             <Link href="/guides/transport" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              all our Japan transport guides
+              Japan transportation guide
             </Link>{" "}
-            cover the rail passes and airport trains.
+            prices the rail passes and airport trains that an IC card does not replace.
           </p>
           <KlookPicks items={passPaths} />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>

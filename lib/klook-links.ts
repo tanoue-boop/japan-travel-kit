@@ -2519,6 +2519,30 @@ export const attractionsHubSameTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+// Transport hub (/guides/transport), added 16 Nov 2026 (task-jtk-20261116-R06).
+// "Book before you land": the airport train at each end (5%), a regional JR pass (5%)
+// and Klook eSIM (20%). Existing constants only — no new Klook URL.
+export const transportHubArrivalPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Landing at Narita: the N'EX runs to Tokyo Station from 53 minutes, and the round trip on one ticket covers the ride back to the airport as well.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Landing at Kansai Airport: the Haruka runs direct to Osaka Station in about 45 minutes and to Kyoto in about 75, with no change.",
+  },
+  {
+    label: jrKansaiAreaPass.title,
+    ctaLabel: "Check the Kansai pass →",
+    url: jrKansaiAreaPass.url,
+    why: "An Osaka–Kyoto–Nara stay without the shinkansen: the pass covers JR West trains around the Kansai and the Haruka from the airport, so it replaces the single airport ticket above.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Route search, QR passes and Welcome Suica Mobile on an iPhone all need data from the arrivals hall, before the hotel Wi-Fi.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Ten days in Japan, added 26 Oct 2026 for japan-10-day-itinerary.
 //
