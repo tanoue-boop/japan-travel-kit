@@ -733,8 +733,9 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             still recurs at temple and shrine admissions, market stalls and street food, small independent
             restaurants, and local buses and coin lockers, which is a fair description of your Kyoto days. Our{" "}
             <Link href="/guides/money/cash-vs-card-japan">cash vs card guide</Link> has the detail and the ATM
-            limits, read {CASH}, and <Link href="/guides/money/japan-travel-budget">our budget guide</Link>{" "}
-            prices the whole trip.
+            limits, read {CASH}, and our{" "}
+            <Link href="/guides/money/japan-travel-budget">Japan travel budget per day</Link> prices the whole trip,
+            room, meals and daily train fares included.
           </p>
           <p className={styles.bodyText}>
             Japan&apos;s health ministry strongly recommends private health insurance for visitors; our{" "}

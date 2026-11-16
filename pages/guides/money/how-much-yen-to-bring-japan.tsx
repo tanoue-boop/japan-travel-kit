@@ -835,7 +835,7 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
             Building decks — and most of it can go on a card. What the trip actually costs, line by line
             and tier by tier, is{" "}
             <Link href="/guides/money/japan-travel-budget" style={{ color: "var(--red)", fontWeight: 600 }}>
-              the Japan travel budget guide
+              Japan travel budget per day
             </Link>
             ; this page is only about the share of it that has to be paper. Prices read {PRICES_CHECKED}.
           </p>

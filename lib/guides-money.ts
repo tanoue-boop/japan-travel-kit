@@ -93,8 +93,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/japan-travel-budget",
     badge: "Guide",
-    title: "Japan Travel Budget 2026: Cost per Day, Rail and the JR Pass",
-    desc: "How much things cost in Japan, built only out of published prices: a ¥178 subway ride, a ¥420 bowl of ramen, official admissions, the three cities' lodging-tax bands, what the shinkansen adds, when a JR Pass pays off, and 3 to 14-day totals.",
+    title: "Japan Travel Budget per Day 2026: Costs & Train Fares",
+    desc: "About ¥14,030–¥20,540 a day on a standard budget, room included, with daily train fares by city. How much things cost in Japan, built only out of published prices: a ¥178 subway ride, a ¥420 bowl of ramen, official admissions, the three cities' lodging-tax bands, what the shinkansen adds, when a JR Pass pays off, and 3 to 14-day totals.",
     group: "planning",
     city: "other",
   },

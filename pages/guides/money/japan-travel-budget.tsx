@@ -71,6 +71,18 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * described by the brackets the three local governments themselves draw, and the
  * reader is sent to Klook's own search for the number. And no Klook price appears,
  * for the same reason.
+ *
+ * 16 Nov 2026 (task-jtk-20261116-03, queue F): answer-first per-day totals by
+ * style, room included at the bottom of each Tokyo lodging-tax band, with US$
+ * at the Federal Reserve H.10 rate for 6 Nov 2026 (¥158.23, release of 9 Nov,
+ * read 16 Nov). Added a city table (Tokyo, Kyoto, Osaka, Sapporo in winter) and a
+ * daily-transport table. New facts read 16 Nov 2026: Sapporo + Hokkaido lodging
+ * tax ¥300 / ¥400 / ¥1,000 per person per night from 1 Apr 2026
+ * (city.sapporo.jp/citytax/shukuhakuzei/), Tokyo Metro ¥180 / ¥178 for 1–6 km
+ * re-read on tokyometro.jp. Every other fare is carried with its date from the
+ * site's own transport pages (osaka-metro-pass, kyoto-subway-bus-pass,
+ * tokyo-to-kyoto, tokyo-to-osaka-shinkansen, tokyo-to-hiroshima-shinkansen,
+ * hokkaido-7-day-itinerary, sapporo-3-day-itinerary).
  */
 
 const OWN_ISO = "2026-10-27";
@@ -174,6 +186,121 @@ const TOKYO_TOP_BAND = 15200; // ¥15,000 room + ¥200 tax
 /** Daily figures round to ¥10 and multi-day totals to ¥100 — the sums stay checkable. */
 const round10 = (n: number) => Math.round(n / 10) * 10;
 const round100 = (n: number) => Math.round(n / 100) * 100;
+
+/**
+ * US$ conversion: the Federal Reserve's H.10 noon buying rate in New York for
+ * 6 November 2026 (release of 9 November 2026), read 16 November 2026.
+ */
+const FX_YEN_PER_USD = 158.23;
+const FX_RATE_DATE = "6 November 2026";
+const FX_URL = "https://www.federalreserve.gov/releases/h10/current/";
+const usd = (n: number) => `US$${Math.round(n / FX_YEN_PER_USD).toLocaleString("en-US")}`;
+
+/** All-in per-day totals by style: food + city transport + one sight + the room at its band. */
+const ALLIN_SAVE_CEILING = round10(DAY_SAVE_HIGH + TOKYO_FREE_BAND); // ¥11,850
+const ALLIN_MID_LOW = round10(DAY_MID_LOW + TOKYO_MID_BAND_LOW); // ¥14,030
+const ALLIN_MID_HIGH = round10(DAY_MID_HIGH + TOKYO_MID_BAND_HIGH); // ¥20,540
+const ALLIN_TREAT_FLOOR = round10(DAY_TREAT_LOW + TOKYO_TOP_BAND); // ¥30,110
+
+/** Read on the operators' sites; dates carried from the site's own transport pages. */
+const TOKYO_METRO_READ = checkedLabel("2026-11-16");
+const OSAKA_METRO_READ = checkedLabel("2026-11-11");
+const KYOTO_KOTSU_READ = checkedLabel("2026-11-15");
+const SAPPORO_SUBWAY_READ = checkedLabel("2026-10-30");
+const SAPPORO_TAX_READ = checkedLabel("2026-11-16");
+const JR_HOKKAIDO_READ = checkedLabel("2026-11-01");
+const SMARTEX_READ = checkedLabel("2026-11-07");
+const JR_CENTRAL_READ = checkedLabel("2026-11-12");
+const JR_WEST_READ = checkedLabel("2026-10-28");
+const JRPASS_READ = checkedLabel("2026-11-16");
+
+/** Table (1): the per-day budget by style, first row the answer most readers want. */
+const perDayStyles = [
+  {
+    style: "Standard — the answer for most first trips",
+    room: "¥10,100–¥15,100 (a ¥10,000–¥15,000 room + ¥100 Tokyo lodging tax)",
+    food: `${yen(round10(FOOD_MID_LOW))}–${yen(round10(FOOD_MID_HIGH))}`,
+    transport: `${yen(TRANSPORT_MID_LOW)}–${yen(TRANSPORT_MID_HIGH)}`,
+    sights: `${yen(SIGHT_MID_LOW)}–${yen(SIGHT_MID_HIGH)}`,
+    total: `${yen(ALLIN_MID_LOW)}–${yen(ALLIN_MID_HIGH)}`,
+    totalUsd: `${usd(ALLIN_MID_LOW)}–${usd(ALLIN_MID_HIGH)}`,
+  },
+  {
+    style: "Saving",
+    room: "Under ¥10,000 (Tokyo's untaxed band)",
+    food: `${yen(round10(FOOD_SAVE_LOW))}–${yen(round10(FOOD_SAVE_HIGH))}`,
+    transport: `${yen(TRANSPORT_SAVE_LOW)}–${yen(TRANSPORT_SAVE_HIGH)}`,
+    sights: "¥0",
+    total: `Up to about ${yen(ALLIN_SAVE_CEILING)}`,
+    totalUsd: `Up to about ${usd(ALLIN_SAVE_CEILING)}`,
+  },
+  {
+    style: "Comfort",
+    room: "From ¥15,200 (a ¥15,000+ room + ¥200 Tokyo lodging tax)",
+    food: `${yen(round10(FOOD_TREAT_LOW))}–${yen(round10(FOOD_TREAT_HIGH))}`,
+    transport: yen(TRANSPORT_TREAT),
+    sights: `${yen(SIGHT_TREAT)}+`,
+    total: `From about ${yen(ALLIN_TREAT_FLOOR)}`,
+    totalUsd: `From about ${usd(ALLIN_TREAT_FLOOR)}`,
+  },
+];
+
+/** Table (2): what changes by city. */
+const cityRows = [
+  {
+    city: "Tokyo (the baseline for the table above)",
+    tax: "¥0 under ¥10,000; ¥100 to under ¥15,000; ¥200 at ¥15,000+",
+    ride: "¥178 IC / ¥180 ticket, Tokyo Metro 1–6 km",
+    pass: "¥700 Tokyo Metro 24-hour; ¥1,000 / ¥1,500 / ¥2,000 Tokyo Subway Ticket 24 / 48 / 72 h",
+    effect: "The standard day above: ¥14,030–¥20,540.",
+    source: `tax.metro.tokyo.lg.jp ${OWN}; tokyometro.jp ${TOKYO_METRO_READ}`,
+  },
+  {
+    city: "Kyoto",
+    tax: "Every stay taxed: ¥200 under ¥6,000; ¥400 to under ¥20,000; ¥1,000 to under ¥50,000",
+    ride: "¥230 city bus (flat); ¥220–¥360 subway",
+    pass: "¥1,100 Subway & Bus 1-Day Pass; ¥800 subway-only",
+    effect: "Add ¥300 a night on a ¥10,000–¥15,000 room (¥400 tax against Tokyo's ¥100), and ¥200–¥400 on a room under ¥10,000, which Tokyo does not tax. The day pass costs more than Tokyo's.",
+    source: `city.kyoto.lg.jp ${OWN} (tax), ${KYOTO_KOTSU_READ} (fares)`,
+  },
+  {
+    city: "Osaka",
+    tax: "¥0 under ¥5,000; ¥200 to under ¥15,000; ¥400 to under ¥20,000; ¥500 at ¥20,000+",
+    ride: "¥240 for 3–7 km, e.g. Umeda–Namba",
+    pass: "¥820 Enjoy Eco Card on weekdays, ¥620 at weekends",
+    effect: "Add ¥100 a night on a ¥10,000–¥15,000 room (¥200 tax against Tokyo's ¥100). The weekday pass is about Tokyo's price; the weekend one is cheaper.",
+    source: `pref.osaka.lg.jp ${OWN}; subway.osakametro.co.jp ${OSAKA_METRO_READ}`,
+  },
+  {
+    city: "Sapporo, Hokkaido in winter",
+    tax: "¥300 under ¥20,000; ¥400 to under ¥50,000; ¥1,000 at ¥50,000+ (Sapporo + Hokkaido taxes combined, since 1 April 2026)",
+    ride: "¥210 subway, one zone",
+    pass: "¥830 weekday 1-day ticket; ¥520 Donichika at weekends",
+    effect: "Add ¥200 a night of tax against Tokyo's ¥100 band, plus ¥1,230 each way New Chitose–Sapporo. In ski season the ordinary airport-train cars fill with ski bags; the reserved u-seat is ¥1,000 extra.",
+    source: `city.sapporo.jp ${SAPPORO_TAX_READ} (tax), ${SAPPORO_SUBWAY_READ} (subway); jrhokkaido.co.jp ${JR_HOKKAIDO_READ}`,
+  },
+];
+
+/** Table (3): how much the trains cost per day — city fares, day passes, shinkansen legs. */
+const transportRows = [
+  {
+    item: "Answer: a city day by subway and bus",
+    fare: "¥356–¥1,100 — two or three single rides, or one day pass. A day with a shinkansen leg adds ¥13,970–¥19,560.",
+    source: "Sum of the rows below",
+  },
+  { item: "Tokyo Metro, shortest ride (1–6 km)", fare: "¥178 IC card, ¥180 ticket (child ¥89 / ¥90)", source: `tokyometro.jp, ${TOKYO_METRO_READ}` },
+  { item: "Tokyo: 24-hour passes", fare: "¥700 Tokyo Metro 24-hour; ¥1,000 Tokyo Subway Ticket (Metro + Toei, visitors)", source: `tokyometro.jp, ${OWN}` },
+  { item: "Osaka Metro, Umeda–Namba (3–7 km)", fare: "¥240", source: `subway.osakametro.co.jp, ${OSAKA_METRO_READ}` },
+  { item: "Osaka: Enjoy Eco Card (1-day)", fare: "¥820 weekdays, ¥620 weekends and holidays", source: `subway.osakametro.co.jp, ${OSAKA_METRO_READ}` },
+  { item: "Kyoto: city bus / subway", fare: "¥230 flat bus fare; ¥220–¥360 subway by distance", source: `city.kyoto.lg.jp/kotsu, ${KYOTO_KOTSU_READ}` },
+  { item: "Kyoto: Subway & Bus 1-Day Pass", fare: "¥1,100 (¥800 subway-only)", source: `city.kyoto.lg.jp/kotsu, ${KYOTO_KOTSU_READ}` },
+  { item: "Sapporo subway: single / 1-day", fare: "¥210 one zone; ¥830 weekday 1-day; ¥520 Donichika", source: `city.sapporo.jp, ${SAPPORO_SUBWAY_READ}` },
+  { item: "Shinkansen Tokyo–Kyoto, reserved Nozomi", fare: "¥13,970 (non-reserved ¥13,320)", source: `smartEX price list via smart-ex.jp, ${SMARTEX_READ}` },
+  { item: "Shinkansen Tokyo–Shin-Osaka, reserved Nozomi", fare: "¥14,720 at the station window", source: `JR Central release of 16 Oct 2026, read ${JR_CENTRAL_READ}` },
+  { item: "Shinkansen Tokyo–Hiroshima, reserved Nozomi", fare: "¥19,560", source: `JR West Smart EX page, tickets.jr-odekake.net, ${JR_WEST_READ}` },
+  { item: "Airport train New Chitose–Sapporo (Rapid Airport)", fare: "¥1,230", source: `jrhokkaido.co.jp, ${JR_HOKKAIDO_READ}` },
+  { item: "JAPAN RAIL PASS, 7-day Ordinary", fare: "¥50,000 bought online, ¥53,000 as an Exchange Order", source: `japanrailpass.net, ${JRPASS_READ}` },
+];
 
 type TierRow = {
   item: string;
@@ -347,9 +474,9 @@ const quickPrices = [
     source: `${PRICES.todaiji.source}, ${checkedLabel(PRICES.todaiji.checked)}`,
   },
   {
-    item: `Shinkansen, Tokyo → Kyoto (${tokyoKyoto.train})`,
-    price: `${yen(tokyoKyoto.fareYen)} one way, reserved Ordinary — a rounded reference value`,
-    source: `data/jr-fares.json, as of ${FARE_AS_OF}`,
+    item: "Shinkansen, Tokyo → Kyoto, reserved Ordinary",
+    price: "¥13,970 on a Nozomi, ¥13,650 on a Hikari or Kodama, ¥13,320 non-reserved",
+    source: `smartEX price list via smart-ex.jp, ${SMARTEX_READ}`,
   },
   {
     item: "Narita Express, Narita Airport → Tokyo",
@@ -480,42 +607,37 @@ const hiddenCosts = [
   },
 ];
 
+// FAQ cut to five on 16 Nov 2026 (rule: 3–5 questions in FAQPage). The Tokyo-per-day
+// question moved to tokyo-trip-cost; food, tourist tax and two-week totals stay in the body.
 const faqItems = [
+  {
+    q: "How much does a trip to Japan cost per day in 2026?",
+    a: `About ${yen(ALLIN_MID_LOW)}–${yen(ALLIN_MID_HIGH)} (${usd(ALLIN_MID_LOW)}–${usd(ALLIN_MID_HIGH)}) per person per day on a standard budget, room, food, city transport and one paid sight included. A saving day is up to about ${yen(ALLIN_SAVE_CEILING)} (${usd(ALLIN_SAVE_CEILING)}) with a room under ¥10,000 and chain meals; a comfort day is from about ${yen(ALLIN_TREAT_FLOOR)} (${usd(ALLIN_TREAT_FLOOR)}) with a ¥15,000+ room and one hotel-restaurant course. The room is priced at the bottom of each Tokyo lodging-tax band; long-distance trains and flights are extra. Dollars at ¥${FX_YEN_PER_USD} = US$1, the Federal Reserve rate for ${FX_RATE_DATE}.`,
+  },
+  {
+    q: "How much should I budget for transport in Japan per day?",
+    a: `Inside one city, ¥356–¥1,100: two or three subway rides at ¥178 on an IC card in Tokyo, or one day pass — ¥700 for the Tokyo Metro 24-hour Ticket, ¥820 for Osaka's Enjoy Eco Card on a weekday, ¥830 for Sapporo's weekday subway ticket, ¥1,100 for Kyoto's Subway & Bus 1-Day Pass. A day with a shinkansen leg adds ¥13,970 Tokyo–Kyoto or ¥19,560 Tokyo–Hiroshima on a reserved Nozomi. Fares from the operators, read 28 October to 16 November 2026.`,
+  },
+  {
+    q: "Is Japan expensive for tourists in 2026?",
+    a: `Not on the daily lines: a Tokyo subway ride is ¥178, a chain bowl of chuka soba ¥420, a Yoshinoya beef bowl ¥498, and the Tokyo Metropolitan Government Building decks are free. The room and long-distance rail are the expensive lines — a ¥13,970 shinkansen to Kyoto, a ¥50,000 7-day JR Pass. At ¥${FX_YEN_PER_USD} to the dollar (${FX_RATE_DATE}), a standard day of ${yen(ALLIN_MID_LOW)}–${yen(ALLIN_MID_HIGH)} is ${usd(ALLIN_MID_LOW)}–${usd(ALLIN_MID_HIGH)}.`,
+  },
+  {
+    q: "How can I save money in Japan?",
+    a: `Keep the Tokyo room under ¥10,000 a person, which removes the lodging tax; buy timed admissions online (Shibuya Sky is ${PRICES.shibuyaSky.adult} online against ${PRICES.shibuyaSky.atDoor} at the door); put city days on a pass — a ¥2,000 72-hour Tokyo Subway Ticket beats ¥178 rides from the twelfth ride; eat at chains that publish their prices; price the JR Pass against your actual legs, because the Tokyo–Kyoto–Hiroshima–Tokyo loop comes to less than the ¥50,000 pass; and buy data before you fly instead of at an airport counter.`,
+  },
   {
     q: "Is the JR Pass worth it for my budget?",
     a: `Only on an itinerary busier than the Golden Route. A 7-day Ordinary JAPAN RAIL PASS is ¥50,000 bought online and ¥53,000 as an Exchange Order from an overseas agency, on the JR Group's own price table read on ${PASS_CHECKED}. Against that, the pass-eligible fares on this page — ¥13,970 Tokyo–Kyoto, ¥11,400 Kyoto–Hiroshima, ¥19,080 Hiroshima–Tokyo — come to ¥44,450 for the whole Tokyo–Kyoto–Hiroshima–Tokyo loop, which is ¥5,550 less than the pass. If your trip is Tokyo plus one or two intercity hops, individual tickets are cheaper; if it adds Kanazawa, Tohoku or Hokkaido, the pass starts to win. Fares are rounded reference values from our own data as of ${FARE_AS_OF}.`,
-  },
-  {
-    q: "Can I save by booking tickets before I go?",
-    a: `Yes, and the savings are published rather than estimated. Shibuya Sky is ${PRICES.shibuyaSky.adult} online against ${PRICES.shibuyaSky.atDoor} at the door. Tokyo Skytree's same-day counter adds a ¥500 service fee per ticket, so booking ahead is simply cheaper. teamLab Borderless costs ¥200 more per adult bought on site. A ¥2,000 Tokyo Subway Ticket bought before you fly beats single ¥178 IC fares from the twelfth ride onwards — and foreign contactless cards do not open Tokyo Metro or Toei gates, so it also removes a problem. Dates for each figure are in the tables on this page.`,
-  },
-  {
-    q: "How much is a hotel in Tokyo per night?",
-    a: "There is no fixed number to give, because the only Tokyo room prices that exist are live search results that change by the date and the district — anyone quoting you a fixed figure has made it up. What is official is where the Tokyo government draws its brackets: no lodging tax at all below ¥10,000 per person per night, ¥100 from ¥10,000 to under ¥15,000, and ¥200 at ¥15,000 and over, read on tax.metro.tokyo.lg.jp on 27 October 2026. Those three bands are the honest way to budget a room — pick the band, then open a hotel search for the area you want and see what it costs on your dates.",
-  },
-  {
-    q: "How much does a trip to Tokyo, Japan cost per day?",
-    a: `On published prices, ${yen(round10(DAY_SAVE_LOW))}–${yen(round10(DAY_SAVE_HIGH))} a day before the room at the saving end, ${yen(round10(DAY_MID_LOW))}–${yen(round10(DAY_MID_HIGH))} at a standard level, and ${yen(round10(DAY_TREAT_LOW))}–${yen(round10(DAY_TREAT_HIGH))} if one meal a day is a hotel restaurant course. Those are sums of figures you can check: ¥178 an IC subway ride, ¥420 a bowl of chuka soba, ¥498 a beef bowl, ¥1,500 the Tokyo Tower Main Deck, ${yen(SIGHT_MID_HIGH)} Shibuya Sky online before 15:00. Add the room at its Tokyo lodging-tax band and a standard day is about ${yen(round10(DAY_MID_LOW + TOKYO_MID_BAND_LOW))}–${yen(round10(DAY_MID_HIGH + TOKYO_MID_BAND_HIGH))}.`,
-  },
-  {
-    q: "How much money should I bring to Japan for two weeks?",
-    a: `Fourteen days before the room is ${yen(round100(DAY_SAVE_LOW * 14))}–${yen(round100(DAY_SAVE_HIGH * 14))} at the saving tier and ${yen(round100(DAY_MID_LOW * 14))}–${yen(round100(DAY_MID_HIGH * 14))} at a standard one, on the published prices in the tables above. Add fourteen nights of accommodation at the band you choose — under ¥140,000 in Tokyo's untaxed band, ¥141,400–¥211,400 in its ¥100 band — and add long-distance rail separately, because a ¥13,970 Tokyo–Kyoto leg is not a daily cost. For context, the Japan Tourism Agency's own survey put travel expenditure at ¥234,000 per visitor for July–September 2026, which covers a trip of any length rather than a fortnight.`,
-  },
-  {
-    q: "How much does food cost per day in Japan?",
-    a: `Three meals at prices the chains publish is ${yen(round10(FOOD_SAVE_LOW))}–${yen(round10(FOOD_SAVE_HIGH))} a day: two 7-Eleven onigiri at ¥145.80–¥196.56 each, a ¥420 bowl of chuka soba at Hidakaya and a ¥498 Yoshinoya beef bowl. Step up a tier and it is ${yen(round10(FOOD_MID_LOW))}–${yen(round10(FOOD_MID_HIGH))} — a ¥490 Kourakuen chuka soba and eight Kura Sushi plates at ¥110–¥145 each. One meal at a hotel restaurant changes the arithmetic entirely: Imperial Hotel Tokyo's Nadaman lists lunch from ¥9,000 and dinner courses at ¥28,000, service and tax included. All read ${OWN}.`,
-  },
-  {
-    q: "Do I have to pay a tourist tax in Japan?",
-    a: "There is no national tourist tax on a stay, but Tokyo, Kyoto and Osaka each levy a lodging tax per person per night, and they draw the lines in different places. Tokyo: nothing under ¥10,000, ¥100 to ¥15,000, ¥200 above, switching to a flat 3% on 1 April 2027 with stays under ¥13,000 untaxed. Kyoto City: every stay is taxed, from ¥200 under ¥6,000 up to ¥10,000 at ¥100,000 and over, on rates effective 1 March 2026. Osaka Prefecture: nothing under ¥5,000, then ¥200, ¥400 and ¥500 by band, in force since 1 September 2026. All three read on their own government sites on 27 October 2026. Separately, a ¥1,000 International Tourist Tax is included in the price of your ticket when you leave Japan.",
   },
 ];
 
 // Title, meta, H1 and the opening re-aimed at Japan as a whole on 9 Nov 2026
 // (task-jtk-20261109-02): the Tokyo-only queries now have /guides/money/tokyo-trip-cost.
-const TITLE = "Japan Travel Budget 2026: Cost per Day, Rail and the JR Pass";
-const META =
-  "Japan travel budget 2026: how much things cost in Japan per day, what the shinkansen adds and when a JR Pass pays off, from official prices, 3 to 14 days.";
+// 16 Nov 2026 (task-jtk-20261116-03): "per day" put into title, H1 and meta for "japan travel
+// budget per day"; still no "Tokyo" in the title — Tokyo-only queries belong to tokyo-trip-cost.
+const TITLE = "Japan Travel Budget per Day 2026: Costs & Train Fares";
+const META = `Japan travel budget per day 2026: ${yen(ALLIN_MID_LOW)}–${yen(ALLIN_MID_HIGH)} (${usd(ALLIN_MID_LOW)}–${usd(ALLIN_MID_HIGH)}) standard, room included. Daily train costs, city passes and what to book before you fly.`;
 const ROUTE = "/guides/money/japan-travel-budget";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
@@ -603,7 +725,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Japan Travel Budget 2026:<br />How Much Do Things Cost in Japan, Rail and JR Pass Included
+            Japan Travel Budget per Day (2026):<br />What a Day Costs, Trains and the JR Pass
           </h1>
           <p className={styles.heroSubtitle}>
             Every yen figure on this page is a published price — an operator&apos;s own fare, an
@@ -625,17 +747,21 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              On published prices, a city day in Japan costs {yen(round10(DAY_SAVE_LOW))}–{yen(round10(DAY_SAVE_HIGH))} before
-              the room if you eat at the chains and ride the subway on an IC card, about{" "}
-              {yen(round10(DAY_MID_LOW))}–{yen(round10(DAY_MID_HIGH))} at a standard level, and{" "}
-              {yen(round10(DAY_TREAT_LOW))}–{yen(round10(DAY_TREAT_HIGH))} if one meal a day is a hotel restaurant
-              course.
+              A day in Japan costs about {yen(ALLIN_MID_LOW)}–{yen(ALLIN_MID_HIGH)} ({usd(ALLIN_MID_LOW)}–{usd(ALLIN_MID_HIGH)}) per
+              person on a standard budget, with the room, three meals, city transport and one paid sight included.
             </strong>{" "}
-            Those are sums of figures you can check for yourself: ¥178 an IC subway ride, ¥420 for a bowl of chuka
+            A saving day is up to about {yen(ALLIN_SAVE_CEILING)} ({usd(ALLIN_SAVE_CEILING)}) with a room under ¥10,000
+            and chain meals, and a comfort day is from about {yen(ALLIN_TREAT_FLOOR)} ({usd(ALLIN_TREAT_FLOOR)}) with a
+            ¥15,000+ room and one hotel-restaurant course. Long-distance trains are a separate line: a reserved Nozomi
+            from Tokyo to Kyoto is ¥13,970 one way. Dollars are converted at ¥{FX_YEN_PER_USD} = US$1, the Federal
+            Reserve&apos;s H.10 rate for {FX_RATE_DATE}.
+          </p>
+          <p className={styles.bodyText}>
+            Those totals are sums of published prices you can check: ¥178 an IC subway ride, ¥420 for a bowl of chuka
             soba at Hidakaya, ¥498 for a Yoshinoya beef bowl, ¥1,500 for the Tokyo Tower Main Deck, {yen(SIGHT_MID_HIGH)} for
-            Shibuya Sky booked online. The room is the one line with no number here — the only prices that
-            exist are live search results — so instead this guide uses the brackets the Tokyo government draws itself: no
-            lodging tax at all under ¥10,000 per person per night, ¥100 from ¥10,000 to ¥15,000, ¥200 above it.
+            Shibuya Sky booked online. The room is priced at the bottom of each band the Tokyo government draws for its
+            lodging tax — no tax under ¥10,000 per person per night, ¥100 from ¥10,000 to ¥15,000, ¥200 above it —
+            because live room rates change by date.
           </p>
           <p className={styles.bodyText}>
             Put the two together and <strong>seven nights is roughly {yen(WEEK_MID_LOW)}–{yen(WEEK_MID_HIGH)} all
@@ -649,6 +775,65 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             2026 (1st preliminary), across a total of ¥2,207.6 billion. Read on mlit.go.jp, {OWN}.
           </p>
         </section>
+
+        {/* Table (1), 16 Nov 2026: the per-day answer by style, room included, with US$. */}
+        <section className={styles.comparisonSection} data-placement="per-day-budget-table">
+          <span className={styles.sectionLabel}>Per day, all in</span>
+          <h2 className={styles.sectionTitle}>How much does a trip to Japan cost per day in 2026?</h2>
+          <p className={styles.bodyText}>
+            {yen(ALLIN_MID_LOW)}–{yen(ALLIN_MID_HIGH)} ({usd(ALLIN_MID_LOW)}–{usd(ALLIN_MID_HIGH)}) per person per day at a
+            standard level, room included. The table shows where each yen goes, so you can swap any line for your
+            own plan.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Style", "Room, per person per night", "Food", "City transport", "One sight", "Total per day", "In US$"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {perDayStyles.map((row, i) => (
+                    <tr key={row.style} style={i === 0 ? { fontWeight: 700, background: "var(--paper)" } : {}}>
+                      <td className={styles.tdProvider}>{row.style}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.room}</td>
+                      <td style={{ fontSize: "0.84rem", whiteSpace: "nowrap" }}>{row.food}</td>
+                      <td style={{ fontSize: "0.84rem", whiteSpace: "nowrap" }}>{row.transport}</td>
+                      <td style={{ fontSize: "0.84rem", whiteSpace: "nowrap" }}>{row.sights}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.total}</td>
+                      <td style={{ fontSize: "0.84rem", whiteSpace: "nowrap" }}>{row.totalUsd}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-16 (exchange rate and Tokyo Metro fares). Menu prices, Tokyo passes and the Tokyo
+            lodging-tax bands read {OWN}; admissions as dated in the sightseeing table below. Per person, excluding
+            flights and long-distance rail. Food: two onigiri, a chain ramen and a beef bowl (saving); onigiri,
+            ramen and eight conveyor-belt sushi plates (standard); one Imperial Hotel Nadaman course (comfort).
+            Sources:{" "}
+            <a href="https://www.tokyometro.jp/en/ticket/regular/index.html" target="_blank" rel="noopener noreferrer">tokyometro.jp</a>,{" "}
+            <a href="https://www.tax.metro.tokyo.lg.jp/" target="_blank" rel="noopener noreferrer">tax.metro.tokyo.lg.jp</a>,{" "}
+            <a href={FX_URL} target="_blank" rel="noopener noreferrer">Federal Reserve H.10</a> (¥{FX_YEN_PER_USD} per US$, {FX_RATE_DATE}).
+            The per-category detail, with every component price, is in the{" "}
+            <a href="#per-category" style={{ color: "var(--red)", fontWeight: 600 }}>per-day breakdown</a> further down.
+          </p>
+        </section>
+
+        {/* Klook, all bands, directly under the answer: what can be paid before arrival. Moved here 16 Nov 2026. */}
+        <KlookTripPrep
+          label="Pay before you arrive"
+          heading="What You Can Pay For Before You Land"
+          intro="The room (Klook hotels), the subway pass and the airport leg (transport passes) and mobile data (Klook eSIM) can all be settled in your own currency before you fly. Klook prices change by date, so open each listing for the figure on your dates."
+          items={budgetTopPrep}
+          adPlacement="budget-top"
+          headingLevel={3}
+        />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -697,17 +882,115 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
           </div>
         </aside>
 
-        {/* Klook, all four bands, for a reader who has the number and wants to book. */}
-        <KlookTripPrep
-          label="Budget set? Book these first"
-          heading="The Lines You Can Pay for Before You Fly"
-          intro="The room, the subway pass, the airport leg and data, in that order. Klook prices change by date, so open each listing for the figure on your dates."
-          items={budgetTopPrep}
-          adPlacement="budget-top"
-          headingLevel={3}
-        />
-
         <EsimCtaTop />
+
+        {/* Table (2), 16 Nov 2026: what changes by city. */}
+        <section className={styles.comparisonSection} data-placement="city-budget-table">
+          <span className={styles.sectionLabel}>By city</span>
+          <h2 className={styles.sectionTitle}>Does the daily budget change between Tokyo, Kyoto, Osaka and Hokkaido?</h2>
+          <p className={styles.bodyText}>
+            Only by a few hundred yen a day: the lodging tax and the day pass are what move. Kyoto taxes every
+            stay, Osaka exempts rooms under ¥5,000, and Sapporo adds ¥300 a night under ¥20,000 since April 2026.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["City", "Lodging tax, per person per night", "A single ride", "Day pass", "Against the Tokyo standard day", "Read off"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {cityRows.map((row, i) => (
+                    <tr key={row.city} style={i === 0 ? { fontWeight: 700, background: "var(--paper)" } : {}}>
+                      <td className={styles.tdProvider}>{row.city}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.tax}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.ride}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.pass}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.effect}</td>
+                      <td style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-16 (Sapporo and Hokkaido lodging tax, Tokyo Metro). Official pages:{" "}
+            <a href="https://www.city.sapporo.jp/citytax/shukuhakuzei/index.html" target="_blank" rel="noopener noreferrer">city.sapporo.jp</a>,{" "}
+            <a href="https://www2.city.kyoto.lg.jp/kotsu/webguide/en/" target="_blank" rel="noopener noreferrer">Kyoto City Bus &amp; Subway</a>,{" "}
+            <a href="https://subway.osakametro.co.jp/en/guide/page/enjoy-eco.php" target="_blank" rel="noopener noreferrer">Osaka Metro</a>,{" "}
+            <a href="https://www.tokyometro.jp/en/ticket/regular/index.html" target="_blank" rel="noopener noreferrer">Tokyo Metro</a>.
+            Kyoto&apos;s top bands (¥4,000 and ¥10,000) are in the accommodation table below. For a winter trip north,
+            the{" "}
+            <Link href="/guides/attractions/hokkaido-winter-tours" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Hokkaido winter tours guide
+            </Link>{" "}
+            covers the days public transport does badly, and the{" "}
+            <Link href="/guides/transport/kyoto-subway-bus-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Kyoto Subway and Bus Pass
+            </Link>{" "}
+            and{" "}
+            <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Osaka Metro Pass
+            </Link>{" "}
+            guides work out when each day pass pays.
+          </p>
+        </section>
+
+        {/* Table (3), 16 Nov 2026: "average daily train cost in Japan". */}
+        <section className={styles.comparisonSection} data-placement="daily-transport-table">
+          <span className={styles.sectionLabel}>Trains per day</span>
+          <h2 className={styles.sectionTitle}>How much should I budget for transport in Japan per day?</h2>
+          <p className={styles.bodyText}>
+            ¥356–¥1,100 for a city day — two or three single rides, or one day pass. A day with a shinkansen leg
+            adds ¥13,970 (Tokyo–Kyoto) to ¥19,560 (Tokyo–Hiroshima) on a reserved Nozomi, which is why long-distance
+            rail belongs in its own line of the budget rather than in the daily one.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Ticket", "Adult fare", "Read off"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {transportRows.map((row, i) => (
+                    <tr key={row.item} style={i === 0 ? { fontWeight: 700, background: "var(--paper)" } : {}}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.fare}</td>
+                      <td style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-16 (Tokyo Metro, JR Pass). Official pages:{" "}
+            <a href="https://www.tokyometro.jp/en/ticket/regular/index.html" target="_blank" rel="noopener noreferrer">tokyometro.jp</a>,{" "}
+            <a href="https://subway.osakametro.co.jp/en/guide/page/enjoy-eco.php" target="_blank" rel="noopener noreferrer">subway.osakametro.co.jp</a>,{" "}
+            <a href="https://www2.city.kyoto.lg.jp/kotsu/webguide/en/" target="_blank" rel="noopener noreferrer">city.kyoto.lg.jp/kotsu</a>,{" "}
+            <a href="https://smart-ex.jp/en/" target="_blank" rel="noopener noreferrer">smart-ex.jp</a>,{" "}
+            <a href="https://global.jr-central.co.jp/en/" target="_blank" rel="noopener noreferrer">JR Central</a>,{" "}
+            <a href="https://www.japanrailpass.net/en/" target="_blank" rel="noopener noreferrer">japanrailpass.net</a>.
+            The Nozomi fares rise for tickets bought from 1 July 2027, on the JR Central and JR West release of
+            16 October 2026. More fares by city in the{" "}
+            <Link href="/guides/transport" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan transport guide
+            </Link>
+            , and a full shinkansen fare table in the{" "}
+            <Link href="/guides/transport/shinkansen-guide" style={{ color: "var(--red)", fontWeight: 600 }}>
+              shinkansen guide
+            </Link>
+            .
+          </p>
+        </section>
 
         {/* Q1 — "trip to tokyo japan cost", with the trip-length totals. */}
         <section className={styles.comparisonSection}>
@@ -725,7 +1008,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Trip length", "Saving", "Standard", "Treating yourself", "The room, added at its Tokyo tax band"].map((h) => (
+                    {["Trip length", "Saving", "Standard", "Comfort", "The room, added at its Tokyo tax band"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -753,7 +1036,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
         </section>
 
         {/* Q2 — "how much should I budget per day", and the per-category breakdown. */}
-        <section className={styles.comparisonSection}>
+        <section className={styles.comparisonSection} id="per-category">
           <span className={styles.sectionLabel}>Per day, by category</span>
           <h2 className={styles.sectionTitle}>How much should I budget per day in Japan?</h2>
           <p className={styles.bodyText}>
@@ -766,7 +1049,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", "Saving", "Standard", "Treating yourself"].map((h) => (
+                    {["", "Saving", "Standard", "Comfort"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -1187,7 +1470,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             For a figure that is nobody&apos;s estimate: the Japan Tourism Agency&apos;s inbound consumption survey
             put travel expenditure at ¥234,000 per visitor for July–September 2026, up 6.1% on the same quarter a
             year earlier, out of ¥2,207.6 billion in total. That is a whole trip of any length, flights excluded —
-            and it sits between the standard and treating-yourself columns of the 10-day row above. Read on
+            and it sits between the standard and comfort columns of the 10-day row above. Read on
             mlit.go.jp, {OWN}.
           </p>
         </section>
@@ -1225,7 +1508,12 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
         {/* How to Save — requirement (6), the prepay list. */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Budget tips</span>
-          <h2 className={styles.sectionTitle}>How to Spend Less: Six Savings With a Number Behind Them</h2>
+          <h2 className={styles.sectionTitle}>How can I save money in Japan?</h2>
+          <p className={styles.bodyText}>
+            Six savings, each with a published number behind it: buy timed tickets online, price the JR Pass against
+            your own legs, put city days on a pass, pick the room&apos;s tax band, eat at chains and buy data before
+            you fly.
+          </p>
           <div className={styles.stepsList}>
             {savingTips.map((tip, i) => (
               <div key={tip.title} className={styles.stepCard}>

@@ -367,6 +367,11 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
                 (re-read {CHECKED}); smart-ex.jp · keisei.co.jp · Keikyu · subway.osakametro.co.jp · city.kyoto.lg.jp/kotsu ·
                 West JR Bus, on the date in each row. Adult fares, one way. Shinkansen fares rise in peak season; the bus fare depends on the date.
               </p>
+              <p className={styles.bodyText}>
+                To see where these fares sit in a whole day — room, meals and one sight included — our{" "}
+                <Link href="/guides/money/japan-travel-budget" style={L}>Japan travel budget per day</Link> adds them
+                up by travel style and by city.
+              </p>
             </section>
 
             {/* Which-pass table — first row is the conclusion. */}

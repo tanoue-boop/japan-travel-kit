@@ -430,8 +430,9 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText}>
             This page prices a stay in Tokyo: the room, food, the subway and the sights inside the city, and the
             airport at either end. Long-distance rail (a shinkansen to Kyoto, a JR Pass) is not in it; our{" "}
-            <Link href="/guides/money/japan-travel-budget">Japan travel budget</Link> covers a trip across several
-            cities and when the JR Pass pays off. How much of the daily money to carry as cash is in{" "}
+            <Link href="/guides/money/japan-travel-budget">Japan travel budget per day</Link> covers a trip across
+            several cities — what a day costs in Kyoto, Osaka and Sapporo, the daily train fares — and when the JR
+            Pass pays off. How much of the daily money to carry as cash is in{" "}
             <Link href="/guides/money/how-much-yen-to-bring-japan">how much yen to bring to Japan</Link>.
           </p>
         </section>
@@ -767,7 +768,7 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
-              { href: "/guides/money/japan-travel-budget", title: "Japan Travel Budget 2026: Cost per Day, Rail and the JR Pass" },
+              { href: "/guides/money/japan-travel-budget", title: "Japan Travel Budget per Day 2026: Costs & Train Fares" },
               { href: "/guides/money/how-much-yen-to-bring-japan", title: "How Much Yen to Bring to Japan 2026: Cash per Day" },
               { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order" },
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
