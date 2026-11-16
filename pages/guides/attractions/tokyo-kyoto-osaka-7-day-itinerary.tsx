@@ -1427,7 +1427,8 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
           </p>
           <p className={styles.bodyText}>
             <strong>In Tokyo,</strong> Day 3 is already weatherproof:{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets</Link> is indoors
+            teamLab Planets (our{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide) is indoors
             throughout and Solamachi under Skytree is a mall. Day 2 is the vulnerable one, because an
             observation deck in low cloud shows you cloud — move the SHIBUYA SKY slot to the Day 3
             evening rather than sitting it out, and our{" "}

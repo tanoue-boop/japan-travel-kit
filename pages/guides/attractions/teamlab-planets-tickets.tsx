@@ -315,8 +315,10 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
           <p className={styles.bodyText}>
             <strong>teamLab Planets tickets</strong> cost from <strong>¥3,800</strong> for an adult on the
             official teamLab Planets ticket store, with ¥2,800 for junior and senior high school students,{" "}
-            <strong>¥1,500</strong> for ages 4–12 and free entry for children 3 and under. Every ticket is for a
-            set date and admission time, nothing is sold at the museum, and teamLab publishes no visit length —
+            <strong>¥1,500</strong> for ages 4–12 and free entry for children 3 and under. The museum is open{" "}
+            <strong>08:00–22:00</strong> (08:00–20:00 on 31 Dec–2 Jan), last entry one hour before closing. To
+            book, pick a date and admission time online — on the official store, Lawson Ticket, Seven Ticket or
+            Klook — because nothing is sold at the museum. teamLab publishes no visit length —
             plan on about <strong>1.5–2 hours</strong> plus the 30–60 minute entry wait the official store warns
             of. You walk barefoot, and in the water artworks the water can reach{" "}
             <strong>adult knee height</strong>, so wear shorts or trousers that roll above the knee.

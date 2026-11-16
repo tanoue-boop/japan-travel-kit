@@ -491,7 +491,9 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Harajuku and the Scramble Crossing,
             SHIBUYA SKY at sunset ({PRICES.shibuyaSky.adult} online, before / from 15:00), then Shinjuku&apos;s
             Omoide Yokocho. <strong>Day 4</strong> is the bay: breakfast at Tsukiji Outer Market, teamLab Planets
-            ({PRICES.teamlabPlanets.adult}) in Toyosu, then Odaiba. <strong>Day 7</strong> is Ginza, the Imperial
+            ({PRICES.teamlabPlanets.adult}; slots and booking in our{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide) in
+            Toyosu, then Odaiba. <strong>Day 7</strong> is Ginza, the Imperial
             Palace East Gardens and Tokyo Station, which is also where the Narita Express leaves.
           </p>
           <p className={styles.bodyText}>

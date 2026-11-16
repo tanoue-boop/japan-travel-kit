@@ -73,7 +73,7 @@ export default function GuidesAttractionsPage({ dates }: { dates: Record<string,
             Hop Bus in our{" "}
             <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo sightseeing bus tour guide</Link>
             ). The tickets that sell out by date are{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Planets</Link>{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Planets tickets</Link>{" "}
             (not sure which teamLab? see our{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Tokyo tickets comparison</Link>),{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>Shibuya Sky</Link>{" "}

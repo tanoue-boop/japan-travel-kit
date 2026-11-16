@@ -626,7 +626,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             rooms and little else; 1.5–2 hours lets you wander, double back, and find the works that only
             appear if you wait. It also means Borderless is the more adult, more photographic of Tokyo&apos;s
             two teamLab museums — see our{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets ticket guide</Link>{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide{" "}
             for the barefoot, walk-through-water one in Toyosu, and for what the Planets side of the decision
             looks like.
           </p>
@@ -841,7 +841,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             book the wrong one. They are separate venues with separate tickets in different parts of the city,
             and the figures below are the ones that decide it. For the Planets side in full — the barefoot
             rules, the lockers, the kids&apos; policies — see our{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets ticket guide</Link>.
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

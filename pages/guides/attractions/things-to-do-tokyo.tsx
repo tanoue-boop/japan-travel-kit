@@ -524,7 +524,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           </p>
           <ul className={styles.bodyList}>
             <li><strong>A view from above:</strong> <Link href="/guides/attractions/shibuya-sky-tickets" style={linkStyle}>Shibuya Sky</Link> at sunset, or <Link href="/guides/attractions/tokyo-tower-tickets" style={linkStyle}>Tokyo Tower</Link> with no booking.</li>
-            <li><strong>Digital art:</strong> <Link href="/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab Planets</Link> or <Link href="/guides/attractions/teamlab-borderless-tickets" style={linkStyle}>teamLab Borderless</Link>.</li>
+            <li><strong>Digital art:</strong> <Link href="/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab Planets tickets</Link> or <Link href="/guides/attractions/teamlab-borderless-tickets" style={linkStyle}>teamLab Borderless</Link>.</li>
             <li><strong>A park day:</strong> <Link href="/guides/attractions/tokyo-disney-tickets" style={linkStyle}>Tokyo Disney</Link>, <Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>Sanrio Puroland</Link> or indoor <Link href="/guides/attractions/tokyo-joypolis-tickets" style={linkStyle}>Tokyo Joypolis</Link>.</li>
             <li><strong>Studio Ghibli:</strong> the Ghibli Museum in Mitaka is in Tokyo; the much larger <Link href="/guides/attractions/ghibli-park-tickets" style={linkStyle}>Ghibli Park tickets</Link> are for a park near Nagoya, sold two months ahead on the 10th.</li>
             <li><strong>An evening out:</strong> a <Link href="/guides/attractions/tokyo-night-food-tour" style={linkStyle}>night food tour</Link> through Omoide Yokocho and Golden Gai.</li>
@@ -675,8 +675,8 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             immersive, walk-through experiences that use timed entry and sell out fast. Our{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets" style={linkStyle}>teamLab Tokyo tickets comparison</Link>{" "}
             sets the two side by side on price, hours and who each suits, then sends you to the{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets" style={linkStyle}>Planets</Link> or{" "}
-            <Link href="/guides/attractions/teamlab-borderless-tickets" style={linkStyle}>Borderless</Link> ticket guide
+            <Link href="/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab Planets tickets</Link> or{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets" style={linkStyle}>teamLab Borderless tickets</Link> guide
             to book before they&apos;re gone.
           </p>
         </section>

@@ -1219,7 +1219,8 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             anchor. Day 2 has the Tokyo National Museum in Ueno Park, ¥1,000 for an adult and open
             9:30–17:00 with later Friday and Saturday hours — closed Mondays — read off tnm.jp on{" "}
             {CHECKED}. Day 3 has{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets</Link>, which is
+            teamLab Planets (see our{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide), which is
             indoors throughout, and{" "}
             <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis</Link> inside the
             DECKS building a few minutes away in Odaiba. Day 1&apos;s rooftop is the one stop that rain

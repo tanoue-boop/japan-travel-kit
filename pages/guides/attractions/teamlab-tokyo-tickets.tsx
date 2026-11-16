@@ -33,11 +33,16 @@ const SAME_DAY = teamlabSameDayCards("tokyo", "en");
 // single-museum searchers to the Planets and Borderless guides. The Planets price tiers were
 // re-read on the official store (teamlabplanets.dmm.com/en) on 11 Nov 2026; the Planets
 // hours stay at their 6 Nov reading and the Borderless figures at their 9 Oct reading.
+//
+// 15 Nov 2026 (task jtk-20261115-21): GSC still showed "teamlab planets tickets" queries
+// landing here (329 impressions in 7 days vs 5 on the Planets page). The title, meta and
+// opening no longer lead with the Planets price; they ask "which to book", and the opening
+// sentence links the Planets page with the anchor "teamLab Planets tickets".
 const ROUTE = "/guides/attractions/teamlab-tokyo-tickets";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
-const TITLE = "teamLab Tokyo Tickets 2026: Planets vs Borderless Prices";
+const TITLE = "teamLab Tokyo Tickets 2026: Planets or Borderless, Which to Book?";
 const DESC =
-  "teamLab Tokyo tickets: Planets is from ¥3,800 and Borderless from ¥3,400 per adult, sold separately. Compare hours, kids and door sales, then book one.";
+  "Planets or Borderless? Tokyo's two teamLab museums sell separate tickets. Compare water vs shoes-on art, kids, hours, door sales and cost, then pick one.";
 
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
@@ -79,7 +84,7 @@ const quickQuestions = [
   },
   {
     q: "How long do you need at each teamLab museum?",
-    a: "teamLab publishes no visit length for either museum. Our planning figure is 1.5–2 hours at Planets, including lockers and drying off, and about 2 hours at Borderless; the Planets store also warns of a 30–60 minute wait to be admitted.",
+    a: "teamLab publishes no visit length for either museum. Our planning figure is 1.5–2 hours at Planets, including lockers and drying off, and about 2 hours at Borderless. Add the entry wait at Planets, which our Planets tickets guide covers.",
   },
   {
     q: "How far in advance should you book teamLab tickets?",
@@ -203,12 +208,11 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Tokyo Tickets (2026):<br />Planets vs Borderless, Which to Book
+            teamLab Tokyo Tickets 2026:<br />Planets or Borderless, Which to Book?
           </h1>
           <p className={styles.heroSubtitle}>
-            Tokyo has two teamLab museums, and each sells its own ticket. teamLab Planets costs {P.adult} and
-            teamLab Borderless costs {B.adult} for an adult, so this page compares the two and tells you which one
-            to book.
+            Tokyo has two teamLab museums, and each sells its own ticket. This page sets them side by side and
+            tells you which one to book.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices", "Side by side"].map((t) => (
@@ -235,12 +239,13 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>teamLab Tokyo tickets</strong> are sold separately for two museums: teamLab Planets in
-              Toyosu costs {P.adult} per adult, and teamLab Borderless in Azabudai Hills costs {B.adult} per
-              adult. <strong>Book Planets</strong> if you have children or want to walk barefoot through water;{" "}
-              <strong>book Borderless</strong> if you want to explore art at your own pace with your shoes on.
-              Children aged 4–12 pay {P.child} at either museum, under-4s are free, and only Borderless sells
-              tickets at the door (¥200 more for an adult).
+              <strong>Book teamLab Planets</strong> (Toyosu) if you have children or want to walk barefoot
+              through water; <strong>book teamLab Borderless</strong> (Azabudai Hills) if you want to explore art
+              at your own pace with your shoes on. Already set on Planets? Our{" "}
+              <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Planets tickets</Link>{" "}
+              guide has its prices, time slots and how to book. The two museums sell separate tickets — an adult
+              pays {P.adult} at Planets and {B.adult} at Borderless — children aged 4–12 pay {P.child} at either,
+              under-4s are free, and only Borderless sells tickets at the door (¥200 more for an adult).
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
@@ -254,9 +259,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
         </div>
 
         <p className={styles.bodyText}>
-          This page compares the two museums. Already decided? The{" "}
-          <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link> covers every
-          Planets ticket tier, time slots, what to wear and how to get there, and the{" "}
+          This page only compares the two museums. Planets time slots, the Premium Pass, what to wear and how
+          to get there are in the{" "}
+          <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide, and the{" "}
           <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets guide</Link> covers
           Borderless time slots, the Flexible Pass and buying at the door.
         </p>
@@ -380,7 +385,7 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           ))}
           <p className={styles.bodyText}>
             For the full Planets rules on lockers, rental shorts and changing a booking, see the{" "}
-            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets ticket guide</Link>; for
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide; for
             Borderless closed days and the Flexible Pass, see the{" "}
             <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless ticket guide</Link>.
             Pairing teamLab with a park day? Tokyo Disney tickets are dated too, can sell out by date and have

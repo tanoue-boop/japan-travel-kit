@@ -568,7 +568,8 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>What Should You Do on Day 2? The East Side</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Asakusa early, Skytree late morning, Tsukiji for lunch and Tokyo Tower at night. teamLab Planets in
-            Toyosu fits the afternoon if you want it; without it, spend the afternoon in Ueno Park or back in
+            Toyosu fits the afternoon if you want it (slots and booking in our{" "}
+            <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide); without it, spend the afternoon in Ueno Park or back in
             Asakusa.
           </p>
           <div className={styles.tableWrap}>
