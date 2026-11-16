@@ -780,8 +780,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/samurai-ninja-experience-tokyo",
     badge: "Experience",
-    title: "Samurai and Ninja Experience in Tokyo (2026): Sword Lessons, Where to Go and Tickets",
-    desc: "Museum visit, armour-wearing session or sword lesson — three different things sold under one name, and the one worth booking depends on who you are going with.",
+    title: "Samurai & Ninja Experience Tokyo 2026: Price, Duration & Which to Book",
+    desc: "From ¥3,000 for a 60-minute museum ticket to ¥14,000 for a 3-hour sword and ninja combo in Asakusa — compared by length, minimum age and English, with the session that suits children.",
     group: "experiences",
     city: "tokyo",
   },

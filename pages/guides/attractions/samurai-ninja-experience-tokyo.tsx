@@ -13,28 +13,119 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 // CTA link — Klook affiliate redirect (tracking link, listing confirmed live 19 Oct 2026).
 const SAMURAI_NINJA_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1309228&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F133891-samurai-ninja-museum-tokyo-with-samurai-and-ninja-experience%2F";
 
-// Location, hours, duration and activity list are as the Klook listing describes them,
-// checked 19 Oct 2026. No price is quoted: Klook answers automated reads of its product pages
-// with HTTP 403, so there is no figure here we could have verified.
-const CHECKED = "19 October 2026";
+/*
+ * Prices, durations and age rules (Nov 16 I01) are the operators' own:
+ * - Samurai Ninja Museum Tokyo (MAIKOYA), mai-ko.com tour pages: the price is the "price" in each
+ *   page's Product JSON-LD offer; duration and minimum age from the "Important Information" and FAQ
+ *   text on the same page. Opening hours 9:00–18:30 from the FAQ on the ninja and sword pages.
+ * - SAMURAI've (tate-school.com, Sendagaya): ¥11,000 adult / ¥8,800 under 12, tax included,
+ *   60-minute class, from the "Dates & Fee" block of its English page.
+ * Klook prices are not quoted (site rule); the Klook button opens the listing for the date.
+ */
+const LAST_CHECKED = "2026-11-16";
+const CHECKED = "16 November 2026";
+const TITLE = "Samurai & Ninja Experience Tokyo 2026: Price & Which to Book";
+const H1_LINE1 = "Samurai & Ninja Experience Tokyo 2026:";
+const H1_LINE2 = "Price, Duration & Which to Book";
+const DESCRIPTION =
+  "Samurai and ninja experience in Tokyo: ¥3,000 for a 60-minute museum ticket, ¥5,700 for a 2-hour ninja course, sword lessons from ¥9,000. Ages and booking.";
 
-const typeRows = [
+const MUSEUM_BASIC = "https://mai-ko.com/tour/tokyo-samurai-museum-with-experience-basic-ticket/";
+const MUSEUM_NINJA = "https://mai-ko.com/tour/ninja-experience-in-kyoto-family-kid-friendly/?locale=en";
+const MUSEUM_SWORD = "https://mai-ko.com/tour/samurai-sword-experience-for-adults-in-tokyo/?locale=en";
+const MUSEUM_FAMILY = "https://mai-ko.com/tour/tokyosuper-combo-samurai-and-ninja-lesson-for-kids-and-family/?locale=en";
+const MUSEUM_COMBO = "https://mai-ko.com/tour/samurai_sword_cutting_tameshigiri_experience_tokyo_samurai_museum/?locale=en";
+const MUSEUM_KIMONO = "https://mai-ko.com/tour/combo-samurai-ninja-museum-and-kimono-tea-ceremony-tokyo/?locale=en";
+const SAMURAIVE = "https://tate-school.com/samurai-sword-fight-experience01";
+
+const compareRows = [
   {
-    type: "Museum-style (e.g. Samurai & Ninja Museum)",
-    learn: "Armour dress-up, shuriken throwing, posing with replica swords, guided exhibits",
-    age: "Family-friendly — often from around age 6",
+    name: "Best first pick: Samurai Ninja Museum — Basic Ticket",
+    kind: "Museum + ninja star + armour photos",
+    price: "¥3,000",
+    time: "About 60 min (45–60)",
+    age: "Activities from 3; under 3 free",
+    english: "English-guided group tour",
+    where: "Nishi-Asakusa (2 min from Tawaramachi)",
   },
   {
-    type: "Sword-lesson style (kenbu / iaido)",
-    learn: "Basic sword form, drawing and choreographed movement, certificate on finish",
-    age: "Some venues set a higher minimum (around 10+)",
+    name: "Ninja Experience (Family & Kid Friendly)",
+    kind: "Ninja · shuriken · blowgun",
+    price: "¥5,700",
+    time: "About 120 min incl. tour",
+    age: "From 3; child rate to 12",
+    english: "Tour in English",
+    where: "Asakusa museum",
   },
+  {
+    name: "Samurai Sword Experience",
+    kind: "Samurai sword · kata in hakama",
+    price: "¥9,000",
+    time: "Sword lesson about 30 min, plus the tour",
+    age: "Under 6 cannot enter the dojo",
+    english: "Tour in English",
+    where: "Asakusa museum",
+  },
+  {
+    name: "Super Combo for Kids & Family",
+    kind: "Sword + sword fighting + ninja, 6 activities",
+    price: "¥12,000",
+    time: "About 120 min",
+    age: "From 3; child rate to 12",
+    english: "Tour in English",
+    where: "Asakusa museum",
+  },
+  {
+    name: "Samurai & Ninja Experience Combo",
+    kind: "Iaido basics · sword fight · shuriken · blowgun",
+    price: "¥14,000",
+    time: "About 180 min",
+    age: "From 10",
+    english: "Tour in English",
+    where: "Asakusa museum",
+  },
+  {
+    name: "Museum + Kimono Tea Ceremony combo",
+    kind: "With kimono dressing and photo time",
+    price: "¥9,000",
+    time: "2.5–3 hours (60 + 90 min, 5-min walk)",
+    age: "From 7",
+    english: "Museum tour in English",
+    where: "Asakusa (two venues)",
+  },
+  {
+    name: "SAMURAI've sword-fight (tate) class",
+    kind: "Samurai sword fighting with stage performers",
+    price: "¥11,000 adult / ¥8,800 under 12",
+    time: "60 min",
+    age: "Any age, per the studio",
+    english: "English booking page",
+    where: "Sendagaya (4 min from Kitasando)",
+  },
+];
+
+const sources = [
+  { label: "Basic Ticket", url: MUSEUM_BASIC },
+  { label: "Ninja Experience", url: MUSEUM_NINJA },
+  { label: "Sword Experience", url: MUSEUM_SWORD },
+  { label: "Kids & Family combo", url: MUSEUM_FAMILY },
+  { label: "Samurai & Ninja combo", url: MUSEUM_COMBO },
+  { label: "Kimono tea combo", url: MUSEUM_KIMONO },
+  { label: "SAMURAI've", url: SAMURAIVE },
+];
+
+const kidsRows = [
+  { age: "Under 3", pick: "Come along on an adult's Basic Ticket", why: "Free admission, but under-3s cannot take part in the ninja activities." },
+  { age: "3 to 5", pick: "Basic Ticket or the family Ninja Experience", why: "Both are open from age 3; the sword dojo is not, because under-6s cannot enter it." },
+  { age: "6 to 9", pick: "Samurai Sword Experience or the Kids & Family combo", why: "Old enough for the dojo; the 2-hour combo adds sword fighting with a safe replica." },
+  { age: "7 and up", pick: "Museum + Kimono Tea Ceremony combo", why: "The tea ceremony room takes children from 7; the kimono dressing is part of it." },
+  { age: "10 and up", pick: "3-hour Samurai & Ninja Combo", why: "The longest session, with iaido basics and a controlled sword fight, starts at 10." },
 ];
 
 const whoFor = [
   {
-    title: "Pick a museum experience if…",
-    desc: "You're with family or want a relaxed, do-it-all session. Museum-style venues such as the Samurai & Ninja Museum in the Asakusa/Taito area combine Edo-period exhibits with armour dress-up, shuriken throwing and photo poses with replica swords, guided in English and Japanese.",
+    title: "Book the Basic Ticket if…",
+    desc: "You want one indoor hour near Senso-ji. ¥3,000 covers an English-guided tour of the armour and weapons, ninja-star throwing and soft-armour photos at your own pace, and children from 3 can join everything.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 21h18M4 21V9l8-5 8 5v12" />
@@ -43,8 +134,8 @@ const whoFor = [
     ),
   },
   {
-    title: "Pick a sword lesson if…",
-    desc: "You want to actually handle a blade. Lesson-style sessions — such as kenbu or iaido-inspired classes — teach the basic form of drawing and moving with a sword over roughly an hour, often ending with a certificate. These tend to set a higher minimum age.",
+    title: "Book a sword session if…",
+    desc: "You want to hold a sword rather than pose with one. The ¥9,000 Sword Experience puts you in hakama for about 30 minutes of grip, draw and kata with a replica; the 3-hour ¥14,000 combo adds a controlled sword fight and is for ages 10 and up.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.5 4l5 5-9 9-5 1 1-5z" />
@@ -53,60 +144,37 @@ const whoFor = [
     ),
   },
   {
-    title: "Choose either for a rainy day if…",
-    desc: "The weather turns. These experiences are indoors, run year-round, and sit in central, easy-to-reach parts of the city — a reliable plan when an outdoor day falls through, and an easy add-on near other Asakusa sights.",
+    title: "Book SAMURAI've if…",
+    desc: "You want the film-style sword fight (tate) rather than a museum. The 60-minute class in Sendagaya is run by professional samurai performers, ends with a photo shoot, and is closer to Harajuku than to Asakusa.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 13a4 4 0 0 0 0-8 5 5 0 0 0-9.6 1.3A3.5 3.5 0 0 0 6 13" />
-        <path d="M8 18l-1 2M12 18l-1 2M16 18l-1 2" />
+        <path d="M4 20l7-7M13 11l7-7M15 4h5v5" />
+        <path d="M4 15v5h5" />
       </svg>
     ),
   },
 ];
 
-const steps = [
-  {
-    title: "Decide: samurai, ninja, or both",
-    desc: "Some sessions lean samurai (armour and swords), others ninja (shuriken and stealth themes), and many combine both. Museum-style venues usually let you sample several activities, while a dedicated sword lesson focuses on the samurai side.",
-  },
-  {
-    title: "Choose museum-style or a lesson",
-    desc: "A museum experience mixes guided Edo-period exhibits with hands-on activities — armour dress-up, shuriken throwing and replica-sword poses. A lesson-style class teaches actual sword form and movement over about an hour, often with a certificate at the end.",
-  },
-  {
-    title: "Check the age limit before you book",
-    desc: "Age rules vary by venue. Museum experiences are commonly open from around age six, while the more serious sword-handling classes may require participants to be roughly ten or older. Always confirm the minimum age on the listing if you're bringing children.",
-  },
-  {
-    title: "Book your slot and bring a camera",
-    desc: "Most venues are in central Tokyo — the Samurai & Ninja Museum sits in the Asakusa/Taito area — run year-round indoors, and offer English and Japanese guidance. Reserve a time slot online, then come ready for plenty of photo opportunities in costume.",
-  },
-];
-
 const faqItems = [
   {
-    q: "Where can I do a samurai or ninja experience in Tokyo?",
-    a: "A well-known option is the Samurai & Ninja Museum in the Asakusa/Taito area, which pairs Edo-period exhibits with hands-on activities — armour dress-up, shuriken throwing and posing with replica swords — guided in English and Japanese. Separately, lesson-style classes inspired by kenbu and iaido teach the basics of sword form and movement, usually over about an hour.",
+    q: "How much does a samurai experience in Tokyo cost?",
+    a: `At the Samurai Ninja Museum in Asakusa the Basic Ticket is ¥3,000 for adults, the family Ninja Experience ¥5,700, the Samurai Sword Experience ¥9,000 and the 3-hour Samurai & Ninja Combo ¥14,000. SAMURAI've in Sendagaya lists ¥11,000 for adults and ¥8,800 for under-12s for its 60-minute sword-fight class. Prices from the operators' own pages, checked ${CHECKED}.`,
   },
   {
-    q: "What happens during a samurai and ninja experience?",
-    a: "At a museum-style venue you typically dress up in armour, throw shuriken (ninja throwing stars), learn basic drawing and posing movements with a replica sword, and take photos, alongside a guided look at the exhibits. A dedicated sword lesson goes deeper into the actual form of drawing and moving with a sword and often finishes with a certificate of completion.",
+    q: "How long does a samurai and ninja experience take?",
+    a: "The museum's Basic Ticket takes about 60 minutes (45 to 60 depending on how busy it is), the family Ninja Experience about 120 minutes including the tour, and the Samurai & Ninja Combo about 180 minutes. The SAMURAI've class is 60 minutes; arrive about 15 minutes early.",
   },
   {
-    q: "Is there an age limit for the samurai and ninja experience?",
-    a: "Yes, and it varies by venue. Museum experiences are commonly open from around age six and are family-friendly, while the more hands-on sword-handling classes may set a higher minimum — often around ten years old. If you're visiting with children, check the specific age requirement on the listing and confirm before booking.",
+    q: "What is the minimum age for the samurai and ninja experience?",
+    a: "Age 3 for the museum's Basic Ticket and family Ninja Experience, with the child rate up to 12 and under-3s free but not joining the activities. Children under 6 cannot enter the samurai sword dojo, the kimono tea ceremony combo starts at 7, and the 3-hour combo at 10.",
   },
   {
-    q: "What's the difference between a museum experience and a sword lesson?",
-    a: "A museum experience is broad and beginner-friendly: guided exhibits plus a sample of activities like armour dress-up, shuriken throwing and replica-sword photos, suitable for families. A sword lesson is narrower and more serious — it teaches the basic form of drawing and moving with a sword over roughly an hour, often with a certificate, and tends to have a higher minimum age.",
-  },
-  {
-    q: "Is the samurai and ninja experience suitable for families?",
-    a: "Museum-style experiences are generally well suited to families, often welcoming children from around age six, with activities that keep younger visitors engaged. The deeper sword-handling classes are better for older children and adults, since they may require participants to be around ten or older. Check the age policy for the specific experience you choose.",
+    q: "Do you use a real sword in a samurai experience in Tokyo?",
+    a: "No. The museum uses model and replica weapons for every session, and its FAQ notes that lending a real katana for recreation or training is illegal. If you want a real blade, the museum sells authenticated swords in its shop, but they are not used in the lessons.",
   },
   {
     q: "Do I need to book a samurai or ninja experience in advance?",
-    a: "It's wise to. These are timed, indoor experiences run year-round in central Tokyo, and popular slots fill up — especially family-friendly museum sessions during busy periods. Booking online in advance secures your time and lets you confirm the language of the guide and the minimum age before you arrive.",
+    a: "Yes for the sword sessions and combos, which usually do not take walk-ins. The Basic Ticket accepts walk-ins, but the museum recommends booking, especially in early April and mid-November. A time you cannot select in the calendar is full, and there is no waitlist.",
   },
 ];
 
@@ -116,21 +184,18 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
   return (
     <>
       <Head>
-        <title>Samurai &amp; Ninja Experience in Tokyo (2026): Where to Go</title>
-        <meta
-          name="description"
-          content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons — museum against lesson, age limits and booking."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/samurai-ninja-experience-tokyo" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Samurai & Ninja Experience in Tokyo (2026): Where to Go" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/samurai-ninja-experience-tokyo" />
-        <meta property="og:description" content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons — museum against lesson, age limits and booking." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Samurai & Ninja Experience in Tokyo (2026): Where to Go" />
-        <meta name="twitter:description" content="Samurai and ninja experiences in Tokyo for 2026: armour dress-up, shuriken throwing and sword lessons — museum against lesson, age limits and booking." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -150,7 +215,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/samurai-ninja-experience-tokyo",
-              headline: "Samurai & Ninja Experience in Tokyo (2026): Where to Go",
+              headline: `${H1_LINE1} ${H1_LINE2}`,
               updated,
             }),
           }}
@@ -198,14 +263,14 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Samurai &amp; Ninja Experience in Tokyo (2026):<br />Sword Lessons, Where to Go &amp; Tickets
+            {H1_LINE1}<br />{H1_LINE2}
           </h1>
           <p className={styles.heroSubtitle}>
-            Dress in armour, throw shuriken, and learn the basics of the sword — indoors and year-round in
-            central Tokyo. Here&apos;s how museum experiences and sword lessons differ, and how to book.
+            Seven sessions in Tokyo compared by price, length, minimum age and English — and which one to book
+            for a family, a sword lesson or a film-style sword fight.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Indoor & Year-Round", "English & Japanese"].map((t) => (
+            {[`Updated ${updated.label}`, "Official prices", "Ages 3+"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -230,36 +295,35 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
             <span className={styles.verdictLabel}>Quick Answer</span>
           </div>
           <div className={styles.verdictBody}>
-            <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+            <p className={styles.verdictText} style={{ marginTop: 0 }}>
+              A samurai and ninja experience in Tokyo costs <strong>¥3,000</strong> for the Samurai Ninja
+              Museum&apos;s 60-minute Basic Ticket in Asakusa — an English-guided tour, ninja-star throwing and
+              armour photos — and <strong>¥5,700 to ¥14,000</strong> for its 2-hour ninja course, sword lesson
+              and 3-hour samurai-and-ninja combo. SAMURAI&apos;ve in Sendagaya runs a 60-minute sword-fight class
+              for ¥11,000 an adult. Children can join from 3 at the museum, from 6 in the sword dojo and from
+              10 on the 3-hour combo. Operators&apos; prices, checked {CHECKED}.
+            </p>
+            <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)", marginTop: "1rem" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Two styles</p>
-                <p className={styles.verdictStatValue}>Museum vs sword lesson</p>
+                <p className={styles.verdictStatLabel}>Cheapest</p>
+                <p className={styles.verdictStatValue}>¥3,000 · about 60 min</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Activities</p>
-                <p className={styles.verdictStatValue}>Armour, shuriken, sword form</p>
+                <p className={styles.verdictStatLabel}>Sword lesson</p>
+                <p className={styles.verdictStatValue}>From ¥9,000</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Youngest</p>
+                <p className={styles.verdictStatValue}>Age 3 (dojo: 6)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Where</p>
-                <p className={styles.verdictStatValue}>Central Tokyo (Asakusa/Taito)</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Age limit</p>
-                <p className={styles.verdictStatValue}>Varies — check before booking</p>
+                <p className={styles.verdictStatValue}>Asakusa · Sendagaya</p>
               </div>
             </div>
-            <p className={styles.verdictText}>
-              <strong>In short:</strong> three fairly different things are sold under one name, so decide which
-              you actually want. A museum visit with hands-on extras is the family option — the listing
-              shown sits in Nishi-Asakusa, opens 09:00 to 18:00, suggests about an hour, and covers armour
-              dress-up, throwing a ninja star and posing with replica swords, guided in English and Japanese.
-              A sword lesson in the kenbu or iaido tradition teaches actual form and usually sets a higher
-              minimum age. Both are indoors and run year-round, which makes either a reliable wet-weather
-              plan around Asakusa. Confirm the minimum age before booking. Details as listed on {CHECKED}.
-            </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
-                Browse Samurai &amp; Ninja Experiences →
+                Check Samurai &amp; Ninja Museum dates on Klook →
               </KlookLink>
               <GygCompareButton slug="samurai-ninja-experience-tokyo" listing={gygTokyoSamuraiNinja} />
             </div>
@@ -268,47 +332,35 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
 
         <EsimCtaTop />
 
-        {/* Intro */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What a Samurai &amp; Ninja Experience Involves</h2>
-          <p className={styles.bodyText}>
-            Tokyo&apos;s samurai and ninja experiences let you step into Japan&apos;s warrior past for an hour or
-            two: putting on armour, throwing shuriken, and trying the basic movements of the sword. They&apos;re
-            indoors, run year-round, and sit in easy-to-reach central districts — a dependable plan in any
-            weather and a natural add-on around Asakusa. If the rest of your Asakusa day is in costume too, our{" "}
-            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan</Link> guide compares
-            prices, dressing time and return deadlines in Tokyo and Kyoto.
-          </p>
-          <p className={styles.bodyText}>
-            There are two broad formats. A museum-style venue — such as the Samurai &amp; Ninja Museum in the
-            Asakusa/Taito area — pairs Edo-period exhibits with hands-on activities like armour dress-up and
-            shuriken throwing, guided in English and Japanese. A lesson-style class, drawing on traditions like
-            kenbu and iaido, teaches the actual form of drawing and moving with a sword, often finishing with a
-            certificate. Below we compare the two and explain the age rules to watch for.
-          </p>
-        </section>
-
-        {/* Type table */}
+        {/* Comparison table */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Museum vs lesson</span>
-          <h2 className={styles.sectionTitle}>Museum-Style vs Sword Lesson</h2>
+          <span className={styles.sectionLabel}>Compared</span>
+          <h2 className={styles.sectionTitle}>How Much Does a Samurai or Ninja Experience in Tokyo Cost?</h2>
+          <p className={styles.bodyText}>
+            From ¥3,000 for an hour at the museum to ¥14,000 for three hours of sword and ninja training. The
+            price mostly buys time with a sword: the cheaper tickets are a tour with hands-on extras, the
+            dearer ones a lesson in hakama.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Experience type", "What you do", "Typical age"].map((h) => (
+                    {["Experience", "Type", "Adult price", "Duration", "Minimum age", "English", "Where"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {typeRows.map((row) => (
-                    <tr key={row.type}>
-                      <td className={styles.tdProvider}>{row.type}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.learn}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.age}</td>
+                  {compareRows.map((row) => (
+                    <tr key={row.name}>
+                      <td className={styles.tdProvider}>{row.name}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.kind}</td>
+                      <td className={styles.tdPrice}>{row.price}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.age}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.english}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.where}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -316,15 +368,27 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Formats and age policies vary by venue and are as of 2026 — confirm details at booking. Note that
-            sword-handling classes often set a higher minimum age than family museum experiences.
+            Last checked: {LAST_CHECKED}. Prices are the operators&apos; listed adult prices; the museum shows the
+            price for your date in its booking calendar, and coupons do not apply 16 March–30 April, 1–31
+            October and 20 December–5 January. Sources:{" "}
+            {sources.map((s, i) => (
+              <span key={s.url}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                {i < sources.length - 1 ? " · " : ""}
+              </span>
+            ))}
+            .
           </p>
         </section>
 
         {/* Who is it for */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Which suits you</span>
-          <h2 className={styles.sectionTitle}>Which Experience Should You Pick?</h2>
+          <h2 className={styles.sectionTitle}>Which Samurai or Ninja Experience Should You Book?</h2>
+          <p className={styles.bodyText}>
+            The Basic Ticket for a first visit, a sword session if handling the blade is the point, and
+            SAMURAI&apos;ve for a staged sword fight. All of them are indoors, so any of them works on a wet day.
+          </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -336,34 +400,80 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
           </div>
         </section>
 
-        {/* How to book / steps */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Choose and Book</h2>
-          <div className={styles.stepsList}>
-            {steps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
+        {/* Kids */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>With children</span>
+          <h2 className={styles.sectionTitle}>Which Samurai Experience Is Best for Kids?</h2>
+          <p className={styles.bodyText}>
+            Go by age: the museum&apos;s Basic Ticket and family Ninja Experience take children from 3, the
+            sword dojo from 6 and the 3-hour combo from 10. Children aged 12 and under pay the child rate at
+            the museum.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Child's age", "What to book", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {kidsRows.map((row) => (
+                    <tr key={row.age}>
+                      <td className={styles.tdProvider}>{row.age}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 600 }}>{row.pick}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.why}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Age rules from the{" "}
+            <a href={MUSEUM_BASIC} target="_blank" rel="noopener noreferrer">Samurai Ninja Museum Tokyo</a> tour pages.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            For a whole family trip, our{" "}
+            <Link href="/guides/attractions/tokyo-itinerary-with-kids">Tokyo itinerary with kids</Link> keeps the
+            indoor days movable around the weather, and the{" "}
+            <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3-day itinerary</Link> puts Asakusa on
+            Day 2, where the museum fits between Senso-ji and Skytree.
+          </p>
         </section>
 
-        {/* Age note */}
+        {/* Booking */}
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Good to know</span>
-          <h2 className={styles.sectionTitle}>A Note on Age Limits</h2>
+          <span className={styles.sectionLabel}>Booking</span>
+          <h2 className={styles.sectionTitle}>When Should You Book a Samurai Experience in Tokyo?</h2>
           <p className={styles.bodyText}>
-            Age requirements are the one detail worth checking before you book. Museum-style experiences are
-            usually family-friendly and often welcome children from around age six, while the more serious
-            sword-handling classes may require participants to be roughly ten or older for safety. Policies
-            differ from venue to venue, so always read the minimum age on the listing — especially if
-            you&apos;re booking for younger children.
+            A few days ahead for the Basic Ticket, and as soon as your dates are fixed for a sword session or
+            combo. The museum takes walk-ins on the Basic Ticket but recommends booking, especially in early
+            April and mid-November; the combos usually take no walk-ins at all.
           </p>
+          <ul className={styles.bodyList}>
+            <li><strong>Hours:</strong> tours run every day from 9:00 to 18:30. Arrive at least 5 minutes before your slot; a late arrival may get a shortened session.</li>
+            <li><strong>Full slots:</strong> a time you cannot select in the calendar is fully booked. There is no waitlist, and cancellations reappear in the calendar — the museum suggests its Shinjuku branch when Asakusa is full.</li>
+            <li><strong>Language:</strong> the tour is a shared group tour in English, and interpreting for your group during it is not allowed; book a private session if someone needs a translation.</li>
+            <li><strong>Luggage:</strong> large suitcases cannot be stored at the museum, so use a coin locker at the station first.</li>
+            <li><strong>Kimono:</strong> guests coming from MAIKOYA&apos;s kimono tea ceremony in Asakusa can keep the kimono on for the sword session.</li>
+          </ul>
+          <p className={styles.bodyText}>
+            The museum is a 2-minute walk from Tawaramachi on the Ginza Line and 8 minutes from Asakusa Station,
+            so it sits inside a{" "}
+            <Link href="/guides/attractions/asakusa-kimono-rental">kimono day in Asakusa</Link> or ahead of an
+            afternoon on an{" "}
+            <Link href="/guides/attractions/akihabara-anime-tour">Akihabara anime tour</Link>. For the rest of the
+            city, see{" "}
+            <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link>.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              Check Samurai &amp; Ninja Museum dates on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* FAQ */}
@@ -391,8 +501,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
           tours={[skytreeTicket, tokyoSightseeingBusTour, tokyoSubwayTicket]}
         />
 
-        {/* The same museums, plus the Shinjuku branch, on a second platform. The Klook
-            link and the age-limit advice above are unchanged. */}
+        {/* The same museums, plus the Shinjuku branch, on a second platform. */}
         <GygCompare
           slug="samurai-ninja-experience-tokyo"
           heading="Samurai and Ninja Experiences on GetYourGuide"
@@ -526,7 +635,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Getting Around Tokyo (2026): Trains, Subway &amp; IC Cards Explained</p>
+                <p className={styles.relatedTitle}>How to Get Around Tokyo (2026): Trains, Subway Fares &amp; Which Pass</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

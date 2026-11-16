@@ -605,6 +605,10 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             Day 2 is also the day for a{" "}
             <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link>: the kimono
             sessions are in Asakusa, and one private-room session is in Toyosu near teamLab Planets.
+            The Samurai Ninja Museum is a two-minute walk from Tawaramachi, one stop from Asakusa on the
+            Ginza Line, and its basic ticket runs about 60 minutes indoors — our{" "}
+            <Link href="/guides/attractions/samurai-ninja-experience-tokyo">samurai and ninja experience in Tokyo</Link>{" "}
+            guide compares it with the 2- and 3-hour sword sessions.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

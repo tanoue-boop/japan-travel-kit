@@ -674,7 +674,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             48-hour ticket. Toei Subway sets its own fares; the official sources checked do not give a current
             Toei table, so none is printed. Our{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> guide covers
-            collection and the 24- and 72-hour versions.
+            collection and the 24- and 72-hour versions. For the JR side — the Yamanote Line, which the pass
+            does not cover, starts at ¥155 on an IC card since March 2026 — see our guide on{" "}
+            <Link href="/guides/transport/tokyo-transportation">how to get around Tokyo</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>

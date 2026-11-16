@@ -297,6 +297,11 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
                 Tokyo Metro, N&apos;EX and JR Pass prices re-read on the official sites on {CHECKED}; the other fares are
                 the dated figures on the guide each row links to.
               </p>
+              <p className={styles.bodyText}>
+                This page covers Japan as a whole. For the trains inside one city — JR from ¥155 and Tokyo Metro
+                from ¥178 on an IC card, and about ¥620–¥840 for a day of four rides — see{" "}
+                <Link href="/guides/transport/tokyo-transportation">how to get around Tokyo</Link>.
+              </p>
             </section>
             <KlookTripPrep
               label="Before you land"

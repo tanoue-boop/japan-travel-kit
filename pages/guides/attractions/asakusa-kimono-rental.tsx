@@ -514,7 +514,10 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> is the natural
             indoor pairing and runs under an hour;{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree</Link> is across the
-            river and stays open long after the kimono is back; and our{" "}
+            river and stays open long after the kimono is back; the Samurai Ninja Museum in
+            Nishi-Asakusa is the other indoor hour nearby, and our{" "}
+            <Link href="/guides/attractions/samurai-ninja-experience-tokyo">samurai and ninja experience in Tokyo</Link>{" "}
+            guide compares its sessions by length and minimum age; and our{" "}
             <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3 day itinerary</Link> puts
             the Asakusa half day where it belongs in a short trip.
           </p>

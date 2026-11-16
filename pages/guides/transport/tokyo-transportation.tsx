@@ -8,24 +8,63 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
-const keyRoutes = [
-  { from: "Shinjuku", to: "Shibuya",    line: "Yamanote Line",  time: "5 min",  price: "¥160" },
-  { from: "Tokyo",    to: "Ueno",       line: "Yamanote Line",  time: "8 min",  price: "¥160" },
-  { from: "Shinjuku", to: "Akihabara",  line: "Chuo/Sobu Line", time: "20 min", price: "¥220" },
-  { from: "Shibuya",  to: "Harajuku",   line: "Yamanote Line",  time: "2 min",  price: "¥160" },
-  { from: "Asakusa",  to: "Shinjuku",   line: "Toei Oedo Line", time: "40 min", price: "¥280" },
+/*
+ * Scope (Nov 16 I01): this page answers "how do I get around inside Tokyo" — lines, what a ride
+ * costs, IC cards and a day's budget. Japan-wide fares and passes are the /guides/transport hub;
+ * the Tokyo Subway Ticket's ride-by-ride break-even is /guides/attractions/tokyo-subway-ticket.
+ *
+ * Fares, all checked 16 November 2026:
+ * - JR East: fare table in its 1 Aug 2025 approval release (20250801_ho03.pdf), in force since
+ *   14 March 2026 — 1–3 km ¥155 IC / ¥160 ticket, 4–6 km ¥199 / ¥200, 7–10 km ¥209 / ¥210; the
+ *   old "Yamanote Line" fare band was merged into the trunk-line band.
+ * - Tokyo Free Kippu ¥1,720 (child ¥860) from 14 March 2026: JR East pamphlet2.pdf.
+ * - Tokyo Metro single fares and the Metro / Toei passes: tokyometro.jp, the same figures the
+ *   Tokyo Subway Ticket guide re-read on 16 November 2026 (¥1,000 / ¥1,500 / ¥2,000 since 14 March).
+ * Route fares below are the band for each pair's JR / Metro distance (Shibuya–Harajuku 1.2 km,
+ * Shinjuku–Shibuya 3.4 km, Tokyo–Ueno 3.6 km, Ginza Line Asakusa–Shibuya 14.2 km).
+ */
+const METRO_CHECKED = "16 November 2026";
+const LAST_CHECKED = "2026-11-16";
+const JR_FARES = "https://www.jreast.co.jp/press/2025/20250801_ho03.pdf";
+const JR_PASSES = "https://www.jreast.co.jp/2026unchin-kaitei/assets/pdf/pamphlet2.pdf";
+const METRO_FARES = "https://www.tokyometro.jp/en/ticket/regular/index.html";
+const METRO_PASSES = "https://www.tokyometro.jp/en/ticket/travel/index.html";
+
+const TITLE = "How to Get Around Tokyo 2026: Train Fares, Suica & Passes";
+const H1_LINE1 = "How to Get Around Tokyo (2026):";
+const H1_LINE2 = "Trains, Subway Fares & Which Pass";
+const DESCRIPTION =
+  "How to get around Tokyo in 2026: JR rides from ¥155 and Tokyo Metro from ¥178 on Suica, about ¥620–¥840 a day, key routes and when a subway pass pays off.";
+
+const fareRows = [
+  { op: "Most central hops (either network)", band: "Up to about 10 km", ic: "¥155–¥209", ticket: "¥160–¥210" },
+  { op: "JR East (Yamanote, Chuo, Sobu)", band: "1–3 km", ic: "¥155", ticket: "¥160" },
+  { op: "JR East", band: "4–6 km", ic: "¥199", ticket: "¥200" },
+  { op: "JR East", band: "7–10 km", ic: "¥209", ticket: "¥210" },
+  { op: "Tokyo Metro", band: "1–6 km", ic: "¥178", ticket: "¥180" },
+  { op: "Tokyo Metro", band: "7–11 km", ic: "¥209", ticket: "¥210" },
+  { op: "Tokyo Metro", band: "12–19 km", ic: "¥252", ticket: "¥260" },
 ];
 
-// Tokyo Metro and Tokyo Subway Ticket prices read off tokyometro.jp on 8 November 2026
-// (/en/ticket/travel/, /en/ticket/1day/, /en/ticket/regular/). The Tokyo Subway Ticket
-// break-even table lives on /guides/attractions/tokyo-subway-ticket only.
-const METRO_CHECKED = "8 November 2026";
+const dailyRows = [
+  { day: "Typical sightseeing day: 4 rides", payg: "About ¥620–¥840", better: "Pay as you go, or the 72-hour Subway Ticket (¥667 a day) if all 4 are subway" },
+  { day: "Light day: 2 rides", payg: "About ¥310–¥420", better: "Pay as you go" },
+  { day: "Busy day: 6 rides", payg: "About ¥930–¥1,250", better: "Tokyo Subway Ticket if they are Metro / Toei rides" },
+  { day: "Mostly JR (Yamanote loop)", payg: "¥155–¥209 a ride", better: "Suica or PASMO — the Subway Ticket does not cover JR" },
+];
+
+const keyRoutes = [
+  { from: "Shibuya",  to: "Harajuku", line: "JR Yamanote Line",   time: "2 min",  price: "¥155" },
+  { from: "Shinjuku", to: "Shibuya",  line: "JR Yamanote Line",   time: "5 min",  price: "¥199" },
+  { from: "Tokyo",    to: "Ueno",     line: "JR Yamanote Line",   time: "8 min",  price: "¥199" },
+  { from: "Asakusa",  to: "Shibuya",  line: "Tokyo Metro Ginza Line", time: "About 30 min", price: "¥252" },
+];
 
 const dayPasses = [
   { pass: "Tokyo Subway Ticket (24 / 48 / 72-hour)", price: "¥1,000 / ¥1,500 / ¥2,000", covers: "Tokyo Metro + Toei Subway, from first use", worth: "Often (72-hour)" },
   { pass: "Tokyo Metro 24-hour Ticket", price: "¥700", covers: "Tokyo Metro only, 24 hours from first use", worth: "Sometimes" },
   { pass: "Common One-day Ticket (Metro & Toei)", price: "¥1,100", covers: "Tokyo Metro + Toei Subway, one day", worth: "Sometimes" },
-  { pass: "Tokyo Free Kippu",  price: "¥1,600", covers: "All Tokyo lines (JR + Metro + Toei)", worth: "Rarely" },
+  { pass: "Tokyo Free Kippu",  price: "¥1,720", covers: "JR in the 23 wards + Tokyo Metro + Toei, one day", worth: "Rarely" },
 ];
 
 const subwayVsIcRows = [
@@ -92,35 +131,23 @@ const trainTips = [
 const faqItems = [
   {
     q: "What is the best way to get around Tokyo?",
-    a: "An IC card (Suica or Pasmo) loaded with credit is the single most useful thing for navigating Tokyo. It works on every train, subway, bus, and even in convenience stores. Tap in at the turnstile, tap out when you exit, and the correct fare is deducted automatically — no need to buy individual tickets.",
+    a: "By train, paying with a Suica or PASMO IC card. The same card works on JR East (including the Yamanote Line), Tokyo Metro, Toei Subway and local buses: tap in, tap out, and the fare is taken automatically, so you never need to work out a ticket price or which company runs the line.",
   },
   {
-    q: "Should I get a day pass for Tokyo trains?",
-    a: "For most tourists, day passes rarely save money. The Tokyo Metro 24-hour Ticket (¥700 adult on tokyometro.jp, checked 8 November 2026) only makes sense if you take four or more Metro journeys inside 24 hours, since the shortest Metro ride is ¥178 on an IC card. The Tokyo Free Kippu (¥1,600) covers all lines but is almost never worth it unless you're doing an unusually busy day of sightseeing. An IC card with pay-as-you-go is more flexible for most itineraries.",
+    q: "How much is a train ride in Tokyo?",
+    a: `¥155 to ¥209 on an IC card for most central hops. JR East's fares since 14 March 2026 are ¥155 for 1–3 km, ¥199 for 4–6 km and ¥209 for 7–10 km (¥160 / ¥200 / ¥210 on a paper ticket), and Tokyo Metro charges ¥178 for 1–6 km and ¥209 for 7–11 km. Checked on jreast.co.jp and tokyometro.jp, ${METRO_CHECKED}.`,
   },
   {
-    q: "Can I use Suica on all Tokyo trains?",
-    a: "Yes. Suica (and Pasmo) work on all major train and subway operators in Tokyo — JR East, Tokyo Metro, Toei Subway, and most private railways. You can also use it on local buses. The only place Suica doesn't work is on long-distance shinkansen or special rapid trains that require a separate ticket.",
+    q: "How much does transport cost per day in Tokyo?",
+    a: "About ¥620 to ¥840 for a typical day of four train rides paid by IC card, and roughly ¥930 to ¥1,250 for a busy day of six. A pass only beats that when most of the rides are on the subway: the 72-hour Tokyo Subway Ticket works out at ¥667 a day, but it does not cover JR lines.",
   },
   {
     q: "How do I get from Shinjuku to Shibuya?",
-    a: "The fastest route is the Yamanote Line — just 5 minutes and ¥160 with an IC card. Trains run every 2–4 minutes during the day. From Shinjuku station, follow signs for the Yamanote Line (circular green line) and take a train in the direction of Osaki or Shinagawa.",
-  },
-  {
-    q: "Is Google Maps accurate for Tokyo trains?",
-    a: "Yes, very accurate. Google Maps has real-time Tokyo train schedules, shows transfer instructions, fare estimates, and even carriage position recommendations. It's the most widely used navigation tool by both tourists and locals in Tokyo. Download offline maps for your area as a backup.",
+    a: "Take the JR Yamanote Line: about 5 minutes and ¥199 on an IC card (¥200 by ticket), since the 3.4 km trip falls in JR East's 4–6 km fare band. From Shinjuku, follow the green Yamanote Line signs and board a train towards Shibuya and Shinagawa.",
   },
   {
     q: "Is the Tokyo Subway Ticket worth it?",
-    a: "Usually on the 72-hour version. The official adult prices are ¥1,000 (24-hour), ¥1,500 (48-hour) and ¥2,000 (72-hour), and Tokyo Metro single rides cost ¥178–¥209 on an IC card for trips up to 11 km (tokyometro.jp, checked 8 November 2026). That puts break-even at five or six rides for the 24-hour ticket and about four a day for the 72-hour one. If you rely heavily on the JR Yamanote Line, a pay-as-you-go Suica or Pasmo is cheaper. The ride-by-ride break-even table is in the Tokyo Subway Ticket guide.",
-  },
-  {
-    q: "What does the Tokyo Subway Ticket cover?",
-    a: "It covers unlimited rides on all 9 Tokyo Metro lines and all 4 Toei Subway lines for 24, 48, or 72 hours from first use (a 24-hour pass first tapped at 3pm is valid until 3pm the next day). It does not cover JR lines (including the Yamanote Line) or private railways. For trips that mix subway and JR, an IC card handles both automatically.",
-  },
-  {
-    q: "Where can I buy the Tokyo Subway Ticket?",
-    a: "Tokyo Metro's official page sells it online, as a standard ticket or as a QR version that is sent to your phone; since 25 March 2026 the QR version can be used on Tokyo Metro and Toei Subway lines directly. Klook also sells it, with the collection or QR instructions on the listing for your date. It is sold to overseas visitors and to Japanese residents living outside Tokyo and the seven neighbouring prefectures the official page lists.",
+    a: `Usually on the 72-hour version. The adult prices are ¥1,000 (24-hour), ¥1,500 (48-hour) and ¥2,000 (72-hour) since 14 March 2026, against ¥178–¥209 for most Tokyo Metro rides on an IC card, so the 72-hour ticket pays off from about four subway rides a day. It does not cover JR, so a Yamanote-heavy trip is cheaper on Suica. Prices from tokyometro.jp, checked ${METRO_CHECKED}; the ride-by-ride table is in the Tokyo Subway Ticket guide.`,
   },
 ];
 
@@ -130,21 +157,21 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>Getting Around Tokyo 2026: Trains, Subway &amp; IC Cards</title>
+        <title>{TITLE}</title>
         <meta
           name="description"
-          content="How to get around Tokyo in 2026: the Yamanote Line, Tokyo Metro, IC cards and the routes you will actually use, with fares read off the operators' sites."
+          content={DESCRIPTION}
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" />
-        <meta property="og:title" content="Getting Around Tokyo 2026: Trains, Subway & IC Cards" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" />
-        <meta property="og:description" content="How to get around Tokyo in 2026: the Yamanote Line, Tokyo Metro, IC cards and the routes you will actually use, with fares read off the operators' sites." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Getting Around Tokyo 2026: Trains, Subway & IC Cards" />
-        <meta name="twitter:description" content="How to get around Tokyo in 2026: the Yamanote Line, Tokyo Metro, IC cards and the routes you will actually use, with fares read off the operators' sites." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -164,7 +191,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/transport/tokyo-transportation",
-              headline: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained",
+              headline: `${H1_LINE1} ${H1_LINE2}`,
               updated,
             }),
           }}
@@ -179,7 +206,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Transport", item: "https://www.japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "Getting Around Tokyo", item: "https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" },
+                { "@type": "ListItem", position: 4, name: "How to Get Around Tokyo", item: "https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" },
               ],
             }),
           }}
@@ -201,7 +228,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>Getting Around Tokyo</span>
+          <span className={styles.breadCurrent}>How to Get Around Tokyo</span>
         </div>
       </div>
 
@@ -212,13 +239,14 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Getting Around Tokyo (2026):<br />Trains, Subway &amp; IC Cards Explained
+            {H1_LINE1}<br />{H1_LINE2}
           </h1>
           <p className={styles.heroSubtitle}>
-            Tokyo has the world&apos;s most complex train network — but once you know the basics, it&apos;s surprisingly easy to navigate.
+            Getting around inside Tokyo: what a ride costs on JR and the subway, which IC card to tap, a day&apos;s
+            transport budget and the routes visitors use most.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "All Train Lines", "Subway Ticket Included"].map((t) => (
+            {[`Updated ${updated.label}`, "2026 fares", "Inside Tokyo"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -234,18 +262,25 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             <span className={styles.verdictLabel}>Quick Answer</span>
           </div>
           <div className={styles.verdictBody}>
-            <div className={styles.verdictGrid}>
+            <p className={styles.verdictText} style={{ marginTop: 0 }}>
+              The way to get around Tokyo is by train with a Suica or PASMO card, which works on JR, Tokyo Metro,
+              Toei Subway and buses. A JR ride starts at <strong>¥155</strong> on an IC card (¥160 by ticket)
+              since the 14 March 2026 fare rise, and a Tokyo Metro ride at <strong>¥178</strong>, so most central
+              hops cost ¥155–¥209. A sightseeing day of four rides comes to about <strong>¥620–¥840</strong>; a
+              pass only pays off on days that are mostly subway. Fares checked {METRO_CHECKED}.
+            </p>
+            <div className={styles.verdictGrid} style={{ marginTop: "1rem" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best Option</p>
-                <p className={styles.verdictStatValue}>IC Card (Suica / Pasmo)</p>
+                <p className={styles.verdictStatLabel}>Pay with</p>
+                <p className={styles.verdictStatValue}>Suica / PASMO</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Most Useful Line</p>
-                <p className={styles.verdictStatValue}>Yamanote Line</p>
+                <p className={styles.verdictStatLabel}>Minimum fare (IC)</p>
+                <p className={styles.verdictStatValue}>JR ¥155 · Metro ¥178</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Day Pass Worth It?</p>
-                <p className={styles.verdictStatValue}>Rarely for most tourists</p>
+                <p className={styles.verdictStatLabel}>Per day, 4 rides</p>
+                <p className={styles.verdictStatValue}>About ¥620–¥840</p>
               </div>
             </div>
             <KlookLink
@@ -259,12 +294,98 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        {/* Fares */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Fares</span>
+          <h2 className={styles.sectionTitle}>How Much Is a Train Ride in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            ¥155 to ¥209 on an IC card for most rides inside central Tokyo. Fares go by distance, and since 14
+            March 2026 the JR lines inside the Yamanote loop use the same fare table as the rest of JR East&apos;s
+            main lines.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Operator", "Distance", "Adult IC fare", "Adult ticket"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {fareRows.map((row) => (
+                    <tr key={`${row.op}-${row.band}`}>
+                      <td className={styles.tdProvider}>{row.op}</td>
+                      <td>{row.band}</td>
+                      <td className={styles.tdPrice}>{row.ic}</td>
+                      <td>{row.ticket}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. JR East fares from its{" "}
+            <a href={JR_FARES} target="_blank" rel="noopener noreferrer">fare revision release</a> (in force since
+            14 March 2026); Tokyo Metro fares from{" "}
+            <a href={METRO_FARES} target="_blank" rel="noopener noreferrer">tokyometro.jp</a>. Toei Subway sets its
+            own fares.
+          </p>
+        </section>
+
+        {/* Per day */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Budget</span>
+          <h2 className={styles.sectionTitle}>How Much Does Transport Cost per Day in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            About ¥620–¥840 for a typical day of four rides paid by IC card. The figures below multiply the fares
+            above; a pass is only cheaper on a day that is mostly Tokyo Metro and Toei.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Your day", "Pay as you go (IC)", "Cheaper option"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {dailyRows.map((row) => (
+                    <tr key={row.day}>
+                      <td className={styles.tdProvider}>{row.day}</td>
+                      <td className={styles.tdPrice}>{row.payg}</td>
+                      <td>{row.better}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Tokyo Subway Ticket price from{" "}
+            <a href={METRO_PASSES} target="_blank" rel="noopener noreferrer">tokyometro.jp</a>. For the airport legs,
+            the shinkansen and the JR Pass, the{" "}
+            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>{" "}
+            has the nationwide fares; for a whole trip&apos;s numbers, see the{" "}
+            <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo trip cost</Link>{" "}
+            breakdown.
+          </p>
+        </section>
+
         <EsimCtaTop />
 
         {/* Tokyo Network Basics */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>Tokyo&apos;s Train Network: The Basics</h2>
+          <h2 className={styles.sectionTitle}>Which Train Lines Will You Use in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            Three networks: JR East, Tokyo Metro and Toei Subway. One IC card covers all three, so the only
+            thing the split changes is the fare.
+          </p>
           <div className={styles.whoForGrid}>
             {tokyoLines.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -276,17 +397,14 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.5rem" }}>
             The good news: you don&apos;t need to memorise all of this. An IC card works across all operators,
-            and Google Maps handles routing automatically. Just tap in, follow the map, and tap out. For the trips
-            beyond Tokyo — the shinkansen, the airport trains and which rail pass to buy — the{" "}
-            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>{" "}
-            puts the fares side by side.
+            and Google Maps handles routing automatically. Just tap in, follow the map, and tap out.
           </p>
         </section>
 
         {/* Yamanote Line */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Essential line</span>
-          <h2 className={styles.sectionTitle}>The Yamanote Line</h2>
+          <h2 className={styles.sectionTitle}>Why Is the Yamanote Line the Most Useful Line?</h2>
           <p className={styles.bodyText}>
             The Yamanote Line is the green circular JR line that loops around central Tokyo. It&apos;s the single most
             useful line for tourists and connects almost every major destination in one continuous loop.
@@ -308,16 +426,16 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
         {/* Metro & Toei */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Subway</span>
-          <h2 className={styles.sectionTitle}>Tokyo Metro &amp; Toei Subway</h2>
+          <h2 className={styles.sectionTitle}>How Do Tokyo Metro and Toei Subway Differ?</h2>
           <p className={styles.bodyText}>
             Tokyo Metro operates 9 lines covering central and eastern Tokyo, including the Ginza Line (oldest subway
             in Asia), Hibiya Line, and Chiyoda Line. Toei Subway adds 4 more lines, including the Oedo Line which
             reaches Roppongi, Shinjuku, and Asakusa in a loop shape.
           </p>
           <p className={styles.bodyText}>
-            The practical difference for tourists: Tokyo Metro and Toei are separate companies, so a journey
-            requiring a transfer between the two will be charged as two separate fares. An IC card handles this
-            automatically — you don&apos;t need to think about it.
+            The practical difference for visitors: Tokyo Metro and Toei are separate companies with separate fare
+            tables, and the cheaper Tokyo Metro 24-hour Ticket does not cover the Toei lines. An IC card works out
+            the fare on either automatically.
           </p>
           <p className={styles.bodyText}>
             The <strong>Tokyo Metro 24-hour Ticket (¥700 adult, ¥350 child)</strong> covers all 9 Metro lines unlimited
@@ -332,7 +450,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
         {/* IC Card section */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>IC cards</span>
-          <h2 className={styles.sectionTitle}>IC Card in Tokyo: Suica vs Pasmo</h2>
+          <h2 className={styles.sectionTitle}>Suica or PASMO: Which IC Card Do You Need in Tokyo?</h2>
           <p className={styles.bodyText}>
             <strong>Suica</strong> (issued by JR East) and <strong>Pasmo</strong> (issued by Tokyo Metro and private railways)
             are interchangeable for all practical purposes in Tokyo. Both work on every train, subway, bus, and in most
@@ -363,7 +481,11 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
         {/* Key Routes */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Key routes</span>
-          <h2 className={styles.sectionTitle}>Getting Around: Key Routes</h2>
+          <h2 className={styles.sectionTitle}>How Long and How Much Are the Main Tokyo Routes?</h2>
+          <p className={styles.bodyText}>
+            Under ¥260 on an IC card for each of these: the short JR hops on the Yamanote Line cost ¥155–¥199
+            and Asakusa to Shibuya across the city on the Ginza Line ¥252.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -389,7 +511,8 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-faint)" }}>
-            Prices shown are approximate IC card fares. Cash ticket fares are slightly higher.
+            Adult IC fares for each trip&apos;s distance band; paper tickets cost ¥1–¥8 more. Times are typical
+            journey times. Last checked: {LAST_CHECKED}; fares from the JR East and Tokyo Metro sources above.
           </p>
         </section>
 
@@ -403,7 +526,11 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
         {/* Day Passes */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Day passes</span>
-          <h2 className={styles.sectionTitle}>Day Pass Options in Tokyo</h2>
+          <h2 className={styles.sectionTitle}>Is a Day Pass Worth It in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            Rarely, unless the day is mostly subway. Pay as you go with an IC card for JR-heavy or light days; the
+            72-hour Tokyo Subway Ticket is the one pass that often pays.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -428,8 +555,11 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Adult prices. Tokyo Subway Ticket, Tokyo Metro 24-hour Ticket and Common One-day Ticket prices read off
-            tokyometro.jp on {METRO_CHECKED}; children pay half.
+            Last checked: {LAST_CHECKED}. Adult prices; children pay half. Tokyo Subway Ticket, Tokyo Metro 24-hour
+            Ticket and Common One-day Ticket from{" "}
+            <a href={METRO_PASSES} target="_blank" rel="noopener noreferrer">tokyometro.jp</a>; Tokyo Free Kippu
+            (¥1,600 before 14 March 2026) from JR East&apos;s{" "}
+            <a href={JR_PASSES} target="_blank" rel="noopener noreferrer">2026 price list</a>.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             For most tourists, pay-as-you-go with an IC card is cheaper and more flexible. Day passes only make
@@ -491,7 +621,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
         {/* Tips */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Practical tips</span>
-          <h2 className={styles.sectionTitle}>Tips for Using Tokyo Trains</h2>
+          <h2 className={styles.sectionTitle}>How Do You Avoid the Rush Hour and Other Train Mistakes?</h2>
           <div className={styles.stepsList}>
             {trainTips.map((tip, i) => (
               <div key={i} className={styles.stepCard}>

@@ -645,6 +645,13 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            A third indoor option for a wet afternoon is a{" "}
+            <Link href="/guides/attractions/samurai-ninja-experience-tokyo">samurai and ninja experience in Tokyo</Link>:
+            the Samurai Ninja Museum in Asakusa takes children from age 3 on its basic ticket and family ninja
+            course, but its adult sword lesson keeps under-6s out of the dojo — the guide sets out which
+            session fits which age.
+          </p>
         </section>
 
         {/* Day by day */}

@@ -530,7 +530,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             <li><strong>A park day:</strong> <Link href="/guides/attractions/tokyo-disney-tickets" style={linkStyle}>Tokyo Disney</Link>, <Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>Sanrio Puroland</Link> or indoor <Link href="/guides/attractions/tokyo-joypolis-tickets" style={linkStyle}>Tokyo Joypolis</Link>.</li>
             <li><strong>Studio Ghibli:</strong> the Ghibli Museum in Mitaka is in Tokyo; the much larger <Link href="/guides/attractions/ghibli-park-tickets" style={linkStyle}>Ghibli Park tickets</Link> are for a park near Nagoya, sold two months ahead on the 10th.</li>
             <li><strong>An evening out:</strong> a <Link href="/guides/attractions/tokyo-night-food-tour" style={linkStyle}>night food tour</Link> through Omoide Yokocho and Golden Gai.</li>
-            <li><strong>Something hands-on:</strong> a <Link href="/guides/attractions/tokyo-go-kart" style={linkStyle}>Tokyo go kart</Link> tour if you hold the right permit.</li>
+            <li><strong>Something hands-on:</strong> a <Link href="/guides/attractions/tokyo-go-kart" style={linkStyle}>Tokyo go kart</Link> tour if you hold the right permit, or a <Link href="/guides/attractions/samurai-ninja-experience-tokyo" style={linkStyle}>samurai and ninja experience in Tokyo</Link> — about an hour at the Asakusa museum, indoors and open to children from 3.</li>
           </ul>
         </section>
 
