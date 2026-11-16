@@ -20,9 +20,26 @@ import { itemListJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, TRANSLATED_PAGES, editionGuideCount, editionPageCount, zhDateLabel, zhMonthLabel } from "../../../../lib/i18n";
 
 const ROUTE = "/zh-cn/guides/attractions";
-const TITLE = "日本景点门票价格 2026｜涩谷SKY、teamLab、迪士尼预约指南";
+// task-jtk-20261116-R02: same structure as the English hub — "which Japan attraction
+// tickets to book in advance, and when" — title, answer, booking-window table and FAQ.
+const TITLE = "日本景点门票 2026：哪些要提前预约、何时开售与票价";
 const DESC =
-  "日本景点门票价格 2026：涩谷SKY ¥2,700 起、teamLab ¥3,400 起、东京迪士尼 ¥8,900 起，哪些必须提前订、在哪里订。";
+  "日本景点门票哪些要提前预约：吉卜力美术馆每月10日开售、东京迪士尼与环球影城约2个月前、SHIBUYA SKY 2周前。按城市整理成表，附官方来源。";
+
+/** Booking windows read on each official site on this date (same sources as the English hub). */
+const CHECKED = "2026-11-16";
+const inline = { color: "var(--text)", fontWeight: 600 } as const;
+
+type WindowRow = { name: string; city: string; opens: string; onTheDay: string; href: string; guide: string; source: string };
+const windowRows: WindowRow[] = [
+  { name: "吉卜力美术馆", city: "东京（三鹰）", opens: "每月 10 日 10:00（日本时间）开售下个月整月", onTheDay: "没有——只接受预约，馆内不售票", href: "/zh-cn/guides/attractions/things-to-do-tokyo", guide: "东京必去景点", source: "https://www.ghibli-museum.jp/en/tickets/" },
+  { name: "吉卜力公园", city: "名古屋", opens: "2 个月前的 10 日 14:00（日本时间）", onTheDay: "没有——一律须事先预约", href: "/guides/attractions/ghibli-park-tickets", guide: "Ghibli Park tickets（英文）", source: "https://ghibli-park.jp/en/ticket/" },
+  { name: "东京迪士尼乐园・海洋", city: "东京（舞滨）", opens: "每天 14:00（日本时间）开售 2 个月后的同一天", onTheDay: "有余票时只能在官网或 App 买；园区不售票（迪士尼酒店住客除外）", href: "/zh-cn/guides/attractions/tokyo-disney-tickets", guide: "东京迪士尼门票", source: "https://www.tokyodisneyresort.jp/en/ticket/index.html" },
+  { name: "日本环球影城（Studio Pass、快速通关）", city: "大阪", opens: "入园日约 2 个月前", onTheDay: "只能网上购买，可能售罄——售票亭自 2025 年 5 月 6 日起停售", href: "/zh-cn/guides/attractions/usj-tickets-express-pass", guide: "环球影城快速通关", source: "https://www.usj.co.jp/company/company_e/news/2025/0425/" },
+  { name: "teamLab 无界", city: "东京（麻布台之丘）", opens: "入场日 2 个月前的月初（1 日前后）", onTheDay: "不建议指望——官方 FAQ 提醒可能售罄", href: "/zh-cn/guides/attractions/teamlab-borderless-tickets", guide: "teamLab 无界门票", source: "https://www.teamlab.art/faq/tokyo/" },
+  { name: "SHIBUYA SKY", city: "东京（涩谷）", opens: "入场日 2 周前的 0:00（日本时间）", onTheDay: "有——售票柜台与网上都可购买", href: "/zh-cn/guides/attractions/shibuya-sky-tickets", guide: "SHIBUYA SKY 门票", source: "https://www.shibuya-scramble-square.com/sky/ticket/" },
+  { name: "华纳兄弟东京影城（哈利·波特）", city: "东京（练马）", opens: "官网提前销售；官方建议预约，日期与时段可能售罄", onTheDay: "有——现场售票处，未售罄时", href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", guide: "Warner Bros. Studio Tour（英文）", source: "https://www.wbstudiotour.jp/en/tickets/" },
+];
 
 // The hub is the entry point for the ten-page 简体中文 edition, so it lists exactly
 // those ten and nothing else — a hub that links mostly to English pages is not a
@@ -112,19 +129,23 @@ const hubRoutes = groups.flatMap((g) => g.routes);
 const faqItems: FaqItem[] = [
   {
     q: "日本哪些景点门票一定要提前订？",
-    a: "会售罄的是指定日期与时段的那几个：东京迪士尼（指定日期，门口完全不卖票）、两座 teamLab 美术馆（指定时段）、SHIBUYA SKY 的日落时段，以及日本环球影城（2025 年 5 月起当天门口不再售票）。其他大部分的景点与神社，当天再决定都来得及。",
+    a: "门口完全不卖票的有四个：吉卜力美术馆（只接受预约，每月 10 日 10:00 开售下个月）、吉卜力公园（2 个月前的 10 日 14:00 开售）、东京迪士尼（每天 14:00 开售 2 个月后的同一天）与日本环球影城（约 2 个月前开售，售票亭 2025 年 5 月 6 日起停售）。teamLab 无界与 SHIBUYA SKY 是指定时段、可能售罄，也建议提前订。以上均为日本时间，2026 年 11 月 16 日于各官网核查。",
+  },
+  {
+    q: "teamLab 和 SHIBUYA SKY 要提前多久订？",
+    a: "需要特定时段的话，开售当下就订。teamLab 无界在入场日 2 个月前的月初（1 日前后）开售，官方 FAQ 提醒可能售罄；SHIBUYA SKY 在入场日正好 2 周前的日本时间 0:00 开售。2026 年 11 月 16 日于 teamlab.art 与 shibuya-scramble-square.com 核查。",
+  },
+  {
+    q: "日本景点门票可以当天买吗？",
+    a: "部分可以。SHIBUYA SKY 有售票柜台，华纳兄弟东京影城在未售罄时现场售票处也卖；东京迪士尼与日本环球影城的当日票只在网上、有余票时才买得到；吉卜力美术馆与吉卜力公园当天不卖票。2026 年 11 月 16 日核查。",
+  },
+  {
+    q: "东京景点的套票划算吗？",
+    a: "只有套票里每个景点你本来就会去时才划算。先用门票价格总表把各景点的官方单票加起来比较；SHIBUYA SKY、teamLab 这类指定时段的场馆，买之前先确认套票能选哪些入场时段——会售罄的是时段，不是门票。",
   },
   {
     q: "为什么我的海外信用卡无法在日本官方售票网站付款？",
     a: "好几个日本景点的购票网站的支付系统对境外发行的信用卡兼容性不佳——SHIBUYA SKY 自 2024 年 7 月起就是如此，东京迪士尼也经常拒绝。这就是为什么从海外订票时，通过第三方售票平台预订往往更顺利：付款流程易于操作，也支持境外信用卡，而不是票价更便宜。",
-  },
-  {
-    q: "这些攻略上的票价是哪里来的？",
-    a: `每项票价均来自相关运营方的官方网站——铁路公司、场馆、售票网站——并且每一页都标示读取的日期。本站目前已核查 ${attractionPrices.length} 项日本景点、主题乐园、通票与一日游景点的入场费用，最近一次核查是 ${zhDateLabel(latestChecked())}。简体中文版与英文版用的是同一组数据、同一个核查日期，中文页不会出现英文页没有的数字。`,
-  },
-  {
-    q: "简体中文版只有这几页吗？",
-    a: `目前是。简体中文版共 ${editionPageCount("zh-cn")} 页，挑的是销售与点击实绩最高的那几个入口页。其他的攻略（京都、大阪、铁路周游券、支付与货币等）目前只有英文版，链接到那些页面时我们会标示「（英文）」。每一页的右上角都有 English／繁體中文／简体中文 切换，只在该页三种语言都有时才显示。`,
   },
 ];
 
@@ -172,10 +193,10 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>简体中文版</p>
           <h1 className={styles.heroTitle}>
-            日本景点门票价格 2026：<br />预约指南、官方票价与一日游
+            日本景点门票 2026：<br />哪些要提前预约、何时开售
           </h1>
           <p className={styles.heroSubtitle}>
-            哪些门票容易售罄、哪些渠道支持境外购票，以及每一个价格的核查日期。
+            按「要提前多久购票」整理的日本景点门票：开售日、当天能不能买、官方票价与核查日期。
           </p>
           <div className={styles.heroBadges}>
             {["官方票价", "附核查日期", `${editionGuideCount("zh-cn")} 篇简体中文攻略`].map((t) => (
@@ -192,6 +213,12 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
+            日本最热门的景点中有四个<strong>门口完全不卖票</strong>，出发前就要买好：<strong>吉卜力美术馆</strong>每月 10 日
+            10:00 开售下个月、<strong>吉卜力公园</strong>在 2 个月前的 10 日 14:00 开售、<strong>东京迪士尼</strong>每天 14:00
+            开售 2 个月后的同一天，<strong>日本环球影城</strong>约 2 个月前开售，2025 年 5 月 6 日起门口不再售票。
+            <strong>teamLab 无界</strong>在 2 个月前的月初、<strong>SHIBUYA SKY</strong>在 2 周前的 0:00 开售——需要特定时段就在开售当下订（均为日本时间，{CHECKED} 于各官网核查）。
+          </p>
+          <p className={styles.bodyText}>
             <strong>日本景点门票价格（2026）</strong>：SHIBUYA SKY 网上购票 ¥2,700（15:00 前入场）／¥3,400（15:00
             起），teamLab Planets ¥3,800 起，teamLab 无界 ¥3,400 起，东京迪士尼一日护照 ¥8,900 起；日本环球影城按日期定价，结账时才显示当天价格。
             <strong>必须提前在网上预订的</strong>是两座 teamLab 美术馆（指定时段）、东京迪士尼（门口不卖票）与日本环球影城（当天门口不售票），SHIBUYA SKY
@@ -200,12 +227,69 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
           </p>
         </section>
 
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>提前预约</span>
+          <h2 className={styles.sectionTitle}>日本哪些景点门票一定要提前订？</h2>
+          <p className={styles.bodyText}>
+            吉卜力美术馆、吉卜力公园、东京迪士尼与日本环球影城：四个都不在门口卖票。下表是每个景点的开售时间，以及当天还买不买得到。
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>景点</th>
+                    <th>城市</th>
+                    <th>何时开售</th>
+                    <th>当天能买吗？</th>
+                    <th>攻略</th>
+                    <th>官方来源</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ minWidth: "130px" }}>必须提前预约</td>
+                    <td style={{ fontSize: "0.82rem" }}>东京、名古屋、大阪</td>
+                    <td style={{ fontSize: "0.82rem", minWidth: "180px" }}>吉卜力美术馆、吉卜力公园、东京迪士尼、日本环球影城</td>
+                    <td style={{ fontSize: "0.82rem", minWidth: "160px" }}>门口不卖票——出发前买好</td>
+                    <td style={{ fontSize: "0.82rem" }}>
+                      <Link href="/guides/attractions/japan-attraction-ticket-prices" hrefLang="en" style={inline}>门票价格总表（英文）</Link>
+                    </td>
+                    <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>见下列各行</td>
+                  </tr>
+                  {windowRows.map((row) => (
+                    <tr key={row.name}>
+                      <td className={styles.tdProvider} style={{ minWidth: "130px" }}>{row.name}</td>
+                      <td style={{ fontSize: "0.82rem", minWidth: "100px" }}>{row.city}</td>
+                      <td style={{ fontSize: "0.82rem", minWidth: "180px" }}>{row.opens}</td>
+                      <td style={{ fontSize: "0.82rem", minWidth: "180px" }}>{row.onTheDay}</td>
+                      <td style={{ fontSize: "0.82rem", minWidth: "130px" }}>
+                        <Link href={row.href} hrefLang={row.href.startsWith("/zh-cn") ? undefined : "en"} style={inline}>{row.guide}</Link>
+                      </td>
+                      <td style={{ fontSize: "0.82rem", minWidth: "120px" }}>
+                        <a href={row.source} target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>
+                          {new URL(row.source).hostname.replace(/^www\./, "")}
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {CHECKED}。官方页面：ghibli-museum.jp/en/tickets/ · ghibli-park.jp/en/ticket/ ·
+            tokyodisneyresort.jp/en/ticket/index.html 与 faq-en.tokyodisneyresort.jp · usj.co.jp/company/company_e/news/2025/0421/ 与 /0425/ ·
+            teamlab.art/faq/tokyo/ · shibuya-scramble-square.com/sky/ticket/ · wbstudiotour.jp/en/tickets/。特别活动可能另定开售日。
+          </p>
+        </section>
+
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>先看这个</span>
           <h2 className={styles.sectionTitle}>日本的门票，问题不在价格</h2>
           <p className={styles.bodyText}>
             日本几个最有名的景点，到了现场也买不到门票。teamLab、东京迪士尼、日本环球影城与 SHIBUYA SKY 的日落时段，
-            全都在网上销售指定日期与时段的票，热门时段的门票提前数周就会售罄——迪士尼的情况更极端，完全没有当日票。
+            全都在网上销售指定日期与时段的票，热门时段的门票提前数周就会售罄——迪士尼的情况更极端，门口完全不卖票。
           </p>
           <p className={styles.bodyText}>
             有两件事特别容易让旅客踩坑：官方网站有时无法使用海外发行的信用卡付款，而搜索结果里排名很前面的转售页面，

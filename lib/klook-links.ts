@@ -2497,6 +2497,28 @@ export const tokyoSubwayTicketSameDayPrep: KlookTripPrepItem[] = [
   },
 ];
 
+// Things to Do hub (/guides/attractions), added 16 Nov 2026 (task-jtk-20261116-R02).
+// Existing constants only: a Tokyo day tour and a Kyoto–Nara day (tours), the Osaka
+// Amazing Pass (pass) and Klook eSIM. No new Klook URL.
+export const attractionsHubSameTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "Tokyo: a coach day to Mt. Fuji and Hakone sells by date like the timed tickets above, so it fits the same booking session.",
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "Kyoto and Osaka: Kiyomizu-dera, Fushimi Inari and Nara Park in one booked day, for the days between USJ and the rest of the Kansai.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Osaka: the pass covers a set of Osaka sights and the city transport for the day — but not Universal Studios Japan, which is its own ticket.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Timed tickets bought online arrive as e-tickets or QR codes that you open on your phone at the gate, so data has to work from the day you land.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Ten days in Japan, added 26 Oct 2026 for japan-10-day-itinerary.
 //

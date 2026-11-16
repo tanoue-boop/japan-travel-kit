@@ -615,7 +615,10 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
               attractions below sell nothing but a date- or time-specified ticket bought in advance — {MUST_BOOK_NAMES}.{" "}
               {S.variable.length} price by date or time of day, so the figure here is a floor or a range. The cheapest
               paid ticket is {names(S.cheapestPaid)} at {yen(S.minPaidYen)}; the highest starting price is{" "}
-              {names(S.dearest)} at {yen(S.maxPaidYen)}.
+              {names(S.dearest)} at {yen(S.maxPaidYen)}. The date and hour each of those goes on sale is in{" "}
+              <Link href="/guides/attractions" style={{ color: "var(--text)", fontWeight: 600 }}>
+                Japan attraction tickets: what to book in advance
+              </Link>.
             </p>
           </div>
         </div>
@@ -910,7 +913,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
-              { href: "/guides/attractions", title: "Things to Do in Japan: Tickets & Experiences (2026)" },
+              { href: "/guides/attractions", title: "Japan Attraction Tickets 2026: What to Book in Advance, When" },
               {
                 href: "/guides/attractions/himeji-castle-day-trip",
                 title: "Himeji Castle Day Trip (2026): ¥2,500 Admission, and Times From Osaka & Kyoto",

@@ -215,7 +215,10 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             {priceById("abenoHarukas").adult} for the Harukas 300 deck booked online. Those and the rest of Kansai —
             Himeji Castle, Nara, Kobe — are in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>Japan attraction ticket prices table</Link>,
-            each with the date it was read. For a hot-spring day out of Osaka, the{" "}
+            each with the date it was read. When Universal Studios Japan and the other timed tickets go on sale is
+            in{" "}
+            <Link href="/guides/attractions" style={linkStyle}>Japan attraction tickets to book in advance</Link>.
+            For a hot-spring day out of Osaka, the{" "}
             <Link href="/guides/attractions/arima-onsen-day-trip" style={linkStyle}>Arima Onsen day trip guide</Link>{" "}
             covers the coach from Osaka or Sannomiya and the Kin no Yu and Gin no Yu bath prices.
           </p>

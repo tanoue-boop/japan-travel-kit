@@ -273,6 +273,9 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             {KODAI.adult} and Nijo Castle {NIJO.adult} — read on {checkedLabel(GINKAKU.checked)}. Every one, with
             the child rates and the source page, is in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>Japan attraction ticket prices table</Link>.
+            The few Japan tickets that do sell out — Ghibli, Tokyo Disney, USJ, teamLab — are listed with their
+            sale dates in{" "}
+            <Link href="/guides/attractions" style={linkStyle}>Japan attraction tickets: what to book in advance</Link>.
           </p>
           <p className={styles.bodyText}>
             The ambitious option is{" "}

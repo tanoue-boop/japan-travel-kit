@@ -560,7 +560,11 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Hotels first, then anything with a fixed sale date. This is the order, with when each one opens or
             tightens. Sale dates read on {OWN}; the SHIBUYA SKY and teamLab rules read{" "}
-            {checkedLabel(PRICES.shibuyaSky.checked)} and {checkedLabel(PRICES.teamlabPlanets.checked)}.
+            {checkedLabel(PRICES.shibuyaSky.checked)} and {checkedLabel(PRICES.teamlabPlanets.checked)}. Tokyo
+            Disney, Ghibli Park and the rest of the timed Japan attraction tickets are in{" "}
+            <Link href="/guides/attractions" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Japan attraction tickets: what to book in advance and when
+            </Link>.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

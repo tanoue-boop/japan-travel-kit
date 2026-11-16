@@ -1001,7 +1001,7 @@ export const attractionsCategory: GuideCategory = {
   href: "/guides/attractions",
   name: "Things to Do",
   intro: [
-    "A handful of Japan's best-known attractions cannot be bought at the gate. teamLab, Tokyo Disney, Universal Studios Japan and the Shibuya Sky sunset slots all sell date- and time-specified tickets online, and the popular slots go weeks ahead — in Disney's case, with no same-day sales at all.",
+    "A handful of Japan's best-known attractions cannot be bought at the gate. teamLab, Tokyo Disney, Universal Studios Japan and the Shibuya Sky sunset slots all sell date- and time-specified tickets online, and the popular slots go weeks ahead — in Disney's case, with nothing sold at the gate.",
     "Two things routinely catch visitors out: the official sites sometimes reject foreign cards, and the resale listings that rank well in search are often invalid for entry. These guides cover official prices, which booking route works from abroad, and when to book.",
     "The same reasoning applies to the day trips and transport passes further down the page. A Mt. Fuji or Hakone day out of Tokyo, Nikko or Kamakura by train, or a Kyoto-and-Nara day out of Osaka, is a booking decision rather than a sightseeing one — and the pass that looks cheapest often turns out to have a minimum length or an exclusion nobody mentions.",
     "Plenty of Japan needs none of this, though, and the city guides say so plainly. Most of Kyoto's famous temples are walk-in, Nara Park is free, and a kimono rental or a cooking class is a booking you can make the week before. The point of these guides is to put the planning effort where it changes the outcome.",

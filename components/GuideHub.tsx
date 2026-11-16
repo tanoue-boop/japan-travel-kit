@@ -25,6 +25,7 @@ export default function GuideHub({
   dates,
   picks,
   lead,
+  groupLeads,
 }: {
   category: GuideCategory;
   /** <h1>. Usually a search-friendly phrasing of category.name. */
@@ -38,6 +39,11 @@ export default function GuideHub({
    * the first paragraph of the body (the hero copy is not counted as body).
    */
   lead?: ReactNode;
+  /**
+   * Optional one-sentence line per group (keyed by group.key), shown under the group's
+   * description with a contextual link to the group's representative guide.
+   */
+  groupLeads?: Partial<Record<string, ReactNode>>;
 }) {
   const start = startHereArticle(category);
   const groups = groupedArticles(category);
@@ -96,6 +102,7 @@ export default function GuideHub({
           <section key={group.key} id={group.key} className={styles.groupSection}>
             <h2 className={styles.groupTitle}>{group.label}</h2>
             <p className={styles.groupDesc}>{group.desc}</p>
+            {groupLeads?.[group.key] ? <p className={styles.groupDesc}>{groupLeads[group.key]}</p> : null}
 
             <div className={styles.articleList}>
               {articles.map((article) => (

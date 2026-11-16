@@ -429,7 +429,9 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
               Japan attraction ticket prices table
             </Link>{" "}
-            lists the official figures nationwide. To pick one, see{" "}
+            lists the official figures nationwide, and{" "}
+            <Link href="/guides/attractions" style={linkStyle}>Japan attraction tickets: what to book in advance</Link>{" "}
+            gives the date each timed ticket goes on sale, Tokyo Disney and the Ghibli Museum included. To pick one, see{" "}
             <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>the best observation deck in Tokyo</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
