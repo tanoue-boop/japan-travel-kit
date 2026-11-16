@@ -702,6 +702,10 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             village by 14:00 and leave by 16:00 unless they hold a light-up booking, so a daytime tour on
             those dates may run to a different shape. Check the listing for your date.
           </p>
+          <p className={styles.bodyText}>
+            Every way in, the Kanazawa light-up bus and where to sleep for the four evenings are in our{" "}
+            <Link href="/guides/attractions/shirakawago-winter-light-up">Shirakawago winter light up guide</Link>.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shirakawagoIllumination2027NagoyaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
               2027 light-up day from Nagoya →
@@ -885,6 +889,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             {/* Added 6 Nov 2026: the rest of the nine winter guides. */}
             {[
               // Added 13 Nov 2026: the two-day Kanazawa plan this tour fits into.
+              { href: "/guides/attractions/shirakawago-winter-light-up", title: "Shirakawago Winter Light Up 2027: Dates, Tickets & Tours" },
               { href: "/guides/attractions/kanazawa-2-day-itinerary", title: "Kanazawa 2 Day Itinerary (2026): Kanazawa and Shirakawa-go" },
               { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Gala Yuzawa Ski Day Trip from Tokyo" },
               { href: "/guides/attractions/jigokudani-snow-monkey-tour", title: "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2027" },

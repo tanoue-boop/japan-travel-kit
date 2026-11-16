@@ -447,6 +447,24 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/hokkaido-winter-tours",
+    badge: "Day trip",
+    title: "Hokkaido Winter Tours 2026-27: Best Day Tours From Sapporo",
+    desc: "Six Sapporo winter day tours compared — Asahiyama Zoo's penguin walk (late Dec to mid Mar) with the Blue Pond light-up, Otaru, Yoichi, skiing and the Lake Shikotsu ice festival — with tour vs train and the 2027 event dates.",
+    group: "daytrips",
+    // Hokkaido sits outside the three city hubs, like furano-biei-tour.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/shirakawago-winter-light-up",
+    badge: "Day trip",
+    title: "Shirakawago Winter Light Up 2027: Dates, Tickets & Tours",
+    desc: "Four evenings, 11, 17, 24 and 31 January 2027, 17:30–19:30, reservation only. The five ways in, Nohi Bus's ¥13,000–¥16,000 buses from Takayama, Hokutetsu's ¥18,500 bus from Kanazawa, Klook coaches from Nagoya, and where to stay.",
+    group: "daytrips",
+    // Gifu, reached from Nagoya, Kanazawa or Takayama — same call as takayama-shirakawago-tour.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/furano-biei-tour",
     badge: "Day trip",
     title: "Furano & Biei Day Tour from Sapporo (2026): Winter Light-Ups",

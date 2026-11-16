@@ -358,12 +358,11 @@
     "/guides/attractions/fukuoka-2-day-itinerary": 1554748,
     "/guides/attractions/tokyo-sightseeing-bus-tour": 1554749,
     "/guides/transport/jr-kyushu-rail-pass": 1554750,
-    "/guides/attractions/sapporo-3-day-itinerary": 1554751
+    "/guides/attractions/sapporo-3-day-itinerary": 1554751,
+    "/guides/attractions/hokkaido-winter-tours": 1554752,
+    "/guides/attractions/shirakawago-winter-light-up": 1554753
   },
-  "spare": [
-    1554752,
-    1554753
-  ],
+  "spare": [],
   "borrowed": {},
   "_borrowedNote": "borrowed: spare が足りないページが英語版のIDを一時的に借りる置き場所。2026-11-06 の A21b で翻訳版20ページが借り、A25 で全ページを pages へ移したので今は空。"
 }

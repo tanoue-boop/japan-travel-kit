@@ -726,6 +726,19 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 16 Nov 2026: the January light-up and Hokutetsu's bus from Kanazawa. */}
+            <Link href="/guides/attractions/shirakawago-winter-light-up" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Shirakawago Winter Light Up 2027: Dates, Tickets &amp; Tours</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 13 Nov 2026: what to do once you arrive — two days in Kanazawa with Shirakawa-go. */}
             <Link href="/guides/attractions/kanazawa-2-day-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

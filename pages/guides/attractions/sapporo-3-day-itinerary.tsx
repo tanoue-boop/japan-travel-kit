@@ -867,6 +867,7 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
+              { href: "/guides/attractions/hokkaido-winter-tours", title: "Hokkaido Winter Tours 2026-27: Best Day Tours From Sapporo" },
               { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "Otaru Day Trip from Sapporo (2027): ¥800, 33 Min by JR" },
               { href: "/guides/attractions/furano-biei-tour", title: "Furano & Biei Day Tour from Sapporo (2026): Winter Light-Ups" },
               { href: "/guides/attractions/sapporo-ski-day-trip", title: "Sapporo Ski Day Trip 2026-27: Teine, Kiroro & Rusutsu Tours" },

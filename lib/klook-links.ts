@@ -9855,3 +9855,91 @@ export const sapporoThreeDayTripPrep: KlookTripPrepItem[] = [
     why: "Penguin-walk notices, a coach running late on snow and the trains back from Otaru all reach you on your phone.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Hokkaido winter tours and the Shirakawa-go winter light-up, added 16 Nov 2026
+// (task-jtk-20261116-02).
+//
+// Klook answers automated reads of its product pages with HTTP 403, so each
+// listing was confirmed as a live en-US page through the www.klook.com search
+// index on 16 Nov 2026. Hokkaido: 77621 (winter Asahiyama + Blue Pond light-up),
+// 161857 (Asahiyama, Blue Pond, Ningle Terrace, winter snowmobile option), 98528,
+// 181785, 135641 and 136930 reused from above. Left out: 164281 (indexed run still
+// 1 Dec 2025 – 15 Mar 2026), 121907 (en-AU only in the index), 110247 (not found).
+// Shirakawa-go: 80951 (winter light-up + Hida Takayama from Nagoya, four evenings
+// 11–31 Jan, English-speaking staff, 12h25m) is new; 79800 is reused. Left out:
+// 233458 (not in the index on this date), 175324 (index shows 2026 and 2027 dates
+// in different snippets), 100722 Kanazawa light-up (en-AU only, old page), 133193
+// Takayama light-up (en-AU only). Tours and hotels 6.5%, passes 5%, eSIM 20%. No price.
+// ---------------------------------------------------------------------------
+
+/** The English-staffed Nagoya light-up coach: four evenings, all departures guaranteed on the listing. */
+export const shirakawagoWinterLightUpTakayamaNagoyaBusTour: KlookTour = {
+  title: "Shirakawa-go Winter Light-Up & Hida Takayama day trip bus tour (from Nagoya)",
+  desc: "A 12h25m coach day from the Meitetsu Bus Center in Nagoya on the four January light-up evenings, with an English-speaking staff member and the Takayama old town on the way",
+  url: klookLink("https://www.klook.com/en-US/activity/80951-shirakawa-go-winter-light-up-hida-takayama-day-trip-from-nagoya/"),
+};
+
+/** Book these on the same trip: 6.5% tours and hotels, 5% pass and transfer, 20% eSIM. */
+export const hokkaidoWinterToursTripPrep: KlookTripPrepItem[] = [
+  {
+    label: asahiyamaWinterBluePondTour.title,
+    ctaLabel: "Check the winter Asahiyama day →",
+    url: asahiyamaWinterBluePondTour.url,
+    why: "The winter-only listing that puts the zoo, Shirahige Falls and the lit Blue Pond in one booking — the day a train and bus cannot join up after the zoo's 15:00 last entry.",
+  },
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo Station hotels →",
+    url: japanWinterStayAreas[6].url,
+    why: "Most Sapporo coach days meet near Sapporo Station before 8:00, so a room within a short walk saves a dark, icy morning transfer.",
+  },
+  {
+    label: sapporoFuranoAreaPass.title,
+    ctaLabel: "Check the Sapporo–Furano pass →",
+    url: sapporoFuranoAreaPass.url,
+    why: "Only if you go to Asahikawa or Otaru by JR instead of a tour: four days on the airport, Otaru and Asahikawa lines for less than the separate fares.",
+  },
+  {
+    label: newChitoseSapporoSharedTransfer.title,
+    ctaLabel: "Check the airport transfer →",
+    url: newChitoseSapporoSharedTransfer.url,
+    why: "A booked seat from New Chitose to the hotel door with winter luggage, instead of the train and a walk on packed snow.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Coach pick-up messages, snow delays and the zoo's penguin-walk notice on its social media all reach you on your phone.",
+  },
+];
+
+/** Book these on the same trip for a light-up evening. */
+export const shirakawagoLightUpTripPrep: KlookTripPrepItem[] = [
+  {
+    label: shirakawagoWinterLightUpTakayamaNagoyaBusTour.title,
+    ctaLabel: "Check the light-up coach from Nagoya →",
+    url: shirakawagoWinterLightUpTakayamaNagoyaBusTour.url,
+    why: "Entry is reservation-only and no route bus leaves the village after the lights, so a coach that holds a light-up slot is the whole plan in one booking.",
+  },
+  {
+    label: "Hotels near Takayama Station",
+    ctaLabel: "Check Takayama hotels →",
+    url: japanWinterStayAreas[3].url,
+    why: "Nohi Bus's own light-up buses leave from and return to the bus centre beside Takayama Station at 20:20–20:45, so the night ends with a short walk.",
+  },
+  {
+    label: "Hotels in Kanazawa",
+    ctaLabel: "Check Kanazawa hotels →",
+    url: japanWinterStayAreas[2].url,
+    why: "Hokutetsu's light-up bus leaves Kanazawa Station West Exit at 14:30 and is back at 21:50, so a room near the station is the base for that version.",
+  },
+  {
+    label: hokurikuArchPass.title,
+    ctaLabel: "Check the Hokuriku Arch Pass →",
+    url: hokurikuArchPass.url,
+    why: "If the trip runs Tokyo → Kanazawa → Kansai by rail, the pass covers the shinkansen legs; the buses to Shirakawa-go are never covered by any JR pass.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Light-up cancellations for a cold wave, coach delays on snow and your entry details all arrive online, and the village has no station to ask at.",
+  },
+];
