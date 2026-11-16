@@ -38,7 +38,7 @@ const LISTING_COPY: Partial<Record<Locale, Record<string, ListingCopy>>> = {
   "zh-cn": {
     "https://www.getyourguide.com/tokyo-disney-resort-l104703/entry-tickets-tc123/": { title: "东京迪士尼度假区", what: "东京迪士尼乐园与迪士尼海洋的门票在同一个页面，均需指定日期与园区" },
     "https://www.getyourguide.com/tokyo-disneysea-l4082/entry-tickets-tc123/": { title: "东京迪士尼海洋", what: "迪士尼海洋门票的独立页面，与迪士尼乐园分开" },
-    "https://www.getyourguide.com/universal-studios-japan-l80971/entry-tickets-tc123/": { title: "日本环球影城", what: "GetYourGuide 上的环球影城一日门票，同一页也有含接送的组合" },
+    "https://www.getyourguide.com/universal-studios-japan-l80971/entry-tickets-tc123/": { title: "日本环球影城", what: "GetYourGuide 上的环球影城一日门票，同一页面还提供包含接送服务的套餐" },
     "https://www.getyourguide.com/osaka-l1204/osaka-universal-studios-japan-express-pass-only-t883811/": { title: "环球影城快速通行证", what: "GetYourGuide 单独销售的快速通行证——入园需另买一日门票" },
     "https://www.getyourguide.com/tokyo-l193/day-trips-tc360/mount-fuji-tl7924/": { title: "东京出发的富士山一日游", what: "GetYourGuide 上从东京出发的富士山一日游汇总，大巴团与包车都有" },
     "https://www.getyourguide.com/mount-fuji-l7924/bus-minivan-tours-tc4/": { title: "富士山大巴与小巴行程", what: "富士山周边的拼团大巴与小巴行程，集中在同一页" },

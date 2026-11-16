@@ -391,7 +391,7 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
             { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "河口湖一日遊（東京出發．2026）：路線、車資與一天能排多少（英文）" },
             { href: "/guides/attractions/fuji-q-highland-tickets", title: "富士急樂園門票（2026）：Free Pass 價格、Q Pack 與交通方式（英文）" },
             { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "箱根一日遊（東京出發．2026）：周遊券價格 vs 一日遊行程（英文）" },
-            { href: "/zh-tw/guides/attractions/tokyo-skytree-tickets", title: "東京晴空塔門票（2026）：票價、350 與 450 樓怎麼選" },
+            { href: "/zh-tw/guides/attractions/tokyo-skytree-tickets", title: "東京晴空塔門票（2026）：票價、350 公尺與 450 公尺觀景台怎麼選" },
             { href: "/guides/attractions/mt-fuji-day-trip-tokyo", title: "富士山自助一日遊（東京出發．2026）：自己怎麼去（英文）" },
             { href: "/guides/attractions/tokyo-subway-ticket", title: "東京地鐵通票（2026）：24、48 還是 72 小時，值得買嗎？（英文）" },
             { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：價格、值不值得與購買方式（英文）" },

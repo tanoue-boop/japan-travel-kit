@@ -79,7 +79,7 @@ const sunsetRows = [
 
 /** 按入场时段与购买渠道区分的票价。 */
 const priceRows = [
-  { ticket: "成人，10:00～14:59 入场——最划算，建议网上预订", online: "¥2,700", counter: "¥3,000" },
+  { ticket: "成人，10:00～14:59 入场——价格更低，建议网上预订", online: "¥2,700", counter: "¥3,000" },
   { ticket: "成人，15:00～21:20 入场——所有日落时段", online: "¥3,400", counter: "¥3,700" },
   {
     ticket: "儿童，6～12 岁（含仍在读小学的 12 岁儿童）",
@@ -93,7 +93,7 @@ const priceRows = [
 const hoursRows = [
   { what: "开放时间", detail: "10:00～22:30" },
   { what: "最后入场", detail: "21:20" },
-  { what: "停留时间限制", detail: "无——想待多久都可以；多数游客停留约 90 分钟" },
+  { what: "停留时间限制", detail: "无固定时长限制——想待多久都可以；多数游客停留约 90 分钟" },
   { what: "交通", detail: "与涩谷站直通" },
   { what: "较便宜的一档", detail: "10:00～14:59 入场" },
   { what: "较贵的一档", detail: "15:00～21:20 入场，所有日落时段都在这一档" },
@@ -107,7 +107,7 @@ const hoursRows = [
 const bookingRows = [
   {
     q: "某个日期什么时候开售？",
-    a: "入场日两周前的日本时间 00:00。2025 年 2 月 27 日的公告特意把开售改在这个时间点，就是为了让开售时间可以预期。",
+    a: "入场日两周前的日本时间 00:00。2025 年 2 月 27 日的公告特意把开售改在这个时间点，就是为了让游客能够提前确定开售时间。",
   },
   {
     q: "可以取消吗？",
@@ -115,11 +115,11 @@ const bookingRows = [
   },
   {
     q: "现场能买到票吗？",
-    a: "能。14 楼窗口售票，15 点前入场 ¥3,000、15 点起 ¥3,700。现场窗口无法提前确定入场时段，因此只适合作为备选。",
+    a: "能。14 楼窗口售票，15 点前入场 ¥3,000、15 点起 ¥3,700。现场窗口购票无法提前锁定入场时段，因此只适合作为备选。",
   },
   {
     q: "哪些票只在窗口卖？",
-    a: "儿童票。6～12 岁 ¥1,200，只在当天的 14 楼窗口售票，不在网上销售。所以全家网上订票时，先买成人票，孩子的票到现场再付。",
+    a: "儿童票。6～12 岁 ¥1,200，只在当天的 14 楼窗口售票，不在网上销售。所以全家网上订票时，先买成人票，儿童票则需要到现场窗口购买。",
   },
 ];
 
@@ -134,14 +134,14 @@ const deckRows = [
   {
     deck: "东京晴空塔",
     height: "350 米与 450 米观景台（塔高 634 米）",
-    highlight: "最高的视野、玻璃地板区；天气晴朗时看得到富士山",
+    highlight: "高空全景视野、玻璃地板区；天气晴朗时看得到富士山",
     price: `${priceLabel(PRICES.tokyoSkytree.adult, LOCALE)}（Floor 350）`,
     area: "押上，浅草附近",
   },
   {
     deck: "东京铁塔",
     height: "约 150 米与约 250 米观景台（塔高 332 米）",
-    highlight: "1958 年的复古地标；要上更高一层得参加 Top Deck Tour",
+    highlight: "建于 1958 年的复古地标；如需登上更高的观景层，须参加 Top Deck Tour",
     price: `${priceLabel(PRICES.tokyoTower.adult, LOCALE)}（Main Deck）`,
     area: "芝公园／赤羽桥",
   },
@@ -157,7 +157,7 @@ const deckRows = [
 const whoFor = [
   {
     title: "选日落时段，如果……",
-    desc: "你想拍那张经典照片，而且能提前规划。不论哪个月份，日落都在 ¥3,400 那一档，所以要考虑的只有能否订到，而这正是最先售罄的时段。建议在日落前 30～60 分钟入场，一次看到白天、黄金时刻与城市亮灯。",
+    desc: "你想拍摄经典的涩谷全景照片，而且能提前规划。不论哪个月份，日落都在 ¥3,400 那一档，所以要考虑的只有能否订到，而这正是最先售罄的时段。建议在日落前 30～60 分钟入场，一次看到白天、黄金时刻与城市亮灯。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 18a5 5 0 0 0-10 0" />
@@ -172,7 +172,7 @@ const whoFor = [
   },
   {
     title: "选 15 点前，如果……",
-    desc: "价格比光线重要。10:00～14:59 入场是 ¥2,700，对比 ¥3,400，同一个屋顶便宜 ¥700，而且较早的时段最容易临时订到。在晴朗干燥的日子，白天的视野看得最远，包括富士山。",
+    desc: "你更看重票价，而不是拍摄时的光线。10:00～14:59 入场是 ¥2,700，对比 ¥3,400，参观同一个屋顶观景台，票价便宜 ¥700，而且较早的时段最容易临时订到。在晴朗干燥的日子，白天的视野看得最远，包括富士山。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="4" />
@@ -182,7 +182,7 @@ const whoFor = [
   },
   {
     title: "选夜间时段，如果……",
-    desc: "你想看霓虹夜景，而日落时段已经售罄。夜间时段和日落时段同属 ¥3,400 那一档，但通常最晚售罄；最后入场 21:20，观景台开到 22:30。当目标日期两周前就已开售、黄金时刻早已被订走时，这是很可靠的备选方案。",
+    desc: "你想看霓虹夜景，而日落时段已经售罄。夜间时段和日落时段的票价同为 ¥3,400，但夜间时段通常最晚售罄；最后入场 21:20，观景台开到 22:30。当目标日期两周前就已开售、日落前后的黄金时段也已售罄时，这是很可靠的备选方案。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
@@ -194,7 +194,7 @@ const whoFor = [
 const steps = [
   {
     title: "从参观日期往前推两周",
-    desc: "每个日期在整整两周前的日本时间 00:00 开售（北京时间前一天 23:00）。首先把这个时间点换算成所在地的时间并记进日历：能否订到日落时段，就看这一刻。",
+    desc: "每个入场日期的门票均在该日期整整两周前的日本时间 00:00 开售（北京时间前一天 23:00）。首先把这个时间点换算成所在地的时间并记进日历：能否抢到日落时段的门票，就取决于开售时是否及时下单。",
   },
   {
     title: "先定票价档位，再选时段",
@@ -209,8 +209,8 @@ const steps = [
     desc: "自 2024 年 7 月起，许多境外发行的信用卡无法在 SHIBUYA SKY 官网成功付款。Klook 支持境外信用卡，购票和支付流程容易理解，并标明入场前 24 小时可免费取消，面对东京多变的天气，这是很实用的保障。",
   },
   {
-    title: "请比预约的日落时段提前 30～60 分钟到达",
-    desc: "留出时间完成入场手续，并将随身物品存入储物柜（屋顶是开放式的，风很大），在光线变化之前先站好位置。",
+    title: "请在预约的日落时段开始前 30～60 分钟到达",
+    desc: "留出时间完成入场手续，并将随身物品存入储物柜（屋顶是开放式的，风很大），在光线变化之前找到合适的观景位置。",
   },
 ];
 
@@ -233,11 +233,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "涩谷SKY门票提前多久开售？",
-    a: `两周。每个日期在整整十四天前的日本时间 00:00 开售，这是运营方在 2025 年 2 月 27 日的公告中特意定下的，让开售时间可以预期。热门日期的日落时段，请在开售时尽早下单，不要等到当天晚些时候。核查日期 ${CHECKED}。`,
+    a: `两周。每个入场日期的门票均在该日期整整十四天前的日本时间 00:00 开售，这是运营方在 2025 年 2 月 27 日的公告中特意定下的，让游客能够提前确定开售时间。热门日期的日落时段，请在开售时尽早下单，不要等到当天晚些时候。核查日期 ${CHECKED}。`,
   },
   {
     q: "涩谷SKY哪个时段最先售罄？",
-    a: "日落时段，而且远远领先：这是唯一能一次看到白天、黄金时刻与夜景的时段；东京的日落时间从 12 月中旬的 16:29 到 6 月中旬的 18:58（日本国立天文台，2026 年），所以最抢手的时段每个月都不一样。白天时段最容易订到。夜间时段则是常见的备选：同样是 ¥3,400，竞争少得多，看到的是亮灯的城市而不是地平线。",
+    a: "日落时段，而且比其他时段早得多：这是唯一能一次看到白天、黄金时刻与夜景的时段；东京的日落时间从 12 月中旬的 16:29 到 6 月中旬的 18:58（日本国立天文台，2026 年），所以最抢手的时段每个月都不一样。白天时段最容易订到。夜间时段则是常见的备选：同样是 ¥3,400，竞争少得多，看到的是灯火通明的城市夜景，而不是日落时的天际线。",
   },
   {
     q: "SHIBUYA SKY 门票可以退改吗？",
@@ -253,19 +253,19 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "SHIBUYA SKY 和晴空塔怎么选？",
-    a: `SHIBUYA SKY 的特色是露天体验和拍照：十字路口上方约 229 米的开放式屋顶，日落时最美，15 点前 ¥2,700、15 点后 ¥3,400。东京晴空塔的特色是高度和远眺视野：350 米与 450 米观景台、玻璃地板区与远处的景色，Floor 350 ${priceLabel(PRICES.tokyoSkytree.adult, LOCALE)}。想拍十字路口、感受氛围就选 SHIBUYA SKY；想要最高、最广的全景就选晴空塔。`,
+    a: `SHIBUYA SKY 的特色是露天体验和拍照：十字路口上方约 229 米的开放式屋顶，日落时最美，15 点前 ¥2,700、15 点后 ¥3,400。东京晴空塔的特色是高度和远眺视野：350 米与 450 米观景台、玻璃地板区与远处的景色，Floor 350 ${priceLabel(PRICES.tokyoSkytree.adult, LOCALE)}。想拍十字路口、感受氛围就选 SHIBUYA SKY；想从更高处欣赏更开阔的城市全景，就选东京晴空塔。`,
   },
   {
-    q: "东京有免费的观景台吗？",
+    q: "东京有免费开放的观景台吗？",
     a: "有。新宿的东京都厅在约 202 米处设有观景室，免费入场，是东京最好的免费城市景观；如果不想把预算花在日落时段的 ¥3,400 上，这是很合理的替代。开放时间与开放的观景室会变动，去之前请先确认。",
   },
   {
     q: "SHIBUYA SKY 屋顶可以带包吗？",
-    a: "不行。包、背包、雨伞与自拍杆不可带上屋顶，要先存放在 46 楼的储物柜；手机与可放进口袋的相机没问题。三脚架与独脚架只能在 46 楼室内使用，人多时可能被要求停止。依据搜索引擎收录的运营方购票 FAQ 内容，2026 年 11 月 6 日查阅。",
+    a: "不行。包、背包、雨伞与自拍杆不可带上屋顶，要先存放在 46 楼的储物柜；手机与可放进口袋的相机没问题。三脚架与独脚架只能在 46 楼室内使用，游客较多时可能被要求停止使用。依据搜索引擎收录的运营方购票 FAQ 内容，2026 年 11 月 6 日查阅。",
   },
   {
     q: "从 SHIBUYA SKY 能看到富士山吗？",
-    a: "天气晴朗时能看到，不过高度更高的东京晴空塔机会更大。能见度取决于天气，通常在较凉爽干燥的月份、一天中较早的时候最好；如果你上去就是为了富士山，这也是选 ¥2,700 白天时段的理由。任何一天都没有保证。",
+    a: "天气晴朗时能看到，不过从高度更高的东京晴空塔看到富士山的机会更大。能见度取决于天气，通常在较凉爽干燥的月份、一天中较早的时候最好；如果你上去就是为了富士山，这也是选 ¥2,700 白天时段的理由。无论哪一天，都无法保证一定能看到富士山。",
   },
 ];
 
@@ -283,7 +283,7 @@ const sameDayPrep: KlookTripPrepItem[] = [
   withKlookLocale(shibuyaSkySameDayPrep[0], LOCALE, {
     label: "新宿夜间美食导览（回忆横丁・歌舞伎町・黄金街）",
     ctaLabel: "查看新宿夜间导览 →",
-    why: "日落时段之后的夜晚，从涩谷坐山手线很快就到新宿：3 小时的拼团步行导览，走过回忆横丁、歌舞伎町和黄金街，最后在黄金街的居酒屋喝一杯。",
+    why: "日落时段之后的夜晚，从涩谷乘坐 JR 山手线很快就能到新宿：3 小时的拼团步行导览，走过回忆横丁、歌舞伎町和黄金街，最后在黄金街的居酒屋喝一杯。",
   }),
   withKlookLocale(shibuyaSkySameDayPrep[1], LOCALE, {
     label: "东京市区观光巴士一日游",
@@ -301,9 +301,9 @@ const sameDayPrep: KlookTripPrepItem[] = [
     why: "Klook 的门票是手机上的电子票，入场时段也是固定的。从抵达机场起就能上网，当天的电子凭证、地图和天气都能随时查看。",
   }),
   withKlookLocale(shibuyaSkySameDayPrep[4], LOCALE, {
-    label: "成田・羽田机场 ⇄ 东京 专车接送",
+    label: "成田机场／羽田机场 ⇄ 东京市区专车接送",
     ctaLabel: "查看机场接送 →",
-    why: "直接预约到酒店地址而不是车站，成田、羽田两个机场都有，司机会跟踪你的航班；如果抵达当天就订了夜间时段，特别实用。",
+    why: "直接预约到酒店地址而不是车站，成田、羽田两个机场都有，司机会实时查询你的航班动态；如果抵达当天就订了夜间时段，特别实用。",
   }),
 ];
 
@@ -312,27 +312,27 @@ const dayTripPrep: KlookTripPrepItem[] = [
   withKlookLocale(shibuyaSkyDayTripPrep[0], LOCALE, {
     label: "涩谷周边酒店",
     ctaLabel: "在 Klook 查看涩谷酒店 →",
-    why: "日落时段结束时天已经黑了，山手线正是最挤的时候；住在涩谷，回程走路就到，第二天早上也正好在高速巴士发车的车站旁边。",
+    why: "日落时段结束时天已经黑了，山手线正是最挤的时候；如果住在涩谷，步行就能返回酒店，第二天早上也正好在高速巴士发车的车站旁边。",
   }),
   withKlookLocale(shibuyaSkyDayTripPrep[1], LOCALE, {
     label: "涩谷酒吧巡游导览（3 小时）",
     ctaLabel: "查看涩谷酒吧巡游 →",
-    why: "日落时段之后那几个小时最自然的安排，也能看到屋顶上看不到的另一面涩谷：两家酒吧，由导游帮你点酒。",
+    why: "看完日落后，很适合安排这项活动，还能体验从观景台无法感受到的涩谷街头氛围：两家酒吧，由导游帮你点酒。",
   }),
   withKlookLocale(shibuyaSkyDayTripPrep[2], LOCALE, {
     label: "东京夜间酒吧巡游导览（新宿／涩谷）",
     ctaLabel: "查看夜间导览 →",
-    why: "还能顺道逛新宿的路线，适合夜间时段：观景台夜间时段最容易订到，看完之后这个晚上还有地方可去。",
+    why: "这条路线还能顺道游览新宿，适合预约了夜间时段的游客：观景台夜间时段最容易订到，看完之后这个晚上还有地方可去。",
   }),
   withKlookLocale(shibuyaSkyDayTripPrep[3], LOCALE, {
     label: "涩谷美食与文化半日步行导览",
     ctaLabel: "查看美食步行导览 →",
-    why: "如果你的时段在白天，或同行有未满 20 岁的人，这是白天、全年龄都适合的选择：半天游览涩谷 109、呑兵卫横丁和宫下公园，而不是酒吧巡游。",
+    why: "如果你的时段在白天，或同行有未满 20 岁的人，这是白天、全年龄都适合的选择：半天游览 SHIBUYA109、呑兵卫横丁和宫下公园，而不是酒吧巡游。",
   }),
   withKlookLocale(shibuyaSkyDayTripPrep[4], LOCALE, {
     label: "东京地铁通票（24／48／72小时）",
     ctaLabel: "查看地铁通票 →",
-    why: "涩谷站有半藏门线、银座线和副都心线，24／48／72 小时票适用于时段前后一整天的出行，而且这些闸机不支持境外非接触式信用卡。",
+    why: "涩谷站有半藏门线、银座线和副都心线，24／48／72 小时票可用于观景台预约时段前后一整天的市内出行，而且这些闸机不支持境外非接触式信用卡。",
   }),
 ];
 
@@ -340,14 +340,14 @@ const dayTripPrep: KlookTripPrepItem[] = [
 // go-kart (5%) and the Shinjuku night food tour (6.5%). Labels reuse the blocks below; those
 // blocks drop the two items that moved up (see inTopCards).
 const sameDayCards: KlookSameDayCard[] = [
-  { ...withKlookLocale(shibuyaSkySameDayCards[0], LOCALE), label: dayTripPrep[0].label, ctaLabel: dayTripPrep[0].ctaLabel, kind: "住宿", why: "日落时段结束时天已经黑了；住在涩谷，回程走路就到。" },
+  { ...withKlookLocale(shibuyaSkySameDayCards[0], LOCALE), label: dayTripPrep[0].label, ctaLabel: dayTripPrep[0].ctaLabel, kind: "住宿", why: "日落时段结束时天已经黑了；如果住在涩谷，步行就能返回酒店。" },
   withKlookLocale(shibuyaSkySameDayCards[1], LOCALE, {
     kind: "体验",
     label: "涩谷街头卡丁车（Street Kart 涩谷 Annex）",
     ctaLabel: "查看涩谷卡丁车 →",
-    why: "约 1 小时在普通道路上驶过涩谷十字路口。需本国驾照＋1949 年日内瓦公约国际驾照；中国大陆驾照不可。",
+    why: "约 1 小时的街头卡丁车体验，沿公共道路行驶，途经涩谷十字路口。需要本国驾照及符合 1949 年《日内瓦道路交通公约》的国际驾驶许可证；仅持中国大陆驾照无法参加。",
   }),
-  { ...withKlookLocale(shibuyaSkySameDayCards[2], LOCALE), label: sameDayPrep[0].label, ctaLabel: sameDayPrep[0].ctaLabel, kind: "夜间导览", why: "看完观景台后的夜晚：3 小时拼团步行导览，从涩谷坐山手线很快就到。" },
+  { ...withKlookLocale(shibuyaSkySameDayCards[2], LOCALE), label: sameDayPrep[0].label, ctaLabel: sameDayPrep[0].ctaLabel, kind: "夜间导览", why: "看完观景台后的夜晚：3 小时拼团步行导览，从涩谷乘坐 JR 山手线很快就能到新宿。" },
 ];
 const notInTopCards = (item: KlookTripPrepItem) => !sameDayCards.some((card) => card.url === item.url);
 
@@ -406,7 +406,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           </h1>
           <p className={styles.heroSubtitle}>
             东京最好的露天观景体验，位于涩谷十字路口上方 229 米。票价分为两档，提前两周开放预订，
-            还有一个真的会售罄的热门时段。
+            其中日落时段真的会售罄。
           </p>
           <div className={styles.heroBadges}>
             {[`更新于 ${updatedLabel}`, "官方票价已核查", "日落时段开售时间", "与晴空塔、东京铁塔比较"].map((t) => (
@@ -426,12 +426,12 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>涩谷SKY门票 2026 年官网成人票 15 点前 ¥2,700、15 点后 ¥3,400，每个日期在两周前的日本时间 00:00 开售，日落时段最先售罄。</strong>
+            <strong>2026 年 SHIBUYA SKY 官网成人门票：15 点前入场 ¥2,700，15 点后入场 ¥3,400；每个入场日期的门票均在该日期前两周的日本时间 00:00 开售，日落时段最先售罄。</strong>
           </p>
           <p className={styles.bodyText}>
-            <strong>SHIBUYA SKY（涩谷天空）门票网上购买，成人 10:00～14:59 入场 ¥2,700，15:00～21:20 入场
-            ¥3,400</strong>；14 楼窗口每档贵 ¥300（¥3,000／¥3,700）。SHIBUYA SKY 每个日期在
-            <strong>两周前的日本时间 00:00</strong> 开售，日落时段最先售罄，所以日落时段要在目标日期开售时立即预订。
+            <strong>SHIBUYA SKY（涩谷天空）门票可在线购买，成人 10:00～14:59 入场票价为 ¥2,700，15:00～21:20 入场票价为
+            ¥3,400</strong>；14 楼窗口每档贵 ¥300（¥3,000／¥3,700）。SHIBUYA SKY 每个入场日期的门票均在该日期
+            <strong>前两周的日本时间 00:00</strong> 开售，日落时段最先售罄，所以想预订日落时段，最好在目标日期的门票开售后立即下单。
             SHIBUYA SKY 开放时间 10:00～22:30（最后入场 21:20），入场后没有停留时间限制，多数游客停留约 90 分钟。
           </p>
           <p className={styles.bodyText}>
@@ -490,8 +490,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>门票价格<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>2026 年 SHIBUYA SKY 门票多少钱？</h2>
           <p className={styles.bodyText}>
-            成人 15 点前入场 ¥2,700、15 点起 ¥3,400；在窗口购买而不是网上预订，每档再多 ¥300。这种两档式票价，
-            是多数攻略至今仍写错的地方：自 2025 年 4 月 1 日涩谷 Scramble Square 按入场时间拆分票价以来，
+            成人 15 点前入场 ¥2,700、15 点起 ¥3,400；如果在现场窗口购票，每档票价都比网上预订贵 ¥300。这种两档式票价，
+            是多数攻略至今仍写错的地方：自 2025 年 4 月 1 日涩谷 Scramble Square 按入场时段实行分档票价以来，
             SHIBUYA SKY 就不再只有一种票价。
           </p>
           <div className={styles.tableWrap}>
@@ -499,7 +499,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["票种", "官网（预订）", "14 楼窗口"].map((h) => (
+                    {["票种", "官网预订价格", "14 楼窗口"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -543,7 +543,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="同一天要订的"
           heading="和 SHIBUYA SKY 门票一起预订的项目"
-          intro="参观 SHIBUYA SKY 大约只需要一小时。同一天通常还需要这四项：之前的白天、中间的交通、手机流量，以及从机场进市区。"
+          intro="参观 SHIBUYA SKY 大约只需要一小时。同一天通常还需要这四项：白天的观光行程、市内交通、手机上网流量，以及从机场前往市区的交通。"
           items={sameDayPrep.filter(notInTopCards)}
         />
 
@@ -552,7 +552,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>开放时间<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>SHIBUYA SKY 几点开放？最后入场是几点？</h2>
           <p className={styles.bodyText}>
-            10:00 到 22:30，最后入场 21:20。开放时间同时也决定票价：14:59 是 ¥2,700 那一档的最后入场时间，
+            10:00 到 22:30，最后入场 21:20。开放时间同时也决定票价：14:59 是 ¥2,700 这一票价档位的最晚入场时间，
             15:00 到截止前一律 ¥3,400。所以选择几点入场，除了光线，还关系到 ¥700 的差价。
           </p>
           <div className={styles.tableWrap}>
@@ -597,7 +597,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>开售时间<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>SHIBUYA SKY 需要提前预约吗？</h2>
           <p className={styles.bodyText}>
-            想看日落的话，需要，而且热门时段售罄的时间比多数人以为的更早。每个日期在
+            想看日落的话，需要，而且热门时段往往比大多数人预想的更早售罄。每个入场日期的门票均在该日期
             <strong>整整两周前的日本时间 00:00</strong> 开售，也就是北京时间前一天晚上 23:00。热门日期的日落时段总是最先售罄，
             所以实用的原则是：在目标日期开售时尽早进入购票页面下单，而不是出发前一周才订。白天或夜间时段的选择余地大得多，
             但网上预订每人仍省 ¥300。
@@ -640,11 +640,11 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>选择时段<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>SHIBUYA SKY 该订哪个时段？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            能订到就选日落时段；更看重价格就选 15 点前；日落时段售罄就选夜间时段。东京的日落时间从 12 月中旬的 16:29
+            如果能订到，优先选择日落时段；更在意价格，就选 15 点前；如果日落时段售罄，则选择夜间时段。东京的日落时间从 12 月中旬的 16:29
             到 6 月中旬的 18:58，所以最抢手的时段并不是一整年都一样，但它始终在 ¥3,400 那一档。
           </p>
           <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
-            SHIBUYA SKY 每个月的日落时段是几点？
+            SHIBUYA SKY 各个月份的日落时间是几点？
           </h3>
           <p className={styles.bodyText}>
             请预订比下表日落时间早 30～60 分钟的入场时段。这个时段最先售罄，所以请在目标日期于两周前日本时间 00:00 开售时立即预订。
@@ -698,7 +698,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            在屋顶待一小时只是晚上行程的一部分，所以时段通常要配合当天其他安排来选。我们把它排进了{" "}
+            在屋顶观景台停留一小时，只是整个夜间行程的一部分，所以时段通常要配合当天其他安排来选。我们把它排进了{" "}
             <Link href="/guides/attractions/tokyo-3-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
               东京三日游行程（英文）
             </Link>
@@ -724,7 +724,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>SHIBUYA SKY、晴空塔、东京铁塔：该选哪个观景台？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             SHIBUYA SKY 的优势在于能拍到经典的涩谷十字路口全景，但它既不是东京最高的观景台，也不是最便宜的；而且自 2025 年 4 月的票价调整后，
-            15:00 入场比东京铁塔的 Top Deck Tour 还贵。要纯粹的高度与富士山视野选晴空塔，要复古地标选东京铁塔，
+            15:00 入场比东京铁塔的 Top Deck Tour 还贵。要纯粹的高度与富士山视野选晴空塔，想参观复古地标，就选东京铁塔；
             想免费看全景就去新宿的东京都厅。
           </p>
           <div className={styles.tableWrap}>
@@ -770,7 +770,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <ul className={styles.bodyList}>
             <li><strong>不可带上屋顶：</strong>包、背包、雨伞、自拍杆。上去前先存放在 46 楼的储物柜。</li>
             <li><strong>可以携带：</strong>手机与可放进口袋的相机。</li>
-            <li><strong>三脚架与独脚架：</strong>只能在 46 楼室内使用，人多时工作人员可能请你停止。屋顶与其他楼层禁止使用。</li>
+            <li><strong>三脚架与独脚架：</strong>只能在 46 楼室内使用，游客较多时工作人员可能要求停止使用。屋顶与其他楼层禁止使用。</li>
             <li><strong>天气不佳：</strong>天气转坏时屋顶可能不经预告关闭，室内楼层仍开放。订票前请确认门票条款。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
@@ -801,8 +801,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
 
         {/* Klook tours in the same city */}
         <KlookTourPicks
-          heading="同一座城市出发的一日游"
-          intro="参观 SHIBUYA SKY 只需要晚上的一小时左右，一天里其他时间都还空着。如果东京的某一天还没排好，这两个行程都能用你订门票的同一个 Klook 账号预订。"
+          heading="从东京出发的一日游"
+          intro="晚上参观 SHIBUYA SKY 大约只需要一小时，当天其他时间仍可安排其他活动。如果东京的某一天还没排好，这两个行程都能用你订门票的同一个 Klook 账号预订。"
           tours={tourPicks}
         />
 
@@ -827,8 +827,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>提前订好涩谷的日落时段</h2>
             <p className={styles.ctaBannerDesc}>
-              两档票价都是网上比窗口便宜 ¥300，每个日期在两周前的日本时间午夜开售。Klook 支持境外信用卡，
-              并标明入场前 24 小时可免费取消，东京天气多变也不用担心。
+              两档门票的网上预订价格均比现场窗口便宜 ¥300，每个入场日期的门票均在该日期两周前的日本时间午夜开售。Klook 支持境外信用卡，
+              并标明入场前 24 小时可免费取消，即使东京天气多变，也能更灵活地调整行程。
             </p>
             <div className={styles.pickCtaRow}>
               <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>

@@ -65,7 +65,7 @@ const COPY: Record<Locale, Copy> = {
     intro: "出發前掃 QR Code 完成設定，抵達後馬上就能上網。門票、地圖和電車時刻，從機場開始都能用手機查看。",
     guideEyebrow: "日本行動上網",
     guideIntro: "出發前掃 QR Code 完成設定，抵達後馬上就能上網。地圖和電車時刻，從機場開始都能用手機查看。",
-    lowest: "已確認方案中的最低價",
+    lowest: "已確認方案中的最低價格",
     simbyeFrom: "{price} 起（{plan}）",
     simbyeCode: "輸入折扣碼 {code} 享 {percent}% 折扣：{discounted}",
     simbyeCta: "查看 Simbye，{price} 起 →",
@@ -80,7 +80,7 @@ const COPY: Record<Locale, Copy> = {
     intro: "出发前扫二维码完成设置，抵达日本后马上就能上网。从抵达机场起，就可以用手机查看电子门票、地图和电车时刻表。",
     guideEyebrow: "日本移动上网",
     guideIntro: "出发前扫二维码完成设置，抵达日本后马上就能上网。从抵达机场起，就可以用手机查看地图和电车时刻表。",
-    lowest: "已核实套餐中的最低价",
+    lowest: "已核实套餐的最低价格",
     simbyeFrom: "{price} 起（{plan}）",
     simbyeCode: "输入优惠码 {code} 可享受 {percent}% 折扣：{discounted}",
     simbyeCta: "查看 Simbye，{price} 起 →",
@@ -129,7 +129,7 @@ export default function BookingEsimCard({ lead }: { lead?: string }) {
   if (!plan?.discountedUsd) return null;
 
   const price = formatUsd(plan.priceUsd);
-  const planName = plan.name.replace(/(\d+) days?/, (_, n) => copy.days.replace("{n}", n));
+  const planName = plan.name.replace(/(\d+) days?/, (_, n) => copy.days.replace("{n}", n)).replace(" / ", locale === "zh-tw" ? "／" : " / ");
   const checkedAt = latestCheckedAt()?.slice(0, 10);
   const checked = locale !== "en" && checkedAt ? dateLabel(checkedAt, locale) : pricesCheckedLabel();
 

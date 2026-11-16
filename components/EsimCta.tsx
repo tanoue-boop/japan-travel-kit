@@ -135,18 +135,18 @@ const COPY: Record<Locale, Copy> = {
   "zh-tw": {
     topLabel: "日本行動上網",
     topLine: "首選 Simbye：{plan} {price} 起，輸入折扣碼 {code} 享 {percent}% 折扣，為 {discounted}。",
-    topLowest: "這是我們價格資料中最低的方案價格。",
+    topLowest: "這是我們所查詢方案中的最低價格。",
     networks: "Simbye 標示的日本線路：{networks}。",
     others: "其他選擇：",
     bottomHeading: "出發前要準備的東西：行動上網",
     bottomIntro: "出發前掃 QR Code 設定 eSIM，抵達後馬上就能上網。以下依推薦順序列出四個選擇與理由。",
     simbyeFrom: "{price} 起（{plan}）。",
     simbyeCode: "輸入折扣碼 {code} 享 {percent}% 折扣：{discounted}。",
-    lowest: "已確認方案中的最低價。",
+    lowest: "已確認方案中的最低價格。",
     hotspot: "所有日本方案皆可分享熱點。",
     from: "{price} 起（{plan}）。",
     orderNote:
-      "排序理由：{simbye}；Klook eSIM 可與你的其他 Klook 訂單透過同一個帳號管理；Airalo 可透過自家 App 安裝，並提供線上客服；Sakura Mobile 有附日本電話號碼的方案可選。價格來自每日價格查核，最近一次為 {date}。",
+      "排序理由：{simbye}；Klook eSIM 可與你的其他 Klook 訂單透過同一個帳號管理；Airalo 可透過自家 App 安裝，並提供線上客服；Sakura Mobile 有附日本電話號碼的方案可選。價格來自每日價格查核，最近一次查核日期為 {date}。",
     orderLowest: "Simbye 是我們價格資料中方案價格最低的",
     orderNetworks: "Simbye 標示涵蓋日本四家電信線路",
     insuranceName: "旅遊保險",
@@ -161,18 +161,18 @@ const COPY: Record<Locale, Copy> = {
   "zh-cn": {
     topLabel: "日本移动上网",
     topLine: "首选 Simbye：{plan} {price} 起，输入优惠码 {code} 可享 {percent}% 折扣，为 {discounted}。",
-    topLowest: "这是我们价格数据中最低的套餐价格。",
+    topLowest: "这是我们已核查的套餐中价格最低的一款。",
     networks: "Simbye 标注的日本网络：{networks}。",
     others: "其他选择：",
     bottomHeading: "出发前要准备的东西：移动上网",
     bottomIntro: "出发前扫二维码设置 eSIM，抵达日本后马上就能上网。以下按推荐顺序列出四个选择及理由。",
     simbyeFrom: "{price} 起（{plan}）。",
     simbyeCode: "输入优惠码 {code} 可享受 {percent}% 折扣：{discounted}。",
-    lowest: "已核实套餐中的最低价。",
+    lowest: "已核实套餐的最低价格。",
     hotspot: "所有日本套餐均可共享热点。",
     from: "{price} 起（{plan}）。",
     orderNote:
-      "排序理由：{simbye}；Klook eSIM 可以和其他 Klook 订单在同一个账户中管理；Airalo 用自家 App 安装并提供在线客服；Sakura Mobile 有带日本电话号码的套餐可选。价格来自每日价格核查，最近一次为 {date}。",
+      "排序理由：{simbye}；Klook eSIM 可以和其他 Klook 订单在同一个账户中管理；Airalo 可通过自家 App 安装，并提供在线客服支持；Sakura Mobile 有带日本电话号码的套餐可选。价格来自每日价格核查，最近一次为 {date}。",
     orderLowest: "Simbye 是我们价格数据中套餐价格最低的",
     orderNetworks: "Simbye 标注覆盖日本四家运营商网络",
     insuranceName: "旅行保险",
@@ -224,7 +224,7 @@ function useCtx() {
   const copy = COPY[locale];
   const dateOf = (iso: string | null | undefined) =>
     !iso ? "" : locale === "en" ? formatDate(iso) : dateLabel(iso.slice(0, 10), locale);
-  const planName = (p: EsimPlan) => p.name.replace(/(\d+) days?/, (_, n) => copy.days.replace("{n}", n));
+  const planName = (p: EsimPlan) => p.name.replace(/(\d+) days?/, (_, n) => copy.days.replace("{n}", n)).replace(" / ", locale === "zh-tw" ? "／" : " / ");
   return { locale, route, copy, dateOf, planName, tag: pageTag(route) };
 }
 

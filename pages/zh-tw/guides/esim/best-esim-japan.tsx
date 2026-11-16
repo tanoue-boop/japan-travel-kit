@@ -150,7 +150,7 @@ const topPicks: TopPick[] = [
     esimId: "airalo",
     rank: 2,
     name: "Airalo 日本 eSIM",
-    bestFor: "App 與客服首選",
+    bestFor: "重視 App 與客服者首選",
     badgeCls: styles.pickBadgeBlue,
     target: "想要 App、線上即時客服與不限量分享網路的旅客。",
     summary: "全球最大的 eSIM 平台，使用者超過 1,000 萬。落地前先安裝、抵達後立即啟用——不用排隊，也不用實體 SIM。",
@@ -174,7 +174,7 @@ const topPicks: TopPick[] = [
     ctaLabel: "取得 Holafly eSIM →",
     ctaAlt: HOLAFLY_ALT,
     why: () =>
-      `只賣吃到飽，${formatUsd(cheapestUnlimited("holafly")?.priceUsd ?? 0)} 起，手機本身沒有每日降速門檻；排在 Airalo 之後，因為熱點每天上限 1 GB，而且我們沒有它的連結。`,
+      `僅提供吃到飽方案，${formatUsd(cheapestUnlimited("holafly")?.priceUsd ?? 0)} 起，手機本身沒有每日降速門檻；排在 Airalo 之後，因為熱點每天上限 1 GB，而且我們沒有它的連結。`,
   },
   {
     id: "esim-go-japan",
@@ -196,7 +196,7 @@ const topPicks: TopPick[] = [
     esimId: "sakura",
     rank: 5,
     name: "Sakura Mobile 旅遊 eSIM",
-    bestFor: "長期停留首選",
+    bestFor: "長期停留旅客首選",
     badgeCls: styles.pickBadgeGreen,
     target: "停留一個月以上、需要語音通話與英文客服的人。",
     summary: "適合長期停留、想要英語客服的旅客的日本在地選擇。旅遊 eSIM 有每日 3 GB 或吃到飽；實體 SIM 方案可加語音。",
@@ -256,16 +256,16 @@ const quickRows: {
   cta: string;
 }[] = [
   { id: "simbye", name: "Simbye", bestFor: "只看價格：固定流量最便宜", phone: "✗（純數據）", buy: "simbye.com 購買，購買後取得 QR Code", cta: "取得 Simbye eSIM →" },
-  { id: "airalo", name: "Airalo", bestFor: "要 App 與線上客服、接筆電的吃到飽", phone: "✗（純數據）", buy: "Airalo App 購買並安裝", cta: "取得 Airalo eSIM →" },
+  { id: "airalo", name: "Airalo", bestFor: "想使用 App、線上客服，或需要分享網路給筆電的人", phone: "✗（純數據）", buy: "Airalo App 購買並安裝", cta: "取得 Airalo eSIM →" },
   { id: "esimgo", name: "eSIM Go（Breeze）", bestFor: "1 天起的吃到飽、大流量", phone: "✗（純數據）", buy: "breezesim.com 購買，購買後取得 QR Code", cta: "取得 eSIM Go →" },
-  { id: "sakura", name: "Sakura Mobile", bestFor: "要日本電話號碼、長期停留", phone: "語音＋數據方案附日本號碼（需在日本核對身分）", buy: "sakuramobile.jp 購買，以電子郵件寄送 My Page 連結並在該處發行 QR Code", cta: "取得 Sakura Mobile →" },
-  { id: "holafly", name: "Holafly", bestFor: "只賣吃到飽", phone: "✗（純數據）", buy: "esim.holafly.com 購買（本站沒有連結）", cta: "" },
+  { id: "sakura", name: "Sakura Mobile", bestFor: "需要日本電話號碼或長期停留的人", phone: "語音＋數據方案附日本號碼（需在日本核對身分）", buy: "sakuramobile.jp 購買，以電子郵件寄送 My Page 連結並在該處發行 QR Code", cta: "取得 Sakura Mobile →" },
+  { id: "holafly", name: "Holafly", bestFor: "僅提供吃到飽方案", phone: "✗（純數據）", buy: "esim.holafly.com 購買（本站沒有連結）", cta: "" },
 ];
 
 /** Klook 網卡, from purchase to switched on — only what the listing data and the shared steps say. */
 const klookSteps = [
   {
-    step: "1. 在 Klook 購買",
+    step: "1. 透過 Klook 購買",
     what: "打開 Klook 日本 eSIM 商品頁，選天數與流量（500 MB～50 GB，或吃到飽）後付款，可以和門票、交通放在同一個 Klook 帳號。",
     note: "價格依天數、流量與日期而變，以結帳頁顯示為準。",
   },
@@ -281,7 +281,7 @@ const klookSteps = [
   },
   {
     step: "4. 抵達日本後開啟",
-    what: "開啟 eSIM 門號、打開「行動數據漫遊」，並把行動數據設為 eSIM；原本的門號關閉漫遊，避免產生漫遊費。",
+    what: "開啟 eSIM 門號、打開「行動數據漫遊」，並把行動數據設為 eSIM；關閉原門號的數據漫遊，避免產生漫遊費。",
     note: "按天計方案走 SoftBank 5G，總流量方案走 IIJ（Docomo）4G LTE，可分享熱點。",
   },
 ];
@@ -307,7 +307,7 @@ const itineraryPicks = [
   },
   {
     trip: "2 到 4 週",
-    pick: "要總流量選 Simbye，要每日額度選 Sakura Mobile",
+    pick: "想要固定總流量就選 Simbye，偏好每日流量額度則選 Sakura Mobile",
     detail: () =>
       `${planLabel(LONG_TRIP_PLAN)} 以每天 1 GB 計可撐 20 天，同樣走這四家電信。如果你寧可每天早上都有一份新的流量，Sakura Mobile 的每日 3 GB 系列走 Docomo 5G——${planLabel(SAKURA_DAILY_LONG)}——只有在單日用超過 3 GB 後才會降到 200 kbps。`,
   },
@@ -330,7 +330,7 @@ const itineraryPicks = [
       "六家裡唯一附日本號碼、通話與簡訊的方案：au（KDDI）5G、每天 3 GB，1～10 天方案含 120 分鐘通話、11～30 天含 240 分鐘、31～60 天含 360 分鐘、61～90 天含 480 分鐘。它需要在日本現場核對身分證件，使用期間在核對之後才開始，而不是落地就開始。",
   },
   {
-    trip: "同一趟行程走日本加南韓或台灣",
+    trip: "同一趟旅程包含日本、南韓或台灣",
     pick: "改買亞洲區域 eSIM，而不是日本專用",
     detail: () =>
       "Airalo 的 Asia eSIM 涵蓋「18 個國家與網路」，名單中包括日本、南韓與台灣；Breeze 的 eSIM Asia 涵蓋「13 個國家與網路」，讀取的頁面上沒有國家名單。兩者都是獨立產品，和本頁標價的日本方案不同。",
@@ -407,7 +407,7 @@ const unlimitedRows = [
   },
   {
     plan: "Sakura Mobile Unlimited（au 5G）",
-    full: "手機使用流量不限量",
+    full: "手機本身使用的流量不限量",
     after: "讀取的頁面上未公布手機本身的降速門檻",
     hotspot: "依方案長度設上限——依方案天數為 2 GB 到 30 GB",
     checked: SPECS_CHECKED,
@@ -415,7 +415,7 @@ const unlimitedRows = [
   {
     plan: "Sakura Mobile 每日 3 GB（Docomo 5G）",
     full: "每天 3 GB",
-    after: "「每天使用 3 GB 數據後，速度將限制在 200 Kbps」",
+    after: "「每天使用超過 3 GB 流量後，速度將限制在 200 Kbps」",
     hotspot: "可使用",
     checked: SPECS_CHECKED,
   },
@@ -478,7 +478,7 @@ const timingRows = [
 const faqItems: FaqItem[] = [
   {
     q: "日本eSIM哪家好？",
-    a: `看用途。懶得比較、門票與交通已經在 Klook 訂的話，選 Klook 網卡（Klook 日本 eSIM），同一個帳號結帳，走 SoftBank 5G／IIJ（Docomo）。只看價格選 Simbye：7 天行程約 5 GB 為 ${providerTripPlan("simbye", 7, 5)}，15 天約 10 GB 為 ${providerTripPlan("simbye", 15, 10)}（價格查核 ${pricesCheckedAt}）。要日本電話號碼，只有 Sakura Mobile 的語音＋數據 eSIM。`,
+    a: `依使用需求而定。如果不想花時間比較，而且已透過 Klook 預訂門票與交通，選 Klook 網卡（Klook 日本 eSIM），同一個帳號結帳，走 SoftBank 5G／IIJ（Docomo）。只看價格選 Simbye：7 天行程約 5 GB 為 ${providerTripPlan("simbye", 7, 5)}，15 天約 10 GB 為 ${providerTripPlan("simbye", 15, 10)}（價格查詢日期：${pricesCheckedAt}）。要日本電話號碼，只有 Sakura Mobile 的語音＋數據 eSIM。`,
   },
   {
     q: "Klook 網卡怎麼用？",
@@ -529,12 +529,12 @@ const faqItems: FaqItem[] = [
     a: "一般觀光用途——Google 地圖、訊息、輕度瀏覽、拍幾張照——每天 1 GB 是合理的估計。10 天的行程大約用 8～10 GB。如果你大量用導航開車、看影片，或遠端工作，請算每天 2 GB 以上。多數旅客覺得 3～5 GB 的方案足夠一週的日本行。",
   },
   {
-    q: "日本網卡（eSIM）要多少錢？",
-    a: `日本 eSIM 的價格依業者與流量級距而不同（查核時間 ${pricesCheckedAt}）。省錢選項：Simbye ${planLabel(cheapestPlan("simbye"))} 起、eSIM Go ${planLabel(cheapestPlan("esimgo"))} 起、Airalo ${planLabel(cheapestPlan("airalo"))} 起。中階：5 GB 方案 Simbye ${planLabel(cheapestAtLeastGb("simbye", 5))}，eSIM Go ${planLabel(cheapestAtLeastGb("esimgo", 5))}，Airalo ${planLabel(cheapestAtLeastGb("airalo", 5))}。吃到飽：Holafly ${planLabel(cheapestUnlimited("holafly"))} 起。日本本地、有英語電話客服：Sakura Mobile ${planLabel(cheapestPlan("sakura"))} 起。一般旅客一週的行程，預期在 $10～20。`,
+    q: "日本 eSIM 網卡要多少錢？",
+    a: `日本 eSIM 的價格依業者與流量級距而不同（價格查詢日期：${pricesCheckedAt}）。省錢選項：Simbye ${planLabel(cheapestPlan("simbye"))} 起、eSIM Go ${planLabel(cheapestPlan("esimgo"))} 起、Airalo ${planLabel(cheapestPlan("airalo"))} 起。中階：5 GB 方案 Simbye ${planLabel(cheapestAtLeastGb("simbye", 5))}，eSIM Go ${planLabel(cheapestAtLeastGb("esimgo", 5))}，Airalo ${planLabel(cheapestAtLeastGb("airalo", 5))}。吃到飽：Holafly ${planLabel(cheapestUnlimited("holafly"))} 起。日本在地業者，提供英語電話客服：Sakura Mobile ${planLabel(cheapestPlan("sakura"))} 起。一般旅客一週的行程，預期在 $10～20。`,
   },
   {
     q: "日本行程買吃到飽值得嗎？",
-    a: "對大多數觀光客：不值得。日本的飯店、便利商店與觀光區 Wi-Fi 覆蓋很好。3～5 GB 的方案就能撐過一般一週的導航、訊息與瀏覽。吃到飽方案（例如 Holafly）貴 2～3 倍，主要對大量看影片、頻繁視訊，或會去 Wi-Fi 不好的地區的重度使用者有意義。如果拿不定主意，先從 5 GB 開始，再考慮要不要加。",
+    a: "對大多數觀光客：不值得。日本的飯店、便利商店與觀光區有不少地方提供 Wi-Fi。3～5 GB 的方案就能撐過一般一週的導航、訊息與瀏覽。吃到飽方案（例如 Holafly）貴 2～3 倍，主要對大量看影片、頻繁視訊，或會去 Wi-Fi 不好的地區的重度使用者有意義。如果拿不定主意，可以先選擇 5 GB 方案，再視需求考慮加購流量。",
   },
   {
     q: "到了日本可以加購流量嗎？",
@@ -546,7 +546,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "日本 eSIM 什麼時候啟用？",
-    a: "出發前就先安裝（掃 QR Code）——這需要 2～5 分鐘和一個 Wi-Fi 連線。不過大多數方案的天數是從你在日本第一次連上網路開始算，不是從你安裝設定檔開始。所以抵達日本後再把數據切到日本的 eSIM，方案才會在你需要的時候開始跑。",
+    a: "出發前就先安裝（掃 QR Code）——這個過程需要 2～5 分鐘，並且必須連上 Wi-Fi。不過大多數方案的天數是從你在日本第一次連上網路開始算，不是從你安裝設定檔開始。所以抵達日本後再把數據切到日本的 eSIM，方案才會在你需要時開始計算使用期限。",
   },
   {
     q: "日本哪家網路涵蓋範圍最好？",
@@ -562,11 +562,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "吃到飽會降速嗎？",
-    a: `會——每個日本「吃到飽」方案都有公布的門檻。Simbye 每天前 2 GB 全速，之後 1 Mbps。Airalo 超過 3 GB 後，當天剩餘時間降到 1 Mbps，流量「每 24 小時重置，從你啟用 eSIM 的時間起算」。eSIM Go 的 Premium Unlimited 全速可用 5 天 30 GB、10 天 60 GB 或 15 天 90 GB，之後「速度會降低（但仍足以串流 720p 影片）」。Sakura Mobile 的吃到飽方案手機使用流量不限量，但熱點依方案長度上限 2～30 GB；它的每日 3 GB 方案在單日用超過 3 GB 後降到 200 kbps。Klook 商品的吃到飽方案每天前 10 GB 全速，之後 128 kbps。Airalo 與 eSIM Go 的數據查核時間 ${SPECS_CHECKED}；Klook 的數據來自其 ${KLOOK_SPECS_CHECKED} 的商品資料。`,
+    a: `會——每個日本「吃到飽」方案都有公布的門檻。Simbye 每天前 2 GB 全速，之後 1 Mbps。Airalo 超過 3 GB 後，當天剩餘時間降到 1 Mbps，流量「每 24 小時重置，從你啟用 eSIM 的時間起算」。eSIM Go 的 Premium Unlimited 全速可用 5 天 30 GB、10 天 60 GB 或 15 天 90 GB，之後「速度會降低（但仍足以串流 720p 影片）」。Sakura Mobile 的吃到飽方案手機本身使用的流量不限量，但熱點依方案長度上限 2～30 GB；它的每日 3 GB 方案在單日用超過 3 GB 後降到 200 kbps。Klook 商品的吃到飽方案每天前 10 GB 全速，之後 128 kbps。Airalo 與 eSIM Go 的數據查核時間 ${SPECS_CHECKED}；Klook 的數據來自其 ${KLOOK_SPECS_CHECKED} 的商品資料。`,
   },
   {
     q: "日本 eSIM 完全沒用，可以退款嗎？",
-    a: `要看業者。依 Simbye 的退款政策，從未安裝或啟用且未使用任何數據的 eSIM，於購買後 30 天內申請可全額退款。eSIM Go 寫明「如果你還沒使用任何數據，可以獲得全額退款——不問理由」，3 個工作天內處理。Airalo 可以從帳戶提出退款申請，並註明已過期或已用完的 eSIM 不符合資格。Sakura Mobile 的旅遊 eSIM 頁面沒有公布退款條款，Klook 商品的條款未列於此，請在商品頁確認。相關的陷阱在於時間而不是錢：eSIM Go 的有效期「從在日本第一次使用數據開始，不是從購買時開始」，但 Sakura Mobile 的每日 3 GB 方案「安裝 eSIM 後開始計算」——所以這些方案要抵達後再安裝，不要在家裝。查核時間 ${SPECS_CHECKED}。`,
+    a: `要看業者。依 Simbye 的退款政策，從未安裝或啟用且未使用任何數據的 eSIM，於購買後 30 天內申請可全額退款。eSIM Go 寫明「如果你還沒使用任何數據，可以獲得全額退款——不問理由」，3 個工作天內處理。Airalo 可以從帳戶提出退款申請，並註明已過期或已用完的 eSIM 不符合資格。Sakura Mobile 的旅遊 eSIM 頁面沒有公布退款條款，Klook 商品的條款未列於此，請在商品頁確認。真正需要留意的是使用期限，而不只是退款金額：eSIM Go 的有效期「從在日本第一次使用數據開始，不是從購買時開始」，但 Sakura Mobile 的每日 3 GB 方案「安裝 eSIM 後開始計算」——所以這些方案要抵達後再安裝，不要在家裝。查核時間 ${SPECS_CHECKED}。`,
   },
   {
     q: "為什麼我的日本 eSIM 速度很慢？",
@@ -627,7 +627,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <p className={styles.eyebrow}>價格查核時間 {pricesCheckedAt}</p>
+          <p className={styles.eyebrow}>價格查詢日期：{pricesCheckedAt}</p>
           <h1 className={styles.heroTitle}>
             日本 eSIM 推薦 2026：<br />Klook 網卡與 6 家日本 eSIM 比較
           </h1>
@@ -635,7 +635,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             日本 eSIM 比較：Klook 網卡的買法，加上 6 家日本 eSIM 的 7 天／15 天價格、網路、吃到飽、電話號碼與熱點分享，告訴你哪種行程該選哪一家。
           </p>
           <div className={styles.heroBadges}>
-            {["價格每天查核", "6 款 eSIM 比較", "獨立評比"].map((t) => (
+            {["每日更新價格", "6 家 eSIM 業者比較", "獨立比較評測"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -650,10 +650,10 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
         {/* The answer first: one sentence per use, with the 7- and 15-day prices and the date in it (16 Nov 2026, R04). */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>日本 eSIM 推薦</strong>：短期觀光、懶得比較的話，選 <strong>Klook 網卡（Klook 日本 eSIM）</strong>——和門票、交通用同一個 Klook 帳號結帳，
+            <strong>日本 eSIM 推薦</strong>：短期觀光、不想花時間比較的話，就選 <strong>Klook 網卡（Klook 日本 eSIM）</strong>——和門票、交通用同一個 Klook 帳號結帳，
             以 QR Code 安裝，走 SoftBank 5G／IIJ（Docomo），可分享熱點（商品資料 {KLOOK_SPECS_CHECKED}）。
             只看價格的話，<strong>7 天行程</strong>（約 5 GB）最便宜是 <strong>{tripPlanLabel(7, 5)}</strong>，<strong>15 天行程</strong>（約 10 GB）是{" "}
-            <strong>{tripPlanLabel(15, 10)}</strong>（價格查核 {pricesCheckedAt}）。
+            <strong>{tripPlanLabel(15, 10)}</strong>（價格查詢日期：{pricesCheckedAt}）。
             要<strong>吃到飽</strong>，一週方案最便宜的是 Simbye 的 <strong>{planLabel(SIMBYE_UNLIMITED)}</strong>，接筆電分享網路選 Airalo 的{" "}
             <strong>{planLabel(AIRALO_UNLIMITED)}</strong>；需要<strong>日本電話號碼</strong>，6 家中只有 <strong>Sakura Mobile 的語音＋數據 eSIM</strong> 提供。
           </p>
@@ -668,9 +668,9 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
         {/* Quick comparison (R04): 7- and 15-day prices, phone number and how it is bought; Klook first. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>日本 eSIM 比較</span>
-          <h2 className={styles.sectionTitle}>日本eSIM推薦：7 天、15 天各要多少錢？</h2>
+          <h2 className={styles.sectionTitle}>日本eSIM推薦：7 天、15 天的方案各要多少錢？</h2>
           <p className={styles.bodyText}>
-            7 天行程以約 5 GB、15 天以約 10 GB 計算（每天 0.5～1 GB 的一般觀光用量），各家能涵蓋的最便宜方案如下。猶豫不決就選第一列的 Klook 網卡；只看價格，Simbye 最便宜。
+            7 天行程以約 5 GB、15 天以約 10 GB 計算（每天 0.5～1 GB 的一般觀光用量），各家符合上述流量需求的最低價方案如下。猶豫不決就選第一列的 Klook 網卡；只看價格，Simbye 最便宜。
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -749,7 +749,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                 <thead>
                   <tr>
                     <th>步驟</th>
-                    <th>要做什麼</th>
+                    <th>操作方式</th>
                     <th>注意</th>
                   </tr>
                 </thead>
@@ -774,7 +774,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
         {/* Tokyo / Osaka rows (R04): for the "東京esim" query. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>東京・大阪</span>
-          <h2 className={styles.sectionTitle}>東京、大阪用哪張日本 eSIM？</h2>
+          <h2 className={styles.sectionTitle}>東京、大阪適合用哪款日本 eSIM？</h2>
           <p className={styles.bodyText}>
             在東京、大阪市區，本頁每一家都夠用——三大電信都涵蓋城市與新幹線沿線，選擇看的是價格與購買方式，而不是訊號。差別出現在離開城市之後。
           </p>
@@ -793,7 +793,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                     <td className={styles.tdProvider} style={{ minWidth: "150px" }}>東京（市區、迪士尼、澀谷）</td>
                     <td className={styles.tdBestFor}>Klook 網卡，或最便宜的 Simbye</td>
                     <td style={{ fontSize: "0.82rem", minWidth: "260px" }}>
-                      城市內各家電信都涵蓋。7 天約 5 GB 最便宜是 {tripPlanLabel(7, 5)}；門票已在 Klook 訂就一起結帳。{" "}
+                      各家電信在市區都有訊號涵蓋。7 天約 5 GB 最便宜是 {tripPlanLabel(7, 5)}；門票已在 Klook 訂就一起結帳。{" "}
                       <Link href="/zh-tw/guides/attractions/tokyo-disney-tickets" className={tools.inlineLink}>東京迪士尼門票攻略</Link>
                     </td>
                   </tr>
@@ -806,10 +806,10 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                     </td>
                   </tr>
                   <tr>
-                    <td className={styles.tdProvider} style={{ minWidth: "150px" }}>東京＋京都＋大阪，約 15 天</td>
+                    <td className={styles.tdProvider} style={{ minWidth: "150px" }}>東京、京都、大阪，約 15 天</td>
                     <td className={styles.tdBestFor}>{tripPlanLabel(15, 10)}</td>
                     <td style={{ fontSize: "0.82rem", minWidth: "260px" }}>
-                      以每天約 0.7 GB 計算的最便宜方案；每天要看影片的話改看下方的吃到飽表。
+                      以每天約 0.7 GB 估算，這是最便宜的方案；每天要看影片的話改看下方的吃到飽表。
                     </td>
                   </tr>
                   <tr>
@@ -911,7 +911,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             所以沒有價格或流量級距可以拿來和它們比較。請打開商品頁查看目前的方案。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.85rem", color: "var(--text-muted)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.6rem" }}>
-            <span className={tools.liveBadge}><span className={tools.liveDot} /> 價格每天查核</span>
+            <span className={tools.liveBadge}><span className={tools.liveDot} /> 每日更新價格</span>
             <span>
               「最低價」是各業者最便宜的日本方案，時間點為 {pricesCheckedAt}。{" "}
               <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>看所有方案、依每 GB 單價排序（英文）→</Link>
@@ -974,12 +974,12 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <h2 className={styles.sectionTitle}>日本兩週行程用哪個 eSIM 最好？</h2>
           <p className={styles.bodyText}>
             <strong>{tripPlanLabel(14, 14)}</strong> 是能以每天 1 GB 撐滿 14 天的最便宜方案；如果你的用途是地圖、訊息和拍幾張照，而不是看影片，
-            <strong>{tripPlanLabel(14, 7)}</strong> 就夠了。兩者都是 30 天方案，所以兩週的行程卡的不是天數，而是流量。
+            <strong>{tripPlanLabel(14, 7)}</strong> 就夠了。兩者都是 30 天方案，所以兩週行程的限制不在使用天數，而在流量。
           </p>
           <p className={styles.bodyText}>
             有兩個替代選擇值得多花錢，但都是因為特定理由，而不是一般情況。Sakura Mobile 的
             {planLabel(allEsimPlans.find((p) => p.id === "sakura-45-gb-15-days") ?? null)}
-            每天早上給你 3 GB（Docomo 5G），不必省著用一整包流量，適合兩週裡會去山區或小島的行程。如果兩週的出差需要筆電分享網路，
+            每天提供 3 GB 的流量額度（Docomo 5G），不必省著用一整包流量，適合兩週裡會去山區或小島的行程。如果兩週的出差需要筆電分享網路，
             {planLabel(cheapestUnlimited("esimgo", 15))} 或 {planLabel(cheapestUnlimited("airalo", 15))}
             可以買到同樣天數的吃到飽——各自降速到多少，請看下面的降速表。
           </p>
@@ -990,7 +990,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>估算流量</span>
           <h2 className={styles.sectionTitle}>去日本需要多少流量？</h2>
           <p className={styles.bodyText}>
-            地圖、訊息、拍幾張照、偶爾查時刻表，抓<strong>每天 0.5 GB</strong>；加上視訊通話、社群影片或串流音樂，抓<strong>每天 1 GB</strong>。
+            地圖、訊息、拍幾張照、偶爾查時刻表，可以抓<strong>每天 0.5 GB</strong>；加上視訊通話、社群影片或串流音樂，抓<strong>每天 1 GB</strong>。
             這樣算來 10 天的行程是 5～10 GB、兩週是 7～14 GB、三週是 10.5～21 GB——遠低於業者自己視為重度使用的量：Airalo 的合理使用門檻是單日 3 GB，
             Sakura Mobile 的每日上限是 3 GB，Klook 商品的吃到飽方案每天前 10 GB 全速。
           </p>
@@ -1025,7 +1025,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            GB 欄是依上面的估算數字計算的；方案欄是能涵蓋該用量的最便宜在售方案，價格讀取於 {pricesCheckedAt}。Holafly 不列入這兩欄，因為本站沒有可以購買它的連結。
+            GB 欄位是根據上述估算用量計算；方案欄是能涵蓋該用量的最便宜在售方案，價格讀取於 {pricesCheckedAt}。Holafly 不列入這兩欄，因為本站沒有可以購買它的連結。
             每日上限型方案以「每日上限 × 行程天數」計算，而不是看標示的總量，這是和固定流量方案公平比較的唯一方法。{" "}
             <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>
               所有方案，依每 GB 單價排序（英文）→
@@ -1037,10 +1037,10 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
         {/* Q: Which network is best in Japan? — carrier table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>網路</span>
-          <h2 className={styles.sectionTitle}>日本哪家網路最好：Docomo、au 還是 SoftBank？</h2>
+          <h2 className={styles.sectionTitle}>日本哪家電信網路最好：Docomo、au 還是 SoftBank？</h2>
           <p className={styles.bodyText}>
             在東京－京都－大阪－廣島路線上，實際上沒有差別——三家都涵蓋城市與新幹線沿線。差別在離開這些地方之後：日本在地業者的鄉間方案都建立在 Docomo 的網路上；
-            而且這些業者在讀取的頁面上都沒有公布涵蓋率，所以老實的選法是看方案實際走哪家，而不是看宣傳。結帳頁上的品牌並不等於網路：
+            而且這些業者在讀取的頁面上都沒有公布涵蓋率，所以老實的選法是看方案實際走哪家，而不是看宣傳。購買頁面上的品牌不一定是實際使用的電信網路：
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -1067,7 +1067,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            如果你根本不想選電信，Simbye 與 eSIM Go 就是不用你選的：兩者都列出四家電信，並自動選擇其中一家。
+            如果你不想自己挑選電信業者，Simbye 與 eSIM Go 就是不用你選的：兩者都列出四家電信，並自動選擇其中一家。
           </p>
         </section>
 
@@ -1076,8 +1076,8 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>細則</span>
           <h2 className={styles.sectionTitle}>「吃到飽」實際上是什麼意思，能不能分享網路</h2>
           <p className={styles.bodyText}>
-            沒有任何日本吃到飽方案是無限全速的。每一家都公布了門檻與超過後的降速，而差最多的是熱點——一家完全不限制分享網路，另一家以 GB 設上限。
-            如果你買吃到飽是為了讓筆電分享網路，決定的就是這一欄：
+            沒有任何日本吃到飽方案是無限全速的。每一家都公布了門檻與超過後的降速，而差最多的是熱點——有的完全不限制熱點分享流量，有的則設有 GB 上限。
+            如果你買吃到飽是為了讓筆電分享網路，關鍵就在這一欄：
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -1139,9 +1139,9 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
         {/* Refunds and install timing */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>時間點</span>
-          <h2 className={styles.sectionTitle}>什麼時候開始計時，什麼時候還能退款</h2>
+          <h2 className={styles.sectionTitle}>何時開始計算使用期限，以及哪些情況可以退款</h2>
           <p className={styles.bodyText}>
-            提早安裝在某一家是正確做法，在另一家卻是昂貴的錯誤，因為各業者對「什麼會啟動有效期」的規定不一樣。對短天數方案來說，差別可能是一兩天：
+            對某些業者來說，提前安裝是正確做法；但對其他業者來說，卻可能白白浪費使用天數，因為各業者對「什麼會啟動有效期」的規定不一樣。對短天數方案來說，差別可能是一兩天：
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -1149,7 +1149,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                 <thead>
                   <tr>
                     <th>業者</th>
-                    <th>什麼會開始計時</th>
+                    <th>何時開始計算使用期限</th>
                     <th>出發前可以先安裝嗎？</th>
                     <th>未使用可否退款</th>
                     <th>查核日</th>
@@ -1181,7 +1181,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
             {planLabel(cheapestPlan("simbye"))}，比大多數電信一天的漫遊費還便宜。
           </p>
           <p className={styles.bodyText}>
-            有兩項檢查比價格更重要。你的手機必須支援 eSIM 而且沒有被電信鎖；你的方案必須符合你的旅行方式，而不是只看你離開多久——
+            有兩項檢查比價格更重要。你的手機必須支援 eSIM 而且沒有被電信鎖；方案必須符合你的旅行需求，而不只是看旅程有多長——
             一個 30 天、5 GB 的方案，對兩週都要視訊通話的行程來說就是買錯了。{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" className={tools.inlineLink}>
               你的手機在日本能用 eSIM 嗎？（英文）→
@@ -1194,7 +1194,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>依手機</span>
           <h2 className={styles.sectionTitle}>在日本，iPhone 和 Android 用哪個 eSIM 最好？</h2>
           <p className={styles.bodyText}>
-            兩邊都是同樣幾家。這五家都沒有 iPhone 專用或 Android 專用的日本方案——它們都是標準的 eSIM 設定檔，用 QR Code 或啟用連結安裝，
+            iPhone 和 Android 適用的業者其實相同。這五家都沒有 iPhone 專用或 Android 專用的日本方案——這些方案使用的都是標準 eSIM 設定檔，用 QR Code 或啟用連結安裝，
             該選哪一家應該由上面的表格決定，而不是由你的手機決定。不同的是購買前要做的檢查，以及安裝時要進的選單。
           </p>
           <p className={styles.bodyText}>
@@ -1395,7 +1395,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
               <Link href="/guides/esim/esim-go-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 eSIM Go 詳細介紹（英文）
               </Link>
-              ——單獨一家看：價格、網路與分享網路。
+              ——單獨分析這家業者的價格、電信網路與熱點分享功能。
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>
@@ -1427,7 +1427,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>準備好比較所有方案了嗎？</h2>
             <p className={styles.ctaBannerDesc}>
-              五家業者的每一個日本 eSIM 方案，依每 GB 單價排序，每天更新。
+              五家業者的每一個日本 eSIM 方案，依每 GB 單價排序，並每日更新價格。
             </p>
             <Link href={PLANS_HREF} className={styles.ctaBannerBtn}>
               依每 GB 單價查看所有方案（英文）→

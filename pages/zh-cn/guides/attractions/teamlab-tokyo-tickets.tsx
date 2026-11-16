@@ -57,7 +57,7 @@ const BORDERLESS_URL = "https://www.teamlab.art/e/borderless-azabudai/";
 
 const compareRows = [
   { factor: "地点", planets: "丰洲（江东区）", borderless: "麻布台之丘（港区）" },
-  { factor: "形式", planets: "赤脚涉水", borderless: "由 50 多件作品构成、没有固定路线的艺术空间" },
+  { factor: "形式", planets: "赤脚涉水", borderless: "由 50 多件作品组成、没有固定参观路线的艺术空间" },
   { factor: "适合", planets: "亲子游客、首次参观者、喜欢身体互动体验的人", borderless: "艺术爱好者、喜欢慢慢逛和摄影的游客" },
   { factor: "成人票", planets: PLANETS_ADULT, borderless: BORDERLESS_ADULT },
   {
@@ -65,16 +65,16 @@ const compareRows = [
     planets: `${priceLabel(P.child, LOCALE)}（${CHILD_AGES}）`,
     borderless: `${priceLabel(B.child, LOCALE)}（${CHILD_AGES}）`,
   },
-  { factor: "开放时间", planets: "08:00–22:00（12/31–1/2 为 08:00–20:00）", borderless: "公告 08:30–21:00，按日期变动" },
+  { factor: "开放时间", planets: "08:00–22:00（12/31–1/2 为 08:00–20:00）", borderless: "公布的开放时间为 08:30–21:00，具体时间因日期而异" },
   { factor: "入场", planets: "指定日期与入场时间", borderless: "指定时段，或不指定时间的 Flexible Pass" },
-  { factor: "现场购票", planets: "现场不售票", borderless: "现场购票需加收 ¥200" },
+  { factor: "现场购票", planets: "现场不售票", borderless: "现场购票需额外支付 ¥200" },
   { factor: "开放期限", planets: "开放至 2027 年底", borderless: "常设" },
 ];
 
 const whoFor = [
   {
     title: "选 Planets 的话…",
-    desc: "如果带孩子同行、喜欢身体互动体验，也不介意赤脚涉水。你会赤脚走过水深及成人膝盖的水。",
+    desc: "如果带孩子同行、喜欢身体互动体验，也不介意赤脚涉水。你需要赤脚走过深及成人膝盖的水域。",
   },
   {
     title: "选无界的话…",
@@ -82,14 +82,14 @@ const whoFor = [
   },
   {
     title: "两座都去，如果…",
-    desc: "如果行程中能安排出两个半天，又喜欢 teamLab。两座美术馆位于城市的不同区域，要分别购买指定时间的门票，所以请把时间错开。",
+    desc: "如果行程中能安排出两个半天，又喜欢 teamLab。两座美术馆位于城市的不同区域，要分别购买指定时间的门票，因此请错开两座场馆的预约时间。",
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
     q: "东京的 teamLab，Planets 和无界哪个更好？",
-    a: "没有绝对的好坏。Planets 适合亲子游客、首次参观者和喜欢身体互动体验的人，你会赤脚涉水。无界适合想慢慢探索的艺术爱好者，没有地图，也没有固定路线。如果只能去一座，又带着孩子，就选 Planets。",
+    a: "没有绝对的好坏。Planets 适合亲子游客、首次参观者和喜欢身体互动体验的人，你会赤脚涉水。无界适合想慢慢探索的艺术爱好者，没有参观地图，也没有固定的游览路线。如果只能去一座，又带着孩子，就选 Planets。",
   },
   {
     q: "teamLab Planets 和无界是同一张门票吗？",
@@ -97,7 +97,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "东京teamLab门票多少钱？Planets和无界票价一样吗？",
-    a: `不一样。teamLab Planets 成人（18 岁以上）¥3,800 起、初高中生 ¥2,800、4～12 岁 ¥1,500；teamLab 无界成人 ¥3,400 起、13～17 岁 ¥2,800、4～12 岁 ¥1,500，现场购票加收 ¥200。两座都是 3 岁以下免费，并按日期与时段浮动定价，请以所选日期的实际票价为准。${RECHECKED} 于 teamlab.art 查阅。`,
+    a: `不一样。teamLab Planets 成人（18 岁以上）¥3,800 起、初高中生 ¥2,800、4～12 岁 ¥1,500；teamLab 无界成人 ¥3,400 起、13～17 岁 ¥2,800、4～12 岁 ¥1,500，现场购票加收 ¥200。两座都是 3 岁以下免费，并按日期与时段浮动定价，请以所选日期的实际票价为准。于 ${RECHECKED} 查阅 teamlab.art。`,
   },
   {
     q: "Planets 和无界可以同一天去吗？",
@@ -105,18 +105,18 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "哪一座 teamLab 更适合带孩子？",
-    a: "Planets。两座都是未满 4 岁免费，但 Planets 参观时间较短、偏重身体互动体验，孩子容易跟上。请带替换衣物，因为在涉水区每个人都会弄湿；另外婴儿车不可带入馆内。",
+    a: "Planets。两座场馆均对未满 4 岁的儿童免票，但 Planets 参观时间较短、偏重身体互动体验，孩子也比较容易适应。请带替换衣物，因为经过涉水区时，衣物都会被弄湿；另外婴儿车不可带入馆内。",
   },
 ];
 
 const tripTours = [
   withKlookLocale(tokyoSubwayTicket, LOCALE, {
     title: "东京地铁通票（24／48／72 小时）",
-    desc: "东京地铁与都营地铁全线不限次乘坐，抵达后领取，不用排队购买",
+    desc: "可不限次数乘坐东京地铁和都营地铁全线，抵达后领取，不用排队购买",
   }),
   withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
     title: "东京观光巴士一日游",
-    desc: "带讲解的环线行程，游览皇居庭园、浅草与东京晴空塔，提供多语种语音讲解",
+    desc: "配有讲解的环线观光行程，游览皇居庭园、浅草与东京晴空塔，提供多语种语音讲解",
   }),
   withKlookLocale(fujiDayTour, LOCALE, {
     title: "东京出发富士山一日游",
@@ -183,9 +183,9 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         {/* Lead paragraph: the answer, in the body rather than the hero (16 Nov 2026, C01). */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>东京teamLab门票分两座美术馆分别购买：teamLab Planets 成人 ¥3,800 起，teamLab 无界成人 ¥3,400 起</strong>，两座的
-            4～12 岁儿童票都是 ¥1,500、3 岁以下免费，并按日期与时段浮动定价。带孩子或想赤脚涉水选 Planets（丰洲），想慢慢逛数字艺术选无界（麻布台之丘）；
-            Planets 现场不售票，无界现场购票加收 ¥200。{RECHECKED} 于 teamlab.art 查阅。只想看 Planets 的开放时间和预约方式，请看{" "}
+            <strong>东京两座 teamLab 美术馆的门票需要分别购买：teamLab Planets 成人 ¥3,800 起，teamLab 无界成人 ¥3,400 起</strong>，两座的
+            4～12 岁儿童票都是 ¥1,500、3 岁以下免费，并按日期与时段浮动定价。带孩子同行或想体验赤脚涉水，就选 Planets（丰洲），想慢慢逛数字艺术选无界（麻布台之丘）；
+            Planets 现场不售票，无界现场购票加收 ¥200。于 {RECHECKED} 查阅 teamlab.art。只想看 Planets 的开放时间和预约方式，请看{" "}
             <Link href="/zh-cn/guides/attractions/teamlab-planets-tickets">teamLab Planets 门票</Link>攻略。
           </p>
         </section>
@@ -196,7 +196,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>东京 teamLab 门票</strong>要先在两座美术馆之间做选择。带孩子或想体验涉水，
+              <strong>东京 teamLab 门票</strong>首先要从两座美术馆中选一座。带孩子或想体验涉水，
               <strong>选 Planets</strong>；想慢慢探索数字艺术，<strong>选无界</strong>。两座门票需分别购买：
               成人票 Planets {PLANETS_ADULT}，无界 {BORDERLESS_ADULT}。
             </p>
@@ -212,7 +212,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         </div>
 
         <p className={styles.bodyText}>
-          已经决定了？开放时间、预约方式和交通请看{" "}
+          已经选好要去哪座了吗？开放时间、预约方式和交通信息请查看{" "}
           <Link href="/zh-cn/guides/attractions/teamlab-planets-tickets">teamLab Planets 门票攻略</Link>，或{" "}
           <Link href="/zh-cn/guides/attractions/teamlab-borderless-tickets">teamLab 无界门票攻略</Link>。
         </p>
@@ -284,7 +284,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="同一趟旅程可以一起订的行程"
-          intro="参观任何一座美术馆都只占东京一天中的一部分时间。这里有地铁通票、带讲解的市区一日游和郊外一日游。Klook 价格随日期变化，所以请打开页面查看所选日期的实际价格。"
+          intro="参观其中任何一座美术馆，都只占用东京一天行程中的一部分时间。这里有地铁通票、带讲解的市区一日游和郊外一日游。Klook 价格随日期变化，所以请打开页面查看所选日期的实际价格。"
           tours={tripTours}
         />
 

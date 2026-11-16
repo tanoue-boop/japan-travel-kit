@@ -317,7 +317,7 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
   {
     en: "/guides/attractions/tokyo-skytree-tickets",
     zhTw: "/zh-tw/guides/attractions/tokyo-skytree-tickets",
-    zhTitle: "東京晴空塔門票（2026）：票價、350 與 450 樓怎麼選",
+    zhTitle: "東京晴空塔門票（2026）：票價、350 公尺與 450 公尺觀景台怎麼選",
     zhLabel: "東京晴空塔門票",
     zhCn: "/zh-cn/guides/attractions/tokyo-skytree-tickets",
     zhCnTitle: "东京晴空塔门票（2026）：票价、350 米与 450 米观景台怎么选",

@@ -51,7 +51,7 @@ const COPY: Record<Locale, { label: string; note: string }> = {
   },
   "zh-tw": {
     label: "出發之前",
-    note: "以上連結將導向 Klook，若透過連結預訂，我們會獲得分潤，您支付的價格不變。價格與庫存以 Klook 為準——Klook 價格依日期而變，因此這裡不列價格，請查看你出發日期的商品頁。",
+    note: "以上連結將導向 Klook，若透過連結預訂，我們會獲得分潤，您支付的價格不變。價格與庫存以 Klook 為準——Klook 價格依日期而變，因此這裡不列價格，請查看您出發日期的商品頁面。",
   },
   "zh-cn": {
     label: "出发之前",
