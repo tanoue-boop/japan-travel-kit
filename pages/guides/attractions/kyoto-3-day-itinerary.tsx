@@ -525,7 +525,11 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
         ))}
         <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
           The &ldquo;time to allow&rdquo; column is our own planning allowance, not an operator figure. Kyoto
-          journey times are Kyoto City&apos;s, read {CARRIED}.
+          journey times are Kyoto City&apos;s, read {CARRIED}. If Day 2 includes the torokko, the{" "}
+          <Link href="/guides/attractions/sagano-romantic-train-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+            Sagano Romantic Train tickets
+          </Link>{" "}
+          guide has the midnight booking window and which direction to ride.
         </p>
 
         {/* Nara or Uji */}

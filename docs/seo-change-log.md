@@ -127,6 +127,7 @@
 ## 2026-11-07：/guides/attractions/sagano-romantic-train-tickets の順位改善（task-jtk-20261107-R03）
 
 - 2026-11-07 title 変更：「Sagano Romantic Train Tickets (2026): Prices and Seats」→「Sagano Romantic Train Tickets 2026–2027: Fares and Booking」
+- 2026-11-16 title 変更（R05）：→「Sagano Romantic Train Tickets 2026: When to Book & Seats」。Google が slug を title 表示していたため。着地語は when to book・紅葉期の日付（AI モード）。
 
 ## 2026-11-07：/guides/attractions/things-to-do-tokyo の順位改善（task-jtk-20261107-R02）
 

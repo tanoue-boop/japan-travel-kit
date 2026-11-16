@@ -885,8 +885,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/sagano-romantic-train-tickets",
     badge: "Ticket",
-    title: "Sagano Romantic Train Tickets 2026–2027: Fares and Booking",
-    desc: "¥880 adult and ¥440 child one way to 29 December 2026, closed to 28 February, then a new train from 1 March 2027 at ¥1,500 with a seat. Booking windows and the boat back down.",
+    title: "Sagano Romantic Train Tickets 2026: When to Book & Seats",
+    desc: "Seats go on sale at midnight Japan time one month ahead. ¥880 one way to 29 December 2026, closed to 28 February, then a new train from 1 March 2027 at ¥1,500 with a seat. Running days and which direction to ride.",
     group: "tickets",
     city: "kyoto",
   },

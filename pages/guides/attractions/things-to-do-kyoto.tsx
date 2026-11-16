@@ -226,7 +226,10 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             In the west, <strong>Arashiyama</strong> pairs its towering bamboo grove with the Zen temple and
             celebrated garden of <strong>Tenryu-ji</strong>, plus riverside walks and a scenic setting that&apos;s
-            especially lovely in autumn. To the north, <strong>Kinkaku-ji</strong> — the Golden Pavilion — is a
+            especially lovely in autumn. The torokko train up the Hozugawa gorge starts beside the grove;
+            reserved seats open a month ahead, so check our{" "}
+            <Link href="/guides/attractions/sagano-romantic-train-tickets" style={linkStyle}>Sagano Romantic Train tickets</Link>{" "}
+            guide before you fix the day. To the north, <strong>Kinkaku-ji</strong> — the Golden Pavilion — is a
             gold-leaf-covered hall mirrored in its reflecting pond, one of the most iconic images of Japan and an
             easy pairing with a temple-focused day.
           </p>
@@ -490,7 +493,7 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets 2026–2027: Fares and Booking</p>
+                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets 2026: When to Book &amp; Seats</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

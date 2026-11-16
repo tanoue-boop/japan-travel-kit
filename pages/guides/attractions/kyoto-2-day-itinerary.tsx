@@ -853,7 +853,10 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             rained-off torokko or a missed dressing slot into. Check the cancellation window on whichever
             route you book the Sagano train and the kimono appointment, since those are the two with a date
             and a time locked into them — and note that the Okoshi Bus route is prepaid. Everything else here
-            is walk-up and carries no risk at all.
+            is walk-up and carries no risk at all. On the operator&apos;s own site, a torokko seat cancels
+            free until 23:59 the day before; our{" "}
+            <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link>{" "}
+            guide shows when each date goes on sale and the November and December running days.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
@@ -1213,7 +1216,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets 2026–2027: Fares and Booking</p>
+                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets 2026: When to Book &amp; Seats</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

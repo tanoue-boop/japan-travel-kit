@@ -44,7 +44,20 @@ const KYOTO_STATION_HOTELS_URL = whereToStayKyotoAreas[0].url;
 //  - seat page: car layout, car 5 rules, the pet charge.
 // No dated notice covers January and February 2027. The page says so, and builds the
 // closure from the 2026 calendar (ends 29 Dec) and the 2027 calendar (starts 1 Mar).
-const CHECKED = checkedLabel("2026-11-07");
+//
+// Read again on 16 November 2026 (R05): the fare page, the FAQ (1-1 to 1-12, 3-1,
+// 5-1 to 5-22), the seat page, the 23 Oct 2026 release PDF, the 18 Sep 2026 light-up
+// release PDF (news/5197) and the 2026 calendar PDF. Nothing above had changed. New
+// from the FAQ: window seats are A and D; on trains to Kameoka seats C and D face
+// forward, on trains to Saga A and B; seat changes are free three times up to 23:59
+// the day before; groups of 15+ book through travel agents 1 year to 1 month ahead;
+// the operator puts the autumn colour at mid-November to early December; FAQ 5-2
+// names only its website and the torokko counters as places to buy (no JR offices).
+// Nov-Dec 2026 running days are from the light-up release: lights 24 Oct - 29 Dec
+// except closed 16 Dec; 81/82 on 24 Oct - 13 Dec and 26-27 Dec; 91/92 on 14-30 Nov
+// and 5-6 Dec.
+const CHECKED = checkedLabel("2026-11-16");
+const LAST_CHECKED = "2026-11-16";
 // Read 25 Oct 2026: Kameoka City's 保津川下り page, and Kyoto City's 7.3 km line length
 // (the operator rounds it to about 7 km). Neither was read again on 7 Nov, so they keep
 // their own date.
@@ -195,6 +208,70 @@ const combinationRows = [
   },
 ];
 
+// Table 1: where to buy, when each channel opens, and what it costs to change your mind.
+// First row is the answer. No Klook price — the listing shows it.
+const bookingRows = [
+  {
+    method: "Best for most: the operator's website",
+    opens: "00:00 Japan time, one month before the ride (the same date the month before). Rides from 1 March 2027: 30 days before",
+    cost: `Fare only: ${ADULT} adult, ${CHILD} child. Free cancellation to 23:59 the day before; seat changes free up to 3 times. Up to 8 tickets per purchase, credit or debit card with 3-D Secure`,
+  },
+  {
+    method: "Klook (torokko ticket)",
+    opens: "Bookable dates are shown on the listing",
+    cost: "Price and cancellation terms are on the listing; read them before you pay",
+  },
+  {
+    method: "Torokko station counters (Saga, Arashiyama, Kameoka)",
+    opens: "Same day only, first come first served: about 08:35 at Torokko Saga, 08:50 at Torokko Arashiyama, 09:10 at Torokko Kameoka",
+    cost: "Fare only. Cash, credit card or IC card (not PiTaPa). Limited standing tickets once reserved seats are gone. No sales at Torokko Hozukyo",
+  },
+  {
+    method: "JR ticket offices",
+    opens: "Not a sales point",
+    cost: "The operator's FAQ names only its website and the torokko counters. The Japan Rail Pass and Seishun 18 Kippu are not valid",
+  },
+  {
+    method: "Groups of 15 or more",
+    opens: "Through travel agents, 1 year to 1 month before",
+    cost: "¥800 adult, ¥400 child. No group seats in car 5, and no group discount on the day",
+  },
+];
+
+// Table 2: direction. Only what the operator publishes — departures, which seats
+// face forward, and where each end of the line leaves you.
+const directionRows = [
+  {
+    dir: "Best for most: Torokko Saga → Torokko Kameoka (downbound)",
+    times: "Hourly from Torokko Saga, 09:02 to 16:02. Extra trains at 17:10 and 18:26 on the dates in the calendar below",
+    seats: "C and D face forward; A and D are window seats",
+    fit: "Pairs with the Hozugawa boat, which runs back down from Kameoka to Arashiyama. On the booking form, pick the Saga/Arashiyama → Kameoka direction. A Saga ticket can also board at Torokko Arashiyama",
+  },
+  {
+    dir: "Torokko Kameoka → Torokko Saga (upbound)",
+    times: "Hourly from Torokko Kameoka, 09:30 to 16:30. Extra trains at 17:43 and 18:59 on the same dates",
+    seats: "A and B face forward; A and D are window seats",
+    fit: "Ends in Arashiyama, so the bamboo grove comes after the ride. Reach Kameoka by JR to Umahori, about 10 minutes on foot. The operator says the light-up can be seen from the 16:30 departure onwards. You may get off at Torokko Arashiyama, but cannot re-board",
+  },
+];
+
+// Table 3: November and December 2026 running days, from the operator's 18 Sep 2026
+// light-up release and 2026 calendar. "On sale" is the one-month rule applied.
+const calendarRows = [
+  { dates: "1 Nov – 29 Dec 2026", runs: "Runs every day except Wednesday 16 December", trains: "Regular trains 09:02 – 16:02 from Torokko Saga", sale: "Rides to 16 Dec are on sale now; 17 – 29 Dec open at 00:00 JST on 17 – 29 Nov" },
+  { dates: "1 – 13 Nov", runs: "Running", trains: "Regular + extra 81/82 (17:10 from Saga)", sale: "On sale" },
+  { dates: "14 – 30 Nov", runs: "Running", trains: "Regular + 81/82 + 91/92 (18:26 from Saga)", sale: "On sale" },
+  { dates: "1 – 4 Dec", runs: "Running", trains: "Regular + 81/82", sale: "On sale" },
+  { dates: "5 – 6 Dec (Sat – Sun)", runs: "Running", trains: "Regular + 81/82 + 91/92", sale: "On sale" },
+  { dates: "7 – 13 Dec", runs: "Running", trains: "Regular + 81/82", sale: "On sale" },
+  { dates: "14 – 15 Dec", runs: "Running", trains: "Regular trains only", sale: "On sale" },
+  { dates: "16 Dec (Wed)", runs: "Closed", trains: "No trains", sale: "—" },
+  { dates: "17 – 25 Dec", runs: "Running", trains: "Regular trains only", sale: "00:00 JST on 17 – 25 Nov" },
+  { dates: "26 – 27 Dec (Sat – Sun)", runs: "Running", trains: "Regular + 81/82", sale: "00:00 JST on 26 – 27 Nov" },
+  { dates: "28 – 29 Dec", runs: "Running; 29 Dec is the last day of the current cars", trains: "Regular trains only", sale: "00:00 JST on 28 – 29 Nov" },
+  { dates: "30 Dec 2026 – 28 Feb 2027", runs: "Winter closure", trains: "No trains", sale: "—" },
+];
+
 const steps = [
   {
     title: "Check your date against the operating calendar first",
@@ -206,11 +283,11 @@ const steps = [
   },
   {
     title: "Pick the car and the seat, not just the date",
-    desc: "The reservation form asks for a car number and a seat letter from A to D within a four-person box. Car 5, the open-air Rich car, has to be chosen explicitly — select \"No. 5\" on the form, up to 29 December 2026. The operator does not publish a river-side or mountain-side rule for cars 1 to 4, so if the view is the point, the open car is the answer rather than a seat letter.",
+    desc: "The reservation form asks for a car number and a seat letter from A to D within a four-person box. The operator's FAQ says A and D are the window seats, and that C and D face forward on trains to Kameoka, A and B on trains to Saga. Car 5, the open-air Rich car, has to be chosen explicitly — select \"No. 5\" on the form, up to 29 December 2026. The operator does not publish a river-side or mountain-side rule for cars 1 to 4, so if the view is the point, the open car is the answer rather than a seat letter.",
   },
   {
     title: "Show the QR code on the day",
-    desc: "The operator's FAQ says the QR code only appears on the day of boarding, on a smartphone or tablet, and a printed voucher alone will not get you on. Cancellation is free until 23:59 the day before. On the day, there are no refunds or changes.",
+    desc: "The operator's FAQ says the QR code only appears on the day of boarding, on a smartphone or tablet, and a printed voucher alone will not get you on. Cancellation is free until 23:59 the day before, and you can change seats on the same train up to three times by then. On the day, there are no refunds or changes.",
   },
   {
     title: "If it is sold out, turn up for a same-day ticket",
@@ -222,7 +299,32 @@ const steps = [
   },
 ];
 
+// The five questions in FAQPage (rule: 3 to 5). The older questions stay on the page
+// as "More questions" below, but are not repeated in the structured data.
 const faqItems = [
+  {
+    q: "When should I book the Sagano Romantic Train?",
+    a: `At 00:00 Japan time one month before your ride, on the operator's website — tickets for a date go on sale on the same date the month before, so 29 December 2026 opens at 00:00 on 29 November. Book at that moment for the autumn colour, which the operator puts at mid-November to early December, because every seat is reserved and the operator does not say how fast a date sells. For rides from 1 March 2027 the window becomes 30 days, and 1 March itself goes on sale on 1 February 2027 at about 10:00. Cancellation is free until 23:59 the day before. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Can I buy Sagano Romantic Train tickets on the day?",
+    a: `Yes, at the Torokko Saga, Torokko Arashiyama and Torokko Kameoka counters, first come first served, but not at Torokko Hozukyo. The operator gives sales start times of about 08:35, 08:50 and 09:10, with all three opening around 08:35 at busy times, and sells a limited number of standing tickets per car once the reserved seats have gone. When those are gone the train is full. Counters take cash, credit cards and IC cards other than PiTaPa. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Which direction is better on the Sagano Romantic Train?",
+    a: `Torokko Saga to Torokko Kameoka for most people, because the Hozugawa boat runs the other way, from Kameoka back down to Arashiyama, so the two make one loop. Ride Kameoka to Saga instead if you want to finish at the bamboo grove or catch the light-up, which the operator says can be seen from the 16:30 train out of Kameoka. The fare is the same ${ADULT} either way. The operator's FAQ says seats C and D face forward on trains to Kameoka, and A and B on trains to Saga. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Is the Sagano train running in winter 2026-27?",
+    a: `Only until 29 December 2026. It runs every day from 1 November to 29 December except Wednesday 16 December, then closes from 30 December 2026 to 28 February 2027 and reopens on 1 March 2027 with the new train. The operator's 2026 calendar marks 30 and 31 December as winter closure, and its 2027 schedule starts on 1 March. Checked ${CHECKED}.`,
+  },
+  {
+    q: "What changes with the new Sagano train in 2027?",
+    a: `From 1 March 2027 a new five-unit train replaces the current cars, which retire on 29 December 2026. A seat fee of ${SEAT_FEE_ADULT} (child ${SEAT_FEE_CHILD}) is added to the unchanged ${ADULT} fare, so an adult seat is ${ADULT_2027}; the covered deck of each car is fare only; and the Premium Cabin Rankyo in car 4 costs ¥9,000 a room for up to 6 people plus fares. Online sales move to 30 days before the ride. The first train is Sagano No. 3 at 10:02 on 1 March. Checked ${CHECKED}.`,
+  },
+];
+
+const moreFaqItems = [
   {
     q: "How much are Sagano Romantic Train tickets?",
     a: `Until 29 December 2026, ${ADULT} for an adult and ${CHILD} for a child aged 6 to 11, one way, for the whole 7.3 km line between Torokko Saga and Torokko Kameoka — the fare is flat rather than by distance. Groups of 15 or more pay ¥800 and ¥400, and student groups ¥710 and ¥360, on the operator's own fare table; there is no group discount on same-day tickets. A pet in a carrier is a ¥260 hand-luggage charge. Figures checked ${CHECKED}.`,
@@ -236,28 +338,12 @@ const faqItems = [
     a: `The operator closes on set dates inside the season as well as in winter. In 2026 the one closed date left before the season ends is 16 December. On the 2027 calendar, most closed dates are Wednesdays outside the busy weeks, starting with 10 March and 14 April, and the line does not close at all in November. The operator says closed dates can change, so check its calendar for your date. Checked ${CHECKED}.`,
   },
   {
-    q: "Is the Sagano Romantic Train closed in January and February 2027?",
-    a: `Yes. The last run of 2026 is on 29 December and the 2027 schedule starts on 1 March, so there is no service from 30 December 2026 to 28 February 2027. The operator's 2026 calendar marks 30 and 31 December as winter closure days, and it has not published a separate notice for January and February 2027. Last winter's notice gave 30 December 2025 to 28 February 2026. Checked ${CHECKED}.`,
-  },
-  {
-    q: "How much will Sagano Romantic Train tickets cost in 2027?",
-    a: `From 1 March 2027, a seat costs ${ADULT_2027} for an adult and ${CHILD_2027} for a child. That is the unchanged ${ADULT} and ${CHILD} fare plus a new seat fee of ${SEAT_FEE_ADULT} and ${SEAT_FEE_CHILD}. The deck on each car costs the fare alone. The Rankyo cabin is ¥9,000 a room for up to 6 people plus each rider's fare, so six adults pay ¥14,280, the operator's own example. Checked ${CHECKED}.`,
-  },
-  {
     q: "When is the last day to ride the Rich car?",
     a: `Tuesday 29 December 2026, if the date holds. The operator says the current cars are due to retire with that day's service, which includes open-air car 5, and its release on the new train describes glass-sided cars with a covered deck instead. Group bookings cannot use car 5, and seats on the last days go on sale one month ahead, so 29 December opens at midnight Japan time on 29 November. Checked ${CHECKED}.`,
   },
   {
-    q: "How far in advance should I book, and does it sell out?",
-    a: "Online sales open at midnight Japan time one month before the boarding date for 2026 rides, and 30 days before for rides from 1 March 2027. That is the moment to book for the autumn foliage weeks and the cherry blossom fortnight, when reserved seats do go. Every seat on the train is reserved and numbered, so a sold-out date is genuinely sold out — there is no standing-room-by-default. What there is instead is a limited number of standing tickets released at the stations on the day, after the reserved seats have gone.",
-  },
-  {
-    q: "Can you buy Sagano Romantic Train tickets on the day?",
-    a: "Yes, at the counters of every torokko station except Torokko Hozukyo, first-come first-served. The operator gives counter opening times of about 08:35 at Torokko Saga, 08:50 at Torokko Arashiyama and 09:10 at Torokko Kameoka. That makes a same-day ticket a realistic plan on an ordinary weekday and a poor one on a November weekend, when the queue forms before the counter opens. If you cannot start your day queueing, book the month ahead or book a guided departure that holds the seat for you.",
-  },
-  {
     q: "Which side of the train should you sit on for the river?",
-    a: "On the current train, the operator publishes a seat map — cars 1 to 4 have windowed four-person boxes with seats lettered A to D — but it does not publish which side of the train faces the Hozugawa, so any confident claim about a left or right side is somebody's guess rather than the railway's. The answer that is actually in the operator's own material is car 5, the open-air \"Rich\" car: no windows, a glass ceiling, and the gorge on both sides. It has to be selected explicitly when you book.",
+    a: "On the current train, the operator publishes a seat map — cars 1 to 4 have windowed four-person boxes with seats lettered A to D — and its FAQ says A and D are the window seats, with C and D facing forward on trains to Kameoka and A and B on trains to Saga. It does not publish which side of the train faces the Hozugawa, so any confident claim about a left or right side is somebody's guess rather than the railway's. The answer that is actually in the operator's own material is car 5, the open-air \"Rich\" car: no windows, a glass ceiling, and the gorge on both sides. It has to be selected explicitly when you book.",
   },
   {
     q: "Is car 5, the open-air Rich car, worth it?",
@@ -277,9 +363,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Sagano Romantic Train Tickets 2026–2027: Fares and Booking";
+const TITLE = "Sagano Romantic Train Tickets 2026: When to Book & Seats";
 const DESCRIPTION =
-  "Sagano Romantic Train tickets are ¥880 until 29 Dec 2026, then closed to 28 Feb. From 1 Mar 2027 a new train costs ¥1,500 with a seat. Booking dates here.";
+  "When to book the Sagano Romantic Train: seats open at 00:00 JST one month ahead, ¥880 one way. Nov–Dec 2026 running days, winter closure and links.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/sagano-romantic-train-tickets") },
@@ -372,11 +458,11 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Sagano Romantic Train Tickets 2026–2027:<br />Fares, Booking and the Winter Closure
+            Sagano Romantic Train Tickets 2026:<br />When to Book, Seats and Running Days
           </h1>
           <p className={styles.heroSubtitle}>
-            Kyoto&apos;s torokko train up the Hozugawa gorge. The current cars retire on 29 December, the
-            line closes until March, and a new train with a seat fee starts on 1 March 2027.
+            Kyoto&apos;s torokko train up the Hozugawa gorge. Seats open a month ahead, the current cars
+            retire on 29 December, the line closes until March, and a new train starts on 1 March 2027.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official operator fares", "New train from 1 March 2027"].map((t) => (
@@ -401,16 +487,49 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
         {/* Answer-first: the first body paragraph, ahead of the Quick Answer box. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Sagano Romantic Train tickets</strong> cost <strong>{ADULT}</strong> for an adult and{" "}
-            <strong>{CHILD}</strong> for a child one way until 29 December 2026, for a ride of about{" "}
-            <strong>25 minutes</strong>. The line is <strong>closed for winter from 30 December 2026 to 28
-            February 2027</strong>. From <strong>1 March 2027</strong> a new train runs and a seat fee of{" "}
-            {SEAT_FEE_ADULT} (child {SEAT_FEE_CHILD}) is added to the fare, so a seat costs{" "}
-            <strong>{ADULT_2027}</strong> (child {CHILD_2027}) and the deck is fare only. Book on the
-            operator&apos;s website from midnight Japan time <strong>one month before</strong> you ride,
-            or <strong>30 days before</strong> for rides from 1 March 2027. Official figures checked{" "}
+            <strong>When to book the Sagano Romantic Train:</strong> tickets go on sale on the operator&apos;s
+            website at <strong>00:00 Japan time one month before you ride</strong>, so 29 December 2026, the
+            last day of the current train, opens at 00:00 on 29 November. In the autumn colour, which the
+            operator puts at <strong>mid-November to early December</strong>, book at that midnight: the
+            operator does not publish a sell-out time, and once web seats are gone only same-day seats and a
+            limited number of standing tickets are left at the station counters. The fare is{" "}
+            <strong>{ADULT}</strong> adult and <strong>{CHILD}</strong> child one way, the line is{" "}
+            <strong>closed from 30 December 2026 to 28 February 2027</strong>, and from{" "}
+            <strong>1 March 2027</strong> a new train runs with a {SEAT_FEE_ADULT} seat fee, making a seat{" "}
+            <strong>{ADULT_2027}</strong>, sold <strong>30 days</strong> ahead. Official figures checked{" "}
             {CHECKED}.
           </p>
+        </section>
+
+        {/* Same-day booking block, straight under the answer. Rates: the torokko ticket is
+            a rail ticket (assume the 5% transport band); the guided days and the walk are
+            tours (6.5%); the Hozugawa boat is an activity ticket; the Klook eSIM pays 20%. */}
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle} style={{ fontSize: "1.15rem" }}>
+            Book the Torokko Seat and the Rest of the Day
+          </h2>
+          <p className={styles.bodyText}>
+            The seat is the only part of an Arashiyama day with a hard sales window. The boat back down, a
+            guided walk and mobile data can be booked in the same sitting. Open a listing for your date&apos;s
+            availability and current price.
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={TICKET_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Sagano Romantic Train Ticket on Klook →
+            </KlookLink>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Train + Hozugawa Boat Day →
+            </KlookLink>
+            <KlookLink href={BOAT_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Hozugawa Boat Ticket →
+            </KlookLink>
+            <KlookLink href={arashiyamaEarlyMorningWalk.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Arashiyama Morning Walk →
+            </KlookLink>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Klook Japan eSIM →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Quick Answer Box */}
@@ -459,6 +578,161 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
         </div>
 
         <EsimCtaTop />
+
+        {/* Table 1: when and where to book */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Booking window</span>
+          <h2 className={styles.sectionTitle}>When Should You Book the Sagano Romantic Train?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            At 00:00 Japan time on the same date one month before your ride, on the operator&apos;s website.
+            For rides from 1 March 2027 that becomes 30 days before, so 1 April 2027 opens at 00:00 on 2
+            March; the one exception is 1 March 2027, on sale from about 10:00 on 1 February 2027.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Where to book", "When it opens", "Cost and changes"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {bookingRows.map((row) => (
+                    <tr key={row.method}>
+                      <td className={styles.tdProvider}>{row.method}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.opens}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.cost}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            {`Last checked: ${LAST_CHECKED}. Sources:`} the operator&apos;s{" "}
+            <a href="https://www.sagano-kanko.co.jp/faq/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              FAQ
+            </a>
+            ,{" "}
+            <a href="https://www.sagano-kanko.co.jp/ticket/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              fares and tickets page
+            </a>
+            {" "}and{" "}
+            <a href="https://www.sagano-kanko.co.jp/news/5535/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              23 October 2026 release
+            </a>
+            . Changing the date or the number of people online means cancelling and buying again.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={TICKET_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Check Torokko Dates on Klook →
+            </KlookLink>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Guided Train + Boat Day →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Table 3: Nov-Dec 2026 running days */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Running days</span>
+          <h2 className={styles.sectionTitle}>Is the Sagano Romantic Train Running in November and December 2026?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Yes, every day from 1 November to 29 December 2026 except Wednesday 16 December. Evening extra
+            trains run on most autumn dates, and the line closes for winter from 30 December.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Dates", "Status", "Trains", "Goes on sale"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {calendarRows.map((row) => (
+                    <tr key={row.dates}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.dates}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.runs}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.trains}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.sale}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            {`Last checked: ${LAST_CHECKED}. Sources:`} the operator&apos;s{" "}
+            <a href="https://www.sagano-kanko.co.jp/news/5197/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              light-up release of 18 September 2026
+            </a>
+            {" "}and its{" "}
+            <a href="https://www.sagano-kanko.co.jp/train-info/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              operating calendar
+            </a>
+            . Extra trains: 81 leaves Torokko Saga at 17:10 and 82 leaves Torokko Kameoka at 17:43; 91
+            leaves Saga at 18:26 and 92 leaves Kameoka at 18:59. The operator says closed dates and extra
+            trains can be added or changed, and that if a booked train is cancelled the fare goes back to your
+            card automatically.
+          </p>
+        </section>
+
+        {/* Table 2: direction */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Direction</span>
+          <h2 className={styles.sectionTitle}>Which Direction Is Better: Saga to Kameoka or Kameoka to Saga?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Saga to Kameoka for most trips, because the Hozugawa boat brings you back to Arashiyama. The fare
+            is {ADULT} either way; what changes is the departure times, which seats face forward and where
+            you end up.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Direction", "Departures", "Seats facing forward", "Why pick it"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {directionRows.map((row) => (
+                    <tr key={row.dir}>
+                      <td className={styles.tdProvider}>{row.dir}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.times}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.seats}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.fit}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            {`Last checked: ${LAST_CHECKED}. Sources:`} the operator&apos;s{" "}
+            <a href="https://www.sagano-kanko.co.jp/faq/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              FAQ
+            </a>
+            {" "}(seats and through tickets) and{" "}
+            <a href="https://www.sagano-kanko.co.jp/train-info/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              timetable
+            </a>
+            . The operator does not publish crowd levels by direction or which side faces the river; the
+            open car 5 sees both sides until 29 December 2026.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={BOAT_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              Hozugawa Boat Back to Arashiyama →
+            </KlookLink>
+            <GygCompareButton slug="sagano-romantic-train-tickets" listing={gygHozugawaKudari} />
+          </div>
+        </section>
 
         {/* Intro */}
         <section className={styles.bodySection}>
@@ -678,24 +952,6 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
           ]}
         />
 
-        {/* On sale */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Booking window</span>
-          <h2 className={styles.sectionTitle}>When do Sagano Romantic Train tickets go on sale?</h2>
-          <p className={styles.bodyText}>
-            <strong>For 2026 rides, sales open at midnight Japan time one month before you ride</strong>, on
-            the operator&apos;s website. Seats for the last day, 29 December, go on sale at midnight on 29
-            November. <strong>For rides from 1 March 2027, sales open at midnight 30 days before.</strong>{" "}
-            The operator makes one exception: 1 March 2027 goes on sale on 1 February 2027 at about 10:00.
-            Rides on 1 April 2027, for example, open at midnight on 2 March.
-          </p>
-          <p className={styles.bodyText}>
-            Stations do not sell advance tickets. Online, you can buy up to 8 tickets at a time with a credit
-            card, and changing the date or the number of people means cancelling and buying again. Cancelling
-            is free until 23:59 the day before you ride. Checked {CHECKED}.
-          </p>
-        </section>
-
         {/* Sold out */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Sold out</span>
@@ -881,6 +1137,20 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>
+                  <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className={styles.faqBody}>{item.a}</div>
+              </details>
+            ))}
+          </div>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "2rem" }}>More Questions</h3>
+          <div className={styles.faqList}>
+            {moreFaqItems.map((item, i) => (
+              <details key={item.q} className={styles.faqItem}>
+                <summary className={styles.faqSummary}>
+                  <span>{faqItems.length + i + 1}. {item.q}</span>
                   <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>

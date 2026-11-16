@@ -784,7 +784,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets 2026–2027: Fares and Booking</p>
+                <p className={styles.relatedTitle}>Sagano Romantic Train Tickets 2026: When to Book &amp; Seats</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

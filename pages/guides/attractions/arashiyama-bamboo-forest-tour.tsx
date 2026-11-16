@@ -226,7 +226,7 @@ const ROUTE = "/guides/attractions/arashiyama-bamboo-forest-tour";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
-  { href: "/guides/attractions/sagano-romantic-train-tickets", title: "Sagano Romantic Train Tickets 2026–2027: Fares and Booking" },
+  { href: "/guides/attractions/sagano-romantic-train-tickets", title: "Sagano Romantic Train Tickets 2026: When to Book & Seats" },
   { href: "/guides/attractions/things-to-do-kyoto", title: "Things to Do in Kyoto (2026): Temples, Timing and What to Book" },
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/kyoto-3-day-itinerary", title: "Kyoto 3 Day Itinerary (2026): Day by Day, and What to Book" },
@@ -610,7 +610,10 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
             halls, ¥300 on top of the garden fee. The two rides are less certain. The Hozugawa boat can be
             suspended in bad weather or high water, and the Sagano train&apos;s open car 5 can get wet inside,
             with umbrellas banned on board and no refund for rain. Read the rain wording on a tour listing before
-            you pay.
+            you pay. A torokko seat bought on the operator&apos;s site cancels free until 23:59 the day before,
+            so check the forecast then — the{" "}
+            <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link>{" "}
+            guide covers the cars and the booking window.
           </p>
         </section>
 
