@@ -9789,3 +9789,69 @@ export const kyotoSubwayBusPassTripPrep: KlookTripPrepItem[] = [
     why: "Bus route searches and the stop-by-stop bus approach screens need data at the bus stop, which is where you will want them.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Sapporo 3 day itinerary, added 16 Nov 2026 (task-jtk-20261116-01).
+//
+// Klook answers automated reads of its product pages with HTTP 403, so the two
+// new links below were confirmed as live en-US pages through the www.klook.com
+// search index on 16 Nov 2026: the winter Asahiyama Zoo + Blue Pond light-up day
+// (77621) and the Jozankei Mori no Uta onsen day (6088). The same read found the
+// en-US pages of 161857, 98528, 135641, 12479, 71864 and the Sapporo Station and
+// Susukino hotel searches, which the page reuses from the constants above and
+// from klook-links-winter-hokkaido.ts. 164281 was left out: its indexed page
+// still gives only the 1 Dec 2025 to 15 Mar 2026 run. Tours and hotels 6.5%,
+// pass and airport transfer 5%, eSIM 20%. No price.
+// ---------------------------------------------------------------------------
+
+/** The winter-only Asahikawa day: zoo admission, Shirahige Falls and the lit Blue Pond. */
+export const asahiyamaWinterBluePondTour: KlookTour = {
+  title: "Winter Asahiyama Zoo, Shirahige Falls & Blue Pond light-up day trip",
+  desc: "A winter coach day from Sapporo with the zoo admission and the round-trip bus in the booking, ending at the Blue Pond after dark; lunch at the zoo is at your own cost",
+  url: klookLink("https://www.klook.com/en-US/activity/77621-hokkaido-asahiyama-zoo-winter-tour/"),
+};
+
+/** Jozankei as a guided onsen day — the soft option for Day 3. */
+export const jozankeiMoriNoUtaSpaDayTour: KlookTour = {
+  title: "Jozankei Tsuruga Resort Spa Mori no Uta onsen day tour",
+  desc: "A full day at a Jozankei hot-spring resort with the transfer from Sapporo, for a Day 3 that is a bath rather than a ten-hour coach ride",
+  url: klookLink("https://www.klook.com/en-US/activity/6088-jozankei-resort-spa-mori-no-uta-onsen-day-tour-hokkaido/"),
+};
+
+/** Book these on the same trip: 6.5% tour and hotels, 5% pass and transfer, 20% eSIM. */
+export const sapporoThreeDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: asahiyamaWinterBluePondTour.title,
+    ctaLabel: "Check the winter Asahiyama day →",
+    url: asahiyamaWinterBluePondTour.url,
+    why: "Day 3 as one booking: the zoo's last entry is 15:00 in winter and the Blue Pond is lit after dark, so a coach that times both is easier than two trains and a bus.",
+  },
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo Station hotels →",
+    url: japanWinterStayAreas[6].url,
+    why: "The Rapid Airport from New Chitose, the train to Otaru and the trains to Asahikawa all leave from Sapporo Station, so three nights here make every morning a walk.",
+  },
+  {
+    label: "Hotels in Susukino",
+    ctaLabel: "Check Susukino hotels →",
+    url: sapporoSnowFestivalStayAreas[1].url,
+    why: "Dinner is outside the door, and in festival week so is the Susukino ice-sculpture site; the subway to Sapporo Station is a short ride.",
+  },
+  {
+    label: newChitoseSapporoSharedTransfer.title,
+    ctaLabel: "Check the airport transfer →",
+    url: newChitoseSapporoSharedTransfer.url,
+    why: "A booked seat from New Chitose to the hotel with cases, instead of the Rapid Airport and a walk on snow; it is booked before you fly, not at arrivals.",
+  },
+  {
+    label: sapporoFuranoAreaPass.title,
+    ctaLabel: "Check the Sapporo–Furano pass →",
+    url: sapporoFuranoAreaPass.url,
+    why: "Only if you do Asahikawa by train: the airport, Otaru and Asahikawa legs come to more than the 4-day pass on JR Hokkaido's own fares.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Penguin-walk notices, a coach running late on snow and the trains back from Otaru all reach you on your phone.",
+  },
+];

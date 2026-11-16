@@ -574,6 +574,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/sapporo-3-day-itinerary",
+    badge: "Itinerary",
+    title: "Sapporo 3 Day Itinerary (2027): Winter, Otaru & Asahiyama",
+    desc: "Odori, Nijo Market and Susukino on Day 1; Otaru, 35 minutes and ¥800 by JR, on Day 2; Asahiyama Zoo's penguin walk and the Biei Blue Pond light-up by tour (or a ski day) on Day 3 — with the Snow Festival dates (4–11 Feb 2027) and what to book.",
+    group: "cities",
+    // Sapporo sits outside the three city hubs, same call as hokkaido-7-day-itinerary.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/fukuoka-2-day-itinerary",
     badge: "Itinerary",
     title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin",

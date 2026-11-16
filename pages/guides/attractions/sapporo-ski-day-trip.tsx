@@ -609,6 +609,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
               { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
               { href: "/guides/attractions/sapporo-snow-festival-tours", title: "Sapporo Snow Festival Tours" },
               { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "Otaru Day Trip from Sapporo" },
+              { href: "/guides/attractions/sapporo-3-day-itinerary", title: "Sapporo 3 Day Itinerary" },
               { href: "/guides/attractions/hokkaido-7-day-itinerary", title: "Hokkaido 7-Day Itinerary" },
               { href: "/guides/money/japan-ski-travel-insurance", title: "Japan Ski Travel Insurance" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary" },

@@ -245,6 +245,7 @@ const ROUTE = "/guides/attractions/furano-biei-tour";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
+  { href: "/guides/attractions/sapporo-3-day-itinerary", title: "Sapporo 3 Day Itinerary (2027): Winter, Otaru & Asahiyama" },
   { href: "/guides/attractions/hokkaido-7-day-itinerary", title: "Hokkaido 7 Day Itinerary: 7 Days in Hokkaido, Day by Day" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
   { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "Otaru Day Trip from Sapporo (2027): ¥800, 33 Min by JR" },
