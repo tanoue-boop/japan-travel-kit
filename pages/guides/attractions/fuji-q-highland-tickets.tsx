@@ -211,15 +211,15 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Fuji-Q Highland Tickets</span>
         </div>
       </div>
@@ -229,7 +229,7 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Fuji-Q Highland Tickets 2026:<br />Price, Fast Pass and Access from Shinjuku
+            Fuji-Q Highland Tickets 2026: <br />Price, Fast Pass and Access from Shinjuku
           </h1>
           <p className={styles.heroSubtitle}>
             Entry to the park is free — what you are buying is the right to ride. The 1-Day Pass is ¥6,000

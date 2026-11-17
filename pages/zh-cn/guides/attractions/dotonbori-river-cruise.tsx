@@ -292,7 +292,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            道顿堀游船 2026：<br />票价、开船时间与太左卫门桥码头
+            道顿堀游船 2026： <br />票价、开船时间与太左卫门桥码头
           </h1>
           <p className={styles.heroSubtitle}>
             成人 ¥2,000、约 20 分钟，11:00 到 21:00 之间从太左卫门桥码头每半小时一班。持大阪周游卡可免费乘船，

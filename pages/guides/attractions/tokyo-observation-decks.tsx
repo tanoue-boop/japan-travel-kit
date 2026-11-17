@@ -315,7 +315,7 @@ const moreFaqItems = [
 ];
 
 const TITLE = "Best Observation Deck in Tokyo 2026: Skytree vs Shibuya Sky";
-const H1 = "Tokyo Skytree vs Shibuya Sky vs Tokyo Tower: Which Should You Visit?";
+const H1 = "Best Observation Deck in Tokyo 2026: Skytree vs Shibuya Sky vs Tokyo Tower";
 const DESC =
   "Best observation deck in Tokyo: Skytree is highest (450 m), Shibuya Sky is the open-air sunset pick, Tokyo Tower ¥1,500, Tocho free. Compare, then book.";
 
@@ -384,15 +384,15 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tokyo Observation Decks</span>
         </div>
       </div>

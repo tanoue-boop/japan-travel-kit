@@ -206,15 +206,15 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/transport" className={styles.breadLink}>Transport</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Kyoto Subway &amp; Bus Pass</span>
         </div>
       </div>
@@ -226,7 +226,7 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Kyoto Subway and Bus Pass (2026):<br />Is the ¥1,100 1-Day Pass Worth It?
+            Kyoto Subway and Bus Pass (2026): <br />Is the ¥1,100 1-Day Pass Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             A good deal on a five-ride temple day and a waste on a quiet one. Here is where the line falls.

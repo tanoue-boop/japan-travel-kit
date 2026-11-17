@@ -325,15 +325,15 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/money" className={styles.breadLink}>Money &amp; Payment</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Best Travel Insurance</span>
         </div>
       </div>
@@ -343,7 +343,7 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Best Travel Insurance for Japan (2026):<br />Compared by Cost and Medical Cover
+            Best Travel Insurance for Japan (2026): <br />Compared by Cost and Medical Cover
           </h1>
           <p className={styles.heroSubtitle}>
             The best travel insurance for Japan for most visitors is SafetyWing Essential, which costs US$31.36

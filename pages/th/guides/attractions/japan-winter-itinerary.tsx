@@ -887,7 +887,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>
-เที่ยวญี่ปุ่นหน้าหนาว 2027:<br />แผนเที่ยว 12 วันแบบวันต่อวัน
+เที่ยวญี่ปุ่นหน้าหนาว 2027: <br />แผนเที่ยว 12 วันแบบวันต่อวัน
 </h1>
           <p className={styles.heroSubtitle}>
 โตเกียว คานาซาวะ ชิราคาวาโกะ ทาคายามะ เกียวโต และโอซาก้า พร้อมเทศกาลฤดูหนาวสองงานที่กำหนดวันจัดงานแน่นอน และกิจกรรมที่ไม่มีจำหน่ายบัตรหน้างาน

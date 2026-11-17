@@ -149,7 +149,7 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            팀랩 플래닛 보더리스 비교(2026):<br />도쿄에서 어디를 예약할까
+            팀랩 플래닛 보더리스 비교(2026): <br />도쿄에서 어디를 예약할까
           </h1>
           <p className={styles.heroSubtitle}>
             도쿄에는 팀랩 미술관이 두 곳 있고 티켓도 각각입니다. 두 곳이 어떻게 다른지, 어디를 예약하면 좋은지

@@ -196,7 +196,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>繁體中文版</p>
           <h1 className={styles.heroTitle}>
-            日本景點門票 2026：<br />哪些要提前預約、何時開賣
+            日本景點門票 2026： <br />哪些要提前預約、何時開賣
           </h1>
           <p className={styles.heroSubtitle}>
             依照「需要提前多久買票」整理的日本景點門票資訊：開賣日、當天能不能買、官方票價與查核日期。

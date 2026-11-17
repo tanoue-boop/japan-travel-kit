@@ -230,15 +230,15 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/esim" className={styles.breadLink}>eSIM</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Best Pocket WiFi</span>
         </div>
       </div>
@@ -250,7 +250,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Best Pocket WiFi Japan (2026):<br />Prices, Devices &amp; Pickup Compared
+            Best Pocket WiFi Japan (2026): <br />Prices, Devices &amp; Pickup Compared
           </h1>
           <p className={styles.heroSubtitle}>
             The best pocket WiFi in Japan on published specs is Sakura Mobile: unlimited docomo

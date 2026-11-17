@@ -377,7 +377,7 @@ export default function CnTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            东京迪士尼门票（2026）：<br />价格、在哪买、乐园与海洋怎么选
+            东京迪士尼门票（2026）： <br />价格、在哪买、乐园与海洋怎么选
           </h1>
           <p className={styles.heroSubtitle}>
             门票需指定日期，价格随日期浮动，现场不售票，且不能退款。这篇攻略说明一张门票多少钱、在哪里买、计划入园日期的门票什么时候开售，

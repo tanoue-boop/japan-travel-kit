@@ -274,15 +274,15 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Warner Bros. Studio Tour Tokyo</span>
         </div>
       </div>
@@ -294,7 +294,7 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Harry Potter Tokyo Tickets 2026:<br />Warner Bros. Studio Tour Tokyo Price &amp; How to Book
+            Harry Potter Tokyo Tickets 2026: <br />Warner Bros. Studio Tour Tokyo Price &amp; How to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Official prices after the July 2026 price update, the date-and-time booking rules, the train from

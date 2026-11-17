@@ -272,7 +272,7 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 丰洲门票 2026：<br />官网票价、入场时段与预约方式
+            teamLab Planets 门票 2026： <br />丰洲官网票价、入场时段与预约方式
           </h1>
           <p className={styles.heroSubtitle}>
             丰洲 teamLab Planets 的门票多少钱、什么时候开放、怎么预约，以及从新丰洲站或丰洲站怎么走。

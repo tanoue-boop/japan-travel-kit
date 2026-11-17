@@ -349,15 +349,15 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/esim" className={styles.breadLink}>eSIM</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Sakura Mobile Review</span>
         </div>
       </div>
@@ -369,7 +369,7 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Sakura Mobile Review 2026:<br />eSIM &amp; SIM Card Prices, Is It Worth It?
+            Sakura Mobile Review 2026: <br />eSIM &amp; SIM Card Prices, Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             Sakura Mobile&apos;s eSIM costs ¥4,620 for 7 days on 3 GB a day (docomo) or ¥5,775 unlimited (au),

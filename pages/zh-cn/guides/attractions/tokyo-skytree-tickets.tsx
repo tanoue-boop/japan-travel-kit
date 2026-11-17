@@ -292,7 +292,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            东京晴空塔门票价格（2026）：<br />350 米和 450 米怎么选？如何预订？
+            东京晴空塔门票价格（2026）： <br />350 米和 450 米怎么选？如何预订？
           </h1>
           <p className={styles.heroSubtitle}>
             东京晴空塔门票：350 米天望甲板成人 ¥1,800 起，加上 450 米天望回廊的套票 ¥3,000 起（官网核查日

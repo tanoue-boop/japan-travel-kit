@@ -445,15 +445,15 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Niseko Ski Tours</span>
         </div>
       </div>
@@ -463,7 +463,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Niseko Ski Tours:<br />Getting There, Lessons and the Four Areas
+            Niseko Ski Tours: <br />Getting There, Lessons and the Four Areas
           </h1>
           <p className={styles.heroSubtitle}>
             Four linked ski areas, {AIRPORT_BUS} from New Chitose by booked coach, and one published

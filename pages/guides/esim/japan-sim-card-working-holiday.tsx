@@ -373,15 +373,15 @@ export default function JapanSimCardWorkingHolidayPage({ updated }: { updated: P
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/esim" className={styles.breadLink}>eSIM &amp; SIM Cards</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>SIM for a Working Holiday</span>
         </div>
       </div>
@@ -391,7 +391,7 @@ export default function JapanSimCardWorkingHolidayPage({ updated }: { updated: P
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan SIM Card for Working Holiday:<br />The Order It Has to Happen In
+            Japan SIM Card for Working Holiday: <br />The Order It Has to Happen In
           </h1>
           <p className={styles.heroSubtitle}>
             The residence card gates the address, the address gates the phone number, and the number gates

@@ -386,15 +386,15 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/esim" className={styles.breadLink}>eSIM</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Cheapest eSIM for Japan</span>
         </div>
       </div>
@@ -406,7 +406,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Cheapest eSIM for Japan (2026):<br />Lowest Price and Cost per GB
+            Cheapest eSIM for Japan (2026): <br />Lowest Price and Cost per GB
           </h1>
           <p className={styles.heroSubtitle}>
             Which Japan eSIM is cheapest at 1, 3, 5, 10, 20 and 50 GB, what each costs per gigabyte, and the cheapest plan for your trip length.

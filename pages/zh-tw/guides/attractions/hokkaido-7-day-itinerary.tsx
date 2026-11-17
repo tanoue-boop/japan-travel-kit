@@ -669,7 +669,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 更新於 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-北海道7天行程 2026：<br />札幌・小樽・富良野・冬季雪祭
+北海道7天行程 2026： <br />札幌・小樽・富良野・冬季雪祭
 </h1>
           <p className={styles.heroSubtitle}>
 以兩個住宿地點安排 6 晚，逐日整理行程表，加上用 JR 北海道票價算的周遊券，以及 2 月和 7 月版本對照。

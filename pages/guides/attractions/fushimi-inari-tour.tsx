@@ -282,9 +282,9 @@ const relatedGuides = [
 ];
 
 const chevron = (
-  <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <><svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-  </svg>
+  </svg><span className="sr-only"> / </span></>
 );
 
 const noteStyle = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" };
@@ -333,7 +333,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Fushimi Inari Tour 2026:<br />Hike Time, Hours &amp; the Best Time to Go
+            Fushimi Inari Tour 2026: <br />Hike Time, Hours &amp; the Best Time to Go
           </h1>
           <p className={styles.heroSubtitle}>
             Six Klook tours side by side, the shrine&apos;s own rules, and an honest answer on whether you need

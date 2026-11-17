@@ -258,7 +258,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 更新於 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-地獄谷野猿公苑 2026：<br />交通・門票・東京出發一日遊
+地獄谷野猿公苑 2026： <br />交通・門票・東京出發一日遊
 </h1>
           <p className={styles.heroSubtitle}>
 日本會泡溫泉的猴子棲息在長野市近郊山上的山谷裡，搭完新幹線後，還得轉搭電車和巴士，再走一段積雪的山路。這裡整理費用、時間，以及哪些情況適合跟團。

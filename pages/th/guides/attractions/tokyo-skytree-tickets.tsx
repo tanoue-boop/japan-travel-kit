@@ -286,7 +286,7 @@ export default function ThTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            ราคาตั๋ว Tokyo Skytree 2026:<br />ชั้น 350 ม. เทียบกับ 450 ม. พร้อมวิธีจอง
+            ราคาตั๋ว Tokyo Skytree 2026: <br />ชั้น 350 ม. เทียบกับ 450 ม. พร้อมวิธีจอง
           </h1>
           <p className={styles.heroSubtitle}>
             ตั๋วเข้าชม Tembo Deck (350 ม.) ของ Tokyo Skytree สำหรับผู้ใหญ่ เริ่มต้นที่ ¥1,800 และคอมโบรวม Tembo Galleria (450 ม.)

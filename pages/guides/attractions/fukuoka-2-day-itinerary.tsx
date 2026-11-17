@@ -421,15 +421,15 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Fukuoka 2 Day Itinerary</span>
         </div>
       </div>
@@ -439,7 +439,7 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Fukuoka 2 Day Itinerary (2026):<br />2 Days in Fukuoka, Dazaifu and Yanagawa
+            Fukuoka 2 Day Itinerary (2026): <br />2 Days in Fukuoka, Dazaifu and Yanagawa
           </h1>
           <p className={styles.heroSubtitle}>
             One day in the city ending at the food stalls; one day out on the Nishitetsu line to the shrine and the

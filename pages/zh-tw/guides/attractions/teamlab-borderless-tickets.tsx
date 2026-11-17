@@ -40,7 +40,7 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/zh-tw/guides/attractions/teamlab-borderless-tickets";
 const TITLE = "teamLab 無界 門票 2026：Borderless 預約方式";
-const H1 = "teamLab Borderless 門票 2026：票價、入場時段與預約方式";
+const H1 = "teamLab 無界（Borderless）門票 2026：票價、入場時段與預約方式";
 const DESC =
   "teamLab Borderless 門票 2026：成人 ¥3,400 起，依日期與時段定價，約提前 2 個月開賣，館內約 1.5～2 小時。看預約方式。";
 

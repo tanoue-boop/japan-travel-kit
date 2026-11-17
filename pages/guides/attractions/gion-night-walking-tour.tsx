@@ -281,9 +281,9 @@ const relatedGuides = [
 ];
 
 const chevron = (
-  <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <><svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-  </svg>
+  </svg><span className="sr-only"> / </span></>
 );
 
 const noteStyle = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" };
@@ -332,7 +332,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Gion Night Walking Tour (2026):<br />Times, Booking &amp; Etiquette
+            Gion Night Walking Tour (2026): <br />Times, Booking &amp; Etiquette
           </h1>
           <p className={styles.heroSubtitle}>
             Five Klook tours side by side, and the rules that apply in Gion after dark, each with who actually

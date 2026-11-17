@@ -218,7 +218,7 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            富士山一日游（东京出发·2026）：<br />行程怎么选、实际能看到什么
+            富士山一日游（东京出发·2026）： <br />行程怎么选、实际能看到什么
           </h1>
           <p className={styles.heroSubtitle}>
             每个行程都会停靠富士山五合目（Fuji Subaru Line）。区别在于剩下的时间是安排在富士山周边还是箱根——

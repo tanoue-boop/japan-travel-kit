@@ -294,7 +294,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 업데이트 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-삿포로 눈축제 2027 투어:<br />일정(2월 4~11일), 무료 행사장, 예약할 것
+삿포로 눈축제 2027 투어: <br />일정(2월 4~11일), 무료 행사장, 예약할 것
 </h1>
           <p className={styles.heroSubtitle}>
 8일간, 행사장 3곳, 입장권 없음. 예약할 만한 투어는 축제 전후의 당일 여행이고, 대체할 수 없는 예약은 숙소뿐입니다.

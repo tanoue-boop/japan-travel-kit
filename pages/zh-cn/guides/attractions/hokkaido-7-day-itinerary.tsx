@@ -660,7 +660,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 更新于 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-北海道7日游：<br />每日路线安排
+北海道7日游（2027）： <br />每日路线安排与周游券算法
 </h1>
           <p className={styles.heroSubtitle}>
 两个住宿据点、六晚住宿，每天一张行程表，加上用 JR 北海道票价算的周游券，以及 2 月和 7 月版本对照。

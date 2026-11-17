@@ -231,15 +231,15 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/money" className={styles.breadLink}>Money &amp; Payment</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>ATMs in Japan</span>
         </div>
       </div>
@@ -251,7 +251,7 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            ATMs in Japan (2026):<br />7-Eleven, Fees &amp; Which Accept Foreign Cards
+            ATMs in Japan (2026): <br />7-Eleven, Fees &amp; Which Accept Foreign Cards
           </h1>
           <p className={styles.heroSubtitle}>
             Five ATM networks take a card issued abroad, and only one of them publishes what it

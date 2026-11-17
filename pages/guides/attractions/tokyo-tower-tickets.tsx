@@ -277,15 +277,15 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tokyo Tower Tickets</span>
         </div>
       </div>
@@ -295,7 +295,7 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Tower Tickets 2026:<br />Price, Main Deck vs Top Deck &amp; How to Book
+            Tokyo Tower Tickets 2026: <br />Price, Main Deck vs Top Deck &amp; How to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Tokyo Tower tickets come in two kinds: the Main Deck (150 m) at ¥1,500 for an adult, the same price

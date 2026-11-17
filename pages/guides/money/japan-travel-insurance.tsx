@@ -265,15 +265,15 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/money" className={styles.breadLink}>Money &amp; Payment</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Japan Travel Insurance</span>
         </div>
       </div>
@@ -283,7 +283,7 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan Travel Insurance (2026):<br />Do You Need Travel Insurance for Japan?
+            Japan Travel Insurance (2026): <br />Do You Need Travel Insurance for Japan?
           </h1>
           <p className={styles.heroSubtitle}>
             Whether Japan requires it, what a hospital bill can reach without it, and the cover to check before

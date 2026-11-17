@@ -296,9 +296,9 @@ export const getStaticProps = () => ({
 });
 
 const crumbSep = (
-  <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <><svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-  </svg>
+  </svg><span className="sr-only"> / </span></>
 );
 
 const related = [
@@ -417,7 +417,7 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan 3 Week Itinerary (2026):<br />21 Days from Tokyo to Hiroshima
+            Japan 3 Week Itinerary (2026): <br />21 Days from Tokyo to Hiroshima
           </h1>
           <p className={styles.heroSubtitle}>
             Seven bases, one long train ride at a time — with a table for all twenty-one days, the JR

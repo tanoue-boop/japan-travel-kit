@@ -193,7 +193,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>简体中文版</p>
           <h1 className={styles.heroTitle}>
-            日本景点门票 2026：<br />哪些要提前预约、何时开售
+            日本景点门票 2026： <br />哪些要提前预约、何时开售
           </h1>
           <p className={styles.heroSubtitle}>
             按“需要提前多久购票”整理的日本景点门票：开售日、当天能不能买、官方票价与核查日期。

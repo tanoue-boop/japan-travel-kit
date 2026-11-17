@@ -289,7 +289,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            도톤보리 리버크루즈 2026:<br />가격, 운항 시간, 다자에몬바시 선착장
+            도톤보리 리버크루즈 2026: <br />가격, 운항 시간, 다자에몬바시 선착장
           </h1>
           <p className={styles.heroSubtitle}>
             성인 ¥2,000, 약 20분, 11:00부터 21:00까지 다자에몬바시 선착장에서 30분마다 출항합니다. 저녁 배가

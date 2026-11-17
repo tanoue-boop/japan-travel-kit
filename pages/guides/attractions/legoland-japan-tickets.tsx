@@ -205,15 +205,15 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>LEGOLAND Japan Tickets</span>
         </div>
       </div>
@@ -223,7 +223,7 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            LEGOLAND Japan Tickets (2026):<br />Prices, Hours and Is It Worth It?
+            LEGOLAND Japan Tickets (2026): <br />Prices, Hours and Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             A park built for 2 to 12-year-olds, priced by calendar date, 24 minutes from Nagoya Station —

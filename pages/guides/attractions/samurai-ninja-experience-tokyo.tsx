@@ -243,15 +243,15 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Samurai &amp; Ninja Experience</span>
         </div>
       </div>
@@ -263,7 +263,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE1}<br />{H1_LINE2}
+            {H1_LINE1} <br />{H1_LINE2}
           </h1>
           <p className={styles.heroSubtitle}>
             Seven sessions in Tokyo compared by price, length, minimum age and English — and which one to book

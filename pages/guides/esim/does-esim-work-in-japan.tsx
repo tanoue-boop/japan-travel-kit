@@ -364,15 +364,15 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/esim" className={styles.breadLink}>eSIM &amp; SIM Cards</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Does eSIM Work in Japan</span>
         </div>
       </div>
@@ -384,7 +384,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Does eSIM Work in Japan?<br />Is eSIM Available in Japan? Does Japan Have eSIM? Yes
+            Does eSIM Work in Japan? <br />Is eSIM Available in Japan? Does Japan Have eSIM? Yes
           </h1>
           <p className={styles.heroSubtitle}>
             The networks and LTE/5G bands, the phones that take an eSIM, and how to check

@@ -289,7 +289,7 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            ล่องเรือโดทงโบริ 2026:<br />ราคา เวลาออกเรือ และท่าเรือทาซาเอมงบาชิ
+            ล่องเรือโดทงโบริ 2026: <br />ราคา เวลาออกเรือ และท่าเรือทาซาเอมงบาชิ
           </h1>
           <p className={styles.heroSubtitle}>
             ผู้ใหญ่ ¥2,000 ราว 20 นาที และออกจากท่าทาซาเอมงบาชิทุกครึ่งชั่วโมงระหว่าง 11:00 ถึง 21:00 —

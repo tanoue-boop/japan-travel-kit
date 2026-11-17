@@ -325,15 +325,15 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tea Ceremony in Tokyo</span>
         </div>
       </div>
@@ -345,7 +345,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tea Ceremony in Tokyo:<br />Best Experiences, Prices &amp; Kyoto Options
+            Tea Ceremony in Tokyo: <br />Best Experiences, Prices &amp; Kyoto Options
           </h1>
           <p className={styles.heroSubtitle}>
             Where to book a Japanese tea ceremony experience in Tokyo — Asakusa, Shibuya, Meguro, Toyosu and the

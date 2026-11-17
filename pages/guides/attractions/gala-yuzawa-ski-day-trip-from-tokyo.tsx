@@ -536,15 +536,15 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tokyo to Gala Yuzawa Day Trip</span>
         </div>
       </div>
@@ -554,7 +554,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            How to Get to Gala Yuzawa from Tokyo:<br />Gala Yuzawa Day Trip by Shinkansen (2026-27)
+            Tokyo to Gala Yuzawa 2026-27: <br />Shinkansen Day Trip, JR Pass and How to Get There
           </h1>
           <p className={styles.heroSubtitle}>
             The one Japanese ski resort with a shinkansen station inside it. The slopes open{" "}

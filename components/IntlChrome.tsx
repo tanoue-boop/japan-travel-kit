@@ -35,8 +35,9 @@ type Copy = {
   relatedArrow: string;
   /**
    * Hidden text between crumbs. The visible separator is a chevron SVG, so copied or
-   * extracted text ran the crumbs together ("日本景点门票道顿堀游船"). "" renders nothing,
-   * which keeps the other editions' markup unchanged.
+   * extracted text ran the crumbs together ("日本景点门票道顿堀游船"). Set for every edition
+   * since 2026-11-17 (task-jtk-20261117-04): search results were showing slug-like or
+   * crumb-glued titles, and the glued trail is the first text on the page.
    */
   crumbSep: string;
   /** Hidden text after a section's eyebrow label, for the same reason. */
@@ -53,8 +54,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     relatedLabel: "延伸閱讀",
     relatedTitle: "其他攻略",
     relatedArrow: "看攻略 →",
-    crumbSep: "",
-    labelSep: "",
+    crumbSep: " / ",
+    labelSep: "：",
   },
   "zh-cn": {
     disclosureLabel: "推广链接声明：",
@@ -77,8 +78,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     relatedLabel: "함께 읽기",
     relatedTitle: "다른 가이드",
     relatedArrow: "가이드 보기 →",
-    crumbSep: "",
-    labelSep: "",
+    crumbSep: " / ",
+    labelSep: ": ",
   },
   th: {
     disclosureLabel: "การเปิดเผยลิงก์พันธมิตร: ",
@@ -89,8 +90,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
     relatedLabel: "อ่านต่อ",
     relatedTitle: "ไกด์อื่น ๆ",
     relatedArrow: "ดูไกด์ →",
-    crumbSep: "",
-    labelSep: "",
+    crumbSep: " / ",
+    labelSep: ": ",
   },
 };
 

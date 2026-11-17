@@ -245,7 +245,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 업데이트 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-도쿄 출발 지고쿠다니 원숭이 공원(2027):<br />입장료, 운영 시간, 도보 이동, 투어와 개별 여행 비교
+지고쿠다니 원숭이 공원(2027): <br />도쿄 출발 투어, 입장료, 운영 시간, 도보 이동, 개별 여행 비교
 </h1>
           <p className={styles.heroSubtitle}>
 온천에 들어가는 일본원숭이는 나가노현 북부의 계곡에 삽니다. 신칸센에서 내린 뒤 전철과 버스를 갈아타고 눈 덮인 산길을 걸어야 합니다. 비용과 시간, 그리고 투어가 더 나은 경우를 정리했습니다.

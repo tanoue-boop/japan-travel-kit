@@ -212,15 +212,15 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Kyoto Cooking Class</span>
         </div>
       </div>
@@ -230,7 +230,7 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kyoto Cooking Class (2026):<br />Sushi, Ramen, Bento and Wagashi Compared
+            Kyoto Cooking Class (2026): <br />Sushi, Ramen, Bento and Wagashi Compared
           </h1>
           <p className={styles.heroSubtitle}>
             Seven classes compared on the dish, the length, the nearest station, vegetarian options and

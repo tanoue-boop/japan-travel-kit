@@ -366,15 +366,15 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/esim" className={styles.breadLink}>eSIM &amp; SIM Cards</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Unlimited eSIM</span>
         </div>
       </div>
@@ -386,7 +386,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Unlimited eSIM Japan (2026):<br />Prices, Fair-Use Limits &amp; Tethering
+            Japan eSIM Unlimited Data 2026: <br />Prices, Fair-Use Limits &amp; Tethering
           </h1>
           <p className={styles.heroSubtitle}>
             What each Japan eSIM with unlimited data costs for 7, 15 and 30 days, how much runs at full speed, which network it uses, and which one you can tether a laptop to.

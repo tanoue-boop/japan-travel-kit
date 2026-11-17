@@ -67,7 +67,7 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
   return (
     <>
       <Head>
-        <title>Pocket WiFi vs eSIM for Japan 2026 | Japan Travel Kit</title>
+        <title>Pocket WiFi vs eSIM for Japan 2026: Which Is Better?</title>
         <meta
           name="description"
           content="Pocket WiFi or eSIM for Japan? We compare price, convenience, and coverage to help you choose the best option for your trip."
@@ -113,15 +113,15 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/esim" className={styles.breadLink}>eSIM</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Pocket WiFi vs eSIM</span>
         </div>
       </div>
@@ -133,7 +133,7 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Pocket WiFi vs eSIM for Japan (2026):<br />Which Is Better?
+            Pocket WiFi vs eSIM for Japan (2026): <br />Which Is Better?
           </h1>
           <p className={styles.heroSubtitle}>
             Both keep you connected in Japan.<br />

@@ -440,15 +440,15 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Sagano Romantic Train Tickets</span>
         </div>
       </div>
@@ -458,7 +458,7 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Sagano Romantic Train Tickets 2026:<br />When to Book, Seats and Running Days
+            Sagano Romantic Train Tickets 2026: <br />When to Book, Seats and Running Days
           </h1>
           <p className={styles.heroSubtitle}>
             Kyoto&apos;s torokko train up the Hozugawa gorge. Seats open a month ahead, the current cars

@@ -215,15 +215,15 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/money" className={styles.breadLink}>Money &amp; Payment</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Wise vs Revolut</span>
         </div>
       </div>
@@ -235,7 +235,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Wise vs Revolut Japan (2026):<br />Which Travel Card Wins?
+            Wise vs Revolut Japan (2026): <br />Which Travel Card Wins?
           </h1>
           <p className={styles.heroSubtitle}>
             Two of the best travel cards for Japan — but they win in different situations. Here&apos;s how to pick.

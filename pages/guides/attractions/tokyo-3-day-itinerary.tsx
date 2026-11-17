@@ -381,15 +381,15 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tokyo 3 Day Itinerary</span>
         </div>
       </div>
@@ -399,7 +399,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo 3 Day Itinerary (2026):<br />What to Book, and in What Order
+            Tokyo 3 Day Itinerary (2026): <br />What to Book, and in What Order
           </h1>
           <p className={styles.heroSubtitle}>
             Three days, three districts, and only two stops that need a timed ticket. The plan below is

@@ -264,7 +264,7 @@ export default function KoTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            팀랩 플래닛 티켓 예약 2026:<br />공식 가격, 입장 시간, 예약 방법
+            팀랩 플래닛 티켓 예약 2026: <br />공식 가격, 입장 시간, 예약 방법
           </h1>
           <p className={styles.heroSubtitle}>
             도요스 팀랩 플래닛의 입장권 가격과 운영 시간, 예약 방법, 신토요스역과 도요스역에서 가는 방법을

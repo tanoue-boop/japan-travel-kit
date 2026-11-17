@@ -260,7 +260,7 @@ export default function ThTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            ตั๋ว teamLab Planets 2026:<br />ราคาทางการ รอบเวลา และวิธีจอง
+            ตั๋ว teamLab Planets 2026: <br />ราคาทางการ รอบเวลา และวิธีจอง
           </h1>
           <p className={styles.heroSubtitle}>
             ตั๋ว teamLab Planets ที่โทโยสุราคาเท่าไร เปิดกี่โมง จองอย่างไร และเดินทางจากสถานีชินโทโยสุหรือสถานีโทโยสุอย่างไร

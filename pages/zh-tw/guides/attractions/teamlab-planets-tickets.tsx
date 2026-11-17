@@ -266,7 +266,7 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 豐洲門票 2026：<br />官網票價、入場時段與預約方式
+            teamLab Planets 豐洲門票 2026： <br />官網票價、入場時段與預約方式
           </h1>
           <p className={styles.heroSubtitle}>
             豐洲的 teamLab Planets 門票多少錢、什麼時候開放、怎麼預約，以及從新豐洲站或豐洲站怎麼走。

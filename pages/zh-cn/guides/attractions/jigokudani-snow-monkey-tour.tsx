@@ -245,7 +245,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 更新于 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-东京出发看雪猴（2027）：<br />地狱谷门票、时间、步行与跟团或自助比较
+地狱谷野猿公苑（2027）： <br />东京出发看雪猴，门票、时间、步行与跟团或自助比较
 </h1>
           <p className={styles.heroSubtitle}>
 日本会泡温泉的猴子住在长野市近郊山上的山谷里，下新干线后，还得换乘电车、巴士，再走一段积雪的山路。这里整理了费用、时间，以及哪些情况适合跟团。

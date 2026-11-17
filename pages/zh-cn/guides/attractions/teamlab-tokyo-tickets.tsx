@@ -160,7 +160,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>
-            {H1_LINE}<br />Planets 与无界价格比较，两馆怎么选
+            {H1_LINE} <br />Planets 与无界价格比较，两馆怎么选
           </h1>
           <p className={styles.heroSubtitle}>
             东京有两座 teamLab 美术馆，门票需分别购买。这里说明两者的区别，以及该选哪一座。

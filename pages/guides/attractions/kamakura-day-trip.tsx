@@ -144,13 +144,13 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kamakura-day-trip" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Kamakura Day Trip From Tokyo (2026): Great Buddha, Hase-dera and the Fares" />
+        <meta property="og:title" content="Kamakura Day Trip From Tokyo (2026): Temples and Fares" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/kamakura-day-trip" />
         <meta property="og:description" content="Kamakura day trip from Tokyo in 2026: the direct JR line a rail pass already covers, official admissions for Kotoku-in and Hase-dera, and the Enoden tram." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kamakura Day Trip From Tokyo (2026): Great Buddha, Hase-dera and the Fares" />
+        <meta name="twitter:title" content="Kamakura Day Trip From Tokyo (2026): Temples and Fares" />
         <meta name="twitter:description" content="Kamakura day trip from Tokyo in 2026: the direct JR line a rail pass already covers, official admissions for Kotoku-in and Hase-dera, and the Enoden tram." />
         <script
           type="application/ld+json"
@@ -171,7 +171,7 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/kamakura-day-trip",
-              headline: "Kamakura Day Trip From Tokyo (2026): Great Buddha, Hase-dera and the Fares",
+              headline: "Kamakura Day Trip From Tokyo (2026): Temples and Fares",
               updated,
             }),
           }}
@@ -199,15 +199,15 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Kamakura Day Trip</span>
         </div>
       </div>
@@ -219,7 +219,7 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Kamakura Day Trip From Tokyo (2026):<br />Great Buddha, Hase-dera &amp; the Fares
+            Kamakura Day Trip From Tokyo (2026): <br />Great Buddha, Hase-dera &amp; the Fares
           </h1>
           <p className={styles.heroSubtitle}>
             An hour from Tokyo by train: the open-air bronze Great Buddha, the hillside temple of Hase-dera, and a

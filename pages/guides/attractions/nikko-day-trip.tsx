@@ -142,13 +142,13 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/nikko-day-trip" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Nikko Day Trip From Tokyo (2026): Getting There, Costs and Whether to Take a Tour" />
+        <meta property="og:title" content="Nikko Day Trip From Tokyo (2026): Costs and Tour or Not" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/nikko-day-trip" />
         <meta property="og:description" content="Nikko day trip from Tokyo in 2026: the Tobu route from Asakusa, Toshogu's official admission, what the NIKKO PASS covers, and when a coach tour wins." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Nikko Day Trip From Tokyo (2026): Getting There, Costs and Whether to Take a Tour" />
+        <meta name="twitter:title" content="Nikko Day Trip From Tokyo (2026): Costs and Tour or Not" />
         <meta name="twitter:description" content="Nikko day trip from Tokyo in 2026: the Tobu route from Asakusa, Toshogu's official admission, what the NIKKO PASS covers, and when a coach tour wins." />
         <script
           type="application/ld+json"
@@ -169,7 +169,7 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/nikko-day-trip",
-              headline: "Nikko Day Trip From Tokyo (2026): Getting There, Costs and Whether to Take a Tour",
+              headline: "Nikko Day Trip From Tokyo (2026): Costs and Tour or Not",
               updated,
             }),
           }}
@@ -197,15 +197,15 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Nikko Day Trip</span>
         </div>
       </div>
@@ -217,7 +217,7 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Nikko Day Trip From Tokyo (2026):<br />Getting There, Costs and Whether to Take a Tour
+            Nikko Day Trip From Tokyo (2026): <br />Getting There, Costs and Whether to Take a Tour
           </h1>
           <p className={styles.heroSubtitle}>
             Two hours north of Tokyo for a UNESCO-listed shrine, a 97-metre waterfall and a mountain lake.

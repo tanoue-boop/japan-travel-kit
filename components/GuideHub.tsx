@@ -3,11 +3,15 @@ import type { ReactNode } from "react";
 import styles from "../styles/Guides.module.css";
 import { groupedArticles, startHereArticle, type GuideCategory } from "../lib/guide-hub";
 
+/** Chevron plus hidden " / ", so extracted text does not run the crumbs together. */
 function BreadSep() {
   return (
-    <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-    </svg>
+    <>
+      <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+      <span className="sr-only"> / </span>
+    </>
   );
 }
 

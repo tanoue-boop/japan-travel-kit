@@ -214,15 +214,15 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Mt. Fuji Day Trip From Tokyo</span>
         </div>
       </div>
@@ -234,7 +234,7 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Mt. Fuji Day Trip From Tokyo (2026):<br />How to Get There Yourself
+            Mt. Fuji Day Trip From Tokyo (2026): <br />How to Get There Yourself
           </h1>
           <p className={styles.heroSubtitle}>
             A direct train puts you at Lake Kawaguchi in under two hours. What that buys you, what it does

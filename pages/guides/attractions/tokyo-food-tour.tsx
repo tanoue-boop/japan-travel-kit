@@ -258,15 +258,15 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tokyo Food &amp; Izakaya Tours</span>
         </div>
       </div>
@@ -278,7 +278,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Food Tour 2026:<br />Shinjuku Izakaya, Golden Gai &amp; Tsukiji Market
+            Tokyo Food Tour 2026: <br />Shinjuku Izakaya, Golden Gai &amp; Tsukiji Market
           </h1>
           <p className={styles.heroSubtitle}>
             Which tour to book by area, time of day and length — from the 3-hour Shinjuku izakaya crawl

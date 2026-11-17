@@ -393,15 +393,15 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Hiroshima 2 Day Itinerary</span>
         </div>
       </div>
@@ -411,7 +411,7 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Hiroshima 2 Day Itinerary (2026):<br />The Peace Park, Miyajima and What to Book
+            Hiroshima 2 Day Itinerary (2026): <br />The Peace Park, Miyajima and What to Book
           </h1>
           <p className={styles.heroSubtitle}>
             One day for the city and its memorial, one day for the island. The ferry, the tide and where you

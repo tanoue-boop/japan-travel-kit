@@ -219,15 +219,15 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/transport" className={styles.breadLink}>Transport</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>How to Get Around Tokyo</span>
         </div>
       </div>
@@ -239,7 +239,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE1}<br />{H1_LINE2}
+            {H1_LINE1} <br />{H1_LINE2}
           </h1>
           <p className={styles.heroSubtitle}>
             Getting around inside Tokyo: what a ride costs on JR and the subway, which IC card to tap, a day&apos;s

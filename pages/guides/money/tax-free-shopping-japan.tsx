@@ -577,15 +577,15 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/money" className={styles.breadLink}>Money &amp; Payment</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tax Free Shopping</span>
         </div>
       </div>
@@ -597,7 +597,7 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Japan Tax Free Shopping (Nov 2026):<br />How the New Refund System Works
+            Japan Tax Free Shopping (Nov 2026): <br />How the New Refund System Works
           </h1>
           <p className={styles.heroSubtitle}>
             From {REFUND_START} you pay the 10% consumption tax in the shop and get it back

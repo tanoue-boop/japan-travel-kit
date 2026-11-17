@@ -297,15 +297,15 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Matcha Experiences in Japan</span>
         </div>
       </div>
@@ -315,7 +315,7 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Matcha Experiences in Japan (2026):<br />Uji, Kyoto and Tokyo Tea Houses Compared
+            Matcha Experiences in Japan (2026): <br />Uji, Kyoto and Tokyo Tea Houses Compared
           </h1>
           <p className={styles.heroSubtitle}>
             The tea rooms are in Kyoto and Tokyo. The tea is grown sixteen minutes from Kyoto Station —

@@ -294,7 +294,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 อัปเดต {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-ทัวร์เทศกาลหิมะซัปโปโร 2027:<br />วันจัดงาน (4–11 ก.พ.) เข้าชมฟรี และสิ่งที่ควรจอง
+เทศกาลหิมะซัปโปโร 2027: <br />วันจัดงาน 4–11 ก.พ. ทัวร์ จุดเข้าชมฟรี และสิ่งที่ควรจอง
 </h1>
           <p className={styles.heroSubtitle}>
 เทศกาล 8 วัน 3 สถานที่จัดงาน ไม่ต้องใช้ตั๋ว ทัวร์ที่ควรจองคือทริปวันเดียวรอบช่วงเทศกาล และที่พักคือสิ่งเดียวที่ไม่มีตัวเลือกสำรอง

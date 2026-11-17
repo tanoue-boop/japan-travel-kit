@@ -215,15 +215,15 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/esim" className={styles.breadLink}>eSIM</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>eSIM Go Japan Review</span>
         </div>
       </div>
@@ -233,7 +233,7 @@ export default function EsimGoJapanReviewPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Prices checked {pricesCheckedAt}</p>
           <h1 className={styles.heroTitle}>
-            eSIM Go Japan Review (2026):<br />Prices, Networks and Tethering
+            eSIM Go Japan Review 2026: <br />7-Day Price vs Cheaper eSIMs, Networks and Tethering
           </h1>
           <p className={styles.heroSubtitle}>
             A budget Japan eSIM with allowances up to 200 GB — and the two things it does not do.

@@ -149,7 +149,7 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets หรือ Borderless (2026):<br />ไปที่ไหนดี และควรจองแห่งไหน
+            teamLab Planets หรือ Borderless (2026): <br />ไปที่ไหนดี และควรจองแห่งไหน
           </h1>
           <p className={styles.heroSubtitle}>
             โตเกียวมีพิพิธภัณฑ์ teamLab สองแห่ง แต่ละแห่งมีตั๋วของตัวเอง นี่คือความต่างของทั้งสองแห่ง และแห่งที่ควรจอง

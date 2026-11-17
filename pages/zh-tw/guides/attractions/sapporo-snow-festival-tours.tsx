@@ -305,7 +305,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 更新於 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-札幌雪祭 2027：日期 2/4–11・<br />交通・旅行團與住宿
+札幌雪祭 2027：日期 2/4–11・ <br />交通・旅行團與住宿
 </h1>
           <p className={styles.heroSubtitle}>
 八天、三個會場、不用門票。值得預訂的是雪祭前後的行程，而住宿是唯一訂不到就沒有退路的項目。

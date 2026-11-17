@@ -293,15 +293,15 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/transport" className={styles.breadLink}>Transport</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Osaka Airport Transfer</span>
         </div>
       </div>
@@ -313,7 +313,7 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Osaka Airport Transfer Guide (2026):<br />KIX &amp; ITM to the City
+            Osaka Airport Transfer Guide (2026): <br />KIX &amp; ITM to the City
           </h1>
           <p className={styles.heroSubtitle}>
             Osaka has two airports — Kansai International and Itami. Here&apos;s the fastest and cheapest way to get into the city from each.

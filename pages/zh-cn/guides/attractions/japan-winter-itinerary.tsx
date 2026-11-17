@@ -878,7 +878,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 更新于 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-日本冬季行程：<br />12 天逐日安排
+日本冬季行程（2027）： <br />12 天路线逐日安排
 </h1>
           <p className={styles.heroSubtitle}>
 东京、金泽、白川乡、高山、京都和大阪，加上日期固定的两个冬季活动，其中一个完全不销售当日票。

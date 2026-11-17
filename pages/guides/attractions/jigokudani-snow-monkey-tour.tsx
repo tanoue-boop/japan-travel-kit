@@ -319,15 +319,15 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Jigokudani Snow Monkey Tour</span>
         </div>
       </div>
@@ -337,7 +337,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Snow Monkey Tour from Tokyo (2027):<br />Jigokudani Fees, Hours, the Walk and Tour vs DIY
+            Snow Monkey Tour from Tokyo (2027): <br />Jigokudani Fees, Hours, the Walk and Tour vs DIY
           </h1>
           <p className={styles.heroSubtitle}>
             Japan&apos;s bathing monkeys live in a valley above Nagano, a train, a bus and a snowy

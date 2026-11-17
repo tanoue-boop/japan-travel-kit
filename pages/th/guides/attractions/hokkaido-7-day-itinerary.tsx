@@ -660,7 +660,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 อัปเดต {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-เที่ยวฮอกไกโด 7 วัน:<br />แผนเที่ยวรายวัน
+เที่ยวฮอกไกโด 7 วัน: <br />แผนเที่ยวรายวัน
 </h1>
           <p className={styles.heroSubtitle}>
 พักสองเมือง รวมหกคืน พร้อมตารางเที่ยวรายวัน การคำนวณพาสจากค่าโดยสาร JR Hokkaido และเปรียบเทียบแผนเดือนกุมภาพันธ์กับกรกฎาคม

@@ -395,15 +395,15 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/transport" className={styles.breadLink}>Transport</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tokyo to Nagoya Shinkansen</span>
         </div>
       </div>
@@ -413,7 +413,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo to Nagoya Shinkansen:<br />Times, Fares and the JR Pass
+            Tokyo to Nagoya Shinkansen: <br />Times, Fares and the JR Pass
           </h1>
           <p className={styles.heroSubtitle}>
             Ninety minutes, 451 trains a day — and the one Tokaido leg where a rail pass costs you a

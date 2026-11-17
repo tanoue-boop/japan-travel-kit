@@ -465,15 +465,15 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Nagoya 2 Day Itinerary</span>
         </div>
       </div>
@@ -483,7 +483,7 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Nagoya 2 Day Itinerary (2026):<br />2 Days in Nagoya With Ghibli Park or LEGOLAND
+            Nagoya 2 Day Itinerary (2026): <br />2 Days in Nagoya With Ghibli Park or LEGOLAND
           </h1>
           <p className={styles.heroSubtitle}>
             One day for the castle, Osu and a Nagoya dinner; one day at a park — and the tickets, trains and hotel to

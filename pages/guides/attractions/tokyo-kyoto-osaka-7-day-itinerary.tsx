@@ -967,15 +967,15 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tokyo Kyoto Osaka Itinerary</span>
         </div>
       </div>
@@ -985,7 +985,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Kyoto Osaka 7 Day Itinerary (2026):<br />Route, JR Pass &amp; Hotels, Day by Day
+            Tokyo Kyoto Osaka 7 Day Itinerary (2026): <br />Route, JR Pass &amp; Hotels, Day by Day
           </h1>
           <p className={styles.heroSubtitle}>
             The first-visit route, planned around the two travel days and the four bookings that

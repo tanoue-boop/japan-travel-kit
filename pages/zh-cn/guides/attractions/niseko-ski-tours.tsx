@@ -297,7 +297,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 更新于 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-二世谷滑雪：<br />交通、滑雪课程与四大区域
+二世谷滑雪（2027）： <br />接送交通、滑雪教练课与四大区域
 </h1>
           <p className={styles.heroSubtitle}>
 四座相连的滑雪场，从新千岁机场坐预约制巴士约 {AIRPORT_BUS}，还有一条常让人措手不及的官方规定：旺季滑雪课程的预约限制。

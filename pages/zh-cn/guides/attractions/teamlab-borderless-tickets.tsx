@@ -41,7 +41,7 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 const ROUTE = "/zh-cn/guides/attractions/teamlab-borderless-tickets";
 // Search term first: "teamLab Borderless 门票" (also searched as 无界).
 const TITLE = "teamLab 无界 门票 2026：Borderless 预约方法";
-const H1 = "teamLab Borderless（无界）门票 2026：价格、入场时段与预约方法";
+const H1 = "teamLab 无界（Borderless）门票 2026：价格、入场时段与预约方法";
 const DESC =
   "teamLab Borderless 门票 2026：成人 ¥3,400 起，按日期与时段定价，约提前 2 个月开售，馆内约 1.5～2 小时。看预约方法。";
 

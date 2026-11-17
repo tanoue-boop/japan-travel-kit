@@ -292,7 +292,7 @@ export default function ZhTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            東京晴空塔門票價格 2026：<br />350 公尺與 450 公尺展望台比較及購票方式
+            東京晴空塔門票價格 2026： <br />350 公尺與 450 公尺展望台比較及購票方式
           </h1>
           <p className={styles.heroSubtitle}>
             東京晴空塔門票：350 公尺天望甲板成人 ¥1,800 起，加上 450 公尺天望迴廊的聯票 ¥3,000 起（官網查核日

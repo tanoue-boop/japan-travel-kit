@@ -377,7 +377,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            東京迪士尼門票（2026）：<br />價格、在哪買、樂園與海洋怎麼選
+            東京迪士尼門票（2026）： <br />價格、在哪買、樂園與海洋怎麼選
           </h1>
           <p className={styles.heroSubtitle}>
             指定日期入園、浮動票價、現場不售票、恕不退款。本頁整理一日入園票（一日護照）的票價、購買管道、你要的日期什麼時候開賣，

@@ -297,7 +297,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 อัปเดต {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-เล่นสกีที่นิเซโกะ:<br />การเดินทาง คอร์สเรียนสกี และ 4 พื้นที่สกี
+เล่นสกีนิเซโกะ 2027: <br />รถรับส่ง คอร์สเรียนสกี และ 4 พื้นที่สกี
 </h1>
           <p className={styles.heroSubtitle}>
 พื้นที่สกี 4 แห่งที่เชื่อมถึงกัน ห่างจากสนามบินชิโตเสะ {AIRPORT_BUS} ด้วยรถบัสที่ต้องจองล่วงหน้า และกำหนดเวลาที่ประกาศไว้แต่หลายคนพลาด คือกฎการจองคอร์สเรียนช่วงไฮซีซัน

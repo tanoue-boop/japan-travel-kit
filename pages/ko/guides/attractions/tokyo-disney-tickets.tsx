@@ -373,7 +373,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            도쿄 디즈니랜드 티켓(2026):<br />가격, 구매처, 랜드·씨 선택
+            도쿄 디즈니랜드 티켓(2026): <br />가격, 구매처, 랜드·씨 선택
           </h1>
           <p className={styles.heroSubtitle}>
             날짜 지정 티켓, 변동 가격제, 현장 판매 없음, 환불 불가. 패스포트 가격, 어디서 살지, 방문 날짜의 판매 시작 시점,

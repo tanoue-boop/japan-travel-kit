@@ -262,15 +262,15 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Osaka Amazing Pass</span>
         </div>
       </div>
@@ -282,7 +282,7 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Osaka Amazing Pass 2026:<br />¥3,500 Price — Is It Worth It?
+            Osaka Amazing Pass 2026: <br />¥3,500 Price — Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             {PASS_1_DAY} for one day, {PASS_2_DAY} for two: unlimited city trains and buses plus about 40 free

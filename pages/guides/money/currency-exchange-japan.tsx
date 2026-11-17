@@ -303,15 +303,15 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/money" className={styles.breadLink}>Money &amp; Payment</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Currency Exchange</span>
         </div>
       </div>
@@ -323,7 +323,7 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Currency Exchange in Japan (2026):<br />Airport Counter, City Bureau or ATM?
+            Currency Exchange in Japan (2026): <br />Airport Counter, City Bureau or ATM?
           </h1>
           <p className={styles.heroSubtitle}>
             The options side by side, with the ATM limits and fees the banks themselves publish — and what to pay

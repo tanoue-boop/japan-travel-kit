@@ -264,15 +264,15 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>teamLab Planets Tickets</span>
         </div>
       </div>
@@ -284,7 +284,7 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets Tickets 2026:<br />Official Price, Time Slots &amp; Booking
+            teamLab Planets Tickets 2026: <br />Official Price, Time Slots &amp; Booking
           </h1>
           <p className={styles.heroSubtitle}>
             What a ticket to teamLab Planets in Toyosu costs, when it is open, how to book and how to get

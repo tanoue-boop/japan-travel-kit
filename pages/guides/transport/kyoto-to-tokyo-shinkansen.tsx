@@ -532,15 +532,15 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/transport" className={styles.breadLink}>Transport</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Kyoto to Tokyo Train</span>
         </div>
       </div>
@@ -550,7 +550,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kyoto to Tokyo Train (2026):<br />Shinkansen Time, Price and the JR Pass
+            Kyoto to Tokyo Train (2026): <br />Shinkansen Time, Price and the JR Pass
           </h1>
           <p className={styles.heroSubtitle}>
             Leaving from Kyoto Station: the Nozomi, Hikari and Kodama compared, the platforms and gates,

@@ -230,15 +230,15 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Zao Snow Monsters Tour</span>
         </div>
       </div>
@@ -248,7 +248,7 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Zao Snow Monsters Tour (2026–27):<br />When to Go, the Ropeway, and Which Tour to Book
+            Zao Snow Monsters Tour (2026–27): <br />When to Go, the Ropeway, and Which Tour to Book
           </h1>
           <p className={styles.heroSubtitle}>
             The rime-frozen trees of Zao, Yamagata, at the top of a two-stage ropeway. The season, the fares, the

@@ -413,15 +413,15 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>First Time Japan Itinerary</span>
         </div>
       </div>
@@ -431,7 +431,7 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            First Time Japan Itinerary (2026):<br />9 Days, Day by Day
+            First Time Japan Itinerary (2026): <br />9 Days, Day by Day
           </h1>
           <p className={styles.heroSubtitle}>
             How many days you need, which cities to see, whether the JR Pass pays, and what to book
@@ -513,9 +513,9 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Nine, if you can. Seven days covers the three cities and nothing else; nine adds Hakone or Nikko and
             Nara without adding a fourth hotel. Our{" "}
-            <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">7-day</Link>,{" "}
-            <Link href="/guides/attractions/japan-10-day-itinerary">10-day</Link> and{" "}
-            <Link href="/guides/attractions/japan-14-day-itinerary">14-day</Link> plans cover the other lengths.
+            <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">7-day Tokyo, Kyoto and Osaka itinerary</Link>,{" "}
+            <Link href="/guides/attractions/japan-10-day-itinerary">Japan 10-day itinerary</Link> and{" "}
+            <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14-day itinerary</Link> cover the other lengths.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

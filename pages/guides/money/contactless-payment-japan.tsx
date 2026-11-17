@@ -302,15 +302,15 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/money" className={styles.breadLink}>Money</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Contactless Payment in Japan</span>
         </div>
       </div>
@@ -322,7 +322,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Contactless Payment in Japan (2026):<br />Where Tap to Pay Works
+            Contactless Payment in Japan (2026): <br />Where Tap to Pay Works
           </h1>
           <p className={styles.heroSubtitle}>
             Cards, Suica, trains, temples — which tap works where, where you still
