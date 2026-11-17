@@ -1279,7 +1279,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo to Hiroshima Shinkansen: Times, Fares, JR Pass</p>
+                <p className={styles.relatedTitle}>Tokyo to Hiroshima Shinkansen 2026: Bullet Train Price, Time</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

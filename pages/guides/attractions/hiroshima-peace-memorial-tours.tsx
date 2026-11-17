@@ -531,8 +531,9 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
             <li><strong>Meipuru-pu loop bus, about 17 minutes:</strong> from the Shinkansen exit to Heiwa kinen koen.</li>
           </ul>
           <p className={styles.bodyText}>
-            To reach Hiroshima, see our guides to{" "}
-            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen" style={LINK}>Tokyo to Hiroshima</Link> and{" "}
+            To reach Hiroshima, see our guides to the{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen" style={LINK}>Tokyo to Hiroshima shinkansen</Link>{" "}
+            (with a train-versus-flight table) and{" "}
             <Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={LINK}>Osaka to Hiroshima</Link> by
             shinkansen.
           </p>

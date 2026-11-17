@@ -314,7 +314,12 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             For most tourist itineraries — Tokyo to Kyoto, Kyoto to Hiroshima, Osaka to Fukuoka —
             the Shinkansen is faster door-to-door than flying, once you factor in airport travel and check-in.
-            It also drops you directly into city centres rather than 40 minutes outside them. For the
+            It also drops you directly into city centres rather than 40 minutes outside them. Even on the
+            longest common leg, the{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo to Hiroshima shinkansen
+            </Link>{" "}
+            reaches Hiroshima Station within half an hour of the first flight plus its airport bus. For the
             return leg east, our{" "}
             <Link href="/guides/transport/kyoto-to-tokyo-shinkansen" style={{ color: "var(--red)", fontWeight: 600 }}>
               Kyoto to Tokyo train guide
@@ -570,7 +575,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo to Hiroshima Shinkansen: Times, Fares, JR Pass</p>
+                <p className={styles.relatedTitle}>Tokyo to Hiroshima Shinkansen 2026: Bullet Train Price, Time</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

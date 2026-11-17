@@ -428,7 +428,10 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
             <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> and{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link>; the times and fares from
             Shin-Osaka are in our{" "}
-            <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima Shinkansen guide</Link>. If you are basing yourself in
+            <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima Shinkansen guide</Link>; coming
+            from the capital, our{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen</Link>{" "}
+            guide has the NOZOMI times, the JR Pass route and the train-versus-flight table. If you are basing yourself in
             Kansai for this, our <Link href="/guides/attractions/things-to-do-osaka">Osaka</Link> and{" "}
             <Link href="/guides/attractions/things-to-do-kyoto">Kyoto</Link> round-ups cover the days either
             side.
@@ -535,7 +538,7 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo to Hiroshima Shinkansen: Times, Fares, JR Pass</p>
+                <p className={styles.relatedTitle}>Tokyo to Hiroshima Shinkansen 2026: Bullet Train Price, Time</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

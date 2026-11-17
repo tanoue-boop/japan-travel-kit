@@ -291,7 +291,9 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
                 N&apos;EX. The 7-day <strong>JAPAN RAIL PASS is ¥53,000</strong> from an overseas agency since the
                 1 October 2026 revision (¥50,000 bought on the official site). For one week on Tokyo, Kyoto and Osaka,
                 buy single shinkansen tickets plus an IC card; buy the JR Pass only when the week adds long legs such as
-                Hiroshima or Kanazawa, and a regional pass when you stay in one area.
+                the{" "}
+                <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen</Link>{" "}
+                or Kanazawa, and a regional pass when you stay in one area.
               </p>
               <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
                 Tokyo Metro, N&apos;EX and JR Pass prices re-read on the official sites on {CHECKED}; the other fares are
