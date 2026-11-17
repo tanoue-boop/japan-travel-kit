@@ -111,7 +111,7 @@ const rows: Row[] = [
     city: "Tokyo (Shibuya)",
     opens: "00:00 JST, two weeks before the admission date",
     onTheDay: "Yes — at the ticket counter, as well as online",
-    guide: <Link href="/guides/attractions/shibuya-sky-tickets" style={L}>SHIBUYA SKY tickets</Link>,
+    guide: <Link href="/guides/attractions/shibuya-sky-tickets" style={L}>Shibuya Sky tickets</Link>,
     source: { href: "https://www.shibuya-scramble-square.com/sky/ticket/", label: "shibuya-scramble-square.com" },
   },
   {
@@ -238,7 +238,7 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
           tickets: (
             <>
               Start with{" "}
-              <Link href="/guides/attractions/shibuya-sky-tickets" style={L}>SHIBUYA SKY tickets</Link>: the clearest
+              <Link href="/guides/attractions/shibuya-sky-tickets" style={L}>Shibuya Sky tickets</Link>: the clearest
               example of a timed slot that opens two weeks ahead and also sells at the counter.
             </>
           ),
@@ -383,7 +383,7 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             <Link href="/guides/attractions/teamlab-planets-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Planets tickets</Link>{" "}
             (not sure which teamLab? see our{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>teamLab Tokyo tickets comparison</Link>),{" "}
-            <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>Shibuya Sky</Link>{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>Shibuya Sky tickets</Link>{" "}
             (still choosing a deck? see the{" "}
             <Link href="/guides/attractions/tokyo-observation-decks" style={L}>best observation deck in Tokyo</Link>),{" "}
             <Link href="/guides/attractions/tokyo-disney-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo Disneyland tickets</Link>{" "}

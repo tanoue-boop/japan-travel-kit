@@ -538,7 +538,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>How Does Skytree Compare With Tokyo&apos;s Other Decks?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Skytree is the altitude pick. If what you actually want is the Scramble Crossing photograph,{" "}
-            <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky</Link> is the better buy, and if you
+            <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets</Link> are the better buy, and if you
             want a city panorama for nothing at all, the Tokyo Metropolitan Government Building in Shinjuku is
             free.
           </p>

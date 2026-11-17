@@ -654,8 +654,8 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             one deck where the slot matters. An adult booked online pays {SKY_ONLINE_DAY} to enter before 15:00
             and {SKY_ONLINE_LATE} from 15:00; the 14th-floor counter charges {SKY_DOOR_DAY} and {SKY_DOOR_LATE}{" "}
             (official prices, checked {SKY_CHECKED}). Sunset always falls in the later band, and those slots
-            are what sell out. See our{" "}
-            <Link href="/guides/attractions/shibuya-sky-tickets" style={linkStyle}>Shibuya Sky tickets guide</Link>.{" "}
+            are what sell out. See our guide to{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets" style={linkStyle}>Shibuya Sky tickets</Link>.{" "}
             <strong>Tokyo Skytree</strong> is the altitude option, {PRICES.tokyoSkytree.adult} for Floor 350 —{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets" style={linkStyle}>our guide</Link> explains
             why adding Floor 450 up front is cheaper than adding it on site.

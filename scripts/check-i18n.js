@@ -249,7 +249,11 @@ for (const page of PAGE_GROUPS) {
     }
     const anchors = [...markup.matchAll(/<a\s[^>]*href="https:\/\/[^"]*klook\.com[^"]*"[^>]*>/g)].map((m) => m[0]);
     for (const anchor of anchors) {
-      if (!/rel="sponsored noopener"/.test(anchor)) {
+      // Token check, not an exact string: since 17 Nov 2026 (P01) the rel also carries
+      // "nofollow", e.g. rel="sponsored nofollow noopener".
+      const rel = (anchor.match(/rel="([^"]*)"/) || [])[1] || "";
+      const tokens = rel.split(/\s+/);
+      if (!tokens.includes("sponsored") || !tokens.includes("noopener")) {
         fail(`${route}: Klook anchor without rel="sponsored noopener" — ${anchor.slice(0, 140)}`);
       }
     }

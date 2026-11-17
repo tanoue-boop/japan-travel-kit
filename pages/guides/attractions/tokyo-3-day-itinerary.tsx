@@ -534,7 +534,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             days on Metro and Toei, and its break-even is worked out ride by ride; the Shibuya Sky slot, if you want sunset. Shibuya Sky is also the one stop here where
             the booking route matters as much as the ticket — the official site has rejected many
             foreign-issued cards since July 2024, which is covered in full in our{" "}
-            <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets guide</Link>. The
+            guide to <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets</Link>. The
             Metropolitan Government Building decks in Shinjuku are the free alternative if the slot has
             gone; our{" "}
             <Link href="/guides/attractions/tokyo-observation-decks">best observation deck in Tokyo</Link>{" "}

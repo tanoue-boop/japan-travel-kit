@@ -449,9 +449,9 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             </Link>
             , the{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Shibuya Sky tickets guide
+              Shibuya Sky tickets
             </Link>{" "}
-            and the{" "}
+            guide (price bands, sunset slots, official vs Klook) and the{" "}
             <Link href="/guides/attractions/tokyo-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
               Tokyo Tower tickets guide
             </Link>{" "}
@@ -838,9 +838,10 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Sunset times are the National Astronomical Observatory of Japan&apos;s 2026 tables, read on {CHECKED}.
             The earliest sunsets are about 16:28 in early December and the latest about 19:01 in late June.
-            Entry times are our suggestion, not an operator rule. For slot-by-slot detail, see our{" "}
+            Entry times are our suggestion, not an operator rule. For slot-by-slot detail and when each date
+            goes on sale, see our guide to{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Shibuya Sky tickets guide
+              Shibuya Sky tickets
             </Link>.
           </p>
         </section>

@@ -5584,6 +5584,30 @@ export const shibuyaSkySameDayCards: KlookSameDayCard[] = [
   },
 ];
 
+/**
+ * English shibuya-sky-tickets only (task-jtk-20261117-R01): the three cards directly
+ * under the answer and the SHIBUYA SKY button — the Shibuya hotel search (6.5%), the
+ * Tokyo Subway Ticket (5%) and the Klook eSIM (20%). Existing constants only, no new
+ * URL and no price. The translated pages keep `shibuyaSkySameDayCards`.
+ */
+export const shibuyaSkyAnswerCards: KlookSameDayCard[] = [
+  {
+    ...tripPrepProducts.hotelShibuya,
+    kind: "Hotel",
+    why: "A sunset entry ends after dark; a bed in Shibuya makes the trip back a walk from the station the deck sits on.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    kind: "Pass",
+    why: "Shibuya is on the Ginza, Hanzomon and Fukutoshin lines, so a 24, 48 or 72-hour ticket covers the rides to and from the deck. It does not cover JR lines such as the Yamanote.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "The ticket is an e-ticket fixed to a 20-minute entry window — data from the airport onwards keeps the voucher, the map and the weather check on your phone.",
+  },
+];
+
 export const skytreeSameDayCards: KlookSameDayCard[] = [
   {
     label: asakusaSensojiWalkingTour.title,
