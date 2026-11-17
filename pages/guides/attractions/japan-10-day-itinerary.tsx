@@ -1731,7 +1731,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             With fewer days, our{" "}
             <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">Tokyo Kyoto Osaka 7-day itinerary</Link>{" "}
             is this route without the fourth Tokyo day, Hakone and Nara; with more, our{" "}
-            <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14-day itinerary</Link>{" "}
+            <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14 day itinerary (2 weeks in Japan)</Link>{" "}
             adds a night at the mountain and Hiroshima without dropping anything.
           </p>
         </section>

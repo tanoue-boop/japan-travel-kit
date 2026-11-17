@@ -11,7 +11,12 @@ import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import {
   asakusaKimonoYae,
+  fujikawaguchikoHotels,
   hakoneFreepass,
+  hakoneHotels,
+  hanedaLimousineBus,
+  jrKansaiHiroshimaAreaPass,
+  yetiSnowDayTripFromTokyo,
   hakoneLoopBusTour,
   hiroshimaMiyajimaBusTourUrl,
   jrHarukaUrl,
@@ -93,6 +98,34 @@ const ADMISSIONS_TOTAL =
   yenOf(PRICES.osakaAmazingPass.adult);
 const ADMISSIONS_TOTAL_LABEL = `¥${ADMISSIONS_TOTAL.toLocaleString("en-US")}`;
 
+/**
+ * 17 Nov 2026 (task-jtk-20261117-R05, rank fix for "japan 14 day itinerary" / "2 weeks in Japan").
+ * Read on 17 November 2026:
+ *   japanrailpass.net/en/purchase/price/   14-day Ordinary adult ¥80,000 bought online, ¥84,000 as an
+ *                                          Exchange Order from an overseas agency (Green ¥110,000 /
+ *                                          ¥116,000); "Prices are subject to change"
+ *   jr-group.jp/hikari-ryokin/             Hikari/Kodama, adult, one way, regular season, reserved,
+ *                                          "2026年10月現在": Tokyo–Kyoto ¥13,850, Tokyo–Shin-Osaka
+ *                                          ¥14,400, Shin-Osaka–Hiroshima ¥10,420
+ *   mlit.go.jp/kankocho/news02_00104.html  Japan Tourism Agency, Jul–Sep 2026 (1st preliminary):
+ *                                          travel spend per visitor ¥234,000 (all purposes), +6.1%
+ *   data.jma.go.jp/sakura/data/            JMA cherry blossom: 2020 normals, flowering Tokyo 24 Mar,
+ *                                          Kyoto 26 Mar, Osaka 27 Mar; full bloom Tokyo 31 Mar,
+ *                                          Kyoto 4 Apr, Osaka 4 Apr. 2026 full bloom: Tokyo 28 Mar,
+ *                                          Kyoto 30 Mar, Osaka 3 Apr.
+ * The single Tokyo–Kyoto fare that used to be withheld is now printed, from JR's own Hikari table.
+ */
+const R05_ISO = "2026-11-17";
+const R05 = checkedLabel(R05_ISO);
+const HIKARI = { tokyoKyoto: 13850, tokyoShinOsaka: 14400, shinOsakaHiroshima: 10420 };
+const JRP14_ONLINE = 80000;
+const JRP14_AGENCY = 84000;
+const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
+/** The JR long-distance legs this plan actually rides: Day 7, plus the optional Day 13 return. */
+const PLAN_RAIL = HIKARI.tokyoKyoto + 2 * HIKARI.shinOsakaHiroshima;
+/** The same, for a trip that flies home from Tokyo instead of Kansai. */
+const PLAN_RAIL_TOKYO_OUT = PLAN_RAIL + HIKARI.tokyoShinOsaka;
+
 type Stop = {
   time: string;
   place: string;
@@ -172,6 +205,8 @@ const legs: Leg[] = [
           { label: "Narita Express round trip →", url: naritaExpressRoundTripUrl },
           { label: "Keisei Skyliner ticket →", url: keiseiSkylinerUrl },
           { label: "Narita bus + subway pass →", url: naritaBusSubwayCombo.url },
+          { label: "Haneda limousine bus →", url: hanedaLimousineBus.url },
+          { label: "Shinjuku hotels for 5 nights →", url: tokyoStayAreas[0].url },
           { label: "See Klook eSIM options →", url: klookEsim.url },
         ],
       },
@@ -462,6 +497,8 @@ const legs: Leg[] = [
           { label: "Kawaguchiko & Yamanakako bus tour →", url: kawaguchikoYamanakakoBusTour.url },
           { label: "Hakone Freepass →", url: hakoneFreepass.url },
           { label: "Hakone loop bus tour →", url: hakoneLoopBusTour.url },
+          { label: "Kawaguchiko hotels (1 night) →", url: fujikawaguchikoHotels.url },
+          { label: "Hakone hotels (1 night) →", url: hakoneHotels.url },
         ],
       },
     ],
@@ -529,6 +566,7 @@ const legs: Leg[] = [
         picks: [
           { label: "Tokyo → Kyoto shinkansen tickets →", url: shinkansenTokyoKyoto.url },
           { label: "JAPAN RAIL PASS on Klook →", url: jrPassWholeJapan.url },
+          { label: "Kyoto Station hotels for 4 nights →", url: kyotoStayAreas[0].url },
         ],
       },
     ],
@@ -770,6 +808,7 @@ const legs: Leg[] = [
         picks: [
           { label: "Osaka Amazing Pass (1-day / 2-day) →", url: osakaAmazingPass.url },
           { label: "Osaka Sky Vista double-decker bus →", url: osakaSkyVistaHalfDayBusTour.url },
+          { label: "Namba hotels for 3 nights →", url: osakaStayAreas[1].url },
         ],
       },
       {
@@ -877,6 +916,7 @@ const legs: Leg[] = [
         ),
         picks: [
           { label: "Hiroshima & Miyajima bus tour →", url: hiroshimaMiyajimaBusTourUrl },
+          { label: "JR Kansai-Hiroshima Area Pass →", url: jrKansaiHiroshimaAreaPass.url },
         ],
       },
       {
@@ -954,6 +994,117 @@ const nightsRows = [
     nights: "3 nights (Days 11–13)",
     why: "A pass day, a USJ day or a second Osaka day, and one optional long day trip — then a short run to Kansai Airport.",
     moving: "15–45 minutes from Kyoto, depending on the train",
+  },
+];
+
+/** Table (1): the fortnight on one screen. Klook picks are read from the day records above. */
+const overviewRows: { day: string; base: string; plan: string; travel: string; book: string; n: number[] }[] = [
+  { day: "Day 1", base: "Tokyo (night 1 of 5)", plan: "Arrive, airport transfer, check in", travel: "Narita 1 h+, Haneda less", book: "Airport train or bus, eSIM", n: [1] },
+  { day: "Day 2", base: "Tokyo", plan: "Harajuku, Shinjuku, SHIBUYA SKY at sunset", travel: "Yamanote Line", book: "Shibuya Sky sunset slot", n: [2] },
+  { day: "Day 3", base: "Tokyo", plan: "Asakusa, Skytree, Akihabara, teamLab Planets", travel: "Subway", book: "teamLab Planets (compulsory)", n: [3] },
+  { day: "Day 4", base: "Tokyo", plan: "Imperial Palace, Ginza, Tsukiji, Tokyo Tower", travel: "Subway", book: "Nothing compulsory", n: [4] },
+  { day: "Day 5", base: "Tokyo (night 5)", plan: "Kamakura day trip, or a slow Tokyo day", travel: "JR, about 1 h each way", book: "Food tour or kimono, if Option B", n: [5] },
+  { day: "Day 6", base: "Kawaguchiko or Hakone (1 night)", plan: "Mt. Fuji lake side, or the Hakone loop", travel: "About 1 h 45 min bus from Shinjuku", book: "Bus seat, pass, the room (compulsory)", n: [6] },
+  { day: "Day 7", base: "Kyoto (night 1 of 4)", plan: "Back via Tokyo, shinkansen to Kyoto", travel: "Nozomi about 2 h 15 min", book: "Reserved shinkansen seat", n: [7] },
+  { day: "Day 8", base: "Kyoto", plan: "Kiyomizu-dera at 06:00, Gion, Fushimi Inari", travel: "Bus and Keihan line", book: "Nothing — all walk-in", n: [8] },
+  { day: "Day 9", base: "Kyoto", plan: "Arashiyama, Kinkaku-ji, Nishiki Market", travel: "JR Sagano Line and city bus", book: "Scenic train in peak season", n: [9] },
+  { day: "Day 10", base: "Kyoto (night 4)", plan: "Nara day trip: deer park, Todai-ji", travel: "Under 1 h each way", book: "Nothing — or a guided Kyoto & Nara day", n: [10] },
+  { day: "Day 11", base: "Osaka (night 1 of 3)", plan: "Osaka Castle, Shinsekai, Dotonbori", travel: "15–45 min from Kyoto", book: "Osaka Amazing Pass", n: [11] },
+  { day: "Day 12", base: "Osaka", plan: "Universal Studios Japan, or Osaka at ground level", travel: "About 15 min to Universal-city", book: "USJ Studio Pass (compulsory for USJ)", n: [12] },
+  { day: "Day 13", base: "Osaka (night 3)", plan: "Optional Hiroshima & Miyajima, or Kobe / Himeji", travel: "Sanyo Shinkansen", book: "Reserved seats both ways, if you go", n: [13] },
+  { day: "Day 14", base: "Fly home", plan: "Kansai Airport", travel: "About 40 min Rapi:t from Namba", book: "Airport train seat", n: [14] },
+];
+const allDays = legs.flatMap((leg) => leg.days);
+const picksFor = (ns: number[]) => allDays.filter((d) => ns.includes(d.n)).flatMap((d) => d.picks).slice(0, 3);
+
+/** Table (2): the 14-day JR Pass against single tickets on this plan, on JR's own Hikari fares. */
+const breakEvenRows = [
+  {
+    item: "Verdict for this plan",
+    fare: `${yen(PLAN_RAIL)} in fares vs ${yen(JRP14_ONLINE)} / ${yen(JRP14_AGENCY)} for the pass`,
+    note: "Buy single tickets. Even flying home from Tokyo, the rides come to " + yen(PLAN_RAIL_TOKYO_OUT) + ".",
+  },
+  {
+    item: "Day 7: Tokyo → Kyoto",
+    fare: yen(HIKARI.tokyoKyoto),
+    note: "Hikari, reserved seat, regular season",
+  },
+  {
+    item: "Day 13: Shin-Osaka ⇄ Hiroshima (optional)",
+    fare: `${yen(2 * HIKARI.shinOsakaHiroshima)} (${yen(HIKARI.shinOsakaHiroshima)} each way)`,
+    note: "Hikari, reserved seat, regular season",
+  },
+  {
+    item: "Only if you fly home from Tokyo: Shin-Osaka → Tokyo",
+    fare: yen(HIKARI.tokyoShinOsaka),
+    note: "Hikari, reserved seat, regular season",
+  },
+  {
+    item: "14-day JAPAN RAIL PASS, Ordinary, adult",
+    fare: `${yen(JRP14_ONLINE)} online / ${yen(JRP14_AGENCY)} from an overseas agency`,
+    note: "The ¥84,000 agency price is the 1 October 2026 revision; the JR Group's own site still shows ¥80,000",
+  },
+  {
+    item: "Where the pass breaks even",
+    fare: `About six one-way Tokyo–Kyoto rides (6 × ${yen(HIKARI.tokyoKyoto)} = ${yen(6 * HIKARI.tokyoKyoto)})`,
+    note: "Only a plan that changes region every two or three days, and rides back the same way, gets near it",
+  },
+];
+
+/** Table (3): what two weeks costs, with only figures that have a dated official source. */
+const costRows = [
+  {
+    item: "Average spend per visitor (all trip lengths)",
+    cost: "¥234,000",
+    note: "Japan Tourism Agency, July–September 2026, first preliminary figure; flights to Japan are not in it",
+  },
+  {
+    item: "Long-distance rail on this plan",
+    cost: `${yen(HIKARI.tokyoKyoto)}, or ${yen(PLAN_RAIL)} with the Hiroshima day`,
+    note: "JR Hikari reserved fares, regular season; busy season adds ¥200 and the busiest ¥400 per seat",
+  },
+  {
+    item: "Admissions and city passes on this plan",
+    cost: ADMISSIONS_TOTAL_LABEL,
+    note: "72-hour Tokyo Subway Ticket, Shibuya Sky, Skytree, teamLab Planets, Tokyo Tower, Kinkaku-ji, Todai-ji, 1-day Osaka Amazing Pass",
+  },
+  {
+    item: "Day 6 pass",
+    cost: `${PRICES.mtFujiPass.adult} (Mt. Fuji Pass, 1 day) or ${PRICES.hakoneFreepass.adult} (Hakone Freepass, 2 days)`,
+    note: "Pick one; the highway bus or Romancecar is extra",
+  },
+  {
+    item: "13 hotel nights (Tokyo 5, Fuji 1, Kyoto 4, Osaka 3)",
+    cost: "Live rates only",
+    note: "Room prices move by date and city; compare your own dates on the hotel search below",
+  },
+];
+
+/** Table (4): what to swap by season. Dates are JMA's own. */
+const seasonRows = [
+  {
+    season: "Any season",
+    swap: "Keep the four bases and the 5 / 1 / 4 / 3 split",
+    why: "Only the bookings change; the route works all year",
+    book: "Book the room first in spring and on peak weeks",
+  },
+  {
+    season: "Spring (cherry blossom)",
+    swap: "Line the Kyoto days (8–10) up with full bloom; move Day 2 or Day 4 to a park morning",
+    why: "JMA normals: full bloom Tokyo 31 March, Kyoto and Osaka 4 April. In 2026 Tokyo was 28 March and Kyoto 30 March",
+    book: "Kyoto rooms and the Sagano scenic train, well ahead",
+  },
+  {
+    season: "Winter (December–February)",
+    swap: "Make Day 5 a snow day from Tokyo; spend evenings on the Tokyo illuminations",
+    why: "Neither needs a change of base: a snow day is a coach out and back, illuminations are evenings in the city",
+    book: "Snow day trip coach from Tokyo",
+  },
+  {
+    season: "Golden Week, Obon, New Year",
+    swap: "Keep the plan; fix the Day 7 seat and the oversized-baggage row early",
+    why: "These are the weeks when shinkansen seats actually sell out",
+    book: "Reserved shinkansen seat",
   },
 ];
 
@@ -1081,22 +1232,35 @@ const bookingWindow = [
   },
 ];
 
+/** The five questions this page answers for search; these are the ones in FAQPage. */
+const faqTop = [
+  {
+    q: "Is 2 weeks enough for Japan?",
+    a: "Yes, for a first trip: two weeks covers Tokyo (5 nights), one night at Mt. Fuji or Hakone, Kyoto with Nara (4 nights) and Osaka (3 nights), with one long train day and two spare days built in. What 14 days does not stretch to is Hokkaido, Kanazawa or Kyushu on top — those are a swap for the Fuji night and Osaka's optional day, or a second trip.",
+  },
+  {
+    q: "What is the best 14 day Japan itinerary for first-timers?",
+    a: "Four bases, not seven: Tokyo 5 nights, Lake Kawaguchi or Hakone 1, Kyoto 4 with a Nara day trip, Osaka 3, then fly home from Kansai. That keeps the long travel to one day — Tokyo to Kyoto, about 2 hours 15 minutes on the Nozomi — and the only compulsory bookings are teamLab Planets, the USJ Studio Pass if you go, and the Day 6 room.",
+  },
+  {
+    q: "Is the JR Pass worth it for 2 weeks?",
+    a: `Not on this route. The 14-day Ordinary JAPAN RAIL PASS is ${yen(JRP14_AGENCY)} from an overseas agency since the October 2026 revision and ${yen(JRP14_ONLINE)} on the JR Group's own site (read ${R05}). This plan's long JR rides — Tokyo to Kyoto (${yen(HIKARI.tokyoKyoto)}) and an optional Shin-Osaka–Hiroshima return (${yen(2 * HIKARI.shinOsakaHiroshima)}) — come to ${yen(PLAN_RAIL)} on JR's Hikari fares, and ${yen(PLAN_RAIL_TOKYO_OUT)} even if you ride back to Tokyo. The pass breaks even at about six one-way Tokyo–Kyoto rides.`,
+  },
+  {
+    q: "How much does a 2 week trip to Japan cost?",
+    a: `The Japan Tourism Agency puts average spending at ¥234,000 per visitor (July–September 2026, first preliminary figure, flights to Japan excluded). On this plan the fixed parts are ${yen(HIKARI.tokyoKyoto)} for the Tokyo–Kyoto shinkansen (${yen(PLAN_RAIL)} with the Hiroshima day) and ${ADMISSIONS_TOTAL_LABEL} for the admissions and city passes, per adult; the 13 hotel nights are the part that moves most with your dates.`,
+  },
+  {
+    q: "Should I fly into Tokyo and out of Osaka?",
+    a: "Yes, if your airline allows an open-jaw ticket — this itinerary ends in Osaka for exactly that reason. Namba to Kansai Airport is about 40 minutes on the Nankai Rapi:t and Tennoji about 30 on the JR Haruka, while flying home from Tokyo adds a " + yen(HIKARI.tokyoShinOsaka) + " shinkansen ride and most of Day 13. If your return is fixed to Tokyo, take the shinkansen on the evening of Day 13 and sleep near a Narita or Haneda line.",
+  },
+];
+
 const faqItems = [
-  {
-    q: "How do you spend 2 weeks in Japan?",
-    a: "Four bases, not seven: Tokyo for five nights, one night at Lake Kawaguchi or in Hakone, Kyoto for four nights with a Nara day trip inside them, and Osaka for three before flying home from Kansai. That gives you one long travel day — the Tokaido Shinkansen on Day 7 — and keeps every other day inside one city. The common mistake in a 14-day Japan itinerary is adding a fifth and sixth base, which converts sightseeing days into packing days.",
-  },
-  {
-    q: "Is 14 days enough for Japan?",
-    a: "For the Tokyo–Kyoto–Osaka corridor plus a Fuji night and two day trips, 14 days is comfortable rather than tight — this itinerary has a flexible day on Day 5 and an optional one on Day 13, which is the margin that makes it survive a rainy morning or a missed train. What 14 days does not stretch to is adding Hokkaido, Kanazawa or Kyushu on top. Those are a second trip, or a swap: drop Osaka's optional day trip and the Fuji night and you can reach one of them, at the cost of the things this plan is built around.",
-  },
-  {
-    q: "Is the JR Pass worth it for 2 weeks in Japan?",
-    a: `Not on this route. The 14-day Ordinary JAPAN RAIL PASS is ¥80,000 bought online and ¥84,000 as an overseas Exchange Order on the official prices checked ${OWN}. This itinerary's long-distance travel is one Tokyo–Kyoto run, a short Kyoto–Osaka hop and — optionally — a return to Hiroshima, which does not come close to that figure. A pass earns its price when you are moving between regions every second or third day, not when you are living in four cities. Our JR Pass guide works the break-even through properly, and it is also worth knowing that the pass does not cover the Nozomi without a supplementary ticket issued only to pass holders, so a pass would push you onto the slower Hikari for the Day 7 leg.`,
-  },
+  ...faqTop,
   {
     q: "How do you get from Tokyo to Kyoto?",
-    a: `The Tokaido Shinkansen from Tokyo or Shinagawa Station. On JR Central's own figures, checked ${OWN}, the Nozomi reaches Kyoto in about 2 hours 15 minutes, the Hikari in about 2 hours 40 and the all-stops Kodama in about 3 hours 40. No single fare is printed here: JR Central publishes its fare tables as PDFs, and the figure moves with train type and season — so check your own date on Smart EX, on Klook's Tokyo-to-Kyoto rail page, or read the fare comparison in our Tokyo to Kyoto guide. Book a reserved seat rather than turning up, especially if you are carrying a large case: oversized baggage rows are limited and are reserved separately.`,
+    a: `The Tokaido Shinkansen from Tokyo or Shinagawa Station. On JR Central's own figures, checked ${OWN}, the Nozomi reaches Kyoto in about 2 hours 15 minutes, the Hikari in about 2 hours 40 and the all-stops Kodama in about 3 hours 40. The Hikari fare is ${yen(HIKARI.tokyoKyoto)} with a reserved seat in the regular season on the JR Group's own table (read ${R05}). Book a reserved seat rather than turning up, especially if you are carrying a large case: oversized baggage rows are limited and are reserved separately.`,
   },
   {
     q: "How many days should you spend in Tokyo, Kyoto and Osaka?",
@@ -1109,14 +1273,6 @@ const faqItems = [
   {
     q: "Where should you stay for 2 weeks in Japan?",
     a: "Beside a station that is also an interchange, in each of the four bases — which with four bases matters more than the room does. In Tokyo that means Shinjuku, Tokyo Station / Marunouchi or the Ueno and Asakusa side; in Kyoto, Kyoto Station, Karasuma Oike or Gion; in Osaka, Umeda or Namba. The three sections above list those areas with why each one works for the days on this plan, and link Klook's hotel search for each.",
-  },
-  {
-    q: "How much does 2 weeks in Japan cost in tickets and transport?",
-    a: `On the official prices in the table above, the city passes and admissions this plan actually uses — the 72-hour Tokyo Subway Ticket, Shibuya Sky (online, in the 15:00-onward band the sunset slot falls in), Skytree, teamLab Planets, Tokyo Tower, Kinkaku-ji, Todai-ji and a one-day Osaka Amazing Pass — come to ${ADMISSIONS_TOTAL_LABEL} for one adult. That excludes long-distance rail, the Day 6 pass, the optional Day 13 trip, and anything to do with hotels or food, none of which has a figure here. Every row in that table is the operator's own published price with the date it was read.`,
-  },
-  {
-    q: "Should you fly home from Kansai or go back to Tokyo?",
-    a: "From Kansai, if your ticket allows it — the itinerary ends in Osaka for exactly that reason. Namba to Kansai Airport is about 40 minutes with no transfer on the Nankai Rapi:t, and Tennoji is 30 minutes on the JR Haruka. Flying back out of Tokyo costs you most of Day 13 on a train plus a Tokyo night, which is a real price to pay for a cheaper fare. If your return is fixed to Tokyo, move the shinkansen to the evening of Day 13 and sleep near a Narita or Haneda line.",
   },
   {
     q: "Is 2 weeks in Japan too much with children?",
@@ -1134,9 +1290,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/japan-14-day-itinerary") } });
 
-const TITLE = "Japan 14-Day Itinerary (2026): 2 Weeks, Day by Day";
+const TITLE = "Japan 14 Day Itinerary 2026: 2 Weeks in Japan, Route & Costs";
 const DESC =
-  "A Japan 14-day itinerary for 2 weeks in Japan: Tokyo 5 nights, Kawaguchiko or Hakone 1, Kyoto 4 with Nara, Osaka 3 — a table per day, with dated prices.";
+  "Japan itinerary 14 days for first-timers: Tokyo 5 nights, Fuji 1, Kyoto 4, Osaka 3. The 2 weeks in Japan plan with JR Pass break-even, costs and bookings.";
 const ROUTE = "/guides/attractions/japan-14-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -1163,7 +1319,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqTop.map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -1192,7 +1348,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
-                { "@type": "ListItem", position: 4, name: "Japan 14-Day Itinerary", item: URL },
+                { "@type": "ListItem", position: 4, name: "Japan 14 Day Itinerary", item: URL },
               ],
             }),
           }}
@@ -1214,7 +1370,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>Japan 14-Day Itinerary</span>
+          <span className={styles.breadCurrent}>Japan 14 Day Itinerary</span>
         </div>
       </div>
 
@@ -1223,14 +1379,14 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan 14-Day Itinerary (2026):<br />2 Weeks in Japan, Day by Day
+            Japan 14 Day Itinerary (2026):<br />2 Weeks in Japan for First-Timers
           </h1>
           <p className={styles.heroSubtitle}>
             Four bases, one long train, and three bookings that are genuinely compulsory. A table for
             each of the fourteen days, and the listings for that day underneath it.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Day 1 to Day 14 tables", "Official prices, dated"].map((t) => (
+            {["Nights per city", "JR Pass break-even", "Official prices, dated"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -1247,6 +1403,55 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             We may earn a small commission if you book through them, at no extra cost to you.{" "}
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
+        </div>
+
+        {/* Answer first: nights per city, the JR Pass verdict, and the cost in numbers. */}
+        <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
+          The best Japan 14 day itinerary for a first trip uses four bases: Tokyo for 5 nights, Lake
+          Kawaguchi or Hakone for 1, Kyoto for 4 (with Nara as a day trip) and Osaka for 3, flying in
+          to Tokyo and home from Kansai. The 14-day JR Pass, {yen(JRP14_AGENCY)} from an overseas agency
+          since the October 2026 revision ({yen(JRP14_ONLINE)} on the official site), does not pay off on
+          this route: its long JR rides cost {yen(PLAN_RAIL)} on JR&apos;s own Hikari fares, Hiroshima day
+          included. The admissions and city passes come to {ADMISSIONS_TOTAL_LABEL} per adult, against an
+          average spend of ¥234,000 per visitor in the Japan Tourism Agency&apos;s latest survey (prices
+          read {R05}).
+        </p>
+
+        {/* Book once, for the whole fortnight */}
+        <div className={styles.verdictBox} style={{ marginBottom: "1.5rem" }}>
+          <div className={styles.verdictHeader}>
+            <span className={styles.verdictLabel}>Book these first, for all 14 days</span>
+          </div>
+          <div className={styles.verdictBody}>
+            <p className={styles.verdictText}>
+              <strong>1. The shinkansen, not the pass.</strong> One reserved Tokyo–Kyoto seat for Day 7
+              ({yen(HIKARI.tokyoKyoto)} on the Hikari), and seats to Hiroshima only if you take Day 13. The
+              JR Pass is worth pricing only if you add a fifth region.{" "}
+              <strong>2. Both airport legs.</strong> Narita or Haneda into Tokyo on Day 1, and Namba or
+              Tennoji to Kansai Airport on Day 14. <strong>3. Data for 14 days.</strong> Every timed ticket on
+              this plan arrives as a QR code, so set up an eSIM before you fly.
+            </p>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+                Tokyo → Kyoto shinkansen →
+              </KlookLink>
+              <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+                JAPAN RAIL PASS (14 day) →
+              </KlookLink>
+              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+                Narita Express →
+              </KlookLink>
+              <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+                Haneda limousine bus →
+              </KlookLink>
+              <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+                Nankai Rapi:t to Kansai Airport →
+              </KlookLink>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+                Klook eSIM for 14 days →
+              </KlookLink>
+            </div>
+          </div>
         </div>
 
         {/* Quick Answer Box */}
@@ -1270,7 +1475,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>JR Pass?</p>
-                <p className={styles.verdictStatValue}>No — four cities, not four regions</p>
+                <p className={styles.verdictStatValue}>No — {yen(PLAN_RAIL)} in fares vs {yen(JRP14_AGENCY)}</p>
               </div>
             </div>
             <p className={styles.verdictText}>
@@ -1283,8 +1488,8 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
               travel day is Day 7 — about 2 hours 15 minutes Tokyo to Kyoto on the Nozomi, on JR
               Central&apos;s own figures checked {OWN}. Three bookings genuinely cannot be left: teamLab
               Planets, the USJ Studio Pass, and the Day 6 room. And the 14-day Ordinary JAPAN RAIL PASS,
-              at ¥80,000 online on the official price checked {OWN}, does not pay for itself on a route
-              like this one.
+              at {yen(JRP14_AGENCY)} from an agency or {yen(JRP14_ONLINE)} online on the official prices
+              read {R05}, does not pay for itself on a route like this one.
             </p>
             <KlookLink
               href={jrPassWholeJapan.url}
@@ -1333,6 +1538,70 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
+          <h2 className={styles.sectionTitle} style={{ marginTop: "2.5rem" }}>
+            What Does a 14 Day Japan Itinerary Look Like, Day by Day?
+          </h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Thirteen nights in four beds, one long train on Day 7, and three bookings that cannot wait.
+            The whole fortnight is below on one table, with the Klook listings each day actually uses; the
+            full table for every day follows further down.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Day", "Where you sleep", "Plan", "Moving", "Book ahead", "Klook for this day"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Days 1–14</td>
+                    <td style={{ fontSize: "0.88rem" }}><strong>Tokyo 5 · Fuji or Hakone 1 · Kyoto 4 · Osaka 3</strong></td>
+                    <td style={{ fontSize: "0.88rem" }}>Fly into Tokyo, out of Kansai</td>
+                    <td style={{ fontSize: "0.88rem" }}>One long train (Day 7)</td>
+                    <td style={{ fontSize: "0.88rem" }}>teamLab Planets, USJ, the Day 6 room</td>
+                    <td style={{ fontSize: "0.85rem" }}>Single tickets, not the JR Pass</td>
+                  </tr>
+                  {overviewRows.map((row) => (
+                    <tr key={row.day}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.day}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.base}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.plan}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.travel}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.book}</td>
+                      <td style={{ fontSize: "0.82rem" }}>
+                        {picksFor(row.n).map((pick, i) => (
+                          <span key={pick.url}>
+                            {i > 0 && <br />}
+                            <KlookLink href={pick.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                              {pick.label}
+                            </KlookLink>
+                          </span>
+                        ))}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {R05_ISO}. Train times from JR Central (travel.jr-central.co.jp, {OWN}); fares and
+            pass prices from https://www.jr-group.jp/hikari-ryokin/ and https://japanrailpass.net/en/purchase/price/.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Which length is yours?</strong> This page is the two-week plan. With one week, our{" "}
+            <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">Tokyo Kyoto Osaka 7-day itinerary</Link>{" "}
+            keeps three bases and drops Fuji, Nara and Hiroshima; with three weeks, our{" "}
+            <Link href="/guides/attractions/japan-3-week-itinerary">Japan 3 week itinerary</Link> adds
+            Kanazawa, Takayama and two Hiroshima nights to the same line, on seven bases. Every
+            length is listed on the{" "}
+            <Link href="/guides/attractions">Japan things to do hub</Link>, and the rail side of each is in our{" "}
+            <Link href="/guides/transport">Japan transport guides</Link>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             What this guide does differently is treat the fortnight as a booking problem rather than a
             sightseeing list. Most of Japan is walk-in — all of Kyoto and Nara on Days 8 to 10 is —
@@ -1420,17 +1689,45 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
         {/* The long hop — rail pass decision */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Long-distance travel</span>
-          <h2 className={styles.sectionTitle}>Do You Need a JR Pass for a 14-Day Japan Itinerary?</h2>
+          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It for 2 Weeks in Japan?</h2>
           <p className={styles.bodyText}>
-            Almost certainly not, on this route — and that is worth settling before you book anything
-            else, because it decides whether you buy single tickets or a pass. The official 14-day
-            Ordinary JAPAN RAIL PASS is <strong>¥80,000</strong> bought online and{" "}
-            <strong>¥84,000</strong> as an overseas Exchange Order for an adult; the Green car
-            versions are ¥110,000 and ¥116,000. Child prices are half the adult ones at every length.
-            Those figures were read off japanrailpass.net on {OWN}.
+            Not on this route: the long JR rides on this plan cost <strong>{yen(PLAN_RAIL)}</strong> as
+            single tickets, against <strong>{yen(JRP14_AGENCY)}</strong> for the 14-day pass from an
+            overseas agency (October 2026 revision) or <strong>{yen(JRP14_ONLINE)}</strong> on the JR
+            Group&apos;s own site. The Green car versions are ¥110,000 online and ¥116,000 from an agency,
+            and child prices are half the adult ones. Those figures were read off japanrailpass.net on {R05}.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Ride or pass", "Official price (adult)", "Note"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {breakEvenRows.map((row, i) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.item}</strong> : row.item}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem", whiteSpace: "normal" }}>{row.fare}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {R05_ISO}. Fares: JR Group Hikari/Kodama table, one way, regular season, reserved
+            seat, &ldquo;as of October 2026&rdquo; — https://www.jr-group.jp/hikari-ryokin/. Pass prices:
+            https://japanrailpass.net/en/purchase/price/. Airport trains and the short Kyoto–Osaka hop are
+            not counted; flying home from Tokyo, they would have to add {yen(JRP14_ONLINE - PLAN_RAIL_TOKYO_OUT)}{" "}
+            before even the online price paid off.
           </p>
           <p className={styles.bodyText}>
-            Set that against what this itinerary actually spends on long-distance rail: one Tokyo to
+            Set the pass against what this itinerary actually spends on long-distance rail: one Tokyo to
             Kyoto run on Day 7, a short Kyoto to Osaka hop on Day 11, and — if you take it — a
             Hiroshima return on Day 13. A whole-country pass is built for travellers who move between
             regions every second or third day. Four cities in fourteen days is the opposite shape of
@@ -1442,10 +1739,11 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             <strong>On the train itself.</strong> On JR Central&apos;s own figures, checked {OWN}, Tokyo
             to Kyoto is about <strong>2 hours 15 minutes</strong> on the Nozomi,{" "}
             <strong>2 hours 40 minutes</strong> on the Hikari and about{" "}
-            <strong>3 hours 40 minutes</strong> on the all-stops Kodama. No single fare is printed here,
-            on purpose: JR Central publishes its fare tables only as PDF price lists, and the figure moves with the train type and the season in any case.
-            Check your own date on the official Smart EX site, or on Klook&apos;s Tokyo-to-Kyoto rail
-            page, and read the fare-by-fare comparison in our{" "}
+            <strong>3 hours 40 minutes</strong> on the all-stops Kodama. The Hikari fare with a reserved
+            seat is {yen(HIKARI.tokyoKyoto)} in the regular season, ¥200 more in the busy season and ¥400
+            more in the busiest, on the JR Group&apos;s own table read {R05}. Check your own date on the
+            official Smart EX site, or on Klook&apos;s Tokyo-to-Kyoto rail page, and read the fare-by-fare
+            comparison in our{" "}
             <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link>. The full
             break-even arithmetic for passes of every length is in our{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link>, and our{" "}
@@ -1467,6 +1765,9 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
             </KlookLink>
             <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS on Klook →
+            </KlookLink>
+            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              JR Kansai-Hiroshima Area Pass →
             </KlookLink>
           </div>
         </section>
@@ -1493,10 +1794,64 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
         {/* Budget */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Prices &amp; passes</span>
-          <h2 className={styles.sectionTitle}>What Does 2 Weeks in Japan Cost in Tickets and Transport?</h2>
+          <h2 className={styles.sectionTitle}>How Much Does a 2 Week Trip to Japan Cost?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Less than most people expect for the sightseeing, and more than they expect for the one
-            long train. Every figure below is an operator&apos;s own published price with the site it
+            The Japan Tourism Agency&apos;s figure is ¥234,000 per visitor, flights to Japan excluded; on
+            this plan the fixed parts are {yen(HIKARI.tokyoKyoto)} of shinkansen ({yen(PLAN_RAIL)} with
+            Hiroshima) and {ADMISSIONS_TOTAL_LABEL} of admissions per adult, and the 13 hotel nights are
+            what moves with your dates.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Cost", "Amount", "What it covers"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {costRows.map((row, i) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.item}</strong> : row.item}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem", whiteSpace: "normal" }}>{row.cost}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {R05_ISO}. Spend per visitor: Japan Tourism Agency, inbound consumption survey
+            July–September 2026 (first preliminary, published 21 October 2026) —
+            https://www.mlit.go.jp/kankocho/news02_00104.html. Fares: https://www.jr-group.jp/hikari-ryokin/.
+            Admissions: the dated table below.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Where the price is decided: the 13 nights.</strong> Rooms are the one cost that
+            cannot be printed honestly, because they move by date — and the Day 6 night at the lake or in
+            Hakone is the one that fills first, since those are small towns. Price all four bases on your
+            own dates before you fix the plan.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem", marginBottom: "2rem" }}>
+            <KlookLink href={tokyoStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Tokyo hotels (Shinjuku) →
+            </KlookLink>
+            <KlookLink href={fujikawaguchikoHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kawaguchiko hotels →
+            </KlookLink>
+            <KlookLink href={kyotoStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kyoto hotels (Kyoto Station) →
+            </KlookLink>
+            <KlookLink href={osakaStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Osaka hotels (Namba) →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Ticket by ticket, it is less than most people expect for the sightseeing, and more than they
+            expect for the one long train. Every figure below is an operator&apos;s own published price with the site it
             was read off and the date it was read. There are no hotel or food figures here at all,
             deliberately: those move by season, city and party size, and an invented average is worse
             than none.
@@ -1545,6 +1900,64 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
               Japan travel budget guide
             </Link>.
           </p>
+        </section>
+
+        {/* Seasons */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Seasons</span>
+          <h2 className={styles.sectionTitle}>What Changes in Cherry Blossom Season or Winter?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The route stays the same in every season; what changes is which day you swap and what you book
+            first. In spring, line the Kyoto days up with full bloom, which the Japan Meteorological
+            Agency&apos;s normals put at 31 March in Tokyo and 4 April in Kyoto and Osaka.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Season", "What to swap", "Why", "Book first"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {seasonRows.map((row, i) => (
+                    <tr key={row.season}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.season}</strong> : row.season}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.swap}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.why}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.book}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {R05_ISO}. Cherry blossom normals (1991–2020) and 2026 dates: Japan Meteorological
+            Agency — https://www.data.jma.go.jp/sakura/data/sakura_mankai.html.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            For a winter fortnight, our{" "}
+            <Link href="/guides/attractions/tokyo-snow-day-trip">Tokyo snow day trip guide</Link> covers the
+            Day 5 swap, our{" "}
+            <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo illumination guide</Link> the
+            evenings, and our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> the
+            12-day winter route through Hokuriku and Shirakawa-go.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={kyotoStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kyoto hotels for cherry blossom week →
+            </KlookLink>
+            <KlookLink href={yetiSnowDayTripFromTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Snow day trip from Tokyo →
+            </KlookLink>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Reserve the Day 7 shinkansen →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Booking window */}
@@ -1605,7 +2018,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
         {/* Is 14 days enough */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Is fourteen enough?</span>
-          <h2 className={styles.sectionTitle}>Is 14 Days Enough for Japan?</h2>
+          <h2 className={styles.sectionTitle}>Is 2 Weeks Enough for Japan?</h2>
           <p className={styles.bodyText}>
             For this corridor, yes — comfortably. Two weeks is the first trip length where you can do
             Tokyo properly, see Mt. Fuji with a morning rather than an afternoon, give Kyoto the early

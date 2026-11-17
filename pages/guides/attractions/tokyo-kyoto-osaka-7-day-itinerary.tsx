@@ -1152,7 +1152,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3 day itinerary</Link> and{" "}
             <Link href="/guides/attractions/tokyo-5-day-itinerary">Tokyo 5-day itinerary</Link> stay in
             and around one city, and our{" "}
-            <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14-day itinerary</Link> adds
+            <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14 day itinerary (2 weeks in Japan)</Link> adds
             a night at Mt. Fuji, Nara and a Hiroshima day to this same corridor. With ten days rather
             than seven, our{" "}
             <Link href="/guides/attractions/japan-10-day-itinerary">Japan itinerary for 10 days</Link>{" "}

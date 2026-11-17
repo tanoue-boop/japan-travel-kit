@@ -475,7 +475,7 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             </p>
             <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
               Only two weeks? See the{" "}
-              <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14-day itinerary</Link>. Ten days?
+              <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14 day itinerary for 2 weeks in Japan</Link>. Ten days?
               See the <Link href="/guides/attractions/japan-10-day-itinerary">Japan 10-day itinerary</Link>.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

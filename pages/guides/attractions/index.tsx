@@ -435,6 +435,12 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             Shirakawa-go tours</Link> and the <Link href="/guides/attractions/tokyo-illumination-tours" style={L}>Tokyo
             illuminations</Link> fit a shorter trip. A Hokkaido trip that leaves Sapporo is also where the{" "}
             <PartnerTextLink href={jrHokkaidoRailPass.url}>JR Hokkaido Rail Pass</PartnerTextLink> is worth pricing.
+            Planning by trip length instead? The{" "}
+            <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary" style={L}>Tokyo Kyoto Osaka 7-day itinerary</Link>,
+            the <Link href="/guides/attractions/japan-10-day-itinerary" style={L}>Japan 10 day itinerary</Link>, the{" "}
+            <Link href="/guides/attractions/japan-14-day-itinerary" style={L}>Japan 14 day itinerary for 2 weeks in Japan</Link>{" "}
+            and the <Link href="/guides/attractions/japan-3-week-itinerary" style={L}>Japan 3 week itinerary</Link> each
+            set out how many nights to spend in each city.
           </PartnerPick>
 
           <section className={styles.faqSection} style={{ marginTop: "3rem" }}>
