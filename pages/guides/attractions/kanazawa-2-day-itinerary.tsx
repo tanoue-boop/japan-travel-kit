@@ -464,10 +464,10 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
               train time {RAIL_TIME}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Shirakawa-go &amp; Takayama Tour →
               </KlookLink>
-              <KlookLink href={kanazawaHotels.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kanazawaHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kanazawa Hotels →
               </KlookLink>
             </div>
@@ -560,13 +560,13 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
             three places with someone explaining them.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={vasaraKimonoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={vasaraKimonoKanazawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kimono rental in Kanazawa →
             </KlookLink>
-            <KlookLink href={kanazawaGeishaKenrokuenCastleDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kanazawaGeishaKenrokuenCastleDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Guided Kanazawa day →
             </KlookLink>
-            <KlookLink href={kanazawaKenrokuenHigashiChayaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kanazawaKenrokuenHigashiChayaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Bus day with temarizushi →
             </KlookLink>
           </div>
@@ -616,13 +616,13 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
             cancellation terms for snow on the listing; on a two-day trip there is no spare day to move it to.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shirakawa-go &amp; Takayama tour →
             </KlookLink>
-            <KlookLink href={shirakawagoGokayamaKanazawaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoGokayamaKanazawaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               + Gokayama version →
             </KlookLink>
-            <KlookLink href={shirakawagoKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shirakawa-go &amp; Kanazawa day →
             </KlookLink>
           </div>
@@ -676,10 +676,10 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
             <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa shinkansen guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kanazawa shinkansen →
             </KlookLink>
-            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hokuriku Arch Pass →
             </KlookLink>
           </div>
@@ -754,7 +754,7 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
             <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Hokuriku Arch Pass →
             </KlookLink>
           </div>
@@ -836,7 +836,7 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             The bus seat, the light-up rules and any snow notice all reach you on your phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the alternatives.
@@ -910,10 +910,10 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
               garden and the teahouse streets.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Shirakawa-go Tour →
               </KlookLink>
-              <KlookLink href={kanazawaHotels.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kanazawaHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Hotels in Kanazawa →
               </KlookLink>
             </div>

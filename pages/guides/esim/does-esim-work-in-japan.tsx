@@ -989,7 +989,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             href={link("airalo")}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.5rem", display: "inline-flex" }}
           >
             {HOLAFLY_ALT_LABEL}
@@ -1006,7 +1006,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             href={klookEsim.url}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.5rem", display: "inline-flex" }}
           >
             {klookEsim.ctaLabel}
@@ -1054,7 +1054,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
                 href={klookEsim.url}
                 className={styles.pickCta}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 style={{ marginTop: "0.75rem", display: "inline-flex" }}
               >
                 {klookEsim.ctaLabel}

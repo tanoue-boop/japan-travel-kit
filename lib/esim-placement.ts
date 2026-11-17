@@ -22,7 +22,14 @@ export function pageTag(route: string): string {
   return `${locale}${parts[parts.length - 1]}`;
 }
 
-/** The Airalo affiliate link with the placement in Impact's sub IDs. */
+/**
+ * The Airalo affiliate link with the placement in Impact's sub IDs.
+ *
+ * Every page gets its own URL (subId2), so a crawler sees hundreds of distinct links and
+ * Impact counts each fetch as a click: after the site-wide rollout on 11 Nov 2026 Impact
+ * logged 532 clicks in four days against 17–25 affiliate clicks a day in GA4 for all partners together. Anchors
+ * carrying this URL must keep rel="sponsored nofollow noopener" (task jtk-20261117-P01).
+ */
 export function airaloTrackedUrl(placement: string, tag: string): string {
   const url = getProvider("airalo").affiliateUrl;
   return `${url}${url.includes("?") ? "&" : "?"}subId1=${placement}&subId2=${tag}`;

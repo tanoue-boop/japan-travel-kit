@@ -609,10 +609,10 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
               booking: the torokko seat. Figures read off the official sites on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Both Days as One Guided Day →
               </KlookLink>
-              <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Sagano Train &amp; River Boat →
               </KlookLink>
             </div>
@@ -703,13 +703,13 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             shops by area and return deadline.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fushimi Inari walking tour →
             </KlookLink>
-            <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Gion night walk →
             </KlookLink>
-            <KlookLink href={kyotoKimonoAiwafukuKiyomizu.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoKimonoAiwafukuKiyomizu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kiyomizu kimono rental →
             </KlookLink>
           </div>
@@ -766,13 +766,13 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Kyoto tickets guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sagano train &amp; river boat day →
             </KlookLink>
-            <KlookLink href={saganoRomanticTrainTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={saganoRomanticTrainTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Torokko ticket only →
             </KlookLink>
-            <KlookLink href={kyotoKimonoOokiniArashiyama.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoKimonoOokiniArashiyama.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Arashiyama kimono rental →
             </KlookLink>
           </div>
@@ -859,13 +859,13 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             guide shows when each date goes on sale and the November and December running days.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sagano day on Klook →
             </KlookLink>
-            <KlookLink href={kyotoKimonoYumeyakata.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoKimonoYumeyakata.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kimono dressing slot →
             </KlookLink>
-            <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Guided four-sight day →
             </KlookLink>
           </div>
@@ -1007,10 +1007,10 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             point-to-point tickets.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kyoto shinkansen →
             </KlookLink>
-            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR-West Kansai Rail Pass →
             </KlookLink>
           </div>
@@ -1018,7 +1018,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             One more arrival-day booking that is not transport: data. Kyoto&apos;s buses are flat-fare and
             pay-on-exit, the city itself tells you to avoid two specific routes, and every &ldquo;getting
             there&rdquo; column above assumes you can open a map and a timetable.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -1320,10 +1320,10 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
               bamboo grove are sold as one day.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Guided Kyoto Day →
               </KlookLink>
-              <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Sagano Train Day →
               </KlookLink>
             </div>

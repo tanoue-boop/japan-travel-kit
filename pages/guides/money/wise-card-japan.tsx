@@ -493,11 +493,11 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             It also favours needing less cash in the first place — and two of the things people queue at an
             arrivals-hall ATM for do not need yen at all, because they can be paid for on the card before you
             leave home. A{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan eSIM
             </KlookLink>{" "}
             means your data is live the moment you land rather than something to buy at a counter, and a{" "}
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Tokyo Subway Ticket
             </KlookLink>{" "}
             covers Tokyo Metro and Toei travel without an IC card balance to top up in cash. Both go to Klook,
@@ -674,7 +674,7 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText}>
             The one thing worth settling before you need that reserve is the ride out of the airport, because it is
             among the few Japanese transport fares you can pay by card well in advance:{" "}
-            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               the Narita Express round trip
             </KlookLink>{" "}
             is bookable on Klook before you fly, which leaves the arrivals-hall ATM as something you choose rather

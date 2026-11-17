@@ -390,10 +390,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 <strong>札幌雪祭 2027</strong>于 2 月 4–11 日举行（日期读自官网 snowfes.com，2026 年 11 月 11 日核对），三个会场都免费，所以<strong>札幌雪祭行程</strong>不必跟团。现在就预订酒店，一日游请在 12 月 31 日前订好。<strong>第 77 届札幌雪祭于 2027 年 2 月 4 日到 11 日举行</strong>，共八天，分三个会场：<strong>大通公园西 1 到西 11 丁目</strong>、<strong>薄野站前通南 4 到南 6 条</strong>，以及 <strong>Tsudome</strong> 市立体育设施，执行委员会的常见问题写明全部<strong>免费</strong>。大通随时可看，雪雕亮灯到 <strong>22:00</strong>；薄野到 <strong>23:00</strong>（最后一天 22:00）；Tsudome <strong>10:00–16:00</strong>开放，内部部分活动收费。没有门票、没有时段，也不需要排队入场。值得预订的是雪祭前后这一周：唯一没有替代方案的酒店，以及只有这个季节才有的郊外行程，比如小樽、旭山动物园、支笏湖冰涛节和定山溪温泉的下午。2 月札幌平均最高气温 <strong>{FEB_MAX}</strong>，所以每个雪祭日的中段都要待在室内。雪祭信息核查日期：{OWN}；气温平年值：{JMA_CHECKED}。
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 查看这些日期的札幌酒店 →
 </KlookLink>
-              <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 小樽一日游 →
 </KlookLink>
             </div>
@@ -462,7 +462,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 这让它在本站介绍的活动中很特别：不需要排队入场，也没有分时段入场，所以也不存在真正有用的「免排队」商品。Klook 上没有销售札幌雪祭本身的商品，也不应该有。雪祭旅行真正需要付费预订的，是<strong>每天雪祭以外的时间</strong>。会场全在户外，日本气象厅平年值的平均最高气温是 <strong>{FEB_MAX}</strong>，雪雕又以天黑后最美，所以理想的雪祭日是上午去郊外或下午待室内，晚上再看大通和薄野的亮灯。下面的商品就是前半段。
 </p>
           <p className={styles.bodyText}>
-有一张票因为位置值得一提：<strong>札幌电视塔</strong>展望台位于西 1 丁目，正是大通会场十一个街区雪雕的起点，也是雪祭期间唯一能看到步行时看不到的景色的付费项目：整个会场亮灯后连成一条直线。<KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看电视塔与藻岩山套票 →</KlookLink>
+有一张票因为位置值得一提：<strong>札幌电视塔</strong>展望台位于西 1 丁目，正是大通会场十一个街区雪雕的起点，也是雪祭期间唯一能看到步行时看不到的景色的付费项目：整个会场亮灯后连成一条直线。<KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看电视塔与藻岩山套票 →</KlookLink>
 </p>
         </section>
 
@@ -503,16 +503,16 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 <strong>怎么选。</strong>三晚的话，排一个全天和一个半天行程，留两个晚上看大通和薄野亮灯：白天的雕刻细节和晚上的灯光是同样雪雕的不同体验，多数人错过一个都会后悔。四晚以上，登别和洞爷湖的长途行程就值得了。带小孩的话，上午 Tsudome、下午雪上乐园最合适。不管订什么，都请确认取消条款：这些是 2 月从北海道出发的行程，下雪时最先取消的就是巴士团。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 小樽与雪上乐园 →
 </KlookLink>
-            <KlookLink href={klookFor(asahiyamaBieiHighlightsTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(asahiyamaBieiHighlightsTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 旭山动物园 →
 </KlookLink>
-            <KlookLink href={klookFor(lakeShikotsuIceFestivalHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(lakeShikotsuIceFestivalHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 支笏湖冰涛节 →
 </KlookLink>
-            <KlookLink href={klookFor(jozankeiHotSpringBusTrip.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jozankeiHotSpringBusTrip.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 定山溪温泉 →
 </KlookLink>
           </div>
@@ -591,18 +591,18 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 有两件事要自己决定。4 号车的 <strong>U-Seat（uシート）指定席</strong>票价外加 ¥1,000，用无纸化车票（ticketless）预约加 ¥800，2 月普通车厢常被雪具塞满，所以值得。<strong>JR 北海道周游券</strong>只有离开市区才划算：机场往返约 ¥2,460，所以周游券要看的是小樽、旭川和登别，而不是机场。请用自己的路段计算。票价核查日期：{OWN}；<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>用同样方法计算全国版。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 新千岁接送 →
 </KlookLink>
-            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 JR 北海道周游券 →
 </KlookLink>
-            <KlookLink href={klookFor(lakeShikotsuIceFestivalShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(lakeShikotsuIceFestivalShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 支笏湖接驳座位 →
 </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-到达当天还有一项不是交通的预订：上网套餐。三个户外会场、2027 年时刻表未公布的接驳车，加上会当天改变计划的 2 月天气，相关公告都会通过手机发布，而不是在柜台公告。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> <Link href="/zh-cn/guides/esim/best-esim-japan">日本上网卡推荐攻略</Link>比较了其他选择。
+到达当天还有一项不是交通的预订：上网套餐。三个户外会场、2027 年时刻表未公布的接驳车，加上会当天改变计划的 2 月天气，相关公告都会通过手机发布，而不是在柜台公告。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> <Link href="/zh-cn/guides/esim/best-esim-japan">日本上网卡推荐攻略</Link>比较了其他选择。
 </p>
         </section>
 
@@ -665,10 +665,10 @@ JR 北海道周游券 →
 雪祭不花钱也不用预订。2027 年 2 月 4–11 日的酒店需要预订，只有这几周才有的郊外行程也需要。
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 查看札幌酒店 →
 </KlookLink>
-              <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 查看雪上乐园半日游 →
 </KlookLink>
             </div>

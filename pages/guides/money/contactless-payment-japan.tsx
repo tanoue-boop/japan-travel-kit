@@ -513,7 +513,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             href={SUICA_URL}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
           >
             Get Suica on Klook →
           </KlookLink>

@@ -305,10 +305,10 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
               Most shops lend a costume for photos. Checked on the operators&apos; pages and Klook listings, {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={akibaKartOsakaGoKart.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={akibaKartOsakaGoKart.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Akiba Kart Osaka →
               </KlookLink>
-              <KlookLink href={japanKartOsakaGoKart.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={japanKartOsakaGoKart.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check JAPANKART Osaka →
               </KlookLink>
             </div>
@@ -400,7 +400,7 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
                       <td style={{ fontSize: "0.85rem" }}>{row.costume}</td>
                       <td style={{ fontSize: "0.85rem" }}>
                         {row.url ? (
-                          <KlookLink href={row.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                          <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                             Check dates →
                           </KlookLink>
                         ) : (
@@ -427,10 +427,10 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
             price for each course.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={osakaGoKartingListUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaGoKartingListUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Osaka go karting on Klook →
             </KlookLink>
-            <KlookLink href={akibaKartShinsekaiGoKart.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={akibaKartShinsekaiGoKart.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Akiba Kart Shinsekai →
             </KlookLink>
           </div>
@@ -479,7 +479,7 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
             open.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={akibaKartOsakaGoKart.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={akibaKartOsakaGoKart.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check evening slots →
             </KlookLink>
           </div>
@@ -625,10 +625,10 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
               Sort the IDP at home, then book the slot. Bring the licence, the IDP and your passport on the day.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={akibaKartOsakaGoKart.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={akibaKartOsakaGoKart.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Akiba Kart Osaka →
               </KlookLink>
-              <KlookLink href={japanKartOsakaGoKart.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={japanKartOsakaGoKart.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 JAPANKART Osaka →
               </KlookLink>
             </div>

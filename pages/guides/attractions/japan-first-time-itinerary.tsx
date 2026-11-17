@@ -494,10 +494,10 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
               </div>
             </div>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={firstTimeItineraryStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={firstTimeItineraryStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo Hotels on Klook →
               </KlookLink>
-              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Tokyo → Kyoto Shinkansen →
               </KlookLink>
             </div>
@@ -632,7 +632,7 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             </p>
             <div className={styles.pickCtaRow}>
               {day.picks.map((pick) => (
-                <KlookLink key={pick.url} href={pick.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                <KlookLink key={pick.url} href={pick.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                   {pick.label}
                 </KlookLink>
               ))}
@@ -694,10 +694,10 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             every fare for the line.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kyoto single tickets →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS, if your route grows →
             </KlookLink>
           </div>
@@ -715,10 +715,10 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             <Link href="/guides/transport/ic-cards-japan">IC card guide</Link> sets out the cards.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Subway Ticket →
             </KlookLink>
-            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo sightseeing bus day →
             </KlookLink>
           </div>
@@ -808,10 +808,10 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
               Fix your three bases first, and every other date on this page follows from them.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={firstTimeItineraryStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={firstTimeItineraryStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Tokyo Hotels →
               </KlookLink>
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 See Klook eSIM Options →
               </KlookLink>
             </div>

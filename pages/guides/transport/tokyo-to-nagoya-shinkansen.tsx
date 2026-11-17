@@ -481,10 +481,10 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
               {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo → Nagoya Tickets →
               </KlookLink>
-              <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Ghibli Park Day Tour from Nagoya →
               </KlookLink>
             </div>
@@ -573,7 +573,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             where the pass restriction actually hurts.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Nagoya tickets →
             </KlookLink>
           </div>
@@ -666,10 +666,10 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             Chubu approach, which reaches Shirakawa-go from the north instead.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS (7/14/21 day) →
             </KlookLink>
-            <KlookLink href={shoryudoHighwayBusPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shoryudoHighwayBusPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shoryudo Highway Bus Pass →
             </KlookLink>
           </div>
@@ -708,10 +708,10 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             reservation itself is free, which on this route means the whole thing costs you nothing at all.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Pick a train and seat class →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS →
             </KlookLink>
           </div>
@@ -763,10 +763,10 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             covers departure by departure.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={ghibliParkTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ghibliParkTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ghibli Park tickets →
             </KlookLink>
-            <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               LEGOLAND® Japan tickets →
             </KlookLink>
           </div>
@@ -887,7 +887,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             want to check against your actual arrival; and the Linimo change at Fujigaoka is the kind of thing
             that is trivial with a map and tedious without one. An eSIM activated before you fly means all of
             that is a lookup rather than a guess.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -1037,10 +1037,10 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
               Park entry time, or a reservation on the bus north.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Tokyo → Nagoya Tickets →
               </KlookLink>
-              <KlookLink href={takayamaShirakawagoNagoyaDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={takayamaShirakawagoNagoyaDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Shirakawa-go Day Tours →
               </KlookLink>
             </div>

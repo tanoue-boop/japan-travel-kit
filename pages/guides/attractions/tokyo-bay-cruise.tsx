@@ -359,7 +359,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
             <KlookLink
               href={tokyoBayYakatabuneDinnerCruise.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -471,7 +471,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
             </Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoBayDinnerCruiseSymphony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoBayDinnerCruiseSymphony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Symphony dinner cruise on Klook →
             </KlookLink>
           </div>
@@ -721,7 +721,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
               Christmas sailings go long before that. Klook checks out in English, takes foreign cards,
               and shows each listing&apos;s own cancellation terms before you pay.
             </p>
-            <KlookLink href={tokyoBayYakatabuneDinnerCruise.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoBayYakatabuneDinnerCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View Tokyo Bay cruises on Klook →
             </KlookLink>
           </div>

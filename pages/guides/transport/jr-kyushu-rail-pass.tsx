@@ -348,7 +348,7 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
               <KlookLink
                 href={jrKyushuRailPass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -492,7 +492,7 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             ¥3,400 to Nagasaki) can beat the pass outright.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the JR Kyushu Rail Pass →
             </KlookLink>
           </div>
@@ -591,10 +591,10 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             the passport when you ride; only the buyer can use the pass.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               View the JR Kyushu Rail Pass →
             </KlookLink>
-            <KlookLink href={fukuokaStayAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={fukuokaStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hotels at Hakata Station →
             </KlookLink>
           </div>
@@ -621,10 +621,10 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             shows why two days in the city rarely need one.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Yufuin &amp; Beppu day tour →
             </KlookLink>
-            <KlookLink href={nagasakiSmallGroupDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={nagasakiSmallGroupDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Nagasaki day tour →
             </KlookLink>
           </div>
@@ -697,7 +697,7 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
               for 3 days.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the JR Kyushu Rail Pass →
               </KlookLink>
             </div>

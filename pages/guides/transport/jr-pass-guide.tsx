@@ -682,16 +682,16 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             skips the Tokaido Shinkansen.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Price the JR Pass on Klook →
             </KlookLink>
-            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Or the Kansai WIDE pass →
             </KlookLink>
-            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR Tokyo Wide Pass →
             </KlookLink>
-            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hokuriku Arch Pass →
             </KlookLink>
           </div>
@@ -804,7 +804,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             every fare and train. On a 14-day pass the bar is ¥84,000 and on a 21-day pass ¥105,000.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Route clears ¥53,000? JR Pass on Klook →
             </KlookLink>
           </div>
@@ -1006,13 +1006,13 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             operator&apos;s prices, which is why they are not reprinted here.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kansai Area Pass on Klook →
             </KlookLink>
-            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kansai Mini Pass on Klook →
             </KlookLink>
-            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kansai WIDE pass on Klook →
             </KlookLink>
           </div>
@@ -1077,10 +1077,10 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             seat is 2%, which is why the alternatives section below links our own guides instead.
           */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Buy the JAPAN RAIL PASS on Klook →
             </KlookLink>
-            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Or a Kansai Area Pass instead →
             </KlookLink>
           </div>
@@ -1503,7 +1503,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
               href={jrPassWholeJapan.url}
               className={styles.ctaBannerBtn}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               View JR Pass Options →
             </KlookLink>

@@ -74,20 +74,20 @@ type Cta = "simbye" | "klook" | "sakura";
 function CtaLink({ cta }: { cta: Cta }) {
   if (cta === "klook") {
     return (
-      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
         {klookEsim.ctaLabel}
       </KlookLink>
     );
   }
   if (cta === "sakura") {
     return (
-      <a href={sakura.affiliateUrl} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+      <a href={sakura.affiliateUrl} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
         Get Sakura Mobile →
       </a>
     );
   }
   return (
-    <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+    <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
       Get Simbye eSIM →
     </a>
   );
@@ -299,7 +299,7 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             <BookingEsimCard lead="Get your Japan eSIM before you fly" />
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", margin: "-1rem 0 2.5rem" }}>
               Need a Japanese phone number?{" "}
-              <a href={sakura.affiliateUrl} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              <a href={sakura.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 Sakura Mobile Voice + Data eSIM →
               </a>{" "}
               <span style={{ color: "var(--text-muted)" }}>(affiliate link)</span>
@@ -400,7 +400,7 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
               Mobile) and {SPECS_CHECKED_OTHERS} (Airalo, eSIM Go). Official pages: simbye.com/products/esim-japan ·
               breezesim.com/products/esim-japan · airalo.com/japan-esim · esim.holafly.com/esim-japan ·
               sakuramobile.jp/travel/esim. Klook eSIM is left out because its from-price names no plan; see{" "}
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 the Klook listing
               </KlookLink>{" "}
               for your dates. Every plan in price order is in the{" "}

@@ -237,7 +237,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
                 href={link("simbye")}
                 className={styles.verdictBtn}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
               >
                 Get Simbye {simbyePick?.name ?? "10 GB"} →
               </a>
@@ -551,7 +551,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             href={link("airalo")}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.75rem", display: "inline-flex" }}
           >
             {HOLAFLY_ALT_LABEL}

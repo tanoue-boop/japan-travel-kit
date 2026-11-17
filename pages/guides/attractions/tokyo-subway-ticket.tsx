@@ -348,7 +348,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             <a href={OFFICIAL} target="_blank" rel="noopener">official Tokyo Metro Tokyo Subway Ticket page</a> and the{" "}
             <a href={PRICE_NOTICE} target="_blank" rel="noopener">Tokyo Metro / Toei price-change notice of 30 January 2026</a>.
           </p>
-          <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta} style={{ marginTop: "0.75rem" }}>
+          <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta} style={{ marginTop: "0.75rem" }}>
             Check Tokyo Subway Ticket dates on Klook →
           </KlookLink>
         </section>
@@ -401,7 +401,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
               not at purchase. Either way the pass excludes
               JR, so the Yamanote Line is not included. Prices and fares checked on {CHECKED}.
             </p>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check the Tokyo Subway Ticket on Klook →
             </KlookLink>
           </div>
@@ -607,7 +607,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Fares read off Tokyo Metro&apos;s fare table on {CHECKED}; adult fares include the ¥10 barrier-free fee.
           </p>
-          <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta} style={{ marginTop: "1rem" }}>
+          <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta} style={{ marginTop: "1rem" }}>
             Check Tokyo Subway Ticket dates on Klook →
           </KlookLink>
         </section>
@@ -694,7 +694,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             Tochigi, Gunma and Yamanashi. The official pages checked do not say whether a passport is shown at
             purchase, so check the listing for your date and carry your passport when you collect a ticket.
           </p>
-          <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta} style={{ marginTop: "1rem" }}>
+          <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta} style={{ marginTop: "1rem" }}>
             Book the Tokyo Subway Ticket on Klook →
           </KlookLink>
         </section>
@@ -1014,7 +1014,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
               If your Tokyo days run on the Metro and Toei lines rather than the Yamanote loop, the 72-hour
               ticket is the tier that pays for itself. Klook checks out in English on a foreign card.
             </p>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View the Tokyo Subway Ticket on Klook →
             </KlookLink>
           </div>

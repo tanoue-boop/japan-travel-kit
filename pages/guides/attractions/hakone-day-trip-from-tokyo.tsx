@@ -338,10 +338,10 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
               </div>
             </div>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <KlookLink href={hakoneLoopBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
+              <KlookLink href={hakoneLoopBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
                 Check the Hakone day tour on Klook →
               </KlookLink>
-              <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
+              <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
                 Check the Hakone Freepass on Klook →
               </KlookLink>
             </div>
@@ -506,10 +506,10 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
             the Fuji-plus-Hakone tours side by side.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-            <KlookLink href={hakoneLoopBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
+            <KlookLink href={hakoneLoopBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
               Check the Hakone day tour from Tokyo →
             </KlookLink>
-            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
               Or the Hakone Freepass for your own loop →
             </KlookLink>
           </div>
@@ -784,10 +784,10 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
               ride the loop yourself. Check the listing for your date.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={hakoneLoopBusTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hakoneLoopBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Hakone day tour →
               </KlookLink>
-              <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Hakone Freepass on Klook →
               </KlookLink>
             </div>

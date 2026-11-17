@@ -341,7 +341,7 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
             Metro&apos;s official listing.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book teamLab Botanical Garden tickets on Klook →
             </KlookLink>
           </div>
@@ -380,7 +380,7 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
               <KlookLink
                 href={TEAMLAB_URL}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
               >
                 Check teamLab Botanical Garden tickets →
@@ -516,10 +516,10 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
             which is worth a look if this is the evening you land.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check tickets on Klook →
             </KlookLink>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Osaka Amazing Pass →
             </KlookLink>
           </div>
@@ -654,7 +654,7 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check teamLab Botanical Garden tickets →
             </KlookLink>
           </div>
@@ -834,7 +834,7 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
               and sells the admission alone or with a one-way JR HARUKA leg from Kansai Airport.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View teamLab Botanical Garden tickets →
               </KlookLink>
             </div>

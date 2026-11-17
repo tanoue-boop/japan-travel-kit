@@ -568,10 +568,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
               {SEASON}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Niseko Day from Sapporo →
               </KlookLink>
-              <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Airport Shuttle to Niseko →
               </KlookLink>
             </div>
@@ -634,13 +634,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             it a different product from the train.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Niseko resort shuttle →
             </KlookLink>
-            <KlookLink href={hokkaidoPrivateCarCharterNiseko.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hokkaidoPrivateCarCharterNiseko.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private car to Niseko →
             </KlookLink>
-            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               New Chitose transfers →
             </KlookLink>
           </div>
@@ -728,10 +728,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             table gives in full. All prices read {SEASON}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hirafu lift pass + bus day →
             </KlookLink>
-            <KlookLink href={nisekoSkiSnowboardRental.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoSkiSnowboardRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Reserve Niseko rental →
             </KlookLink>
           </div>
@@ -769,13 +769,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             November to 7 December. Open a listing for the reseller&apos;s price on your own dates.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nisekoHirafuEnglishSkiLesson.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoHirafuEnglishSkiLesson.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hirafu English lesson →
             </KlookLink>
-            <KlookLink href={rhythmNisekoPrivateSkiLesson.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={rhythmNisekoPrivateSkiLesson.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Rhythm private lesson →
             </KlookLink>
-            <KlookLink href={nisekoRusutsuKiroroPrivateLesson.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoRusutsuKiroroPrivateLesson.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Niseko / Rusutsu / Kiroro →
             </KlookLink>
           </div>
@@ -823,10 +823,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             publishes no figure for how early, so none is given here.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={japanWinterStayAreas[7].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={japanWinterStayAreas[7].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Niseko hotels →
             </KlookLink>
-            <KlookLink href={nisekoSkiHotSpringTourFromSapporo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoSkiHotSpringTourFromSapporo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               2 or 3 nights, booked as one →
             </KlookLink>
           </div>
@@ -926,7 +926,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             weather more than any other ski trip in Japan — lifts hold and reopen through a storm, areas
             close, road transfers run late — and every one of those notices reaches a phone rather than a
             noticeboard at the bottom of the hill.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it
@@ -1175,10 +1175,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
               February, the resort school only takes advance bookings for full days.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 See the Niseko Ski Day →
               </KlookLink>
-              <KlookLink href={nisekoHirafuEnglishSkiLesson.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={nisekoHirafuEnglishSkiLesson.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Book a Niseko Lesson →
               </KlookLink>
             </div>

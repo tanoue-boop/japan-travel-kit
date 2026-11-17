@@ -233,12 +233,12 @@ const fill = (s: string, v: Record<string, string>) => s.replace(/\{(\w+)\}/g, (
 function OutLink({ href, className, children, klook }: { href: string; className?: string; children: ReactNode; klook?: boolean }) {
   if (klook)
     return (
-      <KlookLink href={href} adPlacement={ESIM_PLACEMENT.bookingCard} className={className} target="_blank" rel="sponsored noopener">
+      <KlookLink href={href} adPlacement={ESIM_PLACEMENT.bookingCard} className={className} target="_blank" rel="sponsored nofollow noopener">
         {children}
       </KlookLink>
     );
   return (
-    <a href={href} className={className} target="_blank" rel="sponsored noopener">
+    <a href={href} className={className} target="_blank" rel="sponsored nofollow noopener">
       {children}
     </a>
   );
@@ -385,7 +385,7 @@ export function EsimCtaBottom({ insurance }: { insurance?: boolean }) {
                 )}
               </p>
             </div>
-            <a href={SAFETYWING_URL} className={styles.buySecondary} target="_blank" rel="sponsored noopener">
+            <a href={SAFETYWING_URL} className={styles.buySecondary} target="_blank" rel="sponsored nofollow noopener">
               {copy.insuranceCta}
             </a>
           </li>

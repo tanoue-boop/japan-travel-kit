@@ -81,21 +81,21 @@ type Cta = "simbye" | "klook" | "sakura" | "none";
 function CtaLink({ cta }: { cta: Cta }) {
   if (cta === "klook") {
     return (
-      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
         {klookEsim.ctaLabel}
       </KlookLink>
     );
   }
   if (cta === "sakura") {
     return (
-      <a href={sakura.affiliateUrl} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+      <a href={sakura.affiliateUrl} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
         Get Sakura Mobile →
       </a>
     );
   }
   if (cta === "simbye") {
     return (
-      <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+      <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
         Get Simbye eSIM →
       </a>
     );
@@ -510,7 +510,7 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
             Airalo also sells fixed-data plans from {priceFromLabel("airalo")}. The full head-to-head is in{" "}
             <Link href="/guides/esim/airalo-vs-holafly-japan" style={inline}>Airalo vs Holafly Japan</Link>.
           </p>
-          <a href={getProvider("airalo").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+          <a href={getProvider("airalo").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
             Get Airalo unlimited eSIM →
           </a>
         </section>
@@ -546,16 +546,16 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
               Buy and install the eSIM at home on Wi-Fi, then switch it on when you land. Unlimited for a week starts at{" "}
               {usd(S_CHEAPEST_UNL)} on Simbye{withCode(S_CHEAPEST_UNL)}.
             </p>
-            <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+            <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Get Simbye unlimited →
             </a>
             <p style={muted}>
               Or{" "}
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={inline}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={inline}>
                 {klookEsim.ctaLabel}
               </KlookLink>{" "}
               ·{" "}
-              <a href={sakura.affiliateUrl} target="_blank" rel="sponsored noopener" style={inline}>
+              <a href={sakura.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" style={inline}>
                 Get Sakura Mobile →
               </a>
               . Affiliate links.

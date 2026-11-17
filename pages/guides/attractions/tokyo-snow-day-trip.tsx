@@ -298,10 +298,10 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
               Checked on the resorts&apos; own sites, {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={fujitenSnowFunOishiParkTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={fujitenSnowFunOishiParkTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Fujiten snow day with a Fuji view →
               </KlookLink>
-              <KlookLink href={yetiSnowDayTripFromTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={yetiSnowDayTripFromTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Yeti day trip from Tokyo →
               </KlookLink>
             </div>
@@ -376,10 +376,10 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             snowboard ones, and the Fujiten tour is a snow-play day with a sightseeing stop.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yetiSnowDayTripFromTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yetiSnowDayTripFromTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yeti sledding package →
             </KlookLink>
-            <KlookLink href={fujitenSnowFunOishiParkTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fujitenSnowFunOishiParkTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fujiten snow fun tour →
             </KlookLink>
           </div>
@@ -434,7 +434,7 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
                       <td style={{ fontSize: "0.85rem" }}>{row.length}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.note}</td>
                       <td style={{ fontSize: "0.85rem" }}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           Check dates →
                         </KlookLink>
                       </td>
@@ -449,7 +449,7 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             package. Meeting points, what the package includes and the cancellation window are set per listing.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yetiDestinationUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yetiDestinationUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Yeti tours on Klook →
             </KlookLink>
           </div>
@@ -555,10 +555,10 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             covers on-piste cover, helmets and rescue.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yetiOnsenFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yetiOnsenFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yeti &amp; onsen tour →
             </KlookLink>
-            <KlookLink href={yetiBeginnerLessonSnowFunTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yetiBeginnerLessonSnowFunTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Beginner lesson &amp; snow fun →
             </KlookLink>
           </div>
@@ -584,7 +584,7 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             cover the sightseeing day around the lakes if snow is not the point.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               GALA Yuzawa lift ticket →
             </KlookLink>
           </div>
@@ -658,10 +658,10 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
               Snow play with a view at Fujiten, or the Yeti day with a sledding package.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={fujitenSnowFunOishiParkTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={fujitenSnowFunOishiParkTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Fujiten Snow Day →
               </KlookLink>
-              <KlookLink href={yetiSnowDayTripFromTokyo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={yetiSnowDayTripFromTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Yeti Day Trip →
               </KlookLink>
             </div>

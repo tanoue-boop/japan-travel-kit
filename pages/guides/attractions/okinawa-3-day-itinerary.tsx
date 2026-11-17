@@ -536,10 +536,10 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
               <strong>{SHURI_NEW}</strong> from 23 November 2026. Figures read on official sites {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Churaumi &amp; Kouri Island Tour →
               </KlookLink>
-              <KlookLink href={kokusaiStreetHotelsUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kokusaiStreetHotelsUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Hotels near Kokusai-dori →
               </KlookLink>
             </div>
@@ -623,10 +623,10 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             guided walk covers Shuri Castle and Tamaudun with someone explaining the Ryukyu kingdom.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kokusaiStreetHotelsUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kokusaiStreetHotelsUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hotels near Kokusai-dori →
             </KlookLink>
-            <KlookLink href={shuriCastlePeaceWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shuriCastlePeaceWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shuri Castle walking tour →
             </KlookLink>
           </div>
@@ -648,13 +648,13 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             Klook&apos;s listings, read {TOURS}. Times at Cape Manzamo and Kouri Island are planning allowances.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Northern day tour →
             </KlookLink>
-            <KlookLink href={okinawaManzamoKouriChuraumiTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={okinawaManzamoKouriChuraumiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Manzamo, Kouri &amp; Churaumi tour →
             </KlookLink>
-            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Aquarium ticket only →
             </KlookLink>
           </div>
@@ -672,10 +672,10 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             non-residents need a passport, their own licence, an international driving permit and a credit card.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Naha Airport car rentals →
             </KlookLink>
-            <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Or the northern tour →
             </KlookLink>
           </div>
@@ -702,13 +702,13 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             tours both depend on the sea, so check the weather terms on the listing before you pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={keramaHalfDaySnorkelNaha.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={keramaHalfDaySnorkelNaha.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kerama snorkel from Naha →
             </KlookLink>
-            <KlookLink href={keramaTokashikiSnorkelDive.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={keramaTokashikiSnorkelDive.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokashiki snorkel &amp; dive →
             </KlookLink>
-            <KlookLink href={southernOkinawaDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={southernOkinawaDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Southern Okinawa day trip →
             </KlookLink>
           </div>
@@ -888,7 +888,7 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             The Seiden QR ticket, boat notices and the tour&apos;s meeting message all reach you on your phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the alternatives.
@@ -960,10 +960,10 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
               Day 3 — and keep the last two swappable for the weather.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Northern Tour →
               </KlookLink>
-              <KlookLink href={keramaHalfDaySnorkelNaha.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={keramaHalfDaySnorkelNaha.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Kerama Snorkel from Naha →
               </KlookLink>
             </div>

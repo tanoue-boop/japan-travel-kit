@@ -370,10 +370,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             Last checked: {REREAD_ISO} · https://www.niseko.ne.jp/en/lift/ · https://www.niseko.ne.jp/en/getting-to-niseko/ · https://teikan.chuo-bus.co.jp/en/course/18958
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 삿포로 출발 니세코 스키 투어 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 렌털 예약 →
 </KlookLink>
           </div>
@@ -457,10 +457,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 <strong>니세코 스키 투어</strong>는 이동부터 생각해야 합니다. 가장 시간이 오래 걸리는 구간이기 때문입니다. 니세코 유나이티드 교통 안내에 따르면 <strong>신치토세 공항에서 니세코까지 예약제 직행버스로 {AIRPORT_BUS}, {AIRPORT_BUS_FARE}</strong>, 예약 없는 전철 + 노선버스로 {AIRPORT_TRAIN}, {AIRPORT_TRAIN_FARE}, 렌터카나 전용 차량으로 2시간입니다. 도착하면 <strong>패스 하나로 연결된 4개 스키장</strong>이 있습니다. <strong>그랜드 히라후</strong>(규모가 가장 크고 마을이 형성되어 있음), <strong>하나조노</strong>(가장 조용하고 리조트 스키 스쿨이 있음), <strong>니세코 빌리지</strong>(스키인·스키아웃 호텔), <strong>안누푸리</strong>(가장 넓고 완만함)입니다. 네 곳 모두 <strong>{SEASON_OPEN}</strong>에 개장하고 그랜드 히라후와 안누푸리는 <strong>2027년 5월 5일</strong>까지 운영합니다. 올 마운틴 패스 1일권은 <strong>{PEAK_FROM}~{PEAK_TO}</strong> 성수기에 <strong>{PEAK_DAY}</strong>, 얼리·스프링에 <strong>{EARLY_DAY}</strong>입니다. 현장에서 사지 말고 미리 예약해야 할 것은 <strong>강습</strong>입니다. 리조트 스쿨은 스키 스쿨 성수기인 {LESSON_PEAK}에 종일 강습만 사전 예약할 수 있다고 밝힙니다. 모든 수치는 운영사 공식이며 확인일은 {SEASON}입니다.
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 삿포로 출발 니세코 당일 →
 </KlookLink>
-              <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 니세코 공항 셔틀 →
 </KlookLink>
             </div>
@@ -520,13 +520,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             Last checked: {REREAD_ISO} · https://www.niseko.ne.jp/en/getting-to-niseko/
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 리조트 셔틀 →
 </KlookLink>
-            <KlookLink href={klookFor(hokkaidoPrivateCarCharterNiseko.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hokkaidoPrivateCarCharterNiseko.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 전용 차량 →
 </KlookLink>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 신치토세 이동 →
 </KlookLink>
           </div>
@@ -609,10 +609,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 <strong>계획을 바꾸게 하는 운영 정보가 하나 있습니다.</strong> 2026년 11월 28일~12월 11일 얼리 시즌 패스는 겨울 중 가장 저렴하지만 니세코 유나이티드 안내에 따르면 <strong>온라인으로 판매되지 않습니다</strong>. 시즌 최저가는 도착 후 창구에서 사야 하며, 집에서 미리 확보할 수 없습니다. 여러 날 쓸 수 있는 리프트권은 최대 7일권까지 있고 온라인 전용 50시간권도 있지만, 여기서는 1일권만 싣습니다. 모든 가격 확인일 {SEASON}.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 히라후 리프트권 + 버스 일정 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 렌털 예약 →
 </KlookLink>
           </div>
@@ -635,13 +635,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 스쿨의 개인 강습은 최대 6명 그룹당 요금이며 확인일은 {SEASON}입니다. 6시간 니세코 클래식은 성수기 <strong>¥120,000</strong>, 레귤러 ¥93,000, 얼리·스프링 ¥87,000입니다. 오전 강습은 ¥93,000, ¥71,000, ¥59,000, 오후 강습은 ¥55,000, ¥43,000, ¥43,000입니다. 그룹 강습은 별도 요금이고 11월 28일~12월 7일에는 운영하지 않습니다. 재판매 업체 가격은 상품 페이지에서 날짜별로 확인하세요.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 히라후 영어 강습 →
 </KlookLink>
-            <KlookLink href={klookFor(rhythmNisekoPrivateSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(rhythmNisekoPrivateSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 Rhythm 개인 강습 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoRusutsuKiroroPrivateLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoRusutsuKiroroPrivateLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 / 루스쓰 / 키로로 →
 </KlookLink>
           </div>
@@ -684,10 +684,10 @@ Rhythm 개인 강습 →
 스키장 이름과 폐장일은 니세코 유나이티드, 그랜드 히라후 코스 수치는 그랜드 히라후 공식입니다. 코스 22개(초급 9, 중급 6, 상급 7), 곤돌라 2기와 체어리프트 7기, 표고차 940 m(정상 1,200 m, 베이스 260 m), 135 ha, 최장 코스 5,300 m, 최대 경사 40°입니다. 확인일은 둘 다 {OWN}입니다. 니세코 유나이티드는 인기 숙소와 성수기 연휴가 일찍 매진된다고 밝히지만 얼마나 일찍인지는 공개하지 않아 여기에도 싣지 않습니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 호텔 보기 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiHotSpringTourFromSapporo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiHotSpringTourFromSapporo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 2박 또는 3박 한 번에 예약 →
 </KlookLink>
           </div>
@@ -776,7 +776,7 @@ Rhythm 개인 강습 →
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-위 어디에도 속하지 않는 예약이 하나 있습니다. <strong>모바일 데이터</strong>입니다. 니세코의 하루는 일본의 어떤 스키 여행보다 날씨가 결정합니다. 폭풍으로 리프트가 멈췄다 재개되고, 일부 스키장이 닫히고, 도로 이동이 늦어지며, 이런 공지는 모두 산 아래 게시판이 아니라 휴대폰으로 확인하게 됩니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 다른 선택지와 비교하고, <Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">일본 스키 여행자 보험 가이드(영어)</Link>에서 리프트권 전에 챙길 또 하나의 문제인 보험의 스노스포츠 보장 여부와 조건을 확인하세요.
+위 어디에도 속하지 않는 예약이 하나 있습니다. <strong>모바일 데이터</strong>입니다. 니세코의 하루는 일본의 어떤 스키 여행보다 날씨가 결정합니다. 폭풍으로 리프트가 멈췄다 재개되고, 일부 스키장이 닫히고, 도로 이동이 늦어지며, 이런 공지는 모두 산 아래 게시판이 아니라 휴대폰으로 확인하게 됩니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 다른 선택지와 비교하고, <Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">일본 스키 여행자 보험 가이드(영어)</Link>에서 리프트권 전에 챙길 또 하나의 문제인 보험의 스노스포츠 보장 여부와 조건을 확인하세요.
 </p>
         </section>
 
@@ -816,10 +816,10 @@ Rhythm 개인 강습 →
 리프트는 {SEASON_OPEN}에 운행을 시작하고 성수기 요금은 {PEAK_FROM}에 시작합니다. 이동과 강습은 날짜가 걸린 예약입니다. 12월 14일~1월 3일과 2월 6~12일에 리조트 스쿨은 종일 강습만 사전 예약을 받습니다.
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 니세코 스키 일정 보기 →
 </KlookLink>
-              <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 니세코 강습 예약 →
 </KlookLink>
             </div>

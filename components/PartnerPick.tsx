@@ -3,7 +3,7 @@ import styles from "../styles/BestEsimJapan.module.css";
 import KlookLink from "./KlookLink";
 
 /** The rel every outbound link in this block carries. */
-export const PARTNER_REL = "sponsored noopener";
+export const PARTNER_REL = "sponsored nofollow noopener";
 
 /**
  * A short paid-link block for the pages that are not articles: the category hubs and

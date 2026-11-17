@@ -306,7 +306,7 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               Buddha Hall charges ¥800 for an adult.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Kyoto &amp; Nara day tours on Klook →
               </KlookLink>
               <GygCompareButton slug="kyoto-nara-day-tour-from-osaka" listing={gygNaraFromOsaka} />
@@ -351,7 +351,7 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
                   {tourRows.map((row) => (
                     <tr key={row.tour}>
                       <td className={styles.tdProvider}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener" className={styles.tdLink}>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" className={styles.tdLink}>
                           {row.tour}
                         </KlookLink>
                       </td>
@@ -650,7 +650,7 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               admission is in the price. Klook checks out in English and takes foreign cards.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Kyoto &amp; Nara day tours on Klook →
               </KlookLink>
               <GygCompareButton slug="kyoto-nara-day-tour-from-osaka" listing={gygNaraFromOsaka} />

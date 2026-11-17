@@ -410,10 +410,10 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
               Odawara version is the one to buy if a shinkansen is bringing you in.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Hakone Free Pass on Klook →
               </KlookLink>
-              <KlookLink href={HAKONE_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={HAKONE_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Hakone Day Tour Instead →
               </KlookLink>
             </div>
@@ -449,7 +449,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
           </p>
           {/* Directly under the price table: the pass, then what to book on the same trip. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Hakone Freepass on Klook →
             </KlookLink>
           </div>
@@ -520,10 +520,10 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             guide; this page covers the pass itself.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Hakone Free Pass →
             </KlookLink>
-            <KlookLink href={HAKONE_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={HAKONE_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Compare a Hakone Day Tour →
             </KlookLink>
           </div>
@@ -762,10 +762,10 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
               only have one day and want no timetables, the guided coach version of the same loop is the better buy.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={HAKONE_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Hakone Free Pass →
               </KlookLink>
-              <KlookLink href={HAKONE_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={HAKONE_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Hakone Day Tours →
               </KlookLink>
             </div>

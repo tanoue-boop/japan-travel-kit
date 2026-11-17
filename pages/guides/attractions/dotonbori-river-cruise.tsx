@@ -470,10 +470,10 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
               before a departure and there are no phone bookings. All read on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Osaka Amazing Pass on Klook →
               </KlookLink>
-              <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Book a Dotonbori cruise in English →
               </KlookLink>
             </div>
@@ -692,10 +692,10 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             number. Guidance read on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Amazing Pass — cruise included →
             </KlookLink>
-            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book a Dotonbori cruise slot ahead →
             </KlookLink>
           </div>
@@ -729,10 +729,10 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             half hours across the year.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={dotonboriTonboriRaveCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dotonboriTonboriRaveCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               The night-out DJ cruise →
             </KlookLink>
-            <KlookLink href={dotonboriNaniwaSightseeingBoat.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dotonboriNaniwaSightseeingBoat.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               The 30-minute sightseeing boat →
             </KlookLink>
           </div>
@@ -786,10 +786,10 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             operator. Subject to change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Lounge-seat city cruise →
             </KlookLink>
-            <KlookLink href={osakaWonderCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaWonderCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Wonder Cruise →
             </KlookLink>
           </div>
@@ -811,10 +811,10 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Amazing Pass on Klook →
             </KlookLink>
-            <KlookLink href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Castle, Umeda deck and the cruise in a day →
             </KlookLink>
           </div>
@@ -854,10 +854,10 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             Conditions read on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Amazing Pass →
             </KlookLink>
-            <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Dotonbori food walk, 11:00–14:00 →
             </KlookLink>
           </div>
@@ -1057,10 +1057,10 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
               booking before you pay — it is set per listing, not per operator.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Osaka Amazing Pass on Klook →
               </KlookLink>
-              <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Book a Dotonbori cruise →
               </KlookLink>
             </div>

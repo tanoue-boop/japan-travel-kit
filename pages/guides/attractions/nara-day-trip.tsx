@@ -324,7 +324,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
               ¥800 is in the price, because some itineraries stop at the park.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={NARA_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Browse Nara Day Tours →
               </KlookLink>
               <GygCompareButton slug="nara-day-trip" listing={gygNara} />
@@ -681,7 +681,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
               guided tour can pair Nara with Kyoto highlights and sort the transport for you.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={NARA_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={NARA_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Browse Nara Day Tours →
               </KlookLink>
               <GygCompareButton slug="nara-day-trip" listing={gygNara} />

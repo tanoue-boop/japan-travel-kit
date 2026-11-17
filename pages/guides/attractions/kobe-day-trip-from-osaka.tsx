@@ -446,10 +446,10 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
               sites on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Guided Kobe Day From Osaka →
               </KlookLink>
-              <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Reserve a Kobe Beef Table →
               </KlookLink>
             </div>
@@ -530,10 +530,10 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             three operators without buying a ticket at all.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={rokkosanTouristPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={rokkosanTouristPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Rokkosan Tourist Pass →
             </KlookLink>
-            <KlookLink href={kobePrivateHalfDayWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobePrivateHalfDayWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private half day in Kobe →
             </KlookLink>
           </div>
@@ -660,13 +660,13 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             that matters to you, ask the restaurant for its registration number at booking.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Teppanyaki course in Kobe →
             </KlookLink>
-            <KlookLink href={kisshokichiKobeBeefCourse.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kisshokichiKobeBeefCourse.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Second restaurant option →
             </KlookLink>
-            <KlookLink href={kobeBeefHarbourKitanoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeBeefHarbourKitanoDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Day tour with the beef included →
             </KlookLink>
           </div>
@@ -732,13 +732,13 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             the admission and the train times from Osaka.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kobe, Arima &amp; Rokko day →
             </KlookLink>
-            <KlookLink href={kobeHimejiPrivateTourBeefLunch.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeHimejiPrivateTourBeefLunch.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kobe + Himeji private day →
             </KlookLink>
-            <KlookLink href={kobeSandaOutletArimaBeefLunchTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeSandaOutletArimaBeefLunchTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Outlets, Arima &amp; lunch →
             </KlookLink>
           </div>
@@ -817,7 +817,7 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             the sky at four in the afternoon, the restaurant confirmation is an email, and the three
             railways back to Osaka run to three different timetables from three adjacent stations. An eSIM
             activated before departure means all of that is a decision rather than a guess.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -954,10 +954,10 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
               list — a guided day that fits them into one.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kobeFerrisKitanoArimaRokkoDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Guided Kobe Days →
               </KlookLink>
-              <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Kobe Beef Tables →
               </KlookLink>
             </div>

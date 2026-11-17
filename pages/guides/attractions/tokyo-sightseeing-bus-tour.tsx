@@ -319,7 +319,7 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
               <KlookLink
                 href={hatoBusAfternoonTour.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -328,7 +328,7 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
               <KlookLink
                 href={skyhopHopOnHopOffBus.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -387,10 +387,10 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             listing for the price on your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hatoBusMorningTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={hatoBusMorningTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hato Bus morning tour →
             </KlookLink>
-            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Full-day coach tour →
             </KlookLink>
           </div>
@@ -419,10 +419,10 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             course, check which of the two starts your booking is for.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hatoBusAfternoonTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={hatoBusAfternoonTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hato Bus afternoon tour →
             </KlookLink>
-            <KlookLink href={hatoBusMorningTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={hatoBusMorningTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hato Bus morning tour →
             </KlookLink>
           </div>
@@ -446,10 +446,10 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             commentary is an audio guide in seven languages rather than a live guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={skyhopHopOnHopOffBus.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={skyhopHopOnHopOffBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Sky Hop Bus →
             </KlookLink>
-            <KlookLink href={tokyoOpenTopBusSightseeing.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={tokyoOpenTopBusSightseeing.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               70-minute open-top loop →
             </KlookLink>
           </div>
@@ -529,7 +529,7 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             .
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Tokyo Subway Ticket →
             </KlookLink>
           </div>
@@ -619,10 +619,10 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
               Bus is ¥4,800 for the day.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={hatoBusAfternoonTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hatoBusAfternoonTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Hato Bus tour →
               </KlookLink>
-              <KlookLink href={skyhopHopOnHopOffBus.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={skyhopHopOnHopOffBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Sky Hop Bus →
               </KlookLink>
             </div>

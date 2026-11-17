@@ -382,10 +382,10 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
               the listings state them.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={ujiChazunaStoneMillMatcha.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={ujiChazunaStoneMillMatcha.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Grind Your Own Matcha in Uji →
               </KlookLink>
-              <KlookLink href={kyotoTraditionalTeaCeremonyUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoTraditionalTeaCeremonyUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kyoto Tea House Session →
               </KlookLink>
             </div>
@@ -465,13 +465,13 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             are left out rather than reprint a figure from elsewhere.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={ujiChazunaStoneMillMatcha.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ujiChazunaStoneMillMatcha.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Chazuna stone mill, Uji →
             </KlookLink>
-            <KlookLink href={wazukaMatchaPickingTasting.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={wazukaMatchaPickingTasting.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Pick leaves in Wazuka →
             </KlookLink>
-            <KlookLink href={tokyoMatchaTeaCeremonyExpert.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoMatchaTeaCeremonyExpert.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Urasenke instructor, Tokyo →
             </KlookLink>
           </div>
@@ -518,10 +518,10 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             <Link href="/guides/attractions/nara-day-trip">Nara day trip guide</Link> covers.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={ujiMatchaGreenTeaHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ujiMatchaGreenTeaHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Uji half day with lunch →
             </KlookLink>
-            <KlookLink href={ujiTeaCeremonyKyotoDayTourFromOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ujiTeaCeremonyKyotoDayTourFromOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Uji as a day out of Osaka →
             </KlookLink>
           </div>
@@ -554,10 +554,10 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             here for, the matcha parfaits and ice creams of Uji and Kyoto need no booking at all.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoTeaCeremonyTastingMaking.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoTeaCeremonyTastingMaking.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyoto: tasting as well as whisking →
             </KlookLink>
-            <KlookLink href={kyotoTeaCeremonyMatchaMaking.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoTeaCeremonyMatchaMaking.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyoto: make your own bowl →
             </KlookLink>
           </div>
@@ -648,7 +648,7 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             email or a chat thread the morning of. Add two railways to Uji, a walk you have not done before,
             and shop opening hours that are not posted in English, and a working connection is the difference
             between arriving and almost arriving.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -774,10 +774,10 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
               times, not ticket windows.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={ujiChazunaStoneMillMatcha.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={ujiChazunaStoneMillMatcha.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Uji Matcha Experiences →
               </KlookLink>
-              <KlookLink href={kyotoTraditionalTeaCeremonyUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoTraditionalTeaCeremonyUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Kyoto Tea Rooms →
               </KlookLink>
             </div>

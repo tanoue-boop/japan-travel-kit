@@ -891,10 +891,10 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={keiseiSkylinerUrl} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+            <KlookLink href={keiseiSkylinerUrl} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Skyliner tickets on Klook →
             </KlookLink>
-            <KlookLink href={naritaExpressRoundTripUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={naritaExpressRoundTripUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               N&apos;EX round-trip tickets on Klook →
             </KlookLink>
           </div>
@@ -1059,7 +1059,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={naritaExpressRoundTripUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={naritaExpressRoundTripUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check N&apos;EX round-trip tickets on Klook →
             </KlookLink>
           </div>
@@ -1085,7 +1085,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={keiseiSkylinerUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={keiseiSkylinerUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check Skyliner tickets on Klook →
             </KlookLink>
           </div>
@@ -1287,7 +1287,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264852&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F2274-narita-airport-limousine-bus-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Narita Limousine Bus on Klook →
             </KlookLink>
@@ -1295,7 +1295,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264856&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F150434-haneda-airport-limousine-bus-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Haneda Limousine Bus on Klook →
             </KlookLink>
@@ -1413,10 +1413,10 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             size against the per-head column above — if it is not under the bus, take the bus.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={tokyoPrivateAirportTransfer.url} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+            <KlookLink href={tokyoPrivateAirportTransfer.url} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Private transfer for the whole party →
             </KlookLink>
-            <KlookLink href={tokyoSharedAirportTransfer.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={tokyoSharedAirportTransfer.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Shared transfer, priced per seat →
             </KlookLink>
           </div>
@@ -1477,19 +1477,19 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             1 November 2026), and nothing you buy in advance changes that except a car.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={keiseiSkylinerUrl} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+            <KlookLink href={keiseiSkylinerUrl} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Skyliner tickets on Klook →
             </KlookLink>
-            <KlookLink href={naritaExpressRoundTripUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={naritaExpressRoundTripUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               N&apos;EX round trip on Klook →
             </KlookLink>
-            <KlookLink href={naritaLimousineBus.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={naritaLimousineBus.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Narita limousine bus →
             </KlookLink>
-            <KlookLink href={hanedaLimousineBus.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={hanedaLimousineBus.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Haneda limousine bus →
             </KlookLink>
-            <KlookLink href={tokyoPrivateAirportTransfer.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={tokyoPrivateAirportTransfer.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Private airport transfer →
             </KlookLink>
           </div>
@@ -1497,7 +1497,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             Klook listings open in a new tab. Klook prices are not printed here: they change by date,
             so check the current price and the cancellation terms
             for your own date at checkout. The{" "}
-            <KlookLink href={naritaBusSubwayCombo.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--text)", fontWeight: 600 }}>
+            <KlookLink href={naritaBusSubwayCombo.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--text)", fontWeight: 600 }}>
               bus + Tokyo Subway Ticket combination
             </KlookLink>{" "}
             is the one to look at if your days in the city are subway days — see our{" "}
@@ -1553,10 +1553,10 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             your flight number is the point, and that cannot be arranged in the arrivals hall.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={tokyoPrivateAirportTransfer.url} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+            <KlookLink href={tokyoPrivateAirportTransfer.url} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Private transfer, Haneda or Narita →
             </KlookLink>
-            <KlookLink href={tokyoSharedAirportTransfer.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={tokyoSharedAirportTransfer.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Shared transfer for one or two →
             </KlookLink>
           </div>

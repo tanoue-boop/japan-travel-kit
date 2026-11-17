@@ -390,10 +390,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 <strong>เทศกาลหิมะซัปโปโร 2027</strong> จัดวันที่ 4–11 ก.พ. (วันที่จาก snowfes.com ตรวจสอบเมื่อ 11 พ.ย. 2026) และเข้าชมฟรีทั้ง 3 จุด จึงไม่จำเป็นต้องซื้อ<strong>ทัวร์เทศกาลหิมะซัปโปโร</strong> ควรจองที่พักตอนนี้ และจองทัวร์รายวันภายใน 31 ธ.ค. <strong>เทศกาลหิมะซัปโปโรครั้งที่ 77 จัดวันที่ 4 ถึง 11 กุมภาพันธ์ 2027</strong> รวม 8 วัน ในสามสถานที่จัดงาน ได้แก่ <strong>สวนโอโดริ ตั้งแต่นิชิ 1 ถึงนิชิ 11</strong> <strong>ซูซูกิโนะบนถนนเอคิมาเอะ-โดริ ระหว่างมินามิ 4 ถึงมินามิ 6</strong> และศูนย์กีฬา<strong>สึโดมุ</strong> และ FAQ ของคณะกรรมการระบุว่า<strong>ฟรี</strong>ทั้งหมด โอโดริชมได้ทุกเวลา ประติมากรรมเปิดไฟถึง <strong>22:00</strong> ซูซูกิโนะถึง <strong>23:00</strong> (22:00 ในวันสุดท้าย) และสึโดมุเปิด <strong>10:00–16:00</strong> โดยมีบางกิจกรรมเสียเงิน ไม่ต้องซื้อตั๋ว ไม่มีรอบเข้าชม และไม่มีคิวให้ซื้อสิทธิ์ข้าม สิ่งที่ควรจองคือสัปดาห์รอบเทศกาล ได้แก่ที่พักซึ่งไม่มีตัวเลือกสำรอง และทริปนอกเมืองที่มีเฉพาะฤดูนี้ เช่น โอตารุ สวนสัตว์อาซาฮิยามะ เทศกาลน้ำแข็งชิโกะสึ และบ่ายออนเซ็นโจซังเค กุมภาพันธ์ในซัปโปโรมีอุณหภูมิสูงสุดเฉลี่ย <strong>{FEB_MAX}</strong> ทุกวันของเทศกาลจึงควรมีช่วงกลางวันในร่ม ข้อมูลเทศกาลตรวจสอบเมื่อ {OWN} ค่าปกติอุณหภูมิเมื่อ {JMA_CHECKED}
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 ดูโรงแรมซัปโปโรสำหรับวันนั้น →
 </KlookLink>
-              <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 ทริปโอตารุ →
 </KlookLink>
             </div>
@@ -462,7 +462,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 งานนี้จึงต่างจากงานอื่นในเว็บไซต์นี้ ไม่มีคิวให้ซื้อสิทธิ์ข้าม ไม่มีรอบเข้าชม สินค้าแบบ “ไม่ต้องต่อคิว” จึงไม่มีประโยชน์ บน Klook ไม่มีรายการที่ขายตัวเทศกาลหิมะซัปโปโร และไม่ควรมี สิ่งที่การจองให้ได้จริงคือ<strong>อีกครึ่งของแต่ละวัน</strong> สถานที่จัดงานทั้งหมดอยู่กลางแจ้งในเดือนที่สูงสุดเฉลี่ย <strong>{FEB_MAX}</strong> ตามค่าปกติของ JMA และประติมากรรมสวยที่สุดหลังมืด วันเทศกาลที่ดีจึงเป็นเช้านอกเมืองหรือบ่ายในร่ม แล้วค่ำดูไฟที่โอโดริและซูซูกิโนะ รายการด้านล่างคือครึ่งแรกนั้น
 </p>
           <p className={styles.bodyText}>
-มีตั๋วหนึ่งที่ควรพูดถึงเพราะทำเลที่ตั้ง จุดชมวิว<strong>หอโทรทัศน์ซัปโปโร</strong>อยู่ที่นิชิ 1 ตรงจุดเริ่มของประติมากรรม 11 บล็อกของสถานที่จัดงานโอโดริ จึงเป็นสิ่งเดียวที่เสียเงินในเทศกาลซึ่งให้ภาพที่เดินดูไม่ได้ คือภาพทั้งสถานที่จัดงานที่เรียงเป็นแนวตรงและเปิดไฟ <KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดูตั๋วรวมหอโทรทัศน์และภูเขาโมอิวะ →</KlookLink>
+มีตั๋วหนึ่งที่ควรพูดถึงเพราะทำเลที่ตั้ง จุดชมวิว<strong>หอโทรทัศน์ซัปโปโร</strong>อยู่ที่นิชิ 1 ตรงจุดเริ่มของประติมากรรม 11 บล็อกของสถานที่จัดงานโอโดริ จึงเป็นสิ่งเดียวที่เสียเงินในเทศกาลซึ่งให้ภาพที่เดินดูไม่ได้ คือภาพทั้งสถานที่จัดงานที่เรียงเป็นแนวตรงและเปิดไฟ <KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดูตั๋วรวมหอโทรทัศน์และภูเขาโมอิวะ →</KlookLink>
 </p>
         </section>
 
@@ -503,16 +503,16 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 <strong>วิธีเลือก</strong> ถ้ามีสามคืน ให้เลือกทริปเต็มวันหนึ่งและครึ่งวันหนึ่ง แล้วเก็บสองค่ำไว้ดูไฟที่โอโดริและซูซูกิโนะ รายละเอียดงานแกะสลักตอนกลางวันกับไฟตอนกลางคืนเป็นคนละประสบการณ์ และคนส่วนใหญ่เสียดายถ้าพลาด ถ้ามีสี่คืนขึ้นไป ทริปยาวโนโบริเบ็ตสึและโทยะก็คุ้ม ถ้ามากับเด็ก สึโดมุตอนเช้าและสวนหิมะตอนบ่ายคือแบบที่เหมาะ ไม่ว่าจองอะไร ให้เช็กเงื่อนไขการยกเลิก เพราะเป็นรอบเดือนกุมภาพันธ์ในฮอกไกโด และรถโค้ชคือสิ่งแรกที่ถูกยกเลิกเมื่อหิมะตกหนัก
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 โอตารุและสวนหิมะ →
 </KlookLink>
-            <KlookLink href={klookFor(asahiyamaBieiHighlightsTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(asahiyamaBieiHighlightsTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 สวนสัตว์อาซาฮิยามะ →
 </KlookLink>
-            <KlookLink href={klookFor(lakeShikotsuIceFestivalHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(lakeShikotsuIceFestivalHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 เทศกาลน้ำแข็งชิโกะสึ →
 </KlookLink>
-            <KlookLink href={klookFor(jozankeiHotSpringBusTrip.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jozankeiHotSpringBusTrip.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ออนเซ็นโจซังเค →
 </KlookLink>
           </div>
@@ -591,18 +591,18 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 มีสองเรื่องที่ต้องตัดสินใจ <strong>ที่นั่งจอง U-Seat</strong> ตู้ที่ 4 เพิ่ม ¥1,000 หรือ ¥800 แบบไม่ใช้ตั๋ว และคุ้มในเดือนกุมภาพันธ์ เพราะตู้ธรรมดาแน่นไปด้วยผู้โดยสารที่มีกระเป๋าสกี <strong>JR Hokkaido Rail Pass</strong> คุ้มเฉพาะเมื่อออกนอกเมือง สนามบินไปกลับประมาณ ¥2,460 พาสจึงเป็นการตัดสินใจเรื่องโอตารุ อาซาฮิคาวะ และโนโบริเบ็ตสึ ไม่ใช่สนามบิน คำนวณจากเส้นทางของคุณ ตรวจสอบค่าโดยสารเมื่อ {OWN} <Link href="/guides/transport/jr-pass-guide" hrefLang="en">คู่มือ JR Pass (ภาษาอังกฤษ)</Link> ใช้วิธีเดียวกันกับพาสทั่วประเทศ
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 รถรับส่งสนามบินชิโตเสะ →
 </KlookLink>
-            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 JR Hokkaido Rail Pass →
 </KlookLink>
-            <KlookLink href={klookFor(lakeShikotsuIceFestivalShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(lakeShikotsuIceFestivalShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 รถรับส่งทะเลสาบชิโกะสึ →
 </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-อีกหนึ่งสิ่งที่ต้องเตรียมสำหรับวันมาถึงที่ไม่ใช่การเดินทาง คืออินเทอร์เน็ตมือถือ สถานที่จัดงานกลางแจ้งสามแห่ง ชัตเทิลที่ยังไม่มีตารางปี 2027 และอากาศเดือนกุมภาพันธ์ที่เปลี่ยนแผนได้ในวันนั้น ประกาศทั้งหมดแจ้งทางมือถือ ไม่ใช่ที่เคาน์เตอร์ <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดู Klook eSIM →</KlookLink> <Link href="/th/guides/esim/best-esim-japan">คู่มือ eSIM ญี่ปุ่น</Link>เปรียบเทียบกับทางเลือกอื่น
+อีกหนึ่งสิ่งที่ต้องเตรียมสำหรับวันมาถึงที่ไม่ใช่การเดินทาง คืออินเทอร์เน็ตมือถือ สถานที่จัดงานกลางแจ้งสามแห่ง ชัตเทิลที่ยังไม่มีตารางปี 2027 และอากาศเดือนกุมภาพันธ์ที่เปลี่ยนแผนได้ในวันนั้น ประกาศทั้งหมดแจ้งทางมือถือ ไม่ใช่ที่เคาน์เตอร์ <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดู Klook eSIM →</KlookLink> <Link href="/th/guides/esim/best-esim-japan">คู่มือ eSIM ญี่ปุ่น</Link>เปรียบเทียบกับทางเลือกอื่น
 </p>
         </section>
 
@@ -665,10 +665,10 @@ JR Hokkaido Rail Pass →
 เทศกาลไม่มีค่าใช้จ่ายและไม่ต้องจอง แต่ที่พักวันที่ 4–11 กุมภาพันธ์ 2027 ต้องจอง รวมถึงทริปนอกเมืองที่มีเฉพาะสัปดาห์เหล่านี้
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 ดูโรงแรมซัปโปโร →
 </KlookLink>
-              <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 ดูสวนหิมะครึ่งวัน →
 </KlookLink>
             </div>

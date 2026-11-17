@@ -458,7 +458,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
               href={getProvider("simbye").affiliateUrl}
               className={styles.verdictBtn}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Get Simbye Unlimited →
             </a>
@@ -517,7 +517,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             sorted by price per day and updated monthly.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
-            <a href={getProvider("simbye").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <a href={getProvider("simbye").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Get Simbye Unlimited — {SIMBYE_UNL} / 7 days →
             </a>
           </div>
@@ -545,7 +545,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
               <KlookLink
                 href={klookEsim.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 {klookEsim.ctaLabel}
@@ -597,10 +597,10 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             provider&apos;s own page listed under the price table.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem", flexWrap: "wrap", gap: "0.6rem" }}>
-            <a href={getProvider("simbye").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <a href={getProvider("simbye").affiliateUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Get Simbye Unlimited →
             </a>
-            <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               {klookEsim.ctaLabel}
             </KlookLink>
           </div>
@@ -736,7 +736,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
                     </div>
                   </div>
                   <div className={styles.pickCtaRow}>
-                    <a href={pick.href} className={styles.pickCta} target="_blank" rel={pick.note ? "sponsored noopener" : "noopener noreferrer nofollow"}>
+                    <a href={pick.href} className={styles.pickCta} target="_blank" rel={pick.note ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}>
                       {pick.cta}
                     </a>
                   </div>

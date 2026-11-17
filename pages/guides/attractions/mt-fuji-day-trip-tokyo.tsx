@@ -291,7 +291,7 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
               four services a day each way. The one thing you cannot do on your own is the Fifth Station on
               the mountain itself; that needs a coach.
             </p>
-            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Tokyo–Mt. Fuji bus seats on Klook →
             </KlookLink>
           </div>
@@ -635,7 +635,7 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
               The direct train runs only a handful of times a day and every seat is reserved, so the bus is
               the more forgiving booking. Klook checks out in English and takes foreign cards.
             </p>
-            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View Tokyo–Mt. Fuji bus tickets on Klook →
             </KlookLink>
           </div>

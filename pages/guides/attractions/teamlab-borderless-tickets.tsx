@@ -485,7 +485,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               through Klook for an English, own-currency checkout that accepts foreign cards.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Book teamLab Borderless tickets →
               </KlookLink>
               <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
@@ -706,7 +706,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           </p>
           {/* Existing Klook CTA, unchanged, with the GetYourGuide comparison beside it. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check teamLab Borderless dates and slots →
             </KlookLink>
             <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
@@ -799,7 +799,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Ready to lock a slot in?{" "}
-            <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener">
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored nofollow noopener">
               Check Borderless availability and prices on Klook →
             </KlookLink>
           </p>
@@ -1044,7 +1044,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               ticketing partner, with an English checkout in your own currency and an e-ticket on your phone.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View teamLab Borderless Tickets →
               </KlookLink>
               <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />

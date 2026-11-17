@@ -397,10 +397,10 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
             Last checked: 2026-11-16 · {HARUKA_URL} · {RAPIT_URL}
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check the Haruka ticket on Klook →
             </KlookLink>
-            <KlookLink href={nankaiRapitUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={nankaiRapitUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check the Rapi:t ticket on Klook →
             </KlookLink>
           </div>
@@ -563,10 +563,10 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
               Reserve the Haruka or the Rapi:t before you fly and head straight to the platform on arrival at KIX.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={jrHarukaUrl} className={styles.ctaBannerBtn} target="_blank" rel="sponsored noopener">
+              <KlookLink href={jrHarukaUrl} className={styles.ctaBannerBtn} target="_blank" rel="sponsored nofollow noopener">
                 Book Haruka →
               </KlookLink>
-              <KlookLink href={nankaiRapitUrl} className={styles.ctaBannerBtn} target="_blank" rel="sponsored noopener">
+              <KlookLink href={nankaiRapitUrl} className={styles.ctaBannerBtn} target="_blank" rel="sponsored nofollow noopener">
                 Book Rapi:t →
               </KlookLink>
             </div>

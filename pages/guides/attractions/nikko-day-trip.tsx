@@ -275,7 +275,7 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
               timetable; take the coach if you want all three in one day without watching the clock. Either
               way, Toshogu&apos;s ¥1,600 admission is on you — no Tobu pass covers it.
             </p>
-            <KlookLink href={NIKKO_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={NIKKO_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Browse Nikko Day Tours →
             </KlookLink>
           </div>
@@ -577,7 +577,7 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
               you&apos;d rather have Toshogu, Kegon Falls and Lake Chuzenji handled in one day, a guided tour
               from Tokyo does the route for you.
             </p>
-            <KlookLink href={NIKKO_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={NIKKO_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               Browse Nikko Day Tours →
             </KlookLink>
           </div>

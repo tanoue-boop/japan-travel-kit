@@ -765,7 +765,7 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
               Check Express Pass dates on Klook →
             </KlookLink>
-            <KlookLink href={parkFrontHotelUsjKlook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={parkFrontHotelUsjKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               The Park Front Hotel (official USJ hotel) →
             </KlookLink>
           </div>
@@ -829,16 +829,16 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             in from Kansai Airport, and the data you need for the park&apos;s own app on the day:
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={usjStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={usjStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Universal City hotels on Klook →
             </KlookLink>
-            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the HARUKA ticket on Klook →
             </KlookLink>
-            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kansai Mini Pass on Klook →
             </KlookLink>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Klook eSIM options →
             </KlookLink>
           </div>
@@ -1052,13 +1052,13 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             reaches Universal City.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the HARUKA ticket on Klook →
             </KlookLink>
-            <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Nankai Rapi:t on Klook →
             </KlookLink>
-            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiMiniPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kansai Mini Pass on Klook →
             </KlookLink>
           </div>

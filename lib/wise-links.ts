@@ -41,7 +41,7 @@ export function wiseLink(slug: string, destination?: string): string {
  * signal Google asks for on affiliate links, and no `noreferrer`, which would
  * strip the referrer Partnerize reads.
  */
-export const WISE_REL = "sponsored noopener";
+export const WISE_REL = "sponsored nofollow noopener";
 
 /** Deep-link targets that resolve to a localised page from any country. */
 export const WISE_PRICING_URL = "https://wise.com/pricing/";

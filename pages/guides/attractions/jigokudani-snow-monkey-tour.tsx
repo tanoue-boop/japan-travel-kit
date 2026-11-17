@@ -439,7 +439,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             <KlookLink
               href={snowMonkeySukiyakiTourTokyo.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -556,10 +556,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             works out when the pass beats single tickets to Nagano.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR EAST PASS on Klook →
             </KlookLink>
-            <KlookLink href={snowMonkeysZenkojiSakeNaganoTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={snowMonkeysZenkojiSakeNaganoTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Guided day from Nagano Station →
             </KlookLink>
           </div>
@@ -646,10 +646,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             winter day changes shape.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jigokudaniZenkojiSukiyakiTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jigokudaniZenkojiSukiyakiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Snow monkeys + Zenko-ji day tour →
             </KlookLink>
-            <KlookLink href={jigokudaniZenkojiPrivateDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jigokudaniZenkojiPrivateDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private day trip for your group →
             </KlookLink>
           </div>
@@ -691,7 +691,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             Onsen, there is also a winter-only Klook tour that brings the monkeys and Zenko-ji to you.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nozawaSnowMonkeyZenkojiTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nozawaSnowMonkeyZenkojiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               From Nozawa Onsen →
             </KlookLink>
           </div>
@@ -742,7 +742,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             Yes, on this trip more than most. Your web ticket, the bus times at Yudanaka and Nagano,
             and the park&apos;s monkey forecast all live on your phone, and the trail and bus stops
             have no hotel Wi-Fi.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             or compare providers in our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link>.
@@ -836,7 +836,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
               foreign cards.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={snowMonkeySukiyakiTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={snowMonkeySukiyakiTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View snow monkey tours on Klook →
               </KlookLink>
             </div>

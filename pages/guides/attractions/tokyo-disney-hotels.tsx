@@ -345,10 +345,10 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
               sleep inside the resort for less, and Shin-Urayasu or Tokyo Station when the budget comes first.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={tokyoDisneyResortHotels.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={tokyoDisneyResortHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Compare Disney-area hotels on Klook →
               </KlookLink>
-              <KlookLink href={tokyoDisneylandHotelKlook.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={tokyoDisneylandHotelKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo Disneyland Hotel →
               </KlookLink>
             </div>
@@ -421,7 +421,7 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
                   {klookHotels.map((row) => (
                     <tr key={row.hotel.title}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.hotel.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.hotel.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.hotel.title}
                         </KlookLink>
                       </td>
@@ -440,13 +440,13 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
             for them is listed here. Book those on the resort&apos;s own site.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoDisneySeaMiraCostaKlook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoDisneySeaMiraCostaKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               MiraCosta →
             </KlookLink>
-            <KlookLink href={disneyAmbassadorHotelKlook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={disneyAmbassadorHotelKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Disney Ambassador Hotel →
             </KlookLink>
-            <KlookLink href={tokyoDisneySeaHotels.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoDisneySeaHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hotels near DisneySea →
             </KlookLink>
           </div>
@@ -478,10 +478,10 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
             hotel&apos;s counter by JR Maihama Station can send your bags on to the hotel. Read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hiltonTokyoBayKlook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiltonTokyoBayKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hilton Tokyo Bay →
             </KlookLink>
-            <KlookLink href={sheratonGrandeTokyoBayKlook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sheratonGrandeTokyoBayKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sheraton Grande Tokyo Bay →
             </KlookLink>
           </div>
@@ -498,10 +498,10 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
             reservation needed. A Tokyo Station hotel works too, if the rest of your trip is in the city.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoDisneyCelebrationHotelKlook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoDisneyCelebrationHotelKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Celebration Hotel →
             </KlookLink>
-            <KlookLink href={tokyoDisneyStayAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoDisneyStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Urayasu / Shin-Urayasu hotels →
             </KlookLink>
           </div>
@@ -520,7 +520,7 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
             https://www.tokyodisneyresort.jp/en/tdr/access/railway.html.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoStayAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Station hotels →
             </KlookLink>
           </div>
@@ -569,10 +569,10 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
             rules on dates and changes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoDisneyResortHotels.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoDisneyResortHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your dates on Klook →
             </KlookLink>
-            <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               1-Day Passport →
             </KlookLink>
           </div>
@@ -707,10 +707,10 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
               Disney Hotel rooms open four months ahead, park tickets two. Check your dates first.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={tokyoDisneyResortHotels.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoDisneyResortHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Disney-Area Hotels →
               </KlookLink>
-              <KlookLink href={tokyoDisneylandHotelKlook.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoDisneylandHotelKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Tokyo Disneyland Hotel →
               </KlookLink>
             </div>

@@ -65,7 +65,7 @@ export default function KlookSameDayCards({ heading, cards, adPlacement = "same-
             href={card.url}
             adPlacement={adPlacement}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             className={styles.sameDayCard}
           >
             <span className={styles.sameDayKind}>{card.kind}</span>

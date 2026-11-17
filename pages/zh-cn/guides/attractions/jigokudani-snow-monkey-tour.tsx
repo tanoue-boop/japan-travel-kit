@@ -341,7 +341,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             <KlookLink
               href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -445,10 +445,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 时间出自公苑交通页（{CHECKED} 核查）；票券内容出自长野电铁的 Snow Monkey 页面（2026 年 11 月 3 日核查）。<strong>关于票价：</strong>这里不列新干线、长电电车和巴士的日元票价。JR 东日本官网没有可供核查票价的网页，长电的票价表只以 PDF 公布，第三方对 2026-27 急行巴士的数字又互相不一致，请在车站或运营商官网确认。<Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>JR 东日本周游券攻略（英文）</Link>算出了周游券什么时候比单买到长野划算。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 在 Klook 查看 JR EAST PASS →
 </KlookLink>
-            <KlookLink href={klookFor(snowMonkeysZenkojiSakeNaganoTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(snowMonkeysZenkojiSakeNaganoTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 长野站出发导览团 →
 </KlookLink>
           </div>
@@ -520,10 +520,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 <strong>何时预订：</strong>跟团行程每天有名额上限，泡温泉的季节只有四个月，日期一确定就订，假期周优先。付款前请查看商品页的取消条款，高速公路下雪是冬季行程最常变动的原因。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jigokudaniZenkojiSukiyakiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jigokudaniZenkojiSukiyakiTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 雪猴 + 善光寺一日游 →
 </KlookLink>
-            <KlookLink href={klookFor(jigokudaniZenkojiPrivateDayTrip.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jigokudaniZenkojiPrivateDayTrip.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 专属包车一日游 →
 </KlookLink>
           </div>
@@ -558,7 +558,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 <strong>涩温泉</strong>是公苑下方的老旅馆街，<strong>上林温泉</strong>就在步道起点。两者都不算一日游的顺路点，而是值得住一晚的理由。如果你在野泽温泉滑雪，Klook 也有冬季限定行程，从那里带你看雪猴和善光寺。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 从野泽温泉出发 →
 </KlookLink>
           </div>
@@ -593,7 +593,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 看雪猴需要移动数据吗？
 </h2>
           <p className={styles.bodyText}>
-需要，而且这趟行程比一般行程更需要稳定的网络。网上票、汤田中与长野的巴士时刻和公苑的猴子预报都在手机上，而步道和巴士站没有酒店 Wi-Fi。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> 或到<Link href="/zh-cn/guides/esim/best-esim-japan">日本上网卡推荐攻略</Link>比较各家运营商。
+需要，而且这趟行程比一般行程更需要稳定的网络。网上票、汤田中与长野的巴士时刻和公苑的猴子预报都在手机上，而步道和巴士站没有酒店 Wi-Fi。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> 或到<Link href="/zh-cn/guides/esim/best-esim-japan">日本上网卡推荐攻略</Link>比较各家运营商。
 </p>
         </section>
 
@@ -618,7 +618,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 雪猴行程每天有名额上限，泡温泉的季节只有 12 月到 3 月。选好日期，确认商品页的内容，电车、巴士和步道都交给导游。Klook 可使用海外信用卡付款。
 </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 在 Klook 查看雪猴行程 →
 </KlookLink>
             </div>

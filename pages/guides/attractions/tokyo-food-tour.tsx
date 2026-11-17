@@ -341,10 +341,10 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               .
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Book a Shinjuku izakaya tour →
               </KlookLink>
-              <KlookLink href={goldenGaiFoodTastingExperience.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={goldenGaiFoodTastingExperience.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Golden Gai food tour →
               </KlookLink>
               <GygCompareButton slug="tokyo-food-tour" listing={gygTokyoFoodTours} />
@@ -414,7 +414,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
                   {compareRows.map((row) => (
                     <tr key={row.option}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener">
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener">
                           {row.option}
                         </KlookLink>
                       </td>
@@ -433,10 +433,10 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             listing for your date. Alcohol-inclusive tours are restricted to ages 20 and over.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shinjuku izakaya &amp; bar hopping night →
             </KlookLink>
-            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Daytime Tsukiji street food walk →
             </KlookLink>
           </div>
@@ -507,10 +507,10 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             how many venues, which drinks are included, group size, and whether it ends in Golden Gai.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={goldenGaiFoodTastingExperience.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={goldenGaiFoodTastingExperience.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Golden Gai food tasting →
             </KlookLink>
-            <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shinjuku night food walk →
             </KlookLink>
           </div>
@@ -748,7 +748,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               sake, and tiny bars with a guide to lead the way. Alcohol-inclusive tours are for ages 20 and over.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOKYO_FOOD_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Browse Tokyo Food Tours →
               </KlookLink>
               <GygCompareButton slug="tokyo-food-tour" listing={gygTokyoFoodTours} />

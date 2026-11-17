@@ -300,7 +300,7 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
               car, the Q Pack is the one to book: it is the same pass with the round-trip bus from Shinjuku
               or Ueno attached. Pass prices read off fujiq.jp on {CHECKED}.
             </p>
-            <KlookLink href={fujiQHighlandQPack.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={fujiQHighlandQPack.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check the Fuji-Q Q Pack on Klook →
             </KlookLink>
           </div>
@@ -589,7 +589,7 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
               voucher, with an English checkout — which is the difference between a day trip and a logistics
               exercise.
             </p>
-            <KlookLink href={fujiQHighlandQPack.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={fujiQHighlandQPack.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View the Fuji-Q Q Pack →
             </KlookLink>
           </div>

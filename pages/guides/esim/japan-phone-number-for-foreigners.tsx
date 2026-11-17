@@ -475,7 +475,7 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
               <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.verdictBtn}>
                 See Sakura Mobile voice plans →
               </a>
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Klook eSIM (data only) →
               </KlookLink>
             </div>
@@ -574,7 +574,7 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
             read {CHECKED}; prices checked {PRICES_CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Klook eSIM options →
             </KlookLink>
             <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.pickCta}>
@@ -737,7 +737,7 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
             <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.pickCta}>
               See Sakura Mobile voice plans →
             </a>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Klook eSIM options →
             </KlookLink>
           </div>
@@ -905,7 +905,7 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
               <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.ctaBannerBtn}>
                 View Sakura Mobile voice plans →
               </a>
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Klook eSIM options →
               </KlookLink>
             </div>

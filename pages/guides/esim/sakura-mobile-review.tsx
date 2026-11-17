@@ -444,11 +444,11 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
               <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
                 Only need a week of data? Unlimited for 7 days is {usdFor(7, true)} here against{" "}
                 {formatUsd(SIMBYE_WEEK.priceUsd)} at{" "}
-                <a href={esimLink("simbye")} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                <a href={esimLink("simbye")} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                   Simbye
                 </a>{" "}
                 ({formatUsd(SIMBYE_WEEK.discountedUsd)} with code {SIMBYE_DISCOUNT_CODE}), or compare the{" "}
-                <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                   Klook Japan eSIM
                 </KlookLink>
                 .
@@ -930,7 +930,7 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
 
           {/* Both checkouts, side by side, split by reader rather than by commission. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               {klookEsim.ctaLabel}
             </KlookLink>
             <a href={SAKURA_AFFILIATE} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">

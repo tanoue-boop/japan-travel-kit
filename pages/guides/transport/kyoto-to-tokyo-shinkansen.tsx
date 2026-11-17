@@ -615,10 +615,10 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
               <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto</Link>.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Kyoto → Tokyo Tickets →
               </KlookLink>
-              <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Price the JAPAN RAIL PASS →
               </KlookLink>
             </div>
@@ -737,7 +737,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             has the Shin-Osaka fares for every seat class.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyoto → Tokyo tickets →
             </KlookLink>
           </div>
@@ -833,10 +833,10 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             itinerary</Link> is the trip shape where it most often does pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS (7/14/21 day) →
             </KlookLink>
-            <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Price a single instead →
             </KlookLink>
           </div>
@@ -1033,10 +1033,10 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             no argument at all.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Pick a train and seat class →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS →
             </KlookLink>
           </div>
@@ -1124,7 +1124,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             Kyoto Station concourse is where you will want a map rather than a guess, and at the far end you
             have to decide between Shinagawa and Tokyo while the train is still moving. An eSIM activated
             before you fly means all of that is a glance at a phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -1287,10 +1287,10 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
               Tokyo you are getting off, and what happens after that.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Kyoto → Tokyo Tickets →
               </KlookLink>
-              <KlookLink href={tokyoPrivateAirportTransfer.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoPrivateAirportTransfer.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Tokyo Airport Transfers →
               </KlookLink>
             </div>

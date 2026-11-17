@@ -261,4 +261,4 @@ export function Related({ items }: { items: RelatedItem[] }) {
 }
 
 /** The one place the Klook `rel` is written, so no page can forget "sponsored". */
-export const KLOOK_REL = "sponsored noopener";
+export const KLOOK_REL = "sponsored nofollow noopener";

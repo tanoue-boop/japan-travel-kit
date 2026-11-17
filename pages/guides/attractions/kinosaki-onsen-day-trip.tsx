@@ -321,10 +321,10 @@ export default function KinosakiOnsenDayTripPage({ updated }: { updated: PageUpd
               ryokan is the better trip if you have it. Read on official sites {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kinosakiCrabLunchDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kinosakiCrabLunchDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kinosaki Crab-Lunch Day Tour →
               </KlookLink>
-              <KlookLink href={kinosakiHotels.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kinosakiHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kinosaki Onsen Ryokan →
               </KlookLink>
             </div>
@@ -382,10 +382,10 @@ export default function KinosakiOnsenDayTripPage({ updated }: { updated: PageUpd
             some runs are suspended for a driver shortage, and buses detour for road works from 9 to 20 November 2026.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={konotoriTrainKlook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={konotoriTrainKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Konotori tickets →
             </KlookLink>
-            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kansai WIDE Area Pass →
             </KlookLink>
           </div>
@@ -436,10 +436,10 @@ export default function KinosakiOnsenDayTripPage({ updated }: { updated: PageUpd
             route crosses the mountains in winter.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kinosakiCrabLunchDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kinosakiCrabLunchDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Crab-lunch day tour →
             </KlookLink>
-            <KlookLink href={kinosakiHamasakaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kinosakiHamasakaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Day tour with Hamasaka seafood →
             </KlookLink>
           </div>
@@ -560,10 +560,10 @@ export default function KinosakiOnsenDayTripPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass guide</Link> has the sums.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kansai WIDE Area Pass →
             </KlookLink>
-            <KlookLink href={konotoriTrainKlook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={konotoriTrainKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Or book Konotori seats →
             </KlookLink>
           </div>
@@ -598,7 +598,7 @@ export default function KinosakiOnsenDayTripPage({ updated }: { updated: PageUpd
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Train seats, bath closing days and snow notices all reach you on your phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the alternatives.
@@ -669,10 +669,10 @@ export default function KinosakiOnsenDayTripPage({ updated }: { updated: PageUpd
               Book the Konotori seats or a coach day for a day trip — or a ryokan, and the bath pass usually comes with it.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kinosakiCrabLunchDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kinosakiCrabLunchDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Day Tour →
               </KlookLink>
-              <KlookLink href={kinosakiHotels.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kinosakiHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Kinosaki Ryokan →
               </KlookLink>
             </div>

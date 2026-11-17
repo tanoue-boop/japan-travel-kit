@@ -1018,10 +1018,10 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
               <strong>Furano</strong>. Fares and pass prices read {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={hokkaidoSevenDayStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={hokkaidoSevenDayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Sapporo Hotels →
               </KlookLink>
-              <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Price the JR Hokkaido Pass →
               </KlookLink>
             </div>
@@ -1174,13 +1174,13 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> explains when it does.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Price the JR Hokkaido pass →
             </KlookLink>
-            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               New Chitose transfers →
             </KlookLink>
-            <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Niseko resort shuttle →
             </KlookLink>
           </div>
@@ -1245,7 +1245,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -1500,10 +1500,10 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
               first fortnight of February the rooms are the only part of this week with no fallback.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={hokkaidoSevenDayStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hokkaidoSevenDayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Sapporo Hotels →
               </KlookLink>
-              <KlookLink href={hokkaidoSevenDayStayAreas[2].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hokkaidoSevenDayStayAreas[2].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Furano Hotels →
               </KlookLink>
             </div>

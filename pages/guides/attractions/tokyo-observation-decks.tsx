@@ -492,7 +492,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
                       <td style={{ fontSize: "0.88rem" }}>{row.sunset}</td>
                       <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>
                         {row.url ? (
-                          <KlookLink href={row.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                          <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                             {row.cta}
                           </KlookLink>
                         ) : (
@@ -580,7 +580,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
                       <td style={{ fontSize: "0.88rem" }}>{row.why}</td>
                       <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>
                         {row.url ? (
-                          <KlookLink href={row.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                          <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                             {row.cta}
                           </KlookLink>
                         ) : (
@@ -620,10 +620,10 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             length, Mt. Fuji and refund rules read on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check SHIBUYA SKY dates on Klook →
             </KlookLink>
-            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Tokyo Skytree dates on Klook →
             </KlookLink>
           </div>
@@ -644,10 +644,10 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             Tower with Shiba Park and Roppongi.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Tokyo Skytree tickets on Klook →
             </KlookLink>
-            <KlookLink href={TOKYO_TOWER_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TOKYO_TOWER_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Tokyo Tower tickets on Klook →
             </KlookLink>
           </div>
@@ -810,13 +810,13 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             Once you have picked a deck, check your date:
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Shibuya Sky tickets on Klook →
             </KlookLink>
-            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Tokyo Skytree tickets on Klook →
             </KlookLink>
-            <KlookLink href={TOKYO_TOWER_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TOKYO_TOWER_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Tokyo Tower tickets on Klook →
             </KlookLink>
           </div>
@@ -900,10 +900,10 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book a Shibuya Sky slot on Klook →
             </KlookLink>
-            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book Tokyo Skytree on Klook →
             </KlookLink>
           </div>
@@ -1104,13 +1104,13 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
               Tower, booking online saves time at the entrance — and lets you lock in the best slots.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Shibuya Sky →
               </KlookLink>
-              <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={SKYTREE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Tokyo Skytree →
               </KlookLink>
-              <KlookLink href={TOKYO_TOWER_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOKYO_TOWER_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Tokyo Tower →
               </KlookLink>
               <GygCompareButton

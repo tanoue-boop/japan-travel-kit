@@ -457,7 +457,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
               <KlookLink
                 href={kintetsuRailPass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -466,7 +466,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
               <KlookLink
                 href={kyotoNaraKiyomizuTour.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -632,7 +632,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             only if you will ride the Ise, Toba and Shima buses several times, so price your bus days first.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kintetsuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={kintetsuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Kintetsu Rail Pass →
             </KlookLink>
           </div>
@@ -684,10 +684,10 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             for what to do when you arrive.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kintetsuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={kintetsuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               View the Kintetsu Rail Pass →
             </KlookLink>
-            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               View the Kansai Area Pass →
             </KlookLink>
           </div>
@@ -709,10 +709,10 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             20-person minimum.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={iseShrineOkageGuidedTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={iseShrineOkageGuidedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Ise Guided Tour →
             </KlookLink>
-            <KlookLink href={iseFutamiBusTourOsaka.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={iseFutamiBusTourOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Ise Bus Tour From Osaka →
             </KlookLink>
           </div>
@@ -735,10 +735,10 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kintetsuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={kintetsuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               View the Kintetsu Rail Pass →
             </KlookLink>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               {klookEsim.ctaLabel}
             </KlookLink>
           </div>
@@ -765,10 +765,10 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             compares the neighbourhoods.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={osakaStayAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={osakaStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hotels in Namba →
             </KlookLink>
-            <KlookLink href={naraHotels.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={naraHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hotels in Nara →
             </KlookLink>
           </div>
@@ -840,10 +840,10 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
               return, buy two singles.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kintetsuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kintetsuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Kintetsu Rail Pass →
               </KlookLink>
-              <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View a Guided Nara Day →
               </KlookLink>
             </div>

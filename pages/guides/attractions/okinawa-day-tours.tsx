@@ -411,10 +411,10 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
               travel between June and September, so a typhoon cancellation leaves you a spare day.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the northern day tour →
               </KlookLink>
-              <KlookLink href={southernOkinawaDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={southernOkinawaDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the southern day trip →
               </KlookLink>
             </div>
@@ -444,7 +444,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
                   {tourRows.map((row) => (
                     <tr key={row.url}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--red)", fontWeight: 600 }}>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--red)", fontWeight: 600 }}>
                           {row.tour}
                         </KlookLink>
                       </td>
@@ -495,13 +495,13 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={okinawaChurashimaBusDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={okinawaChurashimaBusDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Churashima bus day tour →
             </KlookLink>
-            <KlookLink href={okinawaChuraumiKouriFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={okinawaChuraumiKouriFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Churaumi & Kouri full-day tour →
             </KlookLink>
-            <KlookLink href={okinawaToursListUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={okinawaToursListUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Okinawa tours on Klook →
             </KlookLink>
           </div>
@@ -531,10 +531,10 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             </Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={okinawaManzamoKouriChuraumiTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={okinawaManzamoKouriChuraumiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Manzamo, Kouri & Churaumi tour →
             </KlookLink>
-            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Churaumi ticket only →
             </KlookLink>
           </div>
@@ -607,10 +607,10 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             Check that any tour includes this ticket before you assume you will get inside.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shuriCastlePeaceWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shuriCastlePeaceWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shuri Castle walking tour →
             </KlookLink>
-            <KlookLink href={nahaToursListUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nahaToursListUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Naha tours on Klook →
             </KlookLink>
           </div>
@@ -653,7 +653,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             island as depending on road traffic.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Naha Airport car rentals →
             </KlookLink>
           </div>
@@ -689,7 +689,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={okinawaChuraumiKouriFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={okinawaChuraumiKouriFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour with 24-hour free cancellation →
             </KlookLink>
           </div>
@@ -784,7 +784,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
               terms on the listing before you book.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={okinawaToursListUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={okinawaToursListUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Okinawa Day Tours on Klook →
               </KlookLink>
             </div>

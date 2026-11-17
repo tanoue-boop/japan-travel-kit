@@ -288,7 +288,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             no refund. Checked {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shibuyaAnnexGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaAnnexGoKartTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Shibuya go kart on Klook →
             </KlookLink>
           </div>
@@ -324,7 +324,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
               to get one in Japan, and there is no on-the-spot workaround at the shop. Sort that first;
               everything else is detail.
             </p>
-            <KlookLink href={GOKART_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={GOKART_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Tokyo Street Go-Kart →
             </KlookLink>
           </div>
@@ -382,7 +382,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
                       <td style={{ fontSize: "0.88rem" }}>{row.evening}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.regular}</td>
                       <td style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.book} target="_blank" rel="sponsored noopener" style={{ color: "var(--red)", fontWeight: 600 }}>
+                        <KlookLink href={row.book} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--red)", fontWeight: 600 }}>
                           {row.bookLabel} →
                         </KlookLink>
                       </td>
@@ -479,13 +479,13 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             .
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shibuyaAnnexGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaAnnexGoKartTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Shibuya Annex tour →
             </KlookLink>
-            <KlookLink href={akihabaraGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={akihabaraGoKartTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Akihabara tour →
             </KlookLink>
-            <KlookLink href={tokyoBayGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoBayGoKartTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Tokyo Bay tour →
             </KlookLink>
           </div>
@@ -556,13 +556,13 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
                 walk through Shinjuku after dark, or a guided half-day walk around Senso-ji.
               </p>
               <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-                <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                   Check the Tokyo bus day tour →
                 </KlookLink>
-                <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                   Check the Shinjuku night food walk →
                 </KlookLink>
-                <KlookLink href={asakusaSensojiWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                <KlookLink href={asakusaSensojiWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                   Check the Asakusa walking tour →
                 </KlookLink>
               </div>
@@ -699,10 +699,10 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             gives no refund for missing paperwork.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shibuyaAnnexGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaAnnexGoKartTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book the Shibuya Annex tour on Klook →
             </KlookLink>
-            <KlookLink href={akihabaraGoKartTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={akihabaraGoKartTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book the Akihabara tour on Klook →
             </KlookLink>
           </div>
@@ -884,7 +884,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
               Book your street go-kart tour ahead, then bring your International Driving Permit, home licence
               and passport on the day. Remember: the IDP must be sorted in your home country before you fly.
             </p>
-            <KlookLink href={GOKART_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={GOKART_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View Tokyo Street Go-Kart →
             </KlookLink>
           </div>

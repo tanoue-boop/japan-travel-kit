@@ -341,7 +341,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             <KlookLink
               href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -445,10 +445,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 시간은 공원의 교통 안내({CHECKED} 확인), 패스 내용은 나가노 전철의 스노 몽키 페이지(2026년 11월 3일 확인) 기준입니다. <strong>요금에 대해:</strong> 신칸센, 나가덴 전철, 버스의 엔화 요금은 싣지 않습니다. JR 동일본 사이트에서는 확인할 수 있는 요금 페이지가 없었고, 나가덴은 요금표를 PDF로만 공개하며, 2026-27 급행버스의 제3자 수치는 서로 다릅니다. 역이나 운영사 사이트에서 확인하세요. <Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>JR 동일본 패스 가이드(영어)</Link>에서 나가노행 개별 티켓보다 패스가 유리한 경우를 계산해 두었습니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 클룩에서 JR EAST PASS 보기 →
 </KlookLink>
-            <KlookLink href={klookFor(snowMonkeysZenkojiSakeNaganoTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(snowMonkeysZenkojiSakeNaganoTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 나가노역 출발 가이드 투어 →
 </KlookLink>
           </div>
@@ -520,10 +520,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 <strong>예약 시기:</strong> 합류형 투어는 날짜별 정원이 정해져 있고 온천욕 시즌은 4개월뿐이니 날짜가 정해지면 바로, 연휴 주간부터 먼저 예약하세요. 결제 전에 상품 페이지의 취소 조건을 확인하세요. 겨울 일정 변경의 가장 흔한 이유는 고속도로 적설입니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jigokudaniZenkojiSukiyakiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jigokudaniZenkojiSukiyakiTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 원숭이 공원 + 젠코지 당일 투어 →
 </KlookLink>
-            <KlookLink href={klookFor(jigokudaniZenkojiPrivateDayTrip.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jigokudaniZenkojiPrivateDayTrip.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 우리 일행만의 프라이빗 당일 여행 →
 </KlookLink>
           </div>
@@ -558,7 +558,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 <strong>시부 온천</strong>은 공원 아래쪽의 오래된 료칸 거리이고, <strong>간바야시 온천</strong>은 산책로 입구에 있습니다. 두 곳 모두 당일 일정에 덧붙이기보다 1박할 이유가 되는 곳입니다. 노자와 온천에서 스키를 탄다면 그곳에서 원숭이 공원과 젠코지를 도는 겨울 한정 클룩 투어도 있습니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 노자와 온천 출발 →
 </KlookLink>
           </div>
@@ -593,7 +593,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 원숭이 공원에 모바일 데이터가 필요한가요?
 </h2>
           <p className={styles.bodyText}>
-네, 다른 여행보다 더 필요합니다. 웹 티켓, 유다나카와 나가노의 버스 시간, 공원의 원숭이 출현 예보를 모두 휴대폰으로 확인해야 하고, 산길이나 버스 정류장에서는 호텔 Wi-Fi를 쓸 수 없습니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> 또는 <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 비교해 보세요.
+네, 다른 여행보다 더 필요합니다. 웹 티켓, 유다나카와 나가노의 버스 시간, 공원의 원숭이 출현 예보를 모두 휴대폰으로 확인해야 하고, 산길이나 버스 정류장에서는 호텔 Wi-Fi를 쓸 수 없습니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> 또는 <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 비교해 보세요.
 </p>
         </section>
 
@@ -618,7 +618,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 원숭이 공원 투어는 날짜별 정원이 정해져 있고 온천욕 시즌은 12월부터 3월까지뿐입니다. 날짜를 고르고 상품 페이지의 포함 사항을 확인한 뒤 전철·버스 환승과 산길은 가이드에게 맡기세요. 클룩은 해외 카드로 결제할 수 있습니다.
 </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 클룩에서 원숭이 공원 투어 보기 →
 </KlookLink>
             </div>

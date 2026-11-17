@@ -743,10 +743,10 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
               HARUKA table on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Price the 3-Day Kansai Pass →
               </KlookLink>
-              <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kyoto &amp; Nara as One Guided Day →
               </KlookLink>
             </div>
@@ -842,13 +842,13 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             compares the four boats.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Amazing Pass →
             </KlookLink>
-            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Dotonbori city cruise →
             </KlookLink>
-            <KlookLink href={kuromonMarketFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kuromonMarketFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kuromon food walk →
             </KlookLink>
           </div>
@@ -903,10 +903,10 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             buses and the two subway lines.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyoto four-sight guided day →
             </KlookLink>
-            <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Arashiyama &amp; Fushimi Inari from Osaka →
             </KlookLink>
           </div>
@@ -960,13 +960,13 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             guide</Link> compares the coach routes out of Osaka.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyoto &amp; Nara day tour →
             </KlookLink>
-            <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Arashiyama, Nara &amp; Fushimi Inari day →
             </KlookLink>
-            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               USJ Studio Pass →
             </KlookLink>
           </div>
@@ -1132,16 +1132,16 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             point-to-point tickets.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR HARUKA ticket →
             </KlookLink>
-            <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nankai Rapi:t ticket →
             </KlookLink>
-            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Osaka shinkansen →
             </KlookLink>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kyoto shinkansen →
             </KlookLink>
           </div>
@@ -1191,10 +1191,10 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             table, the line-by-line coverage and the 1 October 2026 switch to the WEST QR version.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR-West Kansai Rail Pass →
             </KlookLink>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Amazing Pass →
             </KlookLink>
           </div>
@@ -1226,10 +1226,10 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             which variants exist and the dates a Studio Pass alone is enough.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               USJ Studio Pass on Klook →
             </KlookLink>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Klook eSIM for the app →
             </KlookLink>
           </div>
@@ -1543,10 +1543,10 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
               as a single coach day.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Price the 3-Day Kansai Pass →
               </KlookLink>
-              <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Kyoto &amp; Nara Day →
               </KlookLink>
             </div>

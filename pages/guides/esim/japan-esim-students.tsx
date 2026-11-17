@@ -376,7 +376,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
                 </div>
                 <SimbyeOffer gb={20} />
                 <div className={styles.pickCtaRow}>
-                  <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+                  <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
                     Get Simbye — {priceLabel(SIMBYE_MONTH)} / {dataLabel(SIMBYE_MONTH)} →
                   </a>
                   <Link href="/guides/esim/simbye-japan-review" className={styles.pickCtaInternal}>
@@ -698,13 +698,13 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
             .
           </p>
           <div className={styles.pickCtaRow}>
-            <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Get Simbye — {priceLabel(SIMBYE_MONTH)} / {dataLabel(SIMBYE_MONTH)} →
             </a>
             <a href={esimLink("airalo")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
               Get Airalo — top-up from the app →
             </a>
-            <a href={esimLink("airalo")} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <a href={esimLink("airalo")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               {HOLAFLY_ALT_LABEL}
             </a>
           </div>

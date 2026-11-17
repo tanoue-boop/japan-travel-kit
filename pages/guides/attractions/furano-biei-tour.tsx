@@ -404,10 +404,10 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
               for snow play, and the Blue Pond day trip or the lavender tour in summer.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Winter Illumination Tour →
               </KlookLink>
-              <KlookLink href={furanoBieiBluePondDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={furanoBieiBluePondDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Blue Pond &amp; Flower Hills Tour →
               </KlookLink>
             </div>
@@ -465,10 +465,10 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             November.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Illumination tour →
             </KlookLink>
-            <KlookLink href={bieiWinterBluePondShirahigeTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={bieiWinterBluePondShirahigeTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Blue Pond light-up tour →
             </KlookLink>
           </div>
@@ -537,7 +537,7 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
                   {tourRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.name}
                         </KlookLink>
                       </td>
@@ -559,13 +559,13 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             the listing for the current price, the meeting point and what your package includes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={furanoBieiWinterDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={furanoBieiWinterDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Winter day tour with snow play →
             </KlookLink>
-            <KlookLink href={sapporoBluePondOrZooRouteTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoBluePondOrZooRouteTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Blue Pond or Asahiyama Zoo route →
             </KlookLink>
-            <KlookLink href={bieiFuranoLavenderDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={bieiFuranoLavenderDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Lavender day tour →
             </KlookLink>
           </div>
@@ -632,10 +632,10 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             pays for itself on one return trip.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={sapporoFuranoAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoFuranoAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sapporo-Furano Area Pass →
             </KlookLink>
-            <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Or take the tour →
             </KlookLink>
           </div>
@@ -658,10 +658,10 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             status page before you pay. Read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={bieiFuranoLavenderDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={bieiFuranoLavenderDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Biei &amp; Furano lavender tour →
             </KlookLink>
-            <KlookLink href={furanoBieiBluePondDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={furanoBieiBluePondDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Blue Pond &amp; Shikisai-no-oka →
             </KlookLink>
           </div>
@@ -703,7 +703,7 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             Cancellation policies differ by listing, so read yours before you pay. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your date on Klook →
             </KlookLink>
           </div>
@@ -778,10 +778,10 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
               A tour covers Furano and Biei from Sapporo in about 10 to 11.6 hours, with no changes to plan.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={furanoBieiIlluminationTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Winter Tour →
               </KlookLink>
-              <KlookLink href={furanoBieiBluePondDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={furanoBieiBluePondDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Summer Tour →
               </KlookLink>
             </div>

@@ -255,12 +255,12 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
                 code {SIMBYE_DISCOUNT_CODE}.
               </p>
             ) : null}
-            <a href={esimLink("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+            <a href={esimLink("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Get Simbye {dataLabel(SIMBYE_MONTH)} for {priceLabel(SIMBYE_MONTH)} →
             </a>
             <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
               Booking the rest of the trip on Klook?{" "}
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 {klookEsim.ctaLabel}
               </KlookLink>
             </p>

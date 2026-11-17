@@ -413,7 +413,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
               cheapest 7-day pass.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo → Osaka Tickets on Klook →
               </KlookLink>
             </div>
@@ -481,7 +481,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             Klook price appears here, because Klook&apos;s prices change by date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Osaka tickets on Klook →
             </KlookLink>
           </div>
@@ -577,10 +577,10 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             your own legs.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS (7/14/21 day) →
             </KlookLink>
-            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Or single tickets on Klook →
             </KlookLink>
           </div>
@@ -691,7 +691,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             ]}
           />
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Pick a train and seat class on Klook →
             </KlookLink>
           </div>
@@ -750,10 +750,10 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             plans what follows.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Amazing Pass →
             </KlookLink>
-            <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Dotonbori food tour →
             </KlookLink>
           </div>
@@ -806,7 +806,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           <p className={styles.bodyText}>
             Data. A smartEX change, a QR ticket and a delay notice all happen on your phone, and you will want a
             map the moment you step out at Shin-Osaka.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it with the
@@ -852,7 +852,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
               Seat E for Mt Fuji, a reserved car if you have a large bag, and the Hikari if you hold a JR Pass.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Tokyo → Osaka Tickets →
               </KlookLink>
             </div>

@@ -341,7 +341,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             <KlookLink
               href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -445,10 +445,10 @@ Jigokudani Yaen-koen เป็นสวนลิงป่าในหุบเ�
 เวลาเดินทางอ้างอิงจากหน้าแนะนำการเดินทางของสวน ตรวจสอบเมื่อ {CHECKED} เนื้อหาพาสจากหน้า Snow Monkey ของ Nagano Electric Railway ตรวจสอบเมื่อ 3 พฤศจิกายน 2026 <strong>เรื่องค่าโดยสาร:</strong> ที่นี่ไม่แสดงค่าโดยสารเป็นเยนสำหรับชินคันเซ็น รถไฟ Nagaden หรือรถบัส เว็บไซต์ JR East ไม่มีหน้าค่าโดยสารที่ตรวจสอบได้ Nagaden เผยแพร่ตารางค่าโดยสารเป็น PDF เท่านั้น และตัวเลขรถบัสด่วน 2026-27 จากแหล่งภายนอกไม่ตรงกัน จึงควรเช็กที่สถานีหรือเว็บไซต์ผู้ให้บริการ <Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>คู่มือ JR East Pass(ภาษาอังกฤษ)</Link> คำนวณว่าพาสคุ้มกว่าตั๋วเดี่ยวไปนากาโนะเมื่อใด
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ดู JR EAST PASS บน Klook →
 </KlookLink>
-            <KlookLink href={klookFor(snowMonkeysZenkojiSakeNaganoTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(snowMonkeysZenkojiSakeNaganoTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ทัวร์มีไกด์จากสถานีนากาโนะ →
 </KlookLink>
           </div>
@@ -520,10 +520,10 @@ Jigokudani Yaen-koen เป็นสวนลิงป่าในหุบเ�
 <strong>ควรจองเมื่อไร:</strong> ทัวร์แบบร่วมกลุ่มมีที่นั่งจำกัดในแต่ละวันและฤดูแช่น้ำมีเพียงสี่เดือน จึงควรจองทันทีที่วันแน่นอน โดยเริ่มจากสัปดาห์วันหยุด ก่อนจ่ายเงินให้เช็กเงื่อนไขการยกเลิกในหน้าสินค้า หิมะบนทางด่วนคือเหตุผลที่พบบ่อยที่สุดที่ทำให้แผนหน้าหนาวเปลี่ยน
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jigokudaniZenkojiSukiyakiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jigokudaniZenkojiSukiyakiTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ทัวร์ลิงหิมะ + เซนโกจิ →
 </KlookLink>
-            <KlookLink href={klookFor(jigokudaniZenkojiPrivateDayTrip.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jigokudaniZenkojiPrivateDayTrip.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ทริปส่วนตัวสำหรับกลุ่มของคุณ →
 </KlookLink>
           </div>
@@ -558,7 +558,7 @@ Jigokudani Yaen-koen เป็นสวนลิงป่าในหุบเ�
 <strong>ชิบุออนเซ็น</strong>เป็นย่านเรียวกังเก่าแก่ด้านล่างสวน และ<strong>คันบายาชิออนเซ็น</strong>อยู่ตรงจุดเริ่มเส้นทางเดิน ทั้งสองแห่งไม่ใช่จุดแวะของทริปวันเดียว แต่เป็นเหตุผลให้ค้างคืน ถ้าเล่นสกีที่โนซาวะออนเซ็น Klook ยังมีทัวร์เฉพาะฤดูหนาวที่พาไปดูลิงและเซนโกจิจากที่นั่น
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 จากโนซาวะออนเซ็น →
 </KlookLink>
           </div>
@@ -593,7 +593,7 @@ Jigokudani Yaen-koen เป็นสวนลิงป่าในหุบเ�
 ไปชมลิงหิมะต้องมีอินเทอร์เน็ตมือถือไหม?
 </h2>
           <p className={styles.bodyText}>
-ต้องมี และทริปนี้จำเป็นกว่าทริปส่วนใหญ่ ตั๋วออนไลน์ เวลารถบัสที่ยุดะนากะและนากาโนะ และพยากรณ์ลิงของสวนอยู่ในมือถือทั้งหมด และบริเวณทางเดินและป้ายรถบัสไม่มี Wi-Fi แบบในโรงแรม <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดู Klook eSIM →</KlookLink> หรือเปรียบเทียบผู้ให้บริการใน<Link href="/th/guides/esim/best-esim-japan">คู่มือ eSIM ญี่ปุ่น</Link>
+ต้องมี และทริปนี้จำเป็นกว่าทริปส่วนใหญ่ ตั๋วออนไลน์ เวลารถบัสที่ยุดะนากะและนากาโนะ และพยากรณ์ลิงของสวนอยู่ในมือถือทั้งหมด และบริเวณทางเดินและป้ายรถบัสไม่มี Wi-Fi แบบในโรงแรม <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดู Klook eSIM →</KlookLink> หรือเปรียบเทียบผู้ให้บริการใน<Link href="/th/guides/esim/best-esim-japan">คู่มือ eSIM ญี่ปุ่น</Link>
 </p>
         </section>
 
@@ -618,7 +618,7 @@ Jigokudani Yaen-koen เป็นสวนลิงป่าในหุบเ�
 ทัวร์ลิงหิมะมีที่นั่งจำกัดต่อวัน และฤดูแช่น้ำมีเพียงธันวาคมถึงมีนาคม เลือกวัน เช็กสิ่งที่รวมในหน้าสินค้า แล้วให้ไกด์ดูแลเรื่องรถไฟ รถบัส และเส้นทางเดิน Klook รับบัตรต่างประเทศ
 </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 ดูทัวร์ลิงหิมะบน Klook →
 </KlookLink>
             </div>

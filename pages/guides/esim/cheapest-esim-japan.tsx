@@ -531,7 +531,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
                       <td key={String(tier)} className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
                     ))}
                     <td>
-                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         Open →
                       </KlookLink>
                     </td>
@@ -594,7 +594,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             {esimProviders.map((prov, i) => (
               <span key={prov.id}>
                 {i > 0 && " · "}
-                <a href={prov.sourceUrl} target="_blank" rel={prov.id === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"} className={tools.inlineLink}>
+                <a href={prov.sourceUrl} target="_blank" rel={prov.id === "simbye" ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"} className={tools.inlineLink}>
                   {prov.name}
                 </a>
               </span>
@@ -634,10 +634,10 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             <strong>Last checked: {LAST_CHECKED_ISO}.</strong> Fixed-allowance plans, list prices in USD read from each
             provider&apos;s official site (e.g.{" "}
-            <a href={SIMBYE_URL} target="_blank" rel="sponsored noopener" className={tools.inlineLink}>simbye.com</a>).
+            <a href={SIMBYE_URL} target="_blank" rel="sponsored nofollow noopener" className={tools.inlineLink}>simbye.com</a>).
           </p>
           {/* The top row is Simbye at every size checked so far: its button first (25%), then Klook eSIM (20%). */}
-          <a href={SIMBYE_URL} className={styles.pickCta} target="_blank" rel="sponsored noopener" style={{ marginTop: "0.5rem" }}>
+          <a href={SIMBYE_URL} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener" style={{ marginTop: "0.5rem" }}>
             Get Simbye Japan eSIM{simbyeCheapest ? ` from ${formatUsd(simbyeCheapest.priceUsd)}` : ""} →
           </a>
           <BookingEsimCard lead="Buying the cheapest plan? Two ways to check out" />
@@ -799,7 +799,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
                 href={pick.affiliateUrl}
                 className={styles.pickCta}
                 target="_blank"
-                rel={pick.ctaNote ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                rel={pick.ctaNote ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                 style={{ marginTop: "1rem" }}
               >
                 {pick.ctaLabel}
@@ -850,7 +850,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
               href={klookEsim.url}
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               style={{ marginTop: "0.5rem" }}
             >
               {klookEsim.ctaLabel}

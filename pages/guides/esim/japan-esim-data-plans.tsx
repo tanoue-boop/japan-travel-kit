@@ -392,7 +392,7 @@ function KlookEsimSlot({ why }: { why: string }) {
         <KlookLink
           href={klookEsim.url}
           target="_blank"
-          rel="sponsored noopener"
+          rel="sponsored nofollow noopener"
           style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
         >
           {klookEsim.ctaLabel}
@@ -645,7 +645,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
                 <a
                   href={p.sourceUrl}
                   target="_blank"
-                  rel={p.id === "simbye" ? "sponsored noopener" : "nofollow noopener noreferrer"}
+                  rel={p.id === "simbye" ? "sponsored nofollow noopener" : "nofollow noopener noreferrer"}
                   className={tools.inlineLink}
                 >
                   {p.name} official price page
@@ -859,7 +859,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
                     <td className={tools.tdMuted}>—</td>
                     <td className={tools.tdMuted}>—</td>
                     <td>
-                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         {klookEsim.ctaLabel}
                       </KlookLink>
                     </td>

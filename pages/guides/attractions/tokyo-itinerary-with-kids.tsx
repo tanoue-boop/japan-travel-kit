@@ -607,7 +607,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
               the forecast is worst, and keep Day 1 for nothing but the hotel.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Disney tickets on Klook →
               </KlookLink>
               <GygCompareButton slug={SLUG} listing={gygTokyoDisneyResort} />
@@ -690,7 +690,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             </p>
             <div className={styles.pickCtaRow}>
               {day.book.map((item) => (
-                <KlookLink key={item.url} href={item.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                <KlookLink key={item.url} href={item.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                   {item.label} →
                 </KlookLink>
               ))}
@@ -800,13 +800,13 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             Prices change by date — confirm at checkout.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Disney 1-Day Passport on Klook →
             </KlookLink>
-            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sanrio Puroland on Klook →
             </KlookLink>
-            <KlookLink href={legolandDiscoveryCenterTokyoTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={legolandDiscoveryCenterTokyoTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               LEGOLAND Discovery Center on Klook →
             </KlookLink>
           </div>
@@ -1015,10 +1015,10 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
               this itinerary can be fitted around the day you get.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Disney tickets →
               </KlookLink>
-              <KlookLink href={tokyoKidsStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoKidsStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Tokyo Station hotels →
               </KlookLink>
             </div>

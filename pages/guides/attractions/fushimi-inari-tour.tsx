@@ -402,7 +402,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
               gates at dawn.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the Fushimi Inari tour on Klook →
               </KlookLink>
             </div>
@@ -434,7 +434,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
                   {tourRows.map((row) => (
                     <tr key={row.tour}>
                       <td className={styles.tdProvider}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener">{row.tour}</KlookLink>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener">{row.tour}</KlookLink>
                       </td>
                       <td style={{ fontSize: "0.88rem" }}>{row.length}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.meet}</td>
@@ -453,10 +453,10 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
             them before paying. Current prices are on Klook.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={fushimiInari90MinuteTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fushimiInari90MinuteTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the 90-minute walk →
             </KlookLink>
-            <KlookLink href={fushimiInariHiddenHikingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fushimiInariHiddenHikingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the hidden hiking tour →
             </KlookLink>
           </div>
@@ -485,7 +485,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
                   {dayTourRows.map((row) => (
                     <tr key={row.tour}>
                       <td className={styles.tdProvider}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener">{row.tour}</KlookLink>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener">{row.tour}</KlookLink>
                       </td>
                       <td style={{ fontSize: "0.88rem" }}>{row.length}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.meet}</td>
@@ -499,7 +499,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
             Want a guide at dawn? Klook also sells a Kyoto Early Morning Tour covering Fushimi Inari, Arashiyama
             and the Golden Temple, and its travel blog says that tour reaches the shrine at 7:00. The listing
             itself is not quoted here, so confirm the start and the meeting point on{" "}
-            <KlookLink href={fushimiInariToursListUrl} target="_blank" rel="sponsored noopener" style={linkStyle}>
+            <KlookLink href={fushimiInariToursListUrl} target="_blank" rel="sponsored nofollow noopener" style={linkStyle}>
               Klook&apos;s Fushimi Inari page
             </KlookLink>
             .
@@ -672,13 +672,13 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
             <li>The hiking tour starts on time: miss it and you cannot join, reschedule or get a refund.</li>
           </ul>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               See dates for the 3-hour walk →
             </KlookLink>
-            <KlookLink href={fushimiInariShortWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fushimiInariShortWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               See the 1-hour walk →
             </KlookLink>
-            <KlookLink href={fushimiInariGuidedWalk.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fushimiInariGuidedWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               See the 2 hr 30 walk →
             </KlookLink>
           </div>
@@ -835,7 +835,7 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
               listing. Check your date on Klook.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Fushimi Inari Tour →
               </KlookLink>
             </div>

@@ -539,7 +539,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                       <td>{row.number}</td>
                       <td>
                         {row.cta === "klook" ? (
-                          <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 700 }}>
+                          <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 700 }}>
                             Check Klook eSIM →
                           </KlookLink>
                         ) : (
@@ -736,7 +736,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
                 href={pick.affiliateUrl}
                 className={styles.pickCta}
                 target="_blank"
-                rel={pick.ctaNote ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                rel={pick.ctaNote ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                 style={{ marginTop: "1rem" }}
               >
                 {pick.ctaLabel}
@@ -791,7 +791,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             href={klookEsim.url}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.5rem", display: "inline-flex" }}
           >
             {klookEsim.ctaLabel}
@@ -896,7 +896,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
               href={klookEsim.url}
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               style={{ marginTop: "0.75rem", display: "inline-flex" }}
             >
               {klookEsim.ctaLabel}

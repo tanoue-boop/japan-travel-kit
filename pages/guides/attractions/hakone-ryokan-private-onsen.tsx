@@ -326,10 +326,10 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
               stay in Gora.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Kyuan on Klook →
               </KlookLink>
-              <KlookLink href={hakoneKowakienMikawaya.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={hakoneKowakienMikawaya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Mikawaya on Klook →
               </KlookLink>
             </div>
@@ -360,7 +360,7 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
                   {inns.map((row) => (
                     <tr key={row.hotel.title}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.hotel.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.hotel.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.hotel.title}
                         </KlookLink>
                       </td>
@@ -384,21 +384,21 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             7 to 10 December 2026. Gora Kadan&apos;s walk is from the Hakone tourism association.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hakoneYoshiikeRyokan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneYoshiikeRyokan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yoshiike Ryokan →
             </KlookLink>
-            <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyuan →
             </KlookLink>
-            <KlookLink href={hakoneGoraKadan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneGoraKadan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Gora Kadan →
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Two more on Klook.</strong> No official site is listed here for{" "}
-            <KlookLink href={hakoneYuyuListing.url} target="_blank" rel="sponsored noopener">YuYu Hakone</KlookLink>{" "}
+            <KlookLink href={hakoneYuyuListing.url} target="_blank" rel="sponsored nofollow noopener">YuYu Hakone</KlookLink>{" "}
             or{" "}
-            <KlookLink href={hakoneChisujiListing.url} target="_blank" rel="sponsored noopener">Chisuji Ryokan</KlookLink>
+            <KlookLink href={hakoneChisujiListing.url} target="_blank" rel="sponsored nofollow noopener">Chisuji Ryokan</KlookLink>
             , so they are not in the table. Read the room type on Klook to see what bath you are booking.
           </p>
         </section>
@@ -426,7 +426,7 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             type. Mikawaya&apos;s free family bath is the clearest example, open 5:00 to 10:00 and 15:00 to 24:00.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hakoneKowakienMikawaya.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneKowakienMikawaya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Mikawaya rooms →
             </KlookLink>
           </div>
@@ -470,7 +470,7 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             the Hakone tourism association and Mikawaya&apos;s access page, and they vary by service and by year.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Hakone hotels on Klook →
             </KlookLink>
           </div>
@@ -532,7 +532,7 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hakone Freepass →
             </KlookLink>
           </div>
@@ -555,10 +555,10 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             listings also show a bathing tax of ¥150 per person per night.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your dates at Kyuan →
             </KlookLink>
-            <KlookLink href={hakoneYoshiikeRyokan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneYoshiikeRyokan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your dates at Yoshiike →
             </KlookLink>
           </div>
@@ -628,10 +628,10 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
               Rooms with their own bath are limited at most inns, so check your dates first.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Kyuan →
               </KlookLink>
-              <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 All Hakone Hotels →
               </KlookLink>
             </div>

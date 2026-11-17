@@ -438,13 +438,13 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check the Haruka ticket on Klook →
             </KlookLink>
-            <KlookLink href={nankaiRapitUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={nankaiRapitUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check the Rapi:t ticket on Klook →
             </KlookLink>
-            <KlookLink href={kixLimousineUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={kixLimousineUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check the limousine bus on Klook →
             </KlookLink>
           </div>
@@ -558,7 +558,7 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             it covers the Haruka&apos;s non-reserved seats.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check the Haruka ticket on Klook →
             </KlookLink>
           </div>
@@ -734,7 +734,7 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
               href={jrHarukaUrl}
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Book Haruka Express Tickets on Klook →
             </KlookLink>
@@ -742,7 +742,7 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Book JR Pass (includes Haruka) on Klook →
             </KlookLink>
@@ -768,7 +768,7 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             href={nankaiRapitUrl}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             Book Nankai Rapi:t Tickets on Klook →
@@ -796,7 +796,7 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             href={kixLimousineUrl}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             Book Kansai Airport Limousine Bus on Klook →

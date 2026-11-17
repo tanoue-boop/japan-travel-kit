@@ -203,7 +203,7 @@ export function BookSection({
                     key={cta.url}
                     href={cta.url}
                     target="_blank"
-                    rel="sponsored noopener"
+                    rel="sponsored nofollow noopener"
                     className={styles.bookCta}
                   >
                     {cta.label}

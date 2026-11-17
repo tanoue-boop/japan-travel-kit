@@ -336,10 +336,10 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
               Shirakawa-go Tourist Association&apos;s site {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Light-Up Tour From Nagoya →
               </KlookLink>
-              <KlookLink href={japanWinterStayAreas[3].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={japanWinterStayAreas[3].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Takayama Hotels →
               </KlookLink>
             </div>
@@ -406,10 +406,10 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
             13:00</strong>. Klook&apos;s Nagoya light-up listings already name the January evenings; check your date on the listing.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Light-up + Takayama from Nagoya →
             </KlookLink>
-            <KlookLink href={shirakawagoLightUp2027NagoyaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoLightUp2027NagoyaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Small-group light-up tour →
             </KlookLink>
           </div>
@@ -467,7 +467,7 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
             coach, which you book in English.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nagoya light-up coach (English staff) →
             </KlookLink>
           </div>
@@ -489,10 +489,10 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
             <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Daytime tour from Kanazawa →
             </KlookLink>
-            <KlookLink href={takayamaShirakawagoNagoyaDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={takayamaShirakawagoNagoyaDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Daytime tour from Nagoya →
             </KlookLink>
           </div>
@@ -579,7 +579,7 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             Entry details, coach pick-up messages and any cold-wave cancellation arrive online.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Coming from Tokyo? The shinkansen leg is in our{" "}
@@ -657,10 +657,10 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
               Choose your date, book a light-up coach from the city you sleep in, and dress for −10°C.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Light-Up Tour →
               </KlookLink>
-              <KlookLink href={japanWinterStayAreas[2].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={japanWinterStayAreas[2].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Kanazawa Hotels →
               </KlookLink>
             </div>

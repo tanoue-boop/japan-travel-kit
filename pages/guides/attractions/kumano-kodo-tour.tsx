@@ -486,10 +486,10 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
               If walking is the reason you came, give it two days from Tanabe.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kumano Sanzan One-Day Tour →
               </KlookLink>
-              <KlookLink href={kumanoSanzanPilgrimageTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kumanoSanzanPilgrimageTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Full-Day Pilgrimage Tour →
               </KlookLink>
             </div>
@@ -545,7 +545,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
                   {tourRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.name}
                         </KlookLink>
                       </td>
@@ -568,13 +568,13 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             current price, the exact meeting point and what your package includes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kumano Sanzan tour →
             </KlookLink>
-            <KlookLink href={kumanoNachiHayatamaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoNachiHayatamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nachi &amp; Hayatama bus day →
             </KlookLink>
-            <KlookLink href={kumanoKodoPrivateWalk.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoKodoPrivateWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private walking tour →
             </KlookLink>
           </div>
@@ -674,13 +674,13 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             your date for the third, a multi-day tour of Hongu and Nachi.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kumanoKoyaTwoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoKoyaTwoDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               2-day Koyasan &amp; Kumano tour →
             </KlookLink>
-            <KlookLink href={kumanoShirahamaTwoDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoShirahamaTwoDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               2-day Shirahama &amp; Nachi tour →
             </KlookLink>
-            <KlookLink href={kumanoMultiDayPilgrimage.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoMultiDayPilgrimage.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Multi-day Hongu &amp; Nachi tour →
             </KlookLink>
           </div>
@@ -697,7 +697,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             private guide on Klook suits anyone who wants the history explained on the trail.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kumanoKodoPrivateWalk.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoKodoPrivateWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book a private guide →
             </KlookLink>
           </div>
@@ -743,10 +743,10 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             ordinary Kansai Area Pass does not cover the Kuroshio.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kumanoKuroshioTickets.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoKuroshioTickets.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kuroshio tickets →
             </KlookLink>
-            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiWideAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kansai WIDE Area Pass →
             </KlookLink>
           </div>
@@ -871,10 +871,10 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             only with bookings made there.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kumanoWakayamaHotels.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoWakayamaHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Wakayama hotels on Klook →
             </KlookLink>
-            <KlookLink href={kumanoYunomineGuesthouse.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoYunomineGuesthouse.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Guesthouse at Yunomine →
             </KlookLink>
           </div>
@@ -896,10 +896,10 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             for your date before you pay. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your date on Klook →
             </KlookLink>
-            <KlookLink href={kumanoNachiNagoyaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumanoNachiNagoyaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour from Nagoya →
             </KlookLink>
           </div>
@@ -974,10 +974,10 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
               A guided coach day covers the Kumano shrines in about 10 to 12 hours 45 minutes, with no connections to plan.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Kumano Sanzan Tour →
               </KlookLink>
-              <KlookLink href={kumanoNachiHayatamaTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kumanoNachiHayatamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Nachi Bus Day →
               </KlookLink>
             </div>

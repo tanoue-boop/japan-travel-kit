@@ -432,10 +432,10 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
               <strong>¥1,000</strong> fee. Operator figures read on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo → Hiroshima Tickets →
               </KlookLink>
-              <KlookLink href={hiroshimaMiyajimaFerryDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={hiroshimaMiyajimaFerryDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Hiroshima &amp; Miyajima Day Tour →
               </KlookLink>
             </div>
@@ -524,7 +524,7 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             Sanyo leg on its own.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Hiroshima tickets →
             </KlookLink>
           </div>
@@ -615,10 +615,10 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             long leg that usually decides it.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS (7/14/21 day) →
             </KlookLink>
-            <KlookLink href={jrSanyoSaninAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrSanyoSaninAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR Sanyo-San&apos;in Area Pass →
             </KlookLink>
           </div>
@@ -659,10 +659,10 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             train with space.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Pick a train and seat class →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS →
             </KlookLink>
           </div>
@@ -766,7 +766,7 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             check against your actual arrival; and the tide table that decides whether the torii is standing
             in water is something you look up on the morning, not the week before. An eSIM activated before
             you fly means all of that is a lookup from a platform rather than a guess.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -929,10 +929,10 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
               because on a single day from Tokyo, it is the half that gets cut.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Tokyo → Hiroshima Tickets →
               </KlookLink>
-              <KlookLink href={hiroshimaMiyajimaJoinDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hiroshimaMiyajimaJoinDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Hiroshima &amp; Miyajima Tours →
               </KlookLink>
             </div>

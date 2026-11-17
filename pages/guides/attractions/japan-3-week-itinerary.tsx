@@ -479,10 +479,10 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
               See the <Link href="/guides/attractions/japan-10-day-itinerary">Japan 10-day itinerary</Link>.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={japanThreeWeekStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={japanThreeWeekStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Hotels at Tokyo Station →
               </KlookLink>
-              <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Shirakawa-go tour with a Takayama drop-off →
               </KlookLink>
             </div>
@@ -551,16 +551,16 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             ticket. Either way you come back through Tokyo on Day 7 for the Kanazawa train.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shibuya Sky ticket →
             </KlookLink>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Planets ticket →
             </KlookLink>
-            <KlookLink href={nikkoCulturalDayTourUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nikkoCulturalDayTourUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nikko day tour from Tokyo →
             </KlookLink>
-            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hakone Freepass →
             </KlookLink>
           </div>
@@ -589,16 +589,16 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/kanazawa-2-day-itinerary">Kanazawa 2 day itinerary</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shirakawa-go &amp; Takayama tour from Kanazawa →
             </KlookLink>
-            <KlookLink href={kanazawaKenrokuenHigashiChayaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kanazawaKenrokuenHigashiChayaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kanazawa day tour →
             </KlookLink>
-            <KlookLink href={takayamaHotelsUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={takayamaHotelsUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hotels in Takayama →
             </KlookLink>
-            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kanazawa shinkansen →
             </KlookLink>
           </div>
@@ -628,16 +628,16 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima by shinkansen</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyoto highlights bus tour →
             </KlookLink>
-            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               USJ Studio Pass →
             </KlookLink>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Amazing Pass →
             </KlookLink>
-            <KlookLink href={hiroshimaMiyajimaJoinDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaMiyajimaJoinDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hiroshima &amp; Miyajima day tour →
             </KlookLink>
           </div>
@@ -679,16 +679,16 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             seven days it would cover little more than the Day 7 shinkansen and fall short of single tickets.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hiroshima → Tokyo shinkansen →
             </KlookLink>
-            <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka → Hiroshima shinkansen →
             </KlookLink>
-            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kansai-Hiroshima Area Pass →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS on Klook →
             </KlookLink>
           </div>
@@ -862,10 +862,10 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
               Book the hotels and the Day 9 move first, then the timed tickets for Days 3, 4 and 16.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={japanThreeWeekStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={japanThreeWeekStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Tokyo Station hotels →
               </KlookLink>
-              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Narita Express round trip →
               </KlookLink>
             </div>

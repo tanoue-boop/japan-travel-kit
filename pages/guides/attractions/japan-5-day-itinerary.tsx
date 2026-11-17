@@ -534,7 +534,7 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
               fixed, teamLab Planets 2–3 weeks out, and SHIBUYA SKY the moment your date opens two weeks ahead.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo → Kyoto shinkansen →
               </KlookLink>
             </div>
@@ -679,7 +679,7 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               {day.picks.map((pick) => (
-                <KlookLink key={pick.url} href={pick.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                <KlookLink key={pick.url} href={pick.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                   {pick.label}
                 </KlookLink>
               ))}
@@ -736,10 +736,10 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
             compares the train with the bus.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kyoto shinkansen on Klook →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Longer trip? JAPAN RAIL PASS →
             </KlookLink>
           </div>
@@ -845,7 +845,7 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
               Everything on this plan hangs off the Day 4 shinkansen. Reserve that seat, then book the rest around it.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Tokyo → Kyoto Shinkansen →
               </KlookLink>
             </div>

@@ -38,7 +38,7 @@ export default function EsimStickyCta() {
     <>
       <div className={styles.spacer} aria-hidden="true" />
       <div className={styles.bar} data-placement="esim-sticky">
-        <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.button} target="_blank" rel="sponsored noopener">
+        <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.button} target="_blank" rel="sponsored nofollow noopener">
           <span className={styles.label}>{copy.cta} →</span>
           <span className={styles.code}>
             {copy.code.replace("{code}", SIMBYE_DISCOUNT_CODE).replace("{percent}", String(SIMBYE_DISCOUNT_PERCENT))}

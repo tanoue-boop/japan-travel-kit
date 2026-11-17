@@ -10,7 +10,7 @@ import { EsimCtaBottom } from "../../../components/EsimCta";
 
 // The same SafetyWing ambassador link the other insurance guides use.
 const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614156&utm_source=26614156&utm_medium=Ambassador";
-const SPONSORED_REL = "sponsored noopener noreferrer";
+const SPONSORED_REL = "sponsored nofollow noopener noreferrer";
 const PLAIN_REL = "noopener noreferrer nofollow";
 
 /**

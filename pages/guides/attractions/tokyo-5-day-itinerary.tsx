@@ -695,7 +695,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             <KlookLink
               href={tokyoSubwayTicket.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -781,10 +781,10 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             puts the four side by side.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Tokyo Subway Ticket →
             </KlookLink>
-            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Shibuya Sky tickets →
             </KlookLink>
             <GygCompareButton slug="tokyo-5-day-itinerary" listing={gygShibuyaSky} />
@@ -840,10 +840,10 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             Day 2 falls on one, swap it with Day 3.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={asakusaKimonoYae.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asakusaKimonoYae.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Asakusa kimono rental →
             </KlookLink>
-            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check TOKYO SKYTREE tickets →
             </KlookLink>
           </div>
@@ -897,13 +897,13 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             small boat against the yakatabune and the Symphony.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tsukijiCultureFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tsukijiCultureFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Tsukiji food tour →
             </KlookLink>
-            <KlookLink href={tokyoBaySunsetBoatCruise.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoBaySunsetBoatCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Tokyo Bay sunset cruise →
             </KlookLink>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check teamLab Planets tickets →
             </KlookLink>
           </div>
@@ -959,13 +959,13 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             Fujikyu bus site on {FUJIKYU_LOCAL_CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kawaguchiko day tour →
             </KlookLink>
-            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Tokyo – Mt. Fuji bus →
             </KlookLink>
-            <KlookLink href={mtFujiPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={mtFujiPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Mt. Fuji Pass →
             </KlookLink>
           </div>
@@ -1017,7 +1017,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             official temple admissions and the route in detail.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kamakuraEnoshimaDayTourUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kamakuraEnoshimaDayTourUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kamakura &amp; Enoshima day tour →
             </KlookLink>
           </div>
@@ -1151,10 +1151,10 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             what the unhurried version of Tokyo-plus-Kansai actually looks like.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kyoto shinkansen tickets →
             </KlookLink>
-            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Hakone Freepass →
             </KlookLink>
           </div>
@@ -1194,10 +1194,10 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             the same book-ahead split across the whole city rather than just this itinerary.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Planets on Klook →
             </KlookLink>
-            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kawaguchiko day tour on Klook →
             </KlookLink>
             <GygCompareButton slug="tokyo-5-day-itinerary" listing={gygTeamlabPlanets} />
@@ -1290,10 +1290,10 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             same limousine operator runs from all three Haneda terminals.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={naritaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={naritaLimousineBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Narita limousine bus →
             </KlookLink>
-            <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Haneda limousine bus →
             </KlookLink>
           </div>
@@ -1302,7 +1302,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             itinerary is a QR code in an inbox, the Kawaguchiko return is a timetable you will check from
             a bus stop, and every &ldquo;getting there&rdquo; column above assumes you can open a map. An
             eSIM activated before departure means none of that depends on finding airport Wi-Fi.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -1668,7 +1668,7 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
               the official sites sometimes reject, and keeps all five days on one account.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Book the timed tickets on Klook →
               </KlookLink>
               <GygCompareButton slug="tokyo-5-day-itinerary" listing={gygTokyo} />

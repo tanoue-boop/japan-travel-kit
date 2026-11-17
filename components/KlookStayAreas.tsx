@@ -66,7 +66,7 @@ export default function KlookStayAreas({ heading, intro, areas, locale }: Props)
               <KlookLink
                 href={a.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 {copy.cta}

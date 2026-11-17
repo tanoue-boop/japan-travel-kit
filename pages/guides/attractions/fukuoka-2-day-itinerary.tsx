@@ -501,10 +501,10 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
               prices read on the operators&apos; sites {OWN}; JR times {JR_TIME}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={dazaifuYanagawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={dazaifuYanagawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Dazaifu &amp; Yanagawa Tour →
               </KlookLink>
-              <KlookLink href={fukuokaStayAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={fukuokaStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Hakata Hotels →
               </KlookLink>
             </div>
@@ -580,10 +580,10 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/teamlab-fukuoka-tickets">teamLab Fukuoka tickets guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={teamlabForestFukuokaTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabForestFukuokaTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Forest ticket →
             </KlookLink>
-            <KlookLink href={fukuokaTeamlabBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fukuokaTeamlabBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Bus day with teamLab →
             </KlookLink>
           </div>
@@ -620,13 +620,13 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             spare day to move to.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={dazaifuYanagawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dazaifuYanagawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Dazaifu &amp; Yanagawa day tour →
             </KlookLink>
-            <KlookLink href={yanagawaStrawberryDazaifuTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yanagawaStrawberryDazaifuTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               + strawberry picking →
             </KlookLink>
-            <KlookLink href={dazaifuYanagawaTravelPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dazaifuYanagawaTravelPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Dazaifu &amp; Yanagawa pass →
             </KlookLink>
           </div>
@@ -652,10 +652,10 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka">Yufuin and Beppu tour guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yufuin no Mori + Beppu tour →
             </KlookLink>
-            <KlookLink href={yufuinBeppuRopewayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yufuinBeppuRopewayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Dazaifu, Yufuin &amp; Beppu tour →
             </KlookLink>
           </div>
@@ -702,10 +702,10 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             Mori figures from JR Kyushu, {JR_TIME}, as used in our Kyushu itinerary.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={fukuokaAirportTransfers.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fukuokaAirportTransfers.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fukuoka Airport transfer →
             </KlookLink>
-            <KlookLink href={dazaifuYanagawaTravelPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={dazaifuYanagawaTravelPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Dazaifu &amp; Yanagawa pass →
             </KlookLink>
           </div>
@@ -783,7 +783,7 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             passes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the JR Kyushu Rail Pass →
             </KlookLink>
           </div>
@@ -824,7 +824,7 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             The boat queue, a yatai closed for the weather and the tour pick-up all reach you on your phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the alternatives.
@@ -897,10 +897,10 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
               evening for the yatai.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={dazaifuYanagawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={dazaifuYanagawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Dazaifu &amp; Yanagawa Tour →
               </KlookLink>
-              <KlookLink href={fukuokaStayAreas[2].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={fukuokaStayAreas[2].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Hotels in Tenjin →
               </KlookLink>
             </div>

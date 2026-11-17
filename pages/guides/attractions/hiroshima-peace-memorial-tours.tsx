@@ -297,10 +297,10 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
               Choose a guide for explanation and questions, or the ¥500 audio guide for a quieter visit.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={hiroshimaPeaceHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={hiroshimaPeaceHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the guided tour →
               </KlookLink>
-              <KlookLink href={hiroshimaPeaceToursListUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={hiroshimaPeaceToursListUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 See all tours on Klook →
               </KlookLink>
             </div>
@@ -348,7 +348,7 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
                   {tourRows.map((row) => (
                     <tr key={row.title}>
                       <td className={styles.tdProvider}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener" style={LINK}>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" style={LINK}>
                           {row.title}
                         </KlookLink>
                       </td>
@@ -426,7 +426,7 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={hiroshimaPeaceMuseumTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaPeaceMuseumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the museum ticket on Klook →
             </KlookLink>
           </div>
@@ -548,10 +548,10 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
             these tours cover the two sites.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={hiroshimaPeaceMiyajimaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaPeaceMiyajimaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the museum and Miyajima bus tour →
             </KlookLink>
-            <KlookLink href={hiroshimaMiyajimaJoinDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaMiyajimaJoinDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the join-in day tour →
             </KlookLink>
           </div>
@@ -612,10 +612,10 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
               The museum is busiest from about 11:00 to 15:00, so a morning visit or a night nearby helps.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={hiroshimaPeaceHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hiroshimaPeaceHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Guided Tour →
               </KlookLink>
-              <KlookLink href={hiroshimaStayAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={hiroshimaStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Hotels near the park →
               </KlookLink>
             </div>

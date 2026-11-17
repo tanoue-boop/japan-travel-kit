@@ -322,7 +322,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
               </div>
             </div>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Samurai &amp; Ninja Museum dates on Klook →
               </KlookLink>
               <GygCompareButton slug="samurai-ninja-experience-tokyo" listing={gygTokyoSamuraiNinja} />
@@ -470,7 +470,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
             <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Samurai &amp; Ninja Museum dates on Klook →
             </KlookLink>
           </div>
@@ -652,7 +652,7 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
               and book your slot in advance.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={SAMURAI_NINJA_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Browse Samurai &amp; Ninja Experiences →
               </KlookLink>
               <GygCompareButton slug="samurai-ninja-experience-tokyo" listing={gygTokyoSamuraiNinja} />

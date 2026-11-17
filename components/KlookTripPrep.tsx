@@ -85,7 +85,7 @@ export default function KlookTripPrep({ heading, intro, items, label, note, loca
                 href={item.url}
                 adPlacement={adPlacement}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 {item.ctaLabel}

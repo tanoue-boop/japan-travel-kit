@@ -983,7 +983,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
               >
 查看白川乡亮灯一日 →
@@ -991,7 +991,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={klookFor(hokurikuArchPass.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.pickCta}
               >
 查看北陆拱形周游券 →
@@ -1089,7 +1089,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -1162,13 +1162,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 周游券方面，全国版 JR Pass 要靠长途回本，这条路线只有两段，所以请实际计算，不要凭感觉。<strong>北陆拱形周游券</strong>才符合这趟旅行的路线：连续七天覆盖东京到敦贺的北陆新干线和关西地区，刻意不含东海道新干线，所以只适合去回走不同路线。两者都不含民营的白川乡巴士。<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>有按自己路段计算的工具，<Link href="/guides/transport/shinkansen-guide" hrefLang="en">新干线攻略（英文）</Link>说明座位等级和预订。
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 查看北陆拱形周游券 →
 </KlookLink>
-            <KlookLink href={klookFor(jrPassWholeJapanCurrent.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrPassWholeJapanCurrent.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 查看 JAPAN RAIL PASS →
 </KlookLink>
-            <KlookLink href={klookFor(shinkansenTokyoKanazawa.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(shinkansenTokyoKanazawa.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 东京 → 金泽车票 →
 </KlookLink>
           </div>
@@ -1249,13 +1249,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 唯一不用多住一晚的是汤泽这边，所以放在这份计划的第 3 天。要滑雪而不只是看的话，最该先订的是装备而不是缆车票，出发前也请确定保险，雪道内和雪道外在条款中完全不同，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">滑雪旅行保险比较（英文）</Link>有说明。如果雪是旅行的全部，请跳过城市，看<Link href="/zh-cn/guides/attractions/niseko-ski-tours">二世谷滑雪攻略</Link>，内容覆盖接送、滑雪课程（双板和单板）和四大区域，根据 Niseko United 票价表 2026 年 12 月 24 日到 2027 年 2 月 28 日成人 All Mountain 一日票 ¥13,500。
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(galaNaebaSkiDayTripTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(galaNaebaSkiDayTripTokyo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 GALA 汤泽／苗场包车 →
 </KlookLink>
-            <KlookLink href={klookFor(hakubaHapponeBusLiftRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hakubaHapponeBusLiftRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 白马巴士加缆车票加租赁 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 二世谷雪具租赁 →
 </KlookLink>
           </div>
@@ -1304,7 +1304,7 @@ GALA 汤泽／苗场包车 →
             <KlookLink
               href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 白川乡亮灯一日 →
@@ -1312,7 +1312,7 @@ GALA 汤泽／苗场包车 →
             <KlookLink
               href={klookFor(shirakawagoTakayamaKanazawaDayTour.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 金泽出发白川乡一日 →
@@ -1320,7 +1320,7 @@ GALA 汤泽／苗场包车 →
             <KlookLink
               href={klookFor(teamlabBotanicalGardenOsakaTicket.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 teamLab 植物园大阪 →
@@ -1366,19 +1366,19 @@ teamLab 植物园大阪 →
 第 8 天的一日游，小樽雪灯之路在 2027 年 2 月 6 到 13 日，所以雪祭旅行可以两者都看；<Link href="/guides/attractions/otaru-day-trip-from-sapporo" hrefLang="en">札幌出发小樽一日游攻略（英文）</Link>有电车和运河小镇的介绍。如果想把整趟旅行都给北海道，<Link href="/zh-cn/guides/attractions/hokkaido-7-day-itinerary">北海道 7 日游</Link>是留在岛上的一周。
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(newChitoseSapporoSharedTransfer.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseSapporoSharedTransfer.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 新千岁 → 札幌接送 →
 </KlookLink>
-            <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 札幌雪上乐园半日 →
 </KlookLink>
-            <KlookLink href={klookFor(jrEastSouthHokkaidoPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrEastSouthHokkaidoPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 JR 东日本南北海道周游券 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 二世谷机场接驳 →
 </KlookLink>
-            <KlookLink href={klookFor(rusutsuResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(rusutsuResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 留寿都机场接驳 →
 </KlookLink>
           </div>
@@ -1445,12 +1445,12 @@ JR 东日本南北海道周游券 →
               <KlookLink
                 href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.ctaBannerBtn}
               >
 查看白川乡亮灯一日 →
 </KlookLink>
-              <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 查看北陆拱形周游券 →
 </KlookLink>
             </div>

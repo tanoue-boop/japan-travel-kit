@@ -295,7 +295,7 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
               booking.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Browse Tokyo Cooking Classes →
               </KlookLink>
               <GygCompareButton slug="tokyo-cooking-class" listing={gygTokyoCookingClasses} />
@@ -544,7 +544,7 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
               your slot in advance.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Browse Tokyo Cooking Classes →
               </KlookLink>
               <GygCompareButton slug="tokyo-cooking-class" listing={gygTokyoCookingClasses} />

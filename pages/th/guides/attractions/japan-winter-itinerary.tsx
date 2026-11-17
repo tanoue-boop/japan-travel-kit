@@ -994,7 +994,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
               >
 ดูทริปชมไฟประดับชิราคาวาโกะ →
@@ -1002,7 +1002,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={klookFor(hokurikuArchPass.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.pickCta}
               >
 ดู Hokuriku Arch Pass →
@@ -1100,7 +1100,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -1173,13 +1173,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 เรื่องพาส JR Pass ทั่วประเทศจะคุ้มเมื่อมีการเดินทางระยะไกลมากพอ แต่เส้นทางนี้มีช่วงยาวแค่สองช่วง จึงควรคำนวณ ไม่ใช่สมมติ <strong>Hokuriku Arch Pass</strong> คือแบบที่ตรงกับทริปนี้ เจ็ดวันติดต่อกัน ครอบคลุมโฮคุริคุชินคันเซ็นระหว่างโตเกียวกับสึรุกะและเขตคันไซ และตั้งใจไม่ครอบคลุมโทไคโดชินคันเซ็น จึงเหมาะกับการไปและกลับคนละเส้นทาง ทั้งสองไม่ครอบคลุมรถบัสไปชิราคาวาโกะซึ่งเป็นของเอกชน <Link href="/guides/transport/jr-pass-guide" hrefLang="en">คู่มือ JR Pass (ภาษาอังกฤษ)</Link>มีเครื่องคำนวณจุดคุ้มทุน และ<Link href="/guides/transport/shinkansen-guide" hrefLang="en">คู่มือชินคันเซ็น (ภาษาอังกฤษ)</Link>ครอบคลุมชั้นที่นั่งและการจอง
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ดู Hokuriku Arch Pass →
 </KlookLink>
-            <KlookLink href={klookFor(jrPassWholeJapanCurrent.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrPassWholeJapanCurrent.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ดู JAPAN RAIL PASS →
 </KlookLink>
-            <KlookLink href={klookFor(shinkansenTokyoKanazawa.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(shinkansenTokyoKanazawa.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ตั๋วโตเกียว → คานาซาวะ →
 </KlookLink>
           </div>
@@ -1260,13 +1260,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 แบบเดียวที่ไม่ต้องเพิ่มคืนคือฝั่งยูซาวะ จึงเป็นวันที่ 3 ของแผนนี้ ถ้าเล่นสกีไม่ใช่แค่ดู สิ่งที่ควรจองก่อนคืออุปกรณ์ ไม่ใช่พาสลิฟต์ และตกลงเรื่องประกันก่อนไป เพราะในเขตและนอกเขตลานสกีต่างกันมากในถ้อยคำกรมธรรม์ ตาม<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">คู่มือเปรียบเทียบประกันเล่นสกี (ภาษาอังกฤษ)</Link> ถ้าหิมะคือทั้งทริป ให้ข้ามส่วนเที่ยวเมืองแล้วอ่าน<Link href="/th/guides/attractions/niseko-ski-tours">คู่มือเล่นสกีนิเซโกะ</Link> ซึ่งครอบคลุมรถรับส่ง คลาส และสี่พื้นที่ พาส All Mountain หนึ่งวันผู้ใหญ่ช่วงพีก ¥13,500 ตั้งแต่ 24 ธันวาคม 2026 ถึง 28 กุมภาพันธ์ 2027 ตามตารางของ Niseko United
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(galaNaebaSkiDayTripTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(galaNaebaSkiDayTripTokyo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 รถเหมา GALA Yuzawa / นาเอบะ →
 </KlookLink>
-            <KlookLink href={klookFor(hakubaHapponeBusLiftRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hakubaHapponeBusLiftRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ฮาคุบะ รถบัส + ลิฟต์ + อุปกรณ์ →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 เช่าอุปกรณ์สกีนิเซโกะ →
 </KlookLink>
           </div>
@@ -1318,7 +1318,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <KlookLink
               href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 ทริปชมไฟประดับชิราคาวาโกะ →
@@ -1326,7 +1326,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <KlookLink
               href={klookFor(shirakawagoTakayamaKanazawaDayTour.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 ทริปชิราคาวาโกะจากคานาซาวะ →
@@ -1334,7 +1334,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <KlookLink
               href={klookFor(teamlabBotanicalGardenOsakaTicket.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 teamLab Botanical Garden Osaka →
@@ -1380,19 +1380,19 @@ teamLab Botanical Garden Osaka →
 สำหรับทริปวันที่ 8 Otaru Snow Light Path ตรงกับ 6–13 กุมภาพันธ์ 2027 ทริปเทศกาลจึงได้ทั้งคู่ <Link href="/guides/attractions/otaru-day-trip-from-sapporo" hrefLang="en">คู่มือทริปโอตารุจากซัปโปโร (ภาษาอังกฤษ)</Link>มีรถไฟและเมืองคลอง ถ้าอยากให้ฮอกไกโดทั้งทริปแทนการสลับ <Link href="/th/guides/attractions/hokkaido-7-day-itinerary">เที่ยวฮอกไกโด 7 วัน</Link>คือสัปดาห์ที่อยู่บนเกาะ
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(newChitoseSapporoSharedTransfer.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseSapporoSharedTransfer.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 รถรับส่งชิโตเสะ → ซัปโปโร →
 </KlookLink>
-            <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 สวนหิมะซัปโปโรครึ่งวัน →
 </KlookLink>
-            <KlookLink href={klookFor(jrEastSouthHokkaidoPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrEastSouthHokkaidoPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 JR East–South Hokkaido Pass →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ชัตเทิลสนามบินนิเซโกะ →
 </KlookLink>
-            <KlookLink href={klookFor(rusutsuResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(rusutsuResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ชัตเทิลสนามบินรุสึทสึ →
 </KlookLink>
           </div>
@@ -1455,12 +1455,12 @@ JR East–South Hokkaido Pass →
               <KlookLink
                 href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.ctaBannerBtn}
               >
 ดูทริปชมไฟประดับชิราคาวาโกะ →
 </KlookLink>
-              <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ดู Hokuriku Arch Pass →
 </KlookLink>
             </div>

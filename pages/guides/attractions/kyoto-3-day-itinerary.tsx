@@ -423,10 +423,10 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
               and arrive the evening before Day 1. Prices and times come from official sites, each dated below.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kyotoThreeDayStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoThreeDayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kyoto Station Hotels →
               </KlookLink>
-              <KlookLink href={kyotoCityFushimiArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoCityFushimiArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Guided Kyoto Day →
               </KlookLink>
             </div>
@@ -489,33 +489,33 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               {day.key === "day1" && (
                 <>
-                  <KlookLink href={kyotoKimonoAiwafukuKiyomizu.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  <KlookLink href={kyotoKimonoAiwafukuKiyomizu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                     Kiyomizu kimono rental →
                   </KlookLink>
-                  <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                     Gion night walk →
                   </KlookLink>
                 </>
               )}
               {day.key === "day2" && (
                 <>
-                  <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                     Fushimi Inari walking tour →
                   </KlookLink>
-                  <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                     Sagano train &amp; river boat →
                   </KlookLink>
-                  <KlookLink href={kyotoCityFushimiArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  <KlookLink href={kyotoCityFushimiArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                     Fushimi &amp; Arashiyama guided day →
                   </KlookLink>
                 </>
               )}
               {day.key === "day3" && (
                 <>
-                  <KlookLink href={kyotoUjiNaraDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  <KlookLink href={kyotoUjiNaraDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                     Kyoto, Uji &amp; Nara day tour →
                   </KlookLink>
-                  <KlookLink href={ujiMatchaGreenTeaHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                  <KlookLink href={ujiMatchaGreenTeaHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                     Uji matcha half-day tour →
                   </KlookLink>
                 </>
@@ -575,13 +575,13 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             </Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoUjiNaraDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoUjiNaraDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Both in one tour →
             </KlookLink>
-            <KlookLink href={ujiTaihoanWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ujiTaihoanWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Uji walk with tea ceremony →
             </KlookLink>
-            <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Or go further: Amanohashidate →
             </KlookLink>
           </div>
@@ -686,10 +686,10 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             the Kyoto Station shinkansen gates, the train times and the large-luggage seats for that last morning.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kyoto shinkansen →
             </KlookLink>
-            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kansai Airport HARUKA →
             </KlookLink>
           </div>
@@ -795,10 +795,10 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
               Book the hotel and your train first. Everything else in Kyoto can wait until the plan is settled.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kyotoThreeDayStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoThreeDayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Kyoto Station Hotels →
               </KlookLink>
-              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Shinkansen Tickets →
               </KlookLink>
             </div>

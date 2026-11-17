@@ -485,7 +485,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
                     href={pick.href}
                     className={styles.pickCta}
                     target="_blank"
-                    rel={pick.ctaNote ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                    rel={pick.ctaNote ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                   >
                     {pick.cta}
                   </a>

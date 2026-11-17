@@ -411,7 +411,7 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             <strong>¥12,000 Flexible Pass</strong> fixes only the date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginBottom: "1rem" }}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Book a teamLab Kyoto time slot →
             </KlookLink>
           </div>
@@ -456,7 +456,7 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
               three times.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Book teamLab Kyoto tickets →
               </KlookLink>
               <GygCompareButton slug={SLUG} listing={gygTeamlabBiovortexKyoto} />
@@ -519,7 +519,7 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             in advance is both the cheaper and the safer route. Read on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book teamLab Kyoto online →
             </KlookLink>
           </div>
@@ -643,11 +643,11 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             visitors in its first nine months is not one to leave to the day.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check tickets on Klook →
             </KlookLink>
             <GygCompareButton slug={SLUG} listing={gygTeamlabBiovortexKyoto} />
-            <KlookLink href={kyotoTeamlabBiovortexWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoTeamlabBiovortexWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the guided Kyoto version →
             </KlookLink>
           </div>
@@ -728,7 +728,7 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check teamLab Kyoto tickets →
             </KlookLink>
             <GygCompareButton slug={SLUG} listing={gygTeamlabBiovortexKyoto} />
@@ -929,7 +929,7 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
               a ticket bought direct can move its date three times.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View teamLab Kyoto tickets →
               </KlookLink>
               <GygCompareButton slug={SLUG} listing={gygTeamlabBiovortexKyoto} />

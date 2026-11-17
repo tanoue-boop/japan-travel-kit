@@ -404,7 +404,7 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
               <KlookLink
                 href={jrHokkaidoRailPass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -413,7 +413,7 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
               <KlookLink
                 href={sapporoFuranoAreaPass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -597,10 +597,10 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
             the pass the next morning.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Hokkaido Rail Pass →
             </KlookLink>
-            <KlookLink href={sapporoFuranoAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={sapporoFuranoAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Compare the Sapporo–Furano Area Pass →
             </KlookLink>
           </div>
@@ -685,10 +685,10 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
             eligible. If you live in Japan on a foreign passport, check this before you pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               View the Hokkaido Rail Pass →
             </KlookLink>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               {klookEsim.ctaLabel}
             </KlookLink>
           </div>
@@ -723,7 +723,7 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
             href={newChitoseAirportTransfers.url}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.5rem", display: "inline-block" }}
           >
             Compare New Chitose airport transfers on Klook →
@@ -752,10 +752,10 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
             , which works the pass arithmetic day by day.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={furanoBieiBluePondDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={furanoBieiBluePondDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Furano &amp; Biei Day Tour →
             </KlookLink>
-            <KlookLink href={japanWinterStayAreas[6].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={japanWinterStayAreas[6].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hotels near Sapporo Station →
             </KlookLink>
           </div>
@@ -841,10 +841,10 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
               area pass is the cheaper choice.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Hokkaido Rail Pass →
               </KlookLink>
-              <KlookLink href={sapporoFuranoAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={sapporoFuranoAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Sapporo–Furano Area Pass →
               </KlookLink>
             </div>

@@ -416,7 +416,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
               every opening time above checked {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Akihabara tour times &amp; dates →
               </KlookLink>
             </div>
@@ -482,7 +482,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
             your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Compare Akihabara tours on Klook →
             </KlookLink>
           </div>
@@ -595,7 +595,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
             Metro&apos;s own station pages on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Tokyo Subway Ticket →
             </KlookLink>
           </div>
@@ -720,7 +720,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
             book the tour for a date rather than keeping it in reserve.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               See which Akihabara dates are open →
             </KlookLink>
           </div>
@@ -742,7 +742,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check Akihabara tour times &amp; dates →
             </KlookLink>
           </div>
@@ -921,7 +921,7 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
               on them — and on two departures a day, a wet weekend clears them.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={akihabaraAnimeMangaMaidCafeTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Akihabara tour times &amp; dates →
               </KlookLink>
             </div>

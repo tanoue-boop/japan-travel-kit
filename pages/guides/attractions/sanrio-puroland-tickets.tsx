@@ -371,7 +371,7 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
               Buy the passport before you go and register the arrival reservation for the same date, because
               the park refuses entry without one. Checked on puroland.jp, {CHECKED}.
             </p>
-            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Sanrio Puroland tickets on Klook →
             </KlookLink>
           </div>
@@ -462,7 +462,7 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
             pay. Either way, the arrival reservation is the step that decides whether you get in.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Sanrio Puroland dates on Klook →
             </KlookLink>
           </div>
@@ -802,7 +802,7 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
               Japanese attraction site has already refused your card. Remember to register the arrival
               reservation for the same date.
             </p>
-            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={sanrioPurolandTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View Sanrio Puroland tickets →
             </KlookLink>
           </div>

@@ -712,7 +712,7 @@ function KlookEsimSlot({ why }: { why: string }) {
         <KlookLink
           href={klookEsim.url}
           target="_blank"
-          rel="sponsored noopener"
+          rel="sponsored nofollow noopener"
           style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
         >
           {klookEsim.ctaLabel}
@@ -730,7 +730,7 @@ function KlookEsimSlot({ why }: { why: string }) {
 function CompareCtaLink({ cta }: { cta: CompareCta }) {
   if (cta.kind === "klook") {
     return (
-      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+      <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
         {klookEsim.ctaLabel}
       </KlookLink>
     );
@@ -750,7 +750,7 @@ function CompareCtaLink({ cta }: { cta: CompareCta }) {
       href={url}
       className={styles.tdLink}
       target="_blank"
-      rel={cta.kind === "holafly" || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
+      rel={cta.kind === "holafly" || esimId === "simbye" ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
     >
       {label}
     </a>
@@ -1530,7 +1530,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
                           href={url}
                           className={styles.pickCta}
                           target="_blank"
-                          rel={ctaAlt || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                          rel={ctaAlt || esimId === "simbye" ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                         >
                           {label}
                         </a>
@@ -1575,7 +1575,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
                 </span>
               </div>
               <div className={styles.pickCtaRow}>
-                <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+                <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
                   {klookEsim.ctaLabel}
                 </KlookLink>
                 <Link href={PLANS_HREF} className={styles.pickCtaInternal}>

@@ -756,10 +756,10 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 이 <strong>홋카이도 7일 여행</strong>은 <strong>숙박 거점 2곳, 6박</strong>으로 <strong>삿포로 4박</strong>, <strong>후라노 2박</strong>이며 <strong>삿포로에서 출발해 오타루 → 아사히카와 → 비에이와 후라노를 거쳐 삿포로로 돌아오는</strong> 일정입니다. 거리가 짧아 전부 열차로 갈 수 있습니다. JR 홋카이도 수치로 신치토세–삿포로 <strong>{AIRPORT_FARE}</strong>, <strong>36~43분</strong>, 삿포로–오타루 <strong>{OTARU_FARE}</strong>, <strong>약 33분</strong>, 삿포로–아사히카와는 지정석 라일락이나 카무이로 <strong>1시간 25분</strong>, 후라노–삿포로는 여름 라벤더 익스프레스로 <strong>2시간</strong>, 겨울에는 보통열차와 라일락이나 카무이입니다. 합치면 일주일 철도 요금이 1인 <strong>¥18,000 미만</strong>이므로 <strong>7일권 홋카이도 레일 패스 {PASS_7}은 이 경로에서 이득이 아니고</strong>, 4일권 <strong>삿포로–후라노 에어리어 패스 {AREA_FURANO}</strong>가 이득입니다. 대중교통만으로 다니기 가장 어려운 날은 <strong>비에이</strong> 일정이며, <strong>2월</strong>과 <strong>7월</strong>이 완전히 다른 여행이 되는 하루는 <strong>후라노</strong>입니다. 요금과 패스 가격 확인일 {OWN}.
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 삿포로 호텔 보기 →
 </KlookLink>
-              <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 JR 홋카이도 패스 보기 →
 </KlookLink>
             </div>
@@ -885,13 +885,13 @@ JR 홋카이도 패스 보기 →
 <strong>그렇다면 어떤 패스가 맞을까요?</strong> <strong>홋카이도 레일 패스</strong>는 사전 구매 기준 연속 5일 {PASS_5}, 7일 <strong>{PASS_7}</strong>, 10일 {PASS_10}이고 역 구매는 ¥1,000 더 비싸며 어린이는 절반, 플렉시블권은 없습니다. ¥18,000 미만의 요금과 비교하면 7일권은 약 ¥10,000 손해입니다. 연속 4일 <strong>{AREA_FURANO}</strong>의 <strong>삿포로–후라노 에어리어 패스</strong>가 이득입니다. 아사히카와와 후라노 특급 구간만 ¥11,720이고 신치토세, 삿포로, 오타루, 비에이도 포함되어 3~6일차에 쓰면 오타루 왕복까지 더해 본전을 넘습니다(도마무는 포함되지 않습니다). <strong>삿포로–노보리베쓰 에어리어 패스</strong> {AREA_NOBORIBETSU}는 내륙 대신 남쪽 경로용으로 신치토세, 삿포로, 오타루, 노보리베쓰를 포함하고 도야는 포함하지 않습니다. 2026년 10월 1일 개정 후 7일 ¥53,000, 14일 ¥84,000, 21일 ¥105,000인 전국 <strong>JR 패스</strong>는 홋카이도만 도는 여행에 맞지 않습니다. 언제 맞는지는 <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR 패스 가이드(영어)</Link>를 보세요.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 JR 홋카이도 패스 보기 →
 </KlookLink>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 신치토세 이동 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 리조트 셔틀 →
 </KlookLink>
           </div>
@@ -941,7 +941,7 @@ JR 홋카이도 패스 보기 →
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -989,10 +989,10 @@ JR 홋카이도 패스 보기 →
 철도 구간은 거의 예약이 필요 없습니다. 숙소와 가이드 일정 3일은 필요하고, 2월 첫 2주에는 숙소가 이 일주일에서 대체할 수 없는 유일한 예약입니다.
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 삿포로 호텔 보기 →
 </KlookLink>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[2].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[2].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 후라노 호텔 보기 →
 </KlookLink>
             </div>

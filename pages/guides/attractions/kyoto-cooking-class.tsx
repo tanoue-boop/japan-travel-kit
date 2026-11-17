@@ -271,10 +271,10 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
               taught in English, so no Japanese is needed. Checked {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kyotoRamenGyozaClass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoRamenGyozaClass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Ramen &amp; Gyoza Class →
               </KlookLink>
-              <KlookLink href={kyotoSushiOneHourClass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoSushiOneHourClass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 1-Hour Sushi Class →
               </KlookLink>
             </div>
@@ -324,7 +324,7 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
                   {classRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.name}
                         </KlookLink>
                       </td>
@@ -346,13 +346,13 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
             Check the listing for your date: it shows the price, the start time and the meeting address.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoFushimiInariWagashiClass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoFushimiInariWagashiClass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Wagashi by Fushimi Inari →
             </KlookLink>
-            <KlookLink href={kyotoRamenNoodleMaking.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoRamenNoodleMaking.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ramen noodle making →
             </KlookLink>
-            <KlookLink href={kyotoCookingClassesListUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoCookingClassesListUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Kyoto cooking classes →
             </KlookLink>
           </div>
@@ -374,10 +374,10 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
             class makes 4 to 5 dishes with the stock and seasonings explained.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoStyleSushiRoujiya.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoStyleSushiRoujiya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyoto-style sushi at Roujiya →
             </KlookLink>
-            <KlookLink href={kyotoBentoCookingClass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoBentoCookingClass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Morning bento class →
             </KlookLink>
           </div>
@@ -409,7 +409,7 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
             child rate to 15, and asks an adult to help with knives.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoSushiKawaramachiClass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoSushiKawaramachiClass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kawaramachi sushi class →
             </KlookLink>
           </div>
@@ -443,10 +443,10 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
             the rest, the policy is on the listing for your date, so read it before you pay. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoRamenGyozaClass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoRamenGyozaClass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your date for Ramen &amp; Gyoza →
             </KlookLink>
-            <KlookLink href={kyotoFushimiInariWagashiClass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoFushimiInariWagashiClass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the wagashi class →
             </KlookLink>
           </div>
@@ -532,10 +532,10 @@ export default function KyotoCookingClassPage({ updated }: { updated: PageUpdate
               Pick the dish, check the diet and age rules in the table, then check your date.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kyotoRamenGyozaClass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoRamenGyozaClass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Ramen &amp; Gyoza →
               </KlookLink>
-              <KlookLink href={kyotoCookingClassesListUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoCookingClassesListUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 All Kyoto Classes →
               </KlookLink>
             </div>

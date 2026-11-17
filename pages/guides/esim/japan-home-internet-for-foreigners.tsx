@@ -470,7 +470,7 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
               <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.verdictBtn}>
                 See Sakura Mobile home internet →
               </a>
-              <KlookLink href={AIRPORT_WIFI.affiliateUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={AIRPORT_WIFI.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check a pocket WiFi for the wait →
               </KlookLink>
             </div>
@@ -696,7 +696,7 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
             <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.pickCta}>
               See Sakura Mobile home internet →
             </a>
-            <KlookLink href={HOTEL_WIFI.affiliateUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={HOTEL_WIFI.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the hotel-delivery router →
             </KlookLink>
           </div>
@@ -721,7 +721,7 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
             <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.pickCta}>
               See Sakura Mobile home internet →
             </a>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Klook eSIM options →
             </KlookLink>
           </div>
@@ -877,7 +877,7 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
               <a href={SAKURA_AFFILIATE} target="_blank" rel={SAKURA_REL} className={styles.ctaBannerBtn}>
                 View Sakura Mobile home internet →
               </a>
-              <KlookLink href={AIRPORT_WIFI.affiliateUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={AIRPORT_WIFI.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View pocket WiFi rentals →
               </KlookLink>
             </div>

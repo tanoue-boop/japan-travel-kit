@@ -382,10 +382,10 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
               Station.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={arashiyamaEarlyMorningWalk.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={arashiyamaEarlyMorningWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Early Morning Walking Tour →
               </KlookLink>
-              <KlookLink href={arashiyamaTenryujiWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={arashiyamaTenryujiWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Tour From Kyoto Station →
               </KlookLink>
             </div>
@@ -494,7 +494,7 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
                   {tourRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.name}
                         </KlookLink>
                       </td>
@@ -514,13 +514,13 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
             tour may cancel a date with fewer than 2 adults booked 4 days before.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={arashiyamaEarlyMorningWalk.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={arashiyamaEarlyMorningWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Early morning walk →
             </KlookLink>
-            <KlookLink href={arashiyamaTenryujiWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={arashiyamaTenryujiWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tenryu-ji walking tour →
             </KlookLink>
-            <KlookLink href={arashiyamaRickshawTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={arashiyamaRickshawTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Rickshaw tour →
             </KlookLink>
           </div>
@@ -543,10 +543,10 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
             ¥1,500 in total). If you want both held in one booking, use the train and boat day below.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Train, boat &amp; Arashiyama day →
             </KlookLink>
-            <KlookLink href={saganoRomanticTrainTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={saganoRomanticTrainTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sagano train ticket →
             </KlookLink>
             <GygCompareButton slug="arashiyama-bamboo-forest-tour" listing={gygArashiyama} />
@@ -718,10 +718,10 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
               The path is free. A guide adds a quieter route and the temple around it.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={arashiyamaEarlyMorningWalk.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={arashiyamaEarlyMorningWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Early Morning Walk →
               </KlookLink>
-              <KlookLink href={arashiyamaTenryujiWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={arashiyamaTenryujiWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Tenryu-ji Tour →
               </KlookLink>
             </div>

@@ -712,7 +712,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                               href={affiliateUrl}
                               className={styles.tdLink}
                               target="_blank"
-                              rel={row.id === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                              rel={row.id === "simbye" ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                             >
                               {row.cta}
                             </a>
@@ -873,7 +873,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                               href={url}
                               className={styles.tdLink}
                               target="_blank"
-                              rel={ctaAlt || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                              rel={ctaAlt || esimId === "simbye" ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                             >
                               {label}
                             </a>
@@ -1270,7 +1270,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
                           href={url}
                           className={styles.pickCta}
                           target="_blank"
-                          rel={ctaAlt || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                          rel={ctaAlt || esimId === "simbye" ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                         >
                           {label}
                         </a>

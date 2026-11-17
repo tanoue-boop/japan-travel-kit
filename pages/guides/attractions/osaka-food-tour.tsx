@@ -369,10 +369,10 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
               Book the evening if you only book one.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the Shinsekai night tour →
               </KlookLink>
-              <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the Dotonbori daytime walk →
               </KlookLink>
             </div>
@@ -416,10 +416,10 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.1rem" }}>
-            <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Open the Shinsekai listing →
             </KlookLink>
-            <KlookLink href={kuromonMarketFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={kuromonMarketFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Open the Kuromon market walk →
             </KlookLink>
           </div>
@@ -494,10 +494,10 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.2rem" }}>
-            <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check departures on your date →
             </KlookLink>
-            <KlookLink href={shinsekaiHalfDayFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={shinsekaiHalfDayFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Second Shinsekai departure →
             </KlookLink>
           </div>
@@ -568,10 +568,10 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             already slots a food walk into each of them.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={dotonboriCityCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Dotonbori cruise →
             </KlookLink>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Osaka Amazing Pass →
             </KlookLink>
           </div>
@@ -720,10 +720,10 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
               over. Details as listed on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinsekaiNightFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check the Shinsekai night tour →
               </KlookLink>
-              <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={dotonboriDaytimeFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Or the 11:00 Dotonbori walk →
               </KlookLink>
             </div>

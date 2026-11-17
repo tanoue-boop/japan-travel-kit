@@ -554,10 +554,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
               {JMA_CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={sapporoSnowFestivalStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={sapporoSnowFestivalStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Sapporo Hotels for Those Dates →
               </KlookLink>
-              <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 The Otaru Day Out →
               </KlookLink>
             </div>
@@ -647,7 +647,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             <strong>Sapporo TV Tower</strong> observation deck stands at West 1, which is exactly where the
             Odori site&apos;s eleven blocks of sculptures begin, so it is the one paid thing at this festival
             that shows you something walking cannot — the whole site in a straight line, lit.{" "}
-            <KlookLink href={sapporoTvTowerMoiwaSetTicket.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={sapporoTvTowerMoiwaSetTicket.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See the TV Tower and Moiwa set ticket →
             </KlookLink>
           </p>
@@ -699,16 +699,16 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             away.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Otaru &amp; snow park day →
             </KlookLink>
-            <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Asahiyama Zoo day →
             </KlookLink>
-            <KlookLink href={lakeShikotsuIceFestivalHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={lakeShikotsuIceFestivalHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Lake Shikotsu ice festival →
             </KlookLink>
-            <KlookLink href={jozankeiHotSpringBusTrip.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jozankeiHotSpringBusTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Jozankei onsen day →
             </KlookLink>
           </div>
@@ -815,13 +815,13 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             national pass.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               New Chitose transfers →
             </KlookLink>
-            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR Hokkaido Rail Pass →
             </KlookLink>
-            <KlookLink href={lakeShikotsuIceFestivalShuttleBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={lakeShikotsuIceFestivalShuttleBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Lake Shikotsu shuttle seat →
             </KlookLink>
           </div>
@@ -829,7 +829,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             One more arrival-day booking that is not transport: data. Three outdoor sites, a shuttle whose
             2027 timetable is not yet published, and February weather that changes a plan on the day — every
             notice about any of that arrives on your phone rather than at a counter.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -1146,10 +1146,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
               and so do the out-of-town days that only run in these weeks.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={sapporoSnowFestivalStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={sapporoSnowFestivalStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Sapporo Hotels →
               </KlookLink>
-              <KlookLink href={sapporoSnowParkHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={sapporoSnowParkHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Snow Park Half Day →
               </KlookLink>
             </div>

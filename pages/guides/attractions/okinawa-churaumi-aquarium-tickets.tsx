@@ -305,10 +305,10 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
               you are a family or staying in Motobu; book a northern day tour from Naha if nobody wants to drive.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the northern day tour →
               </KlookLink>
-              <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Aquarium ticket on Klook →
               </KlookLink>
               <GygCompareButton slug={SLUG} listing={gygChuraumiAquarium} />
@@ -434,10 +434,10 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             printed here, so check the operator&apos;s own fare page before you ride.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Naha Airport car rental on Klook →
             </KlookLink>
-            <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Northern day tour from Naha →
             </KlookLink>
           </div>
@@ -492,7 +492,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             summer and holiday weeks, the rental car and the day tour are what go first, not the ticket.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Churaumi tickets on Klook →
             </KlookLink>
             <GygCompareButton slug={SLUG} listing={gygChuraumiAquarium} />
@@ -625,10 +625,10 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
               Airport does it on your schedule.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Northern day tour →
               </KlookLink>
-              <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Naha Airport car rental →
               </KlookLink>
             </div>

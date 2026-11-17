@@ -33,7 +33,7 @@ function Buy({
         href={klookLocale ? klookFor(klookEsim.url, klookLocale) : klookEsim.url}
         className={styles.buy}
         target="_blank"
-        rel="sponsored noopener"
+        rel="sponsored nofollow noopener"
       >
         {label}
       </KlookLink>
@@ -41,7 +41,7 @@ function Buy({
   }
   const href = seller === "simbye" ? (plan?.link ?? SIMBYE_JAPAN_DISCOUNT_URL) : getProvider(seller).affiliateUrl;
   return (
-    <a href={href} className={styles.buy} target="_blank" rel="sponsored noopener">
+    <a href={href} className={styles.buy} target="_blank" rel="sponsored nofollow noopener">
       {label}
     </a>
   );

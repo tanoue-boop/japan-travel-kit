@@ -372,10 +372,10 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
               Dates read on the zoo&apos;s and Biei&apos;s official sites {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Winter Zoo &amp; Blue Pond Tour →
               </KlookLink>
-              <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Zoo + Snowmobile Option →
               </KlookLink>
             </div>
@@ -426,13 +426,13 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
             {OTARU_LIGHTS}. Klook does not publish a fixed price — open a listing for your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Winter zoo + Blue Pond light-up →
             </KlookLink>
-            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Otaru + snow park →
             </KlookLink>
-            <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yoichi &amp; Otaru →
             </KlookLink>
           </div>
@@ -533,10 +533,10 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
             at extra cost, on some of its routes; check which route your date runs.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Zoo, Blue Pond &amp; snowmobile option →
             </KlookLink>
-            <KlookLink href={sapporoKokusaiOtaruDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoKokusaiOtaruDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sapporo Kokusai ski + Otaru →
             </KlookLink>
           </div>
@@ -589,7 +589,7 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
             plans are in our <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={lakeShikotsuIceFestivalHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={lakeShikotsuIceFestivalHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Lake Shikotsu ice festival half day →
             </KlookLink>
           </div>
@@ -633,7 +633,7 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             Pick-up messages, snow delays and the penguin-walk notice all arrive on your phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the alternatives.
@@ -714,10 +714,10 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
               for snow.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Winter Asahiyama Tour →
               </KlookLink>
-              <KlookLink href={sapporoSnowFestivalStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={sapporoSnowFestivalStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Hotels at Sapporo Station →
               </KlookLink>
             </div>

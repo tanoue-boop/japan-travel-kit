@@ -393,10 +393,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 การวางแผน<strong>เล่นสกีที่นิเซโกะ</strong>เริ่มจากการเดินทาง เพราะใช้เวลานานที่สุด หน้าการเดินทางของ Niseko United ระบุ<strong>สนามบินชิโตเสะถึงนิเซโกะ {AIRPORT_BUS} ราคา {AIRPORT_BUS_FARE} ด้วยรถบัสตรงแบบจอง</strong> {AIRPORT_TRAIN} ราคา {AIRPORT_TRAIN_FARE} ด้วยรถไฟและรถบัสท้องถิ่นโดยไม่ต้องจอง หรือ 2 ชั่วโมงด้วยรถเช่าหรือรถส่วนตัว ปลายทางคือ<strong>พื้นที่สกี 4 แห่งที่ใช้บัตรใบเดียวกันได้</strong>: <strong>Grand HIRAFU</strong> (ใหญ่สุด มีหมู่บ้าน) <strong>Hanazono</strong> (เงียบสุด มีโรงเรียนสกีของรีสอร์ต) <strong>Niseko Village</strong> (โรงแรม ski-in, ski-out) และ <strong>Annupuri</strong> (กว้างและชันน้อยสุด) ทั้งสี่เปิด <strong>{SEASON_OPEN}</strong> ส่วน Grand HIRAFU และ Annupuri เปิดถึง <strong>5 พฤษภาคม 2027</strong> All Mountain Pass หนึ่งวัน <strong>{PEAK_DAY}</strong> ในช่วงไฮซีซัน <strong>{PEAK_FROM} ถึง {PEAK_TO}</strong> และ <strong>{EARLY_DAY}</strong> ต้นฤดูหรือใบไม้ผลิ สิ่งที่ต้องจองล่วงหน้า ไม่ใช่ซื้อหน้างาน คือ<strong>คอร์สเรียนสกี</strong> โรงเรียนสกีของรีสอร์ตระบุว่าในช่วงไฮซีซันของตน {LESSON_PEAK} จองล่วงหน้าได้เฉพาะเต็มวัน ตัวเลขทั้งหมดมาจากผู้ให้บริการ ตรวจสอบอีกครั้งเมื่อ {SEASON}
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 ทริปนิเซโกะจากซัปโปโร →
 </KlookLink>
-              <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 ชัตเทิลสนามบินไปนิเซโกะ →
 </KlookLink>
             </div>
@@ -453,13 +453,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 เวลาและค่าโดยสารในตารางทั้งหมดของ Niseko United จากหน้า “Getting to Niseko” ตรวจสอบอีกครั้งเมื่อ {SEASON} ส่วนหมายเหตุเป็นของเรา สิ่งหนึ่งที่ตารางบอกไม่ได้แต่หน้าสินค้าบอกได้ คือรถบัสคันนั้นรับอุปกรณ์สกีและกระเป๋าต่อคนเท่าไร รายการชัตเทิลรีสอร์ตระบุกระเป๋าหนึ่งใบกับอุปกรณ์ ซึ่งทำให้ต่างจากรถไฟ
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ชัตเทิลรีสอร์ตนิเซโกะ →
 </KlookLink>
-            <KlookLink href={klookFor(hokkaidoPrivateCarCharterNiseko.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hokkaidoPrivateCarCharterNiseko.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 รถส่วนตัวไปนิเซโกะ →
 </KlookLink>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 รถรับส่งสนามบินชิโตเสะ →
 </KlookLink>
           </div>
@@ -539,10 +539,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 <strong>รายละเอียดหนึ่งที่เปลี่ยนแผน</strong> บัตรลิฟต์ต้นฤดูซึ่งเป็นสัปดาห์ที่ถูกที่สุดของหน้าหนาว 28 พฤศจิกายนถึง 11 ธันวาคม 2026 <strong>ไม่ขายออนไลน์</strong>ตามหมายเหตุของ Niseko United สกีที่ถูกที่สุดของฤดูจึงต้องซื้อที่เคาน์เตอร์เมื่อมาถึง จึงจองล่วงหน้าจากบ้านไม่ได้ บัตรลิฟต์หลายวันมีถึงเจ็ดวันและมีตั๋ว 50 ชั่วโมงเฉพาะออนไลน์ เราแสดงเฉพาะหนึ่งวันเพราะอ่านตารางของรีสอร์ตได้ครบ ตรวจสอบราคาทั้งหมดเมื่อ {SEASON}
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ทริปพร้อมบัตรลิฟต์ Hirafu + รถบัส →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 จองเช่าอุปกรณ์นิเซโกะ →
 </KlookLink>
           </div>
@@ -565,13 +565,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 ราคาคอร์สเรียนส่วนตัวของโรงเรียนคิดต่อกลุ่มไม่เกินหกคน ตามหน้าที่ตรวจสอบเมื่อ {SEASON}: Niseko Classic หกชั่วโมง ไฮซีซัน <strong>¥120,000</strong> ปกติ ¥93,000 ต้นฤดูและใบไม้ผลิ ¥87,000 คอร์สเรียนเช้า ¥93,000, ¥71,000 และ ¥59,000 คอร์สเรียนบ่าย ¥55,000, ¥43,000 และ ¥43,000 คอร์สเรียนกลุ่มมีราคาของตัวเอง และไม่เปิด 28 พฤศจิกายนถึง 7 ธันวาคม เปิดหน้าสินค้าเพื่อดูราคาตัวแทนตามวันของคุณ
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 คอร์สเรียนภาษาอังกฤษ Hirafu →
 </KlookLink>
-            <KlookLink href={klookFor(rhythmNisekoPrivateSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(rhythmNisekoPrivateSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 คอร์สเรียนส่วนตัว Rhythm →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoRusutsuKiroroPrivateLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoRusutsuKiroroPrivateLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 นิเซโกะ / รุสึทสึ / คิโรโระ →
 </KlookLink>
           </div>
@@ -614,10 +614,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 ชื่อพื้นที่และวันปิดของ Niseko United ตัวเลขเส้นทาง Grand HIRAFU ของ Grand Hirafu: 22 เส้นทาง (เริ่มต้น 9 กลาง 6 สูง 7) กระเช้า 2 แห่ง เก้าอี้ลิฟต์ 7 แห่ง ความสูงต่าง 940 ม. จากยอด 1,200 ม. ถึงฐาน 260 ม. 135 เฮกตาร์ เส้นทางยาวสุด 5,300 ม. และชันสุด 40° ตรวจสอบทั้งคู่เมื่อ {OWN} Niseko United ระบุว่าที่พักยอดนิยมและช่วงวันหยุดไฮซีซันเต็มเร็ว แต่ไม่เผยแพร่ว่าเร็วแค่ไหน ที่นี่จึงไม่ระบุเช่นกัน
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ดูโรงแรมนิเซโกะ →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiHotSpringTourFromSapporo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiHotSpringTourFromSapporo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 2 หรือ 3 คืน จองครั้งเดียว →
 </KlookLink>
           </div>
@@ -706,7 +706,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-อีกสิ่งที่ต้องเตรียม: <strong>อินเทอร์เน็ตมือถือ</strong> แผนแต่ละวันที่นิเซโกะขึ้นอยู่กับอากาศมากกว่าทริปสกีอื่นในญี่ปุ่น ลิฟต์หยุดและเปิดใหม่ระหว่างพายุ พื้นที่ปิด รถรับส่งล่าช้า และทุกประกาศแจ้งทางมือถือ ไม่ใช่ที่บอร์ดเชิงเขา <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดู Klook eSIM →</KlookLink> <Link href="/th/guides/esim/best-esim-japan">คู่มือ eSIM ญี่ปุ่น</Link>เปรียบเทียบกับทางเลือกอื่น และ<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">คู่มือประกันเล่นสกีในญี่ปุ่น (ภาษาอังกฤษ)</Link>พูดถึงอีกเรื่องที่ควรจัดการก่อนซื้อบัตรลิฟต์ คือกรมธรรม์ของคุณคุ้มครองกีฬาหิมะหรือไม่ และมีเงื่อนไขอะไร
+อีกสิ่งที่ต้องเตรียม: <strong>อินเทอร์เน็ตมือถือ</strong> แผนแต่ละวันที่นิเซโกะขึ้นอยู่กับอากาศมากกว่าทริปสกีอื่นในญี่ปุ่น ลิฟต์หยุดและเปิดใหม่ระหว่างพายุ พื้นที่ปิด รถรับส่งล่าช้า และทุกประกาศแจ้งทางมือถือ ไม่ใช่ที่บอร์ดเชิงเขา <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>ดู Klook eSIM →</KlookLink> <Link href="/th/guides/esim/best-esim-japan">คู่มือ eSIM ญี่ปุ่น</Link>เปรียบเทียบกับทางเลือกอื่น และ<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">คู่มือประกันเล่นสกีในญี่ปุ่น (ภาษาอังกฤษ)</Link>พูดถึงอีกเรื่องที่ควรจัดการก่อนซื้อบัตรลิฟต์ คือกรมธรรม์ของคุณคุ้มครองกีฬาหิมะหรือไม่ และมีเงื่อนไขอะไร
 </p>
         </section>
 
@@ -746,10 +746,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 ลิฟต์เปิด {SEASON_OPEN} และราคาไฮซีซันเริ่ม {PEAK_FROM} รถรับส่งและคอร์สเรียนคือสองการจองที่มีกำหนดเวลา ตั้งแต่ 14 ธันวาคมถึง 3 มกราคม และ 6 ถึง 12 กุมภาพันธ์ โรงเรียนของรีสอร์ตรับจองล่วงหน้าเฉพาะเต็มวัน
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 ดูทริปสกีนิเซโกะ →
 </KlookLink>
-              <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 จองคอร์สเรียนสกีนิเซโกะ →
 </KlookLink>
             </div>

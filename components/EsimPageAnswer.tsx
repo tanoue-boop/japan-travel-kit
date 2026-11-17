@@ -25,7 +25,7 @@ export default function EsimPageAnswer({ route }: { route: string }) {
         <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
           {answer}
         </p>
-        <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+        <a href={SIMBYE_JAPAN_DISCOUNT_URL} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
           Get Simbye eSIM{from ? ` from ${formatUsd(from.priceUsd)}` : ""} →
         </a>
         <EsimAltLinks />
@@ -45,7 +45,7 @@ export function EsimAltLinks() {
       <KlookLink
         href={klookEsim.url}
         target="_blank"
-        rel="sponsored noopener"
+        rel="sponsored nofollow noopener"
         style={{ color: "var(--accent)", fontWeight: 600 }}
       >
         {klookEsim.ctaLabel}
@@ -54,7 +54,7 @@ export function EsimAltLinks() {
       <a
         href={getProvider("airalo").affiliateUrl}
         target="_blank"
-        rel="sponsored noopener"
+        rel="sponsored nofollow noopener"
         style={{ color: "var(--accent)", fontWeight: 600 }}
       >
         Get Airalo eSIM →

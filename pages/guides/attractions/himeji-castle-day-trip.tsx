@@ -427,10 +427,10 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
               himejicastle.jp on 11 November 2026.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Himeji Day From Osaka →
               </KlookLink>
-              <KlookLink href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kansai Area Pass →
               </KlookLink>
             </div>
@@ -578,10 +578,10 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             listing before you book a date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check a Himeji Coach Day →
             </KlookLink>
-            <KlookLink href={GUIDED_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={GUIDED_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Guided Castle &amp; Koko-en →
             </KlookLink>
           </div>
@@ -680,13 +680,13 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             quoted now are not comparing the same thing.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Himeji Coach Day From Osaka →
             </KlookLink>
-            <KlookLink href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Kansai Area Pass →
             </KlookLink>
-            <KlookLink href={WIDE_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={WIDE_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               WIDE Pass (Shinkansen) →
             </KlookLink>
           </div>
@@ -924,10 +924,10 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
               the trains and the timings handled — or want Engyoji in the same day — a coach day does both.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Himeji Day Trips →
               </KlookLink>
-              <KlookLink href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Kansai Area Pass →
               </KlookLink>
             </div>

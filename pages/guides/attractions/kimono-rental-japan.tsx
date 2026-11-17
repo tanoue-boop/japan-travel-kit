@@ -325,10 +325,10 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
               the walk back to the shop into your route. Details from the shops&apos; websites, {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Kimono Rental — Asakusa →
               </KlookLink>
-              <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Kimono Rental — Kyoto →
               </KlookLink>
             </div>
@@ -492,10 +492,10 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
             shop below with that in mind.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
-            <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+            <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
               Check Asakusa availability →
             </KlookLink>
-            <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+            <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
               Check Kyoto availability →
             </KlookLink>
           </div>
@@ -695,10 +695,10 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
               many shops. Reserve ahead in spring and autumn, and remember the 17:30 return.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={KIMONO_ASAKUSA_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Asakusa Kimono Rental →
               </KlookLink>
-              <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={KIMONO_KYOTO_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Kyoto Kimono Rental →
               </KlookLink>
               <GygCompareButton slug="kimono-rental-japan" listing={gygKyotoKimono} />

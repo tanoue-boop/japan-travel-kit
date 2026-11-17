@@ -393,10 +393,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 规划<strong>二世谷滑雪</strong>，要先考虑交通，因为交通最花时间：Niseko United 的交通页写明<strong>新千岁机场到二世谷，预约直达巴士 {AIRPORT_BUS}、{AIRPORT_BUS_FARE}</strong>，不需预约的 JR 列车加公交车 {AIRPORT_TRAIN}、{AIRPORT_TRAIN_FARE}，租车或包车 2 小时。到达的是<strong>一张缆车票通用的四座相连雪场</strong>：<strong>Grand HIRAFU</strong>（最大，有村镇）、<strong>Hanazono</strong>（最安静，有度假村滑雪学校）、<strong>Niseko Village</strong>（ski-in, ski-out 酒店）和 <strong>Annupuri</strong>（最宽最缓）。四区都在 <strong>{SEASON_OPEN}</strong>开放，Grand HIRAFU 和 Annupuri 营业到 <strong>2027 年 5 月 5 日</strong>。All Mountain Pass 一日票在 <strong>{PEAK_FROM} 到 {PEAK_TO}</strong>的旺季是 <strong>{PEAK_DAY}</strong>，早季或春季 <strong>{EARLY_DAY}</strong>。唯一需要提前预约、不能当天购买的是<strong>滑雪课程</strong>：度假村学校表示其旺季 {LESSON_PEAK} 只能预约全天课。所有数字均出自运营方官方，{SEASON} 重新核查。
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 札幌出发二世谷一日 →
 </KlookLink>
-              <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 二世谷机场接驳 →
 </KlookLink>
             </div>
@@ -453,13 +453,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 表中时间和票价都出自 Niseko United 的「Getting to Niseko」页面，{SEASON} 重新核查；备注栏是我们写的。有一件事表格看不出来，商品页才有：这班巴士能不能放雪具、每人可带多少行李。度假村接驳巴士的商品写明一件行李加雪具，这正是它和 JR 列车不同的地方。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 二世谷度假村接驳 →
 </KlookLink>
-            <KlookLink href={klookFor(hokkaidoPrivateCarCharterNiseko.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hokkaidoPrivateCarCharterNiseko.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 二世谷包车 →
 </KlookLink>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 新千岁接送 →
 </KlookLink>
           </div>
@@ -539,10 +539,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 <strong>有一个会影响行程安排的实际细节。</strong>早季票是冬季最便宜的一周（2026 年 11 月 28 日到 12 月 11 日），但 Niseko United 注明<strong>不在网上销售</strong>。所以全季最便宜的滑雪要到达后在柜台买，这没问题，只是无法在家先锁定。多日票最长七天，另有仅限网上的 50 小时票；这里只列一日票，因为那是度假村票价表中可以完整核查的部分。所有价格核查日期：{SEASON}。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 比罗夫缆车票＋巴士行程 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 预约二世谷雪具 →
 </KlookLink>
           </div>
@@ -565,13 +565,13 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
 学校的私人课最多六人一组，根据官网（核查日期：{SEASON}）：六小时 Niseko Classic 旺季 <strong>¥120,000</strong>、普通周 ¥93,000、早季和春季 ¥87,000；上午课 ¥93,000、¥71,000、¥59,000；下午课 ¥55,000、¥43,000、¥43,000。团体课另有票价，11 月 28 日到 12 月 7 日不开课。第三方预订平台的价格请打开商品页按日期查看。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 比罗夫英语课 →
 </KlookLink>
-            <KlookLink href={klookFor(rhythmNisekoPrivateSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(rhythmNisekoPrivateSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 Rhythm 私人课 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoRusutsuKiroroPrivateLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoRusutsuKiroroPrivateLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 二世谷／留寿都／喜乐乐 →
 </KlookLink>
           </div>
@@ -614,10 +614,10 @@ Rhythm 私人课 →
 区域名称和关闭日期出自 Niseko United，Grand HIRAFU 雪道数字出自 Grand Hirafu：22 条雪道（初级 9、中级 6、高级 7）、2 座缆车和 7 座吊椅、垂直落差 940 米（山顶 1,200 米、山脚 260 米）、135 公顷、最长雪道 5,300 米、最陡 40°。均于 {OWN} 核查。Niseko United 表示最热门的住宿和旺季假期很早订满，但没有公布多早，所以这里也不写。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(japanWinterStayAreas[7].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 查看二世谷酒店 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiHotSpringTourFromSapporo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiHotSpringTourFromSapporo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 2 或 3 晚一次订好 →
 </KlookLink>
           </div>
@@ -706,7 +706,7 @@ Rhythm 私人课 →
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-还有一项准备不属于以上任何一类：<strong>上网</strong>。二世谷的一天比日本其他滑雪旅行更受天气左右：缆车在暴风雪中暂停又重开、区域关闭、公路接送延误，这些公告都会通过手机发布，而不是张贴在山脚下的公告栏。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> <Link href="/zh-cn/guides/esim/best-esim-japan">日本上网卡推荐攻略</Link>比较了其他选择，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">日本滑雪旅行保险攻略（英文）</Link>则说明买缆车票前要处理的另一件事：你的保单是否覆盖雪上运动，以及有什么条件。
+还有一项准备不属于以上任何一类：<strong>上网</strong>。二世谷的一天比日本其他滑雪旅行更受天气左右：缆车在暴风雪中暂停又重开、区域关闭、公路接送延误，这些公告都会通过手机发布，而不是张贴在山脚下的公告栏。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> <Link href="/zh-cn/guides/esim/best-esim-japan">日本上网卡推荐攻略</Link>比较了其他选择，<Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">日本滑雪旅行保险攻略（英文）</Link>则说明买缆车票前要处理的另一件事：你的保单是否覆盖雪上运动，以及有什么条件。
 </p>
         </section>
 
@@ -746,10 +746,10 @@ Rhythm 私人课 →
 缆车 {SEASON_OPEN}开放，旺季价 {PEAK_FROM}开始。接送和滑雪课程是有日期的两项预订：12 月 14 日到 1 月 3 日和 2 月 6 到 12 日，度假村学校只接受全天课预约。
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(nisekoHirafuLiftPassBusTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 查看二世谷滑雪行程 →
 </KlookLink>
-              <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(nisekoHirafuEnglishSkiLesson.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 预约二世谷滑雪课程 →
 </KlookLink>
             </div>

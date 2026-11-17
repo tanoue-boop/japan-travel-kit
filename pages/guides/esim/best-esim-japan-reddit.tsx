@@ -473,12 +473,12 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
                 <p className={styles.verdictStatValue}>Holafly unlimited — {priceFrom("holafly")}</p>
               </div>
             </div>
-            <a href={link("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+            <a href={link("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Get Simbye Japan eSIM from {priceFrom("simbye")} →
             </a>
             <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
               Already booking tickets or transport on Klook?{" "}
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                 {klookEsim.ctaLabel}
               </KlookLink>{" "}
               — one checkout for the eSIM and the rest of the trip. Prefer Airalo&apos;s app?{" "}
@@ -538,7 +538,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             from the searches in the{" "}
             <Link href="#read-it-yourself" className={tools.inlineLink}>section below</Link>.
           </p>
-          <a href={link("simbye")} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+          <a href={link("simbye")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
             Get Simbye Japan eSIM from {priceFrom("simbye")} →
           </a>
         </section>
@@ -711,7 +711,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               href={klookEsim.url}
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               {klookEsim.ctaLabel}
             </KlookLink>
@@ -872,7 +872,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             href={link("airalo")}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
           >
             {HOLAFLY_ALT_LABEL}
           </a>
@@ -978,7 +978,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               href={klookEsim.url}
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               {klookEsim.ctaLabel}
             </KlookLink>
@@ -1019,7 +1019,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
                     <td className={styles.tdNetwork}>{klookEsim.specNetwork}</td>
                     <td>
                       Unranked: from US$1.05, no plan named.{" "}
-                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         Open →
                       </KlookLink>
                     </td>

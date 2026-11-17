@@ -248,10 +248,10 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               under-4s are free, and only Borderless sells tickets at the door (¥200 more for an adult).
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Planets tickets →
               </KlookLink>
-              <KlookLink href={teamlabBorderlessTicketUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={teamlabBorderlessTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Borderless tickets →
               </KlookLink>
             </div>
@@ -353,10 +353,10 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check Planets tickets for your date →
             </KlookLink>
-            <KlookLink href={teamlabBorderlessTicketUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={teamlabBorderlessTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check Borderless tickets for your date →
             </KlookLink>
           </div>

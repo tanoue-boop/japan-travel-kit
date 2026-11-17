@@ -372,10 +372,10 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
               if you want an onsen on the route, and the train if you are staying the night.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Yufuin &amp; Beppu Hells Tour →
               </KlookLink>
-              <KlookLink href={yufuinHyotanOnsenTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={yufuinHyotanOnsenTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Tour With Hyotan Onsen →
               </KlookLink>
             </div>
@@ -427,7 +427,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
                   {tourRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.name}
                         </KlookLink>
                       </td>
@@ -449,13 +449,13 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             maintenance dates shown there were 22 June to 17 July 2026, so check for later notices.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yufuin no Mori &amp; hells tour →
             </KlookLink>
-            <KlookLink href={yufuinKinrinNyoirinjiTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yufuinKinrinNyoirinjiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour with Kinrin Lake →
             </KlookLink>
-            <KlookLink href={yufuinBeppuRopewayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yufuinBeppuRopewayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour with the ropeway →
             </KlookLink>
           </div>
@@ -499,10 +499,10 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             few days, Klook&apos;s guide lists Hakata, Yufuin and Beppu inside the North Kyushu pass.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR Kyushu Rail Pass →
             </KlookLink>
-            <KlookLink href={fukuokaPrivateCharter.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fukuokaPrivateCharter.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private car from Fukuoka →
             </KlookLink>
           </div>
@@ -571,7 +571,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             a coach stop may not leave time for it.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yufuinHyotanOnsenTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yufuinHyotanOnsenTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hyotan Onsen tour →
             </KlookLink>
           </div>
@@ -629,10 +629,10 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             cannot join midway. Policies differ by listing, so read yours before you pay. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your date on Klook →
             </KlookLink>
-            <KlookLink href={yufuinBeppuHitaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yufuinBeppuHitaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour with Hita old town →
             </KlookLink>
           </div>
@@ -707,10 +707,10 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
               A tour covers Beppu and Yufuin in 10 to 10.5 hours from Fukuoka, with no connections to plan.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Hells Tour →
               </KlookLink>
-              <KlookLink href={yufuinKinrinNyoirinjiTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={yufuinKinrinNyoirinjiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Kinrin Lake Tour →
               </KlookLink>
             </div>

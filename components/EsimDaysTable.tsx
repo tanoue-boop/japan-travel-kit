@@ -65,7 +65,7 @@ export default function EsimDaysTable({ defaultDays = 7 }: { defaultDays?: numbe
               )}
             </td>
             <td className={styles.buyCell}>
-              <a href={simbyeTrackedUrl(PLACEMENT, tag)} className={styles.buy} target="_blank" rel="sponsored noopener">
+              <a href={simbyeTrackedUrl(PLACEMENT, tag)} className={styles.buy} target="_blank" rel="sponsored nofollow noopener">
                 Get Simbye →
               </a>
             </td>
@@ -80,7 +80,7 @@ export default function EsimDaysTable({ defaultDays = 7 }: { defaultDays?: numbe
                 adPlacement={PLACEMENT}
                 className={styles.buy}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
               >
                 Check Klook eSIM →
               </KlookLink>
@@ -91,7 +91,7 @@ export default function EsimDaysTable({ defaultDays = 7 }: { defaultDays?: numbe
             <td>{airalo?.name ?? "—"}</td>
             <td className={styles.price}>{airalo ? <strong>{formatUsd(airalo.priceUsd)}</strong> : "—"}</td>
             <td className={styles.buyCell}>
-              <a href={airaloTrackedUrl(PLACEMENT, tag)} className={styles.buy} target="_blank" rel="sponsored noopener">
+              <a href={airaloTrackedUrl(PLACEMENT, tag)} className={styles.buy} target="_blank" rel="sponsored nofollow noopener">
                 Get Airalo →
               </a>
             </td>

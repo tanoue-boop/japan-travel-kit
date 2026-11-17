@@ -400,10 +400,10 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
               rides. Fares read off the Fujikyu bus site on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Compare Kawaguchiko day tours on Klook →
               </KlookLink>
-              <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Or just the bus seat →
               </KlookLink>
             </div>
@@ -473,7 +473,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             works through whether a pass earns its price across the rest of a trip.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo–Kawaguchiko bus on Klook →
             </KlookLink>
           </div>
@@ -576,7 +576,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             passport holders only and your passport is checked at purchase.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={mtFujiPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={mtFujiPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Mt. Fuji Pass on Klook →
             </KlookLink>
           </div>
@@ -819,7 +819,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
               evening, so the outbound and the return are the two bookings worth settling first. Klook
               checks out in English and takes foreign cards.
             </p>
-            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View Tokyo–Kawaguchiko bus tickets on Klook →
             </KlookLink>
           </div>

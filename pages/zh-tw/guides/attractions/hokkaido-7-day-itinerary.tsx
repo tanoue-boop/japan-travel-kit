@@ -765,10 +765,10 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 <strong>北海道7天行程的結論是 7 天 6 晚只住兩個地方：札幌 4 晚、富良野 2 晚</strong>，路線是<strong>札幌 → 小樽（JR {OTARU_FARE}、約 33 分鐘）→ 旭川（特急 1 小時 25 分鐘）→ 美瑛・富良野 → 札幌</strong>，全程搭火車、不用開車。這條路線的鐵路交通費每人<strong>低於 ¥18,000</strong>，所以 4 日<strong>札幌–富良野區域周遊券 {AREA_FURANO}</strong> 比 {PASS_7} 的 7 日北海道周遊券划算（周遊券價格 {RECHECK} 再次查核）。冬季版把第 2 天排在 <strong>2027 年 2 月 4–11 日</strong>的<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours">札幌雪祭 2027</Link>（三會場免費），夏季版則以 7 月富良野薰衣草為主。全程距離都短到能搭火車移動，依 JR 北海道數字：新千歲到札幌 <strong>{AIRPORT_FARE}</strong>、<strong>36 到 43 分鐘</strong>；札幌到小樽 <strong>{OTARU_FARE}</strong>、<strong>約 33 分鐘</strong>；札幌到旭川搭對號座 Lilac 或 Kamui <strong>1 小時 25 分鐘</strong>；富良野回札幌夏季搭薰衣草特快<strong>兩小時</strong>，冬季搭普通列車加 Lilac 或 Kamui。唯一不方便靠大眾運輸遊覽的是<strong>美瑛</strong>；<strong>富良野</strong>在 <strong>2 月</strong>和 <strong>7 月</strong>是完全不同的景色。票價與周遊券價格查核日：{OWN}。
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 查看札幌飯店 →
 </KlookLink>
-              <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 查看 JR 北海道周遊券 →
 </KlookLink>
             </div>
@@ -897,13 +897,13 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 <strong>那該買哪一張？</strong><strong>北海道周遊券</strong>抵達前購買連續 5 天 {PASS_5}、7 天 <strong>{PASS_7}</strong>、10 天 {PASS_10}，車站購買貴 ¥1,000，兒童半價，沒有非連續使用的版本，所以和低於 ¥18,000 的票價相比，買 7 日券會多花約 ¥10,000。連續 4 天 <strong>{AREA_FURANO}</strong> 的<strong>札幌–富良野區域周遊券</strong>才划算：旭川和富良野特急段就要 ¥11,720，還涵蓋新千歲、札幌、小樽和美瑛，用在第 3 到第 6 天，再加上小樽來回就划算（不含 Tomamu）。<strong>札幌–登別區域周遊券</strong> {AREA_NOBORIBETSU} 是往南路線的版本，涵蓋新千歲、札幌、小樽和登別，不含洞爺。全國版 <strong>JR Pass</strong> 在 2026 年 10 月 1 日調漲後 7 天 ¥53,000、14 天 ¥84,000、21 天 ¥105,000，不適合只玩北海道；何時適合請看 <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 查看 JR 北海道周遊券 →
 </KlookLink>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 新千歲接送 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 二世谷度假村接駁 →
 </KlookLink>
           </div>
@@ -953,7 +953,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -1001,10 +1001,10 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 鐵路段幾乎不用預訂。住宿和三天導覽行程要訂，而 2 月上旬的住宿是這趟行程唯一沒有替代方案的部分。
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 查看札幌飯店 →
 </KlookLink>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[2].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[2].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 查看富良野飯店 →
 </KlookLink>
             </div>

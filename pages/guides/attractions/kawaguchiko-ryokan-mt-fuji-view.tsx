@@ -339,10 +339,10 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
               Fuji-facing room with a shared hot spring, and La Vista for free private baths.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kawaguchikoAsafuji.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kawaguchikoAsafuji.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Asafuji on Klook →
               </KlookLink>
-              <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Fufu on Klook →
               </KlookLink>
             </div>
@@ -374,7 +374,7 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
                   {inns.map((row) => (
                     <tr key={row.hotel.title}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.hotel.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.hotel.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.hotel.title}
                         </KlookLink>
                       </td>
@@ -397,19 +397,19 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             than hot spring water. Mifujien has no rooms with an open-air bath.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kawaguchikoMifujien.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoMifujien.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hotel Mifujien →
             </KlookLink>
-            <KlookLink href={kawaguchikoLaVista.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoLaVista.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               La Vista →
             </KlookLink>
-            <KlookLink href={kawaguchikoRoyalHotel.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoRoyalHotel.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Royal Hotel Kawaguchiko →
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>One more on Klook.</strong>{" "}
-            <KlookLink href={fujikawaguchikoResortHotel.url} target="_blank" rel="sponsored noopener">
+            <KlookLink href={fujikawaguchikoResortHotel.url} target="_blank" rel="sponsored nofollow noopener">
               Fujikawaguchiko Resort Hotel
             </KlookLink>{" "}
             is about 11 minutes on foot from the station on its Klook listing. Its own site did not load, so its
@@ -429,10 +429,10 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             only. None of the six inns states a tattoo rule on its site, so ask first.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Fufu rooms →
             </KlookLink>
-            <KlookLink href={kawaguchikoLaVista.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoLaVista.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check La Vista rooms →
             </KlookLink>
           </div>
@@ -476,7 +476,7 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             From the station, use the inn&apos;s shuttle: most pick up only if you call or book.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book the Fuji highway bus →
             </KlookLink>
           </div>
@@ -548,10 +548,10 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             listings for Asafuji, Fufu and Kawaguchiko Hotel show a hot spring tax of ¥150 per person per night.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your dates at Fufu →
             </KlookLink>
-            <KlookLink href={kawaguchikoAsafuji.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoAsafuji.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your dates at Asafuji →
             </KlookLink>
           </div>
@@ -568,7 +568,7 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             our <Link href="/guides/attractions/mt-fuji-day-tour-from-tokyo">Mt Fuji day tour guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kawaguchiko day bus tour →
             </KlookLink>
           </div>
@@ -638,10 +638,10 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
               Fuji-facing and private-bath rooms are limited at every inn. Check your dates first.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Fufu Kawaguchiko →
               </KlookLink>
-              <KlookLink href={fujikawaguchikoHotels.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={fujikawaguchikoHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 All Fujikawaguchiko Hotels →
               </KlookLink>
             </div>

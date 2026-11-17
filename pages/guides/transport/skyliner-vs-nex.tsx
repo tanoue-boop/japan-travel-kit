@@ -392,10 +392,10 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
               specific train, so if you buy ahead, pick the one that matches it:
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "0.5rem" }}>
-              <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Ueno side: the Skyliner ticket on Klook →
               </KlookLink>
-              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 West side: the N&apos;EX round trip →
               </KlookLink>
             </div>
@@ -486,10 +486,10 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
             you book.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Skyliner ticket on Klook →
             </KlookLink>
-            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the N&apos;EX round trip on Klook →
             </KlookLink>
           </div>
@@ -747,10 +747,10 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
               terms shown for your date before you pay.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Skyliner ticket on Klook →
               </KlookLink>
-              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 N&apos;EX round trip →
               </KlookLink>
             </div>

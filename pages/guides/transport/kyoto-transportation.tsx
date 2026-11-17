@@ -401,7 +401,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.verdictBtn}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Get Suica IC Card on Klook →
             </KlookLink>
@@ -621,7 +621,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
           >
             Get Suica IC Card on Klook →
           </KlookLink>
@@ -738,10 +738,10 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
             it covers the JR lines to Inari and Saga-Arashiyama, which the Kyoto passes do not.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={PASS_URL} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={PASS_URL} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Book Kyoto Bus &amp; Subway Day Pass on Klook →
             </KlookLink>
-            <KlookLink href={jrKansaiAreaPass.url} className={styles.pickCtaInternal} target="_blank" rel="sponsored noopener">
+            <KlookLink href={jrKansaiAreaPass.url} className={styles.pickCtaInternal} target="_blank" rel="sponsored nofollow noopener">
               Check the Kansai Area Pass on Klook →
             </KlookLink>
           </div>
@@ -781,7 +781,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265372&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F18400-jr-haruka-airport-express-train-tickets-osaka%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Book Haruka Airport Express on Klook →
             </KlookLink>
@@ -789,7 +789,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.pickCtaInternal}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Book JR Pass on Klook →
             </KlookLink>

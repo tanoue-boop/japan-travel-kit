@@ -155,7 +155,7 @@ export default function BookingEsimCard({ lead }: { lead?: string }) {
             href={simbyeTrackedUrl(ESIM_PLACEMENT.bookingCard, pageTag(route))}
             className={styles.buy}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
           >
             {copy.simbyeCta.replace("{price}", price)}
           </a>
@@ -169,7 +169,7 @@ export default function BookingEsimCard({ lead }: { lead?: string }) {
             adPlacement={ESIM_PLACEMENT.bookingCard}
             className={styles.buySecondary}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
           >
             {copy.klookCta}
           </KlookLink>

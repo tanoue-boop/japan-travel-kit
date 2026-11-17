@@ -352,10 +352,10 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
               Line). Times from USJ&apos;s and each hotel&apos;s official sites, read {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={parkFrontHotelUsjKlook.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={parkFrontHotelUsjKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 The Park Front Hotel →
               </KlookLink>
-              <KlookLink href={usjStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={usjStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 All Hotels Near USJ →
               </KlookLink>
             </div>
@@ -398,7 +398,7 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
                       <td style={thStyle}>{row.station}</td>
                       <td style={thStyle}>{row.extras}</td>
                       <td style={thStyle}>
-                        <KlookLink href={row.href ?? usjStayAreas[0].url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.href ?? usjStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.href ? "Klook →" : "Hotel search →"}
                         </KlookLink>
                       </td>
@@ -435,10 +435,10 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
             <a href="https://parkfront-hotel.com/faq/" target="_blank" rel="noopener">parkfront-hotel.com</a>, {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={usjStudioPassUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Studio Pass on Klook →
             </KlookLink>
-            <KlookLink href={usjExpressPassUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={usjExpressPassUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Express Pass on Klook →
             </KlookLink>
           </div>
@@ -547,7 +547,7 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
             Nishikujo. Read on kate.co.jp and usj.co.jp, {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kansaiAirportLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kansaiAirportLimousineBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kansai Airport limousine bus →
             </KlookLink>
           </div>
@@ -634,10 +634,10 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
               Book the room and the Studio Pass for the same date, as soon as the date is fixed.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={usjStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={usjStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Hotels Near USJ →
               </KlookLink>
-              <KlookLink href={parkFrontHotelUsjKlook.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={parkFrontHotelUsjKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 The Park Front Hotel →
               </KlookLink>
             </div>

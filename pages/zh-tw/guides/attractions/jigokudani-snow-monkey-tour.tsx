@@ -360,7 +360,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             <KlookLink
               href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -470,10 +470,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             Last checked: {RECHECKED_ISO} · {ACCESS_URL}
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 在 Klook 查看 JR EAST PASS →
 </KlookLink>
-            <KlookLink href={klookFor(snowMonkeysZenkojiSakeNaganoTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(snowMonkeysZenkojiSakeNaganoTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 長野站出發導覽團 →
 </KlookLink>
           </div>
@@ -545,10 +545,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 <strong>何時預訂：</strong>跟團行程每天有名額上限，泡湯季只有四個月，日期一確定就訂，假期週優先。付款前請查看商品頁的取消條款，高速公路下雪是冬季行程最常變動的原因。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jigokudaniZenkojiSukiyakiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jigokudaniZenkojiSukiyakiTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 雪猴 + 善光寺一日遊 →
 </KlookLink>
-            <KlookLink href={klookFor(jigokudaniZenkojiPrivateDayTrip.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jigokudaniZenkojiPrivateDayTrip.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 專屬包車一日遊 →
 </KlookLink>
           </div>
@@ -583,7 +583,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 <strong>澀溫泉</strong>是公苑下方的老旅館街，<strong>上林溫泉</strong>就在步道起點。兩者都不算一日遊的順遊點，而是值得住一晚的理由。如果您正在野澤溫泉滑雪，Klook 也有冬季限定行程，從那裡帶您看雪猴和善光寺。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nozawaSnowMonkeyZenkojiTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 從野澤溫泉出發 →
 </KlookLink>
           </div>
@@ -618,7 +618,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 看雪猴需要行動網路嗎？
 </h2>
           <p className={styles.bodyText}>
-需要，而且這趟行程對網路穩定度的要求比一般行程更高。網路票、湯田中與長野的巴士時刻和公苑的猴子預報都在手機上，而步道和巴士站沒有飯店 Wi-Fi。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> 或到<Link href="/zh-tw/guides/esim/best-esim-japan">日本網卡推薦攻略</Link>比較各家業者。
+需要，而且這趟行程對網路穩定度的要求比一般行程更高。網路票、湯田中與長野的巴士時刻和公苑的猴子預報都在手機上，而步道和巴士站沒有飯店 Wi-Fi。<KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看 Klook eSIM →</KlookLink> 或到<Link href="/zh-tw/guides/esim/best-esim-japan">日本網卡推薦攻略</Link>比較各家業者。
 </p>
         </section>
 
@@ -643,7 +643,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 雪猴行程每天有名額上限，泡湯季只有 12 月到 3 月。選好日期，確認商品頁的內容，電車、巴士的轉乘和步道路線都交給導遊。Klook 可使用海外信用卡付款。
 </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(snowMonkeySukiyakiTourTokyo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 在 Klook 查看雪猴行程 →
 </KlookLink>
             </div>

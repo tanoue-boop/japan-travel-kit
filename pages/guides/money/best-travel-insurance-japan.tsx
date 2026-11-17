@@ -11,7 +11,7 @@ const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614
 const HEYMONDO_URL = "https://heymondo.com/";
 const WORLDNOMADS_URL = "https://www.worldnomads.com/";
 
-const SPONSORED_REL = "sponsored noopener noreferrer";
+const SPONSORED_REL = "sponsored nofollow noopener noreferrer";
 const PLAIN_REL = "noopener noreferrer nofollow";
 
 /**

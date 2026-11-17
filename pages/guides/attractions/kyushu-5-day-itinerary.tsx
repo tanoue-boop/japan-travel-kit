@@ -599,10 +599,10 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
               choose tour or train for Yufuin, and price the rail pass last.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kumamotoTakachihoRailwayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kumamotoTakachihoRailwayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Takachiho Tour From Kumamoto →
               </KlookLink>
-              <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Yufuin &amp; Beppu Tour →
               </KlookLink>
             </div>
@@ -679,7 +679,7 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             )}
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               {day.ctas.map((cta) => (
-                <KlookLink key={cta.label} href={cta.href} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+                <KlookLink key={cta.label} href={cta.href} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                   {cta.label}
                 </KlookLink>
               ))}
@@ -711,7 +711,7 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
                   {tourRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.name}
                         </KlookLink>
                       </td>
@@ -731,10 +731,10 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             open the listing and confirm the stops, the meeting point and the price before you pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={takachihoAsoBeefLunchTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={takachihoAsoBeefLunchTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour with beef lunch →
             </KlookLink>
-            <KlookLink href={kumamotoCastleTakachihoTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumamotoCastleTakachihoTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour with Kumamoto Castle →
             </KlookLink>
           </div>
@@ -873,7 +873,7 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             its online booking site has different prices, and does not list them, so compare before you pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the JR Kyushu Rail Pass →
             </KlookLink>
           </div>
@@ -904,7 +904,7 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
                       <td style={{ fontSize: "0.86rem" }}>{row.base}</td>
                       <td style={{ fontSize: "0.86rem" }}>{row.why}</td>
                       <td style={{ fontSize: "0.86rem" }}>
-                        <KlookLink href={row.href} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.href} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.cta}
                         </KlookLink>
                       </td>
@@ -952,10 +952,10 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             arrival, leaving the group, or a closed Mt. Aso on some fees. Read yours before you pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kumamotoTakachihoRailwayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kumamotoTakachihoRailwayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your Takachiho date →
             </KlookLink>
-            <KlookLink href={nagasakiInasayamaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nagasakiInasayamaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nagasaki with the night view →
             </KlookLink>
           </div>
@@ -1042,10 +1042,10 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
               Book Takachiho first, because it sets your Kumamoto night. The rest of the trip follows from it.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kumamotoTakachihoRailwayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kumamotoTakachihoRailwayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Takachiho Tour →
               </KlookLink>
-              <KlookLink href={oneStationHotelKumamoto.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={oneStationHotelKumamoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Kumamoto Hotel →
               </KlookLink>
             </div>

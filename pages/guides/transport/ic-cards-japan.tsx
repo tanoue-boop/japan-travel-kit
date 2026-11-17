@@ -513,7 +513,7 @@ function KlookPicks({ items }: { items: KlookPath[] }) {
             <KlookLink
               href={item.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
             >
               {item.cta}
@@ -931,7 +931,7 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
                 href={b.url}
                 className={styles.verdictBtn}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
               >
                 {b.label}
               </KlookLink>

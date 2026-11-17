@@ -355,7 +355,7 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
               price, it carries a reserved entry time that cannot be changed, and it already includes the
               Main Deck. Prices read off the official site on {CHECKED}.
             </p>
-            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check Tokyo Tower tickets on Klook →
             </KlookLink>
           </div>
@@ -628,7 +628,7 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
             ))}
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
-            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Tokyo Tower tickets on Klook →
             </KlookLink>
             <GygCompareButton slug="tokyo-tower-tickets" listing={gygTokyoTower} />
@@ -779,7 +779,7 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
               upgrade on the same listing — useful if a Japanese attraction site has already refused your
               card.
             </p>
-            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View Tokyo Tower tickets →
             </KlookLink>
           </div>

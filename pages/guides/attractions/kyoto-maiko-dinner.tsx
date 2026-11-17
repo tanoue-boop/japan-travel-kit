@@ -301,10 +301,10 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
               site, read {GION_CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kyotoMaikoLunchDinnerAnKyoto.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoMaikoLunchDinnerAnKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 1.5-Hour Maiko Dinner →
               </KlookLink>
-              <KlookLink href={kyotoMaikoDinnerGionRestaurant.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoMaikoDinnerGionRestaurant.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Gion Walk + Maiko Dinner →
               </KlookLink>
             </div>
@@ -371,7 +371,7 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
                   {typeRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.name}
                         </KlookLink>
                       </td>
@@ -402,13 +402,13 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
             package includes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoGeishaDinnerGionWalk.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGeishaDinnerGionWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Geisha dinner &amp; Gion walk →
             </KlookLink>
-            <KlookLink href={kyotoMaikoInteractiveDinner.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoMaikoInteractiveDinner.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Interactive maiko dinner →
             </KlookLink>
-            <KlookLink href={kyotoKimonoMaikoDinnerPrivate.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoKimonoMaikoDinnerPrivate.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private kimono day + dinner →
             </KlookLink>
           </div>
@@ -429,10 +429,10 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
             and a 50-minute meeting with a geisha, with a meal only if you add the dining plan.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoGionWalkGeishaPerformance.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionWalkGeishaPerformance.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Gion walk &amp; geisha performance →
             </KlookLink>
-            <KlookLink href={kyotoMaikoShowLunch.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoMaikoShowLunch.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Daytime maiko show with lunch →
             </KlookLink>
           </div>
@@ -548,10 +548,10 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
             confirmation. Late arrivals and no-shows are not refunded where the listing states it. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoMaikoLunchDinnerAnKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoMaikoLunchDinnerAnKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your date at AN KYOTO →
             </KlookLink>
-            <KlookLink href={kyotoGeishaDinnerGionWalk.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGeishaDinnerGionWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               24-hour free cancellation option →
             </KlookLink>
           </div>
@@ -627,10 +627,10 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
               Pick the format, then check your date.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kyotoMaikoLunchDinnerAnKyoto.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoMaikoLunchDinnerAnKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the 1.5-Hour Dinner →
               </KlookLink>
-              <KlookLink href={kyotoMaikoDinnerGionRestaurant.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoMaikoDinnerGionRestaurant.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Gion Evening →
               </KlookLink>
             </div>

@@ -337,10 +337,10 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
               <strong>¥1,200</strong>). Checked {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Amanohashidate &amp; Ine Tour →
               </KlookLink>
-              <KlookLink href={amanohashidateIneBayScenicTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={amanohashidateIneBayScenicTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Tour With Boat Tickets →
               </KlookLink>
             </div>
@@ -408,7 +408,7 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
                   {tourRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.name}
                         </KlookLink>
                       </td>
@@ -430,13 +430,13 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             point and what your package includes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kyoto Amanohashidate &amp; Ine tour →
             </KlookLink>
-            <KlookLink href={amanohashidateIneChionjiTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={amanohashidateIneChionjiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour with Chion-ji →
             </KlookLink>
-            <KlookLink href={amanohashidateIneMiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={amanohashidateIneMiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tour with Miyama →
             </KlookLink>
           </div>
@@ -498,7 +498,7 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             include the train from Kyoto.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={amanohashidateIneTwoDayPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={amanohashidateIneTwoDayPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Amanohashidate &amp; Ine 2-day pass →
             </KlookLink>
           </div>
@@ -605,10 +605,10 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             varies too, so check it before you pay. Terms read {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check your date on Klook →
             </KlookLink>
-            <KlookLink href={amanohashidateIneMiyamaKyotoTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={amanohashidateIneMiyamaKyotoTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Miyama version from Kyoto →
             </KlookLink>
           </div>
@@ -684,10 +684,10 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
               booking from Kyoto or Osaka.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Amanohashidate Tour →
               </KlookLink>
-              <KlookLink href={amanohashidateIneBayScenicTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={amanohashidateIneBayScenicTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Ine Bay Tour →
               </KlookLink>
             </div>

@@ -441,10 +441,10 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
               and MIZUHO without a supplement. Operator figures read on {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Osaka → Hiroshima Tickets →
               </KlookLink>
-              <KlookLink href={osakaHiroshimaMiyajimaBulletTrainDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={osakaHiroshimaMiyajimaBulletTrainDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Osaka Day Trip with the Bullet Train →
               </KlookLink>
             </div>
@@ -534,7 +534,7 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             <Link href="/guides/transport">transport guides</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka → Hiroshima tickets →
             </KlookLink>
           </div>
@@ -627,13 +627,13 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             cheaper JR West passes that stop short of the Shinkansen.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR Kansai-Hiroshima Area Pass (5 day) →
             </KlookLink>
-            <KlookLink href={jrSanyoSaninAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrSanyoSaninAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR Sanyo-San&apos;in Area Pass (7 day) →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS →
             </KlookLink>
           </div>
@@ -708,10 +708,10 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             carrying the cases, so this mostly matters on the day you change cities.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Pick a train and seat class →
             </KlookLink>
-            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR Kansai-Hiroshima Area Pass →
             </KlookLink>
           </div>
@@ -780,7 +780,7 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             like, the ferry timetable at Miyajimaguchi, the next train back when the museum takes longer
             than you expected — all of it lives on a phone, and none of it is worth guessing at from a
             platform. An eSIM activated before you fly covers the whole trip.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -945,10 +945,10 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
               question: the island is a ferry and a tide table on top of the Shinkansen.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Osaka → Hiroshima Tickets →
               </KlookLink>
-              <KlookLink href={osakaHiroshimaMiyajimaBulletTrainDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={osakaHiroshimaMiyajimaBulletTrainDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Osaka Day Trip →
               </KlookLink>
             </div>

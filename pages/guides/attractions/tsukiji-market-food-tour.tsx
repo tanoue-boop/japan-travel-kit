@@ -375,7 +375,7 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
             <KlookLink
               href={tsukijiStreetFoodTour.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -543,7 +543,7 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
             open a listing for the current price and its cancellation terms on your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tsukijiFoodCultureWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tsukijiFoodCultureWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Compare Tsukiji tours on Klook →
             </KlookLink>
           </div>
@@ -739,7 +739,7 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
               market trading rather than winding down. Klook checks out in English, takes foreign cards,
               and shows each tour&apos;s own cancellation terms before you pay.
             </p>
-            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View Tsukiji food tours on Klook →
             </KlookLink>
           </div>

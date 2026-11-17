@@ -606,7 +606,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
               <KlookLink
                 href={jrTokyoWidePass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -615,7 +615,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
               <KlookLink
                 href={naritaExpressRoundTripUrl}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -828,10 +828,10 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             the pass the following morning rather than on arrival.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the JR Tokyo Wide Pass →
             </KlookLink>
-            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Compare the N&apos;EX Round Trip →
             </KlookLink>
           </div>
@@ -960,7 +960,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             href={kawaguchikoYamanakakoBusTour.url}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.5rem", display: "inline-block" }}
           >
             Compare a Kawaguchiko day tour on Klook →
@@ -1005,10 +1005,10 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             does the same for the route JR East builds its own example around.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={karuizawaShinkansenDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={karuizawaShinkansenDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Karuizawa Shinkansen Day Trip →
             </KlookLink>
-            <KlookLink href={nikkoCulturalDayTourUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={nikkoCulturalDayTourUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Nikko Day Tour from Tokyo →
             </KlookLink>
           </div>
@@ -1084,10 +1084,10 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             seller&apos;s rule. Checked {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               View the JR Tokyo Wide Pass →
             </KlookLink>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               {klookEsim.ctaLabel}
             </KlookLink>
           </div>
@@ -1111,16 +1111,16 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             pass plus local buses. Check the listing for your date; prices change by season.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Kawaguchiko Day Tour from Tokyo →
             </KlookLink>
-            <KlookLink href={nikkoCulturalDayTourUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={nikkoCulturalDayTourUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Nikko Day Tour from Tokyo →
             </KlookLink>
-            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               GALA Yuzawa Ski Day Trip →
             </KlookLink>
-            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Narita Express (N&apos;EX) Round Trip →
             </KlookLink>
           </div>
@@ -1329,10 +1329,10 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
               shinkansen to Karuizawa included. If one day trip is all you have planned, buy that journey instead.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the JR Tokyo Wide Pass →
               </KlookLink>
-              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View N&apos;EX Round Trip Tickets →
               </KlookLink>
             </div>

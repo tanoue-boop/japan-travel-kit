@@ -91,7 +91,7 @@ export default function EsimBrandCompare({ brand }: { brand: EsimBrand }) {
       </table>
 
       <div className={styles.buttons}>
-        <a href={simbyeTrackedUrl(PLACEMENT, tag)} className={styles.buy} target="_blank" rel="sponsored noopener">
+        <a href={simbyeTrackedUrl(PLACEMENT, tag)} className={styles.buy} target="_blank" rel="sponsored nofollow noopener">
           Get Simbye →
         </a>
         <KlookLink
@@ -99,12 +99,12 @@ export default function EsimBrandCompare({ brand }: { brand: EsimBrand }) {
           adPlacement={PLACEMENT}
           className={styles.buySecondary}
           target="_blank"
-          rel="sponsored noopener"
+          rel="sponsored nofollow noopener"
         >
           Check Klook eSIM →
         </KlookLink>
         {brandUrl !== "#" && (
-          <a href={brandUrl} className={styles.buySecondary} target="_blank" rel="sponsored noopener">
+          <a href={brandUrl} className={styles.buySecondary} target="_blank" rel="sponsored nofollow noopener">
             Get {provider.name} →
           </a>
         )}

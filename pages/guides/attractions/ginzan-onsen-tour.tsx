@@ -305,10 +305,10 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
               March 2027, day visitors come in by a timed shuttle from ¥700 round trip.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={zaoGinzanDayTourFromSendai.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={zaoGinzanDayTourFromSendai.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Day tour from Sendai →
               </KlookLink>
-              <KlookLink href={ginzanWineryTwoDayTourFromTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={ginzanWineryTwoDayTourFromTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 2-day tour from Tokyo →
               </KlookLink>
             </div>
@@ -364,7 +364,7 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/transport/jr-east-pass">JR East Pass guide</Link> does the arithmetic.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR EAST PASS →
             </KlookLink>
           </div>
@@ -482,10 +482,10 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
             itself; check the listing for where it is and when the group is in the street.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={ginzanOnsenRyokanMatsumoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ginzanOnsenRyokanMatsumoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ryokan in Ginzan Onsen on Klook →
             </KlookLink>
-            <KlookLink href={zaoGinzanTwoDayOnsenTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={zaoGinzanTwoDayOnsenTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               2-day tour with onsen hotel →
             </KlookLink>
           </div>
@@ -519,7 +519,7 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
                       <td style={{ fontSize: "0.85rem" }}>{row.adds}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.night}</td>
                       <td style={{ fontSize: "0.85rem" }}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           Check dates →
                         </KlookLink>
                       </td>
@@ -537,7 +537,7 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
             groups.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={ginzanOnsenDestinationUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ginzanOnsenDestinationUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Ginzan Onsen tours on Klook →
             </KlookLink>
           </div>
@@ -555,10 +555,10 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/zao-snow-monsters-tour">Zao snow monsters tour guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={zaoGinzanDayTourFromSendai.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={zaoGinzanDayTourFromSendai.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ginzan & Zao day tour (Sendai) →
             </KlookLink>
-            <KlookLink href={ginzanZaoFoxVillageTourFromSendai.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ginzanZaoFoxVillageTourFromSendai.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ginzan, Zao & Fox Village (Sendai) →
             </KlookLink>
           </div>
@@ -674,10 +674,10 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
               From Sendai, one day with Zao. From Tokyo, two days with a hotel night.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={zaoGinzanDayTourFromSendai.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={zaoGinzanDayTourFromSendai.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Day Tour from Sendai →
               </KlookLink>
-              <KlookLink href={ginzanWineryTwoDayTourFromTokyo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={ginzanWineryTwoDayTourFromTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 2-Day Tour from Tokyo →
               </KlookLink>
             </div>

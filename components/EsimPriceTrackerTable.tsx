@@ -52,7 +52,7 @@ export function TrackerBuyButton({ link }: { link: BuyLink }) {
   const style = { color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" as const };
   if (link.kind === "klook") {
     return (
-      <KlookLink href={link.href} target="_blank" rel="sponsored noopener" style={style}>
+      <KlookLink href={link.href} target="_blank" rel="sponsored nofollow noopener" style={style}>
         {link.label}
       </KlookLink>
     );
@@ -61,7 +61,7 @@ export function TrackerBuyButton({ link }: { link: BuyLink }) {
     <a
       href={link.href}
       target="_blank"
-      rel={link.kind === "partner" ? "sponsored noopener" : "nofollow noopener noreferrer"}
+      rel={link.kind === "partner" ? "sponsored nofollow noopener" : "nofollow noopener noreferrer"}
       style={link.kind === "partner" ? style : { color: "var(--text-muted)", whiteSpace: "nowrap" }}
     >
       {link.label}

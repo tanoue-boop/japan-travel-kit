@@ -500,10 +500,10 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
               festival&apos;s site {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Asahiyama &amp; Blue Pond Tour →
               </KlookLink>
-              <KlookLink href={japanWinterStayAreas[6].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={japanWinterStayAreas[6].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Sapporo Station Hotels →
               </KlookLink>
             </div>
@@ -578,10 +578,10 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             hotel door. The shared transfer listing asks for a buffer after landing, so book it before you fly.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shared airport transfer →
             </KlookLink>
-            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private car from New Chitose →
             </KlookLink>
           </div>
@@ -609,7 +609,7 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             to add something the train does not reach — a snow park, or Shiroi Koibito Park — on the same day.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Otaru + snow park day tour →
             </KlookLink>
           </div>
@@ -641,10 +641,10 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/furano-biei-tour">Furano and Biei tour guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Winter zoo + Blue Pond light-up →
             </KlookLink>
-            <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asahiyamaBieiHighlightsTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Zoo, Blue Pond &amp; Ningle Terrace →
             </KlookLink>
           </div>
@@ -666,13 +666,13 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             the hot springs at Jozankei, in the mountains south-west of the city.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={sapporoKokusaiOtaruDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoKokusaiOtaruDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sapporo Kokusai ski + Otaru →
             </KlookLink>
-            <KlookLink href={sapporoKokusaiSkiOtaruAquariumDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoKokusaiSkiOtaruAquariumDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sapporo Kokusai ski day →
             </KlookLink>
-            <KlookLink href={jozankeiMoriNoUtaSpaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jozankeiMoriNoUtaSpaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Jozankei onsen day →
             </KlookLink>
           </div>
@@ -734,7 +734,7 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             <Link href="/guides/transport/hokkaido-rail-pass">Hokkaido Rail Pass guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={sapporoFuranoAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoFuranoAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Sapporo–Furano Area Pass →
             </KlookLink>
           </div>
@@ -827,7 +827,7 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             Train times, the penguin-walk notice and a tour pick-up point all arrive on your phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the alternatives.
@@ -900,10 +900,10 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
               Settle a room near Sapporo Station, book the Day 3 coach, and leave the city and Otaru to the train.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={asahiyamaWinterBluePondTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Winter Asahiyama Tour →
               </KlookLink>
-              <KlookLink href={japanWinterStayAreas[6].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={japanWinterStayAreas[6].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Hotels at Sapporo Station →
               </KlookLink>
             </div>

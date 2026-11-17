@@ -475,10 +475,10 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
               train times {RAIL}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={hiroshimaMiyajimaPrivateDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={hiroshimaMiyajimaPrivateDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Private Hiroshima &amp; Miyajima Day →
               </KlookLink>
-              <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Tokyo → Hiroshima Shinkansen →
               </KlookLink>
             </div>
@@ -552,13 +552,13 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             keep.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hiroshimaPeaceHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaPeaceHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Peace Park &amp; museum tour →
             </KlookLink>
-            <KlookLink href={hiroshimaPrivateWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaPrivateWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private city walk →
             </KlookLink>
-            <KlookLink href={hiroshimaPeaceMuseumTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaPeaceMuseumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Museum ticket →
             </KlookLink>
           </div>
@@ -608,13 +608,13 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             public transport with a guide; the join-in day includes an okonomiyaki lunch.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hiroshimaMiyajimaPrivateDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaMiyajimaPrivateDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private Miyajima day →
             </KlookLink>
-            <KlookLink href={hiroshimaMiyajimaPrivateWalkingDay.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaMiyajimaPrivateWalkingDay.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private walking day →
             </KlookLink>
-            <KlookLink href={hiroshimaMiyajimaMultiCityDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaMiyajimaMultiCityDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Join-in day with lunch →
             </KlookLink>
           </div>
@@ -756,13 +756,13 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             have the full fare tables.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Hiroshima shinkansen →
             </KlookLink>
-            <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenOsakaHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka → Hiroshima shinkansen →
             </KlookLink>
-            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kansai-Hiroshima Area Pass →
             </KlookLink>
           </div>
@@ -845,10 +845,10 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             move a guided day if a typhoon stops the ferries.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hiroshimaMiyajimaFullDayPrivateTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaMiyajimaFullDayPrivateTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               8-hour private tour →
             </KlookLink>
-            <KlookLink href={hiroshimaMiyajimaJoinDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hiroshimaMiyajimaJoinDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Another join-in day →
             </KlookLink>
           </div>
@@ -872,7 +872,7 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Data matters on both days: the ferry timetable, the tide table and a museum web ticket are all on
             your phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the
@@ -953,10 +953,10 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
               want the ferry and the timing handled for you.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={hiroshimaMiyajimaPrivateDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hiroshimaMiyajimaPrivateDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Private Day →
               </KlookLink>
-              <KlookLink href={hiroshimaTwoDayStayAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hiroshimaTwoDayStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Hotels Near the Peace Park →
               </KlookLink>
             </div>

@@ -334,7 +334,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
               at <strong>Universal City</strong>, about 5 minutes on foot from the gates.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Namba hotels on Klook →
               </KlookLink>
             </div>
@@ -596,10 +596,10 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             three districts.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={whereToStayOsakaAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={whereToStayOsakaAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Umeda hotels on Klook →
             </KlookLink>
-            <KlookLink href={whereToStayOsakaAreas[3].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={whereToStayOsakaAreas[3].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Universal City hotels on Klook →
             </KlookLink>
           </div>
@@ -880,10 +880,10 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
               them side by side.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={whereToStayOsakaAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Namba hotels on Klook →
               </KlookLink>
-              <KlookLink href={whereToStayOsakaAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={whereToStayOsakaAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Check Umeda hotels on Klook →
               </KlookLink>
             </div>

@@ -550,10 +550,10 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
               <strong>Nikka distillery at Yoichi</strong> justifies ten hours. All fares read {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 The Yoichi &amp; Otaru Day →
               </KlookLink>
-              <KlookLink href={otaruCanalCruiseSealCarving.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={otaruCanalCruiseSealCarving.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Canal Cruise Options →
               </KlookLink>
             </div>
@@ -659,13 +659,13 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             the operator&apos;s own stated policy.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={otaruCanalCruiseSealCarving.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={otaruCanalCruiseSealCarving.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Canal cruise + workshop →
             </KlookLink>
-            <KlookLink href={capeKamuiOtaruCanalCruiseDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={capeKamuiOtaruCanalCruiseDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Cape Kamui &amp; canal cruise day (summer) →
             </KlookLink>
-            <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yoichi &amp; Otaru day →
             </KlookLink>
           </div>
@@ -740,13 +740,13 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             the boats are doing.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Otaru &amp; snow park day →
             </KlookLink>
-            <KlookLink href={sapporoKokusaiSkiOtaruAquariumDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoKokusaiSkiOtaruAquariumDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ski half day + Otaru →
             </KlookLink>
-            <KlookLink href={otaruAsarigawaSkiDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={otaruAsarigawaSkiDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Otaru Asarigawa ski day →
             </KlookLink>
           </div>
@@ -781,10 +781,10 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             coast road, so check the winter route on the listing before you book it for December to February.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yoichi &amp; Otaru walking day →
             </KlookLink>
-            <KlookLink href={otaruShakotanYoichiCoachTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={otaruShakotanYoichiCoachTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Cape Kamui + Yoichi coach day →
             </KlookLink>
           </div>
@@ -841,7 +841,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             Otaru–Yoichi trains are sparse, and the Snow Light Path details for 2027 were still unpublished
             when this page was written — all three are notices that reach you on your phone rather than at a
             counter.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it
@@ -878,7 +878,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             national pass. For one Otaru day: buy the {JR_FARE} ticket, or just tap.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Price the JR Hokkaido pass →
             </KlookLink>
           </div>
@@ -1138,10 +1138,10 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
               Yoichi distillery or a ski hill — and a canal cruise on a date that fills.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 See the Yoichi &amp; Otaru Day →
               </KlookLink>
-              <KlookLink href={otaruCanalCruiseSealCarving.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={otaruCanalCruiseSealCarving.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Canal Cruise Options →
               </KlookLink>
             </div>

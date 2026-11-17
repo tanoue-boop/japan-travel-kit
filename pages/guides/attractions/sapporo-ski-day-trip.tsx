@@ -301,10 +301,10 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
               longer; it has its own guide.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={teineAllInclusiveSkiDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={teineAllInclusiveSkiDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Teine all-inclusive day →
               </KlookLink>
-              <KlookLink href={kiroroLiftPassShuttleFromSapporo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kiroroLiftPassShuttleFromSapporo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Kiroro lift + bus →
               </KlookLink>
             </div>
@@ -378,7 +378,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
             <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Niseko lift + bus from Sapporo →
             </KlookLink>
           </div>
@@ -410,7 +410,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
                       <td style={{ fontSize: "0.85rem" }}>{row.what}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.fits}</td>
                       <td style={{ fontSize: "0.85rem" }}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                           {row.label} →
                         </KlookLink>
                       </td>
@@ -427,10 +427,10 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
             rental yourself and to have accident insurance before the lesson.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={teinePrivateSkiLessons.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teinePrivateSkiLessons.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Teine private lessons →
             </KlookLink>
-            <KlookLink href={sapporoSkiSnowboardListUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoSkiSnowboardListUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Sapporo ski tours on Klook →
             </KlookLink>
           </div>
@@ -455,10 +455,10 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
             the town half.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={sapporoKokusaiSkiOtaruAquariumDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoKokusaiSkiOtaruAquariumDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kokusai ski + Otaru →
             </KlookLink>
-            <KlookLink href={otaruAsarigawaSkiDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={otaruAsarigawaSkiDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Otaru Asarigawa ski day →
             </KlookLink>
           </div>
@@ -477,7 +477,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
             evening.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={teineNightSkiingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teineNightSkiingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Teine night skiing tour →
             </KlookLink>
           </div>
@@ -595,7 +595,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
         />
 
         <div className={styles.pickCtaRow} style={{ marginTop: "1rem", justifyContent: "center" }}>
-          <KlookLink href={sapporoTeineDestinationUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+          <KlookLink href={sapporoTeineDestinationUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
             Everything at Sapporo Teine on Klook →
           </KlookLink>
         </div>
@@ -639,10 +639,10 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
               Teine with everything included, or Kiroro with the lift pass and bus.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={teineAllInclusiveSkiDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={teineAllInclusiveSkiDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Teine All-Inclusive Day →
               </KlookLink>
-              <KlookLink href={kiroroLiftPassShuttleFromSapporo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kiroroLiftPassShuttleFromSapporo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Kiroro Lift + Bus →
               </KlookLink>
             </div>

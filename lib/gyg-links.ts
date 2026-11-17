@@ -56,7 +56,7 @@ export function gygLink(url: string, slug: string): string {
  * outbound click at the document and resolves `getyourguide.com` to
  * `partner: "getyourguide"`, so these links are measured without being rewritten.
  */
-export const GYG_REL = "sponsored noopener";
+export const GYG_REL = "sponsored nofollow noopener";
 
 /** The date every URL in this file was confirmed live. */
 export const GYG_CHECKED_AT = "21 Oct 2026";

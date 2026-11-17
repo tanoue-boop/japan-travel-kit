@@ -366,16 +366,16 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>東京展望台比較（英文）</Link>。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(SKY.klook.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(SKY.klook.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看澀谷SKY →
             </KlookLink>
-            <KlookLink href={klookFor(PRICES.teamlabPlanets.klook.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(PRICES.teamlabPlanets.klook.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看 teamLab Planets →
             </KlookLink>
-            <KlookLink href={klookFor(tokyoDisneyOneDayPassport.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(tokyoDisneyOneDayPassport.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看東京迪士尼 →
             </KlookLink>
-            <KlookLink href={klookFor(PRICES.wbStudioTour.klook.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(PRICES.wbStudioTour.klook.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看華納兄弟影城 →
             </KlookLink>
           </div>
@@ -413,7 +413,7 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
                         {row.klook && (
                           <>
                             {" · "}
-                            <KlookLink href={klookFor(row.klook, "zh-tw")} target="_blank" rel="sponsored noopener" style={linkStyle}>
+                            <KlookLink href={klookFor(row.klook, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" style={linkStyle}>
                               Klook
                             </KlookLink>
                           </>
@@ -430,10 +430,10 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             卡丁車價格是 Street Kart 官方價目表上的每人價格範圍。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(PRICES.teamlabBorderless.klook.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(PRICES.teamlabBorderless.klook.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看 teamLab 無界 →
             </KlookLink>
-            <KlookLink href={klookFor(tokyoSightseeingBusTour.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(tokyoSightseeingBusTour.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看東京一日遊 →
             </KlookLink>
           </div>
@@ -540,7 +540,7 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             票價與車資讀自 tokyometro.jp，查核日 {SUBWAY_CHECKED}。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(tokyoSubwayTicket.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(tokyoSubwayTicket.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看東京地鐵通票 →
             </KlookLink>
           </div>
@@ -559,13 +559,13 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             排好了每一天。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(tokyoSightseeingBusTour.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(tokyoSightseeingBusTour.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看東京一日遊 →
             </KlookLink>
-            <KlookLink href={klookFor(shinjukuNightFoodWalkingTour.url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(shinjukuNightFoodWalkingTour.url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看夜間美食導覽 →
             </KlookLink>
-            <KlookLink href={klookFor(tokyoStayAreas[0].url, "zh-tw")} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(tokyoStayAreas[0].url, "zh-tw")} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               在 Klook 看新宿飯店 →
             </KlookLink>
           </div>

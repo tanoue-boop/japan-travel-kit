@@ -184,7 +184,7 @@ export function PlanetsAnswer() {
           </div>
         </div>
         <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-          <KlookLink href={localized(teamlabPlanetsTicketUrl, locale)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+          <KlookLink href={localized(teamlabPlanetsTicketUrl, locale)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
             {copy.cta}
           </KlookLink>
         </div>
@@ -216,7 +216,7 @@ export function PlanetsSameDay() {
               <KlookLink
                 href={localized(urls[i], locale)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 {item.cta}

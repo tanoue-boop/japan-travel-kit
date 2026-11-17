@@ -280,10 +280,10 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
               with two-day tickets is the booking worth comparing if you have travelled to get there.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={legolandJapanHotelPackage.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={legolandJapanHotelPackage.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the LEGOLAND Japan Hotel →
               </KlookLink>
-              <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Check LEGOLAND Japan tickets →
               </KlookLink>
               <GygCompareButton slug="legoland-japan-tickets" listing={gygLegolandJapan} />
@@ -461,10 +461,10 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             the park is worth it but whether one 10:00-to-17:00 day is enough of it.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check LEGOLAND Japan tickets on Klook →
             </KlookLink>
-            <KlookLink href={legolandJapanSkipPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={legolandJapanSkipPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Skip Pass →
             </KlookLink>
             <GygCompareButton slug="legoland-japan-tickets" listing={gygLegolandJapan} />
@@ -674,10 +674,10 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
               your trip actually needs.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={legolandJapanHotelPackage.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={legolandJapanHotelPackage.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the LEGOLAND Japan Hotel →
               </KlookLink>
-              <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={legolandJapanTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 View LEGOLAND Japan tickets →
               </KlookLink>
               <GygCompareButton slug="legoland-japan-tickets" listing={gygLegolandJapan} />

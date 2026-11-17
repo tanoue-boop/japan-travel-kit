@@ -386,7 +386,7 @@ function PassComparison() {
                     <KlookLink
                       href={row.url}
                       target="_blank"
-                      rel="sponsored noopener"
+                      rel="sponsored nofollow noopener"
                       style={{ color: "var(--accent)", fontWeight: 600 }}
                     >
                       {row.cta}
@@ -438,7 +438,7 @@ function DayTours() {
               <KlookLink
                 href={tour.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
               >
                 {tour.cta}
@@ -710,7 +710,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
                         <KlookLink
                           href={product.url}
                           target="_blank"
-                          rel="sponsored noopener"
+                          rel="sponsored nofollow noopener"
                           style={{ color: "var(--accent)", fontWeight: 600 }}
                         >
                           {product.label} →

@@ -317,10 +317,10 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
           included) is the better buy; for only two or three rides, an ICOCA is cheaper than either.
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", margin: "0.25rem 0 1.5rem" }}>
-          <KlookLink href={METRO_URL} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+          <KlookLink href={METRO_URL} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
             Check Osaka Metro Pass prices on Klook →
           </KlookLink>
-          <KlookLink href={osakaAmazingPass.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+          <KlookLink href={osakaAmazingPass.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
             Check the Osaka Amazing Pass on Klook →
           </KlookLink>
         </div>
@@ -359,7 +359,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
               href={METRO_URL}
               className={styles.verdictBtn}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               style={{ marginTop: "1rem", display: "inline-block" }}
             >
               Check Osaka Metro Pass prices on Klook →
@@ -426,7 +426,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             </a>
             . Weekend pricing follows the calendar, not the train timetable.
           </p>
-          <KlookLink href={METRO_URL} className={styles.pickCta} target="_blank" rel="sponsored noopener" style={{ marginTop: "0.5rem", display: "inline-block" }}>
+          <KlookLink href={METRO_URL} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener" style={{ marginTop: "0.5rem", display: "inline-block" }}>
             Check Osaka Metro Pass prices on Klook →
           </KlookLink>
         </section>
@@ -593,10 +593,10 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             goes through what is included.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "0.5rem" }}>
-            <KlookLink href={osakaAmazingPass.url} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={osakaAmazingPass.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check the Osaka Amazing Pass on Klook →
             </KlookLink>
-            <KlookLink href={METRO_URL} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <KlookLink href={METRO_URL} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               Check Osaka Metro Pass prices on Klook →
             </KlookLink>
           </div>
@@ -638,7 +638,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             href={METRO_URL}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
             Check Osaka Metro Pass prices on Klook →
@@ -778,7 +778,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             href={METRO_URL}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.5rem", display: "inline-block" }}
           >
             Check Osaka Metro Pass prices on Klook →
@@ -933,7 +933,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
               Compare the voucher price against the ¥1,200 Yoh-okoshi 30h Pass before you book, and check which ticket
               the listing covers.
             </p>
-            <KlookLink href={METRO_URL} className={styles.ctaBannerBtn} target="_blank" rel="sponsored noopener">
+            <KlookLink href={METRO_URL} className={styles.ctaBannerBtn} target="_blank" rel="sponsored nofollow noopener">
               Check Osaka Metro Pass prices on Klook →
             </KlookLink>
           </div>

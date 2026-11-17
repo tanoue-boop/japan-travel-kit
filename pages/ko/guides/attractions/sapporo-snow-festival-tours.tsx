@@ -390,10 +390,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 <strong>삿포로 눈축제 2027</strong>은 2월 4~11일에 열리고(공식 사이트 snowfes.com, 2026년 11월 11일 확인) 행사장 3곳 모두 무료라 <strong>삿포로 눈축제 투어</strong>는 필수가 아닙니다. 숙소는 지금, 당일 투어는 12월 31일까지 예약해 두세요. <strong>제77회 삿포로 눈축제는 2027년 2월 4일부터 11일까지</strong> 8일간 행사장 3곳에서 열립니다. <strong>오도리 공원 니시 1초메~11초메</strong>, <strong>스스키노 에키마에도리 미나미 4조~6조</strong>, 그리고 <strong>쓰도무</strong> 시 스포츠 시설이며, 위원회 FAQ에 따르면 모두 <strong>무료</strong>입니다. 오도리는 언제든 볼 수 있고 조각 조명은 <strong>22:00</strong>까지, 스스키노는 <strong>23:00</strong>까지(마지막 날 22:00), 쓰도무는 <strong>10:00–16:00</strong>이며 내부 일부 체험은 유료입니다. 입장권도, 시간 지정도, 건너뛸 대기 줄도 없습니다. 예약할 만한 것은 축제 기간 전후의 일정입니다. 대체할 수 없는 숙소, 그리고 이 시기에만 운영되는 시외 당일 여행인 오타루, 아사히야마 동물원, 시코쓰호 얼음 축제, 조잔케이 온천입니다. 2월 삿포로의 일 최고기온 평균은 <strong>{FEB_MAX}</strong>이므로 축제 날에는 낮 시간을 실내 일정으로 잡아야 합니다. 축제 정보 확인일 {OWN}, 기온 평년값 확인일 {JMA_CHECKED}.
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 해당 날짜의 삿포로 호텔 보기 →
 </KlookLink>
-              <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 오타루 당일 여행 →
 </KlookLink>
             </div>
@@ -462,7 +462,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 그래서 이 사이트의 행사 중에서도 특이합니다. 건너뛸 대기 줄도 시간 지정 입장도 없으니 ‘줄 서지 않고 입장’ 상품도 필요 없습니다. 눈축제 자체를 파는 클룩 상품은 없으며, 있어서도 안 됩니다. 축제 여행에서 예약할 것은 <strong>축제 관람 외의 나머지 반나절</strong>입니다. 행사장은 모두 야외이고 기상청 평년값으로 일 최고기온 평균이 <strong>{FEB_MAX}</strong>이며 조각은 해가 진 뒤가 가장 좋습니다. 좋은 축제 날은 오전에 시외나 오후에 실내로 다녀온 뒤 저녁에 오도리와 스스키노의 조명을 보는 것입니다. 아래 상품이 바로 그 앞부분입니다.
 </p>
           <p className={styles.bodyText}>
-위치 때문에 언급할 티켓이 하나 있습니다. <strong>삿포로 TV 타워</strong> 전망대는 오도리 행사장 11블록이 시작되는 니시 1초메에 있어, 조명이 켜진 행사장 전체를 일직선으로 볼 수 있는 유일한 유료 시설입니다. <KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>TV 타워와 모이와산 세트권 보기 →</KlookLink>
+위치 때문에 언급할 티켓이 하나 있습니다. <strong>삿포로 TV 타워</strong> 전망대는 오도리 행사장 11블록이 시작되는 니시 1초메에 있어, 조명이 켜진 행사장 전체를 일직선으로 볼 수 있는 유일한 유료 시설입니다. <KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>TV 타워와 모이와산 세트권 보기 →</KlookLink>
 </p>
         </section>
 
@@ -503,16 +503,16 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 <strong>고르는 법.</strong> 3박이라면 하루 종일 일정 하나와 반나절 하나를 넣고, 저녁 이틀은 조명이 켜진 오도리와 스스키노에 남겨 두세요. 낮의 조각 세부와 밤의 조명은 같은 조각의 다른 경험이고, 하나를 놓치면 대부분 후회합니다. 4박 이상이면 긴 노보리베쓰·도야호 일정도 할 만합니다. 아이와 함께라면 오전에 쓰도무, 오후에 스노 파크가 맞습니다. 하루를 스키로 쓰고 싶다면 <Link href="/ko/guides/attractions/niseko-ski-tours">니세코 스키 투어 2026-27</Link> 가이드에서 삿포로역 출발 스키 버스(니세코 히라후까지 3시간 6분)와 리프트권 + 버스 당일 투어를 비교하세요. 무엇을 예약하든 취소 조건을 확인하세요. 2월 홋카이도 출발이며, 눈이 오면 가장 먼저 취소되는 것이 버스 투어입니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(otaruSnowParkDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 오타루와 스노 파크 →
 </KlookLink>
-            <KlookLink href={klookFor(asahiyamaBieiHighlightsTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(asahiyamaBieiHighlightsTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 아사히야마 동물원 →
 </KlookLink>
-            <KlookLink href={klookFor(lakeShikotsuIceFestivalHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(lakeShikotsuIceFestivalHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 시코쓰호 얼음 축제 →
 </KlookLink>
-            <KlookLink href={klookFor(jozankeiHotSpringBusTrip.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jozankeiHotSpringBusTrip.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 조잔케이 온천 →
 </KlookLink>
           </div>
@@ -591,18 +591,18 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 직접 정해야 할 것이 두 가지 있습니다. 4호차 <strong>U시트 지정석</strong>은 요금에 ¥1,000 추가, 티켓리스 예약은 ¥800이며, 2월에는 일반 차량이 스키 가방을 든 승객으로 붐비기 때문에 값어치가 있습니다. <strong>JR 홋카이도 레일 패스</strong>는 시외로 나갈 때만 이득입니다. 공항 왕복은 약 ¥2,460이므로 패스는 공항이 아니라 오타루, 아사히카와, 노보리베쓰에 대한 판단입니다. 자신의 구간으로 계산해 보세요. 요금 확인일 {OWN}. <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR 패스 가이드(영어)</Link>도 전국 패스에 같은 방법을 씁니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 신치토세 이동 →
 </KlookLink>
-            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 JR 홋카이도 레일 패스 →
 </KlookLink>
-            <KlookLink href={klookFor(lakeShikotsuIceFestivalShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(lakeShikotsuIceFestivalShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 시코쓰호 셔틀 좌석 →
 </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-도착일에 예약할 것이 하나 더 있습니다. 모바일 데이터입니다. 야외 행사장 3곳, 2027년 시간표가 없는 셔틀, 당일 계획을 바꾸는 2월 날씨까지, 관련 공지는 모두 창구가 아니라 휴대폰으로 옵니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 다른 선택지와 비교할 수 있습니다.
+도착일에 예약할 것이 하나 더 있습니다. 모바일 데이터입니다. 야외 행사장 3곳, 2027년 시간표가 없는 셔틀, 당일 계획을 바꾸는 2월 날씨까지, 관련 공지는 모두 창구가 아니라 휴대폰으로 옵니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 다른 선택지와 비교할 수 있습니다.
 </p>
         </section>
 
@@ -665,10 +665,10 @@ JR 홋카이도 레일 패스 →
 축제는 돈도 예약도 필요 없습니다. 2027년 2월 4~11일의 숙소는 필요하며, 이 주에만 운영되는 시외 당일 여행도 마찬가지입니다.
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 삿포로 호텔 보기 →
 </KlookLink>
-              <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 스노 파크 반나절 보기 →
 </KlookLink>
             </div>

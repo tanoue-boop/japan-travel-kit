@@ -644,7 +644,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
                               href={url}
                               className={styles.tdLink}
                               target="_blank"
-                              rel={ctaAlt || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                              rel={ctaAlt || esimId === "simbye" ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                             >
                               {label}
                             </a>
@@ -1041,7 +1041,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
                           href={url}
                           className={styles.pickCta}
                           target="_blank"
-                          rel={ctaAlt || esimId === "simbye" ? "sponsored noopener" : "noopener noreferrer nofollow"}
+                          rel={ctaAlt || esimId === "simbye" ? "sponsored nofollow noopener" : "noopener noreferrer nofollow"}
                         >
                           {label}
                         </a>

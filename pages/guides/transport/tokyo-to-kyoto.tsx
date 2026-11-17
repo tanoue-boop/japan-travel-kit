@@ -296,14 +296,14 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
               <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train guide</Link>.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo → Kyoto tickets →
               </KlookLink>
               <KlookLink
                 href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
                 className={styles.verdictBtn}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
               >
                 Check JR Pass prices on Klook →
               </KlookLink>
@@ -421,7 +421,7 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             covers the trip back.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Pick a train and seat on Klook →
             </KlookLink>
           </div>
@@ -513,7 +513,7 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.5rem", display: "inline-flex" }}
           >
             Get the JR Pass on Klook →

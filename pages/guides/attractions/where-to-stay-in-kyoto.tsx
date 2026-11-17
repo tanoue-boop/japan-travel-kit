@@ -335,7 +335,7 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
               you — check what is actually free on your dates.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={whereToStayKyotoAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={whereToStayKyotoAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Kyoto Station hotels on Klook →
               </KlookLink>
             </div>
@@ -605,10 +605,10 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
             yet.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={whereToStayKyotoAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={whereToStayKyotoAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Karasuma Oike hotels on Klook →
             </KlookLink>
-            <KlookLink href={whereToStayKyotoAreas[2].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={whereToStayKyotoAreas[2].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Gion hotels on Klook →
             </KlookLink>
           </div>
@@ -843,10 +843,10 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
               it answers it quickly.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={whereToStayKyotoAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={whereToStayKyotoAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Check Kyoto Station hotels on Klook →
               </KlookLink>
-              <KlookLink href={whereToStayKyotoAreas[3].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={whereToStayKyotoAreas[3].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Check Arashiyama hotels on Klook →
               </KlookLink>
             </div>

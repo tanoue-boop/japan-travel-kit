@@ -336,7 +336,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               afterwards costs ¥1,400 more. Prices read off the official site on {CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo Skytree tickets on Klook →
               </KlookLink>
               <GygCompareButton slug="tokyo-skytree-tickets" listing={gygTokyoSkytree} />
@@ -461,7 +461,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               your date&apos;s price and slots.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
-              <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check TOKYO SKYTREE tickets on Klook →
               </KlookLink>
             </div>
@@ -776,7 +776,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               both the fee and the queue — and Klook checks out in English on a foreign card.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Tokyo Skytree tickets on Klook →
               </KlookLink>
               <GygCompareButton slug="tokyo-skytree-tickets" listing={gygTokyoSkytree} />

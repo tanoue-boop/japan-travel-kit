@@ -287,7 +287,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.verdictBtn}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Get Suica IC Card on Klook →
             </KlookLink>
@@ -471,7 +471,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Pre-order Suica IC Card on Klook →
             </KlookLink>
@@ -611,7 +611,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1267427&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1552-subway-ticket-tokyo%2F"
               className={styles.pickCta}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Buy Tokyo Subway Ticket on Klook →
             </KlookLink>
@@ -819,7 +819,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264844&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F16917-suica-ic-card-tokyo%2F"
               className={styles.ctaBannerBtn}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               Get Suica on Klook →
             </KlookLink>

@@ -129,7 +129,7 @@ export default function WinterBookingTop({ heading, deadline, tours, checkedIso,
                     <KlookLink
                       href={tour.url}
                       target="_blank"
-                      rel="sponsored noopener"
+                      rel="sponsored nofollow noopener"
                       style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
                     >
                       {copy.button}
@@ -142,7 +142,7 @@ export default function WinterBookingTop({ heading, deadline, tours, checkedIso,
         </div>
       </div>
       <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-        <KlookLink href={tours[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+        <KlookLink href={tours[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
           {tours[0].title} →
         </KlookLink>
       </div>

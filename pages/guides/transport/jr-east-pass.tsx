@@ -448,7 +448,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
               <KlookLink
                 href={jrEastPass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -457,7 +457,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
               <KlookLink
                 href={jrTokyoWidePass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -654,10 +654,10 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             Tohoku fill early, so reserve seats as soon as you have the pass.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the JR East Pass →
             </KlookLink>
-            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Compare the Tokyo Wide Pass →
             </KlookLink>
           </div>
@@ -719,10 +719,10 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               View the JR East Pass →
             </KlookLink>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               {klookEsim.ctaLabel}
             </KlookLink>
           </div>
@@ -767,10 +767,10 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             guides compare the options.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               GALA Yuzawa Ski Day Trip →
             </KlookLink>
-            <KlookLink href={karuizawaShinkansenDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={karuizawaShinkansenDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Karuizawa Shinkansen Day Trip →
             </KlookLink>
           </div>
@@ -883,10 +883,10 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
               Tokyo Wide Pass is less than half the price.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the JR East Pass →
               </KlookLink>
-              <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Tokyo Wide Pass →
               </KlookLink>
             </div>

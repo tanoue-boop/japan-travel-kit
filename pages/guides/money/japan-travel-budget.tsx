@@ -1068,7 +1068,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
                           <KlookLink
                             href={klookEsim.url}
                             target="_blank"
-                            rel="sponsored noopener"
+                            rel="sponsored nofollow noopener"
                             style={{ display: "block", marginTop: "0.35rem", color: "var(--accent)", fontWeight: 600, fontSize: "0.8rem" }}
                           >
                             {klookEsim.ctaLabel}

@@ -286,7 +286,7 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
               temple day of five or more rides. For lighter days, or any day built on JR trains to Arashiyama or Fushimi
               Inari, a pay-as-you-go <strong>Suica or ICOCA</strong> is cheaper.
             </p>
-            <KlookLink href={PASS_URL} className={styles.verdictBtn} target="_blank" rel="sponsored noopener" style={{ marginTop: "1rem", display: "inline-block" }}>
+            <KlookLink href={PASS_URL} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener" style={{ marginTop: "1rem", display: "inline-block" }}>
               Check the Kyoto Subway &amp; Bus Pass on Klook →
             </KlookLink>
             <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>

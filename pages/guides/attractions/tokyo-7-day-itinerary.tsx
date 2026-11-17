@@ -445,10 +445,10 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
               <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3 day itinerary</Link>.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={tokyoSevenDayStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={tokyoSevenDayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Hotels in Shinjuku →
               </KlookLink>
-              <KlookLink href={nikkoWorldHeritageDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={nikkoWorldHeritageDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Nikko day tour from Tokyo →
               </KlookLink>
             </div>
@@ -505,16 +505,16 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             Shinjuku izakaya and daytime Tsukiji options.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               SHIBUYA SKY ticket →
             </KlookLink>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Planets ticket →
             </KlookLink>
-            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Skytree ticket →
             </KlookLink>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Subway Ticket →
             </KlookLink>
           </div>
@@ -555,16 +555,16 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo">Kawaguchiko day trip</Link> guides.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nikkoWorldHeritageDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nikkoWorldHeritageDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nikko day tour →
             </KlookLink>
-            <KlookLink href={hakonePrivateDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakonePrivateDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hakone private day tour →
             </KlookLink>
-            <KlookLink href={kamakuraEnoshimaDayTourUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kamakuraEnoshimaDayTourUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kamakura &amp; Enoshima day tour →
             </KlookLink>
-            <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Mt. Fuji viewpoints day tour →
             </KlookLink>
           </div>
@@ -579,10 +579,10 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             before you go; Kamakura needs no booking at all.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo – Mt. Fuji highway bus →
             </KlookLink>
-            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kawaguchiko day bus tour →
             </KlookLink>
           </div>
@@ -611,10 +611,10 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             and the JR option in the <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Subway Ticket →
             </KlookLink>
-            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hakone Freepass →
             </KlookLink>
           </div>
@@ -777,10 +777,10 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
               Book the hotel and the Nikko day first, then the timed tickets for Days 1, 2 and 4.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={tokyoSevenDayStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoSevenDayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Shinjuku hotels →
               </KlookLink>
-              <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Hakone Freepass →
               </KlookLink>
             </div>

@@ -386,7 +386,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             <KlookLink
               href={tokyoJoypolisPassport.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -475,10 +475,10 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Joypolis Passport on Klook →
             </KlookLink>
-            <KlookLink href={tokyoJoypolisTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoJoypolisTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               The entry-only listing →
             </KlookLink>
           </div>
@@ -572,7 +572,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Passport on Klook →
             </KlookLink>
           </div>
@@ -809,7 +809,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
               your date before you pay.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Joypolis Passport on Klook →
               </KlookLink>
             </div>

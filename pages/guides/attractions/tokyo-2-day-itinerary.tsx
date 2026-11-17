@@ -476,10 +476,10 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
               need booking ahead: the hotel, a SHIBUYA SKY sunset slot, and teamLab Planets if you add it.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Tokyo Subway Ticket 48 h →
               </KlookLink>
-              <KlookLink href={tokyoTwoDayStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={tokyoTwoDayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Hotels in Shinjuku →
               </KlookLink>
             </div>
@@ -553,10 +553,10 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             drives through the Shibuya Crossing, Omotesando and Harajuku, the same streets as this day.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shinjuku night food walk →
             </KlookLink>
-            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               SHIBUYA SKY ticket →
             </KlookLink>
           </div>
@@ -611,16 +611,16 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             the kimono sessions near Senso-ji, which take about 90 minutes including dressing.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo sightseeing day tour →
             </KlookLink>
-            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tsukiji street food tour →
             </KlookLink>
-            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Skytree ticket →
             </KlookLink>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Planets ticket →
             </KlookLink>
           </div>
@@ -679,7 +679,7 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/transport/tokyo-transportation">how to get around Tokyo</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Subway Ticket (48 h) →
             </KlookLink>
           </div>
@@ -748,16 +748,16 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               SHIBUYA SKY →
             </KlookLink>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Planets →
             </KlookLink>
-            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               TOKYO SKYTREE →
             </KlookLink>
-            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoTowerTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Tower →
             </KlookLink>
           </div>
@@ -858,10 +858,10 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             has the bus fare and timetable time for each route.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Keisei Skyliner (Narita) →
             </KlookLink>
-            <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hanedaLimousineBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Haneda limousine bus →
             </KlookLink>
           </div>
@@ -898,7 +898,7 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             <li>Data for both days: maps, the deck QR codes and train times run from your phone.</li>
           </ul>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the
@@ -983,10 +983,10 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
               carry both days.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={tokyoTwoDayStayAreas[1].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoTwoDayStayAreas[1].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Hotels Near Tokyo Station →
               </KlookLink>
-              <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Tokyo Day Tour →
               </KlookLink>
             </div>

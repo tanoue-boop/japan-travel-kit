@@ -345,10 +345,10 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
               Hommaru Palace is open. Allow 1 to 1.5 hours. Read on nagoyajo.city.nagoya.jp {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={nagoyaSamuraiInuyamaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={nagoyaSamuraiInuyamaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Nagoya → Inuyama Castle Tour →
               </KlookLink>
-              <KlookLink href={nagoyaParkStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={nagoyaParkStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Hotels by Nagoya Station →
               </KlookLink>
             </div>
@@ -424,10 +424,10 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             arrive near opening on a weekend.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nagoyaSamuraiInuyamaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nagoyaSamuraiInuyamaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Inuyama day tour from Nagoya →
             </KlookLink>
-            <KlookLink href={inuyamaMeijiMuraMeitetsuPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={inuyamaMeijiMuraMeitetsuPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Inuyama + Meiji-Mura + Meitetsu pass →
             </KlookLink>
           </div>
@@ -443,7 +443,7 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             through asoview, which only saves the counter queue. Coin lockers and a limited number of wheelchairs
             (not reservable) are at both gates. The castle&apos;s own admission ticket is not linked from this
             page; Klook&apos;s{" "}
-            <KlookLink href={nagoyaCastleKlookUrl} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={nagoyaCastleKlookUrl} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Nagoya Castle page
             </KlookLink>{" "}
             lists the tours that include it.
@@ -459,10 +459,10 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             — a stop that depends on a train connection is the one most likely to change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={nagoyaCastleAfterHoursTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nagoyaCastleAfterHoursTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hommaru Palace after-hours tour →
             </KlookLink>
-            <KlookLink href={ghibliParkTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ghibliParkTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ghibli Park tickets →
             </KlookLink>
           </div>
@@ -527,10 +527,10 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             Station on the Aonami Line. Ghibli Park and Inuyama each want their own day.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ghibli Park bus tour →
             </KlookLink>
-            <KlookLink href={takayamaShirakawagoNagoyaDayTrip.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={takayamaShirakawagoNagoyaDayTrip.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Takayama &amp; Shirakawa-go from Nagoya →
             </KlookLink>
           </div>
@@ -579,13 +579,13 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             also covers the stopover rule (JR Central, read 13 Nov 2026).
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Nagoya shinkansen →
             </KlookLink>
-            <KlookLink href={shinkansenNagoyaKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenNagoyaKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nagoya → Kyoto shinkansen →
             </KlookLink>
-            <KlookLink href={shinkansenNagoyaOsaka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenNagoyaOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nagoya → Shin-Osaka shinkansen →
             </KlookLink>
           </div>
@@ -622,7 +622,7 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Subway changes, the castle&apos;s cashless counter and a tour&apos;s meeting message all run on your
             phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the alternatives.
@@ -694,10 +694,10 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
               by Nagoya Station before the train on to Kyoto.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={nagoyaSamuraiInuyamaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={nagoyaSamuraiInuyamaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Inuyama Day Tour →
               </KlookLink>
-              <KlookLink href={nagoyaParkStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={nagoyaParkStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Nagoya Station Hotels →
               </KlookLink>
             </div>

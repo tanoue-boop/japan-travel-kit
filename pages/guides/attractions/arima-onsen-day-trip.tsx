@@ -402,10 +402,10 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
               <a href={VISIT_KOBE_URL} target="_blank" rel="noopener">VISIT KOBE</a> sites.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Book a guided day from Osaka →
               </KlookLink>
-              <KlookLink href={BATH_BUS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={BATH_BUS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Both Baths + Coach →
               </KlookLink>
             </div>
@@ -632,13 +632,13 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             gets in the way.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check a Guided Day →
             </KlookLink>
-            <KlookLink href={BATH_BUS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={BATH_BUS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Both Baths + Coach →
             </KlookLink>
-            <KlookLink href={PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Rokkosan Tourist Pass →
             </KlookLink>
           </div>
@@ -661,7 +661,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             taikounoyu.com on {CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={TAIKO_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TAIKO_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Taiko no Yu Day Spa Ticket →
             </KlookLink>
           </div>
@@ -863,10 +863,10 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
               wrong.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Guided Arima Days →
               </KlookLink>
-              <KlookLink href={BATH_BUS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={BATH_BUS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Baths + Coach →
               </KlookLink>
             </div>

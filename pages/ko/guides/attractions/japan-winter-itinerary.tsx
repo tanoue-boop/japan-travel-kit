@@ -992,7 +992,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
               >
 시라카와고 라이트업 일정 보기 →
@@ -1000,7 +1000,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={klookFor(hokurikuArchPass.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.pickCta}
               >
 호쿠리쿠 아치 패스 보기 →
@@ -1098,7 +1098,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -1171,13 +1171,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 패스에 대해 말하면 전국 JR 패스는 장거리 구간으로 본전을 뽑아야 하는데, 이 경로에는 장거리 구간이 두 개뿐이므로 짐작하지 말고 계산하세요. <strong>호쿠리쿠 아치 패스</strong>가 이 여행의 형태에 맞습니다. 연속 7일 도쿄–쓰루가 호쿠리쿠 신칸센과 간사이 지역을 포함하고 도카이도 신칸센은 일부러 제외하므로, 갈 때와 다른 길로 돌아올 때만 쓸 수 있습니다. 둘 다 민영인 시라카와고 버스는 포함되지 않습니다. <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR 패스 가이드(영어)</Link>에 내 구간의 손익 계산이 있고, <Link href="/guides/transport/shinkansen-guide" hrefLang="en">신칸센 가이드(영어)</Link>에 좌석 등급과 예약이 있습니다.
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 호쿠리쿠 아치 패스 보기 →
 </KlookLink>
-            <KlookLink href={klookFor(jrPassWholeJapanCurrent.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrPassWholeJapanCurrent.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 JAPAN RAIL PASS 보기 →
 </KlookLink>
-            <KlookLink href={klookFor(shinkansenTokyoKanazawa.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(shinkansenTokyoKanazawa.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 도쿄 → 가나자와 티켓 →
 </KlookLink>
           </div>
@@ -1258,13 +1258,13 @@ JAPAN RAIL PASS 보기 →
 추가 숙박이 필요 없는 곳은 유자와 쪽이고, 그래서 이 계획의 3일차입니다. 구경이 아니라 스키라면 가장 먼저 예약할 것은 리프트권이 아니라 장비입니다. 보험도 가기 전에 정하세요. 온피스트와 오프피스트는 약관에서 완전히 다르게 취급되며 <Link href="/guides/money/japan-ski-travel-insurance" hrefLang="en">스키 여행자 보험 비교(영어)</Link>에 정리했습니다. 눈이 여행의 전부라면 도시를 빼고 <Link href="/ko/guides/attractions/niseko-ski-tours">니세코 스키 투어 가이드</Link>를 보세요. 교통편, 스키 강습, 4개 스키장을 다루며, 니세코 유나이티드 표로 2026년 12월 24일~2027년 2월 28일 성인 올 마운틴 1일권은 ¥13,500입니다.
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(galaNaebaSkiDayTripTokyo.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(galaNaebaSkiDayTripTokyo.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 갈라 유자와 / 나에바 전용 차량 →
 </KlookLink>
-            <KlookLink href={klookFor(hakubaHapponeBusLiftRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(hakubaHapponeBusLiftRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 하쿠바 버스 + 리프트 + 렌털 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoSkiSnowboardRental.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 스키·스노보드 렌털 →
 </KlookLink>
           </div>
@@ -1313,7 +1313,7 @@ JAPAN RAIL PASS 보기 →
             <KlookLink
               href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 시라카와고 라이트업 일정 →
@@ -1321,7 +1321,7 @@ JAPAN RAIL PASS 보기 →
             <KlookLink
               href={klookFor(shirakawagoTakayamaKanazawaDayTour.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 가나자와 출발 시라카와고 일정 →
@@ -1329,7 +1329,7 @@ JAPAN RAIL PASS 보기 →
             <KlookLink
               href={klookFor(teamlabBotanicalGardenOsakaTicket.url, LOCALE)}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
 teamLab 식물원 오사카 →
@@ -1375,19 +1375,19 @@ teamLab 식물원 오사카 →
 8일차 당일 여행으로는 오타루 눈빛 거리 축제가 2027년 2월 6~13일이라 눈축제 여행에서 둘 다 볼 수 있습니다. 열차와 운하 마을은 <Link href="/guides/attractions/otaru-day-trip-from-sapporo" hrefLang="en">삿포로 출발 오타루 당일 여행 가이드(영어)</Link>에 있습니다. 전체를 홋카이도에 쓰고 싶다면 섬에 머무는 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 7일 여행</Link>을 보세요. 오타루 대신 스키를 타려면 <Link href="/ko/guides/attractions/niseko-ski-tours">니세코 스키 투어 2026-27</Link> 가이드에 삿포로 출발 당일 투어와 2026년 11월 28일 개장 일정이 있습니다.
 </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={klookFor(newChitoseSapporoSharedTransfer.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseSapporoSharedTransfer.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 신치토세 → 삿포로 이동 →
 </KlookLink>
-            <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(sapporoSnowParkHalfDayTour.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 삿포로 스노 파크 반나절 →
 </KlookLink>
-            <KlookLink href={klookFor(jrEastSouthHokkaidoPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrEastSouthHokkaidoPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 JR 동일본–남홋카이도 패스 →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 니세코 공항 셔틀 →
 </KlookLink>
-            <KlookLink href={klookFor(rusutsuResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(rusutsuResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 루스쓰 공항 셔틀 →
 </KlookLink>
           </div>
@@ -1450,12 +1450,12 @@ JR 동일본–남홋카이도 패스 →
               <KlookLink
                 href={klookFor(shirakawagoLightUpTakayamaDayTour.url, LOCALE)}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.ctaBannerBtn}
               >
 시라카와고 라이트업 일정 보기 →
 </KlookLink>
-              <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 호쿠리쿠 아치 패스 보기 →
 </KlookLink>
             </div>

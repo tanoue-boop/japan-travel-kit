@@ -435,16 +435,16 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>the best observation deck in Tokyo</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={SKY.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={SKY.klook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shibuya Sky on Klook →
             </KlookLink>
-            <KlookLink href={PRICES.teamlabPlanets.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={PRICES.teamlabPlanets.klook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Planets on Klook →
             </KlookLink>
-            <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoDisneyOneDayPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Disney on Klook →
             </KlookLink>
-            <KlookLink href={PRICES.wbStudioTour.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={PRICES.wbStudioTour.klook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Warner Bros. Studio Tour on Klook →
             </KlookLink>
           </div>
@@ -483,7 +483,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
                         {row.klook && (
                           <>
                             {" · "}
-                            <KlookLink href={row.klook} target="_blank" rel="sponsored noopener" style={linkStyle}>
+                            <KlookLink href={row.klook} target="_blank" rel="sponsored nofollow noopener" style={linkStyle}>
                               Klook
                             </KlookLink>
                           </>
@@ -501,10 +501,10 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             across Street Kart&apos;s own price tables.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={PRICES.teamlabBorderless.klook.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={PRICES.teamlabBorderless.klook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Borderless on Klook →
             </KlookLink>
-            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo day tour on Klook →
             </KlookLink>
           </div>
@@ -616,7 +616,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             has the full break-even. Prices and fares read off tokyometro.jp on {SUBWAY_CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo Subway Ticket on Klook →
             </KlookLink>
           </div>
@@ -633,13 +633,13 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             lay out each day.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo day tour on Klook →
             </KlookLink>
-            <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Night food tour on Klook →
             </KlookLink>
-            <KlookLink href={tokyoStayAreas[0].url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shinjuku hotels on Klook →
             </KlookLink>
           </div>

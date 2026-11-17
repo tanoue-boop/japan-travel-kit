@@ -362,7 +362,7 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
               authorised distributor such as Klook — preferred slots sell out, tickets are non-refundable, and
               each date change is ¥1,500. Resale and auction tickets are not valid. Prices checked on {CHECKED}.
             </p>
-            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
+            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Check studio tour tickets on Klook →
             </KlookLink>
           </div>
@@ -431,7 +431,7 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             the one that applies. Ages 3 and under need the free infant ticket.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
-            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Harry Potter Tokyo tickets on Klook →
             </KlookLink>
           </div>
@@ -618,7 +618,7 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             on the listing — check them for your date before you pay.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
-            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check studio tour tickets on Klook →
             </KlookLink>
             <GygCompareButton slug="warner-bros-studio-tour-tokyo-tickets" listing={gygWarnerBrosStudioTourTokyo} />
@@ -882,7 +882,7 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
               The official advice is to pre-book, because preferred dates and times sell out. Klook sells the
               same date- and time-specified admission with an English checkout and an e-ticket.
             </p>
-            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View studio tour tickets on Klook →
             </KlookLink>
           </div>

@@ -192,7 +192,7 @@ function SourceNote({ children }: { children: ReactNode }) {
 function PassCta() {
   return (
     <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-      <KlookLink href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
+      <KlookLink href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 220px" }}>
         Check the Osaka Amazing Pass on Klook →
       </KlookLink>
     </div>
@@ -340,10 +340,10 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
               </div>
             </div>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
-              <KlookLink href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Osaka Amazing Pass →
               </KlookLink>
-              <KlookLink href={KAIYUKAN_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+              <KlookLink href={KAIYUKAN_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Kaiyukan Aquarium Ticket →
               </KlookLink>
             </div>
@@ -857,10 +857,10 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
               it, so book that ticket separately.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={OSAKA_AMAZING_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Osaka Amazing Pass →
               </KlookLink>
-              <KlookLink href={KAIYUKAN_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={KAIYUKAN_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Kaiyukan Ticket →
               </KlookLink>
             </div>

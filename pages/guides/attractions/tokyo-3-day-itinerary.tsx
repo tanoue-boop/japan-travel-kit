@@ -463,7 +463,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             <KlookLink
               href={tokyoSubwayTicket.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -551,10 +551,10 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             and dated, timed tickets.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Shibuya Sky tickets →
             </KlookLink>
-            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Tokyo Subway Ticket →
             </KlookLink>
           </div>
@@ -611,10 +611,10 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             guide compares it with the 2- and 3-hour sword sessions.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check teamLab Planets tickets →
             </KlookLink>
-            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check TOKYO SKYTREE tickets →
             </KlookLink>
           </div>
@@ -765,10 +765,10 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             the same split across the whole city rather than just this itinerary.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Planets on Klook →
             </KlookLink>
-            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shibuya Sky on Klook →
             </KlookLink>
           </div>
@@ -817,13 +817,13 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             {" "}explains how IC cards and the subway lines fit together.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Narita Express round trip →
             </KlookLink>
-            <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Keisei Skyliner ticket →
             </KlookLink>
-            <KlookLink href={naritaBusSubwayCombo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={naritaBusSubwayCombo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Narita bus + subway pass →
             </KlookLink>
           </div>
@@ -832,7 +832,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             itinerary is a QR code in an inbox, and every one of the &ldquo;getting there&rdquo; columns
             above assumes you can open a map. An eSIM activated before departure means none of that
             depends on finding airport Wi-Fi.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -1221,7 +1221,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
               the official sites sometimes reject, and keeps all three days on one account.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Book the timed tickets on Klook →
               </KlookLink>
               <GygCompareButton slug="tokyo-3-day-itinerary" listing={gygTeamlabPlanets} />

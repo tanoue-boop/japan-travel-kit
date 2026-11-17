@@ -360,7 +360,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             <KlookLink
               href={asakusaKimonoAiwafukuNo2.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -433,7 +433,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             date, so open a listing for the figure on yours.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={asakusaKimonoKaminarimon.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asakusaKimonoKaminarimon.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Compare Asakusa kimono shops on Klook →
             </KlookLink>
           </div>
@@ -685,7 +685,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
               ones go first in blossom and autumn season. Klook checks out in English, takes foreign
               cards, and shows each shop&apos;s own return deadline and cancellation terms before you pay.
             </p>
-            <KlookLink href={asakusaKimonoAiwafukuNo2.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+            <KlookLink href={asakusaKimonoAiwafukuNo2.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
               View Asakusa kimono rental on Klook →
             </KlookLink>
           </div>

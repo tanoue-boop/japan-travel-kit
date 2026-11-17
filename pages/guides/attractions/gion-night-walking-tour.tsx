@@ -440,7 +440,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
               start time.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the Gion night walk on Klook →
               </KlookLink>
             </div>
@@ -471,7 +471,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
                   {tourRows.map((row) => (
                     <tr key={row.tour}>
                       <td className={styles.tdProvider}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener">{row.tour}</KlookLink>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener">{row.tour}</KlookLink>
                       </td>
                       <td style={{ fontSize: "0.88rem" }}>{row.type}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.start}</td>
@@ -492,10 +492,10 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             Current prices are on Klook.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoGionKaisekiNightTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionKaisekiNightTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the kaiseki tour →
             </KlookLink>
-            <KlookLink href={kyotoGionPrivateWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionPrivateWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the private walk →
             </KlookLink>
           </div>
@@ -658,13 +658,13 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             thing this page cannot give you.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               See dates for the night walk →
             </KlookLink>
-            <KlookLink href={kyotoGionHiddenGemsNightTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionHiddenGemsNightTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               See the hidden gems tour →
             </KlookLink>
-            <KlookLink href={kyotoGionStudentNightWalk.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionStudentNightWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               See the student-led walk →
             </KlookLink>
           </div>
@@ -691,7 +691,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             <strong>Dinner.</strong> The kaiseki tour covers it in one booking. Otherwise take a start early
             enough to eat after, or book the{" "}
-            <KlookLink href={kyotoGionFoodieNightTour.url} target="_blank" rel="sponsored noopener" style={linkStyle}>
+            <KlookLink href={kyotoGionFoodieNightTour.url} target="_blank" rel="sponsored nofollow noopener" style={linkStyle}>
               Gion night food tour
             </KlookLink>{" "}
             with its listed nine-plus dishes and three sake tastings as your evening instead.
@@ -702,7 +702,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             19:00, and it sells a next-day return for a fee. Our{" "}
             <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>Kyoto kimono rental guide</Link>{" "}
             compares the shops by area. The{" "}
-            <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored noopener" style={linkStyle}>
+            <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored nofollow noopener" style={linkStyle}>
               Aiwafuku Gion Shijo store
             </KlookLink>{" "}
             lists itself two minutes from Hanamikoji and Shirakawa.
@@ -787,7 +787,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
               Check your date on Klook.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoGionNightWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Gion Night Walk →
               </KlookLink>
             </div>

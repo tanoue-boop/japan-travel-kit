@@ -349,7 +349,7 @@ function KlookEsimSlot({ why }: { why: string }) {
         <KlookLink
           href={klookEsim.url}
           target="_blank"
-          rel="sponsored noopener"
+          rel="sponsored nofollow noopener"
           style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
         >
           {klookEsim.ctaLabel}
@@ -542,7 +542,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
                 href={esimLink("simbye")}
                 className={styles.verdictBtn}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
               >
                 Get Simbye {simbyePick?.name ?? "10 GB"} →
               </a>
@@ -550,7 +550,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
                 href={klookEsim.url}
                 className={styles.pickCtaInternal}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
               >
                 {klookEsim.ctaLabel}
               </KlookLink>
@@ -558,7 +558,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
                 href={esimLink("airalo")}
                 className={styles.pickCtaInternal}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
               >
                 Get Airalo {airaloPick?.name ?? "10 GB"} →
               </a>
@@ -566,7 +566,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
                 href={esimLink("esimgo")}
                 className={styles.pickCtaInternal}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
               >
                 Get eSIM Go {esimgoPick?.name ?? "10 GB"} →
               </a>
@@ -752,7 +752,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             href={esimLink("airalo")}
             className={styles.pickCta}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             style={{ marginTop: "0.75rem", display: "inline-flex" }}
           >
             {HOLAFLY_ALT_LABEL}
@@ -1042,7 +1042,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
               href={klookEsim.url}
               className={styles.ctaBannerBtn}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
             >
               {klookEsim.ctaLabel}
             </KlookLink>

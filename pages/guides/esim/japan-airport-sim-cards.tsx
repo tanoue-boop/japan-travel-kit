@@ -350,10 +350,10 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
               </div>
             </div>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={SIMBYE_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <a href={SIMBYE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Get Simbye eSIM before you fly →
               </a>
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCtaInternal}>
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCtaInternal}>
                 {klookEsim.ctaLabel}
               </KlookLink>
             </div>
@@ -476,7 +476,7 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
           <BookingEsimCard lead="Decided on an eSIM? Install it before you fly." />
 
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={SIMBYE_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>Get Simbye eSIM →</a>
+            <a href={SIMBYE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>Get Simbye eSIM →</a>
             <a href={SAKURA_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
               Pre-order Sakura Mobile for airport pickup →
             </a>
@@ -536,8 +536,8 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
             <Link href="/guides/esim/cheapest-esim-japan" style={linkStyle}>cheapest eSIM ranking</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <a href={SIMBYE_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>Get Simbye eSIM →</a>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <a href={SIMBYE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>Get Simbye eSIM →</a>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               {klookEsim.ctaLabel}
             </KlookLink>
           </div>
@@ -617,7 +617,7 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
               Install a Japan eSIM at home and it is working when you land, from {ESIM_FROM}.
             </p>
             <div className={styles.pickCtaRow}>
-              <a href={SIMBYE_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <a href={SIMBYE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Get Simbye eSIM →
               </a>
             </div>

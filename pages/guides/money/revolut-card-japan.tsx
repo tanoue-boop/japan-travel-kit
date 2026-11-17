@@ -577,7 +577,7 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             Your allowance, spend alerts and card freeze all live in the app, so set up data before you fly.
           </p>
-          <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener" style={{ marginTop: "0.5rem", display: "inline-block" }}>
+          <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener" style={{ marginTop: "0.5rem", display: "inline-block" }}>
             {klookEsim.ctaLabel}
           </KlookLink>
         </section>

@@ -47,7 +47,7 @@ export default function SimbyeOffer({
         <a
           href={plan.link}
           target="_blank"
-          rel="sponsored noopener"
+          rel="sponsored nofollow noopener"
           style={{ color: "var(--accent)", fontWeight: 600, whiteSpace: "nowrap" }}
         >
           {copy.cta}

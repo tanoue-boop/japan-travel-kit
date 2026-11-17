@@ -538,7 +538,7 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
           {/* The CTA sits here, directly after the date / slot / ticket-type decision —
               the point at which a reader has something to look up rather than read. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check teamLab Planets dates and slots →
             </KlookLink>
             <GygCompareButton slug="teamlab-planets-tickets" listing={gygTeamlabPlanets} />
@@ -567,7 +567,7 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Ready to lock a slot in?{" "}
-            <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored noopener">
+            <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored nofollow noopener">
               Check Planets availability and prices on Klook →
             </KlookLink>
           </p>
@@ -850,7 +850,7 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
               the official store lists, and the ticket is a QR code on your phone.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={PLANETS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View teamLab Planets Tickets →
               </KlookLink>
               <GygCompareButton slug="teamlab-planets-tickets" listing={gygTeamlabPlanets} />

@@ -574,7 +574,7 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
             <a href={esimLink("airalo")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
               Get Airalo — buy for the whole family →
             </a>
-            <a href={esimLink("airalo")} className={styles.pickCta} target="_blank" rel="sponsored noopener">
+            <a href={esimLink("airalo")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               {HOLAFLY_ALT_LABEL}
             </a>
           </div>

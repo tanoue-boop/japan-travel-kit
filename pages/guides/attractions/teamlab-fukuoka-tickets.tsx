@@ -420,7 +420,7 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
             2026 to 11 January 2027 on its own ticket (dates from teamlab.art, read on 11 November 2026).
           </p>
           <div className={styles.pickCtaRow} style={{ margin: "0 0 1.25rem" }}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check teamLab Forest Fukuoka Tickets →
             </KlookLink>
           </div>
@@ -488,10 +488,10 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
               afternoon at BOSS E・ZO than as a trip of its own.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check teamLab Fukuoka Tickets →
               </KlookLink>
-              <KlookLink href={fukuokaTeamlabBusTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={fukuokaTeamlabBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 The Museum Inside a Full Day →
               </KlookLink>
             </div>
@@ -628,10 +628,10 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
             itinerary, which is the better buy given how short an hour is:
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Fukuoka ticket on Klook →
             </KlookLink>
-            <KlookLink href={fukuokaTeamlabBusTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fukuokaTeamlabBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fukuoka day with teamLab →
             </KlookLink>
           </div>
@@ -680,10 +680,10 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
             alternative if a pass is overkill for one afternoon.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={fukuokaTouristCityPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fukuokaTouristCityPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fukuoka Tourist City Pass →
             </KlookLink>
-            <KlookLink href={klookPassFukuoka.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookPassFukuoka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Klook Pass Fukuoka →
             </KlookLink>
           </div>
@@ -951,10 +951,10 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
               there is nothing at the counter.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View teamLab Fukuoka Tickets →
               </KlookLink>
-              <KlookLink href={dazaifuYanagawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={dazaifuYanagawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Dazaifu &amp; Yanagawa Day →
               </KlookLink>
             </div>

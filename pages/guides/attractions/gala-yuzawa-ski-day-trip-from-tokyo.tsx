@@ -657,19 +657,19 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               JR East&apos;s own sites; 2026-27 daily hours are awaiting the official announcement.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 GALA lift ticket →
               </KlookLink>
-              <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Ski day tour from Tokyo →
               </KlookLink>
-              <KlookLink href={shinkansenTokyoGalaYuzawa.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoGalaYuzawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Tokyo → GALA Yuzawa trains →
               </KlookLink>
-              <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Price the TOKYO Wide Pass →
               </KlookLink>
-              <KlookLink href={galaYuzawaSkiLesson.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={galaYuzawaSkiLesson.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 GALA Lessons &amp; Coaching →
               </KlookLink>
             </div>
@@ -739,13 +739,13 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             two day trips.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoGalaYuzawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoGalaYuzawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → GALA Yuzawa shinkansen →
             </KlookLink>
-            <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Ski bus day tour from Tokyo →
             </KlookLink>
-            <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               GALA lift ticket →
             </KlookLink>
           </div>
@@ -808,10 +808,10 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             <a href="https://www.jre-travel.com/seasonal/ski/gala/" target="_blank" rel="noopener noreferrer">jre-travel.com</a>).
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               GALA lift ticket →
             </KlookLink>
-            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR EAST PASS →
             </KlookLink>
           </div>
@@ -928,10 +928,10 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             price above is the one on the table.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               GALA lift ticket →
             </KlookLink>
-            <KlookLink href={galaYuzawaSkiLesson.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={galaYuzawaSkiLesson.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               GALA ski &amp; snowboard coaching →
             </KlookLink>
           </div>
@@ -1040,10 +1040,10 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={galaYuzawaSkiLesson.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={galaYuzawaSkiLesson.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               GALA 1-day coaching →
             </KlookLink>
-            <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Beginner coach day from Tokyo →
             </KlookLink>
           </div>
@@ -1087,10 +1087,10 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             national pass.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Price the TOKYO Wide Pass →
             </KlookLink>
-            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR EAST PASS (5 or 10 days) →
             </KlookLink>
           </div>
@@ -1137,10 +1137,10 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             package is what you want, diary mid-November; if you want the date held now, book the pieces.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Yuzawa coach day from Tokyo →
             </KlookLink>
-            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               GALA / Naeba chartered day →
             </KlookLink>
           </div>
@@ -1195,7 +1195,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             states in its own notices that operating dates and hours change with snow and weather, and a
             seasonal station on a branch line is exactly where a closure notice reaches you by phone and
             nowhere else —{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               see Klook eSIM options →
             </KlookLink>{" "}
             and our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it
@@ -1404,10 +1404,10 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               why the honest order is pass first, then lesson.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Price the TOKYO Wide Pass →
               </KlookLink>
-              <KlookLink href={galaYuzawaSkiLesson.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={galaYuzawaSkiLesson.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 See GALA Lessons →
               </KlookLink>
             </div>

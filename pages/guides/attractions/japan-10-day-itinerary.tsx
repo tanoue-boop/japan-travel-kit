@@ -1548,7 +1548,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             <KlookLink
               href={shinkansenTokyoKyoto.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.verdictBtn}
               style={{ marginTop: "1rem" }}
             >
@@ -1874,7 +1874,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -1942,13 +1942,13 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kyoto shinkansen on Klook →
             </KlookLink>
-            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hakone Freepass on Klook →
             </KlookLink>
-            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR Haruka to Kansai Airport →
             </KlookLink>
           </div>
@@ -2012,10 +2012,10 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             covers the Kyoto, Nara and Osaka end of this plan.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JAPAN RAIL PASS on Klook →
             </KlookLink>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Single Tokyo → Kyoto seat →
             </KlookLink>
           </div>
@@ -2110,16 +2110,16 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             here because they change.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               teamLab Planets on Klook →
             </KlookLink>
-            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Shibuya Sky on Klook →
             </KlookLink>
-            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hakone Freepass on Klook →
             </KlookLink>
-            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Osaka Amazing Pass on Klook →
             </KlookLink>
             <GygCompareButton slug="japan-10-day-itinerary" listing={gygTeamlabPlanets} />
@@ -2210,7 +2210,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             on this plan is a QR code in an inbox, every &ldquo;getting there&rdquo; column above
             assumes you can open a map, and the Kyoto bus network and the Hakone loop are the two
             places where that matters most.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our{" "}
@@ -2623,7 +2623,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
               sites sometimes reject, and keeps all three cities on one account.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Book the Tokyo → Kyoto shinkansen on Klook →
               </KlookLink>
               <GygCompareButton slug="japan-10-day-itinerary" listing={gygKyoto} />

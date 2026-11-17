@@ -756,10 +756,10 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 แผน<strong>เที่ยวฮอกไกโด 7 วัน</strong>นี้<strong>พักสองเมือง หกคืน</strong> คือ<strong>ซัปโปโรสี่คืน</strong>และ<strong>ฟุราโนะสองคืน</strong> เส้นทาง<strong>ซัปโปโร → โอตารุ → อาซาฮิคาวะ → บิเอะและฟุราโนะ → ซัปโปโร</strong> ระยะทางสั้นพอที่จะใช้รถไฟทั้งหมด ตามตัวเลขของ JR Hokkaido ชิโตเสะถึงซัปโปโร <strong>{AIRPORT_FARE}</strong> <strong>36–43 นาที</strong> ซัปโปโรถึงโอตารุ <strong>{OTARU_FARE}</strong> <strong>ประมาณ 33 นาที</strong> ซัปโปโรถึงอาซาฮิคาวะ <strong>1 ชั่วโมง 25 นาที</strong>ด้วย Lilac หรือ Kamui ที่นั่งจอง และฟุราโนะกลับซัปโปโร<strong>สองชั่วโมง</strong>ด้วย Furano Lavender Express ในฤดูร้อน หรือรถไฟท้องถิ่นกับ Lilac หรือ Kamui ในฤดูหนาว รวมทั้งสัปดาห์<strong>ต่ำกว่า ¥18,000</strong> ต่อคน จึงทำให้ <strong>Hokkaido Rail Pass แบบ 7 วัน ราคา {PASS_7} ไม่คุ้มบนเส้นทางนี้</strong> ขณะที่ <strong>Sapporo–Furano Area Pass แบบ 4 วัน ราคา {AREA_FURANO}</strong> คุ้ม วันที่ใช้ขนส่งสาธารณะได้ไม่ดีคือ<strong>บิเอะ</strong> และวันที่เป็นคนละวันหยุดระหว่าง<strong>กุมภาพันธ์</strong>กับ<strong>กรกฎาคม</strong>คือ<strong>ฟุราโนะ</strong> ตรวจสอบค่าโดยสารและราคาพาสเมื่อ {OWN}
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 ดูโรงแรมซัปโปโร →
 </KlookLink>
-              <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
 ดู JR Hokkaido Pass →
 </KlookLink>
             </div>
@@ -885,13 +885,13 @@ Hokkaido Rail Pass คุ้มสำหรับ 7 วันไหม?
 <strong>แล้วควรเลือกพาสไหน</strong> <strong>Hokkaido Rail Pass</strong> ห้าวันติดต่อกัน {PASS_5} เจ็ดวัน <strong>{PASS_7}</strong> สิบวัน {PASS_10} เมื่อซื้อก่อนมาถึง ที่สถานีแพงกว่า ¥1,000 เด็กครึ่งราคา ไม่มีแบบยืดหยุ่น เทียบกับค่าโดยสารต่ำกว่า ¥18,000 พาสเจ็ดวันจึงขาดทุนราว ¥10,000 <strong>Sapporo–Furano Area Pass</strong> ราคา <strong>{AREA_FURANO}</strong> สี่วันติดต่อกันคือพาสที่คุ้ม เฉพาะช่วงรถด่วนพิเศษอาซาฮิคาวะและฟุราโนะก็ ¥11,720 และยังครอบคลุมชิโตเสะ ซัปโปโร โอตารุ และบิเอะ ใช้ในวันที่ 3 ถึง 6 ก็คุ้มเมื่อรวมโอตารุไปกลับ (ไม่ครอบคลุมโทมามุ) <strong>Sapporo–Noboribetsu Area Pass</strong> {AREA_NOBORIBETSU} คือแบบเดียวกันสำหรับเส้นทางลงใต้ ครอบคลุมชิโตเสะ ซัปโปโร โอตารุ และโนโบริเบ็ตสึ แต่ไม่รวมโทยะ ส่วน <strong>JR Pass</strong> ทั่วประเทศ ¥53,000 เจ็ดวัน ¥84,000 สิบสี่วัน และ ¥105,000 ยี่สิบเอ็ดวันหลังปรับราคา 1 ตุลาคม 2026 ไม่เหมาะกับทริปเฉพาะเกาะนี้ <Link href="/guides/transport/jr-pass-guide" hrefLang="en">คู่มือ JR Pass(ภาษาอังกฤษ)</Link> อธิบายว่าเหมาะเมื่อใด
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(jrHokkaidoRailPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ดู JR Hokkaido Pass →
 </KlookLink>
-            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 รถรับส่งชิโตเสะ →
 </KlookLink>
-            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={klookFor(nisekoResortShuttleBus.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
 ชัตเทิลรีสอร์ตนิเซโกะ →
 </KlookLink>
           </div>
@@ -941,7 +941,7 @@ Hokkaido Rail Pass คุ้มสำหรับ 7 วันไหม?
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -989,10 +989,10 @@ Hokkaido Rail Pass คุ้มสำหรับ 7 วันไหม?
 ช่วงรถไฟแทบไม่ต้องจอง แต่ห้องพักและทริปมีไกด์สามวันต้องจอง และครึ่งแรกของกุมภาพันธ์ ห้องพักคือส่วนเดียวของสัปดาห์ที่ไม่มีตัวเลือกสำรอง
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 ดูโรงแรมซัปโปโร →
 </KlookLink>
-              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[2].url, LOCALE)} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={klookFor(hokkaidoSevenDayStayAreas[2].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
 ดูโรงแรมฟุราโนะ →
 </KlookLink>
             </div>

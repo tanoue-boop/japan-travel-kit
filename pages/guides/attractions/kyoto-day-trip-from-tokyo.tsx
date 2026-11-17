@@ -308,10 +308,10 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
               around two sides of the city, or join a guided day from Kyoto Station to see more.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Tokyo → Kyoto shinkansen →
               </KlookLink>
-              <KlookLink href={kyotoCityFushimiArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={kyotoCityFushimiArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Check the Kyoto day tour →
               </KlookLink>
             </div>
@@ -483,7 +483,7 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
                   {tourRows.map((row) => (
                     <tr key={row.tour.url}>
                       <td className={styles.tdProvider}>
-                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored noopener" style={LINK}>
+                        <KlookLink href={row.tour.url} target="_blank" rel="sponsored nofollow noopener" style={LINK}>
                           {row.tour.title}
                         </KlookLink>
                       </td>
@@ -497,7 +497,7 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
             </div>
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
-            <KlookLink href={kyotoCityFushimiArashiyamaTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoCityFushimiArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Kyoto day tour on Klook →
             </KlookLink>
           </div>
@@ -515,7 +515,7 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
             longer routes.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the JR Pass on Klook →
             </KlookLink>
           </div>
@@ -566,7 +566,7 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
             ticket will not get you on a Nozomi. Periods read on JR Central&apos;s site, {CHECKED}.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Tokyo → Kyoto seats on Klook →
             </KlookLink>
           </div>
@@ -627,7 +627,7 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
               Your evening train sets the length of the day. Fix both directions, then fill the hours in Kyoto.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Tokyo → Kyoto Shinkansen →
               </KlookLink>
             </div>

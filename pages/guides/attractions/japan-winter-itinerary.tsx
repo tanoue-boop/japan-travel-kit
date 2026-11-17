@@ -1216,7 +1216,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={shirakawagoLightUpTakayamaDayTour.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
               >
                 Check the Shirakawa-go light-up day →
@@ -1224,7 +1224,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={hokurikuArchPass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.pickCta}
               >
                 Check the Hokuriku Arch Pass →
@@ -1329,7 +1329,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                   key={pick.url}
                   href={pick.url}
                   target="_blank"
-                  rel="sponsored noopener"
+                  rel="sponsored nofollow noopener"
                   className={styles.pickCta}
                 >
                   {pick.label}
@@ -1454,13 +1454,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             and reservations.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Hokuriku Arch Pass →
             </KlookLink>
-            <KlookLink href={jrPassWholeJapanCurrent.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrPassWholeJapanCurrent.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Price the JAPAN RAIL PASS →
             </KlookLink>
-            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Kanazawa tickets →
             </KlookLink>
           </div>
@@ -1556,13 +1556,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             pass at ¥13,500 from 24 December 2026 to 28 February 2027 on Niseko United&apos;s own table.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               GALA Yuzawa / Naeba chartered car →
             </KlookLink>
-            <KlookLink href={hakubaHapponeBusLiftRental.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={hakubaHapponeBusLiftRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Hakuba bus + lift + rental →
             </KlookLink>
-            <KlookLink href={nisekoSkiSnowboardRental.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoSkiSnowboardRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Niseko ski &amp; snowboard rental →
             </KlookLink>
           </div>
@@ -1622,7 +1622,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <KlookLink
               href={shirakawagoLightUpTakayamaDayTour.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
               Shirakawa-go light-up day →
@@ -1630,7 +1630,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <KlookLink
               href={shirakawagoTakayamaKanazawaDayTour.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
               Shirakawa-go day from Kanazawa →
@@ -1638,7 +1638,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <KlookLink
               href={teamlabBotanicalGardenOsakaTicket.url}
               target="_blank"
-              rel="sponsored noopener"
+              rel="sponsored nofollow noopener"
               className={styles.pickCta}
             >
               teamLab Botanical Garden Osaka →
@@ -1700,19 +1700,19 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             the week that stays on the island.
           </p>
           <div className={styles.pickCtaRow}>
-            <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               New Chitose → Sapporo transfer →
             </KlookLink>
-            <KlookLink href={sapporoSnowParkHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={sapporoSnowParkHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sapporo snow park half day →
             </KlookLink>
-            <KlookLink href={jrEastSouthHokkaidoPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={jrEastSouthHokkaidoPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               JR East–South Hokkaido Pass →
             </KlookLink>
-            <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Niseko airport shuttle →
             </KlookLink>
-            <KlookLink href={rusutsuResortShuttleBus.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={rusutsuResortShuttleBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Rusutsu airport shuttle →
             </KlookLink>
           </div>
@@ -2138,12 +2138,12 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               <KlookLink
                 href={shirakawagoLightUpTakayamaDayTour.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.ctaBannerBtn}
               >
                 View the Shirakawa-go light-up day →
               </KlookLink>
-              <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+              <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Check the Hokuriku Arch Pass →
               </KlookLink>
             </div>

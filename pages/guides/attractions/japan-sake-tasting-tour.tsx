@@ -299,10 +299,10 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
               check. Fees read on the breweries&apos; own sites {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Fushimi Sake Tasting Tour →
               </KlookLink>
-              <KlookLink href={tokyoOzawaBreweryTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={tokyoOzawaBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Tokyo Brewery Tour →
               </KlookLink>
             </div>
@@ -367,13 +367,13 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/kyoto-2-day-itinerary">Kyoto 2-day itinerary</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fushimi sake tasting (3 h) →
             </KlookLink>
-            <KlookLink href={fushimiEighteenSakeTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fushimiEighteenSakeTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fushimi 18-sake walk →
             </KlookLink>
-            <KlookLink href={fushimiInariSakeTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fushimiInariSakeTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fushimi Inari + sake tasting →
             </KlookLink>
           </div>
@@ -392,10 +392,10 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
             around.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kobeNadaSakeHalfDayTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeNadaSakeHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Nada half-day with food →
             </KlookLink>
-            <KlookLink href={kobeSakeBreweryTastingTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kobeSakeBreweryTastingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Kobe brewery tour with tasting →
             </KlookLink>
           </div>
@@ -415,10 +415,10 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
             bar streets of Shinjuku.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={tokyoOzawaBreweryTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoOzawaBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo brewery tour (2 h) →
             </KlookLink>
-            <KlookLink href={tokyoSakePrivateCarTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoSakePrivateCarTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Private car day from Tokyo →
             </KlookLink>
           </div>
@@ -498,13 +498,13 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
             take the train back after tasting.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fushimi tasting tour →
             </KlookLink>
-            <KlookLink href={fushimiSakeCanalBoatTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={fushimiSakeCanalBoatTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Fushimi sake + canal boat →
             </KlookLink>
-            <KlookLink href={tokyoOzawaBreweryTour.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={tokyoOzawaBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo brewery tour →
             </KlookLink>
           </div>
@@ -520,7 +520,7 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             Brewery bookings, tour meeting points and the train home after a tasting all run on your phone.{" "}
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
               See Klook eSIM options →
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares the alternatives.
@@ -592,10 +592,10 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
               your route and book the time first.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Fushimi Tasting →
               </KlookLink>
-              <KlookLink href={tokyoOzawaBreweryTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={tokyoOzawaBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Tokyo Brewery Tour →
               </KlookLink>
             </div>

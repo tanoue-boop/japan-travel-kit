@@ -385,10 +385,10 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
             <a href="#tokyo-or-kyoto" style={linkStyle}>Tokyo or Kyoto</a> for the Kyoto venues and prices.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "0.5rem" }}>
-            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Asakusa kimono tea ceremony →
             </KlookLink>
-            <KlookLink href={shibuyaChaAnTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaChaAnTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Shibuya tea ceremony →
             </KlookLink>
           </div>
@@ -426,7 +426,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               restrictions the venue lists.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Browse Tea Ceremony Experiences →
               </KlookLink>
               <GygCompareButton slug="tea-ceremony-japan" listing={gygJapanTeaCeremonies} />
@@ -467,7 +467,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
                       <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>
                         {row.book ? (
                           row.book.klook ? (
-                            <KlookLink href={row.book.href} target="_blank" rel="sponsored noopener" style={linkStyle}>
+                            <KlookLink href={row.book.href} target="_blank" rel="sponsored nofollow noopener" style={linkStyle}>
                               {row.book.label}
                             </KlookLink>
                           ) : (
@@ -494,10 +494,10 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
             <a href={MAIKOYA_TOKYO_URL} target="_blank" rel="noopener" style={linkStyle}>Maikoya Asakusa</a>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book the Asakusa kimono ceremony →
             </KlookLink>
-            <KlookLink href={shibuyaChaAnTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={shibuyaChaAnTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book Cha An in Shibuya →
             </KlookLink>
             <GygCompareButton slug="tea-ceremony-japan" listing={gygTokyoTeaCeremonies} />
@@ -758,19 +758,19 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoGionKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionKimonoTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Gion kimono ceremony →
             </KlookLink>
-            <KlookLink href={kyotoGionChairTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionChairTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Gion ceremony on chairs →
             </KlookLink>
-            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Asakusa kimono ceremony →
             </KlookLink>
-            <KlookLink href={asakusaTableKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asakusaTableKimonoTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the Asakusa ceremony at tables →
             </KlookLink>
-            <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Browse Tea Ceremony Experiences →
             </KlookLink>
             <GygCompareButton slug="tea-ceremony-japan" listing={gygKyotoTeaCeremonies} />
@@ -810,19 +810,19 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kyotoGionKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionKimonoTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book the Gion kimono ceremony on Klook →
             </KlookLink>
-            <KlookLink href={kyotoGionChairTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={kyotoGionChairTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book the Gion ceremony on chairs →
             </KlookLink>
-            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asakusaKimonoTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book the Asakusa kimono ceremony on Klook →
             </KlookLink>
-            <KlookLink href={asakusaTableKimonoTeaCeremony.url} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={asakusaTableKimonoTeaCeremony.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Book the Asakusa ceremony at tables →
             </KlookLink>
-            <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.pickCta}>
+            <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Browse Tea Ceremony Experiences →
             </KlookLink>
             <GygCompareButton slug="tea-ceremony-japan" listing={gygKyotoTeaCeremonies} />
@@ -1059,7 +1059,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
               restrictions when you book, and consider pairing it with a kimono.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={TEA_CEREMONY_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 Browse Tea Ceremony Experiences →
               </KlookLink>
               <GygCompareButton slug="tea-ceremony-japan" listing={gygJapanTeaCeremonies} />

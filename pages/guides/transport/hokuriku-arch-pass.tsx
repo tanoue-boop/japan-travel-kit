@@ -593,7 +593,7 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
               <KlookLink
                 href={hokurikuArchPass.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -602,7 +602,7 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
               <KlookLink
                 href={shinkansenTokyoKanazawa.url}
                 target="_blank"
-                rel="sponsored noopener"
+                rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
@@ -653,7 +653,7 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             release gives the same ¥35,000 and ¥17,500.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hokuriku Arch Pass on Klook (exchange order) →
             </KlookLink>
           </div>
@@ -798,10 +798,10 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             <a href={EAST_PRESS_URL} target="_blank" rel="noopener noreferrer">jreast.co.jp press release</a>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Check the Hokuriku Arch Pass →
             </KlookLink>
-            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Price Tokyo–Kanazawa Tickets →
             </KlookLink>
           </div>
@@ -958,10 +958,10 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             ))}
           </div>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               View the Hokuriku Arch Pass →
             </KlookLink>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               {klookEsim.ctaLabel}
             </KlookLink>
           </div>
@@ -988,13 +988,13 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             .
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={kanazawaHotels.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={kanazawaHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hotels in Kanazawa →
             </KlookLink>
-            <KlookLink href={toyamaHotels.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={toyamaHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hotels in Toyama →
             </KlookLink>
-            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Shirakawa-go Day From Kanazawa →
             </KlookLink>
           </div>
@@ -1070,10 +1070,10 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
               cheaper on tickets.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Hokuriku Arch Pass →
               </KlookLink>
-              <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={shinkansenTokyoKanazawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Tokyo–Kanazawa Tickets →
               </KlookLink>
             </div>

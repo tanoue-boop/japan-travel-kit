@@ -550,7 +550,7 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             Balances, spend alerts and card freezes live in the Wise and Revolut apps, so set up data before you fly.
           </p>
-          <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored noopener" style={{ marginTop: "0.5rem", display: "inline-block" }}>
+          <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener" style={{ marginTop: "0.5rem", display: "inline-block" }}>
             {klookEsim.ctaLabel}
           </KlookLink>
         </section>

@@ -179,7 +179,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             <strong>Not insurance advice.</strong> This is general information only — not insurance advice.
             Coverage and prices vary by age, trip length, and plan, and change over time. Always get a quote
             and read the policy wording before you buy. Confirm the latest details on the official{" "}
-            <a href={SAFETYWING_URL} target="_blank" rel="sponsored noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>SafetyWing</a>{" "}
+            <a href={SAFETYWING_URL} target="_blank" rel="sponsored nofollow noopener noreferrer" style={{ color: "var(--text)", fontWeight: 600 }}>SafetyWing</a>{" "}
             and{" "}
             <a href={HEYMONDO_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--text)", fontWeight: 600 }}>Heymondo</a>{" "}
             sites.
@@ -216,7 +216,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
               deciding.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <a href={SAFETYWING_URL} target="_blank" rel="sponsored noopener noreferrer" className={styles.verdictBtn}>
+              <a href={SAFETYWING_URL} target="_blank" rel="sponsored nofollow noopener noreferrer" className={styles.verdictBtn}>
                 See SafetyWing prices for your age →
               </a>
             </div>
@@ -302,7 +302,7 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             </div>
           </div>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1.5rem" }}>
-            <a href={SAFETYWING_URL} target="_blank" rel="sponsored noopener noreferrer" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
+            <a href={SAFETYWING_URL} target="_blank" rel="sponsored nofollow noopener noreferrer" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
               Get a SafetyWing quote →
             </a>
             <a href={HEYMONDO_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>

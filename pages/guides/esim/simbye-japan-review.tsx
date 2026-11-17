@@ -303,7 +303,7 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
                 <p className={styles.verdictStatValue}>No — data only</p>
               </div>
             </div>
-            <a href={esimLink("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored noopener">
+            <a href={esimLink("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Get Simbye Japan — from {priceLabel(ENTRY)} →
             </a>
           </div>
@@ -344,7 +344,7 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
                       <td>{yesNo(plan.tethering)}</td>
                       <td>{yesNo(plan.topUp)}</td>
                       <td>
-                        <a href={plan.link ?? esimLink("simbye")} className={styles.tdLink} target="_blank" rel="sponsored noopener">
+                        <a href={plan.link ?? esimLink("simbye")} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
                           Buy →
                         </a>
                       </td>
@@ -485,7 +485,7 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
             calls and SMS are not possible&rdquo;, and that compatibility may vary by service. They will not
             give you a Japanese number, so they do not help with a form that asks for one. The discount code
             does not apply to them.{" "}
-            <a href={NUMBERS_URL} className={tools.inlineLink} target="_blank" rel="sponsored noopener">
+            <a href={NUMBERS_URL} className={tools.inlineLink} target="_blank" rel="sponsored nofollow noopener">
               See Simbye&apos;s virtual numbers →
             </a>
           </p>

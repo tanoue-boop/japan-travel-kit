@@ -42,7 +42,7 @@ export default function KlookTourPicks({ heading, intro, tours, locale }: Props)
             key={tour.url}
             href={tour.url}
             target="_blank"
-            rel="sponsored noopener"
+            rel="sponsored nofollow noopener"
             className={styles.relatedCard}
           >
             <div className={styles.relatedIcon}>

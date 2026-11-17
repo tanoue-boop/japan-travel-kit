@@ -295,7 +295,7 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
               mountain may be in cloud — choose a tour whose other stops you would still enjoy.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={fujiHakoneDayTour.url} target="_blank" rel="sponsored noopener" className={styles.verdictBtn}>
+              <KlookLink href={fujiHakoneDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check Mt. Fuji day tours on Klook →
               </KlookLink>
               <GygCompareButton slug="mt-fuji-day-tour-from-tokyo" listing={gygFujiFromTokyo} />
@@ -346,7 +346,7 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
                   {tourRows.map((row) => (
                     <tr key={row.tour}>
                       <td className={styles.tdProvider}>
-                        <KlookLink href={row.url} target="_blank" rel="sponsored noopener" className={styles.tdLink}>
+                        <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener" className={styles.tdLink}>
                           {row.tour}
                         </KlookLink>
                       </td>
@@ -597,7 +597,7 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
               Ashi cruise. Klook checks out in English and takes foreign cards.
             </p>
             <div className={styles.pickCtaRow}>
-              <KlookLink href={fujiHakoneDayTour.url} target="_blank" rel="sponsored noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={fujiHakoneDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View Mt. Fuji day tours on Klook →
               </KlookLink>
               <GygCompareButton slug="mt-fuji-day-tour-from-tokyo" listing={gygFujiFromTokyo} />
