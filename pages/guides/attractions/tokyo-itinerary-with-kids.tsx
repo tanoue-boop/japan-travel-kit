@@ -652,6 +652,12 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             course, but its adult sword lesson keeps under-6s out of the dojo — the guide sets out which
             session fits which age.
           </p>
+          <p className={styles.bodyText}>
+            With older children on Day 3, Sega&apos;s Joypolis is in the same DECKS Tokyo Beach building as
+            LEGOLAND Discovery Center, but eleven of its 21 attractions need 110 cm or more and the headline coaster 130 cm — our{" "}
+            <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis tickets</Link> guide lists
+            every height limit and the Passport prices.
+          </p>
         </section>
 
         {/* Day by day */}

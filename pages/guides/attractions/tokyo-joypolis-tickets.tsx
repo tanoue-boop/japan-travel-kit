@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -11,7 +12,9 @@ import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
   tokyoBaySunsetBoatCruise,
+  tokyoBaySunsetCruise,
   tokyoBayYakatabuneDinnerShow,
+  tokyoJoypolisAnswerCards,
   tokyoJoypolisPassport,
   tokyoJoypolisTicket,
   tokyoJoypolisTripPrep,
@@ -38,18 +41,59 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *
  * No Klook price appears: Klook answers automated reads of its product pages with HTTP 403,
  * so there is no figure here we could have verified.
+ *
+ * Re-read on 17 November 2026 (task-jtk-20261117-R07, "Tokyo Joypolis tickets" / "Joypolis
+ * passport"), all unchanged from 22 Oct:
+ *
+ *   tokyo-joypolis.com/ticket/   入場券 ¥1,700 / ¥1,400; パスポート ¥6,000 / ¥5,000 (館内 ¥4,300 /
+ *       ¥3,600); イブニング ¥5,000 / ¥4,000 from 15:00 (16:00 on 22:00 days), 館内 ¥3,300 / ¥2,600;
+ *       ちょいのりナイト2回券 ¥3,100 from 17:00 (18:00); 年パス ¥29,000 / ¥24,000; no refunds;
+ *       same-day re-entry until last entry
+ *   tokyo-joypolis.com/attraction/   21 attractions, each ¥700–¥1,000 per person, passports valid;
+ *       height limits as in heightRows
+ *   tokyo-joypolis.com/access/   Yurikamome Odaiba-Kaihinkoen 2 min (Shimbashi ~13, Toyosu ~18,
+ *       Tokyo Sta. via Shimbashi ~23); Rinkai Tokyo Teleport 5 min (Shibuya ~18, Shinjuku ~23,
+ *       Ikebukuro ~29)
+ *   tokyo-joypolis.com/language/english/   last entry 45 min before closing; hours may change
+ *   teamlab.art/e/planets/ + teamlabplanets.dmm.com/en   8:00–22:00, last entry 1 h before; 3 min
+ *       from Shin-Toyosu Exit 1A (Yurikamome); Entrance Pass adult ¥3,800~
+ *   tptc.co.jp/park/01_02   Odaiba Seaside Park: the operator singles out its sunset and night view,
+ *       from the beach, the observation deck or the skywalk
+ *
+ * Break-even (R07 table, first row): the Passport less admission is ¥4,300 adult / ¥3,600 student,
+ * and rides cost ¥700–¥1,000, so the adult Passport pays from the 5th ride (all ¥1,000 rides) to
+ * the 7th (all ¥700); the student one from the 4th to the 6th.
  */
 
 /** Everything on this page was read off tokyo-joypolis.com on this date. */
-const CHECKED_ISO = "2026-10-22";
+const CHECKED_ISO = "2026-11-17";
 const CHECKED = checkedLabel(CHECKED_ISO);
+const LAST_CHECKED = "2026-11-17";
+
+const OFFICIAL = [
+  { label: "tokyo-joypolis.com ticket page", href: "https://tokyo-joypolis.com/ticket/" },
+  { label: "attraction list and ride prices", href: "https://tokyo-joypolis.com/attraction/" },
+  { label: "access page", href: "https://tokyo-joypolis.com/access/" },
+];
 
 const priceRows = [
+  {
+    ticket: "Answer: which ticket?",
+    adult: "Passport from the 5th ride",
+    child: "Passport from the 4th ride",
+    what: "Rides cost ¥700–¥1,000 each on an admission ticket. Planning 5 or more rides (4 for a student)? Buy the Passport. Fewer than that? Buy admission and pay per ride",
+  },
   {
     ticket: "Admission only (入場券)",
     adult: "¥1,700",
     child: "¥1,400",
     what: "Gets you through the door. Every ride is then paid for individually",
+  },
+  {
+    ticket: "Single ride, on an admission ticket",
+    adult: "¥700–¥1,000",
+    child: "¥700–¥1,000",
+    what: "Per person, per ride. The coaster, Halfpipe Tokyo and NARUTO are ¥1,000; most others ¥700–¥900",
   },
   {
     ticket: "Passport (パスポート)",
@@ -119,10 +163,44 @@ const heightRows = [
   },
 ];
 
+/** Table 2 (R07): an Odaiba day — teamLab Planets, Joypolis and the waterfront at night. */
+const comboRows = [
+  {
+    when: "Answer",
+    what: "teamLab Planets in the morning, Joypolis on an Evening Passport from 15:00, Odaiba Seaside Park for the night view",
+    ticket: "Book the Planets slot first; Joypolis needs no date",
+  },
+  {
+    when: "Morning",
+    what: "teamLab Planets TOKYO, Toyosu: 3 minutes on foot from Exit 1A of Shin-Toyosu Station (Yurikamome). Open 8:00–22:00, last entry 1 hour before closing",
+    ticket: "Dated time-slot ticket; adult from ¥3,800 on the official store",
+  },
+  {
+    when: "Midday",
+    what: "Yurikamome from Shin-Toyosu to Odaiba-Kaihinkoen, the same line, no change; lunch in DECKS Tokyo Beach",
+    ticket: "IC card",
+  },
+  {
+    when: "From 15:00",
+    what: "Tokyo Joypolis, floors 3–5 of DECKS, 2 minutes from Odaiba-Kaihinkoen. The Evening Passport goes on sale at 15:00 (16:00 on 22:00-closing days)",
+    ticket: "Evening Passport ¥5,000 adult / ¥4,000 student; last entry 45 min before closing",
+  },
+  {
+    when: "Evening",
+    what: "Odaiba Seaside Park, in front of DECKS: the park operator singles out its sunset and night view, from the beach, the observation deck or the skywalk",
+    ticket: "Nothing to book",
+  },
+  {
+    when: "Instead",
+    what: "A Tokyo Bay sunset cruise past Rainbow Bridge and the Odaiba waterfront, if you want the night view from the water",
+    ticket: "Book ahead; see the cruise guide",
+  },
+];
+
 const whoFor = [
   {
     title: "Buy the Passport if…",
-    desc: `Anyone in your group wants more than two rides. At ¥6,000 for an adult and ¥5,000 for a school-age child it is the only ticket that stops you doing arithmetic at every queue, and it is what the park is designed around. Prices read off tokyo-joypolis.com on ${CHECKED}.`,
+    desc: `You will ride five or more attractions (four for a student). At ¥6,000 for an adult and ¥5,000 for a school-age child, the ride part is worth ¥4,300 and ¥3,600, and single rides are ¥700–¥1,000 — so the Passport wins from the 5th ¥1,000 ride, and it stops you doing arithmetic at every queue. Prices read off tokyo-joypolis.com on ${CHECKED}.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -133,7 +211,7 @@ const whoFor = [
   },
   {
     title: "Buy admission only if…",
-    desc: `You are going for the arcade floors, or you are the adult holding the bags. Entry is ¥1,700 for an adult and ¥1,400 for a school-age child, and you can upgrade to the full passport inside for ¥4,300 — which totals the same ¥6,000, so nothing is lost by deciding on the spot. Checked ${CHECKED}.`,
+    desc: `You want two or three rides, the arcade floors, or you are the adult holding the bags. Entry is ¥1,700 for an adult and ¥1,400 for a school-age child, and you can upgrade to the full passport inside for ¥4,300 — which totals the same ¥6,000, so nothing is lost by deciding on the spot. Checked ${CHECKED}.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 6h16v5a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z" />
@@ -175,14 +253,39 @@ const steps = [
   },
 ];
 
+/** The five questions in FAQPage (R07). */
 const faqItems = [
+  {
+    q: "How much is a Tokyo Joypolis Passport?",
+    a: `The Joypolis Passport, admission plus unlimited rides for the day, is ¥6,000 for an adult (18 and over) and ¥5,000 for an elementary, middle or high-school student at the door. Bought inside on an admission ticket it is ¥4,300 and ¥3,600, which adds up to the same total. After 15:00 (16:00 on days the park closes at 22:00) the Evening Passport is ¥5,000 and ¥4,000. Admission alone is ¥1,700 and ¥1,400. Read off tokyo-joypolis.com on ${CHECKED}.`,
+  },
+  {
+    q: "Is Tokyo Joypolis worth it?",
+    a: `Yes, if your group will ride at least five attractions and everyone clears the height limits. Rides cost ¥700 to ¥1,000 each on an admission ticket, so the adult Passport's ¥4,300 of rides pays off from the 5th ride (if you choose the ¥1,000 rides) to the 7th (if you choose ¥700 ones). It is less worth it for a child under 110 cm, who can use only the attractions with no height limit. Prices read on ${CHECKED}.`,
+  },
+  {
+    q: "How long do you need at Joypolis?",
+    a: `Allow 2 to 4 hours, the figure Klook's listing gives. There are twenty-one attractions across three floors, and last entry is 45 minutes before closing, so arrive at least 90 minutes before closing for a short visit. Same-day re-entry is allowed until last entry, so you can leave for lunch and come back. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Is Joypolis good for adults?",
+    a: `Yes. The park is built around rides for teenagers and adults: the Gekion Live Coaster and Halfpipe Tokyo need 130 cm, Storm-G 140 to 200 cm, and the 3D-sound horror attraction MURDER LODGE does not admit children under 7. An adult ticket is ¥6,000 for the Passport, and visitors aged 60 and over get in free with proof of age and can buy the Passport at the ¥4,300 in-park price. Read on ${CHECKED}.`,
+  },
+  {
+    q: "How do I get to Tokyo Joypolis?",
+    a: `Take the Yurikamome to Odaiba-Kaihinkoen Station, a 2-minute walk, or the Rinkai Line to Tokyo Teleport Station, a 5-minute walk. The official access page gives about 13 minutes from Shimbashi and about 23 from Tokyo Station via Shimbashi on the Yurikamome, and about 18 minutes from Shibuya and 23 from Shinjuku on the Rinkai Line. Joypolis is on floors 3 to 5 of DECKS Tokyo Beach, 1-6-1 Daiba. Read on ${CHECKED}.`,
+  },
+];
+
+/** Kept on the page, outside FAQPage. */
+const moreFaqItems = [
   {
     q: "How much are Tokyo Joypolis tickets?",
     a: `Admission on its own is ¥1,700 for an adult aged 18 and over and ¥1,400 for an elementary, middle or high-school student. The Passport, which adds unlimited rides for the day, is ¥6,000 for an adult and ¥5,000 for a student. The Evening Passport, on sale from 15:00 (16:00 on days the park closes at 22:00), is ¥5,000 and ¥4,000, and the CHOI-NORI-NIGHT ticket — admission plus any two rides, sold from 17:00 — is ¥3,100 for everyone from elementary-school age up. An annual passport is ¥29,000 adult and ¥24,000 student. All read off tokyo-joypolis.com on ${CHECKED}.`,
   },
   {
     q: "What is the difference between admission and the Joypolis Passport?",
-    a: `Admission gets you inside the building; the Passport gets you onto the rides. With a ¥1,700 adult admission ticket you pay for each attraction individually, and you can upgrade to the full passport once you are inside for ¥4,300 — which comes to exactly the ¥6,000 the passport costs at the door, so buying in two steps neither saves nor costs you anything. If more than a couple of rides appeal, the Passport is the ticket. Checked ${CHECKED}.`,
+    a: `Admission gets you inside the building; the Passport gets you onto the rides. With a ¥1,700 adult admission ticket you pay for each attraction individually, and you can upgrade to the full passport once you are inside for ¥4,300 — which comes to exactly the ¥6,000 the passport costs at the door, so buying in two steps neither saves nor costs you anything. Single rides are ¥700 to ¥1,000, so if five or more appeal, the Passport is the ticket. Checked ${CHECKED}.`,
   },
   {
     q: "Is there a cheaper Joypolis ticket for the evening?",
@@ -191,14 +294,6 @@ const faqItems = [
   {
     q: "What are Tokyo Joypolis opening hours?",
     a: `There is no single answer, and that is the official position rather than an evasion: tokyo-joypolis.com publishes opening hours on a calendar per period and states they are subject to change without notice. Two rules do hold on every date — last entry is 45 minutes before the park closes, and re-entry is possible until 45 minutes before closing too. Because the evening tickets are tied to the closing time (15:00 or 16:00 for the Evening Passport, 17:00 or 18:00 for the night ticket), checking your date on the calendar also tells you which evening ticket exists. Read on ${CHECKED}.`,
-  },
-  {
-    q: "How long do you need at Tokyo Joypolis?",
-    a: "Klook's own listing suggests 2 to 4 hours, which matches the shape of the place: twenty-one attractions across three floors of a shopping complex, most of them five to ten minutes long, with queues in between. Half a day is generous; a full day is not what this park is for. Treat it as one block of an Odaiba day rather than the whole day, and use the re-entry rule to go out for lunch.",
-  },
-  {
-    q: "How do you get to Tokyo Joypolis?",
-    a: `It is on floors 3 to 5 of DECKS Tokyo Beach, at 1-6-1 Daiba, Minato-ku. The official access page gives two routes: the Yurikamome Line to Odaiba-Kaihinkoen Station, about a 2-minute walk, or the Rinkai Line to Tokyo Teleport Station, about a 5-minute walk. The same page lists Shimbashi to Odaiba-Kaihinkoen at roughly 13 minutes and Toyosu at roughly 18, and puts Shibuya at about 18 minutes, Shinjuku about 23 and Ikebukuro about 29 via the Rinkai Line. The operator asks visitors to come by public transport. Read on ${CHECKED}.`,
   },
   {
     q: "Are there height restrictions at Tokyo Joypolis?",
@@ -230,9 +325,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-joypolis-tickets") },
 });
 
-const TITLE = "Tokyo Joypolis Tickets (2026): Passport Prices and Hours";
+const TITLE = "Tokyo Joypolis Tickets 2026: Passport Price & Worth It?";
 const DESC =
-  "Tokyo Joypolis tickets in 2026: admission alone is ¥1,700 and the all-ride Passport ¥6,000 for an adult, with a cheaper Evening Passport from 15:00.";
+  "Tokyo Joypolis tickets: admission ¥1,700, the all-ride Joypolis Passport ¥6,000 (¥5,000 from 15:00). It pays off from your 5th ride. Odaiba plan + Klook.";
 
 export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -289,7 +384,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
                 {
                   "@type": "ListItem",
                   position: 4,
-                  name: "Tokyo Joypolis Tickets",
+                  name: "Tokyo Joypolis Tickets & Passport",
                   item: "https://www.japan-travel-kit.com/guides/attractions/tokyo-joypolis-tickets",
                 },
               ],
@@ -322,15 +417,15 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Joypolis Tickets (2026):<br />Passport Prices, Hours and Height Limits
+            Tokyo Joypolis Tickets 2026:<br />Joypolis Passport Price, and Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             Sega&apos;s indoor park sits three floors up in Odaiba, two minutes from the Yurikamome.
-            Here is what each ticket costs, which rides your group is tall enough for, and how long to
-            allow.
+            What each ticket costs, the ride count where the Passport pays off, and how to fit it into
+            an Odaiba day.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official prices, dated", "Every height limit listed"].map((t) => (
+            {[`Updated ${updated.label}`, "Official prices, dated", "Passport break-even"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -348,6 +443,20 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Answer first (R07) */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Tokyo Joypolis tickets cost ¥1,700 for admission only and ¥6,000 for the all-ride Joypolis
+            Passport for an adult (¥1,400 and ¥5,000 for a school-age student), and rides are ¥700–¥1,000
+            each on an admission ticket, so the Passport pays off from about the 5th ride. There is a
+            night price: the Evening Passport is ¥5,000 from 15:00 (16:00 on 22:00-closing days), and a
+            two-ride CHOI-NORI-NIGHT ticket is ¥3,100 from 17:00. Allow 2 to 4 hours, and take the
+            Yurikamome to Odaiba-Kaihinkoen (2 minutes on foot, about 13 minutes from Shimbashi) or the
+            Rinkai Line to Tokyo Teleport (5 minutes on foot). Prices and access read off
+            tokyo-joypolis.com on {CHECKED}.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -395,6 +504,17 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
           </div>
         </div>
 
+        <KlookSameDayCards
+          heading="Booking the rest of the Odaiba day: teamLab Planets, a bed on the bay, and data"
+          cards={tokyoJoypolisAnswerCards}
+          footnote={
+            <>
+              For slots and prices, see our{" "}
+              <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>.
+            </>
+          }
+        />
+
         <EsimCtaTop />
 
         {/* Intro */}
@@ -420,11 +540,12 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How Much Are Tokyo Joypolis Tickets?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is a Tokyo Joypolis Passport?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Seven products, read off the operator&apos;s own ticket page. &quot;Student&quot; is the
-            park&apos;s own tier — elementary, middle and high-school pupils — and &quot;adult&quot;
-            means 18 and over.
+            ¥6,000 for an adult and ¥5,000 for a student, or ¥5,000 and ¥4,000 for the Evening Passport
+            from 15:00. Every Tokyo Joypolis ticket is below, with the ride count where the Passport
+            starts to pay in the first row. &quot;Student&quot; is the park&apos;s own tier —
+            elementary, middle and high-school pupils — and &quot;adult&quot; means 18 and over.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -450,8 +571,17 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            All seven read off the official ticket page at tokyo-joypolis.com on {CHECKED}, and subject
-            to change — confirm when you buy. Four groups are admitted free: pre-school children under
+            Last checked: {LAST_CHECKED}. Official sources:{" "}
+            {OFFICIAL.map((o, i) => (
+              <span key={o.href}>
+                <a href={o.href} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>{o.label}</a>
+                {i < OFFICIAL.length - 1 ? "; " : "."}
+              </span>
+            ))}{" "}
+            The break-even row is arithmetic on those prices: the Passport less admission is ¥4,300 for
+            an adult and ¥3,600 for a student, so it pays from the 5th ride (4th for a student) if you
+            pick ¥1,000 rides, or the 7th (6th) if you pick ¥700 ones. Prices are subject to change —
+            confirm when you buy, and note that the park does not refund tickets. Four groups are admitted free: pre-school children under
             110 cm, visitors aged 60 and over with proof of age, pregnant visitors showing a maternal
             health handbook, and disability certificate holders with up to two companions. For the
             admissions in this guide across the rest of Japan, each with its own check date, see our{" "}
@@ -464,7 +594,11 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
         {/* Which ticket */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Which ticket</span>
-          <h2 className={styles.sectionTitle}>Which Joypolis Ticket Should You Buy?</h2>
+          <h2 className={styles.sectionTitle}>Is Tokyo Joypolis Worth It?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Yes, if you will ride five or more attractions and everyone clears the height limits; for two
+            or three rides, admission plus single rides is cheaper. Which of the four day tickets fits:
+          </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
               <div key={item.title} className={styles.whoForCard}>
@@ -523,12 +657,33 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
+        {/* Adults (R07) */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Adults</span>
+          <h2 className={styles.sectionTitle}>Is Joypolis Good for Adults?</h2>
+          <p className={styles.bodyText}>
+            Yes — the two rides the park is known for, the Gekion Live Coaster and Halfpipe Tokyo, need
+            130 cm, and Storm-G takes riders from 140 to 200 cm. The rest of the line-up leans the same
+            way: shooting attractions such as House of the Dead and LASER SHOOTING ISSEN, the Sadako
+            walk-through, and MURDER LODGE, a 3D-sound horror attraction that does not admit children
+            under 7. Adults pay ¥6,000 for the Passport; visitors aged 60 and over enter free with proof
+            of age and can buy the Passport at the ¥4,300 in-park price. Read off tokyo-joypolis.com on{" "}
+            {CHECKED}.
+          </p>
+        </section>
+
         {/* Hours and access */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Hours &amp; access</span>
-          <h2 className={styles.sectionTitle}>When Is It Open, and How Do You Get There?</h2>
+          <h2 className={styles.sectionTitle}>How Do I Get to Tokyo Joypolis?</h2>
           <p className={styles.bodyText}>
-            Joypolis publishes no fixed opening hours. The official site runs a calendar, releases
+            By the Yurikamome to Odaiba-Kaihinkoen Station, 2 minutes on foot, or the Rinkai Line to Tokyo
+            Teleport Station, 5 minutes on foot — the full route list is at the end of this section.
+          </p>
+          <h2 className={styles.sectionTitle}>How Long Do You Need at Joypolis?</h2>
+          <p className={styles.bodyText}>
+            Allow 2 to 4 hours, as Klook&apos;s listing suggests, and arrive at least 90 minutes before
+            closing. Joypolis publishes no fixed opening hours. The official site runs a calendar, releases
             hours a period at a time, and states plainly that they can change without notice — so the
             honest instruction is to check your own date rather than trust a number on any third-party
             page, including this one. Two rules do apply on every date: <strong>last entry is 45
@@ -546,7 +701,8 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             Getting there is the easy part. The operator&apos;s access page gives the Yurikamome Line
             to Odaiba-Kaihinkoen Station, about two minutes on foot, or the Rinkai Line to Tokyo
             Teleport Station, about five. It puts Shimbashi at roughly 13 minutes to
-            Odaiba-Kaihinkoen and Toyosu at roughly 18, and Shibuya, Shinjuku and Ikebukuro at about
+            Odaiba-Kaihinkoen, Tokyo Station at about 23 via Shimbashi and Toyosu at roughly 18, and
+            Shibuya, Shinjuku and Ikebukuro at about
             18, 23 and 29 minutes via the Rinkai Line. It asks visitors to use public transport. All
             read on {CHECKED}; our{" "}
             <Link href="/guides/transport/tokyo-transportation">getting around Tokyo guide</Link>{" "}
@@ -579,6 +735,68 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
         </section>
 
         <BookingEsimCard lead="Joypolis booked? Get mobile data before you land." />
+
+        {/* Table 2 (R07): an Odaiba day */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Odaiba day</span>
+          <h2 className={styles.sectionTitle}>Can You Do teamLab Planets and Joypolis in One Day?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Yes: both are on the Yurikamome, so do Planets in the morning, Joypolis on an Evening
+            Passport from 15:00 and the Odaiba waterfront after dark. Only Planets needs a booked slot.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["When", "What", "Ticket"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {comboRows.map((row) => (
+                    <tr key={row.when}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.when}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.ticket}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Official sources:{" "}
+            <a href="https://tokyo-joypolis.com/ticket/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>
+              Tokyo Joypolis tickets
+            </a>
+            ;{" "}
+            <a href="https://www.teamlab.art/e/planets/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>
+              teamLab Planets hours and access
+            </a>{" "}
+            and its{" "}
+            <a href="https://teamlabplanets.dmm.com/en" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>
+              official ticket store
+            </a>
+            ;{" "}
+            <a href="https://www.tptc.co.jp/park/01_02" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>
+              Odaiba Seaside Park
+            </a>
+            . The teamLab adult price varies by date and slot. For the boats, see our{" "}
+            <Link href="/guides/attractions/tokyo-bay-cruise" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo Bay cruise guide
+            </Link>.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoJoypolisPassport.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Joypolis Passport on Klook →
+            </KlookLink>
+            <KlookLink href={tokyoBaySunsetCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Tokyo Bay sunset cruise →
+            </KlookLink>
+          </div>
+        </section>
 
         {/* Pairing it with Odaiba */}
         <section className={styles.bodySection}>
@@ -631,9 +849,9 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Tokyo Joypolis Tickets: Common Questions</h2>
           <div className={styles.faqList}>
-            {faqItems.map((item, i) => (
+            {[...faqItems, ...moreFaqItems].map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>

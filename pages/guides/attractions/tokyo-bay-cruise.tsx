@@ -388,6 +388,13 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
             buying dinner. And the Tokyo Cruise water buses are simply scheduled boats between piers,
             priced like transport because that is what they are.
           </p>
+          <p className={styles.bodyText}>
+            The water bus lands at Odaiba Seaside Park, in front of DECKS Tokyo Beach, and that is where a
+            boat pairs with an afternoon indoors: Joypolis sells an Evening Passport from 15:00, so the park
+            and an evening sailing fit into one day. Our{" "}
+            <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis tickets</Link> guide has
+            the Passport prices and an Odaiba day plan.
+          </p>
         </section>
 
         {/* The three boats */}
@@ -590,7 +597,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Joypolis Tickets (2026): Passport Prices, Hours &amp; Height Limits</p>
+                <p className={styles.relatedTitle}>Tokyo Joypolis Tickets 2026: Passport Price &amp; Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

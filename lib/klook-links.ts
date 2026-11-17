@@ -10052,3 +10052,37 @@ export const hakubaAirportShuttleBus: KlookTour = {
   desc: "A coach between Narita, Haneda or Tokyo and the main Hakuba resorts, with ski equipment and one piece of luggage per person included",
   url: klookLink("https://www.klook.com/en-US/activity/97862-hakuba-ski-resorts-shuttle-bus/"),
 };
+
+// ---------------------------------------------------------------------------
+// tokyo-joypolis-tickets, directly under the Joypolis buttons in the answer
+// (task-jtk-20261117-R07). teamLab Planets (existing tracked link), Odaiba
+// hotels (6.5%) and the Klook eSIM (20%). One new URL: Klook's "Odaiba"
+// destination hotel page, p50200203, confirmed live through the www.klook.com
+// search index on 17 Nov 2026 ("Best hotels near Odaiba, Japan 2026"). No prices.
+// ---------------------------------------------------------------------------
+
+export const odaibaHotelsUrl = klookLink(
+  "https://www.klook.com/en-US/destination/p50200203-odaiba/3-hotel/",
+);
+
+export const tokyoJoypolisAnswerCards: KlookSameDayCard[] = [
+  {
+    label: "teamLab Planets TOKYO ticket",
+    ctaLabel: "Book a teamLab Planets slot →",
+    url: teamlabPlanetsTicketUrl,
+    kind: "Ticket",
+    why: "Planets is 3 minutes from Shin-Toyosu on the same Yurikamome line as Joypolis, but it sells dated time slots, so it is the part of an Odaiba day to book first.",
+  },
+  {
+    label: "Hotels in Odaiba",
+    ctaLabel: "Check Odaiba hotels on Klook →",
+    url: odaibaHotelsUrl,
+    kind: "Hotel",
+    why: "An Evening Passport runs until the park closes and the waterfront night view comes after it, so a bed on the island saves the late ride back across the bay.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "Joypolis publishes its hours on a calendar rather than as fixed times, and the evening tickets depend on them, so check the date on your phone before you set off.",
+  },
+];

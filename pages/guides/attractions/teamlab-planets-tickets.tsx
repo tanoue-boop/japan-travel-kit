@@ -671,6 +671,12 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             <Link href="/guides/transport/tokyo-transportation">our Tokyo transport guide</Link>{" "}
             explains the lines if Toyosu is new territory.
           </p>
+          <p className={styles.bodyText}>
+            The same Yurikamome carries on to Odaiba-Kaihinkoen, two minutes from Sega&apos;s indoor park, so
+            a morning slot here and an afternoon in Odaiba make one day without a change of line. Our{" "}
+            <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis tickets</Link> guide has the
+            Passport and evening prices and a Planets-to-Odaiba day plan.
+          </p>
         </section>
 
         <EsimCtaBottom />
