@@ -10,23 +10,26 @@ import {
   formatUsd,
   getProvider,
   plansFor,
-  priceAtLeastLabel,
   priceFromLabel,
   pricesCheckedLabel,
   type EsimPlan,
   type EsimProviderId,
 } from "../../../lib/esim-prices";
-import { esimLink, esimSpec, HOLAFLY_ALT_LABEL, HOLAFLY_ALT_NOTE, SPECS_CHECKED_AT } from "../../../lib/esim-specs";
+import { esimLink, esimSpec, HOLAFLY_ALT_LABEL, HOLAFLY_ALT_NOTE } from "../../../lib/esim-specs";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
+import KlookLink from "../../../components/KlookLink";
+import { klookEsim } from "../../../lib/klook-links";
+import { SIMBYE_DISCOUNT_CODE } from "../../../lib/simbye";
 
 // Three sources, three dates.
 //
 // - Every USD price comes from data/esim-prices.json, refreshed daily from each
 //   provider's own site; `pricesCheckedAt` is that date.
 // - The phone-number and tethering clauses come from lib/esim-specs.ts, read off the
-//   providers' own pages on SPECS_CHECKED_AT.
+//   providers' own pages on SPECS_CHECKED_AT (lib/esim-specs.ts).
 // - SAKURA_OFFICIAL_CHECKED is the day the Sakura Mobile plan lengths, the Voice + Data
 //   product and the install timing below were read off www.sakuramobile.jp itself
 //   (/travel/esim/, /travel/sim/, /travel/price/).
@@ -54,11 +57,35 @@ const AIRALO_MONTH = studyMonth("airalo");
 const SAKURA_MONTH = studyMonth("sakura");
 const HOLAFLY_MONTH = cheapestUnlimited("holafly", 30);
 
-const TITLE = `Best eSIM for Japan Students 2026: ${dataLabel(SIMBYE_MONTH)} for ${priceLabel(SIMBYE_MONTH)}`;
+/**
+ * A 3-month study term: the cheapest Simbye plan valid 90+ days with 40 GB or more
+ * (today 50 GB / 180 days), i.e. about 15 GB a month bought once.
+ */
+const SIMBYE_TERM =
+  plansFor("simbye").find((p) => p.days >= 90 && (p.unlimited || (p.gb ?? 0) >= 40)) ?? null;
+const withCode = (p: EsimPlan | null) => (p?.discountedUsd ? formatUsd(p.discountedUsd) : null);
+
+/*
+ * Scope, so this page and japan-sim-card-for-students answer different questions:
+ * this page is the student on a study trip, exchange or language course of up to
+ * 3 months asking whether a travel eSIM is enough. The student staying longer, with a
+ * residence card and a monthly contract, belongs to japan-sim-card-for-students.
+ *
+ * Sakura Mobile resident prices below (monthly Voice + Data 5 GB ¥2,980 / ¥3,278 tax
+ * incl., Data Only 5 GB ¥2,480 / ¥2,728 tax incl., ¥5,500 activation, ¥1,100 off it with
+ * the student coupon) and the 1–90 day travel eSIM were read off
+ * www.sakuramobile.jp/monthly/price/ and /travel/esim/ on RESIDENT_CHECKED.
+ */
+const RESIDENT_CHECKED = "2026-11-17";
+
+const TITLE = "Japan eSIM for Students 2026: Cheapest Data for Study Trips";
+const H1 = "Japan eSIM for Students (2026): Cheapest Data for Study Trips";
 const DESCRIPTION =
-  `${dataLabel(SIMBYE_MONTH)} for a study month is ${priceLabel(SIMBYE_MONTH)} on Simbye, ` +
-  `${priceLabel(AIRALO_MONTH)} on Airalo. Neither includes a Japanese phone number — only ` +
-  `Sakura Mobile does. Prices ${pricesCheckedAt}.`;
+  `Japan eSIM for students: ${dataLabel(SIMBYE_MONTH)} for a study month is ${priceLabel(SIMBYE_MONTH)} ` +
+  `on Simbye, a 3-month term ${priceLabel(SIMBYE_TERM)}. Student eSIM Japan picks by stay length and phone number.`;
+
+const linkStyle = { color: "var(--accent)", fontWeight: 600 } as const;
+const lastChecked = { marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6 } as const;
 
 const dataUsage = [
   { activity: "Online classes (video streaming)", perDay: "~500 MB" },
@@ -66,38 +93,6 @@ const dataUsage = [
   { activity: "Google Maps & navigation", perDay: "~50 MB" },
   { activity: "Streaming (Netflix, YouTube)", perDay: "~500 MB" },
   { activity: "Total (study + social)", perDay: "~1–2 GB" },
-];
-
-const stayOptions = [
-  {
-    title: "Short exchange (1–4 weeks)",
-    desc: `Simbye or Airalo. Simbye's 10 GB / 30-day plan is ${priceAtLeastLabel("simbye", 10)}; Airalo's equivalent is ${priceAtLeastLabel("airalo", 10)} and adds in-app top-up, which matters if you guess your allowance wrong.`,
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" />
-        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-      </svg>
-    ),
-  },
-  {
-    title: "A term (1–3 months)",
-    desc: `Either a ${dataLabel(SIMBYE_MONTH)} plan renewed each month, or Sakura Mobile, whose own pages sell a travel eSIM for 1 to 90 days and a SIM card in lengths up to 93 days — and whose separate Voice + Data eSIM is the only product here that comes with a Japanese number (read ${SAKURA_OFFICIAL_CHECKED}).`,
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2" />
-        <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" />
-      </svg>
-    ),
-  },
-  {
-    title: "Longer than that (6+ months)",
-    desc: "Past the point where you hold a residence card, a domestic MVNO contract is where the cost comparison ends up — those carriers sell to residents, not visitors, so no tourist eSIM competes. No price is quoted for them: they are not in this site's daily price check, and an unchecked figure is worse than none.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
-  },
 ];
 
 const studentTips = [
@@ -119,22 +114,34 @@ const studentTips = [
   },
 ];
 
+// The five questions in FAQPage. The rest of the student questions follow on the page.
 const faqItems = [
   {
+    q: "What is the best eSIM for students in Japan?",
+    a: `For a study trip, exchange or language course of up to 3 months, Simbye: its ${dataLabel(SIMBYE_MONTH)} / 30-day plan is ${priceLabel(SIMBYE_MONTH)} for one month, and its ${SIMBYE_TERM?.name ?? "50 GB"} plan is ${priceLabel(SIMBYE_TERM)} for a whole 3-month term, on ${getProvider("simbye").network} with tethering allowed (prices checked ${pricesCheckedAt}). Klook eSIM is the alternative if the rest of your trip is booked on Klook. Simbye is data only, so if you need a Japanese phone number, Sakura Mobile's Voice + Data eSIM is the one that includes it.`,
+  },
+  {
+    q: "Do exchange students need a Japanese phone number?",
+    a: `For a one-term exchange, usually not: university WiFi, a messaging app and a data eSIM cover it. You do need one to open most bank accounts, to sign a phone contract and for many part-time job applications, because those forms want a domestic number. No data eSIM here provides one — eSIM Go's Japan plans state "No SMS or voice calls included. Data only.", and Simbye's, Airalo's and Holafly's are data only too. Sakura Mobile's separate Voice + Data eSIM adds a Japanese number and domestic calls (read off sakuramobile.jp on ${SAKURA_OFFICIAL_CHECKED}); a student staying longer on a residence card gets one on a monthly Voice + Data plan instead.`,
+  },
+  {
+    q: "Is an eSIM enough for a 3-month study abroad in Japan?",
+    a: `Yes, if you need data and not a Japanese number. Simbye's ${SIMBYE_TERM?.name ?? "50 GB"} plan at ${priceLabel(SIMBYE_TERM)} is about ${SIMBYE_TERM?.gb ? Math.floor(SIMBYE_TERM.gb / 3) : 15} GB a month over 3 months, bought once and topped up if you run low; Sakura Mobile sells its travel eSIM for any length from 1 to 90 days (read ${RESIDENT_CHECKED}). It stops being enough when a bank, a landlord or a part-time job asks for a Japanese number, or when the stay runs past 3 months — then a monthly SIM on your residence card is cheaper.`,
+  },
+  {
+    q: "How much data do students need per month?",
+    a: `About 10–15 GB a month when lectures, downloads and streaming go over campus or dorm WiFi — a study-and-social day off campus is roughly 1–2 GB. That is why ${dataLabel(SIMBYE_MONTH)} a month (${priceLabel(SIMBYE_MONTH)} on Simbye) is the tier to buy. Attending classes or streaming over mobile data pushes past 30 GB, where an unlimited month (Simbye ${priceLabel(cheapestUnlimited("simbye", 30))}) is the cheaper answer.`,
+  },
+  {
+    q: "Can students get a cheap SIM without a residence card?",
+    a: `Not a monthly plan: resident plans such as Sakura Mobile's need a residence card showing a registered address, and the Immigration Services Agency issues residence cards only to mid- to long-term residents — for a student, a stay of more than 3 months. Without one, the cheap option is a prepaid data eSIM — ${dataLabel(SIMBYE_MONTH)} for ${priceLabel(SIMBYE_MONTH)} on Simbye, no contract and nothing to cancel. With a residence card, Sakura Mobile's monthly Data Only plan starts at ¥2,728 and Voice + Data at ¥3,278 a month (tax incl.), plus a ¥5,500 activation fee that the student coupon cuts by ¥1,100 (read ${RESIDENT_CHECKED}).`,
+  },
+];
+
+const moreFaq = [
+  {
     q: "Is there a student discount on Japan eSIMs?",
-    a: `No. None of the five providers publishes a student rate, a campus plan or an education discount, so a student pays what anyone else pays. What a student can do that a tourist cannot is buy by the month: Simbye's ${dataLabel(SIMBYE_MONTH)} / 30-day plan is ${priceLabel(SIMBYE_MONTH)}, and four short-trip plans bought back to back cost far more for the same data. Prices checked ${pricesCheckedAt}.`,
-  },
-  {
-    q: "What is the cheapest eSIM for studying in Japan?",
-    a: `Simbye, at ${priceLabel(SIMBYE_MONTH)} for ${dataLabel(SIMBYE_MONTH)} over 30 days, against ${priceLabel(ESIMGO_MONTH)} on eSIM Go. Airalo's nearest plan is ${priceLabel(AIRALO_MONTH)}, Sakura Mobile's ${priceLabel(SAKURA_MONTH)} and an unlimited month on Holafly ${priceLabel(HOLAFLY_MONTH)}. Simbye's entry tier starts at ${priceFromLabel("simbye")} if you only need a few days.`,
-  },
-  {
-    q: "Do I need a Japanese phone number as an exchange student?",
-    a: `For a one-term exchange, usually not: university WiFi, a messaging app and an eSIM cover it. You do need one to open most bank accounts, to sign a phone contract and for many part-time job applications, because those forms want a domestic number. No travel eSIM here provides one — eSIM Go's Japan plans state "No SMS or voice calls included. Data only.", and Simbye's, Airalo's and Holafly's are data-only too. Sakura Mobile's separate Voice + Data eSIM adds a Japanese number and domestic calls, which makes it the only route on this page to one (read off sakuramobile.jp on ${SAKURA_OFFICIAL_CHECKED}).`,
-  },
-  {
-    q: "Is 20 GB a month enough for a student in Japan?",
-    a: `It depends on one thing: whether lectures and downloads go over campus WiFi. With eduroam or dorm WiFi for the heavy traffic, the table on this page puts a study-and-social day at roughly 1–2 GB, so 20 GB a month has headroom. Attending classes over mobile data instead pushes past 30 GB, at which point an unlimited month (${priceLabel(HOLAFLY_MONTH)} on Holafly) stops looking expensive.`,
+    a: `Not on travel eSIMs. None of the five providers publishes a student rate for its data eSIMs, so a student pays what anyone else pays; the saving comes from buying by the month or the term rather than the week. The one student discount in this market is on Sakura Mobile's resident monthly plans: ¥1,100 off the ¥5,500 activation fee with its student coupon (read ${RESIDENT_CHECKED}).`,
   },
   {
     q: "Can I use a Japan eSIM on a student visa?",
@@ -187,7 +194,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/japan-esim-students",
-              headline: "Best eSIM for Japan for Students (2026): Priced by the Study Month",
+              headline: H1,
               description: DESCRIPTION,
               updated,
             }),
@@ -203,7 +210,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "eSIM for Students", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-students" },
+                { "@type": "ListItem", position: 4, name: "Japan eSIM for Students", item: "https://www.japan-travel-kit.com/guides/esim/japan-esim-students" },
               ],
             }),
           }}
@@ -225,7 +232,7 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>eSIM for Students</span>
+          <span className={styles.breadCurrent}>Japan eSIM for Students</span>
         </div>
       </div>
 
@@ -233,15 +240,13 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
-          <h1 className={styles.heroTitle}>
-            Best eSIM for Japan for Students (2026):<br />Priced by the Study Month
-          </h1>
+          <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            {dataLabel(ESIMGO_MONTH)} for {priceLabel(ESIMGO_MONTH)} a month, and the two
-            decisions a tourist never has to make.
+            The student eSIM Japan guide for study trips, exchanges and language courses of up
+            to 3 months: how much data, what it costs, and when you need a Japanese number.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, `From ${priceLabel(ESIMGO_MONTH)} a month`, "Phone-number options"].map((t) => (
+            {[`Updated ${updated.label}`, "1, 3 and 6+ month picks", "Phone-number options"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -263,48 +268,118 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
 
         <EsimPageAnswer route="/guides/esim/japan-esim-students" />
 
-        {/* Quick Answer Box — the whole answer, before anything else */}
-        <div className={styles.verdictBox}>
-          <div className={styles.verdictHeader}>
-            <span className={styles.verdictLabel}>Quick Answer</span>
-          </div>
-          <div className={styles.verdictBody}>
-            <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              <strong>
-                Buy Simbye&apos;s {dataLabel(SIMBYE_MONTH)} / 30-day plan at{" "}
-                {priceLabel(SIMBYE_MONTH)} if you have campus WiFi and do not need a Japanese
-                phone number; buy Sakura Mobile&apos;s Voice + Data eSIM if you do.
-              </strong>{" "}
-              There is no student discount on any Japan eSIM — none of the five providers
-              publishes one — so the saving comes from buying by the month instead of the week.
-              Airalo&apos;s nearest month is {priceLabel(AIRALO_MONTH)} and buys you in-app
-              top-up; Sakura Mobile&apos;s data month is {priceLabel(SAKURA_MONTH)}, and its
-              separate Voice + Data eSIM is the only product here that comes with a Japanese
-              number — which university admin, a bank account and most part-time job
-              applications will ask for. An unlimited month is{" "}
-              {priceLabel(HOLAFLY_MONTH)} on Holafly, worth it only if you are attending
-              lectures over mobile data. Past the point where you hold a residence card, a
-              domestic MVNO contract undercuts all of them. Prices checked {pricesCheckedAt};
-              phone-number and tethering terms {SPECS_CHECKED_AT}.
-            </p>
-            <div className={styles.verdictGrid}>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Cheapest study month</p>
-                <p className={styles.verdictStatValue}>
-                  Simbye — {priceLabel(SIMBYE_MONTH)} / {dataLabel(SIMBYE_MONTH)}
-                </p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Need a Japanese number</p>
-                <p className={styles.verdictStatValue}>Sakura Mobile Voice + Data</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Student discount</p>
-                <p className={styles.verdictStatValue}>None published by anyone</p>
-              </div>
+        <p className={styles.bodyText}>
+          This page is for a study trip, exchange semester or language course of up to 3 months,
+          where a travel eSIM is usually enough. Staying longer than 3 months on a residence card?
+          Our{" "}
+          <Link href="/guides/esim/japan-sim-card-for-students" style={linkStyle}>
+            Japan SIM card for students
+          </Link>{" "}
+          guide covers the monthly plans with a Japanese number.
+        </p>
+
+        <BookingEsimCard lead="Studying in Japan? Get your student eSIM before you fly" />
+
+        {/* Table 1 — study length × pick × price × phone number, conclusion first */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By study length</span>
+          <h2 className={styles.sectionTitle}>Which Japan eSIM Should a Student Buy for 1, 3 or 6 Months?</h2>
+          <p className={styles.bodyText}>
+            Buy by the length of the stay, not by the week: one {dataLabel(SIMBYE_MONTH)} month for
+            a summer course, one {SIMBYE_TERM?.name ?? "50 GB"} plan for a 3-month term, and a
+            monthly SIM once you hold a residence card.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Study length", "Pick", "Price", "Japanese phone number"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Answer: up to 3 months</td>
+                    <td>
+                      <strong>Simbye eSIM</strong> (data only); Sakura Mobile if you need a number
+                    </td>
+                    <td style={{ fontWeight: 700, color: "var(--accent)" }}>
+                      {priceLabel(SIMBYE_MONTH)} a month · {priceLabel(SIMBYE_TERM)} a term
+                    </td>
+                    <td>Only with Sakura Mobile Voice + Data</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>1 month (summer school, short exchange)</td>
+                    <td>
+                      Simbye {SIMBYE_MONTH?.name ?? "20 GB / 30 days"}, or{" "}
+                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={linkStyle}>
+                        Klook eSIM
+                      </KlookLink>{" "}
+                      if your trip is booked on Klook
+                    </td>
+                    <td>
+                      {priceLabel(SIMBYE_MONTH)}
+                      {withCode(SIMBYE_MONTH) && ` (${withCode(SIMBYE_MONTH)} with code ${SIMBYE_DISCOUNT_CODE})`}
+                    </td>
+                    <td>No — data only</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>3 months (one term, language course)</td>
+                    <td>
+                      Simbye {SIMBYE_TERM?.name ?? "50 GB / 180 days"}; Sakura Mobile travel eSIM (1–90 days) or
+                      Voice + Data eSIM if you need a number
+                    </td>
+                    <td>
+                      {priceLabel(SIMBYE_TERM)}
+                      {withCode(SIMBYE_TERM) && ` (${withCode(SIMBYE_TERM)} with code ${SIMBYE_DISCOUNT_CODE})`}
+                    </td>
+                    <td>Simbye: no · Sakura Voice + Data: yes</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>6 months or more (degree, full-year exchange)</td>
+                    <td>
+                      Sakura Mobile monthly SIM / eSIM on your residence card — see{" "}
+                      <Link href="/guides/esim/japan-sim-card-long-term-stay" style={linkStyle}>
+                        long-term SIM plans
+                      </Link>
+                    </td>
+                    <td>
+                      Data Only from ¥2,728/month; Voice + Data from ¥3,278/month (tax incl.), plus
+                      ¥5,500 activation (¥1,100 off with the student coupon)
+                    </td>
+                    <td>Yes, on Voice + Data (070/080/090)</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-        </div>
+          <p style={lastChecked}>
+            Last checked: {RESIDENT_CHECKED} (Sakura Mobile plan lengths and resident prices, on{" "}
+            <a href="https://www.sakuramobile.jp/monthly/price/" target="_blank" rel="noopener noreferrer nofollow" style={linkStyle}>
+              sakuramobile.jp/monthly/price
+            </a>{" "}
+            and{" "}
+            <a href="https://www.sakuramobile.jp/travel/esim/" target="_blank" rel="noopener noreferrer nofollow" style={linkStyle}>
+              sakuramobile.jp/travel/esim
+            </a>
+            ). Simbye prices from{" "}
+            <a href="https://simbye.com/products/esim-japan" target="_blank" rel="noopener noreferrer nofollow" style={linkStyle}>
+              simbye.com/products/esim-japan
+            </a>
+            , checked {pricesCheckedAt}. Klook eSIM plan prices change with the days and data you
+            choose, so they are not listed here.
+          </p>
+          <div className={styles.pickCtaRow}>
+            <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Get Simbye — {priceLabel(SIMBYE_MONTH)} / {dataLabel(SIMBYE_MONTH)} →
+            </a>
+            <a href={esimLink("sakura")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Sakura Mobile — with a Japanese number →
+            </a>
+          </div>
+        </section>
 
         <EsimCtaTop />
 
@@ -638,19 +713,84 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
           </p>
         </section>
 
-        {/* Stay length options */}
-        <section className={styles.whoForSection}>
-          <span className={styles.sectionLabel}>By stay length</span>
-          <h2 className={styles.sectionTitle}>Which Plan Fits a Month, a Term or a Year?</h2>
-          <div className={styles.whoForGrid}>
-            {stayOptions.map((item) => (
-              <div key={item.title} className={styles.whoForCard}>
-                <div className={styles.whoForIcon}>{item.icon}</div>
-                <p className={styles.whoForTitle}>{item.title}</p>
-                <p className={styles.whoForDesc}>{item.desc}</p>
-              </div>
-            ))}
+        {/* Table 2 — eSIM vs long-term SIM vs pocket WiFi, on the student decision points */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>eSIM, SIM or WiFi</span>
+          <h2 className={styles.sectionTitle}>Should a Student Get an eSIM, a Long-Term SIM or Pocket WiFi?</h2>
+          <p className={styles.bodyText}>
+            A travel eSIM for up to 3 months, a monthly SIM once you have a residence card, and
+            pocket WiFi only if your phone cannot take an eSIM. The difference that matters for a
+            student is not speed but paperwork: who needs a residence card, who signs a contract,
+            and what you have to do when you leave.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Option", "Contract", "Residence card", "Japanese number", "When you leave"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Answer</td>
+                    <td colSpan={4}>
+                      <strong>Up to 3 months: travel eSIM (Simbye or Klook eSIM).</strong> Longer, on a
+                      residence card: monthly SIM (Sakura Mobile). Pocket WiFi: only for a phone
+                      without eSIM.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Travel eSIM (Simbye, Klook eSIM)</td>
+                    <td>None — prepaid, bought online</td>
+                    <td>Not needed</td>
+                    <td>No (data only); Sakura Voice + Data eSIM: yes</td>
+                    <td>It expires on its own — nothing to cancel or return</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Long-term SIM / eSIM (Sakura Mobile monthly)</td>
+                    <td>Monthly, ¥5,500 activation (¥1,100 off for students)</td>
+                    <td>Needed, with your registered address</td>
+                    <td>Yes on Voice + Data (070/080/090)</td>
+                    <td>Cancel online, in English</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Pocket WiFi rental</td>
+                    <td>Rental, priced by pickup and return dates</td>
+                    <td>Not needed</td>
+                    <td>No</td>
+                    <td>Return the device</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
+          <p style={lastChecked}>
+            Last checked: {RESIDENT_CHECKED}, on{" "}
+            <a href="https://www.sakuramobile.jp/monthly/" target="_blank" rel="noopener noreferrer nofollow" style={linkStyle}>
+              sakuramobile.jp/monthly
+            </a>{" "}
+            (sign-up and cancellation in English, international card accepted) and{" "}
+            <a href="https://www.sakuramobile.jp/monthly/price/" target="_blank" rel="noopener noreferrer nofollow" style={linkStyle}>
+              sakuramobile.jp/monthly/price
+            </a>{" "}
+            (activation fee and student coupon). Residence cards are issued to mid- to long-term
+            residents:{" "}
+            <a href="https://www.moj.go.jp/isa/applications/procedures/whatzairyu_00001.html" target="_blank" rel="noopener noreferrer nofollow" style={linkStyle}>
+              Immigration Services Agency
+            </a>
+            . For a phone that cannot take an eSIM, compare{" "}
+            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={linkStyle}>
+              pocket WiFi vs eSIM
+            </Link>
+            ; for the full student SIM sign-up, see the{" "}
+            <Link href="/guides/esim/japan-sim-card-for-students" style={linkStyle}>
+              Japan SIM card for students
+            </Link>{" "}
+            guide.
+          </p>
         </section>
 
         {/* The part an AI answer can't do for you — and the CTA */}
@@ -733,9 +873,9 @@ export default function JapanEsimStudentsPage({ updated }: { updated: PageUpdate
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Japan eSIM for Students: Common Questions</h2>
           <div className={styles.faqList}>
-            {faqItems.map((item, i) => (
+            {[...faqItems, ...moreFaq].map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>

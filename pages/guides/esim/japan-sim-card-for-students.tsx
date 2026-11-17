@@ -437,9 +437,9 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
           <p className={styles.bodyText}>
             This page is for the student staying in Japan <strong>longer than three months</strong> on a
             student status, who will hold a <strong>residence card</strong> — if your term is shorter than
-            that and you need nothing but data, our{" "}
-            <Link href="/guides/esim/japan-esim-students">eSIM guide for students</Link> prices travel plans
-            by the study month instead. For a <strong>Japan SIM card for students</strong> on a longer
+            that (a short study trip, exchange or language course of up to 3 months) and you need nothing
+            but data, our <Link href="/guides/esim/japan-esim-students">Japan eSIM for students</Link> guide
+            prices travel eSIMs by study length instead. For a <strong>Japan SIM card for students</strong> on a longer
             placement the product is a resident monthly plan, and the English-language option we link is{" "}
             <strong>Sakura Mobile</strong>: Voice + Data from <strong>{VOICE_FROM}/month</strong> (¥3,278 tax
             incl.) with a Japanese <strong>070, 080 or 090</strong> number, Data Only from{" "}

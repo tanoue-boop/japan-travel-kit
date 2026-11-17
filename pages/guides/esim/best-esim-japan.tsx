@@ -1637,9 +1637,9 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             <li>
               <span className={styles.proIcon}>▸</span>
               <Link href="/guides/esim/japan-esim-students" style={{ color: "var(--accent)", fontWeight: 600 }}>
-                Students and long study stays
+                Japan eSIM for students
               </Link>{" "}
-              — priced by the month, and when a domestic MVNO beats every tourist eSIM.
+              — study trips up to 3 months priced by length, and when a monthly SIM beats every travel eSIM.
             </li>
             <li>
               <span className={styles.proIcon}>▸</span>

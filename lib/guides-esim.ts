@@ -221,8 +221,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-students",
     badge: "Guide",
-    title: "Best eSIM for Japan for Students (2026): Priced by the Study Month",
-    desc: "20 GB for a study month rather than 5 GB for a tourist week, plus the two things tourists never have to decide: whether you need a Japanese phone number, and when a domestic contract undercuts every eSIM.",
+    title: "Japan eSIM for Students (2026): Cheapest Data for Study Trips",
+    desc: "For study trips, exchanges and language courses up to 3 months: how many GB, what it costs for 1, 3 or 6 months, and when you need a Japanese number or a monthly SIM instead.",
     group: "trip",
     city: "other",
   },

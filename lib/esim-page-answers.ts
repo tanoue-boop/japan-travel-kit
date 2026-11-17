@@ -32,6 +32,9 @@ const S1 = cheapestPlan("simbye");
 const S5 = cheapestAtLeastGb("simbye", 5);
 const S10 = cheapestAtLeastGb("simbye", 10);
 const S20 = cheapestAtLeastGb("simbye", 20);
+/** A 3-month study term: the cheapest Simbye plan valid 90+ days with 40 GB or more. */
+const STUDENT_TERM =
+  plansFor("simbye").find((p) => p.days >= 90 && (p.unlimited || (p.gb ?? 0) >= 40)) ?? null;
 const S_UNL = week("simbye");
 const fortnight = (id: EsimProviderId) => plansFor(id).find((p) => p.unlimited && p.days === 15) ?? cheapestUnlimited(id, 15);
 const holaflyPlans = plansFor("holafly");
@@ -52,7 +55,7 @@ export const esimPageAnswers: Record<string, string> = {
   "/guides/esim/japan-esim-data-plans": `A Japan eSIM data plan needs about 0.5 to 1 GB a day: 7 GB covers a week, 10 GB covers ten days and 14 GB two weeks at 1 GB a day. ${simbyeDeal(S10)} (checked ${pricesCheckedLabel()}).`,
   "/guides/esim/japan-esim-family-group": `A family of four on a 10-day Japan trip needs about 5 GB per phone, and four Simbye ${S5?.name ?? "5 GB"} eSIMs cost ${S5 ? formatUsd(S5.priceUsd * 4) : "—"} in total. Sharing is cheaper: one ${S20?.name ?? "20 GB"} plan shared from a parent's phone hotspot is ${price(S20)}, or a rented Pocket WiFi covers everyone, but either only works while the family stays together, so share if you move as one group and buy an eSIM each if teenagers will head off on their own (prices checked ${pricesCheckedLabel()}). ${simbyeDeal(S5)} per person.`,
   "/guides/esim/japan-esim-iphone": `An unlocked iPhone XS or later takes a Japan eSIM, and no plan is iPhone-only. ${simbyeDeal(S10)}.`,
-  "/guides/esim/japan-esim-students": `For a short study stay, buy a travel eSIM by the month. It has no Japanese number. ${simbyeDeal(S20)}.`,
+  "/guides/esim/japan-esim-students": `A Japan eSIM for students on a study trip, exchange or language course of up to 3 months needs about 10–20 GB a month with campus WiFi: Simbye's 20 GB / 30 days is ${price(S20)} for one month, and its ${STUDENT_TERM?.name ?? "50 GB"} plan is ${price(STUDENT_TERM)} for a whole 3-month term (checked ${pricesCheckedLabel()}). Neither has a Japanese phone number — if you need one, Sakura Mobile's Voice + Data eSIM includes one, and a stay longer than 3 months on a residence card moves to its monthly Voice + Data SIM at ¥3,278 a month (tax incl., checked 17 Nov 2026). With code ${SIMBYE_DISCOUNT_CODE}, Simbye's ${S20?.name ?? "20 GB"} month is ${S20?.discountedUsd ? formatUsd(S20.discountedUsd) : price(S20)}.`,
   "/guides/esim/japan-home-internet-for-foreigners": `Fibre can take weeks to install, so sort out mobile data for the wait. ${simbyeDeal(S20)}.`,
   "/guides/esim/japan-phone-number-for-foreigners": `A tourist in Japan can get a 070/080/090 number on Sakura Mobile's prepaid Voice + Data travel eSIM, ¥10,340 for 7 days (tax incl.), after a passport check in person at a Narita, Haneda, Kansai or Fukuoka airport counter or its Shinjuku office. A resident with a residence card showing their address signs a monthly Voice + Data plan instead, from ¥2,980 (¥3,278 tax incl.) plus a ¥5,500 activation fee (both checked 14 Nov 2026). Travel data eSIMs include no number; for data alone, ${simbyeDeal(S20)}.`,
   "/guides/esim/japan-sim-card-for-students": `An international student in Japan needs a residence card showing a registered address and an international credit or debit card, not a Japanese bank account, to get a monthly SIM. Sakura Mobile's resident plans cost from ¥2,480 a month for data only, or ¥2,980 (¥3,278 tax incl.) with a 070/080/090 number, plus a ¥5,500 activation fee that students cut by ¥1,100 (checked 14 Nov 2026). For data on arrival, before that plan starts, ${simbyeDeal(S20)}.`,

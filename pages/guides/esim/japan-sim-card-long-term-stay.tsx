@@ -634,7 +634,7 @@ export default function JapanSimCardLongTermStayPage({ updated }: { updated: Pag
             and you would rather have no contract at all, a travel eSIM is the right answer — our{" "}
             <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> ranks them on current
             prices, and our{" "}
-            <Link href="/guides/esim/japan-esim-students">eSIM guide for students</Link> is written for the
+            <Link href="/guides/esim/japan-esim-students">Japan eSIM for students</Link> guide is written for the
             study-abroad version of the same calculation. For everything longer, use the eSIM as the bridge
             rather than the plan. eSIM prices checked {PRICES_CHECKED}.
           </p>

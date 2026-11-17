@@ -121,6 +121,13 @@ const useRows: UseRow[] = [
     cta: "sakura",
   },
   {
+    use: "Student on a study trip, exchange or language course (up to 3 months)",
+    pick: "Simbye (data only); Sakura Mobile if you need a Japanese number",
+    why: `A month on campus WiFi fits in 20 GB: Simbye ${label(cheapestAtLeastGb("simbye", 20))}. A whole term: Simbye ${label(S_LONG)}. Staying longer with a residence card moves you to a monthly SIM.`,
+    read: <Link href="/guides/esim/japan-esim-students" style={inline}>Japan eSIM for students</Link>,
+    cta: "simbye",
+  },
+  {
     use: "Osaka or landing at Kansai Airport (KIX)",
     pick: "Any eSIM bought before you fly; Sakura Mobile pickup at KIX T1",
     why: "eSIMs run on the national networks, so Osaka needs no special plan. At KIX Terminal 1 (1F), SIM vending machines are open 24 hours and the Sakura Mobile counter (06:00–23:00) hands over pre-ordered SIMs and eSIM QR codes; Terminal 2 has no Sakura counter.",
